@@ -1,0 +1,20 @@
+create proc sp_ListaDepartamento
+as
+begin
+	select * from Departamento 
+end
+
+create proc sp_ListaProvincia
+@IdDepartamento int
+as
+begin
+	select * from Provincia where IdDepartamento=@IdDepartamento
+end
+
+exec sp_ListaProvincia '3'
+create proc sp_ListaDistrito
+@IdProvincia int
+as
+begin
+	select * from Distrito where IdProvincia=@IdProvincia
+end
