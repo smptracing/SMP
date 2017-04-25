@@ -10,7 +10,11 @@ public function __construct(){
 
 	public function index()
 	{
-		$this->_load_layout('Front/Pmi/frm_CarteraPip');
+		$data=array(
+        "ada"=>"hola",
+        "adsda"=>"hamely",
+        )
+        $this->_load_layout('Front/Pmi/frm_CarteraPip',$data);
 	}
 	
 function _load_layout($template)
