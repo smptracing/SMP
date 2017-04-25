@@ -24,5 +24,9 @@ function _load_layout($template)
       $this->load->view($template);
       $this->load->view('layout/footer');
     }
+public function johanFUncion($value='datos')
+{
+	# yo estoy comentando
+}
 
 }
