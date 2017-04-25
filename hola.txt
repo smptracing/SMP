@@ -1,4 +1,9 @@
 hamely
+<<<<<<< HEAD
 michael
 
 benvenidosdjajdkad
+=======
+micha
+php sdasjdjsa.php
+>>>>>>> origin/master
