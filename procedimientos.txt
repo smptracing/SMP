@@ -18,3 +18,12 @@ as
 begin
 	select * from Distrito where IdProvincia=@IdProvincia
 end
+
+create proc sp_InsertaSector
+(
+@nombre_sector varchar(100)
+)
+as
+insert into sector(nombre_sector)
+values
+(@nombre_sector)
