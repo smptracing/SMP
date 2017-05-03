@@ -156,7 +156,7 @@
                       <li><a href="<?php echo site_url('MSectorEntidadSpu/');?>">Sector</a></li>
                         <li><a href="<?php echo site_url('MFuncion/');?>">Funcion</a></li>
                         <li><a href="<?php echo site_url('pip/');?>">PIP</a></li> 
-
+                        <li><a href="<?php echo site_url('MProyectoInversion/');?>">Proyecto Inversion</a></li> 
                         <li><a href="<?php echo site_url('MUbicacion/');?>">Ubicacion</a></li>
                         <li><a href="<?php echo site_url('MRubroEjecucion/');?>">Ejecucion</a></li> 
                         <li><a href="<?php echo site_url('MantenimientoBrecha/');?>">Brecha</a></li> 
