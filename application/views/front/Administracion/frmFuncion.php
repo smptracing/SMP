@@ -23,7 +23,7 @@
               <div class="col-md-12 col-xs-12">
                                 <div class="x_panel">
                                   <div class="x_title">
-                                    <h2><i class="fa fa-bars"></i> Memu </h2>
+                                    <h2><i class="fa fa-bars"></i> Menu </h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                       </li>
@@ -62,15 +62,13 @@
                                                   <div class="col-md-12 col-xs-12">
                                                         <div class="x_panel">
                                                             <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#VentanaRegistraFuncion" >
-                                                                      <span class="glyphicon glyphicon-book"></span>
-
+                                                                      <span class="fa fa-book"></span>
                                                                 Nueva Función
                                                             </button>
                                                           <div class="x_title">
                                                             <h2>Listado de Funciones</h2>
                                                               
                                                             <ul class="nav navbar-right panel_toolbox">
-                                                                
                                                               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                                               </li>
                                                               
@@ -482,7 +480,7 @@
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input id="txt_IdfuncionM" name="txt_IdfuncionM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"   required="required" type="text">
+                              <input id="txt_IdfuncionM" name="txt_IdfuncionM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"   required="required" type="hidden">
                             </div>
                           <input id="txt_codigofuncionM" name="txt_codigofuncionM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"   required="required" type="text">
                         </div>

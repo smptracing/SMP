@@ -52,9 +52,9 @@ class MSectorEntidadSpu extends CI_Controller {/* Mantenimiento de sector entida
 		      $txt_NombreSectorM =$this->input->post("txt_NombreSectorM");
 		      $hola="hola";
 		      if($this->Model_Sector->UpdateSector($txt_IdModificar,$txt_NombreSectorM) == false)
-		        echo "Se actualizo correctamente";
+		        echo "Se actualizo correctamente el sector";
 		      else
-		        echo "No Se actualizo correctamente"; 
+		        echo "No Se actualizo correctamente el sector"; 
 	    }
 	    else
 	    {

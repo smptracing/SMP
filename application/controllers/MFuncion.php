@@ -56,7 +56,7 @@ class MFuncion extends CI_Controller {/* Mantenimiento de division funcional y g
                 $txt_nombrefuncionM =$this->input->post("txt_nombrefuncionM");
 
                 if($this->Model_Funcion->UpdateFuncion($txt_IdfuncionM,$txt_codigofuncionM,$txt_nombrefuncionM) == true)
-                  echo "Se actualizao  la funcion";
+                  echo "Se actualizo  la funcion";
                 else
                   echo "No se actualizo la  funcion";  
              }
@@ -116,7 +116,7 @@ class MFuncion extends CI_Controller {/* Mantenimiento de division funcional y g
                 if($this->Model_Funcion->UpdateDivisionFucion($id_DfuncionalM,$IdlistaFuncionCM,$txt_CodigoDfuncionalM,$txt_Nombre_DFuncionalM)== true)
                   echo "Se actualizo  una division funcional";
                 else
-                  echo "No se actualizo  una division funcional";  
+                  echo "No se actualizo  una division funcional"; 
              }
              else
               {
@@ -167,7 +167,7 @@ class MFuncion extends CI_Controller {/* Mantenimiento de division funcional y g
                 $txt_nombreGfuncionF=$this->input->post("txt_nombreGfuncionF");
 
                 if($this->Model_Funcion->UpdateGrupoFuncional($txt_idGfuncionF,$IdSelecDivisionFFF,$IdSelecSectorF,$txt_codigoGfuncionF,$txt_nombreGfuncionF)== true)
-                  echo "Se  modifico el grupo funcional funcional";
+                  echo "Se  modifico el grupo funcional ";
                 else
                   echo "No no se modifico el grupo funcional";  
              }
