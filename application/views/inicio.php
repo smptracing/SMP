@@ -2,34 +2,44 @@
           <!-- top tiles -->
           <div class="row tile_count">
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Users</span>
-              <div class="count">2500</div>
-              <span class="count_bottom"><i class="green">4% </i> From last Week</span>
+              <span class="count_top"><i class="fa fa-user"></i> PROGRAMACION M.I</span>
+              <div class="count">
+                   <center><img src="<?php echo base_url();?>assets/images/icono.png" alt="..." ></center>
+              </div>
+            
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-clock-o"></i> Average Time</span>
-              <div class="count">123.50</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> From last Week</span>
+              <span class="count_top"><i class="fa fa-clock-o"></i> FORMULACION</span>
+              <div class="count">
+                  <div class="count">
+                  <CENTER> <img src="<?php echo base_url();?>assets/images/icono1.png" alt="..." ></CENTER>
+                  </div>
+              </div>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Males</span>
-              <div class="count green">2,500</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+              <span class="count_top"><i class="fa fa-user"></i> EVALUACION</span>
+              <div class="count green">
+                 <CENTER> <img src="<?php echo base_url();?>assets/images/icono2.png" alt="..." ></CENTER>
+              </div>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Females</span>
-              <div class="count">4,567</div>
-              <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
+              <span class="count_top"><i class="fa fa-user"></i>EXPEDIENTE</span>
+              <div class="count">
+                   <CENTER> <img src="<?php echo base_url();?>assets/images/icono3.png" alt="..." ></CENTER>
+              </div>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Collections</span>
-              <div class="count">2,315</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+              <span class="count_top"><i class="fa fa-user"></i>EJECUCION</span>
+              <div class="count">
+                 <CENTER> <img src="<?php echo base_url();?>assets/images/icono4.png" alt="..." ></CENTER>
+              </div>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Connections</span>
-              <div class="count">7,325</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+              <span class="count_top"><i class="fa fa-user"></i>FUNCIONAMIENTO</span>
+              <div class="count">
+                 <CENTER> <img src="<?php echo base_url();?>assets/images/icono5.png" alt="..." ></CENTER>
+              </div>
+              
             </div>
           </div>
           <!-- /top tiles -->
@@ -40,7 +50,7 @@
 
                 <div class="row x_title">
                   <div class="col-md-6">
-                    <h3>Network Activities <small>Graph title sub-title</small></h3>
+                    <h3>Avance <small>Fisico y Financiero</small></h3>
                   </div>
                   <div class="col-md-6">
                     <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
@@ -55,13 +65,13 @@
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-12 bg-white">
                   <div class="x_title">
-                    <h2>Top Campaign Performance</h2>
+                    <h2>Avance del proyecto</h2>
                     <div class="clearfix"></div>
                   </div>
 
                   <div class="col-md-12 col-sm-12 col-xs-6">
                     <div>
-                      <p>Facebook Campaign</p>
+                      <p>PMI</p>
                       <div class="">
                         <div class="progress progress_sm" style="width: 76%;">
                           <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="80"></div>
@@ -69,7 +79,7 @@
                       </div>
                     </div>
                     <div>
-                      <p>Twitter Campaign</p>
+                      <p>Formulacion</p>
                       <div class="">
                         <div class="progress progress_sm" style="width: 76%;">
                           <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60"></div>
@@ -79,7 +89,7 @@
                   </div>
                   <div class="col-md-12 col-sm-12 col-xs-6">
                     <div>
-                      <p>Conventional Media</p>
+                      <p>Ejecucion</p>
                       <div class="">
                         <div class="progress progress_sm" style="width: 76%;">
                           <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="40"></div>
@@ -87,7 +97,7 @@
                       </div>
                     </div>
                     <div>
-                      <p>Bill boards</p>
+                      <p>Funcionamiento</p>
                       <div class="">
                         <div class="progress progress_sm" style="width: 76%;">
                           <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50"></div>
@@ -111,7 +121,7 @@
             <div class="col-md-4 col-sm-4 col-xs-12">
               <div class="x_panel tile fixed_height_320">
                 <div class="x_title">
-                  <h2>App Versions</h2>
+                  <h2>Costos del PIP</h2>
                   <ul class="nav navbar-right panel_toolbox">
                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                     </li>
@@ -130,10 +140,10 @@
                   <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                  <h4>App Usage across versions</h4>
+                  <h4>Costos generales preinversion</h4>
                   <div class="widget_summary">
                     <div class="w_left w_25">
-                      <span>0.1.5.2</span>
+                      <span>Costo directo</span>
                     </div>
                     <div class="w_center w_55">
                       <div class="progress">
@@ -143,14 +153,14 @@
                       </div>
                     </div>
                     <div class="w_right w_20">
-                      <span>123k</span>
+                      <span></span>
                     </div>
                     <div class="clearfix"></div>
                   </div>
 
                   <div class="widget_summary">
                     <div class="w_left w_25">
-                      <span>0.1.5.3</span>
+                      <span>Costo indirecto</span>
                     </div>
                     <div class="w_center w_55">
                       <div class="progress">
@@ -160,13 +170,14 @@
                       </div>
                     </div>
                     <div class="w_right w_20">
-                      <span>53k</span>
+                      <span></span>
                     </div>
                     <div class="clearfix"></div>
                   </div>
+                  <h4>Costos generales inversion</h4>
                   <div class="widget_summary">
                     <div class="w_left w_25">
-                      <span>0.1.5.4</span>
+                      <span>Costo directo</span>
                     </div>
                     <div class="w_center w_55">
                       <div class="progress">
@@ -176,13 +187,13 @@
                       </div>
                     </div>
                     <div class="w_right w_20">
-                      <span>23k</span>
+                      <span></span>
                     </div>
                     <div class="clearfix"></div>
                   </div>
                   <div class="widget_summary">
                     <div class="w_left w_25">
-                      <span>0.1.5.5</span>
+                      <span>Costo indirecto</span>
                     </div>
                     <div class="w_center w_55">
                       <div class="progress">
@@ -192,23 +203,7 @@
                       </div>
                     </div>
                     <div class="w_right w_20">
-                      <span>3k</span>
-                    </div>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="widget_summary">
-                    <div class="w_left w_25">
-                      <span>0.1.5.6</span>
-                    </div>
-                    <div class="w_center w_55">
-                      <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 2%;">
-                          <span class="sr-only">60% Complete</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w_right w_20">
-                      <span>1k</span>
+                      <span></span>
                     </div>
                     <div class="clearfix"></div>
                   </div>
@@ -220,7 +215,7 @@
             <div class="col-md-4 col-sm-4 col-xs-12">
               <div class="x_panel tile fixed_height_320 overflow_hidden">
                 <div class="x_title">
-                  <h2>Device Usage</h2>
+                  <h2>COMPONENTES</h2>
                   <ul class="nav navbar-right panel_toolbox">
                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                     </li>
@@ -242,14 +237,14 @@
                   <table class="" style="width:100%">
                     <tr>
                       <th style="width:37%;">
-                        <p>Top 5</p>
+                        <p>Leyenda</p>
                       </th>
                       <th>
                         <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-                          <p class="">Device</p>
+                          <p class="">Componente</p>
                         </div>
                         <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                          <p class="">Progress</p>
+                          <p class="">Avance</p>
                         </div>
                       </th>
                     </tr>
@@ -261,7 +256,7 @@
                         <table class="tile_info">
                           <tr>
                             <td>
-                              <p><i class="fa fa-square blue"></i>IOS </p>
+                              <p><i class="fa fa-square blue"></i>Espacios</p>
                             </td>
                             <td>30%</td>
                           </tr>
@@ -279,13 +274,13 @@
                           </tr>
                           <tr>
                             <td>
-                              <p><i class="fa fa-square aero"></i>Symbian </p>
+                              <p><i class="fa fa-square aero"></i>Implantacion </p>
                             </td>
                             <td>15%</td>
                           </tr>
                           <tr>
                             <td>
-                              <p><i class="fa fa-square red"></i>Others </p>
+                              <p><i class="fa fa-square red"></i>Capacitacion</p>
                             </td>
                             <td>30%</td>
                           </tr>
@@ -301,7 +296,7 @@
             <div class="col-md-4 col-sm-4 col-xs-12">
               <div class="x_panel tile fixed_height_320">
                 <div class="x_title">
-                  <h2>Quick Settings</h2>
+                  <h2>Total Ejecucion</h2>
                   <ul class="nav navbar-right panel_toolbox">
                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                     </li>
@@ -357,7 +352,7 @@
             <div class="col-md-4 col-sm-4 col-xs-12">
               <div class="x_panel">
                 <div class="x_title">
-                  <h2>Recent Activities <small>Sessions</small></h2>
+                  <h2>PIP<small>ETAPAS DEL PROYECTO</small></h2>
                   <ul class="nav navbar-right panel_toolbox">
                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                     </li>
@@ -383,7 +378,7 @@
                         <div class="block">
                           <div class="block_content">
                             <h2 class="title">
-                                              <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
+                                              <a>PROGRAMACION MULTIANUAL DE INVERSIONES</a>
                                           </h2>
                             <div class="byline">
                               <span>13 hours ago</span> by <a>Jane Smith</a>
@@ -397,7 +392,7 @@
                         <div class="block">
                           <div class="block_content">
                             <h2 class="title">
-                                              <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
+                                              <a>FORMULACION Y EVALUACION</a>
                                           </h2>
                             <div class="byline">
                               <span>13 hours ago</span> by <a>Jane Smith</a>
@@ -411,7 +406,7 @@
                         <div class="block">
                           <div class="block_content">
                             <h2 class="title">
-                                              <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
+                                              <a>EJECUCION</a>
                                           </h2>
                             <div class="byline">
                               <span>13 hours ago</span> by <a>Jane Smith</a>
@@ -425,7 +420,7 @@
                         <div class="block">
                           <div class="block_content">
                             <h2 class="title">
-                                              <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
+                                              <a>FUNCIONAMIENTO</a>
                                           </h2>
                             <div class="byline">
                               <span>13 hours ago</span> by <a>Jane Smith</a>
@@ -451,7 +446,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <div class="x_panel">
                     <div class="x_title">
-                      <h2>Visitors location <small>geo-presentation</small></h2>
+                      <h2>GEOLOCALIZACION <small>DE LOS PIPS</small></h2>
                       <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
@@ -472,34 +467,44 @@
                     <div class="x_content">
                       <div class="dashboard-widget-content">
                         <div class="col-md-4 hidden-small">
-                          <h2 class="line_30">125.7k Views from 60 countries</h2>
+                          <h2 class="line_30">Provincias de Apurimac</h2>
 
                           <table class="countries_list">
                             <tbody>
                               <tr>
-                                <td>United States</td>
+                                <td>ABANCAY</td>
                                 <td class="fs15 fw700 text-right">33%</td>
                               </tr>
                               <tr>
-                                <td>France</td>
+                                <td>ANDAHUAYLAS</td>
                                 <td class="fs15 fw700 text-right">27%</td>
                               </tr>
                               <tr>
-                                <td>Germany</td>
+                                <td>ANTABAMBA</td>
                                 <td class="fs15 fw700 text-right">16%</td>
                               </tr>
                               <tr>
-                                <td>Spain</td>
+                                <td>AYMARAES</td>
                                 <td class="fs15 fw700 text-right">11%</td>
                               </tr>
                               <tr>
-                                <td>Britain</td>
+                                <td>CHINCHEROS</td>
+                                <td class="fs15 fw700 text-right">10%</td>
+                              </tr>
+                              <tr>
+                                <td>COTABAMBAS</td>
+                                <td class="fs15 fw700 text-right">10%</td>
+                              </tr>
+                              <tr>
+                                <td>GRAU</td>
                                 <td class="fs15 fw700 text-right">10%</td>
                               </tr>
                             </tbody>
                           </table>
                         </div>
-                        <div id="world-map-gdp" class="col-md-8 col-sm-12 col-xs-12" style="height:230px;"></div>
+                        <div >
+                          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1981998.347345333!2d-74.07476153943878!3d-14.012646565107113!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x916c907f81355e9d%3A0x3531181dfb5f1be9!2zQXB1csOtbWFj!5e0!3m2!1ses!2spe!4v1493824814589" width="400" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -513,7 +518,7 @@
                 <div class="col-md-6 col-sm-6 col-xs-12">
                   <div class="x_panel">
                     <div class="x_title">
-                      <h2>To Do List <small>Sample tasks</small></h2>
+                      <h2>LISTA <small>REPORTES</small></h2>
                       <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
@@ -537,31 +542,31 @@
                         <ul class="to_do">
                           <li>
                             <p>
-                              <input type="checkbox" class="flat"> Schedule meeting with new client </p>
+                              <input type="checkbox" class="flat"> Reporte del PMI </p>
                           </li>
                           <li>
                             <p>
-                              <input type="checkbox" class="flat"> Create email address for new intern</p>
+                              <input type="checkbox" class="flat"> Reporte de formulacion</p>
                           </li>
                           <li>
                             <p>
-                              <input type="checkbox" class="flat"> Have IT fix the network printer</p>
+                              <input type="checkbox" class="flat"> Reporte de Evaluacion</p>
                           </li>
                           <li>
                             <p>
-                              <input type="checkbox" class="flat"> Copy backups to offsite location</p>
+                              <input type="checkbox" class="flat"> Reporte de expediente tecnico</p>
                           </li>
                           <li>
                             <p>
-                              <input type="checkbox" class="flat"> Food truck fixie locavors mcsweeney</p>
+                              <input type="checkbox" class="flat"> Reporte de ejecucion</p>
                           </li>
                           <li>
                             <p>
-                              <input type="checkbox" class="flat"> Food truck fixie locavors mcsweeney</p>
+                              <input type="checkbox" class="flat"> Reporte de liquidacion</p>
                           </li>
                           <li>
                             <p>
-                              <input type="checkbox" class="flat"> Create email address for new intern</p>
+                              <input type="checkbox" class="flat"> Reporte de funcionamiento</p>
                           </li>
                           <li>
                             <p>
@@ -582,7 +587,7 @@
                 <div class="col-md-6 col-sm-6 col-xs-12">
                   <div class="x_panel">
                     <div class="x_title">
-                      <h2>Daily active users <small>Sessions</small></h2>
+                      <h2>DATOS DEL CLIMA<small>Apurimac</small></h2>
                       <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
@@ -617,7 +622,7 @@
                         </div>
                         <div class="col-sm-8">
                           <div class="weather-text">
-                            <h2>Texas <br><i>Partly Cloudy Day</i></h2>
+                            <h2>Apurimac <br><i>Reporte del clima</i></h2>
                           </div>
                         </div>
                       </div>
@@ -632,7 +637,7 @@
                       <div class="row weather-days">
                         <div class="col-sm-2">
                           <div class="daily-weather">
-                            <h2 class="day">Mon</h2>
+                            <h2 class="day">Lun</h2>
                             <h3 class="degrees">25</h3>
                             <canvas id="clear-day" width="32" height="32"></canvas>
                             <h5>15 <i>km/h</i></h5>
@@ -640,7 +645,7 @@
                         </div>
                         <div class="col-sm-2">
                           <div class="daily-weather">
-                            <h2 class="day">Tue</h2>
+                            <h2 class="day">Mar</h2>
                             <h3 class="degrees">25</h3>
                             <canvas height="32" width="32" id="rain"></canvas>
                             <h5>12 <i>km/h</i></h5>
@@ -648,7 +653,7 @@
                         </div>
                         <div class="col-sm-2">
                           <div class="daily-weather">
-                            <h2 class="day">Wed</h2>
+                            <h2 class="day">Mie</h2>
                             <h3 class="degrees">27</h3>
                             <canvas height="32" width="32" id="snow"></canvas>
                             <h5>14 <i>km/h</i></h5>
@@ -656,7 +661,7 @@
                         </div>
                         <div class="col-sm-2">
                           <div class="daily-weather">
-                            <h2 class="day">Thu</h2>
+                            <h2 class="day">Jue</h2>
                             <h3 class="degrees">28</h3>
                             <canvas height="32" width="32" id="sleet"></canvas>
                             <h5>15 <i>km/h</i></h5>
@@ -664,7 +669,7 @@
                         </div>
                         <div class="col-sm-2">
                           <div class="daily-weather">
-                            <h2 class="day">Fri</h2>
+                            <h2 class="day">Vie</h2>
                             <h3 class="degrees">28</h3>
                             <canvas height="32" width="32" id="wind"></canvas>
                             <h5>11 <i>km/h</i></h5>
@@ -672,7 +677,7 @@
                         </div>
                         <div class="col-sm-2">
                           <div class="daily-weather">
-                            <h2 class="day">Sat</h2>
+                            <h2 class="day">Sab</h2>
                             <h3 class="degrees">26</h3>
                             <canvas height="32" width="32" id="cloudy"></canvas>
                             <h5>10 <i>km/h</i></h5>
