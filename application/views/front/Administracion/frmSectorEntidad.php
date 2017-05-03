@@ -175,12 +175,10 @@
                                                               <thead>
                                                                 <tr>
                                                                   <th>Id</th>
-                                                                  <th>Nombre</th>
+                                                                  <th>Servicio Público Asociado</th>
                                                                   <th></th>
                                                                 </tr>
                                                               </thead>
-                                                              <tbody>
-                                                              </tbody>
                                                             </table>
                                                           </div>
                                                         </div>
@@ -324,20 +322,14 @@
          <div class="row">
                 <div class="col-xs-12">
                  <!-- FORMULARIO PARA REGISTRA NUEVO SERVICIO ASOCIADO-->
-                <form class="form-horizontal form-label-left" >
+                <form class="form-horizontal form-label-left"  id="form-addServicioAsociado" action="<?php echo  base_url();?>MSectorEntidadSpu/AddServicioAsociado" method="POST" >
 
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre de Servicio Publico Asociado <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Nombre de Servicio Publico Asociado" required="required" type="text">
-                        </div>
-                      </div>
-                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Fechas <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Fechas" required="required" type="text">
+
+                        <textarea id="textarea_servicio_publicoA"  name="textarea_servicio_publicoA" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Nombre de Servicio Publico Asociado" required="required" type="text"></textarea>
                         </div>
                       </div>
                       <div class="ln_solid"></div>
@@ -358,7 +350,98 @@
         </div><!-- /.row -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- /.fin ventana para registra una nueva entidad-->
+<!-- /.ventana para actualizar  servicio publico asociado-->     
+<div class="modal fade" id="UpdateServicioAsociado" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Actualizar Servicio Publico Asociado</h4>
+        </div>
+        <div class="modal-body">
+         <div class="row">
+                <div class="col-xs-12">
+                 <!-- FORMULARIO PARA REGISTRA NUEVO SERVICIO ASOCIADO-->
+                <form class="form-horizontal form-label-left"  id="form-UpdateServicioAsociado" action="<?php echo  base_url();?>MSectorEntidadSpu/UpdateServicioAsociado" method="POST">
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre de Servicio Publico Asociado <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="id_servicio_publicoA" name="id_servicio_publicoA" type="hidden">
+                        <textarea id="textarea_servicio_publicoAA"  name="textarea_servicio_publicoAA" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Nombre de Servicio Publico Asociado" required="required" type="text"></textarea>
+                        </div>
+                      </div>
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                          <button type="submit" class="btn btn-primary">
+                             <span class="glyphicon glyphicon-remove"></span>
+                            Cancel
+                          </button>
+                          <button id="send" type="submit" class="btn btn-success">
+                            <span class="glyphicon glyphicon-floppy-disk"></span>
+                            Guardar
+                          </button>
+                        </div>
+                      </div>
+                </form><!-- FORMULARIO FIN PARA REGISTRA NUEVO SERVICIO ASOCIADO -->
+            </div><!-- /.span -->
+        </div><!-- /.row -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- /.fin ventana para actualizar un servicio publico asociado-->
+<!-- /.fin ventana para registra una nueva entidad-->
+<!-- /.ventana para registra una nuevo servicio publico asociado-->     
+<div class="modal fade" id="VentanaRegistraServicioAsociado" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Registrar Nuevo Servicio Publico Asociado</h4>
+        </div>
+        <div class="modal-body">
+         <div class="row">
+                <div class="col-xs-12">
+                 <!-- FORMULARIO PARA REGISTRA NUEVO SERVICIO ASOCIADO-->
+                <form class="form-horizontal form-label-left"  id="form-addServicioAsociado" action="<?php echo  base_url();?>MSectorEntidadSpu/AddServicioAsociado" method="POST" >
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre de Servicio Publico Asociado <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <textarea id="textarea_servicio_publicoA"  name="textarea_servicio_publicoA" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Nombre de Servicio Publico Asociado" required="required" type="text"></textarea>
+                        </div>
+                      </div>
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                          <button type="submit" class="btn btn-primary">
+                             <span class="glyphicon glyphicon-remove"></span>
+                            Cancel
+                          </button>
+                          <button id="send" type="submit" class="btn btn-success">
+                            <span class="glyphicon glyphicon-floppy-disk"></span>
+                            Guardar
+                          </button>
+                        </div>
+                      </div>
+                </form><!-- FORMULARIO FIN PARA REGISTRA NUEVO SERVICIO ASOCIADO -->
+            </div><!-- /.span -->
+        </div><!-- /.row -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>

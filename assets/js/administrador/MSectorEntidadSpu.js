@@ -76,7 +76,35 @@
 
             //fin entidades
                  //lista();
-                //listarServicioP();/*llamar a mi metodo listado servicio publico asociado*/
+                listarServicioP();/*llamar a mi metodo listado servicio publico asociado*/
+
+                 $("#form-addServicioAsociado").submit(function(event)//Actualizar la entidad
+                  {
+                      event.preventDefault();
+                      $.ajax({
+                          url:base_url+"index.php/MSectorEntidadSpu/AddServicioAsociado",
+                          type:$(this).attr('method'),
+                          data:$(this).serialize(),
+                          success:function(resp){
+                           swal("",resp, "success");
+                           $('#table-ServicioAsociado').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
+                         }
+                      });
+                  });   
+           
+                 $("#form-UpdateServicioAsociado").submit(function(event)//Actualizar la entidad
+                  {
+                      event.preventDefault();
+                      $.ajax({
+                          url:base_url+"index.php/MSectorEntidadSpu/UpdateServicioAsociado",
+                          type:$(this).attr('method'),
+                          data:$(this).serialize(),
+                          success:function(resp){
+                           swal("",resp, "success");
+                           $('#table-ServicioAsociado').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
+                         }
+                      });
+                  });    
 
 			});
 			   /*metodos de sector lista sector*/
@@ -239,25 +267,30 @@
 
                      "processing":true,
                      "serverSide":false,
+                      destroy:true,
                          "ajax":{
-                                    "url":base_url+"index.php/index.php/MSectorEntidadSpu/GetSector",
+                                    "url":base_url+"index.php/MSectorEntidadSpu/GetServicioAsociado",
                                     "method":"POST",
                                     "dataSrc":""
                                     },
                                 "columns":[
-                                    {"data":"idPerfil"},
-                                    {"data":"CodePerfil"},
-                                    {"data":"NombrePerfil"},
-                                    {"data":"fecha"},
-                                    {"data":"fechaFinal"},
-                                    {"defaultContent":"<i style='cursor:pointer;' class='glyphicon glyphicon-edit' class='editar btn btn-primary' data-toggle='modal' data-target='#VentanaModificarSector'></i>  <i style='cursor:pointer;' class='glyphicon glyphicon-trash'></i>"}
+                                    {"data":"id_serv_pub_asoc"},
+                                    {"data":"nombre_serv_pub_asoc"},
+                                    {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#UpdateServicioAsociado'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
-
                                 "language":idioma_espanol
                     });
-                    
+                    ServicioPublicoDataActualizar("#table-ServicioAsociado",table) ;
                 }
                 /*fin crear tabla dinamica servicio publico asociado*/
+                   var ServicioPublicoDataActualizar=function(tbody,table){
+                    $(tbody).on("click","button.editar",function(){
+                        var data=table.row( $(this).parents("tr")).data();
+                        var id_servicio_publicoA=$('#id_servicio_publicoA').val(data.id_serv_pub_asoc);
+                        var textarea_servicio_publicoAA=$('#textarea_servicio_publicoAA').val(data.nombre_serv_pub_asoc);
+
+                    });
+                }
 
         /*Idioma de datatablet table-sector */
             var idioma_espanol=

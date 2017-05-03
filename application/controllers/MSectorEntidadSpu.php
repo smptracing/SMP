@@ -162,7 +162,60 @@ class MSectorEntidadSpu extends CI_Controller {/* Mantenimiento de sector entida
     /*fin entidad*/
     
     /*Servicios publico asociado*/
-    
+    function GetServicioAsociado()
+	{
+		if ($this->input->is_ajax_request()) 
+		{
+		$datos=$this->Model_Sector->GetServicioAsociado();
+		echo json_encode($datos);
+		}
+		else
+		{
+			show_404();
+		}
+	}
+function AddServicioAsociado()
+	 {
+	    if ($this->input->is_ajax_request()) 
+	    {
+	      $textarea_servicio_publicoA =$this->input->post("textarea_servicio_publicoA");
+	     if($this->Model_Sector->AddServicioAsociado($textarea_servicio_publicoA) ==true)
+		       echo "Se agrego un nuevo Servicio  Publico Asociado";
+		      else
+		      echo "No Se agrego un nuevo Servicio  Publico Asociado"; 
+		 } 
+
+	     else
+	     {
+	      show_404();
+	      }
+	  
+
+ 	 }
+ 
+ 	 function UpdateServicioAsociado()
+	 {
+	    if ($this->input->is_ajax_request()) 
+	    {
+	      $id_servicio_publicoA =$this->input->post("id_servicio_publicoA");
+	      $textarea_servicio_publicoA=$this->input->post("textarea_servicio_publicoAA");
+	     if($this->Model_Sector->UpdateServicioAsociado($id_servicio_publicoA,$textarea_servicio_publicoA) ==true)
+		       echo "Se actualizo el Servicio Publico Asociado";
+		      else
+		      echo "No se actualizo el Servicio Publico Asociado"; 
+		 } 
+
+	     else
+	     {
+	      show_404();
+	      }
+	  
+
+ 	 }
+ 	  function EliminarServicioPublico()
+       {
+
+       }
     /*Fin Servicios publico asociado*/
 	function _load_layout($template)
     {
