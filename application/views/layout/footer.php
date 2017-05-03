@@ -71,6 +71,12 @@
     <!-- Custom Theme Scripts -->
     <script src="<?php echo base_url();?>assets/build/js/custom.min.js"></script>
 
+  <script src="<?php echo base_url(); ?>assets/vendors/butons/buttons.colVis.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/vendors/butons/dataTables.select.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/vendors/butons/dataTables.buttons.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/vendors/butons/buttons.flash.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/vendors/butons/buttons.html5.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/vendors/butons/buttons.print.min.js"></script>
 
     <script src="<?php echo base_url();?>assets/js/ubicacion/ubicacion.js"></script><!-- para la ubicacion -->
     <script src="<?php echo base_url();?>assets/js/administrador/MSectorEntidadSpu.js"></script><!-- para mostralos datos de sector entidad y servicios publicos asociados-->
@@ -79,6 +85,12 @@
     <script src="<?php echo base_url();?>assets/js/administrador/MBrecha.js"></script><!-- para mostra los datos de la brecha-->
     <script src="<?php echo base_url();?>assets/js/administrador/MRubroE.js"></script><!-- para mostar los datos de rubro de ejecucion-->
 
-	
+	<!-- js de los formularios-->
+    <script src="<?php echo base_url(); ?>assets/js/Administrador/NaturalezaInversion.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/Administrador/TipologiaInversion.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/Administrador/TipoInversion.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/Administrador/EstadoCicloInversion.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/Administrador/NivelGobierno.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/Administrador/FuenteFinanciamiento.js"></script>
   </body>
 </html>
