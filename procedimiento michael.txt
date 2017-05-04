@@ -1,0 +1,29 @@
+create procedure sp_Servicio_PublicoA_r
+as
+begin
+select* from serv_pub_asoc
+end
+create procedure sp_Servicio_PublicoA_c
+(
+@nombre_serv_pub_asoc varchar(150)
+)
+as
+begin
+insert into serv_pub_asoc values(@nombre_serv_pub_asoc)
+end
+ exec sp_Servicio_PublicoA_c 'servicio publico asociado 1'
+  exec sp_Servicio_PublicoA_c 'servicio publico asociado 2'
+
+create procedure sp_Servicio_PublicoA_u
+(
+@id_serv_pub_asoc int,
+@nombre_serv_pub_asoc varchar(50)
+)
+as 
+begin
+update  serv_pub_asoc set
+        nombre_serv_pub_asoc=@nombre_serv_pub_asoc
+		where id_serv_pub_asoc=@id_serv_pub_asoc
+end
+
+exec sp_Servicio_PublicoA_u  '2','servicio publico asociado 2'

@@ -12,7 +12,7 @@
                         type:$(this).attr('method'),
                         data:$(this).serialize(),
                         success:function(resp){
-                         alert(resp);
+                         swal("REGISTRADO!", resp, "success");
                          $('#table-Rubro').dataTable()._fnAjaxUpdate();    //SIRVE PARA REFRESCAR LA TABLA 
                         }
                     });
@@ -28,7 +28,7 @@
                         type:$(this).attr('method'),
                         data:$(this).serialize(),
                         success:function(resp){
-                         alert(resp);
+                        swal("REGISTRADO!", resp, "success");
                          $('#table-ModalidadE').dataTable()._fnAjaxUpdate();    //SIRVE PARA REFRESCAR LA TABLA 
                         }
                     });
@@ -44,7 +44,7 @@
                         type:$(this).attr('method'),
                         data:$(this).serialize(),
                         success:function(resp){
-                         alert(resp);
+                        swal("REGISTRADO!", resp, "success");
                         $('#table-UnidadE').dataTable()._fnAjaxUpdate();    //SIRVE PARA REFRESCAR LA TABLA 
 
                         }
@@ -90,7 +90,7 @@
                         type:$(this).attr('method'),
                         data:$(this).serialize(),
                         success:function(resp){
-                         alert(resp);
+                         swal("MODIFICADO!", resp, "success");
                          $('#table-Rubro').dataTable()._fnAjaxUpdate();
                         }
 
@@ -151,7 +151,7 @@
                         type:$(this).attr('method'),
                         data:$(this).serialize(),
                         success:function(resp){
-                         alert(resp);
+                        swal("MODIFICADO!", resp, "success");
                          $('#table-ModalidadE').dataTable()._fnAjaxUpdate();
                         }
 
@@ -208,7 +208,7 @@
                         type:$(this).attr('method'),
                         data:$(this).serialize(),
                         success:function(resp){
-                         alert(resp);
+                        swal("MODIFICADO!", resp, "success");
                          $('#table-UnidadE').dataTable()._fnAjaxUpdate();
                         }
 

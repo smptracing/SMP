@@ -22,7 +22,7 @@
                         type:$(this).attr('method'),
                         data:$(this).serialize(),
                         success:function(resp){
-                         alert(resp);
+                        swal("REGISTRADO!", resp, "success");
                           $('#table-brecha').dataTable()._fnAjaxUpdate();    //SIRVE PARA REFRESCAR LA TABLA 
                         }
                     });
@@ -38,8 +38,8 @@
                         type:$(this).attr('method'),
                         data:$(this).serialize(),
                         success:function(resp){
-                         alert(resp);
-                        //  $('#table-Indicador').dataTable()._fnAjaxUpdate();    //SIRVE PARA REFRESCAR LA TABLA 
+                         swal("REGISTRADO!", resp, "success");
+                          $('#table-Indicador').dataTable()._fnAjaxUpdate();    //SIRVE PARA REFRESCAR LA TABLA 
                         }
                     });
                 });     
@@ -83,7 +83,7 @@
                         type:$(this).attr('method'),
                         data:$(this).serialize(),
                         success:function(resp){
-                         alert(resp);
+                         swal("ACTUALIZADO!", resp, "success");
                          $('#table-brecha').dataTable()._fnAjaxUpdate();
                         }
 
@@ -131,17 +131,28 @@
                   $(tbody).on("click","button.eliminar",function(){
                         var data=table.row( $(this).parents("tr")).data();
                         var id_brecha=data.id_brecha;
+                        swal({
+                                title: "Esta seguro que desea eliminar la brecha?",
+                                text: "",
+                                type: "warning",
+                                showCancelButton: true,
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "SI,ELIMINAR",
+                                closeOnConfirm: false
+                              },
+                              function(){
                         $.ajax({
                         url:base_url+"index.php/MantenimientoBrecha/DeleteBrecha",
                         type:"POST",
                         data:{id_brecha:id_brecha},
                         success:function(respuesta)
                         {
-                          alert("Se elimino la brecha");
+                           swal("ELIMINADO!", "Se elimino correctamente la brecha.", "success");
                           $('#table-brecha').dataTable()._fnAjaxUpdate();
                         }//para actualizar mi datatablet datatablet
                     });
                   });
+                 });
               }
 
   //FIN ELIMINAR UNA BRECHA 
@@ -201,7 +212,7 @@
                         type:$(this).attr('method'),
                         data:$(this).serialize(),
                         success:function(resp){
-                         alert(resp);
+                         swal("ACTUALIZADO!", resp, "success");
                          $('#table-Indicador').dataTable()._fnAjaxUpdate();
                         }
 
