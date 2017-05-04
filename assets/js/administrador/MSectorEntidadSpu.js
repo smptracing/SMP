@@ -11,10 +11,10 @@
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
-                           alert(resp);
+                           //alert(resp);
+                            swal("",resp, "success");
                            $('#table-sector').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet     
                            listaSectorCombo();//llamado para la recarga al añadir un nuevo secto
-
                          }
                       });
                   });          
@@ -22,20 +22,22 @@
                  //para actualizar los sectores
                  $("#form-ActulizarSector").submit(function(event)//para añadir nuevo sector
                 {
-                    event.preventDefault();
-                    $.ajax({
-                        url:base_url+"index.php/MSectorEntidadSpu/UpdateSector",
-                        type:$(this).attr('method'),
-                        data:$(this).serialize(),
-                        success:function(resp){
-                         swal("Se Modifico ", "Sector", "success");
-                         $('#table-sector').dataTable()._fnAjaxUpdate();
-                          listaSectorCombo();//llamado para la recarga al añadir un nuevo secto
-                         //listaSector();
+                             
+                                            event.preventDefault();  
+                 
+                                          $.ajax({
+                                              url:base_url+"index.php/MSectorEntidadSpu/UpdateSector",
+                                              type:$(this).attr('method'),
+                                              data:$(this).serialize(),
+                                              success:function(resp){
+                                                swal("",resp, "success");
+                                               $('#table-sector').dataTable()._fnAjaxUpdate();
+                                                listaSectorCombo();//llamado para la recarga al añadir un nuevo secto
+                                               //listaSector();
 
-                        }
+                                              }
 
-                    });
+                                          });
 
                 });  
                  //fin para actualizar los sectores
@@ -51,7 +53,8 @@
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
-                           alert(resp);
+                           //alert(resp);
+                            swal("",resp, "success");
                            $('#table-entidad').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
                          }
                       });
@@ -65,7 +68,7 @@
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
-                           alert(resp);
+                           swal("",resp, "success");
                            $('#table-entidad').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
                          }
                       });
