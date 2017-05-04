@@ -48,7 +48,7 @@
                                             
                                                   <div class="col-md-12 col-sm-12 col-xs-12">
                                                         <div class="x_panel">
-                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraPIP"> <span class="fa fa-file-o"></span> Nueva PIP</button>
+                                                            <button id="btn-NuevoProyectoI" type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraPIP"> <span class="fa fa-file-o"></span> Nueva PIP</button>
                                                           <div class="x_title">
                                                             <h2>Listado de  <small>PIP</small></h2>
                                                               
@@ -117,12 +117,12 @@
                     <div class="col-xs-12">
                                         <!-- PAGE CONTENT BEGINS -->
                              
-            <form class="form-horizontal " id="form-addBrecha" action="<?php echo  base_url();?>MantenimientoBrecha/AddBrecha" method="POST" >
+            <form class="form-horizontal " id="form-addBrecha" action="<?php echo  base_url();?>MProyectoInversion/AddProyectoInversion" method="POST" >
                       <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Rubro de ejecucion</span>
                             </label>
                           <div class="col-md-6 col-sm-6 col-xs-12">
-                              <select id="" class="selectpicker" data-live-search="true"  title="Elija Rubro de ejecucion">
+                              <select id="cbxRubroEjecucion" class="selectpicker" data-live-search="true"  title="Elija Rubro de ejecucion">
                              
                               </select>
                           </div>
@@ -131,7 +131,7 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Unidad Ejecutora</span>
                             </label>
                           <div class="col-md-6 col-sm-6 col-xs-12">
-                              <select id="" class="selectpicker" data-live-search="true"  title="Elija Unidad Ejecutora">
+                              <select id="cbxUnidadEjecutora" class="selectpicker" data-live-search="true"  title="Elija Unidad Ejecutora">
                              
                               </select>
                           </div>
@@ -140,7 +140,7 @@
                           <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Naturaleza de inversion</span>
                           </label>
                           <div class="col-md-6 col-sm-6 col-xs-12">
-                              <select id="" class="selectpicker" data-live-search="true"  title="Elija Naturaleza inversion">
+                              <select id="cbxNaturalezaInv" class="selectpicker" data-live-search="true"  title="Elija Naturaleza inversion">
                              
                               </select>
                           </div>
@@ -149,7 +149,7 @@
                           <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Tipologia de inversion</span>
                           </label>
                           <div class="col-md-6 col-sm-6 col-xs-12">
-                              <select id="" class="selectpicker" data-live-search="true"  title="Elija tipologia">
+                              <select id="cbxTipologiaInv" class="selectpicker" data-live-search="true"  title="Elija tipologia">
                              
                               </select>
                           </div>
@@ -173,7 +173,7 @@
                           </div>
                        </div>
                        <div class="item form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Tipo de inversion</span>
+                          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Grupo Funcional</span>
                           </label>
                           <div class="col-md-6 col-sm-6 col-xs-12">
                               <select id="" class="selectpicker" data-live-search="true"  title="Elija grupo funcional">

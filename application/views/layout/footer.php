@@ -84,7 +84,7 @@
 
     <script src="<?php echo base_url();?>assets/js/administrador/MBrecha.js"></script><!-- para mostra los datos de la brecha-->
     <script src="<?php echo base_url();?>assets/js/administrador/MRubroE.js"></script><!-- para mostar los datos de rubro de ejecucion-->
-
+    <script src="<?php echo base_url(); ?>assets/js/Administrador/MProyectoInversion.js"></script>
 	<!-- js de los formularios-->
     <script src="<?php echo base_url(); ?>assets/js/Administrador/NaturalezaInversion.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/Administrador/TipologiaInversion.js"></script>
@@ -92,5 +92,6 @@
     <script src="<?php echo base_url(); ?>assets/js/Administrador/EstadoCicloInversion.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/Administrador/NivelGobierno.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/Administrador/FuenteFinanciamiento.js"></script>
+
   </body>
 </html>
