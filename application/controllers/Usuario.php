@@ -13,11 +13,7 @@ public function __construct(){
 		
 		$this->_load_layout('Front/Usuario/frm_usuario');
 	}
-	public function get_usuario()
-	{
-		
-		$this->_load_layout('Front/Usuario/frm_usuario');
-	}
+	
 function _load_layout($template)
     {
       $this->load->view('layout/header');
