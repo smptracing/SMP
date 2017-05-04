@@ -15,7 +15,7 @@
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
-                           swal("",resp, "success");
+                           alert(resp);
                           $('#table-Funcion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
                            //listaSectorCombo();//llamado para la recarga al añadir un nuevo secto
                             listaFuncionCombo();
@@ -30,7 +30,7 @@
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
-                           swal("",resp, "success");
+                           alert(resp);
                            $('#table-Funcion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
                            listaFuncionCombo();
                          }
@@ -49,7 +49,7 @@
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
-                          swal("",resp, "success");
+                           alert(resp);
                           $('#table-DivisionF').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
                            //listaSectorCombo();//llamado para la recarga al añadir un nuevo secto
                                 
@@ -64,7 +64,7 @@
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
-                           swal("",resp, "success");
+                           alert(resp);
                           $('#table-DivisionF').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
                            //listaSectorCombo();//llamado para la recarga al añadir un nuevo secto    
                          }
@@ -91,7 +91,7 @@
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
-                           swal("",resp, "success");
+                           alert(resp);
                            $('#table-listarGrupoFuncional').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
                          }
                       });
@@ -105,7 +105,7 @@
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
-                           swal("",resp, "success");
+                           alert(resp);
                            $('#table-listarGrupoFuncional').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
                          }
                       });
@@ -283,6 +283,7 @@
                         var id_DfuncionalM=$('#id_DfuncionalM').val(data.id_division_funcional);
                         var txt_CodigoDfuncionalM=$('#txt_CodigoDfuncionalM').val(data.codigo_dfuncional);
                         var txt_Nombre_DFuncionalM=$('#txt_Nombre_DFuncionalM').val(data.nombre_dFuncional);
+
 
                     });
                 }
