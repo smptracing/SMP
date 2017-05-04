@@ -13,7 +13,14 @@ $(document).on("ready" ,function(){
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
-                           alert(resp);
+                           //alert(resp);
+                            if (resp=='1') {
+                             swal("","se registro...", "success");
+                             formReset();
+                           }
+                            if (resp=='2') {
+                             swal("","NO se registro...", "error");
+                           }
                           $('#dynamic-table-TipoInversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
                              formReset();
                          }
@@ -35,7 +42,8 @@ $(document).on("ready" ,function(){
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
-                           alert(resp);
+                           //alert(resp);
+                           swal("",resp, "success");
                           $('#dynamic-table-TipoInversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
                              formReset();
                          }
@@ -108,7 +116,7 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
 				} );
 				myTable.buttons().container().appendTo( $('.tableTools-container-TipoInversion') );
         TipoInversiongiaData("#dynamic-table-TipoInversion",myTable);  //CARGAR LA DATA PARA MOSTRAR EN EL MODAL  
-        EliminarTipoInversiongiaData("#dynamic-table-TipoInversion",myTable);
+        EliminarTipoInversionData("#dynamic-table-TipoInversion",myTable);
                 }
 
                 var  TipoInversiongiaData=function(tbody,myTable){
@@ -120,10 +128,10 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
 
                     });
                 }
-var EliminarTipoInversiongiaData=function(tbody,table){
+var EliminarTipoInversionData=function(tbody,myTable){
                   $(tbody).on("click","button.eliminar",function(){
-                        var data=table.row( $(this).parents("tr")).data();
-                        //var id_sector=data.id_sector;
+                        var data=myTable.row( $(this).parents("tr")).data();
+                        var IDTIPOINVERSION=data.IDTIPOINVERSION;
                         console.log(data);
                          swal({
                                 title: "Desea eliminar ?",
@@ -138,7 +146,7 @@ var EliminarTipoInversiongiaData=function(tbody,table){
                                     $.ajax({
                                           url:base_url+"index.php/pip/EliminarTipoInversion",
                                           type:"POST",
-                                          data:{IDTipoInversion:IDTipoInversion},
+                                          data:{IDTIPOINVERSION:IDTIPOINVERSION},
                                           success:function(respuesta){
                                             //alert(respuesta);
                                             swal("Deleted!", "Se elimino corectamente .", "success");

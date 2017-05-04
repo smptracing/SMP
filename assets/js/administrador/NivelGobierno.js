@@ -13,7 +13,13 @@ $(document).on("ready" ,function(){
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
-                           alert(resp);
+                            if (resp=='1') {
+                             swal("","se registro...", "success");
+                             formReset();
+                           }
+                            if (resp=='2') {
+                             swal("","NO se registro...", "error");
+                           }
                           $('#dynamic-table-NivelGobierno').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
                              formReset();
                          }
@@ -35,7 +41,8 @@ $(document).on("ready" ,function(){
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
-                           alert(resp);
+                           //alert(resp);
+                           swal("",resp, "success");
                           $('#dynamic-table-NivelGobierno').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
                              formReset();
                          }
@@ -108,7 +115,7 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
 				} );
 				myTable.buttons().container().appendTo( $('.tableTools-container-NivelGobierno') );
         NivelGobiernoData("#dynamic-table-NivelGobierno",myTable);  //CARGAR LA DATA PARA MOSTRAR EN EL MODAL  
-        EliminarTipologiaData("#dynamic-table-NivelGobierno",myTable);
+        EliminarNivelGobiernoData("#dynamic-table-NivelGobierno",myTable);
                 }
 
                 var  NivelGobiernoData=function(tbody,myTable){
@@ -120,10 +127,10 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
 
                     });
                 }
-var EliminarTipologiaData=function(tbody,table){
+var EliminarNivelGobiernoData=function(tbody,myTable){
                   $(tbody).on("click","button.eliminar",function(){
-                        var data=table.row( $(this).parents("tr")).data();
-                        //var id_sector=data.id_sector;
+                        var data=myTable.row( $(this).parents("tr")).data();
+                        var IDNIVELGOB=data.IDNIVELGOB;
                         console.log(data);
                          swal({
                                 title: "Desea eliminar ?",
@@ -138,7 +145,7 @@ var EliminarTipologiaData=function(tbody,table){
                                     $.ajax({
                                           url:base_url+"index.php/pip/EliminarNivelGobierno",
                                           type:"POST",
-                                          data:{IDNivelGobierno:IDNivelGobierno},
+                                          data:{IDNIVELGOB:IDNIVELGOB},
                                           success:function(respuesta){
                                             //alert(respuesta);
                                             swal("Deleted!", "Se elimino corectamente .", "success");
@@ -149,6 +156,7 @@ var EliminarTipologiaData=function(tbody,table){
                               });
                     });
                 }
+
 
 
                 

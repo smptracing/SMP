@@ -30,6 +30,17 @@ class FuenteFinanciamiento_Model extends CI_Model
         }
 
     }
+    public function EliminarFuenteFinanciamiento($flat, $txt_IdFuenteFinanciamiento, $txt_AcronimoFuenteFinanciamiento, $txt_NombreFuenteFinanciamiento, $txt_DescripcionFuenteFinanciamiento, $user)
+    {
+
+        $this->db->query("execute SP_GESTIONAR_FuenteFinanciamiento'" . $flat . "','" . $txt_IdFuenteFinanciamiento . "', '" . $txt_NombreFuenteFinanciamiento . "','" . $txt_AcronimoFuenteFinanciamiento . "','" . $txt_DescripcionFuenteFinanciamiento . "','" . $user . "' ");
+        if ($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
     public function UpdateFuenteFinanciamiento($flat, $txt_IdFuenteFinanciamientoM, $txt_AcronimoFuenteFinanciamientoM, $txt_NombreFuenteFinanciamientoM, $txt_DescripcionFuenteFinanciamientoM, $user)
     {
 

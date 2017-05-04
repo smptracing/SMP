@@ -13,9 +13,16 @@
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
-                           alert(resp);
-                          $('#dynamic-table-NaturalezaInversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
+                           //alert(resp);
+                           if (resp=='1') {
+                             swal("","se registro...", "success");
                              formReset();
+                           }
+                            if (resp=='2') {
+                             swal("","NO se registro...", "error");
+                           }
+                          $('#dynamic-table-NaturalezaInversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
+                             
                          }
                       });
                   });
@@ -34,7 +41,8 @@
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
-                           alert(resp);
+                           //alert(resp);
+                           swal("",resp, "success");
                           $('#dynamic-table-NaturalezaInversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
                             // formReset();
                          }
@@ -124,7 +132,7 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
 var EliminarNaturalezaData=function(tbody,table){
                   $(tbody).on("click","button.eliminar",function(){
                         var data=table.row( $(this).parents("tr")).data();
-                        //var id_sector=data.id_sector;
+                        var IDNATURALEZA=data.IDNATURALEZA;
                         console.log(data);
                          swal({
                                 title: "Desea eliminar ?",

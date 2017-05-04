@@ -30,6 +30,17 @@ class NivelGobierno_MOdel extends CI_Model
         }
 
     }
+    public function EliminarNivelGobierno($flat, $txt_IdNivelGobierno, $txt_NombreNivelGobierno, $txt_DescripcionNivelGobierno, $user)
+    {
+
+        $this->db->query("execute SP_GESTIONAR_NivelGob'" . $flat . "','" . $txt_IdNivelGobierno . "', '" . $txt_NombreNivelGobierno . "','" . $txt_DescripcionNivelGobierno . "','" . $user . "' ");
+        if ($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
     public function UpdateNivelGobierno($flat, $txt_IdNivelGobiernoM, $txt_NombreNivelGobiernoM, $txt_DescripcionNivelGobiernoM, $user)
     {
 

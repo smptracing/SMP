@@ -13,7 +13,14 @@ $(document).on("ready" ,function(){
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
-                           alert(resp);
+                           //alert(resp);
+                           if (resp=='1') {
+                             swal("","se registro...", "success");
+                             formReset();
+                           }
+                            if (resp=='2') {
+                             swal("","NO se registro...", "error");
+                           }
                           $('#dynamic-table-TipologiaInversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
                              formReset();
                          }
@@ -35,7 +42,8 @@ $(document).on("ready" ,function(){
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
-                           alert(resp);
+                          //alert(resp);
+                           swal("",resp, "success");
                           $('#dynamic-table-TipologiaInversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
                              formReset();
                          }
@@ -122,10 +130,10 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
 
                     });
                 }
-var EliminarTipologiaData=function(tbody,table){
+var EliminarTipologiaData=function(tbody,myTable){
                   $(tbody).on("click","button.eliminar",function(){
-                        var data=table.row( $(this).parents("tr")).data();
-                        //var id_sector=data.id_sector;
+                        var data=myTable.row( $(this).parents("tr")).data();
+                        var IDTIPOLOGIAINVERSION=data.IDTIPOLOGIAINVERSION;
                         console.log(data);
                          swal({
                                 title: "Desea eliminar ?",

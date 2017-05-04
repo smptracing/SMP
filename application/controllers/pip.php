@@ -28,9 +28,9 @@ class pip extends CI_Controller
         if ($this->input->is_ajax_request()) {
             $flat = "LT";
             // $ID   = "0";
-            $ID                        = $this->input->post("txt_IdNaturaleza");
-            $txt_NombreNaturaleza      = $this->input->post("txt_NombreNaturaleza");
-            $txt_DescripcionNaturaleza = $this->input->post("txt_DescripcionNaturaleza");
+            $ID                        = "0";
+            $txt_NombreNaturaleza      = "NULL";
+            $txt_DescripcionNaturaleza = "NULL";
             $user                      = "1";
 
             $datos = $this->NaturalezaInversion_Model->get_NaturalezaInversion($flat, $ID, $txt_NombreNaturaleza, $txt_DescripcionNaturaleza, $user);
@@ -40,7 +40,7 @@ class pip extends CI_Controller
         }
     }
 
-    //UPDATE TABLA naturaleza inversion
+    //ELIMINAR TABLA naturaleza inversion
 
     public function EliminarNaturalezaInversion()
     {
@@ -92,17 +92,15 @@ class pip extends CI_Controller
     public function AddNaturalezaInversion()
     {
         if ($this->input->is_ajax_request()) {
-            $flat = "N";
-            $ID   = "0";
-            //$txt_IdNaturaleza          = $this->input->post("txt_IdNaturaleza");
+            $flat                      = "N";
+            $ID                        = "0";
             $txt_NombreNaturaleza      = $this->input->post("txt_NombreNaturaleza");
             $txt_DescripcionNaturaleza = $this->input->post("txt_DescripcionNaturaleza");
             $user                      = "1";
-            // if ($this->NaturalezaInversion_Model->AddNaturalezaInversion($flat, $txt_IdNaturaleza, $txt_NombreNaturaleza, $txt_DescripcionNaturaleza, $user) == true) {
-            if ($this->NaturalezaInversion_Model->AddNaturalezaInversion($flat, $ID, $txt_NombreNaturaleza, $txt_DescripcionNaturaleza, $user) == true) {
-                echo "NO se registro....";
+            if ($this->NaturalezaInversion_Model->AddNaturalezaInversion($flat, $ID, $txt_NombreNaturaleza, $txt_DescripcionNaturaleza, $user) == false) {
+                echo "1";
             } else {
-                echo "se registro..........";
+                echo "2";
             }
 
         } else {
@@ -140,10 +138,31 @@ class pip extends CI_Controller
             $txt_NombreTipologiaInversion      = $this->input->post("txt_NombreTipologiaInversion");
             $txt_DescripcionTipologiaInversion = $this->input->post("txt_DescripcionTipologiaInversion");
             $user                              = "1";
-            if ($this->TipologiaInversion_Model->AddTipologiaInversion($flat, $txt_IdTipologiaInversion, $txt_NombreTipologiaInversion, $txt_DescripcionTipologiaInversion, $user) == true) {
-                echo "NO se registro....";
+            if ($this->TipologiaInversion_Model->AddTipologiaInversion($flat, $txt_IdTipologiaInversion, $txt_NombreTipologiaInversion, $txt_DescripcionTipologiaInversion, $user) == false) {
+                echo "1";
             } else {
-                echo "se registro..........";
+                echo "2";
+            }
+        } else {
+            show_404();
+        }
+
+    }
+    //ELIMINAR TABLA TIPOLOGIA inversion
+    public function EliminarTipologiaInversion()
+    {
+        if ($this->input->is_ajax_request()) {
+            $flat = "E";
+            // $ID   = "0";
+            $txt_IdTipologiaInversion          = $this->input->post("IDTIPOLOGIAINVERSION");
+            $txt_NombreTipologiaInversion      = "NULL";
+            $txt_DescripcionTipologiaInversion = "NULL";
+            $user                              = "1";
+
+            if ($this->TipologiaInversion_Model->EliminarTipologiaInversion($flat, $txt_IdTipologiaInversion, $txt_NombreTipologiaInversion, $txt_DescripcionTipologiaInversion, $user) == true) {
+                echo "No Se Elimino  ";
+            } else {
+                echo " se Elimino ";
             }
 
         } else {
@@ -202,10 +221,32 @@ class pip extends CI_Controller
             $txt_NombreTipoInversion      = $this->input->post("txt_NombreTipoInversion");
             $txt_DescripcionTipoInversion = $this->input->post("txt_DescripcionTipoInversion");
             $user                         = "1";
-            if ($this->TipoInversion_Model->AddTipoInversion($flat, $txt_IdTipoInversion, $txt_NombreTipoInversion, $txt_DescripcionTipoInversion, $user) == true) {
-                echo "NO se registro....";
+            if ($this->TipoInversion_Model->AddTipoInversion($flat, $txt_IdTipoInversion, $txt_NombreTipoInversion, $txt_DescripcionTipoInversion, $user) == false) {
+                echo "1";
             } else {
-                echo "se registro..........";
+                echo "2";
+            }
+
+        } else {
+            show_404();
+        }
+
+    }
+    //ELIMINAR  tipo inversion
+    public function EliminarTipoInversion()
+    {
+        if ($this->input->is_ajax_request()) {
+            $flat = "E";
+            // $ID   = "0";
+            $txt_IdTipoInversion          = $this->input->post("IDTIPOINVERSION");
+            $txt_NombreTipoInversion      = "NULL";
+            $txt_DescripcionTipoInversion = "NULL";
+            $user                         = "1";
+
+            if ($this->TipoInversion_Model->EliminarTipoInversion($flat, $txt_IdTipoInversion, $txt_NombreTipoInversion, $txt_DescripcionTipoInversion, $user) == true) {
+                echo "No Se Elimino  ";
+            } else {
+                echo " se Elimino ";
             }
 
         } else {
@@ -266,10 +307,31 @@ class pip extends CI_Controller
             $txt_NombreEstadoCicloInversion      = $this->input->post("txt_NombreEstadoCicloInversion");
             $txt_DescripcionEstadoCicloInversion = $this->input->post("txt_DescripcionEstadoCicloInversion");
             $user                                = "1";
-            if ($this->EstadoCicloInversion_Model->AddEstadoCicloInversion($flat, $txt_IdEstadoCicloInversion, $txt_NombreEstadoCicloInversion, $txt_DescripcionEstadoCicloInversion, $user) == true) {
-                echo "NO se registro....";
+            if ($this->EstadoCicloInversion_Model->AddEstadoCicloInversion($flat, $txt_IdEstadoCicloInversion, $txt_NombreEstadoCicloInversion, $txt_DescripcionEstadoCicloInversion, $user) == false) {
+                echo "1";
             } else {
-                echo "se registro..........";
+                echo "2";
+            }
+        } else {
+            show_404();
+        }
+
+    }
+    //ELIMINAR  ciclo inversion
+    public function EliminarEstadoCicloInversion()
+    {
+        if ($this->input->is_ajax_request()) {
+            $flat = "E";
+            // $ID   = "0";
+            $txt_IdEstadoCicloInversion          = $this->input->post("IDCICLOINVERSION");
+            $txt_NombreEstadoCicloInversion      = "NULL";
+            $txt_DescripcionEstadoCicloInversion = "NULL";
+            $user                                = "1";
+
+            if ($this->EstadoCicloInversion_Model->EliminarEstadoCicloInversion($flat, $txt_IdEstadoCicloInversion, $txt_NombreEstadoCicloInversion, $txt_DescripcionEstadoCicloInversion, $user) == true) {
+                echo "No Se Elimino  ";
+            } else {
+                echo " se Elimino ";
             }
 
         } else {
@@ -330,10 +392,31 @@ class pip extends CI_Controller
             $txt_NombreNivelGobierno      = $this->input->post("txt_NombreNivelGobierno");
             $txt_DescripcionNivelGobierno = $this->input->post("txt_DescripcionNivelGobierno");
             $user                         = "1";
-            if ($this->NivelGobierno_Model->AddNivelGobierno($flat, $txt_IdNivelGobierno, $txt_NombreNivelGobierno, $txt_DescripcionNivelGobierno, $user) == true) {
-                echo "NO se registro....";
+            if ($this->NivelGobierno_Model->AddNivelGobierno($flat, $txt_IdNivelGobierno, $txt_NombreNivelGobierno, $txt_DescripcionNivelGobierno, $user) == false) {
+                echo "1";
             } else {
-                echo "se registro..........";
+                echo "2";
+            }
+        } else {
+            show_404();
+        }
+
+    }
+    //ELIMINAR  nivel Gobierno
+    public function EliminarNivelGobierno()
+    {
+        if ($this->input->is_ajax_request()) {
+            $flat = "E";
+            // $ID   = "0";
+            $txt_IdNivelGobierno          = $this->input->post("IDNIVELGOB");
+            $txt_NombreNivelGobierno      = "NULL";
+            $txt_DescripcionNivelGobierno = "NULL";
+            $user                         = "1";
+
+            if ($this->NivelGobierno_Model->EliminarNivelGobierno($flat, $txt_IdNivelGobierno, $txt_NombreNivelGobierno, $txt_DescripcionNivelGobierno, $user) == true) {
+                echo "No Se Elimino  ";
+            } else {
+                echo " se Elimino ";
             }
 
         } else {
@@ -395,10 +478,10 @@ class pip extends CI_Controller
             $txt_AcronimoFuenteFinanciamiento    = $this->input->post("txt_AcronimoFuenteFinanciamiento");
             $txt_DescripcionFuenteFinanciamiento = $this->input->post("txt_DescripcionFuenteFinanciamiento");
             $user                                = "1";
-            if ($this->FuenteFinanciamiento_Model->AddFuenteFinanciamiento($flat, $txt_IdFuenteFinanciamiento, $txt_NombreFuenteFinanciamiento, $txt_AcronimoFuenteFinanciamiento, $txt_DescripcionFuenteFinanciamiento, $user) == true) {
-                echo "NO se registro....";
+            if ($this->FuenteFinanciamiento_Model->AddFuenteFinanciamiento($flat, $txt_IdFuenteFinanciamiento, $txt_NombreFuenteFinanciamiento, $txt_AcronimoFuenteFinanciamiento, $txt_DescripcionFuenteFinanciamiento, $user) == false) {
+                echo "1";
             } else {
-                echo "se registro..........";
+                echo "2";
             }
 
         } else {
@@ -406,6 +489,30 @@ class pip extends CI_Controller
         }
 
     }
+    //ELIMINAR  fuente Financiamiento
+    public function EliminarFuenteFinanciamiento()
+    {
+        if ($this->input->is_ajax_request()) {
+            $flat = "E";
+            // $ID   = "0";
+            $txt_IdFuenteFinanciamiento          = $this->input->post("IDFFTO");
+            $txt_NombreFuenteFinanciamiento      = "NULL";
+            $txt_AcronimoFuenteFinanciamiento    = "NULL";
+            $txt_DescripcionFuenteFinanciamiento = "NULL";
+            $user                                = "1";
+
+            if ($this->FuenteFinanciamiento_Model->EliminarFuenteFinanciamiento($flat, $txt_IdFuenteFinanciamiento, $txt_NombreFuenteFinanciamiento, $txt_AcronimoFuenteFinanciamiento, $txt_DescripcionFuenteFinanciamiento, $user) == true) {
+                echo "No Se Elimino  ";
+            } else {
+                echo " se Elimino ";
+            }
+
+        } else {
+            show_404();
+        }
+
+    }
+
     //ACTUALIZAR NUEVA
     public function UpdateFuenteFinanciamiento()
     {
