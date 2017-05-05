@@ -20,9 +20,9 @@ public function __construct(){
 	      $txt_NombreBrecha =$this->input->post("txt_NombreBrecha");
 	      $txtArea_DescBrecha =$this->input->post("txtArea_DescBrecha");
 	      if($this->Model_Brecha->AddBrecha($txt_NombreBrecha,$txtArea_DescBrecha) == true)
-	        echo "Se añadio una  Brecha";
+	        echo "No se añadio una  Brecha";
 	      else
-	        echo "No se añadio  una Brecha";  
+	        echo "Se añadio  una Brecha";  
 	    }
 	    else
 	    {

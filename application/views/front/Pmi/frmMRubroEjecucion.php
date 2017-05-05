@@ -70,7 +70,7 @@
                                                               
                                                           </div>
                                                           <div class="x_content">
-                                                            <table id="table-Rubro" class="table table-condensed table-striped table-bordered" width="100%">
+                                                            <table id="table-Rubro" class="table table-condensed table-striped table-bordered table-hover" width="100%">
                                                               <thead>
                                                                 <tr>
                                                                   <th class="col-sm-1">Id</th>
@@ -117,7 +117,7 @@
                                                               
                                                           </div>
                                                           <div class="x_content">
-                                                            <table id="table-ModalidadE" class="table table-condensed table-striped table-bordered" width="100%">
+                                                            <table id="table-ModalidadE" class="table table-condensed table-striped table-bordered table-hover" width="100%">
                                                               <thead>
                                                                  <tr>
                                                                   <th class="col-sm-2">Id </th>
@@ -161,7 +161,7 @@
                                                               
                                                           </div>
                                                           <div class="x_content">
-                                                                       <table id="table-UnidadE" class="table table-condensed table-striped table-bordered" width="100%">
+                                                                       <table id="table-UnidadE" class="table table-condensed table-striped table-bordered table-hover" width="100%">
                                                               <thead>
                                                                  <tr>
                                                                   <th class="col-sm-1">Id </th>
@@ -222,8 +222,8 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button type="submit" class="btn btn-primary"><span class="fa fa-close"></span> Cancelar</button>
                           <button id="send" type="submit" class="btn btn-success"> <span class="fa fa-save"></span> Guardar</button>
+                          <button type="submit" class="btn btn-danger" data-dismiss="modal"><span class="fa fa-close"></span> Cancelar</button>
                         </div>
                       </div>
                     </form>
@@ -231,7 +231,7 @@
                  </div><!-- /.row -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal"><span class="fa fa-close"></span> Cerrar</button>
+
         </div>
       </div>
     </div>
@@ -274,14 +274,15 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button type="submit" class="btn btn-primary">
-                             <span class="glyphicon glyphicon-remove"></span>
-                            Cancel
-                          </button>
-                          <button  type="submit" class="btn btn-success">
+                           <button  type="submit" class="btn btn-success" >
                             <span class="glyphicon glyphicon-floppy-disk"></span>
                             Guardar
                           </button>
+                          <button type="submit" data-dismiss="modal" class="btn btn-danger">
+                             <span class="glyphicon glyphicon-remove"></span>
+                            Cancelar
+                          </button>
+                         
                         </div>
                       </div>
                 </form><!-- FORMULARIO FIN PARA REGISTRA NUEVO SERVICIO ASOCIADO -->
@@ -289,7 +290,7 @@
         </div><!-- /.row -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
         </div>
       </div>
     </div>
@@ -328,8 +329,9 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button type="submit" class="btn btn-primary"><span class="fa fa-close"></span> Cancelar</button>
                           <button id="send" type="submit" class="btn btn-success"><span class="fa fa-save"></span> Guardar</button>
+                          <button type="submit" class="btn btn-danger" data-dismiss="modal"><span class="fa fa-close"></span> Cancelar</button>
+
                         </div>
                       </div>
                     </form>
@@ -337,7 +339,6 @@
                  </div><!-- /.row -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal"><span class="fa fa-close"></span> Cerrar</button>
         </div>
       </div>
     </div>
@@ -379,14 +380,15 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button type="submit" class="btn btn-primary">
-                             <span class="glyphicon glyphicon-remove"></span>
-                            Cancel
-                          </button>
-                          <button  type="submit" class="btn btn-success">
+                         <button  type="submit" class="btn btn-success">
                             <span class="glyphicon glyphicon-floppy-disk"></span>
                             Guardar
                           </button>
+                          <button type="submit" data-dismiss="modal" class="btn btn-danger">
+                             <span class="glyphicon glyphicon-remove"></span>
+                            Cancelar
+                          </button>
+                         
                         </div>
                       </div>
                 </form><!-- FORMULARIO FIN PARA REGISTRA NUEVO SERVICIO ASOCIADO -->
@@ -394,7 +396,7 @@
         </div><!-- /.row -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
         </div>
       </div>
     </div>
@@ -426,8 +428,8 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button type="submit" class="btn btn-primary"><span class="fa fa-close"></span> Cancelar</button>
                           <button id="send" type="submit" class="btn btn-success"> <span class="fa fa-save"> Guardar</span></button>
+                          <button type="submit" class="btn btn-danger" data-dismiss="modal"><span class="fa fa-close"></span> Cancelar</button>
                         </div>
                       </div>
                     </form>
@@ -435,7 +437,6 @@
                  </div><!-- /.row -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal"><span class="fa fa-close"></span> Cerrar</button>
         </div>
       </div>
     </div>
@@ -470,13 +471,13 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button type="submit" class="btn btn-primary">
-                             <span class="glyphicon glyphicon-remove"></span>
-                            Cancel
-                          </button>
                           <button  type="submit" class="btn btn-success">
                             <span class="glyphicon glyphicon-floppy-disk"></span>
                             Guardar
+                          </button>
+                          <button type="submit" data-dismiss="modal" class="btn btn-danger">
+                             <span class="glyphicon glyphicon-remove"></span>
+                            Cancelar
                           </button>
                         </div>
                       </div>
@@ -485,7 +486,6 @@
         </div><!-- /.row -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>

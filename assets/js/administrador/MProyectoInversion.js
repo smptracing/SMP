@@ -96,7 +96,7 @@
                            // alert(respuesta);
                          var registros = eval(respuesta);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option value="+registros[i]["idnaturaleza"]+"> "+ registros[i]["nombrenaturaleza"]+" </option>";   
+                              html +="<option value="+registros[i]["IDNATURALEZA"]+"> "+ registros[i]["NOMBRENATURALEZA"]+" </option>";   
                             };
                             $("#cbxNaturalezaInv").html(html);//
                             $('.selectpicker').selectpicker('refresh'); 

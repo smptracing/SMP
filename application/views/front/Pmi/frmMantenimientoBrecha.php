@@ -70,7 +70,7 @@
                                                               
                                                           </div>
                                                           <div class="x_content">
-                                                            <table id="table-brecha" class="table table-condensed table-striped table-bordered">
+                                                            <table id="table-brecha" class="table table-condensed table-striped table-bordered table-hover">
                                                               <thead>
                                                                 <tr>
                                                                   <th class="col-sm-1">Id</th>
@@ -115,7 +115,7 @@
                                                               
                                                           </div>
                                                           <div class="x_content">
-                                                            <table id="table-Indicador" class="table table-striped table-bordered" width="100%">
+                                                            <table id="table-Indicador" class="table table-striped table-bordered table-hover" width="100%">
                                                               <thead>
                                                                 <tr>
                                                                   <th>Id</th>
@@ -128,8 +128,7 @@
                                                             </table>
                                                           </div>
                                                         </div>
-                                                      </div>
-                                                     
+                                                      </div> 
                                             </div>
                                          <!-- / fin tabla de indicador desde el row -->
                                         </div>
@@ -161,7 +160,7 @@
                                                               
                                                           </div>
                                                           <div class="x_content">
-                                                            <table id="table-BrechaIndicador" class="table table-striped table-bordered" width="100%">
+                                                            <table id="table-BrechaIndicador" class="table table-striped table-bordered table-hover" width="100%">
                                                               <thead>
                                                                 <tr>
                                                                   <th>Nombre Indicador</th>
@@ -206,12 +205,12 @@
                     <div class="col-xs-12">
                                         <!-- PAGE CONTENT BEGINS -->
                              
-            <form class="form-horizontal " id="form-addBrecha" action="<?php echo  base_url();?>MantenimientoBrecha/AddBrecha" method="POST" >
+            <form class="form-horizontal " id="form-addBrecha" action="<?php echo  base_url();?>MantenimientoBrecha/AddBrecha" method="POST" data-toggle="validator">
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre de la brecha<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_NombreBrecha" name="txt_NombreBrecha" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name"  placeholder="Nombre de la brecha" required="required" type="text">
+                          <input id="txt_NombreBrecha" name="txt_NombreBrecha" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name"  placeholder="Nombre de la brecha" required="required" type="text" >
                         </div>
                       </div>
 
@@ -219,14 +218,17 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Descripcion <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <textarea id="txtArea_DescBrecha" name="txtArea_DescBrecha" required="required" name="textarea" placeholder="Descripcion" class="form-control col-md-7 col-xs-12"></textarea>
+                          <textarea id="txtArea_DescBrecha" name="txtArea_DescBrecha" placeholder="Descripcion" class="form-control col-md-7 col-xs-12"></textarea>
                         </div>
+                        
                       </div>
+
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button type="submit" class="btn btn-primary"><span class="fa fa-close"></span> Cancelar</button>
-                            <button id="send" type="submit" class="btn btn-success"><span class="fa fa-save"></span> Guardar</button>
+                           <button id="send" type="submit" class="btn btn-success"><span class="fa fa-save"></span> Guardar</button>
+                          <button type="submit" class="btn btn-danger" data-dismiss="modal"><span class="fa fa-close"></span> Cancelar</button>
+                            
                         </div>
                       </div>
                     </form>
@@ -234,7 +236,6 @@
                  </div><!-- /.row -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal"><span class="fa fa-close"></span> Cerrar</button>
         </div>
       </div>
     </div>
@@ -277,13 +278,13 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button type="submit" class="btn btn-primary">
-                             <span class="glyphicon glyphicon-remove"></span>
-                            Cancel
-                          </button>
-                          <button  type="submit" class="btn btn-success">
+                           <button  type="submit" class="btn btn-success">
                             <span class="glyphicon glyphicon-floppy-disk"></span>
                             Guardar
+                          </button>
+                          <button type="submit" class="btn btn-danger" data-dismiss="modal">
+                             <span class="glyphicon glyphicon-remove"></span>
+                            Cancelar
                           </button>
                         </div>
                       </div>
@@ -292,7 +293,7 @@
         </div><!-- /.row -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
         </div>
       </div>
     </div>
@@ -339,8 +340,9 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button type="submit" class="btn btn-primary"><span class="fa fa-close"></span> Cancelar</button>
-                            <button id="send" type="submit" class="btn btn-success"><span class="fa fa-save"> </span>Guardar</button>
+                                                    <button id="send" type="submit" class="btn btn-success"><span class="fa fa-save"> </span>Guardar</button>
+                          <button type="submit" class="btn btn-danger" data-dismiss="modal"><span class="fa fa-close"></span> Cancelar</button>
+
                         </div>
                       </div>
                     </form>
@@ -348,7 +350,7 @@
                  </div><!-- /.row -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal"><span class="fa fa-close"></span> Cerrar</button>
+
         </div>
       </div>
     </div>
@@ -398,14 +400,15 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button type="submit" class="btn btn-primary">
-                             <span class="glyphicon glyphicon-remove"></span>
-                            Cancel
-                          </button>
                           <button  type="submit" class="btn btn-success">
                             <span class="glyphicon glyphicon-floppy-disk"></span>
                             Guardar
                           </button>
+                          <button type="submit" data-dismiss="modal" class="btn btn-danger">
+                             <span class="glyphicon glyphicon-remove"></span>
+                            Cancelar
+                          </button>
+                        
                         </div>
                       </div>
                 </form><!-- FORMULARIO FIN PARA REGISTRA NUEVO SERVICIO ASOCIADO -->
@@ -413,7 +416,7 @@
         </div><!-- /.row -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         
         </div>
       </div>
     </div>
@@ -468,8 +471,8 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button type="submit" class="btn btn-primary"><span class="fa fa-close"></span> Cancelar</button>
-                            <button id="send" type="submit" class="btn btn-success"><span class="fa fa-save"></span> Guardar</button>
+                          <button id="send" type="submit" class="btn btn-success"  ><span class="fa fa-save"></span> Guardar</button>
+                          <button type="submit" class="btn btn-danger" data-dismiss="modal"><span class="fa fa-close"></span> Cancelar</button>
                         </div>
                       </div>
                     </form>
@@ -477,7 +480,7 @@
                  </div><!-- /.row -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal"><span class="fa fa-close"></span> Cerrar</button>
+
         </div>
       </div>
     </div>
