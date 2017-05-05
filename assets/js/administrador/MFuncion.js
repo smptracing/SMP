@@ -8,7 +8,6 @@
                     {
                      listaFuncionCombo();//para llenar el combo de agregar division funcional
                     });
-                     $("#msg-error").hidden();
                 $("#form-addFuncion").submit(function(event)//para añadir nueva funcion
                   {
                       event.preventDefault();

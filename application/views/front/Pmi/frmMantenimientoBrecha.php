@@ -205,7 +205,7 @@
                     <div class="col-xs-12">
                                         <!-- PAGE CONTENT BEGINS -->
                              
-            <form class="form-horizontal " id="form-addBrecha" action="<?php echo  base_url();?>MantenimientoBrecha/AddBrecha" method="POST" data-toggle="validator">
+            <form class="form-horizontal " id="form-addBrecha" action="" method="POST" data-toggle="validator">
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre de la brecha<span class="required">*</span>
                         </label>
@@ -226,8 +226,8 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                           <button id="send" type="submit" class="btn btn-success"><span class="fa fa-save"></span> Guardar</button>
-                          <button type="submit" class="btn btn-danger" data-dismiss="modal"><span class="fa fa-close"></span> Cancelar</button>
+                          <button  type="submit" class="btn btn-success"><span class="fa fa-save"></span> Guardar</button>
+                          <button  class="btn btn-danger" data-dismiss="modal"><span class="fa fa-close"></span> Cancelar</button>
                             
                         </div>
                       </div>
@@ -255,7 +255,7 @@
          <div class="row">
                 <div class="col-xs-12">
                 
-                <form class="form-horizontal " id="form-ActualizarBrecha" action="<?php echo  base_url();?>index.php/MantenimientoBrecha/UpdateBrecha" method="POST" >
+                <form class="form-horizontal " id="form-ActualizarBrecha" action="<?php echo  base_url();?>MantenimientoBrecha/UpdateBrecha" method="POST" >
 
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre de la brecha<span class="required">*</span>
@@ -408,7 +408,6 @@
                              <span class="glyphicon glyphicon-remove"></span>
                             Cancelar
                           </button>
-                        
                         </div>
                       </div>
                 </form><!-- FORMULARIO FIN PARA REGISTRA NUEVO SERVICIO ASOCIADO -->
