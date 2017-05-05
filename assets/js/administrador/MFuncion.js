@@ -2,11 +2,13 @@
                 //alert("sdas");
                //lista();
             //division funcional
+
                 listaFuncion();/*llamar a mi datatablet listar funcion*/
                 $("#btn_Nuevadivision").click(function()//para que cargue el como una vez echo click sino repetira datos
                     {
                      listaFuncionCombo();//para llenar el combo de agregar division funcional
                     });
+                     $("#msg-error").hidden();
                 $("#form-addFuncion").submit(function(event)//para añadir nueva funcion
                   {
                       event.preventDefault();

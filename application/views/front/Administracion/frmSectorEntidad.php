@@ -81,11 +81,11 @@
                                                               
                                                           </div>
                                                           <div class="x_content">
-                                                            <table id="table-sector"  class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                                            <table id="table-sector"  class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
                                                               <thead>
                                                                 <tr>
-                                                                  <th class="col-sm-1">Id</th>
-                                                                  <th class="">Nombre del Sector</th>
+                                                                  <th class="col-sm-1">ID</th>
+                                                                  <th class="">NOMBRE SECTOR</th>
                                                                   <th class="col-sm-2"></th>
                                                                 </tr>
                                                               </thead>
@@ -125,13 +125,13 @@
                                                               
                                                           </div>
                                                           <div class="x_content">
-                                                            <table id="table-entidad" class="table table-striped table-bordered" ellspacing="0" width="100%">
+                                                            <table id="table-entidad" class="table table-striped table-bordered table-hover" ellspacing="0" width="100%">
                                                               <thead>
                                                                 <tr>
-                                                                  <th class="col-sm-1">Id</th>
-                                                                  <th>Nombre Sector</th>
-                                                                  <th>Nombre Entidad</th>
-                                                                  <th>Denominacion Entidad</th>
+                                                                  <th class="col-sm-1">ID</th>
+                                                                  <th>NOMBRE SECTOR</th>
+                                                                  <th>NOMBRE ENTIDAD</th>
+                                                                  <th>DENOMINACION  ENTIDAD</th>
                                                                   <th class="col-sm-1"></th>
                                                                 </tr>
                                                               </thead>
@@ -155,7 +155,7 @@
                                                             <span class="glyphicon glyphicon-book"></span>
                                                                 Nuevo Servicio Asociado</button>
                                                           <div class="x_title">
-                                                            <h2>Listado de Servicio Publico Asociado</h2>
+                                                            <h2>Listado de Servicio Público Asociado</h2>
                                                               
                                                             <ul class="nav navbar-right panel_toolbox">
                                                                 
@@ -171,11 +171,11 @@
                                                               
                                                           </div>
                                                           <div class="x_content">
-                                                            <table id="table-ServicioAsociado" class="table table-striped table-bordered " ellspacing="0" width="100%">
+                                                            <table id="table-ServicioAsociado" class="table table-striped table-bordered table-hover" ellspacing="0" width="100%">
                                                               <thead>
                                                                 <tr>
-                                                                  <th>Id</th>
-                                                                  <th>Servicio Público Asociado</th>
+                                                                  <th>ID</th>
+                                                                  <th>SERVICIO PUBLICO ASOCIADO</th>
                                                                   <th></th>
                                                                 </tr>
                                                               </thead>
@@ -224,14 +224,17 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button type="submit" class="btn btn-primary">
-                             <span class="glyphicon glyphicon-remove"></span>
-                            Cancel
-                          </button>
+                          
                           <button  type="submit" class="btn btn-success">
                             <span class="glyphicon glyphicon-floppy-disk"></span>
                             Guardar
                           </button>
+
+                          <button type="button" class="btn btn-danger" data-dismiss="modal">
+                             <span class="glyphicon glyphicon-remove"></span>
+                            Cancel
+                          </button>
+
                         </div>
                       </div>
                 </form> <!-- FORULARIO PARA REGISTRAR NUEVO SECTOR  -->
@@ -239,7 +242,7 @@
                  </div><!-- /.row -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
         </div>
       </div>
     </div>
@@ -269,7 +272,7 @@
                         </div>
                       </div>
                        <div class="item form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Denominacion Entidad <span class="required">*</span>
+                          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Denominación Entidad <span class="required">*</span>
                           </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input id="txt_DenominacionEntidad" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="txt_DenominacionEntidad" placeholder="Denominacion entidad" required="required" type="text">
@@ -288,14 +291,15 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button type="submit" class="btn btn-primary">
-                             <span class="glyphicon glyphicon-remove"></span>
-                            Cancel
-                          </button>
                           <button id="btn_addEntidad" type="submit" class="btn btn-success">
                             <span class="glyphicon glyphicon-floppy-disk"></span>
                             Guardar
                           </button>
+                          <button type="button" class="btn btn-danger" data-dismiss="modal">
+                             <span class="glyphicon glyphicon-remove"></span>
+                            Cancel
+                          </button>
+
                         </div>
                       </div>
                 </form><!-- FORMULARIO FIN PARA REGISTRA NUEVA ENTIDAD -->
@@ -303,7 +307,6 @@
         </div><!-- /.row -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
@@ -316,7 +319,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Registrar Nuevo Servicio Publico Asociado</h4>
+          <h4 class="modal-title">Registrar Nuevo Servicio Público Asociado</h4>
         </div>
         <div class="modal-body">
          <div class="row">
@@ -325,24 +328,25 @@
                 <form class="form-horizontal form-label-left"  id="form-addServicioAsociado" action="<?php echo  base_url();?>MSectorEntidadSpu/AddServicioAsociado" method="POST" >
 
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre de Servicio Publico Asociado <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre de Servicio Público Asociado <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
 
-                        <textarea id="textarea_servicio_publicoA"  name="textarea_servicio_publicoA" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Nombre de Servicio Publico Asociado" required="required" type="text"></textarea>
+                        <textarea id="textarea_servicio_publicoA"  name="textarea_servicio_publicoA" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Nombre de Servicio Público Asociado" required="required" type="text"></textarea>
                         </div>
                       </div>
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button type="submit" class="btn btn-primary">
-                             <span class="glyphicon glyphicon-remove"></span>
-                            Cancel
-                          </button>
                           <button id="send" type="submit" class="btn btn-success">
                             <span class="glyphicon glyphicon-floppy-disk"></span>
                             Guardar
                           </button>
+                          <button type="submit" class="btn btn-danger" data-dismiss="modal">
+                             <span class="glyphicon glyphicon-remove"></span>
+                            Cancel
+                          </button>
+
                         </div>
                       </div>
                 </form><!-- FORMULARIO FIN PARA REGISTRA NUEVO SERVICIO ASOCIADO -->
@@ -350,7 +354,6 @@
         </div><!-- /.row -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>
@@ -362,7 +365,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Actualizar Servicio Publico Asociado</h4>
+          <h4 class="modal-title">Actualizar Servicio Público Asociado</h4>
         </div>
         <div class="modal-body">
          <div class="row">
@@ -370,23 +373,23 @@
                  <!-- FORMULARIO PARA REGISTRA NUEVO SERVICIO ASOCIADO-->
                 <form class="form-horizontal form-label-left"  id="form-UpdateServicioAsociado" action="<?php echo  base_url();?>MSectorEntidadSpu/UpdateServicioAsociado" method="POST">
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre de Servicio Publico Asociado <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre de Servicio Público Asociado <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input id="id_servicio_publicoA" name="id_servicio_publicoA" type="hidden">
-                        <textarea id="textarea_servicio_publicoAA"  name="textarea_servicio_publicoAA" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Nombre de Servicio Publico Asociado" required="required" type="text"></textarea>
+                        <textarea id="textarea_servicio_publicoAA"  name="textarea_servicio_publicoAA" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Nombre de Servicio Público Asociado" required="required" type="text"></textarea>
                         </div>
                       </div>
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button type="submit" class="btn btn-primary">
-                             <span class="glyphicon glyphicon-remove"></span>
-                            Cancel
-                          </button>
                           <button id="send" type="submit" class="btn btn-success">
                             <span class="glyphicon glyphicon-floppy-disk"></span>
                             Guardar
+                          </button>
+                           <button type="button" class="btn btn-danger" data-dismiss="modal">
+                             <span class="glyphicon glyphicon-remove"></span>
+                            Cancel
                           </button>
                         </div>
                       </div>
@@ -395,7 +398,6 @@
         </div><!-- /.row -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>
@@ -417,7 +419,7 @@
                 <form class="form-horizontal form-label-left"  id="form-addServicioAsociado" action="<?php echo  base_url();?>MSectorEntidadSpu/AddServicioAsociado" method="POST" >
 
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre de Servicio Publico Asociado <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre de Servicio Público Asociado <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                         <textarea id="textarea_servicio_publicoA"  name="textarea_servicio_publicoA" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Nombre de Servicio Publico Asociado" required="required" type="text"></textarea>
@@ -426,14 +428,16 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button type="submit" class="btn btn-primary">
-                             <span class="glyphicon glyphicon-remove"></span>
-                            Cancel
-                          </button>
+                          
                           <button id="send" type="submit" class="btn btn-success">
                             <span class="glyphicon glyphicon-floppy-disk"></span>
                             Guardar
                           </button>
+                          <button type="button" class="btn btn-danger" data-dismiss="modal">
+                             <span class="glyphicon glyphicon-remove"></span>
+                            Cancel
+                          </button>
+
                         </div>
                       </div>
                 </form><!-- FORMULARIO FIN PARA REGISTRA NUEVO SERVICIO ASOCIADO -->
@@ -441,7 +445,6 @@
         </div><!-- /.row -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>
@@ -475,13 +478,13 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button type="submit" class="btn btn-primary">
-                             <span class="glyphicon glyphicon-remove"></span>
-                            Cancel
-                          </button>
                           <button  type="submit" class="btn btn-success">
                             <span class="glyphicon glyphicon-floppy-disk"></span>
                             Guardar
+                          </button>
+                          <button type="button" class="btn btn-danger" data-dismiss="modal">
+                             <span class="glyphicon glyphicon-remove"></span>
+                            Cancel
                           </button>
                         </div>
                       </div>
@@ -490,7 +493,6 @@
         </div><!-- /.row -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
@@ -526,17 +528,17 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre entidad<span class="required">*</span>
                         </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                      <input id="txt_IdModificarEntidar" type="type" name="txt_IdModificarEntidar" type="text">
+                                      <input id="txt_IdModificarEntidar"  name="txt_IdModificarEntidar" type="hidden">
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                               <input id="txt_NombreEntidadM" name="txt_NombreEntidadM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name"  required="required" type="text">
+                               <input id="txt_NombreEntidadM" name="txt_NombreEntidadM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="text">
                             </div>
                       </div>
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Denominacion entidad<span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Denominación entidad<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_DenominacionEntidadM" name="txt_DenominacionEntidadM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name"  required="required" type="text">
+                          <input id="txt_DenominacionEntidadM" name="txt_DenominacionEntidadM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"   required="required" type="text">
                         </div>
                       </div>
 
@@ -544,14 +546,16 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button type="submit" class="btn btn-primary">
-                             <span class="glyphicon glyphicon-remove"></span>
-                            Cancel
-                          </button>
+                          
                           <button  type="submit" class="btn btn-success">
                             <span class="glyphicon glyphicon-floppy-disk"></span>
                             Guardar
                           </button>
+                          <button type="submit" class="btn btn-danger" data-dismiss="modal">
+                             <span class="glyphicon glyphicon-remove"></span>
+                            Cancel
+                          </button>
+
                         </div>
                       </div>
                 </form><!-- FORMULARIO FIN PARA REGISTRA NUEVO SERVICIO ASOCIADO -->
@@ -559,7 +563,6 @@
         </div><!-- /.row -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
