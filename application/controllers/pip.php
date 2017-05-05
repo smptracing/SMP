@@ -456,12 +456,13 @@ class pip extends CI_Controller
             $flat = "LT";
             // $ID   = "0";
             $txt_IdFuenteFinanciamiento          = $this->input->post("txt_IdFuenteFinanciamiento");
+            $txt_IdRubroEjecucion                = $this->input->post("txt_IdRubroEjecucion");
             $txt_NombreFuenteFinanciamiento      = $this->input->post("txt_NombreFuenteFinanciamiento");
             $txt_AcronimoFuenteFinanciamiento    = $this->input->post("txt_AcronimoFuenteFinanciamiento");
             $txt_DescripcionFuenteFinanciamiento = $this->input->post("txt_DescripcionFuenteFinanciamiento");
             $user                                = "1";
 
-            $datos = $this->FuenteFinanciamiento_Model->get_FuenteFinanciamiento($flat, $txt_IdFuenteFinanciamiento, $txt_NombreFuenteFinanciamiento, $txt_AcronimoFuenteFinanciamiento, $txt_DescripcionFuenteFinanciamiento, $user);
+            $datos = $this->FuenteFinanciamiento_Model->get_FuenteFinanciamiento($flat, $txt_IdFuenteFinanciamiento, $txt_IdRubroEjecucion, $txt_NombreFuenteFinanciamiento, $txt_AcronimoFuenteFinanciamiento, $txt_DescripcionFuenteFinanciamiento, $user);
             echo json_encode($datos);
         } else {
             show_404();
@@ -474,11 +475,12 @@ class pip extends CI_Controller
         if ($this->input->is_ajax_request()) {
             $flat                                = "N";
             $txt_IdFuenteFinanciamiento          = "0";
+            $txt_IdRubroEjecucion                = $this->input->post("cbxRubroEjecucion");
             $txt_NombreFuenteFinanciamiento      = $this->input->post("txt_NombreFuenteFinanciamiento");
             $txt_AcronimoFuenteFinanciamiento    = $this->input->post("txt_AcronimoFuenteFinanciamiento");
             $txt_DescripcionFuenteFinanciamiento = $this->input->post("txt_DescripcionFuenteFinanciamiento");
             $user                                = "1";
-            if ($this->FuenteFinanciamiento_Model->AddFuenteFinanciamiento($flat, $txt_IdFuenteFinanciamiento, $txt_NombreFuenteFinanciamiento, $txt_AcronimoFuenteFinanciamiento, $txt_DescripcionFuenteFinanciamiento, $user) == false) {
+            if ($this->FuenteFinanciamiento_Model->AddFuenteFinanciamiento($flat, $txt_IdFuenteFinanciamiento, $txt_IdRubroEjecucion, $txt_NombreFuenteFinanciamiento, $txt_AcronimoFuenteFinanciamiento, $txt_DescripcionFuenteFinanciamiento, $user) == false) {
                 echo "1";
             } else {
                 echo "2";
@@ -493,18 +495,18 @@ class pip extends CI_Controller
     public function EliminarFuenteFinanciamiento()
     {
         if ($this->input->is_ajax_request()) {
-            $flat = "E";
-            // $ID   = "0";
-            $txt_IdFuenteFinanciamiento          = $this->input->post("IDFFTO");
+            $flat                                = "E";
+            $txt_IdFuenteFinanciamiento          = $this->input->post("idffto");
+            $txt_IdRubroEjecucion                = $this->input->post("id_rubro_ejec");
             $txt_NombreFuenteFinanciamiento      = "NULL";
             $txt_AcronimoFuenteFinanciamiento    = "NULL";
             $txt_DescripcionFuenteFinanciamiento = "NULL";
             $user                                = "1";
 
-            if ($this->FuenteFinanciamiento_Model->EliminarFuenteFinanciamiento($flat, $txt_IdFuenteFinanciamiento, $txt_NombreFuenteFinanciamiento, $txt_AcronimoFuenteFinanciamiento, $txt_DescripcionFuenteFinanciamiento, $user) == true) {
-                echo "No Se Elimino  ";
+            if ($this->FuenteFinanciamiento_Model->EliminarFuenteFinanciamiento($flat, $txt_IdFuenteFinanciamiento, $txt_IdRubroEjecucion, $txt_NombreFuenteFinanciamiento, $txt_AcronimoFuenteFinanciamiento, $txt_DescripcionFuenteFinanciamiento, $user) == false) {
+                echo "Se Elimino  ";
             } else {
-                echo " se Elimino ";
+                echo "NO se Elimino ";
             }
 
         } else {
@@ -519,11 +521,12 @@ class pip extends CI_Controller
         if ($this->input->is_ajax_request()) {
             $flat                                 = "M";
             $txt_IdFuenteFinanciamientoM          = $this->input->post("txt_IdFuenteFinanciamientoM");
+            $txt_IdRubroEjecucionM                = $this->input->post("cbxRubroEjecucionM");
             $txt_NombreFuenteFinanciamientoM      = $this->input->post("txt_NombreFuenteFinanciamientoM");
             $txt_AcronimoFuenteFinanciamientoM    = $this->input->post("txt_AcronimoFuenteFinanciamientoM");
             $txt_DescripcionFuenteFinanciamientoM = $this->input->post("txt_DescripcionFuenteFinanciamientoM");
             $user                                 = "1";
-            if ($this->FuenteFinanciamiento_Model->UpdateFuenteFinanciamiento($flat, $txt_IdFuenteFinanciamientoM, $txt_NombreFuenteFinanciamientoM, $txt_AcronimoFuenteFinanciamientoM, $txt_DescripcionFuenteFinanciamientoM, $user) == true) {
+            if ($this->FuenteFinanciamiento_Model->UpdateFuenteFinanciamiento($flat, $txt_IdFuenteFinanciamientoM, $txt_IdRubroEjecucionM, $txt_NombreFuenteFinanciamientoM, $txt_AcronimoFuenteFinanciamientoM, $txt_DescripcionFuenteFinanciamientoM, $user) == true) {
                 echo "NO se Actualizo....";
             } else {
                 echo "se Actualizo..........";

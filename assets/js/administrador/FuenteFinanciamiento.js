@@ -3,6 +3,14 @@ $(document).on("ready" ,function(){
                 listaFuenteFinanciamiento();/*llamar a mi datatablet listar funcion*/
               //abrir el modal para registrar
 
+//Inicio cargar combo ede rubro de ejecucion
+             $("#btn-FuenteFinanciamiento").click(function()//para que cargue el como una vez echo click sino repetira datos
+                    {
+                        //alert('hola');
+                     listaComboRubroEjecucion();//para llenar el combo de agregar division funcional
+                    
+                    });
+//fin cargar combo   de rubro de ejecucion
 
 //REGISTARAR NUEVA fuente financiamiento
    $("#form-AddFuenteFinanciamiento").submit(function(event)
@@ -15,7 +23,7 @@ $(document).on("ready" ,function(){
                           success:function(resp){
                            //alert(resp);
                              if (resp=='1') {
-                             swal("","se registro...", "success");
+                             swal("","se registroPppp...", "success");
                              formReset();
                            }
                             if (resp=='2') {
@@ -66,12 +74,12 @@ $(document).on("ready" ,function(){
 									"dataSrc":""
                                     },
                                 "columns":[
-                                   {"defaultContent":" <label class='pos-rel'><input type='checkbox' class='ace' /><span class='lbl'></span></label>"},
-                                   
-                                   {"data":"IDFFTO"},
-                                    {"data":"NOMBREFFTO"},
-									{"data":"ACRONIMOFFTO"},
-							        {"data":"DESCRIPCIONFFTO"},
+                                  {"defaultContent":" <label class='pos-rel'><input type='checkbox' class='ace' /><span class='lbl'></span></label>"},
+                                  {"data":"idffto"},
+                                  {"data":"nombre_rubro_ejec"},
+                                  {"data":"nombreffto"},
+									                {"data":"acronimoffto"},
+							                    {"data":"descripcionffto"},
                                   {"defaultContent":"<button type='button' class='ver btn btn-info btn-xs' data-toggle='modal' data-target='#ver'><span class='glyphicon glyphicon-zoom-in' aria-hidden='true'></span></button><button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaEditFuenteFinanciamiento'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><span class='glyphicon glyphicon-trash' aria-hidden='true'></span></button>"}
                                ],
 
@@ -124,17 +132,20 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
                 var  Fuente_FinanciamientoData=function(tbody,myTable){
                     $(tbody).on("click","button.editar",function(){
                         var data=myTable.row( $(this).parents("tr")).data();
-                        var txt_IdFuenteFinanciamientoM=$('#txt_IdFuenteFinanciamientoM').val(data.IDFFTO);
-                        var txt_NombreFuenteFinanciamientoM=$('#txt_NombreFuenteFinanciamientoM').val(data.NOMBREFFTO);
-                        var txt_AcronimoFuenteFinanciamientoM=$('#txt_AcronimoFuenteFinanciamientoM').val(data.ACRONIMOFFTO);
-                        var txt_DescripcionFuenteFinanciamientoM=$('#txt_DescripcionFuenteFinanciamientoM').val(data.DESCRIPCIONFFTO);
-
+                        listaComboRubroEjecucion();//ACTUALIZAR EL COMBOX EN EL MODAL MODIFICAR
+                        var txt_IdFuenteFinanciamientoM=$('#txt_IdFuenteFinanciamientoM').val(data.idffto);
+                        var cbxRubroEjecucionM=$('#cbxRubroEjecucionM').val(data.id_rubro_ejec);
+                        var txt_NombreFuenteFinanciamientoM=$('#txt_NombreFuenteFinanciamientoM').val(data.nombreffto);
+                        var txt_AcronimoFuenteFinanciamientoM=$('#txt_AcronimoFuenteFinanciamientoM').val(data.acronimoffto);
+                        var txt_DescripcionFuenteFinanciamientoM=$('#txt_DescripcionFuenteFinanciamientoM').val(data.descripcionffto);
                     });
                 }
-var EliminarFuente_FinanciamientoData=function(tbody,myTable){
+         
+                var EliminarFuente_FinanciamientoData=function(tbody,myTable){
                   $(tbody).on("click","button.eliminar",function(){
                         var data=myTable.row( $(this).parents("tr")).data();
-                        var IDFFTO=data.IDFFTO;
+                        var idffto=data.idffto;
+                        var id_rubro_ejec=data.id_rubro_ejec;
                         console.log(data);
                          swal({
                                 title: "Desea eliminar ?",
@@ -149,7 +160,8 @@ var EliminarFuente_FinanciamientoData=function(tbody,myTable){
                                     $.ajax({
                                           url:base_url+"index.php/pip/EliminarFuenteFinanciamiento",
                                           type:"POST",
-                                          data:{IDFFTO:IDFFTO},
+                                          data:{idffto:idffto,
+                                          id_rubro_ejec:id_rubro_ejec},
                                           success:function(respuesta){
                                             //alert(respuesta);
                                             swal("Deleted!", "Se elimino corectamente .", "success");
@@ -160,6 +172,28 @@ var EliminarFuente_FinanciamientoData=function(tbody,myTable){
                               });
                     });
                 }
+        //TRAER DATOS EN UN COMBO DE RUBRO DE EJECUCION
+                var listaComboRubroEjecucion=function()
+                {
+                    html="";
+                    $("#cbxRubroEjecucion").html(html); //nombre del selectpicker RUBRO DE EJECUCION
+                    event.preventDefault(); 
+                    $.ajax({
+                        "url":base_url +"index.php/MRubroEjecucion/GetRubroE",
+                        type:"POST",
+                        success:function(respuesta){
+                           // alert(respuesta);
+                         var registros = eval(respuesta);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option value="+registros[i]["id_rubro_ejec"]+"> "+ registros[i]["nombre_rubro_ejec"]+" </option>";   
+                            };
+                            $("#cbxRubroEjecucion").html(html);//
+                            $("#cbxRubroEjecucionM").html(html);//
+                            $('.selectpicker').selectpicker('refresh'); 
+                        }
+                    });
+                }
+          //FIN TRAER DATOS EN UN COMBO DE RUBRO EJECUCION
 
 
                 

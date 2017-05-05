@@ -383,7 +383,7 @@
                                            <div class="row">
                                               <div class="col-md-12 col-sm-12 col-xs-12">
                                               <div class="x_panel">
-                                                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegFuenteFinanciamiento" >
+                                                   <button type="button" id="btn-FuenteFinanciamiento" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegFuenteFinanciamiento" >
                                                           <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Nuevo
                                                     </button>
                                                     <div class="x_title">
@@ -414,6 +414,7 @@
                                                                           </label>
                                                                          </th>
                                                                          <th>ID</th>
+                                                                         <th>RUBRO</th>
                                                                          <th>NOMBRE FFTO</th>
                                                                          <th >ACRONIMO FFTO</th>
                                                                          <th class="hidden-480">DESCRIPCION</th>
@@ -457,12 +458,10 @@
                   <form class="form-horizontal " id="form-EditNaturalezaInversion"   action="<?php echo base_url(); ?>pip/get_NaturalezaInversion" method="POST" >
 
                   <div class="item form-group">
-                       <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">ID Naturaleza <span class="required">*</span>
-                        </label>
+                      <!-- <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">ID Naturaleza <span class="required">*</span>
+                        </label>-->
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_IdNaturalezaM" name="txt_IdNaturalezaM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required"   type="text" >
-
-
+                          <input id="txt_IdNaturalezaM" name="txt_IdNaturalezaM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"     type="hidden" >
                         </div>
                       </div>
 
@@ -470,25 +469,25 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre Naturaleza <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_NombreNaturalezaM" name="txt_NombreNaturalezaM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Nombre del Naturaleza" required="required" type="text" >
+                          <input  id="txt_NombreNaturalezaM" name="txt_NombreNaturalezaM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Nombre del Naturaleza" required="required" type="text" >
                         </div>
                       </div>
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Descripcion Naturaleza<span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Descripcion Naturaleza<span class="required"></span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <textarea id="txt_DescripcionNaturalezaM" name="txt_DescripcionNaturalezaM" required="required"  placeholder="Descripcion Naturaleza" class="form-control col-md-7 col-xs-12"></textarea>
+                          <textarea id="txt_DescripcionNaturalezaM" name="txt_DescripcionNaturalezaM"  placeholder="Descripcion Naturaleza" class="form-control col-md-7 col-xs-12"></textarea>
                         </div>
                       </div>
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button type="reset" value="Borrar información"  class="btn btn-warning"   >
+                        <button id="send" type="submit" class="btn btn-success" >
+                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+                           Guardar</button>
+                          <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
                           <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
                            Cancelar</button>
-                          <button id="send" type="submit" class="btn btn-success" >
-                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
-                           Aceptar</button>
                         </div>
                       </div>
                     </form>
@@ -496,9 +495,7 @@
                  </div><!-- /.row -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">
-          <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-          Cerrar</button>
+
         </div>
       </div>
     </div>
@@ -535,21 +532,21 @@
                         </div>
                       </div>
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Descripcion Naturaleza<span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Descripcion Naturaleza<span class="required"></span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <textarea id="txt_DescripcionNaturaleza" name="txt_DescripcionNaturaleza" required="required"  placeholder="Descripcion Naturaleza" class="form-control col-md-7 col-xs-12"></textarea>
+                          <textarea id="txt_DescripcionNaturaleza" name="txt_DescripcionNaturaleza"   placeholder="Descripcion Naturaleza" class="form-control col-md-7 col-xs-12"></textarea>
                         </div>
                       </div>
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button type="reset" value="Borrar información"  class="btn btn-warning"   >
+                        <button id="send" type="submit" class="btn btn-success" >
+                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+                           Guardar</button>
+                          <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
                           <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
                            Cancelar</button>
-                          <button id="send" type="submit" class="btn btn-success" >
-                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
-                           Aceptar</button>
                         </div>
                       </div>
                     </form>
@@ -557,9 +554,7 @@
                  </div><!-- /.row -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">
-          <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-          Cerrar</button>
+
         </div>
       </div>
     </div>
@@ -597,12 +592,12 @@
                            <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button type="reset" value="Borrar información"  class="btn btn-warning"   >
-                          <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
-                           Cancelar</button>
                           <button id="send" type="submit" class="btn btn-success" >
                           <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
-                           Aceptar</button>
+                           Guardar</button>
+                          <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
+                          <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
+                           Cancelar</button>
                         </div>
                       </div>
                     </form>
@@ -610,9 +605,7 @@
                  </div><!-- /.row -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">
-          <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-          Cerrar</button>
+
         </div>
       </div>
     </div>
@@ -660,12 +653,12 @@
                            <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button type="reset" value="Borrar información"  class="btn btn-warning"   >
+                        <button id="send" type="submit" class="btn btn-success" >
+                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+                           Guardar</button>
+                          <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
                           <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
                            Cancelar</button>
-                          <button id="send" type="submit" class="btn btn-success" >
-                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
-                           Aceptar</button>
                         </div>
                       </div>
                     </form>
@@ -673,9 +666,7 @@
                  </div><!-- /.row -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">
-          <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-          Cerrar</button>
+
         </div>
       </div>
     </div>
@@ -713,12 +704,12 @@
                            <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button type="reset" value="Borrar información"  class="btn btn-warning"   >
+                        <button id="send" type="submit" class="btn btn-success" >
+                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+                           Guardar</button>
+                          <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
                           <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
                            Cancelar</button>
-                          <button id="send" type="submit" class="btn btn-success" >
-                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
-                           Aceptar</button>
                         </div>
                       </div>
                     </form>
@@ -726,9 +717,6 @@
                  </div><!-- /.row -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">
-          <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-          Cerrar</button>
         </div>
       </div>
     </div>
@@ -776,12 +764,12 @@
                            <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button type="reset" value="Borrar información"  class="btn btn-warning"   >
+                        <button id="send" type="submit" class="btn btn-success" >
+                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+                           Guardar</button>
+                          <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
                           <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
                            Cancelar</button>
-                          <button id="send" type="submit" class="btn btn-success" >
-                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
-                           Aceptar</button>
                         </div>
                       </div>
                     </form>
@@ -789,9 +777,7 @@
                  </div><!-- /.row -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">
-          <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-          Cerrar</button>
+
         </div>
       </div>
     </div>
@@ -829,12 +815,12 @@
                            <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button type="reset" value="Borrar información"  class="btn btn-warning"   >
+                        <button id="send" type="submit" class="btn btn-success" >
+                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+                           Guardar</button>
+                          <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
                           <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
                            Cancelar</button>
-                          <button id="send" type="submit" class="btn btn-success" >
-                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
-                           Aceptar</button>
                         </div>
                       </div>
                     </form>
@@ -842,9 +828,7 @@
                  </div><!-- /.row -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">
-          <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-          Cerrar</button>
+
         </div>
       </div>
     </div>
@@ -889,15 +873,15 @@
                           <input id="txt_DescripcionEstadoCicloInversionM" name="txt_DescripcionEstadoCicloInversionM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Descripccion " required="required" type="text">
                         </div>
                       </div>
-                           <div class="ln_solid"></div>
+                               <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button type="reset" value="Borrar información"  class="btn btn-warning"   >
+                        <button id="send" type="submit" class="btn btn-success" >
+                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+                           Guardar</button>
+                          <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
                           <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
                            Cancelar</button>
-                          <button id="send" type="submit" class="btn btn-success" >
-                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
-                           Aceptar</button>
                         </div>
                       </div>
                     </form>
@@ -905,9 +889,7 @@
                  </div><!-- /.row -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">
-          <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-          Cerrar</button>
+
         </div>
       </div>
     </div>
@@ -946,12 +928,12 @@
                            <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button type="reset" value="Borrar información"  class="btn btn-warning"   >
-                          <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
-                           Cancelar</button>
                           <button id="send" type="submit" class="btn btn-success" >
                           <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
-                           Aceptar</button>
+                           Guardar</button>
+                          <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
+                          <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
+                           Cancelar</button>
                         </div>
                       </div>
                     </form>
@@ -959,9 +941,7 @@
                  </div><!-- /.row -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">
-          <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-          Cerrar</button>
+
         </div>
       </div>
     </div>
@@ -1009,12 +989,12 @@
                            <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button type="reset" value="Borrar información"  class="btn btn-warning"   >
+                       <button id="send" type="submit" class="btn btn-success" >
+                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+                           Guardar</button>
+                          <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
                           <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
                            Cancelar</button>
-                          <button id="send" type="submit" class="btn btn-success" >
-                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
-                           Aceptar</button>
                         </div>
                       </div>
                     </form>
@@ -1022,9 +1002,7 @@
                  </div><!-- /.row -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">
-          <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-          Cerrar</button>
+
         </div>
       </div>
     </div>
@@ -1062,35 +1040,42 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Acronimo  <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_AcronimoFuenteFinanciamiento" name="txt_AcronimoFuenteFinanciamiento" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Nombre " required="required" type="text">
+                          <input id="txt_AcronimoFuenteFinanciamiento" name="txt_AcronimoFuenteFinanciamiento" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Acronimo " required="required" type="text">
                         </div>
                       </div>
                        <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Descripción  <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Descripción  <span class="required"></span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input id="txt_DescripcionFuenteFinanciamiento" name="txt_DescripcionFuenteFinanciamiento" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Descripción" required="required" type="text">
                         </div>
                       </div>
-                           <div class="ln_solid"></div>
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox">Rubro<span class="required">*</span>
+                            </label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                              <select id="cbxRubroEjecucion" name="cbxRubroEjecucion" class="selectpicker" data-live-search="true"  title="Buscar Funcion...">
+                              </select>
+                          </div>
+                       </div>
+                        <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button type="reset" value="Borrar información"  class="btn btn-warning"   >
+                        <button id="send" type="submit" class="btn btn-success" >
+                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+                           Guardar</button>
+                          <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
                           <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
                            Cancelar</button>
-                          <button id="send" type="submit" class="btn btn-success" >
-                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
-                           Aceptar</button>
+
                         </div>
                       </div>
                     </form>
                         </div><!-- /.span -->
                  </div><!-- /.row -->
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">
-          <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-          Cerrar</button>
+       <div class="modal-footer">
+          <center>*  Son campos obligatorios.</center>
         </div>
       </div>
     </div>
@@ -1113,14 +1098,10 @@
               <form class="form-horizontal " id="form-EditFuenteFinanciamiento"   action="<?php echo base_url(); ?>pip/get_FuenteFinanciamiento" method="POST" >
 
                <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">ID FFTO <span class="required">*</span>
-                        </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="txt_IdFuenteFinanciamientoM" name="txt_IdFuenteFinanciamientoM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="text">
+                        <input id="txt_IdFuenteFinanciamientoM" name="txt_IdFuenteFinanciamientoM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
                         </div>
                       </div>
-
-
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre FFTO <span class="required">*</span>
                         </label>
@@ -1142,15 +1123,25 @@
                           <input id="txt_DescripcionFuenteFinanciamientoM" name="txt_DescripcionFuenteFinanciamientoM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Descripccion " required="required" type="text">
                         </div>
                       </div>
+                       <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox">Rubro<span class="required">*</span>
+                            </label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                              <select id="cbxRubroEjecucionM" name="cbxRubroEjecucionM" required="required" class="selectpicker" data-live-search="true"  title="Buscar Funcion...">
+                              </select>
+                          </div>
+                       </div>
+
                            <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button type="reset" value="Borrar información"  class="btn btn-warning"   >
+                        <button id="send" type="submit" class="btn btn-success" >
+                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+                           Guardar</button>
+                          <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
                           <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
                            Cancelar</button>
-                          <button id="send" type="submit" class="btn btn-success" >
-                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
-                           Aceptar</button>
+
                         </div>
                       </div>
                     </form>
@@ -1158,9 +1149,7 @@
                  </div><!-- /.row -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">
-          <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-          Cerrar</button>
+
         </div>
       </div>
     </div>

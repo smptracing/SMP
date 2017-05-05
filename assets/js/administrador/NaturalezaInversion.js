@@ -14,7 +14,7 @@
                           data:$(this).serialize(),
                           success:function(resp){
                            //alert(resp);
-                           if (resp=='1') {
+                             if (resp=='1') {
                              swal("","se registro...", "success");
                              formReset();
                            }
@@ -27,7 +27,10 @@
                       });
                   });
 
+
+
       //limpiar campos
+
           function formReset()
           {
           document.getElementById("form-AddNaturalezaInversion").reset();
