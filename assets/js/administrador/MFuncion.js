@@ -2,6 +2,7 @@
                 //alert("sdas");
                //lista();
             //division funcional
+
                 listaFuncion();/*llamar a mi datatablet listar funcion*/
                 $("#btn_Nuevadivision").click(function()//para que cargue el como una vez echo click sino repetira datos
                     {

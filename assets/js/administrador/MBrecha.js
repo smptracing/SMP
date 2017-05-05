@@ -1,17 +1,17 @@
  $(document).on("ready" ,function(){
-                
+
                 listaBrecha();//  LLamar al metodo para listar las brechas
                 listaIndicador();
                 listaIndicadorCombo();
-
             //Inicio cargar combo
+
              $("#btn-NuevoBrechaIndicador").click(function()//para que cargue el como una vez echo click sino repetira datos
                     {
                         //alert('hola');
                      listaBrechaCombo();//para llenar el combo de agregar division funcional
                     
                     });
-
+             
             //fin cargar combo   
                 //AGREGAR UNA NUEVA BRECHA
                 $("#form-addBrecha").submit(function(event)

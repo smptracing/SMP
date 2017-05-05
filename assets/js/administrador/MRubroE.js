@@ -68,7 +68,7 @@
                                     },
        //para llenado y busqueda por todo los campos
                                 "columns":[
-                                    {"data":"id_rubro_ejecucion"},
+                                    {"data":"id_rubro_ejec"},
                                     {"data":"nombre_rubro_ejec"},
                                     {"data":"descripcion_rubro_ejec"},
                                     {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaModificarRubroE'><i class='ace-icon fa fa-pencil-square-o bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
