@@ -22,12 +22,12 @@ $(document).on("ready" ,function(){
                           data:$(this).serialize(),
                           success:function(resp){
                            //alert(resp);
-                             if (resp=='1') {
-                             swal("","se registroPppp...", "success");
+                            if (resp=='1') {
+                             swal("Se registró...","", "success");
                              formReset();
                            }
                             if (resp=='2') {
-                             swal("","NO se registro...", "error");
+                             swal("NO se registró...","", "error");
                            }
                           $('#dynamic-table-FuenteFinanciamiento').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
                              formReset();
@@ -51,7 +51,7 @@ $(document).on("ready" ,function(){
                           data:$(this).serialize(),
                           success:function(resp){
                            //alert(resp);
-                           swal("",resp, "success");
+                           swal(resp,"", "success");
                           $('#dynamic-table-FuenteFinanciamiento').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
                              formReset();
                          }
@@ -80,7 +80,7 @@ $(document).on("ready" ,function(){
                                   {"data":"nombreffto"},
 									                {"data":"acronimoffto"},
 							                    {"data":"descripcionffto"},
-                                  {"defaultContent":"<button type='button' class='ver btn btn-info btn-xs' data-toggle='modal' data-target='#ver'><span class='glyphicon glyphicon-zoom-in' aria-hidden='true'></span></button><button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaEditFuenteFinanciamiento'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><span class='glyphicon glyphicon-trash' aria-hidden='true'></span></button>"}
+                                  {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaEditFuenteFinanciamiento'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><span class='glyphicon glyphicon-trash' aria-hidden='true'></span></button>"}
                                ],
 
                                 "language":idioma_espanol
@@ -164,7 +164,7 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
                                           id_rubro_ejec:id_rubro_ejec},
                                           success:function(respuesta){
                                             //alert(respuesta);
-                                            swal("Deleted!", "Se elimino corectamente .", "success");
+                                            swal("Se eliminó corectamente.", "", "success");
                                             $('#dynamic-table-FuenteFinanciamiento').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
 
                                           }

@@ -17,9 +17,10 @@ public function __construct(){
 	 {
 	    if ($this->input->is_ajax_request()) 
 	    {
+	    $cbxServPubAsoc=$this->input->post("cbxServPubAsoc");
 	      $txt_NombreBrecha =$this->input->post("txt_NombreBrecha");
 	      $txtArea_DescBrecha =$this->input->post("txtArea_DescBrecha");
-	      if($this->Model_Brecha->AddBrecha($txt_NombreBrecha,$txtArea_DescBrecha) == true)
+	      if($this->Model_Brecha->AddBrecha($cbxServPubAsoc,$txt_NombreBrecha,$txtArea_DescBrecha) == true)
 	        echo "No se añadio una  Brecha";
 	      else
 	        echo "Se añadio  una Brecha";  
@@ -50,9 +51,10 @@ public function __construct(){
 	    if ($this->input->is_ajax_request()) 
 	    {
 		      $txt_IdBrechaModif =$this->input->post("txt_IdBrechaModif");
+		      $id_ServPubAsoc=$this->input->post("cbxSerPubAsocModificar");
 		      $txt_NombreBrechaU =$this->input->post("txt_NombreBrechaU");
 		      $txtArea_DescBrechaU =$this->input->post("txtArea_DescBrechaU");
-		      if($this->Model_Brecha->UpdateBrecha($txt_IdBrechaModif,$txt_NombreBrechaU,$txtArea_DescBrechaU) == false)
+		      if($this->Model_Brecha->UpdateBrecha($txt_IdBrechaModif,$id_ServPubAsoc,$txt_NombreBrechaU,$txtArea_DescBrechaU) == false)
 		        echo "Se actualizo correctamente la brecha";
 		      else
 		        echo "No Se actualizo correctamente la brecha"; 
@@ -143,6 +145,49 @@ public function __construct(){
  	 }
 //FIN ACTUALIZAR O MODIFICAR DATOS DEL INDICADOR
 //----------------FIN MANTENIMIENTO DE LOS DATOS DE INDICADOR-------------------
+
+//----------------MANTENIMIENTO DE LOS DATOS DE BRECHAS-INDICADOR---------------------	
+
+/*INSERTAR BRECHA-INDICADOR*/
+	 function AddBrechaIndicador()
+	 {
+	    if ($this->input->is_ajax_request()) 
+	    {
+	      $cbxNombrebrecha=$this->input->post("cbxNombrebrecha");
+	      $cbxNombreIndicador =$this->input->post("cbxNombreIndicador");
+	      $datefechaindicador =$this->input->post("datefechaindicador");
+	      $txtvalorindicador=$this->input->post("txtvalorindicador");
+	      $txtbaseindicador =$this->input->post("txtbaseindicador");
+	     if($this->Model_Brecha->AddBrechaIndicador($cbxNombrebrecha,$cbxNombreIndicador,$datefechaindicador,$txtvalorindicador,$txtbaseindicador) == false)
+	        echo "Se añadio una brecha-indicador";
+	      	else
+	        echo "No se añadio una brecha-indicador"; 
+	    }
+	    else
+	    {
+	      show_404();
+	    }
+
+ 	 }
+/*INSERTAR BRECHA-INDICAOR*/
+
+/* LISTAR BRECHA-INDICADOR*/
+	 function GetBrechaIndicador()
+	{
+		if ($this->input->is_ajax_request()) 
+		{
+		$datos=$this->Model_Brecha->GetBrechaIndicador();
+		echo json_encode($datos);
+		}
+		else
+		{
+			show_404();
+		}
+	}
+//FIN LISTAR BRECHA-INDICADOR
+
+//----------------MANTENIMIENTO DE LOS DATOS DE BRECHAS-INDICADOR---------------------	
+
 	function _load_layout($template)
     {
       $this->load->view('layout/header');

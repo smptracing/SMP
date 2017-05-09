@@ -9,9 +9,9 @@ class Model_Brecha extends CI_Model
           }
 //------------------METODOS DE LA BRECHA-------------------
 //AGREGAR UNA BRECHA
-      function AddBrecha($txt_NombreBrecha, $txtArea_DescBrecha)
+      function AddBrecha($cbxServPubAsoc,$txt_NombreBrecha, $txtArea_DescBrecha)
         {
-           $this->db->query("execute sp_Brecha_c '".$txt_NombreBrecha."','".$txtArea_DescBrecha."'");
+           $this->db->query("execute sp_Brecha_c '".$cbxServPubAsoc."','".$txt_NombreBrecha."','".$txtArea_DescBrecha."'");
             if ($this->db->affected_rows() > 0) 
               {
                 return true;
@@ -38,9 +38,9 @@ class Model_Brecha extends CI_Model
 //FIN LISTAR UNA BRECHA
 
 //MODIFICAR UNA BRECHA
-         function UpdateBrecha($id_brecha,$nombre_brecha,$desc_brecha)
+         function UpdateBrecha($id_brecha,$id_ser_pub_asoc,$nombre_brecha,$desc_brecha)
         {
-           $this->db->query("execute sp_Brecha_u '".$id_brecha."','".$nombre_brecha."','".$desc_brecha."' ");
+           $this->db->query("execute sp_Brecha_u '".$id_brecha."','".$id_ser_pub_asoc."','".$nombre_brecha."','".$desc_brecha."' ");
             if ($this->db->affected_rows() > 0) 
               {
                 return true;
@@ -115,4 +115,35 @@ class Model_Brecha extends CI_Model
         }
 //FIN MODIFICAR INDICADOR
 //------------------FIN METODOS DEL INDICADOR----------------------
+
+//------------------METODOS DE LA BRECHA-INDICADOR-------------------
+//AGREGAR UNA BRECHA
+      function AddBrechaIndicador($cbxNombrebrecha,$cbxNombreIndicador, $datefechaindicador,$txtvalorindicador, $txtbaseindicador)
+        {
+           $this->db->query("execute sp_BrechaIndicador_c'".$cbxNombrebrecha."','".$cbxNombreIndicador."','".$datefechaindicador."','".$txtvalorindicador."','".$txtbaseindicador."'");
+            if ($this->db->affected_rows() > 0) 
+              {
+                return true;
+              }
+              else
+              {
+                return false;
+              }
+        }
+//FIN LISTAR UNA BRECHA-INDICADOR
+
+        //LISTAR UN INDICADOR
+      function GetBrechaIndicador()
+        {
+            $brechaindicador=$this->db->query("execute sp_BrechaIndicador_r"); //PROCEDIMIENTO DE LISTAR BRECHA E INDICADORES
+            if($brechaindicador->num_rows()>0)
+             {
+              return $brechaindicador->result();
+             }else
+             {
+              return false;
+             }
+        } 
+//FIN LISTAR UN INDICADOR
+//------------------FIN METODOS DE LA BRECHA-INDICADOR----        
 }

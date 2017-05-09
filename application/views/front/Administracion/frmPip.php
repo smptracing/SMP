@@ -584,10 +584,10 @@
                         </div>
                       </div>
                        <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Descripción  <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Descripción
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_DescripcionTipologiaInversion" name="txt_DescripcionTipologiaInversion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Descripción" required="required" type="text">
+                          <input id="txt_DescripcionTipologiaInversion" name="txt_DescripcionTipologiaInversion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Descripción"  type="text">
                         </div>
                       </div>
                            <div class="ln_solid"></div>
@@ -645,10 +645,10 @@
                         </div>
                       </div>
                        <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Descripccion  <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Descripccion
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_DescripcionTipologiaInversionM" name="txt_DescripcionTipologiaInversionM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Descripccion " required="required" type="text">
+                          <input id="txt_DescripcionTipologiaInversionM" name="txt_DescripcionTipologiaInversionM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Descripccion " type="text">
                         </div>
                       </div>
                            <div class="ln_solid"></div>
@@ -696,10 +696,10 @@
                         </div>
                       </div>
                        <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Descripción  <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Descripción
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_DescripcionTipoInversion" name="txt_DescripcionTipoInversion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Descripción" required="required" type="text">
+                          <input id="txt_DescripcionTipoInversion" name="txt_DescripcionTipoInversion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Descripción"  type="text">
                         </div>
                       </div>
                            <div class="ln_solid"></div>
@@ -756,10 +756,10 @@
                         </div>
                       </div>
                        <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Descripccion  <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Descripcción
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_DescripcionTipoInversionM" name="txt_DescripcionTipoInversionM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Descripccion " required="required" type="text">
+                          <input id="txt_DescripcionTipoInversionM" name="txt_DescripcionTipoInversionM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Descripccion" type="text">
                         </div>
                       </div>
                            <div class="ln_solid"></div>
@@ -807,10 +807,10 @@
                         </div>
                       </div>
                        <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Descripción  <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Descripción
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_DescripcionEstadoCicloInversion" name="txt_DescripcionEstadoCicloInversion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Descripción" required="required" type="text">
+                          <input id="txt_DescripcionEstadoCicloInversion" name="txt_DescripcionEstadoCicloInversion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Descripción"  type="text">
                         </div>
                       </div>
                            <div class="ln_solid"></div>
@@ -852,26 +852,24 @@
               <form class="form-horizontal " id="form-EditEstadoCicloInversion"   action="<?php echo base_url(); ?>pip/get_EstadoCicloInversion" method="POST" >
 
                <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">ID <span class="required">*</span>
-                        </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="txt_IdEstadoCicloInversionM" name="txt_IdEstadoCicloInversionM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="text">
+                        <input id="txt_IdEstadoCicloInversionM" name="txt_IdEstadoCicloInversionM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
                         </div>
                       </div>
 
 
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre  <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input id="txt_NombreEstadoCicloInversionM" name="txt_NombreEstadoCicloInversionM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Nombre " required="required" type="text">
                         </div>
                       </div>
                        <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Descripccion  <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Descripccion
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_DescripcionEstadoCicloInversionM" name="txt_DescripcionEstadoCicloInversionM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Descripccion " required="required" type="text">
+                          <input id="txt_DescripcionEstadoCicloInversionM" name="txt_DescripcionEstadoCicloInversionM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Descripccion " type="text">
                         </div>
                       </div>
                                <div class="ln_solid"></div>
@@ -920,10 +918,10 @@
                         </div>
                       </div>
                        <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Descripción  <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Descripción
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_DescripcionNivelGobierno" name="txt_DescripcionNivelGobierno" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Descripción" required="required" type="text">
+                          <input id="txt_DescripcionNivelGobierno" name="txt_DescripcionNivelGobierno" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Descripción" type="text">
                         </div>
                       </div>
                            <div class="ln_solid"></div>
@@ -965,10 +963,9 @@
               <form class="form-horizontal " id="form-EditNivelGobierno"   action="<?php echo base_url(); ?>pip/get_NivelGobierno" method="POST" >
 
                <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">ID <span class="required">*</span>
-                        </label>
+
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="txt_IdNivelGobiernoM" name="txt_IdNivelGobiernoM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="text">
+                        <input id="txt_IdNivelGobiernoM" name="txt_IdNivelGobiernoM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
                         </div>
                       </div>
 
@@ -981,10 +978,10 @@
                         </div>
                       </div>
                        <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Descripccion  <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Descripccion
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_DescripcionNivelGobiernoM" name="txt_DescripcionNivelGobiernoM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Descripccion " required="required" type="text">
+                          <input id="txt_DescripcionNivelGobiernoM" name="txt_DescripcionNivelGobiernoM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Descripccion "  type="text">
                         </div>
                       </div>
                            <div class="ln_solid"></div>
@@ -1038,24 +1035,24 @@
                         </div>
                       </div>
                           <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Acronimo  <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Acronimo
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_AcronimoFuenteFinanciamiento" name="txt_AcronimoFuenteFinanciamiento" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Acronimo " required="required" type="text">
+                          <input id="txt_AcronimoFuenteFinanciamiento" name="txt_AcronimoFuenteFinanciamiento" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Acronimo " type="text">
                         </div>
                       </div>
                        <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Descripción  <span class="required"></span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Descripción
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_DescripcionFuenteFinanciamiento" name="txt_DescripcionFuenteFinanciamiento" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Descripción" required="required" type="text">
+                          <input id="txt_DescripcionFuenteFinanciamiento" name="txt_DescripcionFuenteFinanciamiento" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Descripción"  type="text">
                         </div>
                       </div>
                         <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox">Rubro<span class="required">*</span>
                             </label>
                           <div class="col-md-6 col-sm-6 col-xs-12">
-                              <select id="cbxRubroEjecucion" name="cbxRubroEjecucion" class="selectpicker" data-live-search="true"  title="Buscar Funcion...">
+                              <select id="cbxRubroEjecucion" name="cbxRubroEjecucion" class="selectpicker" data-live-search="true" required="required" title="Buscar Funcion...">
                               </select>
                           </div>
                        </div>

@@ -15,11 +15,11 @@ $(document).on("ready" ,function(){
                           success:function(resp){
                            //alert(resp);
                            if (resp=='1') {
-                             swal("","se registro...", "success");
+                             swal("se registró...","", "success");
                              formReset();
                            }
                             if (resp=='2') {
-                             swal("","NO se registro...", "error");
+                             swal("NO se registró...","", "error");
                            }
                           $('#dynamic-table-EstadoCicloInversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
                              formReset();
@@ -43,7 +43,7 @@ $(document).on("ready" ,function(){
                           data:$(this).serialize(),
                           success:function(resp){
                            //alert(resp);
-                           swal("",resp, "success");
+                           swal(resp,"", "success");
                           $('#dynamic-table-EstadoCicloInversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
                              formReset();
                          }
@@ -66,11 +66,11 @@ $(document).on("ready" ,function(){
 									"dataSrc":""
                                     },
                                 "columns":[
-                                   {"defaultContent":" <label class='pos-rel'><input type='checkbox' class='ace' /><span class='lbl'></span></label>"},
+                                   {"defaultContent":" <label class='pos-rel'><input type='checkbox' class='ace' /><i class='lbl'></i></label>"},
                                     {"data":"IDCICLOINVERSION"  },
                                     {"data":"NOMBRECICLOINVERSION"},
                                     {"data":"DESCRIPCIONCICLOINVERSION"},
-                                  {"defaultContent":"<button type='button' class='ver btn btn-info btn-xs' data-toggle='modal' data-target='#ver'><span class='glyphicon glyphicon-zoom-in' aria-hidden='true'></span></button><button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaEditEstadoCicloInversion'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><span class='glyphicon glyphicon-trash' aria-hidden='true'></span></button>"}
+                                 {"defaultContent":"</button><button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaEditEstadoCicloInversion'><i class='glyphicon glyphicon-pencil' aria-hidden='true'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='glyphicon glyphicon-trash' aria-hidden='true'></i></button>"}
                                ],
 
                                 "language":idioma_espanol
@@ -149,7 +149,7 @@ var EliminarEstadoCicloData=function(tbody,myTable){
                                           data:{IDCICLOINVERSION:IDCICLOINVERSION},
                                           success:function(respuesta){
                                             //alert(respuesta);
-                                            swal("Deleted!", "Se elimino corectamente .", "success");
+                                            swal("Se eliminó corectamente !", "", "success");
                                             $('#dynamic-table-EstadoCicloInversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
 
                                           }

@@ -1,18 +1,36 @@
  $(document).on("ready" ,function(){
 
                 listaBrecha();//  LLamar al metodo para listar las brechas
-                listaIndicador();
-                listaIndicadorCombo();
-            //Inicio cargar combo
+                listaIndicador(); //  LLamar al metodo para listar indicadores
+                listaBrechaIndicador(); //  LLamar al metodo para listar las brechas-indicadores
+
+             //Inicio cargar combo servicio public
+            $("#btn-NuevaBrecha").click(function()//para que cargue el como una vez echo click sino repetira datos
+                    {
+                        //alert('hola');
+                     listaSerPubAsocCombo();//para llenar el combo de servicio publico asociado
+                    
+                    });
+             
+            //fin cargar combo  servicio public                
+            //Inicio cargar combo brecha
 
              $("#btn-NuevoBrechaIndicador").click(function()//para que cargue el como una vez echo click sino repetira datos
                     {
                         //alert('hola');
-                     listaBrechaCombo();//para llenar el combo de agregar division funcional
+                     listaBrechaCombo();//para llenar el combo de brecha 
                     
                     });
              
-            //fin cargar combo   
+            //fin cargar combo  brecha
+            // cargar combo   de indicador en brecha-indicador
+             $("#cbxNombrebrecha").change(function()//para que cargue el como una vez echo click sino repetira datos
+                    {
+                        //alert('hola');
+                     listaIndicadorCombo();//para llenar el combo de agregar indicador
+                    
+                    });
+             //Fin cargar combo   de indicador en brecha-indicador
                 //AGREGAR UNA NUEVA BRECHA
                 $("#form-addBrecha").submit(function(event)
                 {
@@ -44,10 +62,52 @@
                     });
                 });     
                 //FIN AGREGAR UN INDICADOR 
-              
+                  //AGREGAR UNA NUEVA BRECHA-INDICADOR
+                $("#form-addBrechaIndicador").submit(function(event)
+                {
+                    event.preventDefault();
+                    $.ajax({
+                        url:base_url+"index.php/MantenimientoBrecha/AddBrechaIndicador",
+                        type:$(this).attr('method'),
+                        data:$(this).serialize(),
+                        success:function(resp){
+                        swal("REGISTRADO!", resp, "success");
+                        //  $('#table-brechaindicador').dataTable()._fnAjaxUpdate();    //SIRVE PARA REFRESCAR LA TABLA 
+                        }
+                    });
+                });     
+                //FIN AGREGAR UNA NUEVA BRECHA-INDICADOR 
 			});
 
 //-------------------------MANTENIMIENTO DE BRECHAS ----------------------------
+   
+//TRAER DATOS EN UN COMBO DE SERVICIOS PUBLICO ASOCIADO
+                var listaSerPubAsocCombo=function(id_serv_pub_asoc) //PARA RECIR  PARAMETRO PARA MANTENER VALOR DEL CAMBO
+                {
+                    html="";
+                    $("#cbxServPubAsoc").html(html); //nombre del selectpicker RUBRO DE EJECUCION
+                    $("#cbxSerPubAsocModificar").html(html); 
+                    event.preventDefault(); 
+                    $.ajax({
+                        "url":base_url +"index.php/MSectorEntidadSpu/GetServicioAsociado",
+                        type:"POST",
+                        success:function(respuesta){
+                           // alert(respuesta);
+                         var registros = eval(respuesta);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option value="+registros[i]["id_serv_pub_asoc"]+"> "+ registros[i]["nombre_serv_pub_asoc"]+" </option>";   
+                            };
+                            $("#cbxServPubAsoc").html(html);//
+                            //MODIFICAR 
+                            $("#cbxSerPubAsocModificar").html(html);
+                            $('select[name=cbxSerPubAsocModificar]').val(id_serv_pub_asoc) // VALOR DEL COMBO SELECCIONADO
+                             $('select[name=cbxSerPubAsocModificar]').change();
+                             //FIN MODIFICAR
+                            $('.selectpicker').selectpicker('refresh'); 
+                        }
+                    });
+                }
+          //FIN TRAER DATOS EN UN COMBO DE RUBRO EJECUCION
    /*listar las brechas en el datatable*/
                 var listaBrecha=function() 
                 {
@@ -62,9 +122,11 @@
        },
                                 "columns":[
                                     {"data":"id_brecha"},
+                                    {"data":"id_serv_pub_asoc"},
+                                    {"data":"nombre_serv_pub_asoc"}, //DATO DEL SERVICIO PUB ASOCIADO PARA ENVIAR DATO AL COMBO ACTUALIZAR Y SE MANTENGA EL VALOR
                                     {"data":"nombre_brecha"},
                                     {"data":"desc_brecha"},
-                                    {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaModificarBrecha'><i class='ace-icon fa fa-pencil-square-o bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
+                                    {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaModificarBrecha'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
 
                                 "language":idioma_espanol
@@ -97,8 +159,11 @@
                     $(tbody).on("click","button.editar",function(){
                         var data=table.row( $(this).parents("tr")).data();
                         var id_brecha=$('#txt_IdBrechaModif').val(data.id_brecha);
+                        var id_serv_pub_asoc=data.id_serv_pub_asoc;
                         var nombre_brecha=$('#txt_NombreBrechaU').val(data.nombre_brecha);
                         var desc_brecha=$('#txtArea_DescBrechaU').val(data.desc_brecha);
+                        listaSerPubAsocCombo(id_serv_pub_asoc);//llamar al evento de combo box para actualizar 
+               
                     });
                 }
           // FIN DE CAMPOS QUE SE ACTUALIZARAN DE LAS BRECHAS
@@ -194,7 +259,7 @@
                                     {"data":"nombre_indicador"},
                                     {"data":"definicion_indicador"},
                                      {"data":"unidad_medida_indicador"},
-                                   {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaModificarIndicador'><i class='ace-icon fa fa-pencil-square-o bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
+                                   {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaModificarIndicador'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
 
                                 "language":idioma_espanol
@@ -256,4 +321,31 @@
                     });
                 }
           //FIN TRAER DATOS EN UN COMBO DE BRECHA
+
+           /*listar las brechas-indicador en el datatable*/
+                var listaBrechaIndicador=function() 
+                {
+                    var table=$("#table-brechaindicador").DataTable({
+                     "processing":true,
+                     "serverSide":false,
+                     destroy:true,
+                         "ajax":{
+                                    "url":base_url +"index.php/MantenimientoBrecha/GetBrechaIndicador",
+                                    "method":"POST",
+                                                                 "dataSrc":""
+       },
+                                "columns":[
+                                    {"data":"nombre_brecha"},
+                                    {"data":"nombre_indicador"},
+                                    {"data":"fecha_indicador"}, 
+                                    {"data":"valor_indicador"},
+                                    {"data":"linea_base_indicador"},
+                                    {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaModificarBrechaIndicador'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
+                                ],
+
+                                "language":idioma_espanol
+                    });  
+                       
+                }
+   /*fin de listar las brechas-indicador en el datatable*/
 //-----------------------FIN MANTENIMIENTO DE INDICADOR ----------------------------
