@@ -53,9 +53,9 @@ class pip extends CI_Controller
             $user                      = "1";
 
             if ($this->NaturalezaInversion_Model->EliminarNaturalezaInversion($flat, $txt_IdNaturaleza, $txt_NombreNaturaleza, $txt_DescripcionNaturaleza, $user) == true) {
-                echo "No Se actualizao  ";
+                echo "No Se actualizó  ";
             } else {
-                echo " se actualizo ";
+                echo " se actualizó ";
             }
 
         } else {
@@ -76,10 +76,10 @@ class pip extends CI_Controller
             $txt_DescripcionNaturalezaM = $this->input->post("txt_DescripcionNaturalezaM");
             $user                       = "1";
 
-            if ($this->NaturalezaInversion_Model->UpdateNaturalezaInversion($flat, $txt_IdNaturalezaM, $txt_NombreNaturalezaM, $txt_DescripcionNaturalezaM, $user) == true) {
-                echo "No Se actualizao  ";
+            if ($this->NaturalezaInversion_Model->UpdateNaturalezaInversion($flat, $txt_IdNaturalezaM, $txt_NombreNaturalezaM, $txt_DescripcionNaturalezaM, $user) == false) {
+                echo "Se actualizó  ";
             } else {
-                echo " se actualizo ";
+                echo "No se actualizó ";
             }
 
         } else {
@@ -159,10 +159,10 @@ class pip extends CI_Controller
             $txt_DescripcionTipologiaInversion = "NULL";
             $user                              = "1";
 
-            if ($this->TipologiaInversion_Model->EliminarTipologiaInversion($flat, $txt_IdTipologiaInversion, $txt_NombreTipologiaInversion, $txt_DescripcionTipologiaInversion, $user) == true) {
-                echo "No Se Elimino  ";
+            if ($this->TipologiaInversion_Model->EliminarTipologiaInversion($flat, $txt_IdTipologiaInversion, $txt_NombreTipologiaInversion, $txt_DescripcionTipologiaInversion, $user) == false) {
+                echo "Se Eliminó  ";
             } else {
-                echo " se Elimino ";
+                echo "No se Eliminó ";
             }
 
         } else {
@@ -179,10 +179,10 @@ class pip extends CI_Controller
             $txt_NombreTipologiaInversionM      = $this->input->post("txt_NombreTipologiaInversionM");
             $txt_DescripcionTipologiaInversionM = $this->input->post("txt_DescripcionTipologiaInversionM");
             $user                               = "1";
-            if ($this->TipologiaInversion_Model->UpdateTipologiaInversion($flat, $txt_IdTipologiaInversionM, $txt_NombreTipologiaInversionM, $txt_DescripcionTipologiaInversionM, $user) == true) {
-                echo "NO se Actualizo....";
+            if ($this->TipologiaInversion_Model->UpdateTipologiaInversion($flat, $txt_IdTipologiaInversionM, $txt_NombreTipologiaInversionM, $txt_DescripcionTipologiaInversionM, $user) == false) {
+                echo "Se actualizó  ";
             } else {
-                echo "se Actualizo..........";
+                echo "No se actualizó ";
             }
 
         } else {
@@ -243,10 +243,10 @@ class pip extends CI_Controller
             $txt_DescripcionTipoInversion = "NULL";
             $user                         = "1";
 
-            if ($this->TipoInversion_Model->EliminarTipoInversion($flat, $txt_IdTipoInversion, $txt_NombreTipoInversion, $txt_DescripcionTipoInversion, $user) == true) {
-                echo "No Se Elimino  ";
+            if ($this->TipoInversion_Model->EliminarTipoInversion($flat, $txt_IdTipoInversion, $txt_NombreTipoInversion, $txt_DescripcionTipoInversion, $user) == false) {
+                echo "Se Eliminó  ";
             } else {
-                echo " se Elimino ";
+                echo "No se Eliminó ";
             }
 
         } else {
@@ -263,10 +263,10 @@ class pip extends CI_Controller
             $txt_NombreTipoInversionM      = $this->input->post("txt_NombreTipoInversionM");
             $txt_DescripcionTipoInversionM = $this->input->post("txt_DescripcionTipoInversionM");
             $user                          = "1";
-            if ($this->TipoInversion_Model->UpdateTipoInversion($flat, $txt_IdTipoInversionM, $txt_NombreTipoInversionM, $txt_DescripcionTipoInversionM, $user) == true) {
-                echo "NO se Actualizo....";
+            if ($this->TipoInversion_Model->UpdateTipoInversion($flat, $txt_IdTipoInversionM, $txt_NombreTipoInversionM, $txt_DescripcionTipoInversionM, $user) == false) {
+                echo "Se actualizó  ";
             } else {
-                echo "se Actualizo..........";
+                echo "No se actualizó ";
             }
 
         } else {
@@ -328,12 +328,11 @@ class pip extends CI_Controller
             $txt_DescripcionEstadoCicloInversion = "NULL";
             $user                                = "1";
 
-            if ($this->EstadoCicloInversion_Model->EliminarEstadoCicloInversion($flat, $txt_IdEstadoCicloInversion, $txt_NombreEstadoCicloInversion, $txt_DescripcionEstadoCicloInversion, $user) == true) {
-                echo "No Se Elimino  ";
+            if ($this->EstadoCicloInversion_Model->EliminarEstadoCicloInversion($flat, $txt_IdEstadoCicloInversion, $txt_NombreEstadoCicloInversion, $txt_DescripcionEstadoCicloInversion, $user) == false) {
+                echo "Se Eliminó  ";
             } else {
-                echo " se Elimino ";
+                echo "No se Eliminó ";
             }
-
         } else {
             show_404();
         }
@@ -348,10 +347,10 @@ class pip extends CI_Controller
             $txt_NombreEstadoCicloInversionM      = $this->input->post("txt_NombreEstadoCicloInversionM");
             $txt_DescripcionEstadoCicloInversionM = $this->input->post("txt_DescripcionEstadoCicloInversionM");
             $user                                 = "1";
-            if ($this->EstadoCicloInversion_Model->UpdateEstadoCicloInversion($flat, $txt_IdEstadoCicloInversionM, $txt_NombreEstadoCicloInversionM, $txt_DescripcionEstadoCicloInversionM, $user) == true) {
-                echo "NO se Actualizo....";
+            if ($this->EstadoCicloInversion_Model->UpdateEstadoCicloInversion($flat, $txt_IdEstadoCicloInversionM, $txt_NombreEstadoCicloInversionM, $txt_DescripcionEstadoCicloInversionM, $user) == false) {
+                echo "Se actualizó  ";
             } else {
-                echo "se Actualizo..........";
+                echo "No se actualizó ";
             }
 
         } else {
@@ -413,12 +412,11 @@ class pip extends CI_Controller
             $txt_DescripcionNivelGobierno = "NULL";
             $user                         = "1";
 
-            if ($this->NivelGobierno_Model->EliminarNivelGobierno($flat, $txt_IdNivelGobierno, $txt_NombreNivelGobierno, $txt_DescripcionNivelGobierno, $user) == true) {
-                echo "No Se Elimino  ";
+            if ($this->NivelGobierno_Model->EliminarNivelGobierno($flat, $txt_IdNivelGobierno, $txt_NombreNivelGobierno, $txt_DescripcionNivelGobierno, $user) == false) {
+                echo "Se Eliminó  ";
             } else {
-                echo " se Elimino ";
+                echo "No se Eliminó ";
             }
-
         } else {
             show_404();
         }
@@ -433,10 +431,10 @@ class pip extends CI_Controller
             $txt_NombreNivelGobiernoM      = $this->input->post("txt_NombreNivelGobiernoM");
             $txt_DescripcionNivelGobiernoM = $this->input->post("txt_DescripcionNivelGobiernoM");
             $user                          = "1";
-            if ($this->NivelGobierno_Model->UpdateNivelGobierno($flat, $txt_IdNivelGobiernoM, $txt_NombreNivelGobiernoM, $txt_DescripcionNivelGobiernoM, $user) == true) {
-                echo "NO se Actualizo....";
+            if ($this->NivelGobierno_Model->UpdateNivelGobierno($flat, $txt_IdNivelGobiernoM, $txt_NombreNivelGobiernoM, $txt_DescripcionNivelGobiernoM, $user) == false) {
+                echo "Se actualizó  ";
             } else {
-                echo "se Actualizo..........";
+                echo "No se actualizó ";
             }
 
         } else {
@@ -504,9 +502,9 @@ class pip extends CI_Controller
             $user                                = "1";
 
             if ($this->FuenteFinanciamiento_Model->EliminarFuenteFinanciamiento($flat, $txt_IdFuenteFinanciamiento, $txt_IdRubroEjecucion, $txt_NombreFuenteFinanciamiento, $txt_AcronimoFuenteFinanciamiento, $txt_DescripcionFuenteFinanciamiento, $user) == false) {
-                echo "Se Elimino  ";
+                echo "Se Eliminó  ";
             } else {
-                echo "NO se Elimino ";
+                echo "No se Eliminó ";
             }
 
         } else {
@@ -526,10 +524,10 @@ class pip extends CI_Controller
             $txt_AcronimoFuenteFinanciamientoM    = $this->input->post("txt_AcronimoFuenteFinanciamientoM");
             $txt_DescripcionFuenteFinanciamientoM = $this->input->post("txt_DescripcionFuenteFinanciamientoM");
             $user                                 = "1";
-            if ($this->FuenteFinanciamiento_Model->UpdateFuenteFinanciamiento($flat, $txt_IdFuenteFinanciamientoM, $txt_IdRubroEjecucionM, $txt_NombreFuenteFinanciamientoM, $txt_AcronimoFuenteFinanciamientoM, $txt_DescripcionFuenteFinanciamientoM, $user) == true) {
-                echo "NO se Actualizo....";
+            if ($this->FuenteFinanciamiento_Model->UpdateFuenteFinanciamiento($flat, $txt_IdFuenteFinanciamientoM, $txt_IdRubroEjecucionM, $txt_NombreFuenteFinanciamientoM, $txt_AcronimoFuenteFinanciamientoM, $txt_DescripcionFuenteFinanciamientoM, $user) == false) {
+                echo "Se actualizó  ";
             } else {
-                echo "se Actualizo..........";
+                echo "No se actualizó ";
             }
 
         } else {
