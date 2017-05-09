@@ -37,11 +37,11 @@
 
                                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
                                       <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-                                        <li role="presentation" class="active"><a class="fa fa-book" href="#tab_RubroEjecucion" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Rubro de ejecucion</a>
+                                        <li role="presentation" class="active"><a  href="#tab_RubroEjecucion" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Rubro de ejecucion</a>
                                         </li>
-                                        <li role="presentation" class=""><a class="fa fa-book" href="#tab_ModalidadEjecucion" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Modalidad de ejecucion</a>
+                                        <li role="presentation" class=""><a  href="#tab_ModalidadEjecucion" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Modalidad de ejecucion</a>
                                         </li>
-                                        <li role="presentation" class=""><a class="fa fa-book" href="#tab_UnidadEjecutora" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Unidad Ejecutora</a>
+                                        <li role="presentation" class=""><a  href="#tab_UnidadEjecutora" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Unidad Ejecutora</a>
                                         </li>
                                       </ul>
                                       <div id="myTabContent" class="tab-content">
@@ -54,7 +54,7 @@
                                                         <div class="x_panel">
                                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraRubroEjecucion" ><span class="fa fa-file-o"></span> Nuevo rubro de ejecucion </button>
                                                           <div class="x_title">
-                                                            <h2>Listado de  <small>Rubros de Ejecucion</small></h2>
+                                                         
                                                               
                                                             <ul class="nav navbar-right panel_toolbox">
                                                                 

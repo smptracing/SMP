@@ -8,9 +8,9 @@
               <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
+                    <input type="text" class="form-control" placeholder="Buscar">
                     <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
+                      <button class="btn btn-default" type="button">Ir</button>
                     </span>
                   </div>
                 </div>
@@ -36,12 +36,14 @@
 
 
                                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                                       
                                       <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-                                        <li role="presentation" class="active"><a class="fa fa-book" href="#tab_brecha" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Brecha</a>
+                                       
+                                        <li role="presentation" class=""><a  href="#tab_brecha" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Brecha</a>
                                         </li>
-                                        <li role="presentation" class=""><a class="fa fa-book" href="#tab_Indicador" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Indicador</a>
+                                        <li role="presentation" class=""><a  href="#tab_Indicador" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Indicador</a>
                                         </li>
-                                        <li role="presentation" class=""><a class="fa fa-book" href="#tab_BrechaIndicador" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Brecha Indicador</a>
+                                        <li role="presentation" class=""><a  href="#tab_BrechaIndicador" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Brecha Indicador</a>
                                         </li>
                                       </ul>
                                       <div id="myTabContent" class="tab-content">
@@ -52,9 +54,9 @@
                                             
                                                   <div class="col-md-12 col-sm-12 col-xs-12">
                                                         <div class="x_panel">
-                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraBrecha"> <span class="fa fa-file-o"></span> Nueva Brecha</button>
+                                                            <button type="button" id="btn-NuevaBrecha"  class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraBrecha"> <span class="fa fa-file-o"></span> Nueva Brecha</button>
                                                           <div class="x_title">
-                                                            <h2>Listado de  <small>Brechas</small></h2>
+                                                      
                                                               
                                                             <ul class="nav navbar-right panel_toolbox">
                                                                 
@@ -74,6 +76,8 @@
                                                               <thead>
                                                                 <tr>
                                                                   <th class="col-sm-1">Id</th>
+                                                                  <th class="col-sm-1">Id serv </th>
+                                                                  <th >Nombre servicio</th>
                                                                   <th >Nombre</th>
                                                                   <th >Descripcion</th>
                                                                   <th class="col-sm-1">Mantenimiento</th>
@@ -99,7 +103,7 @@
                                                         <div class="x_panel">
                                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraIndicador"><span class="fa fa-file-o"></span> Nuevo Indicador</button>
                                                           <div class="x_title">
-                                                            <h2>Listado de  <small>Indicador</small></h2>
+                                                       
                                                               
                                                             <ul class="nav navbar-right panel_toolbox">
                                                                 
@@ -144,7 +148,7 @@
                                                         <div class="x_panel">
                                                             <button type="button" id="btn-NuevoBrechaIndicador" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraBrechaIndicador"><span class="fa fa-file-o"></span> BRECHA INDICADOR</button>
                                                           <div class="x_title">
-                                                            <h2>Listado de  <small>Indicador y brechas</small></h2>
+                                                          
                                                               
                                                             <ul class="nav navbar-right panel_toolbox">
                                                                 
@@ -160,12 +164,14 @@
                                                               
                                                           </div>
                                                           <div class="x_content">
-                                                            <table id="table-BrechaIndicador" class="table table-striped table-bordered table-hover" width="100%">
+                                                            <table id="table-brechaindicador" class="table table-striped table-bordered table-hover" width="100%">
                                                               <thead>
                                                                 <tr>
+                                                                  <th>Nombre brecha</th>
                                                                   <th>Nombre Indicador</th>
-                                                                  <th>Definicion Indicador</th>
-                                                                  <th>Unidad de medida</th>
+                                                                  <th>Fecha Indicador</th>
+                                                                  <th>Valor Indicador</th>
+                                                                  <th>Linea Base Indicador</th>
                                                                   <th>Mantenimiento</th>
                                                                 </tr>
                                                               </thead>
@@ -206,6 +212,15 @@
                                         <!-- PAGE CONTENT BEGINS -->
                              
             <form class="form-horizontal " id="form-addBrecha" action="" method="POST" data-toggle="validator">
+                      <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Servicio publico asociado  </span>
+                            </label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                              <select id="cbxServPubAsoc" name="cbxServPubAsoc"  class="selectpicker" data-live-search="true"  title="Seleccion servicio publico">
+                             
+                              </select>
+                          </div>
+                       </div>
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre de la brecha<span class="required">*</span>
                         </label>
@@ -256,7 +271,16 @@
                 <div class="col-xs-12">
                 
                 <form class="form-horizontal " id="form-ActualizarBrecha" action="<?php echo  base_url();?>MantenimientoBrecha/UpdateBrecha" method="POST" >
+                      <div class="form-group">
+                             
+                             <label class="control-label col-md-3 col-sm-3 col-xs-6">Servicio Publico Asociado</label> 
 
+                              <div class="col-md-6 col-sm-9 col-xs-6">
+                                  <select id="cbxSerPubAsocModificar" name="cbxSerPubAsocModificar" class="selectpicker" data-live-search="true">
+    0
+                                   </select>
+                              </div>
+                      </div> 
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre de la brecha<span class="required">*</span>
                         </label>
@@ -442,7 +466,7 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Brecha*  </span>
                             </label>
                           <div class="col-md-6 col-sm-6 col-xs-12">
-                              <select id="cbxNombrebrecha" class="selectpicker" data-live-search="true"  title="SeleccionBrecha">
+                              <select id="cbxNombrebrecha" name="cbxNombrebrecha" class="selectpicker" data-live-search="true"  title="SeleccionBrecha">
                              
                               </select>
                           </div>
@@ -452,19 +476,30 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Indicador*  </span>
                             </label>
                           <div class="col-md-6 col-sm-6 col-xs-12">
-                              <select id="cbxNombreIndicador" class="selectpicker" data-live-search="true"  title="Seleccione Indicador">
+                              <select id="cbxNombreIndicador" name="cbxNombreIndicador" class="selectpicker" data-live-search="true"  title="Seleccione Indicador">
                              
                               </select>
                           </div>
                         </div>
-
-
-
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Descripcion <span class="required">*</span>
+                       <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">fecha Indicador<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <textarea id="txtArea_DescBrecha" name="txtArea_DescBrecha" required="required" name="textarea" placeholder="Descripcion" class="form-control col-md-7 col-xs-12"></textarea>
+                          <input id="datefechaindicador" name="datefechaindicador" type="date" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="text">
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Valor del indicador<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="txtvalorindicador" name="txtvalorindicador" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Valor del indicador" required="required" type="text">
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Linea Base Indicador<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="txtbaseindicador" name="txtbaseindicador" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Linea de base indicador" required="required" type="text">
                         </div>
                       </div>
                       <div class="ln_solid"></div>
@@ -484,4 +519,4 @@
       </div>
     </div>
   </div>
-<!-- /.fin ventana para registra una nueva brecha-->
+<!-- /.fin ventana para registra una nueva brecha indicador-->
