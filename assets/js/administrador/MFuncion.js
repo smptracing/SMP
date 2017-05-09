@@ -52,8 +52,7 @@
                           success:function(resp){
                           swal("",resp, "success");
                           $('#table-DivisionF').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
-                           //listaSectorCombo();//llamado para la recarga al añadir un nuevo secto
-                                
+                           //listaSectorCombo();//llamado para la recarga al añadir un nuevo secto  
                          }
                       });
                   });
@@ -68,6 +67,7 @@
                            swal("",resp, "success");
                           $('#table-DivisionF').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
                            //listaSectorCombo();//llamado para la recarga al añadir un nuevo secto    
+
                          }
                       });
                   });
@@ -145,7 +145,7 @@
                 }
 
                 var FuncionData=function(tbody,table){
-                    $(tbody).on("click","button.editar",function(){
+                       $(tbody).on("click","button.editar",function(){
                         var data=table.row( $(this).parents("tr")).data();
                         var txt_IdfuncionM=$('#txt_IdfuncionM').val(data.id_funcion);
                         var txt_codigofuncionM=$('#txt_codigofuncionM').val(data.codigo_funcion);
@@ -176,7 +176,7 @@
                                           data:{id_sector:id_sector},
                                           success:function(respuesta){
                                             //alert(respuesta);
-                                            swal("Deleted!", "Se elimino corectamente el sector.", "success");
+                                            swal("Eliminado!", "Se elimino corectamente el sector.", "success");
                                             $('#table-sector').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
 
                                           }
@@ -184,7 +184,7 @@
                               });
                     });
                 }
-                var listaFuncionCombo=function()//COMO CON LAS FUNCIONES PARA AGREGAR DIVIVISION FUNCIONAL
+                var listaFuncionCombo=function(valor)//COMO CON LAS FUNCIONES PARA AGREGAR DIVIVISION FUNCIONAL
                 {
                     html="";
                     $("#listaFuncionC").html(html); 
@@ -199,14 +199,18 @@
                               html +="<option value="+registros[i]["id_funcion"]+"> "+ registros[i]["codigo_funcion"]+": "+registros[i]["nombre_funcion"]+" </option>";   
                             };
                             $("#listaFuncionC").html(html);//para modificar las entidades
-                            $("#listaFuncionCM").html(html);//para modificar las entidades
+
+                            $("#listaFuncionCM").html(html);//para modificar las entidades 
+                            $('select[name=listaFuncionCM]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=listaFuncionCM]').change();
+
                             $('.selectpicker').selectpicker('refresh'); 
                             //listaFuncionCombo(); //PARA LLENAR CON EXACTITUD LOS DATOS
                         }
                     });
                 }
                 /*fin listar funcion*/
-                var listarDivisionFcombo=function(){
+                var listarDivisionFcombo=function(valor_idDivision,valor_id_sector){
 
                      html="";
                     $("#SelecDivisionFF").html(html); 
@@ -221,15 +225,19 @@
                               html +="<option value="+registros[i]["id_division_funcional"]+"> "+ registros[i]["codigo_dfuncional"]+":"+registros[i]["nombre_dFuncional"]+" </option>";   
                             };
                             $("#SelecDivisionFF").html(html);
+                            
                             $("#SelecDivisionFFF").html(html);
+                            $('select[name=SelecDivisionFFF]').val(valor_idDivision);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=SelecDivisionFFF]').change();
+
                             $('.selectpicker').selectpicker('refresh'); 
-                            listarSectorcombo();
+                            listarSectorcombo(valor_id_sector);
                             //listaFuncionCombo(); //PARA LLENAR CON EXACTITUD LOS DATOS
                         }
                     });
 
                 }
-                  var listarSectorcombo=function(){
+                  var listarSectorcombo=function(varlor){
                     html="";
                     $("#SelecSector").html(html); 
                     event.preventDefault(); 
@@ -244,6 +252,9 @@
                             };
                             $("#SelecSector").html(html);
                             $("#SelecSectorF").html(html);
+                            $('select[name=SelecSectorF]').val(varlor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=SelecSectorF]').change();
+                            
                             $('.selectpicker').selectpicker('refresh'); 
                             //listaFuncionCombo(); //PARA LLENAR CON EXACTITUD LOS DATOS
                         }
@@ -266,6 +277,7 @@
                                     },
                                 "columns":[
                                     {"data":"id_division_funcional"},
+                                    {"data":"id_funcion","visible": false},
                                     {"data":"nombre_funcion"},
                                     {"data":"codigo_dfuncional"},
                                     {"data":"nombre_dFuncional"},
@@ -279,13 +291,18 @@
 
                   var  DivisionFuncionData=function(tbody,table){
                     $(tbody).on("click","button.editar",function(){
+
                         var data=table.row( $(this).parents("tr")).data();
-                        listaFuncionCombo();//para agregar division  funcional
+                        var id_funcion=data.id_funcion;
+                        console.log(id_funcion);
                         var id_DfuncionalM=$('#id_DfuncionalM').val(data.id_division_funcional);
                         var txt_CodigoDfuncionalM=$('#txt_CodigoDfuncionalM').val(data.codigo_dfuncional);
                         var txt_Nombre_DFuncionalM=$('#txt_Nombre_DFuncionalM').val(data.nombre_dFuncional);
-
+                          /*$('select[name=listaFuncionCM]').val(id_funcion);//PARA AGREGAR UN COMBO PSELECIONADO
+                          $('select[name=listaFuncionCM]').change();*/
+                           listaFuncionCombo(id_funcion);//para agregar funcion selecionada mandamos parametro
                     });
+
                 }
 
                 /*fin crea tabla division funcional*/ 
@@ -306,8 +323,10 @@
                                     {"data":"id_grupo_funcional"},
                                     {"data":"codigo_g_funcional"},
                                     {"data":"nombre_g_funcional"},
+                                    {"data":"id_division_funcional"},
                                     {"data":"codigo_dfuncional"},
                                     {"data":"nombre_dFuncional"},
+                                    {"data":"id_sector"},
                                     {"data":"nombre_sector"},
                                     {"defaultContent":"<button type='button'  class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaUpdateGrupoF'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
@@ -319,10 +338,14 @@
                    var  GrupoFuncionalData=function(tbody,table){
                     $(tbody).on("click","button.editar",function(){
                         var data=table.row( $(this).parents("tr")).data();
-                        listarDivisionFcombo();//para agregar division  funcional
+                        var id_division_funcional=data.id_division_funcional;
+                        var id_sector=data.id_sector;
                         var txt_idGfuncionF=$('#txt_idGfuncionF').val(data.id_grupo_funcional);
                         var txt_codigoGfuncionF=$('#txt_codigoGfuncionF').val(data.codigo_g_funcional);
                         var txt_nombreGfuncionF=$('#txt_nombreGfuncionF').val(data.nombre_g_funcional);
+                        listarDivisionFcombo(id_division_funcional,id_sector);//para agregar division  funcional
+                        $('select[name=SelecSectorF]').val(id_sector);//PARA AGREGAR UN COMBO PSELECIONADO
+                        $('select[name=SelecSectorF]').change();
                     });
                 }
               

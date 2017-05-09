@@ -65,7 +65,7 @@
               <div class="menu_section">
                 <h3>PRINCIPAL</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-home"></i> INICIO<span class="fa fa-chevron-down"></span></a>
+                  <li><a href="<?php echo site_url('Inicio/');?>"> <i class="fa fa-home"></i> INICIO<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="<?php echo site_url('Inicio/');?>">Dashboard</a></li>
                       <li><a href="<?php echo site_url('Inicio/indexD');?>">Dashboard2</a></li>
@@ -76,7 +76,7 @@
                   <li><a><i class="fa fa-edit"></i> PMI <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="form_wizards.html">Evaluacion de criterios </a></li>
-                      <li><a href="form_validation.html">Proyecto  de Inversion</a></li>
+                      <li><a href="<?php echo site_url('MProyectoInversion/');?>">Proyecto Inversion</a></li> 
                       <li><a href="form_validation.html">Inversion</a></li>
                       <li><a href="form_advanced.html">Cartera priorizada</a></li>
                       <li><a href="form_validation.html">Programacion multianual de inversiones</a></li>
@@ -151,12 +151,11 @@
               <div class="menu_section">
                 <h3>ADMINISTRACION</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-bug"></i> MANTENIMIENTO PMI <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-gear"></i> CONFIGURACIÓN DE PARAMETROS <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">     
                       <li><a href="<?php echo site_url('MSectorEntidadSpu/');?>">Sector</a></li>
                         <li><a href="<?php echo site_url('MFuncion/');?>">Funcion</a></li>
                         <li><a href="<?php echo site_url('pip/');?>">PIP</a></li> 
-                        <li><a href="<?php echo site_url('MProyectoInversion/');?>">Proyecto Inversion</a></li> 
                         <li><a href="<?php echo site_url('MUbicacion/');?>">Ubicacion</a></li>
                         <li><a href="<?php echo site_url('MRubroEjecucion/');?>">Ejecucion</a></li> 
                         <li><a href="<?php echo site_url('MantenimientoBrecha/');?>">Brecha</a></li> 
@@ -210,15 +209,15 @@
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;"> Profile</a></li>
+                    <li><a href="javascript:;">Perfil</a></li>
                     <li>
                       <a href="javascript:;">
                         <span class="badge bg-red pull-right">50%</span>
-                        <span>Settings</span>
+                        <span>Ajustes</span>
                       </a>
                     </li>
-                    <li><a href="javascript:;">Help</a></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li><a href="javascript:;">Ayuda</a></li>
+                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Cerrar sesión</a></li>
                   </ul>
                 </li>
 

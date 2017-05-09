@@ -23,7 +23,7 @@
               <div class="col-md-12 col-xs-12 col-xs-12">
                                 <div class="x_panel">
                                   <div class="x_title">
-                                    <h2><i class="fa fa-bars"></i> Memu </h2>
+                                    <h2><i class="fa fa-bars"></i> Menu </h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                       </li>
@@ -46,11 +46,13 @@
 
                                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
                                       <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-                                        <li role="presentation" class="active"><a href="#tab_Sector" class="fa fa-book" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">SECTOR</a>
+                                        <li role="presentation" class="active"><a href="#tab_Sector"  id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">
+                                        <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Sector
+                                        </a>
                                         </li>
-                                        <li role="presentation" class=""><a href="#tab_Entidad" role="tab" class="fa fa-book" id="profile-tab" data-toggle="tab" aria-expanded="false">ENTIDAD</a>
+                                        <li role="presentation" class=""><a href="#tab_Entidad" role="tab"  id="profile-tab" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Entidad</a>
                                         </li>
-                                         <li role="presentation" class=""><a href="#tab_ServicioPubAsoc" class="fa fa-book" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">SERVICIO PUBLICO ASOCIADO</a>
+                                         <li role="presentation" class=""><a href="#tab_ServicioPubAsoc"  role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"> <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>  Servicio Público Asociado</a>
                                         </li>
                                       </ul>
                                       <div id="myTabContent" class="tab-content">
@@ -64,9 +66,7 @@
                                                             <button type="button"  class="btn btn-primary " data-toggle="modal" data-target="#VentanaRegistraSector" >
                                                                       <span class="glyphicon glyphicon-book"></span>
                                                                 Nueva Sector </button>
-                                                          <div class="x_title">
-                                                            <h2>Listado de Sectores</h2>
-                                                              
+                                                          <div class="x_title">                                                              
                                                             <ul class="nav navbar-right panel_toolbox">
                                                                 
                                                               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -76,9 +76,7 @@
                                                               </li>
                                                                 
                                                             </ul>
-                                                              
-                                                            <div class="clearfix"></div>
-                                                              
+                                                                                                                            
                                                           </div>
                                                           <div class="x_content">
                                                             <table id="table-sector"  class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
@@ -108,9 +106,7 @@
                                                             <button type="button" id="Btn_entidad" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraEntidad" >
                                                                 <span class="glyphicon glyphicon-book"></span>
                                                                 Nueva Entidad</button>
-                                                          <div class="x_title">
-                                                            <h2>Listado de  Entidades</h2>
-                                                              
+                                                          <div class="x_title">                                                              
                                                             <ul class="nav navbar-right panel_toolbox">
                                                                 
                                                               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -120,15 +116,14 @@
                                                               </li>
                                                                 
                                                             </ul>
-                                                              
-                                                            <div class="clearfix"></div>
-                                                              
+                                                                                                                            
                                                           </div>
                                                           <div class="x_content">
                                                             <table id="table-entidad" class="table table-striped table-bordered table-hover" ellspacing="0" width="100%">
                                                               <thead>
                                                                 <tr>
                                                                   <th class="col-sm-1">ID</th>
+                                                                  <th>ID_SECTOR</th>
                                                                   <th>NOMBRE SECTOR</th>
                                                                   <th>NOMBRE ENTIDAD</th>
                                                                   <th>DENOMINACION  ENTIDAD</th>
@@ -154,9 +149,7 @@
                                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraServicioAsociado" >
                                                             <span class="glyphicon glyphicon-book"></span>
                                                                 Nuevo Servicio Asociado</button>
-                                                          <div class="x_title">
-                                                            <h2>Listado de Servicio Público Asociado</h2>
-                                                              
+                                                          <div class="x_title">                                                              
                                                             <ul class="nav navbar-right panel_toolbox">
                                                                 
                                                               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -166,9 +159,7 @@
                                                               </li>
                                                                 
                                                             </ul>
-                                                              
-                                                            <div class="clearfix"></div>
-                                                              
+                                                                                                                            
                                                           </div>
                                                           <div class="x_content">
                                                             <table id="table-ServicioAsociado" class="table table-striped table-bordered table-hover" ellspacing="0" width="100%">
@@ -232,7 +223,7 @@
 
                           <button type="button" class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-remove"></span>
-                            Cancel
+                            Cancelar
                           </button>
 
                         </div>
@@ -297,7 +288,7 @@
                           </button>
                           <button type="button" class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-remove"></span>
-                            Cancel
+                            Cancelar
                           </button>
 
                         </div>
@@ -344,7 +335,7 @@
                           </button>
                           <button type="submit" class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-remove"></span>
-                            Cancel
+                            Cancelar
                           </button>
 
                         </div>
@@ -389,7 +380,7 @@
                           </button>
                            <button type="button" class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-remove"></span>
-                            Cancel
+                            Cancelar
                           </button>
                         </div>
                       </div>
@@ -435,7 +426,7 @@
                           </button>
                           <button type="button" class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-remove"></span>
-                            Cancel
+                            Cancelar
                           </button>
 
                         </div>
@@ -484,7 +475,7 @@
                           </button>
                           <button type="button" class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-remove"></span>
-                            Cancel
+                            Cancelar
                           </button>
                         </div>
                       </div>
@@ -553,7 +544,7 @@
                           </button>
                           <button type="submit" class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-remove"></span>
-                            Cancel
+                            Cancelar
                           </button>
 
                         </div>

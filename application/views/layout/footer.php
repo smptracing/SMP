@@ -1,6 +1,6 @@
  <footer>
           <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+           GOBIERNO REGIONAL DE APURIMAC
           </div>
           <div class="clearfix"></div>
         </footer>
@@ -61,8 +61,6 @@
     <script src="<?php echo base_url(); ?>assets/vendors/jszip/dist/jszip.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendors/pdfmake/build/pdfmake.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendors/pdfmake/build/vfs_fonts.js"></script>
-    <!--<script src="<?php echo base_url(); ?>assets/vendors/validators.js"></script>-->
-
 
 
      <script src="<?php echo base_url(); ?>assets/dist/js/sweetalert-dev.js"></script>
@@ -70,6 +68,7 @@
 
     <script src="<?php echo base_url(); ?>assets/dist/js/bootstrap-select.js"></script><!--- para el selector con buscardor---->
     <!-- Custom Theme Scripts -->
+
     <script src="<?php echo base_url(); ?>assets/build/js/custom.min.js"></script>
 
   <script src="<?php echo base_url(); ?>assets/vendors/butons/buttons.colVis.min.js"></script>
@@ -78,6 +77,9 @@
     <script src="<?php echo base_url(); ?>assets/vendors/butons/buttons.flash.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendors/butons/buttons.html5.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendors/butons/buttons.print.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/plugins/input-mask/jquery.inputmask.min.js"></script> 
+
+
 
     <script src="<?php echo base_url(); ?>assets/js/ubicacion/ubicacion.js"></script><!-- para la ubicacion -->
     <script src="<?php echo base_url(); ?>assets/js/administrador/MSectorEntidadSpu.js"></script><!-- para mostralos datos de sector entidad y servicios publicos asociados-->

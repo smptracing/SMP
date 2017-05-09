@@ -50,7 +50,6 @@ class MSectorEntidadSpu extends CI_Controller {/* Mantenimiento de sector entida
 	    {
 		      $txt_IdModificar =$this->input->post("txt_IdModificar");
 		      $txt_NombreSectorM =$this->input->post("txt_NombreSectorM");
-		      $hola="hola";
 		      if($this->Model_Sector->UpdateSector($txt_IdModificar,$txt_NombreSectorM) == false)
 		        echo "Se actualizo correctamente el sector";
 		      else
@@ -114,7 +113,6 @@ class MSectorEntidadSpu extends CI_Controller {/* Mantenimiento de sector entida
 		      else
 		      echo "No se actualizo  una nueva entidad"; 
 		 } 
-
 	     else
 	     {
 	      show_404();
@@ -179,10 +177,11 @@ function AddServicioAsociado()
 	    if ($this->input->is_ajax_request()) 
 	    {
 	      $textarea_servicio_publicoA =$this->input->post("textarea_servicio_publicoA");
-	     if($this->Model_Sector->AddServicioAsociado($textarea_servicio_publicoA) ==true)
+	    /* if($this->Model_Sector->AddServicioAsociado($textarea_servicio_publicoA) ==true)
 		       echo "Se agrego un nuevo Servicio  Publico Asociado";
 		      else
-		      echo "No Se agrego un nuevo Servicio  Publico Asociado"; 
+		      echo "No Se agrego un nuevo Servicio  Publico Asociado"; */
+		      echo $textarea_servicio_publicoA;
 		 } 
 
 	     else

@@ -84,6 +84,7 @@
                       $.ajax({
                           url:base_url+"index.php/MSectorEntidadSpu/AddServicioAsociado",
                           type:$(this).attr('method'),
+                          encoding:"UTF-8",
                           data:$(this).serialize(),
                           success:function(resp){
                            swal("",resp, "success");
@@ -160,7 +161,7 @@
                                           data:{id_sector:id_sector},
                                           success:function(respuesta){
                                             //alert(respuesta);
-                                            swal("Deleted!", "Se elimino corectamente el sector.", "success");
+                                            swal("Eliminado!", "Se elimino corectamente el sector.", "success");
                                             $('#table-sector').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
 
                                           }
@@ -185,7 +186,6 @@
                             for (var i = 0; i <registros.length;i++) {
                               html +="<option value="+registros[i]["id_sector"]+"> "+registros[i]["nombre_sector"]+" </option>";   
                             };
-
                             $("#listaSector").html(html);
                             $("#listaSectorModificar").html(html);//para modificar las entidades
                             $('.selectpicker').selectpicker('refresh');        
@@ -209,9 +209,12 @@
                                     },
                                 "columns":[
                                     {"data":"id_entidad"},
+                                    {"data":"id_sector","visible": false},
                                     {"data":"nombre_sector"},
                                     {"data":"nombre_entidad"},
                                     {"data":"denominacion_entidad"},
+                                    
+
                                     {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaModificarEntidad'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
 
@@ -223,10 +226,12 @@
                 var SectorDataEntidad=function(tbody,table){
                     $(tbody).on("click","button.editar",function(){
                         var data=table.row( $(this).parents("tr")).data();
-                        var id_SectorM=$('#listaSectorModificar').val(285);//ojo
+                        var id_sector=data.id_sector;//ojo
                         var id_entidadM=$('#txt_IdModificarEntidar').val(data.id_entidad);
                         var nombre_entidadM=$('#txt_NombreEntidadM').val(data.nombre_entidad);
                         var denominacion_entidadM=$('#txt_DenominacionEntidadM').val(data.denominacion_entidad);
+                      $('select[name=listaSectorModificar]').val(id_sector);
+                      $('select[name=listaSectorModificar]').change();
 
                     });
                 }
@@ -250,7 +255,7 @@
                                           data:{id_entidad:id_entidad},
                                           success:function(respuesta){
                                             //alert(respuesta);
-                                            swal("Deleted!", "Se elimino corectamente la entidad.", "success");
+                                            swal("Eliminado!", "Se elimino corectamente la entidad.", "success");
                                             $('#table-entidad').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
 
                                           }
