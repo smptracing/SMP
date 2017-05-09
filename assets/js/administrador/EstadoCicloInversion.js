@@ -43,7 +43,7 @@ $(document).on("ready" ,function(){
                           data:$(this).serialize(),
                           success:function(resp){
                            //alert(resp);
-                           swal("",resp, "success");
+                           swal(resp,"", "success");
                           $('#dynamic-table-EstadoCicloInversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
                              formReset();
                          }
