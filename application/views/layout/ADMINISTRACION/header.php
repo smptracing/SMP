@@ -80,7 +80,7 @@
                         <li><a href="<?php echo site_url('TipologiaInversion/');?>">Tipologia de inversion</a></li> 
                          <li><a href="<?php echo site_url('InformacionPresupuestal/');?>">Informacion Presupuestal</a></li> 
                          <li><a href="<?php echo site_url('EstadoCicloInversion/');?>">Ciclo de inversion</a></li> 
-                        <li><a href="<?php echo site_url('MUbicacion/');?>">Ubicacion</a></li>
+                        <li><a href="<?php echo site_url('MUbicacion/');?>">Ubicacion Geografica</a></li>
                         <li><a href="<?php echo site_url('UnidadEjecutora/');?>">Unidad Ejecutora</a></li> 
                     
                     </ul>
