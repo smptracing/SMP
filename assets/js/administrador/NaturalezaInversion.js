@@ -9,7 +9,7 @@
                   {
                       event.preventDefault();
                       $.ajax({
-                          url:base_url+"index.php/pip/AddNaturalezaInversion",
+                          url:base_url+"index.php/TipologiaInversion/AddNaturalezaInversion",
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
@@ -40,7 +40,7 @@
                   {
                       event.preventDefault();
                       $.ajax({
-                          url:base_url+"index.php/pip/UpdateNaturalezaInversion",
+                          url:base_url+"index.php/TipologiaInversion/UpdateNaturalezaInversion",
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
@@ -53,8 +53,8 @@
                   });
 
 
-			});
-			   /*listra funcion*/
+      });
+         /*listra funcion*/
                 var listaNaturalezaInversion=function()
                 {
                     var myTable=$("#dynamic-table-NaturalezaInversion").DataTable({
@@ -63,7 +63,7 @@
                      destroy:true,
 
                          "ajax":{
-                                    "url":base_url+"index.php/pip/get_NaturalezaInversion",
+                                    "url":base_url+"index.php/TipologiaInversion/get_NaturalezaInversion",
                                      "method":"POST",
                                       "dataSrc":""
                                     },
@@ -75,8 +75,6 @@
                                   {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaRegNaturalezaInversion'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                ],
 
-//{ "defaultContent": "<div class='hidden-sm hidden-xs action-buttons'><a type='button' class='editar btn btn-primary btn-xs'  data-toggle='modal' data-target='#VentanaRegNaturalezaInversion' ><span class='glyphicon glyphicon-zoom-in bigger-180' aria-hidden='true'></span></button><a class='btn green'  data-toggle='modal' data-target='#VentanaRegNaturalezaInversion'><span class='glyphicon glyphicon-pencil bigger-180' aria-hidden='true'></span></a><a class='red' href='#delete'><span class='glyphicon glyphicon-trash bigger-180' aria-hidden='true' ></span></a></div><div class='hidden-md hidden-lg'><div class='dropdown'><button data-toggle='dropdown' type='button' class='btn btn-info btn-xs'><span class='glyphicon glyphicon-collapse-down icon-only bigger-120' aria-hidden='true'></span> <span class='caret'></span></button><ul class='dropdown-menu' ><li><a href='#ver' class='tooltip-info'  data-rel='tooltip' title='Ver'><span class='blue'><span class='glyphicon glyphicon-zoom-in bigger-100' aria-hidden='true'></span></span></a></li><li><a href='#ed' class='tooltip-success' data-rel='tooltip' title='Edit'><span class='green'><span class='glyphicon glyphicon-pencil bigger-100' aria-hidden='true'></span></span></a></li><li><a href='#delete' class='tooltip-error' data-rel='tooltip' title='Delete'><span class='red'><span class='glyphicon glyphicon-trash bigger-100' aria-hidden='true' ></span></span></a></li></ul></div></div>" }
-     //     ],
 
                                 "language":idioma_espanol
                     }); 
@@ -119,7 +117,7 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
             }     
           ]
         } );
-        myTable.buttons().container().appendTo( $('.tableTools-container') );
+       myTable.buttons().container().appendTo( $('.tableTools-container') );
         NaturalezaData("#dynamic-table-NaturalezaInversion",myTable);  //CARGAR LA DATA PARA MOSTRAR EN EL MODAL  
         EliminarNaturalezaData("#dynamic-table-NaturalezaInversion",myTable);
                 }
@@ -149,7 +147,7 @@ var EliminarNaturalezaData=function(tbody,table){
                               },
                               function(){
                                     $.ajax({
-                                          url:base_url+"index.php/pip/EliminarNaturalezaInversion",
+                                          url:base_url+"index.php/TipologiaInversion/EliminarNaturalezaInversion",
                                           type:"POST",
                                           data:{IDNATURALEZA:IDNATURALEZA},
                                           success:function(respuesta){

@@ -47,7 +47,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="" class="site_title"><i class="fa fa-users"></i> <span>SEMOPIP</span></a>
+              <a href="<?php echo site_url('Inicio')?>" class="site_title"><i class="fa fa-users"></i> <span>SEMOPIP</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -66,112 +66,27 @@
                 <h3>PRINCIPAL</h3>
                 <ul class="nav side-menu">
                   <li><a href="<?php echo site_url('Inicio/');?>"> <i class="fa fa-home"></i> INICIO<span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="<?php echo site_url('Inicio/');?>">Dashboard</a></li>
-                      <li><a href="<?php echo site_url('Inicio/indexD');?>">Dashboard2</a></li>
-                      <li><a href="index3.html">Dashboard3</a></li>
-                    </ul>
-                  </li>
-
-                  <li><a><i class="fa fa-edit"></i> PMI <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="form_wizards.html">Evaluacion de criterios </a></li>
-                      <li><a href="<?php echo site_url('MProyectoInversion/');?>">Proyecto Inversion</a></li> 
-                      <li><a href="form_validation.html">Inversion</a></li>
-                      <li><a href="form_advanced.html">Cartera priorizada</a></li>
-                      <li><a href="form_validation.html">Programacion multianual de inversiones</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-desktop"></i> FORMULACION Y EVALUACION <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="general_elements.html">Mantenimiento</a></li>
-                      <li><a href="media_gallery.html">Tipo de documento tecnico</a></li>
-                      <li><a href="typography.html">Evaluar fichas tecnicas</a></li>
-                      <li><a href="icons.html">Tdr</a></li>
-                      <li><a href="glyphicons.html">Cronograma de ejecucion tentativo</a></li>
-                      <li><a href="widgets.html">Otros</a></li>
-                      <li><a href="invoice.html">Invoice</a></li>
-                      <li><a href="inbox.html">Inbox</a></li>
-                      <li><a href="calendar.html">Calendar</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-table"></i> EJECUCION<span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="tables.html">Tables</a></li>
-                      <li><a href="tables_dynamic.html">Table Dynamic</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-bar-chart-o"></i> FUNCIONAMIENTO<span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="chartjs.html">Chart JS</a></li>
-                      <li><a href="chartjs2.html">Chart JS2</a></li>
-                      <li><a href="morisjs.html">Moris JS</a></li>
-                      <li><a href="echarts.html">ECharts</a></li>
-                      <li><a href="other_charts.html">Other Charts</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-clone"></i> OTROS<span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
-                      <li><a href="fixed_footer.html">Fixed Footer</a></li>
-                    </ul>
                   </li>
                 </ul>
               </div>
-
-               <div class="menu_section">
-                <h3>REPORTES Y ESTADISTICA</h3>
-                <ul class="nav side-menu">
-                  <li><a><i class="fa fa-file-archive-o"></i> REPORTES <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="e_commerce.html">E-commerce</a></li>
-                      <li><a href="projects.html">Projects</a></li>
-                      <li><a href="project_detail.html">Project Detail</a></li>
-                      <li><a href="contacts.html">Contacts</a></li>
-                      <li><a href="profile.html">Profile</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-bar-chart-o"></i> ESTADISTICAS<span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="page_403.html">403 Error</a></li>
-                      <li><a href="page_404.html">404 Error</a></li>
-                      <li><a href="page_500.html">500 Error</a></li>
-                      <li><a href="plain_page.html">Plain Page</a></li>
-                      <li><a href="login.html">Login Page</a></li>
-                      <li><a href="pricing_tables.html">Pricing Tables</a></li>
-                    </ul>
-                  </li>
-                      
-                </ul>
-              </div>
-
-
-
 
               <div class="menu_section">
                 <h3>ADMINISTRACION</h3>
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-gear"></i> CONFIGURACIÓN DE PARAMETROS <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">     
-                      <li><a href="<?php echo site_url('MSectorEntidadSpu/');?>">Sector</a></li>
-                        <li><a href="<?php echo site_url('MFuncion/');?>">Funcion</a></li>
-                        <li><a href="<?php echo site_url('pip/');?>">PIP</a></li> 
+                     <li><a href="<?php echo site_url('Sector/');?>">Sector</a></li>
+                        <li><a href="<?php echo site_url('CadenaFuncional/');?>">Cadena Funcional</a></li>
+                        <li><a href="<?php echo site_url('TipologiaInversion/');?>">Tipologia de inversion</a></li> 
+                         <li><a href="<?php echo site_url('InformacionPresupuestal/');?>">Informacion Presupuestal</a></li> 
+                         <li><a href="<?php echo site_url('EstadoCicloInversion/');?>">Ciclo de inversion</a></li> 
                         <li><a href="<?php echo site_url('MUbicacion/');?>">Ubicacion</a></li>
-                        <li><a href="<?php echo site_url('MRubroEjecucion/');?>">Ejecucion</a></li> 
-                        <li><a href="<?php echo site_url('MantenimientoBrecha/');?>">Brecha</a></li> 
-
+                        <li><a href="<?php echo site_url('UnidadEjecutora/');?>">Unidad Ejecutora</a></li> 
+                    
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-windows"></i> USUARIOS<span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                            <li><a href="<?php echo site_url('Usuario/');?>">Usuario</a></li>
-                    </ul>
-                  </li>
-                 
-                 
                 </ul>
               </div>
-
             </div>
             <!-- /sidebar menu -->
 
@@ -193,7 +108,6 @@
             <!-- /menu footer buttons -->
           </div>
         </div>
-
         <!-- top navigation -->
         <div class="top_nav">
           <div class="nav_menu">

@@ -1,21 +1,6 @@
 <div class="right_col" role="main">
           <div class="">
-            <div class="page-title">
-              <div class="title_left">
-                <h3>Mantenimiento de brechas</h3>
-              </div>
-
-              <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Buscar">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Ir</button>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
+       
 
             <div class="clearfix"></div>
 
@@ -23,7 +8,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                                 <div class="x_panel">
                                   <div class="x_title">
-                                    <h2><i class="fa fa-bars"></i>BRECHAS<small>VENTANA PRINCIPAL</small></h2>
+                                    <h2><i class="fa fa-bars"></i> Brechas e Indicadores<small></small></h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                       </li>
@@ -38,12 +23,9 @@
                                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
                                        
                                       <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-                                       
                                         <li role="presentation" class=""><a  href="#tab_brecha" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Brecha</a>
                                         </li>
                                         <li role="presentation" class=""><a  href="#tab_Indicador" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Indicador</a>
-                                        </li>
-                                        <li role="presentation" class=""><a  href="#tab_BrechaIndicador" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Brecha Indicador</a>
                                         </li>
                                       </ul>
                                       <div id="myTabContent" class="tab-content">
@@ -54,7 +36,7 @@
                                             
                                                   <div class="col-md-12 col-sm-12 col-xs-12">
                                                         <div class="x_panel">
-                                                            <button type="button" id="btn-NuevaBrecha"  class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraBrecha"> <span class="fa fa-file-o"></span> Nueva Brecha</button>
+                                                            <button type="button" id="btn-NuevaBrecha"  class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraBrecha"> <span class="glyphicon glyphicon-plus-sign"></span> Nueva Brecha</button>
                                                           <div class="x_title">
                                                       
                                                               
@@ -75,12 +57,12 @@
                                                             <table id="table-brecha" class="table table-condensed table-striped table-bordered table-hover">
                                                               <thead>
                                                                 <tr>
-                                                                  <th class="col-sm-1">Id</th>
-                                                                  <th class="col-sm-1">Id serv </th>
-                                                                  <th >Nombre servicio</th>
-                                                                  <th >Nombre</th>
-                                                                  <th >Descripcion</th>
-                                                                  <th class="col-sm-1">Mantenimiento</th>
+                                                                  <th class="col-sm-1">ID</th>
+                                                                  <th class="col-sm-1">ID SERV</th>
+                                                                  <th >NOMBRE SERVICIO</th>
+                                                                  <th >BRECHA</th>
+                                                                  <th >DESCRIPCION</th>
+                                                                  <th class="col-sm-1"></th>
                                                                 </tr>
                                                               </thead>
                                                             </table>
@@ -122,11 +104,11 @@
                                                             <table id="table-Indicador" class="table table-striped table-bordered table-hover" width="100%">
                                                               <thead>
                                                                 <tr>
-                                                                  <th>Id</th>
-                                                                  <th>Nombre Indicador</th>
-                                                                  <th>Definicion Indicador</th>
-                                                                  <th>Unidad de medida</th>
-                                                                  <th>Mantenimiento</th>
+                                                                  <th>ID</th>
+                                                                  <th>NOMBRE DE INDICADOR</th>
+                                                                  <th>DEFINICION INDICADOR</th>
+                                                                  <th>UNIDAD DE MEDIDA</th>
+                                                                  <th></th>
                                                                 </tr>
                                                               </thead>
                                                             </table>
@@ -167,12 +149,12 @@
                                                             <table id="table-brechaindicador" class="table table-striped table-bordered table-hover" width="100%">
                                                               <thead>
                                                                 <tr>
-                                                                  <th>Nombre brecha</th>
-                                                                  <th>Nombre Indicador</th>
-                                                                  <th>Fecha Indicador</th>
-                                                                  <th>Valor Indicador</th>
-                                                                  <th>Linea Base Indicador</th>
-                                                                  <th>Mantenimiento</th>
+                                                                  <th>NOMBRE BRECHA</th>
+                                                                  <th>NOMBRE INDICADOR</th>
+                                                                  <th>FECHA INDICADOR</th>
+                                                                  <th>VALOR INDICADOR</th>
+                                                                  <th>LINEA DE BASE</th>
+                                                                  <th></th>
                                                                 </tr>
                                                               </thead>
                                                             </table>
@@ -337,7 +319,7 @@
          <div class="row">
                     <div class="col-xs-12">
                                         <!-- PAGE CONTENT BEGINS -->
-                              <form class="form-horizontal form-label-left" id="form-addIndicador" action="<?php echo  base_url();?>MantenimientoBrecha/AddIndicador" method="POST"  >
+                              <form class="form-horizontal form-label-left" id="form-addIndicador" action="<?php echo  base_url();?>Indicador/AddIndicador" method="POST"  >
 
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre Indicador<span class="required">*</span>
@@ -393,7 +375,7 @@
          <div class="row">
                 <div class="col-xs-12">
                 
-                <form class="form-horizontal " id="form-ActualizarIndicador" action="<?php echo  base_url();?>index.php/MantenimientoBrecha/UpdateIndicador" method="POST" >
+                <form class="form-horizontal " id="form-ActualizarIndicador" action="<?php echo  base_url();?>Indicador/UpdateIndicador" method="POST" >
 
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre del Indicador<span class="required">*</span>
@@ -448,75 +430,3 @@
 <!-- fin ventana para modificar un indicador -->
 
 
-<!-- /.ventana para registra una nueva brecha indicador-->     
-<div class="modal fade" id="VentanaRegistraBrechaIndicador" role="dialog">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Registrar Nueva Brecha</h4>
-        </div>
-        <div class="modal-body">
-         <div class="row">
-                    <div class="col-xs-12">
-                                        <!-- PAGE CONTENT BEGINS -->
-                             
-            <form class="form-horizontal " id="form-addBrechaIndicador" action="<?php echo  base_url();?>MantenimientoBrecha/AddBrechaIndicador" method="POST" >
-                      <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Brecha*  </span>
-                            </label>
-                          <div class="col-md-6 col-sm-6 col-xs-12">
-                              <select id="cbxNombrebrecha" name="cbxNombrebrecha" class="selectpicker" data-live-search="true"  title="SeleccionBrecha">
-                             
-                              </select>
-                          </div>
-                       </div>
-
-                       <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Indicador*  </span>
-                            </label>
-                          <div class="col-md-6 col-sm-6 col-xs-12">
-                              <select id="cbxNombreIndicador" name="cbxNombreIndicador" class="selectpicker" data-live-search="true"  title="Seleccione Indicador">
-                             
-                              </select>
-                          </div>
-                        </div>
-                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">fecha Indicador<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="datefechaindicador" name="datefechaindicador" type="date" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="text">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Valor del indicador<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txtvalorindicador" name="txtvalorindicador" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Valor del indicador" required="required" type="text">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Linea Base Indicador<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txtbaseindicador" name="txtbaseindicador" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Linea de base indicador" required="required" type="text">
-                        </div>
-                      </div>
-                      <div class="ln_solid"></div>
-                      <div class="form-group">
-                        <div class="col-md-6 col-md-offset-3">
-                          <button id="send" type="submit" class="btn btn-success"  ><span class="fa fa-save"></span> Guardar</button>
-                          <button type="submit" class="btn btn-danger" data-dismiss="modal"><span class="fa fa-close"></span> Cancelar</button>
-                        </div>
-                      </div>
-                    </form>
-                        </div><!-- /.span -->
-                 </div><!-- /.row -->
-        </div>
-        <div class="modal-footer">
-
-        </div>
-      </div>
-    </div>
-  </div>
-<!-- /.fin ventana para registra una nueva brecha indicador-->

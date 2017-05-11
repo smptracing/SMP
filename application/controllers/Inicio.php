@@ -22,14 +22,10 @@ class Inicio extends CI_Controller {
 	{
 		$this->_load_layout('Inicio');
 	}
-	public function indexD()
-	{
-		$this->_load_layout('InicioD');
-	}
 	function _load_layout($template)
     {
-      $this->load->view('layout/header');
+      $this->load->view('layout/PRINCIPAL/header');
       $this->load->view($template);
-      $this->load->view('layout/footer');
+      $this->load->view('layout/PRINCIPAL/footer');
     }
 }

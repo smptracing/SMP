@@ -1,43 +1,14 @@
 <div class="right_col" role="main">
           <div class="">
-            <div class="page-title">
-              <div class="title_left">
-                <h3>Mantenimiento</h3>
-              </div>
-
-              <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Buscar...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
             <div class="clearfix"></div>
 
             <div class="">
               <div class="col-md-12 col-xs-12 col-xs-12">
                                 <div class="x_panel">
                                   <div class="x_title">
-                                    <h2><i class="fa fa-bars"></i> Menu </h2>
+                                    <h2><i class="fa fa-bars"></i> Sector </h2>
                                     <ul class="nav navbar-right panel_toolbox">
-                                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                      </li>
-                                      <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                        <ul class="dropdown-menu" role="menu">
-                                          <li><a href="#">Settings 1</a>
-                                          </li>
-                                          <li><a href="#">Settings 2</a>
-                                          </li>
-                                        </ul>
-                                      </li>
-                                      <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                      </li>
+
                                     </ul>
                                     <div class="clearfix"></div>
                                   </div>
@@ -48,6 +19,7 @@
                                       <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
                                         <li role="presentation" class="active"><a href="#tab_Sector"  id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">
                                         <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Sector
+                                        
                                         </a>
                                         </li>
                                         <li role="presentation" class=""><a href="#tab_Entidad" role="tab"  id="profile-tab" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Entidad</a>
@@ -64,8 +36,8 @@
                                                   <div class="col-md-12 col-sm-12 col-xs-12">
                                                         <div class="x_panel">
                                                             <button type="button"  class="btn btn-primary " data-toggle="modal" data-target="#VentanaRegistraSector" >
-                                                                      <span class="glyphicon glyphicon-book"></span>
-                                                                Nueva Sector </button>
+                                                                      <span class="fa fa-plus-circle"></span>
+                                                                Nuevo </button>
                                                           <div class="x_title">                                                              
                                                             <ul class="nav navbar-right panel_toolbox">
                                                                 
@@ -76,7 +48,8 @@
                                                               </li>
                                                                 
                                                             </ul>
-                                                                                                                            
+                                                                <div class="clearfix"></div>
+                                                                                                                        
                                                           </div>
                                                           <div class="x_content">
                                                             <table id="table-sector"  class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
@@ -104,8 +77,8 @@
                                                   <div class="col-md-12 col-sm-12 col-xs-12">
                                                         <div class="x_panel">
                                                             <button type="button" id="Btn_entidad" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraEntidad" >
-                                                                <span class="glyphicon glyphicon-book"></span>
-                                                                Nueva Entidad</button>
+                                                                <span class="fa fa-plus-circle"></span>
+                                                                Nuevo</button>
                                                           <div class="x_title">                                                              
                                                             <ul class="nav navbar-right panel_toolbox">
                                                                 
@@ -116,6 +89,7 @@
                                                               </li>
                                                                 
                                                             </ul>
+                                                            <div class="clearfix"></div>
                                                                                                                             
                                                           </div>
                                                           <div class="x_content">
@@ -147,8 +121,9 @@
                                                   <div class="col-md-12 col-sm-12 col-xs-12">
                                                         <div class="x_panel">
                                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraServicioAsociado" >
-                                                            <span class="glyphicon glyphicon-book"></span>
-                                                                Nuevo Servicio Asociado</button>
+                                                            <span class="fa fa-plus-circle"></span>
+                                                                Nuevo</button>
+
                                                           <div class="x_title">                                                              
                                                             <ul class="nav navbar-right panel_toolbox">
                                                                 
@@ -159,7 +134,9 @@
                                                               </li>
                                                                 
                                                             </ul>
-                                                                                                                            
+                                                            <div class="clearfix"></div>
+
+
                                                           </div>
                                                           <div class="x_content">
                                                             <table id="table-ServicioAsociado" class="table table-striped table-bordered table-hover" ellspacing="0" width="100%">
@@ -203,7 +180,7 @@
          <div class="row">
             <div class="col-xs-12">
                   <!-- FORULARIO PARA REGISTRAR NUEVO SECTOR  -->
-                <form class="form-horizontal " id="form-addSector" action="<?php echo  base_url();?>MSectorEntidadSpu/AddSector" method="POST" >
+                <form class="form-horizontal " id="form-addSector" action="<?php echo  base_url();?>Sector/AddSector" method="POST" >
 
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre Sector <span class="required">*</span>
@@ -454,7 +431,7 @@
          <div class="row">
                 <div class="col-xs-12">
                  <!-- FORMULARIO PARA REGISTRA NUEVO SERVICIO ASOCIADO-->
-                <form class="form-horizontal " id="form-ActulizarSector" action="<?php echo  base_url();?>MSectorEntidadSpu/UpdateSector" method="POST" >
+                <form class="form-horizontal " id="form-ActulizarSector" action="<?php echo  base_url();?>Sector/UpdateSector" method="POST" >
 
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Modificar El sector<span class="required">*</span>

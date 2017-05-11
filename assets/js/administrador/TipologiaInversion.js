@@ -9,7 +9,7 @@ $(document).on("ready" ,function(){
                   {
                       event.preventDefault();
                       $.ajax({
-                          url:base_url+"index.php/pip/AddTipologiaInversion",
+                          url:base_url+"index.php/TipologiaInversion/AddTipologiaInversion",
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
@@ -38,7 +38,7 @@ $(document).on("ready" ,function(){
                   {
                       event.preventDefault();
                       $.ajax({
-                          url:base_url+"index.php/pip/UpdateTipologiaInversion",
+                          url:base_url+"index.php/TipologiaInversion/UpdateTipologiaInversion",
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
@@ -51,8 +51,8 @@ $(document).on("ready" ,function(){
                   });
 
 
-			});
-			   /*listra */
+      });
+         /*listra */
                 var listaTipologiaInversion=function()
                 {
                     var myTable=$("#dynamic-table-TipologiaInversion").DataTable({
@@ -61,60 +61,60 @@ $(document).on("ready" ,function(){
                      destroy:true,
 
                          "ajax":{
-                                    "url":base_url+"index.php/pip/get_TipologiaInversion",
-									"method":"POST",
-									"dataSrc":""
+                                    "url":base_url+"index.php/TipologiaInversion/get_TipologiaInversion",
+                  "method":"POST",
+                  "dataSrc":""
                                     },
                                 "columns":[
                                    {"defaultContent":""},
                                   {"data":"IDTIPOLOGIAINVERSION"  },
-								                  {"data":"NOMBRETIPOLOGIA"},
-			        			              {"data":"DESCRIPCIONTIPOLOGIA"},
+                                  {"data":"NOMBRETIPOLOGIA"},
+                                  {"data":"DESCRIPCIONTIPOLOGIA"},
                                   {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaEditTipologiaInversion'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                ],
 
                                 "language":idioma_espanol
                     }); 
 $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
-				
-				new $.fn.dataTable.Buttons( myTable, {
-					buttons: [
-					  {
-						"extend": "colvis",
-						"text": "<i class='fa fa-search bigger-110 blue'></i> <span class='hidden'>Show/hide columns</span>",
-						"className": "btn btn-white btn-primary btn-bold",
-						columns: ':not(:first):not(:last)'
-					  },
-					  {
-						"extend": "copy",
-						"text": "<i class='fa fa-copy bigger-110 pink'></i> <span class='hidden'>Copy to clipboard</span>",
-						"className": "btn btn-white btn-primary btn-bold"
-					  },
-					  {
-						"extend": "csv",
-						"text": "<i class='fa fa-database bigger-110 orange'></i> <span class='hidden'>Export to CSV</span>",
-						"className": "btn btn-white btn-primary btn-bold"
-					  },
-					  {
-						"extend": "excel",
-						"text": "<i class='fa fa-file-excel-o bigger-110 green'></i> <span class='hidden'>Export to Excel</span>",
-						"className": "btn btn-white btn-primary btn-bold"
-					  },
-					  {
-						"extend": "pdf",
-						"text": "<i class='fa fa-file-pdf-o bigger-110 red'></i> <span class='hidden'>Export to PDF</span>",
-						"className": "btn btn-white btn-primary btn-bold"
-					  },
-					  {
-						"extend": "print",
-						"text": "<i class='fa fa-print bigger-110 grey'></i> <span class='hidden'>Print</span>",
-						"className": "btn btn-white btn-primary btn-bold",
-						autoPrint: false,
-						message: 'This print was produced using the Print button for DataTables'
-					  }		  
-					]
-				} );
-				myTable.buttons().container().appendTo( $('.tableTools-container-TipologiaInversion') );
+        
+        new $.fn.dataTable.Buttons( myTable, {
+          buttons: [
+            {
+            "extend": "colvis",
+            "text": "<i class='fa fa-search bigger-110 blue'></i> <span class='hidden'>Show/hide columns</span>",
+            "className": "btn btn-white btn-primary btn-bold",
+            columns: ':not(:first):not(:last)'
+            },
+            {
+            "extend": "copy",
+            "text": "<i class='fa fa-copy bigger-110 pink'></i> <span class='hidden'>Copy to clipboard</span>",
+            "className": "btn btn-white btn-primary btn-bold"
+            },
+            {
+            "extend": "csv",
+            "text": "<i class='fa fa-database bigger-110 orange'></i> <span class='hidden'>Export to CSV</span>",
+            "className": "btn btn-white btn-primary btn-bold"
+            },
+            {
+            "extend": "excel",
+            "text": "<i class='fa fa-file-excel-o bigger-110 green'></i> <span class='hidden'>Export to Excel</span>",
+            "className": "btn btn-white btn-primary btn-bold"
+            },
+            {
+            "extend": "pdf",
+            "text": "<i class='fa fa-file-pdf-o bigger-110 red'></i> <span class='hidden'>Export to PDF</span>",
+            "className": "btn btn-white btn-primary btn-bold"
+            },
+            {
+            "extend": "print",
+            "text": "<i class='fa fa-print bigger-110 grey'></i> <span class='hidden'>Print</span>",
+            "className": "btn btn-white btn-primary btn-bold",
+            autoPrint: false,
+            message: 'This print was produced using the Print button for DataTables'
+            }     
+          ]
+        } );
+        myTable.buttons().container().appendTo( $('.tableTools-container-TipologiaInversion') );
         TipologiaData("#dynamic-table-TipologiaInversion",myTable);  //CARGAR LA DATA PARA MOSTRAR EN EL MODAL  
         EliminarTipologiaData("#dynamic-table-TipologiaInversion",myTable);
                 }
@@ -144,7 +144,7 @@ var EliminarTipologiaData=function(tbody,myTable){
                               },
                               function(){
                                     $.ajax({
-                                          url:base_url+"index.php/pip/EliminarTipologiaInversion",
+                                          url:base_url+"index.php/TipologiaInversion/EliminarTipologiaInversion",
                                           type:"POST",
                                           data:{IDTIPOLOGIAINVERSION:IDTIPOLOGIAINVERSION},
                                           success:function(respuesta){
