@@ -245,7 +245,7 @@
                           <input id="txt_IdRubroEModif" type="hidden" name="txt_IdRubroEModif" type="text">
                         </div>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_NombreRubroEU" name="txt_NombreRubroEU" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name"  required="required" type="text">
+                          <input id="txt_NombreRubroEU" name="txt_NombreRubroEU" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="text">
                         </div>
                       </div>
 
@@ -263,7 +263,7 @@
                             <span class="glyphicon glyphicon-floppy-disk"></span>
                             Guardar
                           </button>
-                          <button type="submit" data-dismiss="modal" class="btn btn-danger">
+                          <button  data-dismiss="modal" class="btn btn-danger">
                              <span class="glyphicon glyphicon-remove"></span>
                             Cancelar
                           </button>

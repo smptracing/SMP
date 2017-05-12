@@ -57,8 +57,7 @@ class MRubroEjecucion extends CI_Controller {
 		      if($this->Model_RubroE->UpdateRubroE($txt_IdRubroEModif,$txt_NombreRubroEU,$txtArea_DescRubroEU) == false)
 		        echo "Se actualizo correctamente el rubro de ejecucion";
 		      else
-		        echo "No Se actualizo correctamente el rubro de ejecucion"; 
-	
+		        echo "Se actualizo correctamente el rubro de ejecucion"; 	
 	    }
 	    else
 	    {

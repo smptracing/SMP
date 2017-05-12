@@ -68,11 +68,9 @@
         RubroEData=function(tbody,table){
                     $(tbody).on("click","button.editar",function(){
                         var data=table.row( $(this).parents("tr")).data();
-                        console.log(data);
-                        var id_brecha=$('#txt_IdRubroEModif').val(data.id_rubro_ejecucion);
+                        var id_brecha=$('#txt_IdRubroEModif').val(data.id_rubro_ejec);
                         var nombre_brecha=$('#txt_NombreRubroEU').val(data.nombre_rubro_ejec);
                         var desc_brecha=$('#txtArea_DescRubroEU').val(data.descripcion_rubro_ejec);
-                   
                     });
                 }
     // FIN DE CAMPOS QUE SE ACTUALIZARAN EN EL RUBRO DE EJECUCION
