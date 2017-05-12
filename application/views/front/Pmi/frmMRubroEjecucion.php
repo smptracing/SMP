@@ -28,6 +28,10 @@
                                         </li>
                                         <li role="presentation" class=""><a  href="#tab_UnidadEjecutora" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Unidad Ejecutora</a>
                                         </li>
+                                        <li role="presentation" class=""><a href="#tab_NivelGobierno" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">
+                                        <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
+                                         Nivel de Gobierno</a>
+                                         </li>
                                       </ul>
                                       <div id="myTabContent" class="tab-content">
                                            <!-- /panel de ejecucion  -->
@@ -37,7 +41,7 @@
                                             
                                                   <div class="col-md-12 col-sm-12 col-xs-12">
                                                         <div class="x_panel">
-                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraRubroEjecucion" ><span class="fa fa-file-o"></span> Nuevo rubro de ejecucion </button>
+                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraRubroEjecucion" ><span class="fa fa-plus-circle"></span> Nuevo</button>
                                                           <div class="x_title">
                                                          
                                                               
@@ -72,9 +76,9 @@
                                                       </div>
                                                      
                                             </div>
-                                         <!-- / fin tabla de brechas desde el row -->
+                                         <!-- / fin tabla de rubro de jecucion desde el row -->
                                         </div>
-                                           <!-- / fin panel de brechas desde el row -->
+                                           <!-- / fin panel de rubro de ejecucion desde el row -->
                                           
                             <!-- /  panel de modalidad ejecucion el row -->
                                         <div role="tabpanel" class="tab-pane fade" id="tab_ModalidadEjecucion" aria-labelledby="profile-tab">
@@ -84,7 +88,7 @@
                                             
                                                   <div class="col-md-12 col-sm-12 col-xs-12">
                                                         <div class="x_panel">
-                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraModalidadEjecucion"><span class="fa fa-file-o"></span> Nuevo</button>
+                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraModalidadEjecucion"><span class="fa fa-plus-circle"></span> Nuevo</button>
                                                           <div class="x_title">
                                                  
                                                               
@@ -118,8 +122,7 @@
                                             </div>
                                          <!-- / fin  de la tabla de Modalidas de ejecucion row -->                                
                                         </div>
-                                <!-- /  fin panel de modalidad ejecucion el row -->
-                                          
+                                <!-- /  fin panel de modalidad ejecucion el row -->   
                                 <!-- /  Panel Unidad Ejecutora -->
                                          <div role="tabpanel" class="tab-pane fade" id="tab_UnidadEjecutora" aria-labelledby="profile-tab">
                                      
@@ -128,7 +131,7 @@
                                             
                                                   <div class="col-md-12 col-sm-12 col-xs-12">
                                                         <div class="x_panel">
-                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraUnidadEjecutora" > <span class="fa fa-file-o"></span> Nuevo</button>
+                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraUnidadEjecutora" ><span class="fa fa-plus-circle"></span> Nuevo</button>
                                                           <div class="x_title">
                                                         
                                                               
@@ -163,6 +166,61 @@
                                          <!-- / fin  Unidad Ejecutora-->        
                                          </div>
                                 <!-- /  Fin Panel Unidad Ejecutora -->
+
+
+                                           <!-- /Inicio del Contenido del nivel de gobierno nversion -->
+                                        <div role="tabpanel" class="tab-pane fade" id="tab_NivelGobierno" aria-labelledby="profile-tab">
+                                        <!-- /Inicio tabla de nivel de gobiernodesde el row -->
+                                           <div class="row">
+                                              <div class="col-md-12 col-sm-12 col-xs-12">
+                                              <div class="x_panel">
+
+                                                    <div class="x_title">
+                                                            <!--<h2>Listado de Nivel de Gobierno<small>.</small></h2>-->
+                                                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegNivelGobierno" ><span class="fa fa-plus-circle"></span> Nuevo</button>
+
+                              
+                                                            <ul class="nav navbar-right panel_toolbox">
+                                                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                                              </li>
+                                                              <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                                              </li>
+                                                            </ul>
+                                                           <div class="clearfix"></div>
+                                                      </div>
+                                                      <!--inicio de la tabla nivel de gobierno -->
+                                                        <!--inicio  de icono de reporte -->
+                                                        <div class="clearfix">
+                                                           <div class=" pull-right tableTools-container-NivelGobierno">
+                                                           </div>
+                                                        </div>
+                                                      <!--fin  de icono de reporte -->
+                                                      <div class="x_content">
+                                                                <table id="dynamic-table-NivelGobierno" class="table table-striped table-bordered table-hover" width="100%">
+                                                                    <thead>
+                                                                       <tr>
+                                                                         <th class="center">
+                                                                          <label class="pos-rel">
+                                                                           <input type="checkbox" class="ace" />
+                                                                           <span class="lbl"></span>
+                                                                          </label>
+                                                                         </th>
+                                                                         <th>ID </th>
+                                                                         <th>NOMBRE NIVEL</th>
+                                                                         <th class="hidden-480">DESCRIPCION </th>
+                                                                         <th></th>
+                                                                      </tr>
+                                                                   </thead>
+
+                                                                </table>
+                                                      </div>
+                                                      <!--fin de la tabla nivel de gobierno-->
+                                           </div>
+                                              </div>
+                                           </div>
+                                        <!-- / fin tabla nivel de gobierno desde  el row -->
+                                        </div>
+                                        <!-- /fin del Contenido del NIvel de gobierno -->
                                       </div>
                                     </div>
 
@@ -245,7 +303,7 @@
                           <input id="txt_IdRubroEModif" type="hidden" name="txt_IdRubroEModif" type="text">
                         </div>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_NombreRubroEU" name="txt_NombreRubroEU" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name"  required="required" type="text">
+                          <input id="txt_NombreRubroEU" name="txt_NombreRubroEU" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="text">
                         </div>
                       </div>
 
@@ -263,7 +321,7 @@
                             <span class="glyphicon glyphicon-floppy-disk"></span>
                             Guardar
                           </button>
-                          <button type="submit" data-dismiss="modal" class="btn btn-danger">
+                          <button  data-dismiss="modal" class="btn btn-danger">
                              <span class="glyphicon glyphicon-remove"></span>
                             Cancelar
                           </button>
@@ -477,3 +535,113 @@
   </div>
 
 <!-- fin ventana para modificar unidad ejecutora -->
+<!-- /.ventana para registra una nueva  nivel de gobierno-->
+<div class="modal fade" id="VentanaRegNivelGobierno" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
+          Nivel de Gobierno</h4>
+        </div>
+        <div class="modal-body">
+         <div class="row">
+                    <div class="col-xs-12">
+                                        <!-- PAGE CONTENT BEGINS -->
+              <form class="form-horizontal " id="form-AddNivelGobierno"   action="<?php echo base_url(); ?>NivelGobierno/AddNivelGobierno" method="POST" >
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre  <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="txt_NombreNivelGobierno" name="txt_NombreNivelGobierno" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Nombre" required="required" type="text">
+                        </div>
+                      </div>
+                       <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Descripción
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="txt_DescripcionNivelGobierno" name="txt_DescripcionNivelGobierno" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Descripción" type="text">
+                        </div>
+                      </div>
+                           <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                          <button id="send" type="submit" class="btn btn-success" >
+                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+                           Guardar</button>
+                          <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
+                          <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
+                           Cancelar</button>
+                        </div>
+                      </div>
+                    </form>
+                        </div><!-- /.span -->
+                 </div><!-- /.row -->
+        </div>
+        <div class="modal-footer">
+
+        </div>
+      </div>
+    </div>
+</div>
+<!-- /.fin ventana para registra una nivel de gobierno-->
+
+<!-- /.ventana para modificar una  nivel de gobierno-->
+<div class="modal fade" id="VentanaEditNivelGobierno" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
+          NIvel de Gobierno</h4>
+        </div>
+        <div class="modal-body">
+         <div class="row">
+                    <div class="col-xs-12">
+                                        <!-- PAGE CONTENT BEGINS -->
+              <form class="form-horizontal " id="form-EditNivelGobierno"   action="<?php echo base_url(); ?>NivelGobierno/get_NivelGobierno" method="POST" >
+
+               <div class="item form-group">
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input id="txt_IdNivelGobiernoM" name="txt_IdNivelGobiernoM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
+                        </div>
+                      </div>
+
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre  <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="txt_NombreNivelGobiernoM" name="txt_NombreNivelGobiernoM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Nombre " required="required" type="text">
+                        </div>
+                      </div>
+                       <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Descripccion
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="txt_DescripcionNivelGobiernoM" name="txt_DescripcionNivelGobiernoM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Descripccion "  type="text">
+                        </div>
+                      </div>
+                           <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                       <button id="send" type="submit" class="btn btn-success" >
+                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+                           Guardar</button>
+                          <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
+                          <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
+                           Cancelar</button>
+                        </div>
+                      </div>
+                    </form>
+                        </div><!-- /.span -->
+                 </div><!-- /.row -->
+        </div>
+        <div class="modal-footer">
+
+        </div>
+      </div>
+    </div>
+</div>
+<!-- /.fin ventana para modificar una estado nivel de gobierno-->

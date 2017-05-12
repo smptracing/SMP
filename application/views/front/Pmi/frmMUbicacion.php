@@ -39,7 +39,7 @@
 
                                                   <div class="col-md-12 col-sm-12 col-xs-12">
                                                         <div class="x_panel">
-                                                            <button type="button" id="btn-AddUbigeo" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraUbigeo" >Nuevo ubigeo</button>
+                                                            <button type="button" id="btn-AddUbigeo" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraUbigeo" ><span class="fa fa-plus-circle"></span> Nuevo</button>
                                                           <div class="x_title">
                                                             <h2>Listado de  <small>Ubigeo</small></h2>
                                                               
@@ -57,54 +57,16 @@
                                                               
                                                           </div>
                                                           <div class="x_content">
-                                                            <table id="datatable" class="table table-striped table-bordered">
+                                                            <table id="datatable" class="table table-striped table-bordered" width="100%">
                                                               <thead>
                                                                 <tr>
-                                                                  <th>Name</th>
-                                                                  <th>Position</th>
-                                                                  <th>Office</th>
-                                                                  <th>Age</th>
-                                                                  <th>Start date</th>
-                                                                  <th>Salary</th>
+                                                                  <th>ID</th>
+                                                                  <th>DEPARTAMENTO</th>
+                                                                  <th>PROVINCIA</th>
+                                                                  <th>DISTRITO</th>
+                                                               
                                                                 </tr>
                                                               </thead>
-
-
-                                                              <tbody>
-                                                                <tr>
-                                                                  <td>Tiger Nixon</td>
-                                                                  <td>System Architect</td>
-                                                                  <td>Edinburgh</td>
-                                                                  <td>61</td>
-                                                                  <td>2011/04/25</td>
-                                                                  <td>$320,800</td>
-                                                                </tr>
-                                                                <tr>
-                                                                  <td>Garrett Winters</td>
-                                                                  <td>Accountant</td>
-                                                                  <td>Tokyo</td>
-                                                                  <td>63</td>
-                                                                  <td>2011/07/25</td>
-                                                                  <td>$170,750</td>
-                                                                </tr>
-                                                                <tr>
-                                                                  <td>Ashton Cox</td>
-                                                                  <td>Junior Technical Author</td>
-                                                                  <td>San Francisco</td>
-                                                                  <td>66</td>
-                                                                  <td>2009/01/12</td>
-                                                                  <td>$86,000</td>
-                                                                </tr>
-                                                                <tr>
-                                                                  <td>Cedric Kelly</td>
-                                                                  <td>Senior Javascript Developer</td>
-                                                                  <td>Edinburgh</td>
-                                                                  <td>22</td>
-                                                                  <td>2012/03/29</td>
-                                                                  <td>$433,060</td>
-                                                                </tr>
-                                                                                                                             
-                                                              </tbody>
                                                             </table>
                                                           </div>
                                                         </div>
