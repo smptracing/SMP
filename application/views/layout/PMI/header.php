@@ -63,9 +63,8 @@
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
-                <h3>PRINCIPAL</h3>
                 <ul class="nav side-menu">
-                  <li><a href="<?php echo site_url('Inicio/');?>"> <i class="fa fa-home"></i> INICIO<span class="fa fa-chevron-down"></span></a>
+                  <li><a href="<?php echo site_url('Inicio/');?>"> <i class="fa fa-mail-reply"></i> INICIO<span class="fa fa-chevron-down"></span></a>
                   </li>
 
                   <li><a><i class="fa fa-edit"></i> PMI <span class="fa fa-chevron-down"></span></a>

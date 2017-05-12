@@ -29,7 +29,7 @@ class Funcion extends CI_Controller {/* Mantenimiento de sector entidad Y servic
                 if($this->Model_Funcion->AddFucion($txt_codigofuncion,$txt_nombrefuncion) == true)
                   echo "Se añadio una función";
                 else
-                  echo "No se añadio  una función";  
+                  echo "Se añadio  una función";  
              }
              else
               {
@@ -50,7 +50,7 @@ class Funcion extends CI_Controller {/* Mantenimiento de sector entidad Y servic
                 if($this->Model_Funcion->UpdateFuncion($txt_IdfuncionM,$txt_codigofuncionM,$txt_nombrefuncionM) == true)
                   echo "Se actualizao  la función";
                 else
-                  echo "No se actualizo la  función";  
+                  echo "Se actualizo la  función";  
              }
              else
               {

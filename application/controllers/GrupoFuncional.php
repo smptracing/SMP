@@ -31,7 +31,7 @@ class GrupoFuncional extends CI_Controller {/* Mantenimiento de division funcion
                 if($this->Model_GrupoFuncional->AddGrupoFuncional($txt_codigoGfuncion,$txt_nombreGfuncion,$SelecDivisionFF,$SelecSector)== true)
                   echo "Se inserto un grupo funcional funcional";
                 else
-                  echo "No inserto un grupo funcional";  
+                  echo "Se inserto un grupo funcional";  
              }
              else
               {
@@ -51,7 +51,7 @@ class GrupoFuncional extends CI_Controller {/* Mantenimiento de division funcion
                 if($this->Model_GrupoFuncional->UpdateGrupoFuncional($txt_idGfuncionF,$IdSelecDivisionFFF,$IdSelecSectorF,$txt_codigoGfuncionF,$txt_nombreGfuncionF)== true)
                   echo "Se  modifico el grupo funcional funcional";
                 else
-                  echo "No no se modifico el grupo funcional";  
+                  echo "Se modifico el grupo funcional";  
              }
              else
               {
