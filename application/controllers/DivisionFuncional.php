@@ -33,7 +33,7 @@ class DivisionFuncional extends CI_Controller {/* Mantenimiento de division func
                 if($this->Model_DivisionFuncional->AddDivisionFucion($txt_CodigoDfuncional,$txt_Nombre_DFuncional,$listaFuncionC)== true)
                   echo "Se inserto una division funcional";
                 else
-                  echo "Se inserto una division funcional";  
+                  echo "No inserto una division funcional";  
              }
              else
               {

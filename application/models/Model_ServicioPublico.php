@@ -21,7 +21,7 @@ class Model_ServicioPublico extends CI_Model
       function AddServicioAsociado($textarea_servicio_publicoA){
 
            $this->db->query("execute sp_Servicio_PublicoA_c '".$textarea_servicio_publicoA."'");
-            if($this->db->affected_rows()> 0)
+            if($this->db->affected_rows() > 0)
              {
               return true;
              }else

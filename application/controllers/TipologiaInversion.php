@@ -50,9 +50,9 @@ class TipologiaInversion extends CI_Controller
             $user                      = "1";
 
             if ($this->NaturalezaInversion_Model->EliminarNaturalezaInversion($flat, $txt_IdNaturaleza, $txt_NombreNaturaleza, $txt_DescripcionNaturaleza, $user) == true) {
-                echo "Se actualizó  ";
+                echo "No Se actualizó  ";
             } else {
-                echo "Se actualizó ";
+                echo " se actualizó ";
             }
 
         } else {
@@ -76,7 +76,7 @@ class TipologiaInversion extends CI_Controller
             if ($this->NaturalezaInversion_Model->UpdateNaturalezaInversion($flat, $txt_IdNaturalezaM, $txt_NombreNaturalezaM, $txt_DescripcionNaturalezaM, $user) == false) {
                 echo "Se actualizó  ";
             } else {
-                echo "Se actualizó ";
+                echo "No se actualizó ";
             }
 
         } else {

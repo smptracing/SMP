@@ -34,7 +34,7 @@ class Sector extends CI_Controller {/* Mantenimiento de sector entidad Y servici
 	      if($this->Model_Sector->AddSector($txt_NombreSector) == false)
 	        echo "Se añadio un  sector";
 	      else
-	        echo "Se añadio  un sector";  
+	        echo "No se añadio  un sector";  
 		 }
 		 else
 		  {
@@ -51,7 +51,7 @@ class Sector extends CI_Controller {/* Mantenimiento de sector entidad Y servici
 		      if($this->Model_Sector->UpdateSector($txt_IdModificar,$txt_NombreSectorM) == false)
 		        echo "Se actualizo correctamente el sector";
 		      else
-		        echo "Se actualizo correctamente el sector"; 
+		        echo "No Se actualizo correctamente el sector"; 
 	    }
 	    else
 	    {

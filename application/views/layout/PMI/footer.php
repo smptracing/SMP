@@ -82,21 +82,23 @@
 
 
     <script src="<?php echo base_url(); ?>assets/js/ubicacion/ubicacion.js"></script><!-- para la ubicacion -->
-    <script src="<?php echo base_url(); ?>assets/js/administrador/ServicioPublico.js"></script><!-- para mostra la divicion funcional la funcio y el grupo duncional-->
+    <script src="<?php echo base_url(); ?>assets/js/administrador/MSectorEntidadSpu.js"></script><!-- para mostralos datos de sector entidad y servicios publicos asociados-->
+    <script src="<?php echo base_url(); ?>assets/js/administrador/MFuncion.js"></script><!-- para mostra la divicion funcional la funcio y el grupo duncional-->
 
     <script src="<?php echo base_url(); ?>assets/js/administrador/MBrecha.js"></script><!-- para mostra los datos de la brecha-->
     <script src="<?php echo base_url(); ?>assets/js/administrador/MRubroE.js"></script><!-- para mostar los datos de rubro de ejecucion-->
+        <script src="<?php echo base_url(); ?>assets/js/administrador/UnidadEjecutora.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/administrador/ModalidadE.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/administrador/UnidadE.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/administrador/MProyectoInversion.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/Administrador/MProyectoInversion.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/administrador/Indicador.js"></script>
     <!-- js de los formularios-->
-    <script src="<?php echo base_url(); ?>assets/js/administrador/NaturalezaInversion.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/administrador/TipologiaInversion.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/administrador/TipoInversion.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/administrador/EstadoCicloInversion.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/administrador/NivelGobierno.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/administrador/FuenteFinanciamiento.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/Administrador/NaturalezaInversion.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/Administrador/TipologiaInversion.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/Administrador/TipoInversion.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/Administrador/EstadoCicloInversion.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/Administrador/NivelGobierno.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/Administrador/FuenteFinanciamiento.js"></script>
 
   </body>
 </html>

@@ -31,8 +31,8 @@
                          "ajax":{
                                     "url":base_url +"index.php/UnidadE/GetUnidadE",
                                     "method":"POST",
-                                     "dataSrc":""
-                               },
+                                                                 "dataSrc":""
+                    },
        //para llenado y busqueda por todo los campos
                                 "columns":[
                                     {"data":"id_ue"},
