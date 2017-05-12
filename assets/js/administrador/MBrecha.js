@@ -39,7 +39,7 @@
                     $("#cbxSerPubAsocModificar").html(html); 
                     event.preventDefault(); 
                     $.ajax({
-                        "url":base_url +"index.php/MSectorEntidadSpu/GetServicioAsociado",
+                        "url":base_url +"index.php/ServicioPublico/GetServicioAsociado",
                         type:"POST",
                         success:function(respuesta){
                            // alert(respuesta);

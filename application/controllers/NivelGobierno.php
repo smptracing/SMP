@@ -12,7 +12,7 @@ class InformacionPresupuestal extends CI_Controller
     }
     public function index()
     {
-        $this->_load_layout('front/Administracion/frmInformacionPresupuestal');
+        $this->_load_layout('front/Pmi/frmMRubroEjecucion');
     }
 
 //------------------------------------------------------------------------------------------------------------------

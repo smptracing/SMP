@@ -37,7 +37,7 @@ class Entidad extends CI_Controller {/* Mantenimiento de sector entidad Y servic
 	     if($this->Model_Entidad->AddEntidad($listaSector,$txt_NombreEntidad,$txt_DenominacionEntidad) == false)
 		       echo "Se añadio una nueva entidad";
 		      else
-		      echo "No se añadio  una nueva entidad";  
+		      echo "Se añadio  una nueva entidad";  
 		 } 
 	     else
 	     {
@@ -58,7 +58,7 @@ class Entidad extends CI_Controller {/* Mantenimiento de sector entidad Y servic
 	     if($this->Model_Entidad->UpdateEntidad($txt_IdModificarEntidar,$id_sector,$txt_NombreEntidadM,$txt_DenominacionEntidadM) == false)
 		       echo "Se actualizo una nueva entidad";
 		      else
-		      echo "No se actualizo  una nueva entidad"; 
+		      echo "Se actualizo  una nueva entidad"; 
 		 } 
 	     else
 	     {
@@ -74,9 +74,9 @@ class Entidad extends CI_Controller {/* Mantenimiento de sector entidad Y servic
 
 	      $id_entidad=$this->input->post("id_entidad");
 	     if($this->Model_Entidad->EliminarEntidad($id_entidad)== false)
-		       echo "Se elimino";
+		       echo "Se elimino la entidad";
 		      else
-		      echo "no se elimino"; 
+		      echo "Se elimino entidad"; 
 		 } 
 	     else
 	     {

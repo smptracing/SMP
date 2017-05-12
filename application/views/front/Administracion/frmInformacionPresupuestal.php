@@ -27,7 +27,9 @@
                                         <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
                                          Fuente de Financiamiento</a>
                                          </li>
-                                         
+                                      <li role="presentation" class=""><a  href="#tab_RubroEjecucion" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Rubro de ejecucion</a>
+                                        </li>
+
                                 </ul>
                               <!-- Fin Menus-->
                                       <div id="myTabContent" class="tab-content">
@@ -86,6 +88,53 @@
                                         <!-- / fin tabla fuente de financiamiento desde el row -->
                                         </div>
                                         <!-- /fin del Contenido fuente de financiamiento -->
+
+                                          <!-- /panel de ejecucion  -->
+                                        <div role="tabpanel" class="tab-pane fade" id="tab_RubroEjecucion" aria-labelledby="home-tab">
+                                             <!-- /tabla de ejecucion row -->
+                                            <div class="row">
+
+                                                  <div class="col-md-12 col-sm-12 col-xs-12">
+                                                        <div class="x_panel">
+                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraRubroEjecucion" ><span class="fa fa-plus-circle"></span> Nuevo</button>
+                                                          <div class="x_title">
+
+
+                                                            <ul class="nav navbar-right panel_toolbox">
+
+                                                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                                              </li>
+
+                                                              <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                                              </li>
+
+                                                            </ul>
+
+                                                            <div class="clearfix"></div>
+
+                                                          </div>
+                                                          <div class="x_content">
+                                                            <table id="table-Rubro" class="table table-condensed table-striped table-bordered table-hover" width="100%">
+                                                              <thead>
+                                                                <tr>
+                                                                  <th class="col-sm-1">ID</th>
+                                                                  <th>NOMBRE RUBRO EJECUCION </th>
+                                                                  <th class="col-sm-6">DESCRIPCION</th>
+                                                                  <th class="col-sm-1"></th>
+                                                                </tr>
+                                                              </thead>
+
+
+                                                            </table>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+
+                                            </div>
+                                         <!-- / fin tabla de rubro de jecucion desde el row -->
+                                        </div>
+                                           <!-- / fin panel de rubro de ejecucion desde el row -->
+
                                     </div>
                                </div>
                       </div>
@@ -238,6 +287,112 @@
     </div>
 </div>
 <!-- /.fin ventana para modificar fuente de financiamietno-->
+<!-- /.ventana para registrar un rubro de ejecucion -->
+<div class="modal fade" id="VentanaRegistraRubroEjecucion" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Registrar Nuevo Rubro de Ejecucion</h4>
+        </div>
+        <div class="modal-body">
+         <div class="row">
+                    <div class="col-xs-12">
+                                        <!-- PAGE CONTENT BEGINS -->
+                  <form class="form-horizontal form-label-left" id="form-addRubroE" action="<?php echo base_url(); ?>MRubroEjecucion/AddRubroE" method="POST">
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre rubro <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="txt_NombreRubroE" name="txt_NombreRubroE" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Nombre rubro de ejecucion" required="required" type="text">
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Descripcion <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <textarea  id="txtArea_DescRubroE" name="txtArea_DescRubroE" required="required" name="textarea" placeholder="Descripcion" class="form-control col-md-7 col-xs-12"></textarea>
+                        </div>
+                      </div>
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                          <button id="send" type="submit" class="btn btn-success"> <span class="fa fa-save"></span> Guardar</button>
+                          <button type="submit" class="btn btn-danger" data-dismiss="modal"><span class="fa fa-close"></span> Cancelar</button>
+                        </div>
+                      </div>
+                    </form>
+                        </div><!-- /.span -->
+                 </div><!-- /.row -->
+        </div>
+        <div class="modal-footer">
+
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- /.fin ventana para registra un nuevo rubro de ejecucion-->
+
+
+<!-- Ventana para modificar un rubro de ejecucion -->
+<div class="modal fade" id="VentanaModificarRubroE" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modificar Rubro de Ejecucion</h4>
+        </div>
+        <div class="modal-body">
+         <div class="row">
+                <div class="col-xs-12">
+
+                <form class="form-horizontal " id="form-ActualizarRubroE" action="<?php echo base_url(); ?>MRubroEjecucion/UpdateRubroE" method="POST" >
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre del rubro de ejecucion<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="txt_IdRubroEModif" type="hidden" name="txt_IdRubroEModif" type="text">
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="txt_NombreRubroEU" name="txt_NombreRubroEU" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="text">
+                        </div>
+                      </div>
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Descripcion <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <textarea id="txtArea_DescRubroEU" name="txtArea_DescRubroEU" required="required" name="textarea" placeholder="Descripcion de la brecha" class="form-control col-md-7 col-xs-12"></textarea>
+                        </div>
+                      </div>
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                           <button  type="submit" class="btn btn-success" >
+                            <span class="glyphicon glyphicon-floppy-disk"></span>
+                            Guardar
+                          </button>
+                          <button  data-dismiss="modal" class="btn btn-danger">
+                             <span class="glyphicon glyphicon-remove"></span>
+                            Cancelar
+                          </button>
+
+                        </div>
+                      </div>
+                </form><!-- FORMULARIO FIN PARA REGISTRA NUEVO SERVICIO ASOCIADO -->
+            </div><!-- /.span -->
+        </div><!-- /.row -->
+        </div>
+        <div class="modal-footer">
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- fin ventana para modificar un rubro de ejecucion -->
 
 
 
