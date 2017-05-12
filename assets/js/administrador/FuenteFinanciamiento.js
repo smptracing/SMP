@@ -63,7 +63,7 @@ $(document).on("ready" ,function(){
          /*listra */
                 var listaFuenteFinanciamiento=function()
                 {
-                    var myTable=$("#dynamic-table-FuenteFinanciamiento").DataTable({
+                    var myTableFFTO=$("#dynamic-table-FuenteFinanciamiento").DataTable({
                      "processing":true,
                      "serverSide":false,
                      destroy:true,
@@ -85,13 +85,14 @@ $(document).on("ready" ,function(){
 
                                 "language":idioma_espanol
                     }); 
-        Fuente_FinanciamientoData("#dynamic-table-FuenteFinanciamiento",myTable);  //CARGAR LA DATA PARA MOSTRAR EN EL MODAL  
-        EliminarFuente_FinanciamientoData("#dynamic-table-FuenteFinanciamiento",myTable);
+
+        Fuente_FinanciamientoData("#dynamic-table-FuenteFinanciamiento",myTableFFTO);  //CARGAR LA DATA PARA MOSTRAR EN EL MODAL  
+        EliminarFuente_FinanciamientoData("#dynamic-table-FuenteFinanciamiento",myTableFFTO);
                 }
 
-                var  Fuente_FinanciamientoData=function(tbody,myTable){
+                var  Fuente_FinanciamientoData=function(tbody,myTableFFTO){
                     $(tbody).on("click","button.editar",function(){
-                        var data=myTable.row( $(this).parents("tr")).data();
+                        var data=myTableFFTO.row( $(this).parents("tr")).data();
                         listaComboRubroEjecucion();//ACTUALIZAR EL COMBOX EN EL MODAL MODIFICAR
                         var txt_IdFuenteFinanciamientoM=$('#txt_IdFuenteFinanciamientoM').val(data.idffto);
                         var cbxRubroEjecucionM=$('#cbxRubroEjecucionM').val(data.id_rubro_ejec);
@@ -101,9 +102,9 @@ $(document).on("ready" ,function(){
                     });
                 }
          
-                var EliminarFuente_FinanciamientoData=function(tbody,myTable){
+                var EliminarFuente_FinanciamientoData=function(tbody,myTableFFTO){
                   $(tbody).on("click","button.eliminar",function(){
-                        var data=myTable.row( $(this).parents("tr")).data();
+                        var data=myTableFFTO.row( $(this).parents("tr")).data();
                         var idffto=data.idffto;
                         var id_rubro_ejec=data.id_rubro_ejec;
                         console.log(data);
