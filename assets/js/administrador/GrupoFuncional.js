@@ -84,7 +84,7 @@
                            // alert(respuesta);
                          var registros = eval(respuesta);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option value="+registros[i]["id_division_funcional"]+"> "+ registros[i]["codigo_dfuncional"]+":"+registros[i]["nombre_dFuncional"]+" </option>";   
+                              html +="<option value="+registros[i]["id_div_funcional"]+"> "+ registros[i]["codigo_div_funcional"]+":"+registros[i]["nombre_div_funcional"]+" </option>";   
                             };
                             $("#SelecDivisionFF").html(html);
                             
@@ -137,12 +137,12 @@
                                     "dataSrc":""
                                     },
                                 "columns":[
-                                    {"data":"id_grupo_funcional"},
-                                    {"data":"codigo_g_funcional"},
-                                    {"data":"nombre_g_funcional"},
-                                    {"data":"id_division_funcional"},
-                                    {"data":"codigo_dfuncional"},
-                                    {"data":"nombre_dFuncional"},
+                                    {"data":"id_grup_funcional"},
+                                    {"data":"codigo_grup_funcional"},
+                                    {"data":"nombre_grup_funcional"},
+                                    {"data":"id_div_funcional"},
+                                    {"data":"codigo_div_funcional"},
+                                    {"data":"nombre_div_funcional"},
                                     {"data":"id_sector"},
                                     {"data":"nombre_sector"},
                                     {"defaultContent":"<button type='button'  class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaUpdateGrupoF'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
@@ -155,11 +155,11 @@
                    var  GrupoFuncionalData=function(tbody,table){
                     $(tbody).on("click","button.editar",function(){
                         var data=table.row( $(this).parents("tr")).data();
-                        var id_division_funcional=data.id_division_funcional;
+                        var id_division_funcional=data.id_div_funcional;
                         var id_sector=data.id_sector;
-                        var txt_idGfuncionF=$('#txt_idGfuncionF').val(data.id_grupo_funcional);
-                        var txt_codigoGfuncionF=$('#txt_codigoGfuncionF').val(data.codigo_g_funcional);
-                        var txt_nombreGfuncionF=$('#txt_nombreGfuncionF').val(data.nombre_g_funcional);
+                        var txt_idGfuncionF=$('#txt_idGfuncionF').val(data.id_grup_funcional);
+                        var txt_codigoGfuncionF=$('#txt_codigoGfuncionF').val(data.codigo_grup_funcional);
+                        var txt_nombreGfuncionF=$('#txt_nombreGfuncionF').val(data.nombre_grup_funcional);
                         listarDivisionFcombo(id_division_funcional,id_sector);//para agregar division  funcional
                         $('select[name=SelecSectorF]').val(id_sector);//PARA AGREGAR UN COMBO PSELECIONADO
                         $('select[name=SelecSectorF]').change();

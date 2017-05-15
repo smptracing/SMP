@@ -82,11 +82,11 @@
                                     "dataSrc":""
                                     },
                                 "columns":[
-                                    {"data":"id_division_funcional"},
+                                    {"data":"id_div_funcional"},
                                     {"data":"id_funcion","visible": false},
                                     {"data":"nombre_funcion"},
-                                    {"data":"codigo_dfuncional"},
-                                    {"data":"nombre_dFuncional"},
+                                    {"data":"codigo_div_funcional"},
+                                    {"data":"nombre_div_funcional"},
                                     {"defaultContent":"<button type='button'  class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaUpdateDivisionF'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
 
@@ -101,9 +101,9 @@
                         var data=table.row( $(this).parents("tr")).data();
                         var id_funcion=data.id_funcion;
                         console.log(id_funcion);
-                        var id_DfuncionalM=$('#id_DfuncionalM').val(data.id_division_funcional);
-                        var txt_CodigoDfuncionalM=$('#txt_CodigoDfuncionalM').val(data.codigo_dfuncional);
-                        var txt_Nombre_DFuncionalM=$('#txt_Nombre_DFuncionalM').val(data.nombre_dFuncional);
+                        var id_DfuncionalM=$('#id_DfuncionalM').val(data.id_div_funcional);
+                        var txt_CodigoDfuncionalM=$('#txt_CodigoDfuncionalM').val(data.codigo_div_funcional);
+                        var txt_Nombre_DFuncionalM=$('#txt_Nombre_DFuncionalM').val(data.nombre_div_funcional);
                           /*$('select[name=listaFuncionCM]').val(id_funcion);//PARA AGREGAR UN COMBO PSELECIONADO
                           $('select[name=listaFuncionCM]').change();*/
                            listaFuncionCombo(id_funcion);//para agregar funcion selecionada mandamos parametro

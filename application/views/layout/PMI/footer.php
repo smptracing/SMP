@@ -75,6 +75,9 @@
 
     <script src="<?php echo base_url(); ?>assets/dist/js/bootstrap-select.js"></script><!--- para el selector con buscardor---->
     <!-- Custom Theme Scripts -->
+    <script src="<?php echo base_url(); ?>assets/dist/jquery-wizard.js"></script>
+    <script src="<?php echo base_url(); ?>assets/dist/jquery-wizard-fn.js"></script>
+
 
     <script src="<?php echo base_url(); ?>assets/build/js/custom.min.js"></script>
 
@@ -87,7 +90,8 @@
     <script src="<?php echo base_url(); ?>assets/plugins/input-mask/jquery.inputmask.min.js"></script> 
 
 
-
+    <!-- PMI -->
+    <script src="<?php echo base_url(); ?>assets/js/PMI/ProyectoInversion.js"></script><!-- para la ubicacion -->
     <script src="<?php echo base_url(); ?>assets/js/ubicacion/ubicacion.js"></script><!-- para la ubicacion -->
     <script src="<?php echo base_url(); ?>assets/js/administrador/ServicioPublico.js"></script><!-- para mostra la divicion funcional la funcio y el grupo duncional-->
 

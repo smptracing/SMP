@@ -1,6 +1,6 @@
  $(document).on("ready" ,function(){
            
-              
+             // lista();
                 listarServicioP();/*llamar a mi metodo listado servicio publico asociado*/
                  $("#form-addServicioAsociado").submit(function(event)//Actualizar la entidad servicio  publico asociado
                   {
@@ -58,6 +58,7 @@
               var ServicioPublicoDataActualizar=function(tbody,table){
                     $(tbody).on("click","button.editar",function(){
                         var data=table.row( $(this).parents("tr")).data();
+                        console.log(data);
                         var id_servicio_publicoA=$('#id_servicio_publicoA').val(data.id_serv_pub_asoc);
                         var textarea_servicio_publicoAA=$('#textarea_servicio_publicoAA').val(data.nombre_serv_pub_asoc);
 
@@ -91,11 +92,11 @@
                     }
                 }
 
-           /* function lista()
+         /*  function lista()
 					{
 						event.preventDefault();
 						$.ajax({
-							"url":base_url+"index.php/MSectorEntidadSpu/GetEntidad",
+							"url":base_url+"index.php/ServicioPublico/GetServicioAsociado",
 							type:"POST",
 							success:function(respuesta){
 								alert(respuesta);
@@ -103,4 +104,4 @@
 
 							}
 						});
-					}*/
+					}¨*/

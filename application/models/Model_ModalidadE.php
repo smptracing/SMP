@@ -42,7 +42,11 @@ class Model_ModalidadE extends CI_Model
       //MODIFICAR DATOS DE MODALIDAD DE EJECUCION
          function UpdateModalidadE($id_modalidad_ejec,$nombre_modalidad_ejec)
         {
+
            $this->db->query("execute sp_ModalidadE_u '".$id_modalidad_ejec."'");
+
+           $this->db->query("execute sp_ModalidadE_u '".$id_modalidad_ejec."','".$nombre_modalidad_ejec."'");
+
             if ($this->db->affected_rows() > 0) 
               {
                 return true;

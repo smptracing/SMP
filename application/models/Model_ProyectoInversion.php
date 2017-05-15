@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Model_Funcion extends CI_Model
+class Model_ProyectoInversion extends CI_Model
 {
            public function __construct()
           {
@@ -9,19 +9,13 @@ class Model_Funcion extends CI_Model
 
           }
       /*añadir funcion*/
-        function GetFuncion()
+        function ProyectoInversion()
         {
-            $funcion=$this->db->query("execute sp_Funcion_r");//listar funcion
-            if($funcion->num_rows()>0)
-             {
-              return $funcion->result();
-             }else
-             {
-              return false;
-             }
+            $ProyectoInversion=$this->db->query("execute sp_ProyectoInversion_r");//listar funcion
+            return $ProyectoInversion->result();
    
         }
-        function AddFucion($txt_codigofuncion,$txt_nombrefuncion)
+       /* function AddFucion($txt_codigofuncion,$txt_nombrefuncion)
         {
 
             $this->db->query("execute sp_Funcion_c '".$txt_codigofuncion."','".$txt_nombrefuncion."'");
@@ -48,7 +42,7 @@ class Model_Funcion extends CI_Model
               }
 
         }
-        //fin funcion
+        //fin funcion*/
        
         //fin division funciona
         //grupo funcional

@@ -65,7 +65,9 @@
                                                               <thead>
                                                                  <tr>
                                                                   <th class="col-sm-2">ID </th>
+
                                                                   <th >MODALIDAD DE EJECUCION </th>
+                                               
                                                                   <th class="col-sm-2"></th>
                                                                 </tr>
                                                               </thead>
@@ -210,6 +212,10 @@
                           <input id="txt_NombreModalidadE" name="txt_NombreModalidadE" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Nombre modalidad de ejecucion" required="required" type="text">
                         </div>
                       </div>
+<<<<<<< HEAD
+=======
+           
+>>>>>>> origin/desarrollo
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
@@ -253,6 +259,11 @@
                           <input id="txt_NombreModalidadEU" name="txt_NombreModalidadEU" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name"  required="required" type="text">
                         </div>
                       </div>
+<<<<<<< HEAD
+=======
+
+        
+>>>>>>> origin/desarrollo
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
