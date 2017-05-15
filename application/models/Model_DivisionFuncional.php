@@ -13,7 +13,7 @@ class Model_DivisionFuncional extends CI_Model
 
     function GetDivisionFuncional()
         {
-            $divisionf=$this->db->query("execute sp_Division_funcional_r");//listar de division funcional
+            $divisionf=$this->db->query("execute sp_DivisionFuncional_r");//listar de division funcional
             if($divisionf->num_rows()>0)
              {
               return $divisionf->result();
@@ -25,7 +25,7 @@ class Model_DivisionFuncional extends CI_Model
         }
         function AddDivisionFucion($txt_CodigoDfuncional,$txt_Nombre_DFuncional,$listaFuncionC)
         {
-           $this->db->query("execute sp_Division_funcional_c'".$listaFuncionC."','".$txt_CodigoDfuncional."','".$txt_Nombre_DFuncional."'");
+           $this->db->query("execute sp_DivisionFuncional_c'".$listaFuncionC."','".$txt_CodigoDfuncional."','".$txt_Nombre_DFuncional."'");
             if ($this->db->affected_rows() > 0) 
               {
                 return true;
@@ -38,7 +38,7 @@ class Model_DivisionFuncional extends CI_Model
         }
         function UpdateDivisionFucion($id_DfuncionalM,$IdlistaFuncionCM,$txt_CodigoDfuncionalM,$txt_Nombre_DFuncionalM)
         {
-          $this->db->query("execute sp_Division_funcional_u'".$id_DfuncionalM."','".$IdlistaFuncionCM."','".$txt_CodigoDfuncionalM."','".$txt_Nombre_DFuncionalM."'");
+          $this->db->query("execute sp_DivisionFuncional_u'".$id_DfuncionalM."','".$IdlistaFuncionCM."','".$txt_CodigoDfuncionalM."','".$txt_Nombre_DFuncionalM."'");
             if ($this->db->affected_rows() > 0) 
               {
                 return true;

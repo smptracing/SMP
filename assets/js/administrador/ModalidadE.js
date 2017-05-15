@@ -38,7 +38,6 @@
                                 "columns":[
                                     {"data":"id_modalidad_ejec"},
                                     {"data":"nombre_modalidad_ejec"},
-                                    {"data":"desc_modalidad_ejec"},
                                     {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaModificarModalidadE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
 
@@ -73,7 +72,7 @@
                         var data=table.row( $(this).parents("tr")).data();
                         var id_brecha=$('#txt_IdModalidadEModif').val(data.id_modalidad_ejec);
                         var nombre_brecha=$('#txt_NombreModalidadEU').val(data.nombre_modalidad_ejec);
-                        var desc_brecha=$('#txtArea_DescModalidadEU').val(data.desc_modalidad_ejec);
+                      
                     });
                 }
           // FIN DE CAMPOS QUE SE ACTUALIZARAN DE LA MODALIDAD EJECUCION

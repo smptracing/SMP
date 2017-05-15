@@ -51,7 +51,7 @@
                                     {"data":"id_sector","visible": false},
                                     {"data":"nombre_sector"},
                                     {"data":"nombre_entidad"},
-                                    {"data":"denominacion_entidad"},
+                                    {"data":"siglas_entidad"},
                                     
 
                                     {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaModificarEntidad'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
@@ -68,7 +68,7 @@
                         var id_sector=data.id_sector;//ojo
                         var id_entidadM=$('#txt_IdModificarEntidar').val(data.id_entidad);
                         var nombre_entidadM=$('#txt_NombreEntidadM').val(data.nombre_entidad);
-                        var denominacion_entidadM=$('#txt_DenominacionEntidadM').val(data.denominacion_entidad);
+                        var denominacion_entidadM=$('#txt_DenominacionEntidadM').val(data.siglas_entidad);
                       $('select[name=listaSectorModificar]').val(id_sector);
                       $('select[name=listaSectorModificar]').change();
 
