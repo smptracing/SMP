@@ -96,14 +96,15 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Registrar Nuevo PIP</h4>
+          <h4 class="modal-title">PROYECTO</h4>
         </div>
         <div class="modal-body">
          <div class="row">
                     <div class="col-xs-12">
                                         <!-- PAGE CONTENT BEGINS -->
                              
-            <form class="form-horizontal " id="form-addBrecha" action="<?php echo  base_url();?>MProyectoInversion/AddProyectoInversion" method="POST" >
+           
+             <form class="form-horizontal " id="form-addBrecha" action="<?php echo  base_url();?>MProyectoInversion/AddProyectoInversion" method="POST" >
                       <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Rubro de ejecucion</span>
                             </label>
@@ -237,8 +238,8 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button type="submit" class="btn btn-primary"><span class="fa fa-close"></span> Cancelar</button>
-                            <button id="send" type="submit" class="btn btn-success"><span class="fa fa-save"></span> Guardar</button>
+                          <button  type="submit" class="btn btn-success"><span class="fa fa-save"></span> Guardar</button>
+                          <button  class="btn btn-danger" data-dismiss="modal"><span class="fa fa-close"></span> Cancelar</button>
                         </div>
                       </div>
                     </form>
@@ -246,7 +247,7 @@
                  </div><!-- /.row -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal"><span class="fa fa-close"></span> Cerrar</button>
+         
         </div>
       </div>
     </div>

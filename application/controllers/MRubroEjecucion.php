@@ -18,8 +18,7 @@ class MRubroEjecucion extends CI_Controller
     {
         if ($this->input->is_ajax_request()) {
             $txt_NombreRubroE   = $this->input->post("txt_NombreRubroE");
-            $txtArea_DescRubroE = $this->input->post("txtArea_DescRubroE");
-            if ($this->Model_RubroE->AddRubroE($txt_NombreRubroE, $txtArea_DescRubroE) == true) {
+            if ($this->Model_RubroE->AddRubroE($txt_NombreRubroE) == true) {
                 echo "Se añadio un rubro de ejecucion";
             } else {
                 echo "No se añadio  un rubro de ejecucion";
@@ -50,8 +49,7 @@ class MRubroEjecucion extends CI_Controller
         if ($this->input->is_ajax_request()) {
             $txt_IdRubroEModif   = $this->input->post("txt_IdRubroEModif");
             $txt_NombreRubroEU   = $this->input->post("txt_NombreRubroEU");
-            $txtArea_DescRubroEU = $this->input->post("txtArea_DescRubroEU");
-            if ($this->Model_RubroE->UpdateRubroE($txt_IdRubroEModif, $txt_NombreRubroEU, $txtArea_DescRubroEU) == false) {
+            if ($this->Model_RubroE->UpdateRubroE($txt_IdRubroEModif, $txt_NombreRubroEU) == false) {
                 echo "Se actualizo correctamente el rubro de ejecucion";
             } else {
                 echo "Se actualizo correctamente el rubro de ejecucion";

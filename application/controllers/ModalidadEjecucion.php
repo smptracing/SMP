@@ -18,8 +18,7 @@ function AddModalidadE()
 	    if ($this->input->is_ajax_request()) 
 	    {
 	      $txt_NombreModalidadE =$this->input->post("txt_NombreModalidadE");
-	      $txtArea_DescModalidadE=$this->input->post("txtArea_DescModalidadE");
-	      if($this->Model_ModalidadE->AddModalidadE($txt_NombreModalidadE,$txtArea_DescModalidadE) == true)
+	      if($this->Model_ModalidadE->AddModalidadE($txt_NombreModalidadE) == true)
 	        echo "Se añadio la modalidad de ejecucion";
 	      else
 	        echo "No se añadio  la modalidad de ejecucion";  
@@ -54,8 +53,7 @@ function AddModalidadE()
 	    {
 		      $txt_IdModalidadEModif =$this->input->post("txt_IdModalidadEModif");
 		      $txt_NombreModalidadEU =$this->input->post("txt_NombreModalidadEU");
-		      $txtArea_DescModalidadEU =$this->input->post("txtArea_DescModalidadEU");
-		      if($this->Model_ModalidadE->UpdateModalidadE($txt_IdModalidadEModif,$txt_NombreModalidadEU,$txtArea_DescModalidadEU) == false)
+		      if($this->Model_ModalidadE->UpdateModalidadE($txt_IdModalidadEModif,$txt_NombreModalidadEU) == false)
 		        echo "Se actualizo correctamente la modalidad de ejecucion";
 		      else
 		        echo "No Se actualizo correctamente la modalidad de ejecucion"; 

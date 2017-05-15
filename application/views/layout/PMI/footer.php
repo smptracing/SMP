@@ -27,6 +27,13 @@
     <!-- Skycons -->
     <script src="<?php echo base_url(); ?>assets/vendors/skycons/skycons.js"></script>
     <!-- Flot -->
+
+ <!-- jQuery Smart Wizard -->
+    <script src="<?php echo base_url(); ?>assets/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
+
+
+
+
     <script src="<?php echo base_url(); ?>assets/vendors/Flot/jquery.flot.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendors/Flot/jquery.flot.pie.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendors/Flot/jquery.flot.time.js"></script>
@@ -98,5 +105,7 @@
     <script src="<?php echo base_url(); ?>assets/js/administrador/NivelGobierno.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/administrador/FuenteFinanciamiento.js"></script>
 
+
+   
   </body>
 </html>

@@ -65,8 +65,7 @@
                                                               <thead>
                                                                  <tr>
                                                                   <th class="col-sm-2">ID </th>
-                                                                  <th >MODALIDAD DE EJEUCION </th>
-                                                                  <th >DESCRIPCION</th>
+                                                                  <th >MODALIDAD DE EJECUCION </th>
                                                                   <th class="col-sm-2"></th>
                                                                 </tr>
                                                               </thead>
@@ -107,8 +106,8 @@
                                                                        <table id="table-UnidadE" class="table table-condensed table-striped table-bordered table-hover" width="100%">
                                                               <thead>
                                                                  <tr>
-                                                                  <th class="col-sm-1">Id </th>
-                                                                  <th >Nombre de modalidad ejecucion </th>
+                                                                  <th class="col-sm-1">ID </th>
+                                                                  <th >UNIDAD DE EJECUCION </th>
                                                                   <th ></th>
 
                                                                 </tr>
@@ -211,13 +210,6 @@
                           <input id="txt_NombreModalidadE" name="txt_NombreModalidadE" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Nombre modalidad de ejecucion" required="required" type="text">
                         </div>
                       </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Descripcion <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <textarea id="txtArea_DescModalidadE" name="txtArea_DescModalidadE" required="required" name="textarea" placeholder="Descripcion modalidad de ejecucion" class="form-control col-md-7 col-xs-12"></textarea>
-                        </div>
-                      </div>
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
@@ -259,14 +251,6 @@
                         </div>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input id="txt_NombreModalidadEU" name="txt_NombreModalidadEU" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name"  required="required" type="text">
-                        </div>
-                      </div>
-
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Descripcion <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <textarea id="txtArea_DescModalidadEU" name="txtArea_DescModalidadEU" required="required" name="textarea" placeholder="Descripcion de modalidad" class="form-control col-md-7 col-xs-12"></textarea>
                         </div>
                       </div>
                       <div class="ln_solid"></div>

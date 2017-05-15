@@ -11,7 +11,7 @@ class Model_UnidadE extends CI_Model
     //AGREGAR UNA UNIDAD DE EJECUTORA
         function AddUnidadE($txt_NombreUnidadE)
         {
-           $this->db->query("execute sp_UnidadE_c'".$txt_NombreUnidadE."'");
+           $this->db->query("execute sp_UnidadEjecutora_c'".$txt_NombreUnidadE."'");
             if ($this->db->affected_rows() > 0) 
               {
                 return true;
@@ -26,7 +26,7 @@ class Model_UnidadE extends CI_Model
     //LISTAR UNIDAD DE EJECUCION
       function GetUnidadE()
         {
-            $unidade=$this->db->query("execute sp_UnidadE_r"); //PROCEDIMIENTO DE LISTAR UNIDAD DE EJECUCION
+            $unidade=$this->db->query("execute sp_UnidadEjecutora_r"); //PROCEDIMIENTO DE LISTAR UNIDAD DE EJECUCION
             if($unidade->num_rows()>0)
              {
               return $unidade->result();
@@ -41,7 +41,7 @@ class Model_UnidadE extends CI_Model
     //MODIFICAR DATOS DE UNIDAD EJECUTORA
          function UpdateUnidadE($id_ue,$nombre_ue)
         {
-           $this->db->query("execute sp_UnidadE_u '".$id_ue."','".$nombre_ue."' ");
+           $this->db->query("execute sp_UnidadEjecutora_u '".$id_ue."','".$nombre_ue."' ");
             if ($this->db->affected_rows() > 0) 
               {
                 return true;

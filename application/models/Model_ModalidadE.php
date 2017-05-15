@@ -11,9 +11,9 @@ class Model_ModalidadE extends CI_Model
 //--------------METODOS PARA EL MANTENIMIENTO DE MODALIDAD DE EJECUCION EJECUCION--------------------------------------------
 
     //AGREGAR UNA MODALIDAD DE EJECUCION
-      function AddModalidadE($txt_NombreModalidadE,$txtArea_DescModalidadE)
+      function AddModalidadE($txt_NombreModalidadE)
         {
-           $this->db->query("execute sp_ModalidadE_c'".$txt_NombreModalidadE."','".$txtArea_DescModalidadE."'");
+           $this->db->query("execute sp_ModalidadE_c'".$txt_NombreModalidadE."'");
             if ($this->db->affected_rows() > 0) 
               {
                 return true;
@@ -40,9 +40,9 @@ class Model_ModalidadE extends CI_Model
     //FIN LISTAR MODALIDAD DE EJECUCION
 
       //MODIFICAR DATOS DE MODALIDAD DE EJECUCION
-         function UpdateModalidadE($id_modalidad_ejec,$nombre_modalidad_ejec,$desc_modalidad_ejec)
+         function UpdateModalidadE($id_modalidad_ejec,$nombre_modalidad_ejec)
         {
-           $this->db->query("execute sp_ModalidadE_u '".$id_modalidad_ejec."','".$nombre_modalidad_ejec."','".$desc_modalidad_ejec."' ");
+           $this->db->query("execute sp_ModalidadE_u '".$id_modalidad_ejec."'");
             if ($this->db->affected_rows() > 0) 
               {
                 return true;

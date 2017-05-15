@@ -33,9 +33,8 @@
                                     },
        //para llenado y busqueda por todo los campos
                                 "columns":[
-                                    {"data":"id_rubro_ejec"},
-                                    {"data":"nombre_rubro_ejec"},
-                                    {"data":"descripcion_rubro_ejec"},
+                                    {"data":"id_rubro"},
+                                    {"data":"nombre_rubro"},
                                     {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaModificarRubroE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
 
@@ -68,9 +67,8 @@
         RubroEData=function(tbody,table){
                     $(tbody).on("click","button.editar",function(){
                         var data=table.row( $(this).parents("tr")).data();
-                        var id_brecha=$('#txt_IdRubroEModif').val(data.id_rubro_ejec);
-                        var nombre_brecha=$('#txt_NombreRubroEU').val(data.nombre_rubro_ejec);
-                        var desc_brecha=$('#txtArea_DescRubroEU').val(data.descripcion_rubro_ejec);
+                        var id_rubro=$('#txt_IdRubroEModif').val(data.id_rubro);
+                        var nombre_rubro=$('#txt_NombreRubroEU').val(data.nombre_rubro);
                     });
                 }
     // FIN DE CAMPOS QUE SE ACTUALIZARAN EN EL RUBRO DE EJECUCION

@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Model_RubroE extends CI_Model
+class Model_MetaPresupuestal extends CI_Model
 {
            public function __construct()
           {
@@ -8,9 +8,9 @@ class Model_RubroE extends CI_Model
           }
 //----------------------METODOS PARA EL MANTENIMIENTO DE RUBRO DE EJECUCION--------------------------------------------
     //AGREGAR UN RUBRO DE EJECUCION
-      function AddRubroE($txt_NombreRubroE)
+      function AddMetaP($txt_NombreMetaP,$date_AnioMetaP,$text_Pim,$text_NumeroMeta,$text_Devengado)
         {
-           $this->db->query("execute sp_Rubro_c'".$txt_NombreRubroE."'");
+           $this->db->query("execute sp_MetaPresupuestal_c'".$txt_NombreMetaP."','".$date_AnioMetaP."','".$text_Pim."','".$text_NumeroMeta."','".$text_Devengado."'");
             if ($this->db->affected_rows() > 0) 
               {
                 return true;
@@ -23,24 +23,22 @@ class Model_RubroE extends CI_Model
     //FIN AGREGAR UN RUBRO DE EJECUCION
 
     //LISTAR RUBRO DE EJECUCION
-      function GetRubroE()
+      function GetMetaP()
         {
-            $rubroe=$this->db->query("execute sp_Rubro_r"); //PROCEDIMIENTO DE LISTAR LOS RUBROS DE EJECUCION
-            if($rubroe->num_rows()>0)
+            $metap=$this->db->query("execute sp_MetaPresupuestal_r"); //PROCEDIMIENTO DE LISTAR LOS RUBROS DE EJECUCION
+            if($metap->num_rows()>0)
              {
-              return $rubroe->result();
+              return $metap->result();
              }else
              {
               return false;
              }
-   
         } 
     //FIN LISTAR UN RUBRO DE EJECUCION 
-
     //MODIFICAR DATOS DE LOS RUBROS
-         function UpdateRubroE($id_rubro_ejecucion,$nombre_ejecucion)
+         function UpdateMetaP($id_meta_pres,$txt_NombreMetaP,$date_AnioMetaP,$text_Pim,$text_NumeroMeta,$text_Devengado)
         {
-           $this->db->query("execute sp_Rubro_u '".$id_rubro_ejecucion."','".$nombre_ejecucion."'");
+           $this->db->query("execute sp_MetaPresupuestal_u '".$id_meta_pres."','".$txt_NombreMetaP."','".$date_AnioMetaP."','".$text_Pim."','".$text_NumeroMeta."','".$text_Devengado."'");
             if ($this->db->affected_rows() > 0) 
               {
                 return true;
@@ -49,7 +47,6 @@ class Model_RubroE extends CI_Model
               {
                 return false;
               }
-
         }
     //FIN MODIFICAR DATOS DE LOS RUBROS
 //--------------FIN DE METODOS PARA EL MANTENIMIENTO DE RUBRO DE EJECUCION--------------------------------------------

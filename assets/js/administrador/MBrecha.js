@@ -75,7 +75,7 @@
                                     {"data":"id_serv_pub_asoc"},
                                     {"data":"nombre_serv_pub_asoc"}, //DATO DEL SERVICIO PUB ASOCIADO PARA ENVIAR DATO AL COMBO ACTUALIZAR Y SE MANTENGA EL VALOR
                                     {"data":"nombre_brecha"},
-                                    {"data":"desc_brecha"},
+                                    {"data":"descripcion_brecha"},
                                     {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaModificarBrecha'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
 
@@ -111,7 +111,7 @@
                         var id_brecha=$('#txt_IdBrechaModif').val(data.id_brecha);
                         var id_serv_pub_asoc=data.id_serv_pub_asoc;
                         var nombre_brecha=$('#txt_NombreBrechaU').val(data.nombre_brecha);
-                        var desc_brecha=$('#txtArea_DescBrechaU').val(data.desc_brecha);
+                        var descripcion_brecha=$('#txtArea_DescBrechaU').val(data.descripcion_brecha);
                         listaSerPubAsocCombo(id_serv_pub_asoc);//llamar al evento de combo box para actualizar 
                
                     });
