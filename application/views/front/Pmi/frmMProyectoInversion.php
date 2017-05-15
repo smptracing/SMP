@@ -119,7 +119,7 @@
                           <ul class="nav nav-tabs" role="tablist">
                             <li role="presentation" class="active"><a href="#first" aria-controls="first" role="tab" data-toggle="tab"><span class="step_no">PROYECTO DE INVERSIÓN</span></a></li>
                             <li role="presentation"><a href="#second" aria-controls="second" role="tab" data-toggle="tab">PROGRAMACIÓN</a></li>
-                            <li role="presentation"><a href="#third" aria-controls="third" role="tab" data-toggle="tab">OTRO</a></li>
+                            <li role="presentation"><a href="#third" aria-controls="third" role="tab" data-toggle="tab">OTROS</a></li>
                           </ul>
                           <!-- Tab panes -->
                           <div class="tab-content">
