@@ -212,15 +212,13 @@
                           <input id="txt_NombreModalidadE" name="txt_NombreModalidadE" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Nombre modalidad de ejecucion" required="required" type="text">
                         </div>
                       </div>
-<<<<<<< HEAD
-=======
-           
->>>>>>> origin/desarrollo
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
                           <button id="send" type="submit" class="btn btn-success"><span class="fa fa-save"></span> Guardar</button>
-                          <button type="submit" class="btn btn-danger" data-dismiss="modal"><span class="fa fa-close"></span> Cancelar</button>
+                           <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
+                          <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
+                           Cancelar</button>
 
                         </div>
                       </div>

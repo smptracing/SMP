@@ -2,18 +2,18 @@
 
                 listaProyectoInversion();/*llamar proyecto de inversion*/
               
-            //Inicio cargar combo unidad ejecutora
-             $("#btn-NuevoProyectoI").click(function()//para que cargue el como una vez echo click sino repetira datos
+            //Inicio cargar combo cartera de inversion
+             $("#btn-ProyectoInv").click(function()//para que cargue el como una vez echo click sino repetira datos
                     {
                         //alert('hola');
-                     listaProyectoInvCombo();//para llenar el combo de agregar division funcional
+                     listacarterainversion();//para llenar el combo de agregar cartera de inversion
                     
                     });
               //TRAER DATOS EN UN COMBO DE RUBRO DE EJECUCION
-                var listaProyectoInvCombo=function()
+                var listacarterainversion=function()
                 {
                     html="";
-                    $("#cbxUnidadEjecutora").html(html); //nombre del selectpicker UNIDAD EJECUTORA
+                    $("#cbxCartera").html(html); //nombre del selectpicker UNIDAD EJECUTORA
                     event.preventDefault(); 
                     $.ajax({
                         "url":base_url +"index.php/UnidadE/GetUnidadE",
@@ -24,7 +24,7 @@
                             for (var i = 0; i <registros.length;i++) {
                               html +="<option value="+registros[i]["id_ue"]+"> "+ registros[i]["nombre_ue"]+" </option>";   
                             };
-                            $("#cbxUnidadEjecutora").html(html);//
+                            $("#cbxCartera").html(html);//
                             $('.selectpicker').selectpicker('refresh'); 
                         }
                     });
@@ -48,42 +48,7 @@
                 });     
                 //FIN DE AGREGAR PIP           
 			});
-			   //listra proyeto de inversion*/
-                var listaProyectoInversion=function()
-                {
-                    var table=$("#table-ProyectoInversion").DataTable({
-                     "processing":true,
-                     "serverSide":false,
-                     destroy:true,
-                         "ajax":{
-                                    "url":base_url+"index.php/ProyectoInversion/GetProyectoInversion",
-                                    "method":"POST",
-                                    "dataSrc":""
-                                    },
-                                "columns":[
-                                    {"data":"id_pi"},
-                                    {"data":"nombre_pi"},
-                                    {"data":"codigo_unico_pi"},
-                                    {"data":"costo_pi"},
-                                    {"data":"devengado_ac_pi"},
-                                    {"data":"fecha_registro_pi"},
-                                    {"data":"fecha_viabilidad_pi"},
-                                    {"data":"nombre_ue"},
-                                    {"data":"nombre_naturaleza_inv"},
-                                    {"data":"nombre_tipologia_inv"},
-                                    {"data":"nombre_tipo_inversion"},
-                                    {"data":"codigo_grup_funcional"},
-                                    {"data":"nombre_nivel_gob"},
-                                    {"data":"nombre_meta_pres"},
-                                    {"data":"nombre_programa_pres"},
-                                    {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaModificarFuncion'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
-                                ],
-
-                                "language":idioma_espanol
-                    });              
-                        			   	
-                }
-                /*fin listar proyecto de inversion*/
+			   
         /*Idioma de datatablet table-sector */
             var idioma_espanol=
                 {

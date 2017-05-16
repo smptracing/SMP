@@ -108,7 +108,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Registrar Nuevo PIP</h4>
+          <h4 class="modal-title">PROYECTO DE INVERSION</h4>
         </div>
         <div class="modal-body">
          <div class="row">
@@ -124,31 +124,24 @@
                           <!-- Tab panes -->
                           <div class="tab-content">
                             <div role="tabpanel" class="tab-pane active fade in" id="first">
-                                   <form class="form-horizontal " id="form-addBrecha" action="<?php echo  base_url();?>MProyectoInversion/AddProyectoInversion" method="POST" >
-                                    <div class="item form-group">
-                                          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Rubro de ejecucion</span>
-                                          </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select id="cbxRubroEjecucion" class="selectpicker" data-live-search="true"  title="Elija Rubro de ejecucion">
-                                           
-                                            </select>
-                                        </div>
-                                     </div>
+                                   <form class="form-horizontal " id="form-addProyectoInversion" action="<?php echo  base_url();?>MProyectoInversion/AddProyectoInversion" method="POST" >
+                                 
                                      <div class="item form-group">
                                           <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Unidad Ejecutora</span>
                                           </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select id="cbxUnidadEjecutora" class="selectpicker" data-live-search="true"  title="Elija Unidad Ejecutora">
-                                           
+                                            <select id="cbxUnidadEjecutora"  name="cbxUnidadEjecutora" class="selectpicker" data-live-search="true"  title="Elija Unidad Ejecutora">
+                                            
                                             </select>
                                         </div>
                                      </div>
-                                     <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Naturaleza de inversion</span>
+                                       <div class="item form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Tipologia de inversion</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select id="cbxNaturalezaInv" class="selectpicker" data-live-search="true"  title="Elija Naturaleza inversion">
-                                           
+                                            <select id="cbxNatI" name="cbxNatI" class="selectpicker" data-live-search="true"  title="Elija tipologia">
+                                                 <option value="1">Naturalez</option>
+                                                 <option value="2">NATURALEZ2</option>
                                             </select>
                                         </div>
                                      </div>
@@ -156,113 +149,189 @@
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Tipologia de inversion</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select id="cbxTipologiaInv" class="selectpicker" data-live-search="true"  title="Elija tipologia">
-                                           
+                                            <select id="cbxTipologiaInv" name="cbxTipologiaInv" class="selectpicker" data-live-search="true"  title="Elija tipologia">
+                                                 <option value="1">Tipologia 1</option>
+                                                 <option value="2">Tipologia 2</option>
                                             </select>
                                         </div>
                                      </div>
-                                     <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Estado de ciclo inversion</span>
-                                        </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select id="" class="selectpicker" data-live-search="true"  title="Elija estado inversion">
-                                           
-                                            </select>
-                                        </div>
-                                     </div>
-                                      <div class="item form-group">
+                                    <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Tipo de inversion</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select id="" class="selectpicker" data-live-search="true"  title="Elija tipo de inversion">
-                                           
+                                            <select id="cbxTipoInv" name="cbxTipoInv" class="selectpicker" data-live-search="true"  title="Elija tipo de inversion">
+                                                 <option value="1">Tipo de inversion 1</option>
+                                                 <option value="2">Tipo de inversion 2</option>
                                             </select>
-                                        </div>
+                                    </div>
                                      </div>
                                      <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Grupo Funcional</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select id="" class="selectpicker" data-live-search="true"  title="Elija grupo funcional">
-                                           
+                                            <select id="cbxGrupoFunc" name="cbxGrupoFunc" class="selectpicker" data-live-search="true"  title="Elija grupo funcional">
+                                                 <option value="1">Grupo Funcional 1</option>
+                                                 <option value="2">Grupo Funcional 2</option>
                                             </select>
                                         </div>
                                      </div>
-                                      <div class="item form-group">
+                                         <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Nivel de gobierno</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select id="" class="selectpicker" data-live-search="true"  title="Elija nivel de gobierno">
-                                           
+                                            <select id="cbxNivelGob" name="cbxNivelGob" class="selectpicker" data-live-search="true"  title="Elija nivel de gobierno">
+                                                 <option value="1">Gobierno 1</option>
+                                                 <option value="2">Gobierno 2</option>
                                             </select>
                                         </div>
                                      </div>
+                                        <div class="item form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Meta Presupuestal</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <select id="cbxMetaPresupuestal" name="cbxMetaPresupuestal" class="selectpicker" data-live-search="true"  title="Elija Meta Presupuestal">
+                                                 <option value="1">Meta 1</option>
+                                                 <option value="2">Meta 2</option>
+                                            </select>
+                                        </div>
+                                     </div>
+                                        <div class="item form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Programa presupuestal</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <select id="cbxProgramaPres" name="cbxProgramaPres" class="selectpicker" data-live-search="true"  title="Elija Programa presupuestal">
+                                                 <option value="1">Programa 1</option>
+                                                 <option value="2">Programa 2</option>
+                                            </select>
+                                        </div>
+                                     </div>
+                                  
                                      <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Codigo unico<span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                          <input id="" name="" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Codigo Unico" required="required" type="text">
+                                          <input id="txtCodigoUnico" name="txtCodigoUnico" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Codigo Unico" required="required" type="text">
                                         </div>
                                     </div>
                                      <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre PIP<span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                          <input id="" name="" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Nombre de la pip" required="required" type="text">
+                                          <input id="txtNombrePip" name="txtNombrePip" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Nombre de la pip" required="required" type="text">
                                         </div>
                                     </div>
                                     <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Costo PIP<span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                          <input id="" name="" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Costo de la pip" required="required" type="text">
+                                          <input id="txtCostoPip" name="txtCostoPip" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Costo de la pip" required="required" type="text">
                                         </div>
                                     </div>
                                     <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Devengado<span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                          <input id="" name="" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Devengado" required="required" type="text"  disabled>
+                                          <input id="txtDevengado" name="txtDevengado" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Devengado" required="required" type="text">
                                         </div>
                                     </div>
-                                     <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Meta presupuestal</span>
-                                        </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select id="" class="selectpicker" data-live-search="true"  title="Elija meta presupuestal">
-                                            </select>
-                                        </div>
-                                     </div>
-                                      <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Programacion presupuestal</span>
-                                        </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select id="" class="selectpicker" data-live-search="true"  title="Elija programacion presupuestal">
-                                            </select>
-                                        </div>
-                                     </div>
+                            
                                      <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Fecha Registro pip<span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                          <input type="date" id="" name="" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text">
+                                          <input type="date" id="dateFechaInPip" name="dateFechaInPip" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text">
                                         </div>
                                     </div>
                                       <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Fecha viabilidad pip<span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                          <input type="date" id="" name="" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text">
+                                          <input type="date" id="dateFechaViabilidad" name="dateFechaViabilidad" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text">
                                         </div>
-                                    </div>
-                                    <div class="ln_solid"></div>
-                                    <div class="form-group">
+                                     </div>
 
-                                    </div>
+                                    <div class="ln_solid"></div>
+                                     <div class="col-md-6 col-md-offset-3">
+                                        <button id="send" type="submit" class="btn btn-success" >
+                                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+                                           Guardar</button>
+                                     </div>
                                   </form>
 
                             </div>
-                            <div role="tabpanel" class="tab-pane fade" id="second">Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</div>
+                            <div role="tabpanel" class="tab-pane fade" id="second">
+
+                                <form class="form-horizontal " id="form-addProgramacion" action="<?php echo  base_url();?>MProyectoInversion/AddProyectoInversion" method="POST" >
+                                 
+                                     <div class="item form-group">
+                                          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Cartera</span>
+                                          </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <select id="cbxCartera"  name="cbxCartera" class="selectpicker" data-live-search="true"  title="Elija Cartera de Inversion">
+                                            
+                                            </select>
+                                        </div>
+                                     </div>
+                                     <div class="item form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Brecha</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <select id="cbxBrecha" name="cbxBrecha" class="selectpicker" data-live-search="true"  title="Elija brecha">
+                                            </select>
+                                        </div>
+                                     </div>
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Proyecto de Inversion<span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                          <input id="txtProyectoInvers" name="txtProyectoInvers" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Proyecto de inversion" required="required" type="text" disabled>
+                                        </div>
+                                    </div>                               
+                                     <div class="item form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Monto programado<span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                          <input id="txtMontoProg" name="txtMontoProg" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Monto Programado" required="required" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Año programado<span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                          <input type="date" id="dateAñoProg" name="dateAñoProg" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text">
+                                        </div>
+                                    </div>
+                                     <div class="item form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Prioridad programado<span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                          <input id="txtPrioridadProg" name="txtPrioridadProg" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Prioridad Programada" required="required" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Monto de operacion y mantenimiento<span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                          <input id="txtMontoOpeMan" name="txtMontoOpeMan" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Monto de Operacion y Mantenimiento" required="required" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Tipo<span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                          <input id="txtTipo" name="txtTipo" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Tipo" required="required" type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="ln_solid"></div>
+                                     <div class="col-md-6 col-md-offset-3">
+                                        <button id="send" type="submit" class="btn btn-success" >
+                                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+                                           Guardar</button>
+                                     </div>
+                                  </form>
+
+                            </div>
                             <div role="tabpanel" class="tab-pane fade" id="third">Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</div>
                           </div>
                         </div> 
