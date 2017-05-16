@@ -1,5 +1,10 @@
  $(document).on("ready" ,function(){
            //sector
+                  setTimeout(
+                    function() {
+                      $('#table-sector').DataTable().ajax.reload(null, false);
+                    }, 125);
+
                   listaSector();/*llamar a mi datatablet listarSector*/
                   listaSectorCombo();//para listar en un combo los sectores
                 

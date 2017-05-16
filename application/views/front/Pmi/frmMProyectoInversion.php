@@ -62,14 +62,7 @@
                                                                   <th class="col-sm-1">DEVENGADO </th>
                                                                   <th class="col-sm-1">FECHA REGISTRO</th>
                                                                   <th class="col-sm-1">FECHA VIABILIDAD</th>
-                                                                  <th>UNIDAD EJECUTORA</th>
-                                                                  <th>NATURALESA INVERSIÓN</th>
-                                                                  <th>TIPOLOGÍA INVERSIÓN</th>
-                                                                   <th>TIPO INVERSIÓN</th>
-                                                                   <th>GRUPO FUNCIONAL</th>
-                                                                  <th>NIVEL GOBIERNO</th>
-                                                                  <th>META PRESUPUESTAL</th>
-                                                                  <th>PROGRAMA PRESUPUESTAL</th>
+
                                                                   <th class="col-sm-1"></th>
                                                                 </tr>
                                                               </thead>
@@ -276,3 +269,27 @@
     </div>
   </div>
 <!-- /.fin ventana para registra una nueva brecha-->
+<!-- /.VER PROYECTO DETALLADO-->     
+<div class="modal fade" id="VerDetalleProyectoInversion" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <CENTER><H4><strong>DETALLE DE PROYECTO DE INVERSIÓN</strong></H4></CENTER>
+        </div>
+        <div class="modal-body">
+         <div class="row">
+            <div class="table-responsive">          
+                <table id="table-detalleProyectoInversion" class="table table-bordered table-hover table-sm" width="100%" >
+                  
+                </table>
+          </div>
+        </div>
+        <div class="modal-footer">
+        <button id="btn-NuevoProyectoI" type="button" class="btn btn-success">  <span class="fa fa-print"></span> IMPRIMIR</button>
+        <button  data-dismiss="modal" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- /.VER DETALLE DE PROYECTO->
