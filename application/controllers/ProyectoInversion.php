@@ -8,7 +8,7 @@ class ProyectoInversion extends CI_Controller {/* Mantenimiento de sector entida
       $this->load->model('Model_ProyectoInversion');
 	}
    /*INSERTAR UN PROYECTO*/
-   function AddProgramacion()
+   function AddProyecto()
    {
       if ($this->input->is_ajax_request()) 
       {
