@@ -255,11 +255,6 @@
                           <input id="txt_NombreModalidadEU" name="txt_NombreModalidadEU" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name"  required="required" type="text">
                         </div>
                       </div>
-<<<<<<< HEAD
-=======
-
-
->>>>>>> origin/desarrollo
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">

@@ -8,7 +8,7 @@ class UnidadE extends CI_Controller {
 	}
 	public function index()
 	{
-		$this->_load_layout('Front/Pmi/frmMRubroEjecucion');
+		$this->_load_layout('Front/Administracion/frmUnidadEjecutora');
 	}
 
  
