@@ -1,6 +1,5 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-
 class InformacionPresupuestal extends CI_Controller
 {
 
@@ -15,7 +14,7 @@ class InformacionPresupuestal extends CI_Controller
         $this->_load_layout('front/Administracion/frmInformacionPresupuestal');
     }
 
-    //------------------------------------------------------------------------------------------------------------------
+    //-----------------------------------------------------------------------------------------------------------
 
     public function get_FuenteFinanciamiento() //mostra fuente financiamietno
 

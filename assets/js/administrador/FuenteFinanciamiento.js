@@ -95,7 +95,7 @@ $(document).on("ready" ,function(){
                         listaComboRubroEjecucion();//ACTUALIZAR EL COMBOX EN EL MODAL MODIFICAR
                         var txt_IdFuenteFinanciamientoM=$('#txt_IdFuenteFinanciamientoM').val(data.id_fuente_finan);
                         var cbxRubroEjecucionM=$('#cbxRubroEjecucionM').val(data.id_rubro);
-                        var txt_NombreFuenteFinanciamientoM=$('#txt_NombreFuenteFinanciamientoM').val(data.nombre_rubro);
+                        var txt_NombreFuenteFinanciamientoM=$('#txt_NombreFuenteFinanciamientoM').val(data.nombre_fuente_finan);
                         var txt_AcronimoFuenteFinanciamientoM=$('#txt_AcronimoFuenteFinanciamientoM').val(data.acronimo_fuente_finan);
                    
                     });
