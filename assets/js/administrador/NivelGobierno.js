@@ -2,14 +2,12 @@ $(document).on("ready" ,function(){
 
                 listaNivelGobierno();/*llamar a mi datatablet listar funcion*/
               //abrir el modal para registrar
-
-
 //REGISTARAR NUEVA nivel de gobierno
    $("#form-AddNivelGobierno").submit(function(event)
                   {
                       event.preventDefault();
                       $.ajax({
-                          url:base_url+"index.php/InformacionPresupuestal/AddNivelGobierno",
+                          url:base_url+"index.php/NivelGobierno/AddNivelGobierno",
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
@@ -37,7 +35,7 @@ $(document).on("ready" ,function(){
                   {
                       event.preventDefault();
                       $.ajax({
-                          url:base_url+"index.php/InformacionPresupuestal/UpdateNivelGobierno",
+                          url:base_url+"index.php/NivelGobierno/UpdateNivelGobierno",
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
@@ -48,8 +46,6 @@ $(document).on("ready" ,function(){
                          }
                       });
                   });
-
-
       });
          /*listra */
                 var listaNivelGobierno=function()
@@ -60,15 +56,14 @@ $(document).on("ready" ,function(){
                      destroy:true,
 
                          "ajax":{
-                                    "url":base_url+"index.php/InformacionPresupuestal/get_NivelGobierno",
+                                    "url":base_url+"index.php/NivelGobierno/get_NivelGobierno",
                   "method":"POST",
                   "dataSrc":""
                                     },
                                 "columns":[
-                                   {"defaultContent":" <label class='pos-rel'><input type='checkbox' class='ace' /><span class='lbl'></span></label>"},
-                                  {"data":"IDNIVELGOB"  },
-                                   {"data":"NOMBRENIVELGOB"},
-                                  {"data":"DESCRIPCIONNIVELGOB"},
+                                  {"defaultContent":" <label class='pos-rel'><input type='checkbox' class='ace' /><span class='lbl'></span></label>"},
+                                  {"data":"id_nivel_gob"},
+                                  {"data":"nombre_nivel_gob"},
                                   {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaEditNivelGobierno'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><span class='glyphicon glyphicon-trash' aria-hidden='true'></span></button>"}
                                ],
 
@@ -81,16 +76,15 @@ $(document).on("ready" ,function(){
                 var  NivelGobiernoData=function(tbody,myTable){
                     $(tbody).on("click","button.editar",function(){
                         var data=myTable.row( $(this).parents("tr")).data();
-                        var txt_IdNivelGobiernoM=$('#txt_IdNivelGobiernoM').val(data.IDNIVELGOB);
-                        var txt_NombreNivelGobiernoM=$('#txt_NombreNivelGobiernoM').val(data.NOMBRENIVELGOB);
-                        var txt_DescripcionNivelGobiernoM=$('#txt_DescripcionNivelGobiernoM').val(data.DESCRIPCIONNIVELGOB);
+                        var txt_IdNivelGobiernoM=$('#txt_IdNivelGobiernoM').val(data.id_nivel_gob);
+                        var txt_NombreNivelGobiernoM=$('#txt_NombreNivelGobiernoM').val(data.nombre_nivel_gob);
 
                     });
                 }
 var EliminarNivelGobiernoData=function(tbody,myTable){
                   $(tbody).on("click","button.eliminar",function(){
                         var data=myTable.row( $(this).parents("tr")).data();
-                        var IDNIVELGOB=data.IDNIVELGOB;
+                        var id_nivel_gob=data.id_nivel_gob;
                         console.log(data);
                          swal({
                                 title: "Desea eliminar ?",
@@ -103,9 +97,9 @@ var EliminarNivelGobiernoData=function(tbody,myTable){
                               },
                               function(){
                                     $.ajax({
-                                          url:base_url+"index.php/InformacionPresupuestal/EliminarNivelGobierno",
+                                          url:base_url+"index.php/NivelGobierno/EliminarNivelGobierno",
                                           type:"POST",
-                                          data:{IDNIVELGOB:IDNIVELGOB},
+                                          data:{id_nivel_gob:id_nivel_gob},
                                           success:function(respuesta){
                                             //alert(respuesta);
                                             swal("Se eliminó corectamente.", "", "success");

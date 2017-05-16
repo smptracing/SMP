@@ -1,35 +1,26 @@
-<?php
+ <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class InformacionPresupuestal extends CI_Controller
+class NivelGobierno extends CI_Controller
 {
-
     public function __construct()
     {
         parent::__construct();
         $this->load->model('NivelGobierno_Model');
-
     }
     public function index()
     {
         $this->_load_layout('front/Pmi/frmMRubroEjecucion');
     }
-
-//------------------------------------------------------------------------------------------------------------------
-
     public function get_NivelGobierno() //mostra nivel de gobierno
 
     {
 
         if ($this->input->is_ajax_request()) {
-            $flat = "LT";
-            // $ID   = "0";
-            $txt_IdNivelGobierno          = $this->input->post("txt_IdNivelGobierno");
-            $txt_NombreNivelGobierno      = $this->input->post("txt_NombreNivelGobierno");
-            $txt_DescripcionNivelGobierno = $this->input->post("txt_DescripcionNivelGobierno");
-            $user                         = "1";
-
-            $datos = $this->NivelGobierno_Model->get_NivelGobierno($flat, $txt_IdNivelGobierno, $txt_NombreNivelGobierno, $txt_DescripcionNivelGobierno, $user);
+            $flat                    = "R";
+            $txt_IdNivelGobierno     = "NULL";
+            $txt_NombreNivelGobierno = "NULL";
+            $datos                   = $this->NivelGobierno_Model->get_NivelGobierno($flat, $txt_IdNivelGobierno, $txt_NombreNivelGobierno);
             echo json_encode($datos);
         } else {
             show_404();
@@ -40,12 +31,11 @@ class InformacionPresupuestal extends CI_Controller
     public function AddNivelGobierno()
     {
         if ($this->input->is_ajax_request()) {
-            $flat                         = "N";
-            $txt_IdNivelGobierno          = "0";
-            $txt_NombreNivelGobierno      = $this->input->post("txt_NombreNivelGobierno");
-            $txt_DescripcionNivelGobierno = $this->input->post("txt_DescripcionNivelGobierno");
-            $user                         = "1";
-            if ($this->NivelGobierno_Model->AddNivelGobierno($flat, $txt_IdNivelGobierno, $txt_NombreNivelGobierno, $txt_DescripcionNivelGobierno, $user) == false) {
+            $flat                    = "C";
+            $txt_IdNivelGobierno     = "0";
+            $txt_NombreNivelGobierno = $this->input->post("txt_NombreNivelGobierno");
+
+            if ($this->NivelGobierno_Model->AddNivelGobierno($flat, $txt_IdNivelGobierno, $txt_NombreNivelGobierno) == false) {
                 echo "1";
             } else {
                 echo "2";
@@ -59,14 +49,11 @@ class InformacionPresupuestal extends CI_Controller
     public function EliminarNivelGobierno()
     {
         if ($this->input->is_ajax_request()) {
-            $flat = "E";
+            $flat = "D";
             // $ID   = "0";
-            $txt_IdNivelGobierno          = $this->input->post("IDNIVELGOB");
-            $txt_NombreNivelGobierno      = "NULL";
-            $txt_DescripcionNivelGobierno = "NULL";
-            $user                         = "1";
-
-            if ($this->NivelGobierno_Model->EliminarNivelGobierno($flat, $txt_IdNivelGobierno, $txt_NombreNivelGobierno, $txt_DescripcionNivelGobierno, $user) == false) {
+            $txt_IdNivelGobierno     = $this->input->post("id_nivel_gob");
+            $txt_NombreNivelGobierno = "NULL";
+            if ($this->NivelGobierno_Model->EliminarNivelGobierno($flat, $txt_IdNivelGobierno, $txt_NombreNivelGobierno) == false) {
                 echo "Se Eliminó  ";
             } else {
                 echo "No se Eliminó ";
@@ -80,12 +67,11 @@ class InformacionPresupuestal extends CI_Controller
     public function UpdateNivelGobierno()
     {
         if ($this->input->is_ajax_request()) {
-            $flat                          = "M";
-            $txt_IdNivelGobiernoM          = $this->input->post("txt_IdNivelGobiernoM");
-            $txt_NombreNivelGobiernoM      = $this->input->post("txt_NombreNivelGobiernoM");
-            $txt_DescripcionNivelGobiernoM = $this->input->post("txt_DescripcionNivelGobiernoM");
-            $user                          = "1";
-            if ($this->NivelGobierno_Model->UpdateNivelGobierno($flat, $txt_IdNivelGobiernoM, $txt_NombreNivelGobiernoM, $txt_DescripcionNivelGobiernoM, $user) == false) {
+            $flat                     = "U";
+            $txt_IdNivelGobiernoM     = $this->input->post("txt_IdNivelGobiernoM");
+            $txt_NombreNivelGobiernoM = $this->input->post("txt_NombreNivelGobiernoM");
+
+            if ($this->NivelGobierno_Model->UpdateNivelGobierno($flat, $txt_IdNivelGobiernoM, $txt_NombreNivelGobiernoM) == false) {
                 echo "Se actualizó  ";
             } else {
                 echo "No se actualizó ";
@@ -98,12 +84,11 @@ class InformacionPresupuestal extends CI_Controller
     }
 
 //------------------------------------------------------------------------------------------------------------------
-
-//------------------------------------------------------------------------------------------------------------------
     public function _load_layout($template)
     {
-        $this->load->view('layout/Administracion/header');
+        $this->load->view('layout/ADMINISTRACION/header');
         $this->load->view($template);
-        $this->load->view('layout/Administracion/footer');
+        $this->load->view('layout/ADMINISTRACION/footer');
     }
+
 }

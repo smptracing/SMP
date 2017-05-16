@@ -67,7 +67,7 @@
                                                                   <th class="col-sm-2">ID </th>
 
                                                                   <th >MODALIDAD DE EJECUCION </th>
-                                               
+
                                                                   <th class="col-sm-2"></th>
                                                                 </tr>
                                                               </thead>
@@ -162,12 +162,10 @@
                                                                           </label>
                                                                          </th>
                                                                          <th>ID </th>
-                                                                         <th>NOMBRE NIVEL</th>
-                                                                         <th class="hidden-480">DESCRIPCION </th>
+                                                                         <th>NOMBRE NIVEL GOB</th>
                                                                          <th></th>
                                                                       </tr>
                                                                    </thead>
-
                                                                 </table>
                                                       </div>
                                                       <!--fin de la tabla nivel de gobierno-->
@@ -260,7 +258,7 @@
 <<<<<<< HEAD
 =======
 
-        
+
 >>>>>>> origin/desarrollo
                       <div class="ln_solid"></div>
                       <div class="form-group">
@@ -398,13 +396,7 @@
                           <input id="txt_NombreNivelGobierno" name="txt_NombreNivelGobierno" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Nombre" required="required" type="text">
                         </div>
                       </div>
-                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Descripción
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_DescripcionNivelGobierno" name="txt_DescripcionNivelGobierno" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Descripción" type="text">
-                        </div>
-                      </div>
+
                            <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
@@ -458,13 +450,7 @@
                           <input id="txt_NombreNivelGobiernoM" name="txt_NombreNivelGobiernoM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Nombre " required="required" type="text">
                         </div>
                       </div>
-                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Descripccion
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_DescripcionNivelGobiernoM" name="txt_DescripcionNivelGobiernoM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Descripccion "  type="text">
-                        </div>
-                      </div>
+
                            <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">

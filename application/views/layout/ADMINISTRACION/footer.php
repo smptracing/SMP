@@ -71,37 +71,37 @@
 
     <script src="<?php echo base_url(); ?>assets/build/js/custom.min.js"></script>
 
-  <script src="<?php echo base_url();?>assets/vendors/butons/buttons.colVis.min.js"></script>
-    <script src="<?php echo base_url();?>assets/vendors/butons/dataTables.select.min.js"></script>
-    <script src="<?php echo base_url();?>assets/vendors/butons/dataTables.buttons.min.js"></script>
-    <script src="<?php echo base_url();?>assets/vendors/butons/buttons.flash.min.js"></script>
-    <script src="<?php echo base_url();?>assets/vendors/butons/buttons.html5.min.js"></script>
-    <script src="<?php echo base_url();?>assets/vendors/butons/buttons.print.min.js"></script>
-    <script src="<?php echo base_url();?>assets/plugins/input-mask/jquery.inputmask.min.js"></script> 
+  <script src="<?php echo base_url(); ?>assets/vendors/butons/buttons.colVis.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/vendors/butons/dataTables.select.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/vendors/butons/dataTables.buttons.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/vendors/butons/buttons.flash.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/vendors/butons/buttons.html5.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/vendors/butons/buttons.print.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/plugins/input-mask/jquery.inputmask.min.js"></script>
 
 
 
-    <script src="<?php echo base_url();?>assets/js/ubicacion/ubicacion.js"></script><!-- para la ubicacion -->
-    <script src="<?php echo base_url();?>assets/js/administrador/Sector.js"></script><!-- para mostralos datos de sector entidad y servicios publicos asociados-->
-    <script src="<?php echo base_url();?>assets/js/administrador/Entidad.js"></script>
-    <script src="<?php echo base_url();?>assets/js/administrador/DivisionFuncional.js"></script>
-    <script src="<?php echo base_url();?>assets/js/administrador/Funcion.js"></script><!-- para mostra la divicion funcional la funcio y el grupo duncional-->
-    <script src="<?php echo base_url();?>assets/js/administrador/GrupoFuncional.js"></script><!-- para mostra la divicion funcional la funcio y el grupo duncional-->
-    <script src="<?php echo base_url();?>assets/js/administrador/MBrecha.js"></script><!-- para mostra los datos de la brecha-->
-    <script src="<?php echo base_url();?>assets/js/administrador/MRubroE.js"></script><!-- para mostar los datos de rubro de ejecucion-->
-    <script src="<?php echo base_url();?>assets/js/administrador/ModalidadE.js"></script>
-    <script src="<?php echo base_url();?>assets/js/administrador/UnidadE.js"></script>
-    <script src="<?php echo base_url();?>assets/js/administrador/MProyectoInversion.js"></script>
-    <script src="<?php echo base_url();?>assets/js/administrador/Indicador.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/ubicacion/ubicacion.js"></script><!-- para la ubicacion -->
+    <script src="<?php echo base_url(); ?>assets/js/administrador/Sector.js"></script><!-- para mostralos datos de sector entidad y servicios publicos asociados-->
+    <script src="<?php echo base_url(); ?>assets/js/administrador/Entidad.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/administrador/DivisionFuncional.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/administrador/Funcion.js"></script><!-- para mostra la divicion funcional la funcio y el grupo duncional-->
+    <script src="<?php echo base_url(); ?>assets/js/administrador/GrupoFuncional.js"></script><!-- para mostra la divicion funcional la funcio y el grupo duncional-->
+    <script src="<?php echo base_url(); ?>assets/js/administrador/MBrecha.js"></script><!-- para mostra los datos de la brecha-->
+    <script src="<?php echo base_url(); ?>assets/js/administrador/MRubroE.js"></script><!-- para mostar los datos de rubro de ejecucion-->
+    <script src="<?php echo base_url(); ?>assets/js/administrador/ModalidadE.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/administrador/UnidadE.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/administrador/MProyectoInversion.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/administrador/Indicador.js"></script>
     <!-- js de los formularios-->
-      <script src="<?php echo base_url();?>assets/js/administrador/NaturalezaInversion.js"></script>
-     <script src="<?php echo base_url();?>assets/js/administrador/NivelGobierno.js"></script>
-    <script src="<?php echo base_url();?>assets/js/administrador/FuenteFinanciamiento.js"></script>
-  
-    <script src="<?php echo base_url();?>assets/js/administrador/TipologiaInversion.js"></script>
-    <script src="<?php echo base_url();?>assets/js/administrador/TipoInversion.js"></script>
-    <script src="<?php echo base_url();?>assets/js/administrador/EstadoCicloInversion.js"></script>
-    <script src="<?php echo base_url();?>assets/js/administrador/MetaPresupuestal.js"></script>
-<script src="<?php echo base_url();?>assets/js/administrador/ProgramaPresupuestal.js"></script>
+      <script src="<?php echo base_url(); ?>assets/js/administrador/NaturalezaInversion.js"></script>
+     <script src="<?php echo base_url(); ?>assets/js/administrador/NivelGobierno.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/administrador/FuenteFinanciamiento.js"></script>
+
+    <script src="<?php echo base_url(); ?>assets/js/administrador/TipologiaInversion.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/administrador/TipoInversion.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/administrador/EstadoCicloInversion.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/administrador/MetaPresupuestal.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/administrador/ProgramaPresupuestal.js"></script>
   </body>
 </html>
