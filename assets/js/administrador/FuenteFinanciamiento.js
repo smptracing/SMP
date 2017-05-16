@@ -86,7 +86,7 @@ $(document).on("ready" ,function(){
                                 "language":idioma_espanol
                     }); 
 
-        Fuente_FinanciamientoData("#dynamic-table-FuenteFinanciamiento",myTableFFTO);  //CARGAR LA DATA PARA MOSTRAR EN EL MODAL  
+        Fuente_FinanciamientoData("#dynamic-table-FuenteFinanciamiento",myTableFFTO);  //CARGAR LA DATA PARA MOSTRAR EN EL MODAL  s
         EliminarFuente_FinanciamientoData("#dynamic-table-FuenteFinanciamiento",myTableFFTO);
                 }
 
@@ -94,11 +94,11 @@ $(document).on("ready" ,function(){
                     $(tbody).on("click","button.editar",function(){
                         var data=myTableFFTO.row( $(this).parents("tr")).data();
                         listaComboRubroEjecucion();//ACTUALIZAR EL COMBOX EN EL MODAL MODIFICAR
-                        var txt_IdFuenteFinanciamientoM=$('#txt_IdFuenteFinanciamientoM').val(data.idffto);
-                        var cbxRubroEjecucionM=$('#cbxRubroEjecucionM').val(data.id_rubro_ejec);
-                        var txt_NombreFuenteFinanciamientoM=$('#txt_NombreFuenteFinanciamientoM').val(data.nombreffto);
-                        var txt_AcronimoFuenteFinanciamientoM=$('#txt_AcronimoFuenteFinanciamientoM').val(data.acronimoffto);
-                        var txt_DescripcionFuenteFinanciamientoM=$('#txt_DescripcionFuenteFinanciamientoM').val(data.descripcionffto);
+
+                        var txt_IdFuenteFinanciamientoM=$('#txt_IdFuenteFinanciamientoM').val(data.id_fuente_finan);
+                        var cbxRubroEjecucionM=$('#cbxRubroEjecucionM').val(data.id_rubro);
+                        var txt_NombreFuenteFinanciamientoM=$('#txt_NombreFuenteFinanciamientoM').val(data.nombre_fuente_finan);
+                        var txt_AcronimoFuenteFinanciamientoM=$('#txt_AcronimoFuenteFinanciamientoM').val(data.acronimo_fuente_finan);
                     });
                 }
          
