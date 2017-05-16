@@ -67,9 +67,9 @@ $(document).on("ready" ,function(){
                                     },
                                 "columns":[
                                    {"defaultContent":" <label class='pos-rel'><input type='checkbox' class='ace' /><i class='lbl'></i></label>"},
-                                    {"data":"IDCICLOINVERSION"  },
-                                    {"data":"NOMBRECICLOINVERSION"},
-                                    {"data":"DESCRIPCIONCICLOINVERSION"},
+                                    {"data":"id_estado_ciclo"  },
+                                    {"data":"nombre_estado_ciclo"},
+                                    {"data":"descripcion_estado_ciclo"},
                                  {"defaultContent":"</button><button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaEditEstadoCicloInversion'><i class='glyphicon glyphicon-pencil' aria-hidden='true'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='glyphicon glyphicon-trash' aria-hidden='true'></i></button>"}
                                ],
 
@@ -82,16 +82,16 @@ $(document).on("ready" ,function(){
                 var  EstadoCicloData=function(tbody,myTable){
                     $(tbody).on("click","button.editar",function(){
                         var data=myTable.row( $(this).parents("tr")).data();
-                        var txt_IdEstadoCicloInversionM=$('#txt_IdEstadoCicloInversionM').val(data.IDCICLOINVERSION);
-                        var txt_NombreEstadoCicloInversionM=$('#txt_NombreEstadoCicloInversionM').val(data.NOMBRECICLOINVERSION);
-                        var txt_DescripcionEstadoCicloInversionM=$('#txt_DescripcionEstadoCicloInversionM').val(data.DESCRIPCIONCICLOINVERSION);
+                        var txt_IdEstadoCicloInversionM=$('#txt_IdEstadoCicloInversionM').val(data.id_estado_ciclo);
+                        var txt_NombreEstadoCicloInversionM=$('#txt_NombreEstadoCicloInversionM').val(data.nombre_estado_ciclo);
+                        var txt_DescripcionEstadoCicloInversionM=$('#txt_DescripcionEstadoCicloInversionM').val(data.descripcion_estado_ciclo);
 
                     });
                 }
 var EliminarEstadoCicloData=function(tbody,myTable){
                   $(tbody).on("click","button.eliminar",function(){
                         var data=myTable.row( $(this).parents("tr")).data();
-                        var IDCICLOINVERSION=data.IDCICLOINVERSION;
+                        var id_estado_ciclo=data.id_estado_ciclo;
                         console.log(data);
                          swal({
                                 title: "Desea eliminar ?",
@@ -106,7 +106,7 @@ var EliminarEstadoCicloData=function(tbody,myTable){
                                     $.ajax({
                                           url:base_url+"index.php/EstadoCicloInversion/EliminarEstadoCicloInversion",
                                           type:"POST",
-                                          data:{IDCICLOINVERSION:IDCICLOINVERSION},
+                                          data:{id_estado_ciclo:id_estado_ciclo},
                                           success:function(respuesta){
                                             //alert(respuesta);
                                             swal("Se eliminó corectamente !", "", "success");

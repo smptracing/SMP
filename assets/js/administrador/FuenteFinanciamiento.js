@@ -75,11 +75,10 @@ $(document).on("ready" ,function(){
                                     },
                                 "columns":[
                                   {"defaultContent":" <label class='pos-rel'><input type='checkbox' class='ace' /><span class='lbl'></span></label>"},
-                                  {"data":"idffto"},
-                                  {"data":"nombre_rubro_ejec"},
-                                  {"data":"nombreffto"},
-                                  {"data":"acronimoffto"},
-                                  {"data":"descripcionffto"},
+                                  {"data":"id_fuente_finan"},
+                                  {"data":"nombre_rubro"},
+                                  {"data":"nombre_fuente_finan"},
+                                  {"data":"acronimo_fuente_finan"},
                                   {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaEditFuenteFinanciamiento'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><span class='glyphicon glyphicon-trash' aria-hidden='true'></span></button>"}
                                ],
 
@@ -94,19 +93,19 @@ $(document).on("ready" ,function(){
                     $(tbody).on("click","button.editar",function(){
                         var data=myTableFFTO.row( $(this).parents("tr")).data();
                         listaComboRubroEjecucion();//ACTUALIZAR EL COMBOX EN EL MODAL MODIFICAR
-                        var txt_IdFuenteFinanciamientoM=$('#txt_IdFuenteFinanciamientoM').val(data.idffto);
-                        var cbxRubroEjecucionM=$('#cbxRubroEjecucionM').val(data.id_rubro_ejec);
-                        var txt_NombreFuenteFinanciamientoM=$('#txt_NombreFuenteFinanciamientoM').val(data.nombreffto);
-                        var txt_AcronimoFuenteFinanciamientoM=$('#txt_AcronimoFuenteFinanciamientoM').val(data.acronimoffto);
-                        var txt_DescripcionFuenteFinanciamientoM=$('#txt_DescripcionFuenteFinanciamientoM').val(data.descripcionffto);
+                        var txt_IdFuenteFinanciamientoM=$('#txt_IdFuenteFinanciamientoM').val(data.id_fuente_finan);
+                        var cbxRubroEjecucionM=$('#cbxRubroEjecucionM').val(data.id_rubro);
+                        var txt_NombreFuenteFinanciamientoM=$('#txt_NombreFuenteFinanciamientoM').val(data.nombre_rubro);
+                        var txt_AcronimoFuenteFinanciamientoM=$('#txt_AcronimoFuenteFinanciamientoM').val(data.acronimo_fuente_finan);
+                   
                     });
                 }
          
                 var EliminarFuente_FinanciamientoData=function(tbody,myTableFFTO){
                   $(tbody).on("click","button.eliminar",function(){
                         var data=myTableFFTO.row( $(this).parents("tr")).data();
-                        var idffto=data.idffto;
-                        var id_rubro_ejec=data.id_rubro_ejec;
+                        var id_fuente_finan=data.id_fuente_finan;
+                        var id_rubro=data.id_rubro;
                         console.log(data);
                          swal({
                                 title: "Desea eliminar ?",
@@ -121,8 +120,8 @@ $(document).on("ready" ,function(){
                                     $.ajax({
                                           url:base_url+"index.php/InformacionPresupuestal/EliminarFuenteFinanciamiento",
                                           type:"POST",
-                                          data:{idffto:idffto,
-                                          id_rubro_ejec:id_rubro_ejec},
+                                          data:{id_fuente_finan:id_fuente_finan,
+                                          id_rubro:id_rubro},
                                           success:function(respuesta){
                                             //alert(respuesta);
                                             swal("Se eliminó corectamente.", "", "success");
@@ -146,7 +145,7 @@ $(document).on("ready" ,function(){
                            // alert(respuesta);
                          var registros = eval(respuesta);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option value="+registros[i]["id_rubro_ejec"]+"> "+ registros[i]["nombre_rubro_ejec"]+" </option>";   
+                              html +="<option value="+registros[i]["id_rubro"]+"> "+ registros[i]["nombre_rubro"]+" </option>";   
                             };
                             $("#cbxRubroEjecucion").html(html);//
                             $("#cbxRubroEjecucionM").html(html);//

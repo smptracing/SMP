@@ -9,9 +9,9 @@ class NaturalezaInversion_Model extends CI_Model
 
     }
 
-    public function get_NaturalezaInversion($flat, $ID, $txt_NombreNaturaleza, $txt_DescripcionNaturaleza, $user)
+    public function get_NaturalezaInversion($flat, $ID, $txt_NombreNaturaleza)
     {
-        $NaturalezaInversion = $this->db->query("execute SP_GESTIONAR_NATURALEZAINVERSION'" . $flat . "','" . $ID . "', '" . $txt_NombreNaturaleza . "','" . $txt_DescripcionNaturaleza . "','" . $user . "' ");
+        $NaturalezaInversion = $this->db->query("execute sp_Gestionar_NaturalezaInversion'" . $flat . "','" . $ID . "', '" . $txt_NombreNaturaleza . "' ");
         if ($NaturalezaInversion->num_rows() > 0) {
             return $NaturalezaInversion->result();
         } else {
@@ -19,10 +19,10 @@ class NaturalezaInversion_Model extends CI_Model
         }
     }
 
-    public function AddNaturalezaInversion($flat, $ID, $txt_NombreNaturaleza, $txt_DescripcionNaturaleza, $user)
+    public function AddNaturalezaInversion($flat, $ID, $txt_NombreNaturaleza)
     {
 
-        $this->db->query("execute SP_GESTIONAR_NATURALEZAINVERSION'" . $flat . "','" . $ID . "', '" . $txt_NombreNaturaleza . "','" . $txt_DescripcionNaturaleza . "','" . $user . "' ");
+        $this->db->query("execute sp_Gestionar_NaturalezaInversion'" . $flat . "','" . $ID . "', '" . $txt_NombreNaturaleza . "' ");
         if ($this->db->affected_rows() > 0) {
             return true;
         } else {
@@ -30,10 +30,10 @@ class NaturalezaInversion_Model extends CI_Model
         }
 
     }
-    public function UpdateNaturalezaInversion($flat, $txt_IdNaturalezaM, $txt_NombreNaturalezaM, $txt_DescripcionNaturalezaM, $user)
+    public function UpdateNaturalezaInversion($flat, $txt_IdNaturalezaM, $txt_NombreNaturalezaM)
     {
 
-        $this->db->query("execute SP_GESTIONAR_NATURALEZAINVERSION'" . $flat . "','" . $txt_IdNaturalezaM . "', '" . $txt_NombreNaturalezaM . "','" . $txt_DescripcionNaturalezaM . "','" . $user . "' ");
+        $this->db->query("execute sp_Gestionar_NaturalezaInversion'" . $flat . "','" . $txt_IdNaturalezaM . "', '" . $txt_NombreNaturalezaM . "' ");
         if ($this->db->affected_rows() > 0) {
             return true;
         } else {
@@ -41,10 +41,10 @@ class NaturalezaInversion_Model extends CI_Model
         }
 
     }
-    public function EliminarNaturalezaInversion($flat, $txt_IdNaturaleza, $txt_NombreNaturaleza, $txt_DescripcionNaturaleza, $user)
+    public function EliminarNaturalezaInversion($flat, $txt_IdNaturaleza, $txt_NombreNaturaleza)
     {
 
-        $this->db->query("execute SP_GESTIONAR_NATURALEZAINVERSION'" . $flat . "','" . $txt_IdNaturaleza . "', '" . $txt_NombreNaturaleza . "','" . $txt_DescripcionNaturaleza . "','" . $user . "' ");
+        $this->db->query("execute sp_Gestionar_NaturalezaInversion'" . $flat . "','" . $txt_IdNaturaleza . "', '" . $txt_NombreNaturaleza . "' ");
         if ($this->db->affected_rows() > 0) {
             return true;
         } else {

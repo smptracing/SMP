@@ -69,9 +69,8 @@
                                     },
                                 "columns":[
                                    {"defaultContent":" "},
-                                   {"data":"IDNATURALEZA"  },
-                                   {"data":"NOMBRENATURALEZA"},
-                                   {"data":"DESCRIPCIONNATURALEZA"},
+                                   {"data":"id_naturaleza_inv"  },
+                                   {"data":"nombre_naturaleza_inv"},
                                   {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaRegNaturalezaInversion'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                ],
 
@@ -86,16 +85,16 @@
                 var  NaturalezaData=function(tbody,myTable){
                     $(tbody).on("click","button.editar",function(){
                         var data=myTable.row( $(this).parents("tr")).data();
-                        var txt_IdNaturalezaM=$('#txt_IdNaturalezaM').val(data.IDNATURALEZA);
-                        var txt_NombreNaturalezaM=$('#txt_NombreNaturalezaM').val(data.NOMBRENATURALEZA);
-                        var txt_DescripcionNaturalezaM=$('#txt_DescripcionNaturalezaM').val(data.DESCRIPCIONNATURALEZA);
+                        var txt_IdNaturalezaM=$('#txt_IdNaturalezaM').val(data.id_naturaleza_inv);
+                        var txt_NombreNaturalezaM=$('#txt_NombreNaturalezaM').val(data.nombre_naturaleza_inv);
+                     
 
                     });
                 }
 var EliminarNaturalezaData=function(tbody,table){
                   $(tbody).on("click","button.eliminar",function(){
                         var data=table.row( $(this).parents("tr")).data();
-                        var IDNATURALEZA=data.IDNATURALEZA;
+                        var id_naturaleza_inv=data.id_naturaleza_inv;
                         console.log(data);
                          swal({
                                 title: "Desea eliminar ?",
@@ -110,7 +109,7 @@ var EliminarNaturalezaData=function(tbody,table){
                                     $.ajax({
                                           url:base_url+"index.php/TipologiaInversion/EliminarNaturalezaInversion",
                                           type:"POST",
-                                          data:{IDNATURALEZA:IDNATURALEZA},
+                                          data:{id_naturaleza_inv:id_naturaleza_inv},
                                           success:function(respuesta){
                                             //alert(respuesta);
                                             swal("Se eliminó corectamente", ".", "success");

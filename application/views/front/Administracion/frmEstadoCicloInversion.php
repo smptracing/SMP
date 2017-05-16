@@ -1,6 +1,7 @@
 <div class="right_col" role="main">
           <div class="">
 
+
 <!--Inicio primer panel General-->
       <div class="clearfix"></div>
         <div class="">

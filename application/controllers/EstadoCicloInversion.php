@@ -21,14 +21,13 @@ class EstadoCicloInversion extends CI_Controller
     {
 
         if ($this->input->is_ajax_request()) {
-            $flat = "LT";
+            $flat = "R";
             // $ID   = "0";
             $txt_IdEstadoCicloInversion          = $this->input->post("txt_IdEstadoCicloInversion");
             $txt_NombreEstadoCicloInversion      = $this->input->post("txt_NombreEstadoCicloInversion");
             $txt_DescripcionEstadoCicloInversion = $this->input->post("txt_DescripcionEstadoCicloInversion");
-            $user                                = "1";
 
-            $datos = $this->EstadoCicloInversion_Model->get_EstadoCicloInversion($flat, $txt_IdEstadoCicloInversion, $txt_NombreEstadoCicloInversion, $txt_DescripcionEstadoCicloInversion, $user);
+            $datos = $this->EstadoCicloInversion_Model->get_EstadoCicloInversion($flat, $txt_IdEstadoCicloInversion, $txt_NombreEstadoCicloInversion, $txt_DescripcionEstadoCicloInversion);
             echo json_encode($datos);
         } else {
             show_404();
@@ -39,12 +38,11 @@ class EstadoCicloInversion extends CI_Controller
     public function AddEstadoCicloInversion()
     {
         if ($this->input->is_ajax_request()) {
-            $flat                                = "N";
+            $flat                                = "C";
             $txt_IdEstadoCicloInversion          = "0";
             $txt_NombreEstadoCicloInversion      = $this->input->post("txt_NombreEstadoCicloInversion");
             $txt_DescripcionEstadoCicloInversion = $this->input->post("txt_DescripcionEstadoCicloInversion");
-            $user                                = "1";
-            if ($this->EstadoCicloInversion_Model->AddEstadoCicloInversion($flat, $txt_IdEstadoCicloInversion, $txt_NombreEstadoCicloInversion, $txt_DescripcionEstadoCicloInversion, $user) == false) {
+            if ($this->EstadoCicloInversion_Model->AddEstadoCicloInversion($flat, $txt_IdEstadoCicloInversion, $txt_NombreEstadoCicloInversion, $txt_DescripcionEstadoCicloInversion) == false) {
                 echo "1";
             } else {
                 echo "2";
@@ -58,14 +56,13 @@ class EstadoCicloInversion extends CI_Controller
     public function EliminarEstadoCicloInversion()
     {
         if ($this->input->is_ajax_request()) {
-            $flat = "E";
+            $flat = "D";
             // $ID   = "0";
             $txt_IdEstadoCicloInversion          = $this->input->post("IDCICLOINVERSION");
             $txt_NombreEstadoCicloInversion      = "NULL";
             $txt_DescripcionEstadoCicloInversion = "NULL";
-            $user                                = "1";
 
-            if ($this->EstadoCicloInversion_Model->EliminarEstadoCicloInversion($flat, $txt_IdEstadoCicloInversion, $txt_NombreEstadoCicloInversion, $txt_DescripcionEstadoCicloInversion, $user) == false) {
+            if ($this->EstadoCicloInversion_Model->EliminarEstadoCicloInversion($flat, $txt_IdEstadoCicloInversion, $txt_NombreEstadoCicloInversion, $txt_DescripcionEstadoCicloInversion) == false) {
                 echo "Se Eliminó  ";
             } else {
                 echo "No se Eliminó ";
@@ -79,12 +76,12 @@ class EstadoCicloInversion extends CI_Controller
     public function UpdateEstadoCicloInversion()
     {
         if ($this->input->is_ajax_request()) {
-            $flat                                 = "M";
+            $flat                                 = "U";
             $txt_IdEstadoCicloInversionM          = $this->input->post("txt_IdEstadoCicloInversionM");
             $txt_NombreEstadoCicloInversionM      = $this->input->post("txt_NombreEstadoCicloInversionM");
             $txt_DescripcionEstadoCicloInversionM = $this->input->post("txt_DescripcionEstadoCicloInversionM");
-            $user                                 = "1";
-            if ($this->EstadoCicloInversion_Model->UpdateEstadoCicloInversion($flat, $txt_IdEstadoCicloInversionM, $txt_NombreEstadoCicloInversionM, $txt_DescripcionEstadoCicloInversionM, $user) == false) {
+
+            if ($this->EstadoCicloInversion_Model->UpdateEstadoCicloInversion($flat, $txt_IdEstadoCicloInversionM, $txt_NombreEstadoCicloInversionM, $txt_DescripcionEstadoCicloInversionM) == false) {
                 echo "Se actualizó  ";
             } else {
                 echo "No se actualizó ";

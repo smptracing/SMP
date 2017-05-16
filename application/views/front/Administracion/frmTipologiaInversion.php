@@ -78,8 +78,7 @@
                                                                          </th>
                                                                          <th class="hidden-10" >ID NATURALEZA</th>
                                                                          <th>NOMBRE NATURALEZA</th>
-                                                                         <th class="hidden-480">DESCRIPCION NATURALEZA</th>
-                                                                         <th></th>
+                                                                        <th></th>
                                                                       </tr>
                                                                    </thead>
 
@@ -131,7 +130,7 @@
                                                                          </th>
                                                                          <th>ID TIPOLOGIA</th>
                                                                          <th>NOMBRE TIPOLOGIA</th>
-                                                                         <th class="hidden-480">DESCRIPCION TIPOLOGIA</th>
+
                                                                          <th></th>
                                                                       </tr>
                                                                    </thead>
@@ -242,13 +241,8 @@
                           <input  id="txt_NombreNaturalezaM" name="txt_NombreNaturalezaM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Nombre del Naturaleza" required="required" type="text" >
                         </div>
                       </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Descripcion Naturaleza<span class="required"></span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <textarea id="txt_DescripcionNaturalezaM" name="txt_DescripcionNaturalezaM"  placeholder="Descripcion Naturaleza" class="form-control col-md-7 col-xs-12"></textarea>
-                        </div>
-                      </div>
+
+
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
@@ -301,13 +295,7 @@
                           <input id="txt_NombreNaturaleza" name="txt_NombreNaturaleza" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Nombre del Naturaleza" required="required" type="text" >
                         </div>
                       </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Descripcion Naturaleza<span class="required"></span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <textarea id="txt_DescripcionNaturaleza" name="txt_DescripcionNaturaleza"   placeholder="Descripcion Naturaleza" class="form-control col-md-7 col-xs-12"></textarea>
-                        </div>
-                      </div>
+
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
@@ -352,13 +340,7 @@
                           <input id="txt_NombreTipologiaInversion" name="txt_NombreTipologiaInversion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Nombre" required="required" type="text">
                         </div>
                       </div>
-                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Descripción
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_DescripcionTipologiaInversion" name="txt_DescripcionTipologiaInversion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Descripción"  type="text">
-                        </div>
-                      </div>
+
                            <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
@@ -398,10 +380,9 @@
               <form class="form-horizontal " id="form-EditTipologiaInversion"   action="<?php echo base_url(); ?>TipologiaInversion/get_TipologiaInversion" method="POST" >
 
                <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">ID <span class="required">*</span>
-                        </label>
+
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="txt_IdTipologiaInversionM" name="txt_IdTipologiaInversionM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="text">
+                        <input id="txt_IdTipologiaInversionM" name="txt_IdTipologiaInversionM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
                         </div>
                       </div>
 
@@ -413,13 +394,7 @@
                           <input id="txt_NombreTipologiaInversionM" name="txt_NombreTipologiaInversionM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Nombre " required="required" type="text">
                         </div>
                       </div>
-                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Descripccion
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_DescripcionTipologiaInversionM" name="txt_DescripcionTipologiaInversionM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Descripccion " type="text">
-                        </div>
-                      </div>
+
                            <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
@@ -509,10 +484,9 @@
               <form class="form-horizontal " id="form-EditTipoInversion"   action="<?php echo base_url(); ?>TipologiaInversion/get_TipoInversion" method="POST" >
 
                <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">ID <span class="required">*</span>
-                        </label>
+
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="txt_IdTipoInversionM" name="txt_IdTipoInversionM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="text">
+                        <input id="txt_IdTipoInversionM" name="txt_IdTipoInversionM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
                         </div>
                       </div>
 
