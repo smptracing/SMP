@@ -216,7 +216,9 @@
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
                           <button id="send" type="submit" class="btn btn-success"><span class="fa fa-save"></span> Guardar</button>
-                          <button type="submit" class="btn btn-danger" data-dismiss="modal"><span class="fa fa-close"></span> Cancelar</button>
+                           <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
+                          <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
+                           Cancelar</button>
 
                         </div>
                       </div>

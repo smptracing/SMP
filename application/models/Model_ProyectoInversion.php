@@ -8,12 +8,25 @@ class Model_ProyectoInversion extends CI_Model
             // $this->db->free_db_resource();
 
           }
+      //AGREGAR UN PROYECTO
+      function AddProyecto($cbxUnidadEjecutora,$cbxNatI,$cbxTipologiaInv,$cbxTipoInv,$cbxGrupoFunc,$cbxNivelGob,$cbxMetaPresupuestal,$cbxProgramaPres,$txtCodigoUnico,$txtNombrePip,$txtCostoPip,$txtDevengado,$dateFechaInPip,$dateFechaViabilidad)
+        {
+           $this->db->query("execute sp_ProyectoInversion_c'".$cbxUnidadEjecutora."','".$cbxNatI."','".$cbxTipologiaInv."','".$cbxTipoInv."','".$cbxGrupoFunc."','".$cbxNivelGob."','".$cbxMetaPresupuestal."','".$cbxProgramaPres."','".$txtCodigoUnico."','".$txtNombrePip."','".$txtCostoPip."','".$txtDevengado."','".$dateFechaInPip."','".$dateFechaViabilidad."'");
+            if ($this->db->affected_rows() > 0) 
+              {
+                return true;
+              }
+              else
+              {
+                return false;
+              }
+        }
+    //FIN AGREGAR UN PROYECTO
       /*añadir funcion*/
         function ProyectoInversion()
         {
             $ProyectoInversion=$this->db->query("execute sp_ProyectoInversion_r");//listar funcion
             return $ProyectoInversion->result();
-   
         }
         function BuscarProyectoInversion($Id_ProyectoInver)
          {
