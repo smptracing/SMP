@@ -129,12 +129,11 @@
                                         </div>
                                      </div>
                                        <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Tipologia de inversion</span>
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Naturaleza</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <select id="cbxNatI" name="cbxNatI" class="selectpicker" data-live-search="true"  title="Elija tipologia">
-                                                 <option value="1">Naturalez</option>
-                                                 <option value="2">NATURALEZ2</option>
+                  
                                             </select>
                                         </div>
                                      </div>
@@ -143,8 +142,7 @@
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <select id="cbxTipologiaInv" name="cbxTipologiaInv" class="selectpicker" data-live-search="true"  title="Elija tipologia">
-                                                 <option value="1">Tipologia 1</option>
-                                                 <option value="2">Tipologia 2</option>
+
                                             </select>
                                         </div>
                                      </div>
@@ -153,8 +151,6 @@
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <select id="cbxTipoInv" name="cbxTipoInv" class="selectpicker" data-live-search="true"  title="Elija tipo de inversion">
-                                                 <option value="1">Tipo de inversion 1</option>
-                                                 <option value="2">Tipo de inversion 2</option>
                                             </select>
                                     </div>
                                      </div>
@@ -163,8 +159,6 @@
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <select id="cbxGrupoFunc" name="cbxGrupoFunc" class="selectpicker" data-live-search="true"  title="Elija grupo funcional">
-                                                 <option value="1">Grupo Funcional 1</option>
-                                                 <option value="2">Grupo Funcional 2</option>
                                             </select>
                                         </div>
                                      </div>
@@ -173,8 +167,6 @@
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <select id="cbxNivelGob" name="cbxNivelGob" class="selectpicker" data-live-search="true"  title="Elija nivel de gobierno">
-                                                 <option value="1">Gobierno 1</option>
-                                                 <option value="2">Gobierno 2</option>
                                             </select>
                                         </div>
                                      </div>

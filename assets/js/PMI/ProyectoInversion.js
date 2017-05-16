@@ -6,11 +6,37 @@
              $("#btn-NuevoProyectoI").click(function()//para que cargue el como una vez echo click sino repetira datos
                     {
                         //alert('hola');
-                     listaProyectoInvCombo();//para llenar el combo de agregar division funcional
+                     listaUnidadEjecutora();//para llenar el combo de agregar division funcional
                     
                     });
-              //TRAER DATOS EN UN COMBO DE RUBRO DE EJECUCION
-                var listaProyectoInvCombo=function()
+             //CARGAR DATOS EN COMBOBOX DE NATURALEZA DE INVERSION
+              $("#cbxUnidadEjecutora").change(function(){//para cargar en agregar division funcionañ
+                    listarNaturalezaInversion();
+             });
+              //FIN CARGAR DATOS EN COMBOBOX DE NATURALEZA DE INVERSION
+               //CARGAR DATOS EN COMBOBOX DE TIPOLOGIA INVERSION
+              $("#cbxNatI").change(function(){//para cargar en agregar division funcionañ
+                    listarTipologiaInversion();
+             });
+              //FIN CARGAR DATOS EN COMBOBOX DE TIPOLOGIA INVERSION
+             //CARGAR DATOS EN COMBOBOX DE TIPO INVERSION
+              $("#cbxTipologiaInv").change(function(){//para cargar en agregar division funcionañ
+                    listarTipoInversion();
+             });
+              //FIN CARGAR DATOS EN COMBOBOX DE TIPO INVERSION
+              //CARGAR DATOS EN COMBOBOX DE GRUPO FUNCIONAL
+              $("#cbxTipoInv").change(function(){//para cargar en agregar division funcionañ
+                    listarGrupoFuncional();
+             });
+              //FIN CARGAR DATOS EN COMBOBOX DE GRUPO FUNCIONAL
+            //CARGAR DATOS EN COMBOBOX DE NIVEL DE GOBIERNO
+              $("#cbxGrupoFunc").change(function(){//para cargar en agregar division funcionañ
+                    listarNivelGobierno();
+             });
+              //FIN CARGAR DATOS EN COMBOBOX DE NIVEL DE GOBIERNO
+
+              //TRAER DATOS EN UN COMBO DE UNIDAD EJECUTORA
+                var listaUnidadEjecutora=function()
                 {
                     html="";
                     $("#cbxUnidadEjecutora").html(html); //nombre del selectpicker UNIDAD EJECUTORA
@@ -29,8 +55,112 @@
                         }
                     });
                 }
-          //FIN TRAER DATOS EN UN COMBO DE RUBRO EJECUCION
-            //fin cargar combo   unidad ejecutora
+          //FIN TRAER DATOS EN UN COMBO DE UNIDAD EJECUTORA
+          //TRAER DATOS EN UN COMBO DE NATURALEZA DE INVERSION
+           var listarNaturalezaInversion=function()
+                {
+                    html="";
+                    $("#cbxNatI").html(html); //nombre del selectpicker UNIDAD EJECUTORA
+                    event.preventDefault(); 
+                    $.ajax({
+                        "url":base_url +"index.php/TipologiaInversion/get_NaturalezaInversion",
+                        type:"POST",
+                        success:function(respuesta){
+                           // alert(respuesta);
+                         var registros = eval(respuesta);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option value="+registros[i]["id_naturaleza_inv"]+"> "+ registros[i]["nombre_naturaleza_inv"]+" </option>";   
+                            };
+                            $("#cbxNatI").html(html);//
+                            $('.selectpicker').selectpicker('refresh'); 
+                        }
+                    });
+                }
+          //FIN TRAER DATOS EN UN COMBO DE NATURALEZA DE INVERSION
+          //TRAER DATOS EN UN COMBO DE TIPOLOGIA DE INVERSION
+           var listarTipologiaInversion=function()
+                {
+                    html="";
+                    $("#cbxTipologiaInv").html(html); //nombre del selectpicker Tipologia de inversion
+                    event.preventDefault(); 
+                    $.ajax({
+                        "url":base_url +"index.php/TipologiaInversion/get_TipologiaInversion",
+                        type:"POST",
+                        success:function(respuesta){
+                           // alert(respuesta);
+                         var registros = eval(respuesta);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option value="+registros[i]["id_tipologia_inv"]+"> "+ registros[i]["nombre_tipologia_inv"]+" </option>";   
+                            };
+                            $("#cbxTipologiaInv").html(html);//
+                            $('.selectpicker').selectpicker('refresh'); 
+                        }
+                    });
+                }
+          //FIN TRAER DATOS EN UN COMBO DE TIPOLOGIA DE INVERSION
+            //TRAER DATOS EN UN COMBO DE TIPO DE INVERSION
+           var listarTipoInversion=function()
+                {
+                    html="";
+                    $("#cbxTipoInv").html(html); //nombre del selectpicker Tipologia de inversion
+                    event.preventDefault(); 
+                    $.ajax({
+                        "url":base_url +"index.php/TipologiaInversion/get_TipoInversion",
+                        type:"POST",
+                        success:function(respuesta){
+                           // alert(respuesta);
+                         var registros = eval(respuesta);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option value="+registros[i]["id_tipo_inversion"]+"> "+ registros[i]["nombre_tipo_inversion"]+" </option>";   
+                            };
+                            $("#cbxTipoInv").html(html);//
+                            $('.selectpicker').selectpicker('refresh'); 
+                        }
+                    });
+                }
+          //FIN TRAER DATOS EN UN COMBO DE TIPO DE INVERSION
+           //TRAER DATOS EN GRUPO FUNCIONAL
+                var listarGrupoFuncional=function()
+                {
+                    html="";
+                    $("#cbxGrupoFunc").html(html); //nombre del selectpicker UNIDAD EJECUTORA
+                    event.preventDefault(); 
+                    $.ajax({
+                        "url":base_url +"index.php/GrupoFuncional/GetGrupoFuncional",
+                        type:"POST",
+                        success:function(respuesta){
+                           // alert(respuesta);
+                         var registros = eval(respuesta);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option value="+registros[i]["id_grup_funcional"]+"> "+ registros[i]["nombre_grup_funcional"]+" </option>";   
+                            };
+                            $("#cbxGrupoFunc").html(html);//
+                            $('.selectpicker').selectpicker('refresh'); 
+                        }
+                    });
+                }
+          //FIN TRAER DATOS EN GRUPO FUNCIONAL
+             //TRAER DATOS EN GRUPO FUNCIONAL
+                var listarNivelGobierno=function()
+                {
+                    html="";
+                    $("#cbxGrupoFunc").html(html); //nombre del selectpicker UNIDAD EJECUTORA
+                    event.preventDefault(); 
+                    $.ajax({
+                        "url":base_url +"index.php/GrupoFuncional/GetGrupoFuncional",
+                        type:"POST",
+                        success:function(respuesta){
+                           // alert(respuesta);
+                         var registros = eval(respuesta);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option value="+registros[i]["id_grup_funcional"]+"> "+ registros[i]["nombre_grup_funcional"]+" </option>";   
+                            };
+                            $("#cbxGrupoFunc").html(html);//
+                            $('.selectpicker').selectpicker('refresh'); 
+                        }
+                    });
+                }
+          //FIN TRAER DATOS EN GRUPO FUNCIONAL
               //AGREGAR UNA PIP
                 $("#form-addProyectoInversion").submit(function(event)
                 {
@@ -48,7 +178,7 @@
                 });     
                 //FIN DE AGREGAR PIP           
 			});
-			   //listra proyeto de inversion*/
+			   //listaR proyeto de inversion*/
                 var listaProyectoInversion=function()
                 {
                     var table=$("#table-ProyectoInversion").DataTable({

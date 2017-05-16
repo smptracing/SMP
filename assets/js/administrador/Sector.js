@@ -42,7 +42,6 @@
                 });  
                  //fin para actualizar los sectores
             //fin sector
-
 			});
 			   /*metodos de sector lista sector*/
              var listaSector=function()
