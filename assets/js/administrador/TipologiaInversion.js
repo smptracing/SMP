@@ -67,9 +67,9 @@ $(document).on("ready" ,function(){
                                     },
                                 "columns":[
                                    {"defaultContent":""},
-                                  {"data":"IDTIPOLOGIAINVERSION"  },
-                                  {"data":"NOMBRETIPOLOGIA"},
-                                  {"data":"DESCRIPCIONTIPOLOGIA"},
+                                  {"data":"id_tipologia_inv"  },
+                                  {"data":"nombre_tipologia_inv"},
+                                
                                   {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaEditTipologiaInversion'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                ],
 
@@ -82,16 +82,15 @@ $(document).on("ready" ,function(){
                 var  TipologiaData=function(tbody,myTable){
                     $(tbody).on("click","button.editar",function(){
                         var data=myTable.row( $(this).parents("tr")).data();
-                        var txt_IdTipologiaInversionM=$('#txt_IdTipologiaInversionM').val(data.IDTIPOLOGIAINVERSION);
-                        var txt_NombreTipologiaInversionM=$('#txt_NombreTipologiaInversionM').val(data.NOMBRETIPOLOGIA);
-                        var txt_DescripcionTipologiaInversionM=$('#txt_DescripcionTipologiaInversionM').val(data.DESCRIPCIONTIPOLOGIA);
-
+                        var txt_IdTipologiaInversionM=$('#txt_IdTipologiaInversionM').val(data.id_tipologia_inv);
+                        var txt_NombreTipologiaInversionM=$('#txt_NombreTipologiaInversionM').val(data.nombre_tipologia_inv);
+                 
                     });
                 }
 var EliminarTipologiaData=function(tbody,myTable){
                   $(tbody).on("click","button.eliminar",function(){
                         var data=myTable.row( $(this).parents("tr")).data();
-                        var IDTIPOLOGIAINVERSION=data.IDTIPOLOGIAINVERSION;
+                        var id_tipologia_inv=data.id_tipologia_inv;
                         console.log(data);
                          swal({
                                 title: "Desea eliminar ?",
@@ -106,7 +105,7 @@ var EliminarTipologiaData=function(tbody,myTable){
                                     $.ajax({
                                           url:base_url+"index.php/TipologiaInversion/EliminarTipologiaInversion",
                                           type:"POST",
-                                          data:{IDTIPOLOGIAINVERSION:IDTIPOLOGIAINVERSION},
+                                          data:{id_tipologia_inv:id_tipologia_inv},
                                           success:function(respuesta){
                                             //alert(respuesta);
                                             swal("Se eliminó corectamente", ".", "success");

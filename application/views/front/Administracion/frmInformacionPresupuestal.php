@@ -77,7 +77,6 @@
                                                                          <th>RUBRO</th>
                                                                          <th>NOMBRE FFTO</th>
                                                                          <th >ACRONIMO FFTO</th>
-                                                                         <th class="hidden-480">DESCRIPCION</th>
                                                                          <th></th>
                                                                       </tr>
                                                                    </thead>
@@ -187,7 +186,7 @@
                                         </div>
                                            <!-- / fin panel de programa presupuestal desde el row -->
 
-                                           
+
                                              <!-- /panel de progrma presupuestal -->
                                         <div role="tabpanel" class="tab-pane fade" id="tab_ProgramaPresupuestal" aria-labelledby="home-tab">
                                              <!-- /tabla programa presupuestal row -->
@@ -219,7 +218,7 @@
 
                                                                   <th class="col-sm-1">ID</th>
                                                                   <th>PROGRAMA PRESUPUESTAL </th>
-                                                               
+
                                                                   <th></th>
                                                                 </tr>
                                                               </thead>
@@ -274,13 +273,7 @@
                           <input id="txt_AcronimoFuenteFinanciamiento" name="txt_AcronimoFuenteFinanciamiento" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Acronimo " type="text">
                         </div>
                       </div>
-                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Descripción
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_DescripcionFuenteFinanciamiento" name="txt_DescripcionFuenteFinanciamiento" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Descripción"  type="text">
-                        </div>
-                      </div>
+
                         <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox">Rubro<span class="required">*</span>
                             </label>
@@ -347,13 +340,7 @@
                           <input id="txt_AcronimoFuenteFinanciamientoM" name="txt_AcronimoFuenteFinanciamientoM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Nombre " required="required" type="text">
                         </div>
                       </div>
-                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Descripccion FFTO <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_DescripcionFuenteFinanciamientoM" name="txt_DescripcionFuenteFinanciamientoM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Descripccion " required="required" type="text">
-                        </div>
-                      </div>
+
                        <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox">Rubro<span class="required">*</span>
                             </label>
@@ -453,7 +440,7 @@
                         </div>
                       </div>
 
-      
+
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
@@ -493,7 +480,7 @@
          <div class="row">
                     <div class="col-xs-12">
                                         <!-- PAGE CONTENT BEGINS -->
-                  <form class="form-horizontal form-label-left" id="form-addMetaP" action="<?php echo base_url();?>MetaPresupuestal/Add_MetaP" method="POST">
+                  <form class="form-horizontal form-label-left" id="form-addMetaP" action="<?php echo base_url(); ?>MetaPresupuestal/Add_MetaP" method="POST">
 
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre Meta <span class="required">*</span>

@@ -72,7 +72,7 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-gear"></i> CONFIGURACIÓN DE PARAMETROS <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">     
-                     <li><a id="sector" href="<?php echo site_url('Sector/');?>">Sector</a></li>
+                     <li><a href="<?php echo site_url('Sector/');?>">Sector</a></li>
                         <li><a href="<?php echo site_url('CadenaFuncional/');?>">Cadena Funcional</a></li>
                         <li><a href="<?php echo site_url('TipologiaInversion/');?>">Tipologia de inversion</a></li> 
                          <li><a href="<?php echo site_url('InformacionPresupuestal/');?>">Informacion Presupuestal</a></li> 

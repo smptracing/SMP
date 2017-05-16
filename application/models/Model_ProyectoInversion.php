@@ -28,12 +28,6 @@ class Model_ProyectoInversion extends CI_Model
             $ProyectoInversion=$this->db->query("execute sp_ProyectoInversion_r");//listar funcion
             return $ProyectoInversion->result();
         }
-        function BuscarProyectoInversion($Id_ProyectoInver)
-         {
-            $ProyectoInversion=$this->db->query("execute sp_ProyectoInversion_Buscar'".$Id_ProyectoInver."'");//listar funcion
-            return $ProyectoInversion->result();
-   
-        }
        /* function AddFucion($txt_codigofuncion,$txt_nombrefuncion)
         {
 

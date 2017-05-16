@@ -34,8 +34,8 @@
                                     },
        //para llenado y busqueda por todo los campos
                                 "columns":[
-                                    {"data":"id_prog_pres"},
-                                    {"data":"nombre_prog_pres"},
+                                    {"data":"id_programa_pres"},
+                                    {"data":"nombre_programa_pres"},
                                     {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaModificarProgramaP'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
 
@@ -66,8 +66,8 @@
         ProgramaPData=function(tbody,table){
                     $(tbody).on("click","button.editar",function(){
                         var data=table.row( $(this).parents("tr")).data();
-                        var id_prog_pres=$('#txt_IdProgramaPUModif').val(data.id_prog_pres);
-                        var nombre_prog_pres=$('#txt_NombreProgramaPU').val(data.nombre_prog_pres);
+                        var id_programa_pres=$('#txt_IdProgramaPUModif').val(data.id_programa_pres);
+                        var nombre_programa_pres=$('#txt_NombreProgramaPU').val(data.nombre_programa_pres);
                     });
                 }
     // FIN DE CAMPOS QUE SE ACTUALIZARAN EN EL RUBRO DE EJECUCION

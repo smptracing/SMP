@@ -36,7 +36,7 @@
                                 "columns":[
                                     {"data":"id_meta_pres"},
                                     {"data":"nombre_meta_pres"},
-                                    {"data":"ano_meta_pres"},
+                                    {"data":"año_meta_pres"},
                                     {"data":"pim_meta_pres"},
                                     {"data":"numero_meta_pres"},
                                     {"data":"devengado_meta_pres"},
@@ -74,7 +74,7 @@
                         var data=table.row( $(this).parents("tr")).data();
                         var id_meta_pres=$('#txt_IdMetaPModif').val(data.id_meta_pres);
                         var nombre_meta_pres=$('#txt_NombreMetaPU').val(data.nombre_meta_pres);
-                        var ano_meta_pres=$('#date_AnioMetaPU').val(data.ano_meta_pres);
+                        var ano_meta_pres=$('#date_AnioMetaPU').val(data.año_meta_pres);
                         var pim_meta_pres=$('#text_PimU').val(data.pim_meta_pres);
                         var numero_meta_pres=$('#text_NumeroMetaU').val(data.numero_meta_pres);
                         var devengado_meta_pres=$('#text_DevengadoU').val(data.devengado_meta_pres);

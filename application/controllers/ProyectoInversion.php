@@ -51,20 +51,6 @@ class ProyectoInversion extends CI_Controller {/* Mantenimiento de sector entida
   			show_404();
   		}
   	}
-     function BuscarProyectoInversion()
-    {
-      if ($this->input->is_ajax_request()) 
-      {
-       $Id_ProyectoInver = $this->input->post("Id_ProyectoInver");
-       $datos=$this->Model_ProyectoInversion->BuscarProyectoInversion($Id_ProyectoInver);
-      echo json_encode($datos);
-      }
-      else
-      {
-        show_404();
-      }
-    }
-
      public function index()
     {
       $this->_load_layout('Front/Pmi/frmMProyectoInversion');

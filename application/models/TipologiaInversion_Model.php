@@ -8,10 +8,10 @@ class TipologiaInversion_Model extends CI_Model
         // $this->db->free_db_resource();
 
     }
-    public function get_TipologiaInversion($flat, $txt_IdTipologiaInversion, $txt_NombreTipologiaInversion, $txt_DescripcionTipologiaInversion, $user)
+    public function get_TipologiaInversion($flat, $txt_IdTipologiaInversion, $txt_NombreTipologiaInversion)
     {
         //  $TipologiaInversion = $this->db->query("execute get");
-        $TipologiaInversion = $this->db->query("execute SP_GESTIONAR_TIPOLOGIAINVERSION'" . $flat . "','" . $txt_IdTipologiaInversion . "', '" . $txt_NombreTipologiaInversion . "','" . $txt_DescripcionTipologiaInversion . "','" . $user . "' ");
+        $TipologiaInversion = $this->db->query("execute sp_Gestionar_TipologiaInversion'" . $flat . "','" . $txt_IdTipologiaInversion . "', '" . $txt_NombreTipologiaInversion . "' ");
         if ($TipologiaInversion->num_rows() > 0) {
             return $TipologiaInversion->result();
         } else {
@@ -19,10 +19,10 @@ class TipologiaInversion_Model extends CI_Model
         }
     }
 
-    public function AddTipologiaInversion($flat, $txt_IdTipologiaInversion, $txt_NombreTipologiaInversion, $txt_DescripcionTipologiaInversion, $user)
+    public function AddTipologiaInversion($flat, $txt_IdTipologiaInversion, $txt_NombreTipologiaInversion)
     {
 
-        $this->db->query("execute SP_GESTIONAR_TIPOLOGIAINVERSION'" . $flat . "','" . $txt_IdTipologiaInversion . "', '" . $txt_NombreTipologiaInversion . "','" . $txt_DescripcionTipologiaInversion . "','" . $user . "' ");
+        $this->db->query("execute sp_Gestionar_TipologiaInversion'" . $flat . "','" . $txt_IdTipologiaInversion . "', '" . $txt_NombreTipologiaInversion . "' ");
         if ($this->db->affected_rows() > 0) {
             return true;
         } else {
@@ -30,10 +30,10 @@ class TipologiaInversion_Model extends CI_Model
         }
 
     }
-    public function EliminarTipologiaInversion($flat, $txt_IdTipologiaInversion, $txt_NombreTipologiaInversion, $txt_DescripcionTipologiaInversion, $user)
+    public function EliminarTipologiaInversion($flat, $txt_IdTipologiaInversion, $txt_NombreTipologiaInversion)
     {
 
-        $this->db->query("execute SP_GESTIONAR_TIPOLOGIAINVERSION'" . $flat . "','" . $txt_IdTipologiaInversion . "', '" . $txt_NombreTipologiaInversion . "','" . $txt_DescripcionTipologiaInversion . "','" . $user . "' ");
+        $this->db->query("execute sp_Gestionar_TipologiaInversion'" . $flat . "','" . $txt_IdTipologiaInversion . "', '" . $txt_NombreTipologiaInversion . "','" . $txt_DescripcionTipologiaInversion . "' ");
         if ($this->db->affected_rows() > 0) {
             return true;
         } else {
@@ -41,10 +41,10 @@ class TipologiaInversion_Model extends CI_Model
         }
 
     }
-    public function UpdateTipologiaInversion($flat, $txt_IdTipologiaInversionM, $txt_NombreTipologiaInversionM, $txt_DescripcionTipologiaInversionM, $user)
+    public function UpdateTipologiaInversion($flat, $txt_IdTipologiaInversionM, $txt_NombreTipologiaInversionM)
     {
 
-        $this->db->query("execute SP_GESTIONAR_TIPOLOGIAINVERSION'" . $flat . "','" . $txt_IdTipologiaInversionM . "', '" . $txt_NombreTipologiaInversionM . "','" . $txt_DescripcionTipologiaInversionM . "','" . $user . "' ");
+        $this->db->query("execute sp_Gestionar_TipologiaInversion'" . $flat . "','" . $txt_IdTipologiaInversionM . "', '" . $txt_NombreTipologiaInversionM . "' ");
         if ($this->db->affected_rows() > 0) {
             return true;
         } else {

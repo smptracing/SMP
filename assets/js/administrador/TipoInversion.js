@@ -67,9 +67,9 @@ $(document).on("ready" ,function(){
                                     },
                                 "columns":[
                                    {"defaultContent":""},
-                                   {"data":"IDTIPOINVERSION"  },
-                                   {"data":"NOMBRETIPOINVERSION"},
-                                   {"data":"DESCRIPCIONTIPOINVERSION"},
+                                   {"data":"id_tipo_inversion"  },
+                                   {"data":"nombre_tipo_inversion"},
+                                   {"data":"descripcion_tipo_inversion"},
                                    {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaEditTipoInversion'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                ],
 
@@ -82,9 +82,9 @@ $(document).on("ready" ,function(){
                 var  TipoInversiongiaData=function(tbody,myTable){
                     $(tbody).on("click","button.editar",function(){
                         var data=myTable.row( $(this).parents("tr")).data();
-                        var txt_IdTipoInversionM=$('#txt_IdTipoInversionM').val(data.IDTIPOINVERSION);
-                        var txt_NombreTipoInversionM=$('#txt_NombreTipoInversionM').val(data.NOMBRETIPOINVERSION);
-                        var txt_DescripcionTipoInversionM=$('#txt_DescripcionTipoInversionM').val(data.DESCRIPCIONTIPOINVERSION);
+                        var txt_IdTipoInversionM=$('#txt_IdTipoInversionM').val(data.id_tipo_inversion);
+                        var txt_NombreTipoInversionM=$('#txt_NombreTipoInversionM').val(data.nombre_tipo_inversion);
+                        var txt_DescripcionTipoInversionM=$('#txt_DescripcionTipoInversionM').val(data.descripcion_tipo_inversion);
 
                     });
                 }
