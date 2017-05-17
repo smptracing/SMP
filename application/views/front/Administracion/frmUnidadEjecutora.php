@@ -28,6 +28,7 @@
                                         </li>
                                         <li role="presentation" class=""><a  href="#tab_UnidadEjecutora" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Unidad Ejecutora</a>
                                         </li>
+
                                         <li role="presentation" class=""><a href="#tab_NivelGobierno" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">
                                         <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
                                          Nivel de Gobierno</a>
@@ -81,10 +82,8 @@
                                 <!-- /  fin panel de modalidad ejecucion el row -->
                                 <!-- /  Panel Unidad Ejecutora -->
                                          <div role="tabpanel" class="tab-pane fade" id="tab_UnidadEjecutora" aria-labelledby="profile-tab">
-
                                                 <!-- /tabla de Unidad Ejecutora row -->
                                             <div class="row">
-
                                                   <div class="col-md-12 col-sm-12 col-xs-12">
                                                         <div class="x_panel">
                                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraUnidadEjecutora" ><span class="fa fa-plus-circle"></span> Nuevo</button>
@@ -124,18 +123,19 @@
                                 <!-- /  Fin Panel Unidad Ejecutora -->
 
 
-                                           <!-- /Inicio del Contenido del nivel de gobierno nversion -->
+
+
+                                        <!-- /Inicio del Contenido del Nivell de Inversion -->
                                         <div role="tabpanel" class="tab-pane fade" id="tab_NivelGobierno" aria-labelledby="profile-tab">
-                                        <!-- /Inicio tabla de nivel de gobiernodesde el row -->
+                                        <!-- /Inicio tabla de nivel desde el row -->
                                            <div class="row">
                                               <div class="col-md-12 col-sm-12 col-xs-12">
                                               <div class="x_panel">
-
+                                                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegNivelGobierno" >
+                                                          <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Nuevo
+                                                    </button>
                                                     <div class="x_title">
-                                                            <!--<h2>Listado de Nivel de Gobierno<small>.</small></h2>-->
-                                                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegNivelGobierno" ><span class="fa fa-plus-circle"></span> Nuevo</button>
-
-
+                                                            <h2>Listado de Nivel de Gobierno<small>.</small></h2>
                                                             <ul class="nav navbar-right panel_toolbox">
                                                               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                                               </li>
@@ -145,27 +145,17 @@
                                                            <div class="clearfix"></div>
                                                       </div>
                                                       <!--inicio de la tabla nivel de gobierno -->
-                                                        <!--inicio  de icono de reporte -->
-                                                        <div class="clearfix">
-                                                           <div class=" pull-right tableTools-container-NivelGobierno">
-                                                           </div>
-                                                        </div>
-                                                      <!--fin  de icono de reporte -->
-                                                      <div class="x_content">
+                                                        <div class="x_content">
                                                                 <table id="dynamic-table-NivelGobierno" class="table table-striped table-bordered table-hover" width="100%">
                                                                     <thead>
                                                                        <tr>
-                                                                         <th class="center">
-                                                                          <label class="pos-rel">
-                                                                           <input type="checkbox" class="ace" />
-                                                                           <span class="lbl"></span>
-                                                                          </label>
-                                                                         </th>
+
                                                                          <th>ID </th>
-                                                                         <th>NOMBRE NIVEL GOB</th>
-                                                                         <th></th>
+                                                                         <th>NOMBRE NIVEL</th>
+                                                                      <th></th>
                                                                       </tr>
                                                                    </thead>
+
                                                                 </table>
                                                       </div>
                                                       <!--fin de la tabla nivel de gobierno-->
@@ -174,7 +164,15 @@
                                            </div>
                                         <!-- / fin tabla nivel de gobierno desde  el row -->
                                         </div>
-                                        <!-- /fin del Contenido del NIvel de gobierno -->
+                                        <!-- /fin del Contenido del NIvel de gobeirno -->
+
+
+
+
+
+
+
+
                                       </div>
                                     </div>
 

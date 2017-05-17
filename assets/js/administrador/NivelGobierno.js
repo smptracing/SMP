@@ -11,13 +11,7 @@ $(document).on("ready" ,function(){
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
-                            if (resp=='1') {
-                             swal("Se registró...","", "success");
-                             formReset();
-                           }
-                            if (resp=='2') {
-                             swal("NO se registró...","", "error");
-                           }
+                            swal(resp,"", "success");
                           $('#dynamic-table-NivelGobierno').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
                              formReset();
                          }
@@ -46,6 +40,8 @@ $(document).on("ready" ,function(){
                          }
                       });
                   });
+
+
       });
          /*listra */
                 var listaNivelGobierno=function()
@@ -61,8 +57,8 @@ $(document).on("ready" ,function(){
                   "dataSrc":""
                                     },
                                 "columns":[
-                                  {"defaultContent":" <label class='pos-rel'><input type='checkbox' class='ace' /><span class='lbl'></span></label>"},
-                                  {"data":"id_nivel_gob"},
+                               
+                                   {"data":"id_nivel_gob"},
                                   {"data":"nombre_nivel_gob"},
                                   {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaEditNivelGobierno'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><span class='glyphicon glyphicon-trash' aria-hidden='true'></span></button>"}
                                ],
@@ -78,6 +74,7 @@ $(document).on("ready" ,function(){
                         var data=myTable.row( $(this).parents("tr")).data();
                         var txt_IdNivelGobiernoM=$('#txt_IdNivelGobiernoM').val(data.id_nivel_gob);
                         var txt_NombreNivelGobiernoM=$('#txt_NombreNivelGobiernoM').val(data.nombre_nivel_gob);
+                     
 
                     });
                 }

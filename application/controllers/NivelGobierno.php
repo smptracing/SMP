@@ -10,7 +10,7 @@ class NivelGobierno extends CI_Controller
     }
     public function index()
     {
-        $this->_load_layout('front/Pmi/frmMRubroEjecucion');
+        $this->_load_layout('front/Administracion/frmUnidadEjecutora');
     }
     public function get_NivelGobierno() //mostra nivel de gobierno
 
@@ -18,7 +18,7 @@ class NivelGobierno extends CI_Controller
 
         if ($this->input->is_ajax_request()) {
             $flat                    = "R";
-            $txt_IdNivelGobierno     = "NULL";
+            $txt_IdNivelGobierno     = "0";
             $txt_NombreNivelGobierno = "NULL";
             $datos                   = $this->NivelGobierno_Model->get_NivelGobierno($flat, $txt_IdNivelGobierno, $txt_NombreNivelGobierno);
             echo json_encode($datos);
@@ -34,11 +34,10 @@ class NivelGobierno extends CI_Controller
             $flat                    = "C";
             $txt_IdNivelGobierno     = "0";
             $txt_NombreNivelGobierno = $this->input->post("txt_NombreNivelGobierno");
-
             if ($this->NivelGobierno_Model->AddNivelGobierno($flat, $txt_IdNivelGobierno, $txt_NombreNivelGobierno) == false) {
-                echo "1";
+                echo "Se Registró ...";
             } else {
-                echo "2";
+                echo "No se Registró";
             }
         } else {
             show_404();
@@ -49,8 +48,7 @@ class NivelGobierno extends CI_Controller
     public function EliminarNivelGobierno()
     {
         if ($this->input->is_ajax_request()) {
-            $flat = "D";
-            // $ID   = "0";
+            $flat                    = "D";
             $txt_IdNivelGobierno     = $this->input->post("id_nivel_gob");
             $txt_NombreNivelGobierno = "NULL";
             if ($this->NivelGobierno_Model->EliminarNivelGobierno($flat, $txt_IdNivelGobierno, $txt_NombreNivelGobierno) == false) {
@@ -70,7 +68,6 @@ class NivelGobierno extends CI_Controller
             $flat                     = "U";
             $txt_IdNivelGobiernoM     = $this->input->post("txt_IdNivelGobiernoM");
             $txt_NombreNivelGobiernoM = $this->input->post("txt_NombreNivelGobiernoM");
-
             if ($this->NivelGobierno_Model->UpdateNivelGobierno($flat, $txt_IdNivelGobiernoM, $txt_NombreNivelGobiernoM) == false) {
                 echo "Se actualizó  ";
             } else {
