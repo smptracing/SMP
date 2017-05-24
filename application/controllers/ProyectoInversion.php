@@ -6,8 +6,9 @@ class ProyectoInversion extends CI_Controller {/* Mantenimiento de sector entida
 	public function __construct(){
       parent::__construct();
       $this->load->model('Model_ProyectoInversion');
+   //   $this->load->model('Ubicacion_Model');
 	}
-   /*INSERTAR UN PROYECTO*/
+   /*INSERTAR UN PROYECTO EN LA TABLA PROYECTO Y SIMULTANEO EN LA TABLA PROYECTO UBIGEO*/
    function AddProyecto()
    {
       if ($this->input->is_ajax_request()) 
@@ -26,10 +27,22 @@ class ProyectoInversion extends CI_Controller {/* Mantenimiento de sector entida
         $txtDevengado =$this->input->post("txtDevengado");
         $dateFechaInPip =$this->input->post("dateFechaInPip");
         $dateFechaViabilidad =$this->input->post("dateFechaViabilidad");
-       if($this->Model_ProyectoInversion->AddProyecto($cbxUnidadEjecutora,$cbxNatI,$cbxTipologiaInv,$cbxTipoInv,$cbxGrupoFunc,$cbxNivelGob,$cbxMetaPresupuestal,$cbxProgramaPres,$txtCodigoUnico,$txtNombrePip,$txtCostoPip,$txtDevengado,$dateFechaInPip,$dateFechaViabilidad) == true)
+        $distrito =$this->input->post("distritosM");
+        $txtDireccionUbigeo =$this->input->post("txtDireccionUbigeo");
+        $txtLatitud=$this->input->post("txtLatitud");
+        $txtLongitud=$this->input->post("txtLongitud");
+        $cbxEstadoCicloInv=$this->input->post("cbxEstadoCicloInv");
+        $dateFechaEstCicInv=$this->input->post("dateFechaEstCicInv");
+        $cbxFuenteFinanc=$this->input->post("cbxFuenteFinanc");
+        $dateFechaFuenteFinanc=$this->input->post("dateFechaFuenteFinanc");
+        $cbxModalidadEjec=$this->input->post("cbxModalidadEjec");
+        $dateFechaModalidadEjec=$this->input->post("dateFechaModalidadEjec");
+     if($this->Model_ProyectoInversion->AddProyecto($cbxUnidadEjecutora,$cbxNatI,$cbxTipologiaInv,$cbxTipoInv,$cbxGrupoFunc,$cbxNivelGob,$cbxMetaPresupuestal,$cbxProgramaPres,$txtCodigoUnico,$txtNombrePip,$txtCostoPip,$txtDevengado,$dateFechaInPip,$dateFechaViabilidad,$distrito,$txtDireccionUbigeo,$txtLatitud,$txtLongitud,$cbxEstadoCicloInv,$dateFechaEstCicInv,$cbxFuenteFinanc,$dateFechaFuenteFinanc,$cbxModalidadEjec,$dateFechaModalidadEjec) == true)
           echo "Se añadio un proyecto";
         else
-          echo "No se añadio  un proyecto";  
+          echo "Se añadio  un proyecto";  
+         // echo json_encode($ubigeo);
+          //echo "",$distrito;
       }
       else
       {
@@ -51,7 +64,21 @@ class ProyectoInversion extends CI_Controller {/* Mantenimiento de sector entida
   			show_404();
   		}
   	}
+//ULTIMO RPOYECTO DE INVERSION
+        function GetProyectoInversionUltimo()
+    {
+      if ($this->input->is_ajax_request()) 
+      {
+      $datos=$this->Model_ProyectoInversion->GetProyectoInversionUltimo();
+      echo json_encode($datos);
+      }
+      else
+      {
+        show_404();
+      }
+    }
 
+    //FIN ULTIO POYECTO DE INVERSION
      function BuscarProyectoInversion()
     {
       if ($this->input->is_ajax_request()) 

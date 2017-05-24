@@ -1,7 +1,7 @@
  $(document).on("ready" ,function(){
 
                 listaProyectoInversion();/*llamar proyecto de inversion*/
-              
+                 
             //Inicio cargar combo unidad ejecutora
              $("#btn-NuevoProyectoI").click(function()//para que cargue el como una vez echo click sino repetira datos
                     {
@@ -29,12 +29,36 @@
                     listarGrupoFuncional();
              });
               //FIN CARGAR DATOS EN COMBOBOX DE GRUPO FUNCIONAL
-            //CARGAR DATOS EN COMBOBOX DE NIVEL DE GOBIERNO
+              //CARGAR DATOS EN COMBOBOX DE NIVEL DE GOBIERNO
               $("#cbxGrupoFunc").change(function(){//para cargar en agregar division funcionañ
                     listarNivelGobierno();
              });
-              //FIN CARGAR DATOS EN COMBOBOX DE NIVEL DE GOBIERNO
-
+              //FIN CARGAR DATOS EN COMBOBOX DE DE NIVEL DE GOBIERNO
+               //CARGAR DATOS EN COMBOBOX DE META PRESUPUESTAL
+              $("#cbxNivelGob").change(function(){//para cargar en agregar division funcionañ
+                    listarMetaPresupuestal();
+             });
+              //FIN CARGAR DATOS EN COMBOBOX DE META PRESUPUESTAL
+              //CARGAR DATOS EN COMBOBOX DE PROGRAMA PRESUPUESTAL
+              $("#cbxMetaPresupuestal").change(function(){//para cargar en agregar division funcionañ
+                    listarProgramaPresupuestal();
+             });
+              //FIN CARGAR DATOS EN COMBOBOX DE PROGRAMA PRESUPUESTAL
+                //OBTEiNER DATOS DEL CICLO DE INVERSION
+              $("#distrito").change(function(){//para cargar en agregar division funcionañ
+                    listarCicloInversion();
+             });
+              //FIN OBTENER DATOS DEL CICLO DE INVERSION
+              //OBTENER DATOS DE FUENTE DE FINANCIAMIENTO
+              $("#cbxEstadoCicloInv").change(function(){//para cargar en agregar division funcionañ
+                    listarFuenteFinan();
+             });
+              //FIN OBTENER DATOS DE FUENTE DE FINANCIAMIENTO
+               //OBTENER DATOS MODALIDAD DE EJECUCION
+              $("#cbxFuenteFinanc").change(function(){//para cargar en agregar division funcionañ
+                    listarModalidadEjec();
+             });
+              //FIN OBTENER DATOS MODALIDAD DE EJECUCIONO
               //TRAER DATOS EN UN COMBO DE UNIDAD EJECUTORA
                 var listaUnidadEjecutora=function()
                 {
@@ -57,6 +81,7 @@
                 }
           //FIN TRAER DATOS EN UN COMBO DE UNIDAD EJECUTORA
           //TRAER DATOS EN UN COMBO DE NATURALEZA DE INVERSION
+          //addñadir 
            var listarNaturalezaInversion=function()
                 {
                     html="";
@@ -139,28 +164,134 @@
                         }
                     });
                 }
-          //FIN TRAER DATOS EN GRUPO FUNCIONAL
-             //TRAER DATOS EN GRUPO FUNCIONAL
+          //FIN TRAER DATOS EN GRUPO FUNCIONAL 
+           //TRAER DATOS EN NIVEL DE GOBIERNO
                 var listarNivelGobierno=function()
                 {
                     html="";
-                    $("#cbxGrupoFunc").html(html); //nombre del selectpicker UNIDAD EJECUTORA
+                    $("#cbxNivelGob").html(html); //nombre del selectpicker UNIDAD EJECUTORA
                     event.preventDefault(); 
                     $.ajax({
-                        "url":base_url +"index.php/GrupoFuncional/GetGrupoFuncional",
+                        "url":base_url +"index.php/NivelGobierno/get_NivelGobierno",
+                        type:"POST",
+                        success:function(respuesta){
+                            alert(respuesta);
+                         var registros = eval(respuesta);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option value="+registros[i]["id_nivel_gob"]+"> "+ registros[i]["nombre_nivel_gob"]+" </option>";   
+                            };
+                            $("#cbxNivelGob").html(html);//
+                            $('.selectpicker').selectpicker('refresh'); 
+                        }
+                    });
+                }
+          //FIN TRAER DATOS NIVEL DE GOBIERNO
+             //TRAER DATOS DE META PRESUPUESTAL
+                var listarMetaPresupuestal=function()
+                {
+                    html="";
+                    $("#cbxMetaPresupuestal").html(html); //nombre del selectpicker UNIDAD EJECUTORA
+                    event.preventDefault(); 
+                    $.ajax({
+                        "url":base_url +"index.php/MetaPresupuestal/GetMetaP",
                         type:"POST",
                         success:function(respuesta){
                            // alert(respuesta);
                          var registros = eval(respuesta);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option value="+registros[i]["id_grup_funcional"]+"> "+ registros[i]["nombre_grup_funcional"]+" </option>";   
+                              html +="<option value="+registros[i]["id_meta_pres"]+"> "+ registros[i]["nombre_meta_pres"]+" </option>";   
                             };
-                            $("#cbxGrupoFunc").html(html);//
+                            $("#cbxMetaPresupuestal").html(html);//
                             $('.selectpicker').selectpicker('refresh'); 
                         }
                     });
                 }
-          //FIN TRAER DATOS EN GRUPO FUNCIONAL
+          //FIN TRAER DATOS DE META PRESUPUESTAL
+             //TRAER DATOS DE PROGRAMA PRESUPUESTAL
+                var listarProgramaPresupuestal=function()
+                {
+                    html="";
+                    $("#cbxProgramaPres").html(html); //nombre del selectpicker UNIDAD EJECUTORA
+                    event.preventDefault(); 
+                    $.ajax({
+                        "url":base_url +"index.php/ProgramaPresupuestal/GetProgramaP",
+                        type:"POST",
+                        success:function(respuesta){
+                           // alert(respuesta);
+                         var registros = eval(respuesta);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option value="+registros[i]["id_programa_pres"]+"> "+ registros[i]["nombre_programa_pres"]+" </option>";   
+                            };
+                            $("#cbxProgramaPres").html(html);//
+                            $('.selectpicker').selectpicker('refresh'); 
+                        }
+                    });
+                }
+          //FIN TRAER DATOS DE PROGRAMA PRESUPUESTAL
+          //TRAER DATOS EN UN COMBO DE CICLO DE INVERSION
+                var listarCicloInversion=function()
+                {
+                    html="";
+                    $("#cbxEstadoCicloInv").html(html); //nombre del selectpicker UNIDAD EJECUTORA
+                    event.preventDefault(); 
+                    $.ajax({
+                        "url":base_url +"index.php/EstadoCicloInversion/get_EstadoCicloInversion",
+                        type:"POST",
+                        success:function(respuesta){
+                           // alert(respuesta);
+                         var registros = eval(respuesta);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option value="+registros[i]["id_estado_ciclo"]+"> "+ registros[i]["nombre_estado_ciclo"]+" </option>";   
+                            };
+                            $("#cbxEstadoCicloInv").html(html);//
+                            $('.selectpicker').selectpicker('refresh'); 
+                        }
+                    });
+                }
+          //FIN TRAER DATOS EN UN COMBO DE CICLO DE INVERSION
+            //TRAER DATOS EN UN COMBO DE CICLO DE INVERSION
+                var listarFuenteFinan=function()
+                {
+                    html="";
+                    $("#cbxFuenteFinanc").html(html); //nombre del selectpicker UNIDAD EJECUTORA
+                    event.preventDefault(); 
+                    $.ajax({
+                        "url":base_url +"index.php/InformacionPresupuestal/get_FuenteFinanciamiento",
+                        type:"POST",
+                        success:function(respuesta){
+                           // alert(respuesta);
+                         var registros = eval(respuesta);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option value="+registros[i]["id_fuente_finan"]+"> "+ registros[i]["nombre_fuente_finan"]+" </option>";   
+                            };
+                            $("#cbxFuenteFinanc").html(html);//
+                            $('.selectpicker').selectpicker('refresh'); 
+                        }
+                    });
+                }
+          //FIN TRAER DATOS EN UN COMBO DE CICLO DE INVERSION
+          
+            //TRAER DATOS EN UN COMBO DE MODALIDAD DE EJECUCION
+                var listarModalidadEjec=function()
+                {
+                    html="";
+                    $("#cbxModalidadEjec").html(html); //nombre del selectpicker UNIDAD EJECUTORA
+                    event.preventDefault(); 
+                    $.ajax({
+                        "url":base_url +"index.php/ModalidadEjecucion/GetModalidadE",
+                        type:"POST",
+                        success:function(respuesta){
+                           // alert(respuesta);
+                         var registros = eval(respuesta);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option value="+registros[i]["id_modalidad_ejec"]+"> "+ registros[i]["nombre_modalidad_ejec"]+" </option>";   
+                            };
+                            $("#cbxModalidadEjec").html(html);//
+                            $('.selectpicker').selectpicker('refresh'); 
+                        }
+                    });
+                }
+          //FIN TRAER DATOS EN UN COMBO DE MODALIDAD DE EJECUCION
               //AGREGAR UNA PIP
                 $("#form-addProyectoInversion").submit(function(event)
                 {
@@ -171,8 +302,9 @@
                         type:$(this).attr('method'),
                         data:$(this).serialize(),
                         success:function(resp){
-                         swal("REGISTRADO!", resp, "success");
-                         $('#table-ProyectoInversion').dataTable()._fnAjaxUpdate();    //SIRVE PARA REFRESCAR LA TABLA 
+                          alert(resp);
+                         //swal("REGISTRADO!", resp, "success");
+                         //$('#table-ProyectoInversion').dataTable()._fnAjaxUpdate();    //SIRVE PARA REFRESCAR LA TABLA 
                         }
                     });
                 });     

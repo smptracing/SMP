@@ -4,7 +4,7 @@ function inicio(){
  
     html="";
 
-    $("#btn-AddUbigeo").click(function(){//para  provincias en el combo
+    $("#cbxProgramaPres").change(function(){//para  provincias en el combo
 		    html="";
 			   departamento();	 
 		});
@@ -17,11 +17,19 @@ function inicio(){
 		});
 		 $("#provincia").change(function(){//para  distraitos en el combo
             
-		    html="";
+		     html="";
 			 IdProvincia= $("#provincia").val();
 			 MosDistritos(IdProvincia);
 		});
 
+//CARGAR DATOS EN COMBOBOX DE NATURALEZA DE INVERSION
+             $("#distrito").change(function(){//para cargar en agregar division funcionañ
+                    
+				html="";
+				Iddistrito= $("#distrito").val();
+	            listarUbigeo(Iddistrito); //Distrito contiene el idubigeo completo para la insercion
+             });
+              //FIN CARGAR DATOS EN COMBOBOX DE NATURALEZA DE INVERSION
 }
 
 function   MosDistritos(IdProvincia){
@@ -77,4 +85,26 @@ function departamento()
 			$('.selectpicker').selectpicker('refresh');			
 		}
 	});
+}
+
+//PARA OBTENER DATOS DE UBIGEO QUE ME SIRVAN PARA REGISTRAR
+function listarUbigeo(Iddistrito){
+	 $("#distritosM").val(Iddistrito);//para enviar la cadena de distrito en texbox
+	 /*event.preventDefault();
+		
+		$.ajax({
+		url:base_url+"index.php/MUbicacion/get_distritos",
+		type:"POST",
+		data:{IdProvincia:IdProvincia},
+		success:function(respuesta){
+			//alert(respuesta);
+			var registros = eval(respuesta);
+			for (var i = 0; i < registros.length; i++) {
+              html +="<option value="+registros[i]["distritos"]+"> "+registros[i]["distritos"]+" </option>";   
+			};
+			$("#distrito").html(html);
+             $('.selectpicker').selectpicker('refresh');
+				
+		}
+	});*/
 }

@@ -9,9 +9,9 @@ class Model_Programacion extends CI_Model
 
           }
       //AGREGAR UN PROYECTO
-      function AddProgramacion($cbxCartera,$cbxBrecha,$txtProyectoInvers,$txtMontoProg,$dateAñoProg,$txtPrioridadProg,$txtMontoOpeMan,$txtTipo)
+      function AddProgramacion($textidCartera,$cbxBrecha,$textidpip,$txtPrioridadProg,$txtTipo)
         {
-           $this->db->query("execute sp_Programacion_c'".$cbxCartera."','".$cbxBrecha."','".$txtProyectoInvers."','".$txtMontoProg."','".$dateAñoProg."','".$txtPrioridadProg."','".$txtMontoOpeMan."','".$txtTipo."'");
+           $this->db->query("execute sp_Programacion_c'".$textidCartera."','".$cbxBrecha."','".$textidpip."','".$txtPrioridadProg."','".$txtTipo."'");
             if ($this->db->affected_rows() > 0) 
               {
                 return true;
@@ -21,5 +21,69 @@ class Model_Programacion extends CI_Model
                 return false;
               }
         }
+        function AddProgramacionTemp($txt_MontoProgramado,$AnioProgramado,$monto_opera_mant_prog)
+        {
+            $this->db->query("execute sp_ProgramacionMontoTemporal_c'".$txt_MontoProgramado."','".$AnioProgramado."','".$monto_opera_mant_prog."'");
+            if ($this->db->affected_rows() > 0) 
+              {
+                return true;
+              }
+              else
+              {
+                return false;
+              }
+        }
+         function AddProgramacionOperMantTemp($txt_MontoProgramado,$AnioProgramado,$monto_opera_mant_prog)
+        {
+            $this->db->query("execute sp_ProgramacionMontoTemporal_c'".$txt_MontoProgramado."','".$AnioProgramado."','".$monto_opera_mant_prog."'");
+            if ($this->db->affected_rows() > 0) 
+              {
+                return true;
+              }
+              else
+              {
+                return false;
+              }
+        }
+        function GetMontosTemporales(){
+           $montos=$this->db->query("execute sp_ProgramacionMontoTemporal_r");
+            if($montos->num_rows()>0)
+             {
+              return $montos->result();
+             }else
+             {
+              return false;
+             }
+        }
     //FIN AGREGAR UN PROYECTO
+         function GetProgramacion()
+        {
+            $ProyectoInversion=$this->db->query("execute sp_ListarProyectoProgramacion");//listar proyecto de programacion
+            return $ProyectoInversion->result();
+        }
+
+         function BuscarProyectoInversion($Id_ProyectoInver,$opcion)
+         {
+            
+            $ProyectoInversion=$this->db->query("execute sp_ProyectoInversionBuscar'".$Id_ProyectoInver."','".$opcion."'");//listar  programacion
+            return $ProyectoInversion->result();
+   
+        }
+        function GetProgramacionModificar($opcion,$id_prog,$id_brecha,$id_pi,$monto_prog,$año_prog,$prioridad_prog,$monto_opera_mant_prog,$tipo_prog)
+        {
+        $Programacion=$this->db->query("execute sp_Gestionar_Programacion'".$opcion."','".$id_prog."','".$id_brecha."','".$id_pi."','".$monto_prog."','".$año_prog."','".$prioridad_prog."','".$monto_opera_mant_prog."','".$tipo_prog."'");//listar  programacion
+            return $Programacion->result();
+        }
+        //exporatr exel de la programaci
+         function ExelProgramacionProyectos()
+        {
+            $ProyectoInversion=$this->db->query("execute sp_ListarProyectoProgramacion");//listar excel dde programacion
+            return $ProyectoInversion->result();
+        }
+        function UpdateProgramacion($opcion,$id_prog,$id_cartera,$id_brecha,$id_pi,$monto_prog,$año_prog,$prioridad_prog,$monto_opera_mant_prog,$tipo_prog)
+        {
+          $Programacion=$this->db->query("execute sp_Gestionar_Programacion'".$opcion."','".$id_prog."','".$id_cartera."','".$id_brecha."','".$id_pi."','".$monto_prog."','".$año_prog."','".$prioridad_prog."','".$monto_opera_mant_prog."','".$tipo_prog."'");//listar  programacion
+            return $Programacion->result();
+
+        }
 }

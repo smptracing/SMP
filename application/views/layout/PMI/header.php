@@ -69,7 +69,7 @@
 
                   <li><a><i class="fa fa-edit"></i> PMI <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="form_wizards.html">Cartera de inversiones</a></li>
+                      <li><a href="<?php echo site_url('CarteraInversion/');?>">Cartera de inversiones</a></li>
                       <li><a href="<?php echo site_url('ProyectoInversion/');?>">Proyecto Inversion</a></li> 
                        <li><a href="<?php echo site_url('BrechaIndicador/');?>">Brechas e Indicadores </a></li> 
                     </ul>

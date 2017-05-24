@@ -17,7 +17,13 @@ class Ubicacion_Model extends CI_Model
              return $Provincia->result();
         }
         function get_distritos($IdProvincia){
-             $Distritos=$this->db->query("EXECUTE sp_ListaDistrito '".$IdProvincia."'");
+          $cadena=implode(",",$IdProvincia);
+             $Distritos=$this->db->query("EXECUTE sp_ListaDistrito '".$cadena."'");
              return $Distritos->result();
+        }
+         function get_buscarUbigeo($distrito) {
+            $UbigeoCadena=implode(",",$distrito);
+            $Ubigeo=$this->db->query("EXECUTE sp_UbigeoBuscar'".$UbigeoCadena."'");
+             return $Ubigeo->result();
         }
 }

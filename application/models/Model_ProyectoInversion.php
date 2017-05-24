@@ -9,9 +9,9 @@ class Model_ProyectoInversion extends CI_Model
 
           }
       //AGREGAR UN PROYECTO
-      function AddProyecto($cbxUnidadEjecutora,$cbxNatI,$cbxTipologiaInv,$cbxTipoInv,$cbxGrupoFunc,$cbxNivelGob,$cbxMetaPresupuestal,$cbxProgramaPres,$txtCodigoUnico,$txtNombrePip,$txtCostoPip,$txtDevengado,$dateFechaInPip,$dateFechaViabilidad)
+      function AddProyecto($cbxUnidadEjecutora,$cbxNatI,$cbxTipologiaInv,$cbxTipoInv,$cbxGrupoFunc,$cbxNivelGob,$cbxMetaPresupuestal,$cbxProgramaPres,$txtCodigoUnico,$txtNombrePip,$txtCostoPip,$txtDevengado,$dateFechaInPip,$dateFechaViabilidad,$distrito,$txtDireccionUbigeo,$txtLatitud,$txtLongitud,$cbxEstadoCicloInv,$dateFechaEstCicInv,$cbxFuenteFinanc,$dateFechaFuenteFinanc,$cbxModalidadEjec,$dateFechaModalidadEjec)
         {
-           $this->db->query("execute sp_ProyectoInversion_c'".$cbxUnidadEjecutora."','".$cbxNatI."','".$cbxTipologiaInv."','".$cbxTipoInv."','".$cbxGrupoFunc."','".$cbxNivelGob."','".$cbxMetaPresupuestal."','".$cbxProgramaPres."','".$txtCodigoUnico."','".$txtNombrePip."','".$txtCostoPip."','".$txtDevengado."','".$dateFechaInPip."','".$dateFechaViabilidad."'");
+           $this->db->query("execute sp_ProyectoInversionUbigeo'".$cbxUnidadEjecutora."','".$cbxNatI."','".$cbxTipologiaInv."','".$cbxTipoInv."','".$cbxGrupoFunc."','".$cbxNivelGob."','".$cbxMetaPresupuestal."','".$cbxProgramaPres."','".$txtCodigoUnico."','".$txtNombrePip."','".$txtCostoPip."','".$txtDevengado."','".$dateFechaInPip."','".$dateFechaViabilidad."','".$distrito."','".$txtDireccionUbigeo."','".$txtLatitud."','".$txtLongitud."','".$cbxEstadoCicloInv."','".$dateFechaEstCicInv."','".$cbxFuenteFinanc."','".$dateFechaFuenteFinanc."','".$cbxModalidadEjec."','".$dateFechaModalidadEjec."'");
             if ($this->db->affected_rows() > 0) 
               {
                 return true;
@@ -22,12 +22,18 @@ class Model_ProyectoInversion extends CI_Model
               }
         }
     //FIN AGREGAR UN PROYECTO
+         function GetProyectoInversionUltimo()
+        {
+            $ProyectoInversionUlti=$this->db->query("execute sp_ProyectoInversionUltimo_r");//listar funcion
+            return $ProyectoInversionUlti->result();
+        }
       /*añadir funcion*/
         function ProyectoInversion()
         {
             $ProyectoInversion=$this->db->query("execute sp_ProyectoInversion_r");//listar funcion
             return $ProyectoInversion->result();
         }
+
 
          function BuscarProyectoInversion($Id_ProyectoInver)
          {

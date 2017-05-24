@@ -274,7 +274,7 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Departamento*  </span>
                             </label>
                           <div class="col-md-6 col-sm-6 col-xs-12">
-                              <select id="departamento" class="selectpicker" data-live-search="true"  title="Seleccione un Departamento">
+                              <select id="departamento1" class="selectpicker" data-live-search="true"  title="Seleccione un Departamento">
 
                               </select>
                           </div>
@@ -284,9 +284,7 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Provincia*  </span>
                             </label>
                           <div class="col-md-6 col-sm-6 col-xs-12">
-                              <select  id="provincia" class="selectpicker" data-live-search="true"  title="Seleccione una Provincia">
-
-
+                              <select  id="provincia1" class="selectpicker" multiple title="Seleccione una o mas provincias" data-live-search="true">
                               </select>
                           </div>
                         </div>
@@ -295,11 +293,13 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Distrito*  </span>
                             </label>
                           <div class="col-md-6 col-sm-6 col-xs-12">
-                              <select name="distrito" id="distrito"  class="selectpicker" data-live-search="true"  title="Seleccione un Distrito">
+                              <select name="distrito1" id="distrito"  class="selectpicker" data-live-search="true"  multiple title="Seleccione un Distrito">
 
                               </select>
                           </div>
                         </div>
+                    
+
 
                       <div class="ln_solid"></div>
                       <div class="form-group">
