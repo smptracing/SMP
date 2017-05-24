@@ -49,8 +49,6 @@ $(document).on("ready" ,function(){
                          }
                       });
                   });
-
-
 			});
 			   /*listra */
                 var listaEstadoCicloInversion=function()
