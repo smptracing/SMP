@@ -77,10 +77,6 @@ class Importar extends CI_Controller
         $data['header'] = $header;
         $data['values'] = $arr_data;
 
-        $fecha  = "2008/07/05";
-        $fechas = "2006/07/05";
-        $anio   = "2017/01/01";
-
         foreach ($arr_data as $fila) {
             /*
             $distrito = $fila['L'];
@@ -94,8 +90,23 @@ class Importar extends CI_Controller
             $this->Importar_Model->addImportar($data_tmp);
              */
             //echo "</BR>";
-            //echo $fila;
-            $this->Importar_Model->addImportar($fila, $fecha, $fechas);
+            // echo $fila;
+            //$fecha = $fila['AA'];
+            //echo $fechaAB;
+
+            // echo "<BR>";
+            $fechaAA = date('Y/m/d', PHPExcel_Shared_Date::ExcelToPHP($fila['AA']));
+            $fechaAB = date('Y/m/d', PHPExcel_Shared_Date::ExcelToPHP($fila['AB']));
+            // $fechaAF = date('d/m/Y ', PHPExcel_Shared_Date::ExcelToPHP($fila['AF'] ^ ));
+
+            //echo "<BR>";
+
+// utilizo la función y obtengo el timestamp
+
+            //  $fecha = date("d/m/Y ", $fila['AA']);
+            //   echo "string"+$fecha;
+            //  var_dump($fila['AA']);
+            $this->Importar_Model->addImportar($fila, $fechaAA, $fechaAB);
         }
 
     }
