@@ -121,7 +121,7 @@
                             }
                           });
                    listaMontosTemporales();
-                  $('#table-Programacion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion  
+                  //$('#table-Programacion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion  
 
                 });
           //FIN GUARDAR LOS MONTOS PROGRAMADOS EN UNA TABLA TEMPORAL 
