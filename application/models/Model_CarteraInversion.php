@@ -8,8 +8,19 @@ class Model_CarteraInversion extends CI_Model
           }
 //----------------------METODOS PARA EL MANTENIMIENTO DE RUBRO DE EJECUCION--------------------------------------------
     
-
-    //LISTAR RUBRO DE EJECUCION
+     function AddCartera($dateAñoAperturaCart,$dateFechaIniCart,$dateFechaFinCart,$estado,$txt_NumResolucionCart,$txt_UrlResolucionCart)
+        {
+ $this->db->query("execute sp_CarteraInversion_c'".$dateAñoAperturaCart."','".$dateFechaIniCart."','".$dateFechaFinCart."','".$estado."','".$txt_NumResolucionCart."','".$txt_UrlResolucionCart."'");//PROCEDIMIENTO DE LISTAR SOLO CARTEREA ACTUAL
+             if ($this->db->affected_rows() > 0) 
+              {
+                return true;
+              }
+              else
+              {
+                return false;
+              }
+        }
+    //LISTAR CARTERA FECHA ACTUAL
       function GetCarteraInvFechAct()
         {
             $carteraActual=$this->db->query("execute sp_CarteraActual_r"); //PROCEDIMIENTO DE LISTAR SOLO CARTEREA ACTUAL
@@ -19,11 +30,22 @@ class Model_CarteraInversion extends CI_Model
              }else
              {
               return false;
-             }
-   
+             }  
         } 
-    //FIN LISTAR UN RUBRO DE EJECUCION 
+    //FIN LISTAR CARTERA FECHA ACTUAL 
 
-    
+    //LISTAR CARTERA DE INVERSION
+      function GetCarteraInversion()
+        {
+            $cartera=$this->db->query("execute sp_CarteraInversion_r"); //PROCEDIMIENTO DE LISTAR CARTERAS
+            if($cartera->num_rows()>0)
+             {
+              return $cartera->result();
+             }else
+             {
+              return false;
+             }  
+        } 
+    //FIN LISTAR CARTERA DE INVERSION
 //--------------FIN DE METODOS PARA EL MANTENIMIENTO DE RUBRO DE EJECUCION--------------------------------------------
 }
