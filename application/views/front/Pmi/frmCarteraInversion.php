@@ -92,7 +92,7 @@
 
 
 <!-- Ventana para registrar una modalidad de ejecucion -->
-<div class="modal fade" id="VentanaRegistraCarteraInv" role="dialog">
+<div class="modal fade" id="VentanaRegistraCarteraInv" role="dialog" data-backdrop="static">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -102,8 +102,7 @@
         <div class="modal-body">
          <div class="row">
                 <div class="col-xs-12">
-
-                <form class="form-horizontal " id="form-RegistraCarteraInv" action="<?php echo base_url(); ?>ModalidadEjecucion/UpdateModalidadE" method="POST" >
+                <form class="form-horizontal " id="form-RegistraCarteraInv" action="<?php echo base_url();?>CarteraInversion/AddCartera" method="POST" >
 
                       <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Año Apertura Cartera<span class="required">*</span>
@@ -126,16 +125,6 @@
                                  <input type="date" id="dateFechaFinCart" name="dateFechaFinCart" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text">
                                </div>
                       </div>
-                       <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Estado Ciclo</span>
-                                        </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select id="cbxEstadoCart" name="cbxEstadoCart" class="selectpicker" data-live-search="true"  title="Elija Estado de cartera">
-                                                      <option>ACTIVO</option>
-                                                      <option>INACTIVO</option>
-                                            </select>
-                                        </div>
-                      </div>
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Numero Resolucion Cartera <span class="required">*</span>
                         </label>
@@ -144,21 +133,21 @@
                         </div>
                       </div>
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Url resolucion Cartera <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Adjuntar resolución<span class="required">*</span>
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_UrlResolucionCart" name="txt_UrlResolucionCart" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Url resolucion Cartera" required="required" type="text">
-                        </div>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                                 <input type="file" name="Cartera_Resoluacion" >
+                          </div>
                       </div>
                       
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                         <button  type="submit" class="btn btn-success">
+                         <button   class="btn btn-success" type="submit">
                             <span class="glyphicon glyphicon-floppy-disk"></span>
                             Guardar
                           </button>
-                          <button type="submit" data-dismiss="modal" class="btn btn-danger">
+                          <button  data-dismiss="modal" class="btn btn-danger">
                              <span class="glyphicon glyphicon-remove"></span>
                             Cancelar
                           </button>
@@ -177,4 +166,5 @@
   </div>
 
 <!-- fin ventana para registrar una modalidad  de ejecucion -->
+
 

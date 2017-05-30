@@ -108,7 +108,7 @@
     <script src="<?php echo base_url(); ?>assets/js/administrador/EstadoCicloInversion.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/administrador/NivelGobierno.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/administrador/FuenteFinanciamiento.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/administrador/CarteraInversion.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/PMI/CarteraInversion.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/PMI/Programacion.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/administrador/Importar.js"></script>
   </body>

@@ -13,36 +13,36 @@ class ProyectoInversion extends CI_Controller {/* Mantenimiento de sector entida
    {
       if ($this->input->is_ajax_request()) 
       {
-        $cbxUnidadEjecutora=$this->input->post("cbxUnidadEjecutora");
-        $cbxNatI =$this->input->post("cbxNatI");
-        $cbxTipologiaInv =$this->input->post("cbxTipologiaInv");
-        $cbxTipoInv=$this->input->post("cbxTipoInv");
-        $cbxGrupoFunc =$this->input->post("cbxGrupoFunc");
-        $cbxNivelGob =$this->input->post("cbxNivelGob");
-        $cbxMetaPresupuestal =$this->input->post("cbxMetaPresupuestal");
-        $cbxProgramaPres =$this->input->post("cbxProgramaPres");
-        $txtCodigoUnico =$this->input->post("txtCodigoUnico");
-        $txtNombrePip =$this->input->post("txtNombrePip");
-        $txtCostoPip =$this->input->post("txtCostoPip");
-        $txtDevengado =$this->input->post("txtDevengado");
-        $dateFechaInPip =$this->input->post("dateFechaInPip");
-        $dateFechaViabilidad =$this->input->post("dateFechaViabilidad");
-        $distrito =$this->input->post("distritosM");
-        $txtDireccionUbigeo =$this->input->post("txtDireccionUbigeo");
-        $txtLatitud=$this->input->post("txtLatitud");
-        $txtLongitud=$this->input->post("txtLongitud");
-        $cbxEstadoCicloInv=$this->input->post("cbxEstadoCicloInv");
-        $dateFechaEstCicInv=$this->input->post("dateFechaEstCicInv");
-        $cbxFuenteFinanc=$this->input->post("cbxFuenteFinanc");
-        $dateFechaFuenteFinanc=$this->input->post("dateFechaFuenteFinanc");
-        $cbxModalidadEjec=$this->input->post("cbxModalidadEjec");
-        $dateFechaModalidadEjec=$this->input->post("dateFechaModalidadEjec");
-     if($this->Model_ProyectoInversion->AddProyecto($cbxUnidadEjecutora,$cbxNatI,$cbxTipologiaInv,$cbxTipoInv,$cbxGrupoFunc,$cbxNivelGob,$cbxMetaPresupuestal,$cbxProgramaPres,$txtCodigoUnico,$txtNombrePip,$txtCostoPip,$txtDevengado,$dateFechaInPip,$dateFechaViabilidad,$distrito,$txtDireccionUbigeo,$txtLatitud,$txtLongitud,$cbxEstadoCicloInv,$dateFechaEstCicInv,$cbxFuenteFinanc,$dateFechaFuenteFinanc,$cbxModalidadEjec,$dateFechaModalidadEjec) == true)
+        $cbxUnidadEjecutora=$this->input->post("id_ue");
+        $cbxNatI =$this->input->post("id_naturaleza_inv");
+        $cbxTipologiaInv =$this->input->post("id_tipologia_inv");
+        $cbxTipoInv=$this->input->post("id_tipo_inversion");
+        $cbxGrupoFunc =$this->input->post("id_grupo_funcional_inv");
+        $cbxNivelGob =$this->input->post("id_nivel_gob");
+        $cbxMetaPresupuestal =$this->input->post("id_meta_pres");
+        $cbxProgramaPres =$this->input->post("id_programa_pres");
+        $txtCodigoUnico =$this->input->post("codigo_unico_pi");
+        $txtNombrePip =$this->input->post("nombre_pi");
+        $txtCostoPip =$this->input->post("costo_pi");
+        $txtDevengado =$this->input->post("devengado_ac_pi");
+        $dateFechaInPip ="2017-03-01";
+        $dateFechaViabilidad ="2017-03-01";
+        $distrito =$this->input->post("distrito");
+        $txtDireccionUbigeo ="Direccion";
+        $txtLatitud="1.1";
+        $txtLongitud="1.2";
+        $cbxEstadoCicloInv=$this->input->post("id_estado_ciclo");
+        $dateFechaEstCicInv="2017-03-01";
+        $cbxFuenteFinanc=$this->input->post("id_fuente_finan");
+        $dateFechaFuenteFinanc="2017-03-01";
+        $cbxModalidadEjec=$this->input->post("id_modalidad_ejec");
+        $dateFechaModalidadEjec="2017-03-01";
+      if($this->Model_ProyectoInversion->AddProyecto($cbxUnidadEjecutora,$cbxNatI,$cbxTipologiaInv,$cbxTipoInv,$cbxGrupoFunc,$cbxNivelGob,$cbxMetaPresupuestal,$cbxProgramaPres,$txtCodigoUnico,$txtNombrePip,$txtCostoPip,$txtDevengado,$dateFechaInPip,$dateFechaViabilidad,$distrito,$txtDireccionUbigeo,$txtLatitud,$txtLongitud,$cbxEstadoCicloInv,$dateFechaEstCicInv,$cbxFuenteFinanc,$dateFechaFuenteFinanc,$cbxModalidadEjec,$dateFechaModalidadEjec) == true)
           echo "Se añadio un proyecto";
         else
           echo "Se añadio  un proyecto";  
-         // echo json_encode($ubigeo);
-          //echo "",$distrito;
+         // echo json_encode($ubigeo);*/
+         // echo $cbxTipoInv;
       }
       else
       {

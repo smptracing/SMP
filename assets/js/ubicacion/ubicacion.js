@@ -4,7 +4,7 @@ function inicio(){
  
     html="";
 
-    $("#cbxProgramaPres").change(function(){//para  provincias en el combo
+    $("#cbxUnidadEjecutora").change(function(){//para  provincias en el combo
 		    html="";
 			   departamento();	 
 		});

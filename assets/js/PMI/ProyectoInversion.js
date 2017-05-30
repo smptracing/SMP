@@ -2,63 +2,81 @@
 
                 listaProyectoInversion();/*llamar proyecto de inversion*/
                  
-            //Inicio cargar combo unidad ejecutora
+            //Inicio cargar combo TIPO DE INVERSION
              $("#btn-NuevoProyectoI").click(function()//para que cargue el como una vez echo click sino repetira datos
                     {
-                        //alert('hola');
-                     listaUnidadEjecutora();//para llenar el combo de agregar division funcional
-                    
+
+                    listarTipoInversion();
                     });
-             //CARGAR DATOS EN COMBOBOX DE NATURALEZA DE INVERSION
-              $("#cbxUnidadEjecutora").change(function(){//para cargar en agregar division funcionañ
-                    listarNaturalezaInversion();
+              //CARGAR DATOS EN COMBOBOX TIPO DE INVERSION
+              $("#cbxTipoInv").change(function(){//para cargar en agregar division funcionañ
+                   listarCicloInversion();
              });
-              //FIN CARGAR DATOS EN COMBOBOX DE NATURALEZA DE INVERSION
-               //CARGAR DATOS EN COMBOBOX DE TIPOLOGIA INVERSION
-              $("#cbxNatI").change(function(){//para cargar en agregar division funcionañ
+              //FIN CARGAR DATOS EN COMBOBOX CICLO DE INVERSION      
+               //OBTENER DATOS DE TIPOLOGIA DE INVERSION
+              $("#cbxEstadoCicloInv").change(function(){//para cargar en agregar division funcionañ
                     listarTipologiaInversion();
              });
-              //FIN CARGAR DATOS EN COMBOBOX DE TIPOLOGIA INVERSION
-             //CARGAR DATOS EN COMBOBOX DE TIPO INVERSION
+              //FIN OBTENER DATOS DE TIPOLOGIA DE INVERSION
+               //CARGAR DATOS EN COMBOBOX DE TIPO INVERSION
               $("#cbxTipologiaInv").change(function(){//para cargar en agregar division funcionañ
-                    listarTipoInversion();
+                    listarNaturalezaInversion();
              });
               //FIN CARGAR DATOS EN COMBOBOX DE TIPO INVERSION
-              //CARGAR DATOS EN COMBOBOX DE GRUPO FUNCIONAL
-              $("#cbxTipoInv").change(function(){//para cargar en agregar division funcionañ
-                    listarGrupoFuncional();
-             });
-              //FIN CARGAR DATOS EN COMBOBOX DE GRUPO FUNCIONAL
-              //CARGAR DATOS EN COMBOBOX DE NIVEL DE GOBIERNO
-              $("#cbxGrupoFunc").change(function(){//para cargar en agregar division funcionañ
+     
+               //CARGAR DATOS EN COMBOBOX DE TIPOLOGIA INVERSION
+              $("#cbxNatI").change(function(){//para cargar en agregar division funcionañ
                     listarNivelGobierno();
              });
-              //FIN CARGAR DATOS EN COMBOBOX DE DE NIVEL DE GOBIERNO
-               //CARGAR DATOS EN COMBOBOX DE META PRESUPUESTAL
+              //FIN CARGAR DATOS EN COMBOBOX DE TIPOLOGIA INVERSION
+               //CARGAR DATOS EN UNIDAD EJECUTORA
               $("#cbxNivelGob").change(function(){//para cargar en agregar division funcionañ
-                    listarMetaPresupuestal();
+                   listaUnidadEjecutora();
              });
-              //FIN CARGAR DATOS EN COMBOBOX DE META PRESUPUESTAL
-              //CARGAR DATOS EN COMBOBOX DE PROGRAMA PRESUPUESTAL
-              $("#cbxMetaPresupuestal").change(function(){//para cargar en agregar division funcionañ
-                    listarProgramaPresupuestal();
-             });
-              //FIN CARGAR DATOS EN COMBOBOX DE PROGRAMA PRESUPUESTAL
+              //FIN CARGAR DATOS EN COMBOBOX DATOS EN UNIDAD EJECUTORA
+
                 //OBTEiNER DATOS DEL CICLO DE INVERSION
               $("#distrito").change(function(){//para cargar en agregar division funcionañ
-                    listarCicloInversion();
+                    listarFuncion();
              });
               //FIN OBTENER DATOS DEL CICLO DE INVERSION
-              //OBTENER DATOS DE FUENTE DE FINANCIAMIENTO
-              $("#cbxEstadoCicloInv").change(function(){//para cargar en agregar division funcionañ
+       
+              
+              //TRAER EN COMBOBOX FUNCION
+              $("#cbxFuncion").change(function(){//para cargar en agregar division funcionañ
+                    listarDivisionFuncional();
+             });
+              //TRAER EN COMBOBOX DIVISION FUNCIONAL
+              //TRAER EN COMBOBOX FUNCION
+              $("#cbxDivFunc").change(function(){//para cargar en agregar division funcionañ
+                    listarGrupoFuncional();
+             });
+              //TRAER EN COMBOBOX DIVISION FUNCIONAL
+           //TRAER EN COMBOBOX PIM
+              $("#cbxGrupoFunc").change(function(){//para cargar en agregar division funcionañ
+                    listarMetaPresupuestal();
+             });
+              //TRAER EN COMBOBOX DIVISION FUNCIONAL
+               //TRAER EN COMBOBOX PIM
+              $("#cbxMetaPresupuestal").change(function(){//para cargar en agregar division funcionañ
                     listarFuenteFinan();
              });
-              //FIN OBTENER DATOS DE FUENTE DE FINANCIAMIENTO
-               //OBTENER DATOS MODALIDAD DE EJECUCION
+              //TRAER EN COMBOBOX DIVISION FUNCIONAL
+               //OBTENER DATOS RUBRO DE EJECUCION
               $("#cbxFuenteFinanc").change(function(){//para cargar en agregar division funcionañ
+                    listarRubro();
+             }); 
+              //FIN OBTENER DATOS RUBRO DE EJECUCION
+              //OBTENER DATOS MODALIDAD DE EJECUCION
+              $("#cbxRubro").change(function(){//para cargar en agregar division funcionañ
                     listarModalidadEjec();
-             });
-              //FIN OBTENER DATOS MODALIDAD DE EJECUCIONO
+             }); 
+              //FIN OBTENER DATOS MODALIDAD DE EJCUCION
+            //OBTENER PROGRAMA PRESUPUESTAL
+              $("#cbxModalidadEjec").change(function(){//para cargar en agregar division funcionañ
+                  listarProgramaPresupuestal();
+             }); 
+              //FIN OBTENER PROGRAMA PRESUPUESTAL
               //TRAER DATOS EN UN COMBO DE UNIDAD EJECUTORA
                 var listaUnidadEjecutora=function()
                 {
@@ -69,7 +87,6 @@
                         "url":base_url +"index.php/UnidadE/GetUnidadE",
                         type:"POST",
                         success:function(respuesta){
-                           // alert(respuesta);
                          var registros = eval(respuesta);
                             for (var i = 0; i <registros.length;i++) {
                               html +="<option value="+registros[i]["id_ue"]+"> "+ registros[i]["nombre_ue"]+" </option>";   
@@ -175,7 +192,7 @@
                         "url":base_url +"index.php/NivelGobierno/get_NivelGobierno",
                         type:"POST",
                         success:function(respuesta){
-                            alert(respuesta);
+                            //alert(respuesta);
                          var registros = eval(respuesta);
                             for (var i = 0; i <registros.length;i++) {
                               html +="<option value="+registros[i]["id_nivel_gob"]+"> "+ registros[i]["nombre_nivel_gob"]+" </option>";   
@@ -199,7 +216,7 @@
                            // alert(respuesta);
                          var registros = eval(respuesta);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option value="+registros[i]["id_meta_pres"]+"> "+ registros[i]["nombre_meta_pres"]+" </option>";   
+                              html +="<option value="+registros[i]["id_meta_pres"]+"> "+ registros[i]["pim_meta_pres"]+" </option>";   
                             };
                             $("#cbxMetaPresupuestal").html(html);//
                             $('.selectpicker').selectpicker('refresh'); 
@@ -291,9 +308,73 @@
                         }
                     });
                 }
-          //FIN TRAER DATOS EN UN COMBO DE MODALIDAD DE EJECUCION
+          //FIN TRAER DATOS EN UN COMBO DE MODALIDAD DE EJECUCION  
+             //TRAER DATOS EN UN COMBO DE FUNCION
+                var listarFuncion=function()
+                {
+                    html="";
+                    $("#cbxFuncion").html(html); //nombre del selectpicker UNIDAD EJECUTORA
+                    event.preventDefault(); 
+                    $.ajax({
+                        "url":base_url +"index.php/MFuncion/GetFuncion",
+                        type:"POST",
+                        success:function(respuesta){
+                           // alert(respuesta);
+                         var registros = eval(respuesta);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option value="+registros[i]["id_funcion"]+"> "+ registros[i]["nombre_funcion"]+" </option>";   
+                            };
+                            $("#cbxFuncion").html(html);//
+                            $('.selectpicker').selectpicker('refresh'); 
+                        }
+                    });
+                }
+          //FIN TRAER DATOS EN UN COMBO DE FUNCION
+          //TRAER DATOS EN UN COMBO DE DIVISION FUNCIONAL
+                var listarDivisionFuncional=function()
+                {
+                    html="";
+                    $("#cbxDivFunc").html(html); //nombre del selectpicker UNIDAD EJECUTORA
+                    event.preventDefault(); 
+                    $.ajax({
+                        "url":base_url +"index.php/DivisionFuncional/GetDivisionFuncional",
+                        type:"POST",
+                        success:function(respuesta){
+                           // alert(respuesta);
+                         var registros = eval(respuesta);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option value="+registros[i]["id_div_funcional"]+"> "+ registros[i]["nombre_div_funcional"]+" </option>";   
+                            };
+                            $("#cbxDivFunc").html(html);//
+                            $('.selectpicker').selectpicker('refresh'); 
+                        }
+                    });
+                }
+          //FIN TRAER DATOS EN UN COMBO DE DIVISION FUNCIONAL
+
+                    //TRAER DATOS EN UN COMBO DE DIVISION FUNCIONAL
+                var listarRubro=function()
+                {
+                    html="";
+                    $("#cbxRubro").html(html); //nombre del selectpicker UNIDAD EJECUTORA
+                    event.preventDefault(); 
+                    $.ajax({
+                        "url":base_url +"index.php/MRubroEjecucion/GetRubroE",
+                        type:"POST",
+                        success:function(respuesta){
+                           // alert(respuesta);
+                         var registros = eval(respuesta);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option value="+registros[i]["id_rubro"]+"> "+ registros[i]["nombre_rubro"]+" </option>";   
+                            };
+                            $("#cbxRubro").html(html);//
+                            $('.selectpicker').selectpicker('refresh'); 
+                        }
+                    });
+                }
+          //FIN TRAER DATOS EN UN COMBO DE DIVISION FUNCIONAL
               //AGREGAR UNA PIP
-                $("#form-addProyectoInversion").submit(function(event)
+               /* $("#form-addProyectoInversion").submit(function(event)
                 {
                 //  alert('hola');
                   event.preventDefault();
@@ -307,7 +388,7 @@
                          //$('#table-ProyectoInversion').dataTable()._fnAjaxUpdate();    //SIRVE PARA REFRESCAR LA TABLA 
                         }
                     });
-                });     
+                });  */   
                 //FIN DE AGREGAR PIP           
 			});
 			   //listaR proyeto de inversion*/
