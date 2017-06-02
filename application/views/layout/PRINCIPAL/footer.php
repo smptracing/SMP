@@ -1,6 +1,8 @@
  <footer>
           <div class="pull-right">
-           GOBIERNO REGIONAL DE APURIMAC
+           <div class="count green">
+                                        <center><h6><i>© Copyright 2017 Copyright.es - All Rights Reserved</i></h6></center>
+                                    </div>
           </div>
           <div class="clearfix"></div>
         </footer>
@@ -77,7 +79,7 @@
     <script src="<?php echo base_url(); ?>assets/vendors/butons/buttons.flash.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendors/butons/buttons.html5.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendors/butons/buttons.print.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets/plugins/input-mask/jquery.inputmask.min.js"></script> 
+    <script src="<?php echo base_url(); ?>assets/plugins/input-mask/jquery.inputmask.min.js"></script>
     <link href="<?php echo base_url(); ?>assets/css/main.css" rel="stylesheet" type="text/css">
   </body>
 </html>

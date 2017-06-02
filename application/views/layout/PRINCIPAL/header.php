@@ -8,67 +8,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>SEMOPIP </title>
-
     <!-- Bootstrap -->
-    <link href="<?php echo base_url();?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="<?php echo base_url();?>assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="<?php echo base_url();?>assets/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
-    <link href="<?php echo base_url();?>assets/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-	
-    <!-- bootstrap-progressbar -->
-    <link href="<?php echo base_url();?>assets/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
-    <!-- JQVMap -->
-    <link href="<?php echo base_url();?>assets/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
-    <!-- bootstrap-daterangepicker -->
-    <link href="<?php echo base_url();?>assets/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-    
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/dist/css/bootstrap-select.css"><!--- para el selector con buscardor---->
+    <link href="<?php echo base_url(); ?>assets/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
 
+    <!-- bootstrap-progressbar -->
+    <link href="<?php echo base_url(); ?>assets/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="<?php echo base_url(); ?>assets/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <!-- bootstrap-daterangepicker -->
+    <link href="<?php echo base_url(); ?>assets/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/css/bootstrap-select.css"><!--- para el selector con buscardor---->
       <!-- Datatables -->
-    <link href="<?php echo base_url();?>assets/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url();?>assets/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url();?>assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url();?>assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url();?>assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
-      
+    <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
      <script>
-    var base_url = '<?php echo base_url(); ?>';  
+    var base_url = '<?php echo base_url(); ?>';
     </script>
     <!-- Custom Theme Style -->
-    <link href="<?php echo base_url();?>assets/build/css/custom.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/build/css/custom.min.css" rel="stylesheet">
   </head>
-
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
-            <div class="navbar nav_title" style="border: 0;">
+          <!--  <div class="navbar nav_title" style="border: 0;">
               <a href="" class="site_title"><i class="fa fa-users"></i> <span>SEMOPIP</span></a>
-            </div>
-
+            </div>-->
             <div class="clearfix"></div>
-
-            <!-- menu profile quick info -->
-            <div class="profile clearfix">
-              
-            </div>
-            <!-- /menu profile quick info -->
-
             <br />
-
-            <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-         
-                <ul class="nav side-menu">
-                </ul>
-              </div>
+            <br />
+             <!-- menu profile quick info -->
+            <div class="profile clearfix">
             </div>
-            <!-- /sidebar menu -->
+        <!-- /menu profile quick info -->
+<br>
+                        <th class="col-sm-3">
+                                    <div class="count green">
+                                       <CENTER> <a href="">
+                                      <img src="<?php echo base_url(); ?>assets/images/APURIMAC.png" class="img-rounded" alt="Cinque Terre" width="200" height="180">
+                                       <br>
+                                       <center><a href="" class="site_title"></i><span><H2>GOBIERNO REGIONAL DE APURÍMAC</H2> </span></a>
+                                       </center>
+
+                                        <p id="copyrights_footer"><label id="ctl00_Master_CopyrightFooter">Seguimiento y Monitoreo de Proyectos de Inversión - </label> SMP 1.0 </a></p> <br> <br> <br> <br> <br> <br> <br> <br><br> <br>
+                                         <img src="<?php echo base_url(); ?>assets/images/iconoprincipal.png" class="img-rounded" alt="Cinque Terre" width="64" height="64">
+                                        <center><h6><i>© Copyright 2017 Copyright.es - All Rights Reserved</i></h6></center>
+                                    </div>
+                          </th>
 
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
@@ -93,20 +90,9 @@
           <div class="nav_menu">
             <nav>
               <div class="nav toggle">
-                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                <a id="."><i class="fa fa-bars"></i></a>
               </div>
-
               <ul class="nav navbar-nav navbar-right">
-                <li class="">
-                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    
-                    <span class=" fa fa-angle-down"></span>
-                  </a>
-                  <ul class="dropdown-menu dropdown-usermenu pull-right">
-
-                    
-                  </ul>
-                </li>
               </ul>
             </nav>
           </div>

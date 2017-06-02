@@ -10,35 +10,35 @@
     <title>SEMOPIP </title>
 
     <!-- Bootstrap -->
-    <link href="<?php echo base_url();?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="<?php echo base_url();?>assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="<?php echo base_url();?>assets/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
-    <link href="<?php echo base_url();?>assets/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-	
+    <link href="<?php echo base_url(); ?>assets/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+
     <!-- bootstrap-progressbar -->
-    <link href="<?php echo base_url();?>assets/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
-    <link href="<?php echo base_url();?>assets/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <link href="<?php echo base_url(); ?>assets/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
-    <link href="<?php echo base_url();?>assets/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-    
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/dist/css/bootstrap-select.css"><!--- para el selector con buscardor---->
+    <link href="<?php echo base_url(); ?>assets/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/css/bootstrap-select.css"><!--- para el selector con buscardor---->
 
       <!-- Datatables -->
-    <link href="<?php echo base_url();?>assets/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url();?>assets/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url();?>assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url();?>assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url();?>assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
-      
+    <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+
      <script>
-    var base_url = '<?php echo base_url(); ?>';  
+    var base_url = '<?php echo base_url(); ?>';
     </script>
     <!-- Custom Theme Style -->
-    <link href="<?php echo base_url();?>assets/build/css/custom.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/build/css/custom.min.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -47,41 +47,70 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="<?php echo site_url('Inicio')?>" class="site_title"><i class="fa fa-users"></i> <span>SEMOPIP</span></a>
+              <a href="<?php echo site_url('Inicio') ?>" class="site_title"><i class="fa fa-users"></i> <span>SEMOPIP</span></a>
             </div>
 
             <div class="clearfix"></div>
-
-            <!-- menu profile quick info -->
+   <!-- menu profile quick info -->
             <div class="profile clearfix">
-              
+              <div class="profile_pic">
+                <img src="<?php echo base_url(); ?>assets/images/IMG.jpg" alt="..." class="img-circle profile_img">
+              </div>
+              <div class="profile_info">
+                <span>Welcome,</span>
+                <h2>John Doe</h2>
+              </div>
             </div>
-            <!-- /menu profile quick info -->
+        <!-- /menu profile quick info -->
+
 
             <br />
 
             <!-- sidebar menu -->
+            <!--
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <ul class="nav side-menu">
-                  <li><a href="<?php echo site_url('Inicio/');?>"> <i class="fa fa-mail-reply"></i> INICIO<span class="fa fa-chevron-down"></span></a>
+                  <li><a href="<?php echo site_url('Inicio/'); ?>"> <i class="fa fa-home"></i> INICIO<span class="fa fa-chevron-down"></span></a>
                   </li>
                 </ul>
               </div>
               <div class="menu_section">
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-gear"></i> CONFIGURACIÓN DE PARAMETROS <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">     
-                     <li><a href="<?php echo site_url('Sector/');?>">Sector</a></li>
-                        <li><a href="<?php echo site_url('CadenaFuncional/');?>">Cadena Funcional</a></li>
-                        <li><a href="<?php echo site_url('TipologiaInversion/');?>">Tipologia de inversion</a></li> 
-                         <li><a href="<?php echo site_url('InformacionPresupuestal/');?>">Informacion Presupuestal</a></li> 
-                         <li><a href="<?php echo site_url('EstadoCicloInversion/');?>">Ciclo de inversion</a></li> 
-                        <li><a href="<?php echo site_url('MUbicacion/');?>">Ubicacion Geografica</a></li>
-                        <li><a href="<?php echo site_url('UnidadEjecutora/');?>">Unidad Ejecutora</a></li> 
-                    
+                    <ul class="nav child_menu">
+                     <li><a href="<?php echo site_url('Sector/'); ?>">Sector</a></li>
+                        <li><a href="<?php echo site_url('CadenaFuncional/'); ?>">Cadena Funcional</a></li>
+                        <li><a href="<?php echo site_url('TipologiaInversion/'); ?>">Tipologia de inversion</a></li>
+                         <li><a href="<?php echo site_url('InformacionPresupuestal/'); ?>">Informacion Presupuestal</a></li>
+                         <li><a href="<?php echo site_url('EstadoCicloInversion/'); ?>">Ciclo de inversion</a></li>
+                        <li><a href="<?php echo site_url('MUbicacion/'); ?>">Ubicacion Geografica</a></li>
+                        <li><a href="<?php echo site_url('UnidadEjecutora/'); ?>">Unidad Ejecutora</a></li>
+
                     </ul>
                   </li>
+                </ul>
+              </div>
+            </div>-->
+            <!-- /sidebar menu -->
+              <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+              <ul class="nav side-menu">
+                  <li><a href="<?php echo site_url('Inicio/'); ?>"> <i class="fa fa-home"></i> INICIO<span class=""></span></a>
+                  </li>
+                </ul>
+                <h3></i>Configuración</h3>
+                <ul class="nav side-menu">
+
+                          <li><a href="<?php echo site_url('CadenaFuncional/'); ?>"> <i class="fa fa-code-fork"></i></i>  Cadena Funcional</a></li>
+                        <li><a href="<?php echo site_url('TipologiaInversion/'); ?>"><i class="fa fa-cogs"></i>  Tipologia de inversion</a></li>
+                         <li><a href="<?php echo site_url('InformacionPresupuestal/'); ?>"><i class="fa fa-calculator"></i>  Informacion Presupuestal</a></li>
+                         <li><a href="<?php echo site_url('EstadoCicloInversion/'); ?>"><i class="fa fa-spinner"></i>  Ciclo de inversion</a></li>
+                        <li><a href="<?php echo site_url('MUbicacion/'); ?>"><i class="fa fa-map-marker"></i>  Ubicacion Geografica</a></li>
+                        <li><a href="<?php echo site_url('UnidadEjecutora/'); ?>"><i class="fa fa-tasks"></i>  Unidad Ejecutora</a></li>
+
+
                 </ul>
               </div>
             </div>
@@ -116,7 +145,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="<?php echo base_url();?>assets/images/img.jpg" alt="">John Doe
+                    <img src="<?php echo base_url(); ?>assets/images/img.jpg" alt="">John Doe
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -140,7 +169,7 @@
                   <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                     <li>
                       <a>
-                        <span class="image"><img src="<?php echo base_url();?>assets/images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="<?php echo base_url(); ?>assets/images/img.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -152,7 +181,7 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="<?php echo base_url();?>assets/images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="<?php echo base_url(); ?>assets/images/img.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -164,7 +193,7 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="<?php echo base_url();?>assets/images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="<?php echo base_url(); ?>assets/images/img.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -176,7 +205,7 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="<?php echo base_url();?>assets/images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="<?php echo base_url(); ?>assets/images/img.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
