@@ -54,11 +54,10 @@
 
                                                           </div>
                                                           <div class="x_content">
-                                                            <table id="table-CarteraInv" class="table table-condensed table-striped table-bordered table-hover" width="100%">
+                                                            <table id="table-CarteraInv" class="table table-condensed table-striped table-bordered table-hover table table-striped table-bordered nowrap" width="100%">
                                                               <thead>
                                                                  <tr>
-                                                                  <th class="col-sm-1">ID </th>
-
+                                                                  <th>ID </th>
                                                                   <th >AÑO DE APERTURA </th>
                                                                   <th >FECHA INICIO CARTERA </th>
                                                                   <th >FECHA FIN CARTERA </th>
@@ -68,6 +67,8 @@
                                                                   <th class="col-sm-1"></th>
                                                                 </tr>
                                                               </thead>
+                                                              <tbody>
+                                                              </tbody>
                                                             </table>
                                                           </div>
                                                         </div>

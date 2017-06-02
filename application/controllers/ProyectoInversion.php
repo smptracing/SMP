@@ -37,12 +37,10 @@ class ProyectoInversion extends CI_Controller {/* Mantenimiento de sector entida
         $dateFechaFuenteFinanc="2017-03-01";
         $cbxModalidadEjec=$this->input->post("id_modalidad_ejec");
         $dateFechaModalidadEjec="2017-03-01";
-      if($this->Model_ProyectoInversion->AddProyecto($cbxUnidadEjecutora,$cbxNatI,$cbxTipologiaInv,$cbxTipoInv,$cbxGrupoFunc,$cbxNivelGob,$cbxMetaPresupuestal,$cbxProgramaPres,$txtCodigoUnico,$txtNombrePip,$txtCostoPip,$txtDevengado,$dateFechaInPip,$dateFechaViabilidad,$distrito,$txtDireccionUbigeo,$txtLatitud,$txtLongitud,$cbxEstadoCicloInv,$dateFechaEstCicInv,$cbxFuenteFinanc,$dateFechaFuenteFinanc,$cbxModalidadEjec,$dateFechaModalidadEjec) == true)
+       if($this->Model_ProyectoInversion->AddProyecto($cbxUnidadEjecutora,$cbxNatI,$cbxTipologiaInv,$cbxTipoInv,$cbxGrupoFunc,$cbxNivelGob,$cbxMetaPresupuestal,$cbxProgramaPres,$txtCodigoUnico,$txtNombrePip,$txtCostoPip,$txtDevengado,$dateFechaInPip,$dateFechaViabilidad,$distrito,$txtDireccionUbigeo,$txtLatitud,$txtLongitud,$cbxEstadoCicloInv,$dateFechaEstCicInv,$cbxFuenteFinanc,$dateFechaFuenteFinanc,$cbxModalidadEjec,$dateFechaModalidadEjec) == true)
           echo "Se añadio un proyecto";
         else
           echo "Se añadio  un proyecto";  
-         // echo json_encode($ubigeo);*/
-         // echo $cbxTipoInv;
       }
       else
       {
