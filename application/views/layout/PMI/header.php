@@ -33,7 +33,15 @@
     <link href="<?php echo base_url();?>assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url();?>assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url();?>assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
-      
+
+    <link href="<?php echo base_url();?>assets/vendors/animate/animate.min.css" rel="stylesheet">
+
+
+  <style>
+   #ProgramacionHorizontal{
+      width: 100% !important;
+    }
+  </style>
      <script>
     var base_url = '<?php echo base_url(); ?>';  
     </script>

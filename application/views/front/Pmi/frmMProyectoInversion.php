@@ -24,9 +24,10 @@
 
                                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
                                       <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-                                        <li role="presentation" class="active"><a  href="#tab_brecha" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Proyecto Inversion</a>
+                                        <li role="presentation"  class="active"><a  href="#tab_brecha" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>Proyecto Inversion</a>
                                         </li>
-                                        <li role="presentation" class=""><a  href="#tab_programacion" id="profile-tab" role="tab" data-toggle="tab" aria-expanded="true"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Programación</a>
+                                         <!--<li role="presentation" class=""><a  href="#tab_programacion" id="profile-tab" role="tab" data-toggle="tab" aria-expanded="true"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Programación</a>
+                                        </li>-->
                                       </ul>
                                       <div id="myTabContent" class="tab-content">
                                            <!-- /panel de brechas desde el row -->
@@ -37,7 +38,8 @@
                                                   <div class="col-md-12 col-sm-12 col-xs-12">
                                                         <div class="x_panel">
                                                             <button id="btn-NuevoProyectoI" type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraPIP">  <span class="fa fa-plus-circle"></span> Nuevo </button>
-                                                         <button id="btn-Importar" type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaImportar">  <span class="fa fa-plus-circle"></span> Importar Excel </button>
+                                                            <button id="btn-Importar" type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaImportar">  <span class="fa fa-plus-circle"></span> Importar Excel </button>
+
                                                           <div class="x_title">
                                                 
                                                             <ul class="nav navbar-right panel_toolbox">
@@ -58,43 +60,42 @@
                                                                          <a href="" class="toggle-visVer" data-column="10" > <span class="fa fa-angle-double-right"></span> Ver Todo</a>
                                                                          <a href="" class="toggle-visRestablecer" data-column="10"><span class="fa fa-angle-double-left"></span> Retablecer</a>
                                                               </div>
-                                                        <table id="table-ProyectoInversionProgramado" class="table table-striped table-bordered table-hover table-responsive" ellspacing="0" width="100%">
+                                                        <table id="table-ProyectoInversionProgramado" class="table table-striped table-bordered table-hover table-responsive display  compact " ellspacing="0" width="100%">
                                                               <thead>
                                                                 <tr>
-                                                                  <th class="col-sm-1">ID</th>
-                                                                  <th class="col-sm-1">CÓDIGO ÚNICO </th>
-                                                                  <th class="col-sm-1">NOMBRE DE INVERSIÓN</th>
-                                                                  <th class="col-sm-1">MONTO DE  INVERSIÓN</th>
-                                                                  <th class="col-sm-1">TIPO DE  INVERSIÓN</th>
-                                                                  <th class="col-sm-1">CICLO DE  INVERSIÓN</th>
-                                                                  <th class="col-sm-1">NATURALEZA</th>
-                                                                  <th class="col-sm-1">PRIORIDAD</th>                                                                  
-                                                                  <th class="col-sm-1">DEVENGADO </th>
-                                                                  <th class="col-sm-1"><div id="programacion1">2018</div></th>
-                                                                  <th class="col-sm-1"><div id="programacion2">2019</div></th>
-                                                                  <th class="col-sm-1"><div id="programacion3">2020</div></th>
-                                                                  <th class="col-sm-1">FECHA REGISTRO</th>
-                                                                  <th class="col-sm-1">FECHA DE VIABILIDAD</th>
-                                                                  <th class="col-sm-1">TIPOLOGÍA</th>
-                                                                  <th class="col-sm-1">NATURALEZA</th>
-                                                                  <th class="col-sm-1">NIVEL DE GOBIERNO</th>
-                                                                  <th class="col-sm-1">PRIORIDAD</th>
-                                                                  <th class="col-sm-1">U. EJECUTORA</th>
-                                                                  <th class="col-sm-1">DEPARTAMENTO</th>
-                                                                  <th class="col-sm-1">PROVINCIA</th>
-                                                                  <th class="col-sm-1">DISTRITO</th>
-                                                                  <th class="col-sm-1">FUNCIÓN</th>
-                                                                  <th class="col-sm-1">DIVISIÓN FUNCIONAL</th>
-                                                                  <th class="col-sm-1">GRUPO FUNCIONAL</th>
-                                                                  <th class="col-sm-1">PIN AÑO ACTUAL</th>
-                                                                  <th class="col-sm-1">FUENTE FINAN</th>
-                                                                  <th class="col-sm-1">RUBRO</th>
-                                                                  <th class="col-sm-1">FUENTE FINAN 2</th>
-                                                                  <th class="col-sm-1">RUBRO 2</th>
-                                                                  <th class="col-sm-1">MOD. EJECUCIÓN</th>
-                                                                  <th class="col-sm-1">SERVICIO PÚBLICO ASOCIADO</th>
-                                                                  <th class="col-sm-1">BRECHA</th>
-                                                                  <th class="col-sm-1">PROGRAMA PRESUPUESTAL</th>
+                                                                  <th class="col-sm-1">Id</th>
+                                                                  <th class="col-sm-1"><center>Código Único</center></th>
+                                                                  <th class="col-sm-1"><center>Ciclo de Inversión</center></th>                                                                  
+                                                                  <th class="col-sm-1"><center>Inversión</center></th>
+                                                                  <th class="col-sm-1"><center>Prioridad</center></th>   
+                                                                  <th class="col-sm-1"><center>Brecha</center></th>                                                               
+                                                                  <th class="col-sm-1"><center><div id="programacion1">2018</center></div></th>
+                                                                  <th class="col-sm-1"><center><div id="programacion2">2019</center></div></th>
+                                                                  <th class="col-sm-1"><center><div id="programacion3">2020</center></div></th>
+
+                                                                  <th class="col-sm-1"><center><div id="programacion1">2018</center></div></th>
+                                                                  <th class="col-sm-1"><center><div id="programacion2">2019</center></div></th>
+                                                                  <th class="col-sm-1"><center><div id="programacion3">2020</center></div></th>
+
+                                                                  <th class="col-sm-1"><center> Tipo de Inversión</center></th>
+                                                                  <th class="col-sm-1"><center>Tipología</center></th>
+                                                                  <th class="col-sm-1"><center>Naturaleza</center></th>
+                                                                  <th class="col-sm-1"><center>Nivel de Gobierno</center></th>
+                                                                  <th class="col-sm-1"><center>U.Ejecutora</center></th>
+                                                                  <th class="col-sm-1"><center>Provincias</center></th>
+
+                                                                  <th class="col-sm-1"><center>Ubicación</center></th>
+                                                                  <th class="col-sm-1">Función</th>
+                                                                  <th class="col-sm-1">División Funcional</th>
+                                                                  <th class="col-sm-1">Grupo Funcional</th>
+                                                                  <th class="col-sm-1">Costo Inversión</th>
+                                                                  <th class="col-sm-1">PIM Año Actual</th>
+                                                                  <th class="col-sm-1">Servicio</th>
+                                                                  <th class="col-sm-1">Brecha Asociada</th>
+                                                                  <th class="col-sm-1">Programa pres</th>
+                                                                  <th class="col-sm-1">Fecha Registro</th>
+                                                                  <th class="col-sm-1">Fecha Viabilidad</th>
+                                                                 
                                                                   <th class="col-sm-1"></th>
                                                                 </tr>
                                                               </thead>
@@ -111,13 +112,14 @@
                                                   <button  type="submit" class="btn btn-primary">  <span class="fa fa-file-text"></span> Exportar exel</button>
                                                                   
                                                 </form>
+
                                         </div>
                                            <!-- / fin panel de brechas desde el row -->
                                           
                                           <div role="tabpanel" class="tab-pane fade" id="tab_programacion" aria-labelledby="profile-tab">
                            
                                               <div class="x_content">
-                                                            <table id="table-modificarprogramacion" class="table table-striped table-bordered table-hover table-responsive" ellspacing="0" width="100%">
+                                                            <table id="table-modificarprogramacion" class="ui celled table nowrap" ellspacing="0" width="100%">
                                                               <thead>
                                                                 <tr>
                                                                   <th class="col-sm-1">ID</th>
@@ -131,7 +133,6 @@
                                                                   <th class="col-sm-1">AÑO PROGRAMADO</th>
                                                                   <th class="col-sm-1">PRIORIDAD</th>
                                                                   <th class="col-sm-1">MONTO OPERACIÓN Y MANTENIMIENTO</th>
-                                                                  <th class="col-sm-1">TIPO PROGRAMADO</th>
                                                                   <th class="col-sm-1"></th>
                                                                 </tr>
                                                               </thead>      
@@ -151,7 +152,7 @@
         </div>
      </div>
         
-
+<!-- modal -->
 
 
 <!-- /.ventana para registra un nuevo PIP -->     
@@ -177,181 +178,234 @@
                           <div class="tab-content">
                             <div role="tabpanel" class="tab-pane active fade in" id="first">
                                    <form class="form-horizontal " id="form-addProyectoInversion" action="<?php echo  base_url();?>MProyectoInversion/AddProyectoInversion" method="POST" >
-                
-                                    <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Codigo unico<span class="required">*</span>
-                                        </label>
-                                        <div class="col-md-4 col-sm-4 col-xs-12">
-                                          <input id="txtCodigoUnico" name="txtCodigoUnico" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Codigo Unico" required="required" type="text">
-                                        </div>
+                                   <br>
+
+                                    <div class="row">
+                                      <div class="col-md-6">
+                                       <div class="col-md-7 col-sm-6 col-xs-12">
+                                            <label for="name">Codigo Único<span class="required">*</span>
+                                            </label>
+                                                  <input id="txtCodigoUnico" name="txtCodigoUnico"  class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Codigo Unico" required="required" type="text">
+                                             </div>
+                                      </div>
                                     </div>
-                                    <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Tipo de inversion</span>
+                                    <br>
+                                    <div class="row">
+                                      <div class="col-md-4">
+                                        
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label  for="name">Tipo inversion<span class="required">*</span>
                                         </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
                                             <select id="cbxTipoInv" name="cbxTipoInv" class="selectpicker" data-live-search="true"  title="Elija tipo de inversion">
                                             </select>
-                                        </div>
-                                    </div>
-                                    <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Ciclo de inversion</span>
-                                            </label>
+                                         </div>
+                                      </div>
+                                      <div class="col-md-4">
+                                      
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <select id="cbxEstadoCicloInv" name="cbxEstadoCicloInv" class="selectpicker" data-live-search="true"  title="Elija el estado ciclo de inversion">
-                
+                                             <label for="textbox"><span class="required">Ciclo de Inversion</span>
+                                        </label>
+                                             <select id="cbxEstadoCicloInv" name="cbxEstadoCicloInv" class="selectpicker" data-live-search="true"  title="Elija el estado ciclo de inversion">
                                                </select>
                                             </div>
-                                    </div>
-                                    <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Tipologia de inversion</span>
-                                        </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select id="cbxTipologiaInv" name="cbxTipologiaInv" class="selectpicker" data-live-search="true"  title="Elija tipologia">
+                                      </div>
+                                       <div class="col-md-4">
+                         
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                               <label  for="textbox"><span class="required">Tipologia de Inversion</span>
+                                                </label>
+                                               <select id="cbxTipologiaInv" name="cbxTipologiaInv" class="selectpicker" data-live-search="true"  title="Elija tipologia">
+                                               </select>
+                                            </div>
+                                      </div>
+                              </div>
+                           
+                                    <hr>
+                                 <div class="row">
 
+                                      <div class="col-md-12">
+                                       NOMBRE DE INVERSION
+                                        <label class="control-label col-md-5 col-sm-5 col-xs-12" for="name"><span class="required"></span>
+                                        </label>
+                                         <div class="col-md-12 col-sm-12 col-xs-12">
+                                          <input id="txtNombrePip" name="txtNombrePip"  height="20´px" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Nombre Inversion" required="required" type="text">
+                                            <!--<textarea  id="txtNombrePip" name="txtNombrePip" class="form-control" data-validate-length-range="6" data-validate-words="2" placeholder="Nombre Inversion"></textarea>-->
+                                        </div>
+                                      </div>
+                                     
+                                 </div>
+                              <hr>
+                               <div class="row">
+                                      <div class="col-md-4">
+                                        
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label  for="name">Naturaleza<span class="required">*</span>
+                                        </label>
+                                            <select id="cbxNatI" name="cbxNatI" class="selectpicker" data-live-search="true"  title="Elija Naturaleza">
                                             </select>
-                                        </div>
-                                     </div>
-                                    <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Naturaleza</span>
+                                         </div>
+                                      </div>
+                                      <div class="col-md-4">
+                                      
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                             <label  for="textbox"><span class="required">Nivel de Gobierno</span>
                                         </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select id="cbxNatI" name="cbxNatI" class="selectpicker" data-live-search="true"  title="Elija tipologia">
-                                            </select>
-                                        </div>
-                                     </div>
-                                    <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre Inversion<span class="required">*</span>
-                                        </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                          <textarea  id="txtNombrePip" name="txtNombrePip" class="form-control" data-validate-length-range="6" data-validate-words="2" placeholder="Nombre Inversion" required="required"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Nivel de gobierno</span>
-                                        </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
                                             <select id="cbxNivelGob" name="cbxNivelGob" class="selectpicker" data-live-search="true"  title="Elija nivel de gobierno">
-          
                                             </select>
-                                        </div>
-                                     </div>
-                                     <div class="item form-group">
-                                          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Unidad Ejecutora</span>
-                                          </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select id="cbxUnidadEjecutora"  name="cbxUnidadEjecutora" class="selectpicker" data-live-search="true"  title="Elija Unidad Ejecutora">
-                                            
-                                            </select>
-                                        </div>
-                                     </div> 
-                                     <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Departamento*  </span>
-                                            </label>
-                                          <div class="col-md-6 col-sm-6 col-xs-12">
-                                              <select id="departamento" name="departamento" class="selectpicker" data-live-search="true"  title="Seleccione un Departamento">
+                                            </div>
+                                      </div>
+                                       <div class="col-md-4">
+                         
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                               <label  for="textbox"><span class="required">Unidad Ejecutora</span>
+                                                </label>
+                                                <select id="cbxUnidadEjecutora"  name="cbxUnidadEjecutora" class="selectpicker" data-live-search="true"  title="Elija Unidad Ejecutora">
+                                                </select>
+                                            </div>
+                                      </div>
+                              </div>
+ 
+                               <div class="row">
+
+                                      <div class="col-md-4">
+                                        
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label for="name">Departamento<span class="required">*</span>
+                                        </label>
+                                             <select id="departamento" name="departamento" class="selectpicker" data-live-search="true"  title="Seleccione un Departamento">
 
                                               </select>
-                                          </div>
-                                        </div>
-
-                                         <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Provincia*  </span>
-                                            </label>
-                                          <div class="col-md-6 col-sm-6 col-xs-12">
+                                         </div>
+                                      </div>
+                                      <div class="col-md-4">
+                                      
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                             <label for="textbox"><span class="required">Provincia</span>
+                                        </label>
                                               <select  id="provincia"  name="provincia" class="selectpicker" multiple title="Seleccione una o mas provincias" data-live-search="true">
                                               </select>
-                                          </div>
-                                        </div>
-
-                                         <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Distrito*  </span>
-                                            </label>
-                                          <div class="col-md-6 col-sm-6 col-xs-12">
+                                            </div>
+                                      </div>
+                                       <div class="col-md-4">
+                         
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                              <label  for="textbox"><span class="required">Distrito</span>
+                                              </label>
                                               <select name="distrito" id="distrito"  class="selectpicker"  multiple title="Seleccione una o distritos">
-
                                               </select>
                                               <input type="hidden" id="distritosM" name="distritosM" multiple title="Seleccione Provincia" data-live-search="true">
-                                          </div>
-                                        </div> 
-                                    <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Funcion</span>
-                                        </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select id="cbxFuncion" name="cbxFuncion" class="selectpicker" data-live-search="true"  title="Elija una funcion">
-                                            </select>
-                                        </div>
-                                     </div> 
-                                     <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Division Funcional</span>
-                                        </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select id="cbxDivFunc" name="cbxDivFunc" class="selectpicker" data-live-search="true"  title="Elija division funcional">
-                                            </select>
-                                        </div>
-                                     </div>   
-                                     <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Grupo Funcional</span>
-                                        </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select id="cbxGrupoFunc" name="cbxGrupoFunc" class="selectpicker" data-live-search="true"  title="Elija grupo funcional">
-                                            </select>
-                                        </div>
-                                     </div>
-                                      <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Costo Inversion<span class="required">*</span>
-                                        </label>
-                                        <div class="col-md-4 col-sm-4 col-xs-12">
-                                          <input id="txtCostoPip" name="txtCostoPip" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Costo de inversion" required="required" type="text">
-                                        </div>
-                                    </div>
-                                     <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Devengado<span class="required">*</span>
-                                        </label>
-                                        <div class="col-md-4 col-sm-4 col-xs-12">
-                                          <input id="txtDevengado" name="txtDevengado" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Devengado" required="required" type="text">
-                                        </div>
-                                    </div>
-                                      <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Meta Presupuestal/PIM</span>
-                                        </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select id="cbxMetaPresupuestal" name="cbxMetaPresupuestal" class="selectpicker" data-live-search="true"  title="Elija Meta Presupuestal">
-                                                 
-                                            </select>
-                                        </div>
-                                     </div>
-                                     <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Fuente de financiamiento</span>
-                                            </label>
+                                            </div>
+                                      </div>
+                              </div>
+
+                               <div class="row">
+                               
+                                      <div class="col-md-4">
+                                        
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <select id="cbxFuenteFinanc" name="cbxFuenteFinanc" class="selectpicker" data-live-search="true"  title="Elija fuente de financiamiento">
+                                            <label for="name" style="text-align:left">Funcion<span class="required">*</span>
+                                        </label>
+                                             <select id="cbxFuncion" name="cbxFuncion" class="selectpicker" data-live-search="true"  title="Elija una funcion">
+                                             </select>
+                                         </div>
+                                      </div>
+                                      <div class="col-md-4">
+                                      
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                             <label  for="textbox"><span class="required">Division</span>
+                                        </label>
+                                               <select id="cbxDivFunc" name="cbxDivFunc" class="selectpicker" data-live-search="true"  title="Elija division funcional">
+                                            </select>
+                                            </div>
+                                      </div>
+                                       <div class="col-md-4">
+                         
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                          <label for="textbox"><span class="required">Grupo</span>
+                                        </label>
+                                                <select id="cbxGrupoFunc" name="cbxGrupoFunc" class="selectpicker" data-live-search="true"  title="Elija grupo funcional">
+                                            </select>
+                                            </div>
+                                      </div>
+                              </div>
+                     
+                                  <hr>
+                                   <div class="row">
+                                      <div class="col-md-4">
+                                        
+                                            <div class="col-md-11 col-sm-6 col-xs-12">
+                                            <label  for="name">Costo de Inversion<span class="required">*</span>
+                                        </label>
+                                            <input id="txtCostoPip" name="txtCostoPip" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Costo de inversion" required="required" type="text">
+                                         </div>
+                                      </div>
+                                      <div class="col-md-4">
+                                      
+                                            <div class="col-md-11 col-sm-6 col-xs-12">
+                                             <label for="textbox"><span class="required">Devengado</span>
+                                             </label>
+                                             <input id="txtDevengado" name="txtDevengado" class="form-control col-md-7 col-xs-7" data-validate-length-range="6" data-validate-words="2" placeholder="Devengado" required="required" type="text">
+                                            </div>
+                                      </div>
+                                       <div class="col-md-4">
+                         
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                               <label  for="textbox"><span class="required">PIM</span>
+                                                </label>
+                                                 <select id="cbxMetaPresupuestal" name="cbxMetaPresupuestal" class="selectpicker" data-live-search="true"  title="Elija PIM">  
+                                                 </select>
+                                            </div>
+                                      </div>
+                              </div>
+ 
+                                  <div class="row">
+                                      <div class="col-md-4">
+                                        
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label  for="name">Fuente Financiamiento<span class="required">*</span>
+                                            </label>
+                                            <select id="cbxFuenteFinanc" name="cbxFuenteFinanc" class="selectpicker" data-live-search="true"  title="Elija fuente de financiamiento">
+                                            </select>
+                                         </div>
+                                      </div>
+                                      <div class="col-md-4">
+                                      
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                             <label for="textbox"><span class="required">Rubro Ejecucion</span>
+                                             </label>
+                                              <select id="cbxRubro" name="cbxRubro" class="selectpicker" data-live-search="true"  title="Elija Rubro">
+                                              </select>
+                                            </div>
+                                      </div>
+                                       <div class="col-md-4">
+                         
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                               <label  for="textbox"><span class="required">Modalidad</span>
+                                                </label>
+                                                 <select id="cbxModalidadEjec" name="cbxModalidadEjec" class="selectpicker" data-live-search="true"  title="Elija Modalidad de Ejecucion">
                                                 </select>
                                             </div>
-                                     </div>
-                                      <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Rubro </span>
-                                            </label>
+                                      </div>
+                              </div>
+                               <div class="row">
+                                      <div class="col-md-4">
+                                        
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <select id="cbxRubro" name="cbxRubro" class="selectpicker" data-live-search="true"  title="Elija Rubro">
-                                                </select>
-                                            </div>
-                                     </div>
-                                     <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Modalidad de Ejecucion</span>
+                                            <label  for="name">Programa<span class="required">*</span>
                                             </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <select id="cbxModalidadEjec" name="cbxModalidadEjec" class="selectpicker" data-live-search="true"  title="Elija Modalidad de Ejecucion">
-                                                </select>
-                                            </div>
-                                        </div>
-                                      <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Programa presupuestal</span>
-                                        </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select id="cbxProgramaPres" name="cbxProgramaPres" class="selectpicker" data-live-search="true"  title="Elija Programa presupuestal">
+                                              <select id="cbxProgramaPres" name="cbxProgramaPres" class="selectpicker" data-live-search="true"  title="Elija Programa presupuestal">
                                             </select>
-                                        </div>
-                                     </div>
+                                         </div>
+                                      </div>
+                                      <div class="col-md-4">
+                                      
+                                        
+                                      </div>
+                                       <div class="col-md-4">
+                         
+                                      </div>
+                              </div>
+
                             <!--
                                      <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Fecha Registro pip<span class="required">*</span>
@@ -423,10 +477,10 @@
                                 <form class="form-horizontal " id="form-addProgramacion" action="<?php echo  base_url();?>Programacion/AddProgramacion" method="POST" >
                                  
                                      <div class="item form-group">
-                                          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Cartera</span>
-                                          </label>
+                                         <!-- <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Cartera</span>
+                                          </label>-->
                                         <div class="col-md-4 col-sm-4 col-xs-12">
-                                            <input type="text" id="txtCartera" name="txtCartera" class="form-control col-md-5 col-xs-5" disabled>
+                                            <input type="hidden" id="txtCartera" name="txtCartera" class="form-control col-md-5 col-xs-5" disabled>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                           <input id="textidCartera" name="textidCartera" type="hidden" class="form-control col-md-7 col-xs-5" >
                                         </div>
@@ -482,13 +536,13 @@
                                             <button id="btn-ProgramarOperacMante" type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaMontoOperacionMant"> >> Agregar</button>
                                         </div>
                                     </div>
-                                    <div class="item form-group">
+                                   <!-- <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Tipo<span class="required">*</span>
                                         </label>
                                         <div class="col-md-4 col-sm-4 col-xs-12">
                                           <input id="txtTipo" name="txtTipo" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Tipo" required="required" type="text">
                                         </div>
-                                    </div>
+                                    </div>-->
                                     <table id="table-Programacion" class="table table-striped table-bordered table-hover table-responsive" ellspacing="0" width="100%">
                                                               
                                    </table>   
@@ -515,6 +569,7 @@
     </div>
   </div>
 <!-- /.fin ventana para registra una PIP-->
+
 
 <!--PROGRAMAR MONTOS PROGRAMADOS Y MONTOS DE OPERACION Y MANTENIMIENTO -->
     <!--ventana montos programados -->
@@ -618,6 +673,36 @@
      <!-- ventana para programar montos de operacion y mantenimiento -->
 
 <!-- /.FIN PARA PROGRAMAR MONTOS PROGRAMADOS Y MONTOS DE OPERACION Y MANTENIMIENTO -->
+<!-- PARA LISTAR LA PROGRAMACION EN HORIZONTAL CADA UNA -->
+<div id="VerDetallehorizontal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content" id="ProgramacionHorizontal">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Detalle de programación</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+            <div class="table-responsive">    
+
+              <table id="DetalleProgramacionHori" style="overflow-y:scroll;" class="table table-bordered table-hover table-striped table-inverse table-sm" ellspacing="0" width="100%">
+                
+              </table>
+              
+        </div>
+      </div>    
+    
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerra</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- FIN PARA LISTAR LA PROGRAMACION EN HORIZONTAL CADA UNA -->
 
 <!-- /.Inicio Modificar  proyecto programado-->
 
@@ -705,7 +790,7 @@
 <!-- /.Fin Modificar proyecto prgramado-->
 <!--.ventana importar-->
 <div class="modal fade" id="VentanaImportar" role="dialog">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -763,8 +848,7 @@
                 <table id="table-detalleProyectoInversion" class="table table-bordered table-hover table-sm" width="100%" border="0"  cellpadding="10" >
                   
                 </table>
-              <CENTER><H4><strong>PROGRAMACIÓN</strong></H4></CENTER>
-              
+   
                 <table id="table-detalleProgramacion" class="table table-bordered table-hover table-sm" width="100%" >
                   
                 </table>
@@ -781,4 +865,7 @@
     </div>
   </div>
 <!-- /.VER DETALLE DE PROYECTO->
+<!- /.VER EN VERTICAR DETALLE DE CADA PROYECTO-->   
+
+
  

@@ -9,9 +9,9 @@ class Model_Programacion extends CI_Model
 
           }
       //AGREGAR UN PROYECTO
-      function AddProgramacion($textidCartera,$cbxBrecha,$textidpip,$txtPrioridadProg,$txtTipo)
+      function AddProgramacion($textidCartera,$cbxBrecha,$textidpip,$txtPrioridadProg)
         {
-           $this->db->query("execute sp_Programacion_c'".$textidCartera."','".$cbxBrecha."','".$textidpip."','".$txtPrioridadProg."','".$txtTipo."'");
+           $this->db->query("execute sp_Programacion_c'".$textidCartera."','".$cbxBrecha."','".$textidpip."','".$txtPrioridadProg."'");
             if ($this->db->affected_rows() > 0) 
               {
                 return true;
@@ -56,9 +56,9 @@ class Model_Programacion extends CI_Model
              }
         }
     //FIN AGREGAR UN PROYECTO
-         function GetProgramacion()
+         function GetProgramacion($valor)
         {
-            $ProyectoInversion=$this->db->query("execute sp_ListarProyectoProgramacion");//listar proyecto de programacion
+            $ProyectoInversion=$this->db->query("execute sp_ListarProyectoProgramacion '".$valor."'");//listar proyecto de programacion
             return $ProyectoInversion->result();
         }
 
@@ -75,9 +75,9 @@ class Model_Programacion extends CI_Model
             return $Programacion->result();
         }
         //exporatr exel de la programaci
-         function ExelProgramacionProyectos()
+         function ExelProgramacionProyectos($valor)
         {
-            $ProyectoInversion=$this->db->query("execute sp_ListarProyectoProgramacion");//listar excel dde programacion
+            $ProyectoInversion=$this->db->query("execute sp_ListarProyectoProgramacion'".$valor."'");//listar excel dde programacion
             return $ProyectoInversion->result();
         }
         function UpdateProgramacion($opcion,$id_prog,$id_cartera,$id_brecha,$id_pi,$monto_prog,$año_prog,$prioridad_prog,$monto_opera_mant_prog,$tipo_prog)

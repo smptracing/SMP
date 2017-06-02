@@ -1,8 +1,18 @@
  $(document).on("ready" ,function(){           
             //Inicio cargar combo unidad ejecutora
+           //PARA LIMPIAR LOS DATOS DE LOS MODALES
+                  //listar();
+
+                 $('.modal').on('hidden.bs.modal', function(){ 
+                  $(this).find('form')[0].reset(); //para borrar todos los datos que tenga los input, textareas, select.
+                  $("label.error").remove();  //lo utilice para borrar la etiqueta de error del jquery validate
+                });
+             //FIN PARA LIMPIAR LOS DATOS DE LOS MODALES
+
             listaMontosTemporales();
             listaProyectoIprogramadoA();//para mostrar y actualizar
             listaProyectoIprogramado();/*llamar proyecto de inversion programado*/
+
 
              $("#btn-siguiente").click(function()//para que cargue el como una vez echo click sino repetira datos
                     {
@@ -20,7 +30,7 @@
                     var nombre_pi=$("#txtNombrePip").val();
                     var costo_pi=$("#txtCostoPip").val();
                     var devengado_ac_pi=$("#txtDevengado").val();
-                    var distrito=$("#distritoM").val();
+                    var distrito=$("#distritosM").val();
                     var id_estado_ciclo=$("#cbxEstadoCicloInv").val();
                     var id_fuente_finan=$("#cbxFuenteFinanc").val();
                     var id_modalidad_ejec=$("#cbxModalidadEjec").val();
@@ -68,6 +78,8 @@
                     });
                     $('#form-addProgramacion')[0].reset();
                     $('#VentanaRegistraPIP').modal("hide");
+                    $('#table-ProyectoInversionProgramado').dataTable()._fnAjaxUpdate();//programacion  
+
                 }); 
                 //Actualizar programacion
                 $("#form-ActualizarProgramacion").submit(function(event)
@@ -120,6 +132,7 @@
                               alert(respuesta);     
                             }
                           });
+                   
                    listaMontosTemporales();
                   //$('#table-Programacion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion  
 
@@ -142,6 +155,7 @@
                               alert(respuesta);     
                             }
                           });
+                   listaProyectoIprogramado();
                   $('#table-Programacion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
                 });
           //FIN GUARDAR LOS MONTOS PROGRAMADOS DE OPERACION Y MANTENIMIENTO EN UNA TABLA TEMPORAL    
@@ -257,6 +271,10 @@ var suma=1;
                     var table=$("#table-ProyectoInversionProgramado").DataTable({
                      "processing":true,
                      "serverSide":false,
+                      "scrollY": 350,
+                      "scrollX": true,
+                      "scrollCollapse": true,
+                      "paging":         true,
                      destroy:true,
                          "ajax":{
                                     "url":base_url+"index.php/Programacion/GetProgramacion",
@@ -264,50 +282,67 @@ var suma=1;
                                     "dataSrc":""
                                     },
                                 "columns":[
-                                    {"data":"id_pi"},
-                                    {"data":"codigo_unico_pi"},
-                                    {"data":"nombre_pi"},
-                                    {"data":"costo_pi"},
-                                    {"data":"nombre_tipo_inversion"},
+                                    {"data":"id_pi","visible":false},
+                                    {"data":"codigo_unico_pi",  
+                                    "mRender": function ( data, type, full ) {
+                                     return '<a style="font-weight:normal;font-size:15" type="button" class="Verdetalle btn btn-link" data-toggle="modal" data-target="#VerDetallehorizontal" href="/codigo_unico_pi/' + data + '">' + data+ '</a>';
+                                      }
+                                                  
+                                    },
                                     {"data":"nombre_estado_ciclo"},
-                                    {"data":"nombre_naturaleza_inv"},
+                                    {"data":"nombre_pi"},
                                     {"data":"prioridad_prog"},
-                                    {"data":"devengado_ac_pi"},
-                                    {"data":"2018-01-01"},
-                                    {"data":"2019-01-01"},
-                                    {"data":"2020-01-01"},                                   
-                                    {"data":"fecha_registro_pi"},
-                                    {"data":"fecha_viabilidad_pi"},
+                                    {"data":"nombre_brecha"},
+                                    {"data":"Inv_2018"},
+                                    {"data":"Inv_2019"},
+                                    {"data":"Inv_2020"},
+
+                                    {"data":"OyM_2018"},
+                                    {"data":"OyM_2019"},
+                                    {"data":"OyM_2020"},
+
+                                    {"data":"nombre_tipo_inversion","visible":false},
                                     {"data":"nombre_tipologia_inv","visible":false},
-                                    {"data":"nombre_nivel_gob","visible":false},
+                                    {"data":"nombre_naturaleza_inv","visible":false},
+                                    {"data":"nombre_nivel_gob","visible":false},                                   
                                     {"data":"nombre_ue","visible":false},
-                                    {"data":"departamento","visible":false},
-                                    {"data":"provincia","visible":false},
-                                    {"data":"distrito","visible":false},
+                                    {"data":"provincias","visible":false},
+
+                                    {"data":"distritos","visible":false},
+
                                     {"data":"nombre_funcion","visible":false},
                                     {"data":"nombre_div_funcional","visible":false},
                                     {"data":"nombre_grup_funcional","visible":false},
-                                    {"data":"devengado_ac_pi","visible":false},//QUE ES PIN AÑO ACTUAL PREGUNTAR
-                                    {"data":"nombre_fuente_finan","visible":false},
-                                    {"data":"nombre_rubro","visible":false},
-                                    {"data":"nombre_fuente_finan","visible":false},//ACA VA FUENTE FINAN DOS Y ES CAMPO VACIO
-                                    {"data":"nombre_rubro","visible":false},//ACA ES RUBRO 2 
-                                    {"data":"nombre_modalidad_ejec","visible":false},
+
+                                    {"data":"costo_pi","visible":false},
+                                    {"data":"pim_meta_pres","visible":false},
                                     {"data":"nombre_serv_pub_asoc","visible":false},
                                     {"data":"nombre_brecha","visible":false},
                                     {"data":"nombre_programa_pres","visible":false},
-                                    {"data":"nombre_sector","visible":false},
-                                    {"data":"nombre_entidad","visible":false},
+                                    {"data":"fecha_registro_pi","visible":false},
+                                    {"data":"fecha_viabilidad_pi","visible":false},
 
-                                    {"defaultContent":"<button type='button' class='VerProyecto btn btn-success btn-xs' data-toggle='modal' data-target='#VerDetalleProyectoInversion'>Ver Detalle</button>"}
+                                    {"defaultContent":"<button type='button' class='VerProyecto btn btn-success btn-xs' data-toggle='modal' data-target='#VerDetalleProyectoInversion'>Ver Ficha</button>"}
 
                                 ],
 
                                 "language":idioma_espanol
-                    }); 
+
+                                                                
+
+                    });
+                     setInterval( function () {
+                                  table.ajax.reload( null, false ); // user paging is not reset on reload
+                              }, 30000 ); 
+                      /*$('#table-ProyectoInversionProgramado tbody').on('click', 'tr', function () {
+                            var data = table.column(this).data();
+                            var txt_IdfuncionM=data.codigo_unico_pi;
+                            alert(txt_IdfuncionM);
+                        } );*/
 
                      
                      ListaProyectoInversionData("#table-ProyectoInversionProgramado",table);  //obtener data de funcion para agregar  AGREGAR    
+                     Listahorizontal("#table-ProyectoInversionProgramado",table);  //obtener data de funcion para agregar  AGREGAR 
 
                       $('a.toggle-visVer').on( 'click', function (e) 
                         {
@@ -315,7 +350,7 @@ var suma=1;
                                 var column =table.column( $(this).attr('data-column'));
                                 console.log(column);
                                 column.visible(!column.visible() );
-                                for (var i =10; i <= 32; i++) {
+                                for (var i =8; i <= 35; i++) {
                                   table.column(i).visible( true );
                                 }
                               
@@ -327,7 +362,7 @@ var suma=1;
                                 var column =table.column( $(this).attr('data-column'));
                                 console.log(column);
                                 column.visible(!column.visible() );
-                               for (var i =10; i <= 32; i++) {
+                               for (var i =13; i <= 35; i++) {
                                   table.column(i).visible( false );
                                 }
                          } ); 
@@ -355,7 +390,6 @@ var listaProyectoIprogramadoA=function()//para actualizar programacion
                                     {"data":"año_prog"},
                                     {"data":"prioridad_prog"},
                                     {"data":"monto_opera_mant_prog"},
-                                    {"data":"tipo_prog"},
                                     {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#ModificarProgramacion'>Editar</button>"}
                                 ],
 
@@ -386,20 +420,208 @@ var listaProyectoIprogramadoA=function()//para actualizar programacion
                           });
                       }
 
+                    //para poder ver la programacion en horizontal programacion
+                    var Listahorizontal=function(tbody,table){
+                      
+                       $(tbody).on("click","a.Verdetalle",function(){
+                        var data=table.row( $(this).parents("tr")).data();
+                        //var CodigoUnicoH=$("#CodigoUnicoH").val(data.codigo_unico_pi);
+                         html="";
+                         var progr = new Array();
+                          progr.length=0;
+                            $("#CodigoUnicoH").append("");
+                            $("#CodigoUnicoH").append(data.codigo_unico_pi);
+                            $("#nombre_estado_cicloH").append("");
+                            $("#nombre_estado_cicloH").append(data.nombre_estado_ciclo);
+                           
+                              progr[0]=data.codigo_unico_pi;
+                              progr[1]=data.nombre_tipo_inversion;
+                              progr[2]=data.nombre_estado_ciclo;
+                              progr[3]=data.nombre_tipologia_inv;
+                              progr[4]=data.nombre_naturaleza_inv;
+                              progr[5]=data.nombre_pi;
+                              progr[6]=data.nombre_nivel_gob;
+                              progr[7]=data.prioridad_prog;
+                              progr[8]=data.nombre_ue;
+                              progr[9]="Apúrimac";
+                              progr[10]=data.provincias;
+                              progr[11]=data.distritos;
+                              progr[12]=data.nombre_funcion;
+                              progr[13]=data.nombre_div_funcional;
+                              progr[14]=data.costo_pi;
+                              progr[15]="";
+                              progr[16]="0.0";
+                              progr[17]="";
+                              progr[18]="";
+                              progr[19]=data.nombre_serv_pub_asoc;
+                              progr[20]=data.nombre_brecha;
+                              progr[21]=data.nombre_programa_pres;
+                              progr[22]=data.fecha_registro_pi;
+                              progr[23]=data.fecha_viabilidad_pi;
+
+                              progr[24]=data.Inv_2018;
+                              progr[25]=data.Inv_2019;
+                              progr[26]=data.Inv_2020;
+
+                              progr[27]=data.OyM_2018;
+                              progr[28]=data.OyM_2019;
+                              progr[29]=data.OyM_2020;
+
+
+
+                        //para ver yodo envio opcion 1
+                          html+="<thead> <tr><th colspan='22'><center>Detalle</center></th> <th colspan='2'><center>Programación</center></th> <th colspan='3' ><center>Programación Del Monto de Inversión</center></th>  <th colspan='3'><center>Programación del Monto de Operación y Mantenimiento</center></th></tr>" 
+                          html+="<tr> <th  class='active'><h6>Código Único </h6></th> <th class='active'><h6>Tipo De Inversión</h6></th><th class='active'><h6>Ciclo de Inversión</h6> </th><th class='active'><h6>Tipologia</h6></th> </th><th class='active'><h6>Naturaleza</h6></th> </th><th class='active'><h6>Inversión</h6></th> </th><th class='active'><h6>Nivel De Gobierno</h6></th> <th class='active'><h6>Prioridad</h6></th> <th class='active'><h6>U.Ejecutora</h6></th> <th class='active'><h6>Departamento</h6></th> <th class='active'><h6>Provicias</h6></th> <th class='active'><h6>Distritos</h6></th>  <th class='active'><h6>Función</h6></th><th class='active'><h6>Div.Funcional</h6></th> <th class='active'><h6>Costo Inversión</h6></th> <th class='active'><h6>Dev.Acum Año anterior</h6></th> <th class='active'><h6>PIM Año Actual</h6></th> <th class='active'><h6>Fuente Finan.</h6></th> <th class='active'><h6>Rubro</h6></th><th class='active'><h6>Servicio</h6></th> <th class='active'><h6>Brecha Asociada</h6></th> <th class='active'><h6>Programa Presup.</h6></th> <th class='active'><h6>Fecha Registro</h6></th> <th class='active'><h6>Fecha Viabilidad</h6></th><th class='active'><h6>2018</h6></th><th class='active'><h6>2019</h6></th><th class='active'><h6>2020</h6></th><th class='active'><h6>2018</h6></th><th class='active'><h6>2019</h6></th><th class='active'><h6>2020</h6></th></tr></thead>"
+                          html+="<tbody><tr class='warning'>";
+                          for (var i = 0; i<30; i++) {
+                          html +="<td>"+progr[i]+"</td>";
+                          };
+                          html +="</tr></tbody></table>";
+                          $("#DetalleProgramacionHori").html(html);
+
+
+
+
+
+                    });//fin para poder ver la programacion horizontal
+
+                }
+
+
                 /*fin listar proyecto de inversion  programado*/
                 var ListaProyectoInversionData=function(tbody,table){
                        $(tbody).on("click","button.VerProyecto",function(){
+                            var progrVeProgramacion = new Array();
+                             var progrVe = new Array();
+                             html="";
+                             progrVe.length=0;
+                             progrVeProgramacion.length=0;
                         var data=table.row( $(this).parents("tr")).data();
                         var Id_ProyectoInver=data.id_pi;
-                        //para ver yodo envio opcion 1
-                         var opcion=2;//para que me muestre todos los registros 
-                         console.log(Id_ProyectoInver);
-                         MostrarDetalleProyecto(Id_ProyectoInver,opcion);
-                        /*var txt_codigofuncionM=$('#txt_codigofuncionM').val(data.codigo_funcion);
-                        var txt_nombrefuncionM=$('#txt_nombrefuncionM').val(data.nombre_funcion);*/
+                              
+                            
+                              progrVe[0]=data.codigo_unico_pi;
+                              progrVe[1]=data.nombre_tipo_inversion;
+                              progrVe[2]=data.nombre_estado_ciclo;
+                              progrVe[3]=data.nombre_tipologia_inv;
+                              progrVe[4]=data.nombre_naturaleza_inv;
+                              progrVe[5]=data.nombre_pi;
+                              progrVe[6]=data.nombre_nivel_gob;
+                              progrVe[7]=data.prioridad_prog;
+                              progrVe[8]=data.nombre_ue;
+                              progrVe[9]="Apúrimac";
+                              progrVe[10]=data.provincias;
+                              progrVe[11]=data.distritos;
+                              progrVe[12]=data.nombre_funcion;
+                              progrVe[13]=data.nombre_div_funcional;
+                              progrVe[14]=data.costo_pi;
+                              progrVe[15]="";
+                              progrVe[16]="0.0";
+                              progrVe[17]="";
+                              progrVe[18]="";
+                              progrVe[19]=data.nombre_serv_pub_asoc;
+                              progrVe[20]=data.nombre_brecha;
+                              progrVe[21]=data.nombre_programa_pres;
+                              progrVe[22]=data.fecha_registro_pi;
+                              progrVe[23]=data.fecha_viabilidad_pi;
+
+
+                              
+                              progrVeProgramacion[24]=data.Inv_2018;
+                              progrVeProgramacion[25]=data.Inv_2019;
+                              progrVeProgramacion[26]=data.Inv_2020;
+
+                              progrVeProgramacion[27]=data.OyM_2018;
+                              progrVeProgramacion[28]=data.OyM_2019;
+                              progrVeProgramacion[29]=data.OyM_2020;
+                              progrVeProgramacion[30]=data.id_pi;
+
+                               html+="<thead> <tr> <th colspan='12' class='active'><h5>DATOS DEL PROYECTOS DE INVERSIÓN</h5></th>  </tr></thead>"
+                            for (var i = 0; i <1;i++) {
+                              $("#CodigoProgramacion").val(progrVeProgramacion[30]); 
+                              html +="<tbody> <tr><th class='success'> Código único </th><th  colspan='12'>"+progrVe[0]+"</th></tr> <tr><th class='success'>Nombre del proyeto</th><th  colspan='5'>"+progrVe[5]+"</th></tr>";    
+                              html +="<tr><th class='success'>Fecha de registro</th><th  colspan='5'>"+progrVe[22]+"</th></tr> <tr><th class='success'>Fecha de viabilidad</th><th  colspan='5'>"+progrVe[23]+"</th></tr>";
+                             //localizacion geografica
+                              html+="<thead> <tr> <th colspan='12' class='active'>LOCALIZACIOÓN GEOGRAFICA DEL PROYECTO DE INVERSIÓN</th>  </tr></thead>";
+                              html+="<thead> <tr> <th colspan='4' class='active'>DEPARTAMENTO</th> <th colspan='4' class='active'>PROVINCIA</h5></th><th colspan='4' class='active'><h5>DISTRITO</h5></th> </tr></thead>";
+
+                              html +="<tr>";
+                              html +="<th th  colspan='4'> "+progrVe[9]+"</th><th  colspan='4'>"+progrVe[10]+"</th><th  colspan='4'>"+progrVe[11]+"</th></tr> <tr>";
+                              html +="</tr>";  
+
+                              //META PRESUPUESTAL
+                              html+="<thead> <tr> <th colspan='12' class='active'>META PRESUPUESTAL</th>  </tr></thead>";
+                              html +="<tr>";
+                              html +="<th class='success'>Nombre meta presupuestal</th><th  colspan='5'>"+""+"</th></tr> <tr>";
+                              html +="<th class='success'>Año meta presupuestal</th><th colspan='5'>"+""+"</th></tr> <tr>";
+                              html +="<th class='success'>PIM </th><th colspan='5'>"+""+"</th></tr> <tr>";
+                              html +="<th class='success'>N° Meta </th><th colspan='5'>"+""+"</th></tr> <tr>";
+                              html +="</tr>";  
+                              //FIN RESPONSABILIDAD FUNCIONAL
+                              //TIPO DE INVERSIÓN
+                              html+="<thead> <tr> <th colspan='12' class='active'>TIPO DE INVERSIÓN</th>  </tr></thead>";
+                              html +="<tr>";
+                              html +="<th class='success'>Nombre tipo inversion</th><th  colspan='5'>"+progrVe[3]+"</th></tr> <tr>";
+                              html +="</tr>";  
+                              //FIN TIPO DE INVERSIÓN
+                              //TIPO DE INVERSIÓN
+                              html+="<thead> <tr> <th colspan='12' class='active'>NIVEL  DE GOBIERNO</th>  </tr></thead>";
+                              html +="<tr>";
+                              html +="<th class='success'>Nivel de Gobierno</th><th  colspan='5'>"+""+"</th></tr> <tr>";
+                              html +="</tr>";  
+                              //FIN TIPO DE INVERSIÓN
+                              //MODALIDAD DE EJECUCION
+                              html+="<thead> <tr> <th colspan='12' class='active'>MODALIDAD DE EJECUCIÓN</th>  </tr></thead>";
+                              html +="<tr>";
+                              html +="<th class='success'>Modalidad Ejecucion</th><th  colspan='5'>"+""+"</th></tr> <tr>";
+                              html +="<th class='success'>Fecha</th><th  colspan='5'>"+""+"</th></tr> <tr>";
+
+                              html +="</tr>";  
+                              //MODALIDAD DE EJECUCION
+                               //FUENTE DE FINANCIAMIENTO
+                              html+="<thead> <tr> <th colspan='12' class='active'>FUENTE DE FINANCIAMIENTO</th>  </tr></thead>";
+                              html +="<tr>";
+                              html +="<th class='success'>Nombre fuente de financiamiento</th><th  colspan='5'>"+""+"</th></tr> <tr>";
+                              html +="</tr>";  
+                              //MODALIDAD DE EJECUCION
+                               //FUENTE DE FINANCIAMIENTO
+                              html+="<thead> <tr> <th colspan='12' class='active'>FUENTE DE FINANCIAMIENTO</th>  </tr></thead>";
+                              html +="<tr>";
+                              html +="<th class='success'>Nombre fuente de financiamiento</th><th  colspan='5'>"+""+"</th></tr> <tr>";
+                              html +="</tr>";  
+                              //MODALIDAD DE EJECUCION
+
+
+                              html+="<thead> <tr> <th class='active' colspan='12'>NATURALEZA DE INVERSIÓN</th>   </tr></thead>";
+                              html +="<tr><th class='success'>Naturaleza de Inversion</th><th  colspan='5'>"+progrVe[4]+"</th></tr> <tr></tr>"; 
+
+                              //programacion
+                              html+="<thead> <tr> <th colspan='12' class='active'><h5><center>PROGRAMACIÓN</center></h5></th>  </tr></thead>";
+                              html+="<thead> <tr> <th colspan='4' class='active'><h5>2018</h5></th> <th colspan='4' class='active'><h5>2019</h5></th><th colspan='4' class='active'><h5>2020</h5></th> </tr></thead>";
+
+                              html +="<tr>";
+                              html +="<th th  colspan='4'> "+progrVeProgramacion[24]+"</th><th  colspan='4'>"+progrVeProgramacion[25]+"</th><th  colspan='4'>"+progrVeProgramacion[26]+"</th></tr> <tr>";
+                              html +="<th th  colspan='4'> "+progrVeProgramacion[27]+"</th><th  colspan='4'>"+progrVeProgramacion[28]+"</th><th  colspan='4'>"+progrVeProgramacion[29]+"</th></tr> <tr>";
+
+                              html +="</tr>"; 
+
+                              //programacion
+
+                              html +="</tbody>";
+                             };
+                             html +="</tbody>";        
+                            $("#table-detalleProgramacion").html(html);
+
+                                //para ver yodo envio opcion 1
+                                 /* var opcion=2;//para que me muestre todos los registros 
+                                 MostrarDetalleProyecto(Id_ProyectoInver,opcion);*/
+                                /*var txt_codigofuncionM=$('#txt_codigofuncionM').val(data.codigo_funcion);
+                                var txt_nombrefuncionM=$('#txt_nombrefuncionM').val(data.nombre_funcion);*/
 
                     });
+
                 }
+
                 var MostrarDetalleProyecto=function(Id_ProyectoInver,opcion){
                     event.preventDefault(); 
                     html="";
@@ -527,6 +749,16 @@ var listaProyectoIprogramadoA=function()//para actualizar programacion
 
                 }
 			   
-
+ /*function listar()
+          {
+            event.preventDefault();
+            $.ajax({
+              "url":base_url+"index.php/Programacion/GetProgramacion",
+              type:"POST",
+              success:function(respuesta){
+                console.log(respuesta);
+              }
+            });
+          }*/
                
        

@@ -785,7 +785,7 @@
             function(i, step) {
               if (i > _this._current) {
                 step.leave('error');
-                step.leave('active');
+                step.leave('activ');
                 step.leave('done');
 
                 if (!_this.options.enableWhenVisited) {
@@ -962,22 +962,35 @@
         key: 'next',
         value: function next() {
           var _this2 = this;
+           
+var eliminar = confirm("¿Desceas Programar el proyecto?");
+       
+if (eliminar){
+        var opcion=0;
+        if(opcion==0)
+        {
+            if (this._current < this.lastIndex()) {
+              (function() {
+                var from = _this2._current,
+                  to = _this2._current + 1;
+                 
+                _this2.goTo(to,
 
-          if (this._current < this.lastIndex()) {
-            (function() {
-              var from = _this2._current,
-                to = _this2._current + 1;
+                  function() {
+                    this.trigger('next', this.get(from), this.get(to));
+                  }
+                );
+              })();
+            }
 
-              _this2.goTo(to,
-
-                function() {
-                  this.trigger('next', this.get(from), this.get(to));
-                }
-              );
-            })();
+            return false;
+          }else
+          {
+            alert("hola");
           }
 
-          return false;
+}
+
         }
       }, {
         key: 'back',

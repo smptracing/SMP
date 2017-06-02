@@ -61,6 +61,10 @@
     <script src="<?php echo base_url(); ?>assets/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+
+
+
+
     <script src="<?php echo base_url(); ?>assets/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
@@ -73,7 +77,7 @@
      <script src="<?php echo base_url(); ?>assets/dist/js/sweetalert-dev.js"></script>
      <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/js/sweetalert.css">
 
-    <script src="<?php echo base_url(); ?>assets/dist/js/bootstrap-select.js"></script><!--- para el selector con buscardor---->
+    <script src="<?php echo base_url(); ?>assets/dist/js/bootstrap-select.js"></script><!--- para el selector con buscardor -->
     <!-- Custom Theme Scripts -->
     <script src="<?php echo base_url(); ?>assets/dist/jquery-wizard.js"></script>
     <script src="<?php echo base_url(); ?>assets/dist/jquery-wizard-fn.js"></script>
@@ -111,5 +115,6 @@
     <script src="<?php echo base_url(); ?>assets/js/PMI/CarteraInversion.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/PMI/Programacion.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/administrador/Importar.js"></script>
+    
   </body>
 </html>

@@ -25,6 +25,8 @@
                                    $("#VentanaRegistraCarteraInv").modal("hide");
 
                        });
+
+
             });
 
 //-------------- MANTENIMIENTO MODALIDAD DE EJECUCION--------------------------
@@ -54,8 +56,38 @@
                                     {"defaultContent":"<button type='button' class='editar btn btn-success btn-xs' data-toggle='modal' data-target='#VentanaVerCartera'><i class='ace-icon fa fa-eye bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
 
-                                "language":idioma_espanol
-                    }); 
+                                "language":idioma_espanol,
+                                     responsive: {
+                                        details: {
+                                            display: $.fn.dataTable.Responsive.display.modal( {
+                                                header: function ( row ) {
+                                                    var data = row.data();
+                                                    return 'Details for '+data[0]+' '+data[1];
+                                                }
+                                            } ),
+                                            renderer: function ( api, rowIdx, columns ) {
+                                                var data = $.map( columns, function ( col, i ) {
+                                                    return '<tr>'+
+                                                            '<td>'+col.title+':'+'</td> '+
+                                                            '<td>'+col.data+'</td>'+
+                                                        '</tr>';
+                                                } ).join('');
+                             
+                                                return $('<table/>').append( data );
+                                            }
+                                        }
+                                    }
+
+                                     
+                        }); 
+
+
+                         $('#table-CarteraInv tbody').on('click', 'tr', function () {
+                            var data = table.row( this ).data();
+                            var txt_IdfuncionM=data.id_cartera;
+                          
+                        } );
+
                 }
           //FIN TRAER DATOS DE LA CARTERA ACTUAL PARA SU PROGRAMACION 
 /*FIN DE LISTAR MODALIDAD EJECUCION EN UN DATATABLE*/

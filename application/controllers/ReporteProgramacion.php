@@ -6,7 +6,7 @@ class ReporteProgramacion extends CI_Controller {
  public function __construct(){
       parent::__construct();
       $this->load->model('Model_ProyectoInversion');
-       $this->load->model('Model_Programacion');
+      $this->load->model('Model_Programacion');
   }
  function index()
   {
@@ -20,7 +20,19 @@ class ReporteProgramacion extends CI_Controller {
     $this->load->library("excel");
     $object = new PHPExcel();
     $object->getProperties()->setCreator("Fabian Schmick")->setLastModifiedBy("Current User")->setTitle("Foobar");
+    
+    $object->getActiveSheet()->getStyle('B2')->getFont()->applyFromArray(
+         array(
+             'style' => PHPExcel_Style_Border::BORDER_THIN,
+             'color'=>array('argb'=>'FF000000'),
+             'startcolor' =>array('argb' => 'FFFF0000'),
+             'endcolor' =>array('argb' => 'FFFF0000')
+
+         )
+
+ );
     $object->setActiveSheetIndex(0)->setCellValue('A1','Detalle de proyecto')->setCellValue('AA1','Programación');
+
     $column = 0;
   
     $table_columns = array("Cod. Proyecto","Tipo de Inversión", "Ciclo de Inversión", "Tipología", "Naturaleza","Inversión","Nivel de Gobierno","Prioridad","U. Ejecutora","Departamento","Provincia","Distrito","Función","Div. Funcional","Grupo Funcional","Costo inversión","Dev. Acum. Año Anterior","PIM Año Actual","Fuente Finan.","Rubro","Fuente Finan. 2","Rubro 2","Mod. Ejecución","Servicio","Brecha Asociada","Programa Presup.","Fecha Registro","Fecha Viabilidad","Inicio Programación","Fin Programación","Saldo a Programar","2018","2019","2020","2018","2019","2020");
@@ -32,10 +44,15 @@ class ReporteProgramacion extends CI_Controller {
       $object->getActiveSheet()->setCellValueByColumnAndRow($column,2, $field);
       $column++;
     }
-
-    $employee_data = $this->Model_Programacion->ExelProgramacionProyectos();
+    $valor="";//para traer la programacion mandando un parametro vacio
+    $employee_data = $this->Model_Programacion->ExelProgramacionProyectos($valor);
     $excel_row = 3;//para decir donde va a empezar 
-
+    $departamento="Apurímac";
+    $funtefinanciamiento="";
+    $rubro="";
+    $funtefinanciamiento2="";
+    $rubro2="";
+    $nombre_modalidad_ejec="";
     foreach($employee_data as $row)
     {
       
@@ -73,20 +90,20 @@ class ReporteProgramacion extends CI_Controller {
       $object->getActiveSheet()->setCellValueByColumnAndRow(6, $excel_row, $row->nombre_nivel_gob)->getColumnDimension('G')->setAutoSize(true);
       $object->getActiveSheet()->setCellValueByColumnAndRow(7, $excel_row, $row->prioridad_prog)->getColumnDimension('H')->setAutoSize(true);
       $object->getActiveSheet()->setCellValueByColumnAndRow(8, $excel_row, $row->nombre_ue)->getColumnDimension('I')->setAutoSize(true);
-      $object->getActiveSheet()->setCellValueByColumnAndRow(9, $excel_row, $row->departamento)->getColumnDimension('J')->setAutoSize(true);
-      $object->getActiveSheet()->setCellValueByColumnAndRow(10, $excel_row, $row->provincia)->getColumnDimension('K')->setAutoSize(true);
-      $object->getActiveSheet()->setCellValueByColumnAndRow(11, $excel_row, $row->distrito)->getColumnDimension('L')->setAutoSize(true);
+      $object->getActiveSheet()->setCellValueByColumnAndRow(9, $excel_row, $departamento)->getColumnDimension('J')->setAutoSize(true);
+      $object->getActiveSheet()->setCellValueByColumnAndRow(10, $excel_row, $row->provincias)->getColumnDimension('K')->setAutoSize(true);
+      $object->getActiveSheet()->setCellValueByColumnAndRow(11, $excel_row, $row->distritos)->getColumnDimension('L')->setAutoSize(true);
       $object->getActiveSheet()->setCellValueByColumnAndRow(12, $excel_row, $row->nombre_funcion)->getColumnDimension('M')->setAutoSize(true);
       $object->getActiveSheet()->setCellValueByColumnAndRow(13, $excel_row, $row->nombre_div_funcional)->getColumnDimension('N')->setAutoSize(true);
       $object->getActiveSheet()->setCellValueByColumnAndRow(14, $excel_row, $row->nombre_grup_funcional)->getColumnDimension('O')->setAutoSize(true);
       $object->getActiveSheet()->setCellValueByColumnAndRow(15, $excel_row, $row->costo_pi)->getColumnDimension('P')->setAutoSize(true);
       $object->getActiveSheet()->setCellValueByColumnAndRow(16, $excel_row, $row->devengado_ac_pi)->getColumnDimension('Q')->setAutoSize(true);
       $object->getActiveSheet()->setCellValueByColumnAndRow(17, $excel_row, $row->devengado_ac_pi)->getColumnDimension('R')->setAutoSize(true); //ACA DEBE SER PIM AÑO ACTUAL
-      $object->getActiveSheet()->setCellValueByColumnAndRow(18, $excel_row, $row->nombre_fuente_finan)->getColumnDimension('S')->setAutoSize(true);
-      $object->getActiveSheet()->setCellValueByColumnAndRow(19, $excel_row, $row->nombre_rubro)->getColumnDimension('T')->setAutoSize(true); 
-      $object->getActiveSheet()->setCellValueByColumnAndRow(20, $excel_row, $row->nombre_fuente_finan)->getColumnDimension('U')->setAutoSize(true); //ACA ES FUENTE FINAN 2 Y ES CAMPO VACIO
-      $object->getActiveSheet()->setCellValueByColumnAndRow(21, $excel_row, $row->nombre_rubro)->getColumnDimension('V')->setAutoSize(true); //ACA RUBRO DOS  2 Y ES CAMPO VACIO
-      $object->getActiveSheet()->setCellValueByColumnAndRow(22, $excel_row, $row->nombre_modalidad_ejec)->getColumnDimension('W')->setAutoSize(true);
+      $object->getActiveSheet()->setCellValueByColumnAndRow(18, $excel_row, $funtefinanciamiento)->getColumnDimension('S')->setAutoSize(true);
+      $object->getActiveSheet()->setCellValueByColumnAndRow(19, $excel_row, $rubro)->getColumnDimension('T')->setAutoSize(true); 
+      $object->getActiveSheet()->setCellValueByColumnAndRow(20, $excel_row, $funtefinanciamiento2)->getColumnDimension('U')->setAutoSize(true); //ACA ES FUENTE FINAN 2 Y ES CAMPO VACIO
+      $object->getActiveSheet()->setCellValueByColumnAndRow(21, $excel_row, $rubro2)->getColumnDimension('V')->setAutoSize(true); //ACA RUBRO DOS  2 Y ES CAMPO VACIO
+      $object->getActiveSheet()->setCellValueByColumnAndRow(22, $excel_row, $nombre_modalidad_ejec)->getColumnDimension('W')->setAutoSize(true);
       $object->getActiveSheet()->setCellValueByColumnAndRow(23, $excel_row, $row->nombre_serv_pub_asoc)->getColumnDimension('X')->setAutoSize(true);
       $object->getActiveSheet()->setCellValueByColumnAndRow(24, $excel_row, $row->nombre_brecha)->getColumnDimension('Y')->setAutoSize(true); 
       $object->getActiveSheet()->setCellValueByColumnAndRow(25, $excel_row, $row->nombre_programa_pres)->getColumnDimension('Z')->setAutoSize(true); 
@@ -95,13 +112,13 @@ class ReporteProgramacion extends CI_Controller {
       $object->getActiveSheet()->setCellValueByColumnAndRow(28, $excel_row, "")->getColumnDimension('AC')->setAutoSize(true); //ACA LOS DATOS SON VACIOS DE INICIO PROGRAMACION
       $object->getActiveSheet()->setCellValueByColumnAndRow(29, $excel_row, "")->getColumnDimension('AD')->setAutoSize(true);//ACA LOS DATOS SON VACIOS DE FIN PROGRAMACION
       $object->getActiveSheet()->setCellValueByColumnAndRow(30, $excel_row, 0)->getColumnDimension('AE')->setAutoSize(true);//SALDO A PROGRAMAR ES VACIO
-      $object->getActiveSheet()->setCellValueByColumnAndRow(31, $excel_row, 0)->getColumnDimension('AF')->setAutoSize(true);//SALDO A PROGRAMAR ES VACIO
-      $object->getActiveSheet()->setCellValueByColumnAndRow(32, $excel_row, 0)->getColumnDimension('AG')->setAutoSize(true);//SALDO A PROGRAMAR ES VACIO
-      $object->getActiveSheet()->setCellValueByColumnAndRow(33, $excel_row, 0)->getColumnDimension('AH')->setAutoSize(true);//SALDO A PROGRAMAR ES VACIO
+      $object->getActiveSheet()->setCellValueByColumnAndRow(31, $excel_row, $row->Inv_2018)->getColumnDimension('AF')->setAutoSize(true);//SALDO A PROGRAMAR ES VACIO
+      $object->getActiveSheet()->setCellValueByColumnAndRow(32, $excel_row, $row->Inv_2019)->getColumnDimension('AG')->setAutoSize(true);//SALDO A PROGRAMAR ES VACIO
+      $object->getActiveSheet()->setCellValueByColumnAndRow(33, $excel_row, $row->Inv_2020)->getColumnDimension('AH')->setAutoSize(true);//SALDO A PROGRAMAR ES VACIO
 
-      $object->getActiveSheet()->setCellValueByColumnAndRow(34, $excel_row, 0)->getColumnDimension('AI')->setAutoSize(true);//MONTOS PROGRAMADOR POR LOS TRES AÑOS 
-      $object->getActiveSheet()->setCellValueByColumnAndRow(35, $excel_row, 0)->getColumnDimension('AJ')->setAutoSize(true);//MONTOS PROGRAMADOS POR LOS TRES AÑOS
-      $object->getActiveSheet()->setCellValueByColumnAndRow(36, $excel_row, 0)->getColumnDimension('AK')->setAutoSize(true);//MONTO PROGRAMADOPOR LOS TRES AÑOS
+      $object->getActiveSheet()->setCellValueByColumnAndRow(34, $excel_row, $row->OyM_2018)->getColumnDimension('AI')->setAutoSize(true);//MONTOS PROGRAMADOR POR LOS TRES AÑOS 
+      $object->getActiveSheet()->setCellValueByColumnAndRow(35, $excel_row, $row->OyM_2019)->getColumnDimension('AJ')->setAutoSize(true);//MONTOS PROGRAMADOS POR LOS TRES AÑOS
+      $object->getActiveSheet()->setCellValueByColumnAndRow(36, $excel_row, $row->OyM_2020)->getColumnDimension('AK')->setAutoSize(true);//MONTO PROGRAMADOPOR LOS TRES AÑOS*/
 
 
 
@@ -184,19 +201,20 @@ class ReporteProgramacion extends CI_Controller {
         $html .= "<table cellspacing='0' width='50%'>";
         $opcion=1;//mostrar un solo proyecto
         $opcion2=2;//mostra todos los proyecto programados
-        $id_programacion= $this->input->post("CodigoProgramacion");
-        $ProyectoProgramado =$this->Model_Programacion->BuscarProyectoInversion($id_programacion,$opcion);//para mostra uno solo del detallado de los proyectos
+        $id_pi=$this->input->post("CodigoProgramacion");
+        $ProyectoProgramado =$this->Model_Programacion->GetProgramacion($id_pi);//para mostra uno solo del detallado de los proyectos
         foreach ($ProyectoProgramado as $rows) 
         {
+            
             $nombre_pi = $rows->nombre_pi;
             $codigo_unico_pi = $rows->codigo_unico_pi;
             $fecha_registro_pi=$rows->fecha_registro_pi;
             $fecha_viabilidad_pi= $rows->fecha_viabilidad_pi;
-            $departamento= $rows->departamento;
-            $provincia= $rows->provincia;
-            $distrito=$rows->distrito;
+            $departamento= "Apurímac";
+            $provincia= $rows->provincias;
+            $distrito=$rows->distritos;
             //RESPONSABILIDAD FUNCIONAL DEL PROGRAMA DE INVERSIÓN
-            $codigo_funcion=$rows->codigo_funcion;
+             $codigo_funcion=$rows->codigo_funcion;
             $nombre_funcion=$rows->nombre_funcion;
             $codigo_div_funcional=$rows->codigo_div_funcional;
             $nombre_div_funcional=$rows->nombre_div_funcional;
@@ -204,10 +222,10 @@ class ReporteProgramacion extends CI_Controller {
             $nombre_grup_funcional=$rows->nombre_grup_funcional;
             $nombre_sector=$rows->nombre_sector;
             //META PRESUPUESTAL
-            $nombre_meta_pres=$rows->nombre_meta_pres;
-            $año_meta_pres=$rows->año_meta_pres;
-            $pim_meta_pres=$rows->pim_meta_pres;
-            $numero_meta_pres=$rows->numero_meta_pres;
+            //$nombre_meta_pres=$rows->nombre_meta_pres;
+            //$año_meta_pres=$rows->año_meta_pres;
+            //$pim_meta_pres=$rows->pim_meta_pres;
+            //$numero_meta_pres=$rows->numero_meta_pres;
             //UNIDAD EJECUTORA
             $nombre_ue=$rows->nombre_ue;
             //TIPO DE INVERSION
@@ -217,22 +235,32 @@ class ReporteProgramacion extends CI_Controller {
             //TIPOLOGIA INVERSION
             $nombre_tipologia_inv=$rows->nombre_tipologia_inv;
             //MODALIDAD DE EJECUCION
-            $nombre_modalidad_ejec=$rows->nombre_modalidad_ejec;
-            $fecha_modalidad_ejec_pi=$rows->fecha_modalidad_ejec_pi;
+           //$nombre_modalidad_ejec=$rows->nombre_modalidad_ejec;
+            //$fecha_modalidad_ejec_pi=$rows->fecha_modalidad_ejec_pi;
             //FUENTE DE FINANCIAMIENTO
-            $nombre_fuente_finan=$rows->nombre_fuente_finan;
-            $nombre_programa_pres=$rows->nombre_programa_pres;
+            //$nombre_fuente_finan=$rows->nombre_fuente_finan;
+            //$nombre_programa_pres=$rows->nombre_programa_pres;
              //RUBRO EJECUCION
-            $nombre_rubro=$rows->nombre_rubro;
+            //$nombre_rubro=$rows->nombre_rubro;
             //NATURALEZA DE INVERSION
-            $nombre_naturaleza_inv=$rows->nombre_naturaleza_inv;
+             /*$nombre_naturaleza_inv=$rows->nombre_naturaleza_inv;
             //PROGREMACION
             $nombre_pi=$rows->nombre_pi;
             $costo_pi=$rows->costo_pi;
             $año_prog=$rows->año_prog;
             $monto_prog=$rows->monto_prog;
             $monto_opera_mant_prog=$rows->monto_opera_mant_prog;
-            $tipo_prog=$rows->tipo_prog;
+            $tipo_prog="";*/
+            //programa presupuestal//
+            $Inv_2018=$rows->Inv_2018;
+            $Inv_2019=$rows->Inv_2019;
+            $Inv_2020=$rows->Inv_2020;
+
+            $OyM_2018=$rows->OyM_2018;
+            $OyM_2019=$rows->OyM_2019;
+            $OyM_2020=$rows->OyM_2020;
+                            
+
          $html .= <<<EOD
 
 <form method="post" action="http://localhost/printvars.php" enctype="multipart/form-data">
@@ -259,7 +287,7 @@ class ReporteProgramacion extends CI_Controller {
    </tr>
    <tr>
    <th colspan="6"><strong><i>Fecha de viabilidad</i></strong></th>
-       <th colspan="6">Fecha de viabilidad</th>
+       <th colspan="6">$fecha_viabilidad_pi</th>
    </tr>
     <tr>
          <th colspan="6" style="background-color:#f5f5f5;">&nbsp;&nbsp;LOCALIZACIÓN DEL PROYECTO</th>
@@ -283,15 +311,15 @@ class ReporteProgramacion extends CI_Controller {
    </tr>
     <tr>
          <th colspan="6">Función</th>
-         <th colspan="6">$codigo_funcion $nombre_funcion</th>
+         <th colspan="6">$codigo_funcion:$nombre_funcion</th>
    </tr>
    <tr>
        <th colspan="6">División Funcional</th>
-       <th colspan="6">$codigo_div_funcional $nombre_div_funcional</th>
+       <th colspan="6">$codigo_div_funcional:$nombre_div_funcional</th>
    </tr>
    <tr>
        <th colspan="6">Grupo Funcional</th>
-       <th colspan="6">$codigo_grup_funcional $nombre_grup_funcional</th>
+       <th colspan="6">$codigo_grup_funcional:$nombre_grup_funcional</th>
    </tr>
    <tr>
        <th colspan="6">Sector</th>
@@ -303,11 +331,11 @@ class ReporteProgramacion extends CI_Controller {
    </tr>
    <tr>
        <th colspan="6">Naturaleza de Inversion</th>
-       <th colspan="6">$nombre_naturaleza_inv</th>
+       <th colspan="6"></th>
    </tr>
     <tr>
        <th colspan="6">Tipologia de inversion </th>
-       <th colspan="6">$nombre_tipologia_inv</th>
+       <th colspan="6">$nombre_tipologia_inv </th>
    </tr>
    <tr>
        <th colspan="6">Tipo de Inversion</th>
@@ -318,20 +346,20 @@ class ReporteProgramacion extends CI_Controller {
          <th colspan="6" style="background-color:#f5f5f5;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
    </tr>
     <tr>
-         <th colspan="6">$nombre_meta_pres</th>
+         <th colspan="6"></th>
          <th colspan="6">Nombre Meta Presupuestal</th>
    </tr>
    <tr>
        <th colspan="6">Año Meta Presupuestal</th>
-       <th colspan="6">$año_meta_pres</th>
+       <th colspan="6"></th>
    </tr>
    <tr>
        <th colspan="6">PIM</th>
-       <th colspan="6">$pim_meta_pres</th>
+       <th colspan="6"></th>
    </tr>
    <tr>
        <th colspan="6">N° Meta Presupuestal</th>
-       <th colspan="6">$numero_meta_pres</th>
+       <th colspan="6"></th>
    </tr>
     <tr>
          <th colspan="6" style="background-color:#f5f5f5;">&nbsp;&nbsp;UNIDAD EJECUTORA</th>
@@ -343,11 +371,11 @@ class ReporteProgramacion extends CI_Controller {
    </tr>
     <tr>
        <th colspan="6">Modalidad de Ejecucion</th>
-       <th colspan="6">$nombre_modalidad_ejec</th>
+       <th colspan="6"></th>
    </tr>
    <tr>
        <th colspan="6">Nivel de Gobierno</th>
-       <th colspan="6">$nombre_nivel_gob</th>
+       <th colspan="6"></th>
    </tr>
      <tr>
          <th colspan="6" style="background-color:#f5f5f5;">&nbsp;&nbsp;INFORMACION PRESUPUESTAL</th>
@@ -355,21 +383,27 @@ class ReporteProgramacion extends CI_Controller {
    </tr>
    <tr>
        <th colspan="6">Fuente de financiamiento</th>
-       <th colspan="6">$nombre_fuente_finan</th>
+       <th colspan="6"></th>
    </tr>
     <tr>
        <th colspan="6">Rubro de Ejecucion</th>
-       <th colspan="6">$nombre_rubro</th>
+       <th colspan="6"></th>
    </tr>
    <tr>
        <th colspan="6">Programa Presupuestal</th>
-       <th colspan="6">$nombre_programa_pres</th>
+       <th colspan="6"></th>
    </tr>
     <tr>
+    
        <th colspan="3">Programa Presupuestal</th>
-       <th colspan="3">$nombre_programa_pres</th>
-       <th colspan="3">$nombre_programa_pres</th>
-       <th colspan="3">$nombre_programa_pres</th>
+       <th colspan="3"></th>
+       <th colspan="3"></th>
+       <th colspan="3"></th>
+
+       <th colspan="3">Programa Presupuestal</th>
+       <th colspan="3"></th>
+       <th colspan="3"></th>
+       <th colspan="3"></th>
    </tr>
 </table>
 </form>
@@ -377,34 +411,6 @@ EOD;
             
 
         }
-$ProyectoProgramado =$this->Model_Programacion->BuscarProyectoInversion($id_programacion,$opcion2);//para mostra uno solo del detallado de los proyectos
- foreach ($ProyectoProgramado as $rows) 
-        {
-
-            $año_prog=$rows->año_prog;
-            $monto_prog=$rows->monto_prog;
-         $html .= <<<EOD
-
-<form method="post" action="http://localhost/printvars.php" enctype="multipart/form-data">
-<table border="1"  cellpadding="10">
-    <tr>
-         <th colspan="12">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-   </tr>
-    <tr>
-         <th colspan="12" style="background-color:#f5f5f5;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<center>PROGRAMACIÓN </center></th>
-   </tr>
-
-   <tr>
-         <th colspan="6">$año_prog</th>
-         <th colspan="6">$monto_prog </th>
-   </tr>
-   
-</table>
-</form>
-EOD;
-            
-        }
-
 
         $html .= "</table>";
         $html .= "</div>";
@@ -414,7 +420,7 @@ EOD;
 // ---------------------------------------------------------
 // Cerrar el documento PDF y preparamos la salida
 // Este método tiene varias opciones, consulte la documentación para más información.
-        $nombre_archivo = utf8_decode("Reporte de comprobante ".$nombre_pi .".pdf");
+        $nombre_archivo = utf8_decode("Reporte de comprobante ".$opcion.".pdf");
         $pdf->Output($nombre_archivo, 'I');
     }
 

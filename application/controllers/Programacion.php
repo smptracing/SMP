@@ -16,9 +16,9 @@ class Programacion extends CI_Controller {/* Mantenimiento de sector entidad Y s
         $cbxBrecha =$this->input->post("cbxBrechaP");   
         $textidpip =$this->input->post("textidpip");       
         $txtPrioridadProg =$this->input->post("txtPrioridadProg");
-        $txtTipo =$this->input->post("txtTipo");
+        
 
-      if($this->Model_Programacion->AddProgramacion($textidCartera,$cbxBrecha,$textidpip,$txtPrioridadProg,$txtTipo) == true)
+      if($this->Model_Programacion->AddProgramacion($textidCartera,$cbxBrecha,$textidpip,$txtPrioridadProg) == true)
           echo "Se añadio una Programacion";
         else
           echo "Se añadio una Programacion";  
@@ -85,7 +85,8 @@ class Programacion extends CI_Controller {/* Mantenimiento de sector entidad Y s
     {
       if ($this->input->is_ajax_request()) 
       {
-      $datos=$this->Model_Programacion->GetProgramacion();
+      $valor="";//para enviar vacia  enmi procedimiento y traer la programación
+      $datos=$this->Model_Programacion->GetProgramacion($valor);
       echo json_encode($datos);
       }
       else
