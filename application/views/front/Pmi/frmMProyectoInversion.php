@@ -49,9 +49,11 @@
                                                           </div>
                                                           <div class="x_content">
                                                               <div style="background:#f5f7fa">             
-                                                                  <center>
-                                                                    CARTERAS:<select id="cbCartera" name="cbCartera" class="selectpicker" data-live-search="true"  title="Elija la Cartera">
+                                                                    <input type="hidden" id="Aniocartera" value="<?php echo $this->session->userdata('AnioC'); ?>">
+                                                                    <center>
+                                                                    CARTERAS:Cartera <?php echo $this->session->userdata('AnioC'); ?> <select id="cbCartera" name="cbCartera"  class="selectpicker" data-live-search="true" >
                                                                     </select>
+                                                                    <button id="MostrarCarteraAnios">Mostar Cartera</button>
                                                                   </center>
                                                               </div>
                                                         <table id="table-ProyectoInversionProgramado" class="table table-striped table-bordered table-hover table-responsive display  compact " ellspacing="0" width="100%">

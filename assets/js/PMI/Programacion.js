@@ -8,6 +8,15 @@
                   $("label.error").remove();  //lo utilice para borrar la etiqueta de error del jquery validate
                 });*/
              //FIN PARA LIMPIAR LOS DATOS DE LOS MODALES
+              
+              $("#MostrarCarteraAnios").click(function(){
+                Aniocartera=$("#Aniocartera").val();
+                 $('select[name=cbCartera]').val(Aniocartera);
+                  $('select[name=cbCartera]').change();
+                  $('.selectpicker').selectpicker('refresh'); 
+              });
+
+
               $('#VentanaRegistraPIP').on('hidden.bs.modal', function () {
                   $(this).find("input,textarea,select").val('').end();
 
@@ -230,6 +239,7 @@
 
            //AÑADIR 
  });
+
 
 function  GuardarProyectos(id_ue,id_naturaleza_inv,id_tipologia_inv,id_tipo_inversion,id_grupo_funcional_inv,id_nivel_gob,id_meta_pres,id_programa_pres,codigo_unico_pi,nombre_pi,costo_pi,devengado_ac_pi,distrito,id_estado_ciclo,id_fuente_finan,id_modalidad_ejec){
    event.preventDefault();

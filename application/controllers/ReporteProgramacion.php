@@ -202,7 +202,8 @@ class ReporteProgramacion extends CI_Controller {
         $opcion=1;//mostrar un solo proyecto
         $opcion2=2;//mostra todos los proyecto programados
         $id_pi=$this->input->post("CodigoProgramacion");
-        $ProyectoProgramado =$this->Model_Programacion->GetProgramacion($id_pi);//para mostra uno solo del detallado de los proyectos
+        $año_apertura_actual="2017";//observacion
+        $ProyectoProgramado =$this->Model_Programacion->GetProgramacion($id_pi,$año_apertura_actual);//para mostra uno solo del detallado de los proyectos
         foreach ($ProyectoProgramado as $rows) 
         {
             

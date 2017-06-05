@@ -50,7 +50,7 @@ class Model_CarteraInversion extends CI_Model
 //--------------FIN DE METODOS PARA EL MANTENIMIENTO DE RUBRO DE EJECUCION--------------------------------------------
      function GetCarteraAnios()
      {
-         $query=$this->db->query("select year(año_apertura_cartera) as anios from Cartera_inversion ORDER BY anios ");
+         $query=$this->db->query("select year(año_apertura_cartera) as anios from Cartera_inversion ORDER BY anios DESC ");
          if($query->num_rows()>0)
              {
               return $query->result();
