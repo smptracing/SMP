@@ -1,5 +1,6 @@
  $(document).on("ready" ,function(){
               
+              listarCarteraAnios();
               listaCarteraInversion(); //LLAMAR AL METODO LISTAR MODALIDAD DE EJECUCION
              //creacion de cartera //
  
@@ -47,7 +48,13 @@
                                     },
                                 "columns":[
                                     {"data":"id_cartera"},
-                                    {"data":"año_apertura_cartera"},
+                                    {"data":"anios",
+                                     "mRender": function ( data, type, full ) {
+                                     return '<a  style="font-weight:normal;font-size:15,background-color: #d8da3d"  href="getCarteraAnio/' + data + '">' + data + '</a>';
+                                      }
+                                        
+
+                                    },
                                     {"data":"fecha_inicio_cartera"},
                                     {"data":"fecha_cierre_cartera"},
                                     {"data":"estado_cartera"},
@@ -55,32 +62,8 @@
                                     {"data":"url_resolucion_cartera"},
                                     {"defaultContent":"<button type='button' class='editar btn btn-success btn-xs' data-toggle='modal' data-target='#VentanaVerCartera'><i class='ace-icon fa fa-eye bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
-
-                                "language":idioma_espanol,
-                                     responsive: {
-                                        details: {
-                                            display: $.fn.dataTable.Responsive.display.modal( {
-                                                header: function ( row ) {
-                                                    var data = row.data();
-                                                    return 'Details for '+data[0]+' '+data[1];
-                                                }
-                                            } ),
-                                            renderer: function ( api, rowIdx, columns ) {
-                                                var data = $.map( columns, function ( col, i ) {
-                                                    return '<tr>'+
-                                                            '<td>'+col.title+':'+'</td> '+
-                                                            '<td>'+col.data+'</td>'+
-                                                        '</tr>';
-                                                } ).join('');
-                             
-                                                return $('<table/>').append( data );
-                                            }
-                                        }
-                                    }
-
-                                     
+                                "language":idioma_espanol,           
                         }); 
-
 
                          $('#table-CarteraInv tbody').on('click', 'tr', function () {
                             var data = table.row( this ).data();
@@ -94,3 +77,20 @@
 
 //-------------- FIN MANTENIMIENTO MODALIDAD DE EJECUCION----------------------
 
+function listarCarteraAnios()
+          {
+            event.preventDefault();
+            $.ajax({
+              "url":base_url+"index.php/CarteraInversion/GetCarteraAnios",
+              type:"POST",
+              success:function(respuesta){
+                 var registros = eval(respuesta);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option value="+registros[i]["anios"]+"> "+ registros[i]["anios"]+" </option>";   
+                            };
+                            $("#cbCartera").html(html);//para modificar las entidades
+                            $('.selectpicker').selectpicker('refresh'); 
+                            //listaFuncionCombo(); //PARA LLENAR CON EXACTITUD LOS DATOS
+              }
+            });
+          }

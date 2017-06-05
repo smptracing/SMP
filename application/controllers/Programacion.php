@@ -85,8 +85,10 @@ class Programacion extends CI_Controller {/* Mantenimiento de sector entidad Y s
     {
       if ($this->input->is_ajax_request()) 
       {
-      $valor="";//para enviar vacia  enmi procedimiento y traer la programación
-      $datos=$this->Model_Programacion->GetProgramacion($valor);
+      //$valor="";//para enviar vacia  enmi procedimiento y traer la programación
+      $id_proyecto_filtro="";
+      $año_apertura_actual=$this->input->post('AnioCartera');
+      $datos=$this->Model_Programacion->GetProgramacion($id_proyecto_filtro,$año_apertura_actual);
       echo json_encode($datos);
       }
       else

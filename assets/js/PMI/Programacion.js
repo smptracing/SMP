@@ -15,9 +15,13 @@
 
             listaMontosTemporales();
             listaProyectoIprogramadoA();//para mostrar y actualizar
-            listaProyectoIprogramado();/*llamar proyecto de inversion programado*/
-
-
+            cartera="2017";
+            listaProyectoIprogramado(cartera);/*llamar proyecto de inversion programado*/
+            $("#cbCartera").change(function(){
+              var cartera=$("#cbCartera").val();
+               listaProyectoIprogramado(cartera);/*llamar proyecto de inversion programado*/
+            })
+  
              $("#btn-siguiente").click(function()//para que cargue el como una vez echo click sino repetira datos
                     {
                     
@@ -269,7 +273,7 @@ var suma=0;
                       }
                     });
   }
- var listaProyectoIprogramado=function()
+ var listaProyectoIprogramado=function(AnioCartera)
                 {
                     var table=$("#table-ProyectoInversionProgramado").DataTable({
                      "processing":true,
@@ -282,7 +286,8 @@ var suma=0;
                          "ajax":{
                                     "url":base_url+"index.php/Programacion/GetProgramacion",
                                     "method":"POST",
-                                    "dataSrc":""
+                                     data:{"AnioCartera":AnioCartera},
+                                    "dataSrc":"",
                                     },
                                 "columns":[
                                     {"data":"id_pi","visible":false},
@@ -334,9 +339,9 @@ var suma=0;
                                                                 
 
                     });
-                     setInterval( function () {
+                     /*setInterval( function () {
                                   table.ajax.reload( null, false ); // user paging is not reset on reload
-                              }, 30000 ); 
+                              }, 30000 ); */
                       /*$('#table-ProyectoInversionProgramado tbody').on('click', 'tr', function () {
                             var data = table.column(this).data();
                             var txt_IdfuncionM=data.codigo_unico_pi;

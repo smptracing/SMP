@@ -63,8 +63,22 @@ public function __construct(){
  	 }
 
 //FIN INSERTAR UNA CARTERA DE INVERSION
-
+    function getCarteraAnio($anio){
+    	if ($this->input->is_ajax_request()) 
+	      {
+	      //$valor="";//para enviar vacia  enmi procedimiento y traer la programación
+	      $id_proyecto_filtro="";
+	      $año_apertura_actual=$anio;
+	      $datos=$this->Model_Programacion->GetProgramacion($id_proyecto_filtro,$año_apertura_actual);
+	      echo json_encode($datos);
+	      }
+	      else
+	      {
+	        show_404();
+      }
+    	//$this->_load_layout('Front/Pmi/frmMProyectoInversion');
  	 //OBTENER LA CARTERA ACTUAL SEGUN EL AÑO
+    }
     function GetCarteraInvFechAct()
 	{
 		if ($this->input->is_ajax_request()) 
@@ -88,6 +102,17 @@ public function __construct(){
 			show_404();
 		}
 	  
+	}
+	function GetCarteraAnios(){
+		if ($this->input->is_ajax_request()) 
+		{
+		$datos=$this->Model_CarteraInversion->GetCarteraAnios();
+		echo json_encode($datos);
+		}
+		else
+		{
+			show_404();
+		}
 	}
  	function _load_layout($template)
     {

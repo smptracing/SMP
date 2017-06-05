@@ -39,26 +39,20 @@
                                                         <div class="x_panel">
                                                             <button id="btn-NuevoProyectoI" type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraPIP">  <span class="fa fa-plus-circle"></span> Nuevo </button>
                                                             <button id="btn-Importar" type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaImportar">  <span class="fa fa-plus-circle"></span> Importar Excel </button>
-
+                                                            
                                                           <div class="x_title">
                                                 
-                                                            <ul class="nav navbar-right panel_toolbox">
-                                                                
-                                                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                                              </li>
-                                                              
-                                                              <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                                              </li>
-                                                                
-                                                            </ul>
+            
                                                               
                                                             <div class="clearfix"></div>
                                                               
                                                           </div>
                                                           <div class="x_content">
-                                                              <div style="background:#f5f7fa">
-                                                                         <a href="" class="toggle-visVer" data-column="10" > <span class="fa fa-angle-double-right"></span> Ver Todo</a>
-                                                                         <a href="" class="toggle-visRestablecer" data-column="10"><span class="fa fa-angle-double-left"></span> Retablecer</a>
+                                                              <div style="background:#f5f7fa">             
+                                                                  <center>
+                                                                    CARTERAS:<select id="cbCartera" name="cbCartera" class="selectpicker" data-live-search="true"  title="Elija la Cartera">
+                                                                    </select>
+                                                                  </center>
                                                               </div>
                                                         <table id="table-ProyectoInversionProgramado" class="table table-striped table-bordered table-hover table-responsive display  compact " ellspacing="0" width="100%">
                                                               <thead>
