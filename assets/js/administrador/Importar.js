@@ -43,12 +43,15 @@ $(document).on("ready" ,function(){
               swal(data,"", "success");
               //console.log("SUCCESS : ", data);
               //$("#btnSubmit").prop("disabled", false);
+                formReset();
+               VentanaImportar.close()
+
 
           },
           error: function (e) {
             var msg = "No se subio el archivo, consulte con el administrador del sistema";
-
             swal(msg,"", "error");
+              formReset();
             //$("#result").text(e.responseText);
             //console.log("ERROR : ", e);
             //$("#btnSubmit").prop("disabled", false);
