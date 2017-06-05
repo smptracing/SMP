@@ -3,11 +3,15 @@
            //PARA LIMPIAR LOS DATOS DE LOS MODALES
                   //listar();
 
-                 $('.modal').on('hidden.bs.modal', function(){ 
+                /*$('.modal').on('hidden.bs.modal', function(){ 
                   $(this).find('form')[0].reset(); //para borrar todos los datos que tenga los input, textareas, select.
                   $("label.error").remove();  //lo utilice para borrar la etiqueta de error del jquery validate
-                });
+                });*/
              //FIN PARA LIMPIAR LOS DATOS DE LOS MODALES
+              $('#VentanaRegistraPIP').on('hidden.bs.modal', function () {
+                  $(this).find("input,textarea,select").val('').end();
+
+              });
 
             listaMontosTemporales();
             listaProyectoIprogramadoA();//para mostrar y actualizar
@@ -74,12 +78,14 @@
                         success:function(resp){
                         swal("REGISTRADO!", resp, "success");
                           //$('#table-brecha').dataTable()._fnAjaxUpdate();    //SIRVE PARA REFRESCAR LA TABLA 
+                          $('#table-ProyectoInversionProgramado').dataTable()._fnAjaxUpdate();
                         }
                     });
                     $('#form-addProgramacion')[0].reset();
                     $('#VentanaRegistraPIP').modal("hide");
-                    $('#table-ProyectoInversionProgramado').dataTable()._fnAjaxUpdate();//programacion  
-
+                    //$('#table-ProyectoInversionProgramado').dataTable()._fnAjaxUpdate();//programacion  
+                   // location.reload(); RECARGAR
+                    location.reload(true);  
                 }); 
                 //Actualizar programacion
                 $("#form-ActualizarProgramacion").submit(function(event)
@@ -129,11 +135,12 @@
                             type:"POST",
                             data:{AnioProgramado:AnioProgramado,txt_MontoProgramado:txt_MontoProgramado,monto_opera_mant_prog:monto_opera_mant_prog},
                             success:function(respuesta){
-                              alert(respuesta);     
+                              alert(respuesta); 
+                              listaMontosTemporales();
+    
                             }
                           });
                    
-                   listaMontosTemporales();
                   //$('#table-Programacion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion  
 
                 });
@@ -234,7 +241,7 @@ function  GuardarProyectos(id_ue,id_naturaleza_inv,id_tipologia_inv,id_tipo_inve
     }
   });
 }
-var suma=1;
+var suma=0;
   var listaMontosTemporales=function()
   {
     html1="";
@@ -247,23 +254,19 @@ var suma=1;
                          html1+="<thead> <tr> <th  class='active'><h5>AÑO </h5></th> <th class='active'><h5>MONTOS PROGRAMADOS</h5></th><th colspan='12' class='active'><h5>MONTO OPERACIÓN MANTENIMIENTO</h5></th> </tr></thead>"
                          for (var i = 0; i <registros.length;i++) {
                               html1 +="<tbody> <tr><th>"+registros[i]["año_prog"]+"</th><th>"+registros[i]["monto_prog"]+"</th><th>"+registros[i]["monto_opera_mant_prog"]+"</th></tr>";    
-                          suma=suma+1;
                           //alert(suma);
-                           };    
+                           };               
                              html1 +="</tbody>";
                          $("#table-Programacion").html(html1);
-                         if(suma>=4){
-                          document.getElementById("btn-GuardarMontoProgramado").disabled=true;
+                         suma=suma+1;
+                         if(suma<4){
+                           $("#AnioProgramado").val(fechaActual+suma);
                          }
                          else
                          {
-                           $("#AnioProgramado").val(fechaActual+suma);
-                         }
-                         
-
+                            document.getElementById("btn-GuardarMontoProgramado").disabled=true;
+                         }           
                       }
-
-
                     });
   }
  var listaProyectoIprogramado=function()

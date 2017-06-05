@@ -224,8 +224,8 @@
                                  <div class="row">
 
                                       <div class="col-md-12">
-                                       NOMBRE DE INVERSION
-                                        <label class="control-label col-md-5 col-sm-5 col-xs-12" for="name"><span class="required"></span>
+                              
+                                        <label class="control-label col-md-1 col-sm-12 col-xs-12" for="name">Inversion<span class="required"></span>
                                         </label>
                                          <div class="col-md-12 col-sm-12 col-xs-12">
                                           <input id="txtNombrePip" name="txtNombrePip"  height="20´px" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Nombre Inversion" required="required" type="text">
@@ -362,7 +362,7 @@
                                       <div class="col-md-4">
                                         
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <label  for="name">Fuente Financiamiento<span class="required">*</span>
+                                            <label  for="name">Fuente Finan.<span class="required">*</span>
                                             </label>
                                             <select id="cbxFuenteFinanc" name="cbxFuenteFinanc" class="selectpicker" data-live-search="true"  title="Elija fuente de financiamiento">
                                             </select>
@@ -480,7 +480,7 @@
                                          <!-- <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Cartera</span>
                                           </label>-->
                                         <div class="col-md-4 col-sm-4 col-xs-12">
-                                            <input type="hidden" id="txtCartera" name="txtCartera" class="form-control col-md-5 col-xs-5" disabled>
+                                            <input type="hidden" id="txtCartera" name="txtCartera" class="form-control col-md-5 col-xs-5" >
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                           <input id="textidCartera" name="textidCartera" type="hidden" class="form-control col-md-7 col-xs-5" >
                                         </div>
@@ -638,7 +638,7 @@
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">AÑO PROGRAMADO </span>
                                 </label>
                               <div class="col-md-6 col-sm-6 col-xs-12">
-                                  <input type="date" id="AnioProgramadoOpeMant"  name="AnioProgramadoOpeMant" >
+                                  <input type="text" id="AnioProgramadoOpeMant"  name="AnioProgramadoOpeMant" >
                               </div>
                             </div>
                             <div class="item form-group">

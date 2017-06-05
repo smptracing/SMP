@@ -57,10 +57,10 @@ class Programacion extends CI_Controller {/* Mantenimiento de sector entidad Y s
         $txt_MontoProgramado ="0.0";
         $txt_MontoOperacionMante =$this->input->post("txt_MontoOperacionMante");
         
-       if($this->Model_Programacion->AddProgramacionTemp($txt_MontoProgramado,$AnioProgramadoOpeMant,$txt_MontoOperacionMante) == true)
-         echo "Se añadio montos de programacion";
+       if($this->Model_Programacion->AddProgramacionOperMantTemp($txt_MontoProgramado,$AnioProgramadoOpeMant,$txt_MontoOperacionMante) == true)
+         echo "Se añadio montos de operacion y mantenimiento";
         else
-        echo "Se añadio montos de programacion";  
+        echo "Se añadio montos de operacion y mantenimiento";  
       }
       else
       {
