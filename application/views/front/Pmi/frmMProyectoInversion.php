@@ -194,7 +194,7 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                             <label  for="name">Tipo inversion<span class="required">*</span>
                                         </label>
-                                            <select id="cbxTipoInv" name="cbxTipoInv" class="selectpicker" data-live-search="true"  title="Elija tipo de inversion">
+                                            <select id="cbxTipoInv" name="cbxTipoInv" class="selectpicker"   title="Elija tipo de inversion">
                                             </select>
                                          </div>
                                       </div>
@@ -203,7 +203,7 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                              <label for="textbox"><span class="required">Ciclo de Inversion</span>
                                         </label>
-                                             <select id="cbxEstadoCicloInv" name="cbxEstadoCicloInv" class="selectpicker" data-live-search="true"  title="Elija el estado ciclo de inversion">
+                                             <select id="cbxEstadoCicloInv" name="cbxEstadoCicloInv" class="selectpicker" title="Elija el estado ciclo de inversion">
                                                </select>
                                             </div>
                                       </div>
@@ -212,7 +212,7 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                <label  for="textbox"><span class="required">Tipologia de Inversion</span>
                                                 </label>
-                                               <select id="cbxTipologiaInv" name="cbxTipologiaInv" class="selectpicker" data-live-search="true"  title="Elija tipologia">
+                                               <select id="cbxTipologiaInv" name="cbxTipologiaInv" class="selectpicker"   title="Elija tipologia">
                                                </select>
                                             </div>
                                       </div>
@@ -239,7 +239,7 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                             <label  for="name">Naturaleza<span class="required">*</span>
                                         </label>
-                                            <select id="cbxNatI" name="cbxNatI" class="selectpicker" data-live-search="true"  title="Elija Naturaleza">
+                                            <select id="cbxNatI" name="cbxNatI" class="selectpicker"  title="Elija Naturaleza">
                                             </select>
                                          </div>
                                       </div>
@@ -248,7 +248,7 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                              <label  for="textbox"><span class="required">Nivel de Gobierno</span>
                                         </label>
-                                            <select id="cbxNivelGob" name="cbxNivelGob" class="selectpicker" data-live-search="true"  title="Elija nivel de gobierno">
+                                            <select id="cbxNivelGob" name="cbxNivelGob" class="selectpicker"  title="Elija nivel de gobierno">
                                             </select>
                                             </div>
                                       </div>
@@ -257,7 +257,7 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                <label  for="textbox"><span class="required">Unidad Ejecutora</span>
                                                 </label>
-                                                <select id="cbxUnidadEjecutora"  name="cbxUnidadEjecutora" class="selectpicker" data-live-search="true"  title="Elija Unidad Ejecutora">
+                                                <select id="cbxUnidadEjecutora"  name="cbxUnidadEjecutora" class="selectpicker"   title="Elija Unidad Ejecutora">
                                                 </select>
                                             </div>
                                       </div>
@@ -270,7 +270,7 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                             <label for="name">Departamento<span class="required">*</span>
                                         </label>
-                                             <select id="departamento" name="departamento" class="selectpicker" data-live-search="true"  title="Seleccione un Departamento">
+                                             <select id="departamento" name="departamento" class="selectpicker"   title="Seleccione un Departamento">
 
                                               </select>
                                          </div>
@@ -280,7 +280,7 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                              <label for="textbox"><span class="required">Provincia</span>
                                         </label>
-                                              <select  id="provincia"  name="provincia" class="selectpicker" multiple title="Seleccione una o mas provincias" data-live-search="true">
+                                              <select  id="provincia"  name="provincia" class="selectpicker" multiple title="Seleccione una o mas provincias" >
                                               </select>
                                             </div>
                                       </div>
@@ -291,7 +291,7 @@
                                               </label>
                                               <select name="distrito" id="distrito"  class="selectpicker"  multiple title="Seleccione una o distritos">
                                               </select>
-                                              <input type="hidden" id="distritosM" name="distritosM" multiple title="Seleccione Provincia" data-live-search="true">
+                                              <input type="hidden" id="distritosM" name="distritosM" multiple title="Seleccione Provincia" >
                                             </div>
                                       </div>
                               </div>
@@ -303,7 +303,7 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                             <label for="name" style="text-align:left">Funcion<span class="required">*</span>
                                         </label>
-                                             <select id="cbxFuncion" name="cbxFuncion" class="selectpicker" data-live-search="true"  title="Elija una funcion">
+                                             <select id="cbxFuncion" name="cbxFuncion" class="selectpicker"   title="Elija una funcion">
                                              </select>
                                          </div>
                                       </div>
@@ -312,7 +312,7 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                              <label  for="textbox"><span class="required">Division</span>
                                         </label>
-                                               <select id="cbxDivFunc" name="cbxDivFunc" class="selectpicker" data-live-search="true"  title="Elija division funcional">
+                                               <select id="cbxDivFunc" name="cbxDivFunc" class="selectpicker"  title="Elija division funcional">
                                             </select>
                                             </div>
                                       </div>
@@ -321,7 +321,7 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                           <label for="textbox"><span class="required">Grupo</span>
                                         </label>
-                                                <select id="cbxGrupoFunc" name="cbxGrupoFunc" class="selectpicker" data-live-search="true"  title="Elija grupo funcional">
+                                                <select id="cbxGrupoFunc" name="cbxGrupoFunc" class="selectpicker"  title="Elija grupo funcional">
                                             </select>
                                             </div>
                                       </div>
@@ -350,7 +350,7 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                <label  for="textbox"><span class="required">PIM</span>
                                                 </label>
-                                                 <select id="cbxMetaPresupuestal" name="cbxMetaPresupuestal" class="selectpicker" data-live-search="true"  title="Elija PIM">  
+                                                 <select id="cbxMetaPresupuestal" name="cbxMetaPresupuestal" class="selectpicker"   title="Elija PIM">  
                                                  </select>
                                             </div>
                                       </div>
@@ -362,7 +362,7 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                             <label  for="name">Fuente Finan.<span class="required">*</span>
                                             </label>
-                                            <select id="cbxFuenteFinanc" name="cbxFuenteFinanc" class="selectpicker" data-live-search="true"  title="Elija fuente de financiamiento">
+                                            <select id="cbxFuenteFinanc" name="cbxFuenteFinanc" class="selectpicker" title="Elija fuente de financiamiento">
                                             </select>
                                          </div>
                                       </div>
@@ -371,7 +371,7 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                              <label for="textbox"><span class="required">Rubro Ejecucion</span>
                                              </label>
-                                              <select id="cbxRubro" name="cbxRubro" class="selectpicker" data-live-search="true"  title="Elija Rubro">
+                                              <select id="cbxRubro" name="cbxRubro" class="selectpicker"  title="Elija Rubro">
                                               </select>
                                             </div>
                                       </div>
@@ -380,7 +380,7 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                <label  for="textbox"><span class="required">Modalidad</span>
                                                 </label>
-                                                 <select id="cbxModalidadEjec" name="cbxModalidadEjec" class="selectpicker" data-live-search="true"  title="Elija Modalidad de Ejecucion">
+                                                 <select id="cbxModalidadEjec" name="cbxModalidadEjec" class="selectpicker"   title="Elija Modalidad de Ejecucion">
                                                 </select>
                                             </div>
                                       </div>
@@ -391,7 +391,7 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                             <label  for="name">Programa<span class="required">*</span>
                                             </label>
-                                              <select id="cbxProgramaPres" name="cbxProgramaPres" class="selectpicker" data-live-search="true"  title="Elija Programa presupuestal">
+                                              <select id="cbxProgramaPres" name="cbxProgramaPres" class="selectpicker"  title="Elija Programa presupuestal">
                                             </select>
                                          </div>
                                       </div>
