@@ -69,6 +69,7 @@ public function __construct(){
    );  
 
 	$this->session->set_userdata($data);
+
 	$this->load->view('layout/Pmi/header');
 	$this->load->view('Front/Pmi/frmMProyectoInversion');
 	$this->load->view('layout/Pmi/footer');

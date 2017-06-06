@@ -89,6 +89,7 @@ class Programacion extends CI_Controller {/* Mantenimiento de sector entidad Y s
       $id_proyecto_filtro="";
       $año_apertura_actual=$this->input->post('AnioCartera');
       $datos=$this->Model_Programacion->GetProgramacion($id_proyecto_filtro,$año_apertura_actual);
+      $this->session->sess_destroy();
       echo json_encode($datos);
       }
       else

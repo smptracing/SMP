@@ -9,9 +9,10 @@
                 });*/
              //FIN PARA LIMPIAR LOS DATOS DE LOS MODALES
               
+              
               $("#MostrarCarteraAnios").click(function(){
-                Aniocartera=$("#Aniocartera").val();
-                 $('select[name=cbCartera]').val(Aniocartera);
+                  Aniocartera=$("#Aniocartera").val();
+                  $('select[name=cbCartera]').val(Aniocartera);
                   $('select[name=cbCartera]').change();
                   $('.selectpicker').selectpicker('refresh'); 
               });
@@ -24,8 +25,20 @@
 
             listaMontosTemporales();
             listaProyectoIprogramadoA();//para mostrar y actualizar
-            cartera="2017";
-            listaProyectoIprogramado(cartera);/*llamar proyecto de inversion programado*/
+            var AnioCartera=$("#Aniocartera").val();
+            if(AnioCartera=="")
+            {
+                cartera="2017";
+                listaProyectoIprogramado(cartera);/*llamar proyecto de inversion programado*/
+                
+            }else
+            {
+                //alert(AnioCartera);
+                cartera=AnioCartera;
+                 $('#Aniocartera option:contains("2016")').attr('selected','selected');
+                listaProyectoIprogramado(cartera);/*llamar proyecto de inversion programado*/  
+            }
+
             $("#cbCartera").change(function(){
               var cartera=$("#cbCartera").val();
                listaProyectoIprogramado(cartera);/*llamar proyecto de inversion programado*/

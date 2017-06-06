@@ -37,24 +37,31 @@
                                             
                                                   <div class="col-md-12 col-sm-12 col-xs-12">
                                                         <div class="x_panel">
-                                                            <button id="btn-NuevoProyectoI" type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraPIP">  <span class="fa fa-plus-circle"></span> Nuevo </button>
+                                                        <div class="col-xs-2">
+                                                            <button id="btn-NuevoProyectoI" type="button" class="btn btn-primary " data-toggle="modal" data-target="#VentanaRegistraPIP">  <span class="fa fa-plus-circle"></span> Nuevo </button>
+                                                        </div>
+                                                        <div class="col-xs-2">
+                                                            <form action="<?php echo base_url('index.php/ReporteProgramacion/action');?>" method="POST" >
+                                                              <button  type="submit" class="btn btn-primary">  <span class="fa fa-file-text"></span> Exportar exel</button>                 
+                                                            </form>
+                                                        </div>
+                                                       <div class="col-sm-1" style="background:#f5f7fa">
+                                                           Cartera
+                                                       </div>
+                                                        <div class="col-xs-2">
+                                                              <select  id="cbCartera" name="cbCartera" value="cartera" ></select>
+                                                              <input type="hidden" id="Aniocartera" value="<?php echo $this->session->userdata('AnioC'); ?>">                                                                          
+
+                                                       </div>
+                    
+                                                       <div class="col-xs-2">
+                                                       </div>
+                                                       <div class="col-xs-2">
                                                             <button id="btn-Importar" type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaImportar">  <span class="fa fa-plus-circle"></span> Importar Excel </button>
-                                                            
-                                                          <div class="x_title">
-                                                
-            
-                                                              
-                                                            <div class="clearfix"></div>
-                                                              
-                                                          </div>
+                                                       </div>
+          
                                                           <div class="x_content">
-                                                              <div style="background:#f5f7fa">             
-                                                                    <input type="hidden" id="Aniocartera" value="<?php echo $this->session->userdata('AnioC'); ?>">
-                                                                    <center>
-                                                                    CARTERAS:Cartera <?php echo $this->session->userdata('AnioC'); ?> <select id="cbCartera" name="cbCartera"  class="selectpicker" data-live-search="true" >
-                                                                    </select>
-                                                                    <button id="MostrarCarteraAnios">Mostar Cartera</button>
-                                                                  </center>
+                                                              <div class="col-xs-2" style="background:#f5f7fa">                   
                                                               </div>
                                                         <table id="table-ProyectoInversionProgramado" class="table table-striped table-bordered table-hover table-responsive display  compact " ellspacing="0" width="100%">
                                                               <thead>
@@ -102,12 +109,7 @@
                                                       </div>
                                                      
                                             </div>
-                                         <!-- / fin tabla de brechas desde el row -->
-                                                <form action="<?php echo base_url('index.php/ReporteProgramacion/action');?>" method="POST" >
-
-                                                  <button  type="submit" class="btn btn-primary">  <span class="fa fa-file-text"></span> Exportar exel</button>
-                                                                  
-                                                </form>
+                                        
 
                                         </div>
                                            <!-- / fin panel de brechas desde el row -->

@@ -49,11 +49,12 @@
                                 "columns":[
                                     {"data":"id_cartera"},
                                     {"data":"anios",
+                                    /*"mRender": function ( data, type, full ) {
+                                     return '<a style="font-weight:normal;font-size:15" type="button" class="CambioCartera btn btn-link" data-toggle="modal" data-target="#CambioCartera" href="/codigo_unico_pi/' + data + '">' + data+ '</a>';
+                                      }*/
                                      "mRender": function ( data, type, full ) {
                                      return '<a  style="font-weight:normal;font-size:15,background-color: #d8da3d"  href="getCarteraAnio/' + data + '">' + data + '</a>';
                                       }
-                                        
-
                                     },
                                     {"data":"fecha_inicio_cartera"},
                                     {"data":"fecha_cierre_cartera"},
@@ -70,13 +71,22 @@
                             var txt_IdfuncionM=data.id_cartera;
                           
                         } );
+                        CambioCartera("#table-CarteraInv",table);  //obtener data de funcion para agregar  AGREGAR 
 
                 }
           //FIN TRAER DATOS DE LA CARTERA ACTUAL PARA SU PROGRAMACION 
 /*FIN DE LISTAR MODALIDAD EJECUCION EN UN DATATABLE*/
 
 //-------------- FIN MANTENIMIENTO MODALIDAD DE EJECUCION----------------------
+var CambioCartera=function(tbody,table){
+                      $(tbody).on("click","a.CambioCartera",function(){
+                        var data=table.row( $(this).parents("tr")).data();
+                        var AnoCartera=data.anios;
+                        $("#AnioCartera").val(AnoCartera);
+                        console.log(AnioCartera);
 
+                      });
+}
 function listarCarteraAnios()
           {
             event.preventDefault();

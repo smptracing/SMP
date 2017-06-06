@@ -167,5 +167,20 @@
   </div>
 
 <!-- fin ventana para registrar una modalidad  de ejecucion -->
+<div class="modal fade" id="CambioCartera" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+        </div>
+        <div class="modal-body">
+          <input type="text" id="AnioCartera">
+          <center><p><h4>Mostrar Cartera 2017</h4></p>
+          <button type="button" id="Btn_SiCartera" class="btn btn-info">Si</button>
+          <button type="button" class="Btn_NoCartera">No</button></center>
+        </div>
 
+      </div>
+      
+    </div>
+  </div>
 
