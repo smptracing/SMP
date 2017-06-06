@@ -45,7 +45,8 @@ class ReporteProgramacion extends CI_Controller {
       $column++;
     }
     $valor="";//para traer la programacion mandando un parametro vacio
-    $employee_data = $this->Model_Programacion->ExelProgramacionProyectos($valor);
+    $año_apertura_actual="2017";//observacion
+    $employee_data = $this->Model_Programacion->ExelProgramacionProyectos($valor,$año_apertura_actual);
     $excel_row = 3;//para decir donde va a empezar 
     $departamento="Apurímac";
     $funtefinanciamiento="";
