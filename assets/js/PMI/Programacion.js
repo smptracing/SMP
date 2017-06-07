@@ -9,7 +9,7 @@
                 });*/
              //FIN PARA LIMPIAR LOS DATOS DE LOS MODALES
               
-              
+
               $("#MostrarCarteraAnios").click(function(){
                   Aniocartera=$("#Aniocartera").val();
                   $('select[name=cbCartera]').val(Aniocartera);
@@ -130,6 +130,7 @@
                     });     
                 //FIN ACTUALIZAR PROGRAMACION   
              // TRAER DATOS DE LA CARTERA ACTUAL PARA SU PROGRAMACION
+
                 var  listaCarteraInversionFechaActual=function()
                 {
                     $.ajax({
@@ -144,6 +145,8 @@
                               $("#textidCartera").val(id_cartera);
                              $("#txtCartera").val(fechaActual);
                               $("#AnioProgramado").val(fechaActual+suma);
+
+                              $("#AnioProgramadoOpeMant").val(fechaActual+suma);
                               
                             };
                         }
@@ -185,11 +188,10 @@
                             type:"POST",
                             data:{AnioProgramadoOpeMant:AnioProgramadoOpeMant,txt_MontoProgramado:txt_MontoProgramado,txt_MontoOperacionMante:txt_MontoOperacionMante},
                             success:function(respuesta){
-                              alert(respuesta);     
+                              alert(respuesta); 
+                                listaMontosTemporales();
                             }
                           });
-                   listaProyectoIprogramado();
-                  $('#table-Programacion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
                 });
           //FIN GUARDAR LOS MONTOS PROGRAMADOS DE OPERACION Y MANTENIMIENTO EN UNA TABLA TEMPORAL    
           // TRAER DATOS DEL ULTIMO PROYECTO DE INVERSION PARA SU PROGRAMACION
@@ -269,6 +271,7 @@ function  GuardarProyectos(id_ue,id_naturaleza_inv,id_tipologia_inv,id_tipo_inve
   });
 }
 var suma=0;
+var fechaActual="";
   var listaMontosTemporales=function()
   {
     html1="";
@@ -288,6 +291,7 @@ var suma=0;
                          suma=suma+1;
                          if(suma<4){
                            $("#AnioProgramado").val(fechaActual+suma);
+                           $("#AnioProgramadoOpeMant").val(fechaActual+suma);
                          }
                          else
                          {
