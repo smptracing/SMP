@@ -64,9 +64,7 @@ public function __construct(){
 
 //FIN INSERTAR UNA CARTERA DE INVERSION
     function getCarteraAnio($anio){
-	$data = array( 
-   'AnioC'  => $anio
-   );  
+	$data = array('AnioC' => $anio);  
 
 	$this->session->set_userdata($data);
 

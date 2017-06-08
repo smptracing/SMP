@@ -72,13 +72,50 @@
                                                                   <th class="col-sm-1"><center>Inversión</center></th>
                                                                   <th class="col-sm-1"><center>Prioridad</center></th>   
                                                                   <th class="col-sm-1"><center>Brecha</center></th>                                                               
-                                                                  <th class="col-sm-1"><center><div id="programacion1">2018</center></div></th>
-                                                                  <th class="col-sm-1"><center><div id="programacion2">2019</center></div></th>
-                                                                  <th class="col-sm-1"><center><div id="programacion3">2020</center></div></th>
+                                                                  <th class="col-sm-1"><center><div id="programacion1">
+                                                                  <?php if($this->session->userdata('AnioC')==""){?>
+                                                                             <h6><label id="AnioProgramadoActual"></label></h6></center></div></th>
+                                                                  <?php }else{?>
+                                                                  <?php echo ($this->session->userdata('AnioC')+1); ?></center></div></th>
+                                                                  <?php }?>
 
-                                                                  <th class="col-sm-1"><center><div id="programacion1">2018</center></div></th>
-                                                                  <th class="col-sm-1"><center><div id="programacion2">2019</center></div></th>
-                                                                  <th class="col-sm-1"><center><div id="programacion3">2020</center></div></th>
+
+                                                                  <th class="col-sm-1"><center><div id="programacion2">
+                                                                  <?php if($this->session->userdata('AnioC')==""){?>
+                                                                            <h6><label id="AnioProgramadoActual1"></label></h6></center></div></th>
+                                                                  <?php }else{?>
+                                                                  <?php echo ($this->session->userdata('AnioC')+2); ?></center></div></th>
+                                                                  <?php }?>        
+
+
+                                                                  <th class="col-sm-1"><center><div id="programacion3">
+                                                                  <?php if($this->session->userdata('AnioC')==""){?>
+                                                                            <h6><label id="AnioProgramadoActual2"></label></h6></center></div></th>
+                                                                  <?php }else{?>
+                                                                  <?php echo ($this->session->userdata('AnioC')+3); ?></center></div></th>
+                                                                  <?php }?>
+
+                                                                  <th class="col-sm-1"><center><div id="programacion1">
+                                                                    <?php if($this->session->userdata('AnioC')==""){?>
+                                                                            <h6><label id="AnioProgramadoActualM"></label></h6></center></div></th>
+                                                                  <?php }else{?>
+                                                                  <?php echo ($this->session->userdata('AnioC')+1); ?></center></div></th>
+                                                                  <?php }?>
+
+                                                                  <th class="col-sm-1"><center><div id="programacion2">
+                                                                  <?php if($this->session->userdata('AnioC')==""){?>
+                                                                            <h6><label id="AnioProgramadoActualM1"></label></h6></center></div></th>
+                                                                  <?php }else{?>
+                                                                  <?php echo ($this->session->userdata('AnioC')+2); ?></center></div></th>
+                                                                  <?php }?>
+                                                                  
+
+                                                                  <th class="col-sm-1"><center><div id="programacion3">
+                                                                  <?php if($this->session->userdata('AnioC')==""){?>
+                                                                            <h6><label id="AnioProgramadoActualM2"></label></h6></center></div></th>
+                                                                  <?php }else{?>
+                                                                  <?php echo ($this->session->userdata('AnioC')+3); ?></center></div></th>
+                                                                  <?php }?>
 
                                                                   <th class="col-sm-1"><center> Tipo de Inversión</center></th>
                                                                   <th class="col-sm-1"><center>Tipología</center></th>

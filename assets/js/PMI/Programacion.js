@@ -9,7 +9,7 @@
                 });*/
              //FIN PARA LIMPIAR LOS DATOS DE LOS MODALES
               
-
+             
               $("#MostrarCarteraAnios").click(function(){
                   Aniocartera=$("#Aniocartera").val();
                   $('select[name=cbCartera]').val(Aniocartera);
@@ -43,7 +43,7 @@
               var cartera=$("#cbCartera").val();
                listaProyectoIprogramado(cartera);/*llamar proyecto de inversion programado*/
             })
-  
+             ultimaProgramacion();
              $("#btn-siguiente").click(function()//para que cargue el como una vez echo click sino repetira datos
                     {
                     
@@ -114,20 +114,7 @@
                     location.reload(true);  
                 }); 
                 //Actualizar programacion
-                $("#form-ActualizarProgramacion").submit(function(event)
-                    {
-                    
-                    event.preventDefault();
-                    $.ajax({
-                        url:base_url+"index.php/Programacion/UpdateProgramacion",
-                        type:$(this).attr('method'),
-                        data:$(this).serialize(),
-                        success:function(resp){
-                         swal("ACTUALIZO!", resp, "success");
-                         $('#table-modificarprogramacion').dataTable()._fnAjaxUpdate();    //SIRVE PARA REFRESCAR LA TABLA 
-                        }
-                       });
-                    });     
+   
                 //FIN ACTUALIZAR PROGRAMACION   
              // TRAER DATOS DE LA CARTERA ACTUAL PARA SU PROGRAMACION
 
@@ -152,6 +139,7 @@
                         }
                     });
                 }
+
                 //GUARDAR LOS MONTOS PROGRAMADOS EN UNA TABLA TEMPORAL
                 $("#btn-GuardarMontoProgramado").click(function()
                 {
@@ -255,6 +243,30 @@
            //AÑADIR 
  });
 
+                var  ultimaProgramacion=function()
+                {
+                    $.ajax({
+                        "url":base_url +"index.php/CarteraInversion/GetCarteraInvFechAct",
+                        type:"POST",
+                        success:function(respuesta){
+                           // alert(respuesta);
+                         var registros = eval(respuesta);
+                            for (var i = 0; i <registros.length;i++) {
+                              id_cartera=registros[i]["id_cartera"];
+                              fechaActual=registros[i]["AnioActual"];
+                              //para el control de la cabecera de la programacion y los años
+                              $("#AnioProgramadoActual").html(fechaActual+1);
+                              $("#AnioProgramadoActual1").html(fechaActual+2);
+                              $("#AnioProgramadoActual2").html(fechaActual+2);
+
+                              //monto para operacion y mantenimiento
+                               $("#AnioProgramadoActualM").html(fechaActual+1);
+                               $("#AnioProgramadoActualM1").html(fechaActual+2);
+                               $("#AnioProgramadoActualM2").html(fechaActual+3);
+                            };
+                        }
+                    });
+                }
 
 function  GuardarProyectos(id_ue,id_naturaleza_inv,id_tipologia_inv,id_tipo_inversion,id_grupo_funcional_inv,id_nivel_gob,id_meta_pres,id_programa_pres,codigo_unico_pi,nombre_pi,costo_pi,devengado_ac_pi,distrito,id_estado_ciclo,id_fuente_finan,id_modalidad_ejec){
    event.preventDefault();
