@@ -57,9 +57,8 @@
 
                          <th class="col-sm-3">
                                   <div class="count green">
-                                     <CENTER> <a href="<?php echo site_url('PrincipalPmi/pmi'); ?>">
+                                     <CENTER> <a href="<?php echo site_url('PrincipalFyE/Formulacion_Eval'); ?>">
                                    <img src="<?php echo base_url(); ?>assets/images/2.png" class="img-rounded" alt="Cinque Terre" width="160" height="140"></CENTER> </a>
-
                                    <center><span class="count_top">FORMULACION Y EVALUACION</span></center>
                                   <center><h6><i>Formulación de Proyectos de Inversión</i></h6></center>
                                   </div>
