@@ -102,7 +102,7 @@
                 </ul>
                 <h3></i>Configuración</h3>
                 <ul class="nav side-menu">
-
+                        <li><a href="<?php echo site_url('Sector/'); ?>">Sector</a></li>
                           <li><a href="<?php echo site_url('CadenaFuncional/'); ?>"> <i class="fa fa-code-fork"></i></i>  Cadena Funcional</a></li>
                         <li><a href="<?php echo site_url('TipologiaInversion/'); ?>"><i class="fa fa-cogs"></i>  Tipologia de inversion</a></li>
                          <li><a href="<?php echo site_url('InformacionPresupuestal/'); ?>"><i class="fa fa-calculator"></i>  Informacion Presupuestal</a></li>
