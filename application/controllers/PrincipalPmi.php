@@ -2,7 +2,10 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class PrincipalPmi extends CI_Controller {
-
+public function __construct(){
+      parent::__construct();
+      $this->load->model('Model_DashboardPmi');
+	}
 	/**
 	 * Index Page for this controller.
 	 *
@@ -21,6 +24,18 @@ class PrincipalPmi extends CI_Controller {
 	public function pmi()
 	{
 		$this->_load_layout('pmi');
+	}
+	 function EstadisticaPipProvinc()
+	{
+		if ($this->input->is_ajax_request()) 
+		{
+		$datos=$this->Model_DashboardPmi->EstadisticaPipProvinc();
+		echo json_encode($datos);
+		}
+		else
+		{
+			show_404();
+		}
 	}
 	function _load_layout($template)
     {
