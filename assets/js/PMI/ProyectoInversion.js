@@ -396,7 +396,7 @@
                 {
                     var table=$("#table-ProyectoInversion").DataTable({
                      "processing":true,
-                     "serverSide":false,
+                     "serverSide":true,
                      destroy:true,
                          "ajax":{
                                     "url":base_url+"index.php/ProyectoInversion/GetProyectoInversion",

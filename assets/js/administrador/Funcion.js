@@ -40,8 +40,8 @@
                 var listaFuncion=function()
                 {
                     var table=$("#table-Funcion").DataTable({
-                     "processing":true,
-                     "serverSide":false,
+                     "processing": true,
+                      "serverSide": true,
                      destroy:true,
 
                          "ajax":{
