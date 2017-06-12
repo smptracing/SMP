@@ -316,7 +316,6 @@ var fechaActual="";
                 {
                     var table=$("#table-ProyectoInversionProgramado").DataTable({
                      "processing":true,
-                     "serverSide":false,
                       "scrollY": 350,
                       "scrollX": true,
                       "scrollCollapse": true,

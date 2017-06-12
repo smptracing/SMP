@@ -85,7 +85,7 @@
 
     <script src="<?php echo base_url(); ?>assets/build/js/custom.min.js"></script>
 
-  <script src="<?php echo base_url(); ?>assets/vendors/butons/buttons.colVis.min.js"></script>
+   <script src="<?php echo base_url(); ?>assets/vendors/butons/buttons.colVis.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendors/butons/dataTables.select.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendors/butons/dataTables.buttons.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendors/butons/buttons.flash.min.js"></script>
@@ -93,6 +93,7 @@
     <script src="<?php echo base_url(); ?>assets/vendors/butons/buttons.print.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/plugins/input-mask/jquery.inputmask.min.js"></script> 
 
+  
 
     <!-- PMI -->
     <script src="<?php echo base_url(); ?>assets/js/PMI/ProyectoInversion.js"></script><!-- para la ubicacion -->

@@ -34,35 +34,35 @@
                                         <div role="tabpanel" class="tab-pane fade active in" id="tab_brecha" aria-labelledby="home-tab">
                                              <!-- /tabla de brechas desde el row -->
                                             <div class="row">  
-                                            
-                                                  <div class="col-md-12 col-sm-12 col-xs-12">
+                                              <div class="col-md-12 col-sm-12 col-xs-12">
                                                         <div class="x_panel">
-                                                        <div class="col-xs-2">
-                                                            <button id="btn-NuevoProyectoI" type="button" class="btn btn-primary " data-toggle="modal" data-target="#VentanaRegistraPIP">  <span class="fa fa-plus-circle"></span> Nuevo </button>
-                                                        </div>
-                                                        <div class="col-xs-2">
-                                                            <form action="<?php echo base_url('index.php/ReporteProgramacion/action');?>" method="POST" >
-                                                              <button  type="submit" class="btn btn-primary">  <span class="fa fa-file-text"></span> Exportar exel</button>                 
-                                                            </form>
-                                                        </div>
-                                                       <div class="col-sm-1" style="background:#f5f7fa">
-                                                           Cartera
-                                                       </div>
-                                                        <div class="col-xs-2">
-                                                              <select  id="cbCartera" name="cbCartera" value="cartera" ></select>
-                                                              <input type="hidden" id="Aniocartera" value="<?php echo $this->session->userdata('AnioC'); ?>">                                                                          
-
-                                                       </div>
-                    
-                                                       <div class="col-xs-2">
-                                                       </div>
-                                                       <div class="col-xs-2">
-                                                            <button id="btn-Importar" type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaImportar">  <span class="fa fa-plus-circle"></span> Importar Excel </button>
-                                                       </div>
-          
-                                                          <div class="x_content">
-                                                              <div class="col-xs-2" style="background:#f5f7fa">                   
-                                                              </div>
+                                                          <div class="row" class="container-fluid"> 
+                                                                
+                                                                <div class="col-md-1">
+                                                                    <button id="btn-NuevoProyectoI" type="button" class="btn btn-primary " data-toggle="modal" data-target="#VentanaRegistraPIP">  <span class="fa fa-plus-circle"></span> Nuevo </button>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                               </div>
+                                                                <div class="col-md-3">                                                         
+                                                                     <div class="col-md-4">
+                                                                        <a href="<?php echo site_url('CarteraInversion/'); ?>"><i class="fa fa-suitcase"></i>Cartera</a>
+                                                                     </div>
+                                                                     <div class="col-md-8">
+                                                                          <select  id="cbCartera" class="form-control" name="cbCartera" value="cartera" ></select>
+                                                                          <input type="hidden" id="Aniocartera" value="<?php echo $this->session->userdata('AnioC'); ?>">                                                                          
+                                                                    </div>
+                                                               </div>
+                                 
+                                                                <div class="col-md-2">
+                                                                    <form action="<?php echo base_url('index.php/ReporteProgramacion/action');?>" method="POST" >
+                                                                      <button  type="submit" class="btn btn-primary">  <span class="fa fa-file-text"></span> Exportar exel</button>                 
+                                                                    </form>
+                                                                </div>
+                                                               <div class="col-md-2">
+                                                                    <button id="btn-Importar" type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaImportar">  <span class="fa fa-plus-circle"></span> Importar Excel </button>
+                                                               </div>
+                                                          </div> 
+                                                      <div class="x_content">
                                                         <table id="table-ProyectoInversionProgramado" class="table table-striped table-bordered table-hover table-responsive display  compact " ellspacing="0" width="100%">
                                                               <thead>
                                                                 <tr>

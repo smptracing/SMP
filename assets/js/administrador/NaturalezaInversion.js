@@ -59,7 +59,7 @@
                 {
                     var myTable=$("#dynamic-table-NaturalezaInversion").DataTable({
                      "processing":true,
-                     "serverSide":false,
+                     "serverSide":true,
                      destroy:true,
 
                          "ajax":{
