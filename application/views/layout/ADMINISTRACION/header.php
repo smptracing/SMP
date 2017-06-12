@@ -109,6 +109,7 @@
                          <li><a href="<?php echo site_url('EstadoCicloInversion/'); ?>"><i class="fa fa-spinner"></i>  Ciclo de inversion</a></li>
                         <li><a href="<?php echo site_url('MUbicacion/'); ?>"><i class="fa fa-map-marker"></i>  Ubicacion Geografica</a></li>
                         <li><a href="<?php echo site_url('UnidadEjecutora/'); ?>"><i class="fa fa-tasks"></i>  Unidad Ejecutora</a></li>
+                        <li><a href="<?php echo site_url('Gerencia/'); ?>"><i class="fa fa-tasks"></i>  Gerencias</a></li>
 
 
                 </ul>
