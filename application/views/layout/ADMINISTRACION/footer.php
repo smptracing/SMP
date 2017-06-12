@@ -86,6 +86,9 @@
     <script src="<?php echo base_url(); ?>assets/js/administrador/Entidad.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/administrador/DivisionFuncional.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/administrador/Funcion.js"></script><!-- para mostra la divicion funcional la funcio y el grupo duncional-->
+
+    <script src="<?php echo base_url(); ?>assets/js/administrador/Gerencia.js"></script>
+
     <script src="<?php echo base_url(); ?>assets/js/administrador/GrupoFuncional.js"></script><!-- para mostra la divicion funcional la funcio y el grupo duncional-->
     <script src="<?php echo base_url(); ?>assets/js/administrador/MBrecha.js"></script><!-- para mostra los datos de la brecha-->
     <script src="<?php echo base_url(); ?>assets/js/administrador/MRubroE.js"></script><!-- para mostar los datos de rubro de ejecucion-->
