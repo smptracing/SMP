@@ -318,27 +318,41 @@
                   <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                  <h4>Costos generales preinversion</h4>
                   <div class="widget_summary">
                     <div class="w_left w_25">
-                      <span>Costo directo</span>
+                         <span>Abancay</span>
                     </div>
-                    <div class="w_center w_55">
+                    <div class="w_center w_25">
                       <div class="progress">
                         <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 66%;">
                           <span class="sr-only">60% Complete</span>
                         </div>
                       </div>
                     </div>
-                    <div class="w_right w_20">
-                      <span></span>
+                    <div class="w_left w_25">
+                      <span>20000</span>
                     </div>
-                    <div class="clearfix"></div>
                   </div>
 
                   <div class="widget_summary">
                     <div class="w_left w_25">
-                      <span>Costo indirecto</span>
+                      <span>Andahuaylas</span>
+                    </div>
+                    <div class="w_center w_25">
+                      <div class="progress">
+                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:100%;">
+                          <span class="sr-only">10% Complete</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="w_left w_25">
+                      <span>20000</span>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                    <div class="widget_summary">
+                    <div class="w_left w_25">
+                      <span>Antabamba</span>
                     </div>
                     <div class="w_center w_55">
                       <div class="progress">
@@ -347,10 +361,73 @@
                         </div>
                       </div>
                     </div>
-                    <div class="w_right w_20">
-                      <span></span>
+                    <div class="w_left w_25">
+                      <span>20000</span>
                     </div>
                     <div class="clearfix"></div>
+                  </div>
+                    <div class="widget_summary">
+                    <div class="w_left w_25">
+                      <span>Aymaraes</span>
+                    </div>
+                    <div class="w_center w_55">
+                      <div class="progress">
+                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:100%;">
+                          <span class="sr-only">10% Complete</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="w_left w_25">
+                      <span>20000</span>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                    <div class="widget_summary">
+                    <div class="w_left w_25">
+                      <span>Cotabamba</span>
+                    </div>
+                    <div class="w_center w_55">
+                      <div class="progress">
+                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:100%;">
+                          <span class="sr-only">10% Complete</span>
+                        </div>
+                      </div>
+                    </div>
+                   <div class="w_left w_25">
+                      <span>20000</span>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                    <div class="widget_summary">
+                    <div class="w_left w_25">
+                      <span>Chincheros</span>
+                    </div>
+                    <div class="w_center w_55">
+                      <div class="progress">
+                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:100%;">
+                          <span class="sr-only">10% Complete</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="w_left w_25">
+                      <span>20000</span>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                    <div class="widget_summary">
+                    <div class="w_left w_25">
+                      <span>Crau</span>
+                    </div>
+                    <div class="w_center w_55">
+                      <div class="progress">
+                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:100%;">
+                          <span class="sr-only">10% Complete</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="w_left w_25">
+                      <span>Crau</span>
+                    </div>
                   </div>
                   
                 </div>
