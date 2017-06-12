@@ -116,6 +116,8 @@
     <script src="<?php echo base_url(); ?>assets/js/PMI/CarteraInversion.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/PMI/Programacion.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/administrador/Importar.js"></script>
+
+    <script src="<?php echo base_url(); ?>assets/js/Estadisticas/pmi.js"></script>
     
   </body>
 </html>

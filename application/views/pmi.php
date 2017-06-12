@@ -206,7 +206,7 @@
             <div class="col-md-4 col-sm-4 col-xs-12">
               <div class="x_panel tile fixed_height_320 overflow_hidden">
                 <div class="x_title">
-                  <h2>COMPONENTES</h2>
+                  <h2>Proyectos por provincias</h2>
                   <ul class="nav navbar-right panel_toolbox">
                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                     </li>
@@ -241,37 +241,49 @@
                     </tr>
                     <tr>
                       <td>
-                        <canvas class="canvasDoughnut" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
+                        <canvas class="canvasDoughnut1" height="160" width="160" style="margin: 15px 10px 10px 0"></canvas>
                       </td>
                       <td>
                         <table class="tile_info">
                           <tr>
                             <td>
-                              <p><i class="fa fa-square blue"></i>Espacios</p>
+                              <p><i class="fa fa-square blue"></i>Abancay</p>
                             </td>
-                            <td>70%</td>
+                            <td>0%</td>
                           </tr>
                           <tr>
                             <td>
-                              <p><i class="fa fa-square green"></i>Android </p>
+                              <p><i class="fa fa-square green"></i>Andahuaylas </p>
                             </td>
                             <td>50%</td>
                           </tr>
                           <tr>
                             <td>
-                              <p><i class="fa fa-square purple"></i>Blackberry </p>
+                              <p><i class="fa fa-square purple"></i>Antabamba </p>
                             </td>
                             <td>20%</td>
                           </tr>
                           <tr>
                             <td>
-                              <p><i class="fa fa-square aero"></i>Implantacion </p>
+                              <p><i class="fa fa-square aero"></i>Aymaraes </p>
                             </td>
                             <td>15%</td>
                           </tr>
                           <tr>
                             <td>
-                              <p><i class="fa fa-square red"></i>Capacitacion</p>
+                              <p><i class="fa fa-square red"></i>Contabambas</p>
+                            </td>
+                            <td>30%</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p><i class="fa fa-square red"></i>Chincheros</p>
+                            </td>
+                            <td>30%</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p><i class="fa fa-square red"></i>Grau</p>
                             </td>
                             <td>30%</td>
                           </tr>
@@ -285,9 +297,9 @@
 
 
             <div class="col-md-4 col-sm-4 col-xs-12">
-              <div class="x_panel tile fixed_height_320">
+               <div class="x_panel tile fixed_height_320">
                 <div class="x_title">
-                  <h2>Total Ejecucion</h2>
+                  <h2>MONTO POR PROVINCIAS</h2>
                   <ul class="nav navbar-right panel_toolbox">
                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                     </li>
@@ -306,32 +318,41 @@
                   <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                  <div class="dashboard-widget-content">
-                    <ul class="quick-list">
-                      <li><i class="fa fa-calendar-o"></i><a href="#">Settings</a>
-                      </li>
-                      <li><i class="fa fa-bars"></i><a href="#">Subscription</a>
-                      </li>
-                      <li><i class="fa fa-bar-chart"></i><a href="#">Auto Renewal</a> </li>
-                      <li><i class="fa fa-line-chart"></i><a href="#">Achievements</a>
-                      </li>
-                      <li><i class="fa fa-bar-chart"></i><a href="#">Auto Renewal</a> </li>
-                      <li><i class="fa fa-line-chart"></i><a href="#">Achievements</a>
-                      </li>
-                      <li><i class="fa fa-area-chart"></i><a href="#">Logout</a>
-                      </li>
-                    </ul>
-
-                    <div class="sidebar-widget">
-                        <h4>Profile Completion</h4>
-                        <canvas width="150" height="80" id="chart_gauge_01" class="" style="width: 160px; height: 100px;"></canvas>
-                        <div class="goal-wrapper">
-                          <span id="gauge-text" class="gauge-value pull-left">0</span>
-                          <span class="gauge-value pull-left">%</span>
-                          <span id="goal-text" class="goal-value pull-right">100%</span>
-                        </div>
+                  <h4>Costos generales preinversion</h4>
+                  <div class="widget_summary">
+                    <div class="w_left w_25">
+                      <span>Costo directo</span>
                     </div>
+                    <div class="w_center w_55">
+                      <div class="progress">
+                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 66%;">
+                          <span class="sr-only">60% Complete</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="w_right w_20">
+                      <span></span>
+                    </div>
+                    <div class="clearfix"></div>
                   </div>
+
+                  <div class="widget_summary">
+                    <div class="w_left w_25">
+                      <span>Costo indirecto</span>
+                    </div>
+                    <div class="w_center w_55">
+                      <div class="progress">
+                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:100%;">
+                          <span class="sr-only">10% Complete</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="w_right w_20">
+                      <span></span>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                  
                 </div>
               </div>
             </div>
