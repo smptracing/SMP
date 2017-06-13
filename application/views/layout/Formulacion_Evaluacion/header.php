@@ -82,13 +82,22 @@
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
               <ul class="nav side-menu">
-                  <li><a href="<?php echo site_url('Inicio/'); ?>"> <i class="fa fa-home"></i> INICIO<span class=""></span></a>
+                <li><a href="<?php echo site_url('Inicio/'); ?>"> <i class="fa fa-home"></i> INICIO<span class=""></span></a>
                   </li>
                 </ul>
-
-                <h3></i>Formulación y Evaluación</h3>
                 <ul class="nav side-menu">
-                     <li><a><i class="fa fa-home"></i> MANTENIMIENO<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav side-menu">
+                      <li><a><i class="fa fa-database"></i> Principal <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                          <li><a href="e_commerce.html">Formulación</a></li>
+                          <li><a href="projects.html">Evaluación</a></li>
+                          <li><a href="project_detail.html">Aprobado</a></li>
+                        </ul>
+                        </li>            
+                      </ul>
+                </ul>
+                <ul class="nav side-menu">
+                     <li><a><i class="fa fa-gears"></i> MANTENIMIENO<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="<?php echo site_url('FEdocumento/ver_Documentos');?>">Documentos</a></li>
                       <li><a href="<?php echo site_url('FEsituacion/ver_FEsistuacion');?>">Situaciones</a></li>
