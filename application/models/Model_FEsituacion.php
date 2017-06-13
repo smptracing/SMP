@@ -24,7 +24,7 @@ class Model_FEsituacion extends CI_Model
         function add_FEsituacion($txt_SituacionFE)
         {
 
-            $this->db->query("insert into SITUACION_FE(id_situacion_fe,denom_situacion_fe) values ('4','$txt_SituacionFE')");
+            $this->db->query("insert into SITUACION_FE(denom_situacion_fe) values ('$txt_SituacionFE')");
             if ($this->db->affected_rows()> 0) 
               {
                 return true;

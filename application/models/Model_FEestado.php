@@ -24,7 +24,7 @@ class Model_FEestado extends CI_Model
         function add_FEestado($txt_denom_estado_fe)
         {
 
-            $this->db->query("insert into ESTADO_FE(id_estado,denom_estado_fe) values ('4','$txt_denom_estado_fe')");
+            $this->db->query("insert into ESTADO_FE(denom_estado_fe) values ('$txt_denom_estado_fe')");
             if ($this->db->affected_rows()> 0) 
               {
                 return true;

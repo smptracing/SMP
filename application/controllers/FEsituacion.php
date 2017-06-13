@@ -39,13 +39,13 @@ class FEsituacion extends CI_Controller {
     public function update_FEsituacion(){
     	if ($this->input->is_ajax_request()) 
 	    {
-	      $id_estado =$this->input->post("id_estado");
-	      $denom_estado_fe =$this->input->post("denom_estado_fe");
-	     if($this->Model_FEsituacion->update_FEsituacion($id_estado,$denom_estado_fe)== false)
-		       echo "Se Modificó la  Situación ";
-		      else
-		      echo "Se Modificó la  Situación ";  
-		 } 
+	      $id_situacion_fe =$this->input->post("id_situacion_fe");
+	      $denom_situacion_fe =$this->input->post("denom_situacion_fe");
+		    if($this->Model_FEsituacion->update_FEsituacion($id_situacion_fe, $denom_situacion_fe)== false)
+			       echo "Se Modificó la  Situación ";
+			      else
+			      echo "Se Modificó la  Situación "; 
+			 } 
 	     else
 	     {
 	      show_404();

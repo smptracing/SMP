@@ -14,19 +14,19 @@
                          }
                       });
                   });
-                /*$("#form-updateEstadoFE").submit(function(event)//Actualizar funcion
+                $("#form-UpdateFEnivelEstudio").submit(function(event)//Actualizar funcion
                   {
                       event.preventDefault();
                       $.ajax({
-                          url:base_url+"index.php/FEestado/updateFEestado",
+                          url:base_url+"index.php/FEnivelEstudio/Update_NivelEstudio",
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
                            swal("",resp, "success");
-                           $('#table-FEestado').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
+                           $('#table-NivelEstudio').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
                          }
                       });
-                  });*/
+                  });
 			});
                 var listanivelEstudio=function()
                 {
@@ -43,22 +43,22 @@
                                 "columns":[
                                     {"data":"id_nivel_estudio","visible": false},
                                     {"data":"denom_nivel_estudio"},
-                                    {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaupdateEstadoFE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
+                                    {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaNivelEstudioUpdate'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
 
                                 "language":idioma_espanol
                     });
-                    //FEestado("#table-FEestado",table);                
+                    FENivelEstudio("#table-NivelEstudio",table);                
                         			   	
                 }
 
-                /*var FEestado=function(tbody,table){
+                var FENivelEstudio=function(tbody,table){
                        $(tbody).on("click","button.editar",function(){
                         var data=table.row( $(this).parents("tr")).data();
-                        var id_estado=$('#id_estado').val(data.id_estado);
-                        var denom_estado_fe=$('#denom_estado_fe').val(data.denom_estado_fe);
+                        var id_estado=$('#Id_denom_nivel_estudioA').val(data.id_nivel_estudio);
+                        var denom_nivel_estudio=$('#txt_denom_nivel_estudioA').val(data.denom_nivel_estudio);
                     });
-                }*/
+                }
 
 
                 /*fin listar funcion*/

@@ -34,21 +34,21 @@ class FEnivelEstudio extends CI_Controller {/* Mantenimiento de division funcion
 	      }
 	  
     }
-    /*public function updateFEestado(){
+    public function Update_NivelEstudio(){
     	if ($this->input->is_ajax_request()) 
 	    {
-	      $id_estado =$this->input->post("id_estado");
-	      $denom_estado_fe =$this->input->post("denom_estado_fe");
-	     if($this->Model_FEestado->updateFEestado($id_estado,$denom_estado_fe)== false)
-		       echo "Se Modificó el estado ";
+	      $Id_denom_nivel_estudioA=$this->input->post("Id_denom_nivel_estudioA");
+	      $txt_denom_nivel_estudioA =$this->input->post("txt_denom_nivel_estudioA");
+	     if($this->Model_FEnivelEstudio->updateNivelEstudio($Id_denom_nivel_estudioA,$txt_denom_nivel_estudioA)== false)
+		       echo "Se Modificó el Nive de Estudio ";
 		      else
-		      echo "Se Modificó el estado ";  
+		      echo "Se Modificó el Nivel  de Estudio ";  
 		 } 
 	     else
 	     {
 	      show_404();
 	      }
-    }*/
+    }
 
 	function _load_layout($template)
     {
