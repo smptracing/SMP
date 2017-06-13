@@ -17,14 +17,16 @@ function EstaProyProvincia() {
                              document.getElementById("NumPip").innerHTML =sum; //OBTENER NUMERO DE PIP EN LA CABECERA
                              cantidadPIPAbancay=(100*(parseInt(provincias[0]))/sum);
                               document.getElementById("CantidadPAbancay").innerHTML =provincias[0]; //LISTAR CANTIDAD DE PIP REPORTE GENERAL
-                    
-                              //document.getElementById("PorcentPIPAbancay").innerHTML =cantidadPIPAbancay;  //LISTAR PORCENTAJES EN EL GRAFICO PROYECTOS POR PRIVINCIAS EN TEXTO
+                              document.getElementById("porcentajeAban").innerHTML =cantidadPIPAbancay; //LISTAR PORCENTAJES EN EL GRAFICO PROYECTOS POR PRIVINCIAS EN TEXTO
                              cantidadPIPAndahuaylas=(100*(parseInt(provincias[1]))/sum);
                              document.getElementById("CantidadPAndahuaylas").innerHTML =provincias[1];
+                             document.getElementById("porcentajeAnd").innerHTML =cantidadPIPAndahuaylas;
                              cantidadPIPAntabamba=(100*(parseInt(provincias[2]))/sum);
                              document.getElementById("CantidadPAntabamba").innerHTML =provincias[2];
+                             document.getElementById("porcentajeAnt").innerHTML =cantidadPIPAntabamba;
                              cantidadPIPAymaraes=(100*(parseInt(provincias[3]))/sum);
                               document.getElementById("CantidadPAymaraes").innerHTML =provincias[3];
+                              document.getElementById("porcentajeAy").innerHTML =cantidadPIPAymaraes;
                              cantidadPIPChincheros=(100*(parseInt(provincias[4]))/sum);
                              document.getElementById("CantidadPCotabambas").innerHTML =provincias[4];
                              cantidadPIPCotabambas=(100*(parseInt(provincias[5]))/sum);

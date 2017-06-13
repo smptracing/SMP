@@ -234,7 +234,7 @@
                           <p class="">Componente</p>
                         </div>
                         <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                          <p class="">Avance</p>
+                          <p class=""></p>
                         </div>
                       </th>
                     </tr>
@@ -248,25 +248,26 @@
                             <td>
                               <p><i class="fa fa-square blue"></i>Abancay</p>
                             </td>
-                            <td><div id="porcentajeAban"></div></td>
+                            
+                            <td><span><div id="porcentajeAban">%</div></span></td>
                           </tr>
                           <tr>
                             <td>
                               <p><i class="fa fa-square green"></i>Andahuaylas </p>
                             </td>
-                            <td> </td>
+                            <td><span><div id="porcentajeAnd">%</div></span> </td>
                           </tr>
                           <tr>
                             <td>
                               <p><i class="fa fa-square purple"></i>Antabamba </p>
                             </td>
-                            <td> </td>
+                            <td><span><div id="porcentajeAnt">%</div></span> </td>
                           </tr>
                           <tr>
                             <td>
                               <p><i class="fa fa-square aero"></i>Aymaraes </p>
                             </td>
-                            <td> </td>
+                            <td><span><div id="porcentajeAy">%</div></span> </td>
                           </tr>
                           <tr>
                             <td>

@@ -1,47 +1,45 @@
  $(document).on("ready" ,function(){
-              ListarDenominacionFE();
-               $("#form-addDenominacionFE").submit(function(event)//para añadir nueva funcion
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/DenominacionFE/AddDenominacionFE",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           swal("",resp, "success");
-                          $('#table-DenominacionFE').dataTable()._fnAjaxUpdate();   
-      
-                         }
-                      });
-                  });
+              listaTipEstudioFE();
+           
+  
 			});
- //LISTAR DENOMINACION DE FORMULACION Y EVALUACION EN TABLA
-                var ListarDenominacionFE=function()
+                var listaTipEstudioFE=function()
                 {
-                    var table=$("#table-DenominacionFE").DataTable({
+                    var table=$("#table-TipEstudioFE").DataTable({
                      "processing": true,
                       "serverSide":false,
                      destroy:true,
 
                          "ajax":{
-                                    "url":base_url+"index.php/DenominacionFE/GetDenominacionFE",
+                                    "url":base_url+"index.php/TipEstudioFE/GetTipEstudioFE",
                                     "method":"POST",
                                     "dataSrc":""
                                     },
                                 "columns":[
-                                    {"data":"id_denom_fe","visible": false},
-                                    {"data":"denom_fe"},
-                                    {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaupdateEstadoFE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
+                                    {"data":"id_tipo_est","visible": false},
+                                    {"data":"nombre_tipo_est"},
+                                    {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaNivelEstudioUpdate'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
 
                                 "language":idioma_espanol
                     });
-                    //FEestado("#table-FEestado",table);                
+                   // FENivelEstudio("#table-NivelEstudio",table);                
                         			   	
                 }
-//LISTAR DENOMINACION DE FORMULACION Y EVALUACION EN TABLA
-   
 
+                var FENivelEstudio=function(tbody,table){
+                       $(tbody).on("click","button.editar",function(){
+                        var data=table.row( $(this).parents("tr")).data();
+                        var id_estado=$('#Id_denom_nivel_estudioA').val(data.id_nivel_estudio);
+                        var denom_nivel_estudio=$('#txt_denom_nivel_estudioA').val(data.denom_nivel_estudio);
+                    });
+                }
+
+
+                /*fin listar funcion*/
+
+              
+        /*Idioma de datatablet table-sector */
             var idioma_espanol=
                 {
                     "sProcessing":     "Procesando...",
