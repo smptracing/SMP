@@ -82,7 +82,7 @@
                                     "dataSrc":""
                                     },
                                 "columns":[
-                                    {"data":"id_div_funcional"},
+                                    {"data":"id_div_funcional","visible": false},
                                     {"data":"id_funcion","visible": false},
                                     {"data":"nombre_funcion"},
                                     {"data":"codigo_div_funcional"},

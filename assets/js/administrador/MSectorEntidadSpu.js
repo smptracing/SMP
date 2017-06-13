@@ -122,7 +122,7 @@
                                     "dataSrc":""
                                     },
                                 "columns":[
-                                    {"data":"id_sector"},
+                                    {"data":"id_sector","visible": false},
                                     {"data":"nombre_sector"},
                                     {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaModificarSector'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
@@ -208,7 +208,7 @@
                                     "dataSrc":""
                                     },
                                 "columns":[
-                                    {"data":"id_entidad"},
+                                    {"data":"id_entidad","visible": false},
                                     {"data":"id_sector","visible": false},
                                     {"data":"nombre_sector"},
                                     {"data":"nombre_entidad"},
@@ -279,7 +279,7 @@
                                     "dataSrc":""
                                     },
                                 "columns":[
-                                    {"data":"id_serv_pub_asoc"},
+                                    {"data":"id_serv_pub_asoc","visible": false},
                                     {"data":"nombre_serv_pub_asoc"},
                                     {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#UpdateServicioAsociado'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],

@@ -16,7 +16,7 @@ class Model_GrupoFuncional extends CI_Model
                 return $GrupoFuncional->result();
                }else
                {
-                return false;
+                return null;
                }  
           }
       function AddGrupoFuncional($txt_codigoGfuncion,$txt_nombreGfuncion,$SelecDivisionFF,$SelecSector)

@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Model_Funcion extends CI_Model
+class Model_FEnivelEstudio extends CI_Model
 {
            public function __construct()
           {
@@ -9,23 +9,23 @@ class Model_Funcion extends CI_Model
 
           }
       /*añadir funcion*/
-        function GetFuncion()
+        function get_FEnivelEstudio()
         {
-            $funcion=$this->db->query("execute sp_Funcion_r");//listar funcion
-            if($funcion->num_rows()>0)
+            $FEnivelEstudio=$this->db->query("select* from NIVEL_ESTUDIO");//listar funcion
+            if($FEnivelEstudio->num_rows()>=0)
              {
-              return $funcion->result();
+              return $FEnivelEstudio->result();
              }else
              {
-              return is_null;
+              return false;
              }
    
         }
-        function AddFucion($txt_codigofuncion,$txt_nombrefuncion)
+        function add_NivelEstudio($denom_nivel_estudio)
         {
 
-            $this->db->query("execute sp_Funcion_c '".$txt_codigofuncion."','".$txt_nombrefuncion."'");
-            if ($this->db->affected_rows() > 0) 
+            $this->db->query("insert into NIVEL_ESTUDIO(id_nivel_estudio,denom_nivel_estudio) values ('4','$denom_nivel_estudio')");
+            if ($this->db->affected_rows()> 0) 
               {
                 return true;
               }
@@ -35,9 +35,9 @@ class Model_Funcion extends CI_Model
               }
 
         }
-        function UpdateFuncion($txt_IdfuncionM,$txt_codigofuncionM,$txt_nombrefuncionM)
+        /*function updateFEestado($id_estado,$denom_estado_fe)
         {
-           $this->db->query("execute sp_Funcion_u'".$txt_IdfuncionM."','".$txt_codigofuncionM."','".$txt_nombrefuncionM."'");
+           $this->db->query("update ESTADO_FE set denom_estado_fe='$denom_estado_fe' where id_estado='$id_estado' ");
             if ($this->db->affected_rows() > 0) 
               {
                 return true;
@@ -47,10 +47,10 @@ class Model_Funcion extends CI_Model
                 return false;
               }
 
-        }
+        }*/
         //fin funcion
        
         //fin division funciona
-        //grupo funcional
+        //grupo funcional*/
   
 }

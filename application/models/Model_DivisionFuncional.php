@@ -19,7 +19,7 @@ class Model_DivisionFuncional extends CI_Model
               return $divisionf->result();
              }else
              {
-              return false;
+              return null;
              }
    
         }

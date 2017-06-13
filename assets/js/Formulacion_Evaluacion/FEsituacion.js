@@ -1,75 +1,63 @@
  $(document).on("ready" ,function(){
-                //alert("sdas");
-               //lista();
-            //division funcional
 
-                listaFuncion();/*llamar a mi datatablet listar funcion*/
-
-                $("#form-addFuncion").submit(function(event)//para añadir nueva funcion
+              listaFEsituacion();
+                $("#form-addSituacionFE").submit(function(event)//para añadir nueva funcion
                   {
                       event.preventDefault();
                       $.ajax({
-                          url:base_url+"index.php/Funcion/AddFucion",
+                          url:base_url+"index.php/FEsituacion/add_FEsituacion",
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
                            swal("",resp, "success");
-                          $('#table-Funcion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
-                           //listaSectorCombo();//llamado para la recarga al añadir un nuevo secto
-                            listaFuncionCombo();
+                          $('#table-SituacioFE').dataTable()._fnAjaxUpdate();   
+      
                          }
                       });
                   });
-                $("#form-ModificarFuncion").submit(function(event)//Actualizar funcion
+                $("#form-UpdateSituacionFE").submit(function(event)//Actualizar funcion
                   {
                       event.preventDefault();
                       $.ajax({
-                          url:base_url+"index.php/Funcion/UpdateFuncion",
+                          url:base_url+"index.php/FEsituacion/update_FEsituacion",
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
                            swal("",resp, "success");
-                           $('#table-Funcion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
-                           listaFuncionCombo();
+                           $('#table-SituacioFE').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
                          }
                       });
-                  });    
-                //fin de  funcional
+                  });  
 			});
-			   /*listra funcion*/
-                var listaFuncion=function()
+                var listaFEsituacion=function()
                 {
-                    var table=$("#table-Funcion").DataTable({
+                    var table=$("#table-SituacioFE").DataTable({
                      "processing": true,
-                      "serverSide": true,
+                      "serverSide":false,
                      destroy:true,
 
                          "ajax":{
-                                    "url":base_url+"index.php/Funcion/GetFuncion",
+                                    "url":base_url+"index.php/FEsituacion/get_FEsituacion",
                                     "method":"POST",
                                     "dataSrc":""
                                     },
                                 "columns":[
-                                    {"data":"id_funcion","visible": false},
-                                    {"data":"codigo_funcion"},
-                                    {"data":"nombre_funcion"},
-                                    {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaModificarFuncion'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
+                                    {"data":"id_situacion_fe","visible": false,},
+                                    {"data":"denom_situacion_fe"},
+                                    {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanasituacioFE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
 
                                 "language":idioma_espanol
                     });
-                    FuncionData("#table-Funcion",table);  //obtener data de funcion para agregar  AGREGAR                 
+                    SituacioFE("#table-SituacioFE",table);                
                         			   	
                 }
 
-                var FuncionData=function(tbody,table){
+                var SituacioFE=function(tbody,table){
                        $(tbody).on("click","button.editar",function(){
                         var data=table.row( $(this).parents("tr")).data();
-                        var txt_IdfuncionM=$('#txt_IdfuncionM').val(data.id_funcion);
-                        var txt_codigofuncionM=$('#txt_codigofuncionM').val(data.codigo_funcion);
-                        var txt_nombrefuncionM=$('#txt_nombrefuncionM').val(data.nombre_funcion);
-
-
+                        var id_situacion_fe=$('#id_situacion_fe').val(data.id_situacion_fe);
+                        var denom_situacion_fe=$('#denom_situacion_fe').val(data.denom_situacion_fe);
                     });
                 }
 
@@ -104,16 +92,4 @@
                     }
                 }
 
-        /* function lista()
-					{
-						event.preventDefault();
-						$.ajax({
-              "url": base_url+"index.php/MFuncion/GetGrupoFuncional",
-							type:"POST",
-							success:function(respuesta){
-								alert(respuesta);
-							
-
-							}
-						});
-					}*/
+  

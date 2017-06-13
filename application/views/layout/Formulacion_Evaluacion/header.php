@@ -88,9 +88,15 @@
 
                 <h3></i>Formulación y Evaluación</h3>
                 <ul class="nav side-menu">
-                     <li><a href=""><i class="fa fa-suitcase"></i> ............ </a></li>
-                      <li><a href=""><i class="fa fa-sitemap"></i> ............</a></li>
-                      <li><a href=""><i class="fa fa-sliders"></i> ............ </a></li>
+                     <li><a><i class="fa fa-home"></i> MANTENIMIENO<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="<?php echo site_url('FEdocumento/ver_Documentos');?>">Documentos</a></li>
+                      <li><a href="<?php echo site_url('FEsituacion/ver_FEsistuacion');?>">Situaciones</a></li>
+                      <li><a href="<?php echo site_url('FEestado/ver_EstadoFE');?>">Estado</a></li>
+                      <li><a href="index3.html">Denominación</a></li>
+                    </ul>
+                  </li>
+
                 </ul>
               </div>
             </div>

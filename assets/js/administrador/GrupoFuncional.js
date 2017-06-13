@@ -137,7 +137,7 @@
                                     "dataSrc":""
                                     },
                                 "columns":[
-                                    {"data":"id_grup_funcional"},
+                                    {"data":"id_grup_funcional","visible": false},
                                     {"data":"codigo_grup_funcional"},
                                     {"data":"nombre_grup_funcional"},
                                     {"data":"id_div_funcional"},

@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Model_Funcion extends CI_Model
+class Model_FEsituacion extends CI_Model
 {
            public function __construct()
           {
@@ -9,23 +9,23 @@ class Model_Funcion extends CI_Model
 
           }
       /*añadir funcion*/
-        function GetFuncion()
+        function get_FEsituacion()
         {
-            $funcion=$this->db->query("execute sp_Funcion_r");//listar funcion
-            if($funcion->num_rows()>0)
+            $FEsituacion=$this->db->query("select* from Situacion_FE");//listar funcion
+            if($FEsituacion->num_rows()>=0)
              {
-              return $funcion->result();
+              return $FEsituacion->result();
              }else
              {
-              return is_null;
+              return false;
              }
    
         }
-        function AddFucion($txt_codigofuncion,$txt_nombrefuncion)
+        function add_FEsituacion($txt_SituacionFE)
         {
 
-            $this->db->query("execute sp_Funcion_c '".$txt_codigofuncion."','".$txt_nombrefuncion."'");
-            if ($this->db->affected_rows() > 0) 
+            $this->db->query("insert into SITUACION_FE(id_situacion_fe,denom_situacion_fe) values ('4','$txt_SituacionFE')");
+            if ($this->db->affected_rows()> 0) 
               {
                 return true;
               }
@@ -35,9 +35,9 @@ class Model_Funcion extends CI_Model
               }
 
         }
-        function UpdateFuncion($txt_IdfuncionM,$txt_codigofuncionM,$txt_nombrefuncionM)
+        function update_FEsituacion($id_situacion_fe,$denom_situacion_fe)
         {
-           $this->db->query("execute sp_Funcion_u'".$txt_IdfuncionM."','".$txt_codigofuncionM."','".$txt_nombrefuncionM."'");
+           $this->db->query("update SITUACION_FE set denom_situacion_fe='$denom_situacion_fe' where id_situacion_fe='$id_situacion_fe' ");
             if ($this->db->affected_rows() > 0) 
               {
                 return true;
