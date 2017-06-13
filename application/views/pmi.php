@@ -2,33 +2,32 @@
           <!-- top tiles -->
           <div class="row tile_count">
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i>N° DE PROYECTOS</span>
-              <div class="count">2500</div>
-              <span class="count_bottom"><i class="green">100% </i>PROGRAMADO</span>
+              <span class="count_top"><i class="fa fa-user"></i> N° DE PROYECTOS</span>
+              <div class="count"><center><div id="NumPip"></div></center></div>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-clock-o"></i>MONTO TOTAL</span>
+              <span class="count_top"><i class="fa fa-clock-o"></i> MONTO TOTAL</span>
               <div class="count"><strong><h4>250000000</h4></strong></div>
               <span class="count_bottom"><i class="green">4% </i> From last Week</span>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i>COSTO INVERSIÓN </span>
+              <span class="count_top"><i class="fa fa-user"></i> COSTO INVERSIÓN </span>
               <div class="count">2500</div>
               <span class="count_bottom"><i class="green">4% </i> From last Week</span>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i>SALDO PROGRAMADO</span>
+              <span class="count_top"><i class="fa fa-user"></i> SALDO PROGRAMADO</span>
               <div class="count">2500</div>
               <span class="count_bottom"><i class="green">4% </i> From last Week</span>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i>PROGRAMACIÓN</span>
+              <span class="count_top"><i class="fa fa-user"></i> PROGRAMACIÓN</span>
               <div class="count">2500</div>
               <span class="count_bottom"><i class="green">4% </i> From last Week</span>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i>O Y M</span>
-              <div class="count">2500</div>
+              <span class="count_top"><i class="fa fa-user"></i> OPER Y MANT.</span>
+              <div class="count">2500</div> 
               <span class="count_bottom"><i class="green">4% </i> From last Week</span>
               
             </div>
@@ -249,43 +248,43 @@
                             <td>
                               <p><i class="fa fa-square blue"></i>Abancay</p>
                             </td>
-                            <td>0%</td>
+                            <td><div id="porcentajeAban"></div></td>
                           </tr>
                           <tr>
                             <td>
                               <p><i class="fa fa-square green"></i>Andahuaylas </p>
                             </td>
-                            <td>50%</td>
+                            <td> </td>
                           </tr>
                           <tr>
                             <td>
                               <p><i class="fa fa-square purple"></i>Antabamba </p>
                             </td>
-                            <td>20%</td>
+                            <td> </td>
                           </tr>
                           <tr>
                             <td>
                               <p><i class="fa fa-square aero"></i>Aymaraes </p>
                             </td>
-                            <td>15%</td>
+                            <td> </td>
                           </tr>
                           <tr>
                             <td>
                               <p><i class="fa fa-square red"></i>Contabambas</p>
                             </td>
-                            <td>30%</td>
+                            <td> </td>
                           </tr>
                           <tr>
                             <td>
                               <p><i class="fa fa-square red"></i>Chincheros</p>
                             </td>
-                            <td>30%</td>
+                            <td> </td>
                           </tr>
                           <tr>
                             <td>
                               <p><i class="fa fa-square red"></i>Grau</p>
                             </td>
-                            <td>30%</td>
+                            <td> </td>
                           </tr>
                         </table>
                       </td>

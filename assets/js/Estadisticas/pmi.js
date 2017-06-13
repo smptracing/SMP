@@ -14,8 +14,11 @@ function EstaProyProvincia() {
                                sum=provincias[i]+sum;
 
                             };
+                             document.getElementById("NumPip").innerHTML =sum; //OBTENER NUMERO DE PIP EN LA CABECERA
                              cantidadPIPAbancay=(100*(parseInt(provincias[0]))/sum);
                               document.getElementById("CantidadPAbancay").innerHTML =provincias[0]; //LISTAR CANTIDAD DE PIP REPORTE GENERAL
+                    
+                              //document.getElementById("PorcentPIPAbancay").innerHTML =cantidadPIPAbancay;  //LISTAR PORCENTAJES EN EL GRAFICO PROYECTOS POR PRIVINCIAS EN TEXTO
                              cantidadPIPAndahuaylas=(100*(parseInt(provincias[1]))/sum);
                              document.getElementById("CantidadPAndahuaylas").innerHTML =provincias[1];
                              cantidadPIPAntabamba=(100*(parseInt(provincias[2]))/sum);
