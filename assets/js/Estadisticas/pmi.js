@@ -8,16 +8,26 @@ function EstaProyProvincia() {
                         type:"POST",
                         success:function(respuesta){
                          var registros = eval(respuesta);
+                         var sum=0;
                             for (var i = 0; i <registros.length;i++) {
                                provincias[i]=registros[i]["Cantidadpip"];
+                               sum=provincias[i]+sum;
+
                             };
-                             cantidadPIPAbancay=provincias[0];
-                             cantidadPIPAndahuaylas=provincias[1];
-                             cantidadPIPAntabamba=provincias[2];
-                             cantidadPIPAymaraes=provincias[3];
-                             cantidadPIPChincheros=provincias[4];
-                             cantidadPIPCotabambas=provincias[5];
-                             cantidadPIPGrau=provincias[6];
+                             cantidadPIPAbancay=(100*(parseInt(provincias[0]))/sum);
+                              document.getElementById("CantidadPAbancay").innerHTML =provincias[0]; //LISTAR CANTIDAD DE PIP REPORTE GENERAL
+                             cantidadPIPAndahuaylas=(100*(parseInt(provincias[1]))/sum);
+                             document.getElementById("CantidadPAndahuaylas").innerHTML =provincias[1];
+                             cantidadPIPAntabamba=(100*(parseInt(provincias[2]))/sum);
+                             document.getElementById("CantidadPAntabamba").innerHTML =provincias[2];
+                             cantidadPIPAymaraes=(100*(parseInt(provincias[3]))/sum);
+                              document.getElementById("CantidadPAymaraes").innerHTML =provincias[3];
+                             cantidadPIPChincheros=(100*(parseInt(provincias[4]))/sum);
+                             document.getElementById("CantidadPCotabambas").innerHTML =provincias[4];
+                             cantidadPIPCotabambas=(100*(parseInt(provincias[5]))/sum);
+                             document.getElementById("CantidadPChincheros").innerHTML =provincias[5];
+                             cantidadPIPGrau=(100*(parseInt(provincias[6]))/sum);
+                             document.getElementById("CantidadPGrau").innerHTML =provincias[6];
                                 if ("undefined" != typeof Chart && (console.log("init_chart_doughnut"), $(".canvasDoughnut1").length)) {
                                         var a = {
                                             type: "doughnut",
@@ -40,8 +50,7 @@ function EstaProyProvincia() {
 
                         }
                     });
-    //fin data del proyecto
-    
+    //fin data del proyecto    
 }
 $(document).ready(function () {
   EstaProyProvincia();

@@ -324,7 +324,7 @@
                     </div>
                     <div class="w_center w_25">
                       <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 66%;">
+                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 44%;">
                           <span class="sr-only">60% Complete</span>
                         </div>
                       </div>
@@ -441,7 +441,7 @@
             <div class="col-md-4 col-sm-4 col-xs-12">
               <div class="x_panel">
                 <div class="x_title">
-                  <h2>PIP<small>ETAPAS DEL PROYECTO</small></h2>
+                  <h2>PIP<small>PROYECTOS POR PROVINCIAS</small></h2>
                   <ul class="nav navbar-right panel_toolbox">
                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                     </li>
@@ -467,54 +467,110 @@
                         <div class="block">
                           <div class="block_content">
                             <h2 class="title">
-                                              <a>PROGRAMACION MULTIANUAL DE INVERSIONES</a>
-                                          </h2>
+                                <a>ABANCAY</a>
+                            </h2>
                             <div class="byline">
-                              <span>13 hours ago</span> by <a>Jane Smith</a>
+                      
                             </div>
-                            <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
+                            <p class="excerpt">CANTIDAD DE PROYECTOS:<div id="CantidadPAbancay"> </div></a>
+                            </p>
+                            <p class="excerpt">MONTO TOTAL:</a>
                             </p>
                           </div>
                         </div>
                       </li>
-                      <li>
+                       <li>
                         <div class="block">
                           <div class="block_content">
                             <h2 class="title">
-                                              <a>FORMULACION Y EVALUACION</a>
+                                <a>ANDAHUAYLAS</a>
                                           </h2>
                             <div class="byline">
-                              <span>13 hours ago</span> by <a>Jane Smith</a>
+                      
                             </div>
-                            <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
+                            <p class="excerpt">CANTIDAD DE PROYECTOS:<div id="CantidadPAndahuaylas"> </div></a>
+                            </p>
+                            <p class="excerpt">MONTO TOTAL:</a>
                             </p>
                           </div>
                         </div>
                       </li>
-                      <li>
+                        <li>
                         <div class="block">
                           <div class="block_content">
                             <h2 class="title">
-                                              <a>EJECUCION</a>
+                                <a>ANTABAMBA</a>
                                           </h2>
                             <div class="byline">
-                              <span>13 hours ago</span> by <a>Jane Smith</a>
+                      
                             </div>
-                            <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
+                            <p class="excerpt">CANTIDAD DE PROYECTOS:<div id="CantidadPAntabamba"> </div></a>
+                            </p>
+                            <p class="excerpt">MONTO TOTAL:</a>
                             </p>
                           </div>
                         </div>
                       </li>
-                      <li>
+                       <li>
                         <div class="block">
                           <div class="block_content">
                             <h2 class="title">
-                                              <a>FUNCIONAMIENTO</a>
+                                <a>AYMARAES</a>
                                           </h2>
                             <div class="byline">
-                              <span>13 hours ago</span> by <a>Jane Smith</a>
+                      
                             </div>
-                            <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
+                            <p class="excerpt">CANTIDAD DE PROYECTOS:<div id="CantidadPAymaraes"> </div></a>
+                            </p>
+                            <p class="excerpt">MONTO TOTAL:</a>
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                       <li>
+                        <div class="block">
+                          <div class="block_content">
+                            <h2 class="title">
+                                <a>COTABAMBAS</a>
+                                          </h2>
+                            <div class="byline">
+                      
+                            </div>
+                            <p class="excerpt">CANTIDAD DE PROYECTOS:<div id="CantidadPCotabambas"> </div></a>
+                            </p>
+                            <p class="excerpt">MONTO TOTAL:</a>
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                       <li>
+                        <div class="block">
+                          <div class="block_content">
+                            <h2 class="title">
+                                <a>CHINCHEROS</a>
+                                          </h2>
+                            <div class="byline">
+                      
+                            </div>
+                            <p class="excerpt">CANTIDAD DE PROYECTOS:<div id="CantidadPChincheros"></a>
+                            </p>
+                            <p class="excerpt">MONTO TOTAL:</a>
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                         <li>
+                        <div class="block">
+                          <div class="block_content">
+                            <h2 class="title">
+                                <a>GRAU</a>
+                                          </h2>
+                            <div class="byline">
+                      
+                            </div>
+                            <p class="excerpt">CANTIDAD DE PROYECTOS:<div id="CantidadPGrau"></a>
+                            </p>
+                            <p class="excerpt">MONTO TOTAL:</a>
                             </p>
                           </div>
                         </div>

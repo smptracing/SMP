@@ -37,6 +37,18 @@ public function __construct(){
 			show_404();
 		}
 	}
+	function EstadisticaMontoPipProvincias()
+	{
+		if ($this->input->is_ajax_request()) 
+		{
+		$datos=$this->Model_DashboardPmi->EstadisticaMontoPipProvincias();
+		echo json_encode($datos);
+		}
+		else
+		{
+			show_404();
+		}
+	}
 	function _load_layout($template)
     {
       $this->load->view('layout/PMI/header');
