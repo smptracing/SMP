@@ -90,8 +90,8 @@
                     <ul class="nav side-menu">
                       <li><a><i class="fa fa-database"></i> Principal <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                          <li><a href="e_commerce.html">Formulación</a></li>
-                          <li><a href="projects.html">Evaluación</a></li>
+                          <li><a href="project_detaijdjdjl.html">Formulacion</a></li>
+                          <li><a href="<?php echo site_url('EvaluacionFE/');?>">Evaluación</a></li>
                           <li><a href="project_detail.html">Aprobado</a></li>
                         </ul>
                         </li>            
@@ -104,6 +104,7 @@
                       <li><a href="<?php echo site_url('FEdocumento/ver_Documentos');?>">Documentos</a></li>
                       <li><a href="<?php echo site_url('FEsituacion/ver_FEsistuacion');?>">Situaciones</a></li>
                       <li><a href="<?php echo site_url('FEestado/ver_EstadoFE');?>">Estado</a></li>
+                      <li><a href="<?php echo site_url('EtapasFE/');?>">Etapas</a></li>
                       <li><a href="<?php echo site_url('DenominacionFE/');?>">Denominacion</a></li>
                     </ul>
                   </li>

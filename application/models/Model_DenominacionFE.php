@@ -35,4 +35,18 @@ class Model_DenominacionFE extends CI_Model
               }
         }
         //AGREGAR UNA DENOMINACION EN FORMULACION Y EVALUACION
+        function UpdateDenominacionFE($txt_IdDenominacionModiFE,$txt_DenominacionModiFE)
+        {
+           $this->db->query("update ETAPAS_FE set denom_etapas_fe='$txt_DenominacionModiFE' where id_etapa_fe='$txt_IdDenominacionModiFE' ");
+            if ($this->db->affected_rows() > 0) 
+              {
+                return true;
+              }
+              else
+              {
+                return false;
+              }
+
+        }
+
 }

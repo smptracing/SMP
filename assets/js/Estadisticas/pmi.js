@@ -33,6 +33,8 @@ function EstaProyProvincia() {
                              document.getElementById("CantidadPChincheros").innerHTML =provincias[5];
                              cantidadPIPGrau=(100*(parseInt(provincias[6]))/sum);
                              document.getElementById("CantidadPGrau").innerHTML =provincias[6];
+
+                             document.getElementById("idprogressAbanc").innerHTML =cantidadPIPAbancay;
                                 if ("undefined" != typeof Chart && (console.log("init_chart_doughnut"), $(".canvasDoughnut1").length)) {
                                         var a = {
                                             type: "doughnut",

@@ -324,7 +324,7 @@
                     </div>
                     <div class="w_center w_25">
                       <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 44%;">
+                        <div id="idprogressAbanc" class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;" >
                           <span class="sr-only">60% Complete</span>
                         </div>
                       </div>

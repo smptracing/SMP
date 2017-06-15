@@ -1,55 +1,43 @@
  $(document).on("ready" ,function(){
-              ListarDenominacionFE();
-               $("#form-addDenominacionFE").submit(function(event)//para añadir nueva funcion
+              ListarEtapasFE();
+                    $("#form-addEtapasFE").submit(function(event)//para añadir nueva funcion
                   {
                       event.preventDefault();
                       $.ajax({
-                          url:base_url+"index.php/DenominacionFE/AddDenominacionFE",
+                          url:base_url+"index.php/EtapasFE/AddEtapasFE",
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
                            swal("",resp, "success");
-                          $('#table-DenominacionFE').dataTable()._fnAjaxUpdate();   
+                          $('#table-EtapasFE').dataTable()._fnAjaxUpdate();   
       
                          }
                       });
                   });
-                $("#form-UpdateDenominacionFE").submit(function(event)//Actualizar funcion
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/DenominacionFE/UpdateDenominacionFE",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           swal("",resp, "success");
-                           $('#table-DenominacionFE').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
-                         }
-                      });
-                  }); 
+     
 			});
  //LISTAR DENOMINACION DE FORMULACION Y EVALUACION EN TABLA
-                var ListarDenominacionFE=function()
+                var ListarEtapasFE=function()
                 {
-                    var table=$("#table-DenominacionFE").DataTable({
+                    var table=$("#table-EtapasFE").DataTable({
                      "processing": true,
                       "serverSide":false,
                      destroy:true,
 
                          "ajax":{
-                                    "url":base_url+"index.php/DenominacionFE/GetDenominacionFE",
+                                    "url":base_url+"index.php/EtapasFE/GetEtapasFE",
                                     "method":"POST",
                                     "dataSrc":""
                                     },
                                 "columns":[
-                                    {"data":"id_denom_fe","visible": false},
-                                    {"data":"denom_fe"},
-                                    {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaDenominacionModFE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
+                                    {"data":"id_etapa_fe","visible": false},
+                                    {"data":"denom_etapas_fe"},
+                                    {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaupdateEstadoFE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
 
                                 "language":idioma_espanol
                     });
-                   // DenominacionFE("#table-DenominacionFE",table);                
+                    //FEestado("#table-FEestado",table);                
                         			   	
                 }
 //LISTAR DENOMINACION DE FORMULACION Y EVALUACION EN TABLA

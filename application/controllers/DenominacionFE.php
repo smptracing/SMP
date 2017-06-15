@@ -41,6 +41,23 @@ class DenominacionFE extends CI_Controller {
             }  
     }
     //FIN CONTROLADOR PARA AGREGAR UNA NUEVA DENOMINCACION EN FROUMLACION Y EVALUACION
+    //CONTROLADOR PARA ACTUALIZAR UNA NUEVA DENOMINCACION EN FORMULACION Y EVALUACION
+    public function UpdateDenominacionFE(){
+      if ($this->input->is_ajax_request()) 
+      {
+        $txt_IdDenominacionModiFE=$this->input->post("txt_IdDenominacionModiFE");
+        $txt_DenominacionModiFE =$this->input->post("txt_DenominacionModiFE");
+       if($this->Model_DenominacionFE->UpdateDenominacionFE($txt_IdDenominacionModiFE,$txt_DenominacionModiFE)== false)
+           echo "SE MODIFICO LA DENOMINACION EN FORMULACION Y EVALUACION";
+          else
+          echo "SE MODIFICO LA DENOMINACION EN FORMULACION Y EVALUACION";  
+     } 
+       else
+       {
+        show_404();
+        }
+    }
+    //FIN CONTROLADOR PARA ACTUALIZAR UNA NUEVA DENOMINCACION EN FORMULACION Y EVALUACION
 	function _load_layout($template)
     {
         $this->load->view('layout/Formulacion_Evaluacion/header');

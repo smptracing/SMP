@@ -98,7 +98,8 @@
    <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/FEestado.js"></script>
    <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/FEnivelEstudio.js"></script>
    <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/DenominacionFE.js"></script>
+   <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/EtapasFE.js"></script>
    <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/TipEstudioFE.js"></script>
-
+   <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/EvaluacionFE.js"></script>
   </body>
 </html>
