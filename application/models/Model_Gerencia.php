@@ -13,7 +13,7 @@ class Model_Gerencia extends CI_Model
     /*añadir funcion*/
     function GetGerencia()
     {
-        $funcion = $this->db->query("execute sp_Gerencia_r");//listar funcion
+        $funcion = $this->db->query("select* from gerencia");//listar funcion
         if ($funcion->num_rows() > 0) {
             return $funcion->result();
         } else {
