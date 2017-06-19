@@ -22,10 +22,12 @@ class Model_DashboardPmi extends CI_Model
 
     function EstadisticaPipEstadoCiclo()
     {
-        $sql = "--15 proyectos y solo creo que 3 estan en estado_ciclo\n"
-            . "declare @total int\n"
-            . "set @total = (select count(id_estado_ciclo) from ESTADO_CICLO_PI)\n"
-            . "SELECT dbo.ESTADO_CICLO.nombre_estado_ciclo, count(ESTADO_CICLO_PI.id_pi) AS Num_Proyectos, @total as Num_Total\n"
+        $sql = "declare @total int\n"
+            . "set @total = (select count(id_pi) from PROYECTO_INVERSION)\n"
+            . "declare @otros int\n"
+            . "set @otros = ( select count(proyecto_inversion.id_pi) from ESTADO_CICLO_PI right join PROYECTO_INVERSION \n"
+            . " on ESTADO_CICLO_PI.id_pi=PROYECTO_INVERSION.id_pi where ESTADO_CICLO_PI.id_pi is null)\n"
+            . "SELECT dbo.ESTADO_CICLO.nombre_estado_ciclo, count(ESTADO_CICLO_PI.id_pi) AS Num_Proyectos, @total as Num_Total, @otros as TotalNoCiclo\n"
             . "FROM            dbo.PROYECTO_INVERSION INNER JOIN\n"
             . "                         dbo.ESTADO_CICLO_PI ON dbo.PROYECTO_INVERSION.id_pi = dbo.ESTADO_CICLO_PI.id_pi INNER JOIN\n"
             . "                         dbo.ESTADO_CICLO ON dbo.ESTADO_CICLO_PI.id_estado_ciclo = dbo.ESTADO_CICLO.id_estado_ciclo\n"

@@ -69,18 +69,20 @@ function EstadisticasPorCiclosInversion() {
             var sql = "";
             var NumProyectos = 0;
             var total_proyectos = registros[0]["Num_Total"];
+            var total_otros = registros[0]["TotalNoCiclo"];
+            var panel_estadistica = $("#panel_estadistica_ciclo_inversion");
 
             var porcentaje = 0.00;
             for (var i = 0; i < registros.length; i++) {
                 NumProyectos = registros[i]["Num_Proyectos"];
-                porcentaje = (NumProyectos / total_proyectos) * 100;
+                porcentaje = Math.round((NumProyectos / total_proyectos) * 100);
                 sql = "<div class=\"widget_summary\">\n"
                     + "                        <div class=\"w_left w_25\">\n"
                     + "                            <span>" + registros[i]["nombre_estado_ciclo"] + "</span>\n"
                     + "                        </div>\n"
                     + "                        <div class=\"w_center w_55\">\n"
                     + "                            <div class=\"progress\">\n"
-                    + "                                <div class=\"progress-bar bg-blue\" role=\"progressbar\" aria-valuenow=\"60\"\n"
+                    + "                                <div class=\"progress-bar bg-info\" role=\"progressbar\" aria-valuenow=\"60\"\n"
                     + "                                     aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: " + porcentaje + "%;\">\n"
                     + "                                    " + porcentaje + "%\n"
                     + "                                </div>\n"
@@ -92,9 +94,30 @@ function EstadisticasPorCiclosInversion() {
                     + "                        <div class=\"clearfix\"></div>\n"
                     + "                    </div>";
 
-                $("#panel_estadistica_ciclo_inversion").append(sql);
+                panel_estadistica.append(sql);
                 //html += "<option value=" + registros[i]["id_subgerencia"] + "> " + registros[i]["denom_subgerencia"] + " </option>";
             }
+
+            porcentaje = Math.round( (total_otros / total_proyectos) * 100);
+            sql = "<div class=\"widget_summary\">\n"
+                + "                        <div class=\"w_left w_25\">\n"
+                + "                            <span>Otros</span>\n"
+                + "                        </div>\n"
+                + "                        <div class=\"w_center w_55\">\n"
+                + "                            <div class=\"progress\">\n"
+                + "                                <div class=\"progress-bar bg-info\" role=\"progressbar\" aria-valuenow=\"60\"\n"
+                + "                                     aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: " + porcentaje + "%;\">\n"
+                + "                                    " + porcentaje + "%\n"
+                + "                                </div>\n"
+                + "                            </div>\n"
+                + "                        </div>\n"
+                + "                        <div class=\"w_right w_20\">\n"
+                + "                            <span>" + total_otros + "</span>\n"
+                + "                        </div>\n"
+                + "                        <div class=\"clearfix\"></div>\n"
+                + "                    </div>";
+
+            panel_estadistica.append(sql);
         }
     });
 }
