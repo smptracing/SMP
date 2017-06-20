@@ -94,20 +94,19 @@ concat(PERSONA.nombres,' ',PERSONA.apellido_p) As nombres ,RESPONSABLE_ESTUDIO.f
     public function AddEtapaEstudio($flat, $id_etapa_estudio, $id_est_inv, $listaretapasFE_M, $dateFechaIniC, $dateFechaIniF, $txtAvanceFisico, $txadescripcion)
     {
         //  $EstadoCicloInversion = $this->db->query("execute get");
-        $EstadoCicloInversion = $this->db->query("execute sp_Gestionar_EstapaEstudio'" . $flat . "','" . $id_etapa_estudio . "', '" . $id_est_inv . "', '" . $listaretapasFE_M . "', '" . $dateFechaIniC . "', '" . $dateFechaIniF . "', '" . $txtAvanceFisico . "', '" . $txadescripcion . "' ");
-        if ($EstadoCicloInversion->num_rows() > 0) {
-            return $EstadoCicloInversion->result();
+        $EtapaEstudio = $this->db->query("execute sp_Gestionar_EstapaEstudio'" . $flat . "','" . $id_etapa_estudio . "', '" . $id_est_inv . "', '" . $listaretapasFE_M . "', '" . $dateFechaIniC . "', '" . $dateFechaIniF . "', '" . $txtAvanceFisico . "', '" . $txadescripcion . "' ");
+        if ($EtapaEstudio->num_rows() > 0) {
+            return $EtapaEstudio->result();
         } else {
             return false;
         }
     }
 
-    public function get_EstadoCicloInversion($flat, $txt_IdEstadoCicloInversion, $txt_NombreEstadoCicloInversion, $txt_DescripcionEstadoCicloInversion)
+    public function AddEstudioInversion($flat, $id_est_inv, $txtCodigoUnico, $txt_nombreEstudioInversion, $listaFuncionC, $listaTipoInversion, $listaNivelEstudio, $lista_unid_form, $lista_unid_ejec, $txadescripcion, $txtMontoInversion, $txtcostoestudio)
     {
-        //  $EstadoCicloInversion = $this->db->query("execute get");
-        $EstadoCicloInversion = $this->db->query("execute SP_Gestionar_EstadoCiclo'" . $flat . "','" . $txt_IdEstadoCicloInversion . "', '" . $txt_NombreEstadoCicloInversion . "','" . $txt_DescripcionEstadoCicloInversion . "' ");
-        if ($EstadoCicloInversion->num_rows() > 0) {
-            return $EstadoCicloInversion->result();
+        $EstudioInversion = $this->db->query("execute sp_Gestionar_EstudioInversion'" . $flat . "','" . $id_est_inv . "','" . $txtCodigoUnico . "', '" . $txt_nombreEstudioInversion . "', '" . $listaFuncionC . "', '" . $listaTipoInversion . "', '" . $listaNivelEstudio . "', '" . $lista_unid_form . "', '" . $lista_unid_ejec . "', '" . $txadescripcion . "', '" . $txtMontoInversion . "', '" . $txtcostoestudio . "' ");
+        if ($EstudioInversion->num_rows() > 0) {
+            return $EstudioInversion->result();
         } else {
             return false;
         }
