@@ -314,6 +314,7 @@ var fechaActual="";
   }
  var listaProyectoIprogramado=function(AnioCartera)
                 {
+                    $.fn.dataTable.ext.errMode = 'throw';
                     var table=$("#table-ProyectoInversionProgramado").DataTable({
                      "processing":true,
                       "scrollY": 350,

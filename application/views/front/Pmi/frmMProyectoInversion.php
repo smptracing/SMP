@@ -638,7 +638,7 @@
                             <div class="col-md-6 col-md-offset-3">
                               <button id="btn-GuardarMontoProgramado"  class="btn btn-success">
                                <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>Guardar</button>
-                              <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                              <button type="button" class="btn btn-danger" data-dismiss="modal">Cerar</button>
 
                             </div>
                           </div>
@@ -708,7 +708,7 @@
 <!-- /.FIN PARA PROGRAMAR MONTOS PROGRAMADOS Y MONTOS DE OPERACION Y MANTENIMIENTO -->
 <!-- PARA LISTAR LA PROGRAMACION EN HORIZONTAL CADA UNA -->
 <div id="VerDetallehorizontal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog-lag">
 
     <!-- Modal content-->
     <div class="modal-content" id="ProgramacionHorizontal">

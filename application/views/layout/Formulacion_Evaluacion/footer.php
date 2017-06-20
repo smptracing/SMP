@@ -81,8 +81,10 @@
     <!-- Custom Theme Scripts -->
     <script src="<?php echo base_url(); ?>assets/dist/jquery-wizard.js"></script>
     <script src="<?php echo base_url(); ?>assets/dist/jquery-wizard-fn.js"></script>
-
-
+     <!--colores-->
+    <script src="<?php echo base_url(); ?>assets/vendors/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/vendors/fullcalendar/dist/fullcalendar.min.js"></script>
+    <script src='<?php echo base_url(); ?>assets/vendors/fullcalendar/locale-all.js'></script>
     <script src="<?php echo base_url(); ?>assets/build/js/custom.min.js"></script>
 
   <script src="<?php echo base_url(); ?>assets/vendors/butons/buttons.colVis.min.js"></script>
@@ -94,6 +96,8 @@
     <script src="<?php echo base_url(); ?>assets/plugins/input-mask/jquery.inputmask.min.js"></script>
 
   
+   <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/FEactividadEntregable.js"></script>
+   <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/FEentregableEstudio.js"></script>
    <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/FEsituacion.js"></script>
    <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/FEestado.js"></script>
    <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/FEnivelEstudio.js"></script>

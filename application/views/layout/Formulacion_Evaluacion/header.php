@@ -10,6 +10,7 @@
     <title>SMP-APURIMAC</title>
 
     <!-- Bootstrap -->
+    <link href='<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery-ui.min.css' rel='stylesheet' >
     <link href="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="<?php echo base_url(); ?>assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -36,8 +37,11 @@
     <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
 
     <link href="<?php echo base_url(); ?>assets/vendors/animate/animate.min.css" rel="stylesheet">
-
-
+    <link href="<?php echo base_url(); ?>assets/vendors/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/fullcalendar/dist/fullcalendar.print.css" rel="stylesheet" media="print">
+  
+    <link href="<?php echo base_url(); ?>assets/vendors/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/cropper/dist/cropper.min.css" rel="stylesheet">
   <style>
    #ProgramacionHorizontal{
       width: 100% !important;
@@ -90,7 +94,7 @@
                     <ul class="nav side-menu">
                       <li><a><i class="fa fa-database"></i> Principal <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                          <li><a href="e_commerce.html">Formulación</a></li>
+                          <li><a href="<?php echo site_url('FEformulacion/ver_FEformulacion');?>">Formulación</a></li>
                           <li><a href="projects.html">Evaluación</a></li>
                           <li><a href="project_detail.html">Aprobado</a></li>
                         </ul>
