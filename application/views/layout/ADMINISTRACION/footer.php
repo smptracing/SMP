@@ -88,6 +88,8 @@
     <script src="<?php echo base_url(); ?>assets/js/administrador/Funcion.js"></script><!-- para mostra la divicion funcional la funcio y el grupo duncional-->
 
     <script src="<?php echo base_url(); ?>assets/js/administrador/Gerencia.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/administrador/SubGerencia.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/administrador/Oficina.js"></script>
 
     <script src="<?php echo base_url(); ?>assets/js/administrador/GrupoFuncional.js"></script><!-- para mostra la divicion funcional la funcio y el grupo duncional-->
     <script src="<?php echo base_url(); ?>assets/js/administrador/MBrecha.js"></script><!-- para mostra los datos de la brecha-->
@@ -105,5 +107,6 @@
     <script src="<?php echo base_url(); ?>assets/js/administrador/EstadoCicloInversion.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/administrador/MetaPresupuestal.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/administrador/ProgramaPresupuestal.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/administrador/persona.js"></script>
   </body>
 </html>

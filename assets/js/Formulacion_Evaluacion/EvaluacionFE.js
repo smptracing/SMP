@@ -1,50 +1,31 @@
  $(document).on("ready" ,function(){
-              ListarDenominacionFE();
-               $("#form-addDenominacionFE").submit(function(event)//para añadir nueva funcion
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/DenominacionFE/AddDenominacionFE",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           swal("",resp, "success");
-                          $('#table-DenominacionFE').dataTable()._fnAjaxUpdate();   
-      
-                         }
-                      });
-                  });
-                $("#form-UpdateDenominacionFE").submit(function(event)//Actualizar funcion
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/DenominacionFE/UpdateDenominacionFE",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           swal("",resp, "success");
-                           $('#table-DenominacionFE').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
-                         }
-                      });
-                  }); 
+              ListarEvaluacionFE();
 			});
  //LISTAR DENOMINACION DE FORMULACION Y EVALUACION EN TABLA
-                var ListarDenominacionFE=function()
+                var ListarEvaluacionFE=function()
                 {
-                    var table=$("#table-DenominacionFE").DataTable({
+                    var table=$("#table-EvaluacionFE").DataTable({
                      "processing": true,
                       "serverSide":false,
                      destroy:true,
 
                          "ajax":{
-                                    "url":base_url+"index.php/DenominacionFE/GetDenominacionFE",
+                                    "url":base_url+"index.php/EvaluacionFE/GetEvaluacionFE",
                                     "method":"POST",
                                     "dataSrc":""
                                     },
                                 "columns":[
-                                    {"data":"id_denom_fe","visible": false},
-                                    {"data":"denom_fe"},
-                                    {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaDenominacionModFE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
+                                    {"data":"codigo_unico_pi","visible": false},
+                                    {"data":"nombre_pi"},
+                                    {"data":"provincia"},
+                                    {"data":"distrito"},
+                                    {"data":"denom_nivel_estudio"},
+                                    {"data":"Evaluador"},
+                                    {"data":"costo_estudio"},
+                                    {"data":"denom_situacion_fe"},
+                                    {"data":"avance__fisico"},
+                                    {"data":"denom_estado_fe"}
+                                    //{"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaDenominacionModFE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
 
                                 "language":idioma_espanol

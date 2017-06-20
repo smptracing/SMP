@@ -38,7 +38,7 @@ $(document).on("ready", function () {
 var lista_gerencias = function () {
     var table = $("#table-Gerencia").DataTable({
         "processing": true,
-        "serverSide": true,
+        "serverSide": false,
         destroy: true,
 
         "ajax": {

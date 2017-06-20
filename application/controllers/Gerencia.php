@@ -11,7 +11,7 @@ class Gerencia extends CI_Controller
 
     public function index()
 	{
-		$this->_load_layout('Front/Administracion/frmGerencia.html');
+		$this->_load_layout('Front/Administracion/frmGerencia.php');
 	}
 
     function GetGerencia()

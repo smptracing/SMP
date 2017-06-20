@@ -1,12 +1,13 @@
 <div class="right_col" role="main">
           <div class="">
+
             <div class="clearfix"></div>
 
             <div class="">
               <div class="col-md-12 col-xs-12">
                                 <div class="x_panel">
                                   <div class="x_title">
-                                    <h2><i class="fa fa-bars"></i>Denominacion-formulacion y evaluacion</h2>
+                                    <h2><i class="fa fa-bars"></i>ETAPAS DE FORMULACION Y EVALUACION</h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                     </ul>
                                     <div class="clearfix"></div>
@@ -15,18 +16,18 @@
 
                                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
                                       <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-                                        <li role="presentation" class="active"><a href="#tab_denominacionFE" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"> <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>Denominacion</a>
+                                        <li role="presentation" class="active"><a href="#tab_etapasFE" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"> <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>Denominacion</a>
                                         </li>                           
                                       </ul>
                                       <div id="myTabContent" class="tab-content">
                                              <!-- /Contenido del funcion -->
-                                        <div role="tabpanel" class="tab-pane fade active in" id="#tab_denominacionFE" aria-labelledby="home-tab">
+                                        <div role="tabpanel" class="tab-pane fade active in" id="#tab_etapasFE" aria-labelledby="home-tab">
                                              <!-- /tabla de funcion desde el row -->
                                             <div class="row">  
                                             
                                                   <div class="col-md-12 col-xs-12">
                                                         <div class="x_panel">
-                                                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#VentanaDenominacionFE" >
+                                                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#VentanaEtapasFE" >
                                                                       <span class="fa fa-plus-circle"></span>
                                                                 Nuevo
                                                             </button>
@@ -46,11 +47,11 @@
 
                                                           <div class="x_content">
 
-                                                            <table id="table-DenominacionFE" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                                                            <table id="table-EtapasFE" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
                                                               <thead>
                                                                 <tr>
                                                                   <td>Id</td>
-                                                                  <td>Denominacion</td>
+                                                                  <td>Etapas</td>
                                                                   <td></td>
                                                                 </tr>
                                                               </thead>
@@ -76,24 +77,24 @@
         </div>
      </div>
         
-    <!--- popul para modificar la ventana de insertar Denominacion -->
-<div class="modal fade" id="VentanaDenominacionFE" role="dialog">
+    <!--- popul para modificar la ventana de insertar Entidad -->
+<div class="modal fade" id="VentanaEtapasFE" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">DENOMINACION</h4><small>Formulacion y evaluacion</small>
+          <h4 class="modal-title">ETAPAS</h4><small>Formulacion y evaluacion</small>
         </div>
         <div class="modal-body">
          <div class="row">
                 <div class="col-xs-12">
-                <form class="form-horizontal " id="form-addDenominacionFE"  method="POST" >
+                <form class="form-horizontal " id="form-addEtapasFE"  method="POST" >
  
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Denominacion<span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Denominacion de etapas<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_DenominacionFE" name="txt_DenominacionFE" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Denominacion" required="required" type="text">
+                          <input id="txt_EtapasFE" name="txt_EtapasFE" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Denominacion de etapa" required="required" type="text">
                         </div>
                       </div>
 
@@ -121,26 +122,29 @@
       </div>
     </div>
   </div>
-<!-- fin popup para insertar una denominacion -->
-<!--- popul para modificar la ventana modificar una denominacion -->
-<div class="modal fade" id="VentanaDenominacionModFE" role="dialog">
+
+
+
+<!-- fin popul para modificar la ventana de modificarentidaa -->
+<!--- popul para modificar la ventana de insertar Entidad -->
+<div class="modal fade" id="VentanasituacioFE" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modificar Denominacion</h4>
+          <h4 class="modal-title">Modificar Situación Formulación</h4>
         </div>
         <div class="modal-body">
          <div class="row">
                 <div class="col-xs-12">
-                <form class="form-horizontal " id="form-UpdateDenominacionFE"  method="POST" >
+                <form class="form-horizontal " id="form-UpdateSituacionFE"  method="POST" >
  
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre de Situación<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_IdDenominacionModiFE" name="txt_IdDenominacionModiFE" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"   required="required" type="text">
-                          <input id="txt_DenominacionModiFE" name="txt_DenominacionModiFE" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"   required="required" type="text">
+                          <input id="id_situacion_fe" name="id_situacion_fe" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"   required="required" type="hidden">
+                          <input id="denom_situacion_fe" name="denom_situacion_fe" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"   required="required" type="text">
                         </div>
                       </div>
 
