@@ -14,7 +14,7 @@ class Model_DashboardPmi extends CI_Model
     return $consulta->result();
 
         } 
-         function EstadisticaMontoPipProvincias()
+      function EstadisticaMontoPipProvincias()
         {
    $consulta= $this->db->query('select provincia, count(provincia) AS Cantidad,SUM(costo_pi) AS MontoProyecto from UBIGEO_PI INNER JOIN PROYECTO_INVERSION ON UBIGEO_PI.id_pi=PROYECTO_INVERSION.id_pi inner join UBIGEO on UBIGEO.id_ubigeo=UBIGEO_PI.id_ubigeo  WHERE PROYECTO_INVERSION.codigo_unico_pi<>UBIGEO_PI.id_pi GROUP BY provincia');
     return $consulta->result();

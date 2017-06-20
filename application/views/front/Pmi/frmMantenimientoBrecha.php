@@ -75,27 +75,13 @@
                                            <!-- /panel de brechas desde el row -->
                                         <div role="tabpanel" class="tab-pane fade" id="tab_brecha" aria-labelledby="home-tab">
                                              <!-- /tabla de brechas desde el row -->
+                                        
                                             <div class="row">  
                                             
                                                   <div class="col-md-12 col-sm-12 col-xs-12">
                                                         <div class="x_panel">
                                                             <button type="button" id="btn-NuevaBrecha"  class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraBrecha"> <span class="glyphicon glyphicon-plus-sign"></span> Nuevo</button>
-                                                          <div class="x_title">
-                                                      
-                                                              
-                                                            <ul class="nav navbar-right panel_toolbox">
-                                                                
-                                                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                                              </li>
-                                                              
-                                                              <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                                              </li>
-                                                                
-                                                            </ul>
-                                                              
-                                                            <div class="clearfix"></div>
-                                                              
-                                                          </div>
+                                                        
                                                           <div class="x_content">
                                                             <table id="table-brecha" class="table table-condensed table-striped table-bordered table-hover" width="100%">
                                                               <thead>

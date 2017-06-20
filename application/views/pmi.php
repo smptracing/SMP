@@ -7,7 +7,7 @@
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
               <span class="count_top"><i class="fa fa-clock-o"></i> MONTO TOTAL</span>
-              <div class="count"><strong><h4>250000000</h4></strong></div>
+              <div class="count"><strong><h4><center><div id="MontoTotalPip"></div></center></h4></strong></div>
               <span class="count_bottom"><i class="green">4% </i> From last Week</span>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
@@ -205,7 +205,7 @@
             <div class="col-md-4 col-sm-4 col-xs-12">
               <div class="x_panel tile fixed_height_320 overflow_hidden">
                 <div class="x_title">
-                  <h2>Proyectos por provincias</h2>
+                  <h2>% de PIP por provincia</h2>
                   <ul class="nav navbar-right panel_toolbox">
                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                     </li>
@@ -253,39 +253,40 @@
                           </tr>
                           <tr>
                             <td>
-                              <p><i class="fa fa-square green"></i>Andahuaylas </p>
+                              <p><i class="fa fa-square purple"></i>Andahuaylas </p>
                             </td>
                             <td><span><div id="porcentajeAnd">%</div></span> </td>
                           </tr>
                           <tr>
                             <td>
-                              <p><i class="fa fa-square purple"></i>Antabamba </p>
+                              <p><i class="fa fa-square red"></i>Antabamba </p>
                             </td>
                             <td><span><div id="porcentajeAnt">%</div></span> </td>
                           </tr>
                           <tr>
                             <td>
-                              <p><i class="fa fa-square aero"></i>Aymaraes </p>
+                              <p><i class="fa fa-square green"></i>Aymaraes </p>
                             </td>
                             <td><span><div id="porcentajeAy">%</div></span> </td>
                           </tr>
-                          <tr>
+                           <tr>
                             <td>
-                              <p><i class="fa fa-square red"></i>Contabambas</p>
+                              <p><i class="fa fa-square aero"></i>Chincheros</p>
+                              <td><span><div id="porcentajeChinc">%</div></span> </td>
                             </td>
                             <td> </td>
                           </tr>
                           <tr>
                             <td>
-                              <p><i class="fa fa-square red"></i>Chincheros</p>
+                              <p><i class="fa fa-square black"></i>Cotabambas</p>
                             </td>
-                            <td> </td>
+                            <td><span><div id="porcentajeCotab">%</div></span></td>
                           </tr>
                           <tr>
                             <td>
-                              <p><i class="fa fa-square red"></i>Grau</p>
+                              <p><i class="fa fa-square blue"></i>Grau</p>
                             </td>
-                            <td> </td>
+                            <td><span><div id="porcentajeGrau">%</div></span></td>
                           </tr>
                         </table>
                       </td>
@@ -318,122 +319,15 @@
                   <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                  <div class="widget_summary">
-                    <div class="w_left w_25">
-                         <span>Abancay</span>
-                    </div>
-                    <div class="w_center w_25">
-                      <div class="progress">
-                        <div id="idprogressAbanc" class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;" >
-                          <span class="sr-only">60% Complete</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w_left w_25">
-                      <span>20000</span>
-                    </div>
-                  </div>
+          
+                  <table id="table-estaditMontPIPProv" class="table table-responsive table-condensed" width="100%">
+                                                              
+                  </table> 
 
-                  <div class="widget_summary">
-                    <div class="w_left w_25">
-                      <span>Andahuaylas</span>
-                    </div>
-                    <div class="w_center w_25">
-                      <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:100%;">
-                          <span class="sr-only">10% Complete</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w_left w_25">
-                      <span>20000</span>
-                    </div>
-                    <div class="clearfix"></div>
-                  </div>
-                    <div class="widget_summary">
-                    <div class="w_left w_25">
-                      <span>Antabamba</span>
-                    </div>
-                    <div class="w_center w_55">
-                      <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:100%;">
-                          <span class="sr-only">10% Complete</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w_left w_25">
-                      <span>20000</span>
-                    </div>
-                    <div class="clearfix"></div>
-                  </div>
-                    <div class="widget_summary">
-                    <div class="w_left w_25">
-                      <span>Aymaraes</span>
-                    </div>
-                    <div class="w_center w_55">
-                      <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:100%;">
-                          <span class="sr-only">10% Complete</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w_left w_25">
-                      <span>20000</span>
-                    </div>
-                    <div class="clearfix"></div>
-                  </div>
-                    <div class="widget_summary">
-                    <div class="w_left w_25">
-                      <span>Cotabamba</span>
-                    </div>
-                    <div class="w_center w_55">
-                      <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:100%;">
-                          <span class="sr-only">10% Complete</span>
-                        </div>
-                      </div>
-                    </div>
-                   <div class="w_left w_25">
-                      <span>20000</span>
-                    </div>
-                    <div class="clearfix"></div>
-                  </div>
-                    <div class="widget_summary">
-                    <div class="w_left w_25">
-                      <span>Chincheros</span>
-                    </div>
-                    <div class="w_center w_55">
-                      <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:100%;">
-                          <span class="sr-only">10% Complete</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w_left w_25">
-                      <span>20000</span>
-                    </div>
-                    <div class="clearfix"></div>
-                  </div>
-                    <div class="widget_summary">
-                    <div class="w_left w_25">
-                      <span>Crau</span>
-                    </div>
-                    <div class="w_center w_55">
-                      <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:100%;">
-                          <span class="sr-only">10% Complete</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w_left w_25">
-                      <span>Crau</span>
-                    </div>
-                  </div>
-                  
                 </div>
               </div>
             </div>
-
+ 
           </div>
 
 
@@ -465,113 +359,158 @@
                     <ul class="list-unstyled timeline widget">
                       <li>
                         <div class="block">
-                          <div class="block_content">
-                            <h2 class="title">
-                                <a>ABANCAY</a>
-                            </h2>
-                            <div class="byline">
-                      
-                            </div>
-                            <p class="excerpt">CANTIDAD DE PROYECTOS:<div id="CantidadPAbancay"> </div></a>
-                            </p>
-                            <p class="excerpt">MONTO TOTAL:</a>
-                            </p>
-                          </div>
+                  
+                            <h2 class="title"><a>ABANCAY</a></h2>
+                            <br>
+                             <table class="table table-condensed table-hover" width="100%">
+                              <tr>
+                                <th>
+                                  <p></i>CANTIDAD DE PIPS:</p>
+                                </th>
+                                <th class="col-sm-5"><div id="CantidadPAbancay"></div></th>
+                              </tr>
+                              <tr>
+                                <th>
+                                  <p></i>MONTO TOTAL (S/):</p>
+                                </th>
+                                
+                                <th><div id="MontoPipAbancay"></div></th>
+                              </tr>
+                            </table>
                         </div>
                       </li>
                        <li>
                         <div class="block">
                           <div class="block_content">
-                            <h2 class="title">
-                                <a>ANDAHUAYLAS</a>
-                                          </h2>
-                            <div class="byline">
-                      
-                            </div>
-                            <p class="excerpt">CANTIDAD DE PROYECTOS:<div id="CantidadPAndahuaylas"> </div></a>
-                            </p>
-                            <p class="excerpt">MONTO TOTAL:</a>
-                            </p>
+                            <h2 class="title"><a>ANDAHUAYLAS</a></h2>
+                            <br>
+                               <table class="table table-condensed table-hover" width="100%">           
+                           
+                              <tr>
+                                <th>
+                                  <p>CANTIDAD DE PIPS:</p>
+                                </th>
+                                <th class="col-sm-5"><div id="CantidadPAndahuaylas"></div></th>
+                              </tr>
+                              <tr>
+                                <th>
+                                  <p>MONTO TOTAL (S/):</p>
+                                </th>
+                                <th><span><div id="MontoPipAndahuaylas"></div></span></th>
+                              </tr>
+                            </table>
+                   
                           </div>
                         </div>
                       </li>
                         <li>
                         <div class="block">
                           <div class="block_content">
-                            <h2 class="title">
-                                <a>ANTABAMBA</a>
-                                          </h2>
-                            <div class="byline">
-                      
-                            </div>
-                            <p class="excerpt">CANTIDAD DE PROYECTOS:<div id="CantidadPAntabamba"> </div></a>
-                            </p>
-                            <p class="excerpt">MONTO TOTAL:</a>
-                            </p>
+                            <h2 class="title"> <a>ANTABAMBA</a></h2>
+                             <br>
+                               <table class="table table-condensed table-hover" width="100%">   
+                              <tr>
+                                <th>
+                                  <p>CANTIDAD DE PIPS:</p>
+                                </th>
+                                <td class="col-sm-5"><div id="CantidadPAntabamba"></div></td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <p>MONTO TOTAL (S/):</p>
+                                </td>
+                                <td><span><div id="MontoPipAntabamba"></div></span></td>
+                              </tr>
+                            </table>
                           </div>
                         </div>
                       </li>
                        <li>
                         <div class="block">
                           <div class="block_content">
-                            <h2 class="title">
-                                <a>AYMARAES</a>
-                                          </h2>
-                            <div class="byline">
-                      
-                            </div>
-                            <p class="excerpt">CANTIDAD DE PROYECTOS:<div id="CantidadPAymaraes"> </div></a>
-                            </p>
-                            <p class="excerpt">MONTO TOTAL:</a>
-                            </p>
+                            <h2 class="title"> <a>AYMARAES</a></h2>
+                            <br>
+                            <table class="table table-condensed table-hover" width="100%">   
+                              <tr>
+                                <th>
+                                  <p>CANTIDAD DE PIPS:</p>
+                                </th>
+                                <th class="col-sm-5"><div id="CantidadPAymaraes"></div></th>
+                              </tr>
+                              <tr>
+                                <th>
+                                  <p>MONTO TOTAL (S/):</p>
+                                </th>
+                                <th><div id="MontoPipAymaraes"></div></th>
+                              </tr>
+                            </table>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="block">
+                          <div class="block_content">
+                            <h2 class="title"><a>CHINCHEROS</a></h2>
+                            <br>
+                              <table class="table table-condensed table-hover" width="100%">
+                              <tr>
+                                <th>
+                                  <p>CANTIDAD DE PIPS:</p>
+                                </th>
+                                <th class="col-sm-5"><div id="CantidadPChincheros"></div></t>
+                              </tr>
+                              <tr>
+                                <th>
+                                  <p>MONTO TOTAL (S/):</p>
+                                </th>
+                                <th><div id="MontoPipChincheros"></div></th>
+                              </tr>
+                            </table>
                           </div>
                         </div>
                       </li>
                        <li>
                         <div class="block">
                           <div class="block_content">
-                            <h2 class="title">
-                                <a>COTABAMBAS</a>
-                                          </h2>
-                            <div class="byline">
-                      
-                            </div>
-                            <p class="excerpt">CANTIDAD DE PROYECTOS:<div id="CantidadPCotabambas"> </div></a>
-                            </p>
-                            <p class="excerpt">MONTO TOTAL:</a>
-                            </p>
+                            <h2 class="title"><a>COTABAMBAS</a></h2>
+                            <br>
+                            <table class="table table-condensed table-hover" width="100%">
+                              <tr>
+                                <th>
+                                  <p>CANTIDAD DE PIPS:</p>
+                                </th>
+                                <th class="col-sm-5"><div id="CantidadPCotabambas"></div></th>
+                              </tr>
+                              <tr>
+                                <th>
+                                  <p>MONTO TOTAL (S/):</p>
+                                </th>
+                                <th><div id="MontoPipCotabambas"></div></th>
+                              </tr>
+                            </table>
                           </div>
                         </div>
                       </li>
-                       <li>
-                        <div class="block">
-                          <div class="block_content">
-                            <h2 class="title">
-                                <a>CHINCHEROS</a>
-                                          </h2>
-                            <div class="byline">
-                      
-                            </div>
-                            <p class="excerpt">CANTIDAD DE PROYECTOS:<div id="CantidadPChincheros"></a>
-                            </p>
-                            <p class="excerpt">MONTO TOTAL:</a>
-                            </p>
-                          </div>
-                        </div>
-                      </li>
+                       
                          <li>
                         <div class="block">
                           <div class="block_content">
-                            <h2 class="title">
-                                <a>GRAU</a>
-                                          </h2>
-                            <div class="byline">
-                      
-                            </div>
-                            <p class="excerpt">CANTIDAD DE PROYECTOS:<div id="CantidadPGrau"></a>
-                            </p>
-                            <p class="excerpt">MONTO TOTAL:</a>
-                            </p>
+                            <h2 class="title"><a>GRAU</a></h2>
+                             <br>
+                            <table class="table table-condensed table-hover" width="100%">
+                                <tr>
+                                  <th>
+                                    <p>CANTIDAD DE PIPS:</p>
+                                  </th>
+                                  <td><div id="CantidadPGrau"></div></th>
+                                </tr>
+                                <tr>
+                                  <th>
+                                    <p>MONTO TOTAL (S/):</p>
+                                  </th>
+                                  <th><div id="MontoPipGrau"></div></th>
+                                </tr>
+                            </table>
                           </div>
                         </div>
                       </li>

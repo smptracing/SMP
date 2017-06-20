@@ -21,7 +21,7 @@
                                     {"data":"distrito"},
                                     {"data":"denom_nivel_estudio"},
                                     {"data":"Evaluador"},
-                                    {"data":"costo_est_inv"},
+                                    {"data":"costo_estudio"},
                                     {"data":"denom_situacion_fe"},
                                     {"data":"avance__fisico"},
                                     {"data":"denom_estado_fe"}
