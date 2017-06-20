@@ -153,6 +153,7 @@
             </div>
         </div>
 
+
         <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="x_panel tile fixed_height_320 overflow_hidden">
                 <div class="x_title">
@@ -186,7 +187,7 @@
                                     <p class="">Componente</p>
                                 </div>
                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                                    <p class=""></p>
+                                    <p class="">  % </p>
                                 </div>
                             </th>
                         </tr>
@@ -197,51 +198,52 @@
                             </td>
                             <td>
 
-                                <table class="tile_info">
+                                <table class="table table-condensed" width="100%"> 
                                     <tr>
-                                        <td>
+                                        <th>
                                             <p><i class="fa fa-square blue"></i>Abancay</p>
-                                        </td>
+                                        </th>
 
-                                        <td><span><div id="porcentajeAban">%</div></span></td>
+                                        <th><div id="porcentajeAban">%</div></th>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            <p><i class="fa fa-square green"></i>Andahuaylas </p>
-                                        </td>
-                                        <td><span><div id="porcentajeAnd">%</div></span></td>
+                                        <th>
+                                            <i class="fa fa-square green"></i>Andahuayla</p>
+                                        </th>
+                                        <th><div id="porcentajeAnd">%</div></th>
                                     </tr>
                                     <tr>
-                                        <td>
+                                        <th>
                                             <p><i class="fa fa-square purple"></i>Antabamba </p>
-                                        </td>
-                                        <td><span><div id="porcentajeAnt">%</div></span></td>
+                                        </th>
+                                        <th><div id="porcentajeAnt">%</div></th>
                                     </tr>
                                     <tr>
-                                        <td>
+                                        <th>
                                             <p><i class="fa fa-square aero"></i>Aymaraes </p>
-                                        </td>
-                                        <td><span><div id="porcentajeAy">%</div></span></td>
+                                        </th>
+                                        <th><div id="porcentajeAy">%</div></th>
                                     </tr>
                                     <tr>
-                                      <td>
+                                      <th>
+
                                         <p><i class="fa fa-square aero"></i>Chincheros</p>
-                                        <td><span><div id="porcentajeChinc">%</div></span> </td>
-                                      </td>
+                                        <th><div id="porcentajeChinc">%</div></th>
+                                      </th>
                                       <td> </td>
                                     </tr>
                                     <tr>
-                                      <td>
-                                        <p><i class="fa fa-square black"></i>Cotabambas</p>
-                                      </td>
-                                      <td><span><div id="porcentajeCotab">%</div></span></td>
+                                      <th>
+                                        <p><i class="fa fa-square black"></i>Cotabamba</p>
+                                      </th>
+                                      <th><div id="porcentajeCotab">%</div></th>
                                     </tr>
                             
                                     <tr>
-                                      <td>
+                                      <th>
                                         <p><i class="fa fa-square blue"></i>Grau</p>
-                                      </td>
-                                      <td><span><div id="porcentajeGrau">%</div></span></td>
+                                      </th>
+                                      <th><div id="porcentajeGrau">%</div></th>
                                     </tr>
                                 </table>
                             </td>
