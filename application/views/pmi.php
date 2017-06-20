@@ -208,19 +208,19 @@
                                     </tr>
                                     <tr>
                                         <th>
-                                            <i class="fa fa-square green"></i>Andahuayla</p>
+                                            <i class="fa fa-square purple"></i>Andahuayla</p>
                                         </th>
                                         <th><div id="porcentajeAnd">%</div></th>
                                     </tr>
                                     <tr>
                                         <th>
-                                            <p><i class="fa fa-square purple"></i>Antabamba </p>
+                                            <p><i class="fa fa-square red"></i>Antabamba </p>
                                         </th>
                                         <th><div id="porcentajeAnt">%</div></th>
                                     </tr>
                                     <tr>
                                         <th>
-                                            <p><i class="fa fa-square aero"></i>Aymaraes </p>
+                                            <p><i class="fa fa-square green"></i>Aymaraes </p>
                                         </th>
                                         <th><div id="porcentajeAy">%</div></th>
                                     </tr>
