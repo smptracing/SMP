@@ -82,33 +82,25 @@
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
               <ul class="nav side-menu">
-                <li><a href="<?php echo site_url('Inicio/'); ?>"> <i class="fa fa-home"></i> INICIO<span class=""></span></a>
+                  <li><a href="<?php echo site_url('Inicio/'); ?>"> <i class="fa fa-home"></i> INICIO<span class=""></span></a>
+                  </li>
+                </ul>
+
+                <h3></i>Formulación y Evaluación</h3>
+                       <ul class="nav side-menu">
+                     <li><a href="<?php echo site_url('Estudio_Inversion/'); ?>"><i class="fa fa-home"></i> Estudio de Inversión<span class="fa fa-chevron-down"></span></a>
+
                   </li>
                 </ul>
                 <ul class="nav side-menu">
-
-                    <ul class="nav side-menu">
-                      <li><a><i class="fa fa-database"></i> Principal <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                          <li><a href="project_detaijdjdjl.html">Formulacion</a></li>
-                          <li><a href="<?php echo site_url('EvaluacionFE/');?>">Evaluación</a></li>
-                          <li><a href="project_detail.html">Aprobado</a></li>
-                        </ul>
-                        </li>            
-                      </ul>
-                </ul>
-                <ul class="nav side-menu">
-                     <li><a><i class="fa fa-gears"></i> MANTENIMIENTO<span class="fa fa-chevron-down"></span></a>
-
+                     <li><a><i class="fa fa-home"></i> MANTENIMIENO<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="<?php echo site_url('FEdocumento/ver_Documentos');?>">Documentos</a></li>
-                      <li><a href="<?php echo site_url('FEsituacion/ver_FEsistuacion');?>">Situaciones</a></li>
-                      <li><a href="<?php echo site_url('FEestado/ver_EstadoFE');?>">Estado</a></li>
-                      <li><a href="<?php echo site_url('EtapasFE/');?>">Etapas</a></li>
-                      <li><a href="<?php echo site_url('DenominacionFE/');?>">Denominacion</a></li>
+                      <li><a href="<?php echo site_url('FEdocumento/ver_Documentos'); ?>">Documentos</a></li>
+                      <li><a href="<?php echo site_url('FEsituacion/ver_FEsistuacion'); ?>">Situaciones</a></li>
+                      <li><a href="<?php echo site_url('FEestado/ver_EstadoFE'); ?>">Estado</a></li>
+                      <li><a href="index3.html">Denominación</a></li>
                     </ul>
                   </li>
-
                 </ul>
               </div>
             </div>
