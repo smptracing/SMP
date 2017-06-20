@@ -102,14 +102,15 @@
                 </ul>
                 <h3></i>Configuración</h3>
                 <ul class="nav side-menu">
-                        <li><a href="<?php echo site_url('Sector/'); ?>">Sector</a></li>
-                          <li><a href="<?php echo site_url('CadenaFuncional/'); ?>"> <i class="fa fa-code-fork"></i></i>  Cadena Funcional</a></li>
+                        <li><a href="<?php echo site_url('Sector/'); ?>"><i class="fa fa-puzzle-piece"></i>Sector</a></li>
+                          <li><a href="<?php echo site_url('CadenaFuncional/'); ?>"> <i class="fa fa-code-fork"></i>Cadena Funcional</a></li>
                         <li><a href="<?php echo site_url('TipologiaInversion/'); ?>"><i class="fa fa-cogs"></i>  Tipologia de inversion</a></li>
                          <li><a href="<?php echo site_url('InformacionPresupuestal/'); ?>"><i class="fa fa-calculator"></i>  Informacion Presupuestal</a></li>
                          <li><a href="<?php echo site_url('EstadoCicloInversion/'); ?>"><i class="fa fa-spinner"></i>  Ciclo de inversion</a></li>
                         <li><a href="<?php echo site_url('MUbicacion/'); ?>"><i class="fa fa-map-marker"></i>  Ubicacion Geografica</a></li>
                         <li><a href="<?php echo site_url('UnidadEjecutora/'); ?>"><i class="fa fa-tasks"></i>  Unidad Ejecutora</a></li>
-                        <li><a href="<?php echo site_url('Gerencia/'); ?>"><i class="fa fa-tasks"></i>  Gerencias</a></li>
+                        <li><a href="<?php echo site_url('Gerencia/'); ?>"><i class="fa fa-qrcode"></i>  Gerencias</a></li>
+                        <li><a href="<?php echo site_url('Personal/'); ?>"><i class="fa fa-group"></i>  Personal</a></li>
 
 
                 </ul>

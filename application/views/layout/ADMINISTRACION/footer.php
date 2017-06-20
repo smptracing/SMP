@@ -105,5 +105,6 @@
     <script src="<?php echo base_url(); ?>assets/js/administrador/EstadoCicloInversion.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/administrador/MetaPresupuestal.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/administrador/ProgramaPresupuestal.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/administrador/persona.js"></script>
   </body>
 </html>
