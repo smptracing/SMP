@@ -52,7 +52,7 @@ $(document).on("ready" ,function(){
                          }
                       });
                   });
-//REGISTARAR NUEVA 
+//REGISTARAR NUEVA ETAPA DE ESTUDIO 
    $("#form-AddEtapaEstudio").submit(function(event)
                   {
                       event.preventDefault();
@@ -74,8 +74,7 @@ $(document).on("ready" ,function(){
                          }
                       });
                   });
-   
-      //limpiar campos
+//limpiar campos
           function formReset()
           {
           document.getElementById("form-AddInstitucion").reset();
@@ -183,12 +182,12 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
                        //    alert(respuesta);
                          var registrospi = eval(respuesta1);
                             for (var i = 0; i <registrospi.length;i++) {
-                              html +="<option id='listaFuncionC' name='listaFuncionC'  value="+registrospi[i]["id_pi"]+"> "+ registrospi[i]["codigo_unico_pi"]+":"+registrospi[i]["nombre_pi"]+" </option>";   
+                              html +="<option value="+registrospi[i]["id_pi"]+"> "+ registrospi[i]["codigo_unico_pi"]+":"+registrospi[i]["nombre_pi"]+" </option>";   
                             };
                             $("#listaFuncionC").html(html);
-                            $("#SelecDivisionFFF").html(html);
-                            $('select[name=SelecDivisionFFF]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
-                            $('select[name=SelecDivisionFFF]').change();
+                            $("#listaFuncionC").html(html);
+                            $('select[name=listaFuncionC]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=listaFuncionC]').change();
                             $('.selectpicker').selectpicker('refresh'); 
                           // listarpicombotipo_inversion(id_pi);
                              txt_tipoinversion.value=id_pi;
@@ -208,12 +207,11 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
                          var registros = eval(respuesta3);
                             for (var i = 0; i <registros.length;i++) {
                               html +="<option  value="+registros[i]["id_tipo_est"]+"> "+registros[i]["nombre_tipo_est"]+" </option>";   
-                            };
-                              
+                            };  
                             $("#listaTipoInversion").html(html);
-                            $("#SelecDivisionFFF").html(html);
-                            $('select[name=SelecDivisionFFF]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
-                            $('select[name=SelecDivisionFFF]').change();
+                            $("#listaTipoInversion").html(html);
+                            $('select[name=listaTipoInversion]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=listaTipoInversion]').change();
                             $('.selectpicker').selectpicker('refresh'); 
                          }
                     });
@@ -234,9 +232,9 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
                             };
                               
                             $("#listaNivelEstudio").html(html);
-                            $("#SelecDivisionFFF").html(html);
-                            $('select[name=SelecDivisionFFF]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
-                            $('select[name=SelecDivisionFFF]').change();
+                            $("#listaNivelEstudio").html(html);
+                            $('select[name=listaNivelEstudio]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=listaNivelEstudio]').change();
                             $('.selectpicker').selectpicker('refresh'); 
                         }
                     });
@@ -255,12 +253,12 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
                           // alert(respuesta);
                          var registros = eval(respuesta2);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option id='lista_unid_form' name='lista_unid_form' value="+registros[i]["id_uf"]+">"+registros[i]["nombre_uf"]+" </option>";   
+                              html +="<option  value="+registros[i]["id_uf"]+">"+registros[i]["nombre_uf"]+" </option>";   
                             }; 
                             $("#lista_unid_form").html(html);
-                            $("#SelecDivisionFFF").html(html);
-                            $('select[name=SelecDivisionFFF]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
-                            $('select[name=SelecDivisionFFF]').change();
+                            $("#lista_unid_form").html(html);
+                            $('select[name=lista_unid_form]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=lista_unid_form]').change();
                             $('.selectpicker').selectpicker('refresh'); 
                         }
                     });
@@ -278,13 +276,13 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
                          //  alert(respuesta);
                          var registros = eval(respuesta3);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option id ='cbx_ue' value="+registros[i]["id_ue"]+"> "+registros[i]["nombre_ue"]+" </option>";   
+                              html +="<option  value="+registros[i]["id_ue"]+"> "+registros[i]["nombre_ue"]+" </option>";   
                             };
                               
                             $("#lista_unid_ejec").html(html);
-                            $("#SelecDivisionFFF").html(html);
-                            $('select[name=SelecDivisionFFF]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
-                            $('select[name=SelecDivisionFFF]').change();
+                            $("#lista_unid_ejec").html(html);
+                            $('select[name=lista_unid_ejec]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=lista_unid_ejec]').change();
                             $('.selectpicker').selectpicker('refresh'); 
 
                         }

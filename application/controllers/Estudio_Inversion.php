@@ -134,6 +134,7 @@ class Estudio_Inversion extends CI_Controller
     {
         if ($this->input->is_ajax_request()) {
             $flat                       = "C";
+            $id_est_inv                 = "0";
             $txtCodigoUnico             = $this->input->post("txtCodigoUnico");
             $txt_nombreEstudioInversion = $this->input->post("txt_nombreEstudioInversion");
             $listaFuncionC              = $this->input->post("listaFuncionC");
@@ -144,12 +145,8 @@ class Estudio_Inversion extends CI_Controller
             $txadescripcion             = $this->input->post("txadescripcion");
             $txtMontoInversion          = $this->input->post("txtMontoInversion");
             $txtcostoestudio            = $this->input->post("txtcostoestudio");
-            $listaResponsable           = $this->input->post("listaResponsable");
-
-            $txt_IdEstadoCicloInversion          = "0";
-            $txt_NombreEstadoCicloInversion      = $this->input->post("txt_NombreEstadoCicloInversion");
-            $txt_DescripcionEstadoCicloInversion = $this->input->post("txt_DescripcionEstadoCicloInversion");
-            if ($this->EstadoCicloInversion_Model->AddEstadoCicloInversion($flat, $txt_IdEstadoCicloInversion, $txt_NombreEstadoCicloInversion, $txt_DescripcionEstadoCicloInversion) == false) {
+            // $listaResponsable           = $this->input->post("listaResponsable");
+            if ($this->Estudio_Inversion_Model->AddEstudioInversion($flat, $id_est_inv, $txtCodigoUnico, $txt_nombreEstudioInversion, $listaFuncionC, $listaTipoInversion, $listaNivelEstudio, $lista_unid_form, $lista_unid_ejec, $txadescripcion, $txtMontoInversion, $txtcostoestudio) == false) {
                 echo "1";
             } else {
                 echo "2";
