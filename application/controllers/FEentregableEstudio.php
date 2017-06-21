@@ -8,7 +8,11 @@ class FEentregableEstudio extends CI_Controller {/* Mantenimiento de division fu
       $this->load->model('Model_FEentregableEstudio');
 
 	}
-    
+  public function ver_FEentregable()
+  {
+    $this->_load_layout('Front/Formulacion_Evaluacion/frmEntregable');
+  }
+  
    public function get_Entregables(){
     	if ($this->input->is_ajax_request()) 
         {
@@ -87,6 +91,27 @@ class FEentregableEstudio extends CI_Controller {/* Mantenimiento de division fu
           show_404();
         }
     }
+
+    //asignacion de personal
+     public function  AsignacionPersonalEntregable(){
+      if ($this->input->is_ajax_request()) 
+      {
+      $Opcion ='C';
+      $txt_idPersona              =$this->input->post("txt_idPersona");
+      $txt_identregable           =$this->input->post("txt_identregable");
+      $txt_AsigPersonalEntregable =$this->input->post("txt_AsigPersonalEntregable");
+       if($this->Model_FEentregableEstudio->AsignacionPersonalEntregable($Opcion,$txt_identregable,$txt_idPersona,$txt_AsigPersonalEntregable)== false)
+           echo "SE ASIGNO  UN NUEVO RESPONSABLE ";
+          else
+          echo "NO SE ASIGNO  UN NUEVO RESPONSABLE"; 
+     } 
+       else
+       {
+        show_404();
+        }
+    
+    }
+    //fin asignacion de personal
 
 	function _load_layout($template)
     {

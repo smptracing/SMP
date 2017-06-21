@@ -80,5 +80,19 @@ class Model_FEentregableEstudio extends CI_Model
              }
 
         }
+
+        function AsignacionPersonalEntregable($Opcion,$txt_identregable,$txt_idPersona,$txt_AsigPersonalEntregable)
+        {
+
+          $this->db->query("EXECUTE sp_Gestionar_Responsable_Entregable '".$Opcion."','".$txt_identregable."','".$txt_idPersona."','".$txt_AsigPersonalEntregable."' ");
+            if ($this->db->affected_rows()> 0) 
+              {
+                return true;
+              }
+              else
+              {
+                return false;
+              }
+        }
   
 }

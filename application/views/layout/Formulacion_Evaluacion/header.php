@@ -95,6 +95,7 @@
                       <li><a href="<?php echo site_url('Estudio_Inversion/'); ?>"><i class="fa fa-tasks"></i> Estudio Inversión <span class="fa fa-chevron"></span></a>
 
                         </li>
+                         <li><a href="<?php echo site_url('FEentregableEstudio/ver_FEentregable'); ?>">Entregable</a></li>
                       </ul>
                 </ul>
 

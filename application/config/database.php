@@ -75,7 +75,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'smptracing.ddns.net',
+	'hostname' => '192.168.1.100',//
 	'username' => 'sa',
 	'password' => 'Semo123',
 	'database' => 'DBPRUEBA2',

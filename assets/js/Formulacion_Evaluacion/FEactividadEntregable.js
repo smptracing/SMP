@@ -1,7 +1,7 @@
  $(document).on("ready" ,function(){
 
               //listarEntregablesFE();
-                $("#form-AddActividades_Entregable").submit(function(event)//para añadir nueva funcion
+                $("#form-AddActividades_Entregable").submit(function(event)
                   {
                       event.preventDefault();
                       $.ajax({
@@ -11,14 +11,12 @@
                           success:function(resp){
                            swal("",resp, "success");
                            $('#form-AddActividades_Entregable')[0].reset();
-                           $("#VentanaActividades").modal("hide");
-                          // listarEntregablesFE();
-                          //$('#table-SituacioFE').dataTable()._fnAjaxUpdate();   
+                           $("#VentanaActividades").modal("hide"); 
                          }
                       });
                   });
 
-                 $("#form-UpdateActividades_Entregable").submit(function(event)//para añadir nueva funcion
+                 $("#form-UpdateActividades_Entregable").submit(function(event)
                   {
                       event.preventDefault();
                       $.ajax({
@@ -28,8 +26,6 @@
                           success:function(resp){
                            swal("",resp, "success");
                            $("#modalEventoActividades").modal("hide");
-                          // listarEntregablesFE();
-                          //$('#table-SituacioFE').dataTable()._fnAjaxUpdate();
                           var tx_IdActividad=$("#tx_IdActividad").val();
 
                           var txt_idEntregable=$("#txt_idEntregable").val();
