@@ -43,6 +43,15 @@ class PrincipalPmi extends CI_Controller
             show_404();
     }
 
+    public function GetDatosUbicacion()
+    {
+        if ($this->input->is_ajax_request()) {
+            $datos = $this->Model_DashboardPmi->GetDatosUbicacion();
+            echo json_encode($datos);
+        } else
+            show_404();
+    }
+
     function _load_layout($template)
     {
         $this->load->view('layout/PMI/header');

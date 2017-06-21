@@ -554,6 +554,7 @@
                             </div>
                             <div class="x_content">
                                 <div class="dashboard-widget-content">
+                                    <div id="map" style="height: 350px; width: 400px"></div>
                                     <div class="col-md-4 hidden-small">
                                         <h2 class="line_30">Provincias de Apurimac</h2>
 
@@ -590,11 +591,7 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div>
-                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1981998.347345333!2d-74.07476153943878!3d-14.012646565107113!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x916c907f81355e9d%3A0x3531181dfb5f1be9!2zQXB1csOtbWFj!5e0!3m2!1ses!2spe!4v1493824814589"
-                                                width="400" height="350" frameborder="0" style="border:0"
-                                                allowfullscreen></iframe>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -605,7 +602,7 @@
 
 
                     <!-- Start to do list -->
-                    <div class="col-md-6 col-sm-6 col-xs-12">
+                    <!--<div class="col-md-6 col-sm-6 col-xs-12">
                         <div class="x_panel">
                             <div class="x_title">
                                 <h2>LISTA
@@ -674,11 +671,11 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                     <!-- End to do list -->
 
                     <!-- start of weather widget -->
-                    <div class="col-md-6 col-sm-6 col-xs-12">
+                    <!--<div class="col-md-6 col-sm-6 col-xs-12">
                         <div class="x_panel">
                             <div class="x_title">
                                 <h2>DATOS DEL CLIMA
@@ -785,7 +782,7 @@
                             </div>
                         </div>
 
-                    </div>
+                    </div>-->
                     <!-- end of weather widget -->
                 </div>
             </div>

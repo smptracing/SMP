@@ -96,6 +96,13 @@ var EstadistMontosPipProv = function () {
 
 
 function EstadisticasPorCiclosInversion() {
+
+/*    //mensajes de aviso
+    $.growl({ title: "Growl", message: "The kitten is awake!" });
+    $.growl.error({ message: "The kitten is attacking!" });
+    $.growl.notice({ message: "The kitten is cute!" });
+    $.growl.warning({ message: "The kitten is ugly!" });*/
+
     $.ajax({
         url: base_url + "index.php/PrincipalPmi/EstadisticaPipEstadoCiclo",
         type: "POST",
@@ -153,6 +160,35 @@ function EstadisticasPorCiclosInversion() {
                 + "                    </div>";
 
             panel_estadistica.append(sql);
+        }
+    });
+}
+
+function initMap() {
+
+    //var LatLng = {lat: -25.363, lng: 131.044};
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 8,
+        center: {lat: -14, lng: -73},
+        disableDefaultUI: true
+    });
+
+    $.ajax({
+        url: base_url + "index.php/PrincipalPmi/GetDatosUbicacion",
+        type: "POST",
+        success: function (respuesta) {
+            var registros = eval(respuesta);
+
+            var total_proyectos = registros[0]["Num_Total"];
+            for (var i = 0; i < registros.length; i++) {
+
+                var marker = new google.maps.Marker({
+                    position: {lat: registros[i]["latitud"], lng: registros[i]["longitud"]},
+                    map: map,
+                    title: registros[i]["distrito"] + ": " + registros[i]["nombre_pi"]
+                })
+            }
         }
     });
 }

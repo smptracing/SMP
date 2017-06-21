@@ -37,6 +37,24 @@ class Model_DashboardPmi extends CI_Model
         return $consulta->result();
     }
 
+    function GetDatosUbicacion()
+    {
+        $sql = "SELECT dbo.UBIGEO.distrito,\n"
+            . "       dbo.PROYECTO_INVERSION.nombre_pi,\n"
+            . "       dbo.UBIGEO_PI.latitud,\n"
+            . "       dbo.UBIGEO_PI.longitud\n"
+            . "FROM dbo.UBIGEO\n"
+            . "     INNER JOIN dbo.UBIGEO_PI ON dbo.UBIGEO.id_ubigeo = dbo.UBIGEO_PI.id_ubigeo\n"
+            . "     INNER JOIN dbo.PROYECTO_INVERSION ON dbo.UBIGEO_PI.id_pi = dbo.PROYECTO_INVERSION.id_pi;";
+
+        $funcion = $this->db->query($sql);//listar funcion
+        if ($funcion->num_rows() > 0) {
+            return $funcion->result();
+        } else {
+            return false;
+        }
+    }
+
     /*function news_get_by_id ( $news_id )
     {
 
