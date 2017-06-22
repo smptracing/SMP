@@ -104,9 +104,10 @@
                     <ul class="nav side-menu">
                       <li><a><i class="fa fa-database"></i> Principal <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                          <li><a href="<?php echo site_url('FEformulacion/ver_FEformulacion'); ?>">Formulación</a></li>
+                          <li><a href="<?php echo site_url('FEformulacion/'); ?>">Formulación</a></li>
                           <li><a href="<?php echo site_url('EvaluacionFE/'); ?>">Evaluación</a></li>
-                          <li><a href="project_detail.html">Aprobado</a></li>
+                          <li><a href="<?php echo site_url('FEformulacion/FEAPROBADO'); ?>">Aprobado</a></li>
+                          <li><a href="<?php echo site_url('FEformulacion/FEVIABILIZADO'); ?>">Viabilizados</a></li>
                         </ul>
                         </li>
                       </ul>

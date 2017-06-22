@@ -24,7 +24,7 @@
               <div class="col-md-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>PROYECTOS EN FORMULACIÓN</h2>
+                    <h2>PROYECTOS Viabilizados</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -47,7 +47,7 @@
                     <p></p>
 
                     <!-- start project list -->
-                    <table id="table-EvaluacionFE" class="table table-striped projects">
+                    <table id="table-formulacion" class="table table-striped projects">
                       <thead>
                         <tr>
                           <th style="width: 20%">Id PIP</th>
