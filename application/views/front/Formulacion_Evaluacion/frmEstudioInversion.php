@@ -205,7 +205,7 @@
                                            <div class="col-md-12">
                                           <div class=".col-xs-12 .col-md-10">
                                           <br>
-                                           <label for="name">Descripción del Estudio de Inverisión<span class="required"></span>
+                                           <label for="name">Descripción del Estudio de Inversión<span class="required"></span>
                                             </label>
                                               <textarea class="form-control" rows="3" name="txadescripcion" id="txadescripcion"></textarea>
                                           </div>
