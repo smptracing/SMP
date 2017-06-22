@@ -94,19 +94,57 @@ concat(PERSONA.nombres,' ',PERSONA.apellido_p) As nombres ,RESPONSABLE_ESTUDIO.f
     public function AddEtapaEstudio($flat, $id_etapa_estudio, $id_est_inv, $listaretapasFE_M, $dateFechaIniC, $dateFechaIniF, $txtAvanceFisico, $txadescripcion)
     {
         //  $EstadoCicloInversion = $this->db->query("execute get");
-        $EtapaEstudio = $this->db->query("execute sp_Gestionar_EstapaEstudio'" . $flat . "','" . $id_etapa_estudio . "', '" . $id_est_inv . "', '" . $listaretapasFE_M . "', '" . $dateFechaIniC . "', '" . $dateFechaIniF . "', '" . $txtAvanceFisico . "', '" . $txadescripcion . "' ");
+        $EtapaEstudio = $this->db->query("execute sp_Gestionar_EstapaEstudio'"
+            . $flat . "','"
+            . $id_etapa_estudio . "', '"
+            . $id_est_inv . "', '"
+            . $listaretapasFE_M . "', '"
+            . $dateFechaIniC . "', '"
+            . $dateFechaIniF . "', '"
+            . $txtAvanceFisico . "', '"
+            . $txadescripcion . "' ");
         if ($EtapaEstudio->num_rows() > 0) {
             return $EtapaEstudio->result();
         } else {
             return false;
         }
     }
-
-    public function AddEstudioInversion($flat, $id_est_inv, $txtCodigoUnico, $txt_nombreEstudioInversion, $listaFuncionC, $listaTipoInversion, $listaNivelEstudio, $lista_unid_form, $lista_unid_ejec, $txadescripcion, $txtMontoInversion, $txtcostoestudio)
+    public function AddEstudioInversion($flat, $id_est_inv, $txtCodigoUnico, $txtnombres, $listaFuncionC, $listaTipoInversion, $listaNivelEstudio, $lista_unid_form, $lista_unid_ejec, $txadescripcion, $txtMontoInversion, $txtcostoestudio, $listaResponsables, $dateFechaAsig)
     {
-        $EstudioInversion = $this->db->query("execute sp_Gestionar_EstudioInversion'" . $flat . "','" . $id_est_inv . "','" . $txtCodigoUnico . "', '" . $txt_nombreEstudioInversion . "', '" . $listaFuncionC . "', '" . $listaTipoInversion . "', '" . $listaNivelEstudio . "', '" . $lista_unid_form . "', '" . $lista_unid_ejec . "', '" . $txadescripcion . "', '" . $txtMontoInversion . "', '" . $txtcostoestudio . "' ");
+        $EstudioInversion = $this->db->query("execute sp_Gestionar_EstudioInversion'"
+            . $flat . "','"
+            . $id_est_inv . "','"
+            . $txtCodigoUnico . "','"
+            . $txtnombres . "', '"
+            . $listaFuncionC . "', '"
+            . $listaTipoInversion . "', '"
+            . $listaNivelEstudio . "', '"
+            . $lista_unid_form . "', '"
+            . $lista_unid_ejec . "', '"
+            . $txadescripcion . "', '"
+            . $txtMontoInversion . "', '"
+            . $txtcostoestudio . "', '"
+            . $listaResponsables . "', '"
+            . $dateFechaAsig . "' "
+
+        );
+
         if ($EstudioInversion->num_rows() > 0) {
             return $EstudioInversion->result();
+        } else {
+            return false;
+        }
+    }
+    public function AddResponsableEstudio($flat, $id_est_inv, $listaResponsables, $dateFechaAsig)
+    {
+        //  $EstadoCicloInversion = $this->db->query("execute get");
+        $ResponsableEstudio = $this->db->query("execute sp_Gestionar_RespondableEstudio'"
+            . $flat . "','"
+            . $id_est_inv . "', '"
+            . $listaResponsables . "', '"
+            . $dateFechaAsig . "' ");
+        if ($ResponsableEstudio->num_rows() > 0) {
+            return $ResponsableEstudio->result();
         } else {
             return false;
         }
