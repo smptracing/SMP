@@ -1,7 +1,20 @@
  $(document).on("ready" ,function(){
               listaTipEstudioFE();
            
-  
+                $("#form-addTipoEstudioFE").submit(function(event)//para añadir nueva funcion
+                  {
+                      event.preventDefault();
+                      $.ajax({
+                          url:base_url+"index.php/TipEstudioFE/AddTipoEstudioFE",
+                          type:$(this).attr('method'),
+                          data:$(this).serialize(),
+                          success:function(resp){
+                           swal("",resp, "success");
+                          $('#table-TipEstudioFE').dataTable()._fnAjaxUpdate();   
+      
+                         }
+                      });
+                  });
 			});
                 var listaTipEstudioFE=function()
                 {
@@ -27,13 +40,6 @@
                         			   	
                 }
 
-                var FENivelEstudio=function(tbody,table){
-                       $(tbody).on("click","button.editar",function(){
-                        var data=table.row( $(this).parents("tr")).data();
-                        var id_estado=$('#Id_denom_nivel_estudioA').val(data.id_nivel_estudio);
-                        var denom_nivel_estudio=$('#txt_denom_nivel_estudioA').val(data.denom_nivel_estudio);
-                    });
-                }
 
 
                 /*fin listar funcion*/

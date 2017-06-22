@@ -120,6 +120,7 @@
                       <li><a href="<?php echo site_url('FEsituacion/ver_FEsistuacion'); ?>">Situaciones</a></li>
                       <li><a href="<?php echo site_url('FEestado/ver_EstadoFE'); ?>">Estado</a></li>
                       <li><a href="<?php echo site_url('DenominacionFE/'); ?>">Denominacion</a></li>
+                      <li><a href="<?php echo site_url('EtapasFE/'); ?>">Etapas</a></li>
                     </ul>
                   </li>
 
