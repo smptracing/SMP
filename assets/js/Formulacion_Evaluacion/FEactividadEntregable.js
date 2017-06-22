@@ -34,6 +34,23 @@
                          }
                       });
                   });
+
+                  $("#form-AsignacionPersonalActividad").submit(function(event)
+                  {
+                      event.preventDefault();
+                      $.ajax({
+                          url:base_url+"index.php/FEActividadEntregable/AsignacionPersonalActividad",
+                          type:$(this).attr('method'),
+                          data:$(this).serialize(),
+                          success:function(resp){
+                           swal("",resp, "success");              
+
+                         }
+                      });
+                  });
+                
+
+
     
   });
 

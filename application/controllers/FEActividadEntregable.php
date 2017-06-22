@@ -67,10 +67,9 @@ class FEActividadEntregable extends CI_Controller {/* Mantenimiento de division 
 		      echo " Se actualizo una Actividad "; 
 		 } 
 	     else
-	     {
+	      {
 	      show_404();
 	      }
-	  
     }
     public function CalcularAvanceActividad(){
     	if ($this->input->is_ajax_request()) 
@@ -86,6 +85,28 @@ class FEActividadEntregable extends CI_Controller {/* Mantenimiento de division 
 	      show_404();
 	      }
     }
+
+    //asignacion de personal
+     public function  AsignacionPersonalActividad(){
+      if ($this->input->is_ajax_request()) 
+      {
+		$Opcion                    ='C';
+		$txt_idActividadCronograma =$this->input->post("txt_idActividadCronograma");
+		$txt_idPersonaActividad    =$this->input->post("txt_idPersonaActividad");
+		$txt_AsigPersonalActividad =$this->input->post("txt_AsigPersonalActividad");//fecha de asiganacion del responsable a actividad
+       if($this->Model_FEActividadEntregable->AsignacionPersonalActividad($Opcion,$txt_idActividadCronograma ,$txt_idPersonaActividad,$txt_AsigPersonalActividad)== false)
+           echo "SE ASIGNO  UN NUEVO RESPONSABLE A LA ACTIVIDAD ";
+          else
+          echo "NO SE ASIGNO  UN NUEVO RESPONSABLE A LA ACTIVIDAD"; 
+     } 
+       else
+       {
+        show_404();
+        }
+    
+    }
+    //fin asignacion de personal
+
 
 	function _load_layout($template)
     {

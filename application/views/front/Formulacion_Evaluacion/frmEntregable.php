@@ -544,7 +544,8 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4> Responsable</h4>
+          <h4> Responsable actividad</h4>
+           <h4 class="modal-title" id="txt_NombreActividadTitleResponsable"></h4>
         </div>
 
          <div class="modal-body">
@@ -553,15 +554,14 @@
                 <form class="form-horizontal " id="form-AsignacionPersonalActividad"  method="POST" >
                       <div class="col-md-12 col-sm-12 col-xs-12 input-group">
                         <span class="input-group-addon glyphicon glyphicon glyphicon-search ">Responsable</span>
-                        <input id="text_buscarPersona"  name="text_buscarPersona" type="text" class="form-control"  placeholder="">
-                      </div>
-                          
-                          <div id="contenedor_responsable">
-                               <table id="table_responsable" class="table" ellspacing="0" width="70%">
+                        <input id="text_buscarPersonaActividad"  name="text_buscarPersonaActividad" type="text" class="form-control"  placeholder="">
+                      </div> 
+                          <div id="contenedor_responsable2">
+                               <table id="table_responsable2" class="table" ellspacing="0" width="70%">
                                                                                                                   
                               </table>
                           </div>
-                      <input type="text" class="form-control" id="txt_idPersona" name="txt_idPersona">
+                      <input type="text" class="form-control" id="txt_idPersonaActividad" name="txt_idPersonaActividad">
                       <input type="text" class="form-control" id="txt_idActividadCronograma" name="txt_idActividadCronograma">
 
                       <div class="ln_solid"></div>

@@ -32,7 +32,7 @@
 
                //buscar responsable
                                                                                                  
-                $("#text_buscarPersona").keyup(function(){
+                $("#text_buscarPersona").keyup(function(){//buscar persona para actividades
                  var text_buscarPersona = $("#text_buscarPersona").val();
                  html1=" . ";    
                  $("#table_responsable").html(html1);                                                          
@@ -51,6 +51,30 @@
                                };               
                                  html1 +="</tbody>";
                              $("#table_responsable").html(html1);                                         
+                          }                                      
+                    }
+              });                                                                         
+        });
+//buscar perona para actividad
+        $("#text_buscarPersonaActividad").keyup(function(){
+                 var text_buscarPersona = $("#text_buscarPersonaActividad").val();
+                 html1=" . ";    
+                 $("#table_responsable2").html(html1);                                                          
+                 $.ajax({
+                    url: base_url+"index.php/Personal/BuscarPersona",
+                    type:"POST",
+                    data:{text_buscarPersona:text_buscarPersona},
+                    success: function(data){
+                      if(Object.keys(data).length>0)
+                       {
+                          var registros = eval(data);
+                             html1+="<thead> </thead>"
+                             for (var i = 0; i <registros.length;i++) {
+                                  html1 +="<tbody> <tr><th> <input type='checkbox' name='vehicle' value='Bike'></th><br></th><th> <a href='"+registros[i]["id_persona"]+"' type='button' class='btn btn-link'><img src='"+base_url+"assets/images/user.png' class='avatar' ></a>Gerencia:</br> <h5>Nombre completo:</h5> "+registros[i]["nombres"]+" "+registros[i]["apellido_p"]+" "+registros[i]["apellido_m"]+"</th> <th><div class='col-md-8 col-sm-8 col-xs-8 form-group has-feedback'>Fecha Asignación<input type='date' id='txt_AsigPersonalActividad' name='txt_AsigPersonalActividad' class='form-control calendario'></div></th></tr>";    
+                                  $("#txt_idPersonaActividad").val(registros[i]["id_persona"]);
+                               };               
+                                 html1 +="</tbody>";
+                             $("#table_responsable2").html(html1);                                         
                           }                                      
                     }
               });                                                                         
@@ -142,7 +166,7 @@
 });
 
 var generarActividadesVertical=function(id_en)
-                {
+          {
                     var table=$("#datatable-actividadesV").DataTable({
                      "processing":true,
                       "serverSide":false,
@@ -161,7 +185,7 @@ var generarActividadesVertical=function(id_en)
                                     {"data":"end"},
                                     {"data":"valoracion"},
                                     {"data":"avance"},
-                                    {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaAsignacionPersonalActividad'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
+                                    {"defaultContent":"<button type='button' class='editar btn btn-info btn-xs' data-toggle='modal' data-target='#VentanaAsignacionPersonalActividad'><i class='ace-icon fa fa-users bigger-120'></i></button><button type='button' class='edit btn btn-primary btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-pencil'></i></button>"}
                                 ],
 
                                 "language":idioma_espanol
@@ -174,8 +198,8 @@ var generarActividadesVertical=function(id_en)
                     $(tbody).on("click","button.editar",function(){
                         var data=table.row( $(this).parents("tr")).data();
                         var id_ctividad=data.id;
-                        console.log(id_ctividad);
-
+                         var txt_idActividadCronograma=$("#txt_idActividadCronograma").val(id_ctividad);
+                        $("#txt_NombreActividadTitleResponsable").html(data.title);
                           /*$('select[name=listaFuncionCM]').val(id_funcion);//PARA AGREGAR UN COMBO PSELECIONADO
                           $('select[name=listaFuncionCM]').change();*/
                     });

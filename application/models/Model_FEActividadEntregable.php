@@ -64,5 +64,19 @@ class Model_FEActividadEntregable extends CI_Model
        
         //fin division funciona
         //grupo funcional*/
-  
+        //
+        //PARA ALA ASIGNACION DE PERSONAL A LA ACTIVIDAD 
+        function   AsignacionPersonalActividad($Opcion,$txt_idActividadCronograma ,$txt_idPersonaActividad,$txt_AsigPersonalActividad)
+        {
+          $this->db->query("EXECUTE sp_Gestionar_Responsable_Actividad'".$Opcion."','".$txt_idActividadCronograma."','".$txt_idPersonaActividad."','".$txt_AsigPersonalActividad."' ");
+            if ($this->db->affected_rows()> 0) 
+              {
+                return true;
+              }
+              else
+              {
+                return false;
+              }
+        }      
+        //FIN ASIGNACION DE PERSONAL   DE ACTIVIDAD AL  LA ACTIVIDAD
 }
