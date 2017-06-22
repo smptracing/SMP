@@ -50,8 +50,9 @@
                     <table id="table-EvaluacionFE" class="table table-striped projects">
                       <thead>
                         <tr>
-                          <th style="width: 1%">#</th>
-                          <th style="width: 20%">Codigo Unico</th>
+                          <th style="width: 20%">Id PIP</th>
+                          <th>Codigo Unico</th>
+                          <th style="width: 20%">Nombre Pip</th>
                           <th>Provincia</th>
                           <th>Distrito</th>
                           <th>Nivel de estudio</th>
@@ -59,7 +60,7 @@
                           <th>Costo Inversion</th>
                           <th>Situacion</th>
                           <th>Avance Fisico</th>
-                          <th>Estado</th>
+                          <th></th>
                          
                         </tr>
                       </thead>
@@ -77,3 +78,25 @@
           </div>
         </div>
         <!-- /page content -->
+
+
+  <div class="modal fade" id="VerDetalleFormulacion" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <input type="text" id="CodigoFormulacion" name="CodigoFormulacion">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>

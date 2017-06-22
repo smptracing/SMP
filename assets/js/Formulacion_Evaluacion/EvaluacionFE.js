@@ -15,26 +15,40 @@
                                     "dataSrc":""
                                     },
                                 "columns":[
-                                    {"data":"codigo_unico_pi","visible": false},
+                                    {"data":"id_pi","visible": false},
+                                    {"data":"codigo_unico_pi",
+                                    "mRender": function ( data, type, full ) {
+                                     return '<a style="font-weight:normal;font-size:15" type="button" class="VerDetalleFormulacion btn btn-link" data-toggle="modal" data-target="#VerDetalleFormulacion" href="/codigo_unico_pi/' + data + '">' + data+ '</a>';
+                                      }
+                                    },
                                     {"data":"nombre_pi"},
                                     {"data":"provincia"},
                                     {"data":"distrito"},
                                     {"data":"denom_nivel_estudio"},
-                                    {"data":"Evaluador"},
+                                    {"data":"evaluador"},
                                     {"data":"costo_estudio"},
                                     {"data":"denom_situacion_fe"},
-                                    {"data":"avance__fisico"},
-                                    {"data":"denom_estado_fe"}
+                                    {"data":function (data, type, dataToSet) {
+                                         return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data.avance__fisico+"%;'></div></div><small>"+data.avance__fisico+" % Complete</small></td>";
+                                       }}
+                       
                                     //{"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaDenominacionModFE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
 
                                 "language":idioma_espanol
                     });
                    // DenominacionFE("#table-DenominacionFE",table);                
-                        			   	
+                     ListaFormulacion("#table-EvaluacionFE",table);    			   	
                 }
 //LISTAR DENOMINACION DE FORMULACION Y EVALUACION EN TABLA
-   
+          var  ListaFormulacion=function(tbody,table){
+                             $(tbody).on("click","a.VerDetalleFormulacion",function(){
+                              var data=table.row( $(this).parents("tr")).data();
+                              $("#CodigoFormulacion").val(data.codigo_unico_pi);
+
+                          });
+                      }
+
 
             var idioma_espanol=
                 {
