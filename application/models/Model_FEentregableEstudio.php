@@ -11,7 +11,9 @@ class Model_FEentregableEstudio extends CI_Model
       /*añadir funcion*/
         function get_Entregables()
         {
-            $Entregables=$this->db->query(" SELECT id_entregable,nombre_entregable,valoracion,avance,observacion,levantamiento_obs FROM ENTREGABLE_ESTUDIO ");
+             //$id_estapa=3;
+            //$Entregables=$this->db->query("execute sp_Entregables_r '".$id_estapa."' ");
+            $Entregables=$this->db->query("SELECT id_entregable,nombre_entregable,valoracion,avance,observacion,levantamiento_obs FROM ENTREGABLE_ESTUDIO ");
             if($Entregables->num_rows()>=0)
              {
               return $Entregables->result();
