@@ -47,7 +47,7 @@
                     <p></p>
 
                     <!-- start project list -->
-                    <table id="table-EvaluacionFE" class="table table-striped projects">
+                    <table id="table-formulacion" class="table table-striped projects">
                       <thead>
                         <tr>
                           <th style="width: 20%">Id PIP</th>

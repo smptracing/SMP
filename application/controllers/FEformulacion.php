@@ -21,7 +21,6 @@ class FEformulacion extends CI_Controller
             show_404();
         }
     }
-
     public function index()
     {
         $this->_load_layout('Front/Formulacion_Evaluacion/frmFormulacion');
@@ -40,5 +39,4 @@ class FEformulacion extends CI_Controller
         $this->load->view($template);
         $this->load->view('layout/Formulacion_Evaluacion/footer');
     }
-
 }
