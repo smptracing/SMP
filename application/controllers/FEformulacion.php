@@ -14,9 +14,8 @@ class FEformulacion extends CI_Controller
     public function GetFormulacion()
     {
         if ($this->input->is_ajax_request()) {
-            $cargo ="Formulador";
-            $Etapa ="Formulación";
-            $datos = $this->FEformulacion_Modal->GetFormulacion($cargo,$Etapa);
+            $Etapa = "Formulación";
+            $datos = $this->FEformulacion_Modal->GetFormulacion($Etapa);
             echo json_encode($datos);
         } else {
             show_404();
