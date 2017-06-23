@@ -56,11 +56,11 @@
                           <th>Provincia</th>
                           <th>Distrito</th>
                           <th>Nivel de estudio</th>
-                          <th>Evaluador</th>
+                          <th>Responsable</th>
                           <th>Costo Inversion</th>
                           <th>Situacion</th>
                           <th>Avance Fisico</th>
-                          <th></th>
+                          <th>Entregable</th>
 
                         </tr>
                       </thead>

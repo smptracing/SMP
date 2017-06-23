@@ -1,5 +1,6 @@
  $(document).on("ready" ,function(){
               ListarFormulacion();
+             
 			});
  //LISTAR DENOMINACION DE FORMULACION Y EVALUACION EN TABLA
                 var ListarFormulacion=function()
@@ -8,7 +9,6 @@
                      "processing": true,
                       "serverSide":false,
                      destroy:true,
-
                          "ajax":{
                                     "url":base_url+"index.php/FEformulacion/GetFormulacion",
                                     "method":"POST",
@@ -16,23 +16,27 @@
                                     },
                                 "columns":[
                                     {"data":"id_pi","visible": false},
-                                    {"data":"codigo_unico_pi",
+                                    {"data":"codigo_unico_est_inv",
                                     "mRender": function ( data, type, full ) {
                                      return '<a style="font-weight:normal;font-size:15" type="button" class="VerDetalleFormulacion btn btn-link" data-toggle="modal" data-target="#VerDetalleFormulacion" href="/codigo_unico_pi/' + data + '">' + data+ '</a>';
                                       }
                                     },
-                                    {"data":"nombre_pi"},
+                                    {"data":"nombre_est_inv"},
                                     {"data":"provincia"},
                                     {"data":"distrito"},
                                     {"data":"denom_nivel_estudio"},
-                                    {"data":"evaluador"},
+                                    {"data":"nombres"},
                                     {"data":"costo_estudio"},
                                     {"data":"denom_situacion_fe"},
-                                    {"data":function (data, type, dataToSet) {
-                                         return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data.avance__fisico+"%;'></div></div><small>"+data.avance__fisico+" % Complete</small></td>";
-                                       }}
+                                    {"data":"avance_fisico",
+                                      "mRender":function (data,type, full) {
+                                         return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Complete</small></td>";
+                                    }},
                        
-                                    //{"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaDenominacionModFE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
+                                    {"data":"id_etapa_estudio",
+                                    "mRender": function ( data, type, full ) {
+                                     return '<button type="button" class="btn btn-default sm"><a  href="getCarteraAnio/' + data + '"><i class="fa fa-book"></i> </a></button>';
+                                      }}
                                 ],
 
                                 "language":idioma_espanol
@@ -76,4 +80,3 @@
                     }
                 }
 
-  

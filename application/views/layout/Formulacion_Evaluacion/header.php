@@ -37,7 +37,7 @@
     <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
 
     <link href="<?php echo base_url(); ?>assets/vendors/animate/animate.min.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>assets/vendors/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/fullcalendar/dist/fullcalendar.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/vendors/fullcalendar/dist/fullcalendar.print.css" rel="stylesheet" media="print">
 
     <link href="<?php echo base_url(); ?>assets/vendors/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet">
