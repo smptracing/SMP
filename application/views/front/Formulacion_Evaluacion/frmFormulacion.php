@@ -61,6 +61,7 @@
                           <th>Situacion</th>
                           <th>Avance Fisico</th>
                           <th>Entregable</th>
+                          <th>Opción</th>
 
                         </tr>
                       </thead>
