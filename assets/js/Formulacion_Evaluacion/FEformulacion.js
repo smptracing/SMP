@@ -34,11 +34,13 @@
                                     }},
                        
                                     {"data":"id_etapa_estudio",
-                                    "mRender": function ( data, type, full ) {
+                                    "mRender": function ( data, type, full )
+                                     {
                                      return '<button type="button" class="btn btn-default sm"><a  href="getCarteraAnio/' + data + '"><i class="fa fa-book"></i> </a></button>';
-                                      }}
+                                      }
+                                    },
+{"defaultContent":"<button type='button' class='Situacion btn btn-warning btn-xs' data-toggle='modal' data-target='#VentanaSituacionActual'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button'  class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#ventanaasiganarpersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button>"}                            
                                 ],
-
                                 "language":idioma_espanol
                     });
                    // DenominacionFE("#table-DenominacionFE",table);                
@@ -52,6 +54,18 @@
 
                           });
                       }
+
+              var  TipoInversiongiaData=function(tbody,myTable){
+                    $(tbody).on("click","button.Situacion",function(){
+                        var data=myTable.row( $(this).parents("tr")).data();
+                        var txt_IdTipoInversionM=$('#txt_IdTipoInversionM').val(data.id_tipo_inversion);
+                        var txt_NombreTipoInversionM=$('#txt_NombreTipoInversionM').val(data.nombre_tipo_inversion);
+                        var txt_DescripcionTipoInversionM=$('#txt_DescripcionTipoInversionM').val(data.descripcion_tipo_inversion);
+                    });
+                }
+
+
+
 
 
             var idioma_espanol=
