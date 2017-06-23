@@ -1,6 +1,5 @@
  $(document).on("ready" ,function(){
               ListarEvaluacionFE();
-         
 			});
  //LISTAR PROYECTOS QUE SE ENCUENTRARN EN EVALUACION
                 var ListarEvaluacionFE=function()
@@ -14,7 +13,7 @@
                                     "method":"POST",
                                     "dataSrc":""
                                     },
-                                "columns":[
+                               "columns":[
                                     {"data":"id_pi","visible": false},
                                     {"data":"codigo_unico_est_inv",
                                     "mRender": function ( data, type, full ) {
@@ -25,14 +24,20 @@
                                     {"data":"provincia"},
                                     {"data":"distrito"},
                                     {"data":"denom_nivel_estudio"},
-                                    {"data":"Evaluador"},
+
+                                    {"data":"nombres"},
                                     {"data":"costo_estudio"},
                                     {"data":"denom_situacion_fe"},
-                                    {"data":function (data, type, dataToSet) {
-                                         return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data.avance_fisico+"%;'></div></div><small>"+data.avance_fisico+" % Complete</small></td>";
-                                       }}
+                                    {"data":"avance_fisico",
+                                      "mRender":function (data,type, full) {
+                                         return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Complete</small></td>";
+                                    }},
+
                        
-                                    //{"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaDenominacionModFE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
+                                    {"data":"id_etapa_estudio",
+                                    "mRender": function ( data, type, full ) {
+                                     return '<button type="button" class="btn btn-default sm"><a  href="getCarteraAnio/' + data + '"><i class="fa fa-book"></i> </a></button>';
+                                      }}
                                 ],
 
                                 "language":idioma_espanol

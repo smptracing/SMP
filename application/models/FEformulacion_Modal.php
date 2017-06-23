@@ -10,8 +10,9 @@ class FEformulacion_Modal extends CI_Model
     /*LISTAR DENOMINACION FORMULACION Y EVALUACION*/
     public function GetFormulacion($Etapa)
     {
-        $FEformulacion = $this->db->query("execute sp_ListarProyectoFE'"
-            . $Etapa . "' ");
+
+        $FEformulacion = $this->db->query("execute sp_ListarEstudioInversion'" . $Etapa . "' ");
+
         if ($FEformulacion->num_rows() >= 0) {
             return $FEformulacion->result();
         } else {

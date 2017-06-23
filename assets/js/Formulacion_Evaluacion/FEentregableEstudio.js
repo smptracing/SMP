@@ -109,6 +109,7 @@
                         center: 'title',
                         right: 'month,agendaWeek,agendaDay,listMonth'
                       },
+                      
                       defaultDate: '2017-05-12',
                      locale: initialLocaleCode,
                       //buttonIcons: false, // show the prev/next text

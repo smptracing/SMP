@@ -43,6 +43,7 @@
                           <th>Costo Inversion</th>
                           <th>Situacion</th>
                           <th>Avance Fisico</th>
+                          <th>Entregable</th>
                           <th></th>
                          
                         </tr>
