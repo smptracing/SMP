@@ -368,7 +368,7 @@
                       </div>
                       <div class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
                         <label class="col-md-6 col-sm-6 col-xs-6">Valoración</label>
-                        <input type="text" class="form-control" id="txt_valoracionEAc" name="txt_valoracionEAc" data-inputmask="'mask':'999'" data-validate-length-range="3" data-validate-words="3" required="required" >
+                        <input type="text" class="form-control" id="txt_valoracionEAc" name="txt_valoracionEAc" data-inputmask="'mask':'99'" data-validate-length-range="2" data-validate-words="2" required="required" >
                       </div>
 
                      <div class="col-md-12 col-sm-12 col-xs-12 input-group">
