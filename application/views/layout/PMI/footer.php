@@ -99,7 +99,7 @@
 <script src="<?php echo base_url(); ?>assets/js/administrador/MRubroE.js"></script><!-- para mostar los datos de rubro de ejecucion-->
 <script src="<?php echo base_url(); ?>assets/js/administrador/ModalidadE.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/administrador/UnidadE.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/administrador/MProyectoInversion.js"></script>
+<!--<script src="--><?php //echo base_url(); ?><!--assets/js/administrador/MProyectoInversion.js"></script>-->
 <script src="<?php echo base_url(); ?>assets/js/administrador/Indicador.js"></script>
 <!-- js de los formularios-->
 <script src="<?php echo base_url(); ?>assets/js/administrador/NaturalezaInversion.js"></script>

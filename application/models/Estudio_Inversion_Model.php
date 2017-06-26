@@ -11,8 +11,15 @@ class Estudio_Inversion_Model extends CI_Model
     public function get_EstudioInversion()
     {
         //  $EstadoCicloInversion = $this->db->query("execute get");
-        $EstudioInversion = $this->db->query("select ESTUDIO_INVERSION.id_est_inv,ESTUDIO_INVERSION.nombre_est_inv,PERSONA.id_persona,
-concat(PERSONA.nombres,' ',PERSONA.apellido_p) As nombres ,RESPONSABLE_ESTUDIO.fecha from ESTUDIO_INVERSION inner join RESPONSABLE_ESTUDIO on RESPONSABLE_ESTUDIO.id_est_inv=ESTUDIO_INVERSION.id_est_inv inner join PERSONA on RESPONSABLE_ESTUDIO.id_persona=PERSONA.id_persona");
+        $sql = "select ee.id_est_inv, nombre_est_inv, pe.id_persona, (pe.nombres +' '+pe.apellido_p +' '+ pe.apellido_m) as nombres,  fecha, denom_etapas_fe\n"
+            . "	from ETAPA_ESTUDIO ee inner join (select id_est_inv, max(fecha_estado) fees from ETAPA_ESTUDIO\n"
+            . "	group by id_est_inv) ll on ee.id_est_inv = ee.id_est_inv and ee.fecha_estado = ll.fees \n"
+            . "	inner join ETAPAS_FE efe on ee.id_etapa_fe = efe.id_etapa_fe \n"
+            . "	inner join ESTUDIO_INVERSION ei on ei.id_est_inv = ee.id_est_inv\n"
+            . "	inner join RESPONSABLE_ESTUDIO re on re.id_est_inv = ei.id_est_inv\n"
+            . "	inner join PERSONA pe on pe.id_persona = re.id_persona";
+
+        $EstudioInversion = $this->db->query($sql);
         if ($EstudioInversion->num_rows() > 0) {
             return $EstudioInversion->result();
         } else {
