@@ -1,22 +1,15 @@
  <!-- page content -->
         <div class="right_col" role="main">
           <div class="">
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/desarrollo
-
             <div class="clearfix"></div>
 
             <div class="row">
               <div class="col-md-12">
                 <div class="x_panel">
                   <div class="x_title">
-<<<<<<< HEAD
+
                     <h2>PROYECTOS EN EVALUACION</h2>
-=======
-                    <h2>PROYECTOS EN EVALUACIÓN</h2>
->>>>>>> origin/desarrollo
+
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
