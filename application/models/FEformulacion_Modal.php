@@ -21,4 +21,30 @@ class FEformulacion_Modal extends CI_Model
 
     }
     /*LISTAR DENOMINACION FORMULACION Y EVALUACION*/
+    /*LISTAR DENOMINACION FORMULACION Y EVALUACION*/
+    public function GetFEAprobados($Etapa)
+    {
+
+        $FEAprobados = $this->db->query("execute sp_ListarEstudioInversion'" . $Etapa . "' ");
+
+        if ($FEAprobados->num_rows() >= 0) {
+            return $FEAprobados->result();
+        } else {
+            return false;
+        }
+
+    }
+    public function GetFEViabilizado($Etapa)
+    {
+
+        $FEAprobados = $this->db->query("execute sp_ListarEstudioInversion'" . $Etapa . "' ");
+
+        if ($FEAprobados->num_rows() >= 0) {
+            return $FEAprobados->result();
+        } else {
+            return false;
+        }
+
+    }
+    /*LISTAR DENOMINACION FORMULACION Y EVALUACION*/
 }
