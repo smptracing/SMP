@@ -141,6 +141,30 @@
                      RegistarPersona("#table-formulacion",table);  			   	
                 }
 //LISTAR DENOMINACION DE FORMULACION Y EVALUACION EN TABLA
+
+var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
+  {
+    html1="";
+     $("#table-DetSitActEvaluacionFE").html(html1);
+    $.ajax({
+    "url":base_url+"index.php/EvaluacionFE/GetDetallesituacionActual",
+    type:"post",
+    data:{codigo_unico_est_inv:codigo_unico_est_inv},
+     success:function(respuesta)
+                      {
+                         var registros = eval(respuesta);  
+                          
+                         html1+="<thead> <tr> <th  class='active'><h5>ID</h5></th><th  class='active'><h5>CODIGO UNICO </h5></th> <th class='active'><h5>NOMBRE DEL ESTUDIO </h5></th><th class='active'><h5>EVALUADOR</h5></th>  <th class='active'><h5>CARGO</h5></th><th class='active'><h5>OBSERVACIONES</h5></th><th class='active'><h5>FECHA</h5></th></tr></thead>"
+                         for (var i = 0; i <registros.length;i++) {
+                              html1 +="<tbody> <tr><th>"+registros[i]["id_est_inv"]+"</th><th>"+registros[i]["codigo_unico_est_inv"]+"</th><th>"+registros[i]["nombre_est_inv"]+"</th><th>"+registros[i]["Evaluador"]+"</th><th>"+registros[i]["desc_cargo"]+"</th><th>"+registros[i]["observacion"]+"</th><th>"+registros[i]["fecha"]+"</th></tr>";    
+                          //alert(suma);
+                           };               
+                             html1 +="</tbody>";
+                         $("#table-DetSitActEvaluacionFE").html(html1);
+                             
+                      }
+                    });
+    }
           var  ListaFormulacion=function(tbody,table){
                              $(tbody).on("click","a.VerDetalleFormulacion",function(){
                               var data=table.row( $(this).parents("tr")).data();
