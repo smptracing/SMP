@@ -19,6 +19,21 @@ class TipEstudioFE extends CI_Controller {/* Mantenimiento de division funcional
           show_404();
         }
     }
+     public function  AddTipoEstudioFE()
+    {
+        if ($this->input->is_ajax_request()) 
+            {
+             $txt_tipoEstudioFE =$this->input->post("txt_tipoEstudioFE");
+             if($this->Model_TipEstudioFE->AddTipoEstudioFE($txt_tipoEstudioFE)== false)
+                   echo "SE INSERTO UN TIPO DE ESTUDIO EN FORMULACION Y EVALUACION";
+                  else
+                  echo "SE INSERTO UN TIPO DE ESTUDIO EN FORMULACION Y EVALUACION";  
+            } 
+        else
+            {
+              show_404();
+            }  
+    }
 
 	function _load_layout($template)
     {

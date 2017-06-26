@@ -107,17 +107,28 @@ class Estudio_Inversion extends CI_Controller
             show_404();
         }
     }
+    public function get_cargo() //mostra ESTADO INVERSION
+
+    {
+
+        if ($this->input->is_ajax_request()) {
+            $datos = $this->Estudio_Inversion_Model->get_cargo();
+            echo json_encode($datos);
+        } else {
+            show_404();
+        }
+    }
     //REGISTRAR NUEVA
     public function AddEtapaEstudio()
     {
         if ($this->input->is_ajax_request()) {
             $flat             = "C";
             $id_etapa_estudio = "0";
-            $id_est_inv       = $this->input->post("id_est_inv");
+            $id_est_inv       = $this->input->post("txt_id_est_inv");
             $listaretapasFE_M = $this->input->post("listaretapasFE_M");
             $dateFechaIniC    = $this->input->post("dateFechaIniC");
             $dateFechaIniF    = $this->input->post("dateFechaIniF");
-            $txtAvanceFisico  = $this->input->post("txtAvanceFisico");
+            $txtAvanceFisico  = "0.00";
             $txadescripcion   = $this->input->post("txadescripcion");
             if ($this->Estudio_Inversion_Model->AddEtapaEstudio($flat, $id_etapa_estudio, $id_est_inv, $listaretapasFE_M, $dateFechaIniC, $dateFechaIniF, $txtAvanceFisico, $txadescripcion) == false) {
                 echo "1";
@@ -133,20 +144,21 @@ class Estudio_Inversion extends CI_Controller
     public function AddEstudioInversion()
     {
         if ($this->input->is_ajax_request()) {
-            $flat                       = "C";
-            $id_est_inv                 = "0";
-            $txtCodigoUnico             = $this->input->post("txtCodigoUnico");
-            $txt_nombreEstudioInversion = $this->input->post("txt_nombreEstudioInversion");
-            $listaFuncionC              = $this->input->post("listaFuncionC");
-            $listaTipoInversion         = $this->input->post("listaTipoInversion");
-            $listaNivelEstudio          = $this->input->post("listaNivelEstudio");
-            $lista_unid_form            = $this->input->post("lista_unid_form");
-            $lista_unid_ejec            = $this->input->post("lista_unid_ejec");
-            $txadescripcion             = $this->input->post("txadescripcion");
-            $txtMontoInversion          = $this->input->post("txtMontoInversion");
-            $txtcostoestudio            = $this->input->post("txtcostoestudio");
-            // $listaResponsable           = $this->input->post("listaResponsable");
-            if ($this->Estudio_Inversion_Model->AddEstudioInversion($flat, $id_est_inv, $txtCodigoUnico, $txt_nombreEstudioInversion, $listaFuncionC, $listaTipoInversion, $listaNivelEstudio, $lista_unid_form, $lista_unid_ejec, $txadescripcion, $txtMontoInversion, $txtcostoestudio) == false) {
+            $flat               = "C";
+            $id_est_inv         = "0";
+            $txtCodigoUnico     = $this->input->post("txtCodigoUnico");
+            $txtnombres         = $this->input->post("txtnombres");
+            $listaFuncionC      = $this->input->post("listaFuncionC");
+            $listaTipoInversion = $this->input->post("listaTipoInversion");
+            $listaNivelEstudio  = $this->input->post("listaNivelEstudio");
+            $lista_unid_form    = $this->input->post("lista_unid_form");
+            $lista_unid_ejec    = $this->input->post("lista_unid_ejec");
+            $txadescripcion     = $this->input->post("txadescripcion");
+            $txtMontoInversion  = $this->input->post("txtMontoInversion");
+            $txtcostoestudio    = $this->input->post("txtcostoestudio");
+            $listaResponsable   = $this->input->post("listaResponsable");
+            $dateFechaAsig      = $this->input->post("dateFechaAsig");
+            if ($this->Estudio_Inversion_Model->AddEstudioInversion($flat, $id_est_inv, $txtCodigoUnico, $txtnombres, $listaFuncionC, $listaTipoInversion, $listaNivelEstudio, $lista_unid_form, $lista_unid_ejec, $txadescripcion, $txtMontoInversion, $txtcostoestudio, $listaResponsable, $dateFechaAsig) == false) {
                 echo "1";
             } else {
                 echo "2";
@@ -155,45 +167,42 @@ class Estudio_Inversion extends CI_Controller
             show_404();
         }
     }
-    //ELIMINAR  ciclo inversion
-    public function EliminarEstadoCicloInversion()
+    //REGISTRAR NUEVA
+    public function AddResponsableEstudio()
     {
         if ($this->input->is_ajax_request()) {
-            $flat = "D";
-            // $ID   = "0";
-            $txt_IdEstadoCicloInversion          = $this->input->post("IDCICLOINVERSION");
-            $txt_NombreEstadoCicloInversion      = "NULL";
-            $txt_DescripcionEstadoCicloInversion = "NULL";
-
-            if ($this->EstadoCicloInversion_Model->EliminarEstadoCicloInversion($flat, $txt_IdEstadoCicloInversion, $txt_NombreEstadoCicloInversion, $txt_DescripcionEstadoCicloInversion) == false) {
-                echo "Se Eliminó  ";
+            $flat              = "C";
+            $id_est_inv        = $this->input->post("id_est_inv");
+            $listaResponsables = $this->input->post("listaResponsables");
+            $dateFechaAsig     = $this->input->post("dateFechaAsig");
+            if ($this->Estudio_Inversion_Model->AddResponsableEstudio($flat, $id_est_inv, $listaResponsables, $dateFechaAsig) == false) {
+                echo "1";
             } else {
-                echo "No se Eliminó ";
+                echo "2";
             }
         } else {
             show_404();
         }
-
     }
-    //ACTUALIZAR NUEVA
-    public function UpdateEstadoCicloInversion()
+
+    //REGISTRAR NUEVA
+    public function AddAsiganarPersona()
     {
         if ($this->input->is_ajax_request()) {
-            $flat                                 = "U";
-            $txt_IdEstadoCicloInversionM          = $this->input->post("txt_IdEstadoCicloInversionM");
-            $txt_NombreEstadoCicloInversionM      = $this->input->post("txt_NombreEstadoCicloInversionM");
-            $txt_DescripcionEstadoCicloInversionM = $this->input->post("txt_DescripcionEstadoCicloInversionM");
+            $flat                  = "U";
+            $Cbx_Persona           = $this->input->post("Cbx_Persona");
+            $Cbx_Cargo             = $this->input->post("Cbx_Cargo");
+            $txt_IdEtapa_Estudio_p = $this->input->post("txt_IdEtapa_Estudio_p");
+            $txadescripcion        = $this->input->post("txadescripcion");
 
-            if ($this->EstadoCicloInversion_Model->UpdateEstadoCicloInversion($flat, $txt_IdEstadoCicloInversionM, $txt_NombreEstadoCicloInversionM, $txt_DescripcionEstadoCicloInversionM) == false) {
-                echo "Se actualizó  ";
+            if ($this->Estudio_Inversion_Model->AddAsiganarPersona($flat, $Cbx_Persona, $Cbx_Cargo, $txt_IdEtapa_Estudio_p, $txadescripcion) == false) {
+                echo "1";
             } else {
-                echo "No se actualizó ";
+                echo "2";
             }
-
         } else {
             show_404();
         }
-
     }
 
 //------------------------------------------------------------------------------------------------------------------

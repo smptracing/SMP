@@ -9,6 +9,7 @@ class Personal extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Model_Personal');
+        $this->load->model('Cargo_Modal');
     }
 
     /* Pagina principal de la vista entidad Y servicio publico asociado */
@@ -38,6 +39,48 @@ class Personal extends CI_Controller
             show_404();
         }
     }
+    public function getcargo()
+    {
+        if ($this->input->is_ajax_request()) {
+            $datos = $this->Cargo_Modal->getcargo();
+            echo json_encode($datos);
+        } else {
+            show_404();
+        }
+    }
+    //REGISTRAR NUEVA
+    public function addcargo()
+    {
+        if ($this->input->is_ajax_request()) {
+            $flat            = "C";
+            $idcargo         = "0";
+            $txt_nombrecargo = $this->input->post("txt_nombrecargo");
+            if ($this->Cargo_Modal->addcargo($flat, $idcargo, $txt_nombrecargo) == false) {
+                echo "1";
+            } else {
+                echo "2";
+            }
+        } else {
+            show_404();
+        }
+    }
+    //REGISTRAR NUEVA
+    public function updatecargo()
+    {
+        if ($this->input->is_ajax_request()) {
+            $flat              = "U";
+            $txt_idcargo_m     = $this->input->post("txt_idcargo_m");
+            $txt_nombrecargo_m = $this->input->post("txt_nombrecargo_m");
+            if ($this->Cargo_Modal->updatecargo($flat, $txt_idcargo_m, $txt_nombrecargo_m) == false) {
+                echo "1";
+            } else {
+                echo "2";
+            }
+        } else {
+            show_404();
+        }
+    }
+
     public function AddPersonal()
     {
         if ($this->input->is_ajax_request()) {
@@ -93,6 +136,18 @@ class Personal extends CI_Controller
 
     }
     /*fin Personal*/
+
+    public function BuscarPersona()
+    {
+        if ($this->input->is_ajax_request()) {
+            $text_buscarPersona = $this->input->post('text_buscarPersona');
+            $datos              = $this->Model_Personal->BuscarPersona($text_buscarPersona);
+            echo json_encode($datos);
+        } else {
+            show_404();
+        }
+
+    }
 
     public function _load_layout($template)
     {
