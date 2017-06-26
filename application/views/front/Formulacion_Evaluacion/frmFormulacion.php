@@ -1,25 +1,7 @@
  <!-- page content -->
         <div class="right_col" role="main">
           <div class="">
-            <div class="page-title">
-              <div class="title_left">
-                <h3>Projects <small>Listing design</small></h3>
-              </div>
-
-              <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
             <div class="clearfix"></div>
-
             <div class="row">
               <div class="col-md-12">
                 <div class="x_panel">
@@ -61,12 +43,12 @@
                           <th style="width: 20%">Nombre Pip</th>
                           <th>Provincia</th>
                           <th>Distrito</th>
-                          <th>Nivel de estudio</th>
+                          <th>Nivel de Estudio</th>
                           <th>Responsable</th>
                           <th>Costo Inversion</th>
                           <th>Situacion</th>
                           <th>Avance Fisico</th>
-                          <th>Entregable</th>
+                          <th>Entr.</th>
                           <th>Opción</th>
 
                         </tr>
