@@ -36,7 +36,7 @@
     <link href="<?php echo base_url();?>assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
 
     <link href="<?php echo base_url();?>assets/vendors/animate/animate.min.css" rel="stylesheet">
-
+      <link href="<?php echo base_url();?>assets/css/jquery.growl.css" rel="stylesheet">
 
   <style>
    #ProgramacionHorizontal{
@@ -143,9 +143,8 @@
                 </li>
 
                 <li role="presentation" class="dropdown">
-                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                  <a id="panel_notificacion_pmi" href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                     <i class="fa fa-envelope-o"></i>
-                    <span class="badge bg-green">6</span>
                   </a>
                   <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                     <li>

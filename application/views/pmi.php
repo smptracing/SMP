@@ -554,7 +554,6 @@
                             </div>
                             <div class="x_content">
                                 <div class="dashboard-widget-content">
-                                    <div id="map" style="height: 350px; width: 400px"></div>
                                     <div class="col-md-4 hidden-small">
                                         <h2 class="line_30">Provincias de Apurimac</h2>
 
@@ -591,7 +590,7 @@
                                             </tbody>
                                         </table>
                                     </div>
-
+                                    <div id="map" style="height: 350px; width: 400px"></div>
                                 </div>
                             </div>
                         </div>

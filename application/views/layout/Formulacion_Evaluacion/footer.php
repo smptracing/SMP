@@ -105,5 +105,7 @@
    <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/EtapasFE.js"></script>
    <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/TipEstudioFE.js"></script>
    <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/EvaluacionFE.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/Estadisticas/FormulacionEvaluacion.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/growl/growl.js"></script>
   </body>
 </html>
