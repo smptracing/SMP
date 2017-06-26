@@ -83,9 +83,18 @@ concat(PERSONA.nombres,' ',PERSONA.apellido_p) As nombres ,RESPONSABLE_ESTUDIO.f
     }
     public function get_etapasFE()
     {
-        $NivelEstudio = $this->db->query("select id_etapa_fe,denom_etapas_fe from ETAPAS_FE");
-        if ($NivelEstudio->num_rows() > 0) {
-            return $NivelEstudio->result();
+        $etapa = $this->db->query("select id_etapa_fe,denom_etapas_fe from ETAPAS_FE");
+        if ($etapa->num_rows() > 0) {
+            return $etapa->result();
+        } else {
+            return false;
+        }
+    }
+    public function get_cargo()
+    {
+        $cargo = $this->db->query("select id_cargo,desc_cargo from Cargo");
+        if ($cargo->num_rows() > 0) {
+            return $cargo->result();
         } else {
             return false;
         }
@@ -145,6 +154,22 @@ concat(PERSONA.nombres,' ',PERSONA.apellido_p) As nombres ,RESPONSABLE_ESTUDIO.f
             . $dateFechaAsig . "' ");
         if ($ResponsableEstudio->num_rows() > 0) {
             return $ResponsableEstudio->result();
+        } else {
+            return false;
+        }
+    }
+
+    public function AddAsiganarPersona($flat, $Cbx_Persona, $Cbx_Cargo, $txt_IdEtapa_Estudio_p, $txadescripcion)
+    {
+        //  $EstadoCicloInversion = $this->db->query("execute get");
+        $AsiganarPersona = $this->db->query("execute sp_Gestionar_AsignarPersona'"
+            . $flat . "','"
+            . $Cbx_Persona . "', '"
+            . $Cbx_Cargo . "', '"
+            . $txt_IdEtapa_Estudio_p . "', '"
+            . $txadescripcion . "' ");
+        if ($AsiganarPersona->num_rows() > 0) {
+            return $AsiganarPersona->result();
         } else {
             return false;
         }

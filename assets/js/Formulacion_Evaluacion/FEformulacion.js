@@ -1,6 +1,55 @@
  $(document).on("ready" ,function(){
               ListarFormulacion();
-             
+//REGISTARAR situacion
+   $("#form-AddSituacion").submit(function(event)
+                  {
+                      event.preventDefault();
+                      $.ajax({
+                          url:base_url+"index.php/FEsituacion/AddSituacion",
+                          type:$(this).attr('method'),
+                          data:$(this).serialize(),
+                          success:function(resp){
+                           //alert(resp);
+                           if (resp=='1') {
+                             swal("REGISTRADO","Se regristró correctamente", "success");
+                             formReset();
+                           }
+                            if (resp=='2') {
+                             swal("NO SE REGISTRÓ","NO se regristró ", "error");
+                           }
+                          $('#table-formulacion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
+                             formReset();
+                         }
+                      });
+                  });
+   //REGISTARAR asiganar persona
+   $("#form-AddAsiganarPersona").submit(function(event)
+                  {
+                      event.preventDefault();
+                      $.ajax({
+                          url:base_url+"index.php/Estudio_Inversion/AddAsiganarPersona",
+                          type:$(this).attr('method'),
+                          data:$(this).serialize(),
+                          success:function(resp){
+                           //alert(resp);
+                           if (resp=='1') {
+                             swal("REGISTRADO","Se regristró correctamente", "success");
+                             formReset();
+                           }
+                            if (resp=='2') {
+                             swal("NO SE REGISTRÓ","NO se regristró ", "error");
+                           }
+                          $('#table-formulacion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
+                             formReset();
+                         }
+                      });
+                  });
+//limpiar campos
+          function formReset()
+          {
+          document.getElementById("form-AddSituacion").reset();
+           document.getElementById("form-AddAsiganarPersona").reset();
+          }            
 			});
  //LISTAR DENOMINACION DE FORMULACION Y EVALUACION EN TABLA
                 var ListarFormulacion=function()
@@ -39,31 +88,100 @@
                                      return '<button type="button" class="btn btn-default sm"><a  href="getCarteraAnio/' + data + '"><i class="fa fa-book"></i> </a></button>';
                                       }
                                     },
-{"defaultContent":"<button type='button' class='Situacion btn btn-warning btn-xs' data-toggle='modal' data-target='#VentanaSituacionActual'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button'  class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#ventanaasiganarpersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button>"}                            
+{"defaultContent":"<button type='button' class='Situacion btn btn-warning btn-xs' data-toggle='modal' data-target='#VentanaSituacionActual'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button'  class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#VentanaAsignarPersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button>"}                            
                                 ],
                                 "language":idioma_espanol
                     });
                    // DenominacionFE("#table-DenominacionFE",table);                
-                     ListaFormulacion("#table-formulacion",table);    			   	
+                     ListaFormulacion("#table-formulacion",table);   
+                    SituacionActual("#table-formulacion",table);  
+                     RegistarPersona("#table-formulacion",table);  			   	
                 }
 //LISTAR DENOMINACION DE FORMULACION Y EVALUACION EN TABLA
           var  ListaFormulacion=function(tbody,table){
                              $(tbody).on("click","a.VerDetalleFormulacion",function(){
                               var data=table.row( $(this).parents("tr")).data();
                               $("#CodigoFormulacion").val(data.codigo_unico_pi);
-
                           });
                       }
-
-              var  TipoInversiongiaData=function(tbody,myTable){
+              var  SituacionActual=function(tbody,table){
                     $(tbody).on("click","button.Situacion",function(){
-                        var data=myTable.row( $(this).parents("tr")).data();
-                        var txt_IdTipoInversionM=$('#txt_IdTipoInversionM').val(data.id_tipo_inversion);
-                        var txt_NombreTipoInversionM=$('#txt_NombreTipoInversionM').val(data.nombre_tipo_inversion);
-                        var txt_DescripcionTipoInversionM=$('#txt_DescripcionTipoInversionM').val(data.descripcion_tipo_inversion);
+                        var data=table.row( $(this).parents("tr")).data();
+                        var txt_IdEtapa_Estudio=$('#txt_IdEtapa_Estudio').val(data.id_etapa_estudio);
+                         listarsituacionFE();
+                  });
+                }
+
+                var listarsituacionFE=function(valor){
+                     html="";
+                    $("#Cbx_Situacion").html(html); 
+                    event.preventDefault(); 
+                    $.ajax({
+                        "url":base_url +"index.php/FEsituacion/get_FEsituacion",
+                        type:"POST",
+                        success:function(respuesta3){
+                         //  alert(respuesta);
+                         var registros = eval(respuesta3);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option  value="+registros[i]["id_situacion_fe"]+"> "+registros[i]["denom_situacion_fe"]+" </option>";   
+                            };
+                            $("#Cbx_Situacion").html(html);
+                            $('select[name=Cbx_Situacion]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=Cbx_Situacion]').change();
+                            $('.selectpicker').selectpicker('refresh'); 
+                        }
+                    });
+                }
+/*Asiganar Persona*/
+ var  RegistarPersona=function(tbody,table){
+                    $(tbody).on("click","button.AsignarPersona",function(){
+                        var data=table.row( $(this).parents("tr")).data();
+                        var txt_IdEtapa_Estudio_p=$('#txt_IdEtapa_Estudio_p').val(data.id_etapa_estudio);
+                         listarPersonaFE();
+                         listarCargoFE();
+                  });
+                }
+  var listarPersonaFE=function(valor){
+                     html="";
+                    $("#Cbx_Persona").html(html); 
+                    event.preventDefault(); 
+                    $.ajax({
+                        "url":base_url +"index.php/Estudio_Inversion/get_persona",
+                        type:"POST",
+                        success:function(respuesta3){
+                         //  alert(respuesta);
+                         var registros = eval(respuesta3);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option  value="+registros[i]["id_persona"]+"> "+registros[i]["nombres_apell"]+" </option>";   
+                            };
+                            $("#Cbx_Persona").html(html);
+                            $('select[name=Cbx_Persona]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=Cbx_Persona]').change();
+                            $('.selectpicker').selectpicker('refresh'); 
+                        }
                     });
                 }
 
+                  var listarCargoFE=function(valor){
+                     html="";
+                    $("#Cbx_Cargo").html(html); 
+                    event.preventDefault(); 
+                    $.ajax({
+                        "url":base_url +"index.php/Estudio_Inversion/get_cargo",
+                        type:"POST",
+                        success:function(respuesta3){
+                         //  alert(respuesta);
+                         var registros = eval(respuesta3);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option  value="+registros[i]["id_cargo"]+"> "+registros[i]["desc_cargo"]+" </option>";   
+                            };
+                            $("#Cbx_Cargo").html(html);
+                            $('select[name=Cbx_Cargo]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=Cbx_Cargo]').change();
+                            $('.selectpicker').selectpicker('refresh'); 
+                        }
+                    });
+                }
 
 
 

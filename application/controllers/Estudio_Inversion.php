@@ -107,6 +107,17 @@ class Estudio_Inversion extends CI_Controller
             show_404();
         }
     }
+    public function get_cargo() //mostra ESTADO INVERSION
+
+    {
+
+        if ($this->input->is_ajax_request()) {
+            $datos = $this->Estudio_Inversion_Model->get_cargo();
+            echo json_encode($datos);
+        } else {
+            show_404();
+        }
+    }
     //REGISTRAR NUEVA
     public function AddEtapaEstudio()
     {
@@ -165,6 +176,26 @@ class Estudio_Inversion extends CI_Controller
             $listaResponsables = $this->input->post("listaResponsables");
             $dateFechaAsig     = $this->input->post("dateFechaAsig");
             if ($this->Estudio_Inversion_Model->AddResponsableEstudio($flat, $id_est_inv, $listaResponsables, $dateFechaAsig) == false) {
+                echo "1";
+            } else {
+                echo "2";
+            }
+        } else {
+            show_404();
+        }
+    }
+
+    //REGISTRAR NUEVA
+    public function AddAsiganarPersona()
+    {
+        if ($this->input->is_ajax_request()) {
+            $flat                  = "U";
+            $Cbx_Persona           = $this->input->post("Cbx_Persona");
+            $Cbx_Cargo             = $this->input->post("Cbx_Cargo");
+            $txt_IdEtapa_Estudio_p = $this->input->post("txt_IdEtapa_Estudio_p");
+            $txadescripcion        = $this->input->post("txadescripcion");
+
+            if ($this->Estudio_Inversion_Model->AddAsiganarPersona($flat, $Cbx_Persona, $Cbx_Cargo, $txt_IdEtapa_Estudio_p, $txadescripcion) == false) {
                 echo "1";
             } else {
                 echo "2";
