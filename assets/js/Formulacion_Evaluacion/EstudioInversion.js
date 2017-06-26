@@ -23,13 +23,7 @@ $(document).on("ready" ,function(){
               $("#lista_unid_ejec").change(function(){
                 // alert("hola");
                  listarpersonascombo();
-             }); 
-              $("#listaResponsable").change(function(){
-                // alert("hola");
-                 listarestudiocombo();
-             });      
-
-              
+             });         
 //REGISTARAR NUEVA 
    $("#form-AddEstudioInversion").submit(function(event)
                   {
@@ -77,25 +71,34 @@ $(document).on("ready" ,function(){
 //limpiar campos
           function formReset()
           {
-          document.getElementById("form-AddInstitucion").reset();
-         document.getElementById("form-EditInstitucion").reset();
+          document.getElementById("form-AddEtapaEstudio").reset();
+         document.getElementById("form-AddEstudioInversion").reset();
+          document.getElementById("form-AddResponsableEstudio").reset();
           }
- //formulario para ediotar
-             $("#form-EditInstitucion").submit(function(event)
+//REGISTARAR NUEVA ETAPA DE ESTUDIO 
+   $("#form-AddResponsableEstudio").submit(function(event)
                   {
                       event.preventDefault();
                       $.ajax({
-                         url:base_url+"index.php/Institucion/UpdateInstitucion",
+                          url:base_url+"index.php/Estudio_Inversion/AddResponsableEstudio",
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
                            //alert(resp);
-                           swal(resp,"Registro Actualizado", "success");
-                          $('#dynamic-table-Institucion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
+                           if (resp=='1') {
+                             swal("REGISTRADO","Se regristró correctamente", "success");
+                             formReset();
+                           }
+                            if (resp=='2') {
+                             swal("NO SE REGISTRÓ","NO se regristró ", "error");
+                           }
+                          $('#dynamic-table-EstudioInversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
                              formReset();
                          }
                       });
-                  }); 
+                  });
+
+
     
 
       });
@@ -118,7 +121,7 @@ $(document).on("ready" ,function(){
                                          return "<strong>"+data.nombre_est_inv + "</strong><br/><i class='fa fa-calendar'>  " + data.fecha+"</i>";
                                        }},
                                     {"data":"nombres"},
-                                    {"defaultContent":"<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57'></div></div><small>57% Complete</small></td>"},
+                                    {"defaultContent":"<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+70+"%;'></div></div><small>57% Complete</small></td>"},
                                     { "data": function (data, type, dataToSet) {
                                         return "<td><button type='button' class='btn btn-success btn-xs'>"+data.denom_etapas_fe + "</button></td>";
                                     }},
@@ -290,12 +293,33 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
                         }
                     });
                 }
+              var  nuevaEtapaEstudioData=function(tbody,myTableUA){
+                    $(tbody).on("click","button.nuevaEtapaEstudio",function(){
+                   var data=myTableUA.row( $(this).parents("tr")).data();
+
+                       var txt_id_est_inv=$('#txt_id_est_inv').val(data.id_est_inv);
+                      // console.log(txt_id_est_inv);
+                      listaretapasFE();
+                    });
+                }
+
+                     var  EstadoCicloData=function(tbody,myTable){
+                    $(tbody).on("click","button.editar",function(){
+                        var data=myTable.row( $(this).parents("tr")).data();
+                        var txt_IdEstadoCicloInversionM=$('#txt_IdEstadoCicloInversionM').val(data.id_estado_ciclo);
+                        var txt_NombreEstadoCicloInversionM=$('#txt_NombreEstadoCicloInversionM').val(data.nombre_estado_ciclo);
+                        var txt_DescripcionEstadoCicloInversionM=$('#txt_DescripcionEstadoCicloInversionM').val(data.descripcion_estado_ciclo);
+
+                    });
+                }
+
 
                 var  listarpersonasdata=function(tbody,myTableUA){
                     $(tbody).on("click","button.AsignarPersona",function(){
                       var data=myTableUA.row( $(this).parents("tr")).data();
                       var id_persona=data.id_persona;
                        console.log(id_persona); 
+                        var id_est_inv=$('#id_est_inv').val(data.id_est_inv);
                        listarpersonascombo(id_persona);
 
                     });
@@ -315,7 +339,6 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
                             for (var i = 0; i <registros.length;i++) {
                               html +="<option  value="+registros[i]["id_persona"]+"> "+registros[i]["nombres_apell"]+" </option>";   
                             };
-                              
                             $("#listaResponsable").html(html);
                             $("#listaResponsables").html(html);
                             $('select[name=listaResponsables]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
@@ -349,46 +372,9 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
                     });
                 }
 
-                var  nuevaEtapaEstudioData=function(tbody,myTableUA){
-                    $(tbody).on("click","button.nuevaEtapaEstudio",function(){
-                      var data=myTableUA.row( $(this).parents("tr")).data();
-                       var id_est_inv=$('#id_est_inv').val(data.id_est_inv);
-                        console.log(id_est_inv);
-                       listaretapasFE(id_est_inv);
+  
 
-                    });
-                }
-
-              var EliminarInstitucion=function(tbody,myTableUA){
-                  $(tbody).on("click","button.eliminar",function(){
-                        var data=myTableUA.row( $(this).parents("tr")).data();
-                        var id_institucion=data.id_institucion;
-                        console.log(data);
-                         swal({
-                                title: "Desea eliminar ?",
-                                text: "",
-                                type: "warning",
-                                showCancelButton: true,
-                                confirmButtonColor: "#DD6B55",
-                                confirmButtonText: "Yes,Eliminar",
-                                closeOnConfirm: false
-                              },
-                              function(){
-                                    $.ajax({
-                                          url:base_url+"index.php/Institucion/EliminarInstitucion",
-                                          type:"POST",
-                                          data:{id_institucion:id_institucion
-                                          },
-                                          success:function(respuesta){
-                                            //alert(respuesta);
-                                            swal("ELIMINADO", "Registro Eliminado", "success");
-                                            $('#dynamic-table-Institucion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
-
-                                          }
-                                        });
-                              });
-                    });
-                }
+             
         /*Idioma de datatablet table-sector */
             var idioma_espanol=
                 {
