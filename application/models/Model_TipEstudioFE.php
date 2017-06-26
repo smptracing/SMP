@@ -22,7 +22,18 @@ class Model_TipEstudioFE extends CI_Model
    
         }
 
-      
+         function AddTipoEstudioFE($txt_tipoEstudioFE)
+        {
+            $this->db->query("insert into TIPO_ESTUDIO(nombre_tipo_est) values ('$txt_tipoEstudioFE')");
+            if ($this->db->affected_rows()> 0) 
+              {
+                return true;
+              }
+              else
+              {
+                return false;
+              }
+        }
         //fin funcion
        
         //fin division funciona
