@@ -21,6 +21,21 @@ class FEActividadEntregable extends CI_Controller {/* Mantenimiento de division 
           show_404();
         }
     }
+
+    //mostra vance de la actividad
+     public function MostrarAvance(){
+    	if ($this->input->is_ajax_request()) 
+        {
+        $txt_id_entregable=$this->input->post('txt_id_entregable');
+        $datos=$this->Model_FEActividadEntregable->get_Actividades($txt_id_entregable);
+        echo json_encode($datos);
+        }
+        else
+        {
+          show_404();
+        }
+    }
+    //fin mostrar el abance  de la actividad
      public function  Add_Actividades(){
     	if ($this->input->is_ajax_request()) 
 	    {
@@ -71,14 +86,14 @@ class FEActividadEntregable extends CI_Controller {/* Mantenimiento de division 
 	      show_404();
 	      }
     }
-    public function CalcularAvanceActividad(){
+    public function CalcularAvanceActividad(){//calcula el avance de la actividad asociado a un entregable
     	if ($this->input->is_ajax_request()) 
 	    {
 	      $tx_IdActividad=$this->input->post("tx_IdActividad");
 	      $txt_idEntregable =$this->input->post("txt_idEntregable");
 	      $data=$this->Model_FEActividadEntregable->CalcularAvanceActividad($tx_IdActividad,$txt_idEntregable);
 		  echo json_encode($data);
- 
+
 		 } 
 	     else
 	     {

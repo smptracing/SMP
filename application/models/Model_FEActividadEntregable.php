@@ -11,7 +11,7 @@ class Model_FEActividadEntregable extends CI_Model
 
        function get_Actividades($id_en)
         {
-            $Actividades=$this->db->query("select id_act id,id_entregable,nombre_act title , fecha_inicio start, fecha_final 'end',valoracion,avance,color,Observacion from ACTIVIDAD_CRONOGRAMA where id_entregable='".$id_en."' ");
+            $Actividades=$this->db->query("execute sp_Actividad_r'".$id_en."' ");
             if($Actividades->num_rows()>=0)
              {
               return $Actividades->result();

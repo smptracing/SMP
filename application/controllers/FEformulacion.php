@@ -15,6 +15,7 @@ class FEformulacion extends CI_Controller
     {
         if ($this->input->is_ajax_request()) {
             $Etapa = "Formulación";
+            $this->session->sess_destroy();
             $datos = $this->FEformulacion_Modal->GetFormulacion($Etapa);
             echo json_encode($datos);
         } else {
