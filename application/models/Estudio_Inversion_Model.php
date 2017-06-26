@@ -11,11 +11,11 @@ class Estudio_Inversion_Model extends CI_Model
     public function get_EstudioInversion()
     {
         //  $EstadoCicloInversion = $this->db->query("execute get");
-        $sql = "select ee.id_est_inv, nombre_est_inv, pe.id_persona, (pe.nombres +' '+pe.apellido_p +' '+ pe.apellido_m) as nombres,  fecha, denom_etapas_fe\n"
-            . "	from ETAPA_ESTUDIO ee inner join (select id_est_inv, max(fecha_estado) fees from ETAPA_ESTUDIO\n"
-            . "	group by id_est_inv) ll on ee.id_est_inv = ee.id_est_inv and ee.fecha_estado = ll.fees \n"
+        $sql = "	select ei.id_est_inv, nombre_est_inv, pe.id_persona, (pe.nombres +' '+pe.apellido_p +' '+ pe.apellido_m) as nombres,  fecha, denom_etapas_fe\n"
+            . "	from ETAPA_ESTUDIO ee \n"
+            . "	inner join (select id_est_inv, max(fecha_estado) fees from ETAPA_ESTUDIO group by id_est_inv) ll on ee.id_est_inv = ee.id_est_inv and ee.fecha_estado = ll.fees \n"
             . "	inner join ETAPAS_FE efe on ee.id_etapa_fe = efe.id_etapa_fe \n"
-            . "	inner join ESTUDIO_INVERSION ei on ei.id_est_inv = ee.id_est_inv\n"
+            . "	right outer join ESTUDIO_INVERSION ei on ei.id_est_inv = ee.id_est_inv\n"
             . "	inner join RESPONSABLE_ESTUDIO re on re.id_est_inv = ei.id_est_inv\n"
             . "	inner join PERSONA pe on pe.id_persona = re.id_persona";
 
