@@ -44,8 +44,7 @@
                            $('#form-AddEntregable')[0].reset();
                            $("#VentanaEntregable").modal("hide");
                            listarEntregablesFE();
-
-                          //$('#table-SituacioFE').dataTable()._fnAjaxUpdate();
+                            $('#table_entregable').dataTable()._fnAjaxUpdate();
                          }
                       });
                   });
@@ -123,6 +122,8 @@
                           data:$(this).serialize(),
                           success:function(resp){
                            swal("",resp, "success");
+                          $('#table_entregable').dataTable()._fnAjaxUpdate();
+
                          }
                       });
                   });
@@ -210,9 +211,9 @@ var generarActividadesVertical=function(id_en)
                                       var i=data;
                                           if(i==null)
                                           {
-                                           return '<a type="button" class="AsignacionPersonaEntregables btn btn-link" data-toggle="modal" data-target="#VentanaAsignacionPersonalEntregable" ><img src='+base_url+'assets/images/user.png> ' + data+ '</a>'
+                                           return '<a type="button" class="AsignacionPersonaEntregables btn btn-link" data-toggle="modal" data-target="#VentanaAsignacionPersonalEntregable" ><i class="glyphicon glyphicon-user" aria-hidden="true"><font size="1"></br>' +data+ '</i></font></a>'
                                           }else{
-                                             return '<a type="button" class="AsignacionPersonaEntregables btn btn-link" data-toggle="modal" data-target="#VentanaAsignacionPersonalEntregable" ><img src='+base_url+'assets/images/asignado.png> ' + data+ '</a>'
+                                             return '<a type="button" class="AsignacionPersonaEntregables btn btn-link" data-toggle="modal" data-target="#VentanaAsignacionPersonalEntregable" ><i class="glyphicon glyphicon-user" aria-hidden="true"></i><font size="1"></br> '+data+ '</i></font></a>'
                                           }
                                       }
                                     },
@@ -225,7 +226,7 @@ var generarActividadesVertical=function(id_en)
                                          return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Complete</small></td>";
                                     }},
                        
-                                    {"defaultContent":"<button type='button' class='actividad btn btn-warning btn-xs' data-toggle='modal' data-target='#VentanaActividades'><i class='glyphicon glyphicon-plus-sign' aria-hidden='true'></i></button><button type='button'  class='ListarActividad btn btn-info btn-xs'><i class='glyphicon glyphicon-calendar' aria-hidden='true'></i></button>"}                            
+                                    {"defaultContent":"<button type='button' class='actividad btn btn-warning btn-xs' data-toggle='modal' data-target='#VentanaActividades'><i class='glyphicon glyphicon-plus-sign' aria-hidden='true'></i></button></br><button type='button'  class='ListarActividad btn btn-info btn-xs'><i class='glyphicon glyphicon-calendar' aria-hidden='true'></i></button>"}                            
 
                                 ],
 

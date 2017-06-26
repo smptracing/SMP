@@ -41,6 +41,7 @@
                                                           <button type="button" id="btn_nuevoEstInv" class="btn btn-primary" data-toggle="modal" data-target="#ventanaEstudioInversion" >
                                                                 <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Nuevo
                                                           </button>
+
                                                             <ul class="nav navbar-right panel_toolbox">
                                                               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                                               </li>
@@ -61,7 +62,7 @@
                                                                     <thead>
                                                                        <tr>
                                                                        <th style="width: 1%">#</th>
-
+                                                                        <th style="width: 1%">#</th>
                                                                          <th style="width: 45%"><i class="fa fa-thumb-tack"></i> Est. Inv. </th>
                                                                          <th style="width: 15%">
                                                                           <i class="fa fa-users"></i>
@@ -404,3 +405,51 @@
     </div>
 </div>
 <!-- /.fin de  ventana para asignar etapa de estudio-->
+
+<!-- /.ventana para la asiganacion de documentos en los entregables -->
+<div class="modal fade" id="VentanaDocumentosEstudio" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
+          Documentos de Estudio sf</h4>
+        </div>
+        <div class="modal-body">
+         <div class="row">
+                    <div class="col-xs-12">
+                                        <!-- PAGE CONTENT BEGINS -->
+                          <form class="form-horizontal " id="form-AddEtapaEstudio"   action="<?php echo base_url(); ?>Estudio_Inversion/AddEtapaEstudio" method="POST" >
+                                    <div class="item form-group">
+                                              <div class="item form-group">
+                                              <div class="col-md-6 col-sm-6 col-xs-12">
+                                              <input id="txt_id_est_inv" name="txt_id_est_inv" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
+                                              </div>
+                                            </div>
+                                      </div>
+                                  
+                                        
+                                      <div class="ln_solid"></div>
+                                      <div class="form-group">
+                                        <div class="col-md-6 col-md-offset-3">
+                                          <button id="send" type="submit" class="btn btn-success">
+                                            <span class="glyphicon glyphicon-floppy-disk"></span>
+                                            Guardar
+                                          </button>
+                                           <button  class="btn btn-danger" data-dismiss="modal">
+                                             <span class="glyphicon glyphicon-remove"></span>
+                                            Cancelar
+                                          </button>
+                                        </div>
+                                      </div>
+                                </form>
+                        </div><!-- /.span -->
+                 </div><!-- /.row -->
+        </div>
+        <div class="modal-footer">
+
+        </div>
+      </div>
+    </div>
+</div>
+<!-- /.ventana para la asiganacion de documentos en los entregables -->

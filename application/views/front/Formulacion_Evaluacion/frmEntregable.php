@@ -51,19 +51,19 @@
 
                                                   <div class="col-md-12 col-xs-12">
                                                         <div class="x_panel">
-                                                        <div class="bs-glyphicons">
+                                                        
                                                                                 <ul class="bs-glyphicons-list">
-                                                                                  <button type="button" id="btn_entregable" class="btn btn-default " data-toggle="modal" data-target="#VentanaEntregable" >
-                                                                                        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span><br>
+                                                                                  <button type="button" id="btn_entregable" class="btn btn-primary" data-toggle="modal" data-target="#VentanaEntregable" >
+                                                                                        <span class="glyphicon glyphicon-new-window" aria-hidden="true"> Nuevo</span>
                                                                                   </button>
                                                                                   </li>
                                                                                 </ul>
-                                                          </div>
+                                                          
                                                           <div class="x_content">
 
                                                                   <!-- start project list -->
                                                                   <div class="table-responsive">
-                                                                    <table id="table_entregable" class="table table-hover">
+                                                                    <table id="table_entregable" class="table table-striped">
                                                                           <thead>
                                                                                 <tr>
                                                                                   <td>ID</td>
@@ -242,7 +242,7 @@
               <div class="col-md-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Input knobxcz</h2>
+                    <h2></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>

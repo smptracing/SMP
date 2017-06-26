@@ -122,10 +122,10 @@ class FEentregableEstudio extends CI_Controller {/* Mantenimiento de division fu
       $txt_idPersona              =$this->input->post("txt_idPersona");
       $txt_identregable           =$this->input->post("txt_identregable");
       $txt_AsigPersonalEntregable =$this->input->post("txt_AsigPersonalEntregable");//fecha de asiganacion
-       if($this->Model_FEentregableEstudio->AsignacionPersonalEntregable($Opcion,$txt_identregable,$txt_idPersona,$txt_AsigPersonalEntregable)== false)
-           echo "SE ASIGNO  UN NUEVO RESPONSABLE ";
+       if($this->Model_FEentregableEstudio->AsignacionPersonalEntregable($Opcion,$txt_identregable,$txt_idPersona,$txt_AsigPersonalEntregable)==1)
+           echo "1 ";
           else
-          echo "NO SE ASIGNO  UN NUEVO RESPONSABLE"; 
+          echo "0"; 
      } 
        else
        {

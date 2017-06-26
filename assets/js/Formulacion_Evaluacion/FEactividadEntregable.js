@@ -55,7 +55,6 @@
                           var tx_IdActividad=$("#tx_IdActividad").val();//catura el id de la actividadd
                           var txt_idEntregable=$("#txt_idEntregable").val();//catura eñ id del entregable
                           CalcularAvanceAc(tx_IdActividad,txt_idEntregable);//calcular elavance de los entregables              
-
                          }
                       });
                   });

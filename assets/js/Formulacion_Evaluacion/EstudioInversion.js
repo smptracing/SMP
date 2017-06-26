@@ -117,6 +117,7 @@ $(document).on("ready" ,function(){
                                     },
                                 "columns":[
                                       {"defaultContent":"<td>#</td>"},
+                                       {"data":"id_est_inv","visible": false},
                                       { "data": function (data, type, dataToSet) {
                                          return "<strong>"+data.nombre_est_inv + "</strong><br/><i class='fa fa-calendar'>  " + data.fecha+"</i>";
                                        }},
@@ -125,7 +126,7 @@ $(document).on("ready" ,function(){
                                     { "data": function (data, type, dataToSet) {
                                         return "<td><button type='button' class='btn btn-success btn-xs'>"+data.denom_etapas_fe + "</button></td>";
                                     }},
-                                  {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#ventanaasiganarpersona'><i class='glyphicon glyphicon-pencil' aria-hidden='true'></i></button><button type='button' class='eliminar btn btn-warning btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button'  class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#ventanaasiganarpersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button><button type='button' class='nuevaEtapaEstudio btn btn-success btn-xs' data-toggle='modal' data-target='#ventanaEtapaEstudio'><i class='glyphicon glyphicon-pushpin' aria-hidden='true'></i></button>"}
+                                  {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#ventanaasiganarpersona'><i class='glyphicon glyphicon-pencil' aria-hidden='true'></i></button><button type='button' class='DocumentosEstudio btn btn-warning btn-xs' data-toggle='modal' title='Documentos de Estudio' data-target='#VentanaDocumentosEstudio'><i class='fa fa-file-pdf-o' aria-hidden='true'></i></button><button type='button'  class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#ventanaasiganarpersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button><button type='button' class='nuevaEtapaEstudio btn btn-success btn-xs' data-toggle='modal' data-target='#ventanaEtapaEstudio'><i class='glyphicon glyphicon-pushpin' aria-hidden='true'></i></button>"}
                                ],
 
                                 "language":idioma_espanol
@@ -173,8 +174,19 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
         myTableUA.buttons().container().appendTo( $('.tableTools-container-EstudioInversion') );
  listarpersonasdata("#dynamic-table-EstudioInversion",myTableUA);  //CARGAR LA DATA PARA MOSTRAR EN EL MODAL  
  nuevaEtapaEstudioData("#dynamic-table-EstudioInversion",myTableUA);
+ DocumentosEstudio("#dynamic-table-EstudioInversion",myTableUA);//documentos
                 }
-   
+
+   var  DocumentosEstudio=function(tbody,myTableUA){
+                    $(tbody).on("click","button.DocumentosEstudio",function(){
+                      var data=myTableUA.row( $(this).parents("tr")).data();
+                      var id_est_inv=data.id_est_inv;
+                       console.log(id_est_inv); 
+
+                    });
+                }
+
+
   /*fin listar proyectos*/
                 var listarpicombo=function(valor){
                      html="";
