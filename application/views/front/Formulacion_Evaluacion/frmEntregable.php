@@ -9,7 +9,6 @@
             </div>
 
             <div class="clearfix"></div>
-
             <div class="row">
               <!-- form input mask -->
               <div class="col-md-6 col-sm-12 col-xs-12">
@@ -44,16 +43,17 @@
                                         </li>
                                       </ul>
                                       <div id="myTabContent" class="tab-content">
+                                      <input type="hidden" id="txt_id_etapa_estudio" name="txt_id_etapa_estudio" value="<?php echo $this->session->userdata('Etapa_Estudio'); ?>">
                                              <!-- /Contenido del funcion -->
                                         <div role="tabpanel" class="tab-pane fade active in" id="tab_entregable" aria-labelledby="home-tab">
                                              <!-- /tabla de funcion desde el row -->
-                                            <div class="row">  
-                                            
+                                            <div class="row">
+
                                                   <div class="col-md-12 col-xs-12">
                                                         <div class="x_panel">
                                                         <div class="bs-glyphicons">
                                                                                 <ul class="bs-glyphicons-list">
-                                                                                  <button type="button" class="btn btn-default " data-toggle="modal" data-target="#VentanaEntregable" >
+                                                                                  <button type="button" id="btn_entregable" class="btn btn-default " data-toggle="modal" data-target="#VentanaEntregable" >
                                                                                         <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span><br>
                                                                                   </button>
                                                                                   </li>
@@ -64,40 +64,50 @@
                                                                   <!-- start project list -->
                                                                   <div class="table-responsive">
                                                                     <table id="table_entregable" class="table table-hover">
-                                                                     
+                                                                          <thead>
+                                                                                <tr>
+                                                                                  <td>ID</td>
+                                                                                   <td>Entregable</td>
+                                                                                   <td>Responsable</td>
+                                                                                   <td>Valorización</td>
+                                                                                   <td>Avance</td>
+                                                                                   <td>Actividad</td>
+                                                                                  <td></td>
+                                                                                </tr>
+                                                                         </thead>
                                                                     </table>
                                                                   </div>
                                                                   <!-- end project list -->
                                                           </div>
                                                         </div>
                                                       </div>
-                                                     
+
                                             </div>
                                          <!-- / fin tabla de funcion desde el row -->
                                         </div>
                                         <!-- /fin del funcion del sector -->
                                         <div role="tabpanel" class="tab-pane fade" id="tab_tipo_inversion" aria-labelledby="profile-tab">
-                                          
+
                                             <!-- /tabla de division funcional desde el row -->
-                                            <div class="row">  
-                                            
+                                            <div class="row">
+
                                                   <div class="col-md-12 col-sm-12 col-xs-12">
                                                         <div class="x_panel">
                                                             <button type="button" id="btn_Nuevadivision" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraDivisionF">
                                                                 <span class="fa fa-plus-circle"></span>
                                                                 Nuevo</button>
-                                                          <div class="x_title">                                                              
+                                                          <div class="x_title">
                                                             <ul class="nav navbar-right panel_toolbox">
-                                                                
+
                                                               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                                               </li>
-                                                              
+
                                                               <li><a class="close-link"><i class="fa fa-close"></i></a>
                                                               </li>
-                                                                
+
                                                             </ul>
                                                            <div class="clearfix"></div>
-                                                              
+
                                                           </div>
                                                           <div class="x_content">
                                                             <table id="table-DivisionF" class="table table-striped table-bordered table-hover" ellspacing="0" width="100%">
@@ -110,44 +120,44 @@
                                                           </div>
                                                         </div>
                                                       </div>
-                                                     
+
                                             </div>
-                                         <!-- / fin tabla division funcional desde el row -->                                    
+                                         <!-- / fin tabla division funcional desde el row -->
                                         </div>
                                           <!-- / fin panel grupo  funcional desde el row -->
                                         <div role="tabpanel" class="tab-pane fade" id="tab_Entregable" aria-labelledby="profile-tab">
                                              <!-- /tabla de grupo funcional desde el row -->
-                                            <div class="row">  
-                                            
+                                            <div class="row">
+
                                                   <div class="col-md-12 col-sm-12 col-xs-12">
                                                         <div class="x_panel">
                                                             <button type="button" id="btn_nuevoGrupoFuncional" class="btn btn-primary" data-toggle="modal" data-target="#VentanaNivelEstudio">
                                                             <span class="fa fa-plus-circle"></span>
                                                                 Nuevo</button>
                                                           <div class="x_title">
-                                                              
+
                                                             <ul class="nav navbar-right panel_toolbox">
-                                                                
+
                                                               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                                               </li>
-                                                              
+
                                                               <li><a class="close-link"><i class="fa fa-close"></i></a>
                                                               </li>
-                                                                
+
                                                             </ul>
-                                                            <div class="clearfix"></div>       
+                                                            <div class="clearfix"></div>
                                                           </div>
                                                           <div class="x_content">
 
                                                             <table id="table-Entregable" class="table" ellspacing="0" width="100%">
-                                                                                                              
+
                                                             </table>
                                                           </div>
                                                         </div>
                                                       </div>
-                                                     
+
                                             </div>
-                                         <!-- / fin tabla grupo funcional asociados el row --> 
+                                         <!-- / fin tabla grupo funcional asociados el row -->
                                         </div>
                                       </div>
                                     </div>
@@ -199,22 +209,23 @@
                         <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
                               <p class="text-muted font-13 m-b-30">
                             </p>
-                  
+
                             <table id="datatable-actividadesV" class="table" cellspacing="0" width="100%">
                               <thead>
                                 <tr>
                                   <th>Id</th>
                                   <th>Nombre</th>
+                                  <th>Responsable</th>
                                   <th>Fecha Inicio</th>
                                   <th>Fecha Final</th>
-                                  <th>Avance</th>
                                   <th>Valoración</th>
+                                  <th>Avance</th>
                                   <th></th>
 
                                 </tr>
                               </thead>
                               <tbody>
-                                 
+
                               </tbody>
                             </table>
                         </div>
@@ -250,7 +261,7 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                      
+
                   </div>
                 </div>
               </div>
@@ -262,7 +273,7 @@
 
 
             <div class="row">
-              
+
           </div>
         </div>
 
@@ -280,17 +291,16 @@
          <div class="row">
                 <div class="col-xs-12">
                 <form class="form-horizontal " id="form-AddEntregable"  method="POST" >
-                    
 
                       <div class="col-md-12 col-sm-12 col-xs-12 input-group">
                         <span class="input-group-addon">Denominación</span>
-                        <input id="txt_denominacion_entre" mane="txt_denominacion_entre"  type="text" class="form-control" name="msg" placeholder="">
+                        <input id="txt_denominacion_entre" mane="txt_denominacion_entre"  type="text" class="form-control" placeholder="">
                       </div>
                       <div class="col-md-12 col-sm-12 col-xs-12 input-group">
                         <span class="input-group-addon">Nombre Entregable</span>
                         <input id="txt_nombre_entre" name="txt_nombre_entre" type="text" class="form-control" name="msg" placeholder="">
                       </div>
-                      <div class="col-md-2 col-sm-2 col-xs-2 form-group has-feedback">
+                      <div class="col-md-4 col-sm-4 col-xs-4 form-group has-feedback">
                         <label class="col-md-3 col-sm-3 col-xs-3">Valoración</label>
                         <input type="text"  id="txt_valoracion_entre" name="txt_valoracion_entre" class="form-control" id="inputSuccess3">
                       </div>
@@ -308,8 +318,8 @@
                        <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          
-                          <button  type="submit" class="btn btn-success">
+
+                          <button  id="btn_entregableC" type="submit" class="btn btn-success">
                             <span class="glyphicon glyphicon-floppy-disk"></span>
                             Guardar
                           </button>
@@ -320,7 +330,7 @@
 
                         </div>
                       </div>
-                   
+
                 </form>
             </div>
         </div>
@@ -358,14 +368,14 @@
                       </div>
                       <div class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
                         <label class="col-md-6 col-sm-6 col-xs-6">Valoración</label>
-                        <input type="text" class="form-control" id="txt_valoracionEAc" name="txt_valoracionEAc">
+                        <input type="text" class="form-control" id="txt_valoracionEAc" name="txt_valoracionEAc" data-inputmask="'mask':'99'" data-validate-length-range="2" data-validate-words="2" required="required" >
                       </div>
 
                      <div class="col-md-12 col-sm-12 col-xs-12 input-group">
                         <span class="input-group-addon">Observación</span>
                         <input id="txt_observacio_EntreAc" id="txt_observacio_EntreAc" type="text" class="form-control" name="msg">
                       </div>
-                       
+
                       <div class="input-group demo2 colorpicker-element">
                              <input type="text" value="#e01ab5" class="form-control" id="txt_ActividadColor" name="txt_ActividadColor">
                             <span class="input-group-addon"><i style="background-color: rgb(224, 26, 181);"></i></span>
@@ -375,22 +385,22 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          
+
                           <button  type="submit" class="btn btn-success">
                             <span class="glyphicon glyphicon-floppy-disk"></span>
                             Guardar
                           </button>
-                          <button type="submit" class="btn btn-danger" data-dismiss="modal">
+                          <button id="btn_actividadC" type="submit" class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-remove"></span>
                             Cancelar
                           </button>
 
                         </div>
                       </div>
-                      
 
 
-             
+
+
                 </form>
             </div>
          </div>
@@ -406,7 +416,7 @@
   <div class="modal fade" id="modalEventoActividades" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header bg-green">
+        <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title" id="txt_NombreActividadTitle"></h4>
         </div>
@@ -430,10 +440,10 @@
                           <input id="txt_fechaActividadfAc"  name="txt_fechaActividadfAc" type="date" class="form-control calendario">
                       </div>
                       <div class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
-                        <label class="col-md-3 col-sm-3 col-xs-12">Avance</label>
-                       
+                        <label class="col-md-3 col-sm-3 col-xs-12" >Avance</label>
+
                         <input type="hidden" class="form-control" id="txt_valorizacionEAct" name="txt_valorizacionEAct">
-                         <input type="text" class="form-control" id="txt_avanceEAct" name="txt_avanceEAct">
+                         <input type="text" class="form-control" id="txt_avanceEAct" name="txt_avanceEAct" >
 
                       </div>
 
@@ -441,18 +451,18 @@
                         <span class="input-group-addon">Observación</span>
                         <input id="txt_observacio_EntreAct" name="txt_observacio_EntreAct" type="text" class="form-control">
                       </div>
-                       
+
                       <div class="input-group demo2 colorpicker-element">
                              <input type="text" class="form-control" id="txt_ActividadColorAc" name="txt_ActividadColorAc">
                             <span class="input-group-addon"><i style="background-color: rgb(224, 26, 181);"></i></span>
                       </div>
 
-                     
+
 
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          
+
                           <button  type="submit" class="btn btn-success">
                             <span class="glyphicon glyphicon-floppy-disk"></span>
                             Guardar
@@ -464,17 +474,17 @@
 
                         </div>
                       </div>
-                      
 
 
-             
+
+
                 </form>
             </div>
          </div>
         </div>
 
         <div class="modal-footer">
-         
+
         </div>
       </div>
     </div>
@@ -483,7 +493,7 @@
 
 <!---Asignacion de persona a entregable-->
   <div class="modal fade" id="VentanaAsignacionPersonalEntregable" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -498,19 +508,19 @@
                         <span class="input-group-addon glyphicon glyphicon glyphicon-search"></span>
                         <input id="text_buscarPersona"  name="text_buscarPersona" type="text" class="form-control"  placeholder="Buscar por nombre completo">
                       </div>
-                          
+
                           <div id="contenedor_responsable">
                                <table id="table_responsable" class="table" ellspacing="0" width="70%">
-                                                                                                                  
+
                               </table>
                           </div>
-                      <input type="text" class="form-control" id="txt_idPersona" name="txt_idPersona">
-                      <input type="text" class="form-control" id="txt_identregable" name="txt_identregable">
+                      <input type="hidden" class="form-control" id="txt_idPersona" name="txt_idPersona">
+                      <input type="hidden" class="form-control" id="txt_identregable" name="txt_identregable">
 
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-12 col-md-offset-4">
-                          
+
                           <button  type="submit" class="btn btn-success">
                             <span class="glyphicon glyphicon-floppy-disk"></span>
                             Asignar
@@ -522,17 +532,17 @@
 
                         </div>
                       </div>
-                      
 
 
-             
+
+
                 </form>
             </div>
          </div>
         </div>
 
         <div class="modal-footer">
-         
+
         </div>
       </div>
     </div>
@@ -540,7 +550,7 @@
 
 <!---Asignacion de persona a entregable-->
   <div class="modal fade" id="VentanaAsignacionPersonalActividad" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog " role="document">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -555,19 +565,19 @@
                       <div class="col-md-12 col-sm-12 col-xs-12 input-group">
                         <span class="input-group-addon glyphicon glyphicon glyphicon-search "></span>
                         <input id="text_buscarPersonaActividad"  name="text_buscarPersonaActividad" type="text" class="form-control"  placeholder="Buscar por nombre completo">
-                      </div> 
+                      </div>
                           <div id="contenedor_responsable2">
                                <table id="table_responsable2" class="table" ellspacing="0" width="70%">
-                                                                                                                  
+
                               </table>
                           </div>
-                      <input type="text" class="form-control" id="txt_idPersonaActividad" name="txt_idPersonaActividad">
-                      <input type="text" class="form-control" id="txt_idActividadCronograma" name="txt_idActividadCronograma">
+                      <input type="hidden" class="form-control" id="txt_idPersonaActividad" name="txt_idPersonaActividad">
+                      <input type="hidden" class="form-control" id="txt_idActividadCronograma" name="txt_idActividadCronograma">
 
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-12 col-md-offset-4">
-                          
+
                           <button  type="submit" class="btn btn-success">
                             <span class="glyphicon glyphicon-floppy-disk"></span>
                             Asignar
@@ -579,21 +589,18 @@
 
                         </div>
                       </div>
-                      
 
 
-             
+
+
                 </form>
             </div>
          </div>
         </div>
 
         <div class="modal-footer">
-         
+
         </div>
       </div>
     </div>
   </div>
-
-
-

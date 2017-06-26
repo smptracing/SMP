@@ -43,9 +43,7 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-
                     <p></p>
-
                     <!-- start project list -->
                     <table id="table-formulacion" class="table table-striped projects">
                       <thead>

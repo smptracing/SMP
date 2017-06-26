@@ -668,7 +668,6 @@ var listaProyectoIprogramadoA=function()//para actualizar programacion
                     });
 
                 }
-
                 var MostrarDetalleProyecto=function(Id_ProyectoInver,opcion){
                     event.preventDefault(); 
                     html="";
