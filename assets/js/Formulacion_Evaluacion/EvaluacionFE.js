@@ -84,11 +84,6 @@
                                          return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Complete</small></td>";
                                     }},
 
-                       
-                                    {"data":"id_etapa_estudio",
-                                    "mRender": function ( data, type, full ) {
-                                     return '<button type="button" class="btn btn-default sm"><a  href="getCarteraAnio/' + data + '"><i class="fa fa-book"></i> </a></button>';
-                                      }},
 {"defaultContent":"<button type='button' class='Situacion btn btn-warning btn-xs' data-toggle='modal' data-target='#VentanaSituacionActual'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button'  class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#VentanaAsignarPersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button>"}                            
                                 ],
                                  "language":idioma_espanol
