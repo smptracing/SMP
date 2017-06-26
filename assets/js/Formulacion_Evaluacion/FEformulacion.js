@@ -1,6 +1,5 @@
  $(document).on("ready" ,function(){
-              ListarFormulacion();
-             
+              ListarFormulacion();         
 			});
  //LISTAR DENOMINACION DE FORMULACION Y EVALUACION EN TABLA
                 var ListarFormulacion=function()

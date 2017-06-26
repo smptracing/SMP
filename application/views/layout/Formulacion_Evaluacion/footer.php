@@ -104,7 +104,8 @@
    <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/DenominacionFE.js"></script>
    <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/EtapasFE.js"></script>
    <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/TipEstudioFE.js"></script>
+     <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/FEformulacion.js"></script>
    <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/EvaluacionFE.js"></script>
-   <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/FEformulacion.js"></script>
+ 
   </body>
 </html>
