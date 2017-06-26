@@ -109,20 +109,23 @@
                                             <label for="name">Codigo Único<span class="required"></span>
                                             </label>
                                                   <input id="txtCodigoUnico" name="txtCodigoUnico"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2" placeholder="Codigo único" required="required" type="text">
+                                                  <br>
                                         </div>
                                       </div>
-                                  </div>
                                     <br>
                           <div class="row ">
                             <div class="col-md-2">
                                        <div class=".col-xs-12 .col-md-2">
                                         </div>
                             </div>
+                            <br>
                            <div class="col-md-12">
                                 <div class=".col-xs-12 .col-md-12">
                                <div class="panel panel-default">
                                <div class="panel-heading">Datos del PMI</div>
                                       <div class="panel-body">
+                                      <form class="form-horizontal " id="form-AddEstudioInversion" action="<?php echo base_url(); ?>Estudio_Inversion/AddEstudioInversion" method="POST">
+
                                           <div class="col-md-12">
                                           <div class=".col-xs-12 .col-md-10">
                                            <label for="name">Proyecto PMI<span class="required"></span>
@@ -131,21 +134,6 @@
                                                 </select>
                                           </div>
                                           </div>
-                                      <!--    <div class="col-md-6">
-                                          <div class=".col-xs-6 .col-md-12">
-                                          <br>
-                                           <label for="name">Tipo de Inversión<span class="required"></span>
-                                            </label>
-                                                  <input id="txt_tipoinversion" name="txt_tipoinversion"  class="form-control col-md-6 col-xs-1" data-validate-length-range="6" data-validate-words="2" placeholder="Tipo de Inversión" required="required" type="text">
-                                          </div>
-                                          </div>
-
-                                          <div class="col-md-6">
-                                          <br>
-                                           <label for="name">Nivel de Estudio<span class="required"></span>
-                                            </label>
-                                                  <input id="txtCodigoUnico" name="txtCodigoUnico"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2" placeholder="Nivel de Estudio" required="required" type="text">
-                                          </div>-->
                                       </div>
                                 </div>
                               </div>
@@ -165,7 +153,7 @@
                                           <div class=".col-xs-12 .col-md-10">
                                            <label for="name">Nombre de Estudio de Inversión<span class="required"></span>
                                             </label>
-                                                  <input id="txtCodigoUnico" name="txtCodigoUnico"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2" placeholder="Nombre de Estudio de Inversión" required="required" type="text">
+                                                  <input id="txtnombres" name="txtnombres"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2" placeholder="Nombre de Estudio de Inversión" required="required" type="text">
                                           </div>
                                           </div>
                                          <div class="col-md-6">
@@ -174,6 +162,7 @@
                                             </label>
                                                  <select   id="listaTipoInversion" name="listaTipoInversion" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Tipo de Estudio...">
                                                 </select>
+
                                           </div>
                                           <div class="col-md-6">
                                           <br>
@@ -216,7 +205,7 @@
                                            <div class="col-md-12">
                                           <div class=".col-xs-12 .col-md-10">
                                           <br>
-                                           <label for="name">Descripción del Estudio de Inverisión<span class="required"></span>
+                                           <label for="name">Descripción del Estudio de Inversión<span class="required"></span>
                                             </label>
                                               <textarea class="form-control" rows="3" name="txadescripcion" id="txadescripcion"></textarea>
                                           </div>
@@ -233,7 +222,7 @@
                                           <br>
                                            <label for="name">Fecha de Asignación<span class="required"></span>
                                             </label>
-                                                  <input type="date" id="dateFechaIniCart" name="dateFechaIniCart" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text">
+                                                  <input type="date" id="dateFechaAsig" name="dateFechaAsig" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text" value="<?php echo date("Y-m-d"); ?>">
                                           </div>
 
                                             <div class="col-md-3">
@@ -265,162 +254,7 @@
 
 
 
-<!--- popul para modificar estudio de inversion -->
-<div class="modal fade" id="ventanaEstudioInversion" role="dialog">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Situación Formulación</h4>
-        </div>
-        <div class="modal-body">
-         <div class="row">
-                <div class="col-xs-12">
-                <form class="form-horizontal " id="form-AddEstudioInversion_modificar"  method="POST" >
- <div class="row">
-                                      <div class="col-md-2">
-                                       <div class=".col-xs-12 .col-md-2">
-                                            <label for="name">Codigo Único<span class="required"></span>
-                                            </label>
-                                                  <input id="txtCodigoUnico" name="txtCodigoUnico"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2" placeholder="Codigo único" required="required" type="text">
-                                        </div>
-                                      </div>
-                                  </div>
-                                    <br>
-                          <div class="row ">
-                            <div class="col-md-2">
-                                       <div class=".col-xs-12 .col-md-2">
-                                        </div>
-                            </div>
-                           <div class="col-md-12">
-                                <div class=".col-xs-12 .col-md-12">
-                               <div class="panel panel-default">
-                               <div class="panel-heading">Datos del PMI</div>
-                                      <div class="panel-body">
-                                          <div class="col-md-12">
-                                          <div class=".col-xs-12 .col-md-10">
-                                           <label for="name">Proyecto PMI<span class="required"></span>
-                                            </label>
-                                                <select   id="listaFuncionC" name="listaFuncionC" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Proyecto...">
-                                                </select>
-                                          </div>
-                                          </div>
-                                          <div class="col-md-6">
-                                          <div class=".col-xs-6 .col-md-12">
-                                          <br>
-                                           <label for="name">Tipo de Inversión<span class="required"></span>
-                                            </label>
-                                                  <input id="txtCodigoUnico" name="txtCodigoUnico"  class="form-control col-md-6 col-xs-1" data-validate-length-range="6" data-validate-words="2" placeholder="Tipo de Inversión" required="required" type="text">
-                                          </div>
-                                          </div>
 
-                                          <div class="col-md-6">
-                                          <br>
-                                           <label for="name">Nivel de Estudio<span class="required"></span>
-                                            </label>
-                                                  <input id="txtCodigoUnico" name="txtCodigoUnico"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2" placeholder="Nivel de Estudio" required="required" type="text">
-                                          </div>
-
-
-                                       </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                                                    <div class="row ">
-                            <div class="col-md-2">
-                                       <div class=".col-xs-12 .col-md-2">
-                                        </div>
-                            </div>
-                           <div class="col-md-12">
-                                <div class=".col-xs-12 .col-md-12">
-                               <div class="panel panel-default">
-                              <!-- <div class="panel-heading">Título del panel</div>-->
-                                      <div class="panel-body">
-                                          <div class="col-md-12">
-                                          <div class=".col-xs-12 .col-md-10">
-                                           <label for="name">Nombre de Estudio de Inversión<span class="required"></span>
-                                            </label>
-                                                  <input id="txt_nombreEstudioInversion" name="txt_nombreEstudioInversion"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2" placeholder="Nombre de Estudio de Inversión" required="required" type="text">
-                                          </div>
-                                          </div>
-                                          <div class="col-md-3">
-                                          <div class=".col-xs-6 .col-md-12">
-                                          <br>
-                                           <label for="name">Tipo de Inversión<span class="required"></span>
-                                            </label>
-                                                  <input id="txt_tipoinversion" name="txt_tipoinversion"  class="form-control col-md-6 col-xs-1" data-validate-length-range="6" data-validate-words="2" placeholder="Tipo de Inversión" required="required" type="text">
-                                          </div>
-                                          </div>
-
-                                          <div class="col-md-3">
-                                          <br>
-                                           <label for="name">Monto de Inversión<span class="required"></span>
-                                            </label>
-                                                  <input id="txtCodigoUnico" name="txtCodigoUnico"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2" placeholder="Monto de Inversión" required="required" type="text">
-                                          </div>
-                                          <div class="col-md-3">
-                                          <br>
-                                           <label for="name">Costo del Estudio<span class="required"></span>
-                                            </label>
-                                                  <input id="txtCodigoUnico" name="txtCodigoUnico"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2" placeholder="Costo del Estudio" required="required" type="text">
-                                          </div>
-                                          <div class="col-md-3">
-                                          <br>
-                                           <label for="name">Unidad Formuladora<span class="required"></span>
-                                            </label>
-                                                  <input id="txtCodigoUnico" name="txtCodigoUnico"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2" placeholder="Unidad Formuladora" required="required" type="text">
-                                          </div>
-
-                                           <div class="col-md-12">
-                                          <div class=".col-xs-12 .col-md-10">
-                                          <br>
-                                           <label for="name">Descripción del Estudio de Inverisión<span class="required"></span>
-                                            </label>
-                                              <textarea class="form-control" rows="3" name="txadescripcion" id="txadescripcion"></textarea>
-                                          </div>
-                                          </div>
-
-                                          <div class="col-md-3">
-                                          <br>
-                                           <label for="name">Reponsable<span class="required"></span>
-                                            </label>
-                                                  <select  id="listaFuncionC" name="listaFuncionC" class="selectpicker" data-live-search="true"  title="Buscar Funcion...">
-                                                </select>
-                                          </div>
-                                           <div class="col-md-3">
-                                          <br>
-                                           <label for="name">Fecha de Asignación<span class="required"></span>
-                                            </label>
-                                                  <input type="date" id="dateFechaIniCart" name="dateFechaIniCart" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text">
-                                          </div>
-
-                                            <div class="col-md-6">
-                                          <br>
-                                           <label for="name">.<span class="required"></span>
-                                            </label> <br>
-                                            <center>
-                                                 <button id="btn-GuardarMontoProgramado"  class="btn btn-success">
-                               <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>Guardar</button>
-                               <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-
-                               </center>
-                                          </div>
-                                       </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                </form><!-- FORMULARIO FIN PARA REGISTRA NUEVO SERVICIO ASOCIADO -->
-            </div><!-- /.span -->
-        </div><!-- /.row -->
-        </div>
-        <div class="modal-footer">
-        </div>
-      </div>
-    </div>
-  </div>
-<!-- fin popul para crear un nuevo estudio de inversión -->
 
 
 
@@ -437,11 +271,18 @@
          <div class="row">
                     <div class="col-xs-12">
                                         <!-- PAGE CONTENT BEGINS -->
-              <form class="form-horizontal " id="form-AddTipoInversion"   action="<?php echo base_url(); ?>TipologiaInversion/AddTipoInversion" method="POST" >
+              <form class="form-horizontal " id="form-AddResponsableEstudio"   action="<?php echo base_url(); ?>Estudio_Inversion/AddResponsableEstudio" method="POST" >
 
                        <div class="item form-group">
 
-                            <div class="col-md-8">
+    <div class="item form-group">
+                        <div class="item form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input id="id_est_inv" name="id_est_inv" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
+                        </div>
+                      </div>
+                </div>
+                                       <div class="col-md-8">
                                           <br>
                                            <label for="name">Reponsable<span class="required"></span>
                                             </label>
@@ -452,22 +293,28 @@
                                           <br>
                                            <label for="name">Fecha de Asignación<span class="required"></span>
                                             </label>
-                                                  <input type="date" id="dateFechaIniCart" name="dateFechaIniCart" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text">
+                                                  <input type="date" id="dateFechaAsig" name="dateFechaAsig" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text" value="<?php echo date("Y-m-d"); ?>">
                                           </div>
-
                       </div>
-
+                   <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                          <button id="send" type="submit" class="btn btn-success">
+                            <span class="glyphicon glyphicon-floppy-disk"></span>
+                            Guardar
+                          </button>
+                           <button  class="btn btn-danger" data-dismiss="modal">
+                             <span class="glyphicon glyphicon-remove"></span>
+                            Cancelar
+                          </button>
+                        </div>
+                      </div>
                     </form>
                         </div><!-- /.span -->
                  </div><!-- /.row -->
         </div>
         <div class="modal-footer">
-         <button id="send" type="submit" class="btn btn-success" >
-                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
-                           Guardar</button>
-                          <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
-                          <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
-                           Cancelar</button>
+
         </div>
       </div>
     </div>
@@ -490,13 +337,13 @@
               <div class="item form-group">
                         <div class="item form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="id_est_inv" name="id_est_inv" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
+                        <input id="txt_id_est_inv" name="txt_id_est_inv" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
                         </div>
                       </div>
                 </div>
                       <div class="item form-group">
                                      <div class="col-md-4">
-                                          <br>
+
                                            <label for="name">Etapas FE<span class="required"></span>
                                             </label>
                                                  <select   id="listaretapasFE_M" name="listaretapasFE_M" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Etapas FE...">
@@ -505,22 +352,20 @@
                                     </div>
                             <div class="item form-group">
                                       <div class="col-md-4">
-                                          <br>
+
                                            <label for="name">Fecha Inicio<span class="required"></span>
                                             </label>
-                                                  <input type="date" id="dateFechaIniC" name="dateFechaIniC" class="form-control col-md-6 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text">
+                                                  <input type="date" id="dateFechaIniC" name="dateFechaIniC" class="form-control col-md-6 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text" value="<?php echo date("Y-m-d"); ?>">
                                           </div>
                                          <div class="col-md-4">
-                                          <br>
                                            <label for="name">Fecha Final<span class="required"></span>
                                             </label>
-                                                  <input type="date" id="dateFechaIniF" name="dateFechaIniF" class="form-control col-md-6 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text">
+                                                  <input type="date" id="dateFechaIniF" name="dateFechaIniF" class="form-control col-md-6 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text" value="<?php echo date("Y-m-d"); ?>">
                                           </div>
                                           <div class="col-md-4">
-                                          <br>
                                            <label for="name">Avance Físico<span class="required"></span>
                                             </label>
-                                                  <input id="txtAvanceFisico" name="txtAvanceFisico"  class="form-control col-md-12 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Avance Físico" required="required" type="text">
+                                                  <input id="txtAvanceFisico" name="txtAvanceFisico"  class="form-control col-md-12 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Avance Físico" required="required" type="text" value="0.0"disabled>
                                           </div>
                                         <!--     <div class="col-md-6">
                                           <br>
@@ -529,18 +374,25 @@
                                                   <input type="date" id="dateFechaIniCart" name="dateFechaIniCart" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text">
                                           </div>-->
                                          <div class="col-md-12">
-                                          <br>
+                                         <br>
                                            <label for="name">Recomendaciones<span class="required"></span>
                                             </label>
                                                   <textarea class="form-control" rows="3" name="txadescripcion" id="txadescripcion"></textarea>
                                           </div>
                       </div>
-       <button id="send" type="submit" class="btn btn-success" >
-                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
-                           Guardar</button>
-                          <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
-                          <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
-                           Cancelar</button>
+                     <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                          <button id="send" type="submit" class="btn btn-success">
+                            <span class="glyphicon glyphicon-floppy-disk"></span>
+                            Guardar
+                          </button>
+                           <button  class="btn btn-danger" data-dismiss="modal">
+                             <span class="glyphicon glyphicon-remove"></span>
+                            Cancelar
+                          </button>
+                        </div>
+                      </div>
                     </form>
                         </div><!-- /.span -->
                  </div><!-- /.row -->

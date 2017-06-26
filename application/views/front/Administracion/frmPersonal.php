@@ -80,7 +80,7 @@
 
                                                   <div class="col-md-12 col-sm-12 col-xs-12">
                                                         <div class="x_panel">
-                                                            <button type="button" id="btn_Nuevadivision" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraDivisionF">
+                                                            <button type="button" id="btn_Nuevadivision" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistracargo">
                                                                 <span class="fa fa-plus-circle"></span>
                                                                 Nuevo</button>
                                                           <div class="x_title">
@@ -97,14 +97,11 @@
 
                                                           </div>
                                                           <div class="x_content">
-                                                            <table id="table-DivisionF" class="table table-striped table-bordered table-hover" ellspacing="0" width="100%">
+                                                            <table id="table-cargo" class="table table-striped table-bordered table-hover" ellspacing="0" width="100%">
                                                               <thead>
                                                                 <tr>
-                                                                  <th>ID</th>
-                                                                  <th>ID Personal</th>
-                                                                  <th>Personal</th>
-                                                                  <th>CODIGO DIVISION Personal</th>
-                                                                  <th>NOBRE DE DIVISION Personal</th>
+                                                                  <th>Id.Cargo</th>
+                                                                  <th>Nombre Cargo</th>
                                                                   <th></th>
                                                                 </tr>
                                                               </thead>
@@ -145,13 +142,7 @@
                                                               <thead>
                                                                 <tr>
                                                                   <th>ID</th>
-                                                                  <th>CODIGO GRUPO Personal</th>
-                                                                  <th>NOMBRE GRUPO Personal </th>
-                                                                  <th>ID DIVISION Personal </th>
-                                                                  <th>CODIGO DIVISION Personal</th>
-                                                                  <th>NOMBRE DIVISION Personal</th>
-                                                                  <th>ID SECTOR</th>
-                                                                  <th>SECTOR</th>
+                                                                  <th>Personal</th>
                                                                   <th></th>
                                                                 </tr>
                                                               </thead>
@@ -442,43 +433,26 @@
 <!-- fin de modificar perosnal-->
 
 
-<!-- Registar nuevo cargo -->
-<div class="modal fade" id="VentanaUpdateDivisionF" role="dialog">
+<!-- Registar cargo -->
+<div class="modal fade" id="VentanaRegistracargo" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modificar Cargo</h4>
+          <h4 class="modal-title">Registar Cargo</h4>
         </div>
         <div class="modal-body">
          <div class="row">
                 <div class="col-xs-12">
                  <!-- FORMULARIO PARA REGISTRAR NUEVO CARGO -->
-                <form class="form-horizontal form-label-left"  id="form-UpdateDivisionPersonal" action="<?php echo base_url(); ?>DivisionPersonal/UpdateDivisionFucion" method="POST">
-                      <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Código Cargo <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input id="id_DPersonalM" name="id_DPersonalM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="hidden">
-
-                              <input id="txt_CodigoDPersonalM" name="txt_CodigoDPersonalM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  data-inputmask="'mask':'999'" required="required" type="text">
-                            </div>
-                      </div>
+                <form class="form-horizontal form-label-left"  id="form-addcargo" action="<?php echo base_url(); ?>Personal/Addcargo" method="POST">
                       <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre Cargo<span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input id="txt_Nombre_DPersonalM" name="txt_Nombre_DPersonalM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="text">
+                              <input id="txt_nombrecargo" name="txt_nombrecargo" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="text">
                             </div>
                       </div>
-                    <div class="form-group">
-                           <label class="control-label col-md-3 col-sm-3 col-xs-6">Personal</label>
-                            <div class="col-md-6 col-sm-9 col-xs-6">
-                                <select id="listaPersonalCM" name="listaPersonalCM" class="selectpicker" data-live-search="true" >
-                                 </select>
-                            </div>
-                    </div>
-
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
@@ -501,4 +475,52 @@
       </div>
     </div>
   </div>
-<!-- fin para modificar division  Personal-->
+
+<!-- modificar cargo -->
+<div class="modal fade" id="Ventanaupdatecargo" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Registar Cargo</h4>
+        </div>
+        <div class="modal-body">
+         <div class="row">
+                <div class="col-xs-12">
+                 <!-- FORMULARIO PARA REGISTRAR NUEVO CARGO -->
+                <form class="form-horizontal form-label-left"  id="form-updatecargo" action="<?php echo base_url(); ?>Personal/Addcargo" method="POST">
+                      <div class="item form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input id="txt_idcargo_m" name="txt_idcargo_m" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre Cargo<span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input id="txt_nombrecargo_m" name="txt_nombrecargo_m" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="text">
+                            </div>
+                      </div>
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                              <button id="send" type="submit" class="btn btn-success">
+                                <span class="glyphicon glyphicon-floppy-disk"></span>
+                                Guardar
+                              </button>
+                              <button data-dismiss="modal" class="btn btn-danger">
+                               <span class="glyphicon glyphicon-remove"></span>
+                              Cancelar
+                            </button>
+                        </div>
+                      </div>
+                </form><!-- FORMULARIO FIN PARA REGISTRA nuevo cargo -->
+            </div><!-- /.span -->
+        </div><!-- /.row -->
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+
