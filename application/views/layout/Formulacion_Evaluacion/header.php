@@ -37,7 +37,7 @@
     <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
 
     <link href="<?php echo base_url(); ?>assets/vendors/animate/animate.min.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>assets/vendors/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/fullcalendar/dist/fullcalendar.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/vendors/fullcalendar/dist/fullcalendar.print.css" rel="stylesheet" media="print">
 
     <link href="<?php echo base_url(); ?>assets/vendors/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet">
@@ -105,9 +105,10 @@
                     <ul class="nav side-menu">
                       <li><a><i class="fa fa-database"></i> Principal <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                          <li><a href="<?php echo site_url('FEformulacion/ver_FEformulacion'); ?>">Formulación</a></li>
+                          <li><a href="<?php echo site_url('FEformulacion/'); ?>">Formulación</a></li>
                           <li><a href="<?php echo site_url('EvaluacionFE/'); ?>">Evaluación</a></li>
-                          <li><a href="project_detail.html">Aprobado</a></li>
+                          <li><a href="<?php echo site_url('FEformulacion/FEAPROBADO'); ?>">Aprobado</a></li>
+                          <li><a href="<?php echo site_url('FEformulacion/FEVIABILIZADO'); ?>">Viabilizados</a></li>
                         </ul>
                         </li>
                       </ul>
@@ -120,6 +121,7 @@
                       <li><a href="<?php echo site_url('FEsituacion/ver_FEsistuacion'); ?>">Situaciones</a></li>
                       <li><a href="<?php echo site_url('FEestado/ver_EstadoFE'); ?>">Estado</a></li>
                       <li><a href="<?php echo site_url('DenominacionFE/'); ?>">Denominacion</a></li>
+                      <li><a href="<?php echo site_url('EtapasFE/'); ?>">Etapas</a></li>
                     </ul>
                   </li>
 
