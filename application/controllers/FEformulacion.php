@@ -39,5 +39,6 @@ class FEformulacion extends CI_Controller
         $this->load->view('layout/Formulacion_Evaluacion/header');
         $this->load->view($template);
         $this->load->view('layout/Formulacion_Evaluacion/footer');
+        $this->load->view('Front/Formulacion_Evaluacion/js/jsFormFormulacion');
     }
 }

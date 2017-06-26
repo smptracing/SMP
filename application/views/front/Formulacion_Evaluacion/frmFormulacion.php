@@ -42,6 +42,14 @@
                     </ul>
                     <div class="clearfix"></div>
                   </div>
+                                <!--inicio  de icono de reporte -->
+
+                                                        <div class="clearfix">
+                                                           <div class="pull-right tableTools-container-formulacion">
+                                                           </div>
+                                                        </div>
+                                                      <!--fin  de icono de reporte -->
+
                   <div class="x_content">
                     <p></p>
                     <!-- start project list -->

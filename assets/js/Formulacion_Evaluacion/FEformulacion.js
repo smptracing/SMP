@@ -91,8 +91,50 @@
                                     },
 {"defaultContent":"<button type='button' class='Situacion btn btn-warning btn-xs' data-toggle='modal' data-target='#VentanaSituacionActual'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button'  class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#VentanaAsignarPersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button>"}                            
                                 ],
-                                "language":idioma_espanol
+                                 "language":idioma_espanol
                     });
+                   // DenominacionFE("#table-DenominacionFE",table);   
+                   $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
+        
+        new $.fn.DataTable.Buttons(table, {
+          buttons: [
+           {
+            "extend": "colvis",
+            "text": "<i class='fa fa-search bigger-110 blue'></i> <span class='hidden'>Show/hide columns</span>",
+            "className": "btn btn-white btn-primary btn-bold",
+            columns: ':not(:first):not(:last)'
+            },
+            {
+            "extend": "copy",
+            "text": "<i class='fa fa-copy bigger-110 pink'></i> <span class='hidden'>Copy to clipboard</span>",
+            "className": "btn btn-white btn-primary btn-bold"
+            },
+            {
+            "extend": "csv",
+            "text": "<i class='fa fa-database bigger-110 orange'></i> <span class='hidden'>Export to CSV</span>",
+            "className": "btn btn-white btn-primary btn-bold"
+            },
+            {
+            "extend": "excel",
+            "text": "<i class='fa fa-file-excel-o bigger-110 green'></i> <span class='hidden'>Export to Excel</span>",
+            "className": "btn btn-white btn-primary btn-bold"
+            },
+            {
+            "extend": "pdf",
+            "text": "<i class='fa fa-file-pdf-o bigger-110 red'></i> <span class='hidden'>Export to PDF</span>",
+            "className": "btn btn-white btn-primary btn-bold"
+            },
+            {
+            "extend": "print",
+            "text": "<i class='fa fa-print bigger-110 grey'></i> <span class='hidden'>Print</span>",
+            "className": "btn btn-white btn-primary btn-bold",
+            autoPrint: false,
+            message: 'This print was produced using the Print button for DataTables'
+            }     
+           
+          ]
+        } );
+        table.buttons().container().appendTo( $('.tableTools-container-formulacion') );
                    // DenominacionFE("#table-DenominacionFE",table);                
                      ListaFormulacion("#table-formulacion",table);   
                     SituacionActual("#table-formulacion",table);  
@@ -139,7 +181,7 @@
                         var data=table.row( $(this).parents("tr")).data();
                         var txt_IdEtapa_Estudio_p=$('#txt_IdEtapa_Estudio_p').val(data.id_etapa_estudio);
                          listarPersonaFE();
-                         listarCargoFE();
+                     
                   });
                 }
   var listarPersonaFE=function(valor){
@@ -159,6 +201,7 @@
                             $('select[name=Cbx_Persona]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=Cbx_Persona]').change();
                             $('.selectpicker').selectpicker('refresh'); 
+                                listarCargoFE();
                         }
                     });
                 }
