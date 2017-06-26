@@ -1,6 +1,5 @@
  $(document).on("ready" ,function(){
-
-              ListarFormulacion();
+              ListarEvaluacionFE();
 //REGISTARAR situacion
    $("#form-AddSituacion").submit(function(event)
                   {
@@ -18,7 +17,7 @@
                             if (resp=='2') {
                              swal("NO SE REGISTRÓ","NO se regristró ", "error");
                            }
-                          $('#table-formulacion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
+                          $('#table-EvaluacionFE').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
                              formReset();
                          }
                       });
@@ -40,7 +39,7 @@
                             if (resp=='2') {
                              swal("NO SE REGISTRÓ","NO se regristró ", "error");
                            }
-                          $('#table-formulacion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
+                          $('#table-EvaluacionFE').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
                              formReset();
                          }
                       });
@@ -52,43 +51,39 @@
            document.getElementById("form-AddAsiganarPersona").reset();
           }            
      
-			});
- //LISTAR DENOMINACION DE FORMULACION Y EVALUACION EN TABLA
-                var ListarFormulacion=function()
+      });
+ //LISTAR DENOMINACION DE EvaluacionFE Y EVALUACION EN TABLA
+                var ListarEvaluacionFE=function()
                 {
-                    var table=$("#table-formulacion").DataTable({
+                    var table=$("#table-EvaluacionFE").DataTable({
                      "processing": true,
                       "serverSide":false,
                      destroy:true,
                          "ajax":{
-                                    "url":base_url+"index.php/FEformulacion/GetFormulacion",
+                                    "url":base_url+"index.php/FEformulacion/GetFEAprobados",
                                     "method":"POST",
                                     "dataSrc":""
                                     },
-                                "columns":[
+                               "columns":[
                                     {"data":"id_pi","visible": false},
                                     {"data":"codigo_unico_est_inv",
                                     "mRender": function ( data, type, full ) {
-                                     return '<a style="font-weight:normal;font-size:15" type="button" class="VerDetalleFormulacion btn btn-link" data-toggle="modal" data-target="#VerDetalleFormulacion" href="/codigo_unico_pi/' + data + '">' + data+ '</a>';
+                                     return '<a style="font-weight:normal;font-size:15" type="button" class="VerDetalleFormulacion btn btn-link" data-toggle="modal" data-target="#VerDetalleFormulacion" href="/codigo_unico_est_inv/' + data + '">' + data+ '</a>';
                                       }
                                     },
                                     {"data":"nombre_est_inv"},
                                     {"data":"provincia"},
                                     {"data":"distrito"},
                                     {"data":"denom_nivel_estudio"},
+
                                     {"data":"nombres"},
                                     {"data":"costo_estudio"},
                                     {"data":"denom_situacion_fe"},
                                     {"data":"avance_fisico",
                                       "mRender":function (data,type, full) {
-                                         return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Completado</small></td>";
+                                         return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Complete</small></td>";
                                     }},
-                                    {"data":"id_etapa_estudio",
-                                    "mRender": function ( data, type, full )
-                                     {
-                                     return '<a  href="../FEentregableEstudio/ver_FEentregable/'+data+'"><button type="button" class="btn btn btn-primary btn-xs"><i class="fa fa-tasks"></i> </button></a>';
-                                      }
-                                    },
+
 {"defaultContent":"<button type='button' class='Situacion btn btn-warning btn-xs' data-toggle='modal' data-target='#VentanaSituacionActual'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button'  class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#VentanaAsignarPersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button>"}                            
                                 ],
                                  "language":idioma_espanol
@@ -134,14 +129,13 @@
            
           ]
         } );
-        table.buttons().container().appendTo( $('.tableTools-container-formulacion') );
-                   // DenominacionFE("#table-DenominacionFE",table);                
-                     ListaFormulacion("#table-formulacion",table);   
-                    SituacionActual("#table-formulacion",table);  
-                     RegistarPersona("#table-formulacion",table);  			   	
+        table.buttons().container().appendTo( $('.tableTools-container-evaluacion') );                           
+                     ListarEvaluacion("#table-EvaluacionFE",table);     
+                      SituacionActual("#table-EvaluacionFE",table);  
+                     RegistarPersona("#table-EvaluacionFE",table);          
                 }
-//LISTAR DENOMINACION DE FORMULACION Y EVALUACION EN TABLA
-
+//FIN LISTAR PROYECTOS QUE SE ENCUENTRARN EN EVALUACION
+//LISTAR DETALLE DE SITUACION ACTUAL DE UNA PIP EN EVALUACION
 var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
   {
     html1="";
@@ -165,13 +159,16 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
                       }
                     });
     }
-          var  ListaFormulacion=function(tbody,table){
+  
+  //FIN LISTAR DETALLE DE SITUACION ACTUAL DE UNA PIP EN EVALUACION
+          var  ListarEvaluacion=function(tbody,table){
                              $(tbody).on("click","a.VerDetalleFormulacion",function(){
                               var data=table.row( $(this).parents("tr")).data();
-                              $("#CodigoFormulacion").val(data.codigo_unico_pi);
+                               var codigo_unico_est_inv=data.codigo_unico_est_inv;
+                               DetalleSitActPipEvaluacion(codigo_unico_est_inv);
                           });
                       }
-              var  SituacionActual=function(tbody,table){
+ var  SituacionActual=function(tbody,table){
                     $(tbody).on("click","button.Situacion",function(){
                         var data=table.row( $(this).parents("tr")).data();
                         var txt_IdEtapa_Estudio=$('#txt_IdEtapa_Estudio').val(data.id_etapa_estudio);
@@ -205,7 +202,7 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
                         var data=table.row( $(this).parents("tr")).data();
                         var txt_IdEtapa_Estudio_p=$('#txt_IdEtapa_Estudio_p').val(data.id_etapa_estudio);
                          listarPersonaFE();
-                     
+                        
                   });
                 }
   var listarPersonaFE=function(valor){
@@ -225,7 +222,7 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
                             $('select[name=Cbx_Persona]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=Cbx_Persona]').change();
                             $('.selectpicker').selectpicker('refresh'); 
-                                listarCargoFE();
+                             listarCargoFE();
                         }
                     });
                 }
@@ -250,10 +247,6 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
                         }
                     });
                 }
-
-
-
-
             var idioma_espanol=
                 {
                     "sProcessing":     "Procesando...",
@@ -280,3 +273,4 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
                     }
                 }
 
+  

@@ -1,7 +1,61 @@
  $(document).on("ready" ,function(){
               ListarEvaluacionFE();
+
 			});
  //LISTAR PROYECTOS QUE SE ENCUENTRARN EN EVALUACION
+//REGISTARAR situacion
+   $("#form-AddSituacion").submit(function(event)
+                  {
+                      event.preventDefault();
+                      $.ajax({
+                          url:base_url+"index.php/FEsituacion/AddSituacion",
+                          type:$(this).attr('method'),
+                          data:$(this).serialize(),
+                          success:function(resp){
+                           //alert(resp);
+                           if (resp=='1') {
+                             swal("REGISTRADO","Se registró correctamente", "success");
+                             formReset();
+                           }
+                            if (resp=='2') {
+                             swal("NO SE REGISTRÓ","NO se regristró ", "error");
+                           }
+                          $('#table-EvaluacionFE').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
+                             formReset();
+                         }
+                      });
+                  });
+   //REGISTARAR asiganar persona
+   $("#form-AddAsiganarPersona").submit(function(event)
+                  {
+                      event.preventDefault();
+                      $.ajax({
+                          url:base_url+"index.php/Estudio_Inversion/AddAsiganarPersona",
+                          type:$(this).attr('method'),
+                          data:$(this).serialize(),
+                          success:function(resp){
+                           //alert(resp);
+                           if (resp=='1') {
+                             swal("REGISTRADO","Se regristró correctamente", "success");
+                             formReset();
+                           }
+                            if (resp=='2') {
+                             swal("NO SE REGISTRÓ","NO se regristró ", "error");
+                           }
+                          $('#table-EvaluacionFE').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
+                             formReset();
+                         }
+                      });
+                  });
+//limpiar campos
+          function formReset()
+          {
+          document.getElementById("form-AddSituacion").reset();
+           document.getElementById("form-AddAsiganarPersona").reset();
+          }            
+     
+      });
+ //LISTAR DENOMINACION DE EvaluacionFE Y EVALUACION EN TABLA
                 var ListarEvaluacionFE=function()
                 {
                     var table=$("#table-EvaluacionFE").DataTable({
@@ -17,7 +71,7 @@
                                     {"data":"id_pi","visible": false},
                                     {"data":"codigo_unico_est_inv",
                                     "mRender": function ( data, type, full ) {
-                                     return '<a style="font-weight:normal;font-size:15" type="button" class="VerDetalleFormulacion btn btn-link" data-toggle="modal" data-target="#VerDetalleFormulacion" href="/codigo_unico_est_inv/' + data + '">' + data+ '</a>';
+                                     return '<a style="font-weight:normal;font-size:15" type="button" class="VerDetalleEvaluacion btn btn-link" data-toggle="modal" data-target="#VerDetalleEvaluacion" href="/codigo_unico_est_inv/' + data + '">' + data+ '</a>';
                                       }
                                     },
                                     {"data":"nombre_est_inv"},
@@ -33,11 +87,15 @@
                                          return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Complete</small></td>";
                                     }},
 
+
                        
                                     {"data":"id_etapa_estudio",
                                     "mRender": function ( data, type, full ) {
                                      return '<button type="button" class="btn btn-default sm"><a  href="getCarteraAnio/' + data + '"><i class="fa fa-book"></i> </a></button>';
                                       }}
+
+{"defaultContent":"<button type='button' class='Situacion btn btn-warning btn-xs' data-toggle='modal' data-target='#VentanaSituacionActual'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button'  class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#VentanaAsignarPersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button>"}                            
+
                                 ],
 
                                 "language":idioma_espanol
@@ -102,7 +160,7 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
                       {
                          var registros = eval(respuesta);  
                           
-                         html1+="<thead> <tr> <th  class='active'><h5>ID</h5></th><th  class='active'><h5>CODIGO UNICO </h5></th> <th class='active'><h5>NOMBRE DEL ESTUDIO </h5></th><th colspan='12' class='active'><h5>EVALUADOR</h5></th>  <th colspan='12' class='active'><h5>CARGO</h5></th><th colspan='12' class='active'><h5>OBSERVACIONES</h5></th><th colspan='12' class='active'><h5>FECHA</h5></th></tr></thead>"
+                         html1+="<thead> <tr> <th  class='active'><h5>ID</h5></th><th  class='active'><h5>CODIGO UNICO </h5></th> <th class='active'><h5>NOMBRE DEL ESTUDIO </h5></th><th class='active'><h5>EVALUADOR</h5></th>  <th class='active'><h5>CARGO</h5></th><th class='active'><h5>OBSERVACIONES</h5></th><th class='active'><h5>FECHA</h5></th></tr></thead>"
                          for (var i = 0; i <registros.length;i++) {
                               html1 +="<tbody> <tr><th>"+registros[i]["id_est_inv"]+"</th><th>"+registros[i]["codigo_unico_est_inv"]+"</th><th>"+registros[i]["nombre_est_inv"]+"</th><th>"+registros[i]["Evaluador"]+"</th><th>"+registros[i]["desc_cargo"]+"</th><th>"+registros[i]["observacion"]+"</th><th>"+registros[i]["fecha"]+"</th></tr>";    
                           //alert(suma);
@@ -116,7 +174,7 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
   
   //FIN LISTAR DETALLE DE SITUACION ACTUAL DE UNA PIP EN EVALUACION
           var  ListarEvaluacion=function(tbody,table){
-                             $(tbody).on("click","a.VerDetalleFormulacion",function(){
+                             $(tbody).on("click","a.VerDetalleEvaluacion",function(){
                               var data=table.row( $(this).parents("tr")).data();
                                var codigo_unico_est_inv=data.codigo_unico_est_inv;
                                DetalleSitActPipEvaluacion(codigo_unico_est_inv);
