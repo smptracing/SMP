@@ -251,6 +251,18 @@ class Estudio_Inversion extends CI_Controller
 
     }
     //fin documentos de inversion
+    //listar Documentos de inversion 
+     public function GetDocumentosEstudio() //mostra ESTADO INVERSION
+    {
+        if ($this->input->is_ajax_request()) {
+            $id_est_inv=$this->input->post('id_est_inv');
+            $datos = $this->Estudio_Inversion_Model->GetDocumentosEstudio($id_est_inv);
+             echo json_encode($datos);
+        } else {
+            show_404();
+        }
+    }
+    //fin listar documentos de inversion
 
 //------------------------------------------------------------------------------------------------------------------
 

@@ -227,4 +227,15 @@ class Estudio_Inversion_Model extends CI_Model
 
     }
 
+    public function GetDocumentosEstudio($id_est_inv)
+    {
+        $documentos = $this->db->query("select id_documento,id_est_inv,nombre_documento,desc_documento,url_documento from DOCUMENTOS_INVERSION where id_est_inv=$id_est_inv");
+        if ($documentos->num_rows() > 0) {
+            return $documentos->result();
+        } else {
+            return false;
+        }
+    }
+
+
 }
