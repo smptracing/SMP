@@ -1,6 +1,28 @@
  $(document).on("ready" ,function(){
 
               ListarFormulacion();
+              //REGISTARAR ESTADO ETAPA
+   $("#form-AddSituacion").submit(function(event)
+                  {
+                      event.preventDefault();
+                      $.ajax({
+                          url:base_url+"index.php/FEsituacion/AddSituacion",
+                          type:$(this).attr('method'),
+                          data:$(this).serialize(),
+                          success:function(resp){
+                           //alert(resp);
+                           if (resp=='1') {
+                             swal("REGISTRADO","Se regristró correctamente", "success");
+                             formReset();
+                           }
+                            if (resp=='2') {
+                             swal("NO SE REGISTRÓ","NO se regristró ", "error");
+                           }
+                          $('#table-formulacion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
+                             formReset();
+                         }
+                      });
+                  });
 //REGISTARAR situacion
    $("#form-AddSituacion").submit(function(event)
                   {
