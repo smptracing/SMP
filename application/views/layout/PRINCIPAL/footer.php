@@ -1,7 +1,7 @@
         <footer>
           <div class="pull-right">
            <div class="count green">
-               <h6><i>© Copyright 2017 Copyright.es - All Rights Reserved</i></h6>
+               <h6><i>© Copyright 2017 Todos los derechos reservados</i></h6>
            </div>
           </div>
           <div class="clearfix"></div>

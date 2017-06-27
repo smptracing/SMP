@@ -50,7 +50,7 @@
                                 <div class="small-box bg-olive">
                                     <div class="inner">
                                         <h3>FE</h3>
-                                        <p>Etapa de Formulacion y Evaluacion</p>
+                                        <p>Formulacion, Evaluacion de Proyectos</p>
                                     </div>
                                     <div class="icon">
                                         <i class="fa fa-edit"></i>
@@ -66,7 +66,7 @@
                                 <div class="small-box bg-blue">
                                     <div class="inner">
                                         <h3>E</h3>
-                                        <p>Etapa de Ejecucion de Proyectos de Inversion</p>
+                                        <p>Ejecucion de Proyectos de Inversion</p>
                                     </div>
                                     <div class="icon">
                                         <i class="fa fa-play"></i>
@@ -83,7 +83,7 @@
                                 <div class="small-box bg-yellow">
                                     <div class="inner">
                                         <h3>L</h3>
-                                        <p>Etapa de Liquidacion de Proyectos de Inversion</p>
+                                        <p>Liquidacion de Proyectos de Inversion</p>
                                     </div>
                                     <div class="icon">
                                         <i class="fa  fa-check-square-o"></i>
@@ -219,7 +219,7 @@
                                     <div class="inner">
                                         <h3>P</h3>
 
-                                        <p>Mantenimiento y Configuracion de Parametros</p>
+                                        <p>Mantenimiento de Parametros Generales</p>
                                     </div>
                                     <div class="icon">
                                         <i class="fa fa-gears"></i>
@@ -236,9 +236,7 @@
                                 <div class="small-box bg-purple">
                                     <div class="inner">
                                         <h3>R</h3>
-
-                                        <p>Reportes Varios</p>
-                                        <br>
+                                        <p>Reportes, Estadisticas, Informes Varios</p>
                                     </div>
                                     <div class="icon">
                                         <i class="fa fa-bar-chart"></i>

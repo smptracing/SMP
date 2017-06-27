@@ -73,9 +73,9 @@
                             <img src="<?php echo base_url(); ?>assets/images/APURIMAC.png" class="img-rounded"
                                  alt="Cinque Terre" width="200" height="180" style="opacity: 0.5;">
                             <br>
-                            <center><a href="" class="site_title"></i>
+                            <a href="" class="site_title">
                                     <span><H2>GOBIERNO REGIONAL DE APURÍMAC</H2> </span></a>
-                            </center>
+
 
                             <p id="copyrights_footer"><label id="ctl00_Master_CopyrightFooter">Seguimiento y Monitoreo
                                     de Proyectos de Inversión - </label> SMP 1.0 </a></p>
