@@ -89,11 +89,11 @@ class Model_FEentregableEstudio extends CI_Model
           $this->db->query("EXECUTE sp_Gestionar_Responsable_Entregable '".$Opcion."','".$txt_identregable."','".$txt_idPersona."','".$txt_AsigPersonalEntregable."' ");
             if ($this->db->affected_rows()>0) 
               {
-                return 0;
+                return true;
               }
               else
               {
-                return 1;
+                return false;
               }
         }
   

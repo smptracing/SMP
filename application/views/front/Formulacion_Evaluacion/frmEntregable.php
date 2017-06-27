@@ -93,9 +93,7 @@
 
                                                   <div class="col-md-12 col-sm-12 col-xs-12">
                                                         <div class="x_panel">
-                                                            <button type="button" id="btn_Nuevadivision" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraDivisionF">
-                                                                <span class="fa fa-plus-circle"></span>
-                                                                Nuevo</button>
+                                                            
                                                           <div class="x_title">
                                                             <ul class="nav navbar-right panel_toolbox">
 
