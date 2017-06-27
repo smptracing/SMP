@@ -6,7 +6,7 @@
               <div class="col-md-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>PROYECTOS EN FORMULACIÓN</h2>
+                    <h2>Proyectos en Formulación </h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -43,7 +43,7 @@
                           <th style="width: 20%">Nombre Pip</th>
                           <th>Provincia</th>
                           <th>Distrito</th>
-                          <th>Nivel de Estudio</th>
+                          <th>Nivel Estudio</th>
                           <th>Responsable</th>
                           <th>Costo Inversion</th>
                           <th>Situacion</th>
@@ -252,18 +252,18 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-          Asignar Estado </h4>
+          Asignar Estado Etapa </h4>
         </div>
         <div class="modal-body">
          <div class="row">
                     <div class="col-xs-12">
                                         <!-- PAGE CONTENT BEGINS -->
-              <form class="form-horizontal " id="form-AddAsiganarPersona"   action="<?php echo base_url(); ?>frmFormulacion/GetFormulacion" method="POST" >
+              <form class="form-horizontal " id="form-AddEtapaEstudio"   action="<?php echo base_url(); ?>EstadoEtapa_FE/GetEstadoEtapa_FE" method="POST" >
 
               <div class="item form-group">
                         <div class="item form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="txt_IdEtapa_Estudio_FE" name="txt_IdEtapa_Estudio_FE" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="text">
+                        <input id="txt_IdEtapa_Estudio_FE" name="txt_IdEtapa_Estudio_FE" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
                         </div>
                       </div>
                 </div>
@@ -285,38 +285,31 @@
  <label for="name">. <span class="required"></span>
                                             </label><BR>
                                              <button id="send" type="submit" class="btn btn-success">
-                            <span class="glyphicon glyphicon-floppy-disk"></span>
-                            Guardar
+                            <span class="glyphicon glyphicon-floppy-saved"></span>Agregar
                           </button>
                                           </div>
                       </div>
                      <div class="ln_solid"></div>
-                     <div class="x_panel">
+                     <div class="x_panel" style="background-color: #EEEEEE;">
 <center>
-
-                                                                <table id="dynamic-table-estados" class="table table-striped table-bordered table-hover" with="100%" >
-                                                                    <thead>
+                                                                <table  style="width:50%;" id="table-EstadoEtapa" class="table   table-hover" >
+                                                                    <thead >
                                                                        <tr>
-                                                                         <th><i class="fa fa-thumb-tack"></i> ESTADO </th>
-                                                                         <th>DESCRIPCIÓN</th>
-                                                                         <th><i class="fa fa-calendar"></i> FECHA ACTUALIZACIÓN
+                                                                         <th style="width: 1%"><i class="fa fa-thumb-tack"></i> ESTADO </th>
+                                                                         <th style="width: 40%" ><i class="fa fa-thumb-tack"></i> Estado</th>
+                                                                         <th style="width: 10%"><i class="fa fa-calendar"></i> Fecha Actualización
                                                                         </th>
                                                                       </tr>
                                                                    </thead>
                                                                 </table>
-
-
 </center>
 </div>
 <center>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button id="send" type="submit" class="btn btn-success">
-                            <span class="glyphicon glyphicon-floppy-disk"></span>
-                            Guardar
-                          </button>
+
                            <button  class="btn btn-danger" data-dismiss="modal">
-                             <span class="glyphicon glyphicon-remove"></span>
+                             <span class="glyphicon glyphicon-log-out"></span>
                             Cancelar
                           </button>
                         </div>

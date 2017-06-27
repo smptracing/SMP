@@ -2,11 +2,11 @@
 
               ListarFormulacion();
               //REGISTARAR ESTADO ETAPA
-   $("#form-AddSituacion").submit(function(event)
+   $("#form-AddEtapaEstudio").submit(function(event)
                   {
                       event.preventDefault();
                       $.ajax({
-                          url:base_url+"index.php/FEsituacion/AddSituacion",
+                          url:base_url+"index.php/EstadoEtapa_FE/AddEstadoEtapa_FE",
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
@@ -18,12 +18,12 @@
                             if (resp=='2') {
                              swal("NO SE REGISTRÓ","NO se regristró ", "error");
                            }
-                          $('#table-formulacion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
+                          $('#table-EstadoEtapa').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
                              formReset();
                          }
                       });
                   });
-//REGISTARAR situacion
+//REGISTARAR SITUACION
    $("#form-AddSituacion").submit(function(event)
                   {
                       event.preventDefault();
@@ -75,6 +75,29 @@
           }            
      
 			});
+//listar estado etapa en el modal
+ var listarEstadoEtapa=function(id_etapa_estudio)
+                {
+                    var table=$("#table-EstadoEtapa").DataTable({
+                     "processing": true,
+                      "serverSide":false,
+                     destroy:true,
+
+                         "ajax":{
+                                    url:base_url+"index.php/EstadoEtapa_FE/GetEstadoEtapa_FE",
+                                    type:"POST",
+                                    data:{id_etapa_estudio:id_etapa_estudio}
+                                    },
+                                "columns":[
+                                    {"data":"id_etapa_estudio","visible": false},
+                                    {"data":"denom_estado_fe"},
+                                    {"data":"fecha"}
+                                    //{"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaupdateEstadoFE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
+                                ],
+
+                                "language":idioma_espanol
+                    });                       
+                }
  //LISTAR DENOMINACION DE FORMULACION Y EVALUACION EN TABLA
                 var ListarFormulacion=function()
                 {
@@ -207,8 +230,10 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
                  var  RegistarEstadoFE=function(tbody,table){
                     $(tbody).on("click","button.EstadoFE",function(){
                         var data=table.row( $(this).parents("tr")).data();
+                         var id_etapa_estudio=data.id_etapa_estudio;
                         var txt_IdEtapa_Estudio_FE=$('#txt_IdEtapa_Estudio_FE').val(data.id_etapa_estudio);
                          listarEstadoFE();
+                         listarEstadoEtapa(id_etapa_estudio);
                   });
                 }
            var listarEstadoFE=function(valor){

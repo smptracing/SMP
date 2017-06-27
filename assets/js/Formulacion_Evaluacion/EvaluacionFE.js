@@ -1,5 +1,27 @@
  $(document).on("ready" ,function(){
               ListarEvaluacionFE();
+                            //REGISTARAR ESTADO ETAPA
+   $("#form-AddEtapaEstudio").submit(function(event)
+                  {
+                      event.preventDefault();
+                      $.ajax({
+                          url:base_url+"index.php/EstadoEtapa_FE/AddEstadoEtapa_FE",
+                          type:$(this).attr('method'),
+                          data:$(this).serialize(),
+                          success:function(resp){
+                           //alert(resp);
+                           if (resp=='1') {
+                             swal("REGISTRADO","Se regristró correctamente", "success");
+                             formReset();
+                           }
+                            if (resp=='2') {
+                             swal("NO SE REGISTRÓ","NO se regristró ", "error");
+                           }
+                          $('#table-EstadoEtapa').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
+                             formReset();
+                         }
+                      });
+                  });
 //REGISTARAR situacion
    $("#form-AddSituacion").submit(function(event)
                   {
@@ -52,6 +74,30 @@
           }            
      
       });
+
+ //listar estado etapa en el modal
+ var listarEstadoEtapa=function(id_etapa_estudio)
+                {
+                    var table=$("#table-EstadoEtapa").DataTable({
+                     "processing": true,
+                      "serverSide":false,
+                     destroy:true,
+
+                         "ajax":{
+                                    url:base_url+"index.php/EstadoEtapa_FE/GetEstadoEtapa_FE",
+                                    type:"POST",
+                                    data:{id_etapa_estudio:id_etapa_estudio}
+                                    },
+                                "columns":[
+                                    {"data":"id_etapa_estudio","visible": false},
+                                    {"data":"denom_estado_fe"},
+                                    {"data":"fecha"}
+                                    //{"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaupdateEstadoFE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
+                                ],
+
+                                "language":idioma_espanol
+                    });                       
+                }
  //LISTAR DENOMINACION DE EvaluacionFE Y EVALUACION EN TABLA
                 var ListarEvaluacionFE=function()
                 {
@@ -84,7 +130,7 @@
                                          return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Complete</small></td>";
                                     }},
 
-{"defaultContent":"<button type='button' class='Situacion btn btn-warning btn-xs' data-toggle='modal' data-target='#VentanaSituacionActual'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button'  class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#VentanaAsignarPersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button>"}                            
+{"defaultContent":"<button type='button' class='EstadoFE btn btn-success btn-xs' data-toggle='modal' data-target='#VentanaEstadoFE'><i class='fa fa-dashboard' aria-hidden='true'></i></button><button type='button' class='Situacion btn btn-warning btn-xs' data-toggle='modal' data-target='#VentanaSituacionActual'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button'  class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#VentanaAsignarPersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button>"}                            
                                 ],
                                  "language":idioma_espanol
                     });
@@ -174,6 +220,36 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
                         var txt_IdEtapa_Estudio=$('#txt_IdEtapa_Estudio').val(data.id_etapa_estudio);
                          listarsituacionFE();
                   });
+                }
+                 //para registar estado de FE
+                 var  RegistarEstadoFE=function(tbody,table){
+                    $(tbody).on("click","button.EstadoFE",function(){
+                        var data=table.row( $(this).parents("tr")).data();
+                         var id_etapa_estudio=data.id_etapa_estudio;
+                        var txt_IdEtapa_Estudio_FE=$('#txt_IdEtapa_Estudio_FE').val(data.id_etapa_estudio);
+                         listarEstadoFE();
+                         listarEstadoEtapa(id_etapa_estudio);
+                  });
+                }
+           var listarEstadoFE=function(valor){
+                     html="";
+                    $("#Cbx_EstadoFE").html(html); 
+                    event.preventDefault(); 
+                    $.ajax({
+                        "url":base_url +"index.php/FEestado/get_FEestado",
+                        type:"POST",
+                        success:function(respuesta3){
+                         //  alert(respuesta);
+                         var registros = eval(respuesta3);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option  value="+registros[i]["id_estado"]+"> "+registros[i]["denom_estado_fe"]+" </option>";   
+                            };
+                            $("#Cbx_EstadoFE").html(html);
+                            $('select[name=Cbx_EstadoFE]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=Cbx_EstadoFE]').change();
+                            $('.selectpicker').selectpicker('refresh'); 
+                        }
+                    });
                 }
 
                 var listarsituacionFE=function(valor){

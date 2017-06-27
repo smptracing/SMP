@@ -57,9 +57,9 @@
                                                            </div>
                                                         </div>
                                                       <!--fin  de icono de reporte -->
-                                                      <div class="x_content">
-                                                                <table id="dynamic-table-EstudioInversion" class="table table-striped  table-hover" with="100%" >
-                                                                    <thead>
+                                                      <div class="x_content" >
+                                                                <table id="dynamic-table-EstudioInversion" class="table  table-hover" with="100%" >
+                                                                    <thead style="background-color: #405467;color:#FFFFFF; ">
                                                                        <tr>
                                                                        <th style="width: 1%">#</th>
 
