@@ -41,7 +41,7 @@ class Estudio_Inversion_Model extends CI_Model
     public function get_UnidadFormuladora()
     {
         //  $EstadoCicloInversion = $this->db->query("execute get");
-        $unidadformuladora = $this->db->query("  select id_uf,nombre_uf from UNIDAD_FORMULADORA");
+        $unidadformuladora = $this->db->query("select id_uf,nombre_uf from UNIDAD_FORMULADORA");
         if ($unidadformuladora->num_rows() > 0) {
             return $unidadformuladora->result();
         } else {
@@ -210,6 +210,16 @@ class Estudio_Inversion_Model extends CI_Model
 
         $this->db->query("execute SP_Gestionar_EstadoCiclo'" . $flat . "','" . $txt_IdEstadoCicloInversionM . "', '" . $txt_NombreEstadoCicloInversionM . "','" . $txt_DescripcionEstadoCicloInversionM . "' ");
         if ($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+    public function AddDocumentosEstudio($txt_id_est_invAdd,$txt_documentosEstudio,$txt_descripcionEstudio,$Url_documento)
+    {
+        $this->db->query("execute sp_DocumentoInversion_r '" . $txt_id_est_invAdd . "','" . $txt_documentosEstudio . "', '" . $txt_descripcionEstudio . "','" . $Url_documento . "'");
+        if ($this->db->affected_rows()>0) {
             return true;
         } else {
             return false;

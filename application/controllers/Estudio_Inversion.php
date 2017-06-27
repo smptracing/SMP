@@ -205,6 +205,53 @@ class Estudio_Inversion extends CI_Controller
         }
     }
 
+    //añadir documentos ala estudio de invserion 
+     public function AddDocumentosEstudio()
+    {
+        
+        if ($this->input->is_ajax_request()) 
+        {
+
+                            // echo  $txt_Cartera;  
+        $config['upload_path']          = './uploads/DocumentosInversion/';
+        $config['allowed_types']        = 'pdf|doc|xml|docx|PDF|DOC|DOCX|xls|xlsx';
+        $config['max_width']            = 1024;
+        $config['max_height']           = 768;
+        $config['max_size']      = 15000;
+        $config['encrypt_name']  = false;
+
+        $this->load->library('upload',$config);
+
+        if ( ! $this->upload->do_upload('Documento_invserion'))
+               {
+                                
+                    $error="ERROR NO SE CARGO EL DOCUMENTO DE INSERSIÓN";
+                    echo $error;
+               }
+                else
+               {
+
+                  $txt_id_est_invAdd =$this->input->post("txt_id_est_invAdd");
+                  $txt_documentosEstudio =$this->input->post("txt_documentosEstudio");
+                  $txt_descripcionEstudio =$this->input->post("txt_descripcionEstudio");
+                  $Url_documento=$this->upload->file_name;
+                                    //$error="corrercto";
+                  if($this->Estudio_Inversion_Model->AddDocumentosEstudio($txt_id_est_invAdd,$txt_documentosEstudio,$txt_descripcionEstudio,$Url_documento)==false)
+                            echo "1";
+                             else
+                            echo "0";
+                  }                             
+                  }
+                    else
+                    {
+                      show_404();
+                    }
+
+
+
+    }
+    //fin documentos de inversion
+
 //------------------------------------------------------------------------------------------------------------------
 
     public function _load_layout($template)

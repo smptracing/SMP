@@ -46,6 +46,40 @@ $(document).on("ready" ,function(){
                          }
                       });
                   });
+
+//Subida de documentos de inversion 
+
+
+                      $("#form-AddDocumentosEstudio").submit(function(event)//AÑADIR NUEVA CARTERA
+                       {
+                            event.preventDefault();
+                            var formData=new FormData($("#form-AddDocumentosEstudio")[0]);
+                            $.ajax({
+                                type:"POST",
+                                enctype: 'multipart/form-data',
+                                url:base_url+"index.php/Estudio_Inversion/AddDocumentosEstudio",
+                                data: formData,
+                                cache: false,
+                                contentType:false,
+                                processData:false,
+                                success:function(resp){
+                                 alert(resp);
+                                 if (resp=='true') {
+                                     swal("REGISTRADO","DOCUMENTO DE INSERSIÓN", "success");
+                                   }
+                                    if (resp=='false') {
+                                     swal("NO SE REGISTRÓ","DOCUMENTO DE INSERSIÓN ", "error");
+                                   }
+
+                               }
+
+                            });
+                                   //$('#form-AddDocumentosEstudio')[0].reset();
+                                   //$("#VentanaDocumentosEstudio").modal("hide");
+                       });
+
+//fin de documentos de inversion
+
 //REGISTARAR NUEVA ETAPA DE ESTUDIO 
    $("#form-AddEtapaEstudio").submit(function(event)
                   {
@@ -117,6 +151,7 @@ $(document).on("ready" ,function(){
                                     },
                                 "columns":[
                                       {"defaultContent":"<td>#</td>"},
+                                      {"data":"id_est_inv" ,"visible": false},
                                       { "data": function (data, type, dataToSet) {
                                          return "<strong>"+data.nombre_est_inv + "</strong><br/><i class='fa fa-calendar'>  " + data.fecha+"</i>";
                                        }},
@@ -154,7 +189,7 @@ $(document).on("ready" ,function(){
                                      
                                       }
                                    }},
-                                  {"defaultContent":"<center><button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#ventanaasiganarpersona'><i class='glyphicon glyphicon-folder-open' aria-hidden='true'></i></button><button type='button' class='eliminar btn btn-warning btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button'  class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#ventanaasiganarpersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button><button type='button' class='nuevaEtapaEstudio btn btn-success btn-xs' data-toggle='modal' data-target='#ventanaEtapaEstudio'><i class='glyphicon glyphicon-pushpin' aria-hidden='true'></i></button><center>"}
+                                  {"defaultContent":"<center><button type='button' class='DocumentosEstudio btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaDocumentosEstudio'><i class='glyphicon glyphicon-folder-open' aria-hidden='true'></i></button><button type='button' class='eliminar btn btn-warning btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button'  class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#ventanaasiganarpersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button><button type='button' class='nuevaEtapaEstudio btn btn-success btn-xs' data-toggle='modal' data-target='#ventanaEtapaEstudio'><i class='glyphicon glyphicon-pushpin' aria-hidden='true'></i></button><center>"}
                                ],
 
                                 "language":idioma_espanol
@@ -200,11 +235,22 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
           ]
         } );
         myTableUA.buttons().container().appendTo( $('.tableTools-container-EstudioInversion') );
- listarpersonasdata("#dynamic-table-EstudioInversion",myTableUA);  //CARGAR LA DATA PARA MOSTRAR EN EL MODAL  
- nuevaEtapaEstudioData("#dynamic-table-EstudioInversion",myTableUA);
+       listarpersonasdata("#dynamic-table-EstudioInversion",myTableUA);  //CARGAR LA DATA PARA MOSTRAR EN EL MODAL  
+       nuevaEtapaEstudioData("#dynamic-table-EstudioInversion",myTableUA);
+       AddListarDocumentos("#dynamic-table-EstudioInversion",myTableUA);
                 }
    
   /*fin listar proyectos*/
+
+              //listar y agregar Documentos
+              var  AddListarDocumentos=function(tbody,myTableUA){
+                    $(tbody).on("click","button.DocumentosEstudio",function(){
+                      var data=myTableUA.row( $(this).parents("tr")).data();
+                      $("#txt_id_est_invAdd").val(data.id_est_inv);
+
+                    });
+                }
+              //fin listar y agregar documento
                 var listarpicombo=function(valor){
                      html="";
                     $("#listaFuncionC").html(html); 

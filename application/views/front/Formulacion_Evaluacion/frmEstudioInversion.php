@@ -62,7 +62,7 @@
                                                                     <thead style="background-color: #405467;color:#FFFFFF; ">
                                                                        <tr>
                                                                        <th style="width: 1%">#</th>
-
+                                                                       <th style="width: 1%">#</th>
                                                                          <th style="width: 40%"><i class="fa fa-thumb-tack"></i> Est. Inv. </th>
                                                                          <th style="width: 14%">
                                                                           <i class="fa fa-users"></i>
@@ -413,35 +413,65 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-          Documentos de Estudio sf</h4>
+          Documentos de Estudio </h4>
         </div>
         <div class="modal-body">
          <div class="row">
                     <div class="col-xs-12">
                                         <!-- PAGE CONTENT BEGINS -->
-                          <form class="form-horizontal " id="form-AddEtapaEstudio"   action="<?php echo base_url(); ?>Estudio_Inversion/AddEtapaEstudio" method="POST" >
+                          <form class="form-horizontal " id="form-AddDocumentosEstudio"   action="<?php echo base_url(); ?>Estudio_Inversion/AddDocumentosEstudio" method="POST" >
                                     <div class="item form-group">
-                                              <div class="item form-group">
-                                              <div class="col-md-6 col-sm-6 col-xs-12">
-                                              <input id="txt_id_est_inv" name="txt_id_est_inv" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
+                                              <input id="txt_id_est_invAdd" name="txt_id_est_invAdd" class="form-control col-md-7 col-xs-12"  type="hidden">
+                                      </div>
+                                       <div class="form-group">
+                                            <label class="control-label col-md-2 col-sm-3 col-xs-12">Nombre </label>
+                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                  <input  id="txt_documentosEstudio" name="txt_documentosEstudio" placeholder="Nombre del Documento"class="form-control col-md-6 col-xs-5"  type="text" >
+                                         </div>
+                                          </div>
+                                          <div class="form-group">
+                                            <label class="control-label col-md-2 col-sm-3 col-xs-12">Descripción </label>
+                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                  <input id="txt_descripcionEstudio" name="txt_descripcionEstudio" placeholder="Descripción de documento" class="form-control col-md-12 col-xs-12" type="text">
+                                          </div>
+                                          </div>
+
+                                            <div class="form-group">
+                                            <label class="control-label col-md-2 col-sm-3 col-xs-12">Subir Documento</label>
+                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <input type="file" name="Documento_invserion">    
+                                                  </div>                                      
+                                          </div>
+                                            <div class="form-group">
+                                              <div class="col-md-6 col-md-offset-3">
+                                                <button id="send" type="submit" class="btn btn-success">
+                                                  <span class="glyphicon glyphicon-floppy-disk"></span>
+                                                  Guardar
+                                                </button>
+                                                 <button  class="btn btn-danger" data-dismiss="modal">
+                                                   <span class="glyphicon glyphicon-remove"></span>
+                                                  Cancelar
+                                                </button>
                                               </div>
                                             </div>
-                                      </div>
-
-
-                                      <div class="ln_solid"></div>
-                                      <div class="form-group">
-                                        <div class="col-md-6 col-md-offset-3">
-                                          <button id="send" type="submit" class="btn btn-success">
-                                            <span class="glyphicon glyphicon-floppy-disk"></span>
-                                            Guardar
-                                          </button>
-                                           <button  class="btn btn-danger" data-dismiss="modal">
-                                             <span class="glyphicon glyphicon-remove"></span>
-                                            Cancelar
-                                          </button>
-                                        </div>
-                                      </div>
+                                            <table class="table">
+                                              <thead>
+                                                <tr>
+                                                  <th><center>Nombre</center></th>
+                                                  <th><center>Descripción</center></th>
+                                                  <th><center>Url</center></th>
+                                                </tr>
+                                              </thead>
+                                              <tbody>
+                                                  <tr class="info">
+                                                    <td>Info</td>
+                                                    <td>Dooley</td>
+                                                    <td>july@example.com</td>
+                                                 <tr>
+                                                </tbody>
+                                            </table>
+                                                                              
+                                      
                                 </form>
                         </div><!-- /.span -->
                  </div><!-- /.row -->
