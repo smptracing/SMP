@@ -1,8 +1,8 @@
- <footer>
+        <footer>
           <div class="pull-right">
            <div class="count green">
-                                        <center><h6><i>© Copyright 2017 Copyright.es - All Rights Reserved</i></h6></center>
-                                    </div>
+               <h6><i>© Copyright 2017 Copyright.es - All Rights Reserved</i></h6>
+           </div>
           </div>
           <div class="clearfix"></div>
         </footer>
@@ -30,7 +30,7 @@
     <script src="<?php echo base_url(); ?>assets/vendors/skycons/skycons.js"></script>
     <!-- Flot -->
     <script src="<?php echo base_url(); ?>assets/vendors/Flot/jquery.flot.js"></script>
-    <script src="<?php echo base_url(); ?>assets/vendors/Flot/jquery.flot.pie.js"></script>
+<!--    <script src="--><?php //echo base_url(); ?><!--assets/vendors/Flot/jquery.flot.pie.js"></script>-->
     <script src="<?php echo base_url(); ?>assets/vendors/Flot/jquery.flot.time.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendors/Flot/jquery.flot.stack.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendors/Flot/jquery.flot.resize.js"></script>
@@ -81,5 +81,8 @@
     <script src="<?php echo base_url(); ?>assets/vendors/butons/buttons.print.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/plugins/input-mask/jquery.inputmask.min.js"></script>
     <link href="<?php echo base_url(); ?>assets/css/main.css" rel="stylesheet" type="text/css">
+<!-- admin LTE-->
+ <script src="<?php echo base_url(); ?>assets/adminlte/adminlte.min.js"></script>
+
   </body>
 </html>

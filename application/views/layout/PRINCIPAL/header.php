@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
@@ -18,83 +18,88 @@
     <link href="<?php echo base_url(); ?>assets/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
 
     <!-- bootstrap-progressbar -->
-    <link href="<?php echo base_url(); ?>assets/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css"
+          rel="stylesheet">
     <!-- JQVMap -->
     <link href="<?php echo base_url(); ?>assets/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
     <link href="<?php echo base_url(); ?>assets/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/css/bootstrap-select.css"><!--- para el selector con buscardor---->
-      <!-- Datatables -->
-    <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
-     <script>
-    var base_url = '<?php echo base_url(); ?>';
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/css/bootstrap-select.css">
+    <!--- para el selector con buscardor---->
+    <!-- Datatables -->
+    <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css"
+          rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css"
+          rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css"
+          rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css"
+          rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css"
+          rel="stylesheet">
+
+    <script>
+        var base_url = '<?php echo base_url(); ?>';
     </script>
     <!-- Custom Theme Style -->
-    <link href="<?php echo base_url(); ?>assets/build/css/custom.min.css" rel="stylesheet">
-  </head>
-  <body class="nav-md">
-    <div class="container body">
-      <div class="main_container">
+    <link href="<?php echo base_url(); ?>assets/build/css/inicio_custom.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/adminlte/_all-skins.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/adminlte/AdminLTE.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/adminlte/font-awesome.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/adminlte/_all-skins.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/adminlte/ionicons.min.css" rel="stylesheet">
+
+</head>
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
         <div class="col-md-3 left_col">
-          <div class="left_col scroll-view">
-          <!--  <div class="navbar nav_title" style="border: 0;">
-              <a href="" class="site_title"><i class="fa fa-users"></i> <span>SEMOPIP</span></a>
-            </div>-->
-            <div class="clearfix"></div>
-            <br />
-            <br />
-             <!-- menu profile quick info -->
-            <div class="profile clearfix">
-            </div>
-        <!-- /menu profile quick info -->
-<br>
-                        <th class="col-sm-3">
-                                    <div class="count green">
-                                       <CENTER> <a href="">
-                                      <img src="<?php echo base_url(); ?>assets/images/APURIMAC.png" class="img-rounded" alt="Cinque Terre" width="200" height="180">
-                                       <br>
-                                       <center><a href="" class="site_title"></i><span><H2>GOBIERNO REGIONAL DE APURÍMAC</H2> </span></a>
-                                       </center>
+            <div class="left_col scroll-view">
+                <!--  <div class="navbar nav_title" style="border: 0;">
+                    <a href="" class="site_title"><i class="fa fa-users"></i> <span>SEMOPIP</span></a>
+                  </div>-->
+                <div class="clearfix"></div>
+                <br/>
+                <br/>
+                <!-- menu profile quick info -->
+                <div class="profile clearfix">
+                </div>
+                <!-- /menu profile quick info -->
+                <br>
+                <th class="col-sm-3">
+                    <div class="count">
+                        <CENTER><a href=""></a>
+                            <img src="<?php echo base_url(); ?>assets/images/APURIMAC.png" class="img-rounded"
+                                 alt="Cinque Terre" width="200" height="180" style="opacity: 0.5;">
+                            <br>
+                            <center><a href="" class="site_title"></i>
+                                    <span><H2>GOBIERNO REGIONAL DE APURÍMAC</H2> </span></a>
+                            </center>
 
-                                        <p id="copyrights_footer"><label id="ctl00_Master_CopyrightFooter">Seguimiento y Monitoreo de Proyectos de Inversión - </label> SMP 1.0 </a></p> <br> <br> <br> <br> <br> <br> <br> <br><br> <br>
-                                         <img src="<?php echo base_url(); ?>assets/images/iconoprincipal.png" class="img-rounded" alt="Cinque Terre" width="64" height="64">
-                                        <center><h6><i>© Copyright 2017 Copyright.es - All Rights Reserved</i></h6></center>
-                                    </div>
-                          </th>
+                            <p id="copyrights_footer"><label id="ctl00_Master_CopyrightFooter">Seguimiento y Monitoreo
+                                    de Proyectos de Inversión - </label> SMP 1.0 </a></p>
 
-            <!-- /menu footer buttons -->
-            <div class="sidebar-footer hidden-small">
-              <a data-toggle="tooltip" data-placement="top" title="Settings">
-                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="Lock">
-                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
-                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-              </a>
+                    </div>
+                </th>
+
+                <!-- /menu footer buttons -->
+<!--                <div class="sidebar-footer hidden-small">-->
+<!--                    <a data-toggle="tooltip" data-placement="top" title="Settings">-->
+<!--                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>-->
+<!--                    </a>-->
+<!--                    <a data-toggle="tooltip" data-placement="top" title="FullScreen">-->
+<!--                        <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>-->
+<!--                    </a>-->
+<!--                    <a data-toggle="tooltip" data-placement="top" title="Lock">-->
+<!--                        <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>-->
+<!--                    </a>-->
+<!--                    <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">-->
+<!--                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>-->
+<!--                    </a>-->
+<!--                </div>-->
+                <!-- /menu footer buttons -->
             </div>
-            <!-- /menu footer buttons -->
-          </div>
         </div>
         <!-- top navigation -->
-        <div class="top_nav">
-          <div class="nav_menu">
-            <nav>
-              <div class="nav toggle">
-                <a id="."><i class="fa fa-bars"></i></a>
-              </div>
-              <ul class="nav navbar-nav navbar-right">
-              </ul>
-            </nav>
-          </div>
-        </div>
         <!-- /top navigation -->
