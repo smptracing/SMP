@@ -152,9 +152,9 @@ var generarActividadesVertical=function(id_en)
                                       var i=data;
                                           if(i=='')
                                           {
-                                           return '<a type="button" class="editar btn btn-link" data-toggle="modal" data-target="#VentanaAsignacionPersonalActividad" ><img src='+base_url+'assets/images/user.png> ' + data+ '</a>'
+                                           return '<a type="button" class="editar btn btn-link" data-toggle="modal" data-target="#VentanaAsignacionPersonalActividad" title="Añadir Responsable" ><i class="glyphicon glyphicon-user" aria-hidden="true"></i></a><font size="1"></br>' +data+ '</font>'
                                           }else{
-                                             return '<a type="button" class="editar btn btn-link" data-toggle="modal" data-target="#VentanaAsignacionPersonalActividad" ><img src='+base_url+'assets/images/asignado.png> ' + data+ '</a>'
+                                             return '<a type="button" class="editar btn btn-link" data-toggle="modal" data-target="#VentanaAsignacionPersonalActividad" title="Añadir Responsable" ><i class="glyphicon glyphicon-user" aria-hidden="true"></i></a><font size="1"></br>' +data+ '</font>'
                                           }
                                       }
 
@@ -169,7 +169,7 @@ var generarActividadesVertical=function(id_en)
                                       "mRender":function (data,type, full) {
                                          return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Complete</small></td>";
                                     }},
-                                    {"defaultContent":"<button type='button' class='editar btn btn-info btn-xs' data-toggle='modal' data-target='#VentanaAsignacionPersonalActividad'><i class='ace-icon fa fa-users bigger-120'></i></button><button type='button' class='edit btn btn-primary btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-pencil'></i></button>"}
+                                    {"defaultContent":"<button type='button' class='edit btn btn-primary btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-pencil'></i></button>"}
                                 ],
 
                                 "language":idioma_espanol
@@ -211,9 +211,9 @@ var generarActividadesVertical=function(id_en)
                                       var i=data;
                                           if(i==null)
                                           {
-                                           return '<a type="button" class="AsignacionPersonaEntregables btn btn-link" data-toggle="modal" data-target="#VentanaAsignacionPersonalEntregable" ><i class="glyphicon glyphicon-user" aria-hidden="true"><font size="1"></br>' +data+ '</i></font></a>'
+                                           return '<a  type="button" class="AsignacionPersonaEntregables btn btn-link" data-toggle="modal" data-target="#VentanaAsignacionPersonalEntregable" title="Añadir Responsable" ><i class="glyphicon glyphicon-user" aria-hidden="true"></i></a><font size="1"></br>' +data+ '</font>'
                                           }else{
-                                             return '<a type="button" class="AsignacionPersonaEntregables btn btn-link" data-toggle="modal" data-target="#VentanaAsignacionPersonalEntregable" ><i class="glyphicon glyphicon-user" aria-hidden="true"></i><font size="1"></br> '+data+ '</i></font></a>'
+                                             return '<a type="button" class="AsignacionPersonaEntregables btn btn-link" data-toggle="modal" data-target="#VentanaAsignacionPersonalEntregable" title="Añadir Responsable" ><i class="glyphicon glyphicon-user" aria-hidden="true"></i></a><font size="1"></br> '+data+ '</font>'
                                           }
                                       }
                                     },

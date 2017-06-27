@@ -62,13 +62,13 @@
                                                                     <thead>
                                                                        <tr>
                                                                        <th style="width: 1%">#</th>
-                                                                        <th style="width: 1%">#</th>
-                                                                         <th style="width: 45%"><i class="fa fa-thumb-tack"></i> Est. Inv. </th>
-                                                                         <th style="width: 15%">
+
+                                                                         <th style="width: 40%"><i class="fa fa-thumb-tack"></i> Est. Inv. </th>
+                                                                         <th style="width: 14%">
                                                                           <i class="fa fa-users"></i>
                                                                          Reponsable</th>
-                                                                         <th style="width: 10%"> Progreso</th>
-                                                                         <th style="width: 10%"> Estado</th>
+                                                                         <th style="width: 12%"> Progreso</th>
+                                                                         <th style="width: 13%"> Estado</th>
                                                                          <th></th>
                                                                       </tr>
                                                                    </thead>
@@ -427,8 +427,8 @@
                                               </div>
                                             </div>
                                       </div>
-                                  
-                                        
+
+
                                       <div class="ln_solid"></div>
                                       <div class="form-group">
                                         <div class="col-md-6 col-md-offset-3">
