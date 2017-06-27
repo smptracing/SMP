@@ -59,7 +59,7 @@
                                                       <!--fin  de icono de reporte -->
                                                       <div class="x_content" >
                                                                 <table id="dynamic-table-EstudioInversion" class="table  table-hover" with="100%" >
-                                                                    <thead style="background-color: #405467;color:#FFFFFF; ">
+                                                                    <thead style="background-color: #5A738E;color:#FFFFFF; ">
                                                                        <tr>
                                                                        <th style="width: 1%">#</th>
                                                                        <th style="width: 1%">#</th>
