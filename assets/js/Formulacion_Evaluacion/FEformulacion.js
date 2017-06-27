@@ -69,7 +69,7 @@
                                     {"data":"id_pi","visible": false},
                                     {"data":"codigo_unico_est_inv",
                                     "mRender": function ( data, type, full ) {
-                                     return '<a style="font-weight:normal;font-size:15" type="button" class="VerDetalleFormulacion btn btn-link" data-toggle="modal" data-target="#VerDetalleFormulacion" href="/codigo_unico_pi/' + data + '">' + data+ '</a>';
+                                     return '<a style="font-weight:normal;font-size:15" type="button" class="VerDetalleFormulacion btn btn-link" data-toggle="modal" data-target="#VerDetalleFormulacion" href="/codigo_unico_est_inv/' + data + '">' + data+ '</a>';
                                       }
                                     },
                                     {"data":"nombre_est_inv"},
@@ -165,10 +165,12 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
                       }
                     });
     }
-          var  ListaFormulacion=function(tbody,table){
-                             $(tbody).on("click","a.VerDetalleFormulacion",function(){
+  
+           var  ListaFormulacion=function(tbody,table){
+                               $(tbody).on("click","a.VerDetalleFormulacion",function(){
                               var data=table.row( $(this).parents("tr")).data();
-                              $("#CodigoFormulacion").val(data.codigo_unico_pi);
+                               var codigo_unico_est_inv=data.codigo_unico_est_inv;
+                               DetalleSitActPipEvaluacion(codigo_unico_est_inv);
                           });
                       }
               var  SituacionActual=function(tbody,table){

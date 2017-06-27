@@ -69,26 +69,25 @@
         <!-- /page content -->
 
 
-  <div class="modal fade" id="VerDetalleFormulacion" role="dialog">
-    <div class="modal-dialog">
+  </div>
+
+
+  <div class="modal fade" id="VerDetalleFormulacion"  role="dialog">
+    <div class="modal-dialog modal-lg">
 
       <!-- Modal content-->
       <div class="modal-content">
-        <div class="modal-header">
 
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Detallle de formulacion</h4>
-        </div>
         <div class="modal-body">
-              <table id="table-DetSitActFormulacionFE" class="table table-striped projects">
+            <table id="table-DetSitActEvaluacionFE" class="table table-striped projects">
            </table>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-        </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
       </div>
 
     </div>
+  </div>
   </div>
 
 <!-- /.ventana para registrar situacion actual-->
