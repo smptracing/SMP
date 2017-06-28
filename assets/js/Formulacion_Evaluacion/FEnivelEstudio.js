@@ -9,8 +9,8 @@
                           data:$(this).serialize(),
                           success:function(resp){
                            swal("",resp, "success");
-                          $('#table-NivelEstudio').dataTable()._fnAjaxUpdate();   
-      
+                          $('#table-NivelEstudio').dataTable()._fnAjaxUpdate();
+
                          }
                       });
                   });
@@ -48,22 +48,22 @@
 
                                 "language":idioma_espanol
                     });
-                    FENivelEstudio("#table-NivelEstudio",table);                
-                        			   	
-                }
+                    FENivelEstudio("#table-NivelEstudio",table);
 
+                }
                 var FENivelEstudio=function(tbody,table){
                        $(tbody).on("click","button.editar",function(){
-                        var data=table.row( $(this).parents("tr")).data();
+                        /*var data=table.row( $(this).parents("tr")).data();
                         var id_estado=$('#Id_denom_nivel_estudioA').val(data.id_nivel_estudio);
-                        var denom_nivel_estudio=$('#txt_denom_nivel_estudioA').val(data.denom_nivel_estudio);
+                        var denom_nivel_estudio=$('#txt_denom_nivel_estudioA').val(data.denom_nivel_estudio);*/
+                         console.log(data.id_nivel_estudio);
                     });
                 }
 
 
                 /*fin listar funcion*/
 
-              
+
         /*Idioma de datatablet table-sector */
             var idioma_espanol=
                 {
@@ -90,5 +90,3 @@
                         "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                     }
                 }
-
-  

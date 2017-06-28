@@ -18,7 +18,7 @@
                             if (resp=='2') {
                              swal("NO SE REGISTRÓ","NO se regristró ", "error");
                            }
-                          $('#table-EstadoEtapa').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
+                          $('#table-EstadoEtapa').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
                              formReset();
                          }
                       });
@@ -40,7 +40,7 @@
                             if (resp=='2') {
                              swal("NO SE REGISTRÓ","NO se regristró ", "error");
                            }
-                          $('#table-formulacion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
+                          $('#table-formulacion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
                              formReset();
                          }
                       });
@@ -62,7 +62,7 @@
                             if (resp=='2') {
                              swal("NO SE REGISTRÓ","NO se regristró ", "error");
                            }
-                          $('#table-formulacion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
+                          $('#table-formulacion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
                              formReset();
                          }
                       });
@@ -72,8 +72,8 @@
           {
           document.getElementById("form-AddSituacion").reset();
            document.getElementById("form-AddAsiganarPersona").reset();
-          }            
-     
+          }
+
 			});
 //listar estado etapa en el modal
  var listarEstadoEtapa=function(id_etapa_estudio)
@@ -96,7 +96,7 @@
                                 ],
 
                                 "language":idioma_espanol
-                    });                       
+                    });
                 }
  //LISTAR DENOMINACION DE FORMULACION Y EVALUACION EN TABLA
                 var ListarFormulacion=function()
@@ -131,16 +131,17 @@
                                     {"data":"id_etapa_estudio",
                                     "mRender": function ( data, type, full )
                                      {
-                                     return '<a  href="../FEentregableEstudio/ver_FEentregable/'+data+'"><button type="button" class="btn btn btn-primary btn-xs"><i class="fa fa-tasks"></i> </button></a>';
+
+                                         return '<a  href="../../FEentregableEstudio/ver_FEentregable/'+data+'"><button type="button" class="btn btn btn-primary btn-xs"><i class="fa fa-tasks"></i> </button></a>';
                                       }
                                     },
-{"defaultContent":"<button type='button' class='EstadoFE btn btn-success btn-xs' data-toggle='modal' data-target='#VentanaEstadoFE'><i class='fa fa-dashboard' aria-hidden='true'></i></button><button type='button' class='Situacion btn btn-warning btn-xs' data-toggle='modal' data-target='#VentanaSituacionActual'><i class='fa fa-comments' aria-hidden='true'></i></button><button type='button'  class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#VentanaAsignarPersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button>"}                            
+{"defaultContent":"<button type='button' class='EstadoFE btn btn-success btn-xs' data-toggle='modal' data-target='#VentanaEstadoFE'><i class='fa fa-dashboard' aria-hidden='true'></i></button><button type='button' class='Situacion btn btn-warning btn-xs' data-toggle='modal' data-target='#VentanaSituacionActual'><i class='fa fa-comments' aria-hidden='true'></i></button><button type='button'  class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#VentanaAsignarPersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button>"}
                                 ],
                                  "language":idioma_espanol
                     });
-                   // DenominacionFE("#table-DenominacionFE",table);   
+                   // DenominacionFE("#table-DenominacionFE",table);
                    $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
-        
+
         new $.fn.DataTable.Buttons(table, {
           buttons: [
            {
@@ -175,16 +176,16 @@
             "className": "btn btn-white btn-primary btn-bold",
             autoPrint: false,
             message: 'This print was produced using the Print button for DataTables'
-            }     
-           
+            }
+
           ]
         } );
         table.buttons().container().appendTo( $('.tableTools-container-formulacion') );
-                   // DenominacionFE("#table-DenominacionFE",table);                
-                     ListaFormulacion("#table-formulacion",table);   
-                    SituacionActual("#table-formulacion",table);  
-                     RegistarPersona("#table-formulacion",table);  
-                     RegistarEstadoFE("#table-formulacion",table); 			   	
+                   // DenominacionFE("#table-DenominacionFE",table);
+                     ListaFormulacion("#table-formulacion",table);
+                    SituacionActual("#table-formulacion",table);
+                     RegistarPersona("#table-formulacion",table);
+                     RegistarEstadoFE("#table-formulacion",table);
                 }
 //LISTAR DENOMINACION DE FORMULACION Y EVALUACION EN TABLA
 
@@ -198,20 +199,20 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
     data:{codigo_unico_est_inv:codigo_unico_est_inv},
      success:function(respuesta)
                       {
-                         var registros = eval(respuesta);  
-                          
+                         var registros = eval(respuesta);
+
                          html1+="<thead> <tr> <th  class='active'><h5>ID</h5></th><th  class='active'><h5>CODIGO UNICO </h5></th> <th class='active'><h5>NOMBRE DEL ESTUDIO </h5></th><th class='active'><h5>EVALUADOR</h5></th>  <th class='active'><h5>CARGO</h5></th><th class='active'><h5>OBSERVACIONES</h5></th><th class='active'><h5>FECHA</h5></th></tr></thead>"
                          for (var i = 0; i <registros.length;i++) {
-                              html1 +="<tbody> <tr><th>"+registros[i]["id_est_inv"]+"</th><th>"+registros[i]["codigo_unico_est_inv"]+"</th><th>"+registros[i]["nombre_est_inv"]+"</th><th>"+registros[i]["Evaluador"]+"</th><th>"+registros[i]["desc_cargo"]+"</th><th>"+registros[i]["observacion"]+"</th><th>"+registros[i]["fecha"]+"</th></tr>";    
+                              html1 +="<tbody> <tr><th>"+registros[i]["id_est_inv"]+"</th><th>"+registros[i]["codigo_unico_est_inv"]+"</th><th>"+registros[i]["nombre_est_inv"]+"</th><th>"+registros[i]["Evaluador"]+"</th><th>"+registros[i]["desc_cargo"]+"</th><th>"+registros[i]["observacion"]+"</th><th>"+registros[i]["fecha"]+"</th></tr>";
                           //alert(suma);
-                           };               
+                           };
                              html1 +="</tbody>";
                          $("#table-DetSitActEvaluacionFE").html(html1);
-                             
+
                       }
                     });
     }
-  
+
            var  ListaFormulacion=function(tbody,table){
                                $(tbody).on("click","a.VerDetalleFormulacion",function(){
                               var data=table.row( $(this).parents("tr")).data();
@@ -238,8 +239,8 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
                 }
            var listarEstadoFE=function(valor){
                      html="";
-                    $("#Cbx_EstadoFE").html(html); 
-                    event.preventDefault(); 
+                    $("#Cbx_EstadoFE").html(html);
+                    event.preventDefault();
                     $.ajax({
                         "url":base_url +"index.php/FEestado/get_FEestado",
                         type:"POST",
@@ -247,20 +248,20 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
                          //  alert(respuesta);
                          var registros = eval(respuesta3);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option  value="+registros[i]["id_estado"]+"> "+registros[i]["denom_estado_fe"]+" </option>";   
+                              html +="<option  value="+registros[i]["id_estado"]+"> "+registros[i]["denom_estado_fe"]+" </option>";
                             };
                             $("#Cbx_EstadoFE").html(html);
                             $('select[name=Cbx_EstadoFE]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=Cbx_EstadoFE]').change();
-                            $('.selectpicker').selectpicker('refresh'); 
+                            $('.selectpicker').selectpicker('refresh');
                         }
                     });
                 }
 
                 var listarsituacionFE=function(valor){
                      html="";
-                    $("#Cbx_Situacion").html(html); 
-                    event.preventDefault(); 
+                    $("#Cbx_Situacion").html(html);
+                    event.preventDefault();
                     $.ajax({
                         "url":base_url +"index.php/FEsituacion/get_FEsituacion",
                         type:"POST",
@@ -268,12 +269,12 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
                          //  alert(respuesta);
                          var registros = eval(respuesta3);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option  value="+registros[i]["id_situacion_fe"]+"> "+registros[i]["denom_situacion_fe"]+" </option>";   
+                              html +="<option  value="+registros[i]["id_situacion_fe"]+"> "+registros[i]["denom_situacion_fe"]+" </option>";
                             };
                             $("#Cbx_Situacion").html(html);
                             $('select[name=Cbx_Situacion]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=Cbx_Situacion]').change();
-                            $('.selectpicker').selectpicker('refresh'); 
+                            $('.selectpicker').selectpicker('refresh');
                         }
                     });
                 }
@@ -283,13 +284,13 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
                         var data=table.row( $(this).parents("tr")).data();
                         var txt_IdEtapa_Estudio_p=$('#txt_IdEtapa_Estudio_p').val(data.id_etapa_estudio);
                          listarPersonaFE();
-                     
+
                   });
                 }
   var listarPersonaFE=function(valor){
                      html="";
-                    $("#Cbx_Persona").html(html); 
-                    event.preventDefault(); 
+                    $("#Cbx_Persona").html(html);
+                    event.preventDefault();
                     $.ajax({
                         "url":base_url +"index.php/Estudio_Inversion/get_persona",
                         type:"POST",
@@ -297,12 +298,12 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
                          //  alert(respuesta);
                          var registros = eval(respuesta3);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option  value="+registros[i]["id_persona"]+"> "+registros[i]["nombres_apell"]+" </option>";   
+                              html +="<option  value="+registros[i]["id_persona"]+"> "+registros[i]["nombres_apell"]+" </option>";
                             };
                             $("#Cbx_Persona").html(html);
                             $('select[name=Cbx_Persona]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=Cbx_Persona]').change();
-                            $('.selectpicker').selectpicker('refresh'); 
+                            $('.selectpicker').selectpicker('refresh');
                                 listarCargoFE();
                         }
                     });
@@ -310,8 +311,8 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
 
                   var listarCargoFE=function(valor){
                      html="";
-                    $("#Cbx_Cargo").html(html); 
-                    event.preventDefault(); 
+                    $("#Cbx_Cargo").html(html);
+                    event.preventDefault();
                     $.ajax({
                         "url":base_url +"index.php/Estudio_Inversion/get_cargo",
                         type:"POST",
@@ -319,12 +320,12 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
                          //  alert(respuesta);
                          var registros = eval(respuesta3);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option  value="+registros[i]["id_cargo"]+"> "+registros[i]["desc_cargo"]+" </option>";   
+                              html +="<option  value="+registros[i]["id_cargo"]+"> "+registros[i]["desc_cargo"]+" </option>";
                             };
                             $("#Cbx_Cargo").html(html);
                             $('select[name=Cbx_Cargo]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=Cbx_Cargo]').change();
-                            $('.selectpicker').selectpicker('refresh'); 
+                            $('.selectpicker').selectpicker('refresh');
                         }
                     });
                 }
@@ -357,4 +358,3 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
                         "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                     }
                 }
-

@@ -73,7 +73,7 @@
 
 
   <div class="modal fade" id="VerDetalleFormulacion"  role="dialog">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog ">
 
       <!-- Modal content-->
       <div class="modal-content">
@@ -92,7 +92,7 @@
 
 <!-- /.ventana para registrar situacion actual-->
 <div class="modal fade" id="VentanaSituacionActual" role="dialog">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog ">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -166,7 +166,7 @@
 
 <!-- /.ventana para registrar Persona-->
 <div class="modal fade" id="VentanaAsignarPersona" role="dialog">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog ">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>

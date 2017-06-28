@@ -85,7 +85,7 @@ class Personal extends CI_Controller
     {
         if ($this->input->is_ajax_request()) {
             $flat            = "C";
-            $id_oficina      = $cbxlistaoficina      = $this->input->post("cbxlistaoficina");
+            $id_oficina      = $Cbx_Oficina      = $this->input->post("Cbx_Oficina");
             $nombres         = $txt_nombrepersonal         = $this->input->post("txt_nombrepersonal");
             $apellido_p      = $txt_apellidopaterno      = $this->input->post("txt_apellidopaterno");
             $apellido_m      = $txt_apellidomaterno      = $this->input->post("txt_apellidomaterno");

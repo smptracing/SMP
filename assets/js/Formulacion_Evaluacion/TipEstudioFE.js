@@ -1,6 +1,6 @@
  $(document).on("ready" ,function(){
               listaTipEstudioFE();
-           
+
                 $("#form-addTipoEstudioFE").submit(function(event)//para añadir nueva funcion
                   {
                       event.preventDefault();
@@ -10,11 +10,27 @@
                           data:$(this).serialize(),
                           success:function(resp){
                            swal("",resp, "success");
-                          $('#table-TipEstudioFE').dataTable()._fnAjaxUpdate();   
-      
+                          $('#table-TipEstudioFE').dataTable()._fnAjaxUpdate();
+
                          }
                       });
                   });
+                  //alctualizar nivel de estudio
+                  $("#form-UpdateTipoEstudioFE").submit(function(event)//para añadir nueva funcion
+                    {
+                        event.preventDefault();
+                        $.ajax({
+                            url:base_url+"index.php/TipEstudioFE/UpdateTipoEstudioFE",
+                            type:$(this).attr('method'),
+                            data:$(this).serialize(),
+                            success:function(resp){
+                             swal("",resp, "success");
+                            $('#table-TipEstudioFE').dataTable()._fnAjaxUpdate();
+
+                           }
+                        });
+                    });
+                    //fin alctualizar nivel de estudio
 			});
                 var listaTipEstudioFE=function()
                 {
@@ -31,20 +47,24 @@
                                 "columns":[
                                     {"data":"id_tipo_est","visible": false},
                                     {"data":"nombre_tipo_est"},
-                                    {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaNivelEstudioUpdate'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
+                                    {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#ventanaTipoEstudio'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
 
                                 "language":idioma_espanol
                     });
-                   // FENivelEstudio("#table-NivelEstudio",table);                
-                        			   	
+                   FENivelEstudio("#table-TipEstudioFE",table);
+
+                }
+
+                var  FENivelEstudio=function(tbody,table){
+                    $(tbody).on("click","button.editar",function(){
+                        var data=table.row( $(this).parents("tr")).data();
+                          $("#id_tipoEstudioFEModi").val(data.id_tipo_est);
+                          $("#txt_tipoEstudioFEModi").val(data.nombre_tipo_est);
+                    });
                 }
 
 
-
-                /*fin listar funcion*/
-
-              
         /*Idioma de datatablet table-sector */
             var idioma_espanol=
                 {
@@ -71,5 +91,3 @@
                         "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                     }
                 }
-
-  

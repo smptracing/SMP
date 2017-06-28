@@ -11,8 +11,12 @@ class EvaluacionFE extends CI_Controller
     public function GetEvaluacionFE()
     {
         if ($this->input->is_ajax_request()) {
-            $Etapa = "Evaluación";
-            $datos = $this->Model_EvaluacionFE->GetEvaluacionFE($Etapa);
+            $Etapa       = "Evaluación";
+            $id_est_inve = $this->session->userdata('id_est_inve');
+            if (empty($id_est_inve)) {
+                $id_est_inve = '0';
+            }
+            $datos = $this->Model_EvaluacionFE->GetEvaluacionFE($Etapa, $id_est_inve);
             echo json_encode($datos);
         } else {
             show_404();
@@ -31,8 +35,15 @@ class EvaluacionFE extends CI_Controller
     }
     // FIN LISTAR DETALLE DE LA SITUACIN ACTUAL DE LA PIP EN EVALUACION
     //LISTAR DETALLE DE LA SITUACIN ACTUAL DE LA PIP
-    public function index()
+    public function FeEvaluacion($id_est_inve)
     {
+        $data = array('id_est_inve' => $id_est_inve);
+        $this->session->set_userdata($data);
+        $this->_load_layout('Front/Formulacion_Evaluacion/frmEvaluacionFE');
+    }
+    public function FeEvaluaciones()
+    {
+        $this->session->sess_destroy();
         $this->_load_layout('Front/Formulacion_Evaluacion/frmEvaluacionFE');
     }
 
