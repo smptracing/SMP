@@ -9,12 +9,12 @@
                           data:$(this).serialize(),
                           success:function(resp){
                            swal("",resp, "success");
-                          $('#table-DenominacionFE').dataTable()._fnAjaxUpdate();   
-      
+                          $('#table-DenominacionFE').dataTable()._fnAjaxUpdate();
+
                          }
                       });
                   });
-                $("#form-UpdateDenominacionFE").submit(function(event)//Actualizar funcion
+                $("#form-UpdateDenominacionFE").submit(function(event)//Actualizar deominacion
                   {
                       event.preventDefault();
                       $.ajax({
@@ -26,7 +26,7 @@
                            $('#table-DenominacionFE').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
                          }
                       });
-                  }); 
+                  });
 			});
  //LISTAR DENOMINACION DE FORMULACION Y EVALUACION EN TABLA
                 var ListarDenominacionFE=function()
@@ -49,11 +49,18 @@
 
                                 "language":idioma_espanol
                     });
-                   // DenominacionFE("#table-DenominacionFE",table);                
-                        			   	
+                   DenominacionFE("#table-DenominacionFE",table);
+
                 }
 //LISTAR DENOMINACION DE FORMULACION Y EVALUACION EN TABLA
-   
+              var  DenominacionFE=function(tbody,table){
+                  $(tbody).on("click","button.editar",function(){
+                      var data=table.row( $(this).parents("tr")).data();
+                           $("#txt_IdDenominacionModiFE").val(data.id_denom_fe);
+                          $("#txt_DenominacionModiFE").val(data.denom_fe);
+                  });
+              }
+
 
             var idioma_espanol=
                 {
@@ -80,5 +87,3 @@
                         "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                     }
                 }
-
-  

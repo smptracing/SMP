@@ -19,13 +19,24 @@ class Model_TipEstudioFE extends CI_Model
              {
               return false;
              }
-   
+
         }
 
          function AddTipoEstudioFE($txt_tipoEstudioFE)
         {
             $this->db->query("insert into TIPO_ESTUDIO(nombre_tipo_est) values ('$txt_tipoEstudioFE')");
-            if ($this->db->affected_rows()> 0) 
+            if ($this->db->affected_rows()> 0)
+              {
+                return true;
+              }
+              else
+              {
+                return false;
+              }
+        }
+        function UpdateTipoEstudioFE($id_tipoEstudioFEModi,$txt_tipoEstudioFEModi){
+            $this->db->query("update TIPO_ESTUDIO set nombre_tipo_est='$txt_tipoEstudioFEModi' where id_tipo_est='$id_tipoEstudioFEModi' ");
+            if ($this->db->affected_rows()> 0)
               {
                 return true;
               }
@@ -35,8 +46,8 @@ class Model_TipEstudioFE extends CI_Model
               }
         }
         //fin funcion
-       
+
         //fin division funciona
         //grupo funcional*/
-  
+
 }
