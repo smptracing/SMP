@@ -1,8 +1,10 @@
  $(document).on("ready" ,function(){
                listarpersona();//para mostrar lista de las personas
-              $("#btn_Nuevadivision").click(function()//para que cargue el como una vez echo click sino repetira datos
+              $("#btn_nuevoPersonal").click(function()//para que cargue el como una vez echo click sino repetira datos
                     {
-                     listaPersonaCombo();//para llenar el combo de agregar division Personal
+                  //   listaPersonaCombo();//para llenar el combo de agregar division Personal
+                   // alert();
+                     listarOficina();
                 });
                 $("#form-addPersonal").submit(function(event)//para añadir nuevo division Personal
                   {
@@ -101,10 +103,9 @@
                   var  personalData=function(tbody,table){
                     $(tbody).on("click","button.editar",function(){
                         var data=table.row( $(this).parents("tr")).data();
-                       // var id_Persona=data.id_Persona;
-                       // console.log(id_Persona);
+                       var id_oficina=data.id_oficina;
+                      // console.log(id_oficina);
                         var txt_idpersonam=$('#txt_idpersonam').val(data.id_persona);
-                        var cbxlistaoficinam=$('#cbxlistaoficinam').val(data.id_oficina);
                         var txt_nombrepersonalm=$('#txt_nombrepersonalm').val(data.nombres);
                         var txt_apellidopaternom=$('#txt_apellidopaternom').val(data.apellido_p);
                         var txt_apellidomaternom=$('#txt_apellidomaternom').val(data.apellido_m);
@@ -115,13 +116,39 @@
                         var txt_gradoacademicom=$('#txt_gradoacademicom').val(data.grado_academico);
                         var txt_especialidadm=$('#txt_especialidadm').val(data.especialidad);
                         var date_fechanacm=$('#date_fechanacm').val(data.date_fechanacm);
-                       
+                       listarOficina(id_oficina);
+                    
                           /*$('select[name=listaPersonaCM]').val(id_Persona);//PARA AGREGAR UN COMBO PSELECIONADO
                           $('select[name=listaPersonaCM]').change();*/
                       //     listaPersonaCombo(id_Persona);//para agregar Persona selecionada mandamos parametro
                     });
 
                 }
+          var listarOficina=function(id_oficina){
+                     html="";
+                    $("#Cbx_Oficina").html(html); 
+                    event.preventDefault(); 
+                    $.ajax({
+                        "url":base_url +"index.php/Oficina/GetOficina",
+                        type:"POST",
+                        success:function(respuesta3){
+                         //  alert(respuesta);
+                         var registros = eval(respuesta3);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option  value="+registros[i]["id_oficina"]+"> "+registros[i]["denom_oficina"]+" </option>";   
+                            };
+                            $("#Cbx_Oficina").html(html);
+                            $("#Cbx_Oficinas").html(html);
+                            $('select[name=Cbx_Oficinas]').val(id_oficina);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=Cbx_Oficinas]').change();
+                            $('.selectpicker').selectpicker('refresh'); 
+                        }
+                    });
+                }
+
+
+
+
 
                 /*fin crea tabla division Personal*/ 
                 /*crear tabla dinamica servicio publico asociado */

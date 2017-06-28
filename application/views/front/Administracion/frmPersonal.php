@@ -31,7 +31,7 @@
 
                                                   <div class="col-md-12 col-xs-12">
                                                         <div class="x_panel">
-                                                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#VentanaRegistraPersonal" >
+                                                            <button  type="button" id="btn_nuevoPersonal" class="btn btn-primary " data-toggle="modal" data-target="#VentanaRegistraPersonal" >
                                                                       <span class="fa fa-plus-circle"></span>
 
                                                                 Nuevo
@@ -186,9 +186,8 @@
                     <div class="form-group">
                            <label class="control-label col-md-3 col-sm-3 col-xs-6">Oficina</label>
                             <div class="col-md-6 col-sm-9 col-xs-6">
-                                <select id="cbxlistaoficina" name="cbxlistaoficina" class="selectpicker" data-live-search="true" >
-                                <option value="4"> unamba</option>
-                                 </select>
+                                     <select   id="Cbx_Oficina" name="Cbx_Oficina" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Estado FE...">
+                                                </select>
                             </div>
                     </div>
                       <div class="item form-group">
@@ -322,9 +321,8 @@
                     <div class="form-group">
                            <label class="control-label col-md-3 col-sm-3 col-xs-6">Personal</label>
                             <div class="col-md-6 col-sm-9 col-xs-6">
-                                <select id="cbxlistaoficinam" name="cbxlistaoficinam" class="selectpicker" data-live-search="true" >
-                                <option value="4"> unamba</option>
-                                 </select>
+                                 <select   id="Cbx_Oficinas" name="Cbx_Oficinas" class="selectpicker form-control col-md-12 col-xs-12"  title="Buscar Estado FE...">
+                                                </select>
                             </div>
                     </div>
 
