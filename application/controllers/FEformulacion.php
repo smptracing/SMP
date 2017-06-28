@@ -14,9 +14,13 @@ class FEformulacion extends CI_Controller
     public function GetFormulacion()
     {
         if ($this->input->is_ajax_request()) {
-            $Etapa = "Formulación";
-            $this->session->sess_destroy();
-            $datos = $this->FEformulacion_Modal->GetFormulacion($Etapa);
+            $Etapa       = "Formulación";
+            $id_est_inve = $this->session->userdata('id_est_inve');
+            if (empty($id_est_inve)) {
+                $id_est_inve = '0';
+            }
+            //$this->session->sess_destroy();
+            $datos = $this->FEformulacion_Modal->GetFormulacion($Etapa, $id_est_inve);
             echo json_encode($datos);
         } else {
             show_404();
@@ -25,9 +29,9 @@ class FEformulacion extends CI_Controller
     public function GetFEAprobados()
     {
         if ($this->input->is_ajax_request()) {
-            $Etapa = "Aprobado";
-            $this->session->sess_destroy();
-            $datos = $this->FEformulacion_Modal->GetFEAprobados($Etapa);
+            $Etapa       = "Aprobado";
+            $id_est_inve = $this->session->userdata('id_est_inve');
+            $datos       = $this->FEformulacion_Modal->GetFEAprobados($Etapa, $id_est_inve);
             echo json_encode($datos);
         } else {
             show_404();
@@ -37,16 +41,27 @@ class FEformulacion extends CI_Controller
     {
         if ($this->input->is_ajax_request()) {
             $Etapa = "Viabilizado";
-            $this->session->sess_destroy();
-            $datos = $this->FEformulacion_Modal->GetFEViabilizado($Etapa);
+            // $this->session->sess_destroy();
+            $id_est_inve = $this->session->userdata('id_est_inve');
+
+            $datos = $this->FEformulacion_Modal->GetFEViabilizado($Etapa, $id_est_inve);
             echo json_encode($datos);
         } else {
             show_404();
         }
     }
-    public function index()
+    public function Feformulacion($id_est_inve)
     {
+
+        $data = array('id_est_inve' => $id_est_inve);
+        $this->session->set_userdata($data);
         $this->_load_layout('Front/Formulacion_Evaluacion/frmFormulacion');
+    }
+    public function Feformulaciones()
+    {
+        $this->session->sess_destroy();
+        $this->_load_layout('Front/Formulacion_Evaluacion/frmFormulacion');
+
     }
     public function FEAPROBADO()
     {

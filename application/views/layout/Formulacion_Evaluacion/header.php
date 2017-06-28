@@ -43,7 +43,7 @@
     <link href="<?php echo base_url(); ?>assets/vendors/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/vendors/cropper/dist/cropper.min.css" rel="stylesheet">
 
-      <link href="<?php echo base_url();?>assets/css/jquery.growl.css" rel="stylesheet">
+      <link href="<?php echo base_url(); ?>assets/css/jquery.growl.css" rel="stylesheet">
   <style>
    #ProgramacionHorizontal{
       width: 100% !important;
@@ -105,9 +105,9 @@
                     <ul class="nav side-menu">
                       <li><a><i class="fa fa-database"></i> Principal <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                          <li><a href="<?php echo site_url('FEformulacion/'); ?>">Formulación</a></li>
+                          <li><a href="<?php echo site_url('FEformulacion/Feformulaciones'); ?>">Formulación</a></li>
                           <li><a href="<?php echo site_url('EvaluacionFE/'); ?>">Evaluación</a></li>
-                          <li><a href="<?php echo site_url('FEformulacion/FEAPROBADO'); ?>">Aprobado</a></li>
+                          <li><a href="<?php echo site_url('FEformulacion/FeAprobado'); ?>">Aprobado</a></li>
                           <li><a href="<?php echo site_url('FEformulacion/FEVIABILIZADO'); ?>">Viabilizados</a></li>
                         </ul>
                         </li>
