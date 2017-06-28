@@ -13,7 +13,7 @@ class DenominacionFE extends CI_Controller {
 	}
     //CONTROLADOR DE LISTAR DENOMINACION DE FORMULACION Y EVALUACION EN UNA TABLA
     public function GetDenominacionFE(){
-    	if ($this->input->is_ajax_request()) 
+    	if ($this->input->is_ajax_request())
         {
         $datos=$this->Model_DenominacionFE->GetDenominacionFE();
         echo json_encode($datos);
@@ -27,31 +27,31 @@ class DenominacionFE extends CI_Controller {
     //CONTROLADOR PARA AGREGAR UNA NUEVA DENOMINCACION EN FROUMLACION Y EVALUACION
     public function  AddDenominacionFE()
     {
-        if ($this->input->is_ajax_request()) 
+        if ($this->input->is_ajax_request())
             {
              $txt_DenominacionFE =$this->input->post("txt_DenominacionFE");
              if($this->Model_DenominacionFE->AddDenominacionFE($txt_DenominacionFE)== false)
                    echo "SE INSERTO UNA NUEVA DENOMINACION EN FORMULACION Y EVALUACION";
                   else
-                  echo "SE INSERTO UNA NUEVA DENOMINACION EN FORMULACION Y EVALUACION";  
-            } 
+                  echo "SE INSERTO UNA NUEVA DENOMINACION EN FORMULACION Y EVALUACION";
+            }
         else
             {
               show_404();
-            }  
+            }
     }
     //FIN CONTROLADOR PARA AGREGAR UNA NUEVA DENOMINCACION EN FROUMLACION Y EVALUACION
     //CONTROLADOR PARA ACTUALIZAR UNA NUEVA DENOMINCACION EN FORMULACION Y EVALUACION
     public function UpdateDenominacionFE(){
-      if ($this->input->is_ajax_request()) 
+      if ($this->input->is_ajax_request())
       {
         $txt_IdDenominacionModiFE=$this->input->post("txt_IdDenominacionModiFE");
         $txt_DenominacionModiFE =$this->input->post("txt_DenominacionModiFE");
        if($this->Model_DenominacionFE->UpdateDenominacionFE($txt_IdDenominacionModiFE,$txt_DenominacionModiFE)== false)
-           echo "SE MODIFICO LA DENOMINACION EN FORMULACION Y EVALUACION";
+           echo "SE MODIFICO LA DENOMINACION EN FORMULACIÓN Y EVALUACIÓN";
           else
-          echo "SE MODIFICO LA DENOMINACION EN FORMULACION Y EVALUACION";  
-     } 
+          echo "SE MODIFICO LA DENOMINACIÓN EN FORMULACIÓN Y EVALUACIÓN";
+     }
        else
        {
         show_404();

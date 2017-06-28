@@ -5,26 +5,26 @@ $(document).on("ready" ,function(){
   $("#btn_nuevoEstInv").click(function(){
                 // alert("hola");
                  listarpicombo();
-             }); 
+             });
              $("#listaFuncionC").change(function(){//para cargar en agregar division funcionañ
-                   listarestudiocombo(); 
+                   listarestudiocombo();
              });
                $("#listaTipoInversion").change(function(){//para cargar en agregar division funcionañ
                   listarnivelcombo();
              });
               $("#listaNivelEstudio").change(function(){//para cargar en agregar division funcionañ
                   listarufcombo();
-             }); 
- 
+             });
+
              $("#lista_unid_form").change(function(){
                 // alert("hola");
                  listaruecombo();
-             });   
+             });
               $("#lista_unid_ejec").change(function(){
                 // alert("hola");
                  listarpersonascombo();
-             });         
-//REGISTARAR NUEVA 
+             });
+//REGISTARAR NUEVA
    $("#form-AddEstudioInversion").submit(function(event)
                   {
                       event.preventDefault();
@@ -41,13 +41,13 @@ $(document).on("ready" ,function(){
                             if (resp=='2') {
                              swal("NO SE REGISTRÓ","NO se regristró ", "error");
                            }
-                          $('#dynamic-table-EstudioInversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
+                          $('#dynamic-table-EstudioInversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
                              formReset();
                          }
                       });
                   });
 
-//Subida de documentos de inversion 
+//Subida de documentos de inversion
 
 
                       $("#form-AddDocumentosEstudio").submit(function(event)//AÑADIR NUEVA CARTERA
@@ -81,7 +81,7 @@ $(document).on("ready" ,function(){
 
 //fin de documentos de inversion
 
-//REGISTARAR NUEVA ETAPA DE ESTUDIO 
+//REGISTARAR NUEVA ETAPA DE ESTUDIO
    $("#form-AddEtapaEstudio").submit(function(event)
                   {
                       event.preventDefault();
@@ -98,7 +98,7 @@ $(document).on("ready" ,function(){
                             if (resp=='2') {
                              swal("NO SE REGISTRÓ","NO se regristró ", "error");
                            }
-                          $('#dynamic-table-EstudioInversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
+                          $('#dynamic-table-EstudioInversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
                              formReset();
                          }
                       });
@@ -110,7 +110,7 @@ $(document).on("ready" ,function(){
          document.getElementById("form-AddEstudioInversion").reset();
           document.getElementById("form-AddResponsableEstudio").reset();
           }
-//REGISTARAR NUEVA ETAPA DE ESTUDIO 
+//REGISTARAR NUEVA ETAPA DE ESTUDIO
    $("#form-AddResponsableEstudio").submit(function(event)
                   {
                       event.preventDefault();
@@ -127,14 +127,14 @@ $(document).on("ready" ,function(){
                             if (resp=='2') {
                              swal("NO SE REGISTRÓ","NO se regristró ", "error");
                            }
-                          $('#dynamic-table-EstudioInversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
+                          $('#dynamic-table-EstudioInversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
                              formReset();
                          }
                       });
                   });
 
 
-    
+
 
       });
          /*listra */
@@ -161,42 +161,42 @@ $(document).on("ready" ,function(){
                                       "mRender":function (data,type, full) {
                                          return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Complete</small></td>";
                                     }},
-                                      
-                      
+
+
 
                                     { "data": function (data, type, dataToSet) {
 
-                                      if (data.denom_etapas_fe =='Formulación') 
+                                      if (data.denom_etapas_fe =='Formulación')
                                       {
                                      // return "<td><button  type='button' class='btn btn-primary btn-xs'>"+data.denom_etapas_fe + "</button></td>";
                                          return '<a  href="../FEformulacion/"><button type="button" class="btn btn btn-primary btn-xs">'+data.denom_etapas_fe +' </button></a>';
-                                    
+
                                       }
-                                        if (data.denom_etapas_fe =='Evaluación') 
+                                        if (data.denom_etapas_fe =='Evaluación')
                                       {
                                     //  return "<td><button type='button' class='btn btn-warning btn-xs'>"+data.denom_etapas_fe + "</button></td>";
                                       return '<a  href="../EvaluacionFE/"><button type="button" class="btn btn btn-warning btn-xs">'+data.denom_etapas_fe +' </button></a>';
                                       }
-                                        if (data.denom_etapas_fe =='Aprobado') 
+                                        if (data.denom_etapas_fe =='Aprobado')
                                       {
                                      // return "<td><button type='button' class='btn btn-info btn-xs'>"+data.denom_etapas_fe + "</button></td>";
                                      return '<a  href="../FEformulacion/FEAPROBADO"><button type="button" class="btn btn btn-info btn-xs">'+data.denom_etapas_fe +' </button></a>';
-                                     
+
                                       }
-                                        if (data.denom_etapas_fe =='Viabilizado') 
+                                        if (data.denom_etapas_fe =='Viabilizado')
                                       {
                                     //  return "<td><button type='button' class='btn btn-success btn-xs'>"+data.denom_etapas_fe + "</button></td>";
                                        return '<a  href="../FEformulacion/FEVIABILIZADO"><button type="button" class="btn btn btn-success btn-xs">'+data.denom_etapas_fe +' </button></a>';
-                                     
+
                                       }
                                    }},
                                   {"defaultContent":"<center><button type='button' class='DocumentosEstudio btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaDocumentosEstudio'><i class='glyphicon glyphicon-folder-open' aria-hidden='true'></i></button><button type='button' class='eliminar btn btn-warning btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button'  class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#ventanaasiganarpersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button><button type='button' class='nuevaEtapaEstudio btn btn-success btn-xs' data-toggle='modal' data-target='#ventanaEtapaEstudio'><i class='glyphicon glyphicon-pushpin' aria-hidden='true'></i></button><center>"}
                                ],
 
                                 "language":idioma_espanol
-                    }); 
+                    });
 $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
-        
+
         new $.fn.DataTable.Buttons( myTableUA, {
           buttons: [
            {
@@ -231,16 +231,16 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
             "className": "btn btn-white btn-primary btn-bold",
             autoPrint: false,
             message: 'This print was produced using the Print button for DataTables'
-            }     
-           
+            }
+
           ]
         } );
         myTableUA.buttons().container().appendTo( $('.tableTools-container-EstudioInversion') );
-       listarpersonasdata("#dynamic-table-EstudioInversion",myTableUA);  //CARGAR LA DATA PARA MOSTRAR EN EL MODAL  
+       listarpersonasdata("#dynamic-table-EstudioInversion",myTableUA);  //CARGAR LA DATA PARA MOSTRAR EN EL MODAL
        nuevaEtapaEstudioData("#dynamic-table-EstudioInversion",myTableUA);
        AddListarDocumentos("#dynamic-table-EstudioInversion",myTableUA);
                 }
-   
+
   /*fin listar proyectos*/
 
               //listar y agregar Documentos al proyecto de invserion
@@ -256,22 +256,22 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
                 {
 
                     html="";
-                    $("#table-Documento").html(html);   
+                    $("#table-Documento").html(html);
                       $.ajax({
                        type:"POST",
                        "url":base_url+"index.php/Estudio_Inversion/GetDocumentosEstudio",
                        data:{"id_est_inv":id_est_inv},
                        success:function(respuesta)
                                         {
-                                           var registros = eval(respuesta);  
-                                            
+                                           var registros = eval(respuesta);
+
                                            html+="<thead> <tr> <th><center>Nombre Documento</center></th> <th><center> Descripción </center></th><th> <center>Url</center></th> </tr></thead>";
                                            for (var i = 0; i <registros.length;i++) {
-                                                html +="<tbody> <tr class='info'><th>"+registros[i]["nombre_documento"]+"</th><th>"+registros[i]["desc_documento"]+"</th><th> <a href='"+base_url+"index.php/uploads/DocumentosInversion/"+registros[i]["url_documento"]+" '  >"+registros[i]["url_documento"]+" <i class='fa fa-file-pdf-o'></i> </a></th></tr>";    
+                                                html +="<tbody> <tr class='info'><th>"+registros[i]["nombre_documento"]+"</th><th>"+registros[i]["desc_documento"]+"</th><th> <a href='"+base_url+"uploads/DocumentosInversion/"+registros[i]["url_documento"]+" '  >"+registros[i]["url_documento"]+" <i class='fa fa-file-pdf-o'></i> </a></th></tr>";    
                                             //alert(suma);
-                                             };               
+                                             };
                                                html +="</tbody>";
-                                              $("#table-Documento").html(html);       
+                                              $("#table-Documento").html(html);
                                         }
                               });
                 }
@@ -279,8 +279,8 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
               //fin listar y agregar documento
                 var listarpicombo=function(valor){
                      html="";
-                    $("#listaFuncionC").html(html); 
-                    event.preventDefault(); 
+                    $("#listaFuncionC").html(html);
+                    event.preventDefault();
                     $.ajax({
                         "url":base_url +"index.php/Estudio_Inversion/get_listaproyectos",
                         type:"POST",
@@ -288,13 +288,13 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
                        //    alert(respuesta);
                          var registrospi = eval(respuesta1);
                             for (var i = 0; i <registrospi.length;i++) {
-                              html +="<option value="+registrospi[i]["id_pi"]+"> "+ registrospi[i]["codigo_unico_pi"]+":"+registrospi[i]["nombre_pi"]+" </option>";   
+                              html +="<option value="+registrospi[i]["id_pi"]+"> "+ registrospi[i]["codigo_unico_pi"]+":"+registrospi[i]["nombre_pi"]+" </option>";
                             };
                             $("#listaFuncionC").html(html);
                             $("#listaFuncionC").html(html);
                             $('select[name=listaFuncionC]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=listaFuncionC]').change();
-                            $('.selectpicker').selectpicker('refresh'); 
+                            $('.selectpicker').selectpicker('refresh');
                           // listarpicombotipo_inversion(id_pi);
                              txt_tipoinversion.value=id_pi;
                         }
@@ -303,8 +303,8 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
 /* listar tipo estudio*/
                 var listarestudiocombo=function(valor){
                      html="";
-                    $("#listaTipoInversion").html(html); 
-                    event.preventDefault(); 
+                    $("#listaTipoInversion").html(html);
+                    event.preventDefault();
                     $.ajax({
                         "url":base_url +"index.php/Estudio_Inversion/get_TipoEstudio",
                         type:"POST",
@@ -312,21 +312,21 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
                          //  alert(respuesta);
                          var registros = eval(respuesta3);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option  value="+registros[i]["id_tipo_est"]+"> "+registros[i]["nombre_tipo_est"]+" </option>";   
-                            };  
+                              html +="<option  value="+registros[i]["id_tipo_est"]+"> "+registros[i]["nombre_tipo_est"]+" </option>";
+                            };
                             $("#listaTipoInversion").html(html);
                             $("#listaTipoInversion").html(html);
                             $('select[name=listaTipoInversion]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=listaTipoInversion]').change();
-                            $('.selectpicker').selectpicker('refresh'); 
+                            $('.selectpicker').selectpicker('refresh');
                          }
                     });
                 }
 /* listar nivel estudio*/
                 var listarnivelcombo=function(valor){
                      html="";
-                    $("#listaNivelEstudio").html(html); 
-                    event.preventDefault(); 
+                    $("#listaNivelEstudio").html(html);
+                    event.preventDefault();
                     $.ajax({
                         "url":base_url +"index.php/Estudio_Inversion/get_NivelEstudio",
                         type:"POST",
@@ -334,24 +334,24 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
                          //  alert(respuesta);
                          var registros = eval(respuesta3);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option  value="+registros[i]["id_nivel_estudio"]+"> "+registros[i]["denom_nivel_estudio"]+" </option>";   
+                              html +="<option  value="+registros[i]["id_nivel_estudio"]+"> "+registros[i]["denom_nivel_estudio"]+" </option>";
                             };
-                              
+
                             $("#listaNivelEstudio").html(html);
                             $("#listaNivelEstudio").html(html);
                             $('select[name=listaNivelEstudio]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=listaNivelEstudio]').change();
-                            $('.selectpicker').selectpicker('refresh'); 
+                            $('.selectpicker').selectpicker('refresh');
                         }
                     });
                 }
 
-      
+
                 /*fin listar unidad formulador*/
                 var listarufcombo=function(valor){
                      html="";
-                    $("#lista_unid_form").html(html); 
-                    event.preventDefault(); 
+                    $("#lista_unid_form").html(html);
+                    event.preventDefault();
                     $.ajax({
                         "url":base_url +"index.php/Estudio_Inversion/get_UnidadFormuladora",
                         type:"POST",
@@ -359,13 +359,13 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
                           // alert(respuesta);
                          var registros = eval(respuesta2);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option  value="+registros[i]["id_uf"]+">"+registros[i]["nombre_uf"]+" </option>";   
-                            }; 
+                              html +="<option  value="+registros[i]["id_uf"]+">"+registros[i]["nombre_uf"]+" </option>";
+                            };
                             $("#lista_unid_form").html(html);
                             $("#lista_unid_form").html(html);
                             $('select[name=lista_unid_form]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=lista_unid_form]').change();
-                            $('.selectpicker').selectpicker('refresh'); 
+                            $('.selectpicker').selectpicker('refresh');
                         }
                     });
                 }
@@ -373,8 +373,8 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
                  /*fin listar unidad formulador*/
                 var listaruecombo=function(valor){
                      html="";
-                    $("#lista_unid_ejec").html(html); 
-                    event.preventDefault(); 
+                    $("#lista_unid_ejec").html(html);
+                    event.preventDefault();
                     $.ajax({
                         "url":base_url +"index.php/Estudio_Inversion/get_UnidadEjecutora",
                         type:"POST",
@@ -382,14 +382,14 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
                          //  alert(respuesta);
                          var registros = eval(respuesta3);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option  value="+registros[i]["id_ue"]+"> "+registros[i]["nombre_ue"]+" </option>";   
+                              html +="<option  value="+registros[i]["id_ue"]+"> "+registros[i]["nombre_ue"]+" </option>";
                             };
-                              
+
                             $("#lista_unid_ejec").html(html);
                             $("#lista_unid_ejec").html(html);
                             $('select[name=lista_unid_ejec]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=lista_unid_ejec]').change();
-                            $('.selectpicker').selectpicker('refresh'); 
+                            $('.selectpicker').selectpicker('refresh');
 
                         }
                     });
@@ -419,7 +419,7 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
                     $(tbody).on("click","button.AsignarPersona",function(){
                       var data=myTableUA.row( $(this).parents("tr")).data();
                       var id_persona=data.id_persona;
-                       console.log(id_persona); 
+                       console.log(id_persona);
                         var id_est_inv=$('#id_est_inv').val(data.id_est_inv);
                        listarpersonascombo(id_persona);
 
@@ -429,8 +429,8 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
   /* listar personas*/
                 var listarpersonascombo=function(valor){
                      html="";
-                    $("#listaResponsable").html(html); 
-                    event.preventDefault(); 
+                    $("#listaResponsable").html(html);
+                    event.preventDefault();
                     $.ajax({
                         "url":base_url +"index.php/Estudio_Inversion/get_persona",
                         type:"POST",
@@ -438,13 +438,13 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
                          //  alert(respuesta);
                          var registros = eval(respuesta3);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option  value="+registros[i]["id_persona"]+"> "+registros[i]["nombres_apell"]+" </option>";   
+                              html +="<option  value="+registros[i]["id_persona"]+"> "+registros[i]["nombres_apell"]+" </option>";
                             };
                             $("#listaResponsable").html(html);
                             $("#listaResponsables").html(html);
                             $('select[name=listaResponsables]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=listaResponsables]').change();
-                            $('.selectpicker').selectpicker('refresh'); 
+                            $('.selectpicker').selectpicker('refresh');
 
                         }
                     });
@@ -452,8 +452,8 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
       /* listar etapas fe*/
                 var listaretapasFE=function(valor){
                      html="";
-                    $("#listaetapas_fe").html(html); 
-                    event.preventDefault(); 
+                    $("#listaetapas_fe").html(html);
+                    event.preventDefault();
                     $.ajax({
                         "url":base_url +"index.php/Estudio_Inversion/get_etapasFE",
                         type:"POST",
@@ -461,21 +461,21 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
                          //  alert(respuesta);
                          var registros = eval(respuesta3);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option  value="+registros[i]["id_etapa_fe"]+"> "+registros[i]["denom_etapas_fe"]+" </option>";   
-                            }; 
+                              html +="<option  value="+registros[i]["id_etapa_fe"]+"> "+registros[i]["denom_etapas_fe"]+" </option>";
+                            };
                             $("#listaetapas_fe").html(html);
                             $("#listaretapasFE_M").html(html);
                             $('select[name=listaretapasFE_M]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=listaretapasFE_M]').change();
-                            $('.selectpicker').selectpicker('refresh'); 
+                            $('.selectpicker').selectpicker('refresh');
 
                         }
                     });
                 }
 
-  
 
-             
+
+
         /*Idioma de datatablet table-sector */
             var idioma_espanol=
                 {
@@ -502,5 +502,3 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
                         "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                     }
                 }
-
-

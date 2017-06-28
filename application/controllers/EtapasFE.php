@@ -7,10 +7,10 @@ class EtapasFE extends CI_Controller {
       parent::__construct();
       $this->load->model('Model_EtapasFE');
 	}
-	
+
     //CONTROLADOR DE LISTAR ETAPAS DE FORMULACION Y EVALUACION EN UNA TABLA
     public function GetEtapasFE(){
-    	if ($this->input->is_ajax_request()) 
+    	if ($this->input->is_ajax_request())
         {
         $datos=$this->Model_EtapasFE->GetEtapasFE();
         echo json_encode($datos);
@@ -24,19 +24,34 @@ class EtapasFE extends CI_Controller {
        //CONTROLADOR PARA AGREGAR ETAPAS DE FORMULACION Y EVALUACION EN UNA TABLA
     public function  AddEtapasFE()
     {
-        if ($this->input->is_ajax_request()) 
+        if ($this->input->is_ajax_request())
             {
              $txt_EtapasFE =$this->input->post("txt_EtapasFE");
              if($this->Model_EtapasFE->AddEtapasFE($txt_EtapasFE)== false)
                    echo "SE INSERTO UNA NUEVA ETAPA EN FORMULACION Y EVALUACION";
                   else
-                  echo "SE INSERTO UNA NUEVA ETAPA N EN FORMULACION Y EVALUACION";  
-            } 
+                  echo "SE INSERTO UNA NUEVA ETAPA N EN FORMULACION Y EVALUACION";
+            }
         else
             {
               show_404();
-            }  
+            }
     }
+		public function UpdateEtapasFE(){
+					if ($this->input->is_ajax_request())
+							{
+							 $id_etapaDenominacion  =$this->input->post("id_etapa_fe");
+							 $txt_etapaDenominacion =$this->input->post("denom_etapas_fe");
+							 if($this->Model_EtapasFE->UpdateEtapasFE($id_etapaDenominacion,$txt_etapaDenominacion)== false)
+										echo "SE  ACTUALIZO UNA NUEVA ETAPA EN FORMULACION Y EVALUACION";
+										else
+										echo "SE ACTUALIZO  UNA NUEVA ETAPA N EN FORMULACION Y EVALUACION";
+							}
+					else
+							{
+								show_404();
+							}
+		}
     //FIN CONTROLADOR PARA AGREGAR ETAPAS DE FORMULACION Y EVALUACION EN UNA TABLA
    public function index()
   {

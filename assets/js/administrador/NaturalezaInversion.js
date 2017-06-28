@@ -21,8 +21,8 @@
                             if (resp=='2') {
                              swal("NO se registró...","", "error");
                            }
-                          $('#dynamic-table-NaturalezaInversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
-                             
+                          $('#dynamic-table-NaturalezaInversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
+
                          }
                       });
                   });
@@ -46,7 +46,7 @@
                           success:function(resp){
                            //alert(resp);
                            swal(resp,"", "success");
-                          $('#dynamic-table-NaturalezaInversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
+                          $('#dynamic-table-NaturalezaInversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
                             // formReset();
                          }
                       });
@@ -59,7 +59,7 @@
                 {
                     var myTable=$("#dynamic-table-NaturalezaInversion").DataTable({
                      "processing":true,
-                     "serverSide":true,
+                     "serverSide":false,
                      destroy:true,
 
                          "ajax":{
@@ -76,9 +76,9 @@
 
 
                                 "language":idioma_espanol
-                    }); 
-        
-        NaturalezaData("#dynamic-table-NaturalezaInversion",myTable);  //CARGAR LA DATA PARA MOSTRAR EN EL MODAL  
+                    });
+
+        NaturalezaData("#dynamic-table-NaturalezaInversion",myTable);  //CARGAR LA DATA PARA MOSTRAR EN EL MODAL
         EliminarNaturalezaData("#dynamic-table-NaturalezaInversion",myTable);
                 }
 
@@ -87,7 +87,7 @@
                         var data=myTable.row( $(this).parents("tr")).data();
                         var txt_IdNaturalezaM=$('#txt_IdNaturalezaM').val(data.id_naturaleza_inv);
                         var txt_NombreNaturalezaM=$('#txt_NombreNaturalezaM').val(data.nombre_naturaleza_inv);
-                     
+
 
                     });
                 }
@@ -122,8 +122,8 @@ var EliminarNaturalezaData=function(tbody,table){
                 }
 
 
-                
-              
+
+
         /*Idioma de datatablet table-sector */
             var idioma_espanol=
                 {
@@ -150,5 +150,3 @@ var EliminarNaturalezaData=function(tbody,table){
                         "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                     }
                 }
-
- 
