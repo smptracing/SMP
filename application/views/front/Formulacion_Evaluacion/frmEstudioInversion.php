@@ -261,7 +261,7 @@
 
 <!-- /.ventana para asignar responsable a estudio de inversión-->
 <div class="modal fade" id="ventanaasiganarpersona" role="dialog">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog ">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -323,7 +323,7 @@
 <!-- /.fin de ventana para asignar repsonsable a edtudio de inversión-->
 <!-- /.ventana para asignar etapa de estudio -->
 <div class="modal fade" id="ventanaEtapaEstudio" role="dialog">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog ">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -439,8 +439,8 @@
                                             <div class="form-group">
                                             <label class="control-label col-md-2 col-sm-3 col-xs-12">Subir Documento</label>
                                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input type="file" name="Documento_invserion">    
-                                                  </div>                                      
+                                                <input type="file" name="Documento_invserion">
+                                                  </div>
                                           </div>
                                             <div class="form-group">
                                               <div class="col-md-6 col-md-offset-3">
@@ -470,8 +470,8 @@
                                                  <tr>
                                                 </tbody>
                                             </table>
-                                                                              
-                                      
+
+
                                 </form>
                         </div><!-- /.span -->
                  </div><!-- /.row -->

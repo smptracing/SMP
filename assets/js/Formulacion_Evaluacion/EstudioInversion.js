@@ -155,37 +155,38 @@ $(document).on("ready" ,function(){
                                       { "data": function (data, type, dataToSet) {
                                          return "<strong>"+data.nombre_est_inv + "</strong><br/><i class='fa fa-calendar'>  " + data.fecha+"</i>";
                                        }},
-                                    {"data":"nombres"},
+                                   {"data":"nombres"},
                                       {"data":"avance_fisico",
                                       "mRender":function (data,type, full) {
                                          return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Complete</small></td>";
-                                    }},
-                                      
+                                      }
+                                      },
+    
                       
 
-                                    { "data": function (data, type, dataToSet) {
+                                    {"data": function (data, type, dataToSet) {
 
                                       if (data.denom_etapas_fe =='Formulación') 
                                       {
+
                                      // return "<td><button  type='button' class='btn btn-primary btn-xs'>"+data.denom_etapas_fe + "</button></td>";
-                                         return '<a  href="../FEformulacion/"><button type="button" class="btn btn btn-primary btn-xs">'+data.denom_etapas_fe +' </button></a>';
-                                    
+                                         return '<a  href="../FEformulacion/Feformulacion/'+data.id_est_inv+'"><button type="button" class="btn btn btn-primary btn-xs">'+data.denom_etapas_fe +' </button></a>';
                                       }
                                         if (data.denom_etapas_fe =='Evaluación') 
                                       {
                                     //  return "<td><button type='button' class='btn btn-warning btn-xs'>"+data.denom_etapas_fe + "</button></td>";
-                                      return '<a  href="../EvaluacionFE/"><button type="button" class="btn btn btn-warning btn-xs">'+data.denom_etapas_fe +' </button></a>';
+                                      return '<a  href="../EvaluacionFE/'+data.id_est_inv+'"><button type="button" class="btn btn btn-warning btn-xs">'+data.denom_etapas_fe +' </button></a>';
                                       }
                                         if (data.denom_etapas_fe =='Aprobado') 
                                       {
                                      // return "<td><button type='button' class='btn btn-info btn-xs'>"+data.denom_etapas_fe + "</button></td>";
-                                     return '<a  href="../FEformulacion/FEAPROBADO"><button type="button" class="btn btn btn-info btn-xs">'+data.denom_etapas_fe +' </button></a>';
+                                     return '<a  href="../FEformulacion/FeAprobado/'+data.id_est_inv+'"><button type="button" class="btn btn btn-info btn-xs">'+data.denom_etapas_fe +' </button></a>';
                                      
                                       }
                                         if (data.denom_etapas_fe =='Viabilizado') 
                                       {
                                     //  return "<td><button type='button' class='btn btn-success btn-xs'>"+data.denom_etapas_fe + "</button></td>";
-                                       return '<a  href="../FEformulacion/FEVIABILIZADO"><button type="button" class="btn btn btn-success btn-xs">'+data.denom_etapas_fe +' </button></a>';
+                                       return '<a  href="../FEformulacion/FeViabilizado/'+data.id_est_inv+'"><button type="button" class="btn btn btn-success btn-xs">'+data.denom_etapas_fe +' </button></a>';
                                      
                                       }
                                    }},
