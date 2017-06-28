@@ -20,10 +20,10 @@ class PrincipalFyE extends CI_Controller
         $this->load->view('layout/Formulacion_Evaluacion/footer');
     }
 
-    public function getNumProyectosNuevosEvaluacion()
+    public function getDatosEstudiosInversionNotificacion()
     {
         if ($this->input->is_ajax_request()) {
-            $datos = $this->Model_DashboardFE->getNumProyectosNuevosEvaluacion();
+            $datos = $this->Model_DashboardFE->getDatosEstudiosInversion();
             echo json_encode($datos);
         } else
             show_404();
