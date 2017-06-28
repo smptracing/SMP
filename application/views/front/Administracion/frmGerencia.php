@@ -60,8 +60,8 @@
                                                         <thead>
                                                         <tr>
                                                             <th>ID</th>
-                                                            <th>Demominacion Gerencia</th>
-                                                            <th></th>
+                                                            <th>GERENCIA</th>
+                                                            <th>OPCION</th>
                                                         </tr>
                                                         </thead>
                                                     </table>
@@ -96,7 +96,7 @@
                                                             <th>ID GERENCIA</th>
                                                             <th>GERENCIA</th>
                                                             <th>SUB GERENCIA</th>
-                                                            <th></th>
+                                                            <th>OPCION</th>
                                                         </tr>
                                                         </thead>
 

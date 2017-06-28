@@ -57,6 +57,7 @@ var lista_oficinas = function () {
             {"data": "id_subgerencia"},
             {"data": "denom_oficina"},
             {"data": "denom_subgerencia"},
+            {"data": "denom_gerencia"},
             {"defaultContent": "<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaUpdateOficina'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
         ],
 

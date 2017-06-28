@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>SEMOPIP </title>
+    <title>SEGUIMIENTO DE PIP - APURIMAC </title>
     <!-- Bootstrap -->
     <link href="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -56,32 +56,65 @@
     <div class="main_container">
         <div class="col-md-3 left_col">
             <div class="left_col scroll-view">
-                <!--  <div class="navbar nav_title" style="border: 0;">
-                    <a href="" class="site_title"><i class="fa fa-users"></i> <span>SEMOPIP</span></a>
-                  </div>-->
+                  <div class="navbar nav_title" style="border: 0;">
+                    <a href="#" class="site_title"><i class="fa fa-ioxhost"></i> <span>SMP TRACING</span></a>
+                  </div>
                 <div class="clearfix"></div>
-                <br/>
-                <br/>
-                <!-- menu profile quick info -->
-                <div class="profile clearfix">
-                </div>
-                <!-- /menu profile quick info -->
                 <br>
-                <th class="col-sm-3">
-                    <div class="count">
-                        <CENTER><a href=""></a>
-                            <img src="<?php echo base_url(); ?>assets/images/APURIMAC.png" class="img-rounded"
-                                 alt="Cinque Terre" width="200" height="180" style="opacity: 0.5;">
-                            <br>
-                            <a href="" class="site_title">
-                                    <span><H2>GOBIERNO REGIONAL DE APURÍMAC</H2> </span></a>
-
-
-                            <p id="copyrights_footer"><label id="ctl00_Master_CopyrightFooter">Seguimiento y Monitoreo
-                                    de Proyectos de Inversión - </label> SMP 1.0 </a></p>
-
+                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                    <div class="menu_section active">
+                        <h3>MENU</h3>
+                        <ul class="nav side-menu" style="">
+                            <li class="active"><a><i class="fa fa-bank"></i> Normatividad <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu" style="display: block;">
+                                    <li><a href="https://www.mef.gob.pe/es/documentacion-sp-30574/temas/sistema-nacional-de-programacion-multianual-y-gestion-de-inversiones-invierte-pe/15837-decreto-supremo-n-027-2017-ef-2/file">DECRETO SUPREMO Nº 027-2017-EF</a></li>
+                                    <li><a href="https://www.mef.gob.pe/es/documentacion-sp-30574/temas/sistema-nacional-de-programacion-multianual-y-gestion-de-inversiones-invierte-pe/15836-decreto-legislativo-n-1252-1/file">DECRETO LEGISLATIVO N° 1252</a></li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-book"></i> Guia de Usuario <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="#">Mantenimiento de Parametros</a></li>
+                                    <li><a href="#">PMI</a></li>
+                                    <li><a href="#">Formulacion y Evaluacion</a></li>
+                                    <li><a href="#">Ejecucion</a></li>
+                                    <li><a href="#">Liquidacion</a></li>
+                                    <li><a href="#">Reportes</a></li>
+                                    <li><a href="#">Control de Usuarios</a></li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-download"></i> Descargas <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="https://www.mef.gob.pe/es/anexos-y-formatos#anexos">Anexos InviertePe</a></li>
+                                    <li><a href="https://www.mef.gob.pe/es/anexos-y-formatos#formatos">Formatos</a></li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-link"></i> Enlaces <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="http://ofi5.mef.gob.pe/sosem2/">App Sosem</a></li>
+                                    <li><a href="http://ofi4.mef.gob.pe/odi/login.asp?mensaje=si">Banco de inversiones</a></li>
+                                    <li><a href="https://www.mef.gob.pe/es/aplicativos-invierte-pe?id=4279">Consulta de inversiones</a></li>
+                                    <li><a href="https://apps4.mineco.gob.pe/sispipapp/">Programacion Multianual InviertePE</a></li>
+                                    <li><a href="http://apps2.mef.gob.pe/consulta-vfp-webapp/consultaExpediente.jspx">Consulta SIAF</a></li>
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
-                </th>
+
+                </div>
+
+                <div class="count">
+                    <CENTER><a href=""></a>
+                        <img src="<?php echo base_url(); ?>assets/images/APURIMAC.png" class="img-rounded"
+                             alt="Cinque Terre" width="100" height="90" style="opacity: 0.5;">
+                        <br>
+
+                        <p>GOBIERNO REGIONAL DE APURÍMAC</p>
+
+
+                        <p id="copyrights_footer">Seguimiento y Monitoreo de Proyectos de Inversión</p>
+                        <p>SMP v1.0</p>
+
+                </div>
 
                 <!-- /menu footer buttons -->
 <!--                <div class="sidebar-footer hidden-small">-->

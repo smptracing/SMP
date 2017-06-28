@@ -180,24 +180,25 @@
                   <a id="panel_notificacion_fe" href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                     <i class="fa fa-envelope-o"></i>
                   </a>
-                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                    <li>
-                      <a>
-                        <span class="image"><img src="<?php echo base_url(); ?>assets/images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>Usuario</span>
-                          <span class="time">3 Nuevos proyecto</span>
-                        </span>
-                        <span class="message">
+                  <ul id="menu1_notificacion" class="dropdown-menu list-unstyled msg_list" role="menu">
 
-                        </span>
-                      </a>
-                    </li>
+<!--                      <li>-->
+<!--                          <a>-->
+<!--                              <span class="image">Por Evaluar</span>-->
+<!--                              <!--<img src="-->--><?php ////echo base_url(); ?><!--<!--assets/images/img.jpg" alt="Profile Image" />-->-->
+<!--                              <span id="span_reloj_mensaje_alerta">-->
+<!--<!--<span>Usuario</span>-->-->
+<!--        <span class="time">3 Nuevos proyecto</span>-->
+<!--    </span>-->
+<!--                              <span class="message">-->
+<!--    </span>-->
+<!--                          </a>-->
+<!--                      </li>-->
 
                     <li>
                       <div class="text-center">
-                        <a>
-                          <strong>Nuevos Proyectos</strong>
+                        <a href="">
+                          <strong>Proyectos en formulacion</strong>
                           <i class="fa fa-angle-right"></i>
                         </a>
                       </div>
