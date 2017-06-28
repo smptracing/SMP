@@ -454,24 +454,16 @@
                                                 </button>
                                               </div>
                                             </div>
-                                            <table class="table">
-                                              <thead>
-                                                <tr>
-                                                  <th><center>Nombre</center></th>
-                                                  <th><center>Descripción</center></th>
-                                                  <th><center>Url</center></th>
-                                                </tr>
-                                              </thead>
-                                              <tbody>
-                                                  <tr class="info">
-                                                    <td>Info</td>
-                                                    <td>Dooley</td>
-                                                    <td>july@example.com</td>
-                                                 <tr>
-                                                </tbody>
-                                            </table>
+                                           <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                              <h4>
+                                                Entregables
+                                              </h4>
+                                            </div>
+                                                  <table id="table-Documento" class="table">
 
-
+                                                  </table>
+                                             </div>
                                 </form>
                         </div><!-- /.span -->
                  </div><!-- /.row -->

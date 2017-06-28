@@ -63,13 +63,14 @@ $(document).on("ready" ,function(){
                                 contentType:false,
                                 processData:false,
                                 success:function(resp){
-                                 alert(resp);
                                  if (resp=='true') {
                                      swal("REGISTRADO","DOCUMENTO DE INSERSIÓN", "success");
                                    }
                                     if (resp=='false') {
-                                     swal("NO SE REGISTRÓ","DOCUMENTO DE INSERSIÓN ", "error");
+                                     swal("SE REGISTRÓ","DOCUMENTO DE INSERSIÓN ", "error");
                                    }
+                                   var id_est_inv=$("#txt_id_est_invAdd").val();
+                                   listarDocumentos(id_est_inv);
 
                                }
 
@@ -243,14 +244,39 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
    
   /*fin listar proyectos*/
 
-              //listar y agregar Documentos
+              //listar y agregar Documentos al proyecto de invserion
               var  AddListarDocumentos=function(tbody,myTableUA){
                     $(tbody).on("click","button.DocumentosEstudio",function(){
                       var data=myTableUA.row( $(this).parents("tr")).data();
                       $("#txt_id_est_invAdd").val(data.id_est_inv);
-
+                        var  id_est_inv=data.id_est_inv;
+                        listarDocumentos(id_est_inv);
                     });
                 }
+                var  listarDocumentos=function(id_est_inv)
+                {
+
+                    html="";
+                    $("#table-Documento").html(html);   
+                      $.ajax({
+                       type:"POST",
+                       "url":base_url+"index.php/Estudio_Inversion/GetDocumentosEstudio",
+                       data:{"id_est_inv":id_est_inv},
+                       success:function(respuesta)
+                                        {
+                                           var registros = eval(respuesta);  
+                                            
+                                           html+="<thead> <tr> <th><center>Nombre Documento</center></th> <th><center> Descripción </center></th><th> <center>Url</center></th> </tr></thead>";
+                                           for (var i = 0; i <registros.length;i++) {
+                                                html +="<tbody> <tr class='info'><th>"+registros[i]["nombre_documento"]+"</th><th>"+registros[i]["desc_documento"]+"</th><th> <a href='"+base_url+"index.php/uploads/DocumentosInversion/"+registros[i]["url_documento"]+" '  >"+registros[i]["url_documento"]+" <i class='fa fa-file-pdf-o'></i> </a></th></tr>";    
+                                            //alert(suma);
+                                             };               
+                                               html +="</tbody>";
+                                              $("#table-Documento").html(html);       
+                                        }
+                              });
+                }
+
               //fin listar y agregar documento
                 var listarpicombo=function(valor){
                      html="";
