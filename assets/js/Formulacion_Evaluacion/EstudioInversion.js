@@ -176,7 +176,7 @@ $(document).on("ready" ,function(){
                                         if (data.denom_etapas_fe =='Evaluación') 
                                       {
                                     //  return "<td><button type='button' class='btn btn-warning btn-xs'>"+data.denom_etapas_fe + "</button></td>";
-                                      return '<a  href="../EvaluacionFE/'+data.id_est_inv+'"><button type="button" class="btn btn btn-warning btn-xs">'+data.denom_etapas_fe +' </button></a>';
+                                      return '<a  href="../EvaluacionFE/FeEvaluacion/'+data.id_est_inv+'"><button type="button" class="btn btn btn-warning btn-xs">'+data.denom_etapas_fe +' </button></a>';
                                       }
                                         if (data.denom_etapas_fe =='Aprobado') 
                                       {
