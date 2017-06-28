@@ -19,6 +19,9 @@ class FEformulacion extends CI_Controller
             if (empty($id_est_inve)) {
                 $id_est_inve = '0';
             }
+            if ($id_est_inve=='all') {
+                $id_est_inve = '0';
+            }
             //$this->session->sess_destroy();
             $datos = $this->FEformulacion_Modal->GetFormulacion($Etapa, $id_est_inve);
             echo json_encode($datos);
