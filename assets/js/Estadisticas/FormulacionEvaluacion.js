@@ -45,7 +45,7 @@ function getNumProyectosNuevosEvaluacion() {
                 menu1_notificacion.append(mensaje_notificacion);
 
 
-                alert(url);
+                //alert(url);
 
                 mensaje_notificacion = ""
                     + "<li>\n"
