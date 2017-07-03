@@ -177,93 +177,46 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                    <table class="" style="width:100%">
-                        <tr>
-                            <th style="width:37%;">
-                                <p>Leyenda</p>
-                            </th>
-                            <th>
-                                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-                                    <p class="">Componente</p>
-                                </div>
-                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                                    <p class=""> % </p>
-                                </div>
-                            </th>
-                        </tr>
-                        <tr>
-                            <td>
-                                <canvas class="canvasDoughnut1" height="160" width="160"
-                                        style="margin: 15px 10px 10px 0"></canvas>
-                            </td>
-                            <td>
-
-                                <table class="table table-condensed" width="100%">
-                                    <tr>
-                                        <th>
-                                            <p><i class="fa fa-square blue"></i>Abancay</p>
-                                        </th>
-
-                                        <th>
-                                            <div id="porcentajeAban">%</div>
-                                        </th>
-                                    </tr>
-                                    <tr>
-                                        <th>
-                                            <i class="fa fa-square purple"></i>Andahuayla</p>
-                                        </th>
-                                        <th>
-                                            <div id="porcentajeAnd">%</div>
-                                        </th>
-                                    </tr>
-                                    <tr>
-                                        <th>
-                                            <p><i class="fa fa-square red"></i>Antabamba </p>
-                                        </th>
-                                        <th>
-                                            <div id="porcentajeAnt">%</div>
-                                        </th>
-                                    </tr>
-                                    <tr>
-                                        <th>
-                                            <p><i class="fa fa-square green"></i>Aymaraes </p>
-                                        </th>
-                                        <th>
-                                            <div id="porcentajeAy">%</div>
-                                        </th>
-                                    </tr>
-                                    <tr>
-                                        <th>
-
-                                            <p><i class="fa fa-square aero"></i>Chincheros</p>
-                                        <th>
-                                            <div id="porcentajeChinc">%</div>
-                                        </th>
-                                        </th>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <th>
-                                            <p><i class="fa fa-square black"></i>Cotabamba</p>
-                                        </th>
-                                        <th>
-                                            <div id="porcentajeCotab">%</div>
-                                        </th>
-                                    </tr>
-
-                                    <tr>
-                                        <th>
-                                            <p><i class="fa fa-square blue"></i>Grau</p>
-                                        </th>
-                                        <th>
-                                            <div id="porcentajeGrau">%</div>
-                                        </th>
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
+                    <table class="" style="width:100%;">
+                        <thead>
+                            <tr>
+                                <th style="text-align: center;vertical-align: middle;width: 200px;">
+                                    Componente
+                                </th>
+                                <th style="text-align: left;">
+                                    Leyenda
+                                </th>
+                                <th style="text-align: center;">
+                                    %
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding-top: 20px;text-align: center;">
+                                    <canvas class="canvasDoughnut1" height="160" width="160"></canvas>
+                                </td>
+                                <td style="padding-top: 20px;text-align: left;vertical-align: middle;">
+                                    <p><i class="fa fa-square blue" style="width: 15px;"></i>Abancay</p>
+                                    <p><i class="fa fa-square purple" style="width: 15px;"></i>Andahuayla</p>
+                                    <p><i class="fa fa-square red" style="width: 15px;"></i>Antabamba</p>
+                                    <p><i class="fa fa-square green" style="width: 15px;"></i>Aymaraes</p>
+                                    <p><i class="fa fa-square aero" style="width: 15px;"></i>Chinchero</p>
+                                    <p><i class="fa fa-square black" style="width: 15px;"></i>Cotabamb</p>
+                                    <p><i class="fa fa-square blue" style="width: 15px;"></i>Grau</p>
+                                </td>
+                                <td style="padding-top: 20px;text-align: center;">
+                                    <p id="porcentajeAban"></p>
+                                    <p id="porcentajeAnd"></p>
+                                    <p id="porcentajeAnt"></p>
+                                    <p id="porcentajeAy"></p>
+                                    <p id="porcentajeChinc"></p>
+                                    <p id="porcentajeCotab"></p>
+                                    <p id="porcentajeGrau"></p>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
-
                 </div>
             </div>
         </div>

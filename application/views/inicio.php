@@ -1,3 +1,9 @@
+<style>
+    .inner > p
+    {
+        height: 35px;
+    }
+</style>
 <!-- page content -->
 <div class="right_col" role="main">
     <div class="">
