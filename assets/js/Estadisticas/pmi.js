@@ -71,12 +71,12 @@ var EstadistMontosPipProv = function () {
         success: function (respuesta) {
             var registros = eval(respuesta);
             var suma = 0;
-            html1 += "<thead> <tr> <th  class='active'><h6>Provincia </h6></th> <th class='active'><h6>Estadistica</h6></th><th colspan='12' class='active'><h6>Montos</h6></th> </tr></thead>"
+            html1 += "<thead> <tr> <th  class='active'><h6>Provincia </h6></th> <th class='active'><h6>Estadistica</h6></th><th colspan='12' class='active' style='text-align: right;'><h6>Montos</h6></th> </tr></thead>"
             for (var i = 0; i < registros.length; i++) {
                 MontosPipProv[i] = registros[i]["MontoProyecto"]; //OPCIONAL, SIRVE PARA IMPRIR LOS MONTOS  EN DATOS PIP PROYECTOS POR PROVINCIA EN LOS DIV
                 suma = MontosPipProv[i] + suma; //TOTAL MONTO PROYECTOS EN CABECERA
 
-                html1 += "<tbody> <tr><th>" + registros[i]["provincia"] + "</th><th><div class='progress progress_sm'> <div class='progress-bar bg-green progress_sm' role='progressbar' data-transitiongoal='45' style='width: " + registros[i]["Cantidad"] + "%;'></div> </div> </th><th>" + registros[i]["MontoProyecto"] + "</th></tr>";
+                html1 += "<tbody> <tr><th>" + registros[i]["provincia"] + "</th><th><div class='progress progress_sm'> <div class='progress-bar bg-green progress_sm' role='progressbar' data-transitiongoal='45' style='width: " + registros[i]["Cantidad"] + "%;'></div> </div> </th><th style='text-align: right;'>" + registros[i]["MontoProyecto"] + "</th></tr>";
                 //alert(suma);
             }
             ;
@@ -115,18 +115,18 @@ function EstadisticasPorCiclosInversion() {
                 porcentaje = Math.round((NumProyectos / total_proyectos) * 100);
                 sql = "<div class=\"widget_summary\">\n"
                     + "                        <div class=\"w_left w_25\">\n"
-                    + "                            <span>" + registros[i]["nombre_estado_ciclo"] + "</span>\n"
+                    + "                            <span>" + (registros[i]["nombre_estado_ciclo"].charAt(0).toUpperCase())+(registros[i]["nombre_estado_ciclo"].toLowerCase().substring(1)) + "</span>\n"
                     + "                        </div>\n"
                     + "                        <div class=\"w_center w_55\">\n"
                     + "                            <div class=\"progress\">\n"
                     + "                                <div class=\"progress-bar bg-info\" role=\"progressbar\" aria-valuenow=\"60\"\n"
-                    + "                                     aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: " + porcentaje + "%;\">\n"
+                    + "                                     aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"font-size: 11px;width: " + porcentaje + "%;\">\n"
                     + "                                    " + porcentaje + "%\n"
                     + "                                </div>\n"
                     + "                            </div>\n"
                     + "                        </div>\n"
                     + "                        <div class=\"w_right w_20\">\n"
-                    + "                            <span>" + NumProyectos + "</span>\n"
+                    + "                            <span style=\"font-size: 14px;\">" + NumProyectos + "</span>\n"
                     + "                        </div>\n"
                     + "                        <div class=\"clearfix\"></div>\n"
                     + "                    </div>";
@@ -143,13 +143,13 @@ function EstadisticasPorCiclosInversion() {
                 + "                        <div class=\"w_center w_55\">\n"
                 + "                            <div class=\"progress\">\n"
                 + "                                <div class=\"progress-bar bg-info\" role=\"progressbar\" aria-valuenow=\"60\"\n"
-                + "                                     aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: " + porcentaje + "%;\">\n"
+                + "                                     aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"font-size: 11px;width: " + porcentaje + "%;\">\n"
                 + "                                    " + porcentaje + "%\n"
                 + "                                </div>\n"
                 + "                            </div>\n"
                 + "                        </div>\n"
                 + "                        <div class=\"w_right w_20\">\n"
-                + "                            <span>" + total_otros + "</span>\n"
+                + "                            <span style=\"font-size: 14px;\">" + total_otros + "</span>\n"
                 + "                        </div>\n"
                 + "                        <div class=\"clearfix\"></div>\n"
                 + "                    </div>";

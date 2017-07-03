@@ -127,29 +127,7 @@
 
                     <div class="clearfix"></div>
                 </div>
-
-                <div id="panel_estadistica_ciclo_inversion" class="x_content">
-                    <!-- <h4>#1235</h4>-->
-                    <!--<div class="widget_summary">
-                        <div class="w_left w_25">
-                            <span>Costo directo</span>
-                        </div>
-
-                        <div class="w_center w_55">
-                            <div class="progress">
-                                <div class="progress-bar bg-blue" role="progressbar" aria-valuenow="60"
-                                     aria-valuemin="0" aria-valuemax="100" style="width: 66%;">
-                                    66%
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w_right w_20">
-                            <span>123</span>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>-->
-
-                </div>
+                <div id="panel_estadistica_ciclo_inversion" class="x_content"></div>
             </div>
         </div>
 
