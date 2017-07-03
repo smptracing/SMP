@@ -83,15 +83,15 @@ var EstadistMontosPipProv = function () {
             html1 += "</tbody>";
             $("#table-estaditMontPIPProv").html(html1);
 
-            document.getElementById("MontoPipAbancay").innerHTML = MontosPipProv[0]; // MONTO TOTAL DE ABANCAY EN EL DIV MontoPipAbancay
-            document.getElementById("MontoPipAndahuaylas").innerHTML = MontosPipProv[1];
-            document.getElementById("MontoPipAntabamba").innerHTML = MontosPipProv[2];
-            document.getElementById("MontoPipAymaraes").innerHTML = MontosPipProv[3];
-            document.getElementById("MontoPipChincheros").innerHTML = MontosPipProv[4];
-            document.getElementById("MontoPipCotabambas").innerHTML = MontosPipProv[5];
-            document.getElementById("MontoPipGrau").innerHTML = MontosPipProv[6];
+            $("#MontoPipAbancay").html(MontosPipProv[0]); // MONTO TOTAL DE ABANCAY EN EL DIV MontoPipAbancay
+            $("#MontoPipAndahuaylas").html(MontosPipProv[1]);
+            $("#MontoPipAntabamba").html(MontosPipProv[2]);
+            $("#MontoPipAymaraes").html(MontosPipProv[3]);
+            $("#MontoPipChincheros").html(MontosPipProv[4]);
+            $("#MontoPipCotabambas").html(MontosPipProv[5]);
+            $("#MontoPipGrau").html(MontosPipProv[6]);
             //OBTENER EL MONTO TOTAL DE PROYECTOS EN LA CABECERA
-            document.getElementById("MontoTotalPip").innerHTML = suma;
+            $("#MontoTotalPip").html(suma);
         }
     });
 };
@@ -163,7 +163,7 @@ function initMap() {
 
     //var LatLng = {lat: -25.363, lng: 131.044};
 
-    var map = new google.maps.Map(document.getElementById('map'), {
+    var map = new google.maps.Map($('#map'), {
         zoom: 8,
         center: {lat: -14, lng: -73},
         //disableDefaultUI: true
