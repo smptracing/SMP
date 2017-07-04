@@ -14,48 +14,48 @@ function EstaProyProvincia()
 
             var sum=0;
 
-            for(var i=0; i < registros.length; i++)
+            for(var i=0; i<registros.length; i++)
             {
                 provincias[i]=registros[i]["Cantidadpip"];
                 sum=provincias[i]+sum;
             }
             
-            $("#NumPip").html(sum); //OBTENER NUMERO DE PIP EN LA CABECERA
+            $("#NumPip").text(sum); //OBTENER NUMERO DE PIP EN LA CABECERA
 
-            cantidadPIPAbancay=(100 * (parseInt(provincias[0])) / sum);
+            cantidadPIPAbancay=(100*(parseInt(provincias[0]))/sum);
 
-            $("#CantidadPAbancay").html(provincias[0]); //LISTAR CANTIDAD DE PIP REPORTE GENERAL
-            $("#porcentajeAban").html(cantidadPIPAbancay.toFixed(2)); //LISTAR PORCENTAJES EN EL GRAFICO PROYECTOS POR PRIVINCIAS EN TEXTO
+            $("#CantidadPAbancay").text(provincias[0]); //LISTAR CANTIDAD DE PIP REPORTE GENERAL
+            $("#porcentajeAban").text(cantidadPIPAbancay.toFixed(2)); //LISTAR PORCENTAJES EN EL GRAFICO PROYECTOS POR PRIVINCIAS EN TEXTO
 
-            cantidadPIPAndahuaylas=(100 * (parseInt(provincias[1])) / sum);
+            cantidadPIPAndahuaylas=(100*(parseInt(provincias[1]))/sum);
 
-            $("#CantidadPAndahuaylas").html(provincias[1]);
-            $("#porcentajeAnd").html(cantidadPIPAndahuaylas.toFixed(2));
+            $("#CantidadPAndahuaylas").text(provincias[1]);
+            $("#porcentajeAnd").text(cantidadPIPAndahuaylas.toFixed(2));
 
-            cantidadPIPAntabamba=(100 * (parseInt(provincias[2])) / sum);
+            cantidadPIPAntabamba=(100*(parseInt(provincias[2]))/sum);
 
-            $("#CantidadPAntabamba").html(provincias[2]);
-            $("#porcentajeAnt").html(cantidadPIPAntabamba.toFixed(2));
+            $("#CantidadPAntabamba").text(provincias[2]);
+            $("#porcentajeAnt").text(cantidadPIPAntabamba.toFixed(2));
 
-            cantidadPIPAymaraes=(100 * (parseInt(provincias[3])) / sum);
+            cantidadPIPAymaraes=(100*(parseInt(provincias[3]))/sum);
 
-            $("#CantidadPAymaraes").html(provincias[3]);
-            $("#porcentajeAy").html(cantidadPIPAymaraes.toFixed(2));
+            $("#CantidadPAymaraes").text(provincias[3]);
+            $("#porcentajeAy").text(cantidadPIPAymaraes.toFixed(2));
 
-            cantidadPIPChincheros=(100 * (parseInt(provincias[4])) / sum);
+            cantidadPIPChincheros=(100*(parseInt(provincias[4]))/sum);
 
-            $("#CantidadPChincheros").html(provincias[4]);
-            $("#porcentajeChinc").html(cantidadPIPChincheros.toFixed(2));
+            $("#CantidadPChincheros").text(provincias[4]);
+            $("#porcentajeChinc").text(cantidadPIPChincheros.toFixed(2));
 
-            cantidadPIPCotabambas=(100 * (parseInt(provincias[5])) / sum);
+            cantidadPIPCotabambas=(100*(parseInt(provincias[5]))/sum);
 
-            $("#CantidadPCotabambas").html(provincias[5]);
-            $("#porcentajeCotab").html(cantidadPIPCotabambas.toFixed(2));
+            $("#CantidadPCotabambas").text(provincias[5]);
+            $("#porcentajeCotab").text(cantidadPIPCotabambas.toFixed(2));
 
-            cantidadPIPGrau=(100 * (parseInt(provincias[6])) / sum);
+            cantidadPIPGrau=(100*(parseInt(provincias[6]))/sum);
 
-            $("#CantidadPGrau").html(provincias[6]);
-            $("#porcentajeGrau").html(cantidadPIPGrau.toFixed(2));
+            $("#CantidadPGrau").text(provincias[6]);
+            $("#porcentajeGrau").text(cantidadPIPGrau.toFixed(2));
 
             if ("undefined" != typeof Chart && (console.log("init_chart_doughnut"), $(".canvasDoughnut1").length))
             {
