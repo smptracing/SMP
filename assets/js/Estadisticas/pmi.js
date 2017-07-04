@@ -81,9 +81,8 @@ function EstaProyProvincia()
                     var b=$(this);
 
                     new Chart(b, a)
-                })
+                });
             }
-
         }
     });
 }
@@ -140,7 +139,6 @@ var EstadistMontosPipProv=function()
         }
     });
 }
-
 
 function EstadisticasPorCiclosInversion() {
     $.ajax({
