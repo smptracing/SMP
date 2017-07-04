@@ -1,5 +1,5 @@
 <div class="right_col" role="main">
-    <!-- top tiles -->
+	<!-- top tiles -->
     <div class="row tile_count">
         <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
             <span class="count_top"><i class="fa fa-user"></i> N° DE PROYECTOS</span>
@@ -12,37 +12,34 @@
         <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
             <span class="count_top"><i class="fa fa-clock-o"></i> MONTO TOTAL</span>
             <div class="count"><strong><h4>250000000</h4></strong></div>
-            <span class="count_bottom"><i class="green">4% </i> From last Week</span>
+            <span class="count_bottom"><i class="green">4%</i> From last Week</span>
         </div>
         <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
             <span class="count_top"><i class="fa fa-user"></i> COSTO INVERSIÓN </span>
             <div class="count">2500</div>
-            <span class="count_bottom"><i class="green">4% </i> From last Week</span>
+            <span class="count_bottom"><i class="green">4%</i> From last Week</span>
         </div>
         <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
             <span class="count_top"><i class="fa fa-user"></i> SALDO PROGRAMADO</span>
             <div class="count">2500</div>
-            <span class="count_bottom"><i class="green">4% </i> From last Week</span>
+            <span class="count_bottom"><i class="green">4%</i> From last Week</span>
         </div>
         <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
             <span class="count_top"><i class="fa fa-user"></i> PROGRAMACIÓN</span>
             <div class="count">2500</div>
-            <span class="count_bottom"><i class="green">4% </i> From last Week</span>
+            <span class="count_bottom"><i class="green">4%</i> From last Week</span>
         </div>
         <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
             <span class="count_top"><i class="fa fa-user"></i> OPER Y MANT.</span>
             <div class="count">2500</div>
-            <span class="count_bottom"><i class="green">4% </i> From last Week</span>
+            <span class="count_bottom"><i class="green">4%</i> From last Week</span>
 
         </div>
     </div>
     <!-- /top tiles -->
-
-
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="dashboard_graph">
-
                 <div class="row x_title">
                     <div class="col-md-6">
                         <h3>Avance
@@ -57,7 +54,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="col-md-9 col-sm-9 col-xs-12">
                     <div id="chart_plot_01" class="demo-placeholder"></div>
                 </div>
@@ -66,72 +62,51 @@
                         <h2>Avance del proyecto</h2>
                         <div class="clearfix"></div>
                     </div>
-
-                    <div class="col-md-12 col-sm-12 col-xs-6">
-                        <div>
-                            <p>PMI</p>
-                            <div class="">
-                                <div class="progress progress_sm" style="width: 76%;">
-                                    <div class="progress-bar bg-green" role="progressbar"
-                                         data-transitiongoal="80"></div>
+                    <div>
+                    	<div class="col-md-12 col-sm-12 col-xs-6">
+	                        <div>
+	                            <p>PMI</p>
+                                <div class="progress progress_sm">
+                                    <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="80"></div>
                                 </div>
-                            </div>
-                        </div>
-                        <div>
-                            <p>Formulacion</p>
-                            <div class="">
-                                <div class="progress progress_sm" style="width: 76%;">
-                                    <div class="progress-bar bg-green" role="progressbar"
-                                         data-transitiongoal="60"></div>
+	                        </div>
+	                        <div>
+	                            <p>Formulacion</p>
+                                <div class="progress progress_sm">
+                                    <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60"></div>
                                 </div>
-                            </div>
-                        </div>
+	                        </div>
+	                    </div>
+	                    <div class="col-md-12 col-sm-12 col-xs-6">
+	                        <div>
+	                            <p>Ejecucion</p>
+                                <div class="progress progress_sm">
+                                    <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="40"></div>
+                                </div>
+	                        </div>
+	                        <div>
+	                            <p>Funcionamiento</p>
+                                <div class="progress progress_sm">
+                                    <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50"></div>
+                                </div>
+	                        </div>
+	                    </div>
                     </div>
-                    <div class="col-md-12 col-sm-12 col-xs-6">
-                        <div>
-                            <p>Ejecucion</p>
-                            <div class="">
-                                <div class="progress progress_sm" style="width: 76%;">
-                                    <div class="progress-bar bg-green" role="progressbar"
-                                         data-transitiongoal="40"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <p>Funcionamiento</p>
-                            <div class="">
-                                <div class="progress progress_sm" style="width: 76%;">
-                                    <div class="progress-bar bg-green" role="progressbar"
-                                         data-transitiongoal="50"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
-
                 <div class="clearfix"></div>
             </div>
         </div>
-
     </div>
-    <br/>
-
     <div class="row">
-
-
         <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="x_panel tile fixed_height_320">
                 <div class="x_title">
-                    <h2>Proyectos por Ciclos de Inversion</h2>
-
+                    <h2>Proyectos por ciclos de inversion</h2>
                     <div class="clearfix"></div>
                 </div>
                 <div id="panel_estadistica_ciclo_inversion" class="x_content"></div>
             </div>
         </div>
-
-
         <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="x_panel tile fixed_height_320 overflow_hidden">
                 <div class="x_title">
@@ -203,7 +178,7 @@
         <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="x_panel tile fixed_height_320">
                 <div class="x_title">
-                    <h2>MONTO POR PROVINCIAS</h2>
+                    <h2>Monto por provincia</h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>

@@ -99,60 +99,58 @@ var EstadistMontosPipProv = function () {
 
 function EstadisticasPorCiclosInversion() {
     $.ajax({
-        url: base_url + "index.php/PrincipalPmi/EstadisticaPipEstadoCiclo",
+        url: base_url+"index.php/PrincipalPmi/EstadisticaPipEstadoCiclo",
         type: "POST",
-        success: function (respuesta) {
+        success: function(respuesta)
+        {
             var registros = eval(respuesta);
-            var sql = "";
+            var sql='';
             var NumProyectos = 0;
             var total_proyectos = registros[0]["Num_Total"];
             var total_otros = registros[0]["TotalNoCiclo"];
             var panel_estadistica = $("#panel_estadistica_ciclo_inversion");
 
             var porcentaje = 0.00;
-            for (var i = 0; i < registros.length; i++) {
+            for (var i = 0; i < registros.length; i++) 
+            {
                 NumProyectos = registros[i]["Num_Proyectos"];
                 porcentaje = Math.round((NumProyectos / total_proyectos) * 100);
-                sql = "<div class=\"widget_summary\">\n"
-                    + "                        <div class=\"w_left w_25\">\n"
-                    + "                            <span>" + (registros[i]["nombre_estado_ciclo"].charAt(0).toUpperCase())+(registros[i]["nombre_estado_ciclo"].toLowerCase().substring(1)) + "</span>\n"
-                    + "                        </div>\n"
-                    + "                        <div class=\"w_center w_55\">\n"
-                    + "                            <div class=\"progress\">\n"
-                    + "                                <div class=\"progress-bar bg-info\" role=\"progressbar\" aria-valuenow=\"60\"\n"
-                    + "                                     aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"font-size: 11px;width: " + porcentaje + "%;\">\n"
-                    + "                                    " + porcentaje + "%\n"
-                    + "                                </div>\n"
-                    + "                            </div>\n"
-                    + "                        </div>\n"
-                    + "                        <div class=\"w_right w_20\">\n"
-                    + "                            <span style=\"font-size: 14px;\">" + NumProyectos + "</span>\n"
-                    + "                        </div>\n"
-                    + "                        <div class=\"clearfix\"></div>\n"
-                    + "                    </div>";
+                sql='<div class="widget_summary">'
+						+'<div class="w_left w_25">'
+							+'<span>'+(registros[i]['nombre_estado_ciclo'].charAt(0).toUpperCase())+(registros[i]['nombre_estado_ciclo'].toLowerCase().substring(1))+'</span>'
+						+'</div>'
+						+'<div class="w_center w_55">'
+							+'<div class="progress">'
+								+'<div class="progress-bar bg-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="font-size: 11px;width: '+porcentaje+'%;">'
+									+porcentaje+'%'
+								+'</div>'
+							+'</div>'
+						+'</div>'
+						+'<div class="w_right w_20">'
+							+'<span style="font-size: 14px;">'+NumProyectos+'</span>'
+						+'</div>'
+					+'</div>';
 
                 panel_estadistica.append(sql);
-                //html += "<option value=" + registros[i]["id_subgerencia"] + "> " + registros[i]["denom_subgerencia"] + " </option>";
             }
 
-            porcentaje = Math.round((total_otros / total_proyectos) * 100);
-            sql = "<div class=\"widget_summary\">\n"
-                + "                        <div class=\"w_left w_25\">\n"
-                + "                            <span>Otros</span>\n"
-                + "                        </div>\n"
-                + "                        <div class=\"w_center w_55\">\n"
-                + "                            <div class=\"progress\">\n"
-                + "                                <div class=\"progress-bar bg-info\" role=\"progressbar\" aria-valuenow=\"60\"\n"
-                + "                                     aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"font-size: 11px;width: " + porcentaje + "%;\">\n"
-                + "                                    " + porcentaje + "%\n"
-                + "                                </div>\n"
-                + "                            </div>\n"
-                + "                        </div>\n"
-                + "                        <div class=\"w_right w_20\">\n"
-                + "                            <span style=\"font-size: 14px;\">" + total_otros + "</span>\n"
-                + "                        </div>\n"
-                + "                        <div class=\"clearfix\"></div>\n"
-                + "                    </div>";
+            porcentaje=Math.round((total_otros/total_proyectos)*100);
+
+            sql='<div class="widget_summary">'
+					+'<div class="w_left w_25">'
+						+'<span>Otros</span>'
+					+'</div>'
+					+'<div class="w_center w_55">'
+						+'<div class="progress">'
+							+'<div class="progress-bar bg-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="font-size: 11px;width: '+porcentaje+'%;">'
+							+porcentaje+'%'
+							+'</div>'
+						+'</div>'
+					+'</div>'
+					+'<div class="w_right w_20">'
+						+'<span style="font-size: 14px;">'+total_otros+'</span>'
+					+'</div>'
+				+'</div>';
 
             panel_estadistica.append(sql);
         }
