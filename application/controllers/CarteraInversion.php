@@ -88,7 +88,7 @@ public function __construct(){
 	function GetCarteraInversion(){
 		if ($this->input->is_ajax_request()) 
 		{
-		$datos=$this->Model_CarteraInversion-> GetCarteraInversion();
+		$datos=$this->Model_CarteraInversion->GetCarteraInversion();
 		echo json_encode($datos);
 		}
 		else

@@ -1,3 +1,15 @@
+<style>
+  #table-CarteraInv > tbody > tr > td
+  {
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  #table-CarteraInv > thead > tr > th
+  {
+    text-align: center;
+  }
+</style>
 <div class="right_col" role="main">
           <div class="">
 
@@ -57,13 +69,12 @@
                                                             <table id="table-CarteraInv" class="table table-condensed table-striped table-bordered table-hover table table-striped table-bordered nowrap" width="100%">
                                                               <thead>
                                                                  <tr>
-                                                                  <th>ID </th>
-                                                                  <th >AÑO DE APERTURA </th>
-                                                                  <th >FECHA INICIO CARTERA </th>
-                                                                  <th >FECHA FIN CARTERA </th>
-                                                                  <th >ESTADO CICLO </th>
-                                                                  <th >NRO RESOLUCION </th>
-                                                                  <th >URL </th>
+                                                                  <th>AÑO DE APERTURA</th>
+                                                                  <th>FECHA INICIO CARTERA</th>
+                                                                  <th>FECHA FIN CARTERA</th>
+                                                                  <th>ESTADO CICLO</th>
+                                                                  <th>NRO RESOLUCION</th>
+                                                                  <th>URL</th>
                                                                   <th class="col-sm-1"></th>
                                                                 </tr>
                                                               </thead>

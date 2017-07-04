@@ -47,7 +47,6 @@
                                     "dataSrc":""
                                     },
                                 "columns":[
-                                    {"data":"id_cartera"},
                                     {"data":"anios",
                                     /*"mRender": function ( data, type, full ) {
                                      return '<a style="font-weight:normal;font-size:15" type="button" class="CambioCartera btn btn-link" data-toggle="modal" data-target="#CambioCartera" href="/codigo_unico_pi/' + data + '">' + data+ '</a>';
@@ -58,7 +57,10 @@
                                     },
                                     {"data":"fecha_inicio_cartera"},
                                     {"data":"fecha_cierre_cartera"},
-                                    {"data":"estado_cartera"},
+                                    {"data" : "estado_cartera", "mRender": function(value, type, object)
+                                    {
+                                      return (value==1 ? 'Activo' : 'Inactivo');
+                                    }},
                                     {"data":"numero_resolucion_cartera"},
                                     {"data":"url_resolucion_cartera"},
                                     {"defaultContent":"<button type='button' class='editar btn btn-success btn-xs' data-toggle='modal' data-target='#VentanaVerCartera'><i class='ace-icon fa fa-eye bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
