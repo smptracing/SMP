@@ -240,50 +240,6 @@
               </div>
               <!-- /form color picker -->
 
-              <!-- form input knob -->
-              <div class="col-md-12">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2></h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                          <li><a href="#">Settings 1</a>
-                          </li>
-                          <li><a href="#">Settings 2</a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li><a class="close-link"><i class="fa fa-close"></i></a>
-                      </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <input value="Exportar en PDF" type="button" onclick='gantt.exportToPDF()' style='margin:20px;'>
-                  <input value="Exportar en PNG" type="button" onclick='gantt.exportToPNG()' style='margin:20px;'>
-                  <input value="Exportar en Meadow" type="button" onclick='gantt.exportToPNG({ skin:"meadow" })' style='margin:20px;'>
-                  <input value="Exportar en Broadway" type="button" onclick='gantt.exportToPDF({ skin:"broadway" })' style='margin:20px;'>
-                  <input value="Exportar en Skyblue" type="button" onclick='gantt.exportToPDF({ skin:"skyblue" })' style='margin:20px;'>
-                  <input id="fullscreen_button" type="button" value="Toggle Fullscreen"/>
-                  <div class="x_content" id="gantt">
-
-                    <div id="gantt_here" style='width:100%; height:100%;'>
-
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- /form input knob -->
-            </div>
-            <div class="row">
-          </div>
-        </div>
-
-      </div>
 <!--- agregar los  entregable-->
 <div class="modal fade" id="VentanaEntregable" role="dialog">
     <div class="modal-dialog">

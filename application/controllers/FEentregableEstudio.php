@@ -141,12 +141,9 @@ show_404();
         }
 
     }
-    //fin asignacion de personal
 
-    public function _load_layout($template)
-
-    //listar responsables de entregables
-    public function get_ResponsableEntregableE() {
+    public function get_ResponsableEntregableE()
+    {
         if ($this->input->is_ajax_request()) {
             $id_etapa_estudio = $this->session->userdata('Etapa_Estudio');
             $id_entregable    = $this->input->post("id_entregable");

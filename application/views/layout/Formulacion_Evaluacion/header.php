@@ -59,6 +59,7 @@
   <script src="http://export.dhtmlx.com/gantt/api.js" type="text/javascript" charset="utf-8"></script>
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/codebase/dhtmlxgantt.css" type="text/css" media="screen" title="no title" charset="utf-8">
   <script type="text/javascript" src="<?php echo base_url(); ?>assets/common/testdata.js"></script>
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/codebase/locale/locale_es.js"></script>
   <style type="text/css">
       #gantt{
         height:600px;
