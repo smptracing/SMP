@@ -19,7 +19,7 @@ class FEformulacion extends CI_Controller
             if (empty($id_est_inve)) {
                 $id_est_inve = '0';
             }
-            if ($id_est_inve=='all') {
+            if ($id_est_inve == 'all') {
                 $id_est_inve = '0';
             }
             //$this->session->sess_destroy();
@@ -66,11 +66,11 @@ class FEformulacion extends CI_Controller
         $this->_load_layout('Front/Formulacion_Evaluacion/frmFormulacion');
 
     }
-    public function FEAPROBADO()
+    public function Feaprobado()
     {
         $this->_load_layout_jsFormFormulacion('Front/Formulacion_Evaluacion/frmAprobados');
     }
-    public function FEVIABILIZADO()
+    public function Feviabilizado()
     {
         $this->_load_layout_jsViabilizado('Front/Formulacion_Evaluacion/frmViabilizado');
     }

@@ -593,7 +593,7 @@
         });
     }
     gantt.templates.task_text = function(s,e,task){
-      return "Export" + task.text;
+      return "" + task.text;
     }
     gantt.config.columns[0].template = function(obj){
       return obj.text + " -";

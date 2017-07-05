@@ -75,7 +75,6 @@
                                     {"data":"provincia"},
                                     {"data":"distrito"},
                                     {"data":"denom_nivel_estudio"},
-
                                     {"data":"nombres"},
                                     {"data":"costo_estudio"},
                                     {"data":"denom_situacion_fe"},
