@@ -56,9 +56,9 @@ class Model_Programacion extends CI_Model
              }
         }
     //FIN AGREGAR UN PROYECTO
-         function GetProgramacion($id_proyecto_filtro,$año_apertura_actual)
+         function GetProgramacion($id_proyecto_filtro,$año_apertura_actual, $skip, $numberRow)
         {
-            $ProyectoInversion=$this->db->query("execute sp_ListarProyectoProgramacion '".$id_proyecto_filtro."','".$año_apertura_actual."'");//listar proyecto de programacion
+            $ProyectoInversion=$this->db->query("execute sp_ListarProyectoProgramacion '".$id_proyecto_filtro."','".$año_apertura_actual."',".$skip.",".$numberRow);//listar proyecto de programacion
             return $ProyectoInversion->result();
         }
 

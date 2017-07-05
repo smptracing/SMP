@@ -312,109 +312,103 @@ var fechaActual="";
                       }
                     });
   }
- var listaProyectoIprogramado=function(AnioCartera)
-                {
-                    $.fn.dataTable.ext.errMode = 'throw';
-                    var table=$("#table-ProyectoInversionProgramado").DataTable({
-                     "processing":true,
-                      "scrollY": 350,
-                      "scrollX": true,
-                      "scrollCollapse": true,
-                      "paging":         true,
-                     destroy:true,
-                         "ajax":{
-                                    "url":base_url+"index.php/Programacion/GetProgramacion",
-                                    "method":"POST",
-                                     data:{"AnioCartera":AnioCartera},
-                                    "dataSrc":"",
-                                    "deferRender": true,
-                                    },
-                                "columns":[
-                                    {"data":"id_pi","visible":false},
-                                    {"data":"codigo_unico_pi",
-                                    "mRender": function ( data, type, full ) {
-                                     return '<a style="font-weight:normal;font-size:15" type="button" class="Verdetalle btn btn-link" data-toggle="modal" data-target="#VerDetallehorizontal" href="/codigo_unico_pi/' + data + '">' + data+ '</a>';
-                                      }
 
-                                    },
-                                    {"data":"nombre_estado_ciclo"},
-                                    {"data":"nombre_pi"},
-                                    {"data":"prioridad_prog"},
-                                    {"data":"nombre_brecha"},
-                                    {"data":"Inv_2018"},
-                                    {"data":"Inv_2019"},
-                                    {"data":"Inv_2020"},
+var paginaActual=1;
 
-                                    {"data":"OyM_2018"},
-                                    {"data":"OyM_2019"},
-                                    {"data":"OyM_2020"},
+var listaProyectoIprogramado=function(AnioCartera)
+{
+	$.fn.dataTable.ext.errMode='throw';
+	
+	var table=$("#table-ProyectoInversionProgramado").DataTable(
+	{
+		"processing" : true,
+		"serverSide" : true,
+		"scrollY" : 350,
+		"scrollX" : true,
+		"scrollCollapse" : true,
+		"paging" : true,
+		"destroy" : true,
+		"ajax" :
+		{
+			"url" : base_url+"index.php/Programacion/GetProgramacion",
+			"method" : "POST",
+			"data" : { "AnioCartera" : AnioCartera},
+			"dataSrc" : "",
+			"deferRender" : true,
+		},
+		"columns" : [
+		{
+			"data" : "id_pi", "visible" : false
+		},
+		{
+			"data" : "codigo_unico_pi", "mRender": function(data, type, full)
+			{
+				return '<a style="font-weight:normal;font-size:15" type="button" class="Verdetalle btn btn-link" data-toggle="modal" data-target="#VerDetallehorizontal" href="/codigo_unico_pi/' + data + '">' + data+ '</a>';
+			}
+		},
+		{ "data" : "nombre_estado_ciclo" },
+		{ "data" : "nombre_pi" },
+		{ "data" : "prioridad_prog" },
+		{ "data" : "nombre_brecha" },
+		{ "data" : "Inv_2018" },
+		{ "data" : "Inv_2019" },
+		{ "data" : "Inv_2020" },
+		{ "data" : "OyM_2018" },
+		{ "data" : "OyM_2019" },
+		{ "data" : "OyM_2020" },
+		{ "data" : "nombre_tipo_inversion", "visible" : false },
+		{ "data" : "nombre_tipologia_inv", "visible" : false },
+		{ "data" : "nombre_naturaleza_inv", "visible" : false },
+		{ "data" : "nombre_nivel_gob", "visible" : false },
+		{ "data" : "nombre_ue", "visible" : false },
+		{ "data" : "provincias", "visible" : false },
+		{ "data" : "distritos", "visible" : false },
+		{ "data" : "nombre_funcion", "visible" : false },
+		{ "data" : "nombre_div_funcional", "visible" : false },
+		{ "data" : "nombre_grup_funcional", "visible" : false },
+		{ "data" : "costo_pi", "visible" : false },
+		{ "data" : "pim_meta_pres", "visible" : false },
+		{ "data" : "nombre_serv_pub_asoc", "visible" : false },
+		{ "data" : "nombre_brecha", "visible" : false },
+		{ "data" : "nombre_programa_pres", "visible" : false },
+		{ "data" : "fecha_registro_pi", "visible" : false },
+		{ "data" : "fecha_viabilidad_pi", "visible" : false },
+		{ "defaultContent" : "<button type='button' class='VerProyecto btn btn-success btn-xs' data-toggle='modal' data-target='#VerDetalleProyectoInversion'>Ver Ficha</button>" }],
+		"language" : idioma_espanol
+	});
 
-                                    {"data":"nombre_tipo_inversion","visible":false},
-                                    {"data":"nombre_tipologia_inv","visible":false},
-                                    {"data":"nombre_naturaleza_inv","visible":false},
-                                    {"data":"nombre_nivel_gob","visible":false},
-                                    {"data":"nombre_ue","visible":false},
-                                    {"data":"provincias","visible":false},
+	ListaProyectoInversionData("#table-ProyectoInversionProgramado",table);  //obtener data de funcion para agregar  AGREGAR
+	Listahorizontal("#table-ProyectoInversionProgramado",table);  //obtener data de funcion para agregar  AGREGAR
 
-                                    {"data":"distritos","visible":false},
+	$('a.toggle-visVer').on('click', function(e)
+	{
+		e.preventDefault();
 
-                                    {"data":"nombre_funcion","visible":false},
-                                    {"data":"nombre_div_funcional","visible":false},
-                                    {"data":"nombre_grup_funcional","visible":false},
+		var column=table.column($(this).attr('data-column'));
+		
+		column.visible(!column.visible());
 
-                                    {"data":"costo_pi","visible":false},
-                                    {"data":"pim_meta_pres","visible":false},
-                                    {"data":"nombre_serv_pub_asoc","visible":false},
-                                    {"data":"nombre_brecha","visible":false},
-                                    {"data":"nombre_programa_pres","visible":false},
-                                    {"data":"fecha_registro_pi","visible":false},
-                                    {"data":"fecha_viabilidad_pi","visible":false},
+		for(var i=8; i<=35; i++) 
+		{
+			table.column(i).visible( true );
+		}
+	});
 
-                                    {"defaultContent":"<button type='button' class='VerProyecto btn btn-success btn-xs' data-toggle='modal' data-target='#VerDetalleProyectoInversion'>Ver Ficha</button>"}
+	$('a.toggle-visRestablecer').on('click', function(e)
+	{
+		e.preventDefault();
 
-                                ],
+		var column =table.column( $(this).attr('data-column'));
 
-                                "language":idioma_espanol
+		column.visible(!column.visible());
 
+		for(var i=13; i<=35; i++)
+		{
+			table.column(i).visible(false);
+		}
+	});
+}
 
-
-                    });
-                     /*setInterval( function () {
-                                  table.ajax.reload( null, false ); // user paging is not reset on reload
-                              }, 30000 ); */
-                      /*$('#table-ProyectoInversionProgramado tbody').on('click', 'tr', function () {
-                            var data = table.column(this).data();
-                            var txt_IdfuncionM=data.codigo_unico_pi;
-                            alert(txt_IdfuncionM);
-                        } );*/
-
-
-                     ListaProyectoInversionData("#table-ProyectoInversionProgramado",table);  //obtener data de funcion para agregar  AGREGAR
-                     Listahorizontal("#table-ProyectoInversionProgramado",table);  //obtener data de funcion para agregar  AGREGAR
-
-                      $('a.toggle-visVer').on( 'click', function (e)
-                        {
-                                e.preventDefault();
-                                var column =table.column( $(this).attr('data-column'));
-                                console.log(column);
-                                column.visible(!column.visible() );
-                                for (var i =8; i <= 35; i++) {
-                                  table.column(i).visible( true );
-                                }
-
-
-                         } );
-                      $('a.toggle-visRestablecer').on( 'click', function (e)
-                        {
-                                e.preventDefault();
-                                var column =table.column( $(this).attr('data-column'));
-                                console.log(column);
-                                column.visible(!column.visible() );
-                               for (var i =13; i <= 35; i++) {
-                                  table.column(i).visible( false );
-                                }
-                         } );
-                }
 var listaProyectoIprogramadoA=function()//para actualizar programacion
                 {
                     var table=$("#table-modificarprogramacion").DataTable({
