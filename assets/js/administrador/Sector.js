@@ -11,8 +11,18 @@
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
-                           //alert(resp);
-                            swal("",resp, "success");
+                           var registros = eval(resp);
+                            for (var i = 0; i < registros.length; i++) {
+                               if(registros[i]["VALOR"]==1){
+                                    swal("",registros[i]["MENSAJE"], "success");
+                                   $('#form-addSector')[0].reset();
+                                   $("#VentanaRegistraSector").modal("hide");
+                               }else{
+                                      swal('',registros[i]["MENSAJE"],'error' )
+                               }
+                                /*swal("",  registros[i]["MENSAJE"], "success");*/
+                            };
+                        
                            $('#table-sector').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet     
                            listaSectorCombo();//llamado para la recarga al añadir un nuevo secto
                          }

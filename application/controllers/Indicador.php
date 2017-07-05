@@ -22,11 +22,10 @@ public function __construct(){
 	      $txt_NombreIndicador =$this->input->post("txt_NombreIndicador");
 	      $txtArea_DefIndicador =$this->input->post("txtArea_DefIndicador");
 	      $txt_UnidadMedida =$this->input->post("txt_UnidadMedida");
-	     if($this->Model_Indicador->AddIndicador($txt_NombreIndicador,$txtArea_DefIndicador,$txt_UnidadMedida) == true)
-	        echo "Se añadio un indicador";
-	      else
-	        echo "No se añadio  un indicador";  
-	  
+	     
+	     $data=$this->Model_Indicador->AddIndicador($txt_NombreIndicador,$txtArea_DefIndicador,$txt_UnidadMedida);
+	     echo json_encode($data);
+	 
 	    }
 	    else
 	    {

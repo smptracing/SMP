@@ -11,10 +11,14 @@ class Model_Brecha extends CI_Model
 //AGREGAR UNA BRECHA
       function AddBrecha($cbxServPubAsoc,$txt_NombreBrecha, $txtArea_DescBrecha)
         {
-           $this->db->query("execute sp_Brecha_c '".$cbxServPubAsoc."','".$txt_NombreBrecha."','".$txtArea_DescBrecha."'");
-            if ($this->db->affected_rows() > 0) 
+          $mensaje=$this->db->query("execute sp_Brecha_c '".$cbxServPubAsoc."','".$txt_NombreBrecha."','".$txtArea_DescBrecha."'");
+           /* if ($this->db->affected_rows() > 0) 
               {
                 return true;
+              }*/
+              if($mensaje->num_rows()>0)
+             {
+              return $mensaje->result();
               }
               else
               {

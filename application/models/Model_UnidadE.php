@@ -11,15 +11,22 @@ class Model_UnidadE extends CI_Model
     //AGREGAR UNA UNIDAD DE EJECUTORA
         function AddUnidadE($txt_NombreUnidadE)
         {
-           $this->db->query("execute sp_UnidadEjecutora_c'".$txt_NombreUnidadE."'");
-            if ($this->db->affected_rows() > 0) 
+           $mensaje1=$this->db->query("execute sp_UnidadEjecutora_c'".$txt_NombreUnidadE."'");
+            /*if ($this->db->affected_rows() > 0) 
               {
                 return true;
               }
               else
               {
                 return false;
-              }
+              }*/
+               if($mensaje1->num_rows()>0)
+             {
+              return $mensaje1->result();
+             }else
+             {
+              return false;
+             }
         }
     //FIN AGREGAR UNA UNIDAD DE EJECUTORA
 

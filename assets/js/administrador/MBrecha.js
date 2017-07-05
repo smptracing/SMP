@@ -21,7 +21,17 @@
                         type:$(this).attr('method'),
                         data:$(this).serialize(),
                         success:function(resp){
-                        swal("REGISTRADO!", resp, "success");
+                        var registros = eval(resp);
+                            for (var i = 0; i < registros.length; i++) {
+                               if(registros[i]["VALOR"]==1){
+                                    swal("",registros[i]["MENSAJE"], "success");
+                                   $('#form-addBrecha')[0].reset();
+                                   $("#VentanaRegistraBrecha").modal("hide");
+                               }else{
+                                      swal('',registros[i]["MENSAJE"],'error' )
+                               }
+                                /*swal("",  registros[i]["MENSAJE"], "success");*/
+                            };
                           $('#table-brecha').dataTable()._fnAjaxUpdate();    //SIRVE PARA REFRESCAR LA TABLA 
                         }
                     });

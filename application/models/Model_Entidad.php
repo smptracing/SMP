@@ -26,12 +26,12 @@ class Model_Entidad extends CI_Model
 
         function AddEntidad($listaSector,$txt_NombreEntidad,$txt_DenominacionEntidad)
         {
-           $this->db->query("execute sp_Entidad_c '".$listaSector."','".$txt_NombreEntidad."','".$txt_DenominacionEntidad."'");
-            if ($this->db->affected_rows() > 0) 
-              {
-                return true;
-              }
-              else
+            $mensaje1=$this->db->query("execute sp_Entidad_c '".$listaSector."','".$txt_NombreEntidad."','".$txt_DenominacionEntidad."'");
+           	if($mensaje1->num_rows()>0)
+            {
+              return $mensaje1->result();
+            }
+            else
               {
                 return false;
               }

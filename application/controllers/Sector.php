@@ -31,10 +31,10 @@ class Sector extends CI_Controller {/* Mantenimiento de sector entidad Y servici
 	    if ($this->input->is_ajax_request()) 
 	    {
 	      $txt_NombreSector =$this->input->post("txt_NombreSector");
-	      if($this->Model_Sector->AddSector($txt_NombreSector) == false)
-	        echo "Se añadio un  sector";
-	      else
-	        echo "Se añadio  un sector";  
+	     
+	     	$data=$this->Model_Sector->AddSector($txt_NombreSector);
+	     	echo json_encode($data);
+	
 		 }
 		 else
 		  {
