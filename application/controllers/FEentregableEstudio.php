@@ -10,7 +10,7 @@ class FEentregableEstudio extends CI_Controller {/* Mantenimiento de division fu
 	}
   public function ver_FEentregable($id_etapa_estudio)
   {
-  
+
     $data = array('Etapa_Estudio' => $id_etapa_estudio);
     $this->session->set_userdata($data);
 
@@ -57,10 +57,8 @@ class FEentregableEstudio extends CI_Controller {/* Mantenimiento de division fu
 			$txt_avance_entre        =0;
 			$txt_observacio_entre    =$this->input->post("txt_observacio_entre");
 			$txt_levantamintoO_entre =$this->input->post("txt_levantamintoO_entre");
-	    if($this->Model_FEentregableEstudio->Add_Entregable($opcion,$id_entregable,$txt_denominacion_entre,$id_etapa_estudio,$txt_nombre_entre,$txt_valoracion_entre,$txt_avance_entre,$txt_observacio_entre,$txt_levantamintoO_entre)== false)
-		       echo "Se Inserto Una Nueva Etapa ";
-		      else
-		      echo "No Se Inserto Una Nueva Etapa ";
+	    $data=$this->Model_FEentregableEstudio->Add_Entregable($opcion,$id_entregable,$txt_denominacion_entre,$id_etapa_estudio,$txt_nombre_entre,$txt_valoracion_entre,$txt_avance_entre,$txt_observacio_entre,$txt_levantamintoO_entre);
+		  echo json_encode($data);
 		 }
 	     else
 	     {
@@ -114,18 +112,16 @@ class FEentregableEstudio extends CI_Controller {/* Mantenimiento de division fu
         }
     }
 
-    //asignacion de personal
+    //asignacion de personal ala entregable 
      public function  AsignacionPersonalEntregable(){
       if ($this->input->is_ajax_request())
       {
       $Opcion ='C';
       $txt_idPersona              =$this->input->post("txt_idPersona");
       $txt_identregable           =$this->input->post("txt_identregable");
-      $txt_AsigPersonalEntregable =$this->input->post("txt_AsigPersonalEntregable");//fecha de asiganacion
-       if($this->Model_FEentregableEstudio->AsignacionPersonalEntregable($Opcion,$txt_identregable,$txt_idPersona,$txt_AsigPersonalEntregable)==1)
-           echo "1 ";
-          else
-          echo "0";
+      $txt_AsigPersonalEntregable =$this->input->post("txt_AsigPersonalEntregable");//fecha de asiganacion al qnetregable
+      $data=$this->Model_FEentregableEstudio->AsignacionPersonalEntregable($Opcion,$txt_identregable,$txt_idPersona,$txt_AsigPersonalEntregable);
+      echo json_encode($data);
      }
        else
        {
@@ -134,7 +130,35 @@ class FEentregableEstudio extends CI_Controller {/* Mantenimiento de division fu
 
     }
     //fin asignacion de personal
-
+    //listar responsables de entregables
+    public function get_ResponsableEntregableE(){
+      if ($this->input->is_ajax_request())
+        {
+        $id_etapa_estudio  =$this->session->userdata('Etapa_Estudio');
+        $id_entregable  =$this->input->post("id_entregable");
+        $datos=$this->Model_FEentregableEstudio->get_ResponsableEntregableE($id_entregable,$id_etapa_estudio);
+        echo json_encode($datos);
+        }
+        else
+        {
+          show_404();
+        }
+    }
+    //fin 
+//Generar entregables gantt
+public function get_gantt(){
+ if ($this->input->is_ajax_request())
+	 {
+	 $id_entregable  =$this->input->post("id_entregable");
+	 $datos=$this->Model_FEentregableEstudio->get_gantt($id_entregable);
+	 echo json_encode($datos);
+	 }
+	 else
+	 {
+		 show_404();
+	 }
+}
+//fin generar entregables con gantt
 	function _load_layout($template)
     {
         $this->load->view('layout/Formulacion_Evaluacion/header');

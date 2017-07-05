@@ -1,3 +1,5 @@
+
+<!-- fin gantt -->
 <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
@@ -51,14 +53,14 @@
 
                                                   <div class="col-md-12 col-xs-12">
                                                         <div class="x_panel">
-                                                        
+
                                                                                 <ul class="bs-glyphicons-list">
                                                                                   <button type="button" id="btn_entregable" class="btn btn-primary" data-toggle="modal" data-target="#VentanaEntregable" >
                                                                                         <span class="glyphicon glyphicon-new-window" aria-hidden="true"> Nuevo</span>
                                                                                   </button>
                                                                                   </li>
                                                                                 </ul>
-                                                          
+
                                                           <div class="x_content">
 
                                                                   <!-- start project list -->
@@ -66,7 +68,7 @@
                                                                     <table id="table_entregable" class="table table-striped">
                                                                           <thead>
                                                                                 <tr>
-                                                                                  <td>ID</td>
+                                                                                  <td>ID entregable</td>
                                                                                    <td>Entregable</td>
                                                                                    <td>Responsable</td>
                                                                                    <td>Valorización</td>
@@ -93,7 +95,7 @@
 
                                                   <div class="col-md-12 col-sm-12 col-xs-12">
                                                         <div class="x_panel">
-                                                            
+
                                                           <div class="x_title">
                                                             <ul class="nav navbar-right panel_toolbox">
 
@@ -258,8 +260,18 @@
                     </ul>
                     <div class="clearfix"></div>
                   </div>
-                  <div class="x_content">
+                  <input value="Exportar en PDF" type="button" onclick='gantt.exportToPDF()' style='margin:20px;'>
+                  <input value="Exportar en PNG" type="button" onclick='gantt.exportToPNG()' style='margin:20px;'>
+                  <input value="Exportar en Meadow" type="button" onclick='gantt.exportToPNG({ skin:"meadow" })' style='margin:20px;'>
+                  <input value="Exportar en Broadway" type="button" onclick='gantt.exportToPDF({ skin:"broadway" })' style='margin:20px;'>
+                  <input value="Exportar en Skyblue" type="button" onclick='gantt.exportToPDF({ skin:"skyblue" })' style='margin:20px;'>
+                  <input id="fullscreen_button" type="button" value="Toggle Fullscreen"/>
+                  <div class="x_content" id="gantt">
 
+                    <div id="gantt_here" style='width:100%; height:100%;'>
+
+
+                    </div>
                   </div>
                 </div>
               </div>
@@ -366,7 +378,7 @@
                       </div>
                       <div class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
                         <label class="col-md-6 col-sm-6 col-xs-6">Valoración</label>
-                        <input type="text" class="form-control" id="txt_valoracionEAc" name="txt_valoracionEAc" data-inputmask="'mask':'99'" data-validate-length-range="2" data-validate-words="2" required="required" >
+                        <input type="text" class="form-control" id="txt_valoracionEAc" name="txt_valoracionEAc">
                       </div>
 
                      <div class="col-md-12 col-sm-12 col-xs-12 input-group">
@@ -504,9 +516,8 @@
                 <form class="form-horizontal " id="form-AsignacionPersonalEntregable"  method="POST" >
                       <div class="col-md-12 col-sm-12 col-xs-12 input-group">
                         <span class="input-group-addon glyphicon glyphicon glyphicon-search"></span>
-                        <input id="text_buscarPersona"  name="text_buscarPersona" type="text" class="form-control"  placeholder="Buscar por nombre completo">
+                        <input id="text_buscarPersona"  name="text_buscarPersona" type="text" class="form-control" >
                       </div>
-
                           <div id="contenedor_responsable">
                                <table id="table_responsable" class="table" ellspacing="0" width="70%">
 
@@ -552,8 +563,8 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4> Responsable actividad</h4>
-           <h4 class="modal-title" id="txt_NombreActividadTitleResponsable"></h4>
+          <h6> Responsable actividad</h6>
+           <h6 class="modal-title" id="txt_NombreActividadTitleResponsable"></h6>
         </div>
 
          <div class="modal-body">
@@ -602,3 +613,39 @@
       </div>
     </div>
   </div>
+
+<!---lista de  responsable con sus entregables-->
+  <div class="modal fade" id="VentenaResponsablesEntregable" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog " role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+         <h4>Entregable:<label id="LabelEntregable"></label></h4>
+          Responsables del entregable
+        </div>
+
+         <div class="modal-body">
+          
+              <table id="table_responsableEntregable" class="table datatable" ellspacing="0" width="100%">
+                <thead>
+                                <tr>
+                                  <th>Responsable</th>
+                                  <th>Dni</th>
+                                  <th>Fecha Asignación</th>
+                                </tr>
+                  </thead>
+                              <tbody>
+
+                              </tbody>
+
+              </table>
+
+        </div>
+
+        <div class="modal-footer">
+
+        </div>
+      </div>
+    </div>
+  </div>
+<!---fin lista de  responsable con sus entregables-->

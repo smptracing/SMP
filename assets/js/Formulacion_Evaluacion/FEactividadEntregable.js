@@ -8,9 +8,19 @@
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
-                           swal("",resp, "success");
-                           $('#form-AddActividades_Entregable')[0].reset();
-                           $("#VentanaActividades").modal("hide"); 
+                              var registros = eval(resp);
+                             for (var i = 0; i < registros.length; i++) {
+                               if(registros[i]["VALOR"]==1){
+                                    swal("",registros[i]["MENSAJE"], "success");
+                                   $('#form-AddActividades_Entregable')[0].reset();
+                                   $("#VentanaActividades").modal("hide");
+                                   $('#datatable-actividadesV').dataTable()._fnAjaxUpdate();
+                               }else{
+                                      swal('',registros[i]["MENSAJE"],'error' );
+
+                               }
+                           };
+
                          }
                       });
                   });

@@ -61,7 +61,7 @@
                                     <div class="icon">
                                         <i class="fa fa-edit"></i>
                                     </div>
-                                    <a href="<?php echo site_url('PrincipalFyE/Formulacion_Eval'); ?>" class="small-box-footer">
+                                    <a href="<?php echo site_url('PrincipalFyE/PrincipalFyED'); ?>" class="small-box-footer">
                                         <!--                                       <a href="#" class="small-box-footer">-->
                                         Ingresar <i class="fa fa-arrow-circle-right"></i>
                                     </a>

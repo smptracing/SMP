@@ -11,6 +11,8 @@
 
     <!-- Bootstrap -->
     <link href='<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery-ui.min.css' rel='stylesheet' >
+    <script src="<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
+
     <link href="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="<?php echo base_url(); ?>assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -49,6 +51,14 @@
       width: 100% !important;
     }
   </style>
+  <style type="text/css">
+      #gantt{
+        height:600px;
+        padding:0px;
+         margin:0px;
+         overflow: hidden;
+       }
+    </style>
 
      <script>
     var base_url = '<?php echo base_url(); ?>';
