@@ -13,6 +13,8 @@
 
     <!-- Bootstrap -->
     <link href='<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery-ui.min.css' rel='stylesheet' >
+    <script src="<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
+
     <link href="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="<?php echo base_url(); ?>assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -57,7 +59,14 @@
   <script src="http://export.dhtmlx.com/gantt/api.js" type="text/javascript" charset="utf-8"></script>
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/codebase/dhtmlxgantt.css" type="text/css" media="screen" title="no title" charset="utf-8">
   <script type="text/javascript" src="<?php echo base_url(); ?>assets/common/testdata.js"></script>
-
+  <style type="text/css">
+      #gantt{
+        height:600px;
+        padding:0px;
+         margin:0px;
+         overflow: hidden;
+       }
+    </style>
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url(); ?>assets/build/css/custom.min.css" rel="stylesheet">
   </head>
@@ -186,19 +195,6 @@
                     <i class="fa fa-envelope-o"></i>
                   </a>
                   <ul id="menu1_notificacion" class="dropdown-menu list-unstyled msg_list" role="menu">
-
-<!--                      <li>-->
-<!--                          <a>-->
-<!--                              <span class="image">Por Evaluar</span>-->
-<!--                              <!--<img src="-->--><?php ////echo base_url(); ?><!--<!--assets/images/img.jpg" alt="Profile Image" />-->-->
-<!--                              <span id="span_reloj_mensaje_alerta">-->
-<!--<!--<span>Usuario</span>-->-->
-<!--        <span class="time">3 Nuevos proyecto</span>-->
-<!--    </span>-->
-<!--                              <span class="message">-->
-<!--    </span>-->
-<!--                          </a>-->
-<!--                      </li>-->
 
                     <li>
                       <div class="text-center">

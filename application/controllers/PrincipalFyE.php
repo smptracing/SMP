@@ -9,6 +9,12 @@ class PrincipalFyE extends CI_Controller
         $this->load->model('Model_DashboardFE');
     }
 
+    public function PrincipalFyED(){
+
+        $this->_load_layout('Formulacion_Evaluacion');
+
+    }
+
     public function Formulacion_Eval()
     {
         $this->_load_layout('front/Formulacion_Evaluacion/Inicio.php');
@@ -19,6 +25,16 @@ class PrincipalFyE extends CI_Controller
         $this->load->view($template);
         $this->load->view('layout/Formulacion_Evaluacion/footer');
     }
+    //estadistica
+    public function GetAprobadosEstudio()
+    {
+        if ($this->input->is_ajax_request()) {
+            $datos = $this->Model_DashboardFE->GetAprobadosEstudio();
+            echo json_encode($datos);
+        } else
+        show_404();
+    }
+    //fin estadistica
 
     public function getDatosEstudiosInversionNotificacion()
     {

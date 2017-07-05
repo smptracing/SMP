@@ -24,14 +24,14 @@ class Model_FEActividadEntregable extends CI_Model
         function Add_Actividades($opcion,$id_act,$txt_id_entregable,$txt_nombre_act,$txt_fechaActividadI,$txt_fechaActividadf,$txt_valoracionEAc,$txt_AvanceEAc,$txt_observacio_EntreAc,$txt_ActividadColor)
         {
 
-            $this->db->query("EXECUTE sp_Gestionar_Actividad_Entregable'".$opcion."','".$id_act."', '" . $txt_id_entregable."','".$txt_nombre_act."','".$txt_fechaActividadI."','".$txt_fechaActividadf."',".$txt_valoracionEAc.",'".$txt_AvanceEAc."','".$txt_observacio_EntreAc."','".$txt_ActividadColor."'");
-            if ($this->db->affected_rows()> 0) 
+            $mensaje=$this->db->query("EXECUTE sp_Gestionar_Actividad_Entregable'".$opcion."','".$id_act."', '" . $txt_id_entregable."','".$txt_nombre_act."','".$txt_fechaActividadI."','".$txt_fechaActividadf."',".$txt_valoracionEAc.",'".$txt_AvanceEAc."','".$txt_observacio_EntreAc."','".$txt_ActividadColor."'");
+            if ($mensaje->num_rows()>0) 
               {
-                return true;
+                return $mensaje->result();
               }
               else
               {
-                return false;
+                return $mensaje->result();
               }
 
         }

@@ -11,8 +11,12 @@
     <!-- jQuery -->
     <script src="<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
+    <!-- gantt -->
+
     <script src="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
+
+
     <script src="<?php echo base_url(); ?>assets/vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
     <script src="<?php echo base_url(); ?>assets/vendors/nprogress/nprogress.js"></script>
@@ -27,6 +31,10 @@
     <!-- Skycons -->
     <script src="<?php echo base_url(); ?>assets/vendors/skycons/skycons.js"></script>
     <!-- Flot -->
+    <!-- ECharts -->
+    <script src="<?php echo base_url(); ?>assets/vendors/echarts/dist/echarts.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/vendors/echarts/map/js/world.js"></script>
+
 
  <!-- jQuery Smart Wizard -->
     <script src="<?php echo base_url(); ?>assets/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
@@ -104,9 +112,13 @@
    <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/DenominacionFE.js"></script>
    <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/EtapasFE.js"></script>
    <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/TipEstudioFE.js"></script>
+   <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/GanttActividad.js"></script>
    <!--  <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/FEformulacion.js"></script>
    <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/EvaluacionFE.js"></script>-->
     <script src="<?php echo base_url(); ?>assets/js/Estadisticas/FormulacionEvaluacion.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/growl/growl.js"></script>
+    <!-- graficos para el formulacion y evaluacion -->
+     <script src="<?php echo base_url(); ?>assets/js/Estadisticas/EstadisticasFE.js"></script>
+    <!-- Custom Theme Scripts -->
   </body>
 </html>

@@ -39,7 +39,7 @@
                 $("#btn_entregable").click(function() {
                 $("#id_etapa_estudioEE").val($("#txt_id_etapa_estudio").val())
               });
-                $("#form-AddEntregable").submit(function(event)//para añadir nueva funcion
+                $("#form-AddEntregable").submit(function(event)//para entregable
                   {
                       event.preventDefault();
                       $.ajax({
@@ -47,11 +47,22 @@
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
-                           swal("",resp, "success");
+                          var registros = eval(resp);
+                          for (var i = 0; i < registros.length; i++) {
+                               if(registros[i]["VALOR"]==1){
+                                    swal("",registros[i]["MENSAJE"], "success");
+                                   $('#form-AddEntregable')[0].reset();
+                                   $("#VentanaEntregable").modal("hide");
+                                   $('#table_entregable').dataTable()._fnAjaxUpdate();
+                               }else{
+                                      swal('',registros[i]["MENSAJE"],'error' );
+                               }
+                           };
+                          /* swal("",resp, "success");
                            $('#form-AddEntregable')[0].reset();
                            $("#VentanaEntregable").modal("hide");
-                           listarEntregablesFE();
-                            $('#table_entregable').dataTable()._fnAjaxUpdate();
+                          // listarEntregablesFE();
+                            $('#table_entregable').dataTable()._fnAjaxUpdate();*/
                          }
                       });
                   });
@@ -71,23 +82,29 @@
 
                 $("#text_buscarPersona").keyup(function(){//buscar persona para actividades
                  var text_buscarPersona = $("#text_buscarPersona").val();
-                 html1=" . ";
-                 $("#table_responsable").html(html1);
+                 
                  $.ajax({
                     url: base_url+"index.php/Personal/BuscarPersona",
                     type:"POST",
                     data:{text_buscarPersona:text_buscarPersona},
                     success: function(data){
-                      if(Object.keys(data).length>0)
-                       {
-                          var registros = eval(data);
-                             html1+="<thead> </thead>"
+                      var registros = eval(data);
+                               html1="";
+                               $("#table_responsable").html(html1);
+                        if(registros.length>0)
+                         {
+                             html1+="<thead> </thead>";
                              for (var i = 0; i <registros.length;i++) {
-                                  html1 +="<tbody> <tr><th> <input type='checkbox' name='vehicle' value='Bike'></th><br></th><th> <a href='"+registros[i]["id_persona"]+"' type='button' class='btn btn-link'><img src='"+base_url+"assets/images/user.png' class='avatar' ></a>Gerencia:</br> <h5>Nombre completo:</h5> "+registros[i]["nombres"]+" "+registros[i]["apellido_p"]+" "+registros[i]["apellido_m"]+"</th> <th><div class='col-md-8 col-sm-8 col-xs-8 form-group has-feedback'>Fecha Asignación<input type='date' id='txt_AsigPersonalEntregable' name='txt_AsigPersonalEntregable' class='form-control calendario'></div></th></tr>";
+                                  html1 +="<tbody> <tr><th> <input type='checkbox' name='vehicle' value='Bike'></th><br></th><th> <a href='"+registros[i]["id_persona"]+"' type='button' class='btn btn-link'><img src='"+base_url+"assets/images/user.png' class='avatar' ></a>Gerencia:</br> <h5>Nombre completo:</h5> "+registros[i]["nombres"]+" "+registros[i]["apellido_p"]+" "+registros[i]["apellido_m"]+"</th> <th><div class='col-md-8 col-sm-8 col-xs-8 form-group has-feedback'></div></th></tr>";
                                   $("#txt_idPersona").val(registros[i]["id_persona"]);
+                                  html1 +="</tbody>";
+                                  $("#table_responsable").html(html1);
                                };
-                                 html1 +="</tbody>";
-                             $("#table_responsable").html(html1);
+                               
+                                 
+                           
+                          }else{
+                            alert("no hay data");
                           }
                     }
               });
@@ -95,23 +112,31 @@
 //buscar perona para actividad
         $("#text_buscarPersonaActividad").keyup(function(){
                  var text_buscarPersona = $("#text_buscarPersonaActividad").val();
-                 html1=" . ";
-                 $("#table_responsable2").html(html1);
+                 
                  $.ajax({
                     url: base_url+"index.php/Personal/BuscarPersona",
                     type:"POST",
                     data:{text_buscarPersona:text_buscarPersona},
                     success: function(data){
-                      if(Object.keys(data).length>0)
+                               var registros = eval(data);
+                                html1="";
+                               $("#table_responsable2").html(html1);
+                      if(registros.length>0)
                        {
+
                           var registros = eval(data);
                              html1+="<thead> </thead>"
-                             for (var i = 0; i <registros.length;i++) {
-                                  html1 +="<tbody> <tr><th> <input type='checkbox' name='vehicle' value='Bike'></th><br></th><th> <a href='"+registros[i]["id_persona"]+"' type='button' class='btn btn-link'><img src='"+base_url+"assets/images/user.png' class='avatar' ></a>Gerencia:</br> <h5>Nombre completo:</h5> "+registros[i]["nombres"]+" "+registros[i]["apellido_p"]+" "+registros[i]["apellido_m"]+"</th> <th><div class='col-md-8 col-sm-8 col-xs-8 form-group has-feedback'>Fecha Asignación<input type='date' id='txt_AsigPersonalActividad' name='txt_AsigPersonalActividad' class='form-control calendario'></div></th></tr>";
+                             for (var i = 0; i <1;i++) {
+                                  html1 +="<tbody> <tr><th> <input type='checkbox'></th><br></th><th> <a href='"+registros[i]["id_persona"]+"' type='button' class='btn btn-link'><img src='"+base_url+"assets/images/user.png' class='avatar' ></a>Gerencia:</br> <h5>Nombre completo:</h5> "+registros[i]["nombres"]+" "+registros[i]["apellido_p"]+" "+registros[i]["apellido_m"]+"</th> <th><div class='col-md-8 col</th></tr>";
                                   $("#txt_idPersonaActividad").val(registros[i]["id_persona"]);
+                                  html1 +="</tbody>";
+                                  $("#table_responsable2").html(html1);
                                };
-                                 html1 +="</tbody>";
-                             $("#table_responsable2").html(html1);
+
+                                 
+                        }
+                        else{
+                            alert("no hay data");
                           }
                     }
               });
@@ -120,7 +145,7 @@
 
 
                //Fin buscar responsable
-          $("#form-AsignacionPersonalEntregable").submit(function(event)//para añadir nueva funcion
+          $("#form-AsignacionPersonalEntregable").submit(function(event)//para poder añadir personal al entregable
                   {
                       event.preventDefault();
                       $.ajax({
@@ -132,6 +157,20 @@
                           $('#table_entregable').dataTable()._fnAjaxUpdate();
                           //refresca gantt
                           refrescarGantt();
+                            var registros = eval(resp);
+                          for (var i = 0; i < registros.length; i++) {
+                               if(registros[i]["VALOR"]==1){
+                                   $('#table_entregable').dataTable()._fnAjaxUpdate();
+                                   swal("",registros[i]["MENSAJE"], "success");
+                                   $('#form-AddEntregable')[0].reset();
+                                   $("#VentanaEntregable").modal("hide");
+                                 
+                               }else{
+                                      $('#table_entregable').dataTable()._fnAjaxUpdate();
+                                      swal('',registros[i]["MENSAJE"],'error' );
+                               }
+                           };
+                             $('#table_entregable').dataTable()._fnAjaxUpdate();
                          }
                       });
                   });
@@ -221,6 +260,7 @@ var generarActividadesVertical=function(id_en)
                     $(tbody).on("click","a.editar",function(){
                         var data=table.row( $(this).parents("tr")).data();
                         var id_ctividad=data.id;
+                        //alert(id_ctividad);
                          var txt_idActividadCronograma=$("#txt_idActividadCronograma").val(id_ctividad);
                          $("#txt_NombreActividadTitleResponsable").html(data.title);
                           /*$('select[name=listaFuncionCM]').val(id_funcion);//PARA AGREGAR UN COMBO PSELECIONADO
@@ -243,7 +283,7 @@ var generarActividadesVertical=function(id_en)
                                     "dataSrc":""
                                     },
                                 "columns":[
-                                    {"data":"id_entregable","visible": false},
+                                    {"data":"id_entregable","visible":true},
                                     {"data":"nombre_entregable"},
                                     {"data":"responsable",
                                     "mRender": function ( data, type, full ) {
@@ -265,7 +305,7 @@ var generarActividadesVertical=function(id_en)
                                          return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Complete</small></td>";
                                     }},
                        
-                                    {"defaultContent":"<button type='button' class='actividad btn btn-warning btn-xs' data-toggle='modal' data-target='#VentanaActividades'><i class='glyphicon glyphicon-plus-sign' aria-hidden='true'></i></button></br><button type='button'  class='ListarActividad btn btn-info btn-xs'><i class='glyphicon glyphicon-calendar' aria-hidden='true'></i></button>"}                            
+                                    {"defaultContent":"<button type='button' class='actividad btn btn-warning btn-xs' title='Agregar actividad al entregable' data-toggle='modal' data-target='#VentanaActividades'><i class='glyphicon glyphicon-plus-sign' aria-hidden='true'></i></button></br><button type='button'  class='ListarActividad btn btn-info btn-xs' title='Mostar Calendario de Actividades' ><i class='glyphicon glyphicon-calendar' aria-hidden='true'></i></button></br><button type='button'  class='ListarResponsablesEntregable btn btn-primary btn-xs' data-toggle='modal' data-target='#VentenaResponsablesEntregable' title='Mostrar los responsables del entregable' ><i class='glyphicon  glyphicon-user' title='Ver Responsable' aria-hidden='true'></i></button>"}                            
 
                                 ],
 
@@ -274,7 +314,8 @@ var generarActividadesVertical=function(id_en)
 
                      addActividades("#table_entregable",table);  
                      getActividad("#table_entregable",table);   
-                     AsignacionPersonaEntregables("#table_entregable",table);             
+                     AsignacionPersonaEntregables("#table_entregable",table);  
+                     ListaResponsableEntregable("#table_entregable",table);           
               }
 
                   var AsignacionPersonaEntregables=function(tbody,table){
@@ -283,6 +324,16 @@ var generarActividadesVertical=function(id_en)
                               $('#txt_identregable').val(data.id_entregable);
                              });
                   }
+                  //listar responsables de cada entregable
+                   var ListaResponsableEntregable=function(tbody,table){
+                           $(tbody).on("click","button.ListarResponsablesEntregable",function(){
+                                  var data=table.row( $(this).parents("tr")).data();
+                                  id_entregable=data.id_entregable;
+                                  $("#LabelEntregable").html(data.nombre_entregable);
+                                  ListaResponsableEntregableT(id_entregable);//listar responsable de los entregables
+                             });
+                  }
+                  //fin listar responsables de cada entregable
 
                    var  addActividades=function(tbody,table){
                              $(tbody).on("click","button.actividad",function(){
@@ -299,7 +350,28 @@ var generarActividadesVertical=function(id_en)
 
                              });
                          }
-          
+                        function ListaResponsableEntregableT(id_entregable){
+                          var table=$("#table_responsableEntregable").DataTable({
+                               "processing":true,
+                                "serverSide":false,
+                                destroy:true,
+
+                                   "ajax":{
+                                              "url":base_url+"index.php/FEentregableEstudio/get_ResponsableEntregableE",//lista de entregables
+                                              "method":"POST",
+                                               data:{"id_entregable":id_entregable},
+                                              "dataSrc":"",
+                                              },
+                                          "columns":[
+                                              {"data":"nombre"},
+                                              {"data":"dni"},
+                                              {"data":"fecha_asignacion_entregable"}   
+                                          ],
+
+                                          "language":idioma_espanol
+                                        });
+
+                                }              
 //generar actividades en el calendar
           function generarCalendario(id_en)
           {

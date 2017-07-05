@@ -43,10 +43,6 @@ function getNumProyectosNuevosEvaluacion() {
                     + "</li>";
 
                 menu1_notificacion.append(mensaje_notificacion);
-
-
-              //alert(url);
-
                 mensaje_notificacion = ""
                     + "<li>\n"
                     + "    <a href=\""+ url+"FEformulacion" +"\">\n"

@@ -35,6 +35,7 @@ class FEActividadEntregable extends CI_Controller
         }
     }
     //fin mostrar el abance  de la actividad
+
     public function Add_Actividades()
     {
         if ($this->input->is_ajax_request()) {
@@ -49,16 +50,11 @@ class FEActividadEntregable extends CI_Controller
             $txt_observacio_EntreAc = $this->input->post("txt_observacio_EntreAc");
             $txt_ActividadColor     = $this->input->post("txt_ActividadColor");
 
-            if ($this->Model_FEActividadEntregable->Add_Actividades($opcion, $id_act, $txt_id_entregable, $txt_nombre_act, $txt_fechaActividadI, $txt_fechaActividadf, $txt_valoracionEAc, $txt_AvanceEAc, $txt_observacio_EntreAc, $txt_ActividadColor) == false) {
-                echo "Se Inserto Una Nueva Actividad ";
-            } else {
-                echo "No Se Inserto Una Nueva Actividad ";
-            }
-
+            $data = $this->Model_FEActividadEntregable->Add_Actividades($opcion, $id_act, $txt_id_entregable, $txt_nombre_act, $txt_fechaActividadI, $txt_fechaActividadf, $txt_valoracionEAc, $txt_AvanceEAc, $txt_observacio_EntreAc, $txt_ActividadColor);
+            echo json_encode($data);
         } else {
             show_404();
         }
-
     }
 
     public function Update_Actividades()
