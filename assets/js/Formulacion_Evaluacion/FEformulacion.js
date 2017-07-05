@@ -1,5 +1,4 @@
  $(document).on("ready" ,function(){
-
               ListarFormulacion();
               //REGISTARAR ESTADO ETAPA
    $("#form-AddEtapaEstudio").submit(function(event)
@@ -24,7 +23,7 @@
                       });
                   });
 //REGISTARAR SITUACION
-   $("#form-AddSituacion").submit(function(event)
+$("#form-AddSituacion").submit(function(event)
                   {
                       event.preventDefault();
                       $.ajax({
@@ -42,7 +41,7 @@
                            }
                           $('#table-formulacion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
                              formReset();
-                         }
+                           }
                       });
                   });
    //REGISTARAR asiganar persona
@@ -82,7 +81,6 @@
                      "processing": true,
                       "serverSide":false,
                      destroy:true,
-
                          "ajax":{
                                     url:base_url+"index.php/EstadoEtapa_FE/GetEstadoEtapa_FE",
                                     type:"POST",
@@ -94,8 +92,7 @@
                                     {"data":"fecha"}
                                     //{"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaupdateEstadoFE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
-
-                                "language":idioma_espanol
+                               "language":idioma_espanol
                     });
                 }
  //LISTAR DENOMINACION DE FORMULACION Y EVALUACION EN TABLA
@@ -132,7 +129,7 @@
                                     "mRender": function ( data, type, full )
                                      {
 
-                                         return '<a  href="../../FEentregableEstudio/ver_FEentregable/'+data+'"><button type="button" class="btn btn btn-primary btn-xs"><i class="fa fa-tasks"></i> </button></a>';
+                                         return '<a href="../../FEentregableEstudio/ver_FEentregable/'+data+'"><button type="button" class="btn btn btn-primary btn-xs"><i class="fa fa-tasks"></i> </button></a><button type="button" class="gant btn btn-info btn-xs" data-toggle="modal" data-target="#ventanagant"><i class="glyphicon glyphicon-fullscreen" aria-hidden="true"></i></button>';
                                       }
                                     },
 {"defaultContent":"<button type='button' class='EstadoFE btn btn-success btn-xs' data-toggle='modal' data-target='#VentanaEstadoFE'><i class='fa fa-dashboard' aria-hidden='true'></i></button><button type='button' class='Situacion btn btn-warning btn-xs' data-toggle='modal' data-target='#VentanaSituacionActual'><i class='fa fa-comments' aria-hidden='true'></i></button><button type='button'  class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#VentanaAsignarPersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button>"}
@@ -141,7 +138,6 @@
                     });
                    // DenominacionFE("#table-DenominacionFE",table);
                    $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
-
         new $.fn.DataTable.Buttons(table, {
           buttons: [
            {
@@ -186,9 +182,9 @@
                     SituacionActual("#table-formulacion",table);
                      RegistarPersona("#table-formulacion",table);
                      RegistarEstadoFE("#table-formulacion",table);
+                     gant("#table-formulacion",table);
                 }
 //LISTAR DENOMINACION DE FORMULACION Y EVALUACION EN TABLA
-
 var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
   {
     html1="";
@@ -212,7 +208,6 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
                       }
                     });
     }
-
            var  ListaFormulacion=function(tbody,table){
                                $(tbody).on("click","a.VerDetalleFormulacion",function(){
                               var data=table.row( $(this).parents("tr")).data();
@@ -257,7 +252,6 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
                         }
                     });
                 }
-
                 var listarsituacionFE=function(valor){
                      html="";
                     $("#Cbx_Situacion").html(html);
@@ -278,16 +272,26 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
                         }
                     });
                 }
-/*Asiganar Persona*/
- var  RegistarPersona=function(tbody,table){
+                /*gant*/
+                   var  gant=function(tbody,table){
+                                      $(tbody).on("click","button.gant",function(){
+                                          var data=table.row( $(this).parents("tr")).data();
+                                          var id=data.id_etapa_estudio;
+                                          //mostrar el gant en el modal
+                                            gantt.init("gantt_here");
+                                          gantt.refreshData();
+                                          gantt.load('http://localhost/smp/index.php/FEentregableEstudio/ver_FEentregable/'+id);
+                                     });
+                                  }
+                                  /*Asiganar Persona*/
+var  RegistarPersona=function(tbody,table){
                     $(tbody).on("click","button.AsignarPersona",function(){
                         var data=table.row( $(this).parents("tr")).data();
                         var txt_IdEtapa_Estudio_p=$('#txt_IdEtapa_Estudio_p').val(data.id_etapa_estudio);
                          listarPersonaFE();
-
                   });
                 }
-  var listarPersonaFE=function(valor){
+var listarPersonaFE=function(valor){
                      html="";
                     $("#Cbx_Persona").html(html);
                     event.preventDefault();
@@ -308,7 +312,6 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
                         }
                     });
                 }
-
                   var listarCargoFE=function(valor){
                      html="";
                     $("#Cbx_Cargo").html(html);
@@ -329,10 +332,6 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
                         }
                     });
                 }
-
-
-
-
             var idioma_espanol=
                 {
                     "sProcessing":     "Procesando...",

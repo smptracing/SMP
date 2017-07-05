@@ -168,7 +168,6 @@ $(document).on("ready" ,function(){
 
                                       if (data.denom_etapas_fe =='Formulación') 
                                       {
-
                                      // return "<td><button  type='button' class='btn btn-primary btn-xs'>"+data.denom_etapas_fe + "</button></td>";
                                          return '<a  href="../FEformulacion/Feformulacion/'+data.id_est_inv+'"><button type="button" class="btn btn btn-primary btn-xs">'+data.denom_etapas_fe +' </button></a>';
                                       }

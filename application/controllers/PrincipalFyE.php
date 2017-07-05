@@ -25,7 +25,9 @@ class PrincipalFyE extends CI_Controller
         if ($this->input->is_ajax_request()) {
             $datos = $this->Model_DashboardFE->getDatosEstudiosInversion();
             echo json_encode($datos);
-        } else
+        } else {
             show_404();
+        }
+
     }
 }

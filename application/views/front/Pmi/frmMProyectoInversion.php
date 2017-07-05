@@ -31,88 +31,88 @@
                                            <!-- /panel de brechas desde el row -->
                                         <div role="tabpanel" class="tab-pane fade active in" id="tab_brecha" aria-labelledby="home-tab">
                                              <!-- /tabla de brechas desde el row -->
-                                            <div class="row">  
+                                            <div class="row">
                                               <div class="col-md-12 col-sm-12 col-xs-12">
                                                         <div class="x_panel">
-                                                          <div class="row" class="container-fluid"> 
-                                                                
+                                                          <div class="row" class="container-fluid">
+
                                                                 <div class="col-md-1">
                                                                     <button id="btn-NuevoProyectoI" type="button" class="btn btn-primary " data-toggle="modal" data-target="#VentanaRegistraPIP">  <span class="fa fa-plus-circle"></span> Nuevo </button>
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                </div>
-                                                                <div class="col-md-3">                                                         
+                                                                <div class="col-md-3">
                                                                      <div class="col-md-4">
                                                                         <a href="<?php echo site_url('CarteraInversion/'); ?>"><i class="fa fa-suitcase"></i>Cartera</a>
                                                                      </div>
                                                                      <div class="col-md-8">
                                                                           <select  id="cbCartera" class="form-control" name="cbCartera" value="cartera" ></select>
-                                                                          <input type="hidden" id="Aniocartera" value="<?php echo $this->session->userdata('AnioC'); ?>">                                                                          
+                                                                          <input type="hidden" id="Aniocartera" value="<?php echo $this->session->userdata('AnioC'); ?>">
                                                                     </div>
                                                                </div>
-                                 
+
                                                                 <div class="col-md-2">
-                                                                    <form action="<?php echo base_url('index.php/ReporteProgramacion/action');?>" method="POST" >
-                                                                      <button  type="submit" class="btn btn-primary">  <span class="fa fa-file-text"></span> Exportar exel</button>                 
+                                                                    <form action="<?php echo base_url('index.php/ReporteProgramacion/action'); ?>" method="POST" >
+                                                                      <button  type="submit" class="btn btn-primary">  <span class="fa fa-file-text"></span> Exportar exel</button>
                                                                     </form>
                                                                 </div>
                                                                <div class="col-md-2">
                                                                     <button id="btn-Importar" type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaImportar">  <span class="fa fa-plus-circle"></span> Importar Excel </button>
                                                                </div>
-                                                          </div> 
+                                                          </div>
                                                       <div class="x_content">
                                                         <table id="table-ProyectoInversionProgramado" class="table table-striped table-bordered table-hover table-responsive display  compact " ellspacing="0" width="100%">
                                                               <thead>
                                                                 <tr>
                                                                   <th class="col-sm-1">Id</th>
                                                                   <th class="col-sm-1"><center>Código Único</center></th>
-                                                                  <th class="col-sm-1"><center>Ciclo de Inversión</center></th>                                                                  
+                                                                  <th class="col-sm-1"><center>Ciclo de Inversión</center></th>
                                                                   <th class="col-sm-1"><center>Inversión</center></th>
-                                                                  <th class="col-sm-1"><center>Prioridad</center></th>   
-                                                                  <th class="col-sm-1"><center>Brecha</center></th>                                                               
+                                                                  <th class="col-sm-1"><center>Prioridad</center></th>
+                                                                  <th class="col-sm-1"><center>Brecha</center></th>
                                                                   <th class="col-sm-1"><center><div id="programacion1">
-                                                                  <?php if($this->session->userdata('AnioC')==""){?>
+                                                                  <?php if ($this->session->userdata('AnioC') == "") {?>
                                                                              <h6><label id="AnioProgramadoActual"></label></h6></center></div></th>
-                                                                  <?php }else{?>
-                                                                  <?php echo ($this->session->userdata('AnioC')+1); ?></center></div></th>
+                                                                  <?php } else {?>
+                                                                  <?php echo ($this->session->userdata('AnioC') + 1); ?></center></div></th>
                                                                   <?php }?>
 
 
                                                                   <th class="col-sm-1"><center><div id="programacion2">
-                                                                  <?php if($this->session->userdata('AnioC')==""){?>
+                                                                  <?php if ($this->session->userdata('AnioC') == "") {?>
                                                                             <h6><label id="AnioProgramadoActual1"></label></h6></center></div></th>
-                                                                  <?php }else{?>
-                                                                  <?php echo ($this->session->userdata('AnioC')+2); ?></center></div></th>
-                                                                  <?php }?>        
+                                                                  <?php } else {?>
+                                                                  <?php echo ($this->session->userdata('AnioC') + 2); ?></center></div></th>
+                                                                  <?php }?>
 
 
                                                                   <th class="col-sm-1"><center><div id="programacion3">
-                                                                  <?php if($this->session->userdata('AnioC')==""){?>
+                                                                  <?php if ($this->session->userdata('AnioC') == "") {?>
                                                                             <h6><label id="AnioProgramadoActual2"></label></h6></center></div></th>
-                                                                  <?php }else{?>
-                                                                  <?php echo ($this->session->userdata('AnioC')+3); ?></center></div></th>
+                                                                  <?php } else {?>
+                                                                  <?php echo ($this->session->userdata('AnioC') + 3); ?></center></div></th>
                                                                   <?php }?>
 
                                                                   <th class="col-sm-1"><center><div id="programacion1">
-                                                                    <?php if($this->session->userdata('AnioC')==""){?>
+                                                                    <?php if ($this->session->userdata('AnioC') == "") {?>
                                                                             <h6><label id="AnioProgramadoActualM"></label></h6></center></div></th>
-                                                                  <?php }else{?>
-                                                                  <?php echo ($this->session->userdata('AnioC')+1); ?></center></div></th>
+                                                                  <?php } else {?>
+                                                                  <?php echo ($this->session->userdata('AnioC') + 1); ?></center></div></th>
                                                                   <?php }?>
 
                                                                   <th class="col-sm-1"><center><div id="programacion2">
-                                                                  <?php if($this->session->userdata('AnioC')==""){?>
+                                                                  <?php if ($this->session->userdata('AnioC') == "") {?>
                                                                             <h6><label id="AnioProgramadoActualM1"></label></h6></center></div></th>
-                                                                  <?php }else{?>
-                                                                  <?php echo ($this->session->userdata('AnioC')+2); ?></center></div></th>
+                                                                  <?php } else {?>
+                                                                  <?php echo ($this->session->userdata('AnioC') + 2); ?></center></div></th>
                                                                   <?php }?>
-                                                                  
+
 
                                                                   <th class="col-sm-1"><center><div id="programacion3">
-                                                                  <?php if($this->session->userdata('AnioC')==""){?>
+                                                                  <?php if ($this->session->userdata('AnioC') == "") {?>
                                                                             <h6><label id="AnioProgramadoActualM2"></label></h6></center></div></th>
-                                                                  <?php }else{?>
-                                                                  <?php echo ($this->session->userdata('AnioC')+3); ?></center></div></th>
+                                                                  <?php } else {?>
+                                                                  <?php echo ($this->session->userdata('AnioC') + 3); ?></center></div></th>
                                                                   <?php }?>
 
                                                                   <th class="col-sm-1"><center> Tipo de Inversión</center></th>
@@ -133,24 +133,24 @@
                                                                   <th class="col-sm-1">Programa pres</th>
                                                                   <th class="col-sm-1">Fecha Registro</th>
                                                                   <th class="col-sm-1">Fecha Viabilidad</th>
-                                                                 
+
                                                                   <th class="col-sm-1"></th>
                                                                 </tr>
                                                               </thead>
-                                                              
+
                                                             </table>
                                                           </div>
                                                         </div>
                                                       </div>
-                                                     
+
                                             </div>
-                                        
+
 
                                         </div>
                                            <!-- / fin panel de brechas desde el row -->
-                                          
+
                                           <div role="tabpanel" class="tab-pane fade" id="tab_programacion" aria-labelledby="profile-tab">
-                           
+
                                               <div class="x_content">
                                                             <table id="table-modificarprogramacion" class="ui celled table nowrap" ellspacing="0" width="100%">
                                                               <thead>
@@ -160,7 +160,7 @@
                                                                   <th class="col-sm-1">AÑO APERTURA CARTERA</th>
                                                                   <th class="col-sm-1">ID BRECHA</th>
                                                                   <th class="col-sm-1">BRECHA</th>
-                                                                  <th class="col-sm-1">ID PROYECTO</th>                                                                 
+                                                                  <th class="col-sm-1">ID PROYECTO</th>
                                                                   <th class="col-sm-1">NOMBRE DE INVERSIÓN</th>
                                                                   <th class="col-sm-1">MONTO PROGRAMADO</th>
                                                                   <th class="col-sm-1">AÑO PROGRAMADO</th>
@@ -168,10 +168,10 @@
                                                                   <th class="col-sm-1">MONTO OPERACIÓN Y MANTENIMIENTO</th>
                                                                   <th class="col-sm-1"></th>
                                                                 </tr>
-                                                              </thead>      
+                                                              </thead>
                                                             </table>
                                                           </div>
-                                               </div>    
+                                               </div>
                                             </div>
                                     </div>
 
@@ -179,16 +179,16 @@
                                 </div>
               </div>
 
-             
+
           </div>
           <div class="clearfix"></div>
         </div>
      </div>
-        
+
 <!-- modal -->
 
 
-<!-- /.ventana para registra un nuevo PIP -->     
+<!-- /.ventana para registra un nuevo PIP -->
 <div class="modal fade" id="VentanaRegistraPIP" role="dialog" data-backdrop="static">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
@@ -199,7 +199,7 @@
         <div class="modal-body">
          <div class="row">
                     <div class="col-xs-12">
-                                      
+
                              <div class="wizard" role="tabpanel">
                           <!-- Nav tabs -->
                           <ul class="nav nav-tabs" role="tablist">
@@ -210,7 +210,7 @@
                           <!-- Tab panes -->
                           <div class="tab-content">
                             <div role="tabpanel" class="tab-pane active fade in" id="first">
-                                   <form class="form-horizontal " id="form-addProyectoInversion" action="<?php echo  base_url();?>MProyectoInversion/AddProyectoInversion" method="POST" >
+                                   <form class="form-horizontal " id="form-addProyectoInversion" action="<?php echo base_url(); ?>MProyectoInversion/AddProyectoInversion" method="POST" >
                                    <br>
 
                                     <div class="row">
@@ -225,7 +225,7 @@
                                     <br>
                                     <div class="row">
                                       <div class="col-md-4">
-                                        
+
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                             <label  for="name">Tipo inversion<span class="required">*</span>
                                         </label>
@@ -234,7 +234,7 @@
                                          </div>
                                       </div>
                                       <div class="col-md-4">
-                                      
+
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                              <label for="textbox"><span class="required">Ciclo de Inversion</span>
                                         </label>
@@ -243,7 +243,7 @@
                                             </div>
                                       </div>
                                        <div class="col-md-4">
-                         
+
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                <label  for="textbox"><span class="required">Tipologia de Inversion</span>
                                                 </label>
@@ -252,12 +252,12 @@
                                             </div>
                                       </div>
                               </div>
-                           
+
                                     <hr>
                                  <div class="row">
 
                                       <div class="col-md-12">
-                              
+
                                         <label class="control-label col-md-1 col-sm-12 col-xs-12" for="name">Inversion<span class="required"></span>
                                         </label>
                                          <div class="col-md-12 col-sm-12 col-xs-12">
@@ -265,12 +265,12 @@
                                             <!--<textarea  id="txtNombrePip" name="txtNombrePip" class="form-control" data-validate-length-range="6" data-validate-words="2" placeholder="Nombre Inversion"></textarea>-->
                                         </div>
                                       </div>
-                                     
+
                                  </div>
                               <hr>
                                <div class="row">
                                       <div class="col-md-4">
-                                        
+
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                             <label  for="name">Naturaleza<span class="required">*</span>
                                         </label>
@@ -279,7 +279,7 @@
                                          </div>
                                       </div>
                                       <div class="col-md-4">
-                                      
+
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                              <label  for="textbox"><span class="required">Nivel de Gobierno</span>
                                         </label>
@@ -288,7 +288,7 @@
                                             </div>
                                       </div>
                                        <div class="col-md-4">
-                         
+
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                <label  for="textbox"><span class="required">Unidad Ejecutora</span>
                                                 </label>
@@ -297,11 +297,11 @@
                                             </div>
                                       </div>
                               </div>
- 
+
                                <div class="row">
 
                                       <div class="col-md-4">
-                                        
+
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                             <label for="name">Departamento<span class="required">*</span>
                                         </label>
@@ -311,7 +311,7 @@
                                          </div>
                                       </div>
                                       <div class="col-md-4">
-                                      
+
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                              <label for="textbox"><span class="required">Provincia</span>
                                         </label>
@@ -320,7 +320,7 @@
                                             </div>
                                       </div>
                                        <div class="col-md-4">
-                         
+
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                               <label  for="textbox"><span class="required">Distrito</span>
                                               </label>
@@ -332,9 +332,9 @@
                               </div>
 
                                <div class="row">
-                               
+
                                       <div class="col-md-4">
-                                        
+
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                             <label for="name" style="text-align:left">Funcion<span class="required">*</span>
                                         </label>
@@ -343,7 +343,7 @@
                                          </div>
                                       </div>
                                       <div class="col-md-4">
-                                      
+
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                              <label  for="textbox"><span class="required">Division</span>
                                         </label>
@@ -352,7 +352,7 @@
                                             </div>
                                       </div>
                                        <div class="col-md-4">
-                         
+
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                           <label for="textbox"><span class="required">Grupo</span>
                                         </label>
@@ -361,11 +361,11 @@
                                             </div>
                                       </div>
                               </div>
-                     
+
                                   <hr>
                                    <div class="row">
                                       <div class="col-md-4">
-                                        
+
                                             <div class="col-md-11 col-sm-6 col-xs-12">
                                             <label  for="name">Costo de Inversion<span class="required">*</span>
                                         </label>
@@ -373,7 +373,7 @@
                                          </div>
                                       </div>
                                       <div class="col-md-4">
-                                      
+
                                             <div class="col-md-11 col-sm-6 col-xs-12">
                                              <label for="textbox"><span class="required">Devengado</span>
                                              </label>
@@ -381,19 +381,19 @@
                                             </div>
                                       </div>
                                        <div class="col-md-4">
-                         
+
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                <label  for="textbox"><span class="required">PIM</span>
                                                 </label>
-                                                 <select id="cbxMetaPresupuestal" name="cbxMetaPresupuestal" class="selectpicker"   title="Elija PIM">  
+                                                 <select id="cbxMetaPresupuestal" name="cbxMetaPresupuestal" class="selectpicker"   title="Elija PIM">
                                                  </select>
                                             </div>
                                       </div>
                               </div>
- 
+
                                   <div class="row">
                                       <div class="col-md-4">
-                                        
+
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                             <label  for="name">Fuente Finan.<span class="required">*</span>
                                             </label>
@@ -402,7 +402,7 @@
                                          </div>
                                       </div>
                                       <div class="col-md-4">
-                                      
+
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                              <label for="textbox"><span class="required">Rubro Ejecucion</span>
                                              </label>
@@ -411,7 +411,7 @@
                                             </div>
                                       </div>
                                        <div class="col-md-4">
-                         
+
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                <label  for="textbox"><span class="required">Modalidad</span>
                                                 </label>
@@ -422,7 +422,7 @@
                               </div>
                                <div class="row">
                                       <div class="col-md-4">
-                                        
+
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                             <label  for="name">Programa<span class="required">*</span>
                                             </label>
@@ -431,11 +431,11 @@
                                          </div>
                                       </div>
                                       <div class="col-md-4">
-                                      
-                                        
+
+
                                       </div>
                                        <div class="col-md-4">
-                         
+
                                       </div>
                               </div>
 
@@ -454,7 +454,7 @@
                                           <input type="date" id="dateFechaViabilidad" name="dateFechaViabilidad" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text">
                                         </div>
                                     </div>
-                                        
+
                                         <div class="item form-group">
                                           <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Direccion Ubigeo<span class="required">*</span>
                                           </label>
@@ -476,7 +476,7 @@
                                             <input id="txtLongitud" name="txtLongitud" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Longitud" required="required" type="text">
                                           </div>
                                         </div>
-                              
+
                                         <div class="item form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Fecha estado ciclo<span class="required">*</span>
                                             </label>
@@ -484,7 +484,7 @@
                                               <input type="date" id="dateFechaEstCicInv" name="dateFechaEstCicInv" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text">
                                             </div>
                                         </div>
-                                      
+
                                          <div class="item form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Fecha Fuente Financiamiento<span class="required">*</span>
                                             </label>
@@ -492,7 +492,7 @@
                                               <input type="date" id="dateFechaFuenteFinanc" name="dateFechaFuenteFinanc" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text">
                                             </div>
                                         </div>
-                                         
+
                                         <div class="item form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Fecha Modalidad Ejecucion<span class="required">*</span>
                                             </label>
@@ -501,14 +501,14 @@
                                             </div>
                                         </div>   -->
                                     <div class="ln_solid"></div>
-                                     
+
                                   </form>
 
                             </div>
                             <div role="tabpanel" class="tab-pane fade" id="second">
 
-                                <form class="form-horizontal " id="form-addProgramacion" action="<?php echo  base_url();?>Programacion/AddProgramacion" method="POST" >
-                                 
+                                <form class="form-horizontal " id="form-addProgramacion" action="<?php echo base_url(); ?>Programacion/AddProgramacion" method="POST" >
+
                                      <div class="item form-group">
                                          <!-- <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Cartera</span>
                                           </label>-->
@@ -517,7 +517,7 @@
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                           <input id="textidCartera" name="textidCartera" type="hidden" class="form-control col-md-7 col-xs-5" >
                                         </div>
-         
+
                                         </div>
                                      </div>
                                      <div class="item form-group">
@@ -545,16 +545,16 @@
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                           <input id="textidpip" name="textidpip" type="hidden" class="form-control col-md-7 col-xs-5" >
                                         </div>
-                                    </div>                               
+                                    </div>
                                      <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Monto programado<span class="required">*</span>
                                         </label>
-                                        
+
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                           <button id="btn-ProgramarMontos" type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaMontoProgramado"> >> Agregar</button>
                                         </div>
                                     </div>
-         
+
                                     <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Prioridad programado<span class="required">*</span>
                                         </label>
@@ -577,22 +577,22 @@
                                         </div>
                                     </div>-->
                                     <table id="table-Programacion" class="table table-striped table-bordered table-hover table-responsive" ellspacing="0" width="100%">
-                                                              
-                                   </table>   
+
+                                   </table>
                                      <span></span><div class="col-md-6 col-md-offset-3">
                                         <button  type="submit" class="btn btn-success" >
                                           <span class="glyphicon glyphicon-floppy-saved " aria-hidden="true"></span>
                                            FINALIZAR</button>
-                                     </div> 
+                                     </div>
 
                                   </form>
-                                    
-                                                                      
+
+
                             </div>
-                         
+
                           </div>
-                        </div> 
-           
+                        </div>
+
                     </div>
            </div><!-- /.row -->
         </div>
@@ -647,7 +647,7 @@
                      </div><!-- /.row -->
             </div>
             <div class="modal-footer">
-              
+
             </div>
           </div>
         </div>
@@ -682,7 +682,7 @@
                                </div>
                             </div>
 
-                         
+
 
                           <div class="ln_solid"></div>
                           <div class="form-group">
@@ -698,7 +698,7 @@
                      </div><!-- /.row -->
             </div>
             <div class="modal-footer">
-              
+
             </div>
           </div>
         </div>
@@ -706,6 +706,7 @@
      <!-- ventana para programar montos de operacion y mantenimiento -->
 
 <!-- /.FIN PARA PROGRAMAR MONTOS PROGRAMADOS Y MONTOS DE OPERACION Y MANTENIMIENTO -->
+
 <!-- PARA LISTAR LA PROGRAMACION EN HORIZONTAL CADA UNA -->
 <div id="VerDetallehorizontal" class="modal fade" role="dialog">
   <div class="modal-dialog-lag">
@@ -718,18 +719,18 @@
       </div>
       <div class="modal-body">
         <div class="row">
-            <div class="table-responsive">    
+            <div class="table-responsive">
 
               <table id="DetalleProgramacionHori" style="overflow-y:scroll;" class="table table-bordered table-hover table-striped table-inverse table-sm" ellspacing="0" width="100%">
-                
+
               </table>
-              
+
         </div>
-      </div>    
-    
+      </div>
+
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cerra</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
 
@@ -751,7 +752,7 @@
                    <div class="col-xs-12">
                    <!-- PAGE CONTENT BEGINS -->
                               <form class="form-horizontal" id="form-ActualizarProgramacion"  method="POST">
-                                           
+
                                           <div class="item form-group">
                                                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">CARTERA</span>
                                                   </label>
@@ -809,12 +810,12 @@
                                                       </button>
                                                   </div>
                                             </div>
-                              
+
                              </form>
                         </div><!-- /.span -->
                  </div><!-- /.row -->
                  </div>
-                <div class="modal-footer"> 
+                <div class="modal-footer">
                 </div>
           </div>
     </div>
@@ -866,7 +867,7 @@
 <!-- /.fin importar-->
 
 
-<!-- /.VER PROYECTO DETALLADO-->     
+<!-- /.VER PROYECTO DETALLADO-->
 <div class="modal fade" id="VerDetalleProyectoInversion" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
@@ -876,29 +877,29 @@
         </div>
         <div class="modal-body">
          <div class="row">
-            <div class="table-responsive">    
+            <div class="table-responsive">
 
                 <table id="table-detalleProyectoInversion" class="table table-bordered table-hover table-sm" width="100%" border="0"  cellpadding="10" >
-                  
+
                 </table>
-   
+
                 <table id="table-detalleProgramacion" class="table table-bordered table-hover table-sm" width="100%" >
-                  
+
                 </table>
           </div>
         </div>
         <div class="modal-footer">
-          <form action="<?php echo base_url('index.php/ReporteProgramacion/PdfProyectoProgramado');?>" method="POST" >
-            IDE PROYECTO<input type="text" id="CodigoProgramacion" name="CodigoProgramacion"> 
+          <form action="<?php echo base_url('index.php/ReporteProgramacion/PdfProyectoProgramado'); ?>" method="POST" >
+            IDE PROYECTO<input type="text" id="CodigoProgramacion" name="CodigoProgramacion">
           <button type="submit" class="btn btn-success">  <span class="fa fa-print"></span>IMPRIMIR</button>
-          <button  data-dismiss="modal" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Cancelar</button>  
-          </form>                
+          <button  data-dismiss="modal" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Cancelar</button>
+          </form>
         </div>
       </div>
     </div>
   </div>
 <!-- /.VER DETALLE DE PROYECTO->
-<!- /.VER EN VERTICAR DETALLE DE CADA PROYECTO-->   
+<!- /.VER EN VERTICAR DETALLE DE CADA PROYECTO-->
 
 
- 
+

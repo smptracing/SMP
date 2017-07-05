@@ -15,7 +15,6 @@
                       });
                   });
                 $("#txt_valoracionEAc").keyup(function(){//verificar si el actividades supera el o no el cien porciento para inavilitar el boton
-                   
                    var sumaValoracion=$("#txt_valoracionEAc").val();
                    var  txt_id_entregable =$("#txt_id_entregable").val();
                   $.ajax({
@@ -26,7 +25,6 @@
                                 var registros = eval(data); 
                                for (var i = 0; i <registros.length;i++) {
                                     sumaValoracion=parseInt(sumaValoracion)+parseInt(registros[i]["valoracion"]);
-                                    
                                  };
                                  if(sumaValoracion>100){
                                     document.getElementById('btn_actividadC').disabled=true;
@@ -34,12 +32,9 @@
                                  }else{
                                     document.getElementById('btn_actividadC').disabled=false;
                                  }
-
-                                 
-                              }
+                               }
                         });
               });
-
                 //fin añadir actividades al entregable
                 //Sive para calcular el avance del entregable  asocido a una actividad cuando este actualizando en el calendario
                  $("#form-UpdateActividades_Entregable").submit(function(event)
@@ -72,12 +67,8 @@
                          }
                       });
                   });
-                
 
-
-    
   });
-
 function CalcularAvanceAc(txt_NombreActividadAc,txt_idEntregable){//calcula el avance de la actividada
                     event.preventDefault(); 
                   var suma=0;
@@ -94,11 +85,8 @@ function CalcularAvanceAc(txt_NombreActividadAc,txt_idEntregable){//calcula el a
                                };
                                UpdateEntregableAvance(suma,id_entregable);//para enviar el avance al entregable cuando se actualiza la actividad
                             }
-
                           });
-
 }
-
 function UpdateEntregableAvance(sumaTotalAvance,id_entregable){//avance total del entregable 
           event.preventDefault(); 
                    $.ajax({
@@ -110,9 +98,7 @@ function UpdateEntregableAvance(sumaTotalAvance,id_entregable){//avance total de
                               get_entregableId(id_entregable);//para traer el id de etapa de estudio
                       }
               });
-
 }
-
   function get_entregableId(id_entregable){//para traer la etaapa de estudio el cual pertenece mi entregable y calcular 
             event.preventDefault();
             $.ajax({
@@ -127,9 +113,7 @@ function UpdateEntregableAvance(sumaTotalAvance,id_entregable){//avance total de
                     calcular_AvaceFisico(id_etapa_estudio);                   
               }
             });
-
   }
-
    function calcular_AvaceFisico(id_etapa_estudio){
        event.preventDefault();
             $.ajax({

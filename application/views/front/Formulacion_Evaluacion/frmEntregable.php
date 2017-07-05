@@ -51,14 +51,16 @@
 
                                                   <div class="col-md-12 col-xs-12">
                                                         <div class="x_panel">
-                                                        
-                                                                                <ul class="bs-glyphicons-list">
-                                                                                  <button type="button" id="btn_entregable" class="btn btn-primary" data-toggle="modal" data-target="#VentanaEntregable" >
-                                                                                        <span class="glyphicon glyphicon-new-window" aria-hidden="true"> Nuevo</span>
-                                                                                  </button>
-                                                                                  </li>
-                                                                                </ul>
-                                                          
+                                                      <ul class="bs-glyphicons-list">
+                                                      <li>
+                                                        <button type="button" id="btn_entregable" class="btn btn-primary" data-toggle="modal" data-target="#VentanaEntregable" >
+                                                              <span class="glyphicon glyphicon-new-window" aria-hidden="true"> Nuevo</span>
+                                                        </button>
+                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ventanagant" >
+                                                              <span class="glyphicon glyphicon-new-window" aria-hidden="true"> Gant</span>
+                                                        </button>
+                                                        </li>
+                                                       </ul>
                                                           <div class="x_content">
 
                                                                   <!-- start project list -->
@@ -93,7 +95,7 @@
 
                                                   <div class="col-md-12 col-sm-12 col-xs-12">
                                                         <div class="x_panel">
-                                                            
+
                                                           <div class="x_title">
                                                             <ul class="nav navbar-right panel_toolbox">
 
@@ -233,50 +235,13 @@
                   </div>
                 </div>
               </div>
-
               <!-- /form color picker -->
-
-              <!-- form input knob -->
-              <div class="col-md-12">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2></h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                          <li><a href="#">Settings 1</a>
-                          </li>
-                          <li><a href="#">Settings 2</a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li><a class="close-link"><i class="fa fa-close"></i></a>
-                      </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-
-                  </div>
-                </div>
-              </div>
-              <!-- /form input knob -->
-
             </div>
-
-
-
-
             <div class="row">
-
           </div>
         </div>
 
       </div>
-
 <!--- agregar los  entregable-->
 <div class="modal fade" id="VentanaEntregable" role="dialog">
     <div class="modal-dialog">
@@ -454,9 +419,6 @@
                              <input type="text" class="form-control" id="txt_ActividadColorAc" name="txt_ActividadColorAc">
                             <span class="input-group-addon"><i style="background-color: rgb(224, 26, 181);"></i></span>
                       </div>
-
-
-
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
@@ -527,14 +489,9 @@
                              <span class="glyphicon glyphicon-remove"></span>
                             Cancelar
                           </button>
-
                         </div>
                       </div>
-
-
-
-
-                </form>
+               </form>
             </div>
          </div>
         </div>
@@ -602,3 +559,62 @@
       </div>
     </div>
   </div>
+
+
+<!-- venta gant -->
+<div id="ventanagant" class="modal fade" role="dialog">
+  <div class="modal-dialog-lag">
+
+    <!-- Modal content-->
+    <div class="modal-content" id="ProgramacionHorizontal">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Detalle de programación</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+            <div class="table-responsive">
+
+                  <div class="x_content" style='height:100%;width:100%; padding:0px; margin:0px; overflow: hidden;'>
+  <input value="Export to PDF" type="button" onclick='gantt.exportToPDF({ callback:show_result })' style='margin:20px;'>
+  <input value="Export to PNG" type="button" onclick='gantt.exportToPNG({ callback:show_result })' style='margin:20px;'>
+  <input value="Export to Excel" type="button" onclick='gantt.exportToExcel({ callback:show_result })' style='margin:20px;'>
+  <input value="Export to iCal" type="button" onclick='gantt.exportToICal({ callback:show_result })' style='margin:20px;'>
+  <div id="gantt_here" style='height:400px;width:100%; padding:10px; margin:0px;'></div>
+  <script type="text/javascript">
+    function show_result(info){
+      if (!info)
+        gantt.message({
+          text:"Server error",
+          type:"error",
+          expire:-1
+        });
+      else
+        gantt.message({
+          text:"Stored at <a href='"+info.url+"'>export.dhtlmx.com</a>",
+          expire:-1
+        });
+    }
+    gantt.templates.task_text = function(s,e,task){
+      return "Export" + task.text;
+    }
+    gantt.config.columns[0].template = function(obj){
+      return obj.text + " -";
+    }
+    gantt.init("gantt_here");
+    gantt.load(window.location.href);
+  </script>
+
+                  </div>
+        </div>
+      </div>
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- fin venta gant-->

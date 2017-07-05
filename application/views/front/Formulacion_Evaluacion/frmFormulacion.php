@@ -291,20 +291,20 @@
                       </div>
                      <div class="ln_solid"></div>
                      <div class="x_panel" style="background-color: #EEEEEE;">
-<center>
-                                                                <table  style="width:50%;" id="table-EstadoEtapa" class="table   table-hover" >
-                                                                    <thead >
-                                                                       <tr>
-                                                                         <th style="width: 1%"><i class="fa fa-thumb-tack"></i> ESTADO </th>
-                                                                         <th style="width: 40%" ><i class="fa fa-thumb-tack"></i> Estado</th>
-                                                                         <th style="width: 10%"><i class="fa fa-calendar"></i> Fecha Actualización
-                                                                        </th>
-                                                                      </tr>
-                                                                   </thead>
-                                                                </table>
-</center>
-</div>
-<center>
+                    <center>
+                    <table  style="width:50%;" id="table-EstadoEtapa" class="table   table-hover" >
+                    <thead >
+                       <tr>
+                         <th style="width: 1%"><i class="fa fa-thumb-tack"></i> ESTADO </th>
+                         <th style="width: 40%" ><i class="fa fa-thumb-tack"></i> Estado</th>
+                         <th style="width: 10%"><i class="fa fa-calendar"></i> Fecha Actualización
+                        </th>
+                      </tr>
+                    </thead>
+                    </table>
+                    </center>
+                    </div>
+                    <center>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
 
@@ -327,3 +327,57 @@
     </div>
 </div>
 <!-- /.fin de  ventana Registar Persona-->
+
+<!-- venta gant -->
+<div id="ventanagant" class="modal fade" role="dialog">
+  <div class="modal-dialog-lag">
+
+    <!-- Modal content-->
+    <div class="modal-content" id="ProgramacionHorizontal">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Detalle de programación</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+            <div class="table-responsive">
+                  <div class="x_content" style='height:100%;width:100%; padding:0px; margin:0px; overflow: hidden;'>
+  <input value="Export to PDF" type="button" onclick='gantt.exportToPDF({ callback:show_result })' style='margin:20px;'>
+  <input value="Export to PNG" type="button" onclick='gantt.exportToPNG({ callback:show_result })' style='margin:20px;'>
+  <input value="Export to Excel" type="button" onclick='gantt.exportToExcel({ callback:show_result })' style='margin:20px;'>
+  <input value="Export to iCal" type="button" onclick='gantt.exportToICal({ callback:show_result })' style='margin:20px;'>
+  <div id="gantt_here" style='height:400px;width:100%; padding:10px; margin:0px;'></div>
+      <script type="text/javascript">
+        function show_result(info){
+          if (!info)
+            gantt.message({
+              text:"Server error",
+              type:"error",
+              expire:-1
+            });
+          else
+            gantt.message({
+              text:"Stored at <a href='"+info.url+"'>export.dhtlmx.com</a>",
+              expire:-1
+            });
+        }
+        gantt.templates.task_text = function(s,e,task){
+          return "Export " + task.text;
+        }
+        gantt.config.columns[0].template = function(obj){
+          return obj.text + " -";
+        }
+        gantt.init("gantt_here");
+      //  gantt.load('http://localhost/smp/index.php/FEentregableEstudio/ver_FEentregable/'+id);
+      </script>
+        </div>
+      </div>
+    </div>
+<div class="modal-footer">
+        <button type="button" id="actualizargant" class="btn btn-default"  data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- fin venta gant-->

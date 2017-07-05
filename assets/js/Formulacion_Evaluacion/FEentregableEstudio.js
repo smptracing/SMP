@@ -28,6 +28,13 @@
 
               var txt_id_etapa_estudio=$("#txt_id_etapa_estudio").val();
               listarEntregablesFE();
+//Gant
+              $("#btn_gant").click(function() {
+               $('#ventanagant').modal('toggle');
+               $('#ventanagant').modal('show');
+            // $('#ventanagant').modal('hide');
+
+              });
               //para agregar entregable
                 $("#btn_entregable").click(function() {
                 $("#id_etapa_estudioEE").val($("#txt_id_etapa_estudio").val())
@@ -123,13 +130,45 @@
                           success:function(resp){
                            swal("",resp, "success");
                           $('#table_entregable').dataTable()._fnAjaxUpdate();
-
+                          //refresca gantt
+                          refrescarGantt();
                          }
                       });
                   });
 
-
+          //evento para expandir un panel
+          $("div.x_panel ul.panel_toolbox li a.panel-expand").click(function () {
+              var panel = $(this).parent().parent().parent().parent().parent();
+              //var cerrar = panel.find('.close-link');
+              panel.find('.close-link').hide();
+              panel.find('.panel-expand').parent().parent().append( '<li class="custom-cerrar"><a ><i class="fa fa-close"></i></a></li>' );
+              //attr('class','cerrar');
+              panel.css({'background' : '#0f0',
+                        'position' : 'absolute',
+                        'top': '0px',
+                        'left': '0px',
+                        'z-index': '99999',
+                        'display': 'block',
+                        'width': '100%',
+                        'height': '100%',
+                      });
+              /*$('#ventanagant').find('.x_content').html('');
+              $('#ventanagant').find('.x_content').html(panel.html());
+              $('#ventanagant').modal('show'); */
+          })
+          $("ul.panel_toolbox li.custom-cerrar").click(function () {
+            alert();
+            //location.reload();
+          });
 });
+
+//refrescar gant
+var refrescarGantt=function()
+{
+  gantt.refreshData();
+  gantt.init('gantt_here');
+  gantt.load(window.location.href);
+}
 
 var generarActividadesVertical=function(id_en)
           {
