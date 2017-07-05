@@ -283,7 +283,7 @@ var generarActividadesVertical=function(id_en)
                                     "dataSrc":""
                                     },
                                 "columns":[
-                                    {"data":"id_entregable","visible":true},
+                                    {"data":"id_entregable","visible":false},
                                     {"data":"nombre_entregable"},
                                     {"data":"responsable",
                                     "mRender": function ( data, type, full ) {
