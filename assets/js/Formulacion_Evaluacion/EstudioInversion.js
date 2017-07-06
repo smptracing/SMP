@@ -183,7 +183,7 @@ $(document).on("ready" ,function(){
                                       }
                                       if (data.denom_etapas_fe ==null) 
                                       {
-                                      return '<button type="button" class="nuevaEtapaEstudio btn btn-xs" data-toggle="modal" data-target="#ventanaEtapaEstudio"><i class="fa fa-flag" aria-hidden="true"></i> Asignar</button"';
+                                      return '<button type="button" class="nuevaEtapaEstudio btn btn-warning btn-xs" data-toggle="modal" data-target="#ventanaEtapaEstudio"><i class="fa fa-flag" aria-hidden="true"></i> Asignar</button"';
                                      
                                       }
                                    }},

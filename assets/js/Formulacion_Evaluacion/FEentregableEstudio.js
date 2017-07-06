@@ -28,12 +28,11 @@
 
               var txt_id_etapa_estudio=$("#txt_id_etapa_estudio").val();
               listarEntregablesFE();
-//Gant
+           //Gant
               $("#btn_gant").click(function() {
                $('#ventanagant').modal('toggle');
                $('#ventanagant').modal('show');
             // $('#ventanagant').modal('hide');
-
               });
               //para agregar entregable
                 $("#btn_entregable").click(function() {
@@ -157,7 +156,7 @@
                           $('#table_entregable').dataTable()._fnAjaxUpdate();
                           //refresca gantt
                           refrescarGantt();
-                            var registros = eval(resp);
+                         var registros = eval(resp);
                           for (var i = 0; i < registros.length; i++) {
                                if(registros[i]["VALOR"]==1){
                                    $('#table_entregable').dataTable()._fnAjaxUpdate();
@@ -283,7 +282,7 @@ var generarActividadesVertical=function(id_en)
                                     "dataSrc":""
                                     },
                                 "columns":[
-                                    {"data":"id_entregable","visible":false},
+                                    {"data":"id_entregable","visible":true},
                                     {"data":"nombre_entregable"},
                                     {"data":"responsable",
                                     "mRender": function ( data, type, full ) {
