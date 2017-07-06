@@ -129,5 +129,21 @@ class Model_FEentregableEstudio extends CI_Model
                 return false;
               }
         }
+        //nombre de etapa estudio para los etregables
+      public function  get_NombreEtapaEstudio($id_etapaestudio){
+             
+               $nombre=$this->db->query("select top 1 ES_I.codigo_unico_est_inv,ES_I.nombre_est_inv from ENTREGABLE_ESTUDIO EntreEstudio right outer join ETAPA_ESTUDIO ES  on 
+                                          EntreEstudio.id_etapa_estudio=ES.id_etapa_estudio left outer JOIN ESTUDIO_INVERSION ES_I ON ES.id_est_inv=ES_I.id_est_inv
+                                      WHERE ES.id_etapa_estudio='".$id_etapaestudio."' ");
+            if($nombre->num_rows()>=0)
+             {
+              return $nombre->result_array();
+             }else
+             {
+              return $nombre->result_array();
+             }
+
+        }
+        //fin nombre estapa estudio para loss entregables
 
 }

@@ -16,7 +16,7 @@
               <div class="col-md-6 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Entregable de Estudio</h2>
+                    <h6>Estudio: <?php echo $this->session->userdata('NombreEstudio');?> | Código Único:<?php echo $this->session->userdata('Codigo_único');?></h6>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -557,6 +557,41 @@
     </div>
   </div>
 
+<!---lista de  responsable con sus entregables-->
+  <div class="modal fade" id="VentenaResponsablesEntregable" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog " role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+         <h4>Entregable:<label id="LabelEntregable"></label></h4>
+          Responsables del entregable
+        </div>
+
+         <div class="modal-body">
+
+              <table id="table_responsableEntregable" class="table datatable" ellspacing="0" width="100%">
+                <thead>
+                                <tr>
+                                  <th>Responsable</th>
+                                  <th>Dni</th>
+                                  <th>Fecha Asignación</th>
+                                </tr>
+                  </thead>
+                              <tbody>
+
+                              </tbody>
+
+              </table>
+
+        </div>
+
+        <div class="modal-footer">
+
+        </div>
+      </div>
+    </div>
+  </div>
+<!---fin lista de  responsable con sus entregables-->
 
 <!-- venta gant -->
 <div id="ventanagant" class="modal fade" role="dialog">
@@ -615,39 +650,4 @@
   </div>
 </div>
 <!-- fin venta gant-->
-<!---lista de  responsable con sus entregables-->
-  <div class="modal fade" id="VentenaResponsablesEntregable" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog " role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-         <h4>Entregable:<label id="LabelEntregable"></label></h4>
-          Responsables del entregable
-        </div>
-
-         <div class="modal-body">
-
-              <table id="table_responsableEntregable" class="table datatable" ellspacing="0" width="100%">
-                <thead>
-                                <tr>
-                                  <th>Responsable</th>
-                                  <th>Dni</th>
-                                  <th>Fecha Asignación</th>
-                                </tr>
-                  </thead>
-                              <tbody>
-
-                              </tbody>
-
-              </table>
-
-        </div>
-
-        <div class="modal-footer">
-
-        </div>
-      </div>
-    </div>
-  </div>
-<!---fin lista de  responsable con sus entregables-->
 

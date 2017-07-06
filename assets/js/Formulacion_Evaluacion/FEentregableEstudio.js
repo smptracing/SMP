@@ -1,6 +1,5 @@
  $(document).on("ready" ,function(){
 
-             
               $("#txt_valoracion_entre").keyup(function(){//verificar si el entregable supera el o no el cien porciento para inavilitar el boton
                    
                    var sumaValoracion=$("#txt_valoracion_entre").val();
@@ -29,7 +28,7 @@
               var txt_id_etapa_estudio=$("#txt_id_etapa_estudio").val();
               listarEntregablesFE();
 //Gant
-              $("#btn_gant").click(function() {
+               $("#btn_gant").click(function() {
                $('#ventanagant').modal('toggle');
                $('#ventanagant').modal('show');
             // $('#ventanagant').modal('hide');
@@ -290,7 +289,8 @@ var generarActividadesVertical=function(id_en)
                                       var i=data;
                                           if(i==null)
                                           {
-                                           return '<a  type="button" class="AsignacionPersonaEntregables btn btn-link" data-toggle="modal" data-target="#VentanaAsignacionPersonalEntregable" title="Añadir Responsable" ><i class="glyphicon glyphicon-user" aria-hidden="true"></i></a><font size="1"></br>' +data+ '</font>'
+                                            nombre="";
+                                           return '<a  type="button" class="AsignacionPersonaEntregables btn btn-link" data-toggle="modal" data-target="#VentanaAsignacionPersonalEntregable" title="Añadir Responsable" ><i class="glyphicon glyphicon-user" aria-hidden="true"></i></a><font size="1"></br>' +nombre+ '</font>'
                                           }else{
                                              return '<a type="button" class="AsignacionPersonaEntregables btn btn-link" data-toggle="modal" data-target="#VentanaAsignacionPersonalEntregable" title="Añadir Responsable" ><i class="glyphicon glyphicon-user" aria-hidden="true"></i></a><font size="1"></br> '+data+ '</font>'
                                           }
@@ -305,7 +305,7 @@ var generarActividadesVertical=function(id_en)
                                          return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Complete</small></td>";
                                     }},
                        
-                                    {"defaultContent":"<button type='button' class='actividad btn btn-warning btn-xs' title='Agregar actividad al entregable' data-toggle='modal' data-target='#VentanaActividades'><i class='glyphicon glyphicon-plus-sign' aria-hidden='true'></i></button></br><button type='button'  class='ListarActividad btn btn-info btn-xs' title='Mostar Calendario de Actividades' ><i class='glyphicon glyphicon-calendar' aria-hidden='true'></i></button></br><button type='button'  class='ListarResponsablesEntregable btn btn-primary btn-xs' data-toggle='modal' data-target='#VentenaResponsablesEntregable' title='Mostrar los responsables del entregable' ><i class='glyphicon  glyphicon-user' title='Ver Responsable' aria-hidden='true'></i></button>"}                            
+                                    {"defaultContent":"<button type='button' class='actividad btn btn-warning btn-xs' title='Agregar actividad al entregable' data-toggle='modal' data-target='#VentanaActividades'><i class='glyphicon glyphicon-plus-sign' aria-hidden='true'></i></button></br><button type='button'  class='ListarActividad btn btn-info btn-xs' title='Mostrar  Actividades' ><i class='glyphicon glyphicon-calendar' aria-hidden='true'></i></button></br><button type='button'  class='ListarResponsablesEntregable btn btn-primary btn-xs' data-toggle='modal' data-target='#VentenaResponsablesEntregable' title='Mostrar los responsables del entregable' ><i class='glyphicon  glyphicon-user' title='Ver Responsable' aria-hidden='true'></i></button>"}                            
 
                                 ],
 
@@ -437,3 +437,4 @@ var generarActividadesVertical=function(id_en)
                     });
                 //fin generacion de actividades
           }
+ 

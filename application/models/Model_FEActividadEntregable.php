@@ -37,7 +37,7 @@ class Model_FEActividadEntregable extends CI_Model
         }
         function Update_Actividades($opcion,$tx_IdActividad,$txt_idEntregable,$txt_NombreActividadAc,$txt_fechaActividadIAc,$txt_fechaActividadfAc,$txt_valorizacionEAct,$txt_avanceEAct,$txt_observacio_EntreAct,$txt_ActividadColorAc)
         {
-          $this->db->query("EXECUTE sp_Gestionar_Actividad_Entregable'".$opcion."','".$tx_IdActividad."', '" . $txt_idEntregable."','".$txt_NombreActividadAc."','".$txt_fechaActividadIAc."','".$txt_fechaActividadfAc."',".$txt_valorizacionEAct.",'".$txt_avanceEAct."','".$txt_observacio_EntreAct."','".$txt_ActividadColorAc."'");
+          $this->db->query("EXECUTE sp_Gestionar_Actividad_Entregable'".$opcion."','".$tx_IdActividad."','" . $txt_idEntregable."','".$txt_NombreActividadAc."','".$txt_fechaActividadIAc."','".$txt_fechaActividadfAc."',".$txt_valorizacionEAct.",'".$txt_avanceEAct."','".$txt_observacio_EntreAct."','".$txt_ActividadColorAc."'");
             if ($this->db->affected_rows()> 0) 
               {
                 return true;

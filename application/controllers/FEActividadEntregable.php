@@ -50,7 +50,7 @@ class FEActividadEntregable extends CI_Controller
             $txt_observacio_EntreAc = $this->input->post("txt_observacio_EntreAc");
             $txt_ActividadColor     = $this->input->post("txt_ActividadColor");
 
-            $data = $this->Model_FEActividadEntregable->Add_Actividades($opcion, $id_act, $txt_id_entregable, $txt_nombre_act, $txt_fechaActividadI, $txt_fechaActividadf, $txt_valoracionEAc, $txt_AvanceEAc, $txt_observacio_EntreAc, $txt_ActividadColor);
+            $data = $this->Model_FEActividadEntregable->Add_Actividades($opcion,$id_act, $txt_id_entregable,$txt_nombre_act,$txt_fechaActividadI,$txt_fechaActividadf,$txt_valoracionEAc,$txt_AvanceEAc,$txt_observacio_EntreAc,$txt_ActividadColor);
             echo json_encode($data);
         } else {
             show_404();
@@ -70,8 +70,7 @@ class FEActividadEntregable extends CI_Controller
             $txt_avanceEAct          = $this->input->post("txt_avanceEAct");
             $txt_observacio_EntreAct = $this->input->post("txt_observacio_EntreAct");
             $txt_ActividadColorAc    = $this->input->post("txt_ActividadColorAc");
-
-            if ($this->Model_FEActividadEntregable->Update_Actividades($opcion, $tx_IdActividad, $txt_idEntregable, $txt_NombreActividadAc, $txt_fechaActividadIAc, $txt_fechaActividadfAc, $txt_valorizacionEAct, $txt_avanceEAct, $txt_observacio_EntreAct, $txt_ActividadColorAc) == false) {
+            if ($this->Model_FEActividadEntregable->Update_Actividades($opcion,$tx_IdActividad,$txt_idEntregable,$txt_NombreActividadAc,$txt_fechaActividadIAc,$txt_fechaActividadfAc,$txt_valorizacionEAct,$txt_avanceEAct,$txt_observacio_EntreAct,$txt_ActividadColorAc) == false) {
                 echo "Se actualizo una Actividad ";
             } else {
                 echo " Se actualizo una Actividad ";
@@ -87,7 +86,7 @@ class FEActividadEntregable extends CI_Controller
         if ($this->input->is_ajax_request()) {
             $tx_IdActividad   = $this->input->post("tx_IdActividad");
             $txt_idEntregable = $this->input->post("txt_idEntregable");
-            $data             = $this->Model_FEActividadEntregable->CalcularAvanceActividad($tx_IdActividad, $txt_idEntregable);
+            $data             = $this->Model_FEActividadEntregable->CalcularAvanceActividad($tx_IdActividad,$txt_idEntregable);
             echo json_encode($data);
 
         } else {
@@ -103,7 +102,7 @@ class FEActividadEntregable extends CI_Controller
             $txt_idActividadCronograma = $this->input->post("txt_idActividadCronograma");
             $txt_idPersonaActividad    = $this->input->post("txt_idPersonaActividad");
             $txt_AsigPersonalActividad = $this->input->post("txt_AsigPersonalActividad"); //fecha de asiganacion del responsable a actividad
-            if ($this->Model_FEActividadEntregable->AsignacionPersonalActividad($Opcion, $txt_idActividadCronograma, $txt_idPersonaActividad, $txt_AsigPersonalActividad) == false) {
+            if ($this->Model_FEActividadEntregable->AsignacionPersonalActividad($Opcion,$txt_idActividadCronograma,$txt_idPersonaActividad,$txt_AsigPersonalActividad) == false) {
                 echo "SE ASIGNO  UN NUEVO RESPONSABLE A LA ACTIVIDAD ";
             } else {
                 echo "NO SE ASIGNO  UN NUEVO RESPONSABLE A LA ACTIVIDAD";
