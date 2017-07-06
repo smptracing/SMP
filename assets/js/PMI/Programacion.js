@@ -313,8 +313,6 @@ var fechaActual="";
                     });
   }
 
-var paginaActual=1;
-
 var listaProyectoIprogramado=function(AnioCartera)
 {
 	$.fn.dataTable.ext.errMode='throw';
@@ -328,6 +326,7 @@ var listaProyectoIprogramado=function(AnioCartera)
 		"scrollCollapse" : true,
 		"paging" : true,
 		"searchable" : true,
+		"sort" : false,
 		"destroy" : true,
 		"language" : idioma_espanol,
 		"ajax" :
@@ -374,6 +373,16 @@ var listaProyectoIprogramado=function(AnioCartera)
 		{ "data" : "fecha_registro_pi", "visible" : false },
 		{ "data" : "fecha_viabilidad_pi", "visible" : false },
 		{ "defaultContent" : "<button type='button' class='VerProyecto btn btn-success btn-xs' data-toggle='modal' data-target='#VerDetalleProyectoInversion'>Ver Ficha</button>" }]
+	});
+
+	$('#table-ProyectoInversionProgramado_filter input').unbind();
+
+	$('#table-ProyectoInversionProgramado_filter input').bind('keyup', function(e)
+	{
+		if(e.keyCode==13)
+		{
+			table.search(this.value).draw();
+		}
 	});
 
 	ListaProyectoInversionData("#table-ProyectoInversionProgramado",table);  //obtener data de funcion para agregar  AGREGAR
