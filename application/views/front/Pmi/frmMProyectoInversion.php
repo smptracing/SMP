@@ -1,3 +1,9 @@
+<style>
+	#table-ProyectoInversionProgramado > tbody > tr > td
+	{
+		vertical-align: middle;
+	}
+</style>
 <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
