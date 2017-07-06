@@ -327,6 +327,7 @@ var listaProyectoIprogramado=function(AnioCartera)
 		"scrollX" : true,
 		"scrollCollapse" : true,
 		"paging" : true,
+		"searchable" : true,
 		"destroy" : true,
 		"ajax" :
 		{

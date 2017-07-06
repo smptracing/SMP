@@ -91,8 +91,9 @@ class Programacion extends CI_Controller {/* Mantenimiento de sector entidad Y s
 			$anio_apertura_actual=$this->input->post('AnioCartera');
 			$skip=$this->input->post('start');
 			$numberRow=$this->input->post('length');
+			$valueSearch=$this->input->post('search[value]');
 			
-			$datos=$this->Model_Programacion->GetProgramacion($id_proyecto_filtro, $anio_apertura_actual, $skip, $numberRow);
+			$datos=$this->Model_Programacion->GetProgramacion($id_proyecto_filtro, $anio_apertura_actual, $skip, $numberRow, $valueSearch);
 			
 			$this->session->sess_destroy();
 
