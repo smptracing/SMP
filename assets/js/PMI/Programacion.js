@@ -329,18 +329,17 @@ var listaProyectoIprogramado=function(AnioCartera)
 		"paging" : true,
 		"searchable" : true,
 		"destroy" : true,
+		"language" : idioma_espanol,
 		"ajax" :
 		{
 			"url" : base_url+"index.php/Programacion/GetProgramacion",
 			"method" : "POST",
 			"data" : { "AnioCartera" : AnioCartera},
-			"dataSrc" : "",
-			"deferRender" : true,
+			"dataSrc" : "data",
+			"deferRender" : true
 		},
 		"columns" : [
-		{
-			"data" : "id_pi", "visible" : false
-		},
+		{ "data" : "id_pi", "visible" : false },
 		{
 			"data" : "codigo_unico_pi", "mRender": function(data, type, full)
 			{
@@ -374,8 +373,7 @@ var listaProyectoIprogramado=function(AnioCartera)
 		{ "data" : "nombre_programa_pres", "visible" : false },
 		{ "data" : "fecha_registro_pi", "visible" : false },
 		{ "data" : "fecha_viabilidad_pi", "visible" : false },
-		{ "defaultContent" : "<button type='button' class='VerProyecto btn btn-success btn-xs' data-toggle='modal' data-target='#VerDetalleProyectoInversion'>Ver Ficha</button>" }],
-		"language" : idioma_espanol
+		{ "defaultContent" : "<button type='button' class='VerProyecto btn btn-success btn-xs' data-toggle='modal' data-target='#VerDetalleProyectoInversion'>Ver Ficha</button>" }]
 	});
 
 	ListaProyectoInversionData("#table-ProyectoInversionProgramado",table);  //obtener data de funcion para agregar  AGREGAR
