@@ -95,11 +95,8 @@ class Programacion extends CI_Controller {/* Mantenimiento de sector entidad Y s
 			
 			$datos=$this->Model_Programacion->GetProgramacion($id_proyecto_filtro, $anio_apertura_actual, $skip, $numberRow, $valueSearch);
 			$totalDatos=$this->Model_Programacion->GetProgramacion($id_proyecto_filtro, $anio_apertura_actual, 0, 0, $valueSearch);
-			
-			$this->session->sess_destroy();
 
 			echo '{ "recordsTotal" : '.(count($totalDatos)).', "recordsFiltered" : '.(count($totalDatos)).', "data" : '.json_encode($datos).' }';
-			//echo json_encode($datos);
 		}
 		else
 		{

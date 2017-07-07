@@ -69,7 +69,7 @@
                         }); 
 
                          $('#table-CarteraInv tbody').on('click', 'tr', function () {
-                            var data = table.row( this ).data();
+                            var data=table.row( this ).data();
                             var txt_IdfuncionM=data.id_cartera;
                           
                         } );
@@ -89,20 +89,30 @@ var CambioCartera=function(tbody,table){
 
                       });
 }
+
 function listarCarteraAnios()
-          {
-            event.preventDefault();
-            $.ajax({
-              "url":base_url+"index.php/CarteraInversion/GetCarteraAnios",
-              type:"POST",
-              success:function(respuesta){
-                 var registros = eval(respuesta);
-                            for (var i = 0; i <registros.length;i++) {
-                              html +="<option value="+registros[i]["anios"]+"> "+ registros[i]["anios"]+" </option>";   
-                            };
-                            $("#cbCartera").html(html);//para modificar las entidades
-                            $('.selectpicker').selectpicker('refresh'); 
-                            //listaFuncionCombo(); //PARA LLENAR CON EXACTITUD LOS DATOS
-              }
-            });
-          }
+{
+	event.preventDefault();
+
+	var anioActualTemp=(new Date()).getFullYear();
+
+	$.ajax(
+	{
+		"url" : base_url+"index.php/CarteraInversion/GetCarteraAnios",
+		type : "POST",
+		success : function(respuesta)
+		{
+
+			var registros=eval(respuesta);
+
+			for(var i=0; i<registros.length;i++)
+			{
+				html +="<option "+(anioActualTemp==registros[i]["anios"] ? "selected" : "")+" value="+registros[i]["anios"]+"> "+ registros[i]["anios"]+" </option>";   
+			}
+
+			$("#cbCartera").html(html);
+
+			$('.selectpicker').selectpicker('refresh'); 
+		}
+	});
+}

@@ -52,8 +52,8 @@
                                                                         <a href="<?php echo site_url('CarteraInversion/'); ?>"><i class="fa fa-suitcase"></i>Cartera</a>
                                                                      </div>
                                                                      <div class="col-md-8">
-                                                                          <select  id="cbCartera" class="form-control" name="cbCartera" value="cartera" ></select>
-                                                                          <input type="hidden" id="Aniocartera" value="<?php echo $this->session->userdata('AnioC'); ?>">
+                                                                          <select  id="cbCartera" class="form-control" name="cbCartera"></select>
+                                                                          <input type="hidden" id="Aniocartera" value="<?=date('Y')?>">
                                                                     </div>
                                                                </div>
 

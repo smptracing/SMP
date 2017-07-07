@@ -28,14 +28,12 @@
             var AnioCartera=$("#Aniocartera").val();
             if(AnioCartera=="")
             {
-                cartera="2017";
+                cartera="<?=date('Y')?>";
                 listaProyectoIprogramado(cartera);/*llamar proyecto de inversion programado*/
 
             }else
             {
-                //alert(AnioCartera);
                 cartera=AnioCartera;
-                 $('#Aniocartera option:contains("2016")').attr('selected','selected');
                 listaProyectoIprogramado(cartera);/*llamar proyecto de inversion programado*/
             }
 
