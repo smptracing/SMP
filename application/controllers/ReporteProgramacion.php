@@ -179,7 +179,7 @@ function action()
         $opcion2=2;//mostra todos los proyecto programados
         $id_pi=$this->input->post("CodigoProgramacion");
         $año_apertura_actual="2017";//observacion
-        $ProyectoProgramado =$this->Model_Programacion->GetProgramacion($id_pi,$año_apertura_actual);//para mostra uno solo del detallado de los proyectos
+        $ProyectoProgramado =$this->Model_Programacion->GetProgramacion($id_pi,$año_apertura_actual, 0, 0, '');//para mostra uno solo del detallado de los proyectos
         foreach ($ProyectoProgramado as $rows) 
         {
             
