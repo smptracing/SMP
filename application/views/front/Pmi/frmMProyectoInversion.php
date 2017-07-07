@@ -59,7 +59,7 @@
 
                                                                 <div class="col-md-2">
                                                                     <form action="<?php echo base_url('index.php/ReporteProgramacion/action'); ?>" method="POST" >
-                                                                      <button  type="submit" class="btn btn-primary">  <span class="fa fa-file-text"></span> Exportar exel</button>
+                                                                      <button  type="submit" class="btn btn-primary">  <span class="fa fa-file-text"></span> Exportar excel</button>
                                                                     </form>
                                                                 </div>
                                                                <div class="col-md-2">

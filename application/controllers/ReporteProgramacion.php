@@ -14,124 +14,99 @@ class ReporteProgramacion extends CI_Controller {
     $data["employee_data"] = $this->Model_Programacion->ExelProgramacionProyectos();
     $this->load->view("excel_export_view", $data);
   }
-//Generar el elxel de programaciones
-  function action()
-  {
-    $this->load->library("excel");
-    $object = new PHPExcel();
-    $object->getProperties()->setCreator("Fabian Schmick")->setLastModifiedBy("Current User")->setTitle("Foobar");
-    
-    $object->getActiveSheet()->getStyle('B2')->getFont()->applyFromArray(
-         array(
-             'style' => PHPExcel_Style_Border::BORDER_THIN,
-             'color'=>array('argb'=>'FF000000'),
-             'startcolor' =>array('argb' => 'FFFF0000'),
-             'endcolor' =>array('argb' => 'FFFF0000')
+//Generar el excel de programaciones
+function action()
+{
+	$this->load->library("excel");
 
-         )
+	$object=new PHPExcel();
 
- );
-    $object->setActiveSheetIndex(0)->setCellValue('A1','Detalle de proyecto')->setCellValue('AA1','Programación');
+	$object->getProperties()->setCreator("Fabian Schmick")->setLastModifiedBy("Current User")->setTitle("Foobar");
 
-    $column = 0;
-  
-    $table_columns = array("Cod. Proyecto","Tipo de Inversión", "Ciclo de Inversión", "Tipología", "Naturaleza","Inversión","Nivel de Gobierno","Prioridad","U. Ejecutora","Departamento","Provincia","Distrito","Función","Div. Funcional","Grupo Funcional","Costo inversión","Dev. Acum. Año Anterior","PIM Año Actual","Fuente Finan.","Rubro","Fuente Finan. 2","Rubro 2","Mod. Ejecución","Servicio","Brecha Asociada","Programa Presup.","Fecha Registro","Fecha Viabilidad","Inicio Programación","Fin Programación","Saldo a Programar","2018","2019","2020","2018","2019","2020");
+	$object->getActiveSheet()->getStyle('B2')->getFont()->applyFromArray(
+		array(
+			'style' => PHPExcel_Style_Border::BORDER_THIN,
+			'color'=> array('argb'=>'FF000000'),
+			'startcolor' => array('argb' => 'FFFF0000'),
+			'endcolor' => array('argb' => 'FFFF0000')
+		)
+	);
 
+	$object->setActiveSheetIndex(0)->setCellValue('A1','Detalle de proyecto')->setCellValue('AA1','Programación');
 
-    //para la segunda cabecera 
-    foreach($table_columns as $field)
-    {
-      $object->getActiveSheet()->setCellValueByColumnAndRow($column,2, $field);
-      $column++;
-    }
-    $valor="";//para traer la programacion mandando un parametro vacio
-    $año_apertura_actual="2017";//observacion
-    $employee_data = $this->Model_Programacion->ExelProgramacionProyectos($valor,$año_apertura_actual);
-    $excel_row = 3;//para decir donde va a empezar 
-    $departamento="Apurímac";
-    $funtefinanciamiento="";
-    $rubro="";
-    $funtefinanciamiento2="";
-    $rubro2="";
-    $nombre_modalidad_ejec="";
-    foreach($employee_data as $row)
-    {
-      
-     /* $object->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
-      $object->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
-      $object->getActiveSheet()->getColumnDimension('C')->setAutoSize(true);
-      $object->getActiveSheet()->getColumnDimension('D')->setAutoSize(true);
-      $object->getActiveSheet()->getColumnDimension('E')->setAutoSize(true);
-      $object->getActiveSheet()->getColumnDimension('F')->setAutoSize(true);
-      $object->getActiveSheet()->getColumnDimension('G')->setAutoSize(true);
-      $object->getActiveSheet()->getColumnDimension('H')->setAutoSize(true);
-      $object->getActiveSheet()->getColumnDimension('I')->setAutoSize(true);
-      $object->getActiveSheet()->getColumnDimension('J')->setAutoSize(true);
-      $object->getActiveSheet()->getColumnDimension('K')->setAutoSize(true);
-      $object->getActiveSheet()->getColumnDimension('L')->setAutoSize(true);
-      $object->getActiveSheet()->getColumnDimension('M')->setAutoSize(true);
-      $object->getActiveSheet()->getColumnDimension('J')->setAutoSize(true);
-      $object->getActiveSheet()->getColumnDimension('N')->setAutoSize(true);
-      $object->getActiveSheet()->getColumnDimension('O')->setAutoSize(true);
-      $object->getActiveSheet()->getColumnDimension('P')->setAutoSize(true);
-      $object->getActiveSheet()->getColumnDimension('J')->setAutoSize(true);
-      $object->getActiveSheet()->getColumnDimension('K')->setAutoSize(true);
-      $object->getActiveSheet()->getColumnDimension('H')->setAutoSize(true);
-      $object->getActiveSheet()->getColumnDimension('I')->setAutoSize(true);
-      $object->getActiveSheet()->getColumnDimension('J')->setAutoSize(true);
-      $object->getActiveSheet()->getColumnDimension('K')->setAutoSize(true);
-      $object->getActiveSheet()->getColumnDimension('L')->setAutoSize(true);*/
+	$column=0;
 
-      $object->getActiveSheet()->setCellValueByColumnAndRow(0, $excel_row, $row->codigo_unico_pi)->getColumnDimension('A')->setAutoSize(true);
-      $object->getActiveSheet()->setCellValueByColumnAndRow(1, $excel_row, $row->nombre_tipo_inversion)->getColumnDimension('B')->setAutoSize(true);
-      $object->getActiveSheet()->setCellValueByColumnAndRow(2, $excel_row, $row->nombre_estado_ciclo)->getColumnDimension('C')->setAutoSize(true);
-      $object->getActiveSheet()->setCellValueByColumnAndRow(3, $excel_row, $row->nombre_tipologia_inv)->getColumnDimension('D')->setAutoSize(true);
-      $object->getActiveSheet()->setCellValueByColumnAndRow(4, $excel_row, $row->nombre_naturaleza_inv)->getColumnDimension('E')->setAutoSize(true);
-      $object->getActiveSheet()->setCellValueByColumnAndRow(5, $excel_row, $row->nombre_pi)->getColumnDimension('F')->setAutoSize(true);
-      $object->getActiveSheet()->setCellValueByColumnAndRow(6, $excel_row, $row->nombre_nivel_gob)->getColumnDimension('G')->setAutoSize(true);
-      $object->getActiveSheet()->setCellValueByColumnAndRow(7, $excel_row, $row->prioridad_prog)->getColumnDimension('H')->setAutoSize(true);
-      $object->getActiveSheet()->setCellValueByColumnAndRow(8, $excel_row, $row->nombre_ue)->getColumnDimension('I')->setAutoSize(true);
-      $object->getActiveSheet()->setCellValueByColumnAndRow(9, $excel_row, $departamento)->getColumnDimension('J')->setAutoSize(true);
-      $object->getActiveSheet()->setCellValueByColumnAndRow(10, $excel_row, $row->provincias)->getColumnDimension('K')->setAutoSize(true);
-      $object->getActiveSheet()->setCellValueByColumnAndRow(11, $excel_row, $row->distritos)->getColumnDimension('L')->setAutoSize(true);
-      $object->getActiveSheet()->setCellValueByColumnAndRow(12, $excel_row, $row->nombre_funcion)->getColumnDimension('M')->setAutoSize(true);
-      $object->getActiveSheet()->setCellValueByColumnAndRow(13, $excel_row, $row->nombre_div_funcional)->getColumnDimension('N')->setAutoSize(true);
-      $object->getActiveSheet()->setCellValueByColumnAndRow(14, $excel_row, $row->nombre_grup_funcional)->getColumnDimension('O')->setAutoSize(true);
-      $object->getActiveSheet()->setCellValueByColumnAndRow(15, $excel_row, $row->costo_pi)->getColumnDimension('P')->setAutoSize(true);
-      $object->getActiveSheet()->setCellValueByColumnAndRow(16, $excel_row, $row->devengado_ac_pi)->getColumnDimension('Q')->setAutoSize(true);
-      $object->getActiveSheet()->setCellValueByColumnAndRow(17, $excel_row, $row->devengado_ac_pi)->getColumnDimension('R')->setAutoSize(true); //ACA DEBE SER PIM AÑO ACTUAL
-      $object->getActiveSheet()->setCellValueByColumnAndRow(18, $excel_row, $funtefinanciamiento)->getColumnDimension('S')->setAutoSize(true);
-      $object->getActiveSheet()->setCellValueByColumnAndRow(19, $excel_row, $rubro)->getColumnDimension('T')->setAutoSize(true); 
-      $object->getActiveSheet()->setCellValueByColumnAndRow(20, $excel_row, $funtefinanciamiento2)->getColumnDimension('U')->setAutoSize(true); //ACA ES FUENTE FINAN 2 Y ES CAMPO VACIO
-      $object->getActiveSheet()->setCellValueByColumnAndRow(21, $excel_row, $rubro2)->getColumnDimension('V')->setAutoSize(true); //ACA RUBRO DOS  2 Y ES CAMPO VACIO
-      $object->getActiveSheet()->setCellValueByColumnAndRow(22, $excel_row, $nombre_modalidad_ejec)->getColumnDimension('W')->setAutoSize(true);
-      $object->getActiveSheet()->setCellValueByColumnAndRow(23, $excel_row, $row->nombre_serv_pub_asoc)->getColumnDimension('X')->setAutoSize(true);
-      $object->getActiveSheet()->setCellValueByColumnAndRow(24, $excel_row, $row->nombre_brecha)->getColumnDimension('Y')->setAutoSize(true); 
-      $object->getActiveSheet()->setCellValueByColumnAndRow(25, $excel_row, $row->nombre_programa_pres)->getColumnDimension('Z')->setAutoSize(true); 
-      $object->getActiveSheet()->setCellValueByColumnAndRow(26, $excel_row, $row->fecha_registro_pi)->getColumnDimension('AA')->setAutoSize(true);
-      $object->getActiveSheet()->setCellValueByColumnAndRow(27, $excel_row, $row->fecha_viabilidad_pi)->getColumnDimension('AB')->setAutoSize(true); 
-      $object->getActiveSheet()->setCellValueByColumnAndRow(28, $excel_row, "")->getColumnDimension('AC')->setAutoSize(true); //ACA LOS DATOS SON VACIOS DE INICIO PROGRAMACION
-      $object->getActiveSheet()->setCellValueByColumnAndRow(29, $excel_row, "")->getColumnDimension('AD')->setAutoSize(true);//ACA LOS DATOS SON VACIOS DE FIN PROGRAMACION
-      $object->getActiveSheet()->setCellValueByColumnAndRow(30, $excel_row, 0)->getColumnDimension('AE')->setAutoSize(true);//SALDO A PROGRAMAR ES VACIO
-      $object->getActiveSheet()->setCellValueByColumnAndRow(31, $excel_row, $row->Inv_2018)->getColumnDimension('AF')->setAutoSize(true);//SALDO A PROGRAMAR ES VACIO
-      $object->getActiveSheet()->setCellValueByColumnAndRow(32, $excel_row, $row->Inv_2019)->getColumnDimension('AG')->setAutoSize(true);//SALDO A PROGRAMAR ES VACIO
-      $object->getActiveSheet()->setCellValueByColumnAndRow(33, $excel_row, $row->Inv_2020)->getColumnDimension('AH')->setAutoSize(true);//SALDO A PROGRAMAR ES VACIO
+	$table_columns=array("Cod. Proyecto","Tipo de Inversión", "Ciclo de Inversión", "Tipología", "Naturaleza","Inversión","Nivel de Gobierno","Prioridad","U. Ejecutora","Departamento","Provincia","Distrito","Función","Div. Funcional","Grupo Funcional","Costo inversión","Dev. Acum. Año Anterior","PIM Año Actual","Fuente Finan.","Rubro","Fuente Finan. 2","Rubro 2","Mod. Ejecución","Servicio","Brecha Asociada","Programa Presup.","Fecha Registro","Fecha Viabilidad","Inicio Programación","Fin Programación","Saldo a Programar","2018","2019","2020","2018","2019","2020");
 
-      $object->getActiveSheet()->setCellValueByColumnAndRow(34, $excel_row, $row->OyM_2018)->getColumnDimension('AI')->setAutoSize(true);//MONTOS PROGRAMADOR POR LOS TRES AÑOS 
-      $object->getActiveSheet()->setCellValueByColumnAndRow(35, $excel_row, $row->OyM_2019)->getColumnDimension('AJ')->setAutoSize(true);//MONTOS PROGRAMADOS POR LOS TRES AÑOS
-      $object->getActiveSheet()->setCellValueByColumnAndRow(36, $excel_row, $row->OyM_2020)->getColumnDimension('AK')->setAutoSize(true);//MONTO PROGRAMADOPOR LOS TRES AÑOS*/
+	//para la segunda cabecera
+	foreach($table_columns as $field)
+	{
+		$object->getActiveSheet()->setCellValueByColumnAndRow($column,2, $field);
 
+		$column++;
+	}
 
+	$valor="";//para traer la programacion mandando un parametro vacio
+	$año_apertura_actual="2017";//observacion
+	$employee_data=$this->Model_Programacion->ExelProgramacionProyectos($valor,$año_apertura_actual);
+	$excel_row=3;//para decir donde va a empezar 
+	$departamento="Apurímac";
+	$funtefinanciamiento="";
+	$rubro="";
+	$funtefinanciamiento2="";
+	$rubro2="";
+	$nombre_modalidad_ejec="";
 
+	foreach($employee_data as $row)
+	{
+		$object->getActiveSheet()->setCellValueByColumnAndRow(0, $excel_row, $row->codigo_unico_pi)->getColumnDimension('A')->setAutoSize(true);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(1, $excel_row, $row->nombre_tipo_inversion)->getColumnDimension('B')->setAutoSize(true);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(2, $excel_row, $row->nombre_estado_ciclo)->getColumnDimension('C')->setAutoSize(true);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(3, $excel_row, $row->nombre_tipologia_inv)->getColumnDimension('D')->setAutoSize(true);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(4, $excel_row, $row->nombre_naturaleza_inv)->getColumnDimension('E')->setAutoSize(true);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(5, $excel_row, $row->nombre_pi)->getColumnDimension('F')->setAutoSize(true);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(6, $excel_row, $row->nombre_nivel_gob)->getColumnDimension('G')->setAutoSize(true);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(7, $excel_row, $row->prioridad_prog)->getColumnDimension('H')->setAutoSize(true);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(8, $excel_row, $row->nombre_ue)->getColumnDimension('I')->setAutoSize(true);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(9, $excel_row, $departamento)->getColumnDimension('J')->setAutoSize(true);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(10, $excel_row, $row->provincias)->getColumnDimension('K')->setAutoSize(true);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(11, $excel_row, $row->distritos)->getColumnDimension('L')->setAutoSize(true);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(12, $excel_row, $row->nombre_funcion)->getColumnDimension('M')->setAutoSize(true);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(13, $excel_row, $row->nombre_div_funcional)->getColumnDimension('N')->setAutoSize(true);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(14, $excel_row, $row->nombre_grup_funcional)->getColumnDimension('O')->setAutoSize(true);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(15, $excel_row, $row->costo_pi)->getColumnDimension('P')->setAutoSize(true);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(16, $excel_row, $row->devengado_ac_pi)->getColumnDimension('Q')->setAutoSize(true);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(17, $excel_row, $row->devengado_ac_pi)->getColumnDimension('R')->setAutoSize(true); //ACA DEBE SER PIM AÑO ACTUAL
+		$object->getActiveSheet()->setCellValueByColumnAndRow(18, $excel_row, $funtefinanciamiento)->getColumnDimension('S')->setAutoSize(true);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(19, $excel_row, $rubro)->getColumnDimension('T')->setAutoSize(true); 
+		$object->getActiveSheet()->setCellValueByColumnAndRow(20, $excel_row, $funtefinanciamiento2)->getColumnDimension('U')->setAutoSize(true); //ACA ES FUENTE FINAN 2 Y ES CAMPO VACIO
+		$object->getActiveSheet()->setCellValueByColumnAndRow(21, $excel_row, $rubro2)->getColumnDimension('V')->setAutoSize(true); //ACA RUBRO DOS  2 Y ES CAMPO VACIO
+		$object->getActiveSheet()->setCellValueByColumnAndRow(22, $excel_row, $nombre_modalidad_ejec)->getColumnDimension('W')->setAutoSize(true);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(23, $excel_row, $row->nombre_serv_pub_asoc)->getColumnDimension('X')->setAutoSize(true);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(24, $excel_row, $row->nombre_brecha)->getColumnDimension('Y')->setAutoSize(true); 
+		$object->getActiveSheet()->setCellValueByColumnAndRow(25, $excel_row, $row->nombre_programa_pres)->getColumnDimension('Z')->setAutoSize(true); 
+		$object->getActiveSheet()->setCellValueByColumnAndRow(26, $excel_row, $row->fecha_registro_pi)->getColumnDimension('AA')->setAutoSize(true);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(27, $excel_row, $row->fecha_viabilidad_pi)->getColumnDimension('AB')->setAutoSize(true); 
+		$object->getActiveSheet()->setCellValueByColumnAndRow(28, $excel_row, "")->getColumnDimension('AC')->setAutoSize(true); //ACA LOS DATOS SON VACIOS DE INICIO PROGRAMACION
+		$object->getActiveSheet()->setCellValueByColumnAndRow(29, $excel_row, "")->getColumnDimension('AD')->setAutoSize(true);//ACA LOS DATOS SON VACIOS DE FIN PROGRAMACION
+		$object->getActiveSheet()->setCellValueByColumnAndRow(30, $excel_row, 0)->getColumnDimension('AE')->setAutoSize(true);//SALDO A PROGRAMAR ES VACIO
+		$object->getActiveSheet()->setCellValueByColumnAndRow(31, $excel_row, $row->Inv_2018)->getColumnDimension('AF')->setAutoSize(true);//SALDO A PROGRAMAR ES VACIO
+		$object->getActiveSheet()->setCellValueByColumnAndRow(32, $excel_row, $row->Inv_2019)->getColumnDimension('AG')->setAutoSize(true);//SALDO A PROGRAMAR ES VACIO
+		$object->getActiveSheet()->setCellValueByColumnAndRow(33, $excel_row, $row->Inv_2020)->getColumnDimension('AH')->setAutoSize(true);//SALDO A PROGRAMAR ES VACIO
+		$object->getActiveSheet()->setCellValueByColumnAndRow(34, $excel_row, $row->OyM_2018)->getColumnDimension('AI')->setAutoSize(true);//MONTOS PROGRAMADOR POR LOS TRES AÑOS 
+		$object->getActiveSheet()->setCellValueByColumnAndRow(35, $excel_row, $row->OyM_2019)->getColumnDimension('AJ')->setAutoSize(true);//MONTOS PROGRAMADOS POR LOS TRES AÑOS
+		$object->getActiveSheet()->setCellValueByColumnAndRow(36, $excel_row, $row->OyM_2020)->getColumnDimension('AK')->setAutoSize(true);//MONTO PROGRAMADOPOR LOS TRES AÑOS*/
 
-      $excel_row++;
-    }
+		$excel_row++;
+	}
 
-    $object_writer = PHPExcel_IOFactory::createWriter($object, 'Excel5');
-    header('Content-Type: application/vnd.ms-excel');
-    header('Content-Disposition: attachment;filename="programacion.xls"');
-    $object_writer->save('php://output');
-  }
+	$object_writer=PHPExcel_IOFactory::createWriter($object, 'Excel5');
+
+	header('Content-Type: application/vnd.ms-excel');
+	header('Content-Disposition: attachment;filename="programacion.xls"');
+	
+	$object_writer->save('php://output');
+}
 
   //fin generar reporte de programaciones
 

@@ -78,7 +78,7 @@ class Model_Programacion extends CI_Model
         //exporatr exel de la programaci
          function ExelProgramacionProyectos($id_proyecto_filtro,$año_apertura_actual)
         {
-              $ProyectoInversion=$this->db->query("execute sp_ListarProyectoProgramacion '".$id_proyecto_filtro."','".$año_apertura_actual."'");//listar proyecto de programacion
+              $ProyectoInversion=$this->db->query("execute sp_ListarProyectoProgramacion '".$id_proyecto_filtro."','".$año_apertura_actual."',0 , 0, ''");//listar proyecto de programacion
             return $ProyectoInversion->result();
         }
         function UpdateProgramacion($opcion,$id_prog,$id_cartera,$id_brecha,$id_pi,$monto_prog,$año_prog,$prioridad_prog,$monto_opera_mant_prog,$tipo_prog)
