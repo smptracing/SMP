@@ -28,7 +28,7 @@
             var AnioCartera=$("#Aniocartera").val();
             if(AnioCartera=="")
             {
-                cartera="<?=date('Y')?>";
+                cartera="<?=(isset($anio) ? $anio : date('Y'))?>";
                 listaProyectoIprogramado(cartera);/*llamar proyecto de inversion programado*/
 
             }else
