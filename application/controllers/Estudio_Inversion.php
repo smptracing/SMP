@@ -122,7 +122,8 @@ class Estudio_Inversion extends CI_Controller
     public function AddEtapaEstudio()
     {
         if ($this->input->is_ajax_request()) {
-            $flat             = "C";
+            //PRIMERO ACTUALIZAR Y LUEGO REGISTAR ETAPA ESTUDIO
+            $flat             = "UC";
             $id_etapa_estudio = "0";
             $id_est_inv       = $this->input->post("txt_id_est_inv");
             $listaretapasFE_M = $this->input->post("listaretapasFE_M");
@@ -187,7 +188,7 @@ class Estudio_Inversion extends CI_Controller
     public function AddAsiganarPersona()
     {
         if ($this->input->is_ajax_request()) {
-            $flat                  = "U";
+            $flat                  = "C";
             $Cbx_Persona           = $this->input->post("Cbx_Persona");
             $Cbx_Cargo             = $this->input->post("Cbx_Cargo");
             $txt_IdEtapa_Estudio_p = $this->input->post("txt_IdEtapa_Estudio_p");

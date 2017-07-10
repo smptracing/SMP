@@ -14,7 +14,6 @@ class FEformulacion extends CI_Controller
     public function GetFormulacion()
     {
         if ($this->input->is_ajax_request()) {
-            $Etapa       = "Formulación";
             $id_est_inve = $this->session->userdata('id_est_inve');
             if (empty($id_est_inve)) {
                 $id_est_inve = '0';
@@ -23,7 +22,7 @@ class FEformulacion extends CI_Controller
                 $id_est_inve = '0';
             }
             //$this->session->sess_destroy();
-            $datos = $this->FEformulacion_Modal->GetFormulacion($Etapa, $id_est_inve);
+            $datos = $this->FEformulacion_Modal->GetFormulacion($id_est_inve);
             echo json_encode($datos);
         } else {
             show_404();

@@ -10,7 +10,7 @@ class Estudio_Inversion_Model extends CI_Model
     }
     public function get_EstudioInversion()
     {
-        $EstudioInversion = $this->db->query("EXEC sp_ListarEstudioInversion2");
+        $EstudioInversion = $this->db->query("EXEC sp_ListarEstudioInversion");
         if ($EstudioInversion->num_rows() > 0) {
             return $EstudioInversion->result();
         } else {
@@ -97,7 +97,7 @@ class Estudio_Inversion_Model extends CI_Model
             return false;
         }
     }
-
+    //actualizar el campo en seguiimiento igual 0
     public function AddEtapaEstudio($flat, $id_etapa_estudio, $id_est_inv, $listaretapasFE_M, $dateFechaIniC, $dateFechaIniF, $txtAvanceFisico, $txadescripcion)
     {
         //  $EstadoCicloInversion = $this->db->query("execute get");

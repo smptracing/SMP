@@ -238,12 +238,6 @@
   </div>
 <!-- fin popul para crear un nuevo estudio de inversión -->
 
-
-
-
-
-
-
 <!-- /.ventana para asignar responsable a estudio de inversión-->
 <div class="modal fade" id="ventanaasiganarpersona" role="dialog">
     <div class="modal-dialog ">

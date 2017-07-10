@@ -35,12 +35,13 @@
                   <div class="x_content">
                     <p></p>
                     <!-- start project list -->
-                    <table id="table-formulacion" class="table table-striped projects">
+                    <table id="table-formulacion" class="table table-striped projects" style="width: 100%">
                       <thead>
                         <tr>
-                          <th style="width: 5%">Id PIP</th>
-                          <th>Codigo Unico</th>
-                          <th style="width: 20%">Nombre Pip</th>
+                          <th style="width: 1%">#</th>
+                          <th style="width: 1%">Id PIP</th>
+                          <th style="width: 5%">Codigo Unico</th>
+                          <th style="width: 18%">Nombre Pip</th>
                           <th>Provincia</th>
                           <th>Distrito</th>
                           <th>Nivel Estudio</th>
