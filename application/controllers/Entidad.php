@@ -34,10 +34,8 @@ class Entidad extends CI_Controller {/* Mantenimiento de sector entidad Y servic
 	      $txt_NombreEntidad =$this->input->post("txt_NombreEntidad");
 	      $txt_DenominacionEntidad =$this->input->post("txt_DenominacionEntidad");
 	    
-	     if($this->Model_Entidad->AddEntidad($listaSector,$txt_NombreEntidad,$txt_DenominacionEntidad) == false)
-		       echo "Se añadio una nueva entidad";
-		      else
-		      echo "Se añadio  una nueva entidad";  
+	     $Data=$this->Model_Entidad->AddEntidad($listaSector,$txt_NombreEntidad,$txt_DenominacionEntidad);
+	     echo json_encode($Data);
 		 } 
 	     else
 	     {

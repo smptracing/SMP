@@ -1,13 +1,13 @@
 
 
 
-          /*$.ajax({
+          $.ajax({
                 url:base_url+"/index.php/PrincipalFyE/GetAprobadosEstudio",
                 type:"POST",
                 success:function(respuesta){
-                  console.long(respuesta);
+                  console.log(respuesta);
                 }
-          });*/
+          });
 
           //estadistica en forma de circulo
           var dom = document.getElementById("PieFormulacionEvaluacion");
@@ -139,3 +139,4 @@
             //inicio graficos
 
 
+     

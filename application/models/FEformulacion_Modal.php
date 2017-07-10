@@ -8,12 +8,10 @@ class FEformulacion_Modal extends CI_Model
 
     }
     /*LISTAR DENOMINACION FORMULACION Y EVALUACION*/
-    public function GetFormulacion($Etapa, $id_est_inve)
+    public function GetFormulacion($id_est_inve)
     {
 
-        $FEformulacion = $this->db->query("execute sp_ListarEstudioInversion'"
-            . $Etapa . "','"
-            . $id_est_inve . "' ");
+        $FEformulacion = $this->db->query("execute sp_ListarEstudioFormulacion'" . $id_est_inve . "' ");
         if ($FEformulacion->num_rows() >= 0) {
             return $FEformulacion->result();
         } else {
@@ -23,13 +21,11 @@ class FEformulacion_Modal extends CI_Model
     }
     /*LISTAR DENOMINACION FORMULACION Y EVALUACION*/
     /*LISTAR DENOMINACION FORMULACION Y EVALUACION*/
-    public function GetFEAprobados($Etapa, $id_est_inve)
+    public function GetFEAprobados($id_est_inve)
     {
 
-        $FEAprobados = $this->db->query("execute sp_ListarEstudioInversion'"
-            . $Etapa . "','"
+        $FEAprobados = $this->db->query("execute sp_ListarEstudioAprobados'"
             . $id_est_inve . "' ");
-
         if ($FEAprobados->num_rows() >= 0) {
             return $FEAprobados->result();
         } else {
@@ -37,13 +33,11 @@ class FEformulacion_Modal extends CI_Model
         }
 
     }
-    public function GetFEViabilizado($Etapa, $id_est_inve)
+    public function GetFEViabilizado($id_est_inve)
     {
 
-        $FEAprobados = $this->db->query("execute sp_ListarEstudioInversion'"
-            . $Etapa . "','"
+        $FEAprobados = $this->db->query("execute sp_ListarEstudioViabilizados'"
             . $id_est_inve . "' ");
-
         if ($FEAprobados->num_rows() >= 0) {
             return $FEAprobados->result();
         } else {

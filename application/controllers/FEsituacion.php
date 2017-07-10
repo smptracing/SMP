@@ -54,12 +54,11 @@ class FEsituacion extends CI_Controller
     public function AddSituacion()
     {
         if ($this->input->is_ajax_request()) {
-            $flat                = "U";
+            $flat                = "C";
             $Cbx_Situacion       = $this->input->post("Cbx_Situacion");
             $txt_IdEtapa_Estudio = $this->input->post("txt_IdEtapa_Estudio");
-            $dateFechaIniC       = $this->input->post("dateFechaIniC");
             $txadescripcion      = $this->input->post("txadescripcion");
-            if ($this->Model_FEsituacion->AddSituacion($flat, $Cbx_Situacion, $txt_IdEtapa_Estudio, $txadescripcion, $dateFechaIniC) == false) {
+            if ($this->Model_FEsituacion->AddSituacion($flat, $Cbx_Situacion, $txt_IdEtapa_Estudio, $txadescripcion) == false) {
                 echo "1";
             } else {
                 echo "2";

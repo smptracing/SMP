@@ -24,15 +24,15 @@ class Model_DenominacionFE extends CI_Model
         //AGREGAR UNA DENOMINACION EN FORMULACION Y EVALUACION
          function AddDenominacionFE($txt_DenominacionFE)
         {
-            $this->db->query("insert into DENOMINACIOM_FE(denom_fe) values ('$txt_DenominacionFE')");
-            if ($this->db->affected_rows()> 0)
-              {
-                return true;
-              }
-              else
-              {
-                return false;
-              }
+            $mensaje=$this->db->query("execute sp_DenominacionFE_c'".$txt_DenominacionFE."'");
+
+               if($mensaje->num_rows()>0)
+             {
+              return $mensaje->result();
+             }else
+             {
+              return false;
+             }
         }
         //AGREGAR UNA DENOMINACION EN FORMULACION Y EVALUACION
         function UpdateDenominacionFE($txt_IdDenominacionModiFE,$txt_DenominacionModiFE)

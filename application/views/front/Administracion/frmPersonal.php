@@ -187,7 +187,7 @@
                            <label class="control-label col-md-3 col-sm-3 col-xs-6">Oficina</label>
                             <div class="col-md-6 col-sm-9 col-xs-6">
                                      <select   id="Cbx_Oficina" name="Cbx_Oficina" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Estado FE...">
-                                                </select>
+                                      </select>
                             </div>
                     </div>
                       <div class="item form-group">

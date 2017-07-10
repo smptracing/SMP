@@ -10,9 +10,7 @@ class Estudio_Inversion_Model extends CI_Model
     }
     public function get_EstudioInversion()
     {
-
-
-        $EstudioInversion = $this->db->query("EXEC sp_ListarEstudioInversion2");
+        $EstudioInversion = $this->db->query("EXEC sp_ListarEstudioInversion");
         if ($EstudioInversion->num_rows() > 0) {
             return $EstudioInversion->result();
         } else {
@@ -99,7 +97,7 @@ class Estudio_Inversion_Model extends CI_Model
             return false;
         }
     }
-
+    //actualizar el campo en seguiimiento igual 0
     public function AddEtapaEstudio($flat, $id_etapa_estudio, $id_est_inv, $listaretapasFE_M, $dateFechaIniC, $dateFechaIniF, $txtAvanceFisico, $txadescripcion)
     {
         //  $EstadoCicloInversion = $this->db->query("execute get");
@@ -118,7 +116,7 @@ class Estudio_Inversion_Model extends CI_Model
             return false;
         }
     }
-    public function AddEstudioInversion($flat, $id_est_inv, $txtCodigoUnico, $txtnombres, $listaFuncionC, $listaTipoInversion, $listaNivelEstudio, $lista_unid_form, $lista_unid_ejec, $txadescripcion, $txtMontoInversion, $txtcostoestudio, $listaResponsables, $dateFechaAsig)
+    public function AddEstudioInversion($flat, $id_est_inv, $txtCodigoUnico, $txtnombres, $listaFuncionC, $listaTipoInversion, $listaNivelEstudio, $lista_unid_form, $lista_unid_ejec, $txadescripcion, $txtMontoInversion, $txtcostoestudio)
     {
         $EstudioInversion = $this->db->query("execute sp_Gestionar_EstudioInversion'"
             . $flat . "','"
@@ -132,9 +130,7 @@ class Estudio_Inversion_Model extends CI_Model
             . $lista_unid_ejec . "', '"
             . $txadescripcion . "', '"
             . $txtMontoInversion . "', '"
-            . $txtcostoestudio . "', '"
-            . $listaResponsables . "', '"
-            . $dateFechaAsig . "' "
+            . $txtcostoestudio . "' "
 
         );
 
@@ -209,10 +205,10 @@ class Estudio_Inversion_Model extends CI_Model
         }
 
     }
-    public function AddDocumentosEstudio($txt_id_est_invAdd,$txt_documentosEstudio,$txt_descripcionEstudio,$Url_documento)
+    public function AddDocumentosEstudio($txt_id_est_invAdd, $txt_documentosEstudio, $txt_descripcionEstudio, $Url_documento)
     {
         $this->db->query("execute sp_DocumentoInversion_r '" . $txt_id_est_invAdd . "','" . $txt_documentosEstudio . "', '" . $txt_descripcionEstudio . "','" . $Url_documento . "'");
-        if ($this->db->affected_rows()>0) {
+        if ($this->db->affected_rows() > 0) {
             return true;
         } else {
             return false;
@@ -229,6 +225,5 @@ class Estudio_Inversion_Model extends CI_Model
             return false;
         }
     }
-
 
 }

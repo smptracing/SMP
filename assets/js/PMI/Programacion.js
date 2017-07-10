@@ -8,8 +8,179 @@
                   $("label.error").remove();  //lo utilice para borrar la etiqueta de error del jquery validate
                 });*/
              //FIN PARA LIMPIAR LOS DATOS DE LOS MODALES
+//localstored para agregar montos en programacion
+ var selected_index = -1; //Index of the selected ListCar item
+          var DataMontosProgCars = localStorage.getItem("DataMontosProgCars");//Retrieve the stored data
 
+          DataMontosProgCars = JSON.parse(DataMontosProgCars); //Converts string en objeto
 
+          if(DataMontosProgCars == null) //inicializar array
+            DataMontosProgCars = [];
+
+//fin localstored para agregar en programacion
+
+//AGREGAR MONTOS DE PROGRAMCION TEMPORALES CON LOCALSTORE
+var suma=1;
+var fechaActual="";
+  function AddMontosProg(){
+                var monto_opera_mant_prog='0';
+                var car = JSON.stringify({
+                  AnioProgramado  : document.getElementById("AnioProgramado").value ,
+                  txt_MontoProgramado    : document.getElementById("txt_MontoProgramado").value ,
+                  txt_MontoOperacionMante   : monto_opera_mant_prog
+                });
+                DataMontosProgCars.push(car);
+                localStorage.setItem("DataMontosProgCars", JSON.stringify(DataMontosProgCars));
+                alert("Se guarda los montos");
+                Listarmontosprog();
+                return true;
+                console.log(DataMontosProgCars);
+
+              }
+//FIN AGREGAR MONTOS DE PROGRAMCION TEMPORALES
+//BOTON AGREGAR MONTOS
+ $("#btn-GuardarMontoProgramado").click(function(){
+                return AddMontosProg();
+              
+            });
+
+//FIN BOTON AGREGAR MONTOS
+                          $("#btn_borrar").click(function(){
+              alert("se borar los datos");
+              localStorage.clear();
+              
+            });
+
+//listar montos temporales 
+function  Listarmontosprog(){
+                        document.getElementById('table-Programacion1').innerHTML ="";
+                        var datos =" ";
+                        //datos += "<table>" ;
+                        datos += "<thead>";
+                        datos +=  "<tr>";
+                        datos +=  " <th>Año</th>";
+                        datos +=  " <th>Montos Programados</th>";
+                        datos +=  " <th>Monto Operacion Y mantenimiento</th>";
+                        datos +=  "</tr>";
+                        datos +="</thead>";
+                        datos +="<tbody>";
+
+                        for(var i in DataMontosProgCars){
+                          var cli = JSON.parse(DataMontosProgCars[i]);
+                            datos +="<tr>";
+                            datos += "  <td>"+cli.AnioProgramado+"</td>" ;
+                            datos += "  <td>"+cli.txt_MontoProgramado +"</td>" ;
+                            datos += "  <td>"+cli.txt_MontoOperacionMante +"</td>" ;
+                            datos += "</tr>";
+                        }
+                        datos +="</tbody>";
+                        //datos += "</table>";
+                      document.getElementById('table-Programacion1').innerHTML =datos;
+                     document.getElementById("txt_MontoProgramado").value = "";
+                     /* document.getElementById("cbxPasaje").value ="" ;
+                      document.getElementById("txt_cuartel").value = "";*/
+                      console.log('entro en el ListCarar');
+                       suma=suma+1;
+                         if(suma<4){
+                           $("#AnioProgramado").val(fechaActual+suma);
+                           $("#AnioProgramadoOpeMant").val(fechaActual+suma);
+                         }
+                         else
+                         {
+                            document.getElementById("btn-GuardarMontoProgramado").disabled=true;
+                         }
+               }
+//fin montos temporales
+//AGREGAR MONTOS DE PROGRAMCION de operacion TEMPORALES CON LOCALSTORE
+  function AddMontosProgOper(){
+                var txt_MontoProgramado='0';
+                var car = JSON.stringify({
+                  AnioProgramadoOpeMant  : document.getElementById("AnioProgramadoOpeMant").value ,
+                  txt_MontoProgramado    : txt_MontoProgramado ,
+                  txt_MontoOperacionMante   : document.getElementById("txt_MontoOperacionMante").value
+                });
+                DataMontosProgCars.push(car);
+                localStorage.setItem("DataMontosProgCars", JSON.stringify(DataMontosProgCars));
+                alert("Se guarda los montos de operacion");
+                ListarmontosprogOper();
+                return true;
+                console.log(DataMontosProgCars);
+
+              }
+//FIN AGREGAR MONTOS DE PROGRAMCION de operacion TEMPORALES CON LOCALSTORE
+//BOTON AGREGAR MONTOS OPERACION
+ $("#btn-GuardarMontoProgramadoOper").click(function(){
+                event.preventDefault();
+                return AddMontosProgOper();
+              
+            });
+//FIN BOTON AGREGAR MONTOS OPERACION
+//listar montos temporales 
+function  ListarmontosprogOper(){
+                        document.getElementById('table-Programacion1').innerHTML ="";
+                        var datos =" ";
+                        //datos += "<table>" ;
+                        datos += "<thead>";
+                        datos +=  "<tr>";
+                        datos +=  " <th>Año</th>";
+                        datos +=  " <th>Montos Programados</th>";
+                        datos +=  " <th>Monto Operacion Y mantenimiento</th>";
+                        datos +=  "</tr>";
+                        datos +="</thead>";
+                        datos +="<tbody>";
+
+                        for(var i in DataMontosProgCars){
+                          var cli = JSON.parse(DataMontosProgCars[i]);
+                            datos +="<tr>";
+                            datos += "  <td>"+cli.AnioProgramadoOpeMant+"</td>" ;
+                            datos += "  <td>"+cli.txt_MontoProgramado +"</td>" ;
+                            datos += "  <td>"+cli.txt_MontoOperacionMante +"</td>" ;
+                            datos += "</tr>";
+                        }
+                        datos +="</tbody>";
+                        //datos += "</table>";
+                      document.getElementById('table-Programacion1').innerHTML =datos;
+                     //document.getElementById("txt_MontoProgramado").value = "";
+                     /* document.getElementById("cbxPasaje").value ="" ;
+                      document.getElementById("txt_cuartel").value = "";*/
+                      console.log('entro en el ListCarar');
+                       suma=suma+1;
+                         if(suma<4){
+                           $("#AnioProgramado").val(fechaActual+suma);
+                           $("#AnioProgramadoOpeMant").val(fechaActual+suma);
+                         }
+                         else
+                         {
+                            document.getElementById("btn-GuardarMontoProgramado").disabled=true;
+                         }
+               }
+//fin montos temporales
+//AGREGAR TODOS LOS MONTOS PROGRAMADOS A LA TABLA PROGRAMACION
+$("#finalizarProgram").click(function(){
+                    var textidCartera=$("#textidCartera").val();
+                    var cbxBrechaP=$("#cbxBrechaP").val();
+                    var textidpip=$("#textidpip").val();
+                    var txtPrioridadProg=$("#txtPrioridadProg").val();
+                   for(var i in DataMontosProgCars){
+                          var cli = JSON.parse(DataMontosProgCars[i]);
+                             AnioProgramado=cli.AnioProgramado;
+                             txt_MontoProgramado =cli.txt_MontoProgramado;
+                             txt_MontoOperacionMante =cli.txt_MontoOperacionMante;
+                              event.preventDefault();
+                                  $.ajax({
+                                      url:base_url+"index.php/Programacion/AddProgramacion",
+                                      type:"post",
+                                      data:{textidCartera:textidCartera,cbxBrechaP:cbxBrechaP,textidpip:textidpip,txtPrioridadProg:txtPrioridadProg, AnioProgramado:AnioProgramado,txt_MontoProgramado:txt_MontoProgramado,txt_MontoOperacionMante:txt_MontoOperacionMante},
+                                      success:function(resp){
+                                        alert(resp);
+                                       //$('#tabla-cuartel').dataTable()._fnAjaxUpdate();    //SIRVE PARA REFRESCAR LA TABLA
+                                   }
+                                  });
+                        }
+                          localStorage.clear();                     
+                });
+
+//finAGREGAR TODOS LOS MONTOS PROGRAMADOS A LA TABLA PROGRAMACION
               $("#MostrarCarteraAnios").click(function(){
                   Aniocartera=$("#Aniocartera").val();
                   $('select[name=cbCartera]').val(Aniocartera);
@@ -23,19 +194,17 @@
 
               });
 
-            listaMontosTemporales();
+            //listaMontosTemporales();
             listaProyectoIprogramadoA();//para mostrar y actualizar
             var AnioCartera=$("#Aniocartera").val();
             if(AnioCartera=="")
             {
-                cartera="2017";
+                cartera="<?=(isset($anio) ? $anio : date('Y'))?>";
                 listaProyectoIprogramado(cartera);/*llamar proyecto de inversion programado*/
 
             }else
             {
-                //alert(AnioCartera);
                 cartera=AnioCartera;
-                 $('#Aniocartera option:contains("2016")').attr('selected','selected');
                 listaProyectoIprogramado(cartera);/*llamar proyecto de inversion programado*/
             }
 
@@ -164,8 +333,8 @@
                 });
           //FIN GUARDAR LOS MONTOS PROGRAMADOS EN UNA TABLA TEMPORAL
 
-             //GUARDAR LOS MONTOS PROGRAMADOS DE OPERACION Y MANTENIMIENTO EN UNA TABLA TEMPORAL
-                $("#btn-GuardarMontoOperaMant").click(function()
+             //GUARDAR LOS MONTOS PROGRAMADOS DE OPERACION Y MANTENIMIENTO EN UNA TABLA TEMPORAL elimnar
+                /*$("#btn-GuardarMontoOperaMant").click(function()
                 {
                    var AnioProgramadoOpeMant=$("#AnioProgramadoOpeMant").val();
                    var txt_MontoProgramado='';
@@ -181,7 +350,7 @@
                                 listaMontosTemporales();
                             }
                           });
-                });
+                });*/
           //FIN GUARDAR LOS MONTOS PROGRAMADOS DE OPERACION Y MANTENIMIENTO EN UNA TABLA TEMPORAL
           // TRAER DATOS DEL ULTIMO PROYECTO DE INVERSION PARA SU PROGRAMACION
                 var  listaUltimoProyectoInversion=function()
@@ -283,139 +452,111 @@ function  GuardarProyectos(id_ue,id_naturaleza_inv,id_tipologia_inv,id_tipo_inve
     }
   });
 }
-var suma=0;
-var fechaActual="";
-  var listaMontosTemporales=function()
-  {
-    html1="";
-    $.ajax({
-    "url":base_url+"index.php/Programacion/GetMontosTemporales",
-     success:function(respuesta)
-                      {
-                         var registros = eval(respuesta);
 
-                         html1+="<thead> <tr> <th  class='active'><h5>AÑO </h5></th> <th class='active'><h5>MONTOS PROGRAMADOS</h5></th><th colspan='12' class='active'><h5>MONTO OPERACIÓN MANTENIMIENTO</h5></th> </tr></thead>"
-                         for (var i = 0; i <registros.length;i++) {
-                              html1 +="<tbody> <tr><th>"+registros[i]["año_prog"]+"</th><th>"+registros[i]["monto_prog"]+"</th><th>"+registros[i]["monto_opera_mant_prog"]+"</th></tr>";
-                          //alert(suma);
-                           };
-                             html1 +="</tbody>";
-                         $("#table-Programacion").html(html1);
-                         suma=suma+1;
-                         if(suma<4){
-                           $("#AnioProgramado").val(fechaActual+suma);
-                           $("#AnioProgramadoOpeMant").val(fechaActual+suma);
-                         }
-                         else
-                         {
-                            document.getElementById("btn-GuardarMontoProgramado").disabled=true;
-                         }
-                      }
-                    });
-  }
- var listaProyectoIprogramado=function(AnioCartera)
-                {
-                    $.fn.dataTable.ext.errMode = 'throw';
-                    var table=$("#table-ProyectoInversionProgramado").DataTable({
-                     "processing":true,
-                      "scrollY": 350,
-                      "scrollX": true,
-                      "scrollCollapse": true,
-                      "paging":         true,
-                     destroy:true,
-                         "ajax":{
-                                    "url":base_url+"index.php/Programacion/GetProgramacion",
-                                    "method":"POST",
-                                     data:{"AnioCartera":AnioCartera},
-                                    "dataSrc":"",
-                                    "deferRender": true,
-                                    },
-                                "columns":[
-                                    {"data":"id_pi","visible":false},
-                                    {"data":"codigo_unico_pi",
-                                    "mRender": function ( data, type, full ) {
-                                     return '<a style="font-weight:normal;font-size:15" type="button" class="Verdetalle btn btn-link" data-toggle="modal" data-target="#VerDetallehorizontal" href="/codigo_unico_pi/' + data + '">' + data+ '</a>';
-                                      }
+var listaProyectoIprogramado=function(AnioCartera)
+{
+	$.fn.dataTable.ext.errMode='throw';
+	
+	var table=$("#table-ProyectoInversionProgramado").DataTable(
+	{
+		"processing" : true,
+		"serverSide" : true,
+		"scrollY" : 350,
+		"scrollX" : true,
+		"scrollCollapse" : true,
+		"paging" : true,
+		"searchable" : true,
+		"sort" : false,
+		"destroy" : true,
+		"language" : idioma_espanol,
+		"ajax" :
+		{
+			"url" : base_url+"index.php/Programacion/GetProgramacion",
+			"method" : "POST",
+			"data" : { "AnioCartera" : AnioCartera},
+			"dataSrc" : "data",
+			"deferRender" : true
+		},
+		"columns" : [
+		{ "data" : "id_pi", "visible" : false },
+		{
+			"data" : "codigo_unico_pi", "mRender": function(data, type, full)
+			{
+				return '<a style="font-weight:normal;font-size:15" type="button" class="Verdetalle btn btn-link" data-toggle="modal" data-target="#VerDetallehorizontal" href="/codigo_unico_pi/' + data + '">' + data+ '</a>';
+			}
+		},
+		{ "data" : "nombre_estado_ciclo" },
+		{ "data" : "nombre_pi" },
+		{ "data" : "prioridad_prog" },
+		{ "data" : "nombre_brecha" },
+		{ "data" : "Inv_2018" },
+		{ "data" : "Inv_2019" },
+		{ "data" : "Inv_2020" },
+		{ "data" : "OyM_2018" },
+		{ "data" : "OyM_2019" },
+		{ "data" : "OyM_2020" },
+		{ "data" : "nombre_tipo_inversion", "visible" : false },
+		{ "data" : "nombre_tipologia_inv", "visible" : false },
+		{ "data" : "nombre_naturaleza_inv", "visible" : false },
+		{ "data" : "nombre_nivel_gob", "visible" : false },
+		{ "data" : "nombre_ue", "visible" : false },
+		{ "data" : "provincias", "visible" : false },
+		{ "data" : "distritos", "visible" : false },
+		{ "data" : "nombre_funcion", "visible" : false },
+		{ "data" : "nombre_div_funcional", "visible" : false },
+		{ "data" : "nombre_grup_funcional", "visible" : false },
+		{ "data" : "costo_pi", "visible" : false },
+		{ "data" : "pim_meta_pres", "visible" : false },
+		{ "data" : "nombre_serv_pub_asoc", "visible" : false },
+		{ "data" : "nombre_brecha", "visible" : false },
+		{ "data" : "nombre_programa_pres", "visible" : false },
+		{ "data" : "fecha_registro_pi", "visible" : false },
+		{ "data" : "fecha_viabilidad_pi", "visible" : false },
+		{ "defaultContent" : "<button type='button' class='VerProyecto btn btn-success btn-xs' data-toggle='modal' data-target='#VerDetalleProyectoInversion'>Ver Ficha</button>" }]
+	});
 
-                                    },
-                                    {"data":"nombre_estado_ciclo"},
-                                    {"data":"nombre_pi"},
-                                    {"data":"prioridad_prog"},
-                                    {"data":"nombre_brecha"},
-                                    {"data":"Inv_2018"},
-                                    {"data":"Inv_2019"},
-                                    {"data":"Inv_2020"},
+	$('#table-ProyectoInversionProgramado_filter input').unbind();
 
-                                    {"data":"OyM_2018"},
-                                    {"data":"OyM_2019"},
-                                    {"data":"OyM_2020"},
+	$('#table-ProyectoInversionProgramado_filter input').bind('keyup', function(e)
+	{
+		if(e.keyCode==13)
+		{
+			table.search(this.value).draw();
+		}
+	});
 
-                                    {"data":"nombre_tipo_inversion","visible":false},
-                                    {"data":"nombre_tipologia_inv","visible":false},
-                                    {"data":"nombre_naturaleza_inv","visible":false},
-                                    {"data":"nombre_nivel_gob","visible":false},
-                                    {"data":"nombre_ue","visible":false},
-                                    {"data":"provincias","visible":false},
+	ListaProyectoInversionData("#table-ProyectoInversionProgramado",table);  //obtener data de funcion para agregar  AGREGAR
+	Listahorizontal("#table-ProyectoInversionProgramado",table);  //obtener data de funcion para agregar  AGREGAR
 
-                                    {"data":"distritos","visible":false},
+	$('a.toggle-visVer').on('click', function(e)
+	{
+		e.preventDefault();
 
-                                    {"data":"nombre_funcion","visible":false},
-                                    {"data":"nombre_div_funcional","visible":false},
-                                    {"data":"nombre_grup_funcional","visible":false},
+		var column=table.column($(this).attr('data-column'));
+		
+		column.visible(!column.visible());
 
-                                    {"data":"costo_pi","visible":false},
-                                    {"data":"pim_meta_pres","visible":false},
-                                    {"data":"nombre_serv_pub_asoc","visible":false},
-                                    {"data":"nombre_brecha","visible":false},
-                                    {"data":"nombre_programa_pres","visible":false},
-                                    {"data":"fecha_registro_pi","visible":false},
-                                    {"data":"fecha_viabilidad_pi","visible":false},
+		for(var i=8; i<=35; i++) 
+		{
+			table.column(i).visible( true );
+		}
+	});
 
-                                    {"defaultContent":"<button type='button' class='VerProyecto btn btn-success btn-xs' data-toggle='modal' data-target='#VerDetalleProyectoInversion'>Ver Ficha</button>"}
+	$('a.toggle-visRestablecer').on('click', function(e)
+	{
+		e.preventDefault();
 
-                                ],
+		var column =table.column( $(this).attr('data-column'));
 
-                                "language":idioma_espanol
+		column.visible(!column.visible());
 
+		for(var i=13; i<=35; i++)
+		{
+			table.column(i).visible(false);
+		}
+	});
+}
 
-
-                    });
-                     /*setInterval( function () {
-                                  table.ajax.reload( null, false ); // user paging is not reset on reload
-                              }, 30000 ); */
-                      /*$('#table-ProyectoInversionProgramado tbody').on('click', 'tr', function () {
-                            var data = table.column(this).data();
-                            var txt_IdfuncionM=data.codigo_unico_pi;
-                            alert(txt_IdfuncionM);
-                        } );*/
-
-
-                     ListaProyectoInversionData("#table-ProyectoInversionProgramado",table);  //obtener data de funcion para agregar  AGREGAR
-                     Listahorizontal("#table-ProyectoInversionProgramado",table);  //obtener data de funcion para agregar  AGREGAR
-
-                      $('a.toggle-visVer').on( 'click', function (e)
-                        {
-                                e.preventDefault();
-                                var column =table.column( $(this).attr('data-column'));
-                                console.log(column);
-                                column.visible(!column.visible() );
-                                for (var i =8; i <= 35; i++) {
-                                  table.column(i).visible( true );
-                                }
-
-
-                         } );
-                      $('a.toggle-visRestablecer').on( 'click', function (e)
-                        {
-                                e.preventDefault();
-                                var column =table.column( $(this).attr('data-column'));
-                                console.log(column);
-                                column.visible(!column.visible() );
-                               for (var i =13; i <= 35; i++) {
-                                  table.column(i).visible( false );
-                                }
-                         } );
-                }
 var listaProyectoIprogramadoA=function()//para actualizar programacion
                 {
                     var table=$("#table-modificarprogramacion").DataTable({

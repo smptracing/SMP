@@ -9,8 +9,17 @@
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
-                           //alert(resp);
-                            swal("",resp, "success");
+                           var registros = eval(resp);
+                            for (var i = 0; i < registros.length; i++) {
+                               if(registros[i]["VALOR"]==1){
+                                    swal("",registros[i]["MENSAJE"], "success");
+                                   $('#form-addEntidad')[0].reset();
+                                   $("#VentanaRegistraEntidad").modal("hide");
+                               }else{
+                                      swal('',registros[i]["MENSAJE"],'error' )
+                               }
+                                /*swal("",  registros[i]["MENSAJE"], "success");*/
+                            };
                            $('#table-entidad').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
                          }
                       });

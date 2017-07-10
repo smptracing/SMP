@@ -19,7 +19,8 @@ class FEentregableEstudio extends CI_Controller
         $this->session->set_userdata($data);
         if ($this->input->is_ajax_request()) {
             $datos = $this->Gant_Model->GetEntregable($id_etapa_estudio);
-            echo json_encode(array('data' => $datos));
+            $links = $this->Gant_Model->GetLink($id_etapa_estudio);
+            echo json_encode(array('data' => $datos, 'links' => $links));
         } else {
             $data = array('Etapa_Estudio' => $id_etapa_estudio);
             $this->session->set_userdata($data);

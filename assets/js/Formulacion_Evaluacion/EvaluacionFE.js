@@ -1,5 +1,6 @@
  $(document).on("ready" ,function(){
               ListarEvaluacionFE();
+               ListarEvaluador();
                             //REGISTARAR ESTADO ETAPA
    $("#form-AddEtapaEstudio").submit(function(event)
                   {
@@ -251,7 +252,32 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
                         }
                     });
                 }
+                var ListarEvaluador=function()
+                {
+                    var table=$("#table-AsignarEvaluador").DataTable({
+                     "processing": true,
+                      "serverSide":false,
+                     destroy:true,
 
+                         "ajax":{
+                                    "url":base_url+"index.php/EvaluacionFE/GetEvaluadores",
+                                    "method":"POST",
+                                    "dataSrc":""
+                                    },
+                                "columns":[
+                                    {"data":"id_persona","visible": false},
+                                    {"data":"nombres"},
+                                    {"data":"apellido_P"},
+                                    {"data":"desc_cargo"},
+                                    {"data":"especialidad"},
+                                    {"data":"grado_academico"}
+                                ],
+
+                                "language":idioma_espanol
+                    });
+                   // EtapaDenominacion("#table-AsignarEvaluador",table);
+
+                }
                 var listarsituacionFE=function(valor){
                      html="";
                     $("#Cbx_Situacion").html(html); 
@@ -323,6 +349,21 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
                         }
                     });
                 }
+
+            /*      function lista()
+          {
+            event.preventDefault();
+            $.ajax({
+              "url": base_url+"index.php/EvaluacionFE/GetEvaluadores",
+              type:"POST",
+              success:function(respuesta){
+                alert(respuesta);GetEvaluadores
+              
+
+              }
+            });
+          }*/
+
             var idioma_espanol=
                 {
                     "sProcessing":     "Procesando...",

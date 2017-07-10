@@ -35,6 +35,7 @@ class PrincipalFyE extends CI_Controller
         show_404();
     }
     //fin estadistica
+    
 
     public function getDatosEstudiosInversionNotificacion()
     {

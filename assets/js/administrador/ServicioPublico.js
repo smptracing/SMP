@@ -11,7 +11,17 @@
                           encoding:"UTF-8",
                           data:$(this).serialize(),
                           success:function(resp){
-                           swal("",resp, "success");
+                             var registros = eval(resp);
+                            for (var i = 0; i < registros.length; i++) {
+                               if(registros[i]["VALOR"]==1){
+                                    swal("",registros[i]["MENSAJE"], "success");
+                                   $('#form-addServicioAsociado')[0].reset();
+                                   $("#VentanaRegistraServicioAsociado").modal("hide");
+                               }else{
+                                      swal('',registros[i]["MENSAJE"],'error' )
+                               }
+                                /*swal("",  registros[i]["MENSAJE"], "success");*/
+                            };
                            $('#table-ServicioAsociado').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
                          }
                       });

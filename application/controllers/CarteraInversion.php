@@ -61,18 +61,15 @@ public function __construct(){
 				    }
 
  	 }
+	//FIN INSERTAR UNA CARTERA DE INVERSION
 
-//FIN INSERTAR UNA CARTERA DE INVERSION
-    function getCarteraAnio($anio){
-	$data = array('AnioC' => $anio);  
+	function getCarteraAnio($anio)//La variable "$anio" se esté recuperando en la vista "Front/Pmi/frmMProyectoInversion"; por tal motivo, no hay que borrar este parámetro.
+	{
+		$this->load->view('layout/Pmi/header');
+		$this->load->view('Front/Pmi/frmMProyectoInversion', ['anio' => $anio]);
+		$this->load->view('layout/Pmi/footer');
+	}
 
-	$this->session->set_userdata($data);
-
-	$this->load->view('layout/Pmi/header');
-	$this->load->view('Front/Pmi/frmMProyectoInversion');
-	$this->load->view('layout/Pmi/footer');
- 	 //OBTENER LA CARTERA ACTUAL SEGUN EL AÑO
-    }
     function GetCarteraInvFechAct()
 	{
 		if ($this->input->is_ajax_request()) 

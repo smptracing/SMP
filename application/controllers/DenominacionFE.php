@@ -30,10 +30,8 @@ class DenominacionFE extends CI_Controller {
         if ($this->input->is_ajax_request())
             {
              $txt_DenominacionFE =$this->input->post("txt_DenominacionFE");
-             if($this->Model_DenominacionFE->AddDenominacionFE($txt_DenominacionFE)== false)
-                   echo "SE INSERTO UNA NUEVA DENOMINACION EN FORMULACION Y EVALUACION";
-                  else
-                  echo "SE INSERTO UNA NUEVA DENOMINACION EN FORMULACION Y EVALUACION";
+            $DATOS=$this->Model_DenominacionFE->AddDenominacionFE($txt_DenominacionFE);
+             echo json_encode($DATOS);
             }
         else
             {

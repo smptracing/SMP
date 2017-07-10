@@ -161,35 +161,33 @@ $(document).on("ready" ,function(){
                                       "mRender":function (data,type, full) {
                                          return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Complete</small></td>";
                                     }},
-
-
-
                                     {"data": function (data, type, dataToSet) {
 
                                       if (data.denom_etapas_fe =='Formulación') 
                                       {
-                                     // return "<td><button  type='button' class='btn btn-primary btn-xs'>"+data.denom_etapas_fe + "</button></td>";
-                                         return '<a  href="../FEformulacion/Feformulacion/'+data.id_est_inv+'"><button type="button" class="btn btn btn-primary btn-xs">'+data.denom_etapas_fe +' </button></a>';
+                                        return '<a  href="../FEformulacion/Feformulacion/'+data.id_est_inv+'"><button type="button" class="btn btn btn-primary btn-xs">'+data.denom_etapas_fe +' </button></a>';
                                       }
                                         if (data.denom_etapas_fe =='Evaluación') 
                                       {
-                                    //  return "<td><button type='button' class='btn btn-warning btn-xs'>"+data.denom_etapas_fe + "</button></td>";
-                                      return '<a  href="../EvaluacionFE/FeEvaluacion/'+data.id_est_inv+'"><button type="button" class="btn btn btn-warning btn-xs">'+data.denom_etapas_fe +' </button></a>';
+                                     return '<a  href="../EvaluacionFE/FeEvaluacion/'+data.id_est_inv+'"><button type="button" class="btn btn btn-warning btn-xs">'+data.denom_etapas_fe +' </button></a>';
                                       }
                                         if (data.denom_etapas_fe =='Aprobado') 
                                       {
-                                     // return "<td><button type='button' class='btn btn-info btn-xs'>"+data.denom_etapas_fe + "</button></td>";
                                      return '<a  href="../FEformulacion/FeAprobado/'+data.id_est_inv+'"><button type="button" class="btn btn btn-info btn-xs">'+data.denom_etapas_fe +' </button></a>';
                                      
                                       }
                                         if (data.denom_etapas_fe =='Viabilizado') 
                                       {
-                                    //  return "<td><button type='button' class='btn btn-success btn-xs'>"+data.denom_etapas_fe + "</button></td>";
-                                       return '<a  href="../FEformulacion/FeViabilizado/'+data.id_est_inv+'"><button type="button" class="btn btn btn-success btn-xs">'+data.denom_etapas_fe +' </button></a>';
+                                      return '<a  href="../FEformulacion/FeViabilizado/'+data.id_est_inv+'"><button type="button" class="btn btn btn-success btn-xs">'+data.denom_etapas_fe +' </button></a>';
+                                     
+                                      }
+                                      if (data.denom_etapas_fe ==null) 
+                                      {
+                                      return '<button type="button" class="nuevaEtapaEstudio btn btn-warning btn-xs" data-toggle="modal" data-target="#ventanaEtapaEstudio"><i class="fa fa-flag" aria-hidden="true"></i> Asignar</button"';
                                      
                                       }
                                    }},
-                                  {"defaultContent":"<center><button type='button' class='DocumentosEstudio btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaDocumentosEstudio'><i class='glyphicon glyphicon-folder-open' aria-hidden='true'></i></button><button type='button' class='eliminar btn btn-warning btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button'  class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#ventanaasiganarpersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button><button type='button' class='nuevaEtapaEstudio btn btn-success btn-xs' data-toggle='modal' data-target='#ventanaEtapaEstudio'><i class='glyphicon glyphicon-pushpin' aria-hidden='true'></i></button><center>"}
+                                  {"defaultContent":"<center><button type='button' class='DocumentosEstudio btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaDocumentosEstudio'><i class='glyphicon glyphicon-folder-open' aria-hidden='true'></i></button><button type='button'  class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#ventanaasiganarpersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button><button type='button' class='nuevaEtapaEstudio btn btn-warning btn-xs' data-toggle='modal' data-target='#ventanaEtapaEstudio'><i class='fa fa-flag' aria-hidden='true'></i></button><center>"}
                                ],
                                 "language":idioma_espanol
                     });

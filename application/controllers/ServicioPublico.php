@@ -24,12 +24,14 @@ function AddServicioAsociado()
 	    if ($this->input->is_ajax_request()) 
 	    {
 	      $textarea_servicio_publicoA =$this->input->post("textarea_servicio_publicoA");
-	    if($this->Model_ServicioPublico->AddServicioAsociado($textarea_servicio_publicoA)==true)
+	   /* if($this->Model_ServicioPublico->AddServicioAsociado($textarea_servicio_publicoA)==true)
 		      echo "Se agrego un nuevo Servicio  Publico Asociado";
 		      else
 		     echo "Se agrego un nuevo Servicio  Publico Asociado";
-		 } 
-
+		 } */
+		$Data= $this->Model_ServicioPublico->AddServicioAsociado($textarea_servicio_publicoA);
+		echo json_encode($Data);
+		}
 	     else
 	     {
 	      show_404();

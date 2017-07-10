@@ -20,11 +20,14 @@ public function __construct(){
 	    $cbxServPubAsoc=$this->input->post("cbxServPubAsoc");
 	      $txt_NombreBrecha =$this->input->post("txt_NombreBrecha");
 	      $txtArea_DescBrecha =$this->input->post("txtArea_DescBrecha");
-	      if($this->Model_Brecha->AddBrecha($cbxServPubAsoc,$txt_NombreBrecha,$txtArea_DescBrecha) == true)
+	      /*if($this->Model_Brecha->AddBrecha($cbxServPubAsoc,$txt_NombreBrecha,$txtArea_DescBrecha) == true)
 	        echo "No se añadio una  Brecha";
 	      else
 	        echo "Se añadio  una Brecha";  
-	    }
+	    }*/
+	     $Data=$this->Model_Brecha->AddBrecha($cbxServPubAsoc,$txt_NombreBrecha, $txtArea_DescBrecha);
+            echo json_encode($Data);
+		}
 	    else
 	    {
 	      show_404();

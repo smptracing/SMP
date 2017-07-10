@@ -13,12 +13,14 @@ class Programacion extends CI_Controller {/* Mantenimiento de sector entidad Y s
       if ($this->input->is_ajax_request()) 
       {
         $textidCartera=$this->input->post("textidCartera");
-        $cbxBrecha =$this->input->post("cbxBrechaP");   
+        $cbxBrechaP =$this->input->post("cbxBrechaP");   
         $textidpip =$this->input->post("textidpip");       
+        $txt_MontoProgramado =$this->input->post("txt_MontoProgramado");
+        $AnioProgramado=$this->input->post("AnioProgramado");
         $txtPrioridadProg =$this->input->post("txtPrioridadProg");
-        
+        $monto_opera_mant_prog ="0.0";
 
-      if($this->Model_Programacion->AddProgramacion($textidCartera,$cbxBrecha,$textidpip,$txtPrioridadProg) == true)
+     if($this->Model_Programacion->AddProgramacion($textidCartera,$cbxBrechaP,$textidpip,$txt_MontoProgramado,$AnioProgramado,$txtPrioridadProg,$monto_opera_mant_prog) == true)
           echo "Se añadio una Programacion";
         else
           echo "Se añadio una Programacion";  
@@ -29,6 +31,30 @@ class Programacion extends CI_Controller {/* Mantenimiento de sector entidad Y s
       }
    }
  /*FIN INSERTAR UN PROYECTO*/
+ //
+  function AddProgramacionOperManteni()
+   {
+      if ($this->input->is_ajax_request()) 
+      {
+        $textidCartera=$this->input->post("textidCartera");
+        $cbxBrechaP =$this->input->post("cbxBrechaP");   
+        $textidpip =$this->input->post("textidpip");       
+        $txt_MontoProgramado ="0.0";
+        $AnioProgramadoOpeMant=$this->input->post("AnioProgramadoOpeMant");
+        $txtPrioridadProg =$this->input->post("txtPrioridadProg");
+        $txt_MontoOperacionMante =$this->input->post("txt_MontoOperacionMante");
+
+     if($this->Model_Programacion->AddProgramacionOperManteni($textidCartera,$cbxBrechaP,$textidpip,$txt_MontoProgramado,$AnioProgramadoOpeMant,$txtPrioridadProg,$txt_MontoOperacionMante) == true)
+          echo "Se añadio una Programacion Multianual";
+        else
+          echo "Se añadio una Programacion Multianual";  
+      }
+      else
+      {
+        show_404();
+      }
+   }
+ //
  //AGREGAR MONTO PROGRAMADO EN UNA TABLA TEMPORAL
    public function AddProgramacionTemp()
    { 
@@ -80,23 +106,30 @@ class Programacion extends CI_Controller {/* Mantenimiento de sector entidad Y s
       }
 
    }
+
    //para traer los proyectos 
-     function GetProgramacion()//listara para mostrar la programacion en una sola
-    {
-      if ($this->input->is_ajax_request()) 
-      {
-      //$valor="";//para enviar vacia  enmi procedimiento y traer la programación
-      $id_proyecto_filtro="";
-      $año_apertura_actual=$this->input->post('AnioCartera');
-      $datos=$this->Model_Programacion->GetProgramacion($id_proyecto_filtro,$año_apertura_actual);
-      $this->session->sess_destroy();
-      echo json_encode($datos);
-      }
-      else
-      {
-        show_404();
-      }
-    }
+	function GetProgramacion()
+	{
+		if($this->input->is_ajax_request()) 
+		{
+			$id_proyecto_filtro="";
+			
+			$anio_apertura_actual=$this->input->post('AnioCartera');
+			$skip=$this->input->post('start');
+			$numberRow=$this->input->post('length');
+			$valueSearch=$this->input->post('search[value]');
+			
+			$datos=$this->Model_Programacion->GetProgramacion($id_proyecto_filtro, $anio_apertura_actual, $skip, $numberRow, $valueSearch);
+			$totalDatos=$this->Model_Programacion->GetProgramacion($id_proyecto_filtro, $anio_apertura_actual, 0, 0, $valueSearch);
+
+			echo '{ "recordsTotal" : '.(count($totalDatos)).', "recordsFiltered" : '.(count($totalDatos)).', "data" : '.json_encode($datos).' }';
+		}
+		else
+		{
+			show_404();
+		}
+	}
+
 //fin traer proyectos
     //buscar proyecto de inversion
      function BuscarProyectoInversion()

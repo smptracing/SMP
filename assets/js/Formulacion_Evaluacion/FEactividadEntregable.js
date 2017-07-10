@@ -15,6 +15,7 @@
                                    $('#form-AddActividades_Entregable')[0].reset();
                                    $("#VentanaActividades").modal("hide");
                                    $('#datatable-actividadesV').dataTable()._fnAjaxUpdate();
+                                   refrescarGantt();
                                }else{
                                       swal('',registros[i]["MENSAJE"],'error' );
 
@@ -46,9 +47,18 @@
                         });
               });
                 //fin añadir actividades al entregable
+                //refrescar gant
+                var refrescarGantt=function()
+                {
+                  gantt.refreshData();
+                  gantt.init('gantt_here');
+                  gantt.load(window.location.href);
+                }
+
                 //Sive para calcular el avance del entregable  asocido a una actividad cuando este actualizando en el calendario
                  $("#form-UpdateActividades_Entregable").submit(function(event)
                   {
+                    refrescarGantt();
                       event.preventDefault();
                       $.ajax({
                           url:base_url+"index.php/FEActividadEntregable/Update_Actividades",

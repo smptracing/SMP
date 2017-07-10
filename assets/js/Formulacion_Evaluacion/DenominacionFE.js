@@ -8,7 +8,17 @@
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
-                           swal("",resp, "success");
+                           var registros = eval(resp);
+                            for (var i = 0; i < registros.length; i++) {
+                               if(registros[i]["VALOR"]==1){
+                                    swal("",registros[i]["MENSAJE"], "success");
+                                   $('#form-addDenominacionFE')[0].reset();
+                                   $("#VentanaDenominacionFE").modal("hide");
+                               }else{
+                                      swal('',registros[i]["MENSAJE"],'error' )
+                               }
+                               
+                            };
                           $('#table-DenominacionFE').dataTable()._fnAjaxUpdate();
 
                          }

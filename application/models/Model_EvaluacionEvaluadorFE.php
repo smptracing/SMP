@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-class Model_EvaluacionFE extends CI_Model
+class Model_EvaluacionEvaluadorFE extends CI_Model
 {
 
     public function __construct()
@@ -23,7 +23,7 @@ class Model_EvaluacionFE extends CI_Model
     /*LISTAR DENOMINACION FORMULACION Y EVALUACION*/
     public function GetEvaluacionFE($id_est_inve)
     {
-        $EvaluacionFE = $this->db->query("execute sp_ListarEstudioEvaluacion'"
+        $EvaluacionFE = $this->db->query("execute sp_ListarEvaluacionEvaluador'"
             . $id_est_inve . "' ");
 
         if ($EvaluacionFE->num_rows() >= 0) {

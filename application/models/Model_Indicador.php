@@ -12,15 +12,14 @@ class Model_Indicador extends CI_Model
 //AGREGAR UN INDICADOR
       function AddIndicador($txt_NombreIndicador,$txtArea_DefIndicador,$txt_UnidadMedida)
         {
-           $this->db->query("execute sp_Indicador_c'".$txt_NombreIndicador."','".$txtArea_DefIndicador."','".$txt_UnidadMedida."'");
-            if ($this->db->affected_rows() > 0) 
-              {
-                return true;
-              }
-              else
-              {
-                return false;
-              }
+          $mensaje1= $this->db->query("execute sp_Indicador_c'".$txt_NombreIndicador."','".$txtArea_DefIndicador."','".$txt_UnidadMedida."'");
+            if($mensaje1->num_rows()>0)
+             {
+              return $mensaje1->result();
+             }else
+             {
+              return false;
+             }
         }
 //FIN AGREGAR UN INDICADOR
 //LISTAR UN INDICADOR

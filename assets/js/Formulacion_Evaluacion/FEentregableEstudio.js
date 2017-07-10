@@ -30,14 +30,7 @@
               });
 
               var txt_id_etapa_estudio=$("#txt_id_etapa_estudio").val();
-              
-//Gant
-               $("#btn_gant").click(function() {
-               $('#ventanagant').modal('toggle');
-               $('#ventanagant').modal('show');
-            // $('#ventanagant').modal('hide');
 
-              });
               //para agregar entregable
                 $("#btn_entregable").click(function() {
                 $("#id_etapa_estudioEE").val($("#txt_id_etapa_estudio").val())
@@ -159,7 +152,7 @@
                           $('#table_entregable').dataTable()._fnAjaxUpdate();
                           //refresca gantt
                           refrescarGantt();
-                            var registros = eval(resp);
+                         var registros = eval(resp);
                           for (var i = 0; i < registros.length; i++) {
                                if(registros[i]["VALOR"]==1){
                                    $('#table_entregable').dataTable()._fnAjaxUpdate();
@@ -384,10 +377,15 @@ var generarActividadesVertical=function(id_en)
                                     "dataSrc":""
                                     },
                                 "columns":[
+<<<<<<< HEAD
                                     {"data":"id_entregable","visible":false},
                                     {"data":"nombre_entregable","mRender":function (data,type, full) {
                                          return ""+data+"<button type='button'  class='ListarActividad btn  btn-xs' title='Mostrar  Actividades' ><i class='glyphicon glyphicon-calendar' aria-hidden='true'></i></button></br>";
                                     }},
+=======
+                                    {"data":"id_entregable","visible":true},
+                                    {"data":"nombre_entregable"},
+>>>>>>> origin/desarrollo
                                     {"data":"responsable",
                                     "mRender": function ( data, type, full ) {
                                       var i=data;

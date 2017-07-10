@@ -122,7 +122,8 @@ class Estudio_Inversion extends CI_Controller
     public function AddEtapaEstudio()
     {
         if ($this->input->is_ajax_request()) {
-            $flat             = "C";
+            //PRIMERO ACTUALIZAR Y LUEGO REGISTAR ETAPA ESTUDIO
+            $flat             = "UC";
             $id_etapa_estudio = "0";
             $id_est_inv       = $this->input->post("txt_id_est_inv");
             $listaretapasFE_M = $this->input->post("listaretapasFE_M");
@@ -156,9 +157,7 @@ class Estudio_Inversion extends CI_Controller
             $txadescripcion     = $this->input->post("txadescripcion");
             $txtMontoInversion  = $this->input->post("txtMontoInversion");
             $txtcostoestudio    = $this->input->post("txtcostoestudio");
-            $listaResponsable   = $this->input->post("listaResponsable");
-            $dateFechaAsig      = $this->input->post("dateFechaAsig");
-            if ($this->Estudio_Inversion_Model->AddEstudioInversion($flat, $id_est_inv, $txtCodigoUnico, $txtnombres, $listaFuncionC, $listaTipoInversion, $listaNivelEstudio, $lista_unid_form, $lista_unid_ejec, $txadescripcion, $txtMontoInversion, $txtcostoestudio, $listaResponsable, $dateFechaAsig) == false) {
+            if ($this->Estudio_Inversion_Model->AddEstudioInversion($flat, $id_est_inv, $txtCodigoUnico, $txtnombres, $listaFuncionC, $listaTipoInversion, $listaNivelEstudio, $lista_unid_form, $lista_unid_ejec, $txadescripcion, $txtMontoInversion, $txtcostoestudio) == false) {
                 echo "1";
             } else {
                 echo "2";
@@ -189,7 +188,7 @@ class Estudio_Inversion extends CI_Controller
     public function AddAsiganarPersona()
     {
         if ($this->input->is_ajax_request()) {
-            $flat                  = "U";
+            $flat                  = "C";
             $Cbx_Persona           = $this->input->post("Cbx_Persona");
             $Cbx_Cargo             = $this->input->post("Cbx_Cargo");
             $txt_IdEtapa_Estudio_p = $this->input->post("txt_IdEtapa_Estudio_p");
@@ -205,59 +204,54 @@ class Estudio_Inversion extends CI_Controller
         }
     }
 
-    //añadir documentos ala estudio de invserion 
-     public function AddDocumentosEstudio()
+    //añadir documentos ala estudio de invserion
+    public function AddDocumentosEstudio()
     {
-        
-        if ($this->input->is_ajax_request()) 
-        {
 
-                            // echo  $txt_Cartera;  
-        $config['upload_path']          = './uploads/DocumentosInversion/';
-        $config['allowed_types']        = 'pdf|doc|xml|docx|PDF|DOC|DOCX|xls|xlsx';
-        $config['max_width']            = 1024;
-        $config['max_height']           = 768;
-        $config['max_size']      = 15000;
-        $config['encrypt_name']  = false;
+        if ($this->input->is_ajax_request()) {
 
-        $this->load->library('upload',$config);
+            // echo  $txt_Cartera;
+            $config['upload_path']   = './uploads/DocumentosInversion/';
+            $config['allowed_types'] = 'pdf|doc|xml|docx|PDF|DOC|DOCX|xls|xlsx';
+            $config['max_width']     = 1024;
+            $config['max_height']    = 768;
+            $config['max_size']      = 15000;
+            $config['encrypt_name']  = false;
 
-        if ( ! $this->upload->do_upload('Documento_invserion'))
-               {
-                                
-                    $error="ERROR NO SE CARGO EL DOCUMENTO DE INSERSIÓN";
-                    echo $error;
-               }
-                else
-               {
+            $this->load->library('upload', $config);
 
-                  $txt_id_est_invAdd =$this->input->post("txt_id_est_invAdd");
-                  $txt_documentosEstudio =$this->input->post("txt_documentosEstudio");
-                  $txt_descripcionEstudio =$this->input->post("txt_descripcionEstudio");
-                  $Url_documento=$this->upload->file_name;
-                                    //$error="corrercto";
-                  if($this->Estudio_Inversion_Model->AddDocumentosEstudio($txt_id_est_invAdd,$txt_documentosEstudio,$txt_descripcionEstudio,$Url_documento)==false)
-                            echo "1";
-                             else
-                            echo "0";
-                  }                             
-                  }
-                    else
-                    {
-                      show_404();
-                    }
+            if (!$this->upload->do_upload('Documento_invserion')) {
 
+                $error = "ERROR NO SE CARGO EL DOCUMENTO DE INSERSIÓN";
+                echo $error;
+            } else {
 
+                $txt_id_est_invAdd      = $this->input->post("txt_id_est_invAdd");
+                $txt_documentosEstudio  = $this->input->post("txt_documentosEstudio");
+                $txt_descripcionEstudio = $this->input->post("txt_descripcionEstudio");
+                $Url_documento          = $this->upload->file_name;
+                //$error="corrercto";
+                if ($this->Estudio_Inversion_Model->AddDocumentosEstudio($txt_id_est_invAdd, $txt_documentosEstudio, $txt_descripcionEstudio, $Url_documento) == false) {
+                    echo "1";
+                } else {
+                    echo "0";
+                }
+
+            }
+        } else {
+            show_404();
+        }
 
     }
     //fin documentos de inversion
-    //listar Documentos de inversion 
-     public function GetDocumentosEstudio() //mostra ESTADO INVERSION
+    //listar Documentos de inversion
+    public function GetDocumentosEstudio() //mostra ESTADO INVERSION
+
     {
         if ($this->input->is_ajax_request()) {
-            $id_est_inv=$this->input->post('id_est_inv');
-            $datos = $this->Estudio_Inversion_Model->GetDocumentosEstudio($id_est_inv);
-             echo json_encode($datos);
+            $id_est_inv = $this->input->post('id_est_inv');
+            $datos      = $this->Estudio_Inversion_Model->GetDocumentosEstudio($id_est_inv);
+            echo json_encode($datos);
         } else {
             show_404();
         }

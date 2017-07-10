@@ -68,7 +68,7 @@
                                                                           <i class="fa fa-users"></i>
                                                                          Reponsable</th>
                                                                          <th style="width: 12%"> Progreso</th>
-                                                                         <th style="width: 13%"> Estado</th>
+                                                                         <th style="width: 13%"> Etapa</th>
                                                                          <th></th>
                                                                       </tr>
                                                                    </thead>
@@ -211,21 +211,6 @@
                                               <textarea class="form-control" rows="3" name="txadescripcion" id="txadescripcion"></textarea>
                                           </div>
                                           </div>
-
-                                          <div class="col-md-6">
-                                          <br>
-                                           <label for="name">Reponsable<span class="required"></span>
-                                            </label>
-                                                 <select   id="listaResponsable" name="listaResponsable" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Responsable...">
-                                                </select>
-                                          </div>
-                                           <div class="col-md-3">
-                                          <br>
-                                           <label for="name">Fecha de Asignación<span class="required"></span>
-                                            </label>
-                                                  <input type="date" id="dateFechaAsig" name="dateFechaAsig" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text" value="<?php echo date("Y-m-d"); ?>">
-                                          </div>
-
                                             <div class="col-md-3">
                                           <br>
                                            <label for="name">.<span class="required"></span>
@@ -252,12 +237,6 @@
     </div>
   </div>
 <!-- fin popul para crear un nuevo estudio de inversión -->
-
-
-
-
-
-
 
 <!-- /.ventana para asignar responsable a estudio de inversión-->
 <div class="modal fade" id="ventanaasiganarpersona" role="dialog">
