@@ -163,21 +163,43 @@ $("#finalizarProgram").click(function(){
                     var txtPrioridadProg=$("#txtPrioridadProg").val();
                    for(var i in DataMontosProgCars){
                           var cli = JSON.parse(DataMontosProgCars[i]);
-                             AnioProgramado=cli.AnioProgramado;
-                             txt_MontoProgramado =cli.txt_MontoProgramado;
-                             txt_MontoOperacionMante =cli.txt_MontoOperacionMante;
-                              event.preventDefault();
+
+                              if(cli.txt_MontoOperacionMante==0){
+                                       AnioProgramado=cli.AnioProgramado;
+                                       txt_MontoProgramado =cli.txt_MontoProgramado;
+                                       txt_MontoOperacionMante =cli.txt_MontoOperacionMante;
+                                event.preventDefault();
                                   $.ajax({
                                       url:base_url+"index.php/Programacion/AddProgramacion",
                                       type:"post",
-                                      data:{textidCartera:textidCartera,cbxBrechaP:cbxBrechaP,textidpip:textidpip,txtPrioridadProg:txtPrioridadProg, AnioProgramado:AnioProgramado,txt_MontoProgramado:txt_MontoProgramado,txt_MontoOperacionMante:txt_MontoOperacionMante},
+                                      data:{textidCartera:textidCartera,cbxBrechaP:cbxBrechaP,textidpip:textidpip,txtPrioridadProg:txtPrioridadProg,AnioProgramado:AnioProgramado,txt_MontoProgramado:txt_MontoProgramado,txt_MontoOperacionMante:txt_MontoOperacionMante},
                                       success:function(resp){
                                         alert(resp);
                                        //$('#tabla-cuartel').dataTable()._fnAjaxUpdate();    //SIRVE PARA REFRESCAR LA TABLA
                                    }
                                   });
+                                }
+                                if(cli.txt_MontoProgramado==0){
+                                       AnioProgramadoOpeMant=cli.AnioProgramadoOpeMant;
+                                       txt_MontoProgramado=cli.txt_MontoProgramado; 
+                                       txt_MontoOperacionMante=cli.txt_MontoOperacionMante; 
+                                      event.preventDefault();
+                                       $.ajax({
+                                          url:base_url+"index.php/Programacion/AddProgramacionOperManteni",
+                                          type:"post",
+                                          data:{textidCartera:textidCartera,cbxBrechaP:cbxBrechaP,textidpip:textidpip,txtPrioridadProg:txtPrioridadProg,AnioProgramadoOpeMant:AnioProgramadoOpeMant,txt_MontoProgramado:txt_MontoProgramado,txt_MontoOperacionMante:txt_MontoOperacionMante},
+                                          success:function(resp){
+                                            alert(resp);
+                                           //$('#tabla-cuartel').dataTable()._fnAjaxUpdate();    //SIRVE PARA REFRESCAR LA TABLA
+                                       }
+                                      });
+
+                                }
+                              
+
                         }
-                          localStorage.clear();                     
+                          localStorage.clear();  
+                          location.reload();                   
                 });
 
 //finAGREGAR TODOS LOS MONTOS PROGRAMADOS A LA TABLA PROGRAMACION

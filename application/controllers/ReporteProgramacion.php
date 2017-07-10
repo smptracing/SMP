@@ -23,16 +23,97 @@ function action()
 
 	$object->getProperties()->setCreator("Fabian Schmick")->setLastModifiedBy("Current User")->setTitle("Foobar");
 
-	$object->getActiveSheet()->getStyle('B2')->getFont()->applyFromArray(
+	$object->getActiveSheet()->mergeCells('A1:Z1');
+	$object->getActiveSheet()->mergeCells('AA1:AE1');
+	$object->getActiveSheet()->mergeCells('AF1:AH1');
+	$object->getActiveSheet()->mergeCells('AI1:AK1');
+
+	$object->getActiveSheet()
+		->getStyle('A1:Z2')
+		->getFill()
+		->setFillType(PHPExcel_Style_Fill::FILL_SOLID)
+		->getStartColor()
+		->setRGB('FFE699');
+
+	$object->getActiveSheet()
+		->getStyle('AA1:AH2')
+		->getFill()
+		->setFillType(PHPExcel_Style_Fill::FILL_SOLID)
+		->getStartColor()
+		->setRGB('F8CBAD');
+
+	$object->getActiveSheet()
+		->getStyle('AI1:AK2')
+		->getFill()
+		->setFillType(PHPExcel_Style_Fill::FILL_SOLID)
+		->getStartColor()
+		->setRGB('C6E0B4');
+
+	$object->getActiveSheet()->getColumnDimension('A')->setWidth("15");
+	$object->getActiveSheet()->getColumnDimension('B')->setWidth("15");
+	$object->getActiveSheet()->getColumnDimension('C')->setWidth("15");
+	$object->getActiveSheet()->getColumnDimension('D')->setWidth("15");
+	$object->getActiveSheet()->getColumnDimension('E')->setWidth("15");
+	$object->getActiveSheet()->getColumnDimension('F')->setWidth("15");
+	$object->getActiveSheet()->getColumnDimension('G')->setWidth("15");
+	$object->getActiveSheet()->getColumnDimension('H')->setWidth("15");
+	$object->getActiveSheet()->getColumnDimension('I')->setWidth("15");
+	$object->getActiveSheet()->getColumnDimension('J')->setWidth("15");
+	$object->getActiveSheet()->getColumnDimension('K')->setWidth("15");
+	$object->getActiveSheet()->getColumnDimension('L')->setWidth("15");
+	$object->getActiveSheet()->getColumnDimension('M')->setWidth("15");
+	$object->getActiveSheet()->getColumnDimension('N')->setWidth("15");
+	$object->getActiveSheet()->getColumnDimension('O')->setWidth("15");
+	$object->getActiveSheet()->getColumnDimension('P')->setWidth("15");
+	$object->getActiveSheet()->getColumnDimension('Q')->setWidth("15");
+	$object->getActiveSheet()->getColumnDimension('R')->setWidth("15");
+	$object->getActiveSheet()->getColumnDimension('S')->setWidth("15");
+	$object->getActiveSheet()->getColumnDimension('T')->setWidth("15");
+	$object->getActiveSheet()->getColumnDimension('U')->setWidth("15");
+	$object->getActiveSheet()->getColumnDimension('V')->setWidth("15");
+	$object->getActiveSheet()->getColumnDimension('W')->setWidth("15");
+	$object->getActiveSheet()->getColumnDimension('X')->setWidth("15");
+	$object->getActiveSheet()->getColumnDimension('Y')->setWidth("15");
+	$object->getActiveSheet()->getColumnDimension('Z')->setWidth("15");
+	$object->getActiveSheet()->getColumnDimension('AA')->setWidth("15");
+	$object->getActiveSheet()->getColumnDimension('AB')->setWidth("15");
+	$object->getActiveSheet()->getColumnDimension('AC')->setWidth("15");
+	$object->getActiveSheet()->getColumnDimension('AD')->setWidth("15");
+	$object->getActiveSheet()->getColumnDimension('AE')->setWidth("15");
+	$object->getActiveSheet()->getColumnDimension('AF')->setWidth("15");
+	$object->getActiveSheet()->getColumnDimension('AG')->setWidth("15");
+	$object->getActiveSheet()->getColumnDimension('AH')->setWidth("15");
+	$object->getActiveSheet()->getColumnDimension('AI')->setWidth("15");
+	$object->getActiveSheet()->getColumnDimension('AJ')->setWidth("15");
+	$object->getActiveSheet()->getColumnDimension('AK')->setWidth("15");
+
+	$object->getActiveSheet()
+		->getStyle('A1:AK500')
+		->getAlignment()
+		->setWrapText(true);
+
+	$object->getActiveSheet()->getStyle('A1:AK500')->getAlignment()->applyFromArray(
+		array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER, 'vertical' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER)
+	);
+
+	$object->getActiveSheet()->getStyle("A1:AK500")->applyFromArray(
 		array(
-			'style' => PHPExcel_Style_Border::BORDER_THIN,
-			'color'=> array('argb'=>'FF000000'),
-			'startcolor' => array('argb' => 'FFFF0000'),
-			'endcolor' => array('argb' => 'FFFF0000')
+			'borders' => array(
+				'allborders' => array(
+					'style' => PHPExcel_Style_Border::BORDER_THIN,
+					'color' => array('rgb' => '000000')
+				)
+			)
 		)
 	);
 
-	$object->setActiveSheetIndex(0)->setCellValue('A1','Detalle de proyecto')->setCellValue('AA1','Programación');
+	$object->getActiveSheet()->getStyle('A1:AK2')->getFont()->setBold(true);
+
+	$object->setActiveSheetIndex(0)
+		->setCellValue('A1','Detalle de proyecto')
+		->setCellValue('AA1','Programación')
+		->setCellValue('AF1','Programación del monto de inversión')
+		->setCellValue('AI1','Programación del monto de O&M');
 
 	$column=0;
 
@@ -59,43 +140,43 @@ function action()
 
 	foreach($employee_data as $row)
 	{
-		$object->getActiveSheet()->setCellValueByColumnAndRow(0, $excel_row, $row->codigo_unico_pi)->getColumnDimension('A')->setAutoSize(true);
-		$object->getActiveSheet()->setCellValueByColumnAndRow(1, $excel_row, $row->nombre_tipo_inversion)->getColumnDimension('B')->setAutoSize(true);
-		$object->getActiveSheet()->setCellValueByColumnAndRow(2, $excel_row, $row->nombre_estado_ciclo)->getColumnDimension('C')->setAutoSize(true);
-		$object->getActiveSheet()->setCellValueByColumnAndRow(3, $excel_row, $row->nombre_tipologia_inv)->getColumnDimension('D')->setAutoSize(true);
-		$object->getActiveSheet()->setCellValueByColumnAndRow(4, $excel_row, $row->nombre_naturaleza_inv)->getColumnDimension('E')->setAutoSize(true);
-		$object->getActiveSheet()->setCellValueByColumnAndRow(5, $excel_row, $row->nombre_pi)->getColumnDimension('F')->setAutoSize(true);
-		$object->getActiveSheet()->setCellValueByColumnAndRow(6, $excel_row, $row->nombre_nivel_gob)->getColumnDimension('G')->setAutoSize(true);
-		$object->getActiveSheet()->setCellValueByColumnAndRow(7, $excel_row, $row->prioridad_prog)->getColumnDimension('H')->setAutoSize(true);
-		$object->getActiveSheet()->setCellValueByColumnAndRow(8, $excel_row, $row->nombre_ue)->getColumnDimension('I')->setAutoSize(true);
-		$object->getActiveSheet()->setCellValueByColumnAndRow(9, $excel_row, $departamento)->getColumnDimension('J')->setAutoSize(true);
-		$object->getActiveSheet()->setCellValueByColumnAndRow(10, $excel_row, $row->provincias)->getColumnDimension('K')->setAutoSize(true);
-		$object->getActiveSheet()->setCellValueByColumnAndRow(11, $excel_row, $row->distritos)->getColumnDimension('L')->setAutoSize(true);
-		$object->getActiveSheet()->setCellValueByColumnAndRow(12, $excel_row, $row->nombre_funcion)->getColumnDimension('M')->setAutoSize(true);
-		$object->getActiveSheet()->setCellValueByColumnAndRow(13, $excel_row, $row->nombre_div_funcional)->getColumnDimension('N')->setAutoSize(true);
-		$object->getActiveSheet()->setCellValueByColumnAndRow(14, $excel_row, $row->nombre_grup_funcional)->getColumnDimension('O')->setAutoSize(true);
-		$object->getActiveSheet()->setCellValueByColumnAndRow(15, $excel_row, $row->costo_pi)->getColumnDimension('P')->setAutoSize(true);
-		$object->getActiveSheet()->setCellValueByColumnAndRow(16, $excel_row, $row->devengado_ac_pi)->getColumnDimension('Q')->setAutoSize(true);
-		$object->getActiveSheet()->setCellValueByColumnAndRow(17, $excel_row, $row->devengado_ac_pi)->getColumnDimension('R')->setAutoSize(true); //ACA DEBE SER PIM AÑO ACTUAL
-		$object->getActiveSheet()->setCellValueByColumnAndRow(18, $excel_row, $funtefinanciamiento)->getColumnDimension('S')->setAutoSize(true);
-		$object->getActiveSheet()->setCellValueByColumnAndRow(19, $excel_row, $rubro)->getColumnDimension('T')->setAutoSize(true); 
-		$object->getActiveSheet()->setCellValueByColumnAndRow(20, $excel_row, $funtefinanciamiento2)->getColumnDimension('U')->setAutoSize(true); //ACA ES FUENTE FINAN 2 Y ES CAMPO VACIO
-		$object->getActiveSheet()->setCellValueByColumnAndRow(21, $excel_row, $rubro2)->getColumnDimension('V')->setAutoSize(true); //ACA RUBRO DOS  2 Y ES CAMPO VACIO
-		$object->getActiveSheet()->setCellValueByColumnAndRow(22, $excel_row, $nombre_modalidad_ejec)->getColumnDimension('W')->setAutoSize(true);
-		$object->getActiveSheet()->setCellValueByColumnAndRow(23, $excel_row, $row->nombre_serv_pub_asoc)->getColumnDimension('X')->setAutoSize(true);
-		$object->getActiveSheet()->setCellValueByColumnAndRow(24, $excel_row, $row->nombre_brecha)->getColumnDimension('Y')->setAutoSize(true); 
-		$object->getActiveSheet()->setCellValueByColumnAndRow(25, $excel_row, $row->nombre_programa_pres)->getColumnDimension('Z')->setAutoSize(true); 
-		$object->getActiveSheet()->setCellValueByColumnAndRow(26, $excel_row, $row->fecha_registro_pi)->getColumnDimension('AA')->setAutoSize(true);
-		$object->getActiveSheet()->setCellValueByColumnAndRow(27, $excel_row, $row->fecha_viabilidad_pi)->getColumnDimension('AB')->setAutoSize(true); 
-		$object->getActiveSheet()->setCellValueByColumnAndRow(28, $excel_row, "")->getColumnDimension('AC')->setAutoSize(true); //ACA LOS DATOS SON VACIOS DE INICIO PROGRAMACION
-		$object->getActiveSheet()->setCellValueByColumnAndRow(29, $excel_row, "")->getColumnDimension('AD')->setAutoSize(true);//ACA LOS DATOS SON VACIOS DE FIN PROGRAMACION
-		$object->getActiveSheet()->setCellValueByColumnAndRow(30, $excel_row, 0)->getColumnDimension('AE')->setAutoSize(true);//SALDO A PROGRAMAR ES VACIO
-		$object->getActiveSheet()->setCellValueByColumnAndRow(31, $excel_row, $row->Inv_2018)->getColumnDimension('AF')->setAutoSize(true);//SALDO A PROGRAMAR ES VACIO
-		$object->getActiveSheet()->setCellValueByColumnAndRow(32, $excel_row, $row->Inv_2019)->getColumnDimension('AG')->setAutoSize(true);//SALDO A PROGRAMAR ES VACIO
-		$object->getActiveSheet()->setCellValueByColumnAndRow(33, $excel_row, $row->Inv_2020)->getColumnDimension('AH')->setAutoSize(true);//SALDO A PROGRAMAR ES VACIO
-		$object->getActiveSheet()->setCellValueByColumnAndRow(34, $excel_row, $row->OyM_2018)->getColumnDimension('AI')->setAutoSize(true);//MONTOS PROGRAMADOR POR LOS TRES AÑOS 
-		$object->getActiveSheet()->setCellValueByColumnAndRow(35, $excel_row, $row->OyM_2019)->getColumnDimension('AJ')->setAutoSize(true);//MONTOS PROGRAMADOS POR LOS TRES AÑOS
-		$object->getActiveSheet()->setCellValueByColumnAndRow(36, $excel_row, $row->OyM_2020)->getColumnDimension('AK')->setAutoSize(true);//MONTO PROGRAMADOPOR LOS TRES AÑOS*/
+		$object->getActiveSheet()->setCellValueByColumnAndRow(0, $excel_row, $row->codigo_unico_pi);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(1, $excel_row, $row->nombre_tipo_inversion);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(2, $excel_row, $row->nombre_estado_ciclo);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(3, $excel_row, $row->nombre_tipologia_inv);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(4, $excel_row, $row->nombre_naturaleza_inv);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(5, $excel_row, $row->nombre_pi);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(6, $excel_row, $row->nombre_nivel_gob);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(7, $excel_row, $row->prioridad_prog);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(8, $excel_row, $row->nombre_ue);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(9, $excel_row, $departamento);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(10, $excel_row, $row->provincias);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(11, $excel_row, $row->distritos);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(12, $excel_row, $row->nombre_funcion);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(13, $excel_row, $row->nombre_div_funcional);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(14, $excel_row, $row->nombre_grup_funcional);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(15, $excel_row, $row->costo_pi);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(16, $excel_row, $row->devengado_ac_pi);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(17, $excel_row, $row->devengado_ac_pi); //ACA DEBE SER PIM AÑO ACTUAL
+		$object->getActiveSheet()->setCellValueByColumnAndRow(18, $excel_row, $funtefinanciamiento);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(19, $excel_row, $rubro); 
+		$object->getActiveSheet()->setCellValueByColumnAndRow(20, $excel_row, $funtefinanciamiento2); //ACA ES FUENTE FINAN 2 Y ES CAMPO VACIO
+		$object->getActiveSheet()->setCellValueByColumnAndRow(21, $excel_row, $rubro2); //ACA RUBRO DOS  2 Y ES CAMPO VACIO
+		$object->getActiveSheet()->setCellValueByColumnAndRow(22, $excel_row, $nombre_modalidad_ejec);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(23, $excel_row, $row->nombre_serv_pub_asoc);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(24, $excel_row, $row->nombre_brecha); 
+		$object->getActiveSheet()->setCellValueByColumnAndRow(25, $excel_row, $row->nombre_programa_pres); 
+		$object->getActiveSheet()->setCellValueByColumnAndRow(26, $excel_row, $row->fecha_registro_pi);
+		$object->getActiveSheet()->setCellValueByColumnAndRow(27, $excel_row, $row->fecha_viabilidad_pi); 
+		$object->getActiveSheet()->setCellValueByColumnAndRow(28, $excel_row, ""); //ACA LOS DATOS SON VACIOS DE INICIO PROGRAMACION
+		$object->getActiveSheet()->setCellValueByColumnAndRow(29, $excel_row, "");//ACA LOS DATOS SON VACIOS DE FIN PROGRAMACION
+		$object->getActiveSheet()->setCellValueByColumnAndRow(30, $excel_row, 0);//SALDO A PROGRAMAR ES VACIO
+		$object->getActiveSheet()->setCellValueByColumnAndRow(31, $excel_row, $row->Inv_2018);//SALDO A PROGRAMAR ES VACIO
+		$object->getActiveSheet()->setCellValueByColumnAndRow(32, $excel_row, $row->Inv_2019);//SALDO A PROGRAMAR ES VACIO
+		$object->getActiveSheet()->setCellValueByColumnAndRow(33, $excel_row, $row->Inv_2020);//SALDO A PROGRAMAR ES VACIO
+		$object->getActiveSheet()->setCellValueByColumnAndRow(34, $excel_row, $row->OyM_2018);//MONTOS PROGRAMADOR POR LOS TRES AÑOS 
+		$object->getActiveSheet()->setCellValueByColumnAndRow(35, $excel_row, $row->OyM_2019);//MONTOS PROGRAMADOS POR LOS TRES AÑOS
+		$object->getActiveSheet()->setCellValueByColumnAndRow(36, $excel_row, $row->OyM_2020);//MONTO PROGRAMADOPOR LOS TRES AÑOS*/
 
 		$excel_row++;
 	}

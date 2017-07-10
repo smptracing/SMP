@@ -78,7 +78,7 @@
 			"processing" : true,
 			"serverSide" : true,
 			"destroy" : true,
-      		"language" : idioma_espanol,
+      "language" : idioma_espanol,
 			"ajax" :
 			{
 				"url" : base_url+"index.php/personal/GetPersonal",

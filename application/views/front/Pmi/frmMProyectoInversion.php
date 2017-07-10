@@ -700,11 +700,10 @@
                           <div class="ln_solid"></div>
                           <div class="form-group">
                             <div class="col-md-6 col-md-offset-3">
-                               <button type="submit" class="btn btn-success">
-                               <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>Guardar</button>
+                               
                               <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                                  <button id="btn-GuardarMontoProgramadoOper"  class="btn btn-success">
-                               <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>Guardar1</button>
+                               <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>Guardar</button>
                             </div>
                           </div>
                         </form>

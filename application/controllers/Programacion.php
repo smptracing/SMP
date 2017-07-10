@@ -20,10 +20,10 @@ class Programacion extends CI_Controller {/* Mantenimiento de sector entidad Y s
         $txtPrioridadProg =$this->input->post("txtPrioridadProg");
         $monto_opera_mant_prog ="0.0";
 
-     if($this->Model_Programacion->AddProgramacion($textidCartera,$cbxBrechaP,$textidpip,$txt_MontoProgramado,$AnioProgramado,$txtPrioridadProg,$monto_opera_mant_prog) == true)
+       if($this->Model_Programacion->AddProgramacion($textidCartera,$cbxBrechaP,$textidpip,$txt_MontoProgramado,$AnioProgramado,$txtPrioridadProg,$monto_opera_mant_prog) == true)
           echo "Se añadio una Programacion";
         else
-          echo "Se añadio una Programacion";  
+          echo "Se añadio una Programacion"; 
       }
       else
       {
@@ -44,10 +44,11 @@ class Programacion extends CI_Controller {/* Mantenimiento de sector entidad Y s
         $txtPrioridadProg =$this->input->post("txtPrioridadProg");
         $txt_MontoOperacionMante =$this->input->post("txt_MontoOperacionMante");
 
-     if($this->Model_Programacion->AddProgramacionOperManteni($textidCartera,$cbxBrechaP,$textidpip,$txt_MontoProgramado,$AnioProgramadoOpeMant,$txtPrioridadProg,$txt_MontoOperacionMante) == true)
+        if($this->Model_Programacion->AddProgramacionOperManteni($textidCartera,$cbxBrechaP,$textidpip,$txt_MontoProgramado,$AnioProgramadoOpeMant,$txtPrioridadProg,$txt_MontoOperacionMante) == true)
           echo "Se añadio una Programacion Multianual";
         else
-          echo "Se añadio una Programacion Multianual";  
+          echo "Se añadio una Programacion Multianual";
+
       }
       else
       {
@@ -56,56 +57,10 @@ class Programacion extends CI_Controller {/* Mantenimiento de sector entidad Y s
    }
  //
  //AGREGAR MONTO PROGRAMADO EN UNA TABLA TEMPORAL
-   public function AddProgramacionTemp()
-   { 
-        if ($this->input->is_ajax_request()) 
-      {
-        $AnioProgramado=$this->input->post("AnioProgramado");
-        $txt_MontoProgramado =$this->input->post("txt_MontoProgramado");
-        $monto_opera_mant_prog ="0.0";
-       if($this->Model_Programacion->AddProgramacionTemp($txt_MontoProgramado,$AnioProgramado,$monto_opera_mant_prog) == true)
-         echo "Se añadio montos de programacion";
-        else
-        echo "Se añadio montos de programacion";  
-      }
-      else
-      {
-        show_404();
-      }
 
-   }
    //FIN MONTO PROGRAMADO EN UNA TABLA TEMPORAL
-   public function AddProgramacionOperMantTemp()
-   {
-      if ($this->input->is_ajax_request()) 
-      {
-        $AnioProgramadoOpeMant=$this->input->post("AnioProgramadoOpeMant");
-        $txt_MontoProgramado ="0.0";
-        $txt_MontoOperacionMante =$this->input->post("txt_MontoOperacionMante");
-        
-       if($this->Model_Programacion->AddProgramacionOperMantTemp($txt_MontoProgramado,$AnioProgramadoOpeMant,$txt_MontoOperacionMante) == true)
-         echo "Se añadio montos de operacion y mantenimiento";
-        else
-        echo "Se añadio montos de operacion y mantenimiento";  
-      }
-      else
-      {
-        show_404();
-      }
-   }
-   function GetMontosTemporales()
-   {
-    if ($this->input->is_ajax_request()) 
-        {
-      $datos=$this->Model_Programacion->GetMontosTemporales();
-      echo json_encode($datos);
-      }
-      else
-      {
-        show_404();
-      }
 
-   }
+
 
    //para traer los proyectos 
 	function GetProgramacion()

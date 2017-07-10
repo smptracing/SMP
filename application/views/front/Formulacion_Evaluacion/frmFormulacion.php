@@ -74,20 +74,24 @@
 
 
   <div class="modal fade" id="VerDetalleFormulacion"  role="dialog">
-    <div class="modal-dialog ">
+    <div class="modal-dialog modal-lg">
 
       <!-- Modal content-->
       <div class="modal-content">
 
         <div class="modal-body">
-            <table id="table-DetSitActEvaluacionFE" class="table table-striped projects">
-           </table>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+           <div class="table-responsive">
+               <table id="table-DetSitActEvaluacionFE" class="table table-striped projects">
+               </table>
+
+                
             </div>
       </div>
-
+<div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
     </div>
+    
   </div>
   </div>
 
