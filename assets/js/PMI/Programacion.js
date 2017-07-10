@@ -131,6 +131,7 @@
                               fechaActual=registros[i]["AnioActual"];
                               $("#textidCartera").val(id_cartera);
                              $("#txtCartera").val(fechaActual);
+                             
                               $("#AnioProgramado").val(fechaActual+suma);
 
                               $("#AnioProgramadoOpeMant").val(fechaActual+suma);

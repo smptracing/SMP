@@ -41,10 +41,18 @@ class Model_Personal extends CI_Model
         }
     }
 
-    public function BuscarPersona($text_buscarPersona){
-       $personal = $this->db->query("execute sp_BuscarPersona'".$text_buscarPersona."' "); //listar de division funcional
-       if ($personal->num_rows() > 0) {
-            return $personal->result();
+    public function BuscarPersonaCargo($text_buscarPersona){
+       $personalFormulador = $this->db->query("execute sp_PesonaCargo_r'".$text_buscarPersona."' "); //listar de division funcional
+       if ($personalFormulador->num_rows() > 0) {
+            return $personalFormulador->result();
+        } else {
+            return null;
+        }
+    }
+    public function BuscarPersonaActividad(){
+       $personalFormulador = $this->db->query("execute sp_PesonaCargo_r'".$text_buscarPersona."' "); //listar de division funcional
+       if ($personalFormulador->num_rows() > 0) {
+            return $personalFormulador->result();
         } else {
             return null;
         }

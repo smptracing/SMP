@@ -89,33 +89,9 @@
 <script src="<?php echo base_url(); ?>assets/vendors/butons/buttons.print.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/plugins/input-mask/jquery.inputmask.min.js"></script>
 
-
-<!-- PMI -->
-<script src="<?php echo base_url(); ?>assets/js/PMI/ProyectoInversion.js"></script><!-- para la ubicacion -->
-<script src="<?php echo base_url(); ?>assets/js/ubicacion/ubicacion.js"></script><!-- para la ubicacion -->
-<script src="<?php echo base_url(); ?>assets/js/administrador/ServicioPublico.js"></script><!-- para mostra la divicion funcional la funcio y el grupo duncional-->
-
-<script src="<?php echo base_url(); ?>assets/js/administrador/MBrecha.js"></script><!-- para mostra los datos de la brecha-->
-<script src="<?php echo base_url(); ?>assets/js/administrador/MRubroE.js"></script><!-- para mostar los datos de rubro de ejecucion-->
-<script src="<?php echo base_url(); ?>assets/js/administrador/ModalidadE.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/administrador/UnidadE.js"></script>
-<!--<script src="--><?php //echo base_url(); ?><!--assets/js/administrador/MProyectoInversion.js"></script>-->
-<script src="<?php echo base_url(); ?>assets/js/administrador/Indicador.js"></script>
-<!-- js de los formularios-->
-<script src="<?php echo base_url(); ?>assets/js/administrador/NaturalezaInversion.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/administrador/TipologiaInversion.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/administrador/TipoInversion.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/administrador/EstadoCicloInversion.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/administrador/NivelGobierno.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/administrador/FuenteFinanciamiento.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/PMI/CarteraInversion.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/PMI/Programacion.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/administrador/Importar.js"></script>
-
-<script src="<?php echo base_url(); ?>assets/js/Estadisticas/pmi.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/growl/growl.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/USUARIO/usuario.js"></script>
  <script src="<?php echo base_url();?>assets/js/Usuario/login.js"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1uRF6cxgwFc9DGwREFvIE6oorBaWny64&callback=initMap"></script>
 
 </body>
 </html>

@@ -1,5 +1,9 @@
  $(document).on("ready" ,function(){
 
+              //listados
+              listarEntregablesFE();//
+              listadoFormuladores();
+
               $("#txt_valoracion_entre").keyup(function(){//verificar si el entregable supera el o no el cien porciento para inavilitar el boton
                    
                    var sumaValoracion=$("#txt_valoracion_entre").val();
@@ -26,7 +30,7 @@
               });
 
               var txt_id_etapa_estudio=$("#txt_id_etapa_estudio").val();
-              listarEntregablesFE();
+              
 //Gant
                $("#btn_gant").click(function() {
                $('#ventanagant').modal('toggle');
@@ -78,16 +82,17 @@
                 });
 
                //buscar responsable
-
+              /*
                 $("#text_buscarPersona").keyup(function(){//buscar persona para actividades
-                 var text_buscarPersona = $("#text_buscarPersona").val();
+                 var text_buscarPersona ='Formulador';//$("#text_buscarPersona").val();
                  
                  $.ajax({
-                    url: base_url+"index.php/Personal/BuscarPersona",
+                    url: base_url+"index.php/Personal/BuscarPersonaCargo",
                     type:"POST",
                     data:{text_buscarPersona:text_buscarPersona},
                     success: function(data){
-                      var registros = eval(data);
+                     console.log(data);
+                      /*var registros = eval(data);
                                html1="";
                                $("#table_responsable").html(html1);
                         if(registros.length>0)
@@ -104,12 +109,12 @@
                            
                           }else{
                             alert("no hay data");
-                          }
-                    }
-              });
-        });
+                          }*/
+                   // }
+              //});
+        //});/
 //buscar perona para actividad
-        $("#text_buscarPersonaActividad").keyup(function(){
+       /* $("#text_buscarPersonaActividad").keyup(function(){
                  var text_buscarPersona = $("#text_buscarPersonaActividad").val();
                  
                  $.ajax({
@@ -130,16 +135,14 @@
                                   $("#txt_idPersonaActividad").val(registros[i]["id_persona"]);
                                   html1 +="</tbody>";
                                   $("#table_responsable2").html(html1);
-                               };
-
-                                 
+                               };     
                         }
                         else{
                             alert("no hay data");
                           }
                     }
               });
-        });
+        });*/
 
 
 
@@ -207,6 +210,105 @@ var refrescarGantt=function()
   gantt.init('gantt_here');
   gantt.load(window.location.href);
 }
+//listar formuladores para agregar un responsable
+var listadoFormuladores=function()
+{
+                    var text_buscarPersona ='Formulador';   
+                    var table=$("#table_responsableFormulador").DataTable({
+                     "processing":true,
+                      "serverSide":false,
+                      select: true,
+                      destroy:true,
+                      "fnDrawCallback": function () {
+                    // first radio button list selection is not rendered, so needs to be re-drawn
+                    $('.radioButtonToCheck input').attr("checked", "checked");
+                },
+
+                         "ajax":{
+                                    "url":base_url+"index.php/Personal/BuscarPersonaCargo",
+                                    "method":"POST",
+                                    data:{text_buscarPersona:text_buscarPersona},
+                                    "dataSrc":"",
+                                    },
+                                "columns":[
+                                    {"defaultContent": [0],
+                                                 "mRender": function(data, type, full)
+                                                 {
+                                                     id="";
+                                                     var returnval = "<td><input type='radio' name='chkNew"+id+"'  class='call-checkbox' value="+id+"  id=\"chkNew'"+id+"'\" /></td>";
+                                                       return returnval;
+                                                 }
+                                     },
+
+
+                                    {"data":"id_persona","visible": false},
+                                    {"data":"nombres"},
+                                    {"data":"desc_cargo"}, 
+                                    {"data":"especialidad"},
+                                    {"data":"grado_academico"},
+                                ],
+                                "language":idioma_espanol
+                    });
+               //DataAsignarResponsable("#table_responsableFormulador",table);//para listar y asignar responsables
+            
+
+              $('#table_responsableFormulador tbody').on('click', 'tr', function () {
+                  var data =table.row(this).data();
+                   $("#txt_idPersona").val(data.id_persona);
+                   //console.log(data.id_persona);
+              } );             
+}
+//listar responsables para las actividades son solo personas sin restricciones
+
+var listadoPersonas=function()
+{ 
+                    var text_buscarPersona ='Formulador'; 
+                    var table=$("#table_responsableActividad").DataTable({
+                    "processing":true,
+                    "serverSide":false,
+                      select: true,
+                      destroy:true,
+                      "fnDrawCallback": function () {
+                    
+                            $('.radioButtonToCheck input').attr("checked", "checked");
+                       },
+
+                         "ajax":{
+                                    "url":base_url+"index.php/Personal/BuscarPersonaCargo",
+                                    "method":"POST",
+                                    data:{text_buscarPersona:text_buscarPersona},
+                                    "dataSrc":"",
+                                    },
+                                "columns":[
+                                    {"defaultContent": [0],
+                                                 "mRender": function(data, type, full)
+                                                 {
+                                                     id="";
+                                                     var returnval = "<td><input type='radio' name='chkNew"+id+"'  class='call-checkbox' value="+id+"  id=\"chkNew'"+id+"'\" /></td>";
+                                                       return returnval;
+                                                 }
+                                     },
+
+
+                                    {"data":"id_persona","visible": false},
+                                    {"data":"nombres"},
+                                    {"data":"desc_cargo"}, 
+                                    {"data":"especialidad"},
+                                    {"data":"grado_academico"},
+                                ],
+                                "language":idioma_espanol
+                    });
+               //DataAsignarResponsable("#table_responsableFormulador",table);//para listar y asignar responsables
+            
+
+              $('#table_responsableActividad tbody').on('click', 'tr', function () {
+                   var data =table.row(this).data();
+                   $("#txt_idPersona").val(data.id_persona);
+                   //console.log(data.id_persona);
+              } );             
+}
+
+//fin listar responsables para las actividades
 
 var generarActividadesVertical=function(id_en)
           {
@@ -227,9 +329,10 @@ var generarActividadesVertical=function(id_en)
                                     {"data":"nombres",
                                         "mRender": function ( data, type, full ) {
                                       var i=data;
-                                          if(i=='')
+                                          if(i==null)
                                           {
-                                           return '<a type="button" class="editar btn btn-link" data-toggle="modal" data-target="#VentanaAsignacionPersonalActividad" title="Añadir Responsable" ><i class="glyphicon glyphicon-user" aria-hidden="true"></i></a><font size="1"></br>' +data+ '</font>'
+                                            nombre="";
+                                           return '<a type="button" class="editar btn btn-link" data-toggle="modal" data-target="#VentanaAsignacionPersonalActividad" title="Añadir Responsable" ><i class="glyphicon glyphicon-user" aria-hidden="true"></i></a><font size="1"></br>' +nombre+ '</font>'
                                           }else{
                                              return '<a type="button" class="editar btn btn-link" data-toggle="modal" data-target="#VentanaAsignacionPersonalActividad" title="Añadir Responsable" ><i class="glyphicon glyphicon-user" aria-hidden="true"></i></a><font size="1"></br>' +data+ '</font>'
                                           }
@@ -252,7 +355,7 @@ var generarActividadesVertical=function(id_en)
                                 "language":idioma_espanol
                     });
               DataActividadResponsable("#datatable-actividadesV",table);//para listar y asignar responsables
-
+            
   }
 
  var  DataActividadResponsable=function(tbody,table){
@@ -262,9 +365,8 @@ var generarActividadesVertical=function(id_en)
                         //alert(id_ctividad);
                          var txt_idActividadCronograma=$("#txt_idActividadCronograma").val(id_ctividad);
                          $("#txt_NombreActividadTitleResponsable").html(data.title);
-                          /*$('select[name=listaFuncionCM]').val(id_funcion);//PARA AGREGAR UN COMBO PSELECIONADO
-                          $('select[name=listaFuncionCM]').change();*/
-                         
+                         $("#txt_idActividadCronograma").val(id_ctividad); 
+                         listadoPersonas();
                     });
 
                 }
@@ -283,7 +385,9 @@ var generarActividadesVertical=function(id_en)
                                     },
                                 "columns":[
                                     {"data":"id_entregable","visible":false},
-                                    {"data":"nombre_entregable"},
+                                    {"data":"nombre_entregable","mRender":function (data,type, full) {
+                                         return ""+data+"<button type='button'  class='ListarActividad btn  btn-xs' title='Mostrar  Actividades' ><i class='glyphicon glyphicon-calendar' aria-hidden='true'></i></button></br>";
+                                    }},
                                     {"data":"responsable",
                                     "mRender": function ( data, type, full ) {
                                       var i=data;
@@ -305,7 +409,7 @@ var generarActividadesVertical=function(id_en)
                                          return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Complete</small></td>";
                                     }},
                        
-                                    {"defaultContent":"<button type='button' class='actividad btn btn-warning btn-xs' title='Agregar actividad al entregable' data-toggle='modal' data-target='#VentanaActividades'><i class='glyphicon glyphicon-plus-sign' aria-hidden='true'></i></button></br><button type='button'  class='ListarActividad btn btn-info btn-xs' title='Mostrar  Actividades' ><i class='glyphicon glyphicon-calendar' aria-hidden='true'></i></button></br><button type='button'  class='ListarResponsablesEntregable btn btn-primary btn-xs' data-toggle='modal' data-target='#VentenaResponsablesEntregable' title='Mostrar los responsables del entregable' ><i class='glyphicon  glyphicon-user' title='Ver Responsable' aria-hidden='true'></i></button>"}                            
+                                    {"defaultContent":"<button type='button' class='actividad btn btn-warning btn-xs' title='Agregar actividad al entregable' data-toggle='modal' data-target='#VentanaActividades'><i class='glyphicon glyphicon-plus-sign' aria-hidden='true'></i></button></br><button type='button'  class='ListarResponsablesEntregable btn btn-primary btn-xs' data-toggle='modal' data-target='#VentenaResponsablesEntregable' title='Mostrar los responsables del entregable' ><i class='glyphicon  glyphicon-user' title='Ver Responsable' aria-hidden='true'></i></button>"}                            
 
                                 ],
 

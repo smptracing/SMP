@@ -11,8 +11,11 @@
     <!-- jQuery -->
     <script src="<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
+    <!-- gantt -->
+
     <script src="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
+
     <script src="<?php echo base_url(); ?>assets/vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
     <script src="<?php echo base_url(); ?>assets/vendors/nprogress/nprogress.js"></script>
@@ -27,6 +30,17 @@
     <!-- Skycons -->
     <script src="<?php echo base_url(); ?>assets/vendors/skycons/skycons.js"></script>
     <!-- Flot -->
+    <!-- ECharts -->
+    <script src="<?php echo base_url(); ?>assets/vendors/echarts/dist/echarts.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/vendors/echarts/map/js/world.js"></script>
+
+
+ <!-- jQuery Smart Wizard -->
+    <script src="<?php echo base_url(); ?>assets/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
+
+
+
+
     <script src="<?php echo base_url(); ?>assets/vendors/Flot/jquery.flot.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendors/Flot/jquery.flot.pie.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendors/Flot/jquery.flot.time.js"></script>
@@ -54,6 +68,10 @@
     <script src="<?php echo base_url(); ?>assets/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+
+
+
+
     <script src="<?php echo base_url(); ?>assets/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
@@ -66,9 +84,14 @@
      <script src="<?php echo base_url(); ?>assets/dist/js/sweetalert-dev.js"></script>
      <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/js/sweetalert.css">
 
-    <script src="<?php echo base_url(); ?>assets/dist/js/bootstrap-select.js"></script><!--- para el selector con buscardor---->
+    <script src="<?php echo base_url(); ?>assets/dist/js/bootstrap-select.js"></script><!--- para el selector con buscardor -->
     <!-- Custom Theme Scripts -->
-
+    <script src="<?php echo base_url(); ?>assets/dist/jquery-wizard.js"></script>
+    <script src="<?php echo base_url(); ?>assets/dist/jquery-wizard-fn.js"></script>
+     <!--colores-->
+    <script src="<?php echo base_url(); ?>assets/vendors/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/vendors/fullcalendar/dist/fullcalendar.min.js"></script>
+    <script src='<?php echo base_url(); ?>assets/vendors/fullcalendar/locale-all.js'></script>
     <script src="<?php echo base_url(); ?>assets/build/js/custom.min.js"></script>
 
   <script src="<?php echo base_url(); ?>assets/vendors/butons/buttons.colVis.min.js"></script>
@@ -80,36 +103,21 @@
     <script src="<?php echo base_url(); ?>assets/plugins/input-mask/jquery.inputmask.min.js"></script>
 
 
-
-    <script src="<?php echo base_url(); ?>assets/js/ubicacion/ubicacion.js"></script><!-- para la ubicacion -->
-    <script src="<?php echo base_url(); ?>assets/js/administrador/Sector.js"></script><!-- para mostralos datos de sector entidad y servicios publicos asociados-->
-    <script src="<?php echo base_url(); ?>assets/js/administrador/Entidad.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/administrador/DivisionFuncional.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/administrador/Funcion.js"></script><!-- para mostra la divicion funcional la funcio y el grupo duncional-->
-
-    <script src="<?php echo base_url(); ?>assets/js/administrador/Gerencia.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/administrador/SubGerencia.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/administrador/Oficina.js"></script>
-
-    <script src="<?php echo base_url(); ?>assets/js/administrador/GrupoFuncional.js"></script><!-- para mostra la divicion funcional la funcio y el grupo duncional-->
-    <script src="<?php echo base_url(); ?>assets/js/administrador/MBrecha.js"></script><!-- para mostra los datos de la brecha-->
-    <script src="<?php echo base_url(); ?>assets/js/administrador/MRubroE.js"></script><!-- para mostar los datos de rubro de ejecucion-->
-    <script src="<?php echo base_url(); ?>assets/js/administrador/ModalidadE.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/administrador/UnidadE.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/administrador/Indicador.js"></script>
-    <!-- js de los formularios-->
-      <script src="<?php echo base_url(); ?>assets/js/administrador/NaturalezaInversion.js"></script>
-     <script src="<?php echo base_url(); ?>assets/js/administrador/NivelGobierno.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/administrador/FuenteFinanciamiento.js"></script>
-
-    <script src="<?php echo base_url(); ?>assets/js/administrador/TipologiaInversion.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/administrador/TipoInversion.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/administrador/EstadoCicloInversion.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/administrador/MetaPresupuestal.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/administrador/ProgramaPresupuestal.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/administrador/persona.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/administrador/cargo.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/administrador/UnidadF.js"></script>
-    <script src="<?php echo base_url();?>assets/js/Usuario/login.js"></script>
+   <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/FEactividadEntregable.js"></script>
+   <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/FEentregableEstudio.js"></script>
+   <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/FEsituacion.js"></script>
+   <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/FEestado.js"></script>
+   <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/FEnivelEstudio.js"></script>
+   <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/DenominacionFE.js"></script>
+   <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/EtapasFE.js"></script>
+   <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/TipEstudioFE.js"></script>
+   <!--  <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/FEformulacion.js"></script>
+   <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/EvaluacionFE.js"></script>-->
+    <script src="<?php echo base_url(); ?>assets/js/Estadisticas/FormulacionEvaluacion.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/growl/growl.js"></script>
+    <!-- graficos para el formulacion y evaluacion -->
+     <script src="<?php echo base_url(); ?>assets/js/Estadisticas/EstadisticasFE.js"></script>
+     <script src="<?php echo base_url();?>assets/js/Usuario/login.js"></script>
+    <!-- Custom Theme Scripts -->
   </body>
 </html>

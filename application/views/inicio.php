@@ -264,9 +264,8 @@
                                     <div class="icon">
                                         <i class="fa fa-users"></i>
                                     </div>
-                                    <a href="#"
-                                       class="small-box-footer">
-                                        <!--                                       <a href="#" class="small-box-footer">-->
+                                    <a href="<?php echo site_url('Usuario/'); ?>"
+                                       class="small-box-footer">              <!--                                       <a href="#" class="small-box-footer">-->
                                         Ingresar <i class="fa fa-arrow-circle-right"></i>
                                     </a>
                                 </div>

@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+     <script>
+    var base_url = '<?php echo base_url(); ?>';
+    </script>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>SMP-APURIMAC</title>
 
     <!-- Bootstrap -->
+    <link href='<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery-ui.min.css' rel='stylesheet' >
+    <script src="<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
+
     <link href="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="<?php echo base_url(); ?>assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -29,24 +34,40 @@
 
       <!-- Datatables -->
 
-    <link href="<?php echo base_url();?>assets/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url();?>assets/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url();?>assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url();?>assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url();?>assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-bs/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
 
-    <link href="<?php echo base_url();?>assets/vendors/animate/animate.min.css" rel="stylesheet">
-      <link href="<?php echo base_url();?>assets/css/jquery.growl.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/animate/animate.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/fullcalendar/dist/fullcalendar.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/fullcalendar/dist/fullcalendar.print.css" rel="stylesheet" media="print">
 
+    <link href="<?php echo base_url(); ?>assets/vendors/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/cropper/dist/cropper.min.css" rel="stylesheet">
+
+      <link href="<?php echo base_url(); ?>assets/css/jquery.growl.css" rel="stylesheet">
   <style>
    #ProgramacionHorizontal{
       width: 100% !important;
     }
   </style>
+<!--   diagrama de gant          -->
 
-     <script>
-    var base_url = '<?php echo base_url(); ?>';
-    </script>
+    <script src="<?php echo base_url(); ?>assets/codebase/dhtmlxgantt.js" type="text/javascript" charset="utf-8"></script>
+  <script src="http://export.dhtmlx.com/gantt/api.js" type="text/javascript" charset="utf-8"></script>
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/codebase/dhtmlxgantt.css" type="text/css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/common/testdata.js"></script>
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/codebase/locale/locale_es.js"></script>
+  <style type="text/css">
+      #gantt{
+        height:600px;
+        padding:0px;
+         margin:0px;
+         overflow: hidden;
+       }
+    </style>
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url(); ?>assets/build/css/custom.min.css" rel="stylesheet">
   </head>
@@ -57,7 +78,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="<?php echo site_url('Inicio') ?>" class="site_title"><i class="fa fa-users"></i> <span>SMPTRACING</span></a>
+              <a href="<?php echo site_url('Inicio') ?>" class="site_title"><i class="fa fa-users"></i> <span>SMP TRACING</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -82,15 +103,43 @@
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
               <ul class="nav side-menu">
-                  <li><a href="<?php echo site_url('Inicio/'); ?>"> <i class="fa fa-home"></i> INICIO<span class=""></span></a>
+                <li><a href="<?php echo site_url('Inicio/'); ?>"> <i class="fa fa-home"></i> INICIO<span class=""></span></a>
                   </li>
                 </ul>
+                 <ul class="nav side-menu">
 
-                <h3></i>PMI</h3>
+                    <ul class="nav side-menu">
+                      <li><a href="<?php echo site_url('Estudio_Inversion/'); ?>"><i class="fa fa-tasks"></i> Estudio Inversión <span class="fa fa-chevron"></span></a>
+
+                        </li>
+                      </ul>
+                </ul>
+
                 <ul class="nav side-menu">
-                     <li><a href="<?php echo site_url('CarteraInversion/'); ?>"><i class="fa fa-suitcase"></i> Cartera de inversiones</a></li>
-                      <li><a href="<?php echo site_url('ProyectoInversion/'); ?>"><i class="fa fa-sitemap"></i> Proyecto Inversion</a></li>
-                      <li><a href="<?php echo site_url('BrechaIndicador/'); ?>"><i class="fa fa-sliders"></i> Brechas e Indicadores </a></li>
+
+                    <ul class="nav side-menu">
+                      <li><a><i class="fa fa-database"></i> Principal <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                          <li><a href="<?php echo site_url('FEformulacion/Feformulacion/all'); ?>">Formulación</a></li>
+                          <li><a href="<?php echo site_url('EvaluacionFE/FeEvaluaciones'); ?>">Evaluación</a></li>
+                          <li><a href="<?php echo site_url('FEformulacion/FeAprobado'); ?>">Aprobado</a></li>
+                          <li><a href="<?php echo site_url('FEformulacion/FEVIABILIZADO'); ?>">Viabilizados</a></li>
+                        </ul>
+                        </li>
+                      </ul>
+                </ul>
+                <ul class="nav side-menu">
+                     <li><a><i class="fa fa-gears"></i> Matenimiento<span class="fa fa-chevron-down"></span></a>
+
+                    <ul class="nav child_menu">
+                      <li><a href="<?php echo site_url('FEdocumento/ver_Documentos'); ?>">Documentos</a></li>
+                      <li><a href="<?php echo site_url('FEsituacion/ver_FEsistuacion'); ?>">Situaciones</a></li>
+                      <li><a href="<?php echo site_url('FEestado/ver_EstadoFE'); ?>">Estado</a></li>
+                      <li><a href="<?php echo site_url('DenominacionFE/'); ?>">Denominacion</a></li>
+                      <li><a href="<?php echo site_url('EtapasFE/'); ?>">Etapas</a></li>
+                    </ul>
+                  </li>
+
                 </ul>
               </div>
             </div>
@@ -138,33 +187,21 @@
                       </a>
                     </li>
                     <li><a href="javascript:;">Ayuda</a></li>
-
                     <li><a href="javascript:void(0)" id="Cerrar"><i class="fa fa-sign-out pull-right"></i> Cerrar sesión</a></li>
+
                   </ul>
                 </li>
 
                 <li role="presentation" class="dropdown">
-                  <a id="panel_notificacion_pmi" href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                  <a id="panel_notificacion_fe" href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                     <i class="fa fa-envelope-o"></i>
                   </a>
-                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                    <li>
-                      <a>
-                        <span class="image"><img src="<?php echo base_url(); ?>assets/images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>Usuario</span>
-                          <span class="time">3 Nuevos proyecto</span>
-                        </span>
-                        <span class="message">
-                          
-                        </span>
-                      </a>
-                    </li>
+                  <ul id="menu1_notificacion" class="dropdown-menu list-unstyled msg_list" role="menu">
 
                     <li>
                       <div class="text-center">
-                        <a>
-                          <strong>Nuevos Proyectos</strong>
+                        <a href="">
+                          <strong>Proyectos en formulacion</strong>
                           <i class="fa fa-angle-right"></i>
                         </a>
                       </div>

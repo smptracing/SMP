@@ -1,24 +1,9 @@
 
 <div class="right_col" role="main">
           <div class="">
-            <div class="page-title">
-              <div class="title_left">
-                <h3>Mantenimiento Usuarios </h3>
-              </div>
+          
 
-              <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="clearfix"></div>
+            
 
             <div class="">
               <div class="col-md-12 col-sm-6 col-xs-12">
@@ -71,28 +56,18 @@
                                                               
                                                           </div>
                                                           <div class="x_content">
-                                                            <table id="table-UnidadEjecutora" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                                            <table id="table-Usuarios" class="table table-striped " cellspacing="0" width="100%">
                                                               <thead>
                                                                  <tr>
-                                                                  <th>ID </th>
-                                                                  <th>NOMBRE USUARIO </th>
-                                                                  <th>APELLIDO USUARIO</th>
+                                                                  <th>ID</th>
+                                                                  <th>NOMBRE</th>
                                                                   <th>TIPO USUARIO</th>
-                                                                  <th>CORREO</th>
-                                                                  <th>Permisos</th>
+                                                                  <th>USUARIO</th>
+                                                                  <th>CONTRASEÑA</th>
                                                                  </tr>  
                                                               </thead>
-                                                           <tbody>
-                                                               <tr>
-                                                                <th scope="row">1</th>
-                                                                <td>Carlos</td>
-                                                                <td>roman</td>
-                                                                <td>Evaluador</td>
-                                                                <td>carlos@gmail.com</td>
-                                                                <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaAsignarPermiso">Asignar Permisos</button><!-- /.boton de la ventana Asignar Permisos -->
-                                                                </td>
-                                                             </tr>
-                                                            </tbody>
+	                                                           <tbody>
+	                                                           </tbody>
                                                           </table>
                                                           </div>
                                                         </div>
@@ -170,68 +145,49 @@
          <div class="row">
                     <div class="col-xs-12">
                                         <!-- PAGE CONTENT BEGINS -->
-                                <form class="form-horizontal" role="form">
+                <form class="form-horizontal" id="form-AddUsuario" role="form" method="post">
                   
 
                   <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> Id Usuario</label>
-
-                    <div class="col-sm-2">
-                      <input type="text" id="form-field-1-1" placeholder="Id Usuario" class="form-control" />
-                    </div>
-                  </div>
-                                    <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> Nombre del Usuario</label>
+                    <label class="col-sm-3 control-label no-padding-right"  for="form-field-1-1">Usuario </label>
 
                     <div class="col-sm-6">
-                      <input type="text" id="form-field-1-1" placeholder="Nombre del Usuario" class="form-control" />
-                    </div>
-                  </div>
-                                     <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> Apellido del Usuario</label>
-
-                    <div class="col-sm-6">
-                      <input type="text" id="form-field-1-1" placeholder="Apellido del Usuario" class="form-control" />
+                      <input type="text" id="form-field-1-1" id="txt_usuario" name="txt_usuario" placeholder="Nombre Usuario" class="form-control" />
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">Tipo de Usuario </label>
 
                     <div class="col-sm-6">
-                      <select  class="form-control input-sm">
-                       <option> Formulador </option>  
-                       <option> Evaluador </option> 
-                       <option> Encargado de la PMI</option>  
-                       <option> Ejecutor</option>
-                       <option> Resisdente</option>
-                                            <option> Registrador</option>
+                      <select  class="form-control input-sm" id="cbb_TipoUsuario" name="cbb_TipoUsuario">
+                       <option value="Formulador"> Formulador </option>  
+                       <option value="Evaluador"> Evaluador </option> 
+                       <option value="Encargado de la PMI"> Encargado de la PMI</option>  
+                       <option value="Ejecutor"> Ejecutor</option>
+                       <option value="Resisdente"> Resisdente</option>
+                       <option value="Registrador"> Registrador</option>
                        </select>                    
                     </div>
                   </div>
-                  <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> Correo </label>
-
-                    <div class="col-sm-6">
-                      <input type="text" id="form-field-1-1" placeholder="Correo electronico" class="form-control" />
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">Contraseña</label>
-
-                    <div class="col-sm-3">
-                      <input type="text" id="form-field-1-1" placeholder="Contraseña" class="form-control" />
-                    </div>
-                  </div>
-                                    <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">Estado </label>
-
-                    <div class="col-sm-6">
-                      <select  class="form-control input-sm">
-                       <option> Activo </option>  
+                  
+                    <div class="form-group">
+                       <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">Estado </label>
+                       <div class="col-sm-6">
+                       <select  class="form-control input-sm">
+                       <option values> Activo </option>  
                        <option> Inactivo </option>  
                        </select>                    
                     </div>
                   </div>
+                  
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">Contraseña</label>
+
+                    <div class="col-sm-3">
+                      <input type="text" id="form-field-1-1" id="txt_contrasenia" name="txt_contrasenia" placeholder="Contraseña" class="form-control" />
+                    </div>
+                  </div>
+                
                                     <div class="form-group">
                                         <center><input type="reset" class="btn btn-default" value="Limpiar Formulario">
                                         <button type="submit" class="btn btn-primary">Registrar Usuario </button></center>

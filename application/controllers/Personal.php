@@ -136,18 +136,29 @@ class Personal extends CI_Controller
 
     }
     /*fin Personal*/
-
-    public function BuscarPersona()
+    public function BuscarPersonaCargo()
     {
         if ($this->input->is_ajax_request()) {
-            $text_buscarPersona = $this->input->post('text_buscarPersona');
-            $datos              = $this->Model_Personal->BuscarPersona($text_buscarPersona);
+            $text_buscarPersona = 'Formulador'; 
+            $datos              = $this->Model_Personal->BuscarPersonaCargo($text_buscarPersona);
             echo json_encode($datos);
         } else {
             show_404();
         }
 
     }
+/* Personal para actividad*/
+    public function BuscarPersonaActividad()
+    {
+        if ($this->input->is_ajax_request()) {
+            $datos              = $this->Model_Personal->BuscarPersonaActividad();
+            echo json_encode($datos);
+        } else {
+            show_404();
+        }
+
+    }
+/* fin Personal actividad*/
 
     public function _load_layout($template)
     {

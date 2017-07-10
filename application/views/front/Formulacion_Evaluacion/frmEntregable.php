@@ -463,15 +463,24 @@
                 <div class="col-xs-12">
                 <form class="form-horizontal " id="form-AsignacionPersonalEntregable"  method="POST" >
                       <div class="col-md-12 col-sm-12 col-xs-12 input-group">
-                        <span class="input-group-addon glyphicon glyphicon glyphicon-search"></span>
-                        <input id="text_buscarPersona"  name="text_buscarPersona" type="text" class="form-control" >
+                        
                       </div>
                           <div id="contenedor_responsable">
-                               <table id="table_responsable" class="table" ellspacing="0" width="70%">
-
+                               <table id="table_responsableFormulador" class="table hover" ellspacing="0" width="100%">
+                                    <thead>
+                                       <tr>
+                                           <th></th>
+                                           <td>ID persona</td>
+                                           <td>Nombre</td>
+                                           <td>Cargo</td>
+                                           <td>Especialidad</td>
+                                           <td>Grado Academico</td>
+                                        </tr>
+                                      </thead>
+                                                                                 
                               </table>
                           </div>
-                      <input type="hidden" class="form-control" id="txt_idPersona" name="txt_idPersona">
+                      <input type="text" class="form-control" id="txt_idPersona" name="txt_idPersona">
                       <input type="hidden" class="form-control" id="txt_identregable" name="txt_identregable">
 
                       <div class="ln_solid"></div>
@@ -515,16 +524,14 @@
                 <div class="col-xs-12">
                 <form class="form-horizontal " id="form-AsignacionPersonalActividad"  method="POST" >
                       <div class="col-md-12 col-sm-12 col-xs-12 input-group">
-                        <span class="input-group-addon glyphicon glyphicon glyphicon-search "></span>
-                        <input id="text_buscarPersonaActividad"  name="text_buscarPersonaActividad" type="text" class="form-control"  placeholder="Buscar por nombre completo">
                       </div>
                           <div id="contenedor_responsable2">
-                               <table id="table_responsable2" class="table" ellspacing="0" width="70%">
+                               <table id="table_responsableActividad" class="table" ellspacing="0" width="100%">
 
                               </table>
                           </div>
-                      <input type="hidden" class="form-control" id="txt_idPersonaActividad" name="txt_idPersonaActividad">
-                      <input type="hidden" class="form-control" id="txt_idActividadCronograma" name="txt_idActividadCronograma">
+                      <input type="text" class="form-control" id="txt_idPersonaActividad" name="txt_idPersonaActividad">
+                      <input type="text" class="form-control" id="txt_idActividadCronograma" name="txt_idActividadCronograma">
 
                       <div class="ln_solid"></div>
                       <div class="form-group">
