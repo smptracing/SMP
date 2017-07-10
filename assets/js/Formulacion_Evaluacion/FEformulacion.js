@@ -74,6 +74,12 @@ $("#form-AddSituacion").submit(function(event)
           }
 
 			});
+ //Fin ver Situacion del proyecto de Inversión
+ function ListarSiProFormulacion(){
+
+
+ }
+ //Fin ver situación del proyecto
 //listar estado etapa en el modal
  var listarEstadoEtapa=function(id_etapa_estudio)
                 {

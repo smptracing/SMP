@@ -20,10 +20,10 @@ class Programacion extends CI_Controller {/* Mantenimiento de sector entidad Y s
         $txtPrioridadProg =$this->input->post("txtPrioridadProg");
         $monto_opera_mant_prog ="0.0";
 
-     if($this->Model_Programacion->AddProgramacion($textidCartera,$cbxBrechaP,$textidpip,$txt_MontoProgramado,$AnioProgramado,$txtPrioridadProg,$monto_opera_mant_prog) == true)
+       if($this->Model_Programacion->AddProgramacion($textidCartera,$cbxBrechaP,$textidpip,$txt_MontoProgramado,$AnioProgramado,$txtPrioridadProg,$monto_opera_mant_prog) == true)
           echo "Se añadio una Programacion";
         else
-          echo "Se añadio una Programacion";  
+          echo "Se añadio una Programacion"; 
       }
       else
       {
@@ -44,10 +44,11 @@ class Programacion extends CI_Controller {/* Mantenimiento de sector entidad Y s
         $txtPrioridadProg =$this->input->post("txtPrioridadProg");
         $txt_MontoOperacionMante =$this->input->post("txt_MontoOperacionMante");
 
-     if($this->Model_Programacion->AddProgramacionOperManteni($textidCartera,$cbxBrechaP,$textidpip,$txt_MontoProgramado,$AnioProgramadoOpeMant,$txtPrioridadProg,$txt_MontoOperacionMante) == true)
+        if($this->Model_Programacion->AddProgramacionOperManteni($textidCartera,$cbxBrechaP,$textidpip,$txt_MontoProgramado,$AnioProgramadoOpeMant,$txtPrioridadProg,$txt_MontoOperacionMante) == true)
           echo "Se añadio una Programacion Multianual";
         else
-          echo "Se añadio una Programacion Multianual";  
+          echo "Se añadio una Programacion Multianual";
+
       }
       else
       {
