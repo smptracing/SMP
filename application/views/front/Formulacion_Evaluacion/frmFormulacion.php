@@ -382,3 +382,28 @@
   </div>
 </div>
 <!-- fin venta gant-->
+
+<!-- INICIO VENTANA VER ETAPAS ESTUDIO-->
+<div class="modal fade" id="ventana_ver_etapas_estudio" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
+          Asignar Estado Etapa </h4>
+        </div>
+        <div class="modal-body">
+         <div class="row">
+                    <div class="col-xs-12">
+                                        <!-- PAGE CONTENT BEGINS -->
+
+                        </div><!-- /.span -->
+                 </div><!-- /.row -->
+        </div>
+        <div class="modal-footer">
+
+        </div>
+      </div>
+    </div>
+</div>
+<!-- /.FIN VENTANA VER ETAPAS ESTUDIO-->
