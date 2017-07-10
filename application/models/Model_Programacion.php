@@ -71,27 +71,7 @@ class Model_Programacion extends CI_Model
                 return false;
               }
         }
-
-        function GetMontosTemporales(){
-           $montos=$this->db->query("execute sp_ProgramacionMontoTemporal_r");
-            if($montos->num_rows()>0)
-             {
-              return $montos->result();
-             }else
-             {
-              return false;
-             }
-        }
     //FIN AGREGAR UN PROYECTO
-         function GetProgramacion($id_proyecto_filtro,$año_apertura_actual)
-        {
-            $ProyectoInversion=$this->db->query("execute sp_ListarProyectoProgramacion '".$id_proyecto_filtro."','".$año_apertura_actual."'");//listar proyecto de programacion
-            return $ProyectoInversion->result();
-        }
-
-		return $Programacion->result();
-	}
-
 
 	//exporatr exel de la programaci
 	function ExelProgramacionProyectos($id_proyecto_filtro,$año_apertura_actual)
