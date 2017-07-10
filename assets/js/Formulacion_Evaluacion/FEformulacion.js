@@ -112,7 +112,7 @@ $("#form-AddSituacion").submit(function(event)
                                     {"data":"id_pi","visible": false},
                                     {"data":"codigo_unico_est_inv",
                                     "mRender": function ( data, type, full ) {
-                                     return '<a style="font-weight:normal;font-size:15" type="button" class="VerDetalleFormulacion btn btn-link" data-toggle="modal" data-target="#VerDetalleFormulacion" href="/codigo_unico_est_inv/' + data + '">' + data+ '</a>';
+                                     return '<a style="font-weight:normal;font-size:8" type="button" class="VerDetalleFormulacion btn btn-link" data-toggle="modal" data-target="#VerDetalleFormulacion" href="/codigo_unico_est_inv/' + data + '">' + data+ '</a>';
                                       }
                                     },
                                     {"data":"nombre_est_inv"},
@@ -121,7 +121,17 @@ $("#form-AddSituacion").submit(function(event)
                                     {"data":"denom_nivel_estudio"},
                                     {"data":"nombres"},
                                     {"data":"costo_estudio"},
-                                    {"data":"denom_situacion_fe"},
+                                    {"data":"denom_situacion_fe",
+                                    "mRender": function ( data, type, full ) {
+                                        if(data="null"){
+                                            var SituaDetalle="No existe situación";
+                                            return '<a style="font-weight:normal;font-size:8" type="button" class="VerDetalleFormulacion btn btn-link" data-toggle="modal" data-target="#VerDetalleFormulacion" href="/codigo_unico_est_inv/">'+SituaDetalle+'</a>';
+                                        }else{
+                                           return '<a style="font-weight:normal;font-size:8" type="button" class="VerDetalleFormulacion btn btn-link" data-toggle="modal" data-target="#VerDetalleFormulacion" href="/codigo_unico_est_inv/">' + data+ '</a>';
+                                        }
+                                     
+                                      }
+                                    },
                                     {"data":"avance_fisico",
                                       "mRender":function (data,type, full) {
                                          return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Completado</small></td>";

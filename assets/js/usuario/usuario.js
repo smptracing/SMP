@@ -37,11 +37,11 @@
                                     {"data":"tipo"},
                                     {"data":"usuario"},
                                     {"data":"contrasenia"},
-                                    
-
+                                  
                                 ],
-
                                 "language":idioma_espanol
+
+                              
                     });
                   //SectorDataEntidad("#table-entidad",table);  //obtener data de entidad para actualizar   
                  // SectorDataEliminar("#table-entidad",table) ;

@@ -12,7 +12,7 @@ function main(){
 					alert("Usuario y contrantraseña invalido");
 				}
 				else{
-					window.location.href="http://localhost/smp/index.php/Inicio/"
+					window.location.href=base_url+"index.php/Inicio/"
 				}
 			}
 		});
@@ -21,11 +21,11 @@ function main(){
 	$("#Cerrar").on("click",function(event) {
 	     event.preventDefault();
 		$.ajax({
-			url:"http://localhost/smp/index.php/Login/cerrar",
+			"url":base_url+"index.php/Login/cerrar",
 			type:"POST", 
 			data:{},
 			success:function(){
-				window.location.href = "http://localhost/smp/";
+				window.location.href =base_url;
 			}
 		});
 
