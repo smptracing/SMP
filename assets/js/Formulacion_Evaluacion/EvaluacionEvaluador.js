@@ -131,7 +131,7 @@
                                          return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Complete</small></td>";
                                     }},
 
-{"defaultContent":"<button type='button' class='EstadoFE btn btn-success btn-xs' data-toggle='modal' data-target='#VentanaEstadoFE'><i class='fa fa-dashboard' aria-hidden='true'></i></button><button type='button' class='Situacion btn btn-warning btn-xs' data-toggle='modal' data-target='#VentanaSituacionActual'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button'  class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#VentanaAsignarPersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button>"}                            
+{"defaultContent":"<button type='button' class='EstadoFE btn btn-success btn-xs' data-toggle='modal' data-target='#VentanaEstadoFE'><i class='fa fa-dashboard' aria-hidden='true'></i></button><button type='button' class='Situacion btn btn-warning btn-xs' data-toggle='modal' data-target='#VentanaSituacionActual'><i class='fa fa-flag' aria-hidden='true'></i></button>"}                            
                                 ],
                                  "language":idioma_espanol
                     });
@@ -177,9 +177,9 @@
           ]
         } );
         table.buttons().container().appendTo( $('.tableTools-container-evaluacion') );                           
-                     ListarEvaluacion("#table-EvaluacionFE",table);    	
+                     ListarEvaluacion("#table-EvaluacionFE",table);     
                       SituacionActual("#table-EvaluacionFE",table);  
-                     RegistarPersona("#table-EvaluacionFE",table);  		   	
+                     RegistarPersona("#table-EvaluacionFE",table);          
                 }
 //FIN LISTAR PROYECTOS QUE SE ENCUENTRARN EN EVALUACION
 //LISTAR DETALLE DE SITUACION ACTUAL DE UNA PIP EN EVALUACION

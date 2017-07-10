@@ -132,7 +132,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Etapas</h4>
+          <h4 class="modal-title">Modificar Etapas</h4>
         </div>
         <div class="modal-body">
          <div class="row">
@@ -140,7 +140,7 @@
                 <form class="form-horizontal" id="form-EtapasDenominacion"  method="POST" >
 
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre de Situación<span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre de Etapa<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input id="id_etapa_fe" name="id_etapa_fe" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"   required="required" type="hidden">

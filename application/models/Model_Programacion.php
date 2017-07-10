@@ -9,9 +9,21 @@ class Model_Programacion extends CI_Model
 
           }
       //AGREGAR UN PROYECTO
-      function AddProgramacion($textidCartera,$cbxBrecha,$textidpip,$txtPrioridadProg)
+      function AddProgramacion($textidCartera,$cbxBrechaP,$textidpip,$txt_MontoProgramado,$AnioProgramado,$txtPrioridadProg,$monto_opera_mant_prog)
         {
-           $this->db->query("execute sp_Programacion_c'".$textidCartera."','".$cbxBrecha."','".$textidpip."','".$txtPrioridadProg."'");
+           $this->db->query("execute sp_Programacion_c'".$textidCartera."','".$cbxBrechaP."','".$textidpip."','".$txt_MontoProgramado."','".$AnioProgramado."','".$txtPrioridadProg."','".$monto_opera_mant_prog."'");
+            if ($this->db->affected_rows() > 0) 
+              {
+                return true;
+              }
+              else
+              {
+                return false;
+              }
+        }
+        function AddProgramacionOperManteni($textidCartera,$cbxBrechaP,$textidpip,$txt_MontoProgramado,$AnioProgramadoOpeMant,$txtPrioridadProg,$txt_MontoOperacionMante)
+        {
+           $this->db->query("execute sp_Programacion_c'".$textidCartera."','".$cbxBrechaP."','".$textidpip."','".$txt_MontoProgramado."','".$AnioProgramadoOpeMant."','".$txtPrioridadProg."','".$txt_MontoOperacionMante."'");
             if ($this->db->affected_rows() > 0) 
               {
                 return true;

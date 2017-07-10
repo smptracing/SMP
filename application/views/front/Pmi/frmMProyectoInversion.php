@@ -569,6 +569,7 @@
                                             <button id="btn-ProgramarOperacMante" type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaMontoOperacionMant"> >> Agregar</button>
                                         </div>
                                     </div>
+
                                    <!-- <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Tipo<span class="required">*</span>
                                         </label>
@@ -576,13 +577,17 @@
                                           <input id="txtTipo" name="txtTipo" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Tipo" required="required" type="text">
                                         </div>
                                     </div>-->
-                                    <table id="table-Programacion" class="table table-striped table-bordered table-hover table-responsive" ellspacing="0" width="100%">
+                                    <table id="table-Programacion1" class="table table-striped table-bordered table-hover table-responsive" ellspacing="0" width="100%">
 
                                    </table>
                                      <span></span><div class="col-md-6 col-md-offset-3">
-                                        <button  type="submit" class="btn btn-success" >
+                                        
+                                           <button   id="finalizarProgram" class="btn btn-success" data-dismiss="modal">
                                           <span class="glyphicon glyphicon-floppy-saved " aria-hidden="true"></span>
                                            FINALIZAR</button>
+                                            <button   id="btn_borrar" class="btn btn-success" data-dismiss="modal">
+                                          <span class="glyphicon glyphicon-floppy-saved " aria-hidden="true"></span>
+                                           BORRAR</button>
                                      </div>
 
                                   </form>
@@ -638,7 +643,9 @@
                             <div class="col-md-6 col-md-offset-3">
                               <button id="btn-GuardarMontoProgramado"  class="btn btn-success">
                                <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>Guardar</button>
-                              <button type="button" class="btn btn-danger" data-dismiss="modal">Cerar</button>
+                              <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                              
+
 
                             </div>
                           </div>
@@ -687,10 +694,11 @@
                           <div class="ln_solid"></div>
                           <div class="form-group">
                             <div class="col-md-6 col-md-offset-3">
-                               <button id="btn-GuardarMontoOperaMant"  class="btn btn-success">
+                               <button type="submit" class="btn btn-success">
                                <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>Guardar</button>
                               <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-
+                                 <button id="btn-GuardarMontoProgramadoOper"  class="btn btn-success">
+                               <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>Guardar1</button>
                             </div>
                           </div>
                         </form>
