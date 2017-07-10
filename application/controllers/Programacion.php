@@ -106,23 +106,30 @@ class Programacion extends CI_Controller {/* Mantenimiento de sector entidad Y s
       }
 
    }
+
    //para traer los proyectos 
-     function GetProgramacion()//listara para mostrar la programacion en una sola
-    {
-      if ($this->input->is_ajax_request()) 
-      {
-      //$valor="";//para enviar vacia  enmi procedimiento y traer la programación
-      $id_proyecto_filtro="";
-      $año_apertura_actual=$this->input->post('AnioCartera');
-      $datos=$this->Model_Programacion->GetProgramacion($id_proyecto_filtro,$año_apertura_actual);
-      $this->session->sess_destroy();
-      echo json_encode($datos);
-      }
-      else
-      {
-        show_404();
-      }
-    }
+	function GetProgramacion()
+	{
+		if($this->input->is_ajax_request()) 
+		{
+			$id_proyecto_filtro="";
+			
+			$anio_apertura_actual=$this->input->post('AnioCartera');
+			$skip=$this->input->post('start');
+			$numberRow=$this->input->post('length');
+			$valueSearch=$this->input->post('search[value]');
+			
+			$datos=$this->Model_Programacion->GetProgramacion($id_proyecto_filtro, $anio_apertura_actual, $skip, $numberRow, $valueSearch);
+			$totalDatos=$this->Model_Programacion->GetProgramacion($id_proyecto_filtro, $anio_apertura_actual, 0, 0, $valueSearch);
+
+			echo '{ "recordsTotal" : '.(count($totalDatos)).', "recordsFiltered" : '.(count($totalDatos)).', "data" : '.json_encode($datos).' }';
+		}
+		else
+		{
+			show_404();
+		}
+	}
+
 //fin traer proyectos
     //buscar proyecto de inversion
      function BuscarProyectoInversion()

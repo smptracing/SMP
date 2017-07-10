@@ -108,6 +108,7 @@ $("#form-AddSituacion").submit(function(event)
                                     "dataSrc":""
                                     },
                                 "columns":[
+                                    {"defaultContent":"<td>#</td>","visible": false},
                                     {"data":"id_pi","visible": false},
                                     {"data":"codigo_unico_est_inv",
                                     "mRender": function ( data, type, full ) {

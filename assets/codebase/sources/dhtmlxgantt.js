@@ -4926,7 +4926,7 @@ gantt.xml = {
 		return "<item id='"+obj.id+"' source='"+obj.source+"' target='"+obj.target+"' type='"+obj.type+"' />";
 	},
 	_copyObject:function(obj){
-		return "<task id='"+obj.id+"' parent='"+(obj.parent||"")+"' start_date='"+obj.start_date+"' duration='"+obj.duration+"' open='"+(!!obj.open)+"' progress='"+obj.progress+"' end_date='"+obj.end_date+"'><![CDATA["+obj.text+"]]></task>";
+		return "<task id='"+obj.id+"' parent='"+(obj.parent||"")+"' start_date='"+obj.start_date+"' durationzzz='"+obj.duration+"' open='"+(!!obj.open)+"' progress='"+obj.progress+"' end_date='"+obj.end_date+"'><![CDATA["+obj.text+"]]></task>";
 	},
 	serialize:function(){
 		var tasks = [];

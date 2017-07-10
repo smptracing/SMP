@@ -68,7 +68,7 @@
                                                                           <i class="fa fa-users"></i>
                                                                          Reponsable</th>
                                                                          <th style="width: 12%"> Progreso</th>
-                                                                         <th style="width: 13%"> Estado</th>
+                                                                         <th style="width: 13%"> Etapa</th>
                                                                          <th></th>
                                                                       </tr>
                                                                    </thead>
@@ -237,12 +237,6 @@
     </div>
   </div>
 <!-- fin popul para crear un nuevo estudio de inversión -->
-
-
-
-
-
-
 
 <!-- /.ventana para asignar responsable a estudio de inversión-->
 <div class="modal fade" id="ventanaasiganarpersona" role="dialog">

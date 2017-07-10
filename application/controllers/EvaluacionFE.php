@@ -15,6 +15,9 @@ class EvaluacionFE extends CI_Controller
             if (empty($id_est_inve)) {
                 $id_est_inve = '0';
             }
+            if ($id_est_inve == 'all') {
+                $id_est_inve = '0';
+            }
             $datos = $this->Model_EvaluacionFE->GetEvaluacionFE($id_est_inve);
             echo json_encode($datos);
         } else {
@@ -53,11 +56,6 @@ class EvaluacionFE extends CI_Controller
     {
         $data = array('id_est_inve' => $id_est_inve);
         $this->session->set_userdata($data);
-        $this->_load_layout('Front/Formulacion_Evaluacion/frmEvaluacionFE');
-    }
-    public function FeEvaluaciones()
-    {
-        $this->session->sess_destroy();
         $this->_load_layout('Front/Formulacion_Evaluacion/frmEvaluacionFE');
     }
 
