@@ -74,6 +74,59 @@ $("#form-AddSituacion").submit(function(event)
           }
 
 			});
+ //listar etapas estudio en el modal
+ var listarEtapaEstudio=function(id_est_inv)
+                {
+                    var table=$("#table_etapas_estudio").DataTable({
+                     "processing": true,
+                      "serverSide":false,
+                     destroy:true,
+                         "ajax":{
+                                    url:base_url+"index.php/Estudio_Inversion/get_etapas_estudio",
+                                    type:"POST",
+                                    data:{id_est_inv:id_est_inv}
+                                    },
+                                "columns":[
+                                    {"data":"id_est_inv","visible": false},
+                                        {"data": function (data, type, dataToSet) {
+
+                                      if (data.denom_etapas_fe =='Formulación') 
+                                      {
+                                       return '<i class="fa fa-spinner red fa-pulse fa-2x fa-fw"></i><span class="sr-only">Loading...</span>'
+                                       // return '<i class="fa fa-circle red fa-2x"></i>';
+                                      }
+                                        if (data.denom_etapas_fe =='Evaluación') 
+                                      {
+                                       return '<i class="fa fa-spinner orange fa-pulse fa-2x fa-fw"></i><span class="sr-only">Loading...</span>'
+                                      //return '<i class="fa fa-circle purple fa-2x"></i>';
+                                     }
+                                        if (data.denom_etapas_fe =='Aprobado') 
+                                      {
+                                        return '<i class="fa fa-spinner blue fa-pulse fa-2x fa-fw"></i><span class="sr-only">Loading...</span>'
+                                     // return '<i class="fa fa-circle light blue fa-2x"></i>';
+                                     
+                                      }
+                                        if (data.denom_etapas_fe =='Viabilizado') 
+                                      {
+                                      return '<i class="fa fa-spinner green fa-pulse fa-2x fa-fw"></i><span class="sr-only">Loading...</span>'
+                                     // return '<i class="fa fa-circle light green fa-2x"></i>';
+                                      }
+                                      if (data.denom_etapas_fe ==null) 
+                                      {
+                                      return '<button type="button" class=" btn-round btn-warning btn-xs" data-toggle="modal" data-target="#"><i class="fa fa-flag" aria-hidden="true"></i> Asignar</button"';
+                                     
+                                      }
+                                   }},
+                                    {"data":"denom_etapas_fe"},
+                                    {"data":"recomendaciones"},
+                                    {"data":"fecha_inicio"},
+                                    {"data":"fecha_final"}
+                                 
+                                    //{"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaupdateEstadoFE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
+                                ],
+                               "language":idioma_espanol
+                    });
+                }
 //listar estado etapa en el modal
  var listarEstadoEtapa=function(id_etapa_estudio)
                 {
@@ -133,8 +186,8 @@ $("#form-AddSituacion").submit(function(event)
                                          return '<a href="../../FEentregableEstudio/ver_FEentregable/'+data+'"><button type="button" title="Entregables" class="btn btn btn-primary btn-xs"><i class="fa fa-tasks"></i> </button></a><button type="button" title="Ver Gantt" class="gant btn btn-info btn-xs" data-toggle="modal" data-target="#ventanagant"><i class="glyphicon glyphicon-fullscreen" aria-hidden="true"></i></button>';
                                       }
                                     },
-{"defaultContent":"<button type='button' title='Asignar Estado' class='EstadoFE btn btn-success btn-xs' data-toggle='modal' data-target='#VentanaEstadoFE'><i class='fa fa-dashboard' aria-hidden='true'></i></button><button type='button' title='Asignar Situacion' class='Situacion btn btn-warning btn-xs' data-toggle='modal' data-target='#VentanaSituacionActual'><i class='fa fa-comments' aria-hidden='true'></i></button><button type='button' title='Asignar Responsable' class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#VentanaAsignarPersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button><button type='button' title='Ver Etapas Estudio' class='AsignarPersona btn btn-success btn-xs' data-toggle='modal' data-target='#ventana_ver_etapas_estudio'><i class='fa fa-paw' aria-hidden='true'></i></button>"}
-                                ],
+{"defaultContent":"<button type='button' title='Asignar Estado' class='EstadoFE btn btn-success btn-xs' data-toggle='modal' data-target='#VentanaEstadoFE'><i class='fa fa-dashboard' aria-hidden='true'></i></button><button type='button' title='Asignar Situacion' class='Situacion btn btn-warning btn-xs' data-toggle='modal' data-target='#VentanaSituacionActual'><i class='fa fa-comments' aria-hidden='true'></i></button><button type='button' title='Asignar Responsable' class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#VentanaAsignarPersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button><button type='button' title='Ver Etapas Estudio' class='ver_etapas_estudio btn btn-success btn-xs' data-toggle='modal' data-target='#ventana_ver_etapas_estudio'><i class='fa fa-paw' aria-hidden='true'></i></button>"}
+                             ],
                                  "language":idioma_espanol
                     });
                    // DenominacionFE("#table-DenominacionFE",table);
@@ -182,6 +235,7 @@ $("#form-AddSituacion").submit(function(event)
                      ListaFormulacion("#table-formulacion",table);
                     SituacionActual("#table-formulacion",table);
                      RegistarPersona("#table-formulacion",table);
+                    ver_etapas_estudio("#table-formulacion",table);
                      RegistarEstadoFE("#table-formulacion",table);
                      gant("#table-formulacion",table);
                 }
@@ -231,6 +285,15 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
                         var txt_IdEtapa_Estudio_FE=$('#txt_IdEtapa_Estudio_FE').val(data.id_etapa_estudio);
                          listarEstadoFE();
                          listarEstadoEtapa(id_etapa_estudio);
+                  });
+                }
+                        //para ver etapas de los estudios
+                 var  ver_etapas_estudio=function(tbody,table){
+                    $(tbody).on("click","button.ver_etapas_estudio",function(){
+                        var data=table.row( $(this).parents("tr")).data();
+                         var id_est_inv=data.id_est_inv;
+                        var txtIdEtapaEstudio_v=$('#txtIdEtapaEstudio_v').val(data.id_est_inv);
+                         listarEtapaEstudio(id_est_inv);
                   });
                 }
            var listarEstadoFE=function(valor){

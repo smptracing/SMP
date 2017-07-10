@@ -215,6 +215,18 @@ class Estudio_Inversion_Model extends CI_Model
         }
 
     }
+    //ver las etpas de estudio
+    public function get_etapas_estudio($txtIdEtapaEstudio_v)
+    {
+        //  $EstadoCicloInversion = $this->db->query("execute get");
+        $veretapasestudio = $this->db->query("execute sp_ListarEtapasEstudio'"
+            . $txtIdEtapaEstudio_v . "'");
+        if ($veretapasestudio->num_rows() > 0) {
+            return $veretapasestudio->result();
+        } else {
+            return false;
+        }
+    }
 
     public function GetDocumentosEstudio($id_est_inv)
     {

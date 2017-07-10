@@ -137,6 +137,61 @@ $(document).on("ready" ,function(){
 
 
       });
+//listar etapas estudio en el modal
+ var listarEtapaEstudio=function(id_est_inv)
+                {
+                    var table=$("#table_etapas_estudio").DataTable({
+                     "processing": true,
+                      "serverSide":false,
+                     destroy:true,
+                         "ajax":{
+                                    url:base_url+"index.php/Estudio_Inversion/get_etapas_estudio",
+                                    type:"POST",
+                                    data:{id_est_inv:id_est_inv}
+                                    },
+                                "columns":[
+                                    {"data":"id_est_inv","visible": false},
+                                        {"data": function (data, type, dataToSet) {
+
+                                      if (data.denom_etapas_fe =='Formulación') 
+                                      {
+                                       //return '<i class="fa fa-spinner red fa-pulse fa-2x fa-fw"></i><span class="sr-only">Loading...</span>'
+                                        return '<i class="fa fa-circle red fa-2x"></i>';
+                                      }
+                                        if (data.denom_etapas_fe =='Evaluación') 
+                                      {
+                                       //return '<i class="fa fa-spinner orange fa-pulse fa-2x fa-fw"></i><span class="sr-only">Loading...</span>'
+                                      return '<i class="fa fa-circle purple fa-2x"></i>';
+                                     }
+                                        if (data.denom_etapas_fe =='Aprobado') 
+                                      {
+                                        //return '<i class="fa fa-spinner blue fa-pulse fa-2x fa-fw"></i><span class="sr-only">Loading...</span>'
+                                      return '<i class="fa fa-circle light blue fa-2x"></i>';
+                                     
+                                      }
+                                        if (data.denom_etapas_fe =='Viabilizado') 
+                                      {
+                                      //return '<i class="fa fa-spinner green fa-pulse fa-2x fa-fw"></i><span class="sr-only">Loading...</span>'
+                                      return '<i class="fa fa-circle light green fa-2x"></i>';
+                                      }
+                                      if (data.denom_etapas_fe ==null) 
+                                      {
+                                      return '<button type="button" class=" btn-round btn-warning btn-xs" data-toggle="modal" data-target="#"><i class="fa fa-flag" aria-hidden="true"></i> Asignar</button"';
+                                     
+                                      }
+                                   }},
+                                    {"data":"denom_etapas_fe"},
+                                    {"data":"recomendaciones"},
+                                    {"data":"fecha_inicio"},
+                                    {"data":"fecha_final"}
+                                 
+                                    //{"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaupdateEstadoFE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
+                                ],
+                               "language":idioma_espanol
+                    });
+                }
+
+
          /*listra */
                 var ListaEstudioInversion=function()
                 {
@@ -187,7 +242,7 @@ $(document).on("ready" ,function(){
                                      
                                       }
                                    }},
-                                  {"defaultContent":"<center><button type='button' class='DocumentosEstudio btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaDocumentosEstudio'><i class='glyphicon glyphicon-folder-open' aria-hidden='true'></i></button><button type='button'  class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#ventanaasiganarpersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button><button type='button' class='nuevaEtapaEstudio btn btn-warning btn-xs' data-toggle='modal' data-target='#ventanaEtapaEstudio'><i class='fa fa-flag' aria-hidden='true'></i></button><center>"}
+                                  {"defaultContent":"<center><button type='button' title='Subir Resolución' class='DocumentosEstudio btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaDocumentosEstudio'><i class='glyphicon glyphicon-folder-open' aria-hidden='true'></i></button><button type='button' title='Asignar Respondable' class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#ventanaasiganarpersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button><button type='button' title='Nueva Etapa Estudio' class='nuevaEtapaEstudio btn btn-warning btn-xs' data-toggle='modal' data-target='#ventanaEtapaEstudio'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button' title='Ver Etapas Estudio' class='ver_etapas_estudio btn btn-success btn-xs' data-toggle='modal' data-target='#ventana_ver_etapas_estudio'><i class='fa fa-paw' aria-hidden='true'></i></button></center>"}
                                ],
                                 "language":idioma_espanol
                     });
@@ -235,6 +290,7 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
        listarpersonasdata("#dynamic-table-EstudioInversion",myTableUA);  //CARGAR LA DATA PARA MOSTRAR EN EL MODAL
        nuevaEtapaEstudioData("#dynamic-table-EstudioInversion",myTableUA);
        AddListarDocumentos("#dynamic-table-EstudioInversion",myTableUA);
+       ver_etapas_estudio("#dynamic-table-EstudioInversion",myTableUA);
                 }
 
   /*fin listar proyectos*/
@@ -247,6 +303,15 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
                         var  id_est_inv=data.id_est_inv;
                         listarDocumentos(id_est_inv);
                     });
+                }
+                                  //para ver etapas de los estudios
+                 var  ver_etapas_estudio=function(tbody,myTableUA){
+                    $(tbody).on("click","button.ver_etapas_estudio",function(){
+                        var data=myTableUA.row( $(this).parents("tr")).data();
+                         var id_est_inv=data.id_est_inv;
+                        var txtIdEtapaEstudio_v=$('#txtIdEtapaEstudio_v').val(data.id_est_inv);
+                         listarEtapaEstudio(id_est_inv);
+                  });
                 }
                 var  listarDocumentos=function(id_est_inv)
                 {

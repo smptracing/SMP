@@ -188,7 +188,7 @@ class Estudio_Inversion extends CI_Controller
     public function AddAsiganarPersona()
     {
         if ($this->input->is_ajax_request()) {
-            $flat                  = "C";
+            $flat                  = "UC";
             $Cbx_Persona           = $this->input->post("Cbx_Persona");
             $Cbx_Cargo             = $this->input->post("Cbx_Cargo");
             $txt_IdEtapa_Estudio_p = $this->input->post("txt_IdEtapa_Estudio_p");
@@ -244,6 +244,19 @@ class Estudio_Inversion extends CI_Controller
 
     }
     //fin documentos de inversion
+
+    //listar las etapas de los estudios
+    public function get_etapas_estudio() //mostra ESTADO INVERSION
+
+    {
+        if ($this->input->is_ajax_request()) {
+            $id_est_inv = $this->input->post("id_est_inv");
+            $data       = $this->Estudio_Inversion_Model->get_etapas_estudio($id_est_inv);
+            echo json_encode(array('data' => $data));
+        } else {
+            show_404();
+        }
+    }
     //listar Documentos de inversion
     public function GetDocumentosEstudio() //mostra ESTADO INVERSION
 
