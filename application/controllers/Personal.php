@@ -17,28 +17,27 @@ class Personal extends CI_Controller
     {
         $this->_load_layout('Front/Administracion/frmPersonal');
     }
+
     /* personal*/
     public function GetPersonal()
     {
-        if ($this->input->is_ajax_request()) {
-            $flat            = "R";
-            $id_oficina      = "0";
-            $nombres         = "NULL";
-            $apellido_p      = "NULL";
-            $apellido_m      = "NULL";
-            $dni             = "NULL";
-            $direccion       = "NULL";
-            $telefonos       = "NULL";
-            $correo          = "NULL";
-            $grado_academico = "NULL";
-            $especialidad    = "NULL";
-            $fecha_nac       = "NULL";
-            $datos           = $this->Model_Personal->GetPersonal($flat, $id_oficina, $nombres, $apellido_p, $apellido_m, $dni, $direccion, $telefonos, $correo, $grado_academico, $especialidad, $fecha_nac);
-            echo json_encode($datos);
-        } else {
+        if($this->input->is_ajax_request())
+        {
+            $skip=$this->input->post('start');
+            $numberRow=$this->input->post('length');
+            $valueSearch=$this->input->post('search[value]');
+            
+            $datos=$this->Model_Personal->GetPersonal('R', $skip, $numberRow, $valueSearch);
+            $cantidadDatos=$this->Model_Personal->CountPersonalParaPaginacion('X', $valueSearch);
+
+            echo '{ "recordsTotal" : '.$cantidadDatos[0]->cantidad.', "recordsFiltered" : '.$cantidadDatos[0]->cantidad.', "data" : '.json_encode($datos).' }';
+        }
+        else
+        {
             show_404();
         }
     }
+
     public function getcargo()
     {
         if ($this->input->is_ajax_request()) {

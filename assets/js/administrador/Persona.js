@@ -70,81 +70,97 @@
                
 
 
-                  /* listar y lista en tabla entidad*/ 
-                var listarpersona=function()
-                {
-                    var table=$("#table-Personal").DataTable({
+	/* listar y lista en tabla entidad*/ 
+	var listarpersona=function()
+	{
+		var table=$("#table-Personal").DataTable(
+		{
+			"processing" : true,
+			"serverSide" : true,
+			"destroy" : true,
+      		"language" : idioma_espanol,
+			"ajax" :
+			{
+				"url" : base_url+"index.php/personal/GetPersonal",
+				"method" : "POST",
+				"dataSrc" : "data"
+			},
+			"columns" : [
+				{ "data" : "dni" },
+				{ "data" : "apellido_p" },
+				{ "data" : "apellido_m" },
+				{ "data" : "nombres" },
+				{ "data" : "direccion" },
+				{ "data" : "grado_academico" },
+				{ "data" : "especialidad" },
+				{ "defaultContent" : "<button type='button'  class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaModificarPersonal'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>" }]
+		});
 
-                     "processing":true,
-                     "serverSide":false,
-                     destroy:true,
+		$('#table-Personal_filter input').unbind();
 
-                         "ajax":{
-                                    "url":base_url+"index.php/personal/GetPersonal",
-                                    "method":"POST",
-                                    "dataSrc":""
-                                    },
-                                "columns":[
-                                   // {"data":"id_persona","visible": false},
-                                    {"data":"dni"},
-                                    {"data":"apellido_p"},
-                                    {"data":"apellido_m"},
-                                    {"data":"nombres"},
-                                    {"data":"direccion"},
-                                    //{"data":"id_oficina","visible": false},
-                                    {"defaultContent":"<button type='button'  class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaModificarPersonal'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
-                                ],
+		$('#table-Personal_filter input').bind('keyup', function(e)
+		{
+			if(e.keyCode==13)
+			{
+				table.search(this.value).draw();
+			}
+		});
 
-                                "language":idioma_espanol
-                    });
-                    personalData("#table-Personal",table);  //obtener data de la division Personal para agregar  AGREGAR                 
-                }
+		personalData("#table-Personal", table);  //obtener data de la division Personal para agregar  AGREGAR                 
+	}
 
-                  var  personalData=function(tbody,table){
-                    $(tbody).on("click","button.editar",function(){
-                        var data=table.row( $(this).parents("tr")).data();
-                       var id_oficina=data.id_oficina;
-                      // console.log(id_oficina);
-                        var txt_idpersonam=$('#txt_idpersonam').val(data.id_persona);
-                        var txt_nombrepersonalm=$('#txt_nombrepersonalm').val(data.nombres);
-                        var txt_apellidopaternom=$('#txt_apellidopaternom').val(data.apellido_p);
-                        var txt_apellidomaternom=$('#txt_apellidomaternom').val(data.apellido_m);
-                        var txt_dnim=$('#txt_dnim').val(data.dni);
-                        var txt_direccionm=$('#txt_direccionm').val(data.direccion);
-                        var txt_telefonom=$('#txt_telefonom').val(data.telefonos);
-                        var txt_correom=$('#txt_correom').val(data.correo);
-                        var txt_gradoacademicom=$('#txt_gradoacademicom').val(data.grado_academico);
-                        var txt_especialidadm=$('#txt_especialidadm').val(data.especialidad);
-                        var date_fechanacm=$('#date_fechanacm').val(data.date_fechanacm);
-                       listarOficina(id_oficina);
-                    
-                          /*$('select[name=listaPersonaCM]').val(id_Persona);//PARA AGREGAR UN COMBO PSELECIONADO
-                          $('select[name=listaPersonaCM]').change();*/
-                      //     listaPersonaCombo(id_Persona);//para agregar Persona selecionada mandamos parametro
-                    });
+	var  personalData=function(tbody,table)
+	{
+		$(tbody).on("click", "button.editar", function()
+		{
+			var data=table.row( $(this).parents("tr")).data();
+			var id_oficina=data.id_oficina;
+			var txt_idpersonam=$('#txt_idpersonam').val(data.id_persona);
+			var txt_nombrepersonalm=$('#txt_nombrepersonalm').val(data.nombres);
+			var txt_apellidopaternom=$('#txt_apellidopaternom').val(data.apellido_p);
+			var txt_apellidomaternom=$('#txt_apellidomaternom').val(data.apellido_m);
+			var txt_dnim=$('#txt_dnim').val(data.dni);
+			var txt_direccionm=$('#txt_direccionm').val(data.direccion);
+			var txt_telefonom=$('#txt_telefonom').val(data.telefonos);
+			var txt_correom=$('#txt_correom').val(data.correo);
+			var txt_gradoacademicom=$('#txt_gradoacademicom').val(data.grado_academico);
+			var txt_especialidadm=$('#txt_especialidadm').val(data.especialidad);
+			var date_fechanacm=$('#date_fechanacm').val(data.date_fechanacm);
 
-                }
-          var listarOficina=function(id_oficina){
-                     html="";
-                    $("#Cbx_Oficina").html(html); 
-                    event.preventDefault(); 
-                    $.ajax({
-                        "url":base_url +"index.php/Oficina/GetOficina",
-                        type:"POST",
-                        success:function(respuesta3){
-                         //  alert(respuesta);
-                         var registros = eval(respuesta3);
-                            for (var i = 0; i <registros.length;i++) {
-                              html +="<option  value="+registros[i]["id_oficina"]+"> "+registros[i]["denom_oficina"]+" </option>";   
-                            };
-                            $("#Cbx_Oficina").html(html);
-                            $("#Cbx_Oficinas").html(html);
-                            $('select[name=Cbx_Oficinas]').val(id_oficina);//PARA AGREGAR UN COMBO PSELECIONADO
-                            $('select[name=Cbx_Oficinas]').change();
-                            $('.selectpicker').selectpicker('refresh'); 
-                        }
-                    });
-                }
+			listarOficina(id_oficina);
+		});
+
+	}
+
+	var listarOficina=function(id_oficina)
+	{
+		event.preventDefault(); 
+
+		html="";
+
+		$("#Cbx_Oficina").html(html); 
+
+		$.ajax(
+		{
+			"url" : base_url+"index.php/Oficina/GetOficina",
+			"type" : "POST",
+			success : function(respuesta3)
+			{
+				var registros = eval(respuesta3);
+
+				for(var i=0; i<registros.length; i++)
+				{
+					html +="<option  value="+registros[i]["id_oficina"]+"> "+registros[i]["denom_oficina"]+" </option>";   
+				}
+
+				$("#Cbx_Oficina").html(html);
+				$("#Cbx_Oficinas").html(html);
+				$('select[name=Cbx_Oficinas]').val(id_oficina);//PARA AGREGAR UN COMBO PSELECIONADO
+				$('select[name=Cbx_Oficinas]').change();
+				$('.selectpicker').selectpicker('refresh'); 
+			}
+		});
+	}
 
 
 

@@ -51,19 +51,19 @@
                                                           </div>
 
                                                           <div class="x_content">
-
                                                             <table id="table-Personal" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
-                                                              <thead>
-                                                                <tr>
-
-                                                                  <th>DNI</th>
-                                                                  <th>A. Paterno</th>
-                                                                  <th>A. Materno</th>
-                                                                  <th>Nombres</th>
-                                                                  <th>Direción</th>
-                                                                  <th></th>
-                                                                </tr>
-                                                              </thead>
+																<thead>
+																	<tr>
+																		<th>DNI</th>
+																		<th>A. Paterno</th>
+																		<th>A. Materno</th>
+																		<th>Nombres</th>
+																		<th>Direción</th>
+																		<th>Grado académico</th>
+																		<th>Especialidad</th>
+																		<th></th>
+																	</tr>
+																</thead>
                                                             </table>
                                                           </div>
                                                         </div>
