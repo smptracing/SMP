@@ -74,7 +74,6 @@ $("#form-AddSituacion").submit(function(event)
           }
 
 			});
-<<<<<<< HEAD
  //listar etapas estudio en el modal
  var listarEtapaEstudio=function(id_est_inv)
                 {
@@ -128,14 +127,7 @@ $("#form-AddSituacion").submit(function(event)
                                "language":idioma_espanol
                     });
                 }
-=======
- //Fin ver Situacion del proyecto de Inversión
- function ListarSiProFormulacion(){
 
-
- }
- //Fin ver situación del proyecto
->>>>>>> origin/desarrollo
 //listar estado etapa en el modal
  var listarEstadoEtapa=function(id_etapa_estudio)
                 {
