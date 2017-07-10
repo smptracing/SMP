@@ -23,15 +23,6 @@ function action()
 
 	$object->getProperties()->setCreator("Fabian Schmick")->setLastModifiedBy("Current User")->setTitle("Foobar");
 
-	/*$object->getActiveSheet()->getStyle('B2')->getFont()->applyFromArray(
-		array(
-			'style' => PHPExcel_Style_Border::BORDER_THIN,
-			'color'=> array('argb'=>'FF000000'),
-			'startcolor' => array('argb' => 'FFFF0000'),
-			'endcolor' => array('argb' => 'FFFF0000')
-		)
-	);*/
-
 	$object->getActiveSheet()->mergeCells('A1:Z1');
 	$object->getActiveSheet()->mergeCells('AA1:AE1');
 	$object->getActiveSheet()->mergeCells('AF1:AH1');
