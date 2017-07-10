@@ -31,9 +31,15 @@ class FEformulacion extends CI_Controller
     public function GetFEAprobados()
     {
         if ($this->input->is_ajax_request()) {
-            $Etapa       = "Aprobado";
             $id_est_inve = $this->session->userdata('id_est_inve');
-            $datos       = $this->FEformulacion_Modal->GetFEAprobados($Etapa, $id_est_inve);
+            if (empty($id_est_inve)) {
+                $id_est_inve = '0';
+            }
+            if ($id_est_inve == 'all') {
+                $id_est_inve = '0';
+            }
+            //$this->session->sess_destroy();
+            $datos = $this->FEformulacion_Modal->GetFEAprobados($id_est_inve);
             echo json_encode($datos);
         } else {
             show_404();
@@ -42,16 +48,21 @@ class FEformulacion extends CI_Controller
     public function GetFEViabilizado()
     {
         if ($this->input->is_ajax_request()) {
-            $Etapa = "Viabilizado";
-            // $this->session->sess_destroy();
             $id_est_inve = $this->session->userdata('id_est_inve');
-
-            $datos = $this->FEformulacion_Modal->GetFEViabilizado($Etapa, $id_est_inve);
+            if (empty($id_est_inve)) {
+                $id_est_inve = '0';
+            }
+            if ($id_est_inve == 'all') {
+                $id_est_inve = '0';
+            }
+            //$this->session->sess_destroy();
+            $datos = $this->FEformulacion_Modal->GetFEViabilizado($id_est_inve);
             echo json_encode($datos);
         } else {
             show_404();
         }
     }
+    //mostar la vista de lista de proyectos al seleccionar un unico
     public function Feformulacion($id_est_inve)
     {
 
@@ -59,18 +70,16 @@ class FEformulacion extends CI_Controller
         $this->session->set_userdata($data);
         $this->_load_layout('Front/Formulacion_Evaluacion/frmFormulacion');
     }
-    public function Feformulaciones()
+    public function Feaprobado($id_est_inve)
     {
-        $this->session->sess_destroy();
-        $this->_load_layout('Front/Formulacion_Evaluacion/frmFormulacion');
-
-    }
-    public function Feaprobado()
-    {
+        $data = array('id_est_inve' => $id_est_inve);
+        $this->session->set_userdata($data);
         $this->_load_layout_jsFormFormulacion('Front/Formulacion_Evaluacion/frmAprobados');
     }
-    public function Feviabilizado()
+    public function Feviabilizado($id_est_inve)
     {
+        $data = array('id_est_inve' => $id_est_inve);
+        $this->session->set_userdata($data);
         $this->_load_layout_jsViabilizado('Front/Formulacion_Evaluacion/frmViabilizado');
     }
     public function _load_layout($template)
