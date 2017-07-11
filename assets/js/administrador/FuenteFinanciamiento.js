@@ -3,21 +3,12 @@ $(document).on("ready" ,function(){
                 listaFuenteFinanciamiento();/*llamar a mi datatablet listar funcion*/
               //abrir el modal para registrar
 
-//Inicio cargar combo ede rubro de ejecucion
-             $("#btn-FuenteFinanciamiento").click(function()//para que cargue el como una vez echo click sino repetira datos
-                    {
-                        //alert('hola');
-                     listaComboRubroEjecucion();//para llenar el combo de agregar division funcional
-                    
-                    });
-//fin cargar combo   de rubro de ejecucion
-
 //REGISTARAR NUEVA fuente financiamiento
    $("#form-AddFuenteFinanciamiento").submit(function(event)
                   {
                       event.preventDefault();
                       $.ajax({
-                          url:base_url+"index.php/InformacionPresupuestal/AddFuenteFinanciamiento",
+                          url:base_url+"index.php/FuenteFinanciamiento/AddFuenteFinanciamiento",
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
@@ -46,7 +37,7 @@ $(document).on("ready" ,function(){
                   {
                       event.preventDefault();
                       $.ajax({
-                          url:base_url+"index.php/InformacionPresupuestal/UpdateFuenteFinanciamiento",
+                          url:base_url+"index.php/FuenteFinanciamiento/UpdateFuenteFinanciamiento",
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
@@ -69,14 +60,13 @@ $(document).on("ready" ,function(){
                      destroy:true,
 
                          "ajax":{
-                                    "url":base_url+"index.php/InformacionPresupuestal/get_FuenteFinanciamiento",
+                                    "url":base_url+"index.php/FuenteFinanciamiento/get_FuenteFinanciamiento",
                   "method":"POST",
                   "dataSrc":""
                                     },
                                 "columns":[
                                   {"defaultContent":" <label class='pos-rel'><input type='checkbox' class='ace' /><span class='lbl'></span></label>"},
                                   {"data":"id_fuente_finan"},
-                                  {"data":"nombre_rubro"},
                                   {"data":"nombre_fuente_finan"},
                                   {"data":"acronimo_fuente_finan"},
                                   {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaEditFuenteFinanciamiento'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><span class='glyphicon glyphicon-trash' aria-hidden='true'></span></button>"}
@@ -105,7 +95,6 @@ $(document).on("ready" ,function(){
                   $(tbody).on("click","button.eliminar",function(){
                         var data=myTableFFTO.row( $(this).parents("tr")).data();
                         var id_fuente_finan=data.id_fuente_finan;
-                        var id_rubro=data.id_rubro;
                         console.log(data);
                          swal({
                                 title: "Desea eliminar ?",
@@ -118,10 +107,9 @@ $(document).on("ready" ,function(){
                               },
                               function(){
                                     $.ajax({
-                                          url:base_url+"index.php/InformacionPresupuestal/EliminarFuenteFinanciamiento",
+                                          url:base_url+"index.php/FuenteFinanciamiento/EliminarFuenteFinanciamiento",
                                           type:"POST",
-                                          data:{id_fuente_finan:id_fuente_finan,
-                                          id_rubro:id_rubro},
+                                          data:{id_fuente_finan:id_fuente_finan},
                                           success:function(respuesta){
                                             //alert(respuesta);
                                             swal("Se eliminó corectamente.", "", "success");

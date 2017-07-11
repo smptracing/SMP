@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-class InformacionPresupuestal extends CI_Controller
+class FuenteFinanciamiento extends CI_Controller
 {
 
     public function __construct()
@@ -19,16 +19,8 @@ class InformacionPresupuestal extends CI_Controller
     public function get_FuenteFinanciamiento() //mostra fuente financiamietno
 
     {
-
         if ($this->input->is_ajax_request()) {
-            $flat = "R";
-            // $ID   = "0";
-            $txt_IdFuenteFinanciamiento       = $this->input->post("txt_IdFuenteFinanciamiento");
-            $txt_IdRubroEjecucion             = $this->input->post("txt_IdRubroEjecucion");
-            $txt_NombreFuenteFinanciamiento   = $this->input->post("txt_NombreFuenteFinanciamiento");
-            $txt_AcronimoFuenteFinanciamiento = $this->input->post("txt_AcronimoFuenteFinanciamiento");
-
-            $datos = $this->FuenteFinanciamiento_Model->get_FuenteFinanciamiento($flat, $txt_IdFuenteFinanciamiento, $txt_IdRubroEjecucion, $txt_NombreFuenteFinanciamiento, $txt_AcronimoFuenteFinanciamiento);
+            $datos = $this->FuenteFinanciamiento_Model->get_FuenteFinanciamiento();
             echo json_encode($datos);
         } else {
             show_404();
@@ -41,11 +33,9 @@ class InformacionPresupuestal extends CI_Controller
         if ($this->input->is_ajax_request()) {
             $flat                             = "C";
             $txt_IdFuenteFinanciamiento       = "0";
-            $txt_IdRubroEjecucion             = $this->input->post("cbxRubroEjecucion");
-            $txt_NombreFuenteFinanciamiento   = $this->input->post("txt_NombreFuenteFinanciamiento");
+            $txt_ffto                         = $this->input->post("txt_ffto");
             $txt_AcronimoFuenteFinanciamiento = $this->input->post("txt_AcronimoFuenteFinanciamiento");
-
-            if ($this->FuenteFinanciamiento_Model->AddFuenteFinanciamiento($flat, $txt_IdFuenteFinanciamiento, $txt_IdRubroEjecucion, $txt_NombreFuenteFinanciamiento, $txt_AcronimoFuenteFinanciamiento) == false) {
+            if ($this->FuenteFinanciamiento_Model->AddFuenteFinanciamiento($flat, $txt_IdFuenteFinanciamiento, $txt_ffto, $txt_AcronimoFuenteFinanciamiento) == false) {
                 echo "1";
             } else {
                 echo "2";
@@ -61,12 +51,11 @@ class InformacionPresupuestal extends CI_Controller
     {
         if ($this->input->is_ajax_request()) {
             $flat                             = "D";
-            $txt_IdFuenteFinanciamiento       = $this->input->post("idffto");
-            $txt_IdRubroEjecucion             = $this->input->post("id_rubro_ejec");
+            $txt_IdFuenteFinanciamiento       = $this->input->post("id_fuente_finan");
             $txt_NombreFuenteFinanciamiento   = "NULL";
             $txt_AcronimoFuenteFinanciamiento = "NULL";
 
-            if ($this->FuenteFinanciamiento_Model->EliminarFuenteFinanciamiento($flat, $txt_IdFuenteFinanciamiento, $txt_IdRubroEjecucion, $txt_NombreFuenteFinanciamiento, $txt_AcronimoFuenteFinanciamiento) == false) {
+            if ($this->FuenteFinanciamiento_Model->EliminarFuenteFinanciamiento($flat, $txt_IdFuenteFinanciamiento, $txt_NombreFuenteFinanciamiento, $txt_AcronimoFuenteFinanciamiento) == false) {
                 echo "Se Eliminó  ";
             } else {
                 echo "No se Eliminó ";
@@ -84,11 +73,10 @@ class InformacionPresupuestal extends CI_Controller
         if ($this->input->is_ajax_request()) {
             $flat                              = "U";
             $txt_IdFuenteFinanciamientoM       = $this->input->post("txt_IdFuenteFinanciamientoM");
-            $txt_IdRubroEjecucionM             = $this->input->post("cbxRubroEjecucionM");
             $txt_NombreFuenteFinanciamientoM   = $this->input->post("txt_NombreFuenteFinanciamientoM");
             $txt_AcronimoFuenteFinanciamientoM = $this->input->post("txt_AcronimoFuenteFinanciamientoM");
 
-            if ($this->FuenteFinanciamiento_Model->UpdateFuenteFinanciamiento($flat, $txt_IdFuenteFinanciamientoM, $txt_IdRubroEjecucionM, $txt_NombreFuenteFinanciamientoM, $txt_AcronimoFuenteFinanciamientoM) == false) {
+            if ($this->FuenteFinanciamiento_Model->UpdateFuenteFinanciamiento($flat, $txt_IdFuenteFinanciamientoM, $txt_NombreFuenteFinanciamientoM, $txt_AcronimoFuenteFinanciamientoM) == false) {
                 echo "Se actualizó  ";
             } else {
                 echo "No se actualizó ";
