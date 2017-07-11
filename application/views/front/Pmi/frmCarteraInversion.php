@@ -119,8 +119,14 @@
                       <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Año Apertura Cartera<span class="required">*</span>
                             </label>
-                               <div class="col-md-6 col-sm-6 col-xs-12">
-                                 <input type="date" id="dateAñoAperturaCart" name="dateAñoAperturaCart" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text">
+                               <div class="col-md-4 col-sm-4 col-xs-12">
+                                  <select class="form-control" id="dateAñoAperturaCart" name="dateAñoAperturaCart">
+                                  <?php 
+                                       for($i=2017;$i<2099;$i++){   
+                                      echo '<option value="'.$i.'">'.$i.'</option>';  
+                                  }  
+                                  ?>
+                                  </select>
                                </div>
                       </div>
                       <div class="item form-group">

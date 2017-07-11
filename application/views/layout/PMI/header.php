@@ -38,11 +38,22 @@
     <link href="<?php echo base_url();?>assets/vendors/animate/animate.min.css" rel="stylesheet">
       <link href="<?php echo base_url();?>assets/css/jquery.growl.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/formValidation.min.css">
+
   <style>
    #ProgramacionHorizontal{
       width: 100% !important;
     }
+
+    i[class*="form-control-feedback"]
+    {
+      top:  18px;
+      right: 3px;
+    }
   </style>
+
+  <!-- jQuery -->
+  <script src="<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
 
      <script>
     var base_url = '<?php echo base_url(); ?>';

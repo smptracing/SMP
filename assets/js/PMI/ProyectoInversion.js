@@ -44,12 +44,14 @@
               
               //TRAER EN COMBOBOX FUNCION
               $("#cbxFuncion").change(function(){//para cargar en agregar division funcionañ
-                    listarDivisionFuncional();
+                    var id_funcion=$("#cbxFuncion").val();
+                    listarDivisionFuncional(id_funcion);
              });
               //TRAER EN COMBOBOX DIVISION FUNCIONAL
               //TRAER EN COMBOBOX FUNCION
               $("#cbxDivFunc").change(function(){//para cargar en agregar division funcionañ
-                    listarGrupoFuncional();
+                    var id_div_funcional=$("#cbxDivFunc").val();
+                    listarGrupoFuncional(id_div_funcional);
              });
               //TRAER EN COMBOBOX DIVISION FUNCIONAL
            //TRAER EN COMBOBOX PIM
@@ -162,16 +164,17 @@
                 }
           //FIN TRAER DATOS EN UN COMBO DE TIPO DE INVERSION
            //TRAER DATOS EN GRUPO FUNCIONAL
-                var listarGrupoFuncional=function()
+                var listarGrupoFuncional=function(id_div_funcional)
                 {
                     html="";
                     $("#cbxGrupoFunc").html(html); //nombre del selectpicker UNIDAD EJECUTORA
                     event.preventDefault(); 
                     $.ajax({
-                        "url":base_url +"index.php/GrupoFuncional/GetGrupoFuncional",
+                        "url":base_url +"index.php/GrupoFuncional/GetGrupoFuncionalId",
                         type:"POST",
+                        data:{id_div_funcional:id_div_funcional},
                         success:function(respuesta){
-                           // alert(respuesta);
+                            alert(respuesta);
                          var registros = eval(respuesta);
                             for (var i = 0; i <registros.length;i++) {
                               html +="<option value="+registros[i]["id_grup_funcional"]+"> "+ registros[i]["nombre_grup_funcional"]+" </option>";   
@@ -331,16 +334,17 @@
                 }
           //FIN TRAER DATOS EN UN COMBO DE FUNCION
           //TRAER DATOS EN UN COMBO DE DIVISION FUNCIONAL
-                var listarDivisionFuncional=function()
+                var listarDivisionFuncional=function(id_funcion)
                 {
                     html="";
                     $("#cbxDivFunc").html(html); //nombre del selectpicker UNIDAD EJECUTORA
                     event.preventDefault(); 
                     $.ajax({
-                        "url":base_url +"index.php/DivisionFuncional/GetDivisionFuncional",
+                        "url":base_url +"index.php/DivisionFuncional/GetDivisioFuncuonaId",
                         type:"POST",
+                        data:{id_funcion:id_funcion},
                         success:function(respuesta){
-                           // alert(respuesta);
+                           //alert(respuesta);
                          var registros = eval(respuesta);
                             for (var i = 0; i <registros.length;i++) {
                               html +="<option value="+registros[i]["id_div_funcional"]+"> "+ registros[i]["nombre_div_funcional"]+" </option>";   

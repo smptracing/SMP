@@ -216,7 +216,7 @@ var listadoFormuladores=function()
                     var text_buscarPersona ='Formulador';   
                     var table=$("#table_responsableFormulador").DataTable({
                      "processing":true,
-                      "serverSide":false,
+                      "serverSide":true,
                       select: true,
                       destroy:true,
                       "fnDrawCallback": function () {
@@ -228,7 +228,7 @@ var listadoFormuladores=function()
                                     "url":base_url+"index.php/Personal/BuscarPersonaCargo",
                                     "method":"POST",
                                     data:{text_buscarPersona:text_buscarPersona},
-                                    "dataSrc":"",
+                                    "dataSrc":"data",
                                     },
                                 "columns":[
                                     {"defaultContent": [0],
@@ -249,6 +249,16 @@ var listadoFormuladores=function()
                                 ],
                                 "language":idioma_espanol
                     });
+
+ $('#table_responsableFormulador_filter input').unbind();
+
+  $('#table_responsableFormulador_filter input').bind('keyup', function(e)
+  {
+    if(e.keyCode==13)
+    {
+      table.search(this.value).draw();
+    }
+  });
                //DataAsignarResponsable("#table_responsableFormulador",table);//para listar y asignar responsables
             
 
@@ -376,7 +386,9 @@ var generarActividadesVertical=function(id_en)
                 var table=$("#table_entregable").DataTable({
                      "processing": true,
                       "serverSide":false,
-                     destroy:true,
+                      destroy:true,
+                      "paging":   false,
+                      
 
                          "ajax":{
                                     "url":base_url+"index.php/FEentregableEstudio/get_Entregables",
@@ -394,9 +406,9 @@ var generarActividadesVertical=function(id_en)
                                           if(i==null)
                                           {
                                             nombre="";
-                                           return '<a  type="button" class="AsignacionPersonaEntregables btn btn-link" data-toggle="modal" data-target="#VentanaAsignacionPersonalEntregable" title="Añadir Responsable" ><i class="glyphicon glyphicon-user" aria-hidden="true"></i></a><font size="1"></br>' +nombre+ '</font>'
+                                           return '<a  type="button" class="AsignacionPersonaEntregables btn btn-link" data-toggle="modal" data-target="#VentanaAsignacionPersonalEntregable" title="Añadir Responsable" ><i class="glyphicon glyphicon-plus-sign" aria-hidden="true"></i></a><i class="glyphicon glyphicon-user" aria-hidden="true"></i><font size="1"></br>' +nombre+ '</font>'
                                           }else{
-                                             return '<a type="button" class="AsignacionPersonaEntregables btn btn-link" data-toggle="modal" data-target="#VentanaAsignacionPersonalEntregable" title="Añadir Responsable" ><i class="glyphicon glyphicon-user" aria-hidden="true"></i></a><font size="1"></br> '+data+ '</font>'
+                                             return '<a type="button" class="AsignacionPersonaEntregables btn btn-link" data-toggle="modal" data-target="#VentanaAsignacionPersonalEntregable" title="Añadir Responsable" ><i class="glyphicon glyphicon-plus-sign" aria-hidden="true"></i></a><button type="button"  class="ListarResponsablesEntregable btn btn-primary btn-xs" data-toggle="modal" data-target="#VentenaResponsablesEntregable" title="Mostrar los responsables del entregable"><i class="glyphicon  glyphicon-user"></i></button><font size="1"></br>'+data+ '</font>'
                                           }
                                       }
                                     },
@@ -406,14 +418,15 @@ var generarActividadesVertical=function(id_en)
                                     }},
                                     {"data":"avance",
                                       "mRender":function (data,type, full) {
-                                         return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Complete</small></td>";
+                                         return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Complete</small></td>" ;
                                     }},
                        
-                                    {"defaultContent":"<button type='button' class='actividad btn btn-warning btn-xs' title='Agregar actividad al entregable' data-toggle='modal' data-target='#VentanaActividades'><i class='glyphicon glyphicon-plus-sign' aria-hidden='true'></i></button></br><button type='button'  class='ListarResponsablesEntregable btn btn-primary btn-xs' data-toggle='modal' data-target='#VentenaResponsablesEntregable' title='Mostrar los responsables del entregable' ><i class='glyphicon  glyphicon-user' title='Ver Responsable' aria-hidden='true'></i></button>"}                            
+                                    {"defaultContent":"<button type='button' class='actividad btn btn-warning btn-xs' title='Agregar actividad al entregable' data-toggle='modal' data-target='#VentanaActividades'><i class='glyphicon glyphicon-plus-sign' aria-hidden='true'></i></button>"}                            
 
                                 ],
 
-                                "language":idioma_espanol
+                                "language":idioma_espanol,
+                                "order": [[ 0, "desc" ]]
                     });
 
                      addActividades("#table_entregable",table);  

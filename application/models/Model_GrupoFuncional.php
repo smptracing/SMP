@@ -19,6 +19,16 @@ class Model_GrupoFuncional extends CI_Model
                 return null;
                }  
           }
+          function GetGrupoFuncionalId($id_div_funcional){
+            $GrupoFuncional=$this->db->query("execute sp_DivisionGrupo_r'".$id_div_funcional."' ");//listar de division funcional
+              if($GrupoFuncional->num_rows()>0)
+               {
+                return $GrupoFuncional->result();
+               }else
+               {
+                return null;
+               }  
+          }
       function AddGrupoFuncional($txt_codigoGfuncion,$txt_nombreGfuncion,$SelecDivisionFF,$SelecSector)
       {
         $this->db->query("execute sp_GrupoFuncional_c'".$SelecDivisionFF."','".$SelecSector."','".$txt_codigoGfuncion."','".$txt_nombreGfuncion."'");
