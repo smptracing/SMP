@@ -1,6 +1,7 @@
 $(document).on("ready" ,function(){
 
                 listaFuenteFinanciamiento();/*llamar a mi datatablet listar funcion*/
+              listaFuenteCombo();
               //abrir el modal para registrar
 
 //REGISTARAR NUEVA fuente financiamiento
@@ -121,7 +122,7 @@ $(document).on("ready" ,function(){
                     });
                 }
         //TRAER DATOS EN UN COMBO DE RUBRO DE EJECUCION
-                var listaComboRubroEjecucion=function()
+               /* var listaComboRubroEjecucion=function()
                 {
                     html="";
                     $("#cbxRubroEjecucion").html(html); //nombre del selectpicker RUBRO DE EJECUCION
@@ -140,11 +141,29 @@ $(document).on("ready" ,function(){
                             $('.selectpicker').selectpicker('refresh'); 
                         }
                     });
-                }
+                }*/
           //FIN TRAER DATOS EN UN COMBO DE RUBRO EJECUCION
-
-
-                
+//Listar fuentes de financiamiento en el combobox
+        listaFuenteCombo=function()
+                 {
+                    var htmlfuen="";
+                    $("#listaFuenteFinanc").html(htmlfuen);
+                    event.preventDefault(); 
+                    $.ajax({
+                        "url":base_url +"index.php/FuenteFinanciamiento/get_FuenteFinanciamiento",
+                        type:"POST",
+                        success:function(respuesta){
+                          //alert(respuesta);
+                         var registros = eval(respuesta);
+                            for (var i = 0; i <registros.length;i++) {
+                              htmlfuen +="<option value="+registros[i]["id_fuente_finan"]+"> "+registros[i]["nombre_fuente_finan"]+" </option>";   
+                            };
+                            $("#listaFuenteFinanc").html(htmlfuen);
+                            $('.selectpicker').selectpicker('refresh');       
+                        }
+                    });
+                 }
+ //Listar fuentes de financiamiento en el combobox               
               
         /*Idioma de datatablet table-sector */
             var idioma_espanol=

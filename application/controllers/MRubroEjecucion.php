@@ -17,8 +17,9 @@ class MRubroEjecucion extends CI_Controller
     public function AddRubroE()
     {
         if ($this->input->is_ajax_request()) {
+            $listaFuenteFinanc=$this->input->post("listaFuenteFinanc");
             $txt_NombreRubroE   = $this->input->post("txt_NombreRubroE");
-            if ($this->Model_RubroE->AddRubroE($txt_NombreRubroE) == true) {
+            if ($this->Model_RubroE->AddRubroE($listaFuenteFinanc,$txt_NombreRubroE) == true) {
                 echo "Se añadio un rubro de ejecucion";
             } else {
                 echo "No se añadio  un rubro de ejecucion";

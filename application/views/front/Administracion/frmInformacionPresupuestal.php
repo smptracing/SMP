@@ -119,6 +119,8 @@
                                                               <thead>
                                                                 <tr>
                                                                   <th class="col-sm-1">ID</th>
+                                                                  <th class="col-sm-1">FUENTE DE FINANCIAMIENTO</th>
+
                                                                   <th>NOMBRE RUBRO EJECUCION </th>
                                                                   <th class="col-sm-1"></th>
                                                                 </tr>
@@ -388,6 +390,14 @@
                     <div class="col-xs-12">
                                         <!-- PAGE CONTENT BEGINS -->
                   <form class="form-horizontal form-label-left" id="form-addRubroE" action="<?php echo base_url(); ?>MRubroEjecucion/AddRubroE" method="POST">
+                      <div class="item form-group">
+                         <label class="control-label col-md-3 col-sm-3 col-xs-6">Seleccionar una fuente de financiamiento</label>  
+                            <div class="col-md-6 col-sm-9 col-xs-6">
+                                <select id="listaFuenteFinanc" name="listaFuenteFinanc" class="selectpicker" data-live-search="true" title="Elegir Fuente Finan.">
+  
+                                 </select>
+                            </div>
+                      </div>
 
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre rubro <span class="required">*</span>

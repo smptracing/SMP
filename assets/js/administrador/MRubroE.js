@@ -34,6 +34,7 @@
        //para llenado y busqueda por todo los campos
                                 "columns":[
                                     {"data":"id_rubro"},
+                                    {"data":"nombre_fuente_finan"},
                                     {"data":"nombre_rubro"},
                                     {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaModificarRubroE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
