@@ -236,26 +236,21 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                             <label  for="name">Tipo inversion<span class="required">*</span>
                                         </label>
-                                            <select id="cbxTipoInv" name="cbxTipoInv" class="selectpicker"   title="Elija tipo de inversion">
+                                            <select id="cbxTipoInv" name="cbxTipoInv" class="selectpicker">
                                             </select>
                                          </div>
                                       </div>
                                       <div class="col-md-4">
-
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                             <label for="textbox"><span class="required">Ciclo de Inversion</span>
-                                        </label>
-                                             <select id="cbxEstadoCicloInv" name="cbxEstadoCicloInv" class="selectpicker" title="Elija el estado ciclo de inversion">
-                                               </select>
+                                              <label for="textbox"><span class="required">Ciclo de Inversion</span></label>
+                                              <select id="cbxEstadoCicloInv" name="cbxEstadoCicloInv" class="selectpicker"></select>
                                             </div>
                                       </div>
                                        <div class="col-md-4">
 
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                               <label  for="textbox"><span class="required">Tipologia de Inversion</span>
-                                                </label>
-                                               <select id="cbxTipologiaInv" name="cbxTipologiaInv" class="selectpicker"   title="Elija tipologia">
-                                               </select>
+                                                <label  for="textbox"><span class="required">Tipologia de Inversion</span></label>
+                                                <select id="cbxTipologiaInv" name="cbxTipologiaInv" class="selectpicker"></select>
                                             </div>
                                       </div>
                               </div>
@@ -305,69 +300,47 @@
                                       </div>
                               </div>
 
-                               <div class="row">
-
-                                      <div class="col-md-4">
-
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <label for="name">Departamento<span class="required">*</span>
-                                        </label>
-                                             <select id="departamento" name="departamento" class="selectpicker"   title="Seleccione un Departamento">
-
-                                              </select>
-                                         </div>
-                                      </div>
-                                      <div class="col-md-4">
-
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                             <label for="textbox"><span class="required">Provincia</span>
-                                        </label>
-                                              <select  id="provincia"  name="provincia" class="selectpicker" multiple title="Seleccione una o mas provincias" >
-                                              </select>
-                                            </div>
-                                      </div>
-                                       <div class="col-md-4">
-
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                              <label  for="textbox"><span class="required">Distrito</span>
-                                              </label>
-                                              <select name="distrito" id="distrito"  class="selectpicker"  multiple title="Seleccione una o distritos">
-                                              </select>
-                                              <input type="hidden" id="distritosM" name="distritosM" multiple title="Seleccione Provincia" >
-                                            </div>
-                                      </div>
-                              </div>
-
-                               <div class="row">
-
-                                      <div class="col-md-4">
-
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <label for="name" style="text-align:left">Funcion<span class="required">*</span>
-                                        </label>
-                                             <select id="cbxFuncion" name="cbxFuncion" class="selectpicker"   title="Elija una funcion">
-                                             </select>
-                                         </div>
-                                      </div>
-                                      <div class="col-md-4">
-
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                             <label  for="textbox"><span class="required">Division</span>
-                                        </label>
-                                               <select id="cbxDivFunc" name="cbxDivFunc" class="selectpicker"  title="Elija division funcional">
-                                            </select>
-                                            </div>
-                                      </div>
-                                       <div class="col-md-4">
-
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                          <label for="textbox"><span class="required">Grupo</span>
-                                        </label>
-                                                <select id="cbxGrupoFunc" name="cbxGrupoFunc" class="selectpicker"  title="Elija grupo funcional">
-                                            </select>
-                                            </div>
-                                      </div>
-                              </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <label for="name">Departamento<span class="required">*</span></label>
+                                        <select id="departamento" name="departamento" class="selectpicker" title="Seleccione valor"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <label for="textbox"><span class="required">Provincia</span></label>
+                                        <select  id="provincia"  name="provincia" class="selectpicker" multiple title="Seleccione departamento" disabled="disabled"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <label for="textbox"><span class="required">Distrito</span></label>
+                                        <select name="distrito" id="distrito"  class="selectpicker"  multiple title="Seleccione una o varias provincias" disabled="disabled"></select>
+                                        <input type="hidden" id="distritosM" name="distritosM" multiple>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <label for="name" style="text-align:left">Funcion<span class="required">*</span></label>
+                                        <select id="cbxFuncion" name="cbxFuncion" class="selectpicker" title="Seleccione valor"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <label  for="textbox"><span class="required">Division</span></label>
+                                        <select id="cbxDivFunc" name="cbxDivFunc" class="selectpicker" title="Seleccione función" disabled="disabled"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <label for="textbox"><span class="required">Grupo</span></label>
+                                        <select id="cbxGrupoFunc" name="cbxGrupoFunc" class="selectpicker"  title="Seleccione división" disabled="disabled"></select>
+                                    </div>
+                                </div>
+                            </div>
 
                                   <hr>
                                    <div class="row">
