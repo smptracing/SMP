@@ -11,7 +11,7 @@ class Model_Personal extends CI_Model
     //division funcional
     public function GetPersonal($flat, $skip, $numberRow, $valueSearch)
     {
-        $personal=$this->db->query("execute sp_GestionarPersona '" . $flat . "', null, null, null, null, null, null, null, null, null, null, null, ".$skip.", ".$numberRow.", '".$valueSearch."'");//listar de division funcional
+        $personal=$this->db->query("execute sp_GestionarPersona '" . $flat . "', null, null, null, null, null, null, null, null, null, null, null, ".$skip.",".$numberRow.", '".$valueSearch."'");//listar de division funcional
 
         return $personal->result();
     }
@@ -45,17 +45,20 @@ class Model_Personal extends CI_Model
     }
 
 
-    public function BuscarPersonaCargo($text_buscarPersona){
-       $personalFormulador = $this->db->query("execute sp_PesonaCargo_r'".$text_buscarPersona."' "); //listar de division funcional
-       if ($personalFormulador->num_rows() > 0) {
-            return $personalFormulador->result();
-        } else {
-            return null;
-        }
+    public function BuscarPersonaCargo($text_buscarPersona, $skip, $numberRow, $valueSearch)
+    {
+       $personalFormulador = $this->db->query("execute sp_PesonaCargo_r '".$text_buscarPersona."', ".$skip.", ".$numberRow.", '".$valueSearch."'"); //listar de division funcional
+       
+       return $personalFormulador->result();
+    }
+    public function CountPaginacionPersonaCargo($text_buscarPersona,$skip,$numberRow,$valueSearch)
+    {
+       $personalFormulador = $this->db->query("select count(*) as cantidad from PERSONA inner join ASIGNACION_PERSONA ON ASIGNACION_PERSONA.id_persona=PERSONA.id_persona INNER JOIN CARGO ON CARGO.id_cargo=ASIGNACION_PERSONA.id_cargo WHERE desc_cargo='".$text_buscarPersona."' and (nombres like '%'+$valueSearch+'%') "); //listar de division funcional
+      return $personalFormulador->result();
     }
 
     public function BuscarPersonaActividad(){
-       $personalFormulador = $this->db->query("execute sp_PesonaCargo_r'".$text_buscarPersona."' "); //listar de division funcional
+       $personalFormulador = $this->db->query("execute sp_PesonaCargo_r'".$text_buscarPersona."', 0, 10, '' "); //listar de division funcional
        if ($personalFormulador->num_rows() > 0) {
             return $personalFormulador->result();
 		}

@@ -138,9 +138,14 @@ class Personal extends CI_Controller
     public function BuscarPersonaCargo()
     {
         if ($this->input->is_ajax_request()) {
-            $text_buscarPersona = 'Formulador'; 
-            $datos              = $this->Model_Personal->BuscarPersonaCargo($text_buscarPersona);
-            echo json_encode($datos);
+            $text_buscarPersona = 'Formulador';
+            $skip=$this->input->post('start');
+            $numberRow=$this->input->post('length');
+            $valueSearch=$this->input->post('search[value]');
+
+            $datos = $this->Model_Personal->BuscarPersonaCargo($text_buscarPersona,$skip,$numberRow,$valueSearch);
+            $CantidadData=$this->Model_Personal->CountPaginacionPersonaCargo($text_buscarPersona,$skip,$numberRow,$valueSearch);
+            echo '{ "recordsTotal" : '.$cantidadDatos[0]->cantidad.', "recordsFiltered" : '.$cantidadDatos[0]->cantidad.', "data" : '.json_encode($datos).' }';
         } else {
             show_404();
         }
