@@ -481,17 +481,17 @@
                               </table>
                           </div>
                       <input type="text" class="form-control" id="txt_idPersona" name="txt_idPersona">
-                      <input type="hidden" class="form-control" id="txt_identregable" name="txt_identregable">
+                      <input type="text" class="form-control" id="txt_identregable" name="txt_identregable">
 
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-12 col-md-offset-4">
 
-                          <button  type="submit" class="btn btn-success">
+                          <button   type="button" class="btn btn-success" onclick="forma.submit()">
                             <span class="glyphicon glyphicon-floppy-disk"></span>
                             Asignar
                           </button>
-                          <button type="submit" class="btn btn-danger" data-dismiss="modal">
+                          <button  type="button" class="btn btn-danger" data-dismiss="modal" onclick="forma.submit()">
                              <span class="glyphicon glyphicon-remove"></span>
                             Cancelar
                           </button>

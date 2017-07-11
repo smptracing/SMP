@@ -74,7 +74,6 @@
                                                                           </label>
                                                                          </th>
                                                                          <th>ID</th>
-                                                                         <th>RUBRO</th>
                                                                          <th>NOMBRE FFTO</th>
                                                                          <th >ACRONIMO FFTO</th>
                                                                          <th></th>
@@ -259,29 +258,32 @@
                     <div class="col-xs-12">
                                         <!-- PAGE CONTENT BEGINS -->
               <form class="form-horizontal " id="form-AddFuenteFinanciamiento"   action="<?php echo base_url(); ?>FuenteFinanciamiento/AddFuenteFinanciamiento" method="POST" >
+
+
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre  <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_NombreFuenteFinanciamiento" name="txt_NombreFuenteFinanciamiento" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Nombre" required="required" type="text">
-                        </div>
-                      </div>
-                          <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Acronimo
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_AcronimoFuenteFinanciamiento" name="txt_AcronimoFuenteFinanciamiento" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Acronimo " type="text">
+                          <input id="txt_ffto" name="txt_ffto" class="form-control col-md-7 col-xs-12"   placeholder="Nombre" type="text">
                         </div>
                       </div>
 
-                        <div class="item form-group">
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Acronimo
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="txt_AcronimoFuenteFinanciamiento" name="txt_AcronimoFuenteFinanciamiento" class="form-control col-md-7 col-xs-12"   placeholder="Acronimo " type="text">
+                        </div>
+                      </div>
+
+                       <!-- <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox">Rubro<span class="required">*</span>
                             </label>
                           <div class="col-md-6 col-sm-6 col-xs-12">
                               <select id="cbxRubroEjecucion" name="cbxRubroEjecucion" class="selectpicker" data-live-search="true" required="required" title="Buscar Funcion...">
                               </select>
                           </div>
-                       </div>
+                       </div>-->
                         <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
@@ -340,7 +342,7 @@
                           <input id="txt_AcronimoFuenteFinanciamientoM" name="txt_AcronimoFuenteFinanciamientoM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Nombre " required="required" type="text">
                         </div>
                       </div>
-
+<!--
                        <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox">Rubro<span class="required">*</span>
                             </label>
@@ -349,7 +351,7 @@
                               </select>
                           </div>
                        </div>
-
+-->
                            <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">

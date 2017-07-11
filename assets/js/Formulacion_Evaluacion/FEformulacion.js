@@ -175,8 +175,7 @@ $("#form-AddSituacion").submit(function(event)
                                     {"data":"denom_nivel_estudio"},
                                     {"data":"nombres"},
                                     {"data":"costo_estudio"},
-                                    {"data":"denom_situacion_fe",
-                                    },
+                                    {"data":"denom_situacion_fe"},
                                     {"data":"avance_fisico",
                                       "mRender":function (data,type, full) {
                                          return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Completado</small></td>";

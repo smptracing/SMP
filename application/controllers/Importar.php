@@ -18,9 +18,7 @@ class Importar extends CI_Controller
 
     public function addImportar()
     {
-
         //UPLOAD
-
         $config['upload_path']   = 'uploads/';
         $config['allowed_types'] = 'xls|xlsx|cvs';
         $config['max_size']      = 15000;
@@ -37,7 +35,6 @@ class Importar extends CI_Controller
             echo "Se subio correctamente el archivo";
             //$this->load->view('upload_success', $data);
         }
-
         // IMPORTAR
         $this->load->library('Excelfile');
         $file = "uploads/" . $data['upload_data']['file_name'];
@@ -53,7 +50,7 @@ class Importar extends CI_Controller
             $row        = $obj->getActiveSheet()->getCell($cl)->getRow();
             $data_value = $obj->getActiveSheet()->getCell($cl)->getValue();
             //print_r($data_value);
-            if ($row == 1) {
+            if ($row == 2) {
                 //echo 'ROW -> '.$row.'<br>';
                 //echo 'ROW -> '.$data_value.'<br>';
                 $header[$row][$column] = $data_value;
@@ -73,10 +70,14 @@ class Importar extends CI_Controller
                 //echo "<br>";
             }
         }
-
+        //obtener la fecha de la cartera para que este sea importado
         $data['header'] = $header;
+        foreach ($header as $fe) {
+            $aniotemp    = $fe['AF'];
+            $anio_entero = $aniotemp - 1;
+            $anio        = $anio_entero . "/01/01";
+        }
         $data['values'] = $arr_data;
-
         foreach ($arr_data as $fila) {
             /*
             $distrito = $fila['L'];
@@ -89,24 +90,18 @@ class Importar extends CI_Controller
             //posner en L nuevvo string y desplazar el resto
             $this->Importar_Model->addImportar($data_tmp);
              */
-            //echo "</BR>";
-            // echo $fila;
-            //$fecha = $fila['AA'];
             //echo $fechaAB;
-
             // echo "<BR>";
             $fechaAA = date('Y/m/d', PHPExcel_Shared_Date::ExcelToPHP($fila['AA']));
             $fechaAB = date('Y/m/d', PHPExcel_Shared_Date::ExcelToPHP($fila['AB']));
-            // $fechaAF = date('d/m/Y ', PHPExcel_Shared_Date::ExcelToPHP($fila['AF'] ^ ));
-
             //echo "<BR>";
-
-// utilizo la función y obtengo el timestamp
+            // utilizo la función y obtengo el timestamp
 
             //  $fecha = date("d/m/Y ", $fila['AA']);
             //   echo "string"+$fecha;
             //  var_dump($fila['AA']);
-            $this->Importar_Model->addImportar($fila, $fechaAA, $fechaAB);
+            $this->Importar_Model->addImportar($fila, $fechaAA, $fechaAB, $anio);
+
         }
 
     }

@@ -9,11 +9,9 @@ class Importar_Model extends CI_Model
     }
 //------------------METODOS DE LA BRECHA-------------------
     //AGREGAR UNA BRECHA
-    public function addImportar($param, $fecha, $fechas)
+    public function addImportar($param, $fecha, $fechas, $anio)
     {
-        $anio = "2017/01/01";
-
-        $this->db->query("execute sp_InsercionExcel'" .
+        $this->db->query("execute sp_InsercionExcel_'" .
             $param['A'] .
             "', '" . $param['B'] .
             "', '" . $param['C'] .
@@ -51,9 +49,7 @@ class Importar_Model extends CI_Model
             "', '" . $param['AI'] .
             "', '" . $param['AJ'] .
             "', '" . $param['AK'] .
-            "', '" . $anio .
-
-            "' ");
+            "', '" . $anio . "' ");
         if ($this->db->affected_rows() > 0) {
             return true;
         } else {

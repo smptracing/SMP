@@ -8,10 +8,10 @@
 </div>
 </div>
 
-<!-- jQuery -->
-<script src="<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script src="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/formValidation.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/bootstrap.validation.min.js"></script>
 <!-- FastClick -->
 <script src="<?php echo base_url(); ?>assets/vendors/fastclick/lib/fastclick.js"></script>
 <!-- NProgress -->
@@ -116,6 +116,5 @@
 <script src="<?php echo base_url(); ?>assets/js/growl/growl.js"></script>
  <script src="<?php echo base_url();?>assets/js/Usuario/login.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1uRF6cxgwFc9DGwREFvIE6oorBaWny64&callback=initMap"></script>
-
 </body>
 </html>
