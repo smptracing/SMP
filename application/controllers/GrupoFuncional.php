@@ -19,6 +19,21 @@ class GrupoFuncional extends CI_Controller {/* Mantenimiento de division funcion
           show_404();
         }
     }
+    function GetGrupoFuncionalId(){
+      if ($this->input->is_ajax_request()) 
+        {
+        $id_div_funcional=$this->input->post('id_div_funcional');
+        $datos=$this->Model_GrupoFuncional->GetGrupoFuncionalId($id_div_funcional);
+        echo json_encode($datos);
+        }
+        else
+        {
+          show_404();
+        }
+
+
+    }
+
      function AddGrupoFuncional()
     {
        if ($this->input->is_ajax_request()) 

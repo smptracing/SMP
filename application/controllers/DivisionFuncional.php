@@ -21,7 +21,20 @@ class DivisionFuncional extends CI_Controller {/* Mantenimiento de division func
           show_404();
         }
     }
-    
+    function GetDivisioFuncuonaId(){
+
+         if ($this->input->is_ajax_request()) 
+        {
+        $id_funcion=$this->input->post('id_funcion');
+        $datos=$this->Model_DivisionFuncional->getDivisioFuncuonaId($id_funcion);
+        echo json_encode($datos);
+        }
+        else
+        {
+          show_404();
+        }
+
+    }
     function AddDivisionFucion()
     {
        if ($this->input->is_ajax_request()) 

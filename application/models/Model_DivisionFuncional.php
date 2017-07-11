@@ -23,6 +23,16 @@ class Model_DivisionFuncional extends CI_Model
              }
    
         }
+        function getDivisioFuncuonaId($id_funcion){
+          $divisionf=$this->db->query("execute sp_funcionDivision_r '".$id_funcion."'");//listar de division funcional
+            if($divisionf->num_rows()>0)
+             {
+              return $divisionf->result();
+             }else
+             {
+              return null;
+             }
+        }
         function AddDivisionFucion($txt_CodigoDfuncional,$txt_Nombre_DFuncional,$listaFuncionC)
         {
            $this->db->query("execute sp_DivisionFuncional_c'".$listaFuncionC."','".$txt_CodigoDfuncional."','".$txt_Nombre_DFuncional."'");
