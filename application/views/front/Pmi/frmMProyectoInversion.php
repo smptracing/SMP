@@ -1,3 +1,9 @@
+<style>
+  #table-ProyectoInversionProgramado > tbody > tr > td
+  {
+    vertical-align: middle;
+  }
+</style>
 <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
@@ -46,14 +52,14 @@
                                                                         <a href="<?php echo site_url('CarteraInversion/'); ?>"><i class="fa fa-suitcase"></i>Cartera</a>
                                                                      </div>
                                                                      <div class="col-md-8">
-                                                                          <select  id="cbCartera" class="form-control" name="cbCartera" value="cartera" ></select>
-                                                                          <input type="hidden" id="Aniocartera" value="<?php echo $this->session->userdata('AnioC'); ?>">
+                                                                          <select  id="cbCartera" class="form-control" name="cbCartera"></select>
+                                                                          <input type="hidden" id="Aniocartera" value="<?=(isset($anio) ? $anio : date('Y'))?>">
                                                                     </div>
                                                                </div>
 
                                                                 <div class="col-md-2">
                                                                     <form action="<?php echo base_url('index.php/ReporteProgramacion/action'); ?>" method="POST" >
-                                                                      <button  type="submit" class="btn btn-primary">  <span class="fa fa-file-text"></span> Exportar exel</button>
+                                                                      <button  type="submit" class="btn btn-primary">  <span class="fa fa-file-text"></span> Exportar excel</button>
                                                                     </form>
                                                                 </div>
                                                                <div class="col-md-2">
@@ -70,49 +76,49 @@
                                                                   <th class="col-sm-1"><center>Inversión</center></th>
                                                                   <th class="col-sm-1"><center>Prioridad</center></th>
                                                                   <th class="col-sm-1"><center>Brecha</center></th>
-                                                                  <th class="col-sm-1"><center><div id="programacion1">
-                                                                  <?php if ($this->session->userdata('AnioC') == "") {?>
+                                                                  <th class="col-sm-1"><center><div class="programacion1">
+                                                                  <?php if (isset($anio) && $anio == "") {?>
                                                                              <h6><label id="AnioProgramadoActual"></label></h6></center></div></th>
                                                                   <?php } else {?>
-                                                                  <?php echo ($this->session->userdata('AnioC') + 1); ?></center></div></th>
+                                                                  <?php echo (isset($anio) ? $anio+1 : date('Y')+1); ?></center></div></th>
                                                                   <?php }?>
 
 
-                                                                  <th class="col-sm-1"><center><div id="programacion2">
-                                                                  <?php if ($this->session->userdata('AnioC') == "") {?>
+                                                                  <th class="col-sm-1"><center><div class="programacion2">
+                                                                  <?php if (isset($anio) && $anio == "") {?>
                                                                             <h6><label id="AnioProgramadoActual1"></label></h6></center></div></th>
                                                                   <?php } else {?>
-                                                                  <?php echo ($this->session->userdata('AnioC') + 2); ?></center></div></th>
+                                                                  <?php echo (isset($anio) ? $anio+2 : date('Y')+2); ?></center></div></th>
                                                                   <?php }?>
 
 
-                                                                  <th class="col-sm-1"><center><div id="programacion3">
-                                                                  <?php if ($this->session->userdata('AnioC') == "") {?>
+                                                                  <th class="col-sm-1"><center><div class="programacion3">
+                                                                  <?php if (isset($anio) && $anio == "") {?>
                                                                             <h6><label id="AnioProgramadoActual2"></label></h6></center></div></th>
                                                                   <?php } else {?>
-                                                                  <?php echo ($this->session->userdata('AnioC') + 3); ?></center></div></th>
+                                                                  <?php echo (isset($anio) ? $anio+3 : date('Y')+3); ?></center></div></th>
                                                                   <?php }?>
 
-                                                                  <th class="col-sm-1"><center><div id="programacion1">
-                                                                    <?php if ($this->session->userdata('AnioC') == "") {?>
+                                                                  <th class="col-sm-1"><center><div class="programacion1">
+                                                                    <?php if (isset($anio) && $anio == "") {?>
                                                                             <h6><label id="AnioProgramadoActualM"></label></h6></center></div></th>
                                                                   <?php } else {?>
-                                                                  <?php echo ($this->session->userdata('AnioC') + 1); ?></center></div></th>
+                                                                  <?php echo (isset($anio) ? $anio+1 : date('Y')+1); ?></center></div></th>
                                                                   <?php }?>
 
-                                                                  <th class="col-sm-1"><center><div id="programacion2">
-                                                                  <?php if ($this->session->userdata('AnioC') == "") {?>
+                                                                  <th class="col-sm-1"><center><div class="programacion2">
+                                                                  <?php if (isset($anio) && $anio == "") {?>
                                                                             <h6><label id="AnioProgramadoActualM1"></label></h6></center></div></th>
                                                                   <?php } else {?>
-                                                                  <?php echo ($this->session->userdata('AnioC') + 2); ?></center></div></th>
+                                                                  <?php echo (isset($anio) ? $anio+2 : date('Y')+2); ?></center></div></th>
                                                                   <?php }?>
 
 
-                                                                  <th class="col-sm-1"><center><div id="programacion3">
-                                                                  <?php if ($this->session->userdata('AnioC') == "") {?>
+                                                                  <th class="col-sm-1"><center><div class="programacion3">
+                                                                  <?php if (isset($anio) && $anio == "") {?>
                                                                             <h6><label id="AnioProgramadoActualM2"></label></h6></center></div></th>
                                                                   <?php } else {?>
-                                                                  <?php echo ($this->session->userdata('AnioC') + 3); ?></center></div></th>
+                                                                  <?php echo (isset($anio) ? $anio+3 : date('Y')+3); ?></center></div></th>
                                                                   <?php }?>
 
                                                                   <th class="col-sm-1"><center> Tipo de Inversión</center></th>
@@ -385,7 +391,7 @@
                                             <div class="col-md-11 col-sm-6 col-xs-12">
                                                <label  for="textbox"><span class="required">PIM</span>
                                                 </label>
-                                                 <input id="cbxMetaPresupuestal" name="cbxMetaPresupuestal" class="form-control col-md-7 col-xs-7" data-validate-length-range="6" data-validate-words="2" placeholder="PIM" required="required" type="text">
+                                                 <select id="cbxMetaPresupuestal" name="cbxMetaPresupuestal" class="selectpicker"   title="Elija PIM">
                                                  </select>
                                             </div>
                                       </div>

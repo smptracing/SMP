@@ -230,8 +230,25 @@ $("#finalizarProgram").click(function(){
                 listaProyectoIprogramado(cartera);/*llamar proyecto de inversion programado*/
             }
 
-            $("#cbCartera").change(function(){
-              var cartera=$("#cbCartera").val();
+            $("#cbCartera").change(function()
+            {
+                var cartera=$("#cbCartera").val();
+                
+                $('.programacion1').each(function(index, element)
+                {
+                    $(element).text((parseInt(cartera)+1));
+                });
+
+                $('.programacion2').each(function(index, element)
+                {
+                    $(element).text((parseInt(cartera)+2));
+                });
+
+                $('.programacion3').each(function(index, element)
+                {
+                    $(element).text((parseInt(cartera)+3));
+                });
+
                listaProyectoIprogramado(cartera);/*llamar proyecto de inversion programado*/
             })
              ultimaProgramacion();
