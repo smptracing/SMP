@@ -1,3 +1,9 @@
+<style>
+  #table-ProyectoInversionProgramado > tbody > tr > td
+  {
+    vertical-align: middle;
+  }
+</style>
 <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
@@ -46,14 +52,14 @@
                                                                         <a href="<?php echo site_url('CarteraInversion/'); ?>"><i class="fa fa-suitcase"></i>Cartera</a>
                                                                      </div>
                                                                      <div class="col-md-8">
-                                                                          <select  id="cbCartera" class="form-control" name="cbCartera" value="cartera" ></select>
-                                                                          <input type="hidden" id="Aniocartera" value="<?php echo $this->session->userdata('AnioC'); ?>">
+                                                                          <select  id="cbCartera" class="form-control" name="cbCartera"></select>
+                                                                          <input type="hidden" id="Aniocartera" value="<?=(isset($anio) ? $anio : date('Y'))?>">
                                                                     </div>
                                                                </div>
 
                                                                 <div class="col-md-2">
                                                                     <form action="<?php echo base_url('index.php/ReporteProgramacion/action'); ?>" method="POST" >
-                                                                      <button  type="submit" class="btn btn-primary">  <span class="fa fa-file-text"></span> Exportar exel</button>
+                                                                      <button  type="submit" class="btn btn-primary">  <span class="fa fa-file-text"></span> Exportar excel</button>
                                                                     </form>
                                                                 </div>
                                                                <div class="col-md-2">
@@ -71,48 +77,48 @@
                                                                   <th class="col-sm-1"><center>Prioridad</center></th>
                                                                   <th class="col-sm-1"><center>Brecha</center></th>
                                                                   <th class="col-sm-1"><center><div id="programacion1">
-                                                                  <?php if ($this->session->userdata('AnioC') == "") {?>
+                                                                  <?php if (isset($anio) && $anio == "") {?>
                                                                              <h6><label id="AnioProgramadoActual"></label></h6></center></div></th>
                                                                   <?php } else {?>
-                                                                  <?php echo ($this->session->userdata('AnioC') + 1); ?></center></div></th>
+                                                                  <?php echo (isset($anio) ? $anio+1 : date('Y')+1); ?></center></div></th>
                                                                   <?php }?>
 
 
                                                                   <th class="col-sm-1"><center><div id="programacion2">
-                                                                  <?php if ($this->session->userdata('AnioC') == "") {?>
+                                                                  <?php if (isset($anio) && $anio == "") {?>
                                                                             <h6><label id="AnioProgramadoActual1"></label></h6></center></div></th>
                                                                   <?php } else {?>
-                                                                  <?php echo ($this->session->userdata('AnioC') + 2); ?></center></div></th>
+                                                                  <?php echo (isset($anio) ? $anio+2 : date('Y')+2); ?></center></div></th>
                                                                   <?php }?>
 
 
                                                                   <th class="col-sm-1"><center><div id="programacion3">
-                                                                  <?php if ($this->session->userdata('AnioC') == "") {?>
+                                                                  <?php if (isset($anio) && $anio == "") {?>
                                                                             <h6><label id="AnioProgramadoActual2"></label></h6></center></div></th>
                                                                   <?php } else {?>
-                                                                  <?php echo ($this->session->userdata('AnioC') + 3); ?></center></div></th>
+                                                                  <?php echo (isset($anio) ? $anio+3 : date('Y')+3); ?></center></div></th>
                                                                   <?php }?>
 
                                                                   <th class="col-sm-1"><center><div id="programacion1">
-                                                                    <?php if ($this->session->userdata('AnioC') == "") {?>
+                                                                    <?php if (isset($anio) && $anio == "") {?>
                                                                             <h6><label id="AnioProgramadoActualM"></label></h6></center></div></th>
                                                                   <?php } else {?>
-                                                                  <?php echo ($this->session->userdata('AnioC') + 1); ?></center></div></th>
+                                                                  <?php echo (isset($anio) ? $anio+1 : date('Y')+1); ?></center></div></th>
                                                                   <?php }?>
 
                                                                   <th class="col-sm-1"><center><div id="programacion2">
-                                                                  <?php if ($this->session->userdata('AnioC') == "") {?>
+                                                                  <?php if (isset($anio) && $anio == "") {?>
                                                                             <h6><label id="AnioProgramadoActualM1"></label></h6></center></div></th>
                                                                   <?php } else {?>
-                                                                  <?php echo ($this->session->userdata('AnioC') + 2); ?></center></div></th>
+                                                                  <?php echo (isset($anio) ? $anio+2 : date('Y')+2); ?></center></div></th>
                                                                   <?php }?>
 
 
                                                                   <th class="col-sm-1"><center><div id="programacion3">
-                                                                  <?php if ($this->session->userdata('AnioC') == "") {?>
+                                                                  <?php if (isset($anio) && $anio == "") {?>
                                                                             <h6><label id="AnioProgramadoActualM2"></label></h6></center></div></th>
                                                                   <?php } else {?>
-                                                                  <?php echo ($this->session->userdata('AnioC') + 3); ?></center></div></th>
+                                                                  <?php echo (isset($anio) ? $anio+3 : date('Y')+3); ?></center></div></th>
                                                                   <?php }?>
 
                                                                   <th class="col-sm-1"><center> Tipo de Inversión</center></th>
@@ -218,7 +224,7 @@
                                        <div class="col-md-7 col-sm-6 col-xs-12">
                                             <label for="name">Codigo Único<span class="required">*</span>
                                             </label>
-                                                  <input id="txtCodigoUnico" name="txtCodigoUnico"  class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Codigo Unico" required="required" type="text">
+                                                  <input id="txtCodigoUnico" name="txtCodigoUnico"  class="form-control col-md-7 col-xs-5" placeholder="Codigo Unico" type="text">
                                              </div>
                                       </div>
                                     </div>
@@ -261,7 +267,7 @@
                                         <label class="control-label col-md-1 col-sm-12 col-xs-12" for="name">Inversion<span class="required"></span>
                                         </label>
                                          <div class="col-md-12 col-sm-12 col-xs-12">
-                                          <input id="txtNombrePip" name="txtNombrePip"  height="20´px" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Nombre Inversion" required="required" type="text">
+                                          <input id="txtNombrePip" name="txtNombrePip" class="form-control col-md-7 col-xs-5" placeholder="Nombre Inversion" type="text">
                                             <!--<textarea  id="txtNombrePip" name="txtNombrePip" class="form-control" data-validate-length-range="6" data-validate-words="2" placeholder="Nombre Inversion"></textarea>-->
                                         </div>
                                       </div>
@@ -694,11 +700,10 @@
                           <div class="ln_solid"></div>
                           <div class="form-group">
                             <div class="col-md-6 col-md-offset-3">
-                               <button type="submit" class="btn btn-success">
-                               <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>Guardar</button>
+                               
                               <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                                  <button id="btn-GuardarMontoProgramadoOper"  class="btn btn-success">
-                               <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>Guardar1</button>
+                               <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>Guardar</button>
                             </div>
                           </div>
                         </form>
@@ -908,6 +913,61 @@
   </div>
 <!-- /.VER DETALLE DE PROYECTO->
 <!- /.VER EN VERTICAR DETALLE DE CADA PROYECTO-->
-
-
-
+<script>
+	$(document).on('ready', function()
+	{
+		$('#form-addProyectoInversion').formValidation(
+	    {
+	        framework: 'bootstrap',
+	        icon:
+	        {
+	            valid: 'glyphicon glyphicon-ok',
+	            invalid: 'glyphicon glyphicon-remove',
+	            validating: 'glyphicon glyphicon-refresh'
+	        },
+	        fields:
+	        {
+	            txtCodigoUnico:
+	            {
+	                validators: 
+	                {
+	                    notEmpty:
+	                    {
+	                        message: 'El campo "Código único" es requerido.'
+	                    },
+	                    regexp:
+	                    {
+	                        regexp: /^\d*$/,
+	                        message: 'El campo "Código único" debe ser un número entero.'
+	                    }
+	                }
+	            },
+	            txtNombrePip:
+	            {
+	            	validators:
+	            	{
+	            		notEmpty:
+	            		{
+	            			message: 'El campo "Nombre de inversión" es requerido.'
+	            		}
+	            	}
+	            },
+	            txtCostoPip:
+	            {
+	            	validators:
+	            	{
+	            		notEmpty:
+	            		{
+	            			message: 'El campo "Inversión" es requerido.'
+	            		},
+	            		regexp:
+	                    {
+	                        regexp: /^(\d+([\.]{1}\d{1,2})?)*$/,
+	                        message: 'El campo "Costo de inversión" debe ser un valor en soles.'
+	                    }
+	            	}
+	            }
+	        }
+	    });
+	});
+</script>
