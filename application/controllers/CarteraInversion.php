@@ -47,11 +47,13 @@ public function __construct(){
 				  $estado=0;
 				  $txt_NumResolucionCart =$this->input->post("txt_NumResolucionCart");
 				  $Cartera_Resoluacion=$this->upload->file_name;
-				                	//$error="corrercto";
+				  $error="corrercto";
 				  if($this->Model_CarteraInversion->AddCartera($dateAñoAperturaCart,$dateFechaIniCart,$dateFechaFinCart,$estado,$txt_NumResolucionCart,$Cartera_Resoluacion)==false)
  						{
  							echo "SE REGISTRO LA CARRTERA";
  						}
+ 					//echo $dateAñoAperturaCart,':',':',$dateFechaIniCart,':',$dateFechaFinCart,':',$estado,':',$txt_NumResolucionCart,':',$Cartera_Resoluacion;
+
 			        
 			      } 						    
 				  }

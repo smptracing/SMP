@@ -176,15 +176,6 @@ $("#form-AddSituacion").submit(function(event)
                                     {"data":"nombres"},
                                     {"data":"costo_estudio"},
                                     {"data":"denom_situacion_fe",
-                                    "mRender": function ( data, type, full ) {
-                                        if(data="null"){
-                                            var SituaDetalle="No existe situación";
-                                            return '<a style="font-weight:normal;font-size:8" type="button" class="VerDetalleFormulacion btn btn-link" data-toggle="modal" data-target="#VerDetalleFormulacion" href="/codigo_unico_est_inv/">'+SituaDetalle+'</a>';
-                                        }else{
-                                           return '<a style="font-weight:normal;font-size:8" type="button" class="VerDetalleFormulacion btn btn-link" data-toggle="modal" data-target="#VerDetalleFormulacion" href="/codigo_unico_est_inv/">' + data+ '</a>';
-                                        }
-                                     
-                                      }
                                     },
                                     {"data":"avance_fisico",
                                       "mRender":function (data,type, full) {
