@@ -56,13 +56,14 @@
               //TRAER EN COMBOBOX DIVISION FUNCIONAL
            //TRAER EN COMBOBOX PIM
               $("#cbxGrupoFunc").change(function(){//para cargar en agregar division funcionañ
-                    listarMetaPresupuestal();
+                   // listarMetaPresupuestal();
+                       listarFuenteFinan();
              });
               //TRAER EN COMBOBOX DIVISION FUNCIONAL
                //TRAER EN COMBOBOX PIM
-              $("#cbxMetaPresupuestal").change(function(){//para cargar en agregar division funcionañ
+            /*  $("#cbxMetaPresupuestal").change(function(){//para cargar en agregar division funcionañ
                     listarFuenteFinan();
-             });
+             });*/
               //TRAER EN COMBOBOX DIVISION FUNCIONAL
                //OBTENER DATOS RUBRO DE EJECUCION
               $("#cbxFuenteFinanc").change(function(){//para cargar en agregar division funcionañ

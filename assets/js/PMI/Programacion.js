@@ -253,9 +253,10 @@ $("#finalizarProgram").click(function(){
                     var devengado_ac_pi=$("#txtDevengado").val();
                     var distrito=$("#distritosM").val();
                     var id_estado_ciclo=$("#cbxEstadoCicloInv").val();
-                    var id_fuente_finan=$("#cbxFuenteFinanc").val();
+                   // var id_fuente_finan=$("#cbxFuenteFinanc").val();
+                    var id_rubro=$("#cbxRubro").val();
                     var id_modalidad_ejec=$("#cbxModalidadEjec").val();
-                    GuardarProyectos(id_ue,id_naturaleza_inv,id_tipologia_inv,id_tipo_inversion,id_grupo_funcional_inv,id_nivel_gob,id_meta_pres,id_programa_pres,codigo_unico_pi,nombre_pi,costo_pi,devengado_ac_pi,distrito,id_estado_ciclo,id_fuente_finan,id_modalidad_ejec);
+                    GuardarProyectos(id_ue,id_naturaleza_inv,id_tipologia_inv,id_tipo_inversion,id_grupo_funcional_inv,id_nivel_gob,id_meta_pres,id_programa_pres,codigo_unico_pi,nombre_pi,costo_pi,devengado_ac_pi,distrito,id_estado_ciclo,id_rubro,id_modalidad_ejec);
                     listaCarteraInversionFechaActual();//para llenar el combo de agregar division funcional
                     listaBrechaProgramar();//Se lista la brecha para su programcion
                     listaUltimoProyectoInversion();
@@ -460,13 +461,13 @@ $("#finalizarProgram").click(function(){
                     });
                 }
 
-function  GuardarProyectos(id_ue,id_naturaleza_inv,id_tipologia_inv,id_tipo_inversion,id_grupo_funcional_inv,id_nivel_gob,id_meta_pres,id_programa_pres,codigo_unico_pi,nombre_pi,costo_pi,devengado_ac_pi,distrito,id_estado_ciclo,id_fuente_finan,id_modalidad_ejec){
+function  GuardarProyectos(id_ue,id_naturaleza_inv,id_tipologia_inv,id_tipo_inversion,id_grupo_funcional_inv,id_nivel_gob,id_meta_pres,id_programa_pres,codigo_unico_pi,nombre_pi,costo_pi,devengado_ac_pi,distrito,id_estado_ciclo,id_rubro,id_modalidad_ejec){
    event.preventDefault();
 
     $.ajax({
     url:base_url+"index.php/ProyectoInversion/AddProyecto",
     type:"POST",
-    data:{id_ue:id_ue,id_naturaleza_inv:id_naturaleza_inv,id_tipologia_inv:id_tipologia_inv,id_tipo_inversion:id_tipo_inversion,id_grupo_funcional_inv:id_grupo_funcional_inv,id_nivel_gob:id_nivel_gob,id_meta_pres:id_meta_pres,id_programa_pres:id_programa_pres,codigo_unico_pi:codigo_unico_pi,nombre_pi:nombre_pi,costo_pi:costo_pi,devengado_ac_pi:devengado_ac_pi,distrito:distrito,id_estado_ciclo:id_estado_ciclo,id_fuente_finan:id_fuente_finan,id_modalidad_ejec:id_modalidad_ejec},
+    data:{id_ue:id_ue,id_naturaleza_inv:id_naturaleza_inv,id_tipologia_inv:id_tipologia_inv,id_tipo_inversion:id_tipo_inversion,id_grupo_funcional_inv:id_grupo_funcional_inv,id_nivel_gob:id_nivel_gob,id_meta_pres:id_meta_pres,id_programa_pres:id_programa_pres,codigo_unico_pi:codigo_unico_pi,nombre_pi:nombre_pi,costo_pi:costo_pi,devengado_ac_pi:devengado_ac_pi,distrito:distrito,id_estado_ciclo:id_estado_ciclo,id_rubro:id_rubro,id_modalidad_ejec:id_modalidad_ejec},
     success:function(respuesta){
 
       alert(respuesta);

@@ -9,9 +9,9 @@ class Model_ProyectoInversion extends CI_Model
 
           }
       //AGREGAR UN PROYECTO
-      function AddProyecto($cbxUnidadEjecutora,$cbxNatI,$cbxTipologiaInv,$cbxTipoInv,$cbxGrupoFunc,$cbxNivelGob,$cbxMetaPresupuestal,$cbxProgramaPres,$txtCodigoUnico,$txtNombrePip,$txtCostoPip,$txtDevengado,$dateFechaInPip,$dateFechaViabilidad,$distrito,$txtDireccionUbigeo,$txtLatitud,$txtLongitud,$cbxEstadoCicloInv,$dateFechaEstCicInv,$cbxFuenteFinanc,$dateFechaFuenteFinanc,$cbxModalidadEjec,$dateFechaModalidadEjec)
+      function AddProyecto($cbxUnidadEjecutora,$cbxNatI,$cbxTipologiaInv,$cbxTipoInv,$cbxGrupoFunc,$cbxNivelGob,$cbxMetaPresupuestal,$cbxProgramaPres,$txtCodigoUnico,$txtNombrePip,$txtCostoPip,$txtDevengado,$dateFechaInPip,$dateFechaViabilidad,$distrito,$txtDireccionUbigeo,$txtLatitud,$txtLongitud,$cbxEstadoCicloInv,$dateFechaEstCicInv,$cbxRubro,$dateFechaRubro,$cbxModalidadEjec,$dateFechaModalidadEjec)
         {
-           $this->db->query("execute sp_ProyectoInversionUbigeo'".$cbxUnidadEjecutora."','".$cbxNatI."','".$cbxTipologiaInv."','".$cbxTipoInv."','".$cbxGrupoFunc."','".$cbxNivelGob."','".$cbxMetaPresupuestal."','".$cbxProgramaPres."','".$txtCodigoUnico."','".$txtNombrePip."','".$txtCostoPip."','".$txtDevengado."','".$dateFechaInPip."','".$dateFechaViabilidad."','".$distrito."','".$txtDireccionUbigeo."','".$txtLatitud."','".$txtLongitud."','".$cbxEstadoCicloInv."','".$dateFechaEstCicInv."','".$cbxFuenteFinanc."','".$dateFechaFuenteFinanc."','".$cbxModalidadEjec."','".$dateFechaModalidadEjec."'");
+           $this->db->query("execute sp_ProyectoInversionUbigeo'".$cbxUnidadEjecutora."','".$cbxNatI."','".$cbxTipologiaInv."','".$cbxTipoInv."','".$cbxGrupoFunc."','".$cbxNivelGob."','".$cbxMetaPresupuestal."','".$cbxProgramaPres."','".$txtCodigoUnico."','".$txtNombrePip."','".$txtCostoPip."','".$txtDevengado."','".$dateFechaInPip."','".$dateFechaViabilidad."','".$distrito."','".$txtDireccionUbigeo."','".$txtLatitud."','".$txtLongitud."','".$cbxEstadoCicloInv."','".$dateFechaEstCicInv."','".$cbxRubro."','".$dateFechaRubro."','".$cbxModalidadEjec."','".$dateFechaModalidadEjec."'");
             if ($this->db->affected_rows() > 0) 
               {
                 return true;
