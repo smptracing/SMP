@@ -249,6 +249,8 @@ $("#finalizarProgram").click(function(){
                     $(element).text((parseInt(cartera)+3));
                 });
 
+                $('#hdAnioCartera').val(cartera);
+
                listaProyectoIprogramado(cartera);/*llamar proyecto de inversion programado*/
             })
              ultimaProgramacion();
