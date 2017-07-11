@@ -54,7 +54,6 @@
 
   <!-- jQuery -->
   <script src="<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
-  <script src="<?php echo base_url();?>assets/js/jsValidacion.js"></script>
 
      <script>
     var base_url = '<?php echo base_url(); ?>';
