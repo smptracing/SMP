@@ -224,7 +224,7 @@
                                        <div class="col-md-7 col-sm-6 col-xs-12">
                                             <label for="name">Codigo Único<span class="required">*</span>
                                             </label>
-                                                  <input id="txtCodigoUnico" name="txtCodigoUnico"  class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Codigo Unico" required="required" type="text">
+                                                  <input id="txtCodigoUnico" name="txtCodigoUnico"  class="form-control col-md-7 col-xs-5" placeholder="Codigo Unico" type="text">
                                              </div>
                                       </div>
                                     </div>
@@ -267,7 +267,7 @@
                                         <label class="control-label col-md-1 col-sm-12 col-xs-12" for="name">Inversion<span class="required"></span>
                                         </label>
                                          <div class="col-md-12 col-sm-12 col-xs-12">
-                                          <input id="txtNombrePip" name="txtNombrePip"  height="20´px" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Nombre Inversion" required="required" type="text">
+                                          <input id="txtNombrePip" name="txtNombrePip" class="form-control col-md-7 col-xs-5" placeholder="Nombre Inversion" type="text">
                                             <!--<textarea  id="txtNombrePip" name="txtNombrePip" class="form-control" data-validate-length-range="6" data-validate-words="2" placeholder="Nombre Inversion"></textarea>-->
                                         </div>
                                       </div>
@@ -913,3 +913,61 @@
   </div>
 <!-- /.VER DETALLE DE PROYECTO->
 <!- /.VER EN VERTICAR DETALLE DE CADA PROYECTO-->
+<script>
+	$(document).on('ready', function()
+	{
+		$('#form-addProyectoInversion').formValidation(
+	    {
+	        framework: 'bootstrap',
+	        icon:
+	        {
+	            valid: 'glyphicon glyphicon-ok',
+	            invalid: 'glyphicon glyphicon-remove',
+	            validating: 'glyphicon glyphicon-refresh'
+	        },
+	        fields:
+	        {
+	            txtCodigoUnico:
+	            {
+	                validators: 
+	                {
+	                    notEmpty:
+	                    {
+	                        message: 'El campo "Código único" es requerido.'
+	                    },
+	                    regexp:
+	                    {
+	                        regexp: /^\d*$/,
+	                        message: 'El campo "Código único" debe ser un número entero.'
+	                    }
+	                }
+	            },
+	            txtNombrePip:
+	            {
+	            	validators:
+	            	{
+	            		notEmpty:
+	            		{
+	            			message: 'El campo "Nombre de inversión" es requerido.'
+	            		}
+	            	}
+	            },
+	            txtCostoPip:
+	            {
+	            	validators:
+	            	{
+	            		notEmpty:
+	            		{
+	            			message: 'El campo "Inversión" es requerido.'
+	            		},
+	            		regexp:
+	                    {
+	                        regexp: /^(\d+([\.]{1}\d{1,2})?)*$/,
+	                        message: 'El campo "Costo de inversión" debe ser un valor en soles.'
+	                    }
+	            	}
+	            }
+	        }
+	    });
+	});
+</script>
