@@ -11,7 +11,7 @@ class Importar_Model extends CI_Model
     //AGREGAR UNA BRECHA
     public function addImportar($param, $fecha, $fechas, $anio)
     {
-        $this->db->query("execute sp_InsercionExcel_'" .
+        $this->db->query("execute sp_InsercionExcel '" .
             $param['A'] .
             "', '" . $param['B'] .
             "', '" . $param['C'] .
