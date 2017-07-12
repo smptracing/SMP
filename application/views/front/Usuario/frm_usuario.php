@@ -381,27 +381,86 @@
 
 		$('#txt_contrasenia').on('keyup', function()
 		{
+			cambioNivelSeguridadContrasenia(this);
+		});
+
+		$('#txt_contrasenia').on('focus', function()
+		{
+			cambioNivelSeguridadContrasenia(this);
+		});
+
+		function cambioNivelSeguridadContrasenia(element)
+		{
+			var value=$(element).val();
+
 			$('[id*="spanNivelSeguridad"]').css({ "display" : "none" });
 
-			if($(this).val().length<4)
+			var escalaNivelSeguridad=0;
+
+			var arrayCaracterNumero=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+			var arrayCaracterTextoMinuscula=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'ñ', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+			var arrayCaracterTextoMayuscula=['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+			var arrayCaracterEspecial=['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', '-', '=', '{', '}', '\'', '"', '[', ']', '.', ',', ';', ':', '<', '>'];
+
+			for(var i=0; i<arrayCaracterNumero.length; i++)
+			{
+				if(value.indexOf(arrayCaracterNumero[i])>-1)
+				{
+					escalaNivelSeguridad++;
+
+					break;
+				}
+			}
+
+			for(var i=0; i<arrayCaracterTextoMinuscula.length; i++)
+			{
+				if(value.indexOf(arrayCaracterTextoMinuscula[i])>-1)
+				{
+					escalaNivelSeguridad++;
+
+					break;
+				}
+			}
+
+			for(var i=0; i<arrayCaracterTextoMayuscula.length; i++)
+			{
+				if(value.indexOf(arrayCaracterTextoMayuscula[i])>-1)
+				{
+					escalaNivelSeguridad++;
+
+					break;
+				}
+			}
+
+			for(var i=0; i<arrayCaracterEspecial.length; i++)
+			{
+				if(value.indexOf(arrayCaracterEspecial[i])>-1)
+				{
+					escalaNivelSeguridad++;
+
+					break;
+				}
+			}
+
+			if(escalaNivelSeguridad==0 || escalaNivelSeguridad==1)
 			{
 				$('#spanNivelSeguridadBajo').css({ "display" : "block" });
 			}
 
-			if($(this).val().length>=4 && $(this).val().length<7)
+			if(escalaNivelSeguridad==2)
 			{
 				$('#spanNivelSeguridadMedio').css({ "display" : "block" });
 			}
 
-			if($(this).val().length>=7 && $(this).val().length<10)
+			if(escalaNivelSeguridad==3)
 			{
 				$('#spanNivelSeguridadNormal').css({ "display" : "block" });
 			}
 
-			if($(this).val().length>=10)
+			if(escalaNivelSeguridad==4)
 			{
 				$('#spanNivelSeguridadAlto').css({ "display" : "block" });
 			}
-		});
+		}
 	});
 </script>
