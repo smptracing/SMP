@@ -19,9 +19,35 @@
 
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url(); ?>assets/build/css/custom.min.css" rel="stylesheet">
-     <script>
-    var base_url = '<?php echo base_url(); ?>';
-    </script>
+
+	<style>
+		.tooltip-inner
+		{
+			max-width: none;
+			white-space: nowrap;
+			background:white;
+			border:1px solid lightgray;
+			-webkit-box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.3);
+			-moz-box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.3);
+			box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.3);
+			color:gray;
+			margin:0;
+			padding:0;
+		}
+
+		.tooltip.bottom .tooltip-arrow
+		{
+			top: 0;
+			left: 50%;
+			margin-left: -5px;
+			border-bottom-color: lightgray; /* black */
+			border-width: 0 5px 5px;
+		}
+	</style>
+
+	<script>
+		var base_url = '<?php echo base_url(); ?>';
+	</script>
   </head>
 
   <body class="login">
@@ -34,17 +60,15 @@
              <form  id="login" class="form-horizontal" method="post" action="<?php echo base_url("index.php/Login/ingresar");?>">
               <h1> Inicio de Sesión</h1>
               <div>
-                <input type="text" class="form-control" placeholder="Usuario" id="txt_usuario" name="txt_usuario" required="" />
+                <input type="text" class="form-control" placeholder="Usuario" id="txt_usuario" name="txt_usuario" autocomplete="off" />
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Password" name="Password" id="Password" required="" />
+                <input type="password" class="form-control" placeholder="Password" name="Password" id="Password" />
               </div>
-              <div>
-                
-                            <button type="submit" class="btn btn-default">Entrar</button>
-               
-                <a class="reset_pass" href="#"></a>
-              </div>
+			<div>
+				<button type="submit" class="btn btn-default">Entrar</button>
+				<a class="reset_pass" href="#"></a>
+			</div>
 
               <div class="clearfix"></div>
 
@@ -100,6 +124,14 @@
       </div>
     </div>
   </body>
-   <script src="<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
-   <script src="<?php echo base_url();?>assets/js/Usuario/login.js"></script>
+	<script src="<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
+	<script src="<?php echo base_url();?>assets/js/Usuario/login.js"></script>
+	<script src="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script>
+		$(function()
+		{
+			$('#txt_usuario').tooltip({ "placement" : "right", "html" : true, "trigger" : "focus", "title" : "<div style=\"padding: 4px;\">Ingrese su nombre de usuario.</div>" });
+			$('#Password').tooltip({ "placement" : "right", "html" : true, "trigger" : "focus", "title" : "<div style=\"padding: 4px;\">Ingres su contraseña.</div>" });		
+		});
+	</script>
 </html>
