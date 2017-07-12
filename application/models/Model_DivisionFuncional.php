@@ -9,20 +9,14 @@ class Model_DivisionFuncional extends CI_Model
 
           }
       
-       //division funcional
+	//division funcional
+	function GetDivisionFuncional()
+	{
+		$divisionf=$this->db->query("execute sp_DivisionFuncional_r");//listar de division funcional
+		
+		return $divisionf->result();
+	}
 
-    function GetDivisionFuncional()
-        {
-            $divisionf=$this->db->query("execute sp_DivisionFuncional_r");//listar de division funcional
-            if($divisionf->num_rows()>0)
-             {
-              return $divisionf->result();
-             }else
-             {
-              return null;
-             }
-   
-        }
         function getDivisioFuncuonaId($id_funcion){
           $divisionf=$this->db->query("execute sp_funcionDivision_r '".$id_funcion."'");//listar de division funcional
             if($divisionf->num_rows()>0)

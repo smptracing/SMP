@@ -8,19 +8,15 @@ class Model_Funcion extends CI_Model
             // $this->db->free_db_resource();
 
           }
-      /*añadir funcion*/
-        function GetFuncion()
-        {
-            $funcion=$this->db->query("execute sp_Funcion_r");//listar funcion
-            if($funcion->num_rows()>0)
-             {
-              return $funcion->result();
-             }else
-             {
-              return is_null;
-             }
-   
-        }
+
+	/*añadir funcion*/
+	function GetFuncion()
+	{
+		$funcion=$this->db->query("execute sp_Funcion_r");//listar funcion
+
+		return $funcion->result();
+	}
+
         function AddFucion($txt_codigofuncion,$txt_nombrefuncion)
         {
 
