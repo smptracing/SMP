@@ -1,9 +1,6 @@
  $(document).on("ready" ,function(){
-
                 listaNaturalezaInversion();/*llamar a mi datatablet listar funcion*/
               //abrir el modal para registrar
-
-
 //REGISTARAR NUEVA NATURALEZA INVERSION
    $("#form-AddNaturalezaInversion").submit(function(event)
                   {
@@ -26,11 +23,7 @@
                          }
                       });
                   });
-
-
-
       //limpiar campos
-
           function formReset()
           {
           document.getElementById("form-AddNaturalezaInversion").reset();
@@ -51,8 +44,6 @@
                          }
                       });
                   });
-
-
       });
          /*listra funcion*/
                 var listaNaturalezaInversion=function()
@@ -86,8 +77,6 @@
                         var data=myTable.row( $(this).parents("tr")).data();
                         var txt_IdNaturalezaM=$('#txt_IdNaturalezaM').val(data.id_naturaleza_inv);
                         var txt_NombreNaturalezaM=$('#txt_NombreNaturalezaM').val(data.nombre_naturaleza_inv);
-
-
                     });
                 }
 var EliminarNaturalezaData=function(tbody,table){

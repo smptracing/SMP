@@ -25,10 +25,9 @@ class TipologiaInversion extends CI_Controller
         if ($this->input->is_ajax_request()) {
             $flat = "R";
             // $ID   = "0";
-            $ID                        = "0";
-            $txt_NombreNaturaleza      = "NULL";
-            $txt_DescripcionNaturaleza = "NULL";
-            $user                      = "1";
+            $ID                   = "0";
+            $txt_NombreNaturaleza = "NULL";
+            $user                 = "1";
 
             $datos = $this->NaturalezaInversion_Model->get_NaturalezaInversion($flat, $ID, $txt_NombreNaturaleza);
             echo json_encode($datos);
