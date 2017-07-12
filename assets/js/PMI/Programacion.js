@@ -230,10 +230,7 @@ $("#finalizarProgram").click(function(){
                 listaProyectoIprogramado(cartera);/*llamar proyecto de inversion programado*/
             }
 
-
-            $("#cbCartera").change(function(){
-              var cartera=$("#cbCartera").val();
-
+           
 
             $("#cbCartera").change(function()
             {
@@ -255,6 +252,8 @@ $("#finalizarProgram").click(function(){
                 });
 
                 $('#hdAnioCartera').val(cartera);
+
+
                listaProyectoIprogramado(cartera);/*llamar proyecto de inversion programado*/
             })
              ultimaProgramacion();
@@ -484,7 +483,7 @@ $("#finalizarProgram").click(function(){
                     });
                 }
 
-function  GuardarProyectos(id_ue,id_naturaleza_inv,id_tipologia_inv,id_tipo_inversion,id_grupo_funcional_inv,id_nivel_gob,id_meta_pres,id_programa_pres,codigo_unico_pi,nombre_pi,costo_pi,devengado_ac_pi,distrito,id_estado_ciclo,id_rubro,id_modalidad_ejec){
+function GuardarProyectos(id_ue,id_naturaleza_inv,id_tipologia_inv,id_tipo_inversion,id_grupo_funcional_inv,id_nivel_gob,id_meta_pres,id_programa_pres,codigo_unico_pi,nombre_pi,costo_pi,devengado_ac_pi,distrito,id_estado_ciclo,id_rubro,id_modalidad_ejec){
    event.preventDefault();
 
     $.ajax({
