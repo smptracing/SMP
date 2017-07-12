@@ -1,10 +1,36 @@
+<style>
+	.tooltip-inner
+	{
+		max-width: none;
+		white-space: nowrap;
+		background:white;
+		border:1px solid lightgray;
+		-webkit-box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.3);
+		-moz-box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.3);
+		box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.3);
+		color:gray;
+		margin:0;
+		opacity: 1;
+		padding:0;
+	}
 
+	.tooltip.bottom .tooltip-arrow
+	{
+		top: 0;
+		left: 50%;
+		margin-left: -5px;
+		border-bottom-color: lightgray; /* black */
+		border-width: 0 5px 5px;
+	}
+
+	.tooltip.in 
+	{
+		opacity: 1;
+		filter: alpha(opacity=100);
+	}
+</style>
 <div class="right_col" role="main">
           <div class="">
-          
-
-            
-
             <div class="">
               <div class="col-md-12 col-sm-6 col-xs-12">
                                 <div class="x_panel">
@@ -152,7 +178,7 @@
                     <label class="col-sm-3 control-label no-padding-right"  for="form-field-1-1">Usuario </label>
 
                     <div class="col-sm-6">
-                      <input type="text" id="form-field-1-1" id="txt_usuario" name="txt_usuario" placeholder="Nombre Usuario" class="form-control" />
+                      <input type="text" id="txt_usuario" name="txt_usuario" placeholder="Nombre Usuario" class="form-control" autocomplete="off" />
                     </div>
                   </div>
                   <div class="form-group">
@@ -184,7 +210,7 @@
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">Contraseña</label>
 
                     <div class="col-sm-3">
-                      <input type="text" id="form-field-1-1" id="txt_contrasenia" name="txt_contrasenia" placeholder="Contraseña" class="form-control" />
+                      <input type="password" id="txt_contrasenia" name="txt_contrasenia" placeholder="Contraseña" class="form-control" />
                     </div>
                   </div>
                 
@@ -347,3 +373,35 @@
     </div>
   </div>
 <!-- /.FIN ventana para asignar permisos a un usuario --> 
+<script>
+	$(function()
+	{
+		$('#txt_usuario').tooltip({ "placement" : "right", "html" : true, "trigger" : "focus", "title" : "<div style=\"padding: 4px;text-align: left;\"><p>Ingrese su nombre de usuario.</p><p><b>Recomendación:</b><br>Introducir su nombre seguido de su fecha de nacimiento.</p></div>" });
+		$('#txt_contrasenia').tooltip({ "placement" : "right", "html" : true, "trigger" : "focus", "title" : "<div style=\"padding: 4px;text-align: left;\"><p>Ingrese una contraseña segura.</p><p><b>Recomendación:</b><br>Su contraseña debería contener minimamente una<br>letra mayúscula, una letra minúscula, un número<br>y un caracter especial para que sea considerada segura.</p><h3>Nivel de seguridad: </h3><span id=\"spanNivelSeguridadBajo\" style=\"display: block;margin: 2px;font-size: 10px;padding: 7px;\" class=\"label label-danger\">Bajo</span><span id=\"spanNivelSeguridadMedio\" style=\"display: none;margin: 2px;font-size: 10px;padding: 7px;\" class=\"label label-info\">Medio</span><span id=\"spanNivelSeguridadNormal\" style=\"display: none;margin: 2px;font-size: 10px;padding: 7px;\" class=\"label label-primary\">Normal</span><span id=\"spanNivelSeguridadAlto\" style=\"display: none;margin: 2px;font-size: 10px;padding: 7px;\" class=\"label label-success\">Alto</span></div>" });
+
+		$('#txt_contrasenia').on('keyup', function()
+		{
+			$('[id*="spanNivelSeguridad"]').css({ "display" : "none" });
+
+			if($(this).val().length<4)
+			{
+				$('#spanNivelSeguridadBajo').css({ "display" : "block" });
+			}
+
+			if($(this).val().length>=4 && $(this).val().length<7)
+			{
+				$('#spanNivelSeguridadMedio').css({ "display" : "block" });
+			}
+
+			if($(this).val().length>=7 && $(this).val().length<10)
+			{
+				$('#spanNivelSeguridadNormal').css({ "display" : "block" });
+			}
+
+			if($(this).val().length>=10)
+			{
+				$('#spanNivelSeguridadAlto').css({ "display" : "block" });
+			}
+		});
+	});
+</script>
