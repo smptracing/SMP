@@ -18,7 +18,7 @@
                                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
                                       <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
                                         <li role="presentation" class="active"><a href="#tab_Sector"  id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">
-                                        <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Sector
+                                        <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Sectorvdsfds
                                         
                                         </a>
                                         </li>
