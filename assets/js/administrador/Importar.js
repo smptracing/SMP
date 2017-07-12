@@ -1,8 +1,11 @@
 $(document).on("ready" ,function(){
 
   listaEstadoCicloInversion();/*llamar a mi datatablet listar funcion*/
-  //abrir el modal para registrar
-
+    $("#btn_importar_cartera").click(function()//para que cargue el como una vez echo click sino repetira datos
+          {
+       //actualizar la tabla al momento de importar
+        $('#table-ProyectoInversionProgramado').dataTable()._fnAjaxUpdate();
+      });
   //limpiar campos
   function formReset()
   {
@@ -12,10 +15,8 @@ $(document).on("ready" ,function(){
   //formulario para subir
 
   $("#form-Importar").submit(function (event) {
-
       //stop submit the form, we will post it manually.
       event.preventDefault();
-
       // Get form
       var form = $('#form-Importar')[0];
 
@@ -38,12 +39,12 @@ $(document).on("ready" ,function(){
           cache: false,
           timeout: 600000,
           success: function (data) {
-
               //$("#result").text(data);
               swal(data,"", "success");
               //console.log("SUCCESS : ", data);
               //$("#btnSubmit").prop("disabled", false);
-                formReset();
+              $('#table-ProyectoInversionProgramado').dataTable()._fnAjaxUpdate();
+               formReset();
                VentanaImportar.close()
 
 
@@ -51,6 +52,7 @@ $(document).on("ready" ,function(){
           error: function (e) {
             var msg = "No se subio el archivo, consulte con el administrador del sistema";
             swal(msg,"", "error");
+             $('#table-ProyectoInversionProgramado').dataTable()._fnAjaxUpdate();
               formReset();
             //$("#result").text(e.responseText);
             //console.log("ERROR : ", e);
