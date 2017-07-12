@@ -1,7 +1,7 @@
  $(document).on("ready" ,function(){
             //Inicio cargar combo unidad ejecutora
            //PARA LIMPIAR LOS DATOS DE LOS MODALES
-                  //listar();
+          
 
                 /*$('.modal').on('hidden.bs.modal', function(){
                   $(this).find('form')[0].reset(); //para borrar todos los datos que tenga los input, textareas, select.
@@ -232,6 +232,7 @@ $("#finalizarProgram").click(function(){
 
             $("#cbCartera").change(function(){
               var cartera=$("#cbCartera").val();
+                  $("#ExcelCartera").val(cartera);//para el excel
                listaProyectoIprogramado(cartera);/*llamar proyecto de inversion programado*/
             })
              ultimaProgramacion();
@@ -534,8 +535,11 @@ var listaProyectoIprogramado=function(AnioCartera)
 		{ "data" : "nombre_programa_pres", "visible" : false },
 		{ "data" : "fecha_registro_pi", "visible" : false },
 		{ "data" : "fecha_viabilidad_pi", "visible" : false },
-		{ "defaultContent" : "<button type='button' class='VerProyecto btn btn-success btn-xs' data-toggle='modal' data-target='#VerDetalleProyectoInversion'>Ver Ficha</button>" }]
-	});
+		{ "defaultContent" : "<button type='button' class='VerProyecto btn btn-success btn-xs' data-toggle='modal' data-target='#VerDetalleProyectoInversion'>Ver Ficha</button>" },
+    { "data" : "año_apertura_cartera","visible" : false}
+    ]
+	  
+  });
 
 	$('#table-ProyectoInversionProgramado_filter input').unbind();
 
@@ -705,7 +709,7 @@ var listaProyectoIprogramadoA=function()//para actualizar programacion
                        $(tbody).on("click","button.VerProyecto",function(){
                             var progrVeProgramacion = new Array();
                              var progrVe = new Array();
-                             html="";
+                             var html="";
                              progrVe.length=0;
                              progrVeProgramacion.length=0;
                         var data=table.row( $(this).parents("tr")).data();
@@ -747,7 +751,7 @@ var listaProyectoIprogramadoA=function()//para actualizar programacion
                               progrVeProgramacion[28]=data.OyM_2019;
                               progrVeProgramacion[29]=data.OyM_2020;
                               progrVeProgramacion[30]=data.id_pi;
-
+                              $("#CarteradeProgramacion").val(data.año_apertura_cartera);
                                html+="<thead> <tr> <th colspan='12' class='active'><h5>DATOS DEL PROYECTOS DE INVERSIÓN</h5></th>  </tr></thead>"
                             for (var i = 0; i <1;i++) {
                               $("#CodigoProgramacion").val(progrVeProgramacion[30]);
@@ -960,14 +964,3 @@ var listaProyectoIprogramadoA=function()//para actualizar programacion
 
                 }
 
- /*function listar()
-          {
-            event.preventDefault();
-            $.ajax({
-              "url":base_url+"index.php/Programacion/GetProgramacion",
-              type:"POST",
-              success:function(respuesta){
-                console.log(respuesta);
-              }
-            });
-          }*/

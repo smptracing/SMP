@@ -234,7 +234,7 @@ function action()
  
 //Si tienes que imprimir carácteres ASCII estándar, puede utilizar las fuentes básicas como
 // Helvetica para reducir el tamaño del archivo.
-        $pdf->SetFont('freemono', '', 12, '', true);
+        $pdf->SetFont('freemono', '',8, '', true);
  
 // Añadir una página
 // Este método tiene varias opciones, consulta la documentación para más información.
@@ -259,8 +259,10 @@ function action()
         $opcion=1;//mostrar un solo proyecto
         $opcion2=2;//mostra todos los proyecto programados
         $id_pi=$this->input->post("CodigoProgramacion");
-        $año_apertura_actual="2017";//observacion
-        $ProyectoProgramado =$this->Model_Programacion->GetProgramacion($id_pi,$año_apertura_actual, 0, 0, '');//para mostra uno solo del detallado de los proyectos
+        $anio=$this->input->post("CarteradeProgramacion");//observacion
+        $anio1=explode('-',$anio);
+        $año_apertura_actual=$anio1[0];
+        $ProyectoProgramado =$this->Model_Programacion->GetProgramacion($id_pi,$año_apertura_actual,0, 0, '');//para mostra uno solo del detallado de los proyectos
         foreach ($ProyectoProgramado as $rows) 
         {
             
@@ -282,7 +284,7 @@ function action()
             //META PRESUPUESTAL
             //$nombre_meta_pres=$rows->nombre_meta_pres;
             //$año_meta_pres=$rows->año_meta_pres;
-            //$pim_meta_pres=$rows->pim_meta_pres;
+            $pim_meta_pres=$rows->pim_meta_pres;
             //$numero_meta_pres=$rows->numero_meta_pres;
             //UNIDAD EJECUTORA
             $nombre_ue=$rows->nombre_ue;
@@ -301,9 +303,9 @@ function action()
              //RUBRO EJECUCION
             //$nombre_rubro=$rows->nombre_rubro;
             //NATURALEZA DE INVERSION
-             /*$nombre_naturaleza_inv=$rows->nombre_naturaleza_inv;
+            $nombre_naturaleza_inv=$rows->nombre_naturaleza_inv;
             //PROGREMACION
-            $nombre_pi=$rows->nombre_pi;
+             /*$nombre_pi=$rows->nombre_pi;
             $costo_pi=$rows->costo_pi;
             $año_prog=$rows->año_prog;
             $monto_prog=$rows->monto_prog;
@@ -325,7 +327,7 @@ function action()
 <table border="1"  cellpadding="10">
 
     <tr>
-         <th colspan="12" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<center><strong>DETALLE DE PROYECTOS DE INVERSIÓN</strong></center></th>
+         <th colspan="12" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<center><strong>DETALLE DE PROYECTOS DE INVERSIÓN</strong></center></th>
    </tr>
     <tr>
          <th colspan="6" style="background-color:#f5f5f5;">&nbsp;&nbsp;DATOS DEL PROYECTOS DE INVERSIÓN</th>
@@ -364,8 +366,7 @@ function action()
        <th colspan="6">$distrito</th>
    </tr>
    <tr>
-         <th colspan="6" style="background-color:#f5f5f5;">&nbsp;&nbsp;RESPONSABILIDAD FUNCIONAL DEL PROGRAMA DE INVERSION</th>
-         <th colspan="6" style="background-color:#f5f5f5;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+         <th colspan="12" style="background-color:#f5f5f5;">&nbsp;&nbsp;RESPONSABILIDAD FUNCIONAL DEL PROGRAMA DE INVERSION</th>
    </tr>
     <tr>
          <th colspan="6">Función</th>
@@ -389,7 +390,7 @@ function action()
    </tr>
    <tr>
        <th colspan="6">Naturaleza de Inversion</th>
-       <th colspan="6"></th>
+       <th colspan="6">$nombre_naturaleza_inv</th>
    </tr>
     <tr>
        <th colspan="6">Tipologia de inversion </th>
@@ -413,7 +414,7 @@ function action()
    </tr>
    <tr>
        <th colspan="6">PIM</th>
-       <th colspan="6"></th>
+       <th colspan="6">$pim_meta_pres</th>
    </tr>
    <tr>
        <th colspan="6">N° Meta Presupuestal</th>
@@ -448,20 +449,16 @@ function action()
        <th colspan="6"></th>
    </tr>
    <tr>
-       <th colspan="6">Programa Presupuestal</th>
-       <th colspan="6"></th>
+       <th colspan="3">Programación</th>
+       <th colspan="3">$Inv_2018</th>
+       <th colspan="3">$Inv_2019</th>
+       <th colspan="3">$Inv_2020</th>
    </tr>
     <tr>
-    
-       <th colspan="3">Programa Presupuestal</th>
-       <th colspan="3"></th>
-       <th colspan="3"></th>
-       <th colspan="3"></th>
-
-       <th colspan="3">Programa Presupuestal</th>
-       <th colspan="3"></th>
-       <th colspan="3"></th>
-       <th colspan="3"></th>
+       <th colspan="3">Programación Operación y Mantenimineto</th>
+       <th colspan="3">$OyM_2018</th>
+       <th colspan="3">$OyM_2019</th>
+       <th colspan="3">$OyM_2020</th>
    </tr>
 </table>
 </form>

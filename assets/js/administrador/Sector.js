@@ -118,7 +118,7 @@
 
                  listaSectorCombo=function()
                  {
-                    html="";
+                    var html="";
                     $("#listaSector").html(html);
                     $("#listaSectorModificar").html(html);
                     event.preventDefault(); 
@@ -129,7 +129,7 @@
                           //alert(respuesta);
                          var registros = eval(respuesta);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option value="+registros[i]["id_sector"]+"> "+registros[i]["nombre_sector"]+" </option>";   
+                              var html +="<option value="+registros[i]["id_sector"]+"> "+registros[i]["nombre_sector"]+" </option>";   
                             };
                             $("#listaSector").html(html);
                             $("#listaSectorModificar").html(html);//para modificar las entidades

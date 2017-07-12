@@ -53,7 +53,7 @@ class Model_Personal extends CI_Model
     }
     public function CountPaginacionPersonaCargo($text_buscarPersona,$skip,$numberRow,$valueSearch)
     {
-       $personalFormulador = $this->db->query("select count(*) as cantidad from PERSONA inner join ASIGNACION_PERSONA ON ASIGNACION_PERSONA.id_persona=PERSONA.id_persona INNER JOIN CARGO ON CARGO.id_cargo=ASIGNACION_PERSONA.id_cargo WHERE desc_cargo='".$text_buscarPersona."' and (nombres like '%'+$valueSearch+'%') "); //listar de division funcional
+       $personalFormulador = $this->db->query("select count(*) as cantidad from PERSONA inner join ASIGNACION_PERSONA ON ASIGNACION_PERSONA.id_persona=PERSONA.id_persona INNER JOIN CARGO ON CARGO.id_cargo=ASIGNACION_PERSONA.id_cargo WHERE desc_cargo='".$text_buscarPersona."' and (nombres like '%'+'".$valueSearch."'+'%') "); //listar de division funcional
       return $personalFormulador->result();
     }
 

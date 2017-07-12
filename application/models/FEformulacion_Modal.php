@@ -10,7 +10,6 @@ class FEformulacion_Modal extends CI_Model
     /*LISTAR DENOMINACION FORMULACION Y EVALUACION*/
     public function GetFormulacion($id_est_inve)
     {
-
         $FEformulacion = $this->db->query("execute sp_ListarEstudioFormulacion'" . $id_est_inve . "' ");
         if ($FEformulacion->num_rows() >= 0) {
             return $FEformulacion->result();

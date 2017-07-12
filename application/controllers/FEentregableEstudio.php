@@ -10,6 +10,7 @@ class FEentregableEstudio extends CI_Controller
         parent::__construct();
         $this->load->model('Model_FEentregableEstudio');
         $this->load->model('Gant_Model');
+        $this->load->helper('string');
 
     }
     public function ver_FEentregable($id_etapa_estudio)
@@ -89,15 +90,24 @@ show_404();
         if ($this->input->is_ajax_request()) {
             $opcion                  = "c";
             $id_entregable           = "0";
-            $txt_denominacion_entre  = "1";
+            $txt_denominacion_entre  = $this->input->post("txt_denominacion_entre");
             $id_etapa_estudio        = $this->session->userdata('Etapa_Estudio');
             $txt_nombre_entre        = $this->input->post("txt_nombre_entre");
             $txt_valoracion_entre    = $this->input->post("txt_valoracion_entre");
             $txt_avance_entre        = 0;
             $txt_observacio_entre    = $this->input->post("txt_observacio_entre");
             $txt_levantamintoO_entre = $this->input->post("txt_levantamintoO_entre");
-            $data                    = $this->Model_FEentregableEstudio->Add_Entregable($opcion, $id_entregable, $txt_denominacion_entre, $id_etapa_estudio, $txt_nombre_entre, $txt_valoracion_entre, $txt_avance_entre, $txt_observacio_entre, $txt_levantamintoO_entre);
-            echo json_encode($data);
+
+            $CadenaDenominacion=explode(',',$txt_denominacion_entre);//envio  multiples dependiendo a la denominacion
+            for ($i=0; $i<count($CadenaDenominacion); $i++) { 
+               $data = $this->Model_FEentregableEstudio->Add_Entregable($opcion, $id_entregable,$CadenaDenominacion[$i], $id_etapa_estudio, $txt_nombre_entre, $txt_valoracion_entre, $txt_avance_entre, $txt_observacio_entre, $txt_levantamintoO_entre);
+               echo json_encode($data);
+            }
+             
+           
+             //explode(',',$valores); 
+            
+            
         } else {
             show_404();
         }

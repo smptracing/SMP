@@ -254,16 +254,23 @@
                 <form class="form-horizontal " id="form-AddEntregable"  method="POST" >
 
                       <div class="col-md-12 col-sm-12 col-xs-12 input-group">
-                        <span class="input-group-addon">Denominación</span>
-                        <input id="txt_denominacion_entre" mane="txt_denominacion_entre"  type="text" class="form-control" placeholder="">
-                      </div>
-                      <div class="col-md-12 col-sm-12 col-xs-12 input-group">
                         <span class="input-group-addon">Nombre Entregable</span>
                         <input id="txt_nombre_entre" name="txt_nombre_entre" type="text" class="form-control" name="msg" placeholder="">
                       </div>
+                      <div class="col-md-4 col-sm-4 col-xs-12 input-group">
+                      <span class="input-group-addon">Denominación </span>
+                          <select class="selectpicker" id="txt_denominacion_entre" mane="txt_denominacion_entre" class="selectpicker" data-live-search-normalize="true" data-live-search="true" data-container="body" data-header="Denominaciones" data-max-options="2" max-options-text="Solo dos opciones" title="Seleccionar ocupaciones" multiple >
+                            
+                          </select>
+
+
+                      </div>
+                      <input type="hidden"  id="txt_denoMultiple" name="txt_denoMultiple" class="form-control">
+
                       <div class="col-md-4 col-sm-4 col-xs-4 form-group has-feedback">
                         <label class="col-md-3 col-sm-3 col-xs-3">Valoración</label>
                         <input type="text"  id="txt_valoracion_entre" name="txt_valoracion_entre" class="form-control" id="inputSuccess3">
+                      
                       </div>
 
 
@@ -284,7 +291,7 @@
                             <span class="glyphicon glyphicon-floppy-disk"></span>
                             Guardar
                           </button>
-                          <button type="submit" class="btn btn-danger" data-dismiss="modal">
+                          <button type="submit" class="btn btn-danger" class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-remove"></span>
                             Cancelar
                           </button>
@@ -480,8 +487,8 @@
                                                                                  
                               </table>
                           </div>
-                      <input type="text" class="form-control" id="txt_idPersona" name="txt_idPersona">
-                      <input type="text" class="form-control" id="txt_identregable" name="txt_identregable">
+                      <input type="hidden" class="form-control" id="txt_idPersona" name="txt_idPersona">
+                      <input type="hidden" class="form-control" id="txt_identregable" name="txt_identregable">
 
                       <div class="ln_solid"></div>
                       <div class="form-group">

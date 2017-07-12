@@ -59,7 +59,7 @@
 
                                                                 <div class="col-md-2">
                                                                     <form action="<?php echo base_url('index.php/ReporteProgramacion/action'); ?>" method="POST" >
-                                                                      <button  type="submit" class="btn btn-primary">  <span class="fa fa-file-text"></span> Exportar excel</button>
+                                                                       <button  type="submit" class="btn btn-primary">  <span class="fa fa-file-text"></span> Exportar excel</button>
                                                                     </form>
                                                                 </div>
                                                                <div class="col-md-2">
@@ -70,6 +70,7 @@
                                                         <table id="table-ProyectoInversionProgramado" class="table table-striped table-bordered table-hover table-responsive display  compact " ellspacing="0" width="100%">
                                                               <thead>
                                                                 <tr>
+                                                                  
                                                                   <th class="col-sm-1">Id</th>
                                                                   <th class="col-sm-1"><center>Código Único</center></th>
                                                                   <th class="col-sm-1"><center>Ciclo de Inversión</center></th>
@@ -141,6 +142,7 @@
                                                                   <th class="col-sm-1">Fecha Viabilidad</th>
 
                                                                   <th class="col-sm-1"></th>
+                                                                  <th class="col-sm-1">Año Apertura</th>
                                                                 </tr>
                                                               </thead>
 
@@ -904,6 +906,7 @@
         <div class="modal-footer">
           <form action="<?php echo base_url('index.php/ReporteProgramacion/PdfProyectoProgramado'); ?>" method="POST" >
             IDE PROYECTO<input type="text" id="CodigoProgramacion" name="CodigoProgramacion">
+            CARTERA          <input type="text" id="CarteradeProgramacion" name="CarteradeProgramacion">
           <button type="submit" class="btn btn-success">  <span class="fa fa-print"></span>IMPRIMIR</button>
           <button  data-dismiss="modal" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Cancelar</button>
           </form>

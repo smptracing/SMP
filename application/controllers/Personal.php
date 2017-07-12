@@ -145,7 +145,7 @@ class Personal extends CI_Controller
 
             $datos = $this->Model_Personal->BuscarPersonaCargo($text_buscarPersona,$skip,$numberRow,$valueSearch);
             $CantidadData=$this->Model_Personal->CountPaginacionPersonaCargo($text_buscarPersona,$skip,$numberRow,$valueSearch);
-            echo '{ "recordsTotal" : '.$cantidadDatos[0]->cantidad.', "recordsFiltered" : '.$cantidadDatos[0]->cantidad.', "data" : '.json_encode($datos).' }';
+            echo '{ "recordsTotal" : '.$CantidadData[0]->cantidad.', "recordsFiltered" : '.$CantidadData[0]->cantidad.', "data" : '.json_encode($datos).' }';
         } else {
             show_404();
         }

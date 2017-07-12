@@ -3,7 +3,22 @@
               //listados
               listarEntregablesFE();//
               listadoFormuladores();
+              listarDenominacionFE();
 
+
+              $("#txt_denominacion_entre").change(function(){
+                var txt_denominacion_entre        =$("#txt_denominacion_entre").val();
+                $("#txt_denoMultiple").val(txt_denominacion_entre);
+              });
+              $("#btn_entregableC").click(function(){
+                  var txt_nombre_entre        =$("#txt_nombre_entre").val();
+                  var txt_denominacion_entre  =$("#txt_denoMultiple").val();
+                  var txt_valoracion_entre    =$("#txt_valoracion_entre").val();
+                  var txt_observacio_entre    =$("#txt_observacio_entre").val();
+                 
+                  var txt_levantamintoO_entre =$("#txt_levantamintoO_entre").val();
+                   addEntreEstudio(txt_nombre_entre,txt_denominacion_entre,txt_valoracion_entre,txt_observacio_entre,txt_levantamintoO_entre);
+              });
               $("#txt_valoracion_entre").keyup(function(){//verificar si el entregable supera el o no el cien porciento para inavilitar el boton
                    
                    var sumaValoracion=$("#txt_valoracion_entre").val();
@@ -29,8 +44,8 @@
                         });
               });
 
-              var txt_id_etapa_estudio=$("#txt_id_etapa_estudio").val();
-              
+            
+              var txt_id_etapa_estudio=$("#txt_id_etapa_estudio").val();   
 //Gant
                $("#btn_gant").click(function() {
                $('#ventanagant').modal('toggle');
@@ -39,36 +54,11 @@
 
               });
               //para agregar entregable
-                $("#btn_entregable").click(function() {
+             $("#btn_entregable").click(function() {
                 $("#id_etapa_estudioEE").val($("#txt_id_etapa_estudio").val())
               });
-                $("#form-AddEntregable").submit(function(event)//para entregable
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/FEentregableEstudio/Add_Entregable",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                          var registros = eval(resp);
-                          for (var i = 0; i < registros.length; i++) {
-                               if(registros[i]["VALOR"]==1){
-                                    swal("",registros[i]["MENSAJE"], "success");
-                                   $('#form-AddEntregable')[0].reset();
-                                   $("#VentanaEntregable").modal("hide");
-                                   $('#table_entregable').dataTable()._fnAjaxUpdate();
-                               }else{
-                                      swal('',registros[i]["MENSAJE"],'error' );
-                               }
-                           };
-                          /* swal("",resp, "success");
-                           $('#form-AddEntregable')[0].reset();
-                           $("#VentanaEntregable").modal("hide");
-                          // listarEntregablesFE();
-                            $('#table_entregable').dataTable()._fnAjaxUpdate();*/
-                         }
-                      });
-                  });
+              
+
                $("body").on("click","#table_entregable tbody th a",function(event){
                   event.preventDefault();
                   identregable = $(this).attr("href");
@@ -101,7 +91,7 @@
                              for (var i = 0; i <registros.length;i++) {
                                   html1 +="<tbody> <tr><th> <input type='checkbox' name='vehicle' value='Bike'></th><br></th><th> <a href='"+registros[i]["id_persona"]+"' type='button' class='btn btn-link'><img src='"+base_url+"assets/images/user.png' class='avatar' ></a>Gerencia:</br> <h5>Nombre completo:</h5> "+registros[i]["nombres"]+" "+registros[i]["apellido_p"]+" "+registros[i]["apellido_m"]+"</th> <th><div class='col-md-8 col-sm-8 col-xs-8 form-group has-feedback'></div></th></tr>";
                                   $("#txt_idPersona").val(registros[i]["id_persona"]);
-                                  html1 +="</tbody>";
+                                   html1 +="</tbody>";
                                   $("#table_responsable").html(html1);
                                };
                                
@@ -210,6 +200,57 @@ var refrescarGantt=function()
   gantt.init('gantt_here');
   gantt.load(window.location.href);
 }
+
+
+var addEntreEstudio=function(txt_nombre_entre,txt_denominacion_entre,txt_valoracion_entre,txt_observacio_entre,txt_levantamintoO_entre)//para entregable
+                  {
+                      event.preventDefault();
+                      $.ajax({
+                          url:base_url+"index.php/FEentregableEstudio/Add_Entregable",
+                          type:"POST",
+                          data:{txt_nombre_entre:txt_nombre_entre,txt_denominacion_entre:txt_denominacion_entre,txt_valoracion_entre:txt_valoracion_entre,txt_observacio_entre:txt_observacio_entre,txt_levantamintoO_entre:txt_levantamintoO_entre},
+                          success:function(resp){
+                            //alert(resp);
+                          var registros = eval(resp);
+                          for (var i = 0; i < registros.length; i++) {
+                               if(registros[i]["VALOR"]==1){
+                                    swal("",registros[i]["MENSAJE"], "success");
+                                   $('#form-AddEntregable')[0].reset();
+                                   $("#VentanaEntregable").modal("hide");
+                                   $('#table_entregable').dataTable()._fnAjaxUpdate();
+                               }else{
+                                      swal('',registros[i]["MENSAJE"],'error' );
+                               }
+                           };
+                           swal("",resp, "success");
+                           $('#form-AddEntregable')[0].reset();
+                           $("#VentanaEntregable").modal("hide");
+                          // listarEntregablesFE();
+                            $('#table_entregable').dataTable()._fnAjaxUpdate();
+                         }
+                      });
+                  };
+//lisatra denominacion 
+
+ var listarDenominacionFE=function(){
+                  var htmlD="";
+                        $("#txt_denominacion_entre").html(htmlD);
+                        event.preventDefault(); 
+                        $.ajax({
+                            "url":base_url +"index.php/DenominacionFE/GetDenominacionFE",
+                            type:"POST",
+                            success:function(respuesta){
+                             var registros = eval(respuesta);
+                                for (var i = 0; i <registros.length;i++) {
+                                   htmlD +="<option value="+registros[i]["id_denom_fe"]+"> "+registros[i]["denom_fe"]+" </option>";   
+                                };
+                                $("#txt_denominacion_entre").html(htmlD);
+                                $('.selectpicker').selectpicker('refresh'); 
+                            }
+                        });
+
+              } 
+//fin listar denominacion
 //listar formuladores para agregar un responsable
 var listadoFormuladores=function()
 {
