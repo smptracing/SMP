@@ -43,6 +43,7 @@
                                 "language":idioma_espanol
                     });  
                     IndicadorData("#table-Indicador",table); //TRAER LA DATA DEL INDICADOR PARA ACTUALIZARLA                           
+                    EliminarIndicador("#table-Indicador",table);
                 }
    /*fin de listar indicadores en el datatable*/
 
@@ -75,5 +76,34 @@
                     });
                 }
           // FIN DE CAMPOS QUE SE ACTUALIZARAN DEL INDICADOR
-        
+          //ELIMINAR UN INDICADOR
+            var EliminarIndicador=function(tbody,table){
+                  $(tbody).on("click","button.eliminar",function(){
+                        var data=table.row( $(this).parents("tr")).data();
+                        var id_indicador=data.id_indicador;
+                        swal({
+                                title: "Esta seguro que desea eliminar el indicador?",
+                                text: "",
+                                type: "warning",
+                                showCancelButton: true,
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "SI,ELIMINAR",
+                                closeOnConfirm: false
+                              },
+                              function(){
+                        $.ajax({
+                        url:base_url+"index.php/Indicador/DeleteIndicador",
+                        type:"POST",
+                        data:{id_indicador:id_indicador},
+                        success:function(respuesta)
+                        {
+                           swal("ELIMINADO!", "Se elimino correctamente el indicador.", "success");
+                          $('#table-Indicador').dataTable()._fnAjaxUpdate();
+                        }//para actualizar mi datatablet datatablet
+                    });
+                  });
+                 });
+              }
+
+  //FIN ELIMINAR UNA INDICADOR
 //-----------------------FIN MANTENIMIENTO DE INDICADOR ----------------------------

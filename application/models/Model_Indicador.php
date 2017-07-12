@@ -50,6 +50,21 @@ class Model_Indicador extends CI_Model
               }
         }
 //FIN MODIFICAR INDICADOR
+        //ELIMINAR UN INDICADOR
+         function DeleteIndicador($id_indicador)
+        {
+           $this->db->query("execute sp_Indicador_d '".$id_indicador."' ");
+            if ($this->db->affected_rows() > 0) 
+              {
+                return true;
+              }
+              else
+              {
+                return false;
+              }
+
+        }
+//FIN ELIMINAR UN INDICADOR
 //------------------FIN METODOS DEL INDICADOR----------------------
     
 }

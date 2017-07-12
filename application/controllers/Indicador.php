@@ -7,10 +7,7 @@ public function __construct(){
       parent::__construct();
       $this->load->model('Model_Indicador');
 	}
-	public function index()
-	{
-		$this->_load_layout('Front/Pmi/frmMantenimientoBrecha');
-	}
+	
 
  //----------------MANTENIMIENTO DE LOS DATOS DE INDICADOR---------------------
 
@@ -69,6 +66,25 @@ public function __construct(){
 	    }
  	 }
 //FIN ACTUALIZAR O MODIFICAR DATOS DEL INDICADOR
+
+ 	 //ELIMINAR INDICADOR
+ 	 function DeleteIndicador()
+ 	 {
+ 	 	if($this->input->is_ajax_request()) 
+	    {
+
+	      $id_indicador=$this->input->post("id_indicador");
+	     if($this->Model_Indicador->DeleteIndicador($id_indicador)== false)
+		       echo "Se elimino Indicador";
+		      else
+		      echo "No se elimino indicador"; 
+		 } 
+	     else
+	     {
+	      show_404();
+	      }
+ 	 }
+ 	 //FIN ELIMINAR INDICADOR
 //----------------FIN MANTENIMIENTO DE LOS DATOS DE INDICADOR-------------------
 
 	function _load_layout($template)

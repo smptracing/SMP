@@ -170,7 +170,7 @@ $(document).on("ready" ,function()
                         "url":base_url +"index.php/FuenteFinanciamiento/get_FuenteFinanciamiento",
                         type:"POST",
                         success : function(respuesta){
-                           alert(respuesta);
+                           //alert(respuesta);
                          var registros = eval(respuesta);
                             for (var i = 0; i <registros.length;i++) {
                               htmlFuentFin +="<option value="+registros[i]["id_fuente_finan"]+"> "+ registros[i]["nombre_fuente_finan"]+" </option>";   
@@ -397,7 +397,7 @@ $(document).on("ready" ,function()
                         type:"POST",
                         data:{id_fuente_finan:id_fuente_finan},
                         success : function(respuesta){
-                           alert(respuesta);
+                           //alert(respuesta);
                          var registros = eval(respuesta);
                             for (var i = 0; i <registros.length;i++) {
                               html +="<option value="+registros[i]["id_rubro"]+"> "+ registros[i]["nombre_rubro"]+" </option>";   
