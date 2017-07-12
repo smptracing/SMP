@@ -304,19 +304,19 @@
                                 <div class="col-md-4">
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <label for="name">Departamento<span class="required">*</span></label>
-                                        <select id="departamento" name="departamento" class="selectpicker" title="Seleccione valor"></select>
+                                        <select id="departamento" name="departamento" class="selectpicker" title="Elija departamento"></select>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <label for="textbox"><span class="required">Provincia</span></label>
-                                        <select  id="provincia"  name="provincia" class="selectpicker" multiple title="Seleccione departamento" disabled="disabled"></select>
+                                        <select  id="provincia"  name="provincia" class="selectpicker" multiple title="Elija provincia(s)" disabled="disabled"></select>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <label for="textbox"><span class="required">Distrito</span></label>
-                                        <select name="distrito" id="distrito"  class="selectpicker"  multiple title="Seleccione una o varias provincias" disabled="disabled"></select>
+                                        <select name="distrito" id="distrito"  class="selectpicker"  multiple title="Elija distrito" disabled="disabled"></select>
                                         <input type="hidden" id="distritosM" name="distritosM" multiple>
                                     </div>
                                 </div>
@@ -325,19 +325,19 @@
                                 <div class="col-md-4">
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <label for="name" style="text-align:left">Funcion<span class="required">*</span></label>
-                                        <select id="cbxFuncion" name="cbxFuncion" class="selectpicker" title="Seleccione valor"></select>
+                                        <select id="cbxFuncion" name="cbxFuncion" class="selectpicker" title="Elija función"></select>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <label  for="textbox"><span class="required">Division</span></label>
-                                        <select id="cbxDivFunc" name="cbxDivFunc" class="selectpicker" title="Seleccione función" disabled="disabled"></select>
+                                        <select id="cbxDivFunc" name="cbxDivFunc" class="selectpicker" title="Elija división" disabled="disabled"></select>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <label for="textbox"><span class="required">Grupo</span></label>
-                                        <select id="cbxGrupoFunc" name="cbxGrupoFunc" class="selectpicker"  title="Seleccione división" disabled="disabled"></select>
+                                        <select id="cbxGrupoFunc" name="cbxGrupoFunc" class="selectpicker"  title="Elija grupo" disabled="disabled"></select>
                                     </div>
                                 </div>
                             </div>
@@ -892,12 +892,10 @@
 		$('#form-addProyectoInversion').formValidation(
 	    {
 	        framework: 'bootstrap',
-	        icon:
-	        {
-	            valid: 'glyphicon glyphicon-ok',
-	            invalid: 'glyphicon glyphicon-remove',
-	            validating: 'glyphicon glyphicon-refresh'
-	        },
+            excluded: [':disabled', ':hidden', ':not(:visible)'],
+            live: 'enabled',
+            message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+            trigger: null,
 	        fields:
 	        {
 	            txtCodigoUnico:
@@ -906,12 +904,12 @@
 	                {
 	                    notEmpty:
 	                    {
-	                        message: 'El campo "Código único" es requerido.'
+	                        message: '<b style="color: red;">El campo "Código único" es requerido.</b>'
 	                    },
 	                    regexp:
 	                    {
 	                        regexp: /^\d*$/,
-	                        message: 'El campo "Código único" debe ser un número entero.'
+	                        message: '<b style="color: red;">El campo "Código único" debe ser un número entero.</b>'
 	                    }
 	                }
 	            },
@@ -921,7 +919,7 @@
 	            	{
 	            		notEmpty:
 	            		{
-	            			message: 'El campo "Nombre de inversión" es requerido.'
+	            			message: '<b style="color: red;">El campo "Nombre de inversión" es requerido.</b>'
 	            		}
 	            	}
 	            },
@@ -931,12 +929,12 @@
 	            	{
 	            		notEmpty:
 	            		{
-	            			message: 'El campo "Inversión" es requerido.'
+	            			message: '<b style="color: red;">El campo "Inversión" es requerido.</b>'
 	            		},
 	            		regexp:
 	                    {
-	                        regexp: /^(\d+([\.]{1}\d{1,2})?)*$/,
-	                        message: 'El campo "Costo de inversión" debe ser un valor en soles.'
+	                        regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
+	                        message: '<b style="color: red;">El campo "Costo de inversión" debe ser un valor en soles.</b>'
 	                    }
 	            	}
 	            }
