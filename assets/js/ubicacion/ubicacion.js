@@ -1,87 +1,127 @@
 $(document).on("ready",inicio);
 
-function inicio(){
- 
-    html="";
-
-    $("#cbxUnidadEjecutora").change(function(){//para  provincias en el combo
-		    html="";
-			   departamento();	 
-		});
+function inicio()
+{
+	departamento();
    
-	    $("#departamento").change(function(){//para  provincias en el combo
-		    html="";
-			IdDepartamento= $("#departamento").val();
-			MosProvincias(IdDepartamento);
-		     $('.selectpicker').selectpicker('refresh');	 
-		});
-		 $("#provincia").change(function(){//para  distraitos en el combo
-            
-		     html="";
-			 IdProvincia= $("#provincia").val();
-			 MosDistritos(IdProvincia);
-		});
+	$("#departamento").change(function()
+	{
+		IdDepartamento=$("#departamento").val();
 
-//CARGAR DATOS EN COMBOBOX DE NATURALEZA DE INVERSION
-             $("#distrito").change(function(){//para cargar en agregar division funcionañ
-                    
-				html="";
-				Iddistrito= $("#distrito").val();
-	            listarUbigeo(Iddistrito); //Distrito contiene el idubigeo completo para la insercion
-             });
-              //FIN CARGAR DATOS EN COMBOBOX DE NATURALEZA DE INVERSION
+		MosProvincias(IdDepartamento);
+
+		$('#provincia').removeAttr('disabled');
+		$('#distrito').attr('disabled', 'disabled');
+
+		$('#provincia').html('');
+		$('#distrito').html('');
+
+		$('.selectpicker').selectpicker('refresh');
+	});
+
+	$("#provincia").change(function()
+	{
+		$('#distrito').html('');
+		
+		if($("#provincia").val()==null)
+		{
+			$('#distrito').attr('disabled', 'disabled');
+		}
+		else
+		{
+			IdProvincia=$("#provincia").val();
+
+			MosDistritos(IdProvincia);
+
+			$('#distrito').removeAttr('disabled');
+		}
+
+		$('.selectpicker').selectpicker('refresh');
+	});
+
+	$("#distrito").change(function()
+	{
+		Iddistrito= $("#distrito").val();
+		
+		listarUbigeo(Iddistrito);
+	});
 }
 
-function   MosDistritos(IdProvincia){
-	 event.preventDefault();
-		
-		$.ajax({
+function MosDistritos(IdProvincia)
+{
+	event.preventDefault();
+
+	var htmlTemp='';
+
+	$.ajax(
+	{
 		url:base_url+"index.php/MUbicacion/get_distritos",
 		type:"POST",
-		data:{IdProvincia:IdProvincia},
-		success:function(respuesta){
-			//alert(respuesta);
+		data: { IdProvincia : IdProvincia },
+		success : function(respuesta)
+		{
 			var registros = eval(respuesta);
-			for (var i = 0; i < registros.length; i++) {
-              html +="<option value="+registros[i]["distritos"]+"> "+registros[i]["distritos"]+" </option>";   
+
+			for(var i=0; i<registros.length; i++)
+			{
+				htmlTemp +="<option value="+registros[i]["distritos"]+"> "+registros[i]["distritos"]+" </option>";   
 			};
-			$("#distrito").html(html);
-             $('.selectpicker').selectpicker('refresh');
-				
+
+			$("#distrito").html(htmlTemp);
+
+			$('.selectpicker').selectpicker('refresh');
 		}
 	});
 }
-function  MosProvincias(IdDepartamento){
-	 event.preventDefault();
-		
-		$.ajax({
+
+function MosProvincias(IdDepartamento)
+{
+	event.preventDefault();
+
+	var htmlTemp='';
+
+	$.ajax(
+	{
 		url:base_url+"index.php/MUbicacion/get_provincias",
 		type:"POST",
-		data:{IdDepartamento:IdDepartamento},
-		success:function(respuesta){
-			var registros = eval(respuesta);
-			for (var i = 0; i < registros.length; i++) {
-              html +="<option value="+registros[i]["provincias"]+"> "+registros[i]["provincias"]+" </option>";   
+		data: { IdDepartamento : IdDepartamento },
+		success : function(respuesta)
+		{
+			var registros=eval(respuesta);
+
+			for(var i=0;i<registros.length; i++)
+			{
+				htmlTemp+="<option value="+registros[i]["provincias"]+"> "+registros[i]["provincias"]+" </option>";   
 			};
-			$("#provincia").html(html);
-            $('.selectpicker').selectpicker('refresh');
+
+			$("#provincia").html(htmlTemp);
+
+			$('.selectpicker').selectpicker('refresh');
 		}
 	});
 }
+
 function departamento()
 {
- event.preventDefault();
-		$.ajax({
+	event.preventDefault();
+
+	var htmlTemp='';
+
+	$.ajax(
+	{
 		url:base_url+"index.php/MUbicacion/get_departamento",
 		type:"POST",
-		success:function(respuesta){
-			//alert(respuesta);
-			var registros = eval(respuesta);
-			for (var i = 0; i < registros.length; i++) {
-              html +="<option value="+registros[i]["departamentos"]+"> "+registros[i]["departamentos"]+" </option>";
+		success : function(respuesta)
+		{
+			var registros=eval(respuesta);
+
+			for (var i=0; i< registros.length; i++)
+			{
+				htmlTemp+="<option value="+registros[i]["departamentos"]+"> "+registros[i]["departamentos"]+" </option>";
 			};
-			
-			$("#departamento").html(html);
+
+			$("#departamento").html(htmlTemp);
+
 			$('.selectpicker').selectpicker('refresh');			
 		}
 	});
@@ -96,11 +136,11 @@ function listarUbigeo(Iddistrito){
 		url:base_url+"index.php/MUbicacion/get_distritos",
 		type:"POST",
 		data:{IdProvincia:IdProvincia},
-		success:function(respuesta){
+		success : function(respuesta){
 			//alert(respuesta);
 			var registros = eval(respuesta);
 			for (var i = 0; i < registros.length; i++) {
-              html +="<option value="+registros[i]["distritos"]+"> "+registros[i]["distritos"]+" </option>";   
+              html+="<option value="+registros[i]["distritos"]+"> "+registros[i]["distritos"]+" </option>";   
 			};
 			$("#distrito").html(html);
              $('.selectpicker').selectpicker('refresh');

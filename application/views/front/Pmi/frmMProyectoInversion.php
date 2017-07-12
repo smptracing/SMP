@@ -59,7 +59,10 @@
 
                                                                 <div class="col-md-2">
                                                                     <form action="<?php echo base_url('index.php/ReporteProgramacion/action'); ?>" method="POST" >
-                                                                       <button  type="submit" class="btn btn-primary">  <span class="fa fa-file-text"></span> Exportar excel</button>
+
+                                                                      <input type="hidden" id="hdAnioCartera" name="hdAnioCartera" value="<?=(isset($anio) ? $anio : date('Y'))?>">
+                                                                      <button  type="submit" class="btn btn-primary">  <span class="fa fa-file-text"></span> Exportar excel</button>
+
                                                                     </form>
                                                                 </div>
                                                                <div class="col-md-2">
@@ -77,7 +80,7 @@
                                                                   <th class="col-sm-1"><center>Inversión</center></th>
                                                                   <th class="col-sm-1"><center>Prioridad</center></th>
                                                                   <th class="col-sm-1"><center>Brecha</center></th>
-                                                                  <th class="col-sm-1"><center><div id="programacion1">
+                                                                  <th class="col-sm-1"><center><div class="programacion1">
                                                                   <?php if (isset($anio) && $anio == "") {?>
                                                                              <h6><label id="AnioProgramadoActual"></label></h6></center></div></th>
                                                                   <?php } else {?>
@@ -85,7 +88,7 @@
                                                                   <?php }?>
 
 
-                                                                  <th class="col-sm-1"><center><div id="programacion2">
+                                                                  <th class="col-sm-1"><center><div class="programacion2">
                                                                   <?php if (isset($anio) && $anio == "") {?>
                                                                             <h6><label id="AnioProgramadoActual1"></label></h6></center></div></th>
                                                                   <?php } else {?>
@@ -93,21 +96,21 @@
                                                                   <?php }?>
 
 
-                                                                  <th class="col-sm-1"><center><div id="programacion3">
+                                                                  <th class="col-sm-1"><center><div class="programacion3">
                                                                   <?php if (isset($anio) && $anio == "") {?>
                                                                             <h6><label id="AnioProgramadoActual2"></label></h6></center></div></th>
                                                                   <?php } else {?>
                                                                   <?php echo (isset($anio) ? $anio+3 : date('Y')+3); ?></center></div></th>
                                                                   <?php }?>
 
-                                                                  <th class="col-sm-1"><center><div id="programacion1">
+                                                                  <th class="col-sm-1"><center><div class="programacion1">
                                                                     <?php if (isset($anio) && $anio == "") {?>
                                                                             <h6><label id="AnioProgramadoActualM"></label></h6></center></div></th>
                                                                   <?php } else {?>
                                                                   <?php echo (isset($anio) ? $anio+1 : date('Y')+1); ?></center></div></th>
                                                                   <?php }?>
 
-                                                                  <th class="col-sm-1"><center><div id="programacion2">
+                                                                  <th class="col-sm-1"><center><div class="programacion2">
                                                                   <?php if (isset($anio) && $anio == "") {?>
                                                                             <h6><label id="AnioProgramadoActualM1"></label></h6></center></div></th>
                                                                   <?php } else {?>
@@ -115,7 +118,7 @@
                                                                   <?php }?>
 
 
-                                                                  <th class="col-sm-1"><center><div id="programacion3">
+                                                                  <th class="col-sm-1"><center><div class="programacion3">
                                                                   <?php if (isset($anio) && $anio == "") {?>
                                                                             <h6><label id="AnioProgramadoActualM2"></label></h6></center></div></th>
                                                                   <?php } else {?>
@@ -237,26 +240,21 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                             <label  for="name">Tipo inversion<span class="required">*</span>
                                         </label>
-                                            <select id="cbxTipoInv" name="cbxTipoInv" class="selectpicker"   title="Elija tipo de inversion">
+                                            <select id="cbxTipoInv" name="cbxTipoInv" class="selectpicker">
                                             </select>
                                          </div>
                                       </div>
                                       <div class="col-md-4">
-
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                             <label for="textbox"><span class="required">Ciclo de Inversion</span>
-                                        </label>
-                                             <select id="cbxEstadoCicloInv" name="cbxEstadoCicloInv" class="selectpicker" title="Elija el estado ciclo de inversion">
-                                               </select>
+                                              <label for="textbox"><span class="required">Ciclo de Inversion</span></label>
+                                              <select id="cbxEstadoCicloInv" name="cbxEstadoCicloInv" class="selectpicker"></select>
                                             </div>
                                       </div>
                                        <div class="col-md-4">
 
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                               <label  for="textbox"><span class="required">Tipologia de Inversion</span>
-                                                </label>
-                                               <select id="cbxTipologiaInv" name="cbxTipologiaInv" class="selectpicker"   title="Elija tipologia">
-                                               </select>
+                                                <label  for="textbox"><span class="required">Tipologia de Inversion</span></label>
+                                                <select id="cbxTipologiaInv" name="cbxTipologiaInv" class="selectpicker"></select>
                                             </div>
                                       </div>
                               </div>
@@ -306,69 +304,47 @@
                                       </div>
                               </div>
 
-                               <div class="row">
-
-                                      <div class="col-md-4">
-
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <label for="name">Departamento<span class="required">*</span>
-                                        </label>
-                                             <select id="departamento" name="departamento" class="selectpicker"   title="Seleccione un Departamento">
-
-                                              </select>
-                                         </div>
-                                      </div>
-                                      <div class="col-md-4">
-
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                             <label for="textbox"><span class="required">Provincia</span>
-                                        </label>
-                                              <select  id="provincia"  name="provincia" class="selectpicker" multiple title="Seleccione una o mas provincias" >
-                                              </select>
-                                            </div>
-                                      </div>
-                                       <div class="col-md-4">
-
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                              <label  for="textbox"><span class="required">Distrito</span>
-                                              </label>
-                                              <select name="distrito" id="distrito"  class="selectpicker"  multiple title="Seleccione una o distritos">
-                                              </select>
-                                              <input type="hidden" id="distritosM" name="distritosM" multiple title="Seleccione Provincia" >
-                                            </div>
-                                      </div>
-                              </div>
-
-                               <div class="row">
-
-                                      <div class="col-md-4">
-
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <label for="name" style="text-align:left">Funcion<span class="required">*</span>
-                                        </label>
-                                             <select id="cbxFuncion" name="cbxFuncion" class="selectpicker"   title="Elija una funcion">
-                                             </select>
-                                         </div>
-                                      </div>
-                                      <div class="col-md-4">
-
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                             <label  for="textbox"><span class="required">Division</span>
-                                        </label>
-                                               <select id="cbxDivFunc" name="cbxDivFunc" class="selectpicker"  title="Elija division funcional">
-                                            </select>
-                                            </div>
-                                      </div>
-                                       <div class="col-md-4">
-
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                          <label for="textbox"><span class="required">Grupo</span>
-                                        </label>
-                                                <select id="cbxGrupoFunc" name="cbxGrupoFunc" class="selectpicker"  title="Elija grupo funcional">
-                                            </select>
-                                            </div>
-                                      </div>
-                              </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <label for="name">Departamento<span class="required">*</span></label>
+                                        <select id="departamento" name="departamento" class="selectpicker" title="Elija departamento"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <label for="textbox"><span class="required">Provincia</span></label>
+                                        <select  id="provincia"  name="provincia" class="selectpicker" multiple title="Elija provincia(s)" disabled="disabled"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <label for="textbox"><span class="required">Distrito</span></label>
+                                        <select name="distrito" id="distrito"  class="selectpicker"  multiple title="Elija distrito" disabled="disabled"></select>
+                                        <input type="hidden" id="distritosM" name="distritosM" multiple>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <label for="name" style="text-align:left">Funcion<span class="required">*</span></label>
+                                        <select id="cbxFuncion" name="cbxFuncion" class="selectpicker" title="Elija función"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <label  for="textbox"><span class="required">Division</span></label>
+                                        <select id="cbxDivFunc" name="cbxDivFunc" class="selectpicker" title="Elija división" disabled="disabled"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <label for="textbox"><span class="required">Grupo</span></label>
+                                        <select id="cbxGrupoFunc" name="cbxGrupoFunc" class="selectpicker"  title="Elija grupo" disabled="disabled"></select>
+                                    </div>
+                                </div>
+                            </div>
 
                                   <hr>
                                    <div class="row">
@@ -389,12 +365,10 @@
                                             </div>
                                       </div>
                                        <div class="col-md-4">
-
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                               <label  for="textbox"><span class="required">PIM</span>
-                                                </label>
-                                                 <select id="cbxMetaPresupuestal" name="cbxMetaPresupuestal" class="selectpicker"   title="Elija PIM">
-                                                 </select>
+                                           <div class="col-md-11 col-sm-6 col-xs-12">
+                                             <label for="textbox"><span class="required">PIM</span>
+                                             </label>
+                                              <select id="cbxMetaPresupuestal" name="cbxMetaPresupuestal" class="selectpicker"  title="Elija Nro Meta"></select>
                                             </div>
                                       </div>
                               </div>
@@ -702,10 +676,11 @@
                           <div class="ln_solid"></div>
                           <div class="form-group">
                             <div class="col-md-6 col-md-offset-3">
-                               
+                               <button type="submit" class="btn btn-success">
+                               <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>Guardar</button>
                               <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                                  <button id="btn-GuardarMontoProgramadoOper"  class="btn btn-success">
-                               <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>Guardar</button>
+                               <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>Guardar1</button>
                             </div>
                           </div>
                         </form>
@@ -922,12 +897,10 @@
 		$('#form-addProyectoInversion').formValidation(
 	    {
 	        framework: 'bootstrap',
-	        icon:
-	        {
-	            valid: 'glyphicon glyphicon-ok',
-	            invalid: 'glyphicon glyphicon-remove',
-	            validating: 'glyphicon glyphicon-refresh'
-	        },
+            excluded: [':disabled', ':hidden', ':not(:visible)'],
+            live: 'enabled',
+            message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+            trigger: null,
 	        fields:
 	        {
 	            txtCodigoUnico:
@@ -936,12 +909,12 @@
 	                {
 	                    notEmpty:
 	                    {
-	                        message: 'El campo "Código único" es requerido.'
+	                        message: '<b style="color: red;">El campo "Código único" es requerido.</b>'
 	                    },
 	                    regexp:
 	                    {
 	                        regexp: /^\d*$/,
-	                        message: 'El campo "Código único" debe ser un número entero.'
+	                        message: '<b style="color: red;">El campo "Código único" debe ser un número entero.</b>'
 	                    }
 	                }
 	            },
@@ -951,7 +924,7 @@
 	            	{
 	            		notEmpty:
 	            		{
-	            			message: 'El campo "Nombre de inversión" es requerido.'
+	            			message: '<b style="color: red;">El campo "Nombre de inversión" es requerido.</b>'
 	            		}
 	            	}
 	            },
@@ -961,12 +934,12 @@
 	            	{
 	            		notEmpty:
 	            		{
-	            			message: 'El campo "Inversión" es requerido.'
+	            			message: '<b style="color: red;">El campo "Inversión" es requerido.</b>'
 	            		},
 	            		regexp:
 	                    {
-	                        regexp: /^(\d+([\.]{1}\d{1,2})?)*$/,
-	                        message: 'El campo "Costo de inversión" debe ser un valor en soles.'
+	                        regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
+	                        message: '<b style="color: red;">El campo "Costo de inversión" debe ser un valor en soles.</b>'
 	                    }
 	            	}
 	            }

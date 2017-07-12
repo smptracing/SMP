@@ -8,9 +8,9 @@ class Model_RubroE extends CI_Model
           }
 //----------------------METODOS PARA EL MANTENIMIENTO DE RUBRO DE EJECUCION--------------------------------------------
     //AGREGAR UN RUBRO DE EJECUCION
-      function AddRubroE($txt_NombreRubroE)
+      function AddRubroE($listaFuenteFinanc,$txt_NombreRubroE)
         {
-           $this->db->query("execute sp_Rubro_c'".$txt_NombreRubroE."'");
+           $this->db->query("execute sp_Rubro_c'".$listaFuenteFinanc."','".$txt_NombreRubroE."'");
             if ($this->db->affected_rows() > 0) 
               {
                 return true;
@@ -36,7 +36,16 @@ class Model_RubroE extends CI_Model
    
         } 
     //FIN LISTAR UN RUBRO DE EJECUCION 
-
+        function GetRubroId($id_fuente_finan){
+          $rubroF=$this->db->query("execute sp_FuenteFinanRubro_r'".$id_fuente_finan."'");//listar de division funcional
+            if($rubroF->num_rows()>0)
+             {
+              return $rubroF->result();
+             }else
+             {
+              return null;
+             }
+        }
     //MODIFICAR DATOS DE LOS RUBROS
          function UpdateRubroE($id_rubro_ejecucion,$nombre_ejecucion)
         {

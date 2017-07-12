@@ -1,9 +1,6 @@
  $(document).on("ready" ,function(){
-
                 listaNaturalezaInversion();/*llamar a mi datatablet listar funcion*/
               //abrir el modal para registrar
-
-
 //REGISTARAR NUEVA NATURALEZA INVERSION
    $("#form-AddNaturalezaInversion").submit(function(event)
                   {
@@ -26,11 +23,7 @@
                          }
                       });
                   });
-
-
-
       //limpiar campos
-
           function formReset()
           {
           document.getElementById("form-AddNaturalezaInversion").reset();
@@ -51,8 +44,6 @@
                          }
                       });
                   });
-
-
       });
          /*listra funcion*/
                 var listaNaturalezaInversion=function()
@@ -68,7 +59,6 @@
                                       "dataSrc":""
                                     },
                                 "columns":[
-                                   {"defaultContent":" "},
                                    {"data":"id_naturaleza_inv"  },
                                    {"data":"nombre_naturaleza_inv"},
                                   {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaRegNaturalezaInversion'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
@@ -87,8 +77,6 @@
                         var data=myTable.row( $(this).parents("tr")).data();
                         var txt_IdNaturalezaM=$('#txt_IdNaturalezaM').val(data.id_naturaleza_inv);
                         var txt_NombreNaturalezaM=$('#txt_NombreNaturalezaM').val(data.nombre_naturaleza_inv);
-
-
                     });
                 }
 var EliminarNaturalezaData=function(tbody,table){

@@ -33,11 +33,11 @@ class ProyectoInversion extends CI_Controller {/* Mantenimiento de sector entida
         $txtLongitud="1.2";
         $cbxEstadoCicloInv=$this->input->post("id_estado_ciclo");
         $dateFechaEstCicInv="2017-03-01";
-        $cbxFuenteFinanc=$this->input->post("id_fuente_finan");
-        $dateFechaFuenteFinanc="2017-03-01";
+        $cbxRubro=$this->input->post("id_rubro");
+        $dateFechaRubro="2017-03-01";
         $cbxModalidadEjec=$this->input->post("id_modalidad_ejec");
         $dateFechaModalidadEjec="2017-03-01";
-       if($this->Model_ProyectoInversion->AddProyecto($cbxUnidadEjecutora,$cbxNatI,$cbxTipologiaInv,$cbxTipoInv,$cbxGrupoFunc,$cbxNivelGob,$cbxMetaPresupuestal,$cbxProgramaPres,$txtCodigoUnico,$txtNombrePip,$txtCostoPip,$txtDevengado,$dateFechaInPip,$dateFechaViabilidad,$distrito,$txtDireccionUbigeo,$txtLatitud,$txtLongitud,$cbxEstadoCicloInv,$dateFechaEstCicInv,$cbxFuenteFinanc,$dateFechaFuenteFinanc,$cbxModalidadEjec,$dateFechaModalidadEjec) == true)
+       if($this->Model_ProyectoInversion->AddProyecto($cbxUnidadEjecutora,$cbxNatI,$cbxTipologiaInv,$cbxTipoInv,$cbxGrupoFunc,$cbxNivelGob,$cbxMetaPresupuestal,$cbxProgramaPres,$txtCodigoUnico,$txtNombrePip,$txtCostoPip,$txtDevengado,$dateFechaInPip,$dateFechaViabilidad,$distrito,$txtDireccionUbigeo,$txtLatitud,$txtLongitud,$cbxEstadoCicloInv,$dateFechaEstCicInv,$cbxRubro,$dateFechaRubro,$cbxModalidadEjec,$dateFechaModalidadEjec) == true)
           echo "Se añadio un proyecto";
         else
           echo "Se añadio  un proyecto";  

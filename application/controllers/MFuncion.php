@@ -15,19 +15,21 @@ class MFuncion extends CI_Controller {/* Mantenimiento de division funcional y g
 	}
     /*fin pagina principal de la vista */
     
-    /* Funcion*/
-	 function GetFuncion()
+	/* Funcion*/
+	function GetFuncion()
 	{
-		if ($this->input->is_ajax_request()) 
+		if($this->input->is_ajax_request()) 
 		{
-		$datos=$this->Model_Funcion->GetFuncion();
-		echo json_encode($datos);
+			$datos=$this->Model_Funcion->GetFuncion();
+
+			echo json_encode($datos);
 		}
 		else
 		{
 			show_404();
 		}
 	}
+
 	function AddFucion()
          {
               if ($this->input->is_ajax_request()) 

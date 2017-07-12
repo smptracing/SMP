@@ -8,17 +8,14 @@ class Model_GrupoFuncional extends CI_Model
             // $this->db->free_db_resource();
 
           }
-    function GetGrupoFuncional()
-          {
-              $GrupoFuncional=$this->db->query("execute sp_GrupoFuncional_r");//listar de division funcional
-              if($GrupoFuncional->num_rows()>0)
-               {
-                return $GrupoFuncional->result();
-               }else
-               {
-                return null;
-               }  
-          }
+
+	function GetGrupoFuncional()
+	{
+		$GrupoFuncional=$this->db->query("execute sp_GrupoFuncional_r");//listar de division funcional
+		
+		return $GrupoFuncional->result();
+	}
+
           function GetGrupoFuncionalId($id_div_funcional){
             $GrupoFuncional=$this->db->query("execute sp_DivisionGrupo_r'".$id_div_funcional."' ");//listar de division funcional
               if($GrupoFuncional->num_rows()>0)

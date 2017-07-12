@@ -44,12 +44,6 @@
    #ProgramacionHorizontal{
       width: 100% !important;
     }
-
-    i[class*="form-control-feedback"]
-    {
-      top:  18px;
-      right: 3px;
-    }
   </style>
 
   <!-- jQuery -->

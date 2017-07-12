@@ -116,74 +116,76 @@
         //fin grupo funcional
 
 			});
-			   /*listra funcion*/
-                var listaFuncion=function()
+    /*listra funcion*/
+    var listaFuncion=function()
+    {
+        var table=$("#table-Funcion").DataTable(
+        {
+            "processing" : true,
+            "serverSide" : false,
+            "destroy" : true,
+            "language" : idioma_espanol,
+            "ajax" :
+            {
+                "url" : base_url+"index.php/MFuncion/GetFuncion",
+                "method" : "POST",
+                "dataSrc" : ""
+            },
+            "columns" : [
+                { "data" : "id_funcion" },
+                { "data" : "codigo_funcion" },
+                { "data" : "nombre_funcion" },
+                { "defaultContent" : "<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaModificarFuncion'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>" }]
+        });
+
+        FuncionData("#table-Funcion", table);
+        EliminarFuncion("#table-Funcion", table);
+    }
+
+    var FuncionData=function(tbody, table)
+    {
+        $(tbody).on("click", "button.editar", function()
+        {
+            var data=table.row( $(this).parents("tr")).data();
+            var txt_IdfuncionM=$('#txt_IdfuncionM').val(data.id_funcion);
+            var txt_codigofuncionM=$('#txt_codigofuncionM').val(data.codigo_funcion);
+            var txt_nombrefuncionM=$('#txt_nombrefuncionM').val(data.nombre_funcion);
+        });
+    }
+
+    var EliminarFuncion=function(tbody,table)
+    {
+        $(tbody).on("click", "button.eliminar", function()
+        {
+            var data=table.row($(this).parents("tr")).data();
+            
+            swal(
+            {
+                title : "Desea eliminar funcion?",
+                text : "",
+                type : "warning",
+                showCancelButton : true,
+                confirmButtonColor : "#DD6B55",
+                confirmButtonText : "Yes,Eliminar",
+                closeOnConfirm : false
+            },
+            function()
+            {
+                $.ajax(
                 {
-                    var table=$("#table-Funcion").DataTable({
-                     "processing":true,
-                     "serverSide":false,
-                     destroy:true,
+                    "url" : base_url+"index.php/MSectorEntidadSpu/EliminarSector1",
+                    "type" : "POST",
+                    "data" : { "id_sector" : id_sector },
+                    "success" : function(respuesta)
+                    {
+                        swal("Eliminado!", "Se elimino corectamente el sector.", "success");
 
-                         "ajax":{
-                                    "url":base_url+"index.php/MFuncion/GetFuncion",
-                                    "method":"POST",
-                                    "dataSrc":""
-                                    },
-                                "columns":[
-                                    {"data":"id_funcion"},
-                                    {"data":"codigo_funcion"},
-                                    {"data":"nombre_funcion"},
-                                    {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaModificarFuncion'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
-                                ],
-
-                                "language":idioma_espanol
-                    });
-                    FuncionData("#table-Funcion",table);  //obtener data de funcion para agregar  AGREGAR                 
-                    EliminarFuncion("#table-Funcion",table);      
-
-                        			   	
-                }
-
-                var FuncionData=function(tbody,table){
-                       $(tbody).on("click","button.editar",function(){
-                        var data=table.row( $(this).parents("tr")).data();
-                        var txt_IdfuncionM=$('#txt_IdfuncionM').val(data.id_funcion);
-                        var txt_codigofuncionM=$('#txt_codigofuncionM').val(data.codigo_funcion);
-                        var txt_nombrefuncionM=$('#txt_nombrefuncionM').val(data.nombre_funcion);
-
-
-                    });
-                }
-
-                var EliminarFuncion=function(tbody,table){
-                  $(tbody).on("click","button.eliminar",function(){
-                        var data=table.row( $(this).parents("tr")).data();
-                        //var id_sector=data.id_sector;
-                        console.log(data);
-                         swal({
-                                title: "Desea eliminar funcion?",
-                                text: "",
-                                type: "warning",
-                                showCancelButton: true,
-                                confirmButtonColor: "#DD6B55",
-                                confirmButtonText: "Yes,Eliminar",
-                                closeOnConfirm: false
-                              },
-                              function(){
-                                    $.ajax({
-                                          url:base_url+"index.php/MSectorEntidadSpu/EliminarSector1",
-                                          type:"POST",
-                                          data:{id_sector:id_sector},
-                                          success:function(respuesta){
-                                            //alert(respuesta);
-                                            swal("Eliminado!", "Se elimino corectamente el sector.", "success");
-                                            $('#table-sector').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
-
-                                          }
-                                        });
-                              });
-                    });
-                }
+                        $('#table-sector').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
+                    }
+                });
+            });
+        });
+    }
                 var listaFuncionCombo=function(valor)//COMO CON LAS FUNCIONES PARA AGREGAR DIVIVISION FUNCIONAL
                 {
                     html="";

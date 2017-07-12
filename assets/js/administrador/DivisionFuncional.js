@@ -38,78 +38,81 @@
                       });
                   });
 			});
-			   /*listra funcion*/
-                var listaFuncionCombo=function(valor)//COMO CON LAS FUNCIONES PARA AGREGAR DIVIVISION FUNCIONAL
+    /*listra funcion*/
+    var listaFuncionCombo=function(valor)//COMO CON LAS FUNCIONES PARA AGREGAR DIVIVISION FUNCIONAL
+    {
+        event.preventDefault(); 
+
+        var htmlTemp="";
+
+        $("#listaFuncionC").html(htmlTemp);
+
+        $.ajax(
+        {
+            "url" : base_url +"index.php/Funcion/GetFuncion",
+            type : "POST",
+            success : function(respuesta)
+            {
+                var registros=eval(respuesta);
+
+                for(var i=0; i<registros.length; i++)
                 {
-                    html="";
-                    $("#listaFuncionC").html(html); 
-                    event.preventDefault(); 
-                    $.ajax({
-                        "url":base_url +"index.php/Funcion/GetFuncion",
-                        type:"POST",
-                        success:function(respuesta){
-                           // alert(respuesta);
-                         var registros = eval(respuesta);
-                            for (var i = 0; i <registros.length;i++) {
-                              html +="<option value="+registros[i]["id_funcion"]+"> "+ registros[i]["codigo_funcion"]+": "+registros[i]["nombre_funcion"]+" </option>";   
-                            };
-                            $("#listaFuncionC").html(html);//para modificar las entidades
+                    htmlTemp+="<option value="+registros[i]["id_funcion"]+"> "+ registros[i]["codigo_funcion"]+": "+registros[i]["nombre_funcion"]+" </option>";   
+                };
 
-                            $("#listaFuncionCM").html(html);//para modificar las entidades 
-                            $('select[name=listaFuncionCM]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
-                            $('select[name=listaFuncionCM]').change();
+                $("#listaFuncionC").html(htmlTemp);//para modificar las entidades
+                $("#listaFuncionCM").html(htmlTemp);//para modificar las entidades 
+                $('select[name=listaFuncionCM]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                $('select[name=listaFuncionCM]').change();
 
-                            $('.selectpicker').selectpicker('refresh'); 
-                        }
-                    });
-                }
-                /*fin listar funcion*/
+                $('.selectpicker').selectpicker('refresh'); 
+            }
+        });
+    }
+    /*fin listar funcion*/
                
 
 
-                  /* listar y lista en tabla entidad*/ 
-                var listarDivisionF=function()
-                {
-                    var table=$("#table-DivisionF").DataTable({
+    /* listar y lista en tabla entidad*/ 
+    var listarDivisionF=function()
+    {
+        var table=$("#table-DivisionF").DataTable(
+        {
+            "processing" : true,
+            "serverSide" : false,
+            "destroy" : true,
+            "language" : idioma_espanol,
+            "ajax" :
+            {
+                "url" : base_url+"index.php/DivisionFuncional/GetDivisionFuncional",
+                "method" : "POST",
+                "dataSrc" : ""
+            },
+            "columns" : [
+            { "data" : "id_div_funcional","visible" : false },
+            { "data" : "id_funcion","visible" : false },
+            { "data" : "nombre_funcion" },
+            { "data" : "codigo_div_funcional" },
+            { "data" : "nombre_div_funcional" },
+            { "defaultContent" : "<button type='button'  class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaUpdateDivisionF'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>" }]
+        });
 
-                     "processing":true,
-                     "serverSide":false,
-                     destroy:true,
+        DivisionFuncionData("#table-DivisionF", table);  //obtener data de la division funcional para agregar  AGREGAR                 
+    }
 
-                         "ajax":{
-                                    "url":base_url+"index.php/DivisionFuncional/GetDivisionFuncional",
-                                    "method":"POST",
-                                    "dataSrc":""
-                                    },
-                                "columns":[
-                                    {"data":"id_div_funcional","visible": false},
-                                    {"data":"id_funcion","visible": false},
-                                    {"data":"nombre_funcion"},
-                                    {"data":"codigo_div_funcional"},
-                                    {"data":"nombre_div_funcional"},
-                                    {"defaultContent":"<button type='button'  class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaUpdateDivisionF'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
-                                ],
+    var  DivisionFuncionData=function(tbody, table)
+    {
+        $(tbody).on("click","button.editar",function()
+        {
+            var data=table.row( $(this).parents("tr")).data();
+            var id_funcion=data.id_funcion;
+            var id_DfuncionalM=$('#id_DfuncionalM').val(data.id_div_funcional);
+            var txt_CodigoDfuncionalM=$('#txt_CodigoDfuncionalM').val(data.codigo_div_funcional);
+            var txt_Nombre_DFuncionalM=$('#txt_Nombre_DFuncionalM').val(data.nombre_div_funcional);
 
-                                "language":idioma_espanol
-                    });
-                    DivisionFuncionData("#table-DivisionF",table);  //obtener data de la division funcional para agregar  AGREGAR                 
-                }
-
-                  var  DivisionFuncionData=function(tbody,table){
-                    $(tbody).on("click","button.editar",function(){
-
-                        var data=table.row( $(this).parents("tr")).data();
-                        var id_funcion=data.id_funcion;
-                        console.log(id_funcion);
-                        var id_DfuncionalM=$('#id_DfuncionalM').val(data.id_div_funcional);
-                        var txt_CodigoDfuncionalM=$('#txt_CodigoDfuncionalM').val(data.codigo_div_funcional);
-                        var txt_Nombre_DFuncionalM=$('#txt_Nombre_DFuncionalM').val(data.nombre_div_funcional);
-                          /*$('select[name=listaFuncionCM]').val(id_funcion);//PARA AGREGAR UN COMBO PSELECIONADO
-                          $('select[name=listaFuncionCM]').change();*/
-                           listaFuncionCombo(id_funcion);//para agregar funcion selecionada mandamos parametro
-                    });
-
-                }
+            listaFuncionCombo(id_funcion);//para agregar funcion selecionada mandamos parametro
+        });
+    }
 
                 /*fin crea tabla division funcional*/ 
                 /*crear tabla dinamica servicio publico asociado */

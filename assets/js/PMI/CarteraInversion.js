@@ -96,6 +96,8 @@ function listarCarteraAnios()
 {
 	event.preventDefault();
 
+	var htmlTemp='';
+
 	var anioActualTemp=$('#Aniocartera').val();
 
 	$.ajax(
@@ -109,10 +111,10 @@ function listarCarteraAnios()
 
 			for(var i=0; i<registros.length;i++)
 			{
-				html +="<option "+(anioActualTemp==registros[i]["anios"] ? "selected" : "")+" value="+registros[i]["anios"]+"> "+ registros[i]["anios"]+" </option>";   
+				htmlTemp +="<option "+(anioActualTemp==registros[i]["anios"] ? "selected" : "")+" value="+registros[i]["anios"]+"> "+ registros[i]["anios"]+" </option>";   
 			}
 
-			$("#cbCartera").html(html);
+			$("#cbCartera").html(htmlTemp);
 
 			$('.selectpicker').selectpicker('refresh'); 
 		}
