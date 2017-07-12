@@ -361,12 +361,10 @@
                                             </div>
                                       </div>
                                        <div class="col-md-4">
-
-                                            <div class="col-md-11 col-sm-6 col-xs-12">
-                                               <label  for="textbox"><span class="required">PIM</span>
-                                                </label>
-                                                 <select id="cbxMetaPresupuestal" name="cbxMetaPresupuestal" class="selectpicker"   title="Elija PIM">
-                                                 </select>
+                                           <div class="col-md-11 col-sm-6 col-xs-12">
+                                             <label for="textbox"><span class="required">PIM</span>
+                                             </label>
+                                              <select id="cbxMetaPresupuestal" name="cbxMetaPresupuestal" class="selectpicker"  title="Elija Nro Meta"></select>
                                             </div>
                                       </div>
                               </div>

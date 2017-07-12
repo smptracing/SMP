@@ -43,7 +43,18 @@ class MRubroEjecucion extends CI_Controller
         }
     }
 //FIN LISTAR RUBROS DE EJECUCION
-
+ function GetRubroId(){
+      if ($this->input->is_ajax_request()) 
+        {
+        $id_fuente_finan=$this->input->post('id_fuente_finan');
+        $datos=$this->Model_RubroE->GetRubroId($id_fuente_finan);
+        echo json_encode($datos);
+        }
+        else
+        {
+          show_404();
+        }
+    }
     //ACTUALIZAR O MODIFICAR DATOS DE LOS RUBROS
     public function UpdateRubroE()
     {

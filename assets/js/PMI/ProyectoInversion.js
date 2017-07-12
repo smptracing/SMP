@@ -160,7 +160,46 @@ $(document).on("ready" ,function()
             }
         });
     }
-
+                //TRAER DATOS EN UN COMBO DE CICLO DE INVERSION
+                var listarFuenteFinan=function()
+                {
+                    var htmlFuentFin="";
+                    $("#cbxFuenteFinanc").html(htmlFuentFin); //nombre del selectpicker UNIDAD EJECUTORA
+                    event.preventDefault(); 
+                    $.ajax({
+                        "url":base_url +"index.php/FuenteFinanciamiento/get_FuenteFinanciamiento",
+                        type:"POST",
+                        success : function(respuesta){
+                           alert(respuesta);
+                         var registros = eval(respuesta);
+                            for (var i = 0; i <registros.length;i++) {
+                              htmlFuentFin +="<option value="+registros[i]["id_fuente_finan"]+"> "+ registros[i]["nombre_fuente_finan"]+" </option>";   
+                            }
+                            $("#cbxFuenteFinanc").html(htmlFuentFin);//
+                            $('.selectpicker').selectpicker('refresh'); 
+                        }
+                    });
+                }
+          //FIN TRAER DATOS EN UN COMBO DE CICLO DE INVERSION
+           var listarMetaPresupuestal=function()
+                {
+                    htmlMeta="";
+                    $("#cbxMetaPresupuestal").html(htmlMeta); //nombre del selectpicker UNIDAD EJECUTORA
+                    event.preventDefault(); 
+                    $.ajax({
+                        "url":base_url +"index.php/MetaPresupuestal/GetMetaP",
+                        type:"POST",
+                        success : function(respuesta){
+                           // alert(respuesta);
+                         var registros = eval(respuesta);
+                            for (var i = 0; i <registros.length;i++) {
+                              htmlMeta +="<option value="+registros[i]["id_meta_pres"]+"> "+ registros[i]["numero_meta_pres"]+" </option>";   
+                            }
+                            $("#cbxMetaPresupuestal").html(htmlMeta);//
+                            $('.selectpicker').selectpicker('refresh'); 
+                        }
+                    });
+                }
     listaProyectoInversion();
     listarCicloInversion();
     listarTipologiaInversion();
@@ -168,7 +207,8 @@ $(document).on("ready" ,function()
     listarNivelGobierno();
     listaUnidadEjecutora();
     listarFuncion();
-                 
+    listarFuenteFinan();
+    listarMetaPresupuestal();
     $("#btn-NuevoProyectoI").click(function()
     {
         listarTipoInversion();
@@ -202,10 +242,10 @@ $(document).on("ready" ,function()
         $('.selectpicker').selectpicker('refresh');
     });
 
-    $("#cbxGrupoFunc").change(function()
+   /* $("#cbxGrupoFunc").change(function()
     {
         listarMetaPresupuestal();
-    });
+    });*/
 
               //TRAER EN COMBOBOX DIVISION FUNCIONAL
                //TRAER EN COMBOBOX PIM
@@ -215,7 +255,9 @@ $(document).on("ready" ,function()
               //TRAER EN COMBOBOX DIVISION FUNCIONAL
                //OBTENER DATOS RUBRO DE EJECUCION
               $("#cbxFuenteFinanc").change(function(){//para cargar en agregar division funcionañ
-                    listarRubro();
+                  
+                      var id_fuente_finan=$("#cbxFuenteFinanc").val();
+                        listarRubro(id_fuente_finan);
              }); 
               //FIN OBTENER DATOS RUBRO DE EJECUCION
               //OBTENER DATOS MODALIDAD DE EJECUCION
@@ -273,25 +315,7 @@ $(document).on("ready" ,function()
                 }
           //FIN TRAER DATOS EN GRUPO FUNCIONAL 
              //TRAER DATOS DE META PRESUPUESTAL
-                var listarMetaPresupuestal=function()
-                {
-                    html="";
-                    $("#cbxMetaPresupuestal").html(html); //nombre del selectpicker UNIDAD EJECUTORA
-                    event.preventDefault(); 
-                    $.ajax({
-                        "url":base_url +"index.php/MetaPresupuestal/GetMetaP",
-                        type:"POST",
-                        success : function(respuesta){
-                           // alert(respuesta);
-                         var registros = eval(respuesta);
-                            for (var i = 0; i <registros.length;i++) {
-                              html +="<option value="+registros[i]["id_meta_pres"]+"> "+ registros[i]["pim_meta_pres"]+" </option>";   
-                            }
-                            $("#cbxMetaPresupuestal").html(html);//
-                            $('.selectpicker').selectpicker('refresh'); 
-                        }
-                    });
-                }
+               
           //FIN TRAER DATOS DE META PRESUPUESTAL
              //TRAER DATOS DE PROGRAMA PRESUPUESTAL
                 var listarProgramaPresupuestal=function()
@@ -315,27 +339,7 @@ $(document).on("ready" ,function()
                 }
           //FIN TRAER DATOS DE PROGRAMA PRESUPUESTAL
           
-            //TRAER DATOS EN UN COMBO DE CICLO DE INVERSION
-                var listarFuenteFinan=function()
-                {
-                    html="";
-                    $("#cbxFuenteFinanc").html(html); //nombre del selectpicker UNIDAD EJECUTORA
-                    event.preventDefault(); 
-                    $.ajax({
-                        "url":base_url +"index.php/InformacionPresupuestal/get_FuenteFinanciamiento",
-                        type:"POST",
-                        success : function(respuesta){
-                           // alert(respuesta);
-                         var registros = eval(respuesta);
-                            for (var i = 0; i <registros.length;i++) {
-                              html +="<option value="+registros[i]["id_fuente_finan"]+"> "+ registros[i]["nombre_fuente_finan"]+" </option>";   
-                            }
-                            $("#cbxFuenteFinanc").html(html);//
-                            $('.selectpicker').selectpicker('refresh'); 
-                        }
-                    });
-                }
-          //FIN TRAER DATOS EN UN COMBO DE CICLO DE INVERSION
+
           
             //TRAER DATOS EN UN COMBO DE MODALIDAD DE EJECUCION
                 var listarModalidadEjec=function()
@@ -383,16 +387,17 @@ $(document).on("ready" ,function()
           //FIN TRAER DATOS EN UN COMBO DE DIVISION FUNCIONAL
 
                     //TRAER DATOS EN UN COMBO DE DIVISION FUNCIONAL
-                var listarRubro=function()
+                var listarRubro=function(id_fuente_finan)
                 {
                     html="";
                     $("#cbxRubro").html(html); //nombre del selectpicker UNIDAD EJECUTORA
                     event.preventDefault(); 
                     $.ajax({
-                        "url":base_url +"index.php/MRubroEjecucion/GetRubroE",
+                        "url":base_url +"index.php/MRubroEjecucion/GetRubroId",
                         type:"POST",
+                        data:{id_fuente_finan:id_fuente_finan},
                         success : function(respuesta){
-                           // alert(respuesta);
+                           alert(respuesta);
                          var registros = eval(respuesta);
                             for (var i = 0; i <registros.length;i++) {
                               html +="<option value="+registros[i]["id_rubro"]+"> "+ registros[i]["nombre_rubro"]+" </option>";   
