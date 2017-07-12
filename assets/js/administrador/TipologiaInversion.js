@@ -66,10 +66,8 @@ $(document).on("ready" ,function(){
                   "dataSrc":""
                                     },
                                 "columns":[
-                                   {"defaultContent":""},
                                   {"data":"id_tipologia_inv"  },
                                   {"data":"nombre_tipologia_inv"},
-                                
                                   {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaEditTipologiaInversion'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                ],
 

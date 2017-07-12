@@ -33,7 +33,9 @@ class TipologiaInversion_Model extends CI_Model
     public function EliminarTipologiaInversion($flat, $txt_IdTipologiaInversion, $txt_NombreTipologiaInversion)
     {
 
-        $this->db->query("execute sp_Gestionar_TipologiaInversion'" . $flat . "','" . $txt_IdTipologiaInversion . "', '" . $txt_NombreTipologiaInversion . "','" . $txt_DescripcionTipologiaInversion . "' ");
+        $this->db->query("execute sp_Gestionar_TipologiaInversion'" . $flat .
+            "','" . $txt_IdTipologiaInversion . "', '"
+            . $txt_NombreTipologiaInversion . "' ");
         if ($this->db->affected_rows() > 0) {
             return true;
         } else {

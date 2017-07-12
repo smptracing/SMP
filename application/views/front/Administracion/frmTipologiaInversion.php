@@ -68,17 +68,11 @@
                                                       <!--inicio de la tabla Naturaleza de Inversion -->
                                                       <div class="x_content">
                                                                 <table id="dynamic-table-NaturalezaInversion" class="table table-striped table-bordered table-hover" width="100%">
-                                                                    <thead>
+                                                                    <thead style="">
                                                                        <tr>
-                                                                         <th class="center">
-                                                                          <label class="pos-rel">
-                                                                           <input type="checkbox" class="ace" />
-                                                                           <span class="lbl"></span>
-                                                                          </label>
-                                                                         </th>
-                                                                         <th class="hidden-10" >ID NATURALEZA</th>
-                                                                         <th>NOMBRE NATURALEZA</th>
-                                                                        <th></th>
+                                                                         <th style="width: 1%">Nro.</th>
+                                                                         <th style="width: 91%">Nombre de la naturaleza de inversión</th>
+                                                                         <th style="width:8%"></th>
                                                                       </tr>
                                                                    </thead>
 
@@ -120,18 +114,11 @@
                                                       <div class="x_content">
 
                                                                 <table id="dynamic-table-TipologiaInversion" class="table table-striped table-bordered table-hover" width="100%">
-                                                                    <thead>
+                                                                    <thead style="">
                                                                        <tr>
-                                                                         <th class="center">
-                                                                          <label class="pos-rel">
-                                                                           <input type="checkbox" class="ace" />
-                                                                           <span class="lbl"></span>
-                                                                          </label>
-                                                                         </th>
-                                                                         <th>ID TIPOLOGIA</th>
-                                                                         <th>NOMBRE TIPOLOGIA</th>
-
-                                                                         <th></th>
+                                                                         <th style="width: 1%">Nro.</th>
+                                                                         <th style="width: 91%">Nombre tipología de inversión</th>
+                                                                         <th style="width:8%"></th>
                                                                       </tr>
                                                                    </thead>
                                                                     <tbody>
@@ -175,21 +162,14 @@
                                                       <!--fin  de icono de reporte -->
                                                       <div class="x_content">
                                                                 <table id="dynamic-table-TipoInversion" class="table table-striped table-bordered table-hover" width="100%">
-                                                                    <thead>
+                                                                  <thead style="">
                                                                        <tr>
-                                                                         <th class="center">
-                                                                          <label class="pos-rel">
-                                                                           <input type="checkbox" class="ace" />
-                                                                           <span class="lbl"></span>
-                                                                          </label>
-                                                                         </th>
-                                                                         <th>ID TIPO</th>
-                                                                         <th>NOMBRE TIPO</th>
-                                                                         <th class="hidden-480">DESCRIPCION TIPO</th>
-                                                                         <th></th>
+                                                                       <th style="width: 1%">Nro.</th>
+                                                                         <th style="width: 40%">Nombre del tipo de inversión</th>
+                                                                         <th style="width: 50%">Descripción del tipo de inversión</th>
+                                                                         <th style="width:8%"></th>
                                                                       </tr>
                                                                    </thead>
-
                                                                 </table>
                                                       </div>
                                                       <!--fin de la tabla tipologia de Inversion -->

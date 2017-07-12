@@ -66,7 +66,6 @@ $(document).on("ready" ,function(){
                   "dataSrc":""
                                     },
                                 "columns":[
-                                   {"defaultContent":""},
                                    {"data":"id_tipo_inversion"  },
                                    {"data":"nombre_tipo_inversion"},
                                    {"data":"descripcion_tipo_inversion"},
@@ -91,7 +90,7 @@ $(document).on("ready" ,function(){
 var EliminarTipoInversionData=function(tbody,myTable){
                   $(tbody).on("click","button.eliminar",function(){
                         var data=myTable.row( $(this).parents("tr")).data();
-                        var IDTIPOINVERSION=data.IDTIPOINVERSION;
+                        var id_tipo_inversion=data.id_tipo_inversion;
                         console.log(data);
                          swal({
                                 title: "Desea eliminar ?",
@@ -106,7 +105,7 @@ var EliminarTipoInversionData=function(tbody,myTable){
                                     $.ajax({
                                           url:base_url+"index.php/TipologiaInversion/EliminarTipoInversion",
                                           type:"POST",
-                                          data:{IDTIPOINVERSION:IDTIPOINVERSION},
+                                          data:{id_tipo_inversion:id_tipo_inversion},
                                           success:function(respuesta){
                                             //alert(respuesta);
                                             swal("Se eliminó corectamente", ".", "success");

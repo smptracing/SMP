@@ -44,7 +44,7 @@ class TipologiaInversion extends CI_Controller
         if ($this->input->is_ajax_request()) {
             $flat = "D";
             // $ID   = "0";
-            $txt_IdNaturaleza          = $this->input->post("IDNATURALEZA");
+            $txt_IdNaturaleza          = $this->input->post("id_naturaleza_inv");
             $txt_NombreNaturaleza      = "NULL";
             $txt_DescripcionNaturaleza = "NULL";
             $user                      = "1";
@@ -151,11 +151,8 @@ class TipologiaInversion extends CI_Controller
         if ($this->input->is_ajax_request()) {
             $flat = "D";
             // $ID   = "0";
-            $txt_IdTipologiaInversion          = $this->input->post("IDTIPOLOGIAINVERSION");
-            $txt_NombreTipologiaInversion      = "NULL";
-            $txt_DescripcionTipologiaInversion = "NULL";
-            $user                              = "1";
-
+            $txt_IdTipologiaInversion     = $this->input->post("id_tipologia_inv");
+            $txt_NombreTipologiaInversion = "NULL";
             if ($this->TipologiaInversion_Model->EliminarTipologiaInversion($flat, $txt_IdTipologiaInversion, $txt_NombreTipologiaInversion) == false) {
                 echo "Se Eliminó  ";
             } else {
@@ -235,10 +232,9 @@ class TipologiaInversion extends CI_Controller
         if ($this->input->is_ajax_request()) {
             $flat = "D";
             // $ID   = "0";
-            $txt_IdTipoInversion          = $this->input->post("IDTIPOINVERSION");
+            $txt_IdTipoInversion          = $this->input->post("id_tipo_inversion");
             $txt_NombreTipoInversion      = "NULL";
             $txt_DescripcionTipoInversion = "NULL";
-            $user                         = "1";
 
             if ($this->TipoInversion_Model->EliminarTipoInversion($flat, $txt_IdTipoInversion, $txt_NombreTipoInversion, $txt_DescripcionTipoInversion) == false) {
                 echo "Se Eliminó  ";
