@@ -17,6 +17,7 @@ class ReporteProgramacion extends CI_Controller {
 //Generar el excel de programaciones
 function action()
 {
+	$año_apertura_actual=$this->input->post('hdAnioCartera');
 	$this->load->library("excel");
 
 	$object=new PHPExcel();
@@ -117,7 +118,7 @@ function action()
 
 	$column=0;
 
-	$table_columns=array("Cod. Proyecto","Tipo de Inversión", "Ciclo de Inversión", "Tipología", "Naturaleza","Inversión","Nivel de Gobierno","Prioridad","U. Ejecutora","Departamento","Provincia","Distrito","Función","Div. Funcional","Grupo Funcional","Costo inversión","Dev. Acum. Año Anterior","PIM Año Actual","Fuente Finan.","Rubro","Fuente Finan. 2","Rubro 2","Mod. Ejecución","Servicio","Brecha Asociada","Programa Presup.","Fecha Registro","Fecha Viabilidad","Inicio Programación","Fin Programación","Saldo a Programar","2018","2019","2020","2018","2019","2020");
+	$table_columns=array("Cod. Proyecto","Tipo de Inversión", "Ciclo de Inversión", "Tipología", "Naturaleza","Inversión","Nivel de Gobierno","Prioridad","U. Ejecutora","Departamento","Provincia","Distrito","Función","Div. Funcional","Grupo Funcional","Costo inversión","Dev. Acum. Año Anterior","PIM Año Actual","Fuente Finan.","Rubro","Fuente Finan. 2","Rubro 2","Mod. Ejecución","Servicio","Brecha Asociada","Programa Presup.","Fecha Registro","Fecha Viabilidad","Inicio Programación","Fin Programación","Saldo a Programar",($año_apertura_actual+1),($año_apertura_actual+2),($año_apertura_actual+3),($año_apertura_actual+1),($año_apertura_actual+2),($año_apertura_actual+3));
 
 	//para la segunda cabecera
 	foreach($table_columns as $field)
@@ -128,7 +129,7 @@ function action()
 	}
 
 	$valor="";//para traer la programacion mandando un parametro vacio
-	$año_apertura_actual=$this->input->post('hdAnioCartera');
+	
 	$employee_data=$this->Model_Programacion->ExelProgramacionProyectos($valor,$año_apertura_actual);
 	$excel_row=3;//para decir donde va a empezar 
 	$departamento="Apurímac";

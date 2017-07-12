@@ -773,6 +773,7 @@ var listaProyectoIprogramadoA=function()//para actualizar programacion
                               progrVeProgramacion[28]=data.OyM_2019;
                               progrVeProgramacion[29]=data.OyM_2020;
                               progrVeProgramacion[30]=data.id_pi;
+                              MontosProgramadosDetalle=data.año_apertura_cartera.split("-");
                               $("#CarteradeProgramacion").val(data.año_apertura_cartera);
                                html+="<thead> <tr> <th colspan='12' class='active'><h5>DATOS DEL PROYECTOS DE INVERSIÓN</h5></th>  </tr></thead>"
                             for (var i = 0; i <1;i++) {
@@ -835,7 +836,7 @@ var listaProyectoIprogramadoA=function()//para actualizar programacion
 
                               //programacion
                               html+="<thead> <tr> <th colspan='12' class='active'><h5><center>PROGRAMACIÓN</center></h5></th>  </tr></thead>";
-                              html+="<thead> <tr> <th colspan='4' class='active'><h5>2018</h5></th> <th colspan='4' class='active'><h5>2019</h5></th><th colspan='4' class='active'><h5>2020</h5></th> </tr></thead>";
+                              html+="<thead> <tr> <th colspan='4' class='active'><h5>"+(parseInt(MontosProgramadosDetalle[0])+1)+"</h5></th> <th colspan='4' class='active'><h5>"+(parseInt(MontosProgramadosDetalle[0])+2)+"</h5></th><th colspan='4' class='active'><h5>"+(parseInt(MontosProgramadosDetalle[0])+3)+"</h5></th> </tr></thead>";
 
                               html +="<tr>";
                               html +="<th th  colspan='4'> "+progrVeProgramacion[24]+"</th><th  colspan='4'>"+progrVeProgramacion[25]+"</th><th  colspan='4'>"+progrVeProgramacion[26]+"</th></tr> <tr>";
