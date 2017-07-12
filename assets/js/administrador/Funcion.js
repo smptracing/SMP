@@ -41,7 +41,7 @@
                 {
                     var table=$("#table-Funcion").DataTable({
                      "processing": true,
-                      "serverSide": true,
+                      "serverSide": false,
                      destroy:true,
 
                          "ajax":{
