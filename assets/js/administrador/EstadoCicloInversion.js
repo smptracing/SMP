@@ -1,55 +1,72 @@
-$(document).on("ready" ,function(){
+$(document).on("ready" ,function()
+{
+	listaEstadoCicloInversion();/*llamar a mi datatablet listar funcion*/
+	//abrir el modal para registrar
 
-                listaEstadoCicloInversion();/*llamar a mi datatablet listar funcion*/
-              //abrir el modal para registrar
+	//REGISTARAR NUEVA tipologia inversion
+	$("#form-AddEstadoCicloInversion").submit(function(event)
+	{
+		event.preventDefault();
 
+		$.ajax(
+		{
+			url : base_url+"index.php/EstadoCicloInversion/AddEstadoCicloInversion",
+			type : $(this).attr('method'),
+			data : $(this).serialize(),
+			success : function(resp)
+			{
+				if(resp=='1')
+				{
+					swal("se registró...","", "success");
+					
+					formReset();
 
-//REGISTARAR NUEVA tipologia inversion
-   $("#form-AddEstadoCicloInversion").submit(function(event)
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/EstadoCicloInversion/AddEstadoCicloInversion",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           //alert(resp);
-                           if (resp=='1') {
-                             swal("se registró...","", "success");
-                             formReset();
-                           }
-                            if (resp=='2') {
-                             swal("NO se registró...","", "error");
-                           }
-                          $('#dynamic-table-EstadoCicloInversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
-                             formReset();
-                         }
-                      });
-                  });
+					$('#VentanaRegEstadoCicloInversion').modal('hide');
+				}
 
-      //limpiar campos
-          function formReset()
-          {
-          document.getElementById("form-AddEstadoCicloInversion").reset();
-          document.getElementById("form-EditEstadoCicloInversion").reset();
-          }
-       //formulario para ediotar
-             $("#form-EditEstadoCicloInversion").submit(function(event)
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/EstadoCicloInversion/UpdateEstadoCicloInversion",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           //alert(resp);
-                           swal(resp,"", "success");
-                          $('#dynamic-table-EstadoCicloInversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
-                             formReset();
-                         }
-                      });
-                  });
-			});
+				if(resp=='2')
+				{
+					swal("NO se registró...","", "error");
+				}
+
+				$('#dynamic-table-EstadoCicloInversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
+				
+				formReset();
+			}
+		});
+	});
+
+	//limpiar campos
+	function formReset()
+	{
+		document.getElementById("form-AddEstadoCicloInversion").reset();
+		document.getElementById("form-EditEstadoCicloInversion").reset();
+	}
+
+	//formulario para ediotar
+	$("#form-EditEstadoCicloInversion").submit(function(event)
+	{
+		event.preventDefault();
+
+		$.ajax(
+		{
+			url : base_url+"index.php/EstadoCicloInversion/UpdateEstadoCicloInversion",
+			type : $(this).attr('method'),
+			data : $(this).serialize(),
+			success : function(resp)
+			{
+				swal(resp,"", "success");
+
+				$('#dynamic-table-EstadoCicloInversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
+				
+				formReset();
+
+				$('#VentanaEditEstadoCicloInversion').modal('hide');
+			}
+		});
+	});
+});
+
 			   /*listra */
                 var listaEstadoCicloInversion=function()
                 {
