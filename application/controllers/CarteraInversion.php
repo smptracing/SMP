@@ -41,7 +41,7 @@ public function __construct(){
 
 				                   // $this->load->view('success', $data);
 				                	//$url=-$this->upload->$data['file_name'];
-				  $dateAñoAperturaCart=$this->input->post("dateAñoAperturaCart");
+				  $dateAñoAperturaCart=$this->input->post("dateAñoAperturaCart")."-01-01";
 				  $dateFechaIniCart =$this->input->post("dateFechaIniCart");
 				  $dateFechaFinCart =$this->input->post("dateFechaFinCart");
 				  $estado=0;
@@ -53,7 +53,6 @@ public function __construct(){
  							echo "SE REGISTRO LA CARRTERA";
  						}
  					//echo $dateAñoAperturaCart,':',':',$dateFechaIniCart,':',$dateFechaFinCart,':',$estado,':',$txt_NumResolucionCart,':',$Cartera_Resoluacion;
-
 			        
 			      } 						    
 				  }

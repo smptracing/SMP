@@ -193,10 +193,7 @@ $("#finalizarProgram").click(function(){
                                            //$('#tabla-cuartel').dataTable()._fnAjaxUpdate();    //SIRVE PARA REFRESCAR LA TABLA
                                        }
                                       });
-
                                 }
-                              
-
                         }
                           localStorage.clear();  
                           location.reload();                   
@@ -209,7 +206,6 @@ $("#finalizarProgram").click(function(){
                   $('select[name=cbCartera]').change();
                   $('.selectpicker').selectpicker('refresh');
               });
-
 
               $('#VentanaRegistraPIP').on('hidden.bs.modal', function () {
                   $(this).find("input,textarea,select").val('').end();
@@ -258,34 +254,43 @@ $("#finalizarProgram").click(function(){
                listaProyectoIprogramado(cartera);/*llamar proyecto de inversion programado*/
             })
              ultimaProgramacion();
-             $("#btn-siguiente").click(function()//para que cargue el como una vez echo click sino repetira datos
-                    {
 
-                    //PARA OBTENER LOS DATOS Y GRABAR EN EL BOTON SIGUIENTE
-                    var id_ue=$("#cbxUnidadEjecutora").val();
-                    var id_naturaleza_inv=$("#cbxNatI").val();
-                    var id_tipologia_inv=$("#cbxTipologiaInv").val();
-                    var id_tipo_inversion=$("#cbxTipoInv").val();
-                    var id_grupo_funcional_inv=$("#cbxGrupoFunc").val();
-                    var id_nivel_gob=$("#cbxNivelGob").val();
-                    var id_meta_pres=$("#cbxMetaPresupuestal").val();
-                    var id_programa_pres=$("#cbxProgramaPres").val();
-                    var codigo_unico_pi=$("#txtCodigoUnico").val();
-                    var nombre_pi=$("#txtNombrePip").val();
-                    var costo_pi=$("#txtCostoPip").val();
-                    var devengado_ac_pi=$("#txtDevengado").val();
-                    var distrito=$("#distritosM").val();
-                    var id_estado_ciclo=$("#cbxEstadoCicloInv").val();
-                   // var id_fuente_finan=$("#cbxFuenteFinanc").val();
-                    var id_rubro=$("#cbxRubro").val();
-                    var id_modalidad_ejec=$("#cbxModalidadEjec").val();
-                    GuardarProyectos(id_ue,id_naturaleza_inv,id_tipologia_inv,id_tipo_inversion,id_grupo_funcional_inv,id_nivel_gob,id_meta_pres,id_programa_pres,codigo_unico_pi,nombre_pi,costo_pi,devengado_ac_pi,distrito,id_estado_ciclo,id_rubro,id_modalidad_ejec);
-                    listaCarteraInversionFechaActual();//para llenar el combo de agregar division funcional
-                    //listaBrechaProgramar();//Se lista la brecha para su programcion
-           
-                    listaUltimoProyectoInversion();
 
-                    });
+	$("#btn-siguiente").click(function()//para que cargue el como una vez echo click sino repetira datos
+	{
+		$('#form-addProyectoInversion').data('formValidation').validate();
+
+		if(!($('#form-addProyectoInversion').data('formValidation').isValid()))
+		{
+			return false;
+		}
+
+		//PARA OBTENER LOS DATOS Y GRABAR EN EL BOTON SIGUIENTE
+		var id_ue=$("#cbxUnidadEjecutora").val();
+		var id_naturaleza_inv=$("#cbxNatI").val();
+		var id_tipologia_inv=$("#cbxTipologiaInv").val();
+		var id_tipo_inversion=$("#cbxTipoInv").val();
+		var id_grupo_funcional_inv=$("#cbxGrupoFunc").val();
+		var id_nivel_gob=$("#cbxNivelGob").val();
+		var id_meta_pres=$("#cbxMetaPresupuestal").val();
+		var id_programa_pres=$("#cbxProgramaPres").val();
+		var codigo_unico_pi=$("#txtCodigoUnico").val();
+		var nombre_pi=$("#txtNombrePip").val();
+		var costo_pi=$("#txtCostoPip").val();
+		var devengado_ac_pi=$("#txtDevengado").val();
+		var distrito=$("#distritosM").val();
+		var id_estado_ciclo=$("#cbxEstadoCicloInv").val();
+		var id_rubro=$("#cbxRubro").val();
+		var id_modalidad_ejec=$("#cbxModalidadEjec").val();
+		
+		GuardarProyectos(id_ue,id_naturaleza_inv,id_tipologia_inv,id_tipo_inversion,id_grupo_funcional_inv,id_nivel_gob,id_meta_pres,id_programa_pres,codigo_unico_pi,nombre_pi,costo_pi,devengado_ac_pi,distrito,id_estado_ciclo,id_rubro,id_modalidad_ejec);
+		
+		listaCarteraInversionFechaActual();//para llenar el combo de agregar division funcional
+		
+		//listaBrechaProgramar();//Se lista la brecha para su programcion
+		
+		listaUltimoProyectoInversion();
+	});
 
             /* $("#cbxBrechaP").change(function(){//para cargar en agregar division funcionañ
                    listarServicioPublico();
@@ -668,6 +673,8 @@ var listaProyectoIprogramadoA=function()//para actualizar programacion
                        $(tbody).on("click","a.Verdetalle",function(){
                         var data=table.row( $(this).parents("tr")).data();
                         //var CodigoUnicoH=$("#CodigoUnicoH").val(data.codigo_unico_pi);
+                        var año_apertura_cartera=data.año_apertura_cartera;
+                         var año_apeprtura=data.año_apertura_cartera.split("-");
                          html="";
                          var progr = new Array();
                           progr.length=0;
@@ -713,7 +720,7 @@ var listaProyectoIprogramadoA=function()//para actualizar programacion
 
                         //para ver yodo envio opcion 1
                           html+="<thead> <tr><th colspan='22'><center>Detalle</center></th> <th colspan='2'><center>Programación</center></th> <th colspan='3' ><center>Programación Del Monto de Inversión</center></th>  <th colspan='3'><center>Programación del Monto de Operación y Mantenimiento</center></th></tr>"
-                          html+="<tr> <th  class='active'><h6>Código Único </h6></th> <th class='active'><h6>Tipo De Inversión</h6></th><th class='active'><h6>Ciclo de Inversión</h6> </th><th class='active'><h6>Tipologia</h6></th> </th><th class='active'><h6>Naturaleza</h6></th> </th><th class='active'><h6>Inversión</h6></th> </th><th class='active'><h6>Nivel De Gobierno</h6></th> <th class='active'><h6>Prioridad</h6></th> <th class='active'><h6>U.Ejecutora</h6></th> <th class='active'><h6>Departamento</h6></th> <th class='active'><h6>Provicias</h6></th> <th class='active'><h6>Distritos</h6></th>  <th class='active'><h6>Función</h6></th><th class='active'><h6>Div.Funcional</h6></th> <th class='active'><h6>Costo Inversión</h6></th> <th class='active'><h6>Dev.Acum Año anterior</h6></th> <th class='active'><h6>PIM Año Actual</h6></th> <th class='active'><h6>Fuente Finan.</h6></th> <th class='active'><h6>Rubro</h6></th><th class='active'><h6>Servicio</h6></th> <th class='active'><h6>Brecha Asociada</h6></th> <th class='active'><h6>Programa Presup.</h6></th> <th class='active'><h6>Fecha Registro</h6></th> <th class='active'><h6>Fecha Viabilidad</h6></th><th class='active'><h6>2018</h6></th><th class='active'><h6>2019</h6></th><th class='active'><h6>2020</h6></th><th class='active'><h6>2018</h6></th><th class='active'><h6>2019</h6></th><th class='active'><h6>2020</h6></th></tr></thead>"
+                          html+="<tr> <th  class='active'><h6>Código Único </h6></th> <th class='active'><h6>Tipo De Inversión</h6></th><th class='active'><h6>Ciclo de Inversión</h6> </th><th class='active'><h6>Tipologia</h6></th> </th><th class='active'><h6>Naturaleza</h6></th> </th><th class='active'><h6>Inversión</h6></th> </th><th class='active'><h6>Nivel De Gobierno</h6></th> <th class='active'><h6>Prioridad</h6></th> <th class='active'><h6>U.Ejecutora</h6></th> <th class='active'><h6>Departamento</h6></th> <th class='active'><h6>Provicias</h6></th> <th class='active'><h6>Distritos</h6></th>  <th class='active'><h6>Función</h6></th><th class='active'><h6>Div.Funcional</h6></th> <th class='active'><h6>Costo Inversión</h6></th> <th class='active'><h6>Dev.Acum Año anterior</h6></th> <th class='active'><h6>PIM Año Actual</h6></th> <th class='active'><h6>Fuente Finan.</h6></th> <th class='active'><h6>Rubro</h6></th><th class='active'><h6>Servicio</h6></th> <th class='active'><h6>Brecha Asociada</h6></th> <th class='active'><h6>Programa Presup.</h6></th> <th class='active'><h6>Fecha Registro</h6></th> <th class='active'><h6>Fecha Viabilidad</h6></th><th class='active'><h6>"+(parseInt(año_apeprtura[0])+1)+"</h6></th><th class='active'><h6>"+(parseInt(año_apeprtura[0])+2)+"</h6></th><th class='active'><h6>"+(parseInt(año_apeprtura[0])+3)+"</h6></th><th class='active'><h6>"+(parseInt(año_apeprtura[0])+1)+"</h6></th><th class='active'><h6>"+(parseInt(año_apeprtura[0])+2)+"</h6></th><th class='active'><h6>"+(parseInt(año_apeprtura[0])+3)+"</h6></th></tr></thead>"
                           html+="<tbody><tr class='warning'>";
                           for (var i = 0; i<30; i++) {
                           html +="<td>"+progr[i]+"</td>";
@@ -721,16 +728,11 @@ var listaProyectoIprogramadoA=function()//para actualizar programacion
                           html +="</tr></tbody></table>";
                           $("#DetalleProgramacionHori").html(html);
 
-
-
-
-
                     });//fin para poder ver la programacion horizontal
 
                 }
 
-
-                /*fin listar proyecto de inversion  programado*/
+               /*fin listar proyecto de inversion  programado*/
                 var ListaProyectoInversionData=function(tbody,table){
                        $(tbody).on("click","button.VerProyecto",function(){
                             var progrVeProgramacion = new Array();
@@ -766,8 +768,6 @@ var listaProyectoIprogramadoA=function()//para actualizar programacion
                               progrVe[21]=data.nombre_programa_pres;
                               progrVe[22]=data.fecha_registro_pi;
                               progrVe[23]=data.fecha_viabilidad_pi;
-
-
 
                               progrVeProgramacion[24]=data.Inv_2018;
                               progrVeProgramacion[25]=data.Inv_2019;
@@ -984,7 +984,6 @@ var listaProyectoIprogramadoA=function()//para actualizar programacion
                              html1 +="</div>";
                              html1 +="</tbody>";
                             $("#table-detalleProgramacion").html(html1);
-
 
                         }
                     });
