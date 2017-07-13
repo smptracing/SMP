@@ -5,21 +5,28 @@
 
                 listaFuncion();/*llamar a mi datatablet listar funcion*/
 
-                $("#form-addFuncion").submit(function(event)//para añadir nueva funcion
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/Funcion/AddFucion",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           swal("",resp, "success");
-                          $('#table-Funcion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
-                           //listaSectorCombo();//llamado para la recarga al añadir un nuevo secto
-                            listaFuncionCombo();
-                         }
-                      });
-                  });
+	$("#form-addFuncion").submit(function(event)//para añadir nueva funcion
+	{
+		event.preventDefault();
+
+		$.ajax(
+		{
+			url : base_url+"index.php/Funcion/AddFucion",
+			type : $(this).attr('method'),
+			data : $(this).serialize(),
+			success : function(resp)
+			{
+				swal("",resp, "success");
+				
+				$('#table-Funcion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
+
+				listaFuncionCombo();
+
+				$('#VentanaRegistraFuncion').modal('hide');
+			}
+		});
+	});
+
                 $("#form-ModificarFuncion").submit(function(event)//Actualizar funcion
                   {
                       event.preventDefault();
