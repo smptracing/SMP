@@ -361,7 +361,7 @@
                                             <div class="col-md-11 col-sm-6 col-xs-12">
                                              <label for="textbox"><span class="required">Devengado</span>
                                              </label>
-                                             <input id="txtDevengado" name="txtDevengado" class="form-control col-md-7 col-xs-7" data-validate-length-range="6" data-validate-words="2" placeholder="Devengado" required="required" type="text">
+                                             <input id="txtDevengado" name="txtDevengado" class="form-control col-md-7 col-xs-7 notValidate" data-validate-length-range="6" data-validate-words="2" placeholder="Devengado" required="required" type="text">
                                             </div>
                                       </div>
                                        <div class="col-md-4">
@@ -897,7 +897,7 @@
 		$('#form-addProyectoInversion').formValidation(
 	    {
 	        framework: 'bootstrap',
-            excluded: [':disabled', ':hidden', ':not(:visible)'],
+            excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
             live: 'enabled',
             message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
             trigger: null,

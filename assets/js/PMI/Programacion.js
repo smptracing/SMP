@@ -257,33 +257,42 @@ $("#finalizarProgram").click(function(){
                listaProyectoIprogramado(cartera);/*llamar proyecto de inversion programado*/
             })
              ultimaProgramacion();
-             $("#btn-siguiente").click(function()//para que cargue el como una vez echo click sino repetira datos
-                    {
 
-                    //PARA OBTENER LOS DATOS Y GRABAR EN EL BOTON SIGUIENTE
-                    var id_ue=$("#cbxUnidadEjecutora").val();
-                    var id_naturaleza_inv=$("#cbxNatI").val();
-                    var id_tipologia_inv=$("#cbxTipologiaInv").val();
-                    var id_tipo_inversion=$("#cbxTipoInv").val();
-                    var id_grupo_funcional_inv=$("#cbxGrupoFunc").val();
-                    var id_nivel_gob=$("#cbxNivelGob").val();
-                    var id_meta_pres=$("#cbxMetaPresupuestal").val();
-                    var id_programa_pres=$("#cbxProgramaPres").val();
-                    var codigo_unico_pi=$("#txtCodigoUnico").val();
-                    var nombre_pi=$("#txtNombrePip").val();
-                    var costo_pi=$("#txtCostoPip").val();
-                    var devengado_ac_pi=$("#txtDevengado").val();
-                    var distrito=$("#distritosM").val();
-                    var id_estado_ciclo=$("#cbxEstadoCicloInv").val();
-                   // var id_fuente_finan=$("#cbxFuenteFinanc").val();
-                    var id_rubro=$("#cbxRubro").val();
-                    var id_modalidad_ejec=$("#cbxModalidadEjec").val();
-                    GuardarProyectos(id_ue,id_naturaleza_inv,id_tipologia_inv,id_tipo_inversion,id_grupo_funcional_inv,id_nivel_gob,id_meta_pres,id_programa_pres,codigo_unico_pi,nombre_pi,costo_pi,devengado_ac_pi,distrito,id_estado_ciclo,id_rubro,id_modalidad_ejec);
-                    listaCarteraInversionFechaActual();//para llenar el combo de agregar division funcional
-                    listaBrechaProgramar();//Se lista la brecha para su programcion
-                    listaUltimoProyectoInversion();
+	$("#btn-siguiente").click(function()//para que cargue el como una vez echo click sino repetira datos
+	{
+		$('#form-addProyectoInversion').data('formValidation').validate();
 
-                    });
+		if(!($('#form-addProyectoInversion').data('formValidation').isValid()))
+		{
+			return false;
+		}
+
+		//PARA OBTENER LOS DATOS Y GRABAR EN EL BOTON SIGUIENTE
+		var id_ue=$("#cbxUnidadEjecutora").val();
+		var id_naturaleza_inv=$("#cbxNatI").val();
+		var id_tipologia_inv=$("#cbxTipologiaInv").val();
+		var id_tipo_inversion=$("#cbxTipoInv").val();
+		var id_grupo_funcional_inv=$("#cbxGrupoFunc").val();
+		var id_nivel_gob=$("#cbxNivelGob").val();
+		var id_meta_pres=$("#cbxMetaPresupuestal").val();
+		var id_programa_pres=$("#cbxProgramaPres").val();
+		var codigo_unico_pi=$("#txtCodigoUnico").val();
+		var nombre_pi=$("#txtNombrePip").val();
+		var costo_pi=$("#txtCostoPip").val();
+		var devengado_ac_pi=$("#txtDevengado").val();
+		var distrito=$("#distritosM").val();
+		var id_estado_ciclo=$("#cbxEstadoCicloInv").val();
+		var id_rubro=$("#cbxRubro").val();
+		var id_modalidad_ejec=$("#cbxModalidadEjec").val();
+		
+		GuardarProyectos(id_ue,id_naturaleza_inv,id_tipologia_inv,id_tipo_inversion,id_grupo_funcional_inv,id_nivel_gob,id_meta_pres,id_programa_pres,codigo_unico_pi,nombre_pi,costo_pi,devengado_ac_pi,distrito,id_estado_ciclo,id_rubro,id_modalidad_ejec);
+		
+		listaCarteraInversionFechaActual();//para llenar el combo de agregar division funcional
+		
+		listaBrechaProgramar();//Se lista la brecha para su programcion
+		
+		listaUltimoProyectoInversion();
+	});
 
              $("#cbxBrechaP").change(function(){//para cargar en agregar division funcionañ
                    listarServicioPublico();
