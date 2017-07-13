@@ -4,52 +4,68 @@ $(document).on("ready" ,function(){
               //abrir el modal para registrar
 
 
-//REGISTARAR NUEVA tipologia inversion
-   $("#form-AddTipologiaInversion").submit(function(event)
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/TipologiaInversion/AddTipologiaInversion",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           //alert(resp);
-                               if (resp=='1') {
-                             swal("Se registró...","", "success");
-                             formReset();
-                           }
-                            if (resp=='2') {
-                             swal("NO se registró...","", "error");
-                           }
-                          $('#dynamic-table-TipologiaInversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
-                             formReset();
-                         }
-                      });
-                  });
+	//REGISTARAR NUEVA tipologia inversion
+	$("#form-AddTipologiaInversion").submit(function(event)
+	{
+		event.preventDefault();
 
-      //limpiar campos
-          function formReset()
-          {
-          document.getElementById("form-AddTipologiaInversion").reset();
-          document.getElementById("form-EditTipologiaInversion").reset();
-          }
-       //formulario para ediotar
-             $("#form-EditTipologiaInversion").submit(function(event)
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/TipologiaInversion/UpdateTipologiaInversion",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                          //alert(resp);
-                           swal(resp,"", "success");
-                          $('#dynamic-table-TipologiaInversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
-                             formReset();
-                         }
-                      });
-                  });
+		$.ajax(
+		{
+			url : base_url+"index.php/TipologiaInversion/AddTipologiaInversion",
+			type : $(this).attr('method'),
+			data  :$(this).serialize(),
+			success : function(resp)
+			{			
+				if(resp=='1')
+				{
+					swal("Se registró...","", "success");
+					
+					formReset();
+				}
 
+				if(resp=='2')
+				{
+					swal("NO se registró...","", "error");
+				}
+
+				$('#dynamic-table-TipologiaInversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
+				
+				formReset();
+
+				$('#VentanaRegTipologiaInversion').modal('hide');
+			}
+		});
+	});
+
+	//limpiar campos
+	function formReset()
+	{
+		document.getElementById("form-AddTipologiaInversion").reset();
+		document.getElementById("form-EditTipologiaInversion").reset();
+	}
+
+	//formulario para ediotar
+	$("#form-EditTipologiaInversion").submit(function(event)
+	{
+		event.preventDefault();
+
+		$.ajax(
+		{
+			url : base_url+"index.php/TipologiaInversion/UpdateTipologiaInversion",
+			type : $(this).attr('method'),
+			data : $(this).serialize(),
+			success : function(resp)
+			{
+				swal(resp,"", "success");
+				
+				$('#dynamic-table-TipologiaInversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
+				
+				formReset();
+
+				$('#VentanaEditTipologiaInversion').modal('hide');
+			}
+		});
+	});
 
       });
          /*listra */

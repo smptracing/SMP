@@ -27,20 +27,27 @@
 		});
 	});
 
-                $("#form-ModificarFuncion").submit(function(event)//Actualizar funcion
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/Funcion/UpdateFuncion",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           swal("",resp, "success");
-                           $('#table-Funcion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
-                           listaFuncionCombo();
-                         }
-                      });
-                  });    
+	$("#form-ModificarFuncion").submit(function(event)//Actualizar funcion
+	{
+		event.preventDefault();
+
+		$.ajax(
+		{
+			url : base_url+"index.php/Funcion/UpdateFuncion",
+			type : $(this).attr('method'),
+			data : $(this).serialize(),
+			success : function(resp)
+			{
+				swal("",resp, "success");
+				
+				$('#table-Funcion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
+				
+				listaFuncionCombo();
+
+				$('#VentanaModificarFuncion').modal('hide');
+			}
+		});
+	});
                 //fin de  funcional
 			});
 			   /*listra funcion*/

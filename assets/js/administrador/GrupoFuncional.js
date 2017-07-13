@@ -32,19 +32,25 @@
 		});
 	});   
 
-               $("#form-UpadataGrupoFuncional").submit(function(event)//Actualizar funcion
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/GrupoFuncional/UpdateGrupoFuncional",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           swal("",resp, "success");
-                           $('#table-listarGrupoFuncional').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
-                         }
-                      });
-                  }); 
+	$("#form-UpadataGrupoFuncional").submit(function(event)//Actualizar funcion
+	{
+		event.preventDefault();
+
+		$.ajax(
+		{
+			url : base_url+"index.php/GrupoFuncional/UpdateGrupoFuncional",
+			type : $(this).attr('method'),
+			data : $(this).serialize(),
+			success : function(resp)
+			{
+				swal("",resp, "success");
+
+				$('#table-listarGrupoFuncional').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
+
+				$('#VentanaUpdateGrupoF').modal('hide');
+			}
+		});
+	}); 
               //fin registra grupo funcional
 
         //fin grupo funcional

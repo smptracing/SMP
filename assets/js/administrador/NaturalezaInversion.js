@@ -2,48 +2,61 @@
                 listaNaturalezaInversion();/*llamar a mi datatablet listar funcion*/
               //abrir el modal para registrar
 //REGISTARAR NUEVA NATURALEZA INVERSION
-   $("#form-AddNaturalezaInversion").submit(function(event)
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/TipologiaInversion/AddNaturalezaInversion",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           //alert(resp);
-                             if (resp=='1') {
-                             swal("Se registró...","", "success");
-                             formReset();
-                           }
-                            if (resp=='2') {
-                             swal("NO se registró...","", "error");
-                           }
-                          $('#dynamic-table-NaturalezaInversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
+	$("#form-AddNaturalezaInversion").submit(function(event)
+	{
+		event.preventDefault();
 
-                         }
-                      });
-                  });
+		$.ajax(
+		{
+			url : base_url+"index.php/TipologiaInversion/AddNaturalezaInversion",
+			type : $(this).attr('method'),
+			data : $(this).serialize(),
+			success : function(resp)
+			{
+				if(resp=='1')
+				{
+					swal("Se registró...","", "success");
+
+					formReset();
+				}
+
+				if(resp=='2')
+				{
+					swal("NO se registró...","", "error");
+				}
+
+				$('#dynamic-table-NaturalezaInversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
+
+				$('#VentanaRegistrarNaturalezaInversion').modal('hide');
+			}
+		});
+	});
       //limpiar campos
-          function formReset()
-          {
-          document.getElementById("form-AddNaturalezaInversion").reset();
-          }
-          //formulario para ediotar
-             $("#form-EditNaturalezaInversion").submit(function(event)
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/TipologiaInversion/UpdateNaturalezaInversion",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           //alert(resp);
-                           swal(resp,"", "success");
-                          $('#dynamic-table-NaturalezaInversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
-                            // formReset();
-                         }
-                      });
-                  });
+	function formReset()
+	{
+		document.getElementById("form-AddNaturalezaInversion").reset();
+	}
+
+	$("#form-EditNaturalezaInversion").submit(function(event)
+	{
+		event.preventDefault();
+
+		$.ajax(
+		{
+			url : base_url+"index.php/TipologiaInversion/UpdateNaturalezaInversion",
+			type : $(this).attr('method'),
+			data : $(this).serialize(),
+			success : function(resp)
+			{
+				swal(resp,"", "success");
+
+				$('#dynamic-table-NaturalezaInversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
+
+				$('#VentanaRegNaturalezaInversion').modal('hide');
+			}
+		});
+	});
+
       });
          /*listra funcion*/
                 var listaNaturalezaInversion=function()
