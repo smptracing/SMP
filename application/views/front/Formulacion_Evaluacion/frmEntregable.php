@@ -468,7 +468,6 @@
          <div class="modal-body">
          <div class="row">
                 <div class="col-xs-12">
-                <form class="form-horizontal " id="form-AsignacionPersonalEntregable"  method="POST" >
                       <div class="col-md-12 col-sm-12 col-xs-12 input-group">
                         
                       </div>
@@ -487,6 +486,8 @@
                                                                                  
                               </table>
                           </div>
+              <form class="form-horizontal " id="form-AsignacionPersonalEntregable"  method="POST" >
+
                       <input type="hidden" class="form-control" id="txt_idPersona" name="txt_idPersona">
                       <input type="hidden" class="form-control" id="txt_identregable" name="txt_identregable">
 
@@ -529,26 +530,33 @@
          <div class="modal-body">
          <div class="row">
                 <div class="col-xs-12">
-                <form class="form-horizontal " id="form-AsignacionPersonalActividad"  method="POST" >
                       <div class="col-md-12 col-sm-12 col-xs-12 input-group">
                       </div>
                           <div id="contenedor_responsable2">
                                <table id="table_responsableActividad" class="table" ellspacing="0" width="100%">
-
+                                       <thead>
+                                          <tr>
+                                             <th></th>
+                                             <td>ID persona</td>
+                                             <td>Nombre</td>
+                                             <td>Especialidad</td>
+                                             <td>Grado Academico</td>
+                                          </tr>
+                                       <thead>
                               </table>
                           </div>
-                      <input type="text" class="form-control" id="txt_idPersonaActividad" name="txt_idPersonaActividad">
-                      <input type="text" class="form-control" id="txt_idActividadCronograma" name="txt_idActividadCronograma">
+                 <form class="form-horizontal " id="form-AsignacionPersonalActividad"  method="POST" >
+                      <input type="hidden" class="form-control" id="txt_idPersonaActividad" name="txt_idPersonaActividad">
+                      <input type="hidden" class="form-control" id="txt_idActividadCronograma" name="txt_idActividadCronograma">
 
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-12 col-md-offset-4">
-
-                          <button  type="submit" class="btn btn-success">
+                          <button   class="btn btn-success" onclick="forma.submit()">
                             <span class="glyphicon glyphicon-floppy-disk"></span>
                             Asignar
                           </button>
-                          <button type="submit" class="btn btn-danger" data-dismiss="modal">
+                          <button  class="btn btn-danger" data-dismiss="modal" onclick="forma.submit()" >
                              <span class="glyphicon glyphicon-remove"></span>
                             Cancelar
                           </button>

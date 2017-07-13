@@ -56,12 +56,15 @@ class Model_Personal extends CI_Model
        $personalFormulador = $this->db->query("select count(*) as cantidad from PERSONA inner join ASIGNACION_PERSONA ON ASIGNACION_PERSONA.id_persona=PERSONA.id_persona INNER JOIN CARGO ON CARGO.id_cargo=ASIGNACION_PERSONA.id_cargo WHERE desc_cargo='".$text_buscarPersona."' and (nombres like '%'+'".$valueSearch."'+'%') "); //listar de division funcional
       return $personalFormulador->result();
     }
+    public function CountPaginacionPersonaActividad($skip,$numberRow,$valueSearch)
+    {
+       $personalFormulador = $this->db->query("select count(*) as cantidad from PERSONA WHERE  (nombres like '%'+'".$valueSearch."'+'%') "); //listar de division funcional
+      return $personalFormulador->result();
+    }
 
-    public function BuscarPersonaActividad(){
-       $personalFormulador = $this->db->query("execute sp_PesonaCargo_r'".$text_buscarPersona."', 0, 10, '' "); //listar de division funcional
-       if ($personalFormulador->num_rows() > 0) {
-            return $personalFormulador->result();
-		}
+    public function BuscarPersonaActividad($skip,$numberRow,$valueSearch){
+       $persona = $this->db->query("execute sp_PersonaActividad_r '".$skip."','".$numberRow."','".$valueSearch."' "); //listar de division funcional
+            return $persona->result();
     }
     
     public function BuscarPersona($text_buscarPersona)

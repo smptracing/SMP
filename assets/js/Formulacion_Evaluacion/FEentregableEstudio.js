@@ -4,12 +4,13 @@
               listarEntregablesFE();//
               listadoFormuladores();
               listarDenominacionFE();
-
+              listadoPersona();//para las actividades
 
               $("#txt_denominacion_entre").change(function(){
                 var txt_denominacion_entre        =$("#txt_denominacion_entre").val();
                 $("#txt_denoMultiple").val(txt_denominacion_entre);
               });
+
               $("#btn_entregableC").click(function(){
                   var txt_nombre_entre        =$("#txt_nombre_entre").val();
                   var txt_denominacion_entre  =$("#txt_denoMultiple").val();
@@ -19,6 +20,7 @@
                   var txt_levantamintoO_entre =$("#txt_levantamintoO_entre").val();
                    addEntreEstudio(txt_nombre_entre,txt_denominacion_entre,txt_valoracion_entre,txt_observacio_entre,txt_levantamintoO_entre);
               });
+
               $("#txt_valoracion_entre").keyup(function(){//verificar si el entregable supera el o no el cien porciento para inavilitar el boton
                    
                    var sumaValoracion=$("#txt_valoracion_entre").val();
@@ -136,7 +138,7 @@
 
 
 
-               //Fin buscar responsable
+               //Fin buscar responsable formuladores
           $("#form-AsignacionPersonalEntregable").submit(function(event)//para poder añadir personal al entregable
                   {
                       event.preventDefault();
@@ -251,6 +253,9 @@ var addEntreEstudio=function(txt_nombre_entre,txt_denominacion_entre,txt_valorac
 
               } 
 //fin listar denominacion
+//listar personas para persona en la actividadd
+
+//fin listar persona para actividad
 //listar formuladores para agregar un responsable
 var listadoFormuladores=function()
 {
@@ -263,12 +268,67 @@ var listadoFormuladores=function()
                       "fnDrawCallback": function () {
                     // first radio button list selection is not rendered, so needs to be re-drawn
                     $('.radioButtonToCheck input').attr("checked", "checked");
-                },
+                     },
 
                          "ajax":{
                                     "url":base_url+"index.php/Personal/BuscarPersonaCargo",
                                     "method":"POST",
                                     data:{text_buscarPersona:text_buscarPersona},
+                                    "dataSrc":"data",
+                                    },
+
+                                "columns":[
+                                    {"defaultContent": [0],
+                                                 "mRender": function(data, type, full)
+                                                 {
+                                                     id="";
+                                                     var returnval = "<td><input type='radio' name='chkNew"+id+"'  class='call-checkbox' value="+id+"  id=\"chkNew'"+id+"'\" /></td>";
+                                                       return returnval;
+                                                 }
+                                     },
+
+
+                                    {"data":"id_persona","visible": false},
+                                    {"data":"nombres"},
+                                    {"data":"desc_cargo"}, 
+                                    {"data":"especialidad"},
+                                    {"data":"grado_academico"},
+                                ],
+                                "language":idioma_espanol
+                    });
+
+                      $('#table_responsableFormulador_filter input').unbind();
+                      
+                      $('#table_responsableFormulador_filter input').bind('keyup', function(e)
+                      {
+                      if(e.keyCode==13)
+                      {
+                      table.search(this.value).draw();
+                    }
+              });
+               //DataAsignarResponsable("#table_responsableFormulador",table);//para listar y asignar responsables
+            
+
+              $('#table_responsableFormulador tbody').on('click', 'tr', function () {
+                  var data =table.row(this).data();
+                   $("#txt_idPersona").val(data.id_persona);
+                   //console.log(data.id_persona);
+              } );             
+}
+
+//listar persona  para las actividades
+
+var listadoPersona=function()
+{
+                    var table=$("#table_responsableActividad").DataTable({
+                     "processing":true,
+                     "serverSide":true,
+                      select: true,
+                      destroy:true,
+
+                         "ajax":{
+                                    "url":base_url +"index.php/Personal/BuscarPersonaActividad",
+                                    "method":"POST",
                                     "dataSrc":"data",
                                     },
                                 "columns":[
@@ -280,86 +340,33 @@ var listadoFormuladores=function()
                                                        return returnval;
                                                  }
                                      },
-
-
                                     {"data":"id_persona","visible": false},
                                     {"data":"nombres"},
-                                    {"data":"desc_cargo"}, 
                                     {"data":"especialidad"},
                                     {"data":"grado_academico"},
                                 ],
                                 "language":idioma_espanol
                     });
 
- $('#table_responsableFormulador_filter input').unbind();
+                      $('#table_responsableActividad_filter input').unbind();
+                      
+                      $('#table_responsableActividad_filter input').bind('keyup', function(e)
+                      {
+                      if(e.keyCode==13)
+                      {
+                              table.search(this.value).draw();
+                            }
+                      });          
+                   $('#table_responsableActividad tbody').on('click', 'tr', function () {
+                         var data =table.row(this).data();
+                         $("#txt_idPersonaActividad").val(data.id_persona);
+                         //console.log(data.id_persona);
+                   } );  
 
-  $('#table_responsableFormulador_filter input').bind('keyup', function(e)
-  {
-    if(e.keyCode==13)
-    {
-      table.search(this.value).draw();
-    }
-  });
-               //DataAsignarResponsable("#table_responsableFormulador",table);//para listar y asignar responsables
-            
 
-              $('#table_responsableFormulador tbody').on('click', 'tr', function () {
-                  var data =table.row(this).data();
-                   $("#txt_idPersona").val(data.id_persona);
-                   //console.log(data.id_persona);
-              } );             
+  
 }
-//listar responsables para las actividades son solo personas sin restricciones
-
-var listadoPersonas=function()
-{ 
-                    var text_buscarPersona ='Formulador'; 
-                    var table=$("#table_responsableActividad").DataTable({
-                    "processing":true,
-                    "serverSide":false,
-                      select: true,
-                      destroy:true,
-                      "fnDrawCallback": function () {
-                    
-                            $('.radioButtonToCheck input').attr("checked", "checked");
-                       },
-
-                         "ajax":{
-                                    "url":base_url+"index.php/Personal/BuscarPersonaCargo",
-                                    "method":"POST",
-                                    data:{text_buscarPersona:text_buscarPersona},
-                                    "dataSrc":"",
-                                    },
-                                "columns":[
-                                    {"defaultContent": [0],
-                                                 "mRender": function(data, type, full)
-                                                 {
-                                                     id="";
-                                                     var returnval = "<td><input type='radio' name='chkNew"+id+"'  class='call-checkbox' value="+id+"  id=\"chkNew'"+id+"'\" /></td>";
-                                                       return returnval;
-                                                 }
-                                     },
-
-
-                                    {"data":"id_persona","visible": false},
-                                    {"data":"nombres"},
-                                    {"data":"desc_cargo"}, 
-                                    {"data":"especialidad"},
-                                    {"data":"grado_academico"},
-                                ],
-                                "language":idioma_espanol
-                    });
-               //DataAsignarResponsable("#table_responsableFormulador",table);//para listar y asignar responsables
-            
-
-              $('#table_responsableActividad tbody').on('click', 'tr', function () {
-                   var data =table.row(this).data();
-                   $("#txt_idPersona").val(data.id_persona);
-                   //console.log(data.id_persona);
-              } );             
-}
-
-//fin listar responsables para las actividades
+//fin listar personal
 
 var generarActividadesVertical=function(id_en)
           {
@@ -417,7 +424,7 @@ var generarActividadesVertical=function(id_en)
                          var txt_idActividadCronograma=$("#txt_idActividadCronograma").val(id_ctividad);
                          $("#txt_NombreActividadTitleResponsable").html(data.title);
                          $("#txt_idActividadCronograma").val(id_ctividad); 
-                         listadoPersonas();
+                        // listadoPersonas();
                     });
 
                 }

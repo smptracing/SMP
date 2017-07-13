@@ -203,7 +203,7 @@ function action()
         $pdf->SetTitle('DETALLE DE PROYECTOS');
         $pdf->SetSubject('PROYECTO EN CARTERA');
         $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
- 
+ 		
 // datos por defecto de cabecera, se pueden modificar en el archivo tcpdf_config_alt.php de libraries/config
        /* $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE . ' :', PDF_HEADER_STRING, array(0, 64, 255), array(0, 64, 128));*/
        // $pdf->setFooterData($tc = array(0, 64, 0), $lc = array(0, 64, 128));
@@ -211,7 +211,7 @@ function action()
 // datos por defecto de cabecera, se pueden modificar en el archivo tcpdf_config.php de libraries/config
         $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
         $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
- 
+ 		
 // se pueden modificar en el archivo tcpdf_config.php de libraries/config
         $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
  
@@ -325,7 +325,7 @@ function action()
          $html .= <<<EOD
 
 <form method="post" action="http://localhost/printvars.php" enctype="multipart/form-data">
-<table border="1"  cellpadding="10">
+<table border="1"  cellpadding="7">
 
     <tr>
          <th colspan="12" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<center><strong>DETALLE DE PROYECTOS DE INVERSIÓN</strong></center></th>
