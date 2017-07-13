@@ -1,24 +1,43 @@
- $(document).on("ready" ,function(){
+$(document).on("ready" ,function()
+{
+	listaUnidadE();//LLAMAR AL METODO LISTAR UNIDAD EJECUTORA
 
-              listaUnidadE();//LLAMAR AL METODO LISTAR UNIDAD EJECUTORA
-              
-               //AGREGAR UNA UNIDAD EJECUTORA
-               $("#form-addUnidadE").submit(function(event)
-                {
-                    event.preventDefault();
-                    $.ajax({
-                        url:base_url+"index.php/UnidadE/AddUnidadE",
-                        type:$(this).attr('method'),
-                        data:$(this).serialize(),
-                        success:function(resp){
-                        swal("REGISTRADO!", resp, "success");
-                        $('#table-UnidadE').dataTable()._fnAjaxUpdate();    //SIRVE PARA REFRESCAR LA TABLA 
+	//AGREGAR UNA UNIDAD EJECUTORA
+	$("#form-addUnidadE").submit(function(event)
+	{
+		event.preventDefault();
 
-                        }
-                    });
-                });     
-                //FIN DE AGREGAR UNA UNIDAD EJECUTORA
-			});
+		$.ajax(
+		{
+			url : base_url+"index.php/UnidadE/AddUnidadE",
+			type : $(this).attr('method'),
+			data : $(this).serialize(),
+			success : function(resp)
+			{
+				var registros=eval(resp);
+
+				for(var i=0; i<registros.length; i++)
+				{
+					if(registros[i]["VALOR"]==1)
+					{
+						swal("",registros[i]["MENSAJE"], "success");
+
+						$('#form-addUnidadE')[0].reset();
+
+						$("#VentanaRegistraUnidadEjecutora").modal("hide");
+					}
+					else
+					{
+						swal('',registros[i]["MENSAJE"],'error' )
+					}
+				}
+
+				$('#table-UnidadE').dataTable()._fnAjaxUpdate();    //SIRVE PARA REFRESCAR LA TABLA
+			}
+		});
+	});     
+	//FIN DE AGREGAR UNA UNIDAD EJECUTORA
+});
 
 //-------------- MANTENIMIENTO UNIDAD EJECUTORA----------------------
 /*LISTAR UNIDAD DE EJECUCION EN UN DATATABLE*/
@@ -47,22 +66,26 @@
 /*FIN DE LISTAR UNIDAD DE EJECUCION EN UN DATATABLE*/
 
 //ACTUALIZAR UNA UNIDAD EJECUTORA
-                 $("#form-ActualizarUnidadE").submit(function(event)
-                {
-                    event.preventDefault();
-                    $.ajax({
-                        url:base_url+"index.php/UnidadE/UpdateUnidadE",
-                        type:$(this).attr('method'),
-                        data:$(this).serialize(),
-                        success:function(resp){
-                        swal("MODIFICADO!", resp, "success");
-                         $('#table-UnidadE').dataTable()._fnAjaxUpdate();
-                        }
+$("#form-ActualizarUnidadE").submit(function(event)
+{
+	event.preventDefault();
 
-                    });
+	$.ajax(
+	{
+		url : base_url+"index.php/UnidadE/UpdateUnidadE",
+		type : $(this).attr('method'),
+		data : $(this).serialize(),
+		success : function(resp)
+		{
+			swal("MODIFICADO!", resp, "success");
 
-                });  
-    //FIN ACTUALIZAR UNIDAD EJECUTORA
+			$('#table-UnidadE').dataTable()._fnAjaxUpdate();
+
+			$("#VentanaModificarUnidadE").modal("hide");
+		}
+	});
+});
+//FIN ACTUALIZAR UNIDAD EJECUTORA
 
     // CAMPOS QUE SE ACTUALIZARAN DE LA UNIDAD EJECUTORA
         UnidadEData=function(tbody,table){

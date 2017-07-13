@@ -1,48 +1,61 @@
-$(document).on("ready" ,function(){
+$(document).on("ready" ,function()
+{
+	listaNivelGobierno();/*llamar a mi datatablet listar funcion*/
+	//abrir el modal para registrar
 
-                listaNivelGobierno();/*llamar a mi datatablet listar funcion*/
-              //abrir el modal para registrar
-//REGISTARAR NUEVA nivel de gobierno
-   $("#form-AddNivelGobierno").submit(function(event)
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/NivelGobierno/AddNivelGobierno",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                            swal(resp,"", "success");
-                          $('#dynamic-table-NivelGobierno').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
-                             formReset();
-                         }
-                      });
-                  });
+	//REGISTARAR NUEVA nivel de gobierno
+	$("#form-AddNivelGobierno").submit(function(event)
+	{
+		event.preventDefault();
 
-      //limpiar campos
-          function formReset()
-          {
-          document.getElementById("form-AddNivelGobierno").reset();
-          document.getElementById("form-EditNivelGobierno").reset();
-          }
-       //formulario para ediotar
-             $("#form-EditNivelGobierno").submit(function(event)
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/NivelGobierno/UpdateNivelGobierno",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           //alert(resp);
-                           swal(resp,"", "success");
-                          $('#dynamic-table-NivelGobierno').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
-                             formReset();
-                         }
-                      });
-                  });
+		$.ajax(
+		{
+			url : base_url+"index.php/NivelGobierno/AddNivelGobierno",
+			type : $(this).attr('method'),
+			data : $(this).serialize(),
+			success : function(resp)
+			{
+				swal(resp,"", "success");
 
+				$('#dynamic-table-NivelGobierno').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
 
-      });
+				formReset();
+
+				$('#VentanaRegNivelGobierno').modal('hide');
+			}
+		});
+	});
+
+	//limpiar campos
+	function formReset()
+	{
+		document.getElementById("form-AddNivelGobierno").reset();
+		document.getElementById("form-EditNivelGobierno").reset();
+	}
+	//formulario para ediotar
+
+	$("#form-EditNivelGobierno").submit(function(event)
+	{
+		event.preventDefault();
+		$.ajax(
+		{
+			url : base_url+"index.php/NivelGobierno/UpdateNivelGobierno",
+			type : $(this).attr('method'),
+			data : $(this).serialize(),
+			success : function(resp)
+			{
+				swal(resp,"", "success");
+
+				$('#dynamic-table-NivelGobierno').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
+
+				formReset();
+
+				$('#VentanaEditNivelGobierno').modal('hide');
+			}
+		});
+	});
+});
+
          /*listra */
                 var listaNivelGobierno=function()
                 {
