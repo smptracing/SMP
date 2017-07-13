@@ -1,23 +1,29 @@
- $(document).on("ready" ,function(){
-          //lista();
-              listaMetaP(); //LLAMAR AL METODO META PRESUPUESTAL
-                //AGREGAR UNA META PRESUPUESTAL
-                $("#form-addMetaP").submit(function(event)
-                {
-                //  alert('hola');
-                  event.preventDefault();
-                    $.ajax({
-                        url:base_url+"index.php/MetaPresupuestal/AddMetaP",
-                        type:$(this).attr('method'),
-                        data:$(this).serialize(),
-                        success:function(resp){
-                         swal("REGISTRADO!", resp, "success");
-                         $('#table-MetaPresupuestal').dataTable()._fnAjaxUpdate();    //SIRVE PARA REFRESCAR LA TABLA 
-                        }
-                    });
-                });     
-                //FIN DE AGREGAR META PRESUPUESTAL
-			});
+$(document).on("ready" ,function()
+{
+	listaMetaP(); //LLAMAR AL METODO META PRESUPUESTAL
+
+	//AGREGAR UNA META PRESUPUESTAL
+	$("#form-addMetaP").submit(function(event)
+	{
+		event.preventDefault();
+
+		$.ajax(
+		{
+			url : base_url+"index.php/MetaPresupuestal/AddMetaP",
+			type : $(this).attr('method'),
+			data : $(this).serialize(),
+			success : function(resp)
+			{
+				swal("REGISTRADO!", resp, "success");
+				
+				$('#table-MetaPresupuestal').dataTable()._fnAjaxUpdate();    //SIRVE PARA REFRESCAR LA TABLA
+
+				$('#VentanaRegistraMetaPresupuestal').modal('hide');
+			}
+		});
+	});     
+	//FIN DE AGREGAR META PRESUPUESTAL
+});
 
 //-------------- MANTENIMIENTO DE META PRESUPUESTAL----------------------
 /*LISTAR LOS META PRESUPUESTAL EN UN DATATABLE*/
@@ -50,23 +56,27 @@
 /*FIN DE LISTAR META PRESUPUESTAL EN UN DATATABLE*/
 
 
-  //ACTUALIZAR UN META PRESUPUESTAL
-                 $("#form-ActualizarMetaP").submit(function(event)
-                {
-                    event.preventDefault();
-                    $.ajax({
-                        url:base_url+"index.php/MetaPresupuestal/UpdateMetaP",
-                        type:$(this).attr('method'),
-                        data:$(this).serialize(),
-                        success:function(resp){
-                         swal("MODIFICADO!", resp, "success");
-                         $('#table-MetaPresupuestal').dataTable()._fnAjaxUpdate();
-                        }
+//ACTUALIZAR UN META PRESUPUESTAL
+$("#form-ActualizarMetaP").submit(function(event)
+{
+	event.preventDefault();
 
-                    });
+	$.ajax(
+	{
+		url : base_url+"index.php/MetaPresupuestal/UpdateMetaP",
+		type : $(this).attr('method'),
+		data : $(this).serialize(),
+		success : function(resp)
+		{
+			swal("MODIFICADO!", resp, "success");
+			
+			$('#table-MetaPresupuestal').dataTable()._fnAjaxUpdate();
 
-                });  
-    //FIN ACTUALIZAR META PRESUPUESTAL
+			$('#VentanaModificarMetaP').modal('hide');
+		}
+	});
+});
+//FIN ACTUALIZAR META PRESUPUESTAL
 
     // CAMPOS QUE SE ACTUALIZARAN DE LA META PRESUPUESTAL
         MetaPData=function(tbody,table){

@@ -1,22 +1,30 @@
- $(document).on("ready" ,function(){            
-              listaRubroE(); //LLAMAR AL METODO LISTAR RUBROS DE EJECUCION
-              listaFuenteCombo();//LISTAR EN EL COMBOBOX -- LISTA DE FUENTE FINANCIAMIENTO
-                //AGREGAR UN RUBRO DE EJECUCION
-                $("#form-addRubroE").submit(function(event)
-                {
-                    event.preventDefault();
-                    $.ajax({
-                        url:base_url+"index.php/MRubroEjecucion/AddRubroE",
-                        type:$(this).attr('method'),
-                        data:$(this).serialize(),
-                        success:function(resp){
-                         swal("REGISTRADO!", resp, "success");
-                         $('#table-Rubro').dataTable()._fnAjaxUpdate();    //SIRVE PARA REFRESCAR LA TABLA 
-                        }
-                    });
-                });     
-                //FIN DE AGREGAR UN RUBRO DE EJECUCION 
-			});
+$(document).on("ready" ,function(){            
+listaRubroE(); //LLAMAR AL METODO LISTAR RUBROS DE EJECUCION
+
+listaFuenteCombo();//LISTAR EN EL COMBOBOX -- LISTA DE FUENTE FINANCIAMIENTO
+
+//AGREGAR UN RUBRO DE EJECUCION
+$("#form-addRubroE").submit(function(event)
+{
+	event.preventDefault();
+
+	$.ajax(
+	{
+		url : base_url+"index.php/MRubroEjecucion/AddRubroE",
+		type : $(this).attr('method'),
+		data : $(this).serialize(),
+		success : function(resp)
+		{
+			swal("REGISTRADO!", resp, "success");
+			
+			$('#table-Rubro').dataTable()._fnAjaxUpdate();    //SIRVE PARA REFRESCAR LA TABLA 
+
+			$('#VentanaRegistraRubroEjecucion').modal('hide');
+		}
+	});
+});     
+//FIN DE AGREGAR UN RUBRO DE EJECUCION 
+});
 
 //-------------- MANTENIMIENTO DE RUBRO DE  EJECUCION----------------------
 /*LISTAR LOS RUBROS DE EJECUION EN UN DATATABLE*/
@@ -46,23 +54,27 @@
 /*FIN DE LISTAR LOS RUBROS DE EJECUION EN UN DATATABLE*/
 
 
-  //ACTUALIZAR UN RUBRO DE EJECUCION
-                 $("#form-ActualizarRubroE").submit(function(event)
-                {
-                    event.preventDefault();
-                    $.ajax({
-                        url:base_url+"index.php/MRubroEjecucion/UpdateRubroE",
-                        type:$(this).attr('method'),
-                        data:$(this).serialize(),
-                        success:function(resp){
-                         swal("MODIFICADO!", resp, "success");
-                         $('#table-Rubro').dataTable()._fnAjaxUpdate();
-                        }
+//ACTUALIZAR UN RUBRO DE EJECUCION
+$("#form-ActualizarRubroE").submit(function(event)
+{
+	event.preventDefault();
 
-                    });
+	$.ajax(
+	{
+		url : base_url+"index.php/MRubroEjecucion/UpdateRubroE",
+		type : $(this).attr('method'),
+		data : $(this).serialize(),
+		success : function(resp)
+		{
+			swal("MODIFICADO!", resp, "success");
+			
+			$('#table-Rubro').dataTable()._fnAjaxUpdate();
 
-                });  
-    //FIN ACTUALIZAR UN RUBRO DE EJECUCION
+			$('#VentanaModificarRubroE').modal('hide');
+		}
+	});
+});
+//FIN ACTUALIZAR UN RUBRO DE EJECUCION
 
     // CAMPOS QUE SE ACTUALIZARAN EN EL RUBRO DE EJECUCION
         RubroEData=function(tbody,table){

@@ -1,54 +1,71 @@
 $(document).on("ready" ,function(){
-                listaFuenteFinanciamiento();/*llamar a mi datatablet listar funcion*/
-              //abrir el modal para registrar
-//REGISTARAR NUEVA fuente financiamiento
-   $("#form-AddFuenteFinanciamiento").submit(function(event)
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/FuenteFinanciamiento/AddFuenteFinanciamiento",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           //alert(resp);
-                            if (resp=='1') {
-                             swal("Se registró...","", "success");
-                             formReset();
-                           }
-                            if (resp=='2') {
-                             swal("NO se registró...","", "error");
-                           }
-                          $('#dynamic-table-FuenteFinanciamiento').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
-                             formReset();
-                         }
-                      });
-                  });
+	listaFuenteFinanciamiento();/*llamar a mi datatablet listar funcion*/
+	//abrir el modal para registrar
 
-      //limpiar campos
-          function formReset()
-          {
-          document.getElementById("form-AddFuenteFinanciamiento").reset();
-          document.getElementById("form-EditFuenteFinanciamiento").reset();
-          }
-       //formulario para ediotar
-             $("#form-EditFuenteFinanciamiento").submit(function(event)
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/FuenteFinanciamiento/UpdateFuenteFinanciamiento",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           //alert(resp);
-                           swal(resp,"", "success");
-                          $('#dynamic-table-FuenteFinanciamiento').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
-                             formReset();
-                         }
-                      });
-                  });
+	//REGISTARAR NUEVA fuente financiamiento
+	$("#form-AddFuenteFinanciamiento").submit(function(event)
+	{
+		event.preventDefault();
 
+		$.ajax(
+		{
+			url : base_url+"index.php/FuenteFinanciamiento/AddFuenteFinanciamiento",
+			type : $(this).attr('method'),
+			data : $(this).serialize(),
+			success : function(resp)
+			{
+				if(resp=='1')
+				{
+					swal("Se registró...","", "success");
+					
+					formReset();
 
-      });
+					$('#VentanaRegFuenteFinanciamiento').modal('hide');
+				}
+
+				if(resp=='2')
+				{
+					swal("NO se registró...","", "error");
+				}
+
+				$('#dynamic-table-FuenteFinanciamiento').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
+				
+				formReset();
+			}
+		});
+	});
+
+	//limpiar campos
+	function formReset()
+	{
+		document.getElementById("form-AddFuenteFinanciamiento").reset();
+		document.getElementById("form-EditFuenteFinanciamiento").reset();
+	}
+
+	//formulario para ediotar
+	$("#form-EditFuenteFinanciamiento").submit(function(event)
+	{
+		event.preventDefault();
+
+		$.ajax(
+		{
+			url : base_url+"index.php/FuenteFinanciamiento/UpdateFuenteFinanciamiento",
+			type : $(this).attr('method'),
+			data : $(this).serialize(),
+			success : function(resp)
+			{
+				swal(resp,"", "success");
+
+				$('#dynamic-table-FuenteFinanciamiento').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
+				
+				formReset();
+
+				$('#VentanaEditFuenteFinanciamiento').modal('hide');
+			}
+		});
+	});
+});
+
          /*listra */
                 var listaFuenteFinanciamiento=function()
                 {

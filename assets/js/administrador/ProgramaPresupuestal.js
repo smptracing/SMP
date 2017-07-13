@@ -1,23 +1,30 @@
- $(document).on("ready" ,function(){
-          listaProgramaP();
-              //LLAMAR AL METODO PROGRAMA PRESUPUESTAL
-                //AGREGAR UN PROGRAMA PRESUPUESTAL
-                $("#form-addProgramaP").submit(function(event)
-                {
-                //  alert('hola');
-                  event.preventDefault();
-                    $.ajax({
-                        url:base_url+"index.php/ProgramaPresupuestal/AddProgramaP",
-                        type:$(this).attr('method'),
-                        data:$(this).serialize(),
-                        success:function(resp){
-                         swal("REGISTRADO!", resp, "success");
-                         $('#table-ProgramaPresupuestal').dataTable()._fnAjaxUpdate();    //SIRVE PARA REFRESCAR LA TABLA 
-                        }
-                    });
-                });     
-                //FIN DE AGREGAR PROGRAMA PRESUPUESTAL
-			});
+$(document).on("ready" ,function()
+{
+	listaProgramaP();
+	//LLAMAR AL METODO PROGRAMA PRESUPUESTAL
+
+	//AGREGAR UN PROGRAMA PRESUPUESTAL
+	$("#form-addProgramaP").submit(function(event)
+	{
+		event.preventDefault();
+
+		$.ajax(
+		{
+			url : base_url+"index.php/ProgramaPresupuestal/AddProgramaP",
+			type : $(this).attr('method'),
+			data : $(this).serialize(),
+			success : function(resp)
+			{
+				swal("REGISTRADO!", resp, "success");
+				
+				$('#table-ProgramaPresupuestal').dataTable()._fnAjaxUpdate();//SIRVE PARA REFRESCAR LA TABLA
+
+				$('#VentanaRegistraProgramaP').modal('hide');
+			}
+		});
+	});     
+	//FIN DE AGREGAR PROGRAMA PRESUPUESTAL
+});
 
 //-------------- MANTENIMIENTO DE PROGRAMA  PRESUPUESTAL----------------------
 /*LISTAR LOS RUBROS DE EJECUION EN UN DATATABLE*/
@@ -44,23 +51,26 @@
                     ProgramaPData("#table-ProgramaPresupuestal",table); //TRAER LA DATA RUBRO DE EJECUCION PARA ACTUALIZARLA
                 }
 /*FIN DE LISTAR LOS RUBROS DE EJECUION EN UN DATATABLE*/
-  //ACTUALIZAR UN RUBRO DE EJECUCION
-                 $("#form-ActualizarProgramaP").submit(function(event)
-                {
-                    event.preventDefault();
-                    $.ajax({
-                        url:base_url+"index.php/ProgramaPresupuestal/UpdateProgramaP",
-                        type:$(this).attr('method'),
-                        data:$(this).serialize(),
-                        success:function(resp){
-                         swal("MODIFICADO!", resp, "success");
-                         $('#table-ProgramaPresupuestal').dataTable()._fnAjaxUpdate();
-                        }
 
-                    });
+//ACTUALIZAR UN RUBRO DE EJECUCION
+$("#form-ActualizarProgramaP").submit(function(event)
+{
+	event.preventDefault();
 
-                });  
-    //FIN ACTUALIZAR UN RUBRO DE EJECUCION
+	$.ajax(
+	{
+		url : base_url+"index.php/ProgramaPresupuestal/UpdateProgramaP",
+		type : $(this).attr('method'),
+		data : $(this).serialize(),
+		success : function(resp)
+		{
+			swal("MODIFICADO!", resp, "success");
+			
+			$('#table-ProgramaPresupuestal').dataTable()._fnAjaxUpdate();
+		}
+	});
+});  
+//FIN ACTUALIZAR UN RUBRO DE EJECUCION
 
     // CAMPOS QUE SE ACTUALIZARAN EN EL RUBRO DE EJECUCION
         ProgramaPData=function(tbody,table){
