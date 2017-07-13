@@ -66,7 +66,7 @@
         ProgramaPData=function(tbody,table){
                     $(tbody).on("click","button.editar",function(){
                         var data=table.row( $(this).parents("tr")).data();
-                        var id_programa_pres=$('#txt_IdProgramaPUModif').val(data.id_programa_pres);
+                        var id_programa_pres=$('#txt_IdProgramaPModif').val(data.id_programa_pres);
                         var nombre_programa_pres=$('#txt_NombreProgramaPU').val(data.nombre_programa_pres);
                     });
                 }

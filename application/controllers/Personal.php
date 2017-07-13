@@ -155,8 +155,13 @@ class Personal extends CI_Controller
     public function BuscarPersonaActividad()
     {
         if ($this->input->is_ajax_request()) {
-            $datos              = $this->Model_Personal->BuscarPersonaActividad();
-            echo json_encode($datos);
+            $skip        =$this->input->post('start');
+            $numberRow   =$this->input->post('length');
+            $valueSearch =$this->input->post('search[value]');
+            $datos        = $this->Model_Personal->BuscarPersonaActividad($skip, $numberRow, $valueSearch);
+            $CantidadData = $this->Model_Personal->CountPaginacionPersonaActividad($skip, $numberRow, $valueSearch);
+            echo '{ "recordsTotal" : '.$CantidadData[0]->cantidad.', "recordsFiltered" : '.$CantidadData[0]->cantidad.', "data" : '.json_encode($datos).' }'; 
+
         } else {
             show_404();
         }

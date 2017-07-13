@@ -193,10 +193,7 @@ $("#finalizarProgram").click(function(){
                                            //$('#tabla-cuartel').dataTable()._fnAjaxUpdate();    //SIRVE PARA REFRESCAR LA TABLA
                                        }
                                       });
-
                                 }
-                              
-
                         }
                           localStorage.clear();  
                           location.reload();                   
@@ -210,7 +207,6 @@ $("#finalizarProgram").click(function(){
                   $('.selectpicker').selectpicker('refresh');
               });
 
-
               $('#VentanaRegistraPIP').on('hidden.bs.modal', function () {
                   $(this).find("input,textarea,select").val('').end();
 
@@ -218,6 +214,7 @@ $("#finalizarProgram").click(function(){
 
             //listaMontosTemporales();
             listaProyectoIprogramadoA();//para mostrar y actualizar
+
             var AnioCartera=$("#Aniocartera").val();
             if(AnioCartera=="")
             {
@@ -258,6 +255,7 @@ $("#finalizarProgram").click(function(){
             })
              ultimaProgramacion();
 
+
 	$("#btn-siguiente").click(function()//para que cargue el como una vez echo click sino repetira datos
 	{
 		$('#form-addProyectoInversion').data('formValidation').validate();
@@ -289,19 +287,19 @@ $("#finalizarProgram").click(function(){
 		
 		listaCarteraInversionFechaActual();//para llenar el combo de agregar division funcional
 		
-		listaBrechaProgramar();//Se lista la brecha para su programcion
+		//listaBrechaProgramar();//Se lista la brecha para su programcion
 		
 		listaUltimoProyectoInversion();
 	});
 
-             $("#cbxBrechaP").change(function(){//para cargar en agregar division funcionañ
+            /* $("#cbxBrechaP").change(function(){//para cargar en agregar division funcionañ
                    listarServicioPublico();
-             });
+             });*/
 
                var listarServicioPublico=function()
                 {
-                    html="";
-                    $("#cbxServicioP").html(html); //nombre del selectpicker UNIDAD EJECUTORA
+                    htmlServ="";
+                    $("#cbxServicioP").html(htmlServ); //nombre del selectpicker UNIDAD EJECUTORA
                     event.preventDefault();
                     $.ajax({
                         "url":base_url +"index.php/ServicioPublico/GetServicioAsociado",
@@ -309,13 +307,14 @@ $("#finalizarProgram").click(function(){
                         success:function(respuesta){
                          var registros = eval(respuesta);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option value="+registros[i]["id_serv_pub_asoc"]+"> "+ registros[i]["nombre_serv_pub_asoc"]+" </option>";
+                              htmlServ +="<option value="+registros[i]["id_serv_pub_asoc"]+"> "+ registros[i]["nombre_serv_pub_asoc"]+" </option>";
                             };
-                            $("#cbxServicioP").html(html);//
+                            $("#cbxServicioP").html(htmlServ);//
                             $('.selectpicker').selectpicker('refresh');
                         }
                     });
                 }
+                       listarServicioPublico();
               //AGREGAR UNA PROGRAMACION
                 $("#form-addProgramacion").submit(function(event)
                 {
@@ -429,8 +428,8 @@ $("#finalizarProgram").click(function(){
 			   //TRAER DATOS EN UN COMBO DE NATURALEZA DE INVERSION
            var listaBrechaProgramar=function()
                 {
-                    html="";
-                    $("#cbxBrechaP").html(html); //nombre del selectpicker UNIDAD EJECUTORA
+                    htmlBrecha="";
+                    $("#cbxBrechaP").html(htmlBrecha); //nombre del selectpicker UNIDAD EJECUTORA
                     event.preventDefault();
                     $.ajax({
                         "url":base_url +"index.php/MantenimientoBrecha/GetBrecha",
@@ -439,14 +438,15 @@ $("#finalizarProgram").click(function(){
                            // alert(respuesta);
                          var registros = eval(respuesta);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option value="+registros[i]["id_brecha"]+"> "+ registros[i]["nombre_brecha"]+" </option>";
+                              htmlBrecha +="<option value="+registros[i]["id_brecha"]+"> "+ registros[i]["nombre_brecha"]+" </option>";
                             };
-                            $("#cbxBrechaP").html(html);//
+                            $("#cbxBrechaP").html(htmlBrecha);//
                             $('.selectpicker').selectpicker('refresh');
                         }
                     });
                 }
           //FIN TRAER DATO
+          listaBrechaProgramar();
 
            $("#cbxEstadoCicloInv").change(function(){//para cargar en agregar division funcionañ
                     var opcion=$("#cbxEstadoCicloInv").val();
@@ -728,16 +728,11 @@ var listaProyectoIprogramadoA=function()//para actualizar programacion
                           html +="</tr></tbody></table>";
                           $("#DetalleProgramacionHori").html(html);
 
-
-
-
-
                     });//fin para poder ver la programacion horizontal
 
                 }
 
-
-                /*fin listar proyecto de inversion  programado*/
+               /*fin listar proyecto de inversion  programado*/
                 var ListaProyectoInversionData=function(tbody,table){
                        $(tbody).on("click","button.VerProyecto",function(){
                             var progrVeProgramacion = new Array();
@@ -773,8 +768,6 @@ var listaProyectoIprogramadoA=function()//para actualizar programacion
                               progrVe[21]=data.nombre_programa_pres;
                               progrVe[22]=data.fecha_registro_pi;
                               progrVe[23]=data.fecha_viabilidad_pi;
-
-
 
                               progrVeProgramacion[24]=data.Inv_2018;
                               progrVeProgramacion[25]=data.Inv_2019;
@@ -991,7 +984,6 @@ var listaProyectoIprogramadoA=function()//para actualizar programacion
                              html1 +="</div>";
                              html1 +="</tbody>";
                             $("#table-detalleProgramacion").html(html1);
-
 
                         }
                     });

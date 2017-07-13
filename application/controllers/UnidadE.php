@@ -15,14 +15,14 @@ class UnidadE extends CI_Controller
 
 //----------------------MANTENIMIENTOS DE UNIDAD EJECUTORA-------------------------------------------
     //AGREGAR UNA UNIDAD DE EJECUTORA
-    public function AddUnidadE()
+      public function AddUnidadE()
     {
         if ($this->input->is_ajax_request()) {
             $txt_NombreUnidadE = $this->input->post("txt_NombreUnidadE");
             if ($this->Model_UnidadE->AddUnidadE($txt_NombreUnidadE) == true) {
-                echo "Se añadio la unidad ejecutora";
+                echo "No añadio la unidad ejecutora";
             } else {
-                echo "No se añadio  la unidad ejecutora";
+                echo "se añadio  la unidad ejecutora";
             }
 
         } else {

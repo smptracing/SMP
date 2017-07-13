@@ -9,13 +9,13 @@ class Model_Funcion extends CI_Model
 
           }
 
-	/*añadir funcion*/
-	function GetFuncion()
-	{
-		$funcion=$this->db->query("execute sp_Funcion_r");//listar funcion
-
-		return $funcion->result();
-	}
+        /*añadir funcion*/
+        function GetFuncion()
+        {
+            $funcion=$this->db->query("execute sp_Funcion_r");//listar funcion
+            
+            return $funcion->result();
+        }
 
         function AddFucion($txt_codigofuncion,$txt_nombrefuncion)
         {

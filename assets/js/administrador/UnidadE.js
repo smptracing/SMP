@@ -3,7 +3,7 @@
               listaUnidadE();//LLAMAR AL METODO LISTAR UNIDAD EJECUTORA
               
                //AGREGAR UNA UNIDAD EJECUTORA
-                $("#form-addUnidadE").submit(function(event)
+               $("#form-addUnidadE").submit(function(event)
                 {
                     event.preventDefault();
                     $.ajax({
@@ -11,18 +11,7 @@
                         type:$(this).attr('method'),
                         data:$(this).serialize(),
                         success:function(resp){
-                            var registros = eval(resp);
-                            for (var i = 0; i < registros.length; i++) {
-                               if(registros[i]["VALOR"]==1){
-                                    swal("",registros[i]["MENSAJE"], "success");
-                                   $('#form-addUnidadE')[0].reset();
-                                   $("#VentanaRegistraUnidadEjecutora").modal("hide");
-                               }else{
-                                      swal('',registros[i]["MENSAJE"],'error' )
-                               }
-                                /*swal("",  registros[i]["MENSAJE"], "success");*/
-                            };
-                        
+                        swal("REGISTRADO!", resp, "success");
                         $('#table-UnidadE').dataTable()._fnAjaxUpdate();    //SIRVE PARA REFRESCAR LA TABLA 
 
                         }

@@ -502,14 +502,6 @@
 
                                         </div>
                                      </div>
-                                     <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Brecha</span>
-                                        </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select id="cbxBrechaP" name="cbxBrechaP" class="selectpicker" data-live-search="true"  title="Elija brecha">
-                                            </select>
-                                        </div>
-                                     </div>
                                       <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Servicio Publico Asociado</span>
                                         </label>
@@ -518,6 +510,15 @@
                                             </select>
                                         </div>
                                      </div>
+                                     <div class="item form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox"><span class="required">Brecha</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <select id="cbxBrechaP" name="cbxBrechaP" class="selectpicker" data-live-search="true"  title="Elija brecha">
+                                            </select>
+                                        </div>
+                                     </div>
+                               
                                     <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Proyecto de Inversion<span class="required">*</span>
                                         </label>
@@ -880,7 +881,7 @@
         </div>
         <div class="modal-footer">
           <form action="<?php echo base_url('index.php/ReporteProgramacion/PdfProyectoProgramado'); ?>" method="POST" >
-            IDE PROYECTO<input type="text" id="CodigoProgramacion" name="CodigoProgramacion">
+                             <input type="hidden" id="CodigoProgramacion" name="CodigoProgramacion">
             CARTERA          <input type="text" id="CarteradeProgramacion" name="CarteradeProgramacion">
           <button type="submit" class="btn btn-success">  <span class="fa fa-print"></span>IMPRIMIR</button>
           <button  data-dismiss="modal" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Cancelar</button>

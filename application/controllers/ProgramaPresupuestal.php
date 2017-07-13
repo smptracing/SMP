@@ -51,6 +51,8 @@ class ProgramaPresupuestal extends CI_Controller
             } else {
                 echo "No Se actualizo correctamente la programa presupuestal";
             }
+            echo $txt_NombreProgramaPU;
+            
         } else {
             show_404();
         }
