@@ -1,39 +1,50 @@
-$(document).on("ready", function () {
-    //alert("sdas");
-    //lista();
-    //division funcional
-
+$(document).on("ready", function()
+{
     lista_gerencias();
     /*llamar a mi datatablet listar funcion*/
 
     $("#form-addGerencia").submit(function (event)//para añadir nueva funcion
     {
         event.preventDefault();
-        $.ajax({
-            url: base_url + "index.php/Gerencia/AddGerencia",
-            type: $(this).attr('method'),
-            data: $(this).serialize(),
-            success: function (resp) {
+
+        $.ajax(
+        {
+            url : base_url + "index.php/Gerencia/AddGerencia",
+            type : $(this).attr('method'),
+            data : $(this).serialize(),
+            success : function (resp)
+            {
                 swal("", resp, "success");
+            
                 $('#table-Gerencia').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
+
+                $('#VentanaRegistraGerencia').modal('hide');
             }
         });
     });
-    $("#form-ModificarGerencia").submit(function (event)//Actualizar funcion
+
+    $("#form-ModificarGerencia").submit(function(event)//Actualizar funcion
     {
         event.preventDefault();
-        $.ajax({
-            url: base_url + "index.php/Gerencia/UpdateGerencia",
-            type: $(this).attr('method'),
-            data: $(this).serialize(),
-            success: function (resp) {
+
+        $.ajax(
+        {
+            url : base_url + "index.php/Gerencia/UpdateGerencia",
+            type : $(this).attr('method'),
+            data : $(this).serialize(),
+            success : function (resp)
+            {
                 swal("", resp, "success");
+                
                 $('#table-Gerencia').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
+
+                $('#VentanaModificarGerencia').modal('hide');
             }
         });
     });
     //fin de  funcional
 });
+
 /*listra funcion*/
 var lista_gerencias = function () {
     var table = $("#table-Gerencia").DataTable({

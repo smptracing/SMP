@@ -1,45 +1,55 @@
-$(document).on("ready", function () {
-    //alert("sdas");
-    //lista();
-    //division funcional
-
+$(document).on("ready", function()
+{
     lista_subgerencias();
+
     /*llamar a mi datatablet listar funcion*/
-    $("#btn_NuevaSubGerencia").click(function ()//para que cargue el como una vez echo click sino repetira datos
+    $("#btn_NuevaSubGerencia").click(function()//para que cargue el como una vez echo click sino repetira datos
     {
         listaGerenciaCombo();//para llenar el combo de agregar
     });
 
-    $("#form-AddSubGerencia").submit(function (event)//para añadir nuevo division funcional
+    $("#form-AddSubGerencia").submit(function(event)//para añadir nuevo division funcional
     {
         event.preventDefault();
-        $.ajax({
-            url: base_url + "index.php/SubGerencia/AddSubGerencia",
-            type: $(this).attr('method'),
-            data: $(this).serialize(),
-            success: function (resp) {
+
+        $.ajax(
+        {
+            url : base_url + "index.php/SubGerencia/AddSubGerencia",
+            type : $(this).attr('method'),
+            data : $(this).serialize(),
+            success : function(resp)
+            {
                 swal("", resp, "success");
+                
                 $('#table-SubGerencia').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
-                //listaSectorCombo();//llamado para la recarga al añadir un nuevo secto
+                
+                $('#VentanaRegistraSubGerencia').modal('hide');
             }
         });
-        //alert("holaaas");
     });
-    $("#form-ModificarSubGerencia").submit(function (event)//Actualizar funcion
+
+    $("#form-ModificarSubGerencia").submit(function(event)//Actualizar funcion
     {
         event.preventDefault();
-        $.ajax({
-            url: base_url + "index.php/SubGerencia/UpdateSubGerencia",
-            type: $(this).attr('method'),
-            data: $(this).serialize(),
-            success: function (resp) {
+
+        $.ajax(
+        {
+            url : base_url + "index.php/SubGerencia/UpdateSubGerencia",
+            type : $(this).attr('method'),
+            data : $(this).serialize(),
+            success : function (resp)
+            {
                 swal("", resp, "success");
+
                 $('#table-SubGerencia').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
+
+                $('#VentanaUpdateSubGerencia').modal('hide');
             }
         });
     });
     //fin de  funcional
 });
+
 /*listra funcion*/
 var lista_subgerencias = function () {
     var table = $("#table-SubGerencia").DataTable({
