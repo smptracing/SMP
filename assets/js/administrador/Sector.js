@@ -3,53 +3,66 @@
                   listaSector();/*llamar a mi datatablet listarSector*/
                   listaSectorCombo();//para listar en un combo los sectores
                 
-                  $("#form-addSector").submit(function(event)//para añadir nuevo sector
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/Sector/AddSector",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           var registros = eval(resp);
-                            for (var i = 0; i < registros.length; i++) {
-                               if(registros[i]["VALOR"]==1){
-                                    swal("",registros[i]["MENSAJE"], "success");
-                                   $('#form-addSector')[0].reset();
-                                   $("#VentanaRegistraSector").modal("hide");
-                               }else{
-                                      swal('',registros[i]["MENSAJE"],'error' )
-                               }
-                                /*swal("",  registros[i]["MENSAJE"], "success");*/
-                            };
-                        
-                           $('#table-sector').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet     
-                           listaSectorCombo();//llamado para la recarga al añadir un nuevo secto
-                         }
-                      });
-                  });          
-                 //fin sector añadir sector
-                 //para actualizar los sectores
-                 $("#form-ActulizarSector").submit(function(event)//para añadir nuevo sector
-                {
-                             
-                                            event.preventDefault();  
-                 
-                                          $.ajax({
-                                              url:base_url+"index.php/Sector/UpdateSector",
-                                              type:$(this).attr('method'),
-                                              data:$(this).serialize(),
-                                              success:function(resp){
-                                                swal("",resp, "success");
-                                               $('#table-sector').dataTable()._fnAjaxUpdate();
-                                                listaSectorCombo();//llamado para la recarga al añadir un nuevo secto
-                                               //listaSector();
+	$("#form-addSector").submit(function(event)//para añadir nuevo sector
+	{
+		event.preventDefault();
 
-                                              }
+		$.ajax(
+		{
+			url : base_url+"index.php/Sector/AddSector",
+			type : $(this).attr('method'),
+			data : $(this).serialize(),
+			success : function(resp)
+			{
+				var registros=eval(resp);
 
-                                          });
+				for(var i=0; i<registros.length; i++)
+				{
+					if(registros[i]["VALOR"]==1)
+					{
+						swal("",registros[i]["MENSAJE"], "success");
+						
+						$('#form-addSector')[0].reset();
+						$("#VentanaRegistraSector").modal("hide");
+					}
+					else
+					{
+						swal('',registros[i]["MENSAJE"],'error' )
+					}
+				}
 
-                });  
+				$('#table-sector').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
+
+				listaSectorCombo();//llamado para la recarga al añadir un nuevo secto
+			}
+		});
+	});          
+	//fin sector añadir sector
+
+	//para actualizar los sectores
+	$("#form-ActulizarSector").submit(function(event)//para añadir nuevo sector
+	{
+		event.preventDefault();  
+
+		$.ajax(
+		{
+			url : base_url+"index.php/Sector/UpdateSector",
+			type : $(this).attr('method'),
+			data : $(this).serialize(),
+			success : function(resp)
+			{
+				swal("",resp, "success");
+				
+				$('#table-sector').dataTable()._fnAjaxUpdate();
+
+				listaSectorCombo();//llamado para la recarga al añadir un nuevo secto
+
+				$("#VentanaModificarSector").modal("hide");
+			}
+
+		});
+	});
+
                  //fin para actualizar los sectores
             //fin sector
 			});
