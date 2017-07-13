@@ -1,60 +1,83 @@
- $(document).on("ready" ,function(){
-               listarcargo();//para mostrar lista de las cargos
-              $("#btn_Nuevadivision").click(function()//para que cargue el como una vez echo click sino repetira datos
-                    {
-                     listacargoCombo();//para llenar el combo de agregar division cargo
-                });
+$(document).on("ready" ,function()
+{
+	listarcargo();//para mostrar lista de las cargos
 
-   $("#form-addcargo").submit(function(event)
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/Personal/addcargo",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           //alert(resp);
-                           if (resp=='1') {
-                             swal("REGISTRADO","Se regristró correctamente", "success");
-                             formReset();
-                           }
-                            if (resp=='2') {
-                             swal("NO SE REGISTRÓ","NO se regristró ", "error");
-                           }
-                          $('#table-cargo').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
-                             formReset();
-                         }
-                      });
-                  });
+	$("#btn_Nuevadivision").click(function()//para que cargue el como una vez echo click sino repetira datos
+	{
+		listacargoCombo();//para llenar el combo de agregar division cargo
+	});
 
-                //limpiar campos
-          function formReset()
-          {
-          document.getElementById("form-addcargo").reset();
-          document.getElementById("form-updatecargo").reset();
-          }
-     $("#form-updatecargo").submit(function(event)
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/Personal/updatecargo",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           //alert(resp);
-                           if (resp=='1') {
-                             swal("MODIFICADO","Se Modificó correctamente", "success");
-                             formReset();
-                           }
-                            if (resp=='2') {
-                             swal("NO SE MODIFICÓ","NO se Modificó ", "error");
-                           }
-                          $('#table-cargo').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
-                             formReset();
-                         }
-                      });
-                  });
-      });
+	$("#form-addcargo").submit(function(event)
+	{
+		event.preventDefault();
+
+		$.ajax(
+		{
+			url : base_url+"index.php/Personal/addcargo",
+			type : $(this).attr('method'),
+			data : $(this).serialize(),
+			success : function(resp)
+			{
+				if(resp=='1')
+				{
+					swal("REGISTRADO","Se regristró correctamente", "success");
+					
+					formReset();
+
+					$('#VentanaRegistracargo').modal('hide');
+				}
+
+				if(resp=='2')
+				{
+					swal("NO SE REGISTRÓ","NO se regristró ", "error");
+				}
+
+				$('#table-cargo').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
+				
+				formReset();
+			}
+		});
+	});
+
+	//limpiar campos
+	function formReset()
+	{
+		document.getElementById("form-addcargo").reset();
+		document.getElementById("form-updatecargo").reset();
+	}
+
+	$("#form-updatecargo").submit(function(event)
+	{
+		event.preventDefault();
+
+		$.ajax(
+		{
+			url : base_url+"index.php/Personal/updatecargo",
+			type : $(this).attr('method'),
+			data : $(this).serialize(),
+			success : function(resp)
+			{
+				if(resp=='1')
+				{
+					swal("MODIFICADO","Se Modificó correctamente", "success");
+				
+					formReset();
+
+					$('#Ventanaupdatecargo').modal('hide');
+				}
+				
+				if(resp=='2')
+				{
+					swal("NO SE MODIFICÓ","NO se Modificó ", "error");
+				}
+
+				$('#table-cargo').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
+				
+				formReset();
+			}
+		});
+	});
+});
 
                   /* listar y lista en tabla entidad*/ 
                 var listarcargo=function()
