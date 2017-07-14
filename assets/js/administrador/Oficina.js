@@ -1,45 +1,55 @@
-$(document).on("ready", function () {
-    //alert("sdas");
-    //lista();
-    //division funcional
-
+$(document).on("ready", function()
+{
     lista_oficinas();
+
     /*llamar a mi datatablet listar funcion*/
-    $("#btn_nuevoOficina").click(function ()//para que cargue el como una vez echo click sino repetira datos
+    $("#btn_nuevoOficina").click(function()//para que cargue el como una vez echo click sino repetira datos
     {
         listaSubGerenciaCombo();//para llenar el combo de agregar
     });
 
-    $("#form-AddOficina").submit(function (event)//para añadir nuevo division funcional
+    $("#form-AddOficina").submit(function(event)//para añadir nuevo division funcional
     {
         event.preventDefault();
-        $.ajax({
-            url: base_url + "index.php/Oficina/AddOficina",
-            type: $(this).attr('method'),
-            data: $(this).serialize(),
-            success: function (resp) {
+
+        $.ajax(
+        {
+            url : base_url + "index.php/Oficina/AddOficina",
+            type : $(this).attr('method'),
+            data : $(this).serialize(),
+            success : function(resp)
+            {
                 swal("", resp, "success");
+                
                 $('#table-Oficina').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
-                //listaSectorCombo();//llamado para la recarga al añadir un nuevo secto
+
+                $('#VentanaRegistraOficina').modal('hide');
             }
         });
-        //alert("holaaas");
     });
-    $("#form-UpdateOficina").submit(function (event)//Actualizar off
+
+    $("#form-UpdateOficina").submit(function(event)//Actualizar off
     {
         event.preventDefault();
-        $.ajax({
-            url: base_url + "index.php/Oficina/UpdateOficina",
-            type: $(this).attr('method'),
-            data: $(this).serialize(),
-            success: function (resp) {
+
+        $.ajax(
+        {
+            url : base_url + "index.php/Oficina/UpdateOficina",
+            type : $(this).attr('method'),
+            data : $(this).serialize(),
+            success : function(resp)
+            {
                 swal("", resp, "success");
+                
                 $('#table-Oficina').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
+
+                $('#VentanaUpdateOficina').modal('hide');
             }
         });
     });
     //fin de  funcional
 });
+
 /*listra funcion*/
 var lista_oficinas = function () {
     var table = $("#table-Oficina").DataTable({

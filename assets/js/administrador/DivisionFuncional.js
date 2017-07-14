@@ -8,35 +8,46 @@
                     {
                      listaFuncionCombo();//para llenar el combo de agregar division funcional
                 });
-                $("#form-AddDivisionFuncion").submit(function(event)//para añadir nuevo division funcional
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/DivisionFuncional/AddDivisionFucion",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                          swal("",resp, "success");
-                          $('#table-DivisionF').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
-                           //listaSectorCombo();//llamado para la recarga al añadir un nuevo secto  
-                         }
-                      });
-                  });
-                 $("#form-UpdateDivisionFuncion").submit(function(event)//para modificar la  division funcional
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/DivisionFuncional/UpdateDivisionFucion",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           swal("",resp, "success");
-                          $('#table-DivisionF').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
-                           //listaSectorCombo();//llamado para la recarga al añadir un nuevo secto    
 
-                         }
-                      });
-                  });
+    $("#form-AddDivisionFuncion").submit(function(event)//para añadir nuevo division funcional
+    {
+        event.preventDefault();
+
+        $.ajax(
+        {
+            url:base_url+"index.php/DivisionFuncional/AddDivisionFucion",
+            type:$(this).attr('method'),
+            data:$(this).serialize(),
+            success:function(resp)
+            {
+                swal("",resp, "success");
+
+                $('#table-DivisionF').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
+
+                $('#VentanaRegistraDivisionF').modal('hide');
+            }
+        });
+    });
+
+    $("#form-UpdateDivisionFuncion").submit(function(event)//para modificar la  division funcional
+    {
+        event.preventDefault();
+
+        $.ajax(
+        {
+            url : base_url+"index.php/DivisionFuncional/UpdateDivisionFucion",
+            type : $(this).attr('method'),
+            data : $(this).serialize(),
+            success : function(resp)
+            {
+                swal("",resp, "success");
+
+                $('#table-DivisionF').dataTable()._fnAjaxUpdate();
+                
+                $('#VentanaUpdateDivisionF').modal('hide');
+            }
+        });
+    });
 			});
     /*listra funcion*/
     var listaFuncionCombo=function(valor)//COMO CON LAS FUNCIONES PARA AGREGAR DIVIVISION FUNCIONAL

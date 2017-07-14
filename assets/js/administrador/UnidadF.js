@@ -1,24 +1,29 @@
- $(document).on("ready" ,function(){
+$(document).on("ready" ,function()
+{
+    listaUnidadF();//LLAMAR AL METODO LISTAR UNIDAD EJECUTORA
 
-              listaUnidadF();//LLAMAR AL METODO LISTAR UNIDAD EJECUTORA
-              
-               //AGREGAR UNA UNIDAD EJECUTORA
-                $("#form-addUnidadF").submit(function(event)
-                {
-                    event.preventDefault();
-                    $.ajax({
-                        url:base_url+"index.php/UnidadF/AddUnidadF",
-                        type:$(this).attr('method'),
-                        data:$(this).serialize(),
-                        success:function(resp){
-                        swal("REGISTRADO!", resp, "success");
-                        $('#table-UnidadF').dataTable()._fnAjaxUpdate();    //SIRVE PARA REFRESCAR LA TABLA 
+    //AGREGAR UNA UNIDAD EJECUTORA
+    $("#form-addUnidadF").submit(function(event)
+    {
+        event.preventDefault();
 
-                        }
-                    });
-                });     
-                //FIN DE AGREGAR UNA UNIDAD EJECUTORA
-			});
+        $.ajax(
+        {
+            url : base_url+"index.php/UnidadF/AddUnidadF",
+            type : $(this).attr('method'),
+            data : $(this).serialize(),
+            success : function(resp)
+            {
+                swal("REGISTRADO!", resp, "success");
+
+                $('#table-UnidadF').dataTable()._fnAjaxUpdate();    //SIRVE PARA REFRESCAR LA TABLA 
+
+                $('#VentanaRegistraUnidadFormuladora').modal('hide');
+            }
+        });
+    });
+    //FIN DE AGREGAR UNA UNIDAD EJECUTORA
+});
 
 //-------------- MANTENIMIENTO UNIDAD EJECUTORA----------------------
 /*LISTAR UNIDAD DE EJECUCION EN UN DATATABLE*/
@@ -46,22 +51,26 @@
                 }
 /*FIN DE LISTAR UNIDAD DE EJECUCION EN UN DATATABLE*/
 
-//ACTUALIZAR UNA UNIDAD EJECUTORA
-                 $("#form-ActualizarUnidadF").submit(function(event)
-                {
-                    event.preventDefault();
-                    $.ajax({
-                        url:base_url+"index.php/UnidadF/UpdateUnidadF",
-                        type:$(this).attr('method'),
-                        data:$(this).serialize(),
-                        success:function(resp){
-                        swal("MODIFICADO!", resp, "success");
-                         $('#table-UnidadF').dataTable()._fnAjaxUpdate();
-                        }
+    //ACTUALIZAR UNA UNIDAD EJECUTORA
+    $("#form-ActualizarUnidadF").submit(function(event)
+    {
+        event.preventDefault();
 
-                    });
+        $.ajax(
+        {
+            url : base_url+"index.php/UnidadF/UpdateUnidadF",
+            type : $(this).attr('method'),
+            data : $(this).serialize(),
+            success : function(resp)
+            {
+                swal("MODIFICADO!", resp, "success");
+                
+                $('#table-UnidadF').dataTable()._fnAjaxUpdate();
 
-                });  
+                $('#VentanaModificarUnidadF').modal('hide');
+            }
+        });
+    });  
     //FIN ACTUALIZAR UNIDAD EJECUTORA
 
     // CAMPOS QUE SE ACTUALIZARAN DE LA UNIDAD EJECUTORA

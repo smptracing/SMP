@@ -12,33 +12,45 @@
 
               listarGrupoF();/*llamar a mi metodo listado servicio publico asociado*/
               //registra  grupo  funcional
-              $("#form-AddGrupoFuncional").submit(function(event)//Actualizar funcion
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/GrupoFuncional/AddGrupoFuncional",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           swal("",resp, "success");
-                           $('#table-listarGrupoFuncional').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
-                         }
-                      });
-                  });   
+	$("#form-AddGrupoFuncional").submit(function(event)//Actualizar funcion
+	{
+		event.preventDefault();
 
-               $("#form-UpadataGrupoFuncional").submit(function(event)//Actualizar funcion
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/GrupoFuncional/UpdateGrupoFuncional",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           swal("",resp, "success");
-                           $('#table-listarGrupoFuncional').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
-                         }
-                      });
-                  }); 
+		$.ajax(
+		{
+			url : base_url+"index.php/GrupoFuncional/AddGrupoFuncional",
+			type : $(this).attr('method'),
+			data : $(this).serialize(),
+			success : function(resp)
+			{
+				swal("",resp, "success");
+
+				$('#table-listarGrupoFuncional').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
+
+				$('#VentanaRegistraGrupoF').modal('hide');
+			}
+		});
+	});   
+
+	$("#form-UpadataGrupoFuncional").submit(function(event)//Actualizar funcion
+	{
+		event.preventDefault();
+
+		$.ajax(
+		{
+			url : base_url+"index.php/GrupoFuncional/UpdateGrupoFuncional",
+			type : $(this).attr('method'),
+			data : $(this).serialize(),
+			success : function(resp)
+			{
+				swal("",resp, "success");
+
+				$('#table-listarGrupoFuncional').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
+
+				$('#VentanaUpdateGrupoF').modal('hide');
+			}
+		});
+	}); 
               //fin registra grupo funcional
 
         //fin grupo funcional

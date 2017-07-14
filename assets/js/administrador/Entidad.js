@@ -1,44 +1,59 @@
  $(document).on("ready" ,function(){
 
                 listarEntidad();//listar entidad
-                $("#form-addEntidad").submit(function(event)//para añadir una nueva entidad
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/Entidad/AddEntidad",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           var registros = eval(resp);
-                            for (var i = 0; i < registros.length; i++) {
-                               if(registros[i]["VALOR"]==1){
-                                    swal("",registros[i]["MENSAJE"], "success");
-                                   $('#form-addEntidad')[0].reset();
-                                   $("#VentanaRegistraEntidad").modal("hide");
-                               }else{
-                                      swal('',registros[i]["MENSAJE"],'error' )
-                               }
-                                /*swal("",  registros[i]["MENSAJE"], "success");*/
-                            };
-                           $('#table-entidad').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
-                         }
-                      });
-                  });  
 
-                  $("#form-ActulizarEntidad").submit(function(event)//Actualizar la entidad
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/Entidad/UpdateEntidad",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           swal("",resp, "success");
-                           $('#table-entidad').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
-                         }
-                      });
-                  });         
-   
+	$("#form-addEntidad").submit(function(event)//para añadir una nueva entidad
+	{
+		event.preventDefault();
+
+		$.ajax(
+		{
+			url : base_url+"index.php/Entidad/AddEntidad",
+			type : $(this).attr('method'),
+			data : $(this).serialize(),
+			success : function(resp)
+			{
+				var registros=eval(resp);
+
+				for(var i=0; i<registros.length; i++)
+				{
+					if(registros[i]["VALOR"]==1)
+					{
+						swal("",registros[i]["MENSAJE"], "success");
+
+						$('#form-addEntidad')[0].reset();
+						$("#VentanaRegistraEntidad").modal("hide");
+					}
+					else
+					{
+						swal('',registros[i]["MENSAJE"],'error' )
+					}
+					/*swal("",  registros[i]["MENSAJE"], "success");*/
+				}
+				$('#table-entidad').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
+			}
+		});
+	});  
+
+	$("#form-ActulizarEntidad").submit(function(event)//Actualizar la entidad
+	{
+		event.preventDefault();
+
+		$.ajax(
+		{
+			url : base_url+"index.php/Entidad/UpdateEntidad",
+			type : $(this).attr('method'),
+			data : $(this).serialize(),
+			success : function(resp)
+			{
+				swal("", resp, "success");
+
+				$('#table-entidad').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
+
+				$("#VentanaModificarEntidad").modal("hide");
+			}
+		});
+	});   
 
 			});
 			  

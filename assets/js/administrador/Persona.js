@@ -1,46 +1,64 @@
- $(document).on("ready" ,function(){
-               listarpersona();//para mostrar lista de las personas
-              $("#btn_nuevoPersonal").click(function()//para que cargue el como una vez echo click sino repetira datos
-                    {
-                  //   listaPersonaCombo();//para llenar el combo de agregar division Personal
-                   // alert();
-                     listarOficina();
-                });
-                $("#form-addPersonal").submit(function(event)//para añadir nuevo division Personal
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/Personal/AddPersonal",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                          swal("",resp, "success");
-                          $('#table-Personal').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   Persona   
-                             formReset();
-                         }
-                      });
-                  });
-                //limpiar campos
-          function formReset()
-          {
-          document.getElementById("form-addPersonal").reset();
-          document.getElementById("form-UpdatePersonal").reset();
-          }
-                 $("#form-UpdatePersonal").submit(function(event)//para modificar la  division Personal
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/Personal/UpdatePersonal",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           swal("",resp, "success");
-                          $('#table-Personal').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   Persona   
-                           formReset();
-                         }
-                      });
-                  });
-      });
+$(document).on("ready" ,function()
+{
+	listarpersona();//para mostrar lista de las personas
+	
+	$("#btn_nuevoPersonal").click(function()//para que cargue el como una vez echo click sino repetira datos
+	{
+		listarOficina();
+	});
+
+	$("#form-addPersonal").submit(function(event)//para añadir nuevo division Personal
+	{
+		event.preventDefault();
+
+		$.ajax(
+		{
+			url : base_url+"index.php/Personal/AddPersonal",
+			type : $(this).attr('method'),
+			data : $(this).serialize(),
+			success : function(resp)
+			{
+				swal("", resp, "success");
+				
+				$('#table-Personal').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   Persona   
+				
+				formReset();
+
+				$('#VentanaRegistraPersonal').modal('hide');
+			}
+		});
+	});
+
+	//limpiar campos
+	function formReset()
+	{
+		document.getElementById("form-addPersonal").reset();
+		document.getElementById("form-UpdatePersonal").reset();
+	}
+
+	$("#form-UpdatePersonal").submit(function(event)//para modificar la  division Personal
+	{
+		event.preventDefault();
+
+		$.ajax(
+		{
+			url : base_url+"index.php/Personal/UpdatePersonal",
+			type : $(this).attr('method'),
+			data : $(this).serialize(),
+			success : function(resp)
+			{
+				swal("", resp, "success");
+				
+				$('#table-Personal').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   Persona   
+				
+				formReset();
+
+				$('#VentanaModificarPersonal').modal('hide');
+			}
+		});
+	});
+});
+
          /*listra Persona*/
                 var listaPersonaCombo=function(valor)//COMO CON LAS PersonaES PARA AGREGAR DIVIVISION Personal
                 {

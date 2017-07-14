@@ -1,24 +1,29 @@
- $(document).on("ready" ,function(){
-              
-              listaModalidadE(); //LLAMAR AL METODO LISTAR MODALIDAD DE EJECUCION
-              
+$(document).on("ready" ,function()
+{
+	listaModalidadE(); //LLAMAR AL METODO LISTAR MODALIDAD DE EJECUCION
 
-                 //AGREGAR UN MODALIDAD DE EJECUCION
-                $("#form-addModalidadE").submit(function(event)
-                {
-                    event.preventDefault();
-                    $.ajax({
-                        url:base_url+"index.php/ModalidadEjecucion/AddModalidadE",
-                        type:$(this).attr('method'),
-                        data:$(this).serialize(),
-                        success:function(resp){
-                        swal("REGISTRADO!", resp, "success");
-                         $('#table-ModalidadE').dataTable()._fnAjaxUpdate();    //SIRVE PARA REFRESCAR LA TABLA 
-                        }
-                    });
-                });     
-                //FIN DE AGREGAR UNA MODALIDAD DE EJECUCION 
-			});
+	//AGREGAR UN MODALIDAD DE EJECUCION
+	$("#form-addModalidadE").submit(function(event)
+	{
+		event.preventDefault();
+
+		$.ajax(
+		{
+			url : base_url+"index.php/ModalidadEjecucion/AddModalidadE",
+			type : $(this).attr('method'),
+			data : $(this).serialize(),
+			success : function(resp)
+			{
+				swal("REGISTRADO!", resp, "success");
+				
+				$('#table-ModalidadE').dataTable()._fnAjaxUpdate();    //SIRVE PARA REFRESCAR LA TABLA
+
+				$('#VentanaRegistraModalidadEjecucion').modal('hide');
+			}
+		});
+	});     
+	//FIN DE AGREGAR UNA MODALIDAD DE EJECUCION 
+});
 
 //-------------- MANTENIMIENTO MODALIDAD DE EJECUCION--------------------------
 
@@ -48,23 +53,27 @@
                 }
 /*FIN DE LISTAR MODALIDAD EJECUCION EN UN DATATABLE*/
 
-  //ACTUALIZAR MODALIDAD DE EJECUCION
-                 $("#form-ActualizarModalidadE").submit(function(event)
-                {
-                    event.preventDefault();
-                    $.ajax({
-                        url:base_url+"index.php/ModalidadEjecucion/UpdateModalidadE",
-                        type:$(this).attr('method'),
-                        data:$(this).serialize(),
-                        success:function(resp){
-                        swal("MODIFICADO!", resp, "success");
-                         $('#table-ModalidadE').dataTable()._fnAjaxUpdate();
-                        }
+//ACTUALIZAR MODALIDAD DE EJECUCION
+$("#form-ActualizarModalidadE").submit(function(event)
+{
+	event.preventDefault();
 
-                    });
+	$.ajax(
+	{
+		url : base_url+"index.php/ModalidadEjecucion/UpdateModalidadE",
+		type : $(this).attr('method'),
+		data : $(this).serialize(),
+		success : function(resp)
+		{
+			swal("MODIFICADO!", resp, "success");
+			
+			$('#table-ModalidadE').dataTable()._fnAjaxUpdate();
 
-                });  
-     //FIN ACTUALIZAR MODALIDAD DE EJECUCION
+			$('#VentanaModificarModalidadE').modal('hide');
+		}
+	});
+});  
+//FIN ACTUALIZAR MODALIDAD DE EJECUCION
 
           // CAMPOS QUE SE ACTUALIZARAN DE LA MODALIDAD DE EJECUCION
         ModalidadEData=function(tbody,table){
