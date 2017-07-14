@@ -160,7 +160,7 @@
                     <div class="col-xs-12">
                                         <!-- PAGE CONTENT BEGINS -->
               <form class="form-horizontal " id="form-AddAsiganarPersona"   action="<?php echo base_url(); ?>frmFormulacion/GetFormulacion" method="POST" >
-                       <table id="table-AsignarEvaluador" class="table table-striped projects">
+                       <!--<table id="table-AsignarEvaluador" class="table table-striped projects">
                       <thead>
                         <tr>
                           <th>ID</th>
@@ -175,7 +175,7 @@
                       </thead>
                       <tbody>
                       </tbody>
-                    </table>
+                    </table>-->
               <div class="item form-group">
                         <div class="item form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12">
