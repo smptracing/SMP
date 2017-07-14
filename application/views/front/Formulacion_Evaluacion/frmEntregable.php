@@ -259,7 +259,7 @@
                       </div>
                       <div class="col-md-4 col-sm-4 col-xs-12 input-group">
                       <span class="input-group-addon">Denominación </span>
-                          <select class="selectpicker" id="txt_denominacion_entre" mane="txt_denominacion_entre" class="selectpicker" data-live-search-normalize="true" data-live-search="true" data-container="body" data-header="Denominaciones" data-max-options="2" max-options-text="Solo dos opciones" title="Seleccionar ocupaciones" multiple >
+                          <select class="selectpicker" id="txt_denominacion_entre" mane="txt_denominacion_entre" class="selectpicker" data-live-search-normalize="true" data-live-search="true" data-container="body" data-header="Denominaciones" data-max-options="2" max-options-text="Solo dos opciones" title="Seleccionar ocupaciones"  >
                             
                           </select>
 
