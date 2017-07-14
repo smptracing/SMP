@@ -271,30 +271,29 @@ var listadoFormuladores=function()
                      },
 
                          "ajax":{
-                                    "url":base_url+"index.php/Personal/BuscarPersonaCargo",
+                                    "url":base_url +"index.php/Personal/BuscarPersonaActividad",
                                     "method":"POST",
                                     data:{text_buscarPersona:text_buscarPersona},
                                     "dataSrc":"data",
                                     },
 
                                 "columns":[
-                                    {"defaultContent": [0],
-                                                 "mRender": function(data, type, full)
-                                                 {
-                                                     id="";
-                                                     var returnval = "<td><input type='radio' name='chkNew"+id+"'  class='call-checkbox' value="+id+"  id=\"chkNew'"+id+"'\" /></td>";
-                                                       return returnval;
-                                                 }
-                                     },
-
-
+                                   {"defaultContent": ""},
                                     {"data":"id_persona","visible": false},
                                     {"data":"nombres"},
-                                    {"data":"desc_cargo"}, 
                                     {"data":"especialidad"},
                                     {"data":"grado_academico"},
                                 ],
-                                "language":idioma_espanol
+                                columnDefs: [ {
+						            orderable: false,
+						            className: 'select-checkbox',
+						            targets:   0
+						        } ],
+						        select: {
+						            style:    'os',
+						            selector: 'td:first-child'
+						        },
+						                                "language":idioma_espanol
                     });
 
                       $('#table_responsableFormulador_filter input').unbind();
@@ -332,19 +331,21 @@ var listadoPersona=function()
                                     "dataSrc":"data",
                                     },
                                 "columns":[
-                                    {"defaultContent": [0],
-                                                 "mRender": function(data, type, full)
-                                                 {
-                                                     id="";
-                                                     var returnval = "<td><input type='radio' name='chkNew"+id+"'  class='call-checkbox' value="+id+"  id=\"chkNew'"+id+"'\" /></td>";
-                                                       return returnval;
-                                                 }
-                                     },
+                                    {"defaultContent": ""},
                                     {"data":"id_persona","visible": false},
                                     {"data":"nombres"},
                                     {"data":"especialidad"},
                                     {"data":"grado_academico"},
                                 ],
+                                columnDefs: [ {
+						            orderable: false,
+						            className: 'select-checkbox',
+						            targets:   0
+						        } ],
+						        select: {
+						            style:    'os',
+						            selector: 'td:first-child'
+						        },
                                 "language":idioma_espanol
                     });
 
