@@ -39,6 +39,8 @@
     <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-bs/css/FEentregableEstudio/css/select.dataTables.min.css" rel="stylesheet">
+
 
     <link href="<?php echo base_url(); ?>assets/vendors/animate/animate.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/vendors/fullcalendar/dist/fullcalendar.css" rel="stylesheet">

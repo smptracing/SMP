@@ -472,7 +472,7 @@
                         
                       </div>
                           <div id="contenedor_responsable">
-                               <table id="table_responsableFormulador" class="table hover" ellspacing="0" width="100%">
+                               <table id="table_responsableFormulador" class="stripe row-border order-column nowrap" ellspacing="0" width="100%">
                                     <thead>
                                        <tr>
                                            <th></th>
@@ -495,11 +495,11 @@
                       <div class="form-group">
                         <div class="col-md-12 col-md-offset-4">
 
-                          <button   type="button" class="btn btn-success" onclick="forma.submit()">
+                          <button   type="submit"  class="btn btn-success">
                             <span class="glyphicon glyphicon-floppy-disk"></span>
                             Asignar
                           </button>
-                          <button  type="button" class="btn btn-danger" data-dismiss="modal" onclick="forma.submit()">
+                          <button  type="submit"  class="btn btn-danger" data-dismiss="modal" >
                              <span class="glyphicon glyphicon-remove"></span>
                             Cancelar
                           </button>
@@ -533,7 +533,7 @@
                       <div class="col-md-12 col-sm-12 col-xs-12 input-group">
                       </div>
                           <div id="contenedor_responsable2">
-                               <table id="table_responsableActividad" class="table" ellspacing="0" width="100%">
+                               <table id="table_responsableActividad" class="stripe row-border order-column nowrap" ellspacing="0" width="100%">
                                        <thead>
                                           <tr>
                                              <th></th>
@@ -552,11 +552,11 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-12 col-md-offset-4">
-                          <button   class="btn btn-success" onclick="forma.submit()">
+                          <button  type="submit"  class="btn btn-success">
                             <span class="glyphicon glyphicon-floppy-disk"></span>
                             Asignar
                           </button>
-                          <button  class="btn btn-danger" data-dismiss="modal" onclick="forma.submit()" >
+                          <button  type="submit"  class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-remove"></span>
                             Cancelar
                           </button>
