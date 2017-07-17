@@ -14,10 +14,10 @@ class Model_Unidad_Medida extends CI_Model
 
 	    return $unidadMedida->result();
 	}
-	
-	function insertar($txt_descripcion)
+
+	function insertar($txtDescripcion)
 	{
-		$unidadMedida=$this->db->query("execute sp_UnidadMedida_Insertar '".$txt_descripcion."'");
+		$unidadMedida=$this->db->query("execute sp_UnidadMedida_Insertar '".$txtDescripcion."'");
 
 		return true;
 	} 
@@ -29,7 +29,14 @@ class Model_Unidad_Medida extends CI_Model
 		return $unidadMedida->result();
 	}
 
-	function editar($id,$txtDescripcion)
+	function UnidadMedidaPorDescripcion($descripcion)
+	{
+		$unidadMedida=$this->db->query("select * from UNIDAD_MEDIDA where replace(descripcion, ' ', '')=replace('".$descripcion."', ' ', '')");
+
+		return $unidadMedida->result();
+	}
+
+	function editar($id, $txtDescripcion)
 	{
 		$unidadMedida=$this->db->query("update UNIDAD_MEDIDA  set  descripcion='".$txtDescripcion."' where id_unidad='".$id."' ");
 

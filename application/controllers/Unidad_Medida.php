@@ -6,7 +6,7 @@ class Unidad_Medida extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        
+
         $this->load->library('table');
         $this->load->model("Model_Unidad_Medida");    
     }
@@ -26,9 +26,16 @@ class Unidad_Medida extends CI_Controller
     	{
     		$txtDescripcion=$this->input->post('txtDescripcion');
 
-    		$this->Model_Unidad_Medida->insertar($txtDescripcion);
+            if(count($this->Model_Unidad_Medida->UnidadMedidaPorDescripcion($txtDescripcion))>0)
+            {
+                $this->session->set_flashdata('error', 'Esta unidad de medida ya fue registrado con anterioridad.');
+
+                return redirect('/Unidad_Medida');
+            }
     		
-    		$this->session->set_flashdata('corecto', 'Unidad de medida registrado correctamente.');
+            $this->Model_Unidad_Medida->insertar($txtDescripcion);
+    		
+    		$this->session->set_flashdata('correcto', 'Unidad de medida registrado correctamente.');
 
     		return redirect('/Unidad_Medida');
     	}

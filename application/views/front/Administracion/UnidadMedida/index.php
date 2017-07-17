@@ -63,14 +63,10 @@
 											</div>
 										</div>
 									</div>
-
 								</div>
-
 							</div>
-
 						</div>
 					</div>
-
 				</div>
 			</div>
 		</div>
@@ -79,21 +75,22 @@
 </div>
 </div>
 <?php
-	$sessionTemp=$this->session->flashdata('correcto');
-	if($sessionTemp){ ?>
-		<script>
-			swal('','<?=$sessionTemp?>', "success");
-		</script>
-	<?php } ?>
-<script>
-			$(document).ready(function()
-			{
-		    
-		       $('#table-UnidadaMedida').DataTable({
-                    
-                        "language":idioma_espanol
-                    });
-		        
-			});
+$sessionTempCorrecto=$this->session->flashdata('correcto');
+$sessionTempError=$this->session->flashdata('error');
 
+if($sessionTempCorrecto){ ?>
+	<script>swal('','<?=$sessionTempCorrecto?>', "success");</script>
+<?php }
+
+if($sessionTempError){ ?>
+	<script>swal('','<?=$sessionTempError?>', "error");</script>
+<?php } ?>
+<script>
+	$(document).ready(function()
+	{
+		$('#table-UnidadaMedida').DataTable(
+		{
+			"language":idioma_espanol
+		});
+	});
 </script>
