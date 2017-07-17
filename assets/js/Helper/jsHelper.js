@@ -20,18 +20,14 @@ function paginaAjaxJSON(data, url, method, preFunction, postFunction, cache, asy
     {
         if((typeof postFunction)=='function')
         {
-            postFunction();
+            postFunction(pagina);
         }
-
-        returnTemp=pagina;
     }).fail(function()
     {
         $('#divModalCargaAjax').hide();
         
         alert('Error en la red (Transferencia de datos). Por favor reporte ésto al administrador del sistema. Pedimos disculpas y damos gracias por su comprensión.');
     });
-
-    return returnTemp;
 }
 
 function paginaAjax(idSeccion, data, url, method, preFunction, postFunction, cache, async)
@@ -42,7 +38,6 @@ function paginaAjax(idSeccion, data, url, method, preFunction, postFunction, cac
     }
 
     $('#divModalCargaAjax').show();
-    
     $.ajax(
     {
         url : url,
