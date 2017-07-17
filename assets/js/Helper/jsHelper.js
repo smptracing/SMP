@@ -38,7 +38,6 @@ function paginaAjax(idSeccion, data, url, method, preFunction, postFunction, cac
     }
 
     $('#divModalCargaAjax').show();
-    
     $.ajax(
     {
         url : url,
