@@ -1,26 +1,65 @@
-<form class="form-horizontal " id="form-addTipoGastoFE" action="<?php echo base_url();?>index.php/FEPresupuesto_Inv/insertar" method="POST" >
-	<div class="item form-group">
-		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Tipo de Gasto<span class="required">*</span>
-		</label>
-		<div class="col-md-6 col-sm-6 col-xs-12">
-			<input id="txt_descripcion_tipo" name="txt_descripcion_tipo" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Ingrese Tipo de Gasto" required="required" type="text">
-		</div>
-	</div>
+		<br />
+		<form class="form-horizontal form-label-left input_mask" id="">
+				<label>Datos generales</label>
+				<div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
+					<label>Estudio De Inversión</label>
+					<select id="cbx_estudioInversion" name="cbx_estudioInversion" class="form-control" required="">
+						 <option value="">Choose..</option>
+					</select>
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+					<label>Sector
+					</label>
+					<input type="text" class="form-control" id="txt_sector" name="txt_sector" autocomplete="off" placeholder="Sector">
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+					<label>Pliego</label>
+					<input type="text" class="form-control" id="txt_pliego" name="txt_pliego" placeholder="Pliego">
+				</div>
+				</hr>
+				<label></label>
+				<div class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
+					<label>Descripción Fuente</label>
+					<input type="text" class="form-control" id="txt_descripcionFuente" name="txt_descripcionFuente">
+				</div>
+				<div class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
+					<label>Correlativo Meta</label>
+					<input type="text" class="form-control" id="txt_corelativoMeta" name="txt_corelativoMeta">
+				</div>
+				<div class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
+					<label>Año</label>
+					<input type="text" class="form-control" id="txt_anio" name="txt_anio" >
+				</div>
+				<div class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
+					<br>
+					<button id="btn_agregarPresupuestoInnv" class="btn btn-success">Agregar</button>
+				</div>
+				<div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
+					<table id="table-PresupestoFormulacion" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+						<thead>
+							<tr>
+								<td>Descripcion de la Fuente</td>
+								<td>Correlativo Meta</td>
+								<td>Año</td>
+								<td></td>
+							</tr>
+						</thead>
+					</table>
+				</div>
+				<div class="form-group">
+					<div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+						<button type="button" class="btn btn-primary">Cancel
+						</button>
+						<button type="submit" class="btn btn-success">Registrar Gasto y proceder con la especificación del mismo
+						</button>
+					</div>
+				</div>
 
-	<div class="ln_solid"></div>
-	<div class="form-group">
-		<div class="col-md-6 col-md-offset-3">
+		</form>
+<script type="text/javascript">
+	
+	$("#btn_agregarPresupuestoInnv").click(function(event) {
+		alert("hola");
+	});
 
-			<button  type="submit" class="btn btn-success">
-				<span class="glyphicon glyphicon-floppy-disk"></span>
-				Guardar
-			</button>
-			<button type="submit" class="btn btn-danger" data-dismiss="modal">
-				<span class="glyphicon glyphicon-remove"></span>
-				Cancelar
-			</button>
-
-		</div>
-	</div>
-</form>	
-																														
+</script>
