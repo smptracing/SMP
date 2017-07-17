@@ -21,7 +21,7 @@
 									<div class="row">
 										<div class="col-md-12 col-xs-12">
 											<div class="x_panel">
-												<button type="button" class="btn btn-primary " onclick="paginaAjaxDialogo(null, 'Registrar Unidad de Medida', null, base_url+'index.php/Unidad_Medida/insertar', 'POST', null, null, false, true)" >
+												<button type="button" class="btn btn-primary " onclick="paginaAjaxDialogo(null, 'Registrar Unidad de Medida', null, base_url+'index.php/Unidad_Medida/insertar', 'GET', null, null, false, true)" >
 													<span class="fa fa-plus-circle"></span>
 													Nuevo
 												</button>
@@ -50,13 +50,13 @@
 															<td class="col-md-1 col-md-1 col-xs-12"></td>
 														</tr>
 													</thead>
-													<?php foreach($Unidad_Medida as $Unidad_Medida ){ ?>
+													<?php foreach($listaUnidadMedida as $item){ ?>
 														  <tr>
 															  <td>
-															  <?=$Unidad_Medida->id_unidad;?>
+															  	<?=$item->id_unidad;?>
 															  </td>
 															  <td>
-															  <?= $Unidad_Medida->descripcion;?>
+															  	<?= $item->descripcion;?>
 															  </td>
 															  <td>
 															  <button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaModificarFuncion'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>
@@ -82,39 +82,39 @@
 	<div class="clearfix"></div>
 </div>
 </div>
-<script type="text/javascript">
-			$("#form-addUnidad_Medida").submit(function(event)
-			{
-				event.preventDefault();
-				$.ajax(
-				{
-					url:base_url+"index.php/Unidad_Medida/insertar",
-					type:$(this).attr('method'),
-					data:$(this).serialize(),
-					success:function(resp)
-					{
-					   swal("",resp, "success");
-					   $('#table-UnidadaMedida').dataTable()._fnAjaxUpdate();
+<?php
+	$sessionTemp=$this->session->flashdata('corecto');
 
-					}
-				});
-			});
-
+	if($sessionTemp){ ?>
+		<script>
+			swal('','<?=$sessionTemp?>', "success");
+		</script>
+	<?php } ?>
+<script>
 			$(document).ready(function()
 			{
 		    
-		        $('#table-UnidadaMedida').DataTable
-		        ( {
+		       var Table =$('#table-UnidadaMedida').DataTable(
+		        {
 			        "columnDefs": 
 			        [
 			            {
-			                "targets": [ 0 ],
+			                "targets": [0],
 			                "visible": false,
 			                "searchable": true
 			            },  
 			        ],
 			         "language":idioma_espanol
-		   		 } );		        
-			} );
+		   		 });
+
+		   		DataUnidadMedida("#table-UnidadaMedida",table);     
+			});
+
+			var DataUnidadMedida=function(tbody,table){
+                    $(tbody).on("click","button.editar",function(){
+                        var data=table.row( $(this).parents("tr")).data();
+                        console.log("hola");
+                    });
+                }
 
 </script>
