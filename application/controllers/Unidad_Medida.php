@@ -5,7 +5,8 @@ class Unidad_Medida extends CI_Controller
 {
     public function __construct()
     {
-        parent::__construct(); 
+        parent::__construct();
+        
         $this->load->library('table');
         $this->load->model("Model_Unidad_Medida");    
     }
@@ -18,30 +19,34 @@ class Unidad_Medida extends CI_Controller
         $this->load->view('front/Administracion/UnidadMedida/index', ['listaUnidadMedida' => $listaUnidadMedida]);
         $this->load->view('layout/ADMINISTRACION/footer');
     }
+
     public function insertar()
     {
     	if($_POST)
     	{
-    		$txt_descripcion=$this->input->post('txt_descripcion');
-    		$this->Model_Unidad_Medida->editar($txt_descripcion);
+    		$txtDescripcion=$this->input->post('txtDescripcion');
+
+    		$this->Model_Unidad_Medida->insertar($txtDescripcion);
     		
-    		$this->session->set_flashdata('corecto', 'Se regitro correctamente');
+    		$this->session->set_flashdata('corecto', 'Unidad de medida registrado correctamente.');
 
     		return redirect('/Unidad_Medida');
     	}
 
         return $this->load->view('front/Administracion/UnidadMedida/insertar');
     }
-     public function editar()
+
+    public function editar()
     {
     	if($this->input->post('hdId'))
     	{
 			$id=$this->input->post('hdId');
-			$txtDescripcion =$this->input->post('txtDescripcion');
 
-			$this->Model_Unidad_Medida->editar($id,$txtDescripcion);
+			$txtDescripcion=$this->input->post('txtDescripcion');
+
+			$this->Model_Unidad_Medida->editar($id, $txtDescripcion);
     		
-    		$this->session->set_flashdata('correcto', 'Se modifico correctamente la Unidad de Medidad ');
+    		$this->session->set_flashdata('correcto', 'Datos guardados correctamente.');
 
     		return redirect('/Unidad_Medida');
     	}
@@ -51,11 +56,5 @@ class Unidad_Medida extends CI_Controller
 		$unidadMedida=$this->Model_Unidad_Medida->UnidadMedida($id)[0];
 
         return $this->load->view('front/Administracion/UnidadMedida/editar', ['unidadMedida' => $unidadMedida]);
-    }
-   function _load_layout($template)
-    {
-      $this->load->view('layout/ADMINISTRACION/header');
-      $this->load->view($template);
-      $this->load->view('layout/ADMINISTRACION/footer');
     }
 }
