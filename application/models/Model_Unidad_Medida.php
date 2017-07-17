@@ -36,6 +36,13 @@ class Model_Unidad_Medida extends CI_Model
 		return $unidadMedida->result();
 	}
 
+	function UnidadMedidaPorDescripcionDiffId($id, $descripcion)
+	{
+		$unidadMedida=$this->db->query("select * from UNIDAD_MEDIDA where id_unidad!='".$id."' and replace(descripcion, ' ', '')=replace('".$descripcion."', ' ', '')");
+
+		return $unidadMedida->result();
+	}
+
 	function editar($id, $txtDescripcion)
 	{
 		$unidadMedida=$this->db->query("update UNIDAD_MEDIDA  set  descripcion='".$txtDescripcion."' where id_unidad='".$id."' ");

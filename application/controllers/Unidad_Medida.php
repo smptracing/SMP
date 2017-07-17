@@ -51,6 +51,13 @@ class Unidad_Medida extends CI_Controller
 
 			$txtDescripcion=$this->input->post('txtDescripcion');
 
+            if(count($this->Model_Unidad_Medida->UnidadMedidaPorDescripcionDiffId($id, $txtDescripcion))>0)
+            {
+                $this->session->set_flashdata('error', 'Esta unidad de medida ya fue registrado con anterioridad.');
+
+                return redirect('/Unidad_Medida');
+            }
+
 			$this->Model_Unidad_Medida->editar($id, $txtDescripcion);
     		
     		$this->session->set_flashdata('correcto', 'Datos guardados correctamente.');
