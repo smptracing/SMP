@@ -11,8 +11,8 @@
 		<div class="col-md-6 col-md-offset-3">
 			<button  type="submit" class="btn btn-success">
 				<span class="glyphicon glyphicon-floppy-disk"></span>
-				Guardar
-			</button>
+				Guarda
+r			</button>
 			<button  class="btn btn-danger" data-dismiss="modal">
 				<span class="glyphicon glyphicon-remove"></span>
 				Cancelar

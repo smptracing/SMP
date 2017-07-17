@@ -3,8 +3,9 @@
 		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Descripción <span class="required">*</span>
 		</label>
 		<div class="col-md-6 col-sm-6 col-xs-12">
-			<input id="id_id_unidad" name="id_id_unidad" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Descripción" required="required" type="text">
-			<input id="txt_descripcion" name="txt_descripcion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Descripción" required="required" type="text">
+			<input id="hdId" name="hdId" value="<?=$unidadMedida->id_unidad;?>" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Descripción" required="required" type="hidden">
+
+			<input id="txtDescripcion" name="txtDescripcion" value="<?=$unidadMedida->descripcion;?>" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Descripción" required="required" type="text">
 		</div>
 	</div>
 	<div class="ln_solid"></div>

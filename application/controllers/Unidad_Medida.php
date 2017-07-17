@@ -23,7 +23,7 @@ class Unidad_Medida extends CI_Controller
     	if($_POST)
     	{
     		$txt_descripcion=$this->input->post('txt_descripcion');
-    		$this->Model_Unidad_Medida->insertar($txt_descripcion);
+    		$this->Model_Unidad_Medida->editar($txt_descripcion);
     		
     		$this->session->set_flashdata('corecto', 'Se regitro correctamente');
 
@@ -34,18 +34,23 @@ class Unidad_Medida extends CI_Controller
     }
      public function editar()
     {
-    	if($_POST)
+    	if($this->input->post('hdId'))
     	{
-    		$txt_descripcion=$this->input->post('txt_descripcion');
-    		$txt_descripcion=$this->input->post('txt_descripcion');
-    		$this->Model_Unidad_Medida->insertar($txt_descripcion);
+			$id=$this->input->post('hdId');
+			$txtDescripcion =$this->input->post('txtDescripcion');
+
+			$this->Model_Unidad_Medida->editar($id,$txtDescripcion);
     		
-    		$this->session->set_flashdata('corecto', 'Se regitro correctamente');
+    		$this->session->set_flashdata('correcto', 'Se modifico correctamente la Unidad de Medidad ');
 
     		return redirect('/Unidad_Medida');
     	}
-    	
-        return $this->load->view('front/Administracion/UnidadMedida/insertar');
+
+		$id=$this->input->post('id');
+
+		$unidadMedida=$this->Model_Unidad_Medida->UnidadMedida($id)[0];
+
+        return $this->load->view('front/Administracion/UnidadMedida/editar', ['unidadMedida' => $unidadMedida]);
     }
    function _load_layout($template)
     {

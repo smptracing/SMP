@@ -120,7 +120,7 @@
                         <li><a href="<?php echo site_url('UnidadEjecutora/'); ?>"><i class="fa fa-tasks"></i>  Unidad Ejecutora</a></li>
                         <li><a href="<?php echo site_url('Gerencia/'); ?>"><i class="fa fa-qrcode"></i>  Gerencias</a></li>
                         <li><a href="<?php echo site_url('Personal/'); ?>"><i class="fa fa-group"></i>  Personal</a></li>
-                        <li><a href="<?php echo site_url('Unidad_Medida/'); ?>"><i class="fa fa-group"></i>  unidade medid</a></li>
+                        <li><a href="<?php echo site_url('Unidad_Medida/'); ?>"><i class="fa fa-group"></i>  Unidade Medida</a></li>
 
 
                 </ul>
