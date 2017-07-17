@@ -22,7 +22,13 @@
     <link href="<?php echo base_url(); ?>assets/vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="<?php echo base_url(); ?>assets/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+       <!-- jQuery -->
+    <script src="<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <!-- gantt -->
 
+    <script src="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
     <!-- bootstrap-progressbar -->
     <link href="<?php echo base_url(); ?>assets/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -48,6 +54,7 @@
     <link href="<?php echo base_url(); ?>assets/vendors/cropper/dist/cropper.min.css" rel="stylesheet">
 
       <link href="<?php echo base_url(); ?>assets/css/jquery.growl.css" rel="stylesheet">
+      <script src="<?php echo base_url(); ?>assets/js/Helper/jsHelper.js"></script>
   <style>
    #ProgramacionHorizontal{
       width: 100% !important;
@@ -138,6 +145,7 @@
                       <li><a href="<?php echo site_url('FEestado/ver_EstadoFE'); ?>">Estado</a></li>
                       <li><a href="<?php echo site_url('DenominacionFE/'); ?>">Denominacion</a></li>
                       <li><a href="<?php echo site_url('EtapasFE/'); ?>">Etapas</a></li>
+                      <li><a href="<?php echo site_url('Tipo_Gasto_FE/'); ?>">Tipo Gasto</a></li>
                     </ul>
                   </li>
 
