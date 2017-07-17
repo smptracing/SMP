@@ -53,8 +53,10 @@
     <link href="<?php echo base_url(); ?>assets/vendors/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/vendors/cropper/dist/cropper.min.css" rel="stylesheet">
 
-      <link href="<?php echo base_url(); ?>assets/css/jquery.growl.css" rel="stylesheet">
-      <script src="<?php echo base_url(); ?>assets/js/Helper/jsHelper.js"></script>
+    <link href="<?php echo base_url(); ?>assets/css/jquery.growl.css" rel="stylesheet">
+    <script src="<?php echo base_url(); ?>assets/js/Helper/jsHelper.js"></script>
+    <script src="<?php echo base_url(); ?>assets/dist/js/sweetalert-dev.js"></script>
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/js/sweetalert.css">
   <style>
    #ProgramacionHorizontal{
       width: 100% !important;

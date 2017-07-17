@@ -1,4 +1,4 @@
-<form class="form-horizontal " id="form-addTipoGastoFE"  method="POST" >
+<form class="form-horizontal " id="form-addTipoGastoFE"  action="<?php echo base_url();?>index.php/Tipo_Gasto_FE/insertar" method="POST" >
 	<div class="item form-group">
 		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Tipo de Gasto<span class="required">*</span>
 		</label>

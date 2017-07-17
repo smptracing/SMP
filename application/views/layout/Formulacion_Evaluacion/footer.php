@@ -75,10 +75,6 @@
     <script src="<?php echo base_url(); ?>assets/vendors/pdfmake/build/pdfmake.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendors/pdfmake/build/vfs_fonts.js"></script>
 
-
-     <script src="<?php echo base_url(); ?>assets/dist/js/sweetalert-dev.js"></script>
-     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/js/sweetalert.css">
-
     <script src="<?php echo base_url(); ?>assets/dist/js/bootstrap-select.js"></script><!--- para el selector con buscardor -->
     <!-- Custom Theme Scripts -->
     <script src="<?php echo base_url(); ?>assets/dist/jquery-wizard.js"></script>

@@ -29,7 +29,7 @@
 
 									<div class="col-md-12 col-sm-12 col-xs-12">
 										<div class="x_panel">
-											<button type="button" class="btn btn-primary " onclick="paginaAjaxDialogo(null, 'Registrar tipo  de gasto', null, 'http://localhost/smp/index.php/Tipo_Gasto_FE/insertar', 'POST', null, null, false, true)" >
+											<button type="button" class="btn btn-primary " onclick="paginaAjaxDialogo(null, 'Registrar tipo  de gasto', null, 'http://localhost/smp/index.php/Tipo_Gasto_FE/insertar', 'GET', null, null, false, true)" >
 												NUEVO
 											</button>
 												<div class="x_title">                                                              
@@ -52,21 +52,17 @@
 														</thead>-->
 														<thead>
 														<tr>
-															<td>ID</td>
 															<td>TIPO DE GASTO</td>
 															<td class="col-md-1 col-md-1 col-xs-12"></td>
 														</tr>
 													</thead>
-													<?php foreach($Tipo_Gasto_FE as $Tipo_Gasto_FE ){ ?>
+													<?php foreach($ListaTipoGastoFE as $item ){ ?>
 														  <tr>
 															  <td>
-															  <?=$Tipo_Gasto_FE->id_tipo;?>
+															  <?= $item->desc_tipo_gasto;?>
 															  </td>
 															  <td>
-															  <?= $Tipo_Gasto_FE->descripcion_tipo;?>
-															  </td>
-															  <td>
-															  <button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaModificarFuncion'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>
+															  <button type='button' class='editar btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Modificar tipo  de gasto',{id:'<?=$item->id_tipo_gasto?>'}, base_url+'index.php/Tipo_Gasto_FE/editar', 'POST', null, null, false, true)"><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>
 															  </td>
 														  </tr>
 												     <?php } ?>
@@ -88,8 +84,15 @@
 			<div class="clearfix"></div>
 		</div>
 	</div>
+	<?php
+	$sessionTempo=$this->session->flashdata('correcto');
 
-	<script type="text/javascript">
+	if($sessionTempo){ ?>
+		<script>
+			swal('','<?=$sessionTempo?>', "success");
+		</script>
+	<?php } ?>
+	<script>
 		$(document).ready(function()
 		{
 			$('#table-Tipo_Gasto_FE').DataTable();
