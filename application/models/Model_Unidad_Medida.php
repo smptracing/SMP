@@ -13,7 +13,8 @@ class Model_Unidad_Medida extends CI_Model
 		$unidadMedida=$this->db->query("execute sp_UnidadMedida_Listar");
 
 	    return $unidadMedida->result();
-	} 
+	}
+	
 	function insertar($txt_descripcion)
 	{
 		$unidadMedida=$this->db->query("execute sp_UnidadMedida_Insertar '".$txt_descripcion."'");

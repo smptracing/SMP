@@ -42,7 +42,6 @@
     
      <script src="<?php echo base_url(); ?>assets/dist/js/sweetalert-dev.js"></script>
      <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/js/sweetalert.css">
-
      <script>
     var base_url = '<?php echo base_url(); ?>';
     </script>
