@@ -20,15 +20,15 @@
 				<label></label>
 				<div class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
 					<label>Descripción Fuente</label>
-					<input type="text" class="form-control" id="txt_descripcionFuente" name="txt_descripcionFuente">
+					<input type="text" class="form-control" id="txtDescripcionFuente" name="txtDescripcionFuente">
 				</div>
 				<div class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
 					<label>Correlativo Meta</label>
-					<input type="text" class="form-control" id="txt_corelativoMeta" name="txt_corelativoMeta">
+					<input type="text" class="form-control" id="txtCorelativoMeta" name="txtCorelativoMeta">
 				</div>
 				<div class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
 					<label>Año</label>
-					<input type="text" class="form-control" id="txt_anio" name="txt_anio" >
+					<input type="text" class="form-control" id="txtAnio" name="txtAnio" >
 				</div>
 				<div class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
 					<br>
@@ -44,6 +44,7 @@
 								<td></td>
 							</tr>
 						</thead>
+						<tbody></tbody>
 					</table>
 				</div>
 				<div class="form-group">
@@ -57,9 +58,18 @@
 
 		</form>
 <script type="text/javascript">
-	
-	$("#btn_agregarPresupuestoInnv").click(function(event) {
-		alert("hola");
+     var i=1;
+	$("#btn_agregarPresupuestoInnv").on('click', function(event)
+	{
+
+		var htmlTemp='<tr>'+
+			'<td><input type="hidden" name="hdDescripcionFuente">'+$('#txtDescripcionFuente').val()+'</td>'+
+			'<td>'+$('#txtCorelativoMeta').val()+'</td>'+
+			'<td>'+$('#txtAnio').val()+'</td>'+
+			'<td><a href="#" onclick="$(this).parent().parent().remove();">Eliminar</a></td>'+
+		'</tr>'
+
+		$('#table-PresupestoFormulacion > tbody').append(htmlTemp);
 	});
 
 </script>
