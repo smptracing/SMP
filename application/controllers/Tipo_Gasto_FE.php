@@ -25,6 +25,13 @@ class Tipo_Gasto_FE extends CI_Controller
 		{
 			$txtDescripcion=$this->input->post("txtDescripcion");
 
+			if(count($this->Model_TipoGastoFE->TipoGastoFEPorDescripcion($txtDescripcion))>0)
+            {
+                $this->session->set_flashdata('error', 'Este tipo de gasto ya fue registrado con anterioridad.');
+
+                return redirect('/Tipo_Gasto_FE');
+            }
+
 	    	$Data=$this->Model_TipoGastoFE->insertar($txtDescripcion);
 
 	    	$this->session->set_flashdata('correcto', 'Se registró correctamente');
@@ -41,6 +48,13 @@ class Tipo_Gasto_FE extends CI_Controller
 		{
 			$id=$this->input->post("hdId");
 			$txtDescripcion=$this->input->post("txtDescripcion");
+
+			if(count($this->Model_TipoGastoFE->TipoGastoFEPorDescripcionDiffId($id, $txtDescripcion))>0)
+            {
+                $this->session->set_flashdata('error', 'Este tipo de gasto ya fue registrado con anterioridad.');
+
+                return redirect('/Tipo_Gasto_FE');
+            }
 
 	    	$Data=$this->Model_TipoGastoFE->editar($id,$txtDescripcion);
 

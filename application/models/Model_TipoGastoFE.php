@@ -10,27 +10,41 @@ class Model_TipoGastoFE extends CI_Model
 
 	function ListarTipoGastoFE()
 	{
-		$tipogasto=$this->db->query("execute sp_FETipoGasto_Listar"); 
+		$tipoGasto=$this->db->query("execute sp_FETipoGasto_Listar"); 
 		
-		return $tipogasto->result();
+		return $tipoGasto->result();
 	} 
 
-	function insertar($txt_descripcion_tipo)
+	function insertar($txtDescripcion)
   	{
-	  	$this->db->query("execute sp_FETipoGasto_Insertar'".$txt_descripcion_tipo."'");
+	  	$this->db->query("execute sp_FETipoGasto_Insertar'".$txtDescripcion."'");
   	}
 
   	function TipoGastoFE($id)
 	{
-		$tipogastofe=$this->db->query("select * from FE_TIPO_GASTO where id_tipo_gasto='".$id."'");
+		$tipoGastoFE=$this->db->query("select * from FE_TIPO_GASTO where id_tipo_gasto='".$id."'");
 
-		return $tipogastofe->result();
+		return $tipoGastoFE->result();
 	}
 
-  	function editar($id,$txt_descripcion_tipo)
+	function TipoGastoFEPorDescripcion($descripcion)
+	{
+		$tipoGastoFE=$this->db->query("select * from FE_TIPO_GASTO where replace(desc_tipo_gasto, ' ', '')=replace('".$descripcion."', ' ', '')");
+
+		return $tipoGastoFE->result();
+	}
+
+	function TipoGastoFEPorDescripcionDiffId($id, $descripcion)
+	{
+		$tipoGastoFE=$this->db->query("select * from FE_TIPO_GASTO where id_tipo_gasto!='".$id."' and replace(desc_tipo_gasto, ' ', '')=replace('".$descripcion."', ' ', '')");
+
+		return $tipoGastoFE->result();
+	}
+
+  	function editar($id,$txtDescripcion)
   	{
-	  	$this->db->query("execute sp_FETipoGasto_Modificar'".$id."','".$txt_descripcion_tipo."'");
-	  	
+	  	$this->db->query("execute sp_FETipoGasto_Modificar'".$id."','".$txtDescripcion."'");
+
 	  	return true;
   	}
 }
