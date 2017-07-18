@@ -12,17 +12,17 @@ class FE_Presupuesto_Inv extends CI_Controller {
 		{
 			
 			$cbx_estudioInversion =1;
-			$txtSector            =$this->input->post("txtSector");
-			$txtPliego            =$this->input->post("txtPliego");
+			$txtSector =$this->input->post("txtSector");
+			$txtPliego =$this->input->post("txtPliego");
 
 			$Data=$this->Model_FE_Presupuesto_Inv->insertar($cbx_estudioInversion , $txtSector , $txtPliego);
 
-			$data                =$this->Model_FE_Presupuesto_Inv->ultimoIdPresupuestoInv()[0];
-			$id_presupuesto_fe   =$data->id;
-			$id_fuente_finan     =1;
-			$hdDescripcionFuente =$this->input->post("hdDescripcionFuente");
-			$hdCorrelativoMeta   =$this->input->post("hdCorrelativoMeta");
-			$hdAnio              =$this->input->post("hdAnio");
+			$data=$this->Model_FE_Presupuesto_Inv->ultimoIdPresupuestoInv()[0];
+			$id_presupuesto_fe =$data->id;
+			$id_fuente_finan=1;
+			$hdDescripcionFuente=$this->input->post("hdDescripcionFuente");
+			$hdCorrelativoMeta=$this->input->post("hdCorrelativoMeta");
+			$hdAnio=$this->input->post("hdAnio");
 	    	for ($i=0; $i <count($hdAnio); $i++) { 
 	    		$hdDescripcionFuente[$i];
 	    		$Data=$this->Model_FE_Presupuesto_Inv->insertarPresupuestoFuente($id_presupuesto_fe,$id_fuente_finan,$hdCorrelativoMeta[$i],$hdAnio[$i]);
