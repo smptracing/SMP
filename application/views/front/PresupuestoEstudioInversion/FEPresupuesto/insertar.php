@@ -1,72 +1,73 @@
-		<br />
-		<form class="form-horizontal"  id="form-addFePresupuesto" action="<?php echo base_url();?>index.php/FE_Presupuesto_Inv/insertar" method="POST">
-				<label>Datos generales</label>
-				<div class="row">
-					<div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
-						<label>Estudio De Inversión</label>
-						<select id="cbx_estudioInversion" name="cbx_estudioInversion" class="form-control notValidate" required="">
-							 <option value="">Choose..</option>
-							 <option value="">Choose..</option>
-						</select>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-						<label>
-						  Sector
-						</label>
-						<input type="text" class="form-control" id="txtSector" name="txtSector" autocomplete="off" placeholder="Sector" autocomplete="off">
-					</div>
-					<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-						<label>Pliego</label>
-						<input type="text" class="form-control" id="txtPliego" name="txtPliego" placeholder="Pliego" autocomplete="off">
-					</div>
-				</div>
-				<div class="row" id="presupuestoFuente">
-					<div class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
-						<label>Descripción Fuente</label>
-						<input type="text" class="form-control" id="txtDescripcionFuente" name="txtDescripcionFuente" autocomplete="off">
-					</div>
-					<div class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
-						<label>Correlativo Meta</label>
-						<input type="text" class="form-control" id="txtCorelativoMeta" name="txtCorelativoMeta" autocomplete="off">
-					</div>
-					<div class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
-						<label>Año</label>
-						<input type="text" class="form-control" id="txtAnio" name="txtAnio" autocomplete="off">
-					</div>
-					<div class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
-						<br>
-						<button id="btn_agregarPresupuestoInnv" class="btn btn-success">Agregar</button>
-					</div>
-				</div>
-				<div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
-					<table id="table-PresupestoFormulacion" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
-						<thead>
-							<tr>
-								<td>Descripcion de la Fuente</td>
-								<td>Correlativo Meta</td>
-								<td>Año</td>
-								<td></td>
-							</tr>
-						</thead>
-						<tbody></tbody>
-					</table>
-				</div>
-				<div class="form-group">
-					<div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-					<button type="submit" class="btn btn-success">Registrar Gasto y proceder con la especificación del mismo
-						</button>
-						<button  class="btn btn-danger" data-dismiss="modal" onclick="removeModal();">Cancelar
-						</button>
-						
-					</div>
-				</div>
-
-		</form>
+<form class="form-horizontal"  id="form-addFePresupuesto" action="<?php echo base_url();?>index.php/FE_Presupuesto_Inv/insertar" method="POST">
+		<h4 style="margin-bottom: 0px;">Datos generales</h4>
+		<hr style="margin: 2px;margin-bottom: 5px;">
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<label>Estudio De Inversión</label>
+				<select id="cbx_estudioInversion" name="cbx_estudioInversion" class="form-control notValidate" required="">
+					 <option value="">Choose..</option>
+					 <option value="">Choose..</option>
+				</select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<label>Sector</label>
+				<input type="text" class="form-control" id="txtSector" name="txtSector" autocomplete="off" placeholder="Sector" autocomplete="off">
+			</div>
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<label>Pliego</label>
+				<input type="text" class="form-control" id="txtPliego" name="txtPliego" placeholder="Pliego" autocomplete="off">
+			</div>
+		</div>
+		<h4 style="margin-bottom: 0px;">Fuente de financiamiento</h4>
+		<hr style="margin: 2px;margin-bottom: 5px;">
+		<div class="row" id="divPresupuestoFuente">
+			<div class="col-md-3 col-sm-6 col-xs-12">
+				<label>Descripción Fuente</label>
+				<input type="text" class="form-control" id="txtDescripcionFuente" name="txtDescripcionFuente" autocomplete="off">
+			</div>
+			<div class="col-md-3 col-sm-6 col-xs-12">
+				<label>Correlativo Meta</label>
+				<input type="text" class="form-control" id="txtCorelativoMeta" name="txtCorelativoMeta" autocomplete="off">
+			</div>
+			<div class="col-md-3 col-sm-6 col-xs-12">
+				<label>Año</label>
+				<input type="text" class="form-control" id="txtAnio" name="txtAnio" autocomplete="off">
+			</div>
+			<div class="col-md-3 col-sm-6 col-xs-12">
+				<label>.</label>
+				<input type="button" id="btnAgregarFEPresupuestoFuente" class="btn btn-success form-control" value="Agregar">
+			</div>
+		</div>
+		<div>
+			<table id="table-PresupestoFormulacion" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+				<thead>
+					<tr>
+						<td>Descripcion de la Fuente</td>
+						<td>Correlativo Meta</td>
+						<td>Año</td>
+						<td></td>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>
+		<div class="row" style="text-align: right;">
+			<button type="submit" class="btn btn-success">Registrar fuente de finan.</button>
+			<button  class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+		</div>
+</form>
 <script>
-	$("#btn_agregarPresupuestoInnv").on('click', function(event)
+	$("#btnAgregarFEPresupuestoFuente").on('click', function(event)
 	{
+		$('#divPresupuestoFuente').data('formValidation').validate();
+
+		if(!($('#divPresupuestoFuente').data('formValidation').isValid()))
+		{
+			return;
+		}
+
 		var htmlTemp='<tr>'+
 			'<td><input type="hidden" value='+$('#txtDescripcionFuente').val()+' name="hdDescripcionFuente[]"> '+$('#txtDescripcionFuente').val()+'</td>'+
 			'<td><input type="hidden" value='+$('#txtCorelativoMeta').val()+' name="hdCorrelativoMeta[]">'+$('#txtCorelativoMeta').val()+'</td>'+
@@ -75,6 +76,8 @@
 		'</tr>'
 
 		$('#table-PresupestoFormulacion > tbody').append(htmlTemp);
+
+		limpiarText('divPresupuestoFuente', []);
 	});
 
 	$(function()
@@ -107,6 +110,28 @@
 							message: '<b style="color: red;">El campo "Pliego" es requerido.</b>'
 						}
 					}
+				}
+			}
+		});
+
+		$('#divPresupuestoFuente').formValidation(
+		{
+			framework: 'bootstrap',
+			excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+			live: 'enabled',
+			message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+			trigger: null,
+			fields:
+			{
+				txtDescripcionFuente:
+				{
+					validators: 
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Descripción fuente" es requerido.</b>'
+						}
+					}
 				},
 				txtCorelativoMeta:
 				{
@@ -136,7 +161,4 @@
 			}
 		});	
 	});
-
-	
-
 </script>
