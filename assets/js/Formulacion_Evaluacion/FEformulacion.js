@@ -187,11 +187,11 @@ $("#form-AddSituacion").submit(function(event)
                                          return '<a href="../../FEentregableEstudio/ver_FEentregable/'+data+'"><button type="button" title="Entregables" class="btn btn btn-primary btn-xs"><i class="fa fa-tasks"></i> </button></a><button type="button" title="Ver Gantt" class="gant btn btn-info btn-xs" data-toggle="modal" data-target="#ventanagant"><i class="glyphicon glyphicon-fullscreen" aria-hidden="true"></i></button>';
                                       }
                                     },
-{"defaultContent":"<button type='button' title='Asignar Estado' class='EstadoFE btn btn-success btn-xs' data-toggle='modal' data-target='#VentanaEstadoFE'><i class='fa fa-dashboard' aria-hidden='true'></i></button><button type='button' title='Asignar Situacion' class='Situacion btn btn-warning btn-xs' data-toggle='modal' data-target='#VentanaSituacionActual'><i class='fa fa-comments' aria-hidden='true'></i></button><button type='button' title='Asignar Responsable' class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#VentanaAsignarPersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button><button type='button' title='Ver Etapas Estudio' class='ver_etapas_estudio btn btn-success btn-xs' data-toggle='modal' data-target='#ventana_ver_etapas_estudio'><i class='fa fa-paw' aria-hidden='true'></i></button>"}
+                            {"defaultContent":"<button type='button' title='Asignar Estado' class='EstadoFE btn btn-success btn-xs' data-toggle='modal' data-target='#VentanaEstadoFE'><i class='fa fa-dashboard' aria-hidden='true'></i></button><button type='button' title='Asignar Situacion' class='Situacion btn btn-warning btn-xs' data-toggle='modal' data-target='#VentanaSituacionActual'><i class='fa fa-comments' aria-hidden='true'></i></button><button type='button' title='Asignar Responsable' class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#VentanaAsignarPersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button><button type='button' title='Ver Etapas Estudio' class='ver_etapas_estudio btn btn-success btn-xs' data-toggle='modal' data-target='#ventana_ver_etapas_estudio'><i class='fa fa-paw' aria-hidden='true'></i></button><button type='button' title='Presupuesto de Inversión' class='presupuestoProyectoInv btn btn-success btn-xs' ><i class='fa fa-usd' aria-hidden='true'></i></button>"}
                              ],
                                  "language":idioma_espanol
                     });
-                   // DenominacionFE("#table-DenominacionFE",table);
+                   presupuestoProInv("#table-formulacion",table);
                    $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
         new $.fn.DataTable.Buttons(table, {
           buttons: [
@@ -264,13 +264,22 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
                       }
                     });
     }
-           var  ListaFormulacion=function(tbody,table){
+    var  ListaFormulacion=function(tbody,table){
                                $(tbody).on("click","a.VerDetalleFormulacion",function(){
                               var data=table.row( $(this).parents("tr")).data();
                                var codigo_unico_est_inv=data.codigo_unico_est_inv;
                                DetalleSitActPipEvaluacion(codigo_unico_est_inv);
                           });
                       }
+
+           var  presupuestoProInv=function(tbody,table){
+                               $(tbody).on("click","button.presupuestoProyectoInv",function(){
+                               var data=table.row( $(this).parents("tr")).data();
+                               var codigo_unico_est_inv=data.codigo_unico_est_inv;
+                               window.location.href=base_url+"index.php/FE_Presupuesto_Inv";//+codigo_unico_est_inv;
+                          });
+                      }
+
               var  SituacionActual=function(tbody,table){
                     $(tbody).on("click","button.Situacion",function(){
                         var data=table.row( $(this).parents("tr")).data();

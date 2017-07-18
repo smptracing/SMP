@@ -6,6 +6,14 @@ class FE_Presupuesto_Inv extends CI_Controller {
       parent::__construct();
       $this->load->model('Model_FE_Presupuesto_Inv');
 	}
+
+	public function index()
+    {
+        $this->load->view('layout/Formulacion_Evaluacion/header');
+        $this->load->view('Front/PresupuestoEstudioInversion/FEPresupuesto/index');
+        $this->load->view('layout/Formulacion_Evaluacion/footer');
+    }
+
 	public function insertar()
 	{
 		if($_POST)
