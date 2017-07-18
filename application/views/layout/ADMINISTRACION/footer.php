@@ -106,5 +106,7 @@
 <script src="<?php echo base_url(); ?>assets/js/administrador/cargo.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/administrador/UnidadF.js"></script>
     <script src="<?php echo base_url();?>assets/js/Usuario/login.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/formValidation.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/bootstrap.validation.min.js"></script>
   </body>
 </html>

@@ -1,38 +1,52 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+
 class Model_Unidad_Medida extends CI_Model
 {
-			public function __construct()
-			{
-			  parent::__construct();
-			}
-			function UnidadMedidad_Listar()
-			{
-				$unidadMedida=$this->db->query("execute sp_UnidadMedida_Listar");
+	public function __construct()
+	{
+		parent::__construct();
+	}
 
-			    return $unidadMedida->result();
-			} 
-			function insertar($txt_descripcion)
-			{
-				  $unidadMedida=$this->db->query("execute sp_UnidadMedida_Insertar '".$txt_descripcion."'");
+	function UnidadMedidad_Listar()
+	{
+		$unidadMedida=$this->db->query("execute sp_UnidadMedida_Listar");
 
-				  return true;
+	    return $unidadMedida->result();
+	}
 
-			} 
+	function insertar($txtDescripcion)
+	{
+		$unidadMedida=$this->db->query("execute sp_UnidadMedida_Insertar '".$txtDescripcion."'");
 
-			function UnidadMedida($id)
-			{
-				$unidadMedida=$this->db->query("select * from UNIDAD_MEDIDA where id_unidad='".$id."' ");
+		return true;
+	} 
 
-			    return $unidadMedida->result();
-			}
-			
-			function editar($id,$txtDescripcion){
+	function UnidadMedida($id)
+	{
+		$unidadMedida=$this->db->query("select * from UNIDAD_MEDIDA where id_unidad='".$id."' ");
 
-				$unidadMedida=$this->db->query("update UNIDAD_MEDIDA  set  descripcion='".$txtDescripcion."' where id_unidad='".$id."' ");
+		return $unidadMedida->result();
+	}
 
-				return true;
-			    
-			}
-			
+	function UnidadMedidaPorDescripcion($descripcion)
+	{
+		$unidadMedida=$this->db->query("select * from UNIDAD_MEDIDA where replace(descripcion, ' ', '')=replace('".$descripcion."', ' ', '')");
+
+		return $unidadMedida->result();
+	}
+
+	function UnidadMedidaPorDescripcionDiffId($id, $descripcion)
+	{
+		$unidadMedida=$this->db->query("select * from UNIDAD_MEDIDA where id_unidad!='".$id."' and replace(descripcion, ' ', '')=replace('".$descripcion."', ' ', '')");
+
+		return $unidadMedida->result();
+	}
+
+	function editar($id, $txtDescripcion)
+	{
+		$unidadMedida=$this->db->query("update UNIDAD_MEDIDA  set  descripcion='".$txtDescripcion."' where id_unidad='".$id."' ");
+
+		return true;
+	}
 }
