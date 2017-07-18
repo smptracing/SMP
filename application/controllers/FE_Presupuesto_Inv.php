@@ -7,9 +7,11 @@ class FE_Presupuesto_Inv extends CI_Controller {
       $this->load->model('Model_FE_Presupuesto_Inv');
 	}
 
+
 	public function index($codigo_unico_est_inv)
     {
     	$ListarPresupuesto=$this->Model_FE_Presupuesto_Inv->ListarPresupuesto($codigo_unico_est_inv);
+
         $this->load->view('layout/Formulacion_Evaluacion/header');
         $this->load->view('Front/PresupuestoEstudioInversion/FEPresupuesto/index',['ListarPresupuesto'=>$ListarPresupuesto]);
         $this->load->view('layout/Formulacion_Evaluacion/footer');
@@ -39,7 +41,10 @@ class FE_Presupuesto_Inv extends CI_Controller {
 	    	$this->session->set_flashdata('correcto',"Se registro corectamente el presupuesto");
 	    	return redirect('/Estudio_Inversion/'); 	
 		}
-	    $this->load->view('Front/PresupuestoEstudioInversion/FEPresupuesto/insertar');
+
+		$listarSector=$this->Model_FE_Presupuesto_Inv->listarSector();
+		
+	    $this->load->view('Front/PresupuestoEstudioInversion/FEPresupuesto/insertar',['listarSector'=>$listarSector]);
 	}
 
 	function _load_layout($template)

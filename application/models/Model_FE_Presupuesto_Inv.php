@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Model_FE_Presupuesto_Inv extends CI_Model
 {
+
     public function __construct()
     {
     	parent::__construct();
@@ -27,6 +28,12 @@ class Model_FE_Presupuesto_Inv extends CI_Model
         $presupuestoInv=$this->db->query("SELECT MAX(id_presupuesto_fe) AS id FROM FE_PRESUPUESTO_INV");
         return $presupuestoInv->result();
     }
-        
+
+    function listarSector(){
+
+        $listarSector=$this->db->query("execute sp_Sector_r");
+        return $listarSector->result();
+            
+    }    
 
 }
