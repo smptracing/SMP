@@ -11,11 +11,11 @@
 				<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
 					<label>Sector
 					</label>
-					<input type="text" class="form-control" id="txt_sector" name="txt_sector" autocomplete="off" placeholder="Sector">
+					<input type="text" class="form-control" id="txtSector" name="txtSector" autocomplete="off" placeholder="Sector">
 				</div>
 				<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
 					<label>Pliego</label>
-					<input type="text" class="form-control" id="txt_pliego" name="txt_pliego" placeholder="Pliego">
+					<input type="text" class="form-control" id="txtPliego" name="txtPliego" placeholder="Pliego">
 				</div>
 				</hr>
 				<label></label>
