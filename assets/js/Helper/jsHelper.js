@@ -1,10 +1,3 @@
-function removeModal()
-{
-    $('.modal').remove();
-    $('.modal-backdrop').remove();
-    $('body').removeClass('modal-open');
-}
-
 function paginaAjaxJSON(data, url, method, preFunction, postFunction, cache, async)
 {
     var returnTemp=null;
@@ -83,10 +76,10 @@ function paginaAjaxDialogo(idModal, titulo, data, url, method, preFunction, post
         '<div class="modal-dialog modal-lg">'+
             '<div class="modal-content">'+
                 '<div class="modal-header">'+
-                    '<button type="button" class="close" onclick="removeModal();">&times;</button>'+
-                    '<h4 class="modal-title">'+titulo+'</h4>'+
+                    '<button type="button" class="close" data-dismiss="modal">&times;</button>'+
+                    '<h4 id="'+idModalTemp+'Titulo" class="modal-title">'+titulo+'</h4>'+
                 '</div>'+
-                '<div class="modal-body">';
+                '<div id="'+idModalTemp+'Cuerpo" class="modal-body">';
 
     var htmlTempFin='</div>'+
                 '<div class="modal-footer"></div>'+
@@ -105,9 +98,19 @@ function paginaAjaxDialogo(idModal, titulo, data, url, method, preFunction, post
     {
         $('#divModalCargaAjax').hide();
 
-        $('body').append(htmlTempInicio+pagina+htmlTempFin);
+        if($('#'+idModalTemp).length)
+        {
+            $('#'+idModalTemp+'Titulo').text(titulo);
+            $('#'+idModalTemp+'Cuerpo').html(pagina);
 
-        $('#'+idModalTemp).modal('show');
+            $('#'+idModalTemp).modal('show');
+        }
+        else
+        {
+            $('body').append(htmlTempInicio+pagina+htmlTempFin);
+
+            $('#'+idModalTemp).modal('show');
+        }
 
         if((typeof postFunction)=='function')
         {

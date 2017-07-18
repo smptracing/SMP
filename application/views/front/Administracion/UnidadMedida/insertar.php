@@ -13,7 +13,7 @@
 				<span class="glyphicon glyphicon-floppy-disk"></span>
 				Guardar
 			</button>
-			<button class="btn btn-danger" data-dismiss="modal" onclick="removeModal();">
+			<button class="btn btn-danger" data-dismiss="modal">
 				<span class="glyphicon glyphicon-remove"></span>
 				Cancelar
 			</button>
