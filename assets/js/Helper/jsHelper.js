@@ -1,3 +1,25 @@
+function limpiarText(idContenedor, arrayIdExcepciones)
+{
+    var sizeArrayIdExcepciones=arrayIdExcepciones==null?0:arrayIdExcepciones.length;
+    $("#"+idContenedor).find("input[type='text']").each(function(index, elemento)
+    {
+        var borrarContenido=true;
+        for(var i=0; i<sizeArrayIdExcepciones; i++)
+        {
+            if(arrayIdExcepciones[i]==$(elemento).attr("id"))
+            {
+                borrarContenido=false;
+                break;
+            }
+        }
+
+        if(borrarContenido)
+        {
+            $(elemento).val("");
+        }
+    });
+}
+
 function renderLoading()
 {
     if(!($('#divModalCargaAjax').length))
