@@ -7,6 +7,19 @@ class FE_Presupuesto_Inv extends CI_Controller {
 	}
 	public function insertar()
 	{
+		if($_POST)
+		{
+			$txtDescripcionFuente =$this->input->post("txtDescripcionFuente");
+			$txtCorelativoMeta =$this->input->post("txtCorelativoMeta");
+			$txtAnio =$this->input->post("txtAnio");
+	    	//$Data=$this->Model_FEPresupuestoInv->insertar($txtDescripcionFuente,$txtCorelativoMeta,$txtAnio);
+	    	$suma=0;
+	    	for ($i=0; $i <count($txtAnio); $i++) { 
+	    		$suma=$suma+1;
+	    	}
+	    	$this->session->set_flashdata('correcto',$suma);
+	    	return redirect('/Estudio_Inversion/'); 	
+		}
 	    $this->load->view('Front/PresupuestoEstudioInversion/FEPresupuesto/insertar');
 	}
 

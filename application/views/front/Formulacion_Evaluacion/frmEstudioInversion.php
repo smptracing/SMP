@@ -545,3 +545,11 @@
     </div>
 </div>
 <!-- /.FIN VENTANA VER ETAPAS DE UN ESTYUDIO-->
+<?php
+  $sessionTempo=$this->session->flashdata('correcto');
+
+  if($sessionTempo){ ?>
+    <script>
+      swal('','<?=$sessionTempo?>', "success");
+    </script>
+<?php } ?>

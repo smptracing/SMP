@@ -1,9 +1,10 @@
 		<br />
-		<form class="form-horizontal form-label-left input_mask" id="">
+		<form class="form-horizontal"  id="form-addFePresupuesto" action="<?php echo base_url();?>index.php/FE_Presupuesto_Inv/insertar" method="POST">
 				<label>Datos generales</label>
 				<div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
 					<label>Estudio De Inversión</label>
 					<select id="cbx_estudioInversion" name="cbx_estudioInversion" class="form-control" required="">
+						 <option value="">Choose..</option>
 						 <option value="">Choose..</option>
 					</select>
 				</div>
@@ -58,14 +59,12 @@
 
 		</form>
 <script type="text/javascript">
-     var i=1;
 	$("#btn_agregarPresupuestoInnv").on('click', function(event)
 	{
-
 		var htmlTemp='<tr>'+
-			'<td><input type="hidden" name="hdDescripcionFuente">'+$('#txtDescripcionFuente').val()+'</td>'+
-			'<td>'+$('#txtCorelativoMeta').val()+'</td>'+
-			'<td>'+$('#txtAnio').val()+'</td>'+
+			'<td><input type="hidden" value='+$('#txtDescripcionFuente').val()+' name="hdDescripcionFuente[]"> '+$('#txtDescripcionFuente').val()+'</td>'+
+			'<td><input type="hidden" value='+$('#txtCorelativoMeta').val()+' name="hdCorrelativoMeta[]">'+$('#txtCorelativoMeta').val()+'</td>'+
+			'<td><input type="hidden" value='+$('#txtAnio').val()+' name="hdAnio[]">'+$('#txtAnio').val()+'</td>'+
 			'<td><a href="#" onclick="$(this).parent().parent().remove();">Eliminar</a></td>'+
 		'</tr>'
 
