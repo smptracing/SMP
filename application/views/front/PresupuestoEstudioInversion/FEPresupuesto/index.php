@@ -55,7 +55,7 @@
 														<?php foreach($ListarPresupuesto as $item ){ ?>
 															<tr>
 																<td>
-																<?=$item->sector?>
+																<?=$item->nombre_sector?>
 																</td>
 																<td>
 																<?=$item->pliego?>
