@@ -84,14 +84,14 @@
                <table id="table-DetSitActEvaluacionFE" class="table table-striped projects">
                </table>
 
-                
+
             </div>
       </div>
 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                 </div>
     </div>
-    
+
   </div>
   </div>
 
@@ -287,11 +287,11 @@
                                                   <input type="date" id="dateFechaIniC" name="dateFechaIniC" class="form-control col-md-6 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text" value="<?php echo date("Y-m-d"); ?>" disabled="true">
                                           </div>
                                           <div class="col-md-4">
- <label for="name">. <span class="required"></span>
-                                            </label><BR>
+                                             <label for="name">. <span class="required"></span>
+                                             </label><BR>
                                              <button id="send" type="submit" class="btn btn-success">
-                            <span class="glyphicon glyphicon-floppy-saved"></span>Agregar
-                          </button>
+                                             <span class="glyphicon glyphicon-floppy-saved"></span>Agregar
+                                             </button>
                                           </div>
                       </div>
                      <div class="ln_solid"></div>
@@ -331,7 +331,7 @@
       </div>
     </div>
 </div>
-<!-- /.fin de  ventana Registar Persona-->
+<!-- /.fin de  ventana asiganar etapa->
 
 
 <!-- /. INICIO VENTANA VER ETAPAS DE UN ESTUDIO-->

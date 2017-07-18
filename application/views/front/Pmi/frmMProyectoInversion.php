@@ -73,7 +73,7 @@
                                                         <table id="table-ProyectoInversionProgramado" class="table table-striped table-bordered table-hover table-responsive display  compact " ellspacing="0" width="100%">
                                                               <thead>
                                                                 <tr>
-                                                                  
+
                                                                   <th class="col-sm-1">Id</th>
                                                                   <th class="col-sm-1"><center>Código Único</center></th>
                                                                   <th class="col-sm-1"><center>Ciclo de Inversión</center></th>
@@ -84,7 +84,7 @@
                                                                   <?php if (isset($anio) && $anio == "") {?>
                                                                              <h6><label id="AnioProgramadoActual"></label></h6></center></div></th>
                                                                   <?php } else {?>
-                                                                  <?php echo (isset($anio) ? $anio+1 : date('Y')+1); ?></center></div></th>
+                                                                  <?php echo (isset($anio) ? $anio + 1 : date('Y') + 1); ?></center></div></th>
                                                                   <?php }?>
 
 
@@ -92,7 +92,7 @@
                                                                   <?php if (isset($anio) && $anio == "") {?>
                                                                             <h6><label id="AnioProgramadoActual1"></label></h6></center></div></th>
                                                                   <?php } else {?>
-                                                                  <?php echo (isset($anio) ? $anio+2 : date('Y')+2); ?></center></div></th>
+                                                                  <?php echo (isset($anio) ? $anio + 2 : date('Y') + 2); ?></center></div></th>
                                                                   <?php }?>
 
 
@@ -100,21 +100,21 @@
                                                                   <?php if (isset($anio) && $anio == "") {?>
                                                                             <h6><label id="AnioProgramadoActual2"></label></h6></center></div></th>
                                                                   <?php } else {?>
-                                                                  <?php echo (isset($anio) ? $anio+3 : date('Y')+3); ?></center></div></th>
+                                                                  <?php echo (isset($anio) ? $anio + 3 : date('Y') + 3); ?></center></div></th>
                                                                   <?php }?>
 
                                                                   <th class="col-sm-1"><center><div class="programacion1">
                                                                     <?php if (isset($anio) && $anio == "") {?>
                                                                             <h6><label id="AnioProgramadoActualM"></label></h6></center></div></th>
                                                                   <?php } else {?>
-                                                                  <?php echo (isset($anio) ? $anio+1 : date('Y')+1); ?></center></div></th>
+                                                                  <?php echo (isset($anio) ? $anio + 1 : date('Y') + 1); ?></center></div></th>
                                                                   <?php }?>
 
                                                                   <th class="col-sm-1"><center><div class="programacion2">
                                                                   <?php if (isset($anio) && $anio == "") {?>
                                                                             <h6><label id="AnioProgramadoActualM1"></label></h6></center></div></th>
                                                                   <?php } else {?>
-                                                                  <?php echo (isset($anio) ? $anio+2 : date('Y')+2); ?></center></div></th>
+                                                                  <?php echo (isset($anio) ? $anio + 2 : date('Y') + 2); ?></center></div></th>
                                                                   <?php }?>
 
 
@@ -122,7 +122,7 @@
                                                                   <?php if (isset($anio) && $anio == "") {?>
                                                                             <h6><label id="AnioProgramadoActualM2"></label></h6></center></div></th>
                                                                   <?php } else {?>
-                                                                  <?php echo (isset($anio) ? $anio+3 : date('Y')+3); ?></center></div></th>
+                                                                  <?php echo (isset($anio) ? $anio + 3 : date('Y') + 3); ?></center></div></th>
                                                                   <?php }?>
 
                                                                   <th class="col-sm-1"><center> Tipo de Inversión</center></th>
@@ -518,7 +518,7 @@
                                             </select>
                                         </div>
                                      </div>
-                               
+
                                     <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Proyecto de Inversion<span class="required">*</span>
                                         </label>
@@ -564,7 +564,7 @@
 
                                    </table>
                                      <span></span><div class="col-md-6 col-md-offset-3">
-                                        
+
                                            <button   id="finalizarProgram" class="btn btn-success" data-dismiss="modal">
                                           <span class="glyphicon glyphicon-floppy-saved " aria-hidden="true"></span>
                                            FINALIZAR</button>
@@ -627,7 +627,7 @@
                               <button id="btn-GuardarMontoProgramado"  class="btn btn-success">
                                <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>Guardar</button>
                               <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                              
+
 
 
                             </div>
@@ -893,58 +893,58 @@
 <!-- /.VER DETALLE DE PROYECTO->
 <!- /.VER EN VERTICAR DETALLE DE CADA PROYECTO-->
 <script>
-	$(document).on('ready', function()
-	{
-		$('#form-addProyectoInversion').formValidation(
-	    {
-	        framework: 'bootstrap',
+  $(document).on('ready', function()
+  {
+    $('#form-addProyectoInversion').formValidation(
+      {
+          framework: 'bootstrap',
             excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
             live: 'enabled',
             message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
             trigger: null,
-	        fields:
-	        {
-	            txtCodigoUnico:
-	            {
-	                validators: 
-	                {
-	                    notEmpty:
-	                    {
-	                        message: '<b style="color: red;">El campo "Código único" es requerido.</b>'
-	                    },
-	                    regexp:
-	                    {
-	                        regexp: /^\d*$/,
-	                        message: '<b style="color: red;">El campo "Código único" debe ser un número entero.</b>'
-	                    }
-	                }
-	            },
-	            txtNombrePip:
-	            {
-	            	validators:
-	            	{
-	            		notEmpty:
-	            		{
-	            			message: '<b style="color: red;">El campo "Nombre de inversión" es requerido.</b>'
-	            		}
-	            	}
-	            },
-	            txtCostoPip:
-	            {
-	            	validators:
-	            	{
-	            		notEmpty:
-	            		{
-	            			message: '<b style="color: red;">El campo "Inversión" es requerido.</b>'
-	            		},
-	            		regexp:
-	                    {
-	                        regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
-	                        message: '<b style="color: red;">El campo "Costo de inversión" debe ser un valor en soles.</b>'
-	                    }
-	            	}
-	            }
-	        }
-	    });
-	});
+          fields:
+          {
+              txtCodigoUnico:
+              {
+                  validators:
+                  {
+                      notEmpty:
+                      {
+                          message: '<b style="color: red;">El campo "Código único" es requerido.</b>'
+                      },
+                      regexp:
+                      {
+                          regexp: /^\d*$/,
+                          message: '<b style="color: red;">El campo "Código único" debe ser un número entero.</b>'
+                      }
+                  }
+              },
+              txtNombrePip:
+              {
+                validators:
+                {
+                  notEmpty:
+                  {
+                    message: '<b style="color: red;">El campo "Nombre de inversión" es requerido.</b>'
+                  }
+                }
+              },
+              txtCostoPip:
+              {
+                validators:
+                {
+                  notEmpty:
+                  {
+                    message: '<b style="color: red;">El campo "Inversión" es requerido.</b>'
+                  },
+                  regexp:
+                      {
+                          regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
+                          message: '<b style="color: red;">El campo "Costo de inversión" debe ser un valor en soles.</b>'
+                      }
+                }
+              }
+          }
+      });
+  });
 </script>

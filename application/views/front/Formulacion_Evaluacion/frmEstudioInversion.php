@@ -516,7 +516,6 @@
                         </th>
                         <th style="width: 10%"><i class="fa fa-calendar"></i> Fecha Final
                         </th>
-
                       </tr>
                     </thead>
                     </table>
