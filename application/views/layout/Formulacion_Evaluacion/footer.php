@@ -110,5 +110,7 @@
      <script src="<?php echo base_url(); ?>assets/js/Estadisticas/EstadisticasFE.js"></script>
      <script src="<?php echo base_url();?>assets/js/Usuario/login.js"></script>
     <!-- Custom Theme Scripts -->
+  <script src="<?php echo base_url(); ?>assets/js/formValidation.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/bootstrap.validation.min.js"></script>
   </body>
 </html>

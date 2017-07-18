@@ -23,9 +23,9 @@ class Tipo_Gasto_FE extends CI_Controller
 	{
 		if($_POST)
 		{
-			$txt_descripcion_tipo =$this->input->post("txt_descripcion_tipo");
+			$txtDescripcion=$this->input->post("txtDescripcion");
 
-	    	$Data=$this->Model_TipoGastoFE->insertar($txt_descripcion_tipo);
+	    	$Data=$this->Model_TipoGastoFE->insertar($txtDescripcion);
 
 	    	$this->session->set_flashdata('correcto', 'Se registró correctamente');
 
@@ -34,15 +34,15 @@ class Tipo_Gasto_FE extends CI_Controller
 
 	    return $this->load->view('Front/PresupuestoEstudioInversion/TipoGastoFE/insertar');
 	}
-	
+
 	public function editar()
 	{
 		if($this->input->post('hdId'))
 		{
 			$id=$this->input->post("hdId");
-			$txt_descripcion_tipo=$this->input->post("txt_descripcion_tipo");
+			$txtDescripcion=$this->input->post("txtDescripcion");
 
-	    	$Data=$this->Model_TipoGastoFE->editar($id,$txt_descripcion_tipo);
+	    	$Data=$this->Model_TipoGastoFE->editar($id,$txtDescripcion);
 
 	    	$this->session->set_flashdata('correcto', 'Se modificó correctamente');
 
@@ -53,7 +53,7 @@ class Tipo_Gasto_FE extends CI_Controller
 
 		$TipoGastoFE=$this->Model_TipoGastoFE->TipoGastoFE($id)[0];
 	    
-	    return $this->load->view('Front/PresupuestoEstudioInversion/TipoGastoFE/editar',['TipoGastoFE'=>$TipoGastoFE]);		
+	    return $this->load->view('Front/PresupuestoEstudioInversion/TipoGastoFE/editar', ['TipoGastoFE' => $TipoGastoFE]);		
 	}
 
 	function _load_layout($template)

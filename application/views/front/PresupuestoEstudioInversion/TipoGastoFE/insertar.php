@@ -2,7 +2,7 @@
 	<div class="item form-group">
 		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Tipo de Gasto<span class="required">*</span></label>
 		<div class="col-md-6 col-sm-6 col-xs-12">
-			<input id="txt_descripcion_tipo" name="txt_descripcion_tipo" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese Tipo de Gasto" required="required" type="text">
+			<input id="txtDescripcion" name="txtDescripcion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese Tipo de Gasto" required="required" autocomplete="off" type="text">
 		</div>
 	</div>
 	<div class="ln_solid"></div>
@@ -19,3 +19,29 @@
 		</div>
 	</div>
 </form>
+<script>
+	$(function()
+	{
+		$('#form-addTipoGastoFE').formValidation(
+		{
+			framework: 'bootstrap',
+			excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+			live: 'enabled',
+			message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+			trigger: null,
+			fields:
+			{
+				txtDescripcion:
+				{
+					validators:
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Descripción" es requerido.</b>'
+						}
+					}
+				}
+			}
+		});
+	});
+</script>
