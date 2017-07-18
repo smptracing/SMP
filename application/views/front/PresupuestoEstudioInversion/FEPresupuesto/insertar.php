@@ -12,7 +12,8 @@
 				</div>
 				<div class="row">
 					<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-						<label>Sector
+						<label>
+						  Sector
 						</label>
 						<input type="text" class="form-control" id="txtSector" name="txtSector" autocomplete="off" placeholder="Sector" autocomplete="off">
 					</div>
