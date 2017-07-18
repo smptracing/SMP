@@ -276,7 +276,7 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
                                $(tbody).on("click","button.presupuestoProyectoInv",function(){
                                var data=table.row( $(this).parents("tr")).data();
                                var codigo_unico_est_inv=data.codigo_unico_est_inv;
-                               window.location.href=base_url+"index.php/FE_Presupuesto_Inv";//+codigo_unico_est_inv;
+                               window.location.href=base_url+"index.php/FE_Presupuesto_Inv/index/"+codigo_unico_est_inv+"/";//+codigo_unico_est_inv;
                           });
                       }
 
