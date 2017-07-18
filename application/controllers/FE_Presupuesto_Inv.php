@@ -7,10 +7,11 @@ class FE_Presupuesto_Inv extends CI_Controller {
       $this->load->model('Model_FE_Presupuesto_Inv');
 	}
 
-	public function index()
+	public function index($codigo_unico_est_inv)
     {
+    	$ListarPresupuesto=$this->Model_FE_Presupuesto_Inv->ListarPresupuesto($codigo_unico_est_inv);
         $this->load->view('layout/Formulacion_Evaluacion/header');
-        $this->load->view('Front/PresupuestoEstudioInversion/FEPresupuesto/index');
+        $this->load->view('Front/PresupuestoEstudioInversion/FEPresupuesto/index',['ListarPresupuesto'=>$ListarPresupuesto]);
         $this->load->view('layout/Formulacion_Evaluacion/footer');
     }
 
@@ -19,7 +20,7 @@ class FE_Presupuesto_Inv extends CI_Controller {
 		if($_POST)
 		{
 			
-			$cbx_estudioInversion =1;
+			$cbx_estudioInversion =48;
 			$txtSector =$this->input->post("txtSector");
 			$txtPliego =$this->input->post("txtPliego");
 

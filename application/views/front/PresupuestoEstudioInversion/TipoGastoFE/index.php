@@ -50,12 +50,12 @@
 															<tbody>
 																<?php foreach($ListaTipoGastoFE as $item ){ ?>
 																	  <tr>
-																		  <td>
-																		  	<?=$item->desc_tipo_gasto?>
-																		  </td>
-																		  <td>
+																		<td>
+																			<?=$item->desc_tipo_gasto?>
+																	    </td>
+																		<td>
 																		  	<button type='button' class='editar btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Modificar tipo  de gasto',{id:'<?=$item->id_tipo_gasto?>'}, base_url+'index.php/Tipo_Gasto_FE/editar', 'POST', null, null, false, true)"><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>
-																		  </td>
+																		</td>
 																	  </tr>
 															     <?php } ?>
 															</tbody>

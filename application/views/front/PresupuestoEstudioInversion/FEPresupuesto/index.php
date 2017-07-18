@@ -42,15 +42,33 @@
 												<div class="clearfix"></div>
 											</div>
 											<div class="x_content">
-												<table id="table-UnidadaMedida" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+												<table id="table-Presupuesto" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
 													<thead>
 														<tr>
 															<td>Sector</td>
-															<td class="col-md-1 col-md-1 col-xs-12">Pliego</td>
-															<td>Sub Total</td>
+															<td>Pliego</td>
+															<td>Presupuesto</td>
 															<td class="col-md-1 col-md-1 col-xs-12"></td>
 														</tr>
 													</thead>
+													<tbody>
+														<?php foreach($ListarPresupuesto as $item ){ ?>
+															<tr>
+																<td>
+																<?=$item->sector?>
+																</td>
+																<td>
+																<?=$item->pliego?>
+																</td>
+																<td>
+																<?=$item->PresupuestoTotal?>
+																</td>
+																<td>
+																  	<button type='button' class='editar btn btn-primary btn-xs' ><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>
+																</td>
+															</tr>
+														<?php } ?>
+													</tbody>
 													
 												</table>
 											</div>
@@ -67,7 +85,23 @@
 	<div class="clearfix"></div>
 </div>
 </div>
+<?php
+$sessionTempCorrecto=$this->session->flashdata('correcto');
+$sessionTempError=$this->session->flashdata('error');
 
+if($sessionTempCorrecto){ ?>
+	<script>swal('','<?=$sessionTempCorrecto?>', "success");</script>
+<?php }
+
+if($sessionTempError){ ?>
+	<script>swal('','<?=$sessionTempError?>', "error");</script>
+<?php } ?>
 <script>
-
+	$(document).ready(function()
+	{
+		$('#table-Presupuesto').DataTable(
+		{
+			"language":idioma_espanol
+		});
+	});
 </script>
