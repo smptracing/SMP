@@ -64,7 +64,7 @@
 																<?=$item->PresupuestoTotal?>
 																</td>
 																<td>
-																  	<button type='button' class='editar btn btn-primary btn-xs' ><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>
+																  	<button type='button' class='editar btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Edición de presupuesto para formulación y evaluación', { idPresupuestoFE : '<?=$item->id_presupuesto_fe?>' }, base_url+'index.php/FE_Presupuesto_Inv/editar', 'POST', null, null, false, true);"><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>
 																</td>
 															</tr>
 														<?php } ?>
