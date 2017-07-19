@@ -1,4 +1,4 @@
-<form class="form-horizontal"  id="form-editFePresupuesto" action="<?php echo base_url();?>index.php/FE_Presupuesto_Inv/editar" method="POST">
+<form class="form-horizontal"  id="form-editFePresupuesto">
 		<h4 style="margin-bottom: 0px;">Datos generales</h4>
 		<hr style="margin: 2px;margin-bottom: 5px;">
 		<div class="row">
@@ -69,9 +69,9 @@
 			</table>
 		</div>
 		<div class="row" style="text-align: right;">
-			<button type="submit" class="btn btn-success">Guardar cambios</button>
+			<button type="submit" id="btnEnviarFormulario" class="btn btn-success">Guardar cambios</button>
 			<button class="btn btn-warning">Ir a detalle de gastos</button>
-			<button  class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+			<button class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 		</div>
 </form>
 <script>
@@ -180,5 +180,28 @@
 				}
 			}
 		});	
+	});
+
+	$('#btnEnviarFormulario').on('click', function(event)
+	{
+		event.preventDefault();
+
+		paginaAjaxJSON($('#form-editFePresupuesto').serialize(), '<?=base_url();?>index.php/FE_Presupuesto_Inv/editar', 'POST', null, function(objectJSON)
+		{
+			$('#modalTemp').modal('hide');
+
+			objectJSON=JSON.parse(objectJSON);
+
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+			},
+			function()
+			{
+				window.location.href='<?=base_url();?>index.php/FE_Presupuesto_Inv/index/'+objectJSON.idEstudioInversion;
+			});
+		}, false, true);
 	});
 </script>

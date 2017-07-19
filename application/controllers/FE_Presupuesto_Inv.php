@@ -76,9 +76,7 @@ class FE_Presupuesto_Inv extends CI_Controller
 	    		$this->Model_FE_Presupuesto_Inv->insertarPresupuestoFuente($idPresupuestoFE, $hdIdFuente[$i], $hdCorrelativoMeta[$i], $hdAnio[$i]);
 	    	}
 
-	    	$this->session->set_flashdata('correcto', 'Datos guardados correctamente.');
-
-	    	return redirect('/FE_Presupuesto_Inv/index/'.$this->input->post('idEstudioInversion'));
+	    	echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos guardados correctamente.', 'idEstudioInversion' => $this->input->post('idEstudioInversion')]);exit;
 		}
 
 		$fePresupuestoInv=$this->Model_FE_Presupuesto_Inv->FEPresupuestoInvParaEditar($this->input->post('idPresupuestoFE'));
