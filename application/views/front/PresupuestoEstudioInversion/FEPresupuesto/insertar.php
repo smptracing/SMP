@@ -181,7 +181,16 @@
 
 			objectJSON=JSON.parse(objectJSON);
 
-			swal('', objectJSON.mensaje, (objectJSON.proceso=='Correcto' ? 'success' : 'error'));
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+			},
+			function()
+			{
+				window.location.href='<?=base_url();?>index.php/FE_Presupuesto_Inv/index/'+objectJSON.idEstudioInversion;
+			});
 		}, false, true);
 	});
 </script>

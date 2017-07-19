@@ -42,7 +42,7 @@ class FE_Presupuesto_Inv extends CI_Controller
 	    		$this->Model_FE_Presupuesto_Inv->insertarPresupuestoFuente($idPresupuestoFE, $idFuenteFinan[$i], $hdCorrelativoMeta[$i], $hdAnio[$i]);
 	    	}
 
-	    	echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Dastos registrados correctamente.']);exit;
+	    	echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Dastos registrados correctamente.', 'idEstudioInversion' => $idEstudioInversion]);exit;
 		}
 
 		$idEstInv=$this->input->get('idEstInv');

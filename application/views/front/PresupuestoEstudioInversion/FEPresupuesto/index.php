@@ -85,23 +85,12 @@
 	<div class="clearfix"></div>
 </div>
 </div>
-<?php
-$sessionTempCorrecto=$this->session->flashdata('correcto');
-$sessionTempError=$this->session->flashdata('error');
-
-if($sessionTempCorrecto){ ?>
-	<script>swal('','<?=$sessionTempCorrecto?>', "success");</script>
-<?php }
-
-if($sessionTempError){ ?>
-	<script>swal('','<?=$sessionTempError?>', "error");</script>
-<?php } ?>
 <script>
 	$(document).ready(function()
 	{
 		$('#table-Presupuesto').DataTable(
 		{
-			"language":idioma_espanol
+			"language" : idioma_espanol
 		});
 	});
 </script>
