@@ -1,4 +1,4 @@
-<form class="form-horizontal"  id="form-addFePresupuesto" action="<?php echo base_url();?>index.php/FE_Presupuesto_Inv/insertar" method="POST">
+<form class="form-horizontal"  id="form-addFePresupuesto">
 		<h4 style="margin-bottom: 0px;">Datos generales</h4>
 		<hr style="margin: 2px;margin-bottom: 5px;">
 		<div class="row">
@@ -59,8 +59,8 @@
 			</table>
 		</div>
 		<div class="row" style="text-align: right;">
-			<button type="submit" class="btn btn-success">Registrar fuente de finan.</button>
-			<button  class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+			<button type="submit" id="btnEnviarFormulario" class="btn btn-success">Registrar fuente de finan.</button>
+			<button class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 		</div>
 </form>
 <script>
@@ -171,14 +171,16 @@
 		});	
 	});
 
-	$('#form-addFePresupuesto').on('submit', function(event)
+	$('#btnEnviarFormulario').on('click', function(event)
 	{
 		event.preventDefault();
 
 		paginaAjaxJSON($('#form-addFePresupuesto').serialize(), '<?=base_url();?>index.php/FE_Presupuesto_Inv/insertar', 'POST', null, function(objectJSON)
 		{
+			$('#modalTemp').modal('hide');
+
 			objectJSON=JSON.parse(objectJSON);
-			
+
 			swal('', objectJSON.mensaje, (objectJSON.proceso=='Correcto' ? 'success' : 'error'));
 		}, false, true);
 	});
