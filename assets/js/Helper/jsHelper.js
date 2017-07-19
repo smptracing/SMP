@@ -52,6 +52,8 @@ function paginaAjaxJSON(data, url, method, preFunction, postFunction, cache, asy
         async : async
     }).done(function(pagina) 
     {
+        $('#divModalCargaAjax').hide();
+        
         if((typeof postFunction)=='function')
         {
             postFunction(pagina);

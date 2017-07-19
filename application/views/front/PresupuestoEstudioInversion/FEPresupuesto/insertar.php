@@ -170,4 +170,16 @@
 			}
 		});	
 	});
+
+	$('#form-addFePresupuesto').on('submit', function(event)
+	{
+		event.preventDefault();
+
+		paginaAjaxJSON($('#form-addFePresupuesto').serialize(), '<?=base_url();?>index.php/FE_Presupuesto_Inv/insertar', 'POST', null, function(objectJSON)
+		{
+			objectJSON=JSON.parse(objectJSON);
+			
+			swal('', objectJSON.mensaje, (objectJSON.proceso=='Correcto' ? 'success' : 'error'));
+		}, false, true);
+	});
 </script>
