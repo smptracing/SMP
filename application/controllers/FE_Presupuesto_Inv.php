@@ -10,10 +10,10 @@ class FE_Presupuesto_Inv extends CI_Controller
 		$this->load->model('Model_FE_Presupuesto_Inv');
 	}
 
-	public function index($codigo_unico_est_inv)
+	public function index($idEstInv)
     {
-    	$nombreProyecto=$this->Model_FE_Presupuesto_Inv->nombreProyectoInv($codigo_unico_est_inv);
-    	$ListarPresupuesto=$this->Model_FE_Presupuesto_Inv->ListarPresupuesto($codigo_unico_est_inv);
+    	$nombreProyecto=$this->Model_FE_Presupuesto_Inv->nombreProyectoInvPorId($idEstInv);
+    	$ListarPresupuesto=$this->Model_FE_Presupuesto_Inv->ListarPresupuesto($idEstInv);
 
         $this->load->view('layout/Formulacion_Evaluacion/header');
         $this->load->view('Front/PresupuestoEstudioInversion/FEPresupuesto/index', ['ListarPresupuesto' => $ListarPresupuesto, 'nombreProyectoInv' => $nombreProyecto]);
@@ -44,16 +44,17 @@ class FE_Presupuesto_Inv extends CI_Controller
 
 	    	$this->session->set_flashdata('correcto', 'Dastos registrados correctamente.');
 
-	    	return redirect('/FE_Presupuesto_Inv/index/'.'324234'.'');
+	    	return redirect('/FE_Presupuesto_Inv/index/'.$idEstudioInversion);
 		}
 
-		$codigo_unico_inv=$this->input->get('id');
-		$nombreProyectoInver=$this->Model_FE_Presupuesto_Inv->nombreProyectoInv($codigo_unico_inv);
+		$idEstInv=$this->input->get('idEstInv');
+
+		$nombreProyectoInver=$this->Model_FE_Presupuesto_Inv->nombreProyectoInvPorId($idEstInv);
 
 		$listarSector=$this->Model_FE_Presupuesto_Inv->listarSector();
 		$listarFuenteFinanciamiento=$this->Model_FE_Presupuesto_Inv->listarFuenteFinanciamiento();
 		
-	    $this->load->view('Front/PresupuestoEstudioInversion/FEPresupuesto/insertar',['listarSector' => $listarSector,'listarFuenteFinanciamiento' => $listarFuenteFinanciamiento,'nombreProyectoInver' => $nombreProyectoInver ]);
+	    $this->load->view('Front/PresupuestoEstudioInversion/FEPresupuesto/insertar', ['listarSector' => $listarSector,'listarFuenteFinanciamiento' => $listarFuenteFinanciamiento,'nombreProyectoInver' => $nombreProyectoInver]);
 	}
 
 	public function editar()
@@ -79,7 +80,7 @@ class FE_Presupuesto_Inv extends CI_Controller
 
 	    	$this->session->set_flashdata('correcto', 'Datos guardados correctamente.');
 
-	    	return redirect('/FE_Presupuesto_Inv/index/'.'324234'.'');
+	    	return redirect('/FE_Presupuesto_Inv/index/'.$this->input->post('idEstudioInversion'));
 		}
 
 		$fePresupuestoInv=$this->Model_FE_Presupuesto_Inv->FEPresupuestoInvParaEditar($this->input->post('idPresupuestoFE'));

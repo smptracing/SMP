@@ -5,6 +5,7 @@
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<input type="text" class="form-control" name="cbx_estudioInversion" value="<?=$fePresupuestoInv->nombre_est_inv?>" id="cbx_estudioInversion" autocomplete="off" disabled="disabled">
 				<input type="hidden" name="hdIdPresupuestoFE" value="<?=$fePresupuestoInv->id_presupuesto_fe?>">
+				<input type="hidden" name="idEstudioInversion"  value="<?=$fePresupuestoInv->id_est_inv?>">
 			</div>
 		</div>
 		<div class="row">

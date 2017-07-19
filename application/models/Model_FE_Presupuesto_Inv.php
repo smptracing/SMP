@@ -8,9 +8,9 @@ class Model_FE_Presupuesto_Inv extends CI_Model
         parent::__construct();
     }
 
-    function ListarPresupuesto($codigo_unico_est_inv)
+    function ListarPresupuesto($idEstInv)
     {
-        $presupuestoInv=$this->db->query("execute sp_FEPresupuestoInv_Listar'".$codigo_unico_est_inv."'"); 
+        $presupuestoInv=$this->db->query("execute sp_FEPresupuestoInv_Listar ".$idEstInv.""); 
 
         return $presupuestoInv->result();
     }
@@ -24,7 +24,7 @@ class Model_FE_Presupuesto_Inv extends CI_Model
 
     function FEPresupuestoInvParaEditar($id)
     {
-        $fePresupuestoInv=$this->db->query("select FEPI.id_presupuesto_fe, EI.nombre_est_inv, S.id_sector, FEPI.pliego from FE_PRESUPUESTO_INV as FEPI inner join SECTOR as S on FEPI.id_sector=S.id_sector inner join ESTUDIO_INVERSION as EI on FEPI.id_est_inv=EI.id_est_inv where id_presupuesto_fe='".$id."'");
+        $fePresupuestoInv=$this->db->query("select FEPI.id_est_inv, FEPI.id_presupuesto_fe, EI.nombre_est_inv, S.id_sector, FEPI.pliego from FE_PRESUPUESTO_INV as FEPI inner join SECTOR as S on FEPI.id_sector=S.id_sector inner join ESTUDIO_INVERSION as EI on FEPI.id_est_inv=EI.id_est_inv where id_presupuesto_fe='".$id."'");
 
         return $fePresupuestoInv->result()[0];
     }
@@ -80,9 +80,9 @@ class Model_FE_Presupuesto_Inv extends CI_Model
         return $listarFuenteFinanciamiento->result();
     }
 
-    function nombreProyectoInv($codigo_unico_est_inv)
+    function nombreProyectoInvPorId($id)
     {
-        $nombreProyectoInv=$this->db->query("select ESI.id_est_inv,ESI.codigo_unico_est_inv,ESI.nombre_est_inv from ESTUDIO_INVERSION ESI where ESI.codigo_unico_est_inv='".$codigo_unico_est_inv."' ");
+        $nombreProyectoInv=$this->db->query("select ESI.id_est_inv, ESI.nombre_est_inv from ESTUDIO_INVERSION ESI where ESI.id_est_inv=".$id);
 
         return $nombreProyectoInv->result()[0];
     }
