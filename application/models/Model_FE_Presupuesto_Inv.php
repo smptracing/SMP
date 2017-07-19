@@ -36,4 +36,17 @@ class Model_FE_Presupuesto_Inv extends CI_Model
             
     }    
 
+    function listarFueteFinanciamiento()
+    {
+
+        $listarFueteFinanciamiento=$this->db->query("SELECT id_fuente_finan,nombre_fuente_finan,acronimo_fuente_finan FROM FUENTE_FINANCIAMIENTO");
+        return $listarFueteFinanciamiento->result();
+    }
+
+    function nombreProyectoInv($codigo_unico_est_inv)
+    {
+       $nombreProyectoInv=$this->db->query("select ESI.id_est_inv,ESI.codigo_unico_est_inv,ESI.nombre_est_inv from ESTUDIO_INVERSION ESI where ESI.codigo_unico_est_inv='".$codigo_unico_est_inv."' ");
+        return $nombreProyectoInv->result();
+    }
+
 }

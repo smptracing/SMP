@@ -5,7 +5,7 @@
 			<div class="col-md-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
-						<h2><i class="fa fa-bars"></i>PRESUPUESTO</h2>
+						<h2><i class="fa fa-bars"></i>PRESUPUESTO   Proyecto Inversión:<?= $nombreProyectoInv->nombre_est_inv?></h2>
 						<ul class="nav navbar-right panel_toolbox">
 						</ul>
 						<div class="clearfix"></div>
@@ -21,7 +21,7 @@
 									<div class="row">
 										<div class="col-md-12 col-xs-12">
 											<div class="x_panel">
-												<button type="button" class="btn btn-primary " onclick="paginaAjaxDialogo(null, 'Registro de presupuesto para formulación y evaluación', null, base_url+'index.php/FE_Presupuesto_Inv/insertar', 'POST', null, null, false, true);"  >
+												<button type="button" class="btn btn-primary " onclick="paginaAjaxDialogo(null, 'Registro de presupuesto para formulación y evaluación', { id: '<?=$nombreProyectoInv->codigo_unico_est_inv?>' }, base_url+'index.php/FE_Presupuesto_Inv/insertar', 'GET', null, null, false, true);"  >
 													<span class="fa fa-plus-circle"></span>
 													Nuevo
 												</button>

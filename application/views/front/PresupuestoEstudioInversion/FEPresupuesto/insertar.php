@@ -3,17 +3,20 @@
 		<hr style="margin: 2px;margin-bottom: 5px;">
 		<div class="row">
 			<div class="col-md-12 col-sm-12 col-xs-12">
-				<label>Estudio De Inversión</label>
-				<select id="cbx_estudioInversion" name="cbx_estudioInversion" class="form-control notValidate" required="">
-					 <option value="">Choose..</option>
-					 <option value="">Choose..</option>
-				</select>
+				<input type="text" class="form-control" name="cbx_estudioInversion" value="<?= $nombreProyectoInver->nombre_est_inv?>" id="cbx_estudioInversion" autocomplete="off" disabled="disabled">
+				<input type="hidden" class="form-control" name="idEstudioInversion"  value="<?= $nombreProyectoInver->id_est_inv?>" id="idEstudioInversion" autocomplete="off">
+				<input type="text" class="form-control" name="codigoUnicoInversion"  value="<?= $nombreProyectoInver->codigo_unico_est_inv?>" id="codigoUnicoInversion" autocomplete="off">
+
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<label>Sector</label>
-				<input type="text" class="form-control" id="txtSector" name="txtSector" autocomplete="off" placeholder="Sector" autocomplete="off">
+				<select id="cbx_Sector" name="cbx_Sector" class="form-control notValidate" required="">
+					<?php foreach($listarSector as $item ){ ?>
+						 <option value="<?=$item->id_sector?>"><?=$item->nombre_sector?></option>
+					<?php } ?>
+				</select>
 			</div>
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<label>Pliego</label>
@@ -25,7 +28,11 @@
 		<div class="row" id="divPresupuestoFuente">
 			<div class="col-md-3 col-sm-6 col-xs-12">
 				<label>Descripción Fuente</label>
-				<input type="text" class="form-control" id="txtDescripcionFuente" name="txtDescripcionFuente" autocomplete="off">
+				<select id="txtDescripcionFuente" name="txtDescripcionFuente" class="form-control notValidate" required="">
+					<?php foreach($listarFueteFinanciamiento as $item ){ ?>
+						 <option value="<?=$item->id_fuente_finan?>"><?=$item->nombre_fuente_finan?></option>
+					<?php } ?>
+				</select>
 			</div>
 			<div class="col-md-3 col-sm-6 col-xs-12">
 				<label>Correlativo Meta</label>
