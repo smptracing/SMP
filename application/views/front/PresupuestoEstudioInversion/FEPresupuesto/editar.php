@@ -29,7 +29,7 @@
 				<label>Descripción Fuente</label>
 				<select id="selectIdFuente" name="selectIdFuente" class="form-control notValidate" required="">
 					<?php foreach($listarFuenteFinanciamiento as $item ){ ?>
-						 <option value="<?=$item->id_fuente_finan?>"><?=$item->nombre_fuente_finan?></option>
+						 <option value="<?=$item->id_fuente_finan.','.$item->nombre_fuente_finan?>"><?=$item->nombre_fuente_finan?></option>
 					<?php } ?>
 				</select>
 			</div>
@@ -84,8 +84,12 @@
 			return;
 		}
 
+		var posicionSeparadorTemp=$('#selectIdFuente').val().indexOf(',');
+		var idFuente=$('#selectIdFuente').val().substring(0, posicionSeparadorTemp);
+		var descripcionFuente=$('#selectIdFuente').val().substring(posicionSeparadorTemp+1, $('#selectIdFuente').val().lenght);
+
 		var htmlTemp='<tr>'+
-			'<td><input type="hidden" value='+$('#selectIdFuente').val()+' name="hdIdFuente[]"> '+$('#selectIdFuente').val()+'</td>'+
+			'<td><input type="hidden" value='+idFuente+' name="hdIdFuente[]"> '+descripcionFuente+'</td>'+
 			'<td><input type="hidden" value='+$('#txtCorelativoMeta').val()+' name="hdCorrelativoMeta[]">'+$('#txtCorelativoMeta').val()+'</td>'+
 			'<td><input type="hidden" value='+$('#txtAnio').val()+' name="hdAnio[]">'+$('#txtAnio').val()+'</td>'+
 			'<td><a href="#" onclick="$(this).parent().parent().remove();">Eliminar</a></td>'+
