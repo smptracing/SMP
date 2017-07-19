@@ -10,7 +10,6 @@ class FE_Presupuesto_Inv extends CI_Controller
 		$this->load->model('Model_FE_Presupuesto_Inv');
 	}
 
-
 	public function index($codigo_unico_est_inv)
     {
     	$nombreProyecto=$this->Model_FE_Presupuesto_Inv->nombreProyectoInv($codigo_unico_est_inv)[0];
@@ -27,84 +26,73 @@ class FE_Presupuesto_Inv extends CI_Controller
 		{
 			$codigoUnicoInversion=$this->input->post("codigoUnicoInversion");
 			
-			$cbx_estudioInversion =$this->input->post("idEstudioInversion");
+			$cbx_estudioInversion=$this->input->post("idEstudioInversion");
+			$txtSector=$this->input->post("cbx_Sector");
+			$txtPliego=$this->input->post("txtPliego");
 
-			$txtSector =$this->input->post("txtSector");
-			$txtPliego =$this->input->post("txtPliego");
-
-			$Data=$this->Model_FE_Presupuesto_Inv->insertar($cbx_estudioInversion , $txtSector , $txtPliego);
+			$Data=$this->Model_FE_Presupuesto_Inv->insertar($cbx_estudioInversion, $txtSector, $txtPliego);
 
 			$data=$this->Model_FE_Presupuesto_Inv->ultimoIdPresupuestoInv()[0];
-			
-			$id_presupuesto_fe=$data->id;			
-			$id_fuente_finan=1;
-			
+
+			$id_presupuesto_fe=$data->id;
+			$id_fuente_finan=$this->input->post("txtDescripcionFuente");
 			$hdDescripcionFuente=$this->input->post("hdDescripcionFuente");
 			$hdCorrelativoMeta=$this->input->post("hdCorrelativoMeta");
 			$hdAnio=$this->input->post("hdAnio");
 	    	
-	    	for($i=0; $i<count($hdAnio); $i++)
+	    	for($i=0; $i <count($hdAnio); $i++)
 	    	{
 	    		$hdDescripcionFuente[$i];
 
-	    		$Data=$this->Model_FE_Presupuesto_Inv->insertarPresupuestoFuente($id_presupuesto_fe, $id_fuente_finan, $hdCorrelativoMeta[$i], $hdAnio[$i]);
+	    		$Data=$this->Model_FE_Presupuesto_Inv->insertarPresupuestoFuente($id_presupuesto_fe, $id_fuente_finan, $hdCorrelativoMeta[$i],$hdAnio[$i]);
 	    	}
 
-	    	$this->session->set_flashdata('correcto', "Se registro corectamente el presupuesto");
+	    	$this->session->set_flashdata('correcto',"Se registro corectamente el presupuesto");
 
-	    	return redirect('/Estudio_Inversion/'); 	
+	    	return redirect("/FE_Presupuesto_Inv/index/".$codigoUnicoInversion."");
 		}
 
+		$codigo_unico_inv=$this->input->get('id');
+		$nombreProyectoInver=$this->Model_FE_Presupuesto_Inv->nombreProyectoInv($codigo_unico_inv)[0];
+
 		$listarSector=$this->Model_FE_Presupuesto_Inv->listarSector();
+		$listarFuenteFinanciamiento=$this->Model_FE_Presupuesto_Inv->listarFuenteFinanciamiento();
 		
-	    $this->load->view('Front/PresupuestoEstudioInversion/FEPresupuesto/insertar', ['listarSector' => $listarSector]);
+	    $this->load->view('Front/PresupuestoEstudioInversion/FEPresupuesto/insertar',['listarSector' => $listarSector,'listarFuenteFinanciamiento' => $listarFuenteFinanciamiento,'nombreProyectoInver' => $nombreProyectoInver ]);
 	}
 
 	public function editar()
 	{
 		if($this->input->post('hdIdPresupuestoFE'))
 		{
-			$cbx_estudioInversion=48;
+			$idPresupuestoFE=$this->input->post('hdIdPresupuestoFE');
+			$idSector=$this->input->post("cbx_Sector");
+			$txtPliego=$this->input->post("txtPliego");
 
-			$txtSector =$this->input->post("txtSector");
-			$txtPliego =$this->input->post("txtPliego");
+			$Data=$this->Model_FE_Presupuesto_Inv->editar($idPresupuestoFE, $idSector, $txtPliego);
 
-			$Data=$this->Model_FE_Presupuesto_Inv->insertar($cbx_estudioInversion , $txtSector , $txtPliego);
+			$this->Model_FE_Presupuesto_Inv->FEPresupuestoFuenteEliminarPorIdPresupuestoFE($idPresupuestoFE);
 
-			$data=$this->Model_FE_Presupuesto_Inv->ultimoIdPresupuestoInv()[0];
-			
-			$id_presupuesto_fe=$data->id;			
-			$id_fuente_finan=1;
-			
-			$hdDescripcionFuente=$this->input->post("hdDescripcionFuente");
+			$hdIdFuente=$this->input->post("hdIdFuente");
 			$hdCorrelativoMeta=$this->input->post("hdCorrelativoMeta");
 			$hdAnio=$this->input->post("hdAnio");
 	    	
-	    	for($i=0; $i<count($hdAnio); $i++)
+	    	for($i=0; $i<count($hdIdFuente); $i++)
 	    	{
-	    		$hdDescripcionFuente[$i];
+	    		$this->Model_FE_Presupuesto_Inv->insertarPresupuestoFuente($idPresupuestoFE, $hdIdFuente[$i], $hdCorrelativoMeta[$i], $hdAnio[$i]);
+	    	}
 
-	    		$Data=$this->Model_FE_Presupuesto_Inv->insertarPresupuestoFuente($id_presupuesto_fe, $id_fuente_finan, $hdCorrelativoMeta[$i], $hdAnio[$i]);
-			}
+	    	$this->session->set_flashdata('correcto',"Datos guardados correctamente.");
 
-	    	$this->session->set_flashdata('correcto',"Se registro corectamente el presupuesto");
-
-	    	return redirect('/Estudio_Inversion/'); 	
+	    	return redirect("/FE_Presupuesto_Inv/index/".'324234'."");
 		}
 
 		$fePresupuestoInv=$this->Model_FE_Presupuesto_Inv->FEPresupuestoInvParaEditar($this->input->post('idPresupuestoFE'));
 
 		$listarSector=$this->Model_FE_Presupuesto_Inv->listarSector();
-		$listarFueteFinanciamiento=$this->Model_FE_Presupuesto_Inv->listarFueteFinanciamiento();
+		$listarFuenteFinanciamiento=$this->Model_FE_Presupuesto_Inv->listarFuenteFinanciamiento();
+		$listaFEPresupuestoFuente=$this->Model_FE_Presupuesto_Inv->listarFEPresupuestoFuente($this->input->post('idPresupuestoFE'));
 		
-		
-	    $this->load->view('Front/PresupuestoEstudioInversion/FEPresupuesto/editar', ['fePresupuestoInv' => $fePresupuestoInv, 'listarSector' => $listarSector]);
+	    $this->load->view('Front/PresupuestoEstudioInversion/FEPresupuesto/editar', ['fePresupuestoInv' => $fePresupuestoInv, 'listarSector' => $listarSector, 'listarFuenteFinanciamiento' => $listarFuenteFinanciamiento, 'listaFEPresupuestoFuente' => $listaFEPresupuestoFuente]);
 	}
-
-	function _load_layout($template)
-    {
-      $this->load->view('layout/Formulacion_Evaluacion/header');
-      $this->load->view($template);
-      $this->load->view('layout/Formulacion_Evaluacion/footer');
-    }
 }

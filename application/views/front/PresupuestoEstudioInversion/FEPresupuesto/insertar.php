@@ -3,10 +3,9 @@
 		<hr style="margin: 2px;margin-bottom: 5px;">
 		<div class="row">
 			<div class="col-md-12 col-sm-12 col-xs-12">
-				<input type="text" class="form-control" name="cbx_estudioInversion" value="<?= $nombreProyectoInver->nombre_est_inv?>" id="cbx_estudioInversion" autocomplete="off" disabled="disabled">
-				<input type="hidden" class="form-control" name="idEstudioInversion"  value="<?= $nombreProyectoInver->id_est_inv?>" id="idEstudioInversion" autocomplete="off">
-				<input type="text" class="form-control" name="codigoUnicoInversion"  value="<?= $nombreProyectoInver->codigo_unico_est_inv?>" id="codigoUnicoInversion" autocomplete="off">
-
+				<input type="text" class="form-control" name="cbx_estudioInversion" value="<?=$nombreProyectoInver->nombre_est_inv?>" id="cbx_estudioInversion" autocomplete="off" disabled="disabled">
+				<input type="hidden" class="form-control" name="idEstudioInversion"  value="<?=$nombreProyectoInver->id_est_inv?>" id="idEstudioInversion" autocomplete="off">
+				<input type="hidden" class="form-control" name="codigoUnicoInversion"  value="<?=$nombreProyectoInver->codigo_unico_est_inv?>" id="codigoUnicoInversion" autocomplete="off" style="display: none;">
 			</div>
 		</div>
 		<div class="row">
@@ -29,7 +28,7 @@
 			<div class="col-md-3 col-sm-6 col-xs-12">
 				<label>Descripción Fuente</label>
 				<select id="txtDescripcionFuente" name="txtDescripcionFuente" class="form-control notValidate" required="">
-					<?php foreach($listarFueteFinanciamiento as $item ){ ?>
+					<?php foreach($listarFuenteFinanciamiento as $item ){ ?>
 						 <option value="<?=$item->id_fuente_finan?>"><?=$item->nombre_fuente_finan?></option>
 					<?php } ?>
 				</select>

@@ -1,16 +1,20 @@
-<form class="form-horizontal"  id="form-addFePresupuesto" action="<?php echo base_url();?>index.php/FE_Presupuesto_Inv/insertar" method="POST">
+<form class="form-horizontal"  id="form-editFePresupuesto" action="<?php echo base_url();?>index.php/FE_Presupuesto_Inv/editar" method="POST">
 		<h4 style="margin-bottom: 0px;">Datos generales</h4>
 		<hr style="margin: 2px;margin-bottom: 5px;">
 		<div class="row">
 			<div class="col-md-12 col-sm-12 col-xs-12">
-				<label>Estudio De Inversión</label>
-				<input type="text" class="form-control" value="<?=$fePresupuestoInv->nombre_est_inv?>" autocomplete="off" readonly="readonly">
+				<input type="text" class="form-control" name="cbx_estudioInversion" value="<?=$fePresupuestoInv->nombre_est_inv?>" id="cbx_estudioInversion" autocomplete="off" disabled="disabled">
+				<input type="hidden" name="hdIdPresupuestoFE" value="<?=$fePresupuestoInv->id_presupuesto_fe?>">
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<label>Sector</label>
-				<input type="text" class="form-control" id="txtSector" name="txtSector" autocomplete="off" placeholder="Sector" autocomplete="off">
+				<select id="cbx_Sector" name="cbx_Sector" class="form-control notValidate" required="">
+					<?php foreach($listarSector as $item ){ ?>
+						 <option <?=($fePresupuestoInv->id_sector==$item->id_sector ? 'selected' : '')?> value="<?=$item->id_sector?>"><?=$item->nombre_sector?></option>
+					<?php } ?>
+				</select>
 			</div>
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<label>Pliego</label>
@@ -22,7 +26,11 @@
 		<div class="row" id="divPresupuestoFuente">
 			<div class="col-md-3 col-sm-6 col-xs-12">
 				<label>Descripción Fuente</label>
-				<input type="text" class="form-control" id="txtDescripcionFuente" name="txtDescripcionFuente" autocomplete="off">
+				<select id="selectIdFiente" name="selectIdFiente" class="form-control notValidate" required="">
+					<?php foreach($listarFuenteFinanciamiento as $item ){ ?>
+						 <option value="<?=$item->id_fuente_finan?>"><?=$item->nombre_fuente_finan?></option>
+					<?php } ?>
+				</select>
 			</div>
 			<div class="col-md-3 col-sm-6 col-xs-12">
 				<label>Correlativo Meta</label>
@@ -47,11 +55,21 @@
 						<td></td>
 					</tr>
 				</thead>
-				<tbody></tbody>
+				<tbody>
+					<?php foreach($listaFEPresupuestoFuente as $item){ ?>
+						<tr>
+							<td><input type="hidden" value="<?=$item->id_fuente_finan?>" name="hdIdFuente[]"><?=$item->nombre_fuente_finan?></td>
+							<td><input type="hidden" value="<?=$item->correlativo_meta?>" name="hdCorrelativoMeta[]"><?=$item->correlativo_meta?></td>
+							<td><input type="hidden" value="<?=$item->anio_pres_fuen?>" name="hdAnio[]"><?=substr($item->anio_pres_fuen, 0, 4)?></td>
+							<td><a href="#" onclick="$(this).parent().parent().remove();">Eliminar</a></td>
+						</tr>
+					<?php } ?>
+				</tbody>
 			</table>
 		</div>
 		<div class="row" style="text-align: right;">
-			<button type="submit" class="btn btn-success">Registrar fuente de finan.</button>
+			<button type="submit" class="btn btn-success">Guardar cambios</button>
+			<button class="btn btn-warning">Ir a detalle de gastos</button>
 			<button  class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 		</div>
 </form>
@@ -66,7 +84,7 @@
 		}
 
 		var htmlTemp='<tr>'+
-			'<td><input type="hidden" value='+$('#txtDescripcionFuente').val()+' name="hdDescripcionFuente[]"> '+$('#txtDescripcionFuente').val()+'</td>'+
+			'<td><input type="hidden" value='+$('#selectIdFiente').val()+' name="hdIdFuente[]"> '+$('#selectIdFiente').val()+'</td>'+
 			'<td><input type="hidden" value='+$('#txtCorelativoMeta').val()+' name="hdCorrelativoMeta[]">'+$('#txtCorelativoMeta').val()+'</td>'+
 			'<td><input type="hidden" value='+$('#txtAnio').val()+' name="hdAnio[]">'+$('#txtAnio').val()+'</td>'+
 			'<td><a href="#" onclick="$(this).parent().parent().remove();">Eliminar</a></td>'+
@@ -79,7 +97,7 @@
 
 	$(function()
 	{
-		$('#form-addFePresupuesto').formValidation(
+		$('#form-editFePresupuesto').formValidation(
 		{
 			framework: 'bootstrap',
 			excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
@@ -90,7 +108,7 @@
 			{
 				txtSector:
 				{
-					validators: 
+					validators:
 					{
 						notEmpty:
 						{
@@ -120,7 +138,7 @@
 			trigger: null,
 			fields:
 			{
-				txtDescripcionFuente:
+				selectIdFiente:
 				{
 					validators: 
 					{
@@ -142,7 +160,7 @@
 				},
 				txtAnio:
 				{
-					validators: 
+					validators:
 					{
 						notEmpty:
 						{
