@@ -5,7 +5,7 @@
 			<div class="col-md-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
-						<h2><i class="fa fa-bars"></i>PRESUPUESTO   Proyecto Inversión:<?= $nombreProyectoInv->nombre_est_inv?></h2>
+						<h2><i class="fa fa-bars"></i>Presupuesto del  Proyecto Inversión: <?=strtoupper($nombreProyectoInv->nombre_est_inv)?></h2>
 						<ul class="nav navbar-right panel_toolbox">
 						</ul>
 						<div class="clearfix"></div>

@@ -54,7 +54,7 @@ class Model_FE_Presupuesto_Inv extends CI_Model
     {
         $presupuestoInv=$this->db->query("SELECT MAX(id_presupuesto_fe) AS id FROM FE_PRESUPUESTO_INV");
         
-        return $presupuestoInv->result();
+        return $presupuestoInv->result()[0];
     }
 
     function listarSector()
@@ -84,6 +84,6 @@ class Model_FE_Presupuesto_Inv extends CI_Model
     {
         $nombreProyectoInv=$this->db->query("select ESI.id_est_inv,ESI.codigo_unico_est_inv,ESI.nombre_est_inv from ESTUDIO_INVERSION ESI where ESI.codigo_unico_est_inv='".$codigo_unico_est_inv."' ");
 
-        return $nombreProyectoInv->result();
+        return $nombreProyectoInv->result()[0];
     }
 }

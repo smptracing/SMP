@@ -26,7 +26,7 @@
 		<div class="row" id="divPresupuestoFuente">
 			<div class="col-md-3 col-sm-6 col-xs-12">
 				<label>Descripción Fuente</label>
-				<select id="selectIdFiente" name="selectIdFiente" class="form-control notValidate" required="">
+				<select id="selectIdFuente" name="selectIdFuente" class="form-control notValidate" required="">
 					<?php foreach($listarFuenteFinanciamiento as $item ){ ?>
 						 <option value="<?=$item->id_fuente_finan?>"><?=$item->nombre_fuente_finan?></option>
 					<?php } ?>
@@ -84,7 +84,7 @@
 		}
 
 		var htmlTemp='<tr>'+
-			'<td><input type="hidden" value='+$('#selectIdFiente').val()+' name="hdIdFuente[]"> '+$('#selectIdFiente').val()+'</td>'+
+			'<td><input type="hidden" value='+$('#selectIdFuente').val()+' name="hdIdFuente[]"> '+$('#selectIdFuente').val()+'</td>'+
 			'<td><input type="hidden" value='+$('#txtCorelativoMeta').val()+' name="hdCorrelativoMeta[]">'+$('#txtCorelativoMeta').val()+'</td>'+
 			'<td><input type="hidden" value='+$('#txtAnio').val()+' name="hdAnio[]">'+$('#txtAnio').val()+'</td>'+
 			'<td><a href="#" onclick="$(this).parent().parent().remove();">Eliminar</a></td>'+
@@ -138,7 +138,7 @@
 			trigger: null,
 			fields:
 			{
-				selectIdFiente:
+				selectIdFuente:
 				{
 					validators: 
 					{
