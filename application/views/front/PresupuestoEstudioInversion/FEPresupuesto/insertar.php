@@ -5,7 +5,7 @@
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<input type="text" class="form-control" name="cbx_estudioInversion" value="<?= $nombreProyectoInver->nombre_est_inv?>" id="cbx_estudioInversion" autocomplete="off" disabled="disabled">
 				<input type="hidden" class="form-control" name="idEstudioInversion"  value="<?= $nombreProyectoInver->id_est_inv?>" id="idEstudioInversion" autocomplete="off">
-				<input type="text" class="form-control" name="codigoUnicoInversion"  value="<?= $nombreProyectoInver->codigo_unico_est_inv?>" id="codigoUnicoInversion" autocomplete="off">
+				<input type="hidden" class="form-control" name="codigoUnicoInversion"  value="<?= $nombreProyectoInver->codigo_unico_est_inv?>" id="codigoUnicoInversion" autocomplete="off">
 
 			</div>
 		</div>
