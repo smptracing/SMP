@@ -16,7 +16,44 @@ class FE_Detalle_Presupuesto extends CI_Controller
 	{
 		if($_POST)
 		{
-			
+			$idPresupuestoFE=$this->input->post('hdIdPresupuestoFE');
+			$idsTipoGasto=$this->input->post('hdIdDetallePresupuesto');
+
+			if($idsTipoGasto)
+			{
+				foreach($idsTipoGasto as $value)
+				{
+					$descripcionesDetalleGastoTemp=$this->input->post('descripcionDetalleGasto'.$value);
+					$idsUnidadMedidaTemp=$this->input->post('idUnidadMedida'.$value);
+					$cantidadesDetalleGastoTemp=$this->input->post('cantidadDetalleGasto'.$value);
+					$costosUnitarioDetalleGastoTemp=$this->input->post('costoUnitarioDetalleGasto'.$value);
+					$subTotalesDetalleGastoTemp=$this->input->post('subTotalDetalleGasto'.$value);
+
+					//Insertar FE_DETALLE_PRESUPUESTO;
+
+					$sumatoriaTemporal=0;
+
+					if($descripcionesDetalleGastoTemp)
+					{
+						foreach($descripcionesDetalleGastoTemp as $key => $item)
+						{
+							$descripcioDetalleGastoTemp=$descripcionesDetalleGastoTemp[$key];
+							$idUnidadMedidaTemp=$idsUnidadMedidaTemp[$key];
+							$cantidadDetalleGastoTemp=$cantidadesDetalleGastoTemp[$key];
+							$costoUnitarioDetalleGastoTemp=$costosUnitarioDetalleGastoTemp[$key];
+							$subTotalDetalleGastoTemp=$subTotalesDetalleGastoTemp[$key];
+
+							$sumatoriaTemporal+=$subTotalDetalleGastoTemp;
+
+							//Insertar FE_DETALLEGASTO;
+						}
+					}
+
+					//Update del total_detalle de FE_DETALLE_PRESUPUESTO
+				}
+			}
+
+			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Dastos guardados correctamente.', 'idEstudioInversion' => $this->input->post('hdIdEstudioInversion')]);exit;
 		}
 
 		$fePresupuestoInv=$this->Model_FE_Presupuesto_Inv->FEPresupuestoInvPorIdOresupuestoFE($this->input->get('idPresupuestoFE'));
