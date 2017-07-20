@@ -20,11 +20,25 @@
 		<table id="table-fePresupuestoFuente" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
 			<thead>
 				<tr>
-					<td>Descripcion de la fuente</td>
+					<td>Fuente financiamiento</td>
 					<td>Correlativo Meta</td>
 					<td>Año</td>
 				</tr>
-			</thead> 
+			</thead>
+			<tbody>
+				<?php foreach($ListarFuente as $item ){ ?>
+					  <tr>
+						<td>
+							<?=$item->nombre_fuente_finan?>
+					    </td>
+					    <td>
+							<?=$item->correlativo_meta?>
+					    </td>
+					    <td>
+							<?=$item->anio_pres_fuen?>
+					    </td>
+					  </tr>
+			     <?php } ?>
 			</tbody>
 			
 		</table>
@@ -32,19 +46,18 @@
 		<div class="row">
 			<div class="col-xs-3">
 				<ul class="nav nav-tabs tabs-left">
-				        <?php foreach($TipoGasto as $item ){ ?>		
-								<li class=""><a href="#<?= $item->desc_tipo_gasto?>" data-toggle="tab"><?=$item->desc_tipo_gasto?></a>					
-						<?php } ?>		
-					</li>
+					<?php foreach($listaFEDetallePresupuesto as $item ){ ?>		
+						<li class=""><a href="#<?= $item->desc_tipo_gasto?>" data-toggle="tab"><?=$item->desc_tipo_gasto?></a>					
+					<?php } ?>	
+
+
 				</ul>
 			</div>
 			
 			<div class="col-xs-9">
 				<!-- Tab panes -->
 				<div class="tab-content">
-					 <?php foreach($DetalleGasto as $item ){ ?>	
-						<div class="tab-pane " id="<?= $item->desc_tipo_gasto?>"><?= $item->desc_detalle_gasto?></div>
-					<?php } ?>
+
 				</div>
 			</div>
 		</div>
