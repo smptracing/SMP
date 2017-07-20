@@ -7,6 +7,7 @@ class FE_Detalle_Presupuesto extends CI_Controller
 	{
     	parent::__construct();
 
+    	$this->load->model('Model_FE_Presupuesto_Inv');
     	$this->load->model('Model_Unidad_Medida');
     	$this->load->model('Model_FE_Tipo_Gasto');
 	}
@@ -18,9 +19,10 @@ class FE_Detalle_Presupuesto extends CI_Controller
 			
 		}
 
+		$fePresupuestoInv=$this->Model_FE_Presupuesto_Inv->FEPresupuestoInvPorIdOresupuestoFE($this->input->get('idPresupuestoFE'));
 		$listaTipoGasto=$this->Model_FE_Tipo_Gasto->ListarTipoGasto();
 		$listaUnidadMedida=$this->Model_Unidad_Medida->UnidadMedidad_Listar();
 		
-	    $this->load->view('Front/PresupuestoEstudioInversion/DetallePresupuesto/insertar', ['listaTipoGasto' => $listaTipoGasto, 'listaUnidadMedida' => $listaUnidadMedida]);
+	    $this->load->view('Front/PresupuestoEstudioInversion/DetallePresupuesto/insertar', ['fePresupuestoInv' => $fePresupuestoInv, 'listaTipoGasto' => $listaTipoGasto, 'listaUnidadMedida' => $listaUnidadMedida]);
 	}
 }

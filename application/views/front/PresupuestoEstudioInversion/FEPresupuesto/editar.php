@@ -70,7 +70,7 @@
 		</div>
 		<div class="row" style="text-align: right;">
 			<button type="submit" id="btnEnviarFormulario" class="btn btn-success">Guardar cambios</button>
-			<button class="btn btn-warning">Ir a detalle de gastos</button>
+			<button class="btn btn-warning" onclick="paginaAjaxDialogo(null, 'Registrar detalle de gastos', { idPresupuestoFE : '<?=$fePresupuestoInv->id_presupuesto_fe?>' }, base_url+'index.php/FE_Detalle_Presupuesto/insertar', 'GET', null, null, false, true);">Ir a detalle de gastos</button>
 			<button class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 		</div>
 </form>

@@ -4,7 +4,7 @@
 		<label>Detalle gasto</label>
 		<div class="row">
 			<div class="col-md-12 col-sm-12 col-xs-12">
-				<input type="text" class="form-control" name="TxtestudioInversion" value="" id="TxtestudioInversion" autocomplete="off" disabled="disabled">
+				<input type="text" class="form-control" value="<?=$fePresupuestoInv->nombre_est_inv?>" autocomplete="off" readonly="readonly">
 				<input type="hidden" class="form-control" name="idEstudioInversion"  value="" id="idEstudioInversion" autocomplete="off">
 			</div>
 		</div>
