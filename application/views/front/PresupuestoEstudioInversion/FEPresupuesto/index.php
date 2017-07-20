@@ -21,13 +21,13 @@
 									<div class="row">
 										<div class="col-md-12 col-xs-12">
 											<div class="x_panel">
-												<button type="button" class="btn btn-primary " onclick="paginaAjaxDialogo(null, 'Registro de Presupuesto para Formulación y Evaluación', { id: '<?=$nombreProyectoInv->codigo_unico_est_inv?>' }, base_url+'index.php/FE_Presupuesto_Inv/insertar', 'GET', null, null, false, true);"  >
-													<span class="fa fa-plus-circle"></span>
-													Nuevo
-												</button>
 												<button type="button" class="btn btn-primary " onclick="paginaAjaxDialogo(null, 'Registro de presupuesto para formulación y evaluación', { idEstInv: '<?=$nombreProyectoInv->id_est_inv?>' }, base_url+'index.php/FE_Presupuesto_Inv/insertar', 'GET', null, null, false, true);"  >
 													<span class="fa fa-plus-circle"></span>
 													Nuevo
+												</button>
+												<button type="button" class="btn btn-primary " onclick="paginaAjaxDialogo(null, 'Registro de Presupuesto para Formulación y Evaluación', null, base_url+'index.php/FE_Detalle_Presupuesto/insertar', 'GET', null, null, false, true);"  >
+													<span class="fa fa-plus-circle"></span>
+													Temp
 												</button>
 											</button>
 											<div class="x_title">
@@ -68,12 +68,9 @@
 																<?=$item->PresupuestoTotal?>
 																</td>
 																<td>
-																  	<!--<button type='button' class='btn btn-primary btn-xs' ><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button><button type='button' class='editar btn btn-success btn-xs' onclick="paginaAjaxDialogo(null, 'Fuentes y Detalle de presupuesto',{ id: '<?=$nombreProyectoInv->id_est_inv?>', id_est_inv:'<?=$nombreProyectoInv->id_est_inv?>'}, base_url+'index.php/FE_Presupuesto_Inv/verDetalle', 'GET', null, null, false, true)" ><i class='ace-icon fa fa-eye bigger-120'></i></button>-->
-																  	<button class='btn btn-success btn-xs' onclick="paginaAjaxDialogo(null, 'Fuentes y Detalle de presupuesto',{ id: '<?=$nombreProyectoInv->id_est_inv?>'}, base_url+'index.php/FE_Presupuesto_Inv/verDetalle', 'GET', null, null, false, true)" ><i class='ace-icon fa fa-eye bigger-120'></i></button><button type='button' class='editar btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Edición de presupuesto para formulación y evaluación', { idPresupuestoFE : '<?=$item->id_presupuesto_fe?>' }, base_url+'index.php/FE_Presupuesto_Inv/editar', 'POST', null, null, false, true);"><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>
+																  	<button class='btn btn-success btn-xs' onclick="paginaAjaxDialogo(null, 'Fuentes y Detalle de presupuesto',{ id: '<?=$nombreProyectoInv->id_est_inv?>'}, base_url+'index.php/FE_Presupuesto_Inv/verDetalle', 'GET', null, null, false, true)" ><i class='ace-icon fa fa-eye bigger-120'></i></button>
 																  	<button class='editar btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Edición de presupuesto para formulación y evaluación', { idPresupuestoFE : '<?=$item->id_presupuesto_fe?>' }, base_url+'index.php/FE_Presupuesto_Inv/editar', 'POST', null, null, false, true);"><i class='ace-icon fa fa-pencil bigger-120'></i></button>
-																  	<!--<button class='btn btn-success btn-xs' onclick="paginaAjaxDialogo(null, 'Fuentes y Detalle de presupuesto', { id : '<?=$nombreProyectoInv->id_est_inv?>', id_est_inv : '<?=$nombreProyectoInv->id_est_inv?>' }, base_url+'index.php/FE_Presupuesto_Inv/verDetalle', 'GET', null, null, false, true)"><i class='ace-icon fa fa-eye bigger-120'></i></button>-->
 																  	<button class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>
-
 																</td>
 															</tr>
 														<?php } ?>

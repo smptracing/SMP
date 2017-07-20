@@ -107,11 +107,4 @@ class Model_FE_Presupuesto_Inv extends CI_Model
 
         return $nombreProyectoInv->result()[0];
     }
-    
-    function nombreProyectoInv($id)
-    {
-        $nombreProyectoInv=$this->db->query("select ESI.id_est_inv, ESI.nombre_est_inv from ESTUDIO_INVERSION ESI where ESI.id_est_inv=".$id);
-
-        return $nombreProyectoInv->result()[0];
-    }
 }
