@@ -47,7 +47,23 @@
 	{
 		var posicionTemporal=$("#cbxTipoGasto").val().indexOf(',');
 		var idTab=$("#cbxTipoGasto").val().substring(0, posicionTemporal);
-		var nombreTab=$("#cbxTipoGasto").val().substring(posicionTemporal+1, $("#cbxTipoGasto").val().lenght);
+		var nombreTab=$("#cbxTipoGasto").val().substring(posicionTemporal+1, $("#cbxTipoGasto").val().length);
+
+		if($('#pestaniaTabPaneDetalleGasto'+idTab).length)
+		{
+			swal(
+			{
+				title: '',
+				text: 'No pueden agregarse dos tipos de gasto al mismo tiempo.',
+				type: 'error'
+			},
+			function()
+			{
+				
+			});
+
+			return false;
+		}
 
 		var htmlTempPestania='<li id="pestaniaTabPaneDetalleGasto'+idTab+'">'+
 			'<a href="#tabPaneDetalleGasto'+idTab+'" data-toggle="tab"> '+nombreTab+' </a>'+
@@ -115,12 +131,27 @@
 
 		$('#DetallePresupestoFormulacion > #AreaContenidoDetallePF > #contePestanaDetallePF ').append(htmlTempContenido);
 
+		$('[id*="tabPaneDetalleGasto"]').removeClass('active');
+		$('[id*="pestaniaTabPaneDetalleGasto"]').removeClass('active');
+		$('[id*="pestaniaTabPaneDetalleGasto"] > a').attr({ 'aria-expanded' : 'false' });
+
+		$('#tabPaneDetalleGasto'+idTab).addClass('active');
+		$('#pestaniaTabPaneDetalleGasto'+idTab).addClass('active');
+		$('#pestaniaTabPaneDetalleGasto'+idTab+' > a').attr({ 'aria-expanded' : 'true' });
+
 	});
 
 	function removerPanel(idTab)
 	{
-		$('#pestaniaTabPaneDetalleGasto'+idTab).remove();
-		$('#tabPaneDetalleGasto'+idTab).remove();
+		if(confirm('¿Realmente desea eliminar todo el detalle?'))
+		{
+			$('#pestaniaTabPaneDetalleGasto'+idTab).remove();
+			$('#tabPaneDetalleGasto'+idTab).remove();
+
+			$($('[id*="tabPaneDetalleGasto"]')[0]).addClass('active');
+			$($('[id*="pestaniaTabPaneDetalleGasto"]')[0]).addClass('active');
+			$($('[id*="pestaniaTabPaneDetalleGasto"] > a')[0]).attr({ 'aria-expanded' : 'true' });
+		}
 	}
 
 	function calcularSubTotalDetalleGasto(idTab)
@@ -137,7 +168,7 @@
 	{
 		var posicionTemporal=$('#selectIdUnidad'+idTab).val().indexOf(',');
 		var idUnidadMedidaTemporal=$('#selectIdUnidad'+idTab).val().substring(0, posicionTemporal);
-		var nombreUnidadMedidaTemporal=$('#selectIdUnidad'+idTab).val().substring(posicionTemporal+1, $('#selectIdUnidad'+idTab).val().lenght);
+		var nombreUnidadMedidaTemporal=$('#selectIdUnidad'+idTab).val().substring(posicionTemporal+1, $('#selectIdUnidad'+idTab).val().length);
 
 		var htmlTempDetalle='<tr>'+
 			'<td><input type="hidden">'+$('#txtDescripcionDetalleGasto'+idTab).val()+'</td>'+

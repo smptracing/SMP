@@ -86,7 +86,7 @@
 
 		var posicionSeparadorTemp=$('#selectIdFuente').val().indexOf(',');
 		var idFuente=$('#selectIdFuente').val().substring(0, posicionSeparadorTemp);
-		var descripcionFuente=$('#selectIdFuente').val().substring(posicionSeparadorTemp+1, $('#selectIdFuente').val().lenght);
+		var descripcionFuente=$('#selectIdFuente').val().substring(posicionSeparadorTemp+1, $('#selectIdFuente').val().length);
 
 		var htmlTemp='<tr>'+
 			'<td><input type="hidden" value='+idFuente+' name="hdIdFuente[]"> '+descripcionFuente+'</td>'+
