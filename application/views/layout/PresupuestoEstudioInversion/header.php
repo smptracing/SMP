@@ -6,54 +6,31 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>SMP-APURIMAC</title>
 
     <!-- Bootstrap -->
     <link href="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="<?php echo base_url(); ?>assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="<?php echo base_url(); ?>assets/vendors/nprogress/nprogress.css" rel="stylesheet">
-    <!-- iCheck -->
-    <link href="<?php echo base_url(); ?>assets/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-
-    <!-- bootstrap-progressbar -->
-    <link href="<?php echo base_url(); ?>assets/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
-    <!-- JQVMap -->
-    <link href="<?php echo base_url(); ?>assets/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
-    <!-- bootstrap-daterangepicker -->
-    <link href="<?php echo base_url(); ?>assets/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/css/bootstrap-select.css"><!--- para el selector con buscardor---->
 
       <!-- Datatables -->
+    <link href="<?php echo base_url();?>assets/vendors/datatables.net-bs/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assets/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assets/vendors/animate/animate.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assets/css/jquery.growl.css" rel="stylesheet">
+   <script src="<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
+   <link href="<?php echo base_url(); ?>assets/build/css/custom.min.css" rel="stylesheet">
+   <script src="<?php echo base_url(); ?>assets/dist/js/sweetalert-dev.js"></script>
+   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/js/sweetalert.css">
 
-    <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
-
-    <link href="<?php echo base_url(); ?>assets/vendors/animate/animate.min.css" rel="stylesheet">
-      <link href="<?php echo base_url(); ?>assets/css/jquery.growl.css" rel="stylesheet">
-
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/formValidation.min.css">
-
-  <style>
-   #ProgramacionHorizontal{
-      width: 100% !important;
-    }
-  </style>
-
-  <!-- jQuery -->
-  <script src="<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
+   <script src="<?php echo base_url(); ?>assets/js/Helper/jsHelper.js"></script>
 
      <script>
     var base_url = '<?php echo base_url(); ?>';
     </script>
     <!-- Custom Theme Style -->
-    <link href="<?php echo base_url(); ?>assets/build/css/custom.min.css" rel="stylesheet">
+ 
   </head>
 
   <body class="nav-md">
@@ -91,21 +68,9 @@
                   </li>
                 </ul>
 
-                <h3></i>PMI</h3>
+                <h3></i>Administración</h3>
                 <ul class="nav side-menu">
-                     <li><a href="<?php echo site_url('CarteraInversion/'); ?>"><i class="fa fa-suitcase"></i> Cartera de inversiones</a></li>
-                               <li><a><i class="fa fa-book"></i> Proyectos Programados <span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="#">PIP</a></li>
-                                    <li><a href="#">NO PIP</a></li>
-                                </ul>
-                            </li>
-                      <li><a href="<?php echo site_url('ProyectoInversion/'); ?>"><i class="fa fa-sitemap"></i> Proyecto Inversion</a></li>
-                      <li><a href="<?php echo site_url('bancoproyectos/'); ?>"><i class="fa fa-database"></i> Banco de proyectos </a></li>
-                      <li><a href="<?php echo site_url('bancoproyectos/'); ?>"><i class="fa fa-gears"></i> Programar PIP </a></li>
-                      <li><a href="<?php echo site_url('bancoproyectos/'); ?>"><i class="fa fa-gear"></i> Programar NO PIP </a></li>
-                       <li><a href="<?php echo site_url('BrechaIndicador/'); ?>"><i class="fa fa-sliders"></i> Brechas e Indicadores </a></li>
-
+                     <li><a href="<?php echo site_url('CarteraInversion/'); ?>"><i class="fa fa-suitcase"></i>Usuario</a></li>
                 </ul>
               </div>
             </div>
@@ -153,7 +118,6 @@
                       </a>
                     </li>
                     <li><a href="javascript:;">Ayuda</a></li>
-
                     <li><a href="javascript:void(0)" id="Cerrar"><i class="fa fa-sign-out pull-right"></i> Cerrar sesión</a></li>
                   </ul>
                 </li>
@@ -171,7 +135,7 @@
                           <span class="time">3 Nuevos proyecto</span>
                         </span>
                         <span class="message">
-
+                          
                         </span>
                       </a>
                     </li>

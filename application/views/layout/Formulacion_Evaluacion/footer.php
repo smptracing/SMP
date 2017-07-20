@@ -8,13 +8,7 @@
       </div>
     </div>
 
-    <!-- jQuery -->
-    <script src="<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <!-- gantt -->
-
-    <script src="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- FastClick -->
+ 
 
 
     <script src="<?php echo base_url(); ?>assets/vendors/fastclick/lib/fastclick.js"></script>
@@ -81,10 +75,6 @@
     <script src="<?php echo base_url(); ?>assets/vendors/pdfmake/build/pdfmake.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendors/pdfmake/build/vfs_fonts.js"></script>
 
-
-     <script src="<?php echo base_url(); ?>assets/dist/js/sweetalert-dev.js"></script>
-     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/js/sweetalert.css">
-
     <script src="<?php echo base_url(); ?>assets/dist/js/bootstrap-select.js"></script><!--- para el selector con buscardor -->
     <!-- Custom Theme Scripts -->
     <script src="<?php echo base_url(); ?>assets/dist/jquery-wizard.js"></script>
@@ -120,5 +110,8 @@
      <script src="<?php echo base_url(); ?>assets/js/Estadisticas/EstadisticasFE.js"></script>
      <script src="<?php echo base_url();?>assets/js/Usuario/login.js"></script>
     <!-- Custom Theme Scripts -->
+    <script src="<?php echo base_url(); ?>assets/js/formValidation.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/bootstrap.validation.min.js"></script>
+
   </body>
 </html>

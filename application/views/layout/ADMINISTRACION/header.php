@@ -17,6 +17,11 @@
     <link href="<?php echo base_url(); ?>assets/vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="<?php echo base_url(); ?>assets/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+     <script src="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
 
     <!-- bootstrap-progressbar -->
     <link href="<?php echo base_url(); ?>assets/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
@@ -33,7 +38,10 @@
     <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
-
+    <script src="<?php echo base_url(); ?>assets/js/Helper/jsHelper.js"></script>
+    
+     <script src="<?php echo base_url(); ?>assets/dist/js/sweetalert-dev.js"></script>
+     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/js/sweetalert.css">
      <script>
     var base_url = '<?php echo base_url(); ?>';
     </script>
@@ -111,6 +119,7 @@
                         <li><a href="<?php echo site_url('UnidadEjecutora/'); ?>"><i class="fa fa-tasks"></i>  Unidad Ejecutora</a></li>
                         <li><a href="<?php echo site_url('Gerencia/'); ?>"><i class="fa fa-qrcode"></i>  Gerencias</a></li>
                         <li><a href="<?php echo site_url('Personal/'); ?>"><i class="fa fa-group"></i>  Personal</a></li>
+                        <li><a href="<?php echo site_url('Unidad_Medida/'); ?>"><i class="fa fa-group"></i>  Unidade Medida</a></li>
 
 
                 </ul>

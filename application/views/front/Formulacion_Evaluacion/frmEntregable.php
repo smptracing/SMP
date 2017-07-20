@@ -254,12 +254,12 @@
                 <form class="form-horizontal " id="form-AddEntregable"  method="POST" >
 
                       <div class="col-md-12 col-sm-12 col-xs-12 input-group">
-                        <span class="input-group-addon">Nombre Entregable</span>
+                        <span class="input-group-addon">Componente</span>
                         <input id="txt_nombre_entre" name="txt_nombre_entre" type="text" class="form-control" name="msg" placeholder="">
                       </div>
                       <div class="col-md-4 col-sm-4 col-xs-12 input-group">
-                      <span class="input-group-addon">Denominación </span>
-                          <select class="selectpicker" id="txt_denominacion_entre" mane="txt_denominacion_entre" class="selectpicker" data-live-search-normalize="true" data-live-search="true" data-container="body" data-header="Denominaciones" data-max-options="2" max-options-text="Solo dos opciones" title="Seleccionar ocupaciones" multiple >
+                      <span class="input-group-addon">Entregable </span>
+                          <select class="selectpicker" id="txt_denominacion_entre" mane="txt_denominacion_entre" class="selectpicker" data-live-search-normalize="true" data-live-search="true" data-container="body" data-header="Denominaciones" data-max-options="2" max-options-text="Solo dos opciones" title="Seleccionar ocupaciones"  >
                             
                           </select>
 

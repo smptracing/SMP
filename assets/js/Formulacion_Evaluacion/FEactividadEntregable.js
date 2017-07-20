@@ -65,11 +65,13 @@
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
-                           swal("",resp, "success");
+                           swal("",resp, "success");  
                            $("#modalEventoActividades").modal("hide");
+                           $('#table_entregable').dataTable()._fnAjaxUpdate();  
                           var tx_IdActividad=$("#tx_IdActividad").val();//catura el id de la actividadd
                           var txt_idEntregable=$("#txt_idEntregable").val();//catura eñ id del entregable
-                          CalcularAvanceAc(tx_IdActividad,txt_idEntregable);//calcular elavance de los entregables              
+                          CalcularAvanceAc(tx_IdActividad,txt_idEntregable);//calcular elavance de los entregables
+
                          }
                       });
                   });
@@ -104,6 +106,7 @@ function CalcularAvanceAc(txt_NombreActividadAc,txt_idEntregable){//calcula el a
                                     var id_entregable=registros[i]['id_entregable'];
                                };
                                UpdateEntregableAvance(suma,id_entregable);//para enviar el avance al entregable cuando se actualiza la actividad
+                               listarEntregablesFE();
                             }
                           });
 }
@@ -145,6 +148,9 @@ function UpdateEntregableAvance(sumaTotalAvance,id_entregable){//avance total de
               }
             });
   }
+
+  //refrescar los entregables 
+  
 
 
 

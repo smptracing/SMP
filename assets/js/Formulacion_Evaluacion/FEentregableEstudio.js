@@ -447,7 +447,7 @@ var generarActividadesVertical=function(id_en)
                                 "columns":[
                                     {"data":"id_entregable","visible":false},
                                     {"data":"nombre_entregable","mRender":function (data,type, full) {
-                                         return ""+data+"<button type='button'  class='ListarActividad btn  btn-xs' title='Mostrar  Actividades' ><i class='glyphicon glyphicon-calendar' aria-hidden='true'></i></button></br>";
+                                         return ""+data+"</br><button type='button'  class='ListarActividad btn  btn-xs' title='Mostrar  Actividades' ><i class='glyphicon glyphicon-calendar' aria-hidden='true'></i></button></br></br>";
                                     }},
                                     {"data":"responsable",
                                     "mRender": function ( data, type, full ) {

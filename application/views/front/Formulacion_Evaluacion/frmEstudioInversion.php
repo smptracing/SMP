@@ -516,7 +516,6 @@
                         </th>
                         <th style="width: 10%"><i class="fa fa-calendar"></i> Fecha Final
                         </th>
-
                       </tr>
                     </thead>
                     </table>
@@ -545,3 +544,11 @@
     </div>
 </div>
 <!-- /.FIN VENTANA VER ETAPAS DE UN ESTYUDIO-->
+<?php
+  $sessionTempo=$this->session->flashdata('correcto');
+
+  if($sessionTempo){ ?>
+    <script>
+      swal('','<?=$sessionTempo?>', "success");
+    </script>
+<?php } ?>

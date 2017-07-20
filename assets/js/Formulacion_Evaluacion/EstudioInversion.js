@@ -1,24 +1,142 @@
 $(document).on("ready" ,function(){
+  var listarpicombo=function(valor){
+                     htmlPip="";
+                    $("#listaFuncionC").html(htmlPip);
+                    event.preventDefault();
+                    $.ajax({
+                        "url":base_url +"index.php/Estudio_Inversion/get_listaproyectos",
+                        type:"POST",
+                        success:function(respuesta1){
+                       //    alert(respuesta);
+                         var registrospi = eval(respuesta1);
+                            for (var i = 0; i <registrospi.length;i++) {
+                              htmlPip +="<option value="+registrospi[i]["id_pi"]+"> "+ registrospi[i]["codigo_unico_pi"]+":"+registrospi[i]["nombre_pi"]+" </option>";
+                            };
+                            $("#listaFuncionC").html(htmlPip);
+                            $("#listaFuncionC").html(htmlPip);
+                            $('select[name=listaFuncionC]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=listaFuncionC]').change();
+                            $('.selectpicker').selectpicker('refresh');
+                          // listarpicombotipo_inversion(id_pi);
+                             txt_tipoinversion.value=id_pi;
+                        }
+                    });
+                }
+/* listar tipo estudio*/
+var listarestudiocombo=function(valor){
+                     htmltipoE="";
+                    $("#listaTipoInversion").html(htmltipoE);
+                    event.preventDefault();
+                    $.ajax({
+                        "url":base_url +"index.php/Estudio_Inversion/get_TipoEstudio",
+                        type:"POST",
+                        success:function(respuesta3){
+                         //  alert(respuesta);
+                         var registros = eval(respuesta3);
+                            for (var i = 0; i <registros.length;i++) {
+                              htmltipoE +="<option  value="+registros[i]["id_tipo_est"]+"> "+registros[i]["nombre_tipo_est"]+" </option>";
+                            };
+                            $("#listaTipoInversion").html(htmltipoE);
+                            $("#listaTipoInversion").html(htmltipoE);
+                            $('select[name=listaTipoInversion]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=listaTipoInversion]').change();
+                            $('.selectpicker').selectpicker('refresh');
+                         }
+                    });
+                }
+/* listar nivel estudio*/
+                var listarnivelcombo=function(valor){
+                     htmlNivel="";
+                    $("#listaNivelEstudio").html(htmlNivel);
+                    event.preventDefault();
+                    $.ajax({
+                        "url":base_url +"index.php/Estudio_Inversion/get_NivelEstudio",
+                        type:"POST",
+                        success:function(respuesta3){
+                         //  alert(respuesta);
+                         var registros = eval(respuesta3);
+                            for (var i = 0; i <registros.length;i++) {
+                              htmlNivel +="<option  value="+registros[i]["id_nivel_estudio"]+"> "+registros[i]["denom_nivel_estudio"]+" </option>";
+                            };
+
+                            $("#listaNivelEstudio").html(htmlNivel);
+                            $("#listaNivelEstudio").html(htmlNivel);
+                            $('select[name=listaNivelEstudio]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=listaNivelEstudio]').change();
+                            $('.selectpicker').selectpicker('refresh');
+                        }
+                    });
+                }
+                 var listaruecombo=function(valor){
+                     htmlUE="";
+                    $("#lista_unid_ejec").html(htmlUE);
+                    event.preventDefault();
+                    $.ajax({
+                        "url":base_url +"index.php/Estudio_Inversion/get_UnidadEjecutora",
+                        type:"POST",
+                        success:function(respuesta3){
+                         //  alert(respuesta);
+                         var registros = eval(respuesta3);
+                            for (var i = 0; i <registros.length;i++) {
+                              htmlUE +="<option  value="+registros[i]["id_ue"]+"> "+registros[i]["nombre_ue"]+" </option>";
+                            };
+
+                            $("#lista_unid_ejec").html(htmlUE);
+                            $("#lista_unid_ejec").html(htmlUE);
+                            $('select[name=lista_unid_ejec]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=lista_unid_ejec]').change();
+                            $('.selectpicker').selectpicker('refresh');
+
+                        }
+                    });
+                }
+                 var listarufcombo=function(valor){
+                     htmlUF="";
+                    $("#lista_unid_form").html(htmlUF);
+                    event.preventDefault();
+                    $.ajax({
+                        "url":base_url +"index.php/Estudio_Inversion/get_UnidadFormuladora",
+                        type:"POST",
+                        success:function(respuesta2){
+                          // alert(respuesta);
+                         var registros = eval(respuesta2);
+                            for (var i = 0; i <registros.length;i++) {
+                              htmlUF +="<option  value="+registros[i]["id_uf"]+">"+registros[i]["nombre_uf"]+" </option>";
+                            };
+                            $("#lista_unid_form").html(htmlUF);
+                            $("#lista_unid_form").html(htmlUF);
+                            $('select[name=lista_unid_form]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=lista_unid_form]').change();
+                            $('.selectpicker').selectpicker('refresh');
+                        }
+                    });
+                }
 
                 ListaEstudioInversion();/*llamar a mi datatablet listar funcion*/
+                listarpicombo();
+                listarnivelcombo();
+                listarestudiocombo();
+                listarufcombo();
+                listaruecombo();
+
               //abrir el modal para registrar
-  $("#btn_nuevoEstInv").click(function(){
+  /*$("#btn_nuevoEstInv").click(function(){
                 // alert("hola");
-                 listarpicombo();
-             });
-             $("#listaFuncionC").change(function(){//para cargar en agregar division funcionañ
+                
+             });*/
+            /* $("#listaFuncionC").change(function(){//para cargar en agregar division funcionañ
                    listarestudiocombo();
-             });
-               $("#listaTipoInversion").change(function(){//para cargar en agregar division funcionañ
+             });*/
+              /* $("#listaTipoInversion").change(function(){//para cargar en agregar division funcionañ
                   listarnivelcombo();
-             });
+             });*/
               $("#listaNivelEstudio").change(function(){//para cargar en agregar division funcionañ
-                  listarufcombo();
+              //listarufcombo();
              });
 
              $("#lista_unid_form").change(function(){
                 // alert("hola");
-                 listaruecombo();
+               
              });
               $("#lista_unid_ejec").change(function(){
                 // alert("hola");
@@ -242,7 +360,7 @@ $(document).on("ready" ,function(){
                                      
                                       }
                                    }},
-                                  {"defaultContent":"<center><button type='button' title='Subir Resolución' class='DocumentosEstudio btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaDocumentosEstudio'><i class='glyphicon glyphicon-folder-open' aria-hidden='true'></i></button><button type='button' title='Asignar Respondable' class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#ventanaasiganarpersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button><button type='button' title='Nueva Etapa Estudio' class='nuevaEtapaEstudio btn btn-warning btn-xs' data-toggle='modal' data-target='#ventanaEtapaEstudio'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button' title='Ver Etapas Estudio' class='ver_etapas_estudio btn btn-success btn-xs' data-toggle='modal' data-target='#ventana_ver_etapas_estudio'><i class='fa fa-paw' aria-hidden='true'></i></button></center>"}
+                                  {"defaultContent":"<center><button type='button' title='Subir Resolución' class='DocumentosEstudio btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaDocumentosEstudio'><i class='glyphicon glyphicon-folder-open' aria-hidden='true'></i></button><button title='Asignar Respondable' class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#ventanaasiganarpersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button><button title='Nueva Etapa Estudio' class='nuevaEtapaEstudio btn btn-warning btn-xs' data-toggle='modal' data-target='#ventanaEtapaEstudio'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button' title='Ver Etapas Estudio' class='ver_etapas_estudio btn btn-success btn-xs' data-toggle='modal' data-target='#ventana_ver_etapas_estudio'><i class='fa fa-paw' aria-hidden='true'></i></button><button title='Presupuesto' class='btn btn-success btn-xs' onclick='paginaAjaxDialogo(null, \"Registro de presupuesto para formulación y evaluación\", null, base_url+\"index.php/FE_Presupuesto_Inv/insertar\", \"POST\", null, null, false, true);'><i class='fa fa-usd' aria-hidden='true'></i></button></center>"}
                                ],
                                 "language":idioma_espanol
                     });
@@ -338,123 +456,12 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
                 }
 
               //fin listar y agregar documento
-                var listarpicombo=function(valor){
-                     html="";
-                    $("#listaFuncionC").html(html);
-                    event.preventDefault();
-                    $.ajax({
-                        "url":base_url +"index.php/Estudio_Inversion/get_listaproyectos",
-                        type:"POST",
-                        success:function(respuesta1){
-                       //    alert(respuesta);
-                         var registrospi = eval(respuesta1);
-                            for (var i = 0; i <registrospi.length;i++) {
-                              html +="<option value="+registrospi[i]["id_pi"]+"> "+ registrospi[i]["codigo_unico_pi"]+":"+registrospi[i]["nombre_pi"]+" </option>";
-                            };
-                            $("#listaFuncionC").html(html);
-                            $("#listaFuncionC").html(html);
-                            $('select[name=listaFuncionC]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
-                            $('select[name=listaFuncionC]').change();
-                            $('.selectpicker').selectpicker('refresh');
-                          // listarpicombotipo_inversion(id_pi);
-                             txt_tipoinversion.value=id_pi;
-                        }
-                    });
-                }
-/* listar tipo estudio*/
-                var listarestudiocombo=function(valor){
-                     html="";
-                    $("#listaTipoInversion").html(html);
-                    event.preventDefault();
-                    $.ajax({
-                        "url":base_url +"index.php/Estudio_Inversion/get_TipoEstudio",
-                        type:"POST",
-                        success:function(respuesta3){
-                         //  alert(respuesta);
-                         var registros = eval(respuesta3);
-                            for (var i = 0; i <registros.length;i++) {
-                              html +="<option  value="+registros[i]["id_tipo_est"]+"> "+registros[i]["nombre_tipo_est"]+" </option>";
-                            };
-                            $("#listaTipoInversion").html(html);
-                            $("#listaTipoInversion").html(html);
-                            $('select[name=listaTipoInversion]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
-                            $('select[name=listaTipoInversion]').change();
-                            $('.selectpicker').selectpicker('refresh');
-                         }
-                    });
-                }
-/* listar nivel estudio*/
-                var listarnivelcombo=function(valor){
-                     html="";
-                    $("#listaNivelEstudio").html(html);
-                    event.preventDefault();
-                    $.ajax({
-                        "url":base_url +"index.php/Estudio_Inversion/get_NivelEstudio",
-                        type:"POST",
-                        success:function(respuesta3){
-                         //  alert(respuesta);
-                         var registros = eval(respuesta3);
-                            for (var i = 0; i <registros.length;i++) {
-                              html +="<option  value="+registros[i]["id_nivel_estudio"]+"> "+registros[i]["denom_nivel_estudio"]+" </option>";
-                            };
-
-                            $("#listaNivelEstudio").html(html);
-                            $("#listaNivelEstudio").html(html);
-                            $('select[name=listaNivelEstudio]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
-                            $('select[name=listaNivelEstudio]').change();
-                            $('.selectpicker').selectpicker('refresh');
-                        }
-                    });
-                }
-
-
+              
+                
                 /*fin listar unidad formulador*/
-                var listarufcombo=function(valor){
-                     html="";
-                    $("#lista_unid_form").html(html);
-                    event.preventDefault();
-                    $.ajax({
-                        "url":base_url +"index.php/Estudio_Inversion/get_UnidadFormuladora",
-                        type:"POST",
-                        success:function(respuesta2){
-                          // alert(respuesta);
-                         var registros = eval(respuesta2);
-                            for (var i = 0; i <registros.length;i++) {
-                              html +="<option  value="+registros[i]["id_uf"]+">"+registros[i]["nombre_uf"]+" </option>";
-                            };
-                            $("#lista_unid_form").html(html);
-                            $("#lista_unid_form").html(html);
-                            $('select[name=lista_unid_form]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
-                            $('select[name=lista_unid_form]').change();
-                            $('.selectpicker').selectpicker('refresh');
-                        }
-                    });
-                }
-
+               
                  /*fin listar unidad formulador*/
-                var listaruecombo=function(valor){
-                     html="";
-                    $("#lista_unid_ejec").html(html);
-                    event.preventDefault();
-                    $.ajax({
-                        "url":base_url +"index.php/Estudio_Inversion/get_UnidadEjecutora",
-                        type:"POST",
-                        success:function(respuesta3){
-                         //  alert(respuesta);
-                         var registros = eval(respuesta3);
-                            for (var i = 0; i <registros.length;i++) {
-                              html +="<option  value="+registros[i]["id_ue"]+"> "+registros[i]["nombre_ue"]+" </option>";
-                            };
-
-                            $("#lista_unid_ejec").html(html);
-                            $("#lista_unid_ejec").html(html);
-                            $('select[name=lista_unid_ejec]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
-                            $('select[name=lista_unid_ejec]').change();
-                            $('.selectpicker').selectpicker('refresh');
-
-                        }
-                    });
-                }
+               
               var  nuevaEtapaEstudioData=function(tbody,myTableUA){
                     $(tbody).on("click","button.nuevaEtapaEstudio",function(){
                    var data=myTableUA.row( $(this).parents("tr")).data();
