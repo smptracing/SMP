@@ -57,8 +57,10 @@ class FE_Presupuesto_Inv extends CI_Controller
 
 	public function verDetalle()
 	{
-		$id_est_inv=$this->input->get('id');
-		$nombreProyectoInver=$this->Model_FE_Presupuesto_Inv->nombreProyectoInv($id_est_inv)[0];
+		echo 'ok';exit;
+		
+		$codigo_unico_inv=$this->input->get('id');
+		$nombreProyectoInver=$this->Model_FE_Presupuesto_Inv->nombreProyectoInvPorId($id_est_inv);
 
 	    $SectorPliego=$this->Model_FE_Presupuesto_Inv->SectorPliego($id_est_inv)[0];
 
