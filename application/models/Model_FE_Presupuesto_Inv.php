@@ -49,4 +49,26 @@ class Model_FE_Presupuesto_Inv extends CI_Model
         return $nombreProyectoInv->result();
     }
 
+    function SectorPliego($id_est_inv)
+    {
+        $SectorPliego=$this->db->query("select nombre_sector, pliego from SECTOR INNER JOIN FE_PRESUPUESTO_INV ON SECTOR.id_sector=FE_PRESUPUESTO_INV.id_sector  INNER JOIN ESTUDIO_INVERSION ON ESTUDIO_INVERSION.id_est_inv=FE_PRESUPUESTO_INV.id_est_inv WHERE ESTUDIO_INVERSION.id_est_inv='".$id_est_inv."' ");
+        
+        return $SectorPliego->result();
+    }
+
+    function TipoGastoDetallePresupuesto($id_est_inv)
+    {
+        $TipoGasto=$this->db->query("select FE_TIPO_GASTO.id_tipo_gasto, desc_tipo_gasto, id_est_inv from FE_TIPO_GASTO INNER JOIN FE_DETALLE_PRESUPUESTO ON FE_DETALLE_PRESUPUESTO.id_tipo_gasto=FE_TIPO_GASTO.id_tipo_gasto INNER JOIN FE_PRESUPUESTO_INV ON FE_DETALLE_PRESUPUESTO.id_presupuesto_fe=FE_PRESUPUESTO_INV.id_presupuesto_fe where id_est_inv='".$id_est_inv."' ");
+        
+        return $TipoGasto->result();
+    }
+
+    function DetalleGasto($id_est_inv)
+    {
+        $DetalleGasto=$this->db->query("select FE_TIPO_GASTO.id_tipo_gasto, desc_tipo_gasto, id_est_inv, desc_detalle_gasto, cantidad_detalle_gasto, costo_uni_detalle_gasto, sub_total_detalle_gasto from FE_TIPO_GASTO INNER JOIN FE_DETALLE_PRESUPUESTO ON FE_DETALLE_PRESUPUESTO.id_tipo_gasto=FE_TIPO_GASTO.id_tipo_gasto INNER JOIN FE_PRESUPUESTO_INV ON FE_DETALLE_PRESUPUESTO.id_presupuesto_fe=FE_PRESUPUESTO_INV.id_presupuesto_fe INNER JOIN FE_DETALLE_GASTO  ON FE_DETALLE_PRESUPUESTO.id_detalle_presupuesto=FE_DETALLE_GASTO.id_detalle_presupuesto where id_est_inv='".$id_est_inv."'order by id_tipo_gasto");
+        
+        return $DetalleGasto->result();
+    }
+
+
 }

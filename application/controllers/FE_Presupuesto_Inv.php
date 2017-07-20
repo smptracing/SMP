@@ -40,7 +40,7 @@ class FE_Presupuesto_Inv extends CI_Controller {
 	    		$hdDescripcionFuente[$i];
 	    		$Data=$this->Model_FE_Presupuesto_Inv->insertarPresupuestoFuente($id_presupuesto_fe,$id_fuente_finan,$hdCorrelativoMeta[$i],$hdAnio[$i]);
 	    	}
-	    	$this->session->set_flashdata('correcto',"Se registro corectamente el presupuesto");
+	    	$this->session->set_flashdata('correcto',"Se registro corRectamente el presupuesto");
 	    	return redirect("/FE_Presupuesto_Inv/index/".$codigoUnicoInversion.""); 
 		}
 
@@ -52,7 +52,20 @@ class FE_Presupuesto_Inv extends CI_Controller {
 		
 	    $this->load->view('Front/PresupuestoEstudioInversion/FEPresupuesto/insertar',['listarSector' => $listarSector,'listarFueteFinanciamiento' => $listarFueteFinanciamiento,'nombreProyectoInver' => $nombreProyectoInver ]);
 	}
+	public function verDetalle()
+	{
+		$codigo_unico_inv=$this->input->GET('id');
+		$nombreProyectoInver=$this->Model_FE_Presupuesto_Inv->nombreProyectoInv($codigo_unico_inv)[0];
 
+		$id_est_inv=$this->input->GET('id_est_inv');
+	    $SectorPliego=$this->Model_FE_Presupuesto_Inv->SectorPliego($id_est_inv)[0];
+
+	    $TipoGasto=$this->Model_FE_Presupuesto_Inv->TipoGastoDetallePresupuesto($id_est_inv);
+	    $DetalleGasto=$this->Model_FE_Presupuesto_Inv->DetalleGasto($id_est_inv);
+
+
+		$this->load->view('Front/PresupuestoEstudioInversion/FEPresupuesto/verDetalle',['nombreProyectoInver' => $nombreProyectoInver, 'SectorPliego' => $SectorPliego , 'TipoGasto'=>$TipoGasto, 'DetalleGasto'=>$DetalleGasto]);
+	}
 	function _load_layout($template)
     {
       $this->load->view('layout/Formulacion_Evaluacion/header');

@@ -48,7 +48,7 @@
 															<td>Sector</td>
 															<td>Pliego</td>
 															<td>Presupuesto</td>
-															<td class="col-md-1 col-md-1 col-xs-12"></td>
+															<td class="col-md-2 col-md-2 col-xs-12"></td>
 														</tr>
 													</thead>
 													<tbody>
@@ -64,7 +64,7 @@
 																<?=$item->PresupuestoTotal?>
 																</td>
 																<td>
-																  	<button type='button' class='editar btn btn-primary btn-xs' ><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>
+																  	<button type='button' class='editar btn btn-primary btn-xs' ><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button><button type='button' class='editar btn btn-success btn-xs' onclick="paginaAjaxDialogo(null, 'Fuentes y Detalle de presupuesto',{ id: '<?=$nombreProyectoInv->codigo_unico_est_inv?>', id_est_inv:'<?=$nombreProyectoInv->id_est_inv?>'}, base_url+'index.php/FE_Presupuesto_Inv/verDetalle', 'GET', null, null, false, true)" ><i class='ace-icon fa fa-eye bigger-120'></i></button>
 																</td>
 															</tr>
 														<?php } ?>
