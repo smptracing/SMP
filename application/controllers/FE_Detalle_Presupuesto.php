@@ -9,7 +9,7 @@ class FE_Detalle_Presupuesto extends CI_Controller {
 
 	public function index()
     {
-   
+  
         $this->load->view('layout/Formulacion_Evaluacion/header');
         $this->load->view('Front/PresupuestoEstudioInversion/FEPresupuesto/index');
         $this->load->view('layout/Formulacion_Evaluacion/footer');

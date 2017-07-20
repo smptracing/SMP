@@ -162,7 +162,7 @@ $("#form-AddSituacion").submit(function(event)
                                     "dataSrc":""
                                     },
                                 "columns":[
-                                    {"defaultContent":"<td>#</td>","visible": false},
+                                    {"data":"id_est_inv","visible": false},
                                     {"data":"id_pi","visible": false},
                                     {"data":"codigo_unico_est_inv",
                                     "mRender": function ( data, type, full ) {
@@ -275,8 +275,8 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
            var  presupuestoProInv=function(tbody,table){
                                $(tbody).on("click","button.presupuestoProyectoInv",function(){
                                var data=table.row( $(this).parents("tr")).data();
-                               var codigo_unico_est_inv=data.codigo_unico_est_inv;
-                               window.location.href=base_url+"index.php/FE_Presupuesto_Inv/index/"+codigo_unico_est_inv+"/";//+codigo_unico_est_inv;
+                               var id_est_inv=data.id_est_inv;
+                               window.location.href=base_url+"index.php/FE_Presupuesto_Inv/index/"+id_est_inv+"/";//+codigo_unico_est_inv;
                           });
                       }
 
