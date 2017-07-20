@@ -11,9 +11,9 @@
 		<h4 style="margin-bottom: 0px;">Detalle de Gasto</h4>
 		<hr style="margin: 2px;margin-bottom: 5px;">
 		<div class="row">
-			<div class="col-md-9 col-sm-6 col-xs-12">
+			<div id="divTipoGasto" class="col-md-9 col-sm-6 col-xs-12">
 				<label>Tipo de Gasto</label>
-				<select id="cbxTipoGasto" name="cbxTipoGasto" value="Seleccione Tipo De Gasto" class="form-control notValidate" required="">
+				<select id="cbxTipoGasto" name="cbxTipoGasto" class="form-control" required="">
 					<option value="1,Tipo gastoto 1">Tipo gastoto 1</option>
 					<option value="2,Tipo gastoto 2">Tipo gastoto 2</option>
 				</select>
@@ -23,13 +23,14 @@
 				<input type="button" id="btnAgregarTipoGasto" class="btn btn-success form-control" value="Agregar">
 			</div>
 		</div>
+		<hr style="margin: 2px;">
 		<div class="row">
 			<div>
 				<div id="DetallePresupestoFormulacion">
 					<div id="AreaDetallePF" class="col-xs-3">
 						<ul id="pestanaDetallePF" class="nav nav-tabs tabs-left"><ul>
 					</div>
-					<div id="AreaContenidoDetallePF" class="col-xs-9" style="border: 1px solid #999999;">
+					<div id="AreaContenidoDetallePF" class="col-xs-9" style="border-left: 1px solid #999999;">
 						<div id="contePestanaDetallePF" class="tab-content"></div>
 					</div>
 				</div>
@@ -45,6 +46,13 @@
 <script>
 	$("#btnAgregarTipoGasto").on('click', function(event)
 	{
+		$('#divTipoGasto').data('formValidation').validate();
+
+		if(!($('#divTipoGasto').data('formValidation').isValid()))
+		{
+			return;
+		}
+
 		var posicionTemporal=$("#cbxTipoGasto").val().indexOf(',');
 		var idTab=$("#cbxTipoGasto").val().substring(0, posicionTemporal);
 		var nombreTab=$("#cbxTipoGasto").val().substring(posicionTemporal+1, $("#cbxTipoGasto").val().length);
@@ -72,62 +80,62 @@
 		$('#DetallePresupestoFormulacion > #AreaDetallePF > #pestanaDetallePF ').append(htmlTempPestania);
 
 		var htmlTempContenido='<div class="tab-pane" id="tabPaneDetalleGasto'+idTab+'">' + 
-									'<div class="row">'+
-							   			'<div class="col-md-12 col-sm-12 col-xs-12" style="text-align: left;">'+
-							   				'<input type="button" class="btn btn-danger btn-xs" value="Eliminar todo el detalle" onclick="removerPanel('+idTab+');" style="margin: 2px;margin-left: 0px;">'+
-							   			'</div>'+
-							   			'<div class="col-md-12 col-sm-12 col-xs-12">'+
-							   				'<h5>'+nombreTab+'</h5>'+
-							   			'</div>'+
-							   		'</div>'+
-							   		'<hr style="margin-bottom: 4px;margin-top: 0px;">'+
-							   		'<div class="row">'+
-							   			'<div class="col-md-8 col-sm-8 col-xs-8">'+
-								   			'<labe>Descripción</label></h6>'+
-									   		'<input type="text" id="txtDescripcionDetalleGasto'+idTab+'" class="form-control" autocomplete="off">'+
-								   		'</div>'+
-								   		'<div class="col-md-4 col-sm-4 col-xs-4">'+
-								   			'<labe>Undidad</label></h6>'+
-									   		'<select id="selectIdUnidad'+idTab+'" class="form-control">'+
-												'<option value="1,Unidad m. 1">Unidad m. 1</option>'+
-												'<option value="2,Unidad m. 2">Unidad m. 2</option>'+
-											'</select>'+
-								   		'</div>'+
-								   	'</div>'+
-								   	'<div class="row">'+
-							   			'<div class="col-md-4 col-sm-4 col-xs-4">'+
-								   			'<labe>Cantidad</label></h6>'+
-									   		'<input type="text" id="txtCantidadDetalleGasto'+idTab+'" class="form-control" autocomplete="off" onkeyup="calcularSubTotalDetalleGasto('+idTab+');">'+
-								   		'</div>'+
-								   		'<div class="col-md-4 col-sm-4 col-xs-4">'+
-								   			'<labe>Costo U.</label></h6>'+
-									   		'<input type="text" id="txtCostoUnitarioDetalleGasto'+idTab+'" class="form-control" autocomplete="off" onkeyup="calcularSubTotalDetalleGasto('+idTab+');">'+
-								   		'</div>'+
-								   		'<div class="col-md-4 col-sm-4 col-xs-4">'+
-								   			'<labe>Total</label></h6>'+
-									   		'<input type="text" id="txtSubTotalDetalleGasto'+idTab+'" class="form-control" autocomplete="off" readonly="readonly">'+
-								   		'</div>'+
-								   	'</div>'+
-								   	'<div class="row" style="margin-top: 7px">'+
-								   		'<div class="col-md-12 col-sm-12 col-xs-12">'+
-							   				'<input type="button" class="btn btn-success form-control" value="Agregar" onclick="agregarDetalleGasto('+idTab+');">'+
-							   			'</div>'+
-								   	'</div>'+
-								   	'<hr>'+
-								   	'<table id="tableDetalleGasto'+idTab+'" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">'+
-										'<thead>'+
-											'<tr>'+
-												'<th>Descripción</th>'+
-												'<th>Unidad</th>'+
-												'<th>C.</th>'+
-												'<th>C. U.</th>'+
-												'<th>Total</th>'+
-												'<th></th>'+
-											'</tr>'+
-										'</thead>'+
-										'<tbody></tbody>'+
-									'</table>'+
-			                  '</div>';
+		'<div class="row">'+
+				'<div class="col-md-12 col-sm-12 col-xs-12" style="text-align: left;">'+
+					'<input type="button" class="btn btn-danger btn-xs" value="Eliminar todo este detalle" onclick="removerPanel('+idTab+');" style="margin: 2px;margin-left: 0px;">'+
+				'</div>'+
+				'<div class="col-md-12 col-sm-12 col-xs-12">'+
+					'<h5>'+nombreTab+'</h5>'+
+				'</div>'+
+			'</div>'+
+			'<hr style="margin-bottom: 4px;margin-top: 0px;">'+
+			'<div class="row">'+
+				'<div class="col-md-8 col-sm-8 col-xs-8">'+
+					'<labe>Descripción</label></h6>'+
+		   		'<input type="text" id="txtDescripcionDetalleGasto'+idTab+'" name="txtDescripcionDetalleGasto'+idTab+'" class="form-control" autocomplete="off">'+
+				'</div>'+
+				'<div class="col-md-4 col-sm-4 col-xs-4">'+
+					'<labe>Undidad</label></h6>'+
+		   		'<select id="selectIdUnidad'+idTab+'" name="selectIdUnidad'+idTab+'" class="form-control">'+
+					'<option value="1,Unidad m. 1">Unidad m. 1</option>'+
+					'<option value="2,Unidad m. 2">Unidad m. 2</option>'+
+				'</select>'+
+				'</div>'+
+			'</div>'+
+			'<div class="row">'+
+				'<div class="col-md-4 col-sm-4 col-xs-4">'+
+					'<labe>Cantidad</label></h6>'+
+		   		'<input type="text" id="txtCantidadDetalleGasto'+idTab+'" name="txtCantidadDetalleGasto'+idTab+'" class="form-control" autocomplete="off" onkeyup="calcularSubTotalDetalleGasto('+idTab+');">'+
+				'</div>'+
+				'<div class="col-md-4 col-sm-4 col-xs-4">'+
+					'<labe>Costo U.</label></h6>'+
+		   		'<input type="text" id="txtCostoUnitarioDetalleGasto'+idTab+'" name="txtCostoUnitarioDetalleGasto'+idTab+'" class="form-control" autocomplete="off" onkeyup="calcularSubTotalDetalleGasto('+idTab+');">'+
+				'</div>'+
+				'<div class="col-md-4 col-sm-4 col-xs-4">'+
+					'<labe>Total</label></h6>'+
+		   		'<input type="text" id="txtSubTotalDetalleGasto'+idTab+'" name="txtSubTotalDetalleGasto'+idTab+'" class="form-control" autocomplete="off" readonly="readonly">'+
+				'</div>'+
+			'</div>'+
+			'<div class="row" style="margin-top: 7px">'+
+				'<div class="col-md-12 col-sm-12 col-xs-12">'+
+					'<input type="button" class="btn btn-success form-control" value="Agregar" onclick="agregarDetalleGasto('+idTab+');">'+
+				'</div>'+
+			'</div>'+
+			'<hr>'+
+			'<table id="tableDetalleGasto'+idTab+'" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">'+
+				'<thead>'+
+					'<tr>'+
+						'<th>Descripción</th>'+
+						'<th>Unidad</th>'+
+						'<th>C.</th>'+
+						'<th>C. U.</th>'+
+						'<th>Total</th>'+
+						'<th></th>'+
+					'</tr>'+
+				'</thead>'+
+				'<tbody></tbody>'+
+			'</table>'+
+		'</div>';
 
 		$('#DetallePresupestoFormulacion > #AreaContenidoDetallePF > #contePestanaDetallePF ').append(htmlTempContenido);
 
@@ -139,6 +147,24 @@
 		$('#pestaniaTabPaneDetalleGasto'+idTab).addClass('active');
 		$('#pestaniaTabPaneDetalleGasto'+idTab+' > a').attr({ 'aria-expanded' : 'true' });
 
+		$('#tabPaneDetalleGasto'+idTab).formValidation(
+		{
+			framework : 'bootstrap',
+			excluded : [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+			live : 'enabled',
+			message : '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+			trigger : null,
+			fields :
+			{
+				
+			}
+		});
+
+		$('#tabPaneDetalleGasto'+idTab)
+			.formValidation('addField', 'txtDescripcionDetalleGasto'+idTab, txtDescripcionDetalleGastoValidators)
+			.formValidation('addField', 'selectIdUnidad'+idTab, selectIdUnidadValidators)
+			.formValidation('addField', 'txtCantidadDetalleGasto'+idTab, txtCantidadDetalleGastoValidators)
+			.formValidation('addField', 'txtCostoUnitarioDetalleGasto'+idTab, txtCostoUnitarioDetalleGastoValidators);
 	});
 
 	function removerPanel(idTab)
@@ -166,6 +192,18 @@
 
 	function agregarDetalleGasto(idTab)
 	{
+		$('#tabPaneDetalleGasto'+idTab).data('formValidation').resetField($('#txtDescripcionDetalleGasto'+idTab));
+		$('#tabPaneDetalleGasto'+idTab).data('formValidation').resetField($('#selectIdUnidad'+idTab));
+		$('#tabPaneDetalleGasto'+idTab).data('formValidation').resetField($('#txtCantidadDetalleGasto'+idTab));
+		$('#tabPaneDetalleGasto'+idTab).data('formValidation').resetField($('#txtCostoUnitarioDetalleGasto'+idTab));
+
+		$('#tabPaneDetalleGasto'+idTab).data('formValidation').validate();
+
+		if(!($('#tabPaneDetalleGasto'+idTab).data('formValidation').isValid()))
+		{
+			return;
+		}
+
 		var posicionTemporal=$('#selectIdUnidad'+idTab).val().indexOf(',');
 		var idUnidadMedidaTemporal=$('#selectIdUnidad'+idTab).val().substring(0, posicionTemporal);
 		var nombreUnidadMedidaTemporal=$('#selectIdUnidad'+idTab).val().substring(posicionTemporal+1, $('#selectIdUnidad'+idTab).val().length);
@@ -184,4 +222,81 @@
 		limpiarText('tabPaneDetalleGasto'+idTab, []);
 	}
 
+	var txtDescripcionDetalleGastoValidators, selectIdUnidadValidators, txtCantidadDetalleGastoValidators, txtCostoUnitarioDetalleGastoValidators;
+
+	$(function()
+	{
+		txtDescripcionDetalleGastoValidators=
+		{
+			validators : 
+			{
+				notEmpty:
+				{
+					message: '<b style="color: red;">El campo "Descripción" es requerido.</b>'
+				}
+			}
+		},
+		selectIdUnidadValidators=
+		{
+			validators: 
+			{
+				notEmpty:
+				{
+					message: '<b style="color: red;">El campo "Unidad" es requerido.</b>'
+				}
+			}
+		},
+		txtCantidadDetalleGastoValidators=
+		{
+			validators:
+			{
+				notEmpty:
+				{
+					message: '<b style="color: red;">El campo "Cantidad" es requerido.</b>'
+				},
+				regexp:
+				{
+					regexp: /^\d*$/,
+					message: '<b style="color: red;">El campo "Cantidad" debe ser un número entero.</b>'
+				}
+			}
+		},
+		txtCostoUnitarioDetalleGastoValidators=
+		{
+			validators:
+			{
+				notEmpty:
+				{
+					message: '<b style="color: red;">El campo "Consto U." es requerido.</b>'
+				},
+				regexp:
+				{
+					regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
+					message: '<b style="color: red;">El campo "Costo U." debe ser un valor en soles.</b>'
+				}
+			}
+		};
+
+		$('#divTipoGasto').formValidation(
+		{
+			framework : 'bootstrap',
+			excluded : [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+			live : 'enabled',
+			message : '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+			trigger : null,
+			fields :
+			{
+				cbxTipoGasto :
+				{
+					validators:
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Tipo de Gasto" es requerido.</b>'
+						}
+					}
+				}
+			}
+		});
+	});
 </script>
