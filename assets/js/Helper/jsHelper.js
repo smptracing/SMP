@@ -28,6 +28,8 @@ function renderLoading()
 
         $('body').append('<div id="divModalCargaAjax"><div id="divLoadingContenedor"><span id="spanTextoLoading">Cargando</span><br><div id="divLoading"></div></div></div>');
     }
+
+    $('#divModalCargaAjax').show();
 }
 
 function paginaAjaxJSON(data, url, method, preFunction, postFunction, cache, async)
@@ -40,8 +42,6 @@ function paginaAjaxJSON(data, url, method, preFunction, postFunction, cache, asy
     {
         preFunction();
     }
-
-    $('#divModalCargaAjax').show();
     
     $.ajax(
     {
@@ -75,7 +75,6 @@ function paginaAjax(idSeccion, data, url, method, preFunction, postFunction, cac
         preFunction();
     }
 
-    $('#divModalCargaAjax').show();
     $.ajax(
     {
         url : url,
@@ -107,8 +106,6 @@ function paginaAjaxDialogo(idModal, titulo, data, url, method, preFunction, post
     {
         preFunction();
     }
-
-    $('#divModalCargaAjax').show();
 
     var idModalTemp=(idModal!=null ? idModal : 'modalTemp');
 

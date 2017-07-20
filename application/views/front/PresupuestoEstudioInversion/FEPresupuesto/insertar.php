@@ -175,6 +175,13 @@
 	{
 		event.preventDefault();
 
+		$('#form-addFePresupuesto').data('formValidation').validate();
+
+		if(!($('#form-addFePresupuesto').data('formValidation').isValid()))
+		{
+			return;
+		}
+
 		paginaAjaxJSON($('#form-addFePresupuesto').serialize(), '<?=base_url();?>index.php/FE_Presupuesto_Inv/insertar', 'POST', null, function(objectJSON)
 		{
 			$('#modalTemp').modal('hide');
@@ -190,6 +197,8 @@
 			function()
 			{
 				window.location.href='<?=base_url();?>index.php/FE_Presupuesto_Inv/index/'+objectJSON.idEstudioInversion;
+
+				renderLoading();
 			});
 		}, false, true);
 	});

@@ -201,6 +201,8 @@
 			function()
 			{
 				window.location.href='<?=base_url();?>index.php/FE_Presupuesto_Inv/index/'+objectJSON.idEstudioInversion;
+
+				renderLoading();
 			});
 		}, false, true);
 	});
