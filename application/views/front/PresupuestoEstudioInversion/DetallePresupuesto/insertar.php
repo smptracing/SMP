@@ -14,8 +14,9 @@
 			<div id="divTipoGasto" class="col-md-9 col-sm-6 col-xs-12">
 				<label>Tipo de Gasto</label>
 				<select id="cbxTipoGasto" name="cbxTipoGasto" class="form-control" required="">
-					<option value="1,Tipo gastoto 1">Tipo gastoto 1</option>
-					<option value="2,Tipo gastoto 2">Tipo gastoto 2</option>
+					<?php foreach($listaTipoGasto as $value){ ?>
+						<option value="<?=$value->id_tipo_gasto.','.$value->desc_tipo_gasto?>"><?=$value->desc_tipo_gasto?></option>
+					<?php } ?>
 				</select>
 			</div>
 			<div class="col-md-3 col-sm-6 col-xs-12">
@@ -73,6 +74,12 @@
 			return false;
 		}
 
+		var tempUnidadMedida='';
+
+		<?php foreach($listaUnidadMedida as $value){ ?>
+			tempUnidadMedida+='<option value="<?=$value->id_unidad.','.$value->descripcion?>"><?=$value->descripcion?></option>';
+		<?php } ?>
+
 		var htmlTempPestania='<li id="pestaniaTabPaneDetalleGasto'+idTab+'">'+
 			'<a href="#tabPaneDetalleGasto'+idTab+'" data-toggle="tab"> '+nombreTab+' </a>'+
 		'</li>';
@@ -97,8 +104,7 @@
 				'<div class="col-md-4 col-sm-4 col-xs-4">'+
 					'<labe>Undidad</label></h6>'+
 		   		'<select id="selectIdUnidad'+idTab+'" name="selectIdUnidad'+idTab+'" class="form-control">'+
-					'<option value="1,Unidad m. 1">Unidad m. 1</option>'+
-					'<option value="2,Unidad m. 2">Unidad m. 2</option>'+
+					tempUnidadMedida+
 				'</select>'+
 				'</div>'+
 			'</div>'+

@@ -1,19 +1,15 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class FE_Detalle_Presupuesto extends CI_Controller {
-	public function __construct(){
-      parent::__construct();
-      $this->load->model('Model_FE_Presupuesto_Inv');
-	}
+class FE_Detalle_Presupuesto extends CI_Controller
+{
+	public function __construct()
+	{
+    	parent::__construct();
 
-	public function index()
-    {
-  
-        $this->load->view('layout/Formulacion_Evaluacion/header');
-        $this->load->view('Front/PresupuestoEstudioInversion/FEPresupuesto/index');
-        $this->load->view('layout/Formulacion_Evaluacion/footer');
-    }
+    	$this->load->model('Model_Unidad_Medida');
+    	$this->load->model('Model_FE_Tipo_Gasto');
+	}
 
 	public function insertar()
 	{
@@ -21,14 +17,10 @@ class FE_Detalle_Presupuesto extends CI_Controller {
 		{
 			
 		}
-		
-	    $this->load->view('Front/PresupuestoEstudioInversion/DetallePresupuesto/insertar');
-	}
 
-	function _load_layout($template)
-    {
-      $this->load->view('layout/Formulacion_Evaluacion/header');
-      $this->load->view($template);
-      $this->load->view('layout/Formulacion_Evaluacion/footer');
-    }
+		$listaTipoGasto=$this->Model_FE_Tipo_Gasto->ListarTipoGasto();
+		$listaUnidadMedida=$this->Model_Unidad_Medida->UnidadMedidad_Listar();
+		
+	    $this->load->view('Front/PresupuestoEstudioInversion/DetallePresupuesto/insertar', ['listaTipoGasto' => $listaTipoGasto, 'listaUnidadMedida' => $listaUnidadMedida]);
+	}
 }
