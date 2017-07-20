@@ -1,61 +1,104 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class FE_Presupuesto_Inv extends CI_Controller {
-	public function __construct(){
-      parent::__construct();
-      $this->load->model('Model_FE_Presupuesto_Inv');
+class FE_Presupuesto_Inv extends CI_Controller
+{
+	public function __construct()
+	{
+		parent::__construct();
+
+		$this->load->model('Model_FE_Presupuesto_Inv');
 	}
 
-	public function index($codigo_unico_est_inv)
+	public function index($idEstInv)
     {
-    	$nombreProyecto=$this->Model_FE_Presupuesto_Inv->nombreProyectoInv($codigo_unico_est_inv)[0];
-    	$ListarPresupuesto=$this->Model_FE_Presupuesto_Inv->ListarPresupuesto($codigo_unico_est_inv);
+    	$nombreProyecto=$this->Model_FE_Presupuesto_Inv->nombreProyectoInvPorId($idEstInv);
+    	$ListarPresupuesto=$this->Model_FE_Presupuesto_Inv->ListarPresupuesto($idEstInv);
 
         $this->load->view('layout/Formulacion_Evaluacion/header');
-        $this->load->view('Front/PresupuestoEstudioInversion/FEPresupuesto/index',['ListarPresupuesto'=>$ListarPresupuesto,'nombreProyectoInv'=>$nombreProyecto]);
+        $this->load->view('Front/PresupuestoEstudioInversion/FEPresupuesto/index', ['ListarPresupuesto' => $ListarPresupuesto, 'nombreProyectoInv' => $nombreProyecto]);
         $this->load->view('layout/Formulacion_Evaluacion/footer');
     }
 
 	public function insertar()
 	{
 		if($_POST)
-		{
-			$codigoUnicoInversion=$this->input->post("codigoUnicoInversion");
-			
-			$cbx_estudioInversion =$this->input->post("idEstudioInversion");
-			$txtSector =$this->input->post("cbx_Sector");
-			$txtPliego =$this->input->post("txtPliego");
+		{			
+			$idEstudioInversion=$this->input->post('idEstudioInversion');
+			$idSector=$this->input->post('cbx_Sector');
+			$txtPliego=$this->input->post('txtPliego');
 
-			$Data=$this->Model_FE_Presupuesto_Inv->insertar($cbx_estudioInversion , $txtSector , $txtPliego);
+			$this->Model_FE_Presupuesto_Inv->insertar($idEstudioInversion, $idSector, $txtPliego);
 
-			$data=$this->Model_FE_Presupuesto_Inv->ultimoIdPresupuestoInv()[0];
-			$id_presupuesto_fe =$data->id;
-			$id_fuente_finan=$this->input->post("txtDescripcionFuente");
-			$hdDescripcionFuente=$this->input->post("hdDescripcionFuente");
-			$hdCorrelativoMeta=$this->input->post("hdCorrelativoMeta");
-			$hdAnio=$this->input->post("hdAnio");
-	    	for ($i=0; $i <count($hdAnio); $i++) { 
-	    		$hdDescripcionFuente[$i];
-	    		$Data=$this->Model_FE_Presupuesto_Inv->insertarPresupuestoFuente($id_presupuesto_fe,$id_fuente_finan,$hdCorrelativoMeta[$i],$hdAnio[$i]);
+			$data=$this->Model_FE_Presupuesto_Inv->ultimoIdPresupuestoInv();
+
+			$idPresupuestoFE=$data->id;
+			$idFuenteFinan=$this->input->post('hdIdFuente');
+			$hdCorrelativoMeta=$this->input->post('hdCorrelativoMeta');
+			$hdAnio=$this->input->post('hdAnio');
+	    	
+	    	for($i=0; $i<count($hdAnio); $i++)
+	    	{
+	    		$this->Model_FE_Presupuesto_Inv->insertarPresupuestoFuente($idPresupuestoFE, $idFuenteFinan[$i], $hdCorrelativoMeta[$i], $hdAnio[$i]);
 	    	}
-	    	$this->session->set_flashdata('correcto',"Se registro corectamente el presupuesto");
-	    	return redirect("/FE_Presupuesto_Inv/index/".$codigoUnicoInversion.""); 
+
+	    	echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Dastos registrados correctamente.', 'idEstudioInversion' => $idEstudioInversion]);exit;
 		}
 
-		$codigo_unico_inv=$this->input->GET('id');
-		$nombreProyectoInver=$this->Model_FE_Presupuesto_Inv->nombreProyectoInv($codigo_unico_inv)[0];
+		$idEstInv=$this->input->get('idEstInv');
+
+		$nombreProyectoInver=$this->Model_FE_Presupuesto_Inv->nombreProyectoInvPorId($idEstInv);
 
 		$listarSector=$this->Model_FE_Presupuesto_Inv->listarSector();
-		$listarFueteFinanciamiento=$this->Model_FE_Presupuesto_Inv->listarFueteFinanciamiento();
+		$listarFuenteFinanciamiento=$this->Model_FE_Presupuesto_Inv->listarFuenteFinanciamiento();
 		
-	    $this->load->view('Front/PresupuestoEstudioInversion/FEPresupuesto/insertar',['listarSector' => $listarSector,'listarFueteFinanciamiento' => $listarFueteFinanciamiento,'nombreProyectoInver' => $nombreProyectoInver ]);
+	    $this->load->view('Front/PresupuestoEstudioInversion/FEPresupuesto/insertar', ['listarSector' => $listarSector,'listarFuenteFinanciamiento' => $listarFuenteFinanciamiento,'nombreProyectoInver' => $nombreProyectoInver]);
 	}
 
-	function _load_layout($template)
-    {
-      $this->load->view('layout/Formulacion_Evaluacion/header');
-      $this->load->view($template);
-      $this->load->view('layout/Formulacion_Evaluacion/footer');
-    }
+	public function verDetalle()
+	{
+		$codigo_unico_inv=$this->input->get('id');
+		$nombreProyectoInver=$this->Model_FE_Presupuesto_Inv->nombreProyectoInv($codigo_unico_inv)[0];
+
+		$id_est_inv=$this->input->get('id_est_inv');
+	    $SectorPliego=$this->Model_FE_Presupuesto_Inv->SectorPliego($id_est_inv)[0];
+
+	    $TipoGasto=$this->Model_FE_Presupuesto_Inv->TipoGastoDetallePresupuesto($id_est_inv);
+	    $DetalleGasto=$this->Model_FE_Presupuesto_Inv->DetalleGasto($id_est_inv);
+
+		$this->load->view('Front/PresupuestoEstudioInversion/FEPresupuesto/verDetalle',['nombreProyectoInver' => $nombreProyectoInver, 'SectorPliego' => $SectorPliego , 'TipoGasto'=>$TipoGasto, 'DetalleGasto'=>$DetalleGasto]);
+	}
+
+	public function editar()
+	{
+		if($this->input->post('hdIdPresupuestoFE'))
+		{
+			$idPresupuestoFE=$this->input->post('hdIdPresupuestoFE');
+			$idSector=$this->input->post('cbx_Sector');
+			$txtPliego=$this->input->post('txtPliego');
+
+			$Data=$this->Model_FE_Presupuesto_Inv->editar($idPresupuestoFE, $idSector, $txtPliego);
+
+			$this->Model_FE_Presupuesto_Inv->FEPresupuestoFuenteEliminarPorIdPresupuestoFE($idPresupuestoFE);
+
+			$hdIdFuente=$this->input->post('hdIdFuente');
+			$hdCorrelativoMeta=$this->input->post('hdCorrelativoMeta');
+			$hdAnio=$this->input->post('hdAnio');
+	    	
+	    	for($i=0; $i<count($hdIdFuente); $i++)
+	    	{
+	    		$this->Model_FE_Presupuesto_Inv->insertarPresupuestoFuente($idPresupuestoFE, $hdIdFuente[$i], $hdCorrelativoMeta[$i], $hdAnio[$i]);
+	    	}
+
+	    	echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos guardados correctamente.', 'idEstudioInversion' => $this->input->post('idEstudioInversion')]);exit;
+		}
+
+		$fePresupuestoInv=$this->Model_FE_Presupuesto_Inv->FEPresupuestoInvParaEditar($this->input->post('idPresupuestoFE'));
+
+		$listarSector=$this->Model_FE_Presupuesto_Inv->listarSector();
+		$listarFuenteFinanciamiento=$this->Model_FE_Presupuesto_Inv->listarFuenteFinanciamiento();
+		$listaFEPresupuestoFuente=$this->Model_FE_Presupuesto_Inv->listarFEPresupuestoFuente($this->input->post('idPresupuestoFE'));
+		
+	    $this->load->view('Front/PresupuestoEstudioInversion/FEPresupuesto/editar', ['fePresupuestoInv' => $fePresupuestoInv, 'listarSector' => $listarSector, 'listarFuenteFinanciamiento' => $listarFuenteFinanciamiento, 'listaFEPresupuestoFuente' => $listaFEPresupuestoFuente]);
+	}
 }
