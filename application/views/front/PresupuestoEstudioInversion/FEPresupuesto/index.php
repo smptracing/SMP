@@ -65,7 +65,7 @@
 																</td>
 																<td>
 																  	<button class='btn btn-success btn-xs' onclick="paginaAjaxDialogo(null, 'Fuentes y Detalle de presupuesto',{ id: '<?=$item->id_presupuesto_fe?>'}, base_url+'index.php/FE_Presupuesto_Inv/verDetalle', 'GET', null, null, false, true)" ><i class='ace-icon fa fa-eye bigger-120'></i></button>
-																	<a type="button" class="btn btn-round btn-success" href="<?= site_url('FE_Presupuesto_Inv/reportePdfDetalleGasto/63');?>"><i class='ace-icon fa fa-file-pdf-o bigger-120'></i></a>
+																	<a type="button" class="btn btn-round btn-success" href="<?= site_url('FE_Presupuesto_Inv/reportePdfDetalleGasto/63');?>" target="_blank"><i class='ace-icon fa fa-file-pdf-o bigger-120'></i></a>
 																  	<button class='btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Edición de presupuesto para formulación y evaluación', { idPresupuestoFE : '<?=$item->id_presupuesto_fe?>' }, base_url+'index.php/FE_Presupuesto_Inv/editar', 'POST', null, null, false, true);"><i class='ace-icon fa fa-pencil bigger-120'></i></button>
 																  	<button class='btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Registrar detalle de gastos', { idPresupuestoFE : '<?=$item->id_presupuesto_fe?>' }, base_url+'index.php/FE_Detalle_Presupuesto/insertar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-bars bigger-120'></i></button>
 																</td>

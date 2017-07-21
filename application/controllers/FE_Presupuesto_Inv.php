@@ -196,7 +196,7 @@ class FE_Presupuesto_Inv extends CI_Controller
 </table>
 <table  cellpadding="7">
     <tr>
-         <th colspan="12" ><center><strong>14. PRESUPUESTO PARA LA ELAVORACIÓN DEL ESTUDIO</strong></center></th>
+         <th colspan="12" ><center><strong>14. PRESUPUESTO PARA LA ELABORACIÓN DEL ESTUDIO</strong></center></th>
    </tr>
     <tr>
          <th colspan="12" style="background-color:#f5f5f5;">&nbsp;&nbsp;<strong>14.1 Valoración estimado</strong></th>
