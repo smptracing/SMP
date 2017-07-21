@@ -111,11 +111,9 @@
 <script src="<?php echo base_url(); ?>assets/js/PMI/CarteraInversion.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/PMI/Programacion.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/administrador/Importar.js"></script>
-
 <script src="<?php echo base_url(); ?>assets/js/Estadisticas/pmi.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/growl/growl.js"></script>
  <script src="<?php echo base_url(); ?>assets/js/Usuario/login.js"></script>
- <script src="<?php echo base_url(); ?>assets/js/PMI/Gestionar_proyectosinversion.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1uRF6cxgwFc9DGwREFvIE6oorBaWny64&callback=initMap"></script>
 </body>
 </html>

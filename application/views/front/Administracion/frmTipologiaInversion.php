@@ -35,6 +35,10 @@
                                         <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
                                          Tipo de Inversión</a>
                                          </li>
+                                          <li role="presentation" class=""><a href="#tab_TipoNoPip" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">
+                                        <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
+                                         Tipo NO Pip</a>
+                                         </li>
 
                                 </ul>
                               <!-- Fin Menus-->
@@ -179,6 +183,48 @@
                                         <!-- / fin tabla TipoInversion desde el row -->
                                         </div>
                                         <!-- /fin del Contenido del tipo de Inversion -->
+                                         <!-- /Inicio del Contenido del tipo No PIP -->
+                                        <div role="tabpanel" class="tab-pane fade" id="tab_TipoNoPip" aria-labelledby="profile-tab">
+                                        <!-- /Inicio tabla de TIPO NO PIP desde el row -->
+                                           <div class="row">
+                                              <div class="col-md-12 col-sm-12 col-xs-12">
+                                              <div class="x_panel">
+
+                                                    <div class="x_title">
+                                                     <!-- <h2>Listado de  Tipo NO PIP<small>.</small></h2>-->
+                                                       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegTipoNoPIP" >
+                                                          <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Nuevo
+                                                    </button>
+                                                            <ul class="nav navbar-right panel_toolbox">
+                                                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                                              </li>
+                                                              <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                                              </li>
+                                                            </ul>
+                                                           <div class="clearfix"></div>
+                                                      </div>
+                                                      <!--inicio de la tabla tipo no pip-->
+                                                        <!--inicio  de icono de reporte -->
+
+                                                      <!--fin  de icono de reporte -->
+                                                      <div class="x_content">
+                                                                <table id="table_no_pip" class="table table-striped table-bordered table-hover" width="100%">
+                                                                  <thead style="">
+                                                                       <tr>
+                                                                       <th style="width: 1%">Nro.</th>
+                                                                         <th style="width: 91%">Nombre del tipo</th>
+                                                                         <th style="width:8%"></th>
+                                                                      </tr>
+                                                                   </thead>
+                                                                </table>
+                                                      </div>
+                                                      <!--fin de la tabla tipo no pip-->
+                                           </div>
+                                              </div>
+                                           </div>
+                                        <!-- / fin tabla tipo no pip desde el row -->
+                                        </div>
+                                        <!-- /fin del Contenido del tipo no pip -->
                                      </div>
                                </div>
                       </div>
@@ -507,4 +553,98 @@
     </div>
 </div>
 <!-- /.fin ventana para modificar una TIPO de inversion-->
+
+
+<!-- /.ventana para registra una nueva TIPO NO pip-->
+<div class="modal fade" id="VentanaRegTipoNoPIP" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
+          Tipos No PIP</h4>
+        </div>
+        <div class="modal-body">
+         <div class="row">
+                    <div class="col-xs-12">
+                                        <!-- PAGE CONTENT BEGINS -->
+              <form class="form-horizontal " id="form_AddTipoNoPip"   action="<?php echo base_url(); ?>TipologiaInversion/AddTipoNoPip" method="POST" >
+                       <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Descripción
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="txt_DescripcionTipoNoPip" name="txt_DescripcionTipoNoPip" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Descripción"  type="text">
+                        </div>
+                      </div>
+                           <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                        <button id="send" type="submit" class="btn btn-success" >
+                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+                           Guardar</button>
+                          <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
+                          <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
+                           Cancelar</button>
+                        </div>
+                      </div>
+                    </form>
+                        </div><!-- /.span -->
+                 </div><!-- /.row -->
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+</div>
+<!-- /.fin ventana para registra una nueva TIPO NO pip-->
+<!-- /.ventana para modificar tipo no pip-->
+<div class="modal fade" id="VentanaEditTipoNoPip" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
+          Modificar Tipo NO PIP</h4>
+        </div>
+        <div class="modal-body">
+         <div class="row">
+                    <div class="col-xs-12">
+                                        <!-- PAGE CONTENT BEGINS -->
+              <form class="form-horizontal " id="form_EditTipoNoPip"   action="<?php echo base_url(); ?>TipologiaInversion/get_tipo_no_pip" method="POST" >
+               <div class="item form-group">
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input id="txt_IdTipoNoPipM" name="txt_IdTipoNoPipM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
+                        </div>
+                      </div>
+
+                       <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Descripcción
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="txt_DescripcionTipoNoPipM" name="txt_DescripcionTipoNoPipM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Descripccion" type="text">
+                        </div>
+                      </div>
+                           <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                        <button id="send" type="submit" class="btn btn-success" >
+                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+                           Guardar</button>
+                          <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
+                          <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
+                           Cancelar</button>
+                        </div>
+                      </div>
+                    </form>
+                        </div><!-- /.span -->
+                 </div><!-- /.row -->
+        </div>
+        <div class="modal-footer">
+
+        </div>
+      </div>
+    </div>
+</div>
+<!-- /.fin ventana para modificar tipo no pip-->
 

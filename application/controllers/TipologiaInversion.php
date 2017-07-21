@@ -10,6 +10,7 @@ class TipologiaInversion extends CI_Controller
         $this->load->model('NaturalezaInversion_Model');
         $this->load->model('TipologiaInversion_Model');
         $this->load->model('TipoInversion_Model');
+        $this->load->model('TipoNoPip_Model');
 
     }
     public function index()
@@ -528,7 +529,75 @@ class TipologiaInversion extends CI_Controller
 
     }
 
+//---------------------------------------------------------------------------------------------------------
+    //tipo no pip
+    //---------------------------------------------------------------------------------------------------------
+
+    /* funcion de mi tabla*/
+    public function get_tipo_no_pip()
+    {
+        if ($this->input->is_ajax_request()) {
+            $datos = $this->TipoNoPip_Model->get_tipo_no_pip();
+            echo json_encode($datos);
+        } else {
+            show_404();
+        }
+    }
+    //REGISTRAR NUEVO TIPO DE NO PIP
+    public function AddTipoNoPip()
+    {
+        if ($this->input->is_ajax_request()) {
+            $flat                     = "C";
+            $ID                       = "0";
+            $txt_DescripcionTipoNoPip = $this->input->post("txt_DescripcionTipoNoPip");
+            if ($this->TipoNoPip_Model->AddTipoNoPip($flat, $ID, $txt_DescripcionTipoNoPip) == false) {
+                echo "1";
+            } else {
+                echo "2";
+            }
+
+        } else {
+            show_404();
+        }
+
+    }
+    //ACTUALIZAR TIPO NO PIP
+    public function UpdateTipoNoPip()
+    {
+        if ($this->input->is_ajax_request()) {
+            $flat                      = "U";
+            $txt_IdTipoNoPipM          = $this->input->post("txt_IdTipoNoPipM");
+            $txt_DescripcionTipoNoPipM = $this->input->post("txt_DescripcionTipoNoPipM");
+            if ($this->TipoNoPip_Model->UpdateTipoNoPip($flat, $txt_IdTipoNoPipM, $txt_DescripcionTipoNoPipM) == false) {
+                echo "Se actualizó  ";
+            } else {
+                echo "No se actualizó ";
+            }
+
+        } else {
+            show_404();
+        }
+
+    }
+    //ELIMINAR  TIPO NO PIP
+    public function EliminarTipoNoPip()
+    {
+        if ($this->input->is_ajax_request()) {
+            $flat          = "D";
+            $id_tipo_nopip = $this->input->post("id_tipo_nopip");
+            if ($this->TipoNoPip_Model->EliminarTipoNoPip($flat, $id_tipo_nopip) == false) {
+                echo "Se Eliminó  ";
+            } else {
+                echo "No se Eliminó ";
+            }
+        } else {
+            show_404();
+        }
+
+    }
+
 //------------------------------------------------------------------------------------------------------------------
+
     public function _load_layout($template)
     {
         $this->load->view('layout/Administracion/header');

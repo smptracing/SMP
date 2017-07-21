@@ -14,7 +14,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                                 <div class="x_panel">
                                   <div class="x_title">
-                                    <h2><i class="fa fa-bars"></i>PROYECTOS<small></small></h2>
+                                    <h2><i class="fa fa-bars"></i> No Pip<small></small></h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                       </li>
@@ -68,19 +68,18 @@
                                                                </div>
                                                           </div>
                                                       <div class="x_content">
-                                                        <table id="table_proyectos_inversion" class="table table-striped table-bordered table-hover table-responsive display  compact " ellspacing="0" width="100%">
+                                                        <table id="table_no_pip" class="table table-striped table-bordered table-hover table-responsive display  compact " ellspacing="0" width="100%">
                                                      <thead style="background-color: #5A738E;color:#FFFFFF; ">
                                                         <tr>
                                                           <th style="width: 1%">#</th>
                                                           <th style="width: 1%">#</th>
                                                           <th style="width: 8%"><i class="fa fa-thumb-tack"></i> Cod. </th>
-                                                          <th style="width: 36%"><i class="fa fa-bookmark-o"></i> Nombre</th>
+                                                          <th style="width: 32%"><i class="fa fa-bookmark-o"></i> Nombre</th>
                                                           <th style="width: 12%"><i class="fa fa-money"></i> Costo</th>
                                                           <th style="width: 12%"> Estado Ciclo</th>
-                                                        <th style="width: 16%">Opción</th>
+                                                        <th style="width: 20%">Opción</th>
                                                         </tr>
                                                       </thead>
-
                                                             </table>
                                                           </div>
                                                         </div>
@@ -128,10 +127,10 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                             <label  for="name">Tipo inversion<span class="required">*</span>
                                         </label>
-                                           <!-- <select id="cbxTipoInv" name="cbxTipoInv" class="selectpicker">
+                                          <!--  <select id="cbxTipoInv" name="cbxTipoInv" class="selectpicker" disabled>
                                             </select>-->
-                                             <select id="cbx" name="cbx" class="selectpicker">
-                                                    <option selected value="1">PIP</option>
+                                                <select id="cbx" name="cbx" class="selectpicker" >
+                                                    <option selected value="2">NO PIP</option>
                                               </select>
                                          </div>
                                       </div>
@@ -343,7 +342,7 @@
                       </div>
                 </div>
                <div class="item form-group">
-                                   <div class="col-md-4">
+                                     <div class="col-md-4">
                                            <label for="name">Departamento.<span class="required"></span>
                                             </label>
                                                  <select  class="selectpicker" disabled="disabled">
@@ -610,7 +609,7 @@
          <div class="row">
                     <div class="col-xs-12">
                                         <!-- PAGE CONTENT BEGINS -->
-              <form class="form-horizontal " id="form_AddModalidadEjec"   action="<?php echo base_url(); ?>bancoproyectos/listar_rubro" method="POST" >
+              <form class="form-horizontal " id="form_AddModalidadEjec"   action="<?php echo base_url(); ?>bancoproyectos/listar_modalidad_ejec" method="POST" >
 
               <div class="item form-group">
                         <div class="item form-group">
@@ -677,6 +676,87 @@
     </div>
 </div>
 <!-- /.fin  Ventana Registar MOdalidad de Ejecucion-->
+<!-- /.Ventana Registar tipologia de no pip -->
+<div class="modal fade" id="ventana_ver_tipologia" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
+          Tipología de No Pip</h4>
+        </div>
+        <div class="modal-body">
+         <div class="row">
+                    <div class="col-xs-12">
+                                        <!-- PAGE CONTENT BEGINS -->
+              <form class="form-horizontal " id="form_AddTipoNoPip"   action="<?php echo base_url(); ?>bancoproyectos/Get_TipoNoPip" method="POST" >
+
+              <div class="item form-group">
+                        <div class="item form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input id="txt_id_pip_Tipologia" name="txt_id_pip_Tipologia" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
+                        </div>
+                      </div>
+                </div>
+                               <div class="item form-group">
+                                     <div class="col-md-4">
+
+                                           <label for="name">Tipo No Pip.<span class="required"></span>
+                                            </label>
+                                                 <select   id="Cbx_TipoNoPip" name="Cbx_TipoNoPip" class="selectpicker form-control col-md-12 col-xs-12"   title="Buscar TipoNoPip...">
+                                                </select>
+                                    </div>
+                                          <div class="col-md-4">
+                                           <label for="name">Fecha <span class="required"></span>
+                                            </label>
+                                                  <input type="date" id="dateFechaIniC" name="dateFechaIniC" class="form-control col-md-6 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text" value="<?php echo date("Y-m-d"); ?>" disabled="true">
+                                          </div>
+                                          <div class="col-md-4">
+                                             <label for="name">. <span class="required"></span>
+                                             </label><BR>
+                                             <button  id="send" type="submit" class="btn btn-success">
+                                             <span class="glyphicon glyphicon-floppy-saved"></span>Agregar
+                                             </button>
+                                          </div>
+                      </div>
+
+                     <div class="ln_solid"></div>
+                     <div class="x_panel" style="background-color: #EEEEEE;">
+                    <center>
+                    <table  id="Table_TipoNoPip" class="table   table-hover" >
+                    <thead >
+                       <tr>
+                         <th  ><i class="fa fa-thumb-tack"></i> #</th>
+                         <th  ><i class="fa fa-thumb-tack"></i> Tipología No Pip</th>
+                         <th  ><i class="fa fa-thumb-tack"></i> Fecha</th>
+                      </tr>
+                    </thead>
+                    </table>
+                    </center>
+                    </div>
+                    <center>
+                      <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+
+                           <button  class="btn btn-danger" data-dismiss="modal">
+                             <span class="glyphicon glyphicon-log-out"></span>
+                            Cancelar
+                          </button>
+                        </div>
+                      </div>
+                      </center>
+
+                    </form>
+                        </div><!-- /.span -->
+                 </div><!-- /.row -->
+        </div>
+        <div class="modal-footer">
+
+        </div>
+      </div>
+    </div>
+</div>
+<!-- /.FIN Ventana Registar tipologia de no pip -->
 <!-- /.Ventana Registar operacion y mantenimiento-->
 <div class="modal fade" id="ventana_ver_operacion_mantenimeinto" role="dialog">
     <div class="modal-dialog modal-lg">
