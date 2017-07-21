@@ -96,7 +96,7 @@ class Model_FE_Presupuesto_Inv extends CI_Model
 
     function TipoGastoDetallePresupuesto($id_detalle_presupuesto)
     {   
-        $TipoGasto=$this->db->query("select FE_DETALLE_PRESUPUESTO.id_detalle_presupuesto,FE_TIPO_GASTO.id_tipo_gasto, desc_tipo_gasto, id_est_inv from FE_TIPO_GASTO INNER JOIN FE_DETALLE_PRESUPUESTO ON FE_DETALLE_PRESUPUESTO.id_tipo_gasto=FE_TIPO_GASTO.id_tipo_gasto INNER JOIN FE_PRESUPUESTO_INV ON FE_DETALLE_PRESUPUESTO.id_presupuesto_fe=FE_PRESUPUESTO_INV.id_presupuesto_fe where FE_DETALLE_PRESUPUESTO.id_detalle_presupuesto='".$id_detalle_presupuesto."' ");
+        $TipoGasto=$this->db->query("select FE_DETALLE_PRESUPUESTO.id_detalle_presupuesto,FE_TIPO_GASTO.id_tipo_gasto, desc_tipo_gasto, id_est_inv from FE_TIPO_GASTO INNER JOIN FE_DETALLE_PRESUPUESTO ON FE_DETALLE_PRESUPUESTO.id_tipo_gasto=FE_TIPO_GASTO.id_tipo_gasto INNER JOIN FE_PRESUPUESTO_INV ON FE_DETALLE_PRESUPUESTO.id_presupuesto_fe=FE_PRESUPUESTO_INV.id_presupuesto_fe where FE_DETALLE_PRESUPUESTO.id_presupuesto_fe='".$id_detalle_presupuesto."' ");
         
         return $TipoGasto->result();
     }
@@ -110,6 +110,7 @@ class Model_FE_Presupuesto_Inv extends CI_Model
     
     function nombreProyectoInvPorId($id)
     {
+
         $nombreProyectoInv=$this->db->query("select ESI.id_est_inv, ESI.nombre_est_inv from ESTUDIO_INVERSION ESI where ESI.id_est_inv=".$id);
 
         return $nombreProyectoInv->result()[0];
