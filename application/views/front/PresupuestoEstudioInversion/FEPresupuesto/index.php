@@ -70,8 +70,9 @@
 																<td>
 																  	<button class='btn btn-success btn-xs' onclick="paginaAjaxDialogo(null, 'Fuentes y Detalle de presupuesto',{ id: '<?=$nombreProyectoInv->id_est_inv?>'}, base_url+'index.php/FE_Presupuesto_Inv/verDetalle', 'GET', null, null, false, true)" ><i class='ace-icon fa fa-eye bigger-120'></i></button>
 																  	<button class='editar btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Edición de presupuesto para formulación y evaluación', { idPresupuestoFE : '<?=$item->id_presupuesto_fe?>' }, base_url+'index.php/FE_Presupuesto_Inv/editar', 'POST', null, null, false, true);"><i class='ace-icon fa fa-pencil bigger-120'></i></button>
-																	<button class='editar btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Edición de presupuesto para formulación y evaluación', { idPresupuestoFE : '<?=$item->id_presupuesto_fe?>' }, base_url+'index.php/FE_Presupuesto_Inv/editar', 'POST', null, null, false, true);"><i class='ace-icon fa fa-file-pdf-o bigger-120'></i></button>
 																  	<button class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>
+																	<a type="button" class="btn btn-round btn-success" href="<?= site_url('FE_Presupuesto_Inv/reportePdfDetalleGasto/63');?>"><i class='ace-icon fa fa-file-pdf-o bigger-120'></i></a>
+
 																</td>
 															</tr>
 														<?php } ?>
