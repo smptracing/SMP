@@ -30,10 +30,89 @@
 			<div>
 				<div id="DetallePresupestoFormulacion">
 					<div id="AreaDetallePF" class="col-xs-3">
-						<ul id="pestanaDetallePF" class="nav nav-tabs tabs-left"><ul>
+						<ul id="pestanaDetallePF" class="nav nav-tabs tabs-left">
+							<?php foreach($listaFEDetallePresupuesto as $value){ ?>
+								<li id="pestaniaTabPaneDetalleGasto<?=$value->id_tipo_gasto?>">
+									<a href="#tabPaneDetalleGasto<?=$value->id_tipo_gasto?>" data-toggle="tab"><?=$value->desc_tipo_gasto?></a>
+									<input type="hidden" name="hdIdDetallePresupuesto[]" value="<?=$value->id_tipo_gasto?>">
+								</li>
+							<?php } ?>
+						<ul>
 					</div>
 					<div id="AreaContenidoDetallePF" class="col-xs-9" style="border-left: 1px solid #999999;">
-						<div id="contePestanaDetallePF" class="tab-content"></div>
+						<div id="contePestanaDetallePF" class="tab-content">
+							<?php foreach($listaFEDetallePresupuesto as $value){ ?>
+								<div class="tab-pane" id="tabPaneDetalleGasto<?=$value->id_tipo_gasto?>">
+									<div class="row">
+										<div class="col-md-12 col-sm-12 col-xs-12" style="text-align: left;">
+											<input type="button" class="btn btn-danger btn-xs" value="Eliminar todo este detalle" onclick="removerPanel(<?=$value->id_tipo_gasto?>);" style="margin: 2px;margin-left: 0px;">
+										</div>
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											<h5><?=$value->desc_tipo_gasto?></h5>
+										</div>
+									</div>
+									<hr style="margin-bottom: 4px;margin-top: 0px;">
+									<div class="row">
+										<div class="col-md-8 col-sm-8 col-xs-8">
+											<labe>Descripción</label>
+								   			<input type="text" id="txtDescripcionDetalleGasto<?=$value->id_tipo_gasto?>" name="txtDescripcionDetalleGasto<?=$value->id_tipo_gasto?>" class="form-control" autocomplete="off">
+										</div>
+										<div class="col-md-4 col-sm-4 col-xs-4">
+											<labe>Undidad</label>
+									   		<select id="selectIdUnidad<?=$value->id_tipo_gasto?>" name="selectIdUnidad<?=$value->id_tipo_gasto?>" class="form-control">
+												<?php foreach($listaUnidadMedida as $item){ ?>
+													<option value="<?=$item->id_unidad.','.$item->descripcion?>"><?=$item->descripcion?></option>
+												<?php } ?>
+											</select>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-4 col-sm-4 col-xs-4">
+											<labe>Cantidad</label>
+								   			<input type="text" id="txtCantidadDetalleGasto<?=$value->id_tipo_gasto?>" name="txtCantidadDetalleGasto<?=$value->id_tipo_gasto?>" class="form-control" autocomplete="off" onkeyup="calcularSubTotalDetalleGasto(<?=$value->id_tipo_gasto?>);">
+										</div>
+										<div class="col-md-4 col-sm-4 col-xs-4">
+											<labe>Costo U.</label>
+								   			<input type="text" id="txtCostoUnitarioDetalleGasto<?=$value->id_tipo_gasto?>" name="txtCostoUnitarioDetalleGasto<?=$value->id_tipo_gasto?>" class="form-control" autocomplete="off" onkeyup="calcularSubTotalDetalleGasto(<?=$value->id_tipo_gasto?>);">
+										</div>
+										<div class="col-md-4 col-sm-4 col-xs-4">
+											<labe>Total</label>
+								   			<input type="text" id="txtSubTotalDetalleGasto<?=$value->id_tipo_gasto?>" name="txtSubTotalDetalleGasto<?=$value->id_tipo_gasto?>" class="form-control" autocomplete="off" readonly="readonly">
+										</div>
+									</div>
+									<div class="row" style="margin-top: 7px">
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											<input type="button" class="btn btn-success form-control" value="Agregar" onclick="agregarDetalleGasto(<?=$value->id_tipo_gasto?>);">
+										</div>
+									</div>
+									<hr>
+									<table id="tableDetalleGasto<?=$value->id_tipo_gasto?>" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+										<thead>
+											<tr>
+												<th>Descripción</th>
+												<th>Unidad</th>
+												<th>C.</th>
+												<th>C. U.</th>
+												<th>Total</th>
+												<th></th>
+											</tr>
+										</thead>
+										<tbody>
+											<?php foreach($value->childFEDetalleGasto as $item){ ?>
+												<tr>
+													<td><input type="hidden" name="descripcionDetalleGasto<?=$value->id_tipo_gasto?>[]" value="<?=$item->desc_detalle_gasto?>"><?=$item->desc_detalle_gasto?></td>
+													<td><input type="hidden" name="idUnidadMedida<?=$value->id_tipo_gasto?>[]" value="<?=$item->id_unidad?>"><?=$item->descripcionUnidadMedida?></td>
+													<td><input type="hidden" name="cantidadDetalleGasto<?=$value->id_tipo_gasto?>[]" value="<?=$item->cantidad_detalle_gasto?>"><?=$item->cantidad_detalle_gasto?></td>
+													<td><input type="hidden" name="costoUnitarioDetalleGasto<?=$value->id_tipo_gasto?>[]" value="<?=$item->costo_uni_detalle_gasto?>"><?=$item->costo_uni_detalle_gasto?></td>
+													<td><input type="hidden" name="subTotalDetalleGasto<?=$value->id_tipo_gasto?>[]" value="<?=$item->sub_total_detalle_gasto?>"><?=$item->sub_total_detalle_gasto?></td>
+													<td><a href="#" onclick="$(this).parent().parent().remove();">Eliminar</a></td>
+												</tr>
+											<?php } ?>
+										</tbody>
+									</table>
+								</div>
+							<?php } ?>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -88,8 +167,8 @@
 
 		$('#DetallePresupestoFormulacion > #AreaDetallePF > #pestanaDetallePF ').append(htmlTempPestania);
 
-		var htmlTempContenido='<div class="tab-pane" id="tabPaneDetalleGasto'+idTab+'">' + 
-		'<div class="row">'+
+		var htmlTempContenido='<div class="tab-pane" id="tabPaneDetalleGasto'+idTab+'">'+
+			'<div class="row">'+
 				'<div class="col-md-12 col-sm-12 col-xs-12" style="text-align: left;">'+
 					'<input type="button" class="btn btn-danger btn-xs" value="Eliminar todo este detalle" onclick="removerPanel('+idTab+');" style="margin: 2px;margin-left: 0px;">'+
 				'</div>'+
@@ -306,6 +385,37 @@
 				}
 			}
 		});
+
+		<?php foreach($listaFEDetallePresupuesto as $key => $value){ ?>
+			<?php if($key==0){ ?>
+				$('[id*="tabPaneDetalleGasto"]').removeClass('active');
+				$('[id*="pestaniaTabPaneDetalleGasto"]').removeClass('active');
+				$('[id*="pestaniaTabPaneDetalleGasto"] > a').attr({ 'aria-expanded' : 'false' });
+
+				$('#tabPaneDetalleGasto<?=$value->id_tipo_gasto?>').addClass('active');
+				$('#pestaniaTabPaneDetalleGasto<?=$value->id_tipo_gasto?>').addClass('active');
+				$('#pestaniaTabPaneDetalleGasto<?=$value->id_tipo_gasto?>'+' > a').attr({ 'aria-expanded' : 'true' });
+			<?php } ?>
+
+			$('#tabPaneDetalleGasto<?=$value->id_tipo_gasto?>').formValidation(
+			{
+				framework : 'bootstrap',
+				excluded : [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+				live : 'enabled',
+				message : '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+				trigger : null,
+				fields :
+				{
+					
+				}
+			});
+
+			$('#tabPaneDetalleGasto<?=$value->id_tipo_gasto?>')
+				.formValidation('addField', 'txtDescripcionDetalleGasto<?=$value->id_tipo_gasto?>', txtDescripcionDetalleGastoValidators)
+				.formValidation('addField', 'selectIdUnidad<?=$value->id_tipo_gasto?>', selectIdUnidadValidators)
+				.formValidation('addField', 'txtCantidadDetalleGasto<?=$value->id_tipo_gasto?>', txtCantidadDetalleGastoValidators)
+				.formValidation('addField', 'txtCostoUnitarioDetalleGasto<?=$value->id_tipo_gasto?>', txtCostoUnitarioDetalleGastoValidators);
+		<?php } ?>
 	});
 
 	$('#btnEnviarFormulario').on('click', function(event)

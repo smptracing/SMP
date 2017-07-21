@@ -54,10 +54,18 @@ class FE_Detalle_Presupuesto extends CI_Controller
 			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Dastos guardados correctamente.', 'idEstudioInversion' => $this->input->post('hdIdEstudioInversion')]);exit;
 		}
 
-		$fePresupuestoInv=$this->Model_FE_Presupuesto_Inv->FEPresupuestoInvPorIdOresupuestoFE($this->input->get('idPresupuestoFE'));
+		$idPresupuestoFE=$this->input->get('idPresupuestoFE');
+
+		$fePresupuestoInv=$this->Model_FE_Presupuesto_Inv->FEPresupuestoInvPorIdOresupuestoFE($idPresupuestoFE);
 		$listaTipoGasto=$this->Model_FE_Tipo_Gasto->ListarTipoGasto();
 		$listaUnidadMedida=$this->Model_Unidad_Medida->UnidadMedidad_Listar();
+		$listaFEDetallePresupuesto=$this->Model_FE_Detalle_Presupuesto->ListarPorIdPresupuestoFE($idPresupuestoFE);
+
+		foreach($listaFEDetallePresupuesto as $key => $value)
+		{
+			$value->childFEDetalleGasto=$this->Model_FE_Detalle_Gasto->ListarPorIdDetallePresupuesto($value->id_detalle_presupuesto);
+		}
 		
-	    $this->load->view('Front/PresupuestoEstudioInversion/DetallePresupuesto/insertar', ['fePresupuestoInv' => $fePresupuestoInv, 'listaTipoGasto' => $listaTipoGasto, 'listaUnidadMedida' => $listaUnidadMedida]);
+	    $this->load->view('Front/PresupuestoEstudioInversion/DetallePresupuesto/insertar', ['fePresupuestoInv' => $fePresupuestoInv, 'listaTipoGasto' => $listaTipoGasto, 'listaUnidadMedida' => $listaUnidadMedida, 'listaFEDetallePresupuesto' => $listaFEDetallePresupuesto]);
 	}
 }

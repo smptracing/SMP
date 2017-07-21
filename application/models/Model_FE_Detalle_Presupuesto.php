@@ -19,4 +19,11 @@ class Model_FE_Detalle_Presupuesto extends CI_Model
     {
     	return $this->db->query('select max(id_detalle_presupuesto) as idDetallePresupuesto from FE_DETALLE_PRESUPUESTO')->result()[0]->idDetallePresupuesto;
     }
+
+    function ListarPorIdPresupuestoFE($idPresupuestoFE)
+    {
+        $data=$this->db->query("select * from FE_DETALLE_PRESUPUESTO as FEDP inner join FE_TIPO_GASTO as FETG on FEDP.id_tipo_gasto=FETG.id_tipo_gasto where id_presupuesto_fe=".$idPresupuestoFE);
+
+        return $data->result();
+    }
 }
