@@ -26,7 +26,7 @@ class Model_FE_Presupuesto_Inv extends CI_Model
     {
         $fePresupuestoInv=$this->db->query("select FEPI.id_est_inv, FEPI.id_presupuesto_fe, EI.nombre_est_inv, S.id_sector, FEPI.pliego from FE_PRESUPUESTO_INV as FEPI inner join SECTOR as S on FEPI.id_sector=S.id_sector inner join ESTUDIO_INVERSION as EI on FEPI.id_est_inv=EI.id_est_inv where id_presupuesto_fe='".$id."'");
 
-        return $fePresupuestoInv->result();
+        return $fePresupuestoInv->result()[0];
     }
 
     function FEPresupuestoInvPorIdOresupuestoFE($id)
