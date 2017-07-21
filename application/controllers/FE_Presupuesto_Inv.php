@@ -151,6 +151,19 @@ class FE_Presupuesto_Inv extends CI_Controller
         $pdf->setTextShadow(array('enabled' => true, 'depth_w' => 0.2, 'depth_h' => 0.2, 'color' => array(196, 196, 196), 'opacity' => 1, 'blend_mode' => 'Normal'));
         
         
+        $FE_Presupuesto_Inv=$this->Model_FE_Presupuesto_Inv->listarPresupuestoInverAfe($id_presupuesto_fe);
+        foreach ($FE_Presupuesto_Inv as $Item)
+        {
+        	$nombreSecto=$Item->nombre_sector;
+        	$pliego=$Item->pliego;
+        	$ultimaFuente=$Item->ultima_fuente_finan;
+        	$corelativoMeta=$Item->correlativo_meta;
+        	$porcentaje_imprevisto=$Item->porcentaje_imprevistos;
+        	$monto_imprevistos=number_format(($Item->monto_imprevistos),2);
+        	$total_presupuesto=number_format(($Item->total_presupuesto),2);
+        	$sub_total_presupuesto=$Item->sub_total_presupuesto;
+        }
+
        $opcion="";
         $html = '';
         $html .= "<style type=text/css>";
@@ -179,19 +192,19 @@ class FE_Presupuesto_Inv extends CI_Controller
 <table border="1"  cellpadding="7">
     <tr>
          <th colspan="6" ><center><strong>SECTOR: </strong></center></th>
-         <th colspan="6" ><center><strong> </strong></center></th>
+         <th colspan="6" ><center><strong>$nombreSecto </strong></center></th>
    </tr>
     <tr>
          <th colspan="6" ><center><strong>PLIEGO: </strong></center></th>
-         <th colspan="6" ><center><strong>Re</strong></center></th>
+         <th colspan="6" ><center><strong>$pliego</strong></center></th>
    </tr>
    <tr>
          <th colspan="6" ><center><strong>FUENTE DE FINANCIAMIENTO: </strong></center></th>
-         <th colspan="6" ><center><strong></strong></center></th>
+         <th colspan="6" ><center><strong>$ultimaFuente</strong></center></th>
    </tr>
    <tr>
          <th colspan="6" ><center><strong>CORRELATIVO META:</strong></center></th>
-         <th colspan="6" ><center><strong>084-2016 - ESTUDIOS DE PRE INVERSIÓN</strong></center></th>
+         <th colspan="6" ><center><strong>$corelativoMeta</strong></center></th>
    </tr>
 </table>
 <table  cellpadding="7">
@@ -209,32 +222,33 @@ class FE_Presupuesto_Inv extends CI_Controller
 </table>
 <table border="0"  cellpadding="0">
     <tr>
-         <th colspan="6" ><center><strong>Cuadro N° 6: Valoración  Referencial para la formulación de la PIP</strong></center></th>
+         <th colspan="6" ><center><strong></strong></center></th>
    </tr>
 </table>
 EOD;
 $html .= "</table>";
 $pdf->writeHTMLCell($w = 0, $h = 0, $x = '', $y = '', $html, $border = 0, $ln = 1, $fill = 0, $reseth = true, $align = '', $autopadding = true);
 
-        $FE_Presupuesto_Inv=$this->Model_FE_Presupuesto_Inv->listarPresupuestoInverAfe($id_presupuesto_fe);
+     
         $FE_DetalleGastoPadres=$this->Model_FE_Presupuesto_Inv->listarDetalleGastoPadres($id_presupuesto_fe);
         $prov="";
         $pliego="";
         $html = '';
 			$html .= "<style type=text/css>";
 			$html .= "th{color: #000000; font-weight: bold; border: 1px solid #000000;font-size: 12px;}";
-			$html .= "table{color:2px solid #000000;}";
+			$html .= "table{color:1px solid #000000;}";
+			$html .= "header{background-color: #FFFFFF;}";
 			$html .= "td{background-color: #FFFFFF; color: #000000; border: 1px solid #000000;font-weight: normal;}";
 			$html .= "</style>";
 			$html .= "<h2><CENTER>".$prov."</h2><CENTER><h4></h4>";
-			$html .= "<table width='100%'>";
-			$html .= "<thead>";
-			$html .="<tr><th>DESCRIPCIÓNN</th><th>UNIDAD</th><th>CANTIDAD</th><th>COSTO UNIT.</th><th>COSTO TOTAL</th></tr>";
+			$html .= "<table width='10%'>";
+			$html .= "<thead><strong><h3>Cuadro N° 6: Valoración  Referencial para la formulación de la PIP</h3></strong><br><br>";
+			$html .="<tr><th>DESCRIPCIÓN</th><th>UNIDAD</th><th>CANTIDAD</th><th>COSTO UNIT.</th><th>COSTO TOTAL</th></tr>";
 			$html .="</thead>";
 		
 		foreach($FE_DetalleGastoPadres as $key => $valor) 
 		{
-			$html.="<tr><th>" .$FE_DetalleGastoPadres[$key]['desc_tipo_gasto']. "</th><th>".$pliego."</th><th>" .$pliego."</th><th >" . $pliego. "</th><th>" .$pliego. "</th></tr>";
+			$html.="<tr><th>" .$FE_DetalleGastoPadres[$key]['desc_tipo_gasto']. "</th><th>".$pliego."</th><th>" .$pliego."</th><th >" . $pliego. "</th><th>" .$FE_DetalleGastoPadres[$key]['total_detalle']. "</th></tr>";
 
 			$subInten=$FE_DetalleGastoPadres[$key]['id_detalle_presupuesto'];
 			$FE_DetalleGastoHijo=$this->Model_FE_Presupuesto_Inv->listarDetalleGasto($id_presupuesto_fe,$subInten);
@@ -250,12 +264,15 @@ $pdf->writeHTMLCell($w = 0, $h = 0, $x = '', $y = '', $html, $border = 0, $ln = 
 				"</tr>";
 			}	      	
 		}
+			$html.="<tr><th width='5mm'> SUB TOTAL" .$pliego. "</th><th>".$pliego."</th><th>" .$pliego."</th><th >" . $pliego. "</th><th>" .$sub_total_presupuesto. "</th></tr>";
+			$html.="<tr><th> Imprevistos( $porcentaje_imprevisto % de S.T.)" .$pliego. "</th><th>".$pliego."</th><th>" .$pliego."</th><th >" . $pliego. "</th><th>" .$monto_imprevistos. "</th></tr>";
+			$html.="<tr><th> COSTO TOTAL" .$pliego. "</th><th>".$pliego."</th><th>" .$pliego."</th><th >" . $pliego. "</th><th>" .$total_presupuesto. "</th></tr>";
 
         $html .= "</table>";
     
     $pdf->writeHTMLCell($w = 0, $h = 0, $x = '', $y = '', $html, $border = 0, $ln = 1, $fill = 0, $reseth = true, $align = '', $autopadding = true);
                          
-    $nombre_archivo = utf8_decode("Localidades de ".$prov.".pdf");
+    $nombre_archivo = utf8_decode("Presupuesto de ".$prov.".pdf");
     $pdf->Output($nombre_archivo, 'I');
 		
 	}
