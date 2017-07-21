@@ -21,6 +21,8 @@ class FE_Detalle_Presupuesto extends CI_Controller
 			$idPresupuestoFE=$this->input->post('hdIdPresupuestoFE');
 			$idsTipoGasto=$this->input->post('hdIdDetallePresupuesto');
 
+			$this->Model_FE_Detalle_Presupuesto->EliminarPorIdPresupuestoFE($idPresupuestoFE);
+
 			if($idsTipoGasto)
 			{
 				foreach($idsTipoGasto as $value)
