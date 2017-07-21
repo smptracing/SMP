@@ -295,6 +295,34 @@
 			return;
 		}
 
+		var continuar=true;
+
+		$('#tableDetalleGasto'+idTab+' > tbody').find('tr').each(function(index, element)
+		{
+			if(replaceAll($($(element).find('td')[0]).text(), ' ', '')==replaceAll($('#txtDescripcionDetalleGasto'+idTab).val(), ' ', ''))
+			{
+				swal(
+				{
+					title: '',
+					text: 'No pueden agregarse dos detalles de gasto en el mismo tipo.',
+					type: 'error'
+				},
+				function()
+				{
+					
+				});
+
+				continuar=false;
+
+				return false;
+			}
+		});
+
+		if(!continuar)
+		{
+			return false;
+		}
+
 		var posicionTemporal=$('#selectIdUnidad'+idTab).val().indexOf(',');
 		var idUnidadMedidaTemporal=$('#selectIdUnidad'+idTab).val().substring(0, posicionTemporal);
 		var nombreUnidadMedidaTemporal=$('#selectIdUnidad'+idTab).val().substring(posicionTemporal+1, $('#selectIdUnidad'+idTab).val().length);

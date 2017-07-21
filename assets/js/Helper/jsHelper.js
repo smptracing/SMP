@@ -162,3 +162,13 @@ function paginaAjaxDialogo(idModal, titulo, data, url, method, preFunction, post
         $('#'+idModalTemp).modal('show');
     });
 }
+
+function replaceAll(texto, ocurrencia, nuevoTexto)
+{
+    while(texto.toString().indexOf(ocurrencia)!=-1)
+    {
+        texto=texto.toString().replace(ocurrencia, nuevoTexto);
+    }
+
+    return texto;
+}
