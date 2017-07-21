@@ -65,17 +65,19 @@ class FE_Presupuesto_Inv extends CI_Controller
 	    $SectorPliego=$this->Model_FE_Presupuesto_Inv->SectorPliego($id_est_inv)[0];
 
 	    $id_detalle_presupuesto=$this->input->get('iddetallePresupuesto');
-	    $listaFEDetallePresupuesto=$this->Model_FE_Presupuesto_Inv->TipoGastoDetallePresupuesto($id_detalle_presupuesto);
-	    
-	    foreach($listaFEDetallePresupuesto as $key => $value)
+	    $listaFEDetallePresupuestoT=$this->Model_FE_Presupuesto_Inv->TipoGastoDetallePresupuesto($id_detalle_presupuesto);
+
+	    foreach($listaFEDetallePresupuestoT as $key => $value)
 	    {
-	    	$listaFEDetallePresupuesto[$key]->childFEDetalleGasto[]=$this->Model_FE_Detalle_Gasto->ListarPorIdDetallePresupuesto($value->id_detalle_presupuesto);
+	    	$value->childFEDetalleGasto=$this->Model_FE_Detalle_Gasto->ListarPorIdDetallePresupuesto($value->id_detalle_presupuesto);
 	    }
 
-	    $id_presupuesto_fe=$this->input->get('idpresupuesto');
+	   //var_dump($listaFEDetallePresupuesto);exit;
+
+	    $id_presupuesto_fe=$this->input->get('idPresupuestoFE');
 	    $ListarFuente=$this->Model_FE_Presupuesto_Inv->ListarFuente($id_presupuesto_fe);
 
-		$this->load->view('Front/PresupuestoEstudioInversion/FEPresupuesto/verDetalle',['nombreProyectoInver' => $nombreProyectoInver, 'SectorPliego' => $SectorPliego ,'listaFEDetallePresupuesto'=>$listaFEDetallePresupuesto , 'ListarFuente' => $ListarFuente]);
+		$this->load->view('Front/PresupuestoEstudioInversion/FEPresupuesto/verDetalle',['nombreProyectoInver' => $nombreProyectoInver, 'SectorPliego' => $SectorPliego ,'listaFEDetallePresupuestoT'=>$listaFEDetallePresupuestoT , 'ListarFuente' => $ListarFuente]);
 	}
 
 

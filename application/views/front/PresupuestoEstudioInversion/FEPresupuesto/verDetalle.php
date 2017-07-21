@@ -46,8 +46,12 @@
 		<div class="row">
 			<div class="col-xs-3">
 				<ul class="nav nav-tabs tabs-left">
-					<?php foreach($listaFEDetallePresupuesto as $item ){ ?>		
-						<li class=""><a href="#<?= $item->desc_tipo_gasto?>" data-toggle="tab"><?=$item->desc_tipo_gasto?></a>					
+					dsfassadas
+					<?php foreach($listaFEDetallePresupuestoT as $key  => $value ){ ?>		
+						<li class=""><a href="" data-toggle="tab"><?= $value->desc_tipo_gasto ?></a></li>					
+								<?php foreach($value->childFEDetalleGasto as $item){ ?>	
+									     <?= $item->desc_detalle_gasto;?>
+								<?php } ?>
 					<?php } ?>	
 
 
