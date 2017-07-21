@@ -29,6 +29,13 @@ class Model_FE_Presupuesto_Inv extends CI_Model
         return $fePresupuestoInv->result()[0];
     }
 
+    function FEPresupuestoInvPorIdOresupuestoFE($id)
+    {
+        $fePresupuestoInv=$this->db->query("select FEPI.id_est_inv, FEPI.id_presupuesto_fe, EI.nombre_est_inv, S.id_sector, FEPI.pliego from FE_PRESUPUESTO_INV as FEPI inner join SECTOR as S on FEPI.id_sector=S.id_sector inner join ESTUDIO_INVERSION as EI on FEPI.id_est_inv=EI.id_est_inv where id_presupuesto_fe='".$id."'");
+
+        return $fePresupuestoInv->result()[0];
+    }
+
     function editar($idPresupuestoFE, $idSector, $txtPliego)
     {
         $fePresupuestoInv=$this->db->query("update FE_PRESUPUESTO_INV set id_sector='".$idSector."', pliego='".$txtPliego."' where id_presupuesto_fe='".$idPresupuestoFE."'");
@@ -87,9 +94,9 @@ class Model_FE_Presupuesto_Inv extends CI_Model
         return $SectorPliego->result();
     }
 
-    function TipoGastoDetallePresupuesto($id_est_inv)
+    function TipoGastoDetallePresupuesto($id_detalle_presupuesto)
     {
-        $TipoGasto=$this->db->query("select FE_TIPO_GASTO.id_tipo_gasto, desc_tipo_gasto, id_est_inv from FE_TIPO_GASTO INNER JOIN FE_DETALLE_PRESUPUESTO ON FE_DETALLE_PRESUPUESTO.id_tipo_gasto=FE_TIPO_GASTO.id_tipo_gasto INNER JOIN FE_PRESUPUESTO_INV ON FE_DETALLE_PRESUPUESTO.id_presupuesto_fe=FE_PRESUPUESTO_INV.id_presupuesto_fe where id_est_inv='".$id_est_inv."' ");
+        $TipoGasto=$this->db->query("select FE_TIPO_GASTO.id_tipo_gasto, desc_tipo_gasto, id_est_inv from FE_TIPO_GASTO INNER JOIN FE_DETALLE_PRESUPUESTO ON FE_DETALLE_PRESUPUESTO.id_tipo_gasto=FE_TIPO_GASTO.id_tipo_gasto INNER JOIN FE_PRESUPUESTO_INV ON FE_DETALLE_PRESUPUESTO.id_presupuesto_fe=FE_PRESUPUESTO_INV.id_presupuesto_fe where id_est_inv='".$id_detalle_presupuesto."' ");
         
         return $TipoGasto->result();
     }
@@ -107,6 +114,7 @@ class Model_FE_Presupuesto_Inv extends CI_Model
 
         return $nombreProyectoInv->result()[0];
     }
+
 
      function listarPresupuestoInverAfe($id_presupuesto_fe)
     {
@@ -126,5 +134,12 @@ class Model_FE_Presupuesto_Inv extends CI_Model
 
         return $listarDetalleGasto->result_array();
     }
-    
+
+    function ListarFuente($id_presupuesto_fe)
+    {
+        $fuente=$this->db->query("select nombre_fuente_finan, correlativo_meta, anio_pres_fuen FROM FE_PRESUPUESTO_FUENTE INNER JOIN FUENTE_FINANCIAMIENTO ON FE_PRESUPUESTO_FUENTE.id_fuente_finan=FE_PRESUPUESTO_FUENTE.id_fuente_finan INNER JOIN FE_PRESUPUESTO_INV ON FE_PRESUPUESTO_INV.id_presupuesto_fe=FE_PRESUPUESTO_FUENTE.id_presupuesto_fe where FE_PRESUPUESTO_INV.id_presupuesto_fe=".$id_presupuesto_fe);
+
+        return $fuente->result();
+    }
+
 }

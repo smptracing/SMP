@@ -8,6 +8,7 @@ class FE_Presupuesto_Inv extends CI_Controller
 		parent::__construct();
 
 		$this->load->model('Model_FE_Presupuesto_Inv');
+		$this->load->model('Model_FE_Detalle_Gasto');
 	}
 
 	public function index($idEstInv)
@@ -58,17 +59,25 @@ class FE_Presupuesto_Inv extends CI_Controller
 	public function verDetalle()
 	{
 	
-		
 		$id_est_inv=$this->input->get('id');
 		$nombreProyectoInver=$this->Model_FE_Presupuesto_Inv->nombreProyectoInvPorId($id_est_inv);
 
 	    $SectorPliego=$this->Model_FE_Presupuesto_Inv->SectorPliego($id_est_inv)[0];
 
-	    $TipoGasto=$this->Model_FE_Presupuesto_Inv->TipoGastoDetallePresupuesto($id_est_inv);
-	    $DetalleGasto=$this->Model_FE_Presupuesto_Inv->DetalleGasto($id_est_inv);
+	    $id_detalle_presupuesto=$this->input->get('iddetallePresupuesto');
+	    $listaFEDetallePresupuesto=$this->Model_FE_Presupuesto_Inv->TipoGastoDetallePresupuesto($id_detalle_presupuesto);
+	    
+	    foreach($listaFEDetallePresupuesto as $key => $value)
+	    {
+	    	$listaFEDetallePresupuesto[$key]->childFEDetalleGasto[]=$this->Model_FE_Detalle_Gasto->ListarPorIdDetallePresupuesto($value->id_detalle_presupuesto);
+	    }
 
-		$this->load->view('Front/PresupuestoEstudioInversion/FEPresupuesto/verDetalle',['nombreProyectoInver' => $nombreProyectoInver, 'SectorPliego' => $SectorPliego , 'TipoGasto'=>$TipoGasto, 'DetalleGasto'=>$DetalleGasto]);
+	    $id_presupuesto_fe=$this->input->get('idpresupuesto');
+	    $ListarFuente=$this->Model_FE_Presupuesto_Inv->ListarFuente($id_presupuesto_fe);
+
+		$this->load->view('Front/PresupuestoEstudioInversion/FEPresupuesto/verDetalle',['nombreProyectoInver' => $nombreProyectoInver, 'SectorPliego' => $SectorPliego ,'listaFEDetallePresupuesto'=>$listaFEDetallePresupuesto , 'ListarFuente' => $ListarFuente]);
 	}
+
 
 	public function editar()
 	{
