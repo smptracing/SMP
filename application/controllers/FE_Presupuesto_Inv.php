@@ -122,7 +122,7 @@ class FE_Presupuesto_Inv extends CI_Controller
         $pdf->SetTitle('DETALLE PRESUPUESTO');
         $pdf->SetSubject('');
         $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
-    
+    	
 
         $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
         $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
@@ -144,6 +144,9 @@ class FE_Presupuesto_Inv extends CI_Controller
         $pdf->setFontSubsetting(true);
 
         $pdf->SetFont('freemono', '',8, '', true);
+      
+
+		
  
 
         $pdf->AddPage();
@@ -243,7 +246,7 @@ $pdf->writeHTMLCell($w = 0, $h = 0, $x = '', $y = '', $html, $border = 0, $ln = 
 			$html .= "<h2><CENTER>".$prov."</h2><CENTER><h4></h4>";
 			$html .= "<table width='10%'>";
 			$html .= "<thead><strong><h3>Cuadro N° 6: Valoración  Referencial para la formulación de la PIP</h3></strong><br><br>";
-			$html .="<tr><th>DESCRIPCIÓN</th><th>UNIDAD</th><th>CANTIDAD</th><th>COSTO UNIT.</th><th>COSTO TOTAL</th></tr>";
+			$html .="<tr><th style='background-color:#f5f5f5;'>DESCRIPCIÓN</th><th>UNIDAD</th><th>CANTIDAD</th><th>COSTO UNIT.</th><th>COSTO TOTAL</th></tr>";
 			$html .="</thead>";
 		
 		foreach($FE_DetalleGastoPadres as $key => $valor) 
