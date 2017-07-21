@@ -66,6 +66,9 @@
 <script>
 	$("#btnAgregarFEPresupuestoFuente").on('click', function(event)
 	{
+		$('#divPresupuestoFuente').data('formValidation').resetField($('#txtCorelativoMeta'));
+		$('#divPresupuestoFuente').data('formValidation').resetField($('#txtAnio'));
+
 		$('#divPresupuestoFuente').data('formValidation').validate();
 
 		if(!($('#divPresupuestoFuente').data('formValidation').isValid()))
