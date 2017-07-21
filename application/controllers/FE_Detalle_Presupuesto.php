@@ -31,9 +31,9 @@ class FE_Detalle_Presupuesto extends CI_Controller
 					$costosUnitarioDetalleGastoTemp=$this->input->post('costoUnitarioDetalleGasto'.$value);
 					$subTotalesDetalleGastoTemp=$this->input->post('subTotalDetalleGasto'.$value);
 
-					$this->Model_FE_Detalle_Presupuesto->Insertar($idPresupuestoFE,$idsTipoGasto);
-					//Insertar FE_DETALLE_PRESUPUESTO;
-					$sumatoriaTemporal=0;
+					$this->Model_FE_Detalle_Presupuesto->Insertar($idPresupuestoFE, $value);
+
+					$ultimoIdDetallePresupuesto=$this->Model_FE_Detalle_Presupuesto->ObtenerUltimoIdDetallePresupuesto();
 
 					if($descripcionesDetalleGastoTemp)
 					{
@@ -45,14 +45,9 @@ class FE_Detalle_Presupuesto extends CI_Controller
 							$costoUnitarioDetalleGastoTemp=$costosUnitarioDetalleGastoTemp[$key];
 							$subTotalDetalleGastoTemp=$subTotalesDetalleGastoTemp[$key];
 
-							$sumatoriaTemporal+=$subTotalDetalleGastoTemp;
-
-							$this->Model_FE_Detalle_Gasto->Insertar($descripcioDetalleGastoTemp,$idUnidadMedidaTemp,$cantidadDetalleGastoTemp,$costoUnitarioDetalleGastoTemp,$subTotalDetalleGastoTemp);
-							//Insertar FE_DETALLEGASTO;
+							$this->Model_FE_Detalle_Gasto->Insertar($ultimoIdDetallePresupuesto, $descripcioDetalleGastoTemp, $idUnidadMedidaTemp, $cantidadDetalleGastoTemp, $costoUnitarioDetalleGastoTemp);
 						}
 					}
-
-					//Update del total_detalle de FE_DETALLE_PRESUPUESTO
 				}
 			}
 

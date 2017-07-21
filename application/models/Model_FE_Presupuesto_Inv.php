@@ -114,6 +114,27 @@ class Model_FE_Presupuesto_Inv extends CI_Model
 
         return $nombreProyectoInv->result()[0];
     }
+
+
+     function listarPresupuestoInverAfe($id_presupuesto_fe)
+    {
+        $nombreProyectoInv=$this->db->query("execute sp_FEPresupuestoInv_ListarAfectacionP '".$id_presupuesto_fe."'");
+
+        return $nombreProyectoInv->result();
+    }
+      function listarDetalleGasto($id_presupuesto_fe,$subInten)
+    {
+        $listarDetalleGasto=$this->db->query("execute sp_FEPresupuestoInv_ListarDetalleGasto '".$id_presupuesto_fe."','".$subInten."'");
+
+        return $listarDetalleGasto->result_array();
+    }
+     function listarDetalleGastoPadres($id_presupuesto_fe)
+    {
+        $listarDetalleGasto=$this->db->query("execute sp_FEPresupuestoInv_ListarDetalleAfectacionP '".$id_presupuesto_fe."'");
+
+        return $listarDetalleGasto->result_array();
+    }
+
     function ListarFuente($id_presupuesto_fe)
     {
 
@@ -121,4 +142,5 @@ class Model_FE_Presupuesto_Inv extends CI_Model
 
         return $fuente->result();
     }
+
 }
