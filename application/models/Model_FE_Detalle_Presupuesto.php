@@ -26,4 +26,11 @@ class Model_FE_Detalle_Presupuesto extends CI_Model
 
         return $data->result();
     }
+
+    function EliminarPorIdPresupuestoFE($idPresupuestoFE)
+    {
+        $this->db->query("delete from FE_DETALLE_PRESUPUESTO where id_presupuesto_fe=".$idPresupuestoFE);
+
+        return true;
+    }
 }

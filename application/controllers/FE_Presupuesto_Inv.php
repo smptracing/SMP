@@ -196,7 +196,7 @@ class FE_Presupuesto_Inv extends CI_Controller
 </table>
 <table  cellpadding="7">
     <tr>
-         <th colspan="12" ><center><strong>14. PRESUPUESTO PARA LA ELAVORACIÓN DEL ESTUDIO</strong></center></th>
+         <th colspan="12" ><center><strong>14. PRESUPUESTO PARA LA ELABORACIÓN DEL ESTUDIO</strong></center></th>
    </tr>
     <tr>
          <th colspan="12" style="background-color:#f5f5f5;">&nbsp;&nbsp;<strong>14.1 Valoración estimado</strong></th>
@@ -222,30 +222,36 @@ $pdf->writeHTMLCell($w = 0, $h = 0, $x = '', $y = '', $html, $border = 0, $ln = 
         $pliego="";
         $html = '';
 			$html .= "<style type=text/css>";
-			$html .= "th{color: #000000; font-weight: bold; border: 1px solid #000000}";
+			$html .= "th{color: #000000; font-weight: bold; border: 1px solid #000000;font-size: 12px;}";
 			$html .= "table{color:2px solid #000000;}";
-			$html .= "td{background-color: #FFFFFF; color: #000000; border: 1px solid #000000}";
+			$html .= "td{background-color: #FFFFFF; color: #000000; border: 1px solid #000000;font-weight: normal;}";
 			$html .= "</style>";
 			$html .= "<h2><CENTER>".$prov."</h2><CENTER><h4></h4>";
 			$html .= "<table width='100%'>";
 			$html .= "<thead>";
-			$html .="<tr><th colspan='4'>DESCRIPCIÓN</th><th colspan='2'>UNIDAD</th><th>CANTIDAD</th><th colspan='2'>COSTO UNIT.</th><th colspan='2'>COSTO TOTAL</th></tr>";
+			$html .="<tr><th>DESCRIPCIÓNN</th><th>UNIDAD</th><th>CANTIDAD</th><th>COSTO UNIT.</th><th>COSTO TOTAL</th></tr>";
 			$html .="</thead>";
-	       foreach ($FE_DetalleGastoPadres as $key => $valor) 
-	       		{
-						$html .= "<tr><th colspan='4'>" .$FE_DetalleGastoPadres[$key]['desc_tipo_gasto']. "</th><th colspan='2'>".$pliego."</th><th colspan='2'>" .$pliego."</th><th colspan='2' >" . $pliego. "</th><th colspan='2'>" .$pliego. "</th></tr>";
-						
-						$subInten=$FE_DetalleGastoPadres[$key]['id_detalle_presupuesto'];
-						$FE_DetalleGastoHijo=$this->Model_FE_Presupuesto_Inv->listarDetalleGasto($id_presupuesto_fe,$subInten);
-						
-						foreach ($FE_DetalleGastoHijo as $key => $valor)
-						 {
-						 	
-							$html .= "<tr><th colspan='4'>" .$FE_DetalleGastoHijo[$key]['desc_detalle_gasto']. "</th><th colspan='2'>".$FE_DetalleGastoHijo[$key]['unidad']."</th><th colspan='2'>" .$FE_DetalleGastoHijo[$key]['cantidad_detalle_gasto']."</th><th colspan='2' >" .$FE_DetalleGastoHijo[$key]['costo_uni_detalle_gasto']. "</th><th colspan='2'>" .$FE_DetalleGastoHijo[$key]['sub_total_detalle_gasto']. "</th></tr>";
-						
-						 }	      	
-	      		}
-          	$html .= "</table>";
+		
+		foreach($FE_DetalleGastoPadres as $key => $valor) 
+		{
+			$html.="<tr><th>" .$FE_DetalleGastoPadres[$key]['desc_tipo_gasto']. "</th><th>".$pliego."</th><th>" .$pliego."</th><th >" . $pliego. "</th><th>" .$pliego. "</th></tr>";
+
+			$subInten=$FE_DetalleGastoPadres[$key]['id_detalle_presupuesto'];
+			$FE_DetalleGastoHijo=$this->Model_FE_Presupuesto_Inv->listarDetalleGasto($id_presupuesto_fe,$subInten);
+
+			foreach ($FE_DetalleGastoHijo as $key => $valor)
+			{
+				$html.="<tr>".
+					"<td>".$FE_DetalleGastoHijo[$key]['desc_detalle_gasto']."</td>".
+					"<td>".$FE_DetalleGastoHijo[$key]['unidad']."</td>".
+					"<td>".$FE_DetalleGastoHijo[$key]['cantidad_detalle_gasto']."</td>".
+					"<td>".$FE_DetalleGastoHijo[$key]['costo_uni_detalle_gasto']."</td>".
+					"<td>".$FE_DetalleGastoHijo[$key]['sub_total_detalle_gasto']."</td>".
+				"</tr>";
+			}	      	
+		}
+
+        $html .= "</table>";
     
     $pdf->writeHTMLCell($w = 0, $h = 0, $x = '', $y = '', $html, $border = 0, $ln = 1, $fill = 0, $reseth = true, $align = '', $autopadding = true);
                          
