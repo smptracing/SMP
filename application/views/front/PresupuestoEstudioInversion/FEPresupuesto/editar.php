@@ -174,7 +174,7 @@
 						regexp:
 	                    {
 	                        regexp: "^([0-9]){4}$",
-	                        message: '<b style="color: red;">El campo "Año" debe ser un número entero.</b>'
+	                        message: '<b style="color: red;">El campo "Año" debe ser un número de 4 díjitos.</b>'
 	                    }
 					}
 				}

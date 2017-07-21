@@ -19,6 +19,7 @@ class FE_Detalle_Presupuesto extends CI_Controller
 		if($_POST)
 		{
 			$idPresupuestoFE=$this->input->post('hdIdPresupuestoFE');
+			$txtPorcentajeImprevistos=$this->input->post('txtPorcentajeImprevistos');
 			$idsTipoGasto=$this->input->post('hdIdDetallePresupuesto');
 
 			$this->Model_FE_Detalle_Presupuesto->EliminarPorIdPresupuestoFE($idPresupuestoFE);
@@ -53,12 +54,14 @@ class FE_Detalle_Presupuesto extends CI_Controller
 				}
 			}
 
+			$this->Model_FE_Presupuesto_Inv->EditarPorcentajeImprevistos($idPresupuestoFE, $txtPorcentajeImprevistos);
+
 			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Dastos guardados correctamente.', 'idEstudioInversion' => $this->input->post('hdIdEstudioInversion')]);exit;
 		}
 
 		$idPresupuestoFE=$this->input->get('idPresupuestoFE');
 
-		$fePresupuestoInv=$this->Model_FE_Presupuesto_Inv->FEPresupuestoInvPorIdOresupuestoFE($idPresupuestoFE);
+		$fePresupuestoInv=$this->Model_FE_Presupuesto_Inv->FEPresupuestoInvPorIdPresupuestoFE($idPresupuestoFE);
 		$listaTipoGasto=$this->Model_FE_Tipo_Gasto->ListarTipoGasto();
 		$listaUnidadMedida=$this->Model_Unidad_Medida->UnidadMedidad_Listar();
 		$listaFEDetallePresupuesto=$this->Model_FE_Detalle_Presupuesto->ListarPorIdPresupuestoFE($idPresupuestoFE);

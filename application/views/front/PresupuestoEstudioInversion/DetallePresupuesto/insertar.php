@@ -1,12 +1,16 @@
 <form class="form-horizontal" id="form-addDetallePresupuesto" action="<?php echo base_url();?>index.php/FE_Detalle_Presupuesto/insertar" method="POST">
 		<h4 style="margin-bottom: 0px;">Datos generales</h4>
 		<hr style="margin: 2px;margin-bottom: 5px;">
-		<label>Detalle gasto</label>
 		<div class="row">
-			<div class="col-md-12 col-sm-12 col-xs-12">
+			<div class="col-md-9 col-sm-9 col-xs-9">
+				<label>Nombre de estudio de inversión</label>
 				<input type="text" class="form-control" value="<?=$fePresupuestoInv->nombre_est_inv?>" autocomplete="off" readonly="readonly">
 				<input type="hidden" name="hdIdPresupuestoFE" value="<?=$fePresupuestoInv->id_presupuesto_fe?>">
 				<input type="hidden" name="hdIdEstudioInversion" value="<?=$fePresupuestoInv->id_est_inv?>">
+			</div>
+			<div class="col-md-3 col-sm-3 col-xs-3">
+				<label>% general de imprevistos</label>
+				<input type="text" id="txtPorcentajeImprevistos" name="txtPorcentajeImprevistos" class="form-control" value="<?=number_format($fePresupuestoInv->porcentaje_imprevistos, 0)?>" autocomplete="off">
 			</div>
 		</div>
 		<h4 style="margin-bottom: 0px;">Detalle de Gasto</h4>
@@ -313,6 +317,33 @@
 
 	$(function()
 	{
+		$('#form-addDetallePresupuesto').formValidation(
+		{
+			framework : 'bootstrap',
+			excluded : [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+			live : 'enabled',
+			message : '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+			trigger : null,
+			fields :
+			{
+				txtPorcentajeImprevistos :
+				{
+					validators:
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "% general de imprevistos" es requerido.</b>'
+						},
+						regexp:
+	                    {
+	                        regexp: /^\d*$/,
+	                        message: '<b style="color: red;">El campo "% general de imprevistos" debe ser un número entero.</b>'
+	                    }
+					}
+				},
+			}
+		});
+
 		txtDescripcionDetalleGastoValidators=
 		{
 			validators : 
@@ -421,6 +452,13 @@
 	$('#btnEnviarFormulario').on('click', function(event)
 	{
 		event.preventDefault();
+
+		$('#form-addDetallePresupuesto').data('formValidation').validate();
+
+		if(!($('#form-addDetallePresupuesto').data('formValidation').isValid()))
+		{
+			return;
+		}
 
 		paginaAjaxJSON($('#form-addDetallePresupuesto').serialize(), '<?=base_url();?>index.php/FE_Detalle_Presupuesto/insertar', 'POST', null, function(objectJSON)
 		{
