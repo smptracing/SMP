@@ -7,4 +7,11 @@ class Model_FE_Detalle_Presupuesto extends CI_Model
     {
         parent::__construct();
     }
+    
+    function Insertar($idPresupuestoFE,$idsTipoGasto)
+    {
+        $this->db->query("execute sp_DetallePresupuesto_Insertar '".$idPresupuestoFE."','".$idsTipoGasto."'");
+        return true;
+    }
+
 }

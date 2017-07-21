@@ -10,6 +10,8 @@ class FE_Detalle_Presupuesto extends CI_Controller
     	$this->load->model('Model_FE_Presupuesto_Inv');
     	$this->load->model('Model_Unidad_Medida');
     	$this->load->model('Model_FE_Tipo_Gasto');
+    	$this->load->model('Model_FE_Detalle_Presupuesto');
+    	$this->load->model('Model_FE_Detalle_Gasto');
 	}
 
 	public function insertar()
@@ -29,8 +31,8 @@ class FE_Detalle_Presupuesto extends CI_Controller
 					$costosUnitarioDetalleGastoTemp=$this->input->post('costoUnitarioDetalleGasto'.$value);
 					$subTotalesDetalleGastoTemp=$this->input->post('subTotalDetalleGasto'.$value);
 
+					$this->Model_FE_Detalle_Presupuesto->Insertar($idPresupuestoFE,$idsTipoGasto);
 					//Insertar FE_DETALLE_PRESUPUESTO;
-
 					$sumatoriaTemporal=0;
 
 					if($descripcionesDetalleGastoTemp)
@@ -45,6 +47,7 @@ class FE_Detalle_Presupuesto extends CI_Controller
 
 							$sumatoriaTemporal+=$subTotalDetalleGastoTemp;
 
+							$this->Model_FE_Detalle_Gasto->Insertar($descripcioDetalleGastoTemp,$idUnidadMedidaTemp,$cantidadDetalleGastoTemp,$costoUnitarioDetalleGastoTemp,$subTotalDetalleGastoTemp);
 							//Insertar FE_DETALLEGASTO;
 						}
 					}

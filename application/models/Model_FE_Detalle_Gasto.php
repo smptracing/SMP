@@ -14,4 +14,10 @@ class Model_FE_Detalle_Gasto extends CI_Model
         
         return $DetalleGasto->result();
     }
+    function Insertar($descripcioDetalleGastoTemp,$idUnidadMedidaTemp,$cantidadDetalleGastoTemp,$costoUnitarioDetalleGastoTemp,$subTotalDetalleGastoTemp)
+    {
+        $DetalleGasto=$this->db->query("execute sp_FedetalleGasto_Insertar '".$descripcioDetalleGastoTemp."','".$idUnidadMedidaTemp."','".$cantidadDetalleGastoTemp."','".$costoUnitarioDetalleGastoTemp."','".$subTotalDetalleGastoTemp."'");
+        
+        return $DetalleGasto->result();
+    }
 }

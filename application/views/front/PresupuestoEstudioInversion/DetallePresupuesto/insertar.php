@@ -1,4 +1,4 @@
-<form class="form-horizontal" id="form-addDetallePresupuesto">
+<form class="form-horizontal" id="form-addDetallePresupuesto" action="<?php echo base_url();?>index.php/FE_Detalle_Presupuesto/insertar" method="POST">
 		<h4 style="margin-bottom: 0px;">Datos generales</h4>
 		<hr style="margin: 2px;margin-bottom: 5px;">
 		<label>Detalle gasto</label>
