@@ -109,7 +109,7 @@
 													<td><input type="hidden" name="cantidadDetalleGasto<?=$value->id_tipo_gasto?>[]" value="<?=$item->cantidad_detalle_gasto?>"><?=$item->cantidad_detalle_gasto?></td>
 													<td><input type="hidden" name="costoUnitarioDetalleGasto<?=$value->id_tipo_gasto?>[]" value="<?=$item->costo_uni_detalle_gasto?>"><?=$item->costo_uni_detalle_gasto?></td>
 													<td><input type="hidden" name="subTotalDetalleGasto<?=$value->id_tipo_gasto?>[]" value="<?=$item->sub_total_detalle_gasto?>"><?=$item->sub_total_detalle_gasto?></td>
-													<td><a href="#" onclick="$(this).parent().parent().remove();">Eliminar</a></td>
+													<td><a href="#" onclick="$(this).parent().parent().remove();" style="color: red;font-weight: bold;text-decoration: underline;">Eliminar</a></td>
 												</tr>
 											<?php } ?>
 										</tbody>
@@ -305,7 +305,7 @@
 			'<td><input type="hidden" name="cantidadDetalleGasto'+idTab+'[]" value="'+$('#txtCantidadDetalleGasto'+idTab).val()+'">'+$('#txtCantidadDetalleGasto'+idTab).val()+'</td>'+
 			'<td><input type="hidden" name="costoUnitarioDetalleGasto'+idTab+'[]" value="'+$('#txtCostoUnitarioDetalleGasto'+idTab).val()+'">'+$('#txtCostoUnitarioDetalleGasto'+idTab).val()+'</td>'+
 			'<td><input type="hidden" name="subTotalDetalleGasto'+idTab+'[]" value="'+$('#txtSubTotalDetalleGasto'+idTab).val()+'">'+$('#txtSubTotalDetalleGasto'+idTab).val()+'</td>'+
-			'<td><a href="#" onclick="$(this).parent().parent().remove();">Eliminar</a></td>'+
+			'<td><a href="#" onclick="$(this).parent().parent().remove();" style="color: red;font-weight: bold;text-decoration: underline;">Eliminar</a></td>'+
 		'</tr>';
 		
 		$('#tableDetalleGasto'+idTab+' > tbody').append(htmlTempDetalle);

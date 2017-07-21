@@ -62,7 +62,7 @@
 							<td><input type="hidden" value="<?=$item->id_fuente_finan?>" name="hdIdFuente[]"><?=$item->nombre_fuente_finan?></td>
 							<td><input type="hidden" value="<?=$item->correlativo_meta?>" name="hdCorrelativoMeta[]"><?=$item->correlativo_meta?></td>
 							<td><input type="hidden" value="<?=$item->anio_pres_fuen?>" name="hdAnio[]"><?=substr($item->anio_pres_fuen, 0, 4)?></td>
-							<td><a href="#" onclick="$(this).parent().parent().remove();">Eliminar</a></td>
+							<td><a href="#" onclick="$(this).parent().parent().remove();" style="color: red;font-weight: bold;text-decoration: underline;">Eliminar</a></td>
 						</tr>
 					<?php } ?>
 				</tbody>
@@ -92,7 +92,7 @@
 			'<td><input type="hidden" value='+idFuente+' name="hdIdFuente[]"> '+descripcionFuente+'</td>'+
 			'<td><input type="hidden" value='+$('#txtCorelativoMeta').val()+' name="hdCorrelativoMeta[]">'+$('#txtCorelativoMeta').val()+'</td>'+
 			'<td><input type="hidden" value='+$('#txtAnio').val()+' name="hdAnio[]">'+$('#txtAnio').val()+'</td>'+
-			'<td><a href="#" onclick="$(this).parent().parent().remove();">Eliminar</a></td>'+
+			'<td><a href="#" onclick="$(this).parent().parent().remove();" style="color: red;font-weight: bold;text-decoration: underline;">Eliminar</a></td>'+
 		'</tr>'
 
 		$('#table-PresupestoFormulacion > tbody').append(htmlTemp);
