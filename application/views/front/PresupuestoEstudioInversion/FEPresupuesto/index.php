@@ -61,7 +61,7 @@
 																<?=$item->pliego?>
 																</td>
 																<td>
-																<?=$item->PresupuestoTotal?>
+																S/.<?=$item->PresupuestoTotal?>
 																</td>
 																<td>
 
