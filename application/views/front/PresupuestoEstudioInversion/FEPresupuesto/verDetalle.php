@@ -37,7 +37,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<?php foreach($ListarFuente as $item ){ ?>
+								<?php foreach($listaFEPresupuestoFuente as $item ){ ?>
 								<tr>
 									<td>
 										<?=$item->nombre_fuente_finan?>

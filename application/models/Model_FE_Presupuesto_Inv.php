@@ -81,7 +81,7 @@ class Model_FE_Presupuesto_Inv extends CI_Model
     function listarFEPresupuestoFuente($idPresupuestoFE)
     {
 
-        $listaFEPresupuestoFuente=$this->db->query("select FEPF.id_fuente_finan, FEPF.correlativo_meta, FEPF.anio_pres_fuen, FF.nombre_fuente_finan from FE_PRESUPUESTO_FUENTE as FEPF inner join FUENTE_FINANCIAMIENTO as FF on FEPF.id_fuente_finan=FF.id_fuente_finan where id_presupuesto_fe='".$idPresupuestoFE."'");
+        $listaFEPresupuestoFuente=$this->db->query("select id_presupuesto_fe,FEPF.id_fuente_finan, FEPF.correlativo_meta, FEPF.anio_pres_fuen, FF.nombre_fuente_finan from  FUENTE_FINANCIAMIENTO as FF inner join FE_PRESUPUESTO_FUENTE as FEPF on FEPF.id_fuente_finan=FF.id_fuente_finan where id_presupuesto_fe='".$idPresupuestoFE."'");
 
         return $listaFEPresupuestoFuente->result();
     }
