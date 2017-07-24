@@ -143,9 +143,9 @@ class FE_Presupuesto_Inv extends CI_Controller
 
         $pdf->setFontSubsetting(true);
 
-        $pdf->SetFont('freemono', '',8, '', true);
+       
       
-
+		$pdf->SetFont('times', '', 10); 
 		
  
 
@@ -219,7 +219,7 @@ class FE_Presupuesto_Inv extends CI_Controller
    </tr>
    <tr>
          <th colspan="12" style="background-color:#f5f5f5;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   El valor estimado para la elaboración del perfil, según estudio de mercado y análisis de <br>
-          &nbsp;&nbsp; &nbsp; precios unitarios asciende a la suma de .
+          &nbsp;&nbsp; &nbsp; precios unitarios asciende a la suma de $total_presupuesto Soles.
          </th>
    </tr>
 </table>
@@ -229,54 +229,66 @@ class FE_Presupuesto_Inv extends CI_Controller
    </tr>
 </table>
 EOD;
-$html .= "</table>";
-$pdf->writeHTMLCell($w = 0, $h = 0, $x = '', $y = '', $html, $border = 0, $ln = 1, $fill = 0, $reseth = true, $align = '', $autopadding = true);
+	$html .= "</table>";
+	$pdf->writeHTMLCell($w = 0, $h = 0, $x = '', $y = '', $html, $border = 0, $ln = 1, $fill = 0, $reseth = true, $align = '', $autopadding = true);
+    $FE_DetalleGastoPadres=$this->Model_FE_Presupuesto_Inv->listarDetalleGastoPadres($id_presupuesto_fe);
 
-     
-        $FE_DetalleGastoPadres=$this->Model_FE_Presupuesto_Inv->listarDetalleGastoPadres($id_presupuesto_fe);
-        $prov="";
-        $pliego="";
-        $html = '';
-			$html .= "<style type=text/css>";
-			$html .= "th{color: #000000; font-weight: bold; border: 1px solid #000000;font-size: 12px;}";
-			$html .= "table{color:1px solid #000000;}";
-			$html .= "header{background-color: #FFFFFF;}";
-			$html .= "td{background-color: #FFFFFF; color: #000000; border: 1px solid #000000;font-weight: normal;}";
-			$html .= "</style>";
-			$html .= "<h2><CENTER>".$prov."</h2><CENTER><h4></h4>";
-			$html .= "<table width='10%'>";
-			$html .= "<thead><strong><h3>Cuadro N° 6: Valoración  Referencial para la formulación de la PIP</h3></strong><br><br>";
-			$html .="<tr><th style='background-color:#f5f5f5;'>DESCRIPCIÓN</th><th>UNIDAD</th><th>CANTIDAD</th><th>COSTO UNIT.</th><th>COSTO TOTAL</th></tr>";
-			$html .="</thead>";
-		
-		foreach($FE_DetalleGastoPadres as $key => $valor) 
+    $prov="";
+    $contenido="";
+	$pdf->Write(0, 'Cuadro N° 6: Valoración  Referencial para la formulación de la PIP', '', 0, 'L', true, 0, false, false, 0);
+	$pdf->Ln(1);
+	$i=1;
+
+			$pdf->SetFont('times','B', 11);        
+			$pdf->Cell(72, 5,'DESCRIPCIÓN', 1, 'l', 1,0);
+			$pdf->Cell(30, 5,'UNIDAD', 1, 'C', 1, 0);
+			$pdf->Cell(30, 5,'CANTIDAD.', 1, 'C', 1, 0);
+			$pdf->Cell(30, 5,'COSTO U', 1, 'C', 1, 0);
+			$pdf->Cell(30, 5,'COSTO TOTAL', 1, 'C', 1, 0);$pdf->Ln();
+	foreach($FE_DetalleGastoPadres as $key => $valor) 
 		{
-			$html.="<tr><th>" .$FE_DetalleGastoPadres[$key]['desc_tipo_gasto']. "</th><th>".$pliego."</th><th>" .$pliego."</th><th >" . $pliego. "</th><th>" .$FE_DetalleGastoPadres[$key]['total_detalle']. "</th></tr>";
-
+	   
+			$pdf->SetFont('times','B', 11); 
+			$pdf->Cell(162, 5,$FE_DetalleGastoPadres[$key]['desc_tipo_gasto'], 1, 'l', 1,(int)$i);
+			$pdf->Cell(30, 5,$FE_DetalleGastoPadres[$key]['total_detalle'], 1, 'C', 1,(int)$i);
+			$pdf->Ln();
+			$i=((int)$i)+1;
 			$subInten=$FE_DetalleGastoPadres[$key]['id_detalle_presupuesto'];
 			$FE_DetalleGastoHijo=$this->Model_FE_Presupuesto_Inv->listarDetalleGasto($id_presupuesto_fe,$subInten);
-
+			
 			foreach ($FE_DetalleGastoHijo as $key => $valor)
-			{
-				$html.="<tr>".
-					"<td>".$FE_DetalleGastoHijo[$key]['desc_detalle_gasto']."</td>".
-					"<td>".$FE_DetalleGastoHijo[$key]['unidad']."</td>".
-					"<td>".$FE_DetalleGastoHijo[$key]['cantidad_detalle_gasto']."</td>".
-					"<td>".$FE_DetalleGastoHijo[$key]['costo_uni_detalle_gasto']."</td>".
-					"<td>".$FE_DetalleGastoHijo[$key]['sub_total_detalle_gasto']."</td>".
-				"</tr>";
-			}	      	
+			{	
+				$pdf->SetFont('times','', 11);  
+				$pdf->Cell(72, 5,$FE_DetalleGastoHijo[$key]['desc_detalle_gasto'], 1, 'l', 1,(int)$i);
+				$pdf->Cell(30, 5,$FE_DetalleGastoHijo[$key]['unidad'], 1, 'C', 1, (int)$i);
+				$pdf->Cell(30, 5,$FE_DetalleGastoHijo[$key]['cantidad_detalle_gasto'], 1, 'C', 1, (int)$i);
+				$pdf->Cell(30, 5,$FE_DetalleGastoHijo[$key]['costo_uni_detalle_gasto'], 1, 'C', 1, (int)$i);
+				$pdf->Cell(30, 5,$FE_DetalleGastoHijo[$key]['sub_total_detalle_gasto'], 1, 'C', 1, (int)$i);
+				$pdf->Ln();
+				$i=((int)$i) +1;
+			}  
 		}
-			$html.="<tr><th width='5mm'> SUB TOTAL" .$pliego. "</th><th>".$pliego."</th><th>" .$pliego."</th><th >" . $pliego. "</th><th>" .$sub_total_presupuesto. "</th></tr>";
-			$html.="<tr><th> Imprevistos( $porcentaje_imprevisto % de S.T.)" .$pliego. "</th><th>".$pliego."</th><th>" .$pliego."</th><th >" . $pliego. "</th><th>" .$monto_imprevistos. "</th></tr>";
-			$html.="<tr><th> COSTO TOTAL" .$pliego. "</th><th>".$pliego."</th><th>" .$pliego."</th><th >" . $pliego. "</th><th>" .$total_presupuesto. "</th></tr>";
+			$pdf->SetFont('times','B', 11); 
+			$pdf->Cell(72, 5,'SUB TOTAL'.$contenido, 1, 'l', 1,(int)$i+1);
+			$pdf->Cell(30, 5,$contenido, 1, 'C', 1, (int)$i+1);
+			$pdf->Cell(30, 5,$contenido, 1, 'C', 1, (int)$i+1);
+			$pdf->Cell(30, 5,$contenido, 1, 'C', 1, (int)$i +1);
+			$pdf->Cell(30, 5,$sub_total_presupuesto, 1, 'C', 1, (int)$i +1);$pdf->Ln();
 
-        $html .= "</table>";
-    
-    $pdf->writeHTMLCell($w = 0, $h = 0, $x = '', $y = '', $html, $border = 0, $ln = 1, $fill = 0, $reseth = true, $align = '', $autopadding = true);
-                         
-    $nombre_archivo = utf8_decode("Presupuesto de ".$prov.".pdf");
-    $pdf->Output($nombre_archivo, 'I');
+			$pdf->Cell(72, 5,'Imprevistos('.$porcentaje_imprevisto.'% de S.T.)', 1, 'l', 1,(int)$i+2);
+			$pdf->Cell(30, 5,$contenido, 1, 'C', 1, (int)$i+2);
+			$pdf->Cell(30, 5,$contenido, 1, 'C', 1, (int)$i+2);
+			$pdf->Cell(30, 5,$contenido, 1, 'C', 1, (int)$i +2);
+			$pdf->Cell(30, 5,$sub_total_presupuesto, 1, 'C', 1, (int)$i +2);$pdf->Ln();
+
+			$pdf->Cell(72, 5,'COSTO TOTAL'.$contenido, 1, 'l', 1,(int)$i+3);
+			$pdf->Cell(30, 5,$contenido, 1, 'C', 1, (int)$i+3);
+			$pdf->Cell(30, 5,$contenido, 1, 'C', 1, (int)$i+3);
+			$pdf->Cell(30, 5,$contenido, 1, 'C', 1, (int)$i +3);
+			$pdf->Cell(30, 5,$total_presupuesto, 1, 'C', 1, (int)$i +3);
+
+		    $nombre_archivo = utf8_decode("Presupuesto de ".$prov.".pdf");
+		    $pdf->Output($nombre_archivo, 'I');
 		
 	}
 
