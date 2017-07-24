@@ -66,13 +66,13 @@ class FE_Presupuesto_Inv extends CI_Controller
 
 	    $id_detalle_presupuesto=$this->input->get('id');
 	    $listaFEDetallePresupuestoT=$this->Model_FE_Presupuesto_Inv->TipoGastoDetallePresupuesto($id_detalle_presupuesto);
-
+	    
 	    foreach($listaFEDetallePresupuestoT as $key => $value)
 	    {
 	    	$value->childFEDetalleGasto=$this->Model_FE_Detalle_Gasto->ListarPorIdDetallePresupuesto($value->id_detalle_presupuesto);
 	    }
 
-	    var_dump($listaFEDetallePresupuestoT);exit;
+	    //var_dump($listaFEDetallePresupuestoT);exit;
 
 	    $id_presupuesto_fe=$this->input->get('id');
 	    $ListarFuente=$this->Model_FE_Presupuesto_Inv->ListarFuente($id_presupuesto_fe);
