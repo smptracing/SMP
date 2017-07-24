@@ -101,9 +101,19 @@
                                 </ul>
                             </li>
                       <li><a href="<?php echo site_url('ProyectoInversion/'); ?>"><i class="fa fa-sitemap"></i> Proyecto Inversion</a></li>
-                      <li><a href="<?php echo site_url('bancoproyectos/'); ?>"><i class="fa fa-database"></i> Banco de proyectos </a></li>
-                      <li><a href="<?php echo site_url('bancoproyectos/'); ?>"><i class="fa fa-gears"></i> Programar PIP </a></li>
-                      <li><a href="<?php echo site_url('bancoproyectos/'); ?>"><i class="fa fa-gear"></i> Programar NO PIP </a></li>
+
+                      <li><a><i class="fa fa-database"></i> Banco de proyectos <span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                                    <li><a href="<?php echo site_url('bancoproyectos/'); ?>">PIP</a></li>
+                                    <li><a href="<?php echo site_url('bancoproyectos/NoPip'); ?>">NO PIP</a></li>
+                            </ul>
+                      </li>
+                      <li><a><i class="fa fa-gears"></i> Programar <span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                                    <li><a href="<?php echo site_url('programar_pip/'); ?>">PIP</a></li>
+                                    <li><a href="<?php echo site_url('bancoproyectos/NoPip'); ?>">NO PIP</a></li>
+                            </ul>
+                      </li>
                        <li><a href="<?php echo site_url('BrechaIndicador/'); ?>"><i class="fa fa-sliders"></i> Brechas e Indicadores </a></li>
 
                 </ul>

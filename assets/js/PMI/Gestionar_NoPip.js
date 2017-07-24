@@ -1,6 +1,6 @@
 $(document).on("ready" ,function(){
-     listar_proyectos_inversion();/*llamar a mi datatablet listar proyectosinverision*/
-                //REGISTARAR OPERACION Y MANTENIMIENTO
+     listar_no_pip(); //listar los no pip
+          //REGISTARAR OPERACION Y MANTENIMIENTO
      $("#form_AddOperacionMantenimiento").submit(function(event)
                   {
                       event.preventDefault();
@@ -22,7 +22,29 @@ $(document).on("ready" ,function(){
                          }
                       });
                   });
-     //registar modalidad de ejecucion
+        //REGISTARAR rubro pi
+     $("#form_AddTipoNoPip").submit(function(event)
+                  {
+                      event.preventDefault();
+                      $.ajax({
+                          url:base_url+"index.php/bancoproyectos/AddTipoNoPip",
+                          type:$(this).attr('method'),
+                          data:$(this).serialize(),
+                          success:function(resp){
+                           //alert(resp);
+                           if (resp=='1') {
+                             swal("REGISTRADO","Se regristró correctamente", "success");
+                             formReset();
+                           }
+                            if (resp=='2') {
+                             swal("NO SE REGISTRÓ","NO se regristró ", "error");
+                           }
+                          $('#Table_TipoNoPip').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
+                             formReset();
+                         }
+                      });
+                  });
+      //REGISTARAR rubro pi
      $("#form_AddModalidadEjec").submit(function(event)
                   {
                       event.preventDefault();
@@ -84,7 +106,7 @@ $(document).on("ready" ,function(){
                              swal("NO SE REGISTRÓ","NO se regristró ", "error");
                            }
                           $('#Table_Estado_Ciclo').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
-                          $('#table_proyectos_inversion').dataTable()._fnAjaxUpdate();
+                          $('#table_no_pip').dataTable()._fnAjaxUpdate();
                              formReset();
                          }
                       });
@@ -130,7 +152,7 @@ $(document).on("ready" ,function(){
                             if (resp=='2') {
                              swal("NO SE REGISTRÓ","NO se regristró ", "error");
                            }
-                          $('#table_proyectos_inversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
+                          $('#table_no_pip').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
                              formReset();
                          }
                       });
@@ -143,7 +165,8 @@ $(document).on("ready" ,function(){
          document.getElementById("form-AddProyectosInversion").reset();
          document.getElementById("form_AddRubro").reset();
          document.getElementById("form_AddModalidadEjec").reset();
-         document.getElementById("form_AddOperacionMantenimiento").reset();         
+         document.getElementById("form_AddTipoNoPip").reset();
+         document.getElementById("form_AddOperacionMantenimiento").reset();
           }
       });
 //listar operacion y mantenimiento de un proyecto
@@ -165,6 +188,27 @@ $(document).on("ready" ,function(){
                                     {"data":"monto_mantenimiento"},
                                     {"data":"responsable_mantenimiento"},
                                     {"data":"fecha_registro"}
+                                    //{"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaupdateEstadoFE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
+                                ],
+                               "language":idioma_espanol
+                    });
+                }
+ //listar tipo no pip
+ var listar_TipoNoPip=function(id_pi)
+                {
+                    var table=$("#Table_TipoNoPip").DataTable({
+                      "processing": true,
+                      "serverSide":false,
+                       destroy:true,
+                         "ajax":{
+                                     url:base_url+"index.php/bancoproyectos/Get_TipoNoPip",
+                                     type:"POST",
+                                     data :{id_pi:id_pi}
+                                    },
+                                "columns":[
+                                    {"data":"id_nopip","visible": false},
+                                    {"data":"desc_tipo_nopip"},
+                                    {"data":"fecha_nopip"},
                                     //{"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaupdateEstadoFE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
                                "language":idioma_espanol
@@ -252,15 +296,17 @@ $(document).on("ready" ,function(){
                                "language":idioma_espanol
                     });
                 }
-//listar proyectos de inversion
- var listar_proyectos_inversion=function()
+
+//fin de table de lista de proyectos
+//listar no PIP
+ var listar_no_pip=function()
 {
-       var table=$("#table_proyectos_inversion").DataTable({
+       var table=$("#table_no_pip").DataTable({
                      "processing": true,
                       "serverSide":false,
                      destroy:true,
                          "ajax":{
-                                    "url":base_url+"index.php/bancoproyectos/GetProyectoInversion",
+                                    "url":base_url+"index.php/bancoproyectos/GetNOPIP",
                                     "method":"POST",
                                     "dataSrc":""                                    
                                   },
@@ -271,17 +317,18 @@ $(document).on("ready" ,function(){
                                     {"data":"nombre_pi"},
                                     {"data":"costo_pi"},
                                     {"data":"nombre_estado_ciclo"},
-                                    {"defaultContent":"<center><button type='button' title='Ubicación' class='ubicacion_geografica btn btn-primary btn-xs' data-toggle='modal' data-target='#venta_ubicacion_geografica'><i class='fa fa-map-marker' aria-hidden='true'></i></button><button type='button' title='Ver Rubro PI' class='RegistarNuevoRubro btn btn-info btn-xs' data-toggle='modal' data-target='#venta_registar_rubro'><i class='fa fa-spinner' aria-hidden='true'></i></button><button type='button' title='Modalidad de Ejecución' class='nueva_modalidad_ejec btn btn-warning btn-xs' data-toggle='modal' data-target='#ventanaModalidadEjecucion'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button' title='Ver Estado Ciclo' class='ver_estado_ciclo btn btn-success btn-xs' data-toggle='modal' data-target='#ventana_ver_estado_ciclo'><i class='fa fa-paw' aria-hidden='true'></i></button><button type='button' title='Operación y Mantenimiento' class='ver_operacion_mantenimiento btn btn-info btn-xs' data-toggle='modal' data-target='#ventana_ver_operacion_mantenimeinto'><i class='fa fa-building' aria-hidden='true'></i></button></center>"}
+                                    {"defaultContent":"<center><button type='button' title='Ubicación' class='ubicacion_geografica btn btn-primary btn-xs' data-toggle='modal' data-target='#venta_ubicacion_geografica'><i class='fa fa-map-marker' aria-hidden='true'></i></button><button type='button' title='Ver Rubro PI' class='RegistarNuevoRubro btn btn-info btn-xs' data-toggle='modal' data-target='#venta_registar_rubro'><i class='fa fa-spinner' aria-hidden='true'></i></button><button type='button' title='Modalidad de Ejecución' class='nueva_modalidad_ejec btn btn-warning btn-xs' data-toggle='modal' data-target='#ventanaModalidadEjecucion'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button' title='Ver Estado Ciclo' class='ver_estado_ciclo btn btn-success btn-xs' data-toggle='modal' data-target='#ventana_ver_estado_ciclo'><i class='fa fa-paw' aria-hidden='true'></i></button><button type='button' title='Ver Tipología No PIP' class='ver_tipologia_nopip btn btn-danger btn-xs' data-toggle='modal' data-target='#ventana_ver_tipologia'><i class='fa fa-random' aria-hidden='true'></i></button><button type='button' title='Operación y Mantenimiento' class='ver_operacion_mantenimiento btn btn-info btn-xs' data-toggle='modal' data-target='#ventana_ver_operacion_mantenimeinto'><i class='fa fa-building' aria-hidden='true'></i></button></center>"}
                                 ],
                                "language":idioma_espanol
                     });
-       AddListarUbigeo("#table_proyectos_inversion",table);
-       AddEstadoCiclo("#table_proyectos_inversion",table);
-       AddRubroPI("#table_proyectos_inversion",table);
-      AddModalidadEjecucion("#table_proyectos_inversion",table);
-      AddMantOperacion("#table_proyectos_inversion",table);
+              AddListarUbigeo("#table_no_pip",table);
+       AddEstadoCiclo("#table_no_pip",table);
+       AddRubroPI("#table_no_pip",table);
+      AddModalidadEjecucion("#table_no_pip",table);
+      AddTipologiaNOPIP("#table_no_pip",table);
+      AddMantOperacion("#table_no_pip",table);
 }
-//fin de table de lista de proyectos
+//fin de table de lista NO PIP
 //add operacion y manteniemito
    var  AddMantOperacion=function(tbody,table){
                     $(tbody).on("click","button.ver_operacion_mantenimiento",function(){
@@ -291,13 +338,24 @@ $(document).on("ready" ,function(){
                         listar_pip_OperMant(id_pi);
                     });
                 }
-    //listar y agregar ubicacion geográfica
+
+  //listar y agregar Tipologia no Pip
+          var  AddTipologiaNOPIP=function(tbody,table){
+                    $(tbody).on("click","button.ver_tipologia_nopip",function(){
+                      var data=table.row( $(this).parents("tr")).data();
+                       var  id_pi=data.id_pi;
+                      $("#txt_id_pip_Tipologia").val(data.id_pi);
+                        listar_TipologiaNoPip();//combox
+                        listar_TipoNoPip(id_pi);
+                    });
+                }
+      //listar y agregar ubicacion geográfica
               var  AddListarUbigeo=function(tbody,table){
                     $(tbody).on("click","button.ubicacion_geografica",function(){
                       var data=table.row( $(this).parents("tr")).data();
                        var  id_pi=data.id_pi;
                       $("#txt_id_pip").val(data.id_pi);
-                      listar_provincia();
+                        listar_provincia();
                         listar_ubigeo_pi(id_pi);
                     });
                 }
@@ -352,7 +410,7 @@ $(document).on("ready" ,function(){
                         }
                     });
                 }
-                //combox listar estado ciclo 
+                     //combox listar estado ciclo 
                 var listarEstadoCiclo=function(valor){
                      html="";
                     $("#Cbx_EstadoCiclo").html(html);
@@ -373,7 +431,7 @@ $(document).on("ready" ,function(){
                         }
                     });
                 }
- //cambiar de provincia a distrito
+                //cambiar de provincia a distrito
                   $("#cbx_provincia").change(function(){//para cargar los distritos
                       var nombre_distrito=$("#cbx_provincia").val();
                       listar_distrito(nombre_distrito);
@@ -440,7 +498,29 @@ $(document).on("ready" ,function(){
                         }
                     });
                 }
-
+                //listar en el combox para registrar rubro
+ var listar_TipologiaNoPip=function(valor){
+                     html="";
+                    $("#Cbx_TipoNoPip").html(html);
+                    event.preventDefault();
+                    $.ajax({
+                        "url":base_url +"index.php/TipologiaInversion/get_tipo_no_pip",
+                        type:"POST",
+                        success:function(respuesta3){
+                         //  alert(respuesta);
+                         var registros = eval(respuesta3);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option  value="+registros[i]["id_tipo_nopip"]+"> "+registros[i]["desc_tipo_nopip"]+" </option>";
+                            };
+                            $("#Cbx_TipoNoPip").html(html);
+                            $('select[name=Cbx_TipoNoPip]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=Cbx_TipoNoPip]').change();
+                            $('.selectpicker').selectpicker('refresh');
+                        }
+                    });
+                }
+                
+                
 
 /*Idioma de datatablet table-sector */
             var idioma_espanol=

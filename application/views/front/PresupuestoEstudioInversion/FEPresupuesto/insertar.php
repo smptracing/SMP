@@ -1,19 +1,20 @@
-<form class="form-horizontal"  id="form-addFePresupuesto" action="<?php echo base_url();?>index.php/FE_Presupuesto_Inv/insertar" method="POST">
+<form class="form-horizontal"  id="form-addFePresupuesto">
 		<h4 style="margin-bottom: 0px;">Datos generales</h4>
 		<hr style="margin: 2px;margin-bottom: 5px;">
 		<div class="row">
 			<div class="col-md-12 col-sm-12 col-xs-12">
-				<label>Estudio De Inversión</label>
-				<select id="cbx_estudioInversion" name="cbx_estudioInversion" class="form-control notValidate" required="">
-					 <option value="">Choose..</option>
-					 <option value="">Choose..</option>
-				</select>
+				<input type="text" class="form-control" name="cbx_estudioInversion" value="<?= $nombreProyectoInver->nombre_est_inv?>" id="cbx_estudioInversion" autocomplete="off" disabled="disabled">
+				<input type="hidden" class="form-control" name="idEstudioInversion"  value="<?= $nombreProyectoInver->id_est_inv?>" id="idEstudioInversion" autocomplete="off">
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<label>Sector</label>
-				<input type="text" class="form-control" id="txtSector" name="txtSector" autocomplete="off" placeholder="Sector" autocomplete="off">
+				<select id="cbx_Sector" name="cbx_Sector" class="form-control notValidate" required="">
+					<?php foreach($listarSector as $item ){ ?>
+						 <option value="<?=$item->id_sector?>"><?=$item->nombre_sector?></option>
+					<?php } ?>
+				</select>
 			</div>
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<label>Pliego</label>
@@ -25,7 +26,11 @@
 		<div class="row" id="divPresupuestoFuente">
 			<div class="col-md-3 col-sm-6 col-xs-12">
 				<label>Descripción Fuente</label>
-				<input type="text" class="form-control" id="txtDescripcionFuente" name="txtDescripcionFuente" autocomplete="off">
+				<select id="selectIdFuente" name="selectIdFuente" class="form-control notValidate" required="">
+					<?php foreach($listarFuenteFinanciamiento as $item ){ ?>
+						 <option value="<?=$item->id_fuente_finan.','.$item->nombre_fuente_finan?>"><?=$item->nombre_fuente_finan?></option>
+					<?php } ?>
+				</select>
 			</div>
 			<div class="col-md-3 col-sm-6 col-xs-12">
 				<label>Correlativo Meta</label>
@@ -54,13 +59,16 @@
 			</table>
 		</div>
 		<div class="row" style="text-align: right;">
-			<button type="submit" class="btn btn-success">Registrar fuente de finan.</button>
-			<button  class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+			<button type="submit" id="btnEnviarFormulario" class="btn btn-success">Registrar fuente de finan.</button>
+			<button class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 		</div>
 </form>
 <script>
 	$("#btnAgregarFEPresupuestoFuente").on('click', function(event)
 	{
+		$('#divPresupuestoFuente').data('formValidation').resetField($('#txtCorelativoMeta'));
+		$('#divPresupuestoFuente').data('formValidation').resetField($('#txtAnio'));
+
 		$('#divPresupuestoFuente').data('formValidation').validate();
 
 		if(!($('#divPresupuestoFuente').data('formValidation').isValid()))
@@ -68,11 +76,15 @@
 			return;
 		}
 
+		var posicionSeparadorTemp=$('#selectIdFuente').val().indexOf(',');
+		var idFuente=$('#selectIdFuente').val().substring(0, posicionSeparadorTemp);
+		var descripcionFuente=$('#selectIdFuente').val().substring(posicionSeparadorTemp+1, $('#selectIdFuente').val().length);
+
 		var htmlTemp='<tr>'+
-			'<td><input type="hidden" value='+$('#txtDescripcionFuente').val()+' name="hdDescripcionFuente[]"> '+$('#txtDescripcionFuente').val()+'</td>'+
+			'<td><input type="hidden" value='+idFuente+' name="hdIdFuente[]"> '+descripcionFuente+'</td>'+
 			'<td><input type="hidden" value='+$('#txtCorelativoMeta').val()+' name="hdCorrelativoMeta[]">'+$('#txtCorelativoMeta').val()+'</td>'+
 			'<td><input type="hidden" value='+$('#txtAnio').val()+' name="hdAnio[]">'+$('#txtAnio').val()+'</td>'+
-			'<td><a href="#" onclick="$(this).parent().parent().remove();">Eliminar</a></td>'+
+			'<td><a href="#" onclick="$(this).parent().parent().remove();" style="color: red;font-weight: bold;text-decoration: underline;">Eliminar</a></td>'+
 		'</tr>'
 
 		$('#table-PresupestoFormulacion > tbody').append(htmlTemp);
@@ -123,7 +135,7 @@
 			trigger: null,
 			fields:
 			{
-				txtDescripcionFuente:
+				selectIdFuente:
 				{
 					validators: 
 					{
@@ -154,11 +166,43 @@
 						regexp:
 	                    {
 	                        regexp: "^([0-9]){4}$",
-	                        message: '<b style="color: red;">El campo "Año" debe ser un número entero.</b>'
+	                        message: '<b style="color: red;">El campo "Año" debe ser un número de 4 díjitos.</b>'
 	                    }
 					}
 				}
 			}
 		});	
+	});
+
+	$('#btnEnviarFormulario').on('click', function(event)
+	{
+		event.preventDefault();
+
+		$('#form-addFePresupuesto').data('formValidation').validate();
+
+		if(!($('#form-addFePresupuesto').data('formValidation').isValid()))
+		{
+			return;
+		}
+
+		paginaAjaxJSON($('#form-addFePresupuesto').serialize(), '<?=base_url();?>index.php/FE_Presupuesto_Inv/insertar', 'POST', null, function(objectJSON)
+		{
+			$('#modalTemp').modal('hide');
+
+			objectJSON=JSON.parse(objectJSON);
+
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+			},
+			function()
+			{
+				window.location.href='<?=base_url();?>index.php/FE_Presupuesto_Inv/index/'+objectJSON.idEstudioInversion;
+
+				renderLoading();
+			});
+		}, false, true);
 	});
 </script>

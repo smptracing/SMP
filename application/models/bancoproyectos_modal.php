@@ -9,7 +9,7 @@ class bancoproyectos_modal extends CI_Model
 
     }
     //Add ubigeo a un proyecto
-    public function Add_ubigeo_proyecto($flat, $id_ubigeo_pi, $id_ubigeo, $txt_id_pip, $direccion, $txt_latitud, $txt_longitud)
+    public function Add_ubigeo_proyecto($flat, $id_ubigeo_pi, $id_ubigeo, $txt_id_pip, $direccion, $txt_latitud, $txt_longitud, $distritosM)
     {
         $this->db->query("execute sp_Gestionar_UbigeoPI'" . $flat . "','"
             . $id_ubigeo_pi . "','"
@@ -17,7 +17,8 @@ class bancoproyectos_modal extends CI_Model
             . $txt_id_pip . "','"
             . $direccion . "','"
             . $txt_latitud . "','"
-            . $txt_longitud . "'");
+            . $txt_longitud . "','"
+            . $distritosM . "'");
         if ($this->db->affected_rows() > 0) {
             return true;
         } else {
@@ -171,10 +172,86 @@ class bancoproyectos_modal extends CI_Model
     //listar general modalidad ejecucion PI
     public function listar_modalidad_ejec($flat, $id_pi)
     {
-        $listar_modalidad_ejec = $this->db->query("execute sp_Gestionar_ModalidadEjecucionPI'" . $flat . "',@id_pi='"
+        $listar_modalidad_ejec = $this->db->query("execute sp_Gestionar_ModalidadEjecucionPI'"
+            . $flat . "',@id_pi='"
             . $id_pi . "'");
         if ($listar_modalidad_ejec->num_rows() > 0) {
             return $listar_modalidad_ejec->result();
+        } else {
+            return false;
+        }
+    }
+    //listar provincia
+    public function listar_provincia($flat)
+    {
+        $listar_provincia = $this->db->query("execute sp_Gestionar_UbigeoPI @opcion='" . $flat . "'");
+        if ($listar_provincia->num_rows() > 0) {
+            return $listar_provincia->result();
+        } else {
+            return false;
+        }
+    }
+    //listar provincia
+    public function listar_distrito($flat, $nombre_distrito)
+    {
+        $listar_distrito = $this->db->query("execute sp_Gestionar_UbigeoPI @opcion='"
+            . $flat . "',@provincia_filtro_lista='"
+            . $nombre_distrito . "'");
+        if ($listar_distrito->num_rows() > 0) {
+            return $listar_distrito->result();
+        } else {
+            return false;
+        }
+    }
+    //Add no pip tipo
+    public function AddTipoNoPip($flat, $id_tipo_NoPip, $Cbx_TipoNoPip, $txt_id_pip_Tipologia)
+    {
+        $this->db->query("execute sp_Gestionar_NoPip'" . $flat . "','"
+            . $id_tipo_NoPip . "','"
+            . $Cbx_TipoNoPip . "','"
+            . $txt_id_pip_Tipologia . "'");
+        if ($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    //listar tipo no pip
+    public function Get_TipoNoPip($flat, $id_pi)
+    {
+        $Get_TipoNoPip = $this->db->query("execute sp_Gestionar_NoPip
+            @opcion='" . $flat . "',
+            @id_pi='" . $id_pi . "'");
+        if ($Get_TipoNoPip->num_rows() > 0) {
+            return $Get_TipoNoPip->result();
+        } else {
+            return false;
+        }
+    }
+    //registrar operacion y mantenimiento
+    public function AddOperacionMantenimiento($flat, $id_OperacionMantenimiento, $txt_id_pip_OperMant, $txt_monto_operacion, $txt_monto_mantenimiento, $txt_responsable_operacion, $txt_responsable_mantenimiento)
+    {
+        $this->db->query("execute sp_Gestionar_OperacionMantenimientoPI'" . $flat . "','"
+            . $id_OperacionMantenimiento . "','"
+            . $txt_id_pip_OperMant . "','"
+            . $txt_monto_operacion . "','"
+            . $txt_monto_mantenimiento . "','"
+            . $txt_responsable_operacion . "','"
+            . $txt_responsable_mantenimiento . "'");
+        if ($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    //listar Operacion Mantenimiento
+    public function Get_OperacionMantenimiento($flat, $id_pi)
+    {
+        $Get_TipoNoPip = $this->db->query("execute sp_Gestionar_OperacionMantenimientoPI
+            @opcion='" . $flat . "',
+            @id_pi='" . $id_pi . "'");
+        if ($Get_TipoNoPip->num_rows() > 0) {
+            return $Get_TipoNoPip->result();
         } else {
             return false;
         }

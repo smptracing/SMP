@@ -5,7 +5,7 @@
 			<div class="col-md-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
-						<h2><i class="fa fa-bars"></i>PRESUPUESTO</h2>
+						<h2><i class="fa fa-bars"></i>Presupuesto del  Proyecto Inversión: <?=strtoupper($nombreProyectoInv->nombre_est_inv)?></h2>
 						<ul class="nav navbar-right panel_toolbox">
 						</ul>
 						<div class="clearfix"></div>
@@ -21,7 +21,7 @@
 									<div class="row">
 										<div class="col-md-12 col-xs-12">
 											<div class="x_panel">
-												<button type="button" class="btn btn-primary " onclick="paginaAjaxDialogo(null, 'Registro de presupuesto para formulación y evaluación', null, base_url+'index.php/FE_Presupuesto_Inv/insertar', 'POST', null, null, false, true);"  >
+												<button type="button" class="btn btn-primary " onclick="paginaAjaxDialogo(null, 'Registro de presupuesto para formulación y evaluación', { idEstInv: '<?=$nombreProyectoInv->id_est_inv?>' }, base_url+'index.php/FE_Presupuesto_Inv/insertar', 'GET', null, null, false, true);"  >
 													<span class="fa fa-plus-circle"></span>
 													Nuevo
 												</button>
@@ -48,7 +48,7 @@
 															<td>Sector</td>
 															<td>Pliego</td>
 															<td>Presupuesto</td>
-															<td class="col-md-1 col-md-1 col-xs-12"></td>
+															<td class="col-md-2 col-md-2 col-xs-12"></td>
 														</tr>
 													</thead>
 													<tbody>
@@ -64,7 +64,11 @@
 																<?=$item->PresupuestoTotal?>
 																</td>
 																<td>
-																  	<button type='button' class='editar btn btn-primary btn-xs' ><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>
+
+																  	<button title='Fuentes y Detalle de presupuesto' class='btn btn-success btn-xs' onclick="paginaAjaxDialogo(null, 'ESTUDIO: <?= ($nombreProyectoInv->nombre_est_inv)?>',{ id: '<?=$item->id_presupuesto_fe?>', id_est_inv: '<?=$nombreProyectoInv->id_est_inv?>' }, base_url+'index.php/FE_Presupuesto_Inv/verDetalle', 'GET', null, null, false, true)" ><i class='ace-icon fa fa-eye bigger-120'></i></button>
+																	<a type="button" title='Presupuesto para la elevoración del estudio' class="btn btn-info btn-xs" href="<?= site_url('FE_Presupuesto_Inv/reportePdfDetalleGasto/'.$item->id_presupuesto_fe);?>" target="_blank"><i class='ace-icon fa fa-file-pdf-o bigger-120'></i></a>
+																  	<button title='Edición de presupuesto para formulación y evaluación' class='btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Edición de presupuesto para formulación y evaluación', { idPresupuestoFE : '<?=$item->id_presupuesto_fe?>' }, base_url+'index.php/FE_Presupuesto_Inv/editar', 'POST', null, null, false, true);"><i class='ace-icon fa fa-pencil bigger-120'></i></button>
+																  	<button title='Registrar detalle de gastos' class='btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Registrar detalle de gastos', { idPresupuestoFE : '<?=$item->id_presupuesto_fe?>' }, base_url+'index.php/FE_Detalle_Presupuesto/insertar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-bars bigger-120'></i></button>
 																</td>
 															</tr>
 														<?php } ?>
@@ -85,23 +89,12 @@
 	<div class="clearfix"></div>
 </div>
 </div>
-<?php
-$sessionTempCorrecto=$this->session->flashdata('correcto');
-$sessionTempError=$this->session->flashdata('error');
-
-if($sessionTempCorrecto){ ?>
-	<script>swal('','<?=$sessionTempCorrecto?>', "success");</script>
-<?php }
-
-if($sessionTempError){ ?>
-	<script>swal('','<?=$sessionTempError?>', "error");</script>
-<?php } ?>
 <script>
 	$(document).ready(function()
 	{
 		$('#table-Presupuesto').DataTable(
 		{
-			"language":idioma_espanol
+			"language" : idioma_espanol
 		});
 	});
 </script>

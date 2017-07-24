@@ -214,6 +214,7 @@ $(document).on("ready" ,function()
         listarTipoInversion();
     });
 
+
     $("#cbxFuncion").change(function()
     {
         var id_funcion=$("#cbxFuncion").val();

@@ -8,7 +8,7 @@
       </div>
     </div>
 
-    
+
     <script src="<?php echo base_url(); ?>assets/vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
     <script src="<?php echo base_url(); ?>assets/vendors/nprogress/nprogress.js"></script>
@@ -59,7 +59,7 @@
     <script src="<?php echo base_url(); ?>assets/vendors/pdfmake/build/vfs_fonts.js"></script>
 
 
- 
+
 
     <script src="<?php echo base_url(); ?>assets/dist/js/bootstrap-select.js"></script><!--- para el selector con buscardor---->
     <!-- Custom Theme Scripts -->
@@ -96,16 +96,16 @@
       <script src="<?php echo base_url(); ?>assets/js/administrador/NaturalezaInversion.js"></script>
      <script src="<?php echo base_url(); ?>assets/js/administrador/NivelGobierno.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/administrador/FuenteFinanciamiento.js"></script>
-
     <script src="<?php echo base_url(); ?>assets/js/administrador/TipologiaInversion.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/administrador/TipoInversion.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/administrador/EstadoCicloInversion.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/administrador/MetaPresupuestal.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/administrador/ProgramaPresupuestal.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/administrador/persona.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/administrador/cargo.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/administrador/UnidadF.js"></script>
-    <script src="<?php echo base_url();?>assets/js/Usuario/login.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/administrador/ProgramaPresupuestal.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/administrador/persona.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/administrador/cargo.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/administrador/UnidadF.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/Usuario/login.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/administrador/TipoNoPip.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/formValidation.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/bootstrap.validation.min.js"></script>
   </body>
