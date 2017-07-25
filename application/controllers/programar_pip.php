@@ -75,6 +75,18 @@ class programar_pip extends CI_Controller
             show_404();
         }
     }
+    //Listar programación
+    public function listar_programacion()
+    {
+        if ($this->input->is_ajax_request()) {
+            $flat  = "R";
+            $id_pi = $this->input->post("id_pi");
+            $data  = $this->programar_pip_modal->listar_programacion($flat, $id_pi);
+            echo json_encode(array('data' => $data));
+        } else {
+            show_404();
+        }
+    }
 
     public function index()
     {
