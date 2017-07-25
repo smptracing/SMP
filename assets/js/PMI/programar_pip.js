@@ -23,8 +23,6 @@ $(document).on("ready" ,function(){
                          }
                       });
                   });
-
-
 });
 //listar proyectos de inversion en formulacion y evaluacion
  var lista_formulacion_evaluacion=function()
@@ -151,8 +149,8 @@ $(document).on("ready" ,function(){
                       $("#txt_id_pip_programacion").val(data.id_pi);
                       $("#txt_costo_proyecto").val(data.costo_pi);
                       $("#txt_nombre_proyecto").val(data.nombre_pi);
-                        //listar_pip_OperMant(id_pi);
                         listar_aniocartera();
+
                     });
                 }
                  var listar_aniocartera=function(valor){
@@ -166,11 +164,32 @@ $(document).on("ready" ,function(){
                          //  alert(respuesta);
                          var registros = eval(respuesta3);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option  value="+registros[i]["anio"]+"> "+registros[i]["anio"]+" </option>";
+                              html +="<option  value="+registros[i]["id_cartera"]+"> "+registros[i]["anio"]+" </option>";
                             };
                             $("#Cbx_AnioCartera").html(html);
                             $('select[name=Cbx_AnioCartera]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=Cbx_AnioCartera]').change();
+                            $('.selectpicker').selectpicker('refresh');
+                            listar_Brecha();
+                        }
+                    });
+                }
+                var listar_Brecha=function(valor){
+                     html="";
+                    $("#cbxBrecha").html(html);
+                    event.preventDefault();
+                    $.ajax({
+                        "url":base_url +"index.php/MantenimientoBrecha/GetBrecha",
+                        type:"POST",
+                        success:function(respuesta3){
+                         //  alert(respuesta);
+                         var registros = eval(respuesta3);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option  value="+registros[i]["id_brecha"]+"> "+registros[i]["nombre_brecha"]+" </option>";
+                            };
+                            $("#cbxBrecha").html(html);
+                            $('select[name=cbxBrecha]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=cbxBrecha]').change();
                             $('.selectpicker').selectpicker('refresh');
                         }
                     });

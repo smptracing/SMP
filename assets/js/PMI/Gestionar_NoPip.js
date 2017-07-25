@@ -1,4 +1,7 @@
 $(document).on("ready" ,function(){
+  $("#btn_nuevoNoPip").click(function(){
+                 listarCicloInver();
+             }); 
      listar_no_pip(); //listar los no pip
           //REGISTARAR OPERACION Y MANTENIMIENTO
      $("#form_AddOperacionMantenimiento").submit(function(event)
@@ -494,6 +497,25 @@ $(document).on("ready" ,function(){
                             $("#Cbx_RubroPI").html(html);
                             $('select[name=Cbx_RubroPI]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=Cbx_RubroPI]').change();
+                            $('.selectpicker').selectpicker('refresh');
+                        }
+                    });
+                }
+
+    var listarCicloInver=function(){
+                     html="";
+                    $("#cbxEstCicInv").html(html);
+                    event.preventDefault();
+                    $.ajax({
+                        "url":base_url +"index.php/EstadoCicloInversion/get_EstadoCicloInversion",
+                        type:"POST",
+                        success:function(respuesta3){
+                         //  alert(respuesta);
+                         var registros = eval(respuesta3);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option  value="+registros[i]["id_estado_ciclo"]+"> "+registros[i]["nombre_estado_ciclo"]+" </option>";
+                            };
+                            $("#cbxEstCicInv").html(html);
                             $('.selectpicker').selectpicker('refresh');
                         }
                     });

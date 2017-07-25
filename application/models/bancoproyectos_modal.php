@@ -68,7 +68,7 @@ class bancoproyectos_modal extends CI_Model
     }
 
     //AGREGAR UN PROYECTO
-    public function AddProyectos($flat, $id_pi, $cbxUnidadEjecutora, $cbxNatI, $cbxTipologiaInv, $cbxTipoInv, $cbxGrupoFunc, $cbxNivelGob, $cbxMetaPresupuestal, $cbxProgramaPres, $txtCodigoUnico, $txtNombrePip, $txtCostoPip, $txtDevengado, $dateFechaInPip, $dateFechaViabilidad, $cbxEstadoCicloInv)
+    public function AddProyectos($flat, $id_pi, $cbxUnidadEjecutora, $cbxNatI, $cbxTipologiaInv, $cbxTipoInv, $cbxGrupoFunc, $cbxNivelGob, $cbxProgramaPres, $txtCodigoUnico, $txtNombrePip, $txtCostoPip, $txt_beneficiarios, $dateFechaInPip, $dateFechaViabilidad, $cbxEstadoCicloInv)
     {
         $this->db->query("execute sp_Gestionar_ProyectoInversion'" . $flat . "','"
             . $id_pi . "','"
@@ -78,12 +78,11 @@ class bancoproyectos_modal extends CI_Model
             . $cbxTipoInv . "','"
             . $cbxGrupoFunc . "','"
             . $cbxNivelGob . "','"
-            . $cbxMetaPresupuestal . "','"
             . $cbxProgramaPres . "','"
             . $txtCodigoUnico . "','"
             . $txtNombrePip . "','"
             . $txtCostoPip . "','"
-            . $txtDevengado . "','"
+            . $txt_beneficiarios . "','"
             . $dateFechaInPip . "','"
             . $dateFechaViabilidad . "','"
             . $cbxEstadoCicloInv . "'");

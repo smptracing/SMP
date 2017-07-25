@@ -23,31 +23,16 @@ class bancoproyectos extends CI_Controller
             $cbxTipoInv          = $this->input->post("cbx");
             $cbxGrupoFunc        = $this->input->post("cbxGrupoFunc");
             $cbxNivelGob         = $this->input->post("cbxNivelGob");
-            $cbxMetaPresupuestal = $this->input->post("cbxMetaPresupuestal");
             $cbxProgramaPres     = $this->input->post("cbxProgramaPres");
             $txtCodigoUnico      = $this->input->post("txtCodigoUnico");
             $txtNombrePip        = $this->input->post("txtNombrePip");
             $txtCostoPip         = $this->input->post("txtCostoPip");
-            $txtDevengado        = $this->input->post("txtDevengado");
+            $txt_beneficiarios   = $this->input->post("txt_beneficiarios");
             $dateFechaInPip      = "2017-03-01";
             $dateFechaViabilidad = "2017-03-01";
-            $cbxEstadoCicloInv   = $this->input->post("cbxEstadoCicloInv");
+            $cbxEstadoCicloInv   = $this->input->post("cbxEstCicInv");
             if ($this->bancoproyectos_modal->AddProyectos(
-                $flat,
-                $id_pi,
-                $cbxUnidadEjecutora,
-                $cbxNatI,
-                $cbxTipologiaInv,
-                $cbxTipoInv, $cbxGrupoFunc,
-                $cbxNivelGob,
-                $cbxMetaPresupuestal,
-                $cbxProgramaPres,
-                $txtCodigoUnico,
-                $txtNombrePip,
-                $txtCostoPip, $txtDevengado,
-                $dateFechaInPip,
-                $dateFechaViabilidad,
-                $cbxEstadoCicloInv) == false) {
+                $flat, $id_pi, $cbxUnidadEjecutora, $cbxNatI, $cbxTipologiaInv, $cbxTipoInv, $cbxGrupoFunc, $cbxNivelGob, $cbxProgramaPres, $txtCodigoUnico, $txtNombrePip, $txtCostoPip, $txt_beneficiarios, $dateFechaInPip, $dateFechaViabilidad, $cbxEstadoCicloInv) == false) {
                 echo "1";
             } else {
                 echo "2";

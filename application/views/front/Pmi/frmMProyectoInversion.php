@@ -366,9 +366,9 @@
                                       </div>
                                        <div class="col-md-4">
                                            <div class="col-md-11 col-sm-6 col-xs-12">
-                                             <label for="textbox"><span class="required">PIM</span>
+                                             <label for="textbox"><span class="required">Número de beneficiarios</span>
                                              </label>
-                                              <select id="cbxMetaPresupuestal" name="cbxMetaPresupuestal" class="selectpicker"  title="Elija Nro Meta"></select>
+                                              <input id="txtDevengado" name="txtDevengado" class="form-control col-md-7 col-xs-7 notValidate" data-validate-length-range="6" data-validate-words="2" placeholder="Devengado" required="required" type="text">
                                             </div>
                                       </div>
                               </div>
