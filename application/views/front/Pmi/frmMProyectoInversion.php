@@ -27,7 +27,7 @@
 
 
                                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
-                                      <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                      <ul id="myTab" class="nav nav-tabs" role="tablist">
                                         <li role="presentation"  class="active"><a  href="#tab_brecha" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>Proyecto Inversion</a>
                                         </li>
                                          <!--<li role="presentation" class=""><a  href="#tab_programacion" id="profile-tab" role="tab" data-toggle="tab" aria-expanded="true"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Programación</a>

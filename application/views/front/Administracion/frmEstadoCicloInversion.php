@@ -23,7 +23,7 @@
                        <div class="x_content">
                            <div class="" role="tabpanel" data-example-id="togglable-tabs">
                              <!-- Inicio Menus-->
-                                <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                <ul id="myTab" class="nav nav-tabs" role="tablist">
                                     <li role="presentation" class="active"><a href="#tab_EstadoCicloInversion" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">
                                         <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
                                          Estado de Ciclo Inversión</a>
@@ -63,15 +63,12 @@
                                                                     <thead>
                                                                        <tr>
                                                                          <th class="center">
-                                                                          <label class="pos-rel">
-                                                                           <input type="checkbox" class="ace" />
-                                                                           <span class="lbl"></span>
-                                                                          </label>
+                                                                     
                                                                          </th>
-                                                                         <th>ID CICLO</th>
-                                                                         <th>NOMBRE CICLO</th>
-                                                                         <th class="hidden-480">DESCRIPCION CICLO</th>
-                                                                         <th></th>
+                                                                         <th >ID CICLO</th>
+                                                                         <th >NOMBRE CICLO</th>
+                                                                         <th >DESCRIPCION CICLO</th>
+                                                                         <th style="width: 8%">ACCIONES</th>
                                                                       </tr>
                                                                    </thead>
                                                                 </table>
@@ -97,13 +94,13 @@
 
 
 <!-- /.ventana para registra una nueva estado ciclo de inversion-->
-<div class="modal fade" id="VentanaRegEstadoCicloInversion" role="dialog">
+<div class="modal fade" id="VentanaRegEstadoCicloInversion" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-          Estado Ciclo de Inversión</h4>
+          <h4 class="modal-title">
+          Registrar Nuevo Estado Ciclo de Inversión</h4>
         </div>
         <div class="modal-body">
          <div class="row">
@@ -128,10 +125,10 @@
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
                         <button id="send" type="submit" class="btn btn-success" >
-                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+                          <span class="glyphicon glyphicon-floppy-disk"></span>
                            Guardar</button>
                           <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
-                          <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
+                          <span class="glyphicon glyphicon-remove"></span>
                            Cancelar</button>
                         </div>
                       </div>
@@ -148,13 +145,13 @@
 <!-- /.fin ventana para registra una estado ciclo de inversion-->
 
 <!-- /.ventana para modificar una  estado ciclo de inversion-->
-<div class="modal fade" id="VentanaEditEstadoCicloInversion" role="dialog">
+<div class="modal fade" id="VentanaEditEstadoCicloInversion" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-          Estado Ciclo de Inversión</h4>
+          <h4 class="modal-title">
+          Modificar Estado Ciclo de Inversión</h4>
         </div>
         <div class="modal-body">
          <div class="row">
@@ -187,10 +184,10 @@
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
                         <button id="send" type="submit" class="btn btn-success" >
-                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+                          <span class="glyphicon glyphicon-floppy-disk"></span>
                            Guardar</button>
                           <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
-                          <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
+                          <span class="glyphicon glyphicon-remove"></span>
                            Cancelar</button>
                         </div>
                       </div>
@@ -206,5 +203,11 @@
 </div>
 <!-- /.fin ventana para modificar una estado ciclo de inversion-->
 
+<script>
+  $('.modal').on('hidden.bs.modal', function(){ 
+    $(this).find('form')[0].reset(); //para borrar todos los datos que tenga los input, textareas, select.
+    $("label.error").remove();  //lo utilice para borrar la etiqueta de error del jquery validate
+  });
+</script>
 
 

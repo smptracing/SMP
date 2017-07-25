@@ -71,7 +71,7 @@ $(document).on("ready" ,function()
                                     },
                                 "columns":[
                                
-                                   {"data":"id_nivel_gob"},
+                                   {"data":"id_nivel_gob", "visible" : false},
                                   {"data":"nombre_nivel_gob"},
                                   {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaEditNivelGobierno'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><span class='glyphicon glyphicon-trash' aria-hidden='true'></span></button>"}
                                ],

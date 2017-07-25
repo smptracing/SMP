@@ -18,11 +18,16 @@ $(document).on("ready" ,function(){
                             if (resp=='2') {
                              swal("NO SE REGISTRÓ","NO se regristró ", "error");
                            }
-                          $('#Table_OperacionMantenimiento').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
+                          $('#table_formulacion_evaluacion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
                              formReset();
                          }
                       });
                   });
+     function formReset()
+          {
+          document.getElementById("form_AddProgramacion").reset();       
+          }
+
 });
 //listar proyectos de inversion en formulacion y evaluacion
  var lista_formulacion_evaluacion=function()
@@ -62,6 +67,27 @@ $(document).on("ready" ,function(){
         AddProgramacion("#table_formulacion_evaluacion",table);
 }
 //fin de proyectos de inversion en formulacion y evaluacion
+//listar programación por cada proyecto
+ var listar_programacion=function(id_pi)
+                {
+                    var table=$("#Table_Programar").DataTable({
+                      "processing": true,
+                      "serverSide":false,
+                       destroy:true,
+                         "ajax":{
+                                     url:base_url+"index.php/programar_pip/listar_programacion",
+                                     type:"POST",
+                                     data :{id_pi:id_pi}
+                                    },
+                                "columns":[
+                                    {"data":"id_pi","visible": false},
+                                    {"data":"año_prog"},
+                                    {"data":"monto_prog"}
+                                    ],
+                               "language":idioma_espanol
+                    });
+                }
+//fin listar programación por cada proyecto
 //listar proyectos de inversion en Ejecucion
  var lista_ejecucion=function()
 {
@@ -98,6 +124,7 @@ $(document).on("ready" ,function(){
                                 ],
                                "language":idioma_espanol
                     });
+        AddProgramacion("#table_ejecucion",table);
 }
 //fin de proyectos de inversion en Ejecucion
 //listar proyectos de inversion en Funcionamiento
@@ -136,7 +163,7 @@ $(document).on("ready" ,function(){
                                 ],
                                "language":idioma_espanol
                     });
-      
+     AddProgramacion("#Table_funcionamiento",table); 
 }
 //fin de proyectos de inversion en Funcionamiento
 
@@ -150,6 +177,7 @@ $(document).on("ready" ,function(){
                       $("#txt_costo_proyecto").val(data.costo_pi);
                       $("#txt_nombre_proyecto").val(data.nombre_pi);
                         listar_aniocartera();
+                        listar_programacion(id_pi);
 
                     });
                 }

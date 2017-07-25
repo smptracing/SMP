@@ -16,7 +16,7 @@
 
 
                                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
-                                      <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                      <ul id="myTab" class="nav nav-tabs" role="tablist">
                                         <li role="presentation" class="active"><a href="#tab_Sector" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"> <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Función</a>
                                         </li>
                                         <li role="presentation" class=""><a href="#tab_Entidad" role="tab"  id="profile-tab" data-toggle="tab" aria-expanded="false"> <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>  División Funcional</a>
@@ -34,7 +34,6 @@
                                                         <div class="x_panel">
                                                             <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#VentanaRegistraFuncion" >
                                                                       <span class="fa fa-plus-circle"></span>
-
                                                                 Nuevo
                                                             </button>
                                                           <div class="x_title">
@@ -57,9 +56,9 @@
                                                               <thead>
                                                                 <tr>
                                                                   <th>ID </th>
-                                                                  <th>CODIGO FUNCION</th>
-                                                                  <th>NOMBRE FUNCION</th>
-                                                                  <th></th>
+                                                                  <th style="width: 8%">CODIGO FUNCION</th>
+                                                                  <th style="width: 68%">NOMBRE FUNCION</th>
+                                                                  <th style="width: 8%">ACCIONES</th>
                                                                 </tr>
                                                               </thead>
                                                             </table>
@@ -103,7 +102,7 @@
                                                                   <th>FUNCION</th>
                                                                   <th>CODIGO DIVISION FUNCIONAL</th>
                                                                   <th>NOBRE DE DIVISION FUNCIONAL</th>
-                                                                  <th></th>
+                                                                  <th>ACCIONES</th>
                                                                 </tr>
                                                               </thead>
 
@@ -150,7 +149,7 @@
                                                                   <th>NOMBRE DIVISION FUNCIONAL</th>
                                                                   <th>ID SECTOR</th>
                                                                   <th>SECTOR</th>
-                                                                  <th></th>
+                                                                  <th>ACCIONES</th>
                                                                 </tr>
                                                               </thead>
                                                               <tbody>
@@ -177,12 +176,12 @@
      </div>
         
 <!-- /.ventana para registra funcion -->			
-<div class="modal fade" id="VentanaRegistraFuncion" role="dialog">
+<div class="modal fade" id="VentanaRegistraFuncion"  data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Registrar Nueva Funcion</h4>
+          <h4 class="modal-title">Registrar Nueva Función</h4>
         </div>
         <div class="modal-body">
          <div class="row">
@@ -190,17 +189,17 @@
                   <!-- FORULARIO PARA REGISTRAR NUEVO FUNCION  -->
                 <form class="form-horizontal " id="form-addFuncion" action="<?php echo  base_url();?>Funcion/GetFuncion" method="POST">
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Codigo Función <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Código Función <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_codigofuncion" name="txt_codigofuncion" class="form-control col-md-7 col-xs-12" data-inputmask="'mask':'99'" data-validate-length-range="2" data-validate-words="2"  placeholder="Codigo Funcion" required="required" type="text"> 
+                          <input id="txt_codigofuncion" name="txt_codigofuncion" class="form-control col-md-7 col-xs-12" data-inputmask="'mask':'99'" data-validate-length-range="2" data-validate-words="2"  placeholder="Código Función" required="required" type="text"> 
                         </div>
                       </div>
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre Función <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_nombrefuncion" name="txt_nombrefuncion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Nombre Funcion" required="required" type="text">
+                          <input id="txt_nombrefuncion" name="txt_nombrefuncion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Nombre Función" required="required" type="text">
                         </div>
                       </div>
                       <div class="ln_solid"></div>
@@ -234,7 +233,7 @@
 
 
 <!-- /.ventana para registra una nuevo dision funcional-->			
-<div class="modal fade" id="VentanaRegistraDivisionF" role="dialog">
+<div class="modal fade" id="VentanaRegistraDivisionF" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -264,7 +263,7 @@
                     <div class="form-group">
                            <label class="control-label col-md-3 col-sm-3 col-xs-6">Función</label>  
                             <div class="col-md-6 col-sm-9 col-xs-6">
-                                <select id="listaFuncionC" name="listaFuncionC" class="selectpicker" data-live-search="true"  title="Buscar Funcion...">
+                                <select id="listaFuncionC" name="listaFuncionC" class="selectpicker" data-live-search="true"  title="Elegir o buscar función">
                                  </select>
                             </div>
                     </div>       
@@ -293,12 +292,12 @@
 <!-- /.fin ventana para registra una nueva DIVISION  FUNCIONAL-->
 
 <!-- /.ventana para registra grupo funcional-->			
-<div class="modal fade" id="VentanaRegistraGrupoF" role="dialog">
+<div class="modal fade" id="VentanaRegistraGrupoF" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Registrar Nuevo grupo funcional</h4>
+          <h4 class="modal-title">Registrar Nuevo Grupo Funcional</h4>
         </div>
         <div class="modal-body">
          <div class="row">
@@ -310,7 +309,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Código  Grupo Funcional <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_codigoGfuncion" name="txt_codigoGfuncion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" data-inputmask="'mask':'9999'" placeholder="Codigo  Grupo Funcional" required="required" type="text">
+                          <input id="txt_codigoGfuncion" name="txt_codigoGfuncion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" data-inputmask="'mask':'9999'" placeholder="Código  Grupo Funcional" required="required" type="text">
                         </div>
                       </div>
                        <div class="item form-group">
@@ -323,7 +322,7 @@
                     <div class="form-group">
                            <label class="control-label col-md-3 col-sm-3 col-xs-6">División Funcional</label>  
                             <div class="col-md-6 col-sm-9 col-xs-6">
-                                <select id="SelecDivisionFF" name="SelecDivisionFF" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Buscar División Funcional...">
+                                <select id="SelecDivisionFF" name="SelecDivisionFF" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Buscar División Funcional">
 
                                  </select>
                             </div>
@@ -331,7 +330,7 @@
                     <div class="form-group">
                            <label class="control-label col-md-3 col-sm-3 col-xs-6"> Sector </label>  
                             <div class="col-md-6 col-sm-9 col-xs-6">
-                                <select id="SelecSector" name="SelecSector" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Buscar Sector...">
+                                <select id="SelecSector" name="SelecSector" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Buscar Sector">
                                         
                                  </select>
                             </div>
@@ -362,7 +361,7 @@
   </div>
 <!-- /.fin ventana para registra una nuevo grupo funcional-->
 <!-- /.ventana para modificar grupo funcional-->     
-<div class="modal fade" id="VentanaUpdateGrupoF" role="dialog">
+<div class="modal fade" id="VentanaUpdateGrupoF" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -431,7 +430,7 @@
   </div>
 <!-- /.fin ventana para registra una nuevo grupo funcional-->
 <!-- modificar la funcion-->
-<div class="modal fade" id="VentanaModificarFuncion" role="dialog">
+<div class="modal fade" id="VentanaModificarFuncion" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -489,7 +488,7 @@
 <!-- fin de modificar la funcion-->
 <!-- modificar division  funcional-->
 
-<div class="modal fade" id="VentanaUpdateDivisionF" role="dialog">
+<div class="modal fade" id="VentanaUpdateDivisionF" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -548,5 +547,9 @@
   </div>
 <!-- fin para modificar division  funcional-->
 
-
-
+<script>
+  $('.modal').on('hidden.bs.modal', function(){ 
+    $(this).find('form')[0].reset(); //para borrar todos los datos que tenga los input, textareas, select.
+    $("label.error").remove();  //lo utilice para borrar la etiqueta de error del jquery validate
+  });
+</script>

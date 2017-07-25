@@ -63,8 +63,8 @@ var lista_oficinas = function () {
             "dataSrc": ""
         },
         "columns": [
-            {"data": "id_oficina"},
-            {"data": "id_subgerencia"},
+            {"data": "id_oficina", "visible" : false},
+            {"data": "id_subgerencia", "visible" : false},
             {"data": "denom_oficina"},
             {"data": "denom_subgerencia"},
             {"data": "denom_gerencia"},

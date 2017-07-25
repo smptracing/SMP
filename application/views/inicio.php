@@ -88,8 +88,8 @@
                                 <!-- small box -->
                                 <div class="small-box bg-yellow">
                                     <div class="inner">
-                                        <h3>L</h3>
-                                        <p>Liquidacion de Proyectos de Inversion</p>
+                                        <h3>S</h3>
+                                        <p>Seguimiento de Proyectos de Inversion</p>
                                     </div>
                                     <div class="icon">
                                         <i class="fa  fa-check-square-o"></i>

@@ -16,7 +16,7 @@
 
 
                                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
-                                      <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                      <ul id="myTab" class="nav nav-tabs" role="tablist">
                                         <li role="presentation" class="active"><a href="#tab_Sector"  id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">
                                         <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Sectorvdsfds
                                         
@@ -55,8 +55,8 @@
                                                               <thead>
                                                                 <tr>
                                                                   <th class="col-sm-1">ID</th>
-                                                                  <th class="">NOMBRE SECTOR</th>
-                                                                  <th class="col-sm-2"></th>
+                                                                  <th style="width: 91%">NOMBRE SECTOR</th>
+                                                                  <th style="width: 9%">ACCIONES</th>
                                                                 </tr>
                                                               </thead>
                                                             </table>
@@ -100,7 +100,7 @@
                                                                   <th>NOMBRE SECTOR</th>
                                                                   <th>NOMBRE ENTIDAD</th>
                                                                   <th>DENOMINACION  ENTIDAD</th>
-                                                                  <th class="col-sm-1"></th>
+                                                                  <th class="col-sm-1">ACCIONES</th>
                                                                 </tr>
                                                               </thead>
 
@@ -195,7 +195,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre Entidad <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_NombreEntidad" name="txt_NombreEntidad" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Nombre del sector" required="required" type="text">
+                          <input id="txt_NombreEntidad" name="txt_NombreEntidad" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Nombre de la entidad" required="required" type="text">
                         </div>
                       </div>
                        <div class="item form-group">

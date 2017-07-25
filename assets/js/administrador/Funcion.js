@@ -24,6 +24,7 @@
 
 				$('#VentanaRegistraFuncion').modal('hide');
 			}
+
 		});
 	});
 
