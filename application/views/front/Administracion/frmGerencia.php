@@ -16,7 +16,7 @@
 
 
                         <div class="" role="tabpanel" data-example-id="togglable-tabs">
-                            <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                            <ul id="myTab" class="nav nav-tabs" role="tablist">
 
                                 <li role="presentation" class="active">
                                     <a href="#tab_Sector" id="home-tab" role="tab"

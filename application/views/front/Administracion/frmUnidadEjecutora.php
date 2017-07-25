@@ -21,7 +21,7 @@
 
 
                                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
-                                      <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                      <ul id="myTab" class="nav nav-tabs" role="tablist">
                                       <!--  <li role="presentation" class="active"><a  href="#tab_RubroEjecucion" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Rubro de ejecucion</a>
                                         </li>-->
                                         <li role="presentation" class="active"><a  href="#tab_ModalidadEjecucion" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Modalidad Ejecucion</a>

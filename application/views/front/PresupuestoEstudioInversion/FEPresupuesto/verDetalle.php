@@ -1,4 +1,4 @@
-<ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+<ul id="myTab" class="nav nav-tabs" role="tablist">
 	<li role="presentation" class="active"><a href="#tab_tipo_estudioFE" role="tab"  id="profile-tab" data-toggle="tab" aria-expanded="false"> <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>Fuentes de presupuesto</a>
 	</li>
 	<li role="presentation" class=""><a href="#tab_nivelInversio"  role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"> <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>Detalle de presupuesto</a>

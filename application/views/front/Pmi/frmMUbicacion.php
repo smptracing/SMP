@@ -25,7 +25,7 @@
 
 
                                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
-                                      <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                      <ul id="myTab" class="nav nav-tabs" role="tablist">
                                         <li role="presentation" class="active"><a href="#tab_Ubigeo" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">   <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Ubigeo</a>
                                         </li>
                                         <li role="presentation" class=""><a href="#tab_ModalidadEjecucion" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">  <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Proyecto ubigeo</a>
