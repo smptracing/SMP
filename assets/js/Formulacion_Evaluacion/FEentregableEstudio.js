@@ -5,13 +5,13 @@
               listadoFormuladores();
               listarDenominacionFE();
               listadoPersona();//para las actividades
-
+              valorizacionRestante();
               $("#txt_denominacion_entre").change(function(){
                 var txt_denominacion_entre        =$("#txt_denominacion_entre").val();
                 $("#txt_denoMultiple").val(txt_denominacion_entre);
               });
 
-              $("#btn_entregableC").click(function(){
+              /*$("#btn_entregableC").click(function(){
                   var txt_nombre_entre        =$("#txt_nombre_entre").val();
                   var txt_denominacion_entre  =$("#txt_denoMultiple").val();
                   var txt_valoracion_entre    =$("#txt_valoracion_entre").val();
@@ -19,30 +19,58 @@
                  
                   var txt_levantamintoO_entre =$("#txt_levantamintoO_entre").val();
                    addEntreEstudio(txt_nombre_entre,txt_denominacion_entre,txt_valoracion_entre,txt_observacio_entre,txt_levantamintoO_entre);
-              });
+              });*/
 
-              $("#txt_valoracion_entre").keyup(function(){//verificar si el entregable supera el o no el cien porciento para inavilitar el boton
-                   
+              $("#btn_entregableC").click(function(){//verificar si el entregable supera el o no el cien porciento para inavilitar el boton
+
+                   event.preventDefault();
+
+                   $('#form-AddEntregable').data('formValidation').validate();
+
+					if(!($('#form-AddEntregable').data('formValidation').isValid()))
+					{
+						return;
+					}
                    var sumaValoracion=$("#txt_valoracion_entre").val();
-                  $.ajax({
-                              url: base_url+"index.php/FEentregableEstudio/MostrarAvance",//MOSTRAR AVANCE EN UN CAJA DE TEXTO PARA HABILTAR O INHABILTAR
-                              type:"POST",
-                              data:{},
-                              success: function(data){
-                                var registros = eval(data); 
-                               for (var i = 0; i <registros.length;i++) {
-                                    sumaValoracion=parseInt(sumaValoracion)+parseInt(registros[i]["valoracion"]);
-                                    
-                                 };
-                                 if(sumaValoracion>100){
-                                    document.getElementById('btn_entregableC').disabled=true;
-                                    alert("LA SUMA DE SUS ENTREGABLES SUPERA AL 100%");
-                                 }else{
-                                    document.getElementById('btn_entregableC').disabled=false;
-                                 }
+                   $.ajax({
+                          url: base_url+"index.php/FEentregableEstudio/MostrarAvance",//MOSTRAR AVANCE EN UN CAJA DE TEXTO PARA HABILTAR O INHABILTAR
+                          type:"POST",
+                          data:{},
+                          success: function(data)
+                          {
+
+                            var registros = eval(data); 
+                            var sumaTotalValori=0;
+                          	 for (var i = 0; i <registros.length;i++)
+                             {
+                                sumaValoracion=parseInt(sumaValoracion)+parseInt(registros[i]["valoracion"]);
+                                sumaTotalValori=parseInt(registros[i]["valoracion"])+parseInt(sumaTotalValori);
+                             };
+                             if(sumaValoracion>100)
+                             {
+                               	$("#PorcentajeSuperado ").html('');
+                                var restante=(parseInt(sumaValoracion)-100);
+                                document.getElementById('btn_entregableC').disabled=false;
+                                $("#PorcentajeSuperado ").html('<p>Sobrepaso la valorizacion en :'+restante+'%</p>');
+
+                             }else
+                             {
+                             	  var txt_nombre_entre        =$("#txt_nombre_entre").val();
+				                  var txt_denominacion_entre  =$("#txt_denoMultiple").val();
+				                  var txt_valoracion_entre    =$("#txt_valoracion_entre").val();
+				                  var txt_observacio_entre    =$("#txt_observacio_entre").val();
+				                 $("#PorcentajeSuperado ").html('');
+				                  var txt_levantamintoO_entre =$("#txt_levantamintoO_entre").val();
+				                  addEntreEstudio(txt_nombre_entre,txt_denominacion_entre,txt_valoracion_entre,txt_observacio_entre,txt_levantamintoO_entre);
+                              	  document.getElementById('btn_entregableC').disabled=false;
+
+                              	  $('#VentanaEntregable').modal('hide');
+                              	  formLimpiar();
+
+                             }
 
                                  
-                              }
+                            }
                         });
               });
 
@@ -73,72 +101,7 @@
                   //entregable_estudio = $(this).parent().parent().children("th:eq(0)").text();
                 });
 
-               //buscar responsable
-              /*
-                $("#text_buscarPersona").keyup(function(){//buscar persona para actividades
-                 var text_buscarPersona ='Formulador';//$("#text_buscarPersona").val();
-                 
-                 $.ajax({
-                    url: base_url+"index.php/Personal/BuscarPersonaCargo",
-                    type:"POST",
-                    data:{text_buscarPersona:text_buscarPersona},
-                    success: function(data){
-                     console.log(data);
-                      /*var registros = eval(data);
-                               html1="";
-                               $("#table_responsable").html(html1);
-                        if(registros.length>0)
-                         {
-                             html1+="<thead> </thead>";
-                             for (var i = 0; i <registros.length;i++) {
-                                  html1 +="<tbody> <tr><th> <input type='checkbox' name='vehicle' value='Bike'></th><br></th><th> <a href='"+registros[i]["id_persona"]+"' type='button' class='btn btn-link'><img src='"+base_url+"assets/images/user.png' class='avatar' ></a>Gerencia:</br> <h5>Nombre completo:</h5> "+registros[i]["nombres"]+" "+registros[i]["apellido_p"]+" "+registros[i]["apellido_m"]+"</th> <th><div class='col-md-8 col-sm-8 col-xs-8 form-group has-feedback'></div></th></tr>";
-                                  $("#txt_idPersona").val(registros[i]["id_persona"]);
-                                   html1 +="</tbody>";
-                                  $("#table_responsable").html(html1);
-                               };
-                               
-                                 
-                           
-                          }else{
-                            alert("no hay data");
-                          }*/
-                   // }
-              //});
-        //});/
-//buscar perona para actividad
-       /* $("#text_buscarPersonaActividad").keyup(function(){
-                 var text_buscarPersona = $("#text_buscarPersonaActividad").val();
-                 
-                 $.ajax({
-                    url: base_url+"index.php/Personal/BuscarPersona",
-                    type:"POST",
-                    data:{text_buscarPersona:text_buscarPersona},
-                    success: function(data){
-                               var registros = eval(data);
-                                html1="";
-                               $("#table_responsable2").html(html1);
-                      if(registros.length>0)
-                       {
 
-                          var registros = eval(data);
-                             html1+="<thead> </thead>"
-                             for (var i = 0; i <1;i++) {
-                                  html1 +="<tbody> <tr><th> <input type='checkbox'></th><br></th><th> <a href='"+registros[i]["id_persona"]+"' type='button' class='btn btn-link'><img src='"+base_url+"assets/images/user.png' class='avatar' ></a>Gerencia:</br> <h5>Nombre completo:</h5> "+registros[i]["nombres"]+" "+registros[i]["apellido_p"]+" "+registros[i]["apellido_m"]+"</th> <th><div class='col-md-8 col</th></tr>";
-                                  $("#txt_idPersonaActividad").val(registros[i]["id_persona"]);
-                                  html1 +="</tbody>";
-                                  $("#table_responsable2").html(html1);
-                               };     
-                        }
-                        else{
-                            alert("no hay data");
-                          }
-                    }
-              });
-        });*/
-
-
-
-               //Fin buscar responsable formuladores
           $("#form-AsignacionPersonalEntregable").submit(function(event)//para poder añadir personal al entregable
                   {
                       event.preventDefault();
@@ -157,8 +120,8 @@
                                    $('#table_entregable').dataTable()._fnAjaxUpdate();
                                    swal("",registros[i]["MENSAJE"], "success");
                                    $('#form-AddEntregable')[0].reset();
-                                   $("#VentanaEntregable").modal("hide");
-                                 
+                                   $("#VentanaAsignacionPersonalEntregable").modal("hide");
+                                 	
                                }else{
                                       $('#table_entregable').dataTable()._fnAjaxUpdate();
                                       swal('',registros[i]["MENSAJE"],'error' );
@@ -194,7 +157,31 @@
             //location.reload();
           });
 });
+ var valorizacionRestante=function()
+ {
+		$.ajax({
+		url: base_url+"index.php/FEentregableEstudio/MostrarAvance",//MOSTRAR AVANCE EN UN CAJA DE TEXTO PARA HABILTAR O INHABILTAR
+		type:"POST",
+		data:{},
+			success: function(data)
+			{
+				
+				var registros = eval(data); 
+				var sumaTotalValoriEntregable=0;
+				for (var i = 0; i <registros.length;i++)
+				{
+					sumaTotalValoriEntregable=sumaTotalValoriEntregable+parseInt(registros[i]["valoracion"]);
+				};
+			$("#PorcentajeRestanteValorizacion ").append("Valorización Restante "+(100-sumaTotalValoriEntregable)+"%");
+			}
+		});
 
+ }
+//limpiar campos
+function formLimpiar()
+{
+	document.getElementById("form-AddEntregable").reset();
+}
 //refrescar gant
 var refrescarGantt=function()
 {
@@ -211,19 +198,9 @@ var addEntreEstudio=function(txt_nombre_entre,txt_denominacion_entre,txt_valorac
                           url:base_url+"index.php/FEentregableEstudio/Add_Entregable",
                           type:"POST",
                           data:{txt_nombre_entre:txt_nombre_entre,txt_denominacion_entre:txt_denominacion_entre,txt_valoracion_entre:txt_valoracion_entre,txt_observacio_entre:txt_observacio_entre,txt_levantamintoO_entre:txt_levantamintoO_entre},
-                          success:function(resp){
-                            //alert(resp);
-                          var registros = eval(resp);
-                          for (var i = 0; i < registros.length; i++) {
-                               if(registros[i]["VALOR"]==1){
-                                    swal("",registros[i]["MENSAJE"], "success");
-                                   $('#form-AddEntregable')[0].reset();
-                                   $("#VentanaEntregable").modal("hide");
-                                   $('#table_entregable').dataTable()._fnAjaxUpdate();
-                               }else{
-                                      swal('',registros[i]["MENSAJE"],'error' );
-                               }
-                           };
+                          success:function(resp)
+                          {
+                           
                            swal("",resp, "success");
                            $('#form-AddEntregable')[0].reset();
                            $("#VentanaEntregable").modal("hide");
@@ -311,7 +288,7 @@ var listadoFormuladores=function()
               $('#table_responsableFormulador tbody').on('click', 'tr', function () {
                   var data =table.row(this).data();
                    $("#txt_idPersona").val(data.id_persona);
-                   //console.log(data.id_persona);
+                   
               } );             
 }
 
@@ -361,7 +338,7 @@ var listadoPersona=function()
                    $('#table_responsableActividad tbody').on('click', 'tr', function () {
                          var data =table.row(this).data();
                          $("#txt_idPersonaActividad").val(data.id_persona);
-                         //console.log(data.id_persona);
+                         
                    } );  
 
 

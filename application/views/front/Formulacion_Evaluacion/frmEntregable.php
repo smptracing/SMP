@@ -37,7 +37,7 @@
                   <div class="x_content">
 
                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
-                                      <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                      <ul id="myTab" class="nav nav-tabs" role="tablist">
                                           <li role="presentation" class="active"><a href="#tab_entregable" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"> <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></a>
                                           </li>
                                           <li role="presentation" class=""><a href="#tab_tipo_inversion" role="tab"  id="profile-tab" data-toggle="tab" aria-expanded="false"> <span class="glyphicon glyphicon-th" aria-hidden="true"></span></a>
@@ -66,7 +66,7 @@
 
                                                           <div class="x_content">
 
-                                                                  <!-- start project list -->
+                                                                 
                                                                   <div class="table-responsive">
                                                                     <table id="table_entregable" class="table table-striped">
                                                                           <thead>
@@ -197,7 +197,7 @@
 
 
                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
-                      <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                      <ul id="myTab" class="nav nav-tabs" role="tablist">
                         <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></a>
                         </li>
                         <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></a>
@@ -249,59 +249,64 @@
           <h4 class="modal-title">Entregable de Estudio</h4>
         </div>
         <div class="modal-body">
-         <div class="row">
                 <div class="col-xs-12">
                 <form class="form-horizontal " id="form-AddEntregable"  method="POST" >
+                    <div class="row">
+	                      <div class="col-md-12 col-sm-12 col-xs-12">
+	                        <label>Componente</label> 
+	                        <input id="txt_nombre_entre" name="txt_nombre_entre" type="text" class="form-control" autocomplete="off">
+	                      </div>
+	                      <div class="col-md-6 col-sm-6 col-xs-12">
+	                      <label>Entregable</label>
+	                          <select class="selectpicker" id="txt_denominacion_entre" mane="txt_denominacion_entre" class="selectpicker" data-live-search-normalize="true" data-live-search="true" data-container="body" data-header="Denominaciones"  title="Seleccionar Entregable"  >
+	                            
+	                          </select>
+	                      </div>
+                    </div>
+                    <div class="row">
+	                      <input type="hidden"  id="txt_denoMultiple" name="txt_denoMultiple" class="form-control">
+	                      <div class="col-md-4">
+	                        <label>Valoración</label>
+	                        <input type="text"  id="txt_valoracion_entre" name="txt_valoracion_entre" class="form-control" autocomplete="off"><p>.</p>
+	                      </div>
+	                      <div id="PorcentajeSuperado" style="text-align: right;color: red; margin-top: 25px;" class="col-md-4">
+	                        	
+	                      </div>
+	                      <div id="PorcentajeRestanteValorizacion" style="text-align:center ;color:#008080; margin-top:30px;" class="col-md-4">
+	                        	
+	                      </div>
+                     </div>
 
-                      <div class="col-md-12 col-sm-12 col-xs-12 input-group">
-                        <span class="input-group-addon">Componente</span>
-                        <input id="txt_nombre_entre" name="txt_nombre_entre" type="text" class="form-control" name="msg" placeholder="">
-                      </div>
-                      <div class="col-md-4 col-sm-4 col-xs-12 input-group">
-                      <span class="input-group-addon">Entregable </span>
-                          <select class="selectpicker" id="txt_denominacion_entre" mane="txt_denominacion_entre" class="selectpicker" data-live-search-normalize="true" data-live-search="true" data-container="body" data-header="Denominaciones" data-max-options="2" max-options-text="Solo dos opciones" title="Seleccionar ocupaciones"  >
-                            
-                          </select>
-
-
-                      </div>
-                      <input type="hidden"  id="txt_denoMultiple" name="txt_denoMultiple" class="form-control">
-
-                      <div class="col-md-4 col-sm-4 col-xs-4 form-group has-feedback">
-                        <label class="col-md-3 col-sm-3 col-xs-3">Valoración</label>
-                        <input type="text"  id="txt_valoracion_entre" name="txt_valoracion_entre" class="form-control" id="inputSuccess3">
-                      
-                      </div>
-
-
-                     <div class="col-md-12 col-sm-12 col-xs-12 input-group">
-                        <span class="input-group-addon">Observación</span>
-                        <input id="txt_observacio_entre" name="txt_observacio_entre" type="text" class="form-control" name="msg">
-                      </div>
-                      <div class="col-md-12 col-sm-12 col-xs-12 input-group">
-                        <span class="input-group-addon">Levantamineto de Observación</span>
-                        <input id="txt_levantamintoO_entre" name="txt_levantamintoO_entre" type="text" class="form-control" name="msg">
-                      </div>
+					<div class="row">
+	                     <div class="col-md-12 col-sm-12 col-xs-12 ">
+	                        <label>Observación</label>
+	                        <input id="txt_observacio_entre" name="txt_observacio_entre" type="text" class="form-control" name="msg">
+	                      </div>
+	                      <div class="col-md-12 col-sm-12 col-xs-12 ">
+	                        <label>Levantamiento de Observación</label>
+	                        <input id="txt_levantamintoO_entre" name="txt_levantamintoO_entre" type="text" class="form-control" name="msg">
+	                      </div>
+                     </div>
 
                        <div class="ln_solid"></div>
-                      <div class="form-group">
+                      <div class="row" style="text-align: right;">
                         <div class="col-md-6 col-md-offset-3">
 
-                          <button  id="btn_entregableC" type="submit" class="btn btn-success">
-                            <span class="glyphicon glyphicon-floppy-disk"></span>
-                            Guardar
-                          </button>
-                          <button type="submit" class="btn btn-danger" class="btn btn-danger" data-dismiss="modal">
-                             <span class="glyphicon glyphicon-remove"></span>
-                            Cancelar
-                          </button>
+	                          <button  id="btn_entregableC"  name="btn_entregableC"  class="btn btn-success">
+	                            <span class="glyphicon glyphicon-floppy-disk"></span>
+	                            Guardar
+	                          </button>
+	                          <button  class="btn btn-danger" class="btn btn-danger" data-dismiss="modal">
+	                             <span class="glyphicon glyphicon-remove"></span>
+	                            Cancelar
+	                          </button>
 
                         </div>
                       </div>
 
                 </form>
             </div>
-        </div>
+    
         </div>
         <div class="modal-footer">
         </div>
@@ -672,4 +677,55 @@
   </div>
 </div>
 <!-- fin venta gant-->
+  <script>
+ 
+     
+    $(function()
+    {
+      $('#form-AddEntregable').formValidation(
+      {
+        framework: 'bootstrap',
+        excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+        live: 'enabled',
+        message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+        trigger: null,
+        fields:
+        {
+          txt_nombre_entre:
+          {
+            validators: 
+            {
+              notEmpty:
+              {
+                message: '<b style="color: red;">El campo "Nombre de Componente" es requerido.</b>'
+              },
+              regexp:
+	          {
+	                regexp: "[a-zA-Z áéíóúÁÉÍÓÚñÑ]",
+	                message: '<b style="color: red;">El campo "Nombre entregable" debe se texto.</b>'
+	          }
+            }
+          },
+           txt_valoracion_entre:
+          {
+            validators: 
+            {
+              notEmpty:
+              {
+                message: '<b style="color: red;">El campo "Valoración" es requerido.</b>'
+              },
+              regexp:
+	          {
+	                regexp: "^0*(?:[1-9][0-9]?|100)$",
+	                message: '<b style="color: red;">El campo "Valoración" debe se numero mayor a 0 y menor o igual a 100.</b>'
+	          }
+            }
+          }
+        }
+      });
+    });
+
+
+
+  </script>
 

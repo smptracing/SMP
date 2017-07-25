@@ -1,4 +1,7 @@
 $(document).on("ready" ,function(){
+  $("#btn_NuevoPip").click(function(){
+                 listarCicloInver();
+             }); 
      listar_proyectos_inversion();/*llamar a mi datatablet listar proyectosinverision*/
                 //REGISTARAR OPERACION Y MANTENIMIENTO
      $("#form_AddOperacionMantenimiento").submit(function(event)
@@ -440,7 +443,24 @@ $(document).on("ready" ,function(){
                         }
                     });
                 }
-
+var listarCicloInver=function(){
+                     html="";
+                    $("#cbxEstCicInv").html(html);
+                    event.preventDefault();
+                    $.ajax({
+                        "url":base_url +"index.php/EstadoCicloInversion/get_EstadoCicloInversion",
+                        type:"POST",
+                        success:function(respuesta3){
+                         //  alert(respuesta);
+                         var registros = eval(respuesta3);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option  value="+registros[i]["id_estado_ciclo"]+"> "+registros[i]["nombre_estado_ciclo"]+" </option>";
+                            };
+                            $("#cbxEstCicInv").html(html);
+                            $('.selectpicker').selectpicker('refresh');
+                        }
+                    });
+                }
 
 /*Idioma de datatablet table-sector */
             var idioma_espanol=

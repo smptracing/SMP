@@ -12,7 +12,7 @@
 					</div>
 					<div class="x_content">
 						<div class="" role="tabpanel" data-example-id="togglable-tabs">
-							<ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+							<ul id="myTab" class="nav nav-tabs" role="tablist">
 								<li role="presentation" class="active"><a href="#tab_etapasFE" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"> <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>Presupuesto</a>
 								</li>
 							</ul>
@@ -66,7 +66,7 @@
 																<td>
 
 																  	<button title='Fuentes y Detalle de presupuesto' class='btn btn-success btn-xs' onclick="paginaAjaxDialogo(null, 'ESTUDIO: <?= ($nombreProyectoInv->nombre_est_inv)?>',{ id: '<?=$item->id_presupuesto_fe?>', id_est_inv: '<?=$nombreProyectoInv->id_est_inv?>' }, base_url+'index.php/FE_Presupuesto_Inv/verDetalle', 'GET', null, null, false, true)" ><i class='ace-icon fa fa-eye bigger-120'></i></button>
-																	<a type="button" title='Presupuesto para la elevoración del estudio' class="btn btn-info btn-xs" href="<?= site_url('FE_Presupuesto_Inv/reportePdfDetalleGasto/'.$item->id_presupuesto_fe);?>" target="_blank"><i class='ace-icon fa fa-file-pdf-o bigger-120'></i></a>
+																	<a type="button" title='Presupuesto para la elaboración del estudio' class="btn btn-info btn-xs" href="<?= site_url('FE_Presupuesto_Inv/reportePdfDetalleGasto/'.$item->id_presupuesto_fe);?>" target="_blank"><i class='ace-icon fa fa-file-pdf-o bigger-120'></i></a>
 																  	<button title='Edición de presupuesto para formulación y evaluación' class='btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Edición de presupuesto para formulación y evaluación', { idPresupuestoFE : '<?=$item->id_presupuesto_fe?>' }, base_url+'index.php/FE_Presupuesto_Inv/editar', 'POST', null, null, false, true);"><i class='ace-icon fa fa-pencil bigger-120'></i></button>
 																  	<button title='Registrar detalle de gastos' class='btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Registrar detalle de gastos', { idPresupuestoFE : '<?=$item->id_presupuesto_fe?>' }, base_url+'index.php/FE_Detalle_Presupuesto/insertar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-bars bigger-120'></i></button>
 																</td>

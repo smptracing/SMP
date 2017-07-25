@@ -48,7 +48,7 @@
 
 
                                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
-                                      <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                      <ul id="myTab" class="nav nav-tabs" role="tablist">
                                         <li role="presentation" class="active"><a class="fa fa-book" href="#tab_brecha" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Usuario</a>
                                         </li>
                                         <li role="presentation" class=""><a class="fa fa-book" href="#tab_Indicador" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Permisos</a>
