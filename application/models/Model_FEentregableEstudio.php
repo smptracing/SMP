@@ -79,13 +79,7 @@ class Model_FEentregableEstudio extends CI_Model
         {
 
             $mensaje=$this->db->query("EXECUTE sp_Gestionar_Entregable_Estudio'".$opcion."','".$id_entregable."','". $txt_denominacion_entre."','".$id_etapa_estudio."','".$txt_nombre_entre."','".$txt_valoracion_entre."',".$txt_avance_entre.",'".$txt_observacio_entre."','".$txt_levantamintoO_entre."'");
-            if($mensaje->num_rows()>0)
-             {
-              return $mensaje->result();
-             }else
-             {
-              return $mensaje->result();
-             }
+            return true;
 
         }
        function  UpdateEntregableAvance($sumaTotalAvance,$id_entregable)

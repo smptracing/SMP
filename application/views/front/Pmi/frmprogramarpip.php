@@ -192,39 +192,48 @@
                                       <label>Nombre del Proyecto</label>
                                       <input  class="form-control" id="txt_nombre_proyecto" name="txt_nombre_proyecto" type="text" disabled="disabled">
                                     </div>
-                                   <div class="col-md-3 col-sm-6 col-xs-12">
+                                   <div class="col-md-2 col-sm-6 col-xs-12">
                                       <label>Costo del Proyecto</label>
                                       <input  class="form-control" id="txt_costo_proyecto" name="txt_costo_proyecto" type="number" disabled="disabled">
+                                    </div>
+                                    <div class="col-md-3 col-sm-12 col-xs-12">
+                                      <label>Brecha </label>
+                                      <select id="cbxBrecha" name="cbxBrecha" class="selectpicker"   title="Elija Brecha">
+                                      </select>
                                     </div>
                                  </div>
                               <h6><i class="fa fa-money"></i><b> Meta Presupuestal</b></h6>
                               <div class="item form-group">
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>PIA</label></center>
-                                      <input  class="form-control" id="txt_monto_operacion" name="txt_monto_operacion" type="number" required="required">
+                                      <input  class="form-control" id="txt_pia" name="txt_pia" type="number" required="required">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>PIM</label></center>
-                                      <input  class="form-control" id="txt_monto_operacion" name="txt_monto_operacion" type="number" required="required">
+                                      <input  class="form-control" id="txt_pim" name="txt_pim" type="number" required="required">
+                                    </div>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                      <center><label>Devengado</label></center>
+                                      <input  class="form-control" id="txt_devengado" name="txt_devengado" type="number" required="required">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>Prioridad</label></center>
-                                      <input  class="form-control" id="txt_monto_operacion" name="txt_monto_operacion" type="number" required="required">
+                                      <input  class="form-control" id="txt_prioridad" name="txt_prioridad" type="number" required="required">
                                     </div>
                                  </div>
                               <h6><i class="fa fa-list"></i><b> Monto Programación</b></h6>
                                <div class="item form-group">
                                    <div class="col-md-3 col-sm-6 col-xs-12">
                                       <CENTER><label>Año 1</label></CENTER>
-                                      <input  class="form-control" id="txt_monto_operacion" name="txt_monto_operacion" type="number" required="required">
+                                      <input  class="form-control" id="txt_anio1" name="txt_anio1" type="number" required="required">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <CENTER><label>Año 2</label></CENTER>
-                                      <input  class="form-control" id="txt_monto_operacion" name="txt_monto_operacion" type="number" required="required">
+                                      <input  class="form-control" id="txt_anio2" name="txt_anio2" type="number" required="required">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <CENTER><label>Año 3</label></CENTER>
-                                      <input  class="form-control" id="txt_monto_operacion" name="txt_monto_operacion" type="number" required="required">
+                                      <input  class="form-control" id="txt_anio3" name="txt_anio3" type="number" required="required">
                                     </div>
 
                                     <div class="col-md-3 col-sm-6 col-xs-12">

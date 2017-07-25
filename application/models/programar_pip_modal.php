@@ -40,9 +40,31 @@ class programar_pip_modal extends CI_Model
     //listar formulacion y evaluacion del primer modulo PMI
     public function GetAnioCartera()
     {
-        $GetAnioCartera = $this->db->query("select year(año_apertura_cartera) AS anio from CARTERA_INVERSION where estado_cartera='1'");
+        $GetAnioCartera = $this->db->query("select id_cartera,year(año_apertura_cartera) AS anio from CARTERA_INVERSION where estado_cartera='1'");
         if ($GetAnioCartera->num_rows() > 0) {
             return $GetAnioCartera->result();
+        } else {
+            return false;
+        }
+    }
+    //Add ubigeo a un proyecto
+    public function AddProgramacion($flat, $id_programacion, $Cbx_AnioCartera, $cbxBrecha, $txt_id_pip_programacion, $txt_anio1, $txt_anio2, $txt_anio3, $txt_prioridad, $txt_pia, $txt_pim, $txt_devengado)
+    {
+        $this->db->query("execute sp_Gestionar_UbigeoPI__'" . $flat . "','"
+            . $id_programacion . "','"
+            . $Cbx_AnioCartera . "','"
+            . $cbxBrecha . "','"
+            . $txt_id_pip_programacion . "','"
+            . $txt_anio1 . "','"
+            . $txt_anio2 . "','"
+            . $txt_anio3 . "','"
+            . $txt_prioridad . "','"
+            . $txt_pia . "','"
+            . $txt_pim . "','"
+            . $txt_devengado . "'");
+
+        if ($this->db->affected_rows() > 0) {
+            return true;
         } else {
             return false;
         }
