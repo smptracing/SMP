@@ -75,9 +75,11 @@ class FE_Presupuesto_Inv extends CI_Controller
 	    //var_dump($listaFEDetallePresupuestoT);exit;
 
 	    $id_presupuesto_fe=$this->input->get('id');
-	    $ListarFuente=$this->Model_FE_Presupuesto_Inv->ListarFuente($id_presupuesto_fe);
+	   // $ListarFuente=$this->Model_FE_Presupuesto_Inv->ListarFuente($id_presupuesto_fe);
 
-		$this->load->view('Front/PresupuestoEstudioInversion/FEPresupuesto/verDetalle',['nombreProyectoInver' => $nombreProyectoInver, 'SectorPliego' => $SectorPliego ,'listaFEDetallePresupuestoT'=>$listaFEDetallePresupuestoT , 'ListarFuente' => $ListarFuente]);
+	    $listaFEPresupuestoFuente=$this->Model_FE_Presupuesto_Inv->listarFEPresupuestoFuente($id_presupuesto_fe);
+
+		$this->load->view('Front/PresupuestoEstudioInversion/FEPresupuesto/verDetalle',['nombreProyectoInver' => $nombreProyectoInver, 'SectorPliego' => $SectorPliego ,'listaFEDetallePresupuestoT'=>$listaFEDetallePresupuestoT , 'listaFEPresupuestoFuente' => $listaFEPresupuestoFuente]);
 	}
 
 
