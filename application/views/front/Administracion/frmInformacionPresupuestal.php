@@ -76,7 +76,7 @@
                                                                          <th>ID</th>
                                                                          <th>NOMBRE FFTO</th>
                                                                          <th >ACRONIMO FFTO</th>
-                                                                         <th></th>
+                                                                         <th>ACCIONES</th>
                                                                       </tr>
                                                                    </thead>
 
@@ -120,9 +120,8 @@
                                                                 <tr>
                                                                   <th class="col-sm-1">ID</th>
                                                                   <th class="col-sm-1">FUENTE DE FINANCIAMIENTO</th>
-
                                                                   <th>NOMBRE RUBRO EJECUCION </th>
-                                                                  <th class="col-sm-1"></th>
+                                                                  <th class="col-sm-1">ACCIONES</th>
                                                                 </tr>
                                                               </thead>
 
@@ -172,7 +171,7 @@
                                                                   <th>PIM</th>
                                                                   <th>NUMERO DE META</th>
                                                                   <th>DEVENGADO</th>
-                                                                  <th></th>
+                                                                  <th>ACCIONES</th>
                                                                 </tr>
                                                               </thead>
 
@@ -220,7 +219,7 @@
                                                                   <th class="col-sm-1">ID</th>
                                                                   <th>PROGRAMA PRESUPUESTAL </th>
 
-                                                                  <th></th>
+                                                                  <th>ACCIONES</th>
                                                                 </tr>
                                                               </thead>
 
@@ -247,7 +246,7 @@
 
 
 <!-- /.ventana para registra una fuente finanaciamietno-->
-<div class="modal fade" id="VentanaRegFuenteFinanciamiento" role="dialog">
+<div class="modal fade" id="VentanaRegFuenteFinanciamiento" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -290,10 +289,10 @@
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
                         <button id="send" type="submit" class="btn btn-success" >
-                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+                          <span class="glyphicon glyphicon-floppy-disk"></span>
                            Guardar</button>
                           <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
-                          <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
+                          <span class="glyphicon glyphicon-remove"></span>
                            Cancelar</button>
 
                         </div>
@@ -311,7 +310,7 @@
 <!-- /.fin ventana para registra fuente financiamiento-->
 
 <!-- /.ventana para modificar fuente de financimeito-->
-<div class="modal fade" id="VentanaEditFuenteFinanciamiento" role="dialog">
+<div class="modal fade" id="VentanaEditFuenteFinanciamiento" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -358,10 +357,10 @@
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
                         <button id="send" type="submit" class="btn btn-success" >
-                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+                          <span class="glyphicon glyphicon-floppy-disk"></span>
                            Guardar</button>
                           <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
-                          <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
+                          <span class="glyphicon glyphicon-remove"></span>
                            Cancelar</button>
 
                         </div>
@@ -378,7 +377,7 @@
 </div>
 <!-- /.fin ventana para modificar fuente de financiamietno-->
 <!-- /.ventana para registrar un rubro de ejecucion -->
-<div class="modal fade" id="VentanaRegistraRubroEjecucion" role="dialog">
+<div class="modal fade" id="VentanaRegistraRubroEjecucion" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -428,7 +427,7 @@
 
 
 <!-- Ventana para modificar un rubro de ejecucion -->
-<div class="modal fade" id="VentanaModificarRubroE" role="dialog">
+<div class="modal fade" id="VentanaModificarRubroE" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -481,7 +480,7 @@
 
 
 <!-- /.ventana para registrar una meta presupuestal-->
-<div class="modal fade" id="VentanaRegistraMetaPresupuestal" role="dialog">
+<div class="modal fade" id="VentanaRegistraMetaPresupuestal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -551,7 +550,7 @@
 
 
 <!-- Ventana para modificar una meta presupuestal -->
-<div class="modal fade" id="VentanaModificarMetaP" role="dialog">
+<div class="modal fade" id="VentanaModificarMetaP" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -628,7 +627,7 @@
   </div>
 <!-- fin ventana para modificar meta presupuestal-->
 <!-- /.ventana para registrar programa presuuestal -->
-<div class="modal fade" id="VentanaRegistraProgramaP" role="dialog">
+<div class="modal fade" id="VentanaRegistraProgramaP" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -674,7 +673,7 @@
 
 
 <!-- Ventana para modificar una meta presupuestal -->
-<div class="modal fade" id="VentanaModificarProgramaP" role="dialog">
+<div class="modal fade" id="VentanaModificarProgramaP" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -723,3 +722,9 @@
     </div>
   </div>
 <!-- fin ventana para modificar meta presupuestal-->
+<script>
+  $('.modal').on('hidden.bs.modal', function(){ 
+    $(this).find('form')[0].reset(); //para borrar todos los datos que tenga los input, textareas, select.
+    $("label.error").remove();  //lo utilice para borrar la etiqueta de error del jquery validate
+  });
+</script>

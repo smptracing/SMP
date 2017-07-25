@@ -67,11 +67,11 @@
                                                             <table id="table-ModalidadE" class="table table-condensed table-striped table-bordered table-hover" width="100%">
                                                               <thead>
                                                                  <tr>
-                                                                  <th class="col-sm-2">ID </th>
+                                                                  <th style="width: 1%">ID </th>
 
-                                                                  <th >MODALIDAD DE EJECUCION </th>
+                                                                  <th style="width: 91%">MODALIDAD DE EJECUCION </th>
 
-                                                                  <th class="col-sm-2"></th>
+                                                                  <th style="width: 8%">ACCIONES</th>
                                                                 </tr>
                                                               </thead>
                                                             </table>
@@ -109,9 +109,9 @@
                                                                        <table id="table-UnidadE" class="table table-condensed table-striped table-bordered table-hover" width="100%">
                                                               <thead>
                                                                  <tr>
-                                                                  <th class="col-sm-1">ID </th>
-                                                                  <th >UNIDAD DE EJECUCION </th>
-                                                                  <th ></th>
+                                                                  <th>ID </th>
+                                                                  <th>UNIDAD EJECUTORA </th>
+                                                                  <th class="col-md-1 col-md-1 col-xs-12">ACCIONES</th>
 
                                                                 </tr>
                                                               </thead>
@@ -147,13 +147,12 @@
 
                                                           </div>
                                                           <div class="x_content">
-                                                                       <table id="table-UnidadF" class="table table-condensed table-striped table-bordered table-hover" width="100%">
+                                                            <table id="table-UnidadF" class="table table-condensed table-striped table-bordered table-hover" width="100%">
                                                               <thead>
                                                                  <tr>
-                                                                  <th class="col-sm-1">ID </th>
+                                                                  <th >ID </th>
                                                                   <th >UNIDAD FORMULADADORA </th>
-                                                                  <th ></th>
-
+                                                                  <th class="col-sm-1">ACCIONES</th>
                                                                 </tr>
                                                               </thead>
                                                             </table>
@@ -176,7 +175,7 @@
                                               <div class="col-md-12 col-sm-12 col-xs-12">
                                               <div class="x_panel">
                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegNivelGobierno" >
-                                                          <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Nuevo
+                                                          <span class="fa fa-plus-circle"></span> Nuevo
                                                     </button>
                                                     <div class="x_title">
                                                             <h2>Listado de Nivel de Gobierno<small>.</small></h2>
@@ -196,7 +195,7 @@
 
                                                                          <th>ID </th>
                                                                          <th>NOMBRE NIVEL</th>
-                                                                      <th></th>
+                                                                         <th>ACCIONES</th>
                                                                       </tr>
                                                                    </thead>
 
@@ -232,7 +231,7 @@
 
 
 <!-- /.ventana para registra una nueva modalidad de ejecucion -->
-<div class="modal fade" id="VentanaRegistraModalidadEjecucion" role="dialog">
+<div class="modal fade" id="VentanaRegistraModalidadEjecucion" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -274,7 +273,7 @@
 <!-- /.fin ventana para registra una modalidad de ejecucion-->
 
 <!-- Ventana para modificar una modalidad de ejecucion -->
-<div class="modal fade" id="VentanaModificarModalidadE" role="dialog">
+<div class="modal fade" id="VentanaModificarModalidadE" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -325,7 +324,7 @@
 <!-- fin ventana para modificar una modalidad  de ejecucion -->
 
 <!-- /.ventana para registra una nueva unidad ejecutora -->
-<div class="modal fade" id="VentanaRegistraUnidadEjecutora" role="dialog">
+<div class="modal fade" id="VentanaRegistraUnidadEjecutora" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -364,7 +363,7 @@
 <!-- /.fin ventana para registra una unidad ejecutoran-->
 
 <!-- Ventana modificar unidad ejecutora -->
-<div class="modal fade" id="VentanaModificarUnidadE" role="dialog">
+<div class="modal fade" id="VentanaModificarUnidadE" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -413,13 +412,13 @@
 
 <!-- fin ventana para modificar unidad ejecutora -->
 <!-- /.ventana para registra una nueva  nivel de gobierno-->
-<div class="modal fade" id="VentanaRegNivelGobierno" role="dialog">
+<div class="modal fade" id="VentanaRegNivelGobierno" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-          Nivel de Gobierno</h4>
+          <h4 class="modal-title">
+          Registrar Nivel de Gobierno</h4>
         </div>
         <div class="modal-body">
          <div class="row">
@@ -438,10 +437,10 @@
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
                           <button id="send" type="submit" class="btn btn-success" >
-                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+                          <span class="glyphicon glyphicon-floppy-disk"></span>
                            Guardar</button>
                           <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
-                          <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
+                          <span class="glyphicon glyphicon-remove"></span>
                            Cancelar</button>
                         </div>
                       </div>
@@ -458,13 +457,13 @@
 <!-- /.fin ventana para registra una nivel de gobierno-->
 
 <!-- /.ventana para modificar una  nivel de gobierno-->
-<div class="modal fade" id="VentanaEditNivelGobierno" role="dialog">
+<div class="modal fade" id="VentanaEditNivelGobierno" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-          NIvel de Gobierno</h4>
+          <h4 class="modal-title">
+          Modificar NIvel de Gobierno</h4>
         </div>
         <div class="modal-body">
          <div class="row">
@@ -492,10 +491,10 @@
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
                        <button id="send" type="submit" class="btn btn-success" >
-                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+                           <span class="glyphicon glyphicon-floppy-disk"></span>
                            Guardar</button>
                           <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
-                          <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
+                          <span class="glyphicon glyphicon-remove"></span>
                            Cancelar</button>
                         </div>
                       </div>
@@ -513,7 +512,7 @@
 
 
 <!-- /.ventana para registra una nueva unidad Formuladora -->
-<div class="modal fade" id="VentanaRegistraUnidadFormuladora" role="dialog">
+<div class="modal fade" id="VentanaRegistraUnidadFormuladora" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -552,7 +551,7 @@
 <!-- /.fin ventana para registra una unidad Formuladoran-->
 
 <!-- Ventana modificar unidad Formuladora -->
-<div class="modal fade" id="VentanaModificarUnidadF" role="dialog">
+<div class="modal fade" id="VentanaModificarUnidadF" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -602,3 +601,10 @@
   </div>
 
 <!-- fin ventana para modificar unidad Formuladora -->
+
+<script>
+  $('.modal').on('hidden.bs.modal', function(){ 
+    $(this).find('form')[0].reset(); //para borrar todos los datos que tenga los input, textareas, select.
+    $("label.error").remove();  //lo utilice para borrar la etiqueta de error del jquery validate
+  });
+</script>

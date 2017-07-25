@@ -63,8 +63,8 @@ var lista_subgerencias = function () {
             "dataSrc": ""
         },
         "columns": [
-            {"data": "id_subgerencia"},
-            {"data": "id_gerencia"},
+            {"data": "id_subgerencia", "visible" : false},
+            {"data": "id_gerencia", "visible" : false},
             {"data": "denom_gerencia"},
             {"data": "denom_subgerencia"},
             {"defaultContent": "<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaUpdateSubGerencia'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}

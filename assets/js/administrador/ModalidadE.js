@@ -41,7 +41,7 @@ $(document).on("ready" ,function()
        },
        //para llenado y busqueda por todo los campos
                                 "columns":[
-                                    {"data":"id_modalidad_ejec"},
+                                    {"data":"id_modalidad_ejec","visible" : false},
                                     {"data":"nombre_modalidad_ejec"},
                                     {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaModificarModalidadE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],

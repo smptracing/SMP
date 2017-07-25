@@ -45,8 +45,8 @@
 												<table id="table-UnidadaMedida" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
 													<thead>
 														<tr>
-															<td>Descripción</td>
-															<td class="col-md-1 col-md-1 col-xs-12"></td>
+															<td>DESCRIPCIÓN</td>
+															<td class="col-md-1 col-md-1 col-xs-12">ACCIONES</td>
 														</tr>
 													</thead>
 													<?php foreach($listaUnidadMedida as $item){ ?>

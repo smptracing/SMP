@@ -61,7 +61,7 @@
 																		<th>Direción</th>
 																		<th>Grado académico</th>
 																		<th>Especialidad</th>
-																		<th></th>
+																		<th>ACCIONES</th>
 																	</tr>
 																</thead>
                                                             </table>
@@ -102,7 +102,7 @@
                                                                 <tr>
                                                                   <th>Id.Cargo</th>
                                                                   <th>Nombre Cargo</th>
-                                                                  <th></th>
+                                                                  <th>ACCIONES</th>
                                                                 </tr>
                                                               </thead>
 
@@ -143,7 +143,7 @@
                                                                 <tr>
                                                                   <th>ID</th>
                                                                   <th>Personal</th>
-                                                                  <th></th>
+                                                                  <th>ACCIONES</th>
                                                                 </tr>
                                                               </thead>
                                                               <tbody>
@@ -170,7 +170,7 @@
      </div>
 
 <!-- /.ventana para registra nuevo personal -->
-<div class="modal fade" id="VentanaRegistraPersonal" role="dialog">
+<div class="modal fade" id="VentanaRegistraPersonal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -301,7 +301,7 @@
 
 
 <!-- modificar la nuevo personal-->
-<div class="modal fade" id="VentanaModificarPersonal" role="dialog">
+<div class="modal fade" id="VentanaModificarPersonal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -432,7 +432,7 @@
 
 
 <!-- Registar cargo -->
-<div class="modal fade" id="VentanaRegistracargo" role="dialog">
+<div class="modal fade" id="VentanaRegistracargo" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -475,7 +475,7 @@
   </div>
 
 <!-- modificar cargo -->
-<div class="modal fade" id="Ventanaupdatecargo" role="dialog">
+<div class="modal fade" id="Ventanaupdatecargo" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -521,4 +521,11 @@
       </div>
     </div>
   </div>
+
+<script>
+  $('.modal').on('hidden.bs.modal', function(){ 
+    $(this).find('form')[0].reset(); //para borrar todos los datos que tenga los input, textareas, select.
+    $("label.error").remove();  //lo utilice para borrar la etiqueta de error del jquery validate
+  });
+</script>
 

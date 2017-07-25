@@ -53,7 +53,7 @@
                                                     <div class="x_title">
                                                             <!--<h2>Listado de  Naturaleza de Inversión<small>.</small></h2>-->
                                                           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistrarNaturalezaInversion" >
-                                                          <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Nuevo
+                                                           <span class="fa fa-plus-circle"></span> Nuevo
                                                            </button>
                                                             <ul class="nav navbar-right panel_toolbox">
                                                               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -76,7 +76,7 @@
                                                                        <tr>
                                                                          <th style="width: 1%">Nro.</th>
                                                                          <th style="width: 91%">Nombre de la naturaleza de inversión</th>
-                                                                         <th style="width:8%"></th>
+                                                                         <th style="width:8%">ACCIONES</th>
                                                                       </tr>
                                                                    </thead>
 
@@ -98,7 +98,7 @@
                                                     <div class="x_title">
                                                           <!-- <h2>Listado de  Tipología de Inversión<small>.</small></h2>-->
                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegTipologiaInversion" >
-                                                          <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Nuevo
+                                                           <span class="fa fa-plus-circle"></span> Nuevo
                                                     </button>
                                                             <ul class="nav navbar-right panel_toolbox">
                                                               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -122,7 +122,7 @@
                                                                        <tr>
                                                                          <th style="width: 1%">Nro.</th>
                                                                          <th style="width: 91%">Nombre tipología de inversión</th>
-                                                                         <th style="width:8%"></th>
+                                                                         <th style="width:8%">ACCIONES</th>
                                                                       </tr>
                                                                    </thead>
                                                                     <tbody>
@@ -147,7 +147,7 @@
                                                     <div class="x_title">
                                                      <!-- <h2>Listado de  Tipo de Inversión<small>.</small></h2>-->
                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegTipoInversion" >
-                                                          <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Nuevo
+                                                           <span class="fa fa-plus-circle"></span> Nuevo
                                                     </button>
                                                             <ul class="nav navbar-right panel_toolbox">
                                                               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -171,7 +171,7 @@
                                                                        <th style="width: 1%">Nro.</th>
                                                                          <th style="width: 40%">Nombre del tipo de inversión</th>
                                                                          <th style="width: 50%">Descripción del tipo de inversión</th>
-                                                                         <th style="width:8%"></th>
+                                                                         <th style="width:8%">ACCIONES</th>
                                                                       </tr>
                                                                    </thead>
                                                                 </table>
@@ -193,7 +193,7 @@
                                                     <div class="x_title">
                                                      <!-- <h2>Listado de  Tipo NO PIP<small>.</small></h2>-->
                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegTipoNoPIP" >
-                                                          <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Nuevo
+                                                          <span class="fa fa-plus-circle"></span> Nuevo
                                                     </button>
                                                             <ul class="nav navbar-right panel_toolbox">
                                                               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -213,7 +213,7 @@
                                                                        <tr>
                                                                        <th style="width: 1%">Nro.</th>
                                                                          <th style="width: 91%">Nombre del tipo</th>
-                                                                         <th style="width:8%"></th>
+                                                                         <th style="width:8%">ACCIONES</th>
                                                                       </tr>
                                                                    </thead>
                                                                 </table>
@@ -238,13 +238,13 @@
      </div>
 
 <!-- /.ventana para modificar  nueva Naturaleza de inversion-->
-<div class="modal fade" id="VentanaRegNaturalezaInversion" role="dialog">
+<div class="modal fade" id="VentanaRegNaturalezaInversion" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-          Naturaleza de Inversión </h4>
+          <h4 class="modal-title">
+          Modificar Naturaleza de Inversión </h4>
         </div>
         <div class="modal-body">
          <div class="row">
@@ -273,10 +273,10 @@
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
                         <button id="send" type="submit" class="btn btn-success" >
-                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+                          <span class="glyphicon glyphicon-floppy-disk"></span>
                            Guardar</button>
                           <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
-                          <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
+                          <span class="glyphicon glyphicon-remove"></span>
                            Cancelar</button>
                         </div>
                       </div>
@@ -292,13 +292,13 @@
 </div>
 <!-- /.fin ventana para modificar nueva Naturaleza de inversion-->
 <!-- /.ventana para Registar  nueva Naturaleza de inversion-->
-<div class="modal fade" id="VentanaRegistrarNaturalezaInversion" role="dialog">
+<div class="modal fade" id="VentanaRegistrarNaturalezaInversion" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-          Naturaleza de Inversión </h4>
+          <h4 class="modal-title"></span>
+          Registrar Nueva Naturaleza de Inversión </h4>
         </div>
         <div class="modal-body">
          <div class="row">
@@ -318,7 +318,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre Naturaleza <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_NombreNaturaleza" name="txt_NombreNaturaleza" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Nombre del Naturaleza" required="required" type="text" >
+                          <input id="txt_NombreNaturaleza" name="txt_NombreNaturaleza" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Nombre de la Naturaleza" required="required" type="text" >
                         </div>
                       </div>
 
@@ -326,10 +326,10 @@
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
                         <button id="send" type="submit" class="btn btn-success" >
-                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+                          <span class="glyphicon glyphicon-floppy-disk"></span>
                            Guardar</button>
                           <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
-                          <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
+                          <span class="glyphicon glyphicon-remove"></span>
                            Cancelar</button>
                         </div>
                       </div>
@@ -346,13 +346,13 @@
 <!-- /.fin ventana para registra nueva Naturaleza de inversion-->
 
 <!-- /.ventana para registra una nueva tipologia de inversion-->
-<div class="modal fade" id="VentanaRegTipologiaInversion" role="dialog">
+<div class="modal fade" id="VentanaRegTipologiaInversion" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-          Tipología de Inversión</h4>
+          <h4 class="modal-title">
+          Registrar Nueva Tipología de Inversión</h4>
         </div>
         <div class="modal-body">
          <div class="row">
@@ -371,10 +371,10 @@
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
                           <button id="send" type="submit" class="btn btn-success" >
-                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+                          <span class="glyphicon glyphicon-floppy-disk"></span>
                            Guardar</button>
                           <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
-                          <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
+                          <span class="glyphicon glyphicon-remove"></span>
                            Cancelar</button>
                         </div>
                       </div>
@@ -396,8 +396,8 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-          Tipología de Inversión</h4>
+          <h4 class="modal-title">
+          Modificar Tipología de Inversión</h4>
         </div>
         <div class="modal-body">
          <div class="row">
@@ -425,10 +425,10 @@
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
                         <button id="send" type="submit" class="btn btn-success" >
-                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+                          <span class="glyphicon glyphicon-floppy-disk"></span>
                            Guardar</button>
                           <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
-                          <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
+                          <span class="glyphicon glyphicon-remove"></span>
                            Cancelar</button>
                         </div>
                       </div>
@@ -445,13 +445,13 @@
 <!-- /.fin ventana para modificar una tipologia de inversion-->
 
 <!-- /.ventana para registra una nueva TIPO de inversion-->
-<div class="modal fade" id="VentanaRegTipoInversion" role="dialog">
+<div class="modal fade" id="VentanaRegTipoInversion" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-          Tipo de Inversión</h4>
+          <h4 class="modal-title">
+          Registrar Nuevo Tipo de Inversión</h4>
         </div>
         <div class="modal-body">
          <div class="row">
@@ -476,10 +476,10 @@
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
                         <button id="send" type="submit" class="btn btn-success" >
-                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+                          <span class="glyphicon glyphicon-floppy-disk"></span>
                            Guardar</button>
                           <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
-                          <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
+                          <span class="glyphicon glyphicon-remove"></span>
                            Cancelar</button>
                         </div>
                       </div>
@@ -495,13 +495,13 @@
 <!-- /.fin ventana para registra una TIPO de inversion-->
 
 <!-- /.ventana para modificar una  TIPO de inversion-->
-<div class="modal fade" id="VentanaEditTipoInversion" role="dialog">
+<div class="modal fade" id="VentanaEditTipoInversion" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-          Tipo de Inversión</h4>
+          <h4 class="modal-title">
+          Modificar Tipo de Inversión</h4>
         </div>
         <div class="modal-body">
          <div class="row">
@@ -535,10 +535,10 @@
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
                         <button id="send" type="submit" class="btn btn-success" >
-                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+                          <span class="glyphicon glyphicon-floppy-disk"></span>
                            Guardar</button>
                           <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
-                          <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
+                          <span class="glyphicon glyphicon-remove"></span>
                            Cancelar</button>
                         </div>
                       </div>
@@ -556,13 +556,13 @@
 
 
 <!-- /.ventana para registra una nueva TIPO NO pip-->
-<div class="modal fade" id="VentanaRegTipoNoPIP" role="dialog">
+<div class="modal fade" id="VentanaRegTipoNoPIP"  data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-          Tipos No PIP</h4>
+          Registrar Nuevos Tipos No PIP</h4>
         </div>
         <div class="modal-body">
          <div class="row">
@@ -580,10 +580,10 @@
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
                         <button id="send" type="submit" class="btn btn-success" >
-                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+                          <span class="glyphicon glyphicon-floppy-disk"></span>
                            Guardar</button>
                           <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
-                          <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
+                          <span class="glyphicon glyphicon-remove"></span>
                            Cancelar</button>
                         </div>
                       </div>
@@ -598,12 +598,12 @@
 </div>
 <!-- /.fin ventana para registra una nueva TIPO NO pip-->
 <!-- /.ventana para modificar tipo no pip-->
-<div class="modal fade" id="VentanaEditTipoNoPip" role="dialog">
+<div class="modal fade" id="VentanaEditTipoNoPip" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
+          <h4 class="modal-title">
           Modificar Tipo NO PIP</h4>
         </div>
         <div class="modal-body">
@@ -629,10 +629,10 @@
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
                         <button id="send" type="submit" class="btn btn-success" >
-                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+                          <span class="glyphicon glyphicon-floppy-disk"></span>
                            Guardar</button>
                           <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
-                          <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
+                          <span class="glyphicon glyphicon-remove"></span>
                            Cancelar</button>
                         </div>
                       </div>
@@ -648,3 +648,9 @@
 </div>
 <!-- /.fin ventana para modificar tipo no pip-->
 
+<script>
+  $('.modal').on('hidden.bs.modal', function(){ 
+    $(this).find('form')[0].reset(); //para borrar todos los datos que tenga los input, textareas, select.
+    $("label.error").remove();  //lo utilice para borrar la etiqueta de error del jquery validate
+  });
+</script>

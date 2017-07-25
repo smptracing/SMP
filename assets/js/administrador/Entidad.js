@@ -71,7 +71,7 @@
                                     "dataSrc":""
                                     },
                                 "columns":[
-                                    {"data":"id_entidad"},
+                                    {"data":"id_entidad","visible" : false},
                                     {"data":"id_sector","visible": false},
                                     {"data":"nombre_sector"},
                                     {"data":"nombre_entidad"},
