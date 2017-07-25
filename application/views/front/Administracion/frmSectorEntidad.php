@@ -128,7 +128,7 @@
      </div>
         
 <!-- /.ventana para registra un nuevo sector-->			
-<div class="modal fade" id="VentanaRegistraSector" role="dialog">
+<div class="modal fade" id="VentanaRegistraSector" data-backdrop="static" data-keyboard="false" tabindex="-1"  role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -361,7 +361,12 @@
       </div>
     </div>
   </div>
-
+<script>
+  $('.modal').on('hidden.bs.modal', function(){ 
+    $(this).find('form')[0].reset(); //para borrar todos los datos que tenga los input, textareas, select.
+    $("label.error").remove();  //lo utilice para borrar la etiqueta de error del jquery validate
+  });
+</script>
 
 
 <!-- fin popul para modificar la ventana de modificarentidaa -->

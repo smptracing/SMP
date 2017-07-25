@@ -49,7 +49,8 @@
     <link href="<?php echo base_url(); ?>assets/vendors/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/vendors/cropper/dist/cropper.min.css" rel="stylesheet">
 
-      <link href="<?php echo base_url(); ?>assets/css/jquery.growl.css" rel="stylesheet">
+     <link href="<?php echo base_url(); ?>assets/css/jquery.growl.css" rel="stylesheet">
+      
   <style>
    #ProgramacionHorizontal{
       width: 100% !important;

@@ -98,11 +98,10 @@ show_404();
             $txt_observacio_entre    = $this->input->post("txt_observacio_entre");
             $txt_levantamintoO_entre = $this->input->post("txt_levantamintoO_entre");
 
-            $CadenaDenominacion=explode(',',$txt_denominacion_entre);//envio  multiples dependiendo a la denominacion
-            for ($i=0; $i<count($CadenaDenominacion); $i++) { 
-               $data = $this->Model_FEentregableEstudio->Add_Entregable($opcion, $id_entregable,$CadenaDenominacion[$i], $id_etapa_estudio, $txt_nombre_entre, $txt_valoracion_entre, $txt_avance_entre, $txt_observacio_entre, $txt_levantamintoO_entre);
-               echo json_encode($data);
-            }
+         
+             $data = $this->Model_FEentregableEstudio->Add_Entregable($opcion, $id_entregable, $txt_denominacion_entre, $id_etapa_estudio, $txt_nombre_entre, $txt_valoracion_entre, $txt_avance_entre, $txt_observacio_entre, $txt_levantamintoO_entre);
+             echo json_encode("SE REGISTRO CORRECTAMENTE EL ENTREGABLE");
+   
              
            
              //explode(',',$valores); 
