@@ -81,7 +81,7 @@ $(document).on("ready" ,function()
 									"dataSrc":""
                                     },
                                 "columns":[
-                                   {"defaultContent":" <label class='pos-rel'><input type='checkbox' class='ace' /><i class='lbl'></i></label>"},
+                                   {"defaultContent":" <label class='pos-rel'><input type='checkbox' class='ace' /><i class='lbl'></i></label>" ,"visible": false},
                                     {"data":"id_estado_ciclo","visible" : false},
                                     {"data":"nombre_estado_ciclo"},
                                     {"data":"descripcion_estado_ciclo"},
