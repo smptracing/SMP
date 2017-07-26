@@ -54,7 +54,7 @@ $(document).on("ready" ,function()
                                },
        //para llenado y busqueda por todo los campos
                                 "columns":[
-                                    {"data":"id_ue"},
+                                    {"data":"id_ue", "visible" : false},
                                     {"data":"nombre_ue"},
                                     {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaModificarUnidadE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],

@@ -9,7 +9,7 @@
              <div class="x_panel">
              <!--inicio de pestaña configurtacion-->
                 <div class="x_title">
-                     <h2><i class="fa fa-bars"></i> Ciclo de Inversión<small></small></h2>
+                     <h2> <b>CICLO DE INVERSIÓN</b></h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                       </li>
@@ -25,8 +25,7 @@
                              <!-- Inicio Menus-->
                                 <ul id="myTab" class="nav nav-tabs" role="tablist">
                                     <li role="presentation" class="active"><a href="#tab_EstadoCicloInversion" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">
-                                        <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-                                         Estado de Ciclo Inversión</a>
+                                         <b>Estado de Ciclo Inversión</b></a>
                                          </li>
                                </ul>
                               <!-- Fin Menus-->
@@ -37,18 +36,13 @@
                                            <div class="row">
                                               <div class="col-md-12 col-sm-12 col-xs-12">
                                               <div class="x_panel">
-
+                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegEstadoCicloInversion" >
+                                                                <span class="fa fa-plus-circle"></span> Nuevo
+                                                          </button>
                                                     <div class="x_title">
                                                            <!-- <h2>Listado de  Ciclo Inversión<small>.</small></h2>-->
-                                                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegEstadoCicloInversion" >
-                                                                <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Nuevo
-                                                          </button>
-                                                            <ul class="nav navbar-right panel_toolbox">
-                                                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                                              </li>
-                                                              <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                                              </li>
-                                                            </ul>
+                                                      
+                   
                                                            <div class="clearfix"></div>
                                                       </div>
                                                       <!--inicio de la tabla estado ciclo de inversion -->
@@ -63,15 +57,12 @@
                                                                     <thead>
                                                                        <tr>
                                                                          <th class="center">
-                                                                          <label class="pos-rel">
-                                                                           <input type="checkbox" class="ace" />
-                                                                           <span class="lbl"></span>
-                                                                          </label>
+                                                                     
                                                                          </th>
-                                                                         <th>ID CICLO</th>
-                                                                         <th>NOMBRE CICLO</th>
-                                                                         <th class="hidden-480">DESCRIPCION CICLO</th>
-                                                                         <th></th>
+                                                                         <th >ID CICLO</th>
+                                                                         <th >NOMBRE CICLO</th>
+                                                                         <th >DESCRIPCION CICLO</th>
+                                                                         <th style="width: 8%">ACCIONES</th>
                                                                       </tr>
                                                                    </thead>
                                                                 </table>
@@ -97,13 +88,13 @@
 
 
 <!-- /.ventana para registra una nueva estado ciclo de inversion-->
-<div class="modal fade" id="VentanaRegEstadoCicloInversion" role="dialog">
+<div class="modal fade" id="VentanaRegEstadoCicloInversion" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-          Estado Ciclo de Inversión</h4>
+          <h4 class="modal-title">
+          Registrar Nuevo Estado Ciclo de Inversión</h4>
         </div>
         <div class="modal-body">
          <div class="row">
@@ -128,10 +119,10 @@
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
                         <button id="send" type="submit" class="btn btn-success" >
-                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+                          <span class="glyphicon glyphicon-floppy-disk"></span>
                            Guardar</button>
                           <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
-                          <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
+                          <span class="glyphicon glyphicon-remove"></span>
                            Cancelar</button>
                         </div>
                       </div>
@@ -148,13 +139,13 @@
 <!-- /.fin ventana para registra una estado ciclo de inversion-->
 
 <!-- /.ventana para modificar una  estado ciclo de inversion-->
-<div class="modal fade" id="VentanaEditEstadoCicloInversion" role="dialog">
+<div class="modal fade" id="VentanaEditEstadoCicloInversion" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-          Estado Ciclo de Inversión</h4>
+          <h4 class="modal-title">
+          Modificar Estado Ciclo de Inversión</h4>
         </div>
         <div class="modal-body">
          <div class="row">
@@ -187,10 +178,10 @@
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
                         <button id="send" type="submit" class="btn btn-success" >
-                          <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+                          <span class="glyphicon glyphicon-floppy-disk"></span>
                            Guardar</button>
                           <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
-                          <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
+                          <span class="glyphicon glyphicon-remove"></span>
                            Cancelar</button>
                         </div>
                       </div>
@@ -206,5 +197,11 @@
 </div>
 <!-- /.fin ventana para modificar una estado ciclo de inversion-->
 
+<script>
+  $('.modal').on('hidden.bs.modal', function(){ 
+    $(this).find('form')[0].reset(); //para borrar todos los datos que tenga los input, textareas, select.
+    $("label.error").remove();  //lo utilice para borrar la etiqueta de error del jquery validate
+  });
+</script>
 
 

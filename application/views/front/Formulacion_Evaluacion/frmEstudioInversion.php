@@ -7,14 +7,8 @@
              <div class="x_panel">
              <!--inicio de pestaña configurtacion-->
                 <div class="x_title">
-                     <h2><i class="fa fa-bars"></i> Estudio de Inversión<small></small></h2>
-                                    <ul class="nav navbar-right panel_toolbox">
-                                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                      </li>
-
-                                      <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                      </li>
-                                    </ul>
+                     <h2><strong>Estudio de Inversión</strong> <small></small></h2>
+                                    
                       <div class="clearfix"></div>
                 </div>
               <!--final  de pestaña configurtacion-->
@@ -23,8 +17,8 @@
                              <!-- Inicio Menus-->
                                 <ul id="myTab" class="nav nav-tabs" role="tablist">
                                     <li role="presentation" class="active"><a href="#tab_EstadoCicloInversion" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">
-                                        <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-                                         Estudio</a>
+                                        <span aria-hidden="true"></span>
+                                         <strong>Estudio</strong> </a>
                                          </li>
                                </ul>
                               <!-- Fin Menus-->
@@ -39,22 +33,16 @@
                                                     <div class="x_title">
                                                            <!-- <h2>Listado de  <small>.</small></h2>-->
                                                           <button type="button" id="btn_nuevoEstInv" class="btn btn-primary" data-toggle="modal" data-target="#ventanaEstudioInversion" >
-                                                                <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Nuevo
+                                                                <span  aria-hidden="true"></span><strong> Nuevo</strong>
                                                           </button>
-
-                                                            <ul class="nav navbar-right panel_toolbox">
-                                                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                                              </li>
-                                                              <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                                              </li>
-                                                            </ul>
-                                                           <div class="clearfix"></div>
+                                                          <div class="pull-right tableTools-container-EstudioInversion">
+                                                           </div>
+                                                                                                                       
                                                       </div>
                                                       <!--inicio de la tabla estado -->
                                                         <!--inicio  de icono de reporte -->
                                                         <div class="clearfix">
-                                                           <div class="pull-right tableTools-container-EstudioInversion">
-                                                           </div>
+                                                           
                                                         </div>
                                                       <!--fin  de icono de reporte -->
                                                       <div class="x_content" >
@@ -63,13 +51,13 @@
                                                                        <tr>
                                                                        <th style="width: 1%">#</th>
                                                                        <th style="width: 1%">#</th>
-                                                                         <th style="width: 40%"><i class="fa fa-thumb-tack"></i> Est. Inv. </th>
+                                                                         <th style="width: 40%"><i class="fa fa-thumb-tack"></i> Estudio de Inversión </th>
                                                                          <th style="width: 14%">
                                                                           <i class="fa fa-users"></i>
                                                                          Reponsable</th>
                                                                          <th style="width: 12%"> Progreso</th>
                                                                          <th style="width: 13%"> Etapa</th>
-                                                                         <th></th>
+                                                                         <th>Acciones</th>
                                                                       </tr>
                                                                    </thead>
                                                                 </table>
@@ -94,12 +82,12 @@
         </div>
      </div>
 <!--- popul para registar estudio de inversion -->
-<div class="modal fade" id="ventanaEstudioInversion" role="dialog">
+<div class="modal fade" id="ventanaEstudioInversion" data-backdrop="static" data-keyboard="false" tabindex="-1"role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Estudio Inversión</h4>
+          <h4 class="modal-title"><strong>Registrar Estudio de Inversión</strong> </h4>
         </div>
         <div class="modal-body">
          <div class="row">
@@ -109,11 +97,15 @@
                                        <div class=".col-xs-12 .col-md-2">
                                             <label for="name">Codigo Único<span class="required"></span>
                                             </label>
+
                                                   <input id="txtCodigoUnico" name="txtCodigoUnico"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2" placeholder="Codigo único" required="required" type="text">
                                                   <br>
+
                                         </div>
                                       </div>
                                     <br>
+
+
                           <div class="row ">
                             <div class="col-md-2">
                                        <div class=".col-xs-12 .col-md-2">
@@ -123,7 +115,7 @@
                            <div class="col-md-12">
                                 <div class=".col-xs-12 .col-md-12">
                                <div class="panel panel-default">
-                               <div class="panel-heading">Datos del PMI</div>
+                             
                                       <div class="panel-body">
                                       <form class="form-horizontal " id="form-AddEstudioInversion" action="<?php echo base_url(); ?>Estudio_Inversion/AddEstudioInversion" method="POST">
 
@@ -217,8 +209,8 @@
                                             </label> <br>
                                             <center>
                                                  <button id="btn-GuardarMontoProgramado"  class="btn btn-success">
-                               <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>Guardar</button>
-                               <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                               <span  aria-hidden="true"></span><strong>Guardar</strong> </button>
+                               <button type="button" class="btn btn-danger" data-dismiss="modal"><strong>Cancelar</strong> </button>
 
                                </center>
                                           </div>
@@ -552,3 +544,9 @@
       swal('','<?=$sessionTempo?>', "success");
     </script>
 <?php } ?>
+<script>
+  $('.modal').on('hidden.bs.modal', function(){ 
+    $(this).find('form')[0].reset(); //para borrar todos los datos que tenga los input, textareas, select.
+    $("label.error").remove();  //lo utilice para borrar la etiqueta de error del jquery validate
+  });
+</script>

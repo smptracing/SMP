@@ -80,8 +80,8 @@ $(document).on("ready" ,function(){
                   "dataSrc":""
                                     },
                                 "columns":[
-                                  {"defaultContent":" <label class='pos-rel'><input type='checkbox' class='ace' /><span class='lbl'></span></label>"},
-                                  {"data":"id_fuente_finan"},
+                                  {"defaultContent":" <label class='pos-rel'><input type='checkbox' class='ace' /><span class='lbl'></span></label>","visible": false},
+                                  {"data":"id_fuente_finan" ,"visible": false},
                                   {"data":"nombre_fuente_finan"},
                                   {"data":"acronimo_fuente_finan"},
                                   {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaEditFuenteFinanciamiento'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><span class='glyphicon glyphicon-trash' aria-hidden='true'></span></button>"}

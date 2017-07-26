@@ -69,7 +69,7 @@
                                       "dataSrc":""
                                     },
                                 "columns":[
-                                   {"data":"id_tipo_nopip"  },
+                                   {"data":"id_tipo_nopip","visible" : false},
                                    {"data":"desc_tipo_nopip"},
                                   {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaEditTipoNoPip'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                ],

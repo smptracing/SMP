@@ -6,7 +6,7 @@
               <div class="col-md-12 col-xs-12 col-xs-12">
                                 <div class="x_panel">
                                   <div class="x_title">
-                                    <h2><i class="fa fa-bars"></i> Sector </h2>
+                                    <h2> <b>SECTOR</b> </h2>
                                     <ul class="nav navbar-right panel_toolbox">
 
                                     </ul>
@@ -18,11 +18,12 @@
                                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
                                       <ul id="myTab" class="nav nav-tabs" role="tablist">
                                         <li role="presentation" class="active"><a href="#tab_Sector"  id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">
-                                        <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Sector
-                                        
+
+                                         <b>Sector</b>
+
                                         </a>
                                         </li>
-                                        <li role="presentation" class=""><a href="#tab_Entidad" role="tab"  id="profile-tab" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Entidad</a>
+                                        <li role="presentation" class=""><a href="#tab_Entidad" role="tab"  id="profile-tab" data-toggle="tab" aria-expanded="false"><b>Entidad</b> </a>
                                         </li>
 
                                       </ul>
@@ -38,25 +39,18 @@
                                                                       <span class="fa fa-plus-circle"></span>
                                                                 Nuevo </button>
                                                           <div class="x_title">                                                              
-                                                            <ul class="nav navbar-right panel_toolbox">
-                                                                
-                                                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                                              </li>
-                                                              
-                                                              <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                                              </li>
-                                                                
-                                                            </ul>
+                                                       
                                                                 <div class="clearfix"></div>
                                                                                                                         
                                                           </div>
+                                                          <div class="clearfix"></div>
                                                           <div class="x_content">
                                                             <table id="table-sector"  class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
                                                               <thead>
                                                                 <tr>
                                                                   <th class="col-sm-1">ID</th>
-                                                                  <th class="">NOMBRE SECTOR</th>
-                                                                  <th class="col-sm-2"></th>
+                                                                  <th style="width: 91%">NOMBRE SECTOR</th>
+                                                                  <th style="width: 9%">ACCIONES</th>
                                                                 </tr>
                                                               </thead>
                                                             </table>
@@ -79,15 +73,7 @@
                                                                 <span class="fa fa-plus-circle"></span>
                                                                 Nuevo</button>
                                                           <div class="x_title">                                                              
-                                                            <ul class="nav navbar-right panel_toolbox">
-                                                                
-                                                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                                              </li>
-                                                              
-                                                              <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                                              </li>
-                                                                
-                                                            </ul>
+                            
                                                             <div class="clearfix"></div>
                                                                                                                             
                                                           </div>
@@ -100,7 +86,7 @@
                                                                   <th>NOMBRE SECTOR</th>
                                                                   <th>NOMBRE ENTIDAD</th>
                                                                   <th>DENOMINACION  ENTIDAD</th>
-                                                                  <th class="col-sm-1"></th>
+                                                                  <th class="col-sm-1">ACCIONES</th>
                                                                 </tr>
                                                               </thead>
 
@@ -119,9 +105,7 @@
 
                                   </div>
                                 </div>
-              </div>
-
-             
+              </div>    
           </div>
           <div class="clearfix"></div>
         </div>
@@ -195,7 +179,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre Entidad <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_NombreEntidad" name="txt_NombreEntidad" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Nombre del sector" required="required" type="text">
+                          <input id="txt_NombreEntidad" name="txt_NombreEntidad" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Nombre de la entidad" required="required" type="text">
                         </div>
                       </div>
                        <div class="item form-group">

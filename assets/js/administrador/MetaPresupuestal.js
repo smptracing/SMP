@@ -40,7 +40,7 @@ $(document).on("ready" ,function()
                                     },
        //para llenado y busqueda por todo los campos
                                 "columns":[
-                                    {"data":"id_meta_pres"},
+                                    {"data":"id_meta_pres","visible": false},
                                     {"data":"nombre_meta_pres"},
                                     {"data":"año_meta_pres"},
                                     {"data":"pim_meta_pres"},

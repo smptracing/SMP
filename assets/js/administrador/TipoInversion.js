@@ -81,7 +81,7 @@ $(document).on("ready" ,function(){
                   "dataSrc":""
                                     },
                                 "columns":[
-                                   {"data":"id_tipo_inversion"  },
+                                   {"data":"id_tipo_inversion","visible" : false},
                                    {"data":"nombre_tipo_inversion"},
                                    {"data":"descripcion_tipo_inversion"},
                                    {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaEditTipoInversion'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}

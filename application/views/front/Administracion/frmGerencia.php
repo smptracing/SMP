@@ -7,7 +7,7 @@
             <div class="col-md-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2> Oficinas </h2>
+                        <h2><b> OFICINAS </b></h2>
                         <ul class="nav navbar-right panel_toolbox">
                         </ul>
                         <div class="clearfix"></div>
@@ -20,22 +20,19 @@
 
                                 <li role="presentation" class="active">
                                     <a href="#tab_Sector" id="home-tab" role="tab"
-                                                                          data-toggle="tab" aria-expanded="true"> <span
-                                                class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-                                        Gerencias</a>
+                                                                          data-toggle="tab" aria-expanded="true"> 
+                                        <b>Gerencias</b></a>
                                 </li>
                                 <li role="presentation" class>
                                     <a href="#tab_Entidad" role="tab" id="profile-tab1"
-                                                                    data-toggle="tab" aria-expanded="false"> <span
-                                                class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Sub
-                                        Gerencias</a>
+                                     data-toggle="tab" aria-expanded="false">  
+                                    <b>Sub Gerencias</b></a>
                                 </li>
                                 <li role="presentation" class>
                                     <a href="#tab_ServicioPubAsoc" role="tab"
                                                                     id="profile-tab2" data-toggle="tab"
-                                                                    aria-expanded="false"> <span
-                                                class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-                                        Oficinas</a>
+                                                                    aria-expanded="false"> 
+                                        <b>Oficinas</b></a>
                                 </li>
                             </ul>
                             <div id="myTabContent" class="tab-content">
@@ -51,17 +48,21 @@
                                                         data-target="#VentanaRegistraGerencia"><span
                                                             class="fa fa-plus-circle"> </span> Nuevo
                                                 </button>
-
+                                                 <div class="x_title">
+                                                     <!-- <h2>Listado de  Tipo NO PIP<small>.</small></h2>-->
+                                                       
+                                                           <div class="clearfix"></div>
+                                                      </div>
                                                 <div class="x_content">
 
                                                     <table id="table-Gerencia"
-                                                           class="table table-striped table-condensed table-hover"
+                                                           class="table table-striped table-bordered table-hover" ellspacing="0" width="100%"
                                                            cellspacing="0" width="100%">
                                                         <thead>
                                                         <tr>
                                                             <th>ID</th>
                                                             <th>GERENCIA</th>
-                                                            <th>OPCION</th>
+                                                            <th>ACCIONES</th>
                                                         </tr>
                                                         </thead>
                                                     </table>
@@ -81,11 +82,18 @@
 
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <div class="x_panel">
+                                        
                                                 <button type="button" id="btn_NuevaSubGerencia" class="btn btn-primary"
                                                         data-toggle="modal" data-target="#VentanaRegistraSubGerencia">
                                                     <span class="fa fa-plus-circle"></span>
                                                     Nuevo
                                                 </button>
+                                                 <div class="x_title">
+                                                     <!-- <h2>Listado de  Tipo NO PIP<small>.</small></h2>-->
+                                                       
+                                                           <div class="clearfix"></div>
+                                                      </div>
+                                                <div class="x_content">
                                                 <div class="x_content">
                                                     <table id="table-SubGerencia"
                                                            class="table table-striped table-bordered table-hover"
@@ -96,7 +104,7 @@
                                                             <th>ID GERENCIA</th>
                                                             <th>GERENCIA</th>
                                                             <th>SUB GERENCIA</th>
-                                                            <th>OPCION</th>
+                                                            <th>ACCIONES</th>
                                                         </tr>
                                                         </thead>
 
@@ -122,6 +130,11 @@
                                                     <span class="fa fa-plus-circle"></span>
                                                     Nuevo
                                                 </button>
+                                                 <div class="x_title">
+                                                     <!-- <h2>Listado de  Tipo NO PIP<small>.</small></h2>-->
+                                                       
+                                                           <div class="clearfix"></div>
+                                                      </div>
                                                 <div class="x_content">
                                                     <table id="table-Oficina"
                                                            class="table table-striped table-bordered table-hover"
@@ -133,7 +146,7 @@
                                                             <th>OFICINA</th>
                                                             <th>SUB GERENCIA</th>
                                                             <th>GERENCIA</th>
-                                                            <th>OPCION</th>
+                                                            <th>ACCIONES</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
@@ -162,7 +175,7 @@
 
 
 <!-- /.ventana para registra funcion -->
-<div class="modal fade" id="VentanaRegistraGerencia" role="dialog"> <!--add Gerencia-->
+<div class="modal fade" id="VentanaRegistraGerencia" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"> <!--add Gerencia-->
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -232,7 +245,7 @@
 
 
 <!-- /.ventana Registrar Sub Gerencia-->
-<div class="modal fade" id="VentanaRegistraSubGerencia" role="dialog">
+<div class="modal fade" id="VentanaRegistraSubGerencia" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -297,7 +310,7 @@
 <!-- /.fin ventana para registra una nueva DIVISION  FUNCIONAL-->
 
 <!-- OFICINA #######################################-->
-<div class="modal fade" id="VentanaRegistraOficina" role="dialog">
+<div class="modal fade" id="VentanaRegistraOficina" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -365,7 +378,7 @@
 
 <!-- /.fin ventana para registra una nuevo grupo funcional-->
 <!-- modificar la funcion-->
-<div class="modal fade" id="VentanaModificarGerencia" role="dialog">
+<div class="modal fade" id="VentanaModificarGerencia" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -425,7 +438,7 @@
 
 <!-- fin de modificar la funcion-->
 
-<div class="modal fade" id="VentanaUpdateSubGerencia" role="dialog">
+<div class="modal fade" id="VentanaUpdateSubGerencia" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -489,7 +502,7 @@
 
 <!-- modificar division  funcional-->
 
-<div class="modal fade" id="VentanaUpdateOficina" role="dialog">
+<div class="modal fade" id="VentanaUpdateOficina" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -552,3 +565,9 @@
     </div>
 </div>
 <!-- fin para modificar division  funcional-->
+<script>
+  $('.modal').on('hidden.bs.modal', function(){ 
+    $(this).find('form')[0].reset(); //para borrar todos los datos que tenga los input, textareas, select.
+    $("label.error").remove();  //lo utilice para borrar la etiqueta de error del jquery validate
+  });
+</script>

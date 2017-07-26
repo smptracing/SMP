@@ -81,8 +81,8 @@ $(document).on("ready" ,function()
 									"dataSrc":""
                                     },
                                 "columns":[
-                                   {"defaultContent":" <label class='pos-rel'><input type='checkbox' class='ace' /><i class='lbl'></i></label>"},
-                                    {"data":"id_estado_ciclo"  },
+                                   {"defaultContent":" <label class='pos-rel'><input type='checkbox' class='ace' /><i class='lbl'></i></label>" ,"visible": false},
+                                    {"data":"id_estado_ciclo","visible" : false},
                                     {"data":"nombre_estado_ciclo"},
                                     {"data":"descripcion_estado_ciclo"},
                                  {"defaultContent":"</button><button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaEditEstadoCicloInversion'><i class='glyphicon glyphicon-pencil' aria-hidden='true'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='glyphicon glyphicon-trash' aria-hidden='true'></i></button>"}

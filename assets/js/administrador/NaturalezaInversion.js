@@ -72,7 +72,7 @@
                                       "dataSrc":""
                                     },
                                 "columns":[
-                                   {"data":"id_naturaleza_inv"  },
+                                   {"data":"id_naturaleza_inv","visible" : false},
                                    {"data":"nombre_naturaleza_inv"},
                                   {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaRegNaturalezaInversion'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                ],

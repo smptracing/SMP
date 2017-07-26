@@ -5,7 +5,7 @@
 			<div class="col-md-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
-						<h2><i class="fa fa-bars"></i>UNIDAD  DE MEDIDA</h2>
+						<h2><b>UNIDAD  DE MEDIDA</b></h2>
 						<ul class="nav navbar-right panel_toolbox">
 						</ul>
 						<div class="clearfix"></div>
@@ -13,7 +13,7 @@
 					<div class="x_content">
 						<div class="" role="tabpanel" data-example-id="togglable-tabs">
 							<ul id="myTab" class="nav nav-tabs" role="tablist">
-								<li role="presentation" class="active"><a href="#tab_etapasFE" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"> <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>Etapas</a>
+								<li role="presentation" class="active"><a href="#tab_etapasFE" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"> <b>Etapas</b></a>
 								</li>
 							</ul>
 							<div id="myTabContent" class="tab-content">
@@ -27,26 +27,14 @@
 												</button>
 											</button>
 											<div class="x_title">
-												<ul class="nav navbar-right panel_toolbox">
-													<li>
-														<a class="collapse-link">
-															<i class="fa fa-chevron-up"></i>
-														</a>
-													</li>
-													<li>
-														<a class="close-link">
-															<i class="fa fa-close"></i>
-														</a>
-													</li>
-												</ul>
 												<div class="clearfix"></div>
 											</div>
 											<div class="x_content">
 												<table id="table-UnidadaMedida" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
 													<thead>
 														<tr>
-															<td>Descripción</td>
-															<td class="col-md-1 col-md-1 col-xs-12"></td>
+															<td>DESCRIPCIÓN</td>
+															<td class="col-md-1 col-md-1 col-xs-12">ACCIONES</td>
 														</tr>
 													</thead>
 													<?php foreach($listaUnidadMedida as $item){ ?>
