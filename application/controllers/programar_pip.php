@@ -62,10 +62,7 @@ class programar_pip extends CI_Controller
             $txt_anio2               = $this->input->post("txt_anio2");
             $txt_anio3               = $this->input->post("txt_anio3");
             $txt_prioridad           = $this->input->post("txt_prioridad");
-            $txt_pia                 = $this->input->post("txt_pia");
-            $txt_pim                 = $this->input->post("txt_pim");
-            $txt_devengado           = $this->input->post("txt_devengado");
-            if ($this->programar_pip_modal->AddProgramacion($flat, $id_programacion, $Cbx_AnioCartera, $cbxBrecha, $txt_id_pip_programacion, $txt_anio1, $txt_anio2, $txt_anio3, $txt_prioridad, $txt_pia, $txt_pim, $txt_devengado) == false) {
+            if ($this->programar_pip_modal->AddProgramacion($flat, $id_programacion, $Cbx_AnioCartera, $cbxBrecha, $txt_id_pip_programacion, $txt_anio1, $txt_anio2, $txt_anio3, $txt_prioridad) == false) {
                 echo "1";
             } else {
                 echo "2";

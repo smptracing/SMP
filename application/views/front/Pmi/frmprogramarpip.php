@@ -175,7 +175,7 @@
                                         <!-- PAGE CONTENT BEGINS -->
               <form class="form-horizontal " id="form_AddProgramacion"   action="<?php echo base_url(); ?>bancoproyectos/Get_OperacionMantenimiento" method="POST" >
 
-                        <input id="txt_id_pip_programacion" name="txt_id_pip_programacion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="text">
+                        <input id="txt_id_pip_programacion" name="txt_id_pip_programacion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
                              <div class="item form-group">
                                <div class="col-md-2 col-sm-6 col-xs-12">
                                <label>Cartera</label>
@@ -198,7 +198,7 @@
                                     </div>
                                     <div class="col-md-3 col-sm-12 col-xs-12">
                                       <label>Brecha </label>
-                                      <select id="cbxBrecha" name="cbxBrecha" class="selectpicker"   title="Elija Brecha">
+                                      <select id="cbxBrecha" name="cbxBrecha" class="selectpicker"   title="Elija Brecha" required="required">
                                       </select>
                                     </div>
                                  </div>
@@ -206,15 +206,15 @@
                               <div class="item form-group">
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>PIA</label></center>
-                                      <input  class="form-control" id="txt_pia" name="txt_pia" type="number" required="required" disabled="disabled">
+                                      <input  class="form-control" id="txt_pia" name="txt_pia" type="number" required="required" value="0.00" disabled="disabled">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>PIM</label></center>
-                                      <input  class="form-control" id="txt_pim" name="txt_pim" type="number" required="required" disabled="disabled">
+                                      <input  class="form-control" id="txt_pim" name="txt_pim" type="number" required="required" value="0.00"  disabled="disabled">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>Devengado</label></center>
-                                      <input  class="form-control" id="txt_devengado" name="txt_devengado" type="number" required="required" disabled="disabled">
+                                      <input  class="form-control" id="txt_devengado" name="txt_devengado" type="number" required="required" value="0.00"  disabled="disabled">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>Prioridad</label></center>
@@ -297,7 +297,7 @@
                                         <!-- PAGE CONTENT BEGINS -->
               <form class="form-horizontal " id="form_AddMeta_Pi"   action="<?php echo base_url(); ?>bancoproyectos/Get_OperacionMantenimiento" method="POST" >
 
-                        <input id="txt_id_pip_programacion_mp" name="txt_id_pip_programacion_mp" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="text">
+                        <input id="txt_id_pip_programacion_mp" name="txt_id_pip_programacion_mp" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
                               <div class="item form-group">
                                <div class="col-md-2 col-sm-6 col-xs-12">
                                       <label>Año</label>

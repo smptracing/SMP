@@ -18,7 +18,8 @@ $(document).on("ready" ,function(){
                             if (resp=='2') {
                              swal("NO SE REGISTRÓ","NO se regristró ", "error");
                            }
-                          $('#table_formulacion_evaluacion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
+                          $('#Table_Programar').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
+                          $('#Table_funcionamiento').dataTable()._fnAjaxUpdate();
                              formReset();
                          }
                       });
@@ -40,6 +41,7 @@ $(document).on("ready" ,function(){
                              swal("NO SE REGISTRÓ","NO se regristró ", "error");
                            }
                           $('#Table_meta_pi').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
+                             
                              formReset();
                          }
                       });
@@ -148,10 +150,11 @@ $(document).on("ready" ,function(){
                                "language":idioma_espanol
                     });
         AddProgramacion("#table_ejecucion",table);
+        AddMeta_Pi("#table_ejecucion",table);
 }
 //fin de proyectos de inversion en Ejecucion
 //listar proyectos de inversion en Funcionamiento
- var lista_funcionamiento=function()
+ var lista_funcionamiento=function() //operacion y mantenimiento
 {
        var table=$("#Table_funcionamiento").DataTable({
                      "processing": true,
@@ -187,6 +190,7 @@ $(document).on("ready" ,function(){
                                "language":idioma_espanol
                     });
      AddProgramacion("#Table_funcionamiento",table); 
+     AddMeta_Pi("#Table_funcionamiento",table);
 }
 //fin de proyectos de inversion en Funcionamiento
 //listar meta proyecto
