@@ -8,7 +8,7 @@
               <div class="col-md-12 col-sm-6 col-xs-12">
                                 <div class="x_panel">
                                   <div class="x_title">
-                                    <h2><i class="fa fa-bars"></i> Unidad Ejecutora<small></small></h2>
+                                    <h2><b> UNIDAD EJECUTORA</b></h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                       </li>
@@ -24,16 +24,16 @@
                                       <ul id="myTab" class="nav nav-tabs" role="tablist">
                                       <!--  <li role="presentation" class="active"><a  href="#tab_RubroEjecucion" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Rubro de ejecucion</a>
                                         </li>-->
-                                        <li role="presentation" class="active"><a  href="#tab_ModalidadEjecucion" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Modalidad Ejecucion</a>
+                                        <li role="presentation" class="active"><a  href="#tab_ModalidadEjecucion" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"><b>Modalidad Ejecucion</b> </a>
                                         </li>
-                                        <li role="presentation" class=""><a  href="#tab_UnidadEjecutora" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Unidad Ejecutora</a>
+                                        <li role="presentation" class=""><a  href="#tab_UnidadEjecutora" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false"><b>Unidad Ejecutora</b> </a>
                                         </li>
-                                        <li role="presentation" class=""><a  href="#tab_UnidadFormuladora" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Unidad Formuladora</a>
+                                        <li role="presentation" class=""><a  href="#tab_UnidadFormuladora" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false"><b>Unidad Formuladora</b> </a>
                                         </li>
 
                                         <li role="presentation" class=""><a href="#tab_NivelGobierno" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">
-                                        <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-                                         Nivel de Gobierno</a>
+                                         <b>Nivel de Gobierno</b>
+                                         </a>
                                          </li>
                                       </ul>
                                       <div id="myTabContent" class="tab-content">
@@ -48,17 +48,6 @@
                                                         <div class="x_panel">
                                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraModalidadEjecucion"><span class="fa fa-plus-circle"></span> Nuevo</button>
                                                           <div class="x_title">
-
-
-                                                            <ul class="nav navbar-right panel_toolbox">
-
-                                                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                                              </li>
-
-                                                              <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                                              </li>
-
-                                                            </ul>
 
                                                             <div class="clearfix"></div>
 
@@ -91,17 +80,6 @@
                                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraUnidadEjecutora" ><span class="fa fa-plus-circle"></span> Nuevo</button>
                                                           <div class="x_title">
 
-
-                                                            <ul class="nav navbar-right panel_toolbox">
-
-                                                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                                              </li>
-
-                                                              <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                                              </li>
-
-                                                            </ul>
-
                                                             <div class="clearfix"></div>
 
                                                           </div>
@@ -131,17 +109,6 @@
                                                         <div class="x_panel">
                                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraUnidadFormuladora" ><span class="fa fa-plus-circle"></span> Nuevo</button>
                                                           <div class="x_title">
-
-
-                                                            <ul class="nav navbar-right panel_toolbox">
-
-                                                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                                              </li>
-
-                                                              <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                                              </li>
-
-                                                            </ul>
 
                                                             <div class="clearfix"></div>
 
@@ -177,15 +144,7 @@
                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegNivelGobierno" >
                                                           <span class="fa fa-plus-circle"></span> Nuevo
                                                     </button>
-                                                    <div class="x_title">
-                                                            <h2>Listado de Nivel de Gobierno<small>.</small></h2>
-                                                            <ul class="nav navbar-right panel_toolbox">
-                                                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                                              </li>
-                                                              <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                                              </li>
-                                                            </ul>
-                                                           <div class="clearfix"></div>
+                                                    <div class="x_title">                                                           <div class="clearfix"></div>
                                                       </div>
                                                       <!--inicio de la tabla nivel de gobierno -->
                                                         <div class="x_content">

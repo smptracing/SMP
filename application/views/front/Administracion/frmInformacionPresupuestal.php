@@ -8,7 +8,7 @@
              <div class="x_panel">
              <!--inicio de pestaña configurtacion-->
                 <div class="x_title">
-                     <h2><i class="fa fa-bars"></i> Información Presupuestal <small></small></h2>
+                     <h2><b>INFORMACIÓN PRESUPUESTAL</b> </h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                       </li>
@@ -24,14 +24,13 @@
                                 <ul id="myTab" class="nav nav-tabs" role="tablist">
 
                                          <li role="presentation" class="active"><a href="#tab_FuenteFinanciamiento" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">
-                                        <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-                                         Fuente de Financiamiento</a>
+                                         <b>Fuente de Financiamiento</b></a>
                                          </li>
-                                        <li role="presentation" class=""><a  href="#tab_RubroEjecucion" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Rubro de ejecucion</a>
+                                        <li role="presentation" class=""><a  href="#tab_RubroEjecucion" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false"><b> Rubro de ejecucion</b></a>
                                         </li>
-                                        <li role="presentation" class=""><a  href="#tab_MetaPresupuestal" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>Meta Presupuestal</a>
+                                        <li role="presentation" class=""><a  href="#tab_MetaPresupuestal" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false"><b>Meta Presupuestal</b></a>
                                         </li>
-                                        <li role="presentation" class=""><a  href="#tab_ProgramaPresupuestal" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>Programa Presupuestal</a>
+                                        <li role="presentation" class=""><a  href="#tab_ProgramaPresupuestal" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false"><b>Programa Presupuestal</b></a>
                                         </li>
                                 </ul>
                               <!-- Fin Menus-->
@@ -43,17 +42,13 @@
                                            <div class="row">
                                               <div class="col-md-12 col-sm-12 col-xs-12">
                                               <div class="x_panel">
+                                                <button type="button" id="btn-FuenteFinanciamiento" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegFuenteFinanciamiento" >
+                                                         <span class="fa fa-plus-circle"></span> Nuevo
+                                                    </button>
                                                     <div class="x_title">
                                                           <!--  <h2>Listado de  Fuente de Financiamiento<small>.</small></h2>-->
-                                                            <button type="button" id="btn-FuenteFinanciamiento" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegFuenteFinanciamiento" >
-                                                          <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Nuevo
-                                                    </button>
-                                                            <ul class="nav navbar-right panel_toolbox">
-                                                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                                              </li>
-                                                              <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                                              </li>
-                                                            </ul>
+                                                          
+   
                                                            <div class="clearfix"></div>
                                                       </div>
                                                       <!--inicio de la tabla fuente de financiamiento -->
@@ -100,17 +95,6 @@
                                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraRubroEjecucion" ><span class="fa fa-plus-circle"></span> Nuevo</button>
                                                           <div class="x_title">
 
-
-                                                            <ul class="nav navbar-right panel_toolbox">
-
-                                                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                                              </li>
-
-                                                              <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                                              </li>
-
-                                                            </ul>
-
                                                             <div class="clearfix"></div>
 
                                                           </div>
@@ -145,17 +129,6 @@
                                                         <div class="x_panel">
                                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraMetaPresupuestal" ><span class="fa fa-plus-circle"></span> Nuevo</button>
                                                           <div class="x_title">
-
-
-                                                            <ul class="nav navbar-right panel_toolbox">
-
-                                                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                                              </li>
-
-                                                              <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                                              </li>
-
-                                                            </ul>
 
                                                             <div class="clearfix"></div>
 
