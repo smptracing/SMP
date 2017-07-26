@@ -7,14 +7,8 @@
              <div class="x_panel">
              <!--inicio de pestaña configurtacion-->
                 <div class="x_title">
-                     <h2><i class="fa fa-bars"></i> Estudio de Inversión<small></small></h2>
-                                    <ul class="nav navbar-right panel_toolbox">
-                                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                      </li>
-
-                                      <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                      </li>
-                                    </ul>
+                     <h2><strong>Estudio de Inversión</strong> <small></small></h2>
+                                    
                       <div class="clearfix"></div>
                 </div>
               <!--final  de pestaña configurtacion-->
@@ -23,8 +17,8 @@
                              <!-- Inicio Menus-->
                                 <ul id="myTab" class="nav nav-tabs" role="tablist">
                                     <li role="presentation" class="active"><a href="#tab_EstadoCicloInversion" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">
-                                        <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-                                         Estudio</a>
+                                        <span aria-hidden="true"></span>
+                                         <strong>Estudio</strong> </a>
                                          </li>
                                </ul>
                               <!-- Fin Menus-->
@@ -41,20 +35,14 @@
                                                           <button type="button" id="btn_nuevoEstInv" class="btn btn-primary" data-toggle="modal" data-target="#ventanaEstudioInversion" >
                                                                 <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Nuevo
                                                           </button>
-
-                                                            <ul class="nav navbar-right panel_toolbox">
-                                                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                                              </li>
-                                                              <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                                              </li>
-                                                            </ul>
-                                                           <div class="clearfix"></div>
+                                                          <div class="pull-right tableTools-container-EstudioInversion">
+                                                           </div>
+                                                                                                                       
                                                       </div>
                                                       <!--inicio de la tabla estado -->
                                                         <!--inicio  de icono de reporte -->
                                                         <div class="clearfix">
-                                                           <div class="pull-right tableTools-container-EstudioInversion">
-                                                           </div>
+                                                           
                                                         </div>
                                                       <!--fin  de icono de reporte -->
                                                       <div class="x_content" >
@@ -94,7 +82,7 @@
         </div>
      </div>
 <!--- popul para registar estudio de inversion -->
-<div class="modal fade" id="ventanaEstudioInversion" role="dialog">
+<div class="modal fade" id="ventanaEstudioInversion" data-backdrop="static" data-keyboard="false" tabindex="-1"role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -552,3 +540,9 @@
       swal('','<?=$sessionTempo?>', "success");
     </script>
 <?php } ?>
+<script>
+  $('.modal').on('hidden.bs.modal', function(){ 
+    $(this).find('form')[0].reset(); //para borrar todos los datos que tenga los input, textareas, select.
+    $("label.error").remove();  //lo utilice para borrar la etiqueta de error del jquery validate
+  });
+</script>
