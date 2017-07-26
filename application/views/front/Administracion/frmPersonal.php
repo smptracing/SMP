@@ -7,7 +7,7 @@
               <div class="col-md-12 col-xs-12">
                                 <div class="x_panel">
                                   <div class="x_title">
-                                    <h2><i class="fa fa-bars"></i> Personal </h2>
+                                    <h2><b>PERSONAL</b></h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                     </ul>
                                     <div class="clearfix"></div>
@@ -17,9 +17,9 @@
 
                                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
                                       <ul id="myTab" class="nav nav-tabs" role="tablist">
-                                        <li role="presentation" class="active"><a href="#tab_Sector" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"> <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Personal</a>
+                                        <li role="presentation" class="active"><a href="#tab_Sector" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"> <b>Personal</b></a>
                                         </li>
-                                        <li role="presentation" class=""><a href="#tab_Entidad" role="tab"  id="profile-tab" data-toggle="tab" aria-expanded="false"> <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>  Cargo</a>
+                                        <li role="presentation" class=""><a href="#tab_Entidad" role="tab"  id="profile-tab" data-toggle="tab" aria-expanded="false"> <b>Cargo</b> </a>
                                         </li>
 
                                       </ul>
@@ -38,15 +38,6 @@
                                                             </button>
                                                           <div class="x_title">
 
-                                                            <ul class="nav navbar-right panel_toolbox">
-
-                                                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                                              </li>
-
-                                                              <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                                              </li>
-
-                                                            </ul>
                                                             <div class="clearfix"></div>
                                                           </div>
 
@@ -84,15 +75,7 @@
                                                                 <span class="fa fa-plus-circle"></span>
                                                                 Nuevo</button>
                                                           <div class="x_title">
-                                                            <ul class="nav navbar-right panel_toolbox">
-
-                                                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                                              </li>
-
-                                                              <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                                              </li>
-
-                                                            </ul>
+           
                                                            <div class="clearfix"></div>
 
                                                           </div>
@@ -126,15 +109,7 @@
                                                                 Nuevo</button>
                                                           <div class="x_title">
 
-                                                            <ul class="nav navbar-right panel_toolbox">
-
-                                                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                                              </li>
-
-                                                              <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                                              </li>
-
-                                                            </ul>
+                               
                                                             <div class="clearfix"></div>
                                                           </div>
                                                           <div class="x_content">

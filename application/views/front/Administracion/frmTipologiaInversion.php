@@ -8,7 +8,7 @@
              <div class="x_panel">
              <!--inicio de pestaña configurtacion-->
                 <div class="x_title">
-                     <h2><i class="fa fa-bars"></i> TIPOLOGÍA INVERSIÓN <small></small></h2>
+                     <h2> <b>TIPOLOGÍA INVERSIÓN</b></h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                       </li>
@@ -24,20 +24,18 @@
                              <!-- Inicio Menus-->
                                 <ul id="myTab" class="nav nav-tabs" role="tablist">
                                          <li role="presentation" class="active"><a href="#tab_NaturalezaInversion" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">
-                                        <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-                                         Naturaleza de Inversión</a>
+                                        <b> Naturaleza de Inversión</b></a>
                                          </li>
                                          <li role="presentation" class=""><a href="#tab_TipologiaInversion" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">
-                                        <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-                                         Tipología de Inversión</a>
+                                         <b>Tipología de Inversión</b></a>
                                          </li>
                                          <li role="presentation" class=""><a href="#tab_TipoInversion" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">
-                                        <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-                                         Tipo de Inversión</a>
+                                   
+                                         <b>Tipo de Inversión</b></a>
                                          </li>
                                           <li role="presentation" class=""><a href="#tab_TipoNoPip" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">
-                                        <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-                                         Tipo NO Pip</a>
+                                  
+                                        <b> Tipo NO Pip</b></a>
                                          </li>
 
                                 </ul>
@@ -49,18 +47,13 @@
                                            <div class="row">
                                               <div class="col-md-12 col-sm-12 col-xs-12">
                                               <div class="x_panel">
-
+                                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistrarNaturalezaInversion" >
+                                                         <span class="fa fa-plus-circle"></span> Nuevo
+                                                         </button>
                                                     <div class="x_title">
                                                             <!--<h2>Listado de  Naturaleza de Inversión<small>.</small></h2>-->
-                                                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistrarNaturalezaInversion" >
-                                                           <span class="fa fa-plus-circle"></span> Nuevo
-                                                           </button>
-                                                            <ul class="nav navbar-right panel_toolbox">
-                                                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                                              </li>
-                                                              <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                                              </li>
-                                                            </ul>
+                                                    
+                                      
                                                            <div class="clearfix"></div>
                                                       </div>
                                                         <!--inicio  de icono de reporte -->
@@ -95,17 +88,13 @@
                                            <div class="row">
                                               <div class="col-md-12 col-sm-12 col-xs-12">
                                               <div class="x_panel">
-                                                    <div class="x_title">
-                                                          <!-- <h2>Listado de  Tipología de Inversión<small>.</small></h2>-->
-                                                           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegTipologiaInversion" >
+                                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegTipologiaInversion" >
                                                            <span class="fa fa-plus-circle"></span> Nuevo
                                                     </button>
-                                                            <ul class="nav navbar-right panel_toolbox">
-                                                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                                              </li>
-                                                              <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                                              </li>
-                                                            </ul>
+                                                    <div class="x_title">
+                                                          <!-- <h2>Listado de  Tipología de Inversión<small>.</small></h2>-->
+                                                          
+                                       
                                                            <div class="clearfix"></div>
                                                       </div>
                                                       <!--inicio de la tabla tipologia de Inversion -->
@@ -143,18 +132,13 @@
                                            <div class="row">
                                               <div class="col-md-12 col-sm-12 col-xs-12">
                                               <div class="x_panel">
-
-                                                    <div class="x_title">
-                                                     <!-- <h2>Listado de  Tipo de Inversión<small>.</small></h2>-->
-                                                       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegTipoInversion" >
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegTipoInversion" >
                                                            <span class="fa fa-plus-circle"></span> Nuevo
                                                     </button>
-                                                            <ul class="nav navbar-right panel_toolbox">
-                                                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                                              </li>
-                                                              <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                                              </li>
-                                                            </ul>
+                                                    <div class="x_title">
+                                                     <!-- <h2>Listado de  Tipo de Inversión<small>.</small></h2>-->
+                                                    
+
                                                            <div class="clearfix"></div>
                                                       </div>
                                                       <!--inicio de la tabla tipo de Inversion -->
@@ -189,18 +173,12 @@
                                            <div class="row">
                                               <div class="col-md-12 col-sm-12 col-xs-12">
                                               <div class="x_panel">
-
-                                                    <div class="x_title">
-                                                     <!-- <h2>Listado de  Tipo NO PIP<small>.</small></h2>-->
-                                                       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegTipoNoPIP" >
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegTipoNoPIP" >
                                                           <span class="fa fa-plus-circle"></span> Nuevo
                                                     </button>
-                                                            <ul class="nav navbar-right panel_toolbox">
-                                                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                                              </li>
-                                                              <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                                              </li>
-                                                            </ul>
+                                                    <div class="x_title">
+                                                     <!-- <h2>Listado de  Tipo NO PIP<small>.</small></h2>-->
+                                                       
                                                            <div class="clearfix"></div>
                                                       </div>
                                                       <!--inicio de la tabla tipo no pip-->

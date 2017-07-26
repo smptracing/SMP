@@ -9,7 +9,7 @@
              <div class="x_panel">
              <!--inicio de pestaña configurtacion-->
                 <div class="x_title">
-                     <h2><i class="fa fa-bars"></i> Ciclo de Inversión<small></small></h2>
+                     <h2> <b>CICLO DE INVERSIÓN</b></h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                       </li>
@@ -25,8 +25,7 @@
                              <!-- Inicio Menus-->
                                 <ul id="myTab" class="nav nav-tabs" role="tablist">
                                     <li role="presentation" class="active"><a href="#tab_EstadoCicloInversion" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">
-                                        <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-                                         Estado de Ciclo Inversión</a>
+                                         <b>Estado de Ciclo Inversión</b></a>
                                          </li>
                                </ul>
                               <!-- Fin Menus-->
@@ -37,18 +36,13 @@
                                            <div class="row">
                                               <div class="col-md-12 col-sm-12 col-xs-12">
                                               <div class="x_panel">
-
+                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegEstadoCicloInversion" >
+                                                                <span class="fa fa-plus-circle"></span> Nuevo
+                                                          </button>
                                                     <div class="x_title">
                                                            <!-- <h2>Listado de  Ciclo Inversión<small>.</small></h2>-->
-                                                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegEstadoCicloInversion" >
-                                                                <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Nuevo
-                                                          </button>
-                                                            <ul class="nav navbar-right panel_toolbox">
-                                                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                                              </li>
-                                                              <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                                              </li>
-                                                            </ul>
+                                                      
+                   
                                                            <div class="clearfix"></div>
                                                       </div>
                                                       <!--inicio de la tabla estado ciclo de inversion -->

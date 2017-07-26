@@ -7,7 +7,7 @@
             <div class="col-md-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2> Oficinas </h2>
+                        <h2><b> OFICINAS </b></h2>
                         <ul class="nav navbar-right panel_toolbox">
                         </ul>
                         <div class="clearfix"></div>
@@ -20,22 +20,19 @@
 
                                 <li role="presentation" class="active">
                                     <a href="#tab_Sector" id="home-tab" role="tab"
-                                                                          data-toggle="tab" aria-expanded="true"> <span
-                                                class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-                                        Gerencias</a>
+                                                                          data-toggle="tab" aria-expanded="true"> 
+                                        <b>Gerencias</b></a>
                                 </li>
                                 <li role="presentation" class>
                                     <a href="#tab_Entidad" role="tab" id="profile-tab1"
-                                                                    data-toggle="tab" aria-expanded="false"> <span
-                                                class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Sub
-                                        Gerencias</a>
+                                     data-toggle="tab" aria-expanded="false">  
+                                    <b>Sub Gerencias</b></a>
                                 </li>
                                 <li role="presentation" class>
                                     <a href="#tab_ServicioPubAsoc" role="tab"
                                                                     id="profile-tab2" data-toggle="tab"
-                                                                    aria-expanded="false"> <span
-                                                class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-                                        Oficinas</a>
+                                                                    aria-expanded="false"> 
+                                        <b>Oficinas</b></a>
                                 </li>
                             </ul>
                             <div id="myTabContent" class="tab-content">
@@ -51,11 +48,15 @@
                                                         data-target="#VentanaRegistraGerencia"><span
                                                             class="fa fa-plus-circle"> </span> Nuevo
                                                 </button>
-
+                                                 <div class="x_title">
+                                                     <!-- <h2>Listado de  Tipo NO PIP<small>.</small></h2>-->
+                                                       
+                                                           <div class="clearfix"></div>
+                                                      </div>
                                                 <div class="x_content">
 
                                                     <table id="table-Gerencia"
-                                                           class="table table-striped table-condensed table-hover"
+                                                           class="table table-striped table-bordered table-hover" ellspacing="0" width="100%"
                                                            cellspacing="0" width="100%">
                                                         <thead>
                                                         <tr>
@@ -81,11 +82,18 @@
 
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <div class="x_panel">
+                                        
                                                 <button type="button" id="btn_NuevaSubGerencia" class="btn btn-primary"
                                                         data-toggle="modal" data-target="#VentanaRegistraSubGerencia">
                                                     <span class="fa fa-plus-circle"></span>
                                                     Nuevo
                                                 </button>
+                                                 <div class="x_title">
+                                                     <!-- <h2>Listado de  Tipo NO PIP<small>.</small></h2>-->
+                                                       
+                                                           <div class="clearfix"></div>
+                                                      </div>
+                                                <div class="x_content">
                                                 <div class="x_content">
                                                     <table id="table-SubGerencia"
                                                            class="table table-striped table-bordered table-hover"
@@ -122,6 +130,11 @@
                                                     <span class="fa fa-plus-circle"></span>
                                                     Nuevo
                                                 </button>
+                                                 <div class="x_title">
+                                                     <!-- <h2>Listado de  Tipo NO PIP<small>.</small></h2>-->
+                                                       
+                                                           <div class="clearfix"></div>
+                                                      </div>
                                                 <div class="x_content">
                                                     <table id="table-Oficina"
                                                            class="table table-striped table-bordered table-hover"
