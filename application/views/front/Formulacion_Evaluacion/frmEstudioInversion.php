@@ -33,7 +33,7 @@
                                                     <div class="x_title">
                                                            <!-- <h2>Listado de  <small>.</small></h2>-->
                                                           <button type="button" id="btn_nuevoEstInv" class="btn btn-primary" data-toggle="modal" data-target="#ventanaEstudioInversion" >
-                                                                <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Nuevo
+                                                                <span  aria-hidden="true"></span><strong> Nuevo</strong>
                                                           </button>
                                                           <div class="pull-right tableTools-container-EstudioInversion">
                                                            </div>
@@ -51,13 +51,13 @@
                                                                        <tr>
                                                                        <th style="width: 1%">#</th>
                                                                        <th style="width: 1%">#</th>
-                                                                         <th style="width: 40%"><i class="fa fa-thumb-tack"></i> Est. Inv. </th>
+                                                                         <th style="width: 40%"><i class="fa fa-thumb-tack"></i> Estudio de Inversión </th>
                                                                          <th style="width: 14%">
                                                                           <i class="fa fa-users"></i>
                                                                          Reponsable</th>
                                                                          <th style="width: 12%"> Progreso</th>
                                                                          <th style="width: 13%"> Etapa</th>
-                                                                         <th></th>
+                                                                         <th>Acciones</th>
                                                                       </tr>
                                                                    </thead>
                                                                 </table>
@@ -87,7 +87,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Estudio Inversión</h4>
+          <h4 class="modal-title"><strong>Registrar Estudio de Inversión</strong> </h4>
         </div>
         <div class="modal-body">
          <div class="row">
@@ -97,11 +97,15 @@
                                        <div class=".col-xs-12 .col-md-2">
                                             <label for="name">Codigo Único<span class="required"></span>
                                             </label>
+
                                                   <input id="txtCodigoUnico" name="txtCodigoUnico"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2" placeholder="Codigo único" required="required" type="text">
                                                   <br>
+
                                         </div>
                                       </div>
                                     <br>
+
+
                           <div class="row ">
                             <div class="col-md-2">
                                        <div class=".col-xs-12 .col-md-2">
@@ -111,7 +115,7 @@
                            <div class="col-md-12">
                                 <div class=".col-xs-12 .col-md-12">
                                <div class="panel panel-default">
-                               <div class="panel-heading">Datos del PMI</div>
+                             
                                       <div class="panel-body">
                                       <form class="form-horizontal " id="form-AddEstudioInversion" action="<?php echo base_url(); ?>Estudio_Inversion/AddEstudioInversion" method="POST">
 
@@ -205,8 +209,8 @@
                                             </label> <br>
                                             <center>
                                                  <button id="btn-GuardarMontoProgramado"  class="btn btn-success">
-                               <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>Guardar</button>
-                               <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                               <span  aria-hidden="true"></span><strong>Guardar</strong> </button>
+                               <button type="button" class="btn btn-danger" data-dismiss="modal"><strong>Cancelar</strong> </button>
 
                                </center>
                                           </div>
