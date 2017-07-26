@@ -11,7 +11,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2><i class="fa fa-calendar"></i> ETAPAS DEL PROYECTO</h2>
+                        <h2><i class="fa fa-calendar"></i> CICLO DE INVERSIONES</h2>
 
                         <ul class="nav navbar-right panel_toolbox">
                             <!-- <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -84,22 +84,6 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-3 col-xs-6">
-                                <!-- small box -->
-                                <div class="small-box bg-yellow">
-                                    <div class="inner">
-                                        <h3>S</h3>
-                                        <p>Seguimiento de Proyectos de Inversion</p>
-                                    </div>
-                                    <div class="icon">
-                                        <i class="fa  fa-check-square-o"></i>
-                                    </div>
-                                    <a href="#" class="small-box-footer">
-                                        <!--                                       <a href="#" class="small-box-footer">-->
-                                        Ingresar <i class="fa fa-arrow-circle-right"></i>
-                                    </a>
-                                </div>
-                            </div>
 
                             <!--<table class="table table-condensed table-striped table-hover table-responsible">
                                 <thead>
@@ -210,7 +194,73 @@
                     </div>
 
                     <div class="x_title">
-                        <h2><i class="fa fa-line-chart"></i> CONFIGURACION Y REPORTES</h2>
+                        <h2><i class="fa fa-line-chart"></i> MÓDULOS</h2>
+
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="x_content">
+                        <!-- top tiles -->
+                        <div class="row ">
+
+                            <div class="col-lg-3 col-xs-6">
+                                <!-- small box -->
+                                <div class="small-box bg-yellow"><!-- bg-aqua-active #001f3f-->
+                                    <div class="inner">
+                                        <h3>S</h3>
+
+                                        <p>Seguimiento de Proyectos de Inversión</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="fa fa-gears"></i>
+                                    </div>
+                                    <a href="#"
+                                       class="small-box-footer">
+                                        <!--                                       <a href="#" class="small-box-footer">-->
+                                        Ingresar <i class="fa fa-arrow-circle-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-xs-6">
+                                <!-- small box -->
+                                <div class="small-box bg-purple">
+                                    <div class="inner">
+                                        <h3>M</h3>
+                                        <p>Monitoreo de Proyectos de Inversión</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="fa fa-bar-chart"></i>
+                                    </div>
+                                    <a href="#"
+                                       class="small-box-footer">
+                                        <!--                                       <a href="#" class="small-box-footer">-->
+                                        Ingresar <i class="fa fa-arrow-circle-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-xs-6">
+                                <!-- small box -->
+                                <div class="small-box bg-navy">
+                                    <div class="inner">
+                                        <h3>R</h3>
+                                        <p>Reportes, Estadisticas, Informes</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="fa fa-users"></i>
+                                    </div>
+                                    <a href="#"
+                                       class="small-box-footer">              <!--                                       <a href="#" class="small-box-footer">-->
+                                        Ingresar <i class="fa fa-arrow-circle-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- End SmartWizard Content -->
+                    </div>
+
+                    <div class="x_title">
+                        <h2><i class="fa fa-line-chart"></i> CONFIGURACION DE PARAMETROS</h2>
 
                         <div class="clearfix"></div>
                     </div>
@@ -237,23 +287,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-xs-6">
-                                <!-- small box -->
-                                <div class="small-box bg-purple">
-                                    <div class="inner">
-                                        <h3>R</h3>
-                                        <p>Reportes, Estadisticas, Informes Varios</p>
-                                    </div>
-                                    <div class="icon">
-                                        <i class="fa fa-bar-chart"></i>
-                                    </div>
-                                    <a href="#"
-                                       class="small-box-footer">
-                                        <!--                                       <a href="#" class="small-box-footer">-->
-                                        Ingresar <i class="fa fa-arrow-circle-right"></i>
-                                    </a>
-                                </div>
-                            </div>
+
                             <div class="col-lg-3 col-xs-6">
                                 <!-- small box -->
                                 <div class="small-box bg-navy">

@@ -7,7 +7,7 @@
               <div class="col-md-12 col-xs-12">
                                 <div class="x_panel">
                                   <div class="x_title">
-                                    <h2><i class="fa fa-bars"></i>Estado Formulación Evaluación</h2>
+                                    <h2><b>ESTADOS EN FORMULACION Y EVALUACIÓN</b></h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                     </ul>
                                     <div class="clearfix"></div>
@@ -16,7 +16,7 @@
 
                                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
                                       <ul id="myTab" class="nav nav-tabs" role="tablist">
-                                        <li role="presentation" class="active"><a href="#tab_estado" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"> <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>Estado</a>
+                                        <li role="presentation" class="active"><a href="#tab_estado" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"><b>Estado</b></a>
                                         </li>                           
                                       </ul>
                                       <div id="myTabContent" class="tab-content">
@@ -34,15 +34,7 @@
                                                             </button>
                                                           <div class="x_title">
 
-                                                            <ul class="nav navbar-right panel_toolbox">
-                                                                
-                                                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                                              </li>
-                                                              
-                                                              <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                                              </li>
-                                                                
-                                                            </ul>
+
                                                             <div class="clearfix"></div>
                                                           </div>
 
@@ -83,7 +75,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Estado de Formulación y Evaluación</h4>
+          <h4 class="modal-title">Registrar Nuevo Estado</h4>
         </div>
         <div class="modal-body">
          <div class="row">
@@ -170,3 +162,9 @@
     </div>
   </div>
 
+<script>
+  $('.modal').on('hidden.bs.modal', function(){ 
+    $(this).find('form')[0].reset(); //para borrar todos los datos que tenga los input, textareas, select.
+    $("label.error").remove();  //lo utilice para borrar la etiqueta de error del jquery validate
+  });
+</script>

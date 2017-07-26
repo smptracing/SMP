@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Model_Usuario extends CI_Model
 {
-           public function __construct()
+          public function __construct()
           {
               parent::__construct();
           }
