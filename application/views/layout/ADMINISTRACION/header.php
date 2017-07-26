@@ -39,7 +39,7 @@
     <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
     <script src="<?php echo base_url(); ?>assets/js/Helper/jsHelper.js"></script>
-    
+
      <script src="<?php echo base_url(); ?>assets/dist/js/sweetalert-dev.js"></script>
      <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/js/sweetalert.css">
      <script>
@@ -119,7 +119,8 @@
                         <li><a href="<?php echo site_url('UnidadEjecutora/'); ?>"><i class="fa fa-tasks"></i>  Unidad Ejecutora</a></li>
                         <li><a href="<?php echo site_url('Gerencia/'); ?>"><i class="fa fa-qrcode"></i>  Gerencias</a></li>
                         <li><a href="<?php echo site_url('Personal/'); ?>"><i class="fa fa-group"></i>  Personal</a></li>
-                        <li><a href="<?php echo site_url('Unidad_Medida/'); ?>"><i class="fa fa-group"></i>  Unidade Medida</a></li>
+                        <li><a href="<?php echo site_url('Unidad_Medida/'); ?>"><i class="fa fa-group"></i>  Unida de Medida</a></li>
+                        <li><a href="<?php echo site_url('MetaPresupuestal/'); ?>"><i class="fa fa-sliders"></i> Meta Presupuestal </a></li>
 
 
                 </ul>

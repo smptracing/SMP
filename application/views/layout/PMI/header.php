@@ -115,6 +115,7 @@
                             </ul>
                       </li>
                        <li><a href="<?php echo site_url('BrechaIndicador/'); ?>"><i class="fa fa-sliders"></i> Brechas e Indicadores </a></li>
+                       <li><a href="<?php echo site_url('Meta/'); ?>"><i class="fa fa-sliders"></i> Meta </a></li>
 
                 </ul>
               </div>
