@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class MetaPresupuestal extends CI_Controller
+class Meta extends CI_Controller
 {
     public function __construct()
     {
@@ -78,14 +78,14 @@ class MetaPresupuestal extends CI_Controller
 
     public function index()
     {
-        $this->_load_layout('Front/Administracion/frmMeta');
+        $this->_load_layout('Front/Pmi/frmMeta');
     }
     public function _load_layout($template)
     {
-        $this->load->view('layout/Administracion/header');
+        $this->load->view('layout/PMI/header');
         $this->load->view($template);
-        $this->load->view('layout/Administracion/footer');
-        $this->load->view('Front/Administracion/js/jsMeta.php');
+        $this->load->view('layout/PMI/footer');
+        $this->load->view('Front/Pmi/js/jsMeta.php');
     }
 
 }
