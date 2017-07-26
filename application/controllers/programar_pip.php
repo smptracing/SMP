@@ -75,6 +75,27 @@ class programar_pip extends CI_Controller
             show_404();
         }
     }
+    //Agregar META PRESUPUESTAL PI
+    public function AddMeta_PI()
+    {
+        if ($this->input->is_ajax_request()) {
+            $flat                       = "C";
+            $id_meta_pi                 = "0";
+            $cbx_Meta                   = $this->input->post("cbx_Meta");
+            $txt_id_pip_programacion_mp = $this->input->post("txt_id_pip_programacion_mp");
+            $txt_pia                    = $this->input->post("txt_pia");
+            $txt_pim                    = $this->input->post("txt_pim");
+            $txt_devengado              = $this->input->post("txt_devengado");
+            if ($this->programar_pip_modal->AddMeta_PI($flat, $id_meta_pi, $cbx_Meta, $txt_id_pip_programacion_mp, $txt_pia, $txt_pim, $txt_devengado) == false) {
+                echo "1";
+            } else {
+                echo "2";
+            }
+
+        } else {
+            show_404();
+        }
+    }
     //Listar programación
     public function listar_programacion()
     {
@@ -82,6 +103,18 @@ class programar_pip extends CI_Controller
             $flat  = "R";
             $id_pi = $this->input->post("id_pi");
             $data  = $this->programar_pip_modal->listar_programacion($flat, $id_pi);
+            echo json_encode(array('data' => $data));
+        } else {
+            show_404();
+        }
+    }
+    //listar meta proyecto
+    public function listar_metas_pi()
+    {
+        if ($this->input->is_ajax_request()) {
+            $flat  = "R";
+            $id_pi = $this->input->post("id_pi");
+            $data  = $this->programar_pip_modal->listar_metas_pi($flat, $id_pi);
             echo json_encode(array('data' => $data));
         } else {
             show_404();
