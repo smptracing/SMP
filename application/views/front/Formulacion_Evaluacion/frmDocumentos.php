@@ -7,7 +7,7 @@
               <div class="col-md-12 col-xs-12">
                                 <div class="x_panel">
                                   <div class="x_title">
-                                    <h2><i class="fa fa-bars"></i>Tipos de Estudio</h2>
+                                    <h2><b>TIPOS DE ESTUDIO</b></h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                     </ul>
                                     <div class="clearfix"></div>
@@ -16,9 +16,9 @@
 
                                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
                                       <ul id="myTab" class="nav nav-tabs" role="tablist">
-                                        <li role="presentation" class="active"><a href="#tab_tipo_estudioFE" role="tab"  id="profile-tab" data-toggle="tab" aria-expanded="false"> <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>Tipos de Estudios</a>
+                                        <li role="presentation" class="active"><a href="#tab_tipo_estudioFE" role="tab"  id="profile-tab" data-toggle="tab" aria-expanded="false"><b>Tipos de Estudios</b> </a>
                                         </li>
-                                         <li role="presentation" class=""><a href="#tab_nivelInversio"  role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"> <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>Nivel de Estudios</a>
+                                         <li role="presentation" class=""><a href="#tab_nivelInversio"  role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"> <b>Nivel de Estudios</b></a>
                                         </li>
                                       </ul>
                                       <div id="myTabContent" class="tab-content">
@@ -78,15 +78,7 @@
                                                             </button>
                                                           <div class="x_title">
 
-                                                            <ul class="nav navbar-right panel_toolbox">
-
-                                                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                                              </li>
-
-                                                              <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                                              </li>
-
-                                                            </ul>
+  
                                                             <div class="clearfix"></div>
                                                           </div>
 
@@ -121,16 +113,6 @@
                                                             <span class="fa fa-plus-circle"></span>
                                                                 Nuevo</button>
                                                           <div class="x_title">
-
-                                                            <ul class="nav navbar-right panel_toolbox">
-
-                                                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                                              </li>
-
-                                                              <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                                              </li>
-
-                                                            </ul>
                                                             <div class="clearfix"></div>
                                                           </div>
                                                           <div class="x_content">
@@ -169,7 +151,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Tipo de estudio</h4>
+          <h4 class="modal-title">Registrar Nuevo Tipo de estudio</h4>
         </div>
         <div class="modal-body">
          <div class="row">
@@ -215,7 +197,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Nivel de Estudio</h4>
+          <h4 class="modal-title">Registrar Nuevo Nivel de Estudio</h4>
         </div>
         <div class="modal-body">
          <div class="row">
@@ -349,3 +331,9 @@
         </div>
       </div>
     </div>
+<script>
+  $('.modal').on('hidden.bs.modal', function(){ 
+    $(this).find('form')[0].reset(); //para borrar todos los datos que tenga los input, textareas, select.
+    $("label.error").remove();  //lo utilice para borrar la etiqueta de error del jquery validate
+  });
+</script>

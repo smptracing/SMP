@@ -5,7 +5,7 @@
 			<div class="col-md-12 col-xs-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
-						<h2><i class="fa fa-bars"></i> Tipo Gasto </h2>
+						<h2><b>TIPO GASTO</b> </h2>
 						<ul class="nav navbar-right panel_toolbox">
 						</ul>
 						<div class="clearfix"></div>
@@ -15,8 +15,7 @@
 							<ul id="myTab" class="nav nav-tabs" role="tablist">
 								<li role="presentation" class="active">
 									<a href="#tab_Sector"  id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">
-										<span class="glyphicon glyphicon-inbox" aria-hidden="true">
-										</span> Tipo Gasto
+										<b> Tipo Gasto</b>
 									</a>
 								</li>
 							</ul>
@@ -31,12 +30,7 @@
 													NUEVO
 												</button>
 													<div class="x_title">                                                              
-														<ul class="nav navbar-right panel_toolbox">
-															<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-															</li>
-															<li><a class="close-link"><i class="fa fa-close"></i></a>
-															</li>
-														</ul>
+											
 														<div class="clearfix"></div>
 													</div>
 													<div class="x_content">

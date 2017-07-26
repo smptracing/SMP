@@ -69,9 +69,6 @@
         </div>
         <!-- /page content -->
 
-
-
-
 <!-- /.ventana para registrar situacion actual-->
 <div class="modal fade" id="VentanaSituacionActual" role="dialog">
     <div class="modal-dialog modal-lg">
@@ -90,7 +87,7 @@
               <div class="item form-group">
                         <div class="item form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="txt_IdEtapa_Estudio" name="txt_IdEtapa_Estudio" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="text">
+                        <input id="txt_IdEtapa_Estudio" name="txt_IdEtapa_Estudio" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
                         </div>
                       </div>
                 </div>
@@ -179,7 +176,7 @@
               <div class="item form-group">
                         <div class="item form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="txt_IdEtapa_Estudio_p" name="txt_IdEtapa_Estudio_p" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="text">
+                        <input id="txt_IdEtapa_Estudio_p" name="txt_IdEtapa_Estudio_p" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
                         </div>
                       </div>
                 </div>
@@ -283,7 +280,6 @@
                 </div>
                <div class="item form-group">
                                      <div class="col-md-4">
-
                                            <label for="name">Estado.<span class="required"></span>
                                             </label>
                                                  <select   id="Cbx_EstadoFE" name="Cbx_EstadoFE" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Estado FE...">
@@ -341,3 +337,9 @@
     </div>
 </div>
 <!-- /.fin de  ventana Registar Persona-->
+<script>
+  $('.modal').on('hidden.bs.modal', function(){ 
+    $(this).find('form')[0].reset(); //para borrar todos los datos que tenga los input, textareas, select.
+    $("label.error").remove();  //lo utilice para borrar la etiqueta de error del jquery validate
+  });
+</script>
