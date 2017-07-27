@@ -17,7 +17,7 @@ $(document).on("ready" ,function(){
                              swal("NO SE REGISTRÓ","NO se regristró ", "error");
                            }
                           $('#Table_Programar').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
-                          $('#Table_funcionamiento').dataTable()._fnAjaxUpdate();
+                          $('#table_NoPip').dataTable()._fnAjaxUpdate();
                              formReset();
                          }
                       });
@@ -90,8 +90,27 @@ $(document).on("ready" ,function(){
         AddMeta_Pi("#table_NoPip",table);
 }
 //fin de proyectos de inversion en formulacion y evaluacion
-
-
+//listar programación por cada proyecto
+ var listar_programacion=function(id_pi)
+                {
+                    var table=$("#Table_Programar").DataTable({
+                      "processing": true,
+                      "serverSide":false,
+                       destroy:true,
+                         "ajax":{
+                                     url:base_url+"index.php/programar_pip/listar_programacion",
+                                     type:"POST",
+                                     data :{id_pi:id_pi}
+                                    },
+                                "columns":[
+                                    {"data":"id_pi","visible": false},
+                                    {"data":"año_prog"},
+                                    {"data":"monto_prog"}
+                                    ],
+                               "language":idioma_espanol
+                    });
+                }
+//fin listar programación por cada proyecto
 //listar meta proyecto
  var listar_meta_pi=function(id_pi)
                 {
