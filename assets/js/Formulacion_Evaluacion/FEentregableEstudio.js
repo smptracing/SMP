@@ -27,10 +27,11 @@
 
                    $('#form-AddEntregable').data('formValidation').validate();
 
-					if(!($('#form-AddEntregable').data('formValidation').isValid()))
-					{
-						return;
-					}
+          					if(!($('#form-AddEntregable').data('formValidation').isValid()))
+          					{
+          						return;
+          					}
+                    
                    var sumaValoracion=$("#txt_valoracion_entre").val();
                    $.ajax({
                           url: base_url+"index.php/FEentregableEstudio/MostrarAvance",//MOSTRAR AVANCE EN UN CAJA DE TEXTO PARA HABILTAR O INHABILTAR
@@ -55,7 +56,7 @@
 
                              }else
                              {
-                             	  var txt_nombre_entre        =$("#txt_nombre_entre").val();
+                          var txt_nombre_entre        =$("#txt_nombre_entre").val();
 				                  var txt_denominacion_entre  =$("#txt_denoMultiple").val();
 				                  var txt_valoracion_entre    =$("#txt_valoracion_entre").val();
 				                  var txt_observacio_entre    =$("#txt_observacio_entre").val();
@@ -159,20 +160,22 @@
 });
  var valorizacionRestante=function()
  {
+		var html="";
+		$("#PorcentajeRestanteValorizacion").html(html);
 		$.ajax({
-		url: base_url+"index.php/FEentregableEstudio/MostrarAvance",//MOSTRAR AVANCE EN UN CAJA DE TEXTO PARA HABILTAR O INHABILTAR
+		url: base_url+"index.php/FEentregableEstudio/MostrarAvance",//Valorizacion restante del entregable
 		type:"POST",
 		data:{},
 			success: function(data)
 			{
-				
 				var registros = eval(data); 
 				var sumaTotalValoriEntregable=0;
 				for (var i = 0; i <registros.length;i++)
 				{
 					sumaTotalValoriEntregable=sumaTotalValoriEntregable+parseInt(registros[i]["valoracion"]);
 				};
-			$("#PorcentajeRestanteValorizacion ").append("Valorización Restante "+(100-sumaTotalValoriEntregable)+"%");
+
+			$("#PorcentajeRestanteValorizacion ").html("Valorización Restante "+(100-sumaTotalValoriEntregable)+"%");
 			}
 		});
 
@@ -190,7 +193,6 @@ var refrescarGantt=function()
   gantt.load(window.location.href);
 }
 
-
 var addEntreEstudio=function(txt_nombre_entre,txt_denominacion_entre,txt_valoracion_entre,txt_observacio_entre,txt_levantamintoO_entre)//para entregable
                   {
                       event.preventDefault();
@@ -200,12 +202,12 @@ var addEntreEstudio=function(txt_nombre_entre,txt_denominacion_entre,txt_valorac
                           data:{txt_nombre_entre:txt_nombre_entre,txt_denominacion_entre:txt_denominacion_entre,txt_valoracion_entre:txt_valoracion_entre,txt_observacio_entre:txt_observacio_entre,txt_levantamintoO_entre:txt_levantamintoO_entre},
                           success:function(resp)
                           {
-                           
                            swal("",resp, "success");
                            $('#form-AddEntregable')[0].reset();
                            $("#VentanaEntregable").modal("hide");
-                          // listarEntregablesFE();
-                            $('#table_entregable').dataTable()._fnAjaxUpdate();
+                           listarEntregablesFE();
+                           valorizacionRestante();
+                           $('#table_entregable').dataTable()._fnAjaxUpdate();
                          }
                       });
                   };
@@ -239,7 +241,7 @@ var listadoFormuladores=function()
                     var text_buscarPersona ='Formulador';   
                     var table=$("#table_responsableFormulador").DataTable({
                      "processing":true,
-                      "serverSide":true,
+                     "serverSide":true,
                       select: true,
                       destroy:true,
                       "fnDrawCallback": function () {
@@ -302,6 +304,7 @@ var listadoPersona=function()
                       select: true,
                       destroy:true,
 
+
                          "ajax":{
                                     "url":base_url +"index.php/Personal/BuscarPersonaActividad",
                                     "method":"POST",
@@ -352,6 +355,7 @@ var generarActividadesVertical=function(id_en)
                      "processing":true,
                       "serverSide":false,
                       destroy:true,
+                       "paging":   false,
 
                          "ajax":{
                                     "url":base_url+"index.php/FEActividadEntregable/get_Actividades",
@@ -465,6 +469,9 @@ var generarActividadesVertical=function(id_en)
                            $(tbody).on("click","a.AsignacionPersonaEntregables",function(){
                               var data=table.row( $(this).parents("tr")).data();
                               $('#txt_identregable').val(data.id_entregable);
+                               var id_entregable=data.id_entregable;
+                               $("#calendarActividadesFE" ).remove();
+                                generarCalendario(data.id_entregable);//Generar calendario
                              });
                   }
                   //listar responsables de cada entregable
@@ -482,6 +489,13 @@ var generarActividadesVertical=function(id_en)
                              $(tbody).on("click","button.actividad",function(){
                               var data=table.row( $(this).parents("tr")).data();
                               $('#txt_id_entregable').val(data.id_entregable);
+                              id_entregable=data.id_entregable;
+                              valorizacionRestanteActividad(id_entregable);
+                              $("#LabelEntregable").html(data.nombre_entregable);
+                              ListaResponsableEntregableT(id_entregable);//listar responsable de los entregables
+                              $("#calendarActividadesFE" ).remove();
+                              generarCalendario(data.id_entregable);//Generar calendario
+
                              });
                          }
                   var  getActividad=function(tbody,table){
@@ -498,6 +512,7 @@ var generarActividadesVertical=function(id_en)
                                "processing":true,
                                 "serverSide":false,
                                 destroy:true,
+                                 "paging":   false,
 
                                    "ajax":{
                                               "url":base_url+"index.php/FEentregableEstudio/get_ResponsableEntregableE",//lista de entregables
@@ -514,10 +529,38 @@ var generarActividadesVertical=function(id_en)
                                           "language":idioma_espanol
                                         });
 
-                                }              
+                                } 
+
+                        var valorizacionRestanteActividad=function(id_entregable)
+                        {
+                        	$.ajax({
+							url: base_url+"index.php/FEActividadEntregable/VerValoracionRestanteActividad",//MOSTRAR AVANCE EN UN CAJA DE TEXTO PARA HABILTAR O INHABILTAR
+							type:"POST",
+							data:{id_entregable:id_entregable},
+								success: function(data)
+								{
+								var registros = eval(data); 
+									var sumaTotalValoriEntregable=0;
+									for (var i = 0; i <registros.length;i++)
+									{
+										var sumaTotalValoriActidadese=parseInt(registros[i]["valoracion"]);
+									};
+									if(registros.length<=0)
+									{
+									var valoracion=100;
+								    $("#valoracionAvazadadActivi").html(" Valoración Restante "+(valoracion)+"%");
+								    }else
+								    {
+								     $("#valoracionAvazadadActivi").html(" Valoración Restante "+(100-parseInt(sumaTotalValoriActidadese))+" %");
+								    } 
+								}
+							});
+                        }
 //generar actividades en el calendar
           function generarCalendario(id_en)
           {
+                  
+
                   var $myNewElement = $('<div id="calendarActividadesFE"></div>');
                   $myNewElement.appendTo('#contenidoActividadesFE');
 

@@ -102,8 +102,9 @@
     <script src="<?php echo base_url(); ?>assets/plugins/input-mask/jquery.inputmask.min.js"></script>
 
 
-   <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/FEactividadEntregable.js"></script>
    <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/FEentregableEstudio.js"></script>
+   <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/FEactividadEntregable.js"></script>
+
    <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/FEsituacion.js"></script>
    <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/FEestado.js"></script>
    <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/FEnivelEstudio.js"></script>

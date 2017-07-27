@@ -94,6 +94,17 @@ class FEActividadEntregable extends CI_Controller
         }
     }
 
+    public function VerValoracionRestanteActividad()
+    {
+      if ($this->input->is_ajax_request()) {
+            $id_entregable = $this->input->post('id_entregable');
+            $datos             = $this->Model_FEActividadEntregable->VerValoracionRestanteActividad($id_entregable);
+            echo json_encode($datos);
+        } else {
+            show_404();
+        }  
+    }
+
     //asignacion de personal
     public function AsignacionPersonalActividad()
     {

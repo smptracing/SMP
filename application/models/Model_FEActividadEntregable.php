@@ -79,4 +79,9 @@ class Model_FEActividadEntregable extends CI_Model
               }
         }      
         //FIN ASIGNACION DE PERSONAL   DE ACTIVIDAD AL  LA ACTIVIDAD
+        function VerValoracionRestanteActividad($txt_id_entregable)
+        {
+          $ValoracionReActividad=$this->db->query("select id_entregable,SUM(valoracion) as valoracion from ACTIVIDAD_CRONOGRAMA where id_entregable='".$txt_id_entregable."' group by id_entregable");
+          return $ValoracionReActividad->result();
+        }
 }
