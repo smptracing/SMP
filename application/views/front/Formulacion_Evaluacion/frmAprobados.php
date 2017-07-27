@@ -1,14 +1,13 @@
  <!-- page content -->
         <div class="right_col" role="main">
           <div class="">
-
             <div class="clearfix"></div>
 
             <div class="row">
               <div class="col-md-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>PROYECTOS APROBADOS</h2>
+                    <h2><b>PROYECTOS APROBADOS</b></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>

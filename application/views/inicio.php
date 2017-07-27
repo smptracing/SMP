@@ -77,7 +77,7 @@
                                     <div class="icon">
                                         <i class="fa fa-play"></i>
                                     </div>
-                                    <a href="#" class="small-box-footer">
+                                    <a href="<?php echo site_url('PrincipalEjecucion/PrincipalEjec'); ?>"class="small-box-footer">
                                         <!--                                       <a href="#" class="small-box-footer">-->
                                         Ingresar <i class="fa fa-arrow-circle-right"></i>
                                     </a>
