@@ -2,7 +2,7 @@
 	<div class="item form-group">
 		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Descripción<span class="required">*</span></label>
 		<div class="col-md-6 col-sm-6 col-xs-12">
-			<input id="txtDescripcion" name="txtDescripcion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese presupuesto ejecucion" required="required" autocomplete="off" type="text">
+			<input id="txtDescripcion" name="txtDescripcion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese gasto Analitico" required="required" autocomplete="off" type="text">
 		</div>
 	</div>
 	<div class="ln_solid"></div>
@@ -19,4 +19,3 @@
 		</div>
 	</div>
 </form>
-

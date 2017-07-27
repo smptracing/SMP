@@ -79,8 +79,8 @@
 								<li><a><i class="fa fa-book"></i> Mantenimiento <span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a href="<?php echo site_url('Presupuesto_Ejecucion/index'); ?>">Presupuesto Ejecucion</a></li>
-										<li><a href="#">Tipo Gasto Analítico</a></li>
-										<li><a href="#">Recurso</a></li>
+										<li><a href="<?php echo site_url('Tipo_Gasto_Analitico/index'); ?>">Tipo Gasto Analítico</a></li>
+										<li><a href="<?php echo site_url('Recurso/index'); ?>">Recurso</a></li>
 									</ul>
 								</li> 
 							</ul>
