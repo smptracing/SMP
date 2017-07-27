@@ -7,37 +7,16 @@ class programar_nopip_modal extends CI_Model
         parent::__construct();
     }
     //listar formulacion y evaluacion del primer modulo PMI
-    public function GetProyectosFormulacionEvaluacion($flat)
+    public function Get_no_pip($flat)
     {
-        $GetProyectosFormulacionEvaluacion = $this->db->query("execute sp_Gestionar_ProyectoInversion'"
+        $Get_no_pip = $this->db->query("execute sp_Gestionar_ProyectoInversion'"
             . $flat . "'");
-        if ($GetProyectosFormulacionEvaluacion->num_rows() > 0) {
-            return $GetProyectosFormulacionEvaluacion->result();
+        if ($Get_no_pip->num_rows() > 0) {
+            return $Get_no_pip->result();
         } else {
             return false;
         }
     }
-    public function GetProyectosEjecucion($flat)
-    {
-        $GetProyectosEjecucion = $this->db->query("execute sp_Gestionar_ProyectoInversion'"
-            . $flat . "'");
-        if ($GetProyectosEjecucion->num_rows() > 0) {
-            return $GetProyectosEjecucion->result();
-        } else {
-            return false;
-        }
-    }
-    public function GetProyectosFuncionamiento($flat)
-    {
-        $GetProyectosFuncionamiento = $this->db->query("execute sp_Gestionar_ProyectoInversion'"
-            . $flat . "'");
-        if ($GetProyectosFuncionamiento->num_rows() > 0) {
-            return $GetProyectosFuncionamiento->result();
-        } else {
-            return false;
-        }
-    }
-    //listar formulacion y evaluacion del primer modulo PMI
     public function GetAnioCartera()
     {
         $GetAnioCartera = $this->db->query("select id_cartera,year(año_apertura_cartera) AS anio from CARTERA_INVERSION where estado_cartera='1'");

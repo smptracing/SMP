@@ -28,12 +28,12 @@
 
                                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
                                       <ul id="myTab" class="nav nav-tabs" role="tablist">
-                                        <li role="presentation"  class="active"><a  href="#tab_brecha" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> NO PIP</a>
+                                        <li role="presentation"  class="active"><a  href="#tab_nopip" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> NO PIP</a>
                                          </li>
                                       </ul>
                                       <div id="myTabContent" class="tab-content">
                                           <!-- /panel de PROYECTOS desde el row -->
-                                        <div role="tabpanel" class="tab-pane fade active in" id="tab_brecha" aria-labelledby="home-tab">
+                                        <div role="tabpanel" class="tab-pane fade active in" id="tab_nopip" aria-labelledby="home-tab">
                                              <!-- /tabla de PROYECTOS desde el row -->
                                             <div class="row">
                                               <div class="col-md-12 col-sm-12 col-xs-12">
@@ -48,7 +48,7 @@
                                                                </div>
                                                           </div>
                                                       <div class="x_content">
-                                                        <table id="table_formulacion_evaluacion" class="table table-striped table-bordered table-hover table-responsive display  compact " ellspacing="0" width="100%">
+                                                        <table id="table_NoPip" class="table table-striped table-bordered table-hover table-responsive display  compact " ellspacing="0" width="100%">
                                                    <thead style="background-color: #5A738E;color:#FFFFFF; ">
                                                         <tr>
                                                           <th style="width: 1%">#</th>

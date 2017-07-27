@@ -10,11 +10,11 @@ class programar_nopip extends CI_Controller
     }
     //NOPIP
     //listar proyectos no pip
-    public function GetProyectosFormulacionEvaluacion()
+    public function Get_no_pip()
     {
         if ($this->input->is_ajax_request()) {
-            $flat  = "listarpip_formulacion_evaluacion";
-            $datos = $this->programar_nopip_modal->GetProyectosFormulacionEvaluacion($flat);
+            $flat  = "LISTARNOPIP_PROGRAMACION";
+            $datos = $this->programar_nopip_modal->Get_no_pip($flat);
             echo json_encode($datos);
         } else {
             show_404();

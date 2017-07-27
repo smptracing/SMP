@@ -1,7 +1,5 @@
 $(document).on("ready" ,function(){
-     lista_formulacion_evaluacion();/*llamar a mi datatablet listar proyectosinverision*/
-     lista_ejecucion();
-     lista_funcionamiento();
+     lista_no_pip();/*llamar a mi datatablet listar proyectosinverision*/
      $("#form_AddProgramacion").submit(function(event)
                   {
                       event.preventDefault();
@@ -54,14 +52,14 @@ $(document).on("ready" ,function(){
 
 });
 //listar proyectos de inversion en formulacion y evaluacion
- var lista_formulacion_evaluacion=function()
+ var lista_no_pip=function()
 {
-       var table=$("#table_formulacion_evaluacion").DataTable({
+       var table=$("#table_NoPip").DataTable({
                      "processing": true,
                       "serverSide":false,
                      destroy:true,
                          "ajax":{
-                                    "url":base_url+"index.php/programar_pip/GetProyectosFormulacionEvaluacion",
+                                    "url":base_url+"index.php/programar_nopip/Get_no_pip",
                                     "method":"POST",
                                     "dataSrc":""                                    
                                   },
@@ -88,111 +86,12 @@ $(document).on("ready" ,function(){
                                 ],
                                "language":idioma_espanol
                     });
-        AddProgramacion("#table_formulacion_evaluacion",table);
-        AddMeta_Pi("#table_formulacion_evaluacion",table);
+        AddProgramacion("#table_NoPip",table);
+        AddMeta_Pi("#table_NoPip",table);
 }
 //fin de proyectos de inversion en formulacion y evaluacion
-//listar programación por cada proyecto
- var listar_programacion=function(id_pi)
-                {
-                    var table=$("#Table_Programar").DataTable({
-                      "processing": true,
-                      "serverSide":false,
-                       destroy:true,
-                         "ajax":{
-                                     url:base_url+"index.php/programar_pip/listar_programacion",
-                                     type:"POST",
-                                     data :{id_pi:id_pi}
-                                    },
-                                "columns":[
-                                    {"data":"id_pi","visible": false},
-                                    {"data":"año_prog"},
-                                    {"data":"monto_prog"}
-                                    ],
-                               "language":idioma_espanol
-                    });
-                }
-//fin listar programación por cada proyecto
-//listar proyectos de inversion en Ejecucion
- var lista_ejecucion=function()
-{
-       var table=$("#table_ejecucion").DataTable({
-                     "processing": true,
-                      "serverSide":false,
-                     destroy:true,
-                         "ajax":{
-                                    "url":base_url+"index.php/programar_pip/GetProyectosEjecucion",
-                                    "method":"POST",
-                                    "dataSrc":""                                    
-                                  },
-                                "columns":[
-                                    {"defaultContent":"<td>#</td>"},
-                                    {"data":"id_pi" ,"visible": false},
-                                    {"data":"codigo_unico_pi"},
-                                    {"data":"nombre_pi"},
-                                    {"data":"costo_pi"},
-                                    {"data":"nombre_estado_ciclo"},
-                                    {"data": function (data, type, dataToSet) {
 
-                                      if (data.estado_programado !='0') //estap programado
-                                      {
-                                       // return '<a  href="#"><button type="button" class="btn btn btn-success btn-xs">Programado</button></a>';
-                                       return '<h5><span class="label label-success"> Programado</span></h5>';
-                                      }
-                                      if (data.estado_programado =='0') //no esta progrmado
-                                      {
-                                        //return '<a  href="#"><button type="button" class="btn btn btn-danger btn-xs">No Programado</button></a>';
-                                        return '<h5><span class="label label-danger">No Programado</span></h5>';
-                                      }
-                                   }},
-                                    {"defaultContent":"<center><button type='button' title='Programar' class='programar_pip btn btn-warning btn-xs' data-toggle='modal' data-target='#Ventana_Programar'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button><button type='button' title='Programar' class='meta_pip btn btn-success btn-xs' data-toggle='modal' data-target='#Ventana_Meta_Presupuestal_PI'><i class='fa fa-usd' aria-hidden='true'></i></button></center>"}
-                                ],
-                               "language":idioma_espanol
-                    });
-        AddProgramacion("#table_ejecucion",table);
-        AddMeta_Pi("#table_ejecucion",table);
-}
-//fin de proyectos de inversion en Ejecucion
-//listar proyectos de inversion en Funcionamiento
- var lista_funcionamiento=function() //operacion y mantenimiento
-{
-       var table=$("#Table_funcionamiento").DataTable({
-                     "processing": true,
-                      "serverSide":false,
-                     destroy:true,
-                         "ajax":{
-                                    "url":base_url+"index.php/programar_pip/GetProyectosFuncionamiento",
-                                    "method":"POST",
-                                    "dataSrc":""                                    
-                                  },
-                                "columns":[
-                                    {"defaultContent":"<td>#</td>"},
-                                    {"data":"id_pi" ,"visible": false},
-                                    {"data":"codigo_unico_pi"},
-                                    {"data":"nombre_pi"},
-                                    {"data":"costo_pi"},
-                                    {"data":"nombre_estado_ciclo"},
-                                    {"data": function (data, type, dataToSet) {
 
-                                      if (data.estado_programado !='0') //estap programado
-                                      {
-                                       // return '<a  href="#"><button type="button" class="btn btn btn-success btn-xs">Programado</button></a>';
-                                       return '<h5><span class="label label-success"> Programado</span></h5>';
-                                      }
-                                      if (data.estado_programado =='0') //no esta progrmado
-                                      {
-                                        //return '<a  href="#"><button type="button" class="btn btn btn-danger btn-xs">No Programado</button></a>';
-                                        return '<h5><span class="label label-danger">No Programado</span></h5>';
-                                      }
-                                   }},
-                                       {"defaultContent":"<center><button type='button' title='Programar' class='programar_pip btn btn-warning btn-xs' data-toggle='modal' data-target='#Ventana_Programar'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button><button type='button' title='Programar' class='meta_pip btn btn-success btn-xs' data-toggle='modal' data-target='#Ventana_Meta_Presupuestal_PI'><i class='fa fa-usd' aria-hidden='true'></i></button></center>"}
-                                ],
-                               "language":idioma_espanol
-                    });
-     AddProgramacion("#Table_funcionamiento",table); 
-     AddMeta_Pi("#Table_funcionamiento",table);
-}
-//fin de proyectos de inversion en Funcionamiento
 //listar meta proyecto
  var listar_meta_pi=function(id_pi)
                 {
