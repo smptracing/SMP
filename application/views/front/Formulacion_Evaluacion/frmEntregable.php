@@ -17,23 +17,7 @@
                 <div class="x_panel">
                   <div class="x_title">
                     <h6>Estudio: <?php echo $this->session->userdata('NombreEstudio');?> | Código Único:<?php echo $this->session->userdata('Codigo_único');?></h6>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                          <li><a href="#">Settings 1</a>
-                          </li>
-                          <li><a href="#">Settings 2</a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li><a class="close-link"><i class="fa fa-close"></i></a>
-                      </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
+                   </div>
                   <div class="x_content">
 
                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
@@ -59,7 +43,7 @@
                                                               <span class="glyphicon glyphicon-new-window" aria-hidden="true"> Nuevo</span>
                                                         </button>
                                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ventanagant" >
-                                                              <span class="glyphicon glyphicon-new-window" aria-hidden="true"> Gant</span>
+                                                              <span class="glyphicon glyphicon-new-window" aria-hidden="true"> Gantt</span>
                                                         </button>
                                                         </li>
                                                        </ul>
@@ -176,21 +160,7 @@
                 <div class="x_panel">
                   <div class="x_title">
                        <h2>Calendario de Actividades</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                          <li><a href="#">Settings 1</a>
-                          </li>
-                          <li><a href="#">Settings 2</a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li><a class="close-link"><i class="fa fa-close"></i></a>
-                      </li>
-                    </ul>
+                    
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
@@ -267,7 +237,7 @@
 	                      <input type="hidden"  id="txt_denoMultiple" name="txt_denoMultiple" class="form-control">
 	                      <div class="col-md-4">
 	                        <label>Valoración</label>
-	                        <input type="text"  id="txt_valoracion_entre" name="txt_valoracion_entre" class="form-control" autocomplete="off"><p>.</p>
+	                        <input   id="txt_valoracion_entre" name="txt_valoracion_entre" class="form-control" autocomplete="off" data-validate-length-range="6" data-validate-words="2"  required="required" type="number" step='0.0'  placeholder="%" >
 	                      </div>
 	                      <div id="PorcentajeSuperado" style="text-align: right;color: red; margin-top: 25px;" class="col-md-4">
 	                        	
@@ -277,7 +247,7 @@
 	                      </div>
                      </div>
 
-					<div class="row">
+					         <div class="row">
 	                     <div class="col-md-12 col-sm-12 col-xs-12 ">
 	                        <label>Observación</label>
 	                        <input id="txt_observacio_entre" name="txt_observacio_entre" type="text" class="form-control" name="msg">
@@ -326,35 +296,54 @@
          <div class="row">
                 <div class="col-xs-12">
                 <form class="form-horizontal " id="form-AddActividades_Entregable"  method="POST" >
-                    <div class="col-md-12 col-sm-12 col-xs-12 input-group">
-                        <span class="input-group-addon">Actividad</span>
-                        <input id="txt_id_entregable"  name="txt_id_entregable" type="hidden" class="form-control"  placeholder="">
-                        <input id="txt_nombre_act" name="txt_nombre_act" type="text" class="form-control"  placeholder="">
+                  <div class="row">
+                      <div class="col-md-12 col-sm-12 col-xs-12 ">
+                          <label>Actividad</label>
+                          <input id="txt_id_entregable"  name="txt_id_entregable" type="hidden" class="form-control"  placeholder="" notValidate>
+                          <input id="txt_nombre_act" name="txt_nombre_act" type="text" class="form-control"  placeholder="">
                       </div>
-                      <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                   </div>
+                   <div class="row">
+                      <div class="col-md-6 col-sm-6 col-xs-12 ">
                           <label class=" col-md-6 col-sm-6 col-xs-12">Inicio</label>
                           <input id="txt_fechaActividadI" name="txt_fechaActividadI" type="date" class="form-control calendario">
                       </div>
-                      <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                      <div class="col-md-6 col-sm-6 col-xs-12 ">
                           <label class=" col-md-6 col-sm-6 col-xs-12">Final</label>
                           <input id="txt_fechaActividadf" name="txt_fechaActividadf" type="date" class="form-control calendario">
                       </div>
-                      <div class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
-                        <label class="col-md-6 col-sm-6 col-xs-6">Valoración</label>
-                        <input type="text" class="form-control" id="txt_valoracionEAc" name="txt_valoracionEAc">
+                   </div>
+                   <div class="row">
+                      <div class="col-md-3 col-sm-3 col-xs-12">
+	                        <label class="col-md-6 col-sm-6 col-xs-6">Valoración</label>
+	                        <input class="form-control" id="txt_valoracionEAc" name="txt_valoracionEAc" class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2"  required="required" type="number" step='0.01'  placeholder="%">
                       </div>
+                      <div class="col-md-8 col-sm-8 col-xs-12">
+    
 
-                     <div class="col-md-12 col-sm-12 col-xs-12 input-group">
-                        <span class="input-group-addon">Observación</span>
-                        <input id="txt_observacio_EntreAc" id="txt_observacio_EntreAc" type="text" class="form-control" name="msg">
+		                    <div id="valoracionAvazadadActivi" style="text-align:center ;color:#008080; margin-left: 150px;margin-top:20px;" class="col-md-3 col-sm-3 col-xs-12"> 
+		                    
+		                    </div>
+
+		                    
                       </div>
-
-                      <div class="input-group demo2 colorpicker-element">
+                   </div>
+                   <div class="row">
+                   	  <div class="col-md-12 col-sm-12 col-xs-12">
+                        <label>Observación</label>
+                        <input id="txt_observacio_EntreAc" name="txt_observacio_EntreAc" type="text" class="form-control" >
+                      </div>
+                   </div>
+                  <div class="row">
+                   
+                       <div class="input-group demo2 colorpicker-element col-md-4 col-sm-4 col-xs-12" style="text-align: right;margin-left: 10px;margin-top: 10px;">
+                             
                              <input type="text" value="#e01ab5" class="form-control" id="txt_ActividadColor" name="txt_ActividadColor">
-                            <span class="input-group-addon"><i style="background-color: rgb(224, 26, 181);"></i></span>
+                             <span class="input-group-addon"><i style="background-color: rgb(224, 26, 181);"></i></span>
+
                       </div>
 
-
+                  </div>
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
@@ -370,9 +359,6 @@
 
                         </div>
                       </div>
-
-
-
 
                 </form>
             </div>
@@ -398,27 +384,28 @@
          <div class="row">
                 <div class="col-xs-12">
                 <form class="form-horizontal " id="form-UpdateActividades_Entregable"  method="POST" >
-                    <div class="col-md-12 col-sm-12 col-xs-12 input-group">
+                  <div class="row">
+                     <div class="col-md-12 col-sm-12 col-xs-12 ">
                         <span class="input-group-addon">Actividad</span>
-                        <input id="tx_IdActividad"  name="tx_IdActividad" type="hidden" class="form-control"  placeholder="">
+                        <input id="tx_IdActividad"  name="tx_IdActividad" type="hidden" class="form-control"  placeholder="" >
                         <input id="txt_idEntregable" name="txt_idEntregable" type="hidden" class="form-control"  placeholder="">
                         <input id="txt_NombreActividadAc" name="txt_NombreActividadAc" type="text" class="form-control"  placeholder="">
                       </div>
-                      <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                      <div class="col-md-6 col-sm-6 col-xs-12">
                           <label class=" col-md-6 col-sm-6 col-xs-12">Inicio</label>
                           <input id="txt_fechaActividadIAc" name="txt_fechaActividadIAc"  type="date" class="form-control calendario">
                       </div>
-                      <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                      <div class="col-md-6 col-sm-6 col-xs-12 ">
                           <label class=" col-md-6 col-sm-6 col-xs-12">Final</label>
                           <input id="txt_fechaActividadfAc"  name="txt_fechaActividadfAc" type="date" class="form-control calendario">
                       </div>
-                      <div class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
+                      <div class="col-md-3 col-sm-3 col-xs-12">
                         <label class="col-md-3 col-sm-3 col-xs-12" >Avance</label>
-
                         <input type="hidden" class="form-control" id="txt_valorizacionEAct" name="txt_valorizacionEAct">
-                         <input type="text" class="form-control" id="txt_avanceEAct" name="txt_avanceEAct" >
+                        <input type="text" class="form-control" id="txt_avanceEAct" name="txt_avanceEAct" class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2"  required="required" type="number" step='0.01'  placeholder="%">
 
                       </div>
+                    </div>
 
                      <div class="col-md-12 col-sm-12 col-xs-12 input-group">
                         <span class="input-group-addon">Observación</span>
@@ -720,12 +707,77 @@
 	                message: '<b style="color: red;">El campo "Valoración" debe se numero mayor a 0 y menor o igual a 100.</b>'
 	          }
             }
+          },
+          txt_fechaActividadI:
+          {
+            validators: 
+            {
+              notEmpty:
+              {
+                message: '<b style="color: red;">El campo "Valoración" es requerido.</b>'
+              },
+              regexp:
+	          {
+	                regexp: "^0*(?:[1-9][0-9]?|100)$",
+	                message: '<b style="color: red;">El campo "Valoración" debe se numero mayor a 0 y menor o igual a 100.</b>'
+	          }
+            }
           }
         }
       });
     });
+    $(function()
+    {
+      $('#form-AddActividades_Entregable').formValidation(
+      {
+        framework: 'bootstrap',
+        excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+        live: 'enabled',
+        message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+        trigger: null,
+        fields:
+        {
+          txt_nombre_act:
+          {
+            validators: 
+            {
+              notEmpty:
+              {
+                message: '<b style="color: red;">El campo "Nombre Actividad" es requerido.</b>'
+              },
+              regexp:
+	          {
+	                regexp: "[a-zA-Z áéíóúÁÉÍÓÚñÑ]",
+	                message: '<b style="color: red;">El campo "Nombre Actividad" debe se texto.</b>'
+	          }
+            }
+          },
+          txt_valoracionEAc:
+          {
+            validators: 
+            {
+              notEmpty:
+              {
+                message: '<b style="color: red;">El campo "Valoración" es requerido.</b>'
+              },
+              regexp:
+	          {
+	                regexp: "^0*(?:[1-9][0-9]?|100)$",
+	                message: '<b style="color: red;">El campo "Valoración" debe se numero mayor a 0 y menor o igual a 100.</b>'
+	          }
+            }
+          }
 
 
+        }
+      });
+    });
 
   </script>
+  <script>
+  $('.modal').on('hidden.bs.modal', function(){ 
+    $(this).find('form')[0].reset(); 
+    $("label.error").remove();  
+  });
+</script>
 
