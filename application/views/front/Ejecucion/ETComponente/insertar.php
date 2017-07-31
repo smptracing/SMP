@@ -52,11 +52,9 @@
 		</div>
 	</div>
 	<hr style="margin-top: 4px;">
-	<div class="row">
+	<div class="row" style="max-height: 360px;overflow-y: scroll;">
 		<div class="col-md-12 col-sm-12 col-xs-12" style="font-size: 12px;">
-			<ul id="ulComponenteMetaPartida">
-				
-			</ul>
+			<ul id="ulComponenteMetaPartida" style="background-color: #f5f5f5;"></ul>
 		</div>
 	</div>
 	<hr>
@@ -88,16 +86,16 @@
 			return;
 		}
 
-		limpiarArbolCompletoMasOpciones();
-
 		var htmlTemp='<li>'+
 			'<b>'+$('#txtDescripcionComponente').val()+'</b> <input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta($(this).parent(), \'\');" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarComponente(this);" style="width: 30px;">'+
-			'<ul></ul>'
+			'<ul style="background-color: #f5f5f5;"></ul>'
 		'</li>';
 
 		$('#ulComponenteMetaPartida').append(htmlTemp);
 
 		$('#txtDescripcionComponente').val('');
+
+		limpiarArbolCompletoMasOpciones();
 	}
 
 	function eliminarComponente(element)
@@ -107,9 +105,9 @@
 			return;
 		}
 
-		limpiarArbolCompletoMasOpciones();
-
 		$(element).parent().remove();
+
+		limpiarArbolCompletoMasOpciones();
 	}
 
 	function eliminarMeta(element)
@@ -119,15 +117,13 @@
 			return;
 		}
 
-		limpiarArbolCompletoMasOpciones();
-
 		$(element).parent().remove();
+
+		limpiarArbolCompletoMasOpciones();
 	}
 
 	function agregarMeta(elementoPadre, metaPadre)
 	{
-		limpiarArbolCompletoMasOpciones();
-
 		if($($(elementoPadre).find('ul')[0]).find('>.liPartida').length>0)
 		{
 			alert('No se puede agregar submeta al mismo nivel que una partida.');
@@ -144,10 +140,12 @@
 
 		var htmlTemp='<li>'+
 			descripcionMeta+' <input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta($(this).parent(), \'metaTemporal\')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="+P" onclick="renderizarAgregarPartida($(this).parent(), this)" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarMeta(this);" style="width: 30px;">'+
-			'<ul></ul>'+
+			'<ul style="background-color: #f5f5f5;"></ul>'+
 		'</li>';
 
 		$($(elementoPadre).find('ul')[0]).append(htmlTemp);
+
+		limpiarArbolCompletoMasOpciones();
 	}
 
 	var elementoPadreParaAgregarPartida, metaPadreParaAgregarPartida;
@@ -155,7 +153,7 @@
 	function renderizarAgregarPartida(elementoPadre, metaPadre)
 	{
 		limpiarArbolCompletoMasOpciones();
-
+		
 		if($($(elementoPadre).find('ul')[0]).find('input[value="+M"]').length)
 		{
 			alert('No se puede agregar partida a una meta antecesora de otra.');
@@ -201,9 +199,9 @@
 			return;
 		}
 
-		limpiarArbolCompletoMasOpciones();
-
 		$(element).parent().remove();
+
+		limpiarArbolCompletoMasOpciones();
 	}
 
 	$(function()
