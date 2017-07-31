@@ -52,13 +52,14 @@
 		</div>
 	</div>
 	<hr style="margin-top: 4px;">
-	<div class="row" style="max-height: 360px;overflow-y: scroll;">
+	<div class="row" style="height: 300px;overflow-y: scroll;">
 		<div class="col-md-12 col-sm-12 col-xs-12" style="font-size: 12px;">
 			<ul id="ulComponenteMetaPartida" style="background-color: #f5f5f5;"></ul>
 		</div>
 	</div>
 	<hr>
 	<div class="row" style="text-align: right;">
+		<input type="hidden" id="hdIdET" value="1">
 		<button class="btn btn-danger" data-dismiss="modal">
 			<span class="glyphicon glyphicon-remove"></span>
 			Cerrar ventana
@@ -105,16 +106,29 @@
 			return;
 		}
 
-		var htmlTemp='<li>'+
-			'<b>'+$('#txtDescripcionComponente').val()+'</b> <input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta($(this).parent(), \'\');" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarComponente(this);" style="width: 30px;">'+
-			'<ul style="background-color: #f5f5f5;"></ul>'
-		'</li>';
+		paginaAjaxJSON({ "idET" : $('#hdIdET').val(), "descripcionComponente" : $('#txtDescripcionComponente').val().trim() }, base_url+'index.php/ET_Componente/insertar', 'POST', null, function(objectJSON)
+		{
+			objectJSON=JSON.parse(objectJSON);
 
-		$('#ulComponenteMetaPartida').append(htmlTemp);
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+			},
+			function(){});
 
-		$('#txtDescripcionComponente').val('');
+			var htmlTemp='<li>'+
+				'<b>'+$('#txtDescripcionComponente').val().trim()+'</b> <input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta('+objectJSON.idComponente+', $(this).parent(), \'\');" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarComponente(this);" style="width: 30px;">'+
+				'<ul style="background-color: #f5f5f5;"></ul>'
+			'</li>';
 
-		limpiarArbolCompletoMasOpciones();
+			$('#ulComponenteMetaPartida').append(htmlTemp);
+
+			$('#txtDescripcionComponente').val('');
+
+			limpiarArbolCompletoMasOpciones();
+		}, false, true);
 	}
 
 	function eliminarComponente(element)
@@ -141,7 +155,7 @@
 		limpiarArbolCompletoMasOpciones();
 	}
 
-	function agregarMeta(elementoPadre, metaPadre)
+	function agregarMeta(idComponente, elementoPadre, metaPadre)
 	{
 		if($($(elementoPadre).find('ul')[0]).find('> .liPartida').length>0)
 		{
@@ -176,14 +190,28 @@
 			return;
 		}
 
-		var htmlTemp='<li>'+
-			descripcionMeta+' <input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta($(this).parent(), \'metaTemporal\')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="+P" onclick="renderizarAgregarPartida($(this).parent(), this)" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarMeta(this);" style="width: 30px;">'+
-			'<ul style="background-color: #f5f5f5;"></ul>'+
-		'</li>';
 
-		$($(elementoPadre).find('ul')[0]).append(htmlTemp);
+		paginaAjaxJSON({ "idComponente" : idComponente, "descripcionMeta" : descripcionMeta.trim(), "metaPadre" : metaPadre }, base_url+'index.php/ET_Meta/insertar', 'POST', null, function(objectJSON)
+		{
+			objectJSON=JSON.parse(objectJSON);
 
-		limpiarArbolCompletoMasOpciones();
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+			},
+			function(){});
+
+			var htmlTemp='<li>'+
+				descripcionMeta.trim()+' <input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(\'\', $(this).parent(), '+objectJSON.idMeta+')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="+P" onclick="renderizarAgregarPartida($(this).parent(), this)" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarMeta(this);" style="width: 30px;">'+
+				'<ul style="background-color: #f5f5f5;"></ul>'+
+			'</li>';
+
+			$($(elementoPadre).find('ul')[0]).append(htmlTemp);
+
+			limpiarArbolCompletoMasOpciones();
+		}, false, true);
 	}
 
 	var elementoPadreParaAgregarPartida, metaPadreParaAgregarPartida;
