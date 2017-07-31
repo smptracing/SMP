@@ -90,7 +90,7 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-          Programar PIP</h4>
+          Programar No PIP</h4>
         </div>
         <div class="modal-body">
          <div class="row">
@@ -150,14 +150,14 @@
                                       <CENTER><label>Año 1</label></CENTER>
                                       <input  class="form-control" id="txt_anio1" name="txt_anio1" type="number" required="required">
                                     </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                <!--<div class="col-md-3 col-sm-6 col-xs-12">
                                       <CENTER><label>Año 2</label></CENTER>
                                       <input  class="form-control" id="txt_anio2" name="txt_anio2" type="number" required="required">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <CENTER><label>Año 3</label></CENTER>
                                       <input  class="form-control" id="txt_anio3" name="txt_anio3" type="number" required="required">
-                                    </div>
+                                    </div>-->
 
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <label>.</label><br>

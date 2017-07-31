@@ -4,7 +4,7 @@ $(document).on("ready" ,function(){
                   {
                       event.preventDefault();
                       $.ajax({
-                          url:base_url+"index.php/programar_pip/AddProgramacion",
+                          url:base_url+"index.php/programar_nopip/AddProgramacion",
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
@@ -26,7 +26,7 @@ $(document).on("ready" ,function(){
                   {
                       event.preventDefault();
                       $.ajax({
-                          url:base_url+"index.php/programar_pip/AddMeta_PI",
+                          url:base_url+"index.php/programar_nopip/AddMeta_PI",
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
@@ -98,7 +98,7 @@ $(document).on("ready" ,function(){
                       "serverSide":false,
                        destroy:true,
                          "ajax":{
-                                     url:base_url+"index.php/programar_pip/listar_programacion",
+                                     url:base_url+"index.php/programar_nopip/listar_programacion",
                                      type:"POST",
                                      data :{id_pi:id_pi}
                                     },
@@ -119,7 +119,7 @@ $(document).on("ready" ,function(){
                       "serverSide":false,
                       destroy:true,
                       "ajax":{
-                                     url:base_url+"index.php/programar_pip/listar_metas_pi",
+                                     url:base_url+"index.php/programar_nopip/listar_metas_pi",
                                      type:"POST",
                                      data :{id_pi:id_pi}
                                     },
