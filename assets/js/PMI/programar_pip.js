@@ -19,6 +19,8 @@ $(document).on("ready" ,function(){
                              swal("NO SE REGISTRÓ","NO se regristró ", "error");
                            }
                           $('#Table_Programar').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
+                          $('#table_formulacion_evaluacion').dataTable()._fnAjaxUpdate();
+                          $('#table_ejecucion').dataTable()._fnAjaxUpdate();
                           $('#Table_funcionamiento').dataTable()._fnAjaxUpdate();
                              formReset();
                          }
