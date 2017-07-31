@@ -72,6 +72,30 @@ class programar_pip extends CI_Controller
             show_404();
         }
     }
+    //agregar progrmacion para operacion y mantenimiento
+    public function AddProgramacion_operacion_mantenimiento()
+    {
+        if ($this->input->is_ajax_request()) {
+            $flat                     = "programar_operacion_mantenimiento";
+            $id_programacion_         = "0";
+            $Cbx_AnioCartera_         = $this->input->post("Cbx_AnioCartera_");
+            $cbxBrecha_               = $this->input->post("cbxBrecha_");
+            $txt_id_pip_programacion_ = $this->input->post("txt_id_pip_programacion_");
+            $txt_anio1_               = $this->input->post("txt_anio1_");
+            $txt_anio2_               = $this->input->post("txt_anio2_");
+            $txt_anio3_               = $this->input->post("txt_anio3_");
+            $txt_prioridad_           = $this->input->post("txt_prioridad_");
+            if ($this->programar_pip_modal->AddProgramacion_operacion_mantenimiento($flat, $id_programacion_, $Cbx_AnioCartera_, $cbxBrecha_, $txt_id_pip_programacion_, $txt_anio1_, $txt_anio2_, $txt_anio3_, $txt_prioridad_) == false) {
+                echo "1";
+            } else {
+                echo "2";
+            }
+
+        } else {
+            show_404();
+        }
+    }
+
     //Agregar META PRESUPUESTAL PI
     public function AddMeta_PI()
     {
