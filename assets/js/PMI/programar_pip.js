@@ -148,14 +148,14 @@ $(document).on("ready" ,function(){
                       "serverSide":false,
                        destroy:true,
                          "ajax":{
-                                     url:base_url+"index.php/programar_pip/listar_programacion",
+                                     url:base_url+"index.php/programar_pip/listar_programacion_operacion_mantenimiento",
                                      type:"POST",
                                      data :{id_pi:id_pi}
                                     },
                                 "columns":[
                                     {"data":"id_pi","visible": false},
                                     {"data":"año_prog"},
-                                    {"data":"monto_prog"}
+                                    {"data":"monto_opera_mant_prog"}
                                     ],
                                "language":idioma_espanol
                     });

@@ -129,6 +129,18 @@ class programar_pip extends CI_Controller
             show_404();
         }
     }
+    //Listar programación en modal operacion y mantenimiento
+    public function listar_programacion_operacion_mantenimiento()
+    {
+        if ($this->input->is_ajax_request()) {
+            $flat  = "listar_programacion_operacion"; //para listar en el modal
+            $id_pi = $this->input->post("id_pi");
+            $data  = $this->programar_pip_modal->listar_programacion_operacion_mantenimiento($flat, $id_pi);
+            echo json_encode(array('data' => $data));
+        } else {
+            show_404();
+        }
+    }
     //listar meta proyecto
     public function listar_metas_pi()
     {

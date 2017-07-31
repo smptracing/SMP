@@ -115,6 +115,18 @@ class programar_pip_modal extends CI_Model
             return false;
         }
     }
+    //listar programacion para operacion y mantenimiento
+    public function listar_programacion_operacion_mantenimiento($flat, $id_pi)
+    {
+        $listar_programacion_operacion_mantenimiento = $this->db->query("execute sp_Gestionar_Programacion_pip @opcion='"
+            . $flat . "',
+            @id_pi='" . $id_pi . "'");
+        if ($listar_programacion_operacion_mantenimiento->num_rows() > 0) {
+            return $listar_programacion_operacion_mantenimiento->result();
+        } else {
+            return false;
+        }
+    }
     //listar metas de los proyectos
     public function listar_metas_pi($flat, $id_pi)
     {
