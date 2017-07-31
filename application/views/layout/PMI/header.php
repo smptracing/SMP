@@ -83,8 +83,8 @@
                       <li><a href="<?php echo site_url('ProyectoInversion/'); ?>"><i class="fa fa-sitemap"></i> Proyecto Inversion</a></li>
                       <li><a><i class="fa fa-book"></i> Proyectos Programados <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="#">PIP</a></li>
-                                    <li><a href="#">NO PIP</a></li>
+                                    <li><a href="<?php echo site_url('PipProgramados/'); ?>">PIP</a></li>
+                                    <li><a href="<?php echo site_url('NoPipProgramados/'); ?>">NO PIP</a></li>
                                 </ul>
                       </li>
                       <li><a><i class="fa fa-database"></i> Banco de proyectos <span class="fa fa-chevron-down"></span></a>
