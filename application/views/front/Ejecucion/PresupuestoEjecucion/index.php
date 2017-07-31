@@ -38,10 +38,20 @@
 															<thead>
 																<tr>
 																	<td>Descripcion</td>
-																	<td class="col-md-1 col-md-1 col-xs-12"></td>
+																	<td class="col-md-1 col-md-1 col-xs-12">ACCIONES</td>
 																</tr>
 															</thead>
 															<tbody>
+															<?php foreach($listaPresupuestoEjecucion as $item ){ ?>
+															  	<tr>
+																	<td>
+																		<?=$item->descripcion?>
+															    	</td>
+																	<td>
+																  		<button type='button' class='editar btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Modificar Presupuesto', { id: '<?=$item->id_presupuesto_eje?>' }, base_url+'index.php/Presupuesto_Ejecucion/editar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>
+																	</td>
+															  </tr>
+															<?php } ?>
 															</tbody>
 														</table>
 													</div>
