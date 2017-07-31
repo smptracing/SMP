@@ -6,10 +6,14 @@ class ET_Componente extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+
+		$this->load->model('Model_Unidad_Medida');
 	}
 
 	public function insertar()
 	{
-		$this->load->view('front/Ejecucion/ETComponente/insertar.php');
+		$listaUnidadMedida=$this->Model_Unidad_Medida->UnidadMedidad_Listar();
+
+		$this->load->view('front/Ejecucion/ETComponente/insertar.php', ['listaUnidadMedida' => $listaUnidadMedida]);
 	}
 }

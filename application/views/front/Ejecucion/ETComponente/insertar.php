@@ -31,7 +31,11 @@
 		<div class="col-md-3 col-sm-3 col-xs-3">
 			<label class="control-label">Unidad</label>
 			<div>
-				<select id="selectUnidadMedidaPartida" name="selectUnidadMedidaPartida" class="form-control"></select>
+				<select id="selectUnidadMedidaPartida" name="selectUnidadMedidaPartida" class="form-control">
+					<?php foreach($listaUnidadMedida as $key => $value){ ?>
+						<option value="<?=$value->id_unidad?>"><?=$value->descripcion?></option>
+					<?php } ?>
+				</select>
 			</div>
 		</div>
 		<div class="col-md-2 col-sm-2 col-xs-2">
@@ -98,6 +102,11 @@
 
 	function eliminarComponente(element)
 	{
+		if(!confirm('Al borrar componente se eliminará todas las metas, sub metas y partidas asociadas. ¿Realmente desea proseguir con la operaición?'))
+		{
+			return;
+		}
+
 		limpiarArbolCompletoMasOpciones();
 
 		$(element).parent().remove();
@@ -105,6 +114,11 @@
 
 	function eliminarMeta(element)
 	{
+		if(!confirm('Al borrar meta se eliminará todas las sub metas y partidas asociadas. ¿Realmente desea proseguir con la operaición?'))
+		{
+			return;
+		}
+
 		limpiarArbolCompletoMasOpciones();
 
 		$(element).parent().remove();
@@ -182,6 +196,11 @@
 
 	function eliminarPartida(element)
 	{
+		if(!confirm('Al borrar partida se eliminará todos los datos relacionados a dicha partida. ¿Realmente desea proseguir con la operaición?'))
+		{
+			return;
+		}
+
 		limpiarArbolCompletoMasOpciones();
 
 		$(element).parent().remove();
@@ -226,7 +245,7 @@
 					{
 						notEmpty:
 						{
-							message: '<b style="color: red;">El campo "Descripción del componente" es requerido.</b>'
+							message: '<b style="color: red;">El campo "Descripción partida" es requerido.</b>'
 						}
 					}
 				},
@@ -236,7 +255,7 @@
 					{
 						notEmpty:
 						{
-							message: '<b style="color: red;">El campo "Descripción del componente" es requerido.</b>'
+							message: '<b style="color: red;">El campo "Rendimiento" es requerido.</b>'
 						}
 					}
 				},
@@ -246,7 +265,7 @@
 					{
 						notEmpty:
 						{
-							message: '<b style="color: red;">El campo "Descripción del componente" es requerido.</b>'
+							message: '<b style="color: red;">El campo "Unidad" es requerido.</b>'
 						}
 					}
 				},
@@ -256,7 +275,7 @@
 					{
 						notEmpty:
 						{
-							message: '<b style="color: red;">El campo "Descripción del componente" es requerido.</b>'
+							message: '<b style="color: red;">El campo "Cantidad" es requerido.</b>'
 						},
 						regexp:
 	                    {
