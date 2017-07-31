@@ -86,6 +86,25 @@
 			return;
 		}
 
+		var existeComponente=false;
+
+		$('#ulComponenteMetaPartida').find('li').each(function(index, element)
+		{
+			if(replaceAll($(element).text(), ' ', '')==replaceAll($('#txtDescripcionComponente').val(), ' ', ''))
+			{
+				existeComponente=true;
+
+				return false;
+			}
+		});
+
+		if(existeComponente)
+		{
+			alert('No se puede agregar dos veces el mismo componente.');
+
+			return;
+		}
+
 		var htmlTemp='<li>'+
 			'<b>'+$('#txtDescripcionComponente').val()+'</b> <input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta($(this).parent(), \'\');" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarComponente(this);" style="width: 30px;">'+
 			'<ul style="background-color: #f5f5f5;"></ul>'
@@ -124,7 +143,7 @@
 
 	function agregarMeta(elementoPadre, metaPadre)
 	{
-		if($($(elementoPadre).find('ul')[0]).find('>.liPartida').length>0)
+		if($($(elementoPadre).find('ul')[0]).find('> .liPartida').length>0)
 		{
 			alert('No se puede agregar submeta al mismo nivel que una partida.');
 
@@ -135,6 +154,25 @@
 
 		if(descripcionMeta==null || descripcionMeta.trim()=='')
 		{
+			return;
+		}
+
+		var existeMeta=false;
+
+		$($(elementoPadre).find('ul')[0]).find('> li').each(function(index, element)
+		{
+			if(replaceAll($(element).text(), ' ', '')==replaceAll(descripcionMeta, ' ', ''))
+			{
+				existeMeta=true;
+
+				return false;
+			}
+		});
+
+		if(existeMeta)
+		{
+			alert('No se puede agregar dos metas iguales en el mismo nivel.');
+
 			return;
 		}
 
@@ -183,8 +221,27 @@
 			return;
 		}
 
+		var existePartida=false;
+
+		$($(elementoPadreParaAgregarPartida).find('ul')[0]).find('> li > b').each(function(index, element)
+		{
+			if(replaceAll($(element).text(), ' ', '')==replaceAll($('#txtDescripcionPartida').val(), ' ', ''))
+			{
+				existePartida=true;
+
+				return false;
+			}
+		});
+
+		if(existePartida)
+		{
+			alert('No se puede agregar dos partidas iguales en el mismo nivel.');
+
+			return;
+		}
+
 		var htmlTemp='<li style="color: blue;" class="liPartida">'+
-			$('#txtDescripcionPartida').val()+' | '+$('#txtRendimientoPartida').val()+' | '+$('#selectUnidadMedidaPartida').val()+' | '+$('#txtCantidadPartida').val()+' <input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida(this);" style="width: 30px;">'+
+			'<b>'+$('#txtDescripcionPartida').val()+'</b> | '+$('#txtRendimientoPartida').val()+' | '+$('#selectUnidadMedidaPartida').val()+' | '+$('#txtCantidadPartida').val()+' <input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida(this);" style="width: 30px;">'+
 		'</li>';
 
 		$($(elementoPadreParaAgregarPartida).find('ul')[0]).append(htmlTemp);
