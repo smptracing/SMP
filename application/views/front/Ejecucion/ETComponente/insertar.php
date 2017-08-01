@@ -1,5 +1,5 @@
 <?php
-function MostrarMetaAnidada($meta)
+function mostrarMetaAnidada($meta)
 {
 	$htmlTemp='';
 
@@ -19,7 +19,7 @@ function MostrarMetaAnidada($meta)
 
 	foreach($meta->childMeta as $key => $value)
 	{
-		$htmlTemp.=MostrarMetaAnidada($value);
+		$htmlTemp.=mostrarMetaAnidada($value);
 	}
 
 	$htmlTemp.='</ul>'.
@@ -90,7 +90,7 @@ function MostrarMetaAnidada($meta)
 						<b><?=$value->descripcion?></b> <input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(<?=$value->id_componente?>, $(this).parent(), '');" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarComponente(<?=$value->id_componente?>, this);" style="width: 30px;">
 						<ul style="background-color: #f5f5f5;">
 							<?php foreach($value->childMeta as $index => $item){ ?>
-								<?=MostrarMetaAnidada($item);?>
+								<?=mostrarMetaAnidada($item);?>
 							<?php } ?>
 						</ul>
 					</li>
@@ -191,9 +191,22 @@ function MostrarMetaAnidada($meta)
 			return;
 		}
 
-		$(element).parent().remove();
+		paginaAjaxJSON({ "idMeta" : idMeta }, base_url+'index.php/ET_Meta/eliminar', 'POST', null, function(objectJSON)
+		{
+			objectJSON=JSON.parse(objectJSON);
 
-		limpiarArbolCompletoMasOpciones();
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+			},
+			function(){});
+
+			$(element).parent().remove();
+
+			limpiarArbolCompletoMasOpciones();
+		}, false, true);
 	}
 
 	function agregarMeta(idComponente, elementoPadre, idMetaPadre)

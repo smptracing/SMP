@@ -35,4 +35,11 @@ class Model_ET_Partida extends CI_Model
 
 		return true;
 	}
+
+	function eliminarPorIdMeta($idMeta)
+	{
+		$this->db->query("delete from ET_PARTIDA where id_meta=".$idMeta);
+
+		return true;
+	}
 }

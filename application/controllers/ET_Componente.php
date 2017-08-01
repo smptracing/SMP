@@ -39,14 +39,14 @@ class ET_Componente extends CI_Controller
 
 			foreach($value->childMeta as $index => $item)
 			{
-				$this->ObtenerMetaAnidada($item);
+				$this->obtenerMetaAnidada($item);
 			}
 		}
 
 		$this->load->view('front/Ejecucion/ETComponente/insertar.php', ['expedienteTecnico' => $expedienteTecnico, 'listaUnidadMedida' => $listaUnidadMedida]);
 	}
 
-	public function ObtenerMetaAnidada($meta)
+	private function obtenerMetaAnidada($meta)
 	{
 		$temp=$this->Model_ET_Meta->ETMetaPorIdMetaPadre($meta->id_meta);
 
@@ -61,7 +61,7 @@ class ET_Componente extends CI_Controller
 
 		foreach($meta->childMeta as $key => $value)
 		{
-			$this->ObtenerMetaAnidada($value);
+			$this->obtenerMetaAnidada($value);
 		}
 	}
 }
