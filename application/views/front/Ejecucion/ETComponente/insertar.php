@@ -155,7 +155,7 @@
 		limpiarArbolCompletoMasOpciones();
 	}
 
-	function agregarMeta(idComponente, elementoPadre, metaPadre)
+	function agregarMeta(idComponente, elementoPadre, idMetaPadre)
 	{
 		if($($(elementoPadre).find('ul')[0]).find('> .liPartida').length>0)
 		{
@@ -190,8 +190,7 @@
 			return;
 		}
 
-
-		paginaAjaxJSON({ "idComponente" : idComponente, "descripcionMeta" : descripcionMeta.trim(), "metaPadre" : metaPadre }, base_url+'index.php/ET_Meta/insertar', 'POST', null, function(objectJSON)
+		paginaAjaxJSON({ "idComponente" : idComponente, "descripcionMeta" : descripcionMeta.trim(), "idMetaPadre" : idMetaPadre }, base_url+'index.php/ET_Meta/insertar', 'POST', null, function(objectJSON)
 		{
 			objectJSON=JSON.parse(objectJSON);
 

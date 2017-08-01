@@ -25,7 +25,7 @@ class Model_ET_Componente extends CI_Model
 	{
 		$data=$this->db->query("select max(id_componente) as idComponente from ET_COMPONENTE");
 
-		return $data[0]->idComponente;
+		return $data->result()[0]->idComponente;
 	}
 
 	function editar($id, $txtDescripcion)
