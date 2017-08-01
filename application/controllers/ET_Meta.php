@@ -14,9 +14,9 @@ class ET_Meta extends CI_Controller
 	{
 		$idComponente=$this->input->post('idComponente');
 		$idMetaPadre=$this->input->post('idMetaPadre');
-		$descripcionComponente=$this->input->post('descripcionMeta');
+		$descripcionMeta=$this->input->post('descripcionMeta');
 
-		$this->Model_ET_Meta->insertar(($idComponente=='' ? null : $idComponente), ($idMetaPadre=='' ? null : $idMetaPadre), $descripcionComponente);
+		$this->Model_ET_Meta->insertar(($idComponente=='' ? null : $idComponente), ($idMetaPadre=='' ? null : $idMetaPadre), $descripcionMeta);
 
 		$ultimoIdMeta=$this->Model_ET_Meta->ultimoId();
 

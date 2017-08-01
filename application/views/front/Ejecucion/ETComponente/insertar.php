@@ -203,7 +203,7 @@
 			function(){});
 
 			var htmlTemp='<li>'+
-				descripcionMeta.trim()+' <input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(\'\', $(this).parent(), '+objectJSON.idMeta+')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="+P" onclick="renderizarAgregarPartida($(this).parent(), this)" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarMeta(this);" style="width: 30px;">'+
+				descripcionMeta.trim()+' <input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(\'\', $(this).parent(), '+objectJSON.idMeta+')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="+P" onclick="renderizarAgregarPartida($(this).parent(), '+objectJSON.idMeta+')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarMeta(this);" style="width: 30px;">'+
 				'<ul style="background-color: #f5f5f5;"></ul>'+
 			'</li>';
 
@@ -267,13 +267,26 @@
 			return;
 		}
 
-		var htmlTemp='<li style="color: blue;" class="liPartida">'+
-			'<b>'+$('#txtDescripcionPartida').val()+'</b> | '+$('#txtRendimientoPartida').val()+' | '+$('#selectUnidadMedidaPartida').val()+' | '+$('#txtCantidadPartida').val()+' <input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida(this);" style="width: 30px;">'+
-		'</li>';
+		paginaAjaxJSON({ "idMeta" : metaPadreParaAgregarPartida, "idUnidad" : $('#selectUnidadMedidaPartida').val().trim(), "descripcionPartida" : $('#txtDescripcionPartida').val().trim(), "rendimientoPartida" : $('#txtRendimientoPartida').val().trim(), "cantidadPartida" : $('#txtCantidadPartida').val() }, base_url+'index.php/ET_Partida/insertar', 'POST', null, function(objectJSON)
+		{
+			objectJSON=JSON.parse(objectJSON);
 
-		$($(elementoPadreParaAgregarPartida).find('ul')[0]).append(htmlTemp);
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+			},
+			function(){});
 
-		limpiarArbolCompletoMasOpciones();
+			var htmlTemp='<li style="color: blue;" class="liPartida">'+
+				'<b>'+$('#txtDescripcionPartida').val().trim()+'</b> | '+$('#txtRendimientoPartida').val().trim()+' | '+$('#selectUnidadMedidaPartida').val()+' | '+$('#txtCantidadPartida').val()+' <input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida(this);" style="width: 30px;">'+
+			'</li>';
+
+			$($(elementoPadreParaAgregarPartida).find('ul')[0]).append(htmlTemp);
+
+			limpiarArbolCompletoMasOpciones();
+		}, false, true);
 	}
 
 	function eliminarPartida(element)
