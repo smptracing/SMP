@@ -26,7 +26,7 @@
 									<div class="row">  
 										<div class="col-md-12 col-sm-12 col-xs-12">
 											<div class="x_panel">
-												<button type="button" class="btn btn-primary " onclick="paginaAjaxDialogo(null, 'Registrar Nuevo Gasto Analítico', null, base_url+'index.php/Tipo_Gasto_Analitico/insertar', 'POST', null, null, false, true);">
+												<button type="button" class="btn btn-primary " onclick="paginaAjaxDialogo(null, 'Registrar Nuevo Gasto Analítico', null, base_url+'index.php/ET_Tipo_Gasto/insertar', 'POST', null, null, false, true);">
 													NUEVO
 												</button>
 												<div class="x_title">                                                              
@@ -48,7 +48,7 @@
 																			<?=$item->desc_tipo_gasto?>
 																	    </td>
 																		<td>
-																		  	<button type='button' class='editar btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Modificar Tipo de Gasto Analitico', { id: '<?=$item->id_tipo_gasto?>' }, base_url+'index.php/Tipo_Gasto_Analitico/editar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-pencil bigger-120'></i></button>
+																		  	<button type='button' class='editar btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Modificar Tipo de Gasto Analitico', { id: '<?=$item->id_tipo_gasto?>' }, base_url+'index.php/ET_Tipo_Gasto/editar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-pencil bigger-120'></i></button>
 																		  	<button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>
 																		</td>
 																	  </tr>

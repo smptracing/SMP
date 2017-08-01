@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Model_Recurso extends CI_Model
+class Model_ET_Recurso extends CI_Model
 {
     public function __construct()
     {

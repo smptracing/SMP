@@ -1,4 +1,4 @@
-<form class="form-horizontal" id="form-EditarRecurso" action="<?php echo base_url();?>index.php/Recurso/editar" method="POST">
+<form class="form-horizontal" id="form-EditarRecurso" action="<?php echo base_url();?>index.php/ET_Recurso/editar" method="POST">
 	<div class="item form-group">
 		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Descripcion<span class="required">*</span></label>
 		<div class="col-md-6 col-sm-6 col-xs-12">
@@ -52,7 +52,7 @@
 	{
 		event.preventDefault();
 
-		paginaAjaxJSON($('#form-EditarPresupuestoEjecucion').serialize(), '<?=base_url();?>index.php/Recurso/editar', 'POST', null, function(objectJSON)
+		paginaAjaxJSON($('#form-EditarRecurso').serialize(), '<?=base_url();?>index.php/ET_Recurso/editar', 'POST', null, function(objectJSON)
 		{
 			$('#modalTemp').modal('hide');
 
@@ -66,7 +66,7 @@
 			},
 			function()
 			{
-				window.location.href='<?=base_url();?>index.php/Recurso/index/';
+				window.location.href='<?=base_url();?>index.php/ET_Recurso/index/';
 
 				renderLoading();
 			});

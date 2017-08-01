@@ -87,7 +87,7 @@
 						<div class="col-md-4 col-sm-3 col-xs-12">
 							<label class="control-label">Costo Total del Proyecto (Pre Inversión)</label>
 							<div>
-								<input id="txtRendimiento" name="txtRendimiento" class="form-control col-md-4 col-xs-12"  placeholder="Ubicación" required="required" autocomplete="off" >
+								<input id="txtRendimiento" name="txtRendimiento" class="form-control col-md-4 col-xs-12"  placeholder="Total del Proyecto (Pre Inversión)" required="required" autocomplete="off" >
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-3 col-xs-12">
@@ -95,7 +95,7 @@
 							<div>
 								<input id="txtRendimiento" name="txtRendimiento" class="form-control col-md-4 col-xs-12"  placeholder="Costo Directo" required="required" autocomplete="off" >
 							</div>
-						</div>
+						</div>d
 						<div class="col-md-4 col-sm-3 col-xs-12">
 							<label class="control-label">Costo Indirecto</label>
 							<div>
@@ -108,7 +108,7 @@
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Costo Total del Proyecto (Inversión)</label>
 							<div>
-								<input id="txtRendimiento" name="txtRendimiento" class="form-control col-md-4 col-xs-12"  placeholder="Ubicación" required="required" autocomplete="off" >
+								<input id="txtRendimiento" name="txtRendimiento" class="form-control col-md-4 col-xs-12"  placeholder="Costo Total del Proyecto (Inversión)" required="required" autocomplete="off" >
 							</div>
 						</div>
 						<div class="col-md-3 col-sm-3 col-xs-12">

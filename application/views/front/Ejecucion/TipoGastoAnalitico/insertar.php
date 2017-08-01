@@ -1,4 +1,4 @@
-<form class="form-horizontal" id="form-addTipoGastoFE" action="<?php echo base_url();?>index.php/Tipo_Gasto_Analitico/insertar" method="POST" >
+<form class="form-horizontal" id="form-addTipoGastoFE" action="<?php echo base_url();?>index.php/ET_Tipo_Gasto/insertar" method="POST" >
 	<div class="item form-group">
 		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Descripción<span class="required">*</span></label>
 		<div class="col-md-6 col-sm-6 col-xs-12">
@@ -50,7 +50,7 @@
 	{
 		event.preventDefault();
 
-		paginaAjaxJSON($('#form-addTipoGastoFE').serialize(), '<?=base_url();?>index.php/Tipo_Gasto_Analitico/insertar', 'POST', null, function(objectJSON)
+		paginaAjaxJSON($('#form-addTipoGastoFE').serialize(), '<?=base_url();?>index.php/ET_Tipo_Gasto/insertar', 'POST', null, function(objectJSON)
 		{
 			$('#modalTemp').modal('hide');
 
@@ -64,7 +64,7 @@
 			},
 			function()
 			{
-				window.location.href='<?=base_url();?>index.php/Tipo_Gasto_Analitico/index/';
+				window.location.href='<?=base_url();?>index.php/ET_Tipo_Gasto/index/';
 
 				renderLoading();
 			});

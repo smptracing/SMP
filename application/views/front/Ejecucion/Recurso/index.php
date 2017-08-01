@@ -26,7 +26,7 @@
 									<div class="row">  
 										<div class="col-md-12 col-sm-12 col-xs-12">
 											<div class="x_panel">
-												<button type="button" class="btn btn-primary " onclick="paginaAjaxDialogo(null, 'Registrar Nuevo Recurso', null, base_url+'index.php/Recurso/insertar', 'POST', null, null, false, true);">
+												<button type="button" class="btn btn-primary " onclick="paginaAjaxDialogo(null, 'Registrar Nuevo Recurso', null, base_url+'index.php/ET_Recurso/insertar', 'POST', null, null, false, true);">
 													NUEVO
 												</button>
 												<div class="x_title">                                                              
@@ -48,7 +48,7 @@
 																	<?=$item->desc_recurso?>
 														    	</td>
 																<td>
-															  		<button type='button' class='editar btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Modificar Recurso',{ id: '<?=$item->id_recurso?>' }, base_url+'index.php/Recurso/editar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-pencil bigger-120'></i></button>
+															  		<button type='button' class='editar btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Modificar Recurso',{ id: '<?=$item->id_recurso?>' }, base_url+'index.php/ET_Recurso/editar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-pencil bigger-120'></i></button>
 															  		<button type='button' class='eliminar btn btn-danger btn-xs' onclick="Eliminar(<?=$item->id_recurso?>)"><i class='fa fa-trash-o'></i></button>
 																</td>
 														  </tr>
@@ -106,14 +106,14 @@ if($sessionTempError){ ?>
 			function()
 			{
 				$.ajax({
-                        url:base_url+"index.php/Recurso/eliminar",
+                        url:base_url+"index.php/ET_Recurso/eliminar",
                         type:"POST",
                         data:{id_recurso:id_recurso},
                         success:function(respuesta)
                         {
 							
 							swal("ELIMINADO!", "Se elimino correctamente el clasificador.", "success");
-							window.location.href='<?=base_url();?>index.php/Recurso/index/';
+							window.location.href='<?=base_url();?>index.php/ET_Recurso/index/';
 							renderLoading();
                         }
                     });

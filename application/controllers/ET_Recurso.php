@@ -1,17 +1,17 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Recurso extends CI_Controller
+class ET_Recurso extends CI_Controller
 {
 	public function __construct()
 	{
 		parent::__construct();
-        $this->load->model("Model_Recurso");   
+        $this->load->model("Model_ET_Recurso");   
 	}
  public function index()
     {
         $flat  = "R";
-        $listaRecurso=$this->Model_Recurso->RecursoListar($flat);
+        $listaRecurso=$this->Model_ET_Recurso->RecursoListar($flat);
         $this->load->view('layout/Ejecucion/header');
         $this->load->view('front/Ejecucion/Recurso/index',['listaRecurso' => $listaRecurso]);
         $this->load->view('layout/Ejecucion/footer');
@@ -23,12 +23,12 @@ class Recurso extends CI_Controller
             $flat  = "C";
             $txtDescripcion=$this->input->post('txtDescripcion');
 
-            if(count($this->Model_Recurso->RecursoPorDescripcion($txtDescripcion))>0)
+            if(count($this->Model_ET_Recurso->RecursoPorDescripcion($txtDescripcion))>0)
             {
                 echo json_encode(['proceso' => 'Error', 'mensaje' => 'Este Recurso ya fue registrado con anterioridad.']);exit; 
             }
             
-            $this->Model_Recurso->insertar($flat,$txtDescripcion);            
+            $this->Model_ET_Recurso->insertar($flat,$txtDescripcion);            
             echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos registrados correctamente.']);exit;  
         }
 
@@ -43,17 +43,17 @@ class Recurso extends CI_Controller
             $id=$this->input->post('hdId');
             $txtDescripcion=$this->input->post('txtDescripcion');
 
-            if(count($this->Model_Recurso->EtRecursoPorDescripcionDiffId($id, $txtDescripcion))>0)
+            if(count($this->Model_ET_Recurso->EtRecursoPorDescripcionDiffId($id, $txtDescripcion))>0)
             {
                  echo json_encode(['proceso' => 'Error', 'mensaje' => 'Este Recurso ya fue registrado con anterioridad.']);exit; 
             }
 
-            $this->Model_Recurso->editar($flat,$id,$txtDescripcion);         
+            $this->Model_ET_Recurso->editar($flat,$id,$txtDescripcion);         
             echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Se actualizo el recurso correctamente.']);exit;
         }
 
         $id=$this->input->get('id');
-        $recurso=$this->Model_Recurso->Recurso($id)[0];
+        $recurso=$this->Model_ET_Recurso->Recurso($id)[0];
         return $this->load->view('front/Ejecucion/Recurso/editar',['recurso'=>$recurso]);       
     }
 
@@ -63,7 +63,7 @@ class Recurso extends CI_Controller
         {
             $opcion="D";
             $id=$this->input->post('id_recurso');
-            $this->Model_Recurso->eliminar($opcion,$id);
+            $this->Model_ET_Recurso->eliminar($opcion,$id);
             echo json_encode($Data);
         }
     }  
