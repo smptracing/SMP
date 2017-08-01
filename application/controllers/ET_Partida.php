@@ -8,6 +8,7 @@ class ET_Partida extends CI_Controller
 		parent::__construct();
 		
 		$this->load->model('Model_ET_Partida');
+		$this->load->model('Model_Unidad_Medida');
 	}
 
 	public function insertar()
@@ -21,10 +22,11 @@ class ET_Partida extends CI_Controller
 			$cantidadPartida=$this->input->post('cantidadPartida');
 
 			$this->Model_ET_Partida->insertar($idMeta, $idUnidad, $descripcionPartida, $rendimientoPartida, $cantidadPartida);
+			$unidadMedida=$this->Model_Unidad_Medida->UnidadMedida($idUnidad)[0];
 
 			$ultimoIdPartida=$this->Model_ET_Partida->ultimoId();
 
-			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Partida registrada correctamente.', 'idPartida' => $ultimoIdPartida]);exit;
+			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Partida registrada correctamente.', 'idPartida' => $ultimoIdPartida, 'descripcionUnidadMedida' => $unidadMedida->descripcion]);exit;
 		}
 
 		$this->load->view('Front/Ejecucion/ETPartida/insertar');

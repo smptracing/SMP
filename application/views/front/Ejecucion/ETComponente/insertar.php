@@ -280,7 +280,7 @@
 			function(){});
 
 			var htmlTemp='<li style="color: blue;" class="liPartida">'+
-				'<b>'+$('#txtDescripcionPartida').val().trim()+'</b> | '+$('#txtRendimientoPartida').val().trim()+' | '+$('#selectUnidadMedidaPartida').val()+' | '+$('#txtCantidadPartida').val()+' <input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida(this);" style="width: 30px;">'+
+				'<b>'+$('#txtDescripcionPartida').val().trim()+'</b> | '+$('#txtRendimientoPartida').val().trim()+' | '+objectJSON.descripcionUnidadMedida+' | '+$('#txtCantidadPartida').val()+' <input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida(this);" style="width: 30px;">'+
 			'</li>';
 
 			$($(elementoPadreParaAgregarPartida).find('ul')[0]).append(htmlTemp);
