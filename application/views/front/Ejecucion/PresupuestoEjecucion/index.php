@@ -82,7 +82,30 @@
 
 	function Eliminar(id_presupuesto_ej)
 	{
-
-		alert(id_presupuesto_ej);
+		swal({
+				title: "Esta seguro que desea eliminar el presupuesto de ejecucion?",
+				text: "",
+				type: "warning",
+				showCancelButton: true,
+				confirmButtonColor: "#DD6B55",
+				confirmButtonText: "SI,Eliminar",
+				closeOnConfirm: false
+			},
+			function()
+			{
+				$.ajax({
+                        url:base_url+"index.php/Presupuesto_Ejecucion/eliminar",
+                        type:"POST",
+                        data:{id_presupuesto_ej:id_presupuesto_ej},
+                        success:function(respuesta)
+                        {
+							
+							swal("ELIMINADO!", "Se elimino correctamente el clasificador.", "success");
+							window.location.href='<?=base_url();?>index.php/Presupuesto_Ejecucion/index/';
+							renderLoading();
+                        }
+                    });
+			});
 	}
+
 </script>

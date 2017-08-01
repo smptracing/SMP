@@ -59,10 +59,13 @@ class Presupuesto_Ejecucion extends CI_Controller
 
     function eliminar()
     {
-        $flat ="D";
-        $id=$this->input->post('id_presupuesto_ej');
-        $this->Model_Presupuesto_Ejecucion->eliminar($flat,$id); 
-        echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos eliminados correctamente.']);exit; 
-    }
-
+       
+        if ($this->input->is_ajax_request()) 
+        {
+            $opcion="D";
+            $id=$this->input->post('id_presupuesto_ej');
+            $this->Model_Presupuesto_Ejecucion->eliminar($opcion,$id);
+            echo json_encode($Data);
+        }
+    }   
 }

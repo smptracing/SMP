@@ -52,8 +52,8 @@ class Model_Presupuesto_Ejecucion extends CI_Model
     
     function eliminar($flat,$id)
     {
-         $presupuestoejecucion=$this->db->query("execute sp_Gestionar_ET_Presupuesto_Ejecucion  @Opcion='".$flat."',@id_presupuesto_ej='".$id."'");
-        return true;
+        $presupuestoejecucion=$this->db->query("execute sp_Gestionar_ET_Presupuesto_Ejecucion  @Opcion='".$flat."',@id_presupuesto_ej='".$id."'");
+        return $presupuestoejecucion->result();
     }
 
 }

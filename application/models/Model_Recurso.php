@@ -49,4 +49,10 @@ class Model_Recurso extends CI_Model
         return $recurso->result();
     }
 
+    function eliminar($flat,$id)
+    {
+        $recurso=$this->db->query("execute sp_Gestionar_Recurso  @Opcion='".$flat."',@id_recurso='".$id."'");
+        return $recurso->result();
+    }
+
 }

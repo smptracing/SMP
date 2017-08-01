@@ -56,4 +56,15 @@ class Recurso extends CI_Controller
         $recurso=$this->Model_Recurso->Recurso($id)[0];
         return $this->load->view('front/Ejecucion/Recurso/editar',['recurso'=>$recurso]);       
     }
+
+    function eliminar()
+    { 
+        if ($this->input->is_ajax_request()) 
+        {
+            $opcion="D";
+            $id=$this->input->post('id_recurso');
+            $this->Model_Recurso->eliminar($opcion,$id);
+            echo json_encode($Data);
+        }
+    }  
 }

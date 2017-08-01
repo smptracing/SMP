@@ -49,7 +49,7 @@
 														    	</td>
 																<td>
 															  		<button type='button' class='editar btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Modificar Recurso',{ id: '<?=$item->id_recurso?>' }, base_url+'index.php/Recurso/editar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-pencil bigger-120'></i></button>
-															  		<button type='button' class='eliminar btn btn-danger btn-xs'></i></button>
+															  		<button type='button' class='eliminar btn btn-danger btn-xs' onclick="Eliminar(<?=$item->id_recurso?>)"><i class='fa fa-trash-o'></i></button>
 																</td>
 														  </tr>
 														<?php } ?>
@@ -91,8 +91,32 @@ if($sessionTempError){ ?>
 			"language":idioma_espanol
 		});
 	});
-	function Eliminar(id)
+	
+	function Eliminar(id_recurso)
 	{
-		alert(id);
+		swal({
+				title: "Esta seguro que desea eliminar el recurso presupuesto de ejecucion?",
+				text: "",
+				type: "warning",
+				showCancelButton: true,
+				confirmButtonColor: "#DD6B55",
+				confirmButtonText: "SI,Eliminar",
+				closeOnConfirm: false
+			},
+			function()
+			{
+				$.ajax({
+                        url:base_url+"index.php/Recurso/eliminar",
+                        type:"POST",
+                        data:{id_recurso:id_recurso},
+                        success:function(respuesta)
+                        {
+							
+							swal("ELIMINADO!", "Se elimino correctamente el clasificador.", "success");
+							window.location.href='<?=base_url();?>index.php/Recurso/index/';
+							renderLoading();
+                        }
+                    });
+			});
 	}
 </script>
