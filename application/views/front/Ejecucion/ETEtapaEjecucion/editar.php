@@ -1,9 +1,9 @@
-<form class="form-horizontal" id="form-EditarEtapa" action="<?php echo base_url();?>index.php/ET_Etapa/Editar" method="POST" >
+<form class="form-horizontal" id="form-EditarEtapa" action="<?php echo base_url();?>index.php/ET_Etapa_Ejecucion/Editar" method="POST" >
 	<div class="row">
 		<label class="control-label col-md-3 col-sm-3 col-xs-12" >Descripción<span class="required">*</span></label>
 		<div class="col-md-6 col-sm-6 col-xs-12">
-			<input id="hdIdEtapaFE" name="hdIdEtapaFE"  class="form-control col-md-7 col-xs-12" notValidate >
-			<input id="txtDescripcionEtapa" name="txtDescripcionEtapa" class="form-control col-md-7 col-xs-12"  placeholder="Ingrese Etapa" required="required" autocomplete="off" >
+			<input id="hdIdEtapaFE" name="hdIdEtapaFE"  type="hidden" value="<?=$nombreEtapaEjecucion->id_etapa_et ?>" class="form-control col-md-7 col-xs-12" type="hidden" notValidate >
+			<input id="txtDescripcionEtapa" name="txtDescripcionEtapa" value="<?=$nombreEtapaEjecucion->desc_etapa_et ?>" class="form-control col-md-7 col-xs-12"  placeholder="Ingrese Etapa" required="required" autocomplete="off" >
 		</div>
 	</div>
 	<div class="ln_solid"></div>
@@ -51,7 +51,7 @@
 			return;
 		}
 
-		paginaAjaxJSON($('#form-EditarEtapa').serialize(), '<?=base_url();?>index.php/ET_Etapa/Editar', 'POST', null, function(objectJSON)
+		paginaAjaxJSON($('#form-EditarEtapa').serialize(), '<?=base_url();?>index.php/ET_Etapa_Ejecucion/Editar', 'POST', null, function(objectJSON)
 		{
 			$('#modalTemp').modal('hide');
 
@@ -65,7 +65,7 @@
 			},
 			function()
 			{
-				window.location.href='<?=base_url();?>index.php/ET_Etapa/index/'+objectJSON.txtDescripcionEtapa;
+				window.location.href='<?=base_url();?>index.php/ET_Etapa_Ejecucion/index/';
 
 				renderLoading();
 			});

@@ -2,8 +2,8 @@
 	<div class="row">
 		<label class="control-label col-md-3 col-sm-3 col-xs-12" >Descripción<span class="required">*</span></label>
 		<div class="col-md-6 col-sm-6 col-xs-12">
-			<input id="hdIdCronogramaValorizacion" name="hdIdCronogramaValorizacion" class="form-control col-md-7 col-xs-12" notValidate >
-			<input id="txtCronogramaValorizacion" name="txtCronogramaValorizacion" class="form-control col-md-7 col-xs-12"  placeholder="Ingrese Etapa" required="required" autocomplete="off" >
+			<input id="hdIdCronogramaValorizacion" type="hidden" name="hdIdCronogramaValorizacion" value="<?= $CronogramaValoracion->id_valorizacion?>" class="form-control col-md-7 col-xs-12" notValidate >
+			<input id="txtCronogramaValorizacion" name="txtCronogramaValorizacion" value="<?= $CronogramaValoracion->desc_cronograma?>" class="form-control col-md-7 col-xs-12"  placeholder="Ingrese Etapa" required="required" autocomplete="off" >
 		</div>
 	</div>
 	<div class="ln_solid"></div>
@@ -65,7 +65,7 @@
 			},
 			function()
 			{
-				window.location.href='<?=base_url();?>index.php/CronogramaValorizacion/index/'+objectJSON.txtCronogramaValorizacion;
+				window.location.href='<?=base_url();?>index.php/CronogramaValorizacion/index/'+objectJSON.$hdIdCronogramaValorizacion;
 				renderLoading();
 			});
 		}, false, true);

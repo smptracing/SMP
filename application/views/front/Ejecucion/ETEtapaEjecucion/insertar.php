@@ -1,4 +1,4 @@
-<form class="form-horizontal" id="form-addEtapa" action="<?php echo base_url();?>index.php/ET_Etapa/insertar" method="POST" >
+<form class="form-horizontal" id="form-addEtapa" action="<?php echo base_url();?>index.php/ET_Etapa_Ejecucion/insertar" method="POST" >
 	<div class="row">
 		<label class="control-label col-md-3 col-sm-3 col-xs-12" >Descripción<span class="required">*</span></label>
 		<div class="col-md-6 col-sm-6 col-xs-12">
@@ -50,7 +50,7 @@
 			return;
 		}
 
-		paginaAjaxJSON($('#form-addEtapa').serialize(), '<?=base_url();?>index.php/ET_Etapa/insertar', 'POST', null, function(objectJSON)
+		paginaAjaxJSON($('#form-addEtapa').serialize(), '<?=base_url();?>index.php/ET_Etapa_Ejecucion/insertar', 'POST', null, function(objectJSON)
 		{
 			$('#modalTemp').modal('hide');
 
@@ -64,7 +64,7 @@
 			},
 			function()
 			{
-				window.location.href='<?=base_url();?>index.php/ET_Etapa/index/'+objectJSON.txtDescripcionEtapa;
+				window.location.href='<?=base_url();?>index.php/ET_Etapa_Ejecucion/index/';
 
 				renderLoading();
 			});

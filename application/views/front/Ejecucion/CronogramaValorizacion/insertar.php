@@ -64,7 +64,7 @@
 			},
 			function()
 			{
-				window.location.href='<?=base_url();?>index.php/CronogramaValorizacion/index/'+objectJSON.txtCronogramaValorizacion;
+				window.location.href='<?=base_url();?>index.php/CronogramaValorizacion/index/';
 				renderLoading();
 			});
 		}, false, true);

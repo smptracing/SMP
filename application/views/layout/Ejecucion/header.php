@@ -55,9 +55,11 @@
 										<li><a href="<?php echo site_url('Presupuesto_Ejecucion/index'); ?>">Presupuesto Ejecucion</a></li>
 										<li><a href="<?php echo site_url('Tipo_Gasto_Analitico/index'); ?>">Tipo Gasto Analítico</a></li>
 										<li><a href="<?php echo site_url('Recurso/index'); ?>">Recurso</a></li>
-										<li><a href="<?php echo site_url('ET_Etapa/index'); ?>">Etapa</a></li>
-										<li><a href="<?php echo site_url('Clasificador/index'); ?>">Clasificador</a></li>
-										<li><a href="<?php echo site_url('CronogramaValorizacion/index'); ?>">Cronograma</a></li>
+										<li><a href="<?php echo site_url('ET_Etapa_Ejecucion/index'); ?>">Etapa Ejecución</a></li>
+										<li><a href="<?php echo site_url('ET_Clasificador/index'); ?>">Clasificador</a></li>
+										<li><a href="<?php echo site_url('CronogramaValorizacion/index'); ?>">Cronograma Valoración</a></li>
+										<li><a href="<?php echo site_url('Expediente_Tecnico/reportePdfEcpedienteTecnico'); ?>">Ficha Expediente</a></li>
+
 									</ul>
 								</li> 
 							</ul>

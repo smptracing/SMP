@@ -16,6 +16,7 @@
 							<button type="button" class="btn btn-primary " onclick="paginaAjaxDialogo(null, 'Administración de partidad y analítico', null, base_url+'index.php/ET_Partida/insertar', 'GET', null, null, false, true);">
 								NUEVA
 							</button>
+								<li><a href="<?php echo site_url('Expediente_Tecnico/reportePdfEcpedienteTecnico'); ?>">Reporte Ficha </a></li>
 							<div class="x_title">
 								<div class="clearfix"></div>
 							</div>

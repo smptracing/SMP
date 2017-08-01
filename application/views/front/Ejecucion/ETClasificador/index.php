@@ -24,7 +24,7 @@
 									<div class="row">  
 										<div class="col-md-12 col-sm-12 col-xs-12">
 											<div class="x_panel">
-												<button type="button" class="btn btn-primary " onclick="paginaAjaxDialogo(null, 'Registrar Nuevo Clasificador', null, base_url+'index.php/Clasificador/insertar', 'GET', null, null, false, true);">
+												<button type="button" class="btn btn-primary " onclick="paginaAjaxDialogo(null, 'Registrar Nuevo Clasificador', null, base_url+'index.php/ET_Clasificador/insertar', 'GET', null, null, false, true);">
 													NUEVO
 												</button>
 												<div class="x_title">                                                              
@@ -43,6 +43,23 @@
 															</tr>
 														</thead>
 														<tbody>
+														<?php foreach($ETClasificador as $item ){ ?>
+															<tr>
+																<td>
+																<?=$item->num_clasificador?>
+																</td>
+																<td>
+																<?=$item->desc_clasificador?>
+																</td>
+																<td>
+																<?=$item->detalle_clasificador?>
+																</td>
+																<td>
+																	<button title='Edición de clasificador' class='btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Edición de presupuesto para formulación y evaluación', { id_clasificador : '<?=$item->id_clasificador?>' }, base_url+'index.php/ET_Clasificador/editar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-pencil bigger-120'></i></button>
+																	<button onclick="Eliminar(<?=$item->id_clasificador?>);" title='Eliminar Clasificador'  class='eliminarClasificador btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button>
+																</td>
+															</tr>
+														<?php } ?>
 														</tbody>
 													</table>
 												</div>
@@ -68,4 +85,32 @@
 			"language":idioma_espanol
 		});
 	});
+	function Eliminar(id_clasificador)
+		{
+			swal({
+				title: "Esta seguro que desea eliminar el clasificador?",
+				text: "",
+				type: "warning",
+				showCancelButton: true,
+				confirmButtonColor: "#DD6B55",
+				confirmButtonText: "SI,ELIMINAR",
+				closeOnConfirm: false
+			},
+			function()
+			{
+				$.ajax({
+                        url:base_url+"index.php/ET_Clasificador/eliminar",
+                        type:"POST",
+                        data:{id_clasificador:id_clasificador},
+                        success:function(respuesta)
+                        {
+							
+							swal("ELIMINADO!", "Se elimino correctamente el clasificador.", "success");
+							window.location.href='<?=base_url();?>index.php/ET_Clasificador/index/';
+							renderLoading();
+                        }
+                    });
+			});
+  
+		}
 </script>

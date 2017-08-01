@@ -1,20 +1,21 @@
-<form class="form-horizontal" id="form-addClasificador" action="<?php echo base_url();?>index.php/Clasificador/insertar" method="POST" >
+<form class="form-horizontal" id="form-editarClasificador" action="<?php echo base_url();?>index.php/ET_Clasificador/editar" method="POST" >
 	<div class="row">
 		<label class="control-label col-md-3 col-sm-3 col-xs-12" >Número<span class="required">*</span></label>
 		<div class="col-md-6 col-sm-6 col-xs-12">
-			<input id="txtNumeroClasi" name="txtNumeroClasi" class="form-control col-md-7 col-xs-12"  placeholder="Ingrese Número" required="required" autocomplete="off" >
+			<input id="hdIdClasificadro" name="hdIdClasificadro" type="hidden" class="form-control col-md-7 col-xs-12" value="<?= $ETClasificador->id_clasificador?>" placeholder="Ingrese Número" notValidate>
+			<input id="txtNumeroClasi" name="txtNumeroClasi" value="<?= $ETClasificador->num_clasificador?>" class="form-control col-md-7 col-xs-12"  placeholder="Ingrese Número"  autocomplete="off" >
 		</div>
 	</div><br>
 	<div class="row">
 		<label class="control-label col-md-3 col-sm-3 col-xs-12" >Descripción<span class="required">*</span></label>
 		<div class="col-md-6 col-sm-6 col-xs-12">
-			<input id="txtDescripcionClasi" name="txtDescripcionClasi" class="form-control col-md-7 col-xs-12"  placeholder="Ingrese Descripción" required="required" autocomplete="off" >
+			<input id="txtDescripcionClasi" name="txtDescripcionClasi"  value="<?= $ETClasificador->desc_clasificador?>" class="form-control col-md-7 col-xs-12"  placeholder="Ingrese Descripción"  autocomplete="off" >
 		</div>
 	</div><br>
 	<div class="row">
 		<label class="control-label col-md-3 col-sm-3 col-xs-12" >Detalle<span class="required">*</span></label>
 		<div class="col-md-6 col-sm-6 col-xs-12">
-			<input id="txtDetalleClasi" name="txtDetalleClasi" class="form-control col-md-7 col-xs-12"  placeholder="Ingrese Detalle" required="required" autocomplete="off" >
+			<input id="txtDetalleClasi" name="txtDetalleClasi" value="<?= $ETClasificador->detalle_clasificador?>"  class="form-control col-md-7 col-xs-12"  placeholder="Ingrese Detalle" autocomplete="off" >
 		</div>
 	</div><br>
 	<div class="ln_solid"></div>
@@ -28,7 +29,7 @@
 
 	$(function()
 	{
-		$('#form-addClasificador').formValidation(
+		$('#form-editarClasificador').formValidation(
 		{
 			framework: 'bootstrap',
 			excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
@@ -44,12 +45,7 @@
 						notEmpty:
 						{
 							message: '<b style="color: red;">El campo "Numero" es requerido.</b>'
-						},
-						regexp:
-	                    {
-	                        regexp: "^[0-9]+([,][0-9]+)?$",
-	                        message: '<b style="color: red;">El campo "Numero" debe ser un número.</b>'
-	                    }
+						}
 					}
 				},
 				txtDescripcionClasi:
@@ -80,14 +76,14 @@
 	{
 		event.preventDefault();
 
-		$('#form-addClasificador').data('formValidation').validate();
+		$('#form-editarClasificador').data('formValidation').validate();
 
-		if(!($('#form-addClasificador').data('formValidation').isValid()))
+		if(!($('#form-editarClasificador').data('formValidation').isValid()))
 		{
 			return;
 		}
 
-		paginaAjaxJSON($('#form-addClasificador').serialize(), '<?=base_url();?>index.php/Clasificador/insertar', 'POST', null, function(objectJSON)
+		paginaAjaxJSON($('#form-editarClasificador').serialize(), '<?=base_url();?>index.php/ET_Clasificador/editar', 'POST', null, function(objectJSON)
 		{
 			$('#modalTemp').modal('hide');
 
@@ -101,7 +97,7 @@
 			},
 			function()
 			{
-				window.location.href='<?=base_url();?>index.php/Clasificador/index/'+objectJSON.txtNumeroClasi;
+				window.location.href='<?=base_url();?>index.php/ET_Clasificador/index/';
 
 				renderLoading();
 			});

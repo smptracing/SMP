@@ -24,7 +24,7 @@
 									<div class="row">  
 										<div class="col-md-12 col-sm-12 col-xs-12">
 											<div class="x_panel">
-												<button type="button" class="btn btn-primary " onclick="paginaAjaxDialogo(null, 'Registrar Nuevo Etapa', null, base_url+'index.php/ET_Etapa/insertar', 'GET', null, null, false, true);">
+												<button type="button" class="btn btn-primary " onclick="paginaAjaxDialogo(null, 'Registrar Nuevo Etapa de Ejecucion', null, base_url+'index.php/ET_Etapa_Ejecucion/insertar', 'GET', null, null, false, true);">
 													NUEVO
 												</button>
 												<div class="x_title">                                                              
@@ -40,6 +40,18 @@
 															</tr>
 														</thead>
 														<tbody>
+															<?php foreach($ETEtapaEjecucion as $item ){ ?>
+																<tr>
+																	<td>
+																	<?=$item->desc_etapa_et?>
+																	</td>
+																	<td>
+																		<button title='Edición Etapa Ejecución' class='btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Edición Etapa Ejecución', { id_etapa_et  : '<?=$item->id_etapa_et ?>' }, base_url+'index.php/ET_Etapa_Ejecucion/editar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-pencil bigger-120'></i></button>
+																		<button title='Edición de presupuesto para formulación y evaluación' class='btn btn-danger btn-xs' ><i class="fa fa-trash-o"></i></button>
+																	</td>
+																</tr>
+															<?php } ?>
+														</tbody>
 														</tbody>
 													</table>
 												</div>
