@@ -54,7 +54,9 @@
 	<hr style="margin-top: 4px;">
 	<div class="row" style="height: 300px;overflow-y: scroll;">
 		<div class="col-md-12 col-sm-12 col-xs-12" style="font-size: 12px;">
-			<ul id="ulComponenteMetaPartida" style="background-color: #f5f5f5;"></ul>
+			<ul id="ulComponenteMetaPartida" style="background-color: #f5f5f5;">
+				
+			</ul>
 		</div>
 	</div>
 	<hr>
