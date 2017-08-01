@@ -343,10 +343,8 @@
                                         </button>
                                     </div>
                                  </div>
-
-
-                     <div class="ln_solid"></div>
-                     <div class="x_panel" style="background-color: #EEEEEE;">
+                    <div class="ln_solid"></div>
+                    <div class="x_panel" style="background-color: #EEEEEE;">
                     <center>
                     <table  id="Table_meta_pi" class="table   table-hover" >
                     <thead >
@@ -356,6 +354,128 @@
                          <th  ><i class="fa fa-thumb-tack"></i> PIA</th>
                          <th  ><i class="fa fa-thumb-tack"></i> PIM</th>
                          <th  ><i class="fa fa-thumb-tack"></i> Devengado</th>
+                      </tr>
+                    </thead>
+                    </table>
+                    </center>
+                    </div>
+                    <center>
+                      <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+
+                           <button  class="btn btn-danger" data-dismiss="modal">
+                             <span class="glyphicon glyphicon-log-out"></span>
+                            Cancelar
+                          </button>
+                        </div>
+                      </div>
+                      </center>
+                    </form>
+                        </div><!-- /.span -->
+                 </div><!-- /.row -->
+        </div>
+        <div class="modal-footer">
+
+        </div>
+      </div>
+    </div>
+</div>
+<!-- /.Fin Ventana meta presupuestal-->
+
+<!-- /.Ventana Programar operacion y mantenimiento-->
+<div class="modal fade" id="Ventana_Programar_operacion_mantenimiento" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
+          Programar PIP - Operación Mantenimiento.</h4>
+        </div>
+        <div class="modal-body">
+         <div class="row">
+                    <div class="col-xs-12">
+                                        <!-- PAGE CONTENT BEGINS -->
+              <form class="form-horizontal " id="form_AddProgramacion_operacion_mantenieminto"   action="<?php echo base_url(); ?>bancoproyectos/Get_OperacionMantenimiento" method="POST" >
+
+                        <input id="txt_id_pip_programacion_" name="txt_id_pip_programacion_" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="text">
+                             <div class="item form-group">
+                               <div class="col-md-2 col-sm-6 col-xs-12">
+                               <label>Cartera</label>
+                                    <select  id="Cbx_AnioCartera_" selected name="Cbx_AnioCartera_" class="selectpicker"></select>
+                                    <!--<input type="text" id="Aniocartera" value="<?=(isset($anio) ? $anio : date('Y'))?>">-->
+                                </div>
+                              </div>
+                               <div class="item form-group">
+                               <div class="col-md-3 col-sm-6 col-xs-12">
+                                      <label>Código Único</label>
+                                      <input  class="form-control" id="txt_codigo_unico_pi_" name="txt_codigo_unico_pi_" type="text" disabled="disabled">
+                                    </div>
+                                  <div class="col-md-9 col-sm-6 col-xs-12">
+                                      <label>Nombre del Proyecto</label>
+                                      <input  class="form-control" id="txt_nombre_proyecto_" name="txt_nombre_proyecto_" type="text" disabled="disabled">
+                                    </div>
+                                   <div class="col-md-2 col-sm-6 col-xs-12">
+                                      <label>Costo del Proyecto</label>
+                                      <input  class="form-control" id="txt_costo_proyecto_" name="txt_costo_proyecto_" type="number" disabled="disabled">
+                                    </div>
+                                    <div class="col-md-3 col-sm-12 col-xs-12">
+                                      <label>Brecha </label>
+                                      <select id="cbxBrecha_" name="cbxBrecha_" class="selectpicker"   title="Elija Brecha" required="required">
+                                      </select>
+                                    </div>
+                                 </div>
+                              <h6><i class="fa fa-money"></i><b> Meta Presupuestal</b></h6>
+                              <div class="item form-group">
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                      <center><label>PIA</label></center>
+                                      <input  class="form-control" id="txt_pia_" name="txt_pia_" type="number" required="required" value="0.00" disabled="disabled">
+                                    </div>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                      <center><label>PIM</label></center>
+                                      <input  class="form-control" id="txt_pim_" name="txt_pim_" type="number" required="required" value="0.00"  disabled="disabled">
+                                    </div>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                      <center><label>Devengado</label></center>
+                                      <input  class="form-control" id="txt_devengado_" name="txt_devengado_" type="number" required="required" value="0.00"  disabled="disabled">
+                                    </div>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                      <center><label>Prioridad</label></center>
+                                      <input  class="form-control" id="txt_prioridad_" name="txt_prioridad_" type="number" required="required">
+                                    </div>
+                                 </div>
+                              <h6><i class="fa fa-list"></i><b> Monto Operación y Mantenimiento</b></h6>
+                               <div class="item form-group">
+                                   <div class="col-md-3 col-sm-6 col-xs-12">
+                                      <CENTER><label>Año 1</label></CENTER>
+                                      <input  class="form-control" id="txt_anio1_" name="txt_anio1_" type="number" required="required">
+                                    </div>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                      <CENTER><label>Año 2</label></CENTER>
+                                      <input  class="form-control" id="txt_anio2_" name="txt_anio2_" type="number" required="required">
+                                    </div>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                      <CENTER><label>Año 3</label></CENTER>
+                                      <input  class="form-control" id="txt_anio3_" name="txt_anio3_" type="number" required="required">
+                                    </div>
+
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                      <label>.</label><br>
+                                       <button  id="send" type="submit" class="btn btn-success">
+                                             <span class="glyphicon glyphicon-floppy-saved"></span> Guardar
+                                        </button>
+                                    </div>
+                                 </div>
+
+
+                     <div class="ln_solid"></div>
+                     <div class="x_panel" style="background-color: #EEEEEE;">
+                    <center>
+                    <table  id="Table_Programar_operacion_mantenimiento" class="table   table-hover" >
+                    <thead >
+                       <tr>
+                         <th  ><i class="fa fa-thumb-tack"></i> #</th>
+                         <th  ><i class="fa fa-thumb-tack"></i> Año Programado</th>
+                         <th  ><i class="fa fa-thumb-tack"></i> Monto Programado</th>
                       </tr>
                     </thead>
                     </table>
@@ -383,4 +503,4 @@
       </div>
     </div>
 </div>
-<!-- /.Fin Ventana meta presupuestal-->
+<!-- /.Fin Ventana programar-->

@@ -135,14 +135,21 @@
                                               </select>
                                          </div>
                                       </div>
-                                        <div class="col-md-4">
+                                       <!-- <div class="col-md-4">
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                              <label  for="textbox"><span class="required">Ciclo Inversión</span>
                                               </label>
                                             <select id="cbxEstCicInv" name="cbxEstCicInv" class="selectpicker"  title="Elija Ciclo de Inversión" required="required">
                                             </select>
                                             </div>
-                                      </div>
+                                      </div>-->
+                                      <div class="col-md-4">
+
+                                           <label for="name">Estado.<span class="required"></span>
+                                            </label>
+                                                 <select   id="cbxEstCicInv_" name="cbxEstCicInv_" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Estado..." required="required">
+                                                </select>
+                                    </div>
                                     </div>
 
                                  <div class="row">

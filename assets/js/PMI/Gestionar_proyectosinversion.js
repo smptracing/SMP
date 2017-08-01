@@ -355,7 +355,7 @@ $(document).on("ready" ,function(){
                         }
                     });
                 }
-                //combox listar estado ciclo 
+                //combox listar estado ciclo  para el modal de registro secundario
                 var listarEstadoCiclo=function(valor){
                      html="";
                     $("#Cbx_EstadoCiclo").html(html);
@@ -443,12 +443,13 @@ $(document).on("ready" ,function(){
                         }
                     });
                 }
-var listarCicloInver=function(){
+
+                  var listarCicloInver=function(valor){
                      html="";
-                    $("#cbxEstCicInv").html(html);
+                    $("#cbxEstCicInv_").html(html);
                     event.preventDefault();
                     $.ajax({
-                        "url":base_url +"index.php/EstadoCicloInversion/get_EstadoCicloInversion",
+                        "url":base_url +"index.php/bancoproyectos/listar_estado",
                         type:"POST",
                         success:function(respuesta3){
                          //  alert(respuesta);
@@ -456,7 +457,9 @@ var listarCicloInver=function(){
                             for (var i = 0; i <registros.length;i++) {
                               html +="<option  value="+registros[i]["id_estado_ciclo"]+"> "+registros[i]["nombre_estado_ciclo"]+" </option>";
                             };
-                            $("#cbxEstCicInv").html(html);
+                            $("#cbxEstCicInv_").html(html);
+                            $('select[name=cbxEstCicInv_]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=cbxEstCicInv_]').change();
                             $('.selectpicker').selectpicker('refresh');
                         }
                     });

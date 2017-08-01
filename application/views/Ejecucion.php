@@ -2,7 +2,7 @@
 	<!-- top tiles -->
     <div class="row tile_count">
         <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fa fa-user"></i> N° DE PROYECTOS</span>
+            <span class="count_top"><i class="fa fa-user"></i> N° DE PROYECTOS EN EJECUCIÓN</span>
             <div class="count">
                 <center>
                     <div id="NumPip"></div>
@@ -143,25 +143,7 @@
                                 <td style="padding-top: 20px;text-align: center;">
                                     <canvas class="canvasDoughnut1" height="160" width="160"></canvas>
                                 </td>
-                                <td style="padding-top: 20px;text-align: left;vertical-align: middle;">
-                                    <p><i class="fa fa-square blue" style="width: 15px;"></i>Abancay</p>
-                                    <p><i class="fa fa-square purple" style="width: 15px;"></i>Andahuayla</p>
-                                    <p><i class="fa fa-square red" style="width: 15px;"></i>Antabamba</p>
-                                    <p><i class="fa fa-square green" style="width: 15px;"></i>Aymaraes</p>
-                                    <p><i class="fa fa-square aero" style="width: 15px;"></i>Chinchero</p>
-                                    <p><i class="fa fa-square black" style="width: 15px;"></i>Cotabamb</p>
-                                    <p><i class="fa fa-square blue" style="width: 15px;"></i>Grau</p>
-                                </td>
-                                <td style="padding-top: 20px;text-align: center;">
-                                    <p id="porcentajeAban"></p>
-                                    <p id="porcentajeAnd"></p>
-                                    <p id="porcentajeAnt"></p>
-                                    <p id="porcentajeAy"></p>
-                                    <p id="porcentajeChinc"></p>
-                                    <p id="porcentajeCotab"></p>
-                                    <p id="porcentajeGrau"></p>
-                                </td>
-                            </tr>
+                             </tr>
                         </tbody>
                     </table>
                 </div>
@@ -212,126 +194,7 @@
                     <div class="x_content">
                         <div class="dashboard-widget-content">
                             <ul class="list-unstyled timeline widget">
-                                <li>
-                                    <div class="block">
-                                        <h2 class="title">ABANCAY</h2>
-                                        <br>
-                                        <table class="table table-condensed table-hover" width="100%">
-                                            <tbody>
-                                            	<tr>
-	                                                <td>CANTIDAD DE PIPS:</td>
-	                                                <td class="col-sm-5"><div style="text-align: center;" id="CantidadPAbancay"></div></td>
-	                                            </tr>
-	                                            <tr>
-	                                                <td>MONTO TOTAL (S/):</td>
-	                                                <td><div style="text-align: center;" id="MontoPipAbancay"></div></td>
-	                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="block">
-                                        <h2 class="title">ANDAHUAYLAS</h2>
-                                        <br>
-                                        <table class="table table-condensed table-hover" width="100%">
-                                        	<tbody>
-                                        		<tr>
-                                                    <td>CANTIDAD DE PIPS:</td>
-                                                    <td class="col-sm-5"><div style="text-align: center;" id="CantidadPAndahuaylas"></div></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>MONTO TOTAL (S/):</td>
-                                                    <td><div style="text-align: center;" id="MontoPipAndahuaylas"></div></td>
-                                                </tr>
-                                        	</tbody>
-                                        </table>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="block">
-                                        <h2 class="title">ANTABAMBA</h2>
-                                        <br>
-                                        <table class="table table-condensed table-hover" width="100%">
-                                            <tr>
-                                                <td>CANTIDAD DE PIPS:</td>
-                                                <td class="col-sm-5"><div style="text-align: center;" id="CantidadPAntabamba"></div></td>
-                                            </tr>
-                                            <tr>
-                                                <td>MONTO TOTAL (S/):</td>
-                                                <td><div style="text-align: center;" id="MontoPipAntabamba"></div></td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="block">
-                                        <h2 class="title">AYMARAES</h2>
-                                        <br>
-                                        <table class="table table-condensed table-hover" width="100%">
-                                            <tr>
-                                                <td>CANTIDAD DE PIPS:</td>
-                                                <td class="col-sm-5"><div style="text-align: center;" id="CantidadPAymaraes"></div></td>
-                                            </tr>
-                                            <tr>
-                                                <td>MONTO TOTAL (S/):</td>
-                                                <td><div style="text-align: center;" id="MontoPipAymaraes"></div></td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="block">
-                                        <h2 class="title">CHINCHEROS</h2>
-                                        <br>
-                                        <table class="table table-condensed table-hover" width="100%">
-                                            <tr>
-                                                <td>CANTIDAD DE PIPS:</td>
-                                                <td class="col-sm-5">
-                                                    <div style="text-align: center;" id="CantidadPChincheros"></div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>MONTO TOTAL (S/):</td>
-                                                <td><div style="text-align: center;" id="MontoPipChincheros"></div></td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="block">
-                                        <h2 class="title">COTABAMBAS</h2>
-                                        <br>
-                                        <table class="table table-condensed table-hover" width="100%">
-                                            <tr>
-                                                <td>CANTIDAD DE PIPS:</td>
-                                                <td class="col-sm-5">
-                                                    <div style="text-align: center;" id="CantidadPCotabambas"></div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>MONTO TOTAL (S/):</td>
-                                                <td><div style="text-align: center;" id="MontoPipCotabambas"></div></td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="block">
-                                        <h2 class="title">GRAU</h2>
-                                        <br>
-                                        <table class="table table-condensed table-hover" width="100%">
-                                            <tr>
-                                                <td>CANTIDAD DE PIPS:</td>
-                                                <td><div style="text-align: center;" id="CantidadPGrau"></div></td>
-                                            </tr>
-                                            <tr>
-                                                <td>MONTO TOTAL (S/):</td>
-                                                <td><div style="text-align: center;" id="MontoPipGrau"></div></td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </li>
+                                
                             </ul>
                         </div>
                     </div>

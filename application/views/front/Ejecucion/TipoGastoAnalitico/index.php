@@ -37,11 +37,21 @@
 													<table id="table-Tipo_Gasto_Analitico"  class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
 														<thead>
 															<tr>
-																<td>Descripcion</td>
-																<td class="col-md-1 col-md-1 col-xs-12"></td>
+																<td>DESCRIPCIÓN</td>
+																<td class="col-md-1 col-md-1 col-xs-12">ACCIONES</td>
 															</tr>
 														</thead>
 														<tbody>
+														<?php foreach($listaTipoGastoAnalitico as $item ){ ?>
+																	  <tr>
+																		<td>
+																			<?=$item->descripcion?>
+																	    </td>
+																		<td>
+																		  	<button type='button' class='editar btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Modificar Tipo de Gasto Analitico', { id: '<?=$item->id_tipo_gasto_analitico?>' }, base_url+'index.php/Tipo_Gasto_Analitico/editar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>
+																		</td>
+																	  </tr>
+															     <?php } ?>
 														</tbody>
 													</table>
 												</div>
