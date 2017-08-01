@@ -19,4 +19,10 @@ class Expediente_Tecnico extends CI_Controller
 	{
 		$this->_load_layout('front/Ejecucion/ExpedienteTecnico/index.php');
 	}
+
+	public function insertar()
+	{
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/insertar');
+	}
+	
 }

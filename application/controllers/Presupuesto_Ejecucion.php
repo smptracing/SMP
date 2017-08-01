@@ -10,7 +10,8 @@ class Presupuesto_Ejecucion extends CI_Controller
 	}
  public function index()
     {
-    	$listaPresupuestoEjecucion=$this->Model_Presupuesto_Ejecucion->PresupuestoEjecucionListar();
+        $flat  = "R";
+    	$listaPresupuestoEjecucion=$this->Model_Presupuesto_Ejecucion->PresupuestoEjecucionListar($flat);
         $this->load->view('layout/Ejecucion/header');
         $this->load->view('front/Ejecucion/PresupuestoEjecucion/index',['listaPresupuestoEjecucion'=>$listaPresupuestoEjecucion]);
         $this->load->view('layout/Ejecucion/footer');
@@ -20,11 +21,14 @@ class Presupuesto_Ejecucion extends CI_Controller
 
     	if($_POST)
         {
+            $flat  = "C";
             $txtDescripcion=$this->input->post('txtDescripcion');
-            $this->Model_Presupuesto_Ejecucion->insertar($txtDescripcion);            
-            $this->session->set_flashdata('correcto', 'Presupuesto en Ejecucion registrado correctamente.');
-
-            return redirect('/Presupuesto_Ejecucion');
+            if(count($this->Model_Presupuesto_Ejecucion->EtPresupuestoEjecucionPorDescripcion($txtDescripcion))>0)
+            {
+                echo json_encode(['proceso' => 'Error', 'mensaje' => 'Este presupuesto de ejecución ya fue registrado con anterioridad.']);exit; 
+            }
+            $this->Model_Presupuesto_Ejecucion->insertar($flat,$txtDescripcion); 
+            echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos registrados correctamente.']);exit;           
         }
 
         $this->load->view('front/Ejecucion/PresupuestoEjecucion/insertar');
@@ -35,20 +39,30 @@ class Presupuesto_Ejecucion extends CI_Controller
         
         if($this->input->post('hdId'))
         {
+            $flat  = "U";
             $id=$this->input->post('hdId');
 
             $txtDescripcion=$this->input->post('txtDescripcion');
 
-            $this->Model_Presupuesto_Ejecucion->editar($id, $txtDescripcion);
-            
-            $this->session->set_flashdata('correcto', 'Datos guardados correctamente.');
-
-            return redirect('/Presupuesto_Ejecucion');
+            if(count($this->Model_Presupuesto_Ejecucion->EtPresupuestoEjecucionPorDescripcionDiffId($id, $txtDescripcion))>0)
+            {
+                echo json_encode(['proceso' => 'Error', 'mensaje' => 'Este presupuesto de ejecución ya fue registrado con anterioridad.']);exit; 
+            }
+            $this->Model_Presupuesto_Ejecucion->editar($flat,$id,$txtDescripcion);
+            echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos actualizados correctamente.']);exit;  
         }
         $id=$this->input->get('id');
         $presupuestoejecucion=$this->Model_Presupuesto_Ejecucion->PresupuestoEjecucion($id)[0];
         
         return $this->load->view('front/Ejecucion/PresupuestoEjecucion/editar',['presupuestoejecucion'=>$presupuestoejecucion]); 
+    }
+
+    function eliminar()
+    {
+        $flat ="D";
+        $id=$this->input->post('id_presupuesto_ej');
+        $this->Model_Presupuesto_Ejecucion->eliminar($flat,$id); 
+        echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos eliminados correctamente.']);exit; 
     }
 
 }

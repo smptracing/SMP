@@ -8,32 +8,46 @@ class Model_Tipo_Gasto_Analitico extends CI_Model
         parent::__construct();
     }
 
-    function TipoGastoAnaliticoListar()
+    function TipoGastoAnaliticoListar($flat)
     {
-        $ListarTipoGastoAnalitico=$this->db->query("select * from Tipo_Gasto_Analitico");
+        $ListarTipoGastoAnalitico=$this->db->query("sp_Gestionar_Et_Tipo_Gasto'".$flat."'");
 
         return $ListarTipoGastoAnalitico->result();
     }
 
-    function insertar($txtDescripcion)
+    function insertar($flat,$txtDescripcion)
     {
-        $tipogastoanalitico=$this->db->query("execute sp_Tipo_Gasto_Analitico_Insertar '".$txtDescripcion."'");
+        $tipogastoanalitico=$this->db->query("sp_Gestionar_Et_Tipo_Gasto @Opcion='".$flat."',@desc_tipo_gasto='".$txtDescripcion."'");
 
         return true;
     } 
 
     function TipoGastoAnalitico($id)
     {
-        $tipogastoanalitico=$this->db->query("select * from Tipo_Gasto_Analitico where id_tipo_gasto_analitico='".$id."' ");
+        $tipogastoanalitico=$this->db->query("select * from ET_TIPO_GASTO where id_tipo_gasto='".$id."' ");
 
         return $tipogastoanalitico->result();
     }
 
-    function editar($id, $txtDescripcion)
+    function editar($flat,$id,$txtDescripcion)
     {
-        $tipogastoanalitico=$this->db->query("update Tipo_Gasto_Analitico set  descripcion='".$txtDescripcion."' where id_tipo_gasto_analitico='".$id."' ");
+        $tipogastoanalitico=$this->db->query("sp_Gestionar_Et_Tipo_Gasto  @Opcion='".$flat."',@id_tipo_gasto='".$id."',@desc_tipo_gasto='".$txtDescripcion."'");
 
         return true;
+    }
+    
+    function EtTipoGastoPorDescripcion($descripcion)
+    {
+        $tipogastoanalitico=$this->db->query("select * from ET_TIPO_GASTO where replace(desc_tipo_gasto, ' ', '')=replace('".$descripcion."', ' ', '')");
+
+        return $tipogastoanalitico->result();
+    }
+
+    function EtTipoGastoPorDescripcionDiffId($id, $descripcion)
+    {
+        $tipogastoanalitico=$this->db->query("select * from ET_TIPO_GASTO where id_tipo_gasto!='".$id."' and replace(desc_tipo_gasto, ' ', '')=replace('".$descripcion."', ' ', '')");
+
+        return $tipogastoanalitico->result();
     }
 
 }

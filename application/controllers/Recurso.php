@@ -10,7 +10,8 @@ class Recurso extends CI_Controller
 	}
  public function index()
     {
-        $listaRecurso=$this->Model_Recurso->RecursoListar();
+        $flat  = "R";
+        $listaRecurso=$this->Model_Recurso->RecursoListar($flat);
         $this->load->view('layout/Ejecucion/header');
         $this->load->view('front/Ejecucion/Recurso/index',['listaRecurso' => $listaRecurso]);
         $this->load->view('layout/Ejecucion/footer');
@@ -19,11 +20,16 @@ class Recurso extends CI_Controller
     {
         if($_POST)
         {
+            $flat  = "C";
             $txtDescripcion=$this->input->post('txtDescripcion');
-            $this->Model_Recurso->insertar($txtDescripcion);            
-            $this->session->set_flashdata('correcto', 'Recurso registrado correctamente.');
 
-            return redirect('/Recurso');
+            if(count($this->Model_Recurso->RecursoPorDescripcion($txtDescripcion))>0)
+            {
+                echo json_encode(['proceso' => 'Error', 'mensaje' => 'Este Recurso ya fue registrado con anterioridad.']);exit; 
+            }
+            
+            $this->Model_Recurso->insertar($flat,$txtDescripcion);            
+            echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos registrados correctamente.']);exit;  
         }
 
         return $this->load->view('front/Ejecucion/Recurso/insertar');
@@ -33,15 +39,17 @@ class Recurso extends CI_Controller
     {
         if($this->input->post('hdId'))
         {
+            $flat  = "U";
             $id=$this->input->post('hdId');
-
             $txtDescripcion=$this->input->post('txtDescripcion');
 
-            $this->Model_Recurso->editar($id, $txtDescripcion);
-            
-            $this->session->set_flashdata('correcto', 'Datos guardados correctamente.');
+            if(count($this->Model_Recurso->EtRecursoPorDescripcionDiffId($id, $txtDescripcion))>0)
+            {
+                 echo json_encode(['proceso' => 'Error', 'mensaje' => 'Este Recurso ya fue registrado con anterioridad.']);exit; 
+            }
 
-            return redirect('/Recurso');
+            $this->Model_Recurso->editar($flat,$id,$txtDescripcion);         
+            echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Se actualizo el recurso correctamente.']);exit;
         }
 
         $id=$this->input->get('id');

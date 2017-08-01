@@ -45,10 +45,11 @@
 														<?php foreach($listaTipoGastoAnalitico as $item ){ ?>
 																	  <tr>
 																		<td>
-																			<?=$item->descripcion?>
+																			<?=$item->desc_tipo_gasto?>
 																	    </td>
 																		<td>
-																		  	<button type='button' class='editar btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Modificar Tipo de Gasto Analitico', { id: '<?=$item->id_tipo_gasto_analitico?>' }, base_url+'index.php/Tipo_Gasto_Analitico/editar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>
+																		  	<button type='button' class='editar btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Modificar Tipo de Gasto Analitico', { id: '<?=$item->id_tipo_gasto?>' }, base_url+'index.php/Tipo_Gasto_Analitico/editar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-pencil bigger-120'></i></button>
+																		  	<button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>
 																		</td>
 																	  </tr>
 															     <?php } ?>
@@ -69,7 +70,17 @@
 		<div class="clearfix"></div>
 	</div>
 </div>
+<?php
+$sessionTempCorrecto=$this->session->flashdata('correcto');
+$sessionTempError=$this->session->flashdata('error');
 
+if($sessionTempCorrecto){ ?>
+	<script>swal('','<?=$sessionTempCorrecto?>', "success");</script>
+<?php }
+
+if($sessionTempError){ ?>
+	<script>swal('','<?=$sessionTempError?>', "error");</script>
+<?php } ?>
 <script>
 	$(document).ready(function()
 	{

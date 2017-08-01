@@ -8,31 +8,51 @@ class Model_Presupuesto_Ejecucion extends CI_Model
         parent::__construct();
     }
 
-    function PresupuestoEjecucionListar()
+    function PresupuestoEjecucionListar($flat)
     {
-        $ListarPresupuestoEjecucion=$this->db->query("select * from Presupuesto_Ejecucion");
+        $ListarPresupuestoEjecucion=$this->db->query("execute sp_Gestionar_ET_Presupuesto_Ejecucion'".$flat."'");
 
         return $ListarPresupuestoEjecucion->result();
     }
 
-    function insertar($txtDescripcion)
+    function insertar($flat,$txtDescripcion)
     {
-        $PresupuestoEjecucion=$this->db->query("execute sp_Presupuesto_Ejecucion_Insertar '".$txtDescripcion."'");
+        
+        $PresupuestoEjecucion=$this->db->query("execute sp_Gestionar_ET_Presupuesto_Ejecucion @Opcion='".$flat."',@desc_presupuesto_ej='".$txtDescripcion."'");
 
         return true;
     }
 
     function PresupuestoEjecucion($id)
     {
-        $presupuestoejecucion=$this->db->query("select * from Presupuesto_Ejecucion where id_presupuesto_eje='".$id."' ");
+        $presupuestoejecucion=$this->db->query("select * from ET_PRESUPUESTO_EJECUCION where id_presupuesto_ej='".$id."' ");
 
         return $presupuestoejecucion->result();
     }
 
-    function editar($id, $txtDescripcion)
+    function editar($flat,$id,$txtDescripcion)
     {
-        $presupuestoejecucion=$this->db->query("update Presupuesto_Ejecucion set  descripcion='".$txtDescripcion."' where id_presupuesto_eje='".$id."' ");
+        $presupuestoejecucion=$this->db->query("execute sp_Gestionar_ET_Presupuesto_Ejecucion  @Opcion='".$flat."',@id_presupuesto_ej='".$id."',@desc_presupuesto_ej='".$txtDescripcion."'");
 
+        return true;
+    }
+
+    function EtPresupuestoEjecucionPorDescripcion($descripcion)
+    {
+        $presupuestoejecucion=$this->db->query("select * from ET_PRESUPUESTO_EJECUCION where replace(desc_presupuesto_ej, ' ', '')=replace('".$descripcion."', ' ', '')");
+
+        return $presupuestoejecucion->result();
+    }
+    function EtPresupuestoEjecucionPorDescripcionDiffId($id, $descripcion)
+    {
+        $presupuestoejecucion=$this->db->query("select * from ET_PRESUPUESTO_EJECUCION where id_presupuesto_ej!='".$id."' and replace(desc_presupuesto_ej, ' ', '')=replace('".$descripcion."', ' ', '')");
+
+        return $presupuestoejecucion->result();
+    }
+    
+    function eliminar($flat,$id)
+    {
+         $presupuestoejecucion=$this->db->query("execute sp_Gestionar_ET_Presupuesto_Ejecucion  @Opcion='".$flat."',@id_presupuesto_ej='".$id."'");
         return true;
     }
 

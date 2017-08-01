@@ -45,10 +45,11 @@
 														<?php foreach($listaRecurso as $item ){ ?>
 														  	<tr>
 																<td>
-																	<?=$item->descripcion?>
+																	<?=$item->desc_recurso?>
 														    	</td>
 																<td>
-															  		<button type='button' class='editar btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Modificar Recurso',{ id: '<?=$item->id_recurso?>' }, base_url+'index.php/Recurso/editar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>
+															  		<button type='button' class='editar btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Modificar Recurso',{ id: '<?=$item->id_recurso?>' }, base_url+'index.php/Recurso/editar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-pencil bigger-120'></i></button>
+															  		<button type='button' class='eliminar btn btn-danger btn-xs'></i></button>
 																</td>
 														  </tr>
 														<?php } ?>
@@ -70,6 +71,18 @@
 	</div>
 </div>
 
+<?php
+$sessionTempCorrecto=$this->session->flashdata('correcto');
+$sessionTempError=$this->session->flashdata('error');
+
+if($sessionTempCorrecto){ ?>
+	<script>swal('','<?=$sessionTempCorrecto?>', "success");</script>
+<?php }
+
+if($sessionTempError){ ?>
+	<script>swal('','<?=$sessionTempError?>', "error");</script>
+<?php } ?>
+
 <script>
 	$(document).ready(function()
 	{
@@ -78,4 +91,8 @@
 			"language":idioma_espanol
 		});
 	});
+	function Eliminar(id)
+	{
+		alert(id);
+	}
 </script>

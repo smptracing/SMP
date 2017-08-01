@@ -8,9 +8,10 @@ class Tipo_Gasto_Analitico extends CI_Controller
 		parent::__construct();
         $this->load->model("Model_Tipo_Gasto_Analitico");  
 	}
- public function index()
+    public function index()
     {
-        $listaTipoGastoAnalitico=$this->Model_Tipo_Gasto_Analitico->TipoGastoAnaliticoListar();
+        $flat  = "R";
+        $listaTipoGastoAnalitico=$this->Model_Tipo_Gasto_Analitico->TipoGastoAnaliticoListar($flat);
         $this->load->view('layout/Ejecucion/header');
         $this->load->view('front/Ejecucion/TipoGastoAnalitico/index',['listaTipoGastoAnalitico'=>$listaTipoGastoAnalitico]);
         $this->load->view('layout/Ejecucion/footer');
@@ -19,11 +20,16 @@ class Tipo_Gasto_Analitico extends CI_Controller
     {
         if($_POST)
         {
+            $flat  = "C";
             $txtDescripcion=$this->input->post('txtDescripcion');
-            $this->Model_Tipo_Gasto_Analitico->insertar($txtDescripcion);            
-            $this->session->set_flashdata('correcto', 'Tipo gasto analitico registrado correctamente.');
 
-            return redirect('/Tipo_Gasto_Analitico');
+            if(count($this->Model_Tipo_Gasto_Analitico->EtTipoGastoPorDescripcion($txtDescripcion))>0)
+            {
+                echo json_encode(['proceso' => 'Error', 'mensaje' => 'Este tipo de gasto de ejecución ya fue registrado con anterioridad.']);exit; 
+            }
+            
+            $this->Model_Tipo_Gasto_Analitico->insertar($flat,$txtDescripcion);            
+            echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos registrados correctamente.']);exit;  
         }
 
         return $this->load->view('front/Ejecucion/TipoGastoAnalitico/insertar');
@@ -33,15 +39,17 @@ class Tipo_Gasto_Analitico extends CI_Controller
     {
         if($this->input->post('hdId'))
         {
+            $flat  = "U";
             $id=$this->input->post('hdId');
 
             $txtDescripcion=$this->input->post('txtDescripcion');
+            if(count($this->Model_Tipo_Gasto_Analitico->EtTipoGastoPorDescripcionDiffId($id, $txtDescripcion))>0)
+            {
+                echo json_encode(['proceso' => 'Error', 'mensaje' => 'Este presupuesto de ejecución ya fue registrado con anterioridad.']);exit;  
+            }
 
-            $this->Model_Tipo_Gasto_Analitico->editar($id, $txtDescripcion);
-            
-            $this->session->set_flashdata('correcto', 'Datos guardados correctamente.');
-
-            return redirect('/Tipo_Gasto_Analitico');
+            $this->Model_Tipo_Gasto_Analitico->editar($flat,$id,$txtDescripcion);
+            echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos actualizados correctamente.']);exit; 
         }
 
         $id=$this->input->get('id');

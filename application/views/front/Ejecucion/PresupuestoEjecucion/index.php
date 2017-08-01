@@ -45,10 +45,11 @@
 															<?php foreach($listaPresupuestoEjecucion as $item ){ ?>
 															  	<tr>
 																	<td>
-																		<?=$item->descripcion?>
+																		<?=$item->desc_presupuesto_ej?>
 															    	</td>
 																	<td>
-																  		<button type='button' class='editar btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Modificar Presupuesto', { id: '<?=$item->id_presupuesto_eje?>' }, base_url+'index.php/Presupuesto_Ejecucion/editar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>
+																  		<button type='button' class='editar btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Modificar Presupuesto', { id: '<?=$item->id_presupuesto_ej?>' }, base_url+'index.php/Presupuesto_Ejecucion/editar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-pencil bigger-120'></i></button>
+																  		<button type='button' class='eliminar btn btn-danger btn-xs' onclick="Eliminar(<?=$item->id_presupuesto_ej?>)"><i class='fa fa-trash-o'></i></button>
 																	</td>
 															  </tr>
 															<?php } ?>
@@ -78,4 +79,10 @@
 			"language":idioma_espanol
 		});
 	});
+
+	function Eliminar(id_presupuesto_ej)
+	{
+
+		alert(id_presupuesto_ej);
+	}
 </script>
