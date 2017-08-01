@@ -179,9 +179,22 @@ function mostrarMetaAnidada($meta)
 			return;
 		}
 
-		$(element).parent().remove();
+		paginaAjaxJSON({ "idComponente" : idComponente }, base_url+'index.php/ET_Componente/eliminar', 'POST', null, function(objectJSON)
+		{
+			objectJSON=JSON.parse(objectJSON);
 
-		limpiarArbolCompletoMasOpciones();
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+			},
+			function(){});
+
+			$(element).parent().remove();
+
+			limpiarArbolCompletoMasOpciones();
+		}, false, true);
 	}
 
 	function eliminarMeta(idMeta, element)

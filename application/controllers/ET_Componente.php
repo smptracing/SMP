@@ -64,4 +64,42 @@ class ET_Componente extends CI_Controller
 			$this->obtenerMetaAnidada($value);
 		}
 	}
+
+	public function eliminar()
+	{
+		if($_POST)
+		{
+			$idComponente=$this->input->post('idComponente');
+
+			$listaMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($idComponente);
+
+			foreach($listaMeta as $key => $value)
+			{
+				$this->eliminarMetaAnidada($value);
+			}
+
+			$this->Model_ET_Componente->eliminar($idComponente);
+
+			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Componente eliminado correctamente.']);exit;
+		}
+
+		$this->load->view('Front/Ejecucion/ETPartida/insertar');
+	}
+
+	private function eliminarMetaAnidada($meta)
+	{
+		$temp=$this->Model_ET_Meta->ETMetaPorIdMetaPadre($meta->id_meta);
+
+		foreach($temp as $key => $value)
+		{
+			$this->eliminarMetaAnidada($value);
+		}
+
+		if(count($temp)==0)
+		{
+			$this->Model_ET_Partida->eliminarPorIdMeta($meta->id_meta);
+		}
+
+		$this->Model_ET_Meta->eliminar($meta->id_meta);
+	}
 }
