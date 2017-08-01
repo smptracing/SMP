@@ -163,7 +163,51 @@ class Expediente_Tecnico extends CI_Controller
 		$pdf->Cell(80, 5,'				9.5  Teléfono', 1, 'C', 1,28);
 		$pdf->Cell(110, 5,'', 1, 'C', 1, 28);
 		$pdf->Ln();
+		$left_column = '10 Sustento para la presentación del proyecto '."\n".'     10.1   Decripción de la Presentación del proyecto'."\n".
+						'       Contenido ........sdsdsdsssdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdssdsdsdsssdsdsdsd dsdsdsdsdsdsdsdsdsdsdsds
+						sdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsds
+						sdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsds
+						sdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsds
+						sdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsds
+						sdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsds
+						sdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsds
+						sdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsds
+						sdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsds
+						sdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsds
+						sdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsds
+						sdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsds
+						sdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsds
+
+						.'."\n";
+		$pdf->MultiCell(190, 10, $left_column."\n", 1, 'J', 1, 0, '', '', true, 0, false, true, 0);
+		$pdf->Ln();
 		
+		$pdf->SetDisplayMode('fullpage', 'SinglePage', 'UseNone');
+		$pdf->SetFont('times', '', 10);
+		$pdf->AddPage('P', 'A4');
+		$left_column = '10 Sustento para la presentación del proyecto '."\n".'     10.1   Decripción de la Presentación del proyecto'."\n".'[LEFT COLUMN] left column left column left column lef column left cleft column lefleft column left column lef column left cleft column left column lef column left ct column lef column left column'."\n";
+		$pdf->MultiCell(190, 0, $left_column, 1, 'J', 1, 0, '', '', true, 0, false, true, 0);
+		$pdf->Ln();
+		$left_column = '10 Sustento para la presentación del proyecto '."\n".'     10.1   Decripción de la Presentación del proyecto'."\n".'[LEFT COLUMN] left column left column left column lef column left cleft column lefleft column left column lef column left cleft column left column lef column left ct column lef column left column'."\n";
+		$pdf->MultiCell(190, 0, $left_column, 1, 'J', 1, 0, '', '', true, 0, false, true, 0);
+
+		$pdf->Ln();
+		$left_column = '10 Sustento para la presentación del proyecto '."\n".'     10.1   Decripción de la Presentación del proyecto'."\n".'[LEFT COLUMN] left column left column left column lef column left cleft column lefleft column left column lef column left cleft column left column lef column left ct column lef column left column'."\n";
+		$pdf->MultiCell(190, 0, $left_column, 1, 'J', 1, 0, '', '', true, 0, false, true, 0);
+
+			$pdf->Ln();
+		$left_column = '14 Fotografias(04 mínimo) '."\n".'					Estado actual <img src="images/logo_example.png" border="0" height="41" width="41" align="top" />'."\n";
+		$pdf->MultiCell(190, 0, $left_column, 1, 'J', 1, 0, '', '', true, 0, false, true, 0);
+		
+
+
+
+
+
+
+
+$pdf->lastPage();
+
 	    $nombre_archivo = utf8_decode("Ficha Técnica del Proyecto".$prov.".pdf");
 	    $pdf->Output($nombre_archivo, 'I');
 	}
