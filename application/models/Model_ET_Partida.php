@@ -28,4 +28,11 @@ class Model_ET_Partida extends CI_Model
 
 		return $data->result();
 	}
+
+	function eliminar($idPartida)
+	{
+		$this->db->query("delete from ET_PARTIDA where id_partida=".$idPartida);
+
+		return true;
+	}
 }

@@ -4,7 +4,7 @@ function MostrarMetaAnidada($meta)
 	$htmlTemp='';
 
 	$htmlTemp.='<li>'.
-		$meta->desc_meta.' <input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(\'\', $(this).parent(), '.$meta->id_meta.')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="+P" onclick="renderizarAgregarPartida($(this).parent(), '.$meta->id_meta.')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarMeta(this);" style="width: 30px;">'.
+		$meta->desc_meta.' <input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(\'\', $(this).parent(), '.$meta->id_meta.')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="+P" onclick="renderizarAgregarPartida($(this).parent(), '.$meta->id_meta.')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarMeta('.$meta->id_meta.', this);" style="width: 30px;">'.
 		'<ul style="background-color: #f5f5f5;">';
 
 	if(count($meta->childMeta)==0)
@@ -12,7 +12,7 @@ function MostrarMetaAnidada($meta)
 		foreach($meta->childPartida as $key => $value)
 		{
 			$htmlTemp.='<li style="color: blue;" class="liPartida">'.
-				'<b>'.$value->desc_partida.'</b> | '.$value->rendimiento.' | '.$value->descripcion.' | '.$value->cantidad.' <input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida(this);" style="width: 30px;">'.
+				'<b>'.$value->desc_partida.'</b> | '.$value->rendimiento.' | '.$value->descripcion.' | '.$value->cantidad.' <input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida('.$value->id_partida.', this);" style="width: 30px;">'.
 			'</li>';
 		}
 	}
@@ -87,7 +87,7 @@ function MostrarMetaAnidada($meta)
 			<ul id="ulComponenteMetaPartida" style="background-color: #f5f5f5;">
 				<?php foreach($expedienteTecnico->childComponente as $key => $value){ ?>
 					<li>
-						<b><?=$value->descripcion?></b> <input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(<?=$value->id_componente?>, $(this).parent(), \'\');" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarComponente(this);" style="width: 30px;">
+						<b><?=$value->descripcion?></b> <input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(<?=$value->id_componente?>, $(this).parent(), '');" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarComponente(<?=$value->id_componente?>, this);" style="width: 30px;">
 						<ul style="background-color: #f5f5f5;">
 							<?php foreach($value->childMeta as $index => $item){ ?>
 								<?=MostrarMetaAnidada($item);?>
@@ -160,7 +160,7 @@ function MostrarMetaAnidada($meta)
 			function(){});
 
 			var htmlTemp='<li>'+
-				'<b>'+$('#txtDescripcionComponente').val().trim()+'</b> <input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta('+objectJSON.idComponente+', $(this).parent(), \'\');" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarComponente(this);" style="width: 30px;">'+
+				'<b>'+$('#txtDescripcionComponente').val().trim()+'</b> <input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta('+objectJSON.idComponente+', $(this).parent(), \'\');" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarComponente('+objectJSON.idComponente+', this);" style="width: 30px;">'+
 				'<ul style="background-color: #f5f5f5;"></ul>'
 			'</li>';
 
@@ -172,7 +172,7 @@ function MostrarMetaAnidada($meta)
 		}, false, true);
 	}
 
-	function eliminarComponente(element)
+	function eliminarComponente(idComponente, element)
 	{
 		if(!confirm('Al borrar componente se eliminará todas las metas, sub metas y partidas asociadas. ¿Realmente desea proseguir con la operaición?'))
 		{
@@ -184,7 +184,7 @@ function MostrarMetaAnidada($meta)
 		limpiarArbolCompletoMasOpciones();
 	}
 
-	function eliminarMeta(element)
+	function eliminarMeta(idMeta, element)
 	{
 		if(!confirm('Al borrar meta se eliminará todas las sub metas y partidas asociadas. ¿Realmente desea proseguir con la operaición?'))
 		{
@@ -244,7 +244,7 @@ function MostrarMetaAnidada($meta)
 			function(){});
 
 			var htmlTemp='<li>'+
-				descripcionMeta.trim()+' <input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(\'\', $(this).parent(), '+objectJSON.idMeta+')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="+P" onclick="renderizarAgregarPartida($(this).parent(), '+objectJSON.idMeta+')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarMeta(this);" style="width: 30px;">'+
+				descripcionMeta.trim()+' <input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(\'\', $(this).parent(), '+objectJSON.idMeta+')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="+P" onclick="renderizarAgregarPartida($(this).parent(), '+objectJSON.idMeta+')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarMeta('+objectJSON.idMeta+', this);" style="width: 30px;">'+
 				'<ul style="background-color: #f5f5f5;"></ul>'+
 			'</li>';
 
@@ -321,7 +321,7 @@ function MostrarMetaAnidada($meta)
 			function(){});
 
 			var htmlTemp='<li style="color: blue;" class="liPartida">'+
-				'<b>'+$('#txtDescripcionPartida').val().trim()+'</b> | '+$('#txtRendimientoPartida').val().trim()+' | '+objectJSON.descripcionUnidadMedida+' | '+parseFloat($('#txtCantidadPartida').val()).toFixed(2)+' <input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida(this);" style="width: 30px;">'+
+				'<b>'+$('#txtDescripcionPartida').val().trim()+'</b> | '+$('#txtRendimientoPartida').val().trim()+' | '+objectJSON.descripcionUnidadMedida+' | '+parseFloat($('#txtCantidadPartida').val()).toFixed(2)+' <input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida('+objectJSON.idPartida+', this);" style="width: 30px;">'+
 			'</li>';
 
 			$($(elementoPadreParaAgregarPartida).find('ul')[0]).append(htmlTemp);
@@ -330,16 +330,29 @@ function MostrarMetaAnidada($meta)
 		}, false, true);
 	}
 
-	function eliminarPartida(element)
+	function eliminarPartida(idPartida, element)
 	{
 		if(!confirm('Al borrar partida se eliminará todos los datos relacionados a dicha partida. ¿Realmente desea proseguir con la operaición?'))
 		{
 			return;
 		}
 
-		$(element).parent().remove();
+		paginaAjaxJSON({ "idPartida" : idPartida }, base_url+'index.php/ET_Partida/eliminar', 'POST', null, function(objectJSON)
+		{
+			objectJSON=JSON.parse(objectJSON);
 
-		limpiarArbolCompletoMasOpciones();
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+			},
+			function(){});
+
+			$(element).parent().remove();
+
+			limpiarArbolCompletoMasOpciones();
+		}, false, true);
 	}
 
 	$(function()

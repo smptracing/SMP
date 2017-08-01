@@ -28,4 +28,11 @@ class Model_ET_Componente extends CI_Model
 
 		return $data->result();
 	}
+
+	function eliminar($idComponente)
+	{
+		$this->db->query("delete from ET_COMPONENTE where id_componente=".$idComponente);
+
+		return true;
+	}
 }

@@ -35,4 +35,11 @@ class Model_ET_Meta extends CI_Model
 
 		return $data->result();
 	}
+
+	function eliminar($idMeta)
+	{
+		$this->db->query("delete from ET_META where id_meta=".$idMeta);
+
+		return true;
+	}
 }

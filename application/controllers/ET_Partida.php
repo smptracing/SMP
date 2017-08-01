@@ -31,4 +31,18 @@ class ET_Partida extends CI_Controller
 
 		$this->load->view('Front/Ejecucion/ETPartida/insertar');
 	}
+
+	public function eliminar()
+	{
+		if($_POST)
+		{
+			$idPartida=$this->input->post('idPartida');
+
+			$this->Model_ET_Partida->eliminar($idPartida);
+
+			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Partida eliminada correctamente.']);exit;
+		}
+
+		$this->load->view('Front/Ejecucion/ETPartida/insertar');
+	}
 }
