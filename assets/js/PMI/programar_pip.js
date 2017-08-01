@@ -284,7 +284,7 @@ $(document).on("ready" ,function(){
                       var data=table.row( $(this).parents("tr")).data();
                        var  id_pi=data.id_pi;
                        $("#txt_codigo_unico_pi").val(data.codigo_unico_pi);
-                      $("#txt_id_pip_programacion_").val(data.id_pi);
+                      $("#txt_id_pip_programacion").val(data.id_pi);
                       $("#txt_costo_proyecto").val(data.costo_pi);
                       $("#txt_nombre_proyecto").val(data.nombre_pi);
                         listar_aniocartera();

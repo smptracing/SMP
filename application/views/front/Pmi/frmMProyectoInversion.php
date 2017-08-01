@@ -47,7 +47,7 @@
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                </div>
-                                                                <div class="col-md-3">
+                                                              <div class="col-md-3">
                                                                      <div class="col-md-4">
                                                                         <a href="<?php echo site_url('CarteraInversion/'); ?>"><i class="fa fa-suitcase"></i>Cartera</a>
                                                                      </div>
@@ -55,7 +55,7 @@
                                                                           <select  id="cbCartera" class="form-control" name="cbCartera"></select>
                                                                           <input type="hidden" id="Aniocartera" value="<?=(isset($anio) ? $anio : date('Y'))?>">
                                                                     </div>
-                                                               </div>
+                                                              </div>
 
                                                                 <div class="col-md-2">
                                                                     <form action="<?php echo base_url('index.php/ReporteProgramacion/action'); ?>" method="POST" >
@@ -73,16 +73,19 @@
                                                         <table id="table-ProyectoInversionProgramado" class="table table-striped table-bordered table-hover table-responsive display  compact " ellspacing="0" width="100%">
                                                               <thead>
                                                                 <tr>
-
                                                                   <th class="col-sm-1">Id</th>
                                                                   <th class="col-sm-1"><center>Código Único</center></th>
                                                                   <th class="col-sm-1"><center>Ciclo de Inversión</center></th>
                                                                   <th class="col-sm-1"><center>Inversión</center></th>
                                                                   <th class="col-sm-1"><center>Prioridad</center></th>
                                                                   <th class="col-sm-1"><center>Brecha</center></th>
-                                                                  <th class="col-sm-1"><center><div class="programacion1">
-                                                                  <?php if (isset($anio) && $anio == "") {?>
-                                                                             <h6><label id="AnioProgramadoActual"></label></h6></center></div></th>
+                                                                  <th class="col-sm-1"><center>
+                                                                      <div class="programacion1">
+                                                                            <?php if (isset($anio) && $anio == "") {?>
+                                                                            <h6><label id="AnioProgramadoActual"></label></h6>
+                                                                            </center>
+                                                                      </div>
+                                                                  </th>
                                                                   <?php } else {?>
                                                                   <?php echo (isset($anio) ? $anio + 1 : date('Y') + 1); ?></center></div></th>
                                                                   <?php }?>

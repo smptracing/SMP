@@ -7,29 +7,42 @@ class ET_Partida extends CI_Controller
 	{
 		parent::__construct();
 		
-		$this->load->model('Model_ET_Etapa');
+		$this->load->model('Model_ET_Partida');
+		$this->load->model('Model_Unidad_Medida');
 	}
 
 	public function insertar()
 	{
 		if($_POST)
 		{
-			$txtDescripcionEtapa=$this->input->post('txtDescripcionEtapa');
-			
-			$this->Model_ET_Etapa->insertar($txtDescripcionEtapa);
+			$idMeta=$this->input->post('idMeta');
+			$idUnidad=$this->input->post('idUnidad');
+			$descripcionPartida=$this->input->post('descripcionPartida');
+			$rendimientoPartida=$this->input->post('rendimientoPartida');
+			$cantidadPartida=$this->input->post('cantidadPartida');
 
-			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Dastos registrados correctamente.', 'txtDescripcionEtapa' => $txtDescripcionEtapa]);exit;
+			$this->Model_ET_Partida->insertar($idMeta, $idUnidad, $descripcionPartida, $rendimientoPartida, $cantidadPartida);
+			$unidadMedida=$this->Model_Unidad_Medida->UnidadMedida($idUnidad)[0];
+
+			$ultimoIdPartida=$this->Model_ET_Partida->ultimoId();
+
+			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Partida registrada correctamente.', 'idPartida' => $ultimoIdPartida, 'descripcionUnidadMedida' => $unidadMedida->descripcion]);exit;
 		}
 
-		$this->load->view('Front/Ejecucion/ETPartida/insertar');	
+		$this->load->view('Front/Ejecucion/ETPartida/insertar');
 	}
 
-	public function editar()
+	public function eliminar()
 	{
-		/*if($this->input->post('hdIdPresupuestoFE'))
-		{	
-			
+		if($_POST)
+		{
+			$idPartida=$this->input->post('idPartida');
+
+			$this->Model_ET_Partida->eliminar($idPartida);
+
+			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Partida eliminada correctamente.']);exit;
 		}
-	    $this->load->view('Front/Ejecucion/ETEtapa/editar', ['fePresupuestoInv' => $fePresupuestoInv, 'listarSector' => $listarSector, 'listarFuenteFinanciamiento' => $listarFuenteFinanciamiento, 'listaFEPresupuestoFuente' => $listaFEPresupuestoFuente]);*/
+
+		$this->load->view('Front/Ejecucion/ETPartida/insertar');
 	}
 }

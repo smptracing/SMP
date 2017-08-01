@@ -8,12 +8,6 @@ class Model_ET_Componente extends CI_Model
 		parent::__construct();
 	}
 
-	function ETEtapa_Listar()
-	{
-		//$ETEtapa_Listar=$this->db->query("execute sp_UnidadMedida_Listar");
-	    //return $ETEtapa_Listar->result();
-	}
-
 	function insertar($idET, $descripcion)
 	{
 		$this->db->query("execute sp_Gestionar_ETComponente 'insertar', '".$idET."', '".$descripcion."'");
@@ -28,9 +22,17 @@ class Model_ET_Componente extends CI_Model
 		return $data->result()[0]->idComponente;
 	}
 
-	function editar($id, $txtDescripcion)
+	public function ETComponentePorIdET($idExpedienteTecnico)
 	{
-		/*$unidadMedida=$this->db->query("update UNIDAD_MEDIDA  set  descripcion='".$txtDescripcion."' where id_unidad='".$id."' ");
-		return true;*/
+		$data=$this->db->query("select * from ET_COMPONENTE where id_et='".$idExpedienteTecnico."'");
+
+		return $data->result();
+	}
+
+	function eliminar($idComponente)
+	{
+		$this->db->query("delete from ET_COMPONENTE where id_componente=".$idComponente);
+
+		return true;
 	}
 }

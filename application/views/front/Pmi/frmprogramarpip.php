@@ -174,8 +174,11 @@
                     <div class="col-xs-12">
                                         <!-- PAGE CONTENT BEGINS -->
               <form class="form-horizontal " id="form_AddProgramacion"   action="<?php echo base_url(); ?>bancoproyectos/Get_OperacionMantenimiento" method="POST" >
-
-                        <input id="txt_id_pip_programacion" name="txt_id_pip_programacion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
+                             <div class="item form-group">
+                              <div class="col-md-6 col-sm-6 col-xs-12">
+                                 <input id="txt_id_pip_programacion" name="txt_id_pip_programacion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
+                              </div>
+                            </div>
                              <div class="item form-group">
                                <div class="col-md-2 col-sm-6 col-xs-12">
                                <label>Cartera</label>
@@ -296,8 +299,11 @@
                     <div class="col-xs-12">
                                         <!-- PAGE CONTENT BEGINS -->
               <form class="form-horizontal " id="form_AddMeta_Pi"   action="<?php echo base_url(); ?>bancoproyectos/Get_OperacionMantenimiento" method="POST" >
-
-                        <input id="txt_id_pip_programacion_mp" name="txt_id_pip_programacion_mp" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
+                          <div class="item form-group">
+                              <div class="col-md-6 col-sm-6 col-xs-12">
+                                 <input id="txt_id_pip_programacion_mp" name="txt_id_pip_programacion_mp" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
+                              </div>
+                            </div>
                               <div class="item form-group">
                                <div class="col-md-2 col-sm-6 col-xs-12">
                                       <label>Año</label>
@@ -396,8 +402,12 @@
                     <div class="col-xs-12">
                                         <!-- PAGE CONTENT BEGINS -->
               <form class="form-horizontal " id="form_AddProgramacion_operacion_mantenieminto"   action="<?php echo base_url(); ?>bancoproyectos/Get_OperacionMantenimiento" method="POST" >
+                         <div class="item form-group">
+                              <div class="col-md-6 col-sm-6 col-xs-12">
+                                 <input id="txt_id_pip_programacion_" name="txt_id_pip_programacion_" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
+                              </div>
+                            </div>
 
-                        <input id="txt_id_pip_programacion_" name="txt_id_pip_programacion_" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="text">
                              <div class="item form-group">
                                <div class="col-md-2 col-sm-6 col-xs-12">
                                <label>Cartera</label>
