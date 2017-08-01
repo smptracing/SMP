@@ -30,9 +30,9 @@ class bancoproyectos extends CI_Controller
             $txt_beneficiarios   = $this->input->post("txt_beneficiarios");
             $dateFechaInPip      = "2017-03-01";
             $dateFechaViabilidad = "2017-03-01";
-            $cbxEstadoCicloInv   = $this->input->post("cbxEstCicInv");
+            $cbxEstCicInv_       = $this->input->post("cbxEstCicInv_");
             if ($this->bancoproyectos_modal->AddProyectos(
-                $flat, $id_pi, $cbxUnidadEjecutora, $cbxNatI, $cbxTipologiaInv, $cbxTipoInv, $cbxGrupoFunc, $cbxNivelGob, $cbxProgramaPres, $txtCodigoUnico, $txtNombrePip, $txtCostoPip, $txt_beneficiarios, $dateFechaInPip, $dateFechaViabilidad, $cbxEstadoCicloInv) == false) {
+                $flat, $id_pi, $cbxUnidadEjecutora, $cbxNatI, $cbxTipologiaInv, $cbxTipoInv, $cbxGrupoFunc, $cbxNivelGob, $cbxProgramaPres, $txtCodigoUnico, $txtNombrePip, $txtCostoPip, $txt_beneficiarios, $dateFechaInPip, $dateFechaViabilidad, $cbxEstCicInv_) == false) {
                 echo "1";
             } else {
                 echo "2";

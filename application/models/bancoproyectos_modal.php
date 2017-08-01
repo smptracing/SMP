@@ -68,7 +68,7 @@ class bancoproyectos_modal extends CI_Model
     }
 
     //AGREGAR UN PROYECTO
-    public function AddProyectos($flat, $id_pi, $cbxUnidadEjecutora, $cbxNatI, $cbxTipologiaInv, $cbxTipoInv, $cbxGrupoFunc, $cbxNivelGob, $cbxProgramaPres, $txtCodigoUnico, $txtNombrePip, $txtCostoPip, $txt_beneficiarios, $dateFechaInPip, $dateFechaViabilidad, $cbxEstadoCicloInv)
+    public function AddProyectos($flat, $id_pi, $cbxUnidadEjecutora, $cbxNatI, $cbxTipologiaInv, $cbxTipoInv, $cbxGrupoFunc, $cbxNivelGob, $cbxProgramaPres, $txtCodigoUnico, $txtNombrePip, $txtCostoPip, $txt_beneficiarios, $dateFechaInPip, $dateFechaViabilidad, $cbxEstCicInv_)
     {
         $this->db->query("execute sp_Gestionar_ProyectoInversion'" . $flat . "','"
             . $id_pi . "','"
@@ -85,7 +85,7 @@ class bancoproyectos_modal extends CI_Model
             . $txt_beneficiarios . "','"
             . $dateFechaInPip . "','"
             . $dateFechaViabilidad . "','"
-            . $cbxEstadoCicloInv . "'");
+            . $cbxEstCicInv_ . "'");
         if ($this->db->affected_rows() > 0) {
             return true;
         } else {

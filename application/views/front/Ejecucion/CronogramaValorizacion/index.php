@@ -35,11 +35,23 @@
 													<table id="table-CronogramaValorizacion"  class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
 														<thead>
 															<tr>
-																<td>Denominación</td>
+																<td>Descripción</td>
 																<td class="col-md-1 col-md-1 col-xs-12"></td>
 															</tr>
 														</thead>
 														<tbody>
+														<?php foreach($CronogramaValorizaciones as $item ){ ?>
+															<tr>
+																<td>
+																<?=$item->desc_cronograma?>
+																</td>
+																<td>
+																	<button title='Edición de presupuesto para formulación y evaluación' class='btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Edición de presupuesto para formulación y evaluación', { id_valorizacion : '<?=$item->id_valorizacion?>' }, base_url+'index.php/CronogramaValorizacion/editar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-pencil bigger-120'></i></button>
+																	<button title='Edición de presupuesto para formulación y evaluación' class='btn btn-danger btn-xs' onclick="paginaAjaxDialogo(null, 'Edición de presupuesto para formulación y evaluación', { id_valorizacion : '<?=$item->id_valorizacion?>' }, base_url+'index.php/CronogramaValorizacion/editar', 'GET', null, null, false, true);"><i class="fa fa-trash-o"></i></button>
+		
+																</td>
+															</tr>
+														<?php } ?>
 														</tbody>
 													</table>
 												</div>

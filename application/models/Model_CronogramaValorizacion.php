@@ -8,22 +8,41 @@ class Model_CronogramaValorizacion extends CI_Model
 		parent::__construct();
 	}
 
-	function CronogramaValorizacion_Listar()
+	function CronogramaValorizacion_Listar($opcion)
 	{
-		//$ETEtapa_Listar=$this->db->query("execute sp_UnidadMedida_Listar");
-	    //return $ETEtapa_Listar->result();
+		$CronogramaValorizacion_Listar=$this->db->query("execute sp_Gestionar_ET_Cronogram_Valoracion @Opcion='".$opcion."' ");
+	    return $CronogramaValorizacion_Listar->result();
 	}
 
-	function insertar($txtCronogramaValorizacion)
+	function insertar($opcion,$txtCronogramaValorizacion)
 	{
-		//$ETEtapa=$this->db->query("execute sp_UnidadMedida_Insertar '".$txtDescripcion."'");
-		return true;
+		$CronogramaValorizacion=$this->db->query("execute sp_Gestionar_ET_Cronogram_Valoracion @Opcion='".$opcion."',@desc_cronograma='".$txtCronogramaValorizacion."'");
+		return true; 
 	} 
-
-	function editar($id, $txtDescripcion)
+	function NombreCronogranmaValoracion($id_valorizacion)
 	{
-		/*$unidadMedida=$this->db->query("update UNIDAD_MEDIDA  set  descripcion='".$txtDescripcion."' where id_unidad='".$id."' ");
-		return true;*/
+		$CronogramaValorizacion_N=$this->db->query("Select id_valorizacion,desc_cronograma from ET_CRONOGRAMA_VALORIZACION where  id_valorizacion='".$id_valorizacion."' ");
+	    return $CronogramaValorizacion_N->result()[0];
+	}
+
+	function editar($opcion,$hdIdCronogramaValorizacion,$txtCronogramaValorizacion)
+	{
+		$CronogramaValorizacion=$this->db->query("execute sp_Gestionar_ET_Cronogram_Valoracion @Opcion='".$opcion."',@id_valorizacion='".$hdIdCronogramaValorizacion."',@desc_cronograma='".$txtCronogramaValorizacion."' ");
+	    return $CronogramaValorizacion->result();
+	}
+
+	function ValidarCronogramaValorizacion($txtCronogramaValorizacion)
+	{
+		$CronogramaValorizacion=$this->db->query("select * from ET_CRONOGRAMA_VALORIZACION where replace(desc_cronograma, ' ', '')=replace('".$txtCronogramaValorizacion."', ' ', '')");
+		
+		return $CronogramaValorizacion->result();
+	}
+
+	function ValidarDescripcionEtapaEditar($hdIdCronogramaValorizacion,$txtCronogramaValorizacion)
+	{
+		$CronogramaValorizacion=$this->db->query("select * from ET_CRONOGRAMA_VALORIZACION where id_valorizacion!='".$hdIdCronogramaValorizacion."' and replace(desc_cronograma, ' ', '')=replace('".$txtCronogramaValorizacion."', ' ', '')");
+
+		return $CronogramaValorizacion->result();
 	}
 
 }

@@ -23,14 +23,14 @@ class programar_nopip extends CI_Controller
     public function AddProgramacion()
     {
         if ($this->input->is_ajax_request()) {
-            $flat                    = "programar_formulacion_evaluacion_pip";
+            $flat                    = "programar_no_pip";
             $id_programacion         = "0";
             $Cbx_AnioCartera         = $this->input->post("Cbx_AnioCartera");
             $cbxBrecha               = $this->input->post("cbxBrecha");
             $txt_id_pip_programacion = $this->input->post("txt_id_pip_programacion");
             $txt_anio1               = $this->input->post("txt_anio1");
-            $txt_anio2               = $this->input->post("txt_anio2");
-            $txt_anio3               = $this->input->post("txt_anio3");
+            $txt_anio2               = "0.00";
+            $txt_anio3               = "0.00";
             $txt_prioridad           = $this->input->post("txt_prioridad");
             if ($this->programar_nopip_modal->AddProgramacion($flat, $id_programacion, $Cbx_AnioCartera, $cbxBrecha, $txt_id_pip_programacion, $txt_anio1, $txt_anio2, $txt_anio3, $txt_prioridad) == false) {
                 echo "1";

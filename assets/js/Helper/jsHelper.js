@@ -1,25 +1,3 @@
-function limpiarText(idContenedor, arrayIdExcepciones)
-{
-    var sizeArrayIdExcepciones=arrayIdExcepciones==null?0:arrayIdExcepciones.length;
-    $("#"+idContenedor).find("input[type='text']").each(function(index, elemento)
-    {
-        var borrarContenido=true;
-        for(var i=0; i<sizeArrayIdExcepciones; i++)
-        {
-            if(arrayIdExcepciones[i]==$(elemento).attr("id"))
-            {
-                borrarContenido=false;
-                break;
-            }
-        }
-
-        if(borrarContenido)
-        {
-            $(elemento).val("");
-        }
-    });
-}
-
 function renderLoading()
 {
     if(!($('#divModalCargaAjax').length))
@@ -163,12 +141,4 @@ function paginaAjaxDialogo(idModal, titulo, data, url, method, preFunction, post
     });
 }
 
-function replaceAll(texto, ocurrencia, nuevoTexto)
-{
-    while(texto.toString().indexOf(ocurrencia)!=-1)
-    {
-        texto=texto.toString().replace(ocurrencia, nuevoTexto);
-    }
-
-    return texto;
-}
+function replaceAll(a,b,c){for(;-1!=a.toString().indexOf(b);)a=a.toString().replace(b,c);return a}function limpiarText(a,b){var c=null==b?0:b.length;$("#"+a).find("input[type='text']").each(function(a,e){for(var f=!0,d=0;d<c;d++)if(b[d]==$(e).attr("id")){f=!1;break}f&&$(e).val("")})};

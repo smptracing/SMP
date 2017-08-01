@@ -1,5 +1,5 @@
 $(document).on("ready" ,function(){
-     lista_formulacion_evaluacion();/*llamar a mi datatablet listar proyectosinverision*/
+     lista_programados_formulacion_evaluacion();/*llamar a mi datatablet listar proyectosinverision*/
      lista_ejecucion();
      lista_funcionamiento();
 //agregar progrmacion para operacion y mantenimiento     
@@ -81,14 +81,14 @@ $(document).on("ready" ,function(){
 
 });
 //listar proyectos de inversion en formulacion y evaluacion
- var lista_formulacion_evaluacion=function()
+ var lista_programados_formulacion_evaluacion=function()
 {
        var table=$("#table_formulacion_evaluacion").DataTable({
                      "processing": true,
                       "serverSide":false,
                      destroy:true,
                          "ajax":{
-                                    "url":base_url+"index.php/programar_pip/GetProyectosFormulacionEvaluacion",
+                                    "url":base_url+"index.php/PipProgramados/GetPipProgramadosFormulacionEvaluacion",
                                     "method":"POST",
                                     "dataSrc":""                                    
                                   },
@@ -97,22 +97,9 @@ $(document).on("ready" ,function(){
                                     {"data":"codigo_unico_pi"},
                                     {"data":"nombre_pi"},
                                     {"data":"costo_pi"},
-                                    {"data":"nombre_estado_ciclo"},
-                                    {"data": function (data, type, dataToSet) {
-
-                                      if (data.estado_programado !='0') //estap programado
-                                      {
-                                       // return '<a  href="#"><button type="button" class="btn btn btn-success btn-xs">Programado</button></a>';
-                                       return '<h5><span class="label label-success"> Programado</span></h5>';
-                                      }
-                                      if (data.estado_programado =='0') //no esta progrmado
-                                      {
-                                        //return '<a  href="#"><button type="button" class="btn btn btn-danger btn-xs">No Programado</button></a>';
-                                        return '<h5><span class="label label-danger">No Programado</span></h5>';
-                                      }
-                                   }},
-                                    {"defaultContent":"<center><button type='button' title='Programar' class='programar_pip btn btn-warning btn-xs' data-toggle='modal' data-target='#Ventana_Programar'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button><button type='button' title='Meta Presupuestal PIP' class='meta_pip btn btn-success btn-xs' data-toggle='modal' data-target='#Ventana_Meta_Presupuestal_PI'><i class='fa fa-usd' aria-hidden='true'></i></button></center>"}
-                                ],
+                                    {"data":"nombre_estado_ciclo"}
+                                    
+                                   ],
                                "language":idioma_espanol
                     });
         AddProgramacion("#table_formulacion_evaluacion",table);
@@ -284,7 +271,7 @@ $(document).on("ready" ,function(){
                       var data=table.row( $(this).parents("tr")).data();
                        var  id_pi=data.id_pi;
                        $("#txt_codigo_unico_pi").val(data.codigo_unico_pi);
-                      $("#txt_id_pip_programacion").val(data.id_pi);
+                      $("#txt_id_pip_programacion_").val(data.id_pi);
                       $("#txt_costo_proyecto").val(data.costo_pi);
                       $("#txt_nombre_proyecto").val(data.nombre_pi);
                         listar_aniocartera();

@@ -47,7 +47,7 @@ class programar_pip_modal extends CI_Model
             return false;
         }
     }
-    //Add ubigeo a un proyecto
+    //Add programacion
     public function AddProgramacion($flat, $id_programacion, $Cbx_AnioCartera, $cbxBrecha, $txt_id_pip_programacion, $txt_anio1, $txt_anio2, $txt_anio3, $txt_prioridad)
     {
         $this->db->query("execute sp_Gestionar_Programacion_pip'" . $flat . "','"
@@ -59,6 +59,25 @@ class programar_pip_modal extends CI_Model
             . $txt_anio2 . "','"
             . $txt_anio3 . "','"
             . $txt_prioridad . "'");
+
+        if ($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    //Add programacion
+    public function AddProgramacion_operacion_mantenimiento($flat, $id_programacion_, $Cbx_AnioCartera_, $cbxBrecha_, $txt_id_pip_programacion_, $txt_anio1_, $txt_anio2_, $txt_anio3_, $txt_prioridad_)
+    {
+        $this->db->query("execute sp_Gestionar_Programacion_pip'" . $flat . "','"
+            . $id_programacion_ . "','"
+            . $Cbx_AnioCartera_ . "','"
+            . $cbxBrecha_ . "','"
+            . $txt_id_pip_programacion_ . "','"
+            . $txt_anio1_ . "','"
+            . $txt_anio2_ . "','"
+            . $txt_anio3_ . "','"
+            . $txt_prioridad_ . "'");
 
         if ($this->db->affected_rows() > 0) {
             return true;
@@ -92,6 +111,18 @@ class programar_pip_modal extends CI_Model
             @id_pi='" . $id_pi . "'");
         if ($listar_programacion->num_rows() > 0) {
             return $listar_programacion->result();
+        } else {
+            return false;
+        }
+    }
+    //listar programacion para operacion y mantenimiento
+    public function listar_programacion_operacion_mantenimiento($flat, $id_pi)
+    {
+        $listar_programacion_operacion_mantenimiento = $this->db->query("execute sp_Gestionar_Programacion_pip @opcion='"
+            . $flat . "',
+            @id_pi='" . $id_pi . "'");
+        if ($listar_programacion_operacion_mantenimiento->num_rows() > 0) {
+            return $listar_programacion_operacion_mantenimiento->result();
         } else {
             return false;
         }
