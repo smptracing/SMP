@@ -12,7 +12,7 @@ function MostrarMetaAnidada($meta)
 		foreach($meta->childPartida as $key => $value)
 		{
 			$htmlTemp.='<li style="color: blue;" class="liPartida">'.
-				'<b>'.$value->desc_partida.'</b> | '.$value->rendimiento.' | '.$value->id_unidad.' | '.$value->cantidad.' <input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida(this);" style="width: 30px;">'.
+				'<b>'.$value->desc_partida.'</b> | '.$value->rendimiento.' | '.$value->descripcion.' | '.$value->cantidad.' <input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida(this);" style="width: 30px;">'.
 			'</li>';
 		}
 	}
@@ -321,7 +321,7 @@ function MostrarMetaAnidada($meta)
 			function(){});
 
 			var htmlTemp='<li style="color: blue;" class="liPartida">'+
-				'<b>'+$('#txtDescripcionPartida').val().trim()+'</b> | '+$('#txtRendimientoPartida').val().trim()+' | '+objectJSON.descripcionUnidadMedida+' | '+$('#txtCantidadPartida').val()+' <input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida(this);" style="width: 30px;">'+
+				'<b>'+$('#txtDescripcionPartida').val().trim()+'</b> | '+$('#txtRendimientoPartida').val().trim()+' | '+objectJSON.descripcionUnidadMedida+' | '+parseFloat($('#txtCantidadPartida').val()).toFixed(2)+' <input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida(this);" style="width: 30px;">'+
 			'</li>';
 
 			$($(elementoPadreParaAgregarPartida).find('ul')[0]).append(htmlTemp);
