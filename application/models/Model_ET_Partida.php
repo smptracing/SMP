@@ -21,4 +21,11 @@ class Model_ET_Partida extends CI_Model
 
 		return $data->result()[0]->idPartida;
 	}
+
+	public function ETPartidaPorIdMeta($idMeta)
+	{
+		$data=$this->db->query("select * from ET_PARTIDA where id_meta='".$idMeta."'");
+
+		return $data->result();
+	}
 }

@@ -1,3 +1,33 @@
+<?php
+function MostrarMetaAnidada($meta)
+{
+	$htmlTemp='';
+
+	$htmlTemp.='<li>'.
+		$meta->desc_meta.' <input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(\'\', $(this).parent(), '.$meta->id_meta.')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="+P" onclick="renderizarAgregarPartida($(this).parent(), '.$meta->id_meta.')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarMeta(this);" style="width: 30px;">'.
+		'<ul style="background-color: #f5f5f5;">';
+
+	if(count($meta->childMeta)==0)
+	{
+		foreach($meta->childPartida as $key => $value)
+		{
+			$htmlTemp.='<li style="color: blue;" class="liPartida">'.
+				'<b>'.$value->desc_partida.'</b> | '.$value->rendimiento.' | '.$value->id_unidad.' | '.$value->cantidad.' <input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida(this);" style="width: 30px;">'.
+			'</li>';
+		}
+	}
+
+	foreach($meta->childMeta as $key => $value)
+	{
+		$htmlTemp.=MostrarMetaAnidada($value);
+	}
+
+	$htmlTemp.='</ul>'.
+	'</li>';
+
+	return $htmlTemp;
+}
+?>
 <div class="form-horizontal">
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
@@ -55,7 +85,16 @@
 	<div class="row" style="height: 300px;overflow-y: scroll;">
 		<div class="col-md-12 col-sm-12 col-xs-12" style="font-size: 12px;">
 			<ul id="ulComponenteMetaPartida" style="background-color: #f5f5f5;">
-				
+				<?php foreach($expedienteTecnico->childComponente as $key => $value){ ?>
+					<li>
+						<b><?=$value->descripcion?></b> <input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(<?=$value->id_componente?>, $(this).parent(), \'\');" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarComponente(this);" style="width: 30px;">
+						<ul style="background-color: #f5f5f5;">
+							<?php foreach($value->childMeta as $index => $item){ ?>
+								<?=MostrarMetaAnidada($item);?>
+							<?php } ?>
+						</ul>
+					</li>
+				<?php } ?>
 			</ul>
 		</div>
 	</div>
@@ -305,6 +344,8 @@
 
 	$(function()
 	{
+		limpiarArbolCompletoMasOpciones();
+
 		$('#divAgregarComponente').formValidation(
 		{
 			framework: 'bootstrap',

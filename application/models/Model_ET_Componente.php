@@ -21,4 +21,11 @@ class Model_ET_Componente extends CI_Model
 
 		return $data->result()[0]->idComponente;
 	}
+
+	public function ETComponentePorIdET($idExpedienteTecnico)
+	{
+		$data=$this->db->query("select * from ET_COMPONENTE where id_et='".$idExpedienteTecnico."'");
+
+		return $data->result();
+	}
 }
