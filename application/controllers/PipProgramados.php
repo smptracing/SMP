@@ -9,7 +9,17 @@ class PipProgramados extends CI_Controller
         $this->load->model('PipProgramados_Model');
     }
     //PIP
-    //Listar programación en modal operacion y mantenimiento
+    //Listar proyectos programadsos en formulacion y evaluación
+    public function GetPipProgramadosFormulacionEvaluacion()
+    {
+        if ($this->input->is_ajax_request()) {
+            $flat  = "listarpip_formulacion_evaluacion";
+            $datos = $this->PipProgramados_Model->GetPipProgramadosFormulacionEvaluacion($flat);
+            echo json_encode($datos);
+        } else {
+            show_404();
+        }
+    }
 
     public function index()
     {
