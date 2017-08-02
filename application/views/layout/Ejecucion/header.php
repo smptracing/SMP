@@ -6,6 +6,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>SMP-APURIMAC</title>
+		<script src="<?php echo base_url(); ?>assets/ckeditor/ckeditor.js"></script>
+
 	<link href="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/vendors/nprogress/nprogress.css" rel="stylesheet">
@@ -23,6 +25,7 @@
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/formValidation.min.css">
 	<script src="<?php echo base_url(); ?>assets/js/Helper/jsHelper.js"></script>
 	<script src="<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
+
 	<script>
 		var base_url = '<?php echo base_url(); ?>';
 	</script>

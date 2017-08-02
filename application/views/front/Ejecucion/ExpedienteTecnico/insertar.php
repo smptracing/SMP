@@ -299,45 +299,12 @@
 							</div>
 						</div>
 
-					</div>
+					</div></br>
 					<div class="row">
-						<div class="col-md-8 col-sm-3 col-xs-12">
-							<label class="control-label">Sustento para la presentacon del proyecto</label><br>
-							<label class="control-label">Descripción de la situación Actual</label>
-							<div>
-							<textarea class="ckeditor" name="editor" id="editor" width="100%"></textarea>
-							</div>
-							<label class="control-label">Descripción de la situación Deseada</label>
-							<div>
-							<textarea class="ckeditor" name="editor" id="editor"></textarea>
-							</div>
-							<label class="control-label">Contribución del proyecto al desarrollo de la localidad o zona de intervencion</label>
-							<div>
-							<textarea class="ckeditor" name="editor" id="editor"></textarea>
-							</div>
-							<label class="control-label">Otra Información</label>
-							<div>
-							<textarea class="ckeditor" name="editor" id="editor"></textarea>
-							</div>
-						</div>	
+						<p><textarea name="editor1" id="editor1" rows="10" cols="80"></textarea></p>	
 					</div>
-					<div class="row">
-						<div class="col-md-8 col-sm-3 col-xs-12">
-							<label class="control-label">Relevancia económica</label>
-							<div>
-							<textarea class="ckeditor" name="editor" id="editor"></textarea>
-							</div>
-						</div>	
-					</div>
-					<div class="row">
-						<div class="col-md-8 col-sm-3 col-xs-12">
-							<label class="control-label">Resumen del proyecto (descripcion general)</label>
-							<div>
-							<textarea class="ckeditor" name="editor" id="editor"></textarea>
-							</div>
-						</div>	
-					</div>
-					
+									
+
 
 				</div>
 
@@ -352,6 +319,12 @@
 			<button  class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 		</div>
 </form>
+
+ <script>
+ CKEDITOR.replace('editor1' ,{
+		filebrowserImageBrowseUrl : '<?php echo base_url('assets/filemanager/index.html');?>'
+	});
+</script>
 
 
 
