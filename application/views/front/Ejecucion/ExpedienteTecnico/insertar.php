@@ -12,43 +12,43 @@
 			<div class="x_panel">
 
 				<div class="x_content">
+					
+
 					<div class="row">
 						<div class="col-md-12 col-sm-3 col-xs-12">
 							<label class="control-label">Nombre de la Unidad Ejecutora</label>
 							<div>
-								<input id="txtUnidadEjecutora" name="txtUnidadEjecutora" value ="<?= $Listarproyectobuscado->nombre_ue?>" class="form-control col-md-4 col-xs-12"  placeholder="Dirección" required="required" autocomplete="off" >
-							</div>
+								<input id="txtNombrePip" name="txtNombrePip" value="<?= $Listarproyectobuscado->nombre_ue?>" class="form-control col-md-4 col-xs-12"  placeholder="Nombre del proyecto" required="required" autocomplete="off" >	
+							</div>	
 						</div>
-					</div
+					</div>
 					<div class="row">
-						<div class="col-md-4 col-sm-3 col-xs-12">
-							<label class="control-label">Dirección</label>
+						<div class="col-md-3 col-sm-3 col-xs-12">
+							<label class="control-label">Direccion</label>
 							<div>
-								<input id="txtDireccionUE" name="txtDireccionUE" class="form-control"  placeholder="Dirección" required="required" autocomplete="off" >
-							</div>
+								<input id="txtNombrePip" name="txtNombrePip" value="" class="form-control col-md-4 col-xs-12"  placeholder="Nombre del proyecto" required="required" autocomplete="off" >	
+							</div>	
 						</div>
-						<div class="col-md-4 col-sm-3 col-xs-12">
-							<label class="control-label">Distrito/Provincia/Distrito</label>
+						<div class="col-md-3 col-sm-3 col-xs-12">
+							<label class="control-label">Distrito/Provincia/Departamento</label>
 							<div>
-								<input id="txtRendimiento" name="txtRendimiento" class="form-control col-md-4 col-xs-12"  placeholder="Dirección" required="required" autocomplete="off" >
-							</div>
+								<input id="txtNombrePip" name="txtNombrePip" value="" class="form-control col-md-4 col-xs-12"  placeholder="Nombre del proyecto" required="required" autocomplete="off" >	
+							</div>	
 						</div>
-						<div class="col-md-2 col-sm-3 col-xs-12">
+						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Teléfono</label>
 							<div>
-								<input id="txtCantidad" name="txtCantidad" class="form-control col-md-4 col-xs-12"  placeholder="" required="required" autocomplete="off" >
-							</div>
+								<input id="txtNombrePip" name="txtNombrePip" value="" class="form-control col-md-4 col-xs-12"  placeholder="Nombre del proyecto" required="required" autocomplete="off" >	
+							</div>	
 						</div>
-						<div class="col-md-2 col-sm-3 col-xs-12">
+						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">RUC</label>
 							<div>
-								<input id="txtPrecio" name="txtPrecio" class="form-control col-md-4 col-xs-12"  placeholder="" required="required" autocomplete="off" >
-							</div>
+								<input id="txtNombrePip" name="txtNombrePip" value="" class="form-control col-md-4 col-xs-12"  placeholder="Nombre del proyecto" required="required" autocomplete="off" >	
+							</div>	
 						</div>
-
 					</div>
-	
-						<div class="row">
+					<div class="row">
 						<div class="col-md-12 col-sm-3 col-xs-12">
 							<label class="control-label">Nombre del Proyecto</label>
 							<div>
@@ -56,6 +56,7 @@
 							</div>	
 						</div>
 					</div>
+				
 					<div class="row">
 						<div class="col-md-6 col-sm-3 col-xs-12">
 							<label class="control-label">Ubicación distrital donde se plantea su Ejecución</label>
@@ -67,7 +68,7 @@
 						<div class="col-md-6 col-sm-3 col-xs-12">
 							<label class="control-label">Codigo SNIP</label>
 							<div>
-								<input id="txtRendimiento" name="txtRendimiento" class="form-control col-md-4 col-xs-12"  placeholder="Código SNIP" required="required" autocomplete="off" >
+								<input id="txtRendimiento" name="txtRendimiento" value="<?= $Listarproyectobuscado->codigo_unico_pi ?>" class="form-control col-md-4 col-xs-12"  placeholder="Código SNIP" required="required" autocomplete="off" >
 							</div>
 						</div>
 					</div>
@@ -132,19 +133,19 @@
 						<div class="col-md-2 col-sm-3 col-xs-12">
 							<label class="control-label">Funcion</label>
 							<div>
-								<input id="txtRendimiento" name="txtRendimiento" class="form-control col-md-4 col-xs-12"  placeholder="Funcion" required="required" autocomplete="off" >
+								<input id="txtRendimiento" name="txtRendimiento" class="form-control col-md-4 col-xs-12" value="<?= $Listarproyectobuscado->nombre_funcion?>"  placeholder="Funcion" required="required" autocomplete="off" >
 							</div>
 						</div>
 						<div class="col-md-2 col-sm-3 col-xs-12">
 							<label class="control-label">Programa</label>
 							<div>
-								<input id="txtRendimiento" name="txtRendimiento" class="form-control col-md-4 col-xs-12"  placeholder="Programa" required="required" autocomplete="off" >
+								<input id="txtRendimiento" name="txtRendimiento" class="form-control col-md-4 col-xs-12" value="<?= $Listarproyectobuscado->nombre_div_funcional?>" placeholder="Programa" required="required" autocomplete="off" >
 							</div>
 						</div>
 						<div class="col-md-2 col-sm-3 col-xs-12">
 							<label class="control-label">Sub Programa</label>
 							<div>
-								<input id="txtRendimiento" name="txtRendimiento" class="form-control col-md-4 col-xs-12"  placeholder="Sub Programa" required="required" autocomplete="off" >
+								<input id="txtRendimiento" name="txtRendimiento" class="form-control col-md-4 col-xs-12" value="<?= $Listarproyectobuscado->nombre_grup_funcional?>" placeholder="Sub Programa" required="required" autocomplete="off" >
 							</div>
 						</div>
 
@@ -178,7 +179,7 @@
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Modalidad de Ejecución</label>
 							<div>
-								<input id="txtRendimiento" name="txtRendimiento" class="form-control col-md-4 col-xs-12"  placeholder="Modalidad de Ejecución" required="required" autocomplete="off" >
+								<input id="txtRendimiento" name="txtRendimiento"  value="" class="form-control col-md-4 col-xs-12"  placeholder="Modalidad de Ejecución" required="required" autocomplete="off" >
 							</div>
 						</div>
 
