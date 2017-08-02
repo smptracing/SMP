@@ -201,12 +201,6 @@ class Expediente_Tecnico extends CI_Controller
 		$pdf->MultiCell(190, 0, $left_column, 1, 'J', 1, 0, '', '', true, 0, false, true, 0);
 		
 
-
-
-
-
-
-
 $pdf->lastPage();
 
 	    $nombre_archivo = utf8_decode("Ficha Técnica del Proyecto".$prov.".pdf");
@@ -223,8 +217,13 @@ $pdf->lastPage();
 
 	public function insertar()
 	{
-		$CodigoUnico=$this->input->get('CodigoUnico');
-		$this->load->view('front/Ejecucion/ExpedienteTecnico/insertar');
+		if($_POST)
+		{
+			
+		}
+			$codigo_unico_pi=$this->input->get('CodigoUnico');
+			$Listarproyectobuscado=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoBuscar($codigo_unico_pi); //BUSCAR PIP
+			$this->load->view('front/Ejecucion/ExpedienteTecnico/insertar',['Listarproyectobuscado'=>$Listarproyectobuscado]);
 	}
 	
 }

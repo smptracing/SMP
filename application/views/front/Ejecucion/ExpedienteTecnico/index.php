@@ -84,7 +84,7 @@ function codigo()
 {
 	swal({
 	  title: "Buscar",
-	  text: "Proyecto ",
+	  text: "Proyecto: Ingrese código único del proyecto",
 	  type: "input",
 	  showCancelButton: true,
 	  closeOnConfirm: false,
@@ -96,7 +96,7 @@ function codigo()
 	    return false
 	  }
 	  paginaAjaxDialogo(null, 'Registrar Expediente Técnico',{CodigoUnico:inputValue}, base_url+'index.php/Expediente_Tecnico/insertar', 'GET', null, null, false, true);
-	  swal("Correcto!", "Correcata: " + inputValue, "success");
+	  swal("Correcto!", "Correcto: " + inputValue, "success");
 	});
 
 }

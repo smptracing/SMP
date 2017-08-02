@@ -6,19 +6,6 @@
 </style>
 <script src="ckeditor/ckeditor.js"></script>
 <form class="form-horizontal" id="form-addClasificador" action="<?php echo base_url();?>index.php/Clasificador/insertar" method="POST" >
-	<div class="row">
-		<label class="control-label col-md-2 col-sm-1 col-xs-12" >
-			Ingrese Código Único
-		</label>
-		<div class="col-md-2 col-sm-3 col-xs-12">
-			<input id="txtCodigoUnico" name="txtCodigoUnico" class="form-control col-md-4 col-xs-12"  placeholder="Código Único" required="required" autocomplete="off" >
-		</div>
-		<div class="col-md-2 col-sm-3 col-xs-12">
-			<button type="submit" id="btnEnviarFormulario" class="btn btn-success">Buscar</button>
-		</div>
-		
-		
-	</div>
 
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
@@ -29,15 +16,15 @@
 						<div class="col-md-12 col-sm-3 col-xs-12">
 							<label class="control-label">Nombre de la Unidad Ejecutora</label>
 							<div>
-								<input id="txtRendimiento" name="txtRendimiento" class="form-control col-md-4 col-xs-12"  placeholder="Dirección" required="required" autocomplete="off" >
+								<input id="txtUnidadEjecutora" name="txtUnidadEjecutora" value ="<?= $Listarproyectobuscado->nombre_ue?>" class="form-control col-md-4 col-xs-12"  placeholder="Dirección" required="required" autocomplete="off" >
 							</div>
 						</div>
-					</div>
+					</div
 					<div class="row">
 						<div class="col-md-4 col-sm-3 col-xs-12">
 							<label class="control-label">Dirección</label>
 							<div>
-								<input id="txtRendimiento" name="txtRendimiento" class="form-control"  placeholder="Dirección" required="required" autocomplete="off" >
+								<input id="txtDireccionUE" name="txtDireccionUE" class="form-control"  placeholder="Dirección" required="required" autocomplete="off" >
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-3 col-xs-12">
@@ -65,7 +52,7 @@
 						<div class="col-md-12 col-sm-3 col-xs-12">
 							<label class="control-label">Nombre del Proyecto</label>
 							<div>
-								<input id="txtRendimiento" name="txtRendimiento" class="form-control col-md-4 col-xs-12"  placeholder="Nombre del proyecto" required="required" autocomplete="off" >	
+								<input id="txtNombrePip" name="txtNombrePip" value="<?= $Listarproyectobuscado->nombre_pi?>" class="form-control col-md-4 col-xs-12"  placeholder="Nombre del proyecto" required="required" autocomplete="off" >	
 							</div>	
 						</div>
 					</div>
@@ -88,7 +75,7 @@
 						<div class="col-md-4 col-sm-3 col-xs-12">
 							<label class="control-label">Costo Total del Proyecto (Pre Inversión)</label>
 							<div>
-								<input id="txtRendimiento" name="txtRendimiento" class="form-control col-md-4 col-xs-12"  placeholder="Total del Proyecto (Pre Inversión)" required="required" autocomplete="off" >
+								<input id="txtCostoTotalPreInversion" name="txtCostoTotalPreInversion" value="<?= $Listarproyectobuscado->costo_total_preinv_et?>"  class="form-control col-md-4 col-xs-12"  placeholder="Total del Proyecto (Pre Inversión)" required="required" autocomplete="off" >
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-3 col-xs-12">
@@ -96,7 +83,7 @@
 							<div>
 								<input id="txtRendimiento" name="txtRendimiento" class="form-control col-md-4 col-xs-12"  placeholder="Costo Directo" required="required" autocomplete="off" >
 							</div>
-						</div>d
+						</div>
 						<div class="col-md-4 col-sm-3 col-xs-12">
 							<label class="control-label">Costo Indirecto</label>
 							<div>
@@ -109,7 +96,7 @@
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Costo Total del Proyecto (Inversión)</label>
 							<div>
-								<input id="txtRendimiento" name="txtRendimiento" class="form-control col-md-4 col-xs-12"  placeholder="Costo Total del Proyecto (Inversión)" required="required" autocomplete="off" >
+								<input id="txtCostoTotalInversion" name="txtCostoTotalInversion" value="<?= $Listarproyectobuscado->costo_total_inv_et?>" class="form-control col-md-4 col-xs-12"  placeholder="Costo Total del Proyecto (Inversión)" required="required" autocomplete="off" >
 							</div>
 						</div>
 						<div class="col-md-3 col-sm-3 col-xs-12">
@@ -200,19 +187,19 @@
 						<div class="col-md-6 col-sm-3 col-xs-12">
 							<label class="control-label">Tiempo de Ejecución del Proyecto</label>
 							<div>
-								<input id="txtRendimiento" name="txtRendimiento" class="form-control col-md-4 col-xs-12"  placeholder="Tiempo de Ejecución" required="required" autocomplete="off" >
+								<input id="txtTiempoEjecucionPip" name="txtTiempoEjecucionPip" value="<?= $Listarproyectobuscado->tiempo_ejecucion_pi_et?>" class="form-control col-md-4 col-xs-12"  placeholder="Tiempo de Ejecución" required="required" autocomplete="off" >
 							</div>
 						</div>
 						<div class="col-md-6 col-sm-3 col-xs-12">
 							<label class="control-label">Número de beneficiarios indirectos del proyecto</label>
 							<div>
-								<input id="txtRendimiento" name="txtRendimiento" class="form-control col-md-4 col-xs-12"  placeholder="Número de beneficiarios indirectos" required="required" autocomplete="off" >
+								<input id="txtNumBeneficiarios" name="txtNumBeneficiarios" value="<?= $Listarproyectobuscado->num_beneficiarios?>" class="form-control col-md-4 col-xs-12"  placeholder="Número de beneficiarios indirectos" required="required" autocomplete="off" >
 							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12 col-sm-3 col-xs-12">
-							<label class="control-label">Nombre del Responable de la Elaboración del Proyecto</label>
+							<label class="control-label">Nombre del Responsable de la Elaboración del Proyecto</label>
 							<div>
 								<input id="txtRendimiento" name="txtRendimiento" class="form-control col-md-4 col-xs-12"  placeholder="Responable de la Elaboración del Proyecto" required="required" autocomplete="off" >
 							</div>
