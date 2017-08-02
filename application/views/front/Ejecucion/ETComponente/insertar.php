@@ -142,7 +142,13 @@ function mostrarMetaAnidada($meta)
 
 		if(existeComponente)
 		{
-			alert('No se puede agregar dos veces el mismo componente.');
+			swal(
+			{
+				title: '',
+				text: 'No se puede agregar dos veces el mismo componente.',
+				type: 'error'
+			},
+			function(){});
 
 			return;
 		}
@@ -204,7 +210,7 @@ function mostrarMetaAnidada($meta)
 
 	function eliminarMeta(idMeta, element)
 	{
-		if(!confirm('Al borrar meta se eliminará todas las sub metas y partidas asociadas. ¿Realmente desea proseguir con la operaición?'))
+		if(!confirm('Al borrar meta se eliminará todas las sub metas y partidas asociadas. ¿Realmente desea proseguir con la operación?'))
 		{
 			return;
 		}
@@ -231,7 +237,13 @@ function mostrarMetaAnidada($meta)
 	{
 		if($($(elementoPadre).find('ul')[0]).find('> .liPartida').length>0)
 		{
-			alert('No se puede agregar submeta al mismo nivel que una partida.');
+			swal(
+			{
+				title: '',
+				text: 'No se puede agregar submeta al mismo nivel que una partida.',
+				type: 'error'
+			},
+			function(){});
 
 			return;
 		}
@@ -257,7 +269,13 @@ function mostrarMetaAnidada($meta)
 
 		if(existeMeta)
 		{
-			alert('No se puede agregar dos metas iguales en el mismo nivel.');
+			swal(
+			{
+				title: '',
+				text: 'No se puede agregar dos metas iguales en el mismo nivel.',
+				type: 'error'
+			},
+			function(){});
 
 			return;
 		}
@@ -298,7 +316,13 @@ function mostrarMetaAnidada($meta)
 		
 		if($($(elementoPadre).find('ul')[0]).find('input[value="+M"]').length)
 		{
-			alert('No se puede agregar partida a una meta antecesora de otra.');
+			swal(
+			{
+				title: '',
+				text: 'No se puede agregar partida a una meta antecesora de otra.',
+				type: 'error'
+			},
+			function(){});
 
 			return;
 		}
@@ -339,7 +363,13 @@ function mostrarMetaAnidada($meta)
 
 		if(existePartida)
 		{
-			alert('No se puede agregar dos partidas iguales en el mismo nivel.');
+			swal(
+			{
+				title: '',
+				text: 'No se puede agregar dos partidas iguales en el mismo nivel.',
+				type: 'error'
+			},
+			function(){});
 
 			return;
 		}
