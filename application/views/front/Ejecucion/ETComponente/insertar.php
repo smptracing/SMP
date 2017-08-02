@@ -31,9 +31,9 @@ function mostrarMetaAnidada($meta)
 <div class="form-horizontal">
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
-			<label class="control-label">Expediente técnico</label>
+			<label class="control-label">Nombre del proyecto de inversión</label>
 			<div>
-				<input type="text" id="txtNombreProyectoInversion" name="txtNombreProyectoInversion" class="form-control" autocomplete="off" value="Nombre del proyecto de inversión" readonly="readonly">
+				<textarea name="txtNombreProyectoInversion" id="txtNombreProyectoInversion" rows="3" class="form-control" style="resize: none;resize: vertical;" readonly="readonly"><?=$expedienteTecnico->nombre_pi?></textarea>
 			</div>
 		</div>
 	</div>
