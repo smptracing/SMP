@@ -1,7 +1,8 @@
 $(document).on("ready" ,function(){
-     lista_programados_formulacion_evaluacion();/*llamar a mi datatablet listar proyectosinverision*/
+   //  lista_programados_formulacion_evaluacion('2017');/*llamar a mi datatablet listar proyectosinverision*/
      lista_ejecucion();
      lista_funcionamiento();
+     listar_aniocartera_();
 //agregar progrmacion para operacion y mantenimiento     
       $("#form_AddProgramacion_operacion_mantenieminto").submit(function(event)
                   {
@@ -81,27 +82,41 @@ $(document).on("ready" ,function(){
 
 });
 //listar proyectos de inversion en formulacion y evaluacion
- var lista_programados_formulacion_evaluacion=function()
+ var lista_programados_formulacion_evaluacion=function(anio)
 {
+  var str1 = "Inv_";
+  var anio_1= parseInt(anio) +1; 
+  var anio_2= parseInt(anio) +2; 
+  var anio_3= parseInt(anio) +3; 
+  var anioR1 = str1.concat(anio_1);
+  var anioR2 = str1.concat(anio_2);
+  var anioR3 = str1.concat(anio_3);
        var table=$("#table_formulacion_evaluacion").DataTable({
                      "processing": true,
                       "serverSide":false,
                      destroy:true,
                          "ajax":{
-                                    "url":base_url+"index.php/PipProgramados/GetPipProgramadosFormulacionEvaluacion",
-                                    "method":"POST",
-                                    "dataSrc":""                                    
+                                    url:base_url+"index.php/PipProgramados/GetPipProgramadosFormulacionEvaluacion",
+                                     type:"POST",
+                                     data :{anio:anio}  
+                                                                   
                                   },
-                                "columns":[
-                                    {"defaultContent":"<td>#</td>"},
-                                    {"data":"codigo_unico_pi"},
-                                    {"data":"nombre_pi"},
-                                    {"data":"costo_pi"},
-                                    {"data":"nombre_estado_ciclo"}
-                                    
-                                   ],
-                               "language":idioma_espanol
-                    });
+                                "columns":[ 
+                                { "data" : "id_pi", "visible" : false },
+                                { "data" : "codigo_unico_pi" },
+                                { "data" : "nombre_estado_ciclo" },
+                                { "data" : "nombre_pi" },
+                                { "data" : "prioridad_prog" },
+                                { "data" : "nombre_brecha" },
+
+                                { "data" : anioR1 },
+                                { "data" : anioR2 },
+                                { "data" : anioR3 }
+
+    ]
+    
+  });
+
         AddProgramacion("#table_formulacion_evaluacion",table);
         AddMeta_Pi("#table_formulacion_evaluacion",table);
 }
@@ -303,16 +318,25 @@ $(document).on("ready" ,function(){
                          //  alert(respuesta);
                          var registros = eval(respuesta3);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option  value="+registros[i]["id_cartera"]+"> "+registros[i]["anio"]+" </option>";
+                              html +="<option  value="+registros[i]["anio"]+"> "+registros[i]["anio"]+" </option>";
                             };
                             $("#Cbx_AnioCartera_").html(html);
                             $('select[name=Cbx_AnioCartera_]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=Cbx_AnioCartera_]').change();
                             $('.selectpicker').selectpicker('refresh');
-                            listar_Brecha_();//listar brecha
+                            var anio=$("#Cbx_AnioCartera_").val();
+                            lista_programados_formulacion_evaluacion(anio);
                         }
                     });
                 }
+                      $("#Cbx_AnioCartera_").change(function() {
+                          var anio=$("#Cbx_AnioCartera_").val();
+                            lista_programados_formulacion_evaluacion(anio);
+                           //listar carteran de proyectos
+                           $("#Aniocartera").val(anio);
+                        });     
+
+
                 var listar_Brecha_=function(valor){
                      html="";
                     $("#cbxBrecha_").html(html);
