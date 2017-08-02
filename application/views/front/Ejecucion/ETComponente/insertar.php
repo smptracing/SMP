@@ -159,6 +159,11 @@ function mostrarMetaAnidada($meta)
 			},
 			function(){});
 
+			if(objectJSON.proceso=='Error')
+			{
+				return false;
+			}
+
 			var htmlTemp='<li>'+
 				'<b>'+$('#txtDescripcionComponente').val().trim()+'</b> <input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta('+objectJSON.idComponente+', $(this).parent(), \'\');" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarComponente('+objectJSON.idComponente+', this);" style="width: 30px;">'+
 				'<ul style="background-color: #f5f5f5;"></ul>'
@@ -269,6 +274,11 @@ function mostrarMetaAnidada($meta)
 			},
 			function(){});
 
+			if(objectJSON.proceso=='Error')
+			{
+				return false;
+			}
+
 			var htmlTemp='<li>'+
 				descripcionMeta.trim()+' <input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(\'\', $(this).parent(), '+objectJSON.idMeta+')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="+P" onclick="renderizarAgregarPartida($(this).parent(), '+objectJSON.idMeta+')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarMeta('+objectJSON.idMeta+', this);" style="width: 30px;">'+
 				'<ul style="background-color: #f5f5f5;"></ul>'+
@@ -345,6 +355,11 @@ function mostrarMetaAnidada($meta)
 				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
 			},
 			function(){});
+
+			if(objectJSON.proceso=='Error')
+			{
+				return false;
+			}
 
 			var htmlTemp='<li style="color: blue;" class="liPartida">'+
 				'<b>'+$('#txtDescripcionPartida').val().trim()+'</b> | '+$('#txtRendimientoPartida').val().trim()+' | '+objectJSON.descripcionUnidadMedida+' | '+parseFloat($('#txtCantidadPartida').val()).toFixed(2)+' <input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida('+objectJSON.idPartida+', this);" style="width: 30px;">'+

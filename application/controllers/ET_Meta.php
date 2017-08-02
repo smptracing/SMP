@@ -19,6 +19,13 @@ class ET_Meta extends CI_Controller
 		$idMetaPadre=$this->input->post('idMetaPadre');
 		$descripcionMeta=$this->input->post('descripcionMeta');
 
+		if(count($this->Model_ET_Meta->ETMetaPorIdComponenteOrIdMetaPadreAndDescMeta($idComponente, $idMetaPadre, $descripcionMeta))>0)
+		{
+			$this->db->trans_rollback();
+
+			echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede agregar dos metas iguales en el mismo nivel.']);exit;
+		}
+
 		$this->Model_ET_Meta->insertar(($idComponente=='' ? null : $idComponente), ($idMetaPadre=='' ? null : $idMetaPadre), $descripcionMeta);
 
 		$ultimoIdMeta=$this->Model_ET_Meta->ultimoId();

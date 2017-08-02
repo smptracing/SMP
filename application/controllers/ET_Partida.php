@@ -23,6 +23,13 @@ class ET_Partida extends CI_Controller
 			$rendimientoPartida=$this->input->post('rendimientoPartida');
 			$cantidadPartida=$this->input->post('cantidadPartida');
 
+			if(count($this->Model_ET_Partida->ETPartidaPorIdMetaAndDescPartida($idMeta, $descripcionPartida))>0)
+			{
+				$this->db->trans_rollback();
+
+				echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede agregar dos partidas iguales en el mismo nivel.']);exit;
+			}
+
 			$this->Model_ET_Partida->insertar($idMeta, $idUnidad, $descripcionPartida, $rendimientoPartida, $cantidadPartida);
 			$unidadMedida=$this->Model_Unidad_Medida->UnidadMedida($idUnidad)[0];
 

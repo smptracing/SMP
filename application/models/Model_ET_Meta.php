@@ -43,6 +43,13 @@ class Model_ET_Meta extends CI_Model
 		return $data->result();
 	}
 
+	public function ETMetaPorIdComponenteOrIdMetaPadreAndDescMeta($idComponente, $idMetaPadre, $descripcion)
+	{
+		$data=$this->db->query("select * from ET_META where (('".$idComponente."'!='' and id_componente='".$idComponente."') or ('".$idComponente."'='' and id_meta_padre='".$idMetaPadre."')) and replace(desc_meta, ' ', '')=replace('".$descripcion."', ' ', '')");
+
+		return $data->result();
+	}
+
 	function eliminar($idMeta)
 	{
 		$this->db->query("delete from ET_META where id_meta=".$idMeta);

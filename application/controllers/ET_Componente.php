@@ -23,6 +23,13 @@ class ET_Componente extends CI_Controller
 			$idET=$this->input->post('idET');
 			$descripcionComponente=$this->input->post('descripcionComponente');
 
+			if(count($this->Model_ET_Componente->ETComponentePorIdETAndDescripcion($idET, $descripcionComponente))>0)
+			{
+				$this->db->trans_rollback();
+
+				echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede agregar dos veces el mismo componente.']);exit;
+			}
+
 			$this->Model_ET_Componente->insertar($idET, $descripcionComponente);
 
 			$ultimoIdComponente=$this->Model_ET_Componente->ultimoId();
