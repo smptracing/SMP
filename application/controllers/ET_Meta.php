@@ -13,6 +13,8 @@ class ET_Meta extends CI_Controller
 
 	public function insertar()
 	{
+		$this->db->trans_start();
+
 		$idComponente=$this->input->post('idComponente');
 		$idMetaPadre=$this->input->post('idMetaPadre');
 		$descripcionMeta=$this->input->post('descripcionMeta');
@@ -21,6 +23,8 @@ class ET_Meta extends CI_Controller
 
 		$ultimoIdMeta=$this->Model_ET_Meta->ultimoId();
 
+		$this->db->trans_complete();
+
 		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Meta registrada correctamente.', 'idMeta' => $ultimoIdMeta]);exit;
 	}
 
@@ -28,11 +32,15 @@ class ET_Meta extends CI_Controller
 	{
 		if($_POST)
 		{
+			$this->db->trans_start();
+
 			$idMeta=$this->input->post('idMeta');
 
 			$meta=$this->Model_ET_Meta->ETMetaPorIdMeta($idMeta);
 
 			$this->eliminarMetaAnidada($meta);
+
+			$this->db->trans_complete();
 
 			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Meta eliminada correctamente.']);exit;
 		}

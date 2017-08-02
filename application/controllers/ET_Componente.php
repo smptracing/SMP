@@ -18,12 +18,16 @@ class ET_Componente extends CI_Controller
 	{
 		if($_POST)
 		{
+			$this->db->trans_start();
+
 			$idET=$this->input->post('idET');
 			$descripcionComponente=$this->input->post('descripcionComponente');
 
 			$this->Model_ET_Componente->insertar($idET, $descripcionComponente);
 
 			$ultimoIdComponente=$this->Model_ET_Componente->ultimoId();
+
+			$this->db->trans_complete();
 
 			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Componente registrado correctamente.', 'idComponente' => $ultimoIdComponente]);exit;
 		}
@@ -69,6 +73,8 @@ class ET_Componente extends CI_Controller
 	{
 		if($_POST)
 		{
+			$this->db->trans_start();
+
 			$idComponente=$this->input->post('idComponente');
 
 			$listaMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($idComponente);
@@ -79,6 +85,8 @@ class ET_Componente extends CI_Controller
 			}
 
 			$this->Model_ET_Componente->eliminar($idComponente);
+
+			$this->db->trans_complete();
 
 			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Componente eliminado correctamente.']);exit;
 		}

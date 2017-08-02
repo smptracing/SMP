@@ -15,6 +15,8 @@ class ET_Partida extends CI_Controller
 	{
 		if($_POST)
 		{
+			$this->db->trans_start();
+
 			$idMeta=$this->input->post('idMeta');
 			$idUnidad=$this->input->post('idUnidad');
 			$descripcionPartida=$this->input->post('descripcionPartida');
@@ -26,6 +28,8 @@ class ET_Partida extends CI_Controller
 
 			$ultimoIdPartida=$this->Model_ET_Partida->ultimoId();
 
+			$this->db->trans_complete();
+
 			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Partida registrada correctamente.', 'idPartida' => $ultimoIdPartida, 'descripcionUnidadMedida' => $unidadMedida->descripcion]);exit;
 		}
 
@@ -36,9 +40,13 @@ class ET_Partida extends CI_Controller
 	{
 		if($_POST)
 		{
+			$this->db->trans_start();
+
 			$idPartida=$this->input->post('idPartida');
 
 			$this->Model_ET_Partida->eliminar($idPartida);
+
+			$this->db->trans_complete();
 
 			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Partida eliminada correctamente.']);exit;
 		}
