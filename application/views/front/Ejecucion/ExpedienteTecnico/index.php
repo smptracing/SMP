@@ -36,7 +36,32 @@
 									</tr>
 								</thead>
 								<tbody>
-								
+								<?php foreach($listaExpedienteTecnico as $item ){ ?>
+								  	<tr>
+										 <td>
+												<?= $item->nombre_ue?>
+											</td>
+											<td>
+												<?= $item->nombre_pi?>
+											</td>
+											<td>
+												<?= $item->costo_total_preinv_et?>
+											</td>
+											<td>
+												<?= $item->costo_total_inv_et?>
+											</td>
+											<td>
+												<?= $item->tiempo_ejecucion_pi_et?>
+											</td>
+											<td>
+												<?= $item->num_beneficiarios?>
+											</td>
+											<td>
+										  		<button type='button' class='editar btn btn-primary btn-xs'><i class='ace-icon fa fa-pencil bigger-120'></i></button>
+										  		<button type='button' class='eliminar btn btn-danger btn-xs'><i class='fa fa-trash-o'></i></button>
+											</td>
+								  	</tr>
+								<?php } ?>
 								</tbody>
 							</table>
 						</div>

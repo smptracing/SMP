@@ -6,6 +6,7 @@ class Expediente_Tecnico extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		$this->load->model('Model_ET_Expediente_Tecnico');
 	}
 
 	function _load_layout($template)
@@ -214,7 +215,10 @@ $pdf->lastPage();
 
 	public function index()
 	{
-		$this->_load_layout('front/Ejecucion/ExpedienteTecnico/index.php');
+		$listaExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoListar();
+		$this->load->view('layout/Ejecucion/header');
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/index.php',['listaExpedienteTecnico'=>$listaExpedienteTecnico]);
+		$this->load->view('layout/Ejecucion/footer');
 	}
 
 	public function insertar()
