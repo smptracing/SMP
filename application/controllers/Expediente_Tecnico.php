@@ -15,7 +15,9 @@ class Expediente_Tecnico extends CI_Controller
 		$this->load->view($template);
 		$this->load->view('layout/Ejecucion/footer');
 	}
-	public function reportePdfEcpedienteTecnico()
+
+
+	public function reportePdfExpedienteTecnico($id_ExpedienteTecnico)
 	{
 		$this->load->library('Pdf');
         $pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
@@ -34,7 +36,10 @@ class Expediente_Tecnico extends CI_Controller
         $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
         $pdf->setFontSubsetting(true);
 		$pdf->SetFont('times', '', 10); 
+		$pdf->setPrintHeader(false);
+		$pdf->setPrintFooter(false);
         $pdf->AddPage();
+
         $pdf->setTextShadow(array('enabled' => true, 'depth_w' => 0.2, 'depth_h' => 0.2, 'color' => array(196, 196, 196), 'opacity' => 1, 'blend_mode' => 'Normal'));
         
         ini_set('memory_limit', '8192M');
@@ -42,11 +47,11 @@ class Expediente_Tecnico extends CI_Controller
 	    $prov="";
 	    $contenido="";
 	    $pdf->Write(10, 'FORMATO FF -01', '', 0, 'C', true, 0, false, false, 0);
-	    $pdf->Write(10, 'FICHA TECNICA DE PROYECTO', '', 0, 'C', true, 0, false, false, 0);
+	    $pdf->Write(10, 'FICHA TECNICA DE PROYECTO ', '', 0, 'C', true, 0, false, false, 0);
 	    $pdf->Ln(1);
 		$pdf->SetFont('times','', 9);        
 		$pdf->Cell(80, 5,'1   Nombre de la Unidad Ejecutora', 1, 'C', 1,2);
-		$pdf->Cell(110, 5,'', 1, 'C', 1, 2);
+		$pdf->Cell(110, 5,$id_ExpedienteTecnico, 1, 'C', 1, 2);
 		$pdf->Ln();
 		$pdf->Cell(80, 5,'				1.2   Distrito/Provincia/Departamento', 1, 'C', 1,3);
 		$pdf->Cell(110, 5,'', 1, 'C', 1, 3);
@@ -201,7 +206,7 @@ class Expediente_Tecnico extends CI_Controller
 		$pdf->MultiCell(190, 0, $left_column, 1, 'J', 1, 0, '', '', true, 0, false, true, 0);
 		
 
-$pdf->lastPage();
+		$pdf->lastPage();
 
 	    $nombre_archivo = utf8_decode("Ficha Técnica del Proyecto".$prov.".pdf");
 	    $pdf->Output($nombre_archivo, 'I');

@@ -61,7 +61,6 @@
 										<li><a href="<?php echo site_url('ET_Etapa_Ejecucion/index'); ?>">Etapa Ejecución</a></li>
 										<li><a href="<?php echo site_url('ET_Clasificador/index'); ?>">Clasificador</a></li>
 										<li><a href="<?php echo site_url('CronogramaValorizacion/index'); ?>">Cronograma Valoración</a></li>
-										<li><a href="<?php echo site_url('Expediente_Tecnico/reportePdfEcpedienteTecnico'); ?>">Ficha Expediente</a></li>
 
 									</ul>
 								</li> 

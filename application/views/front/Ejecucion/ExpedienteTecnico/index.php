@@ -10,20 +10,11 @@
 				<div class="row">
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<div class="x_panel">
-							<button type="button" class="btn btn-primary " onclick="paginaAjaxDialogo(null, 'Registro de componentes, metas y partidas', null, base_url+'index.php/ET_Componente/insertar', 'GET', null, null, false, true);">
-								NUEVO
-							</button>
-							<button type="button" class="btn btn-primary " onclick="paginaAjaxDialogo(null, 'Administración de partidad y analítico', null, base_url+'index.php/ET_Partida/insertar', 'GET', null, null, false, true);">
-								NUEVA
-							</button>
-								<button type="button" class="btn btn-primary " onclick="paginaAjaxDialogo(null, 'Registrar Expediente Técnico', null, base_url+'index.php/Expediente_Tecnico/insertar', 'GET', null, null, false, true);">
-								NUEVO EXPEDIENTE
-							</button>
-							<button onclick="codigo()"> NUEVO EXPEDIENTE</button>
+							<button onclick="codigo()" class="btn btn-primary"> NUEVO</button>
 							<div class="x_title">
 								<div class="clearfix"></div>
 							</div>
-							<table id="table-ExpedienteTecnico"  class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+							<table id="table-ExpedienteTecnico" style="text-align: center;" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
 								<thead>
 									<tr>
 										<td>Unidad Ejecutora</td>
@@ -32,7 +23,7 @@
 										<td>Costo Total del proyecto Inversion</td>
 										<td>Tiempo Ejecucion</td>
 										<td>Numero Beneficiarios</td>
-										<td class="col-md-1 col-md-1 col-xs-12">ACCIONES</td>
+										<td class="col-md-2 col-md-2 col-xs-12">ACCIONES</td>
 									</tr>
 								</thead>
 								<tbody>
@@ -58,7 +49,9 @@
 											</td>
 											<td>
 										  		<button type='button' class='editar btn btn-primary btn-xs'><i class='ace-icon fa fa-pencil bigger-120'></i></button>
-										  		<button type='button' class='eliminar btn btn-danger btn-xs'><i class='fa fa-trash-o'></i></button>
+												<button type='button' title='Registro de componentes, metas y partidas' class='editar btn btn-warning btn-xs' onclick="paginaAjaxDialogo(null, 'Registro de componentes, metas y partidas', null, base_url+'index.php/ET_Componente/insertar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-align-left bigger-120'></i></button>
+												<button type='button' title='Administración de partidad y analítico' class='editar btn btn-success btn-xs' onclick="paginaAjaxDialogo(null, 'Administración de partidad y analítico', null, base_url+'index.php/ET_Partida/insertar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-indent bigger-120'></i></button>
+												<a type="button" title='Ficha tecnica de expediente tecnico' class="btn btn-info btn-xs" href="<?= site_url('Expediente_Tecnico/reportePdfExpedienteTecnico/'.$item->id_et);?>" target="_blank"><i class='ace-icon fa fa-file-pdf-o bigger-120'></i></a>
 											</td>
 								  	</tr>
 								<?php } ?>
