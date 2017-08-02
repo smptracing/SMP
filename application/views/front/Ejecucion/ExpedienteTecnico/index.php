@@ -19,6 +19,7 @@
 								<button type="button" class="btn btn-primary " onclick="paginaAjaxDialogo(null, 'Registrar Expediente Técnico', null, base_url+'index.php/Expediente_Tecnico/insertar', 'GET', null, null, false, true);">
 								NUEVO EXPEDIENTE
 							</button>
+							<button onclick="codigo()"> NUEVO EXPEDIENTE</button>
 							<div class="x_title">
 								<div class="clearfix"></div>
 							</div>
@@ -54,4 +55,25 @@
 			"language":idioma_espanol
 		});
 	});
+function codigo()
+{
+	swal({
+	  title: "Buscar",
+	  text: "Proyecto ",
+	  type: "input",
+	  showCancelButton: true,
+	  closeOnConfirm: false,
+	  inputPlaceholder: "Ingrese Codigo Unico"
+	}, function (inputValue) {
+	  if (inputValue === false) return false;
+	  if (inputValue === "") {
+	    swal.showInputError("Ingrese Codigo Unico!");
+	    return false
+	  }
+	  paginaAjaxDialogo(null, 'Registrar Expediente Técnico',{CodigoUnico:inputValue}, base_url+'index.php/Expediente_Tecnico/insertar', 'GET', null, null, false, true);
+	  swal("Correcto!", "Correcata: " + inputValue, "success");
+	});
+
+}
+
 </script>

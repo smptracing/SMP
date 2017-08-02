@@ -219,6 +219,7 @@ $pdf->lastPage();
 
 	public function insertar()
 	{
+		$CodigoUnico=$this->input->get('CodigoUnico');
 		$this->load->view('front/Ejecucion/ExpedienteTecnico/insertar');
 	}
 	
