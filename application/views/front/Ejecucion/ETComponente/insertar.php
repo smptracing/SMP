@@ -130,9 +130,9 @@ function mostrarMetaAnidada($meta)
 
 		var existeComponente=false;
 
-		$('#ulComponenteMetaPartida').find('li').each(function(index, element)
+		$('#ulComponenteMetaPartida').find('> li > b').each(function(index, element)
 		{
-			if(replaceAll($(element).text(), ' ', '')==replaceAll($('#txtDescripcionComponente').val(), ' ', ''))
+			if(replaceAll($(element).text(), ' ', '').toLowerCase()==replaceAll($('#txtDescripcionComponente').val(), ' ', '').toLowerCase())
 			{
 				existeComponente=true;
 
@@ -242,7 +242,7 @@ function mostrarMetaAnidada($meta)
 
 		$($(elementoPadre).find('ul')[0]).find('> li').each(function(index, element)
 		{
-			if(replaceAll($(element).text(), ' ', '')==replaceAll(descripcionMeta, ' ', ''))
+			if(replaceAll($(element).text(), ' ', '').toLowerCase()==replaceAll(descripcionMeta, ' ', '').toLowerCase())
 			{
 				existeMeta=true;
 
@@ -319,7 +319,7 @@ function mostrarMetaAnidada($meta)
 
 		$($(elementoPadreParaAgregarPartida).find('ul')[0]).find('> li > b').each(function(index, element)
 		{
-			if(replaceAll($(element).text(), ' ', '')==replaceAll($('#txtDescripcionPartida').val(), ' ', ''))
+			if(replaceAll($(element).text(), ' ', '').toLowerCase()==replaceAll($('#txtDescripcionPartida').val(), ' ', '').toLowerCase())
 			{
 				existePartida=true;
 
