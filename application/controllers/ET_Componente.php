@@ -39,7 +39,7 @@ class ET_Componente extends CI_Controller
 			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Componente registrado correctamente.', 'idComponente' => $ultimoIdComponente]);exit;
 		}
 
-		$expedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnico(1);
+		$expedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnico($this->input->get('idExpedienteTecnico'));
 		$listaUnidadMedida=$this->Model_Unidad_Medida->UnidadMedidad_Listar();
 
 		$expedienteTecnico->childComponente=$this->Model_ET_Componente->ETComponentePorIdET($expedienteTecnico->id_et);
