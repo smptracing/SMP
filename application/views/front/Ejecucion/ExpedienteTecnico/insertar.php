@@ -8,12 +8,11 @@
 <form class="form-horizontal" id="form-addClasificador" action="<?php echo base_url();?>index.php/Clasificador/insertar" method="POST" >
 
 	<div class="row">
+
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 
 				<div class="x_content">
-					
-
 					<div class="row">
 						<div class="col-md-12 col-sm-3 col-xs-12">
 							<label class="control-label">Nombre de la Unidad Ejecutora</label>
@@ -289,7 +288,22 @@
 
 					</div></br>
 					<div class="row">
-						<p><textarea name="editor1" id="editor1" rows="10" cols="80"></textarea></p>	
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<label class="control-label">Descripción de la situación actual</label></br>
+							<p><textarea name="txtSituacioActual" id="txtSituacioActual" rows="10" cols="80"></textarea></p>
+						</div>	
+					</div>
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<label class="control-label">Descripción de la situación actual</label></br>
+							<p><textarea name="txtSituacioDeseada" id="txtSituacioDeseada" rows="10" cols="80"></textarea></p>
+						</div>	
+					</div>
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<label class="control-label">Descripción de la situación actual</label></br>
+							<p><textarea name="txtContribucioInterv" id="txtContribucioInterv" rows="10" cols="80"></textarea></p>
+						</div>	
 					</div>
 									
 
@@ -307,11 +321,17 @@
 			<button  class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 		</div>
 </form>
-
  <script>
- CKEDITOR.replace('editor1' ,{
+ CKEDITOR.replace('txtSituacioActual' ,{
 		filebrowserImageBrowseUrl : '<?php echo base_url('assets/filemanager/index.html');?>'
 	});
+ CKEDITOR.replace('txtSituacioDeseada' ,{
+		filebrowserImageBrowseUrl : '<?php echo base_url('assets/filemanager/index.html');?>'
+	});
+  CKEDITOR.replace('txtContribucioInterv' ,{
+		filebrowserImageBrowseUrl : '<?php echo base_url('assets/filemanager/index.html');?>'
+	});
+
 </script>
 
 

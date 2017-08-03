@@ -59,7 +59,6 @@
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/js/sweetalert.css">
 
 	<script src="<?php echo base_url(); ?>assets/dist/js/bootstrap-select.js"></script>
-
 	<script src="<?php echo base_url(); ?>assets/build/js/custom.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/vendors/butons/buttons.colVis.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/vendors/butons/dataTables.select.min.js"></script>
@@ -68,7 +67,8 @@
 	<script src="<?php echo base_url(); ?>assets/vendors/butons/buttons.html5.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/vendors/butons/buttons.print.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/plugins/input-mask/jquery.inputmask.min.js"></script>
-	
+	<script src="<?php echo base_url(); ?>assets/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
+
 	<script src="<?php echo base_url(); ?>assets/js/Usuario/login.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/administrador/ServicioPublico.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/growl/growl.js"></script>
