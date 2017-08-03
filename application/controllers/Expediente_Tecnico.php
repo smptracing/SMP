@@ -7,6 +7,8 @@ class Expediente_Tecnico extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Model_ET_Expediente_Tecnico');
+		$this->load->model('Model_ET_Componente');
+		
 	}
 
 	function _load_layout($template)
@@ -270,5 +272,15 @@ class Expediente_Tecnico extends CI_Controller
 			$Listarproyectobuscado=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoBuscar($codigo_unico_pi); //BUSCAR PIP
 			$this->load->view('front/Ejecucion/ExpedienteTecnico/insertar',['Listarproyectobuscado'=>$Listarproyectobuscado]);
 	}
+	function reportePdfMetrado($id_ExpedienteTecnico)
+	{
+		$opcion="BuscarExpedienteID";
+		$MostraExpedienteTecnicoExpe=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoSelectBuscarId($opcion,$id_ExpedienteTecnico);
+	    $MostraExpedienteTecnicoExpe->childComponente=$this->Model_ET_Componente->ETComponentePorIdET($id_ExpedienteTecnico);
+	    
+	    var_dump($MostraExpedienteTecnicoExpe);exit;
+	}
+
+
 	
 }
