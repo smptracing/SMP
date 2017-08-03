@@ -5,15 +5,19 @@ function mostrarMetaAnidada($meta)
 
 	$htmlTemp.='<li>'.
 		$meta->desc_meta.' <input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(\'\', $(this).parent(), '.$meta->id_meta.')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="+P" onclick="renderizarAgregarPartida($(this).parent(), '.$meta->id_meta.')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarMeta('.$meta->id_meta.', this);" style="width: 30px;">'.
-		'<ul style="background-color: #f5f5f5;">';
+		((count($meta->childMeta)==0 && count($meta->childPartida))>0 ? '<table><tbody>' : '<ul>');
 
 	if(count($meta->childMeta)==0)
 	{
 		foreach($meta->childPartida as $key => $value)
 		{
-			$htmlTemp.='<li style="color: blue;" class="liPartida">'.
-				'<b>'.$value->desc_partida.'</b> | '.$value->rendimiento.' | '.$value->descripcion.' | '.$value->cantidad.' <input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida('.$value->id_partida.', this);" style="width: 30px;">'.
-			'</li>';
+			$htmlTemp.='<tr style="color: blue;" class="liPartida">'.
+				'<td style="padding-left: 10px;"><b>&#9658;'.$value->desc_partida.'</b></td>'.
+				'<td style="padding-left: 4px;">'.$value->rendimiento.'</td>'.
+				'<td style="padding-left: 4px;text-align: center;">'.$value->descripcion.'</td>'.
+				'<td style="padding-left: 4px;text-align: center;">'.$value->cantidad.'</td>'.
+				'<td style="padding-left: 4px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida('.$value->id_partida.', this);" style="width: 30px;"></td>'.
+			'</tr>';
 		}
 	}
 
@@ -22,7 +26,7 @@ function mostrarMetaAnidada($meta)
 		$htmlTemp.=mostrarMetaAnidada($value);
 	}
 
-	$htmlTemp.='</ul>'.
+	$htmlTemp.=((count($meta->childMeta)==0 && count($meta->childPartida))>0 ? '</tbody></table>' : '</ul>').
 	'</li>';
 
 	return $htmlTemp;
@@ -235,7 +239,7 @@ function mostrarMetaAnidada($meta)
 
 	function agregarMeta(idComponente, elementoPadre, idMetaPadre)
 	{
-		if($($(elementoPadre).find('ul')[0]).find('> .liPartida').length>0)
+		if($($(elementoPadre).find('table')[0]).find('> tbody > .liPartida').length>0)
 		{
 			swal(
 			{
@@ -351,7 +355,7 @@ function mostrarMetaAnidada($meta)
 
 		var existePartida=false;
 
-		$($(elementoPadreParaAgregarPartida).find('ul')[0]).find('> li > b').each(function(index, element)
+		$($(elementoPadreParaAgregarPartida).find('table')[0]).find('> tbody > tr > td > b').each(function(index, element)
 		{
 			if(replaceAll($(element).text(), ' ', '').toLowerCase()==replaceAll($('#txtDescripcionPartida').val(), ' ', '').toLowerCase())
 			{
@@ -391,11 +395,20 @@ function mostrarMetaAnidada($meta)
 				return false;
 			}
 
-			var htmlTemp='<li style="color: blue;" class="liPartida">'+
-				'<b>'+$('#txtDescripcionPartida').val().trim()+'</b> | '+$('#txtRendimientoPartida').val().trim()+' | '+objectJSON.descripcionUnidadMedida+' | '+parseFloat($('#txtCantidadPartida').val()).toFixed(2)+' <input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida('+objectJSON.idPartida+', this);" style="width: 30px;">'+
-			'</li>';
+			var htmlTemp='<tr style="color: blue;" class="liPartida">'+
+				'<td style="padding-left: 10px;"><b>&#9658;'+$('#txtDescripcionPartida').val().trim()+'</b></td>'+
+				'<td style="padding-left: 4px;">'+$('#txtRendimientoPartida').val().trim()+'</td>'+
+				'<td style="padding-left: 4px;text-align: center;">'+objectJSON.descripcionUnidadMedida+'</td>'+
+				'<td style="padding-left: 4px;text-align: center;">'+parseFloat($('#txtCantidadPartida').val()).toFixed(2)+'</td>'+
+				'<td style="padding-left: 4px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida('+objectJSON.idPartida+', this);" style="width: 30px;"></td>'+
+			'</tr>';
 
-			$($(elementoPadreParaAgregarPartida).find('ul')[0]).append(htmlTemp);
+			if(!($(elementoPadreParaAgregarPartida).find('table').length))
+			{
+				$($(elementoPadreParaAgregarPartida).find('ul')[0]).replaceWith('<table><tbody></tbody></table>');
+			}
+
+			$($(elementoPadreParaAgregarPartida).find('table > tbody')[0]).append(htmlTemp);
 
 			limpiarArbolCompletoMasOpciones();
 		}, false, true);
@@ -420,7 +433,14 @@ function mostrarMetaAnidada($meta)
 			},
 			function(){});
 
-			$(element).parent().remove();
+			var tBodyTemporal=$(element).parent().parent().parent();
+
+			$(element).parent().parent().remove();
+
+			if(!($(tBodyTemporal).find('tr').length))
+			{
+				$($(tBodyTemporal).parent()[0]).replaceWith('<ul></ul>');
+			}
 
 			limpiarArbolCompletoMasOpciones();
 		}, false, true);
