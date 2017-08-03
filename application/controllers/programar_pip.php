@@ -49,6 +49,15 @@ class programar_pip extends CI_Controller
             show_404();
         }
     }
+    public function GetAnioCarteraProgramado()
+    {
+        if ($this->input->is_ajax_request()) {
+            $datos = $this->programar_pip_modal->GetAnioCarteraProgramado();
+            echo json_encode($datos);
+        } else {
+            show_404();
+        }
+    }
     //Agregar Programacion
     public function AddProgramacion()
     {

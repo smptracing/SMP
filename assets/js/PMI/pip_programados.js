@@ -109,7 +109,7 @@ var listar_aniocartera_=function(valor){ //listar ani cartera operacion y manten
                     $("#Cbx_AnioCartera_").html(html);
                     event.preventDefault();
                     $.ajax({
-                        "url":base_url +"index.php/programar_pip/GetAnioCartera",
+                        "url":base_url +"index.php/programar_pip/GetAnioCarteraProgramado",
                         type:"POST",
                         success:function(respuesta3){
                          //  alert(respuesta);
@@ -139,7 +139,7 @@ var listar_aniocartera_Ejecucion=function(valor){ //listar ani cartera operacion
                     $("#Cbx_AnioCartera_Ejecucion").html(html);
                     event.preventDefault();
                     $.ajax({
-                        "url":base_url +"index.php/programar_pip/GetAnioCartera",
+                        "url":base_url +"index.php/programar_pip/GetAnioCarteraProgramado",
                         type:"POST",
                         success:function(respuesta3){
                          //  alert(respuesta);
@@ -166,7 +166,7 @@ var listar_aniocartera_operacion_mant=function(valor){ //listar ani cartera oper
                     $("#Cbx_AnioCartera_operacion_mant").html(html);
                     event.preventDefault();
                     $.ajax({
-                        "url":base_url +"index.php/programar_pip/GetAnioCartera",
+                        "url":base_url +"index.php/programar_pip/GetAnioCarteraProgramado",
                         type:"POST",
                         success:function(respuesta3){
                          //  alert(respuesta);
@@ -187,7 +187,6 @@ var listar_aniocartera_operacion_mant=function(valor){ //listar ani cartera oper
                           var anio=$("#Cbx_AnioCartera_operacion_mant").val();
                             lista_programados_operacion_mant(anio);
                         });
-
 /*Idioma de datatablet table-sector */
             var idioma_espanol=
                 {
