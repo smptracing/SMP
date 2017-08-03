@@ -7,6 +7,7 @@ class Expediente_Tecnico extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Model_ET_Expediente_Tecnico');
+		$this->load->model('Model_ET_Componente');
 	}
 
 	function _load_layout($template)
@@ -210,6 +211,20 @@ class Expediente_Tecnico extends CI_Controller
 
 	    $nombre_archivo = utf8_decode("Ficha Técnica del Proyecto".$prov.".pdf");
 	    $pdf->Output($nombre_archivo, 'I');
+	}
+	public function reportePdfMetrado($id_ExpedienteTecnico)
+	{
+		$opcion="BuscarExpedienteID";
+		$listaExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoSelectBuscarId($opcion,$id_ExpedienteTecnico);
+		 
+		var_dump($listaExpedienteTecnico);
+		foreach($listaExpedienteTecnico as $key => $value)
+	    {
+	    	$value->childComponente=$this->Model_ET_Componente->ETComponentePorIdET($value->id_et);
+	    }
+	    var_dump($this->Model_ET_Componente->ETComponentePorIdET($id_ExpedienteTecnico));exit;
+		    
+	
 	}
 
 	public function index()

@@ -27,4 +27,10 @@ class Model_ET_Expediente_Tecnico extends CI_Model
 
         return $BuscarExpedienteExpediente->result()[0];
 	}
+	public function ExpedienteTecnicoSelectBuscarId($opcion,$id_ExpedienteTecnico)
+	{
+		$BuscarExpedienteExpediente=$this->db->query("execute sp_Gestionar_ET_Expediente_Tecnico @Opcion='".$opcion."' , @id_et='".$id_ExpedienteTecnico."'");
+
+        return $BuscarExpedienteExpediente->result()[0];
+	}
 }
