@@ -13,13 +13,31 @@ class ET_Meta extends CI_Controller
 
 	public function insertar()
 	{
+		$this->db->trans_start();
+
 		$idComponente=$this->input->post('idComponente');
 		$idMetaPadre=$this->input->post('idMetaPadre');
 		$descripcionMeta=$this->input->post('descripcionMeta');
 
+		if(count($this->Model_ET_Meta->ETMetaPorIdComponenteOrIdMetaPadreAndDescMeta($idComponente, $idMetaPadre, $descripcionMeta))>0)
+		{
+			$this->db->trans_rollback();
+
+			echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede agregar dos metas iguales en el mismo nivel.']);exit;
+		}
+
+		if($idComponente=='' && count($this->Model_ET_Partida->ETPartidaPorIdMeta($idMetaPadre))>0)
+		{
+			$this->db->trans_rollback();
+
+			echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede agregar submeta al mismo nivel que una partida.']);exit;
+		}
+
 		$this->Model_ET_Meta->insertar(($idComponente=='' ? null : $idComponente), ($idMetaPadre=='' ? null : $idMetaPadre), $descripcionMeta);
 
 		$ultimoIdMeta=$this->Model_ET_Meta->ultimoId();
+
+		$this->db->trans_complete();
 
 		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Meta registrada correctamente.', 'idMeta' => $ultimoIdMeta]);exit;
 	}
@@ -28,11 +46,15 @@ class ET_Meta extends CI_Controller
 	{
 		if($_POST)
 		{
+			$this->db->trans_start();
+
 			$idMeta=$this->input->post('idMeta');
 
 			$meta=$this->Model_ET_Meta->ETMetaPorIdMeta($idMeta);
 
 			$this->eliminarMetaAnidada($meta);
+
+			$this->db->trans_complete();
 
 			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Meta eliminada correctamente.']);exit;
 		}

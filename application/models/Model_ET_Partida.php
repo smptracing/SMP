@@ -29,6 +29,13 @@ class Model_ET_Partida extends CI_Model
 		return $data->result();
 	}
 
+	public function ETPartidaPorIdMetaAndDescPartida($idMeta, $descripcion)
+	{
+		$data=$this->db->query("select * from ET_PARTIDA where id_meta='".$idMeta."' and replace(desc_partida, ' ', '')=replace('".$descripcion."', ' ', '')");
+
+		return $data->result();
+	}
+
 	function eliminar($idPartida)
 	{
 		$this->db->query("delete from ET_PARTIDA where id_partida=".$idPartida);

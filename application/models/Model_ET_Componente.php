@@ -29,6 +29,13 @@ class Model_ET_Componente extends CI_Model
 		return $data->result();
 	}
 
+	public function ETComponentePorIdETAndDescripcion($idExpedienteTecnico, $descripcion)
+	{
+		$data=$this->db->query("select * from ET_COMPONENTE where id_et='".$idExpedienteTecnico."' and replace(descripcion, ' ', '')=replace('".$descripcion."', ' ', '')");
+
+		return $data->result();
+	}
+
 	function eliminar($idComponente)
 	{
 		$this->db->query("delete from ET_COMPONENTE where id_componente=".$idComponente);

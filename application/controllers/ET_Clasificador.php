@@ -21,6 +21,7 @@ class ET_Clasificador extends CI_Controller
 	{
 		if($_POST)
 		{
+			$this->db->trans_start(); 
 			$opcion="C";
 			$txtNumeroClasi=$this->input->post('txtNumeroClasi');
 			$txtDescripcionClasi=$this->input->post('txtDescripcionClasi');
@@ -30,6 +31,7 @@ class ET_Clasificador extends CI_Controller
             	echo json_encode(['proceso' => 'error', 'mensaje' => 'Datos Duplicados de la Descripción.']);exit;
             }
 			$this->Model_ET_Clasificador->insertar($opcion,$txtNumeroClasi,$txtDescripcionClasi,$txtDetalleClasi);
+			$this->db->trans_complete();
 			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Dastos registrados correctamente.']);exit;
 		}
 
@@ -40,6 +42,7 @@ class ET_Clasificador extends CI_Controller
 	{
 		if($this->input->post('hdIdClasificadro'))
 		{	
+			$this->db->trans_start(); 
 			$opcion="U";
 			$hdIdClasificadro=$this->input->post('hdIdClasificadro');
 			$txtNumeroClasi=$this->input->post('txtNumeroClasi');
@@ -50,7 +53,7 @@ class ET_Clasificador extends CI_Controller
             	echo json_encode(['proceso' => 'error', 'mensaje' => 'Este tipo de descripcion ya fue registrado con anterioridad .']);exit;
             }
 			$this->Model_ET_Clasificador->editar($opcion,$hdIdClasificadro,$txtNumeroClasi,$txtDescripcionClasi,$txtDetalleClasi);
-
+			$this->db->trans_complete();
 			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos Editados Correctamente.', 'txtNumeroClasi' => $txtNumeroClasi]);exit;
 
 		}

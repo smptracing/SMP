@@ -13,9 +13,10 @@ class PipProgramados extends CI_Controller
     public function GetPipProgramadosFormulacionEvaluacion()
     {
         if ($this->input->is_ajax_request()) {
-            $flat  = "listarpip_formulacion_evaluacion";
-            $datos = $this->PipProgramados_Model->GetPipProgramadosFormulacionEvaluacion($flat);
-            echo json_encode($datos);
+            $flat = "listarpip_formulacion_evaluacion_programado";
+            $anio = $this->input->post("anio");
+            $data = $this->PipProgramados_Model->GetPipProgramadosFormulacionEvaluacion($flat, $anio);
+            echo json_encode(array('data' => $data));
         } else {
             show_404();
         }

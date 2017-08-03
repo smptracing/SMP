@@ -6,6 +6,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>SMP-APURIMAC</title>
+		<script src="<?php echo base_url(); ?>assets/ckeditor/ckeditor.js"></script>
+
 	<link href="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/vendors/nprogress/nprogress.css" rel="stylesheet">
@@ -23,6 +25,7 @@
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/formValidation.min.css">
 	<script src="<?php echo base_url(); ?>assets/js/Helper/jsHelper.js"></script>
 	<script src="<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
+
 	<script>
 		var base_url = '<?php echo base_url(); ?>';
 	</script>
@@ -58,8 +61,12 @@
 										<li><a href="<?php echo site_url('ET_Etapa_Ejecucion/index'); ?>">Etapa Ejecución</a></li>
 										<li><a href="<?php echo site_url('ET_Clasificador/index'); ?>">Clasificador</a></li>
 										<li><a href="<?php echo site_url('CronogramaValorizacion/index'); ?>">Cronograma Valoración</a></li>
-										<li><a href="<?php echo site_url('Expediente_Tecnico/reportePdfEcpedienteTecnico'); ?>">Ficha Expediente</a></li>
 
+									</ul>
+								</li> 
+								<li><a><i class="fa fa-book"></i> EXPEDIENTE TÉCNICO <span class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a href="<?php echo site_url('Expediente_Tecnico/index'); ?>">Expediente técnico</a></li>
 									</ul>
 								</li> 
 							</ul>

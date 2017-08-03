@@ -190,7 +190,7 @@
                                <div class="col-md-3 col-sm-6 col-xs-12">
                                       <label>Código Único</label>
                                       <input  class="form-control" id="txt_codigo_unico_pi" name="txt_codigo_unico_pi" type="text" disabled="disabled">
-                                    </div>
+                                </div>
                                   <div class="col-md-9 col-sm-6 col-xs-12">
                                       <label>Nombre del Proyecto</label>
                                       <input  class="form-control" id="txt_nombre_proyecto" name="txt_nombre_proyecto" type="text" disabled="disabled">

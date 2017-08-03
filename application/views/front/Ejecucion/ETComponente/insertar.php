@@ -31,9 +31,9 @@ function mostrarMetaAnidada($meta)
 <div class="form-horizontal">
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
-			<label class="control-label">Expediente técnico</label>
+			<label class="control-label">Nombre del proyecto de inversión</label>
 			<div>
-				<input type="text" id="txtNombreProyectoInversion" name="txtNombreProyectoInversion" class="form-control" autocomplete="off" value="Nombre del proyecto de inversión" readonly="readonly">
+				<textarea name="txtNombreProyectoInversion" id="txtNombreProyectoInversion" rows="3" class="form-control" style="resize: none;resize: vertical;" readonly="readonly"><?=$expedienteTecnico->nombre_pi?></textarea>
 			</div>
 		</div>
 	</div>
@@ -84,7 +84,7 @@ function mostrarMetaAnidada($meta)
 	<hr style="margin-top: 4px;">
 	<div class="row" style="height: 300px;overflow-y: scroll;">
 		<div class="col-md-12 col-sm-12 col-xs-12" style="font-size: 12px;">
-			<ul id="ulComponenteMetaPartida" style="background-color: #f5f5f5;">
+			<ul id="ulComponenteMetaPartida" style="background-color: #f5f5f5;list-style-type: upper-roman;">
 				<?php foreach($expedienteTecnico->childComponente as $key => $value){ ?>
 					<li>
 						<b><?=$value->descripcion?></b> <input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(<?=$value->id_componente?>, $(this).parent(), '');" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarComponente(<?=$value->id_componente?>, this);" style="width: 30px;">
@@ -130,9 +130,9 @@ function mostrarMetaAnidada($meta)
 
 		var existeComponente=false;
 
-		$('#ulComponenteMetaPartida').find('li').each(function(index, element)
+		$('#ulComponenteMetaPartida').find('> li > b').each(function(index, element)
 		{
-			if(replaceAll($(element).text(), ' ', '')==replaceAll($('#txtDescripcionComponente').val(), ' ', ''))
+			if(replaceAll($(element).text(), ' ', '').toLowerCase()==replaceAll($('#txtDescripcionComponente').val(), ' ', '').toLowerCase())
 			{
 				existeComponente=true;
 
@@ -142,7 +142,13 @@ function mostrarMetaAnidada($meta)
 
 		if(existeComponente)
 		{
-			alert('No se puede agregar dos veces el mismo componente.');
+			swal(
+			{
+				title: '',
+				text: 'No se puede agregar dos veces el mismo componente.',
+				type: 'error'
+			},
+			function(){});
 
 			return;
 		}
@@ -158,6 +164,11 @@ function mostrarMetaAnidada($meta)
 				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
 			},
 			function(){});
+
+			if(objectJSON.proceso=='Error')
+			{
+				return false;
+			}
 
 			var htmlTemp='<li>'+
 				'<b>'+$('#txtDescripcionComponente').val().trim()+'</b> <input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta('+objectJSON.idComponente+', $(this).parent(), \'\');" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarComponente('+objectJSON.idComponente+', this);" style="width: 30px;">'+
@@ -179,14 +190,27 @@ function mostrarMetaAnidada($meta)
 			return;
 		}
 
-		$(element).parent().remove();
+		paginaAjaxJSON({ "idComponente" : idComponente }, base_url+'index.php/ET_Componente/eliminar', 'POST', null, function(objectJSON)
+		{
+			objectJSON=JSON.parse(objectJSON);
 
-		limpiarArbolCompletoMasOpciones();
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+			},
+			function(){});
+
+			$(element).parent().remove();
+
+			limpiarArbolCompletoMasOpciones();
+		}, false, true);
 	}
 
 	function eliminarMeta(idMeta, element)
 	{
-		if(!confirm('Al borrar meta se eliminará todas las sub metas y partidas asociadas. ¿Realmente desea proseguir con la operaición?'))
+		if(!confirm('Al borrar meta se eliminará todas las sub metas y partidas asociadas. ¿Realmente desea proseguir con la operación?'))
 		{
 			return;
 		}
@@ -213,7 +237,13 @@ function mostrarMetaAnidada($meta)
 	{
 		if($($(elementoPadre).find('ul')[0]).find('> .liPartida').length>0)
 		{
-			alert('No se puede agregar submeta al mismo nivel que una partida.');
+			swal(
+			{
+				title: '',
+				text: 'No se puede agregar submeta al mismo nivel que una partida.',
+				type: 'error'
+			},
+			function(){});
 
 			return;
 		}
@@ -229,7 +259,7 @@ function mostrarMetaAnidada($meta)
 
 		$($(elementoPadre).find('ul')[0]).find('> li').each(function(index, element)
 		{
-			if(replaceAll($(element).text(), ' ', '')==replaceAll(descripcionMeta, ' ', ''))
+			if(replaceAll($(element).text(), ' ', '').toLowerCase()==replaceAll(descripcionMeta, ' ', '').toLowerCase())
 			{
 				existeMeta=true;
 
@@ -239,7 +269,13 @@ function mostrarMetaAnidada($meta)
 
 		if(existeMeta)
 		{
-			alert('No se puede agregar dos metas iguales en el mismo nivel.');
+			swal(
+			{
+				title: '',
+				text: 'No se puede agregar dos metas iguales en el mismo nivel.',
+				type: 'error'
+			},
+			function(){});
 
 			return;
 		}
@@ -255,6 +291,11 @@ function mostrarMetaAnidada($meta)
 				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
 			},
 			function(){});
+
+			if(objectJSON.proceso=='Error')
+			{
+				return false;
+			}
 
 			var htmlTemp='<li>'+
 				descripcionMeta.trim()+' <input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(\'\', $(this).parent(), '+objectJSON.idMeta+')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="+P" onclick="renderizarAgregarPartida($(this).parent(), '+objectJSON.idMeta+')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarMeta('+objectJSON.idMeta+', this);" style="width: 30px;">'+
@@ -275,7 +316,13 @@ function mostrarMetaAnidada($meta)
 		
 		if($($(elementoPadre).find('ul')[0]).find('input[value="+M"]').length)
 		{
-			alert('No se puede agregar partida a una meta antecesora de otra.');
+			swal(
+			{
+				title: '',
+				text: 'No se puede agregar partida a una meta antecesora de otra.',
+				type: 'error'
+			},
+			function(){});
 
 			return;
 		}
@@ -306,7 +353,7 @@ function mostrarMetaAnidada($meta)
 
 		$($(elementoPadreParaAgregarPartida).find('ul')[0]).find('> li > b').each(function(index, element)
 		{
-			if(replaceAll($(element).text(), ' ', '')==replaceAll($('#txtDescripcionPartida').val(), ' ', ''))
+			if(replaceAll($(element).text(), ' ', '').toLowerCase()==replaceAll($('#txtDescripcionPartida').val(), ' ', '').toLowerCase())
 			{
 				existePartida=true;
 
@@ -316,7 +363,13 @@ function mostrarMetaAnidada($meta)
 
 		if(existePartida)
 		{
-			alert('No se puede agregar dos partidas iguales en el mismo nivel.');
+			swal(
+			{
+				title: '',
+				text: 'No se puede agregar dos partidas iguales en el mismo nivel.',
+				type: 'error'
+			},
+			function(){});
 
 			return;
 		}
@@ -332,6 +385,11 @@ function mostrarMetaAnidada($meta)
 				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
 			},
 			function(){});
+
+			if(objectJSON.proceso=='Error')
+			{
+				return false;
+			}
 
 			var htmlTemp='<li style="color: blue;" class="liPartida">'+
 				'<b>'+$('#txtDescripcionPartida').val().trim()+'</b> | '+$('#txtRendimientoPartida').val().trim()+' | '+objectJSON.descripcionUnidadMedida+' | '+parseFloat($('#txtCantidadPartida').val()).toFixed(2)+' <input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida('+objectJSON.idPartida+', this);" style="width: 30px;">'+

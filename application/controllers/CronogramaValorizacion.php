@@ -21,15 +21,16 @@ class CronogramaValorizacion extends CI_Controller
 	{
 		if($_POST)
 		{
+			$this->db->trans_start();
 			$option="C";
 			$txtCronogramaValorizacion=$this->input->post('txtCronogramaValorizacion');
 			if(count($this->Model_CronogramaValorizacion->ValidarCronogramaValorizacion($txtCronogramaValorizacion))>0)
             {
             	echo json_encode(['proceso' => 'error', 'mensaje' => 'Este dato fue registrado con anterioridado.']);exit;
             }
-
 			$this->Model_CronogramaValorizacion->insertar($option,$txtCronogramaValorizacion);
-			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Dastos registrados correctamente.', 'txtCronogramaValorizacion' => $txtCronogramaValorizacion]);exit;
+			$this->db->trans_complete();
+			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Dastos registrados correctamente.']);exit;
 		}
 		$this->load->view('Front/Ejecucion/CronogramaValorizacion/insertar');
 	}
@@ -37,6 +38,7 @@ class CronogramaValorizacion extends CI_Controller
 	{
 		if($this->input->post('hdIdCronogramaValorizacion'))
 		{	
+			$this->db->trans_start();
 			$option="U";
 			$hdIdCronogramaValorizacion=$this->input->POST('hdIdCronogramaValorizacion');
 			$txtCronogramaValorizacion=$this->input->POST('txtCronogramaValorizacion');
@@ -45,7 +47,8 @@ class CronogramaValorizacion extends CI_Controller
             	echo json_encode(['proceso' => 'error', 'mensaje' => 'Este tipo de gasto ya fue registrado con anterioridad .']);exit;
             }
 			$CronogramaValoracion=$this->Model_CronogramaValorizacion->editar($option,$hdIdCronogramaValorizacion,$txtCronogramaValorizacion);
-			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Dastos Editados Correctamente.', 'txtCronogramaValorizacion' => $hdIdCronogramaValorizacion]);exit;
+			$this->db->trans_complete();
+			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Dastos Editados Correctamente.']);exit;
 
 		}
 		$id_valorizacion=$this->input->GET('id_valorizacion');

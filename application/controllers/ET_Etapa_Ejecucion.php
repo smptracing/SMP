@@ -21,6 +21,7 @@ class ET_Etapa_Ejecucion extends CI_Controller
 	{
 		if($_POST)
 		{
+			$this->db->trans_start(); 
 			$opcion="C";
 			$txtDescripcionEtapa=$this->input->post('txtDescripcionEtapa');
 			if(count($this->Model_ET_Etapa_Ejecucion->ValidarDescripcionEtapa($txtDescripcionEtapa))>0)
@@ -28,16 +29,16 @@ class ET_Etapa_Ejecucion extends CI_Controller
             	echo json_encode(['proceso' => 'error', 'mensaje' => 'Datos Duplicados .']);exit;
             }
 			$this->Model_ET_Etapa_Ejecucion->insertar($opcion,$txtDescripcionEtapa);
+			$this->db->trans_complete();
 			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Dastos registrados correctamente.']);exit;
-			
 		}
-		$this->load->view('Front/Ejecucion/ETEtapaEjecucion/insertar');
-	
+		$this->load->view('Front/Ejecucion/ETEtapaEjecucion/insertar');	
 	}
 	public function editar()
 	{
 		if($this->input->post('hdIdEtapaFE'))
 		{	
+			$this->db->trans_start(); 
 			$opcion="U";
 			$hdIdEtapaFE=$this->input->post('hdIdEtapaFE');
 			$txtDescripcionEtapa=$this->input->post('txtDescripcionEtapa');
@@ -46,8 +47,10 @@ class ET_Etapa_Ejecucion extends CI_Controller
             	echo json_encode(['proceso' => 'error', 'mensaje' => 'Este tipo de gasto ya fue registrado con anterioridad .']);exit;
             }
 			$this->Model_ET_Etapa_Ejecucion->editar($opcion,$hdIdEtapaFE,$txtDescripcionEtapa);
+			$this->db->trans_complete();
 			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Dastos Editados Correctamente.']);exit;	
 		}
+
 		$id_etapa_et=$this->input->Get('id_etapa_et');
 		$nombreEtapaEjecucion=$this->Model_ET_Etapa_Ejecucion->nombreEtapaEjecucion($id_etapa_et);
 	    $this->load->view('Front/Ejecucion/ETEtapaEjecucion/editar',['nombreEtapaEjecucion'=>$nombreEtapaEjecucion]);
