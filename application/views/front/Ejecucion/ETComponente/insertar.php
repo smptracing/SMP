@@ -84,7 +84,7 @@ function mostrarMetaAnidada($meta)
 	<hr style="margin-top: 4px;">
 	<div class="row" style="height: 300px;overflow-y: scroll;">
 		<div class="col-md-12 col-sm-12 col-xs-12" style="font-size: 12px;">
-			<ul id="ulComponenteMetaPartida" style="background-color: #f5f5f5;">
+			<ul id="ulComponenteMetaPartida" style="background-color: #f5f5f5;list-style-type: upper-roman;">
 				<?php foreach($expedienteTecnico->childComponente as $key => $value){ ?>
 					<li>
 						<b><?=$value->descripcion?></b> <input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(<?=$value->id_componente?>, $(this).parent(), '');" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarComponente(<?=$value->id_componente?>, this);" style="width: 30px;">

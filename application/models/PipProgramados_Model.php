@@ -7,10 +7,11 @@ class PipProgramados_Model extends CI_Model
         parent::__construct();
     }
     //listar formulacion y evaluacion del primer modulo PMI
-    public function GetPipProgramadosFormulacionEvaluacion($flat)
+    public function GetPipProgramadosFormulacionEvaluacion($flat, $anio)
     {
         $GetPipProgramadosFormulacionEvaluacion = $this->db->query("execute sp_ListarProyectoInversionProgramado'"
-            . $flat . "'");
+            . $flat . "','"
+            . $anio . "' ");
         if ($GetPipProgramadosFormulacionEvaluacion->num_rows() > 0) {
             return $GetPipProgramadosFormulacionEvaluacion->result();
         } else {
