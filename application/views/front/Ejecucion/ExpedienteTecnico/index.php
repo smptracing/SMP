@@ -79,7 +79,7 @@ function BuscarProyectocodigo()
 {
 	swal({
 	  title: "Buscar",
-	  text: "Proyecto: Ingrese código único del proyecto",
+	  text: "Proyecto: Ingrese Código Único del proyecto",
 	  type: "input",
 	  showCancelButton: true,
 	  closeOnConfirm: false,
