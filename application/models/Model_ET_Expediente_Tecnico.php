@@ -20,12 +20,17 @@ class Model_ET_Expediente_Tecnico extends CI_Model
         return $ListarExpedienteTecnico->result();
 	}
 
+	public function ExpedienteContarRegistros($codigo_unico_pi)
+	{
+		$NumeroExpedienteTecnico=$this->db->query("select count(distinct codigo_unico_pi) as numeoRegistroProyectoIn from PROYECTO_INVERSION  where codigo_unico_pi='".$codigo_unico_pi."' group by codigo_unico_pi");
+        return $NumeroExpedienteTecnico->result();
+	}
 	public function ExpedienteTecnicoBuscar($codigo_unico_pi)
 	{
 		$BuscarExpedienteExpediente=$this->db->query("execute sp_Expediente_Tecnico_Buscar1 @codigo_unico_pi='".$codigo_unico_pi."'");
-
-        return $BuscarExpedienteExpediente->result()[0];
+        return $BuscarExpedienteExpediente->result()[0];  
 	}
+
 
 	public function ExpedienteTecnicoSelectBuscarId($opcion,$id_ExpedienteTecnico)
 	{

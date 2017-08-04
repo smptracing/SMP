@@ -277,13 +277,22 @@ class Expediente_Tecnico extends CI_Controller
 			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos registrados correctamente.']);exit;  
 		}
 
-			//$this->load->view('front/Ejecucion/ExpedienteTecnico/insertar');
-
-			//BUSCAR EL PROYECTO DE INVERSION
-			$codigo_unico_pi=$this->input->get('CodigoUnico');
-			$Listarproyectobuscado=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoBuscar($codigo_unico_pi); //BUSCAR PIP
-			$this->load->view('front/Ejecucion/ExpedienteTecnico/insertar',['Listarproyectobuscado'=>$Listarproyectobuscado]);
+			if($this->input->get('buscar')=="true")
+			{
+				$codigo_unico_pi=$this->input->get('CodigoUnico');
+				$Listarproyectobuscado=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoBuscar($codigo_unico_pi); //BUSCAR PIP
+				$this->load->view('front/Ejecucion/ExpedienteTecnico/insertar',['Listarproyectobuscado'=>$Listarproyectobuscado]);
+			}
+			
 	}
+
+    function registroBuscarProyecto()
+    {
+    		$CodigoUnico=$this->input->get('inputValue');
+			$Registrosproyectobuscos=$this->Model_ET_Expediente_Tecnico->ExpedienteContarRegistros($CodigoUnico); //BUSCAR PIP
+			echo  json_encode($Registrosproyectobuscos);
+    }
+
 	function reportePdfMetrado($id_ExpedienteTecnico)
 	{
 	

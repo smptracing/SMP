@@ -10,7 +10,7 @@
 				<div class="row">
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<div class="x_panel">
-							<button onclick="codigo()" class="btn btn-primary"> NUEVO</button>
+							<button onclick="BuscarProyectocodigo()" class="btn btn-primary"> NUEVO</button>
 							<div class="x_title">
 								<div class="clearfix"></div>
 							</div>
@@ -75,7 +75,7 @@
 			"language":idioma_espanol
 		});
 	});
-function codigo()
+function BuscarProyectocodigo()
 {
 	swal({
 	  title: "Buscar",
@@ -85,13 +85,26 @@ function codigo()
 	  closeOnConfirm: false,
 	  inputPlaceholder: "Ingrese Codigo Unico"
 	}, function (inputValue) {
-	  if (inputValue === false) return false;
-	  if (inputValue === "") {
-	    swal.showInputError("Ingrese Codigo Unico!");
-	    return false
-	  }
-	  paginaAjaxDialogo(null, 'Registrar Expediente Técnico',{CodigoUnico:inputValue}, base_url+'index.php/Expediente_Tecnico/insertar', 'GET', null, null, false, true);
-	  swal("Correcto!", "Correcto: " + inputValue, "success");
+
+	   event.preventDefault();
+			$.ajax({
+				"url":base_url+"index.php/Expediente_Tecnico/registroBuscarProyecto",
+				type:"GET", 
+				data:{inputValue:inputValue},
+				cache:false,
+				success:function(resp){
+					var ProyetoEncontrado=eval(resp);
+					if(ProyetoEncontrado.length==1){
+							var buscar="true";
+							paginaAjaxDialogo(null, 'Registrar Expediente Técnico',{CodigoUnico:inputValue,buscar:buscar}, base_url+'index.php/Expediente_Tecnico/insertar', 'GET', null, null, false, true);
+	  						swal("Correcto!", "Se Encontro el Proyecto: " + inputValue, "success");
+					}else{
+							swal.showInputError("No se encontro el  Codigo Unico. Intente Nuevamente!");
+	    					return false
+					}
+					
+				}
+			});
 	});
 
 }
