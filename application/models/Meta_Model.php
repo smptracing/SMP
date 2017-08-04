@@ -45,7 +45,7 @@ class Meta_Model extends CI_Model
             return false;
         }
     }
-    //Add meta presupuestal
+    //eliminar meta presupuestal
     public function Eliminar_meta_prepuestal($flat, $id_meta_pres)
     {
         $this->db->query("execute sp_Gestionar_Meta_Presupuestal'"

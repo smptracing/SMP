@@ -62,7 +62,8 @@
 										<li><a href="<?php echo site_url('ET_Etapa_Ejecucion/index'); ?>">Etapa Ejecución</a></li>
 										<li><a href="<?php echo site_url('ET_Clasificador/index'); ?>">Clasificador</a></li>
 										<li><a href="<?php echo site_url('CronogramaValorizacion/index'); ?>">Cronograma Valoración</a></li>
-
+										<li><a href="<?php echo site_url('ET_Tipo_Responsable/index'); ?>">Tipo de responsable</a></li>
+										
 									</ul>
 								</li> 
 								<li><a><i class="fa fa-book"></i> EXPEDIENTE TÉCNICO <span class="fa fa-chevron-down"></span></a>

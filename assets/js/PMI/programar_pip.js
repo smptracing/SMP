@@ -244,6 +244,7 @@ $(document).on("ready" ,function(){
 //listar meta proyecto
  var listar_meta_pi=function(id_pi)
                 {
+                  
                     var table=$("#Table_meta_pi").DataTable({
                       "processing": true,
                       "serverSide":false,
@@ -258,10 +259,46 @@ $(document).on("ready" ,function(){
                                     {"data":"anio"},
                                     {"data":"pia_meta_pres"},
                                     {"data":"pim_meta_pres"},
-                                    {"data":"devengado_meta_pres"}
-                                    //{"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaupdateEstadoFE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
+                                    {"data":"devengado_meta_pres"},
+                                    {"defaultContent":"<button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
                                "language":idioma_espanol
+                    });
+                    //$('#Table_meta_pi').dataTable()._fnAjaxUpdate();
+                     EliminarMetaPresupuestalPi("#Table_meta_pi",table);
+                     $('#Table_meta_pi').dataTable()._fnAjaxUpdate();
+                }
+//eliminar metal presupuestal
+var EliminarMetaPresupuestalPi=function(tbody,table){
+                  $(tbody).on("click","button.eliminar",function(){
+                      var data=table.row( $(this).parents("tr")).data();
+                        var id_meta_pi=data.id_meta_pi;
+                        alert("eliminar modal");
+                        console.log(data);
+                         swal({
+                                title: "Desea eliminar ?",
+                                text: "",
+                                type: "warning",
+                                showCancelButton: true,
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "Yes,Eliminar",
+                                closeOnConfirm: false
+                              },
+                              function(){
+                                    $.ajax({
+                                          url:base_url+"index.php/programar_pip/Eliminar_meta_prepuestal_pi",
+                                          type:"POST",
+                                          data:{id_meta_pi:id_meta_pi},
+                                          success:function(respuesta){
+                                            //alert(respuesta);
+                                            swal("Se eliminó corectamente", ".", "success");
+                                            $('#Table_meta_pi').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
+                                            $('#table_formulacion_evaluacion').dataTable()._fnAjaxUpdate();
+                                            $('#table_ejecucion').dataTable()._fnAjaxUpdate();
+                                            $('#Table_funcionamiento').dataTable()._fnAjaxUpdate();
+                                          }
+                                        });
+                              });
                     });
                 }
 //Agregar META PIP
@@ -273,9 +310,10 @@ $(document).on("ready" ,function(){
                       $("#txt_id_pip_programacion_mp").val(data.id_pi);
                       $("#txt_costo_proyecto_mp").val(data.costo_pi);
                       $("#txt_nombre_proyecto_mp").val(data.nombre_pi);
-                      listar_Meta();
+                       listar_Meta();
                        listar_meta_pi(id_pi);
-                    });
+
+                  });
                 }
 
 //add programar para formulacion y evaluacion

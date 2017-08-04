@@ -256,7 +256,7 @@
                 </div>
                                        <div class="col-md-8">
                                           <br>
-                                           <label for="name">Reponsable<span class="required"></span>
+                                           <label for="name">Responsable<span class="required"></span>
                                             </label>
                                                  <select   id="listaResponsables" name="listaResponsables" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Responsable...">
                                                 </select>
@@ -407,11 +407,11 @@
                                           </div>
                                           </div>
 
-                                            <div class="form-group">
+                                          <div class="form-group">
                                             <label class="control-label col-md-2 col-sm-3 col-xs-12">Subir Documento</label>
                                                 <div class="col-md-9 col-sm-9 col-xs-12">
                                                 <input type="file" name="Documento_invserion">
-                                                  </div>
+                                                </div>
                                           </div>
                                             <div class="form-group">
                                               <div class="col-md-6 col-md-offset-3">

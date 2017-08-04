@@ -156,5 +156,17 @@ class programar_pip_modal extends CI_Model
             return false;
         }
     }
+    //eliminar meta presupuestal
+    public function Eliminar_meta_prepuestal($flat, $id_meta_pres)
+    {
+        $this->db->query("execute sp_Gestionar_Meta_Presupuestal_Pi'"
+            . $flat . "','"
+            . $id_meta_pres . "'");
+        if ($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 }
