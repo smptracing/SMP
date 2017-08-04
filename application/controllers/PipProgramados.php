@@ -21,6 +21,31 @@ class PipProgramados extends CI_Controller
             show_404();
         }
     }
+    //Listar proyectos programadsos en formulacion y evaluación
+    public function GetPipProgramadosEjecucion()
+    {
+        if ($this->input->is_ajax_request()) {
+            $flat = "listarpip_ejecucion_programado";
+            $anio = $this->input->post("anio");
+            $data = $this->PipProgramados_Model->GetPipProgramadosEjecucion($flat, $anio);
+            echo json_encode(array('data' => $data));
+        } else {
+            show_404();
+        }
+    }
+
+    //Listar proyectos programadsos en formulacion y evaluación
+    public function GetPipOperacionMantenimiento()
+    {
+        if ($this->input->is_ajax_request()) {
+            $flat = "listarpip_operacionmantenimiento_programado";
+            $anio = $this->input->post("anio");
+            $data = $this->PipProgramados_Model->GetPipOperacionMantenimiento($flat, $anio);
+            echo json_encode(array('data' => $data));
+        } else {
+            show_404();
+        }
+    }
 
     public function index()
     {

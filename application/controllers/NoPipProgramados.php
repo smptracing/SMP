@@ -9,8 +9,18 @@ class NoPipProgramados extends CI_Controller
         $this->load->model('NoPipProgramados_Model');
     }
     //PIP
-    //Listar programación en modal operacion y mantenimiento
-
+    //Listar No proyectos programados
+    public function GetNoPipProgramados()
+    {
+        if ($this->input->is_ajax_request()) {
+            $flat = "listarpip_formulacion_evaluacion_programado";
+            $anio = $this->input->post("anio");
+            $data = $this->NoPipProgramados_Model->GetNoPipProgramados($flat, $anio);
+            echo json_encode(array('data' => $data));
+        } else {
+            show_404();
+        }
+    }
     public function index()
     {
         $this->_load_layout('Front/Pmi/frmnopipprogramados');

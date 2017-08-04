@@ -37,10 +37,27 @@ class programar_pip_modal extends CI_Model
             return false;
         }
     }
-    //listar formulacion y evaluacion del primer modulo PMI
+    //listar anio cartera programar
     public function GetAnioCartera()
     {
         $GetAnioCartera = $this->db->query("select id_cartera,year(año_apertura_cartera) AS anio from CARTERA_INVERSION where estado_cartera='1'");
+        if ($GetAnioCartera->num_rows() > 0) {
+            return $GetAnioCartera->result();
+        } else {
+            return false;
+        }
+    }
+    //listar anio cartera  programado
+    public function GetAnioCarteraProgramado()
+    {
+        $GetAnioCartera = $this->db->query("SELECT cari.id_cartera,\n"
+            . "      YEAR(año_apertura_cartera) AS anio\n"
+            . "FROM   CARTERA_INVERSION cari\n"
+            . "      INNER JOIN PROGRAMACION prog ON prog.id_cartera = cari.id_cartera\n"
+            . "WHERE  estado_cartera = '1'\n"
+            . "GROUP BY cari.id_cartera,\n"
+            . "        YEAR(año_apertura_cartera)\n"
+            . "ORDER BY anio");
         if ($GetAnioCartera->num_rows() > 0) {
             return $GetAnioCartera->result();
         } else {

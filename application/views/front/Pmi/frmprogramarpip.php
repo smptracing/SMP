@@ -44,9 +44,7 @@
                                                         <div class="x_panel">
                                                           <div class="row" class="container-fluid">
 
-                                                                <div class="col-md-1">
-                                                                    <button id="btn-NuevoProyectoI" type="button" class="btn btn-primary " data-toggle="modal" data-target="#VentanaRegistraPIP">  <span class="fa fa-plus-circle"></span> Nuevo </button>
-                                                                </div>
+
 
                                                                 <div class="col-md-4">
                                                                </div>
@@ -81,9 +79,7 @@
                                                         <div class="x_panel">
                                                           <div class="row" class="container-fluid">
 
-                                                                <div class="col-md-1">
-                                                                    <button id="btn-NuevoProyectoI" type="button" class="btn btn-primary " data-toggle="modal" data-target="#VentanaRegistraPIP">  <span class="fa fa-plus-circle"></span> Nuevo </button>
-                                                                </div>
+
                                                                 <div class="col-md-4">
                                                                </div>
                                                           </div>
@@ -118,9 +114,7 @@
                                                         <div class="x_panel">
                                                           <div class="row" class="container-fluid">
 
-                                                                <div class="col-md-1">
-                                                                    <button id="btn-NuevoProyectoI" type="button" class="btn btn-primary " data-toggle="modal" data-target="#VentanaRegistraPIP">  <span class="fa fa-plus-circle"></span> Nuevo </button>
-                                                                </div>
+
                                                                 <div class="col-md-4">
                                                                </div>
                                                           </div>
