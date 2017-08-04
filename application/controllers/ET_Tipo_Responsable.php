@@ -28,5 +28,22 @@ class ET_Tipo_Responsable extends CI_Controller
 
         $this->load->view('front/Ejecucion/ETTipoResponsable/insertar');
     }
+     public function editar()
+    {
+
+        if($this->input->post('hdId'))
+        {
+            $flat  = "ACTUALIZAR";
+            $id=$this->input->post('hdId');
+            $txtDescripcion=$this->input->post('txtDescripcion');
+
+            $this->Model_ET_Tipo_Responsable->editar($flat,$id,$txtDescripcion);
+            echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos actualizados correctamente.']);exit;  
+        }
+        $id=$this->input->get('id');
+        $tiporesponsable=$this->Model_ET_Tipo_Responsable->TipoResponsable($id)[0];
+        
+        return $this->load->view('front/Ejecucion/ETTipoResponsable/editar',['tiporesponsable'=>$tiporesponsable]);
+    }
 
 }

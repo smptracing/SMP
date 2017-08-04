@@ -48,7 +48,6 @@
 																		<?=$item->desc_tipo_responsable_et?>
 															    	</td>
 																	<td>
-																  		<button type='button' class='editar btn btn-primary btn-xs'><i class='ace-icon fa fa-pencil bigger-120'></i></button>
 
 																	</td>
 															  </tr>

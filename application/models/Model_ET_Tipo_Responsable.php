@@ -22,4 +22,18 @@ class Model_ET_Tipo_Responsable extends CI_Model
 
         return $data->result();
     }
+
+    function TipoResponsable($id)
+    {
+        $data=$this->db->query("select * from ET_TIPO_RESPONSABLE where id_tipo_responsable_et='".$id."' ");
+
+        return $data->result();
+    }
+
+    function editar($flat,$id,$txtDescripcion)
+    {
+        $presupuestoejecucion=$this->db->query("execute sp_Gestionar_ET_Tipo_Responsable  @Opcion='".$flat."',@id_tipo_responsable_et='".$id."',@desc_tipo_responsable_et='".$txtDescripcion."'");
+
+        return true;
+    }
 }
