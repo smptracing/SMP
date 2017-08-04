@@ -227,9 +227,11 @@ class Expediente_Tecnico extends CI_Controller
 		if($_POST)
 		{
 			$flat  = "INSERTAR";
+			$txtIdPi=$this->input->post('txtIdPi');
 			$txtNombreUe=$this->input->post('txtNombreUe');
 			$txtDireccionUE=$this->input->post('txtDireccionUE');
-			$txtTelefono=$this->input->post('txtTelefono');
+			$txtUbicacionUE=$this->input->post('txtUbicacionUE');
+			$txtTelefonoUE=$this->input->post('txtTelefonoUE');
 			$txtRuc=$this->input->post('txtRuc');
 			$txtNombrePip=$this->input->post('txtNombrePip');
 			$txtUbicacionPip=$this->input->post('txtUbicacionPip');
@@ -253,7 +255,7 @@ class Expediente_Tecnico extends CI_Controller
 			$txtTiempoEjecucionPip=$this->input->post('txtTiempoEjecucionPip');
 			$txtNumBeneficiarios=$this->input->post('txtNumBeneficiarios');
 			$txtResponsableElaboracion=$this->input->post('txtResponsableElaboracion');
-			$txtNumBeneficiarios=$this->input->post('txtNumBeneficiarios');
+			$txtUrlDocAprobacion=$this->input->post('txtUrlDocAprobacion');
 			$txtDNI=$this->input->post('txtDNI');
 			$txtRegistroProfesional=$this->input->post('txtRegistroProfesional');
 			$txtDireccionElaborador=$this->input->post('txtDireccionElaborador');
@@ -264,10 +266,18 @@ class Expediente_Tecnico extends CI_Controller
 			$txtRegistroProEjecutor=$this->input->post('txtRegistroProEjecutor');
 			$txtDireccionEjecutor=$this->input->post('txtDireccionEjecutor');
 			$txtTelefonoEjecutor=$this->input->post('txtTelefonoEjecutor');
+			$txtSituacioActual=$this->input->post('txtSituacioActual');
+			$txtSituacioDeseada=$this->input->post('txtSituacioDeseada');
+			$txtContribucioInterv=$this->input->post('txtContribucioInterv');
+			$txtNumFolio=$this->input->post('txtNumFolio');
 
-			$this->Model_ET_Expediente_Tecnico->insertar($flat,$id_pi,$direccion_ue,$distrito_provincia_departamento_ue,$telefono_ue,$ruc_ue,$costo_total_preinv_et,$costo_directo_preinv_et,$costo_indirecto_preinv_et,$costo_total_inv_et,$costo_directo_inv_et,$gastos_generales_et,$gastos_supervision_et,$funcion_et,$programa_et,$sub_programa_et,$proyecto_et,$componente_et,$meta_et,$fuente_financiamiento_et,$modalidad_ejecucion_et,$num_beneficiarios_indirectos,$url_doc_aprobacion_et,$desc_situacion_actual_et,$desc_situacion_deseada_et,$contribucion_pi_a_desarrollo_local,$otra_informacion_et,$relevancia_economica_et,$resumen_pi_et,$num_folios); 
+			$this->Model_ET_Expediente_Tecnico->insertar($flat,$txtIdPi,$txtDireccionUE,$txtUbicacionUE,$txtTelefonoUE,$txtRuc,$txtCostoTotalPreInversion,$txtCostoDirectoPre,$txtCostoIndirectoPre,$txtCostoTotalInversion,$txtCostoDirectoInversion,$txtGastosGenerales,$txtGastosSupervision,$txtFuncion,$txtPrograma,$txtSubPrograma,$txtProyecto,$txtComponente,$txtMeta,$txtFuenteFinanciamiento,$txtModalidadEjecucion,$txtTiempoEjecucionPip,$txtNumBeneficiarios,$txtUrlDocAprobacion,$txtSituacioActual,$txtSituacioDeseada,$txtContribucioInterv,$txtNumFolio); 
+			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos registrados correctamente.']);exit;  
 		}
 
+			//$this->load->view('front/Ejecucion/ExpedienteTecnico/insertar');
+
+			//BUSCAR EL PROYECTO DE INVERSION
 			$codigo_unico_pi=$this->input->get('CodigoUnico');
 			$Listarproyectobuscado=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoBuscar($codigo_unico_pi); //BUSCAR PIP
 			$this->load->view('front/Ejecucion/ExpedienteTecnico/insertar',['Listarproyectobuscado'=>$Listarproyectobuscado]);
