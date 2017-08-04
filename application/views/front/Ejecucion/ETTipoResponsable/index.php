@@ -48,7 +48,7 @@
 																		<?=$item->desc_tipo_responsable_et?>
 															    	</td>
 																	<td>
-																  		<button type='button' class='editar btn btn-primary btn-xs'><i class='ace-icon fa fa-pencil bigger-120'></i></button>
+																  		<button type='button' class='editar btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Modificar Presupuesto', { id: '<?=$item->id_tipo_responsable_et?>'}, base_url+'index.php/ET_Tipo_Responsable/editar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-pencil bigger-120'></i></button>
 
 																	</td>
 															  </tr>
