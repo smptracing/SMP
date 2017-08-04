@@ -348,12 +348,13 @@
                     <center>
                     <table  id="Table_meta_pi" class="table   table-hover" >
                     <thead >
-                       <tr>
-                         <th  ><i class="fa fa-thumb-tack"></i> #</th>
-                         <th  ><i class="fa fa-thumb-tack"></i> Año </th>
-                         <th  ><i class="fa fa-thumb-tack"></i> PIA</th>
-                         <th  ><i class="fa fa-thumb-tack"></i> PIM</th>
-                         <th  ><i class="fa fa-thumb-tack"></i> Devengado</th>
+                      <tr>
+                         <th><i class="fa fa-thumb-tack"></i> #</th>
+                         <th><i class="fa fa-thumb-tack"></i> Año </th>
+                         <th><i class="fa fa-thumb-tack"></i> PIA</th>
+                         <th><i class="fa fa-thumb-tack"></i> PIM</th>
+                         <th><i class="fa fa-thumb-tack"></i> Devengado</th>
+                         <th><i class="fa fa-thumb-tack"></i> Opción</th>
                       </tr>
                     </thead>
                     </table>

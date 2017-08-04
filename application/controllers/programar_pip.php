@@ -162,7 +162,22 @@ class programar_pip extends CI_Controller
             show_404();
         }
     }
+    //eliminar metas pi
+    public function Eliminar_meta_prepuestal_pi()
+    {
+        if ($this->input->is_ajax_request()) {
+            $flat       = "D";
+            $id_meta_pi = $this->input->post("id_meta_pi");
+            if ($this->programar_pip_modal->Eliminar_meta_prepuestal($flat, $id_meta_pi) == true) {
+                echo "Se Eliminó  ";
+            } else {
+                echo "No se Eliminó ";
+            }
+        } else {
+            show_404();
+        }
 
+    }
     public function index()
     {
         $this->_load_layout('Front/Pmi/frmprogramarpip');
