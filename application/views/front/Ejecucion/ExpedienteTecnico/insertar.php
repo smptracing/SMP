@@ -5,7 +5,7 @@
 	}
 </style>
 <script src="ckeditor/ckeditor.js"></script>
-<form class="form-horizontal" id="form-addClasificador" action="<?php echo base_url();?>index.php/Clasificador/insertar" method="POST" >
+<form class="form-horizontal" id="form-addExpedienteTecnico" action="<?php echo base_url();?>index.php/Expediente_Tecnico/insertar" method="POST" >
 
 	<div class="row">
 
@@ -17,33 +17,34 @@
 						<div class="col-md-12 col-sm-3 col-xs-12">
 							<label class="control-label">Nombre de la Unidad Ejecutora</label>
 							<div>
+								<input id="txtIdPi" name="txtIdPi" value="<?= $Listarproyectobuscado->id_pi?>" class="form-control col-md-4 col-xs-12"  placeholder="Nombre del proyecto" required="required" autocomplete="off"  type="hidden">	
 								<input id="txtNombreUe" name="txtNombreUe" value="<?= $Listarproyectobuscado->nombre_ue?>" class="form-control col-md-4 col-xs-12"  placeholder="Nombre del proyecto" required="required" autocomplete="off" >	
 							</div>	
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-3 col-sm-3 col-xs-12">
-							<label class="control-label">Direccion</label>
+							<label class="control-label">Dirección</label>
 							<div>
-								<input id="txtDireccionUE" name="txtDireccionUE" value="" class="form-control col-md-4 col-xs-12"  placeholder="Nombre del proyecto" required="required" autocomplete="off" >	
+								<input id="txtDireccionUE" name="txtDireccionUE" value="" class="form-control col-md-4 col-xs-12"  placeholder="Dirección" required="required" autocomplete="off" >	
 							</div>	
 						</div>
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Distrito/Provincia/Departamento</label>
 							<div>
-								<input id="txtUbicacionUE" name="txtUbicacionUE" value="" class="form-control col-md-4 col-xs-12"  placeholder="Nombre del proyecto" required="required" autocomplete="off" >	
+								<input id="txtUbicacionUE" name="txtUbicacionUE" value="" class="form-control col-md-4 col-xs-12"  placeholder="Distrito/Provincia/Departamento" required="required" autocomplete="off" >	
 							</div>	
 						</div>
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Teléfono</label>
 							<div>
-								<input id="txtTelefono" name="txtTelefono" value="" class="form-control col-md-4 col-xs-12"  placeholder="Nombre del proyecto" required="required" autocomplete="off" >	
+								<input id="txtTelefonoUE" name="txtTelefonoUE" value="" class="form-control col-md-4 col-xs-12"  placeholder="Teléfono" required="required" autocomplete="off" >	
 							</div>	
 						</div>
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">RUC</label>
 							<div>
-								<input id="txtRuc" name="txtRuc" value="" class="form-control col-md-4 col-xs-12"  placeholder="Nombre del proyecto" required="required" autocomplete="off" >	
+								<input id="txtRuc" name="txtRuc" value="" class="form-control col-md-4 col-xs-12"  placeholder="RUC" required="required" autocomplete="off" >	
 							</div>	
 						</div>
 					</div>
@@ -51,7 +52,7 @@
 						<div class="col-md-12 col-sm-3 col-xs-12">
 							<label class="control-label">Nombre del Proyecto</label>
 							<div>
-								<input id="txtNombrePip" name="txtNombrePip" value="<?= $Listarproyectobuscado->nombre_pi?>" class="form-control col-md-4 col-xs-12"  placeholder="Nombre del proyecto" required="required" autocomplete="off" >	
+								<input id="txtNombrePip" name="txtNombrePip" value="<?= $Listarproyectobuscado->nombre_pi?>" class="form-control col-md-4 col-xs-12"  placeholder="Nombre del proyecto" required="required" autocomplete="off" >
 							</div>	
 						</div>
 					</div>
@@ -199,6 +200,14 @@
 					</div>
 					<div class="row">
 						<div class="col-md-12 col-sm-3 col-xs-12">
+							<label class="control-label">Url Documento de aprobacion</label>
+							<div>
+								<input id="txtUrlDocAprobacion" name="txtUrlDocAprobacion" class="form-control col-md-4 col-xs-12"  placeholder="Responable de la Elaboración del Proyecto" required="required" autocomplete="off" >
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 col-sm-3 col-xs-12">
 							<label class="control-label">Nombre del Responsable de la Elaboración del Proyecto</label>
 							<div>
 								<input id="txtResponsableElaboracion" name="txtResponsableElaboracion" class="form-control col-md-4 col-xs-12"  placeholder="Responable de la Elaboración del Proyecto" required="required" autocomplete="off" >
@@ -289,25 +298,31 @@
 					</div></br>
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12">
-							<label class="control-label">Descripción de la situación actual</label></br>
+							<label class="control-label">Sustento para la presentacion del proyecto</label></br>
 							<p><textarea name="txtSituacioActual" id="txtSituacioActual" rows="10" cols="80"></textarea></p>
 						</div>	
 					</div>
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12">
-							<label class="control-label">Descripción de la situación actual</label></br>
+							<label class="control-label">Relevancia Economica</label></br>
 							<p><textarea name="txtSituacioDeseada" id="txtSituacioDeseada" rows="10" cols="80"></textarea></p>
 						</div>	
 					</div>
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12">
-							<label class="control-label">Descripción de la situación actual</label></br>
+							<label class="control-label">Resumen del proyecto (Descripción)</label></br>
 							<p><textarea name="txtContribucioInterv" id="txtContribucioInterv" rows="10" cols="80"></textarea></p>
 						</div>	
 					</div>
-									
-
-
+						
+					<div class="row">
+						<div class="col-md-4 col-sm-3 col-xs-12">
+							<label class="control-label">Número de folios</label>
+							<div>
+								<input id="txtNumFolio" name="txtNumFolio" class="form-control col-md-4 col-xs-12"  placeholder="Número de folios" required="required" autocomplete="off" >
+							</div>
+						</div>	
+					</div>		
 				</div>
 
 			</div>
