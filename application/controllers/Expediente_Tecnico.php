@@ -8,7 +8,9 @@ class Expediente_Tecnico extends CI_Controller
 		parent::__construct();
 		$this->load->model('Model_ET_Expediente_Tecnico');
 		$this->load->model('Model_ET_Componente');
-		
+		$this->load->model('Model_ET_Meta');
+		$this->load->model('Model_ET_Partida');
+		$this->load->library('mydompdf');
 	}
 
 	function _load_layout($template)
@@ -284,13 +286,45 @@ class Expediente_Tecnico extends CI_Controller
 	}
 	function reportePdfMetrado($id_ExpedienteTecnico)
 	{
+	
 		$opcion="BuscarExpedienteID";
 		$MostraExpedienteTecnicoExpe=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoSelectBuscarId($opcion,$id_ExpedienteTecnico);
+
 	    $MostraExpedienteTecnicoExpe->childComponente=$this->Model_ET_Componente->ETComponentePorIdET($id_ExpedienteTecnico);
-	    
-	    var_dump($MostraExpedienteTecnicoExpe);exit;
+
+	    foreach ($MostraExpedienteTecnicoExpe->childComponente as $key => $value) 
+	    {
+			$value->childMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($value->id_componente);
+			foreach ($value->childMeta as $index => $item) 
+			{
+				$this->obtenerMetaAnidada($item);
+			}
+	    } 
+
+		$html= $this->load->view('front/Ejecucion/ExpedienteTecnico/reporteMetrado',['MostraExpedienteTecnicoExpe'=>$MostraExpedienteTecnicoExpe], true);
+		$this->mydompdf->load_html($html);
+		$this->mydompdf->render();
+		$this->mydompdf->stream("ReporteMetrado.pdf", array("Attachment" => false));
 	}
 
+	private function obtenerMetaAnidada($meta)
+	{
+		$temp=$this->Model_ET_Meta->ETMetaPorIdMetaPadre($meta->id_meta);
+
+		$meta->childMeta=$temp;
+
+		if(count($temp)==0)
+		{
+			$meta->childPartida=$this->Model_ET_Partida->ETPartidaPorIdMeta($meta->id_meta);
+
+			return false;
+		}
+
+		foreach($meta->childMeta as $key => $value)
+		{
+			$this->obtenerMetaAnidada($value);
+		}
+	}
 
 	
 }
