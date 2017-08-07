@@ -35,8 +35,43 @@ class PrincipalFyE extends CI_Controller
         show_404();
     }
     //fin estadistica
-    
+    public function EstudioInvPorTipoEstudio()
+    {
+        if ($this->input->is_ajax_request()) {
+            $datos = $this->Model_DashboardFE->EstudioInvPorTipoEstudio();
+            echo json_encode($datos);
+        } else
+        show_404();
+    }
+    public function EstudioInvPorProvincia()
+    {
+        if ($this->input->is_ajax_request()) {
+            $datos = $this->Model_DashboardFE->EstudioInvPorProvincia();
+            echo json_encode($datos);
+        } else
+        show_404();
+    }
 
+    public function TipoGastoMontos()
+    {
+        if ($this->input->is_ajax_request()) {
+            $datos = $this->Model_DashboardFE->TipoGastoMontos();
+            echo json_encode($datos);
+        } else {
+            show_404();
+        }
+    }
+
+    public function AvanceCostoInv()
+    {
+        if ($this->input->is_ajax_request()) {
+            $datos = $this->Model_DashboardFE->AvanceCostoInv();
+            echo json_encode($datos);
+        } else {
+            show_404();
+        }
+    }
+    
     public function getDatosEstudiosInversionNotificacion()
     {
         if ($this->input->is_ajax_request()) {
@@ -45,6 +80,8 @@ class PrincipalFyE extends CI_Controller
         } else {
             show_404();
         }
-
     }
+
+ 
+
 }

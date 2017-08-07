@@ -85,8 +85,15 @@ function BuscarProyectocodigo()
 	  closeOnConfirm: false,
 	  inputPlaceholder: "Ingrese Codigo Unico"
 	}, function (inputValue) {
-
-	   event.preventDefault();
+	
+	if (inputValue === "")
+	  {
+	  	swal.showInputError("Ingresar codigo!");
+    	return false
+	 }
+	 else 
+	{
+			event.preventDefault();
 			$.ajax({
 				"url":base_url+"index.php/Expediente_Tecnico/registroBuscarProyecto",
 				type:"GET", 
@@ -105,7 +112,10 @@ function BuscarProyectocodigo()
 					
 				}
 			});
+		}
+
 	});
+
 
 }
 

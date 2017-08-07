@@ -76,4 +76,11 @@ class Model_Personal extends CI_Model
             return null;
         }
     }
+    public function listarPersona()
+    {
+       $personal = $this->db->query("select id_persona,CONCAT(nombres,' ', apellido_p,'',apellido_m)as nombreCompleto from PERSONA"); 
+
+        return $personal->result();
+
+    }
 }

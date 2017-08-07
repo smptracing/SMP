@@ -50,13 +50,13 @@ function mostrarMetaAnidada($meta)
 		</div>
 	</div>
 	<div id="divAgregarPartida" class="row" style="display: none;margin-top: 4px;">
-		<div class="col-md-3 col-sm-3 col-xs-3">
+		<div class="col-md-12 col-sm-12 col-xs-12">
 			<label class="control-label">Descripción partida</label>
 			<div>
-				<input type="text" class="form-control" id="txtDescripcionPartida" name="txtDescripcionPartida">
+				<select name="selectDescripcionPartida" id="selectDescripcionPartida" class="selectpicker form-control"></select>
 			</div>
 		</div>
-		<div class="col-md-3 col-sm-3 col-xs-3">
+		<div class="col-md-6 col-sm-6 col-xs-6">
 			<label class="control-label">Rendimiento</label>
 			<div>
 				<input type="text" class="form-control" id="txtRendimientoPartida" name="txtRendimientoPartida">
@@ -341,7 +341,7 @@ function mostrarMetaAnidada($meta)
 
 	function agregarPartida()
 	{
-		$('#divAgregarPartida').data('formValidation').resetField($('#txtDescripcionPartida'));
+		$('#divAgregarPartida').data('formValidation').resetField($('#selectDescripcionPartida'));
 		$('#divAgregarPartida').data('formValidation').resetField($('#txtRendimientoPartida'));
 		$('#divAgregarPartida').data('formValidation').resetField($('#selectUnidadMedidaPartida'));
 		$('#divAgregarPartida').data('formValidation').resetField($('#txtCantidadPartida'));
@@ -357,7 +357,7 @@ function mostrarMetaAnidada($meta)
 
 		$($(elementoPadreParaAgregarPartida).find('table')[0]).find('> tbody > tr > td > b').each(function(index, element)
 		{
-			if(replaceAll($(element).text(), ' ', '').toLowerCase()==replaceAll($('#txtDescripcionPartida').val(), ' ', '').toLowerCase())
+			if(replaceAll($(element).text(), ' ', '').toLowerCase()==replaceAll($('#selectDescripcionPartida').val(), ' ', '').toLowerCase())
 			{
 				existePartida=true;
 
@@ -378,7 +378,7 @@ function mostrarMetaAnidada($meta)
 			return;
 		}
 
-		paginaAjaxJSON({ "idMeta" : metaPadreParaAgregarPartida, "idUnidad" : $('#selectUnidadMedidaPartida').val().trim(), "descripcionPartida" : $('#txtDescripcionPartida').val().trim(), "rendimientoPartida" : $('#txtRendimientoPartida').val().trim(), "cantidadPartida" : $('#txtCantidadPartida').val() }, base_url+'index.php/ET_Partida/insertar', 'POST', null, function(objectJSON)
+		paginaAjaxJSON({ "idMeta" : metaPadreParaAgregarPartida, "idUnidad" : $('#selectUnidadMedidaPartida').val().trim(), "descripcionPartida" : $('#selectDescripcionPartida').val().trim(), "rendimientoPartida" : $('#txtRendimientoPartida').val().trim(), "cantidadPartida" : $('#txtCantidadPartida').val() }, base_url+'index.php/ET_Partida/insertar', 'POST', null, function(objectJSON)
 		{
 			objectJSON=JSON.parse(objectJSON);
 
@@ -396,7 +396,7 @@ function mostrarMetaAnidada($meta)
 			}
 
 			var htmlTemp='<tr style="color: blue;" class="liPartida">'+
-				'<td style="padding-left: 10px;"><b>&#9658;'+$('#txtDescripcionPartida').val().trim()+'</b></td>'+
+				'<td style="padding-left: 10px;"><b>&#9658;'+$('#selectDescripcionPartida').val().trim()+'</b></td>'+
 				'<td style="padding-left: 4px;">'+$('#txtRendimientoPartida').val().trim()+'</td>'+
 				'<td style="padding-left: 4px;text-align: center;">'+objectJSON.descripcionUnidadMedida+'</td>'+
 				'<td style="padding-left: 4px;text-align: center;">'+parseFloat($('#txtCantidadPartida').val()).toFixed(2)+'</td>'+
@@ -450,6 +450,32 @@ function mostrarMetaAnidada($meta)
 	{
 		limpiarArbolCompletoMasOpciones();
 
+		$('.selectpicker').selectpicker({ liveSearch: true }).ajaxSelectPicker(
+		{
+	        ajax: {
+	            url: base_url+'index.php/ET_Partida/filtrarPorDescPartida',
+	            data: { valueSearch : 'Test'}
+	        },
+	        locale:
+	        {
+	            emptyTitle: 'Buscar partida'
+	        },
+	        preprocessData: function(data)
+	        {
+	        	var dataForSelect=[];
+	        	
+	        	dataForSelect.push(
+                {
+                    'value': data.data,
+                    'text': data.data,
+                    'disabled': false
+                });
+
+	            return dataForSelect;
+	        },
+	        preserveSelected: false
+	    });
+
 		$('#divAgregarComponente').formValidation(
 		{
 			framework: 'bootstrap',
@@ -481,7 +507,7 @@ function mostrarMetaAnidada($meta)
 			trigger: null,
 			fields:
 			{
-				txtDescripcionPartida:
+				selectDescripcionPartida:
 				{
 					validators: 
 					{
