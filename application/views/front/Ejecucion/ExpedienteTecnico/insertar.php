@@ -214,10 +214,14 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md-12 col-sm-3 col-xs-12">
+						<div class="col-md-5 col-sm-3 col-xs-12">
 							<label class="control-label">Nombre del Responsable de la Elaboración del Proyecto</label>
+							<select  id="txtResponsableElaboracion" name="txtResponsableElaboracion" class="form-control col-md-2 col-xs-2">
+									<?php foreach($listarPersona as $item){ ?>
+										<option value="<?=$item->id_persona; ?>"><?= $item->nombreCompleto;?></option>
+									<?php } ?>
+								</select>
 							<div>
-								<input id="txtResponsableElaboracion" name="txtResponsableElaboracion" class="form-control col-md-4 col-xs-12"  placeholder="Responable de la Elaboración del Proyecto" required="required" autocomplete="off" >
 							</div>
 						</div>
 
@@ -259,11 +263,13 @@
 					</div>
 
 					<div class="row">
-						<div class="col-md-12 col-sm-3 col-xs-12">
+						<div class="col-md-5 col-sm-3 col-xs-12">
 							<label class="control-label">Nombre del Responsable de la Ejecución del Proyecto</label>
-							<div>
-								<input id="txtResponsableEjecucion" name="txtResponsableEjecucion" class="form-control col-md-4 col-xs-12"  placeholder="Responsable de la Ejecución del Proyecto" required="required" autocomplete="off" >
-							</div>
+								<select  id="txtResponsableEjecucion" name="txtResponsableEjecucion" class="form-control col-md-2 col-xs-2">
+									<?php foreach($listarPersona as $item){ ?>
+										<option value="<?=$item->id_persona; ?>"><?= $item->nombreCompleto;?></option>
+									<?php } ?>
+								</select>
 						</div>
 
 					</div>

@@ -10,6 +10,7 @@ class Expediente_Tecnico extends CI_Controller
 		$this->load->model('Model_ET_Componente');
 		$this->load->model('Model_ET_Meta');
 		$this->load->model('Model_ET_Partida');
+		$this->load->model('Model_Personal');
 		$this->load->library('mydompdf');
 	}
 
@@ -115,9 +116,10 @@ class Expediente_Tecnico extends CI_Controller
 
 			if($this->input->get('buscar')=="true")
 			{
+				$listarPersona=$this->Model_Personal->listarPersona();
 				$codigo_unico_pi=$this->input->get('CodigoUnico');
 				$Listarproyectobuscado=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoBuscar($codigo_unico_pi); //BUSCAR PIP
-				$this->load->view('front/Ejecucion/ExpedienteTecnico/insertar',['Listarproyectobuscado'=>$Listarproyectobuscado]);
+				$this->load->view('front/Ejecucion/ExpedienteTecnico/insertar',['Listarproyectobuscado'=>$Listarproyectobuscado,'listarPersona' =>$listarPersona]);
 			}
 			
 	}
