@@ -52,7 +52,7 @@
 						<div class="col-md-12 col-sm-3 col-xs-12">
 							<label class="control-label">Nombre del Proyecto</label>
 							<div>
-								<input id="txtNombrePip" name="txtNombrePip" value="<?= $Listarproyectobuscado->nombre_pi?>" class="form-control col-md-4 col-xs-12"  placeholder="Nombre del proyecto"  autocomplete="off" disabled>
+								<input id="txtNombrePip" name="txtNombrePip" value="<?= $Listarproyectobuscado->nombre_pi?>" class="form-control col-md-4 col-xs-12"  placeholder="Nombre del proyecto"  autocomplete="off" readonly="readonly">	
 							</div>	
 						</div>
 					</div>
@@ -61,14 +61,14 @@
 						<div class="col-md-6 col-sm-3 col-xs-12">
 							<label class="control-label">Ubicación donde se plantea su Ejecución</label>
 							<div>
-								<input id="txtUbicacionPip" name="txtUbicacionPip" value="<?= $Listarproyectobuscado->provincia ?>" class="form-control col-md-4 col-xs-12"  placeholder="Ubicación" autocomplete="off" disabled>
+								<input id="txtUbicacionPip" name="txtUbicacionPip" value="<?= $Listarproyectobuscado->provincia ?>" class="form-control col-md-4 col-xs-12"  placeholder="Ubicación" autocomplete="off" readonly="readonly">
 							</div>
 						</div>
 
 						<div class="col-md-6 col-sm-3 col-xs-12">
 							<label class="control-label">Codigo SNIP</label>
 							<div>
-								<input id="txtCodigoUnico" name="txtCodigoUnico" value="<?= $Listarproyectobuscado->codigo_unico_pi ?>" class="form-control col-md-4 col-xs-12"  placeholder="Código SNIP" autocomplete="off" disabled>
+								<input id="txtCodigoUnico" name="txtCodigoUnico" value="<?= $Listarproyectobuscado->codigo_unico_pi ?>" class="form-control col-md-4 col-xs-12"  placeholder="Código SNIP" autocomplete="off" readonly="readonly">
 							</div>
 						</div>
 					</div>
@@ -76,7 +76,7 @@
 						<div class="col-md-4 col-sm-3 col-xs-12">
 							<label class="control-label">Costo Total del Proyecto (Pre Inversión)</label>
 							<div>
-								<input id="txtCostoTotalPreInversion" name="txtCostoTotalPreInversion" value="<?= $Listarproyectobuscado->costo_total_preinv_et?>"  class="form-control col-md-4 col-xs-12"  placeholder="Total del Proyecto (Pre Inversión)" autocomplete="off" >
+								<input id="txtCostoTotalPreInversion" name="txtCostoTotalPreInversion" value=""  class="form-control col-md-4 col-xs-12"  placeholder="Total del Proyecto (Pre Inversión)" autocomplete="off" >
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-3 col-xs-12">
@@ -97,7 +97,7 @@
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Costo Total del Proyecto (Inversión)</label>
 							<div>
-								<input id="txtCostoTotalInversion" name="txtCostoTotalInversion" value="<?= $Listarproyectobuscado->costo_total_inv_et?>" class="form-control col-md-4 col-xs-12"  placeholder="Costo Total del Proyecto (Inversión)"  autocomplete="off" >
+								<input id="txtCostoTotalInversion" name="txtCostoTotalInversion" value="" class="form-control col-md-4 col-xs-12"  placeholder="Costo Total del Proyecto (Inversión)"  autocomplete="off" >
 							</div>
 						</div>
 						<div class="col-md-3 col-sm-3 col-xs-12">
@@ -133,19 +133,19 @@
 						<div class="col-md-4 col-sm-3 col-xs-12">
 							<label class="control-label">Funcion</label>
 							<div>
-								<input id="txtFuncion" name="txtFuncion" class="form-control col-md-4 col-xs-12" value="<?= $Listarproyectobuscado->nombre_funcion?>"  placeholder="Funcion"  autocomplete="off" disabled>
+								<input id="txtFuncion" name="txtFuncion" class="form-control col-md-4 col-xs-12" value="<?= $Listarproyectobuscado->nombre_funcion?>"  placeholder="Funcion"  autocomplete="off" readonly="readonly">
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-3 col-xs-12">
 							<label class="control-label">Programa</label>
 							<div>
-								<input id="txtPrograma" name="txtPrograma" class="form-control col-md-4 col-xs-12" value="<?= $Listarproyectobuscado->nombre_div_funcional?>" placeholder="Programa"  autocomplete="off" disabled>
+								<input id="txtPrograma" name="txtPrograma" class="form-control col-md-4 col-xs-12" value="<?= $Listarproyectobuscado->nombre_div_funcional?>" placeholder="Programa"  autocomplete="off" readonly="readonly">
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-3 col-xs-12">
 							<label class="control-label">Sub Programa</label>
 							<div>
-								<input id="txtSubPrograma" name="txtSubPrograma" class="form-control col-md-4 col-xs-12" value="<?= $Listarproyectobuscado->nombre_grup_funcional?>" placeholder="Sub Programa"  autocomplete="off" disabled>
+								<input id="txtSubPrograma" name="txtSubPrograma" class="form-control col-md-4 col-xs-12" value="<?= $Listarproyectobuscado->nombre_grup_funcional?>" placeholder="Sub Programa"  autocomplete="off" readonly="readonly">
 							</div>
 						</div>
 					</div>
@@ -189,7 +189,7 @@
 						<div class="col-md-6 col-sm-3 col-xs-12">
 							<label class="control-label">Tiempo de Ejecución del Proyecto</label>
 							<div>
-								<input id="txtTiempoEjecucionPip" name="txtTiempoEjecucionPip" value="<?= $Listarproyectobuscado->tiempo_ejecucion_pi_et?>" class="form-control col-md-4 col-xs-12"  placeholder="Tiempo de Ejecución"  autocomplete="off" >
+								<input id="txtTiempoEjecucionPip" name="txtTiempoEjecucionPip" value="" class="form-control col-md-4 col-xs-12"  placeholder="Tiempo de Ejecución"  autocomplete="off" >
 							</div>
 						</div>
 						<div class="col-md-6 col-sm-3 col-xs-12">

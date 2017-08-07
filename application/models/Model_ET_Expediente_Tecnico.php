@@ -27,7 +27,7 @@ class Model_ET_Expediente_Tecnico extends CI_Model
 	}
 	public function ExpedienteTecnicoBuscar($codigo_unico_pi)
 	{
-		$BuscarExpedienteExpediente=$this->db->query("execute sp_Expediente_Tecnico_Buscar1 @codigo_unico_pi='".$codigo_unico_pi."'");
+		$BuscarExpedienteExpediente=$this->db->query("execute sp_Expediente_Tecnico_Buscar2 @codigo_unico_pi='".$codigo_unico_pi."'");
         return $BuscarExpedienteExpediente->result()[0];  
 	}
 
@@ -49,10 +49,19 @@ class Model_ET_Expediente_Tecnico extends CI_Model
 		$listarExpdenieTecnico=$this->db->query("execute sp_Gestionar_ET_Expediente_Tecnico @Opcion='".$Opcion."',@id_et='".$id_et."'");
         return $listarExpdenieTecnico->result()[0];
 	}
+
 	public function UltimoExpedienteTecnico()
 	{
 		$BuscarUltimoExpedienteTecnico=$this->db->query("select max(id_et) as id_et from ET_EXPEDIENTE_TECNICO");
 
         return $BuscarUltimoExpedienteTecnico->result()[0];
     }
+
+
+	public function DatosExpediente($id_et)
+	{
+		$ETExpediente=$this->db->query("select * from  ET_EXPEDIENTE_TECNICO inner join PROYECTO_INVERSION ON ET_EXPEDIENTE_TECNICO.id_pi=PROYECTO_INVERSION.id_pi where id_et ='".$id_et."'");
+	    return $ETExpediente->result()[0];
+	}
+
 }

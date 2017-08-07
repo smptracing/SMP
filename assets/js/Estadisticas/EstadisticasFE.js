@@ -159,8 +159,11 @@ $.ajax({
 
 
 
+
+
+
 $.ajax({
-	url:base_url+"/index.php/PrincipalFyE/EstudioInvPorTipoEstudio",
+	url:base_url+"/index.php/PrincipalFyE/TipoGastoMontos",
 	dataType:"json",
 	type:"POST",
 	cache:false,
@@ -169,10 +172,10 @@ $.ajax({
 		var arrayTipoEstudio=new Array();
 		$.each(respuesta,function(index,element)
 		{
-			arrayTipoEstudio[index]=element.CantidadEstudio;
+			arrayTipoEstudio[index]=element.Total;
 		});
 
-		var dom = document.getElementById("CenterFEvaluacion");
+		var dom = document.getElementById("MontosTiposGasto");
 		var myChart = echarts.init(dom);
 		var app = {};
 		option = null;
@@ -189,7 +192,7 @@ $.ajax({
 			legend: {
 				x : 'center',
 				y : 'bottom',
-				data: ['Administracion Directa','TDR']
+				data: ['Recursos Humanos','Estudios Complementarios','Materiales de oficina','Gestion Doc. Alquiler Viaticos']
 			},
 			toolbox: {
 				show : true,
@@ -237,8 +240,10 @@ $.ajax({
 				center : ['50%', '50%'],
 				roseType : 'area',
 				data:[
-				{value:arrayTipoEstudio[0], name:'Administracion Directa'},
-				{value:arrayTipoEstudio[1], name:'TDR'}
+				{value:arrayTipoEstudio[0], name:'Recursos Humanos'},
+				{value:arrayTipoEstudio[1], name:'Estudios Complementarios'},
+				{value:arrayTipoEstudio[2], name:'Materiales de oficina'},
+				{value:arrayTipoEstudio[3], name:'Gestion Doc. Alquiler Viaticos'}
 				]
 			}
 			]
@@ -250,6 +255,7 @@ $.ajax({
 
 	}
 });
+
 //Fin estadistica en forma de circulo
 
 
@@ -396,4 +402,237 @@ $.ajax({
 });
 
 
+$.ajax({
+	url:base_url+"/index.php/PrincipalFyE/AvanceCostoInv",
+	dataType:"json",
+	type:"POST",
+	cache:false,
+	success:function(respuesta)
+	{
+		var arrayAvanceCostoInv=new Array();
+		$.each(respuesta,function(index,element)
+		{
+			arrayAvanceCostoInv[index]=element.nombre_est_inv;
+		});
+
+		var dom = document.getElementById("echart_scatter");
+		var myChart = echarts.init(dom);
+		var app = {};
+				option = null;
+				option = {
+		    title : {
+		        text: '',
+		        subtext: ''
+		    },
+		    grid: {
+		        left: '3%',
+		        right: '7%',
+		        bottom: '3%',
+		        containLabel: true
+		    },
+		    tooltip : {
+		        // trigger: 'axis',
+		        showDelay : 0,
+		        formatter : function (params) {
+		            if (params.value.length > 1) {
+		                return params.seriesName + ' :<br/>'
+		                + params.value[0] + 'cm'
+		                + params.value[1] + 'kg ';
+		            }
+		            else {
+		                return params.seriesName + ' :<br/>'
+		                + params.name + ' : '
+		                + params.value + 'kg ';
+		            }
+		        },
+		        axisPointer:{
+		            show: true,
+		            type : 'cross',
+		            lineStyle: {
+		                type : 'dashed',
+		                width : 1
+		            }
+		        }
+		    },
+		    toolbox: {
+		        feature: {
+		            dataZoom: {},
+		            brush: {
+		                type: ['rect', 'polygon', 'clear']
+		            }
+		        }
+		    },
+		    brush: {
+		    },
+		    legend: {
+		        data: ['女性','男性'],
+		        left: 'center'
+		    },
+		    xAxis : [
+		        {
+		            type : 'value',
+		            scale:true,
+		            axisLabel : {
+		                formatter: '{value} cm'
+		            },
+		            splitLine: {
+		                show: false
+		            }
+		        }
+		    ],
+		    yAxis : [
+		        {
+		            type : 'value',
+		            scale:true,
+		            axisLabel : {
+		                formatter: '{value} kg'
+		            },
+		            splitLine: {
+		                show: false
+		            }
+		        }
+		    ],
+		    series : [
+		        {
+		            name:'女性',
+		            type:'scatter',
+		            data: [[157.0, 63.0], [155.8, 53.6]    
+		            ],
+		            markArea: {
+		                silent: true,
+		                itemStyle: {
+		                    normal: {
+		                        color: 'transparent',
+		                        borderWidth: 1,
+		                        borderType: 'dashed'
+		                    }
+		                },
+		                data: [[{
+		                    name: '女性分布区间',
+		                    xAxis: 'min',
+		                    yAxis: 'min'
+		                }, {
+		                    xAxis: 'max',
+		                    yAxis: 'max'
+		                }]]
+		            },
+		            markPoint : {
+		                data : [
+		                    {type : 'max', name: '最大值'},
+		                    {type : 'min', name: '最小值'}
+		                ]
+		            },
+		            markLine : {
+		                lineStyle: {
+		                    normal: {
+		                        type: 'solid'
+		                    }
+		                },
+		                data : [
+		                    {type : 'average', name: '平均值'},
+		                    { xAxis: 160 }
+		                ]
+		            }
+		        },
+		        {
+		            name:'男性',
+		            type:'scatter',
+
+		            data: [[174.0, 65.6], [175.3, 71.8]
+		            ],
+		            markArea: {
+		                silent: true,
+		                itemStyle: {
+		                    normal: {
+		                        color: 'transparent',
+		                        borderWidth: 1,
+		                        borderType: 'dashed'
+		                    }
+		                },
+		                data: [[{
+		                    name: '男性分布区间',
+		                    xAxis: 'min',
+		                    yAxis: 'min'
+		                }, {
+		                    xAxis: 'max',
+		                    yAxis: 'max'
+		                }]]
+		            },
+		            markPoint : {
+		                data : [
+		                    {type : 'max', name: '最大值'},
+		                    {type : 'min', name: '最小值'}
+		                ]
+		            },
+		            markLine : {
+		                lineStyle: {
+		                    normal: {
+		                        type: 'solid'
+		                    }
+		                },
+		                data : [
+		                    {type : 'average', name: '平均值'},
+		                    { xAxis: 170 }
+		                ]
+		            }
+		        },
+		        {
+		            name:'男性',
+		            type:'scatter',
+
+		            data: [[67.0, 60.6], [165.3, 71.3]
+		            ],
+		            markArea: {
+		                silent: true,
+		                itemStyle: {
+		                    normal: {
+		                        color: 'blue',
+		                        borderWidth: 1,
+		                        borderType: 'dashed'
+		                    }
+		                },
+		                data: [[{
+		                    name: '男性分布区间',
+		                    xAxis: 'min',
+		                    yAxis: 'min'
+		                }, {
+		                    xAxis: 'max',
+		                    yAxis: 'max'
+		                }]]
+		            },
+		            markPoint : {
+		                data : [
+		                    {type : 'max', name: '最大值'},
+		                    {type : 'min', name: '最小值'}
+		                ]
+		            },
+		            markLine : {
+		                lineStyle: {
+		                    normal: {
+		                        type: 'solid'
+		                    }
+		                },
+		                data : [
+		                    {type : 'average', name: '平均值'},
+		                    { xAxis: 130 }
+		                ]
+		            }
+		        }
+		    ]
+		};
+
+		if (option && typeof option === "object") {
+			myChart.setOption(option, true);
+		}
+	}
 });
+
+
+
+
+
+
+
+
+});
+

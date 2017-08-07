@@ -39,6 +39,7 @@ class Model_DashboardFE extends CI_Model
             return false;
         }
     }
+
     function EstudioInvPorProvincia()
     {
         $EstudioProv = $this->db->query("select provincia, count(nombre_est_inv) as CantidadEstudio from UBIGEO LEFT JOIN UBIGEO_PI ON UBIGEO.id_ubigeo=UBIGEO_PI.id_ubigeo LEFT JOIN PROYECTO_INVERSION on UBIGEO_PI.id_pi=PROYECTO_INVERSION.id_pi LEFT JOIN ESTUDIO_INVERSION on PROYECTO_INVERSION.id_pi=ESTUDIO_INVERSION.id_pi where UBIGEO.id_ubigeo between '030100' and '030714' group by provincia");
@@ -48,9 +49,10 @@ class Model_DashboardFE extends CI_Model
             return false;
         }
     }
+
     function TipoGastoMontos()
     {
-        $TipoGastoMonto = $this->db->query("");
+        $TipoGastoMonto = $this->db->query("select FE_TIPO_GASTO.desc_tipo_gasto, sum(FE_DETALLE_PRESUPUESTO.total_detalle) as Total from FE_TIPO_GASTO LEFT JOIN FE_DETALLE_PRESUPUESTO on FE_TIPO_GASTO.id_tipo_gasto=FE_DETALLE_PRESUPUESTO.id_tipo_gasto group by FE_TIPO_GASTO.desc_tipo_gasto");
         if ($TipoGastoMonto ->num_rows()> 0) {
             return $TipoGastoMonto ->result();
         } else {
@@ -58,4 +60,13 @@ class Model_DashboardFE extends CI_Model
         }
     }
 
+    function AvanceCostoInv()
+    {
+        $Avance = $this->db->query("select ESTUDIO_INVERSION.nombre_est_inv, avance_fisico, costo_estudio from ESTUDIO_INVERSION  INNER JOIN ETAPA_ESTUDIO ON ESTUDIO_INVERSION.id_est_inv=ETAPA_ESTUDIO.id_est_inv");
+        if ($Avance ->num_rows()> 0) {
+            return $Avance->result();
+        } else {
+            return false;
+        }
+    }
 }
