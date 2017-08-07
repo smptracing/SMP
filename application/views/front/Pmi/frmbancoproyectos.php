@@ -45,27 +45,8 @@
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                </div>
-                                                                <div class="col-md-3">
-                                                                     <div class="col-md-4">
-                                                                        <a href="<?php echo site_url('CarteraInversion/'); ?>"><i class="fa fa-suitcase"></i>Cartera</a>
-                                                                     </div>
-                                                                     <div class="col-md-8">
-                                                                          <select  id="cbCartera" class="form-control" name="cbCartera"></select>
-                                                                          <input type="hidden" id="Aniocartera" value="<?=(isset($anio) ? $anio : date('Y'))?>">
-                                                                    </div>
-                                                               </div>
 
-                                                                <div class="col-md-2">
-                                                                    <form action="<?php echo base_url('index.php/ReporteProgramacion/action'); ?>" method="POST" >
 
-                                                                      <input type="hidden" id="hdAnioCartera" name="hdAnioCartera" value="<?=(isset($anio) ? $anio : date('Y'))?>">
-                                                                      <button  type="submit" class="btn btn-primary">  <span class="fa fa-file-text"></span> Exportar excel</button>
-
-                                                                    </form>
-                                                                </div>
-                                                               <div class="col-md-2">
-                                                                    <button id="btn-Importar" type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaImportar">  <span class="fa fa-plus-circle"></span> Importar Excel </button>
-                                                               </div>
                                                           </div>
                                                       <div class="x_content">
                                                         <table id="table_proyectos_inversion" class="table table-striped table-bordered table-hover table-responsive display  compact " ellspacing="0" width="100%">

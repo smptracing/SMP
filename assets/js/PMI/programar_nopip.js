@@ -105,7 +105,7 @@ $(document).on("ready" ,function(){
                                 "columns":[
                                     {"data":"id_pi","visible": false},
                                     {"data":"año_prog"},
-                                    {"data":"monto_prog"}
+                                    {"data":"monto_opera_mant_prog"}
                                     ],
                                "language":idioma_espanol
                     });
