@@ -23,8 +23,9 @@ class Expediente_Tecnico extends CI_Controller
 
 	public function reportePdfExpedienteTecnico($id_ExpedienteTecnico)
 	{
-		$data["numero"] = 250;
-		$html= $this->load->view('front/Ejecucion/ExpedienteTecnico/reporteExpedienteTecnico',$data,true);
+		$Opcion="ReporteFichaTecnica01";
+		$listarExpedienteFicha001=$this->Model_ET_Expediente_Tecnico->reporteExpedienteFicha001($Opcion,$id_ExpedienteTecnico);
+		$html= $this->load->view('front/Ejecucion/ExpedienteTecnico/reporteExpedienteTecnico',["listarExpedienteFicha001" => $listarExpedienteFicha001],true);
 		$this->mydompdf->load_html($html);
 		$this->mydompdf->set_paper("A4", "portrait");
 		$this->mydompdf->render();
