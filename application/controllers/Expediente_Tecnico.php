@@ -43,56 +43,75 @@ class Expediente_Tecnico extends CI_Controller
 
 	public function insertar()
 	{
-		if($_POST)
+		
+       if($_POST)
 		{
-			$flat  = "INSERTAR";
-			$txtIdPi=$this->input->post('txtIdPi');
-			$txtNombreUe=$this->input->post('txtNombreUe');
-			$txtDireccionUE=$this->input->post('txtDireccionUE');
-			$txtUbicacionUE=$this->input->post('txtUbicacionUE');
-			$txtTelefonoUE=$this->input->post('txtTelefonoUE');
-			$txtRuc=$this->input->post('txtRuc');
-			$txtNombrePip=$this->input->post('txtNombrePip');
-			$txtUbicacionPip=$this->input->post('txtUbicacionPip');
-			$txtCodigoUnico=$this->input->post('txtCodigoUnico');
-			$txtCostoTotalPreInversion=$this->input->post('txtCostoTotalPreInversion');
-			$txtCostoDirectoPre=$this->input->post('txtCostoDirectoPre');
-			$txtCostoIndirectoPre=$this->input->post('txtCostoIndirectoPre');
-			$txtCostoTotalInversion=$this->input->post('txtCostoTotalInversion');
-			$txtCostoDirectoInversion=$this->input->post('txtCostoDirectoInversion');
-			$txtGastosGenerales=$this->input->post('txtGastosGenerales');
-			$txtGastosSupervision=$this->input->post('txtGastosSupervision');
-			$txtFuncionProgramatica=$this->input->post('txtFuncionProgramatica');
-			$txtFuncion=$this->input->post('txtFuncion');
-			$txtPrograma=$this->input->post('txtPrograma');
-			$txtSubPrograma=$this->input->post('txtSubPrograma');
-			$txtProyecto=$this->input->post('txtProyecto');
-			$txtComponente=$this->input->post('txtComponente');
-			$txtMeta=$this->input->post('txtMeta');
-			$txtFuenteFinanciamiento=$this->input->post('txtFuenteFinanciamiento');
-			$txtModalidadEjecucion=$this->input->post('txtModalidadEjecucion');
-			$txtTiempoEjecucionPip=$this->input->post('txtTiempoEjecucionPip');
-			$txtNumBeneficiarios=$this->input->post('txtNumBeneficiarios');
-			$txtResponsableElaboracion=$this->input->post('txtResponsableElaboracion');
-			$txtUrlDocAprobacion=$this->input->post('txtUrlDocAprobacion');
-			$txtDNI=$this->input->post('txtDNI');
-			$txtRegistroProfesional=$this->input->post('txtRegistroProfesional');
-			$txtDireccionElaborador=$this->input->post('txtDireccionElaborador');
-			$txtTelefElaborador=$this->input->post('txtTelefElaborador');
-			$txtDireccionElaborador=$this->input->post('txtDireccionElaborador');
-			$txtProfesionEjecutor=$this->input->post('txtProfesionEjecutor');
-			$txtDNIEjecutor=$this->input->post('txtDNIEjecutor');
-			$txtRegistroProEjecutor=$this->input->post('txtRegistroProEjecutor');
-			$txtDireccionEjecutor=$this->input->post('txtDireccionEjecutor');
-			$txtTelefonoEjecutor=$this->input->post('txtTelefonoEjecutor');
-			$txtSituacioActual=$this->input->post('txtSituacioActual');
-			$txtSituacioDeseada=$this->input->post('txtSituacioDeseada');
-			$txtContribucioInterv=$this->input->post('txtContribucioInterv');
-			$txtNumFolio=$this->input->post('txtNumFolio');
+	        $config['upload_path']   = './uploads/ResolucioExpediente/';
+	        $config['allowed_types'] = 'pdf|doc|xml|docx|PDF|DOC|DOCX|xls|xlsx';
+	        $config['max_width']     = 1024;
+	        $config['max_height']    = 768;
+	        $config['max_size']      = 15000;
+	        $config['encrypt_name']  = false;
 
-			$this->Model_ET_Expediente_Tecnico->insertar($flat,$txtIdPi,$txtDireccionUE,$txtUbicacionUE,$txtTelefonoUE,$txtRuc,$txtCostoTotalPreInversion,$txtCostoDirectoPre,$txtCostoIndirectoPre,$txtCostoTotalInversion,$txtCostoDirectoInversion,$txtGastosGenerales,$txtGastosSupervision,$txtFuncion,$txtPrograma,$txtSubPrograma,$txtProyecto,$txtComponente,$txtMeta,$txtFuenteFinanciamiento,$txtModalidadEjecucion,$txtTiempoEjecucionPip,$txtNumBeneficiarios,$txtUrlDocAprobacion,$txtSituacioActual,$txtSituacioDeseada,$txtContribucioInterv,$txtNumFolio); 
-			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos registrados correctamente.']);exit;  
-		}
+	        $this->load->library('upload', $config);
+			if (!$this->upload->do_upload('Documento_Resolucion')) {
+
+			                $error = "ERROR NO SE CARGO EL DOCUMENTO DE EXPEDIENTE TÉCNICO";
+			                echo $error;
+			 }else
+			 {
+			 	
+					$flat  = "INSERTAR";
+					$txtIdPi=$this->input->post('txtIdPi');
+					$txtNombreUe=$this->input->post('txtNombreUe');
+					$txtDireccionUE=$this->input->post('txtDireccionUE');
+					$txtUbicacionUE=$this->input->post('txtUbicacionUE');
+					$txtTelefonoUE=$this->input->post('txtTelefonoUE');
+					$txtRuc=$this->input->post('txtRuc');
+					$txtNombrePip=$this->input->post('txtNombrePip');
+					$txtUbicacionPip=$this->input->post('txtUbicacionPip');
+					$txtCodigoUnico=$this->input->post('txtCodigoUnico');
+					$txtCostoTotalPreInversion=$this->input->post('txtCostoTotalPreInversion');
+					$txtCostoDirectoPre=$this->input->post('txtCostoDirectoPre');
+					$txtCostoIndirectoPre=$this->input->post('txtCostoIndirectoPre');
+					$txtCostoTotalInversion=$this->input->post('txtCostoTotalInversion');
+					$txtCostoDirectoInversion=$this->input->post('txtCostoDirectoInversion');
+					$txtGastosGenerales=$this->input->post('txtGastosGenerales');
+					$txtGastosSupervision=$this->input->post('txtGastosSupervision');
+					$txtFuncionProgramatica=$this->input->post('txtFuncionProgramatica');
+					$txtFuncion=$this->input->post('txtFuncion');
+					$txtPrograma=$this->input->post('txtPrograma');
+					$txtSubPrograma=$this->input->post('txtSubPrograma');
+					$txtProyecto=$this->input->post('txtProyecto');
+					$txtComponente=$this->input->post('txtComponente');
+					$txtMeta=$this->input->post('txtMeta');
+					$txtFuenteFinanciamiento=$this->input->post('txtFuenteFinanciamiento');
+					$txtModalidadEjecucion=$this->input->post('txtModalidadEjecucion');
+					$txtTiempoEjecucionPip=$this->input->post('txtTiempoEjecucionPip');
+					$txtNumBeneficiarios=$this->input->post('txtNumBeneficiarios');
+					$txtResponsableElaboracion=$this->input->post('txtResponsableElaboracion');
+					$txtUrlDocAprobacion=$this->upload->file_name;//$this->input->post('txtUrlDocAprobacion');
+					$txtDNI=$this->input->post('txtDNI');
+					$txtRegistroProfesional=$this->input->post('txtRegistroProfesional');
+					$txtDireccionElaborador=$this->input->post('txtDireccionElaborador');
+					$txtTelefElaborador=$this->input->post('txtTelefElaborador');
+					$txtDireccionElaborador=$this->input->post('txtDireccionElaborador');
+					$txtProfesionEjecutor=$this->input->post('txtProfesionEjecutor');
+					$txtDNIEjecutor=$this->input->post('txtDNIEjecutor');
+					$txtRegistroProEjecutor=$this->input->post('txtRegistroProEjecutor');
+					$txtDireccionEjecutor=$this->input->post('txtDireccionEjecutor');
+					$txtTelefonoEjecutor=$this->input->post('txtTelefonoEjecutor');
+					$txtSituacioActual=$this->input->post('txtSituacioActual');
+					$txtSituacioDeseada=$this->input->post('txtSituacioDeseada');
+					$txtContribucioInterv=$this->input->post('txtContribucioInterv');
+					$txtNumFolio=$this->input->post('txtNumFolio');
+
+					$this->Model_ET_Expediente_Tecnico->insertar($flat,$txtIdPi,$txtDireccionUE,$txtUbicacionUE,$txtTelefonoUE,$txtRuc,$txtCostoTotalPreInversion,$txtCostoDirectoPre,$txtCostoIndirectoPre,$txtCostoTotalInversion,$txtCostoDirectoInversion,$txtGastosGenerales,$txtGastosSupervision,$txtFuncion,$txtPrograma,$txtSubPrograma,$txtProyecto,$txtComponente,$txtMeta,$txtFuenteFinanciamiento,$txtModalidadEjecucion,$txtTiempoEjecucionPip,$txtNumBeneficiarios,$txtUrlDocAprobacion,$txtSituacioActual,$txtSituacioDeseada,$txtContribucioInterv,$txtNumFolio); 
+					echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos registrados correctamente.']);exit;  
+				}
+		 }
+
+		
 
 			if($this->input->get('buscar')=="true")
 			{
