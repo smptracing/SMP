@@ -13,7 +13,7 @@ class NoPipProgramados extends CI_Controller
     public function GetNoPipProgramados()
     {
         if ($this->input->is_ajax_request()) {
-            $flat = "listarpip_formulacion_evaluacion_programado";
+            $flat = "listarnopip_programado";
             $anio = $this->input->post("anio");
             $data = $this->NoPipProgramados_Model->GetNoPipProgramados($flat, $anio);
             echo json_encode(array('data' => $data));

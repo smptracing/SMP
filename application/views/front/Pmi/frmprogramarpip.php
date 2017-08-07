@@ -161,7 +161,7 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-          Programar PIP</h4>
+          Programar PIP </h4>
         </div>
         <div class="modal-body">
          <div class="row">
@@ -247,7 +247,7 @@
                     <center>
                     <table  id="Table_Programar" class="table   table-hover" >
                     <thead >
-                       <tr>
+                         <tr>
                          <th  ><i class="fa fa-thumb-tack"></i> #</th>
                          <th  ><i class="fa fa-thumb-tack"></i> Año Programado</th>
                          <th  ><i class="fa fa-thumb-tack"></i> Monto Programado</th>

@@ -4,6 +4,7 @@ $(document).on("ready" ,function(){
 //listar proyectos no pip
  var lista_no_pip_programados=function(anio)
 {
+
   var str1 = "Inv_";
   var anio_1= parseInt(anio) +1; 
   var anio_2= parseInt(anio) +2; 
@@ -11,12 +12,12 @@ $(document).on("ready" ,function(){
   var anioR1 = str1.concat(anio_1);
   var anioR2 = str1.concat(anio_2);
   var anioR3 = str1.concat(anio_3);
-       var table=$("#table_formulacion_evaluacion").DataTable({
+       var table=$("#table_operacion_mantenimiento").DataTable({
                      "processing": true,
                       "serverSide":false,
                      destroy:true,
                          "ajax":{
-                                    url:base_url+"index.php/PipProgramados/GetPipProgramadosFormulacionEvaluacion",
+                                    url:base_url+"index.php/NoPipProgramados/GetNoPipProgramados",
                                      type:"POST",
                                      data :{anio:anio}  
                                                                    
@@ -36,7 +37,7 @@ $(document).on("ready" ,function(){
 }
 //fin de proyectos no pip
  var listar_aniocartera_=function(valor){ //listar ani cartera operacion y mantenimiento
-  alert();
+ // alert();
                      html="";
                     $("#Cbx_AnioCartera_no_pip").html(html);
                     event.preventDefault();

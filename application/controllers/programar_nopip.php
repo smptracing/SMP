@@ -67,7 +67,7 @@ class programar_nopip extends CI_Controller
     public function listar_programacion()
     {
         if ($this->input->is_ajax_request()) {
-            $flat  = "R";
+            $flat  = "listar_programacion_operacion"; //LISTAR NO PIP PROGRMAADOS
             $id_pi = $this->input->post("id_pi");
             $data  = $this->programar_nopip_modal->listar_programacion($flat, $id_pi);
             echo json_encode(array('data' => $data));
