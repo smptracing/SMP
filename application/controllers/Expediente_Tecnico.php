@@ -123,6 +123,10 @@ class Expediente_Tecnico extends CI_Controller
 			
 	}
 
+	function editar()
+	{
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/editar');
+	}
     function registroBuscarProyecto()
     {
     		$CodigoUnico=$this->input->get('inputValue');

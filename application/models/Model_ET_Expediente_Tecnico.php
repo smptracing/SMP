@@ -27,7 +27,7 @@ class Model_ET_Expediente_Tecnico extends CI_Model
 	}
 	public function ExpedienteTecnicoBuscar($codigo_unico_pi)
 	{
-		$BuscarExpedienteExpediente=$this->db->query("execute sp_Expediente_Tecnico_Buscar1 @codigo_unico_pi='".$codigo_unico_pi."'");
+		$BuscarExpedienteExpediente=$this->db->query("execute sp_Expediente_Tecnico_Buscar2 @codigo_unico_pi='".$codigo_unico_pi."'");
         return $BuscarExpedienteExpediente->result()[0];  
 	}
 

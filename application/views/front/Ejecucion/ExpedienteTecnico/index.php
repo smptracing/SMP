@@ -48,7 +48,7 @@
 												<?= $item->num_beneficiarios?>
 											</td>
 											<td>
-										  		<button type='button' class='editar btn btn-primary btn-xs'><i class='ace-icon fa fa-pencil bigger-120'></i></button>
+										  		<button type='button' class='editar btn btn-primary btn-xs'><i class='ace-icon fa fa-pencil bigger-120' onclick="paginaAjaxDialogo(null, 'Modificar Expediente Técnico','null', base_url+'index.php/Expediente_Tecnico/editar', 'POST', null, null, false, true);"></i></button>
 												<button type='button' title='Registro de componentes, metas y partidas' class='editar btn btn-warning btn-xs' onclick="paginaAjaxDialogo(null, 'Registro de componentes, metas y partidas', {idExpedienteTecnico : <?=$item->id_et?>}, base_url+'index.php/ET_Componente/insertar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-align-left bigger-120'></i></button>
 												<button type='button' title='Administración de partidad y analítico' class='editar btn btn-success btn-xs' onclick="paginaAjaxDialogo(null, 'Administración de partidad y analítico', null, base_url+'index.php/ET_Partida/insertar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-indent bigger-120'></i></button>
 												<a type="button" title='Ficha tecnica de expediente tecnico' class="btn btn-info btn-xs" href="<?= site_url('Expediente_Tecnico/reportePdfExpedienteTecnico/'.$item->id_et);?>" target="_blank"><i class='ace-icon fa fa-file-pdf-o bigger-120'></i></a>

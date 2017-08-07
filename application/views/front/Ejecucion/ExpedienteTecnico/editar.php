@@ -5,7 +5,7 @@
 	}
 </style>
 <script src="ckeditor/ckeditor.js"></script>
-<form class="form-horizontal" id="form-addExpedienteTecnico" action="<?php echo base_url();?>index.php/Expediente_Tecnico/insertar" method="POST" enctype="multipart/form-data" >
+<form class="form-horizontal" id="form-EditarExpedienteTecnico" action="<?php echo base_url();?>index.php/Expediente_Tecnico/editar" method="POST" enctype="multipart/form-data" >
 
 	<div class="row">
 
@@ -17,8 +17,8 @@
 						<div class="col-md-12 col-sm-3 col-xs-12">
 							<label class="control-label">Nombre de la Unidad Ejecutora</label>
 							<div>
-								<input id="txtIdPi" name="txtIdPi" value="<?= $Listarproyectobuscado->id_pi?>" class="form-control col-md-4 col-xs-12"  placeholder="Nombre del proyecto" autocomplete="off"  type="hidden">	
-								<input id="txtNombreUe" name="txtNombreUe" value="<?= $Listarproyectobuscado->nombre_ue?>" class="form-control col-md-4 col-xs-12"  placeholder="Nombre del proyecto" required="required" autocomplete="off" >	
+								<input id="txtIdPi" name="txtIdPi" value="" class="form-control col-md-4 col-xs-12"  placeholder="Nombre del proyecto" autocomplete="off"  type="hidden">	
+								<input id="txtNombreUe" name="txtNombreUe" value="" class="form-control col-md-4 col-xs-12"  placeholder="Nombre del proyecto" required="required" autocomplete="off" >	
 							</div>	
 						</div>
 					</div>
@@ -52,7 +52,7 @@
 						<div class="col-md-12 col-sm-3 col-xs-12">
 							<label class="control-label">Nombre del Proyecto</label>
 							<div>
-								<input id="txtNombrePip" name="txtNombrePip" value="<?= $Listarproyectobuscado->nombre_pi?>" class="form-control col-md-4 col-xs-12"  placeholder="Nombre del proyecto" required="required" autocomplete="off" readonly="readonly">
+								<input id="txtNombrePip" name="txtNombrePip" value="" class="form-control col-md-4 col-xs-12"  placeholder="Nombre del proyecto" required="required" autocomplete="off" readonly="readonly">
 							</div>	
 						</div>
 					</div>
@@ -61,14 +61,14 @@
 						<div class="col-md-6 col-sm-3 col-xs-12">
 							<label class="control-label">Ubicación donde se plantea su Ejecución</label>
 							<div>
-								<input id="txtUbicacionPip" name="txtUbicacionPip" value="<?= $Listarproyectobuscado->provincia ?>" class="form-control col-md-4 col-xs-12"  placeholder="Ubicación" autocomplete="off" readonly="readonly">
+								<input id="txtUbicacionPip" name="txtUbicacionPip" value="" class="form-control col-md-4 col-xs-12"  placeholder="Ubicación" autocomplete="off" readonly="readonly">
 							</div>
 						</div>
 
 						<div class="col-md-6 col-sm-3 col-xs-12">
 							<label class="control-label">Codigo SNIP</label>
 							<div>
-								<input id="txtCodigoUnico" name="txtCodigoUnico" value="<?= $Listarproyectobuscado->codigo_unico_pi ?>" class="form-control col-md-4 col-xs-12"  placeholder="Código SNIP" autocomplete="off" readonly="readonly">
+								<input id="txtCodigoUnico" name="txtCodigoUnico" value="" class="form-control col-md-4 col-xs-12"  placeholder="Código SNIP" autocomplete="off" readonly="readonly">
 							</div>
 						</div>
 					</div>
@@ -133,19 +133,19 @@
 						<div class="col-md-4 col-sm-3 col-xs-12">
 							<label class="control-label">Funcion</label>
 							<div>
-								<input id="txtFuncion" name="txtFuncion" class="form-control col-md-4 col-xs-12" value="<?= $Listarproyectobuscado->nombre_funcion?>"  placeholder="Funcion" required="required" autocomplete="off" readonly="readonly">
+								<input id="txtFuncion" name="txtFuncion" class="form-control col-md-4 col-xs-12" value=""  placeholder="Funcion" required="required" autocomplete="off" readonly="readonly">
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-3 col-xs-12">
 							<label class="control-label">Programa</label>
 							<div>
-								<input id="txtPrograma" name="txtPrograma" class="form-control col-md-4 col-xs-12" value="<?= $Listarproyectobuscado->nombre_div_funcional?>" placeholder="Programa" required="required" autocomplete="off" readonly="readonly">
+								<input id="txtPrograma" name="txtPrograma" class="form-control col-md-4 col-xs-12" value="" placeholder="Programa" required="required" autocomplete="off" readonly="readonly">
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-3 col-xs-12">
 							<label class="control-label">Sub Programa</label>
 							<div>
-								<input id="txtSubPrograma" name="txtSubPrograma" class="form-control col-md-4 col-xs-12" value="<?= $Listarproyectobuscado->nombre_grup_funcional?>" placeholder="Sub Programa" required="required" autocomplete="off" readonly="readonly">
+								<input id="txtSubPrograma" name="txtSubPrograma" class="form-control col-md-4 col-xs-12" value="" placeholder="Sub Programa" required="required" autocomplete="off" readonly="readonly">
 							</div>
 						</div>
 					</div>
@@ -217,9 +217,7 @@
 						<div class="col-md-5 col-sm-3 col-xs-12">
 							<label class="control-label">Nombre del Responsable de la Elaboración del Proyecto</label>
 							<select  id="txtResponsableElaboracion" name="txtResponsableElaboracion" class="form-control col-md-2 col-xs-2">
-									<?php foreach($listarPersona as $item){ ?>
-										<option value="<?=$item->id_persona; ?>"><?= $item->nombreCompleto;?></option>
-									<?php } ?>
+							
 								</select>
 							<div>
 							</div>
@@ -266,9 +264,7 @@
 						<div class="col-md-5 col-sm-3 col-xs-12">
 							<label class="control-label">Nombre del Responsable de la Ejecución del Proyecto</label>
 								<select  id="txtResponsableEjecucion" name="txtResponsableEjecucion" class="form-control col-md-2 col-xs-2">
-									<?php foreach($listarPersona as $item){ ?>
-										<option value="<?=$item->id_persona; ?>"><?= $item->nombreCompleto;?></option>
-									<?php } ?>
+						
 								</select>
 						</div>
 
@@ -359,194 +355,6 @@
   CKEDITOR.replace('txtContribucioInterv' ,{
 		filebrowserImageBrowseUrl : '<?php echo base_url('assets/filemanager/index.html');?>'
 	});
-
-$(function()
-	{
-		$('#form-addExpedienteTecnico').formValidation(
-		{
-			framework: 'bootstrap',
-			excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
-			live: 'enabled',
-			message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
-			trigger: null,
-			fields:
-			{
-				txtNombreUe:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Nombre unidad ejecutora" es requerido.</b>'
-						}
-					}
-				},
-				txtTelefonoUE:
-				{
-					validators:
-					{
-					
-							regexp:
-						{
-							regexp: /^\d*$/,
-							message: '<b style="color: red;">El campo "Teléfono" debe ser un numero.</b>'
-						}
-					}
-				},
-				txtRuc:
-				{
-					validators:
-					{
-							regexp:
-						{
-							regexp: "^([0-9]){11}$",
-							message: '<b style="color: red;">El campo "Ruc" debe ser un número de 11 dígitos.</b>'
-						}
-					}
-				},
-				txtCostoTotalPreInversion:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Costo total de preinversion" es requerido.</b>'
-						},
-						regexp:
-						{
-							regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
-							message: '<b style="color: red;">El campo "Costo U." debe ser un valor en soles.</b>'
-						}
-					}
-				},
-				txtCostoDirectoPre:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Costo Directo de preinversion" es requerido.</b>'
-						},
-						regexp:
-						{
-							regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
-							message: '<b style="color: red;">El campo "Costo U." debe ser un valor en soles.</b>'
-						}
-					}
-				},
-				txtCostoIndirectoPre:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Costo Indirecto de preinversion" es requerido.</b>'
-						},
-						regexp:
-						{
-							regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
-							message: '<b style="color: red;">El campo "Costo U." debe ser un valor en soles.</b>'
-						}
-					}
-				},
-				txtCostoTotalInversion:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Costo total de Inversión" es requerido.</b>'
-						},
-						regexp:
-						{
-							regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
-							message: '<b style="color: red;">El campo "Costo U." debe ser un valor en soles.</b>'
-						}
-					}
-				},
-				txtCostoDirectoInversion:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Costo Directo de Inversión" es requerido.</b>'
-						},
-						regexp:
-						{
-							regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
-							message: '<b style="color: red;">El campo "Costo U." debe ser un valor en soles.</b>'
-						}
-					}
-				},
-				txtGastosGenerales:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Costo Directo de Inversión" es requerido.</b>'
-						},
-						regexp:
-						{
-							regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
-							message: '<b style="color: red;">El campo "Costo U." debe ser un valor en soles.</b>'
-						}
-					}
-				},
-				txtGastosSupervision:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Costo Directo de Inversión" es requerido.</b>'
-						},
-						regexp:
-						{
-							regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
-							message: '<b style="color: red;">El campo "Costo U." debe ser un valor en soles.</b>'
-						}
-					}
-				},
-				txtProyecto:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Proyecto" es requerido.</b>'
-						}
-					}
-				},
-				txtNumBeneficiarios:
-				{
-					validators:
-					{
-						regexp:
-						{
-							regexp: /^\d*$/,
-							message: '<b style="color: red;">El campo "Numero de beneficiarios" debe ser un numero.</b>'
-						}
-					}
-				},
-				txtNumFolio:
-				{
-					validators:
-					{
-						regexp:
-						{
-							regexp: /^\d*$/,
-							message: '<b style="color: red;">El campo "Numero de folios" debe ser un número.</b>'
-						}
-					}
-				}
-			}
-		});
-	});
-
-
-
 </script>
 
 
