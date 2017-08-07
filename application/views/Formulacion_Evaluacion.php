@@ -104,8 +104,8 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-
-                    <canvas class="MontosTiposGasto" height="160" width="160" style="width: 160px; height: 160px;"></canvas>
+                     <div id="MontosTiposGasto" style="height:350px;"></div>
+                    <!--<canvas class="MontosTiposGasto" height="160" width="160" style="width: 160px; height: 160px;"></canvas>-->
 
                   </div>
                 </div>
@@ -115,7 +115,7 @@
               <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Scatter Graph</h2>
+                    <h2>Avance fisico por costo de inversión</h2>
                     
                     <div class="clearfix"></div>
                   </div>

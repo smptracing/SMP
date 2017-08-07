@@ -48,12 +48,11 @@ class Expediente_Tecnico extends CI_Controller
        if($_POST)
 		{
 	        $config['upload_path']   = './uploads/ResolucioExpediente/';
-	        $config['allowed_types'] = 'pdf|doc|xml|docx|PDF|DOC|DOCX|xls|xlsx';
-	        $config['max_width']     = 1024;
-	        $config['max_height']    = 768;
-	        $config['max_size']      = 15000;
+	        $config['allowed_types'] = '*';
+	        $config['max_width']     = 2000;
+	        $config['max_height']    = 2000;
+	        $config['max_size']      = 50000;
 	        $config['encrypt_name']  = false;
-
 	        $this->load->library('upload', $config);
 			if (!$this->upload->do_upload('Documento_Resolucion')) {
 

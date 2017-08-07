@@ -52,7 +52,7 @@
 						<div class="col-md-12 col-sm-3 col-xs-12">
 							<label class="control-label">Nombre del Proyecto</label>
 							<div>
-								<input id="txtNombrePip" name="txtNombrePip" value="<?= $Listarproyectobuscado->nombre_pi?>" class="form-control col-md-4 col-xs-12"  placeholder="Nombre del proyecto" required="required" autocomplete="off" disabled>
+								<input id="txtNombrePip" name="txtNombrePip" value="<?= $Listarproyectobuscado->nombre_pi?>" class="form-control col-md-4 col-xs-12"  placeholder="Nombre del proyecto" required="required" autocomplete="off" readonly="readonly">
 							</div>	
 						</div>
 					</div>
@@ -61,14 +61,14 @@
 						<div class="col-md-6 col-sm-3 col-xs-12">
 							<label class="control-label">Ubicación donde se plantea su Ejecución</label>
 							<div>
-								<input id="txtUbicacionPip" name="txtUbicacionPip" value="<?= $Listarproyectobuscado->provincia ?>" class="form-control col-md-4 col-xs-12"  placeholder="Ubicación" autocomplete="off" disabled>
+								<input id="txtUbicacionPip" name="txtUbicacionPip" value="<?= $Listarproyectobuscado->provincia ?>" class="form-control col-md-4 col-xs-12"  placeholder="Ubicación" autocomplete="off" readonly="readonly">
 							</div>
 						</div>
 
 						<div class="col-md-6 col-sm-3 col-xs-12">
 							<label class="control-label">Codigo SNIP</label>
 							<div>
-								<input id="txtCodigoUnico" name="txtCodigoUnico" value="<?= $Listarproyectobuscado->codigo_unico_pi ?>" class="form-control col-md-4 col-xs-12"  placeholder="Código SNIP" autocomplete="off" disabled>
+								<input id="txtCodigoUnico" name="txtCodigoUnico" value="<?= $Listarproyectobuscado->codigo_unico_pi ?>" class="form-control col-md-4 col-xs-12"  placeholder="Código SNIP" autocomplete="off" readonly="readonly">
 							</div>
 						</div>
 					</div>
@@ -133,19 +133,19 @@
 						<div class="col-md-4 col-sm-3 col-xs-12">
 							<label class="control-label">Funcion</label>
 							<div>
-								<input id="txtFuncion" name="txtFuncion" class="form-control col-md-4 col-xs-12" value="<?= $Listarproyectobuscado->nombre_funcion?>"  placeholder="Funcion" required="required" autocomplete="off" disabled>
+								<input id="txtFuncion" name="txtFuncion" class="form-control col-md-4 col-xs-12" value="<?= $Listarproyectobuscado->nombre_funcion?>"  placeholder="Funcion" required="required" autocomplete="off" readonly="readonly">
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-3 col-xs-12">
 							<label class="control-label">Programa</label>
 							<div>
-								<input id="txtPrograma" name="txtPrograma" class="form-control col-md-4 col-xs-12" value="<?= $Listarproyectobuscado->nombre_div_funcional?>" placeholder="Programa" required="required" autocomplete="off" disabled>
+								<input id="txtPrograma" name="txtPrograma" class="form-control col-md-4 col-xs-12" value="<?= $Listarproyectobuscado->nombre_div_funcional?>" placeholder="Programa" required="required" autocomplete="off" readonly="readonly">
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-3 col-xs-12">
 							<label class="control-label">Sub Programa</label>
 							<div>
-								<input id="txtSubPrograma" name="txtSubPrograma" class="form-control col-md-4 col-xs-12" value="<?= $Listarproyectobuscado->nombre_grup_funcional?>" placeholder="Sub Programa" required="required" autocomplete="off" disabled>
+								<input id="txtSubPrograma" name="txtSubPrograma" class="form-control col-md-4 col-xs-12" value="<?= $Listarproyectobuscado->nombre_grup_funcional?>" placeholder="Sub Programa" required="required" autocomplete="off" readonly="readonly">
 							</div>
 						</div>
 					</div>
@@ -206,12 +206,12 @@
                                 <input type="file" id="Documento_Resolucion" name="Documento_Resolucion">
                                 </div>
                         </div>
-						<div class="col-md-8 col-sm-3 col-xs-12">
+						<!--<div class="col-md-8 col-sm-3 col-xs-12">
 							<label class="control-label">Url Documento de aprobacion</label>
 							<div>
 								<input id="txtUrlDocAprobacion" name="txtUrlDocAprobacion" class="form-control col-md-4 col-xs-12"  placeholder="Responable de la Elaboración del Proyecto" required="required" autocomplete="off" >
 							</div>
-						</div>
+						</div>-->
 					</div>
 					<div class="row">
 						<div class="col-md-5 col-sm-3 col-xs-12">
