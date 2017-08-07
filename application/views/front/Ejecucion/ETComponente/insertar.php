@@ -453,8 +453,8 @@ function mostrarMetaAnidada($meta)
 		$('.selectpicker').selectpicker({ liveSearch: true }).ajaxSelectPicker(
 		{
 	        ajax: {
-	            url: base_url+'index.php/ET_Partida/filtrarPorDescPartida',
-	            data: { valueSearch : 'Test'}
+	            url: base_url+'index.php/ET_Lista_Partida/verPorDescripcion',
+	            data: { valueSearch : '{{{q}}}' }
 	        },
 	        locale:
 	        {

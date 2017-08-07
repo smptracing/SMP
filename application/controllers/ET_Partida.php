@@ -60,9 +60,4 @@ class ET_Partida extends CI_Controller
 
 		$this->load->view('Front/Ejecucion/ETPartida/insertar');
 	}
-
-	public function filtrarPorDescPartida()
-	{
-		echo json_encode(['data' => 'valor']);exit;
-	}
 }
