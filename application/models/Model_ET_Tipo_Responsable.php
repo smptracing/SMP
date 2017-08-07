@@ -36,4 +36,11 @@ class Model_ET_Tipo_Responsable extends CI_Model
 
         return true;
     }
+
+    function NombreTipoResponsable($desc_tipo_responsable_et)
+    {
+        $data=$this->db->query("select * from ET_TIPO_RESPONSABLE where desc_tipo_responsable_et='".$desc_tipo_responsable_et."' ");
+
+        return $data->result();
+    }
 }

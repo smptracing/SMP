@@ -49,4 +49,10 @@ class Model_ET_Expediente_Tecnico extends CI_Model
 		$listarExpdenieTecnico=$this->db->query("execute sp_Gestionar_ET_Expediente_Tecnico @Opcion='".$Opcion."',@id_et='".$id_et."'");
         return $listarExpdenieTecnico->result()[0];
 	}
+	public function UltimoExpedienteTecnico()
+	{
+		$BuscarUltimoExpedienteTecnico=$this->db->query("select max(id_et) as id_et from ET_EXPEDIENTE_TECNICO");
+
+        return $BuscarUltimoExpedienteTecnico->result()[0];
+    }
 }

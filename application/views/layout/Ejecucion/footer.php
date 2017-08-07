@@ -68,7 +68,7 @@
 	<script src="<?php echo base_url(); ?>assets/vendors/butons/buttons.print.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/plugins/input-mask/jquery.inputmask.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
-
+	<script src="<?php echo base_url(); ?>assets/vendors/dropzone/dist/min/dropzone.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/Usuario/login.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/administrador/ServicioPublico.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/growl/growl.js"></script>
