@@ -49,4 +49,10 @@ class Model_ET_Expediente_Tecnico extends CI_Model
 		$listarExpdenieTecnico=$this->db->query("execute sp_Gestionar_ET_Expediente_Tecnico @Opcion='".$Opcion."',@id_et='".$id_et."'");
         return $listarExpdenieTecnico->result()[0];
 	}
+
+	public function DatosExpediente($id_et)
+	{
+		$ETExpediente=$this->db->query("select * from  ET_EXPEDIENTE_TECNICO inner join PROYECTO_INVERSION ON ET_EXPEDIENTE_TECNICO.id_pi=PROYECTO_INVERSION.id_pi where id_et ='".$id_et."'");
+	    return $ETExpediente->result()[0];
+	}
 }

@@ -20,6 +20,7 @@ class ET_Tipo_Gasto extends CI_Controller
     {
         if($_POST)
         {
+            $this->db->trans_start(); 
             $flat  = "C";
             $txtDescripcion=$this->input->post('txtDescripcion');
 
@@ -28,7 +29,8 @@ class ET_Tipo_Gasto extends CI_Controller
                 echo json_encode(['proceso' => 'Error', 'mensaje' => 'Este tipo de gasto de ejecución ya fue registrado con anterioridad.']);exit; 
             }
             
-            $this->Model_ET_Tipo_Gasto->insertar($flat,$txtDescripcion);            
+            $this->Model_ET_Tipo_Gasto->insertar($flat,$txtDescripcion);       
+            $this->db->trans_complete();     
             echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos registrados correctamente.']);exit;  
         }
 
@@ -39,6 +41,7 @@ class ET_Tipo_Gasto extends CI_Controller
     {
         if($this->input->post('hdId'))
         {
+            $this->db->trans_start(); 
             $flat  = "U";
             $id=$this->input->post('hdId');
 
@@ -47,8 +50,8 @@ class ET_Tipo_Gasto extends CI_Controller
             {
                 echo json_encode(['proceso' => 'Error', 'mensaje' => 'Este presupuesto de ejecución ya fue registrado con anterioridad.']);exit;  
             }
-
             $this->Model_ET_Tipo_Gasto->editar($flat,$id,$txtDescripcion);
+            $this->db->trans_complete();
             echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos actualizados correctamente.']);exit; 
         }
 

@@ -125,7 +125,9 @@ class Expediente_Tecnico extends CI_Controller
 
 	function editar()
 	{
-		$this->load->view('front/Ejecucion/ExpedienteTecnico/editar');
+		$id_et=$this->input->GET('id_et');
+		$ExpedienteTecnicoM=$this->Model_ET_Expediente_Tecnico->DatosExpediente($id_et);
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/editar',['ExpedienteTecnicoM'=>$ExpedienteTecnicoM]);
 	}
     function registroBuscarProyecto()
     {
