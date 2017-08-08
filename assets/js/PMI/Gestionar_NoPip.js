@@ -319,7 +319,7 @@ $(document).on("ready" ,function(){
                                     {"data":"codigo_unico_pi"},
                                     {"data":"nombre_pi"},
                                     {"data":"costo_pi"},
-                                    {"data":"nombre_estado_ciclo"},
+                                    {"data":"nombre_naturaleza_inv"},
                                     {"defaultContent":"<center><button type='button' title='Ubicación' class='ubicacion_geografica btn btn-primary btn-xs' data-toggle='modal' data-target='#venta_ubicacion_geografica'><i class='fa fa-map-marker' aria-hidden='true'></i></button><button type='button' title='Ver Rubro PI' class='RegistarNuevoRubro btn btn-info btn-xs' data-toggle='modal' data-target='#venta_registar_rubro'><i class='fa fa-spinner' aria-hidden='true'></i></button><button type='button' title='Modalidad de Ejecución' class='nueva_modalidad_ejec btn btn-warning btn-xs' data-toggle='modal' data-target='#ventanaModalidadEjecucion'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button' title='Ver Estado Ciclo' class='ver_estado_ciclo btn btn-success btn-xs' data-toggle='modal' data-target='#ventana_ver_estado_ciclo'><i class='fa fa-paw' aria-hidden='true'></i></button><button type='button' title='Ver Tipología No PIP' class='ver_tipologia_nopip btn btn-danger btn-xs' data-toggle='modal' data-target='#ventana_ver_tipologia'><i class='fa fa-random' aria-hidden='true'></i></button><button type='button' title='Operación y Mantenimiento' class='ver_operacion_mantenimiento btn btn-info btn-xs' data-toggle='modal' data-target='#ventana_ver_operacion_mantenimeinto'><i class='fa fa-building' aria-hidden='true'></i></button></center>"}
                                 ],
                                "language":idioma_espanol
@@ -339,14 +339,202 @@ $(document).on("ready" ,function(){
                     $(tbody).on("click","button.Editar_proyecto",function(){
                      
                 var data=table.row( $(this).parents("tr")).data();
-                var  nombre_estado_ciclo=data.nombre_estado_ciclo;
+                var  id_estado_ciclo=data.id_estado_ciclo;
+                var  id_naturaleza_inv=data.id_naturaleza_inv;
+                var id_nivel_gob=data.id_nivel_gob;
+                var id_ue=data.id_ue;
+                var id_funcion=data.id_funcion;
+                var id_div_funcional=data.id_div_funcional;
+                var id_grupo_funcional=data.id_grupo_funcional;
+
                       $("#txtCodigoUnico_m").val(data.codigo_unico_pi);
                       $("#txtNombrePip_m").val(data.nombre_pi);
-                      listarCicloInver(nombre_estado_ciclo);
+                      listarCicloInver(id_estado_ciclo);
+                      listarNaturalezaInver(id_naturaleza_inv);
+                      listarNivelGobierno(id_nivel_gob);
+                      listarUnidadEjecutora(id_ue);
+                      listarFuncion(id_funcion);
+                      listarDivisionFuncional(id_funcion,id_div_funcional);
+                      listarGrupoFuncional(id_div_funcional,id_grupo_funcional);
+                    });
+                }
+
+/**************** editar los proyecto ********************************/
+    /*listar ciclo de inversión*/
+
+    var listarCicloInver=function(valor){
+                     var html="";
+                    $("#cbxEstCicInv_").html(html);
+                    event.preventDefault();
+                    $.ajax({
+                        "url":base_url +"index.php/EstadoCicloInversion/get_EstadoCicloInversion",
+                        type:"POST",
+                        success:function(respuesta3){
+                         //  alert(respuesta);
+                         var registros = eval(respuesta3);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option  value="+registros[i]["id_estado_ciclo"]+"> "+registros[i]["nombre_estado_ciclo"]+" </option>";
+                            };
+                            $("#cbxEstCicInv_").html(html);
+                             $("#cbxEstCicInv_m").html(html);//para modificar las entidades 
+                            $('select[name=cbxEstCicInv_m]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=cbxEstCicInv_m]').change();
+                            $('.selectpicker').selectpicker('refresh');
+                        }
+                    });
+                }
+var listarNaturalezaInver=function(valor){
+
+                    var html="";
+                    $("#cbxInicio").html(html);
+                    event.preventDefault();
+                    $.ajax({
+                        "url":base_url +"index.php/TipologiaInversion/get_NaturalezaInversion",
+                        type:"POST",
+                        success:function(respuesta3){
+                         //  alert(respuesta);
+                         var registros = eval(respuesta3);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option  value="+registros[i]["id_naturaleza_inv"]+"> "+registros[i]["nombre_naturaleza_inv"]+" </option>";
+                            };
+                            $("#cbxInicio").html(html);
+                             $("#cbxNatI_m").html(html);//para modificar las entidades 
+                            $('select[name=cbxNatI_m]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=cbxNatI_m]').change();
+                            $('.selectpicker').selectpicker('refresh');
+                        }
+                    });
+                }
+
+              var listarNivelGobierno=function(valor){
+
+                    var html="";
+                    $("#cbxNivelGob_Inicio").html(html);
+                    event.preventDefault();
+                    $.ajax({
+                        "url":base_url +"index.php/NivelGobierno/get_NivelGobierno",
+                        type:"POST",
+                        success:function(respuesta3){
+                         //  alert(respuesta);
+                         var registros = eval(respuesta3);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option  value="+registros[i]["id_nivel_gob"]+"> "+registros[i]["nombre_nivel_gob"]+" </option>";
+                            };
+                            $("#cbxNivelGob_Inicio").html(html);
+                             $("#cbxNivelGob_m").html(html);//para modificar las entidades 
+                            $('select[name=cbxNivelGob_m]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=cbxNivelGob_m]').change();
+                            $('.selectpicker').selectpicker('refresh');
+                        }
+                    });
+                }
+                  var listarUnidadEjecutora=function(valor){
+
+                    var html="";
+                    $("#cbxUnidadEjecutora_inicio").html(html);
+                    event.preventDefault();
+                    $.ajax({
+                        "url":base_url +"index.php/UnidadE/GetUnidadE",
+                        type:"POST",
+                        success:function(respuesta3){
+                         //  alert(respuesta);
+                         var registros = eval(respuesta3);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option  value="+registros[i]["id_ue"]+"> "+registros[i]["nombre_ue"]+" </option>";
+                            };
+                            $("#cbxUnidadEjecutora_inicio").html(html);
+                             $("#cbxUnidadEjecutora_m").html(html);//para modificar las entidades 
+                            $('select[name=cbxUnidadEjecutora_m]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=cbxUnidadEjecutora_m]').change();
+                            $('.selectpicker').selectpicker('refresh');
+                        }
+                    });
+                }
+var listarFuncion=function(valor){
+
+                    var html="";
+                    $("#cbxFuncion_inicio").html(html);
+                    event.preventDefault();
+                    $.ajax({
+                        "url":base_url +"index.php/MFuncion/GetFuncion",
+                        type:"POST",
+                        success:function(respuesta3){
+                         //  alert(respuesta);
+                         var registros = eval(respuesta3);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option  value="+registros[i]["id_funcion"]+"> "+registros[i]["nombre_funcion"]+" </option>";
+                            };
+                            $("#cbxFuncion_inicio").html(html);
+                             $("#cbxFuncion_m").html(html);//para modificar las entidades 
+                            $('select[name=cbxFuncion_m]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=cbxFuncion_m]').change();
+                            $('.selectpicker').selectpicker('refresh');
+                        }
+                    });
+                }
+    $("#cbxFuncion_m").change(function()
+       {
+      var id_funcion=$("#cbxFuncion_m").val();
+        listarDivisionFuncional(id_funcion,'');
+       });
+
+var listarDivisionFuncional=function(id_funcion,valor)
+                {
+                  alert(id_funcion);
+                  alert(valor);
+                   var html="";
+                    $("#cbxDivFunc_inicio").html(html); //nombre del selectpicker UNIDAD EJECUTORA
+                    event.preventDefault(); 
+                    $.ajax({
+                        "url":base_url +"index.php/DivisionFuncional/GetDivisioFuncuonaId",
+                        type:"POST",
+                        data:{id_funcion:id_funcion},
+                        success : function(respuesta){
+                           //alert(respuesta);
+                         var registros = eval(respuesta);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option value="+registros[i]["id_div_funcional"]+"> "+ registros[i]["nombre_div_funcional"]+" </option>";   
+                            }
+                            $("#cbxDivFunc_inicio").html(html);
+                            $("#cbxDivFunc_m").html(html);//para modificar las entidades 
+                            $('select[name=cbxDivFunc_m]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=cbxDivFunc_m]').change();
+                            $('.selectpicker').selectpicker('refresh'); 
+                        }
+                    });
+                }
+    $("#cbxDivFunc_m").change(function()
+       {
+      var id_div_funcional=$("#cbxDivFunc_m").val();
+        listarGrupoFuncional(id_div_funcional,'');
+       });
+
+  var listarGrupoFuncional=function(id_div_funcional,valor)
+                {
+                    html="";
+                    $("#cbxGrupoFunc_m").html(html); //nombre del selectpicker UNIDAD EJECUTORA
+                    event.preventDefault(); 
+                    $.ajax({
+                        "url":base_url +"index.php/GrupoFuncional/GetGrupoFuncionalId",
+                        type:"POST",
+                        data:{id_div_funcional:id_div_funcional},
+                        success : function(respuesta)
+                        {
+                         var registros = eval(respuesta);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option value="+registros[i]["id_grup_funcional"]+"> "+ registros[i]["nombre_grup_funcional"]+" </option>";   
+                            }
+                            $("#cbxGrupoFunc_m").html(html);
+                            $("#cbxDivFunc").html(html);//para modificar las entidades 
+                            $('select[name=cbxDivFunc]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=cbxDivFunc]').change();
+                            $('.selectpicker').selectpicker('refresh'); 
+                        }
                     });
                 }
 
 
+ /**************************************************************************************/
 
 //add operacion y manteniemito
    var  AddMantOperacion=function(tbody,table){
@@ -517,7 +705,7 @@ $(document).on("ready" ,function(){
                         }
                     });
                 }
-
+/*
     var listarCicloInver=function(){
                      html="";
                     $("#cbxEstCicInv_").html(html);
@@ -535,7 +723,7 @@ $(document).on("ready" ,function(){
                             $('.selectpicker').selectpicker('refresh');
                         }
                     });
-                }
+                }*/
                 //listar en el combox para registrar rubro
  var listar_TipologiaNoPip=function(valor){
                      html="";
