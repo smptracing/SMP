@@ -50,7 +50,7 @@
                                                           <th style="width: 8%"><i class="fa fa-thumb-tack"></i> Cod. </th>
                                                           <th style="width: 46%"><i class="fa fa-bookmark-o"></i> Nombre</th>
                                                           <th style="width: 8%"><i class="fa fa-money"></i> Costo</th>
-                                                          <th style="width: 12%"> Estado Ciclo</th>
+                                                          <th style="width: 12%"> Naturaleza Inversión</th>
                                                           <th style="width: 12%"> Estado</th>
                                                         <th style="width: 6%">Programar</th>
                                                         </tr>

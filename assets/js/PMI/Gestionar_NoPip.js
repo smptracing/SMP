@@ -339,7 +339,10 @@ $(document).on("ready" ,function(){
                     $(tbody).on("click","button.Editar_proyecto",function(){
                      
                 var data=table.row( $(this).parents("tr")).data();
+                var  nombre_estado_ciclo=data.nombre_estado_ciclo;
                       $("#txtCodigoUnico_m").val(data.codigo_unico_pi);
+                      $("#txtNombrePip_m").val(data.nombre_pi);
+                      listarCicloInver(nombre_estado_ciclo);
                     });
                 }
 

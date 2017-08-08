@@ -314,7 +314,7 @@
                                       <div class="col-md-4">
 
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <label  for="name">Tipo inversion<span class="required">*</span>
+                                            <label  for="name">Tipo inversión<span class="required">*</span>
                                         </label>
                                           <!--  <select id="cbxTipoInv" name="cbxTipoInv" class="selectpicker" disabled>
                                             </select>-->
@@ -327,7 +327,7 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                              <label  for="textbox"><span class="required">Ciclo Inversión</span>
                                               </label>
-                                            <select id="cbxEstCicInv_" name="cbxEstCicInv_" class="selectpicker"  title="Elija Ciclo de Inversión" required="required">
+                                            <select id="cbxEstCicInv_m" name="cbxEstCicInv_m" class="selectpicker"  title="Elija Ciclo de Inversión" required="required">
                                             </select>
                                             </div>
                                       </div>
@@ -340,7 +340,7 @@
                                         <label class="control-label col-md-1 col-sm-12 col-xs-12" for="name">Inversion<span class="required"></span>
                                         </label>
                                          <div class="col-md-12 col-sm-12 col-xs-12">
-                                          <input id="txtNombrePip" name="txtNombrePip" class="form-control col-md-12 col-xs-5" placeholder="Nombre Inversion" required="required" type="text">
+                                          <input id="txtNombrePip_m" name="txtNombrePip_m" class="form-control col-md-12 col-xs-5" placeholder="Nombre Inversion" required="required" type="text">
                                             <!--<textarea  id="txtNombrePip" name="txtNombrePip" class="form-control" data-validate-length-range="6" data-validate-words="2" placeholder="Nombre Inversion"></textarea>-->
                                         </div>
                                       </div>

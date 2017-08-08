@@ -7,11 +7,7 @@ $(document).on("ready" ,function(){
 
   var str1 = "Inv_";
   var anio_1= parseInt(anio) +1; 
-  var anio_2= parseInt(anio) +2; 
-  var anio_3= parseInt(anio) +3; 
   var anioR1 = str1.concat(anio_1);
-  var anioR2 = str1.concat(anio_2);
-  var anioR3 = str1.concat(anio_3);
        var table=$("#table_operacion_mantenimiento").DataTable({
                      "processing": true,
                       "serverSide":false,
@@ -25,13 +21,11 @@ $(document).on("ready" ,function(){
                                 "columns":[ 
                                 { "data" : "id_pi", "visible" : false },
                                 { "data" : "codigo_unico_pi" },
-                                { "data" : "nombre_estado_ciclo" },
+                                { "data" : "nombre_naturaleza_inv" },
                                 { "data" : "nombre_pi" },
                                 { "data" : "prioridad_prog" },
                                 { "data" : "nombre_brecha" },
-                                { "data" : anioR1 },
-                                { "data" : anioR2 },
-                                { "data" : anioR3 }
+                                { "data" : anioR1 }
     ]
   });
 }
@@ -42,7 +36,7 @@ $(document).on("ready" ,function(){
                     $("#Cbx_AnioCartera_no_pip").html(html);
                     event.preventDefault();
                     $.ajax({
-                        "url":base_url +"index.php/programar_pip/GetAnioCartera",
+                        "url":base_url +"index.php/programar_pip/GetAnioCarteraProgramado",
                         type:"POST",
                         success:function(respuesta3){
                          //  alert(respuesta);
