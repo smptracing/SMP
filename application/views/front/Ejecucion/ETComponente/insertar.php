@@ -53,7 +53,7 @@ function mostrarMetaAnidada($meta)
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<label class="control-label">Descripción partida</label>
 			<div>
-				<select name="selectDescripcionPartida" id="selectDescripcionPartida" class="selectpicker form-control"></select>
+				<select name="selectDescripcionPartida" id="selectDescripcionPartida" class="form-control"></select>
 			</div>
 		</div>
 		<div class="col-md-6 col-sm-6 col-xs-6">
@@ -450,7 +450,7 @@ function mostrarMetaAnidada($meta)
 	{
 		limpiarArbolCompletoMasOpciones();
 
-		$('.selectpicker').selectpicker({ liveSearch: true }).ajaxSelectPicker(
+		$('#selectDescripcionPartida').selectpicker({ liveSearch: true }).ajaxSelectPicker(
 		{
 	        ajax: {
 	            url: base_url+'index.php/ET_Lista_Partida/verPorDescripcion',
@@ -463,17 +463,34 @@ function mostrarMetaAnidada($meta)
 	        preprocessData: function(data)
 	        {
 	        	var dataForSelect=[];
-	        	
-	        	dataForSelect.push(
-                {
-                    'value': data.data,
-                    'text': data.data,
-                    'disabled': false
-                });
+
+	        	for(var i=0; i<data.length; i++)
+	        	{
+	        		dataForSelect.push(
+	                {
+	                    "value" : data[i].id_lista_partida,
+	                    "text" : data[i].desc_lista_partida,
+	                    "data" :
+	                    {
+	                    	"id-unidad" : data[i].id_unidad
+	                    },
+	                    "disabled" : false
+	                });
+	        	}
 
 	            return dataForSelect;
 	        },
 	        preserveSelected: false
+	    });
+
+	    $('#selectDescripcionPartida').on('change', function()
+	    {
+			var selected=$(this).find("option:selected").val();
+
+			if(selected.trim()!='')
+			{
+				$('#selectUnidadMedidaPartida').val($(this).find("option:selected").data('id-unidad'));
+			}
 	    });
 
 		$('#divAgregarComponente').formValidation(
