@@ -46,13 +46,6 @@ class ET_Partida extends CI_Controller
 				echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se encuentra registrado la etapa de "Elaboración de expediente técnico" para proseguir con el proceso. Por favor registre este dato en las etapas de ejecución.']);exit;
 			}
 
-			$listaETAnaliticoPartida=$this->Model_ET_Analitico_Partida->ETAnaliticoPartidaPorIdListaPartida($idListaPartida);
-
-			foreach($listaETAnaliticoPartida as $key => $value)
-			{
-				$value->childETDetalleAnaliticoPartida=$this->Model_ET_Detalle_Analitico_Partida->ETDetalleAnaliticoPartidaPorIdAnaliticoPartida($value->id_analitico_partida);
-			}
-
 			$this->Model_ET_Partida->insertar($idMeta, $idUnidad, $idListaPartida, $descripcionPartida, $rendimientoPartida, $cantidadPartida);
 
 			$unidadMedida=$this->Model_Unidad_Medida->UnidadMedida($idUnidad)[0];
@@ -60,6 +53,24 @@ class ET_Partida extends CI_Controller
 			$ultimoIdPartida=$this->Model_ET_Partida->ultimoId();
 
 			$this->Model_ET_Detalle_Partida->insertar($ultimoIdPartida, $idUnidad, $etEtapaEjecucion->id_etapa_et, $rendimientoPartida, $cantidadPartida, 0, 0, true);
+
+			$ultimoIdDetallePartida=$this->Model_ET_Detalle_Partida->ultimoId();
+
+			$listaETAnaliticoPartida=$this->Model_ET_Analitico_Partida->ETAnaliticoPartidaPorIdListaPartida($idListaPartida);
+
+			foreach($listaETAnaliticoPartida as $key => $value)
+			{
+				$this->Model_ET_Analisis_Unitario->insertar('NULL', $value->id_recurso, $ultimoIdDetallePartida);
+
+				$ultimoIdAnalisisUnitario=$this->Model_ET_Analisis_Unitario->ultimoId();
+
+				$value->childETDetalleAnaliticoPartida=$this->Model_ET_Detalle_Analitico_Partida->ETDetalleAnaliticoPartidaPorIdAnaliticoPartida($value->id_analitico_partida);
+
+				foreach($value->childETDetalleAnaliticoPartida as $index => $item)
+				{
+					$this->Model_ET_Detalle_Analisis_Unitario->insertar($ultimoIdAnalisisUnitario, $item->id_unidad, $item->desc_insumo, $item->cuadrilla, 0, $item->precio, 0, $item->rendimiento);
+				}
+			}
 
 			$this->db->trans_complete();
 
