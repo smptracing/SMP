@@ -20,6 +20,7 @@ class ET_Recurso extends CI_Controller
     {
         if($_POST)
         {
+            $this->db->trans_start(); 
             $flat  = "C";
             $txtDescripcion=$this->input->post('txtDescripcion');
 
@@ -28,7 +29,8 @@ class ET_Recurso extends CI_Controller
                 echo json_encode(['proceso' => 'Error', 'mensaje' => 'Este Recurso ya fue registrado con anterioridad.']);exit; 
             }
             
-            $this->Model_ET_Recurso->insertar($flat,$txtDescripcion);            
+            $this->Model_ET_Recurso->insertar($flat,$txtDescripcion);   
+            $this->db->trans_complete();         
             echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos registrados correctamente.']);exit;  
         }
 
@@ -38,7 +40,7 @@ class ET_Recurso extends CI_Controller
     public function editar()
     {
         if($this->input->post('hdId'))
-        {
+        {   $this->db->trans_start(); 
             $flat  = "U";
             $id=$this->input->post('hdId');
             $txtDescripcion=$this->input->post('txtDescripcion');
@@ -48,7 +50,8 @@ class ET_Recurso extends CI_Controller
                  echo json_encode(['proceso' => 'Error', 'mensaje' => 'Este Recurso ya fue registrado con anterioridad.']);exit; 
             }
 
-            $this->Model_ET_Recurso->editar($flat,$id,$txtDescripcion);         
+            $this->Model_ET_Recurso->editar($flat,$id,$txtDescripcion);    
+            $this->db->trans_complete();     
             echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Se actualizo el recurso correctamente.']);exit;
         }
 

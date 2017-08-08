@@ -21,6 +21,7 @@ class ET_Presupuesto_Ejecucion extends CI_Controller
 
     	if($_POST)
         {
+            $this->db->trans_start(); 
             $flat  = "C";
             $txtDescripcion=$this->input->post('txtDescripcion');
             if(count($this->Model_ET_Presupuesto_Ejecucion->EtPresupuestoEjecucionPorDescripcion($txtDescripcion))>0)
@@ -28,6 +29,7 @@ class ET_Presupuesto_Ejecucion extends CI_Controller
                 echo json_encode(['proceso' => 'Error', 'mensaje' => 'Este presupuesto de ejecución ya fue registrado con anterioridad.']);exit; 
             }
             $this->Model_ET_Presupuesto_Ejecucion->insertar($flat,$txtDescripcion); 
+            $this->db->trans_complete();
             echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos registrados correctamente.']);exit;           
         }
 
@@ -39,6 +41,7 @@ class ET_Presupuesto_Ejecucion extends CI_Controller
         
         if($this->input->post('hdId'))
         {
+            $this->db->trans_start(); 
             $flat  = "U";
             $id=$this->input->post('hdId');
 
@@ -49,6 +52,7 @@ class ET_Presupuesto_Ejecucion extends CI_Controller
                 echo json_encode(['proceso' => 'Error', 'mensaje' => 'Este presupuesto de ejecución ya fue registrado con anterioridad.']);exit; 
             }
             $this->Model_ET_Presupuesto_Ejecucion->editar($flat,$id,$txtDescripcion);
+            $this->db->trans_complete();
             echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos actualizados correctamente.']);exit;  
         }
         $id=$this->input->get('id');
