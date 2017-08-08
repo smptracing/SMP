@@ -68,7 +68,7 @@ $(document).on("ready" ,function(){
                                     {"data":"codigo_unico_pi"},
                                     {"data":"nombre_pi"},
                                     {"data":"costo_pi"},
-                                    {"data":"nombre_estado_ciclo"},
+                                    {"data":"nombre_naturaleza_inv"},
                                     {"data": function (data, type, dataToSet) {
 
                                       if (data.estado_programado !='0') //estap programado

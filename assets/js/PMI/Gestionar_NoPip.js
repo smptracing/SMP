@@ -314,7 +314,7 @@ $(document).on("ready" ,function(){
                                     "dataSrc":""                                    
                                   },
                                 "columns":[
-                                    {"defaultContent":"<td>#</td>"},
+                                    {"defaultContent":"<center><button type='button' title='Editar' class='Editar_proyecto btn btn-primary btn-xs' data-toggle='modal' data-target='#venta_editar_proyecto'><i class='fa fa-edit' aria-hidden='true'></i></button></center>"},
                                     {"data":"id_pi" ,"visible": false},
                                     {"data":"codigo_unico_pi"},
                                     {"data":"nombre_pi"},
@@ -324,14 +324,30 @@ $(document).on("ready" ,function(){
                                 ],
                                "language":idioma_espanol
                     });
-              AddListarUbigeo("#table_no_pip",table);
-       AddEstadoCiclo("#table_no_pip",table);
-       AddRubroPI("#table_no_pip",table);
+      AddListarUbigeo("#table_no_pip",table);
+      AddEstadoCiclo("#table_no_pip",table);
+      AddRubroPI("#table_no_pip",table);
       AddModalidadEjecucion("#table_no_pip",table);
       AddTipologiaNOPIP("#table_no_pip",table);
       AddMantOperacion("#table_no_pip",table);
+      EditNoPip("#table_no_pip",table);
 }
 //fin de table de lista NO PIP
+//editar proyecto de inversion ingresado en el banco de pi.
+
+   var  EditNoPip=function(tbody,table){
+                    $(tbody).on("click","button.Editar_proyecto",function(){
+                     
+                var data=table.row( $(this).parents("tr")).data();
+                var  nombre_estado_ciclo=data.nombre_estado_ciclo;
+                      $("#txtCodigoUnico_m").val(data.codigo_unico_pi);
+                      $("#txtNombrePip_m").val(data.nombre_pi);
+                      listarCicloInver(nombre_estado_ciclo);
+                    });
+                }
+
+
+
 //add operacion y manteniemito
    var  AddMantOperacion=function(tbody,table){
                     $(tbody).on("click","button.ver_operacion_mantenimiento",function(){
@@ -504,7 +520,7 @@ $(document).on("ready" ,function(){
 
     var listarCicloInver=function(){
                      html="";
-                    $("#cbxEstCicInv").html(html);
+                    $("#cbxEstCicInv_").html(html);
                     event.preventDefault();
                     $.ajax({
                         "url":base_url +"index.php/EstadoCicloInversion/get_EstadoCicloInversion",
@@ -515,7 +531,7 @@ $(document).on("ready" ,function(){
                             for (var i = 0; i <registros.length;i++) {
                               html +="<option  value="+registros[i]["id_estado_ciclo"]+"> "+registros[i]["nombre_estado_ciclo"]+" </option>";
                             };
-                            $("#cbxEstCicInv").html(html);
+                            $("#cbxEstCicInv_").html(html);
                             $('.selectpicker').selectpicker('refresh');
                         }
                     });

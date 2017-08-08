@@ -9,6 +9,12 @@ class ET_Partida extends CI_Controller
 		
 		$this->load->model('Model_ET_Partida');
 		$this->load->model('Model_Unidad_Medida');
+		$this->load->model('Model_ET_Etapa_Ejecucion');
+		$this->load->model('Model_ET_Detalle_Partida');
+		$this->load->model('Model_ET_Analitico_Partida');
+		$this->load->model('Model_ET_Detalle_Analitico_Partida');
+		$this->load->model('Model_ET_Analisis_Unitario');
+		$this->load->model('Model_ET_Detalle_Analisis_Unitario');
 	}
 
 	public function insertar()
@@ -22,6 +28,7 @@ class ET_Partida extends CI_Controller
 			$descripcionPartida=$this->input->post('descripcionPartida');
 			$rendimientoPartida=$this->input->post('rendimientoPartida');
 			$cantidadPartida=$this->input->post('cantidadPartida');
+			$idListaPartida=$this->input->post('idListaPartida');
 
 			if(count($this->Model_ET_Partida->ETPartidaPorIdMetaAndDescPartida($idMeta, $descripcionPartida))>0)
 			{
@@ -30,10 +37,29 @@ class ET_Partida extends CI_Controller
 				echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede agregar dos partidas iguales en el mismo nivel.']);exit;
 			}
 
-			$this->Model_ET_Partida->insertar($idMeta, $idUnidad, $descripcionPartida, $rendimientoPartida, $cantidadPartida);
+			$etEtapaEjecucion=$this->Model_ET_Etapa_Ejecucion->ETEtapaEjecucionPorDescEtaoaET('Elaboración de expediente técnico');
+
+			if($etEtapaEjecucion==null)
+			{
+				$this->db->trans_rollback();
+
+				echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se encuentra registrado la etapa de "Elaboración de expediente técnico" para proseguir con el proceso. Por favor registre este dato en las etapas de ejecución.']);exit;
+			}
+
+			$listaETAnaliticoPartida=$this->Model_ET_Analitico_Partida->ETAnaliticoPartidaPorIdListaPartida($idListaPartida);
+
+			foreach($listaETAnaliticoPartida as $key => $value)
+			{
+				$value->childETDetalleAnaliticoPartida=$this->Model_ET_Detalle_Analitico_Partida->ETDetalleAnaliticoPartidaPorIdAnaliticoPartida($value->id_analitico_partida);
+			}
+
+			$this->Model_ET_Partida->insertar($idMeta, $idUnidad, $idListaPartida, $descripcionPartida, $rendimientoPartida, $cantidadPartida);
+
 			$unidadMedida=$this->Model_Unidad_Medida->UnidadMedida($idUnidad)[0];
 
 			$ultimoIdPartida=$this->Model_ET_Partida->ultimoId();
+
+			$this->Model_ET_Detalle_Partida->insertar($ultimoIdPartida, $idUnidad, $etEtapaEjecucion->id_etapa_et, $rendimientoPartida, $cantidadPartida, 0, 0, true);
 
 			$this->db->trans_complete();
 

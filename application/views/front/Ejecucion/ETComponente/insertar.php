@@ -53,7 +53,7 @@ function mostrarMetaAnidada($meta)
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<label class="control-label">Descripción partida</label>
 			<div>
-				<select name="selectDescripcionPartida" id="selectDescripcionPartida" class="selectpicker form-control"></select>
+				<select name="selectDescripcionPartida" id="selectDescripcionPartida" class="form-control"></select>
 			</div>
 		</div>
 		<div class="col-md-6 col-sm-6 col-xs-6">
@@ -81,6 +81,7 @@ function mostrarMetaAnidada($meta)
 		<div class="col-md-1 col-sm-1 col-xs-1">
 			<label class="control-label">.</label>
 			<div>
+				<input type="hidden" id="hdIdListaPartida" name="hdIdListaPartida">
 				<input type="button" class="btn btn-info" value="+" onclick="agregarPartida();" style="width: 100%;">
 			</div>
 		</div>
@@ -357,7 +358,7 @@ function mostrarMetaAnidada($meta)
 
 		$($(elementoPadreParaAgregarPartida).find('table')[0]).find('> tbody > tr > td > b').each(function(index, element)
 		{
-			if(replaceAll($(element).text(), ' ', '').toLowerCase()==replaceAll($('#selectDescripcionPartida').val(), ' ', '').toLowerCase())
+			if(replaceAll($(element).text(), ' ', '').toLowerCase()==replaceAll($('#selectDescripcionPartida').find("option:selected").val(), ' ', '').toLowerCase())
 			{
 				existePartida=true;
 
@@ -378,7 +379,8 @@ function mostrarMetaAnidada($meta)
 			return;
 		}
 
-		paginaAjaxJSON({ "idMeta" : metaPadreParaAgregarPartida, "idUnidad" : $('#selectUnidadMedidaPartida').val().trim(), "descripcionPartida" : $('#selectDescripcionPartida').val().trim(), "rendimientoPartida" : $('#txtRendimientoPartida').val().trim(), "cantidadPartida" : $('#txtCantidadPartida').val() }, base_url+'index.php/ET_Partida/insertar', 'POST', null, function(objectJSON)
+
+		paginaAjaxJSON({ "idMeta" : metaPadreParaAgregarPartida, "idUnidad" : $('#selectUnidadMedidaPartida').val().trim(), "descripcionPartida" : $('#selectDescripcionPartida').find("option:selected").val().trim(), "rendimientoPartida" : $('#txtRendimientoPartida').val().trim(), "cantidadPartida" : $('#txtCantidadPartida').val(), "idListaPartida" : $('#hdIdListaPartida').val() }, base_url+'index.php/ET_Partida/insertar', 'POST', null, function(objectJSON)
 		{
 			objectJSON=JSON.parse(objectJSON);
 
@@ -396,7 +398,7 @@ function mostrarMetaAnidada($meta)
 			}
 
 			var htmlTemp='<tr style="color: blue;" class="liPartida">'+
-				'<td style="padding-left: 10px;"><b>&#9658;'+$('#selectDescripcionPartida').val().trim()+'</b></td>'+
+				'<td style="padding-left: 10px;"><b>&#9658;'+$('#selectDescripcionPartida').find("option:selected").val().trim()+'</b></td>'+
 				'<td style="padding-left: 4px;">'+$('#txtRendimientoPartida').val().trim()+'</td>'+
 				'<td style="padding-left: 4px;text-align: center;">'+objectJSON.descripcionUnidadMedida+'</td>'+
 				'<td style="padding-left: 4px;text-align: center;">'+parseFloat($('#txtCantidadPartida').val()).toFixed(2)+'</td>'+
@@ -450,7 +452,7 @@ function mostrarMetaAnidada($meta)
 	{
 		limpiarArbolCompletoMasOpciones();
 
-		$('.selectpicker').selectpicker({ liveSearch: true }).ajaxSelectPicker(
+		$('#selectDescripcionPartida').selectpicker({ liveSearch: true }).ajaxSelectPicker(
 		{
 	        ajax: {
 	            url: base_url+'index.php/ET_Lista_Partida/verPorDescripcion',
@@ -463,17 +465,36 @@ function mostrarMetaAnidada($meta)
 	        preprocessData: function(data)
 	        {
 	        	var dataForSelect=[];
-	        	
-	        	dataForSelect.push(
-                {
-                    'value': data.data,
-                    'text': data.data,
-                    'disabled': false
-                });
+
+	        	for(var i=0; i<data.length; i++)
+	        	{
+	        		dataForSelect.push(
+	                {
+	                    "value" : data[i].desc_lista_partida,
+	                    "text" : data[i].desc_lista_partida,
+	                    "data" :
+	                    {
+	                    	"id-lista-partida" : data[i].id_lista_partida,
+	                    	"id-unidad" : data[i].id_unidad
+	                    },
+	                    "disabled" : false
+	                });
+	        	}
 
 	            return dataForSelect;
 	        },
 	        preserveSelected: false
+	    });
+
+	    $('#selectDescripcionPartida').on('change', function()
+	    {
+			var selected=$(this).find("option:selected").val();
+
+			if(selected.trim()!='')
+			{
+				$('#hdIdListaPartida').val($(this).find("option:selected").data('id-lista-partida'));
+				$('#selectUnidadMedidaPartida').val($(this).find("option:selected").data('id-unidad'));
+			}
 	    });
 
 		$('#divAgregarComponente').formValidation(
