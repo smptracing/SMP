@@ -203,7 +203,7 @@
 					 	<div class="col-md-4 col-sm-3 col-xs-12">
                             <label class="control-label">Subir Resolución</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                <input type="file" id="Documento_Resolucion" name="Documento_Resolucion">
+                                <input type="file" id="Documento_Resolucion" name="Documento_Resolucion" notValidate>
                                 </div>
                         </div>
 					</div>
@@ -280,19 +280,22 @@
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<label class="control-label">Sustento para la presentacion del proyecto</label></br>
+							<input type="hidden" id="hdtxtSituacioActual" name="hdtxtSituacioActual" >
 							<p><textarea name="txtSituacioActual" id="txtSituacioActual" rows="10" cols="80"></textarea></p>
 						</div>	
 					</div>
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<label class="control-label">Relevancia Economica</label></br>
-							<p><textarea name="txtSituacioDeseada" id="txtSituacioDeseada" rows="10" cols="80"></textarea></p>
+							<input type="hidden" id="hdtxtSituacioEconomica" name="hdtxtSituacioEconomica" notValidate >
+							<p><textarea name="txtSituacioEconomica" id="txtSituacioEconomica" rows="10" cols="80"></textarea></p>
 						</div>	
 					</div>
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<label class="control-label">Resumen del proyecto (Descripción)</label></br>
-							<p><textarea name="txtContribucioInterv" id="txtContribucioInterv" rows="10" cols="80"></textarea></p>
+							<input type="hidden" id="hdtxtResumenProyecto" name="hdtxtResumenProyecto"  notValidate>
+							<p><textarea name="txtResumenProyecto" id="txtResumenProyecto" rows="10" cols="80"></textarea></p>
 						</div>	
 					</div>
 						
@@ -308,7 +311,7 @@
 						<div class="col-md-4 col-sm-3 col-xs-12">
 							<label class="control-label">Fotografías(04 minimo)</label>
 							<div>
-								<input  type="file" name="imagen[]" value="" placeholder="Fotografias"  autocomplete="off" multiple  >
+								<input  type="file" name="imagen[]" id="imagen" value="" placeholder="Fotografias"  autocomplete="off" multiple  >
 							</div>
 						</div>
 					</div>		
@@ -319,22 +322,23 @@
 	</div>
 	<div class="ln_solid"></div>
 		<div class="row" style="text-align: right;">
-			<button type="submit" id="btnEnviar" class="btn btn-success">Guardar</button>
+			<button type="submit"  class="btn btn-success">Guardar</button>
 			<button  class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+			<button type="button"  id="btnData" class="btn btn-success">Guardar</button>
 		</div>
 </form>
  <script>
  CKEDITOR.replace('txtSituacioActual' ,{
 		filebrowserImageBrowseUrl : '<?php echo base_url('assets/filemanager/index.html');?>'
 	});
- CKEDITOR.replace('txtSituacioDeseada' ,{
+ CKEDITOR.replace('txtSituacioEconomica' ,{
 		filebrowserImageBrowseUrl : '<?php echo base_url('assets/filemanager/index.html');?>'
 	});
-  CKEDITOR.replace('txtContribucioInterv' ,{
+  CKEDITOR.replace('txtResumenProyecto' ,{
 		filebrowserImageBrowseUrl : '<?php echo base_url('assets/filemanager/index.html');?>'
 	});
 
-/*$(function()
+$(function()
 	{
 		$('#form-addExpedienteTecnico').formValidation(
 		{
@@ -360,20 +364,20 @@
 					validators:
 					{
 					
-							regexp:
+						regexp:
 						{
 							regexp: /^\d*$/,
 							message: '<b style="color: red;">El campo "Teléfono" debe ser un numero.</b>'
 						}
 					}
 				},
-				txtRuc:
+				/*txtRuc:
 				{
 					validators:
 					{
 							regexp:
 						{
-							regexp: "^([0-9]){11}$",
+							regexp: /^([0-9]){11}$/,
 							message: '<b style="color: red;">El campo "Ruc" debe ser un número de 11 dígitos.</b>'
 						}
 					}
@@ -514,41 +518,53 @@
 							message: '<b style="color: red;">El campo "Numero de folios" debe ser un número.</b>'
 						}
 					}
-				}
+				},
+				imagen:
+				{
+					validators:
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Nombre unidad ejecutora" es requerido.</b>'
+						}
+					}
+				}*/
+
 			}
 		});
-	});*/
-	$('#btnEnviar').on('click', function(event)
-	{
-		event.preventDefault();
-
-		/*$('#form-addExpedienteTecnico').data('formValidation').validate();
-
-		if(!($('#form-addExpedienteTecnico').data('formValidation').isValid()))
-		{
-			return;
-		}*/
-
-		paginaAjaxJSON($('#form-addExpedienteTecnico').serialize(), '<?=base_url();?>index.php/Expediente_Tecnico/insertar', 'POST', null, function(objectJSON)
-		{
-			$('#modalTemp').modal('hide');
-
-			objectJSON=JSON.parse(objectJSON);
-
-			swal(
-			{
-				title: '',
-				text: objectJSON.mensaje,
-				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
-			},
-			function()
-			{
-				window.location.href='<?=base_url();?>index.php/Expediente_Tecnico/index/';
-
-				renderLoading();
-			});
-		}, false, true);
 	});
+
+	  $("#form-addExpedienteTecnico").submit(function(event)//AÑADIR NUEVA CARTERA
+           {
+                event.preventDefault();
+                $('#form-addExpedienteTecnico').data('formValidation').validate();
+				if(!($('#form-addExpedienteTecnico').data('formValidation').isValid()))
+				{
+					return;
+				}
+
+                $("#hdtxtSituacioActual").val(CKEDITOR.instances.txtSituacioActual.getData());
+                $("#hdtxtSituacioEconomica").val(CKEDITOR.instances.txtSituacioEconomica.getData());
+                $("#hdtxtResumenProyecto").val(CKEDITOR.instances.txtResumenProyecto.getData());
+
+                var formData=new FormData($("#form-addExpedienteTecnico")[0]);
+                var dataString = $('#form-addExpedienteTecnico').serialize();
+                $.ajax({
+                    type:"POST",
+                    enctype: 'multipart/form-data',
+                    url:base_url+"index.php/Expediente_Tecnico/insertar",
+                    data: formData,
+                    cache: false,
+                    contentType:false,
+                    processData:false,
+                    success:function(resp)
+                    {
+                      	swal('Registro Correcto del Expediente Técnico',resp);
+                      	 // window.location.href=base_url+"index.php/Expediente_Tecnico/"
+                    }
+                });
+              $('#form-addExpedienteTecnico')[0].reset();
+           });
 
 </script>
 
