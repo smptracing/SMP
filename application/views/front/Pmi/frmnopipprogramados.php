@@ -56,13 +56,11 @@
                                                       <tr>
                                                                   <th style="width: 1%">Id</th>
                                                                   <th style="width: 5%">Cód único</th>
-                                                                  <th style="width: 5%">Ciclo de Inversión</th>
+                                                                  <th style="width: 5%">Naturaleza Inversión</th>
                                                                   <th style="width: 30%">Inversión</th>
                                                                   <th style="width: 4%">Prioridad</th>
                                                                   <th style="width: 4%">Brecha</th>
                                                                   <th style="width: 4%">AÑO 1</th>
-                                                                  <th style="width: 4%">AÑO 2</th>
-                                                                  <th style="width: 4%">AÑO 3</th>
                                                                 </tr>
                                                       </thead>
                                                             </table>

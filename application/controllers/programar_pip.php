@@ -130,7 +130,7 @@ class programar_pip extends CI_Controller
     public function listar_programacion()
     {
         if ($this->input->is_ajax_request()) {
-            $flat  = "R";
+            $flat  = "listar_programado_pip";
             $id_pi = $this->input->post("id_pi");
             $data  = $this->programar_pip_modal->listar_programacion($flat, $id_pi);
             echo json_encode(array('data' => $data));

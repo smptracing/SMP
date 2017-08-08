@@ -135,7 +135,7 @@ $(document).on("ready" ,function(){
                                     {"data":"id_pi","visible": false},
                                     {"data":"año_prog"},
                                     {"data":"monto_prog"}
-                                    ],
+                                   ],
                                "language":idioma_espanol
                     });
                 }
@@ -264,16 +264,15 @@ $(document).on("ready" ,function(){
                                 ],
                                "language":idioma_espanol
                     });
-                    //$('#Table_meta_pi').dataTable()._fnAjaxUpdate();
+                    $('#Table_meta_pi').dataTable()._fnAjaxUpdate();
                      EliminarMetaPresupuestalPi("#Table_meta_pi",table);
-                     $('#Table_meta_pi').dataTable()._fnAjaxUpdate();
+                  //   $('#Table_meta_pi').dataTable()._fnAjaxUpdate();
                 }
 //eliminar metal presupuestal
 var EliminarMetaPresupuestalPi=function(tbody,table){
                   $(tbody).on("click","button.eliminar",function(){
                       var data=table.row( $(this).parents("tr")).data();
                         var id_meta_pi=data.id_meta_pi;
-                        alert("eliminar modal");
                         console.log(data);
                          swal({
                                 title: "Desea eliminar ?",
@@ -296,6 +295,7 @@ var EliminarMetaPresupuestalPi=function(tbody,table){
                                             $('#table_formulacion_evaluacion').dataTable()._fnAjaxUpdate();
                                             $('#table_ejecucion').dataTable()._fnAjaxUpdate();
                                             $('#Table_funcionamiento').dataTable()._fnAjaxUpdate();
+                                          location.reload();
                                           }
                                         });
                               });
@@ -312,6 +312,8 @@ var EliminarMetaPresupuestalPi=function(tbody,table){
                       $("#txt_nombre_proyecto_mp").val(data.nombre_pi);
                        listar_Meta();
                        listar_meta_pi(id_pi);
+                      $('#Table_meta_pi').dataTable()._fnAjaxUpdate();
+                      refresh();
 
                   });
                 }

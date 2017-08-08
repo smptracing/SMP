@@ -145,9 +145,7 @@ class Expediente_Tecnico extends CI_Controller
 				 {
 						$error = "ERROR NO SE CARGO LAS FOTOS DE EXPEDIENTE TÉCNICO";
 				 }
-			}
-			
-			echo json_encode("Actual".$txtSituacioActual." Economica ".$txtSituacioEconomica." Resumen".$txtResumenProyecto);exit;  	
+			}  	
 		}
 		if($this->input->get('buscar')=="true")
 		{
@@ -164,12 +162,50 @@ class Expediente_Tecnico extends CI_Controller
 			$codigo_unico_pi=$this->input->get('CodigoUnico');
 			$Listarproyectobuscado=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoBuscar($codigo_unico_pi); //BUSCAR PIP
 			$this->load->view('front/Ejecucion/ExpedienteTecnico/insertar',['Listarproyectobuscado'=>$Listarproyectobuscado,'listarPersona' =>$listarPersona,'listaTipoResponsableElaboracion' => $listaTipoResponsableElaboracion,'listaTipoResponsableEjecucion' => $listaTipoResponsableEjecucion,'listarCargo' =>$listarCargo]);
+
 		}
+			
 			
 	}
 
 	function editar()
 	{
+		if($this->input->post('hdIdExpediente'))
+		{	
+			//this->db->trans_start(); 
+			$flat ="EDITAR";
+			$hdIdExpediente=$this->input->post('hdIdExpediente');
+			$txtDireccionUE=$this->input->post('txtDireccionUE');
+			$txtUbicacionUE=$this->input->post('txtUbicacionUE');
+			$txtTelefonoUE=$this->input->post('txtTelefonoUE');
+			$txtRucUE=$this->input->post('txtRucUE');
+			$txtCostoTotalPreInversion=$this->input->post('txtCostoTotalPreInversion');
+			$txtCostoDirectoPre=$this->input->post('txtCostoDirectoPre');
+			$txtCostoIndirectoPre=$this->input->post('txtCostoIndirectoPre');
+			$txtCostoTotalInversion=$this->input->post('txtCostoTotalInversion');
+			$txtCostoDirectoInversion=$this->input->post('txtCostoDirectoInversion');
+			$txtGastosGenerales=$this->input->post('txtGastosGenerales');
+			$txtGastosSupervision=$this->input->post('txtGastosSupervision');
+			$txtFuncionProgramatica=$this->input->post('txtFuncionProgramatica');
+			$txtFuncion=$this->input->post('txtFuncion');
+			$txtPrograma=$this->input->post('txtPrograma');
+			$txtSubPrograma=$this->input->post('txtSubPrograma');
+			$txtProyecto=$this->input->post('txtProyecto');
+			$txtComponente=$this->input->post('txtComponente');
+			$txtMeta=$this->input->post('txtMeta');
+			$txtFuenteFinanciamiento=$this->input->post('txtFuenteFinanciamiento');
+			$txtModalidadEjecucion=$this->input->post('txtModalidadEjecucion');
+			$txtTiempoEjecucionPip=$this->input->post('txtTiempoEjecucionPip');
+			$txtNumBeneficiarios=$this->input->post('txtNumBeneficiarios');
+			$txtSituacioActual=$this->input->post('txtSituacioActual');
+			$txtSituacioDeseada=$this->input->post('txtSituacioDeseada');
+			$txtContribucioInterv=$this->input->post('txtContribucioInterv');
+			$txtNumFolio=$this->input->post('txtNumFolio');
+
+			$this->Model_ET_Expediente_Tecnico->editar($flat,$hdIdExpediente,$txtDireccionUE,$txtUbicacionUE,$txtTelefonoUE,$txtRucUE,$txtCostoTotalPreInversion,$txtCostoDirectoPre,$txtCostoIndirectoPre,$txtCostoTotalInversion,$txtCostoDirectoInversion,$txtGastosGenerales,$txtGastosSupervision,$txtFuncion,$txtPrograma,$txtSubPrograma,$txtProyecto,$txtComponente,$txtMeta,$txtFuenteFinanciamiento,$txtModalidadEjecucion,$txtTiempoEjecucionPip,$txtNumBeneficiarios,$txtSituacioActual,$txtSituacioDeseada,$txtContribucioInterv,$txtNumFolio);
+			//$this->db->trans_complete();
+			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos Editados Correctamente.', 'txtDireccionUE' => $txtDireccionUE]);exit;
+		}
 		$id_et=$this->input->GET('id_et');
 		$ExpedienteTecnicoM=$this->Model_ET_Expediente_Tecnico->DatosExpediente($id_et);
 		$this->load->view('front/Ejecucion/ExpedienteTecnico/editar',['ExpedienteTecnicoM'=>$ExpedienteTecnicoM]);

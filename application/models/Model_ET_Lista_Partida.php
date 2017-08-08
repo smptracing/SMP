@@ -10,7 +10,7 @@ class Model_ET_Lista_Partida extends CI_Model
 
 	public function ETListaPartidaPorDescListaPartida($valueSearch)
 	{
-		$data=$this->db->query("select * from ET_LISTA_PARTIDA where replace(desc_lista_partida, ' ', '')=replace('".$valueSearch."', ' ', '')");
+		$data=$this->db->query("select * from ET_LISTA_PARTIDA where replace(desc_lista_partida, ' ', '') like '%'+replace('".$valueSearch."', ' ', '')+'%'");
 
 		return $data->result();
 	}
