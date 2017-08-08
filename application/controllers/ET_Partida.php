@@ -22,6 +22,7 @@ class ET_Partida extends CI_Controller
 			$descripcionPartida=$this->input->post('descripcionPartida');
 			$rendimientoPartida=$this->input->post('rendimientoPartida');
 			$cantidadPartida=$this->input->post('cantidadPartida');
+			$idListaPartida=$this->input->post('idListaPartida');
 
 			if(count($this->Model_ET_Partida->ETPartidaPorIdMetaAndDescPartida($idMeta, $descripcionPartida))>0)
 			{
@@ -30,7 +31,7 @@ class ET_Partida extends CI_Controller
 				echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede agregar dos partidas iguales en el mismo nivel.']);exit;
 			}
 
-			$this->Model_ET_Partida->insertar($idMeta, $idUnidad, $descripcionPartida, $rendimientoPartida, $cantidadPartida);
+			$this->Model_ET_Partida->insertar($idMeta, $idUnidad, $idListaPartida, $descripcionPartida, $rendimientoPartida, $cantidadPartida);
 			$unidadMedida=$this->Model_Unidad_Medida->UnidadMedida($idUnidad)[0];
 
 			$ultimoIdPartida=$this->Model_ET_Partida->ultimoId();

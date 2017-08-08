@@ -81,6 +81,7 @@ function mostrarMetaAnidada($meta)
 		<div class="col-md-1 col-sm-1 col-xs-1">
 			<label class="control-label">.</label>
 			<div>
+				<input type="hidden" id="hdIdListaPartida" name="hdIdListaPartida">
 				<input type="button" class="btn btn-info" value="+" onclick="agregarPartida();" style="width: 100%;">
 			</div>
 		</div>
@@ -357,7 +358,7 @@ function mostrarMetaAnidada($meta)
 
 		$($(elementoPadreParaAgregarPartida).find('table')[0]).find('> tbody > tr > td > b').each(function(index, element)
 		{
-			if(replaceAll($(element).text(), ' ', '').toLowerCase()==replaceAll($('#selectDescripcionPartida').val(), ' ', '').toLowerCase())
+			if(replaceAll($(element).text(), ' ', '').toLowerCase()==replaceAll($('#selectDescripcionPartida').find("option:selected").val(), ' ', '').toLowerCase())
 			{
 				existePartida=true;
 
@@ -378,7 +379,8 @@ function mostrarMetaAnidada($meta)
 			return;
 		}
 
-		paginaAjaxJSON({ "idMeta" : metaPadreParaAgregarPartida, "idUnidad" : $('#selectUnidadMedidaPartida').val().trim(), "descripcionPartida" : $('#selectDescripcionPartida').val().trim(), "rendimientoPartida" : $('#txtRendimientoPartida').val().trim(), "cantidadPartida" : $('#txtCantidadPartida').val() }, base_url+'index.php/ET_Partida/insertar', 'POST', null, function(objectJSON)
+
+		paginaAjaxJSON({ "idMeta" : metaPadreParaAgregarPartida, "idUnidad" : $('#selectUnidadMedidaPartida').val().trim(), "descripcionPartida" : $('#selectDescripcionPartida').find("option:selected").val().trim(), "rendimientoPartida" : $('#txtRendimientoPartida').val().trim(), "cantidadPartida" : $('#txtCantidadPartida').val(), "idListaPartida" : $('#hdIdListaPartida').val() }, base_url+'index.php/ET_Partida/insertar', 'POST', null, function(objectJSON)
 		{
 			objectJSON=JSON.parse(objectJSON);
 
@@ -396,7 +398,7 @@ function mostrarMetaAnidada($meta)
 			}
 
 			var htmlTemp='<tr style="color: blue;" class="liPartida">'+
-				'<td style="padding-left: 10px;"><b>&#9658;'+$('#selectDescripcionPartida').val().trim()+'</b></td>'+
+				'<td style="padding-left: 10px;"><b>&#9658;'+$('#selectDescripcionPartida').find("option:selected").val().trim()+'</b></td>'+
 				'<td style="padding-left: 4px;">'+$('#txtRendimientoPartida').val().trim()+'</td>'+
 				'<td style="padding-left: 4px;text-align: center;">'+objectJSON.descripcionUnidadMedida+'</td>'+
 				'<td style="padding-left: 4px;text-align: center;">'+parseFloat($('#txtCantidadPartida').val()).toFixed(2)+'</td>'+
@@ -468,10 +470,11 @@ function mostrarMetaAnidada($meta)
 	        	{
 	        		dataForSelect.push(
 	                {
-	                    "value" : data[i].id_lista_partida,
+	                    "value" : data[i].desc_lista_partida,
 	                    "text" : data[i].desc_lista_partida,
 	                    "data" :
 	                    {
+	                    	"id-lista-partida" : data[i].id_lista_partida,
 	                    	"id-unidad" : data[i].id_unidad
 	                    },
 	                    "disabled" : false
@@ -489,6 +492,7 @@ function mostrarMetaAnidada($meta)
 
 			if(selected.trim()!='')
 			{
+				$('#hdIdListaPartida').val($(this).find("option:selected").data('id-lista-partida'));
 				$('#selectUnidadMedidaPartida').val($(this).find("option:selected").data('id-unidad'));
 			}
 	    });
