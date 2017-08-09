@@ -26,7 +26,7 @@
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/formValidation.min.css">
 	<script src="<?php echo base_url(); ?>assets/js/Helper/jsHelper.js"></script>
 	<script src="<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
-
+	<script src="<?php echo base_url(); ?>assets/ckeditor/ckeditor.js"></script>
 
 	
 

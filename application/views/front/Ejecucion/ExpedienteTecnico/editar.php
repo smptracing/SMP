@@ -4,7 +4,7 @@
 		margin-top: 4px;
 	}
 </style>
-<script src="ckeditor/ckeditor.js"></script>
+
 <form class="form-horizontal" id="form-EditarExpedienteTecnico" action="<?php echo base_url();?>index.php/Expediente_Tecnico/editar" method="POST" enctype="multipart/form-data" >
 
 	<div class="row">
@@ -198,6 +198,7 @@
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<label class="control-label">Sustento para la presentacion del proyecto</label></br>
+							<input type="text" id="hdtxtSituacioActual" value="<?=$ExpedienteTecnicoM->desc_situacion_actual_et?>">
 							<p><textarea name="txtSituacioActual" id="txtSituacioActual" rows="10" cols="80"></textarea></p>
 						</div>	
 					</div>
@@ -239,198 +240,6 @@
 	  
 $(function()
 {
-	/*$('#form-EditarExpedienteTecnico').formValidation(
-		{
-			framework: 'bootstrap',
-			excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
-			live: 'enabled',
-			message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
-			trigger: null,
-			fields:
-			{
-				txtNombreUe:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Nombre unidad ejecutora" es requerido.</b>'
-						}
-					}
-				},
-				txtTelefonoUE:
-				{
-					validators:
-					{
-					
-						regexp:
-						{
-							regexp: /^\d*$/,
-							message: '<b style="color: red;">El campo "Teléfono" debe ser un numero.</b>'
-						}
-					}
-				},
-				txtRucUE:
-				{
-					validators:
-					{
-							regexp:
-						{
-							regexp: /^([0-9]){11}$/,
-							message: '<b style="color: red;">El campo "Ruc" debe ser un número de 11 dígitos.</b>'
-						}
-					}
-				},
-				txtCostoTotalPreInversion:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Costo total de preinversion" es requerido.</b>'
-						},
-						regexp:
-						{
-							regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
-							message: '<b style="color: red;">El campo "Costo U." debe ser un valor en soles.</b>'
-						}
-					}
-				},
-				txtCostoDirectoPre:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Costo Directo de preinversion" es requerido.</b>'
-						},
-						regexp:
-						{
-							regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
-							message: '<b style="color: red;">El campo "Costo U." debe ser un valor en soles.</b>'
-						}
-					}
-				},
-				txtCostoIndirectoPre:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Costo Indirecto de preinversion" es requerido.</b>'
-						},
-						regexp:
-						{
-							regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
-							message: '<b style="color: red;">El campo "Costo U." debe ser un valor en soles.</b>'
-						}
-					}
-				},
-				txtCostoTotalInversion:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Costo total de Inversión" es requerido.</b>'
-						},
-						regexp:
-						{
-							regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
-							message: '<b style="color: red;">El campo "Costo U." debe ser un valor en soles.</b>'
-						}
-					}
-				},
-				txtCostoDirectoInversion:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Costo Directo de Inversión" es requerido.</b>'
-						},
-						regexp:
-						{
-							regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
-							message: '<b style="color: red;">El campo "Costo U." debe ser un valor en soles.</b>'
-						}
-					}
-				},
-				txtGastosGenerales:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Costo Directo de Inversión" es requerido.</b>'
-						},
-						regexp:
-						{
-							regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
-							message: '<b style="color: red;">El campo "Costo U." debe ser un valor en soles.</b>'
-						}
-					}
-				},
-				txtGastosSupervision:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Costo Directo de Inversión" es requerido.</b>'
-						},
-						regexp:
-						{
-							regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
-							message: '<b style="color: red;">El campo "Costo U." debe ser un valor en soles.</b>'
-						}
-					}
-				},
-				txtProyecto:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Proyecto" es requerido.</b>'
-						}
-					}
-				},
-				txtNumBeneficiarios:
-				{
-					validators:
-					{
-						regexp:
-						{
-							regexp: /^\d*$/,
-							message: '<b style="color: red;">El campo "Numero de beneficiarios" debe ser un numero.</b>'
-						}
-					}
-				},
-				txtNumFolio:
-				{
-					validators:
-					{
-						regexp:
-						{
-							regexp: /^\d*$/,
-							message: '<b style="color: red;">El campo "Numero de folios" debe ser un número.</b>'
-						}
-					}
-				},
-				imagen:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Nombre unidad ejecutora" es requerido.</b>'
-						}
-					}
-				}
-			}
-		});*/
-
 	CKEDITOR.replace('txtSituacioActual' ,{
 		filebrowserImageBrowseUrl : '<?php echo base_url('assets/filemanager/index.html');?>'
 	});
@@ -440,11 +249,11 @@ $(function()
   	CKEDITOR.replace('txtContribucioInterv' ,{
 		filebrowserImageBrowseUrl : '<?php echo base_url('assets/filemanager/index.html');?>'
 	});
-
-	/*CKEDITOR.instances.txtSituacioActual.setData('<?=$ExpedienteTecnicoM->desc_situacion_actual_et?>');	
-	CKEDITOR.instances.txtSituacioDeseada.setData('<?=$ExpedienteTecnicoM->relevancia_economica_et?>');	
-	CKEDITOR.instances.txtContribucioInterv.setData('<?=$ExpedienteTecnicoM->resumen_pi_et?>');*/
+	var html=$("#hdtxtSituacioActual").val();
+	CKEDITOR.instances.txtSituacioActual.setData(html);
+		
 });
+
 </script>
 
 
