@@ -14,9 +14,9 @@ class Model_ET_Expediente_Tecnico extends CI_Model
 
 		return $data->result()[0];
 	}
-	public function ExpedienteTecnicoListar()
+	public function ExpedienteTecnicoListar($flat)
 	{
-		$ListarExpedienteTecnico=$this->db->query("select ET.id_et,UE.nombre_ue, P.nombre_pi,ET.costo_total_preinv_et, ET.costo_total_inv_et, ET.tiempo_ejecucion_pi_et, P.num_beneficiarios from ET_EXPEDIENTE_TECNICO ET inner join PROYECTO_INVERSION P on ET.id_pi=P.id_pi INNER JOIN UNIDAD_EJECUTORA UE on UE.id_ue=P.id_ue");
+		$ListarExpedienteTecnico=$this->db->query("execute sp_Gestionar_ET_Expediente_Tecnico @Opcion='".$flat."'");
         return $ListarExpedienteTecnico->result();
 	}
 
@@ -27,10 +27,9 @@ class Model_ET_Expediente_Tecnico extends CI_Model
 	}
 	public function ExpedienteTecnicoBuscar($codigo_unico_pi)
 	{
-		$BuscarExpedienteExpediente=$this->db->query("execute sp_Expediente_Tecnico_Buscar2 @codigo_unico_pi='".$codigo_unico_pi."'");
+		$BuscarExpedienteExpediente=$this->db->query("execute sp_Expediente_Tecnico_Buscar @codigo_unico_pi='".$codigo_unico_pi."'");
         return $BuscarExpedienteExpediente->result()[0];  
 	}
-
 
 	public function ExpedienteTecnicoSelectBuscarId($opcion,$id_ExpedienteTecnico)
 	{
@@ -62,9 +61,9 @@ class Model_ET_Expediente_Tecnico extends CI_Model
 		$ETExpediente=$this->db->query("select * from  ET_EXPEDIENTE_TECNICO inner join PROYECTO_INVERSION ON ET_EXPEDIENTE_TECNICO.id_pi=PROYECTO_INVERSION.id_pi where id_et ='".$id_et."'");
 	    return $ETExpediente->result()[0];
 	}
-	public function editar($flat,$hdIdExpediente,$txtDireccionUE,$txtUbicacionUE,$txtTelefonoUE,$txtRucUE,$txtCostoTotalPreInversion,$txtCostoDirectoPre,$txtCostoIndirectoPre,$txtCostoTotalInversion,$txtCostoDirectoInversion,$txtGastosGenerales,$txtGastosSupervision,$txtFuncion,$txtPrograma,$txtSubPrograma,$txtProyecto,$txtComponente,$txtMeta,$txtFuenteFinanciamiento,$txtModalidadEjecucion,$txtTiempoEjecucionPip,$txtNumBeneficiarios,$txtSituacioActual,$txtSituacioDeseada,$txtContribucioInterv,$txtNumFolio)
+	public function editar($flat,$hdIdExpediente,$txtNombreUe,$txtDireccionUE,$txtUbicacionUE,$txtTelefonoUE,$txtRucUE,$txtCostoTotalPreInversion,$txtCostoDirectoPre,$txtCostoIndirectoPre,$txtCostoTotalInversion,$txtCostoDirectoInversion,$txtGastosGenerales,$txtGastosSupervision,$txtFuncionProgramatica,$txtFuncion,$txtPrograma,$txtSubPrograma,$txtProyecto,$txtComponente,$txtMeta,$txtFuenteFinanciamiento,$txtModalidadEjecucion,$txtTiempoEjecucionPip,$txtNumBeneficiarios,$txtSituacioActual,$txtSituacioDeseada,$txtContribucioInterv,$txtNumFolio)
 	{
-		$data=$this->db->query("execute sp_Gestionar_ET_Expediente_Tecnico @Opcion='".$flat."',@id_et='".$hdIdExpediente."',@direccion_ue='".$txtDireccionUE."',@distrito_provincia_departamento_ue='".$txtUbicacionUE."',@telefono_ue='".$txtTelefonoUE."',@ruc_ue='".$txtRucUE."',@costo_total_preinv_et='".$txtCostoTotalPreInversion."',@costo_directo_preinv_et='".$txtCostoDirectoPre."',@costo_indirecto_preinv_et='".$txtCostoIndirectoPre."',@costo_total_inv_et='".$txtCostoTotalInversion."',@costo_directo_inv_et='".$txtCostoDirectoInversion."',@gastos_generales_et='".$txtGastosGenerales."',@gastos_supervision_et='".$txtGastosSupervision."',@funcion_et='".$txtFuncion."',@programa_et='".$txtPrograma."',@sub_programa_et='".$txtSubPrograma."',@proyecto_et='".$txtProyecto."',@componente_et='".$txtComponente."',@meta_et='".$txtMeta."',@fuente_financiamiento_et='".$txtFuenteFinanciamiento."',@modalidad_ejecucion_et='".$txtModalidadEjecucion."',@tiempo_ejecucion_pi_et='".$txtTiempoEjecucionPip."',@num_beneficiarios_indirectos='".$txtNumBeneficiarios."',@desc_situacion_actual_et='".$txtSituacioActual."',@relevancia_economica_et='".$txtSituacioDeseada."',@resumen_pi_et='".$txtContribucioInterv."',@num_folios='".$txtNumFolio."'");
+		$data=$this->db->query("execute sp_Gestionar_ET_Expediente_Tecnico @Opcion='".$flat."',@id_et='".$hdIdExpediente."',@nombre_ue='".$txtNombreUe."',@direccion_ue='".$txtDireccionUE."',@distrito_provincia_departamento_ue='".$txtUbicacionUE."',@telefono_ue='".$txtTelefonoUE."',@ruc_ue='".$txtRucUE."',@costo_total_preinv_et='".$txtCostoTotalPreInversion."',@costo_directo_preinv_et='".$txtCostoDirectoPre."',@costo_indirecto_preinv_et='".$txtCostoIndirectoPre."',@costo_total_inv_et='".$txtCostoTotalInversion."',@costo_directo_inv_et='".$txtCostoDirectoInversion."',@gastos_generales_et='".$txtGastosGenerales."',@gastos_supervision_et='".$txtGastosSupervision."',@funcion_programatica='".$txtFuncionProgramatica."',@funcion_et='".$txtFuncion."',@programa_et='".$txtPrograma."',@sub_programa_et='".$txtSubPrograma."',@proyecto_et='".$txtProyecto."',@componente_et='".$txtComponente."',@meta_et='".$txtMeta."',@fuente_financiamiento_et='".$txtFuenteFinanciamiento."',@modalidad_ejecucion_et='".$txtModalidadEjecucion."',@tiempo_ejecucion_pi_et='".$txtTiempoEjecucionPip."',@num_beneficiarios_indirectos='".$txtNumBeneficiarios."',@desc_situacion_actual_et='".$txtSituacioActual."',@relevancia_economica_et='".$txtSituacioDeseada."',@resumen_pi_et='".$txtContribucioInterv."',@num_folios='".$txtNumFolio."'");
         return true;
 	}
 
@@ -74,4 +73,17 @@ class Model_ET_Expediente_Tecnico extends CI_Model
 
         return $presupuestoejecucion->result();
     }
+
+    function eliminar($flat,$id_et)
+	{
+		$data=$this->db->query("execute sp_Gestionar_ET_Expediente_Tecnico @Opcion='".$flat."',@id_et='".$id_et."'");
+
+		return $data->result();
+	}
+	function VerificarExpedienteAntesEliminar()
+	{
+		$ExpedienteTecnico=$this->db->query("select id_clasificador from ET_PRESUPUESTO_ANALITICO where id_clasificador='".$id_et."' ");
+
+		return $ExpedienteTecnico->result();
+	}
 }

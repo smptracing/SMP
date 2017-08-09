@@ -40,7 +40,8 @@ class Expediente_Tecnico extends CI_Controller
 
 	public function index()
 	{
-		$listaExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoListar();
+		$flat="LISTAR";
+		$listaExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoListar($flat);
 		$this->load->view('layout/Ejecucion/header');
 		$this->load->view('front/Ejecucion/ExpedienteTecnico/index.php',['listaExpedienteTecnico'=>$listaExpedienteTecnico]);
 		$this->load->view('layout/Ejecucion/footer');
@@ -179,7 +180,8 @@ class Expediente_Tecnico extends CI_Controller
 			//this->db->trans_start(); 
 			$flat ="EDITAR";
 			$hdIdExpediente=$this->input->post('hdIdExpediente');
-			$txtIdPi=$this->input->post('txtIdPi');
+			//$txtIdPi=$this->input->post('txtIdPi');
+			$txtNombreUe=$this->input->post('txtNombreUe');
 			$txtDireccionUE=$this->input->post('txtDireccionUE');
 			$txtUbicacionUE=$this->input->post('txtUbicacionUE');
 			$txtTelefonoUE=$this->input->post('txtTelefonoUE');
@@ -207,12 +209,12 @@ class Expediente_Tecnico extends CI_Controller
 			$txtContribucioInterv=$this->input->post('txtContribucioInterv');
 			$txtNumFolio=$this->input->post('txtNumFolio');
 
-			if(count($this->Model_ET_Expediente_Tecnico->ValidarExpedienteTecnico($hdIdExpediente,$txtIdPi))>0)
+			/*if(count($this->Model_ET_Expediente_Tecnico->ValidarExpedienteTecnico($hdIdExpediente,$txtIdPi))>0)
             {	
             	echo json_encode(['proceso' => 'error', 'mensaje' => 'Este tipo de descripcion ya fue registrado con anterioridad .']);exit;
-            }
+            }*/
 
-			$this->Model_ET_Expediente_Tecnico->editar($flat,$hdIdExpediente,$txtDireccionUE,$txtUbicacionUE,$txtTelefonoUE,$txtRucUE,$txtCostoTotalPreInversion,$txtCostoDirectoPre,$txtCostoIndirectoPre,$txtCostoTotalInversion,$txtCostoDirectoInversion,$txtGastosGenerales,$txtGastosSupervision,$txtFuncion,$txtPrograma,$txtSubPrograma,$txtProyecto,$txtComponente,$txtMeta,$txtFuenteFinanciamiento,$txtModalidadEjecucion,$txtTiempoEjecucionPip,$txtNumBeneficiarios,$txtSituacioActual,$txtSituacioDeseada,$txtContribucioInterv,$txtNumFolio);
+			$this->Model_ET_Expediente_Tecnico->editar($flat,$hdIdExpediente,$txtNombreUe,$txtDireccionUE,$txtUbicacionUE,$txtTelefonoUE,$txtRucUE,$txtCostoTotalPreInversion,$txtCostoDirectoPre,$txtCostoIndirectoPre,$txtCostoTotalInversion,$txtCostoDirectoInversion,$txtGastosGenerales,$txtGastosSupervision,$txtFuncionProgramatica,$txtFuncion,$txtPrograma,$txtSubPrograma,$txtProyecto,$txtComponente,$txtMeta,$txtFuenteFinanciamiento,$txtModalidadEjecucion,$txtTiempoEjecucionPip,$txtNumBeneficiarios,$txtSituacioActual,$txtSituacioDeseada,$txtContribucioInterv,$txtNumFolio);
 			//$this->db->trans_complete();
 			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos Editados Correctamente.', 'txtDireccionUE' => $txtDireccionUE]);exit;
 		}
@@ -269,4 +271,18 @@ class Expediente_Tecnico extends CI_Controller
 		}
 	}
 	
+	public function eliminar()
+	{
+		if ($this->input->is_ajax_request()) 
+	    {
+			$flat="ELIMINAR";
+			$id_et=$this->input->post('id_et');
+			/*if(count($this->Model_ET_Expediente_Tecnico->VerificarExpedienteAntesEliminar($id_et))>0)
+            {	
+            	echo json_encode("No es posible eliminar el registro ");
+            }*/
+			$this->Model_ET_Expediente_Tecnico->eliminar($flat,$id_et);
+			echo json_encode($Data);
+		}
+	}
 }
