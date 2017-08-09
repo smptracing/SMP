@@ -26,25 +26,25 @@
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Dirección</label>
 							<div>
-								<input id="txtDireccionUE" name="txtDireccionUE" value="" class="form-control col-md-4 col-xs-12"  placeholder="Dirección"  autocomplete="off" >	
+								<input id="txtDireccionUE" name="txtDireccionUE" class="form-control"  placeholder="Dirección"  autocomplete="off" >	
 							</div>	
 						</div>
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Distrito/Provincia/Departamento</label>
 							<div>
-								<input id="txtUbicacionUE" name="txtUbicacionUE" value="" class="form-control col-md-4 col-xs-12"  placeholder="Distrito/Provincia/Departamento" autocomplete="off" >	
+								<input id="txtUbicacionUE" name="txtUbicacionUE" class="form-control" placeholder="Distrito/Provincia/Departamento" autocomplete="off" >	
 							</div>	
 						</div>
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Teléfono</label>
 							<div>
-								<input id="txtTelefonoUE" name="txtTelefonoUE" value="" class="form-control col-md-4 col-xs-12"  placeholder="Teléfono"  autocomplete="off" >	
+								<input id="txtTelefonoUE" name="txtTelefonoUE" class="form-control" placeholder="Teléfono"  autocomplete="off" >	
 							</div>	
 						</div>
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">RUC</label>
 							<div>
-								<input id="txtRuc" name="txtRuc" value="" class="form-control col-md-4 col-xs-12"  placeholder="RUC"  autocomplete="off" >	
+								<input id="txtRuc" name="txtRuc" class="form-control"  placeholder="RUC"  autocomplete="off" >	
 							</div>	
 						</div>
 					</div>
@@ -109,13 +109,13 @@
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Gastos generales</label>
 							<div>
-								<input id="txtGastosGenerales" name="txtGastosGenerales" class="form-control col-md-4 col-xs-12"  placeholder="Costo Indirecto"  autocomplete="off" >
+								<input id="txtGastosGenerales" name="txtGastosGenerales" class="form-control col-md-4 col-xs-12"  placeholder="Gastos generales"  autocomplete="off" >
 							</div>
 						</div>
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Gastos de supervisión</label>
 							<div>
-								<input id="txtGastosSupervision" name="txtGastosSupervision" class="form-control col-md-4 col-xs-12"  placeholder="Costo Indirecto"  autocomplete="off" >
+								<input id="txtGastosSupervision" name="txtGastosSupervision" class="form-control col-md-4 col-xs-12"  placeholder="Gastos de supervisión"  autocomplete="off" >
 							</div>
 						</div>
 					</div>
@@ -311,7 +311,7 @@
 						<div class="col-md-4 col-sm-3 col-xs-12">
 							<label class="control-label">Fotografías(04 minimo)</label>
 							<div>
-								<input  type="file" name="imagen[]" id="imagen" value="" placeholder="Fotografias"  autocomplete="off" multiple  >
+								<input  type="file" name="imagen[]" id="imagen" value="" placeholder="Fotografias" required="required"   autocomplete="off" multiple  >
 							</div>
 						</div>
 					</div>		
@@ -322,24 +322,24 @@
 	</div>
 	<div class="ln_solid"></div>
 		<div class="row" style="text-align: right;">
-			<button type="submit"  class="btn btn-success">Guardar</button>
+			<button  id="btnEnviarFormulario" class="btn btn-success">Guardar</button>
 			<button  class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-			<button type="button"  id="btnData" class="btn btn-success">Guardar</button>
 		</div>
 </form>
  <script>
- CKEDITOR.replace('txtSituacioActual' ,{
-		filebrowserImageBrowseUrl : '<?php echo base_url('assets/filemanager/index.html');?>'
-	});
- CKEDITOR.replace('txtSituacioEconomica' ,{
-		filebrowserImageBrowseUrl : '<?php echo base_url('assets/filemanager/index.html');?>'
-	});
-  CKEDITOR.replace('txtResumenProyecto' ,{
-		filebrowserImageBrowseUrl : '<?php echo base_url('assets/filemanager/index.html');?>'
-	});
-
+ 
 $(function()
 	{
+		CKEDITOR.replace('txtSituacioActual' ,{
+		filebrowserImageBrowseUrl : '<?php echo base_url('assets/filemanager/index.html');?>'
+		});
+		CKEDITOR.replace('txtSituacioEconomica' ,{
+		filebrowserImageBrowseUrl : '<?php echo base_url('assets/filemanager/index.html');?>'
+		});
+		CKEDITOR.replace('txtResumenProyecto' ,{
+		filebrowserImageBrowseUrl : '<?php echo base_url('assets/filemanager/index.html');?>'
+		});
+
 		$('#form-addExpedienteTecnico').formValidation(
 		{
 			framework: 'bootstrap',
@@ -349,6 +349,26 @@ $(function()
 			trigger: null,
 			fields:
 			{
+				txtDireccionUE:
+				{
+					validators:
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Dirección UE." es requerido.</b>'
+						}
+					}
+				},
+				txtUbicacionUE:
+				{
+					validators:
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Ubicación UE." es requerido.</b>'
+						}
+					}
+				},
 				txtNombreUe:
 				{
 					validators:
@@ -364,18 +384,26 @@ $(function()
 					validators:
 					{
 					
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Teléfono" es requerido.</b>'
+						},
 						regexp:
 						{
-							regexp: /^\d*$/,
+							regexp: /^[0-9]+$/,
 							message: '<b style="color: red;">El campo "Teléfono" debe ser un numero.</b>'
 						}
 					}
 				},
-				/*txtRuc:
+				txtRuc:
 				{
 					validators:
 					{
-							regexp:
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Ruc" es requerido.</b>'
+						},
+						regexp:
 						{
 							regexp: /^([0-9]){11}$/,
 							message: '<b style="color: red;">El campo "Ruc" debe ser un número de 11 dígitos.</b>'
@@ -438,7 +466,7 @@ $(function()
 						regexp:
 						{
 							regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
-							message: '<b style="color: red;">El campo "Costo U." debe ser un valor en soles.</b>'
+							message: '<b style="color: red;">El campo "Costo total de Inversión" debe ser un valor en soles.</b>'
 						}
 					}
 				},
@@ -453,7 +481,7 @@ $(function()
 						regexp:
 						{
 							regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
-							message: '<b style="color: red;">El campo "Costo U." debe ser un valor en soles.</b>'
+							message: '<b style="color: red;">El campo "Costo Directo de Inversión" debe ser un valor en soles.</b>'
 						}
 					}
 				},
@@ -463,12 +491,12 @@ $(function()
 					{
 						notEmpty:
 						{
-							message: '<b style="color: red;">El campo "Costo Directo de Inversión" es requerido.</b>'
+							message: '<b style="color: red;">El campo "Costo General" es requerido.</b>'
 						},
 						regexp:
 						{
 							regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
-							message: '<b style="color: red;">El campo "Costo U." debe ser un valor en soles.</b>'
+							message: '<b style="color: red;">El campo "Costo General." debe ser un valor en soles.</b>'
 						}
 					}
 				},
@@ -478,12 +506,22 @@ $(function()
 					{
 						notEmpty:
 						{
-							message: '<b style="color: red;">El campo "Costo Directo de Inversión" es requerido.</b>'
+							message: '<b style="color: red;">El campo "Gastos de supervisión" es requerido.</b>'
 						},
 						regexp:
 						{
 							regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
-							message: '<b style="color: red;">El campo "Costo U." debe ser un valor en soles.</b>'
+							message: '<b style="color: red;">El campo "Gastos de supervisión" debe ser un valor en soles.</b>'
+						}
+					}
+				},
+				txtFuncionProgramatica:
+				{
+					validators:
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Función Programatica" es requerido.</b>'
 						}
 					}
 				},
@@ -497,10 +535,34 @@ $(function()
 						}
 					}
 				},
+				txtComponente:
+				{
+					validators:
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Componente" es requerido.</b>'
+						}
+					}
+				},
+				txtMeta:
+				{
+					validators:
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Meta" es requerido.</b>'
+						}
+					}
+				},
 				txtNumBeneficiarios:
 				{
 					validators:
 					{
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Numero de beneficiarios" es requerido.</b>'
+						},
 						regexp:
 						{
 							regexp: /^\d*$/,
@@ -508,34 +570,57 @@ $(function()
 						}
 					}
 				},
+				txtFuenteFinanciamiento:
+				{
+					validators:
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Fuente Financiamiento" es requerido.</b>'
+						}
+					}
+				},
+				txtModalidadEjecucion:
+				{
+					validators:
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Modalidad de Ejecución" es requerido.</b>'
+						}
+					}
+				},
+				txtTiempoEjecucionPip:
+				{
+					validators:
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Titmpo de ejecución" es requerido.</b>'
+						}
+					}
+				},
 				txtNumFolio:
 				{
 					validators:
 					{
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Numero de folios" es requerido.</b>'
+						},
 						regexp:
 						{
 							regexp: /^\d*$/,
 							message: '<b style="color: red;">El campo "Numero de folios" debe ser un número.</b>'
 						}
 					}
-				},
-				imagen:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Nombre unidad ejecutora" es requerido.</b>'
-						}
-					}
-				}*/
-
+				}
 			}
 		});
 	});
 
-	  $("#form-addExpedienteTecnico").submit(function(event)//AÑADIR NUEVA CARTERA
-           {
+	   $('#btnEnviarFormulario').on('click', function(event)
+	   	{
                 event.preventDefault();
                 $('#form-addExpedienteTecnico').data('formValidation').validate();
 				if(!($('#form-addExpedienteTecnico').data('formValidation').isValid()))
@@ -564,7 +649,7 @@ $(function()
                     }
                 });
               $('#form-addExpedienteTecnico')[0].reset();
-           });
+         });
 
 </script>
 

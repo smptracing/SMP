@@ -48,9 +48,10 @@ class Expediente_Tecnico extends CI_Controller
 
 	public function insertar()
 	{
-		
        if($_POST)
 		{
+	       $this->db->trans_start(); 
+
 	        $config['upload_path']   = './uploads/ResolucioExpediente/';
 	        $config['allowed_types'] = '*';
 	        $config['max_width']     = 2000;
@@ -145,13 +146,16 @@ class Expediente_Tecnico extends CI_Controller
 				 {
 						$error = "ERROR NO SE CARGO LAS FOTOS DE EXPEDIENTE TÉCNICO";
 				 }
-			}  	
+			}
+			$this->db->trans_complete();
+			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos Registrados Correctamente.']);exit;
+
+
 		}
 		if($this->input->get('buscar')=="true")
 		{
 			
 			$listarCargo=$this->Cargo_Modal->getcargo();
-			
 			$opcion  = "001";//Responsable de elaboración
   			$listaTipoResponsableElaboracion=$this->Model_ET_Tipo_Responsable->NombreTipoResponsable($opcion);
 
