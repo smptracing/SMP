@@ -48,9 +48,10 @@ class Expediente_Tecnico extends CI_Controller
 
 	public function insertar()
 	{
-		
        if($_POST)
 		{
+	       $this->db->trans_start(); 
+
 	        $config['upload_path']   = './uploads/ResolucioExpediente/';
 	        $config['allowed_types'] = '*';
 	        $config['max_width']     = 2000;
@@ -58,126 +59,163 @@ class Expediente_Tecnico extends CI_Controller
 	        $config['max_size']      = 50000;
 	        $config['encrypt_name']  = false;
 	        $this->load->library('upload', $config);
-			if (!$this->upload->do_upload('Documento_Resolucion'))
-			{
-	                $error = "ERROR NO SE CARGO EL DOCUMENTO DE EXPEDIENTE TÉCNICO";
-	                echo $error;
-			}else
-			{
-			 	
-					$flat  = "INSERTAR";
-					$txtIdPi=$this->input->post('txtIdPi');
-					$txtNombreUe=$this->input->post('txtNombreUe');
-					$txtDireccionUE=$this->input->post('txtDireccionUE');
-					$txtUbicacionUE=$this->input->post('txtUbicacionUE');
-					$txtTelefonoUE=$this->input->post('txtTelefonoUE');
-					$txtRuc=$this->input->post('txtRuc');
-					$txtNombrePip=$this->input->post('txtNombrePip');
-					$txtUbicacionPip=$this->input->post('txtUbicacionPip');
-					$txtCodigoUnico=$this->input->post('txtCodigoUnico');
-					$txtCostoTotalPreInversion=$this->input->post('txtCostoTotalPreInversion');
-					$txtCostoDirectoPre=$this->input->post('txtCostoDirectoPre');
-					$txtCostoIndirectoPre=$this->input->post('txtCostoIndirectoPre');
-					$txtCostoTotalInversion=$this->input->post('txtCostoTotalInversion');
-					$txtCostoDirectoInversion=$this->input->post('txtCostoDirectoInversion');
-					$txtGastosGenerales=$this->input->post('txtGastosGenerales');
-					$txtGastosSupervision=$this->input->post('txtGastosSupervision');
-					$txtFuncionProgramatica=$this->input->post('txtFuncionProgramatica');
-					$txtFuncion=$this->input->post('txtFuncion');
-					$txtPrograma=$this->input->post('txtPrograma');
-					$txtSubPrograma=$this->input->post('txtSubPrograma');
-					$txtProyecto=$this->input->post('txtProyecto');
-					$txtComponente=$this->input->post('txtComponente');
-					$txtMeta=$this->input->post('txtMeta');
-					$txtFuenteFinanciamiento=$this->input->post('txtFuenteFinanciamiento');
-					$txtModalidadEjecucion=$this->input->post('txtModalidadEjecucion');
-					$txtTiempoEjecucionPip=$this->input->post('txtTiempoEjecucionPip');
-					$txtNumBeneficiarios=$this->input->post('txtNumBeneficiarios');
-					$txtUrlDocAprobacion=$this->upload->file_name;//$this->input->post('txtUrlDocAprobacion');
-					$txtSituacioActual=$this->input->post('txtSituacioActual');
-					$txtSituacioDeseada=$this->input->post('txtSituacioDeseada');
-					$txtContribucioInterv=$this->input->post('txtContribucioInterv');
-					$txtNumFolio=$this->input->post('txtNumFolio');
+			$this->upload->do_upload('Documento_Resolucion');
+		
+			$flat  = "INSERTAR";
+			$txtIdPi=$this->input->post('txtIdPi');
+			$txtNombreUe=$this->input->post('txtNombreUe');
+			$txtDireccionUE=$this->input->post('txtDireccionUE');
+			$txtUbicacionUE=$this->input->post('txtUbicacionUE');
+			$txtTelefonoUE=$this->input->post('txtTelefonoUE');
+			$txtRuc=$this->input->post('txtRuc');
+			$txtNombrePip=$this->input->post('txtNombrePip');
+			$txtUbicacionPip=$this->input->post('txtUbicacionPip');
+			$txtCodigoUnico=$this->input->post('txtCodigoUnico');
+			$txtCostoTotalPreInversion=$this->input->post('txtCostoTotalPreInversion');
+			$txtCostoDirectoPre=$this->input->post('txtCostoDirectoPre');
+			$txtCostoIndirectoPre=$this->input->post('txtCostoIndirectoPre');
+			$txtCostoTotalInversion=$this->input->post('txtCostoTotalInversion');
+			$txtCostoDirectoInversion=$this->input->post('txtCostoDirectoInversion');
+			$txtGastosGenerales=$this->input->post('txtGastosGenerales');
+			$txtGastosSupervision=$this->input->post('txtGastosSupervision');
+			$txtFuncionProgramatica=$this->input->post('txtFuncionProgramatica');
+			$txtFuncion=$this->input->post('txtFuncion');
+			$txtPrograma=$this->input->post('txtPrograma');
+			$txtSubPrograma=$this->input->post('txtSubPrograma');
+			$txtProyecto=$this->input->post('txtProyecto');
+			$txtComponente=$this->input->post('txtComponente');
+			$txtMeta=$this->input->post('txtMeta');
+			$txtFuenteFinanciamiento=$this->input->post('txtFuenteFinanciamiento');
+			$txtModalidadEjecucion=$this->input->post('txtModalidadEjecucion');
+			$txtTiempoEjecucionPip=$this->input->post('txtTiempoEjecucionPip');
+			$txtNumBeneficiarios=$this->input->post('txtNumBeneficiarios');
+			$txtUrlDocAprobacion=$this->upload->file_name;//$this->input->post('txtUrlDocAprobacion');
+			$txtSituacioActual=$this->input->post('hdtxtSituacioActual');
+			$txtSituacioEconomica=$this->input->post('hdtxtSituacioEconomica');
+			$txtResumenProyecto=$this->input->post('hdtxtResumenProyecto');
+			$txtNumFolio=$this->input->post('txtNumFolio');
 
 
-					$this->Model_ET_Expediente_Tecnico->insertar($flat,$txtIdPi,$txtDireccionUE,$txtUbicacionUE,$txtTelefonoUE,$txtRuc,$txtCostoTotalPreInversion,$txtCostoDirectoPre,$txtCostoIndirectoPre,$txtCostoTotalInversion,$txtCostoDirectoInversion,$txtGastosGenerales,$txtGastosSupervision,$txtFuncion,$txtPrograma,$txtSubPrograma,$txtProyecto,$txtComponente,$txtMeta,$txtFuenteFinanciamiento,$txtModalidadEjecucion,$txtTiempoEjecucionPip,$txtNumBeneficiarios,$txtUrlDocAprobacion,$txtSituacioActual,$txtSituacioDeseada,$txtContribucioInterv,$txtNumFolio); 
-					
-					$UltimoExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->UltimoExpedienteTecnico();
-					$id_et=$UltimoExpedienteTecnico->id_et;
-					
-					$comboResponsableElaboracion=$this->input->post('comboResponsableElaboracion');					
-					$comboTipoResponsableElaboracion=$this->input->post('comboTipoResponsableElaboracion');
-					$comboCargoElaboracion=$this->input->post('comboCargoElaboracion');
+			$this->Model_ET_Expediente_Tecnico->insertar($flat,$txtNombreUe,$txtIdPi,$txtDireccionUE,$txtUbicacionUE,$txtTelefonoUE,$txtRuc,$txtCostoTotalPreInversion,$txtCostoDirectoPre,$txtCostoIndirectoPre,$txtCostoTotalInversion,$txtCostoDirectoInversion,$txtGastosGenerales,$txtGastosSupervision,$txtFuncionProgramatica,$txtFuncion,$txtPrograma,$txtSubPrograma,$txtProyecto,$txtComponente,$txtMeta,$txtFuenteFinanciamiento,$txtModalidadEjecucion,$txtTiempoEjecucionPip,$txtNumBeneficiarios,$txtUrlDocAprobacion,$txtSituacioActual,$txtSituacioEconomica,$txtResumenProyecto,$txtNumFolio); 
+			
+			$UltimoExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->UltimoExpedienteTecnico();
+			$id_et=$UltimoExpedienteTecnico->id_et;
+			
+			$comboResponsableElaboracion=$this->input->post('comboResponsableElaboracion');					
+			$comboTipoResponsableElaboracion=$this->input->post('comboTipoResponsableElaboracion');
+			$comboCargoElaboracion=$this->input->post('comboCargoElaboracion');
 
 
-					$this->Model_ET_Responsable->insertarET_Epediente($id_et,$comboResponsableElaboracion,$comboTipoResponsableElaboracion,$comboCargoElaboracion);
-					/*$txtDNI=$this->input->post('txtDNI');
-					$txtRegistroProfesional=$this->input->post('txtRegistroProfesional');
-					$txtDireccionElaborador=$this->input->post('txtDireccionElaborador');
-					$txtDireccionElaborador=$this->input->post('txtDireccionElaborador');
-					$txtTelefElaborador=$this->input->post('txtTelefElaborador');*/
-					$ComboResponsableEjecucion=$this->input->post('ComboResponsableEjecucion');	
-					$ComboTipoResponsableEjecucion=$this->input->post('ComboTipoResponsableEjecucion');									
-					$comboCargoEjecucion=$this->input->post('comboCargoEjecucion');
+			$this->Model_ET_Responsable->insertarET_Epediente($id_et,$comboResponsableElaboracion,$comboTipoResponsableElaboracion,$comboCargoElaboracion);
+			/*$txtDNI=$this->input->post('txtDNI');
+			$txtRegistroProfesional=$this->input->post('txtRegistroProfesional');
+			$txtDireccionElaborador=$this->input->post('txtDireccionElaborador');
+			$txtDireccionElaborador=$this->input->post('txtDireccionElaborador');
+			$txtTelefElaborador=$this->input->post('txtTelefElaborador');*/
+			$ComboResponsableEjecucion=$this->input->post('ComboResponsableEjecucion');	
+			$ComboTipoResponsableEjecucion=$this->input->post('ComboTipoResponsableEjecucion');									
+			$comboCargoEjecucion=$this->input->post('comboCargoEjecucion');
 
 
-					$this->Model_ET_Responsable->insertarET_Epediente($id_et,$ComboResponsableEjecucion,$ComboTipoResponsableEjecucion,$comboCargoEjecucion);
-					/*$txtProfesionEjecutor=$this->input->post('txtProfesionEjecutor');
-					$txtDNIEjecutor=$this->input->post('txtDNIEjecutor');
-					$txtRegistroProEjecutor=$this->input->post('txtRegistroProEjecutor');
-					$txtDireccionEjecutor=$this->input->post('txtDireccionEjecutor');
-					$txtTelefonoEjecutor=$this->input->post('txtTelefonoEjecutor');*/
-					$config = array(
-						"upload_path" => "./uploads/ImageExpediente",
-						'allowed_types' => "jpg|png"
-					);
-					$variablefile= $_FILES;
-					$info = array();
-					$files = count($_FILES['imagen']['name']);
-					for ($i=0; $i < $files; $i++) 
-					{ 
-						$_FILES['imagen']['name'] = $variablefile['imagen']['name'][$i];
-						$_FILES['imagen']['type'] = $variablefile['imagen']['type'][$i];
-						$_FILES['imagen']['tmp_name'] = $variablefile['imagen']['tmp_name'][$i];
-						$_FILES['imagen']['error'] = $variablefile['imagen']['error'][$i];
-						$_FILES['imagen']['size'] = $variablefile['imagen']['size'][$i];
-						$this->upload->initialize($config);
-						if ($this->upload->do_upload('imagen'))
-						 {
-
-							$this->Model_ET_Img->insertarImgExpediente($UltimoExpedienteTecnico->id_et,$_FILES['imagen']['name']);
-
-						 }
-						else
-						 {
-								$error = "ERROR NO SE CARGO LAS FOTOS DE EXPEDIENTE TÉCNICO";
-						 }
-					}
-					
-					echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos registrados correctamente.']);exit;  
+			$this->Model_ET_Responsable->insertarET_Epediente($id_et,$ComboResponsableEjecucion,$ComboTipoResponsableEjecucion,$comboCargoEjecucion);
+			/*$txtProfesionEjecutor=$this->input->post('txtProfesionEjecutor');
+			$txtDNIEjecutor=$this->input->post('txtDNIEjecutor');
+			$txtRegistroProEjecutor=$this->input->post('txtRegistroProEjecutor');
+			$txtDireccionEjecutor=$this->input->post('txtDireccionEjecutor');
+			$txtTelefonoEjecutor=$this->input->post('txtTelefonoEjecutor');*/
+			$config = array(
+				"upload_path" => "./uploads/ImageExpediente",
+				'allowed_types' => "jpg|png"
+			);
+			$variablefile= $_FILES;
+			$info = array();
+			$files = count($_FILES['imagen']['name']);
+			for ($i=0; $i < $files; $i++) 
+			{ 
+				$_FILES['imagen']['name'] = $variablefile['imagen']['name'][$i];
+				$_FILES['imagen']['type'] = $variablefile['imagen']['type'][$i];
+				$_FILES['imagen']['tmp_name'] = $variablefile['imagen']['tmp_name'][$i];
+				$_FILES['imagen']['error'] = $variablefile['imagen']['error'][$i];
+				$_FILES['imagen']['size'] = $variablefile['imagen']['size'][$i];
+				$this->upload->initialize($config);
+				if ($this->upload->do_upload('imagen'))
+				 {
+					$this->Model_ET_Img->insertarImgExpediente($UltimoExpedienteTecnico->id_et,$_FILES['imagen']['name']);
+				 }
+				else
+				 {
+						$error = "ERROR NO SE CARGO LAS FOTOS DE EXPEDIENTE TÉCNICO";
+				 }
 			}
-	}
+			$this->db->trans_complete();
+			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos Registrados Correctamente.']);exit;
+
+
+		}
 		if($this->input->get('buscar')=="true")
 		{
 			
 			$listarCargo=$this->Cargo_Modal->getcargo();
-			
-			$opcion  = "Responsable de elaboración";
+			$opcion  = "001";//Responsable de elaboración
   			$listaTipoResponsableElaboracion=$this->Model_ET_Tipo_Responsable->NombreTipoResponsable($opcion);
 
-  			$opcion  = "Responsable de ejecucion";
+  			$opcion  = "002";//
   			$listaTipoResponsableEjecucion=$this->Model_ET_Tipo_Responsable->NombreTipoResponsable($opcion);
 			
 			$listarPersona=$this->Model_Personal->listarPersona();
 			$codigo_unico_pi=$this->input->get('CodigoUnico');
 			$Listarproyectobuscado=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoBuscar($codigo_unico_pi); //BUSCAR PIP
 			$this->load->view('front/Ejecucion/ExpedienteTecnico/insertar',['Listarproyectobuscado'=>$Listarproyectobuscado,'listarPersona' =>$listarPersona,'listaTipoResponsableElaboracion' => $listaTipoResponsableElaboracion,'listaTipoResponsableEjecucion' => $listaTipoResponsableEjecucion,'listarCargo' =>$listarCargo]);
+
 		}
+			
 			
 	}
 
 	function editar()
 	{
+		if($this->input->post('hdIdExpediente'))
+		{	
+			//this->db->trans_start(); 
+			$flat ="EDITAR";
+			$hdIdExpediente=$this->input->post('hdIdExpediente');
+			$txtIdPi=$this->input->post('txtIdPi');
+			$txtDireccionUE=$this->input->post('txtDireccionUE');
+			$txtUbicacionUE=$this->input->post('txtUbicacionUE');
+			$txtTelefonoUE=$this->input->post('txtTelefonoUE');
+			$txtRucUE=$this->input->post('txtRucUE');
+			$txtCostoTotalPreInversion=$this->input->post('txtCostoTotalPreInversion');
+			$txtCostoDirectoPre=$this->input->post('txtCostoDirectoPre');
+			$txtCostoIndirectoPre=$this->input->post('txtCostoIndirectoPre');
+			$txtCostoTotalInversion=$this->input->post('txtCostoTotalInversion');
+			$txtCostoDirectoInversion=$this->input->post('txtCostoDirectoInversion');
+			$txtGastosGenerales=$this->input->post('txtGastosGenerales');
+			$txtGastosSupervision=$this->input->post('txtGastosSupervision');
+			$txtFuncionProgramatica=$this->input->post('txtFuncionProgramatica');
+			$txtFuncion=$this->input->post('txtFuncion');
+			$txtPrograma=$this->input->post('txtPrograma');
+			$txtSubPrograma=$this->input->post('txtSubPrograma');
+			$txtProyecto=$this->input->post('txtProyecto');
+			$txtComponente=$this->input->post('txtComponente');
+			$txtMeta=$this->input->post('txtMeta');
+			$txtFuenteFinanciamiento=$this->input->post('txtFuenteFinanciamiento');
+			$txtModalidadEjecucion=$this->input->post('txtModalidadEjecucion');
+			$txtTiempoEjecucionPip=$this->input->post('txtTiempoEjecucionPip');
+			$txtNumBeneficiarios=$this->input->post('txtNumBeneficiarios');
+			$txtSituacioActual=$this->input->post('txtSituacioActual');
+			$txtSituacioDeseada=$this->input->post('txtSituacioDeseada');
+			$txtContribucioInterv=$this->input->post('txtContribucioInterv');
+			$txtNumFolio=$this->input->post('txtNumFolio');
+
+			if(count($this->Model_ET_Expediente_Tecnico->ValidarExpedienteTecnico($hdIdExpediente,$txtIdPi))>0)
+            {	
+            	echo json_encode(['proceso' => 'error', 'mensaje' => 'Este tipo de descripcion ya fue registrado con anterioridad .']);exit;
+            }
+
+			$this->Model_ET_Expediente_Tecnico->editar($flat,$hdIdExpediente,$txtDireccionUE,$txtUbicacionUE,$txtTelefonoUE,$txtRucUE,$txtCostoTotalPreInversion,$txtCostoDirectoPre,$txtCostoIndirectoPre,$txtCostoTotalInversion,$txtCostoDirectoInversion,$txtGastosGenerales,$txtGastosSupervision,$txtFuncion,$txtPrograma,$txtSubPrograma,$txtProyecto,$txtComponente,$txtMeta,$txtFuenteFinanciamiento,$txtModalidadEjecucion,$txtTiempoEjecucionPip,$txtNumBeneficiarios,$txtSituacioActual,$txtSituacioDeseada,$txtContribucioInterv,$txtNumFolio);
+			//$this->db->trans_complete();
+			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos Editados Correctamente.', 'txtDireccionUE' => $txtDireccionUE]);exit;
+		}
 		$id_et=$this->input->GET('id_et');
 		$ExpedienteTecnicoM=$this->Model_ET_Expediente_Tecnico->DatosExpediente($id_et);
 		$this->load->view('front/Ejecucion/ExpedienteTecnico/editar',['ExpedienteTecnicoM'=>$ExpedienteTecnicoM]);
@@ -230,6 +268,5 @@ class Expediente_Tecnico extends CI_Controller
 			$this->obtenerMetaAnidada($value);
 		}
 	}
-
 	
 }

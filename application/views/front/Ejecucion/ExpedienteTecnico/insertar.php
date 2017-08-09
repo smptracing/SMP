@@ -26,25 +26,25 @@
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Dirección</label>
 							<div>
-								<input id="txtDireccionUE" name="txtDireccionUE" value="" class="form-control col-md-4 col-xs-12"  placeholder="Dirección"  autocomplete="off" >	
+								<input id="txtDireccionUE" name="txtDireccionUE" class="form-control"  placeholder="Dirección"  autocomplete="off" >	
 							</div>	
 						</div>
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Distrito/Provincia/Departamento</label>
 							<div>
-								<input id="txtUbicacionUE" name="txtUbicacionUE" value="" class="form-control col-md-4 col-xs-12"  placeholder="Distrito/Provincia/Departamento" autocomplete="off" >	
+								<input id="txtUbicacionUE" name="txtUbicacionUE" class="form-control" placeholder="Distrito/Provincia/Departamento" autocomplete="off" >	
 							</div>	
 						</div>
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Teléfono</label>
 							<div>
-								<input id="txtTelefonoUE" name="txtTelefonoUE" value="" class="form-control col-md-4 col-xs-12"  placeholder="Teléfono"  autocomplete="off" >	
+								<input id="txtTelefonoUE" name="txtTelefonoUE" class="form-control" placeholder="Teléfono"  autocomplete="off" >	
 							</div>	
 						</div>
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">RUC</label>
 							<div>
-								<input id="txtRuc" name="txtRuc" value="" class="form-control col-md-4 col-xs-12"  placeholder="RUC"  autocomplete="off" >	
+								<input id="txtRuc" name="txtRuc" class="form-control"  placeholder="RUC"  autocomplete="off" >	
 							</div>	
 						</div>
 					</div>
@@ -109,13 +109,13 @@
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Gastos generales</label>
 							<div>
-								<input id="txtGastosGenerales" name="txtGastosGenerales" class="form-control col-md-4 col-xs-12"  placeholder="Costo Indirecto"  autocomplete="off" >
+								<input id="txtGastosGenerales" name="txtGastosGenerales" class="form-control col-md-4 col-xs-12"  placeholder="Gastos generales"  autocomplete="off" >
 							</div>
 						</div>
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Gastos de supervisión</label>
 							<div>
-								<input id="txtGastosSupervision" name="txtGastosSupervision" class="form-control col-md-4 col-xs-12"  placeholder="Costo Indirecto"  autocomplete="off" >
+								<input id="txtGastosSupervision" name="txtGastosSupervision" class="form-control col-md-4 col-xs-12"  placeholder="Gastos de supervisión"  autocomplete="off" >
 							</div>
 						</div>
 					</div>
@@ -203,7 +203,7 @@
 					 	<div class="col-md-4 col-sm-3 col-xs-12">
                             <label class="control-label">Subir Resolución</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                <input type="file" id="Documento_Resolucion" name="Documento_Resolucion">
+                                <input type="file" id="Documento_Resolucion" name="Documento_Resolucion" notValidate>
                                 </div>
                         </div>
 					</div>
@@ -280,19 +280,22 @@
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<label class="control-label">Sustento para la presentacion del proyecto</label></br>
+							<input type="hidden" id="hdtxtSituacioActual" name="hdtxtSituacioActual" >
 							<p><textarea name="txtSituacioActual" id="txtSituacioActual" rows="10" cols="80"></textarea></p>
 						</div>	
 					</div>
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<label class="control-label">Relevancia Economica</label></br>
-							<p><textarea name="txtSituacioDeseada" id="txtSituacioDeseada" rows="10" cols="80"></textarea></p>
+							<input type="hidden" id="hdtxtSituacioEconomica" name="hdtxtSituacioEconomica" notValidate >
+							<p><textarea name="txtSituacioEconomica" id="txtSituacioEconomica" rows="10" cols="80"></textarea></p>
 						</div>	
 					</div>
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<label class="control-label">Resumen del proyecto (Descripción)</label></br>
-							<p><textarea name="txtContribucioInterv" id="txtContribucioInterv" rows="10" cols="80"></textarea></p>
+							<input type="hidden" id="hdtxtResumenProyecto" name="hdtxtResumenProyecto"  notValidate>
+							<p><textarea name="txtResumenProyecto" id="txtResumenProyecto" rows="10" cols="80"></textarea></p>
 						</div>	
 					</div>
 						
@@ -308,7 +311,7 @@
 						<div class="col-md-4 col-sm-3 col-xs-12">
 							<label class="control-label">Fotografías(04 minimo)</label>
 							<div>
-								<input  type="file" name="imagen[]" value="" placeholder="Fotografias"  autocomplete="off" multiple  >
+								<input  type="file" name="imagen[]" id="imagen" value="" placeholder="Fotografias" required="required"   autocomplete="off" multiple  >
 							</div>
 						</div>
 					</div>		
@@ -319,23 +322,24 @@
 	</div>
 	<div class="ln_solid"></div>
 		<div class="row" style="text-align: right;">
-			<button type="submit" id="btnEnviar" class="btn btn-success">Guardar</button>
+			<button  id="btnEnviarFormulario" class="btn btn-success">Guardar</button>
 			<button  class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 		</div>
 </form>
  <script>
- CKEDITOR.replace('txtSituacioActual' ,{
-		filebrowserImageBrowseUrl : '<?php echo base_url('assets/filemanager/index.html');?>'
-	});
- CKEDITOR.replace('txtSituacioDeseada' ,{
-		filebrowserImageBrowseUrl : '<?php echo base_url('assets/filemanager/index.html');?>'
-	});
-  CKEDITOR.replace('txtContribucioInterv' ,{
-		filebrowserImageBrowseUrl : '<?php echo base_url('assets/filemanager/index.html');?>'
-	});
-
-/*$(function()
+ 
+$(function()
 	{
+		CKEDITOR.replace('txtSituacioActual' ,{
+		filebrowserImageBrowseUrl : '<?php echo base_url('assets/filemanager/index.html');?>'
+		});
+		CKEDITOR.replace('txtSituacioEconomica' ,{
+		filebrowserImageBrowseUrl : '<?php echo base_url('assets/filemanager/index.html');?>'
+		});
+		CKEDITOR.replace('txtResumenProyecto' ,{
+		filebrowserImageBrowseUrl : '<?php echo base_url('assets/filemanager/index.html');?>'
+		});
+
 		$('#form-addExpedienteTecnico').formValidation(
 		{
 			framework: 'bootstrap',
@@ -345,6 +349,26 @@
 			trigger: null,
 			fields:
 			{
+				txtDireccionUE:
+				{
+					validators:
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Dirección UE." es requerido.</b>'
+						}
+					}
+				},
+				txtUbicacionUE:
+				{
+					validators:
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Ubicación UE." es requerido.</b>'
+						}
+					}
+				},
 				txtNombreUe:
 				{
 					validators:
@@ -360,9 +384,13 @@
 					validators:
 					{
 					
-							regexp:
+						notEmpty:
 						{
-							regexp: /^\d*$/,
+							message: '<b style="color: red;">El campo "Teléfono" es requerido.</b>'
+						},
+						regexp:
+						{
+							regexp: /^[0-9]+$/,
 							message: '<b style="color: red;">El campo "Teléfono" debe ser un numero.</b>'
 						}
 					}
@@ -371,9 +399,13 @@
 				{
 					validators:
 					{
-							regexp:
+						notEmpty:
 						{
-							regexp: "^([0-9]){11}$",
+							message: '<b style="color: red;">El campo "Ruc" es requerido.</b>'
+						},
+						regexp:
+						{
+							regexp: /^([0-9]){11}$/,
 							message: '<b style="color: red;">El campo "Ruc" debe ser un número de 11 dígitos.</b>'
 						}
 					}
@@ -434,7 +466,7 @@
 						regexp:
 						{
 							regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
-							message: '<b style="color: red;">El campo "Costo U." debe ser un valor en soles.</b>'
+							message: '<b style="color: red;">El campo "Costo total de Inversión" debe ser un valor en soles.</b>'
 						}
 					}
 				},
@@ -449,7 +481,7 @@
 						regexp:
 						{
 							regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
-							message: '<b style="color: red;">El campo "Costo U." debe ser un valor en soles.</b>'
+							message: '<b style="color: red;">El campo "Costo Directo de Inversión" debe ser un valor en soles.</b>'
 						}
 					}
 				},
@@ -459,12 +491,12 @@
 					{
 						notEmpty:
 						{
-							message: '<b style="color: red;">El campo "Costo Directo de Inversión" es requerido.</b>'
+							message: '<b style="color: red;">El campo "Costo General" es requerido.</b>'
 						},
 						regexp:
 						{
 							regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
-							message: '<b style="color: red;">El campo "Costo U." debe ser un valor en soles.</b>'
+							message: '<b style="color: red;">El campo "Costo General." debe ser un valor en soles.</b>'
 						}
 					}
 				},
@@ -474,12 +506,22 @@
 					{
 						notEmpty:
 						{
-							message: '<b style="color: red;">El campo "Costo Directo de Inversión" es requerido.</b>'
+							message: '<b style="color: red;">El campo "Gastos de supervisión" es requerido.</b>'
 						},
 						regexp:
 						{
 							regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
-							message: '<b style="color: red;">El campo "Costo U." debe ser un valor en soles.</b>'
+							message: '<b style="color: red;">El campo "Gastos de supervisión" debe ser un valor en soles.</b>'
+						}
+					}
+				},
+				txtFuncionProgramatica:
+				{
+					validators:
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Función Programatica" es requerido.</b>'
 						}
 					}
 				},
@@ -493,10 +535,34 @@
 						}
 					}
 				},
+				txtComponente:
+				{
+					validators:
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Componente" es requerido.</b>'
+						}
+					}
+				},
+				txtMeta:
+				{
+					validators:
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Meta" es requerido.</b>'
+						}
+					}
+				},
 				txtNumBeneficiarios:
 				{
 					validators:
 					{
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Numero de beneficiarios" es requerido.</b>'
+						},
 						regexp:
 						{
 							regexp: /^\d*$/,
@@ -504,10 +570,44 @@
 						}
 					}
 				},
+				txtFuenteFinanciamiento:
+				{
+					validators:
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Fuente Financiamiento" es requerido.</b>'
+						}
+					}
+				},
+				txtModalidadEjecucion:
+				{
+					validators:
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Modalidad de Ejecución" es requerido.</b>'
+						}
+					}
+				},
+				txtTiempoEjecucionPip:
+				{
+					validators:
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Titmpo de ejecución" es requerido.</b>'
+						}
+					}
+				},
 				txtNumFolio:
 				{
 					validators:
 					{
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Numero de folios" es requerido.</b>'
+						},
 						regexp:
 						{
 							regexp: /^\d*$/,
@@ -517,38 +617,39 @@
 				}
 			}
 		});
-	});*/
-	$('#btnEnviar').on('click', function(event)
-	{
-		event.preventDefault();
-
-		/*$('#form-addExpedienteTecnico').data('formValidation').validate();
-
-		if(!($('#form-addExpedienteTecnico').data('formValidation').isValid()))
-		{
-			return;
-		}*/
-
-		paginaAjaxJSON($('#form-addExpedienteTecnico').serialize(), '<?=base_url();?>index.php/Expediente_Tecnico/insertar', 'POST', null, function(objectJSON)
-		{
-			$('#modalTemp').modal('hide');
-
-			objectJSON=JSON.parse(objectJSON);
-
-			swal(
-			{
-				title: '',
-				text: objectJSON.mensaje,
-				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
-			},
-			function()
-			{
-				window.location.href='<?=base_url();?>index.php/Expediente_Tecnico/index/';
-
-				renderLoading();
-			});
-		}, false, true);
 	});
+
+	   $('#btnEnviarFormulario').on('click', function(event)
+	   	{
+                event.preventDefault();
+                $('#form-addExpedienteTecnico').data('formValidation').validate();
+				if(!($('#form-addExpedienteTecnico').data('formValidation').isValid()))
+				{
+					return;
+				}
+
+                $("#hdtxtSituacioActual").val(CKEDITOR.instances.txtSituacioActual.getData());
+                $("#hdtxtSituacioEconomica").val(CKEDITOR.instances.txtSituacioEconomica.getData());
+                $("#hdtxtResumenProyecto").val(CKEDITOR.instances.txtResumenProyecto.getData());
+
+                var formData=new FormData($("#form-addExpedienteTecnico")[0]);
+                var dataString = $('#form-addExpedienteTecnico').serialize();
+                $.ajax({
+                    type:"POST",
+                    enctype: 'multipart/form-data',
+                    url:base_url+"index.php/Expediente_Tecnico/insertar",
+                    data: formData,
+                    cache: false,
+                    contentType:false,
+                    processData:false,
+                    success:function(resp)
+                    {
+                      	swal('Registro Correcto del Expediente Técnico',resp);
+                      	 // window.location.href=base_url+"index.php/Expediente_Tecnico/"
+                    }
+                });
+              $('#form-addExpedienteTecnico')[0].reset();
+         });
 
 </script>
 

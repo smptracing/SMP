@@ -55,7 +55,7 @@
                                                           <th style="width: 8%"><i class="fa fa-thumb-tack"></i> Cod. </th>
                                                           <th style="width: 32%"><i class="fa fa-bookmark-o"></i> Nombre</th>
                                                           <th style="width: 12%"><i class="fa fa-money"></i> Costo</th>
-                                                          <th style="width: 12%"> Estado Ciclo</th>
+                                                          <th style="width: 12%"> Naturaleza inversión</th>
                                                         <th style="width: 20%">Opción</th>
                                                         </tr>
                                                       </thead>
@@ -172,13 +172,13 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <label for="name" style="text-align:left">Funcion<span class="required">*</span></label>
+                                        <label for="name" style="text-align:left">Función<span class="required">*</span></label>
                                         <select id="cbxFuncion" name="cbxFuncion" class="selectpicker" title="Elija función"></select>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <label  for="textbox"><span class="required">Division</span></label>
+                                        <label  for="textbox"><span class="required">División</span></label>
                                         <select id="cbxDivFunc" name="cbxDivFunc" class="selectpicker" title="Elija división" disabled="disabled"></select>
                                     </div>
                                 </div>
@@ -327,8 +327,10 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                              <label  for="textbox"><span class="required">Ciclo Inversión</span>
                                               </label>
-                                            <select id="cbxEstCicInv_m" name="cbxEstCicInv_m" class="selectpicker"  title="Elija Ciclo de Inversión" required="required">
-                                            </select>
+                                            <!--<select id="cbxEstCicInv_m" name="cbxEstCicInv_m" class="selectpicker"  title="Elija Ciclo de Inversión" required="required">
+                                            </select>-->
+                                            <select id="cbxEstCicInv_m" name="cbxEstCicInv_m" class="selectpicker"  >
+                                 </select>
                                             </div>
                                       </div>
                                     </div>
@@ -353,7 +355,7 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                             <label  for="name">Naturaleza<span class="required">*</span>
                                         </label>
-                                            <select id="cbxNatI" name="cbxNatI" class="selectpicker"  title="Elija Naturaleza">
+                                            <select id="cbxNatI_m" name="cbxNatI_m" class="selectpicker"  >
                                             </select>
                                          </div>
                                       </div>
@@ -362,7 +364,7 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                              <label  for="textbox"><span class="required">Nivel de Gobierno</span>
                                         </label>
-                                            <select id="cbxNivelGob" name="cbxNivelGob" class="selectpicker"  title="Elija nivel de gobierno">
+                                            <select id="cbxNivelGob_m" name="cbxNivelGob_m" class="selectpicker" >
                                             </select>
                                             </div>
                                       </div>
@@ -371,7 +373,7 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                <label  for="textbox"><span class="required">Unidad Ejecutora</span>
                                                 </label>
-                                                <select id="cbxUnidadEjecutora"  name="cbxUnidadEjecutora" class="selectpicker"   title="Elija Unidad Ejecutora">
+                                                <select id="cbxUnidadEjecutora_m"  name="cbxUnidadEjecutora_m" class="selectpicker">
                                                 </select>
                                             </div>
                                       </div>
@@ -382,20 +384,20 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <label for="name" style="text-align:left">Funcion<span class="required">*</span></label>
-                                        <select id="cbxFuncion" name="cbxFuncion" class="selectpicker" title="Elija función"></select>
+                                        <label for="name" style="text-align:left">Función<span class="required">*</span></label>
+                                        <select id="cbxFuncion_m" name="cbxFuncion_m" class="selectpicker" ></select>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <label  for="textbox"><span class="required">Division</span></label>
-                                        <select id="cbxDivFunc" name="cbxDivFunc" class="selectpicker" title="Elija división" disabled="disabled"></select>
+                                        <label  for="textbox"><span class="required">División</span></label>
+                                        <select id="cbxDivFunc_inicio" name="cbxDivFunc_inicio" class="selectpicker"></select>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <label for="textbox"><span class="required">Grupo</span></label>
-                                        <select id="cbxGrupoFunc" name="cbxGrupoFunc" class="selectpicker"  title="Elija grupo" disabled="disabled"></select>
+                                        <select id="cbxGrupoFunc_m" name="cbxGrupoFunc_m" class="selectpicker"></select>
                                     </div>
                                 </div>
                             </div>

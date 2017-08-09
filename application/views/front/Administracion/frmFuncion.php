@@ -28,8 +28,8 @@
                                              <!-- /Contenido del funcion -->
                                         <div role="tabpanel" class="tab-pane fade active in" id="tab_Sector" aria-labelledby="home-tab">
                                              <!-- /tabla de funcion desde el row -->
-                                            <div class="row">  
-                                            
+                                            <div class="row">
+
                                                   <div class="col-md-12 col-xs-12">
                                                         <div class="x_panel">
                                                             <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#VentanaRegistraFuncion" >
@@ -55,23 +55,23 @@
                                                           </div>
                                                         </div>
                                                       </div>
-                                                     
+
                                             </div>
                                          <!-- / fin tabla de funcion desde el row -->
                                         </div>
                                         <!-- /fin del funcion del sector -->
                                         <div role="tabpanel" class="tab-pane fade" id="tab_Entidad" aria-labelledby="profile-tab">
-                                          
+
                                             <!-- /tabla de division funcional desde el row -->
-                                            <div class="row">  
-                                            
+                                            <div class="row">
+
                                                   <div class="col-md-12 col-sm-12 col-xs-12">
                                                         <div class="x_panel">
                                                             <button type="button" id="btn_Nuevadivision" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraDivisionF">
                                                                 <span class="fa fa-plus-circle"></span>
                                                                 Nuevo</button>
-                                                          <div class="x_title">                                                              
-                                                           <div class="clearfix"></div> 
+                                                          <div class="x_title">
+                                                           <div class="clearfix"></div>
                                                           </div>
                                                           <div class="x_content">
                                                             <table id="table-DivisionF" class="table table-striped table-bordered table-hover" ellspacing="0" width="100%">
@@ -90,22 +90,22 @@
                                                           </div>
                                                         </div>
                                                       </div>
-                                                     
+
                                             </div>
-                                         <!-- / fin tabla division funcional desde el row -->                                    
+                                         <!-- / fin tabla division funcional desde el row -->
                                         </div>
                                           <!-- / fin panel grupo  funcional desde el row -->
                                         <div role="tabpanel" class="tab-pane fade" id="tab_ServicioPubAsoc" aria-labelledby="profile-tab">
                                              <!-- /tabla de grupo funcional desde el row -->
-                                            <div class="row">  
-                                            
+                                            <div class="row">
+
                                                   <div class="col-md-12 col-sm-12 col-xs-12">
                                                         <div class="x_panel">
                                                             <button type="button" id="btn_nuevoGrupoFuncional" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraGrupoF">
                                                             <span class="fa fa-plus-circle"></span>
                                                                 Nuevo</button>
                                                           <div class="x_title">
-                                                            <div class="clearfix"></div>       
+                                                            <div class="clearfix"></div>
                                                           </div>
                                                           <div class="x_content">
                                                             <table id="table-listarGrupoFuncional" class="table table-striped table-bordered table-hover" ellspacing="0" width="100%">
@@ -128,9 +128,9 @@
                                                           </div>
                                                         </div>
                                                       </div>
-                                                     
+
                                             </div>
-                                         <!-- / fin tabla grupo funcional asociados el row --> 
+                                         <!-- / fin tabla grupo funcional asociados el row -->
                                         </div>
                                       </div>
                                     </div>
@@ -139,13 +139,13 @@
                                 </div>
               </div>
 
-             
+
           </div>
           <div class="clearfix"></div>
         </div>
      </div>
-        
-<!-- /.ventana para registra funcion -->			
+
+<!-- /.ventana para registra funcion -->
 <div class="modal fade" id="VentanaRegistraFuncion"  data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
@@ -157,12 +157,12 @@
          <div class="row">
             <div class="col-xs-12">
                   <!-- FORULARIO PARA REGISTRAR NUEVO FUNCION  -->
-                <form class="form-horizontal " id="form-addFuncion" action="<?php echo  base_url();?>Funcion/GetFuncion" method="POST">
+                <form class="form-horizontal " id="form-addFuncion" action="<?php echo base_url(); ?>Funcion/GetFuncion" method="POST">
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Código Función <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_codigofuncion" name="txt_codigofuncion" class="form-control col-md-7 col-xs-12" data-inputmask="'mask':'99'" data-validate-length-range="2" data-validate-words="2"  placeholder="Código Función" required="required" type="text"> 
+                          <input id="txt_codigofuncion" name="txt_codigofuncion" class="form-control col-md-7 col-xs-12" data-inputmask="'mask':'99'" data-validate-length-range="2" data-validate-words="2"  placeholder="Código Función" required="required" type="text">
                         </div>
                       </div>
                       <div class="item form-group">
@@ -202,7 +202,7 @@
 <!-- /.fin ventana para registra una nueva funcion-->
 
 
-<!-- /.ventana para registra una nuevo dision funcional-->			
+<!-- /.ventana para registra una nuevo dision funcional-->
 <div class="modal fade" id="VentanaRegistraDivisionF" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
@@ -214,7 +214,7 @@
          <div class="row">
                 <div class="col-xs-12">
                  <!-- FORMULARIO PARA REGISTRA NUEVA DIVISION FUNCIONAL -->
-                <form class="form-horizontal form-label-left"  id="form-AddDivisionFuncion" action="<?php echo  base_url();?>DivisionFuncional/AddDivisionFucion" method="POST">
+                <form class="form-horizontal form-label-left"  id="form-AddDivisionFuncion" action="<?php echo base_url(); ?>DivisionFuncional/AddDivisionFucion" method="POST">
 
                       <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Codigo División funcional <span class="required">*</span>
@@ -231,12 +231,12 @@
                             </div>
                       </div>
                     <div class="form-group">
-                           <label class="control-label col-md-3 col-sm-3 col-xs-6">Función</label>  
+                           <label class="control-label col-md-3 col-sm-3 col-xs-6">Función</label>
                             <div class="col-md-6 col-sm-9 col-xs-6">
                                 <select id="listaFuncionC" name="listaFuncionC" class="selectpicker" data-live-search="true"  title="Elegir o buscar función">
                                  </select>
                             </div>
-                    </div>       
+                    </div>
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
@@ -247,7 +247,7 @@
                           <button  class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-remove"></span>
                             Cancelar
-                          </button>   
+                          </button>
                         </div>
                       </div>
                 </form><!-- FORMULARIO FIN PARA REGISTRA NUEVA DIVISION FUNCIONAL -->
@@ -261,7 +261,7 @@
   </div>
 <!-- /.fin ventana para registra una nueva DIVISION  FUNCIONAL-->
 
-<!-- /.ventana para registra grupo funcional-->			
+<!-- /.ventana para registra grupo funcional-->
 <div class="modal fade" id="VentanaRegistraGrupoF" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
@@ -273,7 +273,7 @@
          <div class="row">
                 <div class="col-xs-12">
                  <!-- FORMULARIO PARA REGISTRA NUEVO GRUPO FUNCIONAL-->
-                <form class="form-horizontal form-label-left" id="form-AddGrupoFuncional" action="<?php echo  base_url();?>GrupoFuncional/AddGrupoFuncional" method="POST" >
+                <form class="form-horizontal form-label-left" id="form-AddGrupoFuncional" action="<?php echo base_url(); ?>GrupoFuncional/AddGrupoFuncional" method="POST" >
 
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Código  Grupo Funcional <span class="required">*</span>
@@ -290,7 +290,7 @@
                             </div>
                         </div>
                     <div class="form-group">
-                           <label class="control-label col-md-3 col-sm-3 col-xs-6">División Funcional</label>  
+                           <label class="control-label col-md-3 col-sm-3 col-xs-6">División Funcional</label>
                             <div class="col-md-6 col-sm-9 col-xs-6">
                                 <select id="SelecDivisionFF" name="SelecDivisionFF" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Buscar División Funcional">
 
@@ -298,10 +298,10 @@
                             </div>
                     </div>
                     <div class="form-group">
-                           <label class="control-label col-md-3 col-sm-3 col-xs-6"> Sector </label>  
+                           <label class="control-label col-md-3 col-sm-3 col-xs-6"> Sector </label>
                             <div class="col-md-6 col-sm-9 col-xs-6">
                                 <select id="SelecSector" name="SelecSector" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Buscar Sector">
-                                        
+
                                  </select>
                             </div>
                     </div>
@@ -330,7 +330,7 @@
     </div>
   </div>
 <!-- /.fin ventana para registra una nuevo grupo funcional-->
-<!-- /.ventana para modificar grupo funcional-->     
+<!-- /.ventana para modificar grupo funcional-->
 <div class="modal fade" id="VentanaUpdateGrupoF" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
@@ -342,7 +342,7 @@
          <div class="row">
                 <div class="col-xs-12">
                  <!-- FORMULARIO PARA REGISTRA NUEVO GRUPO FUNCIONAL-->
-                <form class="form-horizontal form-label-left" id="form-UpadataGrupoFuncional" action="<?php echo  base_url();?>GrupoFuncional/UpdateGrupoFuncional" method="POST" >
+                <form class="form-horizontal form-label-left" id="form-UpadataGrupoFuncional" action="<?php echo base_url(); ?>GrupoFuncional/UpdateGrupoFuncional" method="POST" >
 
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Codigo  Grupo Funcional <span class="required">*</span>
@@ -360,7 +360,7 @@
                             </div>
                         </div>
                     <div class="form-group">
-                           <label class="control-label col-md-3 col-sm-3 col-xs-6">División Funcional</label>  
+                           <label class="control-label col-md-3 col-sm-3 col-xs-6">División Funcional</label>
                             <div class="col-md-6 col-sm-9 col-xs-6">
                                 <select id="SelecDivisionFFF" name="SelecDivisionFFF" class="selectpicker" data-live-search="true" >
 
@@ -368,10 +368,10 @@
                             </div>
                     </div>
                     <div class="form-group">
-                           <label class="control-label col-md-3 col-sm-3 col-xs-6"> Sector </label>  
+                           <label class="control-label col-md-3 col-sm-3 col-xs-6"> Sector </label>
                             <div class="col-md-6 col-sm-9 col-xs-6">
                                 <select id="SelecSectorF" name="SelecSectorF" class="selectpicker" data-live-search="true" >
-                                        
+
                                  </select>
                             </div>
                     </div>
@@ -411,10 +411,10 @@
          <div class="row">
             <div class="col-xs-12">
                   <!-- FORULARIO PARA REGISTRAR NUEVO FUNCION  -->
-                <form class="form-horizontal " id="form-ModificarFuncion" action="<?php echo  base_url();?>Funcion/GetFuncion" method="POST">
+                <form class="form-horizontal " id="form-ModificarFuncion" action="<?php echo base_url(); ?>Funcion/GetFuncion" method="POST">
 
                       <div class="item form-group">
-                         
+
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Código Función <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
@@ -469,7 +469,7 @@
          <div class="row">
                 <div class="col-xs-12">
                  <!-- FORMULARIO PARA REGISTRA NUEVA DIVISION FUNCIONAL -->
-                <form class="form-horizontal form-label-left"  id="form-UpdateDivisionFuncion" action="<?php echo  base_url();?>DivisionFuncional/UpdateDivisionFucion" method="POST">
+                <form class="form-horizontal form-label-left"  id="form-UpdateDivisionFuncion" action="<?php echo base_url(); ?>DivisionFuncional/UpdateDivisionFucion" method="POST">
                       <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Código División Funcional <span class="required">*</span>
                             </label>
@@ -487,12 +487,12 @@
                             </div>
                       </div>
                     <div class="form-group">
-                           <label class="control-label col-md-3 col-sm-3 col-xs-6">Función</label>  
+                           <label class="control-label col-md-3 col-sm-3 col-xs-6">Función</label>
                             <div class="col-md-6 col-sm-9 col-xs-6">
                                 <select id="listaFuncionCM" name="listaFuncionCM" class="selectpicker" data-live-search="true" >
                                  </select>
                             </div>
-                    </div>       
+                    </div>
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
@@ -518,7 +518,7 @@
 <!-- fin para modificar division  funcional-->
 
 <script>
-  $('.modal').on('hidden.bs.modal', function(){ 
+  $('.modal').on('hidden.bs.modal', function(){
     $(this).find('form')[0].reset(); //para borrar todos los datos que tenga los input, textareas, select.
     $("label.error").remove();  //lo utilice para borrar la etiqueta de error del jquery validate
   });
