@@ -14,4 +14,11 @@ class Model_ET_Detalle_Analisis_Unitario extends CI_Model
 
 		return true;
 	}
+
+	function ETDetalleAnalisisUnitarioPorIdAnalisis($idAnalisis)
+	{
+		$data=$this->db->query("select * from ET_DETALLE_ANALISIS_UNITARIO where id_analisis=".$idAnalisis);
+
+		return $data->result();
+	}
 }
