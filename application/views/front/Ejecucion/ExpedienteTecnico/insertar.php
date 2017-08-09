@@ -4,7 +4,6 @@
 		margin-top: 4px;
 	}
 </style>
-<script src="ckeditor/ckeditor.js"></script>
 <form  id="form-addExpedienteTecnico"   action="<?php echo base_url();?>index.php/Expediente_Tecnico/insertar" method="POST" enctype="multipart/form-data" >
 
 	<div class="row">
