@@ -82,7 +82,7 @@ class Model_ET_Expediente_Tecnico extends CI_Model
 	}
 	function VerificarExpedienteAntesEliminar()
 	{
-		$ExpedienteTecnico=$this->db->query("select id_clasificador from ET_PRESUPUESTO_ANALITICO where id_clasificador='".$id_et."' ");
+		$ExpedienteTecnico=$this->db->query("select ET_EXPEDIENTE_TECNICO.id_et from ET_EXPEDIENTE_TECNICO LEFT JOIN ET_PRESUPUESTO_ANALITICO ON ET_EXPEDIENTE_TECNICO.id_et=ET_PRESUPUESTO_ANALITICO.id_et  LEFT JOIN ET_COMPONENTE ON ET_EXPEDIENTE_TECNICO.id_et=ET_COMPONENTE.id_et   LEFT JOIN ET_IMG ON ET_EXPEDIENTE_TECNICO.id_et=ET_IMG.id_et where ET_EXPEDIENTE_TECNICO.id_et='".$id_et."'");
 
 		return $ExpedienteTecnico->result();
 	}

@@ -279,10 +279,10 @@ class Expediente_Tecnico extends CI_Controller
 	    {
 			$flat="ELIMINAR";
 			$id_et=$this->input->post('id_et');
-			/*if(count($this->Model_ET_Expediente_Tecnico->VerificarExpedienteAntesEliminar($id_et))>0)
-            {	
-            	echo json_encode("No es posible eliminar el registro ");
-            }*/
+			if(count($this->Model_ET_Expediente_Tecnico->VerificarExpedienteAntesEliminar($id_et))>0)
+            {
+            	echo json_encode(['proceso' => 'error', 'mensaje' => 'No se puede eliminar.']);exit;
+            }
 			$this->Model_ET_Expediente_Tecnico->eliminar($flat,$id_et);
 			echo json_encode($Data);
 		}
