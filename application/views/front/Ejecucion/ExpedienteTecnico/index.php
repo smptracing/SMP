@@ -111,9 +111,6 @@ function BuscarProyectocodigo()
 				type:"GET", 
 				data:{inputValue:inputValue},
 				cache:false,
-				beforeSend: function() {
-                    renderLoading();
-				},
 				success:function(resp){
 					var ProyetoEncontrado=eval(resp);
 					if(ProyetoEncontrado.length==1){

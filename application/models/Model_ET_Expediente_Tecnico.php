@@ -86,4 +86,10 @@ class Model_ET_Expediente_Tecnico extends CI_Model
 
 		return $ExpedienteTecnico->result();
 	}
+	function ET_Img($id_ExpedienteTecnico)
+	{
+		$ET_Img=$this->db->query("select * from ET_IMG where ET_IMG.id_et='".$id_ExpedienteTecnico."' ");
+
+		return $ET_Img->result();
+	}
 }
