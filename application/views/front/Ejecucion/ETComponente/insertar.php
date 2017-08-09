@@ -108,7 +108,7 @@ function mostrarMetaAnidada($meta)
 	</div>
 	<hr>
 	<div class="row" style="text-align: right;">
-		<input type="hidden" id="hdIdET" value="1">
+		<input type="hidden" id="hdIdET" value="<?=$expedienteTecnico->id_et?>">
 		<button class="btn btn-danger" data-dismiss="modal">
 			<span class="glyphicon glyphicon-remove"></span>
 			Cerrar ventana
