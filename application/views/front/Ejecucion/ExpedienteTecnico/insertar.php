@@ -642,10 +642,12 @@ $(function()
                     cache: false,
                     contentType:false,
                     processData:false,
+                    beforeSend: function() {
+                    	renderLoading();
+				    },
                     success:function(resp)
                     {
-                      	swal('Registro Correcto del Expediente Técnico',resp);
-                      	 // window.location.href=base_url+"index.php/Expediente_Tecnico/"
+                      	window.location.href=base_url+"index.php/Expediente_Tecnico/"
                     }
                 });
               $('#form-addExpedienteTecnico')[0].reset();

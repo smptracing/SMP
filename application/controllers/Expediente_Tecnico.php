@@ -61,7 +61,7 @@ class Expediente_Tecnico extends CI_Controller
 	        $config['encrypt_name']  = false;
 	        $this->load->library('upload', $config);
 			$this->upload->do_upload('Documento_Resolucion');
-		
+
 			$flat  = "INSERTAR";
 			$txtIdPi=$this->input->post('txtIdPi');
 			$txtNombreUe=$this->input->post('txtNombreUe');
@@ -145,12 +145,14 @@ class Expediente_Tecnico extends CI_Controller
 				 }
 				else
 				 {
-						$error = "ERROR NO SE CARGO LAS FOTOS DE EXPEDIENTE TÉCNICO";
+						$this->db->trans_rollback();
+						echo json_encode("Datos No Registrados Correctamente");
 				 }
 			}
+			$this->upload->data();
 			$this->db->trans_complete();
-			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos Registrados Correctamente.']);exit;
 
+			echo json_encode("Datos Registrados Correctamente");
 
 		}
 		if($this->input->get('buscar')=="true")
