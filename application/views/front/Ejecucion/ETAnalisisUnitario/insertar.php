@@ -6,16 +6,22 @@
 				<select name="selectDescripcionDetalleAnalisis" id="selectDescripcionDetalleAnalisis" class="form-control"></select>
 			</div>
 		</div>
-		<div class="col-md-3 col-sm-3 col-xs-12">
+		<div class="col-md-2 col-sm-2 col-xs-12">
 			<label for="control-label">Cuadrilla</label>
 			<div>
-				<input type="text" class="form-control">
+				<input type="text" id="txtCuadrilla" class="form-control" onkeyup="calcularCantidad();">
+			</div>
+		</div>
+		<div class="col-md-1 col-sm-1 col-xs-12">
+			<label for="control-label">Horas</label>
+			<div>
+				<input type="text" id="txtHoras" class="form-control" onkeyup="calcularCantidad();" value="8">
 			</div>
 		</div>
 		<div class="col-md-2 col-sm-2 col-xs-12">
 			<label for="control-label">Undidad</label>
 			<div>
-				<select name="" id="" class="form-control">
+				<select name="selectUnidadMedida" id="selectUnidadMedida" class="form-control">
 					<?php foreach($listaUnidadMedida as $value){ ?>
 						<option value="<?=$value->id_unidad?>"><?=$value->descripcion?></option>
 					<?php } ?>
@@ -24,34 +30,34 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-4 col-sm-4 col-xs-12">
+		<div class="col-md-2 col-sm-2 col-xs-12">
 			<label for="control-label">Rendimiento</label>
 			<div>
-				<input type="text" class="form-control">
+				<input type="text" id="txtRendimiento" class="form-control" onkeyup="calcularCantidad();">
 			</div>
 		</div>
 		<div class="col-md-2 col-sm-2 col-xs-12">
 			<label for="control-label">Cantidad</label>
 			<div>
-				<input type="text" class="form-control">
+				<input type="text" id="txtCantidad" class="form-control" onkeyup="calcularRendimiento();">
 			</div>
 		</div>
-		<div class="col-md-2 col-sm-2 col-xs-12">
+		<div class="col-md-3 col-sm-3 col-xs-12">
 			<label for="control-label">Precio unitario</label>
 			<div>
-				<input type="text" class="form-control">
+				<input type="text" id="txtPrecioUnitario" class="form-control">
 			</div>
 		</div>
-		<div class="col-md-2 col-sm-2 col-xs-12">
+		<div class="col-md-3 col-sm-3 col-xs-12">
 			<label for="control-label">Sub total</label>
 			<div>
-				<input type="text" class="form-control" readonly="readonly">
+				<input type="text" id="txtSubTotal" class="form-control" readonly="readonly">
 			</div>
 		</div>
 		<div class="col-md-2 col-sm-2 col-xs-12">
 			<label for="control-label">.</label>
 			<div>
-				<input type="button" class="btn btn-info" value="Guardar" style="width: 100%;">
+				<input type="button" class="btn btn-info" value="Agregar" style="width: 100%;">
 			</div>
 		</div>
 	</div>
@@ -120,6 +126,10 @@
 	                {
 	                    "value" : data[i].desc_insumo,
 	                    "text" : data[i].desc_insum,
+	                    "data" :
+	                    {
+	                    	"id-unidad" : data[i].id_unidad
+	                    },
 	                    "disabled" : false
 	                });
 	        	}
@@ -135,8 +145,46 @@
 
 			if(selected.trim()!='')
 			{
-				
+				$('#selectUnidadMedida').val($(this).find("option:selected").data('id-unidad'));
 			}
 	    });
 	});
+
+	function calcularCantidad()
+	{
+		var cuadrilla=$('#txtCuadrilla').val();
+		var horas=$('#txtHoras').val();
+		var rendimiento=$('#txtRendimiento').val();
+		var cantidad=null;
+
+		if(!isNaN(cuadrilla) && cuadrilla.trim()!='' && !isNaN(horas) && horas.trim()!='' && !isNaN(rendimiento) && rendimiento.trim()!='')
+		{
+			cantidad=parseFloat(cuadrilla)/(parseFloat(horas)*parseFloat(rendimiento));
+
+			$('#txtCantidad').val(cantidad);
+		}
+		else
+		{
+			$('#txtCantidad').val('');
+		}
+	}
+
+	function calcularRendimiento()
+	{
+		var cuadrilla=$('#txtCuadrilla').val();
+		var cantidad=$('#txtCantidad').val();
+		var horas=$('#txtHoras').val();
+		var rendimiento=null;
+
+		if(!isNaN(cuadrilla) && cuadrilla.trim()!='' && !isNaN(cantidad) && cantidad.trim()!='' && !isNaN(horas) && horas.trim()!='')
+		{
+			rendimiento=parseFloat(cuadrilla)/(parseFloat(cantidad))/(parseFloat(horas));
+
+			$('#txtRendimiento').val(rendimiento);
+		}
+		else
+		{
+			$('#txtRendimiento').val('');
+		}
+	}
 </script>
