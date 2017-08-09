@@ -179,6 +179,7 @@ class Expediente_Tecnico extends CI_Controller
 			//this->db->trans_start(); 
 			$flat ="EDITAR";
 			$hdIdExpediente=$this->input->post('hdIdExpediente');
+			$txtIdPi=$this->input->post('txtIdPi');
 			$txtDireccionUE=$this->input->post('txtDireccionUE');
 			$txtUbicacionUE=$this->input->post('txtUbicacionUE');
 			$txtTelefonoUE=$this->input->post('txtTelefonoUE');
@@ -205,6 +206,11 @@ class Expediente_Tecnico extends CI_Controller
 			$txtSituacioDeseada=$this->input->post('txtSituacioDeseada');
 			$txtContribucioInterv=$this->input->post('txtContribucioInterv');
 			$txtNumFolio=$this->input->post('txtNumFolio');
+
+			if(count($this->Model_ET_Expediente_Tecnico->ValidarExpedienteTecnico($hdIdExpediente,$txtIdPi))>0)
+            {	
+            	echo json_encode(['proceso' => 'error', 'mensaje' => 'Este tipo de descripcion ya fue registrado con anterioridad .']);exit;
+            }
 
 			$this->Model_ET_Expediente_Tecnico->editar($flat,$hdIdExpediente,$txtDireccionUE,$txtUbicacionUE,$txtTelefonoUE,$txtRucUE,$txtCostoTotalPreInversion,$txtCostoDirectoPre,$txtCostoIndirectoPre,$txtCostoTotalInversion,$txtCostoDirectoInversion,$txtGastosGenerales,$txtGastosSupervision,$txtFuncion,$txtPrograma,$txtSubPrograma,$txtProyecto,$txtComponente,$txtMeta,$txtFuenteFinanciamiento,$txtModalidadEjecucion,$txtTiempoEjecucionPip,$txtNumBeneficiarios,$txtSituacioActual,$txtSituacioDeseada,$txtContribucioInterv,$txtNumFolio);
 			//$this->db->trans_complete();
@@ -262,6 +268,5 @@ class Expediente_Tecnico extends CI_Controller
 			$this->obtenerMetaAnidada($value);
 		}
 	}
-
 	
 }
