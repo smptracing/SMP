@@ -63,7 +63,6 @@
 							<label for="control-label">.</label>
 							<div>
 								<input type="button" class="btn btn-info" value="Agregar" style="width: 100%;" onclick="registrarDetalleAnalisisUnitario(<?=$value->id_analisis?>);">
-								<input type="button" class="btn btn-warning" value="Guardar camb." style="display: none;width: 100%;">
 							</div>
 						</div>
 					</div>
@@ -93,8 +92,6 @@
 									<td><?=$item->precio_unitario?></td>
 									<td><?=$item->precio_parcial?></td>
 									<td>
-										<a href="#" style="color: green;text-decoration: underline;"><b>Editar</b></a>
-										&nbsp;
 										<a href="#" style="color: red;text-decoration: underline;" onclick="eliminarDetalleAnalisisUnitario(<?=$item->id_detalle_analisis_u?>, this);"><b>Eliminar</b></a>
 									</td>
 								</tr>
@@ -277,8 +274,6 @@
 				'<td>'+parseFloat(precioUnitario).toFixed(2)+'</td>'+
 				'<td>'+parseFloat(subTotal).toFixed(2)+'</td>'+
 				'<td>'+
-					'<a href="#" style="color: green;text-decoration: underline;"><b>Editar</b></a>'+
-					'&nbsp;&nbsp;&nbsp;'+
 					'<a href="#" style="color: red;text-decoration: underline;" onclick="eliminarDetalleAnalisisUnitario('+objectJSON.idDetalleAnalisisUnitario+', this)"><b>Eliminar</b></a>'+
 				'</td>'+
 			'</tr>';
