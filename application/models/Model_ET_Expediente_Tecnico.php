@@ -86,6 +86,7 @@ class Model_ET_Expediente_Tecnico extends CI_Model
 
 		return $ExpedienteTecnico->result();
 	}
+
 	
 	function VerificarETPresupuestoAnaliticoExpedienteAntesEliminar($id_et)
 	{
@@ -98,6 +99,14 @@ class Model_ET_Expediente_Tecnico extends CI_Model
 		$ExpedienteTecnico=$this->db->query("select id_et from  ET_TAREA_GANTT where id_et ='".$id_et."'");
 
 		return $ExpedienteTecnico->result();
+	}
+
+
+	function ET_Img($id_ExpedienteTecnico)
+	{
+		$ET_Img=$this->db->query("select * from ET_IMG where ET_IMG.id_et='".$id_ExpedienteTecnico."' ");
+
+		return $ET_Img->result();
 	}
 
 }

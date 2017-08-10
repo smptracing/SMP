@@ -28,8 +28,9 @@ class Expediente_Tecnico extends CI_Controller
 	public function reportePdfExpedienteTecnico($id_ExpedienteTecnico)
 	{
 		$Opcion="ReporteFichaTecnica01";
+		$ImagenesExpediente=$this->Model_ET_Expediente_Tecnico->ET_Img($id_ExpedienteTecnico);
 		$listarExpedienteFicha001=$this->Model_ET_Expediente_Tecnico->reporteExpedienteFicha001($Opcion,$id_ExpedienteTecnico);
-		$html= $this->load->view('front/Ejecucion/ExpedienteTecnico/reporteExpedienteTecnico',["listarExpedienteFicha001" => $listarExpedienteFicha001],true);
+		$html= $this->load->view('front/Ejecucion/ExpedienteTecnico/reporteExpedienteTecnico',["listarExpedienteFicha001" => $listarExpedienteFicha001, "ImagenesExpediente" =>$ImagenesExpediente],true);
 		$this->mydompdf->load_html($html);
 		$this->mydompdf->set_paper("A4", "portrait");
 		$this->mydompdf->render();
@@ -224,6 +225,7 @@ class Expediente_Tecnico extends CI_Controller
 	function reportePdfMetrado($id_ExpedienteTecnico)
 	{
 		$opcion="BuscarExpedienteID";
+		$MostraExpedienteNombre=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoSelectBuscarId($opcion,$id_ExpedienteTecnico);
 		$MostraExpedienteTecnicoExpe=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoSelectBuscarId($opcion,$id_ExpedienteTecnico);
 
 	    $MostraExpedienteTecnicoExpe->childComponente=$this->Model_ET_Componente->ETComponentePorIdET($id_ExpedienteTecnico);
@@ -237,7 +239,7 @@ class Expediente_Tecnico extends CI_Controller
 			}
 	    } 
 
-		$html= $this->load->view('front/Ejecucion/ExpedienteTecnico/reporteMetrado',['MostraExpedienteTecnicoExpe'=>$MostraExpedienteTecnicoExpe], true);
+		$html= $this->load->view('front/Ejecucion/ExpedienteTecnico/reporteMetrado',['MostraExpedienteTecnicoExpe'=>$MostraExpedienteTecnicoExpe,'MostraExpedienteNombre' =>$MostraExpedienteNombre], true);
 		$this->mydompdf->load_html($html);
 		$this->mydompdf->render();
 		$this->mydompdf->stream("ReporteMetrado.pdf", array("Attachment" => false));
