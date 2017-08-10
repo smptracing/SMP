@@ -244,21 +244,39 @@
 			return;
 		}
 
-		var htmlTemp='<tr>'+
-			'<td>'+descripcion+'</td>'+
-			'<td>'+cuadrilla+'</td>'+
-			'<td>'+unidadMedida+'</td>'+
-			'<td>'+rendimiento+'</td>'+
-			'<td>'+cantidad+'</td>'+
-			'<td>'+parseFloat(precioUnitario).toFixed(2)+'</td>'+
-			'<td>'+subTotal+'</td>'+
-			'<td>'+
-				'<a href="#" style="color: green;text-decoration: underline;"><b>Editar</b></a>'+
-				'&nbsp;&nbsp;&nbsp;'+
-				'<a href="#" style="color: red;text-decoration: underline;"><b>Eliminar</b></a>'+
-			'</td>'+
-		'</tr>';
+		paginaAjaxJSON({ "idAnalisis" : idAnalisis, "idUnidad" : unidadMedida, "descripcionDetalleAnalisis" : descripcion.trim(), "cuadrilla" : cuadrilla, "cantidad" : cantidad, "precioUnitario" : precioUnitario, "precioParcial" : subTotal, "rendimiento" : rendimiento }, base_url+'index.php/ET_Detalle_Analisis_Unitario/insertar', 'POST', null, function(objectJSON)
+		{
+			objectJSON=JSON.parse(objectJSON);
 
-		$('#tableDetalleAnalisisUnitario'+idAnalisis+' > tbody').append(htmlTemp);
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+			},
+			function(){});
+
+			if(objectJSON.proceso=='Error')
+			{
+				return false;
+			}
+
+			var htmlTemp='<tr>'+
+				'<td>'+descripcion+'</td>'+
+				'<td>'+cuadrilla+'</td>'+
+				'<td>'+unidadMedida+'</td>'+
+				'<td>'+rendimiento+'</td>'+
+				'<td>'+cantidad+'</td>'+
+				'<td>'+parseFloat(precioUnitario).toFixed(2)+'</td>'+
+				'<td>'+subTotal+'</td>'+
+				'<td>'+
+					'<a href="#" style="color: green;text-decoration: underline;"><b>Editar</b></a>'+
+					'&nbsp;&nbsp;&nbsp;'+
+					'<a href="#" style="color: red;text-decoration: underline;"><b>Eliminar</b></a>'+
+				'</td>'+
+			'</tr>';
+
+			$('#tableDetalleAnalisisUnitario'+idAnalisis+' > tbody').append(htmlTemp);
+		}, false, true);
 	}
 </script>
