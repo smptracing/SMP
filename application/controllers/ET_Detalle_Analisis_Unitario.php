@@ -8,6 +8,7 @@ class ET_Detalle_Analisis_Unitario extends CI_Controller
 		parent::__construct();
 
 		$this->load->model('Model_ET_Detalle_Analisis_Unitario');
+		$this->load->model('Model_Unidad_Medida');
 	}
 
 	public function insertar()
@@ -23,7 +24,7 @@ class ET_Detalle_Analisis_Unitario extends CI_Controller
 		$precioUnitario=$this->input->post('precioUnitario');
 		$precioParcial=$this->input->post('precioParcial');
 
-		if(count($this->Model_ET_Detalle_Analisis_Unitario->ETDetalleAnalisisUnitarioPorIdAnalisisAndDescDetalleAnalisis($idAnalisis, $descripcion))>0)
+		if($this->Model_ET_Detalle_Analisis_Unitario->ETDetalleAnalisisUnitarioPorIdAnalisisAndDescDetalleAnalisis($idAnalisis, $descripcion)!=null)
 		{
 			$this->db->trans_rollback();
 
@@ -32,10 +33,25 @@ class ET_Detalle_Analisis_Unitario extends CI_Controller
 
 		$this->Model_ET_Detalle_Analisis_Unitario->insertar($idAnalisis, $idUnidad, $descripcion, $cuadrilla, $cantidad, $precioUnitario, $precioParcial, $rendimiento);
 
-		$ultimoIdDetalleAnalisisUnitario=$this->Model_ET_Detalle_Analisis_Unitario->ultimoId();
+		$idDetalleAnalisisUnitario=$this->Model_ET_Detalle_Analisis_Unitario->ultimoId($idUnidad);
+
+		$unidadMedida=$this->Model_Unidad_Medida->UnidadMedida($idUnidad);
 
 		$this->db->trans_complete();
 
-		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Componente registrado correctamente.', 'ultimoIdDetalleAnalisisUnitario' => $ultimoIdDetalleAnalisisUnitario]);exit;
+		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Detalle de análisis registrado correctamente.', 'idDetalleAnalisisUnitario' => $idDetalleAnalisisUnitario, 'nombreUnidadMedida' => $unidadMedida[0]->descripcion]);exit;
+	}
+
+	public function eliminar()
+	{
+		$this->db->trans_start();
+
+		$idDetalleAnalisisUnitario=$this->input->post('idDetalleAnalisisUnitario');
+
+		$this->Model_ET_Detalle_Analisis_Unitario->eliminar($idDetalleAnalisisUnitario);
+
+		$this->db->trans_complete();
+
+		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Detalle de análisis eliminado correctamente.']);exit;
 	}
 }

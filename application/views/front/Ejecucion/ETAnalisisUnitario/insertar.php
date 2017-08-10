@@ -3,7 +3,7 @@
 		<div class="row">
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<h4 style="color: blue;text-decoration: underline;"><?=$value->desc_recurso?></h4>
-				<form action="">
+				<div id="divFormDetallaAnalisisUnitario<?=$value->id_analisis?>">
 					<div class="row">
 						<div class="col-md-7 col-sm-7 col-xs-12">
 							<label for="control-label">Descripción del insunmo</label>
@@ -67,7 +67,7 @@
 							</div>
 						</div>
 					</div>
-				</form>
+				</div>
 				<div>
 					<table id="tableDetalleAnalisisUnitario<?=$value->id_analisis?>" class="table">
 						<thead>
@@ -95,7 +95,7 @@
 									<td>
 										<a href="#" style="color: green;text-decoration: underline;"><b>Editar</b></a>
 										&nbsp;
-										<a href="#" style="color: red;text-decoration: underline;"><b>Eliminar</b></a>
+										<a href="#" style="color: red;text-decoration: underline;" onclick="eliminarDetalleAnalisisUnitario(<?=$item->id_detalle_analisis_u?>, this);"><b>Eliminar</b></a>
 									</td>
 								</tr>
 							<?php } ?>
@@ -105,6 +105,13 @@
 			</div>
 		</div>
 	<?php } ?>
+	<hr>
+	<div class="row" style="text-align: right;">
+		<button class="btn btn-danger" data-dismiss="modal">
+			<span class="glyphicon glyphicon-remove"></span>
+			Cerrar ventana
+		</button>
+	</div>
 </div>
 <script>
 	$(function()
@@ -263,20 +270,43 @@
 
 			var htmlTemp='<tr>'+
 				'<td>'+descripcion+'</td>'+
-				'<td>'+cuadrilla+'</td>'+
-				'<td>'+unidadMedida+'</td>'+
-				'<td>'+rendimiento+'</td>'+
-				'<td>'+cantidad+'</td>'+
+				'<td>'+parseFloat(cuadrilla).toFixed(2)+'</td>'+
+				'<td>'+objectJSON.nombreUnidadMedida+'</td>'+
+				'<td>'+parseFloat(rendimiento).toFixed(2)+'</td>'+
+				'<td>'+parseFloat(cantidad).toFixed(2)+'</td>'+
 				'<td>'+parseFloat(precioUnitario).toFixed(2)+'</td>'+
-				'<td>'+subTotal+'</td>'+
+				'<td>'+parseFloat(subTotal).toFixed(2)+'</td>'+
 				'<td>'+
 					'<a href="#" style="color: green;text-decoration: underline;"><b>Editar</b></a>'+
 					'&nbsp;&nbsp;&nbsp;'+
-					'<a href="#" style="color: red;text-decoration: underline;"><b>Eliminar</b></a>'+
+					'<a href="#" style="color: red;text-decoration: underline;" onclick="eliminarDetalleAnalisisUnitario('+objectJSON.idDetalleAnalisisUnitario+', this)"><b>Eliminar</b></a>'+
 				'</td>'+
 			'</tr>';
 
 			$('#tableDetalleAnalisisUnitario'+idAnalisis+' > tbody').append(htmlTemp);
+
+			limpiarText('divFormDetallaAnalisisUnitario'+idAnalisis, ['txtHoras'+idAnalisis]);
 		}, false, true);
+	}
+
+	function eliminarDetalleAnalisisUnitario(idDetalleAnalisisUnitario, element)
+	{
+		if(confirm('¿Realmente desea borrar el detalle del análisis unitario?'))
+		{
+			paginaAjaxJSON({ "idDetalleAnalisisUnitario" : idDetalleAnalisisUnitario }, base_url+'index.php/ET_Detalle_Analisis_Unitario/eliminar', 'POST', null, function(objectJSON)
+			{
+				objectJSON=JSON.parse(objectJSON);
+
+				swal(
+				{
+					title: '',
+					text: objectJSON.mensaje,
+					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+				},
+				function(){});
+
+				$(element).parent().parent().remove();
+			}, false, true);
+		}
 	}
 </script>

@@ -35,4 +35,11 @@ class Model_ET_Detalle_Analisis_Unitario extends CI_Model
 
 		return count($data->result())==0 ? null : $data->result()[0];
 	}
+
+	function eliminar($idDetalleAnalisisUnitario)
+	{
+		$this->db->query("delete from ET_DETALLE_ANALISIS_UNITARIO where id_detalle_analisis_u=".$idDetalleAnalisisUnitario);
+
+		return true;
+	}
 }

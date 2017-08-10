@@ -78,27 +78,22 @@ class ET_Componente extends CI_Controller
 
 	public function eliminar()
 	{
-		if($_POST)
+		$this->db->trans_start();
+
+		$idComponente=$this->input->post('idComponente');
+
+		$listaMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($idComponente);
+
+		foreach($listaMeta as $key => $value)
 		{
-			$this->db->trans_start();
-
-			$idComponente=$this->input->post('idComponente');
-
-			$listaMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($idComponente);
-
-			foreach($listaMeta as $key => $value)
-			{
-				$this->eliminarMetaAnidada($value);
-			}
-
-			$this->Model_ET_Componente->eliminar($idComponente);
-
-			$this->db->trans_complete();
-
-			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Componente eliminado correctamente.']);exit;
+			$this->eliminarMetaAnidada($value);
 		}
 
-		$this->load->view('Front/Ejecucion/ETPartida/insertar');
+		$this->Model_ET_Componente->eliminar($idComponente);
+
+		$this->db->trans_complete();
+
+		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Componente eliminado correctamente.']);exit;
 	}
 
 	private function eliminarMetaAnidada($meta)
