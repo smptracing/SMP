@@ -151,7 +151,26 @@ function Eliminar(id_et)
                         data:{id_et:id_et},
                         success:function(respuesta)
                         {
-							
+                        	alert(respuesta);
+                        	/*var registros=eval(resp);
+
+							for(var i=0; i<registros.length; i++)
+							{
+								if(registros[i]["VALOR"]==1)
+								{
+									swal("",registros[i]["MENSAJE"], "success");
+
+									$('#form-addEntidad')[0].reset();
+									$("#VentanaRegistraEntidad").modal("hide");
+								}
+								else
+								{
+									swal('',registros[i]["MENSAJE"],'error' )
+								}
+								/*swal("",  registros[i]["MENSAJE"], "success");*/
+							//}
+
+							//alert(respuesta);
 							swal("ELIMINADO!", "Se elimino correctamente el expediente técnico.", "success");
 							window.location.href='<?=base_url();?>index.php/Expediente_Tecnico/index/';
 							renderLoading();

@@ -25,7 +25,6 @@ class Expediente_Tecnico extends CI_Controller
 		$this->load->view('layout/Ejecucion/footer');
 	}
 
-
 	public function reportePdfExpedienteTecnico($id_ExpedienteTecnico)
 	{
 		$Opcion="ReporteFichaTecnica01";
@@ -61,7 +60,7 @@ class Expediente_Tecnico extends CI_Controller
 	        $config['encrypt_name']  = false;
 	        $this->load->library('upload', $config);
 			$this->upload->do_upload('Documento_Resolucion');
-
+		
 			$flat  = "INSERTAR";
 			$txtIdPi=$this->input->post('txtIdPi');
 			$txtNombreUe=$this->input->post('txtNombreUe');
@@ -96,7 +95,6 @@ class Expediente_Tecnico extends CI_Controller
 			$txtResumenProyecto=$this->input->post('hdtxtResumenProyecto');
 			$txtNumFolio=$this->input->post('txtNumFolio');
 
-
 			$this->Model_ET_Expediente_Tecnico->insertar($flat,$txtNombreUe,$txtIdPi,$txtDireccionUE,$txtUbicacionUE,$txtTelefonoUE,$txtRuc,$txtCostoTotalPreInversion,$txtCostoDirectoPre,$txtCostoIndirectoPre,$txtCostoTotalInversion,$txtCostoDirectoInversion,$txtGastosGenerales,$txtGastosSupervision,$txtFuncionProgramatica,$txtFuncion,$txtPrograma,$txtSubPrograma,$txtProyecto,$txtComponente,$txtMeta,$txtFuenteFinanciamiento,$txtModalidadEjecucion,$txtTiempoEjecucionPip,$txtNumBeneficiarios,$txtUrlDocAprobacion,$txtSituacioActual,$txtSituacioEconomica,$txtResumenProyecto,$txtNumFolio); 
 			
 			$UltimoExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->UltimoExpedienteTecnico();
@@ -105,7 +103,6 @@ class Expediente_Tecnico extends CI_Controller
 			$comboResponsableElaboracion=$this->input->post('comboResponsableElaboracion');					
 			$comboTipoResponsableElaboracion=$this->input->post('comboTipoResponsableElaboracion');
 			$comboCargoElaboracion=$this->input->post('comboCargoElaboracion');
-
 
 			$this->Model_ET_Responsable->insertarET_Epediente($id_et,$comboResponsableElaboracion,$comboTipoResponsableElaboracion,$comboCargoElaboracion);
 			/*$txtDNI=$this->input->post('txtDNI');
@@ -116,7 +113,6 @@ class Expediente_Tecnico extends CI_Controller
 			$ComboResponsableEjecucion=$this->input->post('ComboResponsableEjecucion');	
 			$ComboTipoResponsableEjecucion=$this->input->post('ComboTipoResponsableEjecucion');									
 			$comboCargoEjecucion=$this->input->post('comboCargoEjecucion');
-
 
 			$this->Model_ET_Responsable->insertarET_Epediente($id_et,$ComboResponsableEjecucion,$ComboTipoResponsableEjecucion,$comboCargoEjecucion);
 			/*$txtProfesionEjecutor=$this->input->post('txtProfesionEjecutor');
@@ -145,15 +141,11 @@ class Expediente_Tecnico extends CI_Controller
 				 }
 				else
 				 {
-						$this->db->trans_rollback();
-						echo json_encode("Datos No Registrados Correctamente");
+						$error = "ERROR NO SE CARGO LAS FOTOS DE EXPEDIENTE TÉCNICO";
 				 }
 			}
-			$this->upload->data();
 			$this->db->trans_complete();
-
-			echo json_encode("Datos Registrados Correctamente");
-
+			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos Registrados Correctamente.']);exit;
 		}
 		if($this->input->get('buscar')=="true")
 		{
@@ -169,17 +161,14 @@ class Expediente_Tecnico extends CI_Controller
 			$codigo_unico_pi=$this->input->get('CodigoUnico');
 			$Listarproyectobuscado=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoBuscar($codigo_unico_pi); //BUSCAR PIP
 			$this->load->view('front/Ejecucion/ExpedienteTecnico/insertar',['Listarproyectobuscado'=>$Listarproyectobuscado,'listarPersona' =>$listarPersona,'listaTipoResponsableElaboracion' => $listaTipoResponsableElaboracion,'listaTipoResponsableEjecucion' => $listaTipoResponsableEjecucion,'listarCargo' =>$listarCargo]);
-
-		}
-			
-			
+		}			
 	}
 
 	function editar()
 	{
 		if($this->input->post('hdIdExpediente'))
 		{	
-			//this->db->trans_start(); 
+			$this->db->trans_start(); 
 			$flat ="EDITAR";
 			$hdIdExpediente=$this->input->post('hdIdExpediente');
 			//$txtIdPi=$this->input->post('txtIdPi');
@@ -210,20 +199,21 @@ class Expediente_Tecnico extends CI_Controller
 			$txtSituacioDeseada=$this->input->post('txtSituacioDeseada');
 			$txtContribucioInterv=$this->input->post('txtContribucioInterv');
 			$txtNumFolio=$this->input->post('txtNumFolio');
-
 			/*if(count($this->Model_ET_Expediente_Tecnico->ValidarExpedienteTecnico($hdIdExpediente,$txtIdPi))>0)
             {	
             	echo json_encode(['proceso' => 'error', 'mensaje' => 'Este tipo de descripcion ya fue registrado con anterioridad .']);exit;
             }*/
-
 			$this->Model_ET_Expediente_Tecnico->editar($flat,$hdIdExpediente,$txtNombreUe,$txtDireccionUE,$txtUbicacionUE,$txtTelefonoUE,$txtRucUE,$txtCostoTotalPreInversion,$txtCostoDirectoPre,$txtCostoIndirectoPre,$txtCostoTotalInversion,$txtCostoDirectoInversion,$txtGastosGenerales,$txtGastosSupervision,$txtFuncionProgramatica,$txtFuncion,$txtPrograma,$txtSubPrograma,$txtProyecto,$txtComponente,$txtMeta,$txtFuenteFinanciamiento,$txtModalidadEjecucion,$txtTiempoEjecucionPip,$txtNumBeneficiarios,$txtSituacioActual,$txtSituacioDeseada,$txtContribucioInterv,$txtNumFolio);
-			//$this->db->trans_complete();
-			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos Editados Correctamente.', 'txtDireccionUE' => $txtDireccionUE]);exit;
+			$this->db->trans_complete();
+			//echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos Editados Correctamente.', 'txtDireccionUE' => $txtDireccionUE]);exit;
+			$this->session->set_flashdata('correcto', 'Expediente Tecnico modificado correctamente.');
+			return redirect('/Expediente_Tecnico');
 		}
 		$id_et=$this->input->GET('id_et');
 		$ExpedienteTecnicoM=$this->Model_ET_Expediente_Tecnico->DatosExpediente($id_et);
-		$this->load->view('front/Ejecucion/ExpedienteTecnico/editar',['ExpedienteTecnicoM'=>$ExpedienteTecnicoM]);
+		return $this->load->view('front/Ejecucion/ExpedienteTecnico/editar',['ExpedienteTecnicoM'=>$ExpedienteTecnicoM]);
 	}
+
     function registroBuscarProyecto()
     {
     		$CodigoUnico=$this->input->get('inputValue');
@@ -233,7 +223,6 @@ class Expediente_Tecnico extends CI_Controller
 
 	function reportePdfMetrado($id_ExpedienteTecnico)
 	{
-	
 		$opcion="BuscarExpedienteID";
 		$MostraExpedienteTecnicoExpe=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoSelectBuscarId($opcion,$id_ExpedienteTecnico);
 
@@ -279,12 +268,23 @@ class Expediente_Tecnico extends CI_Controller
 	    {
 			$flat="ELIMINAR";
 			$id_et=$this->input->post('id_et');
-			if(count($this->Model_ET_Expediente_Tecnico->VerificarExpedienteAntesEliminar($id_et))>0)
-            {
-            	echo json_encode(['proceso' => 'error', 'mensaje' => 'No se puede eliminar.']);exit;
+			if(count($this->Model_ET_Expediente_Tecnico->VerificarComponenteExpedienteAntesEliminar($id_et))>0)
+            {	
+            	echo json_encode('No se puede eliminar este expediente tecnico.');exit;
             }
-			$this->Model_ET_Expediente_Tecnico->eliminar($flat,$id_et);
-			echo json_encode($Data);
+            if(count($this->Model_ET_Expediente_Tecnico->VerificarETPresupuestoAnaliticoExpedienteAntesEliminar($id_et))>0)
+            {	
+            	echo json_encode('No se puede eliminar este expediente tecnico.');exit;
+            }
+            if(count($this->Model_ET_Expediente_Tecnico->VerificarETTareaGantt($id_et))>0)
+            {	
+            	echo json_encode('No se puede eliminar este expediente tecnico.');exit;
+            }
+			if($this->Model_ET_Expediente_Tecnico->eliminar($flat,$id_et)==true)
+            {	
+            	echo json_encode("correcto se elimino");
+            }
+			//unlink(base_url.'uploads/ImageExpediente/'.$id_et['id_et']);		
 		}
 	}
 }
