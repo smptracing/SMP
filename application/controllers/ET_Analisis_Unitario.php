@@ -7,6 +7,8 @@ class ET_Analisis_Unitario extends CI_Controller
 	{
 		parent::__construct();
 
+		$this->load->model('Model_ET_Recurso');
+		$this->load->model('Model_ET_Presupuesto_Analitico');
 		$this->load->model('Model_Unidad_Medida');
 		$this->load->model('Model_ET_Etapa_Ejecucion');
 		$this->load->model('Model_ET_Detalle_Partida');
@@ -16,6 +18,11 @@ class ET_Analisis_Unitario extends CI_Controller
 
 	public function insertar()
 	{
+		if($_POST)
+		{
+
+		}
+
 		$idPartida=$this->input->get('idPartida');
 
 		$listaUnidadMedida=$this->Model_Unidad_Medida->UnidadMedidad_Listar();
@@ -29,6 +36,9 @@ class ET_Analisis_Unitario extends CI_Controller
 			$value->childETDetalleAnalisisUnitario=$this->Model_ET_Detalle_Analisis_Unitario->ETDetalleAnalisisUnitarioPorIdAnalisis($value->id_analisis);
 		}
 
-		$this->load->view('Front/Ejecucion/ETAnalisisUnitario/insertar', ['listaUnidadMedida' => $listaUnidadMedida, 'listaETAnalisisUnitario' => $listaETAnalisisUnitario]);
+		$listaETRecurso=$this->Model_ET_Recurso->RecursoListar('R');
+		$listaETPresupuestoAnalitico=$this->Model_ET_Presupuesto_Analitico->ETPresupuestoAnaliticoPorIdET($this->input->get('idET'));
+
+		$this->load->view('Front/Ejecucion/ETAnalisisUnitario/insertar', ['listaUnidadMedida' => $listaUnidadMedida, 'listaETAnalisisUnitario' => $listaETAnalisisUnitario, 'listaETRecurso' => $listaETRecurso, 'listaETPresupuestoAnalitico' => $listaETPresupuestoAnalitico]);
 	}
 }

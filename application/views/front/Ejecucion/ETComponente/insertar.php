@@ -1,5 +1,5 @@
 <?php
-function mostrarMetaAnidada($meta)
+function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 {
 	$htmlTemp='';
 
@@ -18,7 +18,7 @@ function mostrarMetaAnidada($meta)
 				'<td style="padding-left: 4px;text-align: center;">'.$value->cantidad.'</td>'.
 				'<td style="padding-left: 4px;">'.
 					'<input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida('.$value->id_partida.', this);" style="width: 30px;">'.
-					'<input type="button" class="btn btn-default btn-xs" value="A" onclick="paginaAjaxDialogo(\'otherModal\', \'Análisis presupuestal\', { idPartida : '.$value->id_partida.' }, \''.base_url().'index.php/ET_Analisis_Unitario/insertar\', \'get\', null, null, false, true);" style="width: 30px;">'.
+					'<input type="button" class="btn btn-default btn-xs" value="A" onclick="paginaAjaxDialogo(\'otherModal\', \'Análisis presupuestal\', { idET : '.$idExpedienteTecnico.', idPartida : '.$value->id_partida.' }, \''.base_url().'index.php/ET_Analisis_Unitario/insertar\', \'get\', null, null, false, true);" style="width: 30px;">'.
 				'</td>'.
 			'</tr>';
 		}
@@ -26,7 +26,7 @@ function mostrarMetaAnidada($meta)
 
 	foreach($meta->childMeta as $key => $value)
 	{
-		$htmlTemp.=mostrarMetaAnidada($value);
+		$htmlTemp.=mostrarMetaAnidada($value, $idExpedienteTecnico);
 	}
 
 	$htmlTemp.=((count($meta->childMeta)==0 && count($meta->childPartida))>0 ? '</tbody></table>' : '</ul>').
@@ -98,7 +98,7 @@ function mostrarMetaAnidada($meta)
 						<b><?=$value->descripcion?></b> <input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(<?=$value->id_componente?>, $(this).parent(), '');" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarComponente(<?=$value->id_componente?>, this);" style="width: 30px;">
 						<ul style="background-color: #f5f5f5;">
 							<?php foreach($value->childMeta as $index => $item){ ?>
-								<?=mostrarMetaAnidada($item);?>
+								<?=mostrarMetaAnidada($item, $expedienteTecnico->id_et);?>
 							<?php } ?>
 						</ul>
 					</li>
