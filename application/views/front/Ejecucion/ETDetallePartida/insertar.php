@@ -3,14 +3,16 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<label class="control-label" style="text-align: left;">Nombre Proyecto</label>
 			<div>
-				<textarea name="txtNombreProyectoInversion" id="txtNombreProyectoInversion" rows="3" class="form-control" style="resize: none;resize: vertical;" readonly="readonly"></textarea>
+				<textarea name="txtNombreProyectoInversion" id="txtNombreProyectoInversion" rows="3" class="form-control" style="resize: none;resize: vertical;" readonly="readonly"><?=$etExpedienteTecnico->nombre_pi?></textarea>
 			</div>
 		</div>
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<label class="control-label">Etapa</label>
 			<div>
-				<select id="cobEtapa" name="cobEtapa" class="form-control"> 
-					<option value="">Formulación</option>
+				<select id="cbxEtapa" name="cbxEtapa" class="form-control"> 
+					<?php foreach($listaETEtapaEjecucion as $value) { ?>
+						<option value="<?=$value->id_etapa_et?>"><?=$value->desc_etapa_et?></option>
+					<?php } ?>
 				</select>
 			</div>
 		</div>
@@ -36,7 +38,9 @@
 						<div class="col-md-2 col-sm-2 col-xs-12">
 							<label>Unidad</label>
 							<select id="cobUnidad" name="cobUnidad" class="form-control"> 
-								<option value="">##</option>
+								<?php foreach($listaUnidadMedida as $value) { ?>
+									<option value="<?=$value->id_unidad?>"><?=$value->descripcion?></option>
+								<?php } ?>
 							</select>
 						</div>
 						<div class="col-md-2 col-sm-2 col-xs-12">
@@ -55,8 +59,10 @@
 						</div>
 						<div class="col-md-6 col-sm-3 col-xs-12">
 							<label>Etapa</label>
-							<select id="cobEtapa" name="cobEtapa" class="form-control"> 
-								<option value="">##</option>
+							<select id="cbxEtapa1" class="form-control"> 
+								<?php foreach($listaETEtapaEjecucion as $value) { ?>
+									<option value="<?=$value->id_etapa_et?>"><?=$value->desc_etapa_et?></option>
+								<?php } ?>
 							</select>
 						</div>
 						<div class="col-md-2 col-sm-3 col-xs-12">

@@ -4,7 +4,6 @@
 		margin-top: 4px;
 	}
 </style>
-<script src="ckeditor/ckeditor.js"></script>
 <form  id="form-addExpedienteTecnico"   action="<?php echo base_url();?>index.php/Expediente_Tecnico/insertar" method="POST" enctype="multipart/form-data" >
 
 	<div class="row">
@@ -642,10 +641,12 @@ $(function()
                     cache: false,
                     contentType:false,
                     processData:false,
+                    beforeSend: function() {
+                    	renderLoading();
+				    },
                     success:function(resp)
                     {
-                      	swal('Registro Correcto del Expediente Técnico',resp);
-                      	 // window.location.href=base_url+"index.php/Expediente_Tecnico/"
+                      	window.location.href=base_url+"index.php/Expediente_Tecnico/"
                     }
                 });
               $('#form-addExpedienteTecnico')[0].reset();

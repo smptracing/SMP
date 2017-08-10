@@ -63,7 +63,6 @@ class ET_Presupuesto_Ejecucion extends CI_Controller
 
     function eliminar()
     {
-       
         if ($this->input->is_ajax_request()) 
         {
             $opcion="D";

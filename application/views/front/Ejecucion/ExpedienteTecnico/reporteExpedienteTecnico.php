@@ -29,7 +29,7 @@
 	                1 &nbsp; &nbsp;Nombre de la Unidad Ejecución
 	              </th>
 	              <th id="header_texto">
-	               &nbsp; 
+	               &nbsp; Gobierno Regional Apurímac
 	              </th>
 	        </tr>
 	        <tr>
@@ -392,15 +392,16 @@
 	    <thead>
 	</table>
 
-	<table id="contenido_border" style="margin-top: -2px; " width="565" border=1 cellspacing=0 cellpadding=2 bordercolor="666633" >
+	<table id="contenido_border" style="margin-top: -2px; " width="565"  border=1 cellspacing=0 cellpadding=2 bordercolor="666633" >
 	        <tr colspan="4">
 	              <th  id="header_texto">
 	                14 &nbsp; &nbsp;Fotografias(04 minimo)
 	                <br>
-	               <center> <img id="logo2" src="./assets/images/apurimac.png">
-	                <img id="logo2" src="./assets/images/1.png">
-	                <img id="logo2" src="./assets/images/2.png">
-	                <img id="logo2" src="./assets/images/3.jpg"></center>
+	               <center> 
+					<?php foreach($ImagenesExpediente as $item){ ?>
+		                <img style="width: 230px;height: 130px; position: relative; " src="./uploads/ImageExpediente/<?= $item->desc_img?>" > &nbsp; &nbsp;
+					<?php } ?>
+	                </center>
 	              </th>
 	        </tr>
 	    <thead>

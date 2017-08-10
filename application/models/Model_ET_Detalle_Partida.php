@@ -21,4 +21,11 @@ class Model_ET_Detalle_Partida extends CI_Model
 
 		return $data->result()[0]->idDetallePartida;
 	}
+
+	function ETDetallePartidaPorIdPartidaAndIdEtapaET($idPartida, $idEtapaET)
+	{
+		$data=$this->db->query("select * from ET_DETALLE_PARTIDA where id_partida=".$idPartida." and id_etapa_et=".$idEtapaET." and estado=1");
+
+		return count($data->result())==0 ? null : $data->result()[0];
+	}
 }

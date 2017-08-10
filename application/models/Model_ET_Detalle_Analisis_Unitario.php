@@ -14,4 +14,11 @@ class Model_ET_Detalle_Analisis_Unitario extends CI_Model
 
 		return true;
 	}
+
+	function ETDetalleAnalisisUnitarioPorIdAnalisis($idAnalisis)
+	{
+		$data=$this->db->query("select * from ET_DETALLE_ANALISIS_UNITARIO as ETDAU inner join UNIDAD_MEDIDA as UM on ETDAU.id_unidad=UM.id_unidad where id_analisis=".$idAnalisis);
+
+		return $data->result();
+	}
 }

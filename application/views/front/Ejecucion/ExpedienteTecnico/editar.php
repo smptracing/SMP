@@ -17,7 +17,7 @@
 						<div class="col-md-12 col-sm-3 col-xs-12">
 							<label class="control-label">Nombre de la Unidad Ejecutora</label>
 							<div>
-								<input id="hdIdExpediente" name="hdIdExpediente" value="<?= $ExpedienteTecnicoM->id_et?>" class="form-control col-md-4 col-xs-12" placeholder="" autocomplete="off"  type="text">	
+								<input id="hdIdExpediente" name="hdIdExpediente" value="<?= $ExpedienteTecnicoM->id_et?>" class="form-control col-md-4 col-xs-12" placeholder="" autocomplete="off"  type="hidden">	
 								<input id="txtNombreUe" name="txtNombreUe" value="<?= $ExpedienteTecnicoM->nombre_ue?>" class="form-control col-md-4 col-xs-12"  placeholder="Nombre de la unidad ejecutora" autocomplete="off" >	
 							</div>	
 						</div>
@@ -198,19 +198,21 @@
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<label class="control-label">Sustento para la presentacion del proyecto</label></br>
-							<input type="text" id="hdtxtSituacioActual" value="<?=$ExpedienteTecnicoM->desc_situacion_actual_et?>">
+							<input type="hidden" id="hdtxtSituacioActual" value="<?=$ExpedienteTecnicoM->desc_situacion_actual_et?>" type="hidden">
 							<p><textarea name="txtSituacioActual" id="txtSituacioActual" rows="10" cols="80"></textarea></p>
 						</div>	
 					</div>
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<label class="control-label">Relevancia Economica</label></br>
+							<input type="hidden" id="hdtxtSituacionDeseada" value="<?=$ExpedienteTecnicoM->relevancia_economica_et?>">
 							<p><textarea name="txtSituacioDeseada" id="txtSituacioDeseada" rows="10" cols="80"></textarea></p>
 						</div>	
 					</div>
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<label class="control-label">Resumen del proyecto (Descripción)</label></br>
+							<input type="hidden" id="hdtxtContribucioInterv" value="<?=$ExpedienteTecnicoM->resumen_pi_et?>" type="hidden">
 							<p><textarea name="txtContribucioInterv" id="txtContribucioInterv" rows="10" cols="80"></textarea></p>
 						</div>	
 					</div>
@@ -251,7 +253,10 @@ $(function()
 	});
 	var html=$("#hdtxtSituacioActual").val();
 	CKEDITOR.instances.txtSituacioActual.setData(html);
-		
+	var html1=$("#hdtxtSituacionDeseada").val();
+	CKEDITOR.instances.txtSituacioDeseada.setData(html1);
+	var html2=$("#hdtxtContribucioInterv").val();
+	CKEDITOR.instances.txtContribucioInterv.setData(html2);
 });
 
 </script>

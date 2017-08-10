@@ -21,4 +21,11 @@ class Model_ET_Analisis_Unitario extends CI_Model
 
 		return $data->result()[0]->idAnalisis;
 	}
+
+	function ETAnalisisUnitarioPorIdDetallePartida($idDetallePartida)
+	{
+		$data=$this->db->query("select * from ET_ANALISIS_UNITARIO as ETAU inner join ET_RECURSO as ETR on ETAU.id_recurso=ETR.id_recurso where id_detalle_partida=".$idDetallePartida);
+
+		return $data->result();
+	}
 }

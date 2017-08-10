@@ -16,7 +16,10 @@ function mostrarMetaAnidada($meta)
 				'<td style="padding-left: 4px;">'.$value->rendimiento.'</td>'.
 				'<td style="padding-left: 4px;text-align: center;">'.$value->descripcion.'</td>'.
 				'<td style="padding-left: 4px;text-align: center;">'.$value->cantidad.'</td>'.
-				'<td style="padding-left: 4px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida('.$value->id_partida.', this);" style="width: 30px;"></td>'.
+				'<td style="padding-left: 4px;">'.
+					'<input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida('.$value->id_partida.', this);" style="width: 30px;">'.
+					'<input type="button" class="btn btn-default btn-xs" value="A" onclick="paginaAjaxDialogo(\'otherModal\', \'Análisis presupuestal\', { idPartida : '.$value->id_partida.' }, \''.base_url().'index.php/ET_Analisis_Unitario/insertar\', \'get\', null, null, false, true);" style="width: 30px;">'.
+				'</td>'.
 			'</tr>';
 		}
 	}
@@ -105,7 +108,7 @@ function mostrarMetaAnidada($meta)
 	</div>
 	<hr>
 	<div class="row" style="text-align: right;">
-		<input type="hidden" id="hdIdET" value="1">
+		<input type="hidden" id="hdIdET" value="<?=$expedienteTecnico->id_et?>">
 		<button class="btn btn-danger" data-dismiss="modal">
 			<span class="glyphicon glyphicon-remove"></span>
 			Cerrar ventana
@@ -402,7 +405,10 @@ function mostrarMetaAnidada($meta)
 				'<td style="padding-left: 4px;">'+$('#txtRendimientoPartida').val().trim()+'</td>'+
 				'<td style="padding-left: 4px;text-align: center;">'+objectJSON.descripcionUnidadMedida+'</td>'+
 				'<td style="padding-left: 4px;text-align: center;">'+parseFloat($('#txtCantidadPartida').val()).toFixed(2)+'</td>'+
-				'<td style="padding-left: 4px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida('+objectJSON.idPartida+', this);" style="width: 30px;"></td>'+
+				'<td style="padding-left: 4px;">'+
+					'<input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida('+objectJSON.idPartida+', this);" style="width: 30px;">'+
+					'<input type="button" class="btn btn-default btn-xs" value="A" onclick="" style="width: 30px;">'+
+				'</td>'+
 			'</tr>';
 
 			if(!($(elementoPadreParaAgregarPartida).find('table').length))

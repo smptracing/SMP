@@ -44,7 +44,7 @@ function mostrarMetaAnidada($meta)
 		METRADO
 	</div>
 	<div class="row" style="text-align:center;font-size:12px; border-color: red; margin-left: 10px;">
-	PROY: "INSTALACION DEL SERVICIO DE SEGUIMIENTO Y MONITOREO DE LOS PIP EN SERVICIO "
+	PROY: " <?=$MostraExpedienteNombre->nombre_pi;?>"
 	</div><br/><br/>
 	<div class="row" >
 		<div class="col-md-12 col-sm-12 col-xs-12" style="font-size: 12px;">

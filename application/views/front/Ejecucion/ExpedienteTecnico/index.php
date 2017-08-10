@@ -30,41 +30,41 @@
 								<?php foreach($listaExpedienteTecnico as $item){ ?>
 								  	<tr>
 										 <td>
-												<?= $item->nombre_ue?>
-											</td>
-											<td>
-												<?= $item->nombre_pi?>
-											</td>
-											<td>
-												<?= $item->costo_total_preinv_et?>
-											</td>
-											<td>
-												<?= $item->costo_total_inv_et?>
-											</td>
-											<td>
-												<?= $item->tiempo_ejecucion_pi_et?>
-											</td>
-											<td>
-												<?= $item->num_beneficiarios?>
-											</td>
-											<td>
-										  		<button type='button' class='editar btn btn-primary btn-xs'><i class='ace-icon fa fa-pencil bigger-120' onclick="paginaAjaxDialogo(null, 'Modificar Expediente Técnico',{ id_et: '<?=$item->id_et?>' }, base_url+'index.php/Expediente_Tecnico/editar', 'GET', null, null, false, true);"></i></button>
-												<button type='button' title='Registro de componentes, metas y partidas' class='editar btn btn-warning btn-xs' onclick="paginaAjaxDialogo(null, 'Registro de componentes, metas y partidas', {idExpedienteTecnico : <?=$item->id_et?>}, base_url+'index.php/ET_Componente/insertar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-align-left bigger-120'></i></button>
-												<button type='button' title='Administración de partidad y analítico' class='editar btn btn-success btn-xs' onclick="paginaAjaxDialogo(null, 'Administración de partidad y analítico', null, base_url+'index.php/ET_Partida/insertar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-indent bigger-120'></i></button>
-												<div class="btn-group">
-													<button data-toggle="dropdown" class="btn btn-info dropdown-toggle btn-xs" type="button">Reportes <span class="caret"></span>
-													</button>
-													<ul role="menu" class="dropdown-menu">
-														<li>
-														<a title='Ficha tecnica de expediente tecnico'  href="<?= site_url('Expediente_Tecnico/reportePdfExpedienteTecnico/'.$item->id_et);?>" target="_blank">Expediente Técnico 001</a>
-														</li>
-														<li>
-														<a  title='Reporte Metrados'  href="<?= site_url('Expediente_Tecnico/reportePdfMetrado/'.$item->id_et);?>" target="_blank">Metrado</a>
-														</li>
-													</ul>
-												</div>
-
-											</td>
+											<?= $item->nombre_ue?>
+										</td>
+										<td>
+											<?= $item->nombre_pi?>
+										</td>
+										<td>
+											<?= $item->costo_total_preinv_et?>
+										</td>
+										<td>
+											<?= $item->costo_total_inv_et?>
+										</td>
+										<td>
+											<?= $item->tiempo_ejecucion_pi_et?>
+										</td>
+										<td>
+											<?= $item->num_beneficiarios?>
+										</td>
+										<td>
+									  		<button type='button' class='editar btn btn-primary btn-xs'><i class='ace-icon fa fa-pencil bigger-120' onclick="paginaAjaxDialogo(null, 'Modificar Expediente Técnico',{ id_et: '<?=$item->id_et?>' }, base_url+'index.php/Expediente_Tecnico/editar', 'GET', null, null, false, true);"></i></button>
+											<button type='button' title='Registro de componentes, metas y partidas' class='editar btn btn-warning btn-xs' onclick="paginaAjaxDialogo(null, 'Registro de componentes, metas y partidas', { idExpedienteTecnico : <?=$item->id_et?> }, base_url+'index.php/ET_Componente/insertar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-align-left bigger-120'></i></button>
+											<button type='button' title='Administración de partidad y analítico' class='editar btn btn-success btn-xs' onclick="paginaAjaxDialogo(null, 'Administración de partidad y analítico', { idExpedienteTecnico : <?=$item->id_et?> }, base_url+'index.php/ET_Detalle_Partida/insertar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-indent bigger-120'></i></button>
+											<button onclick="Eliminar(<?=$item->id_et?>);" title='Eliminar Expediente Técnico'  class='eliminarExpediente btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button>
+											<div class="btn-group">
+												<button data-toggle="dropdown" class="btn btn-info dropdown-toggle btn-xs" type="button">Reportes <span class="caret"></span>
+												</button>
+												<ul role="menu" class="dropdown-menu">
+													<li>
+													<a title='Ficha tecnica de expediente tecnico'  href="<?= site_url('Expediente_Tecnico/reportePdfExpedienteTecnico/'.$item->id_et);?>" target="_blank">Expediente Técnico 001</a>
+													</li>
+													<li>
+													<a  title='Reporte Metrados'  href="<?= site_url('Expediente_Tecnico/reportePdfMetrado/'.$item->id_et);?>" target="_blank">Metrado</a>
+													</li>
+												</ul>
+											</div>
+										</td>
 								  	</tr>
 								<?php } ?>
 								</tbody>
@@ -127,8 +127,54 @@ function BuscarProyectocodigo()
 		}
 
 	});
-
-
 }
+
+function Eliminar(id_et)
+	{
+		swal({
+				title: "Esta seguro que desea eliminar el Expediente Técnico, ya que se eliminara también los responsables y sus imagenes?",
+				text: "",
+				type: "warning",
+				showCancelButton: true,
+				confirmButtonColor: "#DD6B55",
+				confirmButtonText: "SI,ELIMINAR",
+				closeOnConfirm: false
+			},
+			function()
+			{
+				$.ajax({
+                        url:base_url+"index.php/Expediente_Tecnico/eliminar",
+                        type:"POST",
+                        data:{id_et:id_et},
+                        success:function(respuesta)
+                        {
+                        	alert(respuesta);
+                        	/*var registros=eval(resp);
+
+							for(var i=0; i<registros.length; i++)
+							{
+								if(registros[i]["VALOR"]==1)
+								{
+									swal("",registros[i]["MENSAJE"], "success");
+
+									$('#form-addEntidad')[0].reset();
+									$("#VentanaRegistraEntidad").modal("hide");
+								}
+								else
+								{
+									swal('',registros[i]["MENSAJE"],'error' )
+								}
+								/*swal("",  registros[i]["MENSAJE"], "success");*/
+							//}
+
+							//alert(respuesta);
+							swal("ELIMINADO!", "Se elimino correctamente el expediente técnico.", "success");
+							window.location.href='<?=base_url();?>index.php/Expediente_Tecnico/index/';
+							renderLoading();
+                        }
+                    });
+			});
+	}
+
 
 </script>
