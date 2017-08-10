@@ -62,13 +62,14 @@
 						<div class="col-md-2 col-sm-2 col-xs-12">
 							<label for="control-label">.</label>
 							<div>
-								<input type="button" class="btn btn-info" value="Agregar" style="width: 100%;">
+								<input type="button" class="btn btn-info" value="Agregar" style="width: 100%;" onclick="registrarDetalleAnalisisUnitario(<?=$value->id_analisis?>);">
+								<input type="button" class="btn btn-warning" value="Guardar camb." style="display: none;width: 100%;">
 							</div>
 						</div>
 					</div>
 				</form>
 				<div>
-					<table class="table">
+					<table id="tableDetalleAnalisisUnitario<?=$value->id_analisis?>" class="table">
 						<thead>
 							<tr>
 								<th>Descripción</th>
@@ -200,11 +201,64 @@
 		{
 			subTotal=cantidad*precioUnitario;
 
-			$('#txtSubTotal'+idAnalisisUnitario).val(subTotal.toFixed());
+			$('#txtSubTotal'+idAnalisisUnitario).val(subTotal.toFixed(2));
 		}
 		else
 		{
 			$('#txtSubTotal'+idAnalisisUnitario).val('');
 		}
+	}
+
+	function registrarDetalleAnalisisUnitario(idAnalisis)
+	{
+		var descripcion=$('#selectDescripcionDetalleAnalisis'+idAnalisis).val()==null ? '' : $('#selectDescripcionDetalleAnalisis'+idAnalisis).val();
+		var cuadrilla=$('#txtCuadrilla'+idAnalisis).val();
+		var unidadMedida=$('#selectUnidadMedida'+idAnalisis).val();
+		var rendimiento=$('#txtRendimiento'+idAnalisis).val();
+		var cantidad=$('#txtCantidad'+idAnalisis).val();
+		var precioUnitario=$('#txtPrecioUnitario'+idAnalisis).val();
+		var subTotal=parseFloat(parseFloat(precioUnitario).toFixed(2))*cantidad;
+
+		var existeComponente=false;
+
+		$('#tableDetalleAnalisisUnitario'+idAnalisis+' > tbody').find('tr').each(function(index, element)
+		{
+			if(replaceAll(descripcion, ' ', '')==replaceAll($($(element).find('td')[0]).text(), ' ', ''))
+			{
+				existeComponente=true;
+
+				return false;
+			}
+		});
+
+		if(existeComponente)
+		{
+			swal(
+			{
+				title: '',
+				text: 'No se puede agregar dos veces el mismo detalle de análisis.',
+				type: 'error'
+			},
+			function(){});
+
+			return;
+		}
+
+		var htmlTemp='<tr>'+
+			'<td>'+descripcion+'</td>'+
+			'<td>'+cuadrilla+'</td>'+
+			'<td>'+unidadMedida+'</td>'+
+			'<td>'+rendimiento+'</td>'+
+			'<td>'+cantidad+'</td>'+
+			'<td>'+parseFloat(precioUnitario).toFixed(2)+'</td>'+
+			'<td>'+subTotal+'</td>'+
+			'<td>'+
+				'<a href="#" style="color: green;text-decoration: underline;"><b>Editar</b></a>'+
+				'&nbsp;&nbsp;&nbsp;'+
+				'<a href="#" style="color: red;text-decoration: underline;"><b>Eliminar</b></a>'+
+			'</td>'+
+		'</tr>';
+
+		$('#tableDetalleAnalisisUnitario'+idAnalisis+' > tbody').append(htmlTemp);
 	}
 </script>
