@@ -163,6 +163,20 @@
 		$('#selectRecurso').selectpicker({ liveSearch: true });
 		$('#selectPresupuestoAnalitico').selectpicker({ liveSearch: true });
 
+		$('#selectPresupuestoAnalitico').on('change', function()
+	    {
+			var selected=$(this).find("option:selected").val();
+
+			if(selected.trim()!='')
+			{
+				$('#txtPresupuestoEjecucion').val(selected.substring(selected.indexOf(','), selected.length));
+			}
+			else
+			{
+				$('#txtPresupuestoEjecucion').val(null);
+			}
+	    });
+
 		$('[id*="selectDescripcionDetalleAnalisis"]').selectpicker({ liveSearch: true }).ajaxSelectPicker(
 		{
 	        ajax: {
