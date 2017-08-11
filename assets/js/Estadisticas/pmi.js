@@ -152,7 +152,6 @@ function EstadisticasPorCiclosInversion() {
             var total_proyectos=registros[0]["Num_Total"];
             var total_otros=registros[0]["TotalNoCiclo"];
             var panel_estadistica=$("#panel_estadistica_ciclo_inversion");
-
             var porcentaje=0.00;
             for (var i=0; i<registros.length; i++) 
             {

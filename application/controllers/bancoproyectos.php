@@ -15,7 +15,46 @@ class bancoproyectos extends CI_Controller
     public function AddProyectos()
     {
         if ($this->input->is_ajax_request()) {
-            $flat                = "IPC ";
+            $flat               = "IPC ";
+            $id_pi              = "0";
+            $cbxUnidadEjecutora = $this->input->post("cbxUnidadEjecutora");
+            $cbxNatI            = $this->input->post("cbxNatI");
+            $cbxTipologiaInv    = $this->input->post("cbxTipologiaInv");
+            $cbxTipoInv         = $this->input->post("cbx");
+            $cbxGrupoFunc       = $this->input->post("cbxGrupoFunc");
+            $cbxNivelGob        = $this->input->post("cbxNivelGob");
+            $cbxProgramaPres    = $this->input->post("cbxProgramaPres");
+            $txtCodigoUnico     = $this->input->post("txtCodigoUnico");
+            $txtNombrePip       = $this->input->post("txtNombrePip");
+            $txtCostoPip        = $this->input->post("txtCostoPip");
+            $txt_beneficiarios  = $this->input->post("txt_beneficiarios");
+
+            $cbxFuenteFinanc  = $this->input->post("cbxFuenteFinanc");
+            $cbxRubro         = $this->input->post("cbxRubro");
+            $cbxModalidadEjec = $this->input->post("cbxModalidadEjec");
+            $cbxTipologiaInv  = $this->input->post("cbxTipologiaInv");
+            $cbxProgramaPres  = $this->input->post("cbxProgramaPres");
+
+            $dateFechaInPip      = "2017-03-01";
+            $dateFechaViabilidad = "2017-03-01";
+            $cbxEstCicInv_       = $this->input->post("cbxEstCicInv_");
+            if ($this->bancoproyectos_modal->AddProyectos(
+                $flat, $id_pi, $cbxUnidadEjecutora, $cbxNatI, $cbxTipologiaInv, $cbxTipoInv, $cbxGrupoFunc, $cbxNivelGob, $cbxProgramaPres, $txtCodigoUnico, $txtNombrePip, $txtCostoPip, $txt_beneficiarios, $dateFechaInPip, $dateFechaViabilidad, $cbxEstCicInv_) == false) {
+                echo "1";
+            } else {
+                echo "2";
+            }
+
+        } else {
+            show_404();
+        }
+    }
+    /*FIN INSERTAR UN PROYECTO*/
+    /*INSERTAR UN NO PIP*/
+    public function AddNoPip()
+    {
+        if ($this->input->is_ajax_request()) {
+            $flat                = "IPCNOPIP";
             $id_pi               = "0";
             $cbxUnidadEjecutora  = $this->input->post("cbxUnidadEjecutora");
             $cbxNatI             = $this->input->post("cbxNatI");
@@ -28,11 +67,14 @@ class bancoproyectos extends CI_Controller
             $txtNombrePip        = $this->input->post("txtNombrePip");
             $txtCostoPip         = $this->input->post("txtCostoPip");
             $txt_beneficiarios   = $this->input->post("txt_beneficiarios");
+            $cbxRubro            = $this->input->post("cbxRubro");
+            $cbxModalidadEjec    = $this->input->post("cbxModalidadEjec");
+            $Cbx_TipoNoPip_i     = $this->input->post("Cbx_TipoNoPip_i");
             $dateFechaInPip      = "2017-03-01";
             $dateFechaViabilidad = "2017-03-01";
             $cbxEstCicInv_       = $this->input->post("cbxEstCicInv_");
-            if ($this->bancoproyectos_modal->AddProyectos(
-                $flat, $id_pi, $cbxUnidadEjecutora, $cbxNatI, $cbxTipologiaInv, $cbxTipoInv, $cbxGrupoFunc, $cbxNivelGob, $cbxProgramaPres, $txtCodigoUnico, $txtNombrePip, $txtCostoPip, $txt_beneficiarios, $dateFechaInPip, $dateFechaViabilidad, $cbxEstCicInv_) == false) {
+            if ($this->bancoproyectos_modal->AddNoPip(
+                $flat, $id_pi, $cbxUnidadEjecutora, $cbxNatI, $cbxTipologiaInv, $cbxTipoInv, $cbxGrupoFunc, $cbxNivelGob, $cbxProgramaPres, $txtCodigoUnico, $txtNombrePip, $txtCostoPip, $txt_beneficiarios, $dateFechaInPip, $dateFechaViabilidad, $cbxEstCicInv_, $cbxRubro, $cbxModalidadEjec, $Cbx_TipoNoPip_i) == false) {
                 echo "1";
             } else {
                 echo "2";

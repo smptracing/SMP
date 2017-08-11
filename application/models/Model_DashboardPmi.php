@@ -11,18 +11,22 @@ class Model_DashboardPmi extends CI_Model
     public function EstadisticaPipProvinc()
     {
         $consulta = $this->db->query("SELECT provincia, count(provincia) AS Cantidadpip FROM UBIGEO_PI INNER JOIN PROYECTO_INVERSION
-ON UBIGEO_PI.id_pi=PROYECTO_INVERSION.id_pi
-INNER JOIN UBIGEO ON UBIGEO.id_ubigeo=UBIGEO_PI.id_ubigeo
-  WHERE UBIGEO.provincia IS NOT NULL and departamento='Apurímac' GROUP BY provincia");
+        ON UBIGEO_PI.id_pi=PROYECTO_INVERSION.id_pi
+        INNER JOIN UBIGEO ON UBIGEO.id_ubigeo=UBIGEO_PI.id_ubigeo
+        WHERE UBIGEO.provincia IS NOT NULL and departamento='Apurímac' GROUP BY provincia");
         return $consulta->result();
     }
-
     public function EstadisticaMontoPipProvincias()
     {
-        $consulta = $this->db->query('SELECT provincia, count(provincia) AS Cantidad,SUM(costo_pi) AS MontoProyecto FROM UBIGEO_PI INNER JOIN PROYECTO_INVERSION ON UBIGEO_PI.id_pi=PROYECTO_INVERSION.id_pi INNER JOIN UBIGEO ON UBIGEO.id_ubigeo=UBIGEO_PI.id_ubigeo  WHERE PROYECTO_INVERSION.codigo_unico_pi<>UBIGEO_PI.id_pi GROUP BY provincia');
+        $consulta = $this->db->query("SELECT provincia,
+      COUNT(UBIGEO.id_ubigeo) AS Cantidad,
+      SUM(costo_pi) AS MontoProyecto
+      FROM   dbo.PROYECTO_INVERSION
+      INNER JOIN dbo.UBIGEO_PI ON dbo.PROYECTO_INVERSION.id_pi = dbo.UBIGEO_PI.id_pi
+      INNER JOIN dbo.UBIGEO ON dbo.UBIGEO_PI.id_ubigeo = dbo.UBIGEO.id_ubigeo WHERE departamento='Apurímac'
+      GROUP BY provincia ");
         return $consulta->result();
     }
-
     public function EstadisticaPipEstadoCiclo()
     {
         $sql = "declare @total int\n"

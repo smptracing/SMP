@@ -2,7 +2,7 @@
     <!-- top tiles -->
     <div class="row tile_count">
         <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fa fa-user"></i> N° DE PROYECTOS</span>
+            <span class="count_top"><i class="fa fa-user"></i> TOTAL PIP</span>
             <div class="count">
                 <center>
                     <div id="NumPip"></div>
@@ -10,32 +10,38 @@
             </div>
         </div>
         <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fa fa-clock-o"></i> MONTO TOTAL</span>
+            <span class="count_top"><i class="fa fa-clock-o"></i> Monto Programado PIP</span>
+            <div class="count">
+            <center>
+                    <div id=""></div>
+                </center>
+        </div>
+        </div>
+
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top"><i class="fa fa-user"></i> TOTAL NO PIP</span>
+            <div class="count">
+                <center>
+                    <div id=""></div>
+                </center>
+            </div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top"><i class="fa fa-user"></i> TOTAL NO PIP</span>
+            <div class="count">
+                <center>
+                    <div id=""></div>
+                </center>
+            </div>
+        </div>
+
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top"><i class="fa fa-clock-o"></i> Monto Total Programado PIP</span>
             <div class="count">
             <center>
                     <div id="NumPips"></div>
                 </center>
         </div>
-        </div>
-        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fa fa-user"></i> COSTO INVERSIÓN </span>
-            <div class="count">2500</div>
-            <span class="count_bottom"><i class="green">4%</i> From last Week</span>
-        </div>
-        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fa fa-user"></i> SALDO PROGRAMADO</span>
-            <div class="count">2500</div>
-            <span class="count_bottom"><i class="green">4%</i> From last Week</span>
-        </div>
-        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fa fa-user"></i> PROGRAMACIÓN</span>
-            <div class="count">2500</div>
-            <span class="count_bottom"><i class="green">4%</i> From last Week</span>
-        </div>
-        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fa fa-user"></i> OPER Y MANT.</span>
-            <div class="count">2500</div>
-            <span class="count_bottom"><i class="green">4%</i> From last Week</span>
         </div>
     </div>
     <!-- /top tiles -->
