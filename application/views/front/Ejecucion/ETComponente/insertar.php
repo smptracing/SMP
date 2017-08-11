@@ -382,7 +382,6 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 			return;
 		}
 
-
 		paginaAjaxJSON({ "idMeta" : metaPadreParaAgregarPartida, "idUnidad" : $('#selectUnidadMedidaPartida').val().trim(), "descripcionPartida" : $('#selectDescripcionPartida').find("option:selected").val().trim(), "rendimientoPartida" : $('#txtRendimientoPartida').val().trim(), "cantidadPartida" : $('#txtCantidadPartida').val(), "idListaPartida" : $('#hdIdListaPartida').val() }, base_url+'index.php/ET_Partida/insertar', 'POST', null, function(objectJSON)
 		{
 			objectJSON=JSON.parse(objectJSON);

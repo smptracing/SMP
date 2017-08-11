@@ -200,21 +200,32 @@ class Expediente_Tecnico extends CI_Controller
 			$txtSituacioDeseada=$this->input->post('txtSituacioDeseada');
 			$txtContribucioInterv=$this->input->post('txtContribucioInterv');
 			$txtNumFolio=$this->input->post('txtNumFolio');
-			/*if(count($this->Model_ET_Expediente_Tecnico->ValidarExpedienteTecnico($hdIdExpediente,$txtIdPi))>0)
-            {	
-            	echo json_encode(['proceso' => 'error', 'mensaje' => 'Este tipo de descripcion ya fue registrado con anterioridad .']);exit;
-            }*/
+	
 			$this->Model_ET_Expediente_Tecnico->editar($flat,$hdIdExpediente,$txtNombreUe,$txtDireccionUE,$txtUbicacionUE,$txtTelefonoUE,$txtRucUE,$txtCostoTotalPreInversion,$txtCostoDirectoPre,$txtCostoIndirectoPre,$txtCostoTotalInversion,$txtCostoDirectoInversion,$txtGastosGenerales,$txtGastosSupervision,$txtFuncionProgramatica,$txtFuncion,$txtPrograma,$txtSubPrograma,$txtProyecto,$txtComponente,$txtMeta,$txtFuenteFinanciamiento,$txtModalidadEjecucion,$txtTiempoEjecucionPip,$txtNumBeneficiarios,$txtSituacioActual,$txtSituacioDeseada,$txtContribucioInterv,$txtNumFolio);
 			$this->db->trans_complete();
 			//echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos Editados Correctamente.', 'txtDireccionUE' => $txtDireccionUE]);exit;
 			$this->session->set_flashdata('correcto', 'Expediente Tecnico modificado correctamente.');
 			return redirect('/Expediente_Tecnico');
 		}
+		
 		$id_et=$this->input->GET('id_et');
+		$listaimg=$this->Model_ET_Img->ListarImagen($id_et);
+
+  		/*$eliminarImg=$this->Model_ET_Expediente_Tecnico->ET_Img($id_et);
+        foreach ($eliminarImg as $value) 
+        {
+            unlink("uploads/ImageExpediente/".$value->desc_img);
+        }
+        if($this->Model_ET_Img->EliminarImagen($id_et)==true)
+        {   
+            echo json_encode("correcto se elimino");
+        }*/
+
 		$ExpedienteTecnicoM=$this->Model_ET_Expediente_Tecnico->DatosExpediente($id_et);
-		return $this->load->view('front/Ejecucion/ExpedienteTecnico/editar',['ExpedienteTecnicoM'=>$ExpedienteTecnicoM]);
+		return $this->load->view('front/Ejecucion/ExpedienteTecnico/editar',['ExpedienteTecnicoM'=>$ExpedienteTecnicoM, 'listaimg'=>$listaimg]);
 	}
 
+	
     function registroBuscarProyecto()
     {
     		$CodigoUnico=$this->input->get('inputValue');
@@ -270,23 +281,25 @@ class Expediente_Tecnico extends CI_Controller
 	    {
 			$flat="ELIMINAR";
 			$id_et=$this->input->post('id_et');
-			if(count($this->Model_ET_Expediente_Tecnico->VerificarComponenteExpedienteAntesEliminar($id_et))>0)
+
+			if((count($this->Model_ET_Expediente_Tecnico->VerificarComponenteExpedienteAntesEliminar($id_et))>0) || (count($this->Model_ET_Expediente_Tecnico->VerificarETPresupuestoAnaliticoExpedienteAntesEliminar($id_et))>0) || (count($this->Model_ET_Expediente_Tecnico->VerificarETTareaGantt($id_et))>0) )
             {	
             	echo json_encode('No se puede eliminar este expediente tecnico.');exit;
             }
-            if(count($this->Model_ET_Expediente_Tecnico->VerificarETPresupuestoAnaliticoExpedienteAntesEliminar($id_et))>0)
-            {	
-            	echo json_encode('No se puede eliminar este expediente tecnico.');exit;
-            }
-            if(count($this->Model_ET_Expediente_Tecnico->VerificarETTareaGantt($id_et))>0)
-            {	
-            	echo json_encode('No se puede eliminar este expediente tecnico.');exit;
-            }
-			if($this->Model_ET_Expediente_Tecnico->eliminar($flat,$id_et)==true)
-            {	
-            	echo json_encode("correcto se elimino");
-            }
-			//unlink(base_url.'uploads/ImageExpediente/'.$id_et['id_et']);		
+           	else
+           	{
+           		$eliminarImg=$this->Model_ET_Expediente_Tecnico->ET_Img($id_et);
+           		foreach ($eliminarImg as $value) 
+           		{
+           			unlink("uploads/ImageExpediente/".$value->desc_img);
+           		}
+           		if($this->Model_ET_Expediente_Tecnico->eliminar($flat,$id_et)==true)
+	            {	//$img=$this->Model_ET_Img->eliminarimg()
+	            	
+	            	echo json_encode("correcto se elimino");
+	            }		
+           	}
 		}
+
 	}
 }

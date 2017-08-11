@@ -194,7 +194,14 @@
 							</div>
 						</div>
 					</div>
-
+					<div class="row">
+					 	<div class="col-md-4 col-sm-3 col-xs-12">
+                            <label class="control-label">Subir Resolución</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input type="file" id="Documento_Resolucion" name="Documento_Resolucion" value="<?= $ExpedienteTecnicoM->url_doc_aprobacion_et?>">
+                            </div>
+                        </div>
+					</div>
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<label class="control-label">Sustento para la presentacion del proyecto</label></br>
@@ -215,8 +222,7 @@
 							<input type="hidden" id="hdtxtContribucioInterv" value="<?=$ExpedienteTecnicoM->resumen_pi_et?>" type="hidden">
 							<p><textarea name="txtContribucioInterv" id="txtContribucioInterv" rows="10" cols="80"></textarea></p>
 						</div>	
-					</div>
-						
+					</div>			
 					<div class="row">
 						<div class="col-md-4 col-sm-3 col-xs-12">
 							<label class="control-label">Número de folios</label>
@@ -224,6 +230,36 @@
 								<input id="txtNumFolio" name="txtNumFolio" value="<?= $ExpedienteTecnicoM->num_folios?>" class="form-control col-md-4 col-xs-12"  placeholder="Número de folios" autocomplete="off" >
 							</div>
 						</div>	
+					</div>	
+					<div class="row">
+						<div  id="divfotos" class="col-md-4 col-sm-3 col-xs-12">
+							<label class="control-label">Fotografías(04 minimo)</label>
+							<div>
+								<input  type="file" name="imagen[]" id="imagen" value="" placeholder="Fotografias"   autocomplete="off" multiple  >
+							<br>
+
+							<table id="table-img" style="text-align: center;" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+								<!--<thead>
+									<tr>
+										
+										<td>Imagen</td>
+										<td class="col-md-2 col-md-2 col-xs-12"></td>
+									</tr>
+								</thead>-->
+								<?php foreach($listaimg as $item){ ?>
+								  	<tr>
+										<!--<td>
+											<?= $item->id_img?>
+										</td>-->
+										<td>
+											<?= $item->desc_img?>
+										</td>
+										<td><button onclick="EliminarImagen(<?=$item->id_img?>,<?=$item->id_et?>);"  title='Eliminar imagen del Expediente Técnico'  class='eliminarExpediente btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button></td>
+								  	</tr>
+								<?php } ?>
+							</table>
+							</div>
+						</div>
 					</div>		
 				</div>
 
@@ -232,7 +268,7 @@
 	</div>
 
 	
-	<div class="ln_solid"></div>
+<div class="ln_solid"></div>
 		<div class="row" style="text-align: right;">
 			<button type="submit" id="btnEnviarFormulario" class="btn btn-success">Guardar</button>
 			<button  class="btn btn-danger" data-dismiss="modal">Cancelar</button>
@@ -258,6 +294,76 @@ $(function()
 	var html2=$("#hdtxtContribucioInterv").val();
 	CKEDITOR.instances.txtContribucioInterv.setData(html2);
 });
+
+	function EliminarImagen(id_img,id_et)
+	{
+		
+		alert(id_img);
+		event.preventDefault();
+		swal({
+				title: "Esta seguro que desea eliminar el Expediente Técnico, ya que se eliminara también los responsables y sus imagenes?",
+				text: "",
+				type: "warning",
+				showCancelButton: true,
+				confirmButtonColor: "#DD6B55",
+				confirmButtonText: "SI,ELIMINAR",
+				closeOnConfirm: false
+			},
+			function()
+			{
+				$.ajax({
+                        url:base_url+"index.php/ET_Img/eliminar",
+                        type:"POST",
+                        data:{id_img:id_img,id_et:id_et},
+                        dataType:'JSON',
+                        cache:false,
+                        success:function(respuesta)
+                        {
+                        	var html;
+                        	swal("ELIMINADO!", "Se elimino correctamente el expediente técnico.", "success");
+                        	$("#table-img" ).remove();
+                        	html +='<table id="table-img" style="text-align: center;" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">';
+                        	
+                        	$.each(respuesta,function(index,element)
+                        	{
+                        		html +='<tr>';
+                        		html +='<td>'+element.desc_img+'</td>';
+                        		html +='<td> <button onclick="EliminarImagen('+element.id_img+','+element.id_et+');"  title="Eliminar imagen del Expediente Técnico"  class="eliminarExpediente btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button></td>';
+                        		html +='</tr>';
+                        	});
+                        	html +='</table>';
+							$("#divfotos").append(html);
+                        }
+                    });
+			});
+	}
+
+
+
+   /* function EliminarImagen(id_img, element)
+	{
+		alert(id_img,element);
+		if(!confirm('Se eliminara la imagen. ¿Realmente desea proseguir con la operación?'))
+		{
+			return;
+			alert(id_img,element);
+		}
+		paginaAjaxJSON({ "id_et" : id_et }, base_url+'index.php/ET_Img/eliminar', 'POST', null, function(objectJSON)
+		{
+			alert(objectJSON);
+			objectJSON=JSON.parse(objectJSON);
+
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+			},
+			function(){});
+
+			$(element).parent().remove();
+		}, false, true);
+	}*/
 
 </script>
 

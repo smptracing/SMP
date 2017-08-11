@@ -130,51 +130,49 @@ function BuscarProyectocodigo()
 }
 
 function Eliminar(id_et)
+{
+swal({
+	title: "Esta seguro que desea eliminar el Expediente Técnico, ya que se eliminara también los responsables y sus imagenes?",
+	text: "",
+	type: "warning",
+	showCancelButton: true,
+	confirmButtonColor: "#DD6B55",
+	confirmButtonText: "SI,ELIMINAR",
+	closeOnConfirm: false
+},
+function()
+{
+$.ajax({
+	url:base_url+"index.php/Expediente_Tecnico/eliminar",
+	type:"POST",
+	data:{id_et:id_et},
+	success:function(respuesta)
 	{
-		swal({
-				title: "Esta seguro que desea eliminar el Expediente Técnico, ya que se eliminara también los responsables y sus imagenes?",
-				text: "",
-				type: "warning",
-				showCancelButton: true,
-				confirmButtonColor: "#DD6B55",
-				confirmButtonText: "SI,ELIMINAR",
-				closeOnConfirm: false
-			},
-			function()
-			{
-				$.ajax({
-                        url:base_url+"index.php/Expediente_Tecnico/eliminar",
-                        type:"POST",
-                        data:{id_et:id_et},
-                        success:function(respuesta)
-                        {
-                        	alert(respuesta);
-                        	/*var registros=eval(resp);
+		alert(respuesta);
+	/*var registros=eval(resp);
+	for(var i=0; i<registros.length; i++)
+	{
+	if(registros[i]["VALOR"]==1)
+	{
+	swal("",registros[i]["MENSAJE"], "success");
 
-							for(var i=0; i<registros.length; i++)
-							{
-								if(registros[i]["VALOR"]==1)
-								{
-									swal("",registros[i]["MENSAJE"], "success");
-
-									$('#form-addEntidad')[0].reset();
-									$("#VentanaRegistraEntidad").modal("hide");
-								}
-								else
-								{
-									swal('',registros[i]["MENSAJE"],'error' )
-								}
-								/*swal("",  registros[i]["MENSAJE"], "success");*/
-							//}
-
-							//alert(respuesta);
-							swal("ELIMINADO!", "Se elimino correctamente el expediente técnico.", "success");
-							window.location.href='<?=base_url();?>index.php/Expediente_Tecnico/index/';
-							renderLoading();
-                        }
-                    });
-			});
+	$('#form-addEntidad')[0].reset();
+	$("#VentanaRegistraEntidad").modal("hide");
 	}
+	else
+	{
+	swal('',registros[i]["MENSAJE"],'error' )
+	}
+	/*swal("",  registros[i]["MENSAJE"], "success");*/
+	//}
 
+	//alert(respuesta);
+	swal("ELIMINADO!", "Se elimino correctamente el expediente técnico.", "success");
+	window.location.href='<?=base_url();?>index.php/Expediente_Tecnico/index/';
+	renderLoading();
+	}
+	});
+	});
+}
 
 </script>

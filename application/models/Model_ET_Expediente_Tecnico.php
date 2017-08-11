@@ -80,13 +80,13 @@ class Model_ET_Expediente_Tecnico extends CI_Model
 
 		return true;
 	}
+
 	function VerificarComponenteExpedienteAntesEliminar($id_et)
 	{
 		$ExpedienteTecnico=$this->db->query("select id_et from ET_COMPONENTE   where id_et ='".$id_et."'");
 
 		return $ExpedienteTecnico->result();
 	}
-
 	
 	function VerificarETPresupuestoAnaliticoExpedienteAntesEliminar($id_et)
 	{
@@ -94,13 +94,13 @@ class Model_ET_Expediente_Tecnico extends CI_Model
 
 		return $ExpedienteTecnico->result();
 	}
+	
 	function VerificarETTareaGantt($id_et)
 	{
 		$ExpedienteTecnico=$this->db->query("select id_et from  ET_TAREA_GANTT where id_et ='".$id_et."'");
 
 		return $ExpedienteTecnico->result();
 	}
-
 
 	function ET_Img($id_ExpedienteTecnico)
 	{
