@@ -42,8 +42,8 @@ $(document).on("ready" ,function()
        //para llenado y busqueda por todo los campos
                                 "columns":[
                                     {"data":"id_programa_pres","visible": false},
+                                    {"data":"cod_programa_pres"},
                                     {"data":"nombre_programa_pres"},
-                                    {"data":"cod_programa_presupuestal"},
                                     {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaModificarProgramaP'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
 

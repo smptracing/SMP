@@ -150,8 +150,9 @@
                                                                 <tr>
 
                                                                   <th class="col-sm-1">ID</th>
-                                                                  <th>PROGRAMA PRESUPUESTAL </th>
                                                                   <th>CODIGO PRESUPUESTAL </th>
+                                                                  <th>PROGRAMA PRESUPUESTAL </th>
+                                                                  
                                                                   <th>ACCIONES</th>
                                                                 </tr>
                                                               </thead>
