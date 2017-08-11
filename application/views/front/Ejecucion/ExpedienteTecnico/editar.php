@@ -296,12 +296,11 @@ $(function()
 });
 
 	function EliminarImagen(id_img,id_et)
-	{
-		
+	{	
 		alert(id_img);
 		event.preventDefault();
 		swal({
-				title: "Esta seguro que desea eliminar el Expediente Técnico, ya que se eliminara también los responsables y sus imagenes?",
+				title: "Está seguro que desea eliminar la imagen del expediente técnico ?",
 				text: "",
 				type: "warning",
 				showCancelButton: true,
@@ -320,7 +319,7 @@ $(function()
                         success:function(respuesta)
                         {
                         	var html;
-                        	swal("ELIMINADO!", "Se elimino correctamente el expediente técnico.", "success");
+                        	swal("ELIMINADO!", "Se elimino correctamente la imagen del expediente técnico.", "success");
                         	$("#table-img" ).remove();
                         	html +='<table id="table-img" style="text-align: center;" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">';
                         	

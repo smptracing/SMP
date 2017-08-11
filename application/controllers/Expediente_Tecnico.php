@@ -168,6 +168,16 @@ class Expediente_Tecnico extends CI_Controller
 		if($this->input->post('hdIdExpediente'))
 		{	
 			$this->db->trans_start(); 
+
+	        $config['upload_path']   = './uploads/ResolucioExpediente/';
+	        $config['allowed_types'] = '*';
+	        $config['max_width']     = 2000;
+	        $config['max_height']    = 2000;
+	        $config['max_size']      = 50000;
+	        $config['encrypt_name']  = false;
+	        $this->load->library('upload', $config);
+			$this->upload->do_upload('Documento_Resolucion');
+
 			$flat ="EDITAR";
 			$hdIdExpediente=$this->input->post('hdIdExpediente');
 			//$txtIdPi=$this->input->post('txtIdPi');
@@ -200,6 +210,34 @@ class Expediente_Tecnico extends CI_Controller
 			$txtNumFolio=$this->input->post('txtNumFolio');
 	
 			$this->Model_ET_Expediente_Tecnico->editar($flat,$hdIdExpediente,$txtNombreUe,$txtDireccionUE,$txtUbicacionUE,$txtTelefonoUE,$txtRucUE,$txtCostoTotalPreInversion,$txtCostoDirectoPre,$txtCostoIndirectoPre,$txtCostoTotalInversion,$txtCostoDirectoInversion,$txtGastosGenerales,$txtGastosSupervision,$txtFuncionProgramatica,$txtFuncion,$txtPrograma,$txtSubPrograma,$txtProyecto,$txtComponente,$txtMeta,$txtFuenteFinanciamiento,$txtModalidadEjecucion,$txtTiempoEjecucionPip,$txtNumBeneficiarios,$txtSituacioActual,$txtSituacioDeseada,$txtContribucioInterv,$txtNumFolio);
+			
+			$UltimoExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->UltimoExpedienteTecnico();
+			$id_et=$UltimoExpedienteTecnico->id_et;
+
+			$config = array(
+				"upload_path" => "./uploads/ImageExpediente",
+				'allowed_types' => "jpg|png"
+			);
+			$variablefile= $_FILES;
+			$info = array();
+			$files = count($_FILES['imagen']['name']);
+			for ($i=0; $i < $files; $i++) 
+			{ 
+				$_FILES['imagen']['name'] = $variablefile['imagen']['name'][$i];
+				$_FILES['imagen']['type'] = $variablefile['imagen']['type'][$i];
+				$_FILES['imagen']['tmp_name'] = $variablefile['imagen']['tmp_name'][$i];
+				$_FILES['imagen']['error'] = $variablefile['imagen']['error'][$i];
+				$_FILES['imagen']['size'] = $variablefile['imagen']['size'][$i];
+				$this->upload->initialize($config);
+				if ($this->upload->do_upload('imagen'))
+				 {
+					$this->Model_ET_Img->insertarImgExpediente($UltimoExpedienteTecnico->id_et,$_FILES['imagen']['name']);
+				 }
+				else
+				 {
+						$error = "ERROR NO SE CARGO LAS FOTOS DE EXPEDIENTE TÉCNICO";
+				 }
+			}
 			$this->db->trans_complete();
 			//echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos Editados Correctamente.', 'txtDireccionUE' => $txtDireccionUE]);exit;
 			$this->session->set_flashdata('correcto', 'Expediente Tecnico modificado correctamente.');
