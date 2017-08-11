@@ -241,17 +241,13 @@
 						</div>	
 					</div>	
 					<div class="row">
-						<div  id="divfotos" class="col-md-2 col-sm-2 col-xs-12">
+						<div  id="divfotos" style="color: width" class="col-md-3 col-sm-3 col-xs-12">
 							
 							<table id="table-img" style="text-align: center;" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
 								<thead>
-									<tr>
-										<td>Imagen</td>
-										<td class="col-md-2 col-md-2 col-xs-12"></td>
-									</tr>
 								</thead>
 								<?php foreach($listaimg as $item){ ?>
-								  	<tr class="success">
+								  	<tr>
 										<td>
 											<img class="img-thumbnail .img-responsive" src="<?= base_url();?>uploads/ImageExpediente/<?= $item->desc_img?>">
 										</td>
@@ -259,7 +255,6 @@
 								  	</tr>
 								<?php } ?>
 							</table>
-							</div>
 						</div>
 					</div>		
 				</div>
@@ -298,7 +293,6 @@ $(function()
 
 	function EliminarImagen(id_img,id_et)
 	{	
-		alert(id_img);
 		event.preventDefault();
 		swal({
 				title: "Está seguro que desea eliminar la imagen del expediente técnico ?",
@@ -316,15 +310,12 @@ $(function()
                         type:"POST",
                         data:{id_img:id_img,id_et:id_et},
                         dataType:'JSON',
-                        cache:false,
                         success:function(respuesta)
                         {
                         	var html;
-                        	$("#divfotos").html("");
                         	swal("ELIMINADO!", "Se elimino correctamente la imagen del expediente técnico.", "success");
-                        	$("#table-img" ).remove();
-                        	html +='<table id="table-img" style="text-align: center;" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">';
-                        	
+                        	$("#table-img").html('');
+                        	html +='<thead></thead>';
                         	$.each(respuesta,function(index,element)
                         	{
                         		html +='<tr>';
@@ -332,8 +323,7 @@ $(function()
                         		html +='<td> <button onclick="EliminarImagen('+element.id_img+','+element.id_et+');"  title="Eliminar imagen del Expediente Técnico"  class="eliminarExpediente btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button></td>';
                         		html +='</tr>';
                         	});
-                        	html +='</table>';
-							$("#divfotos").append(html);
+							$("#divfotos >#table-img").append(html);
                         }
                     });
 			});
