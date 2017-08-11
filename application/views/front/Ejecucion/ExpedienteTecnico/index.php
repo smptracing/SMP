@@ -62,6 +62,9 @@
 													<li>
 													<a  title='Reporte Metrados'  href="<?= site_url('Expediente_Tecnico/reportePdfMetrado/'.$item->id_et);?>" target="_blank">Metrado</a>
 													</li>
+													<li>
+													<a  title='Reporte de Presupuesto Analitico'  href="<?= site_url('Expediente_Tecnico/reportePdfPresupuestoAnalitico/');?>" target="_blank">Presupuesto Analitico</a>
+													</li>
 												</ul>
 											</div>
 										</td>

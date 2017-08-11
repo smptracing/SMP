@@ -292,6 +292,34 @@ class Expediente_Tecnico extends CI_Controller
 		$this->mydompdf->stream("ReporteMetrado.pdf", array("Attachment" => false));
 	}
 
+	function reportePdfPresupuestoAnalitico()
+	{
+		/*$html= $this->load->view('front/Ejecucion/ExpedienteTecnico/reportePdfPresupuestoAnalitico');
+		$this->mydompdf->load_html($html);
+		$this->mydompdf->render();
+		$this->mydompdf->stream("reportePdfPresupuestoAnalitico.pdf", array("Attachment" => false));*/
+
+        //Carga la librería que agregamos
+        $this->load->library('mydompdf');
+        //$saludo será una variable dentro la vista
+        $data["saludo"] = "Hola mundo!";
+        //$html tendrá el contenido de la vista
+        $html= $this->load->view('front/Ejecucion/ExpedienteTecnico/reportePdfPresupuestoAnalitico', $data, true);
+        /*
+         * load_html carga en dompdf la vista
+         * render genera el pdf
+         * stream ("nombreDelDocumento.pdf", Attachment: true | false)
+         * true = forza a descargar el pdf
+         * false = genera el pdf dentro del navegador
+         */
+        $this->mydompdf->load_html($html);
+        $this->mydompdf->set_paper('letter', 'landscape');
+        $this->mydompdf->render();
+        $this->mydompdf->stream("reportePdfPresupuestoAnalitico.pdf", array(
+            "Attachment" => false
+        ));
+	}
+
 	private function obtenerMetaAnidada($meta)
 	{
 		$temp=$this->Model_ET_Meta->ETMetaPorIdMetaPadre($meta->id_meta);
