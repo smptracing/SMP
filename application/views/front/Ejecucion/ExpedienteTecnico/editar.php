@@ -232,12 +232,17 @@
 						</div>	
 					</div>	
 					<div class="row">
-						<div  id="divfotos" class="col-md-3 col-sm-3 col-xs-12">
+						<div class="col-md-4 col-sm-3 col-xs-12">
 							<label class="control-label">Fotografías(04 minimo)</label>
 							<div>
 								<input  type="file" name="imagen[]" id="imagen" value="" placeholder="Fotografias"   autocomplete="off" multiple  >
-							<br>
-
+								<br>
+							</div>
+						</div>	
+					</div>	
+					<div class="row">
+						<div  id="divfotos" class="col-md-2 col-sm-2 col-xs-12">
+							
 							<table id="table-img" style="text-align: center;" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
 								<thead>
 									<tr>
@@ -314,8 +319,8 @@ $(function()
                         cache:false,
                         success:function(respuesta)
                         {
-                        	alert(respuesta);
                         	var html;
+                        	$("#divfotos").html("");
                         	swal("ELIMINADO!", "Se elimino correctamente la imagen del expediente técnico.", "success");
                         	$("#table-img" ).remove();
                         	html +='<table id="table-img" style="text-align: center;" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">';
