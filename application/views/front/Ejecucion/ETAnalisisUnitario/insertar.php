@@ -38,7 +38,7 @@
 	<hr style="margin: 4px;">
 	<div id="divListaAnalisisUnitario">
 		<?php foreach($listaETAnalisisUnitario as $value){ ?>
-			<div class="panel-group">
+			<div class="panel-group" style="margin: 2px;">
 				<div class="panel panel-default">
 					<div class="panel-heading" data-toggle="collapse" href="#collapse<?=$value->id_analisis?>" style="cursor: pointer;">
 						<h4 class="panel-title">
@@ -50,6 +50,9 @@
 							<div class="col-md-12 col-sm-12 col-xs-12">
 								<div id="divFormDetallaAnalisisUnitario<?=$value->id_analisis?>" style="padding: 4px;">
 									<div class="row">
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											<input type="button" class="btn btn-danger btn btn-xs" value="Eliminar este análisis unitario" onclick="eliminarAnalisisUnitario(<?=$value->id_analisis?>, this);">
+										</div>
 										<div class="col-md-7 col-sm-7 col-xs-12">
 											<label for="control-label">Descripción del insunmo</label>
 											<div>
@@ -151,7 +154,7 @@
 			</div>
 		<?php } ?>
 	</div>
-	<hr>
+	<hr style="margin-top: 4px;">
 	<div class="row" style="text-align: right;">
 		<button class="btn btn-danger" data-dismiss="modal">
 			<span class="glyphicon glyphicon-remove"></span>
@@ -328,7 +331,7 @@
 				return false;
 			}
 
-			var htmlTemp='<div class="panel-group">'+
+			var htmlTemp='<div class="panel-group" style="margin: 2px;">'+
 				'<div class="panel panel-default">'+
 					'<div class="panel-heading" data-toggle="collapse" href="#collapse'+objectJSON.idAnalisis+'" style="cursor: pointer;">'+
 						'<h4 class="panel-title">'+
@@ -546,6 +549,27 @@
 
 			limpiarText('divFormDetallaAnalisisUnitario'+idAnalisis, ['txtHoras'+idAnalisis]);
 		}, false, true);
+	}
+
+	function eliminarAnalisisUnitario(idAnalisis, element)
+	{
+		if(confirm('¿Realmente desea borrar todo este análisis unitario?'))
+		{
+			paginaAjaxJSON({ "idAnalisis" : idAnalisis }, base_url+'index.php/ET_Analisis_Unitario/eliminar', 'POST', null, function(objectJSON)
+			{
+				objectJSON=JSON.parse(objectJSON);
+
+				swal(
+				{
+					title: '',
+					text: objectJSON.mensaje,
+					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+				},
+				function(){});
+
+				$(element).parent().parent().parent().parent().parent().parent().parent().parent().remove();
+			}, false, true);
+		}
 	}
 
 	function eliminarDetalleAnalisisUnitario(idDetalleAnalisisUnitario, element)
