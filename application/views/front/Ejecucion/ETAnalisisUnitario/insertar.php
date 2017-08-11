@@ -21,7 +21,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="row">
+	<div id="divPresupuestoParaEjecucion" class="row">
 		<div class="col-md-8 col-sm-8 col-xs-12">
 			<label for="control-label">Presupuesto para ejecuión</label>
 			<div>
@@ -31,124 +31,126 @@
 		<div class="col-md-4 col-sm-4 col-xs-12">
 			<label for="control-label">.</label>
 			<div>
-				<input type="button" class="btn btn-info" value="Agregar recurso para A.U." style="width: 100%;" onclick="">
+				<input type="button" class="btn btn-info" value="Agregar recurso para A.U." style="width: 100%;" onclick="registrarAnalisisUnitario();">
 			</div>
 		</div>
 	</div>
 	<hr style="margin: 4px;">
-	<?php foreach($listaETAnalisisUnitario as $value){ ?>
-		<div class="panel-group">
-			<div class="panel panel-default">
-				<div class="panel-heading" data-toggle="collapse" href="#collapse<?=$value->id_analisis?>" style="cursor: pointer;">
-					<h4 class="panel-title">
-						<a><?=$value->desc_recurso?></a>
-					</h4>
-				</div>
-				<div id="collapse<?=$value->id_analisis?>" class="panel-collapse collapse">
-					<div class="row">
-						<div class="col-md-12 col-sm-12 col-xs-12">
-							<div id="divFormDetallaAnalisisUnitario<?=$value->id_analisis?>" style="padding: 4px;">
-								<div class="row">
-									<div class="col-md-7 col-sm-7 col-xs-12">
-										<label for="control-label">Descripción del insunmo</label>
-										<div>
-											<select name="selectDescripcionDetalleAnalisis" id="selectDescripcionDetalleAnalisis<?=$value->id_analisis?>" class="form-control"></select>
+	<div id="divListaAnalisisUnitario">
+		<?php foreach($listaETAnalisisUnitario as $value){ ?>
+			<div class="panel-group">
+				<div class="panel panel-default">
+					<div class="panel-heading" data-toggle="collapse" href="#collapse<?=$value->id_analisis?>" style="cursor: pointer;">
+						<h4 class="panel-title">
+							<a><?=$value->desc_recurso?></a>
+						</h4>
+					</div>
+					<div id="collapse<?=$value->id_analisis?>" class="panel-collapse collapse">
+						<div class="row">
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<div id="divFormDetallaAnalisisUnitario<?=$value->id_analisis?>" style="padding: 4px;">
+									<div class="row">
+										<div class="col-md-7 col-sm-7 col-xs-12">
+											<label for="control-label">Descripción del insunmo</label>
+											<div>
+												<select name="selectDescripcionDetalleAnalisis" id="selectDescripcionDetalleAnalisis<?=$value->id_analisis?>" class="form-control"></select>
+											</div>
+										</div>
+										<div class="col-md-2 col-sm-2 col-xs-12">
+											<label for="control-label">Cuadrilla</label>
+											<div>
+												<input type="text" id="txtCuadrilla<?=$value->id_analisis?>" class="form-control" onkeyup="calcularCantidad(<?=$value->id_analisis?>);calcularSubTotal(<?=$value->id_analisis?>);">
+											</div>
+										</div>
+										<div class="col-md-1 col-sm-1 col-xs-12">
+											<label for="control-label">Horas</label>
+											<div>
+												<input type="text" id="txtHoras<?=$value->id_analisis?>" class="form-control" onkeyup="calcularCantidad(<?=$value->id_analisis?>);calcularSubTotal(<?=$value->id_analisis?>);" value="8">
+											</div>
+										</div>
+										<div class="col-md-2 col-sm-2 col-xs-12">
+											<label for="control-label">Undidad</label>
+											<div>
+												<select name="selectUnidadMedida" id="selectUnidadMedida<?=$value->id_analisis?>" class="form-control">
+													<?php foreach($listaUnidadMedida as $item){ ?>
+														<option value="<?=$item->id_unidad?>"><?=$item->descripcion?></option>
+													<?php } ?>
+												</select>
+											</div>
 										</div>
 									</div>
-									<div class="col-md-2 col-sm-2 col-xs-12">
-										<label for="control-label">Cuadrilla</label>
-										<div>
-											<input type="text" id="txtCuadrilla<?=$value->id_analisis?>" class="form-control" onkeyup="calcularCantidad(<?=$value->id_analisis?>);calcularSubTotal(<?=$value->id_analisis?>);">
+									<div class="row">
+										<div class="col-md-2 col-sm-2 col-xs-12">
+											<label for="control-label">Rendimiento</label>
+											<div>
+												<input type="text" id="txtRendimiento<?=$value->id_analisis?>" class="form-control" onkeyup="calcularCantidad(<?=$value->id_analisis?>);calcularSubTotal(<?=$value->id_analisis?>);">
+											</div>
 										</div>
-									</div>
-									<div class="col-md-1 col-sm-1 col-xs-12">
-										<label for="control-label">Horas</label>
-										<div>
-											<input type="text" id="txtHoras<?=$value->id_analisis?>" class="form-control" onkeyup="calcularCantidad(<?=$value->id_analisis?>);calcularSubTotal(<?=$value->id_analisis?>);" value="8">
+										<div class="col-md-2 col-sm-2 col-xs-12">
+											<label for="control-label">Cantidad</label>
+											<div>
+												<input type="text" id="txtCantidad<?=$value->id_analisis?>" class="form-control" onkeyup="calcularRendimiento(<?=$value->id_analisis?>);calcularSubTotal(<?=$value->id_analisis?>);">
+											</div>
 										</div>
-									</div>
-									<div class="col-md-2 col-sm-2 col-xs-12">
-										<label for="control-label">Undidad</label>
-										<div>
-											<select name="selectUnidadMedida" id="selectUnidadMedida<?=$value->id_analisis?>" class="form-control">
-												<?php foreach($listaUnidadMedida as $item){ ?>
-													<option value="<?=$item->id_unidad?>"><?=$item->descripcion?></option>
-												<?php } ?>
-											</select>
+										<div class="col-md-3 col-sm-3 col-xs-12">
+											<label for="control-label">Precio unitario</label>
+											<div>
+												<input type="text" id="txtPrecioUnitario<?=$value->id_analisis?>" class="form-control" onkeyup="calcularSubTotal(<?=$value->id_analisis?>);">
+											</div>
+										</div>
+										<div class="col-md-3 col-sm-3 col-xs-12">
+											<label for="control-label">Sub total</label>
+											<div>
+												<input type="text" id="txtSubTotal<?=$value->id_analisis?>" class="form-control" readonly="readonly">
+											</div>
+										</div>
+										<div class="col-md-2 col-sm-2 col-xs-12">
+											<label for="control-label">.</label>
+											<div>
+												<input type="button" class="btn btn-info" value="Agregar" style="width: 100%;" onclick="registrarDetalleAnalisisUnitario(<?=$value->id_analisis?>);">
+											</div>
 										</div>
 									</div>
 								</div>
-								<div class="row">
-									<div class="col-md-2 col-sm-2 col-xs-12">
-										<label for="control-label">Rendimiento</label>
-										<div>
-											<input type="text" id="txtRendimiento<?=$value->id_analisis?>" class="form-control" onkeyup="calcularCantidad(<?=$value->id_analisis?>);calcularSubTotal(<?=$value->id_analisis?>);">
-										</div>
-									</div>
-									<div class="col-md-2 col-sm-2 col-xs-12">
-										<label for="control-label">Cantidad</label>
-										<div>
-											<input type="text" id="txtCantidad<?=$value->id_analisis?>" class="form-control" onkeyup="calcularRendimiento(<?=$value->id_analisis?>);calcularSubTotal(<?=$value->id_analisis?>);">
-										</div>
-									</div>
-									<div class="col-md-3 col-sm-3 col-xs-12">
-										<label for="control-label">Precio unitario</label>
-										<div>
-											<input type="text" id="txtPrecioUnitario<?=$value->id_analisis?>" class="form-control" onkeyup="calcularSubTotal(<?=$value->id_analisis?>);">
-										</div>
-									</div>
-									<div class="col-md-3 col-sm-3 col-xs-12">
-										<label for="control-label">Sub total</label>
-										<div>
-											<input type="text" id="txtSubTotal<?=$value->id_analisis?>" class="form-control" readonly="readonly">
-										</div>
-									</div>
-									<div class="col-md-2 col-sm-2 col-xs-12">
-										<label for="control-label">.</label>
-										<div>
-											<input type="button" class="btn btn-info" value="Agregar" style="width: 100%;" onclick="registrarDetalleAnalisisUnitario(<?=$value->id_analisis?>);">
-										</div>
-									</div>
-								</div>
-							</div>
-							<div>
-								<table id="tableDetalleAnalisisUnitario<?=$value->id_analisis?>" class="table">
-									<thead>
-										<tr>
-											<th>Descripción</th>
-											<th>Cuadrilla</th>
-											<th>Und.</th>
-											<th>Rendimiento</th>
-											<th>Cant.</th>
-											<th>Precio U.</th>
-											<th>Sub total</th>
-											<th></th>
-										</tr>
-									</thead>
-									<tbody>
-										<?php foreach($value->childETDetalleAnalisisUnitario as $item){ ?>
+								<div>
+									<table id="tableDetalleAnalisisUnitario<?=$value->id_analisis?>" class="table">
+										<thead>
 											<tr>
-												<td><?=$item->desc_detalle_analisis?></td>
-												<td><?=$item->cuadrilla?></td>
-												<td><?=$item->descripcion?></td>
-												<td><?=$item->rendimiento?></td>
-												<td><?=$item->cantidad?></td>
-												<td><?=$item->precio_unitario?></td>
-												<td><?=$item->precio_parcial?></td>
-												<td>
-													<a href="#" style="color: red;text-decoration: underline;" onclick="eliminarDetalleAnalisisUnitario(<?=$item->id_detalle_analisis_u?>, this);"><b>Eliminar</b></a>
-												</td>
+												<th>Descripción</th>
+												<th>Cuadrilla</th>
+												<th>Und.</th>
+												<th>Rendimiento</th>
+												<th>Cant.</th>
+												<th>Precio U.</th>
+												<th>Sub total</th>
+												<th></th>
 											</tr>
-										<?php } ?>
-									</tbody>
-								</table>
+										</thead>
+										<tbody>
+											<?php foreach($value->childETDetalleAnalisisUnitario as $item){ ?>
+												<tr>
+													<td><?=$item->desc_detalle_analisis?></td>
+													<td><?=$item->cuadrilla?></td>
+													<td><?=$item->descripcion?></td>
+													<td><?=$item->rendimiento?></td>
+													<td><?=$item->cantidad?></td>
+													<td><?=$item->precio_unitario?></td>
+													<td><?=$item->precio_parcial?></td>
+													<td>
+														<a href="#" style="color: red;text-decoration: underline;" onclick="eliminarDetalleAnalisisUnitario(<?=$item->id_detalle_analisis_u?>, this);"><b>Eliminar</b></a>
+													</td>
+												</tr>
+											<?php } ?>
+										</tbody>
+									</table>
+								</div>
 							</div>
-						</div>
-					</div>		
+						</div>		
+					</div>
 				</div>
 			</div>
-		</div>
-	<?php } ?>
+		<?php } ?>
+	</div>
 	<hr>
 	<div class="row" style="text-align: right;">
 		<button class="btn btn-danger" data-dismiss="modal">
@@ -275,6 +277,186 @@
 		{
 			$('#txtSubTotal'+idAnalisisUnitario).val('');
 		}
+	}
+
+	function registrarAnalisisUnitario()
+	{
+		var recurso=$('#selectRecurso').val();
+		var presupuestoAnalitico=$('#selectPresupuestoAnalitico').val();
+
+		var existeComponente=false;
+
+		/*$('#tableDetalleAnalisisUnitario'+idAnalisis+' > tbody').find('tr').each(function(index, element)
+		{
+			if(replaceAll(descripcion, ' ', '')==replaceAll($($(element).find('td')[0]).text(), ' ', ''))
+			{
+				existeComponente=true;
+
+				return false;
+			}
+		});
+
+		if(existeComponente)
+		{
+			swal(
+			{
+				title: '',
+				text: 'No se puede agregar dos veces el mismo detalle de análisis.',
+				type: 'error'
+			},
+			function(){});
+
+			return;
+		}*/
+
+		var idAnalisisParaReemplazar=1214353;
+
+		var htmlTemp='<div class="panel-group">'+
+			'<div class="panel panel-default">'+
+				'<div class="panel-heading" data-toggle="collapse" href="#collapse'+idAnalisisParaReemplazar+'" style="cursor: pointer;">'+
+					'<h4 class="panel-title">'+
+						'<a>'+'DescripciónRecursoParaReemplazar'+'</a>'+
+					'</h4>'+
+				'</div>'+
+				'<div id="collapse'+idAnalisisParaReemplazar+'" class="panel-collapse collapse">'+
+					'<div class="row">'+
+						'<div class="col-md-12 col-sm-12 col-xs-12">'+
+							'<div id="divFormDetallaAnalisisUnitario'+idAnalisisParaReemplazar+'" style="padding: 4px;">'+
+								'<div class="row">'+
+									'<div class="col-md-7 col-sm-7 col-xs-12">'+
+										'<label for="control-label">Descripción del insunmo</label>'+
+										'<div>'+
+											'<select name="selectDescripcionDetalleAnalisis" id="selectDescripcionDetalleAnalisis'+idAnalisisParaReemplazar+'" class="form-control"></select>'+
+										'</div>'+
+									'</div>'+
+									'<div class="col-md-2 col-sm-2 col-xs-12">'+
+										'<label for="control-label">Cuadrilla</label>'+
+										'<div>'+
+											'<input type="text" id="txtCuadrilla'+idAnalisisParaReemplazar+'" class="form-control" onkeyup="calcularCantidad('+idAnalisisParaReemplazar+');calcularSubTotal('+idAnalisisParaReemplazar+');">'+
+										'</div>'+
+									'</div>'+
+									'<div class="col-md-1 col-sm-1 col-xs-12">'+
+										'<label for="control-label">Horas</label>'+
+										'<div>'+
+											'<input type="text" id="txtHoras'+idAnalisisParaReemplazar+'" class="form-control" onkeyup="calcularCantidad('+idAnalisisParaReemplazar+');calcularSubTotal('+idAnalisisParaReemplazar+');" value="8">'+
+										'</div>'+
+									'</div>'+
+									'<div class="col-md-2 col-sm-2 col-xs-12">'+
+										'<label for="control-label">Undidad</label>'+
+										'<div>'+
+											'<select name="selectUnidadMedida" id="selectUnidadMedida'+idAnalisisParaReemplazar+'" class="form-control">';
+
+												<?php foreach($listaUnidadMedida as $item){ ?>
+													htmlTemp+='<option value="<?=$item->id_unidad?>"><?=$item->descripcion?></option>';
+												<?php } ?>
+
+											htmlTemp+='</select>'+
+										'</div>'+
+									'</div>'+
+								'</div>'+
+								'<div class="row">'+
+									'<div class="col-md-2 col-sm-2 col-xs-12">'+
+										'<label for="control-label">Rendimiento</label>'+
+										'<div>'+
+											'<input type="text" id="txtRendimiento'+idAnalisisParaReemplazar+'" class="form-control" onkeyup="calcularCantidad('+idAnalisisParaReemplazar+');calcularSubTotal('+idAnalisisParaReemplazar+');">'+
+										'</div>'+
+									'</div>'+
+									'<div class="col-md-2 col-sm-2 col-xs-12">'+
+										'<label for="control-label">Cantidad</label>'+
+										'<div>'+
+											'<input type="text" id="txtCantidad'+idAnalisisParaReemplazar+'" class="form-control" onkeyup="calcularRendimiento('+idAnalisisParaReemplazar+');calcularSubTotal('+idAnalisisParaReemplazar+');">'+
+										'</div>'+
+									'</div>'+
+									'<div class="col-md-3 col-sm-3 col-xs-12">'+
+										'<label for="control-label">Precio unitario</label>'+
+										'<div>'+
+											'<input type="text" id="txtPrecioUnitario'+idAnalisisParaReemplazar+'" class="form-control" onkeyup="calcularSubTotal('+idAnalisisParaReemplazar+');">'+
+										'</div>'+
+									'</div>'+
+									'<div class="col-md-3 col-sm-3 col-xs-12">'+
+										'<label for="control-label">Sub total</label>'+
+										'<div>'+
+											'<input type="text" id="txtSubTotal'+idAnalisisParaReemplazar+'" class="form-control" readonly="readonly">'+
+										'</div>'+
+									'</div>'+
+									'<div class="col-md-2 col-sm-2 col-xs-12">'+
+										'<label for="control-label">.</label>'+
+										'<div>'+
+											'<input type="button" class="btn btn-info" value="Agregar" style="width: 100%;" onclick="registrarDetalleAnalisisUnitario('+idAnalisisParaReemplazar+');">'+
+										'</div>'+
+									'</div>'+
+								'</div>'+
+							'</div>'+
+							'<div>'+
+								'<table id="tableDetalleAnalisisUnitario'+idAnalisisParaReemplazar+'" class="table">'+
+									'<thead>'+
+										'<tr>'+
+											'<th>Descripción</th>'+
+											'<th>Cuadrilla</th>'+
+											'<th>Und.</th>'+
+											'<th>Rendimiento</th>'+
+											'<th>Cant.</th>'+
+											'<th>Precio U.</th>'+
+											'<th>Sub total</th>'+
+											'<th></th>'+
+										'</tr>'+
+									'</thead>'+
+									'<tbody>'+
+									'</tbody>'+
+								'</table>'+
+							'</div>'+
+						'</div>'+
+					'</div>'+
+				'</div>'+
+			'</div>'+
+		'</div>';
+
+		$('#divListaAnalisisUnitario').append(htmlTemp);
+
+		$('#selectDescripcionDetalleAnalisis'+idAnalisisParaReemplazar).selectpicker({ liveSearch: true }).ajaxSelectPicker(
+		{
+	        ajax: {
+	            url: base_url+'index.php/ET_Insumo/verPorDescripcion',
+	            data: { valueSearch : '{{{q}}}' }
+	        },
+	        locale:
+	        {
+	            emptyTitle: 'Buscar insumo'
+	        },
+	        preprocessData: function(data)
+	        {
+	        	var dataForSelect=[];
+
+	        	for(var i=0; i<data.length; i++)
+	        	{
+	        		dataForSelect.push(
+	                {
+	                    "value" : data[i].desc_insumo,
+	                    "text" : data[i].desc_insum,
+	                    "data" :
+	                    {
+	                    	"id-unidad" : data[i].id_unidad
+	                    },
+	                    "disabled" : false
+	                });
+	        	}
+
+	            return dataForSelect;
+	        },
+	        preserveSelected: false
+	    });
+
+	    $('#selectDescripcionDetalleAnalisis'+idAnalisisParaReemplazar).on('change', function()
+	    {
+			var selected=$(this).find("option:selected").val();
+
+			if(selected.trim()!='')
+			{
+				$('#selectUnidadMedida'+$(this).attr('id').substring(32)).val($(this).find("option:selected").data('id-unidad'));
+			}
+	    });
+
+		limpiarText('divPresupuestoParaEjecucion', []);
 	}
 
 	function registrarDetalleAnalisisUnitario(idAnalisis)
