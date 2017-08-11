@@ -1,5 +1,5 @@
 <div class="form-horizontal">
-	<div class="row">
+	<div id="divInsertarAnalisisUnitario" class="row">
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<label for="control-label">Recurso</label>
 			<div>
@@ -224,6 +224,28 @@
 				$('#selectUnidadMedida'+$(this).attr('id').substring(32)).val($(this).find("option:selected").data('id-unidad'));
 			}
 	    });
+
+	    $('#divInsertarAnalisisUnitario').formValidation(
+		{
+			framework: 'bootstrap',
+			excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+			live: 'enabled',
+			message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+			trigger: null,
+			fields:
+			{
+				selectRecurso:
+				{
+					validators: 
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Recurso" es requerido.</b>'
+						}
+					}
+				}
+			}
+		});
 	});
 
 	function calcularCantidad(idAnalisisUnitario)
@@ -284,6 +306,15 @@
 
 	function registrarAnalisisUnitario()
 	{
+		$('#divInsertarAnalisisUnitario').data('formValidation').resetField($('#selectRecurso'));
+
+		$('#divInsertarAnalisisUnitario').data('formValidation').validate();
+
+		if(!($('#divInsertarAnalisisUnitario').data('formValidation').isValid()))
+		{
+			return;
+		}
+
 		var recurso=$('#selectRecurso').val();
 		var idRecurso=recurso.substring(0, recurso.indexOf(','));
 		var descripcionRecurso=recurso.substring(recurso.indexOf(',')+1, recurso.length);
@@ -343,6 +374,9 @@
 							'<div class="col-md-12 col-sm-12 col-xs-12">'+
 								'<div id="divFormDetallaAnalisisUnitario'+objectJSON.idAnalisis+'" style="padding: 4px;">'+
 									'<div class="row">'+
+										'<div class="col-md-12 col-sm-12 col-xs-12">'+
+											'<input type="button" class="btn btn-danger btn btn-xs" value="Eliminar este análisis unitario" onclick="eliminarAnalisisUnitario('+objectJSON.idAnalisis+', this);">'+
+										'</div>'+
 										'<div class="col-md-7 col-sm-7 col-xs-12">'+
 											'<label for="control-label">Descripción del insunmo</label>'+
 											'<div>'+
