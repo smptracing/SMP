@@ -292,6 +292,17 @@ class Expediente_Tecnico extends CI_Controller
 		$this->mydompdf->stream("ReporteMetrado.pdf", array("Attachment" => false));
 	}
 
+	function reportePresupuestoFF05()
+	{
+
+		$data='Nuevo';
+		$html= $this->load->view('front/Ejecucion/ExpedienteTecnico/reportePresupuestoFF05',$data, true);
+		$this->mydompdf->set_paper('latter','landscape');
+		$this->mydompdf->load_html($html);
+		$this->mydompdf->render();
+		$this->mydompdf->stream("reportePresupuestoFF05.pdf", array("Attachment" => false));
+	}
+
 	private function obtenerMetaAnidada($meta)
 	{
 		$temp=$this->Model_ET_Meta->ETMetaPorIdMetaPadre($meta->id_meta);
