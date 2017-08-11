@@ -78,14 +78,30 @@ class Model_ET_Expediente_Tecnico extends CI_Model
 	{
 		$data=$this->db->query("execute sp_Gestionar_ET_Expediente_Tecnico @Opcion='".$flat."',@id_et='".$id_et."'");
 
-		return $data->result();
+		return true;
 	}
-	function VerificarExpedienteAntesEliminar()
+
+	function VerificarComponenteExpedienteAntesEliminar($id_et)
 	{
-		$ExpedienteTecnico=$this->db->query("select ET_EXPEDIENTE_TECNICO.id_et from ET_EXPEDIENTE_TECNICO LEFT JOIN ET_PRESUPUESTO_ANALITICO ON ET_EXPEDIENTE_TECNICO.id_et=ET_PRESUPUESTO_ANALITICO.id_et  LEFT JOIN ET_COMPONENTE ON ET_EXPEDIENTE_TECNICO.id_et=ET_COMPONENTE.id_et   LEFT JOIN ET_IMG ON ET_EXPEDIENTE_TECNICO.id_et=ET_IMG.id_et where ET_EXPEDIENTE_TECNICO.id_et='".$id_et."'");
+		$ExpedienteTecnico=$this->db->query("select id_et from ET_COMPONENTE   where id_et ='".$id_et."'");
 
 		return $ExpedienteTecnico->result();
 	}
+	
+	function VerificarETPresupuestoAnaliticoExpedienteAntesEliminar($id_et)
+	{
+		$ExpedienteTecnico=$this->db->query("select id_et from  ET_PRESUPUESTO_ANALITICO  where id_et ='".$id_et."'");
+
+		return $ExpedienteTecnico->result();
+	}
+	
+	function VerificarETTareaGantt($id_et)
+	{
+		$ExpedienteTecnico=$this->db->query("select id_et from  ET_TAREA_GANTT where id_et ='".$id_et."'");
+
+		return $ExpedienteTecnico->result();
+	}
+
 	function ET_Img($id_ExpedienteTecnico)
 	{
 		$ET_Img=$this->db->query("select * from ET_IMG where ET_IMG.id_et='".$id_ExpedienteTecnico."' ");

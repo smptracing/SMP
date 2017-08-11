@@ -28,8 +28,7 @@
                                          </li>
                                         <li role="presentation" class=""><a  href="#tab_RubroEjecucion" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false"><b> Rubro de ejecucion</b></a>
                                         </li>
-                                        <li role="presentation" class=""><a  href="#tab_MetaPresupuestal" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false"><b>Meta Presupuestal</b></a>
-                                        </li>
+                                       
                                         <li role="presentation" class=""><a  href="#tab_ProgramaPresupuestal" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false"><b>Programa Presupuestal</b></a>
                                         </li>
                                 </ul>
@@ -120,46 +119,7 @@
                                         </div>
                                            <!-- / fin panel de rubro de ejecucion desde el row -->
 
-                                             <!-- /panel de progrma presupuestal -->
-                                        <div role="tabpanel" class="tab-pane fade" id="tab_MetaPresupuestal" aria-labelledby="home-tab">
-                                             <!-- /tabla programa presupuestal row -->
-                                            <div class="row">
-
-                                                  <div class="col-md-12 col-sm-12 col-xs-12">
-                                                        <div class="x_panel">
-                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraMetaPresupuestal" ><span class="fa fa-plus-circle"></span> Nuevo</button>
-                                                          <div class="x_title">
-
-                                                            <div class="clearfix"></div>
-
-                                                          </div>
-                                                          <div class="x_content">
-                                                            <table id="table-MetaPresupuestal" class="table table-condensed table-striped table-bordered table-hover" width="100%">
-                                                              <thead>
-                                                                <tr>
-
-                                                                  <th class="col-sm-1">ID</th>
-                                                                  <th>NOMBRE META </th>
-                                                                  <th>AÑO</th>
-                                                                  <th>PIM</th>
-                                                                  <th>NUMERO DE META</th>
-                                                                  <th>DEVENGADO</th>
-                                                                  <th>ACCIONES</th>
-                                                                </tr>
-                                                              </thead>
-
-
-                                                            </table>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-
-                                            </div>
-                                         <!-- / fin tabla de programa presupuestal desde el row -->
-                                        </div>
-                                           <!-- / fin panel de programa presupuestal desde el row -->
-
-
+                        
                                              <!-- /panel de progrma presupuestal -->
                                         <div role="tabpanel" class="tab-pane fade" id="tab_ProgramaPresupuestal" aria-labelledby="home-tab">
                                              <!-- /tabla programa presupuestal row -->
@@ -191,7 +151,7 @@
 
                                                                   <th class="col-sm-1">ID</th>
                                                                   <th>PROGRAMA PRESUPUESTAL </th>
-
+                                                                  <th>CODIGO PRESUPUESTAL </th>
                                                                   <th>ACCIONES</th>
                                                                 </tr>
                                                               </thead>
@@ -451,154 +411,6 @@
   </div>
 <!-- fin ventana para modificar un rubro de ejecucion -->
 
-
-<!-- /.ventana para registrar una meta presupuestal-->
-<div class="modal fade" id="VentanaRegistraMetaPresupuestal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Registrar una meta presupuestal</h4>
-        </div>
-        <div class="modal-body">
-         <div class="row">
-                    <div class="col-xs-12">
-                                        <!-- PAGE CONTENT BEGINS -->
-                  <form class="form-horizontal form-label-left" id="form-addMetaP" action="<?php echo base_url(); ?>MetaPresupuestal/Add_MetaP" method="POST">
-
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre Meta <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_NombreMetaP" name="txt_NombreMetaP" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Nombre de meta " required="required" type="text">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Año de la meta <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="date" id="date_AnioMetaP" name="date_AnioMetaP" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" required="required" type="text">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Presupuesto institucional modificado<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="text_Pim" name="text_Pim" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Presupuesto Institucional" required="required" type="text">
-                        </div>
-                      </div>
-                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Numero de Meta<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input  id="text_NumeroMeta" name="text_NumeroMeta" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Numero de Meta" required="required" type="text">
-                        </div>
-                      </div>
-                           <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Devengado<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input  id="text_Devengado" name="text_Devengado" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Devengado" required="required" type="text">
-                        </div>
-                      </div>
-                      <div class="ln_solid"></div>
-                      <div class="form-group">
-                        <div class="col-md-6 col-md-offset-3">
-                          <button id="send" type="submit" class="btn btn-success"> <span class="fa fa-save"></span> Guardar</button>
-                           <button  data-dismiss="modal" class="btn btn-danger"><span class="fa fa-close"></span>Cancelar
-                          </button>
-                        </div>
-                      </div>
-                    </form>
-                        </div><!-- /.span -->
-                 </div><!-- /.row -->
-        </div>
-        <div class="modal-footer">
-
-        </div>
-      </div>
-    </div>
-  </div>
-<!-- /.fin ventana para registrar meta presupuestal-->
-
-
-<!-- Ventana para modificar una meta presupuestal -->
-<div class="modal fade" id="VentanaModificarMetaP" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modificar Meta Presupuestal</h4>
-        </div>
-        <div class="modal-body">
-         <div class="row">
-                <div class="col-xs-12">
-
-                <form class="form-horizontal " id="form-ActualizarMetaP" action="<?php echo base_url(); ?>MetaPresupuestal/UpdateMetaP" method="POST" >
-
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre meta presupuestal<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_IdMetaPModif" type="hidden" name="txt_IdMetaPModif" type="text">
-                        </div>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                           <input id="txt_NombreMetaPU" name="txt_NombreMetaPU" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Nombre de meta presupuestal" required="required" type="text">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Año de la meta <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="date" id="date_AnioMetaPU" name="date_AnioMetaPU" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" required="required" type="text">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Presupuesto institucional modificado<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="text_PimU" name="text_PimU" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Presupuesto Institucional" required="required" type="text">
-                        </div>
-                      </div>
-                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Numero de Meta<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input  id="text_NumeroMetaU" name="text_NumeroMetaU" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Numero de Meta" required="required" type="text">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Devengado<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input  id="text_DevengadoU" name="text_DevengadoU" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Devengado" required="required" type="text">
-                        </div>
-                      </div>
-                      <div class="ln_solid"></div>
-                      <div class="form-group">
-                        <div class="col-md-6 col-md-offset-3">
-                           <button  type="submit" class="btn btn-success" >
-                            <span class="glyphicon glyphicon-floppy-disk"></span>
-                            Guardar
-                          </button>
-                          <button  data-dismiss="modal" class="btn btn-danger">
-                             <span class="glyphicon glyphicon-remove"></span>
-                            Cancelar
-                          </button>
-
-                        </div>
-                      </div>
-                </form><!-- FORMULARIO FIN PARA REGISTRA NUEVO SERVICIO ASOCIADO -->
-            </div><!-- /.span -->
-        </div><!-- /.row -->
-        </div>
-        <div class="modal-footer">
-
-        </div>
-      </div>
-    </div>
-  </div>
-<!-- fin ventana para modificar meta presupuestal-->
 <!-- /.ventana para registrar programa presuuestal -->
 <div class="modal fade" id="VentanaRegistraProgramaP" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
