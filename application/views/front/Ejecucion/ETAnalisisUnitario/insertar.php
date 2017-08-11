@@ -1,3 +1,17 @@
+<style>
+	.panel-heading .accordion-toggle:after
+	{
+		font-family: 'Glyphicons Halflings';
+		content: "\e114";
+		float: right;
+		color: grey;
+	}
+
+	.panel-heading .accordion-toggle.collapsed:after
+	{
+		content: "\e080";
+	}
+</style>
 <div class="form-horizontal">
 	<div id="divInsertarAnalisisUnitario" class="row">
 		<div class="col-md-6 col-sm-6 col-xs-12">
@@ -42,7 +56,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading" data-toggle="collapse" href="#collapse<?=$value->id_analisis?>" style="cursor: pointer;">
 						<h4 class="panel-title">
-							<a><?=$value->desc_recurso?></a>
+							<a class="accordion-toggle"><?=$value->desc_recurso?></a>
 						</h4>
 					</div>
 					<div id="collapse<?=$value->id_analisis?>" class="panel-collapse collapse">
@@ -492,7 +506,7 @@
 				'<div class="panel panel-default">'+
 					'<div class="panel-heading" data-toggle="collapse" href="#collapse'+objectJSON.idAnalisis+'" style="cursor: pointer;">'+
 						'<h4 class="panel-title">'+
-							'<a>'+descripcionRecurso+'</a>'+
+							'<a class="accordion-toggle">'+descripcionRecurso+'</a>'+
 						'</h4>'+
 					'</div>'+
 					'<div id="collapse'+objectJSON.idAnalisis+'" class="panel-collapse collapse">'+
