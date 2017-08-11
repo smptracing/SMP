@@ -20,7 +20,26 @@ class ET_Analisis_Unitario extends CI_Controller
 	{
 		if($_POST)
 		{
+			$this->db->trans_start();
 
+			$idAnalitico=$this->input->post('idAnalitico');
+			$idRecurso=$this->input->post('idRecurso');
+			$idDetallePartida=$this->input->post('idDetallePartida');
+
+			if($this->Model_ET_Analisis_Unitario->ETAnalisisUnitarioPorIdDetallePartidaAndIdRecurso($idDetallePartida, $idRecurso)!=null)
+			{
+				$this->db->trans_rollback();
+
+				echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede agregar dos veces el mismo recurso para el análisis unitario.']);exit;
+			}
+
+			$this->Model_ET_Analisis_Unitario->insertar(($idAnalitico==null || $idAnalitico=='') ? 'NULL' : $idAnalitico, $idRecurso, $idDetallePartida);
+
+			$idAnalisis=$this->Model_ET_Analisis_Unitario->ultimoId();
+
+			$this->db->trans_complete();
+
+			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Análisis unitario registrado correctamente.', 'idAnalisis' => $idAnalisis]);exit;
 		}
 
 		$idPartida=$this->input->get('idPartida');
@@ -39,6 +58,6 @@ class ET_Analisis_Unitario extends CI_Controller
 		$listaETRecurso=$this->Model_ET_Recurso->RecursoListar('R');
 		$listaETPresupuestoAnalitico=$this->Model_ET_Presupuesto_Analitico->ETPresupuestoAnaliticoPorIdET($this->input->get('idET'));
 
-		$this->load->view('Front/Ejecucion/ETAnalisisUnitario/insertar', ['listaUnidadMedida' => $listaUnidadMedida, 'listaETAnalisisUnitario' => $listaETAnalisisUnitario, 'listaETRecurso' => $listaETRecurso, 'listaETPresupuestoAnalitico' => $listaETPresupuestoAnalitico]);
+		$this->load->view('Front/Ejecucion/ETAnalisisUnitario/insertar', ['etDetallePartida' => $etDetallePartida, 'listaUnidadMedida' => $listaUnidadMedida, 'listaETAnalisisUnitario' => $listaETAnalisisUnitario, 'listaETRecurso' => $listaETRecurso, 'listaETPresupuestoAnalitico' => $listaETPresupuestoAnalitico]);
 	}
 }

@@ -5,7 +5,7 @@
 			<div>
 				<select name="selectRecurso" id="selectRecurso" class="form-control">
 					<?php foreach($listaETRecurso as $value){ ?>
-						<option value="<?=$value->id_recurso?>"><?=$value->desc_recurso?></option>
+						<option value="<?=$value->id_recurso.','.$value->desc_recurso?>"><?=$value->desc_recurso?></option>
 					<?php } ?>
 				</select>
 			</div>
@@ -282,13 +282,15 @@
 	function registrarAnalisisUnitario()
 	{
 		var recurso=$('#selectRecurso').val();
-		var presupuestoAnalitico=$('#selectPresupuestoAnalitico').val();
+		var idRecurso=recurso.substring(0, recurso.indexOf(','));
+		var descripcionRecurso=recurso.substring(recurso.indexOf(',')+1, recurso.length);
+		var idAnalitico=$('#selectPresupuestoAnalitico').val();
 
 		var existeComponente=false;
 
-		/*$('#tableDetalleAnalisisUnitario'+idAnalisis+' > tbody').find('tr').each(function(index, element)
+		$('#divListaAnalisisUnitario').find('> .panel-group > .panel-default > .panel-heading > h4 > a').each(function(index, element)
 		{
-			if(replaceAll(descripcion, ' ', '')==replaceAll($($(element).find('td')[0]).text(), ' ', ''))
+			if(replaceAll(descripcionRecurso, ' ', '')==replaceAll($(element).text(), ' ', ''))
 			{
 				existeComponente=true;
 
@@ -307,156 +309,172 @@
 			function(){});
 
 			return;
-		}*/
+		}
 
-		var idAnalisisParaReemplazar=1214353;
+		paginaAjaxJSON({ "idAnalitico" : idAnalitico, "idRecurso" : idRecurso, "idDetallePartida" : <?=$etDetallePartida->id_detalle_partida?> }, base_url+'index.php/ET_Analisis_Unitario/insertar', 'POST', null, function(objectJSON)
+		{
+			objectJSON=JSON.parse(objectJSON);
 
-		var htmlTemp='<div class="panel-group">'+
-			'<div class="panel panel-default">'+
-				'<div class="panel-heading" data-toggle="collapse" href="#collapse'+idAnalisisParaReemplazar+'" style="cursor: pointer;">'+
-					'<h4 class="panel-title">'+
-						'<a>'+'DescripciónRecursoParaReemplazar'+'</a>'+
-					'</h4>'+
-				'</div>'+
-				'<div id="collapse'+idAnalisisParaReemplazar+'" class="panel-collapse collapse">'+
-					'<div class="row">'+
-						'<div class="col-md-12 col-sm-12 col-xs-12">'+
-							'<div id="divFormDetallaAnalisisUnitario'+idAnalisisParaReemplazar+'" style="padding: 4px;">'+
-								'<div class="row">'+
-									'<div class="col-md-7 col-sm-7 col-xs-12">'+
-										'<label for="control-label">Descripción del insunmo</label>'+
-										'<div>'+
-											'<select name="selectDescripcionDetalleAnalisis" id="selectDescripcionDetalleAnalisis'+idAnalisisParaReemplazar+'" class="form-control"></select>'+
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+			},
+			function(){});
+
+			if(objectJSON.proceso=='Error')
+			{
+				return false;
+			}
+
+			var htmlTemp='<div class="panel-group">'+
+				'<div class="panel panel-default">'+
+					'<div class="panel-heading" data-toggle="collapse" href="#collapse'+objectJSON.idAnalisis+'" style="cursor: pointer;">'+
+						'<h4 class="panel-title">'+
+							'<a>'+descripcionRecurso+'</a>'+
+						'</h4>'+
+					'</div>'+
+					'<div id="collapse'+objectJSON.idAnalisis+'" class="panel-collapse collapse">'+
+						'<div class="row">'+
+							'<div class="col-md-12 col-sm-12 col-xs-12">'+
+								'<div id="divFormDetallaAnalisisUnitario'+objectJSON.idAnalisis+'" style="padding: 4px;">'+
+									'<div class="row">'+
+										'<div class="col-md-7 col-sm-7 col-xs-12">'+
+											'<label for="control-label">Descripción del insunmo</label>'+
+											'<div>'+
+												'<select name="selectDescripcionDetalleAnalisis" id="selectDescripcionDetalleAnalisis'+objectJSON.idAnalisis+'" class="form-control"></select>'+
+											'</div>'+
+										'</div>'+
+										'<div class="col-md-2 col-sm-2 col-xs-12">'+
+											'<label for="control-label">Cuadrilla</label>'+
+											'<div>'+
+												'<input type="text" id="txtCuadrilla'+objectJSON.idAnalisis+'" class="form-control" onkeyup="calcularCantidad('+objectJSON.idAnalisis+');calcularSubTotal('+objectJSON.idAnalisis+');">'+
+											'</div>'+
+										'</div>'+
+										'<div class="col-md-1 col-sm-1 col-xs-12">'+
+											'<label for="control-label">Horas</label>'+
+											'<div>'+
+												'<input type="text" id="txtHoras'+objectJSON.idAnalisis+'" class="form-control" onkeyup="calcularCantidad('+objectJSON.idAnalisis+');calcularSubTotal('+objectJSON.idAnalisis+');" value="8">'+
+											'</div>'+
+										'</div>'+
+										'<div class="col-md-2 col-sm-2 col-xs-12">'+
+											'<label for="control-label">Undidad</label>'+
+											'<div>'+
+												'<select name="selectUnidadMedida" id="selectUnidadMedida'+objectJSON.idAnalisis+'" class="form-control">';
+
+													<?php foreach($listaUnidadMedida as $item){ ?>
+														htmlTemp+='<option value="<?=$item->id_unidad?>"><?=$item->descripcion?></option>';
+													<?php } ?>
+
+												htmlTemp+='</select>'+
+											'</div>'+
 										'</div>'+
 									'</div>'+
-									'<div class="col-md-2 col-sm-2 col-xs-12">'+
-										'<label for="control-label">Cuadrilla</label>'+
-										'<div>'+
-											'<input type="text" id="txtCuadrilla'+idAnalisisParaReemplazar+'" class="form-control" onkeyup="calcularCantidad('+idAnalisisParaReemplazar+');calcularSubTotal('+idAnalisisParaReemplazar+');">'+
+									'<div class="row">'+
+										'<div class="col-md-2 col-sm-2 col-xs-12">'+
+											'<label for="control-label">Rendimiento</label>'+
+											'<div>'+
+												'<input type="text" id="txtRendimiento'+objectJSON.idAnalisis+'" class="form-control" onkeyup="calcularCantidad('+objectJSON.idAnalisis+');calcularSubTotal('+objectJSON.idAnalisis+');">'+
+											'</div>'+
 										'</div>'+
-									'</div>'+
-									'<div class="col-md-1 col-sm-1 col-xs-12">'+
-										'<label for="control-label">Horas</label>'+
-										'<div>'+
-											'<input type="text" id="txtHoras'+idAnalisisParaReemplazar+'" class="form-control" onkeyup="calcularCantidad('+idAnalisisParaReemplazar+');calcularSubTotal('+idAnalisisParaReemplazar+');" value="8">'+
+										'<div class="col-md-2 col-sm-2 col-xs-12">'+
+											'<label for="control-label">Cantidad</label>'+
+											'<div>'+
+												'<input type="text" id="txtCantidad'+objectJSON.idAnalisis+'" class="form-control" onkeyup="calcularRendimiento('+objectJSON.idAnalisis+');calcularSubTotal('+objectJSON.idAnalisis+');">'+
+											'</div>'+
 										'</div>'+
-									'</div>'+
-									'<div class="col-md-2 col-sm-2 col-xs-12">'+
-										'<label for="control-label">Undidad</label>'+
-										'<div>'+
-											'<select name="selectUnidadMedida" id="selectUnidadMedida'+idAnalisisParaReemplazar+'" class="form-control">';
-
-												<?php foreach($listaUnidadMedida as $item){ ?>
-													htmlTemp+='<option value="<?=$item->id_unidad?>"><?=$item->descripcion?></option>';
-												<?php } ?>
-
-											htmlTemp+='</select>'+
+										'<div class="col-md-3 col-sm-3 col-xs-12">'+
+											'<label for="control-label">Precio unitario</label>'+
+											'<div>'+
+												'<input type="text" id="txtPrecioUnitario'+objectJSON.idAnalisis+'" class="form-control" onkeyup="calcularSubTotal('+objectJSON.idAnalisis+');">'+
+											'</div>'+
+										'</div>'+
+										'<div class="col-md-3 col-sm-3 col-xs-12">'+
+											'<label for="control-label">Sub total</label>'+
+											'<div>'+
+												'<input type="text" id="txtSubTotal'+objectJSON.idAnalisis+'" class="form-control" readonly="readonly">'+
+											'</div>'+
+										'</div>'+
+										'<div class="col-md-2 col-sm-2 col-xs-12">'+
+											'<label for="control-label">.</label>'+
+											'<div>'+
+												'<input type="button" class="btn btn-info" value="Agregar" style="width: 100%;" onclick="registrarDetalleAnalisisUnitario('+objectJSON.idAnalisis+');">'+
+											'</div>'+
 										'</div>'+
 									'</div>'+
 								'</div>'+
-								'<div class="row">'+
-									'<div class="col-md-2 col-sm-2 col-xs-12">'+
-										'<label for="control-label">Rendimiento</label>'+
-										'<div>'+
-											'<input type="text" id="txtRendimiento'+idAnalisisParaReemplazar+'" class="form-control" onkeyup="calcularCantidad('+idAnalisisParaReemplazar+');calcularSubTotal('+idAnalisisParaReemplazar+');">'+
-										'</div>'+
-									'</div>'+
-									'<div class="col-md-2 col-sm-2 col-xs-12">'+
-										'<label for="control-label">Cantidad</label>'+
-										'<div>'+
-											'<input type="text" id="txtCantidad'+idAnalisisParaReemplazar+'" class="form-control" onkeyup="calcularRendimiento('+idAnalisisParaReemplazar+');calcularSubTotal('+idAnalisisParaReemplazar+');">'+
-										'</div>'+
-									'</div>'+
-									'<div class="col-md-3 col-sm-3 col-xs-12">'+
-										'<label for="control-label">Precio unitario</label>'+
-										'<div>'+
-											'<input type="text" id="txtPrecioUnitario'+idAnalisisParaReemplazar+'" class="form-control" onkeyup="calcularSubTotal('+idAnalisisParaReemplazar+');">'+
-										'</div>'+
-									'</div>'+
-									'<div class="col-md-3 col-sm-3 col-xs-12">'+
-										'<label for="control-label">Sub total</label>'+
-										'<div>'+
-											'<input type="text" id="txtSubTotal'+idAnalisisParaReemplazar+'" class="form-control" readonly="readonly">'+
-										'</div>'+
-									'</div>'+
-									'<div class="col-md-2 col-sm-2 col-xs-12">'+
-										'<label for="control-label">.</label>'+
-										'<div>'+
-											'<input type="button" class="btn btn-info" value="Agregar" style="width: 100%;" onclick="registrarDetalleAnalisisUnitario('+idAnalisisParaReemplazar+');">'+
-										'</div>'+
-									'</div>'+
+								'<div>'+
+									'<table id="tableDetalleAnalisisUnitario'+objectJSON.idAnalisis+'" class="table">'+
+										'<thead>'+
+											'<tr>'+
+												'<th>Descripción</th>'+
+												'<th>Cuadrilla</th>'+
+												'<th>Und.</th>'+
+												'<th>Rendimiento</th>'+
+												'<th>Cant.</th>'+
+												'<th>Precio U.</th>'+
+												'<th>Sub total</th>'+
+												'<th></th>'+
+											'</tr>'+
+										'</thead>'+
+										'<tbody>'+
+										'</tbody>'+
+									'</table>'+
 								'</div>'+
-							'</div>'+
-							'<div>'+
-								'<table id="tableDetalleAnalisisUnitario'+idAnalisisParaReemplazar+'" class="table">'+
-									'<thead>'+
-										'<tr>'+
-											'<th>Descripción</th>'+
-											'<th>Cuadrilla</th>'+
-											'<th>Und.</th>'+
-											'<th>Rendimiento</th>'+
-											'<th>Cant.</th>'+
-											'<th>Precio U.</th>'+
-											'<th>Sub total</th>'+
-											'<th></th>'+
-										'</tr>'+
-									'</thead>'+
-									'<tbody>'+
-									'</tbody>'+
-								'</table>'+
 							'</div>'+
 						'</div>'+
 					'</div>'+
 				'</div>'+
-			'</div>'+
-		'</div>';
+			'</div>';
 
-		$('#divListaAnalisisUnitario').append(htmlTemp);
+			$('#divListaAnalisisUnitario').append(htmlTemp);
 
-		$('#selectDescripcionDetalleAnalisis'+idAnalisisParaReemplazar).selectpicker({ liveSearch: true }).ajaxSelectPicker(
-		{
-	        ajax: {
-	            url: base_url+'index.php/ET_Insumo/verPorDescripcion',
-	            data: { valueSearch : '{{{q}}}' }
-	        },
-	        locale:
-	        {
-	            emptyTitle: 'Buscar insumo'
-	        },
-	        preprocessData: function(data)
-	        {
-	        	var dataForSelect=[];
-
-	        	for(var i=0; i<data.length; i++)
-	        	{
-	        		dataForSelect.push(
-	                {
-	                    "value" : data[i].desc_insumo,
-	                    "text" : data[i].desc_insum,
-	                    "data" :
-	                    {
-	                    	"id-unidad" : data[i].id_unidad
-	                    },
-	                    "disabled" : false
-	                });
-	        	}
-
-	            return dataForSelect;
-	        },
-	        preserveSelected: false
-	    });
-
-	    $('#selectDescripcionDetalleAnalisis'+idAnalisisParaReemplazar).on('change', function()
-	    {
-			var selected=$(this).find("option:selected").val();
-
-			if(selected.trim()!='')
+			$('#selectDescripcionDetalleAnalisis'+objectJSON.idAnalisis).selectpicker({ liveSearch: true }).ajaxSelectPicker(
 			{
-				$('#selectUnidadMedida'+$(this).attr('id').substring(32)).val($(this).find("option:selected").data('id-unidad'));
-			}
-	    });
+		        ajax: {
+		            url: base_url+'index.php/ET_Insumo/verPorDescripcion',
+		            data: { valueSearch : '{{{q}}}' }
+		        },
+		        locale:
+		        {
+		            emptyTitle: 'Buscar insumo'
+		        },
+		        preprocessData: function(data)
+		        {
+		        	var dataForSelect=[];
 
-		limpiarText('divPresupuestoParaEjecucion', []);
+		        	for(var i=0; i<data.length; i++)
+		        	{
+		        		dataForSelect.push(
+		                {
+		                    "value" : data[i].desc_insumo,
+		                    "text" : data[i].desc_insum,
+		                    "data" :
+		                    {
+		                    	"id-unidad" : data[i].id_unidad
+		                    },
+		                    "disabled" : false
+		                });
+		        	}
+
+		            return dataForSelect;
+		        },
+		        preserveSelected: false
+		    });
+
+		    $('#selectDescripcionDetalleAnalisis'+objectJSON.idAnalisis).on('change', function()
+		    {
+				var selected=$(this).find("option:selected").val();
+
+				if(selected.trim()!='')
+				{
+					$('#selectUnidadMedida'+$(this).attr('id').substring(32)).val($(this).find("option:selected").data('id-unidad'));
+				}
+		    });
+
+			limpiarText('divPresupuestoParaEjecucion', []);
+		}, false, true);
 	}
 
 	function registrarDetalleAnalisisUnitario(idAnalisis)

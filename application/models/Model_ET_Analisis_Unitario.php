@@ -28,4 +28,11 @@ class Model_ET_Analisis_Unitario extends CI_Model
 
 		return $data->result();
 	}
+
+	function ETAnalisisUnitarioPorIdDetallePartidaAndIdRecurso($idDetallePartida, $idRecurso)
+	{
+		$data=$this->db->query("select * from ET_ANALISIS_UNITARIO where id_detalle_partida=".$idDetallePartida." and id_recurso=".$idRecurso);
+
+		return count($data->result())==0 ? null : $data->result()[0];
+	}
 }

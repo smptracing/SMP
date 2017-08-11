@@ -33,7 +33,7 @@ class ET_Detalle_Analisis_Unitario extends CI_Controller
 
 		$this->Model_ET_Detalle_Analisis_Unitario->insertar($idAnalisis, $idUnidad, $descripcion, $cuadrilla, $cantidad, $precioUnitario, $precioParcial, $rendimiento);
 
-		$idDetalleAnalisisUnitario=$this->Model_ET_Detalle_Analisis_Unitario->ultimoId($idUnidad);
+		$idDetalleAnalisisUnitario=$this->Model_ET_Detalle_Analisis_Unitario->ultimoId();
 
 		$unidadMedida=$this->Model_Unidad_Medida->UnidadMedida($idUnidad);
 
