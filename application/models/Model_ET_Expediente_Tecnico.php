@@ -92,4 +92,9 @@ class Model_ET_Expediente_Tecnico extends CI_Model
 
 		return $ET_Img->result();
 	}
+	public function Ultimo_Img()
+	{
+		$Ultimo_Img=$this->db->query("select max(id_img) as id_img from ET_IMG");
+        return $Ultimo_Img->result()[0];
+    }
 }
