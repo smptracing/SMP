@@ -341,7 +341,59 @@
 		limpiarText('tabPaneDetalleGasto'+idTab, []);
 	}
 
-	var txtDescripcionDetalleGastoValidators, selectIdUnidadValidators, txtCantidadDetalleGastoValidators, txtCostoUnitarioDetalleGastoValidators;
+	var txtDescripcionDetalleGastoValidators=
+	{
+		validators : 
+		{
+			notEmpty:
+			{
+				message: '<b style="color: red;">El campo "Descripción" es requerido.</b>'
+			}
+		}
+	};
+	
+	var selectIdUnidadValidators=
+	{
+		validators: 
+		{
+			notEmpty:
+			{
+				message: '<b style="color: red;">El campo "Unidad" es requerido.</b>'
+			}
+		}
+	};
+	
+	var txtCantidadDetalleGastoValidators=
+	{
+		validators:
+		{
+			notEmpty:
+			{
+				message: '<b style="color: red;">El campo "Cantidad" es requerido.</b>'
+			},
+			regexp:
+			{
+				regexp: /^\d*$/,
+				message: '<b style="color: red;">El campo "Cantidad" debe ser un número entero.</b>'
+			}
+		}
+	};
+	
+	var txtCostoUnitarioDetalleGastoValidators=
+	{
+		validators:
+		{
+			notEmpty:
+			{
+				message: '<b style="color: red;">El campo "Consto U." es requerido.</b>'
+			},
+			regexp:
+			{
+				regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
+				message: '<b style="color: red;">El campo "Costo U." debe ser un valor en soles.</b>'
+			}
+		}
+	};
 
 	$(function()
 	{
@@ -371,57 +423,6 @@
 				},
 			}
 		});
-
-		txtDescripcionDetalleGastoValidators=
-		{
-			validators : 
-			{
-				notEmpty:
-				{
-					message: '<b style="color: red;">El campo "Descripción" es requerido.</b>'
-				}
-			}
-		},
-		selectIdUnidadValidators=
-		{
-			validators: 
-			{
-				notEmpty:
-				{
-					message: '<b style="color: red;">El campo "Unidad" es requerido.</b>'
-				}
-			}
-		},
-		txtCantidadDetalleGastoValidators=
-		{
-			validators:
-			{
-				notEmpty:
-				{
-					message: '<b style="color: red;">El campo "Cantidad" es requerido.</b>'
-				},
-				regexp:
-				{
-					regexp: /^\d*$/,
-					message: '<b style="color: red;">El campo "Cantidad" debe ser un número entero.</b>'
-				}
-			}
-		},
-		txtCostoUnitarioDetalleGastoValidators=
-		{
-			validators:
-			{
-				notEmpty:
-				{
-					message: '<b style="color: red;">El campo "Consto U." es requerido.</b>'
-				},
-				regexp:
-				{
-					regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
-					message: '<b style="color: red;">El campo "Costo U." debe ser un valor en soles.</b>'
-				}
-			}
-		};
 
 		$('#divTipoGasto').formValidation(
 		{

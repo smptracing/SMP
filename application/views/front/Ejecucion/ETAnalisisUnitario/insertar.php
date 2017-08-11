@@ -56,25 +56,25 @@
 										<div class="col-md-7 col-sm-7 col-xs-12">
 											<label for="control-label">Descripción del insunmo</label>
 											<div>
-												<select name="selectDescripcionDetalleAnalisis" id="selectDescripcionDetalleAnalisis<?=$value->id_analisis?>" class="form-control"></select>
+												<select name="selectDescripcionDetalleAnalisis<?=$value->id_analisis?>" id="selectDescripcionDetalleAnalisis<?=$value->id_analisis?>" class="form-control"></select>
 											</div>
 										</div>
 										<div class="col-md-2 col-sm-2 col-xs-12">
 											<label for="control-label">Cuadrilla</label>
 											<div>
-												<input type="text" id="txtCuadrilla<?=$value->id_analisis?>" class="form-control" onkeyup="calcularCantidad(<?=$value->id_analisis?>);calcularSubTotal(<?=$value->id_analisis?>);">
+												<input type="text" id="txtCuadrilla<?=$value->id_analisis?>" name="txtCuadrilla<?=$value->id_analisis?>" class="form-control" onkeyup="calcularCantidad(<?=$value->id_analisis?>);calcularSubTotal(<?=$value->id_analisis?>);">
 											</div>
 										</div>
 										<div class="col-md-1 col-sm-1 col-xs-12">
 											<label for="control-label">Horas</label>
 											<div>
-												<input type="text" id="txtHoras<?=$value->id_analisis?>" class="form-control" onkeyup="calcularCantidad(<?=$value->id_analisis?>);calcularSubTotal(<?=$value->id_analisis?>);" value="8">
+												<input type="text" id="txtHoras<?=$value->id_analisis?>" name="txtHoras<?=$value->id_analisis?>" class="form-control" onkeyup="calcularCantidad(<?=$value->id_analisis?>);calcularSubTotal(<?=$value->id_analisis?>);" value="8">
 											</div>
 										</div>
 										<div class="col-md-2 col-sm-2 col-xs-12">
 											<label for="control-label">Undidad</label>
 											<div>
-												<select name="selectUnidadMedida" id="selectUnidadMedida<?=$value->id_analisis?>" class="form-control">
+												<select name="selectUnidadMedida<?=$value->id_analisis?>" id="selectUnidadMedida<?=$value->id_analisis?>" class="form-control">
 													<?php foreach($listaUnidadMedida as $item){ ?>
 														<option value="<?=$item->id_unidad?>"><?=$item->descripcion?></option>
 													<?php } ?>
@@ -86,19 +86,19 @@
 										<div class="col-md-2 col-sm-2 col-xs-12">
 											<label for="control-label">Rendimiento</label>
 											<div>
-												<input type="text" id="txtRendimiento<?=$value->id_analisis?>" class="form-control" onkeyup="calcularCantidad(<?=$value->id_analisis?>);calcularSubTotal(<?=$value->id_analisis?>);">
+												<input type="text" id="txtRendimiento<?=$value->id_analisis?>" name="txtRendimiento<?=$value->id_analisis?>" class="form-control" onkeyup="calcularCantidad(<?=$value->id_analisis?>);calcularSubTotal(<?=$value->id_analisis?>);">
 											</div>
 										</div>
 										<div class="col-md-2 col-sm-2 col-xs-12">
 											<label for="control-label">Cantidad</label>
 											<div>
-												<input type="text" id="txtCantidad<?=$value->id_analisis?>" class="form-control" onkeyup="calcularRendimiento(<?=$value->id_analisis?>);calcularSubTotal(<?=$value->id_analisis?>);">
+												<input type="text" id="txtCantidad<?=$value->id_analisis?>" name="txtCantidad<?=$value->id_analisis?>" class="form-control" onkeyup="calcularRendimiento(<?=$value->id_analisis?>);calcularSubTotal(<?=$value->id_analisis?>);">
 											</div>
 										</div>
 										<div class="col-md-3 col-sm-3 col-xs-12">
 											<label for="control-label">Precio unitario</label>
 											<div>
-												<input type="text" id="txtPrecioUnitario<?=$value->id_analisis?>" class="form-control" onkeyup="calcularSubTotal(<?=$value->id_analisis?>);">
+												<input type="text" id="txtPrecioUnitario<?=$value->id_analisis?>" name="txtPrecioUnitario<?=$value->id_analisis?>" class="form-control" onkeyup="calcularSubTotal(<?=$value->id_analisis?>);">
 											</div>
 										</div>
 										<div class="col-md-3 col-sm-3 col-xs-12">
@@ -163,6 +163,108 @@
 	</div>
 </div>
 <script>
+	var descripcionInsumoValidators=
+	{
+		validators : 
+		{
+			notEmpty:
+			{
+				message: '<b style="color: red;">El campo "Descripción del insumo" es requerido.</b>'
+			}
+		}
+	};
+
+	var cuadrillaValidators=
+	{
+		validators : 
+		{
+			notEmpty:
+			{
+				message: '<b style="color: red;">El campo "Cuadrilla" es requerido.</b>'
+			},
+			regexp:
+            {
+                regexp: /^\d*$/,
+                message: '<b style="color: red;">El campo "Cuadrilla" debe ser un número entero.</b>'
+            }
+		}
+	};
+
+	var horaValidators=
+	{
+		validators : 
+		{
+			notEmpty:
+			{
+				message: '<b style="color: red;">El campo "Hora" es requerido.</b>'
+			},
+			regexp:
+            {
+                regexp: /^\d*$/,
+                message: '<b style="color: red;">El campo "Hora" debe ser un número entero.</b>'
+            }
+		}
+	};
+
+	var unidadValidators=
+	{
+		validators : 
+		{
+			notEmpty:
+			{
+				message: '<b style="color: red;">El campo "Unidad" es requerido.</b>'
+			}
+		}
+	};
+
+	var rendimientoValidators=
+	{
+		validators : 
+		{
+			notEmpty:
+			{
+				message: '<b style="color: red;">El campo "Rendimiento" es requerido.</b>'
+			},
+			regexp:
+			{
+				regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
+				message: '<b style="color: red;">El campo "Rendimiento" debe ser un valor en decimales.</b>'
+			}
+		}
+	};
+
+	var cantidadValidators=
+	{
+		validators : 
+		{
+			notEmpty:
+			{
+				message: '<b style="color: red;">El campo "Cantidad" es requerido.</b>'
+			},
+			regexp:
+			{
+				regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
+				message: '<b style="color: red;">El campo "Cantidad" debe ser un valor en decimales.</b>'
+			}
+		}
+	};
+
+	var precioUnitarioValidators=
+	{
+		validators : 
+		{
+			notEmpty:
+			{
+				message: '<b style="color: red;">El campo "Precio unitario" es requerido.</b>'
+			},
+			regexp:
+			{
+				regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
+				message: '<b style="color: red;">El campo "Precio unitario" debe ser un valor en soles.</b>'
+			}
+		}
+	};
+
 	$(function()
 	{
 		$('#selectRecurso').selectpicker({ liveSearch: true });
@@ -246,6 +348,30 @@
 				}
 			}
 		});
+
+		<?php foreach($listaETAnalisisUnitario as $key => $value){ ?>
+			$('#divFormDetallaAnalisisUnitario<?=$value->id_analisis?>').formValidation(
+			{
+				framework : 'bootstrap',
+				excluded : [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+				live : 'enabled',
+				message : '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+				trigger : null,
+				fields :
+				{
+					
+				}
+			});
+
+			$('#divFormDetallaAnalisisUnitario<?=$value->id_analisis?>')
+				.formValidation('addField', 'selectDescripcionDetalleAnalisis<?=$value->id_analisis?>', descripcionInsumoValidators)
+				.formValidation('addField', 'txtCuadrilla<?=$value->id_analisis?>', cuadrillaValidators)
+				.formValidation('addField', 'txtHoras<?=$value->id_analisis?>', horaValidators)
+				.formValidation('addField', 'selectUnidadMedida<?=$value->id_analisis?>', unidadValidators)
+				.formValidation('addField', 'txtRendimiento<?=$value->id_analisis?>', rendimientoValidators)
+				.formValidation('addField', 'txtCantidad<?=$value->id_analisis?>', cantidadValidators)
+				.formValidation('addField', 'txtPrecioUnitario<?=$value->id_analisis?>', precioUnitarioValidators);
+		<?php } ?>
 	});
 
 	function calcularCantidad(idAnalisisUnitario)
@@ -380,25 +506,25 @@
 										'<div class="col-md-7 col-sm-7 col-xs-12">'+
 											'<label for="control-label">Descripción del insunmo</label>'+
 											'<div>'+
-												'<select name="selectDescripcionDetalleAnalisis" id="selectDescripcionDetalleAnalisis'+objectJSON.idAnalisis+'" class="form-control"></select>'+
+												'<select name="selectDescripcionDetalleAnalisis'+objectJSON.idAnalisis+'" id="selectDescripcionDetalleAnalisis'+objectJSON.idAnalisis+'" class="form-control"></select>'+
 											'</div>'+
 										'</div>'+
 										'<div class="col-md-2 col-sm-2 col-xs-12">'+
 											'<label for="control-label">Cuadrilla</label>'+
 											'<div>'+
-												'<input type="text" id="txtCuadrilla'+objectJSON.idAnalisis+'" class="form-control" onkeyup="calcularCantidad('+objectJSON.idAnalisis+');calcularSubTotal('+objectJSON.idAnalisis+');">'+
+												'<input type="text" id="txtCuadrilla'+objectJSON.idAnalisis+'" name="txtCuadrilla'+objectJSON.idAnalisis+'" class="form-control" onkeyup="calcularCantidad('+objectJSON.idAnalisis+');calcularSubTotal('+objectJSON.idAnalisis+');">'+
 											'</div>'+
 										'</div>'+
 										'<div class="col-md-1 col-sm-1 col-xs-12">'+
 											'<label for="control-label">Horas</label>'+
 											'<div>'+
-												'<input type="text" id="txtHoras'+objectJSON.idAnalisis+'" class="form-control" onkeyup="calcularCantidad('+objectJSON.idAnalisis+');calcularSubTotal('+objectJSON.idAnalisis+');" value="8">'+
+												'<input type="text" id="txtHoras'+objectJSON.idAnalisis+'" name="txtHoras'+objectJSON.idAnalisis+'" class="form-control" onkeyup="calcularCantidad('+objectJSON.idAnalisis+');calcularSubTotal('+objectJSON.idAnalisis+');" value="8">'+
 											'</div>'+
 										'</div>'+
 										'<div class="col-md-2 col-sm-2 col-xs-12">'+
 											'<label for="control-label">Undidad</label>'+
 											'<div>'+
-												'<select name="selectUnidadMedida" id="selectUnidadMedida'+objectJSON.idAnalisis+'" class="form-control">';
+												'<select name="selectUnidadMedida'+objectJSON.idAnalisis+'" id="selectUnidadMedida'+objectJSON.idAnalisis+'" class="form-control">';
 
 													<?php foreach($listaUnidadMedida as $item){ ?>
 														htmlTemp+='<option value="<?=$item->id_unidad?>"><?=$item->descripcion?></option>';
@@ -412,25 +538,25 @@
 										'<div class="col-md-2 col-sm-2 col-xs-12">'+
 											'<label for="control-label">Rendimiento</label>'+
 											'<div>'+
-												'<input type="text" id="txtRendimiento'+objectJSON.idAnalisis+'" class="form-control" onkeyup="calcularCantidad('+objectJSON.idAnalisis+');calcularSubTotal('+objectJSON.idAnalisis+');">'+
+												'<input type="text" id="txtRendimiento'+objectJSON.idAnalisis+'" name="txtRendimiento'+objectJSON.idAnalisis+'" class="form-control" onkeyup="calcularCantidad('+objectJSON.idAnalisis+');calcularSubTotal('+objectJSON.idAnalisis+');">'+
 											'</div>'+
 										'</div>'+
 										'<div class="col-md-2 col-sm-2 col-xs-12">'+
 											'<label for="control-label">Cantidad</label>'+
 											'<div>'+
-												'<input type="text" id="txtCantidad'+objectJSON.idAnalisis+'" class="form-control" onkeyup="calcularRendimiento('+objectJSON.idAnalisis+');calcularSubTotal('+objectJSON.idAnalisis+');">'+
+												'<input type="text" id="txtCantidad'+objectJSON.idAnalisis+'" name="txtCantidad'+objectJSON.idAnalisis+'" class="form-control" onkeyup="calcularRendimiento('+objectJSON.idAnalisis+');calcularSubTotal('+objectJSON.idAnalisis+');">'+
 											'</div>'+
 										'</div>'+
 										'<div class="col-md-3 col-sm-3 col-xs-12">'+
 											'<label for="control-label">Precio unitario</label>'+
 											'<div>'+
-												'<input type="text" id="txtPrecioUnitario'+objectJSON.idAnalisis+'" class="form-control" onkeyup="calcularSubTotal('+objectJSON.idAnalisis+');">'+
+												'<input type="text" id="txtPrecioUnitario'+objectJSON.idAnalisis+'" name="txtPrecioUnitario'+objectJSON.idAnalisis+'" class="form-control" onkeyup="calcularSubTotal('+objectJSON.idAnalisis+');">'+
 											'</div>'+
 										'</div>'+
 										'<div class="col-md-3 col-sm-3 col-xs-12">'+
 											'<label for="control-label">Sub total</label>'+
 											'<div>'+
-												'<input type="text" id="txtSubTotal'+objectJSON.idAnalisis+'" class="form-control" readonly="readonly">'+
+												'<input type="text" id="txtSubTotal'+objectJSON.idAnalisis+'" name="txtSubTotal'+objectJSON.idAnalisis+'" class="form-control" readonly="readonly">'+
 											'</div>'+
 										'</div>'+
 										'<div class="col-md-2 col-sm-2 col-xs-12">'+
@@ -511,11 +637,48 @@
 		    });
 
 			limpiarText('divPresupuestoParaEjecucion', []);
+
+			$('#divFormDetallaAnalisisUnitario'+objectJSON.idAnalisis).formValidation(
+			{
+				framework : 'bootstrap',
+				excluded : [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+				live : 'enabled',
+				message : '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+				trigger : null,
+				fields :
+				{
+					
+				}
+			});
+
+			$('#divFormDetallaAnalisisUnitario'+objectJSON.idAnalisis)
+				.formValidation('addField', 'selectDescripcionDetalleAnalisis'+objectJSON.idAnalisis, descripcionInsumoValidators)
+				.formValidation('addField', 'txtCuadrilla'+objectJSON.idAnalisis, cuadrillaValidators)
+				.formValidation('addField', 'txtHoras'+objectJSON.idAnalisis, horaValidators)
+				.formValidation('addField', 'selectUnidadMedida'+objectJSON.idAnalisis, unidadValidators)
+				.formValidation('addField', 'txtRendimiento'+objectJSON.idAnalisis, rendimientoValidators)
+				.formValidation('addField', 'txtCantidad'+objectJSON.idAnalisis, cantidadValidators)
+				.formValidation('addField', 'txtPrecioUnitario'+objectJSON.idAnalisis, precioUnitarioValidators);
 		}, false, true);
 	}
 
 	function registrarDetalleAnalisisUnitario(idAnalisis)
 	{
+		$('#divFormDetallaAnalisisUnitario'+idAnalisis).data('formValidation').resetField($('#selectDescripcionDetalleAnalisis'+idAnalisis));
+		$('#divFormDetallaAnalisisUnitario'+idAnalisis).data('formValidation').resetField($('#txtCuadrilla'+idAnalisis));
+		$('#divFormDetallaAnalisisUnitario'+idAnalisis).data('formValidation').resetField($('#txtHoras'+idAnalisis));
+		$('#divFormDetallaAnalisisUnitario'+idAnalisis).data('formValidation').resetField($('#selectUnidadMedida'+idAnalisis));
+		$('#divFormDetallaAnalisisUnitario'+idAnalisis).data('formValidation').resetField($('#txtRendimiento'+idAnalisis));
+		$('#divFormDetallaAnalisisUnitario'+idAnalisis).data('formValidation').resetField($('#txtCantidad'+idAnalisis));
+		$('#divFormDetallaAnalisisUnitario'+idAnalisis).data('formValidation').resetField($('#txtPrecioUnitario'+idAnalisis));
+
+		$('#divFormDetallaAnalisisUnitario'+idAnalisis).data('formValidation').validate();
+
+		if(!($('#divFormDetallaAnalisisUnitario'+idAnalisis).data('formValidation').isValid()))
+		{
+			return;
+		}
+
 		var descripcion=$('#selectDescripcionDetalleAnalisis'+idAnalisis).val()==null ? '' : $('#selectDescripcionDetalleAnalisis'+idAnalisis).val();
 		var cuadrilla=$('#txtCuadrilla'+idAnalisis).val();
 		var unidadMedida=$('#selectUnidadMedida'+idAnalisis).val();
