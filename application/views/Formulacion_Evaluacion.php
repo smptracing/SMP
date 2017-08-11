@@ -10,6 +10,7 @@
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-pencil"></i></div>
                   <div class="count">179</div>
+                   <div id="CantidadEstudioFormulacion"></div>
                   <h3>Formulación</h3>
                   <p>$</p>
                 </div>
@@ -18,6 +19,7 @@
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-pencil-square-o"></i></div>
                   <div class="count">179</div>
+                  <div id="CantidadEstudioEvaluacion"></div>
                   <h3>Evaluación</h3>
                   <p>$</p>
                 </div>
@@ -26,6 +28,7 @@
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-check-square-o"></i></div>
                   <div class="count">179</div>
+                      <div id="CantidadEstudioViabilizado"></div>
                   <h3>Viabilizados</h3>
                   <p>$</p>
                 </div>
@@ -34,6 +37,7 @@
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-check-square-o"></i></div>
                   <div class="count">179</div>
+                  <div id="CantidadEstudioAprobado"></div>
                   <h3>Aprobados</h3>
                   <p>$</p>
                 </div>
@@ -43,13 +47,13 @@
               <div class="col-md-8 col-sm-8 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Bar Graph</h2>
+                    <h2>REPORTE EN BARRAS</h2>
                     
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
 
-                    <div id="mainb" style="height:350px;"></div>
+                    <div id="ReporteBarras" style="height:350px;"></div>
 
                   </div>
                 </div>
@@ -121,7 +125,7 @@
                   </div>
                   <div class="x_content">
 
-                    <div id="echart_scatter" style="height:350px;"></div>
+                    <div id="Avance" style="height:350px;"></div>
 
                   </div>
                 </div>
