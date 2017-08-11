@@ -117,7 +117,6 @@ class Expediente_Tecnico extends CI_Controller
 			$config = array(
 				"upload_path" => "./uploads/ImageExpediente",
 				'allowed_types' => "jpg|png"
-
 			);
 			$variablefile= $_FILES;
 			$info = array();
