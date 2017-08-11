@@ -60,4 +60,17 @@ class ET_Analisis_Unitario extends CI_Controller
 
 		$this->load->view('Front/Ejecucion/ETAnalisisUnitario/insertar', ['etDetallePartida' => $etDetallePartida, 'listaUnidadMedida' => $listaUnidadMedida, 'listaETAnalisisUnitario' => $listaETAnalisisUnitario, 'listaETRecurso' => $listaETRecurso, 'listaETPresupuestoAnalitico' => $listaETPresupuestoAnalitico]);
 	}
+
+	public function eliminar()
+	{
+		$this->db->trans_start();
+
+		$idAnalisis=$this->input->post('idAnalisis');
+
+		$this->Model_ET_Analisis_Unitario->eliminar($idAnalisis);
+
+		$this->db->trans_complete();
+
+		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Análisis unitario eliminado correctamente.']);exit;
+	}
 }
