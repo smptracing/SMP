@@ -314,6 +314,7 @@ $(function()
                         cache:false,
                         success:function(respuesta)
                         {
+                        	alert(respuesta);
                         	var html;
                         	swal("ELIMINADO!", "Se elimino correctamente la imagen del expediente técnico.", "success");
                         	$("#table-img" ).remove();
@@ -321,8 +322,8 @@ $(function()
                         	
                         	$.each(respuesta,function(index,element)
                         	{
-                        		html +='<tr class="success">';
-                        		html +='<td> <img class="img-thumbnail .img-responsive" src="<?= base_url();?>uploads/ImageExpediente/<?= $item->desc_img?>"></td>';
+                        		html +='<tr>';
+                        		html +='<td> <img class="img-thumbnail .img-responsive" src="<?= base_url();?>uploads/ImageExpediente/'+element.desc_img+'"></td>';
                         		html +='<td> <button onclick="EliminarImagen('+element.id_img+','+element.id_et+');"  title="Eliminar imagen del Expediente Técnico"  class="eliminarExpediente btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button></td>';
                         		html +='</tr>';
                         	});
