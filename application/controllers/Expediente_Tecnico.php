@@ -293,10 +293,9 @@ class Expediente_Tecnico extends CI_Controller
 	}
 
 
-	function reportePdfPresupuestoAnalitico()
+	public function reportePdfPresupuestoAnalitico()
 	{
-
-        //Carga la librería que agregamos
+	    //Carga la librería que agregamos
         $this->load->library('mydompdf');
         //$saludo será una variable dentro la vista
         $data["saludo"] = "Hola mundo!";
@@ -308,9 +307,9 @@ class Expediente_Tecnico extends CI_Controller
         $this->mydompdf->stream("reportePdfPresupuestoAnalitico.pdf", array(
             "Attachment" => false
         ));
-	function reportePresupuestoFF05()
+    }
+	public function reportePresupuestoFF05()
 	{
-
 		$data='Nuevo';
 		$html= $this->load->view('front/Ejecucion/ExpedienteTecnico/reportePresupuestoFF05',$data, true);
 		$this->mydompdf->set_paper('latter','landscape');
@@ -318,7 +317,6 @@ class Expediente_Tecnico extends CI_Controller
 		$this->mydompdf->render();
 		$this->mydompdf->stream("reportePresupuestoFF05.pdf", array("Attachment" => false));
 	}
-
 	private function obtenerMetaAnidada($meta)
 	{
 		$temp=$this->Model_ET_Meta->ETMetaPorIdMetaPadre($meta->id_meta);
