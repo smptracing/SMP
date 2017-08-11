@@ -232,27 +232,23 @@
 						</div>	
 					</div>	
 					<div class="row">
-						<div  id="divfotos" class="col-md-4 col-sm-3 col-xs-12">
+						<div  id="divfotos" class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Fotografías(04 minimo)</label>
 							<div>
 								<input  type="file" name="imagen[]" id="imagen" value="" placeholder="Fotografias"   autocomplete="off" multiple  >
 							<br>
 
 							<table id="table-img" style="text-align: center;" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
-								<!--<thead>
+								<thead>
 									<tr>
-										
 										<td>Imagen</td>
 										<td class="col-md-2 col-md-2 col-xs-12"></td>
 									</tr>
-								</thead>-->
+								</thead>
 								<?php foreach($listaimg as $item){ ?>
-								  	<tr>
-										<!--<td>
-											<?= $item->id_img?>
-										</td>-->
+								  	<tr class="success">
 										<td>
-											<?= $item->desc_img?>
+											<img class="img-thumbnail .img-responsive" src="<?= base_url();?>uploads/ImageExpediente/<?= $item->desc_img?>">
 										</td>
 										<td><button onclick="EliminarImagen(<?=$item->id_img?>,<?=$item->id_et?>);"  title='Eliminar imagen del Expediente Técnico'  class='eliminarExpediente btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button></td>
 								  	</tr>
@@ -325,8 +321,8 @@ $(function()
                         	
                         	$.each(respuesta,function(index,element)
                         	{
-                        		html +='<tr>';
-                        		html +='<td>'+element.desc_img+'</td>';
+                        		html +='<tr class="success">';
+                        		html +='<td> <img class="img-thumbnail .img-responsive" src="<?= base_url();?>uploads/ImageExpediente/<?= $item->desc_img?>"></td>';
                         		html +='<td> <button onclick="EliminarImagen('+element.id_img+','+element.id_et+');"  title="Eliminar imagen del Expediente Técnico"  class="eliminarExpediente btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button></td>';
                         		html +='</tr>';
                         	});
