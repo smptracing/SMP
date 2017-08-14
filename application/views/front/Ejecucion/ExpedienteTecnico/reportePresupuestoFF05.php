@@ -3,14 +3,19 @@
       <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/dompdf.css">
   </head>
 <style>
-#presupuesto li {
-	display:inline;
-}
-#presupuesto a {
-	text-decoration:none;
-	padding:5px;
-}
-
+	#presupuesto li {
+		display:inline;
+	}
+	#presupuesto a {
+		text-decoration:none;
+		padding:5px;
+	}
+	.romanos_upper{
+	  list-style-type:upper-roman;
+	}
+	.romanos_lower{
+	  list-style-type:lower-roman;
+	}
 </style>
 <body>
 
@@ -76,27 +81,13 @@
   <footer>
       <div id="footer_texto"> </div>
   </footer>
-
   <div>
-  	<div style="text-align: center;margin-top: -50px;">FORMATO FF-05<br/><br/>
-  	PRESUPUESTO RESUMEN</div><br/>
-  	<table style="margin-top: 132px;position: absolute;font-size: 8px;margin-left: 80px;" id="contenido_border" width="700" border=0 cellspacing=0 cellpadding=2 bordercolor="666633">	
-  		<tr>
-              <td> <b> I </b> </td>
-              <td style="text-align: left;"><b>COMPONENTE I :</b> </td>
-              <td>  </td>
-              <td style="text-align: right;"> 2323.343</td>
-          </tr>
-  	</table>
-
-<ul id="presupuesto" style="background-color: #f5f5f5;list-style-type: upper-roman;">
-	<li><a href="#">Elemento 1</a></li>
-	<li><a href="#">Elemento 2</a></li>
-	<li><a href="#">Elemento 3</a></li>
-	<li><a href="#">Elemento 4</a></li>
-</ul>
-
+  	<div style="text-align: center;margin-top: -50px;">FORMATO FF-05 <br/>PRESUPUESTO RESUMEN</div><br/>
   </div>
-
+		<ul class="romanos_upper" style="margin-top: 140px;font-size:10px;position: absolute;margin-left: 80px;">
+			<li>
+				<a href="">COMPONENTE </a><a style="margin-left: 40px;" href="">Nuevo nuenvoNuevo nuenvoNuevo nuenvoNuevo nuenvo </a><a style="margin-left: 400px;" href="">2323.343</a>
+			</li>
+		</ul>
 </body>
 </html>

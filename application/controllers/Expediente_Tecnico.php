@@ -322,11 +322,30 @@ class Expediente_Tecnico extends CI_Controller
         $this->mydompdf->load_html($html);
         $this->mydompdf->set_paper('letter', 'landscape');
         $this->mydompdf->render();
-        $this->mydompdf->stream("reportePdfPresupuestoAnalitico.pdf", array(
-            "Attachment" => false
-        ));
+        $this->mydompdf->stream("reportePdfPresupuestoAnalitico.pdf", array("Attachment" => false));
     }
-	
+	public function reportePdfPresupuestoFF05($id_ExpedienteTecnico)
+	{
+		$opcion="BuscarExpedienteID";
+		$MostraExpedienteNombre=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoSelectBuscarId($opcion,$id_ExpedienteTecnico);
+		$MostraExpedienteTecnicoExpe=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoSelectBuscarId($opcion,$id_ExpedienteTecnico);
+
+	    $MostraExpedienteTecnicoExpe->childComponente=$this->Model_ET_Componente->ETComponentePorIdET($id_ExpedienteTecnico);
+
+	    foreach ($MostraExpedienteTecnicoExpe->childComponente as $key => $value) 
+	    {
+			$value->childMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($value->id_componente);
+			foreach ($value->childMeta as $index => $item) 
+			{
+				$this->obtenerMetaAnidada($item);
+			}
+	    } 
+		$html= $this->load->view('front/Ejecucion/ExpedienteTecnico/reportePresupuestoFF05',['MostraExpedienteTecnicoExpe'=>$MostraExpedienteTecnicoExpe,'MostraExpedienteNombre' => $MostraExpedienteNombre], true);
+		$this->mydompdf->set_paper('latter','landscape');
+		$this->mydompdf->load_html($html);
+		$this->mydompdf->render();
+		$this->mydompdf->stream("reportePresupuestoFF05.pdf", array("Attachment" => false));
+	}
 	private function obtenerMetaAnidada($meta)
 	{
 		$temp=$this->Model_ET_Meta->ETMetaPorIdMetaPadre($meta->id_meta);

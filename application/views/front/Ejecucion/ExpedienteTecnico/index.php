@@ -63,7 +63,7 @@
 														<a title='Reporte Metrados'  href="<?= site_url('Expediente_Tecnico/reportePdfMetrado/'.$item->id_et);?>" target="_blank">Metrado</a>
 													</li>
 													<li>
-													<a  title='Presupuesto Resumen'  href="<?= site_url('Expediente_Tecnico/reportePresupuestoFF05/'.$item->id_et);?>" target="_blank">Formato FF-05</a>
+													<a  title='Presupuesto Resumen'  href="<?= site_url('Expediente_Tecnico/reportePdfPresupuestoFF05/'.$item->id_et);?>" target="_blank">Formato FF-05</a>
 													</li>
 													<li>
 														<a title='Reporte de Presupuesto Analitico'  href="<?= site_url('Expediente_Tecnico/reportePdfPresupuestoAnalitico/');?>" target="_blank">Presupuesto Analitico</a>
