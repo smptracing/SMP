@@ -129,7 +129,7 @@ class Expediente_Tecnico extends CI_Controller
 				$_FILES['imagen']['size'] = $variablefile['imagen']['size'][$i];
 				$dato=(string)$_FILES['imagen']['name'];
 				$nombre=explode('.',$dato); 
-				$_FILES['imagen']['name'] =$idImageExp->id_img.'.'.'jpg';//(string)($idImageExp->id_img.'.'.$nombre[1].'.'.$nombre[1]);// $variablefile['imagen']['name'][$i];
+				$_FILES['imagen']['name'] =$idImageExp->id_img.'.'.$nombre[1];//(string)($idImageExp->id_img.'.'.$nombre[1].'.'.$nombre[1]);// $variablefile['imagen']['name'][$i];
 				$this->upload->initialize($config);
 				if ($this->upload->do_upload('imagen'))
 				 {
@@ -292,11 +292,24 @@ class Expediente_Tecnico extends CI_Controller
 		$this->mydompdf->stream("ReporteMetrado.pdf", array("Attachment" => false));
 	}
 
-	function reportePresupuestoFF05()
+	function reportePresupuestoFF05($id_ExpedienteTecnico)
 	{
+		$opcion="BuscarExpedienteID";
+		$MostraExpedienteNombre=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoSelectBuscarId($opcion,$id_ExpedienteTecnico);
+		$MostraExpedienteTecnicoExpe=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoSelectBuscarId($opcion,$id_ExpedienteTecnico);
 
-		$data='Nuevo';
-		$html= $this->load->view('front/Ejecucion/ExpedienteTecnico/reportePresupuestoFF05',$data, true);
+	    $MostraExpedienteTecnicoExpe->childComponente=$this->Model_ET_Componente->ETComponentePorIdET($id_ExpedienteTecnico);
+
+	    foreach ($MostraExpedienteTecnicoExpe->childComponente as $key => $value) 
+	    {
+			$value->childMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($value->id_componente);
+			foreach ($value->childMeta as $index => $item) 
+			{
+				$this->obtenerMetaAnidada($item);
+			}
+	    } 
+		
+		$html= $this->load->view('front/Ejecucion/ExpedienteTecnico/reportePresupuestoFF05',['MostraExpedienteTecnicoExpe'=>$MostraExpedienteTecnicoExpe,'MostraExpedienteNombre' =>$MostraExpedienteNombre], true);
 		$this->mydompdf->set_paper('latter','landscape');
 		$this->mydompdf->load_html($html);
 		$this->mydompdf->render();
