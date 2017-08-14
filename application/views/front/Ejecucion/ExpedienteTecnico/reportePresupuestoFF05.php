@@ -2,7 +2,16 @@
   <head>
       <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/dompdf.css">
   </head>
+<style>
+#presupuesto li {
+	display:inline;
+}
+#presupuesto a {
+	text-decoration:none;
+	padding:5px;
+}
 
+</style>
 <body>
 
   <header>
@@ -79,6 +88,14 @@
               <td style="text-align: right;"> 2323.343</td>
           </tr>
   	</table>
+
+<ul id="presupuesto" style="background-color: #f5f5f5;list-style-type: upper-roman;">
+	<li><a href="#">Elemento 1</a></li>
+	<li><a href="#">Elemento 2</a></li>
+	<li><a href="#">Elemento 3</a></li>
+	<li><a href="#">Elemento 4</a></li>
+</ul>
+
   </div>
 
 </body>
