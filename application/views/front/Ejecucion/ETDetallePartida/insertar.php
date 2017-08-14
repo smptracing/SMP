@@ -28,9 +28,9 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico, $listaETEtapaEjecucion,
 									'<label>Unidad</label>'.
 									'<select id="cobUnidad" name="cobUnidad" class="form-control">';
 
-										foreach($listaUnidadMedida as $value)
+										foreach($listaUnidadMedida as $item)
 										{
-											$htmlTemp.='<option value="'.$value->id_unidad.'">'.$value->descripcion.'</option>';
+											$htmlTemp.='<option value="'.$item->id_unidad.'">'.$item->descripcion.'</option>';
 										}
 
 									$htmlTemp.='</select>'.
@@ -53,9 +53,9 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico, $listaETEtapaEjecucion,
 									'<label>Etapa</label>'.
 									'<select id="cbxEtapa1" class="form-control">';
 
-										foreach($listaETEtapaEjecucion as $value)
+										foreach($listaETEtapaEjecucion as $item)
 										{
-											$htmlTemp.='<option value="'.$value->id_etapa_et.'">'.$value->desc_etapa_et.'</option>';
+											$htmlTemp.='<option value="'.$item->id_etapa_et.'">'.$item->desc_etapa_et.'</option>';
 										}
 
 									$htmlTemp.='</select>'.
@@ -73,7 +73,6 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico, $listaETEtapaEjecucion,
 											'<td>Und.</td>'.
 											'<td>Cant.</td>'.
 											'<td>Precio U.</td>'.
-											'<td>Fecah R.</td>'.
 											'<td>Etapa.</td>'.
 											'<td>Anl.</td>'.
 											'<td>Total</td>'.
@@ -82,7 +81,19 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico, $listaETEtapaEjecucion,
 									'</thead>'.
 									'<tbody>';
 
-									
+									if($value->childDetallePartida!=null)
+									{
+										$htmlTemp.='<tr>'.
+											'<td>'.$value->childDetallePartida->rendimiento.'</td>'.
+											'<td>'.$value->childDetallePartida->id_unidad.'</td>'.
+											'<td>'.$value->childDetallePartida->cantidad.'</td>'.
+											'<td>'.$value->childDetallePartida->precio_unitario.'</td>'.
+											'<td>'.$value->childDetallePartida->id_etapa_et.'</td>'.
+											'<td><a href="#" style="color: blue;text-decoration: underline;">Analítico</a></td>'.
+											'<td>'.$value->childDetallePartida->parcial.'</td>'.
+											'<td>'.''.'</td>'.
+										'</tr>';
+									}
 
 									$htmlTemp.='</tbody>'.
 								'</table>'.
