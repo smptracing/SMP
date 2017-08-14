@@ -1,8 +1,8 @@
 <div class="right_col" role="main">
-	<!-- top tiles -->
+    <!-- top tiles -->
     <div class="row tile_count">
         <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fa fa-user"></i> N° DE PROYECTOS</span>
+            <span class="count_top"><i class="fa fa-user"></i> TOTAL PIP</span>
             <div class="count">
                 <center>
                     <div id="NumPip"></div>
@@ -10,29 +10,38 @@
             </div>
         </div>
         <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fa fa-clock-o"></i> MONTO TOTAL</span>
-            <div class="count"><strong><h4>250000000</h4></strong></div>
-            <span class="count_bottom"><i class="green">4%</i> From last Week</span>
+            <span class="count_top"><i class="fa fa-clock-o"></i> Monto Programado PIP</span>
+            <div class="count">
+            <center>
+                    <div id=""></div>
+                </center>
+        </div>
+        </div>
+
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top"><i class="fa fa-user"></i> TOTAL NO PIP</span>
+            <div class="count">
+                <center>
+                    <div id=""></div>
+                </center>
+            </div>
         </div>
         <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fa fa-user"></i> COSTO INVERSIÓN </span>
-            <div class="count">2500</div>
-            <span class="count_bottom"><i class="green">4%</i> From last Week</span>
+            <span class="count_top"><i class="fa fa-user"></i> TOTAL NO PIP</span>
+            <div class="count">
+                <center>
+                    <div id=""></div>
+                </center>
+            </div>
         </div>
+
         <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fa fa-user"></i> SALDO PROGRAMADO</span>
-            <div class="count">2500</div>
-            <span class="count_bottom"><i class="green">4%</i> From last Week</span>
+            <span class="count_top"><i class="fa fa-clock-o"></i> Monto Total Programado PIP</span>
+            <div class="count">
+            <center>
+                    <div id="NumPips"></div>
+                </center>
         </div>
-        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fa fa-user"></i> PROGRAMACIÓN</span>
-            <div class="count">2500</div>
-            <span class="count_bottom"><i class="green">4%</i> From last Week</span>
-        </div>
-        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fa fa-user"></i> OPER Y MANT.</span>
-            <div class="count">2500</div>
-            <span class="count_bottom"><i class="green">4%</i> From last Week</span>
         </div>
     </div>
     <!-- /top tiles -->
@@ -62,34 +71,34 @@
                         <div class="clearfix"></div>
                     </div>
                     <div>
-                    	<div class="col-md-12 col-sm-12 col-xs-6">
-	                        <div>
-	                            <p>PMI</p>
+                        <div class="col-md-12 col-sm-12 col-xs-6">
+                            <div>
+                                <p>PMI</p>
                                 <div class="progress progress_sm">
                                     <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="80"></div>
                                 </div>
-	                        </div>
-	                        <div>
-	                            <p>Formulacion</p>
+                            </div>
+                            <div>
+                                <p>Formulacion</p>
                                 <div class="progress progress_sm">
                                     <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60"></div>
                                 </div>
-	                        </div>
-	                    </div>
-	                    <div class="col-md-12 col-sm-12 col-xs-6">
-	                        <div>
-	                            <p>Ejecucion</p>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-6">
+                            <div>
+                                <p>Ejecucion</p>
                                 <div class="progress progress_sm">
                                     <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="40"></div>
                                 </div>
-	                        </div>
-	                        <div>
-	                            <p>Funcionamiento</p>
+                            </div>
+                            <div>
+                                <p>Funcionamiento</p>
                                 <div class="progress progress_sm">
                                     <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50"></div>
                                 </div>
-	                        </div>
-	                    </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="clearfix"></div>
@@ -199,8 +208,8 @@
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
                             <li class="dropdown">
-                            	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                            	<ul class="dropdown-menu" role="menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
                                     <li><a href="#">Settings 1</a></li>
                                     <li><a href="#">Settings 2</a></li>
                                 </ul>
@@ -218,14 +227,14 @@
                                         <br>
                                         <table class="table table-condensed table-hover" width="100%">
                                             <tbody>
-                                            	<tr>
-	                                                <td>CANTIDAD DE PIPS:</td>
-	                                                <td class="col-sm-5"><div style="text-align: center;" id="CantidadPAbancay"></div></td>
-	                                            </tr>
-	                                            <tr>
-	                                                <td>MONTO TOTAL (S/):</td>
-	                                                <td><div style="text-align: center;" id="MontoPipAbancay"></div></td>
-	                                            </tr>
+                                                <tr>
+                                                    <td>CANTIDAD DE PIPS:</td>
+                                                    <td class="col-sm-5"><div style="text-align: center;" id="CantidadPAbancay"></div></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>MONTO TOTAL (S/):</td>
+                                                    <td><div style="text-align: center;" id="MontoPipAbancay"></div></td>
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -235,8 +244,8 @@
                                         <h2 class="title">ANDAHUAYLAS</h2>
                                         <br>
                                         <table class="table table-condensed table-hover" width="100%">
-                                        	<tbody>
-                                        		<tr>
+                                            <tbody>
+                                                <tr>
                                                     <td>CANTIDAD DE PIPS:</td>
                                                     <td class="col-sm-5"><div style="text-align: center;" id="CantidadPAndahuaylas"></div></td>
                                                 </tr>
@@ -244,7 +253,7 @@
                                                     <td>MONTO TOTAL (S/):</td>
                                                     <td><div style="text-align: center;" id="MontoPipAndahuaylas"></div></td>
                                                 </tr>
-                                        	</tbody>
+                                            </tbody>
                                         </table>
                                     </div>
                                 </li>

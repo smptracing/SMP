@@ -224,8 +224,8 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                              <label for="textbox"><span class="required">Rubro Ejecucion</span>
                                              </label>
-                                              <select id="cbxRubro" name="cbxRubro" class="selectpicker"  title="Elija Rubro">
-                                              </select>
+                                            <select id="cbxRubro" name="cbxRubro"  class="selectpicker"  title="Elija Rubro">
+                                            </select>
                                             </div>
                                       </div>
                                        <div class="col-md-4">
@@ -247,15 +247,19 @@
                                <div class="row">
                                     <div class="col-md-4">
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <label  for="name">Programa<span class="required">*</span>
+                                            <label  for="name">Programa.<span class="required">*</span>
                                             </label>
                                               <select id="cbxProgramaPres" name="cbxProgramaPres" class="selectpicker"  title="Elija Programa presupuestal">
                                             </select>
                                          </div>
                                       </div>
                                       <div class="col-md-4">
-
-
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label  for="name">Tipología NO PIP<span class="required">*</span>
+                                            </label>
+                                              <select id="Cbx_TipoNoPip_i" name="Cbx_TipoNoPip_i" class="selectpicker"  title="Elija Programa presupuestal">
+                                            </select>
+                                         </div>
                                       </div>
                                        <div class="col-md-4">
 
@@ -409,14 +413,14 @@
                                             <div class="col-md-11 col-sm-6 col-xs-12">
                                             <label  for="name">Costo de Inversion<span class="required">*</span>
                                         </label>
-                                            <input id="txtCostoPip" name="txtCostoPip" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Costo de inversion" required="required" type="number">
+                                            <input id="txtCostoPip_m" name="txtCostoPip_m" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Costo de inversion" required="required" type="number">
                                          </div>
                                       </div>
                                        <div class="col-md-4">
                                            <div class="col-md-11 col-sm-6 col-xs-12">
                                              <label for="textbox"><span class="required">Número de beneficiarios</span>
                                              </label>
-                                              <input id="txt_beneficiarios" name="txt_beneficiarios" class="form-control col-md-7 col-xs-7 notValidate" data-validate-length-range="6" data-validate-words="2" placeholder="Número de beneficiarios" required="required" type="number">
+                                              <input id="txt_beneficiarios_m" name="txt_beneficiarios_m" class="form-control col-md-7 col-xs-7 notValidate" data-validate-length-range="6" data-validate-words="2" placeholder="Número de beneficiarios" required="required" type="number">
                                             </div>
                                       </div>
                                       <div class="col-md-4">
@@ -436,7 +440,7 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                              <label for="textbox"><span class="required">Rubro Ejecucion</span>
                                              </label>
-                                              <select id="cbxRubro" name="cbxRubro" class="selectpicker"  title="Elija Rubro">
+                                              <select id="cbxRubro_m" name="cbxRubro_m" class="selectpicker"  title="Elija Rubro">
                                               </select>
                                             </div>
                                       </div>
@@ -445,14 +449,14 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                <label  for="textbox"><span class="required">Modalidad</span>
                                                 </label>
-                                                 <select id="cbxModalidadEjec" name="cbxModalidadEjec" class="selectpicker"   title="Elija Modalidad de Ejecucion">
+                                                 <select id="cbxModalidadEjec_m" name="cbxModalidadEjec_m" class="selectpicker"   title="Elija Modalidad de Ejecucion">
                                                 </select>
                                             </div>
                                       </div>
                                        <div class="col-md-4">
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <label  for="textbox"><span class="required">Tipologia de Inversion</span></label>
-                                                <select id="cbxTipologiaInv" name="cbxTipologiaInv" class="selectpicker" title="Elija Tipología de Inversión"></select>
+                                                <select id="cbxTipologiaInv_m" name="cbxTipologiaInv_m" class="selectpicker" title="Elija Tipología de Inversión"></select>
                                             </div>
                                       </div>
                               </div>
@@ -461,7 +465,7 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                             <label  for="name">Programa<span class="required">*</span>
                                             </label>
-                                              <select id="cbxProgramaPres" name="cbxProgramaPres" class="selectpicker"  title="Elija Programa presupuestal">
+                                              <select id="cbxProgramaPres_m" name="cbxProgramaPres_m" class="selectpicker"  title="Elija Programa presupuestal">
                                             </select>
                                          </div>
                                       </div>

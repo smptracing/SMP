@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Model_DashboardPmi extends CI_Model
 {
@@ -8,19 +8,26 @@ class Model_DashboardPmi extends CI_Model
         parent::__construct();
     }
 
-    function EstadisticaPipProvinc()
+    public function EstadisticaPipProvinc()
     {
-        $consulta = $this->db->query('SELECT provincia, count(provincia) AS Cantidadpip FROM UBIGEO_PI INNER JOIN PROYECTO_INVERSION ON UBIGEO_PI.id_pi=PROYECTO_INVERSION.id_pi INNER JOIN UBIGEO ON UBIGEO.id_ubigeo=UBIGEO_PI.id_ubigeo  WHERE UBIGEO.provincia IS NOT NULL GROUP BY provincia');
+        $consulta = $this->db->query("SELECT provincia, count(provincia) AS Cantidadpip FROM UBIGEO_PI INNER JOIN PROYECTO_INVERSION
+        ON UBIGEO_PI.id_pi=PROYECTO_INVERSION.id_pi
+        INNER JOIN UBIGEO ON UBIGEO.id_ubigeo=UBIGEO_PI.id_ubigeo
+        WHERE UBIGEO.provincia IS NOT NULL and departamento='Apurímac' GROUP BY provincia");
         return $consulta->result();
     }
-
-    function EstadisticaMontoPipProvincias()
+    public function EstadisticaMontoPipProvincias()
     {
-        $consulta = $this->db->query('SELECT provincia, count(provincia) AS Cantidad,SUM(costo_pi) AS MontoProyecto FROM UBIGEO_PI INNER JOIN PROYECTO_INVERSION ON UBIGEO_PI.id_pi=PROYECTO_INVERSION.id_pi INNER JOIN UBIGEO ON UBIGEO.id_ubigeo=UBIGEO_PI.id_ubigeo  WHERE PROYECTO_INVERSION.codigo_unico_pi<>UBIGEO_PI.id_pi GROUP BY provincia');
+        $consulta = $this->db->query("SELECT provincia,
+      COUNT(UBIGEO.id_ubigeo) AS Cantidad,
+      SUM(costo_pi) AS MontoProyecto
+      FROM   dbo.PROYECTO_INVERSION
+      INNER JOIN dbo.UBIGEO_PI ON dbo.PROYECTO_INVERSION.id_pi = dbo.UBIGEO_PI.id_pi
+      INNER JOIN dbo.UBIGEO ON dbo.UBIGEO_PI.id_ubigeo = dbo.UBIGEO.id_ubigeo WHERE departamento='Apurímac'
+      GROUP BY provincia ");
         return $consulta->result();
     }
-
-    function EstadisticaPipEstadoCiclo()
+    public function EstadisticaPipEstadoCiclo()
     {
         $sql = "declare @total int\n"
             . "set @total = (select count(id_pi) from PROYECTO_INVERSION)\n"
@@ -37,7 +44,7 @@ class Model_DashboardPmi extends CI_Model
         return $consulta->result();
     }
 
-    function GetDatosUbicacion()
+    public function GetDatosUbicacion()
     {
         $sql = "SELECT dbo.UBIGEO.distrito,\n"
             . "       dbo.PROYECTO_INVERSION.nombre_pi,\n"
@@ -47,7 +54,7 @@ class Model_DashboardPmi extends CI_Model
             . "     INNER JOIN dbo.UBIGEO_PI ON dbo.UBIGEO.id_ubigeo = dbo.UBIGEO_PI.id_ubigeo\n"
             . "     INNER JOIN dbo.PROYECTO_INVERSION ON dbo.UBIGEO_PI.id_pi = dbo.PROYECTO_INVERSION.id_pi;";
 
-        $funcion = $this->db->query($sql);//listar funcion
+        $funcion = $this->db->query($sql); //listar funcion
         if ($funcion->num_rows() > 0) {
             return $funcion->result();
         } else {
@@ -56,30 +63,29 @@ class Model_DashboardPmi extends CI_Model
     }
 
     /*function news_get_by_id ( $news_id )
-    {
+{
 
-        $this->db->select('*');
-        $this->db->select("DATE_FORMAT( date, '%d.%m.%Y' ) as date_human",  FALSE );
-        $this->db->select("DATE_FORMAT( date, '%H:%i') as time_human",      FALSE );
+$this->db->select('*');
+$this->db->select("DATE_FORMAT( date, '%d.%m.%Y' ) as date_human",  FALSE );
+$this->db->select("DATE_FORMAT( date, '%H:%i') as time_human",      FALSE );
 
 <<<<<<< HEAD
-        } 
-      function EstadisticaMontoPipProvincias()
+}
+function EstadisticaMontoPipProvincias()
 =======
 
-        $this->db->from('news');
+$this->db->from('news');
 
-        $this->db->where('news_id', $news_id );
+$this->db->where('news_id', $news_id );
 
+$query = $this->db->get();
 
-        $query = $this->db->get();
-
-        if ( $query->num_rows() > 0 )
+if ( $query->num_rows() > 0 )
 >>>>>>> origin/desarrollo
-        {
-            $row = $query->row_array();
-            return $row;
-        }
+{
+$row = $query->row_array();
+return $row;
+}
 
-    }*/
+}*/
 }

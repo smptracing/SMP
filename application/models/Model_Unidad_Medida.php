@@ -20,7 +20,7 @@ class Model_Unidad_Medida extends CI_Model
 		$unidadMedida=$this->db->query("execute sp_UnidadMedida_Insertar '".$txtDescripcion."'");
 
 		return true;
-	} 
+	}
 
 	function UnidadMedida($id)
 	{

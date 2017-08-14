@@ -646,7 +646,8 @@ $(function()
 				    },
                     success:function(resp)
                     {
-                      	window.location.href=base_url+"index.php/Expediente_Tecnico/"
+                      	//console.log(resp);
+                        window.location.href=base_url+"index.php/Expediente_Tecnico/"
                     }
                 });
               $('#form-addExpedienteTecnico')[0].reset();

@@ -1,6 +1,7 @@
 $(document).on("ready" ,function(){
   $("#btn_nuevoNoPip").click(function(){
                  listarCicloInver();
+                 listar_TipologiaNoPipRegistro();
              }); 
      listar_no_pip(); //listar los no pip
           //REGISTARAR OPERACION Y MANTENIMIENTO
@@ -143,7 +144,7 @@ $(document).on("ready" ,function(){
                   {
                       event.preventDefault();
                       $.ajax({
-                          url:base_url+"index.php/bancoproyectos/AddProyectos",
+                          url:base_url+"index.php/bancoproyectos/AddNoPip",
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
@@ -345,7 +346,7 @@ $(document).on("ready" ,function(){
                 var id_ue=data.id_ue;
                 var id_funcion=data.id_funcion;
                 var id_div_funcional=data.id_div_funcional;
-                var id_grupo_funcional=data.id_grupo_funcional;
+               // var id_grupo_funcional=data.id_grupo_funcional;
 
                       $("#txtCodigoUnico_m").val(data.codigo_unico_pi);
                       $("#txtNombrePip_m").val(data.nombre_pi);
@@ -355,7 +356,9 @@ $(document).on("ready" ,function(){
                       listarUnidadEjecutora(id_ue);
                       listarFuncion(id_funcion);
                       listarDivisionFuncional(id_funcion,id_div_funcional);
-                      listarGrupoFuncional(id_div_funcional,id_grupo_funcional);
+                     // listarGrupoFuncional(id_div_funcional,id_grupo_funcional);
+                      $("#txtCostoPip_m").val(data.costo_pi);
+                      $("#txt_beneficiarios_m").val(data.num_beneficiarios);
                     });
                 }
 
@@ -472,16 +475,17 @@ var listarFuncion=function(valor){
                         }
                     });
                 }
+
+    
     $("#cbxFuncion_m").change(function()
        {
       var id_funcion=$("#cbxFuncion_m").val();
         listarDivisionFuncional(id_funcion,'');
        });
-
 var listarDivisionFuncional=function(id_funcion,valor)
                 {
-                  alert(id_funcion);
-                  alert(valor);
+                  //alert(id_funcion);
+                 // alert(valor);
                    var html="";
                     $("#cbxDivFunc_inicio").html(html); //nombre del selectpicker UNIDAD EJECUTORA
                     event.preventDefault(); 
@@ -496,10 +500,11 @@ var listarDivisionFuncional=function(id_funcion,valor)
                               html +="<option value="+registros[i]["id_div_funcional"]+"> "+ registros[i]["nombre_div_funcional"]+" </option>";   
                             }
                             $("#cbxDivFunc_inicio").html(html);
-                            $("#cbxDivFunc_m").html(html);//para modificar las entidades 
-                            $('select[name=cbxDivFunc_m]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
-                            $('select[name=cbxDivFunc_m]').change();
+                           // $("#cbxDivFunc_m").html(html);//para modificar las entidades 
+                              $('select[name=cbxDivFunc_inicio]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            //$('select[name=cbxDivFunc_inicio]').change();
                             $('.selectpicker').selectpicker('refresh'); 
+
                         }
                     });
                 }
@@ -726,7 +731,7 @@ var listarDivisionFuncional=function(id_funcion,valor)
                 }*/
                 //listar en el combox para registrar rubro
  var listar_TipologiaNoPip=function(valor){
-                     html="";
+                    var html="";
                     $("#Cbx_TipoNoPip").html(html);
                     event.preventDefault();
                     $.ajax({
@@ -741,6 +746,26 @@ var listarDivisionFuncional=function(id_funcion,valor)
                             $("#Cbx_TipoNoPip").html(html);
                             $('select[name=Cbx_TipoNoPip]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=Cbx_TipoNoPip]').change();
+                            $('.selectpicker').selectpicker('refresh');
+                        }
+                    });
+                }
+                 var listar_TipologiaNoPipRegistro=function(valor){
+                    var html="";
+                    $("#Cbx_TipoNoPip_i").html(html);
+                    event.preventDefault();
+                    $.ajax({
+                        "url":base_url +"index.php/TipologiaInversion/get_tipo_no_pip",
+                        type:"POST",
+                        success:function(respuesta3){
+                         //  alert(respuesta);
+                         var registros = eval(respuesta3);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option  value="+registros[i]["id_tipo_nopip"]+"> "+registros[i]["desc_tipo_nopip"]+" </option>";
+                            };
+                            $("#Cbx_TipoNoPip_i").html(html);
+                            $('select[name=Cbx_TipoNoPip_i]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=Cbx_TipoNoPip_i]').change();
                             $('.selectpicker').selectpicker('refresh');
                         }
                     });
