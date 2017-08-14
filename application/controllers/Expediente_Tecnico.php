@@ -213,7 +213,7 @@ class Expediente_Tecnico extends CI_Controller
 			
 			$UltimoExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->UltimoExpedienteTecnico();
 			$id_et=$UltimoExpedienteTecnico->id_et;
-
+			$this->session->set_flashdata('correcto', 'Expediente Tecnico modificado correctamente.');
 			$config = array(
 				"upload_path" => "./uploads/ImageExpediente",
 				'allowed_types' => "jpg|png"
@@ -235,12 +235,11 @@ class Expediente_Tecnico extends CI_Controller
 				 }
 				else
 				 {
-						$error = "ERROR NO SE CARGO LAS FOTOS DE EXPEDIENTE TÉCNICO";
+					$this->session->set_flashdata('correcto', 'Expediente Tecnico modificado correctamente.');
 				 }
 			}
 			$this->db->trans_complete();
 			//echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos Editados Correctamente.', 'txtDireccionUE' => $txtDireccionUE]);exit;
-			$this->session->set_flashdata('correcto', 'Expediente Tecnico modificado correctamente.');
 			return redirect('/Expediente_Tecnico');
 		}
 		
