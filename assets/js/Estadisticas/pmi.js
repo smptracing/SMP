@@ -21,7 +21,7 @@ function EstaProyProvincia()
             }
             
             $("#NumPip").text(sum); //OBTENER NUMERO DE PIP EN LA CABECERA
-
+            $("#NumPips").text(provincias);
             cantidadPIPAbancay=(100*(parseInt(provincias[0]))/sum);
 
             $("#CantidadPAbancay").text(provincias[0]); //LISTAR CANTIDAD DE PIP REPORTE GENERAL
@@ -152,7 +152,6 @@ function EstadisticasPorCiclosInversion() {
             var total_proyectos=registros[0]["Num_Total"];
             var total_otros=registros[0]["TotalNoCiclo"];
             var panel_estadistica=$("#panel_estadistica_ciclo_inversion");
-
             var porcentaje=0.00;
             for (var i=0; i<registros.length; i++) 
             {

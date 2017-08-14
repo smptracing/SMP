@@ -213,7 +213,7 @@ class Expediente_Tecnico extends CI_Controller
 			
 			$UltimoExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->UltimoExpedienteTecnico();
 			$id_et=$UltimoExpedienteTecnico->id_et;
-
+			$this->session->set_flashdata('correcto', 'Expediente Tecnico modificado correctamente.');
 			$config = array(
 				"upload_path" => "./uploads/ImageExpediente",
 				'allowed_types' => "jpg|png"
@@ -235,12 +235,11 @@ class Expediente_Tecnico extends CI_Controller
 				 }
 				else
 				 {
-						$error = "ERROR NO SE CARGO LAS FOTOS DE EXPEDIENTE TÉCNICO";
+					$this->session->set_flashdata('correcto', 'Expediente Tecnico modificado correctamente.');
 				 }
 			}
 			$this->db->trans_complete();
 			//echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos Editados Correctamente.', 'txtDireccionUE' => $txtDireccionUE]);exit;
-			$this->session->set_flashdata('correcto', 'Expediente Tecnico modificado correctamente.');
 			return redirect('/Expediente_Tecnico');
 		}
 		
@@ -309,13 +308,25 @@ class Expediente_Tecnico extends CI_Controller
 			}
 	    } 
 		
-		$html= $this->load->view('front/Ejecucion/ExpedienteTecnico/reportePresupuestoFF05',['MostraExpedienteTecnicoExpe'=>$MostraExpedienteTecnicoExpe,'MostraExpedienteNombre' =>$MostraExpedienteNombre], true);
-		$this->mydompdf->set_paper('latter','landscape');
-		$this->mydompdf->load_html($html);
-		$this->mydompdf->render();
-		$this->mydompdf->stream("reportePresupuestoFF05.pdf", array("Attachment" => false));
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/reportePresupuestoFF05',['MostraExpedienteTecnicoExpe'=>$MostraExpedienteTecnicoExpe,'MostraExpedienteNombre' =>$MostraExpedienteNombre], true);
+   
 	}
-
+	public function reportePdfPresupuestoAnalitico()
+	{
+	    //Carga la librería que agregamos
+        $this->load->library('mydompdf');
+        //$saludo será una variable dentro la vista
+        $data["saludo"] = "Hola mundo!";
+        //$html tendrá el contenido de la vista
+        $html= $this->load->view('front/Ejecucion/ExpedienteTecnico/reportePdfPresupuestoAnalitico', $data, true);
+        $this->mydompdf->load_html($html);
+        $this->mydompdf->set_paper('letter', 'landscape');
+        $this->mydompdf->render();
+        $this->mydompdf->stream("reportePdfPresupuestoAnalitico.pdf", array(
+            "Attachment" => false
+        ));
+    }
+	
 	private function obtenerMetaAnidada($meta)
 	{
 		$temp=$this->Model_ET_Meta->ETMetaPorIdMetaPadre($meta->id_meta);

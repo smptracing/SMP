@@ -11,8 +11,11 @@ class PrincipalFyE extends CI_Controller
 
     public function PrincipalFyED(){
 
-        $this->_load_layout('Formulacion_Evaluacion');
-
+       $listarEtapas= $this->Model_DashboardFE->GetAprobadosEstudio();
+      // var_dump($listarEtapas);exit;
+        $this->load->view('layout/Formulacion_Evaluacion/header');
+        $this->load->view('Formulacion_Evaluacion',['listarEtapas'=> $listarEtapas]);
+        $this->load->view('layout/Formulacion_Evaluacion/footer');
     }
 
     public function Formulacion_Eval()

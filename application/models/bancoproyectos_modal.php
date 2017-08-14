@@ -70,22 +70,56 @@ class bancoproyectos_modal extends CI_Model
     //AGREGAR UN PROYECTO
     public function AddProyectos($flat, $id_pi, $cbxUnidadEjecutora, $cbxNatI, $cbxTipologiaInv, $cbxTipoInv, $cbxGrupoFunc, $cbxNivelGob, $cbxProgramaPres, $txtCodigoUnico, $txtNombrePip, $txtCostoPip, $txt_beneficiarios, $dateFechaInPip, $dateFechaViabilidad, $cbxEstCicInv_)
     {
-        $this->db->query("execute sp_Gestionar_ProyectoInversion'" . $flat . "','"
-            . $id_pi . "','"
-            . $cbxUnidadEjecutora . "','"
-            . $cbxNatI . "','"
-            . $cbxTipologiaInv . "','"
-            . $cbxTipoInv . "','"
-            . $cbxGrupoFunc . "','"
-            . $cbxNivelGob . "','"
-            . $cbxProgramaPres . "','"
-            . $txtCodigoUnico . "','"
-            . $txtNombrePip . "','"
-            . $txtCostoPip . "','"
-            . $txt_beneficiarios . "','"
-            . $dateFechaInPip . "','"
-            . $dateFechaViabilidad . "','"
-            . $cbxEstCicInv_ . "'");
+        $this->db->query("executesp_Gestionar_ProyectoInversion
+            @Opcion='" . $flat . "',
+            @id_pi='" . $id_pi . "',
+            @id_ue='" . $cbxUnidadEjecutora . "',
+            @id_naturaleza_inv='" . $cbxNatI . "',
+            @id_tipologia_inv='" . $cbxTipologiaInv . "',
+            @id_tipo_inv='" . $cbxTipoInv . "',
+            @id_grupo_funcional='" . $cbxGrupoFunc . "',
+            @id_nivel_gob='" . $cbxNivelGob . "',
+            @id_programa_pres='" . $cbxProgramaPres . "',
+            @codigo_unico_pi='" . $txtCodigoUnico . "',
+            @nombre_pi='" . $txtNombrePip . "',
+            @costo_pi='" . $txtCostoPip . "',
+            @num_beneficiarios='" . $txt_beneficiarios . "',
+            @fecha_registro_pi='" . $dateFechaInPip . "',
+            @fecha_viabilidad_pi='" . $dateFechaViabilidad . "',
+            @id_estado_ciclo='" . $cbxEstCicInv_ . "',
+            @id_rubro='" . $cbxRubro . "',
+            @id_modalidad_ejec='" . $cbxModalidadEjec . "'");
+        if ($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    //FIN AGREGAR UN PROYECTO
+
+    //AGREGAR UN PROYECTO
+    public function AddNoPip($flat, $id_pi, $cbxUnidadEjecutora, $cbxNatI, $cbxTipologiaInv, $cbxTipoInv, $cbxGrupoFunc, $cbxNivelGob, $cbxProgramaPres, $txtCodigoUnico, $txtNombrePip, $txtCostoPip, $txt_beneficiarios, $dateFechaInPip, $dateFechaViabilidad, $cbxEstCicInv_, $cbxRubro, $cbxModalidadEjec, $Cbx_TipoNoPip_i)
+    {
+        $this->db->query("execute sp_Gestionar_ProyectoInversion
+            @Opcion='" . $flat . "',
+            @id_pi='" . $id_pi . "',
+            @id_ue='" . $cbxUnidadEjecutora . "',
+            @id_naturaleza_inv='" . $cbxNatI . "',
+            @id_tipologia_inv='" . $cbxTipologiaInv . "',
+            @id_tipo_inv='" . $cbxTipoInv . "',
+            @id_grupo_funcional='" . $cbxGrupoFunc . "',
+            @id_nivel_gob='" . $cbxNivelGob . "',
+            @id_programa_pres='" . $cbxProgramaPres . "',
+            @codigo_unico_pi='" . $txtCodigoUnico . "',
+            @nombre_pi='" . $txtNombrePip . "',
+            @costo_pi='" . $txtCostoPip . "',
+            @num_beneficiarios='" . $txt_beneficiarios . "',
+            @fecha_registro_pi='" . $dateFechaInPip . "',
+            @fecha_viabilidad_pi='" . $dateFechaViabilidad . "',
+            @id_estado_ciclo='" . $cbxEstCicInv_ . "',
+            @id_rubro='" . $cbxRubro . "',
+            @id_modalidad_ejec='" . $cbxModalidadEjec . "',
+            @id_tipo_nopip='" . $Cbx_TipoNoPip_i . "'");
         if ($this->db->affected_rows() > 0) {
             return true;
         } else {

@@ -406,7 +406,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 				'<td style="padding-left: 4px;text-align: center;">'+parseFloat($('#txtCantidadPartida').val()).toFixed(2)+'</td>'+
 				'<td style="padding-left: 4px;">'+
 					'<input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida('+objectJSON.idPartida+', this);" style="width: 30px;">'+
-					'<input type="button" class="btn btn-default btn-xs" value="A" onclick="" style="width: 30px;">'+
+					'<input type="button" class="btn btn-default btn-xs" value="A" onclick="paginaAjaxDialogo(\'otherModal\', \'Análisis presupuestal\', { idET : <?=$expedienteTecnico->id_et?>, idPartida : '+objectJSON.idPartida+' }, \''+base_url+'index.php/ET_Analisis_Unitario/insertar\''+', \'get\', null, null, false, true);" style="width: 30px;">'+
 				'</td>'+
 			'</tr>';
 

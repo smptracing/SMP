@@ -57,13 +57,16 @@
 												</button>
 												<ul role="menu"  class="dropdown-menu">
 													<li>
-													<a title='Ficha tecnica de expediente tecnico'  href="<?= site_url('Expediente_Tecnico/reportePdfExpedienteTecnico/'.$item->id_et);?>" target="_blank">Expediente Técnico 001</a>
+														<a title='Ficha tecnica de expediente tecnico'  href="<?= site_url('Expediente_Tecnico/reportePdfExpedienteTecnico/'.$item->id_et);?>" target="_blank">Expediente Técnico 001</a>
 													</li>
 													<li>
-													<a  title='Reporte Metrados'  href="<?= site_url('Expediente_Tecnico/reportePdfMetrado/'.$item->id_et);?>" target="_blank">Metrado</a>
+														<a title='Reporte Metrados'  href="<?= site_url('Expediente_Tecnico/reportePdfMetrado/'.$item->id_et);?>" target="_blank">Metrado</a>
 													</li>
 													<li>
 													<a  title='Presupuesto Resumen'  href="<?= site_url('Expediente_Tecnico/reportePresupuestoFF05/'.$item->id_et);?>" target="_blank">Formato FF-05</a>
+													</li>
+													<li>
+														<a title='Reporte de Presupuesto Analitico'  href="<?= site_url('Expediente_Tecnico/reportePdfPresupuestoAnalitico/');?>" target="_blank">Presupuesto Analitico</a>
 													</li>
 												</ul>
 											</div>
@@ -80,7 +83,29 @@
 		<div class="clearfix"></div>
 	</div>
 </div>
+<?php
+$sessionTempCorrecto=$this->session->flashdata('correcto');
+$sessionTempError=$this->session->flashdata('error');
+
+if($sessionTempCorrecto){ ?>
+	<script>
+	$(document).ready(function()
+	{
+		swal('','<?=$sessionTempCorrecto?>', "success");
+	});
+	</script>
+<?php }
+
+if($sessionTempError){ ?>
+	<script>
+	$(document).ready(function()
+	{
+	swal('','<?=$sessionTempError?>', "error");
+	});
+	</script>
+<?php } ?>
 <script>
+
 	$(document).ready(function()
 	{
 		$('#table-ExpedienteTecnico').DataTable(
