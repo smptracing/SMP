@@ -14,6 +14,7 @@ class Expediente_Tecnico extends CI_Controller
 		$this->load->model("Model_ET_Tipo_Responsable"); 
 		$this->load->model("Model_ET_Responsable");
 		$this->load->model("Cargo_Modal");
+		$this->load->model("Model_ET_Presupuesto_Analitico");
 		$this->load->model("Model_ET_Img");
 		$this->load->library('mydompdf');
 	}
@@ -311,14 +312,14 @@ class Expediente_Tecnico extends CI_Controller
 		$this->load->view('front/Ejecucion/ExpedienteTecnico/reportePresupuestoFF05',['MostraExpedienteTecnicoExpe'=>$MostraExpedienteTecnicoExpe,'MostraExpedienteNombre' =>$MostraExpedienteNombre], true);
    
 	}
-	public function reportePdfPresupuestoAnalitico()
-	{
-	    //Carga la librería que agregamos
+	public function reportePdfPresupuestoAnalitico($id_et)
+	{		
+        $opcion="BuscarExpedienteID";
+		$MostraExpedienteNombre=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoSelectBuscarId($opcion,$id_et);
+		$litarPresupuestoAnalitico=$this->Model_ET_Presupuesto_Analitico->ETPresupuestoAnaliticoPorIdET($id_et);
+
         $this->load->library('mydompdf');
-        //$saludo será una variable dentro la vista
-        $data["saludo"] = "Hola mundo!";
-        //$html tendrá el contenido de la vista
-        $html= $this->load->view('front/Ejecucion/ExpedienteTecnico/reportePdfPresupuestoAnalitico', $data, true);
+        $html= $this->load->view('front/Ejecucion/ExpedienteTecnico/reportePdfPresupuestoAnalitico',['MostraExpedienteNombre' => $MostraExpedienteNombre,'litarPresupuestoAnalitico' =>$litarPresupuestoAnalitico], true);
         $this->mydompdf->load_html($html);
         $this->mydompdf->set_paper('letter', 'landscape');
         $this->mydompdf->render();

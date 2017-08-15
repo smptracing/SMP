@@ -23,34 +23,80 @@
   	<div style="text-align: center;margin-top: -50px;">FORMATO FF-06<br/><br/>
   	CUADRO DE PRESUPUESTO ANALÍTICO GENERAL</div><br/>
   	<br><br/>
-	<div class="row" style="text-align:center;">
-		PROYECTO : "INSTALACIÓN DEL SERVICIO DE SEGUIMIENTO Y MONITOREO DE LOS PIP EN EL GOBIERNO REGIONAL APURÍMAC"
+	<div class="row" style="text-align:center;border:2px solid black;padding: 10px;margin-top: -40px;">
+		PROYECTO : &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; " <?=$MostraExpedienteNombre->nombre_pi;?>"
 	</div>
-	
-	<div class="row" style="text-align:center;font-size:12px; border-color: red; margin-left: 10px;">
-	</div><br/><br/>
-	<div class="row" >
-		<div class="col-md-12 col-sm-12 col-xs-12" style="font-size: 12px;">
-					
-			<b style="margin-right: 670px;" align="left">META:</b> <b style="margin-left:-280px; text-align: center; position: absolute;">COSTO DIRECTO:</b>  <br/><br/>
-				
-		</div>
-	</div>
-  	<table id="contenido_border" width="550" border=1 cellspacing=0 cellpadding=2 bordercolor="666633" >
-
-  		<tr> 
-	 	<th colspan="4">EJECUCIÓN </th> 
- 	</tr>
-	<tr>
-
-        <td >DESCRIPCIÓN</td>
-        <td>COSTO DIRECTO</td>
-         <td>COSTO INDIRECTOS</td>
-        <td>COSTO TOTAL</td>
-        
-    </tr>
-  	</table>
-
+	<div style="margin-top: 10px;position: absolute;font-size: 8px;margin-left: 50px;">
+        <table id="contenido_border" width="750" border=0 cellspacing=0 cellpadding=2 bordercolor="666633">
+          <tr>
+              <td width="120"> META </td>
+              <td width="100">&nbsp;&nbsp; 0137 -2014 </td>
+              <td style="text-align: center;">COSTO DIRECTO :</td>
+              <td style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp; $/. 2.034.343 </td>
+          </tr>
+          <tr>
+              <td> INVERSIÓN </td>
+              <td>&nbsp;&nbsp; S/ 23.232.23: </td> 
+              <td style="text-align: center;">COSTO INDIRECTO</td>
+              <td style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;  S/. 2.252.7701.73</td>
+          </tr>
+          <tr>
+              <td>FUENTE DE FINANCIAMINETO:  </td>
+              <td style="text-align: left;">&nbsp;&nbsp; RECURSOS ORDINARIOS: </td>
+              <td style="text-align: center;">TOTAL INVERSIÓN :</td>
+              <td style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;  S/. 2.252.7701.73 </td>
+          </tr>
+          <tr>
+              <td>MODALIDAD </td>
+              <td>&nbsp;&nbsp; ADMINISTRACIÓN DIRECTA: </td>
+              <td style="text-align: center;"> </td>
+              <td style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;  S/. 2.252.7701.73</td>
+          </tr>
+          <tr>
+              <td> AÑO: </td>
+              <td>&nbsp;&nbsp; 2014 </td>
+              <td style="text-align: center;">  </td>
+              <td style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;  </td>
+          </tr>
+      </table>    
+     </div>
+     <div style="margin-top: 80px;position: absolute;font-size: 8px;margin-left: -10px;">
+        <table id="contenido_border" width="760" border=1 cellspacing=0 cellpadding=2  bordercolor="666633">
+          <tr>
+              <td rowspan="2" > DESCRIPCIÓN </td>
+              <td rowspan="2" style="text-align: center;" > CLASIF. </td>
+              <td colspan="10" style="text-align: center;" >&nbsp;&nbsp; EJECUCIÓN </td>
+              <tr style="text-align: center;">
+	              <td colspan="2" > DESCRIPCIÓN </td>
+	              <td colspan="2" > COSTO INDIRECTO </td>
+	              <td colspan="2" > COSTO DIRECTO </td>
+	              <td colspan="2">&nbsp;&nbsp; COSTO TOTAL </td>
+	              <td colspan="2">&nbsp;&nbsp; OBSERVACIÓN </td>
+          	  </tr>
+          </tr>
+       <?php $costoTotalDirecto=0; foreach ($litarPresupuestoAnalitico as  $Itemp) {?>
+         <tr>
+              <td rowspan="1" > <?= $Itemp->id_clasificador_padre?> </td>
+              <td rowspan="1" style="text-align: center;" > <?= $Itemp->num_clasificador?> </td>
+              <td colspan="2" > <?= $Itemp->desc_clasificador?> </td>
+              <td colspan="2" > </td>
+              <td colspan="2" >S/ <?= $Itemp->precio_parcial; $costoTotalDirecto +=(int)$Itemp->precio_parcial;?>  </td>
+              <td colspan="2">&nbsp;&nbsp;  </td>
+              <td colspan="2">&nbsp;&nbsp;  </td>
+          </tr>
+ 		<?php } ?>
+ 		<tr>
+              <td rowspan="1" >  </td>
+              <td rowspan="1" style="text-align: center;" > </td>
+              <td colspan="2" >  </td>
+              <td colspan="2" > </td>
+              <td colspan="2" >S/  <?= number_format($costoTotalDirecto, 2, ',', ' ') ;?> </td>
+              <td colspan="2">&nbsp;&nbsp;  </td>
+              <td colspan="2">&nbsp;&nbsp;  </td>
+          </tr>
+      </table>    
+     </div>
+    
   </div>
 
 </body>
