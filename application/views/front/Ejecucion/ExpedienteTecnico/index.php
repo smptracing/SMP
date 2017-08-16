@@ -7,6 +7,22 @@
 					<h2><b>EXPEDIENTE TÉCNICO</b></h2>
 					<div class="clearfix"></div>
 				</div>
+				<div class="x_content">
+				<div class="" role="tabpanel" data-example-id="togglable-tabs">
+					<ul id="myTab" class="nav nav-tabs" role="tablist">
+						<li role="presentation" class="active"> 
+							<a href="#tab_Sector"  id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">	<b>Expediente</b>
+							</a>
+						</li>
+						<li role="presentation" class=""><a href="#tab_EstudioCompatibilidad"  role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"> <b>Estudio Compatibilidad</b></a>
+                        </li>	
+                        <li role="presentation" class=""><a href="#tab_Ejecucion"  role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"> <b>Ejecucion</b></a>
+                        </li>
+                         <li role="presentation" class=""><a href="#tab_Modificacion"  role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"> <b>Modificacion</b></a>
+                        </li>
+					</ul>
+				<div id="myTabContent" class="tab-content">
+				<div role="tabpanel" class="tab-pane fade active in" id="tab_Sector" aria-labelledby="home-tab">
 				<div class="row">
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<div class="x_panel">
@@ -78,6 +94,212 @@
 							</table>
 						</div>
 					</div>
+					</div>
+					</div>
+
+		            <div role="tabpanel" class="tab-pane fade" id="tab_EstudioCompatibilidad" aria-labelledby="profile-tab">
+                         <!-- /tabla de grupo funcional desde el row -->
+                        <div class="row">
+
+                              <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="x_panel">
+                                  
+                                      <div class="x_title">
+                                        <div class="clearfix"></div>
+                                      </div>
+                                      <div class="x_content">
+                                      
+							<table id="table-Compatibilidad" style="text-align: center;" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
+								<thead>
+									<tr>
+										<td>Unidad Ejecutora</td>
+										<td>Nombre del proyecto</td>
+										<td>Costo Total del proyecto Preinversion</td>
+										<td>Costo Total del proyecto Inversion</td>
+										<td>Tiempo Ejecucion</td>
+										<td>Numero Beneficiarios</td>
+										<td class="col-md-2 col-md-2 col-xs-12"></td>
+									</tr>
+								</thead>	
+								<tbody>
+								<?php foreach($listaExpedienteTecnicoEtapa as $item1){ ?>
+								  	<tr>
+										 <td>
+											<?= $item1->nombre_ue?>
+										</td>
+										<td>
+											<?= $item1->nombre_pi?>
+										</td>
+										<td>
+											S/. <?= $item1->costo_total_preinv_et?> 
+										</td>
+										<td>
+											S/. <?= $item1->costo_total_inv_et?>
+										</td>
+										<td>
+											<?= $item1->tiempo_ejecucion_pi_et?>
+										</td>
+										<td>
+											<?= $item1->num_beneficiarios?>
+										</td>
+					
+								  	</tr>
+								<?php } ?>
+								</tbody>							
+							</table>
+
+                                      </div>
+                                    </div>
+                                  </div>
+
+                        </div>
+                     <!-- / fin tabla grupo funcional asociados el row -->
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane fade" id="tab_Ejecucion" aria-labelledby="profile-tab">
+                         <!-- /tabla de grupo funcional desde el row -->
+                        <div class="row">
+
+                              <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="x_panel">
+                                    
+
+                                      <div class="x_title">
+                                        <div class="clearfix"></div>
+                                      </div>
+                                     <!-- <div class="x_content">
+											
+
+											<div class="" role="tabpanel" data-example-id="togglable-tabs">
+												<ul id="myTab" class="nav nav-tabs" role="tablist">
+													<li role="presentation" class="active"> 
+														<a href="#tab_Deductivos"  id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">	<b>Deductivos</b>
+														</a>
+													</li>
+													<li role="presentation" class=""><a href="#tab_Adicionales"  role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"> <b>Adicionales</b></a>
+							                        </li>	
+												</ul>
+
+													<div role="tabpanel" class="tab-pane fade active in" id="tab_Deductivos" aria-labelledby="home-tab">
+														
+														<div class="row">
+															<div class="col-md-12 col-sm-12 col-xs-12">
+																<div class="x_panel">
+																	<button onclick="BuscarProyectocodigo();" class="btn btn-primary"> NUEVO</button>
+																	<div class="x_title">
+																		<div class="clearfix"></div>
+																	</div>
+																	<table id="table-ExpedienteTecnico" style="text-align: center;" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
+																		<thead>
+																			<tr>
+																				<td>Unidad Ejecutora</td>
+																				<td>Nombre del proyecto</td>
+																				<td>Costo Total del proyecto Preinversion</td>
+																				<td>Costo Total del proyecto Inversion</td>
+																				<td>Tiempo Ejecucion</td>
+																				<td>Numero Beneficiarios</td>
+																				<td class="col-md-2 col-md-2 col-xs-12"></td>
+																			</tr>
+																		</thead>
+								 
+																	</table>
+																</div>
+															</div>
+															</div>
+															</div>
+
+														<div role="tabpanel" class="tab-pane fade active in" id="tab_Adicionales" aria-labelledby="home-tab">
+														
+														<div class="row">
+															<div class="col-md-12 col-sm-12 col-xs-12">
+																<div class="x_panel">
+																	<button onclick="BuscarProyectocodigo();" class="btn btn-primary"> NUEVO</button>
+																	<div class="x_title">
+																		<div class="clearfix"></div>
+																	</div>
+																	
+
+
+																</div>
+															</div>
+														</div>
+														</div>
+
+
+											</div>
+
+                                      </div>-->
+                                    </div>
+                                  </div>
+
+                        </div>
+                     <!-- / fin tabla grupo funcional asociados el row -->
+                    </div>
+
+					<div role="tabpanel" class="tab-pane fade" id="tab_Modificacion" aria-labelledby="profile-tab">
+                         <!-- /tabla de grupo funcional desde el row -->
+                        <div class="row">
+
+                              <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="x_panel">
+                                     
+
+                                      <div class="x_title">
+                                        <div class="clearfix"></div>
+                                      </div>
+                                      <div class="x_content">
+											
+											<table id="table-Modificacion" style="text-align: center;" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
+												<thead>
+													<tr>
+														<td>Unidad Ejecutora</td>
+														<td>Nombre del proyecto</td>
+														<td>Costo Total del proyecto Preinversion</td>
+														<td>Costo Total del proyecto Inversion</td>
+														<td>Tiempo Ejecucion</td>
+														<td>Numero Beneficiarios</td>
+														<td class="col-md-2 col-md-2 col-xs-12"></td>
+													</tr>
+												</thead>	
+												<tbody>
+												<?php foreach($listaExpedienteTecnicoModificacion as $item2){ ?>
+												  	<tr>
+														 <td>
+															<?= $item2->nombre_ue?>
+														</td>
+														<td>
+															<?= $item2->nombre_pi?>
+														</td>
+														<td>
+															S/. <?= $item2->costo_total_preinv_et?> 
+														</td>
+														<td>
+															S/. <?= $item2->costo_total_inv_et?>
+														</td>
+														<td>
+															<?= $item2->tiempo_ejecucion_pi_et?>
+														</td>
+														<td>
+															<?= $item2->num_beneficiarios?>
+														</td>
+									
+												  	</tr>
+												<?php } ?>
+												</tbody>							
+											</table>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                        </div>
+                     <!-- / fin tabla grupo funcional asociados el row -->
+                    </div>
+
+
+
+					</div>
+					</div>
+				</div>
 				</div>
 			</div>
 		</div>
@@ -110,6 +332,23 @@ if($sessionTempError){ ?>
 	$(document).ready(function()
 	{
 		$('#table-ExpedienteTecnico').DataTable(
+		{
+			"language":idioma_espanol
+		});
+
+	});
+
+	$(document).ready(function()
+	{
+		$('#table-Compatibilidad').DataTable(
+		{
+			"language":idioma_espanol
+		});
+
+	});
+	$(document).ready(function()
+	{
+		$('#table-Modificacion').DataTable(
 		{
 			"language":idioma_espanol
 		});

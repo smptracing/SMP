@@ -43,8 +43,17 @@ class Expediente_Tecnico extends CI_Controller
 	{
 		$flat="LISTAR";
 		$listaExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoListar($flat);
+
+		$flat1="LISTARETAPA";
+		$id_etapa_et="2";
+		$listaExpedienteTecnicoEtapa=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoListarEtapa($flat1,$id_etapa_et);
+
+		$flat2="LISTARETAPA";
+		$id_etapa_et="4";
+		$listaExpedienteTecnicoModificacion=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoListarEtapa($flat1,$id_etapa_et);
+		//var_dump($listaExpedienteTecnicoModificacion);exit;
 		$this->load->view('layout/Ejecucion/header');
-		$this->load->view('front/Ejecucion/ExpedienteTecnico/index.php',['listaExpedienteTecnico'=>$listaExpedienteTecnico]);
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/index.php',['listaExpedienteTecnico'=>$listaExpedienteTecnico,'listaExpedienteTecnicoEtapa'=>$listaExpedienteTecnicoEtapa,'listaExpedienteTecnicoModificacion'=>$listaExpedienteTecnicoModificacion]);
 		$this->load->view('layout/Ejecucion/footer');
 	}
 
