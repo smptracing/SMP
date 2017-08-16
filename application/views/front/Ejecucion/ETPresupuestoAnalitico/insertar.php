@@ -38,6 +38,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 <div class="form-horizontal">
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
+			<input type="hidden" name="hd_et" id="hd_et" value="<?=$expedienteTecnico->id_et?>">
 			<label class="control-label">Nombre del proyecto de inversión</label>
 			<div>
 				<textarea name="txtNombreProyectoInversion" id="txtNombreProyectoInversion" rows="3" class="form-control" style="resize: none;resize: vertical;" readonly="readonly"><?=$expedienteTecnico->nombre_pi?></textarea>
@@ -55,6 +56,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 			</div>
 	</div>
 	<div class="col-md-5 col-sm-5 col-xs-5">
+			<input type="hidden"  id="hdIdClasificador" name="hdIdClasificador">
 			<label class="control-label">Clasificador</label>
 			<div>
 				<select name="selectClasificador" id="selectClasificador" class="form-control"></select>
@@ -65,48 +67,31 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 			<input type="button" class="btn btn-info" value="Agregar Presupuesto Analítico " onclick="agregarPresupuestoAnalitico();" style="width: 100%;">
 		</div>
 	</div>
-	<div id="divAgregarPartida" class="row" style="display: none;margin-top: 4px;">
+	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
-			<label class="control-label">Descripción partida</label>
-			<div>
-				<select name="selectDescripcionPartida" id="selectDescripcionPartida" class="form-control"></select>
-			</div>
-		</div>
-		<div class="col-md-6 col-sm-6 col-xs-6">
-			<label class="control-label">Rendimiento</label>
-			<div>
-				<input type="text" class="form-control" id="txtRendimientoPartida" name="txtRendimientoPartida">
-			</div>
-		</div>
-		<div class="col-md-3 col-sm-3 col-xs-3">
-			<label class="control-label">Unidad</label>
-			<div>
-				<select id="selectUnidadMedidaPartida" name="selectUnidadMedidaPartida" class="form-control">
-					<?php foreach($listaUnidadMedida as $key => $value){ ?>
-						<option value="<?=$value->id_unidad?>"><?=$value->descripcion?></option>
-					<?php } ?>
-				</select>
-			</div>
-		</div>
-		<div class="col-md-2 col-sm-2 col-xs-2">
-			<label class="control-label">Cantidad</label>
-			<div>
-				<input type="text" class="form-control" id="txtCantidadPartida" name="txtCantidadPartida">
-			</div>
-		</div>
-		<div class="col-md-1 col-sm-1 col-xs-1">
-			<label class="control-label">.</label>
-			<div>
-				<input type="hidden" id="hdIdListaPartida" name="hdIdListaPartida">
-				<input type="button" class="btn btn-info" value="+" onclick="agregarPartida();" style="width: 100%;">
-			</div>
+			<table class="table  table-condensed jambo_table bulk_action" id="table_clasificador">
+				<thead>
+					<tr>
+						<th>Presupuesto de ejecución</th>
+						<th>CLASIF.</th>
+						<th>DESCRIPCIÓN</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody id="bodyClasificador">
+					<?php foreach ($PresupuestoAnaliticoListar as $Itemp) {?>
+						<tr>
+							<td><?= $Itemp->desc_presupuesto_ej?></td>
+							<td><?= $Itemp->num_clasificador?></td>
+							<td><?= $Itemp->desc_clasificador?></td>
+							<td><button onclick="Eliminar(<?=$Itemp->id_analitico?>);" data-toggle="tooltip" data-original-title="Eliminar Analitico"   class='btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button></td>
+						</tr>						
+					<?php }?>
+				</tbody>
+			</table>		
 		</div>
 	</div>
-	<hr style="margin-top: 4px;">
-
-	<hr>
 	<div class="row" style="text-align: right;">
-		<input type="hidden" id="hdIdET" value="<?=$expedienteTecnico->id_et?>">
 		<button class="btn btn-danger" data-dismiss="modal">
 			<span class="glyphicon glyphicon-remove"></span>
 			Cerrar ventana
@@ -114,6 +99,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 	</div>
 </div>
 <script>
+
 	$(function()
 	{
 		$('#selectClasificador').selectpicker({ liveSearch: true }).ajaxSelectPicker(
@@ -132,6 +118,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 
 	        	for(var i=0; i<data.length; i++)
 	        	{
+	        		
 	        		dataForSelect.push(
 	                {
 	                    "value" : data[i].desc_clasificador,
@@ -149,6 +136,38 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 	        preserveSelected: false
 	    });
 
+		$('#selectClasificador').on('change', function()
+		{
+			var selected=$(this).find("option:selected").val();
+
+			if(selected.trim()!='')
+			{
+				$('#hdIdClasificador').val($(this).find("option:selected").data('id_clasificador'));
+			}
+		});
 
 	});
+
+		function agregarPresupuestoAnalitico()
+		{
+			var idClasificador=$("#hdIdClasificador").val();
+			var hd_id_et=$('#hd_et').val();
+			var idPresupuestoEjecucion=$("#selectPresupuestoEjecucion").val();
+			$.ajax({ url:base_url+"index.php/ET_Presupuesto_Analitico/insertar",type:"POST",data:{idClasificador:idClasificador,hd_id_et:hd_id_et,idPresupuestoEjecucion:idPresupuestoEjecucion},dataType:'JSON',
+                    success:function(respuesta)
+                    {
+                    	alert(respuesta);
+                    	var html;
+                    	$("#bodyClasificador").html('');
+                    	$.each(respuesta,function(index,element)
+                    	{
+                    		html +='<tr><td>'+element.desc_presupuesto_ej+'</td><td>'+element.num_clasificador+'</td><td>'+element.desc_clasificador+'</td><td> <button onclick="Eliminar('+element.id_analitico+');" data-toggle="tooltip" data-original-title="Eliminar Analitico"   class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button></td></tr>';
+                    	});
+						$("#table_clasificador > tbody").append(html);
+						 swal("AGREGO!", "Se agrego correctamente.", "success");
+                    }
+                });
+		}
+
+
 </script>
