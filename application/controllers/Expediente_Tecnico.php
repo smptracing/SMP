@@ -48,12 +48,20 @@ class Expediente_Tecnico extends CI_Controller
 		$id_etapa_et="2";
 		$listaExpedienteTecnicoEtapa=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoListarEtapa($flat1,$id_etapa_et);
 
-		$flat2="LISTARETAPA";
+		$flat="LISTARETAPA";
+		$id_etapa_et="3";
+		$listaExpedienteEjecucionDeductivo=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoListarEtapa($flat,$id_etapa_et);
+
+		$flat="LISTARETAPA";
 		$id_etapa_et="4";
+		$listaExpedienteEjecucionAdicional=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoListarEtapa($flat,$id_etapa_et);
+
+		$flat2="LISTARETAPA";
+		$id_etapa_et="5";
 		$listaExpedienteTecnicoModificacion=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoListarEtapa($flat1,$id_etapa_et);
 		//var_dump($listaExpedienteTecnicoModificacion);exit;
 		$this->load->view('layout/Ejecucion/header');
-		$this->load->view('front/Ejecucion/ExpedienteTecnico/index.php',['listaExpedienteTecnico'=>$listaExpedienteTecnico,'listaExpedienteTecnicoEtapa'=>$listaExpedienteTecnicoEtapa,'listaExpedienteTecnicoModificacion'=>$listaExpedienteTecnicoModificacion]);
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/index.php',['listaExpedienteTecnico'=>$listaExpedienteTecnico,'listaExpedienteTecnicoEtapa'=>$listaExpedienteTecnicoEtapa,'listaExpedienteTecnicoModificacion'=>$listaExpedienteTecnicoModificacion,'listaExpedienteEjecucionDeductivo'=>$listaExpedienteEjecucionDeductivo,'listaExpedienteEjecucionAdicional'=>$listaExpedienteEjecucionAdicional]);
 		$this->load->view('layout/Ejecucion/footer');
 	}
 
