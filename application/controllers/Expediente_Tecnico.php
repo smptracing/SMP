@@ -333,7 +333,10 @@ class Expediente_Tecnico extends CI_Controller
 	{		
         $opcion="BuscarExpedienteID";
 		$MostraExpedienteNombre=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoSelectBuscarId($opcion,$id_et);
-		$litarPresupuestoAnalitico=$this->Model_ET_Presupuesto_Analitico->ETPresupuestoAnaliticoPorIdET($id_et);
+
+		$flat="REPORTEPRESUPUESTOANALITICO";
+		$litarPresupuestoAnalitico=$this->Model_ET_Presupuesto_Analitico->listarPresupuestoAnalitico($flat,$id_et);
+		//$litarPresupuestoAnalitico=$this->Model_ET_Presupuesto_Analitico->ETPresupuestoAnaliticoPorIdET($flat,$id_et);
 
         $this->load->library('mydompdf');
         $html= $this->load->view('front/Ejecucion/ExpedienteTecnico/reportePdfPresupuestoAnalitico',['MostraExpedienteNombre' => $MostraExpedienteNombre,'litarPresupuestoAnalitico' =>$litarPresupuestoAnalitico], true);
