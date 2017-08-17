@@ -257,8 +257,20 @@
                                       <input  class="form-control" id="txt_pim" name="txt_pim" type="number" required="required">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
+                                      <label>Certificado</label>
+                                      <input  class="form-control" id="txt_certificado" name="txt_certificado" type="number" required="required">
+                                    </div>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                      <label>compromiso</label>
+                                      <input  class="form-control" id="txt_compromiso" name="txt_compromiso" type="number" required="required">
+                                    </div>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
                                       <label>Devengado</label>
                                       <input  class="form-control" id="txt_devengado" name="txt_devengado" type="number" required="required">
+                                    </div>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                      <label>Girado</label>
+                                      <input  class="form-control" id="txt_girado" name="txt_girado" type="number" required="required">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <label>.</label><br>
