@@ -24,9 +24,7 @@
                                     <div class="clearfix"></div>
                                   </div>
                                   <div class="x_content">
-
-
-                                    <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                                  <div class="" role="tabpanel" data-example-id="togglable-tabs">
                                       <ul id="myTab" class="nav nav-tabs" role="tablist">
                                         <li role="presentation"  class="active"><a  href="#tab_brecha" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Proyectos de Inversión</a>
                                         </li>
@@ -264,11 +262,22 @@
                                          </div>
                                       </div>
                                       <div class="col-md-4">
-
-
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label  for="name">Unidad Formuladora<span class="required">*</span>
+                                            </label>
+                                              <select id="lista_unid_form" name="lista_unid_form" class="selectpicker"  title="Elija Unidad Formuladora">
+                                            </select>
+                                         </div>
                                       </div>
                                        <div class="col-md-4">
-
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label  for="name">Estado<span class="required">*</span>
+                                            </label>
+                                            <select id="cbx_estado" name="cbx_estado" class="selectpicker">
+                                              <option value="1">Activo</option>
+                                              <option value="0">Inactivo</option>
+                                            </select>
+                                         </div>
                                       </div>
                               </div>
 

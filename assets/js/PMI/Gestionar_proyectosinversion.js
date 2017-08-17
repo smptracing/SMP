@@ -1,6 +1,7 @@
 $(document).on("ready" ,function(){
   $("#btn_NuevoPip").click(function(){
                  listarCicloInver();
+                 listarufcombo();
              }); 
      listar_proyectos_inversion();/*llamar a mi datatablet listar proyectosinverision*/
                 //REGISTARAR OPERACION Y MANTENIMIENTO
@@ -404,7 +405,7 @@ $(document).on("ready" ,function(){
                     });
                 }
                 var listar_distrito=function(nombre_distrito){
-                     html="";
+                     var html="";
                     $("#cbx_distrito").html(html);
                     event.preventDefault();
                     $.ajax({
@@ -424,7 +425,7 @@ $(document).on("ready" ,function(){
                 }
 //listar en el combox para registrar rubro
  var ListarRubro=function(valor){
-                     html="";
+                     var html="";
                     $("#Cbx_RubroPI").html(html);
                     event.preventDefault();
                     $.ajax({
@@ -445,7 +446,7 @@ $(document).on("ready" ,function(){
                 }
 
                   var listarCicloInver=function(valor){
-                     html="";
+                   var  html="";
                     $("#cbxEstCicInv_").html(html);
                     event.preventDefault();
                     $.ajax({
@@ -460,6 +461,27 @@ $(document).on("ready" ,function(){
                             $("#cbxEstCicInv_").html(html);
                             $('select[name=cbxEstCicInv_]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=cbxEstCicInv_]').change();
+                            $('.selectpicker').selectpicker('refresh');
+                        }
+                    });
+                }
+var listarufcombo=function(valor){
+                     var htmlUF="";
+                    $("#lista_unid_form").html(htmlUF);
+                    event.preventDefault();
+                    $.ajax({
+                        "url":base_url +"index.php/Estudio_Inversion/get_UnidadFormuladora",
+                        type:"POST",
+                        success:function(respuesta2){
+                          // alert(respuesta);
+                         var registros = eval(respuesta2);
+                            for (var i = 0; i <registros.length;i++) {
+                              htmlUF +="<option  value="+registros[i]["id_uf"]+">"+registros[i]["nombre_uf"]+" </option>";
+                            };
+                            $("#lista_unid_form").html(htmlUF);
+                            $("#lista_unid_form").html(htmlUF);
+                            $('select[name=lista_unid_form]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=lista_unid_form]').change();
                             $('.selectpicker').selectpicker('refresh');
                         }
                     });
