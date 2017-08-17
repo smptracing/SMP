@@ -197,14 +197,14 @@
                                             <div class="col-md-11 col-sm-6 col-xs-12">
                                             <label  for="name">Costo de Inversion<span class="required">*</span>
                                         </label>
-                                            <input id="txtCostoPip" name="txtCostoPip" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Costo de inversion" required="required" type="number">
+                                            <input id="txtCostoPip" name="txtCostoPip" class="form-control col-md-7 col-xs-5" data-validate-length-range="20" data-validate-words="2" placeholder="Costo de inversion" required="required" type="number">
                                          </div>
                                       </div>
                                        <div class="col-md-4">
                                            <div class="col-md-11 col-sm-6 col-xs-12">
                                              <label for="textbox"><span class="required">Número de beneficiarios</span>
                                              </label>
-                                              <input id="txt_beneficiarios" name="txt_beneficiarios" class="form-control col-md-7 col-xs-7 notValidate" data-validate-length-range="6" data-validate-words="2" placeholder="Número de beneficiarios" required="required" type="number">
+                                              <input id="txt_beneficiarios" name="txt_beneficiarios" class="form-control col-md-7 col-xs-7 notValidate" data-validate-length-range="20" data-validate-words="2" placeholder="Número de beneficiarios" required="required" type="number">
                                             </div>
                                       </div>
                                       <div class="col-md-4">

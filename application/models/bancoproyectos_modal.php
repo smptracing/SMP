@@ -133,7 +133,7 @@ class bancoproyectos_modal extends CI_Model
     //EDITAR UN PROYECTO PIP
     public function update_no_pip($flat, $id_pi, $cbxUnidadEjecutora, $cbxNatI, $cbxTipologiaInv, $cbxTipoInv, $cbxGrupoFunc, $cbxNivelGob, $cbxProgramaPres, $txtCodigoUnico, $txtNombrePip, $txtCostoPip, $txt_beneficiarios, $dateFechaInPip, $dateFechaViabilidad, $cbx_estado, $cbxEstCicInv_, $cbxRubro, $cbxModalidadEjec, $Cbx_TipoNoPip_i)
     {
-        $this->db->query("execute sp_Gestionar_ProyectoInversion
+        $this->db->query("execute sp_Gestionar_ProyectoInversion_
             @Opcion='" . $flat . "',
             @id_pi='" . $id_pi . "',
             @id_ue='" . $cbxUnidadEjecutora . "',

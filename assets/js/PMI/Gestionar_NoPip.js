@@ -865,7 +865,6 @@ var listarFuenteFinanciamiento=function(valor){
                     });
                 }
                  var listar_TipologiaNoPipRegistro=function(valor){
-                  alert();
                     var html="";
                     $("#Cbx_TipoNoPip_i").html(html);
                     event.preventDefault();
