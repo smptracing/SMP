@@ -13,6 +13,12 @@ class Model_ET_Clasificador extends CI_Model
 		$ETClasificador=$this->db->query("execute sp_Gestionar_ET_Clasificador @Opcion='".$opcion."'");
 	    return $ETClasificador->result();
 	}
+	function ETListaClasificador($valueSearch)
+	{
+		$data=$this->db->query("select * from ET_CLASIFICADOR where replace(desc_clasificador,' ', '') like '%'+replace('".$valueSearch."', ' ', '')+'%'");
+
+		return $data->result();
+	}
 
 	function insertar($opcion,$txtNumeroClasi,$txtDescripcionClasi,$txtDetalleClasi)
 	{

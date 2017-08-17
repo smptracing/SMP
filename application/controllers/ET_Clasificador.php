@@ -17,6 +17,14 @@ class ET_Clasificador extends CI_Controller
         $this->load->view('Front/Ejecucion/ETClasificador/index',['ETClasificador'=>$ETClasificador]);
         $this->load->view('layout/Ejecucion/footer');
     }
+
+    public function BuscarDetalleClasificador()
+    {
+    	$data=$this->Model_ET_Clasificador->ETListaClasificador($this->input->post('valueSearch'));
+
+		echo json_encode($data);exit;
+    }
+
 	public function insertar()
 	{
 		if($_POST)

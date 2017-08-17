@@ -14,6 +14,7 @@ class Expediente_Tecnico extends CI_Controller
 		$this->load->model("Model_ET_Tipo_Responsable"); 
 		$this->load->model("Model_ET_Responsable");
 		$this->load->model("Cargo_Modal");
+		$this->load->model("Model_ET_Presupuesto_Analitico");
 		$this->load->model("Model_ET_Img");
 		$this->load->library('mydompdf');
 	}
@@ -42,8 +43,25 @@ class Expediente_Tecnico extends CI_Controller
 	{
 		$flat="LISTAR";
 		$listaExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoListar($flat);
+
+		$flat1="LISTARETAPA";
+		$id_etapa_et="2";
+		$listaExpedienteTecnicoEtapa=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoListarEtapa($flat1,$id_etapa_et);
+
+		$flat="LISTARETAPA";
+		$id_etapa_et="3";
+		$listaExpedienteEjecucionDeductivo=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoListarEtapa($flat,$id_etapa_et);
+
+		$flat="LISTARETAPA";
+		$id_etapa_et="4";
+		$listaExpedienteEjecucionAdicional=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoListarEtapa($flat,$id_etapa_et);
+
+		$flat2="LISTARETAPA";
+		$id_etapa_et="5";
+		$listaExpedienteTecnicoModificacion=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoListarEtapa($flat1,$id_etapa_et);
+		//var_dump($listaExpedienteTecnicoModificacion);exit;
 		$this->load->view('layout/Ejecucion/header');
-		$this->load->view('front/Ejecucion/ExpedienteTecnico/index.php',['listaExpedienteTecnico'=>$listaExpedienteTecnico]);
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/index.php',['listaExpedienteTecnico'=>$listaExpedienteTecnico,'listaExpedienteTecnicoEtapa'=>$listaExpedienteTecnicoEtapa,'listaExpedienteTecnicoModificacion'=>$listaExpedienteTecnicoModificacion,'listaExpedienteEjecucionDeductivo'=>$listaExpedienteEjecucionDeductivo,'listaExpedienteEjecucionAdicional'=>$listaExpedienteEjecucionAdicional]);
 		$this->load->view('layout/Ejecucion/footer');
 	}
 
@@ -129,7 +147,7 @@ class Expediente_Tecnico extends CI_Controller
 				$_FILES['imagen']['size'] = $variablefile['imagen']['size'][$i];
 				$dato=(string)$_FILES['imagen']['name'];
 				$nombre=explode('.',$dato); 
-				$_FILES['imagen']['name'] =$idImageExp->id_img.'.'.'jpg';//(string)($idImageExp->id_img.'.'.$nombre[1].'.'.$nombre[1]);// $variablefile['imagen']['name'][$i];
+				$_FILES['imagen']['name'] =$idImageExp->id_img.'.'.$nombre[1];//(string)($idImageExp->id_img.'.'.$nombre[1].'.'.$nombre[1]);// $variablefile['imagen']['name'][$i];
 				$this->upload->initialize($config);
 				if ($this->upload->do_upload('imagen'))
 				 {
@@ -213,7 +231,7 @@ class Expediente_Tecnico extends CI_Controller
 			
 			$UltimoExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->UltimoExpedienteTecnico();
 			$id_et=$UltimoExpedienteTecnico->id_et;
-
+			$this->session->set_flashdata('correcto', 'Expediente Tecnico modificado correctamente.');
 			$config = array(
 				"upload_path" => "./uploads/ImageExpediente",
 				'allowed_types' => "jpg|png"
@@ -235,12 +253,11 @@ class Expediente_Tecnico extends CI_Controller
 				 }
 				else
 				 {
-						$error = "ERROR NO SE CARGO LAS FOTOS DE EXPEDIENTE TÉCNICO";
+					$this->session->set_flashdata('correcto', 'Expediente Tecnico modificado correctamente.');
 				 }
 			}
 			$this->db->trans_complete();
 			//echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos Editados Correctamente.', 'txtDireccionUE' => $txtDireccionUE]);exit;
-			$this->session->set_flashdata('correcto', 'Expediente Tecnico modificado correctamente.');
 			return redirect('/Expediente_Tecnico');
 		}
 		
@@ -292,26 +309,59 @@ class Expediente_Tecnico extends CI_Controller
 		$this->mydompdf->stream("ReporteMetrado.pdf", array("Attachment" => false));
 	}
 
-
-	public function reportePdfPresupuestoAnalitico()
+	function reportePresupuestoFF05($id_ExpedienteTecnico)
 	{
-	    //Carga la librería que agregamos
+		$opcion="BuscarExpedienteID";
+		$MostraExpedienteNombre=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoSelectBuscarId($opcion,$id_ExpedienteTecnico);
+		$MostraExpedienteTecnicoExpe=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoSelectBuscarId($opcion,$id_ExpedienteTecnico);
+
+	    $MostraExpedienteTecnicoExpe->childComponente=$this->Model_ET_Componente->ETComponentePorIdET($id_ExpedienteTecnico);
+
+	    foreach ($MostraExpedienteTecnicoExpe->childComponente as $key => $value) 
+	    {
+			$value->childMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($value->id_componente);
+			foreach ($value->childMeta as $index => $item) 
+			{
+				$this->obtenerMetaAnidada($item);
+			}
+	    } 
+		
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/reportePresupuestoFF05',['MostraExpedienteTecnicoExpe'=>$MostraExpedienteTecnicoExpe,'MostraExpedienteNombre' =>$MostraExpedienteNombre], true);
+   
+	}
+	public function reportePdfPresupuestoAnalitico($id_et)
+	{		
+        $opcion="BuscarExpedienteID";
+		$MostraExpedienteNombre=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoSelectBuscarId($opcion,$id_et);
+
+		$flat="REPORTEPRESUPUESTOANALITICO";
+		$litarPresupuestoAnalitico=$this->Model_ET_Presupuesto_Analitico->listarPresupuestoAnalitico($flat,$id_et);
+		//$litarPresupuestoAnalitico=$this->Model_ET_Presupuesto_Analitico->ETPresupuestoAnaliticoPorIdET($flat,$id_et);
+
         $this->load->library('mydompdf');
-        //$saludo será una variable dentro la vista
-        $data["saludo"] = "Hola mundo!";
-        //$html tendrá el contenido de la vista
-        $html= $this->load->view('front/Ejecucion/ExpedienteTecnico/reportePdfPresupuestoAnalitico', $data, true);
+        $html= $this->load->view('front/Ejecucion/ExpedienteTecnico/reportePdfPresupuestoAnalitico',['MostraExpedienteNombre' => $MostraExpedienteNombre,'litarPresupuestoAnalitico' =>$litarPresupuestoAnalitico], true);
         $this->mydompdf->load_html($html);
         $this->mydompdf->set_paper('letter', 'landscape');
         $this->mydompdf->render();
-        $this->mydompdf->stream("reportePdfPresupuestoAnalitico.pdf", array(
-            "Attachment" => false
-        ));
+        $this->mydompdf->stream("reportePdfPresupuestoAnalitico.pdf", array("Attachment" => false));
     }
-	public function reportePresupuestoFF05()
+	public function reportePdfPresupuestoFF05($id_ExpedienteTecnico)
 	{
-		$data='Nuevo';
-		$html= $this->load->view('front/Ejecucion/ExpedienteTecnico/reportePresupuestoFF05',$data, true);
+		$opcion="BuscarExpedienteID";
+		$MostraExpedienteNombre=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoSelectBuscarId($opcion,$id_ExpedienteTecnico);
+		$MostraExpedienteTecnicoExpe=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoSelectBuscarId($opcion,$id_ExpedienteTecnico);
+
+	    $MostraExpedienteTecnicoExpe->childComponente=$this->Model_ET_Componente->ETComponentePorIdET($id_ExpedienteTecnico);
+
+	    foreach ($MostraExpedienteTecnicoExpe->childComponente as $key => $value) 
+	    {
+			$value->childMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($value->id_componente);
+			foreach ($value->childMeta as $index => $item) 
+			{
+				$this->obtenerMetaAnidada($item);
+			}
+	    } 
+		$html= $this->load->view('front/Ejecucion/ExpedienteTecnico/reportePresupuestoFF05',['MostraExpedienteTecnicoExpe'=>$MostraExpedienteTecnicoExpe,'MostraExpedienteNombre' => $MostraExpedienteNombre], true);
 		$this->mydompdf->set_paper('latter','landscape');
 		$this->mydompdf->load_html($html);
 		$this->mydompdf->render();
