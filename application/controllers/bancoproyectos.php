@@ -28,8 +28,8 @@ class bancoproyectos extends CI_Controller
             $txtNombrePip        = $this->input->post("txtNombrePip");
             $txtCostoPip         = $this->input->post("txtCostoPip");
             $txt_beneficiarios   = $this->input->post("txt_beneficiarios");
-            $dateFechaInPip      = "2017-03-01";
-            $dateFechaViabilidad = "2017-03-01";
+            $dateFechaInPip      = $this->input->post("fecha_registro");
+            $dateFechaViabilidad = $this->input->post("fecha_viabilidad");
             $lista_unid_form     = $this->input->post("lista_unid_form");
             $cbx_estado          = $this->input->post("cbx_estado");
             $cbxEstCicInv_       = $this->input->post("cbxEstCicInv_");
@@ -65,8 +65,8 @@ class bancoproyectos extends CI_Controller
             $txtNombrePip        = $this->input->post("txtNombrePip");
             $txtCostoPip         = $this->input->post("txtCostoPip");
             $txt_beneficiarios   = $this->input->post("txt_beneficiarios");
-            $dateFechaInPip      = "2017-03-01";
-            $dateFechaViabilidad = "2017-03-01";
+            $dateFechaInPip      = $this->input->post("fecha_registro");
+            $dateFechaViabilidad = $this->input->post("fecha_viabilidad");
             $cbx_estado          = $this->input->post("cbx_estado");
             $cbxEstCicInv_       = $this->input->post("cbxEstCicInv_");
             $cbxRubro            = $this->input->post("cbxRubro");
@@ -101,8 +101,8 @@ class bancoproyectos extends CI_Controller
             $txtNombrePip        = $this->input->post("txtNombrePip_m");
             $txtCostoPip         = $this->input->post("txtCostoPip_m");
             $txt_beneficiarios   = $this->input->post("txt_beneficiarios_m");
-            $dateFechaInPip      = "2017-03-01";
-            $dateFechaViabilidad = "2017-03-01";
+            $dateFechaInPip      = $this->input->post("fecha_registro");
+            $dateFechaViabilidad = $this->input->post("fecha_viabilidad");
             $cbx_estado          = $this->input->post("cbx_estado_m");
             $cbxEstCicInv_       = $this->input->post("cbxEstCicInv_m");
             $cbxRubro            = $this->input->post("cbxRubroEjecucion_m");

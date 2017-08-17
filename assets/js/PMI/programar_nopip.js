@@ -208,17 +208,38 @@ $(document).on("ready" ,function(){
                     $("#cbx_Meta").html(html);
                     event.preventDefault();
                     $.ajax({
-                        "url":base_url +"index.php/meta/listar_meta",
+                        "url":base_url +"index.php/Meta/listar_correlativo",
                         type:"POST",
                         success:function(respuesta3){
                          //  alert(respuesta);
                          var registros = eval(respuesta3);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option  value="+registros[i]["id_meta_pres"]+"> "+registros[i]["nombre_meta_pres"]+" </option>";
+                              html +="<option  value="+registros[i]["id_correlativo_meta"]+"> "+registros[i]["cod_correlativo"]+" </option>";
                             };
                             $("#cbx_Meta").html(html);
                             $('select[name=cbx_Meta]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=cbx_Meta]').change();
+                            $('.selectpicker').selectpicker('refresh');
+                        }
+                    });
+                }
+                /*para listar nombres de las metas*/
+                var listar_meta_presupuestal=function(valor){
+                     html="";
+                    $("#cbx_meta_presupuestal").html(html);
+                    event.preventDefault();
+                    $.ajax({
+                        "url":base_url +"index.php/Meta/listar_correlativo",
+                        type:"POST",
+                        success:function(respuesta3){
+                         //  alert(respuesta);
+                         var registros = eval(respuesta3);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option  value="+registros[i]["id_correlativo_meta"]+"> "+registros[i]["cod_correlativo"]+" </option>";
+                            };
+                            $("#cbx_meta_presupuestal").html(html);
+                            $('select[name=cbx_meta_presupuestal]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=cbx_meta_presupuestal]').change();
                             $('.selectpicker').selectpicker('refresh');
                         }
                     });

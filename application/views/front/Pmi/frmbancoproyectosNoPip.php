@@ -124,17 +124,29 @@
                                     </div>
 
                                  <div class="row">
-
                                       <div class="col-md-12">
-
                                         <label class="control-label col-md-1 col-sm-12 col-xs-12" for="name">Inversion<span class="required"></span>
                                         </label>
                                          <div class="col-md-12 col-sm-12 col-xs-12">
                                           <input id="txtNombrePip" name="txtNombrePip" class="form-control col-md-12 col-xs-5" placeholder="Nombre Inversion" required="required" type="text">
-                                            <!--<textarea  id="txtNombrePip" name="txtNombrePip" class="form-control" data-validate-length-range="6" data-validate-words="2" placeholder="Nombre Inversion"></textarea>-->
                                         </div>
                                       </div>
-
+                                 </div>
+                                 <div class="row">
+                                      <div class="col-md-4">
+                                            <div class="col-md-11 col-sm-11 col-xs-12">
+                                             <label  for="textbox"><span class="required">Fecha Registro</span>
+                                              </label>
+                                            <input type="date" id="fecha_registro" name="fecha_registro" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text">
+                                            </div>
+                                      </div>
+                                      <div class="col-md-4">
+                                            <div class="col-md-11 col-sm-11 col-xs-12">
+                                             <label  for="textbox"><span class="required">Fecha Viabilidad</span>
+                                              </label>
+                                            <input type="date" id="fecha_viabilidad" name="fecha_viabilidad" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text">
+                                            </div>
+                                      </div>
                                  </div>
                                  <hr>
                                <div class="row">
@@ -204,7 +216,7 @@
                                            <div class="col-md-11 col-sm-6 col-xs-12">
                                              <label for="textbox"><span class="required">Número de beneficiarios</span>
                                              </label>
-                                              <input id="txt_beneficiarios" name="txt_beneficiarios" class="form-control col-md-7 col-xs-7 notValidate" data-validate-length-range="20" data-validate-words="2" placeholder="Número de beneficiarios" required="required" type="number">
+                                              <input id="txt_beneficiarios" name="txt_beneficiarios" class="form-control col-md-7 col-xs-7 notValidate" data-validate-length-range="20" data-validate-words="2" placeholder="Número de beneficiarios" required="required" type="text">
                                             </div>
                                       </div>
                                       <div class="col-md-4">

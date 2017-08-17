@@ -59,6 +59,7 @@ class Meta extends CI_Controller
             show_404();
         }
     }
+    /**/
     //Eliminar meta presupuestal
     public function Eliminar_meta_prepuestal()
     {
@@ -74,6 +75,26 @@ class Meta extends CI_Controller
             show_404();
         }
 
+    }
+    /*listar correlativo meta*/
+    public function listar_correlativo()
+    {
+        if ($this->input->is_ajax_request()) {
+            $datos = $this->Meta_Model->listar_correlativo();
+            echo json_encode($datos);
+        } else {
+            show_404();
+        }
+    }
+    /*listar meta presupuestal*/
+    public function listar_meta_presupuestal()
+    {
+        if ($this->input->is_ajax_request()) {
+            $datos = $this->Meta_Model->listar_meta_presupuestal();
+            echo json_encode($datos);
+        } else {
+            show_404();
+        }
     }
 
     public function index()
