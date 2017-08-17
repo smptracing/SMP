@@ -796,7 +796,7 @@ var listarFuenteFinanciamiento=function(valor){
                          //  alert(respuesta);
                          var registros = eval(respuesta3);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option  value="+registros[i]["distrito"]+"> "+registros[i]["distrito"]+" </option>";
+                              html +="<option  value="+registros[i]["id_ubigeo"]+"> "+registros[i]["distrito"]+" </option>";
                             };
                             $("#cbx_distrito").html(html);
                             $('.selectpicker').selectpicker('refresh');

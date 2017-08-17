@@ -68,7 +68,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-12 col-sm-12 col-xs-12">
+		<div class="col-md-12 col-sm-12 col-xs-12" style="height:300px;overflow:scroll;overflow-x: hidden; ">
 			<table class="table  table-condensed jambo_table bulk_action" id="table_clasificador">
 				<thead>
 					<tr>
@@ -79,12 +79,16 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 					</tr>
 				</thead>
 				<tbody id="bodyClasificador">
-					<?php foreach ($PresupuestoAnaliticoListar as $Itemp) {?>
+					<?php foreach ($PresupuestoEjecucionListar as $key => $value) {?>
 						<tr>
-							<td><?= $Itemp->desc_presupuesto_ej?></td>
-							<td><?= $Itemp->num_clasificador?></td>
-							<td><?= $Itemp->desc_clasificador?></td>
-							<td><button onclick="Eliminar(<?=$Itemp->id_analitico?>);" data-toggle="tooltip" data-original-title="Eliminar Analitico"   class='btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button></td>
+							<td colspan="4"><?=$value->desc_presupuesto_ej?></td>
+								<?php foreach($value->ChilpresupuestoAnalitico as $item){ ?>
+									<tr>
+										<td></td>
+										<td><?= $item->num_clasificador?></td>
+										<td><?= $item->desc_clasificador?></td>
+										<td><button onclick="Eliminar(<?=$item->id_analitico?>);" data-toggle="tooltip" data-original-title="Eliminar Analitico"   class='btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button></td>									</tr>
+								<?php } ?>
 						</tr>						
 					<?php }?>
 				</tbody>
@@ -102,6 +106,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 
 	$(function()
 	{
+		
 		$('#selectClasificador').selectpicker({ liveSearch: true }).ajaxSelectPicker(
 		{
 	        ajax: {
@@ -115,14 +120,13 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 	        preprocessData: function(data)
 	        {
 	        	var dataForSelect=[];
-
 	        	for(var i=0; i<data.length; i++)
 	        	{
 	        		
 	        		dataForSelect.push(
 	                {
-	                    "value" : data[i].desc_clasificador,
-	                    "text" : data[i].desc_clasificador,
+	                    "value" : data[i].Clasificador,
+	                    "text" : data[i].Clasificador,
 	                    "data" :
 	                    {
 	                    	"id_clasificador" : data[i].id_clasificador
@@ -156,18 +160,29 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 			$.ajax({ url:base_url+"index.php/ET_Presupuesto_Analitico/insertar",type:"POST",data:{idClasificador:idClasificador,hd_id_et:hd_id_et,idPresupuestoEjecucion:idPresupuestoEjecucion},dataType:'JSON',
                     success:function(respuesta)
                     {
-                    	alert(respuesta);
                     	var html;
                     	$("#bodyClasificador").html('');
                     	$.each(respuesta,function(index,element)
                     	{
-                    		html +='<tr><td>'+element.desc_presupuesto_ej+'</td><td>'+element.num_clasificador+'</td><td>'+element.desc_clasificador+'</td><td> <button onclick="Eliminar('+element.id_analitico+');" data-toggle="tooltip" data-original-title="Eliminar Analitico"   class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button></td></tr>';
+                    	    html +='<tr>';
+                    		html +='<td colspan="4">'+element.desc_presupuesto_ej+'</td>';
+		                    		$.each(element.ChilpresupuestoAnalitico,function(index,element)
+		                    		{
+										html +='<tr>';
+										html +='<td> </td>';
+										html +='<td>' +element.num_clasificador+'</td>';
+										html +='<td>' +element.desc_clasificador+'</td>';
+										html +='<td><button onclick="Eliminar('+element.id_analitico+');" data-toggle="tooltip" data-original-title="Eliminar Analitico"   class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button></td>';	
+										html +='</tr>';
+		                    		});
+                    		html +='</tr>';
                     	});
-						$("#table_clasificador > tbody").append(html);
+						 $("#table_clasificador > #bodyClasificador").append(html);
+						 console.log(html);
 						 swal("AGREGO!", "Se agrego correctamente.", "success");
                     }
                 });
 		}
 
-
 </script>
+

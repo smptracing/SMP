@@ -36,11 +36,16 @@ class ET_Presupuesto_Analitico extends CI_Controller
 			$opcion="INSERTAR";
 			$dataListarAnalitico=$this->Model_ET_Presupuesto_Analitico->insertar($opcion,$idClasificador,$hd_id_et,$idPresupuestoEjecucion);
 
-			$opcion="LISTAR";
-			$PresupuestoAnaliticoListar=$this->Model_ET_Presupuesto_Analitico->listar($opcion,$hd_id_et);
+			$flat  = "R";
+			$PresupuestoEjecucionListar=$this->Model_ET_Presupuesto_Ejecucion->PresupuestoEjecucionListar($flat);
+			
+			foreach ($PresupuestoEjecucionListar as $key => $value)
+			{
+				$value->ChilpresupuestoAnalitico=$this->Model_ET_Presupuesto_Analitico->ETPresupuestoAnaliticoDetalles($hd_id_et,$value->id_presupuesto_ej);
+			}
 			$this->db->trans_complete();
 
-			echo json_encode($PresupuestoAnaliticoListar);exit;
+			echo json_encode($PresupuestoEjecucionListar);exit;
 		}
 
 		$expedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnico($this->input->get('idExpedienteTecnico'));
@@ -51,6 +56,13 @@ class ET_Presupuesto_Analitico extends CI_Controller
 		$opcion="LISTAR";
 		$PresupuestoAnaliticoListar=$this->Model_ET_Presupuesto_Analitico->listar($opcion,$this->input->get('idExpedienteTecnico'));
 
+		foreach ($PresupuestoEjecucionListar as $key => $value) 
+		{
+			$value->ChilpresupuestoAnalitico=$this->Model_ET_Presupuesto_Analitico->ETPresupuestoAnaliticoDetalles($this->input->get('idExpedienteTecnico'),$value->id_presupuesto_ej);
+		}
+		/*echo "<pre>";
+		print_r($PresupuestoEjecucionListar);
+		echo "</pre>";*/
 		$this->load->view('front/Ejecucion/ETPresupuestoAnalitico/insertar.php', ['expedienteTecnico' => $expedienteTecnico,'PresupuestoEjecucionListar' => $PresupuestoEjecucionListar,'PresupuestoAnaliticoListar' => $PresupuestoAnaliticoListar]);
 	}
 

@@ -144,6 +144,7 @@ $(document).on("ready" ,function(){
                       $("#txt_costo_proyecto_mp").val(data.costo_pi);
                       $("#txt_nombre_proyecto_mp").val(data.nombre_pi);
                       listar_Meta();
+                      listar_meta_presupuestal();
                        listar_meta_pi(id_pi);
                     });
                 }
@@ -204,11 +205,32 @@ $(document).on("ready" ,function(){
                     });
                 }
                 var listar_Meta=function(valor){
-                     html="";
+                    var html="";
                     $("#cbx_Meta").html(html);
                     event.preventDefault();
                     $.ajax({
-                        "url":base_url +"index.php/meta/listar_meta",
+                        "url":base_url +"index.php/Meta/listar_correlativo",
+                        type:"POST",
+                        success:function(respuesta3){
+                         //  alert(respuesta);
+                         var registros = eval(respuesta3);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option  value="+registros[i]["id_correlativo_meta"]+"> "+registros[i]["cod_correlativo"]+" </option>";
+                            };
+                            $("#cbx_Meta").html(html);
+                            $('select[name=cbx_Meta]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=cbx_Meta]').change();
+                            $('.selectpicker').selectpicker('refresh');
+                        }
+                    });
+                }
+                /*para listar nombres de las metas*/
+                var listar_meta_presupuestal=function(valor){
+                     var html="";
+                    $("#cbx_meta_presupuestal").html(html);
+                    event.preventDefault();
+                    $.ajax({
+                        "url":base_url +"index.php/Meta/listar_meta_presupuestal",
                         type:"POST",
                         success:function(respuesta3){
                          //  alert(respuesta);
@@ -216,9 +238,9 @@ $(document).on("ready" ,function(){
                             for (var i = 0; i <registros.length;i++) {
                               html +="<option  value="+registros[i]["id_meta_pres"]+"> "+registros[i]["nombre_meta_pres"]+" </option>";
                             };
-                            $("#cbx_Meta").html(html);
-                            $('select[name=cbx_Meta]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
-                            $('select[name=cbx_Meta]').change();
+                            $("#cbx_meta_presupuestal").html(html);
+                            $('select[name=cbx_meta_presupuestal]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=cbx_meta_presupuestal]').change();
                             $('.selectpicker').selectpicker('refresh');
                         }
                     });

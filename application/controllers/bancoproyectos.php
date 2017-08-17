@@ -28,8 +28,8 @@ class bancoproyectos extends CI_Controller
             $txtNombrePip        = $this->input->post("txtNombrePip");
             $txtCostoPip         = $this->input->post("txtCostoPip");
             $txt_beneficiarios   = $this->input->post("txt_beneficiarios");
-            $dateFechaInPip      = "2017-03-01";
-            $dateFechaViabilidad = "2017-03-01";
+            $dateFechaInPip      = $this->input->post("fecha_registro");
+            $dateFechaViabilidad = $this->input->post("fecha_viabilidad");
             $lista_unid_form     = $this->input->post("lista_unid_form");
             $cbx_estado          = $this->input->post("cbx_estado");
             $cbxEstCicInv_       = $this->input->post("cbxEstCicInv_");
@@ -65,8 +65,8 @@ class bancoproyectos extends CI_Controller
             $txtNombrePip        = $this->input->post("txtNombrePip");
             $txtCostoPip         = $this->input->post("txtCostoPip");
             $txt_beneficiarios   = $this->input->post("txt_beneficiarios");
-            $dateFechaInPip      = "2017-03-01";
-            $dateFechaViabilidad = "2017-03-01";
+            $dateFechaInPip      = $this->input->post("fecha_registro");
+            $dateFechaViabilidad = $this->input->post("fecha_viabilidad");
             $cbx_estado          = $this->input->post("cbx_estado");
             $cbxEstCicInv_       = $this->input->post("cbxEstCicInv_");
             $cbxRubro            = $this->input->post("cbxRubro");
@@ -101,8 +101,8 @@ class bancoproyectos extends CI_Controller
             $txtNombrePip        = $this->input->post("txtNombrePip_m");
             $txtCostoPip         = $this->input->post("txtCostoPip_m");
             $txt_beneficiarios   = $this->input->post("txt_beneficiarios_m");
-            $dateFechaInPip      = "2017-03-01";
-            $dateFechaViabilidad = "2017-03-01";
+            $dateFechaInPip      = $this->input->post("fecha_registro");
+            $dateFechaViabilidad = $this->input->post("fecha_viabilidad");
             $cbx_estado          = $this->input->post("cbx_estado_m");
             $cbxEstCicInv_       = $this->input->post("cbxEstCicInv_m");
             $cbxRubro            = $this->input->post("cbxRubroEjecucion_m");
@@ -203,16 +203,14 @@ class bancoproyectos extends CI_Controller
     public function Add_ubigeo_proyecto()
     {
         if ($this->input->is_ajax_request()) {
-            $flat         = "insertar_distrito ";
+            $flat         = "C ";
             $id_ubigeo_pi = "0";
-            $id_ubigeo    = "null";
+            $id_ubigeo    = $this->input->post("cbx_distrito");
             $txt_id_pip   = $this->input->post("txt_id_pip");
             $direccion    = "null";
             $txt_latitud  = $this->input->post("txt_latitud");
             $txt_longitud = $this->input->post("txt_longitud");
-            $distritosM   = $this->input->post("cbx_distrito");
-
-            if ($this->bancoproyectos_modal->Add_ubigeo_proyecto($flat, $id_ubigeo_pi, $id_ubigeo, $txt_id_pip, $direccion, $txt_latitud, $txt_longitud, $distritosM) == false) {
+            if ($this->bancoproyectos_modal->Add_ubigeo_proyecto($flat, $id_ubigeo_pi, $id_ubigeo, $txt_id_pip, $direccion, $txt_latitud, $txt_longitud) == false) {
                 echo "1";
             } else {
                 echo "2";

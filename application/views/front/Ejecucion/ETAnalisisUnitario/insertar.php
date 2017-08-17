@@ -28,6 +28,7 @@
 			<label for="control-label">Presupuesto analítico (Clasificador)</label>
 			<div>
 				<select name="selectPresupuestoAnalitico" id="selectPresupuestoAnalitico" class="form-control">
+					<option></option>
 					<?php foreach($listaETPresupuestoAnalitico as $value){ ?>
 						<option value="<?=$value->id_analitico?>"><?=$value->desc_clasificador?></option>
 					<?php } ?>
@@ -357,6 +358,16 @@
 						notEmpty:
 						{
 							message: '<b style="color: red;">El campo "Recurso" es requerido.</b>'
+						}
+					}
+				},
+				selectPresupuestoAnalitico:
+				{
+					validators: 
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Presupuesto analítico" es requerido.</b>'
 						}
 					}
 				}

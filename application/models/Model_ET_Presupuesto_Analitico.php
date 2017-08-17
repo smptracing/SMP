@@ -23,6 +23,14 @@ class Model_ET_Presupuesto_Analitico extends CI_Model
 
 		return $data->result();
 	}
+	function ETPresupuestoAnaliticoDetalles($idET,$id_presupuesto_ej)
+	{
+		$data=$this->db->query("select * from ET_PRESUPUESTO_ANALITICO ET_PREA inner join ET_PRESUPUESTO_EJECUCION ET_PRER on  
+								ET_PREA.id_presupuesto_ej=ET_PRER.id_presupuesto_ej inner join ET_CLASIFICADOR ET_CLA on
+								ET_PREA.id_clasificador=ET_CLA.id_clasificador WHERE id_et='".$idET."' and ET_PRER.id_presupuesto_ej='".$id_presupuesto_ej."'");
+
+		return $data->result();
+	}
 
 	function listarPresupuestoAnalitico($flat,$id_et)
 	{

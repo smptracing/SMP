@@ -9,16 +9,15 @@ class bancoproyectos_modal extends CI_Model
 
     }
     //Add ubigeo a un proyecto
-    public function Add_ubigeo_proyecto($flat, $id_ubigeo_pi, $id_ubigeo, $txt_id_pip, $direccion, $txt_latitud, $txt_longitud, $distritosM)
-    {
+    public function Add_ubigeo_proyecto($flat, $id_ubigeo_pi, $id_ubigeo, $txt_id_pip, $direccion, $txt_latitud,
+        $txt_longitud) {
         $this->db->query("execute sp_Gestionar_UbigeoPI'" . $flat . "','"
             . $id_ubigeo_pi . "','"
             . $id_ubigeo . "','"
             . $txt_id_pip . "','"
             . $direccion . "','"
             . $txt_latitud . "','"
-            . $txt_longitud . "','"
-            . $distritosM . "'");
+            . $txt_longitud . "'");
         if ($this->db->affected_rows() > 0) {
             return true;
         } else {
