@@ -14,8 +14,9 @@ class Model_ET_Clasificador extends CI_Model
 	    return $ETClasificador->result();
 	}
 	function ETListaClasificador($valueSearch)
-	{
-		$data=$this->db->query("select * from ET_CLASIFICADOR where replace(desc_clasificador,' ', '') like '%'+replace('".$valueSearch."', ' ', '')+'%'");
+	{	
+		$opcion='BUSCARCLASIFICADOR';
+		$data=$this->db->query("execute sp_Gestionar_ET_Clasificador @Opcion='".$opcion."',@buscar='".$valueSearch."' ");
 
 		return $data->result();
 	}
