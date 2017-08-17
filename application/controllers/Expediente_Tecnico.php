@@ -197,6 +197,7 @@ class Expediente_Tecnico extends CI_Controller
 			$this->upload->do_upload('Documento_Resolucion');
 
 			$flat ="EDITAR";
+
 			$hdIdExpediente=$this->input->post('hdIdExpediente');
 			//$txtIdPi=$this->input->post('txtIdPi');
 			$txtNombreUe=$this->input->post('txtNombreUe');
@@ -229,8 +230,9 @@ class Expediente_Tecnico extends CI_Controller
 	
 			$this->Model_ET_Expediente_Tecnico->editar($flat,$hdIdExpediente,$txtNombreUe,$txtDireccionUE,$txtUbicacionUE,$txtTelefonoUE,$txtRucUE,$txtCostoTotalPreInversion,$txtCostoDirectoPre,$txtCostoIndirectoPre,$txtCostoTotalInversion,$txtCostoDirectoInversion,$txtGastosGenerales,$txtGastosSupervision,$txtFuncionProgramatica,$txtFuncion,$txtPrograma,$txtSubPrograma,$txtProyecto,$txtComponente,$txtMeta,$txtFuenteFinanciamiento,$txtModalidadEjecucion,$txtTiempoEjecucionPip,$txtNumBeneficiarios,$txtSituacioActual,$txtSituacioDeseada,$txtContribucioInterv,$txtNumFolio);
 			
-			$UltimoExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->UltimoExpedienteTecnico();
-			$id_et=$UltimoExpedienteTecnico->id_et;
+			//$UltimoExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->UltimoExpedienteTecnico();
+			//$id_et=$UltimoExpedienteTecnico->id_et;
+
 			$this->session->set_flashdata('correcto', 'Expediente Tecnico modificado correctamente.');
 			$config = array(
 				"upload_path" => "./uploads/ImageExpediente",
@@ -241,19 +243,25 @@ class Expediente_Tecnico extends CI_Controller
 			$files = count($_FILES['imagen']['name']);
 			for ($i=0; $i < $files; $i++) 
 			{ 
+				$idImageExp=$this->Model_ET_Expediente_Tecnico->Ultimo_Img();
 				$_FILES['imagen']['name'] = $variablefile['imagen']['name'][$i];
 				$_FILES['imagen']['type'] = $variablefile['imagen']['type'][$i];
 				$_FILES['imagen']['tmp_name'] = $variablefile['imagen']['tmp_name'][$i];
 				$_FILES['imagen']['error'] = $variablefile['imagen']['error'][$i];
 				$_FILES['imagen']['size'] = $variablefile['imagen']['size'][$i];
+				$dato=(string)$_FILES['imagen']['name'];
+				$nombre=explode('.',$dato); 
+				$_FILES['imagen']['name'] =$idImageExp->id_img.'.'.$nombre[1];//(string)($idImageExp->id_img.'.'.$nombre[1].'.'.$nombre[1]);// $variablefile['imagen']['name'][$i];
 				$this->upload->initialize($config);
 				if ($this->upload->do_upload('imagen'))
 				 {
-					$this->Model_ET_Img->insertarImgExpediente($UltimoExpedienteTecnico->id_et,$_FILES['imagen']['name']);
+					$this->Model_ET_Img->insertarImgExpediente($hdIdExpediente,($idImageExp->id_img.'.'.$nombre[1]));
 				 }
 				else
 				 {
-					$this->session->set_flashdata('correcto', 'Expediente Tecnico modificado correctamente.');
+						$this->db->trans_rollback();
+
+						$error = "ERROR NO SE CARGO LAS FOTOS DE EXPEDIENTE TÉCNICO";
 				 }
 			}
 			$this->db->trans_complete();
