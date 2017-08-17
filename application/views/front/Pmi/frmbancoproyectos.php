@@ -24,9 +24,7 @@
                                     <div class="clearfix"></div>
                                   </div>
                                   <div class="x_content">
-
-
-                                    <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                                  <div class="" role="tabpanel" data-example-id="togglable-tabs">
                                       <ul id="myTab" class="nav nav-tabs" role="tablist">
                                         <li role="presentation"  class="active"><a  href="#tab_brecha" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Proyectos de Inversión</a>
                                         </li>
@@ -207,14 +205,14 @@
                                             <div class="col-md-11 col-sm-6 col-xs-12">
                                             <label  for="name">Costo de Inversion<span class="required">*</span>
                                         </label>
-                                            <input id="txtCostoPip" name="txtCostoPip" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Costo de inversion" required="required" type="number">
+                                            <input id="txtCostoPip" name="txtCostoPip" class="form-control col-md-7 col-xs-5" data-validate-length-range="20" data-validate-words="2" placeholder="Costo de inversion" required="required" type="number">
                                          </div>
                                       </div>
                                        <div class="col-md-4">
                                            <div class="col-md-11 col-sm-6 col-xs-12">
                                              <label for="textbox"><span class="required">Número de beneficiarios</span>
                                              </label>
-                                              <input id="txt_beneficiarios" name="txt_beneficiarios" class="form-control col-md-7 col-xs-7 notValidate" data-validate-length-range="6" data-validate-words="2" placeholder="Número de beneficiarios" required="required" type="number">
+                                              <input id="txt_beneficiarios" name="txt_beneficiarios" class="form-control col-md-7 col-xs-7 notValidate" data-validate-length-range="20" data-validate-words="2" placeholder="Número de beneficiarios" required="required" type="number">
                                             </div>
                                       </div>
                                       <div class="col-md-4">
@@ -264,11 +262,22 @@
                                          </div>
                                       </div>
                                       <div class="col-md-4">
-
-
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label  for="name">Unidad Formuladora<span class="required">*</span>
+                                            </label>
+                                              <select id="lista_unid_form" name="lista_unid_form" class="selectpicker"  title="Elija Unidad Formuladora">
+                                            </select>
+                                         </div>
                                       </div>
                                        <div class="col-md-4">
-
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label  for="name">Estado<span class="required">*</span>
+                                            </label>
+                                            <select id="cbx_estado" name="cbx_estado" class="selectpicker">
+                                              <option value="1">Activo</option>
+                                              <option value="0">Inactivo</option>
+                                            </select>
+                                         </div>
                                       </div>
                               </div>
 
