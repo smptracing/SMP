@@ -231,18 +231,19 @@
                                       <label>Nombre del Proyecto</label>
                                       <input  class="form-control" id="txt_nombre_proyecto_mp" name="txt_nombre_proyecto_mp" type="text" disabled="disabled">
                                     </div>
-                                   <div class="col-md-3 col-sm-6 col-xs-12">
+                                   <div class="col-md-3 col-sm-8 col-xs-12">
                                       <label>Costo del Proyecto</label>
                                       <input  class="form-control" id="txt_costo_proyecto_mp" name="txt_costo_proyecto_mp" type="number" disabled="disabled">
                                     </div>
-                                    <div class="col-md-4 col-sm-12 col-xs-12">
-                                      <label>Correlativo Meta </label>
-                                      <select id="cbx_Meta" name="cbx_Meta" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Elija Meta">
+
+                                    <div class="col-md-4 col-sm-8 col-xs-12">
+                                      <label>Meta Presupuestal</label>
+                                      <select id="cbx_meta_presupuestal" name="cbx_meta_presupuestal" class="selectpicker" data-live-search="true" title="Elija Meta">
                                       </select>
                                     </div>
-                                    <div class="col-md-4 col-sm-12 col-xs-12">
-                                      <label>Meta Presupuestal</label>
-                                      <select id="cbx_meta_presupuestal" name="cbx_meta_presupuestal" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Elija Meta">
+                                    <div class="col-md-4 col-sm-8 col-xs-12">
+                                      <label>Correlativo Meta </label>
+                                      <select id="cbx_Meta" name="cbx_Meta" class="selectpicker" data-live-search="true" title="Elija Meta">
                                       </select>
                                     </div>
                                  </div>
