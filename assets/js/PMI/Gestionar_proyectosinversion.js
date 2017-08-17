@@ -404,8 +404,9 @@ $(document).on("ready" ,function(){
                         }
                     });
                 }
+
                 var listar_distrito=function(nombre_distrito){
-                     var html="";
+                    var html="";
                     $("#cbx_distrito").html(html);
                     event.preventDefault();
                     $.ajax({
@@ -416,7 +417,7 @@ $(document).on("ready" ,function(){
                          //  alert(respuesta);
                          var registros = eval(respuesta3);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option  value="+registros[i]["distrito"]+"> "+registros[i]["distrito"]+" </option>";
+                              html +="<option  value="+registros[i]["id_ubigeo"]+"> "+registros[i]["distrito"]+" </option>";
                             };
                             $("#cbx_distrito").html(html);
                             $('.selectpicker').selectpicker('refresh');
