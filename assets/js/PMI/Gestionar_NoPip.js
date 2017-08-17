@@ -785,7 +785,7 @@ var listarFuenteFinanciamiento=function(valor){
                     });
                 }
                 var listar_distrito=function(nombre_distrito){
-                     html="";
+                    var html="";
                     $("#cbx_distrito").html(html);
                     event.preventDefault();
                     $.ajax({
