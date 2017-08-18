@@ -42,4 +42,11 @@ class Model_ET_Analisis_Unitario extends CI_Model
 
 		return true;
 	}
+
+	function actualizarAnalitico($idAnalisis, $idAnalitico)
+	{
+		$this->db->query("update ET_ANALISIS_UNITARIO set id_analitico=".$idAnalitico." where id_analisis=".$idAnalisis);
+
+		return true;
+	}
 }

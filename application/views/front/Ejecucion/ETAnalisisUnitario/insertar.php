@@ -38,7 +38,7 @@
 	</div>
 	<div id="divPresupuestoParaEjecucion" class="row">
 		<div class="col-md-8 col-sm-8 col-xs-12">
-			<label for="control-label">Presupuesto para ejecuión</label>
+			<label for="control-label">Presupuesto para ejecución</label>
 			<div>
 				<input type="text" id="txtPresupuestoEjecucion" class="form-control" readonly="readonly">
 			</div>
@@ -64,6 +64,26 @@
 						<div class="row">
 							<div class="col-md-12 col-sm-12 col-xs-12">
 								<div id="divFormDetallaAnalisisUnitario<?=$value->id_analisis?>" style="padding: 4px;">
+									<div class="row">
+										<div class="col-md-10 col-sm-10 col-xs-12">
+											<label for="control-label">Presupuesto analítico (Clasificador | Presupuesto ejecución)</label>
+											<div>
+												<select name="selectPresupuestoAnalitico<?=$value->id_analisis?>" id="selectPresupuestoAnalitico<?=$value->id_analisis?>" class="form-control">
+													<option></option>
+													<?php foreach($listaETPresupuestoAnalitico as $item){ ?>
+														<option value="<?=$item->id_analitico?>" <?=($item->id_analitico==$value->id_analitico ? 'selected' : '')?>><?=$item->desc_clasificador.' | '.$item->desc_presupuesto_ej?></option>
+													<?php } ?>
+												</select>
+											</div>
+										</div>
+										<div class="col-md-2 col-sm-2 col-xs-12">
+											<label for="control-label">.</label>
+											<div>
+												<input type="button" class="btn btn-primary" value="Guardar" style="width: 100%;" onclick="guardarPresupuestoAnaliticoParaAnalisisUnitario(<?=$value->id_analisis?>);">
+											</div>
+										</div>
+									</div>
+									<hr style="margin: 2px;">
 									<div class="row">
 										<div class="col-md-12 col-sm-12 col-xs-12">
 											<input type="button" class="btn btn-danger btn btn-xs" value="Eliminar este análisis unitario" onclick="eliminarAnalisisUnitario(<?=$value->id_analisis?>, this);">
@@ -811,5 +831,21 @@
 				$(element).parent().parent().remove();
 			}, false, true);
 		}
+	}
+
+	function guardarPresupuestoAnaliticoParaAnalisisUnitario(idAnalisis)
+	{
+		paginaAjaxJSON({ idAnalisis : idAnalisis, idAnalitico : $('#selectPresupuestoAnalitico'+idAnalisis).val() }, base_url+'index.php/ET_Analisis_Unitario/actualizarAnalitico', 'POST', null, function(objectJSON)
+		{
+			objectJSON=JSON.parse(objectJSON);
+
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+			},
+			function(){});
+		}, false, true);
 	}
 </script>

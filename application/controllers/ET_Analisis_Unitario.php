@@ -73,4 +73,16 @@ class ET_Analisis_Unitario extends CI_Controller
 
 		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Análisis unitario eliminado correctamente.']);exit;
 	}
+
+	public function actualizarAnalitico()
+	{
+		$idAnalisis=$this->input->post('idAnalisis');
+		$idAnalitico=$this->input->post('idAnalitico');
+
+		$idAnalitico=($idAnalitico=='' || $idAnalitico==null ? 'NULL' : $idAnalitico);
+
+		$this->Model_ET_Analisis_Unitario->actualizarAnalitico($idAnalisis, $idAnalitico);
+
+		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Analítico guardado correctamente.']);exit;
+	}
 }
