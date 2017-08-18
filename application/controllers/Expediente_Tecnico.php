@@ -17,6 +17,7 @@ class Expediente_Tecnico extends CI_Controller
 		$this->load->model("Model_ET_Presupuesto_Analitico");
 		$this->load->model("Model_ET_Img");
 		$this->load->model('Model_ET_Etapa_Ejecucion');
+		$this->load->model('Model_ET_Analisis_Unitario');
 		$this->load->library('mydompdf');
 	}
 
@@ -475,7 +476,22 @@ class Expediente_Tecnico extends CI_Controller
 				echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede clonar expediente técnico para la misma etapa.']);exit;
 			}
 
-			$this->Model_ET_Expediente_Tecnico->clonar($idExpedienteTecnico, $idEtapaExpedienteTecnico);
+			$listaETComponente=$this->Model_ET_Componente->ETComponentePorIdET($etExpedienteTecnico->id_et);
+
+			foreach($listaETComponente as $key => $value)
+			{
+				$listaETMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($value->id_componente);
+
+				foreach($listaETMeta as $index => $item)
+				{
+					if($this->analisisUnitarioSinAnalitico($item))
+					{
+						echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede clonar expediente técnico porque existen análisis unitarios sin asignación de analítico.']);exit;
+					}
+				}
+			}
+
+			//$this->Model_ET_Expediente_Tecnico->clonar($idExpedienteTecnico, $idEtapaExpedienteTecnico);
 
 			$this->db->trans_complete();
 
@@ -485,5 +501,37 @@ class Expediente_Tecnico extends CI_Controller
 		$listaETEtapaEjecucion=$this->Model_ET_Etapa_Ejecucion->ETEtapaEjecucion_Listar('R');
 
 		return $this->load->view('front/Ejecucion/ExpedienteTecnico/modalParaClonar', ['idExpedienteTecnico' => $idExpedienteTecnico, 'listaETEtapaEjecucion' => $listaETEtapaEjecucion]);
+	}
+
+	private function analisisUnitarioSinAnalitico($meta)
+	{
+		$temp=$this->Model_ET_Meta->ETMetaPorIdMetaPadre($meta->id_meta);
+
+		$meta->childMeta=$temp;
+
+		if(count($temp)==0)
+		{
+			$meta->childPartida=$this->Model_ET_Partida->ETPartidaPorIdMeta($meta->id_meta);
+
+			foreach($meta->childPartida as $key => $value)
+			{
+				if(count($this->Model_ET_Analisis_Unitario->ETAnalisisUnitarioPorIdPartidaFromDetallePartida($value->id_partida))>0)
+				{
+					return true;
+				}
+			}
+
+			return false;
+		}
+
+		foreach($meta->childMeta as $key => $value)
+		{
+			if($this->analisisUnitarioSinAnalitico($value))
+			{
+				return true;
+			}
+		}
+
+		return false;
 	}
 }
