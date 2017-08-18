@@ -562,7 +562,7 @@
 										'<div class="col-md-2 col-sm-2 col-xs-12">'+
 											'<label for="control-label">.</label>'+
 											'<div>'+
-												'<input type="button" class="btn btn-primary" value="Guardar" style="width: 100%;" onclick="guardarPresupuestoAnaliticoParaAnalisisUnitario(<?=$value->id_analisis?>);">'+
+												'<input type="button" class="btn btn-primary" value="Guardar" style="width: 100%;" onclick="guardarPresupuestoAnaliticoParaAnalisisUnitario('+objectJSON.idAnalisis+');">'+
 											'</div>'+
 										'</div>'+
 									'</div>'+
