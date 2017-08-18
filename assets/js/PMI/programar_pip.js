@@ -14,7 +14,7 @@ $(document).on("ready" ,function(){
                            //alert(resp);
                            if (resp=='1') {
                              swal("REGISTRADO","Se regristró correctamente", "success");
-                             formReset();
+                            // formReset();
                            }
                             if (resp=='2') {
                              swal("NO SE REGISTRÓ","NO se regristró ", "error");
@@ -23,7 +23,7 @@ $(document).on("ready" ,function(){
                           $('#table_formulacion_evaluacion').dataTable()._fnAjaxUpdate();
                           $('#table_ejecucion').dataTable()._fnAjaxUpdate();
                           $('#Table_funcionamiento').dataTable()._fnAjaxUpdate();
-                             formReset();
+                           //  formReset();
                          }
                       });
                   });
@@ -38,7 +38,7 @@ $(document).on("ready" ,function(){
                            //alert(resp);
                            if (resp=='1') {
                              swal("REGISTRADO","Se regristró correctamente", "success");
-                             formReset();
+                           //  formReset();
                            }
                             if (resp=='2') {
                              swal("NO SE REGISTRÓ","NO se regristró ", "error");
@@ -47,7 +47,7 @@ $(document).on("ready" ,function(){
                           $('#table_formulacion_evaluacion').dataTable()._fnAjaxUpdate();
                           $('#table_ejecucion').dataTable()._fnAjaxUpdate();
                           $('#Table_funcionamiento').dataTable()._fnAjaxUpdate();
-                             formReset();
+                         //    formReset();
                          }
                       });
                   });
@@ -133,13 +133,56 @@ $(document).on("ready" ,function(){
                                     },
                                 "columns":[
                                     {"data":"id_pi","visible": false},
+                                    {"data":"cartera"},
+                                    {"data":"nombre_brecha"},
                                     {"data":"año_prog"},
-                                    {"data":"monto_prog"}
-                                   ],
+                                    {"data":"monto_prog"},
+                                    {"data":"prioridad_prog"},
+                                    {"defaultContent":"<button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
+                                ],
                                "language":idioma_espanol
                     });
+                    EliminarProgramacion("#Table_Programar",table); 
                 }
 //fin listar programación por cada proyecto
+//Eliminar programacion
+var EliminarProgramacion=function(tbody,table){
+                  $(tbody).on("click","button.eliminar",function(){
+                        var data=table.row( $(this).parents("tr")).data();
+                        var id_pi=data.id_pi;
+                        var id_cartera=data.id_cartera;
+                      //  console.log(data);
+                         swal({
+                                title: "Desea eliminar ?",
+                                text: "",
+                                type: "warning",
+                                showCancelButton: true,
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "Yes,Eliminar",
+                                closeOnConfirm: false
+                              },
+                              function(){
+                                    $.ajax({
+                                          url:base_url+"index.php/programar_nopip/EliminarProgramacion",
+                                          type:"POST",
+                                          data:
+                                          {id_cartera:id_cartera,id_pi:id_pi},
+                                          success:function(respuesta){
+                                            //alert(respuesta);
+                                            swal("Se eliminó corectamente", ".", "success");
+                                            $('#Table_Programar').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
+                                            $('#table_formulacion_evaluacion').dataTable()._fnAjaxUpdate();
+                                            $('#table_ejecucion').dataTable()._fnAjaxUpdate();
+                                            $('#Table_Programar_operacion_mantenimiento').dataTable()._fnAjaxUpdate();
+                                            $('#Table_funcionamiento').dataTable()._fnAjaxUpdate();
+
+                                          }
+                                        });
+                              });
+                    });
+                }
+
+
 //listar programación para operacion y manteniemitno
  var listar_programacion_operacion_mantenimiento=function(id_pi)
                 {
@@ -152,13 +195,18 @@ $(document).on("ready" ,function(){
                                      type:"POST",
                                      data :{id_pi:id_pi}
                                     },
-                                "columns":[
+                                  "columns":[
                                     {"data":"id_pi","visible": false},
+                                    {"data":"cartera"},
+                                    {"data":"nombre_brecha"},
                                     {"data":"año_prog"},
-                                    {"data":"monto_opera_mant_prog"}
-                                    ],
+                                    {"data":"monto_opera_mant_prog"},
+                                    {"data":"prioridad_prog"},
+                                    {"defaultContent":"<button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
+                                ],
                                "language":idioma_espanol
                     });
+                    EliminarProgramacion("#Table_Programar_operacion_mantenimiento",table); 
                 }
 //fin listar programación  para operacion y manteniemitno
 //listar proyectos de inversion en Ejecucion
