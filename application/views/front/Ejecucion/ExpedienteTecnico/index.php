@@ -95,7 +95,7 @@
 														<a title='Listar Responsable'  onclick="paginaAjaxDialogo(null, 'Listar Responsables del Expediente Técnico',{ id_et: '<?=$item->id_et?>' }, base_url+'index.php/Expediente_Tecnico/ResponsableExpediente', 'POST', null, null, false, true);" >Responsable</a>
 													</li>
 													<li>
-														<a title='Documentos adjuntados'  onclick="paginaAjaxDialogo(null, 'Listar Documentos',null, base_url+'index.php/Expediente_Tecnico/DocumentoExpediente', 'POST', null, null, false, true);" >Documentos</a>
+														<a title='Documentos adjuntados'  onclick="paginaAjaxDialogo(null, 'Listar Documentos',{ id_et: '<?=$item->id_et?>' }, base_url+'index.php/Expediente_Tecnico/DocumentoExpediente', 'GET', null, null, false, true);" >Documentos</a>
 													</li>
 													<li>
 														<a title='Detalle de expediente técnico'  onclick="paginaAjaxDialogo(null, 'Detalle de expediente técnico',null, base_url+'index.php/Expediente_Tecnico/DetalleExpediente', 'POST', null, null, false, true);" >Detalle Expediente</a>

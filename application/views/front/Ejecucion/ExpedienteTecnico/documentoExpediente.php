@@ -10,28 +10,29 @@
 						</ul>
 						<div class="clearfix"></div>
 					</div>
-			
-
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div>
+								<textarea name="txtNombreProyectoInversion" id="txtNombreProyectoInversion" rows="3" class="form-control" style="resize: none;resize: vertical;" readonly="readonly"><?=$expedienteTecnico->nombre_pi?></textarea>
+							</div>
+						</div>
+					</div>
 							<div id="myTabContent" class="tab-content">
-								<!-- /Contenido del sector -->
-								
-									<!-- /tabla de sector desde el row -->
+			
 									<div class="row">  
 										<div class="col-md-12 col-sm-12 col-xs-12">
 											
 													<div class="x_content">
-														<table id="table-ResponsableExpediente"  class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+														<table  class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 															<thead>
 																<tr>
-																	<td>Tipo de responsable</td>
-																	<td>Responsable</td>
-																	<td>Grado Académico</td>
-																	<td>Especialidad</td>
-																	
+																	<td>Documento</td>
 																</tr>
 															</thead>
-															<tbody>
-															
+															<tbody>								
+																	<tr>
+																		<td><?= $ListarDocumentoExpediente->url_doc_aprobacion_et?> <a href="<?= base_url();?>uploads/ResolucioExpediente/<?= $ListarDocumentoExpediente->url_doc_aprobacion_et?>"><i class="fa fa-file-text"></i> </a></td>
+																	</tr>
 															</tbody>
 														</table>
 													
@@ -54,7 +55,9 @@
 	{
 		$('#table-ResponsableExpediente').DataTable(
 		{
-			"language":idioma_espanol
+			"language":idioma_espanol,
+			 "paging":   false,
+			 "searching": false,
 		});
 	});
 

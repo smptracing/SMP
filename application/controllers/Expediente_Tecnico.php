@@ -434,10 +434,11 @@ class Expediente_Tecnico extends CI_Controller
 
 	public function DocumentoExpediente()
 	{
-		$flat="LISTAREXPEDIENTEDOCUMENTO";
-		$id_et=$this->input->post('id_et');
-		$ListarDocumentoExpediente=$this->Model_ET_Expediente_Tecnico->ListarDocumentoExpediente($flat,$id_et);
-		$this->load->view('front/Ejecucion/ExpedienteTecnico/documentoExpediente.php',['ListarDocumentoExpediente'=>$ListarDocumentoExpediente]);	
+		$expedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnico($this->input->get('id_et'));
+
+		$id_et=$this->input->get('id_et');
+		$ListarDocumentoExpediente=$this->Model_ET_Expediente_Tecnico->ListarDocumentoExpediente($id_et);
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/documentoExpediente.php',['ListarDocumentoExpediente'=>$ListarDocumentoExpediente,'expedienteTecnico' => $expedienteTecnico]);	
 	}
 	
 	public function DetalleExpediente()

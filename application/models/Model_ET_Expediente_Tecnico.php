@@ -126,10 +126,11 @@ class Model_ET_Expediente_Tecnico extends CI_Model
         return $data->result();
     }
 
-    public function DocumentoExpediente($flat,$id_et)
+    public function ListarDocumentoExpediente($id_et)
     {
+    	$flat='LISTAREXPEDIENTEDOCUMENTO';
     	$data=$this->db->query("execute sp_Gestionar_ET_Expediente_Tecnico @Opcion='".$flat."',@id_et='".$id_et."'");
-        return $data->result();
+        return $data->result()[0];
     }
 
     public function detalleExpediente($flat,$id_et)
