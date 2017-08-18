@@ -11,14 +11,14 @@ $(document).on("ready" ,function(){
                            //alert(resp);
                            if (resp=='1') {
                              swal("REGISTRADO","Se regristró correctamente", "success");
-                             formReset();
+                             //formReset();
                            }
                             if (resp=='2') {
                              swal("NO SE REGISTRÓ","NO se regristró ", "error");
                            }
                           $('#Table_Programar').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
                           $('#table_NoPip').dataTable()._fnAjaxUpdate();
-                             formReset();
+                            // formReset();
                          }
                       });
                   });
@@ -104,13 +104,53 @@ $(document).on("ready" ,function(){
                                     },
                                 "columns":[
                                     {"data":"id_pi","visible": false},
+                                    {"data":"cartera"},
+                                    {"data":"nombre_brecha"},
                                     {"data":"año_prog"},
-                                    {"data":"monto_prog"}
-                                    ],
+                                    {"data":"monto_prog"},
+                                    {"data":"prioridad_prog"},
+                                    {"defaultContent":"<button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
+                                ],
                                "language":idioma_espanol
                     });
+                  EliminarProgramacion("#Table_Programar",table); 
                 }
 //fin listar programación por cada proyecto
+//Eliminar programacion
+var EliminarProgramacion=function(tbody,table){
+                  $(tbody).on("click","button.eliminar",function(){
+                        var data=table.row( $(this).parents("tr")).data();
+                        var id_pi=data.id_pi;
+                        var id_cartera=data.id_cartera;
+                      //  console.log(data);
+                         swal({
+                                title: "Desea eliminar ?",
+                                text: "",
+                                type: "warning",
+                                showCancelButton: true,
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "Yes,Eliminar",
+                                closeOnConfirm: false
+                              },
+                              function(){
+                                    $.ajax({
+                                          url:base_url+"index.php/programar_nopip/EliminarProgramacion",
+                                          type:"POST",
+                                          data:
+                                          {id_cartera:id_cartera,id_pi:id_pi},
+                                          success:function(respuesta){
+                                            //alert(respuesta);
+                                            swal("Se eliminó corectamente", ".", "success");
+                                            $('#Table_Programar').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
+                                            $('#table_NoPip').dataTable()._fnAjaxUpdate();
+                                          }
+                                        });
+                              });
+                    });
+                }
+
+
+
 //listar meta proyecto
  var listar_meta_pi=function(id_pi)
                 {
@@ -127,11 +167,45 @@ $(document).on("ready" ,function(){
                                     {"data":"id_meta_pi","visible": false},
                                     {"data":"anio"},
                                     {"data":"pia_meta_pres"},
-                                    {"data":"pim_meta_pres"},
-                                    {"data":"devengado_meta_pres"}
-                                    //{"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaupdateEstadoFE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
+                                    {"data":"pim_acumulado"},
+                                    {"data":"certificacion_acumulado"},
+                                    {"data":"compromiso_acumulado"},
+                                    {"data":"devengado_acumulado"},
+                                    {"data":"girado_acumulado"},
+                                    {"defaultContent":"<button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
                                "language":idioma_espanol
+                    });
+                    EliminarMetaPresupuestal("#Table_meta_pi",table);
+                }
+//Eliminar Meta Presupuestal
+var EliminarMetaPresupuestal=function(tbody,table){
+                  $(tbody).on("click","button.eliminar",function(){
+                        var data=table.row( $(this).parents("tr")).data();
+                        var id_meta_pi=data.id_meta_pi;
+                        console.log(data);
+                         swal({
+                                title: "Desea eliminar ?",
+                                text: "",
+                                type: "warning",
+                                showCancelButton: true,
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "Yes,Eliminar",
+                                closeOnConfirm: false
+                              },
+                              function(){
+                                    $.ajax({
+                                          url:base_url+"index.php/programar_nopip/EliminarMetaPI",
+                                          type:"POST",
+                                          data:{id_meta_pi:id_meta_pi},
+                                          success:function(respuesta){
+                                            //alert(respuesta);
+                                            swal("Se eliminó corectamente", ".", "success");
+                                            $('#Table_meta_pi').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
+
+                                          }
+                                        });
+                              });
                     });
                 }
 //Agregar META PIP

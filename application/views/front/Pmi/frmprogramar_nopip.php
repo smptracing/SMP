@@ -169,9 +169,13 @@
                     <table  id="Table_Programar" class="table   table-hover" >
                     <thead >
                        <tr>
-                         <th  ><i class="fa fa-thumb-tack"></i> #</th>
-                         <th  ><i class="fa fa-thumb-tack"></i> Año Programado</th>
-                         <th  ><i class="fa fa-thumb-tack"></i> Monto Programado</th>
+                         <th  ><i></i> #</th>
+                         <th  ><i></i> Cartera</th>
+                         <th  ><i></i> Brecha</th>
+                         <th  ><i></i> Año Programado</th>
+                         <th  ><i></i> Monto Programado</th>
+                         <th  ><i></i> Prioridad</th>
+                         <th  ><i></i> Opción</th>
                       </tr>
                     </thead>
                     </table>
@@ -291,7 +295,11 @@
                          <th  ><i class="fa fa-thumb-tack"></i> Año </th>
                          <th  ><i class="fa fa-thumb-tack"></i> PIA</th>
                          <th  ><i class="fa fa-thumb-tack"></i> PIM</th>
+                         <th  ><i class="fa fa-thumb-tack"></i> Certificación</th>
+                         <th  ><i class="fa fa-thumb-tack"></i> Compromiso</th>
                          <th  ><i class="fa fa-thumb-tack"></i> Devengado</th>
+                         <th  ><i class="fa fa-thumb-tack"></i> Girado</th>
+                         <th  ><i class="fa fa-thumb-tack"></i> Opción</th>
                       </tr>
                     </thead>
                     </table>

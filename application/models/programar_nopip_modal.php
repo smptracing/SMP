@@ -51,18 +51,16 @@ class programar_nopip_modal extends CI_Model
         $this->db->query("execute sp_Gestionar_Meta_Presupuestal_Pi
             @FLAT='" . $flat . "',
             @id_meta_pi='" . $id_meta_pi . "',
-            @anio_meta_pres='" . $txt_anio_meta . "',
             @id_meta_pres='" . $cbx_meta_presupuestal . "',
             @id_pi='" . $txt_id_pip_programacion_mp . "',
-
-
-            @id_correlativo_meta'" . $cbx_Meta . "',
-            '" . $txt_pia . "',
-            '" . $txt_pim . "',
-            '" . $txt_certificado . "',
-            '" . $txt_compromiso . "',
-            '" . $txt_devengado . "',
-            '" . $txt_girado . "'");
+            @id_correlativo_meta='" . $cbx_Meta . "',
+            @anio_meta_pres='" . $txt_anio_meta . "',
+            @pia_meta_pres='" . $txt_pia . "',
+            @pim_acumulado='" . $txt_pim . "',
+            @certificacion_acumulado='" . $txt_certificado . "',
+            @compromiso_acumulado='" . $txt_compromiso . "',
+            @devengado_acumulado='" . $txt_devengado . "',
+            @girado_acumulado='" . $txt_girado . "'");
 
         if ($this->db->affected_rows() > 0) {
             return true;
@@ -91,6 +89,29 @@ class programar_nopip_modal extends CI_Model
             @id_pi='" . $id_pi . "'");
         if ($listar_metas_pi->num_rows() > 0) {
             return $listar_metas_pi->result();
+        } else {
+            return false;
+        }
+    }
+    public function EliminarMetaPI($flat, $id_meta_pi)
+    {
+        $this->db->query("execute sp_Gestionar_Meta_Presupuestal_Pi
+            @FLAT='" . $flat . "',
+            @id_meta_pi='" . $id_meta_pi . "'");
+        if ($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function EliminarProgramacion($flat, $id_pi, $id_cartera)
+    {
+        $this->db->query("execute sp_Gestionar_Programacion
+            @Opcion='" . $flat . "',
+            @id_pi='" . $id_pi . "',
+            @id_cartera='" . $id_cartera . "'");
+        if ($this->db->affected_rows() > 0) {
+            return true;
         } else {
             return false;
         }
