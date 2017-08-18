@@ -544,6 +544,30 @@
 						'<div class="row">'+
 							'<div class="col-md-12 col-sm-12 col-xs-12">'+
 								'<div id="divFormDetallaAnalisisUnitario'+objectJSON.idAnalisis+'" style="padding: 4px;">'+
+
+									'<div class="row">'+
+										'<div class="col-md-10 col-sm-10 col-xs-12">'+
+											'<label for="control-label">Presupuesto analítico (Clasificador | Presupuesto ejecución)</label>'+
+											'<div>'+
+												'<select name="selectPresupuestoAnalitico'+objectJSON.idAnalisis+'" id="selectPresupuestoAnalitico'+objectJSON.idAnalisis+'" class="form-control">'+
+													'<option></option>';
+
+													<?php foreach($listaETPresupuestoAnalitico as $item){ ?>
+														htmlTemp+='<option value="<?=$item->id_analitico?>"><?=$item->desc_clasificador.' | '.$item->desc_presupuesto_ej?></option>';
+													<?php } ?>
+
+												htmlTemp+='</select>'+
+											'</div>'+
+										'</div>'+
+										'<div class="col-md-2 col-sm-2 col-xs-12">'+
+											'<label for="control-label">.</label>'+
+											'<div>'+
+												'<input type="button" class="btn btn-primary" value="Guardar" style="width: 100%;" onclick="guardarPresupuestoAnaliticoParaAnalisisUnitario(<?=$value->id_analisis?>);">'+
+											'</div>'+
+										'</div>'+
+									'</div>'+
+									'<hr style="margin: 2px;">'+
+
 									'<div class="row">'+
 										'<div class="col-md-12 col-sm-12 col-xs-12">'+
 											'<input type="button" class="btn btn-danger btn btn-xs" value="Eliminar este análisis unitario" onclick="eliminarAnalisisUnitario('+objectJSON.idAnalisis+', this);">'+
@@ -637,6 +661,8 @@
 			'</div>';
 
 			$('#divListaAnalisisUnitario').append(htmlTemp);
+
+			$('#selectPresupuestoAnalitico'+objectJSON.idAnalisis).val(objectJSON.idAnalitico);
 
 			$('#selectDescripcionDetalleAnalisis'+objectJSON.idAnalisis).selectpicker({ liveSearch: true }).ajaxSelectPicker(
 			{

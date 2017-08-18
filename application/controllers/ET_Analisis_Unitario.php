@@ -39,7 +39,7 @@ class ET_Analisis_Unitario extends CI_Controller
 
 			$this->db->trans_complete();
 
-			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Análisis unitario registrado correctamente.', 'idAnalisis' => $idAnalisis]);exit;
+			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Análisis unitario registrado correctamente.', 'idAnalisis' => $idAnalisis, 'idAnalitico' => $idAnalitico]);exit;
 		}
 
 		$idPartida=$this->input->get('idPartida');
