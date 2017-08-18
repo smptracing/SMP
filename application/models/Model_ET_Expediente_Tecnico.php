@@ -120,4 +120,21 @@ class Model_ET_Expediente_Tecnico extends CI_Model
 		
         return $Ultimo_Img->result()[0];
     }
+    public function ListarResponsableExpediente($flat,$id_et)
+    {
+    	$data=$this->db->query("execute sp_Gestionar_ET_Expediente_Tecnico @Opcion='".$flat."',@id_et='".$id_et."'");
+        return $data->result();
+    }
+
+    public function DocumentoExpediente($flat,$id_et)
+    {
+    	$data=$this->db->query("execute sp_Gestionar_ET_Expediente_Tecnico @Opcion='".$flat."',@id_et='".$id_et."'");
+        return $data->result();
+    }
+
+    public function detalleExpediente($flat,$id_et)
+    {
+    	$data=$this->db->query("execute sp_Gestionar_ET_Expediente_Tecnico @Opcion='".$flat."',@id_et='".$id_et."'");
+        return $data->result();
+    }
 }

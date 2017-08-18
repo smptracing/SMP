@@ -419,6 +419,29 @@ class Expediente_Tecnico extends CI_Controller
 	            }		
            	}
 		}
+	}
+	public function ResponsableExpediente()
+	{
+		$flat="LISTAREXPEDIENTERESPONSABLE";
+		$id_et=$this->input->post('id_et');
+
+		$listaResponsableExpediente=$this->Model_ET_Expediente_Tecnico->ListarResponsableExpediente($flat,$id_et);
+		//var_dump($listaResponsableExpediente);exit;
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/responsableExpediente.php',['listaResponsableExpediente'=>$listaResponsableExpediente]);
 
 	}
+	public function DocumentoExpediente()
+	{
+		$flat="LISTAREXPEDIENTEDOCUMENTO";
+		$id_et=$this->input->post('id_et');
+		$ListarDocumentoExpediente=$this->Model_ET_Expediente_Tecnico->ListarDocumentoExpediente($flat,$id_et);
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/documentoExpediente.php',['ListarDocumentoExpediente'=>$ListarDocumentoExpediente]);	
+	}
+	
+	public function DetalleExpediente()
+	{
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/detalleExpediente.php');	
+	}
+
+	
 }
