@@ -287,7 +287,6 @@ class Expediente_Tecnico extends CI_Controller
 		return $this->load->view('front/Ejecucion/ExpedienteTecnico/editar',['ExpedienteTecnicoM'=>$ExpedienteTecnicoM, 'listaimg'=>$listaimg]);
 	}
 
-	
     function registroBuscarProyecto()
     {
     		$CodigoUnico=$this->input->get('inputValue');
@@ -443,7 +442,10 @@ class Expediente_Tecnico extends CI_Controller
 	
 	public function DetalleExpediente()
 	{
-		$this->load->view('front/Ejecucion/ExpedienteTecnico/detalleExpediente.php');	
+		$id_et=$this->input->post('id_et');
+		$detalleExpediente=$this->Model_ET_Expediente_Tecnico->DetalleExpediente($id_et);
+		//var_dump($detalleExpediente);exit;
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/detalleExpediente.php',["detalleExpediente" => $detalleExpediente]);	
 	}
 
 	public function clonar($idExpedienteTecnico=null, $idEtapaExpedienteTecnico=null)

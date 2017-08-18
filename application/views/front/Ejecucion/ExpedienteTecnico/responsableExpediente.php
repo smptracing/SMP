@@ -64,12 +64,5 @@
 </div>
 
 <script>
-	$(document).ready(function()
-	{
-		$('#table-ResponsableExpediente').DataTable(
-		{
-			"language":idioma_espanol
-		});
-	});
 
 </script>

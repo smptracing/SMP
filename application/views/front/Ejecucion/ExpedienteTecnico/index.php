@@ -98,7 +98,7 @@
 														<a title='Documentos adjuntados'  onclick="paginaAjaxDialogo(null, 'Listar Documentos',{ id_et: '<?=$item->id_et?>' }, base_url+'index.php/Expediente_Tecnico/DocumentoExpediente', 'GET', null, null, false, true);" >Documentos</a>
 													</li>
 													<li>
-														<a title='Detalle de expediente técnico'  onclick="paginaAjaxDialogo(null, 'Detalle de expediente técnico',null, base_url+'index.php/Expediente_Tecnico/DetalleExpediente', 'POST', null, null, false, true);" >Detalle Expediente</a>
+														<a title='Detalle de expediente técnico'  onclick="paginaAjaxDialogo(null, 'Detalle de expediente técnico',{id_et:'<?=$item->id_et?>'}, base_url+'index.php/Expediente_Tecnico/DetalleExpediente', 'POST', null, null, false, true);" >Detalle Expediente</a>
 													</li>
 												</ul>
 											</div>
