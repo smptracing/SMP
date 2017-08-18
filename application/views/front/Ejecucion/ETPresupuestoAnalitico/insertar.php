@@ -87,7 +87,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 										<td></td>
 										<td><?= $item->num_clasificador?></td>
 										<td><?= $item->desc_clasificador?></td>
-										<td><button onclick="Eliminar(<?=$item->id_analitico?>);" data-toggle="tooltip" data-original-title="Eliminar Analitico"   class='btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button></td>									</tr>
+										<td><button onclick="EliminarPresClasiAnalitico(<?=$item->id_analitico?>,this);" data-toggle="tooltip" data-original-title="Eliminar Analitico"   class='btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button></td>									</tr>
 								<?php } ?>
 						</tr>						
 					<?php }?>
@@ -152,37 +152,62 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 
 	});
 
-		function agregarPresupuestoAnalitico()
-		{
-			var idClasificador=$("#hdIdClasificador").val();
-			var hd_id_et=$('#hd_et').val();
-			var idPresupuestoEjecucion=$("#selectPresupuestoEjecucion").val();
-			$.ajax({ url:base_url+"index.php/ET_Presupuesto_Analitico/insertar",type:"POST",data:{idClasificador:idClasificador,hd_id_et:hd_id_et,idPresupuestoEjecucion:idPresupuestoEjecucion},dataType:'JSON',
-                    success:function(respuesta)
-                    {
+	function agregarPresupuestoAnalitico()
+	{
+		var idClasificador=$("#hdIdClasificador").val();
+		var hd_id_et=$('#hd_et').val();
+		var idPresupuestoEjecucion=$("#selectPresupuestoEjecucion").val();
+		$.ajax({ url:base_url+"index.php/ET_Presupuesto_Analitico/insertar",type:"POST",data:{idClasificador:idClasificador,hd_id_et:hd_id_et,idPresupuestoEjecucion:idPresupuestoEjecucion},dataType:'JSON',success:function(respuesta)
+                {
+                	if(respuesta.proceso=='Error')
+                	{
+                		swal('',respuesta.mensaje,'error')
+                	}else
+                	{
                     	var html;
                     	$("#bodyClasificador").html('');
                     	$.each(respuesta,function(index,element)
                     	{
                     	    html +='<tr>';
                     		html +='<td colspan="4">'+element.desc_presupuesto_ej+'</td>';
-		                    		$.each(element.ChilpresupuestoAnalitico,function(index,element)
-		                    		{
-										html +='<tr>';
-										html +='<td> </td>';
-										html +='<td>' +element.num_clasificador+'</td>';
-										html +='<td>' +element.desc_clasificador+'</td>';
-										html +='<td><button onclick="Eliminar('+element.id_analitico+');" data-toggle="tooltip" data-original-title="Eliminar Analitico"   class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button></td>';	
-										html +='</tr>';
-		                    		});
+	                    		$.each(element.ChilpresupuestoAnalitico,function(index,element)
+	                    		{
+									html +='<tr><td></td>';
+									html +='<td>'+element.num_clasificador+'</td>';
+									html +='<td>'+element.desc_clasificador+'</td>';
+									html +='<td><button onclick="EliminarPresClasiAnalitico('+element.id_analitico+',this);" data-toggle="tooltip" data-original-title="Eliminar Analitico"   class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button></td>';	
+									html +='</tr>';
+	                    		});
                     		html +='</tr>';
                     	});
-						 $("#table_clasificador > #bodyClasificador").append(html);
-						 console.log(html);
-						 swal("AGREGO!", "Se agrego correctamente.", "success");
+						$("#table_clasificador > #bodyClasificador").append(html);
+						swal("AGREGO", "Se agrego correctamente.", "success");
                     }
-                });
+                }
+            });
+	}
+	function EliminarPresClasiAnalitico(idClasiAnalitico, element)
+	{
+		if(!confirm('Se eliminará el presupuesto analítico. ¿Realmente desea proseguir con la operación?'))
+		{
+			return;
 		}
+
+		paginaAjaxJSON({ "idClasiAnalitico" : idClasiAnalitico}, base_url+'index.php/ET_Presupuesto_Analitico/eliminar', 'POST', null, function(objectJSON)
+		{
+			objectJSON=JSON.parse(objectJSON);
+
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+			},
+			function(){});
+
+			$(element).parent().parent().remove();
+		}, false, true);
+	}
 
 </script>
 

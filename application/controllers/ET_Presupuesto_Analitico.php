@@ -10,11 +10,6 @@ class ET_Presupuesto_Analitico extends CI_Controller
 		$this->load->model('Model_ET_Expediente_Tecnico');
 		$this->load->model('Model_ET_Presupuesto_Ejecucion');
 		$this->load->model('Model_ET_Presupuesto_Analitico');
-		/*$this->load->model('Model_Unidad_Medida');
-		$this->load->model('Model_ET_Componente');
-		$this->load->model('Model_ET_Meta');
-		$this->load->model('Model_ET_Partida');*/
-
 	}
 
 	public function insertar()
@@ -27,12 +22,12 @@ class ET_Presupuesto_Analitico extends CI_Controller
 			$hd_id_et=$this->input->post('hd_id_et');
 			$idPresupuestoEjecucion=$this->input->post('idPresupuestoEjecucion');
 
-			/*if(count($this->Model_ET_Componente->ETComponentePorIdETAndDescripcion($idET, $descripcionComponente))>0)
+			if(count($this->Model_ET_Presupuesto_Analitico->verificarPresupuestoAnaliticoTipoClasi($hd_id_et,$idClasificador,$idPresupuestoEjecucion))>0)
 			{
 				$this->db->trans_rollback();
+				echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede agregar dos veces el mismo Clasificador con el mismo Tipo.']);exit;
+			}
 
-				echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede agregar dos veces el mismo componente.']);exit;
-			}*/
 			$opcion="INSERTAR";
 			$dataListarAnalitico=$this->Model_ET_Presupuesto_Analitico->insertar($opcion,$idClasificador,$hd_id_et,$idPresupuestoEjecucion);
 
@@ -44,7 +39,6 @@ class ET_Presupuesto_Analitico extends CI_Controller
 				$value->ChilpresupuestoAnalitico=$this->Model_ET_Presupuesto_Analitico->ETPresupuestoAnaliticoDetalles($hd_id_et,$value->id_presupuesto_ej);
 			}
 			$this->db->trans_complete();
-
 			echo json_encode($PresupuestoEjecucionListar);exit;
 		}
 
@@ -60,65 +54,26 @@ class ET_Presupuesto_Analitico extends CI_Controller
 		{
 			$value->ChilpresupuestoAnalitico=$this->Model_ET_Presupuesto_Analitico->ETPresupuestoAnaliticoDetalles($this->input->get('idExpedienteTecnico'),$value->id_presupuesto_ej);
 		}
-		/*echo "<pre>";
-		print_r($PresupuestoEjecucionListar);
-		echo "</pre>";*/
+
 		$this->load->view('front/Ejecucion/ETPresupuestoAnalitico/insertar.php', ['expedienteTecnico' => $expedienteTecnico,'PresupuestoEjecucionListar' => $PresupuestoEjecucionListar,'PresupuestoAnaliticoListar' => $PresupuestoAnaliticoListar]);
-	}
-
-	/*private function obtenerMetaAnidada($meta)
-	{
-		$temp=$this->Model_ET_Meta->ETMetaPorIdMetaPadre($meta->id_meta);
-
-		$meta->childMeta=$temp;
-
-		if(count($temp)==0)
-		{
-			$meta->childPartida=$this->Model_ET_Partida->ETPartidaPorIdMeta($meta->id_meta);
-
-			return false;
-		}
-
-		foreach($meta->childMeta as $key => $value)
-		{
-			$this->obtenerMetaAnidada($value);
-		}
 	}
 
 	public function eliminar()
 	{
-		$this->db->trans_start();
-
-		$idComponente=$this->input->post('idComponente');
-
-		$listaMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($idComponente);
-
-		foreach($listaMeta as $key => $value)
+		if($_POST)
 		{
-			$this->eliminarMetaAnidada($value);
+			$this->db->trans_start();
+
+			$idClasiAnalitico=$this->input->post('idClasiAnalitico');
+
+			$PresupuestoAnalitico=$this->Model_ET_Presupuesto_Analitico->eliminar($idClasiAnalitico);
+
+			$this->db->trans_complete();
+
+			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Presupuesto analítico eliminada correctamente.']);exit;
 		}
 
-		$this->Model_ET_Componente->eliminar($idComponente);
-
-		$this->db->trans_complete();
-
-		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Componente eliminado correctamente.']);exit;
+		$this->load->view('Front/Ejecucion/ETPartida/insertar');
 	}
 
-	private function eliminarMetaAnidada($meta)
-	{
-		$temp=$this->Model_ET_Meta->ETMetaPorIdMetaPadre($meta->id_meta);
-
-		foreach($temp as $key => $value)
-		{
-			$this->eliminarMetaAnidada($value);
-		}
-
-		if(count($temp)==0)
-		{
-			$this->Model_ET_Partida->eliminarPorIdMeta($meta->id_meta);
-		}
-
-		$this->Model_ET_Meta->eliminar($meta->id_meta);
-	}*/
 }
