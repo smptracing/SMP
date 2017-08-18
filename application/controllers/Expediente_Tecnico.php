@@ -72,6 +72,10 @@ class Expediente_Tecnico extends CI_Controller
 		{
 	       $this->db->trans_start();
 
+	        $Etapa_Ejecucion='Elaboración de expediente técnico';
+	        $nombreEtapa=$this->Model_ET_Etapa_Ejecucion->BuscarNombreEtapaEjecucion($Etapa_Ejecucion);
+	        $id_etapa_et=$nombreEtapa->id_etapa_et;
+
 	        $config['upload_path']   = './uploads/ResolucioExpediente/';
 	        $config['allowed_types'] = '*';
 	        $config['max_width']     = 2000;
@@ -114,8 +118,9 @@ class Expediente_Tecnico extends CI_Controller
 			$txtSituacioEconomica=$this->input->post('hdtxtSituacioEconomica');
 			$txtResumenProyecto=$this->input->post('hdtxtResumenProyecto');
 			$txtNumFolio=$this->input->post('txtNumFolio');
+			$etapa_et=$id_etapa_et;
 
-			$this->Model_ET_Expediente_Tecnico->insertar($flat,$txtNombreUe,$txtIdPi,$txtDireccionUE,$txtUbicacionUE,$txtTelefonoUE,$txtRuc,$txtCostoTotalPreInversion,$txtCostoDirectoPre,$txtCostoIndirectoPre,$txtCostoTotalInversion,$txtCostoDirectoInversion,$txtGastosGenerales,$txtGastosSupervision,$txtFuncionProgramatica,$txtFuncion,$txtPrograma,$txtSubPrograma,$txtProyecto,$txtComponente,$txtMeta,$txtFuenteFinanciamiento,$txtModalidadEjecucion,$txtTiempoEjecucionPip,$txtNumBeneficiarios,$txtUrlDocAprobacion,$txtSituacioActual,$txtSituacioEconomica,$txtResumenProyecto,$txtNumFolio); 
+			$this->Model_ET_Expediente_Tecnico->insertar($flat,$txtNombreUe,$txtIdPi,$txtDireccionUE,$txtUbicacionUE,$txtTelefonoUE,$txtRuc,$txtCostoTotalPreInversion,$txtCostoDirectoPre,$txtCostoIndirectoPre,$txtCostoTotalInversion,$txtCostoDirectoInversion,$txtGastosGenerales,$txtGastosSupervision,$txtFuncionProgramatica,$txtFuncion,$txtPrograma,$txtSubPrograma,$txtProyecto,$txtComponente,$txtMeta,$txtFuenteFinanciamiento,$txtModalidadEjecucion,$txtTiempoEjecucionPip,$txtNumBeneficiarios,$txtUrlDocAprobacion,$txtSituacioActual,$txtSituacioEconomica,$txtResumenProyecto,$txtNumFolio,$etapa_et); 
 			
 			$UltimoExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->UltimoExpedienteTecnico();
 			$id_et=$UltimoExpedienteTecnico->id_et;
