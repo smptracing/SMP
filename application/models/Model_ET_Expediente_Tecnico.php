@@ -137,4 +137,11 @@ class Model_ET_Expediente_Tecnico extends CI_Model
     	$data=$this->db->query("execute sp_Gestionar_ET_Expediente_Tecnico @Opcion='".$flat."',@id_et='".$id_et."'");
         return $data->result();
     }
+
+    public function clonar($idExpedienteTecnico, $idEtapaExpedienteTecnico)
+    {
+    	$data=$this->db->query("execute cloneExpedienteTecnicoAndChild ".$idExpedienteTecnico.", ".$idEtapaExpedienteTecnico);
+        
+        return true;
+    }
 }

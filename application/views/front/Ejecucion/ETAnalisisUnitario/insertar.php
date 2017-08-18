@@ -661,8 +661,6 @@
 				}
 		    });
 
-			limpiarText('divPresupuestoParaEjecucion', []);
-
 			$('#divFormDetallaAnalisisUnitario'+objectJSON.idAnalisis).formValidation(
 			{
 				framework : 'bootstrap',

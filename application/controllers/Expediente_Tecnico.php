@@ -461,7 +461,7 @@ class Expediente_Tecnico extends CI_Controller
 				echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede clonar expediente técnico para la misma etapa.']);exit;
 			}
 
-			
+			$this->Model_ET_Expediente_Tecnico->clonar($idExpedienteTecnico, $idEtapaExpedienteTecnico);
 
 			$this->db->trans_complete();
 
