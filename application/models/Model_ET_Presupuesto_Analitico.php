@@ -43,6 +43,13 @@ class Model_ET_Presupuesto_Analitico extends CI_Model
 
 		return $ETClasificador->result();
 	}
+	function VerificarAnalisisUnitario($idClasiAnalitico)
+	{
+		$AnalisisUnitario=$this->db->query("select * from ET_PRESUPUESTO_ANALITICO ET_PRE_ANA inner join ET_ANALISIS_UNITARIO ET_PRE_UNI
+		 on ET_PRE_ANA.id_analitico=ET_PRE_UNI.id_analitico WHERE ET_PRE_UNI.id_analitico='".$idClasiAnalitico."'");
+
+		return $AnalisisUnitario->result();
+	}
 	function eliminar($idClasiAnalitico){
 
 		$this->db->query("DELETE FROM ET_PRESUPUESTO_ANALITICO WHERE id_analitico='".$idClasiAnalitico."' ");

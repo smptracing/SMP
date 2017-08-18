@@ -65,6 +65,11 @@ class ET_Presupuesto_Analitico extends CI_Controller
 			$this->db->trans_start();
 
 			$idClasiAnalitico=$this->input->post('idClasiAnalitico');
+			if(count($this->Model_ET_Presupuesto_Analitico->VerificarAnalisisUnitario($idClasiAnalitico))>0)
+			{
+				$this->db->trans_rollback();
+				echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede eliminar el Clasificador ya se encuentra asociado en el modulo de  Analisis Unitario']);exit;
+			}
 
 			$PresupuestoAnalitico=$this->Model_ET_Presupuesto_Analitico->eliminar($idClasiAnalitico);
 
