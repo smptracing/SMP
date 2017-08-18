@@ -415,7 +415,13 @@ class Expediente_Tecnico extends CI_Controller
            		$eliminarImg=$this->Model_ET_Expediente_Tecnico->ET_Img($id_et);
            		foreach ($eliminarImg as $value) 
            		{
-           			unlink("uploads/ImageExpediente/".$value->desc_img);
+           			if (file_exists("uploads/ImageExpediente/'".$value->desc_img."'"))
+           			{ 
+					   	unlink("uploads/ImageExpediente/".$value->desc_img);
+					}else
+					{ 
+					   
+					} 
            		}
            		if($this->Model_ET_Expediente_Tecnico->eliminar($flat,$id_et)==true)
 	            {	//$img=$this->Model_ET_Img->eliminarimg()

@@ -64,7 +64,7 @@
 											<?= $item->num_beneficiarios?>
 										</td>
 										<td>
-									  		<button type='button' data-toggle="tooltip" data-original-title="Editar Expediente" class='editar btn btn-primary btn-xs'><i class='ace-icon fa fa-pencil bigger-120' onclick="paginaAjaxDialogo(null, 'Modificar Expediente Técnico',{ id_et: '<?=$item->id_et?>' }, base_url+'index.php/Expediente_Tecnico/editar', 'GET', null, null, false, true);"></i></button>
+									  		<button type='button' data-toggle="tooltip" data-original-title="Editar Expediente" class='editar btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Modificar Expediente Técnico',{ id_et: '<?=$item->id_et?>' }, base_url+'index.php/Expediente_Tecnico/editar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-pencil bigger-120'></i></button>
 											<button type='button' data-toggle="tooltip" data-original-title="Registro de componentes, metas y partidas"  class='editar btn btn-warning btn-xs' onclick="paginaAjaxDialogo(null, 'Registro de componentes, metas y partidas', { idExpedienteTecnico : <?=$item->id_et?> }, base_url+'index.php/ET_Componente/insertar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-align-left bigger-120'></i></button>
 											<button type='button' data-toggle="tooltip" data-original-title="Administración de partidas y analítico"   class='editar btn btn-success btn-xs' onclick="paginaAjaxDialogo(null, 'Administración de partidas y analítico', { idExpedienteTecnico : <?=$item->id_et?> }, base_url+'index.php/ET_Detalle_Partida/insertar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-indent bigger-120'></i></button>
 											<button type='button' data-toggle="tooltip" data-original-title="Presupuesto analítico"   class='editar btn btn-dark btn-xs' onclick="paginaAjaxDialogo(null, 'Presupuesto analítico', { idExpedienteTecnico : <?=$item->id_et?> }, base_url+'index.php/ET_Presupuesto_Analitico/insertar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-usd bigger-120'></i></button>
@@ -479,47 +479,22 @@ function BuscarProyectocodigo()
 
 function Eliminar(id_et)
 {
-swal({
-	title: "Esta seguro que desea eliminar el Expediente Técnico, ya que se eliminara también los responsables y sus imagenes?",
-	text: "",
-	type: "warning",
-	showCancelButton: true,
-	confirmButtonColor: "#DD6B55",
-	confirmButtonText: "SI,ELIMINAR",
-	closeOnConfirm: false
-},
-function()
-{
-$.ajax({
-	url:base_url+"index.php/Expediente_Tecnico/eliminar",
-	type:"POST",
-	data:{id_et:id_et},
-	success:function(respuesta)
-	{
-		alert(respuesta);
-	/*var registros=eval(resp);
-	for(var i=0; i<registros.length; i++)
-	{
-	if(registros[i]["VALOR"]==1)
-	{
-	swal("",registros[i]["MENSAJE"], "success");
-
-	$('#form-addEntidad')[0].reset();
-	$("#VentanaRegistraEntidad").modal("hide");
-	}
-	else
-	{
-	swal('',registros[i]["MENSAJE"],'error' )
-	}
-	/*swal("",  registros[i]["MENSAJE"], "success");*/
-	//}
-
-	//alert(respuesta);
-	swal("ELIMINADO!", "Se elimino correctamente el expediente técnico.", "success");
-	window.location.href='<?=base_url();?>index.php/Expediente_Tecnico/index/';
-	renderLoading();
-	}
-	});
+	swal({
+		title: "Esta seguro que desea eliminar el Expediente Técnico, ya que se eliminara también los responsables y sus imagenes?",
+		text: "",
+		type: "warning",
+		showCancelButton: true,
+		confirmButtonColor: "#DD6B55",
+		confirmButtonText: "SI,ELIMINAR",
+		closeOnConfirm: false
+	},
+	function(){$.ajax({url:base_url+"index.php/Expediente_Tecnico/eliminar",type:"POST",data:{id_et:id_et},success:function(respuesta)
+			{
+				swal("ELIMINADO!", "Se elimino correctamente el expediente técnico.", "success");
+				window.location.href='<?=base_url();?>index.php/Expediente_Tecnico/index/';
+				renderLoading();
+			}
+		});
 	});
 }
 </script>
