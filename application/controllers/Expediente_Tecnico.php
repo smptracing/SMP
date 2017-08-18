@@ -16,6 +16,7 @@ class Expediente_Tecnico extends CI_Controller
 		$this->load->model("Cargo_Modal");
 		$this->load->model("Model_ET_Presupuesto_Analitico");
 		$this->load->model("Model_ET_Img");
+		$this->load->model('Model_ET_Etapa_Ejecucion');
 		$this->load->library('mydompdf');
 	}
 
@@ -69,7 +70,7 @@ class Expediente_Tecnico extends CI_Controller
 	{
        if($_POST)
 		{
-	       $this->db->trans_start(); 
+	       $this->db->trans_start();
 
 	        $config['upload_path']   = './uploads/ResolucioExpediente/';
 	        $config['allowed_types'] = '*';
@@ -430,6 +431,7 @@ class Expediente_Tecnico extends CI_Controller
 		$this->load->view('front/Ejecucion/ExpedienteTecnico/responsableExpediente.php',['listaResponsableExpediente'=>$listaResponsableExpediente]);
 
 	}
+
 	public function DocumentoExpediente()
 	{
 		$flat="LISTAREXPEDIENTEDOCUMENTO";
@@ -443,5 +445,31 @@ class Expediente_Tecnico extends CI_Controller
 		$this->load->view('front/Ejecucion/ExpedienteTecnico/detalleExpediente.php');	
 	}
 
-	
+	public function clonar($idExpedienteTecnico=null, $idEtapaExpedienteTecnico=null)
+	{
+		$idExpedienteTecnico=$this->input->post('idExpedienteTecnico');
+		$idEtapaExpedienteTecnico=$this->input->post('idEtapaExpedienteTecnico');
+
+		if($idExpedienteTecnico!=null && $idEtapaExpedienteTecnico!=null)
+		{
+			$this->db->trans_start();
+
+			$etExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnico($idExpedienteTecnico);
+
+			if($etExpedienteTecnico->id_etapa_et==$idEtapaExpedienteTecnico)
+			{
+				echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede clonar expediente técnico para la misma etapa.']);exit;
+			}
+
+			
+
+			$this->db->trans_complete();
+
+			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Clonación de expediente en la etapa seleccionada realizado correctamente.']);exit;
+		}
+
+		$listaETEtapaEjecucion=$this->Model_ET_Etapa_Ejecucion->ETEtapaEjecucion_Listar('R');
+
+		return $this->load->view('front/Ejecucion/ExpedienteTecnico/modalParaClonar', ['idExpedienteTecnico' => $idExpedienteTecnico, 'listaETEtapaEjecucion' => $listaETEtapaEjecucion]);
+	}
 }

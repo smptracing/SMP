@@ -30,7 +30,7 @@
 				<select name="selectPresupuestoAnalitico" id="selectPresupuestoAnalitico" class="form-control">
 					<option></option>
 					<?php foreach($listaETPresupuestoAnalitico as $value){ ?>
-						<option value="<?=$value->id_analitico?>"><?=$value->desc_clasificador?></option>
+						<option value="<?=$value->id_analitico?>,<?=$value->desc_presupuesto_ej?>"><?=$value->desc_clasificador?></option>
 					<?php } ?>
 				</select>
 			</div>
@@ -291,7 +291,7 @@
 
 			if(selected.trim()!='')
 			{
-				$('#txtPresupuestoEjecucion').val(selected.substring(selected.indexOf(','), selected.length));
+				$('#txtPresupuestoEjecucion').val(selected.substring(selected.indexOf(',')+1, selected.length));
 			}
 			else
 			{
@@ -469,7 +469,7 @@
 		var recurso=$('#selectRecurso').val();
 		var idRecurso=recurso.substring(0, recurso.indexOf(','));
 		var descripcionRecurso=recurso.substring(recurso.indexOf(',')+1, recurso.length);
-		var idAnalitico=$('#selectPresupuestoAnalitico').val();
+		var idAnalitico=$('#selectPresupuestoAnalitico').val().substring(0, $('#selectPresupuestoAnalitico').val().indexOf(','));
 
 		var existeComponente=false;
 
