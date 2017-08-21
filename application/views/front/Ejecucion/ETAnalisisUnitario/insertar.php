@@ -537,7 +537,7 @@
 				'<div class="panel panel-default">'+
 					'<div class="panel-heading" data-toggle="collapse" href="#collapse'+objectJSON.idAnalisis+'" style="cursor: pointer;">'+
 						'<h4 class="panel-title">'+
-							'<a class="accordion-toggle">'+descripcionRecurso+'</a>'+
+							'<a class="accordion-toggle">'+replaceAll(replaceAll(descripcionRecurso, '<', '&lt;'), '>', '&gt;')+'</a>'+
 						'</h4>'+
 					'</div>'+
 					'<div id="collapse'+objectJSON.idAnalisis+'" class="panel-collapse collapse">'+
@@ -553,7 +553,7 @@
 													'<option></option>';
 
 													<?php foreach($listaETPresupuestoAnalitico as $item){ ?>
-														htmlTemp+='<option value="<?=$item->id_analitico?>"><?=$item->desc_clasificador.' | '.$item->desc_presupuesto_ej?></option>';
+														htmlTemp+='<option value="<?=$item->id_analitico?>"><?=html_escape($item->desc_clasificador.' | '.$item->desc_presupuesto_ej)?></option>';
 													<?php } ?>
 
 												htmlTemp+='</select>'+
@@ -596,7 +596,7 @@
 												'<select name="selectUnidadMedida'+objectJSON.idAnalisis+'" id="selectUnidadMedida'+objectJSON.idAnalisis+'" class="form-control">';
 
 													<?php foreach($listaUnidadMedida as $item){ ?>
-														htmlTemp+='<option value="<?=$item->id_unidad?>"><?=$item->descripcion?></option>';
+														htmlTemp+='<option value="<?=$item->id_unidad?>"><?=html_escape($item->descripcion)?></option>';
 													<?php } ?>
 
 												htmlTemp+='</select>'+
@@ -799,9 +799,9 @@
 			}
 
 			var htmlTemp='<tr>'+
-				'<td>'+descripcion+'</td>'+
+				'<td>'+replaceAll(replaceAll(descripcion, '<', '&lt;'), '>', '&gt;')+'</td>'+
 				'<td>'+parseFloat(cuadrilla).toFixed(2)+'</td>'+
-				'<td>'+objectJSON.nombreUnidadMedida+'</td>'+
+				'<td>'+replaceAll(replaceAll(objectJSON.nombreUnidadMedida, '<', '&lt;'), '>', '&gt;')+'</td>'+
 				'<td>'+parseFloat(rendimiento).toFixed(2)+'</td>'+
 				'<td>'+parseFloat(cantidad).toFixed(2)+'</td>'+
 				'<td>'+parseFloat(precioUnitario).toFixed(2)+'</td>'+
