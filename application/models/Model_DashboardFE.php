@@ -21,9 +21,7 @@ class Model_DashboardFE extends CI_Model
     }
     function GetAprobadosEstudio()
     {
-        $estudios = $this->db->query(" select ETAPAS_FE.denom_etapas_fe, count(ETAPAS_FE.denom_etapas_fe) AS Cantidadpip from ETAPAS_FE inner join
-        ETAPA_ESTUDIO ON ETAPA_ESTUDIO.id_etapa_fe=ETAPAS_FE.id_etapa_fe inner join ESTUDIO_INVERSION on
-        ESTUDIO_INVERSION.id_est_inv=ETAPA_ESTUDIO.id_est_inv group by ETAPAS_FE.denom_etapas_fe");//listar EVAL
+        $estudios = $this->db->query("select denom_etapas_fe,  COUNT(nombre_est_inv)as Cantidadpip FROM ETAPA_ESTUDIO full outer join ESTUDIO_INVERSION on  ETAPA_ESTUDIO.id_est_inv=ESTUDIO_INVERSION.id_est_inv full outer join ETAPAS_FE ON ETAPA_ESTUDIO.id_etapa_fe=ETAPAS_FE.id_etapa_fe group by ETAPAS_FE.denom_etapas_fe, en_seguimiento HAVING en_seguimiento=1 OR COUNT(ESTUDIO_INVERSION.id_est_inv) = 0");//listar EVAL
         if ($estudios->num_rows()> 0) {
             return $estudios->result();
         } else {

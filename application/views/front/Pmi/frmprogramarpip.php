@@ -170,7 +170,7 @@
               <form class="form-horizontal " id="form_AddProgramacion"   action="<?php echo base_url(); ?>bancoproyectos/Get_OperacionMantenimiento" method="POST" >
                              <div class="item form-group">
                               <div class="col-md-6 col-sm-6 col-xs-12">
-                                 <input id="txt_id_pip_programacion" name="txt_id_pip_programacion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="text">
+                                 <input id="txt_id_pip_programacion" name="txt_id_pip_programacion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
                               </div>
                             </div>
                              <div class="item form-group">
@@ -247,10 +247,13 @@
                     <center>
                     <table  id="Table_Programar" class="table   table-hover" >
                     <thead >
-                         <tr>
-                         <th  ><i class="fa fa-thumb-tack"></i> #</th>
-                         <th  ><i class="fa fa-thumb-tack"></i> Año Programado</th>
-                         <th  ><i class="fa fa-thumb-tack"></i> Monto Programado</th>
+                         <th  ><i></i> #</th>
+                         <th  ><i></i> Cartera</th>
+                         <th  ><i></i> Brecha</th>
+                         <th  ><i></i> Año Programado</th>
+                         <th  ><i></i> Monto Programado</th>
+                         <th  ><i></i> Prioridad</th>
+                         <th  ><i></i> Opción</th>
                       </tr>
                     </thead>
                     </table>
@@ -293,11 +296,8 @@
                     <div class="col-xs-12">
                                         <!-- PAGE CONTENT BEGINS -->
               <form class="form-horizontal " id="form_AddMeta_Pi"   action="<?php echo base_url(); ?>bancoproyectos/Get_OperacionMantenimiento" method="POST" >
-                          <div class="item form-group">
-                              <div class="col-md-6 col-sm-6 col-xs-12">
-                                 <input id="txt_id_pip_programacion_mp" name="txt_id_pip_programacion_mp" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
-                              </div>
-                            </div>
+
+                        <input id="txt_id_pip_programacion_mp" name="txt_id_pip_programacion_mp" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
                               <div class="item form-group">
                                <div class="col-md-2 col-sm-6 col-xs-12">
                                       <label>Año</label>
@@ -313,13 +313,19 @@
                                       <label>Nombre del Proyecto</label>
                                       <input  class="form-control" id="txt_nombre_proyecto_mp" name="txt_nombre_proyecto_mp" type="text" disabled="disabled">
                                     </div>
-                                   <div class="col-md-2 col-sm-6 col-xs-12">
+                                   <div class="col-md-3 col-sm-8 col-xs-12">
                                       <label>Costo del Proyecto</label>
                                       <input  class="form-control" id="txt_costo_proyecto_mp" name="txt_costo_proyecto_mp" type="number" disabled="disabled">
                                     </div>
-                                    <div class="col-md-3 col-sm-12 col-xs-12">
-                                      <label>Meta </label>
-                                      <select id="cbx_Meta" name="cbx_Meta" class="selectpicker"   title="Elija Meta">
+
+                                    <div class="col-md-4 col-sm-8 col-xs-12">
+                                      <label>Meta Presupuestal</label>
+                                      <select id="cbx_meta_presupuestal" name="cbx_meta_presupuestal" class="selectpicker" data-live-search="true" title="Elija Meta">
+                                      </select>
+                                    </div>
+                                    <div class="col-md-4 col-sm-8 col-xs-12">
+                                      <label>Correlativo Meta </label>
+                                      <select id="cbx_Meta" name="cbx_Meta" class="selectpicker" data-live-search="true" title="Elija Meta">
                                       </select>
                                     </div>
                                  </div>
@@ -333,8 +339,20 @@
                                       <input  class="form-control" id="txt_pim" name="txt_pim" type="number" required="required">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
+                                      <label>Certificado</label>
+                                      <input  class="form-control" id="txt_certificado" name="txt_certificado" type="number" required="required">
+                                    </div>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                      <label>compromiso</label>
+                                      <input  class="form-control" id="txt_compromiso" name="txt_compromiso" type="number" required="required">
+                                    </div>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
                                       <label>Devengado</label>
                                       <input  class="form-control" id="txt_devengado" name="txt_devengado" type="number" required="required">
+                                    </div>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                      <label>Girado</label>
+                                      <input  class="form-control" id="txt_girado" name="txt_girado" type="number" required="required">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <label>.</label><br>
@@ -343,18 +361,23 @@
                                         </button>
                                     </div>
                                  </div>
-                    <div class="ln_solid"></div>
-                    <div class="x_panel" style="background-color: #EEEEEE;">
+
+
+                     <div class="ln_solid"></div>
+                     <div class="x_panel" style="background-color: #EEEEEE;">
                     <center>
                     <table  id="Table_meta_pi" class="table   table-hover" >
                     <thead >
-                      <tr>
-                         <th><i class="fa fa-thumb-tack"></i> #</th>
-                         <th><i class="fa fa-thumb-tack"></i> Año </th>
-                         <th><i class="fa fa-thumb-tack"></i> PIA</th>
-                         <th><i class="fa fa-thumb-tack"></i> PIM</th>
-                         <th><i class="fa fa-thumb-tack"></i> Devengado</th>
-                         <th><i class="fa fa-thumb-tack"></i> Opción</th>
+                       <tr>
+                         <th  ><i class="fa fa-thumb-tack"></i> #</th>
+                         <th  ><i class="fa fa-thumb-tack"></i> Año </th>
+                         <th  ><i class="fa fa-thumb-tack"></i> PIA</th>
+                         <th  ><i class="fa fa-thumb-tack"></i> PIM</th>
+                         <th  ><i class="fa fa-thumb-tack"></i> Certificación</th>
+                         <th  ><i class="fa fa-thumb-tack"></i> Compromiso</th>
+                         <th  ><i class="fa fa-thumb-tack"></i> Devengado</th>
+                         <th  ><i class="fa fa-thumb-tack"></i> Girado</th>
+                         <th  ><i class="fa fa-thumb-tack"></i> Opción</th>
                       </tr>
                     </thead>
                     </table>
@@ -371,6 +394,7 @@
                         </div>
                       </div>
                       </center>
+
                     </form>
                         </div><!-- /.span -->
                  </div><!-- /.row -->
@@ -382,6 +406,7 @@
     </div>
 </div>
 <!-- /.Fin Ventana meta presupuestal-->
+
 
 <!-- /.Ventana Programar operacion y mantenimiento-->
 <div class="modal fade" id="Ventana_Programar_operacion_mantenimiento" role="dialog">
@@ -478,9 +503,13 @@
                     <table  id="Table_Programar_operacion_mantenimiento" class="table   table-hover" >
                     <thead >
                        <tr>
-                         <th  ><i class="fa fa-thumb-tack"></i> #</th>
-                         <th  ><i class="fa fa-thumb-tack"></i> Año Programado</th>
-                         <th  ><i class="fa fa-thumb-tack"></i> Monto Programado</th>
+                         <th  ><i></i> #</th>
+                         <th  ><i></i> Cartera</th>
+                         <th  ><i></i> Brecha</th>
+                         <th  ><i></i> Año Programado</th>
+                         <th  ><i></i> Monto Programado</th>
+                         <th  ><i></i> Prioridad</th>
+                         <th  ><i></i> Opción</th>
                       </tr>
                     </thead>
                     </table>

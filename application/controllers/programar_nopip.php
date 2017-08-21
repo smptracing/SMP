@@ -92,6 +92,37 @@ class programar_nopip extends CI_Controller
             show_404();
         }
     }
+    public function EliminarMetaPI()
+    {
+        if ($this->input->is_ajax_request()) {
+            $flat       = "D";
+            $id_meta_pi = $this->input->post("id_meta_pi");
+            if ($this->programar_nopip_modal->EliminarMetaPI($flat, $id_meta_pi) == false) {
+                echo "Se elimino la entidad";
+            } else {
+                echo "Se elimino entidad";
+            }
+
+        } else {
+            show_404();
+        }
+    }
+    public function EliminarProgramacion()
+    {
+        if ($this->input->is_ajax_request()) {
+            $flat       = "D";
+            $id_pi      = $this->input->post("id_pi");
+            $id_cartera = $this->input->post("id_cartera");
+            if ($this->programar_nopip_modal->EliminarProgramacion($flat, $id_pi, $id_cartera) == false) {
+                echo "Se elimino ";
+            } else {
+                echo "No Se elimino";
+            }
+
+        } else {
+            show_404();
+        }
+    }
 
     public function index()
     {

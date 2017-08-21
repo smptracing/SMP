@@ -19,7 +19,7 @@
 			<div>
 				<select name="selectRecurso" id="selectRecurso" class="form-control">
 					<?php foreach($listaETRecurso as $value){ ?>
-						<option value="<?=$value->id_recurso.','.$value->desc_recurso?>"><?=$value->desc_recurso?></option>
+						<option value="<?=$value->id_recurso.','.html_escape($value->desc_recurso)?>"><?=html_escape($value->desc_recurso)?></option>
 					<?php } ?>
 				</select>
 			</div>
@@ -30,7 +30,7 @@
 				<select name="selectPresupuestoAnalitico" id="selectPresupuestoAnalitico" class="form-control">
 					<option></option>
 					<?php foreach($listaETPresupuestoAnalitico as $value){ ?>
-						<option value="<?=$value->id_analitico?>"><?=$value->desc_clasificador?></option>
+						<option value="<?=$value->id_analitico?>,<?=html_escape($value->desc_presupuesto_ej)?>"><?=html_escape($value->desc_clasificador)?></option>
 					<?php } ?>
 				</select>
 			</div>
@@ -38,7 +38,7 @@
 	</div>
 	<div id="divPresupuestoParaEjecucion" class="row">
 		<div class="col-md-8 col-sm-8 col-xs-12">
-			<label for="control-label">Presupuesto para ejecuión</label>
+			<label for="control-label">Presupuesto para ejecución</label>
 			<div>
 				<input type="text" id="txtPresupuestoEjecucion" class="form-control" readonly="readonly">
 			</div>
@@ -57,13 +57,33 @@
 				<div class="panel panel-default">
 					<div class="panel-heading" data-toggle="collapse" href="#collapse<?=$value->id_analisis?>" style="cursor: pointer;">
 						<h4 class="panel-title">
-							<a class="accordion-toggle"><?=$value->desc_recurso?></a>
+							<a class="accordion-toggle"><?=html_escape($value->desc_recurso)?></a>
 						</h4>
 					</div>
 					<div id="collapse<?=$value->id_analisis?>" class="panel-collapse collapse">
 						<div class="row">
 							<div class="col-md-12 col-sm-12 col-xs-12">
 								<div id="divFormDetallaAnalisisUnitario<?=$value->id_analisis?>" style="padding: 4px;">
+									<div class="row">
+										<div class="col-md-10 col-sm-10 col-xs-12">
+											<label for="control-label">Presupuesto analítico (Clasificador | Presupuesto ejecución)</label>
+											<div>
+												<select name="selectPresupuestoAnalitico<?=$value->id_analisis?>" id="selectPresupuestoAnalitico<?=$value->id_analisis?>" class="form-control">
+													<option></option>
+													<?php foreach($listaETPresupuestoAnalitico as $item){ ?>
+														<option value="<?=$item->id_analitico?>" <?=($item->id_analitico==$value->id_analitico ? 'selected' : '')?>><?=html_escape($item->desc_clasificador.' | '.$item->desc_presupuesto_ej)?></option>
+													<?php } ?>
+												</select>
+											</div>
+										</div>
+										<div class="col-md-2 col-sm-2 col-xs-12">
+											<label for="control-label">.</label>
+											<div>
+												<input type="button" class="btn btn-primary" value="Guardar" style="width: 100%;" onclick="guardarPresupuestoAnaliticoParaAnalisisUnitario(<?=$value->id_analisis?>);">
+											</div>
+										</div>
+									</div>
+									<hr style="margin: 2px;">
 									<div class="row">
 										<div class="col-md-12 col-sm-12 col-xs-12">
 											<input type="button" class="btn btn-danger btn btn-xs" value="Eliminar este análisis unitario" onclick="eliminarAnalisisUnitario(<?=$value->id_analisis?>, this);">
@@ -91,7 +111,7 @@
 											<div>
 												<select name="selectUnidadMedida<?=$value->id_analisis?>" id="selectUnidadMedida<?=$value->id_analisis?>" class="form-control">
 													<?php foreach($listaUnidadMedida as $item){ ?>
-														<option value="<?=$item->id_unidad?>"><?=$item->descripcion?></option>
+														<option value="<?=$item->id_unidad?>"><?=html_escape($item->descripcion)?></option>
 													<?php } ?>
 												</select>
 											</div>
@@ -147,9 +167,9 @@
 										<tbody>
 											<?php foreach($value->childETDetalleAnalisisUnitario as $item){ ?>
 												<tr>
-													<td><?=$item->desc_detalle_analisis?></td>
-													<td><?=$item->cuadrilla?></td>
-													<td><?=$item->descripcion?></td>
+													<td><?=html_escape($item->desc_detalle_analisis)?></td>
+													<td><?=html_escape($item->cuadrilla)?></td>
+													<td><?=html_escape($item->descripcion)?></td>
 													<td><?=$item->rendimiento?></td>
 													<td><?=$item->cantidad?></td>
 													<td><?=$item->precio_unitario?></td>
@@ -291,7 +311,7 @@
 
 			if(selected.trim()!='')
 			{
-				$('#txtPresupuestoEjecucion').val(selected.substring(selected.indexOf(','), selected.length));
+				$('#txtPresupuestoEjecucion').val(selected.substring(selected.indexOf(',')+1, selected.length));
 			}
 			else
 			{
@@ -469,7 +489,7 @@
 		var recurso=$('#selectRecurso').val();
 		var idRecurso=recurso.substring(0, recurso.indexOf(','));
 		var descripcionRecurso=recurso.substring(recurso.indexOf(',')+1, recurso.length);
-		var idAnalitico=$('#selectPresupuestoAnalitico').val();
+		var idAnalitico=$('#selectPresupuestoAnalitico').val().substring(0, $('#selectPresupuestoAnalitico').val().indexOf(','));
 
 		var existeComponente=false;
 
@@ -517,13 +537,37 @@
 				'<div class="panel panel-default">'+
 					'<div class="panel-heading" data-toggle="collapse" href="#collapse'+objectJSON.idAnalisis+'" style="cursor: pointer;">'+
 						'<h4 class="panel-title">'+
-							'<a class="accordion-toggle">'+descripcionRecurso+'</a>'+
+							'<a class="accordion-toggle">'+replaceAll(replaceAll(descripcionRecurso, '<', '&lt;'), '>', '&gt;')+'</a>'+
 						'</h4>'+
 					'</div>'+
 					'<div id="collapse'+objectJSON.idAnalisis+'" class="panel-collapse collapse">'+
 						'<div class="row">'+
 							'<div class="col-md-12 col-sm-12 col-xs-12">'+
 								'<div id="divFormDetallaAnalisisUnitario'+objectJSON.idAnalisis+'" style="padding: 4px;">'+
+
+									'<div class="row">'+
+										'<div class="col-md-10 col-sm-10 col-xs-12">'+
+											'<label for="control-label">Presupuesto analítico (Clasificador | Presupuesto ejecución)</label>'+
+											'<div>'+
+												'<select name="selectPresupuestoAnalitico'+objectJSON.idAnalisis+'" id="selectPresupuestoAnalitico'+objectJSON.idAnalisis+'" class="form-control">'+
+													'<option></option>';
+
+													<?php foreach($listaETPresupuestoAnalitico as $item){ ?>
+														htmlTemp+='<option value="<?=$item->id_analitico?>"><?=html_escape($item->desc_clasificador.' | '.$item->desc_presupuesto_ej)?></option>';
+													<?php } ?>
+
+												htmlTemp+='</select>'+
+											'</div>'+
+										'</div>'+
+										'<div class="col-md-2 col-sm-2 col-xs-12">'+
+											'<label for="control-label">.</label>'+
+											'<div>'+
+												'<input type="button" class="btn btn-primary" value="Guardar" style="width: 100%;" onclick="guardarPresupuestoAnaliticoParaAnalisisUnitario('+objectJSON.idAnalisis+');">'+
+											'</div>'+
+										'</div>'+
+									'</div>'+
+									'<hr style="margin: 2px;">'+
+
 									'<div class="row">'+
 										'<div class="col-md-12 col-sm-12 col-xs-12">'+
 											'<input type="button" class="btn btn-danger btn btn-xs" value="Eliminar este análisis unitario" onclick="eliminarAnalisisUnitario('+objectJSON.idAnalisis+', this);">'+
@@ -552,7 +596,7 @@
 												'<select name="selectUnidadMedida'+objectJSON.idAnalisis+'" id="selectUnidadMedida'+objectJSON.idAnalisis+'" class="form-control">';
 
 													<?php foreach($listaUnidadMedida as $item){ ?>
-														htmlTemp+='<option value="<?=$item->id_unidad?>"><?=$item->descripcion?></option>';
+														htmlTemp+='<option value="<?=$item->id_unidad?>"><?=html_escape($item->descripcion)?></option>';
 													<?php } ?>
 
 												htmlTemp+='</select>'+
@@ -618,6 +662,8 @@
 
 			$('#divListaAnalisisUnitario').append(htmlTemp);
 
+			$('#selectPresupuestoAnalitico'+objectJSON.idAnalisis).val(objectJSON.idAnalitico);
+
 			$('#selectDescripcionDetalleAnalisis'+objectJSON.idAnalisis).selectpicker({ liveSearch: true }).ajaxSelectPicker(
 			{
 		        ajax: {
@@ -660,8 +706,6 @@
 					$('#selectUnidadMedida'+$(this).attr('id').substring(32)).val($(this).find("option:selected").data('id-unidad'));
 				}
 		    });
-
-			limpiarText('divPresupuestoParaEjecucion', []);
 
 			$('#divFormDetallaAnalisisUnitario'+objectJSON.idAnalisis).formValidation(
 			{
@@ -755,9 +799,9 @@
 			}
 
 			var htmlTemp='<tr>'+
-				'<td>'+descripcion+'</td>'+
+				'<td>'+replaceAll(replaceAll(descripcion, '<', '&lt;'), '>', '&gt;')+'</td>'+
 				'<td>'+parseFloat(cuadrilla).toFixed(2)+'</td>'+
-				'<td>'+objectJSON.nombreUnidadMedida+'</td>'+
+				'<td>'+replaceAll(replaceAll(objectJSON.nombreUnidadMedida, '<', '&lt;'), '>', '&gt;')+'</td>'+
 				'<td>'+parseFloat(rendimiento).toFixed(2)+'</td>'+
 				'<td>'+parseFloat(cantidad).toFixed(2)+'</td>'+
 				'<td>'+parseFloat(precioUnitario).toFixed(2)+'</td>'+
@@ -813,5 +857,21 @@
 				$(element).parent().parent().remove();
 			}, false, true);
 		}
+	}
+
+	function guardarPresupuestoAnaliticoParaAnalisisUnitario(idAnalisis)
+	{
+		paginaAjaxJSON({ idAnalisis : idAnalisis, idAnalitico : $('#selectPresupuestoAnalitico'+idAnalisis).val() }, base_url+'index.php/ET_Analisis_Unitario/actualizarAnalitico', 'POST', null, function(objectJSON)
+		{
+			objectJSON=JSON.parse(objectJSON);
+
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+			},
+			function(){});
+		}, false, true);
 	}
 </script>

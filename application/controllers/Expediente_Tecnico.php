@@ -16,6 +16,7 @@ class Expediente_Tecnico extends CI_Controller
 		$this->load->model("Cargo_Modal");
 		$this->load->model("Model_ET_Presupuesto_Analitico");
 		$this->load->model("Model_ET_Img");
+		$this->load->model('Model_ET_Etapa_Ejecucion');
 		$this->load->library('mydompdf');
 	}
 
@@ -41,8 +42,9 @@ class Expediente_Tecnico extends CI_Controller
 
 	public function index()
 	{
-		$flat="LISTAR";
-		$listaExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoListar($flat);
+		$flat="LISTARETAPA";
+		$id_etapa_et="1";
+		$listaExpedienteTecnicoElaboracion=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoListarEtapa($flat,$id_etapa_et);
 
 		$flat1="LISTARETAPA";
 		$id_etapa_et="2";
@@ -61,7 +63,7 @@ class Expediente_Tecnico extends CI_Controller
 		$listaExpedienteTecnicoModificacion=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoListarEtapa($flat1,$id_etapa_et);
 		//var_dump($listaExpedienteTecnicoModificacion);exit;
 		$this->load->view('layout/Ejecucion/header');
-		$this->load->view('front/Ejecucion/ExpedienteTecnico/index.php',['listaExpedienteTecnico'=>$listaExpedienteTecnico,'listaExpedienteTecnicoEtapa'=>$listaExpedienteTecnicoEtapa,'listaExpedienteTecnicoModificacion'=>$listaExpedienteTecnicoModificacion,'listaExpedienteEjecucionDeductivo'=>$listaExpedienteEjecucionDeductivo,'listaExpedienteEjecucionAdicional'=>$listaExpedienteEjecucionAdicional]);
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/index.php',['listaExpedienteTecnicoElaboracion'=>$listaExpedienteTecnicoElaboracion,'listaExpedienteTecnicoEtapa'=>$listaExpedienteTecnicoEtapa,'listaExpedienteTecnicoModificacion'=>$listaExpedienteTecnicoModificacion,'listaExpedienteEjecucionDeductivo'=>$listaExpedienteEjecucionDeductivo,'listaExpedienteEjecucionAdicional'=>$listaExpedienteEjecucionAdicional]);
 		$this->load->view('layout/Ejecucion/footer');
 	}
 
@@ -69,7 +71,11 @@ class Expediente_Tecnico extends CI_Controller
 	{
        if($_POST)
 		{
-	       $this->db->trans_start(); 
+	       $this->db->trans_start();
+
+	        $Etapa_Ejecucion='Elaboración de expediente técnico';
+	        $nombreEtapa=$this->Model_ET_Etapa_Ejecucion->BuscarNombreEtapaEjecucion($Etapa_Ejecucion);
+	        $id_etapa_et=$nombreEtapa->id_etapa_et;
 
 	        $config['upload_path']   = './uploads/ResolucioExpediente/';
 	        $config['allowed_types'] = '*';
@@ -113,8 +119,9 @@ class Expediente_Tecnico extends CI_Controller
 			$txtSituacioEconomica=$this->input->post('hdtxtSituacioEconomica');
 			$txtResumenProyecto=$this->input->post('hdtxtResumenProyecto');
 			$txtNumFolio=$this->input->post('txtNumFolio');
+			$etapa_et=$id_etapa_et;
 
-			$this->Model_ET_Expediente_Tecnico->insertar($flat,$txtNombreUe,$txtIdPi,$txtDireccionUE,$txtUbicacionUE,$txtTelefonoUE,$txtRuc,$txtCostoTotalPreInversion,$txtCostoDirectoPre,$txtCostoIndirectoPre,$txtCostoTotalInversion,$txtCostoDirectoInversion,$txtGastosGenerales,$txtGastosSupervision,$txtFuncionProgramatica,$txtFuncion,$txtPrograma,$txtSubPrograma,$txtProyecto,$txtComponente,$txtMeta,$txtFuenteFinanciamiento,$txtModalidadEjecucion,$txtTiempoEjecucionPip,$txtNumBeneficiarios,$txtUrlDocAprobacion,$txtSituacioActual,$txtSituacioEconomica,$txtResumenProyecto,$txtNumFolio); 
+			$this->Model_ET_Expediente_Tecnico->insertar($flat,$txtNombreUe,$txtIdPi,$txtDireccionUE,$txtUbicacionUE,$txtTelefonoUE,$txtRuc,$txtCostoTotalPreInversion,$txtCostoDirectoPre,$txtCostoIndirectoPre,$txtCostoTotalInversion,$txtCostoDirectoInversion,$txtGastosGenerales,$txtGastosSupervision,$txtFuncionProgramatica,$txtFuncion,$txtPrograma,$txtSubPrograma,$txtProyecto,$txtComponente,$txtMeta,$txtFuenteFinanciamiento,$txtModalidadEjecucion,$txtTiempoEjecucionPip,$txtNumBeneficiarios,$txtUrlDocAprobacion,$txtSituacioActual,$txtSituacioEconomica,$txtResumenProyecto,$txtNumFolio,$etapa_et); 
 			
 			$UltimoExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->UltimoExpedienteTecnico();
 			$id_et=$UltimoExpedienteTecnico->id_et;
@@ -264,6 +271,7 @@ class Expediente_Tecnico extends CI_Controller
 						$error = "ERROR NO SE CARGO LAS FOTOS DE EXPEDIENTE TÉCNICO";
 				 }
 			}
+
 			$this->db->trans_complete();
 			//echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos Editados Correctamente.', 'txtDireccionUE' => $txtDireccionUE]);exit;
 			return redirect('/Expediente_Tecnico');
@@ -286,7 +294,6 @@ class Expediente_Tecnico extends CI_Controller
 		return $this->load->view('front/Ejecucion/ExpedienteTecnico/editar',['ExpedienteTecnicoM'=>$ExpedienteTecnicoM, 'listaimg'=>$listaimg]);
 	}
 
-	
     function registroBuscarProyecto()
     {
     		$CodigoUnico=$this->input->get('inputValue');
@@ -410,7 +417,13 @@ class Expediente_Tecnico extends CI_Controller
            		$eliminarImg=$this->Model_ET_Expediente_Tecnico->ET_Img($id_et);
            		foreach ($eliminarImg as $value) 
            		{
-           			unlink("uploads/ImageExpediente/".$value->desc_img);
+           			if (file_exists("uploads/ImageExpediente/".$value->desc_img))
+           			{ 
+					   	unlink("uploads/ImageExpediente/".$value->desc_img);
+					}else
+					{ 
+					   
+					} 
            		}
            		if($this->Model_ET_Expediente_Tecnico->eliminar($flat,$id_et)==true)
 	            {	//$img=$this->Model_ET_Img->eliminarimg()
@@ -419,6 +432,102 @@ class Expediente_Tecnico extends CI_Controller
 	            }		
            	}
 		}
+	}
+	public function ResponsableExpediente()
+	{
+		$flat="LISTAREXPEDIENTERESPONSABLE";
+		$id_et=$this->input->post('id_et');
 
+		$listaResponsableExpediente=$this->Model_ET_Expediente_Tecnico->ListarResponsableExpediente($flat,$id_et);
+		//var_dump($listaResponsableExpediente);exit;
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/responsableExpediente.php',['listaResponsableExpediente'=>$listaResponsableExpediente]);
+
+	}
+
+	public function DocumentoExpediente()
+	{
+		$expedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnico($this->input->get('id_et'));
+
+		$id_et=$this->input->get('id_et');
+		$ListarDocumentoExpediente=$this->Model_ET_Expediente_Tecnico->ListarDocumentoExpediente($id_et);
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/documentoExpediente.php',['ListarDocumentoExpediente'=>$ListarDocumentoExpediente,'expedienteTecnico' => $expedienteTecnico]);	
+	}
+	
+	public function DetalleExpediente()
+	{
+		$id_et=$this->input->post('id_et');
+		$detalleExpediente=$this->Model_ET_Expediente_Tecnico->DetalleExpediente($id_et);
+		//var_dump($detalleExpediente);exit;
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/detalleExpediente.php',["detalleExpediente" => $detalleExpediente]);	
+	}
+
+	public function clonar($idExpedienteTecnico=null, $idEtapaExpedienteTecnico=null)
+	{
+		$idExpedienteTecnico=$this->input->post('idExpedienteTecnico');
+		$idEtapaExpedienteTecnico=$this->input->post('idEtapaExpedienteTecnico');
+
+		if($idExpedienteTecnico!=null && $idEtapaExpedienteTecnico!=null)
+		{
+			$this->db->trans_start();
+
+			$etExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnico($idExpedienteTecnico);
+
+			if($etExpedienteTecnico->id_etapa_et==$idEtapaExpedienteTecnico)
+			{
+				echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede clonar expediente técnico para la misma etapa.']);exit;
+			}
+
+			if($this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoPorIdETPadre($etExpedienteTecnico->id_et)!=null)
+			{
+				echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede clonar dos veces de un mismo expediente técnico.']);exit;
+			}
+
+			$listaETComponente=$this->Model_ET_Componente->ETComponentePorIdET($etExpedienteTecnico->id_et);
+
+			foreach($listaETComponente as $key => $value)
+			{
+				$listaETMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($value->id_componente);
+
+				foreach($listaETMeta as $index => $item)
+				{
+					if($this->analisisUnitarioSinAnalitico($item))
+					{
+						echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede clonar expediente técnico porque existen análisis unitarios sin asignación de analítico.']);exit;
+					}
+				}
+			}
+
+			$this->Model_ET_Expediente_Tecnico->clonar($etExpedienteTecnico->id_et, $idEtapaExpedienteTecnico);
+
+			$idUltimoExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->UltimoExpedienteTecnico()->id_et;
+
+			$listaETImgOrigen=$this->Model_ET_Img->ListarImagen($etExpedienteTecnico->id_et);
+			$listaETImgDestino=$this->Model_ET_Img->ListarImagen($idUltimoExpedienteTecnico);
+
+			foreach($listaETImgOrigen as $key => $value)
+			{
+				$nombreImgTemp=$listaETImgDestino[$key]->id_img.'.'.(explode('.', $value->desc_img)[count(explode('.', $value->desc_img))-1]);
+
+				$this->Model_ET_Img->updateDescImagePorIdImg($listaETImgDestino[$key]->id_img, $nombreImgTemp);
+
+				if(file_exists('./uploads/ImageExpediente/'.$value->desc_img))
+				{
+					copy('./uploads/ImageExpediente/'.$value->desc_img, './uploads/ImageExpediente/'.$nombreImgTemp);
+				}
+			}
+
+			if(file_exists('./uploads/ResolucioExpediente/'.$etExpedienteTecnico->id_et.'.'.$etExpedienteTecnico->url_doc_aprobacion_et))
+			{
+				copy('./uploads/ResolucioExpediente/'.$etExpedienteTecnico->id_et.'.'.$etExpedienteTecnico->url_doc_aprobacion_et, './uploads/ResolucioExpediente/'.$idUltimoExpedienteTecnico.'.'.$etExpedienteTecnico->url_doc_aprobacion_et);
+			}
+
+			$this->db->trans_complete();
+
+			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Clonación de expediente en la etapa seleccionada realizado correctamente.']);exit;
+		}
+
+		$listaETEtapaEjecucion=$this->Model_ET_Etapa_Ejecucion->ETEtapaEjecucion_Listar('R');
+
+		return $this->load->view('front/Ejecucion/ExpedienteTecnico/modalParaClonar', ['idExpedienteTecnico' => $idExpedienteTecnico, 'listaETEtapaEjecucion' => $listaETEtapaEjecucion]);
 	}
 }

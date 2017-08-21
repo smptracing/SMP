@@ -12,6 +12,11 @@ class Model_ET_Presupuesto_Analitico extends CI_Model
 		$this->db->query("execute sp_gestionar_ET_Presupuesto_Analitico @opcion='".$opcion."',@id_clasificador='".$idClasificador."', @id_et='".$hd_id_et."',@id_presupuesto_ej='".$idPresupuestoEjecucion."'");
 		return true;
 	}
+	function verificarPresupuestoAnaliticoTipoClasi($hd_id_et,$idClasificador,$idPresupuestoEjecucion)
+	{
+		$data=$this->db->query("select * from ET_PRESUPUESTO_ANALITICO  where id_et='".$hd_id_et."' and id_clasificador='".$idClasificador."' and id_presupuesto_ej='".$idPresupuestoEjecucion."'");
+		return $data->result();
+	}
 	function listar($opcion,$idExpedienteTecnico)
 	{
 		$data=$this->db->query("execute sp_gestionar_ET_Presupuesto_Analitico @opcion='".$opcion."',@id_et='".$idExpedienteTecnico."'");
@@ -37,6 +42,19 @@ class Model_ET_Presupuesto_Analitico extends CI_Model
 		$ETClasificador=$this->db->query("execute sp_Gestionar_ET_Presupuesto_Analitico @Opcion='".$flat."',@id_et='".$id_et."'");
 
 		return $ETClasificador->result();
+	}
+	function VerificarAnalisisUnitario($idClasiAnalitico)
+	{
+		$AnalisisUnitario=$this->db->query("select * from ET_PRESUPUESTO_ANALITICO ET_PRE_ANA inner join ET_ANALISIS_UNITARIO ET_PRE_UNI
+		 on ET_PRE_ANA.id_analitico=ET_PRE_UNI.id_analitico WHERE ET_PRE_UNI.id_analitico='".$idClasiAnalitico."'");
+
+		return $AnalisisUnitario->result();
+	}
+	function eliminar($idClasiAnalitico){
+
+		$this->db->query("DELETE FROM ET_PRESUPUESTO_ANALITICO WHERE id_analitico='".$idClasiAnalitico."' ");
+
+		return true;
 	}
 
 }

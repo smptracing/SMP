@@ -56,4 +56,10 @@ class Model_ET_Etapa_Ejecucion extends CI_Model
 
 		return $tipoGastoFE->result();
 	}
+	function BuscarNombreEtapaEjecucion($Etapa_Ejecucion)
+	{
+		$tipoGastoFE=$this->db->query("select * from ET_ETAPA_EJECUCION where desc_etapa_et='".$Etapa_Ejecucion."'");
+
+		return $tipoGastoFE->result()[0];	
+	}
 }

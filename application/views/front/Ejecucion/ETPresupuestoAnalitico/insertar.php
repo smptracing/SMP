@@ -1,44 +1,7 @@
-<?php
-function mostrarMetaAnidada($meta, $idExpedienteTecnico)
-{
-	$htmlTemp='';
-
-	$htmlTemp.='<li>'.
-		$meta->desc_meta.' <input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(\'\', $(this).parent(), '.$meta->id_meta.')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="+P" onclick="renderizarAgregarPartida($(this).parent(), '.$meta->id_meta.')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarMeta('.$meta->id_meta.', this);" style="width: 30px;">'.
-		((count($meta->childMeta)==0 && count($meta->childPartida))>0 ? '<table><tbody>' : '<ul>');
-
-	if(count($meta->childMeta)==0)
-	{
-		foreach($meta->childPartida as $key => $value)
-		{
-			$htmlTemp.='<tr style="color: blue;" class="liPartida">'.
-				'<td style="padding-left: 10px;"><b>&#9658;'.$value->desc_partida.'</b></td>'.
-				'<td style="padding-left: 4px;">'.$value->rendimiento.'</td>'.
-				'<td style="padding-left: 4px;text-align: center;">'.$value->descripcion.'</td>'.
-				'<td style="padding-left: 4px;text-align: center;">'.$value->cantidad.'</td>'.
-				'<td style="padding-left: 4px;">'.
-					'<input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida('.$value->id_partida.', this);" style="width: 30px;">'.
-					'<input type="button" class="btn btn-default btn-xs" value="A" onclick="paginaAjaxDialogo(\'otherModal\', \'Análisis presupuestal\', { idET : '.$idExpedienteTecnico.', idPartida : '.$value->id_partida.' }, \''.base_url().'index.php/ET_Analisis_Unitario/insertar\', \'get\', null, null, false, true);" style="width: 30px;">'.
-				'</td>'.
-			'</tr>';
-		}
-	}
-
-	foreach($meta->childMeta as $key => $value)
-	{
-		$htmlTemp.=mostrarMetaAnidada($value, $idExpedienteTecnico);
-	}
-
-	$htmlTemp.=((count($meta->childMeta)==0 && count($meta->childPartida))>0 ? '</tbody></table>' : '</ul>').
-	'</li>';
-
-	return $htmlTemp;
-}
-?>
 <div class="form-horizontal">
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
-			<input type="hidden" name="hd_et" id="hd_et" value="<?=$expedienteTecnico->id_et?>">
+			<input type="hidden" name="hd_et" id="hd_et" value="<?=$expedienteTecnico->id_et?>" notValidate>
 			<label class="control-label">Nombre del proyecto de inversión</label>
 			<div>
 				<textarea name="txtNombreProyectoInversion" id="txtNombreProyectoInversion" rows="3" class="form-control" style="resize: none;resize: vertical;" readonly="readonly"><?=$expedienteTecnico->nombre_pi?></textarea>
@@ -55,8 +18,8 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 				</select>
 			</div>
 	</div>
-	<div class="col-md-5 col-sm-5 col-xs-5">
-			<input type="hidden"  id="hdIdClasificador" name="hdIdClasificador">
+	<div class="col-md-5 col-sm-5 col-xs-5" id="divPresupuestoAnalitico">
+			<input type="hidden"  id="hdIdClasificador" name="hdIdClasificador" notValidate>
 			<label class="control-label">Clasificador</label>
 			<div>
 				<select name="selectClasificador" id="selectClasificador" class="form-control"></select>
@@ -87,7 +50,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 										<td></td>
 										<td><?= $item->num_clasificador?></td>
 										<td><?= $item->desc_clasificador?></td>
-										<td><button onclick="Eliminar(<?=$item->id_analitico?>);" data-toggle="tooltip" data-original-title="Eliminar Analitico"   class='btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button></td>									</tr>
+										<td><button onclick="EliminarPresClasiAnalitico(<?=$item->id_analitico?>,this);" data-toggle="tooltip" data-original-title="Eliminar Analitico"   class='btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button></td>									</tr>
 								<?php } ?>
 						</tr>						
 					<?php }?>
@@ -106,6 +69,27 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 
 	$(function()
 	{
+		$('#divPresupuestoAnalitico').formValidation(
+		{
+			framework: 'bootstrap',
+			excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+			live: 'enabled',
+			message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+			trigger: null,
+			fields:
+			{
+				selectClasificador:
+				{
+					validators:
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Descripción" es requerido.</b>'
+						}
+					}
+				}
+			}
+		});
 		
 		$('#selectClasificador').selectpicker({ liveSearch: true }).ajaxSelectPicker(
 		{
@@ -152,37 +136,73 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 
 	});
 
-		function agregarPresupuestoAnalitico()
+	function agregarPresupuestoAnalitico()
+	{
+		if(!($('#divPresupuestoAnalitico').data('formValidation').isValid()))
 		{
-			var idClasificador=$("#hdIdClasificador").val();
-			var hd_id_et=$('#hd_et').val();
-			var idPresupuestoEjecucion=$("#selectPresupuestoEjecucion").val();
-			$.ajax({ url:base_url+"index.php/ET_Presupuesto_Analitico/insertar",type:"POST",data:{idClasificador:idClasificador,hd_id_et:hd_id_et,idPresupuestoEjecucion:idPresupuestoEjecucion},dataType:'JSON',
-                    success:function(respuesta)
-                    {
+			return;
+		}
+		var idClasificador=$("#hdIdClasificador").val();
+		var hd_id_et=$('#hd_et').val();
+		var idPresupuestoEjecucion=$("#selectPresupuestoEjecucion").val();
+		$.ajax({ url:base_url+"index.php/ET_Presupuesto_Analitico/insertar",type:"POST",data:{idClasificador:idClasificador,hd_id_et:hd_id_et,idPresupuestoEjecucion:idPresupuestoEjecucion},dataType:'JSON',success:function(respuesta)
+                {
+                	if(respuesta.proceso=='Error')
+                	{
+                		swal('',respuesta.mensaje,'error')
+                	}else
+                	{
                     	var html;
                     	$("#bodyClasificador").html('');
                     	$.each(respuesta,function(index,element)
                     	{
                     	    html +='<tr>';
                     		html +='<td colspan="4">'+element.desc_presupuesto_ej+'</td>';
-		                    		$.each(element.ChilpresupuestoAnalitico,function(index,element)
-		                    		{
-										html +='<tr>';
-										html +='<td> </td>';
-										html +='<td>' +element.num_clasificador+'</td>';
-										html +='<td>' +element.desc_clasificador+'</td>';
-										html +='<td><button onclick="Eliminar('+element.id_analitico+');" data-toggle="tooltip" data-original-title="Eliminar Analitico"   class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button></td>';	
-										html +='</tr>';
-		                    		});
+	                    		$.each(element.ChilpresupuestoAnalitico,function(index,element)
+	                    		{
+									html +='<tr><td></td>';
+									html +='<td>'+element.num_clasificador+'</td>';
+									html +='<td>'+element.desc_clasificador+'</td>';
+									html +='<td><button onclick="EliminarPresClasiAnalitico('+element.id_analitico+',this);" data-toggle="tooltip" data-original-title="Eliminar Analitico"   class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button></td>';	
+									html +='</tr>';
+	                    		});
                     		html +='</tr>';
                     	});
-						 $("#table_clasificador > #bodyClasificador").append(html);
-						 console.log(html);
-						 swal("AGREGO!", "Se agrego correctamente.", "success");
+						$("#table_clasificador > #bodyClasificador").append(html);
+						swal("AGREGO", "Se agrego correctamente.", "success");
                     }
-                });
+                }
+            });
+	}
+	function EliminarPresClasiAnalitico(idClasiAnalitico, element)
+	{
+		if(!confirm('Se eliminará el presupuesto analítico. ¿Realmente desea proseguir con la operación?'))
+		{
+			return;
 		}
+
+		paginaAjaxJSON({ "idClasiAnalitico" : idClasiAnalitico}, base_url+'index.php/ET_Presupuesto_Analitico/eliminar', 'POST', null, function(objectJSON)
+		{
+			objectJSON=JSON.parse(objectJSON);
+
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+			},
+			function(){});
+			if(objectJSON.proceso=='Error')
+			{
+				return false;
+			}
+			if(objectJSON.proceso=='Correcto')
+			{
+				$(element).parent().parent().remove();
+			}
+
+		}, false, true);
+	}
 
 </script>
 

@@ -14,20 +14,30 @@ public function __construct()
     {
         if ($this->input->is_ajax_request()) 
         {
-            if($_POST)
-            {
-                //$this->db->trans_start();
+                $this->db->trans_start();
 
                 $id_img=$this->input->post('id_img');
-                $desc_img=$this->input->post('desc_img');
-                $var='image-7';
-                $this->Model_ET_Img->EliminarImagen($id_img);
-               unlink("uploads/ImageExpediente/".$var);
-                $id_et=$this->input->post('id_et');
-                $ListarImagen=$this->Model_ET_Img->ListarImagen($id_et);
-                echo json_encode($ListarImagen);
-      
-            }
+                $desc_img1=$this->input->post('desc_img');
+                
+                $data=$this->Model_ET_Img->buscarImagenId($id_img);
+                $desc_img=$data->desc_img;
+                if (file_exists("uploads/ImageExpediente/".$desc_img))
+                    { 
+                        unlink("uploads/ImageExpediente/".$desc_img);
+                        $this->Model_ET_Img->EliminarImagen($id_img);
+
+                        $id_et=$this->input->post('id_et');
+                        $ListarImagen=$this->Model_ET_Img->ListarImagen($id_et);
+                        echo json_encode($ListarImagen);
+                    }else
+                    { 
+                        $this->Model_ET_Img->EliminarImagen($id_img);
+                        $id_et=$this->input->post('id_et');
+                        $ListarImagen=$this->Model_ET_Img->ListarImagen($id_et);
+                        echo json_encode($ListarImagen);
+                    } 
+                $this->db->trans_complete();
+                
          }
 
     }
