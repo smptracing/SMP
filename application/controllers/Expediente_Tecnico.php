@@ -491,18 +491,22 @@ class Expediente_Tecnico extends CI_Controller
 				}
 			}
 
-			//$this->Model_ET_Expediente_Tecnico->clonar($etExpedienteTecnico->id_et, $idEtapaExpedienteTecnico);
+			$this->Model_ET_Expediente_Tecnico->clonar($etExpedienteTecnico->id_et, $idEtapaExpedienteTecnico);
 
-			/*$listaETImgOrigen=$this->Model_ET_Img->ListarImagen($etExpedienteTecnico->id_et);
+			$listaETImgOrigen=$this->Model_ET_Img->ListarImagen($etExpedienteTecnico->id_et);
 			$listaETImgDestino=$this->Model_ET_Img->ListarImagen($this->Model_ET_Expediente_Tecnico->UltimoExpedienteTecnico()->id_et);
 
 			foreach($listaETImgOrigen as $key => $value)
 			{
-				if(file_exists(...))
+				$nombreImgTemp=$listaETImgDestino[$key]->id_img.'.'.(explode('.', $value->desc_img)[count(explode('.', $value->desc_img))-1]);
+
+				$this->Model_ET_Img->updateDescImagePorIdImg($listaETImgDestino[$key]->id_img, $nombreImgTemp);
+
+				if(file_exists('./uploads/ImageExpediente/'.$value->desc_img))
 				{
-					copy(..., ...);
+					copy('./uploads/ImageExpediente/'.$value->desc_img, './uploads/ImageExpediente/'.$nombreImgTemp);
 				}
-			}*/
+			}
 
 			$this->db->trans_complete();
 
