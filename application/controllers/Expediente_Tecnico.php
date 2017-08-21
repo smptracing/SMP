@@ -493,8 +493,10 @@ class Expediente_Tecnico extends CI_Controller
 
 			$this->Model_ET_Expediente_Tecnico->clonar($etExpedienteTecnico->id_et, $idEtapaExpedienteTecnico);
 
+			$idUltimoExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->UltimoExpedienteTecnico()->id_et;
+
 			$listaETImgOrigen=$this->Model_ET_Img->ListarImagen($etExpedienteTecnico->id_et);
-			$listaETImgDestino=$this->Model_ET_Img->ListarImagen($this->Model_ET_Expediente_Tecnico->UltimoExpedienteTecnico()->id_et);
+			$listaETImgDestino=$this->Model_ET_Img->ListarImagen($idUltimoExpedienteTecnico);
 
 			foreach($listaETImgOrigen as $key => $value)
 			{
@@ -506,6 +508,11 @@ class Expediente_Tecnico extends CI_Controller
 				{
 					copy('./uploads/ImageExpediente/'.$value->desc_img, './uploads/ImageExpediente/'.$nombreImgTemp);
 				}
+			}
+
+			if(file_exists('./uploads/ResolucioExpediente/'.$etExpedienteTecnico->id_et.'.'.$etExpedienteTecnico->url_doc_aprobacion_et))
+			{
+				copy('./uploads/ResolucioExpediente/'.$etExpedienteTecnico->id_et.'.'.$etExpedienteTecnico->url_doc_aprobacion_et, './uploads/ResolucioExpediente/'.$idUltimoExpedienteTecnico.'.'.$etExpedienteTecnico->url_doc_aprobacion_et);
 			}
 
 			$this->db->trans_complete();
