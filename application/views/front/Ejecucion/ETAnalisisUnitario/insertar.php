@@ -19,7 +19,7 @@
 			<div>
 				<select name="selectRecurso" id="selectRecurso" class="form-control">
 					<?php foreach($listaETRecurso as $value){ ?>
-						<option value="<?=$value->id_recurso.','.$value->desc_recurso?>"><?=$value->desc_recurso?></option>
+						<option value="<?=$value->id_recurso.','.html_escape($value->desc_recurso)?>"><?=html_escape($value->desc_recurso)?></option>
 					<?php } ?>
 				</select>
 			</div>
@@ -30,7 +30,7 @@
 				<select name="selectPresupuestoAnalitico" id="selectPresupuestoAnalitico" class="form-control">
 					<option></option>
 					<?php foreach($listaETPresupuestoAnalitico as $value){ ?>
-						<option value="<?=$value->id_analitico?>,<?=$value->desc_presupuesto_ej?>"><?=$value->desc_clasificador?></option>
+						<option value="<?=$value->id_analitico?>,<?=html_escape($value->desc_presupuesto_ej)?>"><?=html_escape($value->desc_clasificador)?></option>
 					<?php } ?>
 				</select>
 			</div>
@@ -57,7 +57,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading" data-toggle="collapse" href="#collapse<?=$value->id_analisis?>" style="cursor: pointer;">
 						<h4 class="panel-title">
-							<a class="accordion-toggle"><?=$value->desc_recurso?></a>
+							<a class="accordion-toggle"><?=html_escape($value->desc_recurso)?></a>
 						</h4>
 					</div>
 					<div id="collapse<?=$value->id_analisis?>" class="panel-collapse collapse">
@@ -71,7 +71,7 @@
 												<select name="selectPresupuestoAnalitico<?=$value->id_analisis?>" id="selectPresupuestoAnalitico<?=$value->id_analisis?>" class="form-control">
 													<option></option>
 													<?php foreach($listaETPresupuestoAnalitico as $item){ ?>
-														<option value="<?=$item->id_analitico?>" <?=($item->id_analitico==$value->id_analitico ? 'selected' : '')?>><?=$item->desc_clasificador.' | '.$item->desc_presupuesto_ej?></option>
+														<option value="<?=$item->id_analitico?>" <?=($item->id_analitico==$value->id_analitico ? 'selected' : '')?>><?=html_escape($item->desc_clasificador.' | '.$item->desc_presupuesto_ej)?></option>
 													<?php } ?>
 												</select>
 											</div>
@@ -111,7 +111,7 @@
 											<div>
 												<select name="selectUnidadMedida<?=$value->id_analisis?>" id="selectUnidadMedida<?=$value->id_analisis?>" class="form-control">
 													<?php foreach($listaUnidadMedida as $item){ ?>
-														<option value="<?=$item->id_unidad?>"><?=$item->descripcion?></option>
+														<option value="<?=$item->id_unidad?>"><?=html_escape($item->descripcion)?></option>
 													<?php } ?>
 												</select>
 											</div>
@@ -167,9 +167,9 @@
 										<tbody>
 											<?php foreach($value->childETDetalleAnalisisUnitario as $item){ ?>
 												<tr>
-													<td><?=$item->desc_detalle_analisis?></td>
-													<td><?=$item->cuadrilla?></td>
-													<td><?=$item->descripcion?></td>
+													<td><?=html_escape($item->desc_detalle_analisis)?></td>
+													<td><?=html_escape($item->cuadrilla)?></td>
+													<td><?=html_escape($item->descripcion)?></td>
 													<td><?=$item->rendimiento?></td>
 													<td><?=$item->cantidad?></td>
 													<td><?=$item->precio_unitario?></td>
