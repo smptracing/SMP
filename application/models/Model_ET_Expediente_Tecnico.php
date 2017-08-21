@@ -145,6 +145,13 @@ class Model_ET_Expediente_Tecnico extends CI_Model
         return $data->result()[0];
     }
 
+    public function ExpedienteTecnicoPorIdETPadre($idExpedienteTecnico)
+    {
+    	$expedienteTecnico=$this->db->query("select * from ET_EXPEDIENTE_TECNICO where id_et_padre=".$idExpedienteTecnico);
+
+		return count($expedienteTecnico->result())>0 ? $expedienteTecnico->result()[0] : null;
+    }
+
     public function clonar($idExpedienteTecnico, $idEtapaExpedienteTecnico)
     {
     	$data=$this->db->query("execute cloneExpedienteTecnicoAndChild ".$idExpedienteTecnico.", ".$idEtapaExpedienteTecnico);
