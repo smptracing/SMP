@@ -43,7 +43,7 @@
 									</tr>
 								</thead>
 								<tbody>
-								<?php foreach($listaExpedienteTecnico as $item){ ?>
+								<?php foreach($listaExpedienteTecnicoElaboracion as $item){ ?>
 								  	<tr>
 										 <td>
 											<?= $item->nombre_ue?>
