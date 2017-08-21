@@ -55,7 +55,7 @@
                                                           <th style="width: 8%"><i class="fa fa-thumb-tack"></i> Cod. </th>
                                                           <th style="width: 32%"><i class="fa fa-bookmark-o"></i> Nombre</th>
                                                           <th style="width: 12%"><i class="fa fa-money"></i> Costo</th>
-                                                          <th style="width: 12%"> Naturaleza inversión</th>
+                                                          <th style="width: 12%">Tipo NO PIP</th>
                                                         <th style="width: 20%">Opción</th>
                                                         </tr>
                                                       </thead>
@@ -140,6 +140,7 @@
                                             <input type="date" id="fecha_registro" name="fecha_registro" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text">
                                             </div>
                                       </div>
+                                      <!--
                                       <div class="col-md-4">
                                             <div class="col-md-11 col-sm-11 col-xs-12">
                                              <label  for="textbox"><span class="required">Fecha Viabilidad</span>
@@ -147,10 +148,11 @@
                                             <input type="date" id="fecha_viabilidad" name="fecha_viabilidad" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text">
                                             </div>
                                       </div>
+                                      -->
                                  </div>
                                  <hr>
                                <div class="row">
-                                      <div class="col-md-4">
+                                     <!-- <div class="col-md-4">
 
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                             <label  for="name">Naturaleza<span class="required">*</span>
@@ -159,6 +161,7 @@
                                             </select>
                                          </div>
                                       </div>
+                                      -->
                                       <div class="col-md-4">
 
                                             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -177,17 +180,18 @@
                                                 </select>
                                             </div>
                                       </div>
-                              </div>
-
-
-
-                            <div class="row">
-                                <div class="col-md-4">
+                                       <div class="col-md-4">
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <label for="name" style="text-align:left">Función<span class="required">*</span></label>
                                         <select id="cbxFuncion" name="cbxFuncion" class="selectpicker" title="Elija función"></select>
                                     </div>
                                 </div>
+                              </div>
+
+
+
+                            <div class="row">
+
                                 <div class="col-md-4">
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <label  for="textbox"><span class="required">División</span></label>
@@ -249,22 +253,6 @@
                                                 </select>
                                             </div>
                                       </div>
-                                       <div class="col-md-4">
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <label  for="textbox"><span class="required">Tipologia de Inversion</span></label>
-                                                <select id="cbxTipologiaInv" name="cbxTipologiaInv" class="selectpicker" title="Elija Tipología de Inversión"></select>
-                                            </div>
-                                      </div>
-                              </div>
-                               <div class="row">
-                                    <div class="col-md-4">
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <label  for="name">Programa.<span class="required">*</span>
-                                            </label>
-                                              <select id="cbxProgramaPres" name="cbxProgramaPres" class="selectpicker"  title="Elija Programa presupuestal">
-                                            </select>
-                                         </div>
-                                      </div>
                                       <div class="col-md-4">
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                             <label  for="name">Tipología NO PIP<span class="required">*</span>
@@ -273,6 +261,24 @@
                                             </select>
                                          </div>
                                       </div>
+                                      <!--
+                                       <div class="col-md-4">
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <label  for="textbox"><span class="required">Tipologia de Inversion</span></label>
+                                                <select id="cbxTipologiaInv" name="cbxTipologiaInv" class="selectpicker" title="Elija Tipología de Inversión"></select>
+                                            </div>
+                                      </div>-->
+                              </div>
+                               <div class="row">
+                                   <!-- <div class="col-md-4">
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label  for="name">Programa.<span class="required">*</span>
+                                            </label>
+                                              <select id="cbxProgramaPres" name="cbxProgramaPres" class="selectpicker"  title="Elija Programa presupuestal">
+                                            </select>
+                                         </div>
+                                      </div>-->
+
                                        <div class="col-md-4">
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                             <label  for="name">Estado<span class="required">*</span>
