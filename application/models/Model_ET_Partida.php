@@ -24,7 +24,7 @@ class Model_ET_Partida extends CI_Model
 
 	public function ETPartidaPorIdMeta($idMeta)
 	{
-		$data=$this->db->query("select ETP.id_partida, ETP.id_meta, ETP.desc_partida, ETP.rendimiento, ETP.cantidad, UM.id_unidad, UM.descripcion from ET_PARTIDA as ETP inner join UNIDAD_MEDIDA as UM on ETP.id_unidad=UM.id_unidad where id_meta='".$idMeta."'");
+		$data=$this->db->query("select ETP.id_partida, ETP.id_meta, ETP.desc_partida, ETP.rendimiento, ETP.cantidad, ETDP.precio_unitario, UM.id_unidad, UM.descripcion from ET_PARTIDA as ETP inner join UNIDAD_MEDIDA as UM on ETP.id_unidad=UM.id_unidad left join ET_DETALLE_PARTIDA as ETDP on ETP.id_partida=ETDP.id_partida where id_meta='".$idMeta."'");
 
 		return $data->result();
 	}
