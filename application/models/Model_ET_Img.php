@@ -24,6 +24,11 @@ class Model_ET_Img extends CI_Model
     	$eliminar=$this->db->query("delete ET_IMG where id_img='".$id_img."'");
         return true;
     }
+     function buscarImagenId($id_img)
+    {
+        $listar=$this->db->query("select * from ET_IMG where id_img='".$id_img."' ");
+        return $listar->result()[0];
+    }
    /* function eliminar($id_et)
 	{
 		$this->db->query("delete ET_IMG where id_et=".$id_et);

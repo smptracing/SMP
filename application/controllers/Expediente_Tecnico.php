@@ -17,7 +17,6 @@ class Expediente_Tecnico extends CI_Controller
 		$this->load->model("Model_ET_Presupuesto_Analitico");
 		$this->load->model("Model_ET_Img");
 		$this->load->model('Model_ET_Etapa_Ejecucion');
-		$this->load->model('Model_ET_Analisis_Unitario');
 		$this->load->library('mydompdf');
 	}
 
@@ -271,6 +270,7 @@ class Expediente_Tecnico extends CI_Controller
 						$error = "ERROR NO SE CARGO LAS FOTOS DE EXPEDIENTE TÉCNICO";
 				 }
 			}
+
 			$this->db->trans_complete();
 			//echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos Editados Correctamente.', 'txtDireccionUE' => $txtDireccionUE]);exit;
 			return redirect('/Expediente_Tecnico');
@@ -416,7 +416,7 @@ class Expediente_Tecnico extends CI_Controller
            		$eliminarImg=$this->Model_ET_Expediente_Tecnico->ET_Img($id_et);
            		foreach ($eliminarImg as $value) 
            		{
-           			if (file_exists("uploads/ImageExpediente/'".$value->desc_img."'"))
+           			if (file_exists("uploads/ImageExpediente/".$value->desc_img))
            			{ 
 					   	unlink("uploads/ImageExpediente/".$value->desc_img);
 					}else
@@ -476,33 +476,7 @@ class Expediente_Tecnico extends CI_Controller
 				echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede clonar expediente técnico para la misma etapa.']);exit;
 			}
 
-			$listaETComponente=$this->Model_ET_Componente->ETComponentePorIdET($etExpedienteTecnico->id_et);
-
-			foreach($listaETComponente as $key => $value)
-			{
-				$listaETMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($value->id_componente);
-
-				foreach($listaETMeta as $index => $item)
-				{
-					if($this->analisisUnitarioSinAnalitico($item))
-					{
-						echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede clonar expediente técnico porque existen análisis unitarios sin asignación de analítico.']);exit;
-					}
-				}
-			}
-
-			//$this->Model_ET_Expediente_Tecnico->clonar($etExpedienteTecnico->id_et, $idEtapaExpedienteTecnico);
-
-			/*$listaETImgOrigen=$this->Model_ET_Img->ListarImagen($etExpedienteTecnico->id_et);
-			$listaETImgDestino=$this->Model_ET_Img->ListarImagen($this->Model_ET_Expediente_Tecnico->UltimoExpedienteTecnico()->id_et);
-
-			foreach($listaETImgOrigen as $key => $value)
-			{
-				if(file_exists(...))
-				{
-					copy(..., ...);
-				}
-			}*/
+			$this->Model_ET_Expediente_Tecnico->clonar($idExpedienteTecnico, $idEtapaExpedienteTecnico);
 
 			$this->db->trans_complete();
 
@@ -512,37 +486,5 @@ class Expediente_Tecnico extends CI_Controller
 		$listaETEtapaEjecucion=$this->Model_ET_Etapa_Ejecucion->ETEtapaEjecucion_Listar('R');
 
 		return $this->load->view('front/Ejecucion/ExpedienteTecnico/modalParaClonar', ['idExpedienteTecnico' => $idExpedienteTecnico, 'listaETEtapaEjecucion' => $listaETEtapaEjecucion]);
-	}
-
-	private function analisisUnitarioSinAnalitico($meta)
-	{
-		$temp=$this->Model_ET_Meta->ETMetaPorIdMetaPadre($meta->id_meta);
-
-		$meta->childMeta=$temp;
-
-		if(count($temp)==0)
-		{
-			$meta->childPartida=$this->Model_ET_Partida->ETPartidaPorIdMeta($meta->id_meta);
-
-			foreach($meta->childPartida as $key => $value)
-			{
-				if(count($this->Model_ET_Analisis_Unitario->ETAnalisisUnitarioPorIdPartidaFromDetallePartida($value->id_partida))>0)
-				{
-					return true;
-				}
-			}
-
-			return false;
-		}
-
-		foreach($meta->childMeta as $key => $value)
-		{
-			if($this->analisisUnitarioSinAnalitico($value))
-			{
-				return true;
-			}
-		}
-
-		return false;
 	}
 }
