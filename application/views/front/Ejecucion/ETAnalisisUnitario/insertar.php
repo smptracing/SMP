@@ -172,7 +172,7 @@
 													<td><?=html_escape($item->descripcion)?></td>
 													<td><?=$item->rendimiento?></td>
 													<td><?=$item->cantidad?></td>
-													<td><?=$item->precio_unitario?></td>
+													<td><?=number_format($item->precio_unitario, 2)?></td>
 													<td><?=number_format($item->precio_parcial, 2)?></td>
 													<td>
 														<a href="#" style="color: red;text-decoration: underline;" onclick="eliminarDetalleAnalisisUnitario(<?=$item->id_detalle_analisis_u?>, this);"><b>Eliminar</b></a>
