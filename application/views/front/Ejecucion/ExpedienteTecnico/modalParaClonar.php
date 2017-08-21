@@ -24,7 +24,9 @@
 			{
 				if(objectJSON.proceso=='Correcto')
 				{
+					renderLoading();
 
+					window.location.href=base_url+'index.php/Expediente_Tecnico/index';
 				}
 			});
 		}, false, true);

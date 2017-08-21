@@ -170,7 +170,7 @@
               <form class="form-horizontal " id="form_AddProgramacion"   action="<?php echo base_url(); ?>bancoproyectos/Get_OperacionMantenimiento" method="POST" >
                              <div class="item form-group">
                               <div class="col-md-6 col-sm-6 col-xs-12">
-                                 <input id="txt_id_pip_programacion" name="txt_id_pip_programacion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="text">
+                                 <input id="txt_id_pip_programacion" name="txt_id_pip_programacion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
                               </div>
                             </div>
                              <div class="item form-group">
@@ -247,10 +247,13 @@
                     <center>
                     <table  id="Table_Programar" class="table   table-hover" >
                     <thead >
-                         <tr>
-                         <th  ><i class="fa fa-thumb-tack"></i> #</th>
-                         <th  ><i class="fa fa-thumb-tack"></i> Año Programado</th>
-                         <th  ><i class="fa fa-thumb-tack"></i> Monto Programado</th>
+                         <th  ><i></i> #</th>
+                         <th  ><i></i> Cartera</th>
+                         <th  ><i></i> Brecha</th>
+                         <th  ><i></i> Año Programado</th>
+                         <th  ><i></i> Monto Programado</th>
+                         <th  ><i></i> Prioridad</th>
+                         <th  ><i></i> Opción</th>
                       </tr>
                     </thead>
                     </table>
@@ -478,9 +481,13 @@
                     <table  id="Table_Programar_operacion_mantenimiento" class="table   table-hover" >
                     <thead >
                        <tr>
-                         <th  ><i class="fa fa-thumb-tack"></i> #</th>
-                         <th  ><i class="fa fa-thumb-tack"></i> Año Programado</th>
-                         <th  ><i class="fa fa-thumb-tack"></i> Monto Programado</th>
+                         <th  ><i></i> #</th>
+                         <th  ><i></i> Cartera</th>
+                         <th  ><i></i> Brecha</th>
+                         <th  ><i></i> Año Programado</th>
+                         <th  ><i></i> Monto Programado</th>
+                         <th  ><i></i> Prioridad</th>
+                         <th  ><i></i> Opción</th>
                       </tr>
                     </thead>
                     </table>
