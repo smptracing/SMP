@@ -8,9 +8,9 @@ class Model_ET_Detalle_Analisis_Unitario extends CI_Model
 		parent::__construct();
 	}
 
-	function insertar($idAnalisis, $idUnidad, $descripcionDetalleAnalisis, $cuadrilla, $cantidad, $precioUnitario, $precioParcial, $rendimiento)
+	function insertar($idAnalisis, $idUnidad, $descripcionDetalleAnalisis, $cuadrilla, $cantidad, $precioUnitario, $rendimiento)
 	{
-		$this->db->query("execute sp_Gestionar_ETDetalleAnalisisUnitario 'insertar', ".$idAnalisis.", ".$idUnidad.", '".$descripcionDetalleAnalisis."', '".$cuadrilla."', ".$cantidad.", ".$precioUnitario.", ".$precioParcial.", '".$rendimiento."'");
+		$this->db->query("execute sp_Gestionar_ETDetalleAnalisisUnitario 'insertar', ".$idAnalisis.", ".$idUnidad.", '".$descripcionDetalleAnalisis."', '".$cuadrilla."', ".$cantidad.", ".$precioUnitario.", '".$rendimiento."'");
 
 		return true;
 	}

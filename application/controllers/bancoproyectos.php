@@ -55,12 +55,12 @@ class bancoproyectos extends CI_Controller
             $flat                = "IPCNOPIP";
             $id_pi               = "0";
             $cbxUnidadEjecutora  = $this->input->post("cbxUnidadEjecutora");
-            $cbxNatI             = $this->input->post("cbxNatI");
-            $cbxTipologiaInv     = $this->input->post("cbxTipologiaInv");
+            $cbxNatI             = null;
+            $cbxTipologiaInv     = null;
             $cbxTipoInv          = $this->input->post("cbx");
             $cbxGrupoFunc        = $this->input->post("cbxGrupoFunc");
             $cbxNivelGob         = $this->input->post("cbxNivelGob");
-            $cbxProgramaPres     = $this->input->post("cbxProgramaPres");
+            $cbxProgramaPres     = null;
             $txtCodigoUnico      = $this->input->post("txtCodigoUnico");
             $txtNombrePip        = $this->input->post("txtNombrePip");
             $txtCostoPip         = $this->input->post("txtCostoPip");

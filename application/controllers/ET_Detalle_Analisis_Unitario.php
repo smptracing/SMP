@@ -22,7 +22,6 @@ class ET_Detalle_Analisis_Unitario extends CI_Controller
 		$rendimiento=$this->input->post('rendimiento');
 		$cantidad=$this->input->post('cantidad');
 		$precioUnitario=$this->input->post('precioUnitario');
-		$precioParcial=$this->input->post('precioParcial');
 
 		if($this->Model_ET_Detalle_Analisis_Unitario->ETDetalleAnalisisUnitarioPorIdAnalisisAndDescDetalleAnalisis($idAnalisis, $descripcion)!=null)
 		{
@@ -31,7 +30,7 @@ class ET_Detalle_Analisis_Unitario extends CI_Controller
 			echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede agregar dos veces el mismo detalle de análisis.']);exit;
 		}
 
-		$this->Model_ET_Detalle_Analisis_Unitario->insertar($idAnalisis, $idUnidad, $descripcion, $cuadrilla, $cantidad, $precioUnitario, $precioParcial, $rendimiento);
+		$this->Model_ET_Detalle_Analisis_Unitario->insertar($idAnalisis, $idUnidad, $descripcion, $cuadrilla, $cantidad, $precioUnitario, $rendimiento);
 
 		$idDetalleAnalisisUnitario=$this->Model_ET_Detalle_Analisis_Unitario->ultimoId();
 

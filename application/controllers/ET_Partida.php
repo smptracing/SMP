@@ -26,6 +26,7 @@ class ET_Partida extends CI_Controller
 		$descripcionPartida=$this->input->post('descripcionPartida');
 		$rendimientoPartida=$this->input->post('rendimientoPartida');
 		$cantidadPartida=$this->input->post('cantidadPartida');
+		$precioUnitarioPartida=$this->input->post('precioUnitarioPartida');
 		$idListaPartida=$this->input->post('idListaPartida');
 
 		if(count($this->Model_ET_Partida->ETPartidaPorIdMetaAndDescPartida($idMeta, $descripcionPartida))>0)
@@ -50,7 +51,7 @@ class ET_Partida extends CI_Controller
 
 		$ultimoIdPartida=$this->Model_ET_Partida->ultimoId();
 
-		$this->Model_ET_Detalle_Partida->insertar($ultimoIdPartida, $idUnidad, $etEtapaEjecucion->id_etapa_et, $rendimientoPartida, $cantidadPartida, 0, 0, true);
+		$this->Model_ET_Detalle_Partida->insertar($ultimoIdPartida, $idUnidad, $etEtapaEjecucion->id_etapa_et, $rendimientoPartida, $cantidadPartida, $precioUnitarioPartida, true);
 
 		$ultimoIdDetallePartida=$this->Model_ET_Detalle_Partida->ultimoId();
 

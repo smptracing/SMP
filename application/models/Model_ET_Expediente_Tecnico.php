@@ -20,7 +20,33 @@ class Model_ET_Expediente_Tecnico extends CI_Model
         return $ListarExpedienteTecnico->result();
 	}
 
-	public function ExpedienteTecnicoListarEtapa($flat1,$id_etapa_et)
+	public function ExpedienteListarElaboracion($flat1,$id_etapa_et)
+	{
+		$data=$this->db->query("execute sp_Gestionar_ET_Expediente_Tecnico @Opcion='".$flat1."',@id_etapa_et='".$id_etapa_et."'");
+        return $data->result();
+	}
+
+	public function ExpedienteListarEstudioCompatibilidad($flat1,$id_etapa_et)
+	{
+		$data=$this->db->query("execute sp_Gestionar_ET_Expediente_Tecnico @Opcion='".$flat1."',@id_etapa_et='".$id_etapa_et."'");
+        return $data->result();
+	}
+
+
+	public function ExpedienteListarEjecucionDeductivo($flat1,$id_etapa_et)
+	{
+		$data=$this->db->query("execute sp_Gestionar_ET_Expediente_Tecnico @Opcion='".$flat1."',@id_etapa_et='".$id_etapa_et."'");
+        return $data->result();
+	}
+
+
+	public function ExpedienteListarEjecucionAdicional($flat1,$id_etapa_et)
+	{
+		$data=$this->db->query("execute sp_Gestionar_ET_Expediente_Tecnico @Opcion='".$flat1."',@id_etapa_et='".$id_etapa_et."'");
+        return $data->result();
+	}
+	
+	public function ExpedienteListarModificacion($flat1,$id_etapa_et)
 	{
 		$data=$this->db->query("execute sp_Gestionar_ET_Expediente_Tecnico @Opcion='".$flat1."',@id_etapa_et='".$id_etapa_et."'");
         return $data->result();
@@ -143,6 +169,13 @@ class Model_ET_Expediente_Tecnico extends CI_Model
 			from 
 			ET_EXPEDIENTE_TECNICO ET INNER join PROYECTO_INVERSION P ON ET.id_pi=P.id_pi INNER JOIN UBIGEO_PI UP on P.id_pi=UP.id_pi INNER JOIN UBIGEO U ON UP.id_ubigeo=U.id_ubigeo where id_et ='".$id_et."' group by ET.id_et,ET.direccion_ue,ET.distrito_provincia_departamento_ue,ET.telefono_ue, ET.ruc_ue, P.nombre_pi, P.codigo_unico_pi,ET.costo_total_preinv_et,ET.costo_directo_preinv_et,ET.costo_indirecto_preinv_et,et.costo_total_inv_et,et.gastos_generales_et,ET.gastos_supervision_et,ET.funcion_et,ET.programa_et,ET.sub_programa_et,ET.proyecto_et,et.componente_et,ET.meta_et,ET.fuente_financiamiento_et,ET.modalidad_ejecucion_et,ET.tiempo_ejecucion_pi_et,ET.num_beneficiarios_indirectos,ET.desc_situacion_actual_et,ET.relevancia_economica_et,ET.resumen_pi_et,et.num_folios, P.id_pi	");
         return $data->result()[0];
+    }
+
+    public function ExpedienteTecnicoPorIdETPadre($idExpedienteTecnico)
+    {
+    	$expedienteTecnico=$this->db->query("select * from ET_EXPEDIENTE_TECNICO where id_et_padre=".$idExpedienteTecnico);
+
+		return count($expedienteTecnico->result())>0 ? $expedienteTecnico->result()[0] : null;
     }
 
     public function clonar($idExpedienteTecnico, $idEtapaExpedienteTecnico)

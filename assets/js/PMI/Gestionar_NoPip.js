@@ -43,7 +43,9 @@ $(document).on("ready" ,function(){
                             if (resp=='2') {
                              swal("NO SE REGISTRÓ","NO se regristró ", "error");
                            }
-                          $('#Table_TipoNoPip').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
+                          $('#Table_TipoNoPip').dataTable()._fnAjaxUpdate();
+                          //para actualizar mi datatablet datatablet   funcion
+                          $('#table_no_pip').dataTable()._fnAjaxUpdate();
                              formReset();
                          }
                       });
@@ -217,6 +219,7 @@ $(document).on("ready" ,function(){
                                 ],
                                "language":idioma_espanol
                     });
+
                 }
  //listar ubigeo de un proyecto en le modal
  var listar_ubigeo_pi=function(id_pi)
@@ -315,12 +318,13 @@ $(document).on("ready" ,function(){
                                     "dataSrc":""                                    
                                   },
                                 "columns":[
-                                    {"defaultContent":"<center><button type='button' title='Editar' class='Editar_proyecto btn btn-primary btn-xs' data-toggle='modal' data-target='#venta_editar_proyecto'><i class='fa fa-edit' aria-hidden='true'></i></button></center>"},
+                                   // {"defaultContent":"<center><button type='button' title='Editar' class='Editar_proyecto btn btn-primary btn-xs' data-toggle='modal' data-target='#venta_editar_proyecto'><i class='fa fa-edit' aria-hidden='true'></i></button></center>"},
+                                    {"defaultContent":"<center>#</center>"},
                                     {"data":"id_pi" ,"visible": false},
                                     {"data":"codigo_unico_pi"},
                                     {"data":"nombre_pi"},
                                     {"data":"costo_pi"},
-                                    {"data":"nombre_naturaleza_inv"},
+                                    {"data":"desc_tipo_nopip"},
                                     {"defaultContent":"<center><button type='button' title='Ubicación' class='ubicacion_geografica btn btn-primary btn-xs' data-toggle='modal' data-target='#venta_ubicacion_geografica'><i class='fa fa-map-marker' aria-hidden='true'></i></button><button type='button' title='Ver Rubro PI' class='RegistarNuevoRubro btn btn-info btn-xs' data-toggle='modal' data-target='#venta_registar_rubro'><i class='fa fa-spinner' aria-hidden='true'></i></button><button type='button' title='Modalidad de Ejecución' class='nueva_modalidad_ejec btn btn-warning btn-xs' data-toggle='modal' data-target='#ventanaModalidadEjecucion'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button' title='Ver Estado Ciclo' class='ver_estado_ciclo btn btn-success btn-xs' data-toggle='modal' data-target='#ventana_ver_estado_ciclo'><i class='fa fa-paw' aria-hidden='true'></i></button><button type='button' title='Ver Tipología No PIP' class='ver_tipologia_nopip btn btn-danger btn-xs' data-toggle='modal' data-target='#ventana_ver_tipologia'><i class='fa fa-random' aria-hidden='true'></i></button><button type='button' title='Operación y Mantenimiento' class='ver_operacion_mantenimiento btn btn-info btn-xs' data-toggle='modal' data-target='#ventana_ver_operacion_mantenimeinto'><i class='fa fa-building' aria-hidden='true'></i></button></center>"}
                                 ],
                                "language":idioma_espanol
