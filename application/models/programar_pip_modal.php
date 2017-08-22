@@ -103,15 +103,22 @@ class programar_pip_modal extends CI_Model
         }
     }
     //Add meta pi
-    public function AddMeta_PI($flat, $id_meta_pi, $cbx_Meta, $txt_id_pip_programacion_mp, $txt_pia, $txt_pim, $txt_devengado)
+    //Add meta pi
+    public function AddMeta_PI($flat, $id_meta_pi, $txt_anio_meta, $cbx_meta_presupuestal, $txt_id_pip_programacion_mp, $cbx_Meta, $txt_pia, $txt_pim, $txt_certificado, $txt_compromiso, $txt_devengado, $txt_girado)
     {
-        $this->db->query("execute sp_Gestionar_Meta_Presupuestal_Pi'" . $flat . "','"
-            . $id_meta_pi . "','"
-            . $cbx_Meta . "','"
-            . $txt_id_pip_programacion_mp . "','"
-            . $txt_pia . "','"
-            . $txt_pim . "','"
-            . $txt_devengado . "'");
+        $this->db->query("execute sp_Gestionar_Meta_Presupuestal_Pi
+            @FLAT='" . $flat . "',
+            @id_meta_pi='" . $id_meta_pi . "',
+            @id_meta_pres='" . $cbx_meta_presupuestal . "',
+            @id_pi='" . $txt_id_pip_programacion_mp . "',
+            @id_correlativo_meta='" . $cbx_Meta . "',
+            @anio_meta_pres='" . $txt_anio_meta . "',
+            @pia_meta_pres='" . $txt_pia . "',
+            @pim_acumulado='" . $txt_pim . "',
+            @certificacion_acumulado='" . $txt_certificado . "',
+            @compromiso_acumulado='" . $txt_compromiso . "',
+            @devengado_acumulado='" . $txt_devengado . "',
+            @girado_acumulado='" . $txt_girado . "'");
 
         if ($this->db->affected_rows() > 0) {
             return true;

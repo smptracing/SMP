@@ -31,7 +31,7 @@
 															</thead>
 															<tbody>								
 																	<tr>
-																		<td><?= $ListarDocumentoExpediente->url_doc_aprobacion_et?> <a href="<?= base_url();?>uploads/ResolucioExpediente/<?= $ListarDocumentoExpediente->url_doc_aprobacion_et?>"><i class="fa fa-file-text"></i> </a></td>
+																		<td> Resolución. <a href="<?= base_url();?>uploads/ResolucioExpediente/<?= $id_et?>.<?= $ListarDocumentoExpediente->url_doc_aprobacion_et?>"><i class="fa fa-file-text"></i> </a></td>
 																	</tr>
 															</tbody>
 														</table>

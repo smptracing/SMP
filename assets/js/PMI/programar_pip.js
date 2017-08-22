@@ -62,14 +62,20 @@ $(document).on("ready" ,function(){
                            //alert(resp);
                            if (resp=='1') {
                              swal("REGISTRADO","Se regristró correctamente", "success");
+                            
                              formReset();
+                              //location.reload();
+                              setTimeout("location.reload()", 5000);
                            }
                             if (resp=='2') {
                              swal("NO SE REGISTRÓ","NO se regristró ", "error");
+                             
                            }
                           $('#Table_meta_pi').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
                              
                              formReset();
+                             //location.reload();
+                             setTimeout("location.reload()", 5000);
                          }
                       });
                   });
@@ -292,13 +298,12 @@ var EliminarProgramacion=function(tbody,table){
 //listar meta proyecto
  var listar_meta_pi=function(id_pi)
                 {
-                  
                     var table=$("#Table_meta_pi").DataTable({
                       "processing": true,
                       "serverSide":false,
                       destroy:true,
                       "ajax":{
-                                     url:base_url+"index.php/programar_pip/listar_metas_pi",
+                                     url:base_url+"index.php/programar_nopip/listar_metas_pi",
                                      type:"POST",
                                      data :{id_pi:id_pi}
                                     },
@@ -306,17 +311,17 @@ var EliminarProgramacion=function(tbody,table){
                                     {"data":"id_meta_pi","visible": false},
                                     {"data":"anio"},
                                     {"data":"pia_meta_pres"},
-                                    {"data":"pim_meta_pres"},
-                                    {"data":"devengado_meta_pres"},
+                                    {"data":"pim_acumulado"},
+                                    {"data":"certificacion_acumulado"},
+                                    {"data":"compromiso_acumulado"},
+                                    {"data":"devengado_acumulado"},
+                                    {"data":"girado_acumulado"},
                                     {"defaultContent":"<button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
                                "language":idioma_espanol
                     });
-                    $('#Table_meta_pi').dataTable()._fnAjaxUpdate();
-                     EliminarMetaPresupuestalPi("#Table_meta_pi",table);
-                  //   $('#Table_meta_pi').dataTable()._fnAjaxUpdate();
+                    EliminarMetaPresupuestalPi("#Table_meta_pi",table);
                 }
-//eliminar metal presupuestal
 var EliminarMetaPresupuestalPi=function(tbody,table){
                   $(tbody).on("click","button.eliminar",function(){
                       var data=table.row( $(this).parents("tr")).data();
@@ -343,14 +348,15 @@ var EliminarMetaPresupuestalPi=function(tbody,table){
                                             $('#table_formulacion_evaluacion').dataTable()._fnAjaxUpdate();
                                             $('#table_ejecucion').dataTable()._fnAjaxUpdate();
                                             $('#Table_funcionamiento').dataTable()._fnAjaxUpdate();
-                                          location.reload();
+                                          //location.reload();
+                                          setTimeout("location.reload()", 5000);
                                           }
                                         });
                               });
                     });
                 }
 //Agregar META PIP
- var  AddMeta_Pi=function(tbody,table){
+/* var  AddMeta_Pi=function(tbody,table){
                     $(tbody).on("click","button.meta_pip",function(){
                       var data=table.row( $(this).parents("tr")).data();
                        var  id_pi=data.id_pi;
@@ -364,6 +370,20 @@ var EliminarMetaPresupuestalPi=function(tbody,table){
                       refresh();
 
                   });
+                }
+*/
+var  AddMeta_Pi=function(tbody,table){
+                    $(tbody).on("click","button.meta_pip",function(){
+                      var data=table.row( $(this).parents("tr")).data();
+                       var  id_pi=data.id_pi;
+                       $("#txt_codigo_unico_pi_mp").val(data.codigo_unico_pi);
+                      $("#txt_id_pip_programacion_mp").val(data.id_pi);
+                      $("#txt_costo_proyecto_mp").val(data.costo_pi);
+                      $("#txt_nombre_proyecto_mp").val(data.nombre_pi);
+                      listar_Meta();
+                      listar_meta_presupuestal();
+                       listar_meta_pi(id_pi);
+                    });
                 }
 
 //add programar para formulacion y evaluacion
@@ -477,11 +497,32 @@ var EliminarMetaPresupuestalPi=function(tbody,table){
                     });
                 }
                 var listar_Meta=function(valor){
-                     html="";
+                    var html="";
                     $("#cbx_Meta").html(html);
                     event.preventDefault();
                     $.ajax({
-                        "url":base_url +"index.php/meta/listar_meta",
+                        "url":base_url +"index.php/Meta/listar_correlativo",
+                        type:"POST",
+                        success:function(respuesta3){
+                         //  alert(respuesta);
+                         var registros = eval(respuesta3);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option  value="+registros[i]["id_correlativo_meta"]+"> "+registros[i]["cod_correlativo"]+" </option>";
+                            };
+                            $("#cbx_Meta").html(html);
+                            $('select[name=cbx_Meta]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=cbx_Meta]').change();
+                            $('.selectpicker').selectpicker('refresh');
+                        }
+                    });
+                }
+                 /*para listar nombres de las metas*/
+                var listar_meta_presupuestal=function(valor){
+                     var html="";
+                    $("#cbx_meta_presupuestal").html(html);
+                    event.preventDefault();
+                    $.ajax({
+                        "url":base_url +"index.php/Meta/listar_meta_presupuestal",
                         type:"POST",
                         success:function(respuesta3){
                          //  alert(respuesta);
@@ -489,9 +530,9 @@ var EliminarMetaPresupuestalPi=function(tbody,table){
                             for (var i = 0; i <registros.length;i++) {
                               html +="<option  value="+registros[i]["id_meta_pres"]+"> "+registros[i]["nombre_meta_pres"]+" </option>";
                             };
-                            $("#cbx_Meta").html(html);
-                            $('select[name=cbx_Meta]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
-                            $('select[name=cbx_Meta]').change();
+                            $("#cbx_meta_presupuestal").html(html);
+                            $('select[name=cbx_meta_presupuestal]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=cbx_meta_presupuestal]').change();
                             $('.selectpicker').selectpicker('refresh');
                         }
                     });

@@ -26,6 +26,7 @@ class ET_Partida extends CI_Controller
 		$descripcionPartida=$this->input->post('descripcionPartida');
 		$rendimientoPartida=$this->input->post('rendimientoPartida');
 		$cantidadPartida=$this->input->post('cantidadPartida');
+		$precioUnitarioPartida=$this->input->post('precioUnitarioPartida');
 		$idListaPartida=$this->input->post('idListaPartida');
 
 		if(count($this->Model_ET_Partida->ETPartidaPorIdMetaAndDescPartida($idMeta, $descripcionPartida))>0)
@@ -50,7 +51,7 @@ class ET_Partida extends CI_Controller
 
 		$ultimoIdPartida=$this->Model_ET_Partida->ultimoId();
 
-		$this->Model_ET_Detalle_Partida->insertar($ultimoIdPartida, $idUnidad, $etEtapaEjecucion->id_etapa_et, $rendimientoPartida, $cantidadPartida, 0, 0, true);
+		$this->Model_ET_Detalle_Partida->insertar($ultimoIdPartida, $idUnidad, $etEtapaEjecucion->id_etapa_et, $rendimientoPartida, $cantidadPartida, $precioUnitarioPartida, true);
 
 		$ultimoIdDetallePartida=$this->Model_ET_Detalle_Partida->ultimoId();
 
@@ -66,13 +67,15 @@ class ET_Partida extends CI_Controller
 
 			foreach($value->childETDetalleAnaliticoPartida as $index => $item)
 			{
-				$this->Model_ET_Detalle_Analisis_Unitario->insertar($ultimoIdAnalisisUnitario, $item->id_unidad, $item->desc_insumo, $item->cuadrilla, 0, $item->precio, 0, $item->rendimiento);
+				$this->Model_ET_Detalle_Analisis_Unitario->insertar($ultimoIdAnalisisUnitario, $item->id_unidad, $item->desc_insumo, $item->cuadrilla, 1, $item->precio, $item->rendimiento);
 			}
 		}
 
+		$ultimoETDetallePartida=$this->Model_ET_Detalle_Partida->ultimoETDetallePartida();
+
 		$this->db->trans_complete();
 
-		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Partida registrada correctamente.', 'idPartida' => $ultimoIdPartida, 'descripcionUnidadMedida' => $unidadMedida->descripcion]);exit;
+		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Partida registrada correctamente.', 'idPartida' => $ultimoIdPartida, 'descripcionUnidadMedida' => $unidadMedida->descripcion, 'cantidadDetallePartida' => $ultimoETDetallePartida->cantidad, 'precioParcialDetallePartida' => $ultimoETDetallePartida->parcial]);exit;
 	}
 
 	public function eliminar()

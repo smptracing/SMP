@@ -16,6 +16,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 				'<td style="padding-left: 4px;">'.html_escape($value->rendimiento).'</td>'.
 				'<td style="padding-left: 4px;text-align: center;">'.html_escape($value->descripcion).'</td>'.
 				'<td style="padding-left: 4px;text-align: center;">'.$value->cantidad.'</td>'.
+				'<td style="padding-left: 4px;text-align: center;">'.number_format($value->parcial, 2).'</td>'.
 				'<td style="padding-left: 4px;">'.
 					'<input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida('.$value->id_partida.', this);" style="width: 30px;">'.
 					'<input type="button" class="btn btn-default btn-xs" value="A" onclick="paginaAjaxDialogo(\'otherModal\', \'Análisis presupuestal\', { idET : '.$idExpedienteTecnico.', idPartida : '.$value->id_partida.' }, \''.base_url().'index.php/ET_Analisis_Unitario/insertar\', \'get\', null, null, false, true);" style="width: 30px;">'.
@@ -59,13 +60,13 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 				<select name="selectDescripcionPartida" id="selectDescripcionPartida" class="form-control"></select>
 			</div>
 		</div>
-		<div class="col-md-6 col-sm-6 col-xs-6">
+		<div class="col-md-5 col-sm-5 col-xs-5">
 			<label class="control-label">Rendimiento</label>
 			<div>
 				<input type="text" class="form-control" id="txtRendimientoPartida" name="txtRendimientoPartida">
 			</div>
 		</div>
-		<div class="col-md-3 col-sm-3 col-xs-3">
+		<div class="col-md-2 col-sm-2 col-xs-2">
 			<label class="control-label">Unidad</label>
 			<div>
 				<select id="selectUnidadMedidaPartida" name="selectUnidadMedidaPartida" class="form-control">
@@ -79,6 +80,12 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 			<label class="control-label">Cantidad</label>
 			<div>
 				<input type="text" class="form-control" id="txtCantidadPartida" name="txtCantidadPartida">
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-2 col-xs-2">
+			<label class="control-label">Precio U.</label>
+			<div>
+				<input type="text" class="form-control" id="txtPrecioUnitarioPartida" name="txtPrecioUnitarioPartida">
 			</div>
 		</div>
 		<div class="col-md-1 col-sm-1 col-xs-1">
@@ -349,6 +356,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 		$('#divAgregarPartida').data('formValidation').resetField($('#txtRendimientoPartida'));
 		$('#divAgregarPartida').data('formValidation').resetField($('#selectUnidadMedidaPartida'));
 		$('#divAgregarPartida').data('formValidation').resetField($('#txtCantidadPartida'));
+		$('#divAgregarPartida').data('formValidation').resetField($('#txtPrecioUnitarioPartida'));
 
 		$('#divAgregarPartida').data('formValidation').validate();
 
@@ -382,7 +390,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 			return;
 		}
 
-		paginaAjaxJSON({ "idMeta" : metaPadreParaAgregarPartida, "idUnidad" : $('#selectUnidadMedidaPartida').val().trim(), "descripcionPartida" : $('#selectDescripcionPartida').find("option:selected").val().trim(), "rendimientoPartida" : $('#txtRendimientoPartida').val().trim(), "cantidadPartida" : $('#txtCantidadPartida').val(), "idListaPartida" : $('#hdIdListaPartida').val() }, base_url+'index.php/ET_Partida/insertar', 'POST', null, function(objectJSON)
+		paginaAjaxJSON({ "idMeta" : metaPadreParaAgregarPartida, "idUnidad" : $('#selectUnidadMedidaPartida').val().trim(), "descripcionPartida" : $('#selectDescripcionPartida').find("option:selected").val().trim(), "rendimientoPartida" : $('#txtRendimientoPartida').val().trim(), "cantidadPartida" : $('#txtCantidadPartida').val(), "precioUnitarioPartida" : $('#txtPrecioUnitarioPartida').val(), "idListaPartida" : $('#hdIdListaPartida').val() }, base_url+'index.php/ET_Partida/insertar', 'POST', null, function(objectJSON)
 		{
 			objectJSON=JSON.parse(objectJSON);
 
@@ -403,7 +411,8 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 				'<td style="padding-left: 10px;"><b>&#9658;'+replaceAll(replaceAll($('#selectDescripcionPartida').find("option:selected").val().trim(), '<', '&lt;'), '>', '&gt;')+'</b></td>'+
 				'<td style="padding-left: 4px;">'+replaceAll(replaceAll($('#txtRendimientoPartida').val().trim(), '<', '&lt;'), '>', '&gt;')+'</td>'+
 				'<td style="padding-left: 4px;text-align: center;">'+replaceAll(replaceAll(objectJSON.descripcionUnidadMedida, '<', '&lt;'), '>', '&gt;')+'</td>'+
-				'<td style="padding-left: 4px;text-align: center;">'+parseFloat($('#txtCantidadPartida').val()).toFixed(2)+'</td>'+
+				'<td style="padding-left: 4px;text-align: center;">'+parseFloat(objectJSON.cantidadDetallePartida).toFixed(2)+'</td>'+
+				'<td style="padding-left: 4px;text-align: center;">'+parseFloat(objectJSON.precioParcialDetallePartida).toFixed(2)+'</td>'+
 				'<td style="padding-left: 4px;">'+
 					'<input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida('+objectJSON.idPartida+', this);" style="width: 30px;">'+
 					'<input type="button" class="btn btn-default btn-xs" value="A" onclick="paginaAjaxDialogo(\'otherModal\', \'Análisis presupuestal\', { idET : <?=$expedienteTecnico->id_et?>, idPartida : '+objectJSON.idPartida+' }, \''+base_url+'index.php/ET_Analisis_Unitario/insertar\''+', \'get\', null, null, false, true);" style="width: 30px;">'+
@@ -575,6 +584,21 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 	                    {
 	                        regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
 	                        message: '<b style="color: red;">El campo "Cantidad" debe ser un número.</b>'
+	                    }
+					}
+				},
+				txtPrecioUnitarioPartida:
+				{
+					validators: 
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Precio unitario" es requerido.</b>'
+						},
+						regexp:
+	                    {
+	                        regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
+	                        message: '<b style="color: red;">El campo "Precio unitario" debe ser en soles.</b>'
 	                    }
 					}
 				}
