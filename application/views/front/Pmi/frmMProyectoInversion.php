@@ -65,9 +65,9 @@
 
                                                                     </form>
                                                                 </div>
-                                                               <div class="col-md-2">
+                                                              <!-- <div class="col-md-2">
                                                                     <button id="btn-Importar" type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaImportar">  <span class="fa fa-plus-circle"></span> Importar Excel </button>
-                                                               </div>
+                                                               </div>-->
                                                           </div>
                                                       <div class="x_content">
                                                         <table id="table-ProyectoInversionProgramado" class="table table-striped table-bordered table-hover table-responsive display  compact " ellspacing="0" width="100%">

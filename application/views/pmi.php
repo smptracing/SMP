@@ -13,7 +13,7 @@
             <span class="count_top"><i class="fa fa-clock-o"></i> Monto Programado PIP</span>
             <div class="count">
             <center>
-                    <div id=""></div>
+                    <div id="monto_programado"></div>
                 </center>
         </div>
         </div>

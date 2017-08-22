@@ -131,7 +131,18 @@ class programar_pip_modal extends CI_Model
             return false;
         }
     }
-
+    //listar prioridad
+    public function listar_prioridad($flat, $anio)
+    {
+        $listar_prioridad = $this->db->query("execute sp_Gestionar_Programacion_pip @opcion='"
+            . $flat . "',
+            @id_cartera='" . $anio . "'");
+        if ($listar_prioridad->num_rows() > 0) {
+            return $listar_prioridad->result();
+        } else {
+            return false;
+        }
+    }
     //listar formulacion y evaluacion del primer modulo PMI
     public function listar_programacion($flat, $id_pi)
     {

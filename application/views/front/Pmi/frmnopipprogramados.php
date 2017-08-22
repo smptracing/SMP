@@ -56,7 +56,7 @@
                                                       <tr>
                                                                   <th style="width: 1%">Id</th>
                                                                   <th style="width: 5%">Cód único</th>
-                                                                  <th style="width: 5%">Naturaleza Inversión</th>
+                                                                  <th style="width: 5%">Tipo NO PIP</th>
                                                                   <th style="width: 30%">Inversión</th>
                                                                   <th style="width: 4%">Prioridad</th>
                                                                   <th style="width: 4%">Brecha</th>

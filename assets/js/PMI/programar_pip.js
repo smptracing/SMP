@@ -187,7 +187,36 @@ var EliminarProgramacion=function(tbody,table){
                               });
                     });
                 }
-
+//listar prioridad con su cartera
+ var lista_prioridad=function(anio)
+                {
+                  alert();
+                    var table=$("#lista_prioridad_validar").DataTable({
+                     // alert(anio);
+                      "processing": true,
+                      "serverSide":false,
+                       destroy:true,
+                         "ajax":{
+                                     url:base_url+"index.php/programar_pip/listar_prioridad",
+                                     type:"POST",
+                                     data :{anio:anio}
+                                    },
+                                "columns":[
+                                    {"data":"id_pi","visible": false},
+                                    {"data":"cartera"},
+                                    {"data":"prioridad"}
+                                  ],
+                               "language":idioma_espanol
+                       });
+               
+                }
+//fin listar prioridad
+$("#Cbx_AnioCartera").change(function() {
+                          var anio=$("#Cbx_AnioCartera").val();
+                          lista_prioridad(anio);
+                            //lista_ejecucion(anio);
+                           //listar carteran de proyectos
+                        });   
 
 //listar programación para operacion y manteniemitno
  var listar_programacion_operacion_mantenimiento=function(id_pi)
@@ -395,6 +424,7 @@ var  AddMeta_Pi=function(tbody,table){
                       $("#txt_id_pip_programacion").val(data.id_pi);
                       $("#txt_costo_proyecto").val(data.costo_pi);
                       $("#txt_nombre_proyecto").val(data.nombre_pi);
+                      
                         listar_aniocartera();
                         listar_programacion(id_pi);
 
@@ -455,7 +485,7 @@ var  AddMeta_Pi=function(tbody,table){
                     });
                 }
                  var listar_aniocartera=function(valor){
-                     html="";
+                    var html="";
                     $("#Cbx_AnioCartera").html(html);
                     event.preventDefault();
                     $.ajax({
@@ -471,7 +501,12 @@ var  AddMeta_Pi=function(tbody,table){
                             $('select[name=Cbx_AnioCartera]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=Cbx_AnioCartera]').change();
                             $('.selectpicker').selectpicker('refresh');
+
                             listar_Brecha();//listar brecha
+                             var anio=$("#Cbx_AnioCartera").val();
+                             lista_prioridad(anio);
+                            // alert(anio);
+
                         }
                     });
                 }

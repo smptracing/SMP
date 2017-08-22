@@ -80,7 +80,7 @@ class Programacion extends CI_Controller
         }
     }
 
-//fin traer proyectos
+    //fin traer proyectos
     //buscar proyecto de inversion
     public function BuscarProyectoInversion()
     {
