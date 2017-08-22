@@ -58,7 +58,7 @@ class ET_Analisis_Unitario extends CI_Controller
 		$listaETRecurso=$this->Model_ET_Recurso->RecursoListar('R');
 		$listaETPresupuestoAnalitico=$this->Model_ET_Presupuesto_Analitico->ETPresupuestoAnaliticoPorIdET($this->input->get('idET'));
 
-		$this->load->view('Front/Ejecucion/ETAnalisisUnitario/insertar', ['etDetallePartida' => $etDetallePartida, 'listaUnidadMedida' => $listaUnidadMedida, 'listaETAnalisisUnitario' => $listaETAnalisisUnitario, 'listaETRecurso' => $listaETRecurso, 'listaETPresupuestoAnalitico' => $listaETPresupuestoAnalitico]);
+		$this->load->view('Front/Ejecucion/ETAnalisisUnitario/insertar', ['etDetallePartida' => $etDetallePartida, 'listaUnidadMedida' => $listaUnidadMedida, 'listaETAnalisisUnitario' => $listaETAnalisisUnitario, 'listaETRecurso' => $listaETRecurso, 'listaETPresupuestoAnalitico' => $listaETPresupuestoAnalitico, 'idPartida' => $idPartida]);
 	}
 
 	public function eliminar()

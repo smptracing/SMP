@@ -245,21 +245,16 @@
 						</div>	
 					</div>	
 					<div class="row">
-						<div  id="divfotos" style="color: width" class="col-md-3 col-sm-3 col-xs-12">
-							
-							<table id="table-img" style="text-align: center;" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
-								<thead>
-								</thead>
-								<?php $i=0; foreach($listaimg as $item){ ?>
-								  	<tr>
-										<td>
-											<img class="img-thumbnail .img-responsive" src="<?= base_url();?>uploads/ImageExpediente/<?= $item->desc_img?>">
-											<label>Fotografía N° <?= $i=$i+1?></label>
-										</td>
-										<td><button onclick="EliminarImagen(<?=$item->id_img?>,<?=$item->id_et?>);"  title='Eliminar imagen del Expediente Técnico'  class='eliminarExpediente btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button></td>
-								  	</tr>
-								<?php } ?>
-							</table>
+						<div id="divfotos">
+							<?php $i=0; foreach($listaimg as $item){ ?>
+								<div id="divShowImage<?=$item->id_img?>" style="display: inline-block;margin: 4px;vertical-align: top;width: 200px;">
+								  	<div>
+								  		<label>Fotografía N° <?= $i=$i+1?></label>
+										<button onclick="EliminarImagen(<?=$item->id_img?>,<?=$item->id_et?>);"  title='Eliminar imagen del Expediente Técnico'  class='eliminarExpediente btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button>
+								  	</div>
+								  	<img class="img-thumbnail .img-responsive" src="<?= base_url();?>uploads/ImageExpediente/<?= $item->desc_img?>">
+								</div>
+							<?php } ?>
 						</div>
 					</div>		
 				</div>
@@ -316,20 +311,10 @@ $(function()
                         data:{id_img:id_img,id_et:id_et},
                         dataType:'JSON',
                         success:function(respuesta)
-                        {
-                        	var html;
+                        {                        	
                         	swal("ELIMINADO!", "Se elimino correctamente la imagen del expediente técnico.", "success");
-                        	$("#table-img").html('');
-                        	html +='<thead></thead>';
-                        	var i=0;
-                        	$.each(respuesta,function(index,element)
-                        	{
-                        		html +='<tr>';
-                        		html +='<td> <img class="img-thumbnail .img-responsive" src="<?= base_url();?>uploads/ImageExpediente/'+element.desc_img+'"><label> Fotografía N°'+ (i=i+1);+'</label></td>';
-                        		html +='<td> <button onclick="EliminarImagen('+element.id_img+','+element.id_et+');"  title="Eliminar imagen del Expediente Técnico"  class="eliminarExpediente btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button></td>';
-                        		html +='</tr>';
-                        	});
-							$("#divfotos >#table-img").append(html);
+                        	
+                        	$('#divShowImage'+id_img).remove();
                         }
                     });
 			});

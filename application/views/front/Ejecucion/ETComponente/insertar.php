@@ -11,7 +11,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 	{
 		foreach($meta->childPartida as $key => $value)
 		{
-			$htmlTemp.='<tr style="color: blue;" class="liPartida">'.
+			$htmlTemp.='<tr id="rowPartida'.$value->id_partida.'" style="color: blue;" class="liPartida">'.
 				'<td style="padding-left: 10px;"><b>&#9658;'.html_escape($value->desc_partida).'</b></td>'.
 				'<td style="padding-left: 4px;">'.html_escape($value->rendimiento).'</td>'.
 				'<td style="padding-left: 4px;text-align: center;">'.html_escape($value->descripcion).'</td>'.
@@ -407,12 +407,12 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 				return false;
 			}
 
-			var htmlTemp='<tr style="color: blue;" class="liPartida">'+
+			var htmlTemp='<tr id="rowPartida'+objectJSON.idPartida+'" style="color: blue;" class="liPartida">'+
 				'<td style="padding-left: 10px;"><b>&#9658;'+replaceAll(replaceAll($('#selectDescripcionPartida').find("option:selected").val().trim(), '<', '&lt;'), '>', '&gt;')+'</b></td>'+
 				'<td style="padding-left: 4px;">'+replaceAll(replaceAll($('#txtRendimientoPartida').val().trim(), '<', '&lt;'), '>', '&gt;')+'</td>'+
 				'<td style="padding-left: 4px;text-align: center;">'+replaceAll(replaceAll(objectJSON.descripcionUnidadMedida, '<', '&lt;'), '>', '&gt;')+'</td>'+
-				'<td style="padding-left: 4px;text-align: center;">'+parseFloat($('#txtCantidadPartida').val()).toFixed(2)+'</td>'+
-				'<td style="padding-left: 4px;text-align: center;">'+parseFloat(parseFloat($('#txtCantidadPartida').val())*parseFloat($('#txtPrecioUnitarioPartida').val())).toFixed(2)+'</td>'+
+				'<td style="padding-left: 4px;text-align: center;">'+parseFloat(objectJSON.cantidadDetallePartida).toFixed(2)+'</td>'+
+				'<td style="padding-left: 4px;text-align: center;">'+parseFloat(objectJSON.precioParcialDetallePartida).toFixed(2)+'</td>'+
 				'<td style="padding-left: 4px;">'+
 					'<input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida('+objectJSON.idPartida+', this);" style="width: 30px;">'+
 					'<input type="button" class="btn btn-default btn-xs" value="A" onclick="paginaAjaxDialogo(\'otherModal\', \'Análisis presupuestal\', { idET : <?=$expedienteTecnico->id_et?>, idPartida : '+objectJSON.idPartida+' }, \''+base_url+'index.php/ET_Analisis_Unitario/insertar\''+', \'get\', null, null, false, true);" style="width: 30px;">'+
