@@ -8,6 +8,16 @@ class Model_DashboardPmi extends CI_Model
         parent::__construct();
     }
 
+    public function MontoProgramado()
+    {
+        $consulta = $this->db->query("SELECT dbo.TIPO_INVERSION.nombre_tipo_inversion,
+             COUNT(id_pi) AS NumProyectos,
+             SUM(dbo.PROYECTO_INVERSION.costo_pi) SumaCosto
+        FROM   dbo.PROYECTO_INVERSION
+             INNER JOIN dbo.TIPO_INVERSION ON dbo.PROYECTO_INVERSION.id_tipo_inversion = dbo.TIPO_INVERSION.id_tipo_inversion
+        GROUP BY nombre_tipo_inversion");
+        return $consulta->result();
+    }
     public function EstadisticaPipProvinc()
     {
         $consulta = $this->db->query("SELECT provincia, count(provincia) AS Cantidadpip FROM UBIGEO_PI INNER JOIN PROYECTO_INVERSION

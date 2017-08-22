@@ -5,7 +5,7 @@
             <span class="count_top"><i class="fa fa-user"></i> TOTAL PIP</span>
             <div class="count">
                 <center>
-                    <div id="NumPip"></div>
+                    <h2><div id="NumPip"></div></h2>
                 </center>
             </div>
         </div>
@@ -13,98 +13,67 @@
             <span class="count_top"><i class="fa fa-clock-o"></i> Monto Programado PIP</span>
             <div class="count">
             <center>
-                    <div id="monto_programado"></div>
+                    <h2><div id="monto_programado"></div></h2>
                 </center>
         </div>
         </div>
-
         <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fa fa-user"></i> TOTAL NO PIP</span>
+            <span class="count_top"><i class="fa fa-user"></i> TOTAL  PIP</span>
             <div class="count">
                 <center>
-                    <div id=""></div>
-                </center>
-            </div>
-        </div>
-        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fa fa-user"></i> TOTAL NO PIP</span>
-            <div class="count">
-                <center>
-                    <div id=""></div>
+                    <h2><div id="totalpip"></div></h2>
                 </center>
             </div>
         </div>
 
         <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fa fa-clock-o"></i> Monto Total Programado PIP</span>
+            <span class="count_top"><i class="fa fa-clock-o"></i> Monto Total Programado NO PIP</span>
             <div class="count">
             <center>
-                    <div id="NumPips"></div>
+                    <h2><div id="monto_programado_nopip"></div></h2>
                 </center>
         </div>
         </div>
-    </div>
-    <!-- /top tiles -->
-    <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="dashboard_graph">
-                <div class="row x_title">
-                    <div class="col-md-6">
-                        <h3>Avance
-                            <small>Fisico y Financiero</small>
-                        </h3>
-                    </div>
-                    <div class="col-md-6">
-                        <div id="reportrange" class="pull-right"
-                             style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
-                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                            <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-9 col-sm-9 col-xs-12">
-                    <div id="chart_plot_01" class="demo-placeholder"></div>
-                </div>
-                <div class="col-md-3 col-sm-3 col-xs-12 bg-white">
-                    <div class="x_title">
-                        <h2>Avance del proyecto</h2>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div>
-                        <div class="col-md-12 col-sm-12 col-xs-6">
-                            <div>
-                                <p>PMI</p>
-                                <div class="progress progress_sm">
-                                    <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="80"></div>
-                                </div>
-                            </div>
-                            <div>
-                                <p>Formulacion</p>
-                                <div class="progress progress_sm">
-                                    <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-sm-12 col-xs-6">
-                            <div>
-                                <p>Ejecucion</p>
-                                <div class="progress progress_sm">
-                                    <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="40"></div>
-                                </div>
-                            </div>
-                            <div>
-                                <p>Funcionamiento</p>
-                                <div class="progress progress_sm">
-                                    <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
+
+
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top"><i class="fa fa-user"></i> TOTAL NO PIP</span>
+            <div class="count">
+                <center>
+                    <h2><div id="totalnopip"></div></h2>
+                </center>
             </div>
         </div>
+
     </div>
+    <!-- /top tiles -->
+<div class="row">
+           <!-- <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>PIP
+                            <small>PROYECTOS POR PROVINCIAS</small>
+                        </h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">Settings 1</a></li>
+                                    <li><a href="#">Settings 2</a></li>
+                                </ul>
+                            </li>
+                            <li><a class="close-link"><i class="fa fa-close"></i></a></li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+
+                    </div>
+                </div>
+            </div>-->
+
     <div class="row">
         <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="x_panel tile fixed_height_320">
