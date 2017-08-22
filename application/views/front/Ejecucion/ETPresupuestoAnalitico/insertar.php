@@ -109,8 +109,8 @@
 	        		
 	        		dataForSelect.push(
 	                {
-	                    "value" : data[i].Clasificador,
-	                    "text" : data[i].Clasificador,
+	                    "value" : data[i].num_clasificador,
+	                    "text" :  data[i].num_clasificador,
 	                    "data" :
 	                    {
 	                    	"id_clasificador" : data[i].id_clasificador

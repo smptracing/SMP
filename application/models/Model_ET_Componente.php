@@ -42,4 +42,18 @@ class Model_ET_Componente extends CI_Model
 
 		return true;
 	}
+
+	function existsDiffIdComponenteAndSameDescripcion($idComponente, $descripcionComponente)
+	{
+		$data=$this->db->query("select * from ET_COMPONENTE where id_componente!=".$idComponente." and descripcion='".$descripcionComponente."'");
+
+		return count($data->result())>0 ? true : false;
+	}
+
+	function updateDescComponente($idComponente, $descripcionComponente)
+	{
+		$this->db->query("update ET_COMPONENTE set descripcion='".$descripcionComponente."' where id_componente=".$idComponente);
+
+		return true;
+	}
 }

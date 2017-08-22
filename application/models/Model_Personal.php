@@ -83,4 +83,18 @@ class Model_Personal extends CI_Model
         return $personal->result();
 
     }
+    public function ResponsableExpedieteElaboracion($id_ExpedienteTecnico)
+    {
+       $responsable = $this->db->query(" select * from ET_RESPONSABLE INNER JOIN PERSONA ON ET_RESPONSABLE.id_persona=PERSONA.id_persona INNER JOIN ET_TIPO_RESPONSABLE on ET_RESPONSABLE.id_tipo_responsable_et=ET_TIPO_RESPONSABLE.id_tipo_responsable_et where id_et='".$id_ExpedienteTecnico."' and codigo_tipo_responsable_et='001' "); 
+
+      return $responsable->result()[0];
+
+    }
+     public function ResponsableExpedieteEjecucion($id_ExpedienteTecnico)
+    {
+       $responsable = $this->db->query(" select * from ET_RESPONSABLE INNER JOIN PERSONA ON ET_RESPONSABLE.id_persona=PERSONA.id_persona INNER JOIN ET_TIPO_RESPONSABLE on ET_RESPONSABLE.id_tipo_responsable_et=ET_TIPO_RESPONSABLE.id_tipo_responsable_et where id_et='".$id_ExpedienteTecnico."' and codigo_tipo_responsable_et='002' "); 
+
+      return $responsable->result()[0];
+
+    }
 }

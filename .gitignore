@@ -30,4 +30,7 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 application/config/database.php
 phpstorm.php
 application/config/config.php
-uploads/
+uploads/ImageExpediente/*.png
+uploads/ImageExpediente/*.jpg
+uploads/ResolucioExpediente/*.docx
+uploads/ResolucioExpediente/*.pdf

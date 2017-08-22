@@ -21,6 +21,7 @@ function EstaProyProvincia()
             }
             
             $("#NumPip").text(sum); //OBTENER NUMERO DE PIP EN LA CABECERA
+            $("#monto_programado").text(provincias); 
             $("#NumPips").text(provincias);
             cantidadPIPAbancay=(100*(parseInt(provincias[0]))/sum);
 
