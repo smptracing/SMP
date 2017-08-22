@@ -57,6 +57,23 @@ class ET_Componente extends CI_Controller
 		$this->load->view('front/Ejecucion/ETComponente/insertar.php', ['expedienteTecnico' => $expedienteTecnico, 'listaUnidadMedida' => $listaUnidadMedida]);
 	}
 
+	public function editarDescComponente()
+	{
+		$idComponente=$this->input->post('idComponente');
+		$descripcionComponente=$this->input->post('descripcionComponente');
+
+		if($this->Model_ET_Componente->existsDiffIdComponenteAndSameDescripcion($idComponente, $descripcionComponente))
+		{
+			$this->db->trans_rollback();
+
+			echo json_encode(['proceso' => 'Error', 'mensaje' => 'Nombre del componente existente.']);exit;
+		}
+
+		$this->Model_ET_Componente->updateDescComponente($idComponente, trim($descripcionComponente));
+
+		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Cambios guardados correctamente.']);exit;
+	}
+
 	private function obtenerMetaAnidada($meta)
 	{
 		$temp=$this->Model_ET_Meta->ETMetaPorIdMetaPadre($meta->id_meta);
