@@ -20,7 +20,33 @@ class Model_ET_Expediente_Tecnico extends CI_Model
         return $ListarExpedienteTecnico->result();
 	}
 
-	public function ExpedienteTecnicoListarEtapa($flat1,$id_etapa_et)
+	public function ExpedienteListarElaboracion($flat1,$id_etapa_et)
+	{
+		$data=$this->db->query("execute sp_Gestionar_ET_Expediente_Tecnico @Opcion='".$flat1."',@id_etapa_et='".$id_etapa_et."'");
+        return $data->result();
+	}
+
+	public function ExpedienteListarEstudioCompatibilidad($flat1,$id_etapa_et)
+	{
+		$data=$this->db->query("execute sp_Gestionar_ET_Expediente_Tecnico @Opcion='".$flat1."',@id_etapa_et='".$id_etapa_et."'");
+        return $data->result();
+	}
+
+
+	public function ExpedienteListarEjecucionDeductivo($flat1,$id_etapa_et)
+	{
+		$data=$this->db->query("execute sp_Gestionar_ET_Expediente_Tecnico @Opcion='".$flat1."',@id_etapa_et='".$id_etapa_et."'");
+        return $data->result();
+	}
+
+
+	public function ExpedienteListarEjecucionAdicional($flat1,$id_etapa_et)
+	{
+		$data=$this->db->query("execute sp_Gestionar_ET_Expediente_Tecnico @Opcion='".$flat1."',@id_etapa_et='".$id_etapa_et."'");
+        return $data->result();
+	}
+	
+	public function ExpedienteListarModificacion($flat1,$id_etapa_et)
 	{
 		$data=$this->db->query("execute sp_Gestionar_ET_Expediente_Tecnico @Opcion='".$flat1."',@id_etapa_et='".$id_etapa_et."'");
         return $data->result();
