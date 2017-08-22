@@ -173,7 +173,7 @@
 													<td><?=$item->rendimiento?></td>
 													<td><?=$item->cantidad?></td>
 													<td><?=number_format($item->precio_unitario, 2)?></td>
-													<td><?=number_format($item->precio_parcial, 2)?></td>
+													<td class="subTotalDetalleAnalisisUnitario"><?=number_format($item->precio_parcial, 2)?></td>
 													<td>
 														<a href="#" style="color: red;text-decoration: underline;" onclick="eliminarDetalleAnalisisUnitario(<?=$item->id_detalle_analisis_u?>, this);"><b>Eliminar</b></a>
 													</td>
@@ -191,6 +191,7 @@
 	</div>
 	<hr style="margin-top: 4px;">
 	<div class="row" style="text-align: right;">
+		<input type="hidden" id="hdIdPartidaEnAnalisisPresupuestal" value="<?=$idPartida?>">
 		<button class="btn btn-danger" data-dismiss="modal">
 			<span class="glyphicon glyphicon-remove"></span>
 			Cerrar ventana
@@ -805,7 +806,7 @@
 				'<td>'+parseFloat(rendimiento).toFixed(2)+'</td>'+
 				'<td>'+parseFloat(cantidad).toFixed(2)+'</td>'+
 				'<td>'+parseFloat(precioUnitario).toFixed(2)+'</td>'+
-				'<td>'+parseFloat(subTotal).toFixed(2)+'</td>'+
+				'<td class="subTotalDetalleAnalisisUnitario">'+parseFloat(subTotal).toFixed(2)+'</td>'+
 				'<td>'+
 					'<a href="#" style="color: red;text-decoration: underline;" onclick="eliminarDetalleAnalisisUnitario('+objectJSON.idDetalleAnalisisUnitario+', this)"><b>Eliminar</b></a>'+
 				'</td>'+
@@ -814,7 +815,22 @@
 			$('#tableDetalleAnalisisUnitario'+idAnalisis+' > tbody').append(htmlTemp);
 
 			limpiarText('divFormDetallaAnalisisUnitario'+idAnalisis, ['txtHoras'+idAnalisis]);
+
+			renderizarNuevoMontoPartida();
 		}, false, true);
+	}
+
+	function renderizarNuevoMontoPartida()
+	{
+		var subTotalDetalleAnalisisUnitario=0;
+
+		$('.subTotalDetalleAnalisisUnitario').each(function(index, element)
+		{
+			subTotalDetalleAnalisisUnitario+=parseFloat($(element).text());
+		});
+
+		$($('#rowPartida'+$('#hdIdPartidaEnAnalisisPresupuestal').val()).find('td')[3]).text('1.00');
+		$($('#rowPartida'+$('#hdIdPartidaEnAnalisisPresupuestal').val()).find('td')[4]).text(parseFloat(subTotalDetalleAnalisisUnitario).toFixed(2));
 	}
 
 	function eliminarAnalisisUnitario(idAnalisis, element)
@@ -834,6 +850,8 @@
 				function(){});
 
 				$(element).parent().parent().parent().parent().parent().parent().parent().parent().remove();
+
+				renderizarNuevoMontoPartida();
 			}, false, true);
 		}
 	}
@@ -855,6 +873,8 @@
 				function(){});
 
 				$(element).parent().parent().remove();
+
+				renderizarNuevoMontoPartida();
 			}, false, true);
 		}
 	}

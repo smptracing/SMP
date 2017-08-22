@@ -65,17 +65,21 @@ class programar_pip_modal extends CI_Model
         }
     }
     //Add programacion
-    public function AddProgramacion($flat, $id_programacion, $Cbx_AnioCartera, $cbxBrecha, $txt_id_pip_programacion, $txt_anio1, $txt_anio2, $txt_anio3, $txt_prioridad)
+    public function AddProgramacion($flat, $id_programacion, $Cbx_AnioCartera, $cbxBrecha, $txt_id_pip_programacion, $txt_anio1, $txt_anio2, $txt_anio3, $txt_anio1_oper, $txt_anio2_oper, $txt_anio3_oper, $txt_prioridad)
     {
-        $this->db->query("execute sp_Gestionar_Programacion_pip'" . $flat . "','"
-            . $id_programacion . "','"
-            . $Cbx_AnioCartera . "','"
-            . $cbxBrecha . "','"
-            . $txt_id_pip_programacion . "','"
-            . $txt_anio1 . "','"
-            . $txt_anio2 . "','"
-            . $txt_anio3 . "','"
-            . $txt_prioridad . "'");
+        $this->db->query("execute sp_Gestionar_Programacion_pip
+            @Opcion='" . $flat . "',
+            @id_prog='" . $id_programacion . "',
+            @id_cartera='" . $Cbx_AnioCartera . "',
+            @id_brecha='" . $cbxBrecha . "',
+            @id_pi='" . $txt_id_pip_programacion . "',
+            @monto_anio1='" . $txt_anio1 . "',
+            @monto_anio2='" . $txt_anio2 . "',
+            @monto_anio3='" . $txt_anio3 . "',
+            @monto_oym1='" . $txt_anio1_oper . "',
+            @monto_oym2='" . $txt_anio2_oper . "',
+            @monto_oym3='" . $txt_anio3_oper . "',
+            @prioridad='" . $txt_prioridad . "'");
 
         if ($this->db->affected_rows() > 0) {
             return true;
@@ -86,15 +90,16 @@ class programar_pip_modal extends CI_Model
     //Add programacion
     public function AddProgramacion_operacion_mantenimiento($flat, $id_programacion_, $Cbx_AnioCartera_, $cbxBrecha_, $txt_id_pip_programacion_, $txt_anio1_, $txt_anio2_, $txt_anio3_, $txt_prioridad_)
     {
-        $this->db->query("execute sp_Gestionar_Programacion_pip'" . $flat . "','"
-            . $id_programacion_ . "','"
-            . $Cbx_AnioCartera_ . "','"
-            . $cbxBrecha_ . "','"
-            . $txt_id_pip_programacion_ . "','"
-            . $txt_anio1_ . "','"
-            . $txt_anio2_ . "','"
-            . $txt_anio3_ . "','"
-            . $txt_prioridad_ . "'");
+        $this->db->query("execute sp_Gestionar_Programacion_pip
+            @Opcion='" . $flat . "',
+            @id_prog='" . $id_programacion_ . "',
+            @id_cartera='" . $Cbx_AnioCartera_ . "',
+            @id_brecha='" . $cbxBrecha_ . "',
+            @id_pi='" . $txt_id_pip_programacion_ . "',
+            @monto_oym1='" . $txt_anio1_ . "',
+            @monto_oym2='" . $txt_anio2_ . "',
+            @monto_oym3='" . $txt_anio3_ . "',
+            @prioridad='" . $txt_prioridad_ . "'");
 
         if ($this->db->affected_rows() > 0) {
             return true;
