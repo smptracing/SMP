@@ -233,6 +233,28 @@
                                       <input  class="form-control" id="txt_anio3" name="txt_anio3" type="number" required="required">
                                     </div>
 
+                                 <!--   <div class="col-md-3 col-sm-6 col-xs-12">
+                                      <label>.</label><br>
+                                       <button  id="send" type="submit" class="btn btn-success">
+                                             <span class="glyphicon glyphicon-floppy-saved"></span> Guardar
+                                        </button>
+                                    </div>-->
+                                 </div>
+                                 <h6><i class="fa fa-list"></i><b> Monto Operación y Mantenimiento</b></h6>
+                               <div class="item form-group">
+                                   <div class="col-md-3 col-sm-6 col-xs-12">
+                                      <CENTER><label>Año 1</label></CENTER>
+                                      <input  class="form-control" id="txt_anio1_oper" name="txt_anio1_oper" type="number" required="required">
+                                    </div>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                      <CENTER><label>Año 2</label></CENTER>
+                                      <input  class="form-control" id="txt_anio2_oper" name="txt_anio2_oper" type="number" required="required">
+                                    </div>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                      <CENTER><label>Año 3</label></CENTER>
+                                      <input  class="form-control" id="txt_anio3_oper" name="txt_anio3_oper" type="number" required="required">
+                                    </div>
+
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <label>.</label><br>
                                        <button  id="send" type="submit" class="btn btn-success">
