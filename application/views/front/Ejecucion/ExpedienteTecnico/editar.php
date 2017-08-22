@@ -195,10 +195,14 @@
 						</div>
 					</div>
 					<div class="row">
-					 	<div class="col-md-4 col-sm-3 col-xs-12">
-                            <label class="control-label">Subir Resolución</label>
-                            <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input type="file" id="Documento_Resolucion" name="Documento_Resolucion" value="<?= $ExpedienteTecnicoM->url_doc_aprobacion_et?>">
+					 	<div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="col-md-3 col-sm-3 col-xs-12" style="position: left">
+                           	 	<label class="control-label">Subir Resolución:</label>
+                           	 	<input type="hidden" name="Editurl" id="Editurl" value="<?= $ExpedienteTecnicoM->url_doc_aprobacion_et?>">
+                            	<input type="file" id="Documento_Resolucion" name="Documento_Resolucion">
+                            </div>
+                             <div class="col-md-5 col-sm-5 col-xs-12">
+                            	<label style="font-size: 11px;margin-top: 24px;color: red;margin-left: 20px;"> En caso de subir otra resolución remplazara a la anterior</label>
                             </div>
                         </div>
 					</div>
@@ -246,10 +250,11 @@
 							<table id="table-img" style="text-align: center;" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
 								<thead>
 								</thead>
-								<?php foreach($listaimg as $item){ ?>
+								<?php $i=0; foreach($listaimg as $item){ ?>
 								  	<tr>
 										<td>
 											<img class="img-thumbnail .img-responsive" src="<?= base_url();?>uploads/ImageExpediente/<?= $item->desc_img?>">
+											<label>Fotografía N° <?= $i=$i+1?></label>
 										</td>
 										<td><button onclick="EliminarImagen(<?=$item->id_img?>,<?=$item->id_et?>);"  title='Eliminar imagen del Expediente Técnico'  class='eliminarExpediente btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button></td>
 								  	</tr>
@@ -316,10 +321,11 @@ $(function()
                         	swal("ELIMINADO!", "Se elimino correctamente la imagen del expediente técnico.", "success");
                         	$("#table-img").html('');
                         	html +='<thead></thead>';
+                        	var i=0;
                         	$.each(respuesta,function(index,element)
                         	{
                         		html +='<tr>';
-                        		html +='<td> <img class="img-thumbnail .img-responsive" src="<?= base_url();?>uploads/ImageExpediente/'+element.desc_img+'"></td>';
+                        		html +='<td> <img class="img-thumbnail .img-responsive" src="<?= base_url();?>uploads/ImageExpediente/'+element.desc_img+'"><label> Fotografía N°'+ (i=i+1);+'</label></td>';
                         		html +='<td> <button onclick="EliminarImagen('+element.id_img+','+element.id_et+');"  title="Eliminar imagen del Expediente Técnico"  class="eliminarExpediente btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button></td>';
                         		html +='</tr>';
                         	});
@@ -328,33 +334,18 @@ $(function()
                     });
 			});
 	}
+	 $('#btnEnviarFormulario').on('click', function(event)
+	   	{
+            var resolucion=$("#Documento_Resolucion").val(); 
+            var url=getFileExtension(resolucion);
+            $("#Editurl").val(url);
+        });
 
+	 function getFileExtension(filename) {
 
+		return filename.slice((filename.lastIndexOf(".") - 1 >>> 0) + 2);
 
-   /* function EliminarImagen(id_img, element)
-	{
-		alert(id_img,element);
-		if(!confirm('Se eliminara la imagen. ¿Realmente desea proseguir con la operación?'))
-		{
-			return;
-			alert(id_img,element);
-		}
-		paginaAjaxJSON({ "id_et" : id_et }, base_url+'index.php/ET_Img/eliminar', 'POST', null, function(objectJSON)
-		{
-			alert(objectJSON);
-			objectJSON=JSON.parse(objectJSON);
-
-			swal(
-			{
-				title: '',
-				text: objectJSON.mensaje,
-				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
-			},
-			function(){});
-
-			$(element).parent().remove();
-		}, false, true);
-	}*/
+	}
 
 </script>
 
