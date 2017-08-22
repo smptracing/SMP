@@ -59,7 +59,7 @@ class Model_ET_Meta extends CI_Model
 
 	function existsDiffIdMetaAndSameDescripcion($idComponente, $idMeta, $idMetaPadre, $descripcionMeta)
 	{
-		$data=$this->db->query("select * from ET_META where id_meta!=".$idMeta." and desc_meta='".$descripcionMeta."' and ((".$idComponente." is null and id_meta_padre='".$idMetaPadre."') or (".$idComponente." is not null and id_componente=".$idComponente."))");
+		$data=$this->db->query("select * from ET_META where id_meta!=".$idMeta." and desc_meta='".$descripcionMeta."' and ((".($idComponente=='' ? 'NULL' : $idComponente)." is null and id_meta_padre='".$idMetaPadre."') or (".($idComponente=='' ? 'NULL' : $idComponente)." is not null and id_componente='".$idComponente."'))");
 
 		return count($data->result())>0 ? true : false;
 	}
