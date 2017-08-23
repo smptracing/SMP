@@ -155,7 +155,11 @@ class ET_Componente extends CI_Controller
 			$this->eliminarMetaAnidada($value);
 		}
 
+		$idExpedienteTecnico=$this->Model_ET_Componente->ETComponentePorIdComponente($idComponente)->id_et;
+
 		$this->Model_ET_Componente->eliminar($idComponente);
+
+		$this->updateNumerationComponent($idExpedienteTecnico);
 
 		$this->db->trans_complete();
 
