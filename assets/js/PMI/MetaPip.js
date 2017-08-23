@@ -302,7 +302,7 @@ $("#Cbx_AnioCartera").change(function() {
                                     {"data":"nombre_pi"},
                                     {"data":"costo_pi"},
                                     {"data":"nombre_estado_ciclo"},
-                                    {"data": function (data, type, dataToSet) {
+                                 /*   {"data": function (data, type, dataToSet) {
 
                                       if (data.estado_programado !='0') //estap programado
                                       {
@@ -314,7 +314,7 @@ $("#Cbx_AnioCartera").change(function() {
                                         //return '<a  href="#"><button type="button" class="btn btn btn-danger btn-xs">No Programado</button></a>';
                                         return '<h5><span class="label label-danger">No Programado</span></h5>';
                                       }
-                                   }},
+                                   }},*/
                                        {"defaultContent":"<center><button type='button' title='Programar' class='meta_pip btn btn-success btn-xs' data-toggle='modal' data-target='#Ventana_Meta_Presupuestal_PI'><i class='fa fa-usd' aria-hidden='true'></i></button></center>"}
                                 ],
                                "language":idioma_espanol
