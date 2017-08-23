@@ -134,6 +134,8 @@ class ET_Meta extends CI_Controller
 
 			$this->eliminarMetaAnidada($meta);
 
+			$this->updateNumerationMeta($meta->id_componente=='' ? null : $meta->id_componente, $meta->id_meta_padre=='' ? null : $meta->id_meta_padre);
+
 			$this->db->trans_complete();
 
 			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Meta eliminada correctamente.']);exit;
