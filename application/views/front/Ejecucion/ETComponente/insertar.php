@@ -4,7 +4,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 	$htmlTemp='';
 
 	$htmlTemp.='<li>'.
-		html_escape($meta->desc_meta).' <input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(\'\', $(this).parent(), '.$meta->id_meta.')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="+P" onclick="renderizarAgregarPartida($(this).parent(), '.$meta->id_meta.')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarMeta('.$meta->id_meta.', this);" style="width: 30px;">'.
+		'<span id="nombreMeta'.$meta->id_meta.'" contenteditable>'.html_escape($meta->desc_meta).'</span> <input type="button" class="btn btn-default btn-xs" value="G" onclick="guardarCambiosMeta('.$meta->id_meta.');" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(\'\', $(this).parent(), '.$meta->id_meta.')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="+P" onclick="renderizarAgregarPartida($(this).parent(), '.$meta->id_meta.')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarMeta('.$meta->id_meta.', this);" style="width: 30px;">'.
 		((count($meta->childMeta)==0 && count($meta->childPartida))>0 ? '<table><tbody>' : '<ul>');
 
 	if(count($meta->childMeta)==0)
@@ -102,7 +102,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 			<ul id="ulComponenteMetaPartida" style="background-color: #f5f5f5;list-style-type: upper-roman;">
 				<?php foreach($expedienteTecnico->childComponente as $key => $value){ ?>
 					<li>
-						<b><?=html_escape($value->descripcion)?></b> <input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(<?=$value->id_componente?>, $(this).parent(), '');" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarComponente(<?=$value->id_componente?>, this);" style="width: 30px;">
+						<b id="nombreComponente<?=$value->id_componente?>" contenteditable><?=html_escape($value->descripcion)?></b> <input type="button" class="btn btn-default btn-xs" value="G" onclick="guardarCambiosComponente(<?=$value->id_componente?>);" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(<?=$value->id_componente?>, $(this).parent(), '');" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarComponente(<?=$value->id_componente?>, this);" style="width: 30px;">
 						<ul style="background-color: #f5f5f5;">
 							<?php foreach($value->childMeta as $index => $item){ ?>
 								<?=mostrarMetaAnidada($item, $expedienteTecnico->id_et);?>
@@ -186,7 +186,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 			}
 
 			var htmlTemp='<li>'+
-				'<b>'+replaceAll(replaceAll($('#txtDescripcionComponente').val().trim(), '<', '&lt;'), '>', '&gt;')+'</b> <input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta('+objectJSON.idComponente+', $(this).parent(), \'\');" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarComponente('+objectJSON.idComponente+', this);" style="width: 30px;">'+
+				'<b id="nombreComponente'+objectJSON.idComponente+'" contenteditable>'+replaceAll(replaceAll($('#txtDescripcionComponente').val().trim(), '<', '&lt;'), '>', '&gt;')+'</b> <input type="button" class="btn btn-default btn-xs" value="G" onclick="guardarCambiosComponente('+objectJSON.idComponente+');" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta('+objectJSON.idComponente+', $(this).parent(), \'\');" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarComponente('+objectJSON.idComponente+', this);" style="width: 30px;">'+
 				'<ul style="background-color: #f5f5f5;"></ul>'
 			'</li>';
 
@@ -195,6 +195,72 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 			$('#txtDescripcionComponente').val('');
 
 			limpiarArbolCompletoMasOpciones();
+		}, false, true);
+	}
+
+	function guardarCambiosComponente(idComponente)
+	{
+		if($('#nombreComponente'+idComponente).text().trim()=='')
+		{
+			swal(
+			{
+				title: '',
+				text: 'El nombre del componente es obligatorio.',
+				type: 'error'
+			},
+			function(){});
+
+			$('#nombreComponente'+idComponente).text('___');
+
+			return;
+		}
+
+		paginaAjaxJSON({ "idComponente" : idComponente, 'descripcionComponente' : replaceAll(replaceAll($('#nombreComponente'+idComponente).text().trim(), '<', '&lt;'), '>', '&gt;') }, base_url+'index.php/ET_Componente/editarDescComponente', 'POST', null, function(objectJSON)
+		{
+			objectJSON=JSON.parse(objectJSON);
+
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+			},
+			function(){});
+
+			$('#nombreComponente'+idComponente).text($('#nombreComponente'+idComponente).text().trim());
+		}, false, true);
+	}
+
+	function guardarCambiosMeta(idMeta)
+	{
+		if($('#nombreMeta'+idMeta).text().trim()=='')
+		{
+			swal(
+			{
+				title: '',
+				text: 'El nombre de la meta es obligatorio.',
+				type: 'error'
+			},
+			function(){});
+
+			$('#nombreMeta'+idMeta).text('___');
+
+			return;
+		}
+
+		paginaAjaxJSON({ "idMeta" : idMeta, 'descripcionMeta' : replaceAll(replaceAll($('#nombreMeta'+idMeta).text().trim(), '<', '&lt;'), '>', '&gt;') }, base_url+'index.php/ET_Meta/editarDescMeta', 'POST', null, function(objectJSON)
+		{
+			objectJSON=JSON.parse(objectJSON);
+
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+			},
+			function(){});
+
+			$('#nombreMeta'+idMeta).text($('#nombreMeta'+idMeta).text().trim());
 		}, false, true);
 	}
 
@@ -313,7 +379,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 			}
 
 			var htmlTemp='<li>'+
-				replaceAll(replaceAll(descripcionMeta.trim(), '<', '&lt;'), '>', '&gt;')+' <input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(\'\', $(this).parent(), '+objectJSON.idMeta+')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="+P" onclick="renderizarAgregarPartida($(this).parent(), '+objectJSON.idMeta+')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarMeta('+objectJSON.idMeta+', this);" style="width: 30px;">'+
+				'<span id="nombreMeta'+objectJSON.idMeta+'" contenteditable>'+replaceAll(replaceAll(descripcionMeta.trim(), '<', '&lt;'), '>', '&gt;')+'</span> <input type="button" class="btn btn-default btn-xs" value="G" onclick="guardarCambiosMeta('+objectJSON.idMeta+');" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(\'\', $(this).parent(), '+objectJSON.idMeta+')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="+P" onclick="renderizarAgregarPartida($(this).parent(), '+objectJSON.idMeta+')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarMeta('+objectJSON.idMeta+', this);" style="width: 30px;">'+
 				'<ul style="background-color: #f5f5f5;"></ul>'+
 			'</li>';
 

@@ -32,7 +32,6 @@ class Model_ET_Expediente_Tecnico extends CI_Model
         return $data->result();
 	}
 
-
 	public function ExpedienteListarEjecucionDeductivo($flat1,$id_etapa_et)
 	{
 		$data=$this->db->query("execute sp_Gestionar_ET_Expediente_Tecnico @Opcion='".$flat1."',@id_etapa_et='".$id_etapa_et."'");

@@ -15,6 +15,7 @@ class ET_Partida extends CI_Controller
 		$this->load->model('Model_ET_Detalle_Analitico_Partida');
 		$this->load->model('Model_ET_Analisis_Unitario');
 		$this->load->model('Model_ET_Detalle_Analisis_Unitario');
+		$this->load->model('Model_ET_Meta');
 	}
 
 	public function insertar()
@@ -73,9 +74,23 @@ class ET_Partida extends CI_Controller
 
 		$ultimoETDetallePartida=$this->Model_ET_Detalle_Partida->ultimoETDetallePartida();
 
+		$this->updateNumerationPartida($idMeta);
+
 		$this->db->trans_complete();
 
 		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Partida registrada correctamente.', 'idPartida' => $ultimoIdPartida, 'descripcionUnidadMedida' => $unidadMedida->descripcion, 'cantidadDetallePartida' => $ultimoETDetallePartida->cantidad, 'precioParcialDetallePartida' => $ultimoETDetallePartida->parcial]);exit;
+	}
+
+	private function updateNumerationPartida($idMeta)
+	{
+		$meta=$this->Model_ET_Meta->ETMetaPorIdMeta($idMeta);
+
+		$listaETPartidaTemporal=$this->Model_ET_Partida->ETPartidaPorIdMeta($meta->id_meta);
+
+		foreach($listaETPartidaTemporal as $key => $value)
+		{
+			$this->Model_ET_Partida->updateNumeracionPorIdPartida($value->id_partida, $meta->numeracion.'.'.($key+1));
+		}
 	}
 
 	public function eliminar()
@@ -86,7 +101,11 @@ class ET_Partida extends CI_Controller
 
 			$idPartida=$this->input->post('idPartida');
 
+			$etPartidaTemporal=$this->Model_ET_Partida->ETPartidaPorIdPartida($idPartida);
+
 			$this->Model_ET_Partida->eliminar($idPartida);
+
+			$this->updateNumerationPartida($etPartidaTemporal->id_meta);
 
 			$this->db->trans_complete();
 

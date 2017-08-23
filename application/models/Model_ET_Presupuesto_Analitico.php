@@ -33,7 +33,6 @@ class Model_ET_Presupuesto_Analitico extends CI_Model
 		$data=$this->db->query("select * from ET_PRESUPUESTO_ANALITICO ET_PREA inner join ET_PRESUPUESTO_EJECUCION ET_PRER on  
 								ET_PREA.id_presupuesto_ej=ET_PRER.id_presupuesto_ej inner join ET_CLASIFICADOR ET_CLA on
 								ET_PREA.id_clasificador=ET_CLA.id_clasificador WHERE id_et='".$idET."' and ET_PRER.id_presupuesto_ej='".$id_presupuesto_ej."'");
-
 		return $data->result();
 	}
 
@@ -42,6 +41,12 @@ class Model_ET_Presupuesto_Analitico extends CI_Model
 		$ETClasificador=$this->db->query("execute sp_Gestionar_ET_Presupuesto_Analitico @Opcion='".$flat."',@id_et='".$id_et."'");
 
 		return $ETClasificador->result();
+	}
+	function listarPreciosUnitarios($flat,$id_et)
+	{
+		$data=$this->db->query("execute sp_Gestionar_ET_Presupuesto_Analitico @Opcion='".$flat."',@id_et='".$id_et."'");
+
+		return $data->result();
 	}
 	function VerificarAnalisisUnitario($idClasiAnalitico)
 	{
@@ -56,5 +61,5 @@ class Model_ET_Presupuesto_Analitico extends CI_Model
 
 		return true;
 	}
-
+	
 }

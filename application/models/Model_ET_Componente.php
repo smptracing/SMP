@@ -22,6 +22,13 @@ class Model_ET_Componente extends CI_Model
 		return $data->result()[0]->idComponente;
 	}
 
+	public function ETComponentePorIdComponente($idComponente)
+	{
+		$data=$this->db->query("select * from ET_COMPONENTE where id_componente=".$idComponente);
+
+		return $data->result()[0];
+	}
+
 	public function ETComponentePorIdET($idExpedienteTecnico)
 	{
 		$data=$this->db->query("select * from ET_COMPONENTE where id_et='".$idExpedienteTecnico."'");
@@ -39,6 +46,27 @@ class Model_ET_Componente extends CI_Model
 	function eliminar($idComponente)
 	{
 		$this->db->query("delete from ET_COMPONENTE where id_componente=".$idComponente);
+
+		return true;
+	}
+
+	function existsDiffIdComponenteAndSameDescripcion($idComponente, $descripcionComponente)
+	{
+		$data=$this->db->query("select * from ET_COMPONENTE where id_componente!=".$idComponente." and descripcion='".$descripcionComponente."'");
+
+		return count($data->result())>0 ? true : false;
+	}
+
+	function updateDescComponente($idComponente, $descripcionComponente)
+	{
+		$this->db->query("update ET_COMPONENTE set descripcion='".$descripcionComponente."' where id_componente=".$idComponente);
+
+		return true;
+	}
+
+	public function updateNumeracionPorIdComponente($idComponente, $numeracion)
+	{
+		$this->db->query("update ET_COMPONENTE set numeracion='".$numeracion."' where id_componente=".$idComponente);
 
 		return true;
 	}

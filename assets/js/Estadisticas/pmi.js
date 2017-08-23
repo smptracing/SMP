@@ -1,3 +1,34 @@
+function MontoProgramadoPip()
+{
+    var programado=new Array();
+
+    event.preventDefault();
+
+    $.ajax(
+    {
+        "url": base_url+"index.php/PrincipalPmi/MontoProgramado",
+        type: "POST",
+        success: function(respuesta)
+        {
+            var registros=eval(respuesta);
+            //alert(respuesta);
+
+            for(var i=0; i<registros.length; i++)
+            {
+                programado[i]=registros[i]["Cantidadpip"];
+             
+            }
+            
+           // $("#NumPip").text(sum); //OBTENER NUMERO DE PIP EN LA CABECERA
+            $("#monto_programado").text("S/."+registros[0]["SumaCosto"]); 
+            $("#totalpip").text(registros[0]["NumProyectos"]); 
+            $("#monto_programado_nopip").text("S/."+registros[1]["SumaCosto"]); 
+            $("#totalnopip").text(registros[1]["NumProyectos"]); 
+
+        }
+    });
+}
+
 function EstaProyProvincia()
 {
     var provincias=new Array();
@@ -21,6 +52,7 @@ function EstaProyProvincia()
             }
             
             $("#NumPip").text(sum); //OBTENER NUMERO DE PIP EN LA CABECERA
+           
             $("#NumPips").text(provincias);
             cantidadPIPAbancay=(100*(parseInt(provincias[0]))/sum);
 
@@ -236,6 +268,7 @@ function initMap()
 $(document).on('ready', function()
 {
     EstaProyProvincia();
+    MontoProgramadoPip();
     EstadistMontosPipProv();
     EstadisticasPorCiclosInversion();
 });

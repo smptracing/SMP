@@ -29,15 +29,16 @@ class programar_nopip_modal extends CI_Model
     //Add ubigeo a un proyecto
     public function AddProgramacion($flat, $id_programacion, $Cbx_AnioCartera, $cbxBrecha, $txt_id_pip_programacion, $txt_anio1, $txt_anio2, $txt_anio3, $txt_prioridad)
     {
-        $this->db->query("execute sp_Gestionar_Programacion_pip'" . $flat . "','"
-            . $id_programacion . "','"
-            . $Cbx_AnioCartera . "','"
-            . $cbxBrecha . "','"
-            . $txt_id_pip_programacion . "','"
-            . $txt_anio1 . "','"
-            . $txt_anio2 . "','"
-            . $txt_anio3 . "','"
-            . $txt_prioridad . "'");
+        $this->db->query("execute sp_Gestionar_Programacion_pip
+            @Opcion='" . $flat . "',
+            @id_prog='" . $id_programacion . "',
+            @id_cartera='" . $Cbx_AnioCartera . "',
+            @id_brecha='" . $cbxBrecha . "',
+            @id_pi='" . $txt_id_pip_programacion . "',
+            @monto_anio1='" . $txt_anio1 . "',
+            @monto_anio2='" . $txt_anio2 . "',
+            @monto_anio3='" . $txt_anio3 . "',
+            @prioridad='" . $txt_prioridad . "'");
 
         if ($this->db->affected_rows() > 0) {
             return true;

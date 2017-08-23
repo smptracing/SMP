@@ -134,6 +134,18 @@ class programar_pip extends CI_Controller
             show_404();
         }
     }
+    //Listar prioridad
+    public function listar_prioridad()
+    {
+        if ($this->input->is_ajax_request()) {
+            $flat = "listar_ultimo_pi_programado_prioridad";
+            $anio = $this->input->post("anio");
+            $data = $this->programar_pip_modal->listar_prioridad($flat, $anio);
+            echo json_encode(array('data' => $data));
+        } else {
+            show_404();
+        }
+    }
     //Listar programación
     public function listar_programacion()
     {
@@ -197,5 +209,4 @@ class programar_pip extends CI_Controller
         $this->load->view('layout/PMI/footer');
         $this->load->view('Front/Pmi/js/jsProgramarPip.php');
     }
-
 }
