@@ -62,5 +62,11 @@ class Model_ET_Clasificador extends CI_Model
 
 		return $ETClasificador->result();
 	}
+	function ValidarNodosClasificador($idClasificador)
+	{
+		$ETClasificador=$this->db->query("select* from ET_CLASIFICADOR where id_clasificador='".$idClasificador."' and (LEN(num_clasificador)=12 or LEN(num_clasificador)=11); ");
+
+		return $ETClasificador->result();
+	}
 
 }

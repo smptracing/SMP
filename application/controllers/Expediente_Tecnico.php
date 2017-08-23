@@ -335,7 +335,6 @@ class Expediente_Tecnico extends CI_Controller
 				$this->obtenerMetaAnidada($item);
 			}
 	    } 
-
 		$html= $this->load->view('front/Ejecucion/ExpedienteTecnico/reporteMetrado',['MostraExpedienteTecnicoExpe'=>$MostraExpedienteTecnicoExpe,'MostraExpedienteNombre' =>$MostraExpedienteNombre], true);
 		$this->mydompdf->load_html($html);
 		$this->mydompdf->render();
