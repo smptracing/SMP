@@ -190,7 +190,6 @@ var EliminarProgramacion=function(tbody,table){
 //listar prioridad con su cartera
  var lista_prioridad=function(anio)
                 {
-                  alert();
                     var table=$("#lista_prioridad_validar").DataTable({
                      // alert(anio);
                       "processing": true,
