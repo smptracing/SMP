@@ -49,4 +49,11 @@ class Model_ET_Partida extends CI_Model
 
 		return true;
 	}
+
+	public function updateNumeracionPorIdPartida($idPartida, $numeracion)
+	{
+		$this->db->query("update ET_PARTIDA set numeracion='".$numeracion."' where id_partida=".$idPartida);
+
+		return true;
+	}
 }

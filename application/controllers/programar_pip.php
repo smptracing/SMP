@@ -209,5 +209,4 @@ class programar_pip extends CI_Controller
         $this->load->view('layout/PMI/footer');
         $this->load->view('Front/Pmi/js/jsProgramarPip.php');
     }
-
 }

@@ -619,51 +619,51 @@ $(function()
 		});
 	});
 
-	   $('#btnEnviarFormulario').on('click', function(event)
-	   	{
-                event.preventDefault();
-                $('#form-addExpedienteTecnico').data('formValidation').validate();
-				if(!($('#form-addExpedienteTecnico').data('formValidation').isValid()))
-				{
-					return;
-				}
-				var extension=$("#Documento_Resolucion").val();
-	            var url=getFileExtension(extension);
-	            $("#url").val(url);
+    $('#btnEnviarFormulario').on('click', function(event)
+   	{
+            event.preventDefault();
+            $('#form-addExpedienteTecnico').data('formValidation').validate();
+			if(!($('#form-addExpedienteTecnico').data('formValidation').isValid()))
+			{
+				return;
+			}
+			var extension=$("#Documento_Resolucion").val();
+            var url=getFileExtension(extension);
+            $("#url").val(url);
 
-                $("#hdtxtSituacioActual").val(CKEDITOR.instances.txtSituacioActual.getData());
-                $("#hdtxtSituacioEconomica").val(CKEDITOR.instances.txtSituacioEconomica.getData());
-                $("#hdtxtResumenProyecto").val(CKEDITOR.instances.txtResumenProyecto.getData());
+            $("#hdtxtSituacioActual").val(CKEDITOR.instances.txtSituacioActual.getData());
+            $("#hdtxtSituacioEconomica").val(CKEDITOR.instances.txtSituacioEconomica.getData());
+            $("#hdtxtResumenProyecto").val(CKEDITOR.instances.txtResumenProyecto.getData());
 
-                var formData=new FormData($("#form-addExpedienteTecnico")[0]);
-                var dataString = $('#form-addExpedienteTecnico').serialize();
-                $.ajax({
-                    type:"POST",
-                    enctype: 'multipart/form-data',
-                    url:base_url+"index.php/Expediente_Tecnico/insertar",
-                    data: formData,
-                    cache: false,
-                    contentType:false,
-                    processData:false,
-                    beforeSend: function() {
-                    	renderLoading();
-				    },
-                    success:function(resp)
-                    {
-                      	//console.log(resp);
-                        window.location.href=base_url+"index.php/Expediente_Tecnico/"
-                    }
-                });
-              $('#form-addExpedienteTecnico')[0].reset();
-         });
+            var formData=new FormData($("#form-addExpedienteTecnico")[0]);
+            var dataString = $('#form-addExpedienteTecnico').serialize();
+            $.ajax({
+                type:"POST",
+                enctype: 'multipart/form-data',
+                url:base_url+"index.php/Expediente_Tecnico/insertar",
+                data: formData,
+                cache: false,
+                contentType:false,
+                processData:false,
+                beforeSend: function() {
+                	renderLoading();
+			    },
+                success:function(resp)
+                {
+                  	//console.log(resp);
+                    window.location.href=base_url+"index.php/Expediente_Tecnico/"
+                }
+            });
+          $('#form-addExpedienteTecnico')[0].reset();
+    });
 
-	   function getFileExtension(filename) {
+    function getFileExtension(filename)
+    {
 
-		  return filename.slice((filename.lastIndexOf(".") - 1 >>> 0) + 2);
+		return filename.slice((filename.lastIndexOf(".") - 1 >>> 0) + 2);
 
-		}
+	}
 			  
-
 </script>
 
 

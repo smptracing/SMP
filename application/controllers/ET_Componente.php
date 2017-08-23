@@ -24,7 +24,40 @@ class ET_Componente extends CI_Controller
 		{
 			$this->Model_ET_Componente->updateNumeracionPorIdComponente($value->id_componente, $numberRoman[$key]);
 
-			
+			$listaETMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($value->id_componente);
+
+			foreach($listaETMeta as $index => $item)
+			{
+				$this->Model_ET_Meta->updateNumeracionPorIdMeta($item->id_meta, ($key+1).'.'.($index+1));
+
+				$this->updateNumerationMetaAndChild($item, ($key+1).'.'.($index+1));
+			}
+		}
+	}
+
+	private function updateNumerationMetaAndChild($meta, $numeracionMetaActual)
+	{
+		$temp=$this->Model_ET_Meta->ETMetaPorIdMetaPadre($meta->id_meta);
+
+		$meta->childMeta=$temp;
+
+		if(count($temp)==0)
+		{
+			$meta->childPartida=$this->Model_ET_Partida->ETPartidaPorIdMeta($meta->id_meta);
+
+			foreach($meta->childPartida as $key => $value)
+			{
+				$this->Model_ET_Partida->updateNumeracionPorIdPartida($value->id_partida, $numeracionMetaActual.'.'.($key+1));
+			}
+
+			return false;
+		}
+
+		foreach($meta->childMeta as $key => $value)
+		{
+			$this->Model_ET_Meta->updateNumeracionPorIdMeta($value->id_meta, $numeracionMetaActual.'.'.($key+1));
+
+			$this->updateNumerationMetaAndChild($value, $numeracionMetaActual.'.'.($key+1));
 		}
 	}
 
@@ -122,7 +155,11 @@ class ET_Componente extends CI_Controller
 			$this->eliminarMetaAnidada($value);
 		}
 
+		$idExpedienteTecnico=$this->Model_ET_Componente->ETComponentePorIdComponente($idComponente)->id_et;
+
 		$this->Model_ET_Componente->eliminar($idComponente);
+
+		$this->updateNumerationComponent($idExpedienteTecnico);
 
 		$this->db->trans_complete();
 
