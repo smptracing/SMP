@@ -377,6 +377,22 @@ class Expediente_Tecnico extends CI_Controller
         $this->mydompdf->render();
         $this->mydompdf->stream("reportePdfPresupuestoAnalitico.pdf", array("Attachment" => false));
     }
+
+    public function reportePdfAnalisisPrecioUnitarioFF11($id_et)
+	{		
+		$opcion="BuscarExpedienteID";
+		$MostraExpedienteNombre=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoSelectBuscarId($opcion,$id_et);
+
+		$flat="REPORTEPRECIOSUNITARIOS";
+		$listarpreciosunitarios=$this->Model_ET_Presupuesto_Analitico->listarPreciosUnitarios($flat,$id_et);
+		//var_dump($listarpreciosunitarios);exit;
+        $this->load->library('mydompdf');
+        $html= $this->load->view('front/Ejecucion/ExpedienteTecnico/reporteAnalisisPreciosFF11',['MostraExpedienteNombre' => $MostraExpedienteNombre,'listarpreciosunitarios'=>$listarpreciosunitarios], true);
+        $this->mydompdf->load_html($html);
+        $this->mydompdf->render();
+        $this->mydompdf->stream("reporteAnalisisPreciosFF11.pdf", array("Attachment" => false));
+    }
+
 	public function reportePdfPresupuestoFF05($id_ExpedienteTecnico)
 	{
 		$opcion="BuscarExpedienteID";

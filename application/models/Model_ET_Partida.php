@@ -36,6 +36,13 @@ class Model_ET_Partida extends CI_Model
 		return $data->result();
 	}
 
+	function ETPartidaPorIdPartida($idPartida)
+	{
+		$data=$this->db->query("select * from ET_PARTIDA where id_partida=".$idPartida);
+
+		return count($data->result())>0 ? $data->result()[0] : null;
+	}
+
 	function eliminar($idPartida)
 	{
 		$this->db->query("delete from ET_PARTIDA where id_partida=".$idPartida);
@@ -46,6 +53,13 @@ class Model_ET_Partida extends CI_Model
 	function eliminarPorIdMeta($idMeta)
 	{
 		$this->db->query("delete from ET_PARTIDA where id_meta=".$idMeta);
+
+		return true;
+	}
+
+	public function updateNumeracionPorIdPartida($idPartida, $numeracion)
+	{
+		$this->db->query("update ET_PARTIDA set numeracion='".$numeracion."' where id_partida=".$idPartida);
 
 		return true;
 	}
