@@ -138,7 +138,7 @@ class programar_pip extends CI_Controller
     public function listar_prioridad()
     {
         if ($this->input->is_ajax_request()) {
-            $flat = "listar_prioridad";
+            $flat = "listar_ultimo_pi_programado_prioridad";
             $anio = $this->input->post("anio");
             $data = $this->programar_pip_modal->listar_prioridad($flat, $anio);
             echo json_encode(array('data' => $data));

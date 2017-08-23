@@ -42,6 +42,25 @@ class ET_Meta extends CI_Controller
 		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Meta registrada correctamente.', 'idMeta' => $ultimoIdMeta]);exit;
 	}
 
+	public function editarDescMeta()
+	{
+		$idMeta=$this->input->post('idMeta');
+		$descripcionMeta=$this->input->post('descripcionMeta');
+
+		$etMetaTemp=$this->Model_ET_Meta->ETMetaPorIdMeta($idMeta);
+
+		if($this->Model_ET_Meta->existsDiffIdMetaAndSameDescripcion($etMetaTemp->id_componente, $idMeta, $etMetaTemp->id_meta_padre, $descripcionMeta))
+		{
+			$this->db->trans_rollback();
+
+			echo json_encode(['proceso' => 'Error', 'mensaje' => 'Nombre de la meta existente.']);exit;
+		}
+
+		$this->Model_ET_Meta->updateDescMeta($idMeta, trim($descripcionMeta));
+
+		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Cambios guardados correctamente.']);exit;
+	}
+
 	public function eliminar()
 	{
 		if($_POST)
