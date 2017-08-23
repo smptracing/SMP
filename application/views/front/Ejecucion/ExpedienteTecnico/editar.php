@@ -289,6 +289,323 @@ $(function()
 	CKEDITOR.instances.txtSituacioDeseada.setData(html1);
 	var html2=$("#hdtxtContribucioInterv").val();
 	CKEDITOR.instances.txtContribucioInterv.setData(html2);
+
+	$('#form-EditarExpedienteTecnico').formValidation(
+	{
+		framework: 'bootstrap',
+		excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+		live: 'enabled',
+		message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+		trigger: null,
+		fields:
+		{
+			txtNombreUe:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Nombre Unidad Ejecutora." es requerido.</b>'
+					}
+				}
+			},
+			txtDireccionUE:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Dirección de unidad ejecutora" es requerido.</b>'
+					}
+				}
+			},
+			txtUbicacionUE:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Ubicacion unidad ejecutora" es requerido.</b>'
+					}
+				}
+			},
+			txtTelefonoUE:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Telefono unidad ejecutora" es requerido.</b>'
+					}
+				}
+			},
+			txtRucUE:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Ruc" es requerido.</b>'
+					}
+				}
+			},
+			txtRucUE:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Ruc" es requerido.</b>'
+					}
+				}
+			},
+			txtNombrePip:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Nombre del PIP" es requerido.</b>'
+					}
+				}
+			},
+			txtCodigoUnico:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Codigo" es requerido.</b>'
+					}
+				}
+			},
+			txtCostoTotalPreInversion:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Costo Total PreInversion" es requerido.</b>'
+					},
+					regexp:
+					{
+						regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
+						message: '<b style="color: red;">El campo "Costo total pre Inversion " debe ser un valor en soles.</b>'
+					} 
+				}
+			},
+			txtCostoDirectoPre:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Costo Directo PreInversion" es requerido.</b>'
+					},
+					regexp:
+					{
+						regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
+						message: '<b style="color: red;">El campo "Costo Directo pre Inversion " debe ser un valor en soles.</b>'
+					}  
+				}
+			},
+			txtCostoIndirectoPre:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Costo Indirecto PreInversion" es requerido.</b>'
+					},
+					regexp:
+					{
+						regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
+						message: '<b style="color: red;">El campo "Costo Indirecto Pre Inversion " debe ser un valor en soles.</b>'
+					}   
+				}
+			},	
+			txtCostoTotalInversion:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Costo Total Inversion" es requerido.</b>'
+					},
+					regexp:
+					{
+						regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
+						message: '<b style="color: red;">El campo "Costo Total de Inversion " debe ser un valor en soles.</b>'
+					}  
+				}
+			},
+			txtCostoDirectoInversion:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Costo Directo de inversion" es requerido.</b>'
+					},
+					regexp:
+					{
+						regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
+						message: '<b style="color: red;">El campo "Costo Directo de inversion" debe ser un valor en soles.</b>'
+					}  
+				}
+			},
+			txtGastosGenerales:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Gastos Generales" es requerido.</b>'
+					},
+					regexp:
+					{
+						regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
+						message: '<b style="color: red;">El campo "Gastos Generales" debe ser un valor en soles.</b>'
+					}  
+				}
+			},
+			txtGastosSupervision:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Gastos supervisión" es requerido.</b>'
+					},
+					regexp:
+					{
+						regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
+						message: '<b style="color: red;">El campo "Gastos Supervision" debe ser un valor en soles.</b>'
+					}  
+				}
+			},
+			txtFuncionProgramatica:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Funcion Programatica" es requerido.</b>'
+					} 
+				}
+			},
+			txtFuncion:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Funcion" es requerido.</b>'
+					} 
+				}
+			},	
+			txtPrograma:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Programa" es requerido.</b>'
+					} 
+				}
+			},
+			txtSubPrograma:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Sub Programa" es requerido.</b>'
+					} 
+				}
+			},
+			txtProyecto:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Proyecto" es requerido.</b>'
+					} 
+				}
+			},	
+			txtComponente:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Componente" es requerido.</b>'
+					} 
+				}
+			},	
+			txtMeta:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Meta" es requerido.</b>'
+					} 
+				}
+			},	
+			txtFuenteFinanciamiento:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Fuente Financiamiento" es requerido.</b>'
+					} 
+				}
+			},
+			txtModalidadEjecucion:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Modalidad Ejecucion" es requerido.</b>'
+					} 
+				}
+			},	
+			txtTiempoEjecucionPip:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Tiempo Ejecucion" es requerido.</b>'
+					} 
+				}
+			},
+			txtNumBeneficiarios:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Tiempo Ejecucion" es requerido.</b>'
+					} 
+				}
+			},
+			txtNumFolio:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Numero de Folio" es requerido.</b>'
+					} 
+				}
+			}					
+		}
+	});
 });
 
 	function EliminarImagen(id_img,id_et)
