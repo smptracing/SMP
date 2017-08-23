@@ -59,7 +59,7 @@
                                                           <th style="width: 8%"><i class="fa fa-money"></i> Costo</th>
                                                           <th style="width: 12%"> Estado Ciclo</th>
                                                           <th style="width: 12%"> Estado</th>
-                                                        <th style="width: 6%">Programar</th>
+                                                        <th style="width: 6%">Asig. Meta</th>
                                                         </tr>
                                                       </thead>
 
@@ -94,7 +94,7 @@
                                                           <th style="width: 12%"><i class="fa fa-money"></i> Costo</th>
                                                           <th style="width: 12%"> Estado Ciclo</th>
                                                           <th style="width: 12%"> Estado</th>
-                                                        <th style="width: 8%">Opción</th>
+                                                        <th style="width: 8%">Asig. Meta</th>
                                                         </tr>
                                                       </thead>
 
@@ -129,7 +129,7 @@
                                                           <th style="width: 12%"><i class="fa fa-money"></i> Costo</th>
                                                           <th style="width: 12%"> Estado Ciclo</th>
                                                           <th style="width: 12%"> Estado</th>
-                                                        <th style="width: 8%">Opción</th>
+                                                        <th style="width: 8%">Asig. Meta</th>
                                                         </tr>
                                                       </thead>
 

@@ -110,6 +110,9 @@
                                                                   <th style="width: 4%">AÑO 1</th>
                                                                   <th style="width: 4%">AÑO 2</th>
                                                                   <th style="width: 4%">AÑO 3</th>
+                                                                  <th style="width: 4%">OyM 1</th>
+                                                                  <th style="width: 4%">OyM 2</th>
+                                                                  <th style="width: 4%">OyM 3</th>
                                                                 </tr>
                                                       </thead>
                                                             </table>
