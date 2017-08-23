@@ -24,7 +24,12 @@ class ET_Componente extends CI_Controller
 		{
 			$this->Model_ET_Componente->updateNumeracionPorIdComponente($value->id_componente, $numberRoman[$key]);
 
-			
+			$listaETMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($value->id_componente);
+
+			foreach($listaETMeta as $index => $item)
+			{
+				$this->Model_ET_Meta->updateNumeracionPorIdMeta($item->id_meta, ($key+1).'.'.($index+1));
+			}
 		}
 	}
 

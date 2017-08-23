@@ -70,4 +70,11 @@ class Model_ET_Meta extends CI_Model
 
 		return true;
 	}
+
+	public function updateNumeracionPorIdMeta($idMeta, $numeracion)
+	{
+		$this->db->query("update ET_META set numeracion='".$numeracion."' where id_meta=".$idMeta);
+
+		return true;
+	}
 }
