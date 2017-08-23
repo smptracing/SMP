@@ -51,7 +51,7 @@
                                                           <th style="width: 46%"><i class="fa fa-bookmark-o"></i> Nombre</th>
                                                           <th style="width: 8%"><i class="fa fa-money"></i> Costo</th>
                                                           <th style="width: 12%"> Tipo NO PIP</th>
-                                                          <th style="width: 12%"> Estado</th>
+                                                        <!--  <th style="width: 12%"> Estado</th>-->
                                                         <th style="width: 6%">Asig. Meta</th>
                                                         </tr>
                                                       </thead>

@@ -69,7 +69,7 @@ $(document).on("ready" ,function(){
                                     {"data":"nombre_pi"},
                                     {"data":"costo_pi"},
                                     {"data":"desc_tipo_nopip"},
-                                    {"data": function (data, type, dataToSet) {
+                                  /*  {"data": function (data, type, dataToSet) {
 
                                       if (data.estado_programado !='0') //estap programado
                                       {
@@ -81,7 +81,7 @@ $(document).on("ready" ,function(){
                                         //return '<a  href="#"><button type="button" class="btn btn btn-danger btn-xs">No Programado</button></a>';
                                         return '<h5><span class="label label-danger">No Programado</span></h5>';
                                       }
-                                   }},
+                                   }},*/
                                     {"defaultContent":"<center><button type='button' title='Meta Presupuestal PIP' class='meta_pip btn btn-success btn-xs' data-toggle='modal' data-target='#Ventana_Meta_Presupuestal_PI'><i class='fa fa-usd' aria-hidden='true'></i></button></center>"}
                                 ],
                                "language":idioma_espanol
