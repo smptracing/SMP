@@ -88,6 +88,9 @@
 													<li>
 														<a title='Reporte de Presupuesto Analitico'  href="<?= site_url('Expediente_Tecnico/reportePdfPresupuestoAnalitico/'.$item->id_et);?>" target="_blank">Presupuesto Analitico</a>
 													</li>
+													<li>
+														<a title='Reporte de AnalisiS de precios unitarios'  href="<?= site_url('Expediente_Tecnico/reportePdfAnalisisPrecioUnitarioFF11/'.$item->id_et);?>" target="_blank">Formato FF-11</a>
+													</li>
 												</ul>
 											</div>
 											<button onclick="Eliminar(<?=$item->id_et?>);" data-toggle="tooltip" data-original-title="Eliminar Expediente Técnico"   class='eliminarExpediente btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button>
