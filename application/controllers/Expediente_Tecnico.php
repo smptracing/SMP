@@ -377,6 +377,10 @@ class Expediente_Tecnico extends CI_Controller
 		foreach ($PresupuestoEjecucionListar as $key => $value) 
 		{
 			$value->ChilpresupuestoAnalitico=$this->Model_ET_Presupuesto_Analitico->ETPresupuestoAnaliticoDetalles($id_et,$value->id_presupuesto_ej);
+			/*foreach ($value->ChilpresupuestoAnalitico => $Itemp) 
+			{
+				$Itemp->ChilCostoDetalle=$this->Model
+			}*/
 		}
 
 		/*echo "<pre>";

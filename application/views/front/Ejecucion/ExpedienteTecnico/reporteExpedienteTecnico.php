@@ -1,6 +1,12 @@
 <html>
   <head>
       <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/dompdf.css">
+      <style type="text/css">
+      	tr
+      	{
+			font-family: courier new;
+      	}
+      </style>
   </head>
 
 <body>
@@ -74,7 +80,7 @@
 	              <th id="header_texto">
 	                2 &nbsp; &nbsp;Nombre del Proyecto
 	              </th>
-	              <th id="header_texto">
+	              <th id="header_texto" style=" text-align: center;">
 	               &nbsp; <?= $listarExpedienteFicha001->nombre_pi ?>
 	              </th>
 	        </tr>
@@ -189,7 +195,7 @@
 	              <th id="header_texto">
 	                &nbsp; &nbsp; &nbsp; &nbsp; 5.4 &nbsp; &nbsp; PROYECTO
 	              </th>
-	              <th id="header_texto">
+	              <th id="header_texto" style=" text-align: center;">
 	               &nbsp;<?= $listarExpedienteFicha001->proyecto_et ?>  
 	              </th>
 	        </tr>
