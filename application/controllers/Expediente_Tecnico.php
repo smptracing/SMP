@@ -18,8 +18,10 @@ class Expediente_Tecnico extends CI_Controller
 		$this->load->model("Model_ET_Presupuesto_Analitico");
 		$this->load->model("Model_ET_Img");
 		$this->load->model('Model_ET_Etapa_Ejecucion');
+		$this->load->model('Model_ET_Presupuesto_Ejecucion');
 		$this->load->model('Model_Personal');
 		$this->load->library('mydompdf');
+		
 	}
 
 	function _load_layout($template)
@@ -366,12 +368,22 @@ class Expediente_Tecnico extends CI_Controller
         $opcion="BuscarExpedienteID";
 		$MostraExpedienteNombre=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoSelectBuscarId($opcion,$id_et);
 
-		$flat="REPORTEPRESUPUESTOANALITICO";
-		$litarPresupuestoAnalitico=$this->Model_ET_Presupuesto_Analitico->listarPresupuestoAnalitico($flat,$id_et);
-		//$litarPresupuestoAnalitico=$this->Model_ET_Presupuesto_Analitico->ETPresupuestoAnaliticoPorIdET($flat,$id_et);
+		$flat  = "R";
+		$PresupuestoEjecucionListar=$this->Model_ET_Presupuesto_Ejecucion->PresupuestoEjecucionListar($flat);
 
+		/*$flat="REPORTEPRESUPUESTOANALITICO1";
+		$litarPresupuestoAnalitico=$this->Model_ET_Presupuesto_Analitico->listarPresupuestoAnalitico($flat,$id_et);*/
+
+		foreach ($PresupuestoEjecucionListar as $key => $value) 
+		{
+			$value->ChilpresupuestoAnalitico=$this->Model_ET_Presupuesto_Analitico->ETPresupuestoAnaliticoDetalles($id_et,$value->id_presupuesto_ej);
+		}
+
+		/*echo "<pre>";
+		print_r($PresupuestoEjecucionListar);exit;
+        echo "</pre>";*/
         $this->load->library('mydompdf');
-        $html= $this->load->view('front/Ejecucion/ExpedienteTecnico/reportePdfPresupuestoAnalitico',['MostraExpedienteNombre' => $MostraExpedienteNombre,'litarPresupuestoAnalitico' =>$litarPresupuestoAnalitico], true);
+        $html= $this->load->view('front/Ejecucion/ExpedienteTecnico/reportePdfPresupuestoAnalitico',['MostraExpedienteNombre' => $MostraExpedienteNombre,'PresupuestoEjecucionListar' =>$PresupuestoEjecucionListar], true);
         $this->mydompdf->load_html($html);
         $this->mydompdf->set_paper('letter', 'landscape');
         $this->mydompdf->render();

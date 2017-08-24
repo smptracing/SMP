@@ -74,20 +74,28 @@
 							<td colspan="2">&nbsp;&nbsp; OBSERVACIÓN </td>
 						</tr>
 					</tr>
-					<?php $costoTotalDirecto=0; foreach ($litarPresupuestoAnalitico as  $Itemp) {?>
+					<?php $costoTotalDirecto=0; foreach ($PresupuestoEjecucionListar as  $value) {?>
 					<tr>
-						<td rowspan="1" > <?= $Itemp->desc_presupuesto_ej?> </td>
-						<td rowspan="1" style="text-align: center;" > <?= $Itemp->num_clasificador?> </td>
-						<td colspan="2" > <?= $Itemp->desc_clasificador?> </td>
-			
-							<td colspan="2" > S/ <?= $Itemp->precio_parcial; $costoTotalDirecto +=(int)$Itemp->precio_parcial;?></td>
-
-
-						<td colspan="2" >S/ <?= $Itemp->precio_parcial; $costoTotalDirecto +=(int)$Itemp->precio_parcial;?>  </td>
-
-						<!-- <td colspan="2" >  </td>-->
+						<td rowspan="1" > <?= $value->desc_presupuesto_ej;?></td>
+						<td rowspan="1" style="text-align: center;" >  </td>
+						<td colspan="2" > </td>
 						<td colspan="2"> &nbsp;&nbsp;  </td>
-						<td colspan="2">&nbsp;&nbsp;  </td>
+						<td colspan="2"> &nbsp;&nbsp;  </td>
+						<td colspan="2"> &nbsp;&nbsp;  </td>
+						<td colspan="2"> &nbsp;&nbsp;  </td>
+						
+						 	<?php foreach ($value->ChilpresupuestoAnalitico as $Itemp) {?>
+							 	<tr>
+									<td rowspan="1">  </td>
+									<td rowspan="1" style="text-align: center;" > <?= $Itemp->num_clasificador;?> </td>
+									<td colspan="2"> <?= $Itemp->desc_clasificador;?> </td>
+									<td colspan="2"> &nbsp;&nbsp;  </td>
+									<td colspan="2">&nbsp;&nbsp;  </td>
+									<td colspan="2"> &nbsp;&nbsp;  </td>
+									<td colspan="2"> &nbsp;&nbsp;  </td>
+								</tr>
+							<?php } ?>
+						  
 					</tr>
 					<?php } ?>
 					<tr>

@@ -40,7 +40,7 @@ class Model_ET_Analisis_Unitario extends CI_Model
 	{
 		$data=$this->db->query("select * from ET_ANALISIS_UNITARIO where id_detalle_partida=".$idDetallePartida." and id_recurso=".$idRecurso);
 
-		return count($data->result())==0 ? null : $data->result()[0];
+		return count($data->result())==0 ? null : $data->result()[0]; 
 	}
 
 	function eliminar($idAnalisis)
@@ -53,6 +53,12 @@ class Model_ET_Analisis_Unitario extends CI_Model
 	function actualizarAnalitico($idAnalisis, $idAnalitico)
 	{
 		$this->db->query("update ET_ANALISIS_UNITARIO set id_analitico=".$idAnalitico." where id_analisis=".$idAnalisis);
+
+		return true;
+	}
+	function listarEtAnalisisUnitario($id_analitico)
+	{
+		$this->db->query("select * from ET_ANALISIS_UNITARIO WHERE id_analitico=".$id_analitico);
 
 		return true;
 	}
