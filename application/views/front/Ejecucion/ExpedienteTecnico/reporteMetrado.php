@@ -59,12 +59,12 @@ function mostrarMetaAnidada($meta)
 				<tr>
 					<th style="height: 50px;text-align: left;width: 40px;">ÍTEM</th>
 					<th>DESCRIPCIÓN</th>
-					<th style="width: 150px;position: relative;">
+					<th style="width: 70px;position: relative;">
 						<span style="left: -8px;top: 40px;position: absolute;transform: rotate(-90deg);">UNIDAD</span>
 						<span style="left: 4px;top: 27px;position: absolute;transform: rotate(-90deg);">DE</span>
 						<span style="left: 16px;top: 40px;position: absolute;transform: rotate(-90deg);">MEDIDA</span>
 					</th>
-					<th style="text-align: right;width: 60px;">TOTAL</th>
+					<th style="text-align: right;width: 50px;">TOTAL</th>
 				</tr>
 				<tbody>
 					<?php foreach($MostraExpedienteTecnicoExpe->childComponente as $key => $value){  ?>
