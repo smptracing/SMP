@@ -2,13 +2,13 @@
     <input type="hidden" id="id_et" name="id_et" value="<?= $expedienteVistoBueno->id_et?>">
 
     <div class="row" style="text-align: center;">
-			<button  class="btn btn-success" id="btnEnviarFormulario" >	si </button>  
-			<button  class="btn btn-danger" data-dismiss="modal"> Cancelar</button>
+			<button  class="btn btn-success" id="btnEnviarFormulario" >	<i class="fa fa-thumbs-up"> si </i></button>  
+			<button  class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 </div>
 </form>
 
 <script>
-	$('#form-darVistoBueno').on('click', function(event)
+	$('#btnEnviarFormulario').on('click', function(event)
 	{
 		event.preventDefault();
 

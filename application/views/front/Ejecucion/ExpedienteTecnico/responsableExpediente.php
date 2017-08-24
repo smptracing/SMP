@@ -19,7 +19,7 @@
 										<div class="col-md-12 col-sm-12 col-xs-12">
 											
 													<div class="x_content">
-														<table id="table-ResponsableExpediente"  class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+														<table id="table-ResponsableExpediente"  class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 															<thead>
 																<tr>
 																	<td>Tipo de responsable</td>
