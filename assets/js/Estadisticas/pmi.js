@@ -234,10 +234,10 @@ function EstadisticasPorCiclosInversion() {
 function initMap()
 {
     //var LatLng={lat: -25.363, lng: 131.044};
-    var map=new google.maps.Map($('#map'),
+    var map=new google.maps.Map(document.getElementById('map'),
     {
         zoom: 8,
-        center: {lat: -14, lng: -73},
+        center: {lat: -14, lng: -73}
         //disableDefaultUI: true
     });
 
