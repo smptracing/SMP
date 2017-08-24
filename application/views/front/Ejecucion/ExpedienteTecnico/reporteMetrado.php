@@ -12,11 +12,11 @@ function mostrarMetaAnidada($meta)
 	{
 		foreach($meta->childPartida as $key => $value)
 		{
-			$htmlTemp='<tr>'.
+			$htmlTemp.='<tr>'.
 				'<td>'.$value->numeracion.'.</td>'.
 				'<td>'.strtoupper(html_escape($value->desc_partida)).'</td>'.
-				'<td style="text-align: center;">'.strtoupper(html_escape($value->descripcion)).'</td>'.
-				'<td style="text-align: center;">'.$value->cantidad.'</td>'.
+				'<td style="text-align: left;">'.strtoupper(html_escape($value->descripcion)).'</td>'.
+				'<td style="text-align: right;">'.$value->cantidad.'</td>'.
 			'</tr>';
 		}
 	}
@@ -34,7 +34,7 @@ function mostrarMetaAnidada($meta)
 <head>
 	<title>Reporte de metrado</title>
 </head>
-<body style="text-align: center;">
+<body style="font-family: Helvetica;text-align: center;">
 	<header style="width: 100%;">
 		<table style="margin-top: 20px;width: 100%;">
 			<tr>
@@ -61,11 +61,11 @@ function mostrarMetaAnidada($meta)
 					<th style="height: 50px;text-align: left;width: 40px;">ÍTEM</th>
 					<th>DESCRIPCIÓN</th>
 					<th style="width: 150px;position: relative;">
-						<span style="left: 52px;top: 40px;position: absolute;transform: rotate(-90deg);">UNIDAD</span>
-						<span style="left: 64px;top: 27px;position: absolute;transform: rotate(-90deg);">DE</span>
-						<span style="left: 76px;top: 40px;position: absolute;transform: rotate(-90deg);">MEDIDA</span>
+						<span style="left: -8px;top: 40px;position: absolute;transform: rotate(-90deg);">UNIDAD</span>
+						<span style="left: 4px;top: 27px;position: absolute;transform: rotate(-90deg);">DE</span>
+						<span style="left: 16px;top: 40px;position: absolute;transform: rotate(-90deg);">MEDIDA</span>
 					</th>
-					<th style="width: 60px;">TOTAL</th>
+					<th style="text-align: right;width: 60px;">TOTAL</th>
 				</tr>
 				<tbody>
 					<?php foreach($MostraExpedienteTecnicoExpe->childComponente as $key => $value){  ?>
