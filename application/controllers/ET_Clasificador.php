@@ -21,6 +21,11 @@ class ET_Clasificador extends CI_Controller
     public function BuscarDetalleClasificador()
     {
     	$data=$this->Model_ET_Clasificador->ETListaClasificador($this->input->post('valueSearch'));
+		
+		foreach ($data as $key => $value)
+		{
+			$value->num_clasificador=str_replace(' ', '_', $value->num_clasificador);
+		}
 
 		echo json_encode($data);exit;
     }

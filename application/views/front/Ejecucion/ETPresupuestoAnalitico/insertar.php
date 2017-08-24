@@ -1,3 +1,10 @@
+<style type="text/css">
+.pre{
+	color: red;
+	background: red;
+}	
+
+</style>
 <div class="form-horizontal">
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
@@ -66,7 +73,7 @@
 	</div>
 </div>
 <script>
-
+		$( "#divPresupuestoAnalitico" ).find("span").css( "background-color", "red" );
 	$(function()
 	{
 		$('#divPresupuestoAnalitico').formValidation(
@@ -103,6 +110,7 @@
 	        },
 	        preprocessData: function(data)
 	        {
+
 	        	var dataForSelect=[];
 	        	for(var i=0; i<data.length; i++)
 	        	{
@@ -110,7 +118,7 @@
 	        		dataForSelect.push(
 	                {
 	                    "value" : data[i].num_clasificador,
-	                    "text" :  data[i].num_clasificador,
+	                    "text" : data[i].num_clasificador,
 	                    "data" :
 	                    {
 	                    	"id_clasificador" : data[i].id_clasificador
