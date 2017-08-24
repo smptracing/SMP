@@ -77,19 +77,18 @@
                   </li>
                 </ul>
 
-                <h3></i>PMI</h3>
                 <ul class="nav side-menu">
                      <li>
                           <a href="<?php echo site_url('CarteraInversion/'); ?>"><i class="fa fa-suitcase"></i> Cartera de inversiones</a>
                      </li>
-                     <li><a><i class="fa fa-gears"></i> Programación <span class="fa fa-chevron-down"></span></a>
+                     <li><a><i class="fa fa-gears"></i> Programación de Inversiones <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
                                     <li><a href="<?php echo site_url('programar_pip/'); ?>">PIP</a></li>
                                     <li><a href="<?php echo site_url('programar_nopip/'); ?>">NO PIP</a></li>
                             </ul>
                       </li>
                       <li>
-                                <a><i class="fa fa-book"></i> Proyectos Programados
+                                <a><i class="fa fa-book"></i> Inversiones Programados
                                   <span class="fa fa-chevron-down"></span>
                                 </a>
                                 <ul class="nav child_menu">
@@ -98,6 +97,7 @@
                                     <li><a href="<?php echo site_url('NoPipProgramados/'); ?>">NO PIP</a></li>
                                 </ul>
                       </li>
+                      
                       <li>
                             <a><i class="fa fa-database"></i> Banco de proyectos <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
