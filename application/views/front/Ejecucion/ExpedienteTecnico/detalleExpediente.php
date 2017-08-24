@@ -122,63 +122,7 @@
 														<td><b>7. Número de beneficiarios</b> </td>
 														<td><?=$detalleExpediente->num_beneficiarios_indirectos;?></td>		
 													</tr>
-													<tr>
-														<td><b>8. Responsable de la elaboración Proyecto</b></td>
-														<td></td>		
-													</tr>
-													<tr>
-														<td>8.1. Profesión</td>
-														<td></td>		
-													</tr>
-													<tr>
-														<td>8.2. DNI</td> 
-														<td></td>		
-													</tr>
-													<tr>
-														<td>8.3. Registro Profesional N°</td>
-														<td></td>		
-													</tr>
-													<tr>
-														<td>8.4. Registro Profesional N°</td>
-														<td></td>		
-													</tr>
-													<tr>
-														<td>8.5. Dirección</td>
-														<td></td>		
-													</tr>
-													<tr>
-														<td>8.6. Teléfono</td>
-														<td></td>		
-													</tr>
-													<tr>
-														<td><b>9. Responsable de la ejecución del proyecto</b></td>
-														<td></td>		
-													</tr>
-													<tr>
-														<td>9.1. Profesión</td>
-														<td></td>		
-													</tr>
-													<tr>
-														<td>9.2. DNI</td>
-														<td></td>		
-													</tr>
-													<tr>
-														<td>9.3. Registro Profesional N°</td>
-														<td></td>		
-													</tr>
-													<tr>
-														<td>9.4. Registro Profesional N°</td>
-														<td></td>		
-													</tr>
-													<tr>
-														<td>9.5. Dirección</td>
-														<td></td>		
-													</tr>
-													<tr>
-														<td>9.6. Teléfono</td>
-														<td></td>		
-													</tr>
-
+													
 												</thead>
 												<tbody>
 												
