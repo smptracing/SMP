@@ -183,4 +183,13 @@ class Model_ET_Expediente_Tecnico extends CI_Model
         
         return true;
     }
+
+
+    public function darvistobueno($id_et)
+    {
+    	$darvistobueno=true;
+    	$this->db->query("Update ET_EXPEDIENTE_TECNICO SET estado_revision='".$darvistobueno."' where  id_et ='".$id_et."'");
+
+		return true;
+    }
 }

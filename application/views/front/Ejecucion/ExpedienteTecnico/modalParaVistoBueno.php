@@ -1,7 +1,35 @@
-<div name="vistoBueno" id="vistoBueno" class="form-control">
+<form  id="form-darVistoBueno"   action="<?php echo base_url();?>index.php/Expediente_Tecnico/vistoBueno" method="POST" >
+    <input type="hidden" id="id_et" name="id_et" value="<?= $expedienteVistoBueno->id_et?>">
 
+    <div class="row" style="text-align: center;">
+			<button  class="btn btn-success" id="btnEnviarFormulario" >	si </button>  
+			<button  class="btn btn-danger" data-dismiss="modal"> Cancelar</button>
 </div>
-<hr style="margin: 4px;">
-<div style="text-align: right;">
-	<input type="button" value="Visto Bueno" class="btn btn-success">
-</div>
+</form>
+
+<script>
+	$('#form-darVistoBueno').on('click', function(event)
+	{
+		event.preventDefault();
+
+		paginaAjaxJSON($('#form-darVistoBueno').serialize(), '<?=base_url();?>index.php/Expediente_Tecnico/vistoBueno', 'POST', null, function(objectJSON)
+		{
+			$('#modalTemp').modal('hide');
+
+			objectJSON=JSON.parse(objectJSON);
+
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+			},
+			function()
+			{
+				window.location.href='<?=base_url();?>index.php/Expediente_Tecnico/index/';
+
+				renderLoading();
+			});
+		}, false, true);
+	});
+</script>
