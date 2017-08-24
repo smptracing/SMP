@@ -35,4 +35,13 @@ class Model_ET_Detalle_Partida extends CI_Model
 
 		return count($data->result())==0 ? null : $data->result()[0];
 	}
+
+	function CostoDetallePartida($id_analitico)
+	{
+		$data=$this->db->query("select ET_ANALISIS_UNITARIO.id_analitico,sum(parcial) as costoDirecto from ET_ANALISIS_UNITARIO right  JOIN ET_DETALLE_PARTIDA ON 
+								ET_ANALISIS_UNITARIO.id_detalle_partida=ET_DETALLE_PARTIDA.id_detalle_partida 
+								WHERE   id_analitico='".$id_analitico."'  GROUP BY ET_ANALISIS_UNITARIO.id_analitico");
+		return $data->result();
+	}
+
 }

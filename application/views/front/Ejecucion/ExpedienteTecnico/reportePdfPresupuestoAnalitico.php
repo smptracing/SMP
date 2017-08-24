@@ -84,14 +84,20 @@
 						<td colspan="2"> &nbsp;&nbsp;  </td>
 						<td colspan="2"> &nbsp;&nbsp;  </td>
 						
-						 	<?php foreach ($value->ChilpresupuestoAnalitico as $Itemp) {?>
+						 	<?php  foreach ($value->ChilpresupuestoAnalitico as $Itemp) {?>
 							 	<tr>
 									<td rowspan="1">  </td>
 									<td rowspan="1" style="text-align: center;" > <?= $Itemp->num_clasificador;?> </td>
 									<td colspan="2"> <?= $Itemp->desc_clasificador;?> </td>
-									<td colspan="2"> &nbsp;&nbsp;  </td>
-									<td colspan="2">&nbsp;&nbsp;  </td>
-									<td colspan="2"> &nbsp;&nbsp;  </td>
+									
+										<td colspan="2">
+										<?php foreach ( $Itemp->ChilCostoDetallePartida as $Itemp) {  ?>
+											<?= $Itemp->costoDirecto?>
+										<?php  $costoTotalDirecto+=(int)$Itemp->costoDirecto;}?>
+										</td>
+									
+									<td colspan="2">&nbsp;&nbsp; </td>
+									<td colspan="2"> &nbsp;&nbsp; </td>
 									<td colspan="2"> &nbsp;&nbsp;  </td>
 								</tr>
 							<?php } ?>
@@ -102,8 +108,8 @@
 						<td rowspan="1" >  </td>
 						<td rowspan="1" style="text-align: center;" > </td>
 						<td colspan="2" >  </td>
+						<td colspan="2" > S/  <?= number_format($costoTotalDirecto, 2, ',', ' ') ;?></td>
 						<td colspan="2" > </td>
-						<td colspan="2" >S/  <?= number_format($costoTotalDirecto, 2, ',', ' ') ;?> </td>
 						<td colspan="2">&nbsp;&nbsp;  </td>
 						<td colspan="2">&nbsp;&nbsp;  </td>
 					</tr>

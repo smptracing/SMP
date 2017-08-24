@@ -20,6 +20,7 @@ class Expediente_Tecnico extends CI_Controller
 		$this->load->model('Model_ET_Etapa_Ejecucion');
 		$this->load->model('Model_ET_Presupuesto_Ejecucion');
 		$this->load->model('Model_Personal');
+		$this->load->model('Model_ET_Detalle_Partida');
 		$this->load->library('mydompdf');
 		
 	}
@@ -377,15 +378,13 @@ class Expediente_Tecnico extends CI_Controller
 		foreach ($PresupuestoEjecucionListar as $key => $value) 
 		{
 			$value->ChilpresupuestoAnalitico=$this->Model_ET_Presupuesto_Analitico->ETPresupuestoAnaliticoDetalles($id_et,$value->id_presupuesto_ej);
-			/*foreach ($value->ChilpresupuestoAnalitico => $Itemp) 
+			foreach ($value->ChilpresupuestoAnalitico as $key  => $Itemp) 
 			{
-				$Itemp->ChilCostoDetalle=$this->Model
-			}*/
+				$Itemp->ChilCostoDetallePartida=$this->Model_ET_Detalle_Partida->CostoDetallePartida($Itemp->id_analitico);//costo directo
+			}
 		}
 
-		/*echo "<pre>";
-		print_r($PresupuestoEjecucionListar);exit;
-        echo "</pre>";*/
+
         $this->load->library('mydompdf');
         $html= $this->load->view('front/Ejecucion/ExpedienteTecnico/reportePdfPresupuestoAnalitico',['MostraExpedienteNombre' => $MostraExpedienteNombre,'PresupuestoEjecucionListar' =>$PresupuestoEjecucionListar], true);
         $this->mydompdf->load_html($html);
