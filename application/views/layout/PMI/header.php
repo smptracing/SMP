@@ -97,7 +97,7 @@
                                     <li><a href="<?php echo site_url('NoPipProgramados/'); ?>">NO PIP</a></li>
                                 </ul>
                       </li>
-                      
+
                       <li>
                             <a><i class="fa fa-database"></i> Banco de proyectos <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
@@ -144,11 +144,14 @@
         <div class="top_nav">
           <div class="nav_menu">
             <nav>
-              <div class="nav toggle">
+            <div class="nav toggle">
                 <a id="menu_toggle"><i class="fa fa-bars"></i></a>
               </div>
 
+
+
               <ul class="nav navbar-nav navbar-right">
+
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                     <img src="<?php echo base_url(); ?>assets/images/img.jpg" alt="">
@@ -196,6 +199,14 @@
                     </li>
                   </ul>
                 </li>
+                 <li role="presentation" class="dropdown">
+                 <br>
+                      <div class="col-md-2">
+                        <select  id="Aniocartera_dasboard" selected name="Aniocartera_dasboard"  class="selectpicker"></select>
+                        <input type="hidden" id="Aniocartera_dasboard_imput" value="<?=(isset($anio) ? $anio : date('Y'))?>">
+                      </div>
+                </li>
+
               </ul>
             </nav>
           </div>

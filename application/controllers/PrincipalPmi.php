@@ -13,6 +13,19 @@ class PrincipalPmi extends CI_Controller
     {
         $this->_load_layout('pmi');
     }
+    //Listar prioridad
+    public function get_cantidad_costo_tipo_pi()
+    {
+        if ($this->input->is_ajax_request()) {
+            $Opcion = "cantidad_costo_tipo_pi";
+            $anio   = $this->input->post("anio");
+            $data   = $this->Model_DashboardPmi->get_cantidad_costo_tipo_pi($Opcion, $anio);
+            echo json_encode($data);
+            // echo json_encode(array('data' => $data));
+        } else {
+            show_404();
+        }
+    }
 
     public function MontoProgramado()
     {

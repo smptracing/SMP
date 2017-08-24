@@ -7,7 +7,18 @@ class Model_DashboardPmi extends CI_Model
     {
         parent::__construct();
     }
-
+    //listar prioridad
+    public function get_cantidad_costo_tipo_pi($Opcion, $anio)
+    {
+        $get_cantidad_costo_tipo_pi = $this->db->query("execute sp_DashboardPMI
+            @Opcion='" . $Opcion . "',
+            @anio_cartera='" . $anio . "'");
+        if ($get_cantidad_costo_tipo_pi->num_rows() > 0) {
+            return $get_cantidad_costo_tipo_pi->result();
+        } else {
+            return false;
+        }
+    }
     public function MontoProgramado()
     {
         $consulta = $this->db->query("SELECT dbo.TIPO_INVERSION.nombre_tipo_inversion,
