@@ -35,8 +35,8 @@ function mostrarMetaAnidada($meta)
 	<title>Reporte de metrado</title>
 </head>
 <body style="font-family: Helvetica;text-align: center;">
-	<header style="width: 100%;">
-		<table style="margin-top: 20px;width: 100%;">
+	<header style="font-size: 12px;margin-top: -44px;width: 100%;">
+		<table style="margin-top: 17px;width: 100%;">
 			<tr>
 				<td style="width: 85px;">
 					<img style="width: 80px;" src="./assets/images/peru.jpg">
@@ -51,11 +51,10 @@ function mostrarMetaAnidada($meta)
 			</tr>
 		</table>
 	</header>
-	<div style="text-align:center;">METRADO</div>
-	<div style="text-align:center;font-size: 13px; margin-top: 20px; border-color: red; margin-left: 10px;"><b>PROY: "<?=$MostraExpedienteNombre->nombre_pi;?>"</b></div>
-	<br>
+	<div style="margin-top: -7px;text-align: center;">METRADO</div>
+	<div style="text-align: center;font-size: 11px;margin-top: 15px; border-color: red; margin-left: 10px;"><b>PROY: "<?=$MostraExpedienteNombre->nombre_pi;?>"</b></div>
 	<div>
-		<div style="font-size: 10px;">
+		<div style="font-size: 9px;">
 			<table style="width: 100%;">
 				<tr>
 					<th style="height: 50px;text-align: left;width: 40px;">ÍTEM</th>
