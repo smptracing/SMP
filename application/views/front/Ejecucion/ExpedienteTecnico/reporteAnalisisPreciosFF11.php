@@ -29,7 +29,7 @@
 			EXPEDIENTE GLOBAL 
 		</div>
 	</div>
-		<div style="margin-top: 30px;position: absolute;font-size: 8px;margin-left: -10px;">
+		<div style="margin-top: 70px;position: absolute;font-size: 8px;margin-left: -10px;">
 				<table id="contenido_border" width="760" cellspacing=0 cellpadding=2>
 					<tr>
 							<td> </td>
@@ -49,26 +49,26 @@
 						<td> <?= $Itemp->precio_unitario?> </td>	
 						<td> <?= $Itemp->precio_unitario?> </td>							
 					</tr>
-											
-
 					<?php } ?>
 
-					
 					<!--<tbody>
 					<?php $i=0; foreach($listarpreciosunitarios as  $Itemp){  ?>
-							<tr>
-								<td>
-									
-									<div id="compomente" >
-									DESCRIPCION:<b style="text-transform: capitalize;"> <?=$Itemp->desc_recurso?></b> <br/> 
-									</div>
-									<?php foreach($listarpreciosunitarios as  $Itemp){ ?>
-											<div id="meta" style="text-transform: capitalize;text-transform: uppercase;">
-												<td> <?= $Itemp->desc_partida?> </td>
-											</div>
-									<?php } ?>
-								</td>
-							</tr>
+					<tr>
+						<td>
+							<div id="compomente" >
+							<b style="text-transform: capitalize;"> <?=$Itemp->desc_recurso?>.</b> <br/> 
+							</div>
+							<?php foreach($listarpreciosunitarios as $index => $item){ ?>
+									<tr>
+										<td> <?= $Itemp->numeracion?> </td>
+										<td> <?= $Itemp->desc_partida?> </td>	
+										<td> <?=$Itemp->descripcion?> </td>
+										<td> <?= $Itemp->cantidad?></td>
+										<td> <?= $Itemp->precio_unitario?> </td>	
+									</tr>
+							<?php } ?>
+						</td>
+					</tr>
 					<?php } ?>
 				  </tbody>-->
 

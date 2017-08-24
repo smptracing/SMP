@@ -497,11 +497,15 @@ class Expediente_Tecnico extends CI_Controller
 	public function vistoBueno()
 	{
 		if($_POST)
-		{
+        {
+            $darvistobueno=$this->input->post('id_et');
+            $vistoBueno=$this->Model_ET_Expediente_Tecnico->darvistobueno($darvistobueno); 
+            echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Dar visto bueno correcto.']);exit;           
+        }
 
-		}
-		$id_et=$this->input->post('id_et');
-		$this->load->view('front/Ejecucion/ExpedienteTecnico/modalParaVistoBueno');	
+		$id_ExpedienteTecnico=$this->input->GET('id_ExpedienteTecnico');
+		$expedienteVistoBueno=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnico($id_ExpedienteTecnico);
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/modalParaVistoBueno',['expedienteVistoBueno'=>$expedienteVistoBueno]);	
 	}
 
 	public function clonar($idExpedienteTecnico=null, $idEtapaExpedienteTecnico=null)
