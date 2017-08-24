@@ -275,7 +275,7 @@ $("#Cbx_AnioCartera").change(function() {
                                         return '<h5><span class="label label-danger">No Programado</span></h5>';
                                       }
                                    }},
-                                    {"defaultContent":"<center><button type='button' title='Programar' class='programar_pip btn btn-warning btn-xs' data-toggle='modal' data-target='#Ventana_Programar'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button><button type='button' title='Programar' class='meta_pip btn btn-success btn-xs' data-toggle='modal' data-target='#Ventana_Meta_Presupuestal_PI'><i class='fa fa-usd' aria-hidden='true'></i></button></center>"}
+                                    {"defaultContent":"<center><button type='button' title='Programar' class='programar_pip btn btn-warning btn-xs' data-toggle='modal' data-target='#Ventana_Programar'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button></center>"}
                                 ],
                                "language":idioma_espanol
                     });
@@ -315,7 +315,7 @@ $("#Cbx_AnioCartera").change(function() {
                                         return '<h5><span class="label label-danger">No Programado</span></h5>';
                                       }
                                    }},
-                                       {"defaultContent":"<center><button type='button' title='Programar' class='programar_pip_operacion_mantenimiento btn btn-warning btn-xs' data-toggle='modal' data-target='#Ventana_Programar_operacion_mantenimiento'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button><button type='button' title='Programar' class='meta_pip btn btn-success btn-xs' data-toggle='modal' data-target='#Ventana_Meta_Presupuestal_PI'><i class='fa fa-usd' aria-hidden='true'></i></button></center>"}
+                                       {"defaultContent":"<center><button type='button' title='Programar' class='programar_pip_operacion_mantenimiento btn btn-warning btn-xs' data-toggle='modal' data-target='#Ventana_Programar_operacion_mantenimiento'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button></center>"}
                                 ],
                                "language":idioma_espanol
                     });
