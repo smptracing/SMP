@@ -18,8 +18,7 @@ $(document).on("ready" ,function(){
                          "ajax":{
                                     url:base_url+"index.php/PipProgramados/GetPipProgramadosFormulacionEvaluacion",
                                      type:"POST",
-                                     data :{anio:anio}  
-                                                                   
+                                     data :{anio:anio}                             
                                   },
                                 "columns":[ 
                                 {"defaultContent":"<td>#</td>", "visible" : false },

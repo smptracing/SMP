@@ -829,8 +829,8 @@
 			subTotalDetalleAnalisisUnitario+=parseFloat($(element).text());
 		});
 
-		$($('#rowPartida'+$('#hdIdPartidaEnAnalisisPresupuestal').val()).find('td')[3]).text('1.00');
-		$($('#rowPartida'+$('#hdIdPartidaEnAnalisisPresupuestal').val()).find('td')[4]).text(parseFloat(subTotalDetalleAnalisisUnitario).toFixed(2));
+		$($('#rowPartida'+$('#hdIdPartidaEnAnalisisPresupuestal').val()).find('td')[4]).text('1.00');
+		$($('#rowPartida'+$('#hdIdPartidaEnAnalisisPresupuestal').val()).find('td')[5]).text(parseFloat(subTotalDetalleAnalisisUnitario).toFixed(2));
 	}
 
 	function eliminarAnalisisUnitario(idAnalisis, element)
