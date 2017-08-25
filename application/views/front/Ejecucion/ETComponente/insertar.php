@@ -36,6 +36,22 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 	return $htmlTemp;
 }
 ?>
+<style>
+	.modal-dialog
+	{
+		width: 90%;
+		margin: 0;
+		margin-left: 5%;
+		padding: 0;
+	}
+
+	.modal-content
+	{
+		height: auto;
+		min-height: 100%;
+		border-radius: 0;
+	}
+</style>
 <div class="form-horizontal">
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
