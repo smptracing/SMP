@@ -383,7 +383,6 @@ class Expediente_Tecnico extends CI_Controller
 				$Itemp->ChilCostoDetallePartida=$this->Model_ET_Detalle_Partida->CostoDetallePartida($Itemp->id_analitico);//costo directo
 			}
 		}
-
         $this->load->library('mydompdf');
         $html= $this->load->view('front/Ejecucion/ExpedienteTecnico/reportePdfPresupuestoAnalitico',['MostraExpedienteNombre' => $MostraExpedienteNombre,'PresupuestoEjecucionListar' =>$PresupuestoEjecucionListar], true);
         $this->mydompdf->load_html($html);

@@ -28,33 +28,48 @@
 			</div>
 			<div style="margin-top: 10px;position: absolute;font-size: 8px;margin-left: 50px;">
 				<table id="contenido_border" width="750" border=0 cellspacing=0 cellpadding=2 bordercolor="666633">
+					<?php $costoTotalDirectoCabecera=0;$costoTotalIDirectoCabecera=0;$costoTotal=0; foreach ($PresupuestoEjecucionListar as  $value) {?>
+	
+						 	<?php  foreach ($value->ChilpresupuestoAnalitico as $Itemp) {?>
+										<?php  foreach ($Itemp->ChilCostoDetallePartida as $ItempX) {if($value->desc_presupuesto_ej=='COSTOS DIRECTOS'){ ?>
+										<?php  $costoTotalDirectoCabecera+=(float)$ItempX->costoDirecto;}}?>
+
+										<?php  foreach ($Itemp->ChilCostoDetallePartida as $ItempX) {if($value->desc_presupuesto_ej!='COSTOS DIRECTOS'){ ?>
+										<?php  $costoTotalIDirectoCabecera+=(float)$ItempX->costoDirecto;}}?>
+
+										<?php  foreach ($Itemp->ChilCostoDetallePartida as $ItempX) { ?>
+										<?php  $costoTotal+=(float)$ItempX->costoDirecto;}?>
+									
+							<?php  } ?>
+						  
+					<?php } ?>
 					<tr>
 						<td width="120"> META: </td>
 						<td width="100">&nbsp;&nbsp; <?=$MostraExpedienteNombre->meta_et;?> </td>
 						<td style="text-align: center;">COSTO DIRECTO :</td>
-						<td style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp; $/. 2.034.343 </td>
+						<td style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;<?=number_format($costoTotalDirectoCabecera,2, '.', '');?> </td>
 					</tr>
 					<tr>
 						<td> INVERSIÓN </td>
-						<td>&nbsp;&nbsp; S/ 23.232.23: </td> 
+						<td>&nbsp;&nbsp;<?=number_format($costoTotal,2, '.', '');?> </td> 
 						<td style="text-align: center;">COSTO INDIRECTO</td>
-						<td style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;  S/. 2.252.7701.73</td>
+						<td style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp; <?=number_format($costoTotalIDirectoCabecera,2, '.', '');?> </td>
 					</tr>
 					<tr>
 						<td>FUENTE DE FINANCIAMIENTO:  </td>
 						<td style="text-align: left;">&nbsp;&nbsp; <?=$MostraExpedienteNombre->fuente_financiamiento_et;?> </td>
 						<td style="text-align: center;">TOTAL INVERSIÓN :</td>
-						<td style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;  S/. 2.252.7701.73 </td>
+						<td style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;  <?=number_format($costoTotal,2, '.', '');?> </td>
 					</tr>
 					<tr>
 						<td>MODALIDAD </td>
 						<td>&nbsp;&nbsp; <?=$MostraExpedienteNombre->modalidad_ejecucion_et;?> </td>
 						<td style="text-align: center;"> </td>
-						<td style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;  S/. 2.252.7701.73</td>
+						<td style="text-align: center;"> </td>
 					</tr>
 					<tr>
 						<td> AÑO: </td>
-						<td>&nbsp;&nbsp; 2014 </td>
+						<td>&nbsp;&nbsp; <?php echo $nombre=implode('-',(array)$MostraExpedienteNombre->fecha_registro) ;?>  </td>
 						<td style="text-align: center;">  </td>
 						<td style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;  </td>
 					</tr>
@@ -90,20 +105,20 @@
 									<td rowspan="1" style="text-align: center;" > <?= $Itemp->num_clasificador;?> </td>
 									<td colspan="2"> <?= $Itemp->desc_clasificador;?> </td>
 									
-										<td colspan="2">
-										<?php  foreach ($Itemp->ChilCostoDetallePartida as $ItempX) {if($value->desc_presupuesto_ej=='Costos Directos'){ ?>
-											S/. <?= $ItempX->costoDirecto?> 
-										<?php  $costoTotalDirecto+=(int)$ItempX->costoDirecto;}}?>
+										<td colspan="2" style="text-align: right;">
+										<?php  foreach ($Itemp->ChilCostoDetallePartida as $ItempX) {if($value->desc_presupuesto_ej=='COSTOS DIRECTOS'){ ?>
+											S/. <?= number_format($ItempX->costoDirecto,2, '.', '');?> 
+										<?php  $costoTotalDirecto+=(float)$ItempX->costoDirecto;}}?>
 										</td>
-										<td colspan="2"> 
-											<?php  foreach ($Itemp->ChilCostoDetallePartida as $ItempX) {if($value->desc_presupuesto_ej!='Costos Directos'){ ?>
-												S/. <?= $ItempX->costoDirecto?> 
-											<?php  $costoTotalIndirecto+=(int)$ItempX->costoDirecto;}}?>
+										<td colspan="2" style="text-align: right;"> 
+											<?php  foreach ($Itemp->ChilCostoDetallePartida as $ItempX) {if($value->desc_presupuesto_ej!='COSTOS DIRECTOS'){ ?>
+												S/. <?= number_format($ItempX->costoDirecto,2, '.', '');?> 
+											<?php  $costoTotalIndirecto+=(float)$ItempX->costoDirecto;}}?>
 										</td>
-										<td colspan="2"> 
+										<td colspan="2" style="text-align: right;"> 
 												<?php  foreach ($Itemp->ChilCostoDetallePartida as $ItempX) { ?>
-													S/. <?= $ItempX->costoDirecto?> 
-												<?php  $costoTotalProyecto+=(int)$ItempX->costoDirecto;}?>
+													S/. <?=number_format($ItempX->costoDirecto,2, '.', '')?> 
+												<?php  $costoTotalProyecto+=(float)$ItempX->costoDirecto;}?>
 									    </td>
 									<td colspan="2"> &nbsp;&nbsp;  </td>
 								</tr>
@@ -111,13 +126,13 @@
 						  
 					</tr>
 					<?php } ?>
-					<tr>
+					<tr style="text-align:right;">
 						<td rowspan="1" >  </td>
-						<td rowspan="1" style="text-align: center;" > </td>
+						<td rowspan="1" style="text-align:right;" > </td>
 						<td colspan="2" >  </td>
-						<td colspan="2" > S/.  <?= number_format($costoTotalDirecto, 2, ',', ' ') ;?></td>
-						<td colspan="2" > S/.  <?= number_format($costoTotalIndirecto, 2, ',', ' ') ;?></td>
-						<td colspan="2">S/.  <?= number_format( $costoTotalProyecto, 2, ',', ' ') ;?> </td>
+						<td colspan="2" > S/.  <?= number_format($costoTotalDirecto, 2, '.', '');?></td>
+						<td colspan="2" > S/.  <?= number_format($costoTotalIndirecto,2, '.', '') ;?></td>
+						<td colspan="2">S/.  <?= number_format($costoTotalProyecto,2, '.', '');?> </td>
 						<td colspan="2">&nbsp;&nbsp;  </td>
 					</tr>
 				</table>    
