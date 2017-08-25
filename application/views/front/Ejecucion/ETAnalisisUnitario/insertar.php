@@ -68,7 +68,7 @@
 										<div class="col-md-10 col-sm-10 col-xs-12">
 											<label for="control-label">Presupuesto analítico (Clasificador | Presupuesto ejecución)</label>
 											<div>
-												<select name="selectPresupuestoAnalitico<?=$value->id_analisis?>" id="selectPresupuestoAnalitico<?=$value->id_analisis?>" class="form-control">
+												<select name="selectPresupuestoAnalitico<?=$value->id_analisis?>" id="selectPresupuestoAnalitico<?=$value->id_analisis?>" class="form-control selectPresupuestoAnaliticoAux">
 													<option></option>
 													<?php foreach($listaETPresupuestoAnalitico as $item){ ?>
 														<option value="<?=$item->id_analitico?>" <?=($item->id_analitico==$value->id_analitico ? 'selected' : '')?>><?=html_escape($item->desc_clasificador.' | '.$item->desc_presupuesto_ej)?></option>
@@ -881,7 +881,7 @@
 
 	function guardarPresupuestoAnaliticoParaAnalisisUnitario(idAnalisis)
 	{
-		paginaAjaxJSON({ idAnalisis : idAnalisis, idAnalitico : $('#selectPresupuestoAnalitico'+idAnalisis).val() }, base_url+'index.php/ET_Analisis_Unitario/actualizarAnalitico', 'POST', null, function(objectJSON)
+		paginaAjaxJSON({ idAnalisis : idAnalisis, idAnalitico : $('#selectPresupuestoAnalitico'+idAnalisis).val(), 'idDetallePartida' : <?=$etDetallePartida->id_detalle_partida?> }, base_url+'index.php/ET_Analisis_Unitario/actualizarAnalitico', 'POST', null, function(objectJSON)
 		{
 			objectJSON=JSON.parse(objectJSON);
 
@@ -892,6 +892,18 @@
 				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
 			},
 			function(){});
+
+			if(objectJSON.proceso=='Correcto')
+			{
+				if(objectJSON.partidaCompleta)
+				{
+					$('#rowPartida'+$('#hdIdPartidaEnAnalisisPresupuestal').val()).css({ "color" : "blue" });
+				}
+				else
+				{
+					$('#rowPartida'+$('#hdIdPartidaEnAnalisisPresupuestal').val()).css({ "color" : "red" });
+				}
+			}
 		}, false, true);
 	}
 </script>

@@ -473,7 +473,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 				return false;
 			}
 
-			var htmlTemp='<tr id="rowPartida'+objectJSON.idPartida+'" style="color: blue;" class="liPartida">'+
+			var htmlTemp='<tr id="rowPartida'+objectJSON.idPartida+'" style="color: red;" class="liPartida">'+
 				'<td style="width: 75px;">'+
 					'<input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida('+objectJSON.idPartida+', this);" style="width: 30px;">'+
 					'<input type="button" class="btn btn-default btn-xs" value="A" onclick="paginaAjaxDialogo(\'otherModal\', \'Análisis presupuestal\', { idET : <?=$expedienteTecnico->id_et?>, idPartida : '+objectJSON.idPartida+' }, \''+base_url+'index.php/ET_Analisis_Unitario/insertar\''+', \'get\', null, null, false, true);" style="width: 30px;">'+

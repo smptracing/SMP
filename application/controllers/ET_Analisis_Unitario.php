@@ -78,11 +78,31 @@ class ET_Analisis_Unitario extends CI_Controller
 	{
 		$idAnalisis=$this->input->post('idAnalisis');
 		$idAnalitico=$this->input->post('idAnalitico');
+		$idDetallePartida=$this->input->post('idDetallePartida');
 
 		$idAnalitico=($idAnalitico=='' || $idAnalitico==null ? 'NULL' : $idAnalitico);
 
 		$this->Model_ET_Analisis_Unitario->actualizarAnalitico($idAnalisis, $idAnalitico);
 
-		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Analítico guardado correctamente.']);exit;
+		$partidaCompleta=true;
+
+		$listaETAnalisisUnitario=$this->Model_ET_Analisis_Unitario->ETAnalisisUnitarioPorIdDetallePartida($idDetallePartida);
+
+		foreach($listaETAnalisisUnitario as $key => $value)
+		{
+			if($value->id_analitico==null)
+			{
+				$partidaCompleta=false;
+
+				break;
+			}
+		}
+
+		if(count($listaETAnalisisUnitario)==0)
+		{
+			$partidaCompleta=false;
+		}
+
+		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Analítico guardado correctamente.', 'partidaCompleta' => $partidaCompleta]);exit;
 	}
 }
