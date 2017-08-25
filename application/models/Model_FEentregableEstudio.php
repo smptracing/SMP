@@ -82,6 +82,16 @@ class Model_FEentregableEstudio extends CI_Model
             return true;
 
         }
+        function editar_Entregable($id_entregable,$Editxt_nombre_entre,$Editxt_denoMultiple,$Editxt_valoracion_entre)
+        {
+
+            $mensaje=$this->db->query("update ENTREGABLE_ESTUDIO SET id_denom_fe ='".$Editxt_denoMultiple."',
+                                        nombre_entregable='".$Editxt_nombre_entre."',
+                                        valoracion='".$Editxt_valoracion_entre."'
+                                        WHERE id_entregable ='$id_entregable'");
+            return true;
+
+        }
        function  UpdateEntregableAvance($sumaTotalAvance,$id_entregable)
         {
              $this->db->query("UPDATE ENTREGABLE_ESTUDIO  SET avance='".$sumaTotalAvance."' where id_entregable='".$id_entregable."' ");

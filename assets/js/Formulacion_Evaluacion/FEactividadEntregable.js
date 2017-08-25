@@ -15,7 +15,8 @@
                                     swal("",registros[i]["MENSAJE"], "success");
                                    $('#form-AddActividades_Entregable')[0].reset();
                                    $("#VentanaActividades").modal("hide");
-                                   $('#datatable-actividadesV').dataTable()._fnAjaxUpdate();
+                                   generarActividadesVertical(registros[i]["id_entregable"]);
+                                  $('#datatable-actividadesV').dataTable()._fnAjaxUpdate();
                                    refrescarGantt();
                                    $("#calendarActividadesFE" ).remove();
                              		generarCalendario(registros[i]["id_entregable"]);//Generar calendario

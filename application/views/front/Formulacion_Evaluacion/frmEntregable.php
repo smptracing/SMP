@@ -1,12 +1,13 @@
-
-<!-- fin gantt -->
+<style type="text/css">
+  label{
+    margin-top:5px;
+  }
+</style>
 <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
               <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-
-                </div>
+                  
               </div>
             </div>
 
@@ -52,10 +53,11 @@
 
                                                                  
                                                                   <div class="table-responsive">
-                                                                    <table id="table_entregable" class="table table-striped">
+                                                                    <table id="table_entregable" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%" >
                                                                           <thead>
                                                                                 <tr>
-                                                                                  <td>ID entregable</td>
+                                                                                  <td></td>
+                                                                                  <td></td>
                                                                                    <td>Entregable</td>
                                                                                    <td>Responsable</td>
                                                                                    <td>Valorización</td>
@@ -168,9 +170,10 @@
 
                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
                       <ul id="myTab" class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></a>
+                        <input type="hidden" name="txtidEntregablePestana" id="txtidEntregablePestana">
+                        <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" onclick="generarCalendarioPestniaCalendar();" role="tab" data-toggle="tab" aria-expanded="true"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></a>
                         </li>
-                        <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></a>
+                        <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" onclick="generarCalendarioPestniaListar();" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></a>
                         </li>
                       </ul>
                       <div id="myTabContent" class="tab-content">
@@ -183,7 +186,7 @@
                               <p class="text-muted font-13 m-b-30">
                             </p>
 
-                            <table id="datatable-actividadesV" class="table" cellspacing="0" width="100%">
+                            <table id="datatable-actividadesV" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
                               <thead>
                                 <tr>
                                   <th>Id</th>
@@ -212,73 +215,116 @@
 
 <!--- agregar los  entregable-->
 <div class="modal fade" id="VentanaEntregable" role="dialog">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Entregable de Estudio</h4>
         </div>
         <div class="modal-body">
-                <div class="col-xs-12">
-                <form class="form-horizontal " id="form-AddEntregable"  method="POST" >
-                    <div class="row">
-	                      <div class="col-md-12 col-sm-12 col-xs-12">
-	                        <label>Componente</label> 
-	                        <input id="txt_nombre_entre" name="txt_nombre_entre" type="text" class="form-control" autocomplete="off">
-	                      </div>
-	                      <div class="col-md-6 col-sm-6 col-xs-12">
-	                      <label>Entregable</label>
-	                          <select class="selectpicker" id="txt_denominacion_entre" mane="txt_denominacion_entre" class="selectpicker" data-live-search-normalize="true" data-live-search="true" data-container="body" data-header="Denominaciones"  title="Seleccionar Entregable"  >
-	                            
-	                          </select>
-	                      </div>
-                    </div>
-                    <div class="row">
-	                      <input type="hidden"  id="txt_denoMultiple" name="txt_denoMultiple" class="form-control">
-	                      <div class="col-md-4">
-	                        <label>Valoración</label>
-	                        <input   id="txt_valoracion_entre" name="txt_valoracion_entre" class="form-control" autocomplete="off" data-validate-length-range="6" data-validate-words="2"  required="required" type="number" step='0.0'  placeholder="%" >
-	                      </div>
-	                      <div id="PorcentajeSuperado" style="text-align: right;color: red; margin-top: 25px;" class="col-md-4">
-	                        	
-	                      </div>
-	                      <div id="PorcentajeRestanteValorizacion" style="text-align:center ;color:#008080; margin-top:30px;" class="col-md-4">
-	                        	
-	                      </div>
-                     </div>
-
-					         <div class="row">
-	                     <div class="col-md-12 col-sm-12 col-xs-12 ">
-	                        <label>Observación</label>
-	                        <input id="txt_observacio_entre" name="txt_observacio_entre" type="text" class="form-control" name="msg">
-	                      </div>
-	                      <div class="col-md-12 col-sm-12 col-xs-12 ">
-	                        <label>Levantamiento de Observación</label>
-	                        <input id="txt_levantamintoO_entre" name="txt_levantamintoO_entre" type="text" class="form-control" name="msg">
-	                      </div>
-                     </div>
-
-                       <div class="ln_solid"></div>
-                      <div class="row" style="text-align: right;">
-                        <div class="col-md-6 col-md-offset-3">
-
-	                          <button  id="btn_entregableC"  name="btn_entregableC"  class="btn btn-success">
-	                            <span class="glyphicon glyphicon-floppy-disk"></span>
-	                            Guardar
-	                          </button>
-	                          <button  class="btn btn-danger" class="btn btn-danger" data-dismiss="modal">
-	                             <span class="glyphicon glyphicon-remove"></span>
-	                            Cancelar
-	                          </button>
-
-                        </div>
+                  <form class="form-horizontal " id="form-AddEntregable"  method="POST" >
+                      <div class="col-md-12">
+  	                      <div class="col-md-12 col-sm-12 col-xs-12">
+  	                        <label>Componente</label> 
+  	                          <input id="txt_nombre_entre" name="txt_nombre_entre" type="text" class="form-control" placeholder="Componente" autocomplete="off">
+  	                      </div>
+  	                      <div class="col-md-6 col-sm-6 col-xs-12">
+                              <div class="col-md-6 col-sm-6 col-xs-12"><label>Entregable</label></div>
+  	                          <select class="selectpicker" id="txt_denominacion_entre" mane="txt_denominacion_entre" class="selectpicker" data-live-search-normalize="true" data-live-search="true" data-container="body" data-header="Denominaciones"  title="Seleccionar Entregable"  >
+  	                            
+  	                          </select>
+  	                      </div>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                              <div class="col-md-6">
+                                <label>Valoración</label>
+                                <input   id="txt_valoracion_entre" name="txt_valoracion_entre" class="form-control" autocomplete="off" data-validate-length-range="6" data-validate-words="2"  required="required" type="number" step='0.0'  placeholder="%" >
+                              </div>
+                          </div>
+                          <div class="col-md-8 col-sm-8 col-xs-12">
+                              <input type="hidden"  id="txt_denoMultiple" name="txt_denoMultiple" class="form-control">
+                          
+                              <div id="PorcentajeSuperado" style="text-align: right;color: red; margin-top: 25px;" class="col-md-4">
+                                  
+                              </div>
+                              <div id="PorcentajeRestanteValorizacion" style="text-align:center ;color:#008080; margin-top:30px;" class="col-md-4">
+                                  
+                              </div>
+                          </div>
                       </div>
-
-                </form>
-            </div>
-    
+                  </form>
         </div>
         <div class="modal-footer">
+         <div class="row" style="text-align: center;">
+                          <div class="col-md-6 col-md-offset-3">
+
+                              <button  id="btn_entregableC"  name="btn_entregableC"  class="btn btn-success">
+                                <span class="glyphicon glyphicon-floppy-disk"></span>
+                                Guardar
+                              </button>
+                              <button  class="btn btn-danger" class="btn btn-danger" data-dismiss="modal">
+                                 <span class="glyphicon glyphicon-remove"></span>
+                                Cancelar
+                              </button>
+                          </div>
+           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="ModificarVentanaEntregable" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modificar de Estudio</h4>
+        </div>
+        <div class="modal-body">
+                  <form class="form-horizontal " id="form-modificarEntregable"  method="POST" >
+                      <div class="col-md-12">
+                          <div class="col-md-12 col-sm-12 col-xs-12">
+                            <label>Componente</label> 
+                               <input id="EdiEntregable" name="EdiEntregable" type="hidden" notValidate >
+                              <input id="Editxt_nombre_entre" name="Editxt_nombre_entre" type="text" class="form-control" placeholder="Componente" autocomplete="off">
+                          </div>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                              <div class="col-md-6 col-sm-6 col-xs-12"><label>Entregable</label></div>
+                              <select class="selectpicker" id="Editxt_denominacion_entre" mane="Editxt_denominacion_entre" class="selectpicker" data-live-search-normalize="true" data-live-search="true" data-container="body" data-header="Denominaciones"  title="Seleccionar Entregable"  >
+                                
+                              </select>
+                          </div>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                              <div class="col-md-6">
+                                <label>Valoración</label>
+                                <input   id="Editxt_valoracion_entre" name="Editxt_valoracion_entre" class="form-control" autocomplete="off" data-validate-length-range="6" data-validate-words="2"  type="number" step='0.0'  placeholder="%" >
+                              </div>
+                          </div>
+                          <div class="col-md-8 col-sm-8 col-xs-12">
+                              <input type="hidden"  id="Editxt_denoMultiple" name="Editxt_denoMultiple" class="form-control">
+                          
+                              <div id="PorcentajeSuperado" style="text-align: right;color: red; margin-top: 25px;" class="col-md-4">
+                                  
+                              </div>
+                              <div id="PorcentajeRestanteValorizacion" style="text-align:center ;color:#008080; margin-top:30px;" class="col-md-4">
+                                  
+                              </div>
+                          </div>
+                      </div>
+                  </form>
+        </div>
+        <div class="modal-footer">
+         <div class="row" style="text-align: center;">
+                          <div class="col-md-6 col-md-offset-3">
+
+                              <button  id="editarbtn_entregableC"  name="editarbtn_entregableC"  class="btn btn-success">
+                                <span class="glyphicon glyphicon-floppy-disk"></span>
+                                Guardar
+                              </button>
+                              <button  class="btn btn-danger" class="btn btn-danger" data-dismiss="modal">
+                                 <span class="glyphicon glyphicon-remove"></span>
+                                Cancelar
+                              </button>
+                          </div>
+           </div>
         </div>
       </div>
     </div>
@@ -464,7 +510,7 @@
                         
                       </div>
                           <div id="contenedor_responsable">
-                               <table id="table_responsableFormulador" class="stripe row-border order-column nowrap" ellspacing="0" width="100%">
+                               <table id="table_responsableFormulador" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
                                     <thead>
                                        <tr>
                                            <th></th>
@@ -472,7 +518,7 @@
                                            <td>Nombre</td>
                                            <td>Cargo</td>
                                            <td>Especialidad</td>
-                                           <td>Grado Academico</td>
+                                           
                                         </tr>
                                       </thead>
                                                                                  
@@ -525,7 +571,7 @@
                       <div class="col-md-12 col-sm-12 col-xs-12 input-group">
                       </div>
                           <div id="contenedor_responsable2">
-                               <table id="table_responsableActividad" class="stripe row-border order-column nowrap" ellspacing="0" width="100%">
+                               <table id="table_responsableActividad" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
                                        <thead>
                                           <tr>
                                              <th></th>
@@ -538,8 +584,8 @@
                               </table>
                           </div>
                  <form class="form-horizontal " id="form-AsignacionPersonalActividad"  method="POST" >
-                      <input type="hidden" class="form-control" id="txt_idPersonaActividad" name="txt_idPersonaActividad">
-                      <input type="hidden" class="form-control" id="txt_idActividadCronograma" name="txt_idActividadCronograma">
+                      <input type="text" class="form-control" id="txt_idPersonaActividad" name="txt_idPersonaActividad">
+                      <input type="text" class="form-control" id="txt_idActividadCronograma" name="txt_idActividadCronograma">
 
                       <div class="ln_solid"></div>
                       <div class="form-group">
@@ -583,7 +629,7 @@
 
          <div class="modal-body">
 
-              <table id="table_responsableEntregable" class="table datatable" ellspacing="0" width="100%">
+              <table id="table_responsableEntregable" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
                 <thead>
                                 <tr>
                                   <th>Responsable</th>
@@ -721,6 +767,50 @@
 	                regexp: "^0*(?:[1-9][0-9]?|100)$",
 	                message: '<b style="color: red;">El campo "Valoración" debe se numero mayor a 0 y menor o igual a 100.</b>'
 	          }
+            }
+          }
+        }
+      });
+    });
+     $(function()
+    {
+      $('#form-modificarEntregable').formValidation(
+      {
+        framework: 'bootstrap',
+        excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+        live: 'enabled',
+        message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+        trigger: null,
+        fields:
+        {
+          Editxt_nombre_entre:
+          {
+            validators: 
+            {
+              notEmpty:
+              {
+                message: '<b style="color: red;">El campo "Nombre de Componente" es requerido.</b>'
+              },
+              regexp:
+            {
+                  regexp: "[a-zA-Z áéíóúÁÉÍÓÚñÑ]",
+                  message: '<b style="color: red;">El campo "Nombre entregable" debe se texto.</b>'
+            }
+            }
+          },
+           editxt_valoracion_entre:
+          {
+            validators: 
+            {
+              notEmpty:
+              {
+                message: '<b style="color: red;">El campo "Valoración" es requerido.</b>'
+              },
+              regexp:
+            {
+                  regexp: "^0*(?:[1-9][0-9]?|100)$",
+                  message: '<b style="color: red;">El campo "Valoración" debe se numero mayor a 0 y menor o igual a 100.</b>'
+            }
             }
           }
         }

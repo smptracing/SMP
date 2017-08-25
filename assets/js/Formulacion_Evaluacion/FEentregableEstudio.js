@@ -1,6 +1,5 @@
  $(document).on("ready" ,function(){
 
-              //listados
               listarEntregablesFE();//
               listadoFormuladores();
               listarDenominacionFE();
@@ -10,28 +9,19 @@
                 var txt_denominacion_entre        =$("#txt_denominacion_entre").val();
                 $("#txt_denoMultiple").val(txt_denominacion_entre);
               });
-
-              /*$("#btn_entregableC").click(function(){
-                  var txt_nombre_entre        =$("#txt_nombre_entre").val();
-                  var txt_denominacion_entre  =$("#txt_denoMultiple").val();
-                  var txt_valoracion_entre    =$("#txt_valoracion_entre").val();
-                  var txt_observacio_entre    =$("#txt_observacio_entre").val();
-                 
-                  var txt_levantamintoO_entre =$("#txt_levantamintoO_entre").val();
-                   addEntreEstudio(txt_nombre_entre,txt_denominacion_entre,txt_valoracion_entre,txt_observacio_entre,txt_levantamintoO_entre);
-              });*/
+               $("#Editxt_denominacion_entre").change(function(){
+                var txt_denominacion_entre        =$("#Editxt_denominacion_entre").val();
+                $("#Editxt_denoMultiple").val(txt_denominacion_entre);
+              });
 
               $("#btn_entregableC").click(function(){//verificar si el entregable supera el o no el cien porciento para inavilitar el boton
 
                    event.preventDefault();
-
                    $('#form-AddEntregable').data('formValidation').validate();
-
-          					if(!($('#form-AddEntregable').data('formValidation').isValid()))
-          					{
-          						return;
-          					}
-                    
+      					if(!($('#form-AddEntregable').data('formValidation').isValid()))
+      					{
+      						return;
+      					}
                    var sumaValoracion=$("#txt_valoracion_entre").val();
                    $.ajax({
                           url: base_url+"index.php/FEentregableEstudio/MostrarAvance",//MOSTRAR AVANCE EN UN CAJA DE TEXTO PARA HABILTAR O INHABILTAR
@@ -39,7 +29,6 @@
                           data:{},
                           success: function(data)
                           {
-
                             var registros = eval(data); 
                             var sumaTotalValori=0;
                           	 for (var i = 0; i <registros.length;i++)
@@ -64,7 +53,51 @@
 				                  var txt_levantamintoO_entre =$("#txt_levantamintoO_entre").val();
 				                  addEntreEstudio(txt_nombre_entre,txt_denominacion_entre,txt_valoracion_entre,txt_observacio_entre,txt_levantamintoO_entre);
                               	  document.getElementById('btn_entregableC').disabled=false;
+                              	  $('#VentanaEntregable').modal('hide');
+                              	  formLimpiar();
+                             }
 
+                                 
+                            }
+                        });
+              });
+              $("#editarbtn_entregableC").click(function(){//verificar si el entregable supera el o no el cien porciento para inavilitar el boton
+                   event.preventDefault();
+                   $('#form-modificarEntregable').data('formValidation').validate();
+      					if(!($('#form-modificarEntregable').data('formValidation').isValid()))
+      					{
+      						return;
+      					}
+                   var sumaValoracion=$("#Editxt_valoracion_entre").val();
+                   $.ajax({
+                          url: base_url+"index.php/FEentregableEstudio/MostrarAvance",//MOSTRAR AVANCE EN UN CAJA DE TEXTO PARA HABILTAR O INHABILTAR
+                          type:"POST",
+                          data:{},
+                          success: function(data)
+                          {
+                            var registros = eval(data); 
+                            var sumaTotalValori=0;
+                          	 for (var i = 0; i <registros.length;i++)
+                             {
+                                sumaValoracion=parseInt(sumaValoracion)+parseInt(registros[i]["valoracion"]);
+                                sumaTotalValori=parseInt(registros[i]["valoracion"])+parseInt(sumaTotalValori);
+                             };
+                             if(sumaValoracion>100)
+                             {
+                               	$("#PorcentajeSuperado ").html('');
+                                var restante=(parseInt(sumaValoracion)-100);
+                                document.getElementById('btn_entregableC').disabled=false;
+                                $("#PorcentajeSuperado ").html('<p>Sobrepaso la valorizacion en :'+restante+'%</p>');
+
+                             }else
+                             {
+                          		  var IdEntregable            =$("#EdiEntregable").val();
+				                  var Editxt_nombre_entre  =$("#Editxt_nombre_entre").val();
+				                  var Editxt_denoMultiple  =$("#Editxt_denoMultiple").val();
+				                  var Editxt_valoracion_entre    =$("#Editxt_valoracion_entre").val();
+				                 $("#PorcentajeSuperado ").html('');
+				                  editarEntreEstudio(IdEntregable,Editxt_nombre_entre,Editxt_denoMultiple,Editxt_valoracion_entre);
+                              	  document.getElementById('btn_entregableC').disabled=false;
                               	  $('#VentanaEntregable').modal('hide');
                               	  formLimpiar();
 
@@ -185,7 +218,17 @@ function formLimpiar()
 {
 	document.getElementById("form-AddEntregable").reset();
 }
-//refrescar gant
+//refrescar gant   ;//listar actividades
+function generarCalendarioPestniaCalendar()//actividades
+{
+	var id_entregable=$("#txtidEntregablePestana").val();
+     generarCalendario(id_entregable);
+}
+function generarCalendarioPestniaListar()//actividades
+{
+	var id_entregable=$("#txtidEntregablePestana").val();
+     generarActividadesVertical(id_entregable)
+}
 var refrescarGantt=function()
 {
   gantt.refreshData();
@@ -212,6 +255,24 @@ var addEntreEstudio=function(txt_nombre_entre,txt_denominacion_entre,txt_valorac
                       });
                   };
 //lisatra denominacion 
+var editarEntreEstudio=function(IdEntregable,Editxt_nombre_entre,Editxt_denoMultiple,Editxt_valoracion_entre)
+{
+		event.preventDefault();
+                      $.ajax({
+                          url:base_url+"index.php/FEentregableEstudio/editar_Entregable",
+                          type:"POST",
+                          data:{IdEntregable:IdEntregable,Editxt_nombre_entre:Editxt_nombre_entre,Editxt_denoMultiple:Editxt_denoMultiple,Editxt_valoracion_entre:Editxt_valoracion_entre},
+                          success:function(resp)
+                          {
+                           swal("",resp, "success");
+                           $('#form-AddEntregable')[0].reset();
+                           $("#ModificarVentanaEntregable").modal("hide");
+                           listarEntregablesFE();
+                           valorizacionRestante();
+                           $('#table_entregable').dataTable()._fnAjaxUpdate();
+                         }
+                      });
+}
 
  var listarDenominacionFE=function(){
                   var htmlD="";
@@ -226,6 +287,7 @@ var addEntreEstudio=function(txt_nombre_entre,txt_denominacion_entre,txt_valorac
                                    htmlD +="<option value="+registros[i]["id_denom_fe"]+"> "+registros[i]["denom_fe"]+" </option>";   
                                 };
                                 $("#txt_denominacion_entre").html(htmlD);
+                                $("#Editxt_denominacion_entre").html(htmlD);
                                 $('.selectpicker').selectpicker('refresh'); 
                             }
                         });
@@ -355,7 +417,7 @@ var generarActividadesVertical=function(id_en)
                      "processing":true,
                       "serverSide":false,
                       destroy:true,
-                       "paging":   false,
+                      "paging":   false,
 
                          "ajax":{
                                     "url":base_url+"index.php/FEActividadEntregable/get_Actividades",
@@ -402,7 +464,7 @@ var generarActividadesVertical=function(id_en)
                     $(tbody).on("click","a.editar",function(){
                         var data=table.row( $(this).parents("tr")).data();
                         var id_ctividad=data.id;
-                        //alert(id_ctividad);
+                        console.log(id_ctividad);
                          var txt_idActividadCronograma=$("#txt_idActividadCronograma").val(id_ctividad);
                          $("#txt_NombreActividadTitleResponsable").html(data.title);
                          $("#txt_idActividadCronograma").val(id_ctividad); 
@@ -426,6 +488,7 @@ var generarActividadesVertical=function(id_en)
                                     "dataSrc":""
                                     },
                                 "columns":[
+                                    {"data":"id_denom_fe","visible":false},
                                     {"data":"id_entregable","visible":false},
                                     {"data":"nombre_entregable","mRender":function (data,type, full) {
                                          return ""+data+"</br><button type='button'  class='ListarActividad btn  btn-xs' title='Mostrar  Actividades' ><i class='glyphicon glyphicon-calendar' aria-hidden='true'></i></button></br></br>";
@@ -451,7 +514,7 @@ var generarActividadesVertical=function(id_en)
                                          return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Complete</small></td>" ;
                                     }},
                        
-                                    {"defaultContent":"<button type='button' class='actividad btn btn-warning btn-xs' title='Agregar actividad al entregable' data-toggle='modal' data-target='#VentanaActividades'><i class='glyphicon glyphicon-plus-sign' aria-hidden='true'></i></button>"}                            
+                                    {"defaultContent":"<button type='button' class='actividad btn btn-warning btn-xs' title='Agregar actividad al entregable' data-toggle='modal' data-target='#VentanaActividades'><i class='glyphicon glyphicon-plus-sign' aria-hidden='true'></i></button><button type='button' class='EditarEntregable btn btn-primary btn-xs' title='Modificar Entregable' data-toggle='modal' data-target='#ModificarVentanaEntregable'><i class='fa fa-pencil' aria-hidden='true'></i></button>"}                            
 
                                 ],
 
@@ -462,15 +525,26 @@ var generarActividadesVertical=function(id_en)
                      addActividades("#table_entregable",table);  
                      getActividad("#table_entregable",table);   
                      AsignacionPersonaEntregables("#table_entregable",table);  
-                     ListaResponsableEntregable("#table_entregable",table);           
+                     ListaResponsableEntregable("#table_entregable",table);  
+                     ModificarEntregable("#table_entregable",table);         
               }
-
+              	  var  ModificarEntregable=function(tbody,table)
+              	  {
+              	  	$(tbody).on("click","button.EditarEntregable",function(){
+                              var data=table.row( $(this).parents("tr")).data();
+                              		  $('#EdiEntregable').val(data.id_entregable);
+                              		  $('#Editxt_nombre_entre').val(data.nombre_entregable);
+                              		  $('#Editxt_denoMultiple').val(data.id_denom_fe);
+                             		  $('#Editxt_valoracion_entre').val(data.valoracion);
+                             });
+              	  }
                   var AsignacionPersonaEntregables=function(tbody,table){
                            $(tbody).on("click","a.AsignacionPersonaEntregables",function(){
                               var data=table.row( $(this).parents("tr")).data();
                               $('#txt_identregable').val(data.id_entregable);
                                var id_entregable=data.id_entregable;
                                $("#calendarActividadesFE" ).remove();
+
                                 generarCalendario(data.id_entregable);//Generar calendario
                              });
                   }
@@ -494,6 +568,7 @@ var generarActividadesVertical=function(id_en)
                               $("#LabelEntregable").html(data.nombre_entregable);
                               ListaResponsableEntregableT(id_entregable);//listar responsable de los entregables
                               $("#calendarActividadesFE" ).remove();
+                              $("#txtidEntregablePestana").val(data.id_entregable);
                               generarCalendario(data.id_entregable);//Generar calendario
 
                              });
@@ -503,6 +578,7 @@ var generarActividadesVertical=function(id_en)
                               var data=table.row( $(this).parents("tr")).data();
                               generarActividadesVertical(data.id_entregable);//listar actividades
                               $("#calendarActividadesFE" ).remove();
+                               $("#txtidEntregablePestana").val(data.id_entregable);
                               generarCalendario(data.id_entregable);//Generar calendario
 
                              });
