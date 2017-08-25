@@ -20,6 +20,7 @@ function mostrarMetaAnidada($meta)
 			'</tr>';
 		}
 	}
+	
 
 	foreach($meta->childMeta as $key => $value)
 	{
@@ -28,6 +29,7 @@ function mostrarMetaAnidada($meta)
 
 	return $htmlTemp;
 }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -71,35 +73,35 @@ function mostrarMetaAnidada($meta)
 				<td width="100">&nbsp;&nbsp; META </td>
 				<td style="text-align: center;"></td>
 				<td>  </td>
-				<td style="text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp;  0137-2014 </td>
+				<td style="text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp; <?=$MostraExpedienteNombre->meta_et;?> </td>
 			</tr>
 			<tr>
 				<td>  </td>
 				<td>&nbsp;&nbsp; INVERSIÓN: </td> 
 				<td style="text-align: center;"></td>
 				<td>  </td>
-				<td style="text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp;  S/. 2.252.770,73</td>
+				<td style="text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp;  <?=$MostraExpedienteNombre->costo_total_inv_et;?> </td>
 			</tr>
 			<tr>
 				<td>  </td>
 				<td style="text-align: left;" >&nbsp;&nbsp; FUENTE DE FINANCIAMINETO: </td>
 				<td style="text-align: center;"> </td>
 				<td>  </td>
-				<td style="text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp;  RECURSO ORDINARIOS </td>
+				<td style="text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp; <?=$MostraExpedienteNombre->fuente_financiamiento_et;?> </td>
 			</tr>
 			<tr>
 				<td>  </td>
 				<td>&nbsp;&nbsp; MODALIDAD: </td>
 				<td style="text-align: center;">  </td>
 				<td>  </td>
-				<td style="text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp;  ADMINISTRACIÓN DIRECTA </td>
+				<td style="text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp; <?=$MostraExpedienteNombre->modalidad_ejecucion_et;?> </td>
 			</tr>
 			<tr>
 				<td>  </td>
 				<td>&nbsp;&nbsp; AÑO: </td>
 				<td style="text-align: center;"> </td>
 				<td>  </td>
-				<td style="text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp;  2014 </td>
+				<td style="text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp;  <?=$MostraExpedienteNombre->fecha_registro;?> </td>
 			</tr>
 
 		</table>    
