@@ -846,7 +846,7 @@
 	{
 		if(confirm('¿Realmente desea borrar todo este análisis unitario?'))
 		{
-			paginaAjaxJSON({ "idAnalisis" : idAnalisis }, base_url+'index.php/ET_Analisis_Unitario/eliminar', 'POST', null, function(objectJSON)
+			paginaAjaxJSON({ "idAnalisis" : idAnalisis, "idDetallePartida" : <?=$etDetallePartida->id_detalle_partida?> }, base_url+'index.php/ET_Analisis_Unitario/eliminar', 'POST', null, function(objectJSON)
 			{
 				objectJSON=JSON.parse(objectJSON);
 
@@ -857,6 +857,18 @@
 					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
 				},
 				function(){});
+
+				if(objectJSON.proceso=='Correcto')
+				{
+					if(objectJSON.partidaCompleta)
+					{
+						$('#rowPartida'+$('#hdIdPartidaEnAnalisisPresupuestal').val()).css({ "color" : "blue" });
+					}
+					else
+					{
+						$('#rowPartida'+$('#hdIdPartidaEnAnalisisPresupuestal').val()).css({ "color" : "red" });
+					}
+				}
 
 				$(element).parent().parent().parent().parent().parent().parent().parent().parent().remove();
 

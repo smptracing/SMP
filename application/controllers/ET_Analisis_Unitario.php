@@ -68,12 +68,15 @@ class ET_Analisis_Unitario extends CI_Controller
 		$this->db->trans_start();
 
 		$idAnalisis=$this->input->post('idAnalisis');
+		$idDetallePartida=$this->input->post('idDetallePartida');
 
 		$this->Model_ET_Analisis_Unitario->eliminar($idAnalisis);
 
+		$partidaCompleta=$this->partidaEstaCompleta($idDetallePartida);
+
 		$this->db->trans_complete();
 
-		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Análisis unitario eliminado correctamente.']);exit;
+		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Análisis unitario eliminado correctamente.', 'partidaCompleta' => $partidaCompleta]);exit;
 	}
 
 	public function actualizarAnalitico()
