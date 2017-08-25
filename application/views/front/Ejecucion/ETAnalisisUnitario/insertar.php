@@ -534,6 +534,15 @@
 				return false;
 			}
 
+			if(objectJSON.partidaCompleta)
+			{
+				$('#rowPartida'+$('#hdIdPartidaEnAnalisisPresupuestal').val()).css({ "color" : "blue" });
+			}
+			else
+			{
+				$('#rowPartida'+$('#hdIdPartidaEnAnalisisPresupuestal').val()).css({ "color" : "red" });
+			}
+
 			var htmlTemp='<div class="panel-group" style="margin: 2px;">'+
 				'<div class="panel panel-default">'+
 					'<div class="panel-heading" data-toggle="collapse" href="#collapse'+objectJSON.idAnalisis+'" style="cursor: pointer;">'+
