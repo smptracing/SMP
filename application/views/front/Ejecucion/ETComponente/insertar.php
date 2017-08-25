@@ -11,7 +11,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 	{
 		foreach($meta->childPartida as $key => $value)
 		{
-			$htmlTemp.='<tr id="rowPartida'.$value->id_partida.'" style="color: blue;" class="liPartida">'.
+			$htmlTemp.='<tr id="rowPartida'.$value->id_partida.'" style="color: '.($value->partidaCompleta ? 'blue' : 'red').';" class="liPartida">'.
 				'<td style="width: 75px;">'.
 					'<input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida('.$value->id_partida.', this);" style="width: 30px;">'.
 					'<input type="button" class="btn btn-default btn-xs" value="A" onclick="paginaAjaxDialogo(\'otherModal\', \'Análisis presupuestal\', { idET : '.$idExpedienteTecnico.', idPartida : '.$value->id_partida.' }, \''.base_url().'index.php/ET_Analisis_Unitario/insertar\', \'get\', null, null, false, true);" style="width: 30px;">'.
