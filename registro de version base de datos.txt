@@ -1,1 +1,2 @@
 - 240817 9:15am se realizo copia de base de datos y se registro evento en el repositorio
+- 250817 7:56am se realizo copia de base de datos y se registro evento en el repositorio como TAG1 (DBPRUEBA3)
