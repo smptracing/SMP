@@ -384,7 +384,6 @@ class Expediente_Tecnico extends CI_Controller
 			}
 		}
 
-
         $this->load->library('mydompdf');
         $html= $this->load->view('front/Ejecucion/ExpedienteTecnico/reportePdfPresupuestoAnalitico',['MostraExpedienteNombre' => $MostraExpedienteNombre,'PresupuestoEjecucionListar' =>$PresupuestoEjecucionListar], true);
         $this->mydompdf->load_html($html);

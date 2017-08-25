@@ -74,7 +74,7 @@
 							<td colspan="2">&nbsp;&nbsp; OBSERVACIÓN </td>
 						</tr>
 					</tr>
-					<?php $costoTotalDirecto=0; foreach ($PresupuestoEjecucionListar as  $value) {?>
+					<?php $costoTotalDirecto=0;$costoTotalIndirecto=0; $costoTotalProyecto=0;foreach ($PresupuestoEjecucionListar as  $value) {?>
 					<tr>
 						<td rowspan="1" > <?= $value->desc_presupuesto_ej;?></td>
 						<td rowspan="1" style="text-align: center;" >  </td>
@@ -91,13 +91,20 @@
 									<td colspan="2"> <?= $Itemp->desc_clasificador;?> </td>
 									
 										<td colspan="2">
-										<?php foreach ( $Itemp->ChilCostoDetallePartida as $Itemp) {  ?>
-											<?= $Itemp->costoDirecto?>
-										<?php  $costoTotalDirecto+=(int)$Itemp->costoDirecto;}?>
+										<?php  foreach ($Itemp->ChilCostoDetallePartida as $ItempX) {if($value->desc_presupuesto_ej=='Costos Directos'){ ?>
+											S/. <?= $ItempX->costoDirecto?> 
+										<?php  $costoTotalDirecto+=(int)$ItempX->costoDirecto;}}?>
 										</td>
-									
-									<td colspan="2">&nbsp;&nbsp; </td>
-									<td colspan="2"> &nbsp;&nbsp; </td>
+										<td colspan="2"> 
+											<?php  foreach ($Itemp->ChilCostoDetallePartida as $ItempX) {if($value->desc_presupuesto_ej!='Costos Directos'){ ?>
+												S/. <?= $ItempX->costoDirecto?> 
+											<?php  $costoTotalIndirecto+=(int)$ItempX->costoDirecto;}}?>
+										</td>
+										<td colspan="2"> 
+												<?php  foreach ($Itemp->ChilCostoDetallePartida as $ItempX) { ?>
+													S/. <?= $ItempX->costoDirecto?> 
+												<?php  $costoTotalProyecto+=(int)$ItempX->costoDirecto;}?>
+									    </td>
 									<td colspan="2"> &nbsp;&nbsp;  </td>
 								</tr>
 							<?php } ?>
@@ -108,9 +115,9 @@
 						<td rowspan="1" >  </td>
 						<td rowspan="1" style="text-align: center;" > </td>
 						<td colspan="2" >  </td>
-						<td colspan="2" > S/  <?= number_format($costoTotalDirecto, 2, ',', ' ') ;?></td>
-						<td colspan="2" > </td>
-						<td colspan="2">&nbsp;&nbsp;  </td>
+						<td colspan="2" > S/.  <?= number_format($costoTotalDirecto, 2, ',', ' ') ;?></td>
+						<td colspan="2" > S/.  <?= number_format($costoTotalIndirecto, 2, ',', ' ') ;?></td>
+						<td colspan="2">S/.  <?= number_format( $costoTotalProyecto, 2, ',', ' ') ;?> </td>
 						<td colspan="2">&nbsp;&nbsp;  </td>
 					</tr>
 				</table>    
