@@ -12,16 +12,14 @@ function mostrarMetaAnidada($meta)
 	{
 		foreach($meta->childPartida as $key => $value)
 		{
-			$htmlTemp.='<tr>'.
-				'<td>'.$value->numeracion.'.</td>'.
-				'<td>'.strtoupper(html_escape($value->desc_partida)).'</td>'.
-
-				'<td style="text-align: right;">'.$value->cantidad.'</td>'.
-			'</tr>';
+				$htmlTemp.='<tr>'.
+				'<td></td>'.
+				'<td></td>'.
+				'<td style="text-align: right;">'.$value->parcial.'</td>'.
+				'</tr>';
 		}
 	}
 	
-
 	foreach($meta->childMeta as $key => $value)
 	{
 		$htmlTemp.=mostrarMetaAnidada($value);
@@ -115,7 +113,7 @@ function mostrarMetaAnidada($meta)
 	<ul class="romanos_upper" style="margin-top: 140px;font-size:10px;position: absolute;margin-left: 80px;">
 		
 	</ul>
-		<table style="width: 100%;">
+		<table style="width: 100%; font-size:8px;">
 				<tr>
 					<th style="height: 50px;text-align: left;width: 40px;">ÍTEM</th>
 					<th>EXPEDIENTE GENERAL<br/>  GLOBAL</th>

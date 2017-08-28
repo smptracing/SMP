@@ -419,15 +419,37 @@ class Expediente_Tecnico extends CI_Controller
 			$value->childMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($value->id_componente);
 			foreach ($value->childMeta as $index => $item) 
 			{
-				$this->obtenerMetaAnidada($item);
+				$this->obtenerMetaAnidadaReporteF005($item);
+				
 			}
 	    } 
+
+	   
 		$html= $this->load->view('front/Ejecucion/ExpedienteTecnico/reportePresupuestoFF05',['MostraExpedienteTecnicoExpe'=>$MostraExpedienteTecnicoExpe,'MostraExpedienteNombre' => $MostraExpedienteNombre], true);
 		$this->mydompdf->set_paper('latter','landscape');
 		$this->mydompdf->load_html($html);
 		$this->mydompdf->render();
 		$this->mydompdf->stream("reportePresupuestoFF05.pdf", array("Attachment" => false));
 	}
+	private function obtenerMetaAnidadaReporteF005($meta)
+	{
+		$temp=$this->Model_ET_Meta->ETMetaPorIdMetaPadre($meta->id_meta);
+
+		$meta->childMeta=$temp;
+
+		if(count($temp)==0)
+		{
+			$meta->childPartida=$this->Model_ET_Detalle_Partida->ETDetallePartidaPorIdPartidaMontoff05($meta->id_meta);
+			
+			return false;
+		}
+
+		foreach($meta->childMeta as $key => $value)
+		{
+			$this->obtenerMetaAnidadaReporteF005($value);
+		}
+	}
+	
 	private function obtenerMetaAnidada($meta)
 	{
 		$temp=$this->Model_ET_Meta->ETMetaPorIdMetaPadre($meta->id_meta);
@@ -446,7 +468,6 @@ class Expediente_Tecnico extends CI_Controller
 			$this->obtenerMetaAnidada($value);
 		}
 	}
-	
 	public function eliminar()
 	{
 		if ($this->input->is_ajax_request()) 

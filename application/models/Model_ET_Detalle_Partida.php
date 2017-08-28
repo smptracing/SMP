@@ -50,4 +50,11 @@ class Model_ET_Detalle_Partida extends CI_Model
 
 		return $data->result();
 	}
+
+	function ETDetallePartidaPorIdPartidaMontoff05($id_meta)
+	{
+		$data=$this->db->query("select sum (ET_DETALLE_PARTIDA.parcial)as parcial from ET_PARTIDA inner join ET_DETALLE_PARTIDA ON ET_PARTIDA.id_partida=ET_DETALLE_PARTIDA.id_partida where id_meta=".$id_meta." and estado=1");
+
+		return $data->result();
+	}
 }
