@@ -291,9 +291,12 @@ function initMap()
                 {
                     position: { lat : registros[i]["latitud"], lng: registros[i]["longitud"] },
                     map : map,
+                    image:base_url+'img/Semaforomalogrado.png',
                     title : registros[i]["distrito"]+": "+registros[i]["nombre_pi"]
+
                 });
             }
+
         }
     });
 }

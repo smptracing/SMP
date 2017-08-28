@@ -774,3 +774,232 @@
     </div>
 </div>
 <!-- /.Fin Ventana Registar operacion y mantenimiento-->
+
+
+<!-- /. INICIO VENTANA EDITAR PROYECTOS DE INVERSIÓN-->
+<div class="modal fade" id="venta_editar_proyecto" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
+          Editar proyectos de inversión </h4>
+        </div>
+        <div class="modal-body">
+         <div class="row">
+                    <div class="col-xs-12">
+                                        <!-- PAGE CONTENT BEGINS -->
+              <form class="form-horizontal " id="form_EditarProyectosInversion"   action="<?php echo base_url(); ?>bancoproyectos/AddProyectos" method="POST" >
+                      <div class="item form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input id="txt_id_Pip_m" name="txt_id_Pip_m" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="text">
+                        </div>
+                      </div>
+                                 <div class="row">
+                                      <div class="col-md-4">
+                                       <div class="col-md-7 col-sm-6 col-xs-12">
+                                            <label for="name">Codigo Único<span class="required">*</span>
+                                            </label>
+                                                  <input id="txtCodigoUnico_m" name="txtCodigoUnico_m"  class="form-control col-md-7 col-xs-5" placeholder="Codigo Unico" required="required" type="text">
+                                             </div>
+                                      </div>
+                                      <div class="col-md-4">
+
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label  for="name">Tipo inversión<span class="required">*</span>
+                                        </label>
+                                          <!--  <select id="cbxTipoInv" name="cbxTipoInv" class="selectpicker" disabled>
+                                            </select>-->
+                                                <select id="cbx_m" name="cbx_m" class="selectpicker" >
+                                                    <option selected value="2">NO PIP</option>
+                                              </select>
+                                         </div>
+                                      </div>
+                                      <div class="col-md-4">
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                             <label  for="textbox"><span class="required">Ciclo Inversión</span>
+                                              </label>
+                                            <!--<select id="cbxEstCicInv_m" name="cbxEstCicInv_m" class="selectpicker"  title="Elija Ciclo de Inversión" required="required">
+                                            </select>-->
+                                            <select id="cbxEstCicInv_m" name="cbxEstCicInv_m" class="selectpicker"  >
+                                 </select>
+                                            </div>
+                                      </div>
+                                    </div>
+
+                                 <div class="row">
+
+                                      <div class="col-md-12">
+
+                                        <label class="control-label col-md-1 col-sm-12 col-xs-12" for="name">Inversion<span class="required"></span>
+                                        </label>
+                                         <div class="col-md-12 col-sm-12 col-xs-12">
+                                          <input id="txtNombrePip_m" name="txtNombrePip_m" class="form-control col-md-12 col-xs-5" placeholder="Nombre Inversion" required="required" type="text">
+                                            <!--<textarea  id="txtNombrePip" name="txtNombrePip" class="form-control" data-validate-length-range="6" data-validate-words="2" placeholder="Nombre Inversion"></textarea>-->
+                                        </div>
+                                      </div>
+
+                                 </div>
+                                 <hr>
+                               <div class="row">
+                                      <div class="col-md-4">
+
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label  for="name">Naturaleza<span class="required">*</span>
+                                        </label>
+                                            <select id="cbxNatI_m" name="cbxNatI_m" class="selectpicker"  >
+                                            </select>
+                                         </div>
+                                      </div>
+                                      <div class="col-md-4">
+
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                             <label  for="textbox"><span class="required">Nivel de Gobierno</span>
+                                        </label>
+                                            <select id="cbxNivelGob_m" name="cbxNivelGob_m" class="selectpicker" >
+                                            </select>
+                                            </div>
+                                      </div>
+                                       <div class="col-md-4">
+
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                               <label  for="textbox"><span class="required">Unidad Ejecutora</span>
+                                                </label>
+                                                <select id="cbxUnidadEjecutora_m"  name="cbxUnidadEjecutora_m" class="selectpicker">
+                                                </select>
+                                            </div>
+                                      </div>
+                              </div>
+
+
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <label for="name" style="text-align:left">Función<span class="required">*</span></label>
+                                        <select id="cbxFuncion_m" name="cbxFuncion_m" class="selectpicker" ></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <label  for="textbox"><span class="required">División</span></label>
+                                        <select id="cbxDivFunc_inicio" name="cbxDivFunc_inicio" class="selectpicker"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <label for="textbox"><span class="required">Grupo</span></label>
+                                        <select id="cbxGrupoFunc_m" name="cbxGrupoFunc_m" class="selectpicker"></select>
+                                    </div>
+                                </div>
+                            </div>
+
+                                  <hr>
+                                   <div class="row">
+                                      <div class="col-md-4">
+
+                                            <div class="col-md-11 col-sm-6 col-xs-12">
+                                            <label  for="name">Costo de Inversion<span class="required">*</span>
+                                        </label>
+                                            <input id="txtCostoPip_m" name="txtCostoPip_m" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Costo de inversion" required="required" type="number">
+                                         </div>
+                                      </div>
+                                       <div class="col-md-4">
+                                           <div class="col-md-11 col-sm-6 col-xs-12">
+                                             <label for="textbox"><span class="required">Número de beneficiarios</span>
+                                             </label>
+                                              <input id="txt_beneficiarios_m" name="txt_beneficiarios_m" class="form-control col-md-7 col-xs-7 notValidate" data-validate-length-range="6" data-validate-words="2" placeholder="Número de beneficiarios" required="required" type="number">
+                                            </div>
+                                      </div>
+                                      <div class="col-md-4">
+
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label  for="name">Fuente Finan.<span class="required">*</span>
+                                            </label>
+                                            <select id="cbxFuenteFinanciamiento_m" name="cbxFuenteFinanciamiento_m" class="selectpicker" >
+                                            </select>
+                                         </div>
+                                      </div>
+                              </div>
+
+                                  <div class="row">
+                                      <div class="col-md-4">
+
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                             <label for="textbox"><span class="required">Rubro Ejecucion</span>
+                                             </label>
+                                              <select id="cbxRubroEjecucion_m" name="cbxRubroEjecucion_m" class="selectpicker" >
+                                              </select>
+                                            </div>
+                                      </div>
+                                       <div class="col-md-4">
+
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                               <label  for="textbox"><span class="required">Modalidad</span>
+                                                </label>
+                                                 <select id="cbxModalidadEjecucion_m" name="cbxModalidadEjecucion_m" class="selectpicker"  >
+                                                </select>
+                                            </div>
+                                      </div>
+                                       <div class="col-md-4">
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <label  for="textbox"><span class="required">Tipologia de Inversion</span></label>
+                                                <select id="cbxTipologiaInversion_m" name="cbxTipologiaInversion_m" class="selectpicker"></select>
+                                            </div>
+                                      </div>
+                              </div>
+                               <div class="row">
+                                    <div class="col-md-4">
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label  for="name">Programa<span class="required">*</span>
+                                            </label>
+                                              <select id="cbxProgramaPresupuestal_m" name="cbxProgramaPresupuestal_m" class="selectpicker"  >
+                                            </select>
+                                         </div>
+                                      </div>
+                                     <!-- <div class="col-md-4">
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label  for="name">Tipología NO PIP<span class="required">*</span>
+                                            </label>
+                                              <select id="Cbx_TipoNoPip_m" name="Cbx_TipoNoPip_m" class="selectpicker"  >
+                                            </select>
+                                         </div>
+                                      </div>-->
+                                       <div class="col-md-4">
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label  for="name">Estado<span class="required">*</span>
+                                            </label>
+                                            <select id="cbx_estado_m" name="cbx_estado_m" class="selectpicker">
+                                              <option value="1">Activo</option>
+                                              <option value="0">Inactivo</option>
+                                            </select>
+                                         </div>
+                                      </div>
+                              </div>
+
+                    <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                        <center>
+                          <button id="send" type="submit" class="btn btn-success">
+                            <span class="glyphicon glyphicon-floppy-disk"></span>
+                            Guardar
+                          </button>
+                           <button  class="btn btn-danger" data-dismiss="modal">
+                             <span class="glyphicon glyphicon-remove"></span>
+                            Cancelar
+                          </button>
+                          </center>
+                        </div>
+                      </div>
+                    </form>
+                        </div><!-- /.span -->
+                 </div><!-- /.row -->
+        </div>
+        <div class="modal-footer">
+
+        </div>
+      </div>
+    </div>
+</div>
+<!-- /.FIN VENTANA EDITAR PROYECTOS DE INVERSION-->

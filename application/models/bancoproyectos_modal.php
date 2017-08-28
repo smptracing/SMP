@@ -130,29 +130,24 @@ class bancoproyectos_modal extends CI_Model
     }
     //FIN AGREGAR UN PROYECTO
     //EDITAR UN PROYECTO PIP
-    public function update_no_pip($flat, $id_pi, $cbxUnidadEjecutora, $cbxNatI, $cbxTipologiaInv, $cbxTipoInv, $cbxGrupoFunc, $cbxNivelGob, $cbxProgramaPres, $txtCodigoUnico, $txtNombrePip, $txtCostoPip, $txt_beneficiarios, $dateFechaInPip, $dateFechaViabilidad, $cbx_estado, $cbxEstCicInv_, $cbxRubro, $cbxModalidadEjec, $Cbx_TipoNoPip_i)
+    public function update_no_pip($flat, $id_pi, $cbxUnidadEjecutora, $cbx_tipo_no_pip_m, $cbxGrupoFunc, $cbxNivelGob, $txtCodigoUnico, $txtNombrePip, $txtCostoPip, $txt_beneficiarios, $cbx_tipo_inversion, $cbxEstado_pi, $cbxRubro, $cbxModalidadEjec, $Cbx_TipoNoPip_m)
     {
-        $this->db->query("execute sp_Gestionar_ProyectoInversion_
+        $this->db->query("execute sp_Gestionar_ProyectoInversion
             @Opcion='" . $flat . "',
             @id_pi='" . $id_pi . "',
             @id_ue='" . $cbxUnidadEjecutora . "',
-            @id_naturaleza_inv='" . $cbxNatI . "',
-            @id_tipologia_inv='" . $cbxTipologiaInv . "',
-            @id_tipo_inv='" . $cbxTipoInv . "',
+            @id_tipo_inv='" . $cbx_tipo_no_pip_m . "',
             @id_grupo_funcional='" . $cbxGrupoFunc . "',
             @id_nivel_gob='" . $cbxNivelGob . "',
-            @id_programa_pres='" . $cbxProgramaPres . "',
             @codigo_unico_pi='" . $txtCodigoUnico . "',
             @nombre_pi='" . $txtNombrePip . "',
             @costo_pi='" . $txtCostoPip . "',
             @num_beneficiarios='" . $txt_beneficiarios . "',
-            @fecha_registro_pi='" . $dateFechaInPip . "',
-            @fecha_viabilidad_pi='" . $dateFechaViabilidad . "',
-            @estado_pi='" . $cbx_estado . "',
-            @id_estado_ciclo='" . $cbxEstCicInv_ . "',
+            @estado_pi='" . $cbxEstado_pi . "',
+            @id_estado_ciclo='" . $cbx_tipo_inversion . "',
             @id_rubro='" . $cbxRubro . "',
             @id_modalidad_ejec='" . $cbxModalidadEjec . "',
-            @id_tipo_nopip='" . $Cbx_TipoNoPip_i . "'");
+            @id_tipo_nopip='" . $Cbx_TipoNoPip_m . "'");
         if ($this->db->affected_rows() > 0) {
             return true;
         } else {

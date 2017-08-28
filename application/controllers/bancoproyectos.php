@@ -88,31 +88,35 @@ class bancoproyectos extends CI_Controller
     public function update_no_pip()
     {
         if ($this->input->is_ajax_request()) {
-            $flat                = "U_IPCNOPIP";
-            $id_pi               = $this->input->post("txt_idNo_Pip");
-            $cbxUnidadEjecutora  = $this->input->post("cbxUnidadEjecutora_m");
-            $cbxNatI             = $this->input->post("cbxNatI_m");
-            $cbxTipologiaInv     = $this->input->post("cbxTipologiaInversion_m");
-            $cbxTipoInv          = $this->input->post("cbx_m");
-            $cbxGrupoFunc        = $this->input->post("cbxGrupoFunc_m");
-            $cbxNivelGob         = $this->input->post("cbxNivelGob_m");
-            $cbxProgramaPres     = $this->input->post("cbxProgramaPresupuestal_m");
-            $txtCodigoUnico      = $this->input->post("txtCodigoUnico_m");
-            $txtNombrePip        = $this->input->post("txtNombrePip_m");
-            $txtCostoPip         = $this->input->post("txtCostoPip_m");
-            $txt_beneficiarios   = $this->input->post("txt_beneficiarios_m");
-            $dateFechaInPip      = $this->input->post("fecha_registro");
-            $dateFechaViabilidad = $this->input->post("fecha_viabilidad");
-            $cbx_estado          = $this->input->post("cbx_estado_m");
-            $cbxEstCicInv_       = $this->input->post("cbxEstCicInv_m");
-            $cbxRubro            = $this->input->post("cbxRubroEjecucion_m");
-            $cbxModalidadEjec    = $this->input->post("cbxModalidadEjecucion_m");
-            $Cbx_TipoNoPip_i     = $this->input->post("Cbx_TipoNoPip_m");
-            if ($this->bancoproyectos_modal->update_no_pip($flat, $id_pi, $cbxUnidadEjecutora, $cbxNatI, $cbxTipologiaInv, $cbxTipoInv, $cbxGrupoFunc, $cbxNivelGob, $cbxProgramaPres, $txtCodigoUnico, $txtNombrePip, $txtCostoPip, $txt_beneficiarios, $dateFechaInPip, $dateFechaViabilidad, $cbx_estado, $cbxEstCicInv_, $cbxRubro, $cbxModalidadEjec, $Cbx_TipoNoPip_i) == false) {
+            $flat               = "U_IPCNOPIP";
+            $id_pi              = $this->input->post("txt_idNo_Pip");
+            $cbxUnidadEjecutora = $this->input->post("cbxUnidadEjecutora_m");
+            //$cbxNatI            = $this->input->post("cbxNatI");
+            // $cbxTipologiaInv    = $this->input->post("cbxTipologiaInv");
+            $cbx_tipo_no_pip_m = $this->input->post("cbx_tipo_no_pip_m");
+            $cbxGrupoFunc      = $this->input->post("cbxGrupoFunc_m");
+            $cbxNivelGob       = $this->input->post("cbxNivelGob_m");
+            // $cbxProgramaPres   = $this->input->post("cbxProgramaPres");
+            $txtCodigoUnico    = $this->input->post("txtCodigoUnico_m");
+            $txtNombrePip      = $this->input->post("txtNombrePip_m");
+            $txtCostoPip       = $this->input->post("txtCostoPip_m");
+            $txt_beneficiarios = $this->input->post("txt_beneficiarios_m");
+            // $dateFechaInPip    = $this->input->post("fecha_registro");
+            // $dateFechaViabilidad = $this->input->post("fecha_viabilidad");
+            // $lista_unid_form  = $this->input->post("lista_unid_form");
+            //  $cbx_estado       = $this->input->post("cbx_estado_m");
+            $cbx_tipo_inversion = $this->input->post("cbxEstCicInv_m");
+            $cbxEstado_pi       = $this->input->post("cbx_estado_m");
+            $cbxRubro           = $this->input->post("cbxRubroEjecucion_m");
+            $cbxModalidadEjec   = $this->input->post("cbxModalidadEjecucion_m");
+            $Cbx_TipoNoPip_m    = $this->input->post("Cbx_TipoNoPip_m");
+            if ($this->bancoproyectos_modal->update_no_pip(
+                $flat, $id_pi, $cbxUnidadEjecutora, $cbx_tipo_no_pip_m, $cbxGrupoFunc, $cbxNivelGob, $txtCodigoUnico, $txtNombrePip, $txtCostoPip, $txt_beneficiarios, $cbx_tipo_inversion, $cbxEstado_pi, $cbxRubro, $cbxModalidadEjec, $Cbx_TipoNoPip_m) == false) {
                 echo "1";
             } else {
                 echo "2";
             }
+
         } else {
             show_404();
         }
