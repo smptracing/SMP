@@ -42,7 +42,7 @@
 
       #ProgramacionHorizontal{
         width: 100% !important;
-      } 
+      }
       #navtittlemin
       {
         display: none;
@@ -92,7 +92,7 @@
 
               <!--hhhhhhh-->
               <!-- sidebar menu -->
-            
+
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
               <ul class="nav side-menu">
@@ -104,7 +104,11 @@
                      <li>
                           <a href="<?php echo site_url('CarteraInversion/'); ?>"><i class="fa fa-suitcase"></i> Cartera de inversiones</a>
                      </li>
-                     <li><a><i class="fa fa-gears"></i> Programación de Inversiones <span class="fa fa-chevron-down"></span></a>
+                     <li>
+                         <a>
+                            <i class="fa fa-gears"></i> Prog. de Inversiones
+                            <span class="fa fa-chevron-down"></span>
+                         </a>
                             <ul class="nav child_menu">
                                     <li><a href="<?php echo site_url('programar_pip/'); ?>">PIP</a></li>
                                     <li><a href="<?php echo site_url('programar_nopip/'); ?>">NO PIP</a></li>
