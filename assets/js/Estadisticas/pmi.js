@@ -1,6 +1,6 @@
 function MontoProgramadoPip(anio)
 {
-   // alert(anio);
+  //  alert(anio);
    $("#monto_programado").text("");
    $("#totalpip").text(""); 
    $("#monto_programado_nopip").text("");
@@ -27,7 +27,7 @@ function MontoProgramadoPip(anio)
             for(var i=0; i<registros.length; i++)
             {
                 tipo[i]=registros[i]["nombre_tipo_inversion"];
-                num[i]=parseFloat(registros[i]["NumProyectos"]);
+                num[i]=parseFloat(registros[i]["Cant_pi"]);
                 sum=num[i]+sum;
                 total_monto[i]=parseFloat(registros[i]["SumaCosto"]);
                 sum_monto=total_monto[i]+sum_monto;
@@ -38,26 +38,26 @@ $("#TotalMonto").text("S/. "+parseFloat(sum_monto));
             {
                // alert("1");
             $("#monto_programado_nopip").text("S/. "+registros[0]["SumaCosto"]); 
-            $("#totalnopip").text(registros[0]["NumProyectos"]); 
+            $("#totalnopip").text(registros[0]["Cant_pi"]); 
             }
                 if(tipo[1]=="PIP")
             {
                // alert("2");
             $("#monto_programado").text("S/. "+registros[1]["SumaCosto"]); 
-            $("#totalpip").text(registros[1]["NumProyectos"]); 
+            $("#totalpip").text(registros[1]["Cant_pi"]); 
             }
 
             if(tipo[0]=="PIP")
             {
                // alert("3");
             $("#monto_programado").text("S/. "+registros[0]["SumaCosto"]); 
-            $("#totalpip").text(registros[0]["NumProyectos"]); 
+            $("#totalpip").text(registros[0]["Cant_pi"]); 
             }
             if(tipo[1]=="NO PIP")
             {
               //  alert("4");
             $("#monto_programado_nopip").text("S/. "+registros[1]["SumaCosto"]); 
-            $("#totalnopip").text(registros[1]["NumProyectos"]); 
+            $("#totalnopip").text(registros[1]["Cant_pi"]); 
             }
         }
     });
