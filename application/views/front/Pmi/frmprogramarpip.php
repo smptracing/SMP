@@ -203,15 +203,15 @@
                               <div class="item form-group">
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>PIA</label></center>
-                                      <input  class="form-control" id="txt_pia" name="txt_pia" type="number" required="required" value="0.00" disabled="disabled">
+                                      <input  class="form-control" id="txt_pia_fye" name="txt_pia_fye" type="number" required="required" value="0.00" disabled="disabled">
                                     </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                    <!--<div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>PIM</label></center>
                                       <input  class="form-control" id="txt_pim" name="txt_pim" type="number" required="required" value="0.00"  disabled="disabled">
-                                    </div>
+                                    </div>-->
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>Devengado</label></center>
-                                      <input  class="form-control" id="txt_devengado" name="txt_devengado" type="number" required="required" value="0.00"  disabled="disabled">
+                                      <input  class="form-control" id="txt_devengado_pia_fye" name="txt_devengado_pia_fye" type="number" required="required" value="0.00"  disabled="disabled">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>Prioridad</label></center>
@@ -480,12 +480,12 @@
                               <div class="item form-group">
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>PIA</label></center>
-                                      <input  class="form-control" id="txt_pia_" name="txt_pia_" type="number" required="required" value="0.00" disabled="disabled">
+                                      <input  class="form-control" id="txt_pia_" name="txt_pia_" type="number" required="required"  disabled="disabled">
                                     </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                    <!--<div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>PIM</label></center>
                                       <input  class="form-control" id="txt_pim_" name="txt_pim_" type="number" required="required" value="0.00"  disabled="disabled">
-                                    </div>
+                                    </div>-->
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>Devengado</label></center>
                                       <input  class="form-control" id="txt_devengado_" name="txt_devengado_" type="number" required="required" value="0.00"  disabled="disabled">

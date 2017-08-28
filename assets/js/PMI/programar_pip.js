@@ -423,6 +423,10 @@ var  AddMeta_Pi=function(tbody,table){
                       $("#txt_id_pip_programacion").val(data.id_pi);
                       $("#txt_costo_proyecto").val(data.costo_pi);
                       $("#txt_nombre_proyecto").val(data.nombre_pi);
+                      $("#txt_pia_fye").val(data.ultimo_pia_meta_pres);
+                      $("#txt_devengado_pia_fye").val(data.devengado_acumulado_total);
+                      
+                      
                       
                         listar_aniocartera();
                         listar_programacion(id_pi);
