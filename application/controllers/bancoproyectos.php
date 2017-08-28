@@ -133,21 +133,19 @@ class bancoproyectos extends CI_Controller
             $cbxGrupoFunc_m            = $this->input->post("cbxGrupoFunc_m");
             $cbxNivelGob_m             = $this->input->post("cbxNivelGob_m");
             $cbxProgramaPresupuestal_m = $this->input->post("cbxProgramaPresupuestal_m");
-            $txtCodigoUnico            = $this->input->post("txtCodigoUnico_m");
+            $txtCodigoUnico_m          = $this->input->post("txtCodigoUnico_m");
             $txtNombrePip_m            = $this->input->post("txtNombrePip_m");
             $txtCostoPip_m             = $this->input->post("txtCostoPip_m");
             $txt_beneficiarios_m       = $this->input->post("txt_beneficiarios_m");
             // $dateFechaInPip    = $this->input->post("fecha_registro");
             // $dateFechaViabilidad = $this->input->post("fecha_viabilidad");
-            // $lista_unid_form  = $this->input->post("lista_unid_form");
-            //  $cbx_estado       = $this->input->post("cbx_estado_m");
-
-            $cbxEstado_pi     = $this->input->post("cbx_estado_m");
-            $cbxRubro         = $this->input->post("cbxRubroEjecucion_m");
-            $cbxModalidadEjec = $this->input->post("cbxModalidadEjecucion_m");
-            $Cbx_TipoNoPip_m  = $this->input->post("Cbx_TipoNoPip_m");
-            if ($this->bancoproyectos_modal->update_no_pip(
-                $flat, $id_pi, $cbxUnidadEjecutora, $cbx_tipo_no_pip_m, $cbxGrupoFunc, $cbxNivelGob, $txtCodigoUnico, $txtNombrePip, $txtCostoPip, $txt_beneficiarios, $cbx_tipo_inversion, $cbxEstado_pi, $cbxRubro, $cbxModalidadEjec, $Cbx_TipoNoPip_m) == false) {
+            $lista_unid_form_m       = $this->input->post("lista_unid_form_m");
+            $cbx_estado_pi_m         = $this->input->post("cbx_estado_pi_m");
+            $cbxEstCicInv_m          = $this->input->post("cbxEstCicInv_m");
+            $cbxRubroEjecucion_m     = $this->input->post("cbxRubroEjecucion_m");
+            $cbxModalidadEjecucion_m = $this->input->post("cbxModalidadEjecucion_m");
+            if ($this->bancoproyectos_modal->update_pip(
+                $flat, $txt_id_Pip_m, $cbxUnidadEjecutora_m, $cbxNatI_m, $cbxTipologiaInversion_m, $cbxGrupoFunc_m, $cbxNivelGob_m, $cbxProgramaPresupuestal_m, $txtCodigoUnico_m, $txtNombrePip_m, $txtCostoPip_m, $txt_beneficiarios_m, $lista_unid_form_m, $cbx_estado_pi_m, $cbxEstCicInv_m, $cbxRubroEjecucion_m, $cbxModalidadEjecucion_m) == false) {
                 echo "1";
             } else {
                 echo "2";

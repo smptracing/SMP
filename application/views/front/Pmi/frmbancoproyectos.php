@@ -977,7 +977,7 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                             <label  for="name">Estado<span class="required">*</span>
                                             </label>
-                                            <select id="cbx_estado_m" name="cbx_estado_m" class="selectpicker">
+                                            <select id="cbx_estado_pi_m" name="cbx_estado_pi_m" class="selectpicker">
                                               <option value="1">Activo</option>
                                               <option value="0">Inactivo</option>
                                             </select>
