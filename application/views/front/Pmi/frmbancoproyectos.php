@@ -792,7 +792,7 @@
               <form class="form-horizontal " id="form_EditarProyectosInversion"   action="<?php echo base_url(); ?>bancoproyectos/AddProyectos" method="POST" >
                       <div class="item form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="txt_id_Pip_m" name="txt_id_Pip_m" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="text">
+                        <input id="txt_id_Pip_m" name="txt_id_Pip_m" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
                         </div>
                       </div>
                                  <div class="row">
