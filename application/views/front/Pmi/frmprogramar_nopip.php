@@ -124,15 +124,15 @@
                               <div class="item form-group">
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>PIA</label></center>
-                                      <input  class="form-control" id="txt_pia" name="txt_pia" type="number" required="required" value="0.00" disabled="disabled">
+                                      <input  class="form-control" id="txt_pia_nopip" name="txt_pia_nopip" type="number" required="required" value="0.00" disabled="disabled">
                                     </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                   <!-- <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>PIM</label></center>
                                       <input  class="form-control" id="txt_pim" name="txt_pim" type="number" required="required" value="0.00"  disabled="disabled">
-                                    </div>
+                                    </div>-->
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>Devengado</label></center>
-                                      <input  class="form-control" id="txt_devengado" name="txt_devengado" type="number" required="required" value="0.00"  disabled="disabled">
+                                      <input  class="form-control" id="txt_devengado_nopip" name="txt_devengado_nopip" type="number" required="required" value="0.00"  disabled="disabled">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>Prioridad</label></center>
