@@ -811,7 +811,7 @@
                                           <!--  <select id="cbxTipoInv" name="cbxTipoInv" class="selectpicker" disabled>
                                             </select>-->
                                                 <select id="cbx_m" name="cbx_m" class="selectpicker" >
-                                                    <option selected value="2">NO PIP</option>
+                                                    <option selected value="1">PIP</option>
                                               </select>
                                          </div>
                                       </div>
