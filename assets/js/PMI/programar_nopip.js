@@ -217,6 +217,7 @@ var EliminarMetaPresupuestal=function(tbody,table){
                       $("#txt_id_pip_programacion_mp").val(data.id_pi);
                       $("#txt_costo_proyecto_mp").val(data.costo_pi);
                       $("#txt_nombre_proyecto_mp").val(data.nombre_pi);
+
                       listar_Meta();
                       listar_meta_presupuestal();
                        listar_meta_pi(id_pi);
@@ -232,6 +233,8 @@ var EliminarMetaPresupuestal=function(tbody,table){
                       $("#txt_id_pip_programacion").val(data.id_pi);
                       $("#txt_costo_proyecto").val(data.costo_pi);
                       $("#txt_nombre_proyecto").val(data.nombre_pi);
+                      $("#txt_pia_nopip").val(data.ultimo_pia_meta_pres);
+                      $("#txt_devengado_nopip").val(data.devengado_acumulado_total);
                         listar_aniocartera();
                         listar_programacion(id_pi);
 
