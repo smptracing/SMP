@@ -24,8 +24,8 @@ class Inicio extends CI_Controller {
 	}
 	function _load_layout($template)
     {
-      $this->load->view('layout/PRINCIPAL/header');
+      //$this->load->view('layout/PRINCIPAL/header');
       $this->load->view($template);
-      $this->load->view('layout/PRINCIPAL/footer');
+      //$this->load->view('layout/PRINCIPAL/footer');
     }
 }
