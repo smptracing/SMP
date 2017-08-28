@@ -50,25 +50,9 @@
                                                        </ul>
 
                                                           <div class="x_content">
-
-                                                                 
-                                                                  <div class="table-responsive">
-                                                                    <table id="table_entregable" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%" >
-                                                                          <thead>
-                                                                                <tr>
-                                                                                  <td></td>
-                                                                                  <td></td>
-                                                                                   <td>Entregable</td>
-                                                                                   <td>Responsable</td>
-                                                                                   <td>Valorización</td>
-                                                                                   <td>Avance</td>
-                                                                                   <td>Actividad</td>
-                                                                                  <td></td>
-                                                                                </tr>
-                                                                         </thead>
-                                                                    </table>
+                                                                  <div id="TemEntregable">
+                                                                  
                                                                   </div>
-                                                                  <!-- end project list -->
                                                           </div>
                                                         </div>
                                                       </div>
@@ -314,85 +298,63 @@
 
   <!--- agregar los  actividades-->
 <div class="modal fade" data-backdrop="static" id="VentanaActividades" data-backdrop="static" role="dialog">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Actividades</h4>
         </div>
         <div class="modal-body">
-         <div class="row">
-                <div class="col-xs-12">
-                <form class="form-horizontal " id="form-AddActividades_Entregable"  method="POST" >
-                  <div class="row">
-                      <div class="col-md-12 col-sm-12 col-xs-12 ">
-                          <label>Actividad</label>
-                          <input id="txt_id_entregable"  name="txt_id_entregable" type="text" class="form-control"  placeholder="" notValidate>
-                          <input id="txt_nombre_act" name="txt_nombre_act" type="text" class="form-control"  placeholder="">
-                      </div>
-                   </div>
-                   <div class="row">
-                      <div class="col-md-6 col-sm-6 col-xs-12 ">
-                          <label class=" col-md-6 col-sm-6 col-xs-12">Inicio</label>
-                          <input id="txt_fechaActividadI" name="txt_fechaActividadI" type="date" class="form-control calendario">
-                      </div>
-                      <div class="col-md-6 col-sm-6 col-xs-12 ">
-                          <label class=" col-md-6 col-sm-6 col-xs-12">Final</label>
-                          <input id="txt_fechaActividadf" name="txt_fechaActividadf" type="date" class="form-control calendario">
-                      </div>
-                   </div>
-                   <div class="row">
-                      <div class="col-md-3 col-sm-3 col-xs-12">
-	                        <label class="col-md-6 col-sm-6 col-xs-6">Valoración</label>
-	                        <input class="form-control" id="txt_valoracionEAc" name="txt_valoracionEAc" class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2"  required="required" type="number" step='0.01'  placeholder="%">
-                      </div>
-                      <div class="col-md-8 col-sm-8 col-xs-12">
-    
+             <div class="row">
+                  <div class="col-xs-12">
+                    <form class="form-horizontal " id="form-AddActividades_Entregable"  method="POST" >
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12 ">
+                                    <label>Actividad</label>
+                                    <input id="txt_id_entregable"  name="txt_id_entregable" type="hidden" class="form-control"  placeholder="" notValidate>
+                                    <input id="txt_nombre_act" name="txt_nombre_act" type="text" class="form-control"  placeholder="">
+                                </div>
 
-		                    <div id="valoracionAvazadadActivi" style="text-align:center ;color:#008080; margin-left: 150px;margin-top:20px;" class="col-md-3 col-sm-3 col-xs-12"> 
-		                    
-		                    </div>
-
-		                    
-                      </div>
-                   </div>
-                   <div class="row">
-                   	  <div class="col-md-12 col-sm-12 col-xs-12">
-                        <label>Observación</label>
-                        <input id="txt_observacio_EntreAc" name="txt_observacio_EntreAc" type="text" class="form-control" >
-                      </div>
-                   </div>
-                  <div class="row">
-                   
-                       <div class="input-group demo2 colorpicker-element col-md-4 col-sm-4 col-xs-12" style="text-align: right;margin-left: 10px;margin-top: 10px;">
-                             
-                             <input type="text" value="#e01ab5" class="form-control" id="txt_ActividadColor" name="txt_ActividadColor">
-                             <span class="input-group-addon"><i style="background-color: rgb(224, 26, 181);"></i></span>
-
-                      </div>
-
+                            </div>
+                            <div class="row"></br></br>
+                                  <div class="input-prepend input-group col-md-5 col-sm-5 col-xs-5" style="margin-left: 8px;">
+                                            <span class="add-on input-group-addon">Fecha Actividad <i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+                                            <input type="text"  name="FechaActividad" id="FechaActividad" class="form-control" value=""/>
+                                  </div>
+                                  <div class="col-md-3 col-sm-3 col-xs-3" style="margin-top: -70px;margin-left: 400px;">
+            	                        <label class="col-md-6 col-sm-6 col-xs-6">Valoración</label>
+            	                        <input class="form-control" id="txt_valoracionEAc" name="txt_valoracionEAc" class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2"  required="required" type="number" step='0.01'  placeholder="%">
+                                  </div>
+                                  <div class="col-md-5 col-sm-5 col-xs-5" style="margin-top: -70px;margin-left: 460px;">
+            		                     <div id="valoracionAvazadadActivi" style="text-align:center ;color:#008080; margin-left: 150px;margin-top:39px;" class="col-md-7 col-sm-7 col-xs-12"> 
+            		                     </div>
+                                  </div>
+                             </div>
+                             <div class="row">
+                             	  <div class="col-md-12 col-sm-12 col-xs-12">
+                                  <label>Observación</label>
+                                  <input id="txt_observacio_EntreAc" name="txt_observacio_EntreAc" type="text" class="form-control" >
+                                </div>
+                             </div>
+                            <div class="row">
+                                 <div class="input-group demo2 colorpicker-element col-md-4 col-sm-4 col-xs-12" style="text-align: right;margin-left: 10px;margin-top: 10px;">
+                                       <input type="text" value="#e01ab5" class="form-control" id="txt_ActividadColor" name="txt_ActividadColor">
+                                       <span class="input-group-addon"><i style="background-color: rgb(224, 26, 181);"></i></span>
+                                </div>
+                            </div>
+                    </form>
                   </div>
-                      <div class="ln_solid"></div>
-                      <div class="form-group">
-                        <div class="col-md-6 col-md-offset-3">
-
-                          <button  id="btn_Addactividad" class="btn btn-success">
-                            <span class="glyphicon glyphicon-floppy-disk"></span>
-                            Guardar
-                          </button>
-                          <button id="btn_actividadC"  class="btn btn-danger" data-dismiss="modal">
-                             <span class="glyphicon glyphicon-remove"></span>
-                            Cancelar
-                          </button>
-
-                        </div>
-                      </div>
-
-                </form>
-            </div>
-         </div>
+             </div>
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer" style="float: center">
+              <button  id="btn_Addactividad" class="btn btn-success">
+                <span class="glyphicon glyphicon-floppy-disk"></span>
+                Guardar
+              </button>
+              <button id="btn_actividadC"  class="btn btn-danger" data-dismiss="modal">
+                <span class="glyphicon glyphicon-remove"></span>
+                Cancelar
+              </button>
         </div>
       </div>
     </div>
@@ -693,8 +655,6 @@
 </div>
 <!-- fin venta gant-->
   <script>
- 
-     
     $(function()
     {
       $('#form-AddEntregable').formValidation(

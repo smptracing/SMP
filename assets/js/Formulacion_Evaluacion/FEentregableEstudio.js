@@ -1,5 +1,48 @@
  $(document).on("ready" ,function(){
 
+              var fecha = new Date();
+              var FechaSistema= fecha.getDate();
+              $('#FechaActividad').daterangepicker();
+              $('#FechaActividad').daterangepicker({
+              "locale": {
+                  "format": "YYYY/MM/DD",
+                  "separator": " - ",
+                  "applyLabel": "Guardar",
+                  "cancelLabel": "Cancelar",
+                  "fromLabel": "Desde",
+                  "toLabel": "Hasta",
+                  "customRangeLabel": "Personalizar",
+                  "daysOfWeek": [
+                      "Do",
+                      "Lu",
+                      "Ma",
+                      "Mi",
+                      "Ju",
+                      "Vi",
+                      "Sa"
+                  ],
+                  "monthNames": [
+                      "Enero",
+                      "Febrero",
+                      "Marzo",
+                      "Abril",
+                      "Mayo",
+                      "Junio",
+                      "Julio",
+                      "Agosto",
+                      "Setiembre",
+                      "Octubre",
+                      "Noviembre",
+                      "Diciembre"
+                  ],
+                  "firstDay": 1
+              },
+              "startDate": FechaSistema,
+              "endDate": FechaSistema,
+              "opens": "center"
+          });
+
+
               listarEntregablesFE();//
               listadoFormuladores();
               listarDenominacionFE();
@@ -451,6 +494,7 @@ var generarActividadesVertical=function(id_en)
                    var table=$("#datatable-actividadesV").DataTable({
                     "deferRender": true,
                     "processing": true,
+                    "searching": false,
                     destroy:true,
                     "paging":   false,
 
@@ -502,14 +546,33 @@ var generarActividadesVertical=function(id_en)
   }
  
   function listarEntregablesFE()
-          {   
+          {     
+              $("#table_entregable" ).remove(); 
+                    $("#table_entregable_wrapper" ).remove();
+                    tempEntregable='<table id="table_entregable" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">'+
+                                  '<thead>'+
+                                      '<tr>'+
+                                        '<td></td>'+
+                                        '<td></td>'+
+                                        '<td>Entregable</td>'+
+                                        '<td>Responsable</td>'+
+                                        '<td>Valorización</td>'+
+                                        '<td>Avance</td>'+
+                                        '<td>Actividad</td>'+
+                                     '</tr>'+
+                                  '</thead>'+
+                                 '</thead>'+
+                                    '<tbody>'+
+                                    '</tbody>'+
+                              '</table>';
+                       $("#TemEntregable").append(tempEntregable); 
                 var table=$("#table_entregable").DataTable({
                      "deferRender": true,
                     "processing": true,
+                     "searching": false,
                     destroy:true,
                     "paging":   false,
                       
-
                          "ajax":{
                                     "url":base_url+"index.php/FEentregableEstudio/get_Entregables",
                                     "method":"POST",

@@ -5,14 +5,13 @@
                   {
                       var txt_id_entregable=$("#txt_id_entregable").val();
                       var txt_nombre_act=$("#txt_nombre_act").val();
-                      var txt_fechaActividadI=$("#txt_fechaActividadI").val();
-                      var txt_fechaActividadf=$("#txt_fechaActividadf").val();
                       var txt_valoracionEAc=$("#txt_valoracionEAc").val();
+                      var FechaActividad =$("#FechaActividad").val();
                       event.preventDefault();
                       $.ajax({
                           url:base_url+"index.php/FEActividadEntregable/Add_Actividades",
                           type:'POST',
-                          data: {txt_id_entregable:txt_id_entregable,txt_nombre_act:txt_nombre_act,txt_fechaActividadI:txt_fechaActividadI,txt_fechaActividadf:txt_fechaActividadf,txt_valoracionEAc:txt_valoracionEAc},
+                          data: {txt_id_entregable:txt_id_entregable,txt_nombre_act:txt_nombre_act,txt_valoracionEAc:txt_valoracionEAc,FechaActividad:FechaActividad},
                           success:function(resp)
                           {
                             var txt_id_entregable=parseInt($("#txt_id_entregable").val());
