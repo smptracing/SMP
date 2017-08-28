@@ -42,6 +42,20 @@
    #ProgramacionHorizontal{
       width: 100% !important;
     }
+      #navtittlemin
+      {
+        display: none;
+      }
+
+      @media (max-width: 550px) {
+      #navtittle{
+        display: none;
+      }
+      #navtittlemin
+      {
+        display: inline-block;
+      }
+    }
   </style>
 
   <!-- jQuery -->
@@ -105,8 +119,14 @@
         <div class="top_nav">
           <div class="nav_menu">
             <nav>
-              <div class="nav toggle">
+              <div class="nav toggle" style="position: relative;">
                 <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                  <div id="navtittle"  >
+                  <span style="position: absolute;top: 14px;left: 50px; width: 700px; font-size: 20px; text-shadow: 1px 1px 1px rgba(0,0,0,0.3);">Usuarios, Permisos y Administracion</span>
+                  </div>
+
+                  <div id="navtittlemin">
+                  <span style="position: absolute;top: 14px;left: 50px; width: 700px; font-size: 20px; text-shadow: 1px 1px 1px rgba(0,0,0,0.3);">Usuarios</span></div>
               </div>
 
               <ul class="nav navbar-nav navbar-right">

@@ -331,7 +331,7 @@
          <div class="row">
                     <div class="col-xs-12">
                                         <!-- PAGE CONTENT BEGINS -->
-              <form class="form-horizontal " id="form-AddProyectosInversion"   action="<?php echo base_url(); ?>bancoproyectos/AddProyectos" method="POST" >
+              <form class="form-horizontal " id="form_Edit_no_pip"   action="<?php echo base_url(); ?>bancoproyectos/AddProyectos" method="POST" >
                       <div class="item form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12">
                         <input id="txt_idNo_Pip" name="txt_idNo_Pip" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="text">
@@ -352,7 +352,7 @@
                                         </label>
                                           <!--  <select id="cbxTipoInv" name="cbxTipoInv" class="selectpicker" disabled>
                                             </select>-->
-                                                <select id="cbx_m" name="cbx_m" class="selectpicker" >
+                                                <select id="cbx_tipo_no_pip_m" name="cbx_tipo_no_pip_m" class="selectpicker" >
                                                     <option selected value="2">NO PIP</option>
                                               </select>
                                          </div>
@@ -384,7 +384,7 @@
                                  </div>
                                  <hr>
                                <div class="row">
-                                      <div class="col-md-4">
+                                    <!--  <div class="col-md-4">
 
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                             <label  for="name">Naturaleza<span class="required">*</span>
@@ -392,7 +392,7 @@
                                             <select id="cbxNatI_m" name="cbxNatI_m" class="selectpicker"  >
                                             </select>
                                          </div>
-                                      </div>
+                                      </div>-->
                                       <div class="col-md-4">
 
                                             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -411,17 +411,18 @@
                                                 </select>
                                             </div>
                                       </div>
+                                      <div class="col-md-4">
+                                          <div class="col-md-6 col-sm-6 col-xs-12">
+                                              <label for="name" style="text-align:left">Función<span class="required">*</span></label>
+                                              <select id="cbxFuncion_m" name="cbxFuncion_m" class="selectpicker" ></select>
+                                          </div>
+                                      </div>
                               </div>
 
 
 
                             <div class="row">
-                                <div class="col-md-4">
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <label for="name" style="text-align:left">Función<span class="required">*</span></label>
-                                        <select id="cbxFuncion_m" name="cbxFuncion_m" class="selectpicker" ></select>
-                                    </div>
-                                </div>
+
                                 <div class="col-md-4">
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <label  for="textbox"><span class="required">División</span></label>
@@ -483,23 +484,13 @@
                                                 </select>
                                             </div>
                                       </div>
-                                       <div class="col-md-4">
+                                    <!--   <div class="col-md-4">
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <label  for="textbox"><span class="required">Tipologia de Inversion</span></label>
                                                 <select id="cbxTipologiaInversion_m" name="cbxTipologiaInversion_m" class="selectpicker"></select>
                                             </div>
-                                      </div>
-                              </div>
-                               <div class="row">
-                                    <div class="col-md-4">
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <label  for="name">Programa<span class="required">*</span>
-                                            </label>
-                                              <select id="cbxProgramaPresupuestal_m" name="cbxProgramaPresupuestal_m" class="selectpicker"  >
-                                            </select>
-                                         </div>
-                                      </div>
-                                      <div class="col-md-4">
+                                      </div>-->
+                                         <div class="col-md-4">
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                             <label  for="name">Tipología NO PIP<span class="required">*</span>
                                             </label>
@@ -507,6 +498,17 @@
                                             </select>
                                          </div>
                                       </div>
+                              </div>
+                               <div class="row">
+                                   <!-- <div class="col-md-4">
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label  for="name">Programa<span class="required">*</span>
+                                            </label>
+                                              <select id="cbxProgramaPresupuestal_m" name="cbxProgramaPresupuestal_m" class="selectpicker"  >
+                                            </select>
+                                         </div>
+                                      </div>-->
+
                                        <div class="col-md-4">
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                             <label  for="name">Estado<span class="required">*</span>

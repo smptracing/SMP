@@ -4,6 +4,30 @@ $(document).on("ready" ,function(){
                  listar_TipologiaNoPipRegistro();
              }); 
      listar_no_pip(); //listar los no pip
+       $("#form_Edit_no_pip").submit(function(event)
+                {
+                    event.preventDefault();
+                    $.ajax({
+                        url:base_url+"index.php/bancoproyectos/update_no_pip",
+                        type:$(this).attr('method'),
+                        data:$(this).serialize(),
+                        success:function(resp){
+                          if (resp=='1') {
+                             swal("ACTUALIZADO","Se actualizó correctamente", "success");
+                            // formReset();
+
+                           }
+                            if (resp=='2') {
+                             swal("NO SE ACTUALIZÓ","No se actualizó ", "error");
+                           }
+                           $('#table_no_pip').dataTable()._fnAjaxUpdate();
+                          $('#table_metas_presupuestales').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
+                            // formReset();
+                            $('#Table_TipoNoPip').dataTable()._fnAjaxUpdate();
+                          //para actualizar mi datatablet datatablet   funcion
+                         }
+                    });
+                    });
           //REGISTARAR OPERACION Y MANTENIMIENTO
      $("#form_AddOperacionMantenimiento").submit(function(event)
                   {
@@ -318,8 +342,8 @@ $(document).on("ready" ,function(){
                                     "dataSrc":""                                    
                                   },
                                 "columns":[
-                                   // {"defaultContent":"<center><button type='button' title='Editar' class='Editar_proyecto btn btn-primary btn-xs' data-toggle='modal' data-target='#venta_editar_proyecto'><i class='fa fa-edit' aria-hidden='true'></i></button></center>"},
-                                    {"defaultContent":"<center>#</center>"},
+                                    {"defaultContent":"<center><button type='button' title='Editar' class='Editar_proyecto btn btn-primary btn-xs' data-toggle='modal' data-target='#venta_editar_proyecto'><i class='fa fa-edit' aria-hidden='true'></i></button></center>"},
+                                   //{"defaultContent":"<center>#</center>"},
                                     {"data":"id_pi" ,"visible": false},
                                     {"data":"codigo_unico_pi"},
                                     {"data":"nombre_pi"},
@@ -357,6 +381,7 @@ $(document).on("ready" ,function(){
                var id_tipologia_inv=data.id_tipologia_inv;
                var id_programa_pres=data.id_programa_pres;
                var id_tipo_nopip=data.id_tipo_nopip;
+               var estado_pi=data.estado_pi;
 
 
 
@@ -379,6 +404,11 @@ $(document).on("ready" ,function(){
                       listarProgramaPresupuestal(id_programa_pres);
                       listar_TipologiaNoPipRegistro(id_tipo_nopip);
                       $("#txt_idNo_Pip").val(data.id_pi);
+            
+                      $("#cbx_estado_m").val(estado_pi);
+      
+
+
                     });
                 }
 
