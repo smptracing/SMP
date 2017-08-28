@@ -89,11 +89,11 @@
 
 		var posicionSeparadorTemp=$('#selectIdFuente').val().indexOf(',');
 		var idFuente=$('#selectIdFuente').val().substring(0, posicionSeparadorTemp);
-		var descripcionFuente=$('#selectIdFuente').val().substring(posicionSeparadorTemp+1, $('#selectIdFuente').val().length);
+		var descripcionFuente=replaceAll(replaceAll($('#selectIdFuente').val().substring(posicionSeparadorTemp+1, $('#selectIdFuente').val().length), '<', '&lt;'), '>', '&lt;');
 
 		var htmlTemp='<tr>'+
 			'<td><input type="hidden" value='+idFuente+' name="hdIdFuente[]"> '+descripcionFuente+'</td>'+
-			'<td><input type="hidden" value='+$('#txtCorelativoMeta').val()+' name="hdCorrelativoMeta[]">'+$('#txtCorelativoMeta').val()+'</td>'+
+			'<td><input type="hidden" value='+replaceAll(replaceAll($('#txtCorelativoMeta').val(), '<', '&lt;'), '>', '&gt;')+' name="hdCorrelativoMeta[]">'+replaceAll(replaceAll($('#txtCorelativoMeta').val(), '<', '&lt;'), '>', '&gt;')+'</td>'+
 			'<td><input type="hidden" value='+$('#txtAnio').val()+' name="hdAnio[]">'+$('#txtAnio').val()+'</td>'+
 			'<td><a href="#" onclick="$(this).parent().parent().remove();" style="color: red;font-weight: bold;text-decoration: underline;">Eliminar</a></td>'+
 		'</tr>'
