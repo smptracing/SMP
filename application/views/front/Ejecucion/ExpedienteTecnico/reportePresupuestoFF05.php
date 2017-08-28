@@ -5,16 +5,13 @@ function mostrarMetaAnidada($meta)
 		'<td>'.$meta->numeracion.'.</td>'.
 		'<td style="text-align: left;">'.strtoupper(html_escape($meta->desc_meta)).'</td>'.
 		'<td style="text-align: center;"></td>'.
-		'<td style="text-align: center;"></td>'.
-	'</tr>';
+		'<td style="text-align: center;"></td>';
 
 	if(count($meta->childMeta)==0)
 	{
 		foreach($meta->childPartida as $key => $value)
 		{
-				$htmlTemp.='<tr>'.
-				'<td></td>'.
-				'<td></td>'.
+				$htmlTemp.=''.
 				'<td style="text-align: right;">'.$value->parcial.'</td>'.
 				'</tr>';
 		}
@@ -37,6 +34,7 @@ function mostrarMetaAnidada($meta)
 <style>
 	#presupuesto li {
 		display:inline;
+
 	}
 	#presupuesto a {
 		text-decoration:none;

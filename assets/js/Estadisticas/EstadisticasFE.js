@@ -575,7 +575,7 @@ $.ajax({
 		{
 			arrayAvanceCostoInv[index]=element.avance_fisico+','+element.costo_estudio;
 		});
-		console.log(arrayAvanceCostoInv);
+		console.log(arrayAvanceCostoInv[0]);
 		var dom = document.getElementById("Avance");
 		var myChart = echarts.init(dom);
 		var app = {};
@@ -657,7 +657,7 @@ $.ajax({
 		        {
 		            name:'AVANCE FÍSICO  COSTO ESTUDIO',
 		            type:'scatter',
-		            data: [[arrayAvanceCostoInv]],
+		            data: [[arrayAvanceCostoInv[4]]],
 		            markArea: {
 		                silent: true,
 		                itemStyle: {
