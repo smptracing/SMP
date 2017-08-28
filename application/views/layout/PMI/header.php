@@ -27,8 +27,6 @@
 
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/css/bootstrap-select.css"><!--- para el selector con buscardor---->
 
-      <!-- Datatables -->
-
     <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
@@ -41,8 +39,23 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/formValidation.min.css">
 
   <style>
-   #ProgramacionHorizontal{
-      width: 100% !important;
+
+      #ProgramacionHorizontal{
+        width: 100% !important;
+      } 
+      #navtittlemin
+      {
+        display: none;
+      }
+
+      @media (max-width: 550px) {
+      #navtittle{
+        display: none;
+      }
+      #navtittlemin
+      {
+        display: inline-block;
+      }
     }
   </style>
 
@@ -62,17 +75,20 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
+              <a href="<?php echo site_url('Inicio') ?>" class="site_title"><i class="fa fa-calendar"></i> PMI</a>
+            </div>
+            <div class="navbar nav_title" style="border: 0;">
               <a href="<?php echo site_url('Inicio') ?>" class="site_title"><i class="fa fa-users"></i> <span>SMPTRACING</span></a>
             </div>
 
-            <div class="clearfix"></div>
 
-           <!-- menu profile quick info -->
+             <div class="clearfix"></div>
+
 
 
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
-              <ul class="nav side-menu">
+              <!--<ul class="nav side-menu">
                   <li><a href="<?php echo site_url('PrincipalPmi/pmi'); ?>"> <i class="fa fa-home"></i> INICIO<span class=""></span></a>
                   </li>
                 </ul>
@@ -144,8 +160,14 @@
         <div class="top_nav">
           <div class="nav_menu">
             <nav>
-            <div class="nav toggle">
+              <div class="nav toggle" style="position: relative;">
                 <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                  <div id="navtittle"  >
+                  <span style="position: absolute;top: 14px;left: 50px; width: 700px; font-size: 20px; text-shadow: 1px 1px 1px rgba(0,0,0,0.3);">Programación Multianual de Inversión</span>
+                  </div>
+
+                  <div id="navtittlemin">
+                  <span style="position: absolute;top: 14px;left: 50px; width: 700px; font-size: 20px; text-shadow: 1px 1px 1px rgba(0,0,0,0.3);">PMI</span></div>
               </div>
 
 
