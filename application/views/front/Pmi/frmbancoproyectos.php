@@ -965,6 +965,14 @@
                                             </select>
                                          </div>
                                       </div>-->
+                                     <div class="col-md-4">
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label  for="name">Unidad Formuladora<span class="required">*</span>
+                                            </label>
+                                              <select id="lista_unid_form_m" name="lista_unid_form_m" class="selectpicker" >
+                                            </select>
+                                         </div>
+                                      </div>
                                        <div class="col-md-4">
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                             <label  for="name">Estado<span class="required">*</span>

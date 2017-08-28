@@ -125,18 +125,18 @@ class bancoproyectos extends CI_Controller
     public function update_pip()
     {
         if ($this->input->is_ajax_request()) {
-            $flat                    = "U_IPCPIP";
-            $id_pi                   = $this->input->post("txt_id_Pip_m");
-            $cbxUnidadEjecutora_m    = $this->input->post("cbxUnidadEjecutora_m");
-            $cbxNatI                 = $this->input->post("cbxNatI_m");
-            $cbxTipologiaInversion_m = $this->input->post("cbxTipologiaInversion_m");
-            $cbxGrupoFunc_m          = $this->input->post("cbxGrupoFunc_m");
-            $cbxNivelGob_m           = $this->input->post("cbxNivelGob_m");
-            // $cbxProgramaPres   = $this->input->post("cbxProgramaPres");
-            $txtCodigoUnico    = $this->input->post("txtCodigoUnico_m");
-            $txtNombrePip      = $this->input->post("txtNombrePip_m");
-            $txtCostoPip       = $this->input->post("txtCostoPip_m");
-            $txt_beneficiarios = $this->input->post("txt_beneficiarios_m");
+            $flat                      = "U_IPCPIP";
+            $txt_id_Pip_m              = $this->input->post("txt_id_Pip_m");
+            $cbxUnidadEjecutora_m      = $this->input->post("cbxUnidadEjecutora_m");
+            $cbxNatI_m                 = $this->input->post("cbxNatI_m");
+            $cbxTipologiaInversion_m   = $this->input->post("cbxTipologiaInversion_m");
+            $cbxGrupoFunc_m            = $this->input->post("cbxGrupoFunc_m");
+            $cbxNivelGob_m             = $this->input->post("cbxNivelGob_m");
+            $cbxProgramaPresupuestal_m = $this->input->post("cbxProgramaPresupuestal_m");
+            $txtCodigoUnico            = $this->input->post("txtCodigoUnico_m");
+            $txtNombrePip_m            = $this->input->post("txtNombrePip_m");
+            $txtCostoPip_m             = $this->input->post("txtCostoPip_m");
+            $txt_beneficiarios_m       = $this->input->post("txt_beneficiarios_m");
             // $dateFechaInPip    = $this->input->post("fecha_registro");
             // $dateFechaViabilidad = $this->input->post("fecha_viabilidad");
             // $lista_unid_form  = $this->input->post("lista_unid_form");

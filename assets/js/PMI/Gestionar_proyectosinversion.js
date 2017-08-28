@@ -333,6 +333,7 @@ $(document).on("ready" ,function(){
                var id_programa_pres=data.id_programa_pres;
                var id_tipo_nopip=data.id_tipo_nopip;
                var estado_pi=data.estado_pi;
+               var id_uf=data.id_uf;
 
 
 
@@ -355,9 +356,9 @@ $(document).on("ready" ,function(){
                       listarModalidadEjecucion(id_modalidad_ejec);
                       listarTipologiaInversion(id_tipologia_inv);
                       listarProgramaPresupuestal(id_programa_pres);
-                      listar_TipologiaNoPipRegistro(id_tipo_nopip);
-                      $("#txt_idNo_Pip").val(data.id_pi);
+
                       $("#cbx_estado_m").val(estado_pi);
+                      listarufcombo(id_uf);
                     });
                 }
 
@@ -516,7 +517,7 @@ var listarDivisionFuncional=function(id_funcion,valor)
        });
   var listarGrupoFuncional=function(valor)
                 {
-                  alert(valor)
+                 // alert(valor)
                     html="";
                     $("#cbxGrupoFunc").html(html); //nombre del selectpicker UNIDAD EJECUTORA
                     event.preventDefault(); 
@@ -828,6 +829,7 @@ var listarFuenteFinanciamiento=function(valor){
                     });
                 }*/
 var listarufcombo=function(valor){
+ // alert(valor);
                      var htmlUF="";
                     $("#lista_unid_form").html(htmlUF);
                     event.preventDefault();
@@ -841,9 +843,9 @@ var listarufcombo=function(valor){
                               htmlUF +="<option  value="+registros[i]["id_uf"]+">"+registros[i]["nombre_uf"]+" </option>";
                             };
                             $("#lista_unid_form").html(htmlUF);
-                            $("#lista_unid_form").html(htmlUF);
-                            $('select[name=lista_unid_form]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
-                            $('select[name=lista_unid_form]').change();
+                            $("#lista_unid_form_m").html(htmlUF);
+                            $('select[name=lista_unid_form_m]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=lista_unid_form_m]').change();
                             $('.selectpicker').selectpicker('refresh');
                         }
                     });
