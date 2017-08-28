@@ -39,15 +39,16 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/formValidation.min.css">
 
   <style>
-   #ProgramacionHorizontal{
-      width: 100% !important;
-    } 
-     #navtittlemin
+
+      #ProgramacionHorizontal{
+        width: 100% !important;
+      } 
+      #navtittlemin
       {
         display: none;
       }
 
-    @media (max-width: 550px) {
+      @media (max-width: 550px) {
       #navtittle{
         display: none;
       }
@@ -55,8 +56,6 @@
       {
         display: inline-block;
       }
-
-
     }
   </style>
 
@@ -93,9 +92,9 @@
                   <li><a href="<?php echo site_url('PrincipalPmi/pmi'); ?>"> <i class="fa fa-home"></i> INICIO<span class=""></span></a>
                   </li>
                 </ul>-->
-
-                <h3></i>PMI</h3>
                 <ul class="nav side-menu">
+                <li><a href="<?php echo site_url('PrincipalPmi/pmi'); ?>"> <i class="fa fa-home"></i> Inicio<span class=""></span></a>
+                  </li>
                      <li><a href="<?php echo site_url('CarteraInversion/'); ?>"><i class="fa fa-suitcase"></i> Cartera de inversiones</a></li>
                       <li><a href="<?php echo site_url('ProyectoInversion/'); ?>"><i class="fa fa-sitemap"></i> Proyecto Inversion</a></li>
                       <li><a><i class="fa fa-book"></i> Proyectos Programados <span class="fa fa-chevron-down"></span></a>
@@ -146,13 +145,14 @@
         <div class="top_nav">
           <div class="nav_menu">
             <nav>
-              <div class="nav toggle">
+              <div class="nav toggle" style="position: relative;">
                 <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-                <div id="navtittle">
-                <span style="position: absolute;top: 14px;left: 50px; width: 700px; font-size: 20px; text-shadow: 1px 1px 1px rgba(0,0,0,0.3);">Programación Multianual de Inversión</span></div>
+                  <div id="navtittle"  >
+                  <span style="position: absolute;top: 14px;left: 50px; width: 700px; font-size: 20px; text-shadow: 1px 1px 1px rgba(0,0,0,0.3);">Programación Multianual de Inversión</span>
+                  </div>
 
-                <div id="navtittlemin">
-                <span style="position: absolute;top: 14px;left: 50px; width: 700px; font-size: 20px; text-shadow: 1px 1px 1px rgba(0,0,0,0.3);">PMI</span></div>
+                  <div id="navtittlemin">
+                  <span style="position: absolute;top: 14px;left: 50px; width: 700px; font-size: 20px; text-shadow: 1px 1px 1px rgba(0,0,0,0.3);">PMI</span></div>
               </div>
 
               <ul class="nav navbar-nav navbar-right">
