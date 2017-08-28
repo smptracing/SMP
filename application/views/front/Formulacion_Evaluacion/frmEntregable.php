@@ -173,37 +173,19 @@
                         <input type="hidden" name="txtidEntregablePestana" id="txtidEntregablePestana">
                         <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" onclick="generarCalendarioPestniaCalendar();" role="tab" data-toggle="tab" aria-expanded="true"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></a>
                         </li>
-                        <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" onclick="generarCalendarioPestniaListar();" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></a>
+                        <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></a>
                         </li>
-                      </ul>
+                      </ul><h5><label id="nombreEntregable"> </label></h5>
                       <div id="myTabContent" class="tab-content">
                         <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
                                  <div class="x_content" id="contenidoActividadesFE">
                                       <div id='calendarActividadesFE'></div>
                                   </div>
                         </div>
-                        <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
-                              <p class="text-muted font-13 m-b-30">
-                            </p>
-
-                            <table id="datatable-actividadesV" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
-                              <thead>
-                                <tr>
-                                  <th>Id</th>
-                                  <th>Nombre</th>
-                                  <th>Responsable</th>
-                                  <th>Fecha Inicio</th>
-                                  <th>Fecha Final</th>
-                                  <th>Valoración</th>
-                                  <th>Avance</th>
-                                  <th></th>
-
-                                </tr>
-                              </thead>
-                              <tbody>
-
-                              </tbody>
-                            </table>
+                        <div  role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
+                            <div id="TemActividad">
+                                    
+                            </div>
                         </div>
                       </div>
                     </div>
@@ -214,7 +196,7 @@
               <!-- /form color picker -->
 
 <!--- agregar los  entregable-->
-<div class="modal fade" id="VentanaEntregable" role="dialog">
+<div class="modal fade" data-backdrop="static" id="VentanaEntregable" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -271,7 +253,7 @@
       </div>
     </div>
   </div>
-  <div class="modal fade" id="ModificarVentanaEntregable" role="dialog">
+  <div class="modal fade" id="ModificarVentanaEntregable" data-backdrop="static" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -331,7 +313,7 @@
   </div>
 
   <!--- agregar los  actividades-->
-<div class="modal fade" id="VentanaActividades" role="dialog">
+<div class="modal fade" data-backdrop="static" id="VentanaActividades" data-backdrop="static" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -345,7 +327,7 @@
                   <div class="row">
                       <div class="col-md-12 col-sm-12 col-xs-12 ">
                           <label>Actividad</label>
-                          <input id="txt_id_entregable"  name="txt_id_entregable" type="hidden" class="form-control"  placeholder="" notValidate>
+                          <input id="txt_id_entregable"  name="txt_id_entregable" type="text" class="form-control"  placeholder="" notValidate>
                           <input id="txt_nombre_act" name="txt_nombre_act" type="text" class="form-control"  placeholder="">
                       </div>
                    </div>
@@ -394,11 +376,11 @@
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
 
-                          <button  type="submit" class="btn btn-success">
+                          <button  id="btn_Addactividad" class="btn btn-success">
                             <span class="glyphicon glyphicon-floppy-disk"></span>
                             Guardar
                           </button>
-                          <button id="btn_actividadC" type="submit" class="btn btn-danger" data-dismiss="modal">
+                          <button id="btn_actividadC"  class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-remove"></span>
                             Cancelar
                           </button>
@@ -418,7 +400,7 @@
 
 <!---Modificar eventos del calendar-->
 
-  <div class="modal fade" id="modalEventoActividades" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal fade" id="modalEventoActividades" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -495,7 +477,7 @@
 
 
 <!---Asignacion de persona a entregable-->
-  <div class="modal fade" id="VentanaAsignacionPersonalEntregable" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal fade" id="VentanaAsignacionPersonalEntregable" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -527,7 +509,7 @@
               <form class="form-horizontal " id="form-AsignacionPersonalEntregable"  method="POST" >
 
                       <input type="hidden" class="form-control" id="txt_idPersona" name="txt_idPersona">
-                      <input type="hidden" class="form-control" id="txt_identregable" name="txt_identregable">
+                      <input type="text" class="form-control" id="txt_identregable" name="txt_identregable">
 
                       <div class="ln_solid"></div>
                       <div class="form-group">
@@ -556,7 +538,7 @@
   </div>
 
 <!---Asignacion de persona a entregable-->
-  <div class="modal fade" id="VentanaAsignacionPersonalActividad" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal fade" id="VentanaAsignacionPersonalActividad" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog " role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -618,7 +600,7 @@
   </div>
 
 <!---lista de  responsable con sus entregables-->
-  <div class="modal fade" id="VentenaResponsablesEntregable" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal fade" id="VentenaResponsablesEntregable" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog " role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -864,10 +846,5 @@
     });
 
   </script>
-  <script>
-  $('.modal').on('hidden.bs.modal', function(){ 
-    $(this).find('form')[0].reset(); 
-    $("label.error").remove();  
-  });
-</script>
 
+ 

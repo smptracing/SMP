@@ -1,34 +1,32 @@
  $(document).on("ready" ,function(){
 
                 //añadir actividades al entregable
-                $("#form-AddActividades_Entregable").submit(function(event)
+                $("#btn_Addactividad" ).on( "click", function() 
                   {
+                      var txt_id_entregable=$("#txt_id_entregable").val();
+                      var txt_nombre_act=$("#txt_nombre_act").val();
+                      var txt_fechaActividadI=$("#txt_fechaActividadI").val();
+                      var txt_fechaActividadf=$("#txt_fechaActividadf").val();
+                      var txt_valoracionEAc=$("#txt_valoracionEAc").val();
                       event.preventDefault();
                       $.ajax({
                           url:base_url+"index.php/FEActividadEntregable/Add_Actividades",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                              var registros = eval(resp);
-                             for (var i = 0; i < registros.length; i++) {
-                               if(registros[i]["VALOR"]==1){
-                                    swal("",registros[i]["MENSAJE"], "success");
-                                   $('#form-AddActividades_Entregable')[0].reset();
-                                   $("#VentanaActividades").modal("hide");
-                                   generarActividadesVertical(registros[i]["id_entregable"]);
-                                  $('#datatable-actividadesV').dataTable()._fnAjaxUpdate();
-                                   refrescarGantt();
-                                   $("#calendarActividadesFE" ).remove();
-                             		generarCalendario(registros[i]["id_entregable"]);//Generar calendario
-                               }else{
-                                      swal('',registros[i]["MENSAJE"],'success' );
-                                     $("#calendarActividadesFE" ).remove();
-                             		 generarCalendario(registros[i]["id_entregable"]);//Generar calendario
-
-                               }
-                           };
-
-                         }
+                          type:'POST',
+                          data: {txt_id_entregable:txt_id_entregable,txt_nombre_act:txt_nombre_act,txt_fechaActividadI:txt_fechaActividadI,txt_fechaActividadf:txt_fechaActividadf,txt_valoracionEAc:txt_valoracionEAc},
+                          success:function(resp)
+                          {
+                            var txt_id_entregable=parseInt($("#txt_id_entregable").val());
+                            swal("","Se registro corectamente la actividad", "success");
+                            generarActividadesVertical(txt_id_entregable);
+                            $('#VentanaActividades').modal('hide');
+                            refrescarGantt();
+                            $("#calendarActividadesFE" ).remove();
+                            generarCalendario(txt_id_entregable);//Generar calendario */
+                 
+                            var oTable = $('#datatable-actividadesV').dataTable( );
+                            // to reload
+                            oTable.api().ajax.reload();
+                          }
                       });
                   });
                 $("#txt_valoracionEAc").keyup(function(){//verificar si el actividades supera el o no el cien porciento para inavilitar el boton

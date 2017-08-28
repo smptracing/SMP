@@ -23,6 +23,7 @@ class FEActividadEntregable extends CI_Controller
         }
     }
 
+
     //mostra vance de la actividad
     public function MostrarAvance()
     {
@@ -51,7 +52,7 @@ class FEActividadEntregable extends CI_Controller
             $txt_ActividadColor     = $this->input->post("txt_ActividadColor");
 
             $data = $this->Model_FEActividadEntregable->Add_Actividades($opcion,$id_act, $txt_id_entregable,$txt_nombre_act,$txt_fechaActividadI,$txt_fechaActividadf,$txt_valoracionEAc,$txt_AvanceEAc,$txt_observacio_EntreAc,$txt_ActividadColor);
-            echo json_encode($data);
+            echo json_encode(['id_entregable'=>$txt_id_entregable]);exit;
         } else {
             show_404();
         }
