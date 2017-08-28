@@ -88,6 +88,61 @@
 
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
+
+
+              <!--hhhhhhh-->
+              <!-- sidebar menu -->
+            
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+              <ul class="nav side-menu">
+                  <li><a href="<?php echo site_url('PrincipalPmi/pmi'); ?>"> <i class="fa fa-home"></i> INICIO<span class=""></span></a>
+                  </li>
+                </ul>
+
+                <ul class="nav side-menu">
+                     <li>
+                          <a href="<?php echo site_url('CarteraInversion/'); ?>"><i class="fa fa-suitcase"></i> Cartera de inversiones</a>
+                     </li>
+                     <li><a><i class="fa fa-gears"></i> Programación de Inversiones <span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                                    <li><a href="<?php echo site_url('programar_pip/'); ?>">PIP</a></li>
+                                    <li><a href="<?php echo site_url('programar_nopip/'); ?>">NO PIP</a></li>
+                            </ul>
+                      </li>
+                      <li>
+                                <a><i class="fa fa-book"></i> Inversiones Programados
+                                  <span class="fa fa-chevron-down"></span>
+                                </a>
+                                <ul class="nav child_menu">
+                                    <li><a href="<?php echo site_url('ProyectoInversion/'); ?>">Programación PMI</a></li>
+                                    <li><a href="<?php echo site_url('PipProgramados/'); ?>">PIP</a></li>
+                                    <li><a href="<?php echo site_url('NoPipProgramados/'); ?>">NO PIP</a></li>
+                                </ul>
+                      </li>
+
+                      <li>
+                            <a><i class="fa fa-database"></i> Banco de proyectos <span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                                    <li><a href="<?php echo site_url('bancoproyectos/'); ?>">PIP</a></li>
+                                    <li><a href="<?php echo site_url('bancoproyectos/NoPip'); ?>">NO PIP</a></li>
+                            </ul>
+                      </li>
+                      <li>
+                            <a><i class="fa fa-inbox"></i> Meta Presupuestal <span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                                    <li><a href="<?php echo site_url('MetaPip/meta_pip'); ?>">PIP</a></li>
+                                    <li><a href="<?php echo site_url('MetaPip/meta_nopip'); ?>">NO PIP</a></li>
+                            </ul>
+                      </li>
+                       <li>
+                          <a href="<?php echo site_url('BrechaIndicador/'); ?>"><i class="fa fa-sliders"></i> Brechas e Indicadores </a>
+                       </li>
+                    <!--   <li><a href="<?php echo site_url('Meta/'); ?>"><i class="fa fa-sliders"></i> Meta </a></li>-->
+                </ul>
+              </div>
+            </div>
+            <!-- /sidebar menu -->
               <!--<ul class="nav side-menu">
                   <li><a href="<?php echo site_url('PrincipalPmi/pmi'); ?>"> <i class="fa fa-home"></i> INICIO<span class=""></span></a>
                   </li>
