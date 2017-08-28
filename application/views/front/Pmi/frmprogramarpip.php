@@ -480,7 +480,7 @@
                               <div class="item form-group">
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>PIA</label></center>
-                                      <input  class="form-control" id="txt_pia_" name="txt_pia_" type="number" required="required"  disabled="disabled">
+                                      <input  class="form-control" id="txt_pia_oper" name="txt_pia_oper" type="number" required="required" value="0.00" disabled="disabled">
                                     </div>
                                     <!--<div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>PIM</label></center>
@@ -488,7 +488,7 @@
                                     </div>-->
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>Devengado</label></center>
-                                      <input  class="form-control" id="txt_devengado_" name="txt_devengado_" type="number" required="required" value="0.00"  disabled="disabled">
+                                      <input  class="form-control" id="txt_devengado_oper" name="txt_devengado_oper" type="number" required="required" value="0.00"  disabled="disabled">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>Prioridad</label></center>
