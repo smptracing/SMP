@@ -11,7 +11,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2><i class="fa fa-calendar"></i> CICLO DE INVERSIONES</h2>
+                        <h2><i class="fa fa-refresh"></i> CICLO DE INVERSIONES</h2>
 
                         <ul class="nav navbar-right panel_toolbox">
                             <!-- <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -39,7 +39,7 @@
                                 <div class="small-box bg-teal">
                                     <div class="inner">
                                         <h3>PMI</h3>
-                                        <p>Programacion Multianual de Inversion</p>
+                                        <p>Programación Multianual de Inversión</p>
                                     </div>
                                     <div class="icon">
                                         <i class="fa fa-calendar"></i>
@@ -56,7 +56,7 @@
                                 <div class="small-box bg-olive">
                                     <div class="inner">
                                         <h3>FE</h3>
-                                        <p>Formulacion, Evaluacion de Proyectos</p>
+                                        <p>Formulación, Evaluación de Proyectos</p>
                                     </div>
                                     <div class="icon">
                                         <i class="fa fa-edit"></i>
@@ -72,7 +72,7 @@
                                 <div class="small-box bg-blue">
                                     <div class="inner">
                                         <h3>E</h3>
-                                        <p>Ejecucion de Proyectos de Inversion</p>
+                                        <p>Ejecución de Proyectos de Inversión</p>
                                     </div>
                                     <div class="icon">
                                         <i class="fa fa-play"></i>
@@ -194,7 +194,7 @@
                     </div>
 
                     <div class="x_title">
-                        <h2><i class="fa fa-line-chart"></i> MÓDULOS</h2>
+                        <h2><i class="fa fa-list"></i> MÓDULOS</h2>
 
                         <div class="clearfix"></div>
                     </div>
@@ -212,7 +212,7 @@
                                         <p>Seguimiento de Proyectos de Inversión</p>
                                     </div>
                                     <div class="icon">
-                                        <i class="fa fa-gears"></i>
+                                        <i class="fa fa-random"></i>
                                     </div>
                                     <a href="#"
                                        class="small-box-footer">
@@ -229,7 +229,7 @@
                                         <p>Monitoreo de Proyectos de Inversión</p>
                                     </div>
                                     <div class="icon">
-                                        <i class="fa fa-bar-chart"></i>
+                                        <i class="fa fa-eye"></i>
                                     </div>
                                     <a href="#"
                                        class="small-box-footer">
@@ -243,10 +243,12 @@
                                 <div class="small-box bg-navy">
                                     <div class="inner">
                                         <h3>R</h3>
-                                        <p>Reportes, Estadisticas, Informes</p>
+                                        <p>
+                                            Reportes, Estadísticas e Informes
+                                        </p>
                                     </div>
                                     <div class="icon">
-                                        <i class="fa fa-users"></i>
+                                        <i class="fa fa-bar-chart"></i>
                                     </div>
                                     <a href="#"
                                        class="small-box-footer">              <!--                                       <a href="#" class="small-box-footer">-->
@@ -260,7 +262,7 @@
                     </div>
 
                     <div class="x_title">
-                        <h2><i class="fa fa-line-chart"></i> CONFIGURACION DE PARAMETROS</h2>
+                        <h2><i class="fa fa-cog"></i> CONFIGURACIÓN DE PARÁMETROS</h2>
 
                         <div class="clearfix"></div>
                     </div>
@@ -275,10 +277,10 @@
                                     <div class="inner">
                                         <h3>P</h3>
 
-                                        <p>Mantenimiento de Parametros Generales</p>
+                                        <p>Mantenimiento de Parámetros Generales</p>
                                     </div>
                                     <div class="icon">
-                                        <i class="fa fa-gears"></i>
+                                        <i class="fa fa-cogs"></i>
                                     </div>
                                     <a href="<?php echo site_url('PrincipalParametros/parametros'); ?>"
                                        class="small-box-footer">
@@ -290,7 +292,7 @@
 
                             <div class="col-lg-3 col-xs-6">
                                 <!-- small box -->
-                                <div class="small-box bg-navy">
+                                <div class="small-box bg-light-blue">
                                     <div class="inner">
                                         <h3>U</h3>
                                         <p>Usuarios, Permisos y Administracion</p>
