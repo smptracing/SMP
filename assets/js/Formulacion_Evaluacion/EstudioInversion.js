@@ -157,6 +157,9 @@ var listarestudiocombo=function(valor){
                             success:function(resp){
                               $.each(resp,function(index,element)
                               {
+                                   
+                               
+
                                    $("#txtnombres").val(element.nombre_pi);
                                    $("#txtCodigoUnico").val(element.codigo_unico_pi);
                                    
@@ -175,8 +178,16 @@ var listarestudiocombo=function(valor){
                                    $('select[name=lista_unid_ejec]').change();
                                    $('.selectpicker').selectpicker('refresh'); 
 
-                                   $("#txtMontoInversion").val(monto_Inversion);
-                                   $("#txtcostoestudio").val(element.pim_acumulado);
+                                   $("#txtMontoInversion").val(element.costo_pi);
+                                   if(element.pim_acumulado==0)
+                                   {
+                                    $("#txtcostoestudio").val(element.pia_meta_pres);
+                                   }
+                                  else
+                                   {
+                                     $("#txtcostoestudio").val(element.pim_acumulado);
+                                   } 
+                                   
                              });
                            // $("#txtCodigoUnico").va(resp);
                         }
