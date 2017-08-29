@@ -20,7 +20,7 @@
   <style>
     .main-footer 
     {
-      background: #3c8dbc;
+      background: #3c5767;
       padding: 15px;
       color: #fff;
       border-top: 1px solid #d2d6de;
@@ -50,6 +50,9 @@
     .navbar-header
     {
       height: 70px;
+    }
+    .skin-blue .main-header .navbar {
+        background-color: #3c5767;
     }
     @media (max-width: 770px) {
       .tituloHeader{
@@ -137,7 +140,7 @@
             <div class="box-header with-border">
               <!--<h3 class="box-title">Input Addon</h3>-->
               
-              <h3 class="box-title"><i class="fa fa-refresh"></i> CICLO DE INVERSIONES</h3>
+              <h3 class="box-title"> <br><i class="fa fa-refresh"></i> CICLO DE INVERSIONES</h3>
             </div>
             <div class="box-body">
                   <div class="row">
@@ -329,9 +332,8 @@
 
 
       <div class="pull-right hidden-xs">
-        <b>Version</b> 1.0
       </div>
-      <strong style="padding-left: 20px;">Copyright &copy; 2017-2019 - </strong> Todos los derechos reservados.
+      <strong>Copyright &copy; 2017-2019 - </strong> Todos los derechos reservados.
     </div>
   </footer>
 </div>
