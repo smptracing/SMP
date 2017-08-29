@@ -21,6 +21,7 @@ class Expediente_Tecnico extends CI_Controller
 		$this->load->model('Model_ET_Presupuesto_Ejecucion');
 		$this->load->model('Model_Personal');
 		$this->load->model('Model_ET_Detalle_Partida');
+		$this->load->model('Model_ET_Detalle_Analisis_Unitario');
 		$this->load->library('mydompdf');
 		
 	}
@@ -34,7 +35,6 @@ class Expediente_Tecnico extends CI_Controller
 
 	public function reportePdfExpedienteTecnico($id_ExpedienteTecnico)
 	{
-	
 		$responsableElaboracion=$this->Model_Personal->ResponsableExpedieteElaboracion($id_ExpedienteTecnico);
 		$responsableEjecucion=$this->Model_Personal->ResponsableExpedieteEjecucion($id_ExpedienteTecnico);
 		$Opcion="ReporteFichaTecnica01";
@@ -392,18 +392,29 @@ class Expediente_Tecnico extends CI_Controller
     }
 
     public function reportePdfAnalisisPrecioUnitarioFF11($id_et)
-	{		
-		$opcion="BuscarExpedienteID";
-		$MostraExpedienteNombre=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoSelectBuscarId($opcion,$id_et);
+	{
+		$etExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnico($id_et);
 
-		$flat="REPORTEPRECIOSUNITARIOS";
-		$listarpreciosunitarios=$this->Model_ET_Presupuesto_Analitico->listarPreciosUnitarios($flat,$id_et);
-		//var_dump($listarpreciosunitarios);exit;
-        $this->load->library('mydompdf');
-        $html= $this->load->view('front/Ejecucion/ExpedienteTecnico/reporteAnalisisPreciosFF11',['MostraExpedienteNombre' => $MostraExpedienteNombre,'listarpreciosunitarios'=>$listarpreciosunitarios], true);
-        $this->mydompdf->load_html($html);
-        $this->mydompdf->render();
-        $this->mydompdf->stream("reporteAnalisisPreciosFF11.pdf", array("Attachment" => false));
+		$etExpedienteTecnico->childETComponente=$this->Model_ET_Componente->ETComponentePorIdET($etExpedienteTecnico->id_et);
+
+		foreach($etExpedienteTecnico->childETComponente as $key => $value)
+		{
+			$value->childMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($value->id_componente);
+
+			foreach($value->childMeta as $index => $item)
+			{
+				$this->obtenerMetaAnidadaParaReporteFF11($item);
+			}
+		}
+		
+		$html= $this->load->view('front/Ejecucion/ExpedienteTecnico/reporteAnalisisPreciosFF11', ["etExpedienteTecnico" => $etExpedienteTecnico], true);
+		
+		$this->mydompdf->load_html($html);
+		$this->mydompdf->set_paper("A4", "portrait");
+		$this->mydompdf->render();
+		$this->mydompdf->set_base_path('./assets/css/dompdf.css'); //agregar de nuevo el css
+
+		$this->mydompdf->stream("reporteAnalisisPreciosFF11.pdf", array("Attachment" => false));
     }
 
 	public function reportePdfPresupuestoFF05($id_ExpedienteTecnico)
@@ -431,6 +442,7 @@ class Expediente_Tecnico extends CI_Controller
 		$this->mydompdf->render();
 		$this->mydompdf->stream("reportePresupuestoFF05.pdf", array("Attachment" => false));
 	}
+
 	private function obtenerMetaAnidadaReporteF005($meta)
 	{
 		$temp=$this->Model_ET_Meta->ETMetaPorIdMetaPadre($meta->id_meta);
@@ -468,6 +480,41 @@ class Expediente_Tecnico extends CI_Controller
 			$this->obtenerMetaAnidada($value);
 		}
 	}
+
+	private function obtenerMetaAnidadaParaReporteFF11($meta)
+	{
+		$temp=$this->Model_ET_Meta->ETMetaPorIdMetaPadre($meta->id_meta);
+
+		$meta->childMeta=$temp;
+
+		if(count($temp)==0)
+		{
+			$meta->childPartida=$this->Model_ET_Partida->ETPartidaPorIdMeta($meta->id_meta);
+
+			foreach($meta->childPartida as $key => $value)
+			{
+				$value->childDetallePartida=$this->Model_ET_Detalle_Partida->ETDetallePartidaPorIdPartida($value->id_partida);
+
+				foreach($value->childDetallePartida as $index => $item)
+				{
+					$item->childAnalisisUnitario=$this->Model_ET_Analisis_Unitario->ETAnalisisUnitarioPorIdDetallePartida($item->id_detalle_partida);
+
+					foreach ($item->childAnalisisUnitario as $k => $v)
+					{
+						$v->childDetalleAnalisisUnitario=$this->Model_ET_Detalle_Analisis_Unitario->ETDetalleAnalisisUnitarioPorIdAnalisis($v->id_analisis);
+					}
+				}
+			}
+			
+			return false;
+		}
+
+		foreach($meta->childMeta as $key => $value)
+		{
+			$this->obtenerMetaAnidadaParaReporteFF11($value);
+		}
+	}
+
 	public function eliminar()
 	{
 		if ($this->input->is_ajax_request()) 
@@ -500,6 +547,7 @@ class Expediente_Tecnico extends CI_Controller
            	}
 		}
 	}
+
 	public function ResponsableExpediente()
 	{
 		$flat="LISTAREXPEDIENTERESPONSABLE";
