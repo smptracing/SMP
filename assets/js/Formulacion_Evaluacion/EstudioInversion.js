@@ -159,7 +159,23 @@ var listarestudiocombo=function(valor){
                               {
                                    $("#txtnombres").val(element.nombre_pi);
                                    $("#txtCodigoUnico").val(element.codigo_unico_pi);
-                                   $("#txtMontoInversion").val(element.costo_pi);
+                                   
+                                   var monto_Inversion=0;
+                                   $("listaTipoInversion").val(element.nombre_tipo_inversion);
+
+                                   $('select[name=listaTipoInversion]').val(element.id_tipo_inversion);
+                                   $('select[name=listaTipoInversion]').change();
+                                   $('.selectpicker').selectpicker('refresh'); 
+
+                                    $('select[name=lista_unid_form]').val(element.id_uf);
+                                   $('select[name=lista_unid_form]').change();
+                                   $('.selectpicker').selectpicker('refresh'); 
+
+                                   $('select[name=lista_unid_ejec]').val(element.id_ue);
+                                   $('select[name=lista_unid_ejec]').change();
+                                   $('.selectpicker').selectpicker('refresh'); 
+
+                                   $("#txtMontoInversion").val(monto_Inversion);
                                    $("#txtcostoestudio").val(element.pim_acumulado);
                              });
                            // $("#txtCodigoUnico").va(resp);
