@@ -27,6 +27,17 @@ class Estudio_Inversion extends CI_Controller
             show_404();
         }
     }
+     public function get_listaproyectosCargar() //mostra ESTADO INVERSION
+
+    {
+
+        if ($this->input->is_ajax_request()) {
+            $datos = $this->Estudio_Inversion_Model->get_listaproyectosCargar();
+            echo json_encode($datos);
+        } else {
+            show_404();
+        }
+    }
 
     public function get_EstudioInversion() //mostra ESTADO INVERSION
 
@@ -208,7 +219,8 @@ class Estudio_Inversion extends CI_Controller
     public function AddDocumentosEstudio()
     {
 
-        if ($this->input->is_ajax_request()) {
+        if ($this->input->is_ajax_request()) 
+        {
 
             // echo  $txt_Cartera;
             $config['upload_path']   = './uploads/DocumentosInversion/';
