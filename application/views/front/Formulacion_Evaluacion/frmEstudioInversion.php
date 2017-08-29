@@ -93,14 +93,13 @@
          <div class="row">
                 <div class="col-xs-12">
             <form class="form-horizontal " id="form-AddEstudioInversion" action="<?php echo base_url(); ?>Estudio_Inversion/AddEstudioInversion" method="POST">
-                                      <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-8" for="name">Codigo Unico<span class="required">*</span></label>
-                                        <div class="col-md-6 col-sm-6 col-xs-8">
-                                          <input id="txtCodigoUnico" name="txtCodigoUnico" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese único " required="required" autocomplete="off" type="text">
-                                        </div>
-                                      </div>
-
-                                    <br>
+                      <!--<div class="item form-group">
+                          <label class="control-label col-md-3 col-sm-3 col-xs-8" for="name">Codigo Unico<span class="required">*</span></label>
+                          <div class="col-md-6 col-sm-6 col-xs-8">
+                            <input id="txtCodigoUnico" name="txtCodigoUnico" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese único " required="required" autocomplete="off" type="text">
+                          </div>
+                      </div>-->
+                    <br>
 
                           <div class="row ">
                             <div class="col-md-2">
@@ -122,6 +121,12 @@
                                                 <select   id="listaFuncionC" name="listaFuncionC" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Proyecto...">
                                                 </select>
                                           </div>
+                                          <div class=".col-xs-7 .col-md-7">
+                                           <label for="name">Código Único<span class="required"></span>
+                                            </label>
+                                                <input id="txtCodigoUnico" name="txtCodigoUnico" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese único " required="required" autocomplete="off" type="text">
+                                          </div>
+
                                           </div>
                                       </div>
                                 </div>
