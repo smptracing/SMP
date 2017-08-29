@@ -120,7 +120,7 @@
                                       </select>
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
-                                      <center><label>Saldo a Programar</label></center>
+                                      <center><label style="color: red">Saldo a Programar</label></center>
                                       <input  class="form-control" id="txt_saldoprogramar" name="txt_saldoprogramar" type="number" required="required">
                                     </div>
 
