@@ -475,7 +475,7 @@
               <form class="form-horizontal " id="form-AsignacionPersonalEntregable"  method="POST" >
 
                       <input type="hidden" class="form-control" id="txt_idPersona" name="txt_idPersona">
-                      <input type="text" class="form-control" id="txt_identregable" name="txt_identregable">
+                      <input type="hidden" class="form-control" id="txt_identregable" name="txt_identregable">
 
                       <div class="ln_solid"></div>
                       <div class="form-group">
@@ -532,8 +532,8 @@
                               </table>
                           </div>
                  <form class="form-horizontal " id="form-AsignacionPersonalActividad"  method="POST" >
-                      <input type="text" class="form-control" id="txt_idPersonaActividad" name="txt_idPersonaActividad">
-                      <input type="text" class="form-control" id="txt_idActividadCronograma" name="txt_idActividadCronograma">
+                      <input type="hidden" class="form-control" id="txt_idPersonaActividad" name="txt_idPersonaActividad">
+                      <input type="hidden" class="form-control" id="txt_idActividadCronograma" name="txt_idActividadCronograma">
 
                       <div class="ln_solid"></div>
                       <div class="form-group">

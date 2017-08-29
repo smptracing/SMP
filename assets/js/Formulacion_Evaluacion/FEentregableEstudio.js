@@ -266,8 +266,15 @@
 				{
           sumaTotalValoriEntregable=sumaTotalValoriEntregable+Math.trunc(registros[i]["valoracion"]);
 				};
+        
 			$("#PorcentajeRestanteValorizacion").html("Valorización Restante "+(100-sumaTotalValoriEntregable)+"%");
-      $("#PorcentajeRestanteValorizacionModificar").html("Valorización Restante "+(100-sumaTotalValoriEntregable)+"%");
+
+      if(sumaTotalValoriEntregable>100)
+        {
+           $("#PorcentajeRestanteValorizacionModificar").html("Valorización Restante "+(100-100)+"%");
+        }else{
+          $("#PorcentajeRestanteValorizacionModificar").html("Valorización Restante "+(100-sumaTotalValoriEntregable)+"%");
+        }
 			}
 		});
 

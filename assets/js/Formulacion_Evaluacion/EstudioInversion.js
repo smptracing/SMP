@@ -1,13 +1,13 @@
 $(document).on("ready" ,function(){
   var listarpicombo=function(valor){
-                     htmlPip="";
+                     var htmlPip="";
                     $("#listaFuncionC").html(htmlPip);
                     event.preventDefault();
                     $.ajax({
                         "url":base_url +"index.php/Estudio_Inversion/get_listaproyectos",
                         type:"POST",
                         success:function(respuesta1){
-                       //    alert(respuesta);
+                           //alert(respuesta1);
                          var registrospi = eval(respuesta1);
                             for (var i = 0; i <registrospi.length;i++) {
                               htmlPip +="<option value="+registrospi[i]["id_pi"]+"> "+ registrospi[i]["codigo_unico_pi"]+":"+registrospi[i]["nombre_pi"]+" </option>";
@@ -106,7 +106,7 @@ var listarestudiocombo=function(valor){
                             $("#lista_unid_form").html(htmlUF);
                             $("#lista_unid_form").html(htmlUF);
                             $('select[name=lista_unid_form]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
-                            $('select[name=lista_unid_form]').change();
+                            $('select[name=lista_unid_form]').change();//borrado
                             $('.selectpicker').selectpicker('refresh');
                         }
                     });
@@ -130,8 +130,8 @@ var listarestudiocombo=function(valor){
               /* $("#listaTipoInversion").change(function(){//para cargar en agregar division funcionañ
                   listarnivelcombo();
              });*/
-              $("#listaNivelEstudio").change(function(){//para cargar en agregar division funcionañ
               //listarufcombo();
+              $("#listaNivelEstudio").change(function(){//para cargar en agregar division funcionañ
              });
 
              $("#lista_unid_form").change(function(){
@@ -142,6 +142,16 @@ var listarestudiocombo=function(valor){
                 // alert("hola");
                  listarpersonascombo();
              });
+              $('#listaFuncionC').on('change', function()
+               {
+                    
+                    $.ajax({ url:base_url+"index.php/Estudio_Inversion/get_listaproyectosCargar",type:$(this).attr('method'),data:$(this).serialize(),
+                          success:function(resp){
+                            alert(resp);
+                      }
+                  });
+              });
+
 //REGISTARAR NUEVA
    $("#form-AddEstudioInversion").submit(function(event)
                   {

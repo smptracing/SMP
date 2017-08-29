@@ -48,7 +48,16 @@ class Estudio_Inversion_Model extends CI_Model
             return false;
         }
     }
-
+     public function get_listaproyectosCargar()
+    {
+        $opcion="lista_proyectos_programados_para_formulacion_evaluacion";
+        $EstudioInversionCargar = $this->db->query("execute  sp_Gestionar_ProyectoInversion @Opcion='".$opcion."'");
+        if ($EstudioInversionCargar->num_rows() > 0) {
+            return $EstudioInversionCargar->result();
+        } else {
+            return false;
+        }
+    }
     public function get_UnidadFormuladora()
     {
         //  $EstadoCicloInversion = $this->db->query("execute get");
