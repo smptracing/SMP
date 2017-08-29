@@ -198,6 +198,22 @@ class Estudio_Inversion extends CI_Controller
         }
     }
 
+     public function AddCoordinadorEstudio()
+    {
+        if ($this->input->is_ajax_request()) {
+            $flat              = "AGREGARCOORDINADOR";
+            $id_est_inv        = $this->input->post("id_est_inv");
+            $listaResponsables = $this->input->post("listaResponsables");
+            $dateFechaAsig     = $this->input->post("dateFechaAsig");
+            if ($this->Estudio_Inversion_Model->AddCoordinadorEstudio($flat, $id_est_inv, $listaResponsables, $dateFechaAsig) == false) {
+                echo "1";
+            } else {
+                echo "2";
+            }
+        } else {
+            show_404();
+        }
+    }
     //REGISTRAR NUEVA
     public function AddAsiganarPersona()
     {
@@ -218,6 +234,7 @@ class Estudio_Inversion extends CI_Controller
         }
     }
 
+    
     //añadir documentos ala estudio de invserion
     public function AddDocumentosEstudio()
     {

@@ -48,16 +48,7 @@ class Estudio_Inversion_Model extends CI_Model
             return false;
         }
     }
-     public function get_listaproyectosCargar($id_Pi)
-    {
-        $opcion="obtenerdatosporpipdelabusquedaproyectoinversion";
-        $EstudioInversionCargar = $this->db->query("execute  sp_Gestionar_ProyectoInversion @Opcion='".$opcion."',@id_pi='".$id_Pi."'");
-        if ($EstudioInversionCargar->num_rows() > 0) {
-            return $EstudioInversionCargar->result();
-        } else {
-            return false;
-        }
-    }
+
     public function get_UnidadFormuladora()
     {
         //  $EstadoCicloInversion = $this->db->query("execute get");
@@ -195,6 +186,21 @@ class Estudio_Inversion_Model extends CI_Model
             . $txadescripcion . "' ");
         if ($AsiganarPersona->num_rows() > 0) {
             return $AsiganarPersona->result();
+        } else {
+            return false;
+        }
+    }
+    public function AddCoordinadorEstudio($flat, $Cbx_Persona, $Cbx_Cargo, $txt_IdEtapa_Estudio_p, $txadescripcion)
+    {
+        //  $EstadoCicloInversion = $this->db->query("execute get");
+        $coordinadorEstudio = $this->db->query("execute sp_Gestionar_AsignarPersona'"
+            . $flat . "','"
+            . $Cbx_Persona . "', '"
+            . $Cbx_Cargo . "', '"
+            . $txt_IdEtapa_Estudio_p . "', '"
+            . $txadescripcion . "' ");
+        if ($coordinadorEstudio->num_rows() > 0) {
+            return $coordinadorEstudio->result();
         } else {
             return false;
         }
