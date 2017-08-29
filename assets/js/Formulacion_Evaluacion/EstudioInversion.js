@@ -414,6 +414,7 @@ var listarestudiocombo=function(valor){
                                       }
                                    }},
                                   {"defaultContent":" <div class='dropdown'>  <a class='btn btn-link dropdown-toggle' type='button' data-toggle='dropdown'> <span class='glyphicon glyphicon-option-vertical' aria-hidden='true'></span></a> <ul class='dropdown-menu'>  <li><button type='button' title='Subir Resolución' class='DocumentosEstudio btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaDocumentosEstudio'><i class='glyphicon glyphicon-folder-open' aria-hidden='true'></i></button> </li> <li> <button title='Asignar Respondable' class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#ventanaasiganarpersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button></li> <li><button title='Nueva Etapa Estudio' class='nuevaEtapaEstudio btn btn-warning btn-xs' data-toggle='modal' data-target='#ventanaEtapaEstudio'><i class='fa fa-flag' aria-hidden='true'></i></button> </li> <li> <button type='button' title='Ver Etapas Estudio' class='ver_etapas_estudio btn btn-success btn-xs' data-toggle='modal' data-target='#ventana_ver_etapas_estudio'><i class='fa fa-paw' aria-hidden='true'></i></button></li> </ul> </div>"}
+
                                ],
                                 "language":idioma_espanol
                     });
@@ -483,6 +484,26 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
                         var txtIdEtapaEstudio_v=$('#txtIdEtapaEstudio_v').val(data.id_est_inv);
                          listarEtapaEstudio(id_est_inv);
                   });
+                }
+                var ver_asignar_coordinador=function(tbody,myTableUA)
+                {
+                  $(tbody).on("click","button.ver_asignar_coordinador",function(){
+                    var data=myTableUA.row( $(this).parents("tr")).data();
+                    var id_persona=data.id_persona;
+                    console.log(id_persona);
+                    var id_est_inv=$('#id_est_inv').val(data.id_est_inv);
+                  listarpersonascombo(id_persona);
+                  });
+                } 
+                 var  listarpersonasdata=function(tbody,myTableUA){
+                    $(tbody).on("click","button.AsignarPersona",function(){
+                      var data=myTableUA.row( $(this).parents("tr")).data();
+                      var id_persona=data.id_persona;
+                       console.log(id_persona);
+                        var id_est_inv=$('#id_est_inv').val(data.id_est_inv);
+                       listarpersonascombo(id_persona);
+
+                    });
                 }
                 var  listarDocumentos=function(id_est_inv)
                 {
