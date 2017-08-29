@@ -34,3 +34,4 @@ uploads/ImageExpediente/*.png
 uploads/ImageExpediente/*.jpg
 uploads/ResolucioExpediente/*.docx
 uploads/ResolucioExpediente/*.pdf
+*.xlsx
