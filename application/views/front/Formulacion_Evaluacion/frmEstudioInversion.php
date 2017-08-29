@@ -93,18 +93,14 @@
          <div class="row">
                 <div class="col-xs-12">
             <form class="form-horizontal " id="form-AddEstudioInversion" action="<?php echo base_url(); ?>Estudio_Inversion/AddEstudioInversion" method="POST">
-                                      <div class="col-md-2">
-                                       <div class=".col-xs-12 .col-md-2">
-                                            <label for="name">Codigo Único<span class="required"></span>
-                                            </label>
-
-                                                  <input id="txtCodigoUnico" name="txtCodigoUnico"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2" placeholder="Codigo único" required="required" type="text">
-                                                  <br>
-
+                                      <div class="item form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-8" for="name">Codigo Unico<span class="required">*</span></label>
+                                        <div class="col-md-6 col-sm-6 col-xs-8">
+                                          <input id="txtCodigoUnico" name="txtCodigoUnico" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese único " required="required" autocomplete="off" type="text">
                                         </div>
                                       </div>
-                                    <br>
 
+                                    <br>
 
                           <div class="row ">
                             <div class="col-md-2">
@@ -548,5 +544,29 @@
   $('.modal').on('hidden.bs.modal', function(){ 
     $(this).find('form')[0].reset(); //para borrar todos los datos que tenga los input, textareas, select.
     $("label.error").remove();  //lo utilice para borrar la etiqueta de error del jquery validate
+  });
+  $(function()
+  {
+    $('#form-AddEstudioInversion').formValidation(
+    {
+      framework: 'bootstrap',
+      excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+      live: 'enabled',
+      message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+      trigger: null,
+      fields:
+      {
+        txtnombres:
+        {
+          validators:
+          {
+            notEmpty:
+            {
+              message: '<b style="color: red;">El campo "Descripción" es requerido.</b>'
+            }
+          }
+        }
+      }
+    });
   });
 </script>
