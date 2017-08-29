@@ -1,3 +1,29 @@
+<?php
+function obtenerPartidas($meta)
+{
+	$partidas=[];
+
+	if(count($meta->childMeta)==0)
+	{
+		foreach($meta->childPartida as $key => $value)
+		{
+			$partidas[]=$value;
+		}
+
+		return $partidas;
+	}
+
+	foreach($meta->childMeta as $key => $value)
+	{
+		foreach(obtenerPartidas($value) as $index => $item)
+		{
+			$partidas[]=$item;
+		}
+	}
+
+	return $partidas;
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +51,22 @@
 	<div style="text-align: center;font-size: 11px;margin-top: 15px; border-color: red; margin-left: 10px;"><b>PROY: "<?=$etExpedienteTecnico->nombre_pi;?>"</b></div>
 	<div>
 		<div style="font-size: 9px;">
-
+			<table>
+				<tbody>
+					<?php foreach ($etExpedienteTecnico->childComponente as $key => $value){ ?>
+						<?php foreach($value->childMeta as $index => $item){ ?>
+							<?php $partidas=obtenerPartidas($item); ?>
+							<?php foreach($partidas as $k => $v){ ?>
+								<tr>
+									<td><?=$v->desc_partida?></td>
+									<td></td>
+									<td></td>
+								</tr>
+							<?php } ?>
+						<?php }?>
+					<?php } ?>
+				</tbody>
+			</table>
 		</div>
 	</div>
 </body>

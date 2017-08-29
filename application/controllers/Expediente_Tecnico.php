@@ -395,9 +395,9 @@ class Expediente_Tecnico extends CI_Controller
 	{
 		$etExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnico($id_et);
 
-		$etExpedienteTecnico->childETComponente=$this->Model_ET_Componente->ETComponentePorIdET($etExpedienteTecnico->id_et);
+		$etExpedienteTecnico->childComponente=$this->Model_ET_Componente->ETComponentePorIdET($etExpedienteTecnico->id_et);
 
-		foreach($etExpedienteTecnico->childETComponente as $key => $value)
+		foreach($etExpedienteTecnico->childComponente as $key => $value)
 		{
 			$value->childMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($value->id_componente);
 
