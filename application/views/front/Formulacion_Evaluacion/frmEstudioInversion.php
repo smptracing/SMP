@@ -57,7 +57,7 @@
                                                                          Reponsable</th>
                                                                          <th style="width: 12%"> Progreso</th>
                                                                          <th style="width: 13%"> Etapa</th>
-                                                                         <th>Acciones</th>
+                                                                         <th style="width: 1%"></th>
                                                                       </tr>
                                                                    </thead>
                                                                 </table>
