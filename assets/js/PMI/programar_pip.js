@@ -425,7 +425,17 @@ var  AddMeta_Pi=function(tbody,table){
                       $("#txt_nombre_proyecto").val(data.nombre_pi);
                       $("#txt_pia_fye").val(data.ultimo_pia_meta_pres);
                       $("#txt_devengado_pia_fye").val(data.devengado_acumulado_total);
-                      
+                      $("#txt_pim_pia_fye").val(data.ultimo_pim_meta_pres);
+if (parseFloat(data.ultimo_pim_meta_pres)>0) {
+ // alert("nuevo");
+    costopi=parseFloat(data.costo_pi)-parseFloat(data.ultimo_pim_meta_pres)-parseFloat(data.devengado_acumulado_total);
+                    $("#txt_saldoprogramar").val(costopi); 
+}
+if (data.ultimo_pim_meta_pres==""|| parseFloat(data.ultimo_pim_meta_pres)=="0.00") {
+ // alert("vacio");
+    costopi=parseFloat(data.costo_pi)-parseFloat(data.ultimo_pia_meta_pres)-parseFloat(data.devengado_acumulado_total);
+                    $("#txt_saldoprogramar").val(costopi); 
+}
                       
                       
                         listar_aniocartera();
