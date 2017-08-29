@@ -114,11 +114,16 @@
                                       <label>Costo del Proyecto</label>
                                       <input  class="form-control" id="txt_costo_proyecto" name="txt_costo_proyecto" type="number" disabled="disabled">
                                     </div>
-                                    <div class="col-md-3 col-sm-12 col-xs-12">
-                                      <label>Brecha </label>
+                                    <div class="col-md-4 col-sm-12 col-xs-12">
+                                      <label>Brecha  Proyecto.</label>
                                       <select id="cbxBrecha" name="cbxBrecha" class="selectpicker"   title="Elija Brecha" required="required">
                                       </select>
                                     </div>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                      <center><label>Saldo a Programar</label></center>
+                                      <input  class="form-control" id="txt_saldoprogramar" name="txt_saldoprogramar" type="number" required="required">
+                                    </div>
+
                                  </div>
                               <h6><i class="fa fa-money"></i><b> Meta Presupuestal</b></h6>
                               <div class="item form-group">
@@ -126,10 +131,10 @@
                                       <center><label>PIA</label></center>
                                       <input  class="form-control" id="txt_pia_nopip" name="txt_pia_nopip" type="number" required="required" value="0.00" disabled="disabled">
                                     </div>
-                                   <!-- <div class="col-md-3 col-sm-6 col-xs-12">
+                                   <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>PIM</label></center>
-                                      <input  class="form-control" id="txt_pim" name="txt_pim" type="number" required="required" value="0.00"  disabled="disabled">
-                                    </div>-->
+                                      <input  class="form-control" id="txt_pim_nopip" name="txt_pim_nopip" type="number" required="required" value="0.00"  disabled="disabled">
+                                    </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>Devengado</label></center>
                                       <input  class="form-control" id="txt_devengado_nopip" name="txt_devengado_nopip" type="number" required="required" value="0.00"  disabled="disabled">
