@@ -47,8 +47,10 @@ function obtenerPartidas($meta)
 			</tr>
 		</table>
 	</header>
-	<div style="margin-top: -7px;text-align: center;">EXPEDIENTE GLOBAL</div>
 	<div style="text-align: center;font-size: 11px;margin-top: 15px; border-color: red; margin-left: 10px;"><b>PROY: "<?=$etExpedienteTecnico->nombre_pi;?>"</b></div>
+	<br>
+	<div style="margin-top: -7px;text-align: center;">EXPEDIENTE GLOBAL</div>
+	<br>
 	<div>
 		<div style="font-size: 9px;">
 			<table>
@@ -58,9 +60,19 @@ function obtenerPartidas($meta)
 							<?php $partidas=obtenerPartidas($item); ?>
 							<?php foreach($partidas as $k => $v){ ?>
 								<tr>
-									<td><?=$v->desc_partida?></td>
+									<td><b><?=$v->numeracion?></b></td>
+									<td><b>PARTIDA:</b></td>
+									<td><b><?=$v->desc_partida?></b></td>
+								</tr>
+								<tr>
 									<td></td>
+									<td>UNIDAD:</td>
+									<td><?=$v->descripcion?></td>
+								</tr>
+								<tr>
 									<td></td>
+									<td>RENDIMIENTO:</td>
+									<td><?=$v->rendimiento?></td>
 								</tr>
 							<?php } ?>
 						<?php }?>
