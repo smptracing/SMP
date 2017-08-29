@@ -144,12 +144,28 @@ var listarestudiocombo=function(valor){
              });
               $('#listaFuncionC').on('change', function()
                {
-                    
-                    $.ajax({ url:base_url+"index.php/Estudio_Inversion/get_listaproyectosCargar",type:$(this).attr('method'),data:$(this).serialize(),
-                          success:function(resp){
-                            alert(resp);
-                      }
-                  });
+                   var id_Pi =$("#listaFuncionC").val();
+                   if(id_Pi==null)
+                   {
+                   }else
+                   {
+                       $.ajax({ 
+                            type:"POST",
+                           "url":base_url+"index.php/Estudio_Inversion/get_listaproyectosCargar",
+                            data:{"id_Pi":id_Pi},
+                            dataType:"JSON",
+                            success:function(resp){
+                              $.each(resp,function(index,element)
+                              {
+                                   $("#txtnombres").val(element.nombre_pi);
+                                   $("#txtCodigoUnico").val(element.codigo_unico_pi);
+                                   $("#txtMontoInversion").val(element.costo_pi);
+                                   $("#txtcostoestudio").val(element.pim_acumulado);
+                             });
+                           // $("#txtCodigoUnico").va(resp);
+                        }
+                    });
+                   }    
               });
 
 //REGISTARAR NUEVA

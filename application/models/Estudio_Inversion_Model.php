@@ -48,10 +48,10 @@ class Estudio_Inversion_Model extends CI_Model
             return false;
         }
     }
-     public function get_listaproyectosCargar()
+     public function get_listaproyectosCargar($id_Pi)
     {
         $opcion="lista_proyectos_programados_para_formulacion_evaluacion";
-        $EstudioInversionCargar = $this->db->query("execute  sp_Gestionar_ProyectoInversion @Opcion='".$opcion."'");
+        $EstudioInversionCargar = $this->db->query("execute  sp_Gestionar_ProyectoInversion @Opcion='".$opcion."',@id_pi='".$id_Pi."'");
         if ($EstudioInversionCargar->num_rows() > 0) {
             return $EstudioInversionCargar->result();
         } else {
