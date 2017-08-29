@@ -454,6 +454,17 @@ if (data.ultimo_pim_meta_pres==""|| parseFloat(data.ultimo_pim_meta_pres)=="0.00
                       $("#txt_nombre_proyecto_").val(data.nombre_pi);
                        $("#txt_pia_oper").val(data.ultimo_pia_meta_pres);
                       $("#txt_devengado_oper").val(data.devengado_acumulado_total);
+                      $("#txt_pim_oper").val(data.ultimo_pim_meta_pres);
+if (parseFloat(data.ultimo_pim_meta_pres)>0) {
+ // alert("nuevo");
+    costopi=parseFloat(data.costo_pi)-parseFloat(data.ultimo_pim_meta_pres)-parseFloat(data.devengado_acumulado_total);
+                    $("#txt_saldoprogramar_oper").val(costopi); 
+}
+if (data.ultimo_pim_meta_pres==""|| parseFloat(data.ultimo_pim_meta_pres)=="0.00") {
+ // alert("vacio");
+    costopi=parseFloat(data.costo_pi)-parseFloat(data.ultimo_pia_meta_pres)-parseFloat(data.devengado_acumulado_total);
+                    $("#txt_saldoprogramar_oper").val(costopi); 
+}
                         listar_aniocartera_();
                         listar_programacion_operacion_mantenimiento(id_pi);
                   });

@@ -475,10 +475,14 @@
                                       <label>Costo del Proyecto</label>
                                       <input  class="form-control" id="txt_costo_proyecto_" name="txt_costo_proyecto_" type="number" disabled="disabled">
                                     </div>
-                                    <div class="col-md-3 col-sm-12 col-xs-12">
-                                      <label>Brecha </label>
+                                    <div class="col-md-4 col-sm-12 col-xs-12">
+                                      <label>Brecha Proyecto </label>
                                       <select id="cbxBrecha_" name="cbxBrecha_" class="selectpicker"   title="Elija Brecha" required="required">
                                       </select>
+                                    </div>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                      <center><label>Saldo a Programar</label></center>
+                                      <input  class="form-control" id="txt_saldoprogramar_oper" name="txt_saldoprogramar_oper" type="number" required="required">
                                     </div>
                                  </div>
                               <h6><i class="fa fa-money"></i><b> Meta Presupuestal</b></h6>
@@ -487,10 +491,10 @@
                                       <center><label>PIA</label></center>
                                       <input  class="form-control" id="txt_pia_oper" name="txt_pia_oper" type="number" required="required" value="0.00" disabled="disabled">
                                     </div>
-                                    <!--<div class="col-md-3 col-sm-6 col-xs-12">
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>PIM</label></center>
-                                      <input  class="form-control" id="txt_pim_" name="txt_pim_" type="number" required="required" value="0.00"  disabled="disabled">
-                                    </div>-->
+                                      <input  class="form-control" id="txt_pim_oper" name="txt_pim_oper" type="number" required="required" value="0.00"  disabled="disabled">
+                                    </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>Devengado</label></center>
                                       <input  class="form-control" id="txt_devengado_oper" name="txt_devengado_oper" type="number" required="required" value="0.00"  disabled="disabled">
