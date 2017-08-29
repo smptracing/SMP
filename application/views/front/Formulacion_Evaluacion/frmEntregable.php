@@ -270,7 +270,7 @@
                               <div id="PorcentajeSuperado" style="text-align: right;color: red; margin-top: 25px;" class="col-md-4">
                                   
                               </div>
-                              <div id="PorcentajeRestanteValorizacion" style="text-align:center ;color:#008080; margin-top:30px;" class="col-md-4">
+                              <div id="PorcentajeRestanteValorizacionModificar" style="text-align:center ;color:#008080; margin-top:30px;" class="col-md-4">
                                   
                               </div>
                           </div>
@@ -367,7 +367,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="txt_NombreActividadTitle"></h4>
+          <h5 class="modal-title">Modificar Actividad</h5>
         </div>
 
          <div class="modal-body">
@@ -381,13 +381,17 @@
                         <input id="txt_idEntregable" name="txt_idEntregable" type="hidden" class="form-control"  placeholder="">
                         <input id="txt_NombreActividadAc" name="txt_NombreActividadAc" type="text" class="form-control"  placeholder="">
                       </div>
-                      <div class="col-md-6 col-sm-6 col-xs-12">
-                          <label class=" col-md-6 col-sm-6 col-xs-12">Inicio</label>
-                          <input id="txt_fechaActividadIAc" name="txt_fechaActividadIAc"  type="date" class="form-control calendario">
+                      <div class="col-md-12 col-sm-12 col-xs-12">
+                          <label class=" col-md-6 col-sm-6 col-xs-12">Inicio y Final de la Actividad </label>
+                          <input type="hidden" id="txt_fechaActividadIAc" name="txt_fechaActividadIAc"  type="date" class="form-control calendario">
                       </div>
                       <div class="col-md-6 col-sm-6 col-xs-12 ">
-                          <label class=" col-md-6 col-sm-6 col-xs-12">Final</label>
-                          <input id="txt_fechaActividadfAc"  name="txt_fechaActividadfAc" type="date" class="form-control calendario">
+                          <label class=" col-md-6 col-sm-6 col-xs-12"></label>
+                          <input type="hidden" id="txt_fechaActividadfAc"  name="txt_fechaActividadfAc" type="date" class="form-control calendario">
+                      </div>
+                      <div class="input-prepend input-group col-md-10 col-sm-10 col-xs-10" style="margin-left: 8px;">
+                                            <span class="add-on input-group-addon">Fecha de actividad <i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+                                            <input type="text"  name="FechaActividadCalendar" id="FechaActividadCalendar" class="form-control" value=""/>
                       </div>
                       <div class="col-md-3 col-sm-3 col-xs-12">
                         <label class="col-md-3 col-sm-3 col-xs-12" >Avance</label>
@@ -395,7 +399,7 @@
                         <input type="text" class="form-control" id="txt_avanceEAct" name="txt_avanceEAct" class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2"  required="required" type="number" step='0.01'  placeholder="%">
 
                       </div>
-                    </div>
+                    </div><br/>
 
                      <div class="col-md-12 col-sm-12 col-xs-12 input-group">
                         <span class="input-group-addon">Observación</span>

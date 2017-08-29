@@ -6,7 +6,6 @@ class Model_FEentregableEstudio extends CI_Model
           {
               parent::__construct();
             // $this->db->free_db_resource();
-
           }
       /*añadir funcion*/
         function get_Entregables($txt_id_etapa_estudio)
@@ -21,7 +20,6 @@ class Model_FEentregableEstudio extends CI_Model
              {
               return false;
              }
-
         }
 
         function  get_entregableId($id_entregable){//traer el id de Estudio

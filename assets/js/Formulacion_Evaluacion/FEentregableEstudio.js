@@ -2,6 +2,7 @@
 
               var fecha = new Date();
               var FechaSistema= fecha.getDate();
+              $('#FechaActividadCalendar').daterangepicker();
               $('#FechaActividad').daterangepicker();
               $('#FechaActividad').daterangepicker({
               "locale": {
@@ -68,8 +69,8 @@
 
               $("#btn_entregableC").click(function(){//verificar si el entregable supera el o no el cien porciento para inavilitar el boton
 
-                   event.preventDefault();
-                   $('#form-AddEntregable').data('formValidation').validate();
+                event.preventDefault();
+                $('#form-AddEntregable').data('formValidation').validate();
       					if(!($('#form-AddEntregable').data('formValidation').isValid()))
       					{
       						return;
@@ -114,6 +115,7 @@
                         });
               });
               $("#editarbtn_entregableC").click(function(){//verificar si el entregable supera el o no el cien porciento para inavilitar el boton
+                   valorizacionRestante();
                    event.preventDefault();
                    $('#form-modificarEntregable').data('formValidation').validate();
       					if(!($('#form-modificarEntregable').data('formValidation').isValid()))
@@ -258,14 +260,14 @@
 		data:{},
 			success: function(data)
 			{
-				var registros = eval(data); 
-				var sumaTotalValoriEntregable=0;
+        var registros = eval(data); 
+				var sumaTotalValoriEntregable=12;
 				for (var i = 0; i <registros.length;i++)
 				{
-					sumaTotalValoriEntregable=sumaTotalValoriEntregable+parseInt(registros[i]["valoracion"]);
+          sumaTotalValoriEntregable=sumaTotalValoriEntregable+Math.trunc(registros[i]["valoracion"]);
 				};
-
-			$("#PorcentajeRestanteValorizacion ").html("Valorización Restante "+(100-sumaTotalValoriEntregable)+"%");
+			$("#PorcentajeRestanteValorizacion").html("Valorización Restante "+(100-sumaTotalValoriEntregable)+"%");
+      $("#PorcentajeRestanteValorizacionModificar").html("Valorización Restante "+(100-sumaTotalValoriEntregable)+"%");
 			}
 		});
 
@@ -497,6 +499,7 @@ var generarActividadesVertical=function(id_en)
                     "searching": false,
                     destroy:true,
                     "paging":   false,
+                    "info":     false,
 
                          "ajax":{
                                     "url":base_url+"index.php/FEActividadEntregable/get_Actividades",
@@ -571,6 +574,7 @@ var generarActividadesVertical=function(id_en)
                     "processing": true,
                      "searching": false,
                     destroy:true,
+                    "info":     false,
                     "paging":   false,
                       
                          "ajax":{
@@ -680,8 +684,10 @@ var generarActividadesVertical=function(id_en)
             var table=$("#table_responsableEntregable").DataTable({
                  "processing":true,
                   "serverSide":false,
-                  destroy:true,
-                   "paging":   false,
+                  "searching": false,
+                    destroy:true,
+                    "paging":   false,
+                    "info":     false,
 
                      "ajax":{
                                 "url":base_url+"index.php/FEentregableEstudio/get_ResponsableEntregableE",//lista de entregables
@@ -766,20 +772,73 @@ var generarActividadesVertical=function(id_en)
                         $('#txt_ActividadColorAc').val(event.color);
                         $('#txt_avanceEAct').val(event.avance);
                         $('#txt_valorizacionEAct').val(event.valoracion);
-                         $('#txt_observacio_EntreAct').val(event.Observacion);
+                        $('#txt_observacio_EntreAct').val(event.Observacion);
 
 
                         //fecha inicial
                         var fechaIniciar=event.start;
                         var fechaI= (new Date(fechaIniciar)).toISOString().slice(0, 10);
                         $('#txt_fechaActividadIAc').val(fechaI);
-                        //fecha inical
-                         //fecha final
-                         //
+                        
+                        var fechaConveInicio=$("#txt_fechaActividadIAc").val();
+                        var fechaInicioTemp = fechaConveInicio.split("-")  //esta linea esta bien y te genera el arreglo
+                        var anoI = parseInt(fechaInicioTemp[0]); // porque repites el nombre dos veces con una basta
+                        var mesI = parseInt(fechaInicioTemp[1]); 
+                        var diaI  = parseInt(fechaInicioTemp[2]); 
+                        var fechaInicioTemp= anoI+'/'+mesI+'/'+diaI;
+
                         var fechaFinal=event.end;
                         var fechaFinalN= (new Date(fechaFinal)).toISOString().slice(0, 10);
                         $('#txt_fechaActividadfAc').val(fechaFinalN);
+                          var fechaConveFin=$("#txt_fechaActividadfAc").val();
+                          var fechaFinalTemp = fechaConveFin.split("-")  //esta linea esta bien y te genera el arreglo
+                          var ano = parseInt(fechaFinalTemp[0]); // porque repites el nombre dos veces con una basta
+                          var mes = parseInt(fechaFinalTemp[1]); 
+                          var dia  = parseInt(fechaFinalTemp[2]); 
+                          fechaFinalTempNuevo= ano+'/'+mes+'/'+dia;
+
+                        $('#FechaActividadCalendar').daterangepicker({
+                        "locale": {
+                            "format": "YYYY/MM/DD",
+                            "separator": " - ",
+                            "applyLabel": "Guardar",
+                            "cancelLabel": "Cancelar",
+                            "fromLabel": "Desde",
+                            "toLabel": "Hasta",
+                            "customRangeLabel": "Personalizar",
+                            "daysOfWeek": [
+                                "Do",
+                                "Lu",
+                                "Ma",
+                                "Mi",
+                                "Ju",
+                                "Vi",
+                                "Sa"
+                            ],
+                            "monthNames": [
+                                "Enero",
+                                "Febrero",
+                                "Marzo",
+                                "Abril",
+                                "Mayo",
+                                "Junio",
+                                "Julio",
+                                "Agosto",
+                                "Setiembre",
+                                "Octubre",
+                                "Noviembre",
+                                "Diciembre"
+                            ],
+                            "firstDay": 1
+                        },
+                        "startDate":fechaInicioTemp,
+                        "endDate": fechaFinalTempNuevo,
+                        "opens": "center"
+                    });
+                         
                         //fecha final
+                        //$( "#datepicker" ).datepicker("option", "defaultDate", new Date(date));
+                        //$("#FechaActividadCalendar").val(fechaInicioTemp+'-'+);
 
                         $('#modalEventoActividades').modal();
                         if (event.url) {

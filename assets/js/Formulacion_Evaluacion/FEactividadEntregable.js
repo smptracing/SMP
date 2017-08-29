@@ -83,8 +83,7 @@
                           url:base_url+"index.php/FEActividadEntregable/Update_Actividades",
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
-                          success:function(resp){
-                          // swal("",resp, "success");  
+                          success:function(resp){ 
                            $("#modalEventoActividades").modal("hide");
                            $('#table_entregable').dataTable()._fnAjaxUpdate();  
                           var tx_IdActividad=$("#tx_IdActividad").val();//catura el id de la actividadd

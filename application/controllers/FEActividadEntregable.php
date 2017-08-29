@@ -72,7 +72,11 @@ class FEActividadEntregable extends CI_Controller
             $txt_avanceEAct          = $this->input->post("txt_avanceEAct");
             $txt_observacio_EntreAct = $this->input->post("txt_observacio_EntreAct");
             $txt_ActividadColorAc    = $this->input->post("txt_ActividadColorAc");
-            if ($this->Model_FEActividadEntregable->Update_Actividades($opcion,$tx_IdActividad,$txt_idEntregable,$txt_NombreActividadAc,$txt_fechaActividadIAc,$txt_fechaActividadfAc,$txt_valorizacionEAct,$txt_avanceEAct,$txt_observacio_EntreAct,$txt_ActividadColorAc) == false) {
+
+            $FechaActividadCalendar    = $this->input->post("FechaActividadCalendar");
+            $FechasCalendar=explode('-',$FechaActividadCalendar);
+            
+            if ($this->Model_FEActividadEntregable->Update_Actividades($opcion,$tx_IdActividad,$txt_idEntregable,$txt_NombreActividadAc,$FechasCalendar[0],$FechasCalendar[1],$txt_valorizacionEAct,$txt_avanceEAct,$txt_observacio_EntreAct,$txt_ActividadColorAc) == false) {
                 echo "Se actualizo una Actividad ";
             } else {
                 echo " Se actualizo una Actividad ";
