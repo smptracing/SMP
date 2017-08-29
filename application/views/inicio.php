@@ -3,8 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SMP TRACING </title>
+  <title>SMP TRACING</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.6 -->
+  <!--<link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">-->
 
   <link href="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -38,222 +44,207 @@
         </div>
         <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Normatividad<span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Guía de Usuarios</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Descargas<span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Normatividad<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-                <li class="divider"></li>
-                <li><a href="#">One more separated link</a></li>
+                <li><a href="https://www.mef.gob.pe/es/documentacion-sp-30574/temas/sistema-nacional-de-programacion-multianual-y-gestion-de-inversiones-invierte-pe/15837-decreto-supremo-n-027-2017-ef-2/file">DECRETO SUPREMO Nº 027-2017-EF</a></li>
+                <li><a href="https://www.mef.gob.pe/es/documentacion-sp-30574/temas/sistema-nacional-de-programacion-multianual-y-gestion-de-inversiones-invierte-pe/15836-decreto-legislativo-n-1252-1/file">DECRETO LEGISLATIVO N° 1252</a></li>
               </ul>
             </li>
             <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Guía de Usuarios<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Mantenimiento de Parámetros</a></li>
+                <li><a href="#">PMI</a></li>
+                <li><a href="#">FormulaciÓn y EvaluaciÓn</a></li>
+                <li><a href="#">Ejecución</a></li>
+                <li><a href="#">Liquidación</a></li>
+                <li><a href="#">Reportes</a></li>
+                <li><a href="#">Control de Usuarios</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Descargas<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="https://www.mef.gob.pe/es/anexos-y-formatos#anexos">Anexos  InviertePe</a></li>
+                <li><a href="https://www.mef.gob.pe/es/anexos-y-formatos#formatos">Formatos</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Enlaces<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-                <li class="divider"></li>
-                <li><a href="#">One more separated link</a></li>
+                <li><a href="http://ofi5.mef.gob.pe/sosem2/">App Sosem</a></li>
+                <li><a href="http://ofi4.mef.gob.pe/odi/login.asp?mensaje=si">Banco de Inversiones</a></li>
+                <li><a href="https://www.mef.gob.pe/es/aplicativos-invierte-pe?id=4279">Consulta de Inversiones</a></li>
+                <li><a href="https://apps4.mineco.gob.pe/sispipapp/">Programación Multianual InviertePE</a></li>
+                <li><a href="http://apps2.mef.gob.pe/consulta-vfp-webapp/consultaExpediente.jspx">Consulta SIAF</a></li>
               </ul>
             </li>
           </ul>
         </div>
-        <!-- /.navbar-collapse -->
-        <!-- Navbar Right Menu -->
-        <div class="navbar-custom-menu">
-
-        </div>
-        <!-- /.navbar-custom-menu -->
       </div>
-      <!-- /.container-fluid -->
     </nav>
   </header>
-  <!-- Full Width Column -->
   <div class="content-wrapper">
     <div class="container">
-      <!-- Content Header (Page header) -->
-      <section class="content-header">
-        <h1>
-        </h1>
-        <ol class="breadcrumb">
-        </ol>
-      </section>
-       <section class="content" style="margin-bottom: 120px;">
-          <div class="box box-default color-palette-box">
+      <section class="content">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box box-info">
             <div class="box-header with-border">
+              <!--<h3 class="box-title">Input Addon</h3>-->
+              
               <h3 class="box-title"><i class="fa fa-refresh"></i> CICLO DE INVERSIONES</h3>
             </div>
             <div class="box-body">
-              <div class="row">
-                  <div class="col-lg-4 col-xs-12 col-sm-6">
-                                  <!-- small box -->
-                        <div class="small-box bg-teal">
-                            <div class="inner">
-                                <h3>PMI</h3>
-                                <p>Programación Multianual de Inversión</p>
+                  <div class="row">
+                      <div class="col-lg-4 col-xs-12 col-sm-6">
+                                      <!-- small box -->
+                            <div class="small-box bg-teal">
+                                <div class="inner">
+                                    <h3>PMI</h3>
+                                    <p>Programación Multianual de Inversión</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <a href="<?php echo site_url('PrincipalPmi/pmi'); ?>" class="small-box-footer">
+                                    Ingresar <i class="fa fa-arrow-circle-right"></i>
+                                </a>
                             </div>
-                            <div class="icon">
-                                <i class="fa fa-calendar"></i>
-                            </div>
-                            <a href="<?php echo site_url('PrincipalPmi/pmi'); ?>" class="small-box-footer">
-                                Ingresar <i class="fa fa-arrow-circle-right"></i>
-                            </a>
-                        </div>
-                  </div>
-
-                  <div class="col-lg-4 col-xs-12 col-sm-6">
-                      <!-- small box -->
-                      <div class="small-box bg-olive">
-                          <div class="inner">
-                              <h3>FE</h3>
-                              <p>Formulación, Evaluación de Proyectos</p>
-                          </div>
-                          <div class="icon">
-                              <i class="fa fa-edit"></i>
-                          </div>
-                          <a href="<?php echo site_url('PrincipalFyE/PrincipalFyED'); ?>" class="small-box-footer">
-                              Ingresar <i class="fa fa-arrow-circle-right"></i>
-                          </a>
                       </div>
-                  </div>
-                  <div class="col-lg-4 col-xs-12 col-sm-6">
-                      <!-- small box -->
-                      <div class="small-box bg-blue">
-                          <div class="inner">
-                              <h3>E</h3>
-                              <p>Ejecución de Proyectos de Inversión</p>
+                      <div class="col-lg-4 col-xs-12 col-sm-6">
+                          <!-- small box -->
+                          <div class="small-box bg-olive">
+                              <div class="inner">
+                                  <h3>FE</h3>
+                                  <p>Formulación, Evaluación de Proyectos</p>
+                              </div>
+                              <div class="icon">
+                                  <i class="fa fa-edit"></i>
+                              </div>
+                              <a href="<?php echo site_url('PrincipalFyE/PrincipalFyED'); ?>" class="small-box-footer">
+                                  Ingresar <i class="fa fa-arrow-circle-right"></i>
+                              </a>
                           </div>
-                          <div class="icon">
-                              <i class="fa fa-play"></i>
-                          </div>
-                          <a href="<?php echo site_url('PrincipalEjecucion/PrincipalEjec'); ?>" class="small-box-footer">
-                              Ingresar <i class="fa fa-arrow-circle-right"></i>
-                          </a>
                       </div>
-                  </div>
-              </div>
-              <div class="box-header with-border">
-              <h3 class="box-title"><i class="fa fa-list"></i> MÓDULOS<br></h3><br>
+                      <div class="col-lg-4 col-xs-12 col-sm-6">
+                          <!-- small box -->
+                          <div class="small-box bg-blue">
+                              <div class="inner">
+                                  <h3>E</h3>
+                                  <p>Ejecución de Proyectos de Inversión</p>
+                              </div>
+                              <div class="icon">
+                                  <i class="fa fa-play"></i>
+                              </div>
+                              <a href="<?php echo site_url('PrincipalEjecucion/PrincipalEjec'); ?>" class="small-box-footer">
+                                  Ingresar <i class="fa fa-arrow-circle-right"></i>
+                              </a>
+                          </div>
+                      </div>
+                </div>
+                <div class="box-header with-border">
+                   <h3 class="box-title"><i class="fa fa-list"></i> MÓDULOS<br></h3><br>
+                </div>
+                <div class="row">
+                      <div class="col-lg-4 col-xs-12 col-sm-6">
+                          <div class="small-box bg-yellow"><!-- bg-aqua-active #001f3f-->
+                              <div class="inner">
+                                  <h3>S</h3>
+
+                                  <p>Seguimiento de Proyectos de Inversión</p>
+                              </div>
+                              <div class="icon">
+                                  <i class="fa fa-random"></i>
+                              </div>
+                              <a href="#"
+                                 class="small-box-footer">
+                                  <!--                                       <a href="#" class="small-box-footer">-->
+                                  Ingresar <i class="fa fa-arrow-circle-right"></i>
+                              </a>
+                          </div>
+                      </div>
+                      <div class="col-lg-4 col-xs-12 col-sm-6">
+                          <!-- small box -->
+                          <div class="small-box bg-purple">
+                              <div class="inner">
+                                  <h3>M</h3>
+                                  <p>Monitoreo de Proyectos de Inversión</p>
+                              </div>
+                              <div class="icon">
+                                  <i class="fa fa-eye"></i>
+                              </div>
+                              <a href="#"
+                                 class="small-box-footer">
+                                  <!--                                       <a href="#" class="small-box-footer">-->
+                                  Ingresar <i class="fa fa-arrow-circle-right"></i>
+                              </a>
+                          </div>
+                      </div>
+                      <div class="col-lg-4 col-xs-12 col-sm-6">
+                          <!-- small box -->
+                          <div class="small-box bg-navy">
+                              <div class="inner">
+                                  <h3>R</h3>
+                                  <p>
+                                      Reportes, Estadísticas e Informes
+                                  </p>
+                              </div>
+                              <div class="icon">
+                                  <i class="fa fa-bar-chart"></i>
+                              </div>
+                              <a href="#"
+                                 class="small-box-footer">
+                                  Ingresar <i class="fa fa-arrow-circle-right"></i>
+                              </a>
+                          </div>
+                      </div>
+                </div>
+                <div class="box-header with-border">
+                  <h3 class="box-title"><i class="fa fa-cog"></i> CONFIGURACIÓN DE PARÁMETROS<br> </h3><br>
+                </div>
+                <div class="row">
+                      <div class="col-lg-4 col-xs-12 col-sm-6">
+                          <div class="small-box bg-red">
+                              <div class="inner">
+                                  <h3>P</h3>
+
+                                  <p>Mantenimiento de Parámetros Generales</p>
+                              </div>
+                              <div class="icon">
+                                  <i class="fa fa-cogs"></i>
+                              </div>
+                              <a href="<?php echo site_url('PrincipalParametros/parametros'); ?>"
+                                 class="small-box-footer">
+                                  Ingresar <i class="fa fa-arrow-circle-right"></i>
+                              </a>
+                          </div>
+                      </div>
+
+                      <div class="col-lg-4 col-xs-12 col-sm-6">
+                          <div class="small-box bg-light-blue">
+                              <div class="inner">
+                                  <h3>U</h3>
+                                  <p>Usuarios, Permisos y Administracion</p>
+                              </div>
+                              <div class="icon">
+                                  <i class="fa fa-users"></i>
+                              </div>
+                              <a href="<?php echo site_url('Usuario/'); ?>"
+                                 class="small-box-footer">
+                                  Ingresar <i class="fa fa-arrow-circle-right"></i>
+                              </a>
+                          </div>
+                      </div>
+                </div>
             </div>
-          <!-- /.row -->
-          <div class="row">
-            <div class="col-lg-4 col-xs-12 col-sm-6">
-                                <!-- small box -->
-                                <div class="small-box bg-yellow"><!-- bg-aqua-active #001f3f-->
-                                    <div class="inner">
-                                        <h3>S</h3>
-
-                                        <p>Seguimiento de Proyectos de Inversión</p>
-                                    </div>
-                                    <div class="icon">
-                                        <i class="fa fa-random"></i>
-                                    </div>
-                                    <a href="#"
-                                       class="small-box-footer">
-                                        <!--                                       <a href="#" class="small-box-footer">-->
-                                        Ingresar <i class="fa fa-arrow-circle-right"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-xs-12 col-sm-6">
-                                <!-- small box -->
-                                <div class="small-box bg-purple">
-                                    <div class="inner">
-                                        <h3>M</h3>
-                                        <p>Monitoreo de Proyectos de Inversión</p>
-                                    </div>
-                                    <div class="icon">
-                                        <i class="fa fa-eye"></i>
-                                    </div>
-                                    <a href="#"
-                                       class="small-box-footer">
-                                        <!--                                       <a href="#" class="small-box-footer">-->
-                                        Ingresar <i class="fa fa-arrow-circle-right"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-xs-12 col-sm-6">
-                                <!-- small box -->
-                                <div class="small-box bg-navy">
-                                    <div class="inner">
-                                        <h3>R</h3>
-                                        <p>
-                                            Reportes, Estadísticas e Informes
-                                        </p>
-                                    </div>
-                                    <div class="icon">
-                                        <i class="fa fa-bar-chart"></i>
-                                    </div>
-                                    <a href="#"
-                                       class="small-box-footer">              <!--                                       <a href="#" class="small-box-footer">-->
-                                        Ingresar <i class="fa fa-arrow-circle-right"></i>
-                                    </a>
-                                </div>
-                            </div>
-
-
-            <!-- /.col -->
           </div>
-          <div class="box-header with-border">
-              <h3 class="box-title"><i class="fa fa-cog"></i> CONFIGURACIÓN DE PARÁMETROS<br> </h3><br>
-            </div>
-            <div class="row">
-          <div class="col-lg-4 col-xs-12 col-sm-6">
-                                <div class="small-box bg-red">
-                                    <div class="inner">
-                                        <h3>P</h3>
-
-                                        <p>Mantenimiento de Parámetros Generales</p>
-                                    </div>
-                                    <div class="icon">
-                                        <i class="fa fa-cogs"></i>
-                                    </div>
-                                    <a href="<?php echo site_url('PrincipalParametros/parametros'); ?>"
-                                       class="small-box-footer">
-                                        Ingresar <i class="fa fa-arrow-circle-right"></i>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-xs-12 col-sm-6">
-                                <div class="small-box bg-light-blue">
-                                    <div class="inner">
-                                        <h3>U</h3>
-                                        <p>Usuarios, Permisos y Administracion</p>
-                                    </div>
-                                    <div class="icon">
-                                        <i class="fa fa-users"></i>
-                                    </div>
-                                    <a href="<?php echo site_url('Usuario/'); ?>"
-                                       class="small-box-footer">
-                                        Ingresar <i class="fa fa-arrow-circle-right"></i>
-                                    </a>
-                                </div>
-                            </div>
-          </div>
-
-          <!-- /.row -->
-        </div>
-        <!-- /.box-body -->
       </div>
-
     </section>
-        </div>
-        <!-- /.box -->
-      </section>
-      <!-- /.content -->
     </div>
-    <!-- /.container -->
   </div>
-  <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="container">
       <div class="pull-right hidden-xs">
@@ -261,23 +252,23 @@
       </div>
       <strong>Copyright &copy; 2017-2019 - </strong> Todos los derechos reservados.
     </div>
-    <!-- /.container -->
   </footer>
 </div>
-<!-- ./wrapper -->
 
-<!-- jQuery 2.2.3 -->
- <script src="<?php echo base_url(); ?>assets/adminlte/adminlte.min.js"></script>
-<script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
-<!-- Bootstrap 3.3.6 -->
+<!--<script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
 <script src="../../bootstrap/js/bootstrap.min.js"></script>
-<!-- SlimScroll -->
 <script src="../../plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
-<script src="../../plugins/fastclick/fastclick.js"></script>
-<!-- AdminLTE App -->
+<script src="../../plugins/fastclick/fastclick.js"></script>->
 <script src="../../dist/js/app.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../../dist/js/demo.js"></script>
+<script src="../../dist/js/demo.js"></script>-->
+
+<script src="<?php echo base_url(); ?>assets/adminlte/jquery-2.2.3.min.js"> </script>
+<script src="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/adminlte/jquery.slimscroll.min.js"> </script>
+<script src="<?php echo base_url(); ?>assets/adminlte/fastclick.min.js"> </script>
+<script src="<?php echo base_url(); ?>assets/adminlte/app.min.js"> </script>
+<script src="<?php echo base_url(); ?>assets/adminlte/demo.js"> </script>
+
+
 </body>
 </html>
