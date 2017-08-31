@@ -272,5 +272,14 @@ class Estudio_Inversion_Model extends CI_Model
             return false;
         }
     }
+    public function get_listaproyectosCargar($id_Pi)
+      {
+          $opcion="obtenerdatosporpipdelabusquedaproyectoinversion";
+          $EstudioInversionCargar = $this->db->query("execute  sp_Gestionar_ProyectoInversion @Opcion='".$opcion."',@id_pi='".$id_Pi."'");
+          if ($EstudioInversionCargar->num_rows() > 0) 
+          {
+              return $EstudioInversionCargar->result();
+          }
+      }
 
 }
