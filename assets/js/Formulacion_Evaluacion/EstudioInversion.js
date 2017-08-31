@@ -377,12 +377,13 @@ var listarestudiocombo=function(valor){
                   "dataSrc":""
                                     },
                                 "columns":[
-                                      {"defaultContent":"<td>#</td>"},
+                                      {"data":"codigo_unico_est_inv" ,"visible": true},
                                       {"data":"id_est_inv" ,"visible": false},
                                       { "data": function (data, type, dataToSet) {
                                          return "<strong>"+data.nombre_est_inv + "</strong><br/><i class='fa fa-calendar'>  " + data.fecha+"</i>";
                                        }},
-                                    {"data":"nombres"},
+                                      {"data":"nombre_funcion"},
+                                      {"data":"nombres"},
                                       {"data":"avance_fisico",
                                       "mRender":function (data,type, full) {
                                          return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Complete</small></td>";
@@ -485,16 +486,6 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
                          listarEtapaEstudio(id_est_inv);
                   });
                 }
-                var ver_asignar_coordinador=function(tbody,myTableUA)
-                {
-                  $(tbody).on("click","button.ver_asignar_coordinador",function(){
-                    var data=myTableUA.row( $(this).parents("tr")).data();
-                    var id_persona=data.id_persona;
-                    console.log(id_persona);
-                    var id_est_inv=$('#id_est_inv').val(data.id_est_inv);
-                  listarpersonascombo(id_persona);
-                  });
-                } 
                  var  listarpersonasdata=function(tbody,myTableUA){
                     $(tbody).on("click","button.AsignarPersona",function(){
                       var data=myTableUA.row( $(this).parents("tr")).data();
@@ -577,7 +568,6 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
                         "url":base_url +"index.php/Estudio_Inversion/get_persona",
                         type:"POST",
                         success:function(respuesta3){
-                         //  alert(respuesta);
                          var registros = eval(respuesta3);
                             for (var i = 0; i <registros.length;i++) {
                               html +="<option  value="+registros[i]["id_persona"]+"> "+registros[i]["nombres_apell"]+" </option>";
