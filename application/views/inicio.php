@@ -176,10 +176,11 @@
                               <div class="icon">
                                   <i class="fa fa-bar-chart"></i>
                               </div>
-                              <a href="#"
+                              <a href="<?php echo site_url('PrincipalReportes/PrincipalReportes'); ?>"
                                  class="small-box-footer">
                                   Ingresar <i class="fa fa-arrow-circle-right"></i>
                               </a>
+
                           </div>
                       </div>
                 </div>
