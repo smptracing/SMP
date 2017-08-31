@@ -29,11 +29,11 @@
   <div class="form">
     <h2>Crea una Cuenta</h2>
     <form>
-      <input type="text" placeholder="Username"/>
-      <input type="password" placeholder="Password"/>
-      <input type="email" placeholder="Email Address"/>
-      <input type="tel" placeholder="Phone Number"/>
-      <button>Registrarse</button>
+        <input type="text" placeholder="Username"/>
+        <input type="password" placeholder="Password"/>
+        <input type="email" placeholder="Email Address"/>
+        <input type="tel" placeholder="Phone Number"/>
+        <button>Registrarse</button>
     </form>
   </div>
   <div class="cta"><a href="http://andytran.me">Olvidaste tu contraseña?</a></div>
