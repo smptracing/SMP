@@ -32,9 +32,11 @@ class Estudio_Inversion extends CI_Controller
     public function get_EstudioInversion() //mostra ESTADO INVERSION
 
     {
-
+        $idUsuario    = $this->session->userdata('idUsuario');
+        $dataIdPersona= $this->Estudio_Inversion_Model->UsuarioPersona($idUsuario);
+        $idPersona=$dataIdPersona->id_persona;
         if ($this->input->is_ajax_request()) {
-            $datos = $this->Estudio_Inversion_Model->get_EstudioInversion();
+            $datos = $this->Estudio_Inversion_Model->get_EstudioInversion($idPersona);
             echo json_encode($datos);
         } else {
             show_404();

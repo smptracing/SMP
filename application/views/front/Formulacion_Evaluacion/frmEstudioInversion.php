@@ -7,7 +7,7 @@
              <div class="x_panel">
              <!--inicio de pestaña configurtacion-->
                 <div class="x_title">
-                     <h2><b>ESTUDIO DE INVERSIÓN</b> <small></small></h2>
+                     <h2><b>ESTUDIO DE INVERSIÓN </b></h2>
                                     
                       <div class="clearfix"></div>
                 </div>
