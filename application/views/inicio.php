@@ -233,7 +233,7 @@
             <ul>
                 <li><a style="color:#fff;" href="#">Mantenimiento de Parámetros</a></li>
                 <li><a style="color:#fff;" href="#">PMI</a></li>
-                <li><a style="color:#fff;" href="#">FormulaciÓn y EvaluaciÓn</a></li>
+                <li><a style="color:#fff;" href="#">Formulación y Evaluación</a></li>
                 <li><a style="color:#fff;" href="#">Ejecución</a></li>
                 <li><a style="color:#fff;" href="#">Liquidación</a></li>
                 <li><a style="color:#fff;" href="#">Reportes</a></li>
@@ -266,6 +266,7 @@
       </div>
       <div class="pull-right hidden-xs">
       </div>
+      <hr>
       <strong>Copyright &copy; 2017-2019 - </strong> Todos los derechos reservados.
     </div>
   </footer>

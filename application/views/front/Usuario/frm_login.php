@@ -1,23 +1,16 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
      <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SMP-APURIMAC</title>
 
-    <!-- Bootstrap -->
     <link href="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
     <link href="<?php echo base_url(); ?>assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
     <link href="<?php echo base_url(); ?>assets/vendors/nprogress/nprogress.css" rel="stylesheet">
-    <!-- Animate.css -->
     <link href="<?php echo base_url(); ?>assets/vendors/animate.css/animate.min.css" rel="stylesheet">
-
-    <!-- Custom Theme Style -->
     <link href="<?php echo base_url(); ?>assets/build/css/custom.min.css" rel="stylesheet">
 
 	<style>
@@ -40,7 +33,7 @@
 			top: 0;
 			left: 50%;
 			margin-left: -5px;
-			border-bottom-color: lightgray; /* black */
+			border-bottom-color: lightgray;
 			border-width: 0 5px 5px;
 		}
 	</style>
@@ -67,6 +60,7 @@
               </div>
 			<div>
 				<button type="submit" class="btn btn-default">Entrar</button>
+        <input type="submit" class="btn btn-default" value="Ingresar">
 				<a class="reset_pass" href="#"></a>
 			</div>
 
@@ -134,4 +128,51 @@
 			$('#Password').tooltip({ "placement" : "right", "html" : true, "trigger" : "focus", "title" : "<div style=\"padding: 4px;\">Ingres su contraseña.</div>" });		
 		});
 	</script>
+</html>-->
+
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>SMP APURÍMAC</title>
+
+  <link href="<?php echo base_url(); ?>assets/login/css/smp.css" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>assets/login/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+<div class="pen-title">
+  <h1 style="font-size: 40px;">Inicio de Sesión</h1><span>Gobierno Regional de Apurímac</span>
+</div>
+<div class="module form-module">
+  <div class="toggle"><i class="fa fa-times fa-pencil"></i>
+    <div class="tooltip">Registrate</div>
+  </div>
+  <div class="form">
+    <h2>Ingresa a tu cuenta</h2>
+    <form id="login" method="post" action="<?php echo base_url("index.php/Login/ingresar");?>">
+      <input type="text" placeholder="Ingrese su nombre de Usuario" name="txtUsuario" autocomplete="off" />
+      <input type="password" placeholder="Ingrese su  Contraseña" name="txtPassword" />
+      <button type="submit">Entrar</button>
+    </form>
+  </div>
+  <div class="form">
+    <h2>Crea una Cuenta</h2>
+    <form>
+      <input type="text" placeholder="Username"/>
+      <input type="password" placeholder="Password"/>
+      <input type="email" placeholder="Email Address"/>
+      <input type="tel" placeholder="Phone Number"/>
+      <button>Registrarse</button>
+    </form>
+  </div>
+  <div class="cta"><a href="http://andytran.me">Forgot your password?</a></div>
+</div>
+  <script src="<?php echo base_url(); ?>assets/adminlte/jquery-2.2.3.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/login/js/index.js"></script>
+
+</body>
 </html>
+

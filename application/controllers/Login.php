@@ -1,55 +1,60 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Login extends CI_Controller {/* Mantenimiento de division funcional y grupo funcional*/
+class Login extends CI_Controller {
 
-	public function __construct(){
-      parent::__construct();
-      $this->load->model("Login_model");
-
-	}
- 
- public function ingresar(){
-  if ($this->input->is_ajax_request()) {
-
-       $usuario=$this->input->post("txt_usuario");
-       $Password=sha1($this->input->post("Password"));
-       $resp = $this->Login_model->login($usuario,$Password);
-          if($resp)
-                {
-                    $data = [
-                    "usuario" => $resp->usuario,
-                    "login" => TRUE
-                    ];    
-                    $this->session->set_userdata($data);
-                }
-                else
-                {
-                  echo "error";
-                }
-    }
-    else
+  	public function __construct()
     {
-      show_404();
-    }
- }
-	public function cerrar()
-	 {
-	  $this->session->sess_destroy();
-	  redirect('login', 'refresh');
-	 }
-	public function index()
-	{
-	    if($this->session->userdata('login'))
-	    {
-	      redirect(site_url('Inicio/'));
-	    }
-   			 else
-	    {
-	      $this->load->view('front/usuario/frm_login');
+        parent::__construct();
+        $this->load->model("Login_model");
+  	}
 
-	    }
-   }
+    public function muestralog()
+    {
+        if($this->session->userdata('nombreUsuario'))
+        {
+            redirect('Inicio');
+        }
+        else
+        {
+           $this->singin();
+        }
+    }
+
+    public function singin()
+    {
+        $this->load->view('front/usuario/frm_login');
+    }
+
+    public function ingresar()
+    {
+        $usuario = $this->input->post('txtUsuario');
+        $password = sha1($this->input->post('txtPassword'));
+        $query = $this->Login_model->login($usuario, $password);       
+        if($query->num_rows() > 0) 
+        {
+            $usuario = $query->row();
+            $datosSession = array('nombreUsuario' => $usuario->usuario,
+                                  'idUsuario' => $usuario->id_usuario,                                  
+                                  'tipoUsuario' => $usuario->tipo);
+            $this->session->set_userdata($datosSession);
+            redirect('Inicio');
+        }
+        else
+        {
+            $this->muestralog();
+        }  
+    } 
+
+    public function logout()
+    {
+        $datosSession = array('nombreUsuario' => '',
+                              'idUsuario' => '',                                  
+                              'tipoUsuario' => '');
+        $this->session->set_userdata($datosSession);
+        $this->session->sess_destroy();
+        redirect('Login/muestralog');
+    } 
 
 
 }
