@@ -35,8 +35,9 @@ class Estudio_Inversion extends CI_Controller
         $idUsuario    = $this->session->userdata('idUsuario');
         $dataIdPersona= $this->Estudio_Inversion_Model->UsuarioPersona($idUsuario);
         $idPersona=$dataIdPersona->id_persona;
+        $TipoUsuario=$dataIdPersona->administrador;
         if ($this->input->is_ajax_request()) {
-            $datos = $this->Estudio_Inversion_Model->get_EstudioInversion($idPersona);
+            $datos = $this->Estudio_Inversion_Model->get_EstudioInversion($idPersona,$TipoUsuario);
             echo json_encode($datos);
         } else {
             show_404();
