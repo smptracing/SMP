@@ -36,7 +36,7 @@
         <button>Registrarse</button>
     </form>
   </div>
-  <div class="cta"><a href="http://andytran.me">Olvidaste tu contraseña?</a></div>
+  <div class="cta"><a href="#">Olvidaste tu contraseña?</a></div>
 </div>
   <script src="<?php echo base_url(); ?>assets/adminlte/jquery-2.2.3.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/login/js/index.js"></script>
