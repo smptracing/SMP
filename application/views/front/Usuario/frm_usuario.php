@@ -82,7 +82,7 @@
                                                               
                                                           </div>
                                                           <div class="x_content">
-                                                            <table id="table-Usuarios" class="table table-striped " cellspacing="0" width="100%">
+                                                            <table id="table-Usuarios" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
                                                               <thead>
                                                                  <tr>
                                                                   <th>ID</th>
@@ -169,33 +169,37 @@
         </div>
         <div class="modal-body">
          <div class="row">
-                    <div class="col-xs-12">
-                                        <!-- PAGE CONTENT BEGINS -->
+              <div class="col-xs-12">
                 <form class="form-horizontal" id="form-AddUsuario" role="form" method="post">
                   
-
+                  <div class="form-group">
+                         <label class="col-sm-3 control-label no-padding-right"  for="form-field-1-1">Buscar Usuario</label>
+                          <div class="col-sm-6">
+                               <select  class="form-control input-sm" id="comboPersona" name="comboPersona"  title="Buscar persona" >
+                               </select>                    
+                         </div>
+                  </div>
+                  
                   <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right"  for="form-field-1-1">Usuario </label>
-
-                    <div class="col-sm-6">
-                      <input type="text" id="txt_usuario" name="txt_usuario" placeholder="Nombre Usuario" class="form-control" autocomplete="off" />
-                    </div>
+                      <div class="col-sm-6">
+                        <input type="text" id="txt_usuario" name="txt_usuario" placeholder="Nombre Usuario" class="form-control" autocomplete="off" />
+                      </div>
                   </div>
                   <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">Tipo de Usuario </label>
-
                     <div class="col-sm-6">
                       <select  class="form-control input-sm" id="cbb_TipoUsuario" name="cbb_TipoUsuario">
-                       <option value="Formulador"> Formulador </option>  
-                       <option value="Evaluador"> Evaluador </option> 
-                       <option value="Encargado de la PMI"> Encargado de la PMI</option>  
-                       <option value="Ejecutor"> Ejecutor</option>
-                       <option value="Resisdente"> Resisdente</option>
-                       <option value="Registrador"> Registrador</option>
+                         <option value="Formulador"> Formulador </option>  
+                         <option value="Evaluador"> Evaluador </option> 
+                         <option value="Encargado de la PMI"> Encargado de la PMI</option>  
+                         <option value="Ejecutor"> Ejecutor</option>
+                         <option value="Resisdente"> Resisdente</option>
+                         <option value="Registrador"> Registrador</option>
+                         <option value="Coordinador"> Coordinador</option>
                        </select>                    
                     </div>
                   </div>
-                  
                     <div class="form-group">
                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">Estado </label>
                        <div class="col-sm-6">
@@ -213,16 +217,15 @@
                       <input type="password" id="txt_contrasenia" name="txt_contrasenia" placeholder="Contraseña" class="form-control" />
                     </div>
                   </div>
-                
-                                    <div class="form-group">
-                                        <center><input type="reset" class="btn btn-default" value="Limpiar Formulario">
-                                        <button type="submit" class="btn btn-primary">Registrar Usuario </button></center>
-                                    </div>
+                  <div class="form-group">
+                      <center><input type="reset" class="btn btn-default" value="Limpiar Formulario">
+                      <button type="submit" class="btn btn-primary">Registrar Usuario </button></center>
+                  </div>
                   <div class="space-4"></div>
                     
                    </form>
-                        </div><!-- /.span -->
-                 </div><!-- /.row -->
+                        </div>
+                 </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -230,10 +233,6 @@
       </div>
     </div>
   </div>
-<!-- /.fin ventana para registra un usuario-->
-      
-<!-- /.ventana para asignar permisos a un usuario --> 
-
 <div class="modal fade" id="VentanaAsignarPermiso" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -244,7 +243,6 @@
         <div class="modal-body">
          <div class="row">
                     <div class="col-xs-12">
-                                        <!-- PAGE CONTENT BEGINS -->
                                 <form class="form-horizontal" role="form">
                                     
                                     
@@ -354,8 +352,6 @@
                                             </tr>
                                         </body>
                                     </table>
-                                   
-                                   
                                     <div class="form-group">
                                         <center><input type="reset" class="btn btn-default" value="Limpiar Formulario">
                                         <button type="submit" class="btn btn-primary">guardar permisos </button></center>
@@ -392,7 +388,6 @@
 		function cambioNivelSeguridadContrasenia(element)
 		{
 			var value=$(element).val();
-
 			$('[id*="spanNivelSeguridad"]').css({ "display" : "none" });
 
 			var escalaNivelSeguridad=0;

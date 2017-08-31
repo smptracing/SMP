@@ -17,9 +17,9 @@ class Model_Usuario extends CI_Model
               return false;
              }
         }
-        function AddUsuario($id_persona,$txt_usuario,$cbb_TipoUsuario,$activo,$txt_contrasenia,$fech_reg,$fech_mod,$fech_elim,$usr_reg,$usr_mod,$usr_elim,$fl_elim)
+        function AddUsuario($id_persona,$txt_usuario,$cbb_TipoUsuario,$activo,$txt_contrasenia,$fech_reg,$fech_mod,$fech_elim,$usr_reg,$usr_mod,$usr_elim,$fl_elim,$tipoUsuario)
         {
-		        $this->db->query("execute sp_usuario_c'".$id_persona."','".$txt_usuario."','".$cbb_TipoUsuario."','".$activo. "','".$txt_contrasenia."','".$fech_reg."','".$fech_mod."','".$fech_elim."','".$usr_reg."','".$usr_mod."','".$usr_elim."','".$fl_elim."'");
+		        $this->db->query("execute sp_usuario_c'".$id_persona."','".$txt_usuario."','".$cbb_TipoUsuario."','".$activo. "','".$txt_contrasenia."','".$fech_reg."','".$fech_mod."','".$fech_elim."','".$usr_reg."','".$usr_mod."','".$usr_elim."','".$fl_elim."','".$tipoUsuario."' ");
 		        if ($this->db->affected_rows() > 0) {
 		            return true;
 		        } else {

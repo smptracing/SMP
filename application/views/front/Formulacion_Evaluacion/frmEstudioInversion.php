@@ -49,14 +49,14 @@
                                                                 <table id="dynamic-table-EstudioInversion" class="table  table-hover" with="100%" >
                                                                     <thead style="background-color: #5A738E;color:#FFFFFF; ">
                                                                        <tr>
+                                                                       <th style="width: 1%">Código</th>
                                                                        <th style="width: 1%">#</th>
-                                                                       <th style="width: 1%">#</th>
-                                                                         <th style="width: 40%"><i class="fa fa-thumb-tack"></i> Estudio de Inversión </th>
+                                                                         <th style="width: 40%"><i class="fa fa-thumb-tack"></i>Nombre</th>
                                                                          <th style="width: 12%"> Función</th>
                                                                          <th style="width: 14%">
                                                                           <i class="fa fa-users"></i>
                                                                          Reponsable</th>
-                                                                         <th style="width: 12%"> Progreso</th>
+                                                                         <th style="width: 12%"> Avance</th>
                                                                          <th style="width: 13%"> Etapa</th>
                                                                          <th style="width: 1%"></th>
                                                                       </tr>

@@ -97,4 +97,9 @@ class Model_Personal extends CI_Model
       return $responsable->result()[0];
 
     }
+    public function ListarPersonalUsuario()
+    {
+        $personal = $this->db->query("select * from PERSONA"); 
+        return $personal->result();
+    }
 }
