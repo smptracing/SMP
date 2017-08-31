@@ -601,6 +601,11 @@ class Expediente_Tecnico extends CI_Controller
 
 			$etExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnico($idExpedienteTecnico);
 
+			if($etExpedienteTecnico->estado_revision!=1)
+			{
+				echo json_encode(['proceso' => 'Error', 'mensaje' => 'Aún no se ha dado el visto bueno a este expediente técnico para proceder con el pase de etapa.']);exit;
+			}
+
 			if($etExpedienteTecnico->id_etapa_et==$idEtapaExpedienteTecnico)
 			{
 				echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede clonar expediente técnico para la misma etapa.']);exit;
