@@ -50,6 +50,10 @@
     {
         border-top-color: #fff;
     }
+    .inner
+    {
+        height: 120px;
+    }
     @media (max-width: 770px) {
       .tituloHeader{
         display: none;
@@ -69,50 +73,43 @@
         <div class="navbar-header">
           <a href="../../index2.html" class="navbar-brand tituloLogo"><b style="font-size: 40px; padding-top: 25px;">SMP</b> Tracing v1.0</a>
         </div>
-        <div style="padding-top: 70px; background-color: #BDB8B8;">
-          <div class="navbar-header">
-          <a href="../../index2.html" class="navbar-brand"><b>Admin</b>LTE</a>
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-            <i class="fa fa-bars"></i>
-          </button>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Link</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-                <li class="divider"></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
-          </ul>
-          <form class="navbar-form navbar-left" role="search">
-            <div class="form-group">
-              <input type="text" class="form-control" id="navbar-search-input" placeholder="Search">
-            </div>
-          </form>
-        </div>
-        </div>
         <div class="navbar-custom-menu">
          <span class="tituloHeader">Software de Seguimiento y Monitoreo de PIP's</span><br>
-          </ul>
-        </div>
-
+        </div>    
       </div>
+
+    </nav>
+    <nav class="navbar navbar-static-top" style="background-color: #424949;">
+      <div class="container">
+          <div class="navbar-header" style="height: 0px;">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+              <i class="fa fa-bars"></i>
+            </button>
+          </div>
+          <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Guía de Usuario<span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                      <li><a href="#">Mantenimiento de Parámetros</a></li>
+                      <li><a href="#">PMI</a></li>
+                      <li><a href="#">Formulación y Evaluación</a></li>
+                      <li><a href="#">Ejecución</a></li>
+                      <li><a href="#">Liquidación</a></li>
+                      <li><a href="#">Reportes</a></li>
+                      <li><a href="#">Control de Usuarios</a></li>
+                  </ul> 
+              </li>
+            </ul>
+          </div>
+        
+      </div>
+
     </nav>
   </header>
   <div class="content-wrapper">
     <div class="container">
-      <section class="content">
+      <section class="content" style="margin-top: 50px;">
       <div class="row">
         <div class="col-md-12">
           <div class="box box-info">
@@ -125,7 +122,7 @@
                             <div class="small-box bg-teal">
                                 <div class="inner">
                                     <h3>PMI</h3>
-                                    <p>Programación Multianual de Inversión</p>
+                                    <p>Programación Multianual de Inversión (PMI)</p>
                                 </div>
                                 <div class="icon">
                                     <i class="fa fa-calendar"></i>
@@ -139,7 +136,7 @@
                           <div class="small-box bg-olive">
                               <div class="inner">
                                   <h3>FE</h3>
-                                  <p>Formulación, Evaluación de Proyectos</p>
+                                  <p>Formulación y Evaluación de Proyectos de Inversión Pública</p>
                               </div>
                               <div class="icon">
                                   <i class="fa fa-edit"></i>
@@ -153,7 +150,7 @@
                           <div class="small-box bg-blue">
                               <div class="inner">
                                   <h3>E</h3>
-                                  <p>Ejecución de Proyectos de Inversión</p>
+                                  <p>Ejecución de Proyectos de Inversión Pública</p>
                               </div>
                               <div class="icon">
                                   <i class="fa fa-play"></i>
@@ -172,7 +169,7 @@
                           <div class="small-box bg-yellow">
                               <div class="inner">
                                   <h3>S</h3>
-                                  <p>Seguimiento de Proyectos de Inversión</p>
+                                  <p>Seguimiento de Proyectos de Inversión Pública</p>
                               </div>
                               <div class="icon">
                                   <i class="fa fa-random"></i>
@@ -187,7 +184,7 @@
                           <div class="small-box bg-purple">
                               <div class="inner">
                                   <h3>M</h3>
-                                  <p>Monitoreo de Proyectos de Inversión</p>
+                                  <p>Monitoreo de Proyectos de Inversión Pública</p>
                               </div>
                               <div class="icon">
                                   <i class="fa fa-eye"></i>
@@ -262,7 +259,7 @@
   <footer class="main-footer">
     <div class="container">
       <div class="row">
-        <div class="col-lg-4 col-sm-6">
+       <!-- <div class="col-lg-4 col-sm-6">
             <span class="TituloListaFooter"><strong>Guía de Usuario</strong></span>
             <ul>
                 <li><a style="color:#fff;" href="#">Mantenimiento de Parámetros</a></li>
@@ -273,28 +270,41 @@
                 <li><a style="color:#fff;" href="#">Reportes</a></li>
                 <li><a style="color:#fff;" href="#">Control de Usuarios</a></li>
             </ul>          
-        </div>
+        </div>-->
         <div class="col-lg-4 col-sm-6" >
             <span class="TituloListaFooter"><strong>Enlaces</strong></span>
             <ul>
-                <li><a style="color:#fff;" href="http://ofi5.mef.gob.pe/sosem2/">App Sosem</a></li>
-                <li><a style="color:#fff;" href="http://ofi4.mef.gob.pe/odi/login.asp?mensaje=si">Banco de Inversiones</a></li>
-                <li><a style="color:#fff;" href="https://www.mef.gob.pe/es/aplicativos-invierte-pe?id=4279">Consulta de Inversiones</a></li>
-                <li><a style="color:#fff;" href="https://apps4.mineco.gob.pe/sispipapp/">Programación Multianual InviertePE</a></li>
-                <li><a style="color:#fff;" href="http://apps2.mef.gob.pe/consulta-vfp-webapp/consultaExpediente.jspx">Consulta SIAF</a></li>
+                <li><a style="color:#fff;" href="http://ofi5.mef.gob.pe/sosem2/" target="_blank">App Sosem</a></li>
+                <li><a style="color:#fff;" href="http://ofi4.mef.gob.pe/odi/login.asp?mensaje=si" target="_blank">Banco de Inversiones</a></li>
+                <li><a style="color:#fff;" href="https://www.mef.gob.pe/es/aplicativos-invierte-pe?id=4279" target="_blank">Consulta de Inversiones</a></li>
+                <li><a style="color:#fff;" href="https://apps4.mineco.gob.pe/sispipapp/" target="_blank">Programación Multianual InviertePE</a></li>
+                <li><a style="color:#fff;" href="http://apps2.mef.gob.pe/consulta-vfp-webapp/consultaExpediente.jspx" target="_blank">Consulta SIAF</a></li>
             </ul>
         </div>
         
         <div class="col-lg-4 col-sm-6">
             <span class="TituloListaFooter"><strong>Descargas</strong></span>
             <ul>
-                <li><a style="color:#fff;" href="https://www.mef.gob.pe/es/anexos-y-formatos#anexos">Anexos  InviertePe</a></li>
-                <li><a style="color:#fff;" href="https://www.mef.gob.pe/es/anexos-y-formatos#formatos">Formatos</a></li>
+                <li><a style="color:#fff;" href="https://www.mef.gob.pe/es/anexos-y-formatos#anexos" target="_blank">Anexos  InviertePe</a></li>
+                <li><a style="color:#fff;" href="https://www.mef.gob.pe/es/anexos-y-formatos#formatos" target="_blank">Formatos</a></li>
             </ul>
-            <span class="TituloListaFooter"><strong>Normatividad</strong></span>
+            <!--<span class="TituloListaFooter"><strong>Normatividad</strong></span>
             <ul>
                 <li><a style="color:#fff;" href="https://www.mef.gob.pe/es/documentacion-sp-30574/temas/sistema-nacional-de-programacion-multianual-y-gestion-de-inversiones-invierte-pe/15837-decreto-supremo-n-027-2017-ef-2/file">Decreto Supremo Nº 027-2017-EF</a></li>
                 <li><a style="color:#fff;" href="https://www.mef.gob.pe/es/documentacion-sp-30574/temas/sistema-nacional-de-programacion-multianual-y-gestion-de-inversiones-invierte-pe/15836-decreto-legislativo-n-1252-1/file">Decreto Legislativo N° 1252</a></li>
+            </ul>    -->      
+        </div>
+
+        <div class="col-lg-4 col-sm-6">
+            <!--<span class="TituloListaFooter"><strong>Descargas</strong></span>
+            <ul>
+                <li><a style="color:#fff;" href="https://www.mef.gob.pe/es/anexos-y-formatos#anexos">Anexos  InviertePe</a></li>
+                <li><a style="color:#fff;" href="https://www.mef.gob.pe/es/anexos-y-formatos#formatos">Formatos</a></li>
+            </ul>-->
+            <span class="TituloListaFooter"><strong>Normatividad</strong></span>
+            <ul>
+                <li><a style="color:#fff;" href="https://www.mef.gob.pe/es/documentacion-sp-30574/temas/sistema-nacional-de-programacion-multianual-y-gestion-de-inversiones-invierte-pe/15837-decreto-supremo-n-027-2017-ef-2/file" target="_blank">Decreto Supremo Nº 027-2017-EF</a></li>
+                <li><a style="color:#fff;" href="https://www.mef.gob.pe/es/documentacion-sp-30574/temas/sistema-nacional-de-programacion-multianual-y-gestion-de-inversiones-invierte-pe/15836-decreto-legislativo-n-1252-1/file" target="_blank">Decreto Legislativo N° 1252</a></li>
             </ul>          
         </div>
       </div>
