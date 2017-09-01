@@ -52,5 +52,11 @@ class Model_DivisionFuncional extends CI_Model
                 return false;
               }
         }
+         function DivisionFuncionalPipListar()
+        {
+            $ListarDivisionFuncionalPipListar=$this->db->query("select DIVISION_FUNCIONAL.nombre_div_funcional ,count (nombre_pi)as CantidadPip, sum(costo_pi)as CostoPip from PROYECTO_INVERSION INNER JOIN GRUPO_FUNCIONAL ON PROYECTO_INVERSION.id_grupo_funcional=GRUPO_FUNCIONAL.id_grup_funcional INNER JOIN  DIVISION_FUNCIONAL on GRUPO_FUNCIONAL.id_div_funcional=DIVISION_FUNCIONAL.id_div_funcional  group by DIVISION_FUNCIONAL.nombre_div_funcional");
+
+            return $ListarDivisionFuncionalPipListar->result();
+        }
           
 }

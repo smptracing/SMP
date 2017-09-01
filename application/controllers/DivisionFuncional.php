@@ -7,7 +7,20 @@ class DivisionFuncional extends CI_Controller {/* Mantenimiento de division func
       parent::__construct();
       $this->load->model('Model_DivisionFuncional');
 	}
-    
+  
+
+  public function index()
+    {
+        /*$this->load->view('layout/Reportes/header');
+        $this->load->view('front/Reporte/Funcion/index');
+        $this->load->view('layout/Reportes/footer');*/
+        $listaPipDivisionFuncional=$this->Model_DivisionFuncional->DivisionFuncionalPipListar();
+        $this->load->view('layout/Reportes/header');
+        $this->load->view('front/Reporte/DivisionFuncional/index',['listaPipDivisionFuncional'=>$listaPipDivisionFuncional]);
+        $this->load->view('layout/Reportes/footer');
+    }
+
+
 	function GetDivisionFuncional()
 	{
 		if ($this->input->is_ajax_request()) 

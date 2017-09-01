@@ -67,13 +67,30 @@
 					<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
 						<div class="menu_section">
 							<ul class="nav side-menu">
-								<li><a href="<?php echo site_url('PrincipalEjecucion/PrincipalEjec'); ?>"> <i class="fa fa-home"></i> INICIO<span class=""></span></a>
+								<li><a href="<?php echo site_url('PrincipalReportes/PrincipalReportes'); ?>"> <i class="fa fa-home"></i> INICIO<span class=""></span></a>
 								</li>
 							</ul>
 
-							<h3></i>Reportes</h3>
+							<h3></i>Reporte</h3>
 
 						</div>
+
+
+                <ul class="nav side-menu">
+               
+                     <li>
+                         <a>
+                            <i class="fa fa-gears"></i> Cadena Funcional
+                            <span class="fa fa-chevron-down"></span>
+                         </a>
+                            <ul class="nav child_menu">
+                                    <li><a href="<?php echo site_url('funcion/index'); ?>">Funcion</a></li>
+                                    <li><a href="<?php echo site_url('DivisionFuncional/index'); ?>">Division Funcional</a></li>
+                                    <li><a href="">Grupo Funcional</a></li>
+                            </ul>
+                      </li>
+ 
+                	</ul>
 					</div>
 					<div class="sidebar-footer hidden-small">
 						<a data-toggle="tooltip" data-placement="top" title="Settings">

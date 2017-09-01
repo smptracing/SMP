@@ -15,6 +15,7 @@ class PrincipalReportes extends CI_Controller
 
     }
 
+
     public function GetAprobadosEstudio()
     {
         if ($this->input->is_ajax_request()) {

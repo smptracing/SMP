@@ -44,6 +44,13 @@ class Model_Funcion extends CI_Model
               }
 
         }
+
+        function FuncionPipListar()
+        {
+            $ListarFuncionPipListar=$this->db->query("select FUNCION.nombre_funcion ,count (nombre_pi)as CantidadPip, sum(costo_pi)as CostoPip from PROYECTO_INVERSION INNER JOIN GRUPO_FUNCIONAL ON PROYECTO_INVERSION.id_grupo_funcional=GRUPO_FUNCIONAL.id_grup_funcional INNER JOIN  DIVISION_FUNCIONAL on GRUPO_FUNCIONAL.id_div_funcional=DIVISION_FUNCIONAL.id_div_funcional INNER JOIN FUNCION on DIVISION_FUNCIONAL.id_funcion=FUNCION.id_funcion group by FUNCION.nombre_funcion");
+
+            return $ListarFuncionPipListar->result();
+        }
         //fin funcion
        
         //fin division funciona
