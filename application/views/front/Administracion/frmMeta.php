@@ -56,8 +56,8 @@
                                                       <thead style="background-color: #5A738E;color:#FFFFFF; ">
                                                         <tr>
                                                           <th style="width: 1%">#</th>
-                                                          <th style="width: 8%"><i class="fa fa-thumb-tack"></i> Año </th>
-                                                          <th style="width: 21%"><i class="fa fa-bookmark-o"></i> Número de meta</th>
+                                                          <!--<th style="width: 8%"><i class="fa fa-thumb-tack"></i> Año </th>-->
+                                                          <!--<th style="width: 21%"><i class="fa fa-bookmark-o"></i> Número de meta</th>-->
                                                           <th style="width: 62%"> Nombre de la meta</th>
                                                         <th style="width: 8%">Opción</th>
                                                         </tr>
