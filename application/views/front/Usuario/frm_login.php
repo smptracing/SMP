@@ -27,12 +27,19 @@
     </form>
   </div>
   <div class="form">
-    <h2>Crea una Cuenta</h2>
+    <h2>Crea una Cuenta</h2> 
     <form>
-        <input type="text" placeholder="Username"/>
+        <input type="text" placeholder="Ingresa tu nombre"/>
+        <input type="text" placeholder="Ingresa tu apellido paterno"/>
+        <input type="text" placeholder="Ingresa tu apellido materno"/>
+        <input type="text" placeholder="Ingresa tu DNI"/>
+        <input type="text" placeholder="Ingresa tu Direccion"/>
+        <input type="tel" placeholder="Ingresa tu Telefono"/>
+        <input type="email" placeholder="Ingresa tu Correo Electrónico"/>
+        <input type="text" placeholder="Ingresa tu grado Acádemico"/>
+        <input type="text" placeholder="Ingresa tu Especialidad"/>
+        <input type="date" placeholder="Ingresa tu Fecha de Nacimiento"/>
         <input type="password" placeholder="Password"/>
-        <input type="email" placeholder="Email Address"/>
-        <input type="tel" placeholder="Phone Number"/>
         <button>Registrarse</button>
     </form>
   </div>
