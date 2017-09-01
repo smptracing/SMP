@@ -41,8 +41,8 @@
 
 	<script src="<?=base_url()?>assets/js/Helper/jsHelper.js"></script>
 
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<script src="<?=base_url()?>assets/vendors/jquery/dist/jquery.min.js"></script>
+	<script src="<?=base_url()?>assets/vendors/jquery/dist/jquery-ui.min.js"></script>
 	<script src="<?=base_url()?>assets/vendors/JQueryGantt/libs/jquery/jquery.livequery.1.1.1.min.js"></script>
 	<script src="<?=base_url()?>assets/vendors/JQueryGantt/libs/jquery/jquery.timers.js"></script>
 	<script src="<?=base_url()?>assets/vendors/JQueryGantt/libs/utilities.js"></script>
