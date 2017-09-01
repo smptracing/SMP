@@ -15,8 +15,13 @@
                          }
                       });
                   });  
-			});
 
+                $("#btnCerrar").on("click",function(event){ 
+                   event.prevenDefault(); 
+                   $('#form-AddUsuario').trigger("reset"); 
+            	 });
+
+			});
                 var listarUsuario=function()
                 {
                     var table=$("#table-Usuarios").DataTable({
