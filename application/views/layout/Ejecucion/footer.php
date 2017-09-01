@@ -74,5 +74,7 @@
 	<script src="<?php echo base_url(); ?>assets/js/administrador/ServicioPublico.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/growl/growl.js"></script>
 
+	<script src="<?php echo base_url(); ?>assets/vendors/echarts/dist/echarts.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/vendors/echarts/map/js/world.js"></script>
 </body>
 </html>
