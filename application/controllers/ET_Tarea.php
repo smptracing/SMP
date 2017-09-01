@@ -81,12 +81,19 @@ class ET_TAREA extends CI_Controller
 					}
 				}
 
+				if(trim($value->name)=='')
+				{
+					$this->db->trans_rollback();
+
+					echo json_encode(['proceso' => 'Error', 'mensaje' => 'Debe asignar nombre a todas las actividades creadas.']);exit;
+				}
+
 				$this->Model_ET_Tarea->insertar($idTareaGantt, 'NULL', '', $value->name, $value->start, $value->end, 0, $value->progress, 'green', $value->level, $predecesoraTarea, 0, ($key+1));
 			}
 
 			$this->db->trans_complete();
 
-			echo json_encode(['Correcto' => 'Actividades guardadas correctamente.']);exit;
+			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Actividades guardadas correctamente.']);exit;
 		}
 	}
 }

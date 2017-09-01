@@ -10,6 +10,7 @@
 	<link rel=stylesheet href="<?=base_url()?>assets/vendors/JQueryGantt/libs/jquery/dateField/jquery.dateField.css" type="text/css">
 	<link rel=stylesheet href="<?=base_url()?>assets/vendors/JQueryGantt/gantt.css" type="text/css">
 	<link rel=stylesheet href="<?=base_url()?>assets/vendors/JQueryGantt/ganttPrint.css" type="text/css" media="print">
+	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/js/sweetalert.css">
 
 	<style>
 		.resEdit
@@ -60,6 +61,7 @@
 	<script src="<?=base_url()?>assets/vendors/JQueryGantt/ganttDrawerSVG.js"></script>
 	<script src="<?=base_url()?>assets/vendors/JQueryGantt/ganttGridEditor.js"></script>
 	<script src="<?=base_url()?>assets/vendors/JQueryGantt/ganttMaster.js"></script>  
+	<script src="<?php echo base_url(); ?>assets/dist/js/sweetalert-dev.js"></script>
 </head>
 <body style="background-color: #ffffff;overflow-x: hidden;">
 	<input type="hidden" id="hdIdTareaGantt" name="hdIdTareaGantt" value="1">
@@ -139,7 +141,20 @@
 
 			paginaAjaxJSON({ "idTareaGantt" : $('#hdIdTareaGantt').val(), "tareas" : JSON.stringify(prj.tasks) }, '<?=base_url()?>index.php/ET_TAREA/insertarBloque', 'POST', null, function(objectJSON)
 			{
+				objectJSON=JSON.parse(objectJSON);
 
+				swal(
+				{
+					title: '',
+					text: objectJSON.mensaje,
+					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+				},
+				function(){});
+
+				if(objectJSON.proceso=='Error')
+				{
+					return false;
+				}
 			}, false, true);
 		}
 
@@ -236,7 +251,7 @@
 			var ret=
 			{
 				"tasks": JSON.parse('<?=$arrayTask?>'),
-				"selectedRow": 2,
+				"selectedRow": 0,
 				"deletedTaskIds": [],
 				"resources": [
 
