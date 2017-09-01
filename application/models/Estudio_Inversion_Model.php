@@ -8,9 +8,26 @@ class Estudio_Inversion_Model extends CI_Model
         // $this->db->free_db_resource();
 
     }
-    public function get_EstudioInversion()
+    public function UsuarioPersona($idUsuario)
     {
-        $EstudioInversion = $this->db->query("EXEC sp_ListarEstudioInversion");
+        $listarPersonaUsuario = $this->db->query("select * from USUARIO  inner join PERSONA  
+                                on USUARIO.id_persona=PERSONA.id_persona 
+                                where  USUARIO.id_usuario='".$idUsuario."' ");
+         return $listarPersonaUsuario ->result()[0]; 
+
+    }
+    public function get_EstudioInversion($idPersona,$TipoUsuario)
+    {
+        if($TipoUsuario==1)
+        {
+          $listar_estudio_persona='listar_estudio_completo';
+        }
+        else
+        {
+          $listar_estudio_persona='listar_estudio_persona';
+        }
+        
+        $EstudioInversion = $this->db->query("EXEC sp_ListarEstudioInversion @opcion='".$listar_estudio_persona."', @id_persona='".$idPersona."' ");
         if ($EstudioInversion->num_rows() > 0) {
             return $EstudioInversion->result();
         } else {
