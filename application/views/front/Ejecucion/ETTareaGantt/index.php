@@ -85,7 +85,9 @@
 			var project=loadFromLocalStorage();
 
 			if (!project.canWrite)
+			{
 				$(".ganttButtonBar button.requireWrite").attr("disabled","true");
+			}
 
 			ge.loadProject(project);
 
@@ -231,40 +233,31 @@
 
 		function loadFromLocalStorage()
 		{
-			var ret;
-
-			if(localStorage)
+			var ret=
 			{
-				if(localStorage.getObject("teamworkGantDemo"))
-				{
-					ret = localStorage.getObject("teamworkGantDemo");
-				}
-			}
+				"tasks": JSON.parse('<?=$arrayTask?>'),
+				"selectedRow": 2,
+				"deletedTaskIds": [],
+				"resources": [
 
-			//if not found create a new example task
-			if(!ret || !ret.tasks || ret.tasks.length == 0)
+				],
+				"roles": [
+
+				],
+				"canWrite": true,
+				"canDelete":true,
+				"canWriteOnParent": true,
+				"zoom": "w3"
+			};
+
+
+			//actualize data
+			/*var offset=new Date().getTime()-ret.tasks[0].start;
+
+			for (var i=0;i<ret.tasks.length;i++)
 			{
-				ret= {
-					"tasks": [
-
-					], "selectedRow": 2, "deletedTaskIds": [],
-					"resources": [
-
-					],
-					"roles": [
-						
-					], "canWrite": true, "canDelete":true, "canWriteOnParent": true, "zoom": "w3"
-				}
-
-
-				//actualize data
-				/*var offset=new Date().getTime()-ret.tasks[0].start;
-
-				for (var i=0;i<ret.tasks.length;i++)
-				{
-					ret.tasks[i].start = ret.tasks[i].start + offset;
-				}*/
-			}
+				ret.tasks[i].start = ret.tasks[i].start + offset;
+			}*/
 
 			return ret;
 		}

@@ -12,7 +12,37 @@ class ET_TAREA extends CI_Controller
 
 	public function index()
 	{
-		return $this->load->view('Front/Ejecucion/ETTareaGantt/index');
+		$listaETTarea=$this->Model_ET_Tarea->ETTareaPorIdTareaGantt(1);
+
+		$arrayTask=[];
+
+		foreach($listaETTarea as $key => $value)
+		{
+			$arrayTask[]=[
+				'id' => $value->id_tarea_et,
+				'name' => $value->nombre_tarea,
+				'progress' => $value->avance_tarea,
+				'progressByWorklog' => false,
+				'relevance' => 0,
+				'type' => '',
+				'typeId' => '',
+				'description' => '',
+				'code' => '',
+				'level' => $value->nivel_tarea,
+				'status' => 'STATUS_ACTIVE',
+				'depends' => '',
+				'canWrite' => true,
+				'start' => 1504501200000,
+				'duration' => 1,
+				'end' => 1504587599999,
+				'startIsMilestone' => false,
+				'endIsMilestone' => false,
+				'assigs' => [],
+				'hasChild' => (count($listaETTarea)-1!=$key ? ($listaETTarea[$key+1]->nivel_tarea>$value->nivel_tarea ? true : false) : false)
+			];
+		}
+
+		return $this->load->view('Front/Ejecucion/ETTareaGantt/index', ['arrayTask' => json_encode($arrayTask), 'listaETTarea' => $listaETTarea]);
 	}
 
 	public function insertarBloque()
