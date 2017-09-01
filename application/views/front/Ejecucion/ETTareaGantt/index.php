@@ -483,10 +483,10 @@
 			<tr taskId="(#=obj.id#)" class="taskEditRow (#=obj.isParent()?'isParent':''#) (#=obj.collapsed?'collapsed':''#)" level="(#=level#)">
 			<th class="gdfCell edit" align="right" style="cursor:pointer;"><span class="taskRowIndex">(#=obj.getRow()+1#)</span> <span class="teamworkIcon" style="font-size:12px;" >e</span></th>
 			<td class="gdfCell noClip" align="center"><div class="taskStatus cvcColorSquare" status="(#=obj.status#)"></div></td>
-			<td class="gdfCell"><input type="text" name="code" value="(#=obj.code?obj.code:''#)" placeholder="code/short name"></td>
+			<td class="gdfCell"><input type="text" name="code" value="(#=obj.code?obj.code:''#)" placeholder="Nombre corto"></td>
 			<td class="gdfCell indentCell" style="padding-left:(#=obj.level*10+18#)px;">
 			<div class="exp-controller" align="center"></div>
-			<input type="text" name="name" value="(#=obj.name#)" placeholder="name">
+			<input type="text" name="name" value="(#=obj.name#)" placeholder="Nombre" autocomplete="off">
 			</td>
 			<td class="gdfCell" align="center"><input type="checkbox" name="startIsMilestone"></td>
 			<td class="gdfCell"><input type="text" name="start"  value="" class="date"></td>
@@ -545,7 +545,7 @@
 			<table  cellspacing="1" cellpadding="5" width="100%" class="taskData table" border="0">
 			<tr>
 			<td width="200" style="height: 80px"  valign="top">
-			<label for="code">code/short name</label><br>
+			<label for="code">Nombre corto</label><br>
 			<input type="text" name="code" id="code" value="" size=15 class="formElements" autocomplete='off' maxlength=255 style='width:100%' oldvalue="1">
 			</td>
 			<td colspan="3" valign="top"><label for="name" class="required">name</label><br><input type="text" name="name" id="name"class="formElements" autocomplete='off' maxlength=255 style='width:100%' value="" required="true" oldvalue="1"></td>
