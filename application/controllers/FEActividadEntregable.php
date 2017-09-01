@@ -23,6 +23,7 @@ class FEActividadEntregable extends CI_Controller
         }
     }
 
+
     //mostra vance de la actividad
     public function MostrarAvance()
     {
@@ -43,15 +44,16 @@ class FEActividadEntregable extends CI_Controller
             $id_act                 = "0";
             $txt_id_entregable      = $this->input->post("txt_id_entregable");
             $txt_nombre_act         = $this->input->post("txt_nombre_act");
-            $txt_fechaActividadI    = $this->input->post("txt_fechaActividadI");
-            $txt_fechaActividadf    = $this->input->post("txt_fechaActividadf");
             $txt_valoracionEAc      = $this->input->post("txt_valoracionEAc");
             $txt_AvanceEAc          = 0;
             $txt_observacio_EntreAc = $this->input->post("txt_observacio_EntreAc");
             $txt_ActividadColor     = $this->input->post("txt_ActividadColor");
 
-            $data = $this->Model_FEActividadEntregable->Add_Actividades($opcion,$id_act, $txt_id_entregable,$txt_nombre_act,$txt_fechaActividadI,$txt_fechaActividadf,$txt_valoracionEAc,$txt_AvanceEAc,$txt_observacio_EntreAc,$txt_ActividadColor);
-            echo json_encode($data);
+            $FechaActividad     = $this->input->post("FechaActividad");
+            $Fechas = explode("-",$FechaActividad);
+            
+            $data = $this->Model_FEActividadEntregable->Add_Actividades($opcion,$id_act, $txt_id_entregable,$txt_nombre_act,$Fechas[0],$Fechas[1],$txt_valoracionEAc,$txt_AvanceEAc,$txt_observacio_EntreAc,$txt_ActividadColor);
+            echo json_encode(['id_entregable'=>$txt_id_entregable]);exit;
         } else {
             show_404();
         }
@@ -70,7 +72,11 @@ class FEActividadEntregable extends CI_Controller
             $txt_avanceEAct          = $this->input->post("txt_avanceEAct");
             $txt_observacio_EntreAct = $this->input->post("txt_observacio_EntreAct");
             $txt_ActividadColorAc    = $this->input->post("txt_ActividadColorAc");
-            if ($this->Model_FEActividadEntregable->Update_Actividades($opcion,$tx_IdActividad,$txt_idEntregable,$txt_NombreActividadAc,$txt_fechaActividadIAc,$txt_fechaActividadfAc,$txt_valorizacionEAct,$txt_avanceEAct,$txt_observacio_EntreAct,$txt_ActividadColorAc) == false) {
+
+            $FechaActividadCalendar    = $this->input->post("FechaActividadCalendar");
+            $FechasCalendar=explode('-',$FechaActividadCalendar);
+            
+            if ($this->Model_FEActividadEntregable->Update_Actividades($opcion,$tx_IdActividad,$txt_idEntregable,$txt_NombreActividadAc,$FechasCalendar[0],$FechasCalendar[1],$txt_valorizacionEAct,$txt_avanceEAct,$txt_observacio_EntreAct,$txt_ActividadColorAc) == false) {
                 echo "Se actualizo una Actividad ";
             } else {
                 echo " Se actualizo una Actividad ";

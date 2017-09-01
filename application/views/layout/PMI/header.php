@@ -42,7 +42,7 @@
 
       #ProgramacionHorizontal{
         width: 100% !important;
-      } 
+      }
       #navtittlemin
       {
         display: none;
@@ -74,9 +74,9 @@
       <div class="main_container">
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
-            <div class="navbar nav_title" style="border: 0;">
+            <!--<div class="navbar nav_title" style="border: 0;">
               <a href="<?php echo site_url('Inicio') ?>" class="site_title"><i class="fa fa-calendar"></i> PMI</a>
-            </div>
+            </div>-->
             <div class="navbar nav_title" style="border: 0;">
               <a href="<?php echo site_url('Inicio') ?>" class="site_title"><i class="fa fa-users"></i> <span>SMPTRACING</span></a>
             </div>
@@ -88,35 +88,109 @@
 
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
-              <!--<ul class="nav side-menu">
+
+
+              <!--hhhhhhh-->
+              <!-- sidebar menu -->
+
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+              <ul class="nav side-menu">
                   <li><a href="<?php echo site_url('PrincipalPmi/pmi'); ?>"> <i class="fa fa-home"></i> INICIO<span class=""></span></a>
                   </li>
-                </ul>-->
+                </ul>
+
                 <ul class="nav side-menu">
-                <li><a href="<?php echo site_url('PrincipalPmi/pmi'); ?>"> <i class="fa fa-home"></i> Inicio<span class=""></span></a>
-                  </li>
-                     <li><a href="<?php echo site_url('CarteraInversion/'); ?>"><i class="fa fa-suitcase"></i> Cartera de inversiones</a></li>
-                      <li><a href="<?php echo site_url('ProyectoInversion/'); ?>"><i class="fa fa-sitemap"></i> Proyecto Inversion</a></li>
-                      <li><a><i class="fa fa-book"></i> Proyectos Programados <span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="<?php echo site_url('PipProgramados/'); ?>">PIP</a></li>
-                                    <li><a href="<?php echo site_url('NoPipProgramados/'); ?>">NO PIP</a></li>
-                                </ul>
-                      </li>
-                      <li><a><i class="fa fa-database"></i> Banco de proyectos <span class="fa fa-chevron-down"></span></a>
-                            <ul class="nav child_menu">
-                                    <li><a href="<?php echo site_url('bancoproyectos/'); ?>">PIP</a></li>
-                                    <li><a href="<?php echo site_url('bancoproyectos/NoPip'); ?>">NO PIP</a></li>
-                            </ul>
-                      </li>
-                      <li><a><i class="fa fa-gears"></i> Programar <span class="fa fa-chevron-down"></span></a>
+                     <li>
+                          <a href="<?php echo site_url('CarteraInversion/'); ?>"><i class="fa fa-suitcase"></i> Cartera de inversiones</a>
+                     </li>
+                     <li>
+                         <a>
+                            <i class="fa fa-gears"></i> Prog. de Inversiones
+                            <span class="fa fa-chevron-down"></span>
+                         </a>
                             <ul class="nav child_menu">
                                     <li><a href="<?php echo site_url('programar_pip/'); ?>">PIP</a></li>
                                     <li><a href="<?php echo site_url('programar_nopip/'); ?>">NO PIP</a></li>
                             </ul>
                       </li>
-                       <li><a href="<?php echo site_url('BrechaIndicador/'); ?>"><i class="fa fa-sliders"></i> Brechas e Indicadores </a></li>
-                       <li><a href="<?php echo site_url('Meta/'); ?>"><i class="fa fa-sliders"></i> Meta </a></li>
+                      <li>
+                                <a><i class="fa fa-book"></i> Inversiones Programados
+                                  <span class="fa fa-chevron-down"></span>
+                                </a>
+                                <ul class="nav child_menu">
+                                    <li><a href="<?php echo site_url('ProyectoInversion/'); ?>">Programación PMI</a></li>
+                                    <li><a href="<?php echo site_url('PipProgramados/'); ?>">PIP</a></li>
+                                    <li><a href="<?php echo site_url('NoPipProgramados/'); ?>">NO PIP</a></li>
+                                </ul>
+                      </li>
+
+                      <li>
+                            <a><i class="fa fa-database"></i> Banco de proyectos <span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                                    <li><a href="<?php echo site_url('bancoproyectos/'); ?>">PIP</a></li>
+                                    <li><a href="<?php echo site_url('bancoproyectos/NoPip'); ?>">NO PIP</a></li>
+                            </ul>
+                      </li>
+                      <li>
+                            <a><i class="fa fa-inbox"></i> Meta Presupuestal <span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                                    <li><a href="<?php echo site_url('MetaPip/meta_pip'); ?>">PIP</a></li>
+                                    <li><a href="<?php echo site_url('MetaPip/meta_nopip'); ?>">NO PIP</a></li>
+                            </ul>
+                      </li>
+                       <li>
+                          <a href="<?php echo site_url('BrechaIndicador/'); ?>"><i class="fa fa-sliders"></i> Brechas e Indicadores </a>
+                       </li>
+                    <!--   <li><a href="<?php echo site_url('Meta/'); ?>"><i class="fa fa-sliders"></i> Meta </a></li>-->
+                </ul>
+              </div>
+            </div>
+            <!-- /sidebar menu -->
+              <!--<ul class="nav side-menu">
+                  <li><a href="<?php echo site_url('PrincipalPmi/pmi'); ?>"> <i class="fa fa-home"></i> INICIO<span class=""></span></a>
+                  </li>
+                </ul>
+
+                <ul class="nav side-menu">
+                     <li>
+                          <a href="<?php echo site_url('CarteraInversion/'); ?>"><i class="fa fa-suitcase"></i> Cartera de inversiones</a>
+                     </li>
+                     <li><a><i class="fa fa-gears"></i> Programación de Inversiones <span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                                    <li><a href="<?php echo site_url('programar_pip/'); ?>">PIP</a></li>
+                                    <li><a href="<?php echo site_url('programar_nopip/'); ?>">NO PIP</a></li>
+                            </ul>
+                      </li>
+                      <li>
+                                <a><i class="fa fa-book"></i> Inversiones Programados
+                                  <span class="fa fa-chevron-down"></span>
+                                </a>
+                                <ul class="nav child_menu">
+                                    <li><a href="<?php echo site_url('ProyectoInversion/'); ?>">Programación PMI</a></li>
+                                    <li><a href="<?php echo site_url('PipProgramados/'); ?>">PIP</a></li>
+                                    <li><a href="<?php echo site_url('NoPipProgramados/'); ?>">NO PIP</a></li>
+                                </ul>
+                      </li>
+
+                      <li>
+                            <a><i class="fa fa-database"></i> Banco de proyectos <span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                                    <li><a href="<?php echo site_url('bancoproyectos/'); ?>">PIP</a></li>
+                                    <li><a href="<?php echo site_url('bancoproyectos/NoPip'); ?>">NO PIP</a></li>
+                            </ul>
+                      </li>
+                      <li>
+                            <a><i class="fa fa-inbox"></i> Meta Presupuestal <span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                                    <li><a href="<?php echo site_url('MetaPip/meta_pip'); ?>">PIP</a></li>
+                                    <li><a href="<?php echo site_url('MetaPip/meta_nopip'); ?>">NO PIP</a></li>
+                            </ul>
+                      </li>
+                       <li>
+                          <a href="<?php echo site_url('BrechaIndicador/'); ?>"><i class="fa fa-sliders"></i> Brechas e Indicadores </a>
+                       </li>
+                    <!--   <li><a href="<?php echo site_url('Meta/'); ?>"><i class="fa fa-sliders"></i> Meta </a></li>-->
                 </ul>
               </div>
             </div>
@@ -155,7 +229,10 @@
                   <span style="position: absolute;top: 14px;left: 50px; width: 700px; font-size: 20px; text-shadow: 1px 1px 1px rgba(0,0,0,0.3);">PMI</span></div>
               </div>
 
+
+
               <ul class="nav navbar-nav navbar-right">
+
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                     <img src="<?php echo base_url(); ?>assets/images/img.jpg" alt="">
@@ -171,7 +248,7 @@
                     </li>
                     <li><a href="javascript:;">Ayuda</a></li>
 
-                    <li><a href="javascript:void(0)" id="Cerrar"><i class="fa fa-sign-out pull-right"></i> Cerrar sesión</a></li>
+                    <li><a href="<?php echo base_url("index.php/Login/logout");?>"><i class="fa fa-sign-out pull-right"></i> Cerrar sesión</a></li>
                   </ul>
                 </li>
 
@@ -203,6 +280,14 @@
                     </li>
                   </ul>
                 </li>
+                 <li role="presentation" class="dropdown">
+                 <br>
+                      <div class="col-md-2">
+                        <select  id="Aniocartera_dasboard" selected name="Aniocartera_dasboard"  class="selectpicker"></select>
+                        <input type="hidden" id="Aniocartera_dasboard_imput" value="<?=(isset($anio) ? $anio : date('Y'))?>">
+                      </div>
+                </li>
+
               </ul>
             </nav>
           </div>

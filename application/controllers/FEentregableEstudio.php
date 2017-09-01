@@ -100,13 +100,20 @@ show_404();
 
          
              $data = $this->Model_FEentregableEstudio->Add_Entregable($opcion, $id_entregable, $txt_denominacion_entre, $id_etapa_estudio, $txt_nombre_entre, $txt_valoracion_entre, $txt_avance_entre, $txt_observacio_entre, $txt_levantamintoO_entre);
-             echo json_encode("SE REGISTRO CORRECTAMENTE EL ENTREGABLE");
-   
-             
-           
-             //explode(',',$valores); 
-            
-            
+             echo json_encode("SE REGISTRO CORRECTAMENTE EL ENTREGABLE");   
+        } else {
+            show_404();
+        }
+    }
+    public function editar_Entregable()
+    {
+        if ($this->input->is_ajax_request()) {
+            $id_entregable           = $this->input->post("IdEntregable");
+            $Editxt_nombre_entre     = $this->input->post("Editxt_nombre_entre");
+            $Editxt_denoMultiple        = $this->input->post("Editxt_denoMultiple");
+            $Editxt_valoracion_entre    = $this->input->post("Editxt_valoracion_entre");
+            $data = $this->Model_FEentregableEstudio->editar_Entregable($id_entregable,$Editxt_nombre_entre,$Editxt_denoMultiple,$Editxt_valoracion_entre);
+            echo json_encode("SE ACTUALIZO  CORRECTAMENTE EL ENTREGABLE");   
         } else {
             show_404();
         }

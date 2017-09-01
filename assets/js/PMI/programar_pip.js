@@ -14,7 +14,7 @@ $(document).on("ready" ,function(){
                            //alert(resp);
                            if (resp=='1') {
                              swal("REGISTRADO","Se regristró correctamente", "success");
-                             formReset();
+                            // formReset();
                            }
                             if (resp=='2') {
                              swal("NO SE REGISTRÓ","NO se regristró ", "error");
@@ -23,7 +23,7 @@ $(document).on("ready" ,function(){
                           $('#table_formulacion_evaluacion').dataTable()._fnAjaxUpdate();
                           $('#table_ejecucion').dataTable()._fnAjaxUpdate();
                           $('#Table_funcionamiento').dataTable()._fnAjaxUpdate();
-                             formReset();
+                           //  formReset();
                          }
                       });
                   });
@@ -38,7 +38,7 @@ $(document).on("ready" ,function(){
                            //alert(resp);
                            if (resp=='1') {
                              swal("REGISTRADO","Se regristró correctamente", "success");
-                             formReset();
+                           //  formReset();
                            }
                             if (resp=='2') {
                              swal("NO SE REGISTRÓ","NO se regristró ", "error");
@@ -47,7 +47,7 @@ $(document).on("ready" ,function(){
                           $('#table_formulacion_evaluacion').dataTable()._fnAjaxUpdate();
                           $('#table_ejecucion').dataTable()._fnAjaxUpdate();
                           $('#Table_funcionamiento').dataTable()._fnAjaxUpdate();
-                             formReset();
+                         //    formReset();
                          }
                       });
                   });
@@ -62,14 +62,20 @@ $(document).on("ready" ,function(){
                            //alert(resp);
                            if (resp=='1') {
                              swal("REGISTRADO","Se regristró correctamente", "success");
+                            
                              formReset();
+                              //location.reload();
+                              setTimeout("location.reload()", 5000);
                            }
                             if (resp=='2') {
                              swal("NO SE REGISTRÓ","NO se regristró ", "error");
+                             
                            }
                           $('#Table_meta_pi').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
                              
                              formReset();
+                             //location.reload();
+                             setTimeout("location.reload()", 5000);
                          }
                       });
                   });
@@ -111,7 +117,7 @@ $(document).on("ready" ,function(){
                                         return '<h5><span class="label label-danger">No Programado</span></h5>';
                                       }
                                    }},
-                                    {"defaultContent":"<center><button type='button' title='Programar' class='programar_pip btn btn-warning btn-xs' data-toggle='modal' data-target='#Ventana_Programar'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button><button type='button' title='Meta Presupuestal PIP' class='meta_pip btn btn-success btn-xs' data-toggle='modal' data-target='#Ventana_Meta_Presupuestal_PI'><i class='fa fa-usd' aria-hidden='true'></i></button></center>"}
+                                    {"defaultContent":"<center><button type='button' title='Programar' class='programar_pip btn btn-warning btn-xs' data-toggle='modal' data-target='#Ventana_Programar'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button></center>"}
                                 ],
                                "language":idioma_espanol
                     });
@@ -133,13 +139,84 @@ $(document).on("ready" ,function(){
                                     },
                                 "columns":[
                                     {"data":"id_pi","visible": false},
+                                    {"data":"cartera"},
+                                    {"data":"nombre_brecha"},
                                     {"data":"año_prog"},
-                                    {"data":"monto_prog"}
-                                   ],
+                                    {"data":"monto_prog"},
+                                    {"data":"prioridad_prog"},
+                                    {"defaultContent":"<button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
+                                ],
                                "language":idioma_espanol
                     });
+                    EliminarProgramacion("#Table_Programar",table); 
                 }
 //fin listar programación por cada proyecto
+//Eliminar programacion
+var EliminarProgramacion=function(tbody,table){
+                  $(tbody).on("click","button.eliminar",function(){
+                        var data=table.row( $(this).parents("tr")).data();
+                        var id_pi=data.id_pi;
+                        var id_cartera=data.id_cartera;
+                      //  console.log(data);
+                         swal({
+                                title: "Desea eliminar ?",
+                                text: "",
+                                type: "warning",
+                                showCancelButton: true,
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "Yes,Eliminar",
+                                closeOnConfirm: false
+                              },
+                              function(){
+                                    $.ajax({
+                                          url:base_url+"index.php/programar_nopip/EliminarProgramacion",
+                                          type:"POST",
+                                          data:
+                                          {id_cartera:id_cartera,id_pi:id_pi},
+                                          success:function(respuesta){
+                                            //alert(respuesta);
+                                            swal("Se eliminó corectamente", ".", "success");
+                                            $('#Table_Programar').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
+                                            $('#table_formulacion_evaluacion').dataTable()._fnAjaxUpdate();
+                                            $('#table_ejecucion').dataTable()._fnAjaxUpdate();
+                                            $('#Table_Programar_operacion_mantenimiento').dataTable()._fnAjaxUpdate();
+                                            $('#Table_funcionamiento').dataTable()._fnAjaxUpdate();
+
+                                          }
+                                        });
+                              });
+                    });
+                }
+//listar prioridad con su cartera
+ var lista_prioridad=function(anio)
+                {
+                    var table=$("#lista_prioridad_validar").DataTable({
+                     // alert(anio);
+                      "processing": true,
+                      "serverSide":false,
+                       destroy:true,
+                         "ajax":{
+                                     url:base_url+"index.php/programar_pip/listar_prioridad",
+                                     type:"POST",
+                                     data :{anio:anio}
+                                    },
+                                "columns":[
+                                    {"data":"id_pi","visible": false},
+                                    {"data":"cartera"},
+                                    {"data":"prioridad"}
+                                  ],
+                               "language":idioma_espanol
+                       });
+               
+                }
+//fin listar prioridad
+$("#Cbx_AnioCartera").change(function() {
+                          var anio=$("#Cbx_AnioCartera").val();
+                          lista_prioridad(anio);
+                            //lista_ejecucion(anio);
+                           //listar carteran de proyectos
+                        });   
+
 //listar programación para operacion y manteniemitno
  var listar_programacion_operacion_mantenimiento=function(id_pi)
                 {
@@ -152,13 +229,18 @@ $(document).on("ready" ,function(){
                                      type:"POST",
                                      data :{id_pi:id_pi}
                                     },
-                                "columns":[
+                                  "columns":[
                                     {"data":"id_pi","visible": false},
+                                    {"data":"cartera"},
+                                    {"data":"nombre_brecha"},
                                     {"data":"año_prog"},
-                                    {"data":"monto_opera_mant_prog"}
-                                    ],
+                                    {"data":"monto_opera_mant_prog"},
+                                    {"data":"prioridad_prog"},
+                                    {"defaultContent":"<button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
+                                ],
                                "language":idioma_espanol
                     });
+                    EliminarProgramacion("#Table_Programar_operacion_mantenimiento",table); 
                 }
 //fin listar programación  para operacion y manteniemitno
 //listar proyectos de inversion en Ejecucion
@@ -193,7 +275,7 @@ $(document).on("ready" ,function(){
                                         return '<h5><span class="label label-danger">No Programado</span></h5>';
                                       }
                                    }},
-                                    {"defaultContent":"<center><button type='button' title='Programar' class='programar_pip btn btn-warning btn-xs' data-toggle='modal' data-target='#Ventana_Programar'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button><button type='button' title='Programar' class='meta_pip btn btn-success btn-xs' data-toggle='modal' data-target='#Ventana_Meta_Presupuestal_PI'><i class='fa fa-usd' aria-hidden='true'></i></button></center>"}
+                                    {"defaultContent":"<center><button type='button' title='Programar' class='programar_pip btn btn-warning btn-xs' data-toggle='modal' data-target='#Ventana_Programar'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button></center>"}
                                 ],
                                "language":idioma_espanol
                     });
@@ -233,7 +315,7 @@ $(document).on("ready" ,function(){
                                         return '<h5><span class="label label-danger">No Programado</span></h5>';
                                       }
                                    }},
-                                       {"defaultContent":"<center><button type='button' title='Programar' class='programar_pip_operacion_mantenimiento btn btn-warning btn-xs' data-toggle='modal' data-target='#Ventana_Programar_operacion_mantenimiento'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button><button type='button' title='Programar' class='meta_pip btn btn-success btn-xs' data-toggle='modal' data-target='#Ventana_Meta_Presupuestal_PI'><i class='fa fa-usd' aria-hidden='true'></i></button></center>"}
+                                       {"defaultContent":"<center><button type='button' title='Programar' class='programar_pip_operacion_mantenimiento btn btn-warning btn-xs' data-toggle='modal' data-target='#Ventana_Programar_operacion_mantenimiento'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button></center>"}
                                 ],
                                "language":idioma_espanol
                     });
@@ -244,13 +326,12 @@ $(document).on("ready" ,function(){
 //listar meta proyecto
  var listar_meta_pi=function(id_pi)
                 {
-                  
                     var table=$("#Table_meta_pi").DataTable({
                       "processing": true,
                       "serverSide":false,
                       destroy:true,
                       "ajax":{
-                                     url:base_url+"index.php/programar_pip/listar_metas_pi",
+                                     url:base_url+"index.php/programar_nopip/listar_metas_pi",
                                      type:"POST",
                                      data :{id_pi:id_pi}
                                     },
@@ -258,17 +339,17 @@ $(document).on("ready" ,function(){
                                     {"data":"id_meta_pi","visible": false},
                                     {"data":"anio"},
                                     {"data":"pia_meta_pres"},
-                                    {"data":"pim_meta_pres"},
-                                    {"data":"devengado_meta_pres"},
+                                    {"data":"pim_acumulado"},
+                                    {"data":"certificacion_acumulado"},
+                                    {"data":"compromiso_acumulado"},
+                                    {"data":"devengado_acumulado"},
+                                    {"data":"girado_acumulado"},
                                     {"defaultContent":"<button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
                                "language":idioma_espanol
                     });
-                    $('#Table_meta_pi').dataTable()._fnAjaxUpdate();
-                     EliminarMetaPresupuestalPi("#Table_meta_pi",table);
-                  //   $('#Table_meta_pi').dataTable()._fnAjaxUpdate();
+                    EliminarMetaPresupuestalPi("#Table_meta_pi",table);
                 }
-//eliminar metal presupuestal
 var EliminarMetaPresupuestalPi=function(tbody,table){
                   $(tbody).on("click","button.eliminar",function(){
                       var data=table.row( $(this).parents("tr")).data();
@@ -295,14 +376,15 @@ var EliminarMetaPresupuestalPi=function(tbody,table){
                                             $('#table_formulacion_evaluacion').dataTable()._fnAjaxUpdate();
                                             $('#table_ejecucion').dataTable()._fnAjaxUpdate();
                                             $('#Table_funcionamiento').dataTable()._fnAjaxUpdate();
-                                          location.reload();
+                                          //location.reload();
+                                          setTimeout("location.reload()", 5000);
                                           }
                                         });
                               });
                     });
                 }
 //Agregar META PIP
- var  AddMeta_Pi=function(tbody,table){
+/* var  AddMeta_Pi=function(tbody,table){
                     $(tbody).on("click","button.meta_pip",function(){
                       var data=table.row( $(this).parents("tr")).data();
                        var  id_pi=data.id_pi;
@@ -317,6 +399,20 @@ var EliminarMetaPresupuestalPi=function(tbody,table){
 
                   });
                 }
+*/
+var  AddMeta_Pi=function(tbody,table){
+                    $(tbody).on("click","button.meta_pip",function(){
+                      var data=table.row( $(this).parents("tr")).data();
+                       var  id_pi=data.id_pi;
+                       $("#txt_codigo_unico_pi_mp").val(data.codigo_unico_pi);
+                      $("#txt_id_pip_programacion_mp").val(data.id_pi);
+                      $("#txt_costo_proyecto_mp").val(data.costo_pi);
+                      $("#txt_nombre_proyecto_mp").val(data.nombre_pi);
+                      listar_Meta();
+                      listar_meta_presupuestal();
+                       listar_meta_pi(id_pi);
+                    });
+                }
 
 //add programar para formulacion y evaluacion
    var  AddProgramacion=function(tbody,table){
@@ -327,6 +423,21 @@ var EliminarMetaPresupuestalPi=function(tbody,table){
                       $("#txt_id_pip_programacion").val(data.id_pi);
                       $("#txt_costo_proyecto").val(data.costo_pi);
                       $("#txt_nombre_proyecto").val(data.nombre_pi);
+                      $("#txt_pia_fye").val(data.ultimo_pia_meta_pres);
+                      $("#txt_devengado_pia_fye").val(data.devengado_acumulado_total);
+                      $("#txt_pim_pia_fye").val(data.ultimo_pim_meta_pres);
+if (parseFloat(data.ultimo_pim_meta_pres)>0) {
+ // alert("nuevo");
+    costopi=parseFloat(data.costo_pi)-parseFloat(data.ultimo_pim_meta_pres)-parseFloat(data.devengado_acumulado_total);
+                    $("#txt_saldoprogramar").val(costopi); 
+}
+if (data.ultimo_pim_meta_pres==""|| parseFloat(data.ultimo_pim_meta_pres)=="0.00") {
+ // alert("vacio");
+    costopi=parseFloat(data.costo_pi)-parseFloat(data.ultimo_pia_meta_pres)-parseFloat(data.devengado_acumulado_total);
+                    $("#txt_saldoprogramar").val(costopi); 
+}
+                      
+                      
                         listar_aniocartera();
                         listar_programacion(id_pi);
 
@@ -341,6 +452,19 @@ var EliminarMetaPresupuestalPi=function(tbody,table){
                       $("#txt_id_pip_programacion_").val(data.id_pi);
                       $("#txt_costo_proyecto_").val(data.costo_pi);
                       $("#txt_nombre_proyecto_").val(data.nombre_pi);
+                       $("#txt_pia_oper").val(data.ultimo_pia_meta_pres);
+                      $("#txt_devengado_oper").val(data.devengado_acumulado_total);
+                      $("#txt_pim_oper").val(data.ultimo_pim_meta_pres);
+if (parseFloat(data.ultimo_pim_meta_pres)>0) {
+ // alert("nuevo");
+    costopi=parseFloat(data.costo_pi)-parseFloat(data.ultimo_pim_meta_pres)-parseFloat(data.devengado_acumulado_total);
+                    $("#txt_saldoprogramar_oper").val(costopi); 
+}
+if (data.ultimo_pim_meta_pres==""|| parseFloat(data.ultimo_pim_meta_pres)=="0.00") {
+ // alert("vacio");
+    costopi=parseFloat(data.costo_pi)-parseFloat(data.ultimo_pia_meta_pres)-parseFloat(data.devengado_acumulado_total);
+                    $("#txt_saldoprogramar_oper").val(costopi); 
+}
                         listar_aniocartera_();
                         listar_programacion_operacion_mantenimiento(id_pi);
                   });
@@ -387,7 +511,7 @@ var EliminarMetaPresupuestalPi=function(tbody,table){
                     });
                 }
                  var listar_aniocartera=function(valor){
-                     html="";
+                    var html="";
                     $("#Cbx_AnioCartera").html(html);
                     event.preventDefault();
                     $.ajax({
@@ -403,7 +527,12 @@ var EliminarMetaPresupuestalPi=function(tbody,table){
                             $('select[name=Cbx_AnioCartera]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=Cbx_AnioCartera]').change();
                             $('.selectpicker').selectpicker('refresh');
+
                             listar_Brecha();//listar brecha
+                             var anio=$("#Cbx_AnioCartera").val();
+                             lista_prioridad(anio);
+                            // alert(anio);
+
                         }
                     });
                 }
@@ -429,11 +558,32 @@ var EliminarMetaPresupuestalPi=function(tbody,table){
                     });
                 }
                 var listar_Meta=function(valor){
-                     html="";
+                    var html="";
                     $("#cbx_Meta").html(html);
                     event.preventDefault();
                     $.ajax({
-                        "url":base_url +"index.php/meta/listar_meta",
+                        "url":base_url +"index.php/Meta/listar_correlativo",
+                        type:"POST",
+                        success:function(respuesta3){
+                         //  alert(respuesta);
+                         var registros = eval(respuesta3);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option  value="+registros[i]["id_correlativo_meta"]+"> "+registros[i]["cod_correlativo"]+" </option>";
+                            };
+                            $("#cbx_Meta").html(html);
+                            $('select[name=cbx_Meta]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=cbx_Meta]').change();
+                            $('.selectpicker').selectpicker('refresh');
+                        }
+                    });
+                }
+                 /*para listar nombres de las metas*/
+                var listar_meta_presupuestal=function(valor){
+                     var html="";
+                    $("#cbx_meta_presupuestal").html(html);
+                    event.preventDefault();
+                    $.ajax({
+                        "url":base_url +"index.php/Meta/listar_meta_presupuestal",
                         type:"POST",
                         success:function(respuesta3){
                          //  alert(respuesta);
@@ -441,9 +591,9 @@ var EliminarMetaPresupuestalPi=function(tbody,table){
                             for (var i = 0; i <registros.length;i++) {
                               html +="<option  value="+registros[i]["id_meta_pres"]+"> "+registros[i]["nombre_meta_pres"]+" </option>";
                             };
-                            $("#cbx_Meta").html(html);
-                            $('select[name=cbx_Meta]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
-                            $('select[name=cbx_Meta]').change();
+                            $("#cbx_meta_presupuestal").html(html);
+                            $('select[name=cbx_meta_presupuestal]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=cbx_meta_presupuestal]').change();
                             $('.selectpicker').selectpicker('refresh');
                         }
                     });

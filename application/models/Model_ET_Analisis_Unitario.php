@@ -29,16 +29,36 @@ class Model_ET_Analisis_Unitario extends CI_Model
 		return $data->result();
 	}
 
+	function ETAnalisisUnitarioPorIdPartidaFromDetallePartida($idPartida)
+	{
+		$data=$this->db->query("select * from ET_ANALISIS_UNITARIO as etau inner join ET_DETALLE_PARTIDA as etdp on etau.id_detalle_partida=etdp.id_detalle_partida where etdp.id_partida=".$idPartida." and etau.id_analitico is null");
+
+		return $data->result();
+	}
+
 	function ETAnalisisUnitarioPorIdDetallePartidaAndIdRecurso($idDetallePartida, $idRecurso)
 	{
 		$data=$this->db->query("select * from ET_ANALISIS_UNITARIO where id_detalle_partida=".$idDetallePartida." and id_recurso=".$idRecurso);
 
-		return count($data->result())==0 ? null : $data->result()[0];
+		return count($data->result())==0 ? null : $data->result()[0]; 
 	}
 
 	function eliminar($idAnalisis)
 	{
 		$this->db->query("delete from ET_ANALISIS_UNITARIO where id_analisis=".$idAnalisis);
+
+		return true;
+	}
+
+	function actualizarAnalitico($idAnalisis, $idAnalitico)
+	{
+		$this->db->query("update ET_ANALISIS_UNITARIO set id_analitico=".$idAnalitico." where id_analisis=".$idAnalisis);
+
+		return true;
+	}
+	function listarEtAnalisisUnitario($id_analitico)
+	{
+		$this->db->query("select * from ET_ANALISIS_UNITARIO WHERE id_analitico=".$id_analitico);
 
 		return true;
 	}

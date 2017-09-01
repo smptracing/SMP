@@ -28,17 +28,34 @@ class Estudio_Inversion extends CI_Controller
         }
     }
 
+
     public function get_EstudioInversion() //mostra ESTADO INVERSION
 
     {
-
+        $idUsuario    = $this->session->userdata('idUsuario');
+        $dataIdPersona= $this->Estudio_Inversion_Model->UsuarioPersona($idUsuario);
+        $idPersona=$dataIdPersona->id_persona;
+        $TipoUsuario=$dataIdPersona->administrador;
         if ($this->input->is_ajax_request()) {
-            $datos = $this->Estudio_Inversion_Model->get_EstudioInversion();
+            $datos = $this->Estudio_Inversion_Model->get_EstudioInversion($idPersona,$TipoUsuario);
             echo json_encode($datos);
         } else {
             show_404();
         }
     }
+     public function  get_listaproyectosCargar() //mostra ESTADO INVERSION
+
+    {
+
+        if ($this->input->is_ajax_request()) {
+            $id_Pi=$this->input->post('id_Pi');
+            $datos = $this->Estudio_Inversion_Model->get_listaproyectosCargar($id_Pi);
+            echo json_encode($datos);
+        } else {
+            show_404();
+        }
+    }
+  
     public function get_UnidadFormuladora() //mostra ESTADO INVERSION
 
     {
@@ -184,6 +201,22 @@ class Estudio_Inversion extends CI_Controller
         }
     }
 
+     public function AddCoordinadorEstudio()
+    {
+        if ($this->input->is_ajax_request()) {
+            $flat              = "AGREGARCOORDINADOR";
+            $id_est_inv        = $this->input->post("id_est_inv");
+            $listaResponsables = $this->input->post("listaResponsables");
+            $dateFechaAsig     = $this->input->post("dateFechaAsig");
+            if ($this->Estudio_Inversion_Model->AddCoordinadorEstudio($flat, $id_est_inv, $listaResponsables, $dateFechaAsig) == false) {
+                echo "1";
+            } else {
+                echo "2";
+            }
+        } else {
+            show_404();
+        }
+    }
     //REGISTRAR NUEVA
     public function AddAsiganarPersona()
     {
@@ -204,11 +237,13 @@ class Estudio_Inversion extends CI_Controller
         }
     }
 
+    
     //añadir documentos ala estudio de invserion
     public function AddDocumentosEstudio()
     {
 
-        if ($this->input->is_ajax_request()) {
+        if ($this->input->is_ajax_request()) 
+        {
 
             // echo  $txt_Cartera;
             $config['upload_path']   = './uploads/DocumentosInversion/';

@@ -3,7 +3,7 @@
 		<hr style="margin: 2px;margin-bottom: 5px;">
 		<div class="row">
 			<div class="col-md-12 col-sm-12 col-xs-12">
-				<input type="text" class="form-control" name="cbx_estudioInversion" value="<?=$fePresupuestoInv->nombre_est_inv?>" id="cbx_estudioInversion" autocomplete="off" disabled="disabled">
+				<input type="text" class="form-control" name="cbx_estudioInversion" value="<?=html_escape($fePresupuestoInv->nombre_est_inv)?>" id="cbx_estudioInversion" autocomplete="off" disabled="disabled">
 				<input type="hidden" name="hdIdPresupuestoFE" value="<?=$fePresupuestoInv->id_presupuesto_fe?>">
 				<input type="hidden" name="idEstudioInversion"  value="<?=$fePresupuestoInv->id_est_inv?>">
 			</div>
@@ -13,13 +13,13 @@
 				<label>Sector</label>
 				<select id="cbx_Sector" name="cbx_Sector" class="form-control notValidate" required="">
 					<?php foreach($listarSector as $item ){ ?>
-						 <option <?=($fePresupuestoInv->id_sector==$item->id_sector ? 'selected' : '')?> value="<?=$item->id_sector?>"><?=$item->nombre_sector?></option>
+						 <option <?=($fePresupuestoInv->id_sector==$item->id_sector ? 'selected' : '')?> value="<?=$item->id_sector?>"><?=html_escape($item->nombre_sector)?></option>
 					<?php } ?>
 				</select>
 			</div>
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<label>Pliego</label>
-				<input type="text" class="form-control" id="txtPliego" name="txtPliego" placeholder="Pliego" value="<?=$fePresupuestoInv->pliego?>" autocomplete="off">
+				<input type="text" class="form-control" id="txtPliego" name="txtPliego" placeholder="Pliego" value="<?=html_escape($fePresupuestoInv->pliego)?>" autocomplete="off">
 			</div>
 		</div>
 		<h4 style="margin-bottom: 0px;">Fuente de financiamiento</h4>
@@ -29,7 +29,7 @@
 				<label>Descripción Fuente</label>
 				<select id="selectIdFuente" name="selectIdFuente" class="form-control notValidate" required="">
 					<?php foreach($listarFuenteFinanciamiento as $item ){ ?>
-						 <option value="<?=$item->id_fuente_finan.','.$item->nombre_fuente_finan?>"><?=$item->nombre_fuente_finan?></option>
+						 <option value="<?=$item->id_fuente_finan.','.html_escape($item->nombre_fuente_finan)?>"><?=html_escape($item->nombre_fuente_finan)?></option>
 					<?php } ?>
 				</select>
 			</div>
@@ -89,11 +89,11 @@
 
 		var posicionSeparadorTemp=$('#selectIdFuente').val().indexOf(',');
 		var idFuente=$('#selectIdFuente').val().substring(0, posicionSeparadorTemp);
-		var descripcionFuente=$('#selectIdFuente').val().substring(posicionSeparadorTemp+1, $('#selectIdFuente').val().length);
+		var descripcionFuente=replaceAll(replaceAll($('#selectIdFuente').val().substring(posicionSeparadorTemp+1, $('#selectIdFuente').val().length), '<', '&lt;'), '>', '&lt;');
 
 		var htmlTemp='<tr>'+
 			'<td><input type="hidden" value='+idFuente+' name="hdIdFuente[]"> '+descripcionFuente+'</td>'+
-			'<td><input type="hidden" value='+$('#txtCorelativoMeta').val()+' name="hdCorrelativoMeta[]">'+$('#txtCorelativoMeta').val()+'</td>'+
+			'<td><input type="hidden" value='+replaceAll(replaceAll($('#txtCorelativoMeta').val(), '<', '&lt;'), '>', '&gt;')+' name="hdCorrelativoMeta[]">'+replaceAll(replaceAll($('#txtCorelativoMeta').val(), '<', '&lt;'), '>', '&gt;')+'</td>'+
 			'<td><input type="hidden" value='+$('#txtAnio').val()+' name="hdAnio[]">'+$('#txtAnio').val()+'</td>'+
 			'<td><a href="#" onclick="$(this).parent().parent().remove();" style="color: red;font-weight: bold;text-decoration: underline;">Eliminar</a></td>'+
 		'</tr>'

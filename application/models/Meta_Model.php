@@ -57,5 +57,25 @@ class Meta_Model extends CI_Model
             return false;
         }
     }
+    /*Listar Correlativo*/
+    public function listar_correlativo()
+    {
+        $listar_correlativo = $this->db->query("SELECT * FROM CORRELATIVO_META");
+        if ($listar_correlativo->num_rows() > 0) {
+            return $listar_correlativo->result();
+        } else {
+            return false;
+        }
+    }
+    /*Listar meta presupuestal*/
+    public function listar_meta_presupuestal()
+    {
+        $listar_meta_presupuestal = $this->db->query("SELECT * FROM META_PRESUPUESTAL");
+        if ($listar_meta_presupuestal->num_rows() > 0) {
+            return $listar_meta_presupuestal->result();
+        } else {
+            return false;
+        }
+    }
 
 }

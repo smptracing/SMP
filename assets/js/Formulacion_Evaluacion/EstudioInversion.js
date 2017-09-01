@@ -1,13 +1,13 @@
 $(document).on("ready" ,function(){
   var listarpicombo=function(valor){
-                     htmlPip="";
+                     var htmlPip="";
                     $("#listaFuncionC").html(htmlPip);
                     event.preventDefault();
                     $.ajax({
                         "url":base_url +"index.php/Estudio_Inversion/get_listaproyectos",
                         type:"POST",
                         success:function(respuesta1){
-                       //    alert(respuesta);
+                           //alert(respuesta1);
                          var registrospi = eval(respuesta1);
                             for (var i = 0; i <registrospi.length;i++) {
                               htmlPip +="<option value="+registrospi[i]["id_pi"]+"> "+ registrospi[i]["codigo_unico_pi"]+":"+registrospi[i]["nombre_pi"]+" </option>";
@@ -106,7 +106,7 @@ var listarestudiocombo=function(valor){
                             $("#lista_unid_form").html(htmlUF);
                             $("#lista_unid_form").html(htmlUF);
                             $('select[name=lista_unid_form]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
-                            $('select[name=lista_unid_form]').change();
+                            $('select[name=lista_unid_form]').change();//borrado
                             $('.selectpicker').selectpicker('refresh');
                         }
                     });
@@ -130,8 +130,8 @@ var listarestudiocombo=function(valor){
               /* $("#listaTipoInversion").change(function(){//para cargar en agregar division funcionañ
                   listarnivelcombo();
              });*/
-              $("#listaNivelEstudio").change(function(){//para cargar en agregar division funcionañ
               //listarufcombo();
+              $("#listaNivelEstudio").change(function(){//para cargar en agregar division funcionañ
              });
 
              $("#lista_unid_form").change(function(){
@@ -142,6 +142,59 @@ var listarestudiocombo=function(valor){
                 // alert("hola");
                  listarpersonascombo();
              });
+              $('#listaFuncionC').on('change', function()
+               {
+                   var id_Pi =$("#listaFuncionC").val();
+                   if(id_Pi==null)
+                   {
+                   }else
+                   {
+                       $.ajax({ 
+                            type:"POST",
+                           "url":base_url+"index.php/Estudio_Inversion/get_listaproyectosCargar",
+                            data:{"id_Pi":id_Pi},
+                            dataType:"JSON",
+                            success:function(resp){
+                              $.each(resp,function(index,element)
+                              {
+                                   
+                               
+
+                                   $("#txtnombres").val(element.nombre_pi);
+                                   $("#txtCodigoUnico").val(element.codigo_unico_pi);
+                                   
+                                   var monto_Inversion=0;
+                                   $("listaTipoInversion").val(element.nombre_tipo_inversion);
+
+                                   $('select[name=listaTipoInversion]').val(element.id_tipo_inversion);
+                                   $('select[name=listaTipoInversion]').change();
+                                   $('.selectpicker').selectpicker('refresh'); 
+
+                                    $('select[name=lista_unid_form]').val(element.id_uf);
+                                   $('select[name=lista_unid_form]').change();
+                                   $('.selectpicker').selectpicker('refresh'); 
+
+                                   $('select[name=lista_unid_ejec]').val(element.id_ue);
+                                   $('select[name=lista_unid_ejec]').change();
+                                   $('.selectpicker').selectpicker('refresh'); 
+
+                                   $("#txtMontoInversion").val(element.costo_pi);
+                                   if(element.pim_acumulado==0)
+                                   {
+                                    $("#txtcostoestudio").val(element.pia_meta_pres);
+                                   }
+                                  else
+                                   {
+                                     $("#txtcostoestudio").val(element.pim_acumulado);
+                                   } 
+                                   
+                             });
+                           // $("#txtCodigoUnico").va(resp);
+                        }
+                    });
+                   }    
+              });
+
 //REGISTARAR NUEVA
    $("#form-AddEstudioInversion").submit(function(event)
                   {
@@ -324,12 +377,13 @@ var listarestudiocombo=function(valor){
                   "dataSrc":""
                                     },
                                 "columns":[
-                                      {"defaultContent":"<td>#</td>"},
+                                      {"data":"codigo_unico_est_inv" ,"visible": true},
                                       {"data":"id_est_inv" ,"visible": false},
                                       { "data": function (data, type, dataToSet) {
                                          return "<strong>"+data.nombre_est_inv + "</strong><br/><i class='fa fa-calendar'>  " + data.fecha+"</i>";
                                        }},
-                                    {"data":"nombres"},
+                                      {"data":"nombre_funcion"},
+                                      {"data":"nombres"},
                                       {"data":"avance_fisico",
                                       "mRender":function (data,type, full) {
                                          return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Complete</small></td>";
@@ -360,7 +414,8 @@ var listarestudiocombo=function(valor){
                                      
                                       }
                                    }},
-                                  {"defaultContent":"<center><button type='button' title='Subir Resolución' class='DocumentosEstudio btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaDocumentosEstudio'><i class='glyphicon glyphicon-folder-open' aria-hidden='true'></i></button><button title='Asignar Respondable' class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#ventanaasiganarpersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button><button title='Nueva Etapa Estudio' class='nuevaEtapaEstudio btn btn-warning btn-xs' data-toggle='modal' data-target='#ventanaEtapaEstudio'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button' title='Ver Etapas Estudio' class='ver_etapas_estudio btn btn-success btn-xs' data-toggle='modal' data-target='#ventana_ver_etapas_estudio'><i class='fa fa-paw' aria-hidden='true'></i></button><button title='Presupuesto' class='btn btn-success btn-xs' onclick='paginaAjaxDialogo(null, \"Registro de presupuesto para formulación y evaluación\", null, base_url+\"index.php/FE_Presupuesto_Inv/insertar\", \"POST\", null, null, false, true);'><i class='fa fa-usd' aria-hidden='true'></i></button></center>"}
+                                  {"defaultContent":" <div class='dropdown'>  <a class='btn btn-link dropdown-toggle' type='button' data-toggle='dropdown'> <span class='glyphicon glyphicon-option-vertical' aria-hidden='true'></span></a> <ul class='dropdown-menu'>  <li><button type='button' title='Subir Resolución' class='DocumentosEstudio btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaDocumentosEstudio'><i class='glyphicon glyphicon-folder-open' aria-hidden='true'></i></button> </li> <li> <button title='Asignar Respondable' class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#ventanaasiganarpersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button></li> <li><button title='Nueva Etapa Estudio' class='nuevaEtapaEstudio btn btn-warning btn-xs' data-toggle='modal' data-target='#ventanaEtapaEstudio'><i class='fa fa-flag' aria-hidden='true'></i></button> </li> <li> <button type='button' title='Ver Etapas Estudio' class='ver_etapas_estudio btn btn-success btn-xs' data-toggle='modal' data-target='#ventana_ver_etapas_estudio'><i class='fa fa-paw' aria-hidden='true'></i></button></li> </ul> </div>"}
+
                                ],
                                 "language":idioma_espanol
                     });
@@ -430,6 +485,16 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
                         var txtIdEtapaEstudio_v=$('#txtIdEtapaEstudio_v').val(data.id_est_inv);
                          listarEtapaEstudio(id_est_inv);
                   });
+                }
+                 var  listarpersonasdata=function(tbody,myTableUA){
+                    $(tbody).on("click","button.AsignarPersona",function(){
+                      var data=myTableUA.row( $(this).parents("tr")).data();
+                      var id_persona=data.id_persona;
+                       console.log(id_persona);
+                        var id_est_inv=$('#id_est_inv').val(data.id_est_inv);
+                       listarpersonascombo(id_persona);
+
+                    });
                 }
                 var  listarDocumentos=function(id_est_inv)
                 {
@@ -503,7 +568,6 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
                         "url":base_url +"index.php/Estudio_Inversion/get_persona",
                         type:"POST",
                         success:function(respuesta3){
-                         //  alert(respuesta);
                          var registros = eval(respuesta3);
                             for (var i = 0; i <registros.length;i++) {
                               html +="<option  value="+registros[i]["id_persona"]+"> "+registros[i]["nombres_apell"]+" </option>";

@@ -25,14 +25,7 @@ class Model_FEActividadEntregable extends CI_Model
         {
 
             $mensaje=$this->db->query("EXECUTE sp_Gestionar_Actividad_Entregable'".$opcion."','".$id_act."', '" . $txt_id_entregable."','".$txt_nombre_act."','".$txt_fechaActividadI."','".$txt_fechaActividadf."',".$txt_valoracionEAc.",'".$txt_AvanceEAc."','".$txt_observacio_EntreAc."','".$txt_ActividadColor."'");
-            if ($mensaje->num_rows()>0) 
-              {
-                return $mensaje->result();
-              }
-              else
-              {
-                return $mensaje->result();
-              }
+            return $mensaje->result();
 
         }
         function Update_Actividades($opcion,$tx_IdActividad,$txt_idEntregable,$txt_NombreActividadAc,$txt_fechaActividadIAc,$txt_fechaActividadfAc,$txt_valorizacionEAct,$txt_avanceEAct,$txt_observacio_EntreAct,$txt_ActividadColorAc)

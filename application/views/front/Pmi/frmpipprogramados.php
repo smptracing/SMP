@@ -14,7 +14,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                                 <div class="x_panel">
                                   <div class="x_title">
-                                    <h2><i class="fa fa-bars"></i>PROYECTOS<small></small></h2>
+                                    <h2>PROYECTOS<small></small></h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                       </li>
@@ -110,6 +110,9 @@
                                                                   <th style="width: 4%">AÑO 1</th>
                                                                   <th style="width: 4%">AÑO 2</th>
                                                                   <th style="width: 4%">AÑO 3</th>
+                                                                  <th style="width: 4%">OyM 1</th>
+                                                                  <th style="width: 4%">OyM 2</th>
+                                                                  <th style="width: 4%">OyM 3</th>
                                                                 </tr>
                                                       </thead>
                                                             </table>

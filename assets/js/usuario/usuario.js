@@ -1,7 +1,8 @@
  $(document).on("ready" ,function(){
 
-                listarUsuario();//listar entidad
-                $("#form-AddUsuario").submit(function(event)//para añadir una nueva entidad
+                listarUsuario();
+                listaPersonaCombo();
+                $("#form-AddUsuario").submit(function(event)
                   {
                       event.preventDefault();
                       $.ajax({
@@ -9,23 +10,25 @@
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
-                           //alert(resp);
                             swal("",resp, "success");
-                           $('#table-Usuarios').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
+                           $('#table-Usuarios').dataTable()._fnAjaxUpdate();
                          }
                       });
                   });  
 
+                $("#btnCerrar").on("click",function(event){ 
+                   event.prevenDefault(); 
+                   $('#form-AddUsuario').trigger("reset"); 
+            	 });
 
 			});
-
-             /* listar y lista en tabla entidadr*/ 
                 var listarUsuario=function()
                 {
                     var table=$("#table-Usuarios").DataTable({
                      "processing":true,
                      "serverSide":false,
                      destroy:true,
+                     "info":false,
                          "ajax":{
                                     "url":base_url+"index.php/Usuario/GetUsuario",
                                     "method":"POST",
@@ -43,24 +46,28 @@
 
                               
                     });
-                  //SectorDataEntidad("#table-entidad",table);  //obtener data de entidad para actualizar   
-                 // SectorDataEliminar("#table-entidad",table) ;
                 }
-              /*  var SectorDataEntidad=function(tbody,table){
-                    $(tbody).on("click","button.editar",function(){
-                        var data=table.row( $(this).parents("tr")).data();
-                        var id_sector=data.id_sector;//ojo
-                        var id_entidadM=$('#txt_IdModificarEntidar').val(data.id_entidad);
-                        var nombre_entidadM=$('#txt_NombreEntidadM').val(data.nombre_entidad);
-                        var denominacion_entidadM=$('#txt_DenominacionEntidadM').val(data.siglas_entidad);
-                      $('select[name=listaSectorModificar]').val(id_sector);
-                      $('select[name=listaSectorModificar]').change();
-
+               var listaPersonaCombo=function()
+                {
+                    html="";
+                    $("#listaPersonaC").html(html); 
+                    event.preventDefault(); 
+                    $.ajax({
+                        "url":base_url +"index.php/Personal/ListarPersonal",
+                        type:"POST",
+                        success:function(respuesta){
+                         var registros = eval(respuesta);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option value="+registros[i]["id_persona"]+"> "+ registros[i]["nombres"]+" "+registros[i]["apellido_p"]+" </option>";   
+                            };
+                            $("#comboPersona").html(html);
+                            $('select[name=comboPersona]').val(html);
+                            $('select[name=comboPersona]').change();
+                            $('.selectpicker').selectpicker('refresh'); 
+                        }
                     });
-                }*/
+                }
 
-                
-        /*Idioma de datatablet table-sector */
             var idioma_espanol=
                 {
                     "sProcessing":     "Procesando...",

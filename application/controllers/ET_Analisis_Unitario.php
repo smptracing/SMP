@@ -37,9 +37,11 @@ class ET_Analisis_Unitario extends CI_Controller
 
 			$idAnalisis=$this->Model_ET_Analisis_Unitario->ultimoId();
 
+			$partidaCompleta=$this->partidaEstaCompleta($idDetallePartida);
+
 			$this->db->trans_complete();
 
-			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Análisis unitario registrado correctamente.', 'idAnalisis' => $idAnalisis]);exit;
+			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Análisis unitario registrado correctamente.', 'idAnalisis' => $idAnalisis, 'idAnalitico' => $idAnalitico, 'partidaCompleta' => $partidaCompleta]);exit;
 		}
 
 		$idPartida=$this->input->get('idPartida');
@@ -58,7 +60,7 @@ class ET_Analisis_Unitario extends CI_Controller
 		$listaETRecurso=$this->Model_ET_Recurso->RecursoListar('R');
 		$listaETPresupuestoAnalitico=$this->Model_ET_Presupuesto_Analitico->ETPresupuestoAnaliticoPorIdET($this->input->get('idET'));
 
-		$this->load->view('Front/Ejecucion/ETAnalisisUnitario/insertar', ['etDetallePartida' => $etDetallePartida, 'listaUnidadMedida' => $listaUnidadMedida, 'listaETAnalisisUnitario' => $listaETAnalisisUnitario, 'listaETRecurso' => $listaETRecurso, 'listaETPresupuestoAnalitico' => $listaETPresupuestoAnalitico]);
+		$this->load->view('Front/Ejecucion/ETAnalisisUnitario/insertar', ['etDetallePartida' => $etDetallePartida, 'listaUnidadMedida' => $listaUnidadMedida, 'listaETAnalisisUnitario' => $listaETAnalisisUnitario, 'listaETRecurso' => $listaETRecurso, 'listaETPresupuestoAnalitico' => $listaETPresupuestoAnalitico, 'idPartida' => $idPartida]);
 	}
 
 	public function eliminar()
@@ -66,11 +68,53 @@ class ET_Analisis_Unitario extends CI_Controller
 		$this->db->trans_start();
 
 		$idAnalisis=$this->input->post('idAnalisis');
+		$idDetallePartida=$this->input->post('idDetallePartida');
 
 		$this->Model_ET_Analisis_Unitario->eliminar($idAnalisis);
 
+		$partidaCompleta=$this->partidaEstaCompleta($idDetallePartida);
+
 		$this->db->trans_complete();
 
-		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Análisis unitario eliminado correctamente.']);exit;
+		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Análisis unitario eliminado correctamente.', 'partidaCompleta' => $partidaCompleta]);exit;
+	}
+
+	public function actualizarAnalitico()
+	{
+		$idAnalisis=$this->input->post('idAnalisis');
+		$idAnalitico=$this->input->post('idAnalitico');
+		$idDetallePartida=$this->input->post('idDetallePartida');
+
+		$idAnalitico=($idAnalitico=='' || $idAnalitico==null ? 'NULL' : $idAnalitico);
+
+		$this->Model_ET_Analisis_Unitario->actualizarAnalitico($idAnalisis, $idAnalitico);
+
+		$partidaCompleta=$this->partidaEstaCompleta($idDetallePartida);
+
+		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Analítico guardado correctamente.', 'partidaCompleta' => $partidaCompleta]);exit;
+	}
+
+	private function partidaEstaCompleta($idDetallePartida)
+	{
+		$partidaCompleta=true;
+
+		$listaETAnalisisUnitario=$this->Model_ET_Analisis_Unitario->ETAnalisisUnitarioPorIdDetallePartida($idDetallePartida);
+
+		foreach($listaETAnalisisUnitario as $key => $value)
+		{
+			if($value->id_analitico==null)
+			{
+				$partidaCompleta=false;
+
+				break;
+			}
+		}
+
+		if(count($listaETAnalisisUnitario)==0)
+		{
+			$partidaCompleta=false;
+		}
+
+		return $partidaCompleta;
 	}
 }

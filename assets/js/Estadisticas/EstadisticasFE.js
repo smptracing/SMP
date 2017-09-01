@@ -1,6 +1,97 @@
 $(document).on("ready" ,function(){
+$.ajax({
+	url:base_url+"/index.php/PrincipalFyE/EstudioInvPorTipoEstudio",
+	dataType:"json",
+	type:"POST",
+	cache:false,
+	success:function(respuesta)
+	{
+		var arrayTipoEstudio=new Array();
+		$.each(respuesta,function(index,element)
+		{
+			arrayTipoEstudio[index]=element.CantidadEstudio;
+		});
 
-	$.ajax({
+
+		var dom = document.getElementById("ReporteBarras");
+		var myChart = echarts.init(dom);
+		var app = {};
+		
+		option = {
+			title : {
+				text: '',
+				subtext: ''
+			},
+			tooltip : {
+				trigger: 'axis'
+			},
+			legend: {
+				data:['Monto','Avance']
+			},
+			toolbox: {
+				show : true,
+				feature : {
+					dataView : {show: true, readOnly: false},
+					magicType : {show: true, type: ['line', 'bar']},
+					restore : {show: true},
+					saveAsImage : {show: true}
+				}
+			},
+			calculable : true,
+			xAxis : [
+			{
+				type : 'category',
+				data : ['1%','2%','3%','4%','5%','6%','7%','8%','9%','10%','11%','12%']
+			}
+			],
+			yAxis : [
+			{
+				type : 'value'
+			}
+			],
+			series : [
+			{
+				name:'Monto',
+				type:'bar',
+				data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
+				markPoint : {
+					data : [
+					{type : 'max', name: '最大值'},
+					{type : 'min', name: '最小值'}
+					]
+				},
+				markLine : {
+					data : [
+					{type : 'average', name: '平均值'}
+					]
+				}
+			},
+			{
+				name:'Avance',
+				type:'bar',
+				data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],
+				markPoint : {
+					data : [
+					{name : '年最高', value : 182.2, xAxis: 7, yAxis: 183},
+					{name : '年最低', value : 2.3, xAxis: 11, yAxis: 3}
+					]
+				},
+				markLine : {
+					data : [
+					{type : 'average', name : '平均值'}
+					]
+				}
+			}
+			]
+		};
+
+		if (option && typeof option === "object") {
+			myChart.setOption(option, true);
+		}
+
+	}
+});
+$.ajax({
 		url:base_url+"/index.php/PrincipalFyE/GetAprobadosEstudio",
 		dataType:"json",
 		type:"POST",
@@ -56,12 +147,12 @@ $(document).on("ready" ,function(){
 				}
 				]
 			};
-
-			if (option && typeof option === "object") {
+			if (option && typeof option === "object") 
+			{
 				myChart.setOption(option, true);
-			}
 		}
-	});
+	}
+});
 
 
 
@@ -158,9 +249,79 @@ $.ajax({
 });
 
 
+$.ajax({
+	url:base_url+"/index.php/PrincipalFyE/TipoGastoMontos",
+	dataType:"json",
+	type:"POST",
+	cache:false,
+	success:function(respuesta)
+	{
+		var arrayTipoEstudio=new Array();
+		$.each(respuesta,function(index,element)
+		{
+			arrayTipoEstudio[index]=element.Total;
+		});
+
+		var dom = document.getElementById("MontosTiposGasto");
+		var myChart = echarts.init(dom);
+		var app = {};
+
+		app.title = '';
+
+		option = {
+		    tooltip: {
+		        trigger: 'item',
+		        formatter: "{a} <br/>{b}: {c} ({d}%)"
+		    },
+			legend: {
+				orient: 'horizontal',
+				left: 'left',
+					data: ['Recursos Humanos','Estudios Complementarios','Materiales de oficina','Gestion Doc. Alquiler Viaticos']
+			},
+		    series: [
+		        {
+		            name:'访问来源',
+		            type:'pie',
+		            radius: ['27%', '50%'],
+		            avoidLabelOverlap: false,
+		            label: {
+		                normal: {
+		                    show: false,
+		                    position: 'center'
+		                },
+		                emphasis: {
+		                    show: true,
+		                    textStyle: {
+		                        fontSize: '15',
+		                        fontWeight: 'bold'
+		                    }
+		                }
+		            },
+		            labelLine: {
+		                normal: {
+		                    show: false
+		                }
+		            },
+		           data:[
+							{value:arrayTipoEstudio[0], name:'Recursos Humanos'},
+							{value:arrayTipoEstudio[1], name:'Estudios Complementarios'},
+							{value:arrayTipoEstudio[2], name:'Materiales de oficina'},
+							{value:arrayTipoEstudio[3], name:'Gestion Doc. Alquiler Viaticos'}
+						]
+
+		        }
+		    ]
+		};
+	
+		if (option && typeof option === "object") {
+			myChart.setOption(option, true);
+		}
+
+	}
+});
 
 
-
+/*
 
 $.ajax({
 	url:base_url+"/index.php/PrincipalFyE/TipoGastoMontos",
@@ -254,7 +415,7 @@ $.ajax({
 		}
 
 	}
-});
+});*/
 
 //Fin estadistica en forma de circulo
 
@@ -410,12 +571,12 @@ $.ajax({
 	success:function(respuesta)
 	{
 		var arrayAvanceCostoInv=new Array();
-		$.each(respuesta,function(index,element)
+		$.each(respuesta,function(index,element)  
 		{
-			arrayAvanceCostoInv[index]=element.nombre_est_inv;
+			arrayAvanceCostoInv[index]=element.avance_fisico+','+element.costo_estudio;
 		});
-
-		var dom = document.getElementById("echart_scatter");
+		console.log(arrayAvanceCostoInv[0]);
+		var dom = document.getElementById("Avance");
 		var myChart = echarts.init(dom);
 		var app = {};
 				option = null;
@@ -431,18 +592,18 @@ $.ajax({
 		        containLabel: true
 		    },
 		    tooltip : {
-		        // trigger: 'axis',
+		        trigger: 'axis',
 		        showDelay : 0,
 		        formatter : function (params) {
 		            if (params.value.length > 1) {
 		                return params.seriesName + ' :<br/>'
-		                + params.value[0] + 'cm'
-		                + params.value[1] + 'kg ';
+		                + params.value[0] + '%'
+		                + params.value[1] + 'S/. ';
 		            }
 		            else {
 		                return params.seriesName + ' :<br/>'
 		                + params.name + ' : '
-		                + params.value + 'kg ';
+		                + params.value + ' S/. ';
 		            }
 		        },
 		        axisPointer:{
@@ -465,7 +626,7 @@ $.ajax({
 		    brush: {
 		    },
 		    legend: {
-		        data: ['女性','男性'],
+		        data: ['AVANCE FÍSICO  COSTO ESTUDIO','COSTO ESTUDIO'],
 		        left: 'center'
 		    },
 		    xAxis : [
@@ -473,7 +634,7 @@ $.ajax({
 		            type : 'value',
 		            scale:true,
 		            axisLabel : {
-		                formatter: '{value} cm'
+		                formatter: '% {value}'
 		            },
 		            splitLine: {
 		                show: false
@@ -485,7 +646,7 @@ $.ajax({
 		            type : 'value',
 		            scale:true,
 		            axisLabel : {
-		                formatter: '{value} kg'
+		                formatter: 'S/ . {value}'
 		            },
 		            splitLine: {
 		                show: false
@@ -494,10 +655,9 @@ $.ajax({
 		    ],
 		    series : [
 		        {
-		            name:'女性',
+		            name:'AVANCE FÍSICO  COSTO ESTUDIO',
 		            type:'scatter',
-		            data: [[157.0, 63.0], [155.8, 53.6]    
-		            ],
+		            data: [[arrayAvanceCostoInv[4]]],
 		            markArea: {
 		                silent: true,
 		                itemStyle: {
@@ -508,7 +668,7 @@ $.ajax({
 		                    }
 		                },
 		                data: [[{
-		                    name: '女性分布区间',
+		                    name: 'AVANCE FÍSICO  COSTO ESTUDIO',
 		                    xAxis: 'min',
 		                    yAxis: 'min'
 		                }, {
@@ -518,8 +678,8 @@ $.ajax({
 		            },
 		            markPoint : {
 		                data : [
-		                    {type : 'max', name: '最大值'},
-		                    {type : 'min', name: '最小值'}
+		                    {type : 'max', name: 'AVANCE FÍSICO  COSTO ESTUDIO'},
+		                    {type : 'min', name: 'AVANCE FÍSICO'}
 		                ]
 		            },
 		            markLine : {
@@ -529,92 +689,8 @@ $.ajax({
 		                    }
 		                },
 		                data : [
-		                    {type : 'average', name: '平均值'},
+		                    {type : 'average', name: 'AVANCE FÍSICO'},
 		                    { xAxis: 160 }
-		                ]
-		            }
-		        },
-		        {
-		            name:'男性',
-		            type:'scatter',
-
-		            data: [[174.0, 65.6], [175.3, 71.8]
-		            ],
-		            markArea: {
-		                silent: true,
-		                itemStyle: {
-		                    normal: {
-		                        color: 'transparent',
-		                        borderWidth: 1,
-		                        borderType: 'dashed'
-		                    }
-		                },
-		                data: [[{
-		                    name: '男性分布区间',
-		                    xAxis: 'min',
-		                    yAxis: 'min'
-		                }, {
-		                    xAxis: 'max',
-		                    yAxis: 'max'
-		                }]]
-		            },
-		            markPoint : {
-		                data : [
-		                    {type : 'max', name: '最大值'},
-		                    {type : 'min', name: '最小值'}
-		                ]
-		            },
-		            markLine : {
-		                lineStyle: {
-		                    normal: {
-		                        type: 'solid'
-		                    }
-		                },
-		                data : [
-		                    {type : 'average', name: '平均值'},
-		                    { xAxis: 170 }
-		                ]
-		            }
-		        },
-		        {
-		            name:'男性',
-		            type:'scatter',
-
-		            data: [[67.0, 60.6], [165.3, 71.3]
-		            ],
-		            markArea: {
-		                silent: true,
-		                itemStyle: {
-		                    normal: {
-		                        color: 'blue',
-		                        borderWidth: 1,
-		                        borderType: 'dashed'
-		                    }
-		                },
-		                data: [[{
-		                    name: '男性分布区间',
-		                    xAxis: 'min',
-		                    yAxis: 'min'
-		                }, {
-		                    xAxis: 'max',
-		                    yAxis: 'max'
-		                }]]
-		            },
-		            markPoint : {
-		                data : [
-		                    {type : 'max', name: '最大值'},
-		                    {type : 'min', name: '最小值'}
-		                ]
-		            },
-		            markLine : {
-		                lineStyle: {
-		                    normal: {
-		                        type: 'solid'
-		                    }
-		                },
-		                data : [
-		                    {type : 'average', name: '平均值'},
-		                    { xAxis: 130 }
 		                ]
 		            }
 		        }

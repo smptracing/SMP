@@ -13,6 +13,13 @@ class Model_ET_Clasificador extends CI_Model
 		$ETClasificador=$this->db->query("execute sp_Gestionar_ET_Clasificador @Opcion='".$opcion."'");
 	    return $ETClasificador->result();
 	}
+	function ETListaClasificador($valueSearch)
+	{	
+		$opcion='BUSCARCLASIFICADOR1';
+		$data=$this->db->query("execute sp_Gestionar_ET_Clasificador @Opcion='".$opcion."',@buscar='".$valueSearch."' ");
+
+		return $data->result();
+	}
 
 	function insertar($opcion,$txtNumeroClasi,$txtDescripcionClasi,$txtDetalleClasi)
 	{
@@ -52,6 +59,12 @@ class Model_ET_Clasificador extends CI_Model
 	function VerificarClasificadorAsociado($id_clasificador)
 	{
 		$ETClasificador=$this->db->query("select id_clasificador from ET_PRESUPUESTO_ANALITICO where id_clasificador='".$id_clasificador."' ");
+
+		return $ETClasificador->result();
+	}
+	function ValidarNodosClasificador($idClasificador)
+	{
+		$ETClasificador=$this->db->query("select* from ET_CLASIFICADOR where id_clasificador='".$idClasificador."' and (LEN(num_clasificador)=12 or LEN(num_clasificador)=11); ");
 
 		return $ETClasificador->result();
 	}

@@ -6,6 +6,7 @@ class Usuario extends CI_Controller {
 public function __construct(){
 		parent::__construct();
 		$this->load->model('Model_Usuario');
+		$this->load->model('Model_Personal');
 		
 	}
 	function GetUsuario(){
@@ -21,7 +22,7 @@ public function __construct(){
 	 {
 	    if ($this->input->is_ajax_request()) 
 	    {
-	      $id_persona=15;
+	      $id_persona=$this->input->post("comboPersona");
 	      $txt_usuario =$this->input->post("txt_usuario");
 	      $cbb_TipoUsuario =$this->input->post("cbb_TipoUsuario");
 	      $activo =1;
@@ -33,8 +34,9 @@ public function __construct(){
 		  $usr_mod ="";
 		  $usr_elim ="";
 		  $fl_elim ="";
-	    
-	     if($this->Model_Usuario->AddUsuario($id_persona,$txt_usuario,$cbb_TipoUsuario,$activo,$txt_contrasenia,$fech_reg,$fech_mod,$fech_elim,$usr_reg,$usr_mod,$usr_elim,$fl_elim) == true)
+		  $tipoUsuario ="1";
+	     
+	     if($this->Model_Usuario->AddUsuario($id_persona,$txt_usuario,$cbb_TipoUsuario,$activo,$txt_contrasenia,$fech_reg,$fech_mod,$fech_elim,$usr_reg,$usr_mod,$usr_elim,$fl_elim,$tipoUsuario) == true)
 		       echo "Se añadio un nuevo usuario";
 		      else
 		      echo "Se añadio  un nuevo usuario";  

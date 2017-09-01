@@ -14,7 +14,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                                 <div class="x_panel">
                                   <div class="x_title">
-                                    <h2><i class="fa fa-bars"></i>PROYECTOS<small></small></h2>
+                                    <h2>PROYECTOS<small></small></h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                       </li>
@@ -56,7 +56,7 @@
                                                       <tr>
                                                                   <th style="width: 1%">Id</th>
                                                                   <th style="width: 5%">Cód único</th>
-                                                                  <th style="width: 5%">Naturaleza Inversión</th>
+                                                                  <th style="width: 5%">Tipo NO PIP</th>
                                                                   <th style="width: 30%">Inversión</th>
                                                                   <th style="width: 4%">Prioridad</th>
                                                                   <th style="width: 4%">Brecha</th>

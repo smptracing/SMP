@@ -6,7 +6,6 @@ class Model_FEentregableEstudio extends CI_Model
           {
               parent::__construct();
             // $this->db->free_db_resource();
-
           }
       /*añadir funcion*/
         function get_Entregables($txt_id_etapa_estudio)
@@ -21,7 +20,6 @@ class Model_FEentregableEstudio extends CI_Model
              {
               return false;
              }
-
         }
 
         function  get_entregableId($id_entregable){//traer el id de Estudio
@@ -79,6 +77,16 @@ class Model_FEentregableEstudio extends CI_Model
         {
 
             $mensaje=$this->db->query("EXECUTE sp_Gestionar_Entregable_Estudio'".$opcion."','".$id_entregable."','". $txt_denominacion_entre."','".$id_etapa_estudio."','".$txt_nombre_entre."','".$txt_valoracion_entre."',".$txt_avance_entre.",'".$txt_observacio_entre."','".$txt_levantamintoO_entre."'");
+            return true;
+
+        }
+        function editar_Entregable($id_entregable,$Editxt_nombre_entre,$Editxt_denoMultiple,$Editxt_valoracion_entre)
+        {
+
+            $mensaje=$this->db->query("update ENTREGABLE_ESTUDIO SET id_denom_fe ='".$Editxt_denoMultiple."',
+                                        nombre_entregable='".$Editxt_nombre_entre."',
+                                        valoracion='".$Editxt_valoracion_entre."'
+                                        WHERE id_entregable ='$id_entregable'");
             return true;
 
         }

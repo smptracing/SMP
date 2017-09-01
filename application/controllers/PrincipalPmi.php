@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class PrincipalPmi extends CI_Controller
 {
@@ -13,8 +13,30 @@ class PrincipalPmi extends CI_Controller
     {
         $this->_load_layout('pmi');
     }
+    //Listar prioridad
+    public function get_cantidad_costo_tipo_pi()
+    {
+        if ($this->input->is_ajax_request()) {
+            $Opcion = "cantidad_costo_tipo_pi";
+            $anio   = $this->input->post("anio");
+            $data   = $this->Model_DashboardPmi->get_cantidad_costo_tipo_pi($Opcion, $anio);
+            echo json_encode($data);
+            // echo json_encode(array('data' => $data));
+        } else {
+            show_404();
+        }
+    }
 
-    function EstadisticaPipProvinc()
+    public function MontoProgramado()
+    {
+        if ($this->input->is_ajax_request()) {
+            $datos = $this->Model_DashboardPmi->MontoProgramado();
+            echo json_encode($datos);
+        } else {
+            show_404();
+        }
+    }
+    public function EstadisticaPipProvinc()
     {
         if ($this->input->is_ajax_request()) {
             $datos = $this->Model_DashboardPmi->EstadisticaPipProvinc();
@@ -24,7 +46,7 @@ class PrincipalPmi extends CI_Controller
         }
     }
 
-    function EstadisticaMontoPipProvincias()
+    public function EstadisticaMontoPipProvincias()
     {
         if ($this->input->is_ajax_request()) {
             $datos = $this->Model_DashboardPmi->EstadisticaMontoPipProvincias();
@@ -39,8 +61,10 @@ class PrincipalPmi extends CI_Controller
         if ($this->input->is_ajax_request()) {
             $datos = $this->Model_DashboardPmi->EstadisticaPipEstadoCiclo();
             echo json_encode($datos);
-        } else
+        } else {
             show_404();
+        }
+
     }
 
     public function GetDatosUbicacion()
@@ -48,11 +72,13 @@ class PrincipalPmi extends CI_Controller
         if ($this->input->is_ajax_request()) {
             $datos = $this->Model_DashboardPmi->GetDatosUbicacion();
             echo json_encode($datos);
-        } else
+        } else {
             show_404();
+        }
+
     }
 
-    function _load_layout($template)
+    public function _load_layout($template)
     {
         $this->load->view('layout/PMI/header');
         $this->load->view($template);

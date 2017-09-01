@@ -195,31 +195,35 @@
 						</div>
 					</div>
 					<div class="row">
-					 	<div class="col-md-4 col-sm-3 col-xs-12">
-                            <label class="control-label">Subir Resolución</label>
-                            <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input type="file" id="Documento_Resolucion" name="Documento_Resolucion" value="<?= $ExpedienteTecnicoM->url_doc_aprobacion_et?>">
+					 	<div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="col-md-3 col-sm-3 col-xs-12" style="position: left">
+                           	 	<label class="control-label">Subir Resolución:</label>
+                           	 	<input type="hidden" name="Editurl" id="Editurl" value="<?= $ExpedienteTecnicoM->url_doc_aprobacion_et?>">
+                            	<input type="file" id="Documento_Resolucion" name="Documento_Resolucion">
+                            </div>
+                             <div class="col-md-5 col-sm-5 col-xs-12">
+                            	<label style="font-size: 11px;margin-top: 24px;color: red;margin-left: 20px;"> En caso de subir otra resolución remplazara a la anterior</label>
                             </div>
                         </div>
 					</div>
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<label class="control-label">Sustento para la presentacion del proyecto</label></br>
-							<input type="hidden" id="hdtxtSituacioActual" value="<?=$ExpedienteTecnicoM->desc_situacion_actual_et?>" type="hidden">
+							<input type="hidden" id="hdtxtSituacioActual" value="<?= htmlspecialchars($ExpedienteTecnicoM->desc_situacion_actual_et)?>" type="hidden">
 							<p><textarea name="txtSituacioActual" id="txtSituacioActual" rows="10" cols="80"></textarea></p>
 						</div>	
 					</div>
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<label class="control-label">Relevancia Economica</label></br>
-							<input type="hidden" id="hdtxtSituacionDeseada" value="<?=$ExpedienteTecnicoM->relevancia_economica_et?>">
+							<input type="hidden" id="hdtxtSituacionDeseada" value="<?= htmlspecialchars($ExpedienteTecnicoM->relevancia_economica_et)?>">
 							<p><textarea name="txtSituacioDeseada" id="txtSituacioDeseada" rows="10" cols="80"></textarea></p>
 						</div>	
 					</div>
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<label class="control-label">Resumen del proyecto (Descripción)</label></br>
-							<input type="hidden" id="hdtxtContribucioInterv" value="<?=$ExpedienteTecnicoM->resumen_pi_et?>" type="hidden">
+							<input type="hidden" id="hdtxtContribucioInterv" value="<?=htmlspecialchars($ExpedienteTecnicoM->resumen_pi_et)?>" type="hidden">
 							<p><textarea name="txtContribucioInterv" id="txtContribucioInterv" rows="10" cols="80"></textarea></p>
 						</div>	
 					</div>			
@@ -241,20 +245,16 @@
 						</div>	
 					</div>	
 					<div class="row">
-						<div  id="divfotos" style="color: width" class="col-md-3 col-sm-3 col-xs-12">
-							
-							<table id="table-img" style="text-align: center;" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
-								<thead>
-								</thead>
-								<?php foreach($listaimg as $item){ ?>
-								  	<tr>
-										<td>
-											<img class="img-thumbnail .img-responsive" src="<?= base_url();?>uploads/ImageExpediente/<?= $item->desc_img?>">
-										</td>
-										<td><button onclick="EliminarImagen(<?=$item->id_img?>,<?=$item->id_et?>);"  title='Eliminar imagen del Expediente Técnico'  class='eliminarExpediente btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button></td>
-								  	</tr>
-								<?php } ?>
-							</table>
+						<div id="divfotos">
+							<?php $i=0; foreach($listaimg as $item){ ?>
+								<div id="divShowImage<?=$item->id_img?>" style="display: inline-block;margin: 4px;vertical-align: top;width: 200px;">
+								  	<div>
+								  		<label>Fotografía N° <?= $i=$i+1?></label>
+										<button onclick="EliminarImagen(<?=$item->id_img?>,<?=$item->id_et?>);"  title='Eliminar imagen del Expediente Técnico'  class='eliminarExpediente btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button>
+								  	</div>
+								  	<img class="img-thumbnail .img-responsive" src="<?= base_url();?>uploads/ImageExpediente/<?= $item->desc_img?>">
+								</div>
+							<?php } ?>
 						</div>
 					</div>		
 				</div>
@@ -289,6 +289,323 @@ $(function()
 	CKEDITOR.instances.txtSituacioDeseada.setData(html1);
 	var html2=$("#hdtxtContribucioInterv").val();
 	CKEDITOR.instances.txtContribucioInterv.setData(html2);
+
+	$('#form-EditarExpedienteTecnico').formValidation(
+	{
+		framework: 'bootstrap',
+		excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+		live: 'enabled',
+		message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+		trigger: null,
+		fields:
+		{
+			txtNombreUe:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Nombre Unidad Ejecutora." es requerido.</b>'
+					}
+				}
+			},
+			txtDireccionUE:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Dirección de unidad ejecutora" es requerido.</b>'
+					}
+				}
+			},
+			txtUbicacionUE:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Ubicacion unidad ejecutora" es requerido.</b>'
+					}
+				}
+			},
+			txtTelefonoUE:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Telefono unidad ejecutora" es requerido.</b>'
+					}
+				}
+			},
+			txtRucUE:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Ruc" es requerido.</b>'
+					}
+				}
+			},
+			txtRucUE:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Ruc" es requerido.</b>'
+					}
+				}
+			},
+			txtNombrePip:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Nombre del PIP" es requerido.</b>'
+					}
+				}
+			},
+			txtCodigoUnico:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Codigo" es requerido.</b>'
+					}
+				}
+			},
+			txtCostoTotalPreInversion:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Costo Total PreInversion" es requerido.</b>'
+					},
+					regexp:
+					{
+						regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
+						message: '<b style="color: red;">El campo "Costo total pre Inversion " debe ser un valor en soles.</b>'
+					} 
+				}
+			},
+			txtCostoDirectoPre:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Costo Directo PreInversion" es requerido.</b>'
+					},
+					regexp:
+					{
+						regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
+						message: '<b style="color: red;">El campo "Costo Directo pre Inversion " debe ser un valor en soles.</b>'
+					}  
+				}
+			},
+			txtCostoIndirectoPre:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Costo Indirecto PreInversion" es requerido.</b>'
+					},
+					regexp:
+					{
+						regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
+						message: '<b style="color: red;">El campo "Costo Indirecto Pre Inversion " debe ser un valor en soles.</b>'
+					}   
+				}
+			},	
+			txtCostoTotalInversion:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Costo Total Inversion" es requerido.</b>'
+					},
+					regexp:
+					{
+						regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
+						message: '<b style="color: red;">El campo "Costo Total de Inversion " debe ser un valor en soles.</b>'
+					}  
+				}
+			},
+			txtCostoDirectoInversion:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Costo Directo de inversion" es requerido.</b>'
+					},
+					regexp:
+					{
+						regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
+						message: '<b style="color: red;">El campo "Costo Directo de inversion" debe ser un valor en soles.</b>'
+					}  
+				}
+			},
+			txtGastosGenerales:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Gastos Generales" es requerido.</b>'
+					},
+					regexp:
+					{
+						regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
+						message: '<b style="color: red;">El campo "Gastos Generales" debe ser un valor en soles.</b>'
+					}  
+				}
+			},
+			txtGastosSupervision:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Gastos supervisión" es requerido.</b>'
+					},
+					regexp:
+					{
+						regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
+						message: '<b style="color: red;">El campo "Gastos Supervision" debe ser un valor en soles.</b>'
+					}  
+				}
+			},
+			txtFuncionProgramatica:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Funcion Programatica" es requerido.</b>'
+					} 
+				}
+			},
+			txtFuncion:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Funcion" es requerido.</b>'
+					} 
+				}
+			},	
+			txtPrograma:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Programa" es requerido.</b>'
+					} 
+				}
+			},
+			txtSubPrograma:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Sub Programa" es requerido.</b>'
+					} 
+				}
+			},
+			txtProyecto:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Proyecto" es requerido.</b>'
+					} 
+				}
+			},	
+			txtComponente:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Componente" es requerido.</b>'
+					} 
+				}
+			},	
+			txtMeta:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Meta" es requerido.</b>'
+					} 
+				}
+			},	
+			txtFuenteFinanciamiento:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Fuente Financiamiento" es requerido.</b>'
+					} 
+				}
+			},
+			txtModalidadEjecucion:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Modalidad Ejecucion" es requerido.</b>'
+					} 
+				}
+			},	
+			txtTiempoEjecucionPip:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Tiempo Ejecucion" es requerido.</b>'
+					} 
+				}
+			},
+			txtNumBeneficiarios:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Tiempo Ejecucion" es requerido.</b>'
+					} 
+				}
+			},
+			txtNumFolio:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Numero de Folio" es requerido.</b>'
+					} 
+				}
+			}					
+		}
+	});
 });
 
 	function EliminarImagen(id_img,id_et)
@@ -311,50 +628,26 @@ $(function()
                         data:{id_img:id_img,id_et:id_et},
                         dataType:'JSON',
                         success:function(respuesta)
-                        {
-                        	var html;
+                        {                        	
                         	swal("ELIMINADO!", "Se elimino correctamente la imagen del expediente técnico.", "success");
-                        	$("#table-img").html('');
-                        	html +='<thead></thead>';
-                        	$.each(respuesta,function(index,element)
-                        	{
-                        		html +='<tr>';
-                        		html +='<td> <img class="img-thumbnail .img-responsive" src="<?= base_url();?>uploads/ImageExpediente/'+element.desc_img+'"></td>';
-                        		html +='<td> <button onclick="EliminarImagen('+element.id_img+','+element.id_et+');"  title="Eliminar imagen del Expediente Técnico"  class="eliminarExpediente btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button></td>';
-                        		html +='</tr>';
-                        	});
-							$("#divfotos >#table-img").append(html);
+                        	
+                        	$('#divShowImage'+id_img).remove();
                         }
                     });
 			});
 	}
+	 $('#btnEnviarFormulario').on('click', function(event)
+	   	{
+            var resolucion=$("#Documento_Resolucion").val(); 
+            var url=getFileExtension(resolucion);
+            $("#Editurl").val(url);
+        });
 
-
-
-   /* function EliminarImagen(id_img, element)
+	function getFileExtension(filename)
 	{
-		alert(id_img,element);
-		if(!confirm('Se eliminara la imagen. ¿Realmente desea proseguir con la operación?'))
-		{
-			return;
-			alert(id_img,element);
-		}
-		paginaAjaxJSON({ "id_et" : id_et }, base_url+'index.php/ET_Img/eliminar', 'POST', null, function(objectJSON)
-		{
-			alert(objectJSON);
-			objectJSON=JSON.parse(objectJSON);
 
-			swal(
-			{
-				title: '',
-				text: objectJSON.mensaje,
-				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
-			},
-			function(){});
-
-			$(element).parent().remove();
-		}, false, true);
-	}*/
+		return filename.slice((filename.lastIndexOf(".") - 1 >>> 0) + 2);
+	}
 
 </script>
 

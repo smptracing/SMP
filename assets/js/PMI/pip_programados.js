@@ -18,8 +18,7 @@ $(document).on("ready" ,function(){
                          "ajax":{
                                     url:base_url+"index.php/PipProgramados/GetPipProgramadosFormulacionEvaluacion",
                                      type:"POST",
-                                     data :{anio:anio}  
-                                                                   
+                                     data :{anio:anio}                             
                                   },
                                 "columns":[ 
                                 {"defaultContent":"<td>#</td>", "visible" : false },
@@ -39,12 +38,19 @@ $(document).on("ready" ,function(){
  var lista_programados_ejecucion=function(anio)
 {
   var str1 = "Inv_";
+  var str2= "OyM_";
   var anio_1= parseInt(anio) +1; 
   var anio_2= parseInt(anio) +2; 
   var anio_3= parseInt(anio) +3; 
+
   var anioR1 = str1.concat(anio_1);
   var anioR2 = str1.concat(anio_2);
   var anioR3 = str1.concat(anio_3);
+
+  var anioOyM1 = str2.concat(anio_1);
+  var anioOyM2 = str2.concat(anio_2);
+  var anioOyM3 = str2.concat(anio_3);
+ // alert(anioOyM1);
        var table=$("#table_ejecucion").DataTable({
                      "processing": true,
                       "serverSide":false,
@@ -64,7 +70,10 @@ $(document).on("ready" ,function(){
                                 { "data" : "nombre_brecha" },
                                 { "data" : anioR1 },
                                 { "data" : anioR2 },
-                                { "data" : anioR3 }
+                                { "data" : anioR3 },
+                                { "data" : anioOyM1 },
+                                { "data" : anioOyM2 },
+                                { "data" : anioOyM3 }
     ]
   });
 }

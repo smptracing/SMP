@@ -48,12 +48,17 @@ class programar_nopip extends CI_Controller
         if ($this->input->is_ajax_request()) {
             $flat                       = "C";
             $id_meta_pi                 = "0";
-            $cbx_Meta                   = $this->input->post("cbx_Meta");
+            $txt_anio_meta              = $this->input->post("txt_anio_meta");
+            $cbx_meta_presupuestal      = $this->input->post("cbx_meta_presupuestal");
             $txt_id_pip_programacion_mp = $this->input->post("txt_id_pip_programacion_mp");
+            $cbx_Meta                   = $this->input->post("cbx_Meta");
             $txt_pia                    = $this->input->post("txt_pia");
             $txt_pim                    = $this->input->post("txt_pim");
+            $txt_certificado            = $this->input->post("txt_certificado");
+            $txt_compromiso             = $this->input->post("txt_compromiso");
             $txt_devengado              = $this->input->post("txt_devengado");
-            if ($this->programar_nopip_modal->AddMeta_PI($flat, $id_meta_pi, $cbx_Meta, $txt_id_pip_programacion_mp, $txt_pia, $txt_pim, $txt_devengado) == false) {
+            $txt_girado                 = $this->input->post("txt_girado");
+            if ($this->programar_nopip_modal->AddMeta_PI($flat, $id_meta_pi, $txt_anio_meta, $cbx_meta_presupuestal, $txt_id_pip_programacion_mp, $cbx_Meta, $txt_pia, $txt_pim, $txt_certificado, $txt_compromiso, $txt_devengado, $txt_girado) == false) {
                 echo "1";
             } else {
                 echo "2";
@@ -83,6 +88,37 @@ class programar_nopip extends CI_Controller
             $id_pi = $this->input->post("id_pi");
             $data  = $this->programar_nopip_modal->listar_metas_pi($flat, $id_pi);
             echo json_encode(array('data' => $data));
+        } else {
+            show_404();
+        }
+    }
+    public function EliminarMetaPI()
+    {
+        if ($this->input->is_ajax_request()) {
+            $flat       = "D";
+            $id_meta_pi = $this->input->post("id_meta_pi");
+            if ($this->programar_nopip_modal->EliminarMetaPI($flat, $id_meta_pi) == false) {
+                echo "Se elimino la entidad";
+            } else {
+                echo "Se elimino entidad";
+            }
+
+        } else {
+            show_404();
+        }
+    }
+    public function EliminarProgramacion()
+    {
+        if ($this->input->is_ajax_request()) {
+            $flat       = "D";
+            $id_pi      = $this->input->post("id_pi");
+            $id_cartera = $this->input->post("id_cartera");
+            if ($this->programar_nopip_modal->EliminarProgramacion($flat, $id_pi, $id_cartera) == false) {
+                echo "Se elimino ";
+            } else {
+                echo "No Se elimino";
+            }
+
         } else {
             show_404();
         }

@@ -4,8 +4,8 @@
 		<div class="">
 			<div class="col-md-12 col-xs-12">
 				<div class="x_panel">
-					<div class="x_title">
-						<h2><i class="fa fa-bars"></i>Presupuesto del  Proyecto Inversión: <?=strtoupper($nombreProyectoInv->nombre_est_inv)?></h2>
+					<div class="x_title" style="color: black; ">
+						&nbsp;&nbsp;<h5><i class="fa fa-bars"></i><u>Presupuesto del  Proyecto Inversión:" <?=strtoupper($nombreProyectoInv->nombre_est_inv)?>"</u></h5>
 						<ul class="nav navbar-right panel_toolbox">
 						</ul>
 						<div class="clearfix"></div>
@@ -42,7 +42,7 @@
 												<div class="clearfix"></div>
 											</div>
 											<div class="x_content">
-												<table id="table-Presupuesto" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+												<table id="table-Presupuesto" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 													<thead>
 														<tr>
 															<td>Sector</td>

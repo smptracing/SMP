@@ -63,8 +63,8 @@ $(document).on("ready" ,function(){
                                   },
                                 "columns":[
                                     {"defaultContent":"<td>#</td>"},
-                                    {"data":"anio_meta_pres"},
-                                    {"data":"numero_meta_pres"},
+                                    //{"data":"anio_meta_pres"},
+                                    //{"data":"numero_meta_pres"},
                                     {"data":"nombre_meta_pres"},
                                     {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#ventana_editar_meta_presupuestal'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><span class='glyphicon glyphicon-trash' aria-hidden='true'></span></button>"}
                               ],

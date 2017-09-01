@@ -1,6 +1,12 @@
 <html>
   <head>
       <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/dompdf.css">
+      <style type="text/css">
+      	tr
+      	{
+			font-family: courier new;
+      	}
+      </style>
   </head>
 
 <body>
@@ -11,7 +17,12 @@
               <td id="header_texto" >
                   <div>FORMATO FF-01  	&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;		GOBIERNO REGIONAL DE APURIMAC</div>
               </td>
-
+			  <tr>
+					<td id="header_texto" >
+						<img style="width: 80px;height: 70px; margin-left:-150px;position: absolute; " src="./assets/images/peru.jpg" > &nbsp; &nbsp;
+						<img style="width: 80px;height: 70px; margin-left:420px;position: absolute; " src="./assets/images/logo.jpg" > &nbsp; &nbsp;
+					</td>
+			   </tr>
           </tr>
       </table>
   </header>
@@ -69,7 +80,7 @@
 	              <th id="header_texto">
 	                2 &nbsp; &nbsp;Nombre del Proyecto
 	              </th>
-	              <th id="header_texto">
+	              <th id="header_texto" style=" text-align: center;">
 	               &nbsp; <?= $listarExpedienteFicha001->nombre_pi ?>
 	              </th>
 	        </tr>
@@ -153,7 +164,7 @@
 	                5 &nbsp; &nbsp; Función Programática 
 	              </th>
 	              <th id="header_texto">
-	               &nbsp; Falta
+	               &nbsp; 
 	              </th>
 	        </tr>
 	        <tr>
@@ -184,7 +195,7 @@
 	              <th id="header_texto">
 	                &nbsp; &nbsp; &nbsp; &nbsp; 5.4 &nbsp; &nbsp; PROYECTO
 	              </th>
-	              <th id="header_texto">
+	              <th id="header_texto" style=" text-align: center;">
 	               &nbsp;<?= $listarExpedienteFicha001->proyecto_et ?>  
 	              </th>
 	        </tr>
@@ -244,7 +255,7 @@
 	                8 &nbsp; &nbsp; Nombre del Responsable de la Elavoración del Proyecto 
 	              </th>
 	              <th id="header_texto">
-	               &nbsp;Falta
+	               &nbsp;<?= $responsableElaboracion->nombres?> <?= $responsableElaboracion->apellido_p?>  <?= $responsableElaboracion->apellido_m?>  
 	              </th>
 	        </tr>
 	        <tr>
@@ -252,7 +263,7 @@
 	                &nbsp; &nbsp; &nbsp; &nbsp; 8.1 &nbsp; &nbsp; Profesíon
 	              </th>
 	              <th id="header_texto">
-	               &nbsp;falta
+	               &nbsp;<?= $responsableElaboracion->especialidad?>
 	              </th>
 	        </tr>
 	        <tr>
@@ -260,7 +271,7 @@
 	                &nbsp; &nbsp; &nbsp; &nbsp; 8.2 &nbsp; &nbsp; DNI
 	              </th>
 	              <th id="header_texto">
-	               &nbsp;falta
+	               &nbsp;<?= $responsableElaboracion->dni?>
 	              </th>
 	        </tr>
 	        <tr>
@@ -268,7 +279,7 @@
 	                &nbsp; &nbsp; &nbsp; &nbsp; 8.3 &nbsp; &nbsp; Registro Profesíon N°
 	              </th>
 	              <th id="header_texto">
-	               &nbsp;falta 
+	               &nbsp;<?= $responsableElaboracion->num_registro_prof?>
 	              </th>
 	        </tr>
 	        <tr>
@@ -276,7 +287,7 @@
 	                &nbsp; &nbsp; &nbsp; &nbsp; 8.4 &nbsp; &nbsp; Dirección
 	              </th>
 	              <th id="header_texto">
-	               &nbsp;falta 
+	               &nbsp;<?= $responsableElaboracion->direccion?>
 	              </th>
 	        </tr>
 	        <tr>
@@ -284,7 +295,7 @@
 	                &nbsp; &nbsp; &nbsp; &nbsp; 8.5 &nbsp; &nbsp; Teléfono 
 	              </th>
 	              <th id="header_texto">
-	               &nbsp; falta 
+	               &nbsp; <?= $responsableElaboracion->telefonos?>
 	              </th>
 	        </tr>
 
@@ -293,7 +304,7 @@
 	                9 &nbsp; &nbsp; Nombre del Responsable de la Ejecución del proyecto' 
 	              </th>
 	              <th id="header_texto">
-	               &nbsp; falta 
+	               &nbsp; <?= $responsableEjecucion->nombres?> <?= $responsableEjecucion->apellido_p?>  <?= $responsableEjecucion->apellido_m?>  
 	              </th>
 	        </tr>
 	        <tr>
@@ -301,7 +312,7 @@
 	                &nbsp; &nbsp; &nbsp; &nbsp; 9.1 &nbsp; &nbsp; Profesíon
 	              </th>
 	              <th id="header_texto">
-	               &nbsp;falta  
+	               &nbsp;<?= $responsableEjecucion->num_registro_prof?>
 	              </th>
 	        </tr>
 	        <tr>
@@ -309,7 +320,7 @@
 	                &nbsp; &nbsp; &nbsp; &nbsp; 9.2 &nbsp; &nbsp; DNI
 	              </th>
 	              <th id="header_texto">
-	               &nbsp;falta  
+	               &nbsp;<?= $responsableEjecucion->dni?>
 	              </th>
 	        </tr>
 	        <tr>
@@ -317,15 +328,15 @@
 	                &nbsp; &nbsp; &nbsp; &nbsp; 9.3 &nbsp; &nbsp; Registro Profesíon N°
 	              </th>
 	              <th id="header_texto">
-	               &nbsp;falta  
+	               &nbsp;<?= $responsableEjecucion->num_registro_prof?>
 	              </th>
 	        </tr>
 	        <tr>
 	              <th id="header_texto">
-	                &nbsp; &nbsp; &nbsp; &nbsp; 9.4 &nbsp; &nbsp; Dirección
+	                &nbsp; &nbsp; &nbsp; &nbsp; 9.4 &nbsp; &nbsp; Dirección 
 	              </th>
 	              <th id="header_texto">
-	               &nbsp; falta 
+	               &nbsp; <?= $responsableEjecucion->direccion?>
 	              </th>
 	        </tr>
 	        <tr>
@@ -333,7 +344,7 @@
 	                &nbsp; &nbsp; &nbsp; &nbsp; 9.5 &nbsp; &nbsp; Teléfono 
 	              </th>
 	              <th id="header_texto">
-	               &nbsp;falta  
+	               &nbsp;<?= $responsableEjecucion->telefonos?>
 	              </th>
 	        </tr>
 

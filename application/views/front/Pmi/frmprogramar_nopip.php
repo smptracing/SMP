@@ -14,7 +14,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                                 <div class="x_panel">
                                   <div class="x_title">
-                                    <h2><i class="fa fa-bars"></i>PROYECTOS<small></small></h2>
+                                    <h2>PROYECTOS<small></small></h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                       </li>
@@ -50,7 +50,7 @@
                                                           <th style="width: 8%"><i class="fa fa-thumb-tack"></i> Cod. </th>
                                                           <th style="width: 46%"><i class="fa fa-bookmark-o"></i> Nombre</th>
                                                           <th style="width: 8%"><i class="fa fa-money"></i> Costo</th>
-                                                          <th style="width: 12%"> Naturaleza Inversión</th>
+                                                          <th style="width: 12%"> Tipo NO PIP</th>
                                                           <th style="width: 12%"> Estado</th>
                                                         <th style="width: 6%">Programar</th>
                                                         </tr>
@@ -114,25 +114,30 @@
                                       <label>Costo del Proyecto</label>
                                       <input  class="form-control" id="txt_costo_proyecto" name="txt_costo_proyecto" type="number" disabled="disabled">
                                     </div>
-                                    <div class="col-md-3 col-sm-12 col-xs-12">
-                                      <label>Brecha </label>
+                                    <div class="col-md-4 col-sm-12 col-xs-12">
+                                      <label>Brecha  Proyecto.</label>
                                       <select id="cbxBrecha" name="cbxBrecha" class="selectpicker"   title="Elija Brecha" required="required">
                                       </select>
                                     </div>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                      <center><label style="color: red">Saldo a Programar</label></center>
+                                      <input  class="form-control" id="txt_saldoprogramar" name="txt_saldoprogramar" type="number" required="required">
+                                    </div>
+
                                  </div>
                               <h6><i class="fa fa-money"></i><b> Meta Presupuestal</b></h6>
                               <div class="item form-group">
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>PIA</label></center>
-                                      <input  class="form-control" id="txt_pia" name="txt_pia" type="number" required="required" value="0.00" disabled="disabled">
+                                      <input  class="form-control" id="txt_pia_nopip" name="txt_pia_nopip" type="number" required="required" value="0.00" disabled="disabled">
                                     </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                   <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>PIM</label></center>
-                                      <input  class="form-control" id="txt_pim" name="txt_pim" type="number" required="required" value="0.00"  disabled="disabled">
+                                      <input  class="form-control" id="txt_pim_nopip" name="txt_pim_nopip" type="number" required="required" value="0.00"  disabled="disabled">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>Devengado</label></center>
-                                      <input  class="form-control" id="txt_devengado" name="txt_devengado" type="number" required="required" value="0.00"  disabled="disabled">
+                                      <input  class="form-control" id="txt_devengado_nopip" name="txt_devengado_nopip" type="number" required="required" value="0.00"  disabled="disabled">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>Prioridad</label></center>
@@ -169,9 +174,13 @@
                     <table  id="Table_Programar" class="table   table-hover" >
                     <thead >
                        <tr>
-                         <th  ><i class="fa fa-thumb-tack"></i> #</th>
-                         <th  ><i class="fa fa-thumb-tack"></i> Año Programado</th>
-                         <th  ><i class="fa fa-thumb-tack"></i> Monto Programado</th>
+                         <th  ><i></i> #</th>
+                         <th  ><i></i> Cartera</th>
+                         <th  ><i></i> Brecha</th>
+                         <th  ><i></i> Año Programado</th>
+                         <th  ><i></i> Monto Programado</th>
+                         <th  ><i></i> Prioridad</th>
+                         <th  ><i></i> Opción</th>
                       </tr>
                     </thead>
                     </table>
@@ -231,13 +240,19 @@
                                       <label>Nombre del Proyecto</label>
                                       <input  class="form-control" id="txt_nombre_proyecto_mp" name="txt_nombre_proyecto_mp" type="text" disabled="disabled">
                                     </div>
-                                   <div class="col-md-2 col-sm-6 col-xs-12">
+                                   <div class="col-md-3 col-sm-8 col-xs-12">
                                       <label>Costo del Proyecto</label>
                                       <input  class="form-control" id="txt_costo_proyecto_mp" name="txt_costo_proyecto_mp" type="number" disabled="disabled">
                                     </div>
-                                    <div class="col-md-3 col-sm-12 col-xs-12">
-                                      <label>Meta </label>
-                                      <select id="cbx_Meta" name="cbx_Meta" class="selectpicker"   title="Elija Meta">
+
+                                    <div class="col-md-4 col-sm-8 col-xs-12">
+                                      <label>Meta Presupuestal</label>
+                                      <select id="cbx_meta_presupuestal" name="cbx_meta_presupuestal" class="selectpicker" data-live-search="true" title="Elija Meta">
+                                      </select>
+                                    </div>
+                                    <div class="col-md-4 col-sm-8 col-xs-12">
+                                      <label>Correlativo Meta </label>
+                                      <select id="cbx_Meta" name="cbx_Meta" class="selectpicker" data-live-search="true" title="Elija Meta">
                                       </select>
                                     </div>
                                  </div>
@@ -251,8 +266,20 @@
                                       <input  class="form-control" id="txt_pim" name="txt_pim" type="number" required="required">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
+                                      <label>Certificado</label>
+                                      <input  class="form-control" id="txt_certificado" name="txt_certificado" type="number" required="required">
+                                    </div>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                      <label>compromiso</label>
+                                      <input  class="form-control" id="txt_compromiso" name="txt_compromiso" type="number" required="required">
+                                    </div>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
                                       <label>Devengado</label>
                                       <input  class="form-control" id="txt_devengado" name="txt_devengado" type="number" required="required">
+                                    </div>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                      <label>Girado</label>
+                                      <input  class="form-control" id="txt_girado" name="txt_girado" type="number" required="required">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <label>.</label><br>
@@ -273,7 +300,11 @@
                          <th  ><i class="fa fa-thumb-tack"></i> Año </th>
                          <th  ><i class="fa fa-thumb-tack"></i> PIA</th>
                          <th  ><i class="fa fa-thumb-tack"></i> PIM</th>
+                         <th  ><i class="fa fa-thumb-tack"></i> Certificación</th>
+                         <th  ><i class="fa fa-thumb-tack"></i> Compromiso</th>
                          <th  ><i class="fa fa-thumb-tack"></i> Devengado</th>
+                         <th  ><i class="fa fa-thumb-tack"></i> Girado</th>
+                         <th  ><i class="fa fa-thumb-tack"></i> Opción</th>
                       </tr>
                     </thead>
                     </table>

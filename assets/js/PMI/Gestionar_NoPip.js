@@ -1,8 +1,33 @@
 $(document).on("ready" ,function(){
   $("#btn_nuevoNoPip").click(function(){
                  listarCicloInver();
+                 listar_TipologiaNoPipRegistro();
              }); 
      listar_no_pip(); //listar los no pip
+       $("#form_Edit_no_pip").submit(function(event)
+                {
+                    event.preventDefault();
+                    $.ajax({
+                        url:base_url+"index.php/bancoproyectos/update_no_pip",
+                        type:$(this).attr('method'),
+                        data:$(this).serialize(),
+                        success:function(resp){
+                          if (resp=='1') {
+                             swal("ACTUALIZADO","Se actualizó correctamente", "success");
+                            // formReset();
+
+                           }
+                            if (resp=='2') {
+                             swal("NO SE ACTUALIZÓ","No se actualizó ", "error");
+                           }
+                           $('#table_no_pip').dataTable()._fnAjaxUpdate();
+                          $('#table_metas_presupuestales').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
+                            // formReset();
+                            $('#Table_TipoNoPip').dataTable()._fnAjaxUpdate();
+                          //para actualizar mi datatablet datatablet   funcion
+                         }
+                    });
+                    });
           //REGISTARAR OPERACION Y MANTENIMIENTO
      $("#form_AddOperacionMantenimiento").submit(function(event)
                   {
@@ -42,7 +67,9 @@ $(document).on("ready" ,function(){
                             if (resp=='2') {
                              swal("NO SE REGISTRÓ","NO se regristró ", "error");
                            }
-                          $('#Table_TipoNoPip').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
+                          $('#Table_TipoNoPip').dataTable()._fnAjaxUpdate();
+                          //para actualizar mi datatablet datatablet   funcion
+                          $('#table_no_pip').dataTable()._fnAjaxUpdate();
                              formReset();
                          }
                       });
@@ -143,7 +170,7 @@ $(document).on("ready" ,function(){
                   {
                       event.preventDefault();
                       $.ajax({
-                          url:base_url+"index.php/bancoproyectos/AddProyectos",
+                          url:base_url+"index.php/bancoproyectos/AddNoPip",
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
                           success:function(resp){
@@ -216,6 +243,7 @@ $(document).on("ready" ,function(){
                                 ],
                                "language":idioma_espanol
                     });
+
                 }
  //listar ubigeo de un proyecto en le modal
  var listar_ubigeo_pi=function(id_pi)
@@ -315,12 +343,15 @@ $(document).on("ready" ,function(){
                                   },
                                 "columns":[
                                     {"defaultContent":"<center><button type='button' title='Editar' class='Editar_proyecto btn btn-primary btn-xs' data-toggle='modal' data-target='#venta_editar_proyecto'><i class='fa fa-edit' aria-hidden='true'></i></button></center>"},
+                                   //{"defaultContent":"<center>#</center>"},
                                     {"data":"id_pi" ,"visible": false},
                                     {"data":"codigo_unico_pi"},
                                     {"data":"nombre_pi"},
                                     {"data":"costo_pi"},
-                                    {"data":"nombre_naturaleza_inv"},
-                                    {"defaultContent":"<center><button type='button' title='Ubicación' class='ubicacion_geografica btn btn-primary btn-xs' data-toggle='modal' data-target='#venta_ubicacion_geografica'><i class='fa fa-map-marker' aria-hidden='true'></i></button><button type='button' title='Ver Rubro PI' class='RegistarNuevoRubro btn btn-info btn-xs' data-toggle='modal' data-target='#venta_registar_rubro'><i class='fa fa-spinner' aria-hidden='true'></i></button><button type='button' title='Modalidad de Ejecución' class='nueva_modalidad_ejec btn btn-warning btn-xs' data-toggle='modal' data-target='#ventanaModalidadEjecucion'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button' title='Ver Estado Ciclo' class='ver_estado_ciclo btn btn-success btn-xs' data-toggle='modal' data-target='#ventana_ver_estado_ciclo'><i class='fa fa-paw' aria-hidden='true'></i></button><button type='button' title='Ver Tipología No PIP' class='ver_tipologia_nopip btn btn-danger btn-xs' data-toggle='modal' data-target='#ventana_ver_tipologia'><i class='fa fa-random' aria-hidden='true'></i></button><button type='button' title='Operación y Mantenimiento' class='ver_operacion_mantenimiento btn btn-info btn-xs' data-toggle='modal' data-target='#ventana_ver_operacion_mantenimeinto'><i class='fa fa-building' aria-hidden='true'></i></button></center>"}
+                                    {"data":"desc_tipo_nopip"},
+                                    {"defaultContent":"<center><button type='button' title='Ubicación' class='ubicacion_geografica btn btn-primary btn-xs' data-toggle='modal' data-target='#venta_ubicacion_geografica'><i class='fa fa-map-marker' aria-hidden='true'></i></button><button type='button' title='Ver Rubro PI' class='RegistarNuevoRubro btn btn-info btn-xs' data-toggle='modal' data-target='#venta_registar_rubro'><i class='fa fa-spinner' aria-hidden='true'></i></button><button type='button' title='Modalidad de Ejecución' class='nueva_modalidad_ejec btn btn-warning btn-xs' data-toggle='modal' data-target='#ventanaModalidadEjecucion'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button' title='Ver Estado Ciclo' class='ver_estado_ciclo btn btn-success btn-xs' data-toggle='modal' data-target='#ventana_ver_estado_ciclo'><i class='fa fa-paw' aria-hidden='true'></i></button><button type='button' title='Ver Tipología No PIP' class='ver_tipologia_nopip btn btn-danger btn-xs' data-toggle='modal' data-target='#ventana_ver_tipologia'><i class='fa fa-random' aria-hidden='true'></i></button></i></button></center>"}
+                                   //{"defaultContent":"<center><button type='button' title='Ubicación' class='ubicacion_geografica btn btn-primary btn-xs' data-toggle='modal' data-target='#venta_ubicacion_geografica'><i class='fa fa-map-marker' aria-hidden='true'></i></button><button type='button' title='Ver Rubro PI' class='RegistarNuevoRubro btn btn-info btn-xs' data-toggle='modal' data-target='#venta_registar_rubro'><i class='fa fa-spinner' aria-hidden='true'></i></button><button type='button' title='Modalidad de Ejecución' class='nueva_modalidad_ejec btn btn-warning btn-xs' data-toggle='modal' data-target='#ventanaModalidadEjecucion'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button' title='Ver Estado Ciclo' class='ver_estado_ciclo btn btn-success btn-xs' data-toggle='modal' data-target='#ventana_ver_estado_ciclo'><i class='fa fa-paw' aria-hidden='true'></i></button><button type='button' title='Ver Tipología No PIP' class='ver_tipologia_nopip btn btn-danger btn-xs' data-toggle='modal' data-target='#ventana_ver_tipologia'><i class='fa fa-random' aria-hidden='true'></i></button><button type='button' title='Operación y Mantenimiento' class='ver_operacion_mantenimiento btn btn-info btn-xs' data-toggle='modal' data-target='#ventana_ver_operacion_mantenimeinto'><i class='fa fa-building' aria-hidden='true'></i></button></center>"}
+                                
                                 ],
                                "language":idioma_espanol
                     });
@@ -346,6 +377,16 @@ $(document).on("ready" ,function(){
                 var id_funcion=data.id_funcion;
                 var id_div_funcional=data.id_div_funcional;
                 var id_grupo_funcional=data.id_grupo_funcional;
+               var id_fuente_finan=data.id_fuente_finan;
+               var id_rubro=data.id_rubro;
+               var id_modalidad_ejec=data.id_modalidad_ejec;
+               var id_tipologia_inv=data.id_tipologia_inv;
+               var id_programa_pres=data.id_programa_pres;
+               var id_tipo_nopip=data.id_tipo_nopip;
+               var estado_pi=data.estado_pi;
+
+
+
 
                       $("#txtCodigoUnico_m").val(data.codigo_unico_pi);
                       $("#txtNombrePip_m").val(data.nombre_pi);
@@ -355,7 +396,21 @@ $(document).on("ready" ,function(){
                       listarUnidadEjecutora(id_ue);
                       listarFuncion(id_funcion);
                       listarDivisionFuncional(id_funcion,id_div_funcional);
-                      listarGrupoFuncional(id_div_funcional,id_grupo_funcional);
+                      listarGrupoFuncional(id_grupo_funcional);
+                      $("#txtCostoPip_m").val(data.costo_pi);
+                      $("#txt_beneficiarios_m").val(data.num_beneficiarios);
+                      listarFuenteFinanciamiento(id_fuente_finan);
+                      listarRubroEjecucion(id_rubro);
+                      listarModalidadEjecucion(id_modalidad_ejec);
+                      listarTipologiaInversion(id_tipologia_inv);
+                      listarProgramaPresupuestal(id_programa_pres);
+                      listar_TipologiaNoPipRegistro(id_tipo_nopip);
+                      $("#txt_idNo_Pip").val(data.id_pi);
+            
+                      $("#cbx_estado_m").val(estado_pi);
+      
+
+
                     });
                 }
 
@@ -472,16 +527,17 @@ var listarFuncion=function(valor){
                         }
                     });
                 }
+
+    
     $("#cbxFuncion_m").change(function()
        {
       var id_funcion=$("#cbxFuncion_m").val();
         listarDivisionFuncional(id_funcion,'');
        });
-
 var listarDivisionFuncional=function(id_funcion,valor)
                 {
-                  alert(id_funcion);
-                  alert(valor);
+                  //alert(id_funcion);
+                 // alert(valor);
                    var html="";
                     $("#cbxDivFunc_inicio").html(html); //nombre del selectpicker UNIDAD EJECUTORA
                     event.preventDefault(); 
@@ -496,44 +552,143 @@ var listarDivisionFuncional=function(id_funcion,valor)
                               html +="<option value="+registros[i]["id_div_funcional"]+"> "+ registros[i]["nombre_div_funcional"]+" </option>";   
                             }
                             $("#cbxDivFunc_inicio").html(html);
-                            $("#cbxDivFunc_m").html(html);//para modificar las entidades 
-                            $('select[name=cbxDivFunc_m]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
-                            $('select[name=cbxDivFunc_m]').change();
+                           // $("#cbxDivFunc_m").html(html);//para modificar las entidades 
+                              $('select[name=cbxDivFunc_inicio]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            //$('select[name=cbxDivFunc_inicio]').change();
                             $('.selectpicker').selectpicker('refresh'); 
+
                         }
                     });
                 }
-    $("#cbxDivFunc_m").change(function()
-       {
-      var id_div_funcional=$("#cbxDivFunc_m").val();
-        listarGrupoFuncional(id_div_funcional,'');
-       });
-
-  var listarGrupoFuncional=function(id_div_funcional,valor)
+  var listarGrupoFuncional=function(valor)
                 {
                     html="";
-                    $("#cbxGrupoFunc_m").html(html); //nombre del selectpicker UNIDAD EJECUTORA
+                    $("#cbxGrupoFunc").html(html); //nombre del selectpicker UNIDAD EJECUTORA
                     event.preventDefault(); 
                     $.ajax({
-                        "url":base_url +"index.php/GrupoFuncional/GetGrupoFuncionalId",
+                        "url":base_url +"index.php/GrupoFuncional/GetGrupoFuncional",
                         type:"POST",
-                        data:{id_div_funcional:id_div_funcional},
                         success : function(respuesta)
                         {
                          var registros = eval(respuesta);
                             for (var i = 0; i <registros.length;i++) {
                               html +="<option value="+registros[i]["id_grup_funcional"]+"> "+ registros[i]["nombre_grup_funcional"]+" </option>";   
                             }
-                            $("#cbxGrupoFunc_m").html(html);
-                            $("#cbxDivFunc").html(html);//para modificar las entidades 
-                            $('select[name=cbxDivFunc]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
-                            $('select[name=cbxDivFunc]').change();
+                            $("#cbxGrupoFunc").html(html);
+                            $("#cbxGrupoFunc_m").html(html);//para modificar las entidades 
+                            $('select[name=cbxGrupoFunc_m]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=cbxGrupoFunc_m]').change();
                             $('.selectpicker').selectpicker('refresh'); 
                         }
                     });
                 }
+var listarFuenteFinanciamiento=function(valor){
+                     var html="";
+                    $("#cbxFuenteFinanciamiento").html(html);
+                    event.preventDefault();
+                    $.ajax({
+                        "url":base_url +"index.php/FuenteFinanciamiento/get_FuenteFinanciamiento",
+                        type:"POST",
+                        success:function(respuesta3){
+                         //  alert(respuesta);
+                         var registros = eval(respuesta3);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option  value="+registros[i]["id_fuente_finan"]+"> "+registros[i]["nombre_fuente_finan"]+" </option>";
+                            };
+                            $("#cbxFuenteFinanciamiento").html(html);
+                            $("#cbxFuenteFinanciamiento_m").html(html);//para modificar las entidades 
+                            $('select[name=cbxFuenteFinanciamiento_m]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=cbxFuenteFinanciamiento_m]').change();
+                            $('.selectpicker').selectpicker('refresh');
+                        }
+                    });
+                }
 
-
+                var listarRubroEjecucion=function(valor){
+                var html="";
+                    $("#cbxRubroEjecucion").html(html);
+                    event.preventDefault();
+                    $.ajax({
+                        "url":base_url +"index.php/bancoproyectos/listar_rubro",
+                        type:"POST",
+                        success:function(respuesta3){
+                         //  alert(respuesta);
+                         var registros = eval(respuesta3);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option  value="+registros[i]["id_rubro"]+"> "+registros[i]["nombre_rubro"]+" </option>";
+                            };
+                            $("#cbxRubroEjecucion").html(html);
+                            $("#cbxRubroEjecucion_m").html(html);//para modificar las entidades 
+                            $('select[name=cbxRubroEjecucion_m]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=cbxRubroEjecucion_m]').change();
+                            $('.selectpicker').selectpicker('refresh');
+                        }
+                    });
+                }
+                var listarTipologiaInversion=function(valor){
+                var html="";
+                    $("#cbxTipologiaInversion").html(html);
+                    event.preventDefault();
+                    $.ajax({
+                        "url":base_url +"index.php/TipologiaInversion/get_TipologiaInversion",
+                        type:"POST",
+                        success:function(respuesta3){
+                         //  alert(respuesta);
+                         var registros = eval(respuesta3);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option  value="+registros[i]["id_tipologia_inv"]+"> "+registros[i]["nombre_tipologia_inv"]+" </option>";
+                            };
+                            $("#cbxTipologiaInversion").html(html);
+                            $("#cbxTipologiaInversion_m").html(html);//para modificar las entidades 
+                            $('select[name=cbxTipologiaInversion_m]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=cbxTipologiaInversion_m]').change();
+                            $('.selectpicker').selectpicker('refresh');
+                        }
+                    });
+                }
+                var listarProgramaPresupuestal=function(valor){
+                var html="";
+                    $("#cbxProgramaPresupuestal").html(html);
+                    event.preventDefault();
+                    $.ajax({
+                        "url":base_url +"index.php/ProgramaPresupuestal/GetProgramaP",
+                        type:"POST",
+                        success:function(respuesta3){
+                         //  alert(respuesta);
+                         var registros = eval(respuesta3);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option  value="+registros[i]["id_programa_pres"]+"> "+registros[i]["nombre_programa_pres"]+" </option>";
+                            };
+                            $("#cbxProgramaPresupuestal").html(html);
+                            $("#cbxProgramaPresupuestal_m").html(html);//para modificar las entidades 
+                            $('select[name=cbxProgramaPresupuestal_m]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=cbxProgramaPresupuestal_m]').change();
+                            $('.selectpicker').selectpicker('refresh');
+                        }
+                    });
+                }
+                var listarModalidadEjecucion=function(valor){
+                var html="";
+                    $("#cbxModalidadEjecucion").html(html);
+                    event.preventDefault();
+                    $.ajax({
+                        "url":base_url +"index.php/ModalidadEjecucion/GetModalidadE",
+                        type:"POST",
+                        success:function(respuesta3){
+                         //  alert(respuesta);
+                         var registros = eval(respuesta3);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option  value="+registros[i]["id_modalidad_ejec"]+"> "+registros[i]["nombre_modalidad_ejec"]+" </option>";
+                            };
+                            $("#cbxModalidadEjecucion").html(html);
+                            $("#cbxModalidadEjecucion_m").html(html);//para modificar las entidades 
+                            $('select[name=cbxModalidadEjecucion_m]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=cbxModalidadEjecucion_m]').change();
+                            $('.selectpicker').selectpicker('refresh');
+                        }
+                    });
+                }
+                
  /**************************************************************************************/
 
 //add operacion y manteniemito
@@ -666,7 +821,7 @@ var listarDivisionFuncional=function(id_funcion,valor)
                     });
                 }
                 var listar_distrito=function(nombre_distrito){
-                     html="";
+                    var html="";
                     $("#cbx_distrito").html(html);
                     event.preventDefault();
                     $.ajax({
@@ -677,7 +832,7 @@ var listarDivisionFuncional=function(id_funcion,valor)
                          //  alert(respuesta);
                          var registros = eval(respuesta3);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option  value="+registros[i]["distrito"]+"> "+registros[i]["distrito"]+" </option>";
+                              html +="<option  value="+registros[i]["id_ubigeo"]+"> "+registros[i]["distrito"]+" </option>";
                             };
                             $("#cbx_distrito").html(html);
                             $('.selectpicker').selectpicker('refresh');
@@ -726,7 +881,7 @@ var listarDivisionFuncional=function(id_funcion,valor)
                 }*/
                 //listar en el combox para registrar rubro
  var listar_TipologiaNoPip=function(valor){
-                     html="";
+                    var html="";
                     $("#Cbx_TipoNoPip").html(html);
                     event.preventDefault();
                     $.ajax({
@@ -741,6 +896,27 @@ var listarDivisionFuncional=function(id_funcion,valor)
                             $("#Cbx_TipoNoPip").html(html);
                             $('select[name=Cbx_TipoNoPip]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=Cbx_TipoNoPip]').change();
+                            $('.selectpicker').selectpicker('refresh');
+                        }
+                    });
+                }
+                 var listar_TipologiaNoPipRegistro=function(valor){
+                    var html="";
+                    $("#Cbx_TipoNoPip_i").html(html);
+                    event.preventDefault();
+                    $.ajax({
+                        "url":base_url +"index.php/TipologiaInversion/get_tipo_no_pip",
+                        type:"POST",
+                        success:function(respuesta3){
+                         //  alert(respuesta);
+                         var registros = eval(respuesta3);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option  value="+registros[i]["id_tipo_nopip"]+"> "+registros[i]["desc_tipo_nopip"]+" </option>";
+                            };
+                            $("#Cbx_TipoNoPip_i").html(html);
+                            $("#Cbx_TipoNoPip_m").html(html);//para modificar las entidades 
+                            $('select[name=Cbx_TipoNoPip_m]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=Cbx_TipoNoPip_m]').change();
                             $('.selectpicker').selectpicker('refresh');
                         }
                     });

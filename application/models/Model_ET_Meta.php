@@ -56,4 +56,25 @@ class Model_ET_Meta extends CI_Model
 
 		return true;
 	}
+
+	function existsDiffIdMetaAndSameDescripcion($idComponente, $idMeta, $idMetaPadre, $descripcionMeta)
+	{
+		$data=$this->db->query("select * from ET_META where id_meta!=".$idMeta." and desc_meta='".$descripcionMeta."' and ((".($idComponente=='' ? 'NULL' : $idComponente)." is null and id_meta_padre='".$idMetaPadre."') or (".($idComponente=='' ? 'NULL' : $idComponente)." is not null and id_componente='".$idComponente."'))");
+
+		return count($data->result())>0 ? true : false;
+	}
+
+	function updateDescMeta($idMeta, $descripcionMeta)
+	{
+		$this->db->query("update ET_META set desc_meta='".$descripcionMeta."' where id_meta=".$idMeta);
+
+		return true;
+	}
+
+	public function updateNumeracionPorIdMeta($idMeta, $numeracion)
+	{
+		$this->db->query("update ET_META set numeracion='".$numeracion."' where id_meta=".$idMeta);
+
+		return true;
+	}
 }

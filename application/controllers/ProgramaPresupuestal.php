@@ -17,7 +17,7 @@ class ProgramaPresupuestal extends CI_Controller
     public function AddProgramaP()
     {
         if ($this->input->is_ajax_request()) {
-            $txt_NombreProgramaP  = $this->input->post("txt_NombreProgramaP");
+            $txt_NombreProgramaP = $this->input->post("txt_NombreProgramaP");
             if ($this->Model_ProgramaPresupuestal->AddProgramaP($txt_NombreProgramaP) == true) {
                 echo "Se añadio un programa presupuestal";
             } else {
@@ -29,11 +29,12 @@ class ProgramaPresupuestal extends CI_Controller
         }
     }
 //FIN DE PROGRAMA PRESUPUESTAL
-/* LISTAR PROGRAMA PRESUPUESTAL*/
+    /* LISTAR PROGRAMA PRESUPUESTAL*/
     public function GetProgramaP()
     {
         if ($this->input->is_ajax_request()) {
-            $datos = $this->Model_ProgramaPresupuestal->GetProgramaP();
+            $flat  = 'R';
+            $datos = $this->Model_ProgramaPresupuestal->GetProgramaP($flat);
             echo json_encode($datos);
         } else {
             show_404();
@@ -44,21 +45,21 @@ class ProgramaPresupuestal extends CI_Controller
     public function UpdateProgramaP()
     {
         if ($this->input->is_ajax_request()) {
-            $txt_IdProgramaPModif   = $this->input->post("txt_IdProgramaPModif");
-            $txt_NombreProgramaPU  = $this->input->post("txt_NombreProgramaPU");
-            if ($this->Model_ProgramaPresupuestal->UpdateProgramaP($txt_IdProgramaPModif,$txt_NombreProgramaPU) == false) {
+            $txt_IdProgramaPModif = $this->input->post("txt_IdProgramaPModif");
+            $txt_NombreProgramaPU = $this->input->post("txt_NombreProgramaPU");
+            if ($this->Model_ProgramaPresupuestal->UpdateProgramaP($txt_IdProgramaPModif, $txt_NombreProgramaPU) == false) {
                 echo "Se actualizo correctamente la programa presupuestal";
             } else {
                 echo "No Se actualizo correctamente la programa presupuestal";
             }
             echo $txt_NombreProgramaPU;
-            
+
         } else {
             show_404();
         }
     }
 //FIN ACTUALIZAR O MODIFICAR DATOS DE PROGRAMA PRESUPUESTAL
-//---FIN MANTENIMIENTOS DE PROGRAMA PRESUPUESTAL-------
+    //---FIN MANTENIMIENTOS DE PROGRAMA PRESUPUESTAL-------
 
     public function _load_layout($template)
     {

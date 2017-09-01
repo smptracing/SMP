@@ -1,3 +1,68 @@
+function MontoProgramadoPip(anio)
+{
+  //  alert(anio);
+   $("#monto_programado").text("");
+   $("#totalpip").text(""); 
+   $("#monto_programado_nopip").text("");
+   $("#totalnopip").text("");
+
+     var tipo=new Array();
+     var num=new Array();
+     var total_monto=new Array();
+
+    event.preventDefault();
+
+   $.ajax(
+    {
+        "url": base_url+"index.php/PrincipalPmi/get_cantidad_costo_tipo_pi",
+        type: "POST",
+        data :{anio:anio},
+        success: function(respuesta)
+        {
+         var registros=eval(respuesta);
+
+            var sum=0;
+            var sum_monto=0;
+
+            for(var i=0; i<registros.length; i++)
+            {
+                tipo[i]=registros[i]["nombre_tipo_inversion"];
+                num[i]=parseFloat(registros[i]["Cant_pi"]);
+                sum=num[i]+sum;
+                total_monto[i]=parseFloat(registros[i]["SumaCosto"]);
+                sum_monto=total_monto[i]+sum_monto;
+            }
+$("#NumPip").text(sum);
+$("#TotalMonto").text("S/. "+parseFloat(sum_monto));
+               if(tipo[0]=="NO PIP")
+            {
+               // alert("1");
+            $("#monto_programado_nopip").text("S/. "+registros[0]["SumaCosto"]); 
+            $("#totalnopip").text(registros[0]["Cant_pi"]); 
+            }
+                if(tipo[1]=="PIP")
+            {
+               // alert("2");
+            $("#monto_programado").text("S/. "+registros[1]["SumaCosto"]); 
+            $("#totalpip").text(registros[1]["Cant_pi"]); 
+            }
+
+            if(tipo[0]=="PIP")
+            {
+               // alert("3");
+            $("#monto_programado").text("S/. "+registros[0]["SumaCosto"]); 
+            $("#totalpip").text(registros[0]["Cant_pi"]); 
+            }
+            if(tipo[1]=="NO PIP")
+            {
+              //  alert("4");
+            $("#monto_programado_nopip").text("S/. "+registros[1]["SumaCosto"]); 
+            $("#totalnopip").text(registros[1]["Cant_pi"]); 
+            }
+        }
+    });
+}
+
 function EstaProyProvincia()
 {
     var provincias=new Array();
@@ -20,8 +85,9 @@ function EstaProyProvincia()
                 sum=provincias[i]+sum;
             }
             
-            $("#NumPip").text(sum); //OBTENER NUMERO DE PIP EN LA CABECERA
-
+             //OBTENER NUMERO DE PIP EN LA CABECERA
+           
+            $("#NumPips").text(provincias);
             cantidadPIPAbancay=(100*(parseInt(provincias[0]))/sum);
 
             $("#CantidadPAbancay").text(provincias[0]); //LISTAR CANTIDAD DE PIP REPORTE GENERAL
@@ -152,7 +218,6 @@ function EstadisticasPorCiclosInversion() {
             var total_proyectos=registros[0]["Num_Total"];
             var total_otros=registros[0]["TotalNoCiclo"];
             var panel_estadistica=$("#panel_estadistica_ciclo_inversion");
-
             var porcentaje=0.00;
             for (var i=0; i<registros.length; i++) 
             {
@@ -203,10 +268,10 @@ function EstadisticasPorCiclosInversion() {
 function initMap()
 {
     //var LatLng={lat: -25.363, lng: 131.044};
-    var map=new google.maps.Map($('#map'),
+    var map=new google.maps.Map(document.getElementById('map'),
     {
         zoom: 8,
-        center: {lat: -14, lng: -73},
+        center: {lat: -14, lng: -73}
         //disableDefaultUI: true
     });
 
@@ -226,17 +291,50 @@ function initMap()
                 {
                     position: { lat : registros[i]["latitud"], lng: registros[i]["longitud"] },
                     map : map,
+                    image:base_url+'img/Semaforomalogrado.png',
                     title : registros[i]["distrito"]+": "+registros[i]["nombre_pi"]
+
                 });
             }
+
         }
     });
 }
+var listar_aniocartera_r=function(valor){ //listar ani cartera operacion y mantenimiento
+                    var  html="";
+                    $("#Aniocartera_dasboard").html(html);
+                    event.preventDefault();
+                    $.ajax({
+                        "url":base_url +"index.php/programar_pip/GetAnioCarteraProgramado",
+                        type:"POST",
+                        success:function(respuesta3){
+                         //  alert(respuesta);
+                         var registros = eval(respuesta3);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option  value="+registros[i]["anio"]+"> "+registros[i]["anio"]+" </option>";
+                            };
+                            $("#Aniocartera_dasboard").html(html);
+                            $('select[name=Aniocartera_dasboard]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=Aniocartera_dasboard]').change();
+                            $('.selectpicker').selectpicker('refresh');
+                            var anio=$("#Aniocartera_dasboard").val();
+                            MontoProgramadoPip(anio);
+                        }
+                    });
+                }
+                      $("#Aniocartera_dasboard").change(function() {
+                          var anio=$("#Aniocartera_dasboard").val();
+                           $("#Aniocartera_dasboard_imput").val(anio);
+                           MontoProgramadoPip(anio);
+                        }); 
+
 
 
 $(document).on('ready', function()
 {
     EstaProyProvincia();
+   // MontoProgramadoPip();
     EstadistMontosPipProv();
     EstadisticasPorCiclosInversion();
+     listar_aniocartera_r();
 });

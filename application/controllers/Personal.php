@@ -18,7 +18,7 @@ class Personal extends CI_Controller
         $this->_load_layout('Front/Administracion/frmPersonal');
     }
 
-    /* personal*/
+   
     public function GetPersonal()
     {
         if($this->input->is_ajax_request())
@@ -31,6 +31,19 @@ class Personal extends CI_Controller
             $cantidadDatos=$this->Model_Personal->CountPersonalParaPaginacion('X', $valueSearch);
 
             echo '{ "recordsTotal" : '.$cantidadDatos[0]->cantidad.', "recordsFiltered" : '.$cantidadDatos[0]->cantidad.', "data" : '.json_encode($datos).' }';
+        }
+        else
+        {
+            show_404();
+        }
+    }
+     public function ListarPersonal()
+    {
+        if($this->input->is_ajax_request())
+        {
+            
+            $Datos=$this->Model_Personal->ListarPersonalUsuario();
+            echo json_encode($Datos);    
         }
         else
         {

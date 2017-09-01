@@ -49,11 +49,11 @@
 
                                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
                                       <ul id="myTab" class="nav nav-tabs" role="tablist">
-                                        <li role="presentation" class="active"><a class="fa fa-book" href="#tab_brecha" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Usuario</a>
+                                        <li role="presentation" class="active"><a href="#tab_brecha" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Usuario</a>
                                         </li>
-                                        <li role="presentation" class=""><a class="fa fa-book" href="#tab_Indicador" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Permisos</a>
+                                        <li role="presentation" class=""><a href="#tab_Indicador" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Permisos</a>
                                         </li>
-                                        <li role="presentation" class=""><a class="fa fa-book" href="#tab_BrechaIndicador" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Menus</a>
+                                        <li role="presentation" class=""><a href="#tab_BrechaIndicador" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Menus</a>
                                         </li>
                                       </ul>
                                       <div id="myTabContent" class="tab-content">
@@ -64,7 +64,7 @@
                                             
                                                   <div class="col-md-12 col-sm-12">
                                                         <div class="x_panel">
-                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraUsuario"> <span class="fa fa-file-o"></span> Nuevo Usuario</button>
+                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraUsuario"> <i class="fa fa-file"> Nuevo </i> </button>
                                                           <div class="x_title">
                                                             <h2>Listado de  <small>Usuarios</small></h2>
                                                               
@@ -82,7 +82,7 @@
                                                               
                                                           </div>
                                                           <div class="x_content">
-                                                            <table id="table-Usuarios" class="table table-striped " cellspacing="0" width="100%">
+                                                            <table id="table-Usuarios" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
                                                               <thead>
                                                                  <tr>
                                                                   <th>ID</th>
@@ -160,7 +160,7 @@
         </div>
      </div>
         
-<div class="modal fade" id="VentanaRegistraUsuario" role="dialog">
+<div class="modal fade" id="VentanaRegistraUsuario" role="dialog" data-backdrop="static">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -168,72 +168,65 @@
           <h4 class="modal-title">Registrar Nuevo Usuario</h4>
         </div>
         <div class="modal-body">
-         <div class="row">
+           <div class="row">
                     <div class="col-xs-12">
-                                        <!-- PAGE CONTENT BEGINS -->
-                <form class="form-horizontal" id="form-AddUsuario" role="form" method="post">
-                  
-
-                  <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right"  for="form-field-1-1">Usuario </label>
-
-                    <div class="col-sm-6">
-                      <input type="text" id="txt_usuario" name="txt_usuario" placeholder="Nombre Usuario" class="form-control" autocomplete="off" />
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">Tipo de Usuario </label>
-
-                    <div class="col-sm-6">
-                      <select  class="form-control input-sm" id="cbb_TipoUsuario" name="cbb_TipoUsuario">
-                       <option value="Formulador"> Formulador </option>  
-                       <option value="Evaluador"> Evaluador </option> 
-                       <option value="Encargado de la PMI"> Encargado de la PMI</option>  
-                       <option value="Ejecutor"> Ejecutor</option>
-                       <option value="Resisdente"> Resisdente</option>
-                       <option value="Registrador"> Registrador</option>
-                       </select>                    
-                    </div>
-                  </div>
-                  
-                    <div class="form-group">
-                       <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">Estado </label>
-                       <div class="col-sm-6">
-                       <select  class="form-control input-sm">
-                       <option values> Activo </option>  
-                       <option> Inactivo </option>  
-                       </select>                    
-                    </div>
-                  </div>
-                  
-                  <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">Contraseña</label>
-
-                    <div class="col-sm-3">
-                      <input type="password" id="txt_contrasenia" name="txt_contrasenia" placeholder="Contraseña" class="form-control" />
-                    </div>
-                  </div>
-                
-                                    <div class="form-group">
-                                        <center><input type="reset" class="btn btn-default" value="Limpiar Formulario">
-                                        <button type="submit" class="btn btn-primary">Registrar Usuario </button></center>
+                        <form class="form-horizontal" id="form-AddUsuario" role="form" method="post" >
+                              <div class="form-group">
+                                     <label class="col-sm-3 control-label no-padding-right"  for="form-field-1-1">Buscar Usuario</label>
+                                      <div class="col-sm-6">
+                                           <select  class="form-control input-sm" id="comboPersona" name="comboPersona"  title="Buscar persona" >
+                                           </select>                    
+                                     </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right"  for="form-field-1-1">Usuario </label>
+                                  <div class="col-sm-6">
+                                    <input type="text" id="txt_usuario" name="txt_usuario" placeholder="Nombre Usuario" class="form-control" autocomplete="off" />
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">Tipo de Usuario </label>
+                                <div class="col-sm-6">
+                                  <select  class="form-control input-sm" id="cbb_TipoUsuario" name="cbb_TipoUsuario">
+                                     <option value="Formulador"> Formulador </option>  
+                                     <option value="Evaluador"> Evaluador </option> 
+                                     <option value="Encargado de la PMI"> Encargado de la PMI</option>  
+                                     <option value="Ejecutor"> Ejecutor</option>
+                                     <option value="Resisdente"> Resisdente</option>
+                                     <option value="Registrador"> Registrador</option>
+                                     <option value="Coordinador"> Coordinador</option>
+                                   </select>                    
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                   <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">Estado </label>
+                                    <div class="col-sm-6">
+                                           <select  class="form-control input-sm">
+                                           <option values> Activo </option>  
+                                           <option> Inactivo </option>  
+                                           </select>                    
                                     </div>
-                  <div class="space-4"></div>
-                    
-                   </form>
-                        </div><!-- /.span -->
-                 </div><!-- /.row -->
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
+                              </div>
+                              <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">Contraseña</label>
+                                    <div class="col-sm-3">
+                                      <input type="password" id="txt_contrasenia" name="txt_contrasenia" placeholder="Contraseña" class="form-control" />
+                                    </div>
+                              </div>
+                              <div class="form-group" style="text-align: center;">
+                                  <button type="submit" class="btn btn-primary">Registrar Usuario </button>
+                                  <input  id="btnCerrar" class="btn btn-danger" data-dismiss="modal" value="Cancelar">
+                             </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                  
+            </div>
       </div>
     </div>
   </div>
-<!-- /.fin ventana para registra un usuario-->
-      
-<!-- /.ventana para asignar permisos a un usuario --> 
-
 <div class="modal fade" id="VentanaAsignarPermiso" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -244,7 +237,6 @@
         <div class="modal-body">
          <div class="row">
                     <div class="col-xs-12">
-                                        <!-- PAGE CONTENT BEGINS -->
                                 <form class="form-horizontal" role="form">
                                     
                                     
@@ -354,8 +346,6 @@
                                             </tr>
                                         </body>
                                     </table>
-                                   
-                                   
                                     <div class="form-group">
                                         <center><input type="reset" class="btn btn-default" value="Limpiar Formulario">
                                         <button type="submit" class="btn btn-primary">guardar permisos </button></center>
@@ -392,7 +382,6 @@
 		function cambioNivelSeguridadContrasenia(element)
 		{
 			var value=$(element).val();
-
 			$('[id*="spanNivelSeguridad"]').css({ "display" : "none" });
 
 			var escalaNivelSeguridad=0;

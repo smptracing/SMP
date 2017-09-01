@@ -21,7 +21,7 @@ $(document).on("ready" ,function(){
                                 "columns":[ 
                                 { "data" : "id_pi", "visible" : false },
                                 { "data" : "codigo_unico_pi" },
-                                { "data" : "nombre_naturaleza_inv" },
+                                { "data" : "desc_tipo_nopip" },
                                 { "data" : "nombre_pi" },
                                 { "data" : "prioridad_prog" },
                                 { "data" : "nombre_brecha" },

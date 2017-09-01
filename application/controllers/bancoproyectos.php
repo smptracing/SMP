@@ -28,11 +28,16 @@ class bancoproyectos extends CI_Controller
             $txtNombrePip        = $this->input->post("txtNombrePip");
             $txtCostoPip         = $this->input->post("txtCostoPip");
             $txt_beneficiarios   = $this->input->post("txt_beneficiarios");
-            $dateFechaInPip      = "2017-03-01";
-            $dateFechaViabilidad = "2017-03-01";
+            $dateFechaInPip      = $this->input->post("fecha_registro");
+            $dateFechaViabilidad = $this->input->post("fecha_viabilidad");
+            $lista_unid_form     = $this->input->post("lista_unid_form");
+            $cbx_estado          = $this->input->post("cbx_estado");
             $cbxEstCicInv_       = $this->input->post("cbxEstCicInv_");
+            $cbxRubro            = $this->input->post("cbxRubro");
+            $cbxModalidadEjec    = $this->input->post("cbxModalidadEjec");
             if ($this->bancoproyectos_modal->AddProyectos(
-                $flat, $id_pi, $cbxUnidadEjecutora, $cbxNatI, $cbxTipologiaInv, $cbxTipoInv, $cbxGrupoFunc, $cbxNivelGob, $cbxProgramaPres, $txtCodigoUnico, $txtNombrePip, $txtCostoPip, $txt_beneficiarios, $dateFechaInPip, $dateFechaViabilidad, $cbxEstCicInv_) == false) {
+                $flat, $id_pi, $cbxUnidadEjecutora, $cbxNatI, $cbxTipologiaInv, $cbxTipoInv, $cbxGrupoFunc, $cbxNivelGob, $cbxProgramaPres, $txtCodigoUnico, $txtNombrePip, $txtCostoPip, $txt_beneficiarios, $dateFechaInPip, $dateFechaViabilidad, $lista_unid_form, $cbx_estado, $cbxEstCicInv_,
+                $cbxRubro, $cbxModalidadEjec) == false) {
                 echo "1";
             } else {
                 echo "2";
@@ -43,6 +48,113 @@ class bancoproyectos extends CI_Controller
         }
     }
     /*FIN INSERTAR UN PROYECTO*/
+    /*INSERTAR UN NO PIP*/
+    public function AddNoPip()
+    {
+        if ($this->input->is_ajax_request()) {
+            $flat                = "IPCNOPIP";
+            $id_pi               = "0";
+            $cbxUnidadEjecutora  = $this->input->post("cbxUnidadEjecutora");
+            $cbxNatI             = null;
+            $cbxTipologiaInv     = null;
+            $cbxTipoInv          = $this->input->post("cbx");
+            $cbxGrupoFunc        = $this->input->post("cbxGrupoFunc");
+            $cbxNivelGob         = $this->input->post("cbxNivelGob");
+            $cbxProgramaPres     = null;
+            $txtCodigoUnico      = $this->input->post("txtCodigoUnico");
+            $txtNombrePip        = $this->input->post("txtNombrePip");
+            $txtCostoPip         = $this->input->post("txtCostoPip");
+            $txt_beneficiarios   = $this->input->post("txt_beneficiarios");
+            $dateFechaInPip      = $this->input->post("fecha_registro");
+            $dateFechaViabilidad = $this->input->post("fecha_viabilidad");
+            $cbx_estado          = $this->input->post("cbx_estado");
+            $cbxEstCicInv_       = $this->input->post("cbxEstCicInv_");
+            $cbxRubro            = $this->input->post("cbxRubro");
+            $cbxModalidadEjec    = $this->input->post("cbxModalidadEjec");
+            $Cbx_TipoNoPip_i     = $this->input->post("Cbx_TipoNoPip_i");
+            if ($this->bancoproyectos_modal->AddNoPip(
+                $flat, $id_pi, $cbxUnidadEjecutora, $cbxNatI, $cbxTipologiaInv, $cbxTipoInv, $cbxGrupoFunc, $cbxNivelGob, $cbxProgramaPres, $txtCodigoUnico, $txtNombrePip, $txtCostoPip, $txt_beneficiarios, $dateFechaInPip, $dateFechaViabilidad, $cbx_estado, $cbxEstCicInv_, $cbxRubro, $cbxModalidadEjec, $Cbx_TipoNoPip_i) == false) {
+                echo "1";
+            } else {
+                echo "2";
+            }
+
+        } else {
+            show_404();
+        }
+    }
+    /*FIN INSERTAR UN PROYECTO*/
+/* EDITAR PROYECTO NO PIP*/
+    public function update_no_pip()
+    {
+        if ($this->input->is_ajax_request()) {
+            $flat               = "U_IPCNOPIP";
+            $id_pi              = $this->input->post("txt_idNo_Pip");
+            $cbxUnidadEjecutora = $this->input->post("cbxUnidadEjecutora_m");
+            //$cbxNatI            = $this->input->post("cbxNatI");
+            // $cbxTipologiaInv    = $this->input->post("cbxTipologiaInv");
+            $cbx_tipo_no_pip_m = $this->input->post("cbx_tipo_no_pip_m");
+            $cbxGrupoFunc      = $this->input->post("cbxGrupoFunc_m");
+            $cbxNivelGob       = $this->input->post("cbxNivelGob_m");
+            // $cbxProgramaPres   = $this->input->post("cbxProgramaPres");
+            $txtCodigoUnico    = $this->input->post("txtCodigoUnico_m");
+            $txtNombrePip      = $this->input->post("txtNombrePip_m");
+            $txtCostoPip       = $this->input->post("txtCostoPip_m");
+            $txt_beneficiarios = $this->input->post("txt_beneficiarios_m");
+            // $dateFechaInPip    = $this->input->post("fecha_registro");
+            // $dateFechaViabilidad = $this->input->post("fecha_viabilidad");
+            // $lista_unid_form  = $this->input->post("lista_unid_form");
+            //  $cbx_estado       = $this->input->post("cbx_estado_m");
+            $cbx_tipo_inversion = $this->input->post("cbxEstCicInv_m");
+            $cbxEstado_pi       = $this->input->post("cbx_estado_m");
+            $cbxRubro           = $this->input->post("cbxRubroEjecucion_m");
+            $cbxModalidadEjec   = $this->input->post("cbxModalidadEjecucion_m");
+            $Cbx_TipoNoPip_m    = $this->input->post("Cbx_TipoNoPip_m");
+            if ($this->bancoproyectos_modal->update_no_pip(
+                $flat, $id_pi, $cbxUnidadEjecutora, $cbx_tipo_no_pip_m, $cbxGrupoFunc, $cbxNivelGob, $txtCodigoUnico, $txtNombrePip, $txtCostoPip, $txt_beneficiarios, $cbx_tipo_inversion, $cbxEstado_pi, $cbxRubro, $cbxModalidadEjec, $Cbx_TipoNoPip_m) == false) {
+                echo "1";
+            } else {
+                echo "2";
+            }
+
+        } else {
+            show_404();
+        }
+    }
+    //update pip
+    public function update_pip()
+    {
+        if ($this->input->is_ajax_request()) {
+            $flat                      = "U_IPCPIP";
+            $txt_id_Pip_m              = $this->input->post("txt_id_Pip_m");
+            $cbxUnidadEjecutora_m      = $this->input->post("cbxUnidadEjecutora_m");
+            $cbxNatI_m                 = $this->input->post("cbxNatI_m");
+            $cbxTipologiaInversion_m   = $this->input->post("cbxTipologiaInversion_m");
+            $cbxGrupoFunc_m            = $this->input->post("cbxGrupoFunc_m");
+            $cbxNivelGob_m             = $this->input->post("cbxNivelGob_m");
+            $cbxProgramaPresupuestal_m = $this->input->post("cbxProgramaPresupuestal_m");
+            $txtCodigoUnico_m          = $this->input->post("txtCodigoUnico_m");
+            $txtNombrePip_m            = $this->input->post("txtNombrePip_m");
+            $txtCostoPip_m             = $this->input->post("txtCostoPip_m");
+            $txt_beneficiarios_m       = $this->input->post("txt_beneficiarios_m");
+            // $dateFechaInPip    = $this->input->post("fecha_registro");
+            // $dateFechaViabilidad = $this->input->post("fecha_viabilidad");
+            $lista_unid_form_m       = $this->input->post("lista_unid_form_m");
+            $cbx_estado_pi_m         = $this->input->post("cbx_estado_pi_m");
+            $cbxEstCicInv_m          = $this->input->post("cbxEstCicInv_m");
+            $cbxRubroEjecucion_m     = $this->input->post("cbxRubroEjecucion_m");
+            $cbxModalidadEjecucion_m = $this->input->post("cbxModalidadEjecucion_m");
+            if ($this->bancoproyectos_modal->update_pip(
+                $flat, $txt_id_Pip_m, $cbxUnidadEjecutora_m, $cbxNatI_m, $cbxTipologiaInversion_m, $cbxGrupoFunc_m, $cbxNivelGob_m, $cbxProgramaPresupuestal_m, $txtCodigoUnico_m, $txtNombrePip_m, $txtCostoPip_m, $txt_beneficiarios_m, $lista_unid_form_m, $cbx_estado_pi_m, $cbxEstCicInv_m, $cbxRubroEjecucion_m, $cbxModalidadEjecucion_m) == false) {
+                echo "1";
+            } else {
+                echo "2";
+            }
+
+        } else {
+            show_404();
+        }
+    }
 
 //listar proyectos de inversion
     public function GetProyectoInversion()
@@ -129,16 +241,14 @@ class bancoproyectos extends CI_Controller
     public function Add_ubigeo_proyecto()
     {
         if ($this->input->is_ajax_request()) {
-            $flat         = "insertar_distrito ";
+            $flat         = "C ";
             $id_ubigeo_pi = "0";
-            $id_ubigeo    = "null";
+            $id_ubigeo    = $this->input->post("cbx_distrito");
             $txt_id_pip   = $this->input->post("txt_id_pip");
             $direccion    = "null";
             $txt_latitud  = $this->input->post("txt_latitud");
             $txt_longitud = $this->input->post("txt_longitud");
-            $distritosM   = $this->input->post("cbx_distrito");
-
-            if ($this->bancoproyectos_modal->Add_ubigeo_proyecto($flat, $id_ubigeo_pi, $id_ubigeo, $txt_id_pip, $direccion, $txt_latitud, $txt_longitud, $distritosM) == false) {
+            if ($this->bancoproyectos_modal->Add_ubigeo_proyecto($flat, $id_ubigeo_pi, $id_ubigeo, $txt_id_pip, $direccion, $txt_latitud, $txt_longitud) == false) {
                 echo "1";
             } else {
                 echo "2";

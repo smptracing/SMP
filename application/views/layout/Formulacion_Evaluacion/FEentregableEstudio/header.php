@@ -13,7 +13,6 @@
 
     <!-- Bootstrap -->
     <link href='<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery-ui.min.css' rel='stylesheet' >
-    <script src="<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
 
     <link href="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -48,7 +47,7 @@
 
     <link href="<?php echo base_url(); ?>assets/vendors/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/vendors/cropper/dist/cropper.min.css" rel="stylesheet">
-
+    <script src="<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
      <link href="<?php echo base_url(); ?>assets/css/jquery.growl.css" rel="stylesheet">
       
   <style>

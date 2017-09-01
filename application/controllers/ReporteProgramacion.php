@@ -157,8 +157,8 @@ function action()
 		$object->getActiveSheet()->setCellValueByColumnAndRow(13, $excel_row, $row->nombre_div_funcional);
 		$object->getActiveSheet()->setCellValueByColumnAndRow(14, $excel_row, $row->nombre_grup_funcional);
 		$object->getActiveSheet()->setCellValueByColumnAndRow(15, $excel_row, $row->costo_pi);
-		$object->getActiveSheet()->setCellValueByColumnAndRow(16, $excel_row, $row->devengado_ac_pi);
-		$object->getActiveSheet()->setCellValueByColumnAndRow(17, $excel_row, $row->devengado_ac_pi); //ACA DEBE SER PIM AÑO ACTUAL
+		$object->getActiveSheet()->setCellValueByColumnAndRow(16, $excel_row, '');
+		$object->getActiveSheet()->setCellValueByColumnAndRow(17, $excel_row, ''); //ACA DEBE SER PIM AÑO ACTUAL
 		$object->getActiveSheet()->setCellValueByColumnAndRow(18, $excel_row, $funtefinanciamiento);
 		$object->getActiveSheet()->setCellValueByColumnAndRow(19, $excel_row, $rubro); 
 		$object->getActiveSheet()->setCellValueByColumnAndRow(20, $excel_row, $funtefinanciamiento2); //ACA ES FUENTE FINAN 2 Y ES CAMPO VACIO
