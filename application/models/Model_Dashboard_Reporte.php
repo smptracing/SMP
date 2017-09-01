@@ -57,4 +57,24 @@ class Model_Dashboard_Reporte extends CI_Model
             return false;
         }
     }
+
+    function MontoPipModalidad()
+    {
+        $data = $this->db->query("select nombre_modalidad_ejec,sum(costo_pi)as Monto FROM MODALIDAD_EJECUCION left JOIN MODALIDAD_EJECUCION_PI ON MODALIDAD_EJECUCION.id_modalidad_ejec=MODALIDAD_EJECUCION_PI.id_modalidad_ejec left JOIN PROYECTO_INVERSION ON MODALIDAD_EJECUCION_PI.id_pi=PROYECTO_INVERSION.id_pi group by nombre_modalidad_ejec");//listar EVAL
+        if ($data->num_rows()> 0) {
+            return $data->result();
+        } else {
+            return false;
+        }
+    }
+
+    function CantidadPipRubro()
+    {
+        $data = $this->db->query("select nombre_rubro ,count (nombre_pi)as Cantidadpip from RUBRO LEFT JOIN RUBRO_PI on RUBRO.id_rubro=RUBRO_PI.id_rubro LEFT JOIN PROYECTO_INVERSION on RUBRO_PI.id_pi=PROYECTO_INVERSION.id_pi group by nombre_rubro");//listar EVAL
+        if ($data->num_rows()> 0) {
+            return $data->result();
+        } else {
+            return false;
+        }
+    }
 }

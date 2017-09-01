@@ -58,7 +58,24 @@ class PrincipalReportes extends CI_Controller
         } else
         show_404();
     }
-    
+
+    public function MontoPipModalidad()
+    {
+        if ($this->input->is_ajax_request()) {
+            $datos = $this->Model_Dashboard_Reporte->MontoPipModalidad();
+            echo json_encode($datos);
+        } else
+        show_404();
+    }
+    public function CantidadPipRubro()
+    {
+        if ($this->input->is_ajax_request()) {
+            $datos = $this->Model_Dashboard_Reporte->CantidadPipRubro();
+            echo json_encode($datos);
+        } else
+        show_404();
+    }
+
     public function _load_layout($template)
     {
         $this->load->view('layout/Reportes/header');
