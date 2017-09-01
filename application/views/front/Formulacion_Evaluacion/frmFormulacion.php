@@ -45,7 +45,7 @@
                           <th>Provincia</th>
                           <th>Distrito</th>
                           <th>Nivel Estudio</th>
-                          <th>Responsable</th>
+                          <th>Responsable de Etapa</th>
                           <th>Costo Inversion</th>
                           <th>Situacion</th>
                           <th>Avance Fisico</th>
