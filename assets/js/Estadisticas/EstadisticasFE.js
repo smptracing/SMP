@@ -569,7 +569,7 @@ $.ajax({
 	cache:false,
 	success:function(respuesta)
 	{
-		alert(respuesta);
+		//alert(respuesta);
 		var dom = document.getElementById("Avance");
 		var myChart = echarts.init(dom);
 		var app = {};

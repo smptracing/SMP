@@ -128,8 +128,8 @@
                         <ul class="nav child_menu">
                           <li><a href="<?php echo site_url('FEformulacion/Feformulacion/all'); ?>">Formulación</a></li>
                           <li><a href="<?php echo site_url('EvaluacionFE/FeEvaluacion/all'); ?>">Evaluación</a></li>
-                          <li><a href="<?php echo site_url('FEformulacion/FeAprobado/all'); ?>">Aprobado</a></li>
-                          <li><a href="<?php echo site_url('FEformulacion/FeViabilizado/all'); ?>">Viabilizados</a></li>
+                          <!--<li><a href="<?php echo site_url('FEformulacion/FeAprobado/all'); ?>">Aprobado</a></li> -->
+                          <!-- <li><a href="<?php echo site_url('FEformulacion/FeViabilizado/all'); ?>">Viabilizados</a></li> -->
 
                         </ul>
                         </li>

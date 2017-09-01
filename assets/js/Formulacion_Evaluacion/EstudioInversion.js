@@ -378,7 +378,7 @@ var listarestudiocombo=function(valor){
                                     },
                                 "columns":[
                                       {"data":"codigo_unico_est_inv" ,"visible": true},
-                                      {"data":"id_est_inv" ,"visible": false},
+                                      {"data":"id_est_inv" ,"visible": true},
                                       { "data": function (data, type, dataToSet) {
                                          return "<strong>"+data.nombre_est_inv + "</strong><br/><i class='fa fa-calendar'>  " + data.fecha+"</i>";
                                        }},
@@ -414,7 +414,7 @@ var listarestudiocombo=function(valor){
                                      
                                       }
                                    }},
-                                  {"defaultContent":" <div class='dropdown'>  <a class='btn btn-link dropdown-toggle' type='button' data-toggle='dropdown'> <span class='glyphicon glyphicon-option-vertical' aria-hidden='true'></span></a> <ul class='dropdown-menu'>  <li><button type='button' title='Subir Resolución' class='DocumentosEstudio btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaDocumentosEstudio'><i class='glyphicon glyphicon-folder-open' aria-hidden='true'></i></button> </li> <li> <button title='Asignar Respondable' class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#ventanaasiganarpersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button></li> <li><button title='Nueva Etapa Estudio' class='nuevaEtapaEstudio btn btn-warning btn-xs' data-toggle='modal' data-target='#ventanaEtapaEstudio'><i class='fa fa-flag' aria-hidden='true'></i></button> </li> <li> <button type='button' title='Ver Etapas Estudio' class='ver_etapas_estudio btn btn-success btn-xs' data-toggle='modal' data-target='#ventana_ver_etapas_estudio'><i class='fa fa-paw' aria-hidden='true'></i></button></li> </ul> </div>"}
+                                  {"defaultContent":" <div class='dropdown'>  <a class='btn btn-link dropdown-toggle' type='button' data-toggle='dropdown'> <span class='glyphicon glyphicon-option-vertical' aria-hidden='true'></span></a> <ul class='dropdown-menu'>  <li><button type='button' title='Subir Resolución' class='DocumentosEstudio btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaDocumentosEstudio'><i class='glyphicon glyphicon-folder-open' aria-hidden='true'> Documento</i></button> </li> <li> <button title='Asignar Respondable' class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#ventanaasiganarpersona'><i class='glyphicon glyphicon-user' aria-hidden='true'>Asignar Coordinador</i></button></li> <li><button title='Nueva Etapa Estudio' class='nuevaEtapaEstudio btn btn-warning btn-xs' data-toggle='modal' data-target='#ventanaEtapaEstudio'><i class='fa fa-flag' aria-hidden='true'>Nueva Etapa de Estudio</i></button> </li> <li> <button type='button' title='Ver Etapas Estudio' class='ver_etapas_estudio btn btn-success btn-xs' data-toggle='modal' data-target='#ventana_ver_etapas_estudio'><i class='fa fa-paw' aria-hidden='true'> Ver Etapas</i></button></li> </ul> </div>"}
 
                                ],
                                 "language":idioma_espanol

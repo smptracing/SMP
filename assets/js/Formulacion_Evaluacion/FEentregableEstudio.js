@@ -316,7 +316,6 @@ var addEntreEstudio=function(txt_nombre_entre,txt_denominacion_entre,txt_valorac
                            $("#VentanaEntregable").modal("hide");
                            listarEntregablesFE();
                            valorizacionRestante();
-                           $('#table_entregable').dataTable()._fnAjaxUpdate();
                          }
                       });
                   };
