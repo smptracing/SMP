@@ -39,6 +39,8 @@
 		}
 	</style>
 
+	<script src="<?=base_url()?>assets/js/Helper/jsHelper.js"></script>
+
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 	<script src="<?=base_url()?>assets/vendors/JQueryGantt/libs/jquery/jquery.livequery.1.1.1.min.js"></script>
@@ -60,6 +62,7 @@
 	<script src="<?=base_url()?>assets/vendors/JQueryGantt/ganttMaster.js"></script>  
 </head>
 <body style="background-color: #ffffff;overflow-x: hidden;">
+	<input type="hidden" id="hdIdTareaGantt" name="hdIdTareaGantt" value="1">
 	<div id="workSpace" style="padding: 0px;overflow-y: auto;overflow-x: hidden;position: relative;margin: 0 5px;width: 100%;height: 100%;"></div>
 
 	<script>
@@ -130,65 +133,12 @@
 
 		function saveGanttOnServer()
 		{
-			//this is a simulation: save data to the local storage or to the textarea
-			saveInLocalStorage();
+			var prj=ge.saveProject();
 
-			/*
-			var prj = ge.saveProject();
-
-			delete prj.resources;
-			delete prj.roles;
-
-			var prof = new Profiler("saveServerSide");
-			prof.reset();
-
-			if (ge.deletedTaskIds.length>0)
+			paginaAjaxJSON({ "idTareaGantt" : $('#hdIdTareaGantt').val(), "tareas" : JSON.stringify(prj.tasks) }, '<?=base_url()?>index.php/ET_TAREA/insertarBloque', 'POST', null, function(objectJSON)
 			{
-				if (!confirm("TASK_THAT_WILL_BE_REMOVED\n"+ge.deletedTaskIds.length))
-				{
-					return;
-				}
-			}
 
-			$.ajax("ganttAjaxController.jsp",
-			{
-				dataType:"json",
-				data: {CM:"SVPROJECT",prj:JSON.stringify(prj)},
-				type:"POST",
-
-				success: function(response)
-				{
-					if(response.ok)
-					{
-						prof.stop();
-						if (response.project)
-						{
-							ge.loadProject(response.project); //must reload as "tmp_" ids are now the good ones
-						}
-						else
-						{
-							ge.reset();
-						}
-					}
-					else
-					{
-						var errMsg="Errors saving project\n";
-
-						if(response.message)
-						{
-							errMsg=errMsg+response.message+"\n";
-						}
-
-						if(response.errorMessages.length)
-						{
-							errMsg += response.errorMessages.join("\n");
-						}
-
-						alert(errMsg);
-					}
-				}
-			});
-			*/
+			}, false, true);
 		}
 
 		function newProject()
@@ -296,19 +246,14 @@
 			{
 				ret= {
 					"tasks": [
+
 					], "selectedRow": 2, "deletedTaskIds": [],
 					"resources": [
-						{"id": "tmp_1", "name": "Resource 1"},
-						{"id": "tmp_2", "name": "Resource 2"},
-						{"id": "tmp_3", "name": "Resource 3"},
-						{"id": "tmp_4", "name": "Resource 4"}
+
 					],
 					"roles": [
-						{ "id": "tmp_1", "name": "Project Manager" },
-						{ "id": "tmp_2", "name": "Worker" },
-						{ "id": "tmp_3", "name": "Stakeholder" },
-						{ "id": "tmp_4", "name": "Customer" }
-					], "canWrite":    true, "canDelete":true, "canWriteOnParent": true, "zoom": "w3"
+						
+					], "canWrite": true, "canDelete":true, "canWriteOnParent": true, "zoom": "w3"
 				}
 
 
