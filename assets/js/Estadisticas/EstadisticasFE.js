@@ -565,17 +565,11 @@ $.ajax({
 
 $.ajax({
 	url:base_url+"/index.php/PrincipalFyE/AvanceCostoInv",
-	dataType:"json",
 	type:"POST",
 	cache:false,
 	success:function(respuesta)
 	{
-		var arrayAvanceCostoInv=new Array();
-		$.each(respuesta,function(index,element)  
-		{
-			arrayAvanceCostoInv[index]=element.avance_fisico+','+element.costo_estudio;
-		});
-		console.log(arrayAvanceCostoInv[0]);
+		alert(respuesta);
 		var dom = document.getElementById("Avance");
 		var myChart = echarts.init(dom);
 		var app = {};
@@ -657,7 +651,7 @@ $.ajax({
 		        {
 		            name:'AVANCE FÍSICO  COSTO ESTUDIO',
 		            type:'scatter',
-		            data: [[arrayAvanceCostoInv[4]]],
+		            data: respuesta,
 		            markArea: {
 		                silent: true,
 		                itemStyle: {
