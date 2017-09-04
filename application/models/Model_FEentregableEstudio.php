@@ -7,7 +7,7 @@ class Model_FEentregableEstudio extends CI_Model
               parent::__construct();
             // $this->db->free_db_resource();
           }
-      /*añadir funcion*/
+      
         function get_Entregables($txt_id_etapa_estudio)
         {
              //$id_estapa=3;
@@ -147,5 +147,12 @@ class Model_FEentregableEstudio extends CI_Model
 
         }
         //fin nombre estapa estudio para loss entregables
+        
+        public function sumaValorizaEntregebleValidar($id_etapaestudio,$id_entregable)
+        {
+            $data=$this->db->query("select * from ENTREGABLE_ESTUDIO where ENTREGABLE_ESTUDIO.id_etapa_estudio=$id_etapaestudio and id_entregable!=$id_entregable ");
+            return $data->result();
+             
+        }
 
 }

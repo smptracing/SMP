@@ -270,7 +270,7 @@
                               <div id="PorcentajeSuperado" style="text-align: right;color: red; margin-top: 25px;" class="col-md-4">
                                   
                               </div>
-                              <div id="PorcentajeRestanteValorizacionModificar" style="text-align:center ;color:#008080; margin-top:30px;" class="col-md-4">
+                              <div id="PorcentajeRestanteValorizacionModificar" style="text-align:right ;color:#008080; margin-top:30px;" class="col-md-7">
                                   
                               </div>
                           </div>
