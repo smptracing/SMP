@@ -598,6 +598,14 @@ class TipologiaInversion extends CI_Controller
 
 //------------------------------------------------------------------------------------------------------------------
 
+    public function ReporteListadoPipTipologia()
+    {
+        $listaNumPipTipologia=$this->TipologiaInversion_Model->TipologiaPipListar();
+        $this->load->view('layout/Reportes/header');
+        $this->load->view('front/Reporte/TipologiaInversion/index',['listaNumPipTipologia'=>$listaNumPipTipologia]);
+        $this->load->view('layout/Reportes/footer');
+    }
+
     public function _load_layout($template)
     {
         $this->load->view('layout/Administracion/header');
