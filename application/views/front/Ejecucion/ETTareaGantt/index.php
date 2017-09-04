@@ -551,16 +551,40 @@
 			</tr>
 			</table>
 
-			<h2>Assignments</h2>
-			<table  cellspacing="1" cellpadding="0" width="100%" id="assigsTable">
-			<tr>
-			<th style="width:100px;">name</th>
-			<th style="width:70px;">Role</th>
-			<th style="width:30px;">est.wklg.</th>
-			<th style="width:30px;" id="addAssig"><span class="teamworkIcon" style="cursor: pointer">+</span></th>
-			</tr>
-			</table>
-
+			<h2>Datos adicionales de la actividad</h2>
+			<label for="txtObservacion">Observación</label>
+			<textarea name="txtObservacion" id="txtObservacion" rows="3" style="resize: none;width: 100%;"></textarea>
+			<div style="text-align: right;">
+				<span class="button first">Agregar observación</span>
+			</div>
+			<div id="divObservacion">
+				<ul>
+					<li>
+						<b>Observacion: </b>
+						Esta es la observación que se está poniendo en la actividad.
+						<ul>
+							<li>
+								<i>
+									<b>Levantamiento de la observación: </b>
+									Este es el levantamiento de la observación descrita en la parte superior.
+								</i>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<b>Observacion: </b>
+						Esta es la observación que se está poniendo en la actividad.
+						<ul>
+							<li>
+								<i>
+									<b>Levantamiento de la observación: </b>
+									Este es el levantamiento de la observación descrita en la parte superior.
+								</i>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
 			<div style="text-align: right; padding-top: 20px">
 			<span id="saveButton" class="button first" onClick="$(this).trigger('saveFullEditor.gantt');">Save</span>
 			</div>
