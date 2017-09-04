@@ -64,7 +64,7 @@
 	<script src="<?php echo base_url(); ?>assets/dist/js/sweetalert-dev.js"></script>
 </head>
 <body style="background-color: #ffffff;overflow-x: hidden;">
-	<input type="hidden" id="hdIdTareaGantt" name="hdIdTareaGantt" value="1">
+	<input type="hidden" id="hdIdTareaGantt" name="hdIdTareaGantt" value="3">
 	<div id="workSpace" style="padding: 0px;overflow-y: auto;overflow-x: hidden;position: relative;margin: 0 5px;width: 100%;height: 100%;"></div>
 
 	<script>
