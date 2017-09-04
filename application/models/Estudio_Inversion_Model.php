@@ -80,7 +80,7 @@ class Estudio_Inversion_Model extends CI_Model
     public function get_UnidadEjecutora()
     {
         //  $EstadoCicloInversion = $this->db->query("execute get");
-        $unidadejecutora = $this->db->query("  select id_ue,nombre_ue from UNIDAD_EJECUTORA");
+        $unidadejecutora = $this->db->query("select id_ue,nombre_ue from UNIDAD_EJECUTORA");
         if ($unidadejecutora->num_rows() > 0) {
             return $unidadejecutora->result();
         } else {
