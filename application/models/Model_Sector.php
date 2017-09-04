@@ -53,6 +53,13 @@ class Model_Sector extends CI_Model
        function EliminarSector($id_sector){
           return true;
        }
+
+       function SectorPipListar()
+        {
+            $ListarSectorPip=$this->db->query("select sector.nombre_sector, COUNT(nombre_pi) as CantidadPip, sum(costo_pi)AS CostoPip from PROYECTO_INVERSION inner join GRUPO_FUNCIONAL ON PROYECTO_INVERSION.id_grupo_funcional=GRUPO_FUNCIONAL.id_grup_funcional  INNER JOIN sector ON grupo_funcional.id_sector=sector.id_sector group by sector.nombre_sector");
+
+            return $ListarSectorPip->result();
+        }
       //fin entidad//
 
 }

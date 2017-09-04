@@ -5,7 +5,7 @@
 			<div class="col-md-12 col-xs-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
-						<h2><b>REPORTE DE PIP POR GRUPO FUNCIONAL</b> </h2>
+						<h2><b>REPORTE DE PIP POR TIPOLOGÍA DE INVERSIÓN</b> </h2>
 						<ul class="nav navbar-right panel_toolbox">
 						</ul>
 						<div class="clearfix"></div>
@@ -15,7 +15,7 @@
 							<ul id="myTab" class="nav nav-tabs" role="tablist">
 								<li role="presentation" class="active">
 									<a href="#tab_Sector"  id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">
-										<b> Grupo Funcional</b>
+										<b> Tipología</b>
 									</a>
 								</li>
 							</ul>
@@ -26,25 +26,25 @@
 									<div class="row">  
 										<div class="col-md-12 col-sm-12 col-xs-12">
 											<div class="x_panel">
-									
+
 													<div class="clearfix">
 														<div class="pull-right tableTools-container"></div>
 													</div>
 													<div class="x_content">
-														<table id="table-PipGrupoFuncional"  class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
+														<table id="table-PipTipologia"  class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 															<thead>
 																<tr>
-																	<td>Grupo Funcional</td>
+																	<td>Tipologia inversión</td>
 																	<td >Número de PIP</td>
 																	<td >Costo total</td>
 
 																</tr>
 															</thead>
 															<tbody>
-															<?php foreach($listaNumPipGrupo as $item ){ ?>
+															<?php foreach($listaNumPipTipologia as $item ){ ?>
 															  	<tr>
 																	<td>
-																		<?=$item->nombre_grup_funcional?>
+																		<?=$item->nombre_tipologia_inv?>
 															    	</td>
 															    	<td>
 																		<?=$item->CantidadPip?>
@@ -71,11 +71,12 @@
 		<div class="clearfix"></div>
 	</div>
 </div>
+
 <script>
 
 $(document).ready(function()
 	{
-		var myTable=$('#table-PipGrupoFuncional').DataTable(
+		var myTable=$('#table-PipTipologia').DataTable(
 		{
 			"language":idioma_espanol,
             "searching": true,
@@ -111,4 +112,3 @@ $(document).ready(function()
 			
 			})
 </script>
-

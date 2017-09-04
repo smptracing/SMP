@@ -15,9 +15,9 @@ class Model_ET_Tarea extends CI_Model
 		return true;
 	}
 
-	public function insertar($idTareaGantt, $idTareaETPadre, $descripcion, $nombreTarea, $fechaInicioTarea, $fechaFinalTarea, $valoracionTarea, $avanceTarea, $colorTarea, $nivelTarea, $predecesoraTarea, $estadoTarea, $numeracion)
+	public function insertar($idTareaGantt, $idTareaETPadre, $descripcion, $nombreTarea, $fechaInicioTarea, $fechaFinalTarea, $valoracionTarea, $avanceTarea, $colorTarea, $nivelTarea, $predecesoraTarea, $estadoTarea, $numeracion, $dependenciaTarea)
 	{
-		$this->db->query("execute sp_Gestionar_ETTarea 'insertar', ".$idTareaGantt.", ".$idTareaETPadre.", '".$descripcion."', '".$nombreTarea."', '".$fechaInicioTarea."', '".$fechaFinalTarea."', ".$valoracionTarea.", ".$avanceTarea.", '".$colorTarea."', ".$nivelTarea.", ".$predecesoraTarea.", ".$estadoTarea.", ".$numeracion);
+		$this->db->query("execute sp_Gestionar_ETTarea 'insertar', ".$idTareaGantt.", ".$idTareaETPadre.", '".$descripcion."', '".$nombreTarea."', '".$fechaInicioTarea."', '".$fechaFinalTarea."', ".$valoracionTarea.", ".$avanceTarea.", '".$colorTarea."', ".$nivelTarea.", ".$predecesoraTarea.", ".$estadoTarea.", ".$numeracion.", '".$dependenciaTarea."'");
 
 		return true;
 	}

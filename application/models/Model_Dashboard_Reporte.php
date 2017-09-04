@@ -77,4 +77,14 @@ class Model_Dashboard_Reporte extends CI_Model
             return false;
         }
     }
+
+    function CantidadPipProvincia()
+    {
+        $data = $this->db->query("select UBIGEO.provincia ,count (nombre_pi)as Cantidadpip from PROYECTO_INVERSION INNER JOIN UBIGEO_PI on PROYECTO_INVERSION.id_pi=UBIGEO_PI.id_pi INNER JOIN UBIGEO on UBIGEO_PI.id_ubigeo=UBIGEO.id_ubigeo group by  UBIGEO.provincia");//listar EVAL
+        if ($data->num_rows()> 0) {
+            return $data->result();
+        } else {
+            return false;
+        }
+    }
 }

@@ -26,13 +26,12 @@
 									<div class="row">  
 										<div class="col-md-12 col-sm-12 col-xs-12">
 											<div class="x_panel">
-									
-													<div class="x_title">                                                              
-											
-														<div class="clearfix"></div>
+
+													<div class="clearfix">
+														<div class="pull-right tableTools-container"></div>
 													</div>
 													<div class="x_content">
-														<table id="table-NumPipFuncion"  class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
+														<table id="dynamic-table"  class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 															<thead>
 																<tr>
 																	<td>Función</td>
@@ -73,3 +72,43 @@
 	</div>
 </div>
 
+<script>
+
+$(document).ready(function()
+	{
+		var myTable=$('#dynamic-table').DataTable(
+		{
+			"language":idioma_espanol,
+            "searching": true,
+             "info":     true,
+            "paging":   true,
+		});
+			
+				$.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
+				
+				new $.fn.dataTable.Buttons( myTable, {
+					buttons: [
+					  {
+						"extend": "excel",
+						"text": "<i class='fa fa-file-excel-o bigger-110 green'></i> <span class='hidden'>Export to Excel</span>",
+						"className": "btn btn-white btn-primary btn-bold"
+					  },
+					  {
+						"extend": "pdf",
+						"text": "<i class='fa fa-file-pdf-o bigger-110 red'></i> <span class='hidden'>Export to PDF</span>",
+						"className": "btn btn-white btn-primary btn-bold"
+					  },
+					  {
+						"extend": "print",
+						"text": "<i class='fa fa-print bigger-110 grey'></i> <span class='hidden'>Print</span>",
+						"className": "btn btn-white btn-primary btn-bold",
+						autoPrint: false,
+						message: 'This print was produced using the Print button for DataTables'
+					  }		  
+					]
+				} );
+				myTable.buttons().container().appendTo( $('.tableTools-container') );
+				
+			
+			})
+</script>

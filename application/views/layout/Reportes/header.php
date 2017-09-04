@@ -74,19 +74,46 @@
 							<h3></i>Reporte</h3>
 
 						</div>
-
-
-                <ul class="nav side-menu">
+                	<ul class="nav side-menu">
                
                      <li>
                          <a>
-                            <i class="fa fa-gears"></i> Cadena Funcional
+                            <i class="fa fa-bar-chart"></i>Reporte Cadena Funcional
                             <span class="fa fa-chevron-down"></span>
                          </a>
                             <ul class="nav child_menu">
                                     <li><a href="<?php echo site_url('funcion/index'); ?>">Funcion</a></li>
                                     <li><a href="<?php echo site_url('DivisionFuncional/index'); ?>">Division Funcional</a></li>
-                                    <li><a href="">Grupo Funcional</a></li>
+                                    <li><a href="<?php echo site_url('GrupoFuncional/index')?>">Grupo Funcional</a></li>
+                                    <li><a href="<?php echo site_url('Sector/ReporteListaSectorPip')?>">Sector</a></li>
+                            </ul>
+                      </li>
+ 
+                	</ul>
+                	<ul class="nav side-menu">
+               
+                     <li>
+                         <a>
+                            <i class="fa fa-area-chart"></i>Reporte Unidad 
+                            <span class="fa fa-chevron-down"></span>
+                         </a>
+                            <ul class="nav child_menu">
+                                    <li><a href="<?php echo site_url('UnidadF/indexunidadFormuladora'); ?>">Unidad formuladora</a></li>
+                                    <li><a href="<?php echo site_url('UnidadE/indexunidadEjecutora');?>">Unidad Ejecutora</a></li>
+                            </ul>
+                      </li>
+ 
+                	</ul>
+
+                	<ul class="nav side-menu">
+               
+                     <li>
+                         <a>
+                            <i class="fa fa-file-text"></i>Tipologia de inversión
+                            <span class="fa fa-chevron-down"></span>
+                         </a>
+                            <ul class="nav child_menu">
+                                    <li><a href="<?php echo site_url('TipologiaInversion/ReporteListadoPipTipologia'); ?>">Tipologia de Inversion</a></li>
                             </ul>
                       </li>
  

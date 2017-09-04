@@ -77,6 +77,18 @@ class PrincipalReportes extends CI_Controller
         show_404();
     }
 
+    public function CantidadPipProvincia()
+    {
+        if ($this->input->is_ajax_request()) {
+            $datos = $this->Model_Dashboard_Reporte->CantidadPipProvincia();
+            foreach ($datos as $key => $Itemp) {
+               $numpip[$key]=$Itemp->Cantidadpip;
+            }
+            echo json_encode($numpip);
+        } else
+        show_404();
+    }
+
     public function _load_layout($template)
     {
         $this->load->view('layout/Reportes/header');

@@ -280,7 +280,7 @@ $.ajax({
 			},
 		    series: [
 		        {
-		            name:'访问来源',
+		            name:'Tipo de Gasto',
 		            type:'pie',
 		            radius: ['27%', '50%'],
 		            avoidLabelOverlap: false,
