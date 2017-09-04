@@ -570,6 +570,8 @@ $.ajax({
 	success:function(respuesta)
 	{
 		//alert(respuesta);
+		var valor=JSON.parse(respuesta);
+		console.log(valor);
 		var dom = document.getElementById("Avance");
 		var myChart = echarts.init(dom);
 		var app = {};
@@ -620,7 +622,7 @@ $.ajax({
 		    brush: {
 		    },
 		    legend: {
-		        data: ['AVANCE FÍSICO  COSTO ESTUDIO','COSTO ESTUDIO'],
+		        data: ['AVANCE FÍSICO VS COSTO ESTUDIO','COSTO ESTUDIO'],
 		        left: 'center'
 		    },
 		    xAxis : [
@@ -649,9 +651,9 @@ $.ajax({
 		    ],
 		    series : [
 		        {
-		            name:'AVANCE FÍSICO  COSTO ESTUDIO',
+		            name:'AVANCE FÍSICO VS COSTO ESTUDIO',
 		            type:'scatter',
-		            data: respuesta,
+		            data: valor,
 		            markArea: {
 		                silent: true,
 		                itemStyle: {
@@ -662,7 +664,7 @@ $.ajax({
 		                    }
 		                },
 		                data: [[{
-		                    name: 'AVANCE FÍSICO  COSTO ESTUDIO',
+		                    name: 'AAVANCE FÍSICO VS COSTO ESTUDIO',
 		                    xAxis: 'min',
 		                    yAxis: 'min'
 		                }, {
@@ -672,7 +674,7 @@ $.ajax({
 		            },
 		            markPoint : {
 		                data : [
-		                    {type : 'max', name: 'AVANCE FÍSICO  COSTO ESTUDIO'},
+		                    {type : 'max', name: 'AVANCE FÍSICO VS COSTO ESTUDIO'},
 		                    {type : 'min', name: 'AVANCE FÍSICO'}
 		                ]
 		            },
