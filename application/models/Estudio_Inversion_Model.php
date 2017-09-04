@@ -87,10 +87,11 @@ class Estudio_Inversion_Model extends CI_Model
             return false;
         }
     }
-    public function get_persona()
+    public function get_persona($idPersona)
     {
         //  $EstadoCicloInversion = $this->db->query("execute get");
-        $persona = $this->db->query("select PERSONA.id_persona,CONCAT(PERSONA.nombres,' ',PERSONA.apellido_p) as nombres_apell  from PERSONA");
+        $opcion='listar_persona_exepto';
+        $persona = $this->db->query("EXEC sp_Gestionar_Persona @opcion='".$opcion."', @id_persona='".$idPersona."' ");
         if ($persona->num_rows() > 0) {
             return $persona->result();
         } else {

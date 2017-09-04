@@ -21,7 +21,6 @@
                    event.prevenDefault(); 
                    $('#form-AddUsuario').trigger("reset"); 
             	 });
-
 			});
                 var listarUsuario=function()
                 {
