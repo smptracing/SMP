@@ -62,7 +62,7 @@ class ET_TAREA extends CI_Controller
 				'code' => '',
 				'level' => $value->nivel_tarea,
 				'status' => 'STATUS_ACTIVE',
-				'depends' => '',
+				'depends' => $value->dependencia_tarea,
 				'canWrite' => true,
 				'start' => (strtotime($value->fecha_inicio_tarea)*1000),
 				'duration' => $this->number_of_working_days($value->fecha_inicio_tarea, $value->fecha_final_tarea),
@@ -93,7 +93,7 @@ class ET_TAREA extends CI_Controller
 			{
 				$predecesoraTarea='NULL';
 
-				$value->start=date('Y-m-d', strtotime('-1 day', strtotime(date("Y-m-d H:i:s", ($value->start/1000)))));
+				$value->start=date("Y-m-d H:i:s", ($value->start/1000));
 				$value->end=date('Y-m-d', strtotime('-1 day', strtotime(date("Y-m-d H:i:s", ($value->end/1000)))));
 
 				if($value->level!=0)
@@ -120,7 +120,7 @@ class ET_TAREA extends CI_Controller
 					echo json_encode(['proceso' => 'Error', 'mensaje' => 'Debe asignar nombre a todas las actividades creadas.']);exit;
 				}
 
-				$this->Model_ET_Tarea->insertar($idTareaGantt, 'NULL', '', $value->name, $value->start, $value->end, 0, $value->progress, 'green', $value->level, $predecesoraTarea, 0, ($key+1));
+				$this->Model_ET_Tarea->insertar($idTareaGantt, 'NULL', '', $value->name, $value->start, $value->end, 0, $value->progress, 'green', $value->level, $predecesoraTarea, 0, ($key+1), $value->depends);
 			}
 
 			$this->db->trans_complete();
