@@ -15,8 +15,8 @@
                            $('#table-Usuarios').dataTable()._fnAjaxUpdate();
                          }
                       });
-                  });  
-
+                  }); 
+                   
                 $("#btnCerrar").on("click",function(event){ 
                    event.prevenDefault(); 
                    $('#form-AddUsuario').trigger("reset"); 

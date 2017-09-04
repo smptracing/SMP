@@ -197,7 +197,7 @@
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;">Usuario: <?= $this->session->userdata('nombreUsuario')?> <br/>Tipo Usuario <?= $this->session->userdata('tipoUsuario')?></a></li>
+                    <li><a href="javascript:;">Usuario: <?= $this->session->userdata('nombreUsuario')?> <br/>Tipo Usuario <?= $this->session->userdata('desc_usuario_tipo')?></a></li>
                     <li>
                       <a href="javascript:;">
                         <span class="badge bg-red pull-right">50%</span>
