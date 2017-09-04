@@ -395,5 +395,64 @@ $.ajax({
 	}
 });
 
+	$.ajax({
+		url:base_url+"/index.php/PrincipalReportes/CantidadPipProvincia",
+		type:"POST",
+		cache:false,
+		success:function(respuesta)
+		{
+			var cantidadpipprovincias=JSON.parse(respuesta);
+			console.log(cantidadpipprovincias);
+			var dom = document.getElementById("container");
+			var myChart = echarts.init(dom);
+			var app = {};
+			option = null;
+			app.title = '坐标轴刻度与标签对齐';
+
+			option = {
+			    color: ['#3398DB'],
+			    tooltip : {
+			        trigger: 'axis',
+			        axisPointer : {          
+			            type : 'shadow'        
+			        }
+			    },
+			    grid: {
+			        left: '3%',
+			        right: '4%',
+			        bottom: '3%',
+			        containLabel: true
+			    },
+			    xAxis : [
+			        {
+			            type : 'category',
+			            data : ['Abancay', 'Andahuaylas', 'Antabamba', 'Aymaraes', 'Chincheros', 'Cotabambas', 'Grau'],
+			            axisTick: {
+			                alignWithLabel: true
+			            }
+			        }
+			    ],
+			    yAxis : [
+			        {
+			            type : 'value'
+			        }
+			    ],
+			    series : [
+			        {
+			            name:'Cantidad de pip',
+			            type:'bar',
+			            barWidth: '60%',
+			            data:cantidadpipprovincias
+			        }
+			    ]
+			};
+			;
+			if (option && typeof option === "object") {
+			    myChart.setOption(option, true);
+			}
+
+			}
+	});
+
 
 });

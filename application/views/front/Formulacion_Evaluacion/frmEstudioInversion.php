@@ -55,7 +55,7 @@
                                                                          <th style="width: 12%"> Función</th>
                                                                          <th style="width: 14%">
                                                                           <i class="fa fa-users"></i>
-                                                                         Reponsable</th>
+                                                                         Responsable</th>
                                                                          <th style="width: 12%"> Avance</th>
                                                                          <th style="width: 13%"> Etapa</th>
                                                                          <th style="width: 1%"></th>

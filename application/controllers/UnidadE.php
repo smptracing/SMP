@@ -13,6 +13,13 @@ class UnidadE extends CI_Controller
         $this->_load_layout('Front/Administracion/frmUnidadEjecutora');
     }
 
+    public function indexunidadEjecutora()
+    {
+        $listaPipUnidadEjecutora=$this->Model_UnidadE->UnidadEjecutoraPipListar();
+        $this->load->view('layout/Reportes/header');
+        $this->load->view('front/Reporte/UnidadEjecutora/index',['listaPipUnidadEjecutora'=>$listaPipUnidadEjecutora]);
+        $this->load->view('layout/Reportes/footer');
+    }
 //----------------------MANTENIMIENTOS DE UNIDAD EJECUTORA-------------------------------------------
     //AGREGAR UNA UNIDAD DE EJECUTORA
       public function AddUnidadE()

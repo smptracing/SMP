@@ -13,6 +13,17 @@ class Sector extends CI_Controller {/* Mantenimiento de sector entidad Y servici
 	{
 		$this->_load_layout('Front/Administracion/frmSectorEntidad');
 	}
+
+	public function ReporteListaSectorPip()
+    {
+        /*$this->load->view('layout/Reportes/header');
+        $this->load->view('front/Reporte/Funcion/index');
+        $this->load->view('layout/Reportes/footer');*/
+        $listaNumPipSector=$this->Model_Sector->SectorPipListar();
+        $this->load->view('layout/Reportes/header');
+        $this->load->view('front/Reporte/Sector/index',['listaNumPipSector'=>$listaNumPipSector]);
+        $this->load->view('layout/Reportes/footer');
+    }
     /* Sector*/
 	 function GetSector()
 	{

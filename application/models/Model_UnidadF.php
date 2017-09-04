@@ -46,4 +46,11 @@ class Model_UnidadF extends CI_Model
     }
     //FIN MODIFICAR DATOS DE UNIDAD EJECUTORA
     //----------------------FIN MANTENIMIENTOS DE UNIDAD EJECUTORA------------
+
+    public function UnidadFormuladoraPipListar()
+    {
+        $ListarPipUnidadFormuladora=$this->db->query("select  UNIDAD_FORMULADORA.nombre_uf ,count (nombre_pi)as CantidadPip, sum(costo_pi)as CostoPip from proyecto_inversion INNER JOIN UNIDAD_FORMULADORA  ON proyecto_inversion.id_uf=UNIDAD_FORMULADORA.id_uf group by UNIDAD_FORMULADORA.nombre_uf");
+
+        return $ListarPipUnidadFormuladora->result();
+    }
 }

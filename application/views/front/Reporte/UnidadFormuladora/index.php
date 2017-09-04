@@ -5,7 +5,7 @@
 			<div class="col-md-12 col-xs-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
-						<h2><b>REPORTE DE PIP POR GRUPO FUNCIONAL</b> </h2>
+						<h2><b>REPORTE DE UNIDAD FORMULADORA</b> </h2>
 						<ul class="nav navbar-right panel_toolbox">
 						</ul>
 						<div class="clearfix"></div>
@@ -15,7 +15,7 @@
 							<ul id="myTab" class="nav nav-tabs" role="tablist">
 								<li role="presentation" class="active">
 									<a href="#tab_Sector"  id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">
-										<b> Grupo Funcional</b>
+										<b> Unidad Formuladora</b>
 									</a>
 								</li>
 							</ul>
@@ -31,20 +31,20 @@
 														<div class="pull-right tableTools-container"></div>
 													</div>
 													<div class="x_content">
-														<table id="table-PipGrupoFuncional"  class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
+														<table id="table-PipUnidadFormuladora"  class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 															<thead>
 																<tr>
-																	<td>Grupo Funcional</td>
+																	<td>Unidad Formuladora</td>
 																	<td >Número de PIP</td>
 																	<td >Costo total</td>
 
 																</tr>
 															</thead>
 															<tbody>
-															<?php foreach($listaNumPipGrupo as $item ){ ?>
+																<?php foreach($listaPipUnidadFormuladora as $item ){ ?>
 															  	<tr>
 																	<td>
-																		<?=$item->nombre_grup_funcional?>
+																		<?=$item->nombre_uf?>
 															    	</td>
 															    	<td>
 																		<?=$item->CantidadPip?>
@@ -75,12 +75,12 @@
 
 $(document).ready(function()
 	{
-		var myTable=$('#table-PipGrupoFuncional').DataTable(
+		var myTable=$('#table-PipUnidadFormuladora').DataTable(
 		{
 			"language":idioma_espanol,
-            "searching": true,
-             "info":     true,
-            "paging":   true,
+            "searching":true,
+            "info":true,
+            "paging":true,
 		});
 			
 				$.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';

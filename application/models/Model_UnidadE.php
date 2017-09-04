@@ -53,4 +53,11 @@ class Model_UnidadE extends CI_Model
         }
     //FIN MODIFICAR DATOS DE UNIDAD EJECUTORA
 //----------------------FIN MANTENIMIENTOS DE UNIDAD EJECUTORA------------
+
+        function UnidadEjecutoraPipListar()
+        {
+            $listaPipUnidadEjecutora=$this->db->query("select  nombre_ue ,count (nombre_pi)as CantidadPip, sum(costo_pi)as CostoPip from proyecto_inversion inner JOIN unidad_ejecutora ON proyecto_inversion.id_ue=unidad_ejecutora.id_ue group by nombre_ue ");
+
+            return $listaPipUnidadEjecutora->result();
+        } 
 }
