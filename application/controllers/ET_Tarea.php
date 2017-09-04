@@ -61,7 +61,7 @@ class ET_TAREA extends CI_Controller
 				'description' => '',
 				'code' => '',
 				'level' => $value->nivel_tarea,
-				'status' => 'STATUS_ACTIVE',
+				'status' => $value->color_tarea,
 				'depends' => $value->dependencia_tarea,
 				'canWrite' => true,
 				'start' => (strtotime($value->fecha_inicio_tarea)*1000),
@@ -120,7 +120,7 @@ class ET_TAREA extends CI_Controller
 					echo json_encode(['proceso' => 'Error', 'mensaje' => 'Debe asignar nombre a todas las actividades creadas.']);exit;
 				}
 
-				$this->Model_ET_Tarea->insertar($idTareaGantt, 'NULL', '', $value->name, $value->start, $value->end, 0, $value->progress, 'green', $value->level, $predecesoraTarea, 0, ($key+1), $value->depends);
+				$this->Model_ET_Tarea->insertar($idTareaGantt, 'NULL', '', $value->name, $value->start, $value->end, 0, $value->progress, $value->status, $value->level, $predecesoraTarea, 0, ($key+1), $value->depends);
 			}
 
 			$this->db->trans_complete();
