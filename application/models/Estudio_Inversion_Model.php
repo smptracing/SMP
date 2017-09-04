@@ -10,15 +10,15 @@ class Estudio_Inversion_Model extends CI_Model
     }
     public function UsuarioPersona($idUsuario)
     {
-        $listarPersonaUsuario = $this->db->query("select * from USUARIO  inner join PERSONA  
-                                on USUARIO.id_persona=PERSONA.id_persona 
-                                where  USUARIO.id_usuario='".$idUsuario."' ");
+        $listarPersonaUsuario = $this->db->query("select USUARIO.id_usuario,USUARIO.usuario,PERSONA.id_persona,CONCAT(PERSONA.nombres,' ',PERSONA.apellido_p,' ',PERSONA.apellido_m)as nombresCompleto,USUARIO_TIPO.desc_usuario_tipo,USUARIO_TIPO.cod_usuario_tipo from USUARIO  inner join PERSONA  on USUARIO.id_persona=PERSONA.id_persona 
+                                                  inner join USUARIO_TIPO  on USUARIO_TIPO.id_usuario_tipo=USUARIO.id_usuario_tipo
+                                                  where USUARIO.id_usuario='".$idUsuario."' ");
          return $listarPersonaUsuario ->result()[0]; 
 
     }
-    public function get_EstudioInversion($idPersona,$TipoUsuario)
+    public function get_EstudioInversion($idPersona,$TipoUsuarioCodigo)
     {
-        if($TipoUsuario==1)
+        if($TipoUsuarioCodigo=='01')
         {
           $listar_estudio_persona='listar_estudio_completo';
         }

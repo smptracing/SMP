@@ -9,6 +9,14 @@ public function __construct(){
 		$this->load->model('Model_Personal');
 		
 	}
+	function ListarTipoUsuario(){
+        if ($this->input->is_ajax_request()) {
+            $datos = $this->Model_Usuario->ListarTipoUsuario();
+            echo json_encode($datos);
+        } else {
+            show_404();
+        }
+	}
 	function GetUsuario(){
         if ($this->input->is_ajax_request()) {
             $datos = $this->Model_Usuario->GetUsuario();
@@ -16,7 +24,6 @@ public function __construct(){
         } else {
             show_404();
         }
-
 	}
 	 function AddUsuario()
 	 {
@@ -24,22 +31,13 @@ public function __construct(){
 	    {
 	      $id_persona=$this->input->post("comboPersona");
 	      $txt_usuario =$this->input->post("txt_usuario");
-	      $cbb_TipoUsuario =$this->input->post("cbb_TipoUsuario");
-	      $activo =1;
 	      $txt_contrasenia =sha1($this->input->post("txt_contrasenia"));
-	      $fech_reg = "";
-		  $fech_mod = "";
-		  $fech_elim = "";
-		  $usr_reg ="";
-		  $usr_mod ="";
-		  $usr_elim ="";
-		  $fl_elim ="";
-		  $tipoUsuario ="1";
+	      $cbb_TipoUsuario =$this->input->post("cbb_TipoUsuario");
 	     
-	     if($this->Model_Usuario->AddUsuario($id_persona,$txt_usuario,$cbb_TipoUsuario,$activo,$txt_contrasenia,$fech_reg,$fech_mod,$fech_elim,$usr_reg,$usr_mod,$usr_elim,$fl_elim,$tipoUsuario) == true)
+	     if($this->Model_Usuario->AddUsuario($id_persona,$txt_usuario,$txt_contrasenia,$cbb_TipoUsuario) == true)
 		       echo "Se añadio un nuevo usuario";
 		      else
-		      echo "Se añadio  un nuevo usuario";  
+		      echo "Se añadio  un nuevo usuario";   
 		 } 
 	     else
 	     {

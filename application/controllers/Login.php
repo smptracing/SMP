@@ -36,7 +36,7 @@ class Login extends CI_Controller {
             $usuario = $query->row();
             $datosSession = array('nombreUsuario' => $usuario->usuario,
                                   'idUsuario' => $usuario->id_usuario,                                  
-                                  'tipoUsuario' => $usuario->tipo);
+                                  'tipoUsuario' => $usuario->id_usuario_tipo);
             $this->session->set_userdata($datosSession);
             redirect('Inicio');
         }

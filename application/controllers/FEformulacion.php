@@ -20,7 +20,7 @@ class FEformulacion extends CI_Controller
             $idUsuario    = $this->session->userdata('idUsuario');
             $dataIdPersona= $this->Estudio_Inversion_Model->UsuarioPersona($idUsuario);
             $idPersona=$dataIdPersona->id_persona;
-            $TipoUsuario=$dataIdPersona->administrador;
+            $TipoUsuario=$dataIdPersona->cod_usuario_tipo;
 
             if (empty($id_est_inve)) {
                 $id_est_inve = '0';
