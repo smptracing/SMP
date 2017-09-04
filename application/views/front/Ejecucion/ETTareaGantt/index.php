@@ -448,7 +448,7 @@
 			<td class="gdfCell"><input type="text" name="duration" autocomplete="off" value="(#=obj.duration#)"></td>
 			<td class="gdfCell"><input type="text" name="progress" class="validated" entrytype="PERCENTILE" autocomplete="off" value="(#=obj.progress?obj.progress:''#)" (#=obj.progressByWorklog?"readOnly":""#)></td>
 			<td class="gdfCell requireCanSeeDep"><input type="text" name="depends" autocomplete="off" value="(#=obj.depends#)" (#=obj.hasExternalDep?"readonly":""#)></td>
-			<td class="gdfCell taskAssigs">(#=obj.getAssigsString()#)</td>
+			<td class="gdfCell" ondblclick="adminDetailActivity(event, '(#=obj.id#)');">(#=obj.getAssigsString()#)</td>
 			</tr>
 		--></div>
 
@@ -551,40 +551,16 @@
 			</tr>
 			</table>
 
-			<h2>Datos adicionales de la actividad</h2>
-			<label for="txtObservacion">Observación</label>
-			<textarea name="txtObservacion" id="txtObservacion" rows="3" style="resize: none;width: 100%;"></textarea>
-			<div style="text-align: right;">
-				<span class="button first">Agregar observación</span>
-			</div>
-			<div id="divObservacion">
-				<ul>
-					<li>
-						<b>Observacion: </b>
-						Esta es la observación que se está poniendo en la actividad.
-						<ul>
-							<li>
-								<i>
-									<b>Levantamiento de la observación: </b>
-									Este es el levantamiento de la observación descrita en la parte superior.
-								</i>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<b>Observacion: </b>
-						Esta es la observación que se está poniendo en la actividad.
-						<ul>
-							<li>
-								<i>
-									<b>Levantamiento de la observación: </b>
-									Este es el levantamiento de la observación descrita en la parte superior.
-								</i>
-							</li>
-						</ul>
-					</li>
-				</ul>
-			</div>
+			<h2>Assignments</h2>
+			<table  cellspacing="1" cellpadding="0" width="100%" id="assigsTable">
+			<tr>
+			<th style="width:100px;">name</th>
+			<th style="width:70px;">Role</th>
+			<th style="width:30px;">est.wklg.</th>
+			<th style="width:30px;" id="addAssig"><span class="teamworkIcon" style="cursor: pointer">+</span></th>
+			</tr>
+			</table>
+
 			<div style="text-align: right; padding-top: 20px">
 			<span id="saveButton" class="button first" onClick="$(this).trigger('saveFullEditor.gantt');">Save</span>
 			</div>
@@ -623,5 +599,36 @@
 			</tr>
 		--></div>
 	</div>
+	<div id="divDialogoGeneralGantt" style="background-color: #ffffff;border: 1px solid #000000;display: none;height: 400px;width: 600px;z-index: 1000;position: fixed;left: 100px;top: 100px;">
+		
+	</div>
+	<script>
+		function adminDetailActivity(event, taskId)
+		{
+			event.preventDefault();
+
+			$('#divDialogoGeneralGantt').hide();
+
+			if(taskId.substring(0, 3)=='tmp')
+			{
+				swal(
+				{
+					title: '',
+					text: 'Debe guardar los datos actuales antes de asignar esta información.',
+					type: 'error' 
+				},
+				function(){});
+
+				return;
+			}
+
+			$('#divDialogoGeneralGantt').show();return;
+
+			paginaAjax('divDialogoGeneralGantt', { taskId : taskId }, url, 'POST', null, function()
+			{
+				$('#divDialogoGeneralGantt').show();
+			}, false, true);
+		}
+	</script>
 </body>
 </html>
