@@ -28,5 +28,12 @@ class Model_ET_Tarea extends CI_Model
 
 		return $data->result();
 	}
+
+	public function ETTareaPorIdTareaGanttYNumeracion($idTareaGantt, $numeracion)
+	{
+		$data=$this->db->query("select * from ET_TAREA where id_tarea_gantt=".$idTareaGantt." and numeracion=".$numeracion);
+
+		return count($data->result())==0 ? null : $data->result()[0];
+	}
 }
 ?>
