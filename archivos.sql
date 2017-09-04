@@ -1,7 +1,28 @@
 USE [DBSMP]
 GO
 /****** Object:  StoredProcedure [dbo].[sp_ListarEstudioFormulacion]    Script Date: 04/09/2017 07:52:32 a.m. ******/
-SET ANSI_NUapa VARCHAR(100);
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+--select * from RESPONSABLE_ESTUDIO where id_est_inv = 48
+-- exec sp_ListarEstudioFormulacion @id_estudio_inv=0, @id_persona=6, @administrador = 1
+-- select * from ASIGNACION_PERSONA where id_etapa_estudio = 71
+-- select * from ETAPA_ESTUDIO where id_est_inv = 45
+-- delete from SITUACION_ACTUAL where id_etapa_estudio = 64
+-- select * from SITUACION_ACTUAL where id_etapa_estudio = 64
+-- select * from ESTUDIO_INVERSION where id_est_inv = 48
+
+--select * from RESPONSABLE_ESTUDIO where id_persona = 21
+--select * from ETAPA_ESTUDIO where id_est_inv = 48
+
+ALTER PROC [dbo].[sp_ListarEstudioFormulacion] 
+@id_estudio_inv INT NULL,
+@id_persona INT,
+@administrador BIT
+AS
+     BEGIN
+         DECLARE @desc_etapa VARCHAR(100);
          SET @desc_etapa = 'Formulación';
          SELECT pip.id_pi,
                 EI.id_est_inv,
