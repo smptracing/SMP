@@ -426,7 +426,7 @@
 			<th class="gdfColHeader gdfResizable" style="width:50px;">Dur.</th>
 			<th class="gdfColHeader gdfResizable" style="width:20px;">%</th>
 			<th class="gdfColHeader gdfResizable requireCanSeeDep" style="width:50px;">Dep.</th>
-			<th class="gdfColHeader gdfResizable" style="width:1000px; text-align: left; padding-left: 10px;">Responsable</th>
+			<th class="gdfColHeader gdfResizable" style="width:1000px; text-align: left; padding-left: 10px;">Detalles de la actividad</th>
 			</tr>
 			</thead>
 			</table>
@@ -599,7 +599,7 @@
 			</tr>
 		--></div>
 	</div>
-	<div id="divDialogoGeneralGantt" style="background-color: #ffffff;border: 1px solid #000000;display: none;height: 400px;width: 600px;z-index: 1000;position: fixed;left: 100px;top: 100px;">
+	<div id="divDialogoGeneralGantt" style="background-color: #ffffff;border: 1px solid #000000;display: none;height: 400px;overflow-y: scroll;width: 700px;z-index: 1000;padding: 7px;position: fixed;left: 50px;top: 100px;">
 		
 	</div>
 	<script>
@@ -622,9 +622,7 @@
 				return;
 			}
 
-			$('#divDialogoGeneralGantt').show();return;
-
-			paginaAjax('divDialogoGeneralGantt', { taskId : taskId }, url, 'POST', null, function()
+			paginaAjax('divDialogoGeneralGantt', { idTareaET : taskId }, '<?=base_url()?>index.php/ET_Tarea/administrarDetalleETTarea', 'POST', null, function()
 			{
 				$('#divDialogoGeneralGantt').show();
 			}, false, true);
