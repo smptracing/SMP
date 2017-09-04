@@ -49,7 +49,7 @@
 																		<?=$item->CantidadPip?>
 															    	</td>	
 															    	<td>
-																		<?=$item->CostoPip?>
+																		S/. <?=$item->CostoPip?>
 															    	</td>
 															  </tr>
 															<?php } ?>

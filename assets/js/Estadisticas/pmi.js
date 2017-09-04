@@ -336,5 +336,254 @@ $(document).on('ready', function()
    // MontoProgramadoPip();
     EstadistMontosPipProv();
     EstadisticasPorCiclosInversion();
-     listar_aniocartera_r();
+    listar_aniocartera_r();
+
+
+     $.ajax({
+        url:base_url+"index.php/PrincipalPmi/EstadisticaPipProvinc",
+        dataType:"json",
+        type:"POST",
+        cache:false,
+        success:function(respuesta)
+        {
+            var arrayNaturalezaInv=new Array();
+            $.each(respuesta,function(index,element)
+            {
+                arrayNaturalezaInv[index]=element.Cantidadpip;
+            });
+
+            var dom = document.getElementById("PipProvincias");
+            var myChart = echarts.init(dom);
+            var app = {};
+            option = null;
+            option = {
+                title : {
+                    text: '',
+                    subtext: '',
+                    x:'center'
+                },
+                tooltip : {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                },
+                legend: {
+                    orient: 'horizontal',
+                    left: 'left',
+                    data: ['Abancay','Andahuaylas','Antabamba','Aymaraes','Chincheros','Cotabambas','Grau']
+                },
+
+                series : [
+                {
+                    name: 'Naturaleza Inversion',
+                    type: 'pie',
+                    radius : '55%',
+                    center: ['50%', '60%'],
+                    data:[
+                    {value:arrayNaturalezaInv[0], name:'Abancay'},
+                    {value:arrayNaturalezaInv[1], name:'Andahuaylas'},
+                    {value:arrayNaturalezaInv[2], name:'Antabamba'},
+                    {value:arrayNaturalezaInv[3], name:'Aymaraes'},
+                    {value:arrayNaturalezaInv[4], name:'Chincheros'},
+                    {value:arrayNaturalezaInv[5], name:'Cotabambas'},
+                    {value:arrayNaturalezaInv[6], name:'Grau'}
+                    ],
+                    itemStyle: {
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+                ]
+            };
+            if (option && typeof option === "object") 
+            {
+                myChart.setOption(option, true);
+        }
+    }
+});
+
+$.ajax({
+        url:base_url+"/index.php/PrincipalPmi/EstadisticaMontoPipProvincias",
+        type:"POST",
+        cache:false,
+        success:function(respuesta)
+        {
+            var cantidadpipprovincias=JSON.parse(respuesta);
+            console.log(cantidadpipprovincias);
+            var dom = document.getElementById("MontoPipProvincia");
+            var myChart = echarts.init(dom);
+            var app = {};
+            option = null;
+            app.title = 'MONTOS DE LOS PIP POR PROVINCIAS';
+
+            option = {
+                color: ['#45B39D'],
+                tooltip : {
+                    trigger: 'axis',
+                    axisPointer : {          
+                        type : 'shadow'        
+                    }
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                xAxis : [
+                    {
+                        type : 'category',
+                        data : ['Abancay', 'Andahua', 'Antabamba', 'Aymaraes', 'Chincheros', 'Cotab', 'Grau'],
+                        axisTick: {
+                            alignWithLabel: true
+                        }
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value'
+                    }
+                ],
+                series : [
+                    {
+                        name:'Monto de pip',
+                        type:'bar',
+                        barWidth: '60%',
+                        data:cantidadpipprovincias
+                    }
+                ]
+            };
+            ;
+            if (option && typeof option === "object") {
+                myChart.setOption(option, true);
+            }
+
+            }
+    });
+
+ $.ajax({
+        url:base_url+"index.php/PrincipalPmi/EstadisticaPipEstadoCiclo",
+        dataType:"json",
+        type:"POST",
+        cache:false,
+        success:function(respuesta)
+        {
+            var arrayNaturalezaInv=new Array();
+            $.each(respuesta,function(index,element)
+            {
+                arrayNaturalezaInv[index]=element.Num_Proyectos;
+            });
+
+            var dom = document.getElementById("NumPipCicloInversion");
+            var myChart = echarts.init(dom);
+            var app = {};
+            option = null;
+            option = {
+                title : {
+                    text: '',
+                    subtext: '',
+                    x:'center'
+                },
+                tooltip : {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                },
+                legend: {
+                    orient: 'horizontal',
+                    left: 'left',
+                    data: ['Idea','Formulación y Evaluación','Viable','Ejecución','Cerrados','Cotabambas','Grau']
+                },
+
+                series : [
+                {
+                    name: 'Naturaleza Inversion',
+                    type: 'pie',
+                    radius : '55%',
+                    center: ['50%', '60%'],
+                    data:[
+                    {value:arrayNaturalezaInv[0], name:'Idea'},
+                    {value:arrayNaturalezaInv[1], name:'Formulación y Evaluación'},
+                    {value:arrayNaturalezaInv[2], name:'Viable'},
+                    {value:arrayNaturalezaInv[3], name:'Ejecución'},
+                    {value:arrayNaturalezaInv[4], name:'Cerrados'},
+                    ],
+                    itemStyle: {
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+                ]
+            };
+            if (option && typeof option === "object") 
+            {
+                myChart.setOption(option, true);
+        }
+    }
+});
+
+$.ajax({
+        url:base_url+"/index.php/PrincipalPmi/EstadisticaMontoPipCicloInversion",
+        type:"POST",
+        cache:false,
+        success:function(respuesta)
+        {
+            var cantidadpipprovincias=JSON.parse(respuesta);
+            console.log(cantidadpipprovincias);
+            var dom = document.getElementById("MontoPipCicloInversion");
+            var myChart = echarts.init(dom);
+            var app = {};
+            option = null;
+            app.title = 'MONTOS DE PROYECTOS POR CICLO DE INVERSION';
+
+            option = {
+                color: ['#F1948A'],
+                tooltip : {
+                    trigger: 'axis',
+                    axisPointer : {          
+                        type : 'shadow'        
+                    }
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                xAxis : [
+                    {
+                        type : 'category',
+                        data : ['Idea', 'Form. y Eval.', 'Viable', 'Ejecución', 'Cerrados'],
+                        axisTick: {
+                            alignWithLabel: true
+                        }
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value'
+                    }
+                ],
+                series : [
+                    {
+                        name:'Monto de pip',
+                        type:'bar',
+                        barWidth: '60%',
+                        data:cantidadpipprovincias
+                    }
+                ]
+            };
+            ;
+            if (option && typeof option === "object") {
+                myChart.setOption(option, true);
+            }
+
+            }
+    });
+
+
 });

@@ -82,11 +82,61 @@
                 </div>
             </div>-->
 
-    <div class="row">
+     <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h5>Cantidad de PIP Por Provincias</h5>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div id="PipProvincias" style="height:350px;"></div>
+                    </div>
+                </div>
+            </div>
+               <div class="col-md-8 col-sm-4 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h5>Monto de PIP Por Provincias</h5>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div id="MontoPipProvincia" style="height:350px;"></div>
+                    </div>
+                </div>
+            </div>
+            
+             <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h5>Cantidad de PIP Por Ciclo de Inversion</h5>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div id="NumPipCicloInversion" style="height:350px;"></div>
+                    </div>
+                </div>
+            </div>
+               <div class="col-md-8 col-sm-4 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h5>Monto de PIP Por Ciclo de inversión</h5>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div id="MontoPipCicloInversion" style="height:350px;"></div>
+                    </div>
+                </div>
+            </div>
+
+    <!--<div class="row">
         <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="x_panel tile fixed_height_320">
                 <div class="x_title">
-                    <h2>Proyectos por ciclos de inversion</h2>
+                    <h2>Montos de Pip por povincias</h2>
                     <div class="clearfix"></div>
                 </div>
                 <div id="panel_estadistica_ciclo_inversion" class="x_content"></div>
@@ -174,7 +224,7 @@
                     <table id="table-estaditMontPIPProv" class="table table-responsive table-condensed" width="100%"></table>
                 </div>
             </div>
-        </div>
+        </div>-->
         <div class="row">
             <div class="col-md-4 col-sm-4 col-xs-12">
                 <div class="x_panel">
@@ -322,7 +372,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
             <div class="col-md-8 col-sm-8 col-xs-12">
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">

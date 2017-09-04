@@ -46,7 +46,7 @@ class PrincipalPmi extends CI_Controller
         }
     }
 
-    public function EstadisticaMontoPipProvincias()
+    /*public function EstadisticaMontoPipProvincias()
     {
         if ($this->input->is_ajax_request()) {
             $datos = $this->Model_DashboardPmi->EstadisticaMontoPipProvincias();
@@ -54,8 +54,18 @@ class PrincipalPmi extends CI_Controller
         } else {
             show_404();
         }
+    }*/
+    public function EstadisticaMontoPipProvincias()
+    {
+     if ($this->input->is_ajax_request()) {
+            $datos = $this->Model_DashboardPmi->EstadisticaMontoPipProvincias();
+            foreach ($datos as $key => $Itemp) {
+               $MontopipProvincias[$key]=$Itemp->MontoProyecto;
+            }
+            echo json_encode($MontopipProvincias);
+        } else
+        show_404();
     }
-
     public function EstadisticaPipEstadoCiclo()
     {
         if ($this->input->is_ajax_request()) {
@@ -65,6 +75,17 @@ class PrincipalPmi extends CI_Controller
             show_404();
         }
 
+    }
+    public function EstadisticaMontoPipCicloInversion()
+    {
+       if ($this->input->is_ajax_request()) {
+            $datos = $this->Model_DashboardPmi->EstadisticaMontoPipCicloInversion();
+            foreach ($datos as $key => $Itemp) {
+               $MontopipCiclo[$key]=$Itemp->MontoProyecto;
+            }
+            echo json_encode($MontopipCiclo);
+        } else
+        show_404();
     }
 
     public function GetDatosUbicacion()

@@ -153,11 +153,12 @@ $.ajax({
 				left: 'left',
 					data: ['Donaciones y transferencias','Recursos Determinados','Recursos Directamente Recaudados','Recursos ordinarios','Recursos Por Operaciones Oficiales de Credito']
 			},
+			
 		    series: [
 		        {
-		            name:'访问来源',
+		            name:'Fuente de Financiamiento',
 		            type:'pie',
-		            radius: ['27%', '50%'],
+		            radius: ['20%', '40%'],
 		            avoidLabelOverlap: false,
 		            label: {
 		                normal: {
@@ -367,7 +368,7 @@ $.ajax({
 				{
 					name: 'Rubro Ejecucion',
 					type: 'pie',
-					radius : '55%',
+					radius : '45%',
 					center: ['50%', '60%'],
 					data:[
 					{value:arrayNumPipRubro[0], name:'Canon y sobrecanon'},
