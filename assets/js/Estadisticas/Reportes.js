@@ -456,4 +456,133 @@ $.ajax({
 	});
 
 
+	$.ajax({
+		url:base_url+"/index.php/PrincipalReportes/CantidadPipProvincia",
+		type:"POST",
+		cache:false,
+		success:function(respuesta)
+		{
+				var cantidadpipprovincias=JSON.parse(respuesta);
+			console.log(cantidadpipprovincias);
+			var dom = document.getElementById("dispersion");
+			var myChart = echarts.init(dom);
+			var dataBJ = [
+		    [1,55,9,56,0.46,18,6,"hola"],
+		    [2,25,11,21,0.65,34,9,"prueba"]
+		];
+
+		var schema = [
+		    {name: 'date', index: 0, text: '日'},
+		    {name: 'AQIindex', index: 1, text: 'AQI指数'},
+		    {name: 'PM25', index: 2, text: 'PM2.5'},
+		    {name: 'PM10', index: 3, text: 'PM10'},
+		    {name: 'CO', index: 4, text: '一氧化碳（CO）'},
+		    {name: 'NO2', index: 5, text: '二氧化氮（NO2）'},
+		    {name: 'SO2', index: 6, text: '二氧化硫（SO2）'}
+		];
+
+
+		var itemStyle = {
+		    normal: {
+		        opacity: 0.8,
+		        shadowBlur: 10,
+		        shadowOffsetX: 0,
+		        shadowOffsetY: 0,
+		        shadowColor: 'rgba(0, 0, 0, 0.5)'
+		    }
+		};
+
+		option = {
+		    backgroundColor: 'white',
+		    color: [
+		        '#dd4444', '#fec42c', '#80F1BE'
+		    ],
+		    legend: {
+		        y: 'top',
+		        data: ['北京'],
+		        textStyle: {
+		            color: 'red',
+		            fontSize: 16
+		        }
+		    },
+		    grid: {
+		        x: '10%',
+		        x2: 150,
+		        y: '18%',
+		        y2: '10%'
+		    },
+		    tooltip: {
+		        padding: 10,
+		        backgroundColor: '#222',
+		        borderColor: '#777',
+		        borderWidth: 1,
+		        formatter: function (obj) {
+		            var value = obj.value;
+		            return '<div style="border-bottom: 1px solid rgba(255,255,255,.3); font-size: 18px;padding-bottom: 7px;margin-bottom: 7px">'
+		                + obj.seriesName + ' ' + value[0] + '日：'
+		                + value[7]
+		                + '</div>'
+		                + schema[1].text + '：' + value[1] + '<br>'
+		                + schema[2].text + '：' + value[2] + '<br>'
+		                + schema[3].text + '：' + value[3] + '<br>'
+		                + schema[4].text + '：' + value[4] + '<br>'
+		                + schema[5].text + '：' + value[5] + '<br>'
+		                + schema[6].text + '：' + value[6] + '<br>';
+		        }
+		    },
+		    xAxis: {
+		        type: 'value',
+		        name: '日期',
+		        nameGap: 16,
+		        nameTextStyle: {
+		            color: 'red',
+		            fontSize: 14
+		        },
+		        max: 31,
+		        splitLine: {
+		            show: false
+		        },
+		        axisLine: {
+		            lineStyle: {
+		                color: 'black'
+		            }
+		        }
+		    },
+		    yAxis: {
+		        type: 'value',
+		        name: 'AQI指数',
+		        nameLocation: 'end',
+		        nameGap: 20,
+		        nameTextStyle: {
+		            color: 'red',
+		            fontSize: 16
+		        },
+		        axisLine: {
+		            lineStyle: {
+		                color: 'black'
+		            }
+		        },
+		        splitLine: {
+		            show: false
+		        }
+		    },
+		     series: [
+		        {
+		            name: '北京',
+		            type: 'scatter',
+		            itemStyle: itemStyle,
+		            data: dataBJ
+		        }
+		    ]
+		};
+			
+			if (option && typeof option === "object") {
+			    myChart.setOption(option, true);
+			}
+
+			}
+	});
+		
+
+
 });
