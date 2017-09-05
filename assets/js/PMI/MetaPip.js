@@ -1,3 +1,31 @@
+function formatearNumero(valor){
+    var nums = new Array();
+    var simb = " "; 
+    var decimal='';
+    valor=valor.split(".");
+    if(valor.length>1){
+      decimal="."+(valor[1]).toString();
+    }
+    valor=valor[0];
+    valor = valor.toString();
+    valor = valor.replace(/\D/g, "");  
+    nums = valor.split(""); 
+    var long = nums.length - 1; // Se saca la longitud del arreglo
+    var patron = 3; //Indica cada cuanto se ponen las comas
+    var prox = 2; // Indica en que lugar se debe insertar la siguiente coma
+    var res = "";
+ 
+    while (long > prox) {
+        nums.splice((long - prox),0,simb); //Se agrega la coma
+        prox += patron; //Se incrementa la posición próxima para colocar la coma
+    }
+ 
+    for (var i = 0; i <= nums.length-1; i++) {
+        res += nums[i]; //Se crea la nueva cadena para devolver el valor formateado
+    }
+ 
+    return res+decimal;
+}
 $(document).on("ready" ,function(){
      lista_formulacion_evaluacion();/*llamar a mi datatablet listar proyectosinverision*/
      lista_ejecucion();
@@ -87,6 +115,7 @@ $(document).on("ready" ,function(){
 
 });
 //listar proyectos de inversion en formulacion y evaluacion
+
  var lista_formulacion_evaluacion=function()
 {
        var table=$("#table_formulacion_evaluacion").DataTable({
@@ -102,8 +131,11 @@ $(document).on("ready" ,function(){
                                     {"defaultContent":"<td>#</td>"},
                                     {"data":"codigo_unico_pi"},
                                     {"data":"nombre_pi"},
-                                    {"data":"costo_pi"},
+                                    {"data":"costo_pi"  , render: function (data, type, row) {
+                    return "<div style='float:right;'>S/. "+formatearNumero(data)+"</div>";
+                    }},
                                     {"data":"nombre_estado_ciclo"},
+
                                   /*  {"data": function (data, type, dataToSet) {
 
                                       if (data.estado_programado !='0') //estap programado
@@ -597,3 +629,5 @@ var  AddMeta_Pi=function(tbody,table){
                         "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                     }
                 }
+
+
