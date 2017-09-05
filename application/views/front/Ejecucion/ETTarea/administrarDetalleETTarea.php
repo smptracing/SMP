@@ -37,17 +37,13 @@
 						<div style="padding-left: 20px;font-size: 12px;">
 							<b>Levantamiento: </b><span id="spanDescripcionLevantamientoTObservacion<?=$value->id_tarea_observacion?>"><?=$value->levantamiento_tobservacion?></span>
 							<br>
-							<?php if($value->levantamiento_tobservacion!=''){ ?>
-								<a href="#" style="color: red;" onclick="eliminarLevantamientoObservacion(<?=$value->id_tarea_observacion?>, this);">Eliminar levantamiento de la obs.</a>
-							<?php } ?>
+							<a id="enlaceEliminarLevantamientoObservacion<?=$value->id_tarea_observacion?>" href="#" style="color: red;<?=$value->levantamiento_tobservacion=='' ? 'display: none;' : ''?>" onclick="eliminarLevantamientoObservacion(<?=$value->id_tarea_observacion?>, this);">Eliminar levantamiento de la obs.</a>
 							<textarea id="txtDescripcionLevantamientoObservacion<?=$value->id_tarea_observacion?>" rows="4" style="display: none;resize: none;width: 100%;" placeholder="Descripción del levantamiento de observación"></textarea>
 						</div>	
 					</td>
 					<td><?=$value->fecha_tobservacion?></td>
 					<td style="text-align: center;font-size: 12px;">
-						<?php if($value->levantamiento_tobservacion==''){ ?>
-							<a href="#" style="color: blue;display: block" onclick="levantarObservacion(<?=$value->id_tarea_observacion?>, this);">Levantar obs.</a>
-						<?php } ?>
+						<a href="#" style="color: blue;display: block" onclick="levantarObservacion(<?=$value->id_tarea_observacion?>, this);">Levantar obs.</a>
 						<a href="#" style="color: red;display: block;" onclick="eliminarObservacion(<?=$value->id_tarea_observacion?>, this);">Eliminar</a>
 					</td>
 				</tr>
@@ -65,6 +61,19 @@
 <script>
 	function registrarObservacion()
 	{
+		if($('#txtObservacion').val().trim()=='')
+		{
+			swal(
+			{
+				title: '',
+				text: 'El campo observación es obligatorio.',
+				type: 'error'
+			},
+			function(){});
+
+			return;
+		}
+
 		if(confirm('Confirmar operación'))
 		{
 			paginaAjaxJSON({ idTareaET : <?=$etTarea->id_tarea_et?>, descripcionObservacion : $('#txtObservacion').val().trim() }, '<?=base_url()?>index.php/ET_Tarea_Observacion/insertar', 'POST', null, function(objectJSON)
@@ -84,12 +93,13 @@
 					return false;
 				}
 
-				var htmlTemp='<tr>'+
+				var htmlTemp='<tr style="filaObservacion'+objectJSON.ultimoIdETTareaObservacion+'">'+
 					'<td>'+
 						$('#txtObservacion').val().trim()+
 						'<div style="padding-left: 20px;font-size: 12px;">'+
 							'<b>Levantamiento: </b><span id="spanDescripcionLevantamientoTObservacion'+objectJSON.ultimoIdETTareaObservacion+'"></span>'+
 							'<br>'+
+							'<a id="enlaceEliminarLevantamientoObservacion'+objectJSON.ultimoIdETTareaObservacion+'" href="#" style="color: red;display: none;" onclick="eliminarLevantamientoObservacion('+objectJSON.ultimoIdETTareaObservacion+', this);">Eliminar levantamiento de la obs.</a>'+
 							'<textarea id="txtDescripcionLevantamientoObservacion'+objectJSON.ultimoIdETTareaObservacion+'" rows="4" style="display: none;resize: none;width: 100%;" placeholder="Descripción del levantamiento de observación"></textarea>'+
 						'</div>'+
 					'</td>'+
@@ -140,6 +150,7 @@
 		if($('#'+idTextAreaTemp).css('display')=='none')
 		{
 			$('#'+idTextAreaTemp).show();
+			$('#'+idTextAreaTemp).val($('#spanDescripcionLevantamientoTObservacion'+idTareaObservacion).text());
 			$(element).text('Guardar');
 		}
 		else
@@ -175,9 +186,9 @@
 				}
 
 				$('#spanDescripcionLevantamientoTObservacion'+idTareaObservacion).text($('#'+idTextAreaTemp).val().trim());
-
+				$('#enlaceEliminarLevantamientoObservacion'+idTareaObservacion).show();
 				$('#'+idTextAreaTemp).hide();
-				$(element).remove();
+				$(element).text('Levantar obs.');
 			}, false, true);
 		}
 	}
@@ -204,7 +215,7 @@
 			}
 
 			$('#spanDescripcionLevantamientoTObservacion'+idTareaObservacion).text('');
-			$(element).remove();
+			$('#enlaceEliminarLevantamientoObservacion'+idTareaObservacion).hide();
 		}, false, true);
 	}
 </script>
