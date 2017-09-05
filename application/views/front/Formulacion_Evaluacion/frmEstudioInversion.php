@@ -51,10 +51,10 @@
                                                                        <tr>
                                                                        <th style="width: 1%">Código</th>
                                                                        <th style="width: 1%">#</th>
-                                                                         <th style="width: 40%"><i class="fa fa-thumb-tack"></i>Nombre</th>
+                                                                         <th style="width: 80%"><i class="fa fa-thumb-tack"></i>Nombre</th>
                                                                          <th style="width: 12%"> Función</th>
-                                                                         <th style="width: 14%">
-                                                                          <i class="fa fa-users"></i>
+                                                                         <th style="width: 20%">
+                                                                        <i class="fa fa-users"></i>
 
                                                                          Coordinador</th>
 
