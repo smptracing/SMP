@@ -20,13 +20,10 @@
 								</li>
 							</ul>
 							<div id="myTabContent" class="tab-content">
-								<!-- /Contenido del sector -->
 								<div role="tabpanel" class="tab-pane fade active in" id="tab_Sector" aria-labelledby="home-tab">
-									<!-- /tabla de sector desde el row -->
 									<div class="row">  
 										<div class="col-md-12 col-sm-12 col-xs-12">
 											<div class="x_panel">
-
 													<div class="clearfix">
 														<div class="pull-right tableTools-container"></div>
 													</div>
@@ -60,7 +57,32 @@
 											</div>
 										</div>
 									</div>
-										<!-- / fin tabla de sector desde el row -->
+									<row>
+										<div class="col-md-12 col-sm-12 col-xs-12">
+							                <div class="x_panel">
+							                    <div class="x_title">
+							                        <h5>Reporte en función al número de PIP</h5>
+
+							                        <div class="clearfix"></div>
+							                    </div>
+							                    <div class="x_content">
+							                        <div id="reporteFuncionNumeroPip" style="height:350px;"></div>
+							                    </div>
+							                </div>
+							            </div>
+							            <div class="col-md-12 col-sm-12 col-xs-12">
+							                <div class="x_panel">
+							                    <div class="x_title">
+							                        <h5>Reporte en función al Costo Total</h5>
+
+							                        <div class="clearfix"></div>
+							                    </div>
+							                    <div class="x_content">
+							                        <div id="reporteFuncionCosto" style="height:350px;"></div>
+							                    </div>
+							                </div>
+							            </div>
+									</row>
 								</div>
 							</div>
 						</div>

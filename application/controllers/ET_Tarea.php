@@ -1,13 +1,17 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class ET_TAREA extends CI_Controller
+class ET_Tarea extends CI_Controller
 {
 	public function __construct()
 	{
 		parent::__construct();
 
 		$this->load->model('Model_ET_Tarea');
+		$this->load->model('Model_ET_Tarea_Observacion');
+		$this->load->model('Model_ET_Responsable_Tarea');
+		$this->load->model('Model_ET_Documento_Ejecucion');
+		$this->load->model('Model_Personal');
 	}
 
 	private function number_of_working_days($from, $to)
@@ -127,6 +131,21 @@ class ET_TAREA extends CI_Controller
 
 			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Actividades guardadas correctamente.']);exit;
 		}
+	}
+
+	public function administrarDetalleETTarea()
+	{
+		$idTareaET=$this->input->post('idTareaET');
+
+		$etTarea=$this->Model_ET_Tarea->ETTareaPorIdTareaET($idTareaET);
+
+		$listaPersona=$this->Model_Personal->verTodo();
+
+		$listaETTareaObservacion=$this->Model_ET_Tarea_Observacion->ETTareaObservacionPorIdTareaET($idTareaET);
+		$listaETResponsableTarea=$this->Model_ET_Responsable_Tarea->ETResponsableTareaPorIdTareaET($idTareaET);
+		$listaETDocumentoEjecucion=$this->Model_ET_Documento_Ejecucion->ETDocumentoEjecucionPorIdTareaET($idTareaET);
+
+		return $this->load->view('Front/Ejecucion/ETTarea/administrardetalleettarea', ['listaETTareaObservacion' => $listaETTareaObservacion, 'listaETResponsableTarea' => $listaETResponsableTarea, 'listaETDocumentoEjecucion' => $listaETDocumentoEjecucion, 'etTarea' => $etTarea, 'listaPersona' => $listaPersona]);
 	}
 }
 ?>

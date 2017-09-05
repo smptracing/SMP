@@ -22,6 +22,13 @@ class Model_ET_Tarea extends CI_Model
 		return true;
 	}
 
+	public function ETTareaPorIdTareaET($idTareaET)
+	{
+		$data=$this->db->query("select * from ET_TAREA where id_tarea_et=".$idTareaET);
+
+		return count($data->result())==0 ? null : $data->result()[0];
+	}
+
 	public function ETTareaPorIdTareaGantt($idTareaGantt)
 	{
 		$data=$this->db->query("select * from ET_TAREA where id_tarea_gantt=".$idTareaGantt);

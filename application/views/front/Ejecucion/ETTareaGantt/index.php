@@ -426,7 +426,7 @@
 			<th class="gdfColHeader gdfResizable" style="width:50px;">Dur.</th>
 			<th class="gdfColHeader gdfResizable" style="width:20px;">%</th>
 			<th class="gdfColHeader gdfResizable requireCanSeeDep" style="width:50px;">Dep.</th>
-			<th class="gdfColHeader gdfResizable" style="width:1000px; text-align: left; padding-left: 10px;">Responsable</th>
+			<th class="gdfColHeader gdfResizable" style="width:1000px; text-align: left; padding-left: 10px;">Detalles de la actividad</th>
 			</tr>
 			</thead>
 			</table>
@@ -448,7 +448,7 @@
 			<td class="gdfCell"><input type="text" name="duration" autocomplete="off" value="(#=obj.duration#)"></td>
 			<td class="gdfCell"><input type="text" name="progress" class="validated" entrytype="PERCENTILE" autocomplete="off" value="(#=obj.progress?obj.progress:''#)" (#=obj.progressByWorklog?"readOnly":""#)></td>
 			<td class="gdfCell requireCanSeeDep"><input type="text" name="depends" autocomplete="off" value="(#=obj.depends#)" (#=obj.hasExternalDep?"readonly":""#)></td>
-			<td class="gdfCell" ondblclick="adminDetailActivity(event, '(#=obj.id#)');">(#=obj.getAssigsString()#)</td>
+			<td class="gdfCell"><a href="#" style="cursor: pointer; user-select: none;" onclick="adminDetailActivity('(#=obj.id#)');">Admin. detalle (<span style="color: #57bc57;">(#=obj.name#)</span>)</a></td>
 			</tr>
 		--></div>
 
@@ -599,14 +599,12 @@
 			</tr>
 		--></div>
 	</div>
-	<div id="divDialogoGeneralGantt" style="background-color: #ffffff;border: 1px solid #000000;display: none;height: 400px;width: 600px;z-index: 1000;position: fixed;left: 100px;top: 100px;">
+	<div id="divDialogoGeneralGantt" style="background-color: #ffffff;border: 1px solid #000000;display: none;height: 450px;overflow-y: scroll;width: 700px;z-index: 1000;padding: 7px;position: fixed;left: 50px;top: 100px;">
 		
 	</div>
 	<script>
-		function adminDetailActivity(event, taskId)
+		function adminDetailActivity(taskId)
 		{
-			event.preventDefault();
-
 			$('#divDialogoGeneralGantt').hide();
 
 			if(taskId.substring(0, 3)=='tmp')
@@ -622,9 +620,7 @@
 				return;
 			}
 
-			$('#divDialogoGeneralGantt').show();return;
-
-			paginaAjax('divDialogoGeneralGantt', { taskId : taskId }, url, 'POST', null, function()
+			paginaAjax('divDialogoGeneralGantt', { idTareaET : taskId }, '<?=base_url()?>index.php/ET_Tarea/administrarDetalleETTarea', 'POST', null, function()
 			{
 				$('#divDialogoGeneralGantt').show();
 			}, false, true);
