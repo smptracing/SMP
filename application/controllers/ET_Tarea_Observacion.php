@@ -1,0 +1,29 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class ET_Tarea_Observacion extends CI_Controller
+{
+	public function __construct()
+	{
+		parent::__construct();
+
+		$this->load->model('Model_ET_Tarea_Observacion');
+	}
+
+	public function insertar()
+	{
+		$this->db->trans_start();
+
+		$idTareaET=$this->input->post('idTareaET');
+		$descripcionObservacion=$this->input->post('descripcionObservacion');
+
+		$fechaActual=date('Y-m-d H:i:s');
+
+		$this->Model_ET_Tarea_Observacion->insertar($idTareaET, $descripcionObservacion, '', $fechaActual, $fechaActual, 0);
+
+		$this->db->trans_complete();
+
+		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Observación registrada correctamente.', 'fechaActual' => $fechaActual]);exit;
+	}
+}
+?>
