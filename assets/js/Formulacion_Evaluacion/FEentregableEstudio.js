@@ -510,11 +510,12 @@ var generarActividadesVertical=function(id_en)
                                       "mRender":function (data,type, full) {
                                          return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Complete</small></td>";
                                     }},
-                                    {"defaultContent":"<button type='button' class='edit btn btn-primary btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-pencil'></i></button>"}
+                                    {"defaultContent":"<div class='dropdown'>  <a class='btn btn-link dropdown-toggle' type='button' data-toggle='dropdown'> <span class='glyphicon glyphicon-option-vertical' aria-hidden='true'></span></a> <ul class='dropdown-menu pull-right' style=''> <li><button type='button' class='edit btn btn-primary btn-xs' data-toggle='modal' data-target='#'>Editar Actividad</button><button type='button' class='actividadObservaciones btn btn-primary btn-xs' data-toggle='modal' data-target='#'> Observaciones </button></ul> </div>"}
                                 ],
 
                                 "language":idioma_espanol
                     });
+
                  $('#datatable-actividadesV tbody').on('click', 'tr', function () 
                  {
                                var data = table.row($(this)).data();  
@@ -522,8 +523,22 @@ var generarActividadesVertical=function(id_en)
                                var txt_idActividadCronograma=$("#txt_idActividadCronograma").val(id_ctividad);
                                $("#txt_NombreActividadTitleResponsable").html(data.title);
                                $("#txt_idActividadCronograma").val(id_ctividad);
-                   } );
+                   });
+
+                 LevantarObservacionesActividad("#datatable-actividadesV",table);
+
   }
+
+   var  LevantarObservacionesActividad=function(tbody,table)
+                  {
+                    $(tbody).on("click","button.EditarEntregable",function(){
+                              var data=table.row( $(this).parents("tr")).data();
+                                    $('#EdiEntregable').val(data.id_entregable);
+                                    $('#Editxt_nombre_entre').val(data.nombre_entregable);
+                                    $('#Editxt_denoMultiple').val(data.id_denom_fe);
+                                    $('#Editxt_valoracion_entre').val(data.valoracion);
+                             });
+                  }
  
   function listarEntregablesFE()
           {     
@@ -538,7 +553,7 @@ var generarActividadesVertical=function(id_en)
                                         '<td>Responsable</td>'+
                                         '<td>Valorización</td>'+
                                         '<td>Avance</td>'+
-                                        '<td>Actividad</td>'+
+                                        '<td>Acción</td>'+
                                      '</tr>'+
                                   '</thead>'+
                                  '</thead>'+
@@ -586,7 +601,7 @@ var generarActividadesVertical=function(id_en)
                                          return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Complete</small></td>" ;
                                     }},
                        
-                                    {"defaultContent":"<button type='button' class='actividad btn btn-warning btn-xs' title='Agregar actividad al entregable' data-toggle='modal' data-target='#VentanaActividades'><i class='glyphicon glyphicon-plus-sign' aria-hidden='true'></i></button><br/><button type='button' class='EditarEntregable btn btn-primary btn-xs' title='Modificar Entregable' data-toggle='modal' data-target='#ModificarVentanaEntregable'><i class='fa fa-pencil' aria-hidden='true'></i></button>"}                            
+                                    {"defaultContent":"<div class='dropdown'>  <a class='btn btn-link dropdown-toggle' type='button' data-toggle='dropdown'> <span class='glyphicon glyphicon-option-vertical' aria-hidden='true'></span></a> <ul class='dropdown-menu pull-right' style=''> <button type='button' class='actividad btn btn-link btn-xs' title='Agregar actividad al entregable' data-toggle='modal' data-target='#VentanaActividades'>Agregar Actividad</button><br/><button type='button' class='EditarEntregable btn btn-link btn-xs' title='Modificar Entregable' data-toggle='modal' data-target='#ModificarVentanaEntregable'>Modificar Entregable</button></ul> </div>"}                            
 
                                 ],
 
