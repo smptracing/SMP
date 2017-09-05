@@ -464,7 +464,6 @@ $.ajax({
 	$.ajax({
 		url:base_url+"/index.php/PrincipalReportes/FuncionNumeroPip",
 		dataType:"json",
-		origin/desarrollo
 		type:"POST",
 		cache:false,
 		success:function(respuesta)
@@ -588,10 +587,18 @@ $.ajax({
 			    myChart.setOption(option, true);
 			}
 
-			}
+			
+		}
 	});
-		
 
+$.ajax({
+		url:base_url+"/index.php/PrincipalReportes/FuncionNumeroPip",
+		dataType:"json",
+		type:"POST",
+		cache:false,
+		success:function(respuesta)
+		{
+			
 			var arrayCantidadPip=new Array();
 			$.each(respuesta,function(index,element)
 			{
