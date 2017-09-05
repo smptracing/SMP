@@ -21,5 +21,12 @@ class Model_ET_Tarea_Observacion extends CI_Model
 
 		return $data->result();
 	}
+
+	public function eliminar($idTareaObservacion)
+	{
+		$this->db->query("delete from ET_TAREA_OBSERVACION where id_tarea_observacion=".$idTareaObservacion);
+
+		return true;
+	}
 }
 ?>

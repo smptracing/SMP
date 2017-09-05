@@ -36,7 +36,7 @@
 					<td><?=$value->fecha_tobservacion?></td>
 					<td style="text-align: center;font-size: 12px;">
 						<a href="#" style="color: blue;display: block">Levantar obs.</a>
-						<a href="#" style="color: red;display: block;">Eliminar</a>
+						<a href="#" style="color: red;display: block;" onclick="eliminarObservacion(<?=$value->id_tarea_observacion?>, this);">Eliminar</a>
 					</td>
 				</tr>
 			<?php } ?>
@@ -59,28 +59,54 @@
 			{
 				objectJSON=JSON.parse(objectJSON);
 
-			swal(
+				swal(
+				{
+					title: '',
+					text: objectJSON.mensaje,
+					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+				},
+				function(){});
+
+				if(objectJSON.proceso=='Error')
+				{
+					return false;
+				}
+
+				var htmlTemp='<tr>'+
+					'<td>'+$('#txtObservacion').val().trim()+'</td>'+
+					'<td>'+objectJSON.fechaActual+'</td>'+
+					'<td></td>'+
+				'</tr>';
+
+				$('#bodyTableObservacion').append(htmlTemp);
+
+				$('#txtObservacion').val('');
+			}, false, true);
+		}
+	}
+
+	function eliminarObservacion(idTareaObservacion, element)
+	{
+		if(confirm('Confirmar operación'))
+		{
+			paginaAjaxJSON({ idTareaObservacion : idTareaObservacion }, '<?=base_url()?>index.php/ET_Tarea_Observacion/eliminar', 'POST', null, function(objectJSON)
 			{
-				title: '',
-				text: objectJSON.mensaje,
-				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
-			},
-			function(){});
+				objectJSON=JSON.parse(objectJSON);
 
-			if(objectJSON.proceso=='Error')
-			{
-				return false;
-			}
+				swal(
+				{
+					title: '',
+					text: objectJSON.mensaje,
+					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+				},
+				function(){});
 
-			var htmlTemp='<tr>'+
-				'<td>'+$('#txtObservacion').val().trim()+'</td>'+
-				'<td>'+objectJSON.fechaActual+'</td>'+
-				'<td></td>'+
-			'</tr>';
+				if(objectJSON.proceso=='Error')
+				{
+					return false;
+				}
 
-			$('#bodyTableObservacion').append(htmlTemp);
-
-			$('#txtObservacion').val('');
+				$(element).parent().parent().remove();
 			}, false, true);
 		}
 	}

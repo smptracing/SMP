@@ -25,5 +25,18 @@ class ET_Tarea_Observacion extends CI_Controller
 
 		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Observación registrada correctamente.', 'fechaActual' => $fechaActual]);exit;
 	}
+
+	public function eliminar()
+	{
+		$this->db->trans_start();
+
+		$idTareaObservacion=$this->input->post('idTareaObservacion');
+
+		$this->Model_ET_Tarea_Observacion->eliminar($idTareaObservacion);
+
+		$this->db->trans_complete();
+
+		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Observación eliminada correctamente.']);exit;
+	}
 }
 ?>
