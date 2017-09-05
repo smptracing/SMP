@@ -13,7 +13,7 @@
 	<hr>
 	<label for="selectETResponsableTarea"><b>Responsable de la actividad</b></label>
 	<br>
-	<select name="selectETResponsableTarea" id="selectETResponsableTarea" style="width: 100%;">
+	<select name="selectETResponsableTarea" id="selectETResponsableTarea" style="width: 100%;" onchange="asignarResponsable(<?=$etTarea->id_tarea_et?>);">
 		<option value=""></option>
 		<?php foreach($listaPersona as $key => $value){ ?>
 			<option value="<?=$value->id_persona?>"><?=$value->nombres.' '.$value->apellido_p.' '.$value->apellido_m?></option>
@@ -222,6 +222,27 @@
 
 			$('#spanDescripcionLevantamientoTObservacion'+idTareaObservacion).text('');
 			$('#enlaceEliminarLevantamientoObservacion'+idTareaObservacion).hide();
+		}, false, true);
+	}
+
+	function asignarResponsable(idTareaET)
+	{
+		paginaAjaxJSON({ idTareaET : idTareaET, idPersona : $('#selectETResponsableTarea').val() }, '<?=base_url()?>index.php/ET_Responsable_Tarea/asignar', 'POST', null, function(objectJSON)
+		{
+			objectJSON=JSON.parse(objectJSON);
+
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+			},
+			function(){});
+
+			if(objectJSON.proceso=='Error')
+			{
+				return false;
+			}
 		}, false, true);
 	}
 </script>
