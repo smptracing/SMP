@@ -1,13 +1,16 @@
- $(document).on("ready" ,function(){
-                //alert("sdas");
-               //lista();
-            //division funcional
+$(document).on("ready" ,function()
+{
+    listarDivisionF();//para mostrar las divisiones funcionanes
+    listaFuncionCombo();
+    $("#btn_Nuevadivision").click(function()//para que cargue el como una vez echo click sino repetira datos
+    {
+         listaFuncionCombo();//para llenar el combo de agregar division funcional
+    });
 
-               listarDivisionF();//para mostrar las divisiones funcionanes
-              $("#btn_Nuevadivision").click(function()//para que cargue el como una vez echo click sino repetira datos
-                    {
-                     listaFuncionCombo();//para llenar el combo de agregar division funcional
-                });
+    $('#listaFuncionC').on('change', function() 
+    {
+        listaDivisionFuncionalCombo();
+    })
 
     $("#form-AddDivisionFuncion").submit(function(event)//para añadir nuevo division funcional
     {
@@ -48,7 +51,8 @@
             }
         });
     });
-			});
+});
+
     /*listra funcion*/
     var listaFuncionCombo=function(valor)//COMO CON LAS FUNCIONES PARA AGREGAR DIVIVISION FUNCIONAL
     {
@@ -80,9 +84,6 @@
             }
         });
     }
-    /*fin listar funcion*/
-               
-
 
     /* listar y lista en tabla entidad*/ 
     var listarDivisionF=function()
@@ -125,47 +126,64 @@
         });
     }
 
-                /*fin crea tabla division funcional*/ 
-                /*crear tabla dinamica servicio publico asociado */
-
               
-        /*Idioma de datatablet table-sector */
-            var idioma_espanol=
+    /*Idioma de datatablet table-sector */
+    var idioma_espanol=
+    {
+        "sProcessing":     "Procesando...",
+        "sLengthMenu":     "Mostrar _MENU_ registros",
+        "sZeroRecords":    "No se encontraron resultados",
+        "sEmptyTable":     "Ningún dato disponible en esta tabla",
+        "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+        "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+        "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+        "sInfoPostFix":    "",
+        "sSearch":         "Buscar:",
+        "sUrl":            "",
+        "sInfoThousands":  ",",
+        "sLoadingRecords": "Cargando...",
+        "oPaginate": {
+            "sFirst":    "Primero",
+            "sLast":     "Último",
+            "sNext":     "Siguiente",
+            "sPrevious": "Anterior"
+        },
+        "oAria": {
+            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        }
+    }
+
+
+    /*Mostrar division funcional en base a la funcion*/
+    var listaDivisionFuncionalCombo=function(valor)
+    {
+        event.preventDefault(); 
+
+        var htmlTemp="";
+        $("#listaDivisionFuncional").html(htmlTemp);
+
+        var idFuncion = $("#listaFuncionC").val();        
+
+        $.ajax(
+        {
+            "url" : base_url +"index.php/Funcion/GetDivisionFuncional",
+            type : "POST",
+            data : idFuncion,
+            success : function(respuesta)
+            {
+                alert(idFuncion);                
+                /*var registros=eval(respuesta);
+
+                for(var i=0; i<registros.length; i++)
                 {
-                    "sProcessing":     "Procesando...",
-                    "sLengthMenu":     "Mostrar _MENU_ registros",
-                    "sZeroRecords":    "No se encontraron resultados",
-                    "sEmptyTable":     "Ningún dato disponible en esta tabla",
-                    "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-                    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-                    "sInfoPostFix":    "",
-                    "sSearch":         "Buscar:",
-                    "sUrl":            "",
-                    "sInfoThousands":  ",",
-                    "sLoadingRecords": "Cargando...",
-                    "oPaginate": {
-                        "sFirst":    "Primero",
-                        "sLast":     "Último",
-                        "sNext":     "Siguiente",
-                        "sPrevious": "Anterior"
-                    },
-                    "oAria": {
-                        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-                    }
-                }
-
-        /* function lista()
-					{
-						event.preventDefault();
-						$.ajax({
-              "url": base_url+"index.php/MFuncion/GetGrupoFuncional",
-							type:"POST",
-							success:function(respuesta){
-								alert(respuesta);
-							
-
-							}
-						});
-					}*/
+                    htmlTemp+="<option value="+registros[i]["id_funcion"]+"> "+ registros[i]["codigo_funcion"]+": "+registros[i]["nombre_funcion"]+" </option>";   
+                };
+                $("#listaFuncionC").html(htmlTemp);
+                $("#listaFuncionCM").html(htmlTemp);
+                $('select[name=listaFuncionCM]').val(valor);
+                $('select[name=listaFuncionCM]').change();
+                $('.selectpicker').selectpicker('refresh'); */
+            }
+        });
+    }

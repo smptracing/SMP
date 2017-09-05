@@ -37,6 +37,21 @@ class Funcion extends CI_Controller {/* Mantenimiento de sector entidad Y servic
             show_404();
         }
     }
+
+    function GetDivisionFuncional($codigoFuncion)
+    {
+        if ($this->input->is_ajax_request()) 
+        {            
+            $datos=$this->Model_Funcion->GetDivisionFuncional($codigoFuncion);
+            echo json_encode($datos);
+        }
+        else
+        {
+            show_404();
+        }
+    }
+
+
     function AddFucion()
     {
         if ($this->input->is_ajax_request()) 
@@ -54,7 +69,6 @@ class Funcion extends CI_Controller {/* Mantenimiento de sector entidad Y servic
         }
 
     }
-//modifcar funcion
 
     function UpdateFuncion()
     {
