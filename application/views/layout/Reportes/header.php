@@ -20,6 +20,9 @@
 	<link href="<?php echo base_url(); ?>assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+
+	<link href="<?php echo base_url(); ?>assets/vendors/select2/dist/css/select2.min.css" rel="stylesheet">
+
 	<link href="<?php echo base_url(); ?>assets/vendors/animate/animate.min.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/css/jquery.growl.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/vendors/dropzone/dist/min/dropzone.min.css" rel="stylesheet">
@@ -82,10 +85,11 @@
                             <span class="fa fa-chevron-down"></span>
                          </a>
                             <ul class="nav child_menu">
-                                    <li><a href="<?php echo site_url('funcion/index'); ?>">Funcion</a></li>
-                                    <li><a href="<?php echo site_url('DivisionFuncional/index'); ?>">Division Funcional</a></li>
-                                    <li><a href="<?php echo site_url('GrupoFuncional/index')?>">Grupo Funcional</a></li>
-                                    <li><a href="<?php echo site_url('Sector/ReporteListaSectorPip')?>">Sector</a></li>
+                            	<li><a href="<?php echo site_url('funcion/CadenaFuncional'); ?>">Cadena Funcional</a></li>
+                                <li><a href="<?php echo site_url('funcion/index'); ?>">Funcion</a></li>
+                                <li><a href="<?php echo site_url('DivisionFuncional/index'); ?>">Division Funcional</a></li>
+                                <li><a href="<?php echo site_url('GrupoFuncional/index')?>">Grupo Funcional</a></li>
+                                <li><a href="<?php echo site_url('Sector/ReporteListaSectorPip')?>">Sector</a></li>
                             </ul>
                       </li>
  
