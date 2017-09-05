@@ -30,7 +30,16 @@
 			</tr>
 		</thead>
 		<tbody id="bodyTableObservacion">
-			
+			<?php foreach($listaETTareaObservacion as $key => $value){ ?>
+				<tr>
+					<td><?=$value->desc_tobservacion?></td>
+					<td><?=$value->fecha_tobservacion?></td>
+					<td style="text-align: center;font-size: 12px;">
+						<a href="#" style="color: blue;display: block">Levantar obs.</a>
+						<a href="#" style="color: red;display: block;">Eliminar</a>
+					</td>
+				</tr>
+			<?php } ?>
 		</tbody>
 	</table>
 	<br>
@@ -38,7 +47,7 @@
 	<input type="file" id="fileDocumentoEjecucion" name="fileDocumentoEjecucion">
 	<hr>
 	<div style="text-align: right;">
-		<input type="button" value="Cerrar ventana" class="button requireWrite newproject" style="background-color: #d43c3c;">
+		<input type="button" value="Cerrar ventana" class="button requireWrite newproject" style="background-color: #d43c3c;" onclick="$('#divDialogoGeneralGantt').hide();">
 	</div>
 </div>
 <script>

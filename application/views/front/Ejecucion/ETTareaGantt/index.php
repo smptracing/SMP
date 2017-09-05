@@ -448,7 +448,7 @@
 			<td class="gdfCell"><input type="text" name="duration" autocomplete="off" value="(#=obj.duration#)"></td>
 			<td class="gdfCell"><input type="text" name="progress" class="validated" entrytype="PERCENTILE" autocomplete="off" value="(#=obj.progress?obj.progress:''#)" (#=obj.progressByWorklog?"readOnly":""#)></td>
 			<td class="gdfCell requireCanSeeDep"><input type="text" name="depends" autocomplete="off" value="(#=obj.depends#)" (#=obj.hasExternalDep?"readonly":""#)></td>
-			<td class="gdfCell" ondblclick="adminDetailActivity(event, '(#=obj.id#)');">(#=obj.getAssigsString()#)</td>
+			<td class="gdfCell"><a href="#" style="cursor: pointer; user-select: none;" onclick="adminDetailActivity('(#=obj.id#)');">Admin. detalle (<span style="color: #57bc57;">(#=obj.name#)</span>)</a></td>
 			</tr>
 		--></div>
 
@@ -603,10 +603,8 @@
 		
 	</div>
 	<script>
-		function adminDetailActivity(event, taskId)
+		function adminDetailActivity(taskId)
 		{
-			event.preventDefault();
-
 			$('#divDialogoGeneralGantt').hide();
 
 			if(taskId.substring(0, 3)=='tmp')
