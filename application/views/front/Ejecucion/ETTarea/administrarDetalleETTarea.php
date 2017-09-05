@@ -85,9 +85,19 @@
 				}
 
 				var htmlTemp='<tr>'+
-					'<td>'+$('#txtObservacion').val().trim()+'</td>'+
+					'<td>'+
+						$('#txtObservacion').val().trim()+
+						'<div style="padding-left: 20px;font-size: 12px;">'+
+							'<b>Levantamiento: </b><span id="spanDescripcionLevantamientoTObservacion'+objectJSON.ultimoIdETTareaObservacion+'"></span>'+
+							'<br>'+
+							'<textarea id="txtDescripcionLevantamientoObservacion'+objectJSON.ultimoIdETTareaObservacion+'" rows="4" style="display: none;resize: none;width: 100%;" placeholder="Descripción del levantamiento de observación"></textarea>'+
+						'</div>'+
+					'</td>'+
 					'<td>'+objectJSON.fechaActual+'</td>'+
-					'<td></td>'+
+					'<td style="text-align: center;font-size: 12px;">'+
+						'<a href="#" style="color: blue;display: block" onclick="levantarObservacion('+objectJSON.ultimoIdETTareaObservacion+', this);">Levantar obs.</a>'+
+						'<a href="#" style="color: red;display: block;" onclick="eliminarObservacion('+objectJSON.ultimoIdETTareaObservacion+', this);">Eliminar</a>'+
+					'</td>'+
 				'</tr>';
 
 				$('#bodyTableObservacion').append(htmlTemp);
