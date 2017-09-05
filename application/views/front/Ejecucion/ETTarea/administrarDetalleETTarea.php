@@ -35,13 +35,19 @@
 					<td>
 						<?=$value->desc_tobservacion?>
 						<div style="padding-left: 20px;font-size: 12px;">
-							<span id="spanDescripcionLevantamientoTObservacion<?=$value->id_tarea_observacion?>"></span>
+							<b>Levantamiento: </b><span id="spanDescripcionLevantamientoTObservacion<?=$value->id_tarea_observacion?>"><?=$value->levantamiento_tobservacion?></span>
+							<br>
+							<?php if($value->levantamiento_tobservacion!=''){ ?>
+								<a href="#" style="color: red;" onclick="eliminarLevantamientoObservacion(<?=$value->id_tarea_observacion?>, this);">Eliminar levantamiento de la obs.</a>
+							<?php } ?>
 							<textarea id="txtDescripcionLevantamientoObservacion<?=$value->id_tarea_observacion?>" rows="4" style="display: none;resize: none;width: 100%;" placeholder="Descripción del levantamiento de observación"></textarea>
 						</div>	
 					</td>
 					<td><?=$value->fecha_tobservacion?></td>
 					<td style="text-align: center;font-size: 12px;">
-						<a href="#" style="color: blue;display: block" onclick="levantarObservacion(<?=$value->id_tarea_observacion?>, this);">Levantar obs.</a>
+						<?php if($value->levantamiento_tobservacion==''){ ?>
+							<a href="#" style="color: blue;display: block" onclick="levantarObservacion(<?=$value->id_tarea_observacion?>, this);">Levantar obs.</a>
+						<?php } ?>
 						<a href="#" style="color: red;display: block;" onclick="eliminarObservacion(<?=$value->id_tarea_observacion?>, this);">Eliminar</a>
 					</td>
 				</tr>
@@ -158,11 +164,37 @@
 					return false;
 				}
 
-				$('#spanDescripcionLevantamientoTObservacion'+idTareaObservacion).val($('#'+idTextAreaTemp).val().trim());
+				$('#spanDescripcionLevantamientoTObservacion'+idTareaObservacion).text($('#'+idTextAreaTemp).val().trim());
 
 				$('#'+idTextAreaTemp).hide();
 				$(element).remove();
 			}, false, true);
 		}
+	}
+
+	function eliminarLevantamientoObservacion(idTareaObservacion, element)
+	{
+		var idTextAreaTemp='txtDescripcionLevantamientoObservacion'+idTareaObservacion;
+
+		paginaAjaxJSON({ idTareaObservacion : idTareaObservacion }, '<?=base_url()?>index.php/ET_Tarea_Observacion/levantarObservacion', 'POST', null, function(objectJSON)
+		{
+			objectJSON=JSON.parse(objectJSON);
+
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+			},
+			function(){});
+
+			if(objectJSON.proceso=='Error')
+			{
+				return false;
+			}
+
+			$('#spanDescripcionLevantamientoTObservacion'+idTareaObservacion).text('');
+			$(element).remove();
+		}, false, true);
 	}
 </script>

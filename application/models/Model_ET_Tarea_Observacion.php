@@ -31,7 +31,7 @@ class Model_ET_Tarea_Observacion extends CI_Model
 
 	public function levantarObservacion($idTareaObservacion, $descripcionLevantamientoObservacion, $fechaLevantamientoObservacion, $estadoObservacion)
 	{
-		$this->db->query("exec sp_Gestionar_ETTareaObservacion @opcion='levantamientoobservacion', @idTareaObservacion=".$idTareaObservacion.", @levantamientoTObservacion='".$descripcionLevantamientoObservacion."', @fechaLevTObservacion='".$fechaLevantamientoObservacion."', @estadoTObsevacion=".$estadoObservacion);
+		$this->db->query("exec sp_Gestionar_ETTareaObservacion @opcion='levantamientoobs', @idTareaObservacion=".$idTareaObservacion.", @levantamientoTObservacion='".$descripcionLevantamientoObservacion."', @fechaLevTObservacion='".$fechaLevantamientoObservacion."', @estadoTObsevacion=".$estadoObservacion);
 
 		return true;
 	}
