@@ -280,7 +280,7 @@ $.ajax({
 			},
 		    series: [
 		        {
-		            name:'访问来源',
+		            name:'Tipo de Gasto',
 		            type:'pie',
 		            radius: ['27%', '50%'],
 		            avoidLabelOverlap: false,
@@ -565,17 +565,13 @@ $.ajax({
 
 $.ajax({
 	url:base_url+"/index.php/PrincipalFyE/AvanceCostoInv",
-	dataType:"json",
 	type:"POST",
 	cache:false,
 	success:function(respuesta)
 	{
-		var arrayAvanceCostoInv=new Array();
-		$.each(respuesta,function(index,element)  
-		{
-			arrayAvanceCostoInv[index]=element.avance_fisico+','+element.costo_estudio;
-		});
-		console.log(arrayAvanceCostoInv[0]);
+		//alert(respuesta);
+		var valor=JSON.parse(respuesta);
+		console.log(valor);
 		var dom = document.getElementById("Avance");
 		var myChart = echarts.init(dom);
 		var app = {};
@@ -626,7 +622,7 @@ $.ajax({
 		    brush: {
 		    },
 		    legend: {
-		        data: ['AVANCE FÍSICO  COSTO ESTUDIO','COSTO ESTUDIO'],
+		        data: ['AVANCE FÍSICO VS COSTO ESTUDIO','COSTO ESTUDIO'],
 		        left: 'center'
 		    },
 		    xAxis : [
@@ -655,9 +651,9 @@ $.ajax({
 		    ],
 		    series : [
 		        {
-		            name:'AVANCE FÍSICO  COSTO ESTUDIO',
+		            name:'AVANCE FÍSICO VS COSTO ESTUDIO',
 		            type:'scatter',
-		            data: [[arrayAvanceCostoInv[4]]],
+		            data: valor,
 		            markArea: {
 		                silent: true,
 		                itemStyle: {
@@ -668,7 +664,7 @@ $.ajax({
 		                    }
 		                },
 		                data: [[{
-		                    name: 'AVANCE FÍSICO  COSTO ESTUDIO',
+		                    name: 'AAVANCE FÍSICO VS COSTO ESTUDIO',
 		                    xAxis: 'min',
 		                    yAxis: 'min'
 		                }, {
@@ -678,7 +674,7 @@ $.ajax({
 		            },
 		            markPoint : {
 		                data : [
-		                    {type : 'max', name: 'AVANCE FÍSICO  COSTO ESTUDIO'},
+		                    {type : 'max', name: 'AVANCE FÍSICO VS COSTO ESTUDIO'},
 		                    {type : 'min', name: 'AVANCE FÍSICO'}
 		                ]
 		            },

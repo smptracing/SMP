@@ -18,6 +18,10 @@
       color: #fff;
       border-top: 1px solid #d2d6de;
     }
+    .box
+    {
+      background-color: #ecf0f5;
+    }
     .TituloListaFooter
     {
       text-shadow: 1px 1px 2px rgba(0,0,0,0.7); 
@@ -112,7 +116,7 @@
       <section class="content" style="margin-top: 50px;">
       <div class="row">
         <div class="col-md-12">
-          <div class="box box-info">
+         <!-- <div class="box box-info">-->
             <div class="box-header with-border">              
               <h3 class="box-title"> <br><i class="fa fa-refresh"></i> CICLO DE INVERSIONES</h3>
             </div>
@@ -250,7 +254,7 @@
                           </div>
                       </div>
                 </div>
-            </div>
+            <!--</div>-->
           </div>
       </div>
     </section>

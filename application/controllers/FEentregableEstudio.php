@@ -108,12 +108,29 @@ show_404();
     public function editar_Entregable()
     {
         if ($this->input->is_ajax_request()) {
-            $id_entregable           = $this->input->post("IdEntregable");
-            $Editxt_nombre_entre     = $this->input->post("Editxt_nombre_entre");
+            $id_entregable              = $this->input->post("IdEntregable");
+            $Editxt_nombre_entre        = $this->input->post("Editxt_nombre_entre");
             $Editxt_denoMultiple        = $this->input->post("Editxt_denoMultiple");
             $Editxt_valoracion_entre    = $this->input->post("Editxt_valoracion_entre");
-            $data = $this->Model_FEentregableEstudio->editar_Entregable($id_entregable,$Editxt_nombre_entre,$Editxt_denoMultiple,$Editxt_valoracion_entre);
-            echo json_encode("SE ACTUALIZO  CORRECTAMENTE EL ENTREGABLE");   
+
+            $txt_id_etapa_estudio = $this->session->userdata('Etapa_Estudio');
+            $listarSumaEntregables=$this->Model_FEentregableEstudio->sumaValorizaEntregebleValidar($txt_id_etapa_estudio,$id_entregable);
+            $SumaEntregable=0;
+            foreach ($listarSumaEntregables as $itemp) 
+            {
+                $SumaEntregable=$SumaEntregable+(int)$itemp->valoracion;
+            }
+            $totalValidar=$SumaEntregable + $Editxt_valoracion_entre;
+            if($totalValidar<=100)
+            {
+                $data = $this->Model_FEentregableEstudio->editar_Entregable($id_entregable,$Editxt_nombre_entre,$Editxt_denoMultiple,$Editxt_valoracion_entre);
+                echo json_encode("Se actualizo la valoracion  del entregable");   
+            }else
+            {
+                echo json_encode("No es posible actualizar la valoración  del entregable");   
+            }
+
+            
         } else {
             show_404();
         }

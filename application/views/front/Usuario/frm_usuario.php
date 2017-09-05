@@ -65,31 +65,17 @@
                                                   <div class="col-md-12 col-sm-12">
                                                         <div class="x_panel">
                                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraUsuario"> <i class="fa fa-file"> Nuevo </i> </button>
-                                                          <div class="x_title">
-                                                            <h2>Listado de  <small>Usuarios</small></h2>
-                                                              
-                                                            <ul class="nav navbar-right panel_toolbox">
-                                                                
-                                                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                                              </li>
-                                                              
-                                                              <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                                              </li>
-                                                                
-                                                            </ul>
-                                                              
-                                                            <div class="clearfix"></div>
-                                                              
+                                                          <div class="x_title">     
                                                           </div>
                                                           <div class="x_content">
                                                             <table id="table-Usuarios" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
                                                               <thead>
                                                                  <tr>
                                                                   <th>ID</th>
-                                                                  <th>NOMBRE</th>
-                                                                  <th>TIPO USUARIO</th>
                                                                   <th>USUARIO</th>
-                                                                  <th>CONTRASEÑA</th>
+                                                                  <th>TIPO USUARIO</th>
+                                                                  <th>CONTRASEÑA </th>
+                                                                  <th>USUARIO</th>
                                                                  </tr>  
                                                               </thead>
 	                                                           <tbody>
@@ -188,13 +174,7 @@
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">Tipo de Usuario </label>
                                 <div class="col-sm-6">
                                   <select  class="form-control input-sm" id="cbb_TipoUsuario" name="cbb_TipoUsuario">
-                                     <option value="Formulador"> Formulador </option>  
-                                     <option value="Evaluador"> Evaluador </option> 
-                                     <option value="Encargado de la PMI"> Encargado de la PMI</option>  
-                                     <option value="Ejecutor"> Ejecutor</option>
-                                     <option value="Resisdente"> Resisdente</option>
-                                     <option value="Registrador"> Registrador</option>
-                                     <option value="Coordinador"> Coordinador</option>
+                                    
                                    </select>                    
                                 </div>
                               </div>
@@ -202,8 +182,8 @@
                                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">Estado </label>
                                     <div class="col-sm-6">
                                            <select  class="form-control input-sm">
-                                           <option values> Activo </option>  
-                                           <option> Inactivo </option>  
+                                           <option values="1"> Activo </option>  
+                                           <option values="0"> Inactivo </option>  
                                            </select>                    
                                     </div>
                               </div>

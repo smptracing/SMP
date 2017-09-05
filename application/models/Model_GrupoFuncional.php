@@ -53,6 +53,11 @@ class Model_GrupoFuncional extends CI_Model
 
         //fin grupo funcional
 
+       function GrupoPipListar()
+        {
+            $ListarPipGrupo=$this->db->query("select GRUPO_FUNCIONAL.nombre_grup_funcional, COUNT(nombre_pi) as CantidadPip, sum(costo_pi)AS CostoPip from PROYECTO_INVERSION inner join GRUPO_FUNCIONAL ON PROYECTO_INVERSION.id_grupo_funcional=GRUPO_FUNCIONAL.id_grup_funcional group by GRUPO_FUNCIONAL.nombre_grup_funcional");
 
+            return $ListarPipGrupo->result();
+        }
        
 }

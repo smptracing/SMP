@@ -10,7 +10,7 @@ class Model_Dashboard_Reporte extends CI_Model
 
     function GetAprobadosEstudio()
     {
-        $estudios = $this->db->query("select nombre_naturaleza_inv, count(nombre_pi)as Cantidadpip from PROYECTO_INVERSION left join NATURALEZA_INVERSION ON PROYECTO_INVERSION.id_naturaleza_inv=NATURALEZA_INVERSION.id_naturaleza_inv group by nombre_naturaleza_inv");//listar EVAL
+        $estudios = $this->db->query("select nombre_naturaleza_inv, count(nombre_pi)as Cantidadpip from PROYECTO_INVERSION right join NATURALEZA_INVERSION ON PROYECTO_INVERSION.id_naturaleza_inv=NATURALEZA_INVERSION.id_naturaleza_inv group by nombre_naturaleza_inv");//listar EVAL
         if ($estudios->num_rows()> 0) {
             return $estudios->result();
         } else {
@@ -71,6 +71,16 @@ class Model_Dashboard_Reporte extends CI_Model
     function CantidadPipRubro()
     {
         $data = $this->db->query("select nombre_rubro ,count (nombre_pi)as Cantidadpip from RUBRO LEFT JOIN RUBRO_PI on RUBRO.id_rubro=RUBRO_PI.id_rubro LEFT JOIN PROYECTO_INVERSION on RUBRO_PI.id_pi=PROYECTO_INVERSION.id_pi group by nombre_rubro");//listar EVAL
+        if ($data->num_rows()> 0) {
+            return $data->result();
+        } else {
+            return false;
+        }
+    }
+
+    function CantidadPipProvincia()
+    {
+        $data = $this->db->query("select UBIGEO.provincia ,count (nombre_pi)as Cantidadpip from PROYECTO_INVERSION INNER JOIN UBIGEO_PI on PROYECTO_INVERSION.id_pi=UBIGEO_PI.id_pi INNER JOIN UBIGEO on UBIGEO_PI.id_ubigeo=UBIGEO.id_ubigeo group by  UBIGEO.provincia");//listar EVAL
         if ($data->num_rows()> 0) {
             return $data->result();
         } else {

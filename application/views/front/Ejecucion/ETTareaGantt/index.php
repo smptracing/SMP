@@ -10,6 +10,7 @@
 	<link rel=stylesheet href="<?=base_url()?>assets/vendors/JQueryGantt/libs/jquery/dateField/jquery.dateField.css" type="text/css">
 	<link rel=stylesheet href="<?=base_url()?>assets/vendors/JQueryGantt/gantt.css" type="text/css">
 	<link rel=stylesheet href="<?=base_url()?>assets/vendors/JQueryGantt/ganttPrint.css" type="text/css" media="print">
+	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/js/sweetalert.css">
 
 	<style>
 		.resEdit
@@ -41,8 +42,8 @@
 
 	<script src="<?=base_url()?>assets/js/Helper/jsHelper.js"></script>
 
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<script src="<?=base_url()?>assets/vendors/jquery/dist/jquery.min.js"></script>
+	<script src="<?=base_url()?>assets/vendors/jquery/dist/jquery-ui.min.js"></script>
 	<script src="<?=base_url()?>assets/vendors/JQueryGantt/libs/jquery/jquery.livequery.1.1.1.min.js"></script>
 	<script src="<?=base_url()?>assets/vendors/JQueryGantt/libs/jquery/jquery.timers.js"></script>
 	<script src="<?=base_url()?>assets/vendors/JQueryGantt/libs/utilities.js"></script>
@@ -60,9 +61,10 @@
 	<script src="<?=base_url()?>assets/vendors/JQueryGantt/ganttDrawerSVG.js"></script>
 	<script src="<?=base_url()?>assets/vendors/JQueryGantt/ganttGridEditor.js"></script>
 	<script src="<?=base_url()?>assets/vendors/JQueryGantt/ganttMaster.js"></script>  
+	<script src="<?php echo base_url(); ?>assets/dist/js/sweetalert-dev.js"></script>
 </head>
 <body style="background-color: #ffffff;overflow-x: hidden;">
-	<input type="hidden" id="hdIdTareaGantt" name="hdIdTareaGantt" value="1">
+	<input type="hidden" id="hdIdTareaGantt" name="hdIdTareaGantt" value="3">
 	<div id="workSpace" style="padding: 0px;overflow-y: auto;overflow-x: hidden;position: relative;margin: 0 5px;width: 100%;height: 100%;"></div>
 
 	<script>
@@ -85,7 +87,9 @@
 			var project=loadFromLocalStorage();
 
 			if (!project.canWrite)
+			{
 				$(".ganttButtonBar button.requireWrite").attr("disabled","true");
+			}
 
 			ge.loadProject(project);
 
@@ -137,7 +141,20 @@
 
 			paginaAjaxJSON({ "idTareaGantt" : $('#hdIdTareaGantt').val(), "tareas" : JSON.stringify(prj.tasks) }, '<?=base_url()?>index.php/ET_TAREA/insertarBloque', 'POST', null, function(objectJSON)
 			{
+				objectJSON=JSON.parse(objectJSON);
 
+				swal(
+				{
+					title: '',
+					text: objectJSON.mensaje,
+					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+				},
+				function(){});
+
+				if(objectJSON.proceso=='Error')
+				{
+					return false;
+				}
 			}, false, true);
 		}
 
@@ -207,7 +224,7 @@
 			"CIRCULAR_REFERENCE":"CIRCULAR_REFERENCE",
 			"CANNOT_DEPENDS_ON_ANCESTORS":"CANNOT_DEPENDS_ON_ANCESTORS",
 			"CANNOT_DEPENDS_ON_DESCENDANTS":"CANNOT_DEPENDS_ON_DESCENDANTS",
-			"INVALID_DATE_FORMAT":"INVALID_DATE_FORMAT",
+			"INVALID_DATE_FORMAT":"Formato de fecha incorrecto",
 			"TASK_MOVE_INCONSISTENT_LEVEL":"TASK_MOVE_INCONSISTENT_LEVEL",
 
 			"GANTT_QUARTER_SHORT":"trim.",
@@ -231,40 +248,31 @@
 
 		function loadFromLocalStorage()
 		{
-			var ret;
-
-			if(localStorage)
+			var ret=
 			{
-				if(localStorage.getObject("teamworkGantDemo"))
-				{
-					ret = localStorage.getObject("teamworkGantDemo");
-				}
-			}
+				"tasks": JSON.parse('<?=$arrayTask?>'),
+				"selectedRow": 0,
+				"deletedTaskIds": [],
+				"resources": [
 
-			//if not found create a new example task
-			if(!ret || !ret.tasks || ret.tasks.length == 0)
+				],
+				"roles": [
+
+				],
+				"canWrite": true,
+				"canDelete":true,
+				"canWriteOnParent": true,
+				"zoom": "w3"
+			};
+
+
+			//actualize data
+			/*var offset=new Date().getTime()-ret.tasks[0].start;
+
+			for (var i=0;i<ret.tasks.length;i++)
 			{
-				ret= {
-					"tasks": [
-
-					], "selectedRow": 2, "deletedTaskIds": [],
-					"resources": [
-
-					],
-					"roles": [
-						
-					], "canWrite": true, "canDelete":true, "canWriteOnParent": true, "zoom": "w3"
-				}
-
-
-				//actualize data
-				/*var offset=new Date().getTime()-ret.tasks[0].start;
-
-				for (var i=0;i<ret.tasks.length;i++)
-				{
-					ret.tasks[i].start = ret.tasks[i].start + offset;
-				}*/
-			}
+				ret.tasks[i].start = ret.tasks[i].start + offset;
+			}*/
 
 			return ret;
 		}
@@ -418,7 +426,7 @@
 			<th class="gdfColHeader gdfResizable" style="width:50px;">Dur.</th>
 			<th class="gdfColHeader gdfResizable" style="width:20px;">%</th>
 			<th class="gdfColHeader gdfResizable requireCanSeeDep" style="width:50px;">Dep.</th>
-			<th class="gdfColHeader gdfResizable" style="width:1000px; text-align: left; padding-left: 10px;">Responsable</th>
+			<th class="gdfColHeader gdfResizable" style="width:1000px; text-align: left; padding-left: 10px;">Detalles de la actividad</th>
 			</tr>
 			</thead>
 			</table>
@@ -440,7 +448,7 @@
 			<td class="gdfCell"><input type="text" name="duration" autocomplete="off" value="(#=obj.duration#)"></td>
 			<td class="gdfCell"><input type="text" name="progress" class="validated" entrytype="PERCENTILE" autocomplete="off" value="(#=obj.progress?obj.progress:''#)" (#=obj.progressByWorklog?"readOnly":""#)></td>
 			<td class="gdfCell requireCanSeeDep"><input type="text" name="depends" autocomplete="off" value="(#=obj.depends#)" (#=obj.hasExternalDep?"readonly":""#)></td>
-			<td class="gdfCell taskAssigs">(#=obj.getAssigsString()#)</td>
+			<td class="gdfCell" ondblclick="adminDetailActivity(event, '(#=obj.id#)');">(#=obj.getAssigsString()#)</td>
 			</tr>
 		--></div>
 
@@ -591,5 +599,34 @@
 			</tr>
 		--></div>
 	</div>
+	<div id="divDialogoGeneralGantt" style="background-color: #ffffff;border: 1px solid #000000;display: none;height: 450px;overflow-y: scroll;width: 700px;z-index: 1000;padding: 7px;position: fixed;left: 50px;top: 100px;">
+		
+	</div>
+	<script>
+		function adminDetailActivity(event, taskId)
+		{
+			event.preventDefault();
+
+			$('#divDialogoGeneralGantt').hide();
+
+			if(taskId.substring(0, 3)=='tmp')
+			{
+				swal(
+				{
+					title: '',
+					text: 'Debe guardar los datos actuales antes de asignar esta información.',
+					type: 'error' 
+				},
+				function(){});
+
+				return;
+			}
+
+			paginaAjax('divDialogoGeneralGantt', { idTareaET : taskId }, '<?=base_url()?>index.php/ET_Tarea/administrarDetalleETTarea', 'POST', null, function()
+			{
+				$('#divDialogoGeneralGantt').show();
+			}, false, true);
+		}
+	</script>
 </body>
 </html>

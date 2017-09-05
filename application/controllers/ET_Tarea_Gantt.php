@@ -12,7 +12,7 @@ class ET_TAREA_GANTT extends CI_Controller
 
 	public function index()
 	{
-		return $this->load->view('Front/Ejecucion/ETTareaGantt/index');
+		//return $this->load->view('Front/Ejecucion/ETTareaGantt/index');
 	}
 }
 ?>

@@ -35,7 +35,7 @@
                   <div class="x_content">
                     <p></p>
                     <!-- start project list -->
-                    <table id="table-formulacion" class="table table-striped projects" style="width: 100%">
+                    <table id="table-formulacion" class="table table-striped jambo_table bulk_action" style="width: 100%">
                       <thead>
                         <tr>
                           <th style="width: 1%">#</th>
@@ -45,7 +45,7 @@
                           <th>Provincia</th>
                           <th>Distrito</th>
                           <th>Nivel Estudio</th>
-                          <th>Responsable</th>
+                          <th>Responsable de Etapa</th>
                           <th>Costo Inversion</th>
                           <th>Situacion</th>
                           <th>Avance Fisico</th>

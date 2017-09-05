@@ -65,6 +65,16 @@ class Model_DashboardPmi extends CI_Model
         return $consulta->result();
     }
 
+    public function EstadisticaMontoPipCicloInversion()
+    {
+         $data = $this->db->query("select nombre_estado_ciclo ,sum(costo_pi)as MontoProyecto from PROYECTO_INVERSION INNER JOIN ESTADO_CICLO_PI ON PROYECTO_INVERSION.id_pi=ESTADO_CICLO_PI.id_pi inner join ESTADO_CICLO ON ESTADO_CICLO_PI.id_estado_ciclo=ESTADO_CICLO.id_estado_ciclo GROUP BY nombre_estado_ciclo, ESTADO_CICLO.id_estado_ciclo order by  ESTADO_CICLO.id_estado_ciclo ASC");//listar EVAL
+        if ($data->num_rows()> 0) {
+            return $data->result();
+        } else {
+            return false;
+        }
+
+    }
     public function GetDatosUbicacion()
     {
         $sql = "SELECT dbo.UBIGEO.distrito,\n"

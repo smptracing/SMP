@@ -126,10 +126,10 @@
                     <ul class="nav side-menu">
                       <li><a><i class="fa fa-database"></i> Principal <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                          <li><a href="<?php echo site_url('FEformulacion/Feformulacion/all'); ?>">Formulación</a></li>
-                          <li><a href="<?php echo site_url('EvaluacionFE/FeEvaluacion/all'); ?>">Evaluación</a></li>
-                          <li><a href="<?php echo site_url('FEformulacion/FeAprobado/all'); ?>">Aprobado</a></li>
-                          <li><a href="<?php echo site_url('FEformulacion/FeViabilizado/all'); ?>">Viabilizados</a></li>
+                          <li><a href="<?php echo site_url('FEformulacion/Feformulacion/all'); ?>">Formulación y evaluación</a></li>
+                          <!--<li><a href="<?php echo site_url('EvaluacionFE/FeEvaluacion/all'); ?>">Evaluación</a></li>-->
+                          <!--<li><a href="<?php echo site_url('FEformulacion/FeAprobado/all'); ?>">Aprobado</a></li> -->
+                          <!-- <li><a href="<?php echo site_url('FEformulacion/FeViabilizado/all'); ?>">Viabilizados</a></li> -->
 
                         </ul>
                         </li>
@@ -197,7 +197,7 @@
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;">Usuario: <?= $this->session->userdata('nombreUsuario')?> <br/>Tipo Usuario <?= $this->session->userdata('tipoUsuario')?></a></li>
+                    <li><a href="javascript:;">Usuario: <?= $this->session->userdata('nombreUsuario')?> <br/>Tipo Usuario <?= $this->session->userdata('desc_usuario_tipo')?></a></li>
                     <li>
                       <a href="javascript:;">
                         <span class="badge bg-red pull-right">50%</span>

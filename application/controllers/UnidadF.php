@@ -13,6 +13,13 @@ class UnidadF extends CI_Controller
         $this->_load_layout('Front/Administracion/frmUnidadFjecutora');
     }
 
+    public function indexunidadFormuladora()
+    {
+        $listaPipUnidadFormuladora=$this->Model_UnidadF->UnidadFormuladoraPipListar();
+        $this->load->view('layout/Reportes/header');
+        $this->load->view('front/Reporte/UnidadFormuladora/index',['listaPipUnidadFormuladora'=>$listaPipUnidadFormuladora]);
+        $this->load->view('layout/Reportes/footer');
+    }
 //----------------------MANTENIMIENTOS DE UNIDAD EJECUTORA-------------------------------------------
     //AGREGAR UNA UNIDAD DE EJECUTORA
     public function AddUnidadF()

@@ -68,8 +68,13 @@ class PrincipalFyE extends CI_Controller
     public function AvanceCostoInv()
     {
         if ($this->input->is_ajax_request()) {
+            $avance= array();
             $datos = $this->Model_DashboardFE->AvanceCostoInv();
-            echo json_encode($datos);
+
+            foreach ($datos as $key => $Itemp) {
+               $avance[$key]=[$Itemp->avance_fisico,$Itemp->costo_estudio];
+            }
+            echo json_encode($avance);
         } else {
             show_404();
         }

@@ -9,12 +9,19 @@ class FEformulacion extends CI_Controller
     {
         parent::__construct();
         $this->load->model('FEformulacion_Modal');
+        $this->load->model('Estudio_Inversion_Model');
     }
 
     public function GetFormulacion()
     {
         if ($this->input->is_ajax_request()) {
+            
             $id_est_inve = $this->session->userdata('id_est_inve');
+            $idUsuario    = $this->session->userdata('idUsuario');
+            $dataIdPersona= $this->Estudio_Inversion_Model->UsuarioPersona($idUsuario);
+            $idPersona=$dataIdPersona->id_persona;
+            $TipoUsuario=$dataIdPersona->cod_usuario_tipo;
+
             if (empty($id_est_inve)) {
                 $id_est_inve = '0';
             }
@@ -22,7 +29,7 @@ class FEformulacion extends CI_Controller
                 $id_est_inve = '0';
             }
             //$this->session->sess_destroy();
-            $datos = $this->FEformulacion_Modal->GetFormulacion($id_est_inve);
+            $datos = $this->FEformulacion_Modal->GetFormulacion($id_est_inve,$idPersona,$TipoUsuario);
             echo json_encode($datos);
         } else {
             show_404();

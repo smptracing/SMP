@@ -170,7 +170,6 @@ function UpdateEntregableAvance(sumaTotalAvance,id_entregable){//avance total de
               }
             });
   }
-
   //refrescar los entregables 
   
 

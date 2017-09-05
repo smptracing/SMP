@@ -82,84 +82,55 @@
                           data:{},
                           success: function(data)
                           {
-                            var registros = eval(data); 
-                            var sumaTotalValori=0;
-                          	 for (var i = 0; i <registros.length;i++)
-                             {
-                                sumaValoracion=parseInt(sumaValoracion)+parseInt(registros[i]["valoracion"]);
-                                sumaTotalValori=parseInt(registros[i]["valoracion"])+parseInt(sumaTotalValori);
-                             };
-                             if(sumaValoracion>100)
-                             {
-                               	$("#PorcentajeSuperado ").html('');
-                                var restante=(parseInt(sumaValoracion)-100);
-                                document.getElementById('btn_entregableC').disabled=false;
-                                $("#PorcentajeSuperado ").html('<p>Sobrepaso la valorizacion en :'+restante+'%</p>');
+                            
+                                var registros = eval(data); 
+                                var sumaTotalValori=0;
+                              	 for (var i = 0; i <registros.length;i++)
+                                 {
+                                    sumaValoracion=parseInt(sumaValoracion)+parseInt(registros[i]["valoracion"]);
+                                    sumaTotalValori=parseInt(registros[i]["valoracion"])+parseInt(sumaTotalValori);
+                                 };
+                                 if(sumaValoracion>100)
+                                 {
+                                   	$("#PorcentajeSuperado ").html('');
+                                    var restante=(parseInt(sumaValoracion)-100);
+                                    document.getElementById('btn_entregableC').disabled=false;
+                                    $("#PorcentajeSuperado ").html('<p>Sobrepaso la valorizacion en :'+restante+'%</p>');
 
-                             }else
-                             {
-                          var txt_nombre_entre        =$("#txt_nombre_entre").val();
-				                  var txt_denominacion_entre  =$("#txt_denoMultiple").val();
-				                  var txt_valoracion_entre    =$("#txt_valoracion_entre").val();
-				                  var txt_observacio_entre    =$("#txt_observacio_entre").val();
-				                 $("#PorcentajeSuperado ").html('');
-				                  var txt_levantamintoO_entre =$("#txt_levantamintoO_entre").val();
-				                  addEntreEstudio(txt_nombre_entre,txt_denominacion_entre,txt_valoracion_entre,txt_observacio_entre,txt_levantamintoO_entre);
-                              	  document.getElementById('btn_entregableC').disabled=false;
-                              	  $('#VentanaEntregable').modal('hide');
-                              	  formLimpiar();
-                             }
-
-                                 
+                                 }else
+                                 {
+                                      var txt_nombre_entre        =$("#txt_nombre_entre").val();
+            				                  var txt_denominacion_entre  =$("#txt_denoMultiple").val();
+            				                  var txt_valoracion_entre    =$("#txt_valoracion_entre").val();
+            				                  var txt_observacio_entre    =$("#txt_observacio_entre").val();
+            				                 $("#PorcentajeSuperado ").html('');
+            				                  var txt_levantamintoO_entre =$("#txt_levantamintoO_entre").val();
+            				                  addEntreEstudio(txt_nombre_entre,txt_denominacion_entre,txt_valoracion_entre,txt_observacio_entre,txt_levantamintoO_entre);
+                                  	  document.getElementById('btn_entregableC').disabled=false;
+                                  	  $('#VentanaEntregable').modal('hide');
+                                  	  formLimpiar();
+                                 }      
                             }
                         });
               });
               $("#editarbtn_entregableC").click(function(){//verificar si el entregable supera el o no el cien porciento para inavilitar el boton
-                   valorizacionRestante();
                    event.preventDefault();
                    $('#form-modificarEntregable').data('formValidation').validate();
-      					if(!($('#form-modificarEntregable').data('formValidation').isValid()))
-      					{
-      						return;
-      					}
-                   var sumaValoracion=$("#Editxt_valoracion_entre").val();
-                   $.ajax({
-                          url: base_url+"index.php/FEentregableEstudio/MostrarAvance",//MOSTRAR AVANCE EN UN CAJA DE TEXTO PARA HABILTAR O INHABILTAR
-                          type:"POST",
-                          data:{},
-                          success: function(data)
-                          {
-                            var registros = eval(data); 
-                            var sumaTotalValori=0;
-                          	 for (var i = 0; i <registros.length;i++)
-                             {
-                                sumaValoracion=parseInt(sumaValoracion)+parseInt(registros[i]["valoracion"]);
-                                sumaTotalValori=parseInt(registros[i]["valoracion"])+parseInt(sumaTotalValori);
-                             };
-                             if(sumaValoracion>100)
-                             {
-                               	$("#PorcentajeSuperado ").html('');
-                                var restante=(parseInt(sumaValoracion)-100);
-                                document.getElementById('btn_entregableC').disabled=false;
-                                $("#PorcentajeSuperado ").html('<p>Sobrepaso la valorizacion en :'+restante+'%</p>');
+          					if(!($('#form-modificarEntregable').data('formValidation').isValid()))
+          					{
+          						return;
+          					}
 
-                             }else
-                             {
-                          		  var IdEntregable            =$("#EdiEntregable").val();
+                          var IdEntregable            =$("#EdiEntregable").val();
 				                  var Editxt_nombre_entre  =$("#Editxt_nombre_entre").val();
 				                  var Editxt_denoMultiple  =$("#Editxt_denoMultiple").val();
 				                  var Editxt_valoracion_entre    =$("#Editxt_valoracion_entre").val();
-				                 $("#PorcentajeSuperado ").html('');
+				                  $("#PorcentajeSuperado ").html('');
 				                  editarEntreEstudio(IdEntregable,Editxt_nombre_entre,Editxt_denoMultiple,Editxt_valoracion_entre);
-                              	  document.getElementById('btn_entregableC').disabled=false;
-                              	  $('#VentanaEntregable').modal('hide');
-                              	  formLimpiar();
+                          document.getElementById('btn_entregableC').disabled=false;
+                          $('#VentanaEntregable').modal('hide');
+                          formLimpiar();
 
-                             }
-
-                                 
-                            }
-                        });
               });
 
             
@@ -260,20 +231,19 @@
 		data:{},
 			success: function(data)
 			{
+        console.log(data);
         var registros = eval(data); 
-				var sumaTotalValoriEntregable=12;
+				var sumaTotalValoriEntregable=0;
 				for (var i = 0; i <registros.length;i++)
 				{
           sumaTotalValoriEntregable=sumaTotalValoriEntregable+Math.trunc(registros[i]["valoracion"]);
 				};
-        
 			$("#PorcentajeRestanteValorizacion").html("Valorización Restante "+(100-sumaTotalValoriEntregable)+"%");
 
       if(sumaTotalValoriEntregable>100)
         {
            $("#PorcentajeRestanteValorizacionModificar").html("Valorización Restante "+(100-100)+"%");
         }else{
-          $("#PorcentajeRestanteValorizacionModificar").html("Valorización Restante "+(100-sumaTotalValoriEntregable)+"%");
         }
 			}
 		});
@@ -315,8 +285,8 @@ var addEntreEstudio=function(txt_nombre_entre,txt_denominacion_entre,txt_valorac
                            $('#form-AddEntregable')[0].reset();
                            $("#VentanaEntregable").modal("hide");
                            listarEntregablesFE();
+                           $('#table_entregable').DataTable().ajax.reload();
                            valorizacionRestante();
-                           $('#table_entregable').dataTable()._fnAjaxUpdate();
                          }
                       });
                   };
@@ -335,7 +305,7 @@ var editarEntreEstudio=function(IdEntregable,Editxt_nombre_entre,Editxt_denoMult
                            $("#ModificarVentanaEntregable").modal("hide");
                            listarEntregablesFE();
                            valorizacionRestante();
-                           $('#table_entregable').dataTable()._fnAjaxUpdate();
+                           $('#table_entregable').DataTable().ajax.reload();
                          }
                       });
 }
@@ -637,7 +607,7 @@ var generarActividadesVertical=function(id_en)
                               		  $('#EdiEntregable').val(data.id_entregable);
                               		  $('#Editxt_nombre_entre').val(data.nombre_entregable);
                               		  $('#Editxt_denoMultiple').val(data.id_denom_fe);
-                             		  $('#Editxt_valoracion_entre').val(data.valoracion);
+                             		    $('#Editxt_valoracion_entre').val(data.valoracion);
                              });
               	  }
                   var AsignacionPersonaEntregables=function(tbody,table){

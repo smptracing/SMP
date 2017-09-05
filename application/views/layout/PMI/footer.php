@@ -115,5 +115,11 @@
 <script src="<?php echo base_url(); ?>assets/js/growl/growl.js"></script>
  <script src="<?php echo base_url(); ?>assets/js/Usuario/login.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1uRF6cxgwFc9DGwREFvIE6oorBaWny64&callback=initMap"></script>
+
+<!-- ECharts -->
+	
+    <script src="<?php echo base_url(); ?>assets/vendors/echarts/map/js/world.js"></script>
+	<script src="<?php echo base_url(); ?>assets/vendors/echarts/dist/echarts-all-3.js"></script>
+
 </body>
 </html>

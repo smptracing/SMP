@@ -46,8 +46,8 @@
                                                         </div>
                                                       <!--fin  de icono de reporte -->
                                                       <div class="x_content" >
-                                                                <table id="dynamic-table-EstudioInversion" class="table  table-hover" with="100%" >
-                                                                    <thead style="background-color: #5A738E;color:#FFFFFF; ">
+                                                                <table id="dynamic-table-EstudioInversion" class="table table-striped jambo_table bulk_action" with="100%" >
+                                                                    <thead style=" ">
                                                                        <tr>
                                                                        <th style="width: 1%">Código</th>
                                                                        <th style="width: 1%">#</th>
@@ -55,7 +55,9 @@
                                                                          <th style="width: 12%"> Función</th>
                                                                          <th style="width: 14%">
                                                                           <i class="fa fa-users"></i>
-                                                                         Reponsable</th>
+
+                                                                         Coordinador</th>
+
                                                                          <th style="width: 12%"> Avance</th>
                                                                          <th style="width: 13%"> Etapa</th>
                                                                          <th style="width: 1%"></th>
