@@ -116,7 +116,6 @@
       <section class="content" style="margin-top: 50px;">
       <div class="row">
         <div class="col-md-12">
-         <!-- <div class="box box-info">-->
             <div class="box-header with-border">              
               <h3 class="box-title"> <br><i class="fa fa-refresh"></i> CICLO DE INVERSIONES</h3>
             </div>

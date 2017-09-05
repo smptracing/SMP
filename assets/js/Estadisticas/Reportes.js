@@ -456,4 +456,134 @@ $.ajax({
 	});
 
 
+
+
+	/*Reporte de de cadena funcional en funcion al numero de pip*/
+
+	$.ajax({
+		url:base_url+"/index.php/PrincipalReportes/FuncionNumeroPip",
+		dataType:"json",
+		type:"POST",
+		cache:false,
+		success:function(respuesta)
+		{
+			var arrayCantidadPip=new Array();
+			$.each(respuesta,function(index,element)
+			{
+				arrayCantidadPip[index]=element.CantidadPip;
+			});
+			var dom = document.getElementById("reporteFuncionNumeroPip");
+			var myChart = echarts.init(dom);
+			var app = {};
+			option = null;
+			option = {
+				title : {
+					text: '',
+					subtext: '',
+					x:'center'
+				},
+				tooltip : {
+					trigger: 'item',
+					formatter: "{a} <br/>{b} : {c} ({d}%)"
+				},
+				legend: {
+					orient: 'horizontal',
+					left: 'left',
+					data: ['Educación','Legislativa','Planeamiento, Gestión y reserva de Contingencia','Relaciones Exteriores','Transporte']
+				},
+
+				series : [
+				{
+					name: 'Número de PIP',
+					type: 'pie',
+					radius : '55%',
+					center: ['50%', '60%'],
+					data:[
+					{value:arrayCantidadPip[0], name:'Educación'},
+					{value:arrayCantidadPip[1], name:'Legislativa'},
+					{value:arrayCantidadPip[2], name:'Planeamiento, Gestión y reserva de Contingencia'},
+					{value:arrayCantidadPip[3], name:'Relaciones Exteriores'},
+					{value:arrayCantidadPip[4], name:'Transporte'},
+					],
+					itemStyle: {
+						emphasis: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 0, 0.5)'
+						}
+					}
+				}
+				]
+			};
+			if (option && typeof option === "object") 
+			{
+				myChart.setOption(option, true);
+			}
+		}
+	});
+	/*Reporte de de cadena funcional en funcion al numero de pip*/
+
+	$.ajax({
+		url:base_url+"/index.php/PrincipalReportes/FuncionNumeroPip",
+		dataType:"json",
+		type:"POST",
+		cache:false,
+		success:function(respuesta)
+		{
+			var arrayCostoPip = new Array();
+			$.each(respuesta,function(index,element)
+			{
+				arrayCostoPip[index]=element.CostoPip;
+			});
+			var dom = document.getElementById("reporteFuncionCosto");
+			var myChart = echarts.init(dom);
+			var app = {};
+			option = null;
+			option = {
+				title : {
+					text: '',
+					subtext: '',
+					x:'center'
+				},
+				tooltip : {
+					trigger: 'item',
+					formatter: "{a} <br/>{b} : {c} ({d}%)"
+				},
+				legend: {
+					orient: 'horizontal',
+					left: 'left',
+					data: ['Educación','Legislativa','Planeamiento, Gestión y reserva de Contingencia','Relaciones Exteriores','Transporte']
+				},
+				series : [
+				{
+					name: 'Costo de PIP',
+					type: 'pie',
+					radius : '55%',
+					center: ['50%', '60%'],
+					data:[
+					{value:arrayCostoPip[0], name:'Educación'},
+					{value:arrayCostoPip[1], name:'Legislativa'},
+					{value:arrayCostoPip[2], name:'Planeamiento, Gestión y reserva de Contingencia'},
+					{value:arrayCostoPip[3], name:'Relaciones Exteriores'},
+					{value:arrayCostoPip[4], name:'Transporte'},
+					],
+					itemStyle: {
+						emphasis: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 0, 0.5)'
+						}
+					}
+				}
+				]
+			};
+			if (option && typeof option === "object") 
+			{
+				myChart.setOption(option, true);
+			}
+		}
+	});
+
+
+
 });
