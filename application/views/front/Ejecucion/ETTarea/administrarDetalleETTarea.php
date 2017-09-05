@@ -1,3 +1,9 @@
+<style>
+	#tableObservacion td
+	{
+		border-bottom: 1px dotted #cccccc;
+	}
+</style>
 <div>
 	<h3 style="text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4)">
 		Actividad: <span style="color: #26a5d8;"><?=$etTarea->nombre_tarea?></span>
