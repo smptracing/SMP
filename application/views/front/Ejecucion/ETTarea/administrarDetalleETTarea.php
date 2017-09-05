@@ -32,10 +32,16 @@
 		<tbody id="bodyTableObservacion">
 			<?php foreach($listaETTareaObservacion as $key => $value){ ?>
 				<tr>
-					<td><?=$value->desc_tobservacion?></td>
+					<td>
+						<?=$value->desc_tobservacion?>
+						<div style="padding-left: 20px;font-size: 12px;">
+							<span id="spanDescripcionLevantamientoTObservacion<?=$value->id_tarea_observacion?>"></span>
+							<textarea id="txtDescripcionLevantamientoObservacion<?=$value->id_tarea_observacion?>" rows="4" style="display: none;resize: none;width: 100%;" placeholder="Descripción del levantamiento de observación"></textarea>
+						</div>	
+					</td>
 					<td><?=$value->fecha_tobservacion?></td>
 					<td style="text-align: center;font-size: 12px;">
-						<a href="#" style="color: blue;display: block">Levantar obs.</a>
+						<a href="#" style="color: blue;display: block" onclick="levantarObservacion(<?=$value->id_tarea_observacion?>, this);">Levantar obs.</a>
 						<a href="#" style="color: red;display: block;" onclick="eliminarObservacion(<?=$value->id_tarea_observacion?>, this);">Eliminar</a>
 					</td>
 				</tr>
@@ -107,6 +113,55 @@
 				}
 
 				$(element).parent().parent().remove();
+			}, false, true);
+		}
+	}
+
+	function levantarObservacion(idTareaObservacion, element)
+	{
+		var idTextAreaTemp='txtDescripcionLevantamientoObservacion'+idTareaObservacion;
+
+		if($('#'+idTextAreaTemp).css('display')=='none')
+		{
+			$('#'+idTextAreaTemp).show();
+			$(element).text('Guardar');
+		}
+		else
+		{
+			if($('#'+idTextAreaTemp).val().trim()=='')
+			{
+				swal(
+				{
+					title: '',
+					text: 'La descripción del levantamiento de la observación es un campo obligatorio.',
+					type: 'error' 
+				},
+				function(){});
+
+				return;
+			}
+
+			paginaAjaxJSON({ idTareaObservacion : idTareaObservacion, descripcionLevantamientoObservacion : $('#'+idTextAreaTemp).val().trim() }, '<?=base_url()?>index.php/ET_Tarea_Observacion/levantarObservacion', 'POST', null, function(objectJSON)
+			{
+				objectJSON=JSON.parse(objectJSON);
+
+				swal(
+				{
+					title: '',
+					text: objectJSON.mensaje,
+					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+				},
+				function(){});
+
+				if(objectJSON.proceso=='Error')
+				{
+					return false;
+				}
+
+				$('#spanDescripcionLevantamientoTObservacion'+idTareaObservacion).val($('#'+idTextAreaTemp).val().trim());
+
+				$('#'+idTextAreaTemp).hide();
+				$(element).remove();
 			}, false, true);
 		}
 	}

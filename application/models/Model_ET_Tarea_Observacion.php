@@ -10,7 +10,7 @@ class Model_ET_Tarea_Observacion extends CI_Model
 
 	public function insertar($idTareaET, $descripcionObservacion, $descripcionLevantamientoObservacion, $fechaObservacion, $fechaLevantamientoObservacion, $estadoObservacion)
 	{
-		$this->db->query("exec sp_Gestionar_ETTareaObservacion 'insertar', ".$idTareaET.", '".$descripcionObservacion."', '".$descripcionLevantamientoObservacion."', '".$fechaObservacion."', '".$fechaLevantamientoObservacion."', ".$estadoObservacion);
+		$this->db->query("exec sp_Gestionar_ETTareaObservacion @opcion='insertar', @idTareaET=".$idTareaET.", @descTObservacion='".$descripcionObservacion."', @levantamientoTObservacion='".$descripcionLevantamientoObservacion."', @fechaTObservacion='".$fechaObservacion."', @fechaLevTObservacion='".$fechaLevantamientoObservacion."', @estadoTObsevacion=".$estadoObservacion);
 
 		return true;
 	}
@@ -25,6 +25,13 @@ class Model_ET_Tarea_Observacion extends CI_Model
 	public function eliminar($idTareaObservacion)
 	{
 		$this->db->query("delete from ET_TAREA_OBSERVACION where id_tarea_observacion=".$idTareaObservacion);
+
+		return true;
+	}
+
+	public function levantarObservacion($idTareaObservacion, $descripcionLevantamientoObservacion, $fechaLevantamientoObservacion, $estadoObservacion)
+	{
+		$this->db->query("exec sp_Gestionar_ETTareaObservacion @opcion='levantamientoobservacion', @idTareaObservacion=".$idTareaObservacion.", @levantamientoTObservacion='".$descripcionLevantamientoObservacion."', @fechaLevTObservacion='".$fechaLevantamientoObservacion."', @estadoTObsevacion=".$estadoObservacion);
 
 		return true;
 	}

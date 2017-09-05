@@ -38,5 +38,19 @@ class ET_Tarea_Observacion extends CI_Controller
 
 		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Observación eliminada correctamente.']);exit;
 	}
+
+	public function levantarObservacion()
+	{
+		$this->db->trans_start();
+
+		$idTareaObservacion=$this->input->post('idTareaObservacion');
+		$descripcionLevantamientoObservacion=$this->input->post('descripcionLevantamientoObservacion');
+
+		$this->Model_ET_Tarea_Observacion->levantarObservacion($idTareaObservacion, $descripcionLevantamientoObservacion, date('Y-m-d H:i:s'), 1);
+
+		$this->db->trans_complete();
+
+		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Observación levantada correctamente.']);exit;
+	}
 }
 ?>
