@@ -122,6 +122,19 @@
                       </li>
  
                 	</ul>
+
+                	<ul class="nav side-menu">
+                     <li>
+                         <a>
+                            <i class="fa fa-file-text"></i>OTROS REPORTES
+                            <span class="fa fa-chevron-down"></span>
+                         </a>
+                            <ul class="nav child_menu">
+                                    <li><a href="<?php echo site_url('ProyectoInversion/ReporteBuscadorPorPip'); ?>">Proyecto Inversion</a></li>
+                            </ul>
+                      </li>
+                	</ul>
+
 					</div>
 					<div class="sidebar-footer hidden-small">
 						<a data-toggle="tooltip" data-placement="top" title="Settings">
