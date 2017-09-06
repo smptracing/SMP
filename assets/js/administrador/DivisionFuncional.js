@@ -9,7 +9,7 @@ $(document).on("ready" ,function()
 
     $('#listaFuncionC').on('change', function() 
     {
-        listaDivisionFuncionalCombo();
+        listaDivisionFuncionalCombo(null);
     })
 
     $("#form-AddDivisionFuncion").submit(function(event)//para añadir nuevo division funcional
@@ -158,32 +158,19 @@ $(document).on("ready" ,function()
     /*Mostrar division funcional en base a la funcion*/
     var listaDivisionFuncionalCombo=function(valor)
     {
-        event.preventDefault(); 
-
         var htmlTemp="";
         $("#listaDivisionFuncional").html(htmlTemp);
-
-        var idFuncion = $("#listaFuncionC").val();        
-
-        $.ajax(
+        var idFuncion = $("#listaFuncionC").val(); 
+        paginaAjaxJSON({ idFuncion : idFuncion }, base_url +"index.php/Funcion/GetDivisionFuncional", "POST", null, function(objectJSON)
         {
-            "url" : base_url +"index.php/Funcion/GetDivisionFuncional",
-            type : "POST",
-            data : idFuncion,
-            success : function(respuesta)
+            objectJSON=JSON.parse(objectJSON);
+            var registros=eval(objectJSON);
+            for(var i=0; i<registros.length; i++)
             {
-                alert(idFuncion);                
-                /*var registros=eval(respuesta);
+                htmlTemp+="<option value="+registros[i]["id_div_funcional"]+"> "+ registros[i]["codigo_div_funcional"]+": "+registros[i]["nombre_div_funcional"]+" </option>";   
+            };
 
-                for(var i=0; i<registros.length; i++)
-                {
-                    htmlTemp+="<option value="+registros[i]["id_funcion"]+"> "+ registros[i]["codigo_funcion"]+": "+registros[i]["nombre_funcion"]+" </option>";   
-                };
-                $("#listaFuncionC").html(htmlTemp);
-                $("#listaFuncionCM").html(htmlTemp);
-                $('select[name=listaFuncionCM]').val(valor);
-                $('select[name=listaFuncionCM]').change();
-                $('.selectpicker').selectpicker('refresh'); */
-            }
-        });
+            $("#listaDivisionFuncional").html(htmlTemp);
+            $('.selectpicker').selectpicker('refresh'); 
+        }, false, true);
     }

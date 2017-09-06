@@ -10,9 +10,6 @@ class Funcion extends CI_Controller {/* Mantenimiento de sector entidad Y servic
 
      public function index()
     {
-        /*$this->load->view('layout/Reportes/header');
-        $this->load->view('front/Reporte/Funcion/index');
-        $this->load->view('layout/Reportes/footer');*/
         $listaNumPipFuncion=$this->Model_Funcion->FuncionPipListar();
         $this->load->view('layout/Reportes/header');
         $this->load->view('front/Reporte/Funcion/index',['listaNumPipFuncion'=>$listaNumPipFuncion]);
@@ -38,17 +35,12 @@ class Funcion extends CI_Controller {/* Mantenimiento de sector entidad Y servic
         }
     }
 
-    function GetDivisionFuncional($codigoFuncion)
+    function GetDivisionFuncional()
     {
-        if ($this->input->is_ajax_request()) 
-        {            
-            $datos=$this->Model_Funcion->GetDivisionFuncional($codigoFuncion);
-            echo json_encode($datos);
-        }
-        else
-        {
-            show_404();
-        }
+        $idFuncion=$this->input->post('idFuncion');
+
+        $datos=$this->Model_Funcion->GetDivisionFuncional($idFuncion);
+        echo json_encode($datos);
     }
 
 
@@ -89,10 +81,6 @@ class Funcion extends CI_Controller {/* Mantenimiento de sector entidad Y servic
         }
 
     }
-
-
-
-
 
     /*fin FUNCION*/
 
