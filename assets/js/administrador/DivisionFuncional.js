@@ -3,6 +3,8 @@ $(document).on("ready" ,function()
     listarDivisionF();//para mostrar las divisiones funcionanes
     listaFuncionCombo();
     listaProvinciaCombo();
+    listaProyectos();
+    
     $("#btn_Nuevadivision").click(function()//para que cargue el como una vez echo click sino repetira datos
     {
          listaFuncionCombo();//para llenar el combo de agregar division funcional
@@ -10,16 +12,24 @@ $(document).on("ready" ,function()
 
     $('#listaFuncionC').on('change', function() 
     {
-        listaDivisionFuncionalCombo(null);
+        //listaProyectos();
+        listaDivisionFuncionalCombo(null);        
     })
     $('#listaDivisionFuncional').on('change', function() 
     {
         listaGrupoFuncionalCombo(null);
+        //listaProyectos();
     })
     $('#listaProvincia').on('change', function() 
     {
         listaDistritoCombo(null);
+        //listaProyectos();
     })
+
+    $("#btnBuscar").click(function()//para que cargue el como una vez echo click sino repetira datos
+    {
+        listaProyectos();//para llenar el combo de agregar division funcional
+    });
 
     $("#form-AddDivisionFuncion").submit(function(event)//para añadir nuevo division funcional
     {
@@ -241,4 +251,48 @@ $(document).on("ready" ,function()
             $("#listaDistrito").html(htmlTemp);
             $('.selectpicker').selectpicker('refresh'); 
         }, false, true);
+    }
+
+    /*Listar proyectos por distintos parametros*/
+    var listaProyectos=function()
+    {
+        var idFuncion = $("#listaFuncionC").val(); 
+        var idDivisionFuncional = $("#listaDivisionFuncional").val();
+        var idGrupoFuncional = $("#listaGrupoFuncional").val();
+        var idProvincia = $("#listaProvincia").val();
+        var idDistrito = $("#listaDistrito").val();
+        var deFecha = $('#deFecha').val();
+        var aFecha = $("#aFecha").val(); 
+        //alert(deFecha);
+        $.ajax({
+            url: base_url +"index.php/Funcion/ProyectosPorCadenaFuncional",
+            type: 'POST',
+            data:
+            {
+                idFuncion: idFuncion,
+                idDivisionFuncional : idDivisionFuncional,
+                idGrupoFuncional: idGrupoFuncional,
+                idProvincia:idProvincia,
+                idDistrito:idDistrito,
+                deFecha:deFecha,
+                aFecha:aFecha
+            },
+            beforeSend: function(xhr)
+            {
+                renderLoading();
+            },
+            success: function (data)
+            {
+                $('#divModalCargaAjax').hide();
+
+                $('#dataTableFuncion').html(data);
+            },
+            error: function ()
+            {
+                $('#divModalCargaAjax').hide();
+
+                alert("Ocurrio un error!");
+            }
+        });
+
     }

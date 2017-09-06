@@ -39,6 +39,17 @@ class Model_Funcion extends CI_Model
         return $data->result();
     }
 
+    function getProyectos()
+    {
+        $data=$this->db->query("select f.nombre_funcion, df.nombre_div_funcional, gf.nombre_grup_funcional, py.nombre_pi, py.num_beneficiarios, py.costo_pi, u.provincia, u.distrito
+            from FUNCION f inner join DIVISION_FUNCIONAL df on f.id_funcion = df.id_funcion
+            inner join GRUPO_FUNCIONAL gf on gf.id_div_funcional=df.id_div_funcional
+            inner join proyecto_inversion py on gf.id_grup_funcional = py.id_grupo_funcional
+            inner join ubigeo_pi up on up.id_pi = py.id_pi
+            inner join ubigeo u on u.id_ubigeo = up.id_ubigeo");
+        return $data->result();
+    }
+
     function AddFucion($txt_codigofuncion,$txt_nombrefuncion)
     {
         $this->db->query("execute sp_Funcion_c '".$txt_codigofuncion."','".$txt_nombrefuncion."'");

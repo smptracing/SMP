@@ -17,8 +17,10 @@ class Funcion extends CI_Controller {/* Mantenimiento de sector entidad Y servic
     }
     public function CadenaFuncional()
     {
+        $datos=$this->Model_Funcion->GetProyectos();
         $this->load->view('layout/Reportes/header');
         $this->load->view('front/Reporte/CadenaFuncional/index');
+        //$this->load->view('front/Reporte/CadenaFuncional/index',['listaProyectos'=>$datos]);
         $this->load->view('layout/Reportes/footer');
     }
 
@@ -58,6 +60,29 @@ class Funcion extends CI_Controller {/* Mantenimiento de sector entidad Y servic
         $datos=$this->Model_Funcion->GetDistrito($provincia);
         echo json_encode($datos);
         exit;
+    }
+    function ProyectosPorCadenaFuncional()
+    {
+        $idFuncion = $this->input->post('idFuncion');
+        $idDivisionFuncional = $this->input->post('idDivisionFuncional');
+        $idGrupoFuncional = $this->input->post('idGrupoFuncional');
+        $idProvincia = $this->input->post('idProvincia');
+        $idDistrito = $this->input->post('idDistrito');
+        $deFecha = $this->input->post('deFecha');
+        $aFecha = $this->input->post('aFecha');
+        //echo $idFuncion." ".$idDivisionFuncional." ".$idGrupoFuncional." ".$idProvincia." ".$idDistrito." ".$deFecha." ".$aFecha; 
+        //exit;
+        $datos=$this->Model_Funcion->GetProyectos();
+        //echo json_encode($datos);
+        //exit;
+        //$this->load->view('layout/Reportes/header');        
+        $this->load->view('front/Reporte/CadenaFuncional/tablaFuncion',['listaProyectos'=>$datos]);
+        //$this->load->view('layout/Reportes/footer');
+
+
+        //$datos=$this->Model_Funcion->GetDistrito($provincia);
+        //echo json_encode($datos);
+        //exit;
     }
 
 
