@@ -35,5 +35,12 @@ class Model_ET_Tarea_Observacion extends CI_Model
 
 		return true;
 	}
+
+	function ultimoId()
+	{
+		$data=$this->db->query("select max(id_tarea_observacion) as idTareaObservacion from ET_TAREA_OBSERVACION");
+
+		return $data->result()[0]->idTareaObservacion;
+	}
 }
 ?>

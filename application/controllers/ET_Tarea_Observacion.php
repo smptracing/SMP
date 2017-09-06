@@ -21,9 +21,11 @@ class ET_Tarea_Observacion extends CI_Controller
 
 		$this->Model_ET_Tarea_Observacion->insertar($idTareaET, $descripcionObservacion, '', $fechaActual, $fechaActual, 0);
 
+		$ultimoIdETTareaObservacion=$this->Model_ET_Tarea_Observacion->ultimoId();
+
 		$this->db->trans_complete();
 
-		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Observación registrada correctamente.', 'fechaActual' => $fechaActual]);exit;
+		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Observación registrada correctamente.', 'fechaActual' => $fechaActual, 'ultimoIdETTareaObservacion' => $ultimoIdETTareaObservacion]);exit;
 	}
 
 	public function eliminar()

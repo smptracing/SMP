@@ -32,22 +32,16 @@
 														<div class="row">
 															<div class="form-group">
 										                       <label class="control-label col-md-2 col-sm-2 col-xs-12">Función: </label>
-										                        <div class="col-md-4 col-sm-4 col-xs-12">
-										                          <select class="selectpicker" data-live-search="true" title="selecciones Sector">
-										                            <option></option>
-										                            <option value="AK">Alaska</option>
-										                            <option value="HI">Hawaii</option>
-										                          </select>
-										                        </div>
+										                       <div class="col-md-4 col-sm-4 col-xs-12">
+									                                <select id="listaFuncionC" name="listaFuncionC" class="selectpicker" data-live-search="true"  title="Seleccionar Función" onchange="">
+									                                 </select>
+									                            </div>
 										                    </div>
 										                    <div class="form-group">
 										                        <label class="control-label col-md-2 col-sm-2 col-xs-12">División Funcional: </label>
 										                        <div class="col-md-4 col-sm-4 col-xs-12">
-										                          <select class="selectpicker" data-live-search="true" title="selecciones Sector">
-										                            <option></option>
-										                            <option value="AK">Alaska</option>
-										                            <option value="HI">Hawaii</option>
-										                          </select>
+										                          <select id="listaDivisionFuncional" name="listaDivisionFuncional" class="selectpicker" data-live-search="true"  title="Seleccionar División Funcional" onchange="">
+									                              </select>
 										                        </div>
 										                    </div>
 									                    </div> 
@@ -55,7 +49,7 @@
 															<div class="form-group">
 										                       <label class="control-label col-md-2 col-sm-2 col-xs-12">Grupo Funcional: </label>
 										                        <div class="col-md-4 col-sm-4 col-xs-12">
-										                          <select class="selectpicker" data-live-search="true" title="selecciones Sector">
+										                          <select class="selectpicker" data-live-search="true" title="Seleccione Grupo Funcional">
 										                            <option></option>
 										                            <option value="AK">Alaska</option>
 										                            <option value="HI">Hawaii</option>
@@ -65,7 +59,7 @@
 										                    <div class="form-group">
 										                       <label class="control-label col-md-2 col-sm-2 col-xs-12">Provincia: </label>
 										                        <div class="col-md-4 col-sm-4 col-xs-12">
-										                          <select class="selectpicker" data-live-search="true" title="selecciones Sector">
+										                          <select class="selectpicker" data-live-search="true" title="Seleccione Provincia">
 										                            <option></option>
 										                            <option value="AK">Alaska</option>
 										                            <option value="HI">Hawaii</option>
@@ -77,7 +71,7 @@
 										                    <div class="form-group">
 										                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Distrito: </label>
 										                        <div class="col-md-4 col-sm-4 col-xs-12">
-										                          <select class="selectpicker" data-live-search="true" title="selecciones Sector">
+										                          <select class="selectpicker" data-live-search="true" title="Seleccione Distrito">
 										                            <option></option>
 										                            <option value="AK">Alaska</option>
 										                            <option value="HI">Hawaii</option>
@@ -89,13 +83,13 @@
 									                    <div class="row">
 															<div class="form-group">
 										                        <label class="control-label col-md-2 col-sm-2 col-xs-12">De:</label>
-										                        <div class="col-md-4 col-sm-4 col-xs-12">
+										                        <div class="col-md-3 col-sm-3 col-xs-12">
 										                          <input type="date" class="form-control" placeholder="Default Input">
 										                        </div>
 										                    </div>
 										                    <div class="form-group">
 										                        <label class="control-label col-md-2 col-sm-2 col-xs-12">A:</label>
-										                        <div class="col-md-4 col-sm-4 col-xs-12">
+										                        <div class="col-md-3 col-sm-3 col-xs-12">
 										                          <input type="date" class="form-control" placeholder="Default Input">
 										                        </div>
 										                    </div>
@@ -111,9 +105,29 @@
 																	<td>Número de Pip</td>
 																	<td>Número de Beneficiarios</td>
 																	<td>Costo</td>
-
 																</tr>
 															</thead>
+															<!--<tbody>
+															<?php foreach($listaProyectos as $item ) { ?>
+															  	<tr>
+																	<td>
+																		<?=$item->nombre_funcion?>
+															    	</td>
+															    	<td>
+																		<?=$item->CantidadPip?>
+															    	</td>
+															    	<td>
+																		<?=$item->nombre_funcion?>
+															    	</td>
+															    	<td>
+																		<?=$item->CantidadPip?>
+															    	</td>		
+															    	<td style="text-align:right">
+																		S/. <?=$item->CostoPip?>
+															    	</td>
+															  </tr>
+															<?php } ?>
+															</tbody>-->
 														</table>
 														
 
