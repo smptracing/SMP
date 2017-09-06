@@ -131,7 +131,36 @@ class FEActividadEntregable extends CI_Controller
 
     }
     //fin asignacion de personal
+    public function ObservacionActividad()
+    {
+         if ($this->input->is_ajax_request()) 
+         {
+            
+            $tx_IdActividadObser     = $this->input->post('tx_IdActividadObser');
+            $txt_desco_obs           = $this->input->post('txt_desco_obs');
+            $txt_fechaLevantaminetoObse     = $this->input->post('txt_fechaLevantaminetoObse');
+            
+            $config['upload_path']          = './uploads/cartera/';
+            $config['allowed_types']        = 'pdf|doc|xml|docx|PDF|DOC|DOCX|xls|xlsx';
+            $config['max_width']            = 1024;
+            $config['max_height']           = 768;
+            $config['max_size']             = 15000;
+            $config['encrypt_name']         = false;
 
+            $this->load->library('upload',$config);
+            if (! $this->upload->do_upload('Cartera_Resoluacion'))
+               {
+                                
+                    $error="ERROR NO SE CARGO EL DOCUMENTO";
+                    echo $error;
+               }
+                else
+               {
+                    
+                    echo json_encode($txt_fechaLevantaminetoObse);
+               }
+         } 
+    }
     public function _load_layout($template)
     {
         $this->load->view('layout/Formulacion_Evaluacion/header');

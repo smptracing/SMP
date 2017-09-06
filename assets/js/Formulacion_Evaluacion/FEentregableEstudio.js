@@ -133,7 +133,26 @@
 
               });
 
-            
+                $("#form-ObservacionesActividades").submit(function(event)
+                 {
+
+                      event.preventDefault();
+                      var formData=new FormData($("#form-ObservacionesActividades")[0]);
+                      $.ajax({
+                          type:"POST",
+                          enctype: 'multipart/form-data',
+                          url:base_url+"index.php/FEActividadEntregable/ObservacionActividad",
+                          data: formData,
+                          cache: false,
+                          contentType:false,
+                          processData:false,
+                          success:function(resp)
+                          {
+                           swal("",resp, "success");
+                          }
+                      });
+                });
+
               var txt_id_etapa_estudio=$("#txt_id_etapa_estudio").val();   
 //Gant
                $("#btn_gant").click(function() {
@@ -504,13 +523,13 @@ var generarActividadesVertical=function(id_en)
                                     {"data":"end"},
                                     {"data":"valoracion",
                                       "mRender":function (data,type, full) {
-                                         return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-orange' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Complete</small></td>";
+                                         return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-orange' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Complete</small> </td>";
                                     }},
                                     {"data":"avance",
                                       "mRender":function (data,type, full) {
                                          return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Complete</small></td>";
                                     }},
-                                    {"defaultContent":"<div class='dropdown'>  <a class='btn btn-link dropdown-toggle' type='button' data-toggle='dropdown'> <span class='glyphicon glyphicon-option-vertical' aria-hidden='true'></span></a> <ul class='dropdown-menu pull-right' style=''> <li><button type='button' class='edit btn btn-primary btn-xs' data-toggle='modal' data-target='#'>Editar Actividad</button><button type='button' class='actividadObservaciones btn btn-primary btn-xs' data-toggle='modal' data-target='#'> Observaciones </button></ul> </div>"}
+                                    {"defaultContent":"<div class='dropdown'>  <a class='btn btn-link dropdown-toggle' type='button' data-toggle='dropdown'> <span class='glyphicon glyphicon-option-vertical' aria-hidden='true'></span></a> <ul class='dropdown-menu pull-right' style=''> <li><button type='button' class='edit btn btn-primary btn-xs' data-toggle='modal' data-target='#'>Editar Actividad</button><button type='button' class='actividadObservaciones btn btn-primary btn-xs' data-toggle='modal' data-target='#modalObservacionesActividades'> Observaciones </button></ul>  </div>"}
                                 ],
 
                                 "language":idioma_espanol
@@ -531,12 +550,9 @@ var generarActividadesVertical=function(id_en)
 
    var  LevantarObservacionesActividad=function(tbody,table)
                   {
-                    $(tbody).on("click","button.EditarEntregable",function(){
+                    $(tbody).on("click","button.actividadObservaciones",function(){
                               var data=table.row( $(this).parents("tr")).data();
-                                    $('#EdiEntregable').val(data.id_entregable);
-                                    $('#Editxt_nombre_entre').val(data.nombre_entregable);
-                                    $('#Editxt_denoMultiple').val(data.id_denom_fe);
-                                    $('#Editxt_valoracion_entre').val(data.valoracion);
+                                    $('#tx_IdActividadObser').val(data.id_entregable);
                              });
                   }
  
