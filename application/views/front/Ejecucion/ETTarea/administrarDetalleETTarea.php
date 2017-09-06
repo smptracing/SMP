@@ -184,7 +184,7 @@
 				{
 					title: '',
 					text: 'La descripción del levantamiento de la observación es un campo obligatorio.',
-					type: 'error' 
+					type: 'error'
 				},
 				function(){});
 
@@ -265,6 +265,19 @@
 
 	function registrarArchivo(idTareaET)
 	{
+		if($($('#fileDocumentoEjecucion')[0]).get(0).files.length==0)
+		{
+			swal(
+			{
+				title: '',
+				text: 'Debe seleccionar un archivo para subir a esta actividad.',
+				type: 'error'
+			},
+			function(){});
+
+			return;
+		}
+
 		var dataAjax=new FormData();
 
 		dataAjax.append('idTareaET', idTareaET);
@@ -278,29 +291,14 @@
 		    data: dataAjax,
 		    beforeSend: function(xhr)
 		    {
+		    	renderLoading();
 		    },
 		    success: function(result)
 		    {
-		    	
+		    	$('#divModalCargaAjax').hide();
+
+		    	$('#fileDocumentoEjecucion').val(null);
 		    }
 		});
-
-		/*paginaAjaxJSON(dataAjax, '<?=base_url()?>index.php/ET_Documento_Ejecucion/insertar', 'POST', null, function(objectJSON)
-		{
-			objectJSON=JSON.parse(objectJSON);
-
-			swal(
-			{
-				title: '',
-				text: objectJSON.mensaje,
-				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
-			},
-			function(){});
-
-			if(objectJSON.proceso=='Error')
-			{
-				return false;
-			}
-		}, false, true);*/
 	}
 </script>
