@@ -442,7 +442,88 @@
     </div>
   </div>
 
-<!--  -->
+<!-- -->
+
+<!--MOFIFICAR ACTIVIDADES DE ENTREGABLES-->
+  <div class="modal fade" id="modalModificarActividades" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h5 class="modal-title">Modificar Actividad </h5>
+        </div>
+
+         <div class="modal-body">
+         <div class="row">
+                <div class="col-xs-12">
+                <form class="form-horizontal " id="form-ActualizarActividadEntregable"  method="POST" >
+                  <div class="row">
+                     <div class="col-md-12 col-sm-12 col-xs-12 ">
+                        <span class="input-group-addon">Nombre Actividad</span>
+                        <input id="tx_IdActividad"  name="tx_IdActividad" type="hidden" class="form-control"  placeholder="" >
+                        <input id="txt_idEntregable" name="txt_idEntregable" type="hidden" class="form-control"  placeholder="">
+                        <input id="txt_NombreActividadAc" name="txt_NombreActividadAc" type="text" class="form-control"  placeholder="">
+                      </div>
+                      <div class="col-md-12 col-sm-12 col-xs-12">
+                          <label class=" col-md-6 col-sm-6 col-xs-12">Inicio y Final de la Actividad </label>
+                          <input type="hidden" id="txt_fechaActividadIAc" name="txt_fechaActividadIAc"  type="date" class="form-control calendario">
+                      </div>
+                      <div class="col-md-6 col-sm-6 col-xs-12 ">
+                          <label class=" col-md-6 col-sm-6 col-xs-12"></label>
+                          <input type="hidden" id="txt_fechaActividadfAc"  name="txt_fechaActividadfAc" type="date" class="form-control calendario">
+                      </div>
+                      <div class="input-prepend input-group col-md-10 col-sm-10 col-xs-10" style="margin-left: 8px;">
+                                            <span class="add-on input-group-addon">Fecha de actividad <i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+                                            <input type="text"  name="FechaActividadCalendar" id="FechaActividadCalendar" class="form-control" value=""/>
+                      </div>
+                      <div class="col-md-3 col-sm-3 col-xs-12">
+                        <label class="col-md-3 col-sm-3 col-xs-12" >Avance</label>
+                        <input type="hidden" class="form-control" id="txt_valorizacionEAct" name="txt_valorizacionEAct">
+                        <input type="text" class="form-control" id="txt_avanceEAct" name="txt_avanceEAct" class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2"  required="required" type="number" step='0.01'  placeholder="%">
+
+                      </div>
+                    </div><br/>
+
+                     <div class="col-md-12 col-sm-12 col-xs-12 input-group">
+                        <span class="input-group-addon">Observación</span>
+                        <input id="txt_observacio_EntreAct" name="txt_observacio_EntreAct" type="text" class="form-control">
+                      </div>
+
+                      <div class="input-group demo2 colorpicker-element">
+                             <input type="text" class="form-control" id="txt_ActividadColorAc" name="txt_ActividadColorAc">
+                            <span class="input-group-addon"><i style="background-color: rgb(224, 26, 181);"></i></span>
+                      </div>
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+
+                          <button  type="submit" class="btn btn-success">
+                            <span class="glyphicon glyphicon-floppy-disk"></span>
+                            Guardar
+                          </button>
+                          <button type="submit" class="btn btn-danger" data-dismiss="modal">
+                             <span class="glyphicon glyphicon-remove"></span>
+                            Cancelar
+                          </button>
+
+                        </div>
+                      </div>
+
+
+
+
+                </form>
+            </div>
+         </div>
+        </div>
+
+        <div class="modal-footer">
+
+        </div>
+      </div>
+    </div>
+  </div>
+<!--FIN MOFIFICAR ACTIVIDADES DE ENTREGABLES-->
 
 <div class="modal fade" id="modalObservacionesActividades" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">

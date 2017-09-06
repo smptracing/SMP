@@ -529,11 +529,13 @@ var generarActividadesVertical=function(id_en)
                                       "mRender":function (data,type, full) {
                                          return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Complete</small></td>";
                                     }},
-                                    {"defaultContent":"<div class='dropdown'>  <a class='btn btn-link dropdown-toggle' type='button' data-toggle='dropdown'> <span class='glyphicon glyphicon-option-vertical' aria-hidden='true'></span></a> <ul class='dropdown-menu pull-right' style=''> <li><button type='button' class='edit btn btn-primary btn-xs' data-toggle='modal' data-target='#'>Editar Actividad</button><button type='button' class='actividadObservaciones btn btn-primary btn-xs' data-toggle='modal' data-target='#modalObservacionesActividades'> Observaciones </button></ul>  </div>"}
+                                    {"defaultContent":"<div class='dropdown'>  <a class='btn btn-link dropdown-toggle' type='button' data-toggle='dropdown'> <span class='glyphicon glyphicon-option-vertical' aria-hidden='true'></span></a> <ul class='dropdown-menu pull-right' style=''> <li><button type='button' class='edit btn btn-primary btn-xs' data-toggle='modal' data-target='#modalModificarActividades'>Editar Actividad</button><button type='button' class='actividadObservaciones btn btn-primary btn-xs' data-toggle='modal' data-target='#modalObservacionesActividades'> Observaciones </button></ul>  </div>"}
                                 ],
 
                                 "language":idioma_espanol
                     });
+
+              ActualizarActividadEntregableData("#datatable-actividadesV",table); //TRAER DATOS PARA ACTUALIZAR
 
                  $('#datatable-actividadesV tbody').on('click', 'tr', function () 
                  {
@@ -545,8 +547,64 @@ var generarActividadesVertical=function(id_en)
                    });
 
                  LevantarObservacionesActividad("#datatable-actividadesV",table);
-
   }
+
+//ACTUALIZAR ACTIVIDAD ENTREGABLES
+$("#form-ActualizarActividadEntregable").submit(function(event)
+{
+  event.preventDefault();
+
+  $.ajax(
+  {
+    url : base_url+"index.php/FEActividadEntregable/Update_Actividades",
+    type : $(this).attr('method'),
+    data : $(this).serialize(),
+    success : function(resp)
+    {
+      swal("MODIFICADO!", resp, "success");
+      
+      $('#datatable-actividadesV').dataTable()._fnAjaxUpdate();
+
+      $('#modalModificarActividades').modal('hide');
+    }
+  });
+}); 
+
+/*$("#form-ActualizarActividadEntregable").submit(function(event)
+                  {
+                    refrescarGantt();
+                      event.preventDefault();
+                      $.ajax({
+                          url:base_url+"index.php/FEActividadEntregable/Update_Actividades",
+                          type:$(this).attr('method'),
+                          data:$(this).serialize(),
+                          success:function(resp){ 
+                           $("#modalModificarActividades").modal("hide");
+                           $('#table_entregable').dataTable()._fnAjaxUpdate();  
+                          var tx_IdActividad=$("#tx_IdActividad").val();//catura el id de la actividadd
+                          var txt_idEntregable=$("#txt_idEntregable").val();//catura eñ id del entregable
+                           $("#calendarActividadesFE" ).remove();
+                          CalcularAvanceAc(tx_IdActividad,txt_idEntregable);//calcular elavance de los entregables
+                         
+                         }
+                      });
+                  }); */
+//FIN ACTUALIZAR MODALIDAD DE EJECUCION
+
+          // CAMPOS QUE SE ACTUALIZARAN DE ACTIVIDAD ENTEGABLES
+        ActualizarActividadEntregableData=function(tbody,table){
+                    $(tbody).on("click","button.edit",function(){
+                        var data=table.row( $(this).parents("tr")).data();
+                        var id_actividad=$('#tx_IdActividad').val(data.id_actividad);
+                        var id_entregable=$('#txt_idEntregable').val(data.txt_idEntregable);
+        console.log(id_actividad);
+                    });
+                }
+          // FIN DE CAMPOS QUE SE ACTUALIZARAN DE LA MODALIDAD EJECUCION
+
+
+
+
 
    var  LevantarObservacionesActividad=function(tbody,table)
                   {
