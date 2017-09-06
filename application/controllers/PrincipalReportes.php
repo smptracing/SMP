@@ -101,6 +101,15 @@ class PrincipalReportes extends CI_Controller
         show_404();
     }
 
+    function BuscadorPipPorCodigoReporte()
+    {
+            $CodigoUnico=$this->input->get('codigounico');
+            $BuscarPipCodigoReporte=$this->Model_Dashboard_Reporte->ReporteDevengadoPiaPimPorPip($CodigoUnico); //BUSCAR PIP
+      
+            $devengado=[$BuscarPipCodigoReporte->pia_meta_pres,$BuscarPipCodigoReporte->pim_acumulado,$BuscarPipCodigoReporte->devengado_acumulado];
+            echo  json_encode($devengado);
+    }
+
     public function _load_layout($template)
     {
         $this->load->view('layout/Reportes/header');

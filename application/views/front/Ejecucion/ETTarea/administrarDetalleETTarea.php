@@ -3,8 +3,34 @@
 	{
 		border-bottom: 1px dotted #cccccc;
 	}
+
+	#listaArchivos
+	{
+		list-style: none;
+		text-align: center;
+		width: 100%;
+	}
+
+	#listaArchivos > li
+	{
+		border: 1px solid #999999;
+		cursor: pointer;
+		display: inline-block;
+		margin: 3px;
+		padding: 20px;
+		padding-left: 7px;
+		padding-right: 7px;
+		text-align: center;
+		vertical-align: middle;
+		width: 200px;
+	}
+
+	#listaArchivos > li:hover
+	{
+		background-color: #f5f5f5;
+	}
 </style>
-<div>
+<div style="overflow-y: scroll;height: 390px;margin-top: 40px;">
 	<h3 style="text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4)">
 		Actividad: <span style="color: #26a5d8;"><?=$etTarea->nombre_tarea?></span>
 		<br>
@@ -15,9 +41,25 @@
 	<br>
 	<select name="selectETResponsableTarea" id="selectETResponsableTarea" style="width: 100%;" onchange="asignarResponsable(<?=$etTarea->id_tarea_et?>);">
 		<option value=""></option>
-		<?php foreach($listaPersona as $key => $value){ ?>
-			<option value="<?=$value->id_persona?>"><?=$value->nombres.' '.$value->apellido_p.' '.$value->apellido_m?></option>
-		<?php } ?>
+		<?php foreach($listaPersona as $key => $value){
+			if(count($listaETResponsableTarea)>0){
+				$asignado=false;
+				foreach($listaETResponsableTarea as $index => $item){
+					if($value->id_persona==$item->id_persona)
+					{
+						$asignado=true;break;
+					}
+				}
+				if($asignado){ ?>
+					<option value="<?=$value->id_persona?>" selected><?=$value->nombres.' '.$value->apellido_p.' '.$value->apellido_m?></option>
+				<?php } else{ ?>
+					<option value="<?=$value->id_persona?>"><?=$value->nombres.' '.$value->apellido_p.' '.$value->apellido_m?></option>
+				<?php }
+			}
+			else{ ?>
+				<option value="<?=$value->id_persona?>"><?=$value->nombres.' '.$value->apellido_p.' '.$value->apellido_m?></option>
+			<?php }
+			} ?>
 	</select>
 	<br><br>
 	<label for="txtObservacion"><b>Observación</b></label>
@@ -59,10 +101,22 @@
 	<br>
 	<label for="fileDocumentoEjecucion"><b>Archivos de esta actividad</b></label>
 	<input type="file" id="fileDocumentoEjecucion" name="fileDocumentoEjecucion">
+	<input type="button" value="Subir archivo" style="background-color: #3e973e;color: #ffffff;cursor: pointer;" onclick="registrarArchivo(<?=$etTarea->id_tarea_et?>);">
 	<hr>
-	<div style="text-align: right;">
-		<input type="button" value="Cerrar ventana" class="button requireWrite newproject" style="background-color: #d43c3c;" onclick="$('#divDialogoGeneralGantt').hide();">
+	<div id="divArchivosEjecucion">
+		<ul id="listaArchivos">
+			<?php foreach($listaETDocumentoEjecucion as $key => $value){ ?>
+				<li>
+					Archivo <?=($key+1).' '.$value->extension_doc_ejecucion?>
+					<br>
+					<a href="#" style="color: red;" onclick="eliminarArchivo(<?=$value->id_doc_ejecucion?>, this);">Eliminar</a> | <a href="#" onclick="window.location.href='<?=base_url()?>index.php/ET_Documento_Ejecucion/descargar/<?=$value->id_doc_ejecucion?>';">Descargar</a>
+				</li>
+			<?php } ?>
+		</ul>
 	</div>
+</div>
+<div style="background-color: #ffffff;box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.7);left: 0px;padding-top: 4px;position: absolute;right: 0px;text-align: right;top: 0px;">
+	<input type="button" value="Cerrar ventana" class="button requireWrite newproject" style="background-color: #d43c3c;" onclick="$('#divDialogoGeneralGantt').hide();">
 </div>
 <script>
 	function registrarObservacion()
@@ -90,7 +144,7 @@
 				{
 					title: '',
 					text: objectJSON.mensaje,
-					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
 				},
 				function(){});
 
@@ -135,7 +189,7 @@
 				{
 					title: '',
 					text: objectJSON.mensaje,
-					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
 				},
 				function(){});
 
@@ -167,7 +221,7 @@
 				{
 					title: '',
 					text: 'La descripción del levantamiento de la observación es un campo obligatorio.',
-					type: 'error' 
+					type: 'error'
 				},
 				function(){});
 
@@ -182,7 +236,7 @@
 				{
 					title: '',
 					text: objectJSON.mensaje,
-					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
 				},
 				function(){});
 
@@ -211,7 +265,7 @@
 			{
 				title: '',
 				text: objectJSON.mensaje,
-				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
 			},
 			function(){});
 
@@ -235,7 +289,7 @@
 			{
 				title: '',
 				text: objectJSON.mensaje,
-				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
 			},
 			function(){});
 
@@ -244,5 +298,93 @@
 				return false;
 			}
 		}, false, true);
+	}
+
+	function registrarArchivo(idTareaET)
+	{
+		if($($('#fileDocumentoEjecucion')[0]).get(0).files.length==0)
+		{
+			swal(
+			{
+				title: '',
+				text: 'Debe seleccionar un archivo para subir a esta actividad.',
+				type: 'error'
+			},
+			function(){});
+
+			return;
+		}
+
+		var dataAjax=new FormData();
+
+		dataAjax.append('idTareaET', idTareaET);
+		dataAjax.append('file0', $($('#fileDocumentoEjecucion')[0]).get(0).files[0]);
+
+		$.ajax({
+		    type: 'POST',
+		    url: '<?=base_url()?>index.php/ET_Documento_Ejecucion/insertar',
+		    contentType: false,
+		    processData: false,
+		    data: dataAjax,
+		    beforeSend: function(xhr)
+		    {
+		    	renderLoading();
+		    },
+		    success: function(objectJSON)
+		    {
+		    	objectJSON=JSON.parse(objectJSON);
+
+		    	swal(
+				{
+					title: '',
+					text: objectJSON.mensaje,
+					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
+				},
+				function(){});
+
+				if(objectJSON.proceso=='Error')
+				{
+					return false;
+				}
+
+		    	$('#divModalCargaAjax').hide();
+
+		    	$('#fileDocumentoEjecucion').val(null);
+
+		    	var htmlTemp='<li>'+
+					'Archivo '+(($('#listaArchivos').find('li').length)+1)+' '+objectJSON.extensionDocumentoEjecucion+
+					'<br>'+
+					'<a href="#" style="color: red;" onclick="eliminarArchivo('+objectJSON.idDocumentoEjecucion+', this);">Eliminar</a> | <a href="#" onclick="window.location.href=\'<?=base_url()?>index.php/ET_Documento_Ejecucion/descargar/'+objectJSON.idDocumentoEjecucion+'\';">Descargar</a>'+
+				'</li>';
+
+				$('#listaArchivos').append(htmlTemp);
+		    }
+		});
+	}
+
+	function eliminarArchivo(idDocumentoEjecucion, element)
+	{
+		if(confirm('Confirmar operación'))
+		{
+			paginaAjaxJSON({ idDocumentoEjecucion : idDocumentoEjecucion }, '<?=base_url()?>index.php/ET_Documento_Ejecucion/eliminar', 'POST', null, function(objectJSON)
+			{
+				objectJSON=JSON.parse(objectJSON);
+
+				swal(
+				{
+					title: '',
+					text: objectJSON.mensaje,
+					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
+				},
+				function(){});
+
+				if(objectJSON.proceso=='Error')
+				{
+					return false;
+				}
+
+				$(element).parent().remove();
+			}, false, true);
+		}
 	}
 </script>

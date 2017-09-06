@@ -218,7 +218,8 @@ show_404();
             show_404();
         }
     }
-//fin generar entregables con gantt
+    //fin generar entregables con gantt
+  
     public function _load_layout($template)
     {
         $this->load->view('layout/Formulacion_Evaluacion/FEentregableEstudio/header');

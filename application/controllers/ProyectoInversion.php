@@ -91,10 +91,18 @@ class ProyectoInversion extends CI_Controller {/* Mantenimiento de sector entida
       }
     }
     
-     public function index()
+    public function index()
     {
       $this->_load_layout('Front/Pmi/frmMProyectoInversion');
     } 
+
+
+    public function ReporteBuscadorPorPip()
+    {
+	    $this->load->view('layout/Reportes/header');
+	    $this->load->view('front/Reporte/ProyectoInversion/index');
+	    $this->load->view('layout/Reportes/footer');
+    }
     function _load_layout($template)
     {
       $this->load->view('layout/PMI/header');

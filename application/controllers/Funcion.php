@@ -10,9 +10,6 @@ class Funcion extends CI_Controller {/* Mantenimiento de sector entidad Y servic
 
      public function index()
     {
-        /*$this->load->view('layout/Reportes/header');
-        $this->load->view('front/Reporte/Funcion/index');
-        $this->load->view('layout/Reportes/footer');*/
         $listaNumPipFuncion=$this->Model_Funcion->FuncionPipListar();
         $this->load->view('layout/Reportes/header');
         $this->load->view('front/Reporte/Funcion/index',['listaNumPipFuncion'=>$listaNumPipFuncion]);
@@ -20,8 +17,10 @@ class Funcion extends CI_Controller {/* Mantenimiento de sector entidad Y servic
     }
     public function CadenaFuncional()
     {
+        $datos=$this->Model_Funcion->GetProyectos();
         $this->load->view('layout/Reportes/header');
         $this->load->view('front/Reporte/CadenaFuncional/index');
+        //$this->load->view('front/Reporte/CadenaFuncional/index',['listaProyectos'=>$datos]);
         $this->load->view('layout/Reportes/footer');
     }
 
@@ -38,17 +37,52 @@ class Funcion extends CI_Controller {/* Mantenimiento de sector entidad Y servic
         }
     }
 
-    function GetDivisionFuncional($codigoFuncion)
+    function GetDivisionFuncional()
     {
-        if ($this->input->is_ajax_request()) 
-        {            
-            $datos=$this->Model_Funcion->GetDivisionFuncional($codigoFuncion);
-            echo json_encode($datos);
-        }
-        else
-        {
-            show_404();
-        }
+        $idFuncion=$this->input->post('idFuncion');
+        $datos=$this->Model_Funcion->GetDivisionFuncional($idFuncion);
+        echo json_encode($datos);
+    }
+    function GetGrupoFuncional()
+    {
+        $idDivisionFuncional=$this->input->post('idDivisionFuncional');
+        $datos=$this->Model_Funcion->GetGrupoFuncional($idDivisionFuncional);
+        echo json_encode($datos);
+    }
+    function GetProvincia()
+    {
+        $datos=$this->Model_Funcion->GetProvincia();
+        echo json_encode($datos);
+    }
+    function GetDistrito()
+    {
+        $provincia=$this->input->post('provincia');
+        $datos=$this->Model_Funcion->GetDistrito($provincia);
+        echo json_encode($datos);
+        exit;
+    }
+    function ProyectosPorCadenaFuncional()
+    {
+        $idFuncion = $this->input->post('idFuncion');
+        $idDivisionFuncional = $this->input->post('idDivisionFuncional');
+        $idGrupoFuncional = $this->input->post('idGrupoFuncional');
+        $idProvincia = $this->input->post('idProvincia');
+        $idDistrito = $this->input->post('idDistrito');
+        $deFecha = $this->input->post('deFecha');
+        $aFecha = $this->input->post('aFecha');
+        //echo $idFuncion." ".$idDivisionFuncional." ".$idGrupoFuncional." ".$idProvincia." ".$idDistrito." ".$deFecha." ".$aFecha; 
+        //exit;
+        $datos=$this->Model_Funcion->GetProyectos();
+        //echo json_encode($datos);
+        //exit;
+        //$this->load->view('layout/Reportes/header');        
+        $this->load->view('front/Reporte/CadenaFuncional/tablaFuncion',['listaProyectos'=>$datos]);
+        //$this->load->view('layout/Reportes/footer');
+
+
+        //$datos=$this->Model_Funcion->GetDistrito($provincia);
+        //echo json_encode($datos);
+        //exit;
     }
 
 
@@ -89,10 +123,6 @@ class Funcion extends CI_Controller {/* Mantenimiento de sector entidad Y servic
         }
 
     }
-
-
-
-
 
     /*fin FUNCION*/
 
