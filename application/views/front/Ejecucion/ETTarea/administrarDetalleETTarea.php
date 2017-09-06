@@ -4,7 +4,7 @@
 		border-bottom: 1px dotted #cccccc;
 	}
 </style>
-<div>
+<div style="overflow-y: scroll;height: 390px;margin-top: 40px;">
 	<h3 style="text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4)">
 		Actividad: <span style="color: #26a5d8;"><?=$etTarea->nombre_tarea?></span>
 		<br>
@@ -76,9 +76,9 @@
 	<label for="fileDocumentoEjecucion"><b>Archivos de esta actividad</b></label>
 	<input type="file" id="fileDocumentoEjecucion" name="fileDocumentoEjecucion">
 	<hr>
-	<div style="text-align: right;">
-		<input type="button" value="Cerrar ventana" class="button requireWrite newproject" style="background-color: #d43c3c;" onclick="$('#divDialogoGeneralGantt').hide();">
-	</div>
+</div>
+<div style="background-color: #ffffff;box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.7);left: 0px;padding-top: 4px;position: absolute;right: 0px;text-align: right;top: 0px;">
+	<input type="button" value="Cerrar ventana" class="button requireWrite newproject" style="background-color: #d43c3c;" onclick="$('#divDialogoGeneralGantt').hide();">
 </div>
 <script>
 	function registrarObservacion()
