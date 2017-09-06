@@ -15,9 +15,25 @@
 	<br>
 	<select name="selectETResponsableTarea" id="selectETResponsableTarea" style="width: 100%;" onchange="asignarResponsable(<?=$etTarea->id_tarea_et?>);">
 		<option value=""></option>
-		<?php foreach($listaPersona as $key => $value){ ?>
-			<option value="<?=$value->id_persona?>"><?=$value->nombres.' '.$value->apellido_p.' '.$value->apellido_m?></option>
-		<?php } ?>
+		<?php foreach($listaPersona as $key => $value){
+			if(count($listaETResponsableTarea)>0){
+				$asignado=false;
+				foreach($listaETResponsableTarea as $index => $item){
+					if($value->id_persona==$item->id_persona)
+					{
+						$asignado=true;break;
+					}
+				}
+				if($asignado){ ?>
+					<option value="<?=$value->id_persona?>" selected><?=$value->nombres.' '.$value->apellido_p.' '.$value->apellido_m?></option>
+				<?php } else{ ?>
+					<option value="<?=$value->id_persona?>"><?=$value->nombres.' '.$value->apellido_p.' '.$value->apellido_m?></option>
+				<?php }
+			}
+			else{ ?>
+				<option value="<?=$value->id_persona?>"><?=$value->nombres.' '.$value->apellido_p.' '.$value->apellido_m?></option>
+			<?php }
+			} ?>
 	</select>
 	<br><br>
 	<label for="txtObservacion"><b>Observación</b></label>
