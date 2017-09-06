@@ -75,6 +75,7 @@
 	<br>
 	<label for="fileDocumentoEjecucion"><b>Archivos de esta actividad</b></label>
 	<input type="file" id="fileDocumentoEjecucion" name="fileDocumentoEjecucion">
+	<input type="button" value="Subir archivo" style="background-color: #3e973e;color: #ffffff;cursor: pointer;" onclick="registrarArchivo(<?=$etTarea->id_tarea_et?>);">
 	<hr>
 </div>
 <div style="background-color: #ffffff;box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.7);left: 0px;padding-top: 4px;position: absolute;right: 0px;text-align: right;top: 0px;">
@@ -260,5 +261,46 @@
 				return false;
 			}
 		}, false, true);
+	}
+
+	function registrarArchivo(idTareaET)
+	{
+		var dataAjax=new FormData();
+
+		dataAjax.append('idTareaET', idTareaET);
+		dataAjax.append('file0', $($('#fileDocumentoEjecucion')[0]).get(0).files[0]);
+
+		$.ajax({
+		    type: 'POST',
+		    url: '<?=base_url()?>index.php/ET_Documento_Ejecucion/insertar',
+		    contentType: false,
+		    processData: false,
+		    data: dataAjax,
+		    beforeSend: function(xhr)
+		    {
+		    },
+		    success: function(result)
+		    {
+		    	
+		    }
+		});
+
+		/*paginaAjaxJSON(dataAjax, '<?=base_url()?>index.php/ET_Documento_Ejecucion/insertar', 'POST', null, function(objectJSON)
+		{
+			objectJSON=JSON.parse(objectJSON);
+
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+			},
+			function(){});
+
+			if(objectJSON.proceso=='Error')
+			{
+				return false;
+			}
+		}, false, true);*/
 	}
 </script>
