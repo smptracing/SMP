@@ -3,6 +3,31 @@
 	{
 		border-bottom: 1px dotted #cccccc;
 	}
+
+	#listaArchivos
+	{
+		list-style: none;
+		text-align: center;
+		width: 100%;
+	}
+
+	#listaArchivos > li
+	{
+		border: 1px solid #999999;
+		cursor: pointer;
+		display: inline-block;
+		padding: 20px;
+		padding-left: 7px;
+		padding-right: 7px;
+		text-align: center;
+		vertical-align: middle;
+		width: 200px;
+	}
+
+	#listaArchivos > li:hover
+	{
+		background-color: #f5f5f5;
+	}
 </style>
 <div style="overflow-y: scroll;height: 390px;margin-top: 40px;">
 	<h3 style="text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4)">
@@ -77,6 +102,17 @@
 	<input type="file" id="fileDocumentoEjecucion" name="fileDocumentoEjecucion">
 	<input type="button" value="Subir archivo" style="background-color: #3e973e;color: #ffffff;cursor: pointer;" onclick="registrarArchivo(<?=$etTarea->id_tarea_et?>);">
 	<hr>
+	<div id="divArchivosEjecucion">
+		<ul id="listaArchivos">
+			<?php foreach($listaETDocumentoEjecucion as $key => $value){ ?>
+				<li>
+					Archivo <?=($key+1).' '.$value->extension_doc_ejecucion?>
+					<br>
+					<a href="#" style="color: red;">Eliminar</a> | <a href="#">Descargar</a>
+				</li>
+			<?php } ?>
+		</ul>
+	</div>
 </div>
 <div style="background-color: #ffffff;box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.7);left: 0px;padding-top: 4px;position: absolute;right: 0px;text-align: right;top: 0px;">
 	<input type="button" value="Cerrar ventana" class="button requireWrite newproject" style="background-color: #d43c3c;" onclick="$('#divDialogoGeneralGantt').hide();">
