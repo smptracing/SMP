@@ -2,6 +2,7 @@ $(document).on("ready" ,function()
 {
     listarDivisionF();//para mostrar las divisiones funcionanes
     listaFuncionCombo();
+    listaProvinciaCombo();
     $("#btn_Nuevadivision").click(function()//para que cargue el como una vez echo click sino repetira datos
     {
          listaFuncionCombo();//para llenar el combo de agregar division funcional
@@ -14,6 +15,10 @@ $(document).on("ready" ,function()
     $('#listaDivisionFuncional').on('change', function() 
     {
         listaGrupoFuncionalCombo(null);
+    })
+    $('#listaProvincia').on('change', function() 
+    {
+        listaDistritoCombo(null);
     })
 
     $("#form-AddDivisionFuncion").submit(function(event)//para añadir nuevo division funcional
@@ -195,6 +200,45 @@ $(document).on("ready" ,function()
             };
 
             $("#listaGrupoFuncional").html(htmlTemp);
+            $('.selectpicker').selectpicker('refresh'); 
+        }, false, true);
+    }
+
+    /*Mostrar listado de provincias en un combobox*/
+    var listaProvinciaCombo=function(valor)
+    {
+        var htmlTemp="";
+        $("#listaProvincia").html(htmlTemp);
+        paginaAjaxJSON(null, base_url +"index.php/Funcion/GetProvincia", "POST", null, function(objectJSON)
+        {
+            objectJSON=JSON.parse(objectJSON);
+            var registros=eval(objectJSON);
+            for(var i=0; i<registros.length; i++)
+            {
+                htmlTemp+="<option value="+registros[i]["provincia"]+"> "+registros[i]["provincia"]+" </option>";   
+            };
+
+            $("#listaProvincia").html(htmlTemp);
+            $('.selectpicker').selectpicker('refresh'); 
+        }, false, true);
+    }
+
+    /*Mostrar listado de distritos en base a la Provincia*/
+    var listaDistritoCombo=function(valor)
+    {
+        var htmlTemp="";
+        $("#listaDistrito").html(htmlTemp);
+        var provincia = $("#listaProvincia").val(); 
+        paginaAjaxJSON({ provincia : provincia }, base_url +"index.php/Funcion/GetDistrito", "POST", null, function(objectJSON)
+        {
+            objectJSON=JSON.parse(objectJSON);
+            var registros=eval(objectJSON);
+            for(var i=0; i<registros.length; i++)
+            {
+                htmlTemp+="<option value="+registros[i]["distrito"]+"> "+registros[i]["distrito"]+" </option>";   
+            };
+
+            $("#listaDistrito").html(htmlTemp);
             $('.selectpicker').selectpicker('refresh'); 
         }, false, true);
     }

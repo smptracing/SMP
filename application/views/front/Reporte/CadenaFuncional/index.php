@@ -56,15 +56,19 @@
 										                    <div class="form-group">
 										                       <label class="control-label col-md-2 col-sm-2 col-xs-12">Provincia: </label>
 										                        <div class="col-md-4 col-sm-4 col-xs-12">
-										                          <select class="selectpicker" data-live-search="true" title="Seleccione Provincia">
-										                            <option></option>
-										                            <option value="AK">Alaska</option>
-										                            <option value="HI">Hawaii</option>
-										                          </select>
+										                          <select id="listaProvincia" name="listaProvincia" class="selectpicker" data-live-search="true"  title="Seleccionar Provincia">
+									                              </select>
 										                        </div>
 										                    </div>
 									                    </div> 
 									                    <div class="row">
+										                    <div class="form-group">
+										                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Distrito: </label>
+										                        <div class="col-md-4 col-sm-4 col-xs-12">
+										                          <select id="listaDistrito" name="listaDistrito" class="selectpicker" data-live-search="true"  title="Seleccionar Distrito">
+									                              </select>
+										                        </div>
+										                    </div>
 										                    <div class="form-group">
 										                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Distrito: </label>
 										                        <div class="col-md-4 col-sm-4 col-xs-12">

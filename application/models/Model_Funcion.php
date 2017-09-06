@@ -27,6 +27,18 @@ class Model_Funcion extends CI_Model
         return $data->result();
     }
 
+    function GetProvincia()
+    {
+        $data=$this->db->query("select distinct u.provincia from UBIGEO u ");
+        return $data->result();
+    }
+
+    function getDistrito($provincia)
+    {
+        $data=$this->db->query("select  u.distrito from ubigeo u where u.provincia = '$provincia'");
+        return $data->result();
+    }
+
     function AddFucion($txt_codigofuncion,$txt_nombrefuncion)
     {
         $this->db->query("execute sp_Funcion_c '".$txt_codigofuncion."','".$txt_nombrefuncion."'");

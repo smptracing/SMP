@@ -47,6 +47,18 @@ class Funcion extends CI_Controller {/* Mantenimiento de sector entidad Y servic
         $datos=$this->Model_Funcion->GetGrupoFuncional($idDivisionFuncional);
         echo json_encode($datos);
     }
+    function GetProvincia()
+    {
+        $datos=$this->Model_Funcion->GetProvincia();
+        echo json_encode($datos);
+    }
+    function GetDistrito()
+    {
+        $provincia=$this->input->post('provincia');
+        $datos=$this->Model_Funcion->GetDistrito($provincia);
+        echo json_encode($datos);
+        exit;
+    }
 
 
     function AddFucion()
