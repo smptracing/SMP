@@ -32,7 +32,7 @@
 </style>
 <div style="overflow-y: scroll;height: 390px;margin-top: 40px;">
 	<h3 style="text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4)">
-		Actividad: <span style="color: #26a5d8;"><?=$etTarea->nombre_tarea?></span>
+		Actividad: <span style="color: #26a5d8;"><?=html_escape($etTarea->nombre_tarea)?></span>
 		<br>
 		<small>desde el <i style="text-decoration: underline;"><?=explode(' ', $etTarea->fecha_inicio_tarea)[0]?></i> hasta el <i style="text-decoration: underline;"><?=explode(' ', $etTarea->fecha_final_tarea)[0]?></i></small>
 	</h3>
@@ -51,13 +51,13 @@
 					}
 				}
 				if($asignado){ ?>
-					<option value="<?=$value->id_persona?>" selected><?=$value->nombres.' '.$value->apellido_p.' '.$value->apellido_m?></option>
+					<option value="<?=$value->id_persona?>" selected><?=html_escape($value->nombres.' '.$value->apellido_p.' '.$value->apellido_m)?></option>
 				<?php } else{ ?>
-					<option value="<?=$value->id_persona?>"><?=$value->nombres.' '.$value->apellido_p.' '.$value->apellido_m?></option>
+					<option value="<?=$value->id_persona?>"><?=html_escape($value->nombres.' '.$value->apellido_p.' '.$value->apellido_m)?></option>
 				<?php }
 			}
 			else{ ?>
-				<option value="<?=$value->id_persona?>"><?=$value->nombres.' '.$value->apellido_p.' '.$value->apellido_m?></option>
+				<option value="<?=$value->id_persona?>"><?=html_escape($value->nombres.' '.$value->apellido_p.' '.$value->apellido_m)?></option>
 			<?php }
 			} ?>
 	</select>
@@ -81,11 +81,11 @@
 			<?php foreach($listaETTareaObservacion as $key => $value){ ?>
 				<tr>
 					<td>
-						<?=$value->desc_tobservacion?>
+						<?=html_escape($value->desc_tobservacion)?>
 						<div style="padding-left: 20px;font-size: 12px;">
-							<b>Levantamiento: </b><span id="spanDescripcionLevantamientoTObservacion<?=$value->id_tarea_observacion?>"><?=$value->levantamiento_tobservacion?></span>
+							<b>Levantamiento: </b><span id="spanDescripcionLevantamientoTObservacion<?=$value->id_tarea_observacion?>"><?=html_escape($value->levantamiento_tobservacion)?></span>
 							<br>
-							<a id="enlaceEliminarLevantamientoObservacion<?=$value->id_tarea_observacion?>" href="#" style="color: red;<?=$value->levantamiento_tobservacion=='' ? 'display: none;' : ''?>" onclick="eliminarLevantamientoObservacion(<?=$value->id_tarea_observacion?>, this);">Eliminar levantamiento de la obs.</a>
+							<a id="enlaceEliminarLevantamientoObservacion<?=$value->id_tarea_observacion?>" href="#" style="color: red;<?=html_escape($value->levantamiento_tobservacion)=='' ? 'display: none;' : ''?>" onclick="eliminarLevantamientoObservacion(<?=$value->id_tarea_observacion?>, this);">Eliminar levantamiento de la obs.</a>
 							<textarea id="txtDescripcionLevantamientoObservacion<?=$value->id_tarea_observacion?>" rows="4" style="display: none;resize: none;width: 100%;" placeholder="Descripción del levantamiento de observación"></textarea>
 						</div>	
 					</td>
@@ -155,7 +155,7 @@
 
 				var htmlTemp='<tr style="filaObservacion'+objectJSON.ultimoIdETTareaObservacion+'">'+
 					'<td>'+
-						$('#txtObservacion').val().trim()+
+						replaceAll(replaceAll($('#txtObservacion').val().trim(), '<', '&lt;'), '>', '&gt;')+
 						'<div style="padding-left: 20px;font-size: 12px;">'+
 							'<b>Levantamiento: </b><span id="spanDescripcionLevantamientoTObservacion'+objectJSON.ultimoIdETTareaObservacion+'"></span>'+
 							'<br>'+
