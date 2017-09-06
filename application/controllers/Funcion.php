@@ -38,8 +38,13 @@ class Funcion extends CI_Controller {/* Mantenimiento de sector entidad Y servic
     function GetDivisionFuncional()
     {
         $idFuncion=$this->input->post('idFuncion');
-
         $datos=$this->Model_Funcion->GetDivisionFuncional($idFuncion);
+        echo json_encode($datos);
+    }
+    function GetGrupoFuncional()
+    {
+        $idDivisionFuncional=$this->input->post('idDivisionFuncional');
+        $datos=$this->Model_Funcion->GetGrupoFuncional($idDivisionFuncional);
         echo json_encode($datos);
     }
 

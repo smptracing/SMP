@@ -40,7 +40,7 @@
 										                    <div class="form-group">
 										                        <label class="control-label col-md-2 col-sm-2 col-xs-12">División Funcional: </label>
 										                        <div class="col-md-4 col-sm-4 col-xs-12">
-										                          <select id="listaDivisionFuncional" name="listaDivisionFuncional" class="selectpicker" data-live-search="true"  title="Seleccionar División Funcional" onchange="">
+										                          <select id="listaDivisionFuncional" name="listaDivisionFuncional" class="selectpicker" data-live-search="true"  title="Seleccionar División Funcional">
 									                              </select>
 										                        </div>
 										                    </div>
@@ -49,11 +49,8 @@
 															<div class="form-group">
 										                       <label class="control-label col-md-2 col-sm-2 col-xs-12">Grupo Funcional: </label>
 										                        <div class="col-md-4 col-sm-4 col-xs-12">
-										                          <select class="selectpicker" data-live-search="true" title="Seleccione Grupo Funcional">
-										                            <option></option>
-										                            <option value="AK">Alaska</option>
-										                            <option value="HI">Hawaii</option>
-										                          </select>
+										                          <select id="listaGrupoFuncional" name="listaGrupoFuncional" class="selectpicker" data-live-search="true"  title="Seleccionar Grupo Funcional">
+									                              </select>
 										                        </div>
 										                    </div>
 										                    <div class="form-group">

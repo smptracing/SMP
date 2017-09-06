@@ -11,6 +11,10 @@ $(document).on("ready" ,function()
     {
         listaDivisionFuncionalCombo(null);
     })
+    $('#listaDivisionFuncional').on('change', function() 
+    {
+        listaGrupoFuncionalCombo(null);
+    })
 
     $("#form-AddDivisionFuncion").submit(function(event)//para añadir nuevo division funcional
     {
@@ -171,6 +175,26 @@ $(document).on("ready" ,function()
             };
 
             $("#listaDivisionFuncional").html(htmlTemp);
+            $('.selectpicker').selectpicker('refresh'); 
+        }, false, true);
+    }
+
+    /*Mostrar grupo funcional en base a la division funcional*/
+    var listaGrupoFuncionalCombo=function(valor)
+    {
+        var htmlTemp="";
+        $("#listaGrupoFuncional").html(htmlTemp);
+        var idDivisionFuncional = $("#listaDivisionFuncional").val(); 
+        paginaAjaxJSON({ idDivisionFuncional : idDivisionFuncional }, base_url +"index.php/Funcion/GetGrupoFuncional", "POST", null, function(objectJSON)
+        {
+            objectJSON=JSON.parse(objectJSON);
+            var registros=eval(objectJSON);
+            for(var i=0; i<registros.length; i++)
+            {
+                htmlTemp+="<option value="+registros[i]["id_grup_funcional"]+"> "+ registros[i]["codigo_grup_funcional"]+": "+registros[i]["nombre_grup_funcional"]+" </option>";   
+            };
+
+            $("#listaGrupoFuncional").html(htmlTemp);
             $('.selectpicker').selectpicker('refresh'); 
         }, false, true);
     }
