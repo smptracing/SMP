@@ -16,6 +16,7 @@
 		border: 1px solid #999999;
 		cursor: pointer;
 		display: inline-block;
+		margin: 3px;
 		padding: 20px;
 		padding-left: 7px;
 		padding-right: 7px;
@@ -329,11 +330,34 @@
 		    {
 		    	renderLoading();
 		    },
-		    success: function(result)
+		    success: function(objectJSON)
 		    {
+		    	objectJSON=JSON.parse(objectJSON);
+
+		    	swal(
+				{
+					title: '',
+					text: objectJSON.mensaje,
+					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
+				},
+				function(){});
+
+				if(objectJSON.proceso=='Error')
+				{
+					return false;
+				}
+
 		    	$('#divModalCargaAjax').hide();
 
 		    	$('#fileDocumentoEjecucion').val(null);
+
+		    	var htmlTemp='<li>'+
+					'Archivo '+(($('#listaArchivos').find('li').length)+1)+' '+objectJSON.extensionDocumentoEjecucion+
+					'<br>'+
+					'<a href="#" style="color: red;" onclick="eliminarArchivo('+objectJSON.idDocumentoEjecucion+', this);">Eliminar</a> | <a href="#" onclick="window.location.href=\'<?=base_url()?>index.php/ET_Documento_Ejecucion/descargar/'+objectJSON.idDocumentoEjecucion+'\';">Descargar</a>'+
+				'</li>';
+
+				$('#listaArchivos').append(htmlTemp);
 		    }
 		});
 	}

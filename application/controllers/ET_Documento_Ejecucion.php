@@ -40,7 +40,7 @@ class ET_Documento_Ejecucion extends CI_Controller
 
 		$this->db->trans_complete();
 
-		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Archivo subido correctamente.']);exit;
+		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Archivo subido correctamente.', 'idDocumentoEjecucion' => $etDocumentoEjecucion->id_doc_ejecucion, 'extensionDocumentoEjecucion' => $etDocumentoEjecucion->extension_doc_ejecucion]);exit;
 	}
 
 	public function eliminar()
