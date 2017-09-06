@@ -462,20 +462,76 @@
                         <input id="tx_IdActividadObser"  name="tx_IdActividadObser" type="text" class="form-control"  placeholder="" >
                         <input id="txt_desco_obs" name="txt_desco_obs" type="text" class="form-control"  placeholder="">
                       </div>
-                      <div class="col-md-12 col-sm-12 col-xs-12">
-                          <label class=" col-md-6 col-sm-6 col-xs-12">Fecha levantamineto Observación </label>
-                          <input  id="txt_fechaLevantaminetoObse" name="txt_fechaLevantaminetoObse"  type="date" class="form-control calendario">
-                      </div>
                     </div><br/>
                     <div class="col-md-12 col-sm-12 col-xs-12">
                           <div class="col-md-6 col-sm-6 col-xs-12">
-                                 <input type="file" name="urlDocumento" id="urlDocumento" >
+                                 <input  id="NombreUrlObservacion" name="NombreUrlObservacion"  type="hidden">
+                                 <input type="file" name="urlDocumentoObservacion" id="urlDocumentoObservacion" >
                           </div>
                     </div>
                     <div class="form-group" style="margin-top: 30px;margin-left: 10px;"><br/>
                           <div class="col-md-6 col-md-offset-3">
 
                             <button  id="btn_observacion" name="btn_observacion" class="btn btn-success">
+                              <span class="glyphicon glyphicon-floppy-disk"></span>
+                              Guardar
+                            </button>
+                            <button type="submit" class="btn btn-danger" data-dismiss="modal">
+                               <span class="glyphicon glyphicon-remove"></span>
+                              Cancelar
+                            </button>
+
+                          </div>
+                    </div>
+                </form>
+            </div>
+         </div>
+        </div>
+
+        <div class="modal-footer">
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--  -->
+
+<!--  -->
+
+<div class="modal fade" id="LevatarmodalObservacionesLevantar" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h5 class="modal-title">Levantar Observación de Actividad</h5>
+        </div>
+
+         <div class="modal-body">
+         <div class="row">
+                <div class="col-xs-12">
+                <form class="form-horizontal " id="form-ObservacionesActividadesLevantamiento" enctype="multipart/form-data" method="POST" >
+                  <div class="row">
+                     <div class="col-md-12 col-sm-12 col-xs-12">
+                        <span class="input-group-addon" style="text-align:left;">Descripción Levantamiento</span>
+                        <input id="tx_IdActividadLevantamiento"  name="tx_IdActividadLevantamiento" type="text" class="form-control"  placeholder="" >
+                        <input id="txt_desco_levantamiento" name="txt_desco_levantamiento" type="text" class="form-control"  placeholder="">
+                      </div>
+                      <div class="col-md-12 col-sm-12 col-xs-12">
+                          <label class=" col-md-6 col-sm-6 col-xs-12">Fecha levantamineto </label>
+                          <input  id="txt_fechaLevantamineto" name="txt_fechaLevantamineto"  type="date" class="form-control calendario">
+                      </div>
+                    </div><br/>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                                 <input  id="NombreUrlObservacionLevantamiento" name="NombreUrlObservacionLevantamiento"  type="hidden">
+                                 <input type="file" name="urlDocumentoObservacionlevantamiento" id="urlDocumentoObservacionlevantamiento" >
+                          </div>
+                    </div>
+                    <div class="form-group" style="margin-top: 30px;margin-left: 10px;"><br/>
+                          <div class="col-md-6 col-md-offset-3">
+
+                            <button  id="btn_observacionLevantamiento" name="btn_observacionLevantamiento" class="btn btn-success">
                               <span class="glyphicon glyphicon-floppy-disk"></span>
                               Guardar
                             </button>

@@ -136,29 +136,72 @@ class FEActividadEntregable extends CI_Controller
          if ($this->input->is_ajax_request()) 
          {
             
-            $tx_IdActividadObser     = $this->input->post('tx_IdActividadObser');
-            $txt_desco_obs           = $this->input->post('txt_desco_obs');
-            $txt_fechaLevantaminetoObse     = $this->input->post('txt_fechaLevantaminetoObse');
-            
-            $config['upload_path']          = './uploads/cartera/';
+            $tx_IdActividadObser          = $this->input->post('tx_IdActividadObser');
+            $txt_desco_obs                = $this->input->post('txt_desco_obs');
+            $txt_fechaLevantaminetoObse   = $this->input->post('txt_fechaLevantaminetoObse');
+            $NombreUrlObservacion         = $this->input->post('NombreUrlObservacion');
+            $nombreArchivo=explode(".",$NombreUrlObservacion);
+            $nombreO=(String)$nombreArchivo[0];
+            $urlO=(String)$nombreArchivo[1];
+            $doc_observacio=$nombreO.'.'.$urlO;
+            $this->Model_FEActividadEntregable->ObservacionActividad($tx_IdActividadObser,$txt_desco_obs,$txt_fechaLevantaminetoObse,$doc_observacio);            
+            $config['upload_path']          = './uploads/DocumentoObservacionAtividad/';
             $config['allowed_types']        = 'pdf|doc|xml|docx|PDF|DOC|DOCX|xls|xlsx';
             $config['max_width']            = 1024;
             $config['max_height']           = 768;
             $config['max_size']             = 15000;
             $config['encrypt_name']         = false;
+            $config['file_name']            =$doc_observacio;
 
             $this->load->library('upload',$config);
-            if (! $this->upload->do_upload('Cartera_Resoluacion'))
+            if (!$this->upload->do_upload('urlDocumentoObservacion'))
                {
                                 
-                    $error="ERROR NO SE CARGO EL DOCUMENTO";
-                    echo $error;
+                     echo json_encode("No Se pudo realizár la observación de la actividad");
                }
                 else
                {
                     
-                    echo json_encode($txt_fechaLevantaminetoObse);
+                    echo json_encode("Se realizó la observación de la actividad");
                }
+                                 
+         } 
+    }
+     public function LevantaminetoObservacionActividad()
+    {
+         if ($this->input->is_ajax_request()) 
+         {
+            
+            $tx_IdActividadObser          = $this->input->post('tx_IdActividadLevantamiento');
+            $txt_desco_obs                = $this->input->post('txt_desco_levantamiento');
+            $txt_fechaLevantaminetoObse   = $this->input->post('txt_fechaLevantamineto');
+            $NombreUrlObservacion         = $this->input->post('NombreUrlObservacionLevantamiento');
+            $nombreArchivo=explode(".",$NombreUrlObservacion);
+            $nombreO=(String)$nombreArchivo[0];
+            $urlO=(String)$nombreArchivo[1];
+            $doc_observacio=$nombreO.'.'.$urlO;
+            $this->Model_FEActividadEntregable->LevantaminetoObservacionActividad($tx_IdActividadObser,$txt_desco_obs,$txt_fechaLevantaminetoObse,$doc_observacio);            
+            $config['upload_path']          = './uploads/LevantamientoDocumentoActividad/';
+            $config['allowed_types']        = 'pdf|doc|xml|docx|PDF|DOC|DOCX|xls|xlsx';
+            $config['max_width']            = 1024;
+            $config['max_height']           = 768;
+            $config['max_size']             = 15000;
+            $config['encrypt_name']         = false;
+            $config['file_name']            =$doc_observacio;
+
+            $this->load->library('upload',$config);
+            if (!$this->upload->do_upload('urlDocumentoObservacionlevantamiento'))
+               {
+                                
+                     echo json_encode("No Se pudo realizár el levantamiento de la  observación");
+               }
+                else
+               {
+                    
+                    echo json_encode("Se realizó el levantamiento de observación");
+               }
+
+                                 
          } 
     }
     public function _load_layout($template)

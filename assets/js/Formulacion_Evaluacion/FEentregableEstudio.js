@@ -136,6 +136,8 @@
                 $("#form-ObservacionesActividades").submit(function(event)
                  {
 
+                      var NombreUrlObservacion =document.getElementById('urlDocumentoObservacion').files[0].name;//$("#urlDocumentoObservacion").val();
+                      $("#NombreUrlObservacion").val(NombreUrlObservacion);
                       event.preventDefault();
                       var formData=new FormData($("#form-ObservacionesActividades")[0]);
                       $.ajax({
@@ -149,9 +151,40 @@
                           success:function(resp)
                           {
                            swal("",resp, "success");
+                            var id_entregable=$("#txtidEntregablePestana").val();
+                            generarActividadesVertical(id_entregable)
+
                           }
                       });
                 });
+
+                $("#form-ObservacionesActividadesLevantamiento").submit(function(event)
+                 {
+
+                      var NombreUrlObservacion =document.getElementById('urlDocumentoObservacionlevantamiento').files[0].name;//$("#urlDocumentoObservacion").val();
+                      $("#NombreUrlObservacionLevantamiento").val(NombreUrlObservacion);
+                      event.preventDefault();
+                      var formData=new FormData($("#form-ObservacionesActividadesLevantamiento")[0]);
+                      $.ajax({
+                          type:"POST",
+                          enctype: 'multipart/form-data',
+                          url:base_url+"index.php/FEActividadEntregable/LevantaminetoObservacionActividad",
+                          data: formData,
+                          cache: false,
+                          contentType:false,
+                          processData:false,
+                          success:function(resp)
+                          {
+                           swal("",resp, "success");
+                            var id_entregable=$("#txtidEntregablePestana").val();
+                            generarActividadesVertical(id_entregable)
+                          }
+                      });
+                });
+                function getFileExtension(filename)
+                {
+                  return filename.slice((filename.lastIndexOf(".") - 1 >>> 0) + 2);
+                }
 
               var txt_id_etapa_estudio=$("#txt_id_etapa_estudio").val();   
 //Gant
@@ -480,6 +513,8 @@ var generarActividadesVertical=function(id_en)
                                         '<th>Fecha Final</th>'+
                                         '<th>Valoración</th>'+
                                         '<th>Avance</th>'+
+                                        '<th>Estado</th>'+
+                                        '<th>Id Observacion</th>'+
                                         '<th></th>'+
                                      '</tr>'+
                                   '</thead>'+
@@ -529,7 +564,31 @@ var generarActividadesVertical=function(id_en)
                                       "mRender":function (data,type, full) {
                                          return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Complete</small></td>";
                                     }},
-                                    {"defaultContent":"<div class='dropdown'>  <a class='btn btn-link dropdown-toggle' type='button' data-toggle='dropdown'> <span class='glyphicon glyphicon-option-vertical' aria-hidden='true'></span></a> <ul class='dropdown-menu pull-right' style=''> <li><button type='button' class='edit btn btn-primary btn-xs' data-toggle='modal' data-target='#'>Editar Actividad</button><button type='button' class='actividadObservaciones btn btn-primary btn-xs' data-toggle='modal' data-target='#modalObservacionesActividades'> Observaciones </button></ul>  </div>"}
+                                    {"data":"estado_obs",
+                                      "mRender":function (data,type, full) 
+                                       {
+                                         var i=data;
+                                         if(i==0)
+                                         {
+                                             return "<ul class='list-inline prod_color'><div class='color bg-red'><br/></div></ul>Observado";
+                                         }
+                                         if(i==1)
+                                         {
+                                             return "<ul class='list-inline prod_color'><div class='color bg-green'><br/></div></ul>Levanto";
+
+                                         }
+                                         if(i==null)
+                                         {
+                                           return "Sin Observacione ";
+                                         }
+
+                                       }
+
+                                    },
+                                    {"data":"id_act_observacion","visible":false},
+
+
+                                    {"defaultContent":"<div class='dropdown'>  <a class='btn btn-link dropdown-toggle' type='button' data-toggle='dropdown'> <span class='glyphicon glyphicon-option-vertical' aria-hidden='true'></span></a> <ul class='dropdown-menu pull-right' style=''> <li><button type='button' class='edit btn btn-primary btn-xs' data-toggle='modal' data-target='#'>Editar Actividad</button><button type='button' class='actividadObservaciones btn btn-primary btn-xs' data-toggle='modal' data-target='#modalObservacionesActividades'> Observaciones </button> <button type='button' class='LevantarActividadObservaciones btn btn-primary btn-xs' data-toggle='modal' data-target='#LevatarmodalObservacionesLevantar'> Levantar Observación </button></ul>  </div>"}
                                 ],
 
                                 "language":idioma_espanol
@@ -544,18 +603,26 @@ var generarActividadesVertical=function(id_en)
                                $("#txt_idActividadCronograma").val(id_ctividad);
                    });
 
-                 LevantarObservacionesActividad("#datatable-actividadesV",table);
+                 ObservacionesActividad("#datatable-actividadesV",table);
+                 LevantamientoObservacionesActividad("#datatable-actividadesV",table);
+
 
   }
 
-   var  LevantarObservacionesActividad=function(tbody,table)
+   var  ObservacionesActividad=function(tbody,table)
                   {
-                    $(tbody).on("click","button.actividadObservaciones",function(){
+                            $(tbody).on("click","button.actividadObservaciones",function(){
                               var data=table.row( $(this).parents("tr")).data();
-                                    $('#tx_IdActividadObser').val(data.id_entregable);
+                                    $('#tx_IdActividadObser').val(data.id);
                              });
                   }
- 
+     var  LevantamientoObservacionesActividad=function(tbody,table)
+                  {
+                            $(tbody).on("click","button.LevantarActividadObservaciones",function(){
+                              var data=table.row( $(this).parents("tr")).data();
+                                    $('#tx_IdActividadLevantamiento').val(data.id_act_observacion);
+                             });
+                  } 
   function listarEntregablesFE()
           {     
               $("#table_entregable" ).remove(); 
