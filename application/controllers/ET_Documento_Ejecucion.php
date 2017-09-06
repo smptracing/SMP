@@ -64,4 +64,17 @@ class ET_Documento_Ejecucion extends CI_Controller
 
 		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Archivo eliminado correctamente.']);exit;
 	}
+
+	public function descargar($idDocumentoEjecucion)
+	{
+		$extensionArchivoTemp=$this->Model_ET_Documento_Ejecucion->ETDocumentoEjecucion($idDocumentoEjecucion)->extension_doc_ejecucion;
+
+		$rutaArchivoTemp='./uploads/DocumentoTareaGanttET/'.$idDocumentoEjecucion.'.'.$extensionArchivoTemp;
+
+		$data=file_get_contents($rutaArchivoTemp);
+
+		$this->load->helper('download');
+		
+		force_download($idDocumentoEjecucion.'.'.$extensionArchivoTemp, $data); 
+	}
 }

@@ -108,7 +108,7 @@
 				<li>
 					Archivo <?=($key+1).' '.$value->extension_doc_ejecucion?>
 					<br>
-					<a href="#" style="color: red;" onclick="eliminarArchivo(<?=$value->id_doc_ejecucion?>, this);">Eliminar</a> | <a href="#">Descargar</a>
+					<a href="#" style="color: red;" onclick="eliminarArchivo(<?=$value->id_doc_ejecucion?>, this);">Eliminar</a> | <a href="#" onclick="window.location.href='<?=base_url()?>index.php/ET_Documento_Ejecucion/descargar/<?=$value->id_doc_ejecucion?>';">Descargar</a>
 				</li>
 			<?php } ?>
 		</ul>
