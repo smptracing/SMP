@@ -108,7 +108,7 @@
 				<li>
 					Archivo <?=($key+1).' '.$value->extension_doc_ejecucion?>
 					<br>
-					<a href="#" style="color: red;">Eliminar</a> | <a href="#">Descargar</a>
+					<a href="#" style="color: red;" onclick="eliminarArchivo(<?=$value->id_doc_ejecucion?>, this);">Eliminar</a> | <a href="#">Descargar</a>
 				</li>
 			<?php } ?>
 		</ul>
@@ -143,7 +143,7 @@
 				{
 					title: '',
 					text: objectJSON.mensaje,
-					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
 				},
 				function(){});
 
@@ -188,7 +188,7 @@
 				{
 					title: '',
 					text: objectJSON.mensaje,
-					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
 				},
 				function(){});
 
@@ -235,7 +235,7 @@
 				{
 					title: '',
 					text: objectJSON.mensaje,
-					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
 				},
 				function(){});
 
@@ -264,7 +264,7 @@
 			{
 				title: '',
 				text: objectJSON.mensaje,
-				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
 			},
 			function(){});
 
@@ -288,7 +288,7 @@
 			{
 				title: '',
 				text: objectJSON.mensaje,
-				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
 			},
 			function(){});
 
@@ -336,5 +336,31 @@
 		    	$('#fileDocumentoEjecucion').val(null);
 		    }
 		});
+	}
+
+	function eliminarArchivo(idDocumentoEjecucion, element)
+	{
+		if(confirm('Confirmar operación'))
+		{
+			paginaAjaxJSON({ idDocumentoEjecucion : idDocumentoEjecucion }, '<?=base_url()?>index.php/ET_Documento_Ejecucion/eliminar', 'POST', null, function(objectJSON)
+			{
+				objectJSON=JSON.parse(objectJSON);
+
+				swal(
+				{
+					title: '',
+					text: objectJSON.mensaje,
+					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
+				},
+				function(){});
+
+				if(objectJSON.proceso=='Error')
+				{
+					return false;
+				}
+
+				$(element).parent().remove();
+			}, false, true);
+		}
 	}
 </script>

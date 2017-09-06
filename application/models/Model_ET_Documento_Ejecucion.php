@@ -42,5 +42,12 @@ class Model_ET_Documento_Ejecucion extends CI_Model
 
 		return $data->result()[0];
 	}
+
+	public function ETDocumentoEjecucion($idDocumentoEjecucion)
+	{
+		$data=$this->db->query("select * from ET_DOCUMENTO_EJECUCION where id_doc_ejecucion=$idDocumentoEjecucion");
+
+		return count($data->result())==0 ? null : $data->result()[0];
+	}
 }
 ?>

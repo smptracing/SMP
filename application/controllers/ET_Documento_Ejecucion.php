@@ -42,4 +42,26 @@ class ET_Documento_Ejecucion extends CI_Controller
 
 		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Archivo subido correctamente.']);exit;
 	}
+
+	public function eliminar()
+	{
+		$this->db->trans_start();
+
+		$idDocumentoEjecucion=$this->input->post('idDocumentoEjecucion');
+
+		$extensionArchivoTemp=$this->Model_ET_Documento_Ejecucion->ETDocumentoEjecucion($idDocumentoEjecucion)->extension_doc_ejecucion;
+
+		$this->Model_ET_Documento_Ejecucion->eliminar($idDocumentoEjecucion);
+
+		$rutaArchivoTemp='./uploads/DocumentoTareaGanttET/'.$idDocumentoEjecucion.'.'.$extensionArchivoTemp;
+
+		if(file_exists($rutaArchivoTemp))
+		{
+			unlink($rutaArchivoTemp);
+		}
+
+		$this->db->trans_complete();
+
+		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Archivo eliminado correctamente.']);exit;
+	}
 }
