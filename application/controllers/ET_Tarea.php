@@ -181,11 +181,11 @@ class ET_Tarea extends CI_Controller
 
 				if(trim($value->code)!='')
 				{
-					$this->Model_ET_Tarea->editar($value->code, ($predecesoraTarea!='NULL' ? $this->Model_ET_Tarea->ETTareaPorIdTareaGanttYNumeracion($idTareaGantt, $predecesoraTarea)->id_tarea_et : $predecesoraTarea), '', $value->name, $value->start, $value->end, 0, $value->progress, $value->status, $value->level, $predecesoraTarea, 0, ($key+1), $value->depends);
+					$this->Model_ET_Tarea->editar($value->code, ($predecesoraTarea!='NULL' ? $this->Model_ET_Tarea->ETTareaPorIdTareaGanttYNumeracion($idTareaGantt, $predecesoraTarea)->id_tarea_et : $predecesoraTarea), '', $value->name, $value->start, $value->end, 0, $value->progress, $value->status, $value->level, $predecesoraTarea, 0, ($key+1), ($value->depends>count($tareas) ? '' : $value->depends));
 				}
 				else
 				{
-					$this->Model_ET_Tarea->insertar($idTareaGantt, ($predecesoraTarea!='NULL' ? $this->Model_ET_Tarea->ETTareaPorIdTareaGanttYNumeracion($idTareaGantt, $predecesoraTarea)->id_tarea_et : $predecesoraTarea), '', $value->name, $value->start, $value->end, 0, $value->progress, $value->status, $value->level, $predecesoraTarea, 0, ($key+1), $value->depends);
+					$this->Model_ET_Tarea->insertar($idTareaGantt, ($predecesoraTarea!='NULL' ? $this->Model_ET_Tarea->ETTareaPorIdTareaGanttYNumeracion($idTareaGantt, $predecesoraTarea)->id_tarea_et : $predecesoraTarea), '', $value->name, $value->start, $value->end, 0, $value->progress, $value->status, $value->level, $predecesoraTarea, 0, ($key+1), ($value->depends>count($tareas) ? '' : $value->depends));
 				}
 			}
 
