@@ -78,6 +78,7 @@ function paginaAjax(idSeccion, data, url, method, preFunction, postFunction, cac
 
 function paginaAjaxDialogo(idModal, titulo, data, url, method, preFunction, postFunction, cache, async)
 {
+
     renderLoading();
 
     if((typeof preFunction)=='function')
