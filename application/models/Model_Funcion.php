@@ -50,6 +50,22 @@ class Model_Funcion extends CI_Model
         return $data->result();
     }
 
+    function GetProyectos1($cadena,$idFuncion,$idDivisionFuncional,$idGrupoFuncional,$provincia,$distrito,$deFecha,$aFecha)
+    {
+        //$data=$this->db->query("EXEC spPruebaReportes '110000', 2, 3, 5, 'Abancay', 'Abancay', '', ''");
+        
+        /*ALTER PROCEDURE [dbo].[sp_Modulo_Reportes] 
+    @id_funcion            INT  = NULL, 
+    @id_division_funcional INT  = NULL, 
+    @id_grupo_funcional    INT  = NULL, 
+    @id_provincia          INT  = NULL, 
+    @id_distrito           INT  = NULL, 
+    @fecha1                DATE = NULL, 
+    @fecha2                DATE = NULL*/
+        $data=$this->db->query("EXEC spPruebaReportes '".$cadena."','".$idFuncion."','".$idDivisionFuncional."','".$idGrupoFuncional."','".$provincia."','".$distrito."','".$deFecha."','".$aFecha."'");
+        return $data->result();
+    }
+
     function AddFucion($txt_codigofuncion,$txt_nombrefuncion)
     {
         $this->db->query("execute sp_Funcion_c '".$txt_codigofuncion."','".$txt_nombrefuncion."'");

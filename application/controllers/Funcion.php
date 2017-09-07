@@ -66,17 +66,62 @@ class Funcion extends CI_Controller {/* Mantenimiento de sector entidad Y servic
         $idFuncion = $this->input->post('idFuncion');
         $idDivisionFuncional = $this->input->post('idDivisionFuncional');
         $idGrupoFuncional = $this->input->post('idGrupoFuncional');
-        $idProvincia = $this->input->post('idProvincia');
-        $idDistrito = $this->input->post('idDistrito');
+        $provincia = $this->input->post('idProvincia');
+        $distrito = $this->input->post('idDistrito');
         $deFecha = $this->input->post('deFecha');
         $aFecha = $this->input->post('aFecha');
+        $cadena = "";
+        if($idFuncion=="")
+            $cadena=$cadena."0";
+        else
+            $cadena=$cadena."1";
+        if($idDivisionFuncional=="")
+            $cadena=$cadena."0";
+        else
+            $cadena=$cadena."1";
+        if($idGrupoFuncional=="")
+            $cadena=$cadena."0";
+        else
+            $cadena=$cadena."1";
+        if($provincia=="")
+            $cadena=$cadena."0";
+        else
+            $cadena=$cadena."1";
+        if($distrito=="")
+            $cadena=$cadena."0";
+        else
+            $cadena=$cadena."1";
+        if($deFecha=="")
+            $cadena=$cadena."0";
+        else
+            $cadena=$cadena."1";
+
+
+        $datos=$this->Model_Funcion->GetProyectos1($cadena,$idFuncion,$idDivisionFuncional,$idGrupoFuncional,$provincia,$distrito,$deFecha,$aFecha);
+
+       //echo json_encode($datos);
+        //exit;
+
+        $this->load->view('front/Reporte/CadenaFuncional/tablaFuncion',['listaProyectos'=>$datos]);
+
+        //$datos=$this->Model_Funcion->GetProyectos();
+        //$this->load->view('front/Reporte/CadenaFuncional/tablaFuncion',['listaProyectos'=>$datos]);
+
+        //echo $cadena;
+        //exit;
+
+
         //echo $idFuncion." ".$idDivisionFuncional." ".$idGrupoFuncional." ".$idProvincia." ".$idDistrito." ".$deFecha." ".$aFecha; 
         //exit;
-        $datos=$this->Model_Funcion->GetProyectos();
+        
+        //$datos=$this->Model_Funcion->GetProyectos();
+        
         //echo json_encode($datos);
         //exit;
         //$this->load->view('layout/Reportes/header');        
-        $this->load->view('front/Reporte/CadenaFuncional/tablaFuncion',['listaProyectos'=>$datos]);
+        
+        //$this->load->view('front/Reporte/CadenaFuncional/tablaFuncion',['listaProyectos'=>$datos]);
+        
         //$this->load->view('layout/Reportes/footer');
 
 

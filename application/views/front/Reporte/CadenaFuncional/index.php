@@ -74,13 +74,13 @@
 									                    <div class="row">
 															<div class="form-group">
 										                        <label class="control-label col-md-2 col-sm-2 col-xs-12">De:</label>
-										                        <div class="col-md-3 col-sm-3 col-xs-12">
+										                        <div class="col-md-4 col-sm-4 col-xs-12">
 										                          <input type="date" class="form-control" placeholder="Default Input" id="deFecha">
 										                        </div>
 										                    </div>
 										                    <div class="form-group">
 										                        <label class="control-label col-md-2 col-sm-2 col-xs-12">A:</label>
-										                        <div class="col-md-3 col-sm-3 col-xs-12">
+										                        <div class="col-md-4 col-sm-4 col-xs-12">
 										                          <input type="date" class="form-control" placeholder="Default Input" id="aFecha">
 										                        </div>
 										                    </div>
