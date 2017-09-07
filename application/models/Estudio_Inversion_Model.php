@@ -10,9 +10,12 @@ class Estudio_Inversion_Model extends CI_Model
     }
     public function UsuarioPersona($idUsuario)
     {
-        $listarPersonaUsuario = $this->db->query("select USUARIO.id_persona,USUARIO.usuario,PERSONA.id_persona,CONCAT(PERSONA.nombres,' ',PERSONA.apellido_p,' ',PERSONA.apellido_m)as nombresCompleto,
-                                                USUARIO_TIPO.desc_usuario_tipo,USUARIO_TIPO.cod_usuario_tipo from PERSONA,USUARIO   inner join USUARIO_TIPO  on USUARIO.id_usuario_tipo=USUARIO_TIPO.id_usuario_tipo
-                                                where USUARIO.id_persona='".$idUsuario."' ");
+        $listarPersonaUsuario = $this->db->query("SELECT top 1 USUARIO.id_persona,  USUARIO.usuario, PERSONA.id_persona, CONCAT(PERSONA.nombres, ' ', PERSONA.apellido_p, ' ', PERSONA.apellido_m) AS nombresCompleto, 
+                                                    USUARIO_TIPO.desc_usuario_tipo, 
+                                                    USUARIO_TIPO.cod_usuario_tipo
+                                                    FROM   PERSONA inner join USUARIO on PERSONA.id_persona = usuario.id_persona      
+                                                    INNER JOIN USUARIO_TIPO ON USUARIO.id_usuario_tipo = USUARIO_TIPO.id_usuario_tipo
+                                                    WHERE  USUARIO.id_persona='".$idUsuario."' ");
          return $listarPersonaUsuario ->result()[0]; 
 
     }
