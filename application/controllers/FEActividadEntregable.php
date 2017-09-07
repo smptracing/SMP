@@ -143,7 +143,7 @@ class FEActividadEntregable extends CI_Controller
             $nombreArchivo=explode(".",$NombreUrlObservacion);
             $nombreO=(String)$nombreArchivo[0];
             $urlO=(String)$nombreArchivo[1];
-            $doc_observacio=$nombreO.'.'.$urlO;
+            $doc_observacio=$nombreO.''.$tx_IdActividadObser.'.'.$urlO;
             $this->Model_FEActividadEntregable->ObservacionActividad($tx_IdActividadObser,$txt_desco_obs,$txt_fechaLevantaminetoObse,$doc_observacio);            
             $config['upload_path']          = './uploads/DocumentoObservacionAtividad/';
             $config['allowed_types']        = 'pdf|doc|xml|docx|PDF|DOC|DOCX|xls|xlsx';
@@ -179,7 +179,7 @@ class FEActividadEntregable extends CI_Controller
             $nombreArchivo=explode(".",$NombreUrlObservacion);
             $nombreO=(String)$nombreArchivo[0];
             $urlO=(String)$nombreArchivo[1];
-            $doc_observacio=$nombreO.'.'.$urlO;
+            $doc_observacio=$nombreO.''.$tx_IdActividadObser.'.'.$urlO;
             $this->Model_FEActividadEntregable->LevantaminetoObservacionActividad($tx_IdActividadObser,$txt_desco_obs,$txt_fechaLevantaminetoObse,$doc_observacio);            
             $config['upload_path']          = './uploads/LevantamientoDocumentoActividad/';
             $config['allowed_types']        = 'pdf|doc|xml|docx|PDF|DOC|DOCX|xls|xlsx';
@@ -200,6 +200,18 @@ class FEActividadEntregable extends CI_Controller
                     
                     echo json_encode("Se realizó el levantamiento de observación");
                }
+
+                                 
+         } 
+    }
+
+    public function listadoObservacion()
+    {
+         if ($this->input->is_ajax_request()) 
+         {
+           $idActividad=$this->input->Post('idActividad');
+           $data=$this->Model_FEActividadEntregable->listadoObservacion($idActividad);
+           echo json_encode($data);
 
                                  
          } 
@@ -251,6 +263,8 @@ class FEActividadEntregable extends CI_Controller
         }
      
     }
+
+
     public function _load_layout($template)
     {
         $this->load->view('layout/Formulacion_Evaluacion/header');

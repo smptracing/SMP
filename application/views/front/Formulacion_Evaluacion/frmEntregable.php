@@ -526,7 +526,7 @@
 <!--FIN MOFIFICAR ACTIVIDADES DE ENTREGABLES-->
 
 <div class="modal fade" id="modalObservacionesActividades" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -540,7 +540,7 @@
                   <div class="row">
                      <div class="col-md-12 col-sm-12 col-xs-12">
                         <span class="input-group-addon" style="text-align:left;">Descripción Observación</span>
-                        <input id="tx_IdActividadObser"  name="tx_IdActividadObser" type="text" class="form-control"  placeholder="" >
+                        <input id="tx_IdActividadObser"  name="tx_IdActividadObser" type="hidden" class="form-control"  placeholder="" >
                         <input id="txt_desco_obs" name="txt_desco_obs" type="text" class="form-control"  placeholder="">
                       </div>
                     </div><br/>
@@ -581,7 +581,7 @@
 <!--  -->
 
 <div class="modal fade" id="LevatarmodalObservacionesLevantar" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -595,12 +595,8 @@
                   <div class="row">
                      <div class="col-md-12 col-sm-12 col-xs-12">
                         <span class="input-group-addon" style="text-align:left;">Descripción Levantamiento</span>
-                        <input id="tx_IdActividadLevantamiento"  name="tx_IdActividadLevantamiento" type="text" class="form-control"  placeholder="" >
+                        <input id="tx_IdActividadLevantamiento"  name="tx_IdActividadLevantamiento" type="hidden" class="form-control"  placeholder="" >
                         <input id="txt_desco_levantamiento" name="txt_desco_levantamiento" type="text" class="form-control"  placeholder="">
-                      </div>
-                      <div class="col-md-12 col-sm-12 col-xs-12">
-                          <label class=" col-md-6 col-sm-6 col-xs-12">Fecha levantamineto </label>
-                          <input  id="txt_fechaLevantamineto" name="txt_fechaLevantamineto"  type="date" class="form-control calendario">
                       </div>
                     </div><br/>
                     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -625,6 +621,29 @@
                     </div>
                 </form>
             </div>
+         </div>
+        </div>
+
+        <div class="modal-footer">
+
+        </div>
+      </div>
+    </div>
+  </div> 
+
+  <div class="modal fade" id="ListaObservaciones" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h5 class="modal-title">Listados de Observación</h5>
+        </div>
+
+         <div class="modal-body">
+         <div class="row">
+             <div id="TemActividadObservaciones" class="col-xs-12">
+                
+              </div>
          </div>
         </div>
 

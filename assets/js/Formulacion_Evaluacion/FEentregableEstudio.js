@@ -570,16 +570,16 @@ var generarActividadesVertical=function(id_en)
                                          var i=data;
                                          if(i==0)
                                          {
-                                             return "<ul class='list-inline prod_color'><div class='color bg-red'><br/></div></ul>Observado";
+                                             return "<ul class='list-inline prod_color'><div class='color bg-red'><br/></div></ul>Observado</br><a type='button' class='ListarObservaciones btn btn-link' data-toggle=modal data-target='#ListaObservaciones' title='Ver Observacione' ><i class='glyphicon glyphicon-triangle-top' aria-hidden='true'></a>";
                                          }
                                          if(i==1)
                                          {
-                                             return "<ul class='list-inline prod_color'><div class='color bg-green'><br/></div></ul>Levanto";
+                                             return "<ul class='list-inline prod_color'><div class='color bg-green'><br/></div></ul>Levanto <a type='button' class='ListarObservaciones btn btn-link' data-toggle=modal data-target='#ListaObservaciones' title='Ver Observacione'><i class='glyphicon glyphicon-triangle-top' aria-hidden='true'></a>";
 
                                          }
                                          if(i==null)
                                          {
-                                           return "Sin Observacione ";
+                                           return "Sin Observaciones ";
                                          }
 
                                        }
@@ -607,29 +607,31 @@ var generarActividadesVertical=function(id_en)
 
                  ObservacionesActividad("#datatable-actividadesV",table);
                  LevantamientoObservacionesActividad("#datatable-actividadesV",table);
+                 ListarObservacionesActividad("#datatable-actividadesV",table);
+
   }
 
 
-//ACTUALIZAR ACTIVIDAD ENTREGABLES
-$("#form-ActualizarActividadEntregable").submit(function(event)
-{
-  event.preventDefault();
+      //ACTUALIZAR ACTIVIDAD ENTREGABLES
+      $("#form-ActualizarActividadEntregable").submit(function(event)
+      {
+        event.preventDefault();
 
-  $.ajax(
-  {
-    url : base_url+"index.php/FEActividadEntregable/Update_Actividades",
-    type : $(this).attr('method'),
-    data : $(this).serialize(),
-    success : function(resp)
-    {
-      swal("MODIFICADO!", resp, "success");
-      
-      $('#datatable-actividadesV').dataTable()._fnAjaxUpdate();
+        $.ajax(
+        {
+          url : base_url+"index.php/FEActividadEntregable/Update_Actividades",
+          type : $(this).attr('method'),
+          data : $(this).serialize(),
+          success : function(resp)
+          {
+            swal("MODIFICADO!", resp, "success");
+            
+            $('#datatable-actividadesV').dataTable()._fnAjaxUpdate();
 
-      $('#modalModificarActividades').modal('hide');
-    }
-  });
-}); 
+            $('#modalModificarActividades').modal('hide');
+          }
+        });
+      }); 
 
 /*$("#form-ActualizarActividadEntregable").submit(function(event)
                   {
@@ -681,6 +683,69 @@ $("#form-ActualizarActividadEntregable").submit(function(event)
                                     $('#tx_IdActividadLevantamiento').val(data.id_act_observacion);
                              });
                   } 
+       var  ListarObservacionesActividad=function(tbody,table)
+                  {
+                            $(tbody).on("click","a.ListarObservaciones",function(){
+                              var data=table.row( $(this).parents("tr")).data();
+                                    var idActividad=data.id;//$('#tx_IdActividadLevantamiento').val(data.id);
+                                    listadoObservacion(idActividad);
+                             });
+                  } 
+      function listadoObservacion(idActividad)
+        {
+                  $.ajax({
+                          url:base_url+"index.php/FEActividadEntregable/listadoObservacion",
+                          type:'POST',
+                          data:{idActividad:idActividad},
+                          success:function(resp)
+                          { 
+                               $("#ListadoObservaciones" ).remove(); 
+                               var tempActividad='<table id="ListadoObservaciones" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">'+
+                                  '<thead>'+
+                                      '<tr>'+
+                                        '<th>Observación</th>'+
+                                        '<th>Documento</th>'+
+                                        '<th>Levantamiento</th>'+
+                                        '<th>Documento</th>'+
+                                        '<th>Fecha Inicio</th>'+
+                                        '<th>Fecha Fin</th>'+
+                                        '<th>Estado</th>'+
+
+                                     '</tr>'+
+                                  '</thead>'+
+                                 '</thead>'+
+                                  '<tbody>';
+                              var registros = eval(resp);
+                              for (var i = 0; i < registros.length; i++) 
+                               {
+                              	if(registros[i]['estado_obs']==1)
+                              	{
+	                              	tempActividad +='<tr>';	
+	                              		tempActividad +='<td>'+registros[i]['desc_obsrevacion']+'</td><td>'+registros[i]['doc_observacion']+'</td><td>'+registros[i]['desc_levantamiento']+'</td><td>'+registros[i]['doc_levantamiento']+'</td><td>'+registros[i]['fecha_observacion']+'</td><td>'+registros[i]['fecha_levantamiento']+'</td><td><ul class="list-inline prod_color"><div class="color bg-green"><br/></div></ul>Levanto</td>';	
+	                              	tempActividad +='</tr>';
+                              	}
+                              	if(registros[i]['estado_obs']==0)
+                              	{
+	                              	tempActividad +='<tr>';	
+	                              		tempActividad +='<td>'+registros[i]['desc_obsrevacion']+'</td><td>'+registros[i]['doc_observacion']+'</td><td>'+registros[i]['desc_levantamiento']+'</td><td>'+registros[i]['doc_levantamiento']+'</td><td>'+registros[i]['fecha_observacion']+'</td><td>'+registros[i]['fecha_levantamiento']+'</td><td> <ul class="list-inline prod_color"><div class="color bg-red"><br/></div></ul>Observado</td>';	
+	                              	tempActividad +='</tr>';
+                              	}
+                              	if(registros[i]['estado_obs']==null)
+                              	{
+	                              	tempActividad +='<tr>';	
+	                              		tempActividad +='<td>'+registros[i]['desc_obsrevacion']+'</td><td>'+registros[i]['desc_levantamiento']+'</td><td>'+registros[i]['fecha_observacion']+'</td><td>'+registros[i]['fecha_levantamiento']+'</td><td> Sin Observaciones </td>';	
+	                              	tempActividad +='</tr>';
+                              	}
+                              		
+                               }
+                               tempActividad +='</tbody>';
+                               tempActividad +='</table>';
+                               $("#TemActividadObservaciones").append(tempActividad);  
+                              
+                          }
+                      });
+        }
+        
   function listarEntregablesFE()
           {     
               $("#table_entregable" ).remove(); 

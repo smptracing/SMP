@@ -106,5 +106,18 @@ class Model_FEActividadEntregable extends CI_Model
               }
         }
 
+        function  listadoObservacion($idActividad)
+        {
+          $data=$this->db->query("select * from ACTIVIDAD_OBSERVACION where id_act='".$idActividad."' ");
+              if($data->num_rows()>=0)
+             {
+              return $data->result();
+             }else
+             {
+              return null;
+             }
+        }
+     
+
 
 }
