@@ -25,5 +25,13 @@ class Login_model extends CI_Model {
         $this->db->where('activo', 1);
         return $this->db->get();
     }
+    function recuperarMenu($usuario) 
+	{
+        $query=$this->db->query("EXEC sp_recuperarMenuUsuario ".$usuario);
+        $result=$query->result_array();
+        return $result;
+    
+    }
+
 
 }
