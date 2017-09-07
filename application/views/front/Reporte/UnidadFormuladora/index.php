@@ -42,20 +42,42 @@
 															</thead>
 															<tbody>
 																<?php foreach($listaPipUnidadFormuladora as $item ){ ?>
-															  	<tr>
-																	<td>
-																		<?=$item->nombre_uf?>
-															    	</td>
-															    	<td>
-																		<?=$item->CantidadPip?>
-															    	</td>	
-															    	<td>
-																		S/.<?=$item->CostoPip?>
-															    	</td>
-															  </tr>
-															<?php } ?>
+																  	<tr>
+																		<td>
+																			<?=$item->nombre_uf?>
+																    	</td>
+																    	<td>
+																			<?=$item->CantidadPip?>
+																    	</td>	
+																    	<td style="text-align:right">
+																			S/.<?=$item->CostoPip?>
+																    	</td>
+																  	</tr>
+																<?php } ?>
+																<tr>
+																	<td bgcolor="#D1F2EB"><b></b></td>
+																	<td bgcolor="#D1F2EB"><b><?=$listaMontoTotalUnidadFormuladora->CantidadPip;?><b></td>
+																	<td style="text-align:right" bgcolor="#D1F2EB"><b><?=$listaMontoTotalUnidadFormuladora->CostoPip;?></b></td>
+																</tr>
 															</tbody>
 														</table>
+													</div>
+														<div class="col-md-4 col-sm-12 col-xs-12">
+														<table id="table-Resumen"  class="table">
+																<tr>
+																<td colspan="2"><b>CUADRO RESUMEN DE PIP POR UNIDAD FORMULADORA</b></td>
+																</tr>
+																<tr>
+																	<td>TOTAL PIP</td>
+																	
+																	<td >Costo total</td>
+																</tr>
+																<tr>
+																
+																	<td bgcolor="#D1F2EB"><?=$listaMontoTotalUnidadFormuladora->CantidadPip;?></td>
+																	<td bgcolor="#D1F2EB"><?=$listaMontoTotalUnidadFormuladora->CostoPip;?></td>
+																</tr>
+														</table> 
 													</div>
 											</div>
 										</div>

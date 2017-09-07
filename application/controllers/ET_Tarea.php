@@ -41,14 +41,22 @@ class ET_Tarea extends CI_Controller
 		return $days;
 	}
 
-	public function index()
+	public function index($idTareaGantt)
 	{
-		$listaETTarea=$this->Model_ET_Tarea->ETTareaPorIdTareaGantt(3);
+		$listaETTarea=$this->Model_ET_Tarea->ETTareaPorIdTareaGantt($idTareaGantt);
 
 		$arrayTask=[];
 
 		foreach($listaETTarea as $key => $value)
 		{
+			$textTemp=explode(' ', html_escape($value->nombre_tarea));
+			$codeTempName='';
+
+			foreach($textTemp as $w)
+			{
+				$codeTempName.=strtoupper($w[0]);
+			}
+
 			$ts1=strtotime($value->fecha_inicio_tarea);
 			$ts2=strtotime($value->fecha_final_tarea);
 
@@ -56,14 +64,14 @@ class ET_Tarea extends CI_Controller
 
 			$arrayTask[]=[
 				'id' => $value->id_tarea_et,
-				'name' => $value->nombre_tarea,
+				'name' => html_escape($value->nombre_tarea),
 				'progress' => $value->avance_tarea,
 				'progressByWorklog' => false,
 				'relevance' => 0,
 				'type' => '',
 				'typeId' => '',
 				'description' => '',
-				'code' => '',
+				'code' => $codeTempName,
 				'level' => $value->nivel_tarea,
 				'status' => $value->color_tarea,
 				'depends' => $value->dependencia_tarea,

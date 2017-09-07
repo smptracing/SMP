@@ -53,4 +53,10 @@ class Model_UnidadF extends CI_Model
 
         return $ListarPipUnidadFormuladora->result();
     }
+    public function UnidadFormuladoraMontoTotal()
+    {
+         $data=$this->db->query("select  count (nombre_pi)as CantidadPip, sum(costo_pi)as CostoPip from proyecto_inversion INNER JOIN UNIDAD_FORMULADORA  ON proyecto_inversion.id_uf=UNIDAD_FORMULADORA.id_uf");
+
+        return $data->result()[0];
+    }
 }

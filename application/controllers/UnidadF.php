@@ -16,8 +16,10 @@ class UnidadF extends CI_Controller
     public function indexunidadFormuladora()
     {
         $listaPipUnidadFormuladora=$this->Model_UnidadF->UnidadFormuladoraPipListar();
+        $listaMontoTotalUnidadFormuladora=$this->Model_UnidadF->UnidadFormuladoraMontoTotal();
+
         $this->load->view('layout/Reportes/header');
-        $this->load->view('front/Reporte/UnidadFormuladora/index',['listaPipUnidadFormuladora'=>$listaPipUnidadFormuladora]);
+        $this->load->view('front/Reporte/UnidadFormuladora/index',['listaPipUnidadFormuladora'=>$listaPipUnidadFormuladora,'listaMontoTotalUnidadFormuladora'=>$listaMontoTotalUnidadFormuladora]);
         $this->load->view('layout/Reportes/footer');
     }
 //----------------------MANTENIMIENTOS DE UNIDAD EJECUTORA-------------------------------------------

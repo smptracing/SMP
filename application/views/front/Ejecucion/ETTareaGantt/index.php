@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
@@ -149,12 +149,17 @@
 					text: objectJSON.mensaje,
 					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
 				},
-				function(){});
-
-				if(objectJSON.proceso=='Error')
+				function()
 				{
-					return false;
-				}
+					if(objectJSON.proceso=='Error')
+					{
+						return false;
+					}
+
+					renderLoading();
+
+					window.location.href='<?=base_url()?>index.php/ET_Tarea/index/'+$('#hdIdTareaGantt').val();
+				});
 			}, false, true);
 		}
 
@@ -436,7 +441,7 @@
 			<tr taskId="(#=obj.id#)" class="taskEditRow (#=obj.isParent()?'isParent':''#) (#=obj.collapsed?'collapsed':''#)" level="(#=level#)">
 			<th class="gdfCell edit" align="right" style="cursor:pointer;"><span class="taskRowIndex">(#=obj.getRow()+1#)</span> <span class="teamworkIcon" style="font-size:12px;" >e</span></th>
 			<td class="gdfCell noClip" align="center"><div class="taskStatus cvcColorSquare" status="(#=obj.status#)"></div></td>
-			<td class="gdfCell"><input type="text" name="code" value="(#=obj.code?obj.code:''#)" placeholder="Nombre corto"></td>
+			<td class="gdfCell"><input type="text" name="code" value="(#=obj.code?obj.code:''#)" placeholder="Nombre corto" readonly="readonly"></td>
 			<td class="gdfCell indentCell" style="padding-left:(#=obj.level*10+18#)px;">
 			<div class="exp-controller" align="center"></div>
 			<input type="text" name="name" value="(#=obj.name#)" placeholder="Nombre" autocomplete="off">

@@ -16,8 +16,9 @@ class UnidadE extends CI_Controller
     public function indexunidadEjecutora()
     {
         $listaPipUnidadEjecutora=$this->Model_UnidadE->UnidadEjecutoraPipListar();
+        $listaMontoTotalUnidadEjecutora=$this->Model_UnidadE->UnidadEjecutoraPipListarResumen();
         $this->load->view('layout/Reportes/header');
-        $this->load->view('front/Reporte/UnidadEjecutora/index',['listaPipUnidadEjecutora'=>$listaPipUnidadEjecutora]);
+        $this->load->view('front/Reporte/UnidadEjecutora/index',['listaPipUnidadEjecutora'=>$listaPipUnidadEjecutora,'listaMontoTotalUnidadEjecutora'=>$listaMontoTotalUnidadEjecutora]);
         $this->load->view('layout/Reportes/footer');
     }
 //----------------------MANTENIMIENTOS DE UNIDAD EJECUTORA-------------------------------------------

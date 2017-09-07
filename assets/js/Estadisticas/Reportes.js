@@ -120,7 +120,7 @@ $.ajax({
 			if (option && typeof option === "object") 
 			{
 				myChart.setOption(option, true);
-		}
+			}
 	}
 });
 
@@ -131,7 +131,7 @@ $.ajax({
 	cache:false,
 	success:function(respuesta)
 	{
-		var arrayNumPipFuenteFinan=new Array();
+		/*var arrayNumPipFuenteFinan=new Array();
 		$.each(respuesta,function(index,element)
 		{
 			arrayNumPipFuenteFinan[index]=element.Cantidadpip;
@@ -192,8 +192,59 @@ $.ajax({
 	
 		if (option && typeof option === "object") {
 			myChart.setOption(option, true);
-		}
+		}*/
+		var arrayNumPipFuenteFinan=new Array();
+		$.each(respuesta,function(index,element)
+		{
+			arrayNumPipFuenteFinan[index]=element.Cantidadpip;
+		});
+			var dom = document.getElementById("NumPipFuenteFinanciamiento");
+			var myChart = echarts.init(dom);
+			var app = {};
+			option = null;
+			option = {
+				title : {
+					text: '',
+					subtext: '',
+					x:'center'
+				},
+				tooltip : {
+					trigger: 'item',
+					formatter: "{a} <br/>{b} : {c} ({d}%)"
+				},
+				legend: {
+					orient: 'horizontal',
+					left: 'left',
+					data: ['Donaciones y transferencias','Recursos Determinados','Recursos Directamente Recaudados','Recursos ordinarios','Recursos Por Operaciones Oficiales de Credito']
+				},
 
+				series : [
+				{
+					name: 'Naturaleza Inversion',
+					type: 'pie',
+					radius : '55%',
+					center: ['50%', '60%'],
+					data:[
+						{value:arrayNumPipFuenteFinan[0], name:'Donaciones y transferencias'},
+						{value:arrayNumPipFuenteFinan[1], name:'Recursos Determinados'},
+						{value:arrayNumPipFuenteFinan[2], name:'Recursos Directamente Recaudados'},
+						{value:arrayNumPipFuenteFinan[3], name:'Recursos ordinarios'},
+						{value:arrayNumPipFuenteFinan[4], name:'Recursos Por Operaciones Oficiales de Credito'}
+					],
+					itemStyle: {
+						emphasis: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 0, 0.5)'
+						}
+					}
+				}
+				]
+			};
+			if (option && typeof option === "object") 
+			{
+				myChart.setOption(option, true);
+			}
 	}
 });
 
@@ -256,7 +307,7 @@ $.ajax({
 			if (option && typeof option === "object") 
 			{
 				myChart.setOption(option, true);
-		}
+			}
 	}
 });
 
@@ -268,7 +319,7 @@ $.ajax({
 	cache:false,
 	success:function(respuesta)
 	{
-		var arrayModalidadMontosPip=new Array();
+		/*var arrayModalidadMontosPip=new Array();
 		$.each(respuesta,function(index,element)
 		{
 			arrayModalidadMontosPip[index]=element.Monto;
@@ -326,6 +377,57 @@ $.ajax({
 	
 		if (option && typeof option === "object") {
 			myChart.setOption(option, true);
+		}*/
+		var arrayModalidadMontosPip=new Array();
+		$.each(respuesta,function(index,element)
+		{
+			arrayModalidadMontosPip[index]=element.Monto;
+		});
+
+			var dom = document.getElementById("MontoPipsModalidad");
+			var myChart = echarts.init(dom);
+			var app = {};
+			option = null;
+			option = {
+				title : {
+					text: '',
+					subtext: '',
+					x:'center'
+				},
+				tooltip : {
+					trigger: 'item',
+					formatter: "{a} <br/>{b} : {c} ({d}%)"
+				},
+				legend: {
+					orient: 'horizontal',
+					left: 'left',
+					data: ['Administracion Directa','Contrata Consultores Externos','Mixto']
+				},
+
+				series : [
+				{
+					name: 'Naturaleza Inversion',
+					type: 'pie',
+					radius : '55%',
+					center: ['50%', '60%'],
+					data:[
+						{value:arrayModalidadMontosPip[0], name:'Administracion Directa'},
+						{value:arrayModalidadMontosPip[1], name:'Contrata Consultores Externos'},
+						{value:arrayModalidadMontosPip[2], name:'Mixto'}
+					],
+					itemStyle: {
+						emphasis: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 0, 0.5)'
+						}
+					}
+				}
+				]
+			};
+			if (option && typeof option === "object") 
+			{
+				myChart.setOption(option, true);
 		}
 
 	}
