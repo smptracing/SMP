@@ -87,4 +87,29 @@ class Model_Dashboard_Reporte extends CI_Model
             return false;
         }
     }
+
+    function FuncionNumeroPip()
+    {
+        $data=$this->db->query("select FUNCION.nombre_funcion ,count (nombre_pi)as CantidadPip, sum(costo_pi)as CostoPip from PROYECTO_INVERSION INNER JOIN GRUPO_FUNCIONAL ON PROYECTO_INVERSION.id_grupo_funcional=GRUPO_FUNCIONAL.id_grup_funcional INNER JOIN  DIVISION_FUNCIONAL on GRUPO_FUNCIONAL.id_div_funcional=DIVISION_FUNCIONAL.id_div_funcional INNER JOIN FUNCION on DIVISION_FUNCIONAL.id_funcion=FUNCION.id_funcion group by FUNCION.nombre_funcion");
+        if ($data->num_rows()> 0) 
+        {
+            return $data->result();
+        } 
+        else 
+        {
+            return false;
+        }
+    }
+    function ReporteDevengadoPiaPimPorPip($CodigoUnico)
+    {
+       $data = $this->db->query("select * from PROYECTO_INVERSION LEFT join META_PRESUPUESTAL_PI on PROYECTO_INVERSION.id_pi=META_PRESUPUESTAL_PI.id_pi LEFT JOIN DEVENGADO_META ON META_PRESUPUESTAL_PI.id_meta_pi=DEVENGADO_META.id_meta_pi WHERE PROYECTO_INVERSION.codigo_unico_pi='".$CodigoUnico."'");//listar EVAL
+        if ($data->num_rows()> 0) 
+        {
+            return $data->result()[0];
+        } 
+        else 
+        {
+            return false;
+        }
+    }
 }

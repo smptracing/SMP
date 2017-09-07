@@ -20,8 +20,10 @@ class Sector extends CI_Controller {/* Mantenimiento de sector entidad Y servici
         $this->load->view('front/Reporte/Funcion/index');
         $this->load->view('layout/Reportes/footer');*/
         $listaNumPipSector=$this->Model_Sector->SectorPipListar();
+        $listaMontoTotalSector=$this->Model_Sector->SectorPipMontoTotalListar();
+
         $this->load->view('layout/Reportes/header');
-        $this->load->view('front/Reporte/Sector/index',['listaNumPipSector'=>$listaNumPipSector]);
+        $this->load->view('front/Reporte/Sector/index',['listaNumPipSector'=>$listaNumPipSector,'listaMontoTotalSector'=>$listaMontoTotalSector]);
         $this->load->view('layout/Reportes/footer');
     }
     /* Sector*/

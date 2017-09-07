@@ -1,13 +1,35 @@
- $(document).on("ready" ,function(){
-                //alert("sdas");
-               //lista();
-            //division funcional
+$(document).on("ready" ,function()
+{
+    listarDivisionF();//para mostrar las divisiones funcionanes
+    listaFuncionCombo();
+    listaProvinciaCombo();
+    listaProyectos();
+    
+    $("#btn_Nuevadivision").click(function()//para que cargue el como una vez echo click sino repetira datos
+    {
+         listaFuncionCombo();//para llenar el combo de agregar division funcional
+    });
 
-               listarDivisionF();//para mostrar las divisiones funcionanes
-              $("#btn_Nuevadivision").click(function()//para que cargue el como una vez echo click sino repetira datos
-                    {
-                     listaFuncionCombo();//para llenar el combo de agregar division funcional
-                });
+    $('#listaFuncionC').on('change', function() 
+    {
+        //listaProyectos();
+        listaDivisionFuncionalCombo(null);        
+    })
+    $('#listaDivisionFuncional').on('change', function() 
+    {
+        listaGrupoFuncionalCombo(null);
+        //listaProyectos();
+    })
+    $('#listaProvincia').on('change', function() 
+    {
+        listaDistritoCombo(null);
+        //listaProyectos();
+    })
+
+    $("#btnBuscar").click(function()//para que cargue el como una vez echo click sino repetira datos
+    {
+        listaProyectos();//para llenar el combo de agregar division funcional
+    });
 
     $("#form-AddDivisionFuncion").submit(function(event)//para añadir nuevo division funcional
     {
@@ -48,7 +70,8 @@
             }
         });
     });
-			});
+});
+
     /*listra funcion*/
     var listaFuncionCombo=function(valor)//COMO CON LAS FUNCIONES PARA AGREGAR DIVIVISION FUNCIONAL
     {
@@ -80,9 +103,6 @@
             }
         });
     }
-    /*fin listar funcion*/
-               
-
 
     /* listar y lista en tabla entidad*/ 
     var listarDivisionF=function()
@@ -125,47 +145,154 @@
         });
     }
 
-                /*fin crea tabla division funcional*/ 
-                /*crear tabla dinamica servicio publico asociado */
-
               
-        /*Idioma de datatablet table-sector */
-            var idioma_espanol=
-                {
-                    "sProcessing":     "Procesando...",
-                    "sLengthMenu":     "Mostrar _MENU_ registros",
-                    "sZeroRecords":    "No se encontraron resultados",
-                    "sEmptyTable":     "Ningún dato disponible en esta tabla",
-                    "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-                    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-                    "sInfoPostFix":    "",
-                    "sSearch":         "Buscar:",
-                    "sUrl":            "",
-                    "sInfoThousands":  ",",
-                    "sLoadingRecords": "Cargando...",
-                    "oPaginate": {
-                        "sFirst":    "Primero",
-                        "sLast":     "Último",
-                        "sNext":     "Siguiente",
-                        "sPrevious": "Anterior"
-                    },
-                    "oAria": {
-                        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-                    }
-                }
+    /*Idioma de datatablet table-sector */
+    var idioma_espanol=
+    {
+        "sProcessing":     "Procesando...",
+        "sLengthMenu":     "Mostrar _MENU_ registros",
+        "sZeroRecords":    "No se encontraron resultados",
+        "sEmptyTable":     "Ningún dato disponible en esta tabla",
+        "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+        "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+        "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+        "sInfoPostFix":    "",
+        "sSearch":         "Buscar:",
+        "sUrl":            "",
+        "sInfoThousands":  ",",
+        "sLoadingRecords": "Cargando...",
+        "oPaginate": {
+            "sFirst":    "Primero",
+            "sLast":     "Último",
+            "sNext":     "Siguiente",
+            "sPrevious": "Anterior"
+        },
+        "oAria": {
+            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        }
+    }
 
-        /* function lista()
-					{
-						event.preventDefault();
-						$.ajax({
-              "url": base_url+"index.php/MFuncion/GetGrupoFuncional",
-							type:"POST",
-							success:function(respuesta){
-								alert(respuesta);
-							
 
-							}
-						});
-					}*/
+    /*Mostrar division funcional en base a la funcion*/
+    var listaDivisionFuncionalCombo=function(valor)
+    {
+        var htmlTemp="";
+        $("#listaDivisionFuncional").html(htmlTemp);
+        var idFuncion = $("#listaFuncionC").val(); 
+        paginaAjaxJSON({ idFuncion : idFuncion }, base_url +"index.php/Funcion/GetDivisionFuncional", "POST", null, function(objectJSON)
+        {
+            objectJSON=JSON.parse(objectJSON);
+            var registros=eval(objectJSON);
+            for(var i=0; i<registros.length; i++)
+            {
+                htmlTemp+="<option value="+registros[i]["id_div_funcional"]+"> "+ registros[i]["codigo_div_funcional"]+": "+registros[i]["nombre_div_funcional"]+" </option>";   
+            };
+
+            $("#listaDivisionFuncional").html(htmlTemp);
+            $('.selectpicker').selectpicker('refresh'); 
+        }, false, true);
+    }
+
+    /*Mostrar grupo funcional en base a la division funcional*/
+    var listaGrupoFuncionalCombo=function(valor)
+    {
+        var htmlTemp="";
+        $("#listaGrupoFuncional").html(htmlTemp);
+        var idDivisionFuncional = $("#listaDivisionFuncional").val(); 
+        paginaAjaxJSON({ idDivisionFuncional : idDivisionFuncional }, base_url +"index.php/Funcion/GetGrupoFuncional", "POST", null, function(objectJSON)
+        {
+            objectJSON=JSON.parse(objectJSON);
+            var registros=eval(objectJSON);
+            for(var i=0; i<registros.length; i++)
+            {
+                htmlTemp+="<option value="+registros[i]["id_grup_funcional"]+"> "+ registros[i]["codigo_grup_funcional"]+": "+registros[i]["nombre_grup_funcional"]+" </option>";   
+            };
+
+            $("#listaGrupoFuncional").html(htmlTemp);
+            $('.selectpicker').selectpicker('refresh'); 
+        }, false, true);
+    }
+
+    /*Mostrar listado de provincias en un combobox*/
+    var listaProvinciaCombo=function(valor)
+    {
+        var htmlTemp="";
+        $("#listaProvincia").html(htmlTemp);
+        paginaAjaxJSON(null, base_url +"index.php/Funcion/GetProvincia", "POST", null, function(objectJSON)
+        {
+            objectJSON=JSON.parse(objectJSON);
+            var registros=eval(objectJSON);
+            for(var i=0; i<registros.length; i++)
+            {
+                htmlTemp+="<option value="+registros[i]["provincia"]+"> "+registros[i]["provincia"]+" </option>";   
+            };
+
+            $("#listaProvincia").html(htmlTemp);
+            $('.selectpicker').selectpicker('refresh'); 
+        }, false, true);
+    }
+
+    /*Mostrar listado de distritos en base a la Provincia*/
+    var listaDistritoCombo=function(valor)
+    {
+        var htmlTemp="";
+        $("#listaDistrito").html(htmlTemp);
+        var provincia = $("#listaProvincia").val(); 
+        paginaAjaxJSON({ provincia : provincia }, base_url +"index.php/Funcion/GetDistrito", "POST", null, function(objectJSON)
+        {
+            objectJSON=JSON.parse(objectJSON);
+            var registros=eval(objectJSON);
+            for(var i=0; i<registros.length; i++)
+            {
+                htmlTemp+="<option value="+registros[i]["distrito"]+"> "+registros[i]["distrito"]+" </option>";   
+            };
+
+            $("#listaDistrito").html(htmlTemp);
+            $('.selectpicker').selectpicker('refresh'); 
+        }, false, true);
+    }
+
+    /*Listar proyectos por distintos parametros*/
+    var listaProyectos=function()
+    {
+        var idFuncion = $("#listaFuncionC").val(); 
+        var idDivisionFuncional = $("#listaDivisionFuncional").val();
+        var idGrupoFuncional = $("#listaGrupoFuncional").val();
+        var idProvincia = $("#listaProvincia").val();
+        var idDistrito = $("#listaDistrito").val();
+        var deFecha = $('#deFecha').val();
+        var aFecha = $("#aFecha").val(); 
+        //alert(deFecha);
+        $.ajax({
+            url: base_url +"index.php/Funcion/ProyectosPorCadenaFuncional",
+            type: 'POST',
+            data:
+            {
+                idFuncion: idFuncion,
+                idDivisionFuncional : idDivisionFuncional,
+                idGrupoFuncional: idGrupoFuncional,
+                idProvincia:idProvincia,
+                idDistrito:idDistrito,
+                deFecha:deFecha,
+                aFecha:aFecha
+            },
+            beforeSend: function(xhr)
+            {
+                renderLoading();
+            },
+            success: function (data)
+            {
+                $('#divModalCargaAjax').hide();
+
+                $('#dataTableFuncion').html(data);
+            },
+            error: function ()
+            {
+                $('#divModalCargaAjax').hide();
+
+                alert("Ocurrio un error!");
+            }
+        });
+
+    }

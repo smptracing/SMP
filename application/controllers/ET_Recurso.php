@@ -6,7 +6,7 @@ class ET_Recurso extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-        $this->load->model("Model_ET_Recurso");   
+        $this->load->model("Model_ET_Recurso");
 	}
  public function index()
     {
@@ -31,7 +31,7 @@ class ET_Recurso extends CI_Controller
             
             $this->Model_ET_Recurso->insertar($flat,$txtDescripcion);   
             $this->db->trans_complete();         
-            echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos registrados correctamente.']);exit;  
+            echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos registrados correctamente.']);exit;
         }
 
         return $this->load->view('front/Ejecucion/Recurso/insertar');

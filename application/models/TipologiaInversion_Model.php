@@ -62,4 +62,12 @@ class TipologiaInversion_Model extends CI_Model
         return $ListarTipologiaPip->result();
     }
 
+    function TipologiaPipListarResumen()
+    {
+        $data=$this->db->query("select count(nombre_pi) as TotalPip,  sum(costo_pi)as CostoTotal from TIPOLOGIA_INVERSION inner join PROYECTO_INVERSION ON TIPOLOGIA_INVERSION.id_tipologia_inv=PROYECTO_INVERSION.id_tipologia_inv");
+
+        return $data->result()[0];
+    }
+
+
 }

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class ET_TAREA extends CI_Controller
+class ET_Tarea extends CI_Controller
 {
 	public function __construct()
 	{
@@ -41,9 +41,9 @@ class ET_TAREA extends CI_Controller
 		return $days;
 	}
 
-	public function index()
+	public function index($idTareaGantt)
 	{
-		$listaETTarea=$this->Model_ET_Tarea->ETTareaPorIdTareaGantt(3);
+		$listaETTarea=$this->Model_ET_Tarea->ETTareaPorIdTareaGantt($idTareaGantt);
 
 		$arrayTask=[];
 
@@ -56,14 +56,14 @@ class ET_TAREA extends CI_Controller
 
 			$arrayTask[]=[
 				'id' => $value->id_tarea_et,
-				'name' => $value->nombre_tarea,
+				'name' => html_escape($value->nombre_tarea),
 				'progress' => $value->avance_tarea,
 				'progressByWorklog' => false,
 				'relevance' => 0,
 				'type' => '',
 				'typeId' => '',
 				'description' => '',
-				'code' => '',
+				'code' => $value->id_tarea_et,
 				'level' => $value->nivel_tarea,
 				'status' => $value->color_tarea,
 				'depends' => $value->dependencia_tarea,
@@ -91,7 +91,62 @@ class ET_TAREA extends CI_Controller
 
 			$tareas=json_decode($this->input->post('tareas'));
 
-			$this->Model_ET_Tarea->eliminarETTareaPorIdTareaGantt($idTareaGantt);
+			$idsTemp='';
+
+			foreach($tareas as $key => $value)
+			{
+				if(trim($value->code)!='')
+				{
+					$idsTemp.=','.$value->code;
+				}
+			}
+
+			$idsTemp=$idsTemp!='' ? substr($idsTemp, 1) : null;
+
+			$listaETTareaTemp=null;
+
+			if($idsTemp!=null)
+			{
+				$listaETTareaTemp=$this->Model_ET_Tarea->ETTareaPorIdTareaGanttYNoIds($idTareaGantt, $idsTemp);
+
+				foreach($listaETTareaTemp as $key => $value)
+				{
+					$listaETDocumentoEjecucionTemp=$this->Model_ET_Documento_Ejecucion->ETDocumentoEjecucionPorIdTareaET($value->id_tarea_et);
+
+					foreach($listaETDocumentoEjecucionTemp as $index => $item)
+					{
+						$rutaArchivoTemp='./uploads/DocumentoTareaGanttET/'.$item->id_doc_ejecucion.'.'.$item->extension_doc_ejecucion;
+
+						if(file_exists($rutaArchivoTemp))
+						{
+							unlink($rutaArchivoTemp);
+						}
+					}
+				}
+
+				$this->Model_ET_Tarea->eliminarParaActualizar($idTareaGantt, $idsTemp);
+			}
+			else
+			{
+				$listaETTareaTemp=$this->Model_ET_Tarea->ETTareaPorIdTareaGantt($idTareaGantt);
+
+				foreach($listaETTareaTemp as $key => $value)
+				{
+					$listaETDocumentoEjecucionTemp=$this->Model_ET_Documento_Ejecucion->ETDocumentoEjecucionPorIdTareaET($value->id_tarea_et);
+
+					foreach($listaETDocumentoEjecucionTemp as $index => $item)
+					{
+						$rutaArchivoTemp='./uploads/DocumentoTareaGanttET/'.$item->id_doc_ejecucion.'.'.$item->extension_doc_ejecucion;
+
+						if(file_exists($rutaArchivoTemp))
+						{
+							unlink($rutaArchivoTemp);
+						}
+					}
+				}
+
+				$this->Model_ET_Tarea->eliminarETTareaPorIdTareaGantt($idTareaGantt);
+			}
 
 			foreach($tareas as $key => $value)
 			{
@@ -124,7 +179,14 @@ class ET_TAREA extends CI_Controller
 					echo json_encode(['proceso' => 'Error', 'mensaje' => 'Debe asignar nombre a todas las actividades creadas.']);exit;
 				}
 
-				$this->Model_ET_Tarea->insertar($idTareaGantt, ($predecesoraTarea!='NULL' ? $this->Model_ET_Tarea->ETTareaPorIdTareaGanttYNumeracion($idTareaGantt, $predecesoraTarea)->id_tarea_et : $predecesoraTarea), '', $value->name, $value->start, $value->end, 0, $value->progress, $value->status, $value->level, $predecesoraTarea, 0, ($key+1), $value->depends);
+				if(trim($value->code)!='')
+				{
+					$this->Model_ET_Tarea->editar($value->code, ($predecesoraTarea!='NULL' ? $this->Model_ET_Tarea->ETTareaPorIdTareaGanttYNumeracion($idTareaGantt, $predecesoraTarea)->id_tarea_et : $predecesoraTarea), '', $value->name, $value->start, $value->end, 0, $value->progress, $value->status, $value->level, $predecesoraTarea, 0, ($key+1), (($value->depends>count($tareas) || $value->depends==($key+1)) ? '' : $value->depends));
+				}
+				else
+				{
+					$this->Model_ET_Tarea->insertar($idTareaGantt, ($predecesoraTarea!='NULL' ? $this->Model_ET_Tarea->ETTareaPorIdTareaGanttYNumeracion($idTareaGantt, $predecesoraTarea)->id_tarea_et : $predecesoraTarea), '', $value->name, $value->start, $value->end, 0, $value->progress, $value->status, $value->level, $predecesoraTarea, 0, ($key+1), (($value->depends>count($tareas) || $value->depends==($key+1)) ? '' : $value->depends));
+				}
 			}
 
 			$this->db->trans_complete();

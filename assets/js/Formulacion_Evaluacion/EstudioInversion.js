@@ -383,7 +383,7 @@ var listarestudiocombo=function(valor){
                                          return "<strong>"+data.nombre_est_inv + "</strong><br/><i class='fa fa-calendar'>  " + data.fecha+"</i>";
                                        }},
                                       {"data":"nombre_funcion"},
-                                      {"data":"nombres"},
+                                      {"data":"coordinador"},
                                       {"data":"avance_fisico",
                                       "mRender":function (data,type, full) {
                                          return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Complete</small></td>";

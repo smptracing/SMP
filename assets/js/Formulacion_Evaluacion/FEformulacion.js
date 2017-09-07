@@ -173,7 +173,7 @@ $("#form-AddSituacion").submit(function(event)
                                     {"data":"provincia"},
                                     {"data":"distrito"},
                                     {"data":"denom_nivel_estudio"},
-                                    {"data":"nombres"},
+                                    {"data":"coordinador"},
                                     {"data":"costo_estudio"},
                                     {"data":"denom_situacion_fe"},
                                     {"data":"avance_fisico",

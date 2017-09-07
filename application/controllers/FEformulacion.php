@@ -22,15 +22,25 @@ class FEformulacion extends CI_Controller
             $idPersona=$dataIdPersona->id_persona;
             $TipoUsuario=$dataIdPersona->cod_usuario_tipo;
 
-            if (empty($id_est_inve)) {
+           /* if (empty($id_est_inve)) {
                 $id_est_inve = '0';
             }
             if ($id_est_inve == 'all') {
-                $id_est_inve = '0';
+
+                //$id_est_inve = '0';
+
+            }*/
+            if($TipoUsuario==01)
+            {
+                $id_est_inve=0;
+                $datos = $this->FEformulacion_Modal->GetFormulacion($id_est_inve,$idPersona,$TipoUsuario);
+                echo json_encode($datos);
+            }else
+            {
+                $datos = $this->FEformulacion_Modal->GetFormulacion(48,$idPersona,$TipoUsuario);
+                echo json_encode($datos);
             }
-            //$this->session->sess_destroy();
-            $datos = $this->FEformulacion_Modal->GetFormulacion($id_est_inve,$idPersona,$TipoUsuario);
-            echo json_encode($datos);
+            
         } else {
             show_404();
         }

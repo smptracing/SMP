@@ -9,7 +9,8 @@ class PrincipalReportes extends CI_Controller
         $this->load->model('Model_Dashboard_Reporte');
     }
 
-    public function PrincipalReportes(){
+    public function PrincipalReportes()
+    {
 
         $this->_load_layout('Reportes');
 
@@ -87,6 +88,26 @@ class PrincipalReportes extends CI_Controller
             echo json_encode($numpip);
         } else
         show_404();
+    }
+
+    public function FuncionNumeroPip()
+    {
+        if ($this->input->is_ajax_request()) 
+        {
+            $datos = $this->Model_Dashboard_Reporte->FuncionNumeroPip();
+            echo json_encode($datos);
+        } 
+        else
+        show_404();
+    }
+
+    function BuscadorPipPorCodigoReporte()
+    {
+            $CodigoUnico=$this->input->get('codigounico');
+            $BuscarPipCodigoReporte=$this->Model_Dashboard_Reporte->ReporteDevengadoPiaPimPorPip($CodigoUnico); //BUSCAR PIP
+      
+            $devengado=[$BuscarPipCodigoReporte->pia_meta_pres,$BuscarPipCodigoReporte->pim_acumulado,$BuscarPipCodigoReporte->devengado_acumulado];
+            echo  json_encode($devengado);
     }
 
     public function _load_layout($template)

@@ -18,8 +18,11 @@ class FEformulacion_Modal extends CI_Model
         {
           $listar_estudio_persona='listar_estudio_persona';
         }  */   
-        $tipo=0;
-        $FEformulacion = $this->db->query("execute sp_ListarEstudioFormulacion @id_estudio_inv='" . $id_est_inve . "', @id_persona='".$idPersona."',@administrador='".$tipo."' ");
+        //$FEformulacion = $this->db->query("execute sp_ListarEstudioFyE @id_estudio_inv='" .$id_est_inve. "', @id_persona='".$idPersona."'");
+        $opcion="Listar_Estudio_Coordinador";
+        $id_est_inve=0;
+        $idPersona=0;
+         $FEformulacion = $this->db->query("execute sp_ListarEstudioFyE  @id_estudio_inv='".$id_est_inve."',@opcion='".$opcion."', @id_persona='".$idPersona."'");
         if ($FEformulacion->num_rows() >= 0) {
             return $FEformulacion->result();
         } else {

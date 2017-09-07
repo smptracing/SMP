@@ -60,4 +60,10 @@ class Model_UnidadE extends CI_Model
 
             return $listaPipUnidadEjecutora->result();
         } 
+        function UnidadEjecutoraPipListarResumen()
+        {
+           $data=$this->db->query("select  count (nombre_pi)as TotalPip, sum(costo_pi)as CostoTotal from proyecto_inversion inner JOIN unidad_ejecutora ON proyecto_inversion.id_ue=unidad_ejecutora.id_ue");
+
+            return $data->result()[0];
+        }
 }

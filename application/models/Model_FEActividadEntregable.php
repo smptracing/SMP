@@ -77,4 +77,47 @@ class Model_FEActividadEntregable extends CI_Model
           $ValoracionReActividad=$this->db->query("select id_entregable,SUM(valoracion) as valoracion from ACTIVIDAD_CRONOGRAMA where id_entregable='".$txt_id_entregable."' group by id_entregable");
           return $ValoracionReActividad->result();
         }
+
+        function ObservacionActividad($tx_IdActividadObser,$txt_desco_obs,$txt_fechaLevantaminetoObse,$doc_observacio)
+        {
+          $Opcion="INSERTAR";
+          $this->db->query("EXECUTE sp_Gestionar_Actividad_Obsevacion @Opcion='".$Opcion."',@desc_obsrevacion='".$txt_desco_obs."',@fecha_observacion='".$txt_fechaLevantaminetoObse."',@doc_observacion='".$doc_observacio."',@id_act='".$tx_IdActividadObser."' ");
+            if ($this->db->affected_rows()> 0) 
+              {
+                return true;
+              }
+              else
+              {
+                return false;
+              }
+        }
+
+        function LevantaminetoObservacionActividad($tx_IdActividadObser,$txt_descoLevantamiento,$txt_fechaLevantamiento,$doc_observacioLevanta)
+        {
+          $Opcion="ACTUALIZAR";
+          $this->db->query("EXECUTE sp_Gestionar_Actividad_Obsevacion @Opcion='".$Opcion."',@desc_levantamiento='".$txt_descoLevantamiento."',@fecha_levantamiento='".$txt_fechaLevantamiento."',@doc_levantamiento='".$doc_observacioLevanta."',@id_act_observacion='".$tx_IdActividadObser."' ");
+            if ($this->db->affected_rows()> 0) 
+              {
+                return true;
+              }
+              else
+              {
+                return false;
+              }
+        }
+
+        function  listadoObservacion($idActividad)
+        {
+          $data=$this->db->query("select * from ACTIVIDAD_OBSERVACION where id_act='".$idActividad."' ");
+              if($data->num_rows()>=0)
+             {
+              return $data->result();
+             }else
+             {
+              return null;
+             }
+        }
+     
+
+
 }

@@ -33,7 +33,7 @@ class Estudio_Inversion extends CI_Controller
 
     {
         $idUsuario    = $this->session->userdata('idUsuario');
-        $dataIdPersona= $this->Estudio_Inversion_Model->UsuarioPersona($idUsuario);
+        $dataIdPersona=$this->Estudio_Inversion_Model->UsuarioPersona($idUsuario);
         $idPersona=$dataIdPersona->id_persona;
         $TipoUsuarioCodigo=$dataIdPersona->cod_usuario_tipo;//01:administrador,
         if ($this->input->is_ajax_request()) {

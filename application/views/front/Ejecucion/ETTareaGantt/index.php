@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
@@ -139,7 +139,7 @@
 		{
 			var prj=ge.saveProject();
 
-			paginaAjaxJSON({ "idTareaGantt" : $('#hdIdTareaGantt').val(), "tareas" : JSON.stringify(prj.tasks) }, '<?=base_url()?>index.php/ET_TAREA/insertarBloque', 'POST', null, function(objectJSON)
+			paginaAjaxJSON({ "idTareaGantt" : $('#hdIdTareaGantt').val(), "tareas" : JSON.stringify(prj.tasks) }, '<?=base_url()?>index.php/ET_Tarea/insertarBloque', 'POST', null, function(objectJSON)
 			{
 				objectJSON=JSON.parse(objectJSON);
 
@@ -149,12 +149,17 @@
 					text: objectJSON.mensaje,
 					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
 				},
-				function(){});
-
-				if(objectJSON.proceso=='Error')
+				function()
 				{
-					return false;
-				}
+					if(objectJSON.proceso=='Error')
+					{
+						return false;
+					}
+
+					renderLoading();
+
+					window.location.href='<?=base_url()?>index.php/ET_Tarea/index/'+$('#hdIdTareaGantt').val();
+				});
 			}, false, true);
 		}
 
@@ -221,7 +226,7 @@
 			"TASK_HAS_EXTERNAL_DEPS":"TASK_HAS_EXTERNAL_DEPS",
 			"GANTT_ERROR_LOADING_DATA_TASK_REMOVED":"GANTT_ERROR_LOADING_DATA_TASK_REMOVED",
 			"ERROR_SETTING_DATES":"ERROR_SETTING_DATES",
-			"CIRCULAR_REFERENCE":"CIRCULAR_REFERENCE",
+			"CIRCULAR_REFERENCE":"No se puede realizar una referencia circular",
 			"CANNOT_DEPENDS_ON_ANCESTORS":"CANNOT_DEPENDS_ON_ANCESTORS",
 			"CANNOT_DEPENDS_ON_DESCENDANTS":"CANNOT_DEPENDS_ON_DESCENDANTS",
 			"INVALID_DATE_FORMAT":"Formato de fecha incorrecto",
@@ -417,7 +422,7 @@
 			<tr style="height:40px">
 			<th class="gdfColHeader" style="width:35px; border-right: none"></th>
 			<th class="gdfColHeader" style="width:25px;"></th>
-			<th class="gdfColHeader gdfResizable" style="width:100px;">Nombre corto</th>
+			<th class="gdfColHeader gdfResizable" style="width:100px;">Código</th>
 			<th class="gdfColHeader gdfResizable" style="width:300px;">Nombre largo</th>
 			<th class="gdfColHeader"  align="center" style="width:17px;" title="Inicio de la actividad."><span class="teamworkIcon" style="font-size: 8px;">^</span></th>
 			<th class="gdfColHeader gdfResizable" style="width:80px;">Inicio</th>
@@ -436,7 +441,7 @@
 			<tr taskId="(#=obj.id#)" class="taskEditRow (#=obj.isParent()?'isParent':''#) (#=obj.collapsed?'collapsed':''#)" level="(#=level#)">
 			<th class="gdfCell edit" align="right" style="cursor:pointer;"><span class="taskRowIndex">(#=obj.getRow()+1#)</span> <span class="teamworkIcon" style="font-size:12px;" >e</span></th>
 			<td class="gdfCell noClip" align="center"><div class="taskStatus cvcColorSquare" status="(#=obj.status#)"></div></td>
-			<td class="gdfCell"><input type="text" name="code" value="(#=obj.code?obj.code:''#)" placeholder="Nombre corto"></td>
+			<td class="gdfCell"><input type="text" name="code" value="(#=obj.code?obj.code:''#)" placeholder="Código" readonly="readonly"></td>
 			<td class="gdfCell indentCell" style="padding-left:(#=obj.level*10+18#)px;">
 			<div class="exp-controller" align="center"></div>
 			<input type="text" name="name" value="(#=obj.name#)" placeholder="Nombre" autocomplete="off">
@@ -448,7 +453,7 @@
 			<td class="gdfCell"><input type="text" name="duration" autocomplete="off" value="(#=obj.duration#)"></td>
 			<td class="gdfCell"><input type="text" name="progress" class="validated" entrytype="PERCENTILE" autocomplete="off" value="(#=obj.progress?obj.progress:''#)" (#=obj.progressByWorklog?"readOnly":""#)></td>
 			<td class="gdfCell requireCanSeeDep"><input type="text" name="depends" autocomplete="off" value="(#=obj.depends#)" (#=obj.hasExternalDep?"readonly":""#)></td>
-			<td class="gdfCell" ondblclick="adminDetailActivity(event, '(#=obj.id#)');">(#=obj.getAssigsString()#)</td>
+			<td class="gdfCell"><a href="#" style="cursor: pointer; user-select: none;" onclick="adminDetailActivity('(#=obj.id#)');">Admin. detalle (<span style="color: #57bc57;">(#=obj.name#)</span>)</a></td>
 			</tr>
 		--></div>
 
@@ -497,8 +502,8 @@
 			<h2 class="taskData">Task editor</h2>
 			<table  cellspacing="1" cellpadding="5" width="100%" class="taskData table" border="0">
 			<tr>
-			<td width="200" style="height: 80px"  valign="top">
-			<label for="code">Nombre corto</label><br>
+			<td width="200" style="height: 80px;"  valign="top">
+			<label for="code">Código</label><br>
 			<input type="text" name="code" id="code" value="" size=15 class="formElements" autocomplete='off' maxlength=255 style='width:100%' oldvalue="1">
 			</td>
 			<td colspan="3" valign="top"><label for="name" class="required">name</label><br><input type="text" name="name" id="name"class="formElements" autocomplete='off' maxlength=255 style='width:100%' value="" required="true" oldvalue="1"></td>
@@ -599,14 +604,12 @@
 			</tr>
 		--></div>
 	</div>
-	<div id="divDialogoGeneralGantt" style="background-color: #ffffff;border: 1px solid #000000;display: none;height: 450px;overflow-y: scroll;width: 700px;z-index: 1000;padding: 7px;position: fixed;left: 50px;top: 100px;">
+	<div id="divDialogoGeneralGantt" style="background-color: #ffffff;border: 1px solid #000000;display: none;height: 450px;width: 700px;z-index: 1000;padding: 7px;padding-bottom: 0px;padding-top: 10px;position: fixed;left: 50px;top: 100px;">
 		
 	</div>
 	<script>
-		function adminDetailActivity(event, taskId)
+		function adminDetailActivity(taskId)
 		{
-			event.preventDefault();
-
 			$('#divDialogoGeneralGantt').hide();
 
 			if(taskId.substring(0, 3)=='tmp')

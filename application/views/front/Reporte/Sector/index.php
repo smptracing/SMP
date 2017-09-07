@@ -26,10 +26,13 @@
 									<div class="row">  
 										<div class="col-md-12 col-sm-12 col-xs-12">
 											<div class="x_panel">
+													
 													<div class="clearfix">
 														<div class="pull-right tableTools-container"></div>
 													</div>
 													<div class="x_content">
+														
+													
 														<table id="table-PipSector"  class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 															<thead>
 																<tr>
@@ -47,18 +50,47 @@
 															    	<td>
 																		<?=$item->CantidadPip?>
 															    	</td>	
-															    	<td>
-																		S/. <?=$item->CostoPip?>
+															    	<td style="text-align:right">
+																		<?=$item->CostoPip?>
 															    	</td>
 															  </tr>
 															<?php } ?>
+																<tr>
+																	<td bgcolor="#D1F2EB"><b>TOTAL</b></td>
+																	<td bgcolor="#D1F2EB"><b><?=$listaMontoTotalSector->TotalPip;?><b></td>
+																	<td style="text-align:right" bgcolor="#D1F2EB"><b><?=$listaMontoTotalSector->CostoTotal;?></b></td>
+																</tr>
 															</tbody>
 														</table>
+												
+													
+													</div>
+													<div class="col-md-4 col-sm-12 col-xs-12">
+														<table id="table-Resumen"  class="table">
+																<tr>
+																<td colspan="2"><b>CUADRO RESUMEN DE PIP POR SECTOR</b></td>
+																</tr>
+																<tr>
+																	<td>TOTAL PIP</td>
+																	
+																	<td >Costo total</td>
+																</tr>
+																<tr>
+																
+																	<td bgcolor="#D1F2EB"><?=$listaMontoTotalSector->TotalPip;?></td>
+																	<td bgcolor="#D1F2EB"><?=$listaMontoTotalSector->CostoTotal;?></td>
+																</tr>
+														</table> 
 													</div>
 											</div>
+
 										</div>
+									
+
 									</div>
 										<!-- / fin tabla de sector desde el row -->
+											
+
 								</div>
 							</div>
 						</div>
