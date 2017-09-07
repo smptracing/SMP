@@ -103,12 +103,48 @@ class ET_Tarea extends CI_Controller
 
 			$idsTemp=$idsTemp!='' ? substr($idsTemp, 1) : null;
 
+			$listaETTareaTemp=null;
+
 			if($idsTemp!=null)
 			{
+				$listaETTareaTemp=$this->Model_ET_Tarea->ETTareaPorIdTareaGanttYNoIds($idTareaGantt, $idsTemp);
+
+				foreach($listaETTareaTemp as $key => $value)
+				{
+					$listaETDocumentoEjecucionTemp=$this->Model_ET_Documento_Ejecucion->ETDocumentoEjecucionPorIdTareaET($value->id_tarea_et);
+
+					foreach($listaETDocumentoEjecucionTemp as $index => $item)
+					{
+						$rutaArchivoTemp='./uploads/DocumentoTareaGanttET/'.$item->id_doc_ejecucion.'.'.$item->extension_doc_ejecucion;
+
+						if(file_exists($rutaArchivoTemp))
+						{
+							unlink($rutaArchivoTemp);
+						}
+					}
+				}
+
 				$this->Model_ET_Tarea->eliminarParaActualizar($idTareaGantt, $idsTemp);
 			}
 			else
 			{
+				$listaETTareaTemp=$this->Model_ET_Tarea->ETTareaPorIdTareaGantt($idTareaGantt);
+
+				foreach($listaETTareaTemp as $key => $value)
+				{
+					$listaETDocumentoEjecucionTemp=$this->Model_ET_Documento_Ejecucion->ETDocumentoEjecucionPorIdTareaET($value->id_tarea_et);
+
+					foreach($listaETDocumentoEjecucionTemp as $index => $item)
+					{
+						$rutaArchivoTemp='./uploads/DocumentoTareaGanttET/'.$item->id_doc_ejecucion.'.'.$item->extension_doc_ejecucion;
+
+						if(file_exists($rutaArchivoTemp))
+						{
+							unlink($rutaArchivoTemp);
+						}
+					}
+				}
+
 				$this->Model_ET_Tarea->eliminarETTareaPorIdTareaGantt($idTareaGantt);
 			}
 

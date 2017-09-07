@@ -24,14 +24,14 @@ class Model_ET_Documento_Ejecucion extends CI_Model
 
 	public function ETDocumentoEjecucionPorIdTareaET($idTareaET)
 	{
-		$data=$this->db->query("select * from ET_DOCUMENTO_EJECUCION where id_tarea_et=".$idTareaET);
+		$data=$this->db->query("select * from ET_DOCUMENTO_EJECUCION where id_tarea_et=$idTareaET");
 
 		return $data->result();
 	}
 
 	public function eliminar($idDocumentoEjecucion)
 	{
-		$this->db->query("delete from ET_DOCUMENTO_EJECUCION where id_doc_ejecucion=".$idDocumentoEjecucion);
+		$this->db->query("delete from ET_DOCUMENTO_EJECUCION where id_doc_ejecucion=$idDocumentoEjecucion");
 
 		return true;
 	}

@@ -22,6 +22,13 @@ class Model_ET_Tarea extends CI_Model
 		return true;
 	}
 
+	public function ETTareaPorIdTareaGanttYNoIds($idTareaGantt, $ids)
+	{
+		$data=$this->db->query("select * from ET_TAREA where id_tarea_et not in ($ids) and id_tarea_gantt=$idTareaGantt");
+
+		return $data->result();
+	}
+
 	public function insertar($idTareaGantt, $idTareaETPadre, $descripcion, $nombreTarea, $fechaInicioTarea, $fechaFinalTarea, $valoracionTarea, $avanceTarea, $colorTarea, $nivelTarea, $predecesoraTarea, $estadoTarea, $numeracion, $dependenciaTarea)
 	{
 		$this->db->query("execute sp_Gestionar_ETTarea @opcion='insertar', @idTareaGantt=".$idTareaGantt.", @idTareaETPadre=".$idTareaETPadre.", @descripcion='".$descripcion."', @nombreTarea='".$nombreTarea."', @fechaInicioTarea='".$fechaInicioTarea."', @fechaFinalTarea='".$fechaFinalTarea."', @valoracionTarea=".$valoracionTarea.", @avanceTarea=".$avanceTarea.", @colorTarea='".$colorTarea."', @nivelTarea=".$nivelTarea.", @predecesoraTarea=".$predecesoraTarea.", @estadoTarea=".$estadoTarea.", @numeracion=".$numeracion.", @dependenciaTarea='".$dependenciaTarea."'");
