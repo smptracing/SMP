@@ -7,6 +7,7 @@ class ET_Tarea extends CI_Controller
 	{
 		parent::__construct();
 
+		$this->load->model('Model_ET_Tarea_Gantt');
 		$this->load->model('Model_ET_Tarea');
 		$this->load->model('Model_ET_Tarea_Observacion');
 		$this->load->model('Model_ET_Responsable_Tarea');
@@ -41,8 +42,21 @@ class ET_Tarea extends CI_Controller
 		return $days;
 	}
 
-	public function index($idTareaGantt)
+	public function index($idExpedienteTecnico)
 	{
+		$this->db->trans_start();
+
+		$listaETTareaGantt=$this->Model_ET_Tarea_Gantt->ETTareaGanttPorIdET($idExpedienteTecnico);
+
+		if(count($listaETTareaGantt)==0)
+		{
+			$this->Model_ET_Tarea_Gantt->insertar($idExpedienteTecnico, 0);
+
+			$listaETTareaGantt=$this->Model_ET_Tarea_Gantt->ETTareaGanttPorIdET($idExpedienteTecnico);
+		}
+
+		$idTareaGantt=$listaETTareaGantt[0]->id_tarea_gantt;
+
 		$listaETTarea=$this->Model_ET_Tarea->ETTareaPorIdTareaGantt($idTareaGantt);
 
 		$arrayTask=[];
@@ -78,7 +92,9 @@ class ET_Tarea extends CI_Controller
 			];
 		}
 
-		return $this->load->view('Front/Ejecucion/ETTareaGantt/index', ['arrayTask' => json_encode($arrayTask), 'listaETTarea' => $listaETTarea]);
+		$this->db->trans_complete();
+
+		return $this->load->view('Front/Ejecucion/ETTareaGantt/index', ['arrayTask' => json_encode($arrayTask), 'listaETTarea' => $listaETTarea, 'idTareaGantt' => $idTareaGantt, 'idExpedienteTecnico' => $idExpedienteTecnico]);
 	}
 
 	public function insertarBloque()

@@ -64,7 +64,7 @@
 	<script src="<?php echo base_url(); ?>assets/dist/js/sweetalert-dev.js"></script>
 </head>
 <body style="background-color: #ffffff;overflow-x: hidden;">
-	<input type="hidden" id="hdIdTareaGantt" name="hdIdTareaGantt" value="3">
+	<input type="hidden" id="hdIdTareaGantt" name="hdIdTareaGantt" value="<?=$idTareaGantt?>">
 	<div id="workSpace" style="padding: 0px;overflow-y: auto;overflow-x: hidden;position: relative;margin: 0 5px;width: 100%;height: 100%;"></div>
 
 	<script>
@@ -158,7 +158,7 @@
 
 					renderLoading();
 
-					window.location.href='<?=base_url()?>index.php/ET_Tarea/index/'+$('#hdIdTareaGantt').val();
+					window.location.href='<?=base_url()?>index.php/ET_Tarea/index/<?=$idExpedienteTecnico?>';
 				});
 			}, false, true);
 		}
