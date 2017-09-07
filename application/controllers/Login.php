@@ -20,12 +20,27 @@ class Login extends CI_Controller {
            $this->singin();
         }
     }
+   
 
     public function singin()
     {
         $this->load->view('front/usuario/frm_login');
     }
+    public function recuperarMenu($usuario){
+        if($this->input->is_ajax_request())
+        {
+            
+            $Datos=$this->Login_model->recuperarMenu($usuario);
+            echo json_encode($Datos);    
+        }
+        else
+        {
+            show_404();
+        }
 
+
+
+    }
     public function ingresar()
     {
         $usuario = $this->input->post('txtUsuario');
@@ -35,12 +50,18 @@ class Login extends CI_Controller {
         {
             $usuario = $query->row();
             $datosSession = array('nombreUsuario' => $usuario->usuario,
-                                  'idUsuario' => $usuario->id_persona,                                  
+                                  'idUsuario' =>'',      
+                                  'idPersona' => $usuario->id_persona,                                  
                                   'tipoUsuario' => $usuario->id_usuario_tipo,
                                   'desc_usuario_tipo' => $usuario->desc_usuario_tipo,
 
                                   );
             $this->session->set_userdata($datosSession);
+            $result = $this->Login_model->recuperarMenu($usuario->id_persona);  
+            $this->session->set_userdata('menuUsuario',$result);
+            $result = $this->Login_model->recuperarMenu(0);  
+            $this->session->set_userdata('menu',$result);
+                        
             redirect('Inicio');
         }
         else
@@ -48,11 +69,11 @@ class Login extends CI_Controller {
             $this->muestralog();
         }  
     } 
-
     public function logout()
     {
         $datosSession = array('nombreUsuario' => '',
-                              'idUsuario' => '',                                  
+                              'idUsuario' => '',  
+                              'idPersona' => '',                                  
                               'tipoUsuario' => '');
         $this->session->set_userdata($datosSession);
         $this->session->sess_destroy();

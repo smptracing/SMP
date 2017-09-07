@@ -76,6 +76,7 @@
                                                                   <th>TIPO USUARIO</th>
                                                                   <th>CONTRASEÑA </th>
                                                                   <th>USUARIO</th>
+                                                                  <th style="width: 9%">ACCIONES</th>
                                                                  </tr>  
                                                               </thead>
 	                                                           <tbody>
@@ -153,12 +154,12 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Registrar Nuevo Usuario</h4>
         </div>
-        <div class="modal-body">
+        <!--<div class="modal-body">
            <div class="row">
                     <div class="col-xs-12">
-                        <form class="form-horizontal" id="form-AddUsuario" role="form" method="post" >
+                        <form class="form-horizontal" id="form-AddUsuario"  enctype="multipart/form-data" role="form" method="post" onSubmit="return false;" >
                               <div class="form-group">
-                                     <label class="col-sm-3 control-label no-padding-right"  for="form-field-1-1">Buscar Usuario</label>
+                                     <label class="col-sm-3 control-label no-padding-right"  for="form-field-1-1">Buscar Persona</label>
                                       <div class="col-sm-6">
                                            <select  class="form-control input-sm" id="comboPersona" name="comboPersona"  title="Buscar persona" >
                                            </select>                    
@@ -193,14 +194,27 @@
                                       <input type="password" id="txt_contrasenia" name="txt_contrasenia" placeholder="Contraseña" class="form-control" />
                                     </div>
                               </div>
+                              <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">Acceso al menú</label>
+                                    <div class="col-sm-4">
+                                      <select style="height:130px;width:100%;" id="cbb_listaMenu" name="cbb_listaMenu[]" multiple=""></select>
+                                    </div>
+                                    <div class="col-sm-1" style="padding-top:20px;">
+                                      <button id="bt_Der" type="button" style="width:100%; text-align:center;">></button>
+                                      <button id="bt_Izq" type="button" style="width:100%; text-align:center;"><</button>
+                                    </div>
+                                    <div class="col-sm-4">
+                                      <select style="height:130px;width:100%;" id="cbb_listaMenuDestino" name="cbb_listaMenuDestino[]" multiple=""></select>
+                                    </div>
+                              </div>
                               <div class="form-group" style="text-align: center;">
-                                  <button type="submit" class="btn btn-primary">Registrar Usuario </button>
+                                  <button type="submit"  class="btn btn-primary">Registrar Usuario </button>
                                   <input  id="btnCerrar" class="btn btn-danger" data-dismiss="modal" value="Cancelar">
                              </div>
                         </form>
                     </div>
                 </div>
-            </div>
+            </div>-->
             <div class="modal-footer">
                   
             </div>
@@ -343,9 +357,12 @@
     </div>
   </div>
 <!-- /.FIN ventana para asignar permisos a un usuario --> 
+<script src="<?php echo base_url();?>assets/js/Helper/jsHelper.js"></script>
+
 <script>
 	$(function()
 	{
+  
 		$('#txt_usuario').tooltip({ "placement" : "right", "html" : true, "trigger" : "focus", "title" : "<div style=\"padding: 4px;text-align: left;\"><p>Ingrese su nombre de usuario.</p><p><b>Recomendación:</b><br>Introducir su nombre seguido de su fecha de nacimiento.</p></div>" });
 		$('#txt_contrasenia').tooltip({ "placement" : "right", "html" : true, "trigger" : "focus", "title" : "<div style=\"padding: 4px;text-align: left;\"><p>Ingrese una contraseña segura.</p><p><b>Recomendación:</b><br>Su contraseña debería contener minimamente una<br>letra mayúscula, una letra minúscula, un número<br>y un caracter especial para que sea considerada segura.</p><h3>Nivel de seguridad: </h3><span id=\"spanNivelSeguridadBajo\" style=\"display: block;margin: 2px;font-size: 10px;padding: 7px;\" class=\"label label-danger\">Bajo</span><span id=\"spanNivelSeguridadMedio\" style=\"display: none;margin: 2px;font-size: 10px;padding: 7px;\" class=\"label label-info\">Medio</span><span id=\"spanNivelSeguridadNormal\" style=\"display: none;margin: 2px;font-size: 10px;padding: 7px;\" class=\"label label-primary\">Normal</span><span id=\"spanNivelSeguridadAlto\" style=\"display: none;margin: 2px;font-size: 10px;padding: 7px;\" class=\"label label-success\">Alto</span></div>" });
 

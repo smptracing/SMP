@@ -25,6 +25,7 @@ public function __construct(){
             show_404();
         }
 	}
+	
 	 function AddUsuario()
 	 {
 	    if ($this->input->is_ajax_request()) 
@@ -33,16 +34,17 @@ public function __construct(){
 	      $txt_usuario =$this->input->post("txt_usuario");
 	      $txt_contrasenia =sha1($this->input->post("txt_contrasenia"));
 	      $cbb_TipoUsuario =$this->input->post("cbb_TipoUsuario");
+	      $cbb_listaMenuDestino =$this->input->post("cbb_listaMenuDestino");
 	     
-	     if($this->Model_Usuario->AddUsuario($id_persona,$txt_usuario,$txt_contrasenia,$cbb_TipoUsuario) == true)
+	      if($this->Model_Usuario->AddUsuario($id_persona,$txt_usuario,$txt_contrasenia,$cbb_TipoUsuario,$cbb_listaMenuDestino) == true)
 		       echo "Se añadio un nuevo usuario";
-		      else
-		      echo "Se añadio  un nuevo usuario";   
-		 } 
+		  else
+		      echo "Se añadio  un nuevo usuario";  
+		} 
 	     else
 	     {
 	      show_404();
-	      }
+	     }
 	  
  	 }
 
@@ -52,6 +54,7 @@ public function __construct(){
 		
 		$this->_load_layout('Front/Usuario/frm_usuario');
 	}
+
 	
 function _load_layout($template)
     {
@@ -59,5 +62,9 @@ function _load_layout($template)
       $this->load->view($template);
       $this->load->view('layout/USUARIO/footer');
     }
+    function itemUsuario(){
+    	$data['id_persona']=$this->input->get('id_persona');
+		$this->load->view('Front/Usuario/itemUsuario',$data);
+	}
 
 }

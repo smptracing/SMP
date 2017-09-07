@@ -1,21 +1,48 @@
- $(document).on("ready" ,function(){
 
+$(function(){
+  $("body").on("click","#bt_Der",function(e){
+        $('#cbb_listaMenu option:selected').each(function(){
+            var seleccionado=$(this).val();
+            $('#cbb_listaMenuDestino').append("<option title='"+$(this).text()+"' value='"+$(this).val()+"'>"+$(this).text()+"</option>");
+            $(this).remove();
+        }); 
+  });
+  $("body").on("click","#bt_Izq",function(e){
+        $('#cbb_listaMenuDestino option:selected').each(function(){
+            var seleccionado=$(this).val();
+            $('#cbb_listaMenu').append("<option title='"+$(this).text()+"' value='"+$(this).val()+"'>"+$(this).text()+"</option>");
+            $(this).remove();
+        }); 
+  });
+}); 
+ $(document).on("ready" ,function(){
                 listarUsuario();
                 listaPersonaCombo();
                 listatipoUsuario();
+                listaMenuUsuario(15);
+                listaMenu();
+
                 $("#form-AddUsuario").submit(function(event)
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/Usuario/AddUsuario",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                            swal("",resp, "success");
-                           $('#table-Usuarios').dataTable()._fnAjaxUpdate();
-                         }
-                      });
-                  }); 
+                {
+                  event.preventDefault();
+                  var stringMenuUsuario ='';
+                  var c=0;
+                  $("#cbb_listaMenuDestino option").each(function(){
+                      if(c>0)
+                        stringMenuUsuario+='-';  
+                      stringMenuUsuario+=$(this).attr('value');
+                      c++;
+                  });
+                  $.ajax({
+                      url:base_url+"index.php/Usuario/AddUsuario",
+                      type:$(this).attr('method'),
+                      data:$(this).serialize()+"&cbb_listaMenuDestino="+stringMenuUsuario,
+                      success:function(resp){
+                        swal("",resp, "success");
+                        $('#table-Usuarios').dataTable()._fnAjaxUpdate();
+                     }
+                  });
+                }); 
                    
                 $("#btnCerrar").on("click",function(event){ 
                    event.prevenDefault(); 
@@ -36,10 +63,16 @@
                                     },
                                 "columns":[
                                     {"data":"id_persona","visible": false},
-                                    {"data":"usuario"},
+                                    {"data":"usuario","visible": false},
                                     {"data":"desc_usuario_tipo"},
-                                    {"data":"contrasenia"},
+                                    {"data":"contrasenia","visible":false},
                                     {"data":"nombres"},
+                                    /*{"defaultContent":"<button type='button'  data-toggle='tooltip'  class='editar btn btn-primary btn-xs' data-toggle='modal' onclick=paginaAjaxDialogo(null,'itemUsuario',{id_persona:15},'"+base_url+"index.php/Usuario/itemUsuario','GET',null,null,false,true);><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}*/
+                                    {"data":'nombres',render: function ( data, type, row ) {
+                                            return data.id_persona +' --';
+                                        }
+                                    }
+
                                   
                                 ],
                                 "language":idioma_espanol
@@ -82,6 +115,44 @@
                             $("#cbb_TipoUsuario").html(html);
                             $('select[name=cbb_TipoUsuario]').val(html);
                             $('select[name=cbb_TipoUsuario]').change();
+                            $('.selectpicker').selectpicker('refresh'); 
+                        }
+                    });
+
+                }
+                 var listaMenu=function(){
+                    var html="";
+                    event.preventDefault(); 
+                    $.ajax({
+                        "url":base_url +"index.php/Login/recuperarMenu/0",
+                        type:"POST",
+                        success:function(respuesta){
+                            var registros = eval(respuesta);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option value="+registros[i]["id_submenu"]+"> "+registros[i]["nombre"]+": "+ registros[i]["nombreSubmenu"]+" </option>";   
+                            };
+                            $("#cbb_listaMenu").html(html);
+                            $('select[name=cbb_listaMenu]').val(html);
+                            $('select[name=cbb_listaMenu]').change();
+                            $('.selectpicker').selectpicker('refresh'); 
+                        }
+                    });
+
+                }
+                 var listaMenuUsuario=function(idUsuario){
+                    var html="";
+                    event.preventDefault(); 
+                    $.ajax({
+                        "url":base_url +"index.php/Login/recuperarMenu/"+idUsuario,
+                        type:"POST",
+                        success:function(respuesta){
+                            var registros = eval(respuesta);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option value="+registros[i]["id_submenu"]+"> "+registros[i]["nombre"]+": "+ registros[i]["nombreSubmenu"]+" </option>";   
+                            };
+                            $("#cbb_listaMenuDestino").html(html);
+                            $('select[name=cbb_listaMenuDestino]').val(html);
+                            $('select[name=cbb_listaMenuDestino]').change();
                             $('.selectpicker').selectpicker('refresh'); 
                         }
                     });
