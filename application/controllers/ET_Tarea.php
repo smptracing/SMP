@@ -94,7 +94,7 @@ class ET_Tarea extends CI_Controller
 
 		$this->db->trans_complete();
 
-		return $this->load->view('Front/Ejecucion/ETTareaGantt/index', ['arrayTask' => json_encode($arrayTask), 'listaETTarea' => $listaETTarea, 'idTareaGantt' => $idTareaGantt, 'idExpedienteTecnico' => $idExpedienteTecnico]);
+		return $this->load->view('Front/Ejecucion/ETTarea/index', ['arrayTask' => json_encode($arrayTask), 'listaETTarea' => $listaETTarea, 'idTareaGantt' => $idTareaGantt, 'idExpedienteTecnico' => $idExpedienteTecnico]);
 	}
 
 	public function insertarBloque()

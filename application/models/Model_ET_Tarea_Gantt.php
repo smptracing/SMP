@@ -11,6 +11,8 @@ class Model_ET_Tarea_Gantt extends CI_Model
 	public function insertar($idExpedienteTecnico, $tareaDiasLaborables)
 	{
 		$this->db->query("exec sp_Gestionar_ETTareaGantt @opcion='insertar', @idExpedienteTecnico=$idExpedienteTecnico, @tareaDiasLaborables=$tareaDiasLaborables");
+
+		return true;
 	}
 
 	public function ETTareaGanttPorIdET($idExpedienteTecnico)
