@@ -172,7 +172,7 @@
                           <div class="small-box bg-yellow">
                               <div class="inner">
                                   <h3>S</h3>
-                                  <p>Seguimiento de Proyectos de Inversión Pública</p>
+                                  <p>Seguimiento y Monitoreo de Proyectos de Inversión Pública</p>
                               </div>
                               <div class="icon">
                                   <i class="fa fa-random"></i>
@@ -183,7 +183,7 @@
                               </a>
                           </div>
                       </div>
-                      <div class="col-lg-4 col-xs-12 col-sm-6">
+                      <!--<div class="col-lg-4 col-xs-12 col-sm-6">
                           <div class="small-box bg-purple">
                               <div class="inner">
                                   <h3>M</h3>
@@ -197,7 +197,7 @@
                                   Ingresar <i class="fa fa-arrow-circle-right"></i>
                               </a>
                           </div>
-                      </div>
+                      </div>-->
                       <div class="col-lg-4 col-xs-12 col-sm-6">
                           <div class="small-box bg-navy">
                               <div class="inner">
