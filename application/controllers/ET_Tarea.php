@@ -49,14 +49,6 @@ class ET_Tarea extends CI_Controller
 
 		foreach($listaETTarea as $key => $value)
 		{
-			$textTemp=explode(' ', html_escape($value->nombre_tarea));
-			$codeTempName='';
-
-			foreach($textTemp as $w)
-			{
-				$codeTempName.=strtoupper($w[0]);
-			}
-
 			$ts1=strtotime($value->fecha_inicio_tarea);
 			$ts2=strtotime($value->fecha_final_tarea);
 
@@ -71,7 +63,7 @@ class ET_Tarea extends CI_Controller
 				'type' => '',
 				'typeId' => '',
 				'description' => '',
-				'code' => $codeTempName,
+				'code' => $value->id_tarea_et,
 				'level' => $value->nivel_tarea,
 				'status' => $value->color_tarea,
 				'depends' => $value->dependencia_tarea,
@@ -99,7 +91,26 @@ class ET_Tarea extends CI_Controller
 
 			$tareas=json_decode($this->input->post('tareas'));
 
-			$this->Model_ET_Tarea->eliminarETTareaPorIdTareaGantt($idTareaGantt);
+			$idsTemp='';
+
+			foreach($tareas as $key => $value)
+			{
+				if(trim($value->code)!='')
+				{
+					$idsTemp.=','.$value->code;
+				}
+			}
+
+			$idsTemp=$idsTemp!='' ? substr($idsTemp, 1) : null;
+
+			if($idsTemp!=null)
+			{
+				$this->Model_ET_Tarea->eliminarParaActualizar($idTareaGantt, $idsTemp);
+			}
+			else
+			{
+				$this->Model_ET_Tarea->eliminarETTareaPorIdTareaGantt($idTareaGantt);
+			}
 
 			foreach($tareas as $key => $value)
 			{
@@ -132,7 +143,14 @@ class ET_Tarea extends CI_Controller
 					echo json_encode(['proceso' => 'Error', 'mensaje' => 'Debe asignar nombre a todas las actividades creadas.']);exit;
 				}
 
-				$this->Model_ET_Tarea->insertar($idTareaGantt, ($predecesoraTarea!='NULL' ? $this->Model_ET_Tarea->ETTareaPorIdTareaGanttYNumeracion($idTareaGantt, $predecesoraTarea)->id_tarea_et : $predecesoraTarea), '', $value->name, $value->start, $value->end, 0, $value->progress, $value->status, $value->level, $predecesoraTarea, 0, ($key+1), $value->depends);
+				if(trim($value->code)!='')
+				{
+					$this->Model_ET_Tarea->editar($value->code, ($predecesoraTarea!='NULL' ? $this->Model_ET_Tarea->ETTareaPorIdTareaGanttYNumeracion($idTareaGantt, $predecesoraTarea)->id_tarea_et : $predecesoraTarea), '', $value->name, $value->start, $value->end, 0, $value->progress, $value->status, $value->level, $predecesoraTarea, 0, ($key+1), $value->depends);
+				}
+				else
+				{
+					$this->Model_ET_Tarea->insertar($idTareaGantt, ($predecesoraTarea!='NULL' ? $this->Model_ET_Tarea->ETTareaPorIdTareaGanttYNumeracion($idTareaGantt, $predecesoraTarea)->id_tarea_et : $predecesoraTarea), '', $value->name, $value->start, $value->end, 0, $value->progress, $value->status, $value->level, $predecesoraTarea, 0, ($key+1), $value->depends);
+				}
 			}
 
 			$this->db->trans_complete();

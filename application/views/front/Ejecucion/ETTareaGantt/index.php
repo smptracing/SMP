@@ -139,7 +139,7 @@
 		{
 			var prj=ge.saveProject();
 
-			paginaAjaxJSON({ "idTareaGantt" : $('#hdIdTareaGantt').val(), "tareas" : JSON.stringify(prj.tasks) }, '<?=base_url()?>index.php/ET_TAREA/insertarBloque', 'POST', null, function(objectJSON)
+			paginaAjaxJSON({ "idTareaGantt" : $('#hdIdTareaGantt').val(), "tareas" : JSON.stringify(prj.tasks) }, '<?=base_url()?>index.php/ET_Tarea/insertarBloque', 'POST', null, function(objectJSON)
 			{
 				objectJSON=JSON.parse(objectJSON);
 
@@ -422,7 +422,7 @@
 			<tr style="height:40px">
 			<th class="gdfColHeader" style="width:35px; border-right: none"></th>
 			<th class="gdfColHeader" style="width:25px;"></th>
-			<th class="gdfColHeader gdfResizable" style="width:100px;">Nombre corto</th>
+			<th class="gdfColHeader gdfResizable" style="width:100px;">Código</th>
 			<th class="gdfColHeader gdfResizable" style="width:300px;">Nombre largo</th>
 			<th class="gdfColHeader"  align="center" style="width:17px;" title="Inicio de la actividad."><span class="teamworkIcon" style="font-size: 8px;">^</span></th>
 			<th class="gdfColHeader gdfResizable" style="width:80px;">Inicio</th>
@@ -441,7 +441,7 @@
 			<tr taskId="(#=obj.id#)" class="taskEditRow (#=obj.isParent()?'isParent':''#) (#=obj.collapsed?'collapsed':''#)" level="(#=level#)">
 			<th class="gdfCell edit" align="right" style="cursor:pointer;"><span class="taskRowIndex">(#=obj.getRow()+1#)</span> <span class="teamworkIcon" style="font-size:12px;" >e</span></th>
 			<td class="gdfCell noClip" align="center"><div class="taskStatus cvcColorSquare" status="(#=obj.status#)"></div></td>
-			<td class="gdfCell"><input type="text" name="code" value="(#=obj.code?obj.code:''#)" placeholder="Nombre corto" readonly="readonly"></td>
+			<td class="gdfCell"><input type="text" name="code" value="(#=obj.code?obj.code:''#)" placeholder="Código" readonly="readonly"></td>
 			<td class="gdfCell indentCell" style="padding-left:(#=obj.level*10+18#)px;">
 			<div class="exp-controller" align="center"></div>
 			<input type="text" name="name" value="(#=obj.name#)" placeholder="Nombre" autocomplete="off">
@@ -502,8 +502,8 @@
 			<h2 class="taskData">Task editor</h2>
 			<table  cellspacing="1" cellpadding="5" width="100%" class="taskData table" border="0">
 			<tr>
-			<td width="200" style="height: 80px"  valign="top">
-			<label for="code">Nombre corto</label><br>
+			<td width="200" style="height: 80px;"  valign="top">
+			<label for="code">Código</label><br>
 			<input type="text" name="code" id="code" value="" size=15 class="formElements" autocomplete='off' maxlength=255 style='width:100%' oldvalue="1">
 			</td>
 			<td colspan="3" valign="top"><label for="name" class="required">name</label><br><input type="text" name="name" id="name"class="formElements" autocomplete='off' maxlength=255 style='width:100%' value="" required="true" oldvalue="1"></td>
