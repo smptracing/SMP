@@ -105,7 +105,7 @@
                 </div>
             </div>
 
-            <div class="col-md-12 col-sm-4 col-xs-12">
+            <!--<div class="col-md-12 col-sm-4 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
                         <h5> probando grafico de dispersion</h5>
@@ -116,7 +116,7 @@
                         <div id="dispersion" style="height:350px;"></div>
                     </div>
                 </div>
-            </div>
+            </div>-->
 
         </div>
     </div>
