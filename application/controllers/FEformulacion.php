@@ -17,7 +17,7 @@ class FEformulacion extends CI_Controller
         if ($this->input->is_ajax_request()) {
             
             $id_est_inve = $this->session->userdata('id_est_inve');
-            $idUsuario    = $this->session->userdata('idUsuario');
+            $idUsuario    = $this->session->userdata('idPersona');
             $dataIdPersona= $this->Estudio_Inversion_Model->UsuarioPersona($idUsuario);
             $idPersona=$dataIdPersona->id_persona;
             $TipoUsuario=$dataIdPersona->cod_usuario_tipo;
