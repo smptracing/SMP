@@ -37,12 +37,27 @@
 														<table id="table-Nopip"  class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 															<thead>
 																<tr>
-																	<td>Descripcion</td>
+																	<td>Código Único</td>
+																	<td>Nombre NO Pip</td>
+																	<td>Tipo No Pip</td>
 																	<td class="col-md-1 col-md-1 col-xs-12">ACCIONES</td>
 																</tr>
 															</thead>
 															<tbody>
-														
+															<?php foreach($listarnopipFormulacion as $item ){ ?>
+															  	<tr>
+																	<td>
+																		<?=$item->codigo_unico_pi?>
+															    	</td>
+																	<td>
+																  		<?=$item->nombre_est_inv?>
+																	</td>
+																	<td>
+																  		<?=$item->desc_tipo_nopip?>
+																	</td>
+															  </tr>
+															<?php } ?>
+															</tbody>
 														</table>
 													</div>
 											</div>

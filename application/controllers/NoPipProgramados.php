@@ -30,8 +30,9 @@ class NoPipProgramados extends CI_Controller
 
     public function nopipformulacion()
     {
+        $listarnopipFormulacion=$this->NoPipProgramados_Model->NoPipFormulacionEvaluacionListar();
         $this->load->view('layout/Formulacion_Evaluacion/header');
-        $this->load->view('front/Formulacion_Evaluacion/NoPip/index');
+        $this->load->view('front/Formulacion_Evaluacion/NoPip/index',['listarnopipFormulacion'=>$listarnopipFormulacion]);
         $this->load->view('layout/Formulacion_Evaluacion/footer');
     }
      public function insertar()
