@@ -1,16 +1,19 @@
 $(document).on("ready" ,function(){
+
   var listarpicombo=function(valor){
                      var htmlPip="";
+                     //alert(valor);
                     $("#listaFuncionC").html(htmlPip);
                     event.preventDefault();
                     $.ajax({
                         "url":base_url +"index.php/Estudio_Inversion/get_listaproyectos",
                         type:"POST",
+                        data:{valor:valor},
                         success:function(respuesta1){
-                           //alert(respuesta1);
+                           console.log(respuesta1);
                          var registrospi = eval(respuesta1);
                             for (var i = 0; i <registrospi.length;i++) {
-                              htmlPip +="<option value="+registrospi[i]["id_pi"]+"> "+ registrospi[i]["codigo_unico_pi"]+":"+registrospi[i]["nombre_pi"]+" </option>";
+                              htmlPip +="<option value="+registrospi[i]["id_pi"]+"> "+ registrospi[i]["nombre_estado_ciclo"]+":"+registrospi[i]["nombre_pi"]+" </option>";
                             };
                             $("#listaFuncionC").html(htmlPip);
                             $("#listaFuncionC").html(htmlPip);
@@ -119,6 +122,11 @@ var listarestudiocombo=function(valor){
                 listarufcombo();
                 listaruecombo();
                 listarEstadoCiclo();
+
+            $("#comboEstadoFe").change(function(){
+                var NombreEstadoFormulacionEvalu=$("#comboEstadoFe").val();
+                listarpicombo(NombreEstadoFormulacionEvalu);
+             });
 
               $("#listaNivelEstudio").change(function(){
              });
@@ -305,8 +313,7 @@ var listarestudiocombo=function(valor){
                         dataType:"JSON",
                         success:function(respuesta){
                           $.each(respuesta,function(index, elemento) {
-                            console.log(elemento.nombre_estado_ciclo);
-                              comboEstadoFe +="<option  value="+elemento.id_estado_ciclo+">"+elemento.nombre_estado_ciclo+" </option>";
+                              comboEstadoFe +="<option  value='"+elemento.nombre_estado_ciclo+"' >"+elemento.nombre_estado_ciclo+" </option>";
 
                           });
                             $("#comboEstadoFe").html(comboEstadoFe);

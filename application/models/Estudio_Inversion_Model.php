@@ -47,30 +47,18 @@ class Estudio_Inversion_Model extends CI_Model
         
     }
 
-    public function get_listaproyectos()
+    public function get_listaproyectos($NombreEstadoFormulacionEvalu)
     {
         //  $EstadoCicloInversion = $this->db->query("execute get");
-        $EstudioInversion = $this->db->query(" select        PROYECTO_INVERSION.id_pi, PROYECTO_INVERSION.codigo_unico_pi , PROYECTO_INVERSION.nombre_pi
-                            FROM  TIPOLOGIA_INVERSION RIGHT OUTER JOIN
-                            PROYECTO_INVERSION INNER JOIN
-                            META_PRESUPUESTAL_PI ON PROYECTO_INVERSION.id_pi = META_PRESUPUESTAL_PI.id_pi INNER JOIN
-                            META_PRESUPUESTAL ON META_PRESUPUESTAL_PI.id_meta_pres = META_PRESUPUESTAL.id_meta_pres INNER JOIN
-                            CORRELATIVO_META ON META_PRESUPUESTAL_PI.id_correlativo_meta = CORRELATIVO_META.id_correlativo_meta INNER JOIN
-                            (SELECT        id_pi, MAX(id_meta_pi) AS fe_meta FROM META_PRESUPUESTAL_PI AS META_PRESUPUESTAL_PI_1
-                            GROUP BY id_pi) AS fe_meta_pi ON META_PRESUPUESTAL_PI.id_meta_pi = fe_meta_pi.fe_meta LEFT OUTER JOIN
-                            PROGRAMA_PRESUPUESTAL ON PROYECTO_INVERSION.id_programa_pres = PROGRAMA_PRESUPUESTAL.id_programa_pres LEFT OUTER JOIN
-                            NIVEL_GOBIERNO ON PROYECTO_INVERSION.id_nivel_gob = NIVEL_GOBIERNO.id_nivel_gob ON 
-                            TIPOLOGIA_INVERSION.id_tipologia_inv = PROYECTO_INVERSION.id_tipologia_inv LEFT OUTER JOIN
-                            UNIDAD_EJECUTORA ON PROYECTO_INVERSION.id_ue = UNIDAD_EJECUTORA.id_ue LEFT OUTER JOIN
-                            TIPO_INVERSION ON PROYECTO_INVERSION.id_tipo_inversion = TIPO_INVERSION.id_tipo_inversion LEFT OUTER JOIN
-                            UNIDAD_FORMULADORA ON PROYECTO_INVERSION.id_uf = UNIDAD_FORMULADORA.id_uf LEFT OUTER JOIN
-                            NATURALEZA_INVERSION ON PROYECTO_INVERSION.id_naturaleza_inv = NATURALEZA_INVERSION.id_naturaleza_inv LEFT OUTER JOIN
-                            DIVISION_FUNCIONAL INNER JOIN
-                            GRUPO_FUNCIONAL ON DIVISION_FUNCIONAL.id_div_funcional = GRUPO_FUNCIONAL.id_div_funcional INNER JOIN
-                            FUNCION ON DIVISION_FUNCIONAL.id_funcion = FUNCION.id_funcion ON 
-                            PROYECTO_INVERSION.id_grupo_funcional = GRUPO_FUNCIONAL.id_grup_funcional
-                            where PROYECTO_INVERSION.id_pi in (select distinct id_pi from programacion inner join CARTERA_INVERSION on PROGRAMACION.id_cartera = CARTERA_INVERSION.id_cartera where year(año_apertura_cartera) = 2017)
-                            and TIPO_INVERSION.nombre_tipo_inversion = 'PIP' ");
+         $EstudioInversion = $this->db->query("select MAX(id_prog)as id_prog, año_apertura_cartera, 
+                                                nombre_tipo_inversion,ESTADO_CICLO.id_estado_ciclo, nombre_estado_ciclo, PROYECTO_INVERSION.id_pi, 
+                                                nombre_pi FROM ESTADO_CICLO inner join ESTADO_CICLO_PI ON ESTADO_CICLO.id_estado_ciclo=ESTADO_CICLO_PI.id_estado_ciclo 
+                                                INNER JOIN PROYECTO_INVERSION on ESTADO_CICLO_PI.id_pi=PROYECTO_INVERSION.id_pi INNER JOIN PROGRAMACION on 
+                                                PROYECTO_INVERSION.id_pi=PROGRAMACION.id_pi INNER JOIN CARTERA_INVERSION ON CARTERA_INVERSION.id_cartera=PROGRAMACION.id_cartera
+                                                inner join TIPO_INVERSION ON PROYECTO_INVERSION.id_tipo_inversion=TIPO_INVERSION.id_tipo_inversion
+                                                where year(año_apertura_cartera)=year(GETDATE()) and TIPO_INVERSION.nombre_tipo_inversion='PIP' 
+                                                AND nombre_estado_ciclo='".$NombreEstadoFormulacionEvalu."' GROUP BY año_apertura_cartera, nombre_tipo_inversion,
+                                                ESTADO_CICLO.id_estado_ciclo, nombre_estado_ciclo, PROYECTO_INVERSION.id_pi, nombre_pi");
         if ($EstudioInversion->num_rows() > 0) {
             return $EstudioInversion->result();
         } else {

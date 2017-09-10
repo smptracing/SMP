@@ -7,6 +7,8 @@ class NoPipProgramados extends CI_Controller
     {
         parent::__construct();
         $this->load->model('NoPipProgramados_Model');
+        $this->load->model('Estudio_Inversion_Model');
+
     }
     //PIP
     //Listar No proyectos programados
@@ -34,9 +36,30 @@ class NoPipProgramados extends CI_Controller
     }
      public function insertar()
     {
+        if($_POST)
+        {
+            $id_piC=$this->input->post('ListadoFiltroNoPIP');
+            $id_pi=explode("_",$id_piC);
+            $TipoNoPip=$this->input->post('txtnombreNoPip'); 
+            $this->NoPipProgramados_Model->AddEstudioInversionNoPIP($id_pi[0],$TipoNoPip);
+            echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'No PIP registrada correctamente.']);exit;
+
+        }
         $ListarPipProgramados=$this->NoPipProgramados_Model->ListarPipProgramados();
         $this->load->view('front/Formulacion_Evaluacion/NoPip/insertar',['ListarPipProgramados' => $ListarPipProgramados ]);
     }
+
+    public function listarNopip()
+    {
+            if ($this->input->is_ajax_request()) {
+                $TipoNoPip=$this->input->post('desc_tipo_nopip');
+                $data = $this->NoPipProgramados_Model->listarNopip($TipoNoPip);
+                echo json_encode($data);
+        } else {
+            show_404();
+        }
+    }
+
     public function _load_layout($template)
     {
         $this->load->view('layout/PMI/header');

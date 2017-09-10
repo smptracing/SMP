@@ -21,7 +21,8 @@ class Estudio_Inversion extends CI_Controller
     {
 
         if ($this->input->is_ajax_request()) {
-            $datos = $this->Estudio_Inversion_Model->get_listaproyectos();
+            $NombreEstadoFormulacionEvalu=$this->input->post('valor');
+            $datos = $this->Estudio_Inversion_Model->get_listaproyectos($NombreEstadoFormulacionEvalu);
             echo json_encode($datos);
         } else {
             show_404();
