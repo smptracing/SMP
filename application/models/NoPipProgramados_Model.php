@@ -25,4 +25,10 @@ class NoPipProgramados_Model extends CI_Model
        return $ListarPipProgramados->result();
     }
 
+    public function NoPipFormulacionEvaluacionListar()
+    {
+        $data=$this->db->query("select codigo_unico_pi,nombre_est_inv,TIPO_NOPIP.desc_tipo_nopip from ESTUDIO_INVERSION INNER JOIN PROYECTO_INVERSION ON ESTUDIO_INVERSION.id_pi=PROYECTO_INVERSION.id_pi INNER JOIN NOPIP ON PROYECTO_INVERSION.id_pi=NOPIP.id_pi INNER JOIN TIPO_NOPIP ON NOPIP.id_tipo_nopip=TIPO_NOPIP.id_tipo_nopip");
+
+        return $data->result();
+    }
 }
