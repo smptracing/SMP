@@ -93,6 +93,25 @@ class EstadoCicloInversion extends CI_Controller
 
     }
 
+    public function listarEstadoCicloNombre()
+    {
+        if ($this->input->is_ajax_request())
+         {
+
+            $data=$this->EstadoCicloInversion_Model->listarEstadoCicloNombre();
+            echo json_encode($data);   
+
+        } else {
+
+            show_404();
+
+        }
+
+
+    }
+
+
+
 //------------------------------------------------------------------------------------------------------------------
 
     public function _load_layout($template)

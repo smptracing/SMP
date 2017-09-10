@@ -116,9 +116,8 @@
                                           <div class=".col-xs-12 .col-md-10">
                                            <label for="name">Estado<span class="required"></span>
                                             </label>
-                                                <select   id="estadoFE" name="estadoFE" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Elija estado">
-                                               <option>Idea</option>
-                                               <option>Formulación y Evaluacion</option>
+                                                <select   id="comboEstadoFe" name="comboEstadoFe" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Elija estado">
+
                                                 </select>
                                           </div>
                                           <div class=".col-xs-12 .col-md-10">

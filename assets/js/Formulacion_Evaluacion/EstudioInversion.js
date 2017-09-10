@@ -118,28 +118,15 @@ var listarestudiocombo=function(valor){
                 listarestudiocombo();
                 listarufcombo();
                 listaruecombo();
+                listarEstadoCiclo();
 
-              //abrir el modal para registrar
-  /*$("#btn_nuevoEstInv").click(function(){
-                // alert("hola");
-                
-             });*/
-            /* $("#listaFuncionC").change(function(){//para cargar en agregar division funcionañ
-                   listarestudiocombo();
-             });*/
-              /* $("#listaTipoInversion").change(function(){//para cargar en agregar division funcionañ
-                  listarnivelcombo();
-             });*/
-              //listarufcombo();
-              $("#listaNivelEstudio").change(function(){//para cargar en agregar division funcionañ
+              $("#listaNivelEstudio").change(function(){
              });
 
              $("#lista_unid_form").change(function(){
-                // alert("hola");
                
              });
               $("#lista_unid_ejec").change(function(){
-                // alert("hola");
                  listarpersonascombo();
              });
               $('#listaFuncionC').on('change', function()
@@ -309,6 +296,27 @@ var listarestudiocombo=function(valor){
 
       });
 //listar etapas estudio en el modal
+  var listarEstadoCiclo=function(){
+                    var comboEstadoFe;
+                    event.preventDefault();
+                    $.ajax({
+                        "url":base_url +"index.php/EstadoCicloInversion/listarEstadoCicloNombre",
+                        type:"POST",
+                        dataType:"JSON",
+                        success:function(respuesta){
+                          $.each(respuesta,function(index, elemento) {
+                            console.log(elemento.nombre_estado_ciclo);
+                              comboEstadoFe +="<option  value="+elemento.id_estado_ciclo+">"+elemento.nombre_estado_ciclo+" </option>";
+
+                          });
+                            $("#comboEstadoFe").html(comboEstadoFe);
+                            $('select[name=comboEstadoFe]').val(comboEstadoFe);
+                            $('select[name=comboEstadoFe]').change();
+                            $('.selectpicker').selectpicker('refresh');
+                        }
+                    });
+      
+  }  
  var listarEtapaEstudio=function(id_est_inv)
                 {
                     var table=$("#table_etapas_estudio").DataTable({
@@ -369,6 +377,7 @@ var listarestudiocombo=function(valor){
                     var myTableUA=$("#dynamic-table-EstudioInversion").DataTable({
                      "processing":true,
                      "serverSide":false,
+                     displayLength: 15,
                      destroy:true,
 
                          "ajax":{
