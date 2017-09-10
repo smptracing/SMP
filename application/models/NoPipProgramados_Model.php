@@ -19,4 +19,10 @@ class NoPipProgramados_Model extends CI_Model
         }
     }
 
+    public function ListarPipProgramados()
+    {
+       $ListarPipProgramados = $this->db->query("SELECT * FROM  TIPO_NOPIP"); 
+       return $ListarPipProgramados->result();
+    }
+
 }
