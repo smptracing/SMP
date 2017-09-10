@@ -112,15 +112,20 @@
                 <li><a href="<?php echo site_url('PrincipalFyE/PrincipalFyED'); ?>"> <i class="fa fa-home"></i> INICIO<span class=""></span></a>
                   </li>
                 </ul>
-                 <ul class="nav side-menu">
 
-                    <ul class="nav side-menu">
-                      <li><a href="<?php echo site_url('Estudio_Inversion/'); ?>"><i class="fa fa-tasks"></i> Estudio Inversión <span class="fa fa-chevron"></span></a>
+                <ul class="nav side-menu">
+                     <li><a><i class="fa fa-gears"></i>Banco de inversiones<span class="fa fa-chevron-down"></span></a>
 
-                        </li>
-                      </ul>
+                    <ul class="nav child_menu">
+                      <li><a href="<?php echo site_url('Estudio_Inversion/'); ?>">Estudio de Preinversion</a></li>
+                      <li><a href="<?php echo site_url('NoPipProgramados/nopipformulacion'); ?>">No PIP</a></li>
+            
+                    </ul>
+                  </li>
+
                 </ul>
 
+        
                 <ul class="nav side-menu">
 
                     <ul class="nav side-menu">
@@ -136,7 +141,7 @@
                       </ul>
                 </ul>
                 <ul class="nav side-menu">
-                     <li><a><i class="fa fa-gears"></i> Matenimiento<span class="fa fa-chevron-down"></span></a>
+                     <li><a><i class="fa fa-gears"></i> Mantenimiento<span class="fa fa-chevron-down"></span></a>
 
                     <ul class="nav child_menu">
                       <li><a href="<?php echo site_url('FEdocumento/ver_Documentos'); ?>">Documentos</a></li>

@@ -7,7 +7,7 @@
              <div class="x_panel">
              <!--inicio de pestaña configurtacion-->
                 <div class="x_title">
-                     <h2><b>ESTUDIO DE INVERSIÓN </b></h2>
+                     <h2><b>ESTUDIO DE PREINVERSIÓN </b></h2>
                                     
                       <div class="clearfix"></div>
                 </div>
@@ -90,18 +90,13 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><strong>Registrar Estudio de Inversión</strong> </h4>
+          <h4 class="modal-title"><strong>Registrar Estudio de Preinversión</strong> </h4>
         </div>
         <div class="modal-body">
          <div class="row">
                 <div class="col-xs-12">
             <form class="form-horizontal " id="form-AddEstudioInversion" action="<?php echo base_url(); ?>Estudio_Inversion/AddEstudioInversion" method="POST">
-                      <!--<div class="item form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-8" for="name">Codigo Unico<span class="required">*</span></label>
-                          <div class="col-md-6 col-sm-6 col-xs-8">
-                            <input id="txtCodigoUnico" name="txtCodigoUnico" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese único " required="required" autocomplete="off" type="text">
-                          </div>
-                      </div>-->
+                     
                     <br>
 
                           <div class="row ">
@@ -118,6 +113,14 @@
                                       <form class="form-horizontal " id="form-AddEstudioInversion" action="<?php echo base_url(); ?>Estudio_Inversion/AddEstudioInversion" method="POST">
 
                                           <div class="col-md-12">
+                                          <div class=".col-xs-12 .col-md-10">
+                                           <label for="name">Estado<span class="required"></span>
+                                            </label>
+                                                <select   id="estadoFE" name="estadoFE" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Elija estado">
+                                               <option>Idea</option>
+                                               <option>Formulación y Evaluacion</option>
+                                                </select>
+                                          </div>
                                           <div class=".col-xs-12 .col-md-10">
                                            <label for="name">Proyecto PMI<span class="required"></span>
                                             </label>

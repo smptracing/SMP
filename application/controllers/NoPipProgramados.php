@@ -25,6 +25,13 @@ class NoPipProgramados extends CI_Controller
     {
         $this->_load_layout('Front/Pmi/frmnopipprogramados');
     }
+
+    public function nopipformulacion()
+    {
+        $this->load->view('layout/Formulacion_Evaluacion/header');
+        $this->load->view('front/Formulacion_Evaluacion/NoPip/index');
+        $this->load->view('layout/Formulacion_Evaluacion/footer');
+    }
     public function _load_layout($template)
     {
         $this->load->view('layout/PMI/header');
