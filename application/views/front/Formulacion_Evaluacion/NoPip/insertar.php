@@ -1,4 +1,4 @@
-<form class="form-horizontal" id="form-addNoPip" action="<?php echo base_url();?>index.php/CronogramaValorizacion/insertar" method="POST" enctype="multipart/form-data">
+<form class="form-horizontal" id="form-addNoPip" action="<?=base_url();?>index.php/NoPipProgramados/insertar" method="POST" enctype="multipart/form-data">
  <div class="form-horizontal">
 		<div class="row" style="text-align: center;">
 

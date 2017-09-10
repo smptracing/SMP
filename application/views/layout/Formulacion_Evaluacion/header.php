@@ -12,7 +12,6 @@
     <title>SMP-APURIMAC</title>
 
     <!-- Bootstrap -->
-    <link href='<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery-ui.min.css' rel='stylesheet' >
     <script src="<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
 
     <link href="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -23,10 +22,7 @@
     <!-- iCheck -->
     <link href="<?php echo base_url(); ?>assets/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
        <!-- jQuery -->
-    <script src="<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <!-- gantt -->
-
+  
     <script src="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
     <!-- bootstrap-progressbar -->

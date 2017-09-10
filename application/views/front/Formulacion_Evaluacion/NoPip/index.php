@@ -26,7 +26,7 @@
 									<div class="row">  
 										<div class="col-md-12 col-sm-12 col-xs-12">
 											<div class="x_panel">
-												<button type="button" class="btn btn-primary " onclick="paginaAjaxDialogo(null, 'Formulacion y Evaluacion: Registrar no pip', null, base_url+'index.php/NoPipProgramados/insertar', 'POST', null, null, false, true);">
+												<button type="button" class="btn btn-primary " onclick="paginaAjaxDialogo(null, 'Formulacion y Evaluacion: Registrar no pip', null, base_url+'index.php/NoPipProgramados/insertar', 'GET', null, null, false, true);">
 													NUEVO
 												</button>
 													<div class="x_title">                                                              
@@ -54,6 +54,9 @@
 																	</td>
 																	<td>
 																  		<?=$item->desc_tipo_nopip?>
+																	</td>
+																	<td>
+																  		
 																	</td>
 															  </tr>
 															<?php } ?>

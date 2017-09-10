@@ -44,7 +44,6 @@ class NoPipProgramados extends CI_Controller
             $TipoNoPip=$this->input->post('txtnombreNoPip'); 
             $this->NoPipProgramados_Model->AddEstudioInversionNoPIP($id_pi[0],$TipoNoPip);
             echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'No PIP registrada correctamente.']);exit;
-
         }
         $ListarPipProgramados=$this->NoPipProgramados_Model->ListarPipProgramados();
         $this->load->view('front/Formulacion_Evaluacion/NoPip/insertar',['ListarPipProgramados' => $ListarPipProgramados ]);
