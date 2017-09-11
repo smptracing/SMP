@@ -46,7 +46,7 @@
 		<div class="row">
 					 	<div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="col-md-3 col-sm-3 col-xs-12" style="position: left">
-                            	<input type="text" id="nombreUrlDocumento" name="nombreUrlDocumento">
+                            	<input type="hidden" id="nombreUrlDocumento" name="nombreUrlDocumento">
                            	 	<label class="control-label">Subir Documento No PIP</label>
                             	<input type="file" id="Documento_noPip" name="Documento_noPip">
                             </div>
