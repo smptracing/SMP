@@ -37,6 +37,7 @@
 
     <link href="<?php echo base_url();?>assets/vendors/animate/animate.min.css" rel="stylesheet">
       <link href="<?php echo base_url();?>assets/css/jquery.growl.css" rel="stylesheet">
+          <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/formValidation.min.css">
 
   <style>
    #ProgramacionHorizontal{
