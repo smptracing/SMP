@@ -129,7 +129,8 @@ $(document).on("ready" ,function(){
 
 $("#CodigoUnico").on( "click", function()
 	 {
-		$("#nombreProyecto" ).append( "<label style='border: 2px solid black; text-align: center;' class='col-sm-12' id='txtnombre' name='txtnombre'></label>" );
+		$("#txtnombre").html('');
+		$("#nombreProyecto").append( "<label  style='border: 2px solid black; text-align: center;' class='col-sm-12' id='txtnombre' name='txtnombre'></label>" );
 		var codigounico=$("#BuscarPip").val();
 		$.ajax({
 		"url":base_url+"index.php/PrincipalReportes/DatosParaEstadisticaAnualProyecto",
