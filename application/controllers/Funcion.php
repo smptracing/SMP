@@ -72,7 +72,6 @@ class Funcion extends CI_Controller {/* Mantenimiento de sector entidad Y servic
             $distrito = $this->input->post('idDistrito');
             $deFecha = $this->input->post('deFecha');
             $aFecha = $this->input->post('aFecha');
-
     
             $cadena = "";
             if($idFuncion=="")
@@ -99,9 +98,6 @@ class Funcion extends CI_Controller {/* Mantenimiento de sector entidad Y servic
                 $cadena=$cadena."0";
             else
                 $cadena=$cadena."1";
-
-            //echo json_encode($cadena);
-            //exit;
 
             $datos=$this->Model_Funcion->GetProyectos1($cadena,$idFuncion,$idDivisionFuncional,$idGrupoFuncional,$provincia,$distrito,$deFecha,$aFecha);
 

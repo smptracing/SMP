@@ -18,23 +18,6 @@
             </div>
         </div>
         <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fa fa-user"></i> TOTAL NO PIP</span>
-            <div class="count">
-                <center>
-                    <h2><div id="totalnopip"></div></h2>
-                </center>
-            </div>
-        </div>
-        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fa fa-clock-o"></i> MONTO NO PIP</span>
-            <div class="count">
-            <center>
-                    <h2><div id="monto_programado_nopip"></div></h2>
-                </center>
-        </div>
-        </div>
-        
-        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
             <span class="count_top"><i class="fa fa-user"></i> TOTAL  PIP</span>
             <div class="count">
                 <center>
@@ -51,6 +34,24 @@
                 </center>
         </div>
         </div>
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top"><i class="fa fa-user"></i> TOTAL NO PIP</span>
+            <div class="count">
+                <center>
+                    <h2><div id="totalnopip"></div></h2>
+                </center>
+            </div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top"><i class="fa fa-clock-o"></i> MONTO NO PIP</span>
+            <div class="count">
+            <center>
+                    <h2><div id="monto_programado_nopip"></div></h2>
+                </center>
+        </div>
+        </div>
+        
+        
 
 
         
