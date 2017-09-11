@@ -12,12 +12,12 @@ $(document).on("ready" ,function()
     $('#listaFuncionC').on('change', function() 
     {
         listaDivisionFuncionalCombo(null); 
-        listaProyectos();               
+        //listaProyectos();               
     })
     $('#listaDivisionFuncional').on('change', function() 
     {
         listaGrupoFuncionalCombo(null);
-        listaProyectos();
+        //listaProyectos();
     })
     $('#listaProvincia').on('change', function() 
     {

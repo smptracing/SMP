@@ -52,18 +52,8 @@ class Model_Funcion extends CI_Model
 
     function GetProyectos1($cadena,$idFuncion,$idDivisionFuncional,$idGrupoFuncional,$provincia,$distrito,$fecha1,$fecha2)
     {
-        switch ($cadena) {
-            case '100000': $data=$this->db->query("EXEC sp_Modulo_Reportes '".$idFuncion."'");return $data->result();break; 
-            case '000100': $data=$this->db->query("EXEC sp_Modulo_Reportes '".$provincia."'");return $data->result();break; 
-            case '000001': $data=$this->db->query("EXEC sp_Modulo_Reportes '".$fecha1."','".$fecha2."'");return $data->result();break;   
-            case '110000': $data=$this->db->query("EXEC sp_Modulo_Reportes '".$idFuncion."','".$idDivisionFuncional."'");return $data->result();break; 
-            case '111000': $data=$this->db->query("EXEC sp_Modulo_Reportes '".$idFuncion."','".$idDivisionFuncional."','".$idGrupoFuncional."'");return $data->result();break;   
-
-            default:
-                break;
-        }
-        //$data=$this->db->query("EXEC sp_Modulo_Reportes '".$idFuncion."','".$idDivisionFuncional."','".$idGrupoFuncional."','".$provincia."','".$distrito."','".$deFecha."','".$aFecha."'");
-        
+        $data=$this->db->query("EXEC sp_Modulo_Reportes @id_funcion ='".$idFuncion."', @id_division_funcional = '".$idDivisionFuncional."', @id_grupo_funcional = '".$idGrupoFuncional."',@provincia ='".$provincia."', @distrito = '".$distrito."', @fecha1 = '".$deFecha."', @fecha2  = '".$aFecha."'");
+        return $data->result();        
     }
 
     function AddFucion($txt_codigofuncion,$txt_nombrefuncion)

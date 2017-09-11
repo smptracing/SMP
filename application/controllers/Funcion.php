@@ -99,7 +99,10 @@ class Funcion extends CI_Controller {/* Mantenimiento de sector entidad Y servic
             else
                 $cadena=$cadena."1";
 
-            $datos=$this->Model_Funcion->GetProyectos1($cadena,$idFuncion,$idDivisionFuncional,$idGrupoFuncional,$provincia,$distrito,$deFecha,$aFecha);
+           // $datos=$this->Model_Funcion->GetProyectos1($cadena,$idFuncion,$idDivisionFuncional,$idGrupoFuncional,$provincia,$distrito,$deFecha,$aFecha);
+
+            $datos=$this->Model_Funcion->GetProyectos1(($idFuncion=='' ? 'NULL' : $idFuncion),($idDivisionFuncional=='' ? 'NULL' : $idDivisionFuncional),($idGrupoFuncional=='' ? 'NULL' : $idGrupoFuncional),($provincia == '' ? 'NULL' : $provincia ),($distrito=='' ? 'NULL' : $distrito), ($deFecha == '' ? 'NULL': $deFecha),($aFecha=='' ? 'NULL' : $aFecha));
+
 
             $this->load->view('front/Reporte/CadenaFuncional/tablaFuncion',['listaProyectos'=>$datos]);
         }
