@@ -50,20 +50,20 @@ class Model_Funcion extends CI_Model
         return $data->result();
     }
 
-    function GetProyectos1($cadena,$idFuncion,$idDivisionFuncional,$idGrupoFuncional,$provincia,$distrito,$deFecha,$aFecha)
+    function GetProyectos1($cadena,$idFuncion,$idDivisionFuncional,$idGrupoFuncional,$provincia,$distrito,$fecha1,$fecha2)
     {
-        //$data=$this->db->query("EXEC spPruebaReportes '110000', 2, 3, 5, 'Abancay', 'Abancay', '', ''");
+        switch ($cadena) {
+            case '100000': $data=$this->db->query("EXEC sp_Modulo_Reportes '".$idFuncion."'");return $data->result();break; 
+            case '000100': $data=$this->db->query("EXEC sp_Modulo_Reportes '".$provincia."'");return $data->result();break; 
+            case '000001': $data=$this->db->query("EXEC sp_Modulo_Reportes '".$fecha1."','".$fecha2."'");return $data->result();break;   
+            case '110000': $data=$this->db->query("EXEC sp_Modulo_Reportes '".$idFuncion."','".$idDivisionFuncional."'");return $data->result();break; 
+            case '111000': $data=$this->db->query("EXEC sp_Modulo_Reportes '".$idFuncion."','".$idDivisionFuncional."','".$idGrupoFuncional."'");return $data->result();break;   
+
+            default:
+                break;
+        }
+        //$data=$this->db->query("EXEC sp_Modulo_Reportes '".$idFuncion."','".$idDivisionFuncional."','".$idGrupoFuncional."','".$provincia."','".$distrito."','".$deFecha."','".$aFecha."'");
         
-        /*ALTER PROCEDURE [dbo].[sp_Modulo_Reportes] 
-    @id_funcion            INT  = NULL, 
-    @id_division_funcional INT  = NULL, 
-    @id_grupo_funcional    INT  = NULL, 
-    @id_provincia          INT  = NULL, 
-    @id_distrito           INT  = NULL, 
-    @fecha1                DATE = NULL, 
-    @fecha2                DATE = NULL*/
-        $data=$this->db->query("EXEC spPruebaReportes '".$cadena."','".$idFuncion."','".$idDivisionFuncional."','".$idGrupoFuncional."','".$provincia."','".$distrito."','".$deFecha."','".$aFecha."'");
-        return $data->result();
     }
 
     function AddFucion($txt_codigofuncion,$txt_nombrefuncion)

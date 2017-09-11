@@ -63,69 +63,60 @@ class Funcion extends CI_Controller {/* Mantenimiento de sector entidad Y servic
     }
     function ProyectosPorCadenaFuncional()
     {
-        $idFuncion = $this->input->post('idFuncion');
-        $idDivisionFuncional = $this->input->post('idDivisionFuncional');
-        $idGrupoFuncional = $this->input->post('idGrupoFuncional');
-        $provincia = $this->input->post('idProvincia');
-        $distrito = $this->input->post('idDistrito');
-        $deFecha = $this->input->post('deFecha');
-        $aFecha = $this->input->post('aFecha');
-        $cadena = "";
-        if($idFuncion=="")
-            $cadena=$cadena."0";
-        else
-            $cadena=$cadena."1";
-        if($idDivisionFuncional=="")
-            $cadena=$cadena."0";
-        else
-            $cadena=$cadena."1";
-        if($idGrupoFuncional=="")
-            $cadena=$cadena."0";
-        else
-            $cadena=$cadena."1";
-        if($provincia=="")
-            $cadena=$cadena."0";
-        else
-            $cadena=$cadena."1";
-        if($distrito=="")
-            $cadena=$cadena."0";
-        else
-            $cadena=$cadena."1";
-        if($deFecha=="")
-            $cadena=$cadena."0";
-        else
-            $cadena=$cadena."1";
+        if ($this->input->is_ajax_request()) 
+        {
+            $idFuncion = $this->input->post('idFuncion');
+            $idDivisionFuncional = $this->input->post('idDivisionFuncional');
+            $idGrupoFuncional = $this->input->post('idGrupoFuncional');
+            $provincia = $this->input->post('idProvincia');
+            $distrito = $this->input->post('idDistrito');
+            $deFecha = $this->input->post('deFecha');
+            $aFecha = $this->input->post('aFecha');
 
+    
+            $cadena = "";
+            if($idFuncion=="")
+                $cadena=$cadena."0";
+            else
+                $cadena=$cadena."1";
+            if($idDivisionFuncional=="")
+                $cadena=$cadena."0";
+            else
+                $cadena=$cadena."1";
+            if($idGrupoFuncional=="")
+                $cadena=$cadena."0";
+            else
+                $cadena=$cadena."1";
+            if($provincia=="")
+                $cadena=$cadena."0";
+            else
+                $cadena=$cadena."1";
+            if($distrito=="")
+                $cadena=$cadena."0";
+            else
+                $cadena=$cadena."1";
+            if($deFecha=="")
+                $cadena=$cadena."0";
+            else
+                $cadena=$cadena."1";
 
-        $datos=$this->Model_Funcion->GetProyectos1($cadena,$idFuncion,$idDivisionFuncional,$idGrupoFuncional,$provincia,$distrito,$deFecha,$aFecha);
+            //echo json_encode($cadena);
+            //exit;
 
-       //echo json_encode($datos);
-        //exit;
+            $datos=$this->Model_Funcion->GetProyectos1($cadena,$idFuncion,$idDivisionFuncional,$idGrupoFuncional,$provincia,$distrito,$deFecha,$aFecha);
 
-        $this->load->view('front/Reporte/CadenaFuncional/tablaFuncion',['listaProyectos'=>$datos]);
+            $this->load->view('front/Reporte/CadenaFuncional/tablaFuncion',['listaProyectos'=>$datos]);
+        }
+        else
+        {
+            show_404();
+        }
+
+       
 
         //$datos=$this->Model_Funcion->GetProyectos();
         //$this->load->view('front/Reporte/CadenaFuncional/tablaFuncion',['listaProyectos'=>$datos]);
-
-        //echo $cadena;
-        //exit;
-
-
-        //echo $idFuncion." ".$idDivisionFuncional." ".$idGrupoFuncional." ".$idProvincia." ".$idDistrito." ".$deFecha." ".$aFecha; 
-        //exit;
         
-        //$datos=$this->Model_Funcion->GetProyectos();
-        
-        //echo json_encode($datos);
-        //exit;
-        //$this->load->view('layout/Reportes/header');        
-        
-        //$this->load->view('front/Reporte/CadenaFuncional/tablaFuncion',['listaProyectos'=>$datos]);
-        
-        //$this->load->view('layout/Reportes/footer');
-
-
-        //$datos=$this->Model_Funcion->GetDistrito($provincia);
         //echo json_encode($datos);
         //exit;
     }
