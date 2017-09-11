@@ -23,14 +23,13 @@
 			<div class="col-md-8 col-sm-8 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
-						<h2>REPORTE EN BARRAS</h2>
+						<h2>Avance fisico por costo de inversión</h2>
 
 						<div class="clearfix"></div>
 					</div>
 					<div class="x_content">
-
-						<div id="ReporteBarras" style="height:350px;"></div>
-
+						<div id="Avance" style="height:350px;"></div>
+						<!-- <div id="ReporteBarras" style="height:350px;"></div> -->
 					</div>
 				</div>
 			</div>
@@ -95,13 +94,12 @@
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
-						<h2>Avance fisico por costo de inversión</h2>
+						<h2></h2>
 
 						<div class="clearfix"></div>
 					</div>
 					<div class="x_content">
 
-						<div id="Avance" style="height:350px;"></div>
 
 					</div>
 				</div>
@@ -110,12 +108,12 @@
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
-						<h2>Line Graph</h2>
+						<h2> </h2>
 						<div class="clearfix"></div>
 					</div>
 					<div class="x_content">
 
-						<div id="echart_line" style="height:350px;"></div>
+						<!-- <div id="echart_line" style="height:350px;"></div>-->
 
 					</div>
 				</div>
