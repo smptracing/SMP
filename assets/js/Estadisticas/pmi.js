@@ -23,6 +23,7 @@ function MontoProgramadoPip(anio)
 
             var sum=0;
             var sum_monto=0;
+            var sumaTotal = 0 ;
 
             for(var i=0; i<registros.length; i++)
             {
@@ -31,10 +32,12 @@ function MontoProgramadoPip(anio)
                 sum=num[i]+sum;
                 total_monto[i]=parseFloat(registros[i]["SumaCosto"]);
                 sum_monto=total_monto[i]+sum_monto;
+                sumaTotal = registros[0]["SumaTotal"];
             }
-$("#NumPip").text(sum);
-$("#TotalMonto").text("S/. "+parseFloat(sum_monto));
-               if(tipo[0]=="NO PIP")
+
+            $("#NumPip").text(sum);
+            $("#TotalMonto").text("S/. "+sumaTotal);
+            if(tipo[0]=="NO PIP")
             {
                // alert("1");
             $("#monto_programado_nopip").text("S/. "+registros[0]["SumaCosto"]); 

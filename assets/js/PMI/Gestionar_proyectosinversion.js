@@ -292,9 +292,13 @@ $(document).on("ready" ,function(){
                                 "columns":[
                                    
                                    {"defaultContent":"<center><button type='button' title='Editar' class='Editar_proyecto btn btn-primary btn-xs' data-toggle='modal' data-target='#venta_editar_proyecto'><i class='fa fa-edit' aria-hidden='true'></i></button></center>"},
-                                  // {"defaultContent":"<td>#</td>"},
                                     {"data":"id_pi" ,"visible": false},
-                                    {"data":"codigo_unico_pi"},
+                                    {
+                                      "data" : "codigo_unico_pi", "mRender": function(data, type, full)
+                                      {
+                                        return '<a style="font-weight:normal;font-size:15" type="button" class="Verdetalle btn btn-link" target="_blank" href="http://ofi4.mef.gob.pe/bp/ConsultarPIP/frmConsultarPIP.asp?accion=consultar&txtCodigo=' + data + '">' + data+ '</a>';
+                                      }
+                                    },
                                     {"data":"nombre_pi"},
                                     {"data":"costo_pi"},
                                     {"data":"nombre_estado_ciclo"},

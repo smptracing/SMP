@@ -54,4 +54,12 @@ class EstadoCicloInversion_MOdel extends CI_Model
 
     }
 
+    public function listarEstadoCicloNombre()
+    {
+
+        $EstadoCicloInversion = $this->db->query("SELECT * FROM ESTADO_CICLO where nombre_estado_ciclo='IDEA' or nombre_estado_ciclo='FORMULACION Y EVALUACION'");
+         return $EstadoCicloInversion->result();
+
+    }
+
 }

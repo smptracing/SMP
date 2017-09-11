@@ -12,7 +12,6 @@
     <title>SMP-APURIMAC</title>
 
     <!-- Bootstrap -->
-    <link href='<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery-ui.min.css' rel='stylesheet' >
     <script src="<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
 
     <link href="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -23,10 +22,7 @@
     <!-- iCheck -->
     <link href="<?php echo base_url(); ?>assets/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
        <!-- jQuery -->
-    <script src="<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <!-- gantt -->
-
+  
     <script src="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
     <!-- bootstrap-progressbar -->
@@ -112,15 +108,20 @@
                 <li><a href="<?php echo site_url('PrincipalFyE/PrincipalFyED'); ?>"> <i class="fa fa-home"></i> INICIO<span class=""></span></a>
                   </li>
                 </ul>
-                 <ul class="nav side-menu">
 
-                    <ul class="nav side-menu">
-                      <li><a href="<?php echo site_url('Estudio_Inversion/'); ?>"><i class="fa fa-tasks"></i> Estudio Inversión <span class="fa fa-chevron"></span></a>
+                <ul class="nav side-menu">
+                     <li><a><i class="fa fa-gears"></i>Banco de inversiones<span class="fa fa-chevron-down"></span></a>
 
-                        </li>
-                      </ul>
+                    <ul class="nav child_menu">
+                      <li><a href="<?php echo site_url('Estudio_Inversion/'); ?>">Estudio de Preinversion</a></li>
+                      <li><a href="<?php echo site_url('NoPipProgramados/nopipformulacion'); ?>">No PIP</a></li>
+            
+                    </ul>
+                  </li>
+
                 </ul>
 
+        
                 <ul class="nav side-menu">
 
                     <ul class="nav side-menu">
@@ -129,14 +130,14 @@
                           <li><a href="<?php echo site_url('FEformulacion/Feformulacion/all'); ?>">Formulación y evaluación</a></li>
                           <!--<li><a href="<?php echo site_url('EvaluacionFE/FeEvaluacion/all'); ?>">Evaluación</a></li>-->
                           <!--<li><a href="<?php echo site_url('FEformulacion/FeAprobado/all'); ?>">Aprobado</a></li> -->
-                          <!-- <li><a href="<?php echo site_url('FEformulacion/FeViabilizado/all'); ?>">Viabilizados</a></li> -->
+                           <li><a href="<?php echo site_url('FEformulacion/FeViabilizado/all'); ?>">Viabilizados</a></li>
 
                         </ul>
                         </li>
                       </ul>
                 </ul>
                 <ul class="nav side-menu">
-                     <li><a><i class="fa fa-gears"></i> Matenimiento<span class="fa fa-chevron-down"></span></a>
+                     <li><a><i class="fa fa-gears"></i> Mantenimiento<span class="fa fa-chevron-down"></span></a>
 
                     <ul class="nav child_menu">
                       <li><a href="<?php echo site_url('FEdocumento/ver_Documentos'); ?>">Documentos</a></li>
@@ -197,7 +198,7 @@
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;">Usuario: <?= $this->session->userdata('nombreUsuario')?> <br/>Tipo Usuario <?= $this->session->userdata('desc_usuario_tipo')?></a></li>
+                    <li><a href="javascript:;">Usuario: <?= $this->session->userdata('nombreUsuario')?> <br/>Tipo Usuario <?= $this->session->userdata('desc_usuario_tipo');?> <br/>id:Usuario<?= $this->session->userdata('idPersona');?></a></li>
                     <li>
                       <a href="javascript:;">
                         <span class="badge bg-red pull-right">50%</span>

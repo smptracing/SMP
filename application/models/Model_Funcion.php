@@ -50,6 +50,22 @@ class Model_Funcion extends CI_Model
         return $data->result();
     }
 
+    function GetProyectos1($cadena,$idFuncion,$idDivisionFuncional,$idGrupoFuncional,$provincia,$distrito,$fecha1,$fecha2)
+    {
+        switch ($cadena) {
+            case '100000': $data=$this->db->query("EXEC sp_Modulo_Reportes '".$idFuncion."'");return $data->result();break; 
+            case '000100': $data=$this->db->query("EXEC sp_Modulo_Reportes '".$provincia."'");return $data->result();break; 
+            case '000001': $data=$this->db->query("EXEC sp_Modulo_Reportes '".$fecha1."','".$fecha2."'");return $data->result();break;   
+            case '110000': $data=$this->db->query("EXEC sp_Modulo_Reportes '".$idFuncion."','".$idDivisionFuncional."'");return $data->result();break; 
+            case '111000': $data=$this->db->query("EXEC sp_Modulo_Reportes '".$idFuncion."','".$idDivisionFuncional."','".$idGrupoFuncional."'");return $data->result();break;   
+
+            default:
+                break;
+        }
+        //$data=$this->db->query("EXEC sp_Modulo_Reportes '".$idFuncion."','".$idDivisionFuncional."','".$idGrupoFuncional."','".$provincia."','".$distrito."','".$deFecha."','".$aFecha."'");
+        
+    }
+
     function AddFucion($txt_codigofuncion,$txt_nombrefuncion)
     {
         $this->db->query("execute sp_Funcion_c '".$txt_codigofuncion."','".$txt_nombrefuncion."'");

@@ -20,6 +20,13 @@ class Model_ET_Expediente_Tecnico extends CI_Model
         return $ListarExpedienteTecnico->result();
 	}
 
+	public function ListarExpedienteTecnico()
+	{
+		$data=$this->db->query("select * from ET_EXPEDIENTE_TECNICO as ET inner join PROYECTO_INVERSION as PI on ET.id_pi=PI.id_pi");
+
+		return $data->result();
+	}
+
 	public function ExpedienteListarElaboracion($flat1,$id_etapa_et)
 	{
 		$data=$this->db->query("execute sp_Gestionar_ET_Expediente_Tecnico @Opcion='".$flat1."',@id_etapa_et='".$id_etapa_et."'");

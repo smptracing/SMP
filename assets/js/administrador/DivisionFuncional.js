@@ -3,7 +3,6 @@ $(document).on("ready" ,function()
     listarDivisionF();//para mostrar las divisiones funcionanes
     listaFuncionCombo();
     listaProvinciaCombo();
-    listaProyectos();
     
     $("#btn_Nuevadivision").click(function()//para que cargue el como una vez echo click sino repetira datos
     {
@@ -12,13 +11,13 @@ $(document).on("ready" ,function()
 
     $('#listaFuncionC').on('change', function() 
     {
-        //listaProyectos();
-        listaDivisionFuncionalCombo(null);        
+        listaDivisionFuncionalCombo(null); 
+        listaProyectos();               
     })
     $('#listaDivisionFuncional').on('change', function() 
     {
         listaGrupoFuncionalCombo(null);
-        //listaProyectos();
+        listaProyectos();
     })
     $('#listaProvincia').on('change', function() 
     {
@@ -26,9 +25,9 @@ $(document).on("ready" ,function()
         //listaProyectos();
     })
 
-    $("#btnBuscar").click(function()//para que cargue el como una vez echo click sino repetira datos
+    $("#btnBuscar").click(function()
     {
-        listaProyectos();//para llenar el combo de agregar division funcional
+        listaProyectos();
     });
 
     $("#form-AddDivisionFuncion").submit(function(event)//para añadir nuevo division funcional
@@ -295,4 +294,21 @@ $(document).on("ready" ,function()
             }
         });
 
+    }
+
+
+    var ValidarFechas=function()
+    {
+        var deFecha = $('#deFecha').val();
+        var aFecha = $("#aFecha").val(); 
+        if(deFecha!=null)
+        {
+            alert("Ingrese Fecha 2");
+
+        }
+        if(aFecha!=null)
+        {
+            alert("Ingrese Fecha 1")
+        }
+        //alert(deFecha);
     }

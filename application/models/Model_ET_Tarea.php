@@ -29,6 +29,20 @@ class Model_ET_Tarea extends CI_Model
 		return $data->result();
 	}
 
+	public function primeraETTareaPorIdET($idET)
+	{
+		$data=$this->db->query("select * from ET_TAREA as ETT inner join ET_TAREA_GANTT as ETTG on ETT.id_tarea_gantt=ETTG.id_tarea_gantt where ETTG.id_et=$idET order by (ETT.fecha_inicio_tarea) asc");
+
+		return count($data->result())==0 ? null : $data->result()[0];
+	}
+
+	public function ultimaETTareaPorIdET($idET)
+	{
+		$data=$this->db->query("select * from ET_TAREA as ETT inner join ET_TAREA_GANTT as ETTG on ETT.id_tarea_gantt=ETTG.id_tarea_gantt where ETTG.id_et=$idET order by (ETT.fecha_inicio_tarea) desc");
+
+		return count($data->result())==0 ? null : $data->result()[0];
+	}
+
 	public function insertar($idTareaGantt, $idTareaETPadre, $descripcion, $nombreTarea, $fechaInicioTarea, $fechaFinalTarea, $valoracionTarea, $avanceTarea, $colorTarea, $nivelTarea, $predecesoraTarea, $estadoTarea, $numeracion, $dependenciaTarea)
 	{
 		$this->db->query("execute sp_Gestionar_ETTarea @opcion='insertar', @idTareaGantt=".$idTareaGantt.", @idTareaETPadre=".$idTareaETPadre.", @descripcion='".$descripcion."', @nombreTarea='".$nombreTarea."', @fechaInicioTarea='".$fechaInicioTarea."', @fechaFinalTarea='".$fechaFinalTarea."', @valoracionTarea=".$valoracionTarea.", @avanceTarea=".$avanceTarea.", @colorTarea='".$colorTarea."', @nivelTarea=".$nivelTarea.", @predecesoraTarea=".$predecesoraTarea.", @estadoTarea=".$estadoTarea.", @numeracion=".$numeracion.", @dependenciaTarea='".$dependenciaTarea."'");

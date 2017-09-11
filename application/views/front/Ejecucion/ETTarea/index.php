@@ -6,10 +6,10 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>SMP</title>
 
-	<link rel=stylesheet href="<?=base_url()?>assets/vendors/JQueryGantt/platform.css" type="text/css">
-	<link rel=stylesheet href="<?=base_url()?>assets/vendors/JQueryGantt/libs/jquery/dateField/jquery.dateField.css" type="text/css">
-	<link rel=stylesheet href="<?=base_url()?>assets/vendors/JQueryGantt/gantt.css" type="text/css">
-	<link rel=stylesheet href="<?=base_url()?>assets/vendors/JQueryGantt/ganttPrint.css" type="text/css" media="print">
+	<link rel="stylesheet" href="<?=base_url()?>assets/vendors/JQueryGantt/platform.css" type="text/css">
+	<link rel="stylesheet" href="<?=base_url()?>assets/vendors/JQueryGantt/libs/jquery/dateField/jquery.dateField.css" type="text/css">
+	<link rel="stylesheet" href="<?=base_url()?>assets/vendors/JQueryGantt/gantt.css" type="text/css">
+	<link rel="stylesheet" href="<?=base_url()?>assets/vendors/JQueryGantt/ganttPrint.css" type="text/css" media="print">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/js/sweetalert.css">
 
 	<style>
@@ -64,7 +64,7 @@
 	<script src="<?php echo base_url(); ?>assets/dist/js/sweetalert-dev.js"></script>
 </head>
 <body style="background-color: #ffffff;overflow-x: hidden;">
-	<input type="hidden" id="hdIdTareaGantt" name="hdIdTareaGantt" value="3">
+	<input type="hidden" id="hdIdTareaGantt" name="hdIdTareaGantt" value="<?=$idTareaGantt?>">
 	<div id="workSpace" style="padding: 0px;overflow-y: auto;overflow-x: hidden;position: relative;margin: 0 5px;width: 100%;height: 100%;"></div>
 
 	<script>
@@ -158,7 +158,7 @@
 
 					renderLoading();
 
-					window.location.href='<?=base_url()?>index.php/ET_Tarea/index/'+$('#hdIdTareaGantt').val();
+					window.location.href='<?=base_url()?>index.php/ET_Tarea/index/<?=$idExpedienteTecnico?>';
 				});
 			}, false, true);
 		}
@@ -373,7 +373,7 @@
 		<div class="__template__" type="GANTBUTTONS"><!--
 			<div class="ganttButtonBar noprint">
 			<div class="buttons">
-			<a href="https://gantt.twproject.com/"><img src="res/twGanttLogo.png" alt="Gantt de ET" align="absmiddle" style="max-width: 136px; padding-right: 15px"></a>
+			Gantt ET
 
 			<button onclick="$('#workSpace').trigger('undo.gantt');return false;" class="button textual icon requireCanWrite" title="undo"><span class="teamworkIcon">&#39;</span></button>
 			<button onclick="$('#workSpace').trigger('redo.gantt');return false;" class="button textual icon requireCanWrite" title="redo"><span class="teamworkIcon">&middot;</span></button>
