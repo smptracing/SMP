@@ -165,7 +165,7 @@
                                           </div>
                                           <div class="col-md-6">
                                           <br>
-                                           <label for="name">Nivel Estudio<span class="required"></span>
+                                           <label for="name">Tipo Documento Técnico<span class="required"></span>
                                             </label>
                                                  <select   id="listaNivelEstudio" name="listaNivelEstudio" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Nivel Estudio...">
                                                 </select>
