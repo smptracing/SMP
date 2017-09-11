@@ -4,7 +4,7 @@
 		<div class="col-md-12 col-xs-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2><b>EJECUCIÓN</b></h2>
+					<h2><b>EXPEDIENTE TÉCNICO</b></h2>
 					<div class="clearfix"></div>
 				</div>
 				<div class="x_content">
@@ -14,14 +14,14 @@
 							<a href="#tab_Sector"  id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">	<b>Expediente</b>
 							</a>
 						</li>
-						<li role="presentation" class=""><a href="#tab_EstudioCompatibilidad"  role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"> <b>Estudio Compatibilidad</b></a>
+						<!--<li role="presentation" class=""><a href="#tab_EstudioCompatibilidad"  role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"> <b>Estudio Compatibilidad</b></a>
                         </li>	
                         <li role="presentation" class=""><a href="#tab_Ejecucion_Deductivos"  role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"> <b>Ejecucion Deductivos</b></a>
                         </li>
                         <li role="presentation" class=""><a href="#tab_Ejecucion_Adicional"  role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"> <b>Ejecucion Adicionales</b></a>
                         </li>
                          <li role="presentation" class=""><a href="#tab_Modificacion"  role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"> <b>Modificacion</b></a>
-                        </li>
+                        </li>-->
 					</ul>
 				<div id="myTabContent" class="tab-content">
 				<div role="tabpanel" class="tab-pane fade active in" id="tab_Sector" aria-labelledby="home-tab">
