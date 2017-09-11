@@ -89,6 +89,7 @@
 								<li><a><i class="fa fa-book"></i> EXPEDIENTE TÉCNICO <span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a href="<?php echo site_url('Expediente_Tecnico/index'); ?>">Expediente técnico</a></li>
+										<li><a href="<?php echo site_url('Expediente_Tecnico/monitorCoordinador'); ?>">Monitoreo de ET (Coordinador)</a></li>
 									</ul>
 								</li> 
 							</ul>

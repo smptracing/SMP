@@ -26,10 +26,10 @@ class Expediente_Tecnico extends CI_Controller
 		
 	}
 
-	function _load_layout($template)
+	function _load_layout($template, $data)
 	{
 		$this->load->view('layout/Ejecucion/header');
-		$this->load->view($template);
+		$this->load->view($template, $data);
 		$this->load->view('layout/Ejecucion/footer');
 	}
 
@@ -574,6 +574,13 @@ class Expediente_Tecnico extends CI_Controller
 		$detalleExpediente=$this->Model_ET_Expediente_Tecnico->DetalleExpediente($id_et);
 		//var_dump($detalleExpediente);exit;
 		$this->load->view('front/Ejecucion/ExpedienteTecnico/detalleExpediente.php',["detalleExpediente" => $detalleExpediente]);	
+	}
+
+	public function monitorCoordinador()
+	{
+		$listaETExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->ListarExpedienteTecnico();
+
+		$this->_load_layout('front/Ejecucion/ExpedienteTecnico/monitorcoordinador.php', ['listaETExpedienteTecnico' => $listaETExpedienteTecnico]);
 	}
 
 	public function vistoBueno()
