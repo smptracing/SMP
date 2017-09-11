@@ -30,13 +30,15 @@
 		background-color: #f5f5f5;
 	}
 </style>
-<div style="overflow-y: scroll;height: 390px;margin-top: 40px;">
-	<h3 style="text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4)">
+<div style="background-color: #ffffff;box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.7);left: 0px;padding-top: 4px;position: absolute;right: 0px;top: 0px;">
+	<h3 style="padding-left: 4px;text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4)">
 		Actividad: <span style="color: #26a5d8;"><?=html_escape($etTarea->nombre_tarea)?></span>
 		<br>
 		<small>desde el <i style="text-decoration: underline;"><?=explode(' ', $etTarea->fecha_inicio_tarea)[0]?></i> hasta el <i style="text-decoration: underline;"><?=explode(' ', $etTarea->fecha_final_tarea)[0]?></i></small>
 	</h3>
-	<hr>
+	<input type="button" value="Cerrar ventana" class="button requireWrite newproject" style="background-color: #d43c3c;position: absolute;right: 0px;top: 4px;" onclick="$('#divDialogoGeneralGantt').hide();">
+</div>
+<div style="overflow-y: scroll;height: 90%;margin-top: 40px;">
 	<label for="selectETResponsableTarea"><b>Responsable de la actividad</b></label>
 	<br>
 	<select name="selectETResponsableTarea" id="selectETResponsableTarea" style="width: 100%;" onchange="asignarResponsable(<?=$etTarea->id_tarea_et?>);">
@@ -61,6 +63,30 @@
 			<?php }
 			} ?>
 	</select>
+	<br><br>
+	<table style="width: 100%;">
+		<thead>
+			<tr>
+				<th>Especialidad</th>
+				<th>Especialista</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php foreach($listaEspecialidad as $key => $value){ ?>
+				<tr>
+					<td><?=$value->nombre_esp?></td>
+					<td>
+						<select name="selectPersonaEspecialista" id="selectPersonaEspecialista" style="width: 100%;">
+							<option value=""></option>
+							<?php foreach($listaPersona as $key => $value){ ?>
+								<option value="<?=$value->id_persona?>"><?=html_escape($value->nombres.' '.$value->apellido_p.' '.$value->apellido_m)?></option>
+							<?php } ?>
+						</select>
+					</td>
+				</tr>
+			<?php } ?>
+		</tbody>
+	</table>
 	<br><br>
 	<label for="txtObservacion"><b>Observación</b></label>
 	<br>
@@ -114,9 +140,6 @@
 			<?php } ?>
 		</ul>
 	</div>
-</div>
-<div style="background-color: #ffffff;box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.7);left: 0px;padding-top: 4px;position: absolute;right: 0px;text-align: right;top: 0px;">
-	<input type="button" value="Cerrar ventana" class="button requireWrite newproject" style="background-color: #d43c3c;" onclick="$('#divDialogoGeneralGantt').hide();">
 </div>
 <script>
 	function registrarObservacion()

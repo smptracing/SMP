@@ -171,7 +171,7 @@
                       <div class="col-lg-4 col-xs-12 col-sm-6">
                           <div class="small-box bg-yellow">
                               <div class="inner">
-                                  <h3>S</h3>
+                                  <h3>SM</h3>
                                   <p>Seguimiento y Monitoreo de Proyectos de Inversión Pública</p>
                               </div>
                               <div class="icon">

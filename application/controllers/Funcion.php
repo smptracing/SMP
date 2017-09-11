@@ -17,10 +17,8 @@ class Funcion extends CI_Controller {/* Mantenimiento de sector entidad Y servic
     }
     public function CadenaFuncional()
     {
-        $datos=$this->Model_Funcion->GetProyectos();
         $this->load->view('layout/Reportes/header');
         $this->load->view('front/Reporte/CadenaFuncional/index');
-        //$this->load->view('front/Reporte/CadenaFuncional/index',['listaProyectos'=>$datos]);
         $this->load->view('layout/Reportes/footer');
     }
 
@@ -73,37 +71,20 @@ class Funcion extends CI_Controller {/* Mantenimiento de sector entidad Y servic
             $deFecha = $this->input->post('deFecha');
             $aFecha = $this->input->post('aFecha');
 
-    
-            $cadena = "";
-            if($idFuncion=="")
-                $cadena=$cadena."0";
-            else
-                $cadena=$cadena."1";
-            if($idDivisionFuncional=="")
-                $cadena=$cadena."0";
-            else
-                $cadena=$cadena."1";
-            if($idGrupoFuncional=="")
-                $cadena=$cadena."0";
-            else
-                $cadena=$cadena."1";
-            if($provincia=="")
-                $cadena=$cadena."0";
-            else
-                $cadena=$cadena."1";
-            if($distrito=="")
-                $cadena=$cadena."0";
-            else
-                $cadena=$cadena."1";
-            if($deFecha=="")
-                $cadena=$cadena."0";
-            else
-                $cadena=$cadena."1";
+            $idFuncion=(($idFuncion=='' || $idFuncion==null) ? 'NULL' : $idFuncion);
+            $idDivisionFuncional=(($idDivisionFuncional=='' || $idDivisionFuncional==null) ? 'NULL' : $idDivisionFuncional);
+            $idGrupoFuncional=(($idGrupoFuncional=='' || $idGrupoFuncional==null) ? 'NULL' : $idGrupoFuncional);
+            $provincia=(($provincia=='' || $provincia==null) ? 'NULL' : "'".$provincia."'");
+            $distrito=(($distrito=='' || $distrito==null) ? 'NULL' : "'".$distrito."'");
+            $fecha1=(($deFecha=='' || $deFecha==null) ? 'NULL' : "'".$deFecha."'");
+            $fecha2=(($aFecha=='' || $aFecha==null) ? 'NULL' : "'".$aFecha."'");
 
-            //echo json_encode($cadena);
-            //exit;
-
-            $datos=$this->Model_Funcion->GetProyectos1($cadena,$idFuncion,$idDivisionFuncional,$idGrupoFuncional,$provincia,$distrito,$deFecha,$aFecha);
+            $datos=$this->Model_Funcion->GetProyectos($idFuncion,$idDivisionFuncional,$idGrupoFuncional,$provincia,$distrito,$fecha1,$fecha2);
+            foreach ($datos as $key => $value) 
+            {
+                $value->num_beneficiarios = $this->a_number_format($value->num_beneficiarios , 2, '.',",",3);
+                $value->costo_pi = $this->a_number_format($value->costo_pi , 2, '.',",",3);
+            }
 
             $this->load->view('front/Reporte/CadenaFuncional/tablaFuncion',['listaProyectos'=>$datos]);
         }
@@ -111,14 +92,6 @@ class Funcion extends CI_Controller {/* Mantenimiento de sector entidad Y servic
         {
             show_404();
         }
-
-       
-
-        //$datos=$this->Model_Funcion->GetProyectos();
-        //$this->load->view('front/Reporte/CadenaFuncional/tablaFuncion',['listaProyectos'=>$datos]);
-        
-        //echo json_encode($datos);
-        //exit;
     }
 
 
@@ -159,10 +132,65 @@ class Funcion extends CI_Controller {/* Mantenimiento de sector entidad Y servic
         }
 
     }
+    function a_number_format($number_in_iso_format, $no_of_decimals=3, $decimals_separator='.', $thousands_separator='', $digits_grouping=3)
+    {
+        // Check input variables
+        if (!is_numeric($number_in_iso_format)){
+            error_log("Warning! Wrong parameter type supplied in my_number_format() function. Parameter \$number_in_iso_format is not a number.");
+            return false;
+        }
+        if (!is_numeric($no_of_decimals)){
+            error_log("Warning! Wrong parameter type supplied in my_number_format() function. Parameter \$no_of_decimals is not a number.");
+            return false;
+        }
+        if (!is_numeric($digits_grouping)){
+            error_log("Warning! Wrong parameter type supplied in my_number_format() function. Parameter \$digits_grouping is not a number.");
+            return false;
+        }
+        
+        
+        // Prepare variables
+        $no_of_decimals = $no_of_decimals * 1;
+        
+        
+        // Explode the string received after DOT sign (this is the ISO separator of decimals)
+        $aux = explode(".", $number_in_iso_format);
+        // Extract decimal and integer parts
+        $integer_part = $aux[0];
+        $decimal_part = isset($aux[1]) ? $aux[1] : '';
+        
+        // Adjust decimal part (increase it, or minimize it)
+        if ($no_of_decimals > 0){
+            // Check actual size of decimal_part
+            // If its length is smaller than number of decimals, add trailing zeros, otherwise round it
+            if (strlen($decimal_part) < $no_of_decimals){
+                $decimal_part = str_pad($decimal_part, $no_of_decimals, "0");
+            } else {
+                $decimal_part = substr($decimal_part, 0, $no_of_decimals);
+            }
+        } else {
+            // Completely eliminate the decimals, if there $no_of_decimals is a negative number
+            $decimals_separator = '';
+            $decimal_part       = '';
+        }
+        
+        // Format the integer part (digits grouping)
+        if ($digits_grouping > 0){
+            $aux = strrev($integer_part);
+            $integer_part = '';
+            for ($i=strlen($aux)-1; $i >= 0 ; $i--){
+                if ( $i % $digits_grouping == 0 && $i != 0){
+                    $integer_part .= "{$aux[$i]}{$thousands_separator}";
+                } else {
+                    $integer_part .= $aux[$i];            
+                }
+            }
+        }
+        
+        $processed_number = "{$integer_part}{$decimals_separator}{$decimal_part}";
+        return $processed_number;
+    }
 
-    /*fin FUNCION*/
-
-    /* division funcional*/
 
     function _load_layout($template)
     {
