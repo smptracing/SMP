@@ -2,88 +2,225 @@ $(document).on("ready" ,function(){
      lista_formulacion_evaluacion();/*llamar a mi datatablet listar proyectosinverision*/
      lista_ejecucion();
      lista_funcionamiento();
-//agregar progrmacion para operacion y mantenimiento     
-      $("#form_AddProgramacion_operacion_mantenieminto").submit(function(event)
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/programar_pip/AddProgramacion_operacion_mantenimiento",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           //alert(resp);
-                           if (resp=='1') {
-                             swal("REGISTRADO","Se regristró correctamente", "success");
-                            // formReset();
-                           }
-                            if (resp=='2') {
-                             swal("NO SE REGISTRÓ","NO se regristró ", "error");
-                           }
-                          $('#Table_Programar').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
-                          $('#table_formulacion_evaluacion').dataTable()._fnAjaxUpdate();
-                          $('#table_ejecucion').dataTable()._fnAjaxUpdate();
-                          $('#Table_funcionamiento').dataTable()._fnAjaxUpdate();
-                           //  formReset();
-                         }
-                      });
-                  });
-     $("#form_AddProgramacion").submit(function(event)
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/programar_pip/AddProgramacion",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           //alert(resp);
-                           if (resp=='1') {
-                             swal("REGISTRADO","Se regristró correctamente", "success");
-                           //  formReset();
-                           }
-                            if (resp=='2') {
-                             swal("NO SE REGISTRÓ","NO se regristró ", "error");
-                           }
-                          $('#Table_Programar').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
-                          $('#table_formulacion_evaluacion').dataTable()._fnAjaxUpdate();
-                          $('#table_ejecucion').dataTable()._fnAjaxUpdate();
-                          $('#Table_funcionamiento').dataTable()._fnAjaxUpdate();
-                         //    formReset();
-                         }
-                      });
-                  });
-     $("#form_AddMeta_Pi").submit(function(event)
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/programar_pip/AddMeta_PI",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           //alert(resp);
-                           if (resp=='1') {
-                             swal("REGISTRADO","Se regristró correctamente", "success");
-                            
-                             formReset();
-                              //location.reload();
-                              setTimeout("location.reload()", 5000);
-                           }
-                            if (resp=='2') {
-                             swal("NO SE REGISTRÓ","NO se regristró ", "error");
-                             
-                           }
-                          $('#Table_meta_pi').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
-                             
-                             formReset();
-                             //location.reload();
-                             setTimeout("location.reload()", 5000);
-                         }
-                      });
-                  });
-     function formReset()
-          {
-          document.getElementById("form_AddProgramacion").reset();       
-          document.getElementById("form_AddMeta_Pi").reset();  
+//agregar progrmacion para operacion y mantenimiento   
+$("body").on("change","#Cbx_AnioCartera",function(e){
+  var anio=parseInt($('#Cbx_AnioCartera option:selected').text());
+  $("#lb_anio1").html(anio+1);
+  $("#lb_anio2").html(anio+2);
+  $("#lb_anio3").html(anio+3);
+  $("#lb_anio4").html(anio+1);
+  $("#lb_anio5").html(anio+2);
+  $("#lb_anio6").html(anio+3);
+    
+});
+$("body").on("change","#Cbx_AnioCartera_",function(e){
+  var anio=parseInt($('#Cbx_AnioCartera_ option:selected').text());
+  $("#lb_anio1_").html(anio+1);
+  $("#lb_anio2_").html(anio+2);
+  $("#lb_anio3_").html(anio+3);
+  $("#lb_anio4_").html(anio+1);
+  $("#lb_anio5_").html(anio+2);
+  $("#lb_anio6_").html(anio+3);
+    
+});   
+    $('#form_AddProgramacion_operacion_mantenieminto').formValidation({
+      fields:
+      {
+        cbxBrecha_:{
+          validators:{
+            notEmpty:{
+              message: '<b style="color: red;">El campo "Brecha" es requerido.</b>'
+            }
           }
+        },
+        txt_saldoprogramar_:{
+          validators:{
+            notEmpty:{
+              message: '<b style="color: red;">El campo "Saldo a Programar" es requerido.</b>'
+            }
+          }
+        },
+        txt_prioridad_:{
+          validators:{
+            notEmpty:{
+              message: '<b style="color: red;">El campo "Prioridad" es requerido.</b>'
+            }
+          }
+        },
+        txt_anio1_:{
+          validators:{
+            notEmpty:{
+              message: '<b style="color: red;">El campo "Año de Programación" es requerido.</b>'
+            }
+          }
+        },
+        txt_anio2_:{
+          validators:{
+            notEmpty:{
+              message: '<b style="color: red;">El campo "Año de Programación" es requerido.</b>'
+            }
+          }
+        },
+        txt_anio3_:{
+          validators:{
+            notEmpty:{
+              message: '<b style="color: red;">El campo "Año de Programación" es requerido.</b>'
+            }
+          }
+        },
+      }
+    });
+    $("body").on("click","#send_addProgramacion_operacion_mantenieminto",function(e){
+      $('#form_AddProgramacion_operacion_mantenieminto').data('formValidation').validate();
+      if($('#form_AddProgramacion_operacion_mantenieminto').data('formValidation').isValid()==true){
+          $('#form_AddProgramacion_operacion_mantenieminto').submit();
+          $('#form_AddProgramacion_operacion_mantenieminto').each(function(){ 
+            this.reset();
+          });
+          $('.selectpicker').selectpicker('refresh');
+          $('#form_AddProgramacion_operacion_mantenieminto').data('formValidation').resetForm();
+      }
+    });
+    $("#form_AddProgramacion_operacion_mantenieminto").submit(function(event)
+    {
+        event.preventDefault();
+        $.ajax({
+            url:base_url+"index.php/programar_pip/AddProgramacion_operacion_mantenimiento",
+            type:$(this).attr('method'),
+            data:$(this).serialize(),
+            success:function(resp){
+             //alert(resp);
+             if (resp=='1') {
+               swal("REGISTRADO","Se regristró correctamente", "success");
+              // formReset();
+             }
+              if (resp=='2') {
+               swal("NO SE REGISTRÓ","NO se regristró ", "error");
+             }
+            $('#Table_Programar').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
+            $('#table_formulacion_evaluacion').dataTable()._fnAjaxUpdate();
+            $('#table_ejecucion').dataTable()._fnAjaxUpdate();
+            $('#Table_funcionamiento').dataTable()._fnAjaxUpdate();
+             //  formReset();
+           }
+        });
+    });
+    $('#form_AddProgramacion').formValidation({
+      fields:
+      {
+        cbxBrecha:{
+          validators:{
+            notEmpty:{
+              message: '<b style="color: red;">El campo "Brecha" es requerido.</b>'
+            }
+          }
+        },
+        txt_saldoprogramar:{
+          validators:{
+            notEmpty:{
+              message: '<b style="color: red;">El campo "Saldo a Programar" es requerido.</b>'
+            }
+          }
+        },
+        txt_prioridad:{
+          validators:{
+            notEmpty:{
+              message: '<b style="color: red;">El campo "Prioridad" es requerido.</b>'
+            }
+          }
+        },
+        txt_anio1:{
+          validators:{
+            notEmpty:{
+              message: '<b style="color: red;">El campo "Año de Programación" es requerido.</b>'
+            }
+          }
+        },
+        txt_anio2:{
+          validators:{
+            notEmpty:{
+              message: '<b style="color: red;">El campo "Año de Programación" es requerido.</b>'
+            }
+          }
+        },
+        txt_anio3:{
+          validators:{
+            notEmpty:{
+              message: '<b style="color: red;">El campo "Año de Programación" es requerido.</b>'
+            }
+          }
+        },
+      }
+    });
+    $("body").on("click","#send_addProgramacion",function(e){
+      $('#form_AddProgramacion').data('formValidation').validate();
+      if($('#form_AddProgramacion').data('formValidation').isValid()==true){
+          $('#form_AddProgramacion').submit();
+          $('#form_AddProgramacion').each(function(){ 
+            this.reset();
+          });
+          $('.selectpicker').selectpicker('refresh');
+          $('#form_AddProgramacion').data('formValidation').resetForm();
+      }
+    });
+    $("#form_AddProgramacion").submit(function(event)
+    {
+          event.preventDefault();
+          $.ajax({
+              url:base_url+"index.php/programar_pip/AddProgramacion",
+              type:$(this).attr('method'),
+              data:$(this).serialize(),
+              success:function(resp){
+               //alert(resp);
+               if (resp=='1') {
+                 swal("REGISTRADO","Se regristró correctamente", "success");
+               //  formReset();
+               }
+                if (resp=='2') {
+                 swal("NO SE REGISTRÓ","NO se regristró ", "error");
+               }
+              $('#Table_Programar').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
+              $('#table_formulacion_evaluacion').dataTable()._fnAjaxUpdate();
+              $('#table_ejecucion').dataTable()._fnAjaxUpdate();
+              $('#Table_funcionamiento').dataTable()._fnAjaxUpdate();
+
+             }
+          });
+        
+    });
+    $("#form_AddMeta_Pi").submit(function(event)
+    {
+        event.preventDefault();
+        $.ajax({
+            url:base_url+"index.php/programar_pip/AddMeta_PI",
+            type:$(this).attr('method'),
+            data:$(this).serialize(),
+            success:function(resp){
+             //alert(resp);
+             if (resp=='1') {
+               swal("REGISTRADO","Se regristró correctamente", "success");
+              
+               formReset();
+                //location.reload();
+                setTimeout("location.reload()", 5000);
+             }
+              if (resp=='2') {
+               swal("NO SE REGISTRÓ","NO se regristró ", "error");
+               
+             }
+            $('#Table_meta_pi').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
+               
+               formReset();
+               //location.reload();
+               setTimeout("location.reload()", 5000);
+           }
+        });
+    });
+    function formReset()
+    {
+      document.getElementById("form_AddProgramacion").reset();       
+      document.getElementById("form_AddMeta_Pi").reset();  
+    }
 
 });
 //listar proyectos de inversion en formulacion y evaluacion
@@ -426,6 +563,14 @@ var  AddMeta_Pi=function(tbody,table){
                       $("#txt_pia_fye").val(data.ultimo_pia_meta_pres);
                       $("#txt_devengado_pia_fye").val(data.devengado_acumulado_total);
                       $("#txt_pim_pia_fye").val(data.ultimo_pim_meta_pres);
+
+                      //$("#lb_anio1").val();
+                      if(data.nombre_estado_ciclo=='IDEA' || data.nombre_estado_ciclo=='FORMULACION Y EVALUACION'){
+                        $("#ct_anio").css("display","none");
+                      }
+                      else{
+                         $("#ct_anio").css("display",""); 
+                      }
 if (parseFloat(data.ultimo_pim_meta_pres)>0) {
  // alert("nuevo");
     costopi=parseFloat(data.costo_pi)-parseFloat(data.ultimo_pim_meta_pres)-parseFloat(data.devengado_acumulado_total);
@@ -455,6 +600,13 @@ if (data.ultimo_pim_meta_pres==""|| parseFloat(data.ultimo_pim_meta_pres)=="0.00
                        $("#txt_pia_oper").val(data.ultimo_pia_meta_pres);
                       $("#txt_devengado_oper").val(data.devengado_acumulado_total);
                       $("#txt_pim_oper").val(data.ultimo_pim_meta_pres);
+            
+                      if(data.nombre_estado_ciclo=='IDEA' || data.nombre_estado_ciclo=='FORMULACION Y EVALUACION'){
+                        $("#ct_anio").css("display","none");
+                      }
+                      else{
+                         $("#ct_anio").css("display",""); 
+                      }
 if (parseFloat(data.ultimo_pim_meta_pres)>0) {
  // alert("nuevo");
     costopi=parseFloat(data.costo_pi)-parseFloat(data.ultimo_pim_meta_pres)-parseFloat(data.devengado_acumulado_total);
@@ -487,6 +639,7 @@ if (data.ultimo_pim_meta_pres==""|| parseFloat(data.ultimo_pim_meta_pres)=="0.00
                             $('select[name=Cbx_AnioCartera_]').change();
                             $('.selectpicker').selectpicker('refresh');
                             listar_Brecha_();//listar brecha
+                            $("#Cbx_AnioCartera_").trigger("change");
                         }
                     });
                 }
@@ -533,8 +686,10 @@ if (data.ultimo_pim_meta_pres==""|| parseFloat(data.ultimo_pim_meta_pres)=="0.00
                              lista_prioridad(anio);
                             // alert(anio);
 
+                             $("#Cbx_AnioCartera").trigger("change");
+
                         }
-                    });
+                    });                 
                 }
 
                 var listar_Brecha=function(valor){
