@@ -50,10 +50,10 @@ class Model_Funcion extends CI_Model
         return $data->result();
     }
 
-    function GetProyectos1($cadena,$idFuncion,$idDivisionFuncional,$idGrupoFuncional,$provincia,$distrito,$fecha1,$fecha2)
+    function GetProyectos1($idFuncion,$idDivisionFuncional,$idGrupoFuncional,$provincia,$distrito,$fecha1,$fecha2)
     {
-        $data=$this->db->query("EXEC sp_Modulo_Reportes @id_funcion ='".$idFuncion."', @id_division_funcional = '".$idDivisionFuncional."', @id_grupo_funcional = '".$idGrupoFuncional."',@provincia ='".$provincia."', @distrito = '".$distrito."', @fecha1 = '".$deFecha."', @fecha2  = '".$aFecha."'");
-        return $data->result();        
+        $data=$this->db->query("EXEC sp_Modulo_Reportes @id_funcion=$idFuncion, @id_division_funcional=$idDivisionFuncional, @id_grupo_funcional=$idGrupoFuncional, @provincia=$provincia, @distrito=$distrito, @fecha1=$fecha1, @fecha2=$fecha2");
+        return $data->result();
     }
 
     function AddFucion($txt_codigofuncion,$txt_nombrefuncion)

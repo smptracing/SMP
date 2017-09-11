@@ -244,7 +244,7 @@ $(document).on("ready" ,function()
             var registros=eval(objectJSON);
             for(var i=0; i<registros.length; i++)
             {
-                htmlTemp+="<option value="+registros[i]["distrito"]+"> "+registros[i]["distrito"]+" </option>";   
+                htmlTemp+='<option value="'+registros[i]['distrito']+'">'+registros[i]['distrito']+' </option>';   
             };
 
             $("#listaDistrito").html(htmlTemp);

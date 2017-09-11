@@ -72,36 +72,16 @@ class Funcion extends CI_Controller {/* Mantenimiento de sector entidad Y servic
             $distrito = $this->input->post('idDistrito');
             $deFecha = $this->input->post('deFecha');
             $aFecha = $this->input->post('aFecha');
-    
-            $cadena = "";
-            if($idFuncion=="")
-                $cadena=$cadena."0";
-            else
-                $cadena=$cadena."1";
-            if($idDivisionFuncional=="")
-                $cadena=$cadena."0";
-            else
-                $cadena=$cadena."1";
-            if($idGrupoFuncional=="")
-                $cadena=$cadena."0";
-            else
-                $cadena=$cadena."1";
-            if($provincia=="")
-                $cadena=$cadena."0";
-            else
-                $cadena=$cadena."1";
-            if($distrito=="")
-                $cadena=$cadena."0";
-            else
-                $cadena=$cadena."1";
-            if($deFecha=="")
-                $cadena=$cadena."0";
-            else
-                $cadena=$cadena."1";
 
-           // $datos=$this->Model_Funcion->GetProyectos1($cadena,$idFuncion,$idDivisionFuncional,$idGrupoFuncional,$provincia,$distrito,$deFecha,$aFecha);
+            $idFuncion=(($idFuncion=='' || $idFuncion==null) ? 'NULL' : $idFuncion);
+            $idDivisionFuncional=(($idDivisionFuncional=='' || $idDivisionFuncional==null) ? 'NULL' : $idDivisionFuncional);
+            $idGrupoFuncional=(($idGrupoFuncional=='' || $idGrupoFuncional==null) ? 'NULL' : $idGrupoFuncional);
+            $provincia=(($provincia=='' || $provincia==null) ? 'NULL' : "'".$provincia."'");
+            $distrito=(($distrito=='' || $distrito==null) ? 'NULL' : "'".$distrito."'");
+            $fecha1=(($deFecha=='' || $deFecha==null) ? 'NULL' : "'".$deFecha."'");
+            $fecha2=(($aFecha=='' || $aFecha==null) ? 'NULL' : "'".$aFecha."'");
 
-            $datos=$this->Model_Funcion->GetProyectos1(($idFuncion=='' ? 'NULL' : $idFuncion),($idDivisionFuncional=='' ? 'NULL' : $idDivisionFuncional),($idGrupoFuncional=='' ? 'NULL' : $idGrupoFuncional),($provincia == '' ? 'NULL' : $provincia ),($distrito=='' ? 'NULL' : $distrito), ($deFecha == '' ? 'NULL': $deFecha),($aFecha=='' ? 'NULL' : $aFecha));
+            $datos=$this->Model_Funcion->GetProyectos1($idFuncion,$idDivisionFuncional,$idGrupoFuncional,$provincia,$distrito,$fecha1,$fecha2);
 
 
             $this->load->view('front/Reporte/CadenaFuncional/tablaFuncion',['listaProyectos'=>$datos]);
@@ -110,14 +90,6 @@ class Funcion extends CI_Controller {/* Mantenimiento de sector entidad Y servic
         {
             show_404();
         }
-
-       
-
-        //$datos=$this->Model_Funcion->GetProyectos();
-        //$this->load->view('front/Reporte/CadenaFuncional/tablaFuncion',['listaProyectos'=>$datos]);
-        
-        //echo json_encode($datos);
-        //exit;
     }
 
 
