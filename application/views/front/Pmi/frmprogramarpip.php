@@ -168,7 +168,7 @@
          <div class="row">
                     <div class="col-xs-12">
                                         <!-- PAGE CONTENT BEGINS -->
-              <form class="form-horizontal " id="form_AddProgramacion"   action="<?php echo base_url(); ?>bancoproyectos/Get_OperacionMantenimiento" method="POST" >
+              <form class="form-horizontal " id="form_AddProgramacion"   action="<?php echo base_url(); ?>bancoproyectos/Get_OperacionMantenimiento" method="POST"  onSubmit="return false;"  >
                              <div class="item form-group">
                               <div class="col-md-6 col-sm-6 col-xs-12">
                                  <input id="txt_id_pip_programacion" name="txt_id_pip_programacion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
@@ -199,7 +199,7 @@
                                       <select id="cbxBrecha" name="cbxBrecha" class="selectpicker"   title="Elija Brecha">
                                       </select>
                                     </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                    <div class="col-md-3 col-sm-6 col-xs-12 form-group">
                                       <center><label style="color: red">Saldo a Programar</label></center>
                                       <input  class="form-control" id="txt_saldoprogramar" name="txt_saldoprogramar" type="number" >
                                     </div>
@@ -220,32 +220,51 @@
                                       <center><label>Devengado</label></center>
                                       <input  class="form-control" id="txt_devengado_pia_fye" name="txt_devengado_pia_fye" type="number"  value="0.00"  disabled="disabled" />
                                     </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12  form-group">
+                                    <div class="col-md-3 col-sm-6 col-xs-12 form-group">
                                       <center><label>Prioridad</label></center>
                                       <input  class="form-control " id="txt_prioridad" name="txt_prioridad"  type="number"   />
                                     </div>
                                  </div>
-                              <h6><i class="fa fa-list"></i><b> Monto Programación</b></h6>
-                               <div class="item ">
+                                <h6><i class="fa fa-list"></i><b> Monto Programación</b></h6>
+                                <div class="row item ">
                                    <div class="col-md-3 col-sm-6 col-xs-12 form-group">
-                                      <CENTER><label>Año 1.</label></CENTER>
+                                      <CENTER><label id="lb_anio1">Año 1.</label></CENTER>
                                       <input  class="form-control" id="txt_anio1" name="txt_anio1" type="number" />
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12 form-group">
-                                      <CENTER><label>Año 2</label></CENTER>
+                                      <CENTER><label id="lb_anio2">Año 2</label></CENTER>
                                       <input  class="form-control" id="txt_anio2" name="txt_anio2" type="number" />
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12 form-group">
-                                      <CENTER><label>Año 3</label></CENTER>
+                                      <CENTER><label id="lb_anio3">Año 3</label></CENTER>
                                       <input  class="form-control" id="txt_anio3" name="txt_anio3" type="number" />
                                     </div>
 
                          
-                                 </div>
+                                </div>
+                                <div class="row item " id='ct_anio'>
+                                   <h6><i class="fa fa-list"></i><b> Monto Operación y Mantenimiento</b></h6>
+                                   <div class="col-md-3 col-sm-6 col-xs-12 form-group">
+                                      <CENTER><label id="lb_anio4">Año 4</label></CENTER>
+                                      <input  class="form-control" id="txt_anio4" name="txt_anio4" type="number" />
+                                    </div>
+                                    <div class="col-md-3 col-sm-6 col-xs-12 form-group">
+                                      <CENTER><label id="lb_anio5">Año 5</label></CENTER>
+                                      <input  class="form-control" id="txt_anio5" name="txt_anio5" type="number" />
+                                    </div>
+                                    <div class="col-md-3 col-sm-6 col-xs-12 form-group">
+                                      <CENTER><label id="lb_anio6">Año 6</label></CENTER>
+                                      <input  class="form-control" id="txt_anio6" name="txt_anio6" type="number" />
+                                    </div>
+
+                         
+                                </div>
+                               
+
                                <div class="item form-group">
                                    
                                     <div class="col-md-3 col-sm-6 col-xs-12">
-                                        <button  id="send"  type='submit' class="btn btn-success">
+                                        <button  id="send_addProgramacion"  type='button' class="btn btn-success">
                                              <span class="glyphicon glyphicon-floppy-saved"></span> Guardar
                                         </button>
                                     </div>
@@ -367,7 +386,7 @@
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <label>.</label><br>
-                                       <button  id="xsend" type="submit" class="btn btn-success">
+                                       <button  id="send" type="submit" class="btn btn-success">
                                              <span class="glyphicon glyphicon-floppy-saved"></span> Guardar
                                         </button>
                                     </div>
@@ -432,7 +451,7 @@
          <div class="row">
                     <div class="col-xs-12">
                                         <!-- PAGE CONTENT BEGINS -->
-              <form class="form-horizontal " id="form_AddProgramacion_operacion_mantenieminto"   action="<?php echo base_url(); ?>bancoproyectos/Get_OperacionMantenimiento" method="POST" >
+              <form class="form-horizontal " id="form_AddProgramacion_operacion_mantenieminto"   action="<?php echo base_url(); ?>bancoproyectos/Get_OperacionMantenimiento" method="POST" onSubmit="return false;"    >
                          <div class="item form-group">
                               <div class="col-md-6 col-sm-6 col-xs-12">
                                  <input id="txt_id_pip_programacion_" name="txt_id_pip_programacion_" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
@@ -446,7 +465,7 @@
                                     <!--<input type="text" id="Aniocartera" value="<?=(isset($anio) ? $anio : date('Y'))?>">-->
                                 </div>
                               </div>
-                               <div class="item form-group">
+                               <div class="item ">
                                <div class="col-md-3 col-sm-6 col-xs-12">
                                       <label>Código Único</label>
                                       <input  class="form-control" id="txt_codigo_unico_pi_" name="txt_codigo_unico_pi_" type="text" disabled="disabled">
@@ -459,18 +478,19 @@
                                       <label>Costo del Proyecto</label>
                                       <input  class="form-control" id="txt_costo_proyecto_" name="txt_costo_proyecto_" type="number" disabled="disabled">
                                     </div>
-                                    <div class="col-md-4 col-sm-12 col-xs-12">
+                                    <div class="col-md-4 col-sm-12 col-xs-12  form-group">
                                       <label>Brecha Proyecto </label>
                                       <select id="cbxBrecha_" name="cbxBrecha_" class="selectpicker"   title="Elija Brecha" required="required">
                                       </select>
                                     </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                    <div class="col-md-3 col-sm-6 col-xs-12 form-group">
                                       <center><label style="color: red">Saldo a Programar</label></center>
                                       <input  class="form-control" id="txt_saldoprogramar_oper" name="txt_saldoprogramar_oper" type="number" required="required">
                                     </div>
                                  </div>
+                                    <div style="clear:both;height:0;">&nbsp;</div>
                               <h6><i class="fa fa-money"></i><b> Meta Presupuestal</b></h6>
-                              <div class="item form-group">
+                              <div class="item ">
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>PIA</label></center>
                                       <input  class="form-control" id="txt_pia_oper" name="txt_pia_oper" type="number" required="required" value="0.00" disabled="disabled">
@@ -483,33 +503,51 @@
                                       <center><label>Devengado</label></center>
                                       <input  class="form-control" id="txt_devengado_oper" name="txt_devengado_oper" type="number" required="required" value="0.00"  disabled="disabled">
                                     </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                    <div class="col-md-3 col-sm-6 col-xs-12 form-group">
                                       <center><label>Prioridad</label></center>
                                       <input  class="form-control" id="txt_prioridad_" name="txt_prioridad_" type="number" required="required">
                                     </div>
                                  </div>
-                              <h6><i class="fa fa-list"></i><b> Monto Operación y Mantenimiento</b></h6>
-                               <div class="item form-group">
-                                   <div class="col-md-3 col-sm-6 col-xs-12">
-                                      <CENTER><label>Año 1</label></CENTER>
+                              <h6><i class="fa fa-list"></i><b> Monto Programación</b></h6>
+                               <div class="row item ">
+                                   <div class="col-md-3 col-sm-6 col-xs-12 form-group">
+                                      <CENTER><label id="lb_anio1_">Año 1</label></CENTER>
                                       <input  class="form-control" id="txt_anio1_" name="txt_anio1_" type="number" required="required">
                                     </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
-                                      <CENTER><label>Año 2</label></CENTER>
+                                    <div class="col-md-3 col-sm-6 col-xs-12 form-group">
+                                      <CENTER><label id="lb_anio2_">Año 2</label></CENTER>
                                       <input  class="form-control" id="txt_anio2_" name="txt_anio2_" type="number" required="required">
                                     </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
-                                      <CENTER><label>Año 3</label></CENTER>
+                                    <div class="col-md-3 col-sm-6 col-xs-12 form-group">
+                                      <CENTER><label id="lb_anio3_">Año 3</label></CENTER>
                                       <input  class="form-control" id="txt_anio3_" name="txt_anio3_" type="number" required="required">
                                     </div>
 
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                   
+                                 </div>
+                                 <div class="row item " id='ct_anio_'>
+                                  <h6><i class="fa fa-list"></i><b> Monto Operación y Mantenimiento</b></h6>
+                                   <div class="col-md-3 col-sm-6 col-xs-12 form-group">
+                                      <CENTER><label id="lb_anio4_">Año 4</label></CENTER>
+                                      <input  class="form-control" id="txt_anio4_" name="txt_anio4_" type="number" />
+                                    </div>
+                                    <div class="col-md-3 col-sm-6 col-xs-12 form-group">
+                                      <CENTER><label id="lb_anio5_">Año 5</label></CENTER>
+                                      <input  class="form-control" id="txt_anio5_" name="txt_anio5_" type="number" />
+                                    </div>
+                                    <div class="col-md-3 col-sm-6 col-xs-12 form-group">
+                                      <CENTER><label id="lb_anio6_">Año 6</label></CENTER>
+                                      <input  class="form-control" id="txt_anio6_" name="txt_anio6_" type="number" />
+                                    </div>
+
+                         
+                                </div>
+                                 <div class="col-md-3 col-sm-6 col-xs-12">
                                       <label>.</label><br>
-                                       <button  id="2xsend" type="submit" class="btn btn-success">
+                                       <button  id="send_addProgramacion_operacion_mantenieminto" type="button" class="btn btn-success">
                                              <span class="glyphicon glyphicon-floppy-saved"></span> Guardar
                                         </button>
                                     </div>
-                                 </div>
 
 
                      <div class="ln_solid"></div>
