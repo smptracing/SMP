@@ -110,11 +110,11 @@
                 </ul>
 
                 <ul class="nav side-menu">
-                     <li><a><i class="fa fa-gears"></i>Banco de inversiones<span class="fa fa-chevron-down"></span></a>
+                     <li><a><i class="fa fa-gears"></i>Estudio de Preinversion en el GORE<span class="fa fa-chevron-down"></span></a>
 
                     <ul class="nav child_menu">
-                      <li><a href="<?php echo site_url('Estudio_Inversion/'); ?>">Estudio de Preinversion</a></li>
-                      <li><a href="<?php echo site_url('NoPipProgramados/nopipformulacion'); ?>">No PIP</a></li>
+                      <li><a href="<?php echo site_url('Estudio_Inversion/'); ?>">Estudio de Preinversion de PIP</a></li>
+                      <li><a href="<?php echo site_url('NoPipProgramados/nopipformulacion'); ?>">Estudio de Preinversion  de No PIP</a></li>
             
                     </ul>
                   </li>
