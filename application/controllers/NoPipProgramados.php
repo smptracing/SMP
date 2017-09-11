@@ -48,7 +48,22 @@ class NoPipProgramados extends CI_Controller
         $ListarPipProgramados=$this->NoPipProgramados_Model->ListarPipProgramados();
         $this->load->view('front/Formulacion_Evaluacion/NoPip/insertar',['ListarPipProgramados' => $ListarPipProgramados ]);
     }
+       public function editar()
+    {
+        if($this->input->post('hdId'))
+        {   $this->db->trans_start(); 
+            $id=$this->input->post('hdId');
+            $txtNombreNoPip=$this->input->post('txtNombreNoPip');
 
+            $this->NoPipProgramados_Model->editar($id,$txtNombreNoPip);    
+            $this->db->trans_complete();     
+            echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Se actualizo los datos de NO PIP.']);exit;
+        }
+
+        $id=$this->input->get('id');
+        $NoPipData=$this->NoPipProgramados_Model->NoPip($id);
+        return $this->load->view('front/Formulacion_Evaluacion/NoPip/editar',['NoPipData'=>$NoPipData]);       
+    }
     public function listarNopip()
     {
             if ($this->input->is_ajax_request()) {
