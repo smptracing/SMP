@@ -77,6 +77,27 @@
 		<div class="clearfix"></div>
 	</div>
 </div>
+<?php
+$sessionTempCorrecto=$this->session->flashdata('correcto');
+$sessionTempError=$this->session->flashdata('error');
+
+if($sessionTempCorrecto){ ?>
+	<script>
+	$(document).ready(function()
+	{
+		swal('','<?=$sessionTempCorrecto?>', "success");
+	});
+	</script>
+<?php }
+
+if($sessionTempError){ ?>
+	<script>
+	$(document).ready(function()
+	{
+	swal('','<?=$sessionTempError?>', "error");
+	});
+	</script>
+<?php } ?>
 
 <script>
 	$(document).ready(function()
