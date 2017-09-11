@@ -43,20 +43,21 @@
 														    </div>
 														  </div>
 														</div>
-														<div class="row" style="margin-left: 10px; margin-top: 10px;">
+														<div class="row" style="margin-left: 10px; margin-top: 10px; ">
 															<div class="panel panel-default">
 																 <div class="panel-heading">Ejecución Anual del Proyecto</div>
 																 
 																	  <div class="panel-body">
-																			<div class="col-lg-6">
-																			      <label class="col-sm-2" for="email">CÓDIGO</label>
-																				  <input type="text"  class="form-control" id="txtCodigo" name="txtCodigo">
-																			 </div>							
-																		   <div class="col-lg-6">
+																			
+																			<div class="col-lg-12" height='10' width='10'>
 																			      <label class="col-sm-2" for="pwd">NOMBRE</label>        
 																			      <input type="text" class="form-control"  id="txtnombreP" name="txtnombreP">
 																		    </div>
 
+																			<div class="col-lg-6">
+																			      <label class="col-sm-2" for="email">CÓDIGO</label>
+																				  <input type="text"  class="form-control" id="txtCodigo" name="txtCodigo">
+																			 </div>							
 																		    <div class="col-lg-6">
 																			        <label class=" col-sm-2" for="pwd">BENEFICIARIOS</label>
 																			        <input type="text" class="form-control"  id="beneficiario" name="beneficiario">
@@ -64,6 +65,18 @@
 																		    <div class="col-lg-6">
 																			        <label class=" col-sm-6" for="pwd">MONTO DE INSERSIÓN</label>
 																			        <input type="text" class="form-control"  id="txtmontoInversion" name="txtmontoInversion">
+																		    </div> 
+																		    <div class="col-lg-6">
+																			        <label class=" col-sm-6" for="pwd">PIA</label>
+																			        <input type="text" class="form-control"  id="txtPIA" name="txtPIA">
+																		    </div> 
+																		    <div class="col-lg-6">
+																			        <label class=" col-sm-6" for="pwd">PIN</label>
+																			        <input type="text" class="form-control"  id="txtPIN" name="txtPIN">
+																		    </div> 
+																		    <div class="col-lg-6">
+																			        <label class=" col-sm-6" for="pwd">DEVENGADO</label>
+																			        <input type="text" class="form-control"  id="txtdevengado" name="txtdevengado">
 																		    </div> 
 																	  </div>
 																	
@@ -119,6 +132,9 @@ $("#CodigoUnico").on( "click", function()
 		        $("#txtnombreP").val(cantidadpipprovincias.nombre_pi);
 		        $("#beneficiario").val(cantidadpipprovincias.num_beneficiarios);
 		        $("#txtmontoInversion").val(cantidadpipprovincias.costo_pi);
+		        $("#txtPIA").val(cantidadpipprovincias.pia_meta_pres);
+		        $("#txtPIN").val(cantidadpipprovincias.pim_acumulado);
+		        $("#txtdevengado").val(cantidadpipprovincias.pim_acumulado);
 			}
 		});
 
