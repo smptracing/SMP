@@ -56,7 +56,9 @@
 																  		<?=$item->desc_tipo_nopip?>
 																	</td>
 																	<td>
-																  		
+																  	<button type='button' class='editar btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Modificar No Pip',{ id: '<?=$item->id_est_inv?>' }, base_url+'index.php/NoPipProgramados/editar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-pencil bigger-120'></i></button>
+
+																</td>
 																	</td>
 															  </tr>
 															<?php } ?>

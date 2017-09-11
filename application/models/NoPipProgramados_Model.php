@@ -41,7 +41,7 @@ class NoPipProgramados_Model extends CI_Model
 
     public function NoPipFormulacionEvaluacionListar()
     {
-        $data=$this->db->query("select codigo_unico_pi,nombre_est_inv,TIPO_NOPIP.desc_tipo_nopip from ESTUDIO_INVERSION INNER JOIN PROYECTO_INVERSION ON ESTUDIO_INVERSION.id_pi=PROYECTO_INVERSION.id_pi INNER JOIN NOPIP ON PROYECTO_INVERSION.id_pi=NOPIP.id_pi INNER JOIN TIPO_NOPIP ON NOPIP.id_tipo_nopip=TIPO_NOPIP.id_tipo_nopip");
+        $data=$this->db->query("select id_est_inv,codigo_unico_pi,nombre_est_inv,TIPO_NOPIP.desc_tipo_nopip from ESTUDIO_INVERSION INNER JOIN PROYECTO_INVERSION ON ESTUDIO_INVERSION.id_pi=PROYECTO_INVERSION.id_pi INNER JOIN NOPIP ON PROYECTO_INVERSION.id_pi=NOPIP.id_pi INNER JOIN TIPO_NOPIP ON NOPIP.id_tipo_nopip=TIPO_NOPIP.id_tipo_nopip");
 
         return $data->result();
     }
@@ -60,4 +60,17 @@ class NoPipProgramados_Model extends CI_Model
         return $data->result()[0];
     }
 
+    public function NoPip($id)
+    {
+
+        $data=$this->db->query("select * from ESTUDIO_INVERSION where id_est_inv='".$id."'");
+
+        return $data->result()[0];
+    }
+     function editar($id, $txtNombreNoPip)
+    {
+        $data=$this->db->query(" update ESTUDIO_INVERSION SET nombre_est_inv='".$txtNombreNoPip."' where id_est_inv='".$id."'");
+
+        return true;
+    }
 }
