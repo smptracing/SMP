@@ -110,6 +110,13 @@ class PrincipalReportes extends CI_Controller
             echo  json_encode($devengado);
     }
 
+    function  DatosParaEstadisticaAnualProyecto()
+    {
+            $codigounico=$this->input->POST('codigounico');
+            $data=$this->Model_Dashboard_Reporte->ReporteDevengadoPiaPimPorPip($codigounico);
+            echo  json_encode($data);
+    }
+
     public function _load_layout($template)
     {
         $this->load->view('layout/Reportes/header');

@@ -42,8 +42,32 @@
 														      </span>
 														    </div>
 														  </div>
+														</div>
+														<div class="row" style="margin-left: 10px; margin-top: 10px;">
+															<div class="panel panel-default">
+																 <div class="panel-heading">Ejecución Anual del Proyecto</div>
+																 
+																	  <div class="panel-body">
+																			<div class="col-lg-6">
+																			      <label class="col-sm-2" for="email">CÓDIGO</label>
+																				  <input type="text"  class="form-control" id="txtCodigo" name="txtCodigo">
+																			 </div>							
+																		   <div class="col-lg-6">
+																			      <label class="col-sm-2" for="pwd">NOMBRE</label>        
+																			      <input type="text" class="form-control"  id="txtnombreP" name="txtnombreP">
+																		    </div>
 
-
+																		    <div class="col-lg-6">
+																			        <label class=" col-sm-2" for="pwd">BENEFICIARIOS</label>
+																			        <input type="text" class="form-control"  id="beneficiario" name="beneficiario">
+																		    </div> 
+																		    <div class="col-lg-6">
+																			        <label class=" col-sm-6" for="pwd">MONTO DE INSERSIÓN</label>
+																			        <input type="text" class="form-control"  id="txtmontoInversion" name="txtmontoInversion">
+																		    </div> 
+																	  </div>
+																	
+																</div>
 														</div>
 														<div class="row">
 
@@ -79,10 +103,25 @@
 
 $(document).on("ready" ,function(){
 
-	$("#CodigoUnico").on( "click", function()
+$("#CodigoUnico").on( "click", function()
 	 {
 		 
-	var codigounico=$("#BuscarPip").val();
+		var codigounico=$("#BuscarPip").val();
+		$.ajax({
+		"url":base_url+"index.php/PrincipalReportes/DatosParaEstadisticaAnualProyecto",
+		type:"POST",
+		data:{codigounico:codigounico},
+		success: function(data)
+			{
+		        console.log(data);
+		        var cantidadpipprovincias=JSON.parse(data); 
+		        $("#txtCodigo").val(cantidadpipprovincias.codigo_unico_pi);
+		        $("#txtnombreP").val(cantidadpipprovincias.nombre_pi);
+		        $("#beneficiario").val(cantidadpipprovincias.num_beneficiarios);
+		        $("#txtmontoInversion").val(cantidadpipprovincias.costo_pi);
+			}
+		});
+
 	//alert(codigounico);
 	$.ajax({
 				"url":base_url+"index.php/PrincipalReportes/BuscadorPipPorCodigoReporte",
