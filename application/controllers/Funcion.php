@@ -17,10 +17,8 @@ class Funcion extends CI_Controller {/* Mantenimiento de sector entidad Y servic
     }
     public function CadenaFuncional()
     {
-        $datos=$this->Model_Funcion->GetProyectos();
         $this->load->view('layout/Reportes/header');
         $this->load->view('front/Reporte/CadenaFuncional/index');
-        //$this->load->view('front/Reporte/CadenaFuncional/index',['listaProyectos'=>$datos]);
         $this->load->view('layout/Reportes/footer');
     }
 
@@ -81,7 +79,7 @@ class Funcion extends CI_Controller {/* Mantenimiento de sector entidad Y servic
             $fecha1=(($deFecha=='' || $deFecha==null) ? 'NULL' : "'".$deFecha."'");
             $fecha2=(($aFecha=='' || $aFecha==null) ? 'NULL' : "'".$aFecha."'");
 
-            $datos=$this->Model_Funcion->GetProyectos1($idFuncion,$idDivisionFuncional,$idGrupoFuncional,$provincia,$distrito,$fecha1,$fecha2);
+            $datos=$this->Model_Funcion->GetProyectos($idFuncion,$idDivisionFuncional,$idGrupoFuncional,$provincia,$distrito,$fecha1,$fecha2);
 
 
             $this->load->view('front/Reporte/CadenaFuncional/tablaFuncion',['listaProyectos'=>$datos]);
