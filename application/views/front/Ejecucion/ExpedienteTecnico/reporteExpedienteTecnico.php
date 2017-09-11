@@ -250,22 +250,7 @@
 	              </th>
 	        </tr>
 
-	        <tr>
-	              <th id="header_texto">
-	                8 &nbsp; &nbsp; Nombre del Responsable de la Elavoración del Proyecto 
-	              </th>
-	              <th id="header_texto">
-	               &nbsp;<?= $responsableElaboracion->nombres?> <?= $responsableElaboracion->apellido_p?>  <?= $responsableElaboracion->apellido_m?>  
-	              </th>
-	        </tr>
-	        <tr>
-	              <th id="header_texto">
-	                &nbsp; &nbsp; &nbsp; &nbsp; 8.1 &nbsp; &nbsp; Profesíon
-	              </th>
-	              <th id="header_texto">
-	               &nbsp;<?= $responsableElaboracion->especialidad?>
-	              </th>
-	        </tr>
+	        
 	        <tr>
 	              <th id="header_texto">
 	                &nbsp; &nbsp; &nbsp; &nbsp; 8.2 &nbsp; &nbsp; DNI

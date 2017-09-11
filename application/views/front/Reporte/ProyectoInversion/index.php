@@ -43,15 +43,14 @@
 														    </div>
 														  </div>
 														</div>
-														<div class="row" style="margin-left: 10px; margin-top: 10px; ">
+														<div class="row" style="margin-left: 10px; margin:10px; ">
 															<div class="panel panel-default">
 																 <div class="panel-heading">Ejecución Anual del Proyecto</div>
 																 
 																	  <div class="panel-body">
 																			
-																			<div class="col-lg-12" height='10' width='10'>
-																			      <label class="col-sm-2" for="pwd">NOMBRE</label>        
-																			      <input type="text" class="form-control"  id="txtnombreP" name="txtnombreP">
+																			<div class="col-lg-12" id="nombreProyecto">
+																			              
 																		    </div>
 
 																			<div class="col-lg-6">
@@ -59,7 +58,7 @@
 																				  <input type="text"  class="form-control" id="txtCodigo" name="txtCodigo">
 																			 </div>							
 																		    <div class="col-lg-6">
-																			        <label class=" col-sm-2" for="pwd">BENEFICIARIOS</label>
+																			        <label class=" col-sm-4" for="pwd">N° BENEFICIARIOS</label>
 																			        <input type="text" class="form-control"  id="beneficiario" name="beneficiario">
 																		    </div> 
 																		    <div class="col-lg-6">
@@ -71,7 +70,7 @@
 																			        <input type="text" class="form-control"  id="txtPIA" name="txtPIA">
 																		    </div> 
 																		    <div class="col-lg-6">
-																			        <label class=" col-sm-6" for="pwd">PIN</label>
+																			        <label class=" col-sm-6" for="pwd">PIM</label>
 																			        <input type="text" class="form-control"  id="txtPIN" name="txtPIN">
 																		    </div> 
 																		    <div class="col-lg-6">
@@ -93,6 +92,18 @@
 												                    </div>
 												                    <div class="x_content">
 												                        <div id="pimdevengadopia" style="height:350px;"></div>
+												                    </div>
+												                </div>
+													        </div>
+													         <div class="col-md-12 col-sm-4 col-xs-12">
+												                <div class="x_panel">
+												                    <div class="x_title">
+												                        <h5> PIA, PIM Y DEVENGADO</h5>
+
+												                        <div class="clearfix"></div>
+												                    </div>
+												                    <div class="x_content">
+												                        <div id="pimdevengadopialineas" style="height:350px;"></div>
 												                    </div>
 												                </div>
 													        </div>
@@ -118,7 +129,7 @@ $(document).on("ready" ,function(){
 
 $("#CodigoUnico").on( "click", function()
 	 {
-		 
+		$("#nombreProyecto" ).append( "<label style='border: 2px solid black; text-align: center;' class='col-sm-12' id='txtnombre' name='txtnombre'></label>" );
 		var codigounico=$("#BuscarPip").val();
 		$.ajax({
 		"url":base_url+"index.php/PrincipalReportes/DatosParaEstadisticaAnualProyecto",
@@ -129,7 +140,7 @@ $("#CodigoUnico").on( "click", function()
 		        console.log(data);
 		        var cantidadpipprovincias=JSON.parse(data); 
 		        $("#txtCodigo").val(cantidadpipprovincias.codigo_unico_pi);
-		        $("#txtnombreP").val(cantidadpipprovincias.nombre_pi);
+		        $("#txtnombre").html(cantidadpipprovincias.nombre_pi);
 		        $("#beneficiario").val(cantidadpipprovincias.num_beneficiarios);
 		        $("#txtmontoInversion").val(cantidadpipprovincias.costo_pi);
 		        $("#txtPIA").val(cantidadpipprovincias.pia_meta_pres);
