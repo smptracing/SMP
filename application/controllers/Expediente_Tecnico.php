@@ -22,6 +22,7 @@ class Expediente_Tecnico extends CI_Controller
 		$this->load->model('Model_Personal');
 		$this->load->model('Model_ET_Detalle_Partida');
 		$this->load->model('Model_ET_Detalle_Analisis_Unitario');
+		$this->load->model('Model_ET_Tarea');
 		$this->load->library('mydompdf');
 		
 	}
@@ -579,6 +580,19 @@ class Expediente_Tecnico extends CI_Controller
 	public function monitorCoordinador()
 	{
 		$listaETExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->ListarExpedienteTecnico();
+
+		foreach($listaETExpedienteTecnico as $key => $value)
+		{
+			$value->primeraETTarea=$this->Model_ET_Tarea->primeraETTareaPorIdET($value->id_et);
+			$value->ultimaETTarea=$this->Model_ET_Tarea->ultimaETTareaPorIdET($value->id_et);
+
+			$value->existeGantt=false;
+
+			if($value->primeraETTarea!=null)
+			{
+				$value->existeGantt=true;
+			}
+		}
 
 		$this->_load_layout('front/Ejecucion/ExpedienteTecnico/monitorcoordinador.php', ['listaETExpedienteTecnico' => $listaETExpedienteTecnico]);
 	}

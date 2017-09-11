@@ -8,16 +8,18 @@
 					<div class="clearfix"></div>
 				</div>
 				<div class="x_content">
-					<table id="tableExpedienteTecnico">
+					<table id="tableExpedienteTecnico" class="table table-striped">
 						<thead>
-							<th>Nombre</th>
+							<th style="text-align: center;">Código único</th>
+							<th>Nombre PI</th>
+							<th>Inicio/Fin</th>
 						</thead>
 						<tbody>
 							<?php foreach($listaETExpedienteTecnico as $key => $value){ ?>
 								<tr>
-									<td>
-										<?=$value->nombre_ue?>
-									</td>
+									<td style="text-align: center;"><?=$value->codigo_unico_pi?></td>
+									<td><?=$value->nombre_pi?></td>
+									<td><?=($value->existeGantt ? substr($value->primeraETTarea->fecha_inicio_tarea, 0, 10).'/'.substr($value->ultimaETTarea->fecha_final_tarea, 0, 10) : '')?></td>
 								</tr>
 							<?php } ?>
 						</tbody>

@@ -22,7 +22,7 @@ class Model_ET_Expediente_Tecnico extends CI_Model
 
 	public function ListarExpedienteTecnico()
 	{
-		$data=$this->db->query("select * from ET_EXPEDIENTE_TECNICO");
+		$data=$this->db->query("select * from ET_EXPEDIENTE_TECNICO as ET inner join PROYECTO_INVERSION as PI on ET.id_pi=PI.id_pi");
 
 		return $data->result();
 	}
