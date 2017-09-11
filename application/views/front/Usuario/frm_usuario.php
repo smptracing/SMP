@@ -64,7 +64,11 @@
                                             
                                                   <div class="col-md-12 col-sm-12">
                                                         <div class="x_panel">
-                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraUsuario"> <i class="fa fa-file"> Nuevo </i> </button>
+                                                            <button type="button" class="btn btn-primary" data-toggle="modal"
+
+                                                            <?php /* data-target="#VentanaRegistraUsuario"*/?>
+                                                             onclick=paginaAjaxDialogo('null','Registrar',{},base_url+"index.php/Usuario/itemUsuario",'GET',null,null,false,true);
+                                                            > <i class="fa fa-file"> Nuevo </i> </button>
                                                           <div class="x_title">     
                                                           </div>
                                                           <div class="x_content">
