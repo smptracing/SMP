@@ -280,7 +280,7 @@
 			</tr>
 		--></div>
 	</div>
-	<div id="divDialogoGeneralGantt" style="background-color: #ffffff;border: 1px solid #000000;display: none;height: 450px;width: 700px;z-index: 1000;padding: 7px;padding-bottom: 0px;padding-top: 10px;position: fixed;left: 50px;top: 100px;">
+	<div id="divDialogoGeneralGantt" style="background-color: #ffffff;border: 1px solid #000000;bottom: 0px;display: none;width: 100%;z-index: 1000;padding: 7px;padding-bottom: 0px;padding-top: 10px;position: fixed;left: 0px;top: 0px;">
 		
 	</div>
 	<script>

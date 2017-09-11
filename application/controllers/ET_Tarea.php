@@ -13,6 +13,7 @@ class ET_Tarea extends CI_Controller
 		$this->load->model('Model_ET_Responsable_Tarea');
 		$this->load->model('Model_ET_Documento_Ejecucion');
 		$this->load->model('Model_Personal');
+		$this->load->model('Model_Especialidad');
 	}
 
 	private function number_of_working_days($from, $to)
@@ -222,8 +223,9 @@ class ET_Tarea extends CI_Controller
 		$listaETTareaObservacion=$this->Model_ET_Tarea_Observacion->ETTareaObservacionPorIdTareaET($idTareaET);
 		$listaETResponsableTarea=$this->Model_ET_Responsable_Tarea->ETResponsableTareaPorIdTareaET($idTareaET);
 		$listaETDocumentoEjecucion=$this->Model_ET_Documento_Ejecucion->ETDocumentoEjecucionPorIdTareaET($idTareaET);
+		$listaEspecialidad=$this->Model_Especialidad->ListarEspecialidad();
 
-		return $this->load->view('Front/Ejecucion/ETTarea/administrardetalleettarea', ['listaETTareaObservacion' => $listaETTareaObservacion, 'listaETResponsableTarea' => $listaETResponsableTarea, 'listaETDocumentoEjecucion' => $listaETDocumentoEjecucion, 'etTarea' => $etTarea, 'listaPersona' => $listaPersona]);
+		return $this->load->view('Front/Ejecucion/ETTarea/administrardetalleettarea', ['listaETTareaObservacion' => $listaETTareaObservacion, 'listaETResponsableTarea' => $listaETResponsableTarea, 'listaETDocumentoEjecucion' => $listaETDocumentoEjecucion, 'etTarea' => $etTarea, 'listaPersona' => $listaPersona, 'listaEspecialidad' => $listaEspecialidad]);
 	}
 }
 ?>
