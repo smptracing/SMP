@@ -141,7 +141,7 @@
 					<tbody>
 						<?php foreach($listaEspecialidad as $key => $value){ ?>
 							<tr style="user-select: none;">
-								<td><label class="control-label" style="cursor: pointer;"><input name="checkBoxEspecialidad[]" id="checkBoxEspecialidad<?=$key?>" type="checkbox" value=true onchange="onChangeCheckBoxEspecialidad(this);"> <?=$value->nombre_esp?></label></td>
+								<td><label class="control-label" style="cursor: pointer;"><input name="checkBoxEspecialidad[]" id="checkBoxEspecialidad<?=$key?>" type="checkbox" value="<?=$value->id_esp?>" onchange="onChangeCheckBoxEspecialidad(this);"> <?=$value->nombre_esp?></label></td>
 								<td>
 									<select name="selectPersonaEspecialista[]" id="selectPersonaEspecialista<?=$key?>" style="width: 100%;" class="form-control" disabled=true>
 										<option value=""></option>
@@ -174,14 +174,32 @@
 	{
 		if($(element).is(':checked'))
 		{
-			$($(element).parent().parent().parent().find('select')[0]).removeAttr('disabled');
+			paginaAjaxJSON({ idEspecialidad : $(element).val(), idTareaET : <?=$etTarea->id_tarea_et?> }, '<?=base_url()?>index.php/Especialidad_Tarea/insertar', 'POST', null, function(objectJSON)
+			{
+				objectJSON=JSON.parse(objectJSON);
+
+				swal(
+				{
+					title: '',
+					text: objectJSON.mensaje,
+					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
+				},
+				function(){});
+
+				if(objectJSON.proceso=='Error')
+				{
+					return false;
+				}
+
+				$($(element).parent().parent().parent().find('select')[0]).removeAttr('disabled');
+				$($(element).parent().parent().parent().find('select')[0]).selectpicker('refresh');
+			}, false, true);
 		}
 		else
 		{
 			$($(element).parent().parent().parent().find('select')[0]).attr('disabled', true);
+			$($(element).parent().parent().parent().find('select')[0]).selectpicker('refresh');
 		}
-
-		$($(element).parent().parent().parent().find('select')[0]).selectpicker('refresh');
 	}
 
 	function registrarObservacion()
