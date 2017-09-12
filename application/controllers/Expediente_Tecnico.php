@@ -54,25 +54,9 @@ class Expediente_Tecnico extends CI_Controller
 		$flat="LISTARETAPA";
 		$id_etapa_et="1";
 		$listaExpedienteTecnicoElaboracion=$this->Model_ET_Expediente_Tecnico->ExpedienteListarElaboracion($flat,$id_etapa_et);
-
-		$flat1="LISTARCOMPATIBILIDAD";
-		$id_etapa_et="2";
-		$listaExpedienteTecnicoEtapa=$this->Model_ET_Expediente_Tecnico->ExpedienteListarEstudioCompatibilidad($flat1,$id_etapa_et);
-
-		$flat="LISTARDEDUCTIVO";
-		$id_etapa_et="3";
-		$listaExpedienteEjecucionDeductivo=$this->Model_ET_Expediente_Tecnico->ExpedienteListarEjecucionDeductivo($flat,$id_etapa_et);
-
-		$flat="LISTARADICIONAL";
-		$id_etapa_et="4";
-		$listaExpedienteEjecucionAdicional=$this->Model_ET_Expediente_Tecnico->ExpedienteListarEjecucionAdicional($flat,$id_etapa_et);
-
-		$flat2="LISTARMODIFICACION";
-		$id_etapa_et="5";
-		$listaExpedienteTecnicoModificacion=$this->Model_ET_Expediente_Tecnico->ExpedienteListarModificacion($flat1,$id_etapa_et);
 		//var_dump($listaExpedienteTecnicoModificacion);exit;
 		$this->load->view('layout/Ejecucion/header');
-		$this->load->view('front/Ejecucion/ExpedienteTecnico/index.php',['listaExpedienteTecnicoElaboracion'=>$listaExpedienteTecnicoElaboracion,'listaExpedienteTecnicoEtapa'=>$listaExpedienteTecnicoEtapa,'listaExpedienteTecnicoModificacion'=>$listaExpedienteTecnicoModificacion,'listaExpedienteEjecucionDeductivo'=>$listaExpedienteEjecucionDeductivo,'listaExpedienteEjecucionAdicional'=>$listaExpedienteEjecucionAdicional]);
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/index.php',['listaExpedienteTecnicoElaboracion'=>$listaExpedienteTecnicoElaboracion]);
 		$this->load->view('layout/Ejecucion/footer');
 	}
 
@@ -137,9 +121,7 @@ class Expediente_Tecnico extends CI_Controller
 			$txtModalidadEjecucion=$this->input->post('txtModalidadEjecucion');
 			$txtTiempoEjecucionPip=$this->input->post('txtTiempoEjecucionPip');
 			$txtNumBeneficiarios=$this->input->post('txtNumBeneficiarios');
-
 			$txtUrlDocAprobacion=$this->input->post('url');
-
 			$txtSituacioActual=$this->input->post('hdtxtSituacioActual');
 			$txtSituacioEconomica=$this->input->post('hdtxtSituacioEconomica');
 			$txtResumenProyecto=$this->input->post('hdtxtResumenProyecto');
