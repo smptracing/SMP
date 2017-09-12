@@ -197,7 +197,7 @@ $(document).on("ready" ,function()
             var registros=eval(objectJSON);
             for(var i=0; i<registros.length; i++)
             {
-                htmlTemp+='<option value="'+registros[i]['id_funcion']+'">'+registros[i]['codigo_funcion']+':'+registros[i]['nombre_funcion']+ '</option>';    
+                htmlTemp+='<option value="'+registros[i]['id_funcion']+'">'+registros[i]['nombre_funcion']+ '</option>';    
             };
 
             $("#listaFuncion").html(htmlTemp);
@@ -219,7 +219,8 @@ $(document).on("ready" ,function()
             var registros=eval(objectJSON);
             for(var i=0; i<registros.length; i++)
             {
-                htmlTemp+='<option value="'+registros[i]['id_div_funcional']+'">'+ registros[i]['codigo_div_funcional']+':'+registros[i]['nombre_div_funcional']+'</option>';   
+                //htmlTemp+='<option value="'+registros[i]['id_div_funcional']+'">'+ registros[i]['codigo_div_funcional']+':'+registros[i]['nombre_div_funcional']+'</option>';   
+                htmlTemp+='<option value="'+registros[i]['id_div_funcional']+'">'+registros[i]['nombre_div_funcional']+'</option>';   
             };
 
             $("#listaDivisionFuncional").html(htmlTemp);
@@ -240,7 +241,7 @@ $(document).on("ready" ,function()
             var registros=eval(objectJSON);
             for(var i=0; i<registros.length; i++)
             {
-                htmlTemp+='<option value="'+registros[i]['id_grup_funcional']+'">'+ registros[i]['codigo_grup_funcional']+':'+registros[i]['nombre_grup_funcional']+'</option>';   
+                htmlTemp+='<option value="'+registros[i]['id_grup_funcional']+'">'+registros[i]['nombre_grup_funcional']+'</option>';   
             };
 
             $("#listaGrupoFuncional").html(htmlTemp);

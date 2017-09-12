@@ -123,14 +123,18 @@ class Funcion extends CI_Controller {/* Mantenimiento de sector entidad Y servic
             $datos=$this->Model_Funcion->GetProyectos($idFuncion,$idDivisionFuncional,$idGrupoFuncional,$provincia,$distrito,$fecha1,$fecha2);
 
             $totalBeneficiarios=0;
+            $costoTotal = 0;
             foreach ($datos as $key => $value) 
             {
                 $totalBeneficiarios += ($value->num_beneficiarios=='NULL' ? 0 : $value->num_beneficiarios);
+                $costoTotal += ($value->costo_pi=='NULL' ? 0 : $value->costo_pi);
                 $value->num_beneficiarios = $this->a_number_format($value->num_beneficiarios , 2, '.',",",3);
                 $value->costo_pi = $this->a_number_format($value->costo_pi , 2, '.',",",3);
             }
             $totalBeneficiarios = $this->a_number_format($totalBeneficiarios , 2, '.',",",3);
-            $this->load->view('front/Reporte/CadenaFuncional/tablaFuncion',['listaProyectos'=>$datos, 'totalBeneficiarios' => $totalBeneficiarios]);
+            $costoTotal = $this->a_number_format($costoTotal , 2, '.',",",3);
+
+            $this->load->view('front/Reporte/CadenaFuncional/tablaFuncion',['listaProyectos'=>$datos, 'totalBeneficiarios' => $totalBeneficiarios, 'costoTotal' => $costoTotal]);
         }
         else
         {
