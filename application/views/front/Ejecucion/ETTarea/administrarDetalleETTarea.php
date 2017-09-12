@@ -188,7 +188,7 @@
 
 				if(objectJSON.proceso=='Error')
 				{
-					$(element).prop('checked', false);
+					//$(element).prop('checked', false);
 
 					return false;
 				}
@@ -199,8 +199,28 @@
 		}
 		else
 		{
-			$($(element).parent().parent().parent().find('select')[0]).attr('disabled', true);
-			$($(element).parent().parent().parent().find('select')[0]).selectpicker('refresh');
+			paginaAjaxJSON({ idEspecialidad : $(element).val(), idTareaET : <?=$etTarea->id_tarea_et?> }, '<?=base_url()?>index.php/Especialidad_Tarea/eliminarPorIdEspecialidadYIdTarea', 'POST', null, function(objectJSON)
+			{
+				objectJSON=JSON.parse(objectJSON);
+
+				swal(
+				{
+					title: '',
+					text: objectJSON.mensaje,
+					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
+				},
+				function(){});
+
+				if(objectJSON.proceso=='Error')
+				{
+					$(element).prop('checked', false);
+
+					return false;
+				}
+
+				$($(element).parent().parent().parent().find('select')[0]).attr('disabled', true);
+				$($(element).parent().parent().parent().find('select')[0]).selectpicker('refresh');
+			}, false, true);
 		}
 	}
 

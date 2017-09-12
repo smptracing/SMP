@@ -21,4 +21,11 @@ class Model_Especialidad_Tarea extends CI_Model
 
 		return $data->result();
 	}
+
+	public function eliminarPorIdEspecialidadYIdTarea($idEspecialidad, $idTareaET)
+	{
+		$this->db->query("delete from ESPECIALIDAD_TAREA where id_esp=$idEspecialidad and id_tarea_et=$idTareaET");
+
+		return true;
+	}
 }
