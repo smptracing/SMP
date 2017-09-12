@@ -11,8 +11,9 @@ class Funcion extends CI_Controller {/* Mantenimiento de sector entidad Y servic
      public function index()
     {
         $listaNumPipFuncion=$this->Model_Funcion->FuncionPipListar();
+        $listaMontoTotalFuncion=$this->Model_Funcion->FuncionPipMontoTotalListar();
         $this->load->view('layout/Reportes/header');
-        $this->load->view('front/Reporte/Funcion/index',['listaNumPipFuncion'=>$listaNumPipFuncion]);
+        $this->load->view('front/Reporte/Funcion/index',['listaNumPipFuncion'=>$listaNumPipFuncion,'listaMontoTotalFuncion'=>$listaMontoTotalFuncion]);
         $this->load->view('layout/Reportes/footer');
     }
     public function CadenaFuncional()
