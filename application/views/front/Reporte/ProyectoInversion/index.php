@@ -117,7 +117,7 @@
 												                        <div class="clearfix"></div>
 												                    </div>
 												                    <div class="x_content">
-												                        <div id="pimdevengadopialineasAnual" style="height:350px;"></div>
+												                        <div id="pimdevengadopialineasAnual" style="height:420px;"></div>
 												                    </div>
 												                </div>
 													        </div>
@@ -152,7 +152,6 @@ $("#CodigoUnico").on( "click", function()
 		data:{codigounico:codigounico},
 		success: function(data)
 			{
-		        console.log(data);
 		        var cantidadpipprovincias=JSON.parse(data); 
 		        $("#txtCodigo").html(cantidadpipprovincias.codigo_unico_pi);
 		        $("#txtnombre").html(cantidadpipprovincias.nombre_pi);
@@ -171,7 +170,6 @@ $("#CodigoUnico").on( "click", function()
 				success:function(resp)
 				{
 						var cantidadpipprovincias=JSON.parse(resp);
-						console.log(cantidadpipprovincias);
 						var dom = document.getElementById("pimdevengadopia");
 						var myChart = echarts.init(dom);
 						var app = {};
@@ -222,82 +220,180 @@ $("#CodigoUnico").on( "click", function()
 				});
 
 			$.ajax({
-				"url":base_url+"index.php/PrincipalReportes/BuscadorPipPorCodigoReporte",
+				"url":base_url+"index.php/PrincipalReportes/ReporteDevengadoPiaPimPorPipGraficos",
 				type:"GET", 
 				data:{codigounico:codigounico},
 				cache:false,
 				success:function(resp)
 				{
-						var cantidadpipprovincias=JSON.parse(resp);
+						console.log(resp);
+						var devengadoPiaGraficos=JSON.parse(resp);
 						var dom = document.getElementById("pimdevengadopialineasAnual");
 						var myChart = echarts.init(dom);
 						var app = {};
 						option = null;
-						option = {
-						    title: {
-						        text: 'PIA, PIM Y DEVENGADO ANUAL ',
-						        subtext: '',
-						        sublink: ''
+						var posList = [
+						    'left', 'right', 'top', 'bottom',
+						    'inside',
+						    'insideTop', 'insideLeft', 'insideRight', 'insideBottom',
+						    'insideTopLeft', 'insideTopRight', 'insideBottomLeft', 'insideBottomRight'
+						];
+
+						app.configParameters = {
+						    rotate: {
+						        min: -90,
+						        max: 90
 						    },
-						    tooltip : {
-						        trigger: 'axis',
-						        axisPointer : {            
-						            type : 'shadow'        
-						        },
-						        formatter: function (params) {
-						            var tar = params[1];
-						            return tar.name + '<br/>' + tar.seriesName + ' : ' + tar.value;
+						    align: {
+						        options: {
+						            left: 'left',
+						            center: 'center',
+						            right: 'right'
 						        }
 						    },
-						    grid: {
-						        left: '3%',
-						        right: '4%',
-						        bottom: '3%',
-						        containLabel: true
+						    verticalAlign: {
+						        options: {
+						            top: 'top',
+						            middle: 'middle',
+						            bottom: 'bottom'
+						        }
 						    },
-						    xAxis: {
-						        type : 'category',
-						        splitLine: {show:false},
-						        data : ['2014','2015','2016','2017','2018','2020']
+						    position: {
+						        options: echarts.util.reduce(posList, function (map, pos) {
+						            map[pos] = pos;
+						            return map;
+						        }, {})
 						    },
-						    yAxis: {
-						        type : 'value'
+						    distance: {
+						        min: 0,
+						        max: 100
+						    }
+						};
+
+						app.config = {
+						    rotate: 90,
+						    align: 'left',
+						    verticalAlign: 'middle',
+						    position: 'insideBottom',
+						    distance: 15,
+						    onChange: function () {
+						        var labelOption = {
+						            normal: {
+						                rotate: app.config.rotate,
+						                align: app.config.align,
+						                verticalAlign: app.config.verticalAlign,
+						                position: app.config.position,
+						                distance: app.config.distance
+						            }
+						        };
+						        myChart.setOption({
+						            series: [{
+						                label: labelOption
+						            }, {
+						                label: labelOption
+						            }, {
+						                label: labelOption
+						            }, {
+						                label: labelOption
+						            }]
+						        });
+						    }
+						};
+
+
+						var labelOption = {
+						    normal: {
+						        show: true,
+						        position: app.config.position,
+						        distance: app.config.distance,
+						        align: app.config.align,
+						        verticalAlign: app.config.verticalAlign,
+						        rotate: app.config.rotate,
+						        formatter: '{c}  {name|{a}}',
+						        fontSize: 16,
+						        rich: {
+						            name: {
+						                textBorderColor: '#fff'
+						            }
+						        }
+						    }
+						};
+
+						option = {
+						    color: ['#003366', '#006699', '#4cabce', '#e5323e'],
+						    tooltip: {
+						        trigger: 'axis',
+						        axisPointer: {
+						            type: 'shadow'
+						        }
 						    },
+						    legend: {
+						        data: ['COSTO TOTAL', 'PIA', 'PIM', 'DEVENGADO','COMPROMISO ACUMULADO']
+						    },
+						    toolbox: {
+						        show: true,
+						        orient: 'vertical',
+						        left: 'right',
+						        top: 'center',
+						        feature: {
+						            mark: {show: true},
+						            dataView: {show: true, readOnly: false},
+						            magicType: {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+						            restore: {show: true},
+						            saveAsImage: {show: true}
+						        }
+						    },
+						    calculable: true,
+						    xAxis: [
+						        {
+						            type: 'category',
+						            axisTick: {show: false},
+						            data: ['AÑO ACUMULADO']
+						        }
+						    ],
+						    yAxis: [
+						        {
+						            type: 'value'
+						        }
+						    ],
 						    series: [
 						        {
-						            name: '辅助',
+						            name: 'COSTO TOTAL',
 						            type: 'bar',
-						            stack:  '总量',
-						            itemStyle: {
-						                normal: {
-						                    barBorderColor: 'rgba(0,255,0,0.3)',
-						                    color: 'rgba(0,255,0,0.3)'
-						                },
-						                emphasis: {
-						                    barBorderColor: 'rgba(0,255,0,0.3)',
-						                    color: 'rgba(0,255,0,0.3)'
-						                }
-						            },
-						            data: [0, 0, 0, 0, 0, 0]
+						            barGap: 0,
+						            label: labelOption,
+						            data: [devengadoPiaGraficos.costo_pi]
 						        },
 						        {
-						            name: '生活费',
+						            name: 'PIA',
 						            type: 'bar',
-						            stack: '总量',
-						            label: {
-						                normal: {
-						                    show: true,
-						                    position: 'inside'
-						                }
-						            },
-						            data:[2900, 1200, 300, 200, 900, 300]
-						        }
+						            label: labelOption,
+						            data: [devengadoPiaGraficos.pia_meta_pres]
+						        },
+						        {
+						            name: 'PIM',
+						            type: 'bar',
+						            label: labelOption,
+						            data: [devengadoPiaGraficos.pim_acumulado]
+						        },
+						        {
+						            name: 'DEVENGADO',
+						            type: 'bar',
+						            label: labelOption,
+						            data: [devengadoPiaGraficos.devengado_acumulado]
+						        },
+						         {
+						            name: 'COMPROMISO ACUMULADO',
+						            type: 'bar',
+						            label: labelOption,
+						            data: [devengadoPiaGraficos.compromiso_acumulado]
+						        }    
 						    ]
-						};
-						;
+						};;
 						if (option && typeof option === "object") {
 						    myChart.setOption(option, true);
 						}
+						
 												
 				}
 

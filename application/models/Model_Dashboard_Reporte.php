@@ -113,7 +113,20 @@ class Model_Dashboard_Reporte extends CI_Model
         }
     }
 
- 
-
+    function ReporteDevengadoPiaPimPorPipGraficos($CodigoUnico)
+    {
+       $data = $this->db->query("select codigo_unico_pi,SUM(costo_pi) as costo_pi,SUM(pia_meta_pres) as pia_meta_pres ,SUM(pim_acumulado) AS pim_acumulado,
+        SUM(compromiso_acumulado) as compromiso_acumulado ,SUM(devengado_acumulado) as devengado_acumulado from 
+        PROYECTO_INVERSION inner join META_PRESUPUESTAL_PI on  PROYECTO_INVERSION.id_pi=META_PRESUPUESTAL_PI.id_pi 
+        where PROYECTO_INVERSION.codigo_unico_pi='".$CodigoUnico."' GROUP BY codigo_unico_pi");
+        if ($data->num_rows()> 0) 
+        {
+            return $data->result()[0];
+        } 
+        else 
+        {
+            return false;
+        }
+    }
 
 }
