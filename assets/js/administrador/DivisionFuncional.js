@@ -15,6 +15,8 @@ $(document).on("ready" ,function()
         {
             $("#listaDivisionFuncional").html('');
             $("#listaDivisionFuncional").selectpicker('refresh');
+            $("#listaGrupoFuncional").html('');
+            $("#listaGrupoFuncional").selectpicker('refresh');
         }
         else
         {
@@ -329,5 +331,4 @@ $(document).on("ready" ,function()
                 alert("Ocurrio un error!");
             }
         });
-
     }

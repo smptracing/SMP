@@ -88,7 +88,7 @@
 									                    <div class="row">
 									                    	<div class="form-group">
 										                        <div class="col-md-3 col-sm-3 col-xs-12">
-										                          <button type="button" class="btn btn-primary" id="btnBuscar">Buscar</button>
+										                          <button type="button" class="btn btn-primary" id="btnBuscar"><i class="fa fa-search"></i> Buscar</button>
 										                        </div>
 										                    </div>									                    	
 									                    </div><br>
