@@ -142,12 +142,14 @@
 						<?php foreach($listaEspecialidad as $key => $value)
 						{
 							$asignadoTemp=false;
+							$idEspecialistaAsignado=null;
 
 							foreach($listaEspecialidadTarea as $index => $item)
 							{
 								if($value->id_esp==$item->id_esp)
 								{
 									$asignadoTemp=true;
+									$idEspecialistaAsignado=$item->id_persona;
 
 									break;
 								}
@@ -159,7 +161,7 @@
 									<select name="selectPersonaEspecialista[]" id="selectPersonaEspecialista<?=$key?>" style="width: 100%;" class="form-control" <?=$asignadoTemp ? '' : 'disabled=true'?> onchange="asignarEspecialista(<?=$value->id_esp?>, this);">
 										<option value=""></option>
 										<?php foreach($listaPersona as $key => $value){ ?>
-											<option value="<?=$value->id_persona?>"><?=html_escape($value->nombres.' '.$value->apellido_p.' '.$value->apellido_m)?></option>
+											<option value="<?=$value->id_persona?>" <?=($idEspecialistaAsignado!=null && $idEspecialistaAsignado!='NULL' && $idEspecialistaAsignado==$value->id_persona) ? 'selected' : ''?>><?=html_escape($value->nombres.' '.$value->apellido_p.' '.$value->apellido_m)?></option>
 										<?php } ?>
 									</select>
 								</td>
@@ -252,6 +254,7 @@
 					return false;
 				}
 
+				$($(element).parent().parent().parent().find('select')[0]).val('');
 				$($(element).parent().parent().parent().find('select')[0]).attr('disabled', true);
 				$($(element).parent().parent().parent().find('select')[0]).selectpicker('refresh');
 			}, false, true);
