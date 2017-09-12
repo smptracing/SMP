@@ -19,12 +19,12 @@ class Especialidad_Tarea extends CI_Controller
 			$idEspecialidad=$this->input->post('idEspecialidad');
 			$idTareaET=$this->input->post('idTareaET');
 
-			/*if(count($this->Model_ET_Componente->ETComponentePorIdETAndDescripcion($idET, $descripcionComponente))>0)
+			if(count($this->Model_Especialidad_Tarea->EspecialidadTareaPorIdEspecialidadYIdTarea($idEspecialidad, $idTareaET))>0)
 			{
 				$this->db->trans_rollback();
 
-				echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede agregar dos veces el mismo componente.']);exit;
-			}*/
+				echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede asignar dos veces la misma especialidad sobre la misma actividad.']);exit;
+			}
 
 			$this->Model_Especialidad_Tarea->insertar($idEspecialidad, 'NULL', $idTareaET);
 

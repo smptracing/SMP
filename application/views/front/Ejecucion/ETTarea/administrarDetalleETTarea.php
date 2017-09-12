@@ -188,6 +188,8 @@
 
 				if(objectJSON.proceso=='Error')
 				{
+					$(element).prop('checked', false);
+
 					return false;
 				}
 

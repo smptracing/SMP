@@ -14,4 +14,11 @@ class Model_Especialidad_Tarea extends CI_Model
 
 		return true;
 	}
+
+	public function EspecialidadTareaPorIdEspecialidadYIdTarea($idEspecialidad, $idTareaET)
+	{
+		$data=$this->db->query("select * from ESPECIALIDAD_TAREA where id_esp=$idEspecialidad and id_tarea_et=$idTareaET");
+
+		return $data->result();
+	}
 }
