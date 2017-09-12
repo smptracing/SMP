@@ -333,3 +333,10 @@
     </div>
 </div>
 <!-- /.Fin Ventana meta presupuestal-->
+<style>
+  .linkItem:hover{
+    text-decoration: underline;
+    font-weight: bold;
+    cursor: pointer;
+  }
+</style>

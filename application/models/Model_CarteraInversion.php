@@ -7,17 +7,49 @@ class Model_CarteraInversion extends CI_Model
               parent::__construct();
           }
 //----------------------METODOS PARA EL MANTENIMIENTO DE RUBRO DE EJECUCION--------------------------------------------
-    
+    function getCartera($idCartera){
+          $cartera=$this->db->query("select *, YEAR([año_apertura_cartera]) as anio from CARTERA_INVERSION where id_cartera=".$idCartera.";");
+          if($cartera->num_rows()>0){
+              return $cartera->result();
+          }
+          else{
+              return false;
+          }
+      }
+
+
      function AddCartera($dateAñoAperturaCart,$dateFechaIniCart,$dateFechaFinCart,$estado,$txt_NumResolucionCart,$txt_UrlResolucionCart)
         {
- $this->db->query("execute sp_CarteraInversion_c'".$dateAñoAperturaCart."','".$dateFechaIniCart."','".$dateFechaFinCart."','".$estado."','".$txt_NumResolucionCart."','".$txt_UrlResolucionCart."'");//PROCEDIMIENTO DE LISTAR SOLO CARTEREA ACTUAL
-             if ($this->db->affected_rows() > 0) 
+        $query=$this->db->query("execute sp_CarteraInversion_c'".$dateAñoAperturaCart."','".$dateFechaIniCart."','".$dateFechaFinCart."','".$estado."','".$txt_NumResolucionCart."','".$txt_UrlResolucionCart."'");
+         
+             if ($query) 
               {
-                return true;
+                $result=$query->result_array();
+                if($result[0]['n']=='1')
+                   return "Se registró la cartera de Inversiones.";
+                else
+                  return "El Año de Apertura ya Existe.";
               }
               else
               {
-                return false;
+                return "Error... no se grabaron los datos.";
+              }
+        }
+
+        function editCartera($id_cartera,$dateAñoAperturaCart,$dateFechaIniCart,$dateFechaFinCart,$estado,$txt_NumResolucionCart,$txt_UrlResolucionCart){
+             $query=$this->db->query("execute sp_CarteraInversion_u ".$id_cartera.",'".$dateAñoAperturaCart."','".$dateFechaIniCart."','".$dateFechaFinCart."','".$txt_NumResolucionCart."','".$txt_UrlResolucionCart."'");
+           
+            if ($query) 
+              {
+                $result=$query->result_array();
+                if($result[0]['n']=='1')
+                   return "Se registró la cartera de Inversiones.";
+                else
+                  return "El Año de Apertura ya Existe.";
+              }
+              else
+              {
+                return "Error... no se grabaron los datos.";
               }
         }
     //LISTAR CARTERA FECHA ACTUAL

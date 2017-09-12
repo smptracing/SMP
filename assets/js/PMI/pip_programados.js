@@ -1,3 +1,19 @@
+$("body").on("change","#Cbx_AnioCartera_",function(e){
+  $(".lb_anio1").html(parseInt($("#Cbx_AnioCartera_").val())+1);
+  $(".lb_anio2").html(parseInt($("#Cbx_AnioCartera_").val())+2);
+  $(".lb_anio3").html(parseInt($("#Cbx_AnioCartera_").val())+3);
+});
+$("body").on("change","#Cbx_AnioCartera_Ejecucion",function(e){
+  $(".lb_anio1").html(parseInt($("#Cbx_AnioCartera_Ejecucion").val())+1);
+  $(".lb_anio2").html(parseInt($("#Cbx_AnioCartera_Ejecucion").val())+2);
+  $(".lb_anio3").html(parseInt($("#Cbx_AnioCartera_Ejecucion").val())+3);
+});
+$("body").on("change","#Cbx_AnioCartera_operacion_mant",function(e){
+  $(".lb_anio1").html(parseInt($("#Cbx_AnioCartera_operacion_mant").val())+1);
+  $(".lb_anio2").html(parseInt($("#Cbx_AnioCartera_operacion_mant").val())+2);
+  $(".lb_anio3").html(parseInt($("#Cbx_AnioCartera_operacion_mant").val())+3);
+});
+
 $(document).on("ready" ,function(){
      listar_aniocartera_();
 });
@@ -133,6 +149,7 @@ var listar_aniocartera_=function(valor){ //listar ani cartera operacion y manten
                             var anio=$("#Cbx_AnioCartera_").val();
                             lista_programados_formulacion_evaluacion(anio);
                             listar_aniocartera_Ejecucion();
+                            $("#Cbx_AnioCartera_").trigger("change");
                         }
                     });
                 }
@@ -163,6 +180,7 @@ var listar_aniocartera_Ejecucion=function(valor){ //listar ani cartera operacion
                             var anio=$("#Cbx_AnioCartera_Ejecucion").val();
                             lista_programados_ejecucion(anio);
                             listar_aniocartera_operacion_mant();
+                            $("#Cbx_AnioCartera_Ejecucion").trigger("change");
                         }
                     });
                 }
@@ -189,6 +207,7 @@ var listar_aniocartera_operacion_mant=function(valor){ //listar ani cartera oper
                             $('.selectpicker').selectpicker('refresh');
                             var anio=$("#Cbx_AnioCartera_operacion_mant").val();
                             lista_programados_operacion_mant(anio);
+                            $("#Cbx_AnioCartera_operacion_mant").trigger("change");
                         }
                     });
                 }

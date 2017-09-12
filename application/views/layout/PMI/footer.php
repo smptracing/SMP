@@ -7,6 +7,7 @@
 <!-- /footer content -->
 </div>
 </div>
+<script src="<?php echo base_url(); ?>assets/js/Helper/jsHelper.js"></script>
 
 <!-- Bootstrap -->
 <script src="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>

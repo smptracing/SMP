@@ -28,11 +28,11 @@
 
                                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
                                       <ul id="myTab" class="nav nav-tabs" role="tablist">
-                                        <li role="presentation"  class="active"><a  href="#tab_brecha" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Formulación y Evaluación</a>
+                                        <li role="presentation"  class="active"><a onclick=$("#Cbx_AnioCartera_").trigger("change");  href="#tab_brecha" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Formulación y Evaluación</a>
                                         </li>
-                                        <li role="presentation" class=""><a  href="#tab_Ejecución" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Ejecución</a>
+                                        <li role="presentation" class=""><a onclick=$("#Cbx_AnioCartera_Ejecucion").trigger("change");  href="#tab_Ejecución" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Ejecución</a>
                                         </li>
-                                        <li role="presentation" class=""><a  href="#tab_OperacionMantenimiento" role="tab" id="" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Operación y Mantenimiento</a>
+                                        <li role="presentation" class=""><a onclick=$("#Cbx_AnioCartera_operacion_mant").trigger("change"); href="#tab_OperacionMantenimiento" role="tab" id="" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Operación y Mantenimiento</a>
                                         </li>
                                       </ul>
                                       <div id="myTabContent" class="tab-content">
@@ -58,6 +58,10 @@
                                                       <div class="x_content">
                                                         <table id="table_formulacion_evaluacion" class="table table-striped table-bordered table-hover table-responsive display  compact " ellspacing="0" width="100%">
                                                    <thead style="background-color: #5A738E;color:#FFFFFF; ">
+                                                      <tr style="border:none;">
+                                                            <th colspan="6" style="width: 88%"></th>
+                                                            <th colspan="3" style="width: 12%; text-align:center;">PROGRAMACION</th>
+                                                      </tr>
                                                       <tr>
                                                                   <th style="width: 1%">Id</th>
                                                                   <th style="width: 5%">Cód único</th>
@@ -65,9 +69,9 @@
                                                                   <th style="width: 30%">Inversión</th>
                                                                   <th style="width: 4%">Prioridad</th>
                                                                   <th style="width: 4%">Brecha</th>
-                                                                  <th style="width: 4%">AÑO 1</th>
-                                                                  <th style="width: 4%">AÑO 2</th>
-                                                                  <th style="width: 4%">AÑO 3</th>
+                                                                  <th style="width: 4%"><span class="lb_anio1"></span></th>
+                                                                  <th style="width: 4%"><span class="lb_anio2"></span></th>
+                                                                  <th style="width: 4%"><span class="lb_anio3"></span></th>
                                                                 </tr>
                                                       </thead>
 
@@ -100,6 +104,11 @@
                                                       <div class="x_content">
                                                         <table id="table_ejecucion" class="table table-striped table-bordered table-hover table-responsive display  compact " ellspacing="0" width="100%">
                                                    <thead style="background-color: #5A738E;color:#FFFFFF; ">
+                                                      <tr style="border:none;">
+                                                            <th colspan="6" style="width: 88%"></th>
+                                                            <th colspan="3" style="width: 12%; text-align:center;">PROGRAMACION</th>
+                                                             <th colspan="3" style="width: 12%; text-align:center;">OPERACION Y MANTENIMIENTO</th>
+                                                      </tr>
                                                       <tr>
                                                                   <th style="width: 1%">Id</th>
                                                                   <th style="width: 5%">Cód único</th>
@@ -107,12 +116,12 @@
                                                                   <th style="width: 30%">Inversión</th>
                                                                   <th style="width: 4%">Prioridad</th>
                                                                   <th style="width: 4%">Brecha</th>
-                                                                  <th style="width: 4%">AÑO 1</th>
-                                                                  <th style="width: 4%">AÑO 2</th>
-                                                                  <th style="width: 4%">AÑO 3</th>
-                                                                  <th style="width: 4%">OyM 1</th>
-                                                                  <th style="width: 4%">OyM 2</th>
-                                                                  <th style="width: 4%">OyM 3</th>
+                                                                  <th style="width: 4%"><span class="lb_anio1"></span></th>
+                                                                  <th style="width: 4%"><span class="lb_anio2"></span></th>
+                                                                  <th style="width: 4%"><span class="lb_anio3"></span></th>
+                                                                  <th style="width: 4%"><span class="lb_anio1"></span></th>
+                                                                  <th style="width: 4%"><span class="lb_anio2"></span></th>
+                                                                  <th style="width: 4%"><span class="lb_anio3"></span></th>
                                                                 </tr>
                                                       </thead>
                                                             </table>
@@ -144,6 +153,10 @@
                                                       <div class="x_content">
                                               <table id="table_operacion_mantenimiento" class="table table-striped table-bordered table-hover table-responsive display  compact " ellspacing="0" width="100%">
                                                    <thead style="background-color: #5A738E;color:#FFFFFF; ">
+                                                      <tr style="border:none;">
+                                                            <th colspan="6" style="width: 88%"></th>
+                                                            <th colspan="3" style="width: 12%; text-align:center;">OPERACION Y MANTENIMIENTO</th>
+                                                      </tr>
                                                       <tr>
                                                                   <th style="width: 1%">Id</th>
                                                                   <th style="width: 5%">Cód único</th>
@@ -151,9 +164,9 @@
                                                                   <th style="width: 30%">Inversión</th>
                                                                   <th style="width: 4%">Prioridad</th>
                                                                   <th style="width: 4%">Brecha</th>
-                                                                  <th style="width: 4%">AÑO 1</th>
-                                                                  <th style="width: 4%">AÑO 2</th>
-                                                                  <th style="width: 4%">AÑO 3</th>
+                                                                  <th style="width: 4%"><span class="lb_anio1"></span></th>
+                                                                  <th style="width: 4%"><span class="lb_anio2"></span></th>
+                                                                  <th style="width: 4%"><span class="lb_anio3"></span></th>
                                                                 </tr>
                                                       </thead>
                                                             </table>
