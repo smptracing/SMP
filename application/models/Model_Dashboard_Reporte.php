@@ -102,7 +102,8 @@ class Model_Dashboard_Reporte extends CI_Model
     }
     function ReporteDevengadoPiaPimPorPip($CodigoUnico)
     {
-       $data = $this->db->query("select * from PROYECTO_INVERSION LEFT join META_PRESUPUESTAL_PI on PROYECTO_INVERSION.id_pi=META_PRESUPUESTAL_PI.id_pi LEFT JOIN DEVENGADO_META ON META_PRESUPUESTAL_PI.id_meta_pi=DEVENGADO_META.id_meta_pi WHERE PROYECTO_INVERSION.codigo_unico_pi='".$CodigoUnico."'");//listar EVAL
+       $data = $this->db->query("select * from PROYECTO_INVERSION LEFT join META_PRESUPUESTAL_PI on PROYECTO_INVERSION.id_pi=META_PRESUPUESTAL_PI.id_pi LEFT JOIN DEVENGADO_META ON
+         META_PRESUPUESTAL_PI.id_meta_pi=DEVENGADO_META.id_meta_pi WHERE PROYECTO_INVERSION.codigo_unico_pi='".$CodigoUnico."' and year(anio_meta_pres)=year(GETDATE())");//listar EVAL
         if ($data->num_rows()> 0) 
         {
             return $data->result()[0];

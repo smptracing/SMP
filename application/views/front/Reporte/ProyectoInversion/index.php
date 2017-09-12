@@ -36,9 +36,9 @@
 													
 														  <div class="col-lg-6">
 														    <div class="input-group">
-														      <input type="text" id="BuscarPip"  class="form-control">
+														      <input type="text" id="BuscarPip"  class="form-control" placeholder="Ingrese código Unico">
 														      <span class="input-group-btn">
-														        <button id="CodigoUnico" class="btn btn-default" type="button" placeholder="Ingrese código Unico">Buscar</button>
+														        <button id="CodigoUnico" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"> Buscar</span></button>
 														      </span>
 														    </div>
 														  </div>
@@ -99,7 +99,7 @@
 
 												           <div class="row" style="margin-left: 10px; margin:10px; ">
 												                <div class="panel panel-default">
-																 <div class="panel-heading">PIA, PIM Y DEVENGADO</div>
+																 <div class="panel-heading">PIA, PIM Y DEVENGADO ACTUAL </div>
 												                        <div id="pimdevengadopia"></div>
 												                </div>
 													        </div>
@@ -162,52 +162,162 @@ $("#CodigoUnico").on( "click", function()
 				success:function(resp)
 				{
 						var cantidadpipprovincias=JSON.parse(resp);
+						console.log(resp);
 						var dom = document.getElementById("pimdevengadopia");
 						var myChart = echarts.init(dom);
 						var app = {};
 						option = null;
-						app.title = 'PIM,PIA Y DEVENGADO';
-						option = {
-						    color: ['#F5CBA7'],
-						    tooltip : {
-						        trigger: 'axis',
-						        axisPointer : {          
-						            type : 'shadow'        
+						var posList = [
+						    'left', 'right', 'top', 'bottom',
+						    'inside',
+						    'insideTop', 'insideLeft', 'insideRight', 'insideBottom',
+						    'insideTopLeft', 'insideTopRight', 'insideBottomLeft', 'insideBottomRight'
+						];
+
+						app.configParameters = {
+						    rotate: {
+						        min: -90,
+						        max: 90
+						    },
+						    align: {
+						        options: {
+						            left: 'left',
+						            center: 'center',
+						            right: 'right'
 						        }
 						    },
-						    grid: {
-						        left: '3%',
-						        right: '4%',
-						        bottom: '3%',
-						        containLabel: true
+						    verticalAlign: {
+						        options: {
+						            top: 'top',
+						            middle: 'middle',
+						            bottom: 'bottom'
+						        }
 						    },
-						    xAxis : [
-						        {
-						            type : 'category',
-						            data : ['PIA', 'PIM', 'DEVENGADO'],
-						            axisTick: {
-						                alignWithLabel: true
+						    position: {
+						        options: echarts.util.reduce(posList, function (map, pos) {
+						            map[pos] = pos;
+						            return map;
+						        }, {})
+						    },
+						    distance: {
+						        min: 0,
+						        max: 100
+						    }
+						};
+
+						app.config = {
+						    rotate: 90,
+						    align: 'left',
+						    verticalAlign: 'middle',
+						    position: 'insideBottom',
+						    distance: 15,
+						    onChange: function () {
+						        var labelOption = {
+						            normal: {
+						                rotate: app.config.rotate,
+						                align: app.config.align,
+						                verticalAlign: app.config.verticalAlign,
+						                position: app.config.position,
+						                distance: app.config.distance
+						            }
+						        };
+						        myChart.setOption({
+						            series: [{
+						                label: labelOption
+						            }, {
+						                label: labelOption
+						            }, {
+						                label: labelOption
+						            }, {
+						                label: labelOption
+						            }]
+						        });
+						    }
+						};
+
+
+						var labelOption = {
+						    normal: {
+						        show: true,
+						        position: app.config.position,
+						        distance: app.config.distance,
+						        align: app.config.align,
+						        verticalAlign: app.config.verticalAlign,
+						        rotate: app.config.rotate,
+						        formatter: '{c}  {name|{a}}',
+						        fontSize: 16,
+						        rich: {
+						            name: {
+						                textBorderColor: '#fff'
 						            }
 						        }
-						    ],
-						    yAxis : [
-						        {
-						            type : 'value'
-						        }
-						    ],
-						    series : [
-						        {
-						            name:'Montos',
-						            type:'bar',
-						            barWidth: '60%',
-						            data:cantidadpipprovincias
-						        }
-						    ]
+						    }
 						};
-						;
+
+						option = {
+						    color: ['#003366', '#006699', '#4cabce', '#e5323e'],
+						    tooltip: {
+						        trigger: 'axis',
+						        axisPointer: {
+						            type: 'shadow'
+						        }
+						    },
+						    legend: {
+						        data: ['PIA', 'PIM', 'DEVENGADO']
+						    },
+						    toolbox: {
+						        show: true,
+						        orient: 'vertical',
+						        left: 'right',
+						        top: 'center',
+						        feature: {
+						            mark: {show: true},
+						            dataView: {show: true, readOnly: false},
+						            magicType: {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+						            restore: {show: true},
+						            saveAsImage: {show: true}
+						        }
+						    },
+						    calculable: true,
+						    xAxis: [
+						        {
+						            type: 'category',
+						            axisTick: {show: false},
+						            data: [cantidadpipprovincias.anio_meta_pres]
+						        }
+						    ],
+						    yAxis: [
+						        {
+						            type: 'value'
+						        }
+						    ],
+						    series: [
+						        {
+						            name: 'PIA',
+						            type: 'bar',
+						            barGap: 0,
+						            label: labelOption,
+						            data: [cantidadpipprovincias.pia_meta_pres]
+						        },
+						        {
+						            name: 'PIM',
+						            type: 'bar',
+						            label: labelOption,
+						            data: [cantidadpipprovincias.pim_acumulado]
+						        },
+						        {
+						            name: 'DEVENGADO',
+						            type: 'bar',
+						            label: labelOption,
+						            data: [cantidadpipprovincias.devengado_acumulado]
+						        }   
+						    ]
+						};;
 						if (option && typeof option === "object") {
 						    myChart.setOption(option, true);
 						}
+
+						
 					}
 				});
 
