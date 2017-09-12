@@ -20,32 +20,37 @@ class Model_CarteraInversion extends CI_Model
 
      function AddCartera($dateAñoAperturaCart,$dateFechaIniCart,$dateFechaFinCart,$estado,$txt_NumResolucionCart,$txt_UrlResolucionCart)
         {
-        $query=$this->db->query("execute sp_CarteraInversion_c'".$dateAñoAperturaCart."','".$dateFechaIniCart."','".$dateFechaFinCart."','".$estado."','".$txt_NumResolucionCart."','".$txt_UrlResolucionCart."'");//PROCEDIMIENTO DE LISTAR SOLO CARTEREA ACTUAL
+        $query=$this->db->query("execute sp_CarteraInversion_c'".$dateAñoAperturaCart."','".$dateFechaIniCart."','".$dateFechaFinCart."','".$estado."','".$txt_NumResolucionCart."','".$txt_UrlResolucionCart."'");
+         
              if ($query) 
               {
-                return true;
+                $result=$query->result_array();
+                if($result[0]['n']=='1')
+                   return "Se registró la cartera de Inversiones.";
+                else
+                  return "El Año de Apertura ya Existe.";
               }
               else
               {
-                return false;
+                return "Error... no se grabaron los datos.";
               }
         }
 
         function editCartera($id_cartera,$dateAñoAperturaCart,$dateFechaIniCart,$dateFechaFinCart,$estado,$txt_NumResolucionCart,$txt_UrlResolucionCart){
-          if($txt_UrlResolucionCart!=''){
-             $query=$this->db->query("update CARTERA_INVERSION set año_apertura_cartera='".$dateAñoAperturaCart."',fecha_inicio_cartera='".$dateFechaIniCart."',fecha_cierre_cartera='".$dateFechaFinCart."',numero_resolucion_cartera='".$txt_NumResolucionCart."',url_resolucion_cartera='".$txt_UrlResolucionCart."' WHERE id_cartera='".$id_cartera."'");
-          }
-          else{
-             $query=$this->db->query("update CARTERA_INVERSION set año_apertura_cartera='".$dateAñoAperturaCart."',fecha_inicio_cartera='".$dateFechaIniCart."',fecha_cierre_cartera='".$dateFechaFinCart."',numero_resolucion_cartera='".$txt_NumResolucionCart."' WHERE id_cartera='".$id_cartera."'");
-          }
+             $query=$this->db->query("execute sp_CarteraInversion_u ".$id_cartera.",'".$dateAñoAperturaCart."','".$dateFechaIniCart."','".$dateFechaFinCart."','".$txt_NumResolucionCart."','".$txt_UrlResolucionCart."'");
            
-            if($query){
-                $this->db->close();
-                return true;
-            } 
-            else {
-                return false;
-            }
+            if ($query) 
+              {
+                $result=$query->result_array();
+                if($result[0]['n']=='1')
+                   return "Se registró la cartera de Inversiones.";
+                else
+                  return "El Año de Apertura ya Existe.";
+              }
+              else
+              {
+                return "Error... no se grabaron los datos.";
+              }
         }
     //LISTAR CARTERA FECHA ACTUAL
       function GetCarteraInvFechAct()
