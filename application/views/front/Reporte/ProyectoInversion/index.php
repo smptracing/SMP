@@ -97,28 +97,16 @@
 														</div>
 														<div class="row">
 
-												            <div class="col-md-12 col-sm-4 col-xs-12">
-												                <div class="x_panel">
-												                    <div class="x_title">
-												                        <h5> PIA, PIM Y DEVENGADO</h5>
-
-												                        <div class="clearfix"></div>
-												                    </div>
-												                    <div class="x_content">
-												                        <div id="pimdevengadopia" style="height:350px;"></div>
-												                    </div>
+												           <div class="row" style="margin-left: 10px; margin:10px; ">
+												                <div class="panel panel-default">
+																 <div class="panel-heading">PIA, PIM Y DEVENGADO</div>
+												                        <div id="pimdevengadopia"></div>
 												                </div>
 													        </div>
-													         <div class="col-md-12 col-sm-4 col-xs-12">
-												                <div class="x_panel">
-												                    <div class="x_title">
-												                        <h5> PIA, PIM Y DEVENGADO</h5>
-
-												                        <div class="clearfix"></div>
-												                    </div>
-												                    <div class="x_content">
-												                        <div id="pimdevengadopialineasAnual" style="height:420px;"></div>
-												                    </div>
+													         <div class="row" style="margin-left: 10px; margin:10px; ">
+												                <div class="panel panel-default">
+																 <div class="panel-heading">PIA, PIM Y DEVENGADO ANUAL</div>
+												                        <div id="pimdevengadopialineasAnual"></div>
 												                </div>
 													        </div>
 														</div>
@@ -142,9 +130,13 @@
 $(document).on("ready" ,function(){
 	
 $("#EjecucionAnual").hide();
+
+
 $("#CodigoUnico").on( "click", function()
 	 {
 		$("#EjecucionAnual").show(2000);
+		$("#pimdevengadopia").css({"height":"350"}); 
+		$("#pimdevengadopialineasAnual").css({"height":"420"}); 
 		var codigounico=$("#BuscarPip").val();
 		$.ajax({
 		"url":base_url+"index.php/PrincipalReportes/DatosParaEstadisticaAnualProyecto",
