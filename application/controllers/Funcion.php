@@ -37,33 +37,67 @@ class Funcion extends CI_Controller {/* Mantenimiento de sector entidad Y servic
 
     function GetListaFuncion()
     {
-        $datos=$this->Model_Funcion->GetListaFuncion();
-        echo json_encode($datos);
+        if ($this->input->is_ajax_request()) 
+        {
+            $datos=$this->Model_Funcion->GetListaFuncion();
+            echo json_encode($datos);
+        }
+        else
+        {
+            show_404();
+        }        
     }
 
     function GetDivisionFuncional()
     {
-        $idFuncion=$this->input->post('idFuncion');
-        $datos=$this->Model_Funcion->GetDivisionFuncional($idFuncion);
-        echo json_encode($datos);
+        if ($this->input->is_ajax_request()) 
+        {
+            $idFuncion=$this->input->post('idFuncion');
+            $datos=$this->Model_Funcion->GetDivisionFuncional($idFuncion);
+            echo json_encode($datos);
+        }
+        else
+        {
+            show_404();
+        }  
     }
     function GetGrupoFuncional()
     {
-        $idDivisionFuncional=$this->input->post('idDivisionFuncional');
-        $datos=$this->Model_Funcion->GetGrupoFuncional($idDivisionFuncional);
-        echo json_encode($datos);
+        if ($this->input->is_ajax_request()) 
+        {
+            $idDivisionFuncional=$this->input->post('idDivisionFuncional');
+            $datos=$this->Model_Funcion->GetGrupoFuncional($idDivisionFuncional);
+            echo json_encode($datos);
+        }
+        else
+        {
+            show_404();
+        }
     }
     function GetProvincia()
     {
-        $datos=$this->Model_Funcion->GetProvincia();
-        echo json_encode($datos);
+        if ($this->input->is_ajax_request()) 
+        {
+            $datos=$this->Model_Funcion->GetProvincia();
+            echo json_encode($datos);
+        }
+        else
+        {
+            show_404();
+        }
     }
     function GetDistrito()
     {
-        $provincia=$this->input->post('provincia');
-        $datos=$this->Model_Funcion->GetDistrito($provincia);
-        echo json_encode($datos);
-        exit;
+        if ($this->input->is_ajax_request()) 
+        {
+            $provincia=$this->input->post('provincia');
+            $datos=$this->Model_Funcion->GetDistrito($provincia);
+            echo json_encode($datos);
+        }
+        else
+        {
+            show_404();
+        }
     }
     function ProyectosPorCadenaFuncional()
     {

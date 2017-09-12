@@ -24,9 +24,9 @@
 									<div class="row">  
 										<div class="col-md-12 col-sm-12 col-xs-12">
 											<div class="x_panel">
-													<div class="clearfix">
+													<!--<div class="clearfix">
 														<div class="pull-right tableTools-container"></div>
-													</div>
+													</div>-->
 													<div class="x_content">
 														<br>
 														<div class="row">

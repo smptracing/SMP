@@ -7,7 +7,6 @@ class Model_Funcion extends CI_Model
         parent::__construct();
     }
 
-    /*añadir funcion*/
     function GetFuncion()
     {
         $funcion=$this->db->query("execute sp_Funcion_r");        
