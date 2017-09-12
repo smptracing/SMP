@@ -266,6 +266,7 @@ $(document).on("ready" ,function()
         $.ajax({
             url: base_url +"index.php/Funcion/ProyectosPorCadenaFuncional",
             type: 'POST',
+            cache: false,
             data:
             {
                 idFuncion: idFuncion,

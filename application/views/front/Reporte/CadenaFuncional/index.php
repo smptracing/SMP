@@ -90,15 +90,14 @@
 										                        <div class="col-md-3 col-sm-3 col-xs-12">
 										                          <button type="button" class="btn btn-primary" id="btnBuscar">Buscar</button>
 										                        </div>
-										                    </div>
-									                    	
-									                    </div>
-									                    <br>
+										                    </div>									                    	
+									                    </div><br>
+									                   
 									                    <div id="dataTableFuncion">
 										                    <table id="dynamic-table"  class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 																<thead>
 																	<tr>
-																		<td>Codigo</td>
+																		<td>Código</td>
 																		<td>Proyecto</td>
 																		<td>Función</td>
 																		<td>División Funcional</td>
@@ -110,7 +109,6 @@
 															</table>
 									                    	
 									                    </div>
-
 														
 														</div>
 

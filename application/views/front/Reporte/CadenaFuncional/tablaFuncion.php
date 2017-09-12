@@ -1,3 +1,13 @@
+<div class="row">
+	<div class="form-group">
+        <label class="control-label col-md-2 col-sm-2 col-xs-12">Número de Beneficiarios:</label>
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <input type="text" class="form-control" placeholder="Total" id="txtTotalBeneficiarios" readonly value=<?=$totalBeneficiarios?> >
+        </div>
+    </div>									                    	
+</div>
+<br>
+
 <table id="dynamic-table"  class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 	<thead>
 		<tr>
@@ -12,7 +22,7 @@
 	</thead>
 	<tbody>
 	<?php foreach($listaProyectos as $item ) { ?>
-	  	<tr>
+	  	<tr class="dato">
 			<td>
 				<?=$item->codigo_unico_pi?>
 	    	</td>
