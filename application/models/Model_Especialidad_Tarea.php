@@ -35,4 +35,11 @@ class Model_Especialidad_Tarea extends CI_Model
 
 		return $data->result();
 	}
+
+	public function asignarEspecialista($idEspecialidad, $idPersona, $idTareaET)
+	{
+		$this->db->query("exec sp_Gestionar_ETEspecialidadTarea @opcion='asignarEspecialista', @idEspecialidad=$idEspecialidad, @idPersona=$idPersona, @idTareaET=$idTareaET");
+
+		return true;
+	}
 }

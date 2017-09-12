@@ -156,7 +156,7 @@
 							<tr style="user-select: none;">
 								<td><label class="control-label" style="cursor: pointer;"><input name="checkBoxEspecialidad[]" id="checkBoxEspecialidad<?=$key?>" type="checkbox" value="<?=$value->id_esp?>" onchange="onChangeCheckBoxEspecialidad(this);" <?=$asignadoTemp ? 'checked="true"' : ''?>> <?=$value->nombre_esp?></label></td>
 								<td>
-									<select name="selectPersonaEspecialista[]" id="selectPersonaEspecialista<?=$key?>" style="width: 100%;" class="form-control" <?=$asignadoTemp ? '' : 'disabled=true'?>>
+									<select name="selectPersonaEspecialista[]" id="selectPersonaEspecialista<?=$key?>" style="width: 100%;" class="form-control" <?=$asignadoTemp ? '' : 'disabled=true'?> onchange="asignarEspecialista(<?=$value->id_esp?>, this);">
 										<option value=""></option>
 										<?php foreach($listaPersona as $key => $value){ ?>
 											<option value="<?=$value->id_persona?>"><?=html_escape($value->nombres.' '.$value->apellido_p.' '.$value->apellido_m)?></option>
@@ -182,6 +182,27 @@
 			$('#selectPersonaEspecialista<?=$i?>').selectpicker({ liveSearch: true });
 		<?php } ?>
 	});
+
+	function asignarEspecialista(idEspecialidad, element)
+	{
+		paginaAjaxJSON({ idEspecialidad : idEspecialidad, idPersona : $(element).val(), idTareaET : <?=$etTarea->id_tarea_et?> }, '<?=base_url()?>index.php/Especialidad_Tarea/asignarEspecialista', 'POST', null, function(objectJSON)
+		{
+			objectJSON=JSON.parse(objectJSON);
+
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
+			},
+			function(){});
+
+			if(objectJSON.proceso=='Error')
+			{
+				return false;
+			}
+		}, false, true);
+	}
 
 	function onChangeCheckBoxEspecialidad(element)
 	{

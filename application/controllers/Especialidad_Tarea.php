@@ -50,4 +50,22 @@ class Especialidad_Tarea extends CI_Controller
 			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Especialidad eliminada correctamente.']);exit;
 		}
 	}
+
+	public function asignarEspecialista()
+	{
+		if($this->input->is_ajax_request())
+		{
+			$this->db->trans_start();
+
+			$idEspecialidad=$this->input->post('idEspecialidad');
+			$idPersona=$this->input->post('idPersona');
+			$idTareaET=$this->input->post('idTareaET');
+
+			$this->Model_Especialidad_Tarea->asignarEspecialista($idEspecialidad, $idPersona, $idTareaET);
+
+			$this->db->trans_complete();
+
+			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Especialidad eliminada correctamente.']);exit;
+		}
+	}
 }
