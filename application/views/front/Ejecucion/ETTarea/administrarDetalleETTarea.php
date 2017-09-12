@@ -139,11 +139,24 @@
 						</tr>
 					</thead>
 					<tbody>
-						<?php foreach($listaEspecialidad as $key => $value){ ?>
+						<?php foreach($listaEspecialidad as $key => $value)
+						{
+							$asignadoTemp=false;
+
+							foreach($listaEspecialidadTarea as $index => $item)
+							{
+								if($value->id_esp==$item->id_esp)
+								{
+									$asignadoTemp=true;
+
+									break;
+								}
+							}
+						?>
 							<tr style="user-select: none;">
-								<td><label class="control-label" style="cursor: pointer;"><input name="checkBoxEspecialidad[]" id="checkBoxEspecialidad<?=$key?>" type="checkbox" value="<?=$value->id_esp?>" onchange="onChangeCheckBoxEspecialidad(this);"> <?=$value->nombre_esp?></label></td>
+								<td><label class="control-label" style="cursor: pointer;"><input name="checkBoxEspecialidad[]" id="checkBoxEspecialidad<?=$key?>" type="checkbox" value="<?=$value->id_esp?>" onchange="onChangeCheckBoxEspecialidad(this);" <?=$asignadoTemp ? 'checked="true"' : ''?>> <?=$value->nombre_esp?></label></td>
 								<td>
-									<select name="selectPersonaEspecialista[]" id="selectPersonaEspecialista<?=$key?>" style="width: 100%;" class="form-control" disabled=true>
+									<select name="selectPersonaEspecialista[]" id="selectPersonaEspecialista<?=$key?>" style="width: 100%;" class="form-control" <?=$asignadoTemp ? '' : 'disabled=true'?>>
 										<option value=""></option>
 										<?php foreach($listaPersona as $key => $value){ ?>
 											<option value="<?=$value->id_persona?>"><?=html_escape($value->nombres.' '.$value->apellido_p.' '.$value->apellido_m)?></option>
@@ -188,7 +201,7 @@
 
 				if(objectJSON.proceso=='Error')
 				{
-					//$(element).prop('checked', false);
+					$(element).prop('checked', false);
 
 					return false;
 				}
