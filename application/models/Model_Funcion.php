@@ -14,6 +14,12 @@ class Model_Funcion extends CI_Model
         return $funcion->result();
     }
 
+    function GetListaFuncion()
+    {
+        $data=$this->db->query("select f.id_funcion,f.codigo_funcion,f.nombre_funcion from FUNCION f");
+        return $data->result();
+    }
+
     function GetDivisionFuncional($codigoFuncion)
     {
         $data=$this->db->query("select df.id_div_funcional, df.codigo_div_funcional, df.nombre_div_funcional from funcion f inner join DIVISION_FUNCIONAL df on df.id_funcion=f.id_funcion where df.id_funcion = $codigoFuncion");

@@ -33,7 +33,7 @@
 															<div class="form-group">
 										                       <label class="control-label col-md-2 col-sm-2 col-xs-12">Función: </label>
 										                       <div class="col-md-4 col-sm-4 col-xs-12">
-									                                <select id="listaFuncionC" name="listaFuncionC" class="selectpicker" data-live-search="true"  title="Seleccionar Función" onchange="">
+									                                <select id="listaFuncion" name="listaFuncion" class="selectpicker" data-live-search="true"  title="Seleccionar Función" onchange="">
 									                                 </select>
 									                            </div>
 										                    </div>

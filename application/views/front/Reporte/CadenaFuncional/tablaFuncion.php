@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="form-group">
-        <label class="control-label col-md-2 col-sm-2 col-xs-12">Número de Beneficiarios:</label>
+        <label class="control-label col-md-2 col-sm-2 col-xs-12">Total de Beneficiarios:</label>
         <div class="col-md-4 col-sm-4 col-xs-12">
           <input type="text" class="form-control" placeholder="Total" id="txtTotalBeneficiarios" readonly value=<?=$totalBeneficiarios?> >
         </div>
