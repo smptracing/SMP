@@ -117,7 +117,7 @@
 												                        <div class="clearfix"></div>
 												                    </div>
 												                    <div class="x_content">
-												                        <div id="pimdevengadopialineas" style="height:350px;"></div>
+												                        <div id="pimdevengadopialineasAnual" style="height:350px;"></div>
 												                    </div>
 												                </div>
 													        </div>
@@ -163,131 +163,13 @@ $("#CodigoUnico").on( "click", function()
 		        $("#txtdevengado").html(cantidadpipprovincias.pim_acumulado);
 			}
 		});
-
-	//alert(codigounico);
-	$.ajax({
+		$.ajax({
 				"url":base_url+"index.php/PrincipalReportes/BuscadorPipPorCodigoReporte",
 				type:"GET", 
 				data:{codigounico:codigounico},
 				cache:false,
-				success:function(resp){
-					/*alert(resp);
-
-					var cantidadpipprovincias=JSON.parse(resp);
-					console.log(cantidadpipprovincias);
-					var dom = document.getElementById("pimdevengadopia");
-					var myChart = echarts.init(dom);
-					var app = {};
-					option = null;
-					app.title = '多 Y 轴示例';
-
-					var colors = ['#5793f3', '#d14a61', '#675bba'];
-
-					option = {
-					    color: colors,
-
-					    tooltip: {
-					        trigger: 'axis',
-					        axisPointer: {
-					            type: 'cross'
-					        }
-					    },
-					    grid: {
-					        right: '20%'
-					    },
-					    toolbox: {
-					        feature: {
-					            dataView: {show: true, readOnly: false},
-					            restore: {show: true},
-					            saveAsImage: {show: true}
-					        }
-					    },
-					    legend: {
-					        data:['Devengado','PIA','PIM']
-					    },
-					    xAxis: [
-					        {
-					            type: 'category',
-					            axisTick: {
-					                alignWithLabel: true
-					            },
-					            data: ['En','Feb','Mar','Abr','May','Jun','Jul','Agost','Set','Oct','Nov','Dic']
-					        }
-					    ],
-					    yAxis: [
-					        {
-					            type: 'value',
-					            name: 'Devengado',
-					            min: 0,
-					            max: 250,
-					            position: 'right',
-					            axisLine: {
-					                lineStyle: {
-					                    color: colors[0]
-					                }
-					            },
-					            axisLabel: {
-					                formatter: '{value} ml'
-					            }
-					        },
-					        {
-					            type: 'value',
-					            name: 'PIA',
-					            min: 0,
-					            max: 250,
-					            position: 'right',
-					            offset: 80,
-					            axisLine: {
-					                lineStyle: {
-					                    color: colors[1]
-					                }
-					            },
-					            axisLabel: {
-					                formatter: '{value} ml'
-					            }
-					        },
-					        {
-					            type: 'value',
-					            name: 'PIM',
-					            min: 0,
-					            max: 25,
-					            position: 'left',
-					            axisLine: {
-					                lineStyle: {
-					                    color: colors[2]
-					                }
-					            },
-					            axisLabel: {
-					                formatter: '{value} °C'
-					            }
-					        }
-					    ],
-					    series: [
-					        {
-					            name:'Devengado',
-					            type:'bar',
-					            data:cantidadpipprovincias
-					        },
-					        {
-					            name:'PIA',
-					            type:'bar',
-					            yAxisIndex: 1,
-					            data:cantidadpipprovincias
-					        },
-
-					        
-					        {
-					            name:'PIM',
-					            type:'line',
-					            yAxisIndex: 2,
-					            data:cantidadpipprovincias
-					        }
-					    ]
-					};
-
-					if (option && typeof option === "object") {
-					    myChart.setOption(option, true);
-					}*/
+				success:function(resp)
+				{
 						var cantidadpipprovincias=JSON.parse(resp);
 						console.log(cantidadpipprovincias);
 						var dom = document.getElementById("pimdevengadopia");
@@ -337,8 +219,91 @@ $("#CodigoUnico").on( "click", function()
 						    myChart.setOption(option, true);
 						}
 					}
-					});
+				});
+
+			$.ajax({
+				"url":base_url+"index.php/PrincipalReportes/BuscadorPipPorCodigoReporte",
+				type:"GET", 
+				data:{codigounico:codigounico},
+				cache:false,
+				success:function(resp)
+				{
+						var cantidadpipprovincias=JSON.parse(resp);
+						var dom = document.getElementById("pimdevengadopialineasAnual");
+						var myChart = echarts.init(dom);
+						var app = {};
+						option = null;
+						option = {
+						    title: {
+						        text: 'PIA, PIM Y DEVENGADO ANUAL ',
+						        subtext: '',
+						        sublink: ''
+						    },
+						    tooltip : {
+						        trigger: 'axis',
+						        axisPointer : {            
+						            type : 'shadow'        
+						        },
+						        formatter: function (params) {
+						            var tar = params[1];
+						            return tar.name + '<br/>' + tar.seriesName + ' : ' + tar.value;
+						        }
+						    },
+						    grid: {
+						        left: '3%',
+						        right: '4%',
+						        bottom: '3%',
+						        containLabel: true
+						    },
+						    xAxis: {
+						        type : 'category',
+						        splitLine: {show:false},
+						        data : ['2014','2015','2016','2017','2018','2020']
+						    },
+						    yAxis: {
+						        type : 'value'
+						    },
+						    series: [
+						        {
+						            name: '辅助',
+						            type: 'bar',
+						            stack:  '总量',
+						            itemStyle: {
+						                normal: {
+						                    barBorderColor: 'rgba(0,255,0,0.3)',
+						                    color: 'rgba(0,255,0,0.3)'
+						                },
+						                emphasis: {
+						                    barBorderColor: 'rgba(0,255,0,0.3)',
+						                    color: 'rgba(0,255,0,0.3)'
+						                }
+						            },
+						            data: [0, 0, 0, 0, 0, 0]
+						        },
+						        {
+						            name: '生活费',
+						            type: 'bar',
+						            stack: '总量',
+						            label: {
+						                normal: {
+						                    show: true,
+						                    position: 'inside'
+						                }
+						            },
+						            data:[2900, 1200, 300, 200, 900, 300]
+						        }
+						    ]
+						};
+						;
+						if (option && typeof option === "object") {
+						    myChart.setOption(option, true);
+						}
+												
+				}
+
 			});
+
+		});
 	
 });
 </script>
