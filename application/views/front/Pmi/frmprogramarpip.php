@@ -591,3 +591,10 @@
     </div>
 </div>
 <!-- /.Fin Ventana programar-->
+<style>
+  .linkItem:hover{
+    text-decoration: underline;
+    font-weight: bold;
+    cursor: pointer;
+  }
+</style>
