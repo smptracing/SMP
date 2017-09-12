@@ -11,12 +11,10 @@ class DivisionFuncional extends CI_Controller {/* Mantenimiento de division func
 
   public function index()
     {
-        /*$this->load->view('layout/Reportes/header');
-        $this->load->view('front/Reporte/Funcion/index');
-        $this->load->view('layout/Reportes/footer');*/
         $listaPipDivisionFuncional=$this->Model_DivisionFuncional->DivisionFuncionalPipListar();
+        $listaMontoTotalGrupoDivFunc=$this->Model_DivisionFuncional->DivFuncionalPipMontoTotalListar();
         $this->load->view('layout/Reportes/header');
-        $this->load->view('front/Reporte/DivisionFuncional/index',['listaPipDivisionFuncional'=>$listaPipDivisionFuncional]);
+        $this->load->view('front/Reporte/DivisionFuncional/index',['listaPipDivisionFuncional'=>$listaPipDivisionFuncional,'listaMontoTotalGrupoDivFunc'=>$listaMontoTotalGrupoDivFunc]);
         $this->load->view('layout/Reportes/footer');
     }
 

@@ -9,12 +9,10 @@ class GrupoFuncional extends CI_Controller {/* Mantenimiento de division funcion
 	}
     public function index()
     {
-        /*$this->load->view('layout/Reportes/header');
-        $this->load->view('front/Reporte/Funcion/index');
-        $this->load->view('layout/Reportes/footer');*/
         $listaNumPipGrupo=$this->Model_GrupoFuncional->GrupoPipListar();
+        $listaMontoTotalGrupoFuncional=$this->Model_GrupoFuncional->GrupoFuncionalPipMontoTotalListar();
         $this->load->view('layout/Reportes/header');
-        $this->load->view('front/Reporte/GrupoFuncional/index',['listaNumPipGrupo'=>$listaNumPipGrupo]);
+        $this->load->view('front/Reporte/GrupoFuncional/index',['listaNumPipGrupo'=>$listaNumPipGrupo,'listaMontoTotalGrupoFuncional'=>$listaMontoTotalGrupoFuncional]);
         $this->load->view('layout/Reportes/footer');
     }
 

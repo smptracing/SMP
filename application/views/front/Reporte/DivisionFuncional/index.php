@@ -57,6 +57,23 @@
 															</tbody>
 														</table>
 													</div>
+													<div class="col-md-4 col-sm-12 col-xs-12">
+														<table id="table-Resumen"  class="table">
+																<tr>
+																<td colspan="2"><b>CUADRO RESUMEN DE PIP POR DIVISIÓN FUNCIONAL</b></td>
+																</tr>
+																<tr>
+																	<td>TOTAL PIP</td>
+																	
+																	<td >Costo total</td>
+																</tr>
+																<tr>
+																
+																	<td bgcolor="#D1F2EB"><?=$listaMontoTotalGrupoDivFunc->CostoPip;?></td>
+																	<td bgcolor="#D1F2EB"><?=$listaMontoTotalGrupoDivFunc->CantidadPip;?></td>
+																</tr>
+														</table> 
+													</div>
 											</div>
 										</div>
 									</div>
