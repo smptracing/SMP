@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="<?=base_url()?>assets/vendors/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="<?=base_url()?>assets/dist/css/bootstrap-select.css">
 <style>
 	#tableObservacion td
 	{
@@ -31,117 +33,143 @@
 	}
 </style>
 <div style="background-color: #ffffff;box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.7);left: 0px;padding-top: 4px;position: absolute;right: 0px;top: 0px;">
-	<h3 style="padding-left: 4px;text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4)">
+	<h3 style="font-size: 20px;margin-top: 0px;padding-left: 4px;padding-top: 0px;text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);">
 		Actividad: <span style="color: #26a5d8;"><?=html_escape($etTarea->nombre_tarea)?></span>
 		<br>
 		<small>desde el <i style="text-decoration: underline;"><?=explode(' ', $etTarea->fecha_inicio_tarea)[0]?></i> hasta el <i style="text-decoration: underline;"><?=explode(' ', $etTarea->fecha_final_tarea)[0]?></i></small>
 	</h3>
-	<input type="button" value="Cerrar ventana" class="button requireWrite newproject" style="background-color: #d43c3c;position: absolute;right: 0px;top: 4px;" onclick="$('#divDialogoGeneralGantt').hide();">
+	<input type="button" value="Cerrar ventana" class="button requireWrite newproject" style="background-color: #d43c3c;position: absolute;right: 0px;top: 10px;" onclick="$('#divDialogoGeneralGantt').hide();">
 </div>
-<div style="overflow-y: scroll;height: 90%;margin-top: 40px;">
-	<label for="selectETResponsableTarea"><b>Responsable de la actividad</b></label>
-	<br>
-	<select name="selectETResponsableTarea" id="selectETResponsableTarea" style="width: 100%;" onchange="asignarResponsable(<?=$etTarea->id_tarea_et?>);">
-		<option value=""></option>
-		<?php foreach($listaPersona as $key => $value){
-			if(count($listaETResponsableTarea)>0){
-				$asignado=false;
-				foreach($listaETResponsableTarea as $index => $item){
-					if($value->id_persona==$item->id_persona)
-					{
-						$asignado=true;break;
-					}
-				}
-				if($asignado){ ?>
-					<option value="<?=$value->id_persona?>" selected><?=html_escape($value->nombres.' '.$value->apellido_p.' '.$value->apellido_m)?></option>
-				<?php } else{ ?>
-					<option value="<?=$value->id_persona?>"><?=html_escape($value->nombres.' '.$value->apellido_p.' '.$value->apellido_m)?></option>
-				<?php }
-			}
-			else{ ?>
-				<option value="<?=$value->id_persona?>"><?=html_escape($value->nombres.' '.$value->apellido_p.' '.$value->apellido_m)?></option>
-			<?php }
-			} ?>
-	</select>
-	<br><br>
-	<table style="width: 100%;">
-		<thead>
-			<tr>
-				<th>Especialidad</th>
-				<th>Especialista</th>
-			</tr>
-		</thead>
-		<tbody>
-			<?php foreach($listaEspecialidad as $key => $value){ ?>
-				<tr>
-					<td><?=$value->nombre_esp?></td>
-					<td>
-						<select name="selectPersonaEspecialista" id="selectPersonaEspecialista" style="width: 100%;">
-							<option value=""></option>
-							<?php foreach($listaPersona as $key => $value){ ?>
+<div style="overflow-x: hidden;overflow-y: scroll;height: 90%;margin-top: 55px;">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="col-md-2" style="padding-top: 5px;">
+				<label for="selectETResponsableTarea" class="control-label"><b>Responsable de la actividad</b></label>
+			</div>
+			<div class="col-md-10">
+				<select name="selectETResponsableTarea" id="selectETResponsableTarea" style="width: 100%;" onchange="asignarResponsable(<?=$etTarea->id_tarea_et?>);" class="form-control">
+					<option value=""></option>
+					<?php foreach($listaPersona as $key => $value){
+						if(count($listaETResponsableTarea)>0){
+							$asignado=false;
+							foreach($listaETResponsableTarea as $index => $item){
+								if($value->id_persona==$item->id_persona)
+								{
+									$asignado=true;break;
+								}
+							}
+							if($asignado){ ?>
+								<option value="<?=$value->id_persona?>" selected><?=html_escape($value->nombres.' '.$value->apellido_p.' '.$value->apellido_m)?></option>
+							<?php } else{ ?>
 								<option value="<?=$value->id_persona?>"><?=html_escape($value->nombres.' '.$value->apellido_p.' '.$value->apellido_m)?></option>
+							<?php }
+						}
+						else{ ?>
+							<option value="<?=$value->id_persona?>"><?=html_escape($value->nombres.' '.$value->apellido_p.' '.$value->apellido_m)?></option>
+						<?php }
+						} ?>
+				</select>
+			</div>
+			<div class="col-md-12">
+				<label for="txtObservacion"><b>Observación</b></label>
+				<div>
+					<textarea name="txtObservacion" id="txtObservacion" rows="4" style="resize: none;" class="form-control"></textarea>
+				</div>
+			</div>
+			<div class="col-md-12" style="margin-top: 4px;text-align: right;">
+				<input type="button" value="Registrar observación" class="button requireWrite newproject" onclick="registrarObservacion();">
+			</div>
+			<div class="col-md-12">
+				<div>
+					<table id="tableObservacion" class="table table-striped">
+						<thead>
+							<tr>
+								<th>Descripción</th>
+								<th>Fecha</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody id="bodyTableObservacion">
+							<?php foreach($listaETTareaObservacion as $key => $value){ ?>
+								<tr>
+									<td>
+										<?=html_escape($value->desc_tobservacion)?>
+										<div style="padding-left: 20px;font-size: 12px;">
+											<b>Levantamiento: </b><span id="spanDescripcionLevantamientoTObservacion<?=$value->id_tarea_observacion?>"><?=html_escape($value->levantamiento_tobservacion)?></span>
+											<br>
+											<a id="enlaceEliminarLevantamientoObservacion<?=$value->id_tarea_observacion?>" href="#" style="color: red;<?=html_escape($value->levantamiento_tobservacion)=='' ? 'display: none;' : ''?>" onclick="eliminarLevantamientoObservacion(<?=$value->id_tarea_observacion?>, this);">Eliminar levantamiento de la obs.</a>
+											<textarea id="txtDescripcionLevantamientoObservacion<?=$value->id_tarea_observacion?>" rows="4" style="display: none;resize: none;width: 100%;" placeholder="Descripción del levantamiento de observación"></textarea>
+										</div>	
+									</td>
+									<td><?=$value->fecha_tobservacion?></td>
+									<td style="text-align: center;font-size: 12px;">
+										<a href="#" style="color: blue;display: block" onclick="levantarObservacion(<?=$value->id_tarea_observacion?>, this);">Levantar obs.</a>
+										<a href="#" style="color: red;display: block;" onclick="eliminarObservacion(<?=$value->id_tarea_observacion?>, this);">Eliminar</a>
+									</td>
+								</tr>
 							<?php } ?>
-						</select>
-					</td>
-				</tr>
-			<?php } ?>
-		</tbody>
-	</table>
-	<br><br>
-	<label for="txtObservacion"><b>Observación</b></label>
-	<br>
-	<textarea name="txtObservacion" id="txtObservacion" rows="4" style="resize: none;width: 100%;"></textarea>
-	<br>
-	<div style="text-align: right;">
-		<input type="button" value="Registrar observación" class="button requireWrite newproject" onclick="registrarObservacion();">
-	</div>
-	<table id="tableObservacion" style="width: 100%;">
-		<thead>
-			<tr>
-				<th>Descripción</th>
-				<th>Fecha</th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody id="bodyTableObservacion">
-			<?php foreach($listaETTareaObservacion as $key => $value){ ?>
-				<tr>
-					<td>
-						<?=html_escape($value->desc_tobservacion)?>
-						<div style="padding-left: 20px;font-size: 12px;">
-							<b>Levantamiento: </b><span id="spanDescripcionLevantamientoTObservacion<?=$value->id_tarea_observacion?>"><?=html_escape($value->levantamiento_tobservacion)?></span>
-							<br>
-							<a id="enlaceEliminarLevantamientoObservacion<?=$value->id_tarea_observacion?>" href="#" style="color: red;<?=html_escape($value->levantamiento_tobservacion)=='' ? 'display: none;' : ''?>" onclick="eliminarLevantamientoObservacion(<?=$value->id_tarea_observacion?>, this);">Eliminar levantamiento de la obs.</a>
-							<textarea id="txtDescripcionLevantamientoObservacion<?=$value->id_tarea_observacion?>" rows="4" style="display: none;resize: none;width: 100%;" placeholder="Descripción del levantamiento de observación"></textarea>
-						</div>	
-					</td>
-					<td><?=$value->fecha_tobservacion?></td>
-					<td style="text-align: center;font-size: 12px;">
-						<a href="#" style="color: blue;display: block" onclick="levantarObservacion(<?=$value->id_tarea_observacion?>, this);">Levantar obs.</a>
-						<a href="#" style="color: red;display: block;" onclick="eliminarObservacion(<?=$value->id_tarea_observacion?>, this);">Eliminar</a>
-					</td>
-				</tr>
-			<?php } ?>
-		</tbody>
-	</table>
-	<br>
-	<label for="fileDocumentoEjecucion"><b>Archivos de esta actividad</b></label>
-	<input type="file" id="fileDocumentoEjecucion" name="fileDocumentoEjecucion">
-	<input type="button" value="Subir archivo" style="background-color: #3e973e;color: #ffffff;cursor: pointer;" onclick="registrarArchivo(<?=$etTarea->id_tarea_et?>);">
-	<hr>
-	<div id="divArchivosEjecucion">
-		<ul id="listaArchivos">
-			<?php foreach($listaETDocumentoEjecucion as $key => $value){ ?>
-				<li>
-					Archivo <?=($key+1).' '.$value->extension_doc_ejecucion?>
-					<br>
-					<a href="#" style="color: red;" onclick="eliminarArchivo(<?=$value->id_doc_ejecucion?>, this);">Eliminar</a> | <a href="#" onclick="window.location.href='<?=base_url()?>index.php/ET_Documento_Ejecucion/descargar/<?=$value->id_doc_ejecucion?>';">Descargar</a>
-				</li>
-			<?php } ?>
-		</ul>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div style="padding-bottom: 5px;padding-top: 5px;border-bottom: 1px solid #999999;border-top: 1px solid #999999;">
+					<label for="fileDocumentoEjecucion" class="col-md-2" style="margin-top: 5px;"><b>Archivos de esta actividad</b></label>
+					<div class="col-md-8"><input type="file" id="fileDocumentoEjecucion" name="fileDocumentoEjecucion" class="form-control"></div>
+					<div class="col-md-2"><input type="button" value="Subir archivo" class="btn btn-success" style="width: 100%;" onclick="registrarArchivo(<?=$etTarea->id_tarea_et?>);"></div>
+					<div id="divArchivosEjecucion">
+						<ul id="listaArchivos">
+							<?php foreach($listaETDocumentoEjecucion as $key => $value){ ?>
+								<li>
+									Archivo <?=($key+1).' '.$value->extension_doc_ejecucion?>
+									<br>
+									<a href="#" style="color: red;" onclick="eliminarArchivo(<?=$value->id_doc_ejecucion?>, this);">Eliminar</a> | <a href="#" onclick="window.location.href='<?=base_url()?>index.php/ET_Documento_Ejecucion/descargar/<?=$value->id_doc_ejecucion?>';">Descargar</a>
+								</li>
+							<?php } ?>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<table class="table">
+					<thead>
+						<tr>
+							<th><b>Especialidad</b></th>
+							<th><b>Especialista</b></th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php foreach($listaEspecialidad as $key => $value){ ?>
+							<tr style="user-select: none;">
+								<td><label class="control-label" style="cursor: pointer;"><input type="checkbox" value=true> <?=$value->nombre_esp?></label></td>
+								<td>
+									<select name="selectPersonaEspecialista[]" id="selectPersonaEspecialista<?=$key?>" style="width: 100%;" class="form-control">
+										<option value=""></option>
+										<?php foreach($listaPersona as $key => $value){ ?>
+											<option value="<?=$value->id_persona?>"><?=html_escape($value->nombres.' '.$value->apellido_p.' '.$value->apellido_m)?></option>
+										<?php } ?>
+									</select>
+								</td>
+							</tr>
+						<?php } ?>
+					</tbody>
+				</table>
+			</div>
+		</div>
 	</div>
 </div>
+<script src="<?=base_url()?>assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/dist/js/bootstrap-select.js"></script>
 <script>
+	$(function()
+	{
+		$('#selectETResponsableTarea').selectpicker({ liveSearch: true });
+
+		<?php for($i=0;$i<count($listaEspecialidad); $i++){ ?>
+			$('#selectPersonaEspecialista<?=$i?>').selectpicker({ liveSearch: true });
+		<?php } ?>
+	});
+
 	function registrarObservacion()
 	{
 		if($('#txtObservacion').val().trim()=='')
