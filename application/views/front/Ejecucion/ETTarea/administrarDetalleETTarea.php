@@ -141,9 +141,9 @@
 					<tbody>
 						<?php foreach($listaEspecialidad as $key => $value){ ?>
 							<tr style="user-select: none;">
-								<td><label class="control-label" style="cursor: pointer;"><input type="checkbox" value=true> <?=$value->nombre_esp?></label></td>
+								<td><label class="control-label" style="cursor: pointer;"><input name="checkBoxEspecialidad[]" id="checkBoxEspecialidad<?=$key?>" type="checkbox" value=true onchange="onChangeCheckBoxEspecialidad(this);"> <?=$value->nombre_esp?></label></td>
 								<td>
-									<select name="selectPersonaEspecialista[]" id="selectPersonaEspecialista<?=$key?>" style="width: 100%;" class="form-control">
+									<select name="selectPersonaEspecialista[]" id="selectPersonaEspecialista<?=$key?>" style="width: 100%;" class="form-control" disabled=true>
 										<option value=""></option>
 										<?php foreach($listaPersona as $key => $value){ ?>
 											<option value="<?=$value->id_persona?>"><?=html_escape($value->nombres.' '.$value->apellido_p.' '.$value->apellido_m)?></option>
@@ -169,6 +169,20 @@
 			$('#selectPersonaEspecialista<?=$i?>').selectpicker({ liveSearch: true });
 		<?php } ?>
 	});
+
+	function onChangeCheckBoxEspecialidad(element)
+	{
+		if($(element).is(':checked'))
+		{
+			$($(element).parent().parent().parent().find('select')[0]).removeAttr('disabled');
+		}
+		else
+		{
+			$($(element).parent().parent().parent().find('select')[0]).attr('disabled', true);
+		}
+
+		$($(element).parent().parent().parent().find('select')[0]).selectpicker('refresh');
+	}
 
 	function registrarObservacion()
 	{
