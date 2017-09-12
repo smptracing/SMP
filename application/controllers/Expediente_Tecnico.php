@@ -76,6 +76,28 @@ class Expediente_Tecnico extends CI_Controller
 		$this->load->view('layout/Ejecucion/footer');
 	}
 
+	public function ejecucion()
+	{
+		$flat1="LISTARCOMPATIBILIDAD";
+		$id_etapa_et="2";
+		$listaExpedienteTecnicoEtapa=$this->Model_ET_Expediente_Tecnico->ExpedienteListarEstudioCompatibilidad($flat1,$id_etapa_et);
+
+		$flat="LISTARDEDUCTIVO";
+		$id_etapa_et="3";
+		$listaExpedienteEjecucionDeductivo=$this->Model_ET_Expediente_Tecnico->ExpedienteListarEjecucionDeductivo($flat,$id_etapa_et);
+
+		$flat="LISTARADICIONAL";
+		$id_etapa_et="4";
+		$listaExpedienteEjecucionAdicional=$this->Model_ET_Expediente_Tecnico->ExpedienteListarEjecucionAdicional($flat,$id_etapa_et);
+
+		$flat2="LISTARMODIFICACION";
+		$id_etapa_et="5";
+		$listaExpedienteTecnicoModificacion=$this->Model_ET_Expediente_Tecnico->ExpedienteListarModificacion($flat1,$id_etapa_et);
+		$this->load->view('layout/Ejecucion/header');
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/ejecucion.php',['listaExpedienteTecnicoEtapa'=>$listaExpedienteTecnicoEtapa,'listaExpedienteTecnicoModificacion'=>$listaExpedienteTecnicoModificacion,'listaExpedienteEjecucionDeductivo'=>$listaExpedienteEjecucionDeductivo,'listaExpedienteEjecucionAdicional'=>$listaExpedienteEjecucionAdicional]);
+		$this->load->view('layout/Ejecucion/footer');
+	}
+
 	public function insertar()
 	{
        if($_POST)
