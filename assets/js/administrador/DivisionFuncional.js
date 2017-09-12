@@ -1,28 +1,44 @@
 $(document).on("ready" ,function()
 {
-    listarDivisionF();//para mostrar las divisiones funcionanes
-    listaFuncionCombo();
+    FuncionCombo();
     listaProvinciaCombo();
     
-    $("#btn_Nuevadivision").click(function()//para que cargue el como una vez echo click sino repetira datos
+    $("#btn_Nuevadivision").click(function()
     {
-         listaFuncionCombo();//para llenar el combo de agregar division funcional
+         listaFuncionCombo();
     });
 
-    $('#listaFuncionC').on('change', function() 
+    $('#listaFuncion').on('change', function() 
     {
-        listaDivisionFuncionalCombo(null); 
-        //listaProyectos();               
+        var idFuncion = $("#listaFuncion").val();
+        if(idFuncion == '')
+        {
+            $("#listaDivisionFuncional").html('');
+            $("#listaDivisionFuncional").selectpicker('refresh');
+            $("#listaGrupoFuncional").html('');
+            $("#listaGrupoFuncional").selectpicker('refresh');
+        }
+        else
+        {
+            listaDivisionFuncionalCombo(null); 
+        } 
     })
     $('#listaDivisionFuncional').on('change', function() 
     {
-        listaGrupoFuncionalCombo(null);
-        //listaProyectos();
+        var idDivisionFuncional = $("#listaDivisionFuncional").val(); 
+        if(idDivisionFuncional == '')
+        {
+            $("#listaGrupoFuncional").html('');
+            $("#listaGrupoFuncional").selectpicker('refresh');
+        }
+        else
+        {
+            listaGrupoFuncionalCombo(null);
+        }
     })
     $('#listaProvincia').on('change', function() 
     {
         listaDistritoCombo(null);
-        //listaProyectos();
     })
 
     $("#btnBuscar").click(function()
@@ -172,20 +188,41 @@ $(document).on("ready" ,function()
         }
     }
 
+    /*Mostrar division funcional en base a la funcion*/
+    var FuncionCombo=function()
+    {
+        var htmlTemp='<option value = "">Seleccionar Funcion</option>';
+        $("#listaFuncion").html(htmlTemp);
+        paginaAjaxJSON(null, base_url +"index.php/Funcion/GetListaFuncion", "POST", null, function(objectJSON)
+        {
+            objectJSON=JSON.parse(objectJSON);
+            var registros=eval(objectJSON);
+            for(var i=0; i<registros.length; i++)
+            {
+                htmlTemp+='<option value="'+registros[i]['id_funcion']+'">'+registros[i]['nombre_funcion']+ '</option>';    
+            };
+
+            $("#listaFuncion").html(htmlTemp);
+            $('.selectpicker').selectpicker('refresh'); 
+        }, false, true);
+    }
+
 
     /*Mostrar division funcional en base a la funcion*/
     var listaDivisionFuncionalCombo=function(valor)
     {
-        var htmlTemp="";
+        //var htmlTemp='';
+        var htmlTemp='<option value = "">Seleccionar Division Funcional</option>';
         $("#listaDivisionFuncional").html(htmlTemp);
-        var idFuncion = $("#listaFuncionC").val(); 
+        var idFuncion = $("#listaFuncion").val(); 
         paginaAjaxJSON({ idFuncion : idFuncion }, base_url +"index.php/Funcion/GetDivisionFuncional", "POST", null, function(objectJSON)
         {
             objectJSON=JSON.parse(objectJSON);
             var registros=eval(objectJSON);
             for(var i=0; i<registros.length; i++)
             {
-                htmlTemp+="<option value="+registros[i]["id_div_funcional"]+"> "+ registros[i]["codigo_div_funcional"]+": "+registros[i]["nombre_div_funcional"]+" </option>";   
+                //htmlTemp+='<option value="'+registros[i]['id_div_funcional']+'">'+ registros[i]['codigo_div_funcional']+':'+registros[i]['nombre_div_funcional']+'</option>';   
+                htmlTemp+='<option value="'+registros[i]['id_div_funcional']+'">'+registros[i]['nombre_div_funcional']+'</option>';   
             };
 
             $("#listaDivisionFuncional").html(htmlTemp);
@@ -196,7 +233,8 @@ $(document).on("ready" ,function()
     /*Mostrar grupo funcional en base a la division funcional*/
     var listaGrupoFuncionalCombo=function(valor)
     {
-        var htmlTemp="";
+        //var htmlTemp='';
+        var htmlTemp='<option value = "">Seleccionar Grupo Funcional</option>';
         $("#listaGrupoFuncional").html(htmlTemp);
         var idDivisionFuncional = $("#listaDivisionFuncional").val(); 
         paginaAjaxJSON({ idDivisionFuncional : idDivisionFuncional }, base_url +"index.php/Funcion/GetGrupoFuncional", "POST", null, function(objectJSON)
@@ -205,7 +243,7 @@ $(document).on("ready" ,function()
             var registros=eval(objectJSON);
             for(var i=0; i<registros.length; i++)
             {
-                htmlTemp+="<option value="+registros[i]["id_grup_funcional"]+"> "+ registros[i]["codigo_grup_funcional"]+": "+registros[i]["nombre_grup_funcional"]+" </option>";   
+                htmlTemp+='<option value="'+registros[i]['id_grup_funcional']+'">'+registros[i]['nombre_grup_funcional']+'</option>';   
             };
 
             $("#listaGrupoFuncional").html(htmlTemp);
@@ -216,7 +254,7 @@ $(document).on("ready" ,function()
     /*Mostrar listado de provincias en un combobox*/
     var listaProvinciaCombo=function(valor)
     {
-        var htmlTemp="";
+        var htmlTemp='<option value = "">Seleccionar Provincia</option>';
         $("#listaProvincia").html(htmlTemp);
         paginaAjaxJSON(null, base_url +"index.php/Funcion/GetProvincia", "POST", null, function(objectJSON)
         {
@@ -224,7 +262,7 @@ $(document).on("ready" ,function()
             var registros=eval(objectJSON);
             for(var i=0; i<registros.length; i++)
             {
-                htmlTemp+="<option value="+registros[i]["provincia"]+"> "+registros[i]["provincia"]+" </option>";   
+                htmlTemp+='<option value="'+registros[i]['provincia']+'">'+registros[i]['provincia']+'</option>';   
             };
 
             $("#listaProvincia").html(htmlTemp);
@@ -235,7 +273,7 @@ $(document).on("ready" ,function()
     /*Mostrar listado de distritos en base a la Provincia*/
     var listaDistritoCombo=function(valor)
     {
-        var htmlTemp="";
+        var htmlTemp="<option value = ''>Seleccionar Distrito</option>";
         $("#listaDistrito").html(htmlTemp);
         var provincia = $("#listaProvincia").val(); 
         paginaAjaxJSON({ provincia : provincia }, base_url +"index.php/Funcion/GetDistrito", "POST", null, function(objectJSON)
@@ -255,17 +293,17 @@ $(document).on("ready" ,function()
     /*Listar proyectos por distintos parametros*/
     var listaProyectos=function()
     {
-        var idFuncion = $("#listaFuncionC").val(); 
+        var idFuncion = $("#listaFuncion").val(); 
         var idDivisionFuncional = $("#listaDivisionFuncional").val();
         var idGrupoFuncional = $("#listaGrupoFuncional").val();
         var idProvincia = $("#listaProvincia").val();
         var idDistrito = $("#listaDistrito").val();
         var deFecha = $('#deFecha').val();
         var aFecha = $("#aFecha").val(); 
-        //alert(deFecha);
         $.ajax({
             url: base_url +"index.php/Funcion/ProyectosPorCadenaFuncional",
             type: 'POST',
+            cache: false,
             data:
             {
                 idFuncion: idFuncion,
@@ -293,22 +331,4 @@ $(document).on("ready" ,function()
                 alert("Ocurrio un error!");
             }
         });
-
-    }
-
-
-    var ValidarFechas=function()
-    {
-        var deFecha = $('#deFecha').val();
-        var aFecha = $("#aFecha").val(); 
-        if(deFecha!=null)
-        {
-            alert("Ingrese Fecha 2");
-
-        }
-        if(aFecha!=null)
-        {
-            alert("Ingrese Fecha 1")
-        }
-        //alert(deFecha);
     }

@@ -38,6 +38,7 @@ class Expediente_Tecnico extends CI_Controller
 	{
 		$responsableElaboracion=$this->Model_Personal->ResponsableExpedieteElaboracion($id_ExpedienteTecnico);
 		$responsableEjecucion=$this->Model_Personal->ResponsableExpedieteEjecucion($id_ExpedienteTecnico);
+		
 		$Opcion="ReporteFichaTecnica01";
 		$ImagenesExpediente=$this->Model_ET_Expediente_Tecnico->ET_Img($id_ExpedienteTecnico);
 		$listarExpedienteFicha001=$this->Model_ET_Expediente_Tecnico->reporteExpedienteFicha001($Opcion,$id_ExpedienteTecnico);
@@ -54,7 +55,14 @@ class Expediente_Tecnico extends CI_Controller
 		$flat="LISTARETAPA";
 		$id_etapa_et="1";
 		$listaExpedienteTecnicoElaboracion=$this->Model_ET_Expediente_Tecnico->ExpedienteListarElaboracion($flat,$id_etapa_et);
+		//var_dump($listaExpedienteTecnicoModificacion);exit;
+		$this->load->view('layout/Ejecucion/header');
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/index.php',['listaExpedienteTecnicoElaboracion'=>$listaExpedienteTecnicoElaboracion]);
+		$this->load->view('layout/Ejecucion/footer');
+	}
 
+	public function ejecucion()
+	{
 		$flat1="LISTARCOMPATIBILIDAD";
 		$id_etapa_et="2";
 		$listaExpedienteTecnicoEtapa=$this->Model_ET_Expediente_Tecnico->ExpedienteListarEstudioCompatibilidad($flat1,$id_etapa_et);
@@ -70,9 +78,8 @@ class Expediente_Tecnico extends CI_Controller
 		$flat2="LISTARMODIFICACION";
 		$id_etapa_et="5";
 		$listaExpedienteTecnicoModificacion=$this->Model_ET_Expediente_Tecnico->ExpedienteListarModificacion($flat1,$id_etapa_et);
-		//var_dump($listaExpedienteTecnicoModificacion);exit;
 		$this->load->view('layout/Ejecucion/header');
-		$this->load->view('front/Ejecucion/ExpedienteTecnico/index.php',['listaExpedienteTecnicoElaboracion'=>$listaExpedienteTecnicoElaboracion,'listaExpedienteTecnicoEtapa'=>$listaExpedienteTecnicoEtapa,'listaExpedienteTecnicoModificacion'=>$listaExpedienteTecnicoModificacion,'listaExpedienteEjecucionDeductivo'=>$listaExpedienteEjecucionDeductivo,'listaExpedienteEjecucionAdicional'=>$listaExpedienteEjecucionAdicional]);
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/ejecucion.php',['listaExpedienteTecnicoEtapa'=>$listaExpedienteTecnicoEtapa,'listaExpedienteTecnicoModificacion'=>$listaExpedienteTecnicoModificacion,'listaExpedienteEjecucionDeductivo'=>$listaExpedienteEjecucionDeductivo,'listaExpedienteEjecucionAdicional'=>$listaExpedienteEjecucionAdicional]);
 		$this->load->view('layout/Ejecucion/footer');
 	}
 
@@ -115,9 +122,7 @@ class Expediente_Tecnico extends CI_Controller
 			$txtModalidadEjecucion=$this->input->post('txtModalidadEjecucion');
 			$txtTiempoEjecucionPip=$this->input->post('txtTiempoEjecucionPip');
 			$txtNumBeneficiarios=$this->input->post('txtNumBeneficiarios');
-
 			$txtUrlDocAprobacion=$this->input->post('url');
-
 			$txtSituacioActual=$this->input->post('hdtxtSituacioActual');
 			$txtSituacioEconomica=$this->input->post('hdtxtSituacioEconomica');
 			$txtResumenProyecto=$this->input->post('hdtxtResumenProyecto');

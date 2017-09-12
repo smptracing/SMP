@@ -45,66 +45,68 @@
 														</div>
 														<div class="row" style="margin-left: 10px; margin:10px; ">
 															<div class="panel panel-default">
-																 <div class="panel-heading">Ejecución Anual del Proyecto</div>
+																 <div class="panel-heading"> EJECUCIÓN ANUAL DEL PROYECTO</div>
 																 
-																	  <div class="panel-body">
+																	  <div id="EjecucionAnual">
 																			
-																			<div class="col-lg-12" id="nombreProyecto">
-																			              
-																		    </div>
-
-																			<div class="col-lg-6">
-																			      <label class="col-sm-2" for="email">CÓDIGO</label>
-																				  <input type="text"  class="form-control" id="txtCodigo" name="txtCodigo">
-																			 </div>							
-																		    <div class="col-lg-6">
-																			        <label class=" col-sm-4" for="pwd">N° BENEFICIARIOS</label>
-																			        <input type="text" class="form-control"  id="beneficiario" name="beneficiario">
-																		    </div> 
-																		    <div class="col-lg-6">
-																			        <label class=" col-sm-6" for="pwd">MONTO DE INSERSIÓN</label>
-																			        <input type="text" class="form-control"  id="txtmontoInversion" name="txtmontoInversion">
-																		    </div> 
-																		    <div class="col-lg-6">
-																			        <label class=" col-sm-6" for="pwd">PIA</label>
-																			        <input type="text" class="form-control"  id="txtPIA" name="txtPIA">
-																		    </div> 
-																		    <div class="col-lg-6">
-																			        <label class=" col-sm-6" for="pwd">PIM</label>
-																			        <input type="text" class="form-control"  id="txtPIN" name="txtPIN">
-																		    </div> 
-																		    <div class="col-lg-6">
-																			        <label class=" col-sm-6" for="pwd">DEVENGADO</label>
-																			        <input type="text" class="form-control"  id="txtdevengado" name="txtdevengado">
-																		    </div> 
+																			<table class="table  table-striped jambo_table bulk_action" style="text-align: left;">
+																			    <thead>
+																			      
+																			    </thead>
+																			    <tbody>
+																			      <tr>
+																				        <td>NOMBRE</td>
+																				        <td> <label style="text-align: center;" id="txtnombre" name="txtnombre"></label></td>
+																				        <td></td>
+																			      </tr>
+																			      <tr>
+																				        <td>CÓDIGO</td>
+																				        <td> <label  id="txtCodigo" name="txtCodigo"></label> </td>
+																				        <td></td>
+																			      </tr>
+																			      <tr>
+																				        <td>N° BENEFICIARIOS</td>
+																				        <td> <label id="txtbeneficiario" name="txtbeneficiario"></label> </td>
+																				        <td></td>
+																			      </tr>
+																			       <tr>
+																				        <td>MONTO DE INSERSIÓN</td>
+																				        <td> S/. <label id="txtmontoInversion" name="txtmontoInversion"></label> </td>
+																				        <td></td>
+																			      </tr>
+																			       <tr>
+																				        <td>PIA</td>
+																				        <td> <label id="txtPIA" name="txtPIA"></label> </td>
+																				        <td></td>
+																			      </tr>
+																			       <tr>
+																				        <td>PIM</td>
+																				        <td> <label id="txtPIN" name="txtPIN"></label> </td>
+																				        <td></td>
+																			      </tr>
+																			       <tr>
+																				        <td>DEVENGADO</td>
+																				        <td> <label id="txtdevengado" name="txtdevengado"></label> </td>
+																				        <td></td>
+																			      </tr>
+																			    </tbody>
+																		  </table> 
 																	  </div>
 																	
 																</div>
 														</div>
 														<div class="row">
 
-												            <div class="col-md-12 col-sm-4 col-xs-12">
-												                <div class="x_panel">
-												                    <div class="x_title">
-												                        <h5> PIA, PIM Y DEVENGADO</h5>
-
-												                        <div class="clearfix"></div>
-												                    </div>
-												                    <div class="x_content">
-												                        <div id="pimdevengadopia" style="height:350px;"></div>
-												                    </div>
+												           <div class="row" style="margin-left: 10px; margin:10px; ">
+												                <div class="panel panel-default">
+																 <div class="panel-heading">PIA, PIM Y DEVENGADO</div>
+												                        <div id="pimdevengadopia"></div>
 												                </div>
 													        </div>
-													         <div class="col-md-12 col-sm-4 col-xs-12">
-												                <div class="x_panel">
-												                    <div class="x_title">
-												                        <h5> PIA, PIM Y DEVENGADO</h5>
-
-												                        <div class="clearfix"></div>
-												                    </div>
-												                    <div class="x_content">
-												                        <div id="pimdevengadopialineas" style="height:350px;"></div>
-												                    </div>
+													         <div class="row" style="margin-left: 10px; margin:10px; ">
+												                <div class="panel panel-default">
+																 <div class="panel-heading">PIA, PIM Y DEVENGADO ANUAL</div>
+												                        <div id="pimdevengadopialineasAnual"></div>
 												                </div>
 													        </div>
 														</div>
@@ -126,11 +128,15 @@
 <script>
 
 $(document).on("ready" ,function(){
+	
+$("#EjecucionAnual").hide();
+
 
 $("#CodigoUnico").on( "click", function()
 	 {
-		$("#txtnombre").html('');
-		$("#nombreProyecto").append( "<label  style='border: 2px solid black; text-align: center;' class='col-sm-12' id='txtnombre' name='txtnombre'></label>" );
+		$("#EjecucionAnual").show(2000);
+		$("#pimdevengadopia").css({"height":"350"}); 
+		$("#pimdevengadopialineasAnual").css({"height":"420"}); 
 		var codigounico=$("#BuscarPip").val();
 		$.ajax({
 		"url":base_url+"index.php/PrincipalReportes/DatosParaEstadisticaAnualProyecto",
@@ -138,144 +144,24 @@ $("#CodigoUnico").on( "click", function()
 		data:{codigounico:codigounico},
 		success: function(data)
 			{
-		        console.log(data);
 		        var cantidadpipprovincias=JSON.parse(data); 
-		        $("#txtCodigo").val(cantidadpipprovincias.codigo_unico_pi);
+		        $("#txtCodigo").html(cantidadpipprovincias.codigo_unico_pi);
 		        $("#txtnombre").html(cantidadpipprovincias.nombre_pi);
-		        $("#beneficiario").val(cantidadpipprovincias.num_beneficiarios);
-		        $("#txtmontoInversion").val(cantidadpipprovincias.costo_pi);
-		        $("#txtPIA").val(cantidadpipprovincias.pia_meta_pres);
-		        $("#txtPIN").val(cantidadpipprovincias.pim_acumulado);
-		        $("#txtdevengado").val(cantidadpipprovincias.pim_acumulado);
+		        $("#txtbeneficiario").html(cantidadpipprovincias.num_beneficiarios);
+		        $("#txtmontoInversion").html(cantidadpipprovincias.costo_pi);
+		        $("#txtPIA").html(cantidadpipprovincias.pia_meta_pres);
+		        $("#txtPIN").html(cantidadpipprovincias.pim_acumulado);
+		        $("#txtdevengado").html(cantidadpipprovincias.pim_acumulado);
 			}
 		});
-
-	//alert(codigounico);
-	$.ajax({
+		$.ajax({
 				"url":base_url+"index.php/PrincipalReportes/BuscadorPipPorCodigoReporte",
 				type:"GET", 
 				data:{codigounico:codigounico},
 				cache:false,
-				success:function(resp){
-					/*alert(resp);
-
-					var cantidadpipprovincias=JSON.parse(resp);
-					console.log(cantidadpipprovincias);
-					var dom = document.getElementById("pimdevengadopia");
-					var myChart = echarts.init(dom);
-					var app = {};
-					option = null;
-					app.title = '多 Y 轴示例';
-
-					var colors = ['#5793f3', '#d14a61', '#675bba'];
-
-					option = {
-					    color: colors,
-
-					    tooltip: {
-					        trigger: 'axis',
-					        axisPointer: {
-					            type: 'cross'
-					        }
-					    },
-					    grid: {
-					        right: '20%'
-					    },
-					    toolbox: {
-					        feature: {
-					            dataView: {show: true, readOnly: false},
-					            restore: {show: true},
-					            saveAsImage: {show: true}
-					        }
-					    },
-					    legend: {
-					        data:['Devengado','PIA','PIM']
-					    },
-					    xAxis: [
-					        {
-					            type: 'category',
-					            axisTick: {
-					                alignWithLabel: true
-					            },
-					            data: ['En','Feb','Mar','Abr','May','Jun','Jul','Agost','Set','Oct','Nov','Dic']
-					        }
-					    ],
-					    yAxis: [
-					        {
-					            type: 'value',
-					            name: 'Devengado',
-					            min: 0,
-					            max: 250,
-					            position: 'right',
-					            axisLine: {
-					                lineStyle: {
-					                    color: colors[0]
-					                }
-					            },
-					            axisLabel: {
-					                formatter: '{value} ml'
-					            }
-					        },
-					        {
-					            type: 'value',
-					            name: 'PIA',
-					            min: 0,
-					            max: 250,
-					            position: 'right',
-					            offset: 80,
-					            axisLine: {
-					                lineStyle: {
-					                    color: colors[1]
-					                }
-					            },
-					            axisLabel: {
-					                formatter: '{value} ml'
-					            }
-					        },
-					        {
-					            type: 'value',
-					            name: 'PIM',
-					            min: 0,
-					            max: 25,
-					            position: 'left',
-					            axisLine: {
-					                lineStyle: {
-					                    color: colors[2]
-					                }
-					            },
-					            axisLabel: {
-					                formatter: '{value} °C'
-					            }
-					        }
-					    ],
-					    series: [
-					        {
-					            name:'Devengado',
-					            type:'bar',
-					            data:cantidadpipprovincias
-					        },
-					        {
-					            name:'PIA',
-					            type:'bar',
-					            yAxisIndex: 1,
-					            data:cantidadpipprovincias
-					        },
-
-					        
-					        {
-					            name:'PIM',
-					            type:'line',
-					            yAxisIndex: 2,
-					            data:cantidadpipprovincias
-					        }
-					    ]
-					};
-
-					if (option && typeof option === "object") {
-					    myChart.setOption(option, true);
-					}*/
+				success:function(resp)
+				{
 						var cantidadpipprovincias=JSON.parse(resp);
-						console.log(cantidadpipprovincias);
 						var dom = document.getElementById("pimdevengadopia");
 						var myChart = echarts.init(dom);
 						var app = {};
@@ -323,8 +209,189 @@ $("#CodigoUnico").on( "click", function()
 						    myChart.setOption(option, true);
 						}
 					}
-					});
+				});
+
+			$.ajax({
+				"url":base_url+"index.php/PrincipalReportes/ReporteDevengadoPiaPimPorPipGraficos",
+				type:"GET", 
+				data:{codigounico:codigounico},
+				cache:false,
+				success:function(resp)
+				{
+						console.log(resp);
+						var devengadoPiaGraficos=JSON.parse(resp);
+						var dom = document.getElementById("pimdevengadopialineasAnual");
+						var myChart = echarts.init(dom);
+						var app = {};
+						option = null;
+						var posList = [
+						    'left', 'right', 'top', 'bottom',
+						    'inside',
+						    'insideTop', 'insideLeft', 'insideRight', 'insideBottom',
+						    'insideTopLeft', 'insideTopRight', 'insideBottomLeft', 'insideBottomRight'
+						];
+
+						app.configParameters = {
+						    rotate: {
+						        min: -90,
+						        max: 90
+						    },
+						    align: {
+						        options: {
+						            left: 'left',
+						            center: 'center',
+						            right: 'right'
+						        }
+						    },
+						    verticalAlign: {
+						        options: {
+						            top: 'top',
+						            middle: 'middle',
+						            bottom: 'bottom'
+						        }
+						    },
+						    position: {
+						        options: echarts.util.reduce(posList, function (map, pos) {
+						            map[pos] = pos;
+						            return map;
+						        }, {})
+						    },
+						    distance: {
+						        min: 0,
+						        max: 100
+						    }
+						};
+
+						app.config = {
+						    rotate: 90,
+						    align: 'left',
+						    verticalAlign: 'middle',
+						    position: 'insideBottom',
+						    distance: 15,
+						    onChange: function () {
+						        var labelOption = {
+						            normal: {
+						                rotate: app.config.rotate,
+						                align: app.config.align,
+						                verticalAlign: app.config.verticalAlign,
+						                position: app.config.position,
+						                distance: app.config.distance
+						            }
+						        };
+						        myChart.setOption({
+						            series: [{
+						                label: labelOption
+						            }, {
+						                label: labelOption
+						            }, {
+						                label: labelOption
+						            }, {
+						                label: labelOption
+						            }]
+						        });
+						    }
+						};
+
+
+						var labelOption = {
+						    normal: {
+						        show: true,
+						        position: app.config.position,
+						        distance: app.config.distance,
+						        align: app.config.align,
+						        verticalAlign: app.config.verticalAlign,
+						        rotate: app.config.rotate,
+						        formatter: '{c}  {name|{a}}',
+						        fontSize: 16,
+						        rich: {
+						            name: {
+						                textBorderColor: '#fff'
+						            }
+						        }
+						    }
+						};
+
+						option = {
+						    color: ['#003366', '#006699', '#4cabce', '#e5323e'],
+						    tooltip: {
+						        trigger: 'axis',
+						        axisPointer: {
+						            type: 'shadow'
+						        }
+						    },
+						    legend: {
+						        data: ['COSTO TOTAL', 'PIA', 'PIM', 'DEVENGADO','COMPROMISO ACUMULADO']
+						    },
+						    toolbox: {
+						        show: true,
+						        orient: 'vertical',
+						        left: 'right',
+						        top: 'center',
+						        feature: {
+						            mark: {show: true},
+						            dataView: {show: true, readOnly: false},
+						            magicType: {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+						            restore: {show: true},
+						            saveAsImage: {show: true}
+						        }
+						    },
+						    calculable: true,
+						    xAxis: [
+						        {
+						            type: 'category',
+						            axisTick: {show: false},
+						            data: ['AÑO ACUMULADO']
+						        }
+						    ],
+						    yAxis: [
+						        {
+						            type: 'value'
+						        }
+						    ],
+						    series: [
+						        {
+						            name: 'COSTO TOTAL',
+						            type: 'bar',
+						            barGap: 0,
+						            label: labelOption,
+						            data: [devengadoPiaGraficos.costo_pi]
+						        },
+						        {
+						            name: 'PIA',
+						            type: 'bar',
+						            label: labelOption,
+						            data: [devengadoPiaGraficos.pia_meta_pres]
+						        },
+						        {
+						            name: 'PIM',
+						            type: 'bar',
+						            label: labelOption,
+						            data: [devengadoPiaGraficos.pim_acumulado]
+						        },
+						        {
+						            name: 'DEVENGADO',
+						            type: 'bar',
+						            label: labelOption,
+						            data: [devengadoPiaGraficos.devengado_acumulado]
+						        },
+						         {
+						            name: 'COMPROMISO ACUMULADO',
+						            type: 'bar',
+						            label: labelOption,
+						            data: [devengadoPiaGraficos.compromiso_acumulado]
+						        }    
+						    ]
+						};;
+						if (option && typeof option === "object") {
+						    myChart.setOption(option, true);
+						}
+						
+												
+				}
+
 			});
+
+		});
 	
 });
 </script>

@@ -51,8 +51,31 @@
 															    	</td>
 															  </tr>
 															<?php } ?>
+																<tr>
+																	<td bgcolor="#D1F2EB"><b></b></td>
+																	<td bgcolor="#D1F2EB"><b><?=$listaMontoTotalFuncion->CostoPip;?><b></td>
+																	<td style="text-align:right" bgcolor="#D1F2EB"><b><?=$listaMontoTotalFuncion->CantidadPip;?></b></td>
+																</tr>
 															</tbody>
 														</table>
+													</div>
+
+													<div class="col-md-4 col-sm-12 col-xs-12">
+														<table id="table-Resumen"  class="table">
+																<tr>
+																<td colspan="2"><b>CUADRO RESUMEN DE PIP POR FUNCION</b></td>
+																</tr>
+																<tr>
+																	<td>TOTAL PIP</td>
+																	
+																	<td >Costo total</td>
+																</tr>
+																<tr>
+																
+																	<td bgcolor="#D1F2EB"><?=$listaMontoTotalFuncion->CostoPip;?></td>
+																	<td bgcolor="#D1F2EB"><?=$listaMontoTotalFuncion->CantidadPip;?></td>
+																</tr>
+														</table> 
 													</div>
 											</div>
 										</div>

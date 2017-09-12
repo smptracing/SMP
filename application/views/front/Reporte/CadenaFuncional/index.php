@@ -24,16 +24,16 @@
 									<div class="row">  
 										<div class="col-md-12 col-sm-12 col-xs-12">
 											<div class="x_panel">
-													<div class="clearfix">
+													<!--<div class="clearfix">
 														<div class="pull-right tableTools-container"></div>
-													</div>
+													</div>-->
 													<div class="x_content">
 														<br>
 														<div class="row">
 															<div class="form-group">
 										                       <label class="control-label col-md-2 col-sm-2 col-xs-12">Función: </label>
 										                       <div class="col-md-4 col-sm-4 col-xs-12">
-									                                <select id="listaFuncionC" name="listaFuncionC" class="selectpicker" data-live-search="true"  title="Seleccionar Función" onchange="">
+									                                <select id="listaFuncion" name="listaFuncion" class="selectpicker" data-live-search="true"  title="Seleccionar Función" onchange="">
 									                                 </select>
 									                            </div>
 										                    </div>
@@ -88,17 +88,16 @@
 									                    <div class="row">
 									                    	<div class="form-group">
 										                        <div class="col-md-3 col-sm-3 col-xs-12">
-										                          <button type="button" class="btn btn-primary" id="btnBuscar">Buscar</button>
+										                          <button type="button" class="btn btn-primary" id="btnBuscar"><i class="fa fa-search"></i> Buscar</button>
 										                        </div>
-										                    </div>
-									                    	
-									                    </div>
-									                    <br>
+										                    </div>									                    	
+									                    </div><br>
+									                   
 									                    <div id="dataTableFuncion">
 										                    <table id="dynamic-table"  class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 																<thead>
 																	<tr>
-																		<td>Codigo</td>
+																		<td>Código</td>
 																		<td>Proyecto</td>
 																		<td>Función</td>
 																		<td>División Funcional</td>
@@ -110,7 +109,6 @@
 															</table>
 									                    	
 									                    </div>
-
 														
 														</div>
 

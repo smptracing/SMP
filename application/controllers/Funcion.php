@@ -11,8 +11,9 @@ class Funcion extends CI_Controller {/* Mantenimiento de sector entidad Y servic
      public function index()
     {
         $listaNumPipFuncion=$this->Model_Funcion->FuncionPipListar();
+        $listaMontoTotalFuncion=$this->Model_Funcion->FuncionPipMontoTotalListar();
         $this->load->view('layout/Reportes/header');
-        $this->load->view('front/Reporte/Funcion/index',['listaNumPipFuncion'=>$listaNumPipFuncion]);
+        $this->load->view('front/Reporte/Funcion/index',['listaNumPipFuncion'=>$listaNumPipFuncion,'listaMontoTotalFuncion'=>$listaMontoTotalFuncion]);
         $this->load->view('layout/Reportes/footer');
     }
     public function CadenaFuncional()
@@ -35,29 +36,69 @@ class Funcion extends CI_Controller {/* Mantenimiento de sector entidad Y servic
         }
     }
 
+    function GetListaFuncion()
+    {
+        if ($this->input->is_ajax_request()) 
+        {
+            $datos=$this->Model_Funcion->GetListaFuncion();
+            echo json_encode($datos);
+        }
+        else
+        {
+            show_404();
+        }        
+    }
+
     function GetDivisionFuncional()
     {
-        $idFuncion=$this->input->post('idFuncion');
-        $datos=$this->Model_Funcion->GetDivisionFuncional($idFuncion);
-        echo json_encode($datos);
+        if ($this->input->is_ajax_request()) 
+        {
+            $idFuncion=$this->input->post('idFuncion');
+            $datos=$this->Model_Funcion->GetDivisionFuncional($idFuncion);
+            echo json_encode($datos);
+        }
+        else
+        {
+            show_404();
+        }  
     }
     function GetGrupoFuncional()
     {
-        $idDivisionFuncional=$this->input->post('idDivisionFuncional');
-        $datos=$this->Model_Funcion->GetGrupoFuncional($idDivisionFuncional);
-        echo json_encode($datos);
+        if ($this->input->is_ajax_request()) 
+        {
+            $idDivisionFuncional=$this->input->post('idDivisionFuncional');
+            $datos=$this->Model_Funcion->GetGrupoFuncional($idDivisionFuncional);
+            echo json_encode($datos);
+        }
+        else
+        {
+            show_404();
+        }
     }
     function GetProvincia()
     {
-        $datos=$this->Model_Funcion->GetProvincia();
-        echo json_encode($datos);
+        if ($this->input->is_ajax_request()) 
+        {
+            $datos=$this->Model_Funcion->GetProvincia();
+            echo json_encode($datos);
+        }
+        else
+        {
+            show_404();
+        }
     }
     function GetDistrito()
     {
-        $provincia=$this->input->post('provincia');
-        $datos=$this->Model_Funcion->GetDistrito($provincia);
-        echo json_encode($datos);
-        exit;
+        if ($this->input->is_ajax_request()) 
+        {
+            $provincia=$this->input->post('provincia');
+            $datos=$this->Model_Funcion->GetDistrito($provincia);
+            echo json_encode($datos);
+        }
+        else
+        {
+            show_404();
+        }
     }
     function ProyectosPorCadenaFuncional()
     {
@@ -80,13 +121,20 @@ class Funcion extends CI_Controller {/* Mantenimiento de sector entidad Y servic
             $fecha2=(($aFecha=='' || $aFecha==null) ? 'NULL' : "'".$aFecha."'");
 
             $datos=$this->Model_Funcion->GetProyectos($idFuncion,$idDivisionFuncional,$idGrupoFuncional,$provincia,$distrito,$fecha1,$fecha2);
+
+            $totalBeneficiarios=0;
+            $costoTotal = 0;
             foreach ($datos as $key => $value) 
             {
+                $totalBeneficiarios += ($value->num_beneficiarios=='NULL' ? 0 : $value->num_beneficiarios);
+                $costoTotal += ($value->costo_pi=='NULL' ? 0 : $value->costo_pi);
                 $value->num_beneficiarios = $this->a_number_format($value->num_beneficiarios , 2, '.',",",3);
                 $value->costo_pi = $this->a_number_format($value->costo_pi , 2, '.',",",3);
             }
+            $totalBeneficiarios = $this->a_number_format($totalBeneficiarios , 2, '.',",",3);
+            $costoTotal = $this->a_number_format($costoTotal , 2, '.',",",3);
 
-            $this->load->view('front/Reporte/CadenaFuncional/tablaFuncion',['listaProyectos'=>$datos]);
+            $this->load->view('front/Reporte/CadenaFuncional/tablaFuncion',['listaProyectos'=>$datos, 'totalBeneficiarios' => $totalBeneficiarios, 'costoTotal' => $costoTotal]);
         }
         else
         {

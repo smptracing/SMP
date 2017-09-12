@@ -56,14 +56,12 @@
 															  </tr>
 															<?php } ?>
 																<tr>
-																	<td bgcolor="#D1F2EB"><b>TOTAL</b></td>
+																	<td bgcolor="#D1F2EB"><b></b></td>
 																	<td bgcolor="#D1F2EB"><b><?=$listaMontoTotalSector->TotalPip;?><b></td>
 																	<td style="text-align:right" bgcolor="#D1F2EB"><b><?=$listaMontoTotalSector->CostoTotal;?></b></td>
 																</tr>
 															</tbody>
 														</table>
-												
-													
 													</div>
 													<div class="col-md-4 col-sm-12 col-xs-12">
 														<table id="table-Resumen"  class="table">

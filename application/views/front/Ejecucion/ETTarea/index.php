@@ -255,7 +255,10 @@
 				<th class="gdfCell" style="cursor:pointer;text-aling: center;"><span class="taskRowIndex">(#=obj.getRow()+1#)</span></th>
 				<td class="gdfCell noClip"><div class="taskStatus cvcColorSquare" status="(#=obj.status#)"></div></td>
 				<td class="gdfCell"><input type="text" name="code" value="(#=obj.code?obj.code:''#)" placeholder="Código" readonly="readonly"></td>
-				<td class="gdfCell indentCell" style="padding-left:(#=obj.level*10+18#)px;"><input type="text" name="name" value="(#=obj.name#)" placeholder="Nombre" autocomplete="off"></td>
+				<td class="gdfCell indentCell" style="padding-left:(#=obj.level*10+18#)px;">
+					<div class="exp-controller" align="center"></div>
+					<input type="text" name="name" value="(#=obj.name#)" placeholder="Nombre" autocomplete="off">
+				</td>
 				<td class="gdfCell"><input type="text" name="start" value="" class="date"></td>
 				<td class="gdfCell"><input type="text" name="end" value="" class="date"></td>
 				<td class="gdfCell"><input type="text" name="duration" autocomplete="off" value="(#=obj.duration#)"></td>
