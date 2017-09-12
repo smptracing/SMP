@@ -246,7 +246,14 @@ $("body").on("change","#Cbx_AnioCartera_",function(e){
                                       if (data.estado_programado !='0') //estap programado
                                       {
                                        // return '<a  href="#"><button type="button" class="btn btn btn-success btn-xs">Programado</button></a>';
-                                       return '<h5><span class="label label-success"> Programado</span></h5>';
+                                       var cadena=data.anioProgramacion.split(' ');
+                                       var string='';
+                                       for(var i=0;i<cadena.length;i++){
+                                        var item=cadena[i].split(':');
+                                        string+='<a class="linkItem" title="S/. '+item[1]+'">'+item[0]+'<a> ';
+                                       }
+                                       //cadena=data.anioProgramacion; 
+                                       return '<h5><span class="label label-success"> Programado</span></h5><div>'+string+'</div>';
                                       }
                                       if (data.estado_programado =='0') //no esta progrmado
                                       {
@@ -404,7 +411,15 @@ $("#Cbx_AnioCartera").change(function() {
                                       if (data.estado_programado !='0') //estap programado
                                       {
                                        // return '<a  href="#"><button type="button" class="btn btn btn-success btn-xs">Programado</button></a>';
-                                       return '<h5><span class="label label-success"> Programado</span></h5>';
+                                       var cadena=data.anioProgramacion.split(' ');
+                                       var string='';
+                                       for(var i=0;i<cadena.length;i++){
+                                        var item=cadena[i].split(':');
+                                        string+='<a class="linkItem" title="S/. '+item[1]+'">'+item[0]+'<a> ';
+                                       }
+                                       //cadena=data.anioProgramacion; 
+                                       return '<h5><span class="label label-success"> Programado</span></h5><div>'+string+'</div>';
+                                       //return '<h5><span class="label label-success"> Programado</span></h5>';
                                       }
                                       if (data.estado_programado =='0') //no esta progrmado
                                       {
@@ -444,7 +459,16 @@ $("#Cbx_AnioCartera").change(function() {
                                       if (data.estado_programado !='0') //estap programado
                                       {
                                        // return '<a  href="#"><button type="button" class="btn btn btn-success btn-xs">Programado</button></a>';
-                                       return '<h5><span class="label label-success"> Programado</span></h5>';
+                                        var cadena=data.anioProgramacion.split(' ');
+                                       var string='';
+                                       for(var i=0;i<cadena.length;i++){
+                                        var item=cadena[i].split(':');
+                                        string+='<a class="linkItem" title="S/. '+item[1]+'">'+item[0]+'<a> ';
+                                       }
+                                       //cadena=data.anioProgramacion; 
+                                       return '<h5><span class="label label-success"> Programado</span></h5><div>'+string+'</div>';
+                                       
+                                       //return '<h5><span class="label label-success"> Programado</span></h5>';
                                       }
                                       if (data.estado_programado =='0') //no esta progrmado
                                       {
