@@ -156,7 +156,7 @@
 							}
 						?>
 							<tr style="user-select: none;">
-								<td><label class="control-label" style="cursor: pointer;"><input name="checkBoxEspecialidad[]" id="checkBoxEspecialidad<?=$key?>" type="checkbox" value="<?=$value->id_esp?>" onchange="onChangeCheckBoxEspecialidad(this);" <?=$asignadoTemp ? 'checked="true"' : ''?>> <?=$value->nombre_esp?></label></td>
+								<td><label class="control-label" style="cursor: pointer;"><input name="checkBoxEspecialidad[]" id="checkBoxEspecialidad<?=$key?>" type="checkbox" value="<?=$value->id_esp?>" onchange="onChangeCheckBoxEspecialidad(this);" <?=$asignadoTemp ? 'checked="true"' : ''?>> <?=html_escape($value->nombre_esp)?></label></td>
 								<td>
 									<select name="selectPersonaEspecialista[]" id="selectPersonaEspecialista<?=$key?>" style="width: 100%;" class="form-control" <?=$asignadoTemp ? '' : 'disabled=true'?> onchange="asignarEspecialista(<?=$value->id_esp?>, this);">
 										<option value=""></option>
