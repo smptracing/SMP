@@ -33,11 +33,8 @@ public function __construct(){
 			  $estado=0;
 			  $txt_NumResolucionCart =$this->input->post("txt_NumResolucionCart");
 			  $Cartera_Resoluacion=$this->upload->file_name;
-			  if($this->Model_CarteraInversion->AddCartera($dateAñoAperturaCart,$dateFechaIniCart,$dateFechaFinCart,$estado,$txt_NumResolucionCart,$Cartera_Resoluacion)){
-					echo "SE REGISTRO LA CARRTERA...";
-			  }    
-			  else
-		       echo "Error... no se grabaron los datos.";
+			  echo $this->Model_CarteraInversion->AddCartera($dateAñoAperturaCart,$dateFechaIniCart,$dateFechaFinCart,$estado,$txt_NumResolucionCart,$Cartera_Resoluacion);
+			
 		    						    
 	  	}
 	    else{
@@ -63,11 +60,7 @@ public function __construct(){
 			$estado=0;
 			$txt_NumResolucionCart =$this->input->post("txt_NumResolucionCart");
 			$Cartera_Resoluacion=$this->upload->file_name;
-			if($this->Model_CarteraInversion->editCartera($idCartera,$dateAñoAperturaCart,$dateFechaIniCart,$dateFechaFinCart,$estado,$txt_NumResolucionCart,$Cartera_Resoluacion)){
-				echo "SE REGISTRO LA CARRTERA...";
-			}    
-			else
-		       echo "Error... no se grabaron los datos.";  
+			echo $this->Model_CarteraInversion->editCartera($idCartera,$dateAñoAperturaCart,$dateFechaIniCart,$dateFechaFinCart,$estado,$txt_NumResolucionCart,$Cartera_Resoluacion);
 		} 
 	     else
 	     {
