@@ -128,13 +128,17 @@
 							<?php } ?>
 						</ul>
 					</div>
+					<br>
 				</div>
 			</div>
 			<div class="col-md-12">
-				<table class="table">
+				<table id="tableEspecialidad" class="table">
 					<thead>
 						<tr>
-							<th><b>Especialidad</b></th>
+							<th>
+								<b>Especialidad </b>
+								<div style="display: inline-block;vertical-align">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label><input type="radio" name="radioListaEspecialidad" value="Todo" checked="true" onchange="onChangeRadioListaEspecialidad();"> Todo</label>&nbsp;&nbsp;<label><input type="radio" name="radioListaEspecialidad" value="Asignados" onchange="onChangeRadioListaEspecialidad();"> Asignados</label></div>
+							</th>
 							<th><b>Especialista</b></th>
 						</tr>
 					</thead>
@@ -156,7 +160,7 @@
 							}
 						?>
 							<tr style="user-select: none;">
-								<td><label class="control-label" style="cursor: pointer;"><input name="checkBoxEspecialidad[]" id="checkBoxEspecialidad<?=$key?>" type="checkbox" value="<?=$value->id_esp?>" onchange="onChangeCheckBoxEspecialidad(this);" <?=$asignadoTemp ? 'checked="true"' : ''?>> <?=html_escape($value->nombre_esp)?></label></td>
+								<td><label class="control-label" style="cursor: pointer;"><input id="checkBoxEspecialidad<?=$key?>" type="checkbox" value="<?=$value->id_esp?>" onchange="onChangeCheckBoxEspecialidad(this);" <?=$asignadoTemp ? 'checked="true"' : ''?>> <?=html_escape($value->nombre_esp)?></label></td>
 								<td>
 									<select name="selectPersonaEspecialista[]" id="selectPersonaEspecialista<?=$key?>" style="width: 100%;" class="form-control" <?=$asignadoTemp ? '' : 'disabled=true'?> onchange="asignarEspecialista(<?=$value->id_esp?>, this);">
 										<option value=""></option>
@@ -178,12 +182,34 @@
 <script>
 	$(function()
 	{
-		$('#selectETResponsableTarea').selectpicker({ liveSearch: true });
+		//$('#selectETResponsableTarea').selectpicker({ liveSearch: true });
 
 		<?php for($i=0;$i<count($listaEspecialidad); $i++){ ?>
-			$('#selectPersonaEspecialista<?=$i?>').selectpicker({ liveSearch: true });
+			//$('#selectPersonaEspecialista<?=$i?>').selectpicker({ liveSearch: true });
 		<?php } ?>
 	});
+
+	function onChangeRadioListaEspecialidad()
+	{
+		if($('[name=radioListaEspecialidad]:checked').val()=='Todo')
+		{
+			$('#tableEspecialidad > tbody > tr').show();
+		}
+		else
+		{
+			$('#tableEspecialidad > tbody > tr').each(function(index, element)
+			{
+				if($($(element).find('input[type=checkbox]')[0]).is(':checked'))
+				{
+					$(element).show();
+				}
+				else
+				{
+					$(element).hide();
+				}
+			});
+		}
+	}
 
 	function asignarEspecialista(idEspecialidad, element)
 	{
@@ -257,6 +283,7 @@
 				$($(element).parent().parent().parent().find('select')[0]).val('');
 				$($(element).parent().parent().parent().find('select')[0]).attr('disabled', true);
 				$($(element).parent().parent().parent().find('select')[0]).selectpicker('refresh');
+				onChangeRadioListaEspecialidad();
 			}, false, true);
 		}
 	}
