@@ -222,7 +222,7 @@
                                             <div class="col-md-11 col-sm-6 col-xs-12  form-group">
                                             <label  for="name">Costo de Inversión<span class="required">*</span>
                                         </label>
-                                            <input type="text" id="txtCostoPip" name="txtCostoPip" class="form-control col-md-7 col-xs-5"  placeholder="Costo de Inversión" value='0.00'  />
+                                            <input type="text" id="txtCostoPip" name="txtCostoPip" class="form-control col-md-7 col-xs-5"  placeholder="0.00" autocomplete="off" />
                                          </div>
                                       </div>
                                        <div class="col-md-4">
