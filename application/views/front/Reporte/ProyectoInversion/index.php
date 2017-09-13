@@ -162,7 +162,6 @@ $("#CodigoUnico").on( "click", function()
 				success:function(resp)
 				{
 						var cantidadpipprovincias=JSON.parse(resp);
-						console.log(resp);
 						var dom = document.getElementById("pimdevengadopia");
 						var myChart = echarts.init(dom);
 						var app = {};
@@ -266,7 +265,7 @@ $("#CodigoUnico").on( "click", function()
 						        data: ['PIA', 'PIM', 'DEVENGADO']
 						    },
 						    toolbox: {
-						        show: true,
+						        show: false,
 						        orient: 'vertical',
 						        left: 'right',
 						        top: 'center',
@@ -433,7 +432,7 @@ $("#CodigoUnico").on( "click", function()
 						        data: ['COSTO TOTAL', 'PIA', 'PIM', 'DEVENGADO','COMPROMISO ACUMULADO']
 						    },
 						    toolbox: {
-						        show: true,
+						        show: false,
 						        orient: 'vertical',
 						        left: 'right',
 						        top: 'center',
