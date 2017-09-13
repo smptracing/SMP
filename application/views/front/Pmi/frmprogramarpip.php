@@ -260,15 +260,17 @@
                          
                                 </div>
                                
-
+                                 <div class="row item " 
                                <div class="item form-group">
                                    
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                    <div class="col-md-12">
                                         <button  id="send_addProgramacion"  type='button' class="btn btn-success">
                                              <span class="glyphicon glyphicon-floppy-saved"></span> Guardar
                                         </button>
+                                        <span id="lb_addProgramacion" style='color:green; font-size:20px;'></span>
                                     </div>
                                  </div>
+                                 </form>
 
 
                      <div class="ln_solid"></div>
@@ -389,6 +391,7 @@
                                        <button  id="send" type="submit" class="btn btn-success">
                                              <span class="glyphicon glyphicon-floppy-saved"></span> Guardar
                                         </button>
+
                                     </div>
                                  </div>
 
@@ -542,12 +545,15 @@
 
                          
                                 </div>
-                                 <div class="col-md-3 col-sm-6 col-xs-12">
+                                  <div class="row item ">
+                                 <div class="col-md-12">
                                       <label>.</label><br>
                                        <button  id="send_addProgramacion_operacion_mantenieminto" type="button" class="btn btn-success">
                                              <span class="glyphicon glyphicon-floppy-saved"></span> Guardar
                                         </button>
+                                        <span id="lb_addProgramacion_operacion_mantenieminto" style='color:green; font-size:20px;'></span>
                                     </div>
+                                  </div>
 
 
                      <div class="ln_solid"></div>
@@ -598,3 +604,65 @@
     cursor: pointer;
   }
 </style>
+<script>
+function calculoFecha(fecha1,fecha2) {               
+  var fechaInicio = new Date(fecha1).getTime();
+  var fechaFin    = new Date(fecha2).getTime();
+  var tiempo = fechaFin-fechaInicio; 
+  var dias = Math.floor(tiempo / (1000 * 60 * 60 * 24));            
+  return dias;       
+}
+$(function(){
+  $("body").on("change","#Cbx_AnioCartera",function(e){
+    if($("#Cbx_AnioCartera").val()!='' && $("#Cbx_AnioCartera").val()!=null){
+        $.ajax({
+            "url":base_url +"index.php/CarteraInversion/GetCarteraFechaCierre/"+$("#Cbx_AnioCartera").val(),
+            type:"POST",
+            success:function(data){
+                if(calculoFecha(data,'<?php echo date("Y-m-d"); ?>')>0){
+                  $("#send_addProgramacion").css("display","none");
+                  $("#lb_addProgramacion").html("LA FECHA DE CIERRE DE LA CARTERA FUE EL: "+data);
+                }
+                else{
+                  $("#send_addProgramacion").css("display","");
+                   $("#lb_addProgramacion").html("");
+                }
+                var anio=parseInt($('#Cbx_AnioCartera option:selected').text());
+                $("#lb_anio1").html(anio+1);
+                $("#lb_anio2").html(anio+2);
+                $("#lb_anio3").html(anio+3);
+                $("#lb_anio4").html(anio+1);
+                $("#lb_anio5").html(anio+2);
+                $("#lb_anio6").html(anio+3); 
+            }
+        });   
+    }
+  });
+  $("body").on("change","#Cbx_AnioCartera_",function(e){
+     if($("#Cbx_AnioCartera_").val()!='' && $("#Cbx_AnioCartera_").val()!=null){
+        $.ajax({
+            "url":base_url +"index.php/CarteraInversion/GetCarteraFechaCierre/"+$("#Cbx_AnioCartera_").val(),
+            type:"POST",
+            success:function(data){
+                if(calculoFecha(data,'<?php echo date("Y-m-d"); ?>')>0){
+                  $("#send_addProgramacion_operacion_mantenieminto").css("display","none");
+                  $("#lb_addProgramacion_operacion_mantenieminto").html("LA FECHA DE CIERRE DE LA CARTERA FUE EL: "+data);
+                }
+                else{
+                  $("#send_addProgramacion_operacion_mantenieminto").css("display","");
+                   $("#lb_addProgramacion_operacion_mantenieminto").html("");
+                }
+                var anio=parseInt($('#Cbx_AnioCartera_ option:selected').text());
+                $("#lb_anio1_").html(anio+1);
+                $("#lb_anio2_").html(anio+2);
+                $("#lb_anio3_").html(anio+3);
+                $("#lb_anio4_").html(anio+1);
+                $("#lb_anio5_").html(anio+2);
+                $("#lb_anio6_").html(anio+3);
+            }
+        });   
+    }
+      
+  }); 
+}); 
+</script>

@@ -3,26 +3,7 @@ $(document).on("ready" ,function(){
      lista_ejecucion();
      lista_funcionamiento();
 //agregar progrmacion para operacion y mantenimiento   
-$("body").on("change","#Cbx_AnioCartera",function(e){
-  var anio=parseInt($('#Cbx_AnioCartera option:selected').text());
-  $("#lb_anio1").html(anio+1);
-  $("#lb_anio2").html(anio+2);
-  $("#lb_anio3").html(anio+3);
-  $("#lb_anio4").html(anio+1);
-  $("#lb_anio5").html(anio+2);
-  $("#lb_anio6").html(anio+3);
-    
-});
-$("body").on("change","#Cbx_AnioCartera_",function(e){
-  var anio=parseInt($('#Cbx_AnioCartera_ option:selected').text());
-  $("#lb_anio1_").html(anio+1);
-  $("#lb_anio2_").html(anio+2);
-  $("#lb_anio3_").html(anio+3);
-  $("#lb_anio4_").html(anio+1);
-  $("#lb_anio5_").html(anio+2);
-  $("#lb_anio6_").html(anio+3);
-    
-});   
+   
     $('#form_AddProgramacion_operacion_mantenieminto').formValidation({
       fields:
       {
@@ -246,14 +227,14 @@ $("body").on("change","#Cbx_AnioCartera_",function(e){
                                       if (data.estado_programado !='0') //estap programado
                                       {
                                        // return '<a  href="#"><button type="button" class="btn btn btn-success btn-xs">Programado</button></a>';
-                                       var cadena=data.anioProgramacion.split(' ');
+                                       /*var cadena=data.anioProgramacion.split(' ');
                                        var string='';
                                        for(var i=0;i<cadena.length;i++){
                                         var item=cadena[i].split(':');
                                         string+='<a class="linkItem" title="S/. '+item[1]+'">'+item[0]+'<a> ';
-                                       }
+                                       }*/
                                        //cadena=data.anioProgramacion; 
-                                       return '<h5><span class="label label-success"> Programado</span></h5><div>'+string+'</div>';
+                                       return '<h5><span class="label label-success"> Programado</span></h5><div>'+data.anioProgramacion+'</div>';
                                       }
                                       if (data.estado_programado =='0') //no esta progrmado
                                       {
@@ -411,14 +392,14 @@ $("#Cbx_AnioCartera").change(function() {
                                       if (data.estado_programado !='0') //estap programado
                                       {
                                        // return '<a  href="#"><button type="button" class="btn btn btn-success btn-xs">Programado</button></a>';
-                                       var cadena=data.anioProgramacion.split(' ');
+                                       /*var cadena=data.anioProgramacion.split(' ');
                                        var string='';
                                        for(var i=0;i<cadena.length;i++){
                                         var item=cadena[i].split(':');
                                         string+='<a class="linkItem" title="S/. '+item[1]+'">'+item[0]+'<a> ';
-                                       }
+                                       }*/
                                        //cadena=data.anioProgramacion; 
-                                       return '<h5><span class="label label-success"> Programado</span></h5><div>'+string+'</div>';
+                                       return '<h5><span class="label label-success"> Programado</span></h5><div>'+data.anioProgramacion+'</div>';
                                        //return '<h5><span class="label label-success"> Programado</span></h5>';
                                       }
                                       if (data.estado_programado =='0') //no esta progrmado
@@ -459,14 +440,14 @@ $("#Cbx_AnioCartera").change(function() {
                                       if (data.estado_programado !='0') //estap programado
                                       {
                                        // return '<a  href="#"><button type="button" class="btn btn btn-success btn-xs">Programado</button></a>';
-                                        var cadena=data.anioProgramacion.split(' ');
+                                       /* var cadena=data.anioProgramacion.split(' ');
                                        var string='';
                                        for(var i=0;i<cadena.length;i++){
                                         var item=cadena[i].split(':');
                                         string+='<a class="linkItem" title="S/. '+item[1]+'">'+item[0]+'<a> ';
-                                       }
+                                       }*/
                                        //cadena=data.anioProgramacion; 
-                                       return '<h5><span class="label label-success"> Programado</span></h5><div>'+string+'</div>';
+                                       return '<h5><span class="label label-success"> Programado</span></h5><div>'+data.anioProgramacion+'</div>';
                                        
                                        //return '<h5><span class="label label-success"> Programado</span></h5>';
                                       }
