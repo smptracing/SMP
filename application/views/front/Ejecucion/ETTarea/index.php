@@ -238,13 +238,14 @@
 						<th class="gdfColHeader" style="width:35px;border-right: none"></th>
 						<th class="gdfColHeader" style="width:25px;"></th>
 						<th class="gdfColHeader" style="width:75px;">Código</th>
-						<th class="gdfColHeader" style="width:300px;">Nombre largo</th>
-						<th class="gdfColHeader" style="width:80px;">Inicio</th>
-						<th class="gdfColHeader" style="width:80px;">Fin</th>
-						<th class="gdfColHeader" style="width:50px;">Dur.</th>
-						<th class="gdfColHeader" style="width:70px;">%</th>
+						<th class="gdfColHeader" style="width:70px;">Coment.</th>
+						<th class="gdfColHeader" style="width:600px;">Nombre largo</th>
 						<th class="gdfColHeader" style="width:50px;">Dep.</th>
-						<th class="gdfColHeader" style="width:1000px;text-align: left;padding-left: 10px;">Detalles de la actividad</th>
+						<th class="gdfColHeader" style="width:80px;">Inicio</th>
+						<th class="gdfColHeader" style="width:50px;">Dur.</th>
+						<th class="gdfColHeader" style="width:80px;">Fin</th>
+						<th class="gdfColHeader" style="width:70px;">%</th>
+						<th class="gdfColHeader" style="width:2000px;text-align: left;padding-left: 10px;">Profesionales asignados</th>
 					</tr>
 				</thead>
 			</table>
@@ -254,17 +255,19 @@
 			<tr taskId="(#=obj.id#)" class="taskEditRow (#=obj.isParent()?'isParent':''#) (#=obj.collapsed?'collapsed':''#)" level="(#=level#)">
 				<th class="gdfCell" style="cursor:pointer;text-aling: center;"><span class="taskRowIndex">(#=obj.getRow()+1#)</span></th>
 				<td class="gdfCell noClip"><div class="taskStatus cvcColorSquare" status="(#=obj.status#)"></div></td>
-				<td class="gdfCell"><input type="text" name="code" value="(#=obj.code?obj.code:''#)" placeholder="Código" readonly="readonly"></td>
+				<td class="gdfCell"><input type="text" name="code" value="(#=obj.code?obj.code:''#)" placeholder="Código" readonly="readonly" style="text-align: center;"></td>
+				<td class="gdfCell" style="text-align: center;"><a href="#" style="cursor: pointer;;user-select: none;">(0)</a></td>
 				<td class="gdfCell indentCell" style="padding-left:(#=obj.level*10+18#)px;">
-					<div class="exp-controller" align="center"></div>
+					<div class="exp-controller" style="margin-left: 0px;"></div>
+					<small><a href="#" style="color: red;cursor: pointer;;user-select: none;" title="Observaciones">(0)</a></small>
 					<input type="text" name="name" value="(#=obj.name#)" placeholder="Nombre" autocomplete="off">
 				</td>
-				<td class="gdfCell"><input type="text" name="start" value="" class="date"></td>
-				<td class="gdfCell"><input type="text" name="end" value="" class="date"></td>
-				<td class="gdfCell"><input type="text" name="duration" autocomplete="off" value="(#=obj.duration#)"></td>
-				<td class="gdfCell"><input type="text" name="progress" class="validated" entrytype="PERCENTILE" autocomplete="off" value="(#=obj.progress?obj.progress:''#)" (#=obj.progressByWorklog?"readOnly":""#)></td>
-				<td class="gdfCell"><input type="text" name="depends" autocomplete="off" value="(#=obj.depends#)" (#=obj.hasExternalDep?"readonly":""#)></td>
-				<td class="gdfCell"><a href="#" style="cursor: pointer; user-select: none;" onclick="adminDetailActivity('(#=obj.id#)');">Admin. detalle (<span style="color: #57bc57;">(#=obj.name#)</span>)</a></td>
+				<td class="gdfCell"><input type="text" name="depends" autocomplete="off" value="(#=obj.depends#)" (#=obj.hasExternalDep?"readonly":""#) style="text-align: center;"></td>
+				<td class="gdfCell"><input type="text" name="start" value="" class="date" style="text-align: center;"></td>
+				<td class="gdfCell"><input type="text" name="duration" autocomplete="off" value="(#=obj.duration#)" style="text-align: center;"></td>
+				<td class="gdfCell"><input type="text" name="end" value="" class="date" style="text-align: center;"></td>
+				<td class="gdfCell"><input type="text" name="progress" class="validated" entrytype="PERCENTILE" autocomplete="off" value="(#=obj.progress?obj.progress:''#)" (#=obj.progressByWorklog?"readOnly":""#) style="text-align: center;"></td>
+				<td class="gdfCell"><a href="#" style="cursor: pointer; user-select: none;" onclick="adminDetailActivity('(#=obj.id#)');">Admin.</a> <small>Arquitecto de software > Kevin Arnold Arias Figueroa</small></td>
 			</tr>
 		--></div>
 
