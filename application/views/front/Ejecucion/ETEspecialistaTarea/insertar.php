@@ -30,8 +30,14 @@
 </style>
 <h4 style="padding: 5px;margin: 0px;">Actividad: <span style="color: #2f9bfb;">Sistema de seguimiento y mon</span></h4>
 <hr style="margin: 3px;">
-<div style="padding: 5px;">
-	<table>
+<div style="padding: 5px;user-select: none;">
+	<table style="width: 100%;">
+		<thead>
+			<tr>
+				<th style="text-align: center;height: 25px"><b></b></th>
+				<th style="text-align: center;height: 25px"><b>Especialistas requeridos para esta actividad</b></th>
+			</tr>
+		</thead>
 		<tbody>
 			<tr>
 				<td style="background-color: #f5f5f5;text-align: center;width: 200px;">
@@ -43,11 +49,8 @@
 						<?php } ?>
 					</div>
 				</td>
-				<td>
-					
-				</td>
-				<td>
-					
+				<td style="background-color: #f5fbfb;">
+					<h3 style="color: #999999;text-align: center;">Arrastre especialidades de la izquierda</h3>
 				</td>
 			</tr>
 		</tbody>
