@@ -9,20 +9,25 @@ class programar_nopip_modal extends CI_Model
     //listar formulacion y evaluacion del primer modulo PMI
     public function Get_no_pip($flat)
     {
-        $Get_no_pip = $this->db->query("execute sp_Gestionar_ProyectoInversion'"
-            . $flat . "'");
-        if ($Get_no_pip->num_rows() > 0) {
+        $Get_no_pip = $this->db->query("execute sp_Gestionar_ProyectoInversion'" . $flat . "'");
+        if ($Get_no_pip->num_rows() > 0) 
+        {
             return $Get_no_pip->result();
-        } else {
+        } 
+        else 
+        {
             return false;
         }
     }
     public function GetAnioCartera()
     {
         $GetAnioCartera = $this->db->query("select id_cartera,year(año_apertura_cartera) AS anio from CARTERA_INVERSION where estado_cartera='1'");
-        if ($GetAnioCartera->num_rows() > 0) {
+        if ($GetAnioCartera->num_rows() > 0) 
+        {
             return $GetAnioCartera->result();
-        } else {
+        } 
+        else 
+        {
             return false;
         }
     }

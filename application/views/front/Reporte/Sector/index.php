@@ -50,15 +50,16 @@
 															    	<td>
 																		<?=$item->CantidadPip?>
 															    	</td>	
-															    	<td style="text-align:right">
-																		<?=$item->CostoPip?>
+															    	<td style="text-align:right"> <?= a_number_format($item->CostoPip , 2, '.',",",3);?>
 															    	</td>
 															  </tr>
 															<?php } ?>
 																<tr>
 																	<td bgcolor="#D1F2EB"><b></b></td>
 																	<td bgcolor="#D1F2EB"><b><?=$listaMontoTotalSector->TotalPip;?><b></td>
-																	<td style="text-align:right" bgcolor="#D1F2EB"><b><?=$listaMontoTotalSector->CostoTotal;?></b></td>
+																	<td style="text-align:right" bgcolor="#D1F2EB">
+																	<b><?= a_number_format($listaMontoTotalSector->CostoTotal , 2, '.',",",3);?></b>
+																	</td>
 																</tr>
 															</tbody>
 														</table>
@@ -76,7 +77,7 @@
 																<tr>
 																
 																	<td bgcolor="#D1F2EB"><?=$listaMontoTotalSector->TotalPip;?></td>
-																	<td bgcolor="#D1F2EB"><?=$listaMontoTotalSector->CostoTotal;?></td>
+																	<td bgcolor="#D1F2EB">S/. <?= a_number_format($listaMontoTotalSector->CostoTotal , 2, '.',",",3);?></td>
 																</tr>
 														</table> 
 													</div>

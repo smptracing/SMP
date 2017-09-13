@@ -6,37 +6,59 @@ class programar_pip extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->helper('FormatNumber_helper');
         $this->load->model('programar_pip_modal');
     }
     //PIP
     //listar proyectos de inversion en FORMULACION Y EVALUACIÓN
     public function GetProyectosFormulacionEvaluacion()
     {
-        if ($this->input->is_ajax_request()) {
+        if ($this->input->is_ajax_request())
+        {
             $flat  = "listarpip_formulacion_evaluacion";
             $datos = $this->programar_pip_modal->GetProyectosFormulacionEvaluacion($flat);
+            foreach ($datos as $key => $value) 
+            {
+                $value->costo_pi = a_number_format($value->costo_pi , 2, '.',",",3);
+            }
             echo json_encode($datos);
-        } else {
+        } 
+        else 
+        {
             show_404();
         }
     }
     public function GetProyectosEjecucion()
     {
-        if ($this->input->is_ajax_request()) {
+        if ($this->input->is_ajax_request()) 
+        {
             $flat  = "listarpip_viable_ejecucion";
             $datos = $this->programar_pip_modal->GetProyectosEjecucion($flat);
+            foreach ($datos as $key => $value) 
+            {
+                $value->costo_pi = a_number_format($value->costo_pi , 2, '.',",",3);
+            }
             echo json_encode($datos);
-        } else {
+        } 
+        else 
+        {
             show_404();
         }
     }
     public function GetProyectosFuncionamiento()
     {
-        if ($this->input->is_ajax_request()) {
+        if ($this->input->is_ajax_request()) 
+        {
             $flat  = "listarpip_funcionamiento";
             $datos = $this->programar_pip_modal->GetProyectosFuncionamiento($flat);
+            foreach ($datos as $key => $value) 
+            {
+                $value->costo_pi = a_number_format($value->costo_pi , 2, '.',",",3);
+            }
             echo json_encode($datos);
-        } else {
+        } 
+        else 
+        {
             show_404();
         }
     }

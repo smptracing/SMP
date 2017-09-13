@@ -1,5 +1,6 @@
 $(document).ready(function(){
-    $("#form-AddProyectosInversion").keypress(function(e){   
+    $("#form-AddProyectosInversion").keypress(function(e)
+    {   
       if(e == 13){
         return false;
       }
@@ -8,11 +9,12 @@ $(document).ready(function(){
 }); 
 
 $(function(){
-	$("body").on("blur","#txtCostoPip",function(e){
-		if($("#txtCostoPip").val()=='')
-			$("#txtCostoPip").val('0.00');
+	$("body").on("blur","#txtCostoPip",function(e)
+    {
 	});
     $("body").on("click","#sendSave",function(e){
+
+        $('#form-AddProyectosInversion').data('formValidation').resetField($('#txtCostoPip'));
 	    $('#form-AddProyectosInversion').data('formValidation').validate();
 	    if($('#form-AddProyectosInversion').data('formValidation').isValid()==true){
 	        $('#form-AddProyectosInversion').submit();
@@ -33,13 +35,15 @@ $(function(){
     });
     $('#txtCostoPip').inputmask("decimal", {
 	    radixPoint: ".",
-	    groupSeparator: " ",
+	    groupSeparator: ",",
 	    digits: 2,
 	    autoGroup: true,
 	    rightAlign: false,
 	});
-	//$('#txtCostoPip').inputmask("decimal");
 	$('#form-AddProyectosInversion').formValidation({
+        framework: 'bootstrap',
+        live: 'enabled',
+        trigger: null,
       fields:
       {
         txtCodigoUnico:{
@@ -111,14 +115,14 @@ $(function(){
               message: '<b style="color: red;">El campo "Grupo" es requerido.</b>'
             }
           }
-        },/*
+        },
         txtCostoPip:{
           validators:{
             notEmpty:{
               message: '<b style="color: red;">El campo "Costo de inversión" es requerido.</b>'
             }
           }
-        },*/
+        },
         txt_beneficiarios:{
           validators:{
             notEmpty:{

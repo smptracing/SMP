@@ -6,6 +6,7 @@ class Sector extends CI_Controller {/* Mantenimiento de sector entidad Y servici
 	public function __construct(){
       parent::__construct();
       $this->load->model('Model_Sector');
+      $this->load->helper('FormatNumber_helper');
 	}
     
     /* Pagina principal de la vista entidad Y servicio publico asociado */
@@ -16,9 +17,6 @@ class Sector extends CI_Controller {/* Mantenimiento de sector entidad Y servici
 
 	public function ReporteListaSectorPip()
     {
-        /*$this->load->view('layout/Reportes/header');
-        $this->load->view('front/Reporte/Funcion/index');
-        $this->load->view('layout/Reportes/footer');*/
         $listaNumPipSector=$this->Model_Sector->SectorPipListar();
         $listaMontoTotalSector=$this->Model_Sector->SectorPipMontoTotalListar();
 

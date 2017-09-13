@@ -7,16 +7,24 @@ class programar_nopip extends CI_Controller
     {
         parent::__construct();
         $this->load->model('programar_nopip_modal');
+        $this->load->helper('FormatNumber_helper');
     }
     //NOPIP
     //listar proyectos no pip
     public function Get_no_pip()
     {
-        if ($this->input->is_ajax_request()) {
+        if ($this->input->is_ajax_request()) 
+        {
             $flat  = "LISTARNOPIP_PROGRAMACION";
             $datos = $this->programar_nopip_modal->Get_no_pip($flat);
+            foreach ($datos as $key => $value) 
+            {
+                $value->costo_pi = a_number_format($value->costo_pi , 2, '.',",",3);
+            }
             echo json_encode($datos);
-        } else {
+        } 
+        else 
+        {
             show_404();
         }
     }

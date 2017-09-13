@@ -6,6 +6,7 @@ class GrupoFuncional extends CI_Controller {/* Mantenimiento de division funcion
 	public function __construct(){
       parent::__construct();
       $this->load->model('Model_GrupoFuncional');
+      $this->load->helper('FormatNumber_helper');
 	}
     public function index()
     {

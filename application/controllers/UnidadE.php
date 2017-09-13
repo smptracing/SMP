@@ -7,6 +7,7 @@ class UnidadE extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Model_UnidadE');
+        $this->load->helper('FormatNumber_helper');
     }
     public function index()
     {

@@ -14,7 +14,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                                 <div class="x_panel">
                                   <div class="x_title">
-                                    <h2><i class="fa fa-bars"></i>PROYECTOS<small></small></h2>
+                                    <h2>PROYECTOS<small></small></h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                       </li>
@@ -337,7 +337,7 @@
                                     </div>
                                    <div class="col-md-3 col-sm-8 col-xs-12">
                                       <label>Costo del Proyecto</label>
-                                      <input  class="form-control" id="txt_costo_proyecto_mp" name="txt_costo_proyecto_mp" type="number" disabled="disabled">
+                                      <input  class="form-control" id="txt_costo_proyecto_mp" name="txt_costo_proyecto_mp" type="text" disabled="disabled">
                                     </div>
 
                                     <div class="col-md-4 col-sm-8 col-xs-12">
@@ -354,27 +354,27 @@
                               <div class="item form-group">
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <label>PIA</label>
-                                      <input  class="form-control" id="txt_pia" name="txt_pia" type="number" required="required">
+                                      <input  class="form-control" id="txt_pia" name="txt_pia" type="number" step="any" required="required">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <label>PIM</label>
-                                      <input  class="form-control" id="txt_pim" name="txt_pim" type="number" required="required">
+                                      <input  class="form-control" id="txt_pim" name="txt_pim" type="number" step="any" required="required">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <label>Certificado</label>
-                                      <input  class="form-control" id="txt_certificado" name="txt_certificado" type="number" required="required">
+                                      <input  class="form-control" id="txt_certificado" name="txt_certificado" step="any" type="number" required="required">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <label>compromiso</label>
-                                      <input  class="form-control" id="txt_compromiso" name="txt_compromiso" type="number" required="required">
+                                      <input  class="form-control" id="txt_compromiso" name="txt_compromiso" step="any" type="number" required="required">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <label>Devengado</label>
-                                      <input  class="form-control" id="txt_devengado" name="txt_devengado" type="number" required="required">
+                                      <input  class="form-control" id="txt_devengado" name="txt_devengado" step="any" type="number" required="required">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <label>Girado</label>
-                                      <input  class="form-control" id="txt_girado" name="txt_girado" type="number" required="required">
+                                      <input  class="form-control" id="txt_girado" name="txt_girado" step="any" type="number" required="required">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <label>.</label><br>

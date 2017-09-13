@@ -30,6 +30,7 @@ $(document).on("ready" ,function(){
      lista_formulacion_evaluacion();/*llamar a mi datatablet listar proyectosinverision*/
      lista_ejecucion();
      lista_funcionamiento();
+
 //agregar progrmacion para operacion y mantenimiento     
       $("#form_AddProgramacion_operacion_mantenieminto").submit(function(event)
                   {
@@ -132,7 +133,7 @@ $(document).on("ready" ,function(){
                                     {"data":"codigo_unico_pi"},
                                     {"data":"nombre_pi"},
                                     {"data":"costo_pi"  , render: function (data, type, row) {
-                    return "<div style='float:right;'>S/. "+formatearNumero(data)+"</div>";
+                    return "<div style='float:right;'>S/. "+data+"</div>";
                     }},
                                     {"data":"nombre_estado_ciclo"},
 
@@ -438,7 +439,7 @@ var  AddMeta_Pi=function(tbody,table){
                        var  id_pi=data.id_pi;
                        $("#txt_codigo_unico_pi_mp").val(data.codigo_unico_pi);
                       $("#txt_id_pip_programacion_mp").val(data.id_pi);
-                      $("#txt_costo_proyecto_mp").val(data.costo_pi);
+                      $("#txt_costo_proyecto_mp").val("S/. "+data.costo_pi);
                       $("#txt_nombre_proyecto_mp").val(data.nombre_pi);
                       listar_Meta();
                       listar_meta_presupuestal();

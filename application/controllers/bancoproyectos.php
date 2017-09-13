@@ -9,7 +9,7 @@ class bancoproyectos extends CI_Controller
     {
         parent::__construct();
         $this->load->model('bancoproyectos_modal');
-        //   $this->load->model('Ubicacion_Model');
+        $this->load->helper('FormatNumber_helper');
     }
     /*INSERTAR UN PROYECTO EN LA TABLA PROYECTO Y SIMULTANEO EN LA TABLA PROYECTO UBIGEO*/
     public function AddProyectos()
@@ -26,7 +26,7 @@ class bancoproyectos extends CI_Controller
             $cbxProgramaPres     = $this->input->post("cbxProgramaPres");
             $txtCodigoUnico      = $this->input->post("txtCodigoUnico");
             $txtNombrePip        = $this->input->post("txtNombrePip");
-            $txtCostoPip         = floatval(str_replace(" ","",$this->input->post("txtCostoPip")));
+            $txtCostoPip         = floatval(str_replace(",","",$this->input->post("txtCostoPip")));
             $txt_beneficiarios   = $this->input->post("txt_beneficiarios");
             $dateFechaInPip      = $this->input->post("fecha_registro");
             $dateFechaViabilidad = $this->input->post("fecha_viabilidad");
@@ -159,11 +159,19 @@ class bancoproyectos extends CI_Controller
 //listar proyectos de inversion
     public function GetProyectoInversion()
     {
-        if ($this->input->is_ajax_request()) {
+        if ($this->input->is_ajax_request()) 
+        {
             $flat  = "LISTARPIP";
             $datos = $this->bancoproyectos_modal->GetProyectoInversion($flat);
+            foreach ($datos as $key => $value) 
+            {
+                $value->costo_pi = a_number_format($value->costo_pi , 2, '.',",",3);
+            }
+
             echo json_encode($datos);
-        } else {
+        } 
+        else 
+        {
             show_404();
         }
     }

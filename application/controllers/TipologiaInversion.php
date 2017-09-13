@@ -11,6 +11,7 @@ class TipologiaInversion extends CI_Controller
         $this->load->model('TipologiaInversion_Model');
         $this->load->model('TipoInversion_Model');
         $this->load->model('TipoNoPip_Model');
+        $this->load->helper('FormatNumber_helper');
 
     }
     public function index()

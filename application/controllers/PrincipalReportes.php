@@ -106,8 +106,8 @@ class PrincipalReportes extends CI_Controller
             $CodigoUnico=$this->input->get('codigounico');
             $BuscarPipCodigoReporte=$this->Model_Dashboard_Reporte->ReporteDevengadoPiaPimPorPip($CodigoUnico); //BUSCAR PIP
       
-            $devengado=[$BuscarPipCodigoReporte->pia_meta_pres,$BuscarPipCodigoReporte->pim_acumulado,$BuscarPipCodigoReporte->devengado_acumulado];
-            echo  json_encode($devengado);
+            //$devengado=[$BuscarPipCodigoReporte->pia_meta_pres,$BuscarPipCodigoReporte->pim_acumulado,$BuscarPipCodigoReporte->devengado_acumulado];
+            echo  json_encode($BuscarPipCodigoReporte);
     }
 
     function  DatosParaEstadisticaAnualProyecto()

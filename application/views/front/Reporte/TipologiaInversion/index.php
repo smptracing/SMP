@@ -50,7 +50,7 @@
 																		<?=$item->CantidadPip?>
 															    	</td>	
 															    	<td>
-																		S/. <?=$item->CostoPip?>
+																		S/. <?= a_number_format($item->CostoPip , 2, '.',",",3);?>
 															    	</td>
 															  </tr>
 															<?php } ?>
@@ -70,7 +70,10 @@
 																<tr>
 																
 																	<td bgcolor="#D1F2EB"><?=$listaResumenPipTipologia->TotalPip;?></td>
-																	<td bgcolor="#D1F2EB"><?=$listaResumenPipTipologia->CostoTotal;?></td>
+																	<td bgcolor="#D1F2EB">
+																	S/. <?= a_number_format($listaResumenPipTipologia->CostoTotal , 2, '.',",",3);?>
+																		
+																	</td>
 																</tr>
 														</table> 
 													</div>
