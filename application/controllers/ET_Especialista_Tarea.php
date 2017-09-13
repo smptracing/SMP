@@ -8,6 +8,7 @@ class ET_Especialista_Tarea extends CI_Controller
 		parent::__construct();
 
 		$this->load->model('Model_ET_Especialista_Tarea');
+		$this->load->model('Model_Especialidad');
 	}
 
 	public function insertar()
@@ -21,9 +22,10 @@ class ET_Especialista_Tarea extends CI_Controller
 
 			$idTareaET=$this->input->get('idTareaET');
 
+			$listaEspecialidad=$this->Model_Especialidad->ListarEspecialidad();
 			$listaEspecialistaTarea=$this->Model_ET_Especialista_Tarea->ETEspecialistaTareaPorIdTareaET($idTareaET);
 
-			return $this->load->view('front/Ejecucion/ETEspecialistaTarea/insertar', ['listaEspecialistaTarea' => $listaEspecialistaTarea]);
+			return $this->load->view('front/Ejecucion/ETEspecialistaTarea/insertar', ['listaEspecialidad' => $listaEspecialidad, 'listaEspecialistaTarea' => $listaEspecialistaTarea]);
 		}
 	}
 }

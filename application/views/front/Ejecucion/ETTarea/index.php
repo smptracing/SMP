@@ -286,7 +286,7 @@
 			</tr>
 		--></div>
 	</div>
-	<div id="divDialogoGeneralGantt" style="background-color: #ffffff;border: 1px solid #000000;bottom: 0px;display: none;z-index: 1000;padding: 7px;padding-bottom: 0px;padding-top: 10px;position: fixed;left: 0px;right: 50%;top: 0px;">
+	<div id="divDialogoGeneralGantt" style="background-color: #ffffff;border: 1px solid #000000;bottom: 0px;display: none;z-index: 1000;position: fixed;left: 0px;right: 50%;top: 0px;">
 		
 	</div>
 	<script>
