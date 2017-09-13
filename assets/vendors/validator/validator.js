@@ -28,7 +28,7 @@ var validator = (function($){
         email_repeat    : 'emails do not match',
         password_repeat : 'passwords do not match',
         repeat          : 'no match',
-        complete        : 'input is not complete',
+        complete        : 'La entrada no está completa',
         select          : 'Please select an option'
     };
 

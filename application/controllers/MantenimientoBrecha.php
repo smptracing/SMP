@@ -17,13 +17,17 @@ public function __construct(){
 	 {
 	    if ($this->input->is_ajax_request()) 
 	    {
+	    $cbxServPubAsoc=$this->input->post("cbxServPubAsoc");
 	      $txt_NombreBrecha =$this->input->post("txt_NombreBrecha");
 	      $txtArea_DescBrecha =$this->input->post("txtArea_DescBrecha");
-	      if($this->Model_Brecha->AddBrecha($txt_NombreBrecha,$txtArea_DescBrecha) == true)
-	        echo "Se añadio una  Brecha";
+	      /*if($this->Model_Brecha->AddBrecha($cbxServPubAsoc,$txt_NombreBrecha,$txtArea_DescBrecha) == true)
+	        echo "No se añadio una  Brecha";
 	      else
-	        echo "No se añadio  una Brecha";  
-	    }
+	        echo "Se añadio  una Brecha";  
+	    }*/
+	     $Data=$this->Model_Brecha->AddBrecha($cbxServPubAsoc,$txt_NombreBrecha, $txtArea_DescBrecha);
+            echo json_encode($Data);
+		}
 	    else
 	    {
 	      show_404();
@@ -50,9 +54,10 @@ public function __construct(){
 	    if ($this->input->is_ajax_request()) 
 	    {
 		      $txt_IdBrechaModif =$this->input->post("txt_IdBrechaModif");
+		      $id_ServPubAsoc=$this->input->post("cbxSerPubAsocModificar");
 		      $txt_NombreBrechaU =$this->input->post("txt_NombreBrechaU");
 		      $txtArea_DescBrechaU =$this->input->post("txtArea_DescBrechaU");
-		      if($this->Model_Brecha->UpdateBrecha($txt_IdBrechaModif,$txt_NombreBrechaU,$txtArea_DescBrechaU) == false)
+		      if($this->Model_Brecha->UpdateBrecha($txt_IdBrechaModif,$id_ServPubAsoc,$txt_NombreBrechaU,$txtArea_DescBrechaU) == false)
 		        echo "Se actualizo correctamente la brecha";
 		      else
 		        echo "No Se actualizo correctamente la brecha"; 
@@ -82,68 +87,7 @@ public function __construct(){
 	      }
  	 }
  	 //FIN ELIMINAR BRECHA
-//----------------FIN MANTENIMIENTO DE LOS DATOS DE BRECHAS---------------------
-
- //----------------MANTENIMIENTO DE LOS DATOS DE INDICADOR---------------------
-
-/*INSERTAR UN INDICADOR*/
-	 function AddIndicador()
-	 {
-	    if ($this->input->is_ajax_request()) 
-	    {
-	      $txt_NombreIndicador =$this->input->post("txt_NombreIndicador");
-	      $txtArea_DefIndicador =$this->input->post("txtArea_DefIndicador");
-	      $txt_UnidadMedida =$this->input->post("txt_UnidadMedida");
-	     if($this->Model_Brecha->AddIndicador($txt_NombreIndicador,$txtArea_DefIndicador,$txt_UnidadMedida) == true)
-	        echo "Se añadio un indicador";
-	      else
-	        echo "No se añadio  un indicador";  
-	  
-	    }
-	    else
-	    {
-	      show_404();
-	    }
-
- 	 }
- /*FIN INSERTAR UN INDICADOR*/
-
-  /* LISTAR INDICADOR*/
-	 function GetIndicador()
-	{
-		if ($this->input->is_ajax_request()) 
-		{
-		$datos=$this->Model_Brecha->GetIndicador();
-		echo json_encode($datos);
-		}
-		else
-		{
-			show_404();
-		}
-	}
-//FIN LISTAR INDICADOR
-//ACTUALIZAR O MODIFICAR DATOS DE UN INDICADOR
- 	function UpdateIndicador()
-	 {
-	    if ($this->input->is_ajax_request()) 
-	    {
-		      $txt_IdIndicadorModif =$this->input->post("txt_IdIndicadorModif");
-		      $txt_NombreIndicadorU =$this->input->post("txt_NombreIndicadorU");
-		      $txtArea_DefIndicadorU =$this->input->post("txtArea_DefIndicadorU");
-		      $txt_UnidadMedidaU =$this->input->post("txt_UnidadMedidaU");
-		      if($this->Model_Brecha->UpdateIndicador($txt_IdIndicadorModif,$txt_NombreIndicadorU,$txtArea_DefIndicadorU,$txt_UnidadMedidaU) == false)
-		        echo "Se actualizo correctamente el indicador";
-		      else
-		        echo "No Se actualizo correctamente el indicador"; 
-	    }
-	    else
-	    {
-	      	show_404();
-	    }
- 	 }
-//FIN ACTUALIZAR O MODIFICAR DATOS DEL INDICADOR
-//----------------FIN MANTENIMIENTO DE LOS DATOS DE INDICADOR-------------------
-	function _load_layout($template)
+ 	function _load_layout($template)
     {
       $this->load->view('layout/header');
       $this->load->view($template);

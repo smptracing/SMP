@@ -9,12 +9,16 @@ class Model_Brecha extends CI_Model
           }
 //------------------METODOS DE LA BRECHA-------------------
 //AGREGAR UNA BRECHA
-      function AddBrecha($txt_NombreBrecha, $txtArea_DescBrecha)
+      function AddBrecha($cbxServPubAsoc,$txt_NombreBrecha, $txtArea_DescBrecha)
         {
-           $this->db->query("execute sp_Brecha_c '".$txt_NombreBrecha."','".$txtArea_DescBrecha."'");
-            if ($this->db->affected_rows() > 0) 
+          $mensaje=$this->db->query("execute sp_Brecha_c '".$cbxServPubAsoc."','".$txt_NombreBrecha."','".$txtArea_DescBrecha."'");
+           /* if ($this->db->affected_rows() > 0) 
               {
                 return true;
+              }*/
+              if($mensaje->num_rows()>0)
+             {
+              return $mensaje->result();
               }
               else
               {
@@ -38,9 +42,9 @@ class Model_Brecha extends CI_Model
 //FIN LISTAR UNA BRECHA
 
 //MODIFICAR UNA BRECHA
-         function UpdateBrecha($id_brecha,$nombre_brecha,$desc_brecha)
+         function UpdateBrecha($id_brecha,$id_ser_pub_asoc,$nombre_brecha,$desc_brecha)
         {
-           $this->db->query("execute sp_Brecha_u '".$id_brecha."','".$nombre_brecha."','".$desc_brecha."' ");
+           $this->db->query("execute sp_Brecha_u '".$id_brecha."','".$id_ser_pub_asoc."','".$nombre_brecha."','".$desc_brecha."' ");
             if ($this->db->affected_rows() > 0) 
               {
                 return true;
@@ -68,51 +72,5 @@ class Model_Brecha extends CI_Model
 
         }
 //FIN ELIMINAR UNA BRECHA 
-//------------------FIN METODOS DE LA BRECHA-------------------  
-
-//------------------METODOS DEL INDICADOR----------------------
-//AGREGAR UN INDICADOR
-      function AddIndicador($txt_NombreIndicador,$txtArea_DefIndicador,$txt_UnidadMedida)
-        {
-           $this->db->query("execute sp_Indicador_c'".$txt_NombreIndicador."','".$txtArea_DefIndicador."','".$txt_UnidadMedida."'");
-            if ($this->db->affected_rows() > 0) 
-              {
-                return true;
-              }
-              else
-              {
-                return false;
-              }
-        }
-//FIN AGREGAR UN INDICADOR
-//LISTAR UN INDICADOR
-      function GetIndicador()
-        {
-            $indicador=$this->db->query("execute sp_Indicador_r"); //PROCEDIMIENTO DE LISTAR INDICADORES
-            if($indicador->num_rows()>0)
-             {
-              return $indicador->result();
-             }else
-             {
-              return false;
-             }
-   
-        } 
-//FIN LISTAR UN INDICADOR
-//MODIFICAR UNA INDICADOR
-         function UpdateIndicador($id_indicador,$nombre_indicador,$definicion_indicador,$unidad_medida_indicador)
-        {
-           $this->db->query("execute sp_Indicador_u'".$id_indicador."','".$nombre_indicador."','".$definicion_indicador."', '".$unidad_medida_indicador."'");
-            if ($this->db->affected_rows() > 0) 
-              {
-                return true;
-              }
-              else
-              {
-                return false;
-              }
-
-        }
-//FIN MODIFICAR INDICADOR
-//------------------FIN METODOS DEL INDICADOR----------------------
+//------------------FIN METODOS DE LA BRECHA-------------------          
 }

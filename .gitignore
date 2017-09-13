@@ -27,3 +27,11 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 *.stTheme.cache
 *.sublime-workspace
 *.sublime-project
+application/config/database.php
+phpstorm.php
+application/config/config.php
+uploads/ImageExpediente/*.png
+uploads/ImageExpediente/*.jpg
+uploads/ResolucioExpediente/*.docx
+uploads/ResolucioExpediente/*.pdf
+*.xlsx

@@ -1,694 +1,328 @@
-<div class="right_col" role="main">
-          <!-- top tiles -->
-          <div class="row tile_count">
-            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Users</span>
-              <div class="count">2500</div>
-              <span class="count_bottom"><i class="green">4% </i> From last Week</span>
-            </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-clock-o"></i> Average Time</span>
-              <div class="count">123.50</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> From last Week</span>
-            </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Males</span>
-              <div class="count green">2,500</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
-            </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Females</span>
-              <div class="count">4,567</div>
-              <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
-            </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Collections</span>
-              <div class="count">2,315</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
-            </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Connections</span>
-              <div class="count">7,325</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
-            </div>
-          </div>
-          <!-- /top tiles -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>SMP TRACING</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link href="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>assets/adminlte/ionicons.min.css" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>assets/adminlte/AdminLTE.min.css" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>assets/adminlte/_all-skins.min.css" rel="stylesheet">
+  <style>
+    .main-footer 
+    {
+      background: #3c5767;
+      padding: 15px;
+      color: #fff;
+      border-top: 1px solid #d2d6de;
+    }
+    .box
+    {
+      background-color: #ecf0f5;
+    }
+    .TituloListaFooter
+    {
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.7); 
+      font-size: 14px;
+      color: white;
+      padding-left: 20px;
+    }
+    .tituloHeader
+    {
+      display: inline-block;
+      text-align: middle;
+      padding-top: 25px;
+      color: white;
+      font-size: 15px;
 
-          <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <div class="dashboard_graph">
-
-                <div class="row x_title">
-                  <div class="col-md-6">
-                    <h3>Network Activities <small>Graph title sub-title</small></h3>
-                  </div>
-                  <div class="col-md-6">
-                    <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
-                      <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                      <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-md-9 col-sm-9 col-xs-12">
-                  <div id="chart_plot_01" class="demo-placeholder"></div>
-                </div>
-                <div class="col-md-3 col-sm-3 col-xs-12 bg-white">
-                  <div class="x_title">
-                    <h2>Top Campaign Performance</h2>
-                    <div class="clearfix"></div>
-                  </div>
-
-                  <div class="col-md-12 col-sm-12 col-xs-6">
-                    <div>
-                      <p>Facebook Campaign</p>
-                      <div class="">
-                        <div class="progress progress_sm" style="width: 76%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="80"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <p>Twitter Campaign</p>
-                      <div class="">
-                        <div class="progress progress_sm" style="width: 76%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-12 col-sm-12 col-xs-6">
-                    <div>
-                      <p>Conventional Media</p>
-                      <div class="">
-                        <div class="progress progress_sm" style="width: 76%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="40"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <p>Bill boards</p>
-                      <div class="">
-                        <div class="progress progress_sm" style="width: 76%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-
-                <div class="clearfix"></div>
-              </div>
-            </div>
-
-          </div>
-          <br />
-
-          <div class="row">
-
-
-            <div class="col-md-4 col-sm-4 col-xs-12">
-              <div class="x_panel tile fixed_height_320">
-                <div class="x_title">
-                  <h2>App Versions</h2>
-                  <ul class="nav navbar-right panel_toolbox">
-                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                    </li>
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                      <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Settings 1</a>
-                        </li>
-                        <li><a href="#">Settings 2</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li><a class="close-link"><i class="fa fa-close"></i></a>
-                    </li>
-                  </ul>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                  <h4>App Usage across versions</h4>
-                  <div class="widget_summary">
-                    <div class="w_left w_25">
-                      <span>0.1.5.2</span>
-                    </div>
-                    <div class="w_center w_55">
-                      <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 66%;">
-                          <span class="sr-only">60% Complete</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w_right w_20">
-                      <span>123k</span>
-                    </div>
-                    <div class="clearfix"></div>
-                  </div>
-
-                  <div class="widget_summary">
-                    <div class="w_left w_25">
-                      <span>0.1.5.3</span>
-                    </div>
-                    <div class="w_center w_55">
-                      <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 45%;">
-                          <span class="sr-only">60% Complete</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w_right w_20">
-                      <span>53k</span>
-                    </div>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="widget_summary">
-                    <div class="w_left w_25">
-                      <span>0.1.5.4</span>
-                    </div>
-                    <div class="w_center w_55">
-                      <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 25%;">
-                          <span class="sr-only">60% Complete</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w_right w_20">
-                      <span>23k</span>
-                    </div>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="widget_summary">
-                    <div class="w_left w_25">
-                      <span>0.1.5.5</span>
-                    </div>
-                    <div class="w_center w_55">
-                      <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 5%;">
-                          <span class="sr-only">60% Complete</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w_right w_20">
-                      <span>3k</span>
-                    </div>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="widget_summary">
-                    <div class="w_left w_25">
-                      <span>0.1.5.6</span>
-                    </div>
-                    <div class="w_center w_55">
-                      <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 2%;">
-                          <span class="sr-only">60% Complete</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w_right w_20">
-                      <span>1k</span>
-                    </div>
-                    <div class="clearfix"></div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4 col-sm-4 col-xs-12">
-              <div class="x_panel tile fixed_height_320 overflow_hidden">
-                <div class="x_title">
-                  <h2>Device Usage</h2>
-                  <ul class="nav navbar-right panel_toolbox">
-                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                    </li>
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                      <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Settings 1</a>
-                        </li>
-                        <li><a href="#">Settings 2</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li><a class="close-link"><i class="fa fa-close"></i></a>
-                    </li>
-                  </ul>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                  <table class="" style="width:100%">
-                    <tr>
-                      <th style="width:37%;">
-                        <p>Top 5</p>
-                      </th>
-                      <th>
-                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-                          <p class="">Device</p>
-                        </div>
-                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                          <p class="">Progress</p>
-                        </div>
-                      </th>
-                    </tr>
-                    <tr>
-                      <td>
-                        <canvas class="canvasDoughnut" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
-                      </td>
-                      <td>
-                        <table class="tile_info">
-                          <tr>
-                            <td>
-                              <p><i class="fa fa-square blue"></i>IOS </p>
-                            </td>
-                            <td>30%</td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <p><i class="fa fa-square green"></i>Android </p>
-                            </td>
-                            <td>10%</td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <p><i class="fa fa-square purple"></i>Blackberry </p>
-                            </td>
-                            <td>20%</td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <p><i class="fa fa-square aero"></i>Symbian </p>
-                            </td>
-                            <td>15%</td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <p><i class="fa fa-square red"></i>Others </p>
-                            </td>
-                            <td>30%</td>
-                          </tr>
-                        </table>
-                      </td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-            </div>
-
-
-            <div class="col-md-4 col-sm-4 col-xs-12">
-              <div class="x_panel tile fixed_height_320">
-                <div class="x_title">
-                  <h2>Quick Settings</h2>
-                  <ul class="nav navbar-right panel_toolbox">
-                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                    </li>
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                      <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Settings 1</a>
-                        </li>
-                        <li><a href="#">Settings 2</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li><a class="close-link"><i class="fa fa-close"></i></a>
-                    </li>
-                  </ul>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                  <div class="dashboard-widget-content">
-                    <ul class="quick-list">
-                      <li><i class="fa fa-calendar-o"></i><a href="#">Settings</a>
-                      </li>
-                      <li><i class="fa fa-bars"></i><a href="#">Subscription</a>
-                      </li>
-                      <li><i class="fa fa-bar-chart"></i><a href="#">Auto Renewal</a> </li>
-                      <li><i class="fa fa-line-chart"></i><a href="#">Achievements</a>
-                      </li>
-                      <li><i class="fa fa-bar-chart"></i><a href="#">Auto Renewal</a> </li>
-                      <li><i class="fa fa-line-chart"></i><a href="#">Achievements</a>
-                      </li>
-                      <li><i class="fa fa-area-chart"></i><a href="#">Logout</a>
-                      </li>
-                    </ul>
-
-                    <div class="sidebar-widget">
-                        <h4>Profile Completion</h4>
-                        <canvas width="150" height="80" id="chart_gauge_01" class="" style="width: 160px; height: 100px;"></canvas>
-                        <div class="goal-wrapper">
-                          <span id="gauge-text" class="gauge-value pull-left">0</span>
-                          <span class="gauge-value pull-left">%</span>
-                          <span id="goal-text" class="goal-value pull-right">100%</span>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-
-          <div class="row">
-            <div class="col-md-4 col-sm-4 col-xs-12">
-              <div class="x_panel">
-                <div class="x_title">
-                  <h2>Recent Activities <small>Sessions</small></h2>
-                  <ul class="nav navbar-right panel_toolbox">
-                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                    </li>
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                      <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Settings 1</a>
-                        </li>
-                        <li><a href="#">Settings 2</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li><a class="close-link"><i class="fa fa-close"></i></a>
-                    </li>
-                  </ul>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                  <div class="dashboard-widget-content">
-
-                    <ul class="list-unstyled timeline widget">
-                      <li>
-                        <div class="block">
-                          <div class="block_content">
-                            <h2 class="title">
-                                              <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
-                                          </h2>
-                            <div class="byline">
-                              <span>13 hours ago</span> by <a>Jane Smith</a>
-                            </div>
-                            <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
-                            </p>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="block">
-                          <div class="block_content">
-                            <h2 class="title">
-                                              <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
-                                          </h2>
-                            <div class="byline">
-                              <span>13 hours ago</span> by <a>Jane Smith</a>
-                            </div>
-                            <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
-                            </p>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="block">
-                          <div class="block_content">
-                            <h2 class="title">
-                                              <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
-                                          </h2>
-                            <div class="byline">
-                              <span>13 hours ago</span> by <a>Jane Smith</a>
-                            </div>
-                            <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
-                            </p>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="block">
-                          <div class="block_content">
-                            <h2 class="title">
-                                              <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
-                                          </h2>
-                            <div class="byline">
-                              <span>13 hours ago</span> by <a>Jane Smith</a>
-                            </div>
-                            <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
-                            </p>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-            <div class="col-md-8 col-sm-8 col-xs-12">
-
-
-
-              <div class="row">
-
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                  <div class="x_panel">
-                    <div class="x_title">
-                      <h2>Visitors location <small>geo-presentation</small></h2>
-                      <ul class="nav navbar-right panel_toolbox">
-                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                        </li>
-                        <li class="dropdown">
-                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                          <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Settings 1</a>
-                            </li>
-                            <li><a href="#">Settings 2</a>
-                            </li>
-                          </ul>
-                        </li>
-                        <li><a class="close-link"><i class="fa fa-close"></i></a>
-                        </li>
-                      </ul>
-                      <div class="clearfix"></div>
-                    </div>
-                    <div class="x_content">
-                      <div class="dashboard-widget-content">
-                        <div class="col-md-4 hidden-small">
-                          <h2 class="line_30">125.7k Views from 60 countries</h2>
-
-                          <table class="countries_list">
-                            <tbody>
-                              <tr>
-                                <td>United States</td>
-                                <td class="fs15 fw700 text-right">33%</td>
-                              </tr>
-                              <tr>
-                                <td>France</td>
-                                <td class="fs15 fw700 text-right">27%</td>
-                              </tr>
-                              <tr>
-                                <td>Germany</td>
-                                <td class="fs15 fw700 text-right">16%</td>
-                              </tr>
-                              <tr>
-                                <td>Spain</td>
-                                <td class="fs15 fw700 text-right">11%</td>
-                              </tr>
-                              <tr>
-                                <td>Britain</td>
-                                <td class="fs15 fw700 text-right">10%</td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                        <div id="world-map-gdp" class="col-md-8 col-sm-12 col-xs-12" style="height:230px;"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-              <div class="row">
-
-
-                <!-- Start to do list -->
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                  <div class="x_panel">
-                    <div class="x_title">
-                      <h2>To Do List <small>Sample tasks</small></h2>
-                      <ul class="nav navbar-right panel_toolbox">
-                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                        </li>
-                        <li class="dropdown">
-                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                          <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Settings 1</a>
-                            </li>
-                            <li><a href="#">Settings 2</a>
-                            </li>
-                          </ul>
-                        </li>
-                        <li><a class="close-link"><i class="fa fa-close"></i></a>
-                        </li>
-                      </ul>
-                      <div class="clearfix"></div>
-                    </div>
-                    <div class="x_content">
-
-                      <div class="">
-                        <ul class="to_do">
-                          <li>
-                            <p>
-                              <input type="checkbox" class="flat"> Schedule meeting with new client </p>
-                          </li>
-                          <li>
-                            <p>
-                              <input type="checkbox" class="flat"> Create email address for new intern</p>
-                          </li>
-                          <li>
-                            <p>
-                              <input type="checkbox" class="flat"> Have IT fix the network printer</p>
-                          </li>
-                          <li>
-                            <p>
-                              <input type="checkbox" class="flat"> Copy backups to offsite location</p>
-                          </li>
-                          <li>
-                            <p>
-                              <input type="checkbox" class="flat"> Food truck fixie locavors mcsweeney</p>
-                          </li>
-                          <li>
-                            <p>
-                              <input type="checkbox" class="flat"> Food truck fixie locavors mcsweeney</p>
-                          </li>
-                          <li>
-                            <p>
-                              <input type="checkbox" class="flat"> Create email address for new intern</p>
-                          </li>
-                          <li>
-                            <p>
-                              <input type="checkbox" class="flat"> Have IT fix the network printer</p>
-                          </li>
-                          <li>
-                            <p>
-                              <input type="checkbox" class="flat"> Copy backups to offsite location</p>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- End to do list -->
-                
-                <!-- start of weather widget -->
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                  <div class="x_panel">
-                    <div class="x_title">
-                      <h2>Daily active users <small>Sessions</small></h2>
-                      <ul class="nav navbar-right panel_toolbox">
-                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                        </li>
-                        <li class="dropdown">
-                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                          <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Settings 1</a>
-                            </li>
-                            <li><a href="#">Settings 2</a>
-                            </li>
-                          </ul>
-                        </li>
-                        <li><a class="close-link"><i class="fa fa-close"></i></a>
-                        </li>
-                      </ul>
-                      <div class="clearfix"></div>
-                    </div>
-                    <div class="x_content">
-                      <div class="row">
-                        <div class="col-sm-12">
-                          <div class="temperature"><b>Monday</b>, 07:30 AM
-                            <span>F</span>
-                            <span><b>C</b></span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-sm-4">
-                          <div class="weather-icon">
-                            <canvas height="84" width="84" id="partly-cloudy-day"></canvas>
-                          </div>
-                        </div>
-                        <div class="col-sm-8">
-                          <div class="weather-text">
-                            <h2>Texas <br><i>Partly Cloudy Day</i></h2>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-sm-12">
-                        <div class="weather-text pull-right">
-                          <h3 class="degrees">23</h3>
-                        </div>
-                      </div>
-
-                      <div class="clearfix"></div>
-
-                      <div class="row weather-days">
-                        <div class="col-sm-2">
-                          <div class="daily-weather">
-                            <h2 class="day">Mon</h2>
-                            <h3 class="degrees">25</h3>
-                            <canvas id="clear-day" width="32" height="32"></canvas>
-                            <h5>15 <i>km/h</i></h5>
-                          </div>
-                        </div>
-                        <div class="col-sm-2">
-                          <div class="daily-weather">
-                            <h2 class="day">Tue</h2>
-                            <h3 class="degrees">25</h3>
-                            <canvas height="32" width="32" id="rain"></canvas>
-                            <h5>12 <i>km/h</i></h5>
-                          </div>
-                        </div>
-                        <div class="col-sm-2">
-                          <div class="daily-weather">
-                            <h2 class="day">Wed</h2>
-                            <h3 class="degrees">27</h3>
-                            <canvas height="32" width="32" id="snow"></canvas>
-                            <h5>14 <i>km/h</i></h5>
-                          </div>
-                        </div>
-                        <div class="col-sm-2">
-                          <div class="daily-weather">
-                            <h2 class="day">Thu</h2>
-                            <h3 class="degrees">28</h3>
-                            <canvas height="32" width="32" id="sleet"></canvas>
-                            <h5>15 <i>km/h</i></h5>
-                          </div>
-                        </div>
-                        <div class="col-sm-2">
-                          <div class="daily-weather">
-                            <h2 class="day">Fri</h2>
-                            <h3 class="degrees">28</h3>
-                            <canvas height="32" width="32" id="wind"></canvas>
-                            <h5>11 <i>km/h</i></h5>
-                          </div>
-                        </div>
-                        <div class="col-sm-2">
-                          <div class="daily-weather">
-                            <h2 class="day">Sat</h2>
-                            <h3 class="degrees">26</h3>
-                            <canvas height="32" width="32" id="cloudy"></canvas>
-                            <h5>10 <i>km/h</i></h5>
-                          </div>
-                        </div>
-                        <div class="clearfix"></div>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-                <!-- end of weather widget -->
-              </div>
-            </div>
-          </div>
+    }
+    .tituloLogo
+    {
+      padding-top: 25px;
+      
+    }
+    .navbar-header
+    {
+      height: 70px;
+    }
+    .skin-blue .main-header .navbar {
+        background-color: #3c5767;
+    }
+    .box.box-info 
+    {
+        border-top-color: #fff;
+    }
+    .inner
+    {
+        height: 120px;
+    }
+    @media (max-width: 770px) {
+      .tituloHeader{
+        display: none;
+      }
+    }
+  </style>
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body class="hold-transition skin-blue layout-top-nav">
+<div class="wrapper">
+  <header class="main-header">
+    <nav class="navbar navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../../index2.html" class="navbar-brand tituloLogo"><b style="font-size: 40px; padding-top: 25px;">SMP</b> Tracing v1.0</a>
         </div>
-        <!-- /page content -->
+        <div class="navbar-custom-menu">
+         <span class="tituloHeader">Software de Seguimiento y Monitoreo de PIP's</span><br>
+        </div>    
+      </div>
 
-        <!-- footer content -->
+    </nav>
+    <nav class="navbar navbar-static-top" style="background-color: #424949;">
+      <div class="container">
+          <div class="navbar-header" style="height: 0px;">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+              <i class="fa fa-bars"></i>
+            </button>
+          </div>
+          <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Guía de Usuario<span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                      <li><a href="#">Mantenimiento de Parámetros</a></li>
+                      <li><a href="#">PMI</a></li>
+                      <li><a href="#">Formulación y Evaluación</a></li>
+                      <li><a href="#">Ejecución</a></li>
+                      <li><a href="#">Liquidación</a></li>
+                      <li><a href="#">Reportes</a></li>
+                      <li><a href="#">Control de Usuarios</a></li>
+                  </ul> 
+              </li>
+            </ul>
+          </div>
+        
+      </div>
+
+    </nav>
+  </header>
+  <div class="content-wrapper">
+    <div class="container">
+      <section class="content" style="margin-top: 50px;">
+      <div class="row">
+        <div class="col-md-12">
+            <div class="box-header with-border">              
+              <h3 class="box-title"> <br><i class="fa fa-refresh"></i> CICLO DE INVERSIONES</h3>
+            </div>
+            <div class="box-body">
+                  <div class="row">
+                      <div class="col-lg-4 col-xs-12 col-sm-6">
+                            <div class="small-box bg-teal">
+                                <div class="inner">
+                                    <h3>PMI</h3>
+                                    <p>Programación Multianual de Inversión (PMI)</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <a href="<?php echo site_url('PrincipalPmi/pmi'); ?>" class="small-box-footer">
+                                    Ingresar <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                      </div>
+                      <div class="col-lg-4 col-xs-12 col-sm-6">
+                          <div class="small-box bg-olive">
+                              <div class="inner">
+                                  <h3>FE</h3>
+                                  <p>Formulación y Evaluación de Proyectos de Inversión Pública</p>
+                              </div>
+                              <div class="icon">
+                                  <i class="fa fa-edit"></i>
+                              </div>
+                              <a href="<?php echo site_url('PrincipalFyE/PrincipalFyED'); ?>" class="small-box-footer">
+                                  Ingresar <i class="fa fa-arrow-circle-right"></i>
+                              </a>
+                          </div>
+                      </div>
+                      <div class="col-lg-4 col-xs-12 col-sm-6">
+                          <div class="small-box bg-blue">
+                              <div class="inner">
+                                  <h3>E</h3>
+                                  <p>Ejecución de Proyectos de Inversión Pública</p>
+                              </div>
+                              <div class="icon">
+                                  <i class="fa fa-play"></i>
+                              </div>
+                              <a href="<?php echo site_url('PrincipalEjecucion/PrincipalEjec'); ?>" class="small-box-footer">
+                                  Ingresar <i class="fa fa-arrow-circle-right"></i>
+                              </a>
+                          </div>
+                      </div>
+                </div>
+                <div class="box-header with-border">
+                   <h3 class="box-title"><i class="fa fa-list"></i> MÓDULOS<br></h3><br>
+                </div>
+                <div class="row">
+                      <div class="col-lg-4 col-xs-12 col-sm-6">
+                          <div class="small-box bg-yellow">
+                              <div class="inner">
+                                  <h3>SM</h3>
+                                  <p>Seguimiento y Monitoreo de Proyectos de Inversión Pública</p>
+                              </div>
+                              <div class="icon">
+                                  <i class="fa fa-random"></i>
+                              </div>
+                              <a href="#"
+                                 class="small-box-footer">
+                                  Ingresar <i class="fa fa-arrow-circle-right"></i>
+                              </a>
+                          </div>
+                      </div>
+                      <!--<div class="col-lg-4 col-xs-12 col-sm-6">
+                          <div class="small-box bg-purple">
+                              <div class="inner">
+                                  <h3>M</h3>
+                                  <p>Monitoreo de Proyectos de Inversión Pública</p>
+                              </div>
+                              <div class="icon">
+                                  <i class="fa fa-eye"></i>
+                              </div>
+                              <a href="#"
+                                 class="small-box-footer">
+                                  Ingresar <i class="fa fa-arrow-circle-right"></i>
+                              </a>
+                          </div>
+                      </div>-->
+                      <div class="col-lg-4 col-xs-12 col-sm-6">
+                          <div class="small-box bg-navy">
+                              <div class="inner">
+                                  <h3>R</h3>
+                                  <p>
+                                      Reportes, Estadísticas e Informes
+                                  </p>
+                              </div>
+                              <div class="icon">
+                                  <i class="fa fa-bar-chart"></i>
+                              </div>
+                              <a href="<?php echo site_url('PrincipalReportes/PrincipalReportes'); ?>"
+                                 class="small-box-footer">
+                                  Ingresar <i class="fa fa-arrow-circle-right"></i>
+                              </a>
+
+                          </div>
+                      </div>
+                </div>
+                <div class="box-header with-border">
+                  <h3 class="box-title"><i class="fa fa-cog"></i> CONFIGURACIÓN DE PARÁMETROS<br> </h3><br>
+                </div>
+                <div class="row">
+                      <div class="col-lg-4 col-xs-12 col-sm-6">
+                          <div class="small-box bg-red">
+                              <div class="inner">
+                                  <h3>P</h3>
+                                  <p>Mantenimiento de Parámetros Generales</p>
+                              </div>
+                              <div class="icon">
+                                  <i class="fa fa-cogs"></i>
+                              </div>
+                              <a href="<?php echo site_url('PrincipalParametros/parametros'); ?>"
+                                 class="small-box-footer">
+                                  Ingresar <i class="fa fa-arrow-circle-right"></i>
+                              </a>
+                          </div>
+                      </div>
+
+                      <div class="col-lg-4 col-xs-12 col-sm-6">
+                          <div class="small-box bg-light-blue">
+                              <div class="inner">
+                                  <h3>U</h3>
+                                  <p>Usuarios, Permisos y Administracion</p>
+                              </div>
+                              <div class="icon">
+                                  <i class="fa fa-users"></i>
+                              </div>
+                              <a href="<?php echo site_url('Usuario/'); ?>"
+                                 class="small-box-footer">
+                                  Ingresar <i class="fa fa-arrow-circle-right"></i>
+                              </a>
+                          </div>
+                      </div>
+                </div>
+            <!--</div>-->
+          </div>
+      </div>
+    </section>
+    </div>
+  </div>
+  <footer class="main-footer">
+    <div class="container">
+      <div class="row">
+       <!-- <div class="col-lg-4 col-sm-6">
+            <span class="TituloListaFooter"><strong>Guía de Usuario</strong></span>
+            <ul>
+                <li><a style="color:#fff;" href="#">Mantenimiento de Parámetros</a></li>
+                <li><a style="color:#fff;" href="#">PMI</a></li>
+                <li><a style="color:#fff;" href="#">Formulación y Evaluación</a></li>
+                <li><a style="color:#fff;" href="#">Ejecución</a></li>
+                <li><a style="color:#fff;" href="#">Liquidación</a></li>
+                <li><a style="color:#fff;" href="#">Reportes</a></li>
+                <li><a style="color:#fff;" href="#">Control de Usuarios</a></li>
+            </ul>          
+        </div>-->
+        <div class="col-lg-4 col-sm-6" >
+            <span class="TituloListaFooter"><strong>Enlaces</strong></span>
+            <ul>
+                <li><a style="color:#fff;" href="http://ofi5.mef.gob.pe/sosem2/" target="_blank">App Sosem</a></li>
+                <li><a style="color:#fff;" href="http://ofi4.mef.gob.pe/odi/login.asp?mensaje=si" target="_blank">Banco de Inversiones</a></li>
+                <li><a style="color:#fff;" href="https://www.mef.gob.pe/es/aplicativos-invierte-pe?id=4279" target="_blank">Consulta de Inversiones</a></li>
+                <li><a style="color:#fff;" href="https://apps4.mineco.gob.pe/sispipapp/" target="_blank">Programación Multianual InviertePE</a></li>
+                <li><a style="color:#fff;" href="http://apps2.mef.gob.pe/consulta-vfp-webapp/consultaExpediente.jspx" target="_blank">Consulta SIAF</a></li>
+            </ul>
+        </div>
+        
+        <div class="col-lg-4 col-sm-6">
+            <span class="TituloListaFooter"><strong>Descargas</strong></span>
+            <ul>
+                <li><a style="color:#fff;" href="https://www.mef.gob.pe/es/anexos-y-formatos#anexos" target="_blank">Anexos  InviertePe</a></li>
+                <li><a style="color:#fff;" href="https://www.mef.gob.pe/es/anexos-y-formatos#formatos" target="_blank">Formatos</a></li>
+            </ul>
+            <!--<span class="TituloListaFooter"><strong>Normatividad</strong></span>
+            <ul>
+                <li><a style="color:#fff;" href="https://www.mef.gob.pe/es/documentacion-sp-30574/temas/sistema-nacional-de-programacion-multianual-y-gestion-de-inversiones-invierte-pe/15837-decreto-supremo-n-027-2017-ef-2/file">Decreto Supremo Nº 027-2017-EF</a></li>
+                <li><a style="color:#fff;" href="https://www.mef.gob.pe/es/documentacion-sp-30574/temas/sistema-nacional-de-programacion-multianual-y-gestion-de-inversiones-invierte-pe/15836-decreto-legislativo-n-1252-1/file">Decreto Legislativo N° 1252</a></li>
+            </ul>    -->      
+        </div>
+
+        <div class="col-lg-4 col-sm-6">
+            <!--<span class="TituloListaFooter"><strong>Descargas</strong></span>
+            <ul>
+                <li><a style="color:#fff;" href="https://www.mef.gob.pe/es/anexos-y-formatos#anexos">Anexos  InviertePe</a></li>
+                <li><a style="color:#fff;" href="https://www.mef.gob.pe/es/anexos-y-formatos#formatos">Formatos</a></li>
+            </ul>-->
+            <span class="TituloListaFooter"><strong>Normatividad</strong></span>
+            <ul>
+                <li><a style="color:#fff;" href="https://www.mef.gob.pe/es/documentacion-sp-30574/temas/sistema-nacional-de-programacion-multianual-y-gestion-de-inversiones-invierte-pe/15837-decreto-supremo-n-027-2017-ef-2/file" target="_blank">Decreto Supremo Nº 027-2017-EF</a></li>
+                <li><a style="color:#fff;" href="https://www.mef.gob.pe/es/documentacion-sp-30574/temas/sistema-nacional-de-programacion-multianual-y-gestion-de-inversiones-invierte-pe/15836-decreto-legislativo-n-1252-1/file" target="_blank">Decreto Legislativo N° 1252</a></li>
+            </ul>          
+        </div>
+      </div>
+      <div class="pull-right hidden-xs">
+      </div>
+      <hr>
+      <strong>Copyright &copy; 2017-2019 - </strong> Todos los derechos reservados.
+    </div>
+  </footer>
+</div>
+<script src="<?php echo base_url(); ?>assets/adminlte/jquery-2.2.3.min.js"> </script>
+<script src="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/adminlte/jquery.slimscroll.min.js"> </script>
+<script src="<?php echo base_url(); ?>assets/adminlte/fastclick.min.js"> </script>
+<script src="<?php echo base_url(); ?>assets/adminlte/app.min.js"> </script>
+<script src="<?php echo base_url(); ?>assets/adminlte/demo.js"> </script>
+</body>
+</html>
