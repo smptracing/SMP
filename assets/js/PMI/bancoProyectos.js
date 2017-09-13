@@ -13,6 +13,8 @@ $(function(){
     {
 	});
     $("body").on("click","#sendSave",function(e){
+
+        $('#form-AddProyectosInversion').data('formValidation').resetField($('#txtCostoPip'));
 	    $('#form-AddProyectosInversion').data('formValidation').validate();
 	    if($('#form-AddProyectosInversion').data('formValidation').isValid()==true){
 	        $('#form-AddProyectosInversion').submit();
@@ -39,6 +41,9 @@ $(function(){
 	    rightAlign: false,
 	});
 	$('#form-AddProyectosInversion').formValidation({
+        framework: 'bootstrap',
+        live: 'enabled',
+        trigger: null,
       fields:
       {
         txtCodigoUnico:{
@@ -108,6 +113,13 @@ $(function(){
           validators:{
             notEmpty:{
               message: '<b style="color: red;">El campo "Grupo" es requerido.</b>'
+            }
+          }
+        },
+        txtCostoPip:{
+          validators:{
+            notEmpty:{
+              message: '<b style="color: red;">El campo "Costo de inversión" es requerido.</b>'
             }
           }
         },
