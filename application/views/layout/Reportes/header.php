@@ -73,10 +73,13 @@
 								<li><a href="<?php echo site_url('PrincipalReportes/PrincipalReportes'); ?>"> <i class="fa fa-home"></i> INICIO<span class=""></span></a>
 								</li>
 							</ul>
-
-							<h3></i>Reporte</h3>
-
 						</div>
+	
+					<ul class="nav side-menu">
+						<li><a href="<?php echo site_url('ProyectoInversion/ReporteBuscadorPorPip'); ?>"> <i class="fa fa-area-chart"></i> Avance financiero<span class=""></span></a>
+						</li>
+					</ul>
+		
                 	<ul class="nav side-menu">
                
                      <li>
@@ -121,18 +124,6 @@
                             </ul>
                       </li>
  
-                	</ul>
-
-                	<ul class="nav side-menu">
-                     <li>
-                         <a>
-                            <i class="fa fa-file-text"></i>OTROS REPORTES
-                            <span class="fa fa-chevron-down"></span>
-                         </a>
-                            <ul class="nav child_menu">
-                                    <li><a href="<?php echo site_url('ProyectoInversion/ReporteBuscadorPorPip'); ?>">Proyecto Inversion</a></li>
-                            </ul>
-                      </li>
                 	</ul>
 
 					</div>

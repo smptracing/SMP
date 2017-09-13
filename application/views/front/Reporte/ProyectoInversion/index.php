@@ -43,7 +43,9 @@
 														    </div>
 														  </div>
 														</div>
-														<div class="row" style="margin-left: 10px; margin:10px; ">
+			
+														<div class="row">
+																										<div class="row" style="margin-left: 10px; margin:10px; ">
 															<div class="panel panel-default">
 																 <div class="panel-heading"> EJECUCIÓN ANUAL DEL PROYECTO</div>
 																 
@@ -95,9 +97,7 @@
 																	
 																</div>
 														</div>
-														<div class="row">
-
-												           <div class="row" style="margin-left: 10px; margin:10px; ">
+												            <div class="row" style="margin-left: 10px; margin:10px; ">
 												                <div class="panel panel-default">
 																 <div class="panel-heading">PIA, PIM Y DEVENGADO ACTUAL </div>
 												                        <div id="pimdevengadopia"></div>
@@ -133,7 +133,7 @@ $("#EjecucionAnual").hide();
 
 
 $("#CodigoUnico").on( "click", function()
-	 {
+	{
 		$("#EjecucionAnual").show(2000);
 		$("#pimdevengadopia").css({"height":"350"}); 
 		$("#pimdevengadopialineasAnual").css({"height":"420"}); 
