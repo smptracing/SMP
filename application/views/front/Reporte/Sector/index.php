@@ -77,7 +77,7 @@
 																<tr>
 																
 																	<td bgcolor="#D1F2EB"><?=$listaMontoTotalSector->TotalPip;?></td>
-																	<td bgcolor="#D1F2EB"><?= a_number_format($listaMontoTotalSector->CostoTotal , 2, '.',",",3);?></td>
+																	<td bgcolor="#D1F2EB">S/. <?= a_number_format($listaMontoTotalSector->CostoTotal , 2, '.',",",3);?></td>
 																</tr>
 														</table> 
 													</div>

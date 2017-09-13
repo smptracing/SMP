@@ -6,6 +6,7 @@ class DivisionFuncional extends CI_Controller {/* Mantenimiento de division func
 	public function __construct(){
       parent::__construct();
       $this->load->model('Model_DivisionFuncional');
+      $this->load->helper('FormatNumber_helper');
 	}
   
 
