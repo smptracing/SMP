@@ -74,14 +74,15 @@ $(document).on("ready" ,function(){
                                       if (data.estado_programado !='0') //estap programado
                                       {
                                        // return '<a  href="#"><button type="button" class="btn btn btn-success btn-xs">Programado</button></a>';
+                                       /*
                                         var cadena=data.anioProgramacion.split(' ');
                                        var string='';
                                        for(var i=0;i<cadena.length;i++){
                                         var item=cadena[i].split(':');
                                         string+='<a class="linkItem" title="S/. '+item[1]+'">'+item[0]+'<a> ';
-                                       }
+                                       }*/
                                        
-                                       return '<h5><span class="label label-success"> Programado</span></h5><div>'+string+'</div>';
+                                       return '<h5><span class="label label-success"> Programado</span></h5><div>'+data.anioProgramacion+'</div>';
                                       }
                                       if (data.estado_programado =='0') //no esta progrmado
                                       {
