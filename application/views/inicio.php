@@ -121,7 +121,18 @@
             </div>
             <div class="box-body">
                   <div class="row">
-                      <div class="col-lg-4 col-xs-12 col-sm-6">
+
+
+                      <?php
+                      $CI = & get_instance();
+                      $modulo=[];
+                      foreach ($CI->session->userdata('menuUsuario') as $item) {
+                        if(!in_array($item['id_modulo'],$modulo))
+                          array_push($modulo,$item['id_modulo']);
+                      }
+                      if(in_array('PMI',$modulo)){
+                        ?>
+                        <div class="col-lg-4 col-xs-12 col-sm-6">
                             <div class="small-box bg-teal">
                                 <div class="inner">
                                     <h3>PMI</h3>
@@ -134,7 +145,11 @@
                                     Ingresar <i class="fa fa-arrow-circle-right"></i>
                                 </a>
                             </div>
-                      </div>
+                        </div>
+                        <?php
+                      }
+                      ?>
+                      
                       <div class="col-lg-4 col-xs-12 col-sm-6">
                           <div class="small-box bg-olive">
                               <div class="inner">

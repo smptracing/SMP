@@ -5,6 +5,7 @@ $(document).on("ready" ,function(){
 //agregar progrmacion para operacion y mantenimiento   
    
     $('#form_AddProgramacion_operacion_mantenieminto').formValidation({
+      excluded: ':disabled',
       fields:
       {
         cbxBrecha_:{
@@ -55,9 +56,22 @@ $(document).on("ready" ,function(){
       $('#form_AddProgramacion_operacion_mantenieminto').data('formValidation').validate();
       if($('#form_AddProgramacion_operacion_mantenieminto').data('formValidation').isValid()==true){
           $('#form_AddProgramacion_operacion_mantenieminto').submit();
+          var txt_codigo_unico_pi_=$("#txt_codigo_unico_pi_").val();
+          var txt_nombre_proyecto_=$("#txt_nombre_proyecto_").val();
+          var txt_costo_proyecto_=$("#txt_costo_proyecto_").val();
+          var txt_pia_oper=$("#txt_pia_oper").val();
+          var txt_pim_oper=$("#txt_pim_oper").val();
+          var txt_devengado_oper=$("#txt_devengado_oper").val();
           $('#form_AddProgramacion_operacion_mantenieminto').each(function(){ 
             this.reset();
           });
+          $("#txt_codigo_unico_pi_").val(txt_codigo_unico_pi_);
+          $("#txt_nombre_proyecto_").val(txt_nombre_proyecto_);
+          $("#txt_costo_proyecto_").val(txt_costo_proyecto_);
+          $("#txt_pia_oper").val(txt_pia_oper);
+          $("#txt_pim_oper").val(txt_pim_oper);
+          $("#txt_devengado_oper").val(txt_devengado_oper);
+          
           $('.selectpicker').selectpicker('refresh');
           $('#form_AddProgramacion_operacion_mantenieminto').data('formValidation').resetForm();
       }
@@ -78,15 +92,18 @@ $(document).on("ready" ,function(){
               if (resp=='2') {
                swal("NO SE REGISTRÓ","NO se regristró ", "error");
              }
+             $('#Table_funcionamiento').dataTable()._fnAjaxUpdate();
+            
             $('#Table_Programar').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
             $('#table_formulacion_evaluacion').dataTable()._fnAjaxUpdate();
             $('#table_ejecucion').dataTable()._fnAjaxUpdate();
-            $('#Table_funcionamiento').dataTable()._fnAjaxUpdate();
+            //$('#Table_funcionamiento').dataTable()._fnAjaxUpdate();
              //  formReset();
            }
         });
     });
     $('#form_AddProgramacion').formValidation({
+      excluded: ':disabled',
       fields:
       {
         cbxBrecha:{
@@ -137,9 +154,22 @@ $(document).on("ready" ,function(){
       $('#form_AddProgramacion').data('formValidation').validate();
       if($('#form_AddProgramacion').data('formValidation').isValid()==true){
           $('#form_AddProgramacion').submit();
+          var txt_codigo_unico_pi=$("#txt_codigo_unico_pi").val();
+          var txt_nombre_proyecto=$("#txt_nombre_proyecto").val();
+          var txt_costo_proyecto=$("#txt_costo_proyecto").val();
+          var txt_pia_fye=$("#txt_pia_fye").val();
+          var txt_pim_pia_fye=$("#txt_pim_pia_fye").val();
+          var txt_devengado_pia_fye=$("#txt_devengado_pia_fye").val();
           $('#form_AddProgramacion').each(function(){ 
             this.reset();
           });
+          $("#txt_codigo_unico_pi").val(txt_codigo_unico_pi);
+          $("#txt_nombre_proyecto").val(txt_nombre_proyecto);
+          $("#txt_costo_proyecto").val(txt_costo_proyecto);
+          $("#txt_pia_fye").val(txt_pia_fye);
+          $("#txt_pim_pia_fye").val(txt_pim_pia_fye);
+          $("#txt_devengado_pia_fye").val(txt_devengado_pia_fye);
+
           $('.selectpicker').selectpicker('refresh');
           $('#form_AddProgramacion').data('formValidation').resetForm();
       }

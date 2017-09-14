@@ -165,7 +165,7 @@ $(function(){
                         success:function(respuesta){
                             var registros = eval(respuesta);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option value="+registros[i]["id_submenu"]+"> "+registros[i]["nombre"]+": "+ registros[i]["nombreSubmenu"]+" </option>";   
+                              html +="<option value="+registros[i]["id_submenu"]+"> "+registros[i]["id_modulo"]+": "+registros[i]["nombre"]+": "+ registros[i]["nombreSubmenu"]+" </option>";   
                             };
                             $("#cbb_listaMenu").html(html);
                             $('select[name=cbb_listaMenu]').val(html);
@@ -185,7 +185,7 @@ $(function(){
                         success:function(respuesta){
                             var registros = eval(respuesta);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option value="+registros[i]["id_submenu"]+"> "+registros[i]["nombre"]+": "+ registros[i]["nombreSubmenu"]+" </option>";   
+                              html +="<option value="+registros[i]["id_submenu"]+"> "+registros[i]["id_modulo"]+":"+registros[i]["nombre"]+": "+ registros[i]["nombreSubmenu"]+" </option>";   
                             };
                             $("#cbb_listaMenuDestino").html(html);
                             $('select[name=cbb_listaMenuDestino]').val(html);
