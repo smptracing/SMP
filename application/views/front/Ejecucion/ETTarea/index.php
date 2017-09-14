@@ -307,7 +307,7 @@
 				return;
 			}
 
-			paginaAjax('divDialogoGeneralGantt', { idTareaET : taskId }, '<?=base_url()?>index.php/ET_Especialista_Tarea/insertar', 'GET', null, function()
+			paginaAjax('divDialogoGeneralGantt', { idTareaET : taskId, idET : <?=$idExpedienteTecnico?> }, '<?=base_url()?>index.php/ET_Especialista_Tarea/insertar', 'GET', null, function()
 			{
 				$('#divDialogoGeneralGantt').show();
 			}, false, true);

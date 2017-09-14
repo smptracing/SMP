@@ -61,7 +61,16 @@
 									<tbody>
 										<tr>
 											<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;margin: 4px;padding: 4px;"><?=$value->nombre_esp?></div></td>
-											<td><select class="form-control"></select></td>
+											<td>
+												<select class="form-control">
+													<option value=""></option>
+													<?php foreach($listaETPerReq as $index => $item){
+														if($value->id_esp==$item->id_esp){ ?>
+															<option value="<?=$item->id_per_req?>"><?=$item->nombres.' '.$item->apellido_p.' '.$item->apellido_m?></option>
+														<?php } ?>
+													<?php } ?>
+												</select>
+											</td>
 											<td style="width: 1%;"><a href="#" style="color: red;padding: 2px;" onclick="eliminarEspecialidadAsignada(<?=$value->id_especialista_tarea?>, this);">Eliminar</a></td>
 										</tr>
 									</tbody>
