@@ -175,10 +175,13 @@
                               </div>
                             </div>
                              <div class="item form-group">
-                               <div class="col-md-2 col-sm-6 col-xs-12">
-                               <label>Cartera</label>
+                               <div class="col-md-4">
+                               <label>Cartera </label> 
                                     <select  id="Cbx_AnioCartera" selected name="Cbx_AnioCartera" class="selectpicker"></select>
                                     <!--<input type="text" id="Aniocartera" value="<?=(isset($anio) ? $anio : date('Y'))?>">-->
+                                </div>
+                                <div class="col-md-8" style="padding-top: 3px;">
+                                        <span id="lb_addProgramacion" style='color:white;padding:4px;background:#D9534F;font-weight:bold;font-size:17px;'></span>
                                 </div>
                               </div>
                                <div class="item">
@@ -192,7 +195,7 @@
                                     </div>
                                    <div class="col-md-2 col-sm-6 col-xs-12">
                                       <label>Costo del Proyecto</label>
-                                      <input  class="form-control" id="txt_costo_proyecto" name="txt_costo_proyecto" type="number" disabled="disabled" />
+                                      <input  class="form-control" id="txt_costo_proyecto" name="txt_costo_proyecto"  disabled="disabled" />
                                     </div>
                                     <div class="col-md-4 col-sm-12 col-xs-12 form-group">
                                       <label>Brecha Proyecto</label>
@@ -200,8 +203,8 @@
                                       </select>
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12 form-group">
-                                      <center><label style="color: red">Saldo a Programar</label></center>
-                                      <input  class="form-control" id="txt_saldoprogramar" name="txt_saldoprogramar" type="number" >
+                                      <center><label>Saldo a Programar</label></center>
+                                      <input  class="form-control" id="txt_saldoprogramar" name="txt_saldoprogramar" value="0.00" type="number" >
                                     </div>
 
                                  </div>
@@ -267,7 +270,6 @@
                                         <button  id="send_addProgramacion"  type='button' class="btn btn-success">
                                              <span class="glyphicon glyphicon-floppy-saved"></span> Guardar
                                         </button>
-                                        <span id="lb_addProgramacion" style='color:green; font-size:20px;'></span>
                                     </div>
                                  </div>
                                  </form>
@@ -462,10 +464,13 @@
                             </div>
 
                              <div class="item form-group">
-                               <div class="col-md-2 col-sm-6 col-xs-12">
-                               <label>Cartera</label>
+                               <div class="col-md-4">
+                               <label>Cartera </label>
                                     <select  id="Cbx_AnioCartera_" selected name="Cbx_AnioCartera_" class="selectpicker"></select>
                                     <!--<input type="text" id="Aniocartera" value="<?=(isset($anio) ? $anio : date('Y'))?>">-->
+                                </div>
+                                <div class="col-md-8" style="padding-top: 3px;">
+                                  <span id="lb_addProgramacion_operacion_mantenieminto" style='color:white;padding:4px;background:#D9534F;font-weight:bold;font-size:17px;'></span>
                                 </div>
                               </div>
                                <div class="item ">
@@ -479,7 +484,7 @@
                                     </div>
                                    <div class="col-md-2 col-sm-6 col-xs-12">
                                       <label>Costo del Proyecto</label>
-                                      <input  class="form-control" id="txt_costo_proyecto_" name="txt_costo_proyecto_" type="number" disabled="disabled">
+                                      <input  class="form-control" id="txt_costo_proyecto_" name="txt_costo_proyecto_"  disabled="disabled">
                                     </div>
                                     <div class="col-md-4 col-sm-12 col-xs-12  form-group">
                                       <label>Brecha Proyecto </label>
@@ -487,8 +492,8 @@
                                       </select>
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12 form-group">
-                                      <center><label style="color: red">Saldo a Programar</label></center>
-                                      <input  class="form-control" id="txt_saldoprogramar_oper" name="txt_saldoprogramar_oper" type="number" required="required">
+                                      <center><label>Saldo a Programar</label></center>
+                                      <input  class="form-control" id="txt_saldoprogramar_oper" name="txt_saldoprogramar_oper" value='0.00' type="number" required="required">
                                     </div>
                                  </div>
                                     <div style="clear:both;height:0;">&nbsp;</div>
@@ -551,7 +556,7 @@
                                        <button  id="send_addProgramacion_operacion_mantenieminto" type="button" class="btn btn-success">
                                              <span class="glyphicon glyphicon-floppy-saved"></span> Guardar
                                         </button>
-                                        <span id="lb_addProgramacion_operacion_mantenieminto" style='color:green; font-size:20px;'></span>
+                                        
                                     </div>
                                   </div>
 
@@ -613,6 +618,22 @@ function calculoFecha(fecha1,fecha2) {
   return dias;       
 }
 $(function(){
+  $('#Ventana_Programar').on('hidden.bs.modal', function () {
+      
+      $('#form_AddProgramacion').each(function(){ 
+        this.reset();
+      });  
+      $('.selectpicker').selectpicker('refresh');
+      $('#form_AddProgramacion').data('formValidation').resetForm();
+  })
+  $('#Ventana_Programar_operacion_mantenimiento').on('hidden.bs.modal', function () {
+      
+      $('#form_AddProgramacion_operacion_mantenieminto').each(function(){ 
+        this.reset();
+      });  
+      $('.selectpicker').selectpicker('refresh');
+      $('#form_AddProgramacion_operacion_mantenieminto').data('formValidation').resetForm();
+  })
   $("body").on("change","#Cbx_AnioCartera",function(e){
     if($("#Cbx_AnioCartera").val()!='' && $("#Cbx_AnioCartera").val()!=null){
         $.ajax({
@@ -621,11 +642,13 @@ $(function(){
             success:function(data){
                 if(calculoFecha(data,'<?php echo date("Y-m-d"); ?>')>0){
                   $("#send_addProgramacion").css("display","none");
+                  $("#lb_addProgramacion").css("display","");
                   $("#lb_addProgramacion").html("LA FECHA DE CIERRE DE LA CARTERA FUE EL: "+data);
                 }
                 else{
                   $("#send_addProgramacion").css("display","");
-                   $("#lb_addProgramacion").html("");
+                  $("#lb_addProgramacion").css("display","none");
+                  $("#lb_addProgramacion").html("");
                 }
                 var anio=parseInt($('#Cbx_AnioCartera option:selected').text());
                 $("#lb_anio1").html(anio+1);
@@ -646,11 +669,13 @@ $(function(){
             success:function(data){
                 if(calculoFecha(data,'<?php echo date("Y-m-d"); ?>')>0){
                   $("#send_addProgramacion_operacion_mantenieminto").css("display","none");
+                  $("#lb_addProgramacion_operacion_mantenieminto").css("display","");
                   $("#lb_addProgramacion_operacion_mantenieminto").html("LA FECHA DE CIERRE DE LA CARTERA FUE EL: "+data);
                 }
                 else{
                   $("#send_addProgramacion_operacion_mantenieminto").css("display","");
-                   $("#lb_addProgramacion_operacion_mantenieminto").html("");
+                  $("#lb_addProgramacion_operacion_mantenieminto").css("display","none");
+                  $("#lb_addProgramacion_operacion_mantenieminto").html("");
                 }
                 var anio=parseInt($('#Cbx_AnioCartera_ option:selected').text());
                 $("#lb_anio1_").html(anio+1);
