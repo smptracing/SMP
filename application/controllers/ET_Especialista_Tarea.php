@@ -28,7 +28,7 @@ class ET_Especialista_Tarea extends CI_Controller
 
 				$this->db->trans_complete();
 
-				echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Dastos registrados correctamente.', 'idEspTarea' => $etEspecialistaTareaTemp]);exit;
+				echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Dastos registrados correctamente.', 'idEspecialistaTarea' => $etEspecialistaTareaTemp->id_especialista_tarea]);exit;
 			}
 
 			$idTareaET=$this->input->get('idTareaET');
