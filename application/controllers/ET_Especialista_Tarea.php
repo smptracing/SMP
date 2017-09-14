@@ -17,7 +17,16 @@ class ET_Especialista_Tarea extends CI_Controller
 		{
 			if($_POST)
 			{
+				$this->db->trans_start(); 
 				
+				$idEspecialidad=$this->input->post('idEspecialidad');
+				$idTareaET=$this->input->post('idTareaET');
+
+				$this->Model_ET_Especialista_Tarea->insertar('NULL', $idTareaET, $idEspecialidad);
+
+				$this->db->trans_complete();
+
+				echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Dastos registrados correctamente.']);exit;
 			}
 
 			$idTareaET=$this->input->get('idTareaET');
@@ -25,7 +34,7 @@ class ET_Especialista_Tarea extends CI_Controller
 			$listaEspecialidad=$this->Model_Especialidad->ListarEspecialidad();
 			$listaEspecialistaTarea=$this->Model_ET_Especialista_Tarea->ETEspecialistaTareaPorIdTareaET($idTareaET);
 
-			return $this->load->view('front/Ejecucion/ETEspecialistaTarea/insertar', ['listaEspecialidad' => $listaEspecialidad, 'listaEspecialistaTarea' => $listaEspecialistaTarea]);
+			return $this->load->view('front/Ejecucion/ETEspecialistaTarea/insertar', ['listaEspecialidad' => $listaEspecialidad, 'listaEspecialistaTarea' => $listaEspecialistaTarea, 'idTareaET' => $idTareaET]);
 		}
 	}
 }

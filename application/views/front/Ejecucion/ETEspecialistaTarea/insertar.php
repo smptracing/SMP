@@ -73,30 +73,48 @@
 
 	function drag(ev)
 	{
-		ev.dataTransfer.setData("idEspecialidad", ev.target.id);
+		ev.dataTransfer.setData("idDivEspecialidad", ev.target.id);
 	}
 
 	function drop(ev, element)
 	{
 		ev.preventDefault();
 
-		var data=ev.dataTransfer.getData("idEspecialidad");
+		var data=ev.dataTransfer.getData("idDivEspecialidad");
 
-		var htmlTemp='<table style="width: 100%;">'+
-			'<tbody>'+
-				'<tr>'+
-					'<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;margin: 4px;padding: 4px;">'+$('#'+data).text()+'</div></td>'+
-					'<td>'+'<select class="form-control"></select>'+'</td>'+
-					'<td style="width: 1%;">'+'<a href="#" style="color: red;padding: 2px;" onclick="eliminarEspecialidadAsignada(this);">Eliminar</a>'+'</td>'+
-				'</tr>'+
-			'</tbody>'+
-		'</table>';
-
-		if($(element).find('table').length==0)
+		paginaAjaxJSON({ idEspecialidad : data.substring(15), idTareaET : <?=$idTareaET?> }, '<?=base_url()?>index.php/ET_Especialista_Tarea/insertar', 'POST', null, function(objectJSON)
 		{
-			$($(element).find('div')[0]).html('');
-		}
+			objectJSON=JSON.parse(objectJSON);
 
-		$($(element).find('div')[0]).prepend(htmlTemp);
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
+			},
+			function(){});
+
+			if(objectJSON.proceso=='Error')
+			{
+				return false;
+			}
+
+			var htmlTemp='<table style="width: 100%;">'+
+				'<tbody>'+
+					'<tr>'+
+						'<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;margin: 4px;padding: 4px;">'+$('#'+data).text()+'</div></td>'+
+						'<td>'+'<select class="form-control"></select>'+'</td>'+
+						'<td style="width: 1%;">'+'<a href="#" style="color: red;padding: 2px;" onclick="eliminarEspecialidadAsignada(this);">Eliminar</a>'+'</td>'+
+					'</tr>'+
+				'</tbody>'+
+			'</table>';
+
+			if($(element).find('table').length==0)
+			{
+				$($(element).find('div')[0]).html('');
+			}
+
+			$($(element).find('div')[0]).prepend(htmlTemp);
+		}, false, true);
 	}
 </script>
