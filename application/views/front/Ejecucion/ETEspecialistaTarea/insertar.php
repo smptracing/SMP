@@ -80,25 +80,28 @@
 <script>
 	function eliminarEspecialidadAsignada(idEspecialistaTarea, element)
 	{
-		paginaAjaxJSON({ idEspecialistaTarea : idEspecialistaTarea }, '<?=base_url()?>index.php/ET_Especialista_Tarea/eliminar', 'POST', null, function(objectJSON)
+		if(confirm('Relamente desea eliminar este especialista asignado?'))
 		{
-			objectJSON=JSON.parse(objectJSON);
-
-			swal(
+			paginaAjaxJSON({ idEspecialistaTarea : idEspecialistaTarea }, '<?=base_url()?>index.php/ET_Especialista_Tarea/eliminar', 'POST', null, function(objectJSON)
 			{
-				title: '',
-				text: objectJSON.mensaje,
-				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
-			},
-			function(){});
+				objectJSON=JSON.parse(objectJSON);
 
-			if(objectJSON.proceso=='Error')
-			{
-				return false;
-			}
+				swal(
+				{
+					title: '',
+					text: objectJSON.mensaje,
+					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
+				},
+				function(){});
 
-			$(element).parent().parent().remove();
-		}, false, true);
+				if(objectJSON.proceso=='Error')
+				{
+					return false;
+				}
+
+				$(element).parent().parent().remove();
+			}, false, true);
+		}
 	}
 
 	function allowDrop(ev, element)

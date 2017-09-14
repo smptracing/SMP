@@ -56,7 +56,7 @@
 								<table style="width: 100%;">
 									<tbody>
 										<tr>
-											<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;margin: 4px;padding: 4px;"><label><b>Craet___</b><input type="checkbox" value="craet" style="margin-left: -15px;" onchange="asignarQuitarCraetETPerReq(<?=$value->id_per_req?>, this);"></label><?=$value->nombre_esp?></div></td>
+											<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;margin: 4px;padding: 4px;"><label style="cursor: pointer;"><b>Craet___</b><input type="checkbox" value="craet" style="margin-left: -15px;" onchange="asignarQuitarCraetETPerReq(<?=$value->id_per_req?>, this);" <?=($value->craet ? 'checked=true' : '')?>></label><?=$value->nombre_esp?></div></td>
 											<td>
 												<select class="selectPersonaETPerReq" data-live-search="true" data-width="100%" onchange="asignarPersonalETPerReq(<?=$value->id_per_req?>, this);">
 													<option value=""></option>
@@ -128,25 +128,28 @@
 
 	function eliminarEspecialidadAsignada(idPerReq, element)
 	{
-		paginaAjaxJSON({ idPerReq : idPerReq }, '<?=base_url()?>index.php/ET_Per_Req/eliminar', 'POST', null, function(objectJSON)
+		if(confirm('Relamente desea eliminar este especialista asignado?'))
 		{
-			objectJSON=JSON.parse(objectJSON);
-
-			swal(
+			paginaAjaxJSON({ idPerReq : idPerReq }, '<?=base_url()?>index.php/ET_Per_Req/eliminar', 'POST', null, function(objectJSON)
 			{
-				title: '',
-				text: objectJSON.mensaje,
-				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
-			},
-			function(){});
+				objectJSON=JSON.parse(objectJSON);
 
-			if(objectJSON.proceso=='Error')
-			{
-				return false;
-			}
+				swal(
+				{
+					title: '',
+					text: objectJSON.mensaje,
+					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
+				},
+				function(){});
 
-			$(element).parent().parent().remove();
-		}, false, true);
+				if(objectJSON.proceso=='Error')
+				{
+					return false;
+				}
+
+				$(element).parent().parent().remove();
+			}, false, true);
+		}
 	}
 
 	function allowDrop(ev, element)
@@ -191,7 +194,7 @@
 			var htmlTemp='<table style="width: 100%;">'+
 				'<tbody>'+
 					'<tr>'+
-						'<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;margin: 4px;padding: 4px;"><label><b>Craet___</b><input type="checkbox" value="craet" style="margin-left: -15px;" onchange="asignarQuitarCraetETPerReq('+objectJSON.idPerReq+', this);"></label>'+$('#'+data).text()+'</div></td>'+
+						'<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;margin: 4px;padding: 4px;"><label style="cursor: pointer;"><b>Craet___</b><input type="checkbox" value="craet" style="margin-left: -15px;" onchange="asignarQuitarCraetETPerReq('+objectJSON.idPerReq+', this);"></label>'+$('#'+data).text()+'</div></td>'+
 						'<td>'+'<select class="selectPersonaETPerReq" data-live-search="true" data-width="100%" onchange="asignarPersonalETPerReq('+objectJSON.idPerReq+', this);"><option value=""></option>'+listaPersona+'</select>'+'</td>'+
 						'<td style="width: 1%;">'+'<a href="#" style="color: red;padding: 2px;" onclick="eliminarEspecialidadAsignada('+objectJSON.idPerReq+', this);">Eliminar</a>'+'</td>'+
 					'</tr>'+
