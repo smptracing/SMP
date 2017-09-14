@@ -62,7 +62,7 @@
 										<tr>
 											<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;margin: 4px;padding: 4px;"><?=$value->nombre_esp?></div></td>
 											<td><select class="form-control"></select></td>
-											<td style="width: 1%;"><a href="#" style="color: red;padding: 2px;" onclick="eliminarEspecialidadAsignada(this);">Eliminar</a></td>
+											<td style="width: 1%;"><a href="#" style="color: red;padding: 2px;" onclick="eliminarEspecialidadAsignada(<?=$value->id_especialista_tarea?>, this);">Eliminar</a></td>
 										</tr>
 									</tbody>
 								</table>
@@ -78,9 +78,27 @@
 <script src="<?=base_url()?>assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="<?=base_url()?>assets/dist/js/bootstrap-select.js"></script>
 <script>
-	function eliminarEspecialidadAsignada(element)
+	function eliminarEspecialidadAsignada(idEspecialistaTarea, element)
 	{
-		$(element).parent().parent().remove();
+		paginaAjaxJSON({ idEspecialistaTarea : idEspecialistaTarea }, '<?=base_url()?>index.php/ET_Especialista_Tarea/eliminar', 'POST', null, function(objectJSON)
+		{
+			objectJSON=JSON.parse(objectJSON);
+
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
+			},
+			function(){});
+
+			if(objectJSON.proceso=='Error')
+			{
+				return false;
+			}
+
+			$(element).parent().parent().remove();
+		}, false, true);
 	}
 
 	function allowDrop(ev, element)
@@ -121,7 +139,7 @@
 					'<tr>'+
 						'<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;margin: 4px;padding: 4px;">'+$('#'+data).text()+'</div></td>'+
 						'<td>'+'<select class="form-control"></select>'+'</td>'+
-						'<td style="width: 1%;">'+'<a href="#" style="color: red;padding: 2px;" onclick="eliminarEspecialidadAsignada(this);">Eliminar</a>'+'</td>'+
+						'<td style="width: 1%;">'+'<a href="#" style="color: red;padding: 2px;" onclick="eliminarEspecialidadAsignada('+objectJSON.idEspecialistaTarea+', this);">Eliminar</a>'+'</td>'+
 					'</tr>'+
 				'</tbody>'+
 			'</table>';

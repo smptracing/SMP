@@ -21,4 +21,18 @@ class Model_ET_Especialista_Tarea extends CI_Model
 
 		return $data->result();
 	}
+
+	function ultimoETEspecialistaTarea()
+	{
+		$data=$this->db->query("select * from ET_ESPECIALISTA_TAREA where id_especialista_tarea=(select max(id_especialista_tarea) from ET_ESPECIALISTA_TAREA)");
+
+		return count($data->result())==0 ? null : $data->result()[0];
+	}
+
+	function eliminar($idEspecialistaTarea)
+	{
+		$this->db->query("delete from ET_ESPECIALISTA_TAREA where id_especialista_tarea=$idEspecialistaTarea");
+
+		return true;
+	}
 }
