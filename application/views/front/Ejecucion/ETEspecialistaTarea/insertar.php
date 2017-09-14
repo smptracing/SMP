@@ -87,6 +87,12 @@
 <script src="<?=base_url()?>assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="<?=base_url()?>assets/dist/js/bootstrap-select.js"></script>
 <script>
+	var listaETPerReqFinal=[];
+
+	<?php foreach($listaETPerReq as $index => $item){ ?>
+		listaETPerReqFinal.push({idPerReq : <?=$item->id_per_req?>, nombre : '<?=$item->nombres.' '.$item->apellido_p.' '.$item->apellido_m?>', idEsp : <?=$item->id_esp?>});
+	<?php } ?>
+
 	function eliminarEspecialidadAsignada(idEspecialistaTarea, element)
 	{
 		if(confirm('Relamente desea eliminar este especialista asignado?'))
@@ -146,11 +152,21 @@
 				return false;
 			}
 
+			var htmlTempListaETPerReq='<option value=""></option>';
+
+			for(var i=0; i<listaETPerReqFinal.length; i++)
+			{
+				if(data.substring(15)==listaETPerReqFinal[i].idEsp)
+				{
+					htmlTempListaETPerReq+='<option value="'+listaETPerReqFinal[i].idPerReq+'">'+listaETPerReqFinal[i].nombre+'</option>';
+				}
+			}
+
 			var htmlTemp='<table style="width: 100%;">'+
 				'<tbody>'+
 					'<tr>'+
 						'<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;margin: 4px;padding: 4px;">'+$('#'+data).text()+'</div></td>'+
-						'<td>'+'<select class="form-control"></select>'+'</td>'+
+						'<td>'+'<select class="form-control">'+htmlTempListaETPerReq+'</select>'+'</td>'+
 						'<td style="width: 1%;">'+'<a href="#" style="color: red;padding: 2px;" onclick="eliminarEspecialidadAsignada('+objectJSON.idEspecialistaTarea+', this);">Eliminar</a>'+'</td>'+
 					'</tr>'+
 				'</tbody>'+
