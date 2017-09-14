@@ -10,7 +10,7 @@ class Model_Especialidad extends CI_Model
 
 	public function ListarEspecialidad()
 	{
-		$data=$this->db->query("select * from ESPECIALIDAD");
+		$data=$this->db->query("select * from ESPECIALIDAD order by (nombre_esp)");
 
 		return $data->result();
 	}

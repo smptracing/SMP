@@ -17,7 +17,7 @@ class Model_ET_Per_Req extends CI_Model
 
 	function ETPerReqPorIdET($idET)
 	{
-		$data=$this->db->query("select * from ET_PER_REQ as etpr inner join ESPECIALIDAD as e on etpr.id_esp=e.id_esp left join PERSONA as p on etpr.id_persona=p.id_persona where etpr.id_et=$idET");
+		$data=$this->db->query("select * from ET_PER_REQ as etpr inner join ESPECIALIDAD as e on etpr.id_esp=e.id_esp left join PERSONA as p on etpr.id_persona=p.id_persona where etpr.id_et=$idET order by (e.nombre_esp)");
 
 		return $data->result();
 	}
