@@ -61,7 +61,7 @@
 												<select class="selectPersonaETPerReq" data-live-search="true" data-width="100%" onchange="asignarPersonalETPerReq(<?=$value->id_per_req?>, this);">
 													<option value=""></option>
 													<?php foreach($listaPersona as $index => $item){ ?>
-														<option value="<?=$item->id_persona?>"><?=$item->nombres.' '.$item->apellido_p.' '.$item->apellido_m?></option>
+														<option value="<?=$item->id_persona?>" <?=($value->id_persona==$item->id_persona ? 'selected' : '')?>><?=$item->nombres.' '.$item->apellido_p.' '.$item->apellido_m?></option>
 													<?php } ?>
 												</select>
 											</td>
