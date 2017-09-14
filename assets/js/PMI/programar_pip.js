@@ -563,11 +563,15 @@ var  AddMeta_Pi=function(tbody,table){
                        var  id_pi=data.id_pi;
                        $("#txt_codigo_unico_pi").val(data.codigo_unico_pi);
                       $("#txt_id_pip_programacion").val(data.id_pi);
+
                       $("#txt_costo_proyecto").val(data.costo_pi);
                       $("#txt_nombre_proyecto").val(data.nombre_pi);
-                      $("#txt_pia_fye").val(data.ultimo_pia_meta_pres);
-                      $("#txt_devengado_pia_fye").val(data.devengado_acumulado_total);
-                      $("#txt_pim_pia_fye").val(data.ultimo_pim_meta_pres);
+                      if(data.ultimo_pia_meta_pres!=null && data.ultimo_pia_meta_pres!='')
+                        $("#txt_pia_fye").val(data.ultimo_pia_meta_pres);
+                      if(data.devengado_acumulado_total!=null && data.devengado_acumulado_total!='')
+                        $("#txt_devengado_pia_fye").val(data.devengado_acumulado_total);
+                      if(data.ultimo_pim_meta_pres!=null && data.ultimo_pim_meta_pres!='')
+                        $("#txt_pim_pia_fye").val(data.ultimo_pim_meta_pres);
 
                       //$("#lb_anio1").val();
                       if(data.nombre_estado_ciclo=='IDEA' || data.nombre_estado_ciclo=='FORMULACION Y EVALUACION'){
@@ -579,11 +583,13 @@ var  AddMeta_Pi=function(tbody,table){
 if (parseFloat(data.ultimo_pim_meta_pres)>0) {
  // alert("nuevo");
     costopi=parseFloat(data.costo_pi)-parseFloat(data.ultimo_pim_meta_pres)-parseFloat(data.devengado_acumulado_total);
+                  if(costopi!='' && costopi!=null)
                     $("#txt_saldoprogramar").val(costopi); 
 }
 if (data.ultimo_pim_meta_pres==""|| parseFloat(data.ultimo_pim_meta_pres)=="0.00") {
  // alert("vacio");
     costopi=parseFloat(data.costo_pi)-parseFloat(data.ultimo_pia_meta_pres)-parseFloat(data.devengado_acumulado_total);
+                  if(costopi!='' && costopi!=null)
                     $("#txt_saldoprogramar").val(costopi); 
 }
                       
@@ -602,9 +608,12 @@ if (data.ultimo_pim_meta_pres==""|| parseFloat(data.ultimo_pim_meta_pres)=="0.00
                       $("#txt_id_pip_programacion_").val(data.id_pi);
                       $("#txt_costo_proyecto_").val(data.costo_pi);
                       $("#txt_nombre_proyecto_").val(data.nombre_pi);
-                       $("#txt_pia_oper").val(data.ultimo_pia_meta_pres);
-                      $("#txt_devengado_oper").val(data.devengado_acumulado_total);
-                      $("#txt_pim_oper").val(data.ultimo_pim_meta_pres);
+                      if(data.ultimo_pia_meta_pres!='' && data.ultimo_pia_meta_pres!=null)
+                        $("#txt_pia_oper").val(data.ultimo_pia_meta_pres);
+                      if(data.devengado_acumulado_total!='' && data.devengado_acumulado_total!=null)
+                        $("#txt_devengado_oper").val(data.devengado_acumulado_total);
+                      if(data.ultimo_pim_meta_pres!='' && data.ultimo_pim_meta_pres!=null)
+                        $("#txt_pim_oper").val(data.ultimo_pim_meta_pres);
             
                       if(data.nombre_estado_ciclo=='IDEA' || data.nombre_estado_ciclo=='FORMULACION Y EVALUACION'){
                         $("#ct_anio").css("display","none");
@@ -615,11 +624,13 @@ if (data.ultimo_pim_meta_pres==""|| parseFloat(data.ultimo_pim_meta_pres)=="0.00
 if (parseFloat(data.ultimo_pim_meta_pres)>0) {
  // alert("nuevo");
     costopi=parseFloat(data.costo_pi)-parseFloat(data.ultimo_pim_meta_pres)-parseFloat(data.devengado_acumulado_total);
+                  if(costopi!='' && costopi!=null)
                     $("#txt_saldoprogramar_oper").val(costopi); 
 }
 if (data.ultimo_pim_meta_pres==""|| parseFloat(data.ultimo_pim_meta_pres)=="0.00") {
  // alert("vacio");
     costopi=parseFloat(data.costo_pi)-parseFloat(data.ultimo_pia_meta_pres)-parseFloat(data.devengado_acumulado_total);
+                  if(costopi!='' && costopi!=null)
                     $("#txt_saldoprogramar_oper").val(costopi); 
 }
                         listar_aniocartera_();
@@ -663,7 +674,7 @@ if (data.ultimo_pim_meta_pres==""|| parseFloat(data.ultimo_pim_meta_pres)=="0.00
                             };
                             $("#cbxBrecha_").html(html);
                             $('select[name=cbxBrecha_]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
-                            $('select[name=cbxBrecha_]').change();
+                           // $('select[name=cbxBrecha_]').change();
                             $('.selectpicker').selectpicker('refresh');
                         }
                     });
@@ -712,7 +723,7 @@ if (data.ultimo_pim_meta_pres==""|| parseFloat(data.ultimo_pim_meta_pres)=="0.00
                             };
                             $("#cbxBrecha").html(html);
                             $('select[name=cbxBrecha]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
-                            $('select[name=cbxBrecha]').change();
+                            //$('select[name=cbxBrecha]').change();
                             $('.selectpicker').selectpicker('refresh');
                         }
                     });
