@@ -34,8 +34,9 @@ class ET_Per_Req extends CI_Controller
 			$idET=$this->input->get('idExpedienteTecnico');
 
 			$listaEspecialidad=$this->Model_Especialidad->ListarEspecialidad();
+			$listaETPerReq=$this->Model_ET_Per_Req->ETPerReqPorIdET($idET);
 
-			return $this->load->view('front/Ejecucion/ETPerReq/insertar', ['listaEspecialidad' => $listaEspecialidad, 'idET' => $idET]);
+			return $this->load->view('front/Ejecucion/ETPerReq/insertar', ['listaEspecialidad' => $listaEspecialidad, 'idET' => $idET, 'listaETPerReq' => $listaETPerReq]);
 		}
 	}
 }

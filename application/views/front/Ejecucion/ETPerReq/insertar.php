@@ -47,7 +47,24 @@
 				</td>
 				<td id="tdSectionDrop" style="background-color: #f5fbfb;vertical-align: top;" ondragover="allowDrop(event, this);" ondrop="drop(event, this);">
 					<div style="height: 450px;overflow-y: scroll;">
-						
+						<?php if(count($listaETPerReq)==0){ ?>
+							<h3 style="color: #999999;text-align: center;">Arrastre especialidades de la izquierda</h3>
+						<?php
+						}
+						else{ 
+							foreach($listaETPerReq as $key => $value){ ?>
+								<table style="width: 100%;">
+									<tbody>
+										<tr>
+											<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;margin: 4px;padding: 4px;"><label><b>Craet__</b><input type="checkbox" value="craet" style="margin-left: -10px;"></label><?=$value->nombre_esp?></div></td>
+											<td><select class="form-control"></select></td>
+											<td style="width: 1%;"><a href="#" style="color: red;padding: 2px;" onclick="eliminarEspecialidadAsignada(<?=$value->id_per_req?>, this);">Eliminar</a></td>
+										</tr>
+									</tbody>
+								</table>
+						<?php 
+							}
+						} ?>
 					</div>
 				</td>
 			</tr>
