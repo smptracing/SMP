@@ -9,6 +9,7 @@ class ET_Per_Req extends CI_Controller
 
 		$this->load->model('Model_Especialidad');
 		$this->load->model('Model_ET_Per_Req');
+		$this->load->model('Model_Personal');
 	}
 
 	public function insertar()
@@ -35,8 +36,28 @@ class ET_Per_Req extends CI_Controller
 
 			$listaEspecialidad=$this->Model_Especialidad->ListarEspecialidad();
 			$listaETPerReq=$this->Model_ET_Per_Req->ETPerReqPorIdET($idET);
+			$listaPersona=$this->Model_Personal->verTodo();
 
-			return $this->load->view('front/Ejecucion/ETPerReq/insertar', ['listaEspecialidad' => $listaEspecialidad, 'idET' => $idET, 'listaETPerReq' => $listaETPerReq]);
+			return $this->load->view('front/Ejecucion/ETPerReq/insertar', ['listaEspecialidad' => $listaEspecialidad, 'idET' => $idET, 'listaETPerReq' => $listaETPerReq, 'listaPersona' => $listaPersona]);
+		}
+	}
+
+	public function eliminar()
+	{
+		if($this->input->is_ajax_request())
+		{
+			if($_POST)
+			{
+				$this->db->trans_start(); 
+				
+				$idPerReq=$this->input->post('idPerReq');
+
+				$this->Model_ET_Per_Req->eliminar($idPerReq);
+
+				$this->db->trans_complete();
+
+				echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos eliminados correctamente.']);exit;
+			}
 		}
 	}
 }

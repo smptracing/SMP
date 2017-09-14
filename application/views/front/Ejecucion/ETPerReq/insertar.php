@@ -57,7 +57,14 @@
 									<tbody>
 										<tr>
 											<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;margin: 4px;padding: 4px;"><label><b>Craet__</b><input type="checkbox" value="craet" style="margin-left: -10px;"></label><?=$value->nombre_esp?></div></td>
-											<td><select class="form-control"></select></td>
+											<td>
+												<select class="selectPersonaETPerReq" data-live-search="true" data-width="100%">
+													<option value=""></option>
+													<?php foreach($listaPersona as $index => $item){ ?>
+														<option value="<?=$item->id_persona?>"><?=$item->nombres.' '.$item->apellido_p.' '.$item->apellido_m?></option>
+													<?php } ?>
+												</select>
+											</td>
 											<td style="width: 1%;"><a href="#" style="color: red;padding: 2px;" onclick="eliminarEspecialidadAsignada(<?=$value->id_per_req?>, this);">Eliminar</a></td>
 										</tr>
 									</tbody>
@@ -72,9 +79,14 @@
 	</table>
 </div>
 <script>
+	$(function()
+	{
+		$('.selectPersonaETPerReq').selectpicker();
+	});
+
 	function eliminarEspecialidadAsignada(idPerReq, element)
 	{
-		/*paginaAjaxJSON({ idPerReq : idPerReq }, '<?=base_url()?>index.php/ET_Especialista_Tarea/eliminar', 'POST', null, function(objectJSON)
+		paginaAjaxJSON({ idPerReq : idPerReq }, '<?=base_url()?>index.php/ET_Per_Req/eliminar', 'POST', null, function(objectJSON)
 		{
 			objectJSON=JSON.parse(objectJSON);
 
@@ -92,7 +104,7 @@
 			}
 
 			$(element).parent().parent().remove();
-		}, false, true);*/
+		}, false, true);
 	}
 
 	function allowDrop(ev, element)
