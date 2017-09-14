@@ -58,6 +58,7 @@
 											<?= $item->num_beneficiarios?>
 										</td>
 										<td>
+									  		<button type='button' data-toggle="tooltip" data-original-title="Personal" class='btn btn-success btn-xs' onclick="paginaAjaxDialogo(null, 'Asignación de especialistas requeridos', { idExpedienteTecnico : <?=$item->id_et?> }, base_url+'index.php/ET_PER_REQ/insertar', 'GET', null, null, false, true);"><i class="glyphicon glyphicon-user"></i></button>
 									  		<button type='button' data-toggle="tooltip" data-original-title="Gestionar actividades" class='btn btn-success btn-xs' onclick="window.open(base_url+'index.php/ET_Tarea/index/<?=$item->id_et?>', '_blank');"><i class="glyphicon glyphicon-fullscreen"></i></button>
 									  		<button type='button' data-toggle="tooltip" data-original-title="Editar Expediente" class='editar btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Modificar Expediente Técnico',{ id_et: '<?=$item->id_et?>' }, base_url+'index.php/Expediente_Tecnico/editar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-pencil bigger-120'></i></button>
 											<button type='button' data-toggle="tooltip" data-original-title="Registro de componentes, metas y partidas"  class='editar btn btn-warning btn-xs' onclick="paginaAjaxDialogo(null, 'Registro de componentes, metas y partidas', { idExpedienteTecnico : <?=$item->id_et?> }, base_url+'index.php/ET_Componente/insertar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-align-left bigger-120'></i></button>
