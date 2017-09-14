@@ -55,9 +55,9 @@
 	</table>
 </div>
 <script>
-	function eliminarEspecialidadAsignada(idEspecialistaTarea, element)
+	function eliminarEspecialidadAsignada(idPerReq, element)
 	{
-		paginaAjaxJSON({ idEspecialistaTarea : idEspecialistaTarea }, '<?=base_url()?>index.php/ET_Especialista_Tarea/eliminar', 'POST', null, function(objectJSON)
+		/*paginaAjaxJSON({ idPerReq : idPerReq }, '<?=base_url()?>index.php/ET_Especialista_Tarea/eliminar', 'POST', null, function(objectJSON)
 		{
 			objectJSON=JSON.parse(objectJSON);
 
@@ -75,7 +75,7 @@
 			}
 
 			$(element).parent().parent().remove();
-		}, false, true);
+		}, false, true);*/
 	}
 
 	function allowDrop(ev, element)
@@ -94,7 +94,7 @@
 
 		var data=ev.dataTransfer.getData("idDivEspecialidad");
 
-		/*paginaAjaxJSON({ idEspecialidad : data.substring(15), idTareaET : <?=$idTareaET?> }, '<?=base_url()?>index.php/ET_Especialista_Tarea/insertar', 'POST', null, function(objectJSON)
+		paginaAjaxJSON({ idEspecialidad : data.substring(15), idET : <?=$idET?> }, '<?=base_url()?>index.php/ET_Per_Req/insertar', 'POST', null, function(objectJSON)
 		{
 			objectJSON=JSON.parse(objectJSON);
 
@@ -116,7 +116,7 @@
 					'<tr>'+
 						'<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;margin: 4px;padding: 4px;">'+$('#'+data).text()+'</div></td>'+
 						'<td>'+'<select class="form-control"></select>'+'</td>'+
-						'<td style="width: 1%;">'+'<a href="#" style="color: red;padding: 2px;" onclick="eliminarEspecialidadAsignada('+objectJSON.idEspecialistaTarea+', this);">Eliminar</a>'+'</td>'+
+						'<td style="width: 1%;">'+'<a href="#" style="color: red;padding: 2px;" onclick="eliminarEspecialidadAsignada('+objectJSON.idPerReq+', this);">Eliminar</a>'+'</td>'+
 					'</tr>'+
 				'</tbody>'+
 			'</table>';
@@ -127,6 +127,6 @@
 			}
 
 			$($(element).find('div')[0]).prepend(htmlTemp);
-		}, false, true);*/
+		}, false, true);
 	}
 </script>
