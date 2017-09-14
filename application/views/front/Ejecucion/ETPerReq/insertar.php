@@ -140,11 +140,17 @@
 				return false;
 			}
 
+			var listaPersona='';
+
+			<?php foreach($listaPersona as $index => $item){ ?>
+				listaPersona+='<option value="<?=$item->id_persona?>"><?=$item->nombres.' '.$item->apellido_p.' '.$item->apellido_m?></option>';
+			<?php } ?>
+
 			var htmlTemp='<table style="width: 100%;">'+
 				'<tbody>'+
 					'<tr>'+
 						'<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;margin: 4px;padding: 4px;"><label><b>Craet__</b><input type="checkbox" value="craet" style="margin-left: -10px;"></label>'+$('#'+data).text()+'</div></td>'+
-						'<td>'+'<select class="form-control"></select>'+'</td>'+
+						'<td>'+'<select class="selectPersonaETPerReq" data-live-search="true" data-width="100%"><option value=""></option>'+listaPersona+'</select>'+'</td>'+
 						'<td style="width: 1%;">'+'<a href="#" style="color: red;padding: 2px;" onclick="eliminarEspecialidadAsignada('+objectJSON.idPerReq+', this);">Eliminar</a>'+'</td>'+
 					'</tr>'+
 				'</tbody>'+
@@ -156,6 +162,8 @@
 			}
 
 			$($(element).find('div')[0]).prepend(htmlTemp);
+
+			$('.selectPersonaETPerReq').selectpicker();
 		}, false, true);
 	}
 </script>
