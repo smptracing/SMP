@@ -167,7 +167,7 @@
          <div class="row">
                     <div class="col-xs-12">
                                         <!-- PAGE CONTENT BEGINS -->
-              <form class="form-horizontal " id="form_AddProgramacion"   action="<?php echo base_url(); ?>bancoproyectos/Get_OperacionMantenimiento" method="POST" >
+              <!--<form class="form-horizontal " id="form_AddProgramacion"   action="<?php echo base_url(); ?>bancoproyectos/Get_OperacionMantenimiento" method="POST" >
                              <div class="item form-group">
                               <div class="col-md-6 col-sm-6 col-xs-12">
                                  <input id="txt_id_pip_programacion" name="txt_id_pip_programacion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
@@ -177,7 +177,6 @@
                                <div class="col-md-2 col-sm-6 col-xs-12">
                                <label>Cartera</label>
                                     <select  id="Cbx_AnioCartera" selected name="Cbx_AnioCartera" class="selectpicker"></select>
-                                    <!--<input type="text" id="Aniocartera" value="<?=(isset($anio) ? $anio : date('Y'))?>">-->
                                 </div>
                               </div>
                                <div class="item form-group">
@@ -198,11 +197,11 @@
                                       <select id="cbxBrecha" name="cbxBrecha" class="selectpicker"   title="Elija Brecha" required="required">
                                       </select>
                                     </div>
-                                 </div>
-                              <h6><i class="fa fa-money"></i><b> Meta Presupuestal</b></h6>
+                                 </div>-->
+                              <!--<h6><i class="fa fa-money"></i><b> Meta Presupuestal</b></h6>
                               <div class="item form-group">
                                     <div class="col-md-3 col-sm-6 col-xs-12">
-                                      <center><label>PIA</label></center>
+                                      <center><label>PIAAA</label></center>
                                       <input  class="form-control" id="txt_pia" name="txt_pia" type="number" required="required" value="0.00" disabled="disabled">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
@@ -217,8 +216,8 @@
                                       <center><label>Prioridad</label></center>
                                       <input  class="form-control" id="txt_prioridad" name="txt_prioridad" type="number" required="required">
                                     </div>
-                                 </div>
-                              <h6><i class="fa fa-list"></i><b> Monto Programación</b></h6>
+                                 </div>-->
+                              <!--<h6><i class="fa fa-list"></i><b> Monto Programación</b></h6>
                                <div class="item form-group">
                                    <div class="col-md-3 col-sm-6 col-xs-12">
                                       <CENTER><label>Año 1</label></CENTER>
@@ -232,13 +231,6 @@
                                       <CENTER><label>Año 3</label></CENTER>
                                       <input  class="form-control" id="txt_anio3" name="txt_anio3" type="number" required="required">
                                     </div>
-
-                                 <!--   <div class="col-md-3 col-sm-6 col-xs-12">
-                                      <label>.</label><br>
-                                       <button  id="send" type="submit" class="btn btn-success">
-                                             <span class="glyphicon glyphicon-floppy-saved"></span> Guardar
-                                        </button>
-                                    </div>-->
                                  </div>
                                  <h6><i class="fa fa-list"></i><b> Monto Operación y Mantenimiento</b></h6>
                                <div class="item form-group">
@@ -261,7 +253,7 @@
                                              <span class="glyphicon glyphicon-floppy-saved"></span> Guardar
                                         </button>
                                     </div>
-                                 </div>
+                                 </div>-->
 
 
                      <div class="ln_solid"></div>
@@ -350,31 +342,31 @@
                                       <select id="cbx_Meta" name="cbx_Meta" class="selectpicker" data-live-search="true" title="Elija Meta">
                                       </select>
                                     </div>
-                                 </div>
-                              <div class="item form-group">
+                                  </div>
+                                  <div class="item form-group">
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <label>PIA</label>
-                                      <input  class="form-control" id="txt_pia" name="txt_pia" type="number" step="any" required="required">
+                                      <input  class="form-control" id="txt_pia" name="txt_pia" type="text" required="required">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <label>PIM</label>
-                                      <input  class="form-control" id="txt_pim" name="txt_pim" type="number" step="any" required="required">
+                                      <input  class="form-control" id="txt_pim" name="txt_pim" type="text" required="required">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <label>Certificado</label>
-                                      <input  class="form-control" id="txt_certificado" name="txt_certificado" step="any" type="number" required="required">
+                                      <input  class="form-control" id="txt_certificado" name="txt_certificado" type="text" required="required">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <label>compromiso</label>
-                                      <input  class="form-control" id="txt_compromiso" name="txt_compromiso" step="any" type="number" required="required">
+                                      <input  class="form-control" id="txt_compromiso" name="txt_compromiso" type="text" required="required">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <label>Devengado</label>
-                                      <input  class="form-control" id="txt_devengado" name="txt_devengado" step="any" type="number" required="required">
+                                      <input  class="form-control" id="txt_devengado" name="txt_devengado" type="text" required="required">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <label>Girado</label>
-                                      <input  class="form-control" id="txt_girado" name="txt_girado" step="any" type="number" required="required">
+                                      <input  class="form-control" id="txt_girado" name="txt_girado" type="text" required="required">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <label>.</label><br>
@@ -474,11 +466,11 @@
                                       </select>
                                     </div>
                                  </div>
-                              <h6><i class="fa fa-money"></i><b> Meta Presupuestal</b></h6>
+                              <!--<h6><i class="fa fa-money"></i><b> Meta Presupuestal</b></h6>
                               <div class="item form-group">
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>PIA</label></center>
-                                      <input  class="form-control" id="txt_pia_" name="txt_pia_" type="number" required="required" value="0.00" disabled="disabled">
+                                      <input  class="form-control" id="txt_pia_" name="txt_pia_" type="text" required="required" value="0.00" disabled="disabled">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>PIM</label></center>
@@ -492,7 +484,7 @@
                                       <center><label>Prioridad</label></center>
                                       <input  class="form-control" id="txt_prioridad_" name="txt_prioridad_" type="number" required="required">
                                     </div>
-                                 </div>
+                                 </div>-->
                               <h6><i class="fa fa-list"></i><b> Monto Operación y Mantenimiento</b></h6>
                                <div class="item form-group">
                                    <div class="col-md-3 col-sm-6 col-xs-12">

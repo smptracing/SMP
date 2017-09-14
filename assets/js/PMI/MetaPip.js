@@ -1,118 +1,137 @@
-function formatearNumero(valor){
-    var nums = new Array();
-    var simb = " "; 
-    var decimal='';
-    valor=valor.split(".");
-    if(valor.length>1){
-      decimal="."+(valor[1]).toString();
-    }
-    valor=valor[0];
-    valor = valor.toString();
-    valor = valor.replace(/\D/g, "");  
-    nums = valor.split(""); 
-    var long = nums.length - 1; // Se saca la longitud del arreglo
-    var patron = 3; //Indica cada cuanto se ponen las comas
-    var prox = 2; // Indica en que lugar se debe insertar la siguiente coma
-    var res = "";
- 
-    while (long > prox) {
-        nums.splice((long - prox),0,simb); //Se agrega la coma
-        prox += patron; //Se incrementa la posición próxima para colocar la coma
-    }
- 
-    for (var i = 0; i <= nums.length-1; i++) {
-        res += nums[i]; //Se crea la nueva cadena para devolver el valor formateado
-    }
- 
-    return res+decimal;
-}
-$(document).on("ready" ,function(){
-     lista_formulacion_evaluacion();/*llamar a mi datatablet listar proyectosinverision*/
-     lista_ejecucion();
-     lista_funcionamiento();
+$(document).on("ready" ,function()
+{
+    lista_formulacion_evaluacion();
+    lista_ejecucion();
+    lista_funcionamiento();
+    $('#txt_pia').inputmask("decimal", 
+    {
+        radixPoint: ".",
+        groupSeparator: ",",
+        digits: 2,
+        autoGroup: true,
+        rightAlign: false,
+    });
+    $('#txt_pim').inputmask("decimal", 
+    {
+        radixPoint: ".",
+        groupSeparator: ",",
+        digits: 2,
+        autoGroup: true,
+        rightAlign: false,
+    });
+    $('#txt_certificado').inputmask("decimal", 
+    {
+        radixPoint: ".",
+        groupSeparator: ",",
+        digits: 2,
+        autoGroup: true,
+        rightAlign: false,
+    });
+    $('#txt_compromiso').inputmask("decimal", 
+    {
+        radixPoint: ".",
+        groupSeparator: ",",
+        digits: 2,
+        autoGroup: true,
+        rightAlign: false,
+    });
+    $('#txt_devengado').inputmask("decimal", 
+    {
+        radixPoint: ".",
+        groupSeparator: ",",
+        digits: 2,
+        autoGroup: true,
+        rightAlign: false,
+    });
+    $('#txt_girado').inputmask("decimal", 
+    {
+        radixPoint: ".",
+        groupSeparator: ",",
+        digits: 2,
+        autoGroup: true,
+        rightAlign: false,
+    });
+    
 
 //agregar progrmacion para operacion y mantenimiento     
       $("#form_AddProgramacion_operacion_mantenieminto").submit(function(event)
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/programar_pip/AddProgramacion_operacion_mantenimiento",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           //alert(resp);
-                           if (resp=='1') {
-                             swal("REGISTRADO","Se regristró correctamente", "success");
-                            // formReset();
-                           }
-                            if (resp=='2') {
-                             swal("NO SE REGISTRÓ","NO se regristró ", "error");
-                           }
-                          $('#Table_Programar').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
-                          $('#table_formulacion_evaluacion').dataTable()._fnAjaxUpdate();
-                          $('#table_ejecucion').dataTable()._fnAjaxUpdate();
-                          $('#Table_funcionamiento').dataTable()._fnAjaxUpdate();
-                           //  formReset();
-                         }
-                      });
-                  });
+      {
+          event.preventDefault();
+          $.ajax({
+              url:base_url+"index.php/programar_pip/AddProgramacion_operacion_mantenimiento",
+              type:$(this).attr('method'),
+              data:$(this).serialize(),
+              success:function(resp){
+               if (resp=='1') {
+                 swal("REGISTRADO","Se regristró correctamente", "success");
+               }
+                if (resp=='2') {
+                 swal("NO SE REGISTRÓ","NO se regristró ", "error");
+               }
+              $('#Table_Programar').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
+              $('#table_formulacion_evaluacion').dataTable()._fnAjaxUpdate();
+              $('#table_ejecucion').dataTable()._fnAjaxUpdate();
+              $('#Table_funcionamiento').dataTable()._fnAjaxUpdate();
+             }
+          });
+      });
      $("#form_AddProgramacion").submit(function(event)
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/programar_pip/AddProgramacion",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           //alert(resp);
-                           if (resp=='1') {
-                             swal("REGISTRADO","Se regristró correctamente", "success");
-                           //  formReset();
-                           }
-                            if (resp=='2') {
-                             swal("NO SE REGISTRÓ","NO se regristró ", "error");
-                           }
-                          $('#Table_Programar').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
-                          $('#table_formulacion_evaluacion').dataTable()._fnAjaxUpdate();
-                          $('#table_ejecucion').dataTable()._fnAjaxUpdate();
-                          $('#Table_funcionamiento').dataTable()._fnAjaxUpdate();
-                         //    formReset();
-                         }
-                      });
-                  });
+      {
+          event.preventDefault();
+          $.ajax({
+              url:base_url+"index.php/programar_pip/AddProgramacion",
+              type:$(this).attr('method'),
+              data:$(this).serialize(),
+              success:function(resp){
+               //alert(resp);
+               if (resp=='1') {
+                 swal("REGISTRADO","Se regristró correctamente", "success");
+               //  formReset();
+               }
+                if (resp=='2') {
+                 swal("NO SE REGISTRÓ","NO se regristró ", "error");
+               }
+              $('#Table_Programar').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
+              $('#table_formulacion_evaluacion').dataTable()._fnAjaxUpdate();
+              $('#table_ejecucion').dataTable()._fnAjaxUpdate();
+              $('#Table_funcionamiento').dataTable()._fnAjaxUpdate();
+             //    formReset();
+             }
+          });
+      });
      $("#form_AddMeta_Pi").submit(function(event)
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/programar_pip/AddMeta_PI",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           //alert(resp);
-                           if (resp=='1') {
-                             swal("REGISTRADO","Se regristró correctamente", "success");
-                            
-                             formReset();
-                              //location.reload();
-                              setTimeout("location.reload()", 5000);
-                           }
-                            if (resp=='2') {
-                             swal("NO SE REGISTRÓ","NO se regristró ", "error");
-                             
-                           }
-                          $('#Table_meta_pi').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
-                             
-                             formReset();
-                             //location.reload();
-                             setTimeout("location.reload()", 5000);
-                         }
-                      });
-                  });
+      {
+          event.preventDefault();
+          $.ajax({
+              url:base_url+"index.php/programar_pip/AddMeta_PI",
+              type:$(this).attr('method'),
+              data:$(this).serialize(),
+              success:function(resp){
+               //alert(resp);
+               if (resp=='1') {
+                 swal("REGISTRADO","Se regristró correctamente", "success");
+                
+                 formReset();
+                  //location.reload();
+                  setTimeout("location.reload()", 5000);
+               }
+                if (resp=='2') {
+                 swal("NO SE REGISTRÓ","NO se regristró ", "error");
+                 
+               }
+              $('#Table_meta_pi').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
+                 
+                 formReset();
+                 //location.reload();
+                 setTimeout("location.reload()", 5000);
+             }
+          });
+      });
      function formReset()
-          {
+     {
           document.getElementById("form_AddProgramacion").reset();       
           document.getElementById("form_AddMeta_Pi").reset();  
-          }
+     }
 
 });
 //listar proyectos de inversion en formulacion y evaluacion
@@ -433,19 +452,22 @@ var EliminarMetaPresupuestalPi=function(tbody,table){
                   });
                 }
 */
-var  AddMeta_Pi=function(tbody,table){
-                    $(tbody).on("click","button.meta_pip",function(){
-                      var data=table.row( $(this).parents("tr")).data();
-                       var  id_pi=data.id_pi;
-                       $("#txt_codigo_unico_pi_mp").val(data.codigo_unico_pi);
-                      $("#txt_id_pip_programacion_mp").val(data.id_pi);
-                      $("#txt_costo_proyecto_mp").val("S/. "+data.costo_pi);
-                      $("#txt_nombre_proyecto_mp").val(data.nombre_pi);
-                      listar_Meta();
-                      listar_meta_presupuestal();
-                       listar_meta_pi(id_pi);
-                    });
-                }
+var  AddMeta_Pi=function(tbody,table)
+{
+    $(tbody).on("click","button.meta_pip",function()
+    {
+        var data=table.row( $(this).parents("tr")).data();
+        var  id_pi=data.id_pi;
+        $("#txt_codigo_unico_pi_mp").val(data.codigo_unico_pi);
+        $("#txt_id_pip_programacion_mp").val(data.id_pi);
+        $("#txt_costo_proyecto_mp").val("S/. "+data.costo_pi);
+        $("#txt_nombre_proyecto_mp").val(data.nombre_pi);
+        listar_Meta();
+        listar_meta_presupuestal();
+        listar_meta_pi(id_pi);
+        
+    });
+}
 
 //add programar para formulacion y evaluacion
    var  AddProgramacion=function(tbody,table){
