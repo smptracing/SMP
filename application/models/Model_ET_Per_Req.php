@@ -35,4 +35,11 @@ class Model_ET_Per_Req extends CI_Model
 
 		return true;
 	}
+
+	function asignarPersonal($idPerReq, $idPersona, $fechaDesign)
+	{
+		$this->db->query("exec sp_Gestionar_ETPERREQ @opcion='asignarPersonal', @idPerReq=$idPerReq, @idPersona=$idPersona, @fechaDesign='$fechaDesign'");
+
+		return true;
+	}
 }

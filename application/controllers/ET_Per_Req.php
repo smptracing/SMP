@@ -60,4 +60,24 @@ class ET_Per_Req extends CI_Controller
 			}
 		}
 	}
+
+	public function asignarPersonal()
+	{
+		if($this->input->is_ajax_request())
+		{
+			if($_POST)
+			{
+				$this->db->trans_start(); 
+				
+				$idPerReq=$this->input->post('idPerReq');
+				$idPersona=$this->input->post('idPersona');
+
+				$this->Model_ET_Per_Req->asignarPersonal($idPerReq, $idPersona, date('Y-m-d H:m:s'));
+
+				$this->db->trans_complete();
+
+				echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Personal asignado correctamente.']);exit;
+			}
+		}
+	}
 }

@@ -58,7 +58,7 @@
 										<tr>
 											<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;margin: 4px;padding: 4px;"><label><b>Craet__</b><input type="checkbox" value="craet" style="margin-left: -10px;"></label><?=$value->nombre_esp?></div></td>
 											<td>
-												<select class="selectPersonaETPerReq" data-live-search="true" data-width="100%">
+												<select class="selectPersonaETPerReq" data-live-search="true" data-width="100%" onchange="asignarPersonalETPerReq(<?=$value->id_per_req?>, this);">
 													<option value=""></option>
 													<?php foreach($listaPersona as $index => $item){ ?>
 														<option value="<?=$item->id_persona?>"><?=$item->nombres.' '.$item->apellido_p.' '.$item->apellido_m?></option>
@@ -83,6 +83,27 @@
 	{
 		$('.selectPersonaETPerReq').selectpicker();
 	});
+
+	function asignarPersonalETPerReq(idPerReq, element)
+	{
+		paginaAjaxJSON({ idPerReq : idPerReq, idPersona : $(element).val() }, '<?=base_url()?>index.php/ET_Per_Req/asignarPersonal', 'POST', null, function(objectJSON)
+		{
+			objectJSON=JSON.parse(objectJSON);
+
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
+			},
+			function(){});
+
+			if(objectJSON.proceso=='Error')
+			{
+				return false;
+			}
+		}, false, true);
+	}
 
 	function eliminarEspecialidadAsignada(idPerReq, element)
 	{
@@ -150,7 +171,7 @@
 				'<tbody>'+
 					'<tr>'+
 						'<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;margin: 4px;padding: 4px;"><label><b>Craet__</b><input type="checkbox" value="craet" style="margin-left: -10px;"></label>'+$('#'+data).text()+'</div></td>'+
-						'<td>'+'<select class="selectPersonaETPerReq" data-live-search="true" data-width="100%"><option value=""></option>'+listaPersona+'</select>'+'</td>'+
+						'<td>'+'<select class="selectPersonaETPerReq" data-live-search="true" data-width="100%" onchange="asignarPersonalETPerReq('+objectJSON.idPerReq+', this);"><option value=""></option>'+listaPersona+'</select>'+'</td>'+
 						'<td style="width: 1%;">'+'<a href="#" style="color: red;padding: 2px;" onclick="eliminarEspecialidadAsignada('+objectJSON.idPerReq+', this);">Eliminar</a>'+'</td>'+
 					'</tr>'+
 				'</tbody>'+
