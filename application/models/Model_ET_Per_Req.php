@@ -42,4 +42,11 @@ class Model_ET_Per_Req extends CI_Model
 
 		return true;
 	}
+
+	function asignarQuitarCraet($idPerReq, $craet)
+	{
+		$this->db->query("exec sp_Gestionar_ETPERREQ @opcion='asignarQuitarCraet', @idPerReq=$idPerReq, @craet=$craet");
+
+		return true;
+	}
 }

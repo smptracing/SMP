@@ -56,7 +56,7 @@
 								<table style="width: 100%;">
 									<tbody>
 										<tr>
-											<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;margin: 4px;padding: 4px;"><label><b>Craet___</b><input type="checkbox" value="craet" style="margin-left: -15px;"></label><?=$value->nombre_esp?></div></td>
+											<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;margin: 4px;padding: 4px;"><label><b>Craet___</b><input type="checkbox" value="craet" style="margin-left: -15px;" onchange="asignarQuitarCraetETPerReq(<?=$value->id_per_req?>, this);"></label><?=$value->nombre_esp?></div></td>
 											<td>
 												<select class="selectPersonaETPerReq" data-live-search="true" data-width="100%" onchange="asignarPersonalETPerReq(<?=$value->id_per_req?>, this);">
 													<option value=""></option>
@@ -87,6 +87,27 @@
 	function asignarPersonalETPerReq(idPerReq, element)
 	{
 		paginaAjaxJSON({ idPerReq : idPerReq, idPersona : $(element).val() }, '<?=base_url()?>index.php/ET_Per_Req/asignarPersonal', 'POST', null, function(objectJSON)
+		{
+			objectJSON=JSON.parse(objectJSON);
+
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
+			},
+			function(){});
+
+			if(objectJSON.proceso=='Error')
+			{
+				return false;
+			}
+		}, false, true);
+	}
+
+	function asignarQuitarCraetETPerReq(idPerReq, element)
+	{
+		paginaAjaxJSON({ idPerReq : idPerReq, craet : ($(element).is(':checked') ? true : false) }, '<?=base_url()?>index.php/ET_Per_Req/asignarQuitarCraet', 'POST', null, function(objectJSON)
 		{
 			objectJSON=JSON.parse(objectJSON);
 
@@ -170,7 +191,7 @@
 			var htmlTemp='<table style="width: 100%;">'+
 				'<tbody>'+
 					'<tr>'+
-						'<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;margin: 4px;padding: 4px;"><label><b>Craet___</b><input type="checkbox" value="craet" style="margin-left: -15px;"></label>'+$('#'+data).text()+'</div></td>'+
+						'<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;margin: 4px;padding: 4px;"><label><b>Craet___</b><input type="checkbox" value="craet" style="margin-left: -15px;" onchange="asignarQuitarCraetETPerReq('+objectJSON.idPerReq+', this);"></label>'+$('#'+data).text()+'</div></td>'+
 						'<td>'+'<select class="selectPersonaETPerReq" data-live-search="true" data-width="100%" onchange="asignarPersonalETPerReq('+objectJSON.idPerReq+', this);"><option value=""></option>'+listaPersona+'</select>'+'</td>'+
 						'<td style="width: 1%;">'+'<a href="#" style="color: red;padding: 2px;" onclick="eliminarEspecialidadAsignada('+objectJSON.idPerReq+', this);">Eliminar</a>'+'</td>'+
 					'</tr>'+

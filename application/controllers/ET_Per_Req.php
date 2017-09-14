@@ -80,4 +80,24 @@ class ET_Per_Req extends CI_Controller
 			}
 		}
 	}
+
+	public function asignarQuitarCraet()
+	{
+		if($this->input->is_ajax_request())
+		{
+			if($_POST)
+			{
+				$this->db->trans_start(); 
+				
+				$idPerReq=$this->input->post('idPerReq');
+				$craet=$this->input->post('craet');
+
+				$this->Model_ET_Per_Req->asignarQuitarCraet($idPerReq, $craet);
+
+				$this->db->trans_complete();
+
+				echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos guardados correctamente.']);exit;
+			}
+		}
+	}
 }
