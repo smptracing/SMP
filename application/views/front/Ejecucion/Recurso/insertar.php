@@ -49,6 +49,11 @@
 	$('#btnEnviarFormulario').on('click', function(event)
 	{
 		event.preventDefault();
+		$('#form-addRecurso').data('formValidation').validate();
+        if(!($('#form-addRecurso').data('formValidation').isValid()))
+        {
+            return;
+        }
 
 		paginaAjaxJSON($('#form-addRecurso').serialize(), '<?=base_url();?>index.php/ET_Recurso/insertar', 'POST', null, function(objectJSON)
 		{

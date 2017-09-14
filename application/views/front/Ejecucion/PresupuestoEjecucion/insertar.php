@@ -48,6 +48,11 @@
 	$('#btnEnviarFormulario').on('click', function(event)
 	{
 		event.preventDefault();
+		$('#form-addPresupuestoEjecucion').data('formValidation').validate();
+        if(!($('#form-addPresupuestoEjecucion').data('formValidation').isValid()))
+        {
+            return;
+        }
 
 		paginaAjaxJSON($('#form-addPresupuestoEjecucion').serialize(), '<?=base_url();?>index.php/ET_Presupuesto_Ejecucion/insertar', 'POST', null, function(objectJSON)
 		{

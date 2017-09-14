@@ -2,6 +2,28 @@
  {
 
     listarServicioP();
+
+   /* $("#form-UpdateServicioAsociado").submit(function(event)//Actualizar servicio publico asociado
+    {
+        event.preventDefault();
+        $('#form-UpdateServicioAsociado').data('formValidation').resetField($('#textarea_servicio_publicoAA'));
+        $('#form-UpdateServicioAsociado').data('formValidation').validate();
+        if(!($('#form-UpdateServicioAsociado').data('formValidation').isValid()))
+        {
+            return;
+        }
+        $.ajax({
+            url:base_url+"index.php/ServicioPublico/UpdateServicioAsociado",
+            type:$(this).attr('method'),
+            data:$(this).serialize(),
+            success:function(resp)
+            {
+                swal("",resp, "success");
+                $('#table-ServicioAsociado').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
+            }
+        });
+    });*/
+
     $("#form-addServicioAsociado").submit(function(event)
     {
         event.preventDefault();
@@ -36,20 +58,7 @@
         });
     });   
 
-    $("#form-UpdateServicioAsociado").submit(function(event)//Actualizar servicio publico asociado
-    {
-        event.preventDefault();
-        $.ajax({
-            url:base_url+"index.php/ServicioPublico/UpdateServicioAsociado",
-            type:$(this).attr('method'),
-            data:$(this).serialize(),
-            success:function(resp)
-            {
-                swal("",resp, "success");
-                $('#table-ServicioAsociado').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
-            }
-        });
-    });  
+     
 });
 
 $(function()
@@ -75,6 +84,28 @@ $(function()
             }
         }
     });
+    
+    /*$('#form-UpdateServicioAsociado').formValidation(
+    {
+        framework: 'bootstrap',
+        excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+        live: 'enabled',
+        message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+        trigger: null,
+        fields:
+        {
+            textarea_servicio_publicoAA:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Nombre de Servicio Público asociado" es requerido.</b>'
+                    }
+                }
+            }
+        }
+    });*/
 });
 			   
 var listarServicioP=function()
