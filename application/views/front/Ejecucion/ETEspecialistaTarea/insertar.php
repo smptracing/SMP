@@ -61,6 +61,11 @@
 <script src="<?=base_url()?>assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="<?=base_url()?>assets/dist/js/bootstrap-select.js"></script>
 <script>
+	function eliminarEspecialidadAsignada(element)
+	{
+		$(element).parent().parent().remove();
+	}
+
 	function allowDrop(ev, element)
 	{
 		ev.preventDefault();
@@ -82,6 +87,7 @@
 				'<tr>'+
 					'<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;margin: 4px;padding: 4px;">'+$('#'+data).text()+'</div></td>'+
 					'<td>'+'<select class="form-control"></select>'+'</td>'+
+					'<td style="width: 1%;">'+'<a href="#" style="color: red;padding: 2px;" onclick="eliminarEspecialidadAsignada(this);">Eliminar</a>'+'</td>'+
 				'</tr>'+
 			'</tbody>'+
 		'</table>';
