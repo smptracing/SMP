@@ -267,7 +267,7 @@
 				<td class="gdfCell"><input type="text" name="duration" autocomplete="off" value="(#=obj.duration#)" style="text-align: center;"></td>
 				<td class="gdfCell"><input type="text" name="end" value="" class="date" style="text-align: center;"></td>
 				<td class="gdfCell"><input type="text" name="progress" class="validated" entrytype="PERCENTILE" autocomplete="off" value="(#=obj.progress?obj.progress:''#)" (#=obj.progressByWorklog?"readOnly":""#) style="text-align: center;"></td>
-				<td class="gdfCell"><a href="#" style="cursor: pointer; user-select: none;" onclick="administrarPersonal('(#=obj.id#)');">Admin.</a> <small>Arquitecto de software > Kevin Arnold Arias Figueroa</small></td>
+				<td class="gdfCell"><a href="#" style="cursor: pointer; user-select: none;" onclick="administrarPersonal('(#=obj.id#)', '(#=obj.name#)');">Admin.</a> <small>Arquitecto de software > Kevin Arnold Arias Figueroa</small></td>
 			</tr>
 		--></div>
 
@@ -283,14 +283,12 @@
 				<td class="gdfCell"></td>
 				<td class="gdfCell"></td>
 				<td class="gdfCell"></td>
+				<td class="gdfCell"></td>
 			</tr>
 		--></div>
 	</div>
-	<div id="divDialogoGeneralGantt" style="background-color: #ffffff;border: 1px solid #000000;bottom: 0px;display: none;z-index: 1000;position: fixed;left: 0px;right: 50%;top: 0px;">
-		
-	</div>
 	<script>
-		function administrarPersonal(taskId)
+		function administrarPersonal(taskId, nombreTarea)
 		{
 			$('#divDialogoGeneralGantt').hide();
 
@@ -307,10 +305,7 @@
 				return;
 			}
 
-			paginaAjax('divDialogoGeneralGantt', { idTareaET : taskId, idET : <?=$idExpedienteTecnico?> }, '<?=base_url()?>index.php/ET_Especialista_Tarea/insertar', 'GET', null, function()
-			{
-				$('#divDialogoGeneralGantt').show();
-			}, false, true);
+			paginaAjaxDialogo(null, nombreTarea, { idTareaET : taskId, idET : <?=$idExpedienteTecnico?> }, '<?=base_url()?>index.php/ET_Especialista_Tarea/insertar', 'GET', null, null, false, true);
 		}
 	</script>
 </body>

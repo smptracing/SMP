@@ -28,8 +28,6 @@
 		vertical-align: middle;
 	}
 </style>
-<h4 style="padding: 5px;margin: 0px;">Actividad: <span style="color: #2f9bfb;">Sistema de seguimiento y mon</span></h4>
-<hr style="margin: 3px;">
 <div style="padding: 5px;user-select: none;">
 	<table style="width: 100%;">
 		<thead>
@@ -41,7 +39,7 @@
 		<tbody>
 			<tr>
 				<td style="background-color: #f5f5f5;text-align: center;vertical-align: top;width: 200px;">
-					<div style="height: 450px;overflow-y: scroll;">
+					<div style="font-size: 12px;height: 450px;overflow-y: scroll;">
 						<?php foreach($listaEspecialidad as $key => $value){ ?>
 							<div id="divEspecialidad<?=$value->id_esp?>" class="cajonEspecialidad" draggable="true" ondragstart="drag(event);">
 								<small><?=$value->nombre_esp?></small>
@@ -60,9 +58,9 @@
 								<table style="width: 100%;">
 									<tbody>
 										<tr>
-											<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;margin: 4px;padding: 4px;"><?=$value->nombre_esp?></div></td>
+											<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;font-size: 12px;margin: 4px;padding: 4px;"><?=$value->nombre_esp?></div></td>
 											<td>
-												<select class="form-control">
+												<select class="form-control" style="margin: 1px;">
 													<option value=""></option>
 													<?php foreach($listaETPerReq as $index => $item){
 														if($value->id_esp==$item->id_esp){ ?>
@@ -71,7 +69,7 @@
 													<?php } ?>
 												</select>
 											</td>
-											<td style="width: 1%;"><a href="#" style="color: red;padding: 2px;" onclick="eliminarEspecialidadAsignada(<?=$value->id_especialista_tarea?>, this);">Eliminar</a></td>
+											<td style="width: 1%;"><a href="#" style="color: red;padding: 2px;font-size: 12px;" onclick="eliminarEspecialidadAsignada(<?=$value->id_especialista_tarea?>, this);">Eliminar</a></td>
 										</tr>
 									</tbody>
 								</table>
@@ -165,9 +163,9 @@
 			var htmlTemp='<table style="width: 100%;">'+
 				'<tbody>'+
 					'<tr>'+
-						'<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;margin: 4px;padding: 4px;">'+$('#'+data).text()+'</div></td>'+
-						'<td>'+'<select class="form-control">'+htmlTempListaETPerReq+'</select>'+'</td>'+
-						'<td style="width: 1%;">'+'<a href="#" style="color: red;padding: 2px;" onclick="eliminarEspecialidadAsignada('+objectJSON.idEspecialistaTarea+', this);">Eliminar</a>'+'</td>'+
+						'<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;font-size: 12px;margin: 4px;padding: 4px;">'+$('#'+data).text()+'</div></td>'+
+						'<td>'+'<select class="form-control" style="margin: 1px;">'+htmlTempListaETPerReq+'</select>'+'</td>'+
+						'<td style="width: 1%;">'+'<a href="#" style="color: red;font-size: 12px;padding: 2px;" onclick="eliminarEspecialidadAsignada('+objectJSON.idEspecialistaTarea+', this);">Eliminar</a>'+'</td>'+
 					'</tr>'+
 				'</tbody>'+
 			'</table>';
