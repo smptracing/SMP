@@ -40,7 +40,7 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td style="background-color: #f5f5f5;text-align: center;width: 200px;">
+				<td style="background-color: #f5f5f5;text-align: center;vertical-align: top;width: 200px;">
 					<div style="height: 450px;overflow-y: scroll;">
 						<?php foreach($listaEspecialidad as $key => $value){ ?>
 							<div id="divEspecialidad<?=$value->id_esp?>" class="cajonEspecialidad" draggable="true" ondragstart="drag(event);">
@@ -49,8 +49,10 @@
 						<?php } ?>
 					</div>
 				</td>
-				<td id="tdSectionDrop" style="background-color: #f5fbfb;" ondragover="allowDrop(event, this);" ondrop="drop(event);">
-					<h3 style="color: #999999;text-align: center;">Arrastre especialidades de la izquierda</h3>
+				<td id="tdSectionDrop" style="background-color: #f5fbfb;vertical-align: top;" ondragover="allowDrop(event, this);" ondrop="drop(event, this);">
+					<div style="height: 450px;overflow-y: scroll;">
+						<h3 style="color: #999999;text-align: center;">Arrastre especialidades de la izquierda</h3>
+					</div>
 				</td>
 			</tr>
 		</tbody>
@@ -69,10 +71,26 @@
 		ev.dataTransfer.setData("idEspecialidad", ev.target.id);
 	}
 
-	function drop(ev)
+	function drop(ev, element)
 	{
 		ev.preventDefault();
 
 		var data=ev.dataTransfer.getData("idEspecialidad");
+
+		var htmlTemp='<table style="width: 100%;">'+
+			'<tbody>'+
+				'<tr>'+
+					'<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;margin: 4px;padding: 4px;">'+$('#'+data).text()+'</div></td>'+
+					'<td>'+'<select class="form-control"></select>'+'</td>'+
+				'</tr>'+
+			'</tbody>'+
+		'</table>';
+
+		if($(element).find('table').length==0)
+		{
+			$($(element).find('div')[0]).html('');
+		}
+
+		$($(element).find('div')[0]).prepend(htmlTemp);
 	}
 </script>
