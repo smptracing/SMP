@@ -61,4 +61,24 @@ class ET_Especialista_Tarea extends CI_Controller
 			}
 		}
 	}
+
+	public function asignarPersonal()
+	{
+		if($this->input->is_ajax_request())
+		{
+			if($_POST)
+			{
+				$this->db->trans_start(); 
+				
+				$idEspecialistaTarea=$this->input->post('idEspecialistaTarea');
+				$idPerReq=$this->input->post('idPerReq');
+
+				$this->Model_ET_Especialista_Tarea->asignarPersonal($idEspecialistaTarea, $idPerReq);
+
+				$this->db->trans_complete();
+
+				echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Personal asignado correctamente.']);exit;
+			}
+		}
+	}
 }

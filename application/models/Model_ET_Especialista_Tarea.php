@@ -10,7 +10,7 @@ class Model_ET_Especialista_Tarea extends CI_Model
 
 	function insertar($idPerReq, $idTareaET, $idEsp)
 	{
-		$this->db->query("execute sp_Gestionar_ETEspecialistaTarea 'insertar', ".$idPerReq.", ".$idTareaET.", ".$idEsp);
+		$this->db->query("execute sp_Gestionar_ETEspecialistaTarea @opcion='insertar', @idPerReq=$idPerReq, @idTareaET=$idTareaET, @idEsp=$idEsp");
 
 		return true;
 	}
@@ -32,6 +32,13 @@ class Model_ET_Especialista_Tarea extends CI_Model
 	function eliminar($idEspecialistaTarea)
 	{
 		$this->db->query("delete from ET_ESPECIALISTA_TAREA where id_especialista_tarea=$idEspecialistaTarea");
+
+		return true;
+	}
+
+	function asignarPersonal($idEspecialistaTarea, $idPerReq)
+	{
+		$this->db->query("execute sp_Gestionar_ETEspecialistaTarea @opcion='asignarPersonal', @idEspecialistaTarea=$idEspecialistaTarea, @idPerReq=$idPerReq");
 
 		return true;
 	}

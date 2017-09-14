@@ -60,7 +60,7 @@
 										<tr>
 											<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;font-size: 12px;margin: 4px;padding: 4px;"><?=$value->nombre_esp?></div></td>
 											<td>
-												<select class="form-control" style="margin: 1px;">
+												<select class="form-control" style="margin: 1px;" onchange="asignarPersonalETEspecialistaTarea(<?=$value->id_especialista_tarea?>, this);">
 													<option value=""></option>
 													<?php foreach($listaETPerReq as $index => $item){
 														if($value->id_esp==$item->id_esp){ ?>
@@ -117,6 +117,27 @@
 		}
 	}
 
+	function asignarPersonalETEspecialistaTarea(idEspecialistaTarea, element)
+	{
+		paginaAjaxJSON({ idEspecialistaTarea : idEspecialistaTarea, idPerReq : $(element).val() }, '<?=base_url()?>index.php/ET_Especialista_Tarea/asignarPersonal', 'POST', null, function(objectJSON)
+		{
+			objectJSON=JSON.parse(objectJSON);
+
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
+			},
+			function(){});
+
+			if(objectJSON.proceso=='Error')
+			{
+				return false;
+			}
+		}, false, true);
+	}
+
 	function allowDrop(ev, element)
 	{
 		ev.preventDefault();
@@ -164,7 +185,7 @@
 				'<tbody>'+
 					'<tr>'+
 						'<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;font-size: 12px;margin: 4px;padding: 4px;">'+$('#'+data).text()+'</div></td>'+
-						'<td>'+'<select class="form-control" style="margin: 1px;">'+htmlTempListaETPerReq+'</select>'+'</td>'+
+						'<td>'+'<select class="form-control" style="margin: 1px;" onchange="asignarPersonalETEspecialistaTarea('+objectJSON.idEspecialistaTarea+', this);">'+htmlTempListaETPerReq+'</select>'+'</td>'+
 						'<td style="width: 1%;">'+'<a href="#" style="color: red;font-size: 12px;padding: 2px;" onclick="eliminarEspecialidadAsignada('+objectJSON.idEspecialistaTarea+', this);">Eliminar</a>'+'</td>'+
 					'</tr>'+
 				'</tbody>'+
