@@ -43,13 +43,13 @@
 				<td style="background-color: #f5f5f5;text-align: center;width: 200px;">
 					<div style="height: 450px;overflow-y: scroll;">
 						<?php foreach($listaEspecialidad as $key => $value){ ?>
-							<div class="cajonEspecialidad">
+							<div id="divEspecialidad<?=$value->id_esp?>" class="cajonEspecialidad" draggable="true" ondragstart="drag(event);">
 								<small><?=$value->nombre_esp?></small>
 							</div>
 						<?php } ?>
 					</div>
 				</td>
-				<td style="background-color: #f5fbfb;">
+				<td id="tdSectionDrop" style="background-color: #f5fbfb;" ondragover="allowDrop(event, this);" ondrop="drop(event);">
 					<h3 style="color: #999999;text-align: center;">Arrastre especialidades de la izquierda</h3>
 				</td>
 			</tr>
@@ -58,3 +58,21 @@
 </div>
 <script src="<?=base_url()?>assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="<?=base_url()?>assets/dist/js/bootstrap-select.js"></script>
+<script>
+	function allowDrop(ev, element)
+	{
+		ev.preventDefault();
+	}
+
+	function drag(ev)
+	{
+		ev.dataTransfer.setData("idEspecialidad", ev.target.id);
+	}
+
+	function drop(ev)
+	{
+		ev.preventDefault();
+
+		var data=ev.dataTransfer.getData("idEspecialidad");
+	}
+</script>
