@@ -112,9 +112,16 @@ class PrincipalReportes extends CI_Controller
 
     function  DatosParaEstadisticaAnualProyecto()
     {
-            $codigounico=$this->input->POST('codigounico');
-            $data=$this->Model_Dashboard_Reporte->ReporteDevengadoPiaPimPorPip($codigounico);
-            echo  json_encode($data);
+        $codigounico=$this->input->POST('codigounico');
+        $data=$this->Model_Dashboard_Reporte->ReporteDevengadoPiaPimPorPip($codigounico);
+        echo  json_encode($data);
+    }
+
+    function DatosEjecucionPresupuestal()
+    {
+        $codigounico=$this->input->POST('codigounico');
+        $data=$this->Model_Dashboard_Reporte->ReporteEjecucionPresupuestal($codigounico);
+        echo  json_encode($data);
     }
 
     function  ReporteDevengadoPiaPimPorPipGraficos()

@@ -45,7 +45,7 @@
 														</div>
 			
 														<div class="row">
-																										<div class="row" style="margin-left: 10px; margin:10px; ">
+															<div class="row" style="margin-left: 10px; margin:10px; ">
 															<div class="panel panel-default">
 																 <div class="panel-heading"> EJECUCIÓN ANUAL DEL PROYECTO</div>
 																 
@@ -94,21 +94,38 @@
 																			    </tbody>
 																		  </table> 
 																	  </div>
-																	
 																</div>
-														</div>
+															</div>
+
 												            <div class="row" style="margin-left: 10px; margin:10px; ">
 												                <div class="panel panel-default">
 																 <div class="panel-heading">PIA, PIM Y DEVENGADO ACTUAL </div>
 												                        <div id="pimdevengadopia"></div>
 												                </div>
 													        </div>
-													         <div class="row" style="margin-left: 10px; margin:10px; ">
+
+													        <div class="row" style="margin-left: 10px; margin:10px; ">
 												                <div class="panel panel-default">
 																 <div class="panel-heading">PIA, PIM Y DEVENGADO ANUAL</div>
 												                        <div id="pimdevengadopialineasAnual"></div>
 												                </div>
 													        </div>
+
+															<div class="row" style="margin-left: 10px; margin:10px; ">
+																<div class="panel panel-default">
+																	<div class="panel-heading"> EJECUCIÓN PRESUPUESTAL </div>
+																 
+																	  	<div id="actproynombre">
+																			
+																			<table id="table-EjecucionPresupuestal" class="table  table-striped jambo_table bulk_action" style="text-align: left;"> 
+																			 
+																		  </table> 
+																	  </div>
+																</div>
+															</div>
+
+
+
 														</div>
 											</div>
 										</div>
@@ -137,6 +154,7 @@ $("#CodigoUnico").on( "click", function()
 		$("#EjecucionAnual").show(2000);
 		$("#pimdevengadopia").css({"height":"350"}); 
 		$("#pimdevengadopialineasAnual").css({"height":"420"}); 
+		$("#actproynombre").show(2000);
 		var codigounico=$("#BuscarPip").val();
 		$.ajax({
 		"url":base_url+"index.php/PrincipalReportes/DatosParaEstadisticaAnualProyecto",
@@ -153,6 +171,26 @@ $("#CodigoUnico").on( "click", function()
 		        $("#txtPIN").html(cantidadpipprovincias.pim_acumulado);
 		        $("#txtdevengado").html(cantidadpipprovincias.pim_acumulado);
 			}
+		});
+
+		$.ajax({
+		"url":base_url+"index.php/PrincipalReportes/DatosEjecucionPresupuestal",
+		type:"POST",
+		data:{codigounico:codigounico},
+		success: function(data)
+			{
+		        console.log(data);
+		        var ejecucionPresupuestal=JSON.parse(data); 
+		        var html;
+				html+="<thead><tr><th>AÑO EJECUCIÓN</th><th>COSTO ACTUAL</th><th>COSTO DE EXPEDIENTE</th><th>COSTO DE VIABILIDAD</th><th>COSTO DE EXP AÑO ANTERIOR</th></tr></thead>"
+				$.each( ejecucionPresupuestal, function( key, value ) {
+				  html +="<tbody> <tr><th>"+value.ano_eje+"</th><th>"+value.costo_actual+"</th><th>"+value.costo_expediente+"</th><th>"+value.costo_viabilidad+"</th><th>"+value.ejecucion_ano_anterior+"</th></tr>";      
+						html +="</tbody>";
+				});
+				
+				$("#table-EjecucionPresupuestal").html(html);
+			}
+
 		});
 		$.ajax({
 				"url":base_url+"index.php/PrincipalReportes/BuscadorPipPorCodigoReporte",

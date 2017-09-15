@@ -114,6 +114,13 @@ class Model_Dashboard_Reporte extends CI_Model
         }
     }
 
+    function ReporteEjecucionPresupuestal($CodigoUnico)
+    {
+        $opcion="listar_act_proy_nombre";
+        $data = $this->db->query("execute sp_Gestionar_SIAF @opcion='".$opcion."', @codigo_snip ='".$CodigoUnico."'");
+            
+            return $data->result();       
+    }
     function ReporteDevengadoPiaPimPorPipGraficos($CodigoUnico)
     {
        $data = $this->db->query("select codigo_unico_pi,SUM(costo_pi) as costo_pi,SUM(pia_meta_pres) as pia_meta_pres ,SUM(pim_acumulado) AS pim_acumulado,
