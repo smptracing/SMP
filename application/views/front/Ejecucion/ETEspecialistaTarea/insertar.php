@@ -42,7 +42,7 @@
 					<div style="font-size: 12px;height: 450px;overflow-y: scroll;">
 						<?php foreach($listaEspecialidad as $key => $value){ ?>
 							<div id="divEspecialidad<?=$value->id_esp?>" class="cajonEspecialidad" draggable="true" ondragstart="drag(event);">
-								<small><?=$value->nombre_esp?></small>
+								<small><?=html_escape($value->nombre_esp)?></small>
 							</div>
 						<?php } ?>
 					</div>
@@ -58,13 +58,13 @@
 								<table style="width: 100%;">
 									<tbody>
 										<tr>
-											<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;font-size: 12px;margin: 4px;padding: 4px;"><?=$value->nombre_esp?></div></td>
+											<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;font-size: 12px;margin: 4px;padding: 4px;"><?=html_escape($value->nombre_esp)?></div></td>
 											<td>
 												<select class="form-control" style="margin: 1px;" onchange="asignarPersonalETEspecialistaTarea(<?=$value->id_especialista_tarea?>, this);">
 													<option value=""></option>
 													<?php foreach($listaETPerReq as $index => $item){
 														if($value->id_esp==$item->id_esp){ ?>
-															<option value="<?=$item->id_per_req?>" <?=($value->id_per_req==$item->id_per_req ? 'selected' : '')?>><?=$item->nombres.' '.$item->apellido_p.' '.$item->apellido_m?></option>
+															<option value="<?=$item->id_per_req?>" <?=($value->id_per_req==$item->id_per_req ? 'selected' : '')?>><?=html_escape($item->nombres.' '.$item->apellido_p.' '.$item->apellido_m)?></option>
 														<?php } ?>
 													<?php } ?>
 												</select>
@@ -88,7 +88,7 @@
 	var listaETPerReqFinal=[];
 
 	<?php foreach($listaETPerReq as $index => $item){ ?>
-		listaETPerReqFinal.push({idPerReq : <?=$item->id_per_req?>, nombre : '<?=$item->nombres.' '.$item->apellido_p.' '.$item->apellido_m?>', idEsp : <?=$item->id_esp?>});
+		listaETPerReqFinal.push({idPerReq : <?=$item->id_per_req?>, nombre : '<?=html_escape($item->nombres.' '.$item->apellido_p.' '.$item->apellido_m)?>', idEsp : <?=$item->id_esp?>});
 	<?php } ?>
 
 	function eliminarEspecialidadAsignada(idEspecialistaTarea, element)
@@ -181,14 +181,14 @@
 			{
 				if(data.substring(15)==listaETPerReqFinal[i].idEsp)
 				{
-					htmlTempListaETPerReq+='<option value="'+listaETPerReqFinal[i].idPerReq+'">'+listaETPerReqFinal[i].nombre+'</option>';
+					htmlTempListaETPerReq+='<option value="'+listaETPerReqFinal[i].idPerReq+'">'+replaceAll(replaceAll(listaETPerReqFinal[i].nombre, '<', '&gt;'), '>', '&lt;')+'</option>';
 				}
 			}
 
 			var htmlTemp='<table style="width: 100%;">'+
 				'<tbody>'+
 					'<tr>'+
-						'<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;font-size: 12px;margin: 4px;padding: 4px;">'+$('#'+data).text()+'</div></td>'+
+						'<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;font-size: 12px;margin: 4px;padding: 4px;">'+replaceAll(replaceAll($('#'+data).text(), '<', '&gt;'), '>', '&lt;')+'</div></td>'+
 						'<td>'+'<select class="form-control" style="margin: 1px;" onchange="asignarPersonalETEspecialistaTarea('+objectJSON.idEspecialistaTarea+', this);">'+htmlTempListaETPerReq+'</select>'+'</td>'+
 						'<td style="width: 1%;">'+'<a href="#" style="color: red;font-size: 12px;padding: 2px;" onclick="eliminarEspecialidadAsignada('+objectJSON.idEspecialistaTarea+', this);">Eliminar</a>'+'</td>'+
 					'</tr>'+
