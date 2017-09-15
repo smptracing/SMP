@@ -216,7 +216,7 @@ var EliminarIndicador=function(tbody,table)
             {
                swal("ELIMINADO!", "Se elimino correctamente el indicador.", "success");
               $('#table-Indicador').dataTable()._fnAjaxUpdate();
-            }//para actualizar mi datatablet datatablet
+            }
             });
         });
     });

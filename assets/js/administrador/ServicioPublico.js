@@ -129,6 +129,7 @@ var listarServicioP=function()
     "language":idioma_espanol
     });
     ServicioPublicoDataActualizar("#table-ServicioAsociado",table) ;
+    EliminarServicioLista("#table-ServicioAsociado",table);//TRAER LA DATA DE LAS BRECHAS PARA ELIMINAR  
 }
 
 /*fin crear tabla dinamica servicio publico asociado*/
@@ -143,6 +144,38 @@ var ServicioPublicoDataActualizar=function(tbody,table)
 
     });
 }
+
+var EliminarServicioLista=function(tbody,table)
+{
+    $(tbody).on("click","button.eliminar",function()
+    {
+        var data=table.row( $(this).parents("tr")).data();
+        var id_servicio=data.id_serv_pub_asoc;
+        swal({
+                title: "Esta seguro que desea eliminar el servicio?",
+                text: "",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "SI,ELIMINAR",
+                closeOnConfirm: false
+            },
+        function()
+        {
+            $.ajax({
+                url:base_url+"index.php/ServicioPublico/EliminarServicioPublico",
+                type:"POST",
+                data:{id_servicio:id_servicio},
+                success:function(respuesta)
+                {
+                    swal("ELIMINADO!", "Se elimino correctamente la brecha.", "success");
+                    $('#table-ServicioAsociado').dataTable()._fnAjaxUpdate();
+                }
+            });
+        });
+    });
+}
+
 
 /*Idioma de datatablet table-sector */
 var idioma_espanol=
