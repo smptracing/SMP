@@ -3,15 +3,16 @@
 
     listarServicioP();
 
-   /* $("#form-UpdateServicioAsociado").submit(function(event)//Actualizar servicio publico asociado
+    $("#form-UpdateServicioAsociado").submit(function(event)//Actualizar servicio publico asociado
     {
         event.preventDefault();
-        $('#form-UpdateServicioAsociado').data('formValidation').resetField($('#textarea_servicio_publicoAA'));
-        $('#form-UpdateServicioAsociado').data('formValidation').validate();
-        if(!($('#form-UpdateServicioAsociado').data('formValidation').isValid()))
+        $('#ValidarServicio').data('formValidation').resetField($('#textarea_servicio_publicoAA'));
+        $('#ValidarServicio').data('formValidation').validate();
+        if(!($('#ValidarServicio').data('formValidation').isValid()))
         {
             return;
         }
+
         $.ajax({
             url:base_url+"index.php/ServicioPublico/UpdateServicioAsociado",
             type:$(this).attr('method'),
@@ -22,7 +23,7 @@
                 $('#table-ServicioAsociado').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
             }
         });
-    });*/
+    });
 
     $("#form-addServicioAsociado").submit(function(event)
     {
@@ -85,7 +86,7 @@ $(function()
         }
     });
     
-    /*$('#form-UpdateServicioAsociado').formValidation(
+    $('#ValidarServicio').formValidation(
     {
         framework: 'bootstrap',
         excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
@@ -105,7 +106,7 @@ $(function()
                 }
             }
         }
-    });*/
+    });
 });
 			   
 var listarServicioP=function()
