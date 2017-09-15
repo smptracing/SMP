@@ -43,6 +43,13 @@ class Model_ET_Per_Req extends CI_Model
 		return true;
 	}
 
+	function existePersonaPorET($idPersona, $idET)
+	{
+		$data=$this->db->query("select * from ET_PER_REQ where id_persona=$idPersona and id_et=$idET");
+
+		return count($data->result())>0 ? true : false;
+	}
+
 	function asignarPersonal($idPerReq, $idPersona, $fechaDesign)
 	{
 		$this->db->query("exec sp_Gestionar_ETPERREQ @opcion='asignarPersonal', @idPerReq=$idPerReq, @idPersona=$idPersona, @fechaDesign='$fechaDesign'");

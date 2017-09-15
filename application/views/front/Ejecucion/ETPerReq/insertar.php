@@ -86,7 +86,7 @@
 
 	function asignarPersonalETPerReq(idPerReq, element)
 	{
-		paginaAjaxJSON({ idPerReq : idPerReq, idPersona : $(element).val() }, '<?=base_url()?>index.php/ET_Per_Req/asignarPersonal', 'POST', null, function(objectJSON)
+		paginaAjaxJSON({ idPerReq : idPerReq, idPersona : $(element).val(), idET : <?=$idET?> }, '<?=base_url()?>index.php/ET_Per_Req/asignarPersonal', 'POST', null, function(objectJSON)
 		{
 			objectJSON=JSON.parse(objectJSON);
 
@@ -100,6 +100,10 @@
 
 			if(objectJSON.proceso=='Error')
 			{
+				$(element).val("");
+
+				$(element).selectpicker("refresh");
+
 				return false;
 			}
 		}, false, true);

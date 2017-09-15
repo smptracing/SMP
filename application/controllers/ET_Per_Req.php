@@ -71,6 +71,12 @@ class ET_Per_Req extends CI_Controller
 				
 				$idPerReq=$this->input->post('idPerReq');
 				$idPersona=$this->input->post('idPersona');
+				$idET=$this->input->post('idET');
+
+				if($idPersona!='' && $this->Model_ET_Per_Req->existePersonaPorET(($idPersona=="" ? 'NULL' : $idPersona), $idET))
+				{
+					echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede asignar a la misma persona a dos cargos diferentes en el mismo expediente técnico.']);exit;
+				}
 
 				$this->Model_ET_Per_Req->asignarPersonal($idPerReq, ($idPersona=="" ? 'NULL' : $idPersona), date('Y-m-d H:m:s'));
 
