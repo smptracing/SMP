@@ -119,7 +119,7 @@
 
 	function asignarPersonalETEspecialistaTarea(idEspecialistaTarea, element)
 	{
-		paginaAjaxJSON({ idEspecialistaTarea : idEspecialistaTarea, idPerReq : $(element).val() }, '<?=base_url()?>index.php/ET_Especialista_Tarea/asignarPersonal', 'POST', null, function(objectJSON)
+		paginaAjaxJSON({ idEspecialistaTarea : idEspecialistaTarea, idPerReq : $(element).val(), idTareaET : <?=$idTareaET?> }, '<?=base_url()?>index.php/ET_Especialista_Tarea/asignarPersonal', 'POST', null, function(objectJSON)
 		{
 			objectJSON=JSON.parse(objectJSON);
 
@@ -133,6 +133,10 @@
 
 			if(objectJSON.proceso=='Error')
 			{
+				$(element).val("");
+
+				$(element).selectpicker("refresh");
+
 				return false;
 			}
 		}, false, true);

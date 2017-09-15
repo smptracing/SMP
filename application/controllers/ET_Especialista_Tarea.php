@@ -72,6 +72,12 @@ class ET_Especialista_Tarea extends CI_Controller
 				
 				$idEspecialistaTarea=$this->input->post('idEspecialistaTarea');
 				$idPerReq=$this->input->post('idPerReq');
+				$idTareaET=$this->input->post('idTareaET');
+
+				if($idPerReq!='' && $this->Model_ET_Especialista_Tarea->existeETPerReqPorIdTareaET(($idPerReq=="" ? 'NULL' : $idPerReq), $idTareaET))
+				{
+					echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede asignar a la misma persona a dos cargos diferentes en la misma actividad.']);exit;
+				}
 
 				$this->Model_ET_Especialista_Tarea->asignarPersonal($idEspecialistaTarea, ($idPerReq=='' ? 'NULL' : $idPerReq));
 

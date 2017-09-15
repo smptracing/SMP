@@ -36,6 +36,13 @@ class Model_ET_Especialista_Tarea extends CI_Model
 		return true;
 	}
 
+	function existeETPerReqPorIdTareaET($idPerReq, $idTareaET)
+	{
+		$data=$this->db->query("select * from ET_ESPECIALISTA_TAREA where id_per_req=$idPerReq and id_tarea_et=$idTareaET");
+
+		return count($data->result())>0 ? true : false;
+	}
+
 	function asignarPersonal($idEspecialistaTarea, $idPerReq)
 	{
 		$this->db->query("execute sp_Gestionar_ETEspecialistaTarea @opcion='asignarPersonal', @idEspecialistaTarea=$idEspecialistaTarea, @idPerReq=$idPerReq");
