@@ -40,7 +40,7 @@
 					<div style="height: 450px;overflow-y: scroll;">
 						<?php foreach($listaEspecialidad as $key => $value){ ?>
 							<div id="divEspecialidad<?=$value->id_esp?>" class="cajonEspecialidad" draggable="true" ondragstart="drag(event);">
-								<small><?=$value->nombre_esp?></small>
+								<small><?=html_escape($value->nombre_esp)?></small>
 							</div>
 						<?php } ?>
 					</div>
@@ -56,12 +56,12 @@
 								<table style="width: 100%;">
 									<tbody>
 										<tr>
-											<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;margin: 4px;padding: 4px;"><label style="cursor: pointer;"><b>Craet___</b><input type="checkbox" value="craet" style="margin-left: -15px;" onchange="asignarQuitarCraetETPerReq(<?=$value->id_per_req?>, this);" <?=($value->craet ? 'checked=true' : '')?>></label><?=$value->nombre_esp?></div></td>
+											<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;margin: 4px;padding: 4px;"><label style="cursor: pointer;"><b>Craet___</b><input type="checkbox" value="craet" style="margin-left: -15px;" onchange="asignarQuitarCraetETPerReq(<?=$value->id_per_req?>, this);" <?=($value->craet ? 'checked=true' : '')?>></label><?=html_escape($value->nombre_esp)?></div></td>
 											<td>
 												<select class="selectPersonaETPerReq" data-live-search="true" data-width="100%" onchange="asignarPersonalETPerReq(<?=$value->id_per_req?>, this);">
 													<option value=""></option>
 													<?php foreach($listaPersona as $index => $item){ ?>
-														<option value="<?=$item->id_persona?>" <?=($value->id_persona==$item->id_persona ? 'selected' : '')?>><?=$item->nombres.' '.$item->apellido_p.' '.$item->apellido_m?></option>
+														<option value="<?=$item->id_persona?>" <?=($value->id_persona==$item->id_persona ? 'selected' : '')?>><?=html_escape($item->nombres.' '.$item->apellido_p.' '.$item->apellido_m)?></option>
 													<?php } ?>
 												</select>
 											</td>
@@ -192,13 +192,13 @@
 			var listaPersona='';
 
 			<?php foreach($listaPersona as $index => $item){ ?>
-				listaPersona+='<option value="<?=$item->id_persona?>"><?=$item->nombres.' '.$item->apellido_p.' '.$item->apellido_m?></option>';
+				listaPersona+='<option value="<?=$item->id_persona?>"><?=html_escape($item->nombres.' '.$item->apellido_p.' '.$item->apellido_m)?></option>';
 			<?php } ?>
 
 			var htmlTemp='<table style="width: 100%;">'+
 				'<tbody>'+
 					'<tr>'+
-						'<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;margin: 4px;padding: 4px;"><label style="cursor: pointer;"><b>Craet___</b><input type="checkbox" value="craet" style="margin-left: -15px;" onchange="asignarQuitarCraetETPerReq('+objectJSON.idPerReq+', this);"></label>'+$('#'+data).text()+'</div></td>'+
+						'<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;margin: 4px;padding: 4px;"><label style="cursor: pointer;"><b>Craet___</b><input type="checkbox" value="craet" style="margin-left: -15px;" onchange="asignarQuitarCraetETPerReq('+objectJSON.idPerReq+', this);"></label>'+replaceAll(replaceAll($('#'+data).text(), '<', '&gt;'), '>', '&lt;')+'</div></td>'+
 						'<td>'+'<select class="selectPersonaETPerReq" data-live-search="true" data-width="100%" onchange="asignarPersonalETPerReq('+objectJSON.idPerReq+', this);"><option value=""></option>'+listaPersona+'</select>'+'</td>'+
 						'<td style="width: 1%;">'+'<a href="#" style="color: red;padding: 2px;" onclick="eliminarEspecialidadAsignada('+objectJSON.idPerReq+', this);">Eliminar</a>'+'</td>'+
 					'</tr>'+
