@@ -116,8 +116,21 @@
 																	<div class="panel-heading"> EJECUCIÓN PRESUPUESTAL </div>
 																 
 																	  	<div id="actproynombre">
-																			
+																			<br>
 																			<table id="table-EjecucionPresupuestal" class="table  table-striped jambo_table bulk_action" style="text-align: left;"> 
+																			 
+																		  </table> 
+																	  </div>
+																</div>
+															</div>
+															
+															<div class="row" style="margin-left: 10px; margin:10px; ">
+																<div class="panel panel-default">
+																	<div class="panel-heading">INFORMACIÓN FINANCIERA</div>
+																 
+																	  	<div id="metaAcumulada">
+																			<br>
+																			<table id="table-MetaAcumulada" class="table  table-striped jambo_table bulk_action" style="text-align: left;"> 
 																			 
 																		  </table> 
 																	  </div>
@@ -155,6 +168,8 @@ $("#CodigoUnico").on( "click", function()
 		$("#pimdevengadopia").css({"height":"350"}); 
 		$("#pimdevengadopialineasAnual").css({"height":"420"}); 
 		$("#actproynombre").show(2000);
+		$("#metaAcumulada").show(2000);
+		
 		var codigounico=$("#BuscarPip").val();
 		$.ajax({
 		"url":base_url+"index.php/PrincipalReportes/DatosParaEstadisticaAnualProyecto",
@@ -192,6 +207,30 @@ $("#CodigoUnico").on( "click", function()
 			}
 
 		});
+
+		$.ajax({
+		"url":base_url+"index.php/PrincipalReportes/DatosCorrelativoMeta",
+		type:"POST",
+		data:{codigounico:codigounico},
+		success: function(data)
+			{
+		    	console.log(data);
+
+		    	var meta=JSON.parse(data); 
+		        var html;
+				html+="<thead><tr><th>Año Ejec</th><th>Meta</th><th>Pia</th><th>Pim</th><th>Ejecución</th><th>Compromiso</th><th>Devengado</th><th>Girado</th><th>Pagado</th><th>Monto Certif</th><th>Monto comprom</th><th>Monto precert</th></tr></thead>"
+				$.each( meta, function( key, value ) {
+				  html +="<tbody> <tr><th>"+value.ano_eje+"</th><th>"+value.meta+"</th><th>"+value.pia+"</th><th>"+value.modificacion_acumulado+"</th><th>"+value.ejecucion+"</th><th>"+value.compromiso+"</th><th>"+value.devengado+"</th><th>"+value.girado+"</th><th>"+value.pagado+"</th><th>"+value.monto_certificado+"</th><th>"+value.monto_comprometido_anual+"</th><th>"+value.monto_precertificado+"</th></tr>";      
+						html +="</tbody>";
+				});
+				
+				$("#table-MetaAcumulada").html(html);
+		       
+		       
+			}
+
+		});
+
 		$.ajax({
 				"url":base_url+"index.php/PrincipalReportes/BuscadorPipPorCodigoReporte",
 				type:"GET", 

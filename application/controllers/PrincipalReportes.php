@@ -124,6 +124,13 @@ class PrincipalReportes extends CI_Controller
         echo  json_encode($data);
     }
 
+    function DatosCorrelativoMeta()
+    {
+        $codigounico=$this->input->POST('codigounico');
+        $data=$this->Model_Dashboard_Reporte->ReporteCorrelativoMeta($codigounico);
+        echo  json_encode($data);
+    }
+
     function  ReporteDevengadoPiaPimPorPipGraficos()
     {
             $codigounico=$this->input->GET('codigounico');
