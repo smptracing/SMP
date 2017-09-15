@@ -64,7 +64,7 @@
 													<option value=""></option>
 													<?php foreach($listaETPerReq as $index => $item){
 														if($value->id_esp==$item->id_esp){ ?>
-															<option value="<?=$item->id_per_req?>"><?=$item->nombres.' '.$item->apellido_p.' '.$item->apellido_m?></option>
+															<option value="<?=$item->id_per_req?>" <?=($value->id_per_req==$item->id_per_req ? 'selected' : '')?>><?=$item->nombres.' '.$item->apellido_p.' '.$item->apellido_m?></option>
 														<?php } ?>
 													<?php } ?>
 												</select>

@@ -73,7 +73,7 @@ class ET_Especialista_Tarea extends CI_Controller
 				$idEspecialistaTarea=$this->input->post('idEspecialistaTarea');
 				$idPerReq=$this->input->post('idPerReq');
 
-				$this->Model_ET_Especialista_Tarea->asignarPersonal($idEspecialistaTarea, $idPerReq);
+				$this->Model_ET_Especialista_Tarea->asignarPersonal($idEspecialistaTarea, ($idPerReq=='' ? 'NULL' : $idPerReq));
 
 				$this->db->trans_complete();
 

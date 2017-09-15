@@ -72,7 +72,7 @@ class ET_Per_Req extends CI_Controller
 				$idPerReq=$this->input->post('idPerReq');
 				$idPersona=$this->input->post('idPersona');
 
-				$this->Model_ET_Per_Req->asignarPersonal($idPerReq, $idPersona, date('Y-m-d H:m:s'));
+				$this->Model_ET_Per_Req->asignarPersonal($idPerReq, ($idPersona=="" ? 'NULL' : $idPersona), date('Y-m-d H:m:s'));
 
 				$this->db->trans_complete();
 
