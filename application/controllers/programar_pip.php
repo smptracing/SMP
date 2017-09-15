@@ -136,26 +136,32 @@ class programar_pip extends CI_Controller
     //Agregar META PRESUPUESTAL PI
     public function AddMeta_PI()
     {
-        if ($this->input->is_ajax_request()) {
+        if ($this->input->is_ajax_request()) 
+        {
             $flat                       = "C";
             $id_meta_pi                 = "0";
             $txt_anio_meta              = $this->input->post("txt_anio_meta");
             $cbx_meta_presupuestal      = $this->input->post("cbx_meta_presupuestal");
             $txt_id_pip_programacion_mp = $this->input->post("txt_id_pip_programacion_mp");
             $cbx_Meta                   = $this->input->post("cbx_Meta");
-            $txt_pia                    = $this->input->post("txt_pia");
-            $txt_pim                    = $this->input->post("txt_pim");
-            $txt_certificado            = $this->input->post("txt_certificado");
-            $txt_compromiso             = $this->input->post("txt_compromiso");
-            $txt_devengado              = $this->input->post("txt_devengado");
-            $txt_girado                 = $this->input->post("txt_girado");
-            if ($this->programar_pip_modal->AddMeta_PI($flat, $id_meta_pi, $txt_anio_meta, $cbx_meta_presupuestal, $txt_id_pip_programacion_mp, $cbx_Meta, $txt_pia, $txt_pim, $txt_certificado, $txt_compromiso, $txt_devengado, $txt_girado) == false) {
+            $txt_pia                    = floatval(str_replace(",","",$this->input->post("txt_pia")));
+            $txt_pim                    = floatval(str_replace(",","",$this->input->post("txt_pim")));
+            $txt_certificado            = floatval(str_replace(",","",$this->input->post("txt_certificado")));
+            $txt_compromiso             = floatval(str_replace(",","",$this->input->post("txt_compromiso")));
+            $txt_devengado              = floatval(str_replace(",","",$this->input->post("txt_devengado")));
+            $txt_girado                 = floatval(str_replace(",","",$this->input->post("txt_girado")));
+            if ($this->programar_pip_modal->AddMeta_PI($flat, $id_meta_pi, $txt_anio_meta, $cbx_meta_presupuestal, $txt_id_pip_programacion_mp, $cbx_Meta, $txt_pia, $txt_pim, $txt_certificado, $txt_compromiso, $txt_devengado, $txt_girado) == false) 
+            {
                 echo "1";
-            } else {
+            } 
+            else 
+            {
                 echo "2";
             }
 
-        } else {
+        } 
+        else 
+        {
             show_404();
         }
     }

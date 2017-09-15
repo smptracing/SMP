@@ -79,6 +79,14 @@
 						<li><a href="<?php echo site_url('ProyectoInversion/ReporteBuscadorPorPip'); ?>"> <i class="fa fa-area-chart"></i> Avance financiero<span class=""></span></a>
 						</li>
 					</ul>
+					<ul class="nav side-menu">
+						<li><a href="<?php echo site_url('funcion/CadenaFuncional'); ?>""> <i class="fa fa-list"></i> Consulta de PIP<span class=""></span></a>
+						</li>
+					</ul>
+					<ul class="nav side-menu">
+						<li><a href="#"> <i class="fa fa-bars"></i> Consulta de No PIP<span class=""></span></a>
+						</li>
+					</ul>
 		
                 	<ul class="nav side-menu">
                
@@ -88,7 +96,6 @@
                             <span class="fa fa-chevron-down"></span>
                          </a>
                             <ul class="nav child_menu">
-                            	<li><a href="<?php echo site_url('funcion/CadenaFuncional'); ?>">Cadena Funcional</a></li>
                                 <li><a href="<?php echo site_url('funcion/index'); ?>">Funcion</a></li>
                                 <li><a href="<?php echo site_url('DivisionFuncional/index'); ?>">Division Funcional</a></li>
                                 <li><a href="<?php echo site_url('GrupoFuncional/index')?>">Grupo Funcional</a></li>

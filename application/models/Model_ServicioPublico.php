@@ -40,6 +40,17 @@ class Model_ServicioPublico extends CI_Model
               return false;
              }
        }
-      
+        function DeleteServicio($id_servicio_publicoA)
+        {
+            $this->db->query("execute sp_ServPubAsoc_d'".$id_servicio_publicoA."'");
+            if($this->db->affected_rows() > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }     
       
 }

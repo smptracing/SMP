@@ -45,7 +45,7 @@
 														</div>
 			
 														<div class="row">
-																										<div class="row" style="margin-left: 10px; margin:10px; ">
+															<div class="row" style="margin-left: 10px; margin:10px; ">
 															<div class="panel panel-default">
 																 <div class="panel-heading"> EJECUCIÓN ANUAL DEL PROYECTO</div>
 																 
@@ -94,21 +94,59 @@
 																			    </tbody>
 																		  </table> 
 																	  </div>
-																	
 																</div>
-														</div>
+															</div>
+
 												            <div class="row" style="margin-left: 10px; margin:10px; ">
 												                <div class="panel panel-default">
 																 <div class="panel-heading">PIA, PIM Y DEVENGADO ACTUAL </div>
 												                        <div id="pimdevengadopia"></div>
 												                </div>
 													        </div>
-													         <div class="row" style="margin-left: 10px; margin:10px; ">
+
+													        <div class="row" style="margin-left: 10px; margin:10px; ">
 												                <div class="panel panel-default">
 																 <div class="panel-heading">PIA, PIM Y DEVENGADO ANUAL</div>
 												                        <div id="pimdevengadopialineasAnual"></div>
 												                </div>
 													        </div>
+
+															<div class="row" style="margin-left: 10px; margin:10px; ">
+																<div class="panel panel-default">
+																	<div class="panel-heading"> EJECUCIÓN PRESUPUESTAL </div>
+																 
+																	  	<div id="actproynombre">
+																			<br>
+																			<table id="table-EjecucionPresupuestal" class="table  table-striped jambo_table bulk_action" style="text-align: left;"> 
+																			 
+																		  </table> 
+																	  </div>
+																</div>
+															</div>
+															
+															<div class="row" style="margin-left: 10px; margin:10px; ">
+																<div class="panel panel-default">
+																	<div class="panel-heading">INFORMACIÓN FINANCIERA</div>
+																 
+																	  	<div id="metaAcumulada">
+																			<br>
+																			<table id="table-MetaAcumulada" class="table  table-striped jambo_table bulk_action" style="text-align: left;"> 
+																			 
+																		  </table> 
+																	  </div>
+																</div>
+															</div>
+
+															<div class="row" style="margin-left: 10px; margin:10px; ">
+												                <div class="panel panel-default">
+																 <div class="panel-heading">GRÁFICO ESTADÍSTICO DE INFORMACIÓN FINANCIERA </div>
+												                        <div id="MetaPimPiaPorCadaAño"></div>
+												                </div>
+													        </div>
+
+
+
+
 														</div>
 											</div>
 										</div>
@@ -137,6 +175,9 @@ $("#CodigoUnico").on( "click", function()
 		$("#EjecucionAnual").show(2000);
 		$("#pimdevengadopia").css({"height":"350"}); 
 		$("#pimdevengadopialineasAnual").css({"height":"420"}); 
+		$("#actproynombre").show(2000);
+		$("#metaAcumulada").show(2000);
+		
 		var codigounico=$("#BuscarPip").val();
 		$.ajax({
 		"url":base_url+"index.php/PrincipalReportes/DatosParaEstadisticaAnualProyecto",
@@ -154,6 +195,144 @@ $("#CodigoUnico").on( "click", function()
 		        $("#txtdevengado").html(cantidadpipprovincias.pim_acumulado);
 			}
 		});
+
+		$.ajax({
+		"url":base_url+"index.php/PrincipalReportes/DatosEjecucionPresupuestal",
+		type:"POST",
+		data:{codigounico:codigounico},
+		success: function(data)
+			{
+		        console.log(data);
+		        var ejecucionPresupuestal=JSON.parse(data); 
+		        var html;
+				html+="<thead><tr><th>AÑO EJECUCIÓN</th><th>COSTO ACTUAL</th><th>COSTO DE EXPEDIENTE</th><th>COSTO DE VIABILIDAD</th><th>COSTO DE EXP AÑO ANTERIOR</th></tr></thead>"
+				$.each( ejecucionPresupuestal, function( key, value ) {
+				  html +="<tbody> <tr><th>"+value.ano_eje+"</th><th>"+value.costo_actual+"</th><th>"+value.costo_expediente+"</th><th>"+value.costo_viabilidad+"</th><th>"+value.ejecucion_ano_anterior+"</th></tr>";      
+						html +="</tbody>";
+				});
+				
+				$("#table-EjecucionPresupuestal").html(html);
+			}
+
+		});
+
+		$.ajax({
+		"url":base_url+"index.php/PrincipalReportes/DatosCorrelativoMeta",
+		type:"POST",
+		data:{codigounico:codigounico},
+		success: function(data)
+			{
+		    	console.log(data);
+
+		    	var meta=JSON.parse(data); 
+		        var html;
+				html+="<thead><tr><th>Año Ejec</th><th>Meta</th><th>Pia</th><th>Pim</th><th>Ejecución</th><th>Compromiso</th><th>Devengado</th><th>% Avan Fin.</th><th>Girado</th><th>Pagado</th><th>Monto Certif</th><th>Monto comprom</th><th>Monto precert</th></tr></thead>"
+				$.each( meta, function( key, value ) {
+				  html +="<tbody> <tr><th>"+value.ano_eje+"</th><th>"+value.meta+"</th><th>"+value.pia+"</th><th>"+value.modificacion_acumulado+"</th><th>"+value.ejecucion+"</th><th>"+value.compromiso+"</th><th>"+value.devengado+"</th><th>"+value.avance_financiero+"</th><th>"+value.girado+"</th><th>"+value.pagado+"</th><th>"+value.monto_certificado+"</th><th>"+value.monto_comprometido_anual+"</th><th>"+value.monto_precertificado+"</th></tr>";      
+						html +="</tbody>";
+				});
+				
+				$("#table-MetaAcumulada").html(html);
+		       
+		       
+			}
+
+		});
+
+
+		
+		$.ajax({
+				"url":base_url+"index.php/PrincipalReportes/BuscadorPipPorCodigoReporte",
+				type:"GET", 
+				data:{codigounico:codigounico},
+				cache:false,
+				success:function(resp)
+				{
+						var cantidadpipprovincias=JSON.parse(resp);
+						var dom = document.getElementById("pimdevengadopia");
+						var myChart = echarts.init(dom);
+				
+						option = {
+						    tooltip: {
+						        trigger: 'axis',
+						        axisPointer: {
+						            type: 'cross',
+						            crossStyle: {
+						                color: '#999'
+						            }
+						        }
+						    },
+						    toolbox: {
+						        feature: {
+						            dataView: {show: true, readOnly: false},
+						            magicType: {show: true, type: ['line', 'bar']},
+						            restore: {show: true},
+						            saveAsImage: {show: true}
+						        }
+						    },
+						    legend: {
+						        data:['蒸发量','降水量','平均温度']
+						    },
+						    xAxis: [
+						        {
+						            type: 'category',
+						            data: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
+						            axisPointer: {
+						                type: 'shadow'
+						            }
+						        }
+						    ],
+						    yAxis: [
+						        {
+						            type: 'value',
+						            name: '水量',
+						            min: 0,
+						            max: 250,
+						            interval: 50,
+						            axisLabel: {
+						                formatter: '{value} ml'
+						            }
+						        },
+						        {
+						            type: 'value',
+						            name: '温度',
+						            min: 0,
+						            max: 25,
+						            interval: 5,
+						            axisLabel: {
+						                formatter: '{value} °C'
+						            }
+						        }
+						    ],
+						    series: [
+						        {
+						            name:'蒸发量',
+						            type:'bar',
+						            data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
+						        },
+						        {
+						            name:'降水量',
+						            type:'bar',
+						            data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
+						        },
+						        {
+						            name:'平均温度',
+						            type:'line',
+						            yAxisIndex: 1,
+						            data:[2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3, 23.4, 23.0, 16.5, 12.0, 6.2]
+						        }
+						    ]
+						};
+
+
+						if (option && typeof option === "object") {
+						    myChart.setOption(option, true);
+						}
+
+						
+					}
+				});
+			
 		$.ajax({
 				"url":base_url+"index.php/PrincipalReportes/BuscadorPipPorCodigoReporte",
 				type:"GET", 

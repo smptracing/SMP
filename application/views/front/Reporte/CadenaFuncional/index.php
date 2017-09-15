@@ -5,7 +5,7 @@
 			<div class="col-md-12 col-xs-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
-						<h2><b>REPORTE DE PIP POR FUNCIÓN</b> </h2>
+						<h2><b>CONSULTA DE PIP</b> </h2>
 						<ul class="nav navbar-right panel_toolbox">
 						</ul>
 						<div class="clearfix"></div>
