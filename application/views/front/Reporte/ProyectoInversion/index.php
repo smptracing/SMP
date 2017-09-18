@@ -139,13 +139,10 @@
 
 															<div class="row" style="margin-left: 10px; margin:10px; ">
 												                <div class="panel panel-default">
-																 <div class="panel-heading">GRÁFICO ESTADÍSTICO DE INFORMACIÓN FINANCIERA </div>
+																 <div class="panel-heading">GRÁFICO ESTADÍSTICO DE INFORMACIÓN FINANCIERA</div>
 												                        <div id="MetaPimPiaPorCadaAño"></div>
 												                </div>
 													        </div>
-
-
-
 
 														</div>
 											</div>
@@ -177,7 +174,8 @@ $("#CodigoUnico").on( "click", function()
 		$("#pimdevengadopialineasAnual").css({"height":"420"}); 
 		$("#actproynombre").show(2000);
 		$("#metaAcumulada").show(2000);
-		
+		$("#MetaPimPiaPorCadaAño").css({"height":"420"}); 
+
 		var codigounico=$("#BuscarPip").val();
 		$.ajax({
 		"url":base_url+"index.php/PrincipalReportes/DatosParaEstadisticaAnualProyecto",
@@ -228,31 +226,31 @@ $("#CodigoUnico").on( "click", function()
 		        var html;
 				html+="<thead><tr><th>Año Ejec</th><th>Meta</th><th>Pia</th><th>Pim</th><th>Ejecución</th><th>Compromiso</th><th>Devengado</th><th>% Avan Fin.</th><th>Girado</th><th>Pagado</th><th>Monto Certif</th><th>Monto comprom</th><th>Monto precert</th></tr></thead>"
 				$.each( meta, function( key, value ) {
-				  html +="<tbody> <tr><th>"+value.ano_eje+"</th><th>"+value.meta+"</th><th>"+value.pia+"</th><th>"+value.modificacion_acumulado+"</th><th>"+value.ejecucion+"</th><th>"+value.compromiso+"</th><th>"+value.devengado+"</th><th>"+value.avance_financiero+"</th><th>"+value.girado+"</th><th>"+value.pagado+"</th><th>"+value.monto_certificado+"</th><th>"+value.monto_comprometido_anual+"</th><th>"+value.monto_precertificado+"</th></tr>";      
+				  html +="<tbody> <tr><th>"+value.ano_eje+"</th><th>"+value.meta+"</th><th>"+value.pia+"</th><th>"+value.modificacion_acumulado+"</th><th>"+value.ejecucion+"</th><th>"+value.compromiso+"</th><th>"+value.devengado+"</th><th>"+value.avance_financiero+'%'+"</th><th>"+value.girado+"</th><th>"+value.pagado+"</th><th>"+value.monto_certificado+"</th><th>"+value.monto_comprometido_anual+"</th><th>"+value.monto_precertificado+"</th></tr>";      
 						html +="</tbody>";
 				});
 				
 				$("#table-MetaAcumulada").html(html);
-		       
-		       
 			}
 
 		});
 
 
-		
 		$.ajax({
-				"url":base_url+"index.php/PrincipalReportes/BuscadorPipPorCodigoReporte",
+				"url":base_url+"index.php/PrincipalReportes/GrafEstInfFinanciera",
 				type:"GET", 
 				data:{codigounico:codigounico},
 				cache:false,
 				success:function(resp)
 				{
-						var cantidadpipprovincias=JSON.parse(resp);
-						var dom = document.getElementById("pimdevengadopia");
+				alert(resp);
+						var pip=JSON.parse(resp);
+						//console.log(anio);
+						//alert(anio);
+						var dom = document.getElementById("MetaPimPiaPorCadaAño");
 						var myChart = echarts.init(dom);
 				
-						option = {
+						/*option = {
 						    tooltip: {
 						        trigger: 'axis',
 						        axisPointer: {
@@ -271,12 +269,13 @@ $("#CodigoUnico").on( "click", function()
 						        }
 						    },
 						    legend: {
-						        data:['蒸发量','降水量','平均温度']
+						        data:['Pim','Devengado']
 						    },
 						    xAxis: [
 						        {
 						            type: 'category',
-						            data: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
+						            data: pip[0], //AÑOS 
+						            
 						            axisPointer: {
 						                type: 'shadow'
 						            }
@@ -285,51 +284,176 @@ $("#CodigoUnico").on( "click", function()
 						    yAxis: [
 						        {
 						            type: 'value',
-						            name: '水量',
+						            name: 'Pim',
 						            min: 0,
-						            max: 250,
-						            interval: 50,
+						            max: 1000000,
+						            interval: 160000,
 						            axisLabel: {
-						                formatter: '{value} ml'
-						            }
-						        },
-						        {
-						            type: 'value',
-						            name: '温度',
-						            min: 0,
-						            max: 25,
-						            interval: 5,
-						            axisLabel: {
-						                formatter: '{value} °C'
+						                formatter: '{value}'
 						            }
 						        }
 						    ],
 						    series: [
 						        {
-						            name:'蒸发量',
+						            name:'Pim',
 						            type:'bar',
-						            data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
+						            data: pip[1],
 						        },
 						        {
-						            name:'降水量',
+						            name:'Devengado',
 						            type:'bar',
-						            data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
-						        },
-						        {
-						            name:'平均温度',
-						            type:'line',
-						            yAxisIndex: 1,
-						            data:[2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3, 23.4, 23.0, 16.5, 12.0, 6.2]
+						            data:pip[2]
 						        }
 						    ]
+						};*/
+						var app = {};
+						option = null;
+							var posList = [
+						    'left', 'right', 'top', 'bottom',
+						    'inside',
+						    'insideTop', 'insideLeft', 'insideRight', 'insideBottom',
+						    'insideTopLeft', 'insideTopRight', 'insideBottomLeft', 'insideBottomRight'
+						];
+
+						app.configParameters = {
+						    rotate: {
+						        min: -90,
+						        max: 90
+						    },
+						    align: {
+						        options: {
+						            left: 'left',
+						            center: 'center',
+						            right: 'right'
+						        }
+						    },
+						    verticalAlign: {
+						        options: {
+						            top: 'top',
+						            middle: 'middle',
+						            bottom: 'bottom'
+						        }
+						    },
+						    position: {
+						        options: echarts.util.reduce(posList, function (map, pos) {
+						            map[pos] = pos;
+						            return map;
+						        }, {})
+						    },
+						    distance: {
+						        min: 0,
+						        max: 100
+						    }
 						};
+
+						app.config = {
+						    rotate: 90,
+						    align: 'left',
+						    verticalAlign: 'middle',
+						    position: 'insideBottom',
+						    distance: 15,
+						    onChange: function () {
+						        var labelOption = {
+						            normal: {
+						                rotate: app.config.rotate,
+						                align: app.config.align,
+						                verticalAlign: app.config.verticalAlign,
+						                position: app.config.position,
+						                distance: app.config.distance
+						            }
+						        };
+						        myChart.setOption({
+						            series: [{
+						                label: labelOption
+						            }, {
+						                label: labelOption
+						            }, {
+						                label: labelOption
+						            }, {
+						                label: labelOption
+						            }]
+						        });
+						    }
+						};
+
+
+						var labelOption = {
+						    normal: {
+						        show: true,
+						        position: app.config.position,
+						        distance: app.config.distance,
+						        align: app.config.align,
+						        verticalAlign: app.config.verticalAlign,
+						        rotate: app.config.rotate,
+						        formatter: '{c}  {name|{a}}',
+						        fontSize: 14,
+						        rich: {
+						            name: {
+						                textBorderColor: '#fff'
+						            }
+						        }
+						    }
+						};
+
+						option = {
+						    color: ['#2E86C1', '#CB4335'],
+						    tooltip: {
+						        trigger: 'axis',
+						        axisPointer: {
+						            type: 'shadow'
+						        }
+						    },
+						    legend: {
+						        data: ['DEVENGADO', 'PIM']
+						    },
+						    toolbox: {
+						        show: false,
+						        orient: 'vertical',
+						        left: 'right',
+						        top: 'center',
+						        feature: {
+						            mark: {show: true},
+						            dataView: {show: true, readOnly: false},
+						            magicType: {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+						            restore: {show: true},
+						            saveAsImage: {show: true}
+						        }
+						    },
+						    calculable: true,
+						    xAxis: [
+						        {
+						            type: 'category',
+						            axisTick: {show: false},
+						            data: pip[0]
+						        }
+						    ],
+						    yAxis: [
+						        {
+						            type: 'value'
+						        }
+						    ],
+						    series: [
+						        {
+						            name: 'DEVENGADO',
+						            type: 'bar',
+						            barGap: 0,
+						            label: labelOption,
+						            data: pip[1]
+						        },
+						        {
+						            name: 'PIM',
+						            type: 'bar',
+						            label: labelOption,
+						            data: pip[2]
+						        } 
+						    ]
+						};
+
 
 
 						if (option && typeof option === "object") {
 						    myChart.setOption(option, true);
 						}
-
-						
 					}
 				});
 			

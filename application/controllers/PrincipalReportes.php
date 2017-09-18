@@ -90,6 +90,28 @@ class PrincipalReportes extends CI_Controller
         show_404();
     }
 
+    public function GrafEstInfFinanciera()
+    { 
+       
+        if ($this->input->is_ajax_request()) {
+            $CodigoUnico=$this->input->get('codigounico');
+            $datos = $this->Model_Dashboard_Reporte->ReporteCorrelativoMeta($CodigoUnico);
+            $var1=[];
+            foreach ($datos as $key => $Itemp) {
+                $anio[]=$Itemp->ano_eje;
+                $devengado[]=$Itemp->devengado;
+                $pim[]=$Itemp->modificacion_acumulado;
+            }
+            $var1[]=$anio;
+            $var1[]=$devengado;
+            $var1[]=$pim;
+          
+
+            echo json_encode($var1);
+        } else
+        show_404();
+    }
+
     public function FuncionNumeroPip()
     {
         if ($this->input->is_ajax_request()) 
