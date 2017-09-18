@@ -224,9 +224,9 @@ $("#CodigoUnico").on( "click", function()
 
 		    	var meta=JSON.parse(data); 
 		        var html;
-				html+="<thead><tr><th>Año Ejec</th><th>Meta</th><th>Pia</th><th>Pim</th><th>Ejecución</th><th>Compromiso</th><th>Devengado</th><th>% Avan Fin.</th><th>Girado</th><th>Pagado</th><th>Monto Certif</th><th>Monto comprom</th><th>Monto precert</th></tr></thead>"
+				html+="<thead><tr><th>Año Ejec</th><th>Meta</th><th>Pia</th><th>Pim</th><th>Ejecución</th><th>Compromiso</th><th>Devengado</th><th>% Avan Fin.</th><th>Girado</th><th>Pagado</th><th>Monto Certif</th><th>Monto comprom</th><th>Monto precert</th><th>opcion</th>/tr></thead>"
 				$.each( meta, function( key, value ) {
-				  html +="<tbody> <tr><th>"+value.ano_eje+"</th><th>"+value.meta+"</th><th>"+value.pia+"</th><th>"+value.modificacion_acumulado+"</th><th>"+value.ejecucion+"</th><th>"+value.compromiso+"</th><th>"+value.devengado+"</th><th>"+value.avance_financiero+'%'+"</th><th>"+value.girado+"</th><th>"+value.pagado+"</th><th>"+value.monto_certificado+"</th><th>"+value.monto_comprometido_anual+"</th><th>"+value.monto_precertificado+"</th></tr>";      
+				  html +="<tbody> <tr><th>"+value.ano_eje+"</th><th>"+value.meta+"</th><th>"+value.pia+"</th><th>"+value.modificacion_acumulado+"</th><th>"+value.ejecucion+"</th><th>"+value.compromiso+"</th><th>"+value.devengado+"</th><th>"+value.avance_financiero+'%'+"</th><th>"+value.girado+"</th><th>"+value.pagado+"</th><th>"+value.monto_certificado+"</th><th>"+value.monto_comprometido_anual+"</th><th>"+value.monto_precertificado+"</th><th><button type='button' class='editar btn btn-primary btn-xs' onclick='detalladoMensualizado("+value.ano_eje+","+value.meta+");'><i class='ace-icon fa fa-pencil bigger-120'></i></button></th></tr>";      
 						html +="</tbody>";
 				});
 				
@@ -243,10 +243,9 @@ $("#CodigoUnico").on( "click", function()
 				cache:false,
 				success:function(resp)
 				{
-				alert(resp);
+				//alert(resp);
 						var pip=JSON.parse(resp);
-						//console.log(anio);
-						//alert(anio);
+				
 						var dom = document.getElementById("MetaPimPiaPorCadaAño");
 						var myChart = echarts.init(dom);
 				
@@ -806,5 +805,12 @@ $("#CodigoUnico").on( "click", function()
 		});
 	
 });
+
+	function detalladoMensualizado(anio,meta)
+	{
+		//paginaAjaxDialogo(null, 'Ver Detallado Mensualizado',null, base_url+'index.php/PrincipalReportes/DetalleMensualizado', 'GET', null, null, false, true);
+		paginaAjaxDialogo(null, 'Ver Detallado Mensualizado',{ anio: anio, meta:meta}, base_url+'index.php/PrincipalReportes/DetalleMensualizado', 'GET', null, null, false, true);
+		
+	}
 </script>
 

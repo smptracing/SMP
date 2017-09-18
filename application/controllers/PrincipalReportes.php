@@ -160,6 +160,15 @@ class PrincipalReportes extends CI_Controller
             echo  json_encode($data);
     }
 
+    function DetalleMensualizado()
+    {
+        $correlativoMeta=$this->input->GET('meta');
+        $anioMeta=$this->input->GET('anio');
+        $listaDetalleMensualizado=$this->Model_Dashboard_Reporte->DetalleMensualizadoMeta($correlativoMeta,$anioMeta);
+        $this->load->view('front/Reporte/ProyectoInversion/detalle',['listaDetalleMensualizado'=>$listaDetalleMensualizado]);
+        //$this->load->view('front/Reporte/ProyectoInversion/detalle');
+    }
+
     public function _load_layout($template)
     {
         $this->load->view('layout/Reportes/header');

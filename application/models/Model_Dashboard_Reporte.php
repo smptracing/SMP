@@ -143,6 +143,14 @@ class Model_Dashboard_Reporte extends CI_Model
             return $data->result();       
     }
 
+    function DetalleMensualizadoMeta($correlativoMeta, $anioMeta)
+    {
+        $opcion="listar_mensualizado_meta";
+        $data = $this->db->query("execute sp_Gestionar_SIAF @opcion='".$opcion."',  @correlativo_meta='".$correlativoMeta."', @anio_meta='".$anioMeta."'");
+            
+            return $data->result();
+    }
+
     function ReporteDevengadoPiaPimPorPipGraficos($CodigoUnico)
     {
         $data = $this->db->query("select codigo_unico_pi,SUM(costo_pi) as costo_pi,SUM(pia_meta_pres) as pia_meta_pres ,SUM(pim_acumulado) AS pim_acumulado,
