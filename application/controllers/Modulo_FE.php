@@ -26,7 +26,7 @@ class Modulo_FE extends CI_Controller
 
 			if(count($this->Model_ModuloFE->ModuloPorNombre($txtNombre))>0)
             {
-                $this->session->set_flashdata('error', 'Este tipo de gasto ya fue registrado con anterioridad.');
+                $this->session->set_flashdata('error', 'Este módulo ya fue registrado con anterioridad.');
                 return redirect('/Modulo_FE');
             }
 
@@ -47,7 +47,7 @@ class Modulo_FE extends CI_Controller
 
 			if(count($this->Model_ModuloFE->ModuloPorNombreDifId($id, $txtNombre))>0)
             {
-                $this->session->set_flashdata('error', 'Este tipo de gasto ya fue registrado con anterioridad.');
+                $this->session->set_flashdata('error', 'Este módulo ya fue registrado con anterioridad.');
                 return redirect('/Modulo_FE');
             }
 
