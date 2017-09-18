@@ -14,7 +14,7 @@ class Modulo_FE extends CI_Controller
 		$ListaModulo=$this->Model_ModuloFE->ListarModulo();
 		
 		$this->load->view('layout/Formulacion_Evaluacion/header');
-		$this->load->view('Front/PresupuestoEstudioInversion/ModuloFe/index', ['ListaModuloFE' => $ListaModulo]);
+		$this->load->view('Front/Formulacion_Evaluacion/ModuloFe/index', ['ListaModuloFE' => $ListaModulo]);
 		$this->load->view('layout/Formulacion_Evaluacion/footer');
 	}
 
@@ -35,7 +35,7 @@ class Modulo_FE extends CI_Controller
 	    	return redirect('/Modulo_FE'); 	
 		}
 
-	    return $this->load->view('Front/PresupuestoEstudioInversion/ModuloFE/insertar');
+	    return $this->load->view('Front/Formulacion_Evaluacion/ModuloFE/insertar');
 	}
 
 	public function editar()
@@ -58,7 +58,7 @@ class Modulo_FE extends CI_Controller
 
 		$id=$this->input->post('id');
 		$Modulo=$this->Model_ModuloFE->EditarModuloFE($id)[0];	    
-	    return $this->load->view('Front/PresupuestoEstudioInversion/ModuloFE/editar', ['Modulo' => $Modulo]);	
+	    return $this->load->view('Front/Formulacion_Evaluacion/ModuloFE/editar', ['Modulo' => $Modulo]);	
 	}
 
 	public function eliminar($idModulo)
