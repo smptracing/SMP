@@ -73,12 +73,22 @@ class ET_Tarea extends CI_Controller
 			$value->childETEspecialidadTarea=$this->Model_ET_Especialista_Tarea->EspecialistaTareaPorIdTarea($value->id_tarea_et);
 
 			$personaAsignadaTemp='';
+			$ultimaEspecialidadTemp=null;
 
 			foreach($value->childETEspecialidadTarea as $index => $item)
 			{
 				if($item->nombres!=null)
 				{
-					$personaAsignadaTemp.='<b>'.$item->nombre_esp.':</b> '.$item->nombres.' '.$item->apellido_p.' '.$item->apellido_m.', ';
+					if($ultimaEspecialidadTemp!=$item->nombre_esp)
+					{
+						$ultimaEspecialidadTemp=$item->nombre_esp;
+
+						$personaAsignadaTemp.='<b>'.$item->nombre_esp.':</b> '.$item->nombres.' '.$item->apellido_p.' '.$item->apellido_m.', ';
+					}
+					else
+					{
+						$personaAsignadaTemp.=$item->nombres.' '.$item->apellido_p.' '.$item->apellido_m.', ';
+					}
 				}
 			}
 
