@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="<?=base_url()?>assets/vendors/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="<?=base_url()?>assets/dist/css/bootstrap-select.css">
-<div style="height: 250px;overflow-y: scroll;">
+<div id="divComentario" style="height: 250px;overflow-y: scroll;">
 	<table id="tableComentario" class="table table-striped">
 		<tbody>
 			<?php foreach($listaETComentario as $key => $value){ ?>
@@ -76,6 +76,8 @@
 
 			$('#tableComentario > tbody').append(htmlTemp);
 			$('#txtDescripcionComentario').val(null);
+
+			$('#divComentario').animate({ scrollTop :  $('#divComentario').scrollTop()+$('#divComentario')[0].scrollHeight }, 200);
 		}, false, true);
 	}
 
