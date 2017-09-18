@@ -146,6 +146,7 @@
                       <li><a href="<?php echo site_url('DenominacionFE/'); ?>">Denominacion</a></li>
                       <li><a href="<?php echo site_url('EtapasFE/'); ?>">Etapas</a></li>
                       <li><a href="<?php echo site_url('Tipo_Gasto_FE/'); ?>">Tipo Gasto</a></li>
+                      <li><a href="<?php echo site_url('Modulo_FE/'); ?>">Módulo</a></li>
                     </ul>
                   </li>
 
