@@ -56,4 +56,11 @@ class Model_ET_Especialista_Tarea extends CI_Model
 
 		return $data->result();
 	}
+
+	public function EspecialistaTareaPorIdTareaYIdPersona($idTareaET, $idPersona)
+	{
+		$data=$this->db->query("select * from ET_ESPECIALISTA_TAREA as ETESPT left join ET_PER_REQ as ETPR on ETESPT.id_per_req=ETPR.id_per_req left join PERSONA as P on ETPR.id_persona=P.id_persona left join ESPECIALIDAD as E on ETPR.id_esp=E.id_esp where ETESPT.id_tarea_et=$idTareaET and P.id_persona=$idPersona order by (E.nombre_esp)");
+
+		return count($data->result())==0 ? null : $data->result()[0];
+	}
 }

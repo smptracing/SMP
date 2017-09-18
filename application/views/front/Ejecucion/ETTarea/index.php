@@ -320,7 +320,7 @@
 				return;
 			}
 
-			paginaAjaxDialogo(null, replaceAll(replaceAll(nombreTarea, '<', '&lt;'), '>', '&gt;'), { idTareaET : taskId }, '<?=base_url()?>index.php/Comentario/insertar', 'GET', null, null, false, true);
+			paginaAjaxDialogo(null, replaceAll(replaceAll(nombreTarea, '<', '&lt;'), '>', '&gt;'), { idTareaET : taskId }, '<?=base_url()?>index.php/ET_Comentario/insertar', 'GET', null, null, false, true);
 		}
 	</script>
 </body>

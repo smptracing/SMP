@@ -60,9 +60,31 @@
 		<div class="col-md-12" style="margin-top: 4px;">
 			<input type="file" value="Publicar" multiple class="col-md-7">
 			<div class="col-md-1"></div>
-			<input type="button" class="btn btn-primary col-md-4" value="Publicar comentario">
+			<input type="button" class="btn btn-primary col-md-4" value="Publicar comentario" onclick="insertarComentario();">
 		</div>
 	</div>
 </div>
 <script src="<?=base_url()?>assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="<?=base_url()?>assets/dist/js/bootstrap-select.js"></script>
+<script>
+	function insertarComentario()
+	{
+		paginaAjaxJSON({ idTareaET : <?=$idTareaET?>, descComentario : $('#txtDescripcionComentario').val() }, '<?=base_url()?>index.php/ET_Comentario/insertar', 'POST', null, function(objectJSON)
+		{
+			objectJSON=JSON.parse(objectJSON);
+
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
+			},
+			function(){});
+
+			if(objectJSON.proceso=='Error')
+			{
+				return false;
+			}
+		}, false, true);
+	}
+</script>
