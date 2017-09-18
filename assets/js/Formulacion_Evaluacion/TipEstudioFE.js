@@ -114,6 +114,7 @@ var listaTipEstudioFE=function()
         "language":idioma_espanol
     });
     FENivelEstudio("#table-TipEstudioFE",table);
+    EliminarTipoLista("#table-TipEstudioFE",table);
 }
 
 var  FENivelEstudio=function(tbody,table){
@@ -150,4 +151,35 @@ var idioma_espanol=
         "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
         "sSortDescending": ": Activar para ordenar la columna de manera descendente"
     }
+}
+
+var EliminarTipoLista=function(tbody,table)
+{
+    $(tbody).on("click","button.eliminar",function()
+    {
+        var data=table.row( $(this).parents("tr")).data();
+        var id_tipo_est=data.id_tipo_est;
+        swal({
+                title: "Esta seguro que desea eliminar el tipo?",
+                text: "",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "SI,ELIMINAR",
+                closeOnConfirm: false
+            },
+        function()
+        {
+            $.ajax({
+            url:base_url+"index.php/TipEstudioFE/deleteTipoEstudioFE",
+            type:"POST",
+            data:{id_tipoEstudioFE:id_tipo_est},
+            success:function(respuesta)
+            {
+                swal("ELIMINADO!", "SE ELIMINO UN TIPO DE ESTUDIO EN FORMULACION Y EVALUACION", "success");
+                $('#table-TipEstudioFE').dataTable()._fnAjaxUpdate();
+            }
+            });
+        });
+    });
 }
