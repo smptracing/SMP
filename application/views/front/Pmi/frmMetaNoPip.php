@@ -15,12 +15,6 @@
                                 <div class="x_panel">
                                   <div class="x_title">
                                     <h2>PROYECTOS</h2>
-                                    <ul class="nav navbar-right panel_toolbox">
-                                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                      </li>
-                                      <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                      </li>
-                                    </ul>
                                     <div class="clearfix"></div>
                                   </div>
                                   <div class="x_content">
@@ -124,11 +118,11 @@
                               <div class="item form-group">
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>PIA</label></center>
-                                      <input  class="form-control" id="txt_pia" name="txt_pia" type="number" required="required" value="0.00" disabled="disabled">
+                                      <input  class="form-control" id="txt_piaA" name="txt_piaA" type="number" required="required" value="0.00" disabled="disabled">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>PIM</label></center>
-                                      <input  class="form-control" id="txt_pim" name="txt_pim" type="number" required="required" value="0.00"  disabled="disabled">
+                                      <input  class="form-control" id="txt_pimA" name="txt_pimA" type="number" required="required" value="0.00"  disabled="disabled">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>Devengado</label></center>
@@ -214,79 +208,76 @@
           Meta Presupuestal PI</h4>
         </div>
         <div class="modal-body">
-         <div class="row">
-                    <div class="col-xs-12">
-                                        <!-- PAGE CONTENT BEGINS -->
-              <form class="form-horizontal " id="form_AddMeta_Pi"   action="<?php echo base_url(); ?>bancoproyectos/Get_OperacionMantenimiento" method="POST" >
-
-                        <input id="txt_id_pip_programacion_mp" name="txt_id_pip_programacion_mp" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
-                              <div class="item form-group">
-                               <div class="col-md-2 col-sm-6 col-xs-12">
-                                      <label>Año</label>
-                                      <input id="txt_anio_meta" name="txt_anio_meta" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name"  placeholder="Año" required="required" type="number"  value="2017">
-                                    </div>
-                              </div>
-                               <div class="item form-group">
-                               <div class="col-md-3 col-sm-6 col-xs-12">
-                                      <label>Código Único</label>
-                                      <input  class="form-control" id="txt_codigo_unico_pi_mp" name="txt_codigo_unico_pi_mp" type="text" disabled="disabled">
-                                    </div>
-                                  <div class="col-md-9 col-sm-6 col-xs-12">
-                                      <label>Nombre del Proyecto</label>
-                                      <input  class="form-control" id="txt_nombre_proyecto_mp" name="txt_nombre_proyecto_mp" type="text" disabled="disabled">
-                                    </div>
-                                   <div class="col-md-3 col-sm-8 col-xs-12">
-                                      <label>Costo del Proyecto</label>
-                                      <input  class="form-control" id="txt_costo_proyecto_mp" name="txt_costo_proyecto_mp" type="text" disabled="disabled">
-                                    </div>
-
-                                    <div class="col-md-4 col-sm-8 col-xs-12">
-                                      <label>Meta Presupuestal</label>
-                                      <select id="cbx_meta_presupuestal" name="cbx_meta_presupuestal" class="selectpicker" data-live-search="true" title="Elija Meta">
-                                      </select>
-                                    </div>
-                                    <div class="col-md-4 col-sm-8 col-xs-12">
-                                      <label>Correlativo Meta </label>
-                                      <select id="cbx_Meta" name="cbx_Meta" class="selectpicker" data-live-search="true" title="Elija Meta">
-                                      </select>
-                                    </div>
-                                 </div>
-                              <div class="item form-group">
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
-                                      <label>PIA</label>
-                                      <input  class="form-control" id="txt_pia" name="txt_pia"  step="any" type="number" required="required">
-                                    </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
-                                      <label>PIM</label>
-                                      <input  class="form-control" id="txt_pim" name="txt_pim"  step="any" type="number" required="required">
-                                    </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
-                                      <label>Certificado</label>
-                                      <input  class="form-control" id="txt_certificado"  step="any" name="txt_certificado" type="number" required="required">
-                                    </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
-                                      <label>compromiso</label>
-                                      <input  class="form-control" id="txt_compromiso"  step="any" name="txt_compromiso" type="number" required="required">
-                                    </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
-                                      <label>Devengado</label>
-                                      <input  class="form-control" id="txt_devengado"  step="any" name="txt_devengado" type="number" required="required">
-                                    </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
-                                      <label>Girado</label>
-                                      <input  class="form-control" id="txt_girado" name="txt_girado"  step="any" type="number" required="required">
-                                    </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
-                                      <label>.</label><br>
-                                       <button  id="send" type="submit" class="btn btn-success">
-                                             <span class="glyphicon glyphicon-floppy-saved"></span> Guardar
-                                        </button>
-                                    </div>
-                                 </div>
-
-
-                     <div class="ln_solid"></div>
-                     <div class="x_panel" style="background-color: #EEEEEE;">
+        <div class="row">
+        <div class="col-xs-12">
+            <form class="form-horizontal " id="form_AddMeta_Pi" action="" method="POST" >
+                <div id="validarMeta">
+                    <input id="txt_id_pip_programacion_mp" name="txt_id_pip_programacion_mp" class="form-control col-md-7 col-xs-12" required="required" type="hidden">
+                    <div class="item form-group">
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <label for="txt_anio_meta">Año</label>
+                            <input id="txt_anio_meta" name="txt_anio_meta" class="form-control col-md-7 col-xs-12" placeholder="Año" type="text"  value="2017">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <label>Código Único</label>
+                            <input  class="form-control" id="txt_codigo_unico_pi_mp" name="txt_codigo_unico_pi_mp" type="text" disabled="disabled">
+                        </div>
+                        <div class="col-md-9 col-sm-6 col-xs-12">
+                            <label>Nombre del Proyecto</label>
+                            <input  class="form-control" id="txt_nombre_proyecto_mp" name="txt_nombre_proyecto_mp" type="text" disabled="disabled">
+                        </div>
+                        <div class="col-md-3 col-sm-8 col-xs-12">
+                            <label>Costo del Proyecto</label>
+                            <input  class="form-control" id="txt_costo_proyecto_mp" name="txt_costo_proyecto_mp" type="text" disabled="disabled">
+                        </div>
+                        <div class="col-md-4 col-sm-8 col-xs-12">
+                            <label for="cbx_meta_presupuestal">Meta Presupuestal</label>
+                            <select id="cbx_meta_presupuestal" name="cbx_meta_presupuestal" class="selectpicker" data-live-search="true" title="Elija Meta">
+                            </select>
+                        </div>
+                        <div class="col-md-4 col-sm-8 col-xs-12">
+                            <label for="cbx_Meta">Correlativo Meta </label>
+                            <select id="cbx_Meta" name="cbx_Meta" class="selectpicker" data-live-search="true" title="Elija Meta">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <label for="txt_pia">PIAA</label>
+                            <input  class="form-control" id="txt_pia" name="txt_pia" type="text" autocomplete="off">
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <label for="txt_pim">PIM</label>
+                            <input  class="form-control" id="txt_pim" name="txt_pim" type="text" autocomplete="off">
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <label for="txt_certificado">Certificado</label>
+                            <input  class="form-control" id="txt_certificado" name="txt_certificado" type="text" autocomplete="off">
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <label for="txt_compromiso">compromiso</label>
+                            <input  class="form-control" id="txt_compromiso" name="txt_compromiso" type="text" autocomplete="off">
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <label for="txt_devengado">Devengado</label>
+                            <input  class="form-control" id="txt_devengado" name="txt_devengado" type="text" autocomplete="off">
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <label for="txt_girado">Girado</label>
+                            <input  class="form-control" id="txt_girado" name="txt_girado" type="text" autocomplete="off">
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <label>.</label><br>
+                            <button  id="send" type="submit" class="btn btn-success">
+                                <span class="glyphicon glyphicon-floppy-saved"></span> Guardar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="ln_solid"></div>
+                <div class="x_panel" style="background-color: #EEEEEE;">
                     <center>
                     <table  id="Table_meta_pi" class="table   table-hover" >
                     <thead >
@@ -304,7 +295,7 @@
                     </thead>
                     </table>
                     </center>
-                    </div>
+                </div>
                     <center>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">

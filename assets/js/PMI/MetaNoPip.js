@@ -1,55 +1,277 @@
-$(document).on("ready" ,function(){
-     lista_no_pip();/*llamar a mi datatablet listar proyectosinverision*/
-     $("#form_AddProgramacion").submit(function(event)
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/programar_nopip/AddProgramacion",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           //alert(resp);
-                           if (resp=='1') {
-                             swal("REGISTRADO","Se regristró correctamente", "success");
-                             //formReset();
-                           }
-                            if (resp=='2') {
-                             swal("NO SE REGISTRÓ","NO se regristró ", "error");
-                           }
-                          $('#Table_Programar').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
-                          $('#table_NoPip').dataTable()._fnAjaxUpdate();
-                            // formReset();
-                         }
-                      });
-                  });
-     $("#form_AddMeta_Pi").submit(function(event)
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/programar_nopip/AddMeta_PI",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           //alert(resp);
-                           if (resp=='1') {
-                             swal("REGISTRADO","Se regristró correctamente", "success");
-                             formReset();
-                           }
-                            if (resp=='2') {
-                             swal("NO SE REGISTRÓ","NO se regristró ", "error");
-                           }
-                          $('#Table_meta_pi').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
-                             
-                             formReset();
-                         }
-                      });
-                  });
-     function formReset()
-          {
-          document.getElementById("form_AddProgramacion").reset();       
-          document.getElementById("form_AddMeta_Pi").reset();  
-          }
+$(document).on("ready" ,function()
+{
+    lista_no_pip();/*llamar a mi datatablet listar proyectosinverision*/
+    listar_Meta();
+    listar_meta_presupuestal();
+    /*listar_meta_pi(id_pi);*/
+   /* $("#txt_pia").keyup(function() 
+    {
+        $(event.target).val(function(index, value) 
+        {
+            //addCommas(($('#txt_pia').val()));
+            formatNumber(($('#txt_pia').val()));
 
+            //var pim = $(this).val();
+            //alert($('#txt_pim').val(pim.split('.')[1]));
+            /*
+            valor = value.split('.');
+            alert(valor);*/
+
+            //return value.replace(/\D/g, "")
+            /*return value.split('.')
+            .replace(/([0-9])$/, '$1')
+            .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");
+        });*/
+      /*return value.replace(/\D/g, "")
+        .replace(/([0-9])([0-9]{2})$/, '$1.$2')
+        .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");*/
+       /* });
+
+    });*/
+
+    $('#txt_pia').inputmask("decimal", {
+        radixPoint: ".",
+        groupSeparator: ",",
+        digits: 2,
+        autoGroup: true,
+        rightAlign: false,
+    });
+    
+    $('#txt_pim').inputmask("decimal", {
+        radixPoint: ".",
+        groupSeparator: ",",
+        digits: 2,
+        autoGroup: true,
+        rightAlign: false,
+    });
+    $('#txt_certificado').inputmask("decimal", {
+        radixPoint: ".",
+        groupSeparator: ",",
+        digits: 2,
+        autoGroup: true,
+        rightAlign: false,
+    });
+    $('#txt_compromiso').inputmask("decimal", {
+        radixPoint: ".",
+        groupSeparator: ",",
+        digits: 2,
+        autoGroup: true,
+        rightAlign: false,
+    });
+    $('#txt_devengado').inputmask("decimal", {
+        radixPoint: ".",
+        groupSeparator: ",",
+        digits: 2,
+        autoGroup: true,
+        rightAlign: false,
+    });
+    $('#txt_girado').inputmask("decimal", {
+        radixPoint: ".",
+        groupSeparator: ",",
+        digits: 2,
+        autoGroup: true,
+        rightAlign: false,
+    });
+    $("#form_AddProgramacion").submit(function(event)
+    {
+        event.preventDefault();
+        $.ajax({
+            url:base_url+"index.php/programar_nopip/AddProgramacion",
+            type:$(this).attr('method'),
+            data:$(this).serialize(),
+            success:function(resp)
+            {
+                if (resp=='1') 
+                {
+                    swal("REGISTRADO","Se regristró correctamente", "success");
+                }
+                if (resp=='2') 
+                {
+                    swal("NO SE REGISTRÓ","NO se regristró ", "error");
+                }
+                $('#Table_Programar').dataTable()._fnAjaxUpdate();
+                $('#table_NoPip').dataTable()._fnAjaxUpdate();
+            }
+        });
+    });
+    $("#form_AddMeta_Pi").submit(function(event)
+    {
+        event.preventDefault();
+        $('#validarMeta').data('formValidation').resetField($('#txt_anio_meta'));
+        $('#validarMeta').data('formValidation').resetField($('#txt_codigo_unico_pi_mp'));
+        $('#validarMeta').data('formValidation').resetField($('#txt_nombre_proyecto_mp'));
+        $('#validarMeta').data('formValidation').resetField($('#txt_costo_proyecto_mp'));
+        $('#validarMeta').data('formValidation').resetField($('#cbx_meta_presupuestal'));        
+        $('#validarMeta').data('formValidation').resetField($('#cbx_Meta'));          
+        $('#validarMeta').data('formValidation').resetField($('#txt_pia'));
+        $('#validarMeta').data('formValidation').resetField($('#txt_pim'));
+        $('#validarMeta').data('formValidation').resetField($('#txt_certificado'));
+        $('#validarMeta').data('formValidation').resetField($('#txt_compromiso'));
+        $('#validarMeta').data('formValidation').resetField($('#txt_devengado'));
+        $('#validarMeta').data('formValidation').resetField($('#txt_girado'));
+        $('#validarMeta').data('formValidation').validate();
+        if(!($('#validarMeta').data('formValidation').isValid()))
+        {
+            return;
+        }
+        $.ajax({
+            url:base_url+"index.php/programar_nopip/AddMeta_PI",
+            type:$(this).attr('method'),
+            data:$(this).serialize(),
+            success:function(resp)
+            {
+                if (resp=='1') 
+                {
+                    swal("REGISTRADO","Se regristró correctamente", "success");
+                    formReset();
+                }
+                if (resp=='2') 
+                {
+                    swal("NO SE REGISTRÓ","NO se regristró ", "error");
+                }
+                $('#Table_meta_pi').dataTable()._fnAjaxUpdate();
+                formReset();
+            }
+        });
+    });
+    function formReset()
+    {
+        document.getElementById("form_AddProgramacion").reset();       
+        document.getElementById("form_AddMeta_Pi").reset();  
+    }
+});
+
+function formatNumber (num) 
+{
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+}
+
+function addCommas(nStr) 
+{
+    nStr += '';
+    x = nStr.split('.');
+    x1 = x[0];
+    x2 = x.length > 1 ? '.' + x[1] : '';
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(x1)) {
+            x1 = x1.replace(rgx, '$1' + ',' + '$2');
+    }
+    return x1 + x2;
+}
+
+$(function()
+{
+    $('#validarMeta').formValidation(
+    {
+        framework: 'bootstrap',
+        excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+        live: 'enabled',
+        message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+        trigger: null,
+        fields:
+        {
+            txt_anio_meta:
+            {
+                validators: 
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Año" es requerido.</b>'
+                    },
+                    regexp:
+                    {
+                        regexp: /^([0-9]){4}$/,
+                        message: '<b style="color: red;">El campo "Año" debe ser un numero de 4 digitos.</b>'
+                    }
+                }
+            },
+            cbx_meta_presupuestal:
+            {
+                validators: 
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Año" es requerido.</b>'
+                    }
+                }
+            },
+            cbx_Meta:
+            {
+                validators: 
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Año" es requerido.</b>'
+                    }
+                }
+            },
+            txt_pia:
+            {
+                validators: 
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Año" es requerido.</b>'
+                    },
+                    regexp:
+                    {
+                        regexp: "^[0-9]+(\\.\\d{1,2})?$",
+                        message: '<b style="color: red;">El campo "Año" debe ser un numero de 4 digitos.</b>'
+                    }
+                }
+            },
+            txt_pim:
+            {
+                validators: 
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Año" es requerido.</b>'
+                    }
+                }
+            },
+            txt_certificado:
+            {
+                validators: 
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Año" es requerido.</b>'
+                    }
+                }
+            },
+            txt_compromiso:
+            {
+                validators: 
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Año" es requerido.</b>'
+                    }
+                }
+            },
+            txt_devengado:
+            {
+                validators: 
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Año" es requerido.</b>'
+                    }
+                }
+            },
+            txt_girado:
+            {
+                validators: 
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Año" es requerido.</b>'
+                    }
+                }
+            }
+        }
+    });
 });
 //listar proyectos de inversion en formulacion y evaluacion
  var lista_no_pip=function()
@@ -69,19 +291,6 @@ $(document).on("ready" ,function(){
                                     {"data":"nombre_pi"},
                                     {"data":"costo_pi"},
                                     {"data":"desc_tipo_nopip"},
-                                  /*  {"data": function (data, type, dataToSet) {
-
-                                      if (data.estado_programado !='0') //estap programado
-                                      {
-                                       // return '<a  href="#"><button type="button" class="btn btn btn-success btn-xs">Programado</button></a>';
-                                       return '<h5><span class="label label-success"> Programado</span></h5>';
-                                      }
-                                      if (data.estado_programado =='0') //no esta progrmado
-                                      {
-                                        //return '<a  href="#"><button type="button" class="btn btn btn-danger btn-xs">No Programado</button></a>';
-                                        return '<h5><span class="label label-danger">No Programado</span></h5>';
-                                      }
-                                   }},*/
                                     {"defaultContent":"<center><button type='button' title='Meta Presupuestal PIP' class='meta_pip btn btn-success btn-xs' data-toggle='modal' data-target='#Ventana_Meta_Presupuestal_PI'><i class='fa fa-usd' aria-hidden='true'></i></button></center>"}
                                 ],
                                "language":idioma_espanol
@@ -209,19 +418,21 @@ var EliminarMetaPresupuestal=function(tbody,table){
                     });
                 }
 //Agregar META PIP
- var  AddMeta_Pi=function(tbody,table){
-                    $(tbody).on("click","button.meta_pip",function(){
-                      var data=table.row( $(this).parents("tr")).data();
-                       var  id_pi=data.id_pi;
-                       $("#txt_codigo_unico_pi_mp").val(data.codigo_unico_pi);
-                      $("#txt_id_pip_programacion_mp").val(data.id_pi);
-                      $("#txt_costo_proyecto_mp").val(data.costo_pi);
-                      $("#txt_nombre_proyecto_mp").val(data.nombre_pi);
-                      listar_Meta();
-                      listar_meta_presupuestal();
-                       listar_meta_pi(id_pi);
-                    });
-                }
+var  AddMeta_Pi=function(tbody,table)
+{
+    $(tbody).on("click","button.meta_pip",function()
+    {
+        var data=table.row( $(this).parents("tr")).data();
+        var  id_pi=data.id_pi;
+        $("#txt_codigo_unico_pi_mp").val(data.codigo_unico_pi);
+        $("#txt_id_pip_programacion_mp").val(data.id_pi);
+        $("#txt_costo_proyecto_mp").val(data.costo_pi);
+        $("#txt_nombre_proyecto_mp").val(data.nombre_pi);
+        //listar_Meta();
+        //listar_meta_presupuestal();
+        listar_meta_pi(id_pi);
+    });
+}
 
 //add operacion y manteniemito
    var  AddProgramacion=function(tbody,table){
