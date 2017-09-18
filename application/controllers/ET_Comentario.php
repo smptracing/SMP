@@ -36,9 +36,11 @@ class ET_Comentario extends CI_Controller
 
 				$this->Model_ET_Comentario->insertar($idTareaET, $etEspecialistaTarea->id_especialista_tarea, $descComentario, $fechaComentario);
 
+				$ultimoETComentario=$this->Model_ET_Comentario->ultimoETComentario();
+
 				$this->db->trans_complete();
 
-				echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Comentario realizado correctamente.']);exit;
+				echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Comentario realizado correctamente.', 'etComentario' => $ultimoETComentario]);exit;
 			}
 
 			$idTareaET=$this->input->get('idTareaET');
