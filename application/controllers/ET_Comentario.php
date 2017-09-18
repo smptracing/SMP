@@ -48,5 +48,24 @@ class ET_Comentario extends CI_Controller
 			return $this->load->view('front/Ejecucion/ETComentario/insertar', ['idTareaET' => $idTareaET, 'listaETComentario' => $listaETComentario]);
 		}
 	}
+
+	public function eliminar()
+	{
+		if($this->input->is_ajax_request())
+		{
+			if($_POST)
+			{
+				$this->db->trans_start();
+
+				$idETComentario=$this->input->post('idETComentario');
+
+				$this->Model_ET_Comentario->eliminar($idETComentario);
+
+				$this->db->trans_complete();
+
+				echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Comentario eliminado correctamente.']);exit;
+			}
+		}
+	}
 }
 ?>

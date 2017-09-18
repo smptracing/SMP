@@ -15,7 +15,7 @@
 							<small><b>Archivos adjuntos: </b><a href="#">Archivo de prueba.txt</a>, <a href="#">Archivo 2.png</a></small>
 						</div>
 						<div style="color: #999999;font-size: 9px;text-align: right;">
-							<a href="#" style="color: red;font-size: 10px;">Eliminar</a> | <?=$value->fecha_comentario?>
+							<a href="#" style="color: red;font-size: 10px;" onclick="eliminarComentario(<?=$value->id_et_comentario?>, this);">Eliminar</a> | <?=$value->fecha_comentario?>
 						</div>
 					</td>
 				</tr>
@@ -58,5 +58,31 @@
 				return false;
 			}
 		}, false, true);
+	}
+
+	function eliminarComentario(idETComentario, element)
+	{
+		if(confirm('¿Realmente desea eliminar el comentario?'))
+		{
+			paginaAjaxJSON({ idETComentario : idETComentario }, '<?=base_url()?>index.php/ET_Comentario/eliminar', 'POST', null, function(objectJSON)
+			{
+				objectJSON=JSON.parse(objectJSON);
+
+				swal(
+				{
+					title: '',
+					text: objectJSON.mensaje,
+					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
+				},
+				function(){});
+
+				if(objectJSON.proceso=='Error')
+				{
+					return false;
+				}
+
+				$(element).parent().parent().parent().remove();
+			}, false, true);
+		}
 	}
 </script>

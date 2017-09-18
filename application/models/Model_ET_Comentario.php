@@ -21,4 +21,11 @@ class Model_ET_Comentario extends CI_Model
 
 		return $data->result();
 	}
+
+	public function eliminar($idETComentario)
+	{
+		$this->db->query("delete from ET_COMENTARIO where id_et_comentario=$idETComentario");
+
+		return true;
+	}
 }
