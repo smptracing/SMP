@@ -40,8 +40,6 @@
 		}
 	</style>
 
-	<script src="<?=base_url()?>assets/js/Helper/jsHelper.js"></script>
-
 	<script src="<?=base_url()?>assets/vendors/jquery/dist/jquery.min.js"></script>
 	<script src="<?=base_url()?>assets/vendors/jquery/dist/jquery-ui.min.js"></script>
 	<script src="<?=base_url()?>assets/vendors/JQueryGantt/libs/jquery/jquery.livequery.1.1.1.min.js"></script>
@@ -54,14 +52,15 @@
 	<script src="<?=base_url()?>assets/vendors/JQueryGantt/libs/i18nJs.js"></script>
 	<script src="<?=base_url()?>assets/vendors/JQueryGantt/libs/jquery/dateField/jquery.dateField.js"></script>
 	<script src="<?=base_url()?>assets/vendors/JQueryGantt/libs/jquery/JST/jquery.JST.js"></script>
-	<script type="text/javascript" src="<?=base_url()?>assets/vendors/JQueryGantt/libs/jquery/svg/jquery.svg.min.js"></script>
-	<script type="text/javascript" src="<?=base_url()?>assets/vendors/JQueryGantt/libs/jquery/svg/jquery.svgdom.1.8.js"></script>
+	<script src="<?=base_url()?>assets/vendors/JQueryGantt/libs/jquery/svg/jquery.svg.min.js"></script>
+	<script src="<?=base_url()?>assets/vendors/JQueryGantt/libs/jquery/svg/jquery.svgdom.1.8.js"></script>
 	<script src="<?=base_url()?>assets/vendors/JQueryGantt/ganttUtilities.js"></script>
 	<script src="<?=base_url()?>assets/vendors/JQueryGantt/ganttTask.js"></script>
 	<script src="<?=base_url()?>assets/vendors/JQueryGantt/ganttDrawerSVG.js"></script>
 	<script src="<?=base_url()?>assets/vendors/JQueryGantt/ganttGridEditor.js"></script>
 	<script src="<?=base_url()?>assets/vendors/JQueryGantt/ganttMaster.js"></script>  
-	<script src="<?php echo base_url(); ?>assets/dist/js/sweetalert-dev.js"></script>
+	<script src="<?=base_url()?>assets/dist/js/sweetalert-dev.js"></script>
+	<script src="<?=base_url()?>assets/js/Helper/jsHelper.js"></script>
 </head>
 <body style="background-color: #ffffff;overflow-x: hidden;">
 	<input type="hidden" id="hdIdTareaGantt" name="hdIdTareaGantt" value="<?=$idTareaGantt?>">
@@ -256,7 +255,7 @@
 				<th class="gdfCell" style="cursor:pointer;text-aling: center;"><span class="taskRowIndex">(#=obj.getRow()+1#)</span></th>
 				<td class="gdfCell noClip"><div class="taskStatus cvcColorSquare" status="(#=obj.status#)"></div></td>
 				<td class="gdfCell"><input type="text" name="code" value="(#=obj.code?obj.code:''#)" placeholder="Código" readonly="readonly" style="text-align: center;"></td>
-				<td class="gdfCell" style="text-align: center;"><a href="#" style="cursor: pointer;;user-select: none;">(0)</a></td>
+				<td class="gdfCell" style="text-align: center;"><a href="#" style="cursor: pointer;;user-select: none;" onclick="administrarComentarios('(#=obj.id#)', '(#=obj.name#)');">(0)</a></td>
 				<td class="gdfCell indentCell" style="padding-left:(#=obj.level*10+18#)px;">
 					<div class="exp-controller" style="margin-left: 0px;"></div>
 					<small><a href="#" style="color: red;cursor: pointer;;user-select: none;" title="Observaciones">(0)</a></small>
@@ -290,8 +289,6 @@
 	<script>
 		function administrarPersonal(taskId, nombreTarea)
 		{
-			$('#divDialogoGeneralGantt').hide();
-
 			if(taskId.substring(0, 3)=='tmp')
 			{
 				swal(
@@ -305,7 +302,25 @@
 				return;
 			}
 
-			paginaAjaxDialogo(null, nombreTarea, { idTareaET : taskId, idET : <?=$idExpedienteTecnico?> }, '<?=base_url()?>index.php/ET_Especialista_Tarea/insertar', 'GET', null, null, false, true);
+			paginaAjaxDialogo(null, replaceAll(replaceAll(nombreTarea, '<', '&lt;'), '>', '&gt;'), { idTareaET : taskId, idET : <?=$idExpedienteTecnico?> }, '<?=base_url()?>index.php/ET_Especialista_Tarea/insertar', 'GET', null, null, false, true);
+		}
+
+		function administrarComentarios(taskId, nombreTarea)
+		{
+			if(taskId.substring(0, 3)=='tmp')
+			{
+				swal(
+				{
+					title: '',
+					text: 'Debe guardar los datos actuales antes de asignar esta información.',
+					type: 'error' 
+				},
+				function(){});
+
+				return;
+			}
+
+			paginaAjaxDialogo(null, replaceAll(replaceAll(nombreTarea, '<', '&lt;'), '>', '&gt;'), { idTareaET : taskId }, '<?=base_url()?>index.php/Comentario/insertar', 'GET', null, null, false, true);
 		}
 	</script>
 </body>
