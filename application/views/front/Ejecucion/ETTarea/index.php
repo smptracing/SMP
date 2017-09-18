@@ -267,7 +267,7 @@
 				<td class="gdfCell"><input type="text" name="duration" autocomplete="off" value="(#=obj.duration#)" style="text-align: center;"></td>
 				<td class="gdfCell"><input type="text" name="end" value="" class="date" style="text-align: center;"></td>
 				<td class="gdfCell"><input type="text" name="progress" class="validated" entrytype="PERCENTILE" autocomplete="off" value="(#=obj.progress?obj.progress:''#)" (#=obj.progressByWorklog?"readOnly":""#) style="text-align: center;"></td>
-				<td class="gdfCell"><a href="#" style="cursor: pointer; user-select: none;" onclick="administrarPersonal('(#=obj.id#)', '(#=obj.name#)');">Admin.</a> <small>Arquitecto de software > Kevin Arnold Arias Figueroa</small></td>
+				<td class="gdfCell"><a href="#" style="cursor: pointer; user-select: none;" onclick="administrarPersonal('(#=obj.id#)', '(#=obj.name#)');">Admin.</a> <small>(#=obj.personaAsignada?obj.personaAsignada:''#)</small></td>
 			</tr>
 		--></div>
 
