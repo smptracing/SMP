@@ -43,7 +43,9 @@ class ET_Comentario extends CI_Controller
 
 			$idTareaET=$this->input->get('idTareaET');
 
-			return $this->load->view('front/Ejecucion/ETComentario/insertar', ['idTareaET' => $idTareaET]);
+			$listaETComentario=$this->Model_ET_Comentario->ETComentarioPorIdTareaET($idTareaET);
+
+			return $this->load->view('front/Ejecucion/ETComentario/insertar', ['idTareaET' => $idTareaET, 'listaETComentario' => $listaETComentario]);
 		}
 	}
 }

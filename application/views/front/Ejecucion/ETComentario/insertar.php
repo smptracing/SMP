@@ -3,51 +3,23 @@
 <div style="height: 250px;overflow-y: scroll;">
 	<table class="table table-striped">
 		<tbody>
-			<tr>
-				<td style="padding: 2px;padding-top: 4px;">
-					<img src="<?=base_url()?>assets/img/user.png" height="45" width="45" style="background-color: #ffffff;border: 1px solid #cccccc;border-radius: 50px;">
-				</td>
-				<td style="padding: 4px;padding-left: 0px;">
-					<b>Kevin Arnold Arias Figueroa</b><br>
-					<small>Este es un comentario de prueba que se está escribiendo para verificar que el diseño se ajuste correctamente a la visualización del usuario.</small>
-					<div>
-						<small><b>Archivos adjuntos: </b><a href="#">Archivo de prueba.txt</a>, <a href="#">Archivo 2.png</a></small>
-					</div>
-					<div style="color: #999999;font-size: 9px;text-align: right;">
-						<a href="#" style="color: red;font-size: 10px;">Eliminar</a> | 2017-09-18 07:51:20
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td style="padding: 2px;padding-top: 4px;">
-					<img src="<?=base_url()?>assets/img/user.png" height="45" width="45" style="background-color: #fbfbf5;border: 1px solid #cccccc;border-radius: 50px;">
-				</td>
-				<td style="padding: 4px;padding-left: 0px;">
-					<b>Kevin Arnold Arias Figueroa</b><br>
-					<small>Este es un comentario de prueba que se está escribiendo para verificar que el diseño se ajuste correctamente a la visualización del usuario.</small>
-					<div>
-						<small><b>Archivos adjuntos: </b>Ninguno</small>
-					</div>
-					<div style="color: #999999;font-size: 9px;text-align: right;">
-						<a href="#" style="color: red;font-size: 10px;">Eliminar</a> | 2017-09-18 07:51:20
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td style="padding: 2px;padding-top: 4px;">
-					<img src="<?=base_url()?>assets/img/user.png" height="45" width="45" style="background-color: #fbfbf5;border: 1px solid #cccccc;border-radius: 50px;">
-				</td>
-				<td style="padding: 4px;padding-left: 0px;">
-					<b>Kevin Arnold Arias Figueroa</b><br>
-					<small>Este es un comentario de prueba que se está escribiendo para verificar que el diseño se ajuste correctamente a la visualización del usuario.</small>
-					<div>
-						<small><b>Archivos adjuntos: </b>Ninguno</small>
-					</div>
-					<div style="color: #999999;font-size: 9px;text-align: right;">
-						<a href="#" style="color: red;font-size: 10px;">Eliminar</a> | 2017-09-18 07:51:20
-					</div>
-				</td>
-			</tr>
+			<?php foreach($listaETComentario as $key => $value){ ?>
+				<tr>
+					<td style="padding: 2px;padding-top: 4px;">
+						<img src="<?=base_url()?>assets/img/user.png" height="45" width="45" style="background-color: #ffffff;border: 1px solid #cccccc;border-radius: 50px;">
+					</td>
+					<td style="padding: 4px;padding-left: 0px;">
+						<b><?=$value->nombres.' '.$value->apellido_p.' '.$value->apellido_m?> <small style="color: #999999;">(<?=$value->nombre_esp?>)</small></b><br>
+						<small><?=$value->desc_comentario?></small>
+						<div>
+							<small><b>Archivos adjuntos: </b><a href="#">Archivo de prueba.txt</a>, <a href="#">Archivo 2.png</a></small>
+						</div>
+						<div style="color: #999999;font-size: 9px;text-align: right;">
+							<a href="#" style="color: red;font-size: 10px;">Eliminar</a> | <?=$value->fecha_comentario?>
+						</div>
+					</td>
+				</tr>
+			<?php } ?>
 		</tbody>
 	</table>
 </div>
