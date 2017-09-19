@@ -21,4 +21,11 @@ class Model_ET_Archivo extends CI_Model
 
 		return count($data->result())==0 ? null : $data->result()[0];
 	}
+
+	public function ETArchivoPorIdETComentario($idETComentario)
+	{
+		$data=$this->db->query("select * from ET_ARCHIVO where id_et_comentario=$idETComentario");
+
+		return $data->result();
+	}
 }

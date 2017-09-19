@@ -12,7 +12,12 @@
 						<b><?=$value->nombres.' '.$value->apellido_p.' '.$value->apellido_m?> <small style="color: #999999;">(<?=$value->nombre_esp?>)</small></b><br>
 						<small><?=$value->desc_comentario?></small>
 						<div>
-							<small><b>Archivos adjuntos: </b><a href="#">Archivo de prueba.txt</a>, <a href="#">Archivo 2.png</a></small>
+							<small>
+								<?=count($value->childETArchivo)!=0 ? '<b>Archivos adjuntos: </b>' : ''?>
+								<?php foreach($value->childETArchivo as $index => $item){ ?>
+									<a href="#"><?=$item->nombre_archivo?></a><?=(count($value->childETArchivo)-1)!=$index ? ',' : ''?>&nbsp;
+								<?php } ?>
+							</small>
 						</div>
 						<div style="color: #999999;font-size: 9px;text-align: right;">
 							<a href="#" style="color: red;font-size: 10px;" onclick="eliminarComentario(<?=$value->id_et_comentario?>, this);">Eliminar</a> | <?=$value->fecha_comentario?>

@@ -70,6 +70,11 @@ class ET_Comentario extends CI_Controller
 
 			$listaETComentario=$this->Model_ET_Comentario->ETComentarioPorIdTareaET($idTareaET);
 
+			foreach($listaETComentario as $key => $value)
+			{
+				$value->childETArchivo=$this->Model_ET_Archivo->ETArchivoPorIdETComentario($value->id_et_comentario);
+			}
+
 			return $this->load->view('front/Ejecucion/ETComentario/insertar', ['idTareaET' => $idTareaET, 'listaETComentario' => $listaETComentario]);
 		}
 	}
