@@ -86,6 +86,25 @@
 					return false;
 				}
 
+				var htmlArchivosTemp='';
+
+				if(objectJSON.etComentario.childETArchivo.length!=0)
+				{
+					htmlArchivosTemp+='<div>'+
+						'<small>'+
+							'<b>Archivos adjuntos: </b>';
+				}
+
+				$.each(objectJSON.etComentario.childETArchivo, function(key, value)
+				{
+					htmlArchivosTemp+='<a href="#" onclick="window.location.href=\'<?=base_url()?>index.php/ET_Archivo/descargar/'+value.id_et_archivo+'\';">'+value.nombre_archivo+'</a>'+((objectJSON.etComentario.childETArchivo.length-1)!=key ? ',' : '')+'&nbsp;';
+				});
+
+				if(objectJSON.etComentario.childETArchivo.length!=0)
+				{
+					htmlArchivosTemp+='</small></div>';
+				}
+
 				var htmlTemp='<tr>'+
 					'<td style="padding: 2px;padding-top: 4px;">'+
 						'<img src="<?=base_url()?>assets/img/user.png" height="45" width="45" style="background-color: #ffffff;border: 1px solid #cccccc;border-radius: 50px;">'+
@@ -93,9 +112,7 @@
 					'<td style="padding: 4px;padding-left: 0px;">'+
 						'<b>'+objectJSON.etComentario.nombres+' '+objectJSON.etComentario.apellido_p+' '+objectJSON.etComentario.apellido_m+' <small style="color: #999999;">('+objectJSON.etComentario.nombre_esp+')</small></b><br>'+
 						'<small>'+objectJSON.etComentario.desc_comentario+'</small>'+
-						'<div>'+
-							'<small><b>Archivos adjuntos: </b><a href="#">Archivo de prueba.txt</a>, <a href="#">Archivo 2.png</a></small>'+
-						'</div>'+
+						htmlArchivosTemp+
 						'<div style="color: #999999;font-size: 9px;text-align: right;">'+
 							'<a href="#" style="color: red;font-size: 10px;" onclick="eliminarComentario('+objectJSON.etComentario.id_et_comentario+', this);">Eliminar</a> | '+objectJSON.etComentario.fecha_comentario+
 						'</div>'+

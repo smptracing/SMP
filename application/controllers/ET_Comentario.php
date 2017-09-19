@@ -61,6 +61,8 @@ class ET_Comentario extends CI_Controller
 					$this->upload->do_upload($key);
 				}
 
+				$ultimoETComentario->childETArchivo=$this->Model_ET_Archivo->ETArchivoPorIdETComentario($ultimoETComentario->id_et_comentario);
+
 				$this->db->trans_complete();
 
 				echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Comentario realizado correctamente.', 'etComentario' => $ultimoETComentario]);exit;
