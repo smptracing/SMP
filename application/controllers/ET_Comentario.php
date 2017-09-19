@@ -9,6 +9,7 @@ class ET_Comentario extends CI_Controller
 
 		$this->load->model('Model_ET_Comentario');
 		$this->load->model('Model_ET_Especialista_Tarea');
+		$this->load->model('Model_ET_Archivo');
 	}
 
 	public function insertar()
@@ -24,6 +25,7 @@ class ET_Comentario extends CI_Controller
 				$idTareaET=$this->input->post('idTareaET');
 				$descComentario=$this->input->post('descComentario');
 				$fechaComentario=date('Y-m-d H:i:s');
+				$archivosComentario=$this->input->post('archivosComentario');
 
 				$etEspecialistaTarea=$this->Model_ET_Especialista_Tarea->EspecialistaTareaPorIdTareaYIdPersona($idTareaET, $idPersonaTemp);
 
@@ -37,6 +39,28 @@ class ET_Comentario extends CI_Controller
 				$this->Model_ET_Comentario->insertar($idTareaET, $etEspecialistaTarea->id_especialista_tarea, $descComentario, $fechaComentario);
 
 				$ultimoETComentario=$this->Model_ET_Comentario->ultimoETComentario();
+
+				// $this->Model_ET_Archivo->insertar($ultimoETComentario->id_et_comentario, '', date('Y-m-d H:i:s'), '');
+
+				// $ultimoETArchivo=$this->Model_ET_Archivo->ultimoETArchivo();
+
+				// $config['upload_path']='./uploads/ArchivoComentarioTareaGanttET';
+				// $config['allowed_types']='*';
+				// $config['max_width']=2000;
+				// $config['max_height']=2000;
+				// $config['max_size']=50000;
+				// $config['encrypt_name']=false;
+				// $config['file_name']=$ultimoETArchivo->id_et_archivo;
+
+				// $this->load->library('upload', $config);
+				
+				// $this->upload->initialize($config);
+				
+				// $this->upload->do_upload('file0');
+
+				// $tempDataFile=$this->upload->data();
+
+				// $this->Model_ET_Documento_Ejecucion->actualizarExtension($etDocumentoEjecucion->id_doc_ejecucion, explode('.', $tempDataFile['file_ext'])[1]);
 
 				$this->db->trans_complete();
 

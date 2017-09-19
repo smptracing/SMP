@@ -5,7 +5,7 @@
 		<tbody>
 			<?php foreach($listaETComentario as $key => $value){ ?>
 				<tr>
-					<td style="padding: 2px;padding-top: 4px;">
+					<td style="padding: 2px;padding-top: 4px;width: 45px;">
 						<img src="<?=base_url()?>assets/img/user.png" height="45" width="45" style="background-color: #ffffff;border: 1px solid #cccccc;border-radius: 50px;">
 					</td>
 					<td style="padding: 4px;padding-left: 0px;">
@@ -30,7 +30,7 @@
 			<textarea id="txtDescripcionComentario" rows="3" class="form-control" style="resize: none;" placeholder="Escribe un comentario con respecto a la actividad actualmente seleccionada."></textarea>
 		</div>
 		<div class="col-md-12" style="margin-top: 4px;">
-			<input type="file" value="Publicar" multiple class="col-md-7">
+			<input type="file" id="fileArchivosComentario" value="Publicar" multiple class="col-md-7">
 			<div class="col-md-1"></div>
 			<input type="button" class="btn btn-primary col-md-4" value="Publicar comentario" onclick="insertarComentario();">
 		</div>
@@ -41,44 +41,61 @@
 <script>
 	function insertarComentario()
 	{
-		paginaAjaxJSON({ idTareaET : <?=$idTareaET?>, descComentario : $('#txtDescripcionComentario').val() }, '<?=base_url()?>index.php/ET_Comentario/insertar', 'POST', null, function(objectJSON)
-		{
-			objectJSON=JSON.parse(objectJSON);
+		var dataAjax=new FormData();
 
-			swal(
-			{
-				title: '',
-				text: objectJSON.mensaje,
-				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
-			},
-			function(){});
+		dataAjax.append('idTareaET', <?=$idTareaET?>);
+		dataAjax.append('archivosComentario', $($('#fileArchivosComentario')[0]).get(0).files);
+		dataAjax.append('descComentario', $('#txtDescripcionComentario').val());
 
-			if(objectJSON.proceso=='Error')
-			{
-				return false;
-			}
+		$.ajax({
+		    type: 'POST',
+		    url: '<?=base_url()?>index.php/ET_Comentario/insertar',
+		    contentType: false,
+		    processData: false,
+		    data: dataAjax,
+		    beforeSend: function(xhr)
+		    {
+		        
+		    },
+		    success: function(objectJSON)
+		    {
+		    	objectJSON=JSON.parse(objectJSON);
 
-			var htmlTemp='<tr>'+
-				'<td style="padding: 2px;padding-top: 4px;">'+
-					'<img src="<?=base_url()?>assets/img/user.png" height="45" width="45" style="background-color: #ffffff;border: 1px solid #cccccc;border-radius: 50px;">'+
-				'</td>'+
-				'<td style="padding: 4px;padding-left: 0px;">'+
-					'<b>'+objectJSON.etComentario.nombres+' '+objectJSON.etComentario.apellido_p+' '+objectJSON.etComentario.apellido_m+' <small style="color: #999999;">('+objectJSON.etComentario.nombre_esp+')</small></b><br>'+
-					'<small>'+objectJSON.etComentario.desc_comentario+'</small>'+
-					'<div>'+
-						'<small><b>Archivos adjuntos: </b><a href="#">Archivo de prueba.txt</a>, <a href="#">Archivo 2.png</a></small>'+
-					'</div>'+
-					'<div style="color: #999999;font-size: 9px;text-align: right;">'+
-						'<a href="#" style="color: red;font-size: 10px;" onclick="eliminarComentario('+objectJSON.etComentario.id_et_comentario+', this);">Eliminar</a> | '+objectJSON.etComentario.fecha_comentario+
-					'</div>'+
-				'</td>'+
-			'</tr>';
+				swal(
+				{
+					title: '',
+					text: objectJSON.mensaje,
+					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
+				},
+				function(){});
 
-			$('#tableComentario > tbody').append(htmlTemp);
-			$('#txtDescripcionComentario').val(null);
+				if(objectJSON.proceso=='Error')
+				{
+					return false;
+				}
 
-			$('#divComentario').animate({ scrollTop :  $('#divComentario').scrollTop()+$('#divComentario')[0].scrollHeight }, 200);
-		}, false, true);
+				var htmlTemp='<tr>'+
+					'<td style="padding: 2px;padding-top: 4px;">'+
+						'<img src="<?=base_url()?>assets/img/user.png" height="45" width="45" style="background-color: #ffffff;border: 1px solid #cccccc;border-radius: 50px;">'+
+					'</td>'+
+					'<td style="padding: 4px;padding-left: 0px;">'+
+						'<b>'+objectJSON.etComentario.nombres+' '+objectJSON.etComentario.apellido_p+' '+objectJSON.etComentario.apellido_m+' <small style="color: #999999;">('+objectJSON.etComentario.nombre_esp+')</small></b><br>'+
+						'<small>'+objectJSON.etComentario.desc_comentario+'</small>'+
+						'<div>'+
+							'<small><b>Archivos adjuntos: </b><a href="#">Archivo de prueba.txt</a>, <a href="#">Archivo 2.png</a></small>'+
+						'</div>'+
+						'<div style="color: #999999;font-size: 9px;text-align: right;">'+
+							'<a href="#" style="color: red;font-size: 10px;" onclick="eliminarComentario('+objectJSON.etComentario.id_et_comentario+', this);">Eliminar</a> | '+objectJSON.etComentario.fecha_comentario+
+						'</div>'+
+					'</td>'+
+				'</tr>';
+
+				$('#tableComentario > tbody').append(htmlTemp);
+				$('#txtDescripcionComentario').val(null);
+
+				$('#divComentario').animate({ scrollTop :  $('#divComentario').scrollTop()+$('#divComentario')[0].scrollHeight }, 200);
+		    }
+		});
 	}
 
 	function eliminarComentario(idETComentario, element)
