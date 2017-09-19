@@ -46,6 +46,19 @@
 <script>
 	function insertarComentario()
 	{
+		if($('#txtDescripcionComentario').val().trim()=='')
+		{
+			swal(
+			{
+				title: '',
+				text: 'Debe escribir un comentario para publicarlo.',
+				type: 'error'
+			},
+			function(){});
+
+			return;
+		}
+
 		var dataAjax=new FormData();
 
 		dataAjax.append('idTareaET', <?=$idTareaET?>);
@@ -69,6 +82,9 @@
 		    },
 		    success: function(objectJSON)
 		    {
+		    	$('#txtDescripcionComentario').val(null);
+		    	$('#fileArchivosComentario').val(null);
+
 		    	$('#divModalCargaAjax').hide();
 
 		    	objectJSON=JSON.parse(objectJSON);
