@@ -15,7 +15,7 @@
 							<small>
 								<?=count($value->childETArchivo)!=0 ? '<b>Archivos adjuntos: </b>' : ''?>
 								<?php foreach($value->childETArchivo as $index => $item){ ?>
-									<a href="#"><?=$item->nombre_archivo?></a><?=(count($value->childETArchivo)-1)!=$index ? ',' : ''?>&nbsp;
+									<a href="#" onclick="window.location.href='<?=base_url()?>index.php/ET_Archivo/descargar/<?=$item->id_et_archivo?>';"><?=$item->nombre_archivo?></a><?=(count($value->childETArchivo)-1)!=$index ? ',' : ''?>&nbsp;
 								<?php } ?>
 							</small>
 						</div>

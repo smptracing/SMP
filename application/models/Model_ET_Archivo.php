@@ -28,4 +28,11 @@ class Model_ET_Archivo extends CI_Model
 
 		return $data->result();
 	}
+
+	public function ETArchivo($idETArchivo)
+	{
+		$data=$this->db->query("select * from ET_ARCHIVO where id_et_archivo=$idETArchivo");
+
+		return count($data->result())==0 ? null : $data->result()[0];
+	}
 }
