@@ -99,6 +99,48 @@ class FEformulacion extends CI_Controller
         $this->session->set_userdata($data);
         $this->_load_layout_jsViabilizado('Front/Formulacion_Evaluacion/frmViabilizado');
     }
+
+    public function FeEstudioInversion()
+    {
+        $this->_load_layout_jsFormFormulacion('Front/Formulacion_Evaluacion/EstudioInversion/index');
+    }
+
+    public function insertar()
+    {
+        if($_POST)
+        {
+            /*$txtNombre=$this->input->post("txtNombre");
+
+            if(count($this->Model_ModuloFE->ModuloPorNombre($txtNombre))>0)
+            {
+                $this->session->set_flashdata('error', 'Este módulo ya fue registrado con anterioridad.');
+                return redirect('/Modulo_FE');
+            }
+
+            $Data=$this->Model_ModuloFE->insertar($txtNombre);
+            $this->session->set_flashdata('correcto', 'Se registró correctamente');
+            return redirect('/Modulo_FE');  */
+        }
+        $data= $this->Estudio_Inversion_Model->GetProyectosparaEstudio();  
+        return $this->load->view('Front/Formulacion_Evaluacion/EstudioInversion/insertar',['ListaProyectos' => $data]);
+    }
+
+    public function getProyectos()
+    {
+        $data= $this->Estudio_Inversion_Model->GetProyectosparaEstudio();
+        json_encode($data);
+        exit;
+        /*if ($this->input->is_ajax_request()) 
+        {
+            $data= $this->Estudio_Inversion_Model->GetProyectosparaEstudio();            
+        } 
+        else 
+        {
+            show_404();
+        }*/
+    }
+
+
     public function _load_layout($template)
     {
         $this->load->view('layout/Formulacion_Evaluacion/header');
