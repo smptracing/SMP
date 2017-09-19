@@ -311,6 +311,12 @@ class Estudio_Inversion extends CI_Controller
     }
     //fin listar documentos de inversion
 
+    public function EstudioCoordinadorFunc()
+    {
+        $this->load->view('layout/Formulacion_Evaluacion/header');
+        $this->load->view('front/Formulacion_Evaluacion/Estudio/index');
+        $this->load->view('layout/Formulacion_Evaluacion/footer');
+    }
 //------------------------------------------------------------------------------------------------------------------
 
     public function _load_layout($template)
