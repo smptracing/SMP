@@ -255,7 +255,7 @@
 				<th class="gdfCell" style="cursor:pointer;text-aling: center;"><span class="taskRowIndex">(#=obj.getRow()+1#)</span></th>
 				<td class="gdfCell noClip"><div class="taskStatus cvcColorSquare" status="(#=obj.status#)"></div></td>
 				<td class="gdfCell"><input type="text" name="code" value="(#=obj.code?obj.code:''#)" placeholder="Código" readonly="readonly" style="text-align: center;"></td>
-				<td class="gdfCell" style="text-align: center;"><a href="#" style="cursor: pointer;;user-select: none;" onclick="administrarComentarios('(#=obj.id#)', '(#=obj.name#)');">(0)</a></td>
+				<td class="gdfCell" style="text-align: center;"><a href="#" style="cursor: pointer;;user-select: none;" onclick="administrarComentarios('(#=obj.id#)', '(#=obj.name#)');">((#=obj.quantityComment#))</a></td>
 				<td class="gdfCell indentCell" style="padding-left:(#=obj.level*10+18#)px;">
 					<div class="exp-controller" style="margin-left: 0px;"></div>
 					<small><a href="#" style="color: red;cursor: pointer;;user-select: none;" title="Observaciones">(0)</a></small>

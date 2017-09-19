@@ -15,6 +15,7 @@ class ET_Tarea extends CI_Controller
 		$this->load->model('Model_Personal');
 		$this->load->model('Model_Especialidad');
 		$this->load->model('Model_ET_Especialista_Tarea');
+		$this->load->model('Model_ET_Comentario');
 	}
 
 	private function number_of_working_days($from, $to)
@@ -71,6 +72,7 @@ class ET_Tarea extends CI_Controller
 			$seconds_diff=$ts2-$ts1;
 
 			$value->childETEspecialidadTarea=$this->Model_ET_Especialista_Tarea->EspecialistaTareaPorIdTarea($value->id_tarea_et);
+			$value->countETComentario=count($this->Model_ET_Comentario->ETComentarioPorIdTareaET($value->id_tarea_et));
 
 			$personaAsignadaTemp='';
 			$ultimaEspecialidadTemp=null;
@@ -97,6 +99,7 @@ class ET_Tarea extends CI_Controller
 			$arrayTask[]=[
 				'id' => $value->id_tarea_et,
 				'name' => html_escape($value->nombre_tarea),
+				'quantityComment' => $value->countETComentario,
 				'progress' => $value->avance_tarea,
 				'progressByWorklog' => false,
 				'relevance' => 0,
