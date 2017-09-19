@@ -48,7 +48,7 @@ class ET_Comentario extends CI_Controller
 
 				foreach($_FILES as $key => $value)
 				{
-					$this->Model_ET_Archivo->insertar($ultimoETComentario->id_et_comentario, $value['name'], date('Y-m-d H:i:s'), explode('/', $value['type'])[1]);
+					$this->Model_ET_Archivo->insertar($ultimoETComentario->id_et_comentario, $value['name'], date('Y-m-d H:i:s'), explode('.', $value['name'])[count(explode('.', $value['name']))-1]);
 
 					$ultimoETArchivo=$this->Model_ET_Archivo->ultimoETArchivo();
 
