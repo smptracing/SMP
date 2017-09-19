@@ -9,13 +9,13 @@
 						<img src="<?=base_url()?>assets/img/user.png" height="45" width="45" style="background-color: #ffffff;border: 1px solid #cccccc;border-radius: 50px;">
 					</td>
 					<td style="padding: 4px;padding-left: 0px;">
-						<b><?=$value->nombres.' '.$value->apellido_p.' '.$value->apellido_m?> <small style="color: #999999;">(<?=$value->nombre_esp?>)</small></b><br>
-						<small><?=$value->desc_comentario?></small>
+						<b><?=html_escape($value->nombres.' '.$value->apellido_p.' '.$value->apellido_m)?> <small style="color: #999999;">(<?=html_escape($value->nombre_esp)?>)</small></b><br>
+						<small><?=html_escape($value->desc_comentario)?></small>
 						<div>
 							<small>
 								<?=count($value->childETArchivo)!=0 ? '<b>Archivos adjuntos: </b>' : ''?>
 								<?php foreach($value->childETArchivo as $index => $item){ ?>
-									<a href="#" onclick="window.location.href='<?=base_url()?>index.php/ET_Archivo/descargar/<?=$item->id_et_archivo?>';"><?=$item->nombre_archivo?></a><?=(count($value->childETArchivo)-1)!=$index ? ', ' : ''?>
+									<a href="#" onclick="window.location.href='<?=base_url()?>index.php/ET_Archivo/descargar/<?=$item->id_et_archivo?>';"><?=html_escape($item->nombre_archivo)?></a><?=(count($value->childETArchivo)-1)!=$index ? ', ' : ''?>
 								<?php } ?>
 							</small>
 						</div>
@@ -111,7 +111,7 @@
 
 				$.each(objectJSON.etComentario.childETArchivo, function(key, value)
 				{
-					htmlArchivosTemp+='<a href="#" onclick="window.location.href=\'<?=base_url()?>index.php/ET_Archivo/descargar/'+value.id_et_archivo+'\';">'+value.nombre_archivo+'</a>'+((objectJSON.etComentario.childETArchivo.length-1)!=key ? ', ' : '');
+					htmlArchivosTemp+='<a href="#" onclick="window.location.href=\'<?=base_url()?>index.php/ET_Archivo/descargar/'+value.id_et_archivo+'\';">'+replaceAll(replaceAll(value.nombre_archivo, '<', '&lt;'), '>', '&gt')+'</a>'+((objectJSON.etComentario.childETArchivo.length-1)!=key ? ', ' : '');
 				});
 
 				if(objectJSON.etComentario.childETArchivo.length!=0)
@@ -124,7 +124,7 @@
 						'<img src="<?=base_url()?>assets/img/user.png" height="45" width="45" style="background-color: #ffffff;border: 1px solid #cccccc;border-radius: 50px;">'+
 					'</td>'+
 					'<td style="padding: 4px;padding-left: 0px;">'+
-						'<b>'+objectJSON.etComentario.nombres+' '+objectJSON.etComentario.apellido_p+' '+objectJSON.etComentario.apellido_m+' <small style="color: #999999;">('+objectJSON.etComentario.nombre_esp+')</small></b><br>'+
+						'<b>'+replaceAll(replaceAll((objectJSON.etComentario.nombres+' '+objectJSON.etComentario.apellido_p+' '+objectJSON.etComentario.apellido_m), '<', '&lt;'), '>', '&gt')+' <small style="color: #999999;">('+replaceAll(replaceAll(objectJSON.etComentario.nombre_esp, '<', '&lt;'), '>', '&gt')+')</small></b><br>'+
 						'<small>'+objectJSON.etComentario.desc_comentario+'</small>'+
 						htmlArchivosTemp+
 						'<div style="color: #999999;font-size: 9px;text-align: right;">'+
