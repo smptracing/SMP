@@ -255,10 +255,10 @@
 				<th class="gdfCell" style="cursor:pointer;text-aling: center;"><span class="taskRowIndex">(#=obj.getRow()+1#)</span></th>
 				<td class="gdfCell noClip"><div class="taskStatus cvcColorSquare" status="(#=obj.status#)"></div></td>
 				<td class="gdfCell"><input type="text" name="code" value="(#=obj.code?obj.code:''#)" placeholder="Código" readonly="readonly" style="text-align: center;"></td>
-				<td class="gdfCell" style="text-align: center;"><a href="#" style="cursor: pointer;;user-select: none;" onclick="administrarComentarios('(#=obj.id#)', '(#=obj.name#)');">((#=obj.quantityComment#))</a></td>
+				<td class="gdfCell" style="text-align: center;"><a href="#" style="cursor: pointer;user-select: none;" onclick="administrarComentarios('(#=obj.id#)', '(#=obj.name#)');">((#=obj.quantityComment#))</a></td>
 				<td class="gdfCell indentCell" style="padding-left:(#=obj.level*10+18#)px;">
 					<div class="exp-controller" style="margin-left: 0px;"></div>
-					<small><a href="#" style="color: red;cursor: pointer;;user-select: none;" title="Observaciones">(0)</a></small>
+					<small><a href="#" style="color: red;cursor: pointer;user-select: none;" title="Observaciones" onclick="administrarObservaciones('(#=obj.id#)', '(#=obj.name#)');">(0)</a></small>
 					<input type="text" name="name" value="(#=obj.name#)" placeholder="Nombre" autocomplete="off">
 				</td>
 				<td class="gdfCell"><input type="text" name="depends" autocomplete="off" value="(#=obj.depends#)" (#=obj.hasExternalDep?"readonly":""#) style="text-align: center;"></td>
@@ -321,6 +321,24 @@
 			}
 
 			paginaAjaxDialogo(null, replaceAll(replaceAll(nombreTarea, '<', '&lt;'), '>', '&gt;'), { idTareaET : taskId }, '<?=base_url()?>index.php/ET_Comentario/insertar', 'GET', null, null, false, true);
+		}
+
+		function administrarObservaciones(taskId, nombreTarea)
+		{
+			if(taskId.substring(0, 3)=='tmp')
+			{
+				swal(
+				{
+					title: '',
+					text: 'Debe guardar los datos actuales antes de asignar esta información.',
+					type: 'error' 
+				},
+				function(){});
+
+				return;
+			}
+
+			paginaAjaxDialogo(null, replaceAll(replaceAll(nombreTarea, '<', '&lt;'), '>', '&gt;'), { idTareaET : taskId }, '<?=base_url()?>index.php/ET_Observacion_Tarea/insertar', 'GET', null, null, false, true);
 		}
 	</script>
 </body>
