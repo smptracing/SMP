@@ -91,6 +91,18 @@ class ET_Comentario extends CI_Controller
 
 				$idETComentario=$this->input->post('idETComentario');
 
+				$listaETArchivo=$this->Model_ET_Archivo->ETArchivoPorIdETComentario($idETComentario);
+
+				foreach($listaETArchivo as $key => $value)
+				{
+					$rutaArchivoTemp='./uploads/ArchivoComentarioTareaGanttET/'.$value->id_et_archivo.'.'.$value->ext_archivo;
+
+					if(file_exists($rutaArchivoTemp))
+					{
+						unlink($rutaArchivoTemp);
+					}
+				}
+
 				$this->Model_ET_Comentario->eliminar($idETComentario);
 
 				$this->db->trans_complete();
