@@ -44,7 +44,12 @@
 		var dataAjax=new FormData();
 
 		dataAjax.append('idTareaET', <?=$idTareaET?>);
-		dataAjax.append('archivosComentario', $($('#fileArchivosComentario')[0]).get(0).files);
+
+		$.each($($('#fileArchivosComentario')[0]).get(0).files, function(key, value)
+		{
+			dataAjax.append('archivo'+key, value);
+		});
+		
 		dataAjax.append('descComentario', $('#txtDescripcionComentario').val());
 
 		$.ajax({
@@ -55,10 +60,12 @@
 		    data: dataAjax,
 		    beforeSend: function(xhr)
 		    {
-		        
+		        renderLoading();
 		    },
 		    success: function(objectJSON)
 		    {
+		    	$('#divModalCargaAjax').hide();
+
 		    	objectJSON=JSON.parse(objectJSON);
 
 				swal(
