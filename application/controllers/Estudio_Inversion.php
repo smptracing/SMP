@@ -313,8 +313,9 @@ class Estudio_Inversion extends CI_Controller
 
     public function EstudioCoordinadorFunc()
     {
+        $listarEstudioCoordinadorFuncion=$this->Estudio_Inversion_Model->EstudioCoordinadorF();
         $this->load->view('layout/Formulacion_Evaluacion/header');
-        $this->load->view('front/Formulacion_Evaluacion/Estudio/index');
+        $this->load->view('front/Formulacion_Evaluacion/Estudio/index',['listarEstudioCoordinadorFuncion'=>$listarEstudioCoordinadorFuncion]);
         $this->load->view('layout/Formulacion_Evaluacion/footer');
     }
 //------------------------------------------------------------------------------------------------------------------

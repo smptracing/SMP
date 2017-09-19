@@ -50,14 +50,42 @@
 																</tr>
 															</thead>
 															<tbody>
-													
+															<?php foreach($listarEstudioCoordinadorFuncion as $item ){ ?>
+															  	<tr>
+																	<td>
+																		<?=$item->codigo_unico_pi?>
+															    	</td>
+															    	<td>
+																		<?=$item->nombre_est_inv?>
+															    	</td>	
+																	<td>
+																		<?=$item->costo_pi?>
+															    	</td>
+															    	<td>
+																		<?=$item->provincia?>
+															    	</td>	
+															    	<td>
+																		<?=$item->denom_nivel_estudio?>
+															    	</td>
+															    	<td>
+																		<?=$item->denom_nivel_estudio?>
+															    	</td>
+															    	<td>
+																		<?=$item->avance_entregbale?>
+															    	</td>
+															    	<td>
+																		<?=$item->avance_entregbale?>
+															    	</td>
+															    	<td>
+															    	</td>
+															   </tr>
+															<?php } ?>
 															</tbody>
 														</table>
 													</div>
 											</div>
 										</div>
 									</div>
-										<!-- / fin tabla de sector desde el row -->
 								</div>
 							</div>
 						</div>

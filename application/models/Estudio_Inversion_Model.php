@@ -291,13 +291,28 @@ class Estudio_Inversion_Model extends CI_Model
         }
     }
     public function get_listaproyectosCargar($id_Pi)
-      {
+    {
           $opcion="obtenerdatosporpipdelabusquedaproyectoinversion";
           $EstudioInversionCargar = $this->db->query("execute  sp_Gestionar_ProyectoInversion @Opcion='".$opcion."',@id_pi='".$id_Pi."'");
           if ($EstudioInversionCargar->num_rows() > 0) 
           {
               return $EstudioInversionCargar->result();
           }
-      }
+    }
 
+    public function EstudioCoordinadorF()
+    {
+        $data=$this->db->query("select PIP.codigo_unico_pi,EI.nombre_est_inv,
+                                STUFF(
+                                     (
+                                 SELECT ','+provincia AS [text()]
+                                 FROM dbo.UBIGEO_PI ubp
+                                      INNER JOIN UBIGEO ub ON ubp.id_ubigeo = ub.id_ubigeo
+                                 WHERE ubp.id_pi = PIP.id_pi
+                                 ORDER BY ub.id_ubigeo FOR XML PATH('')
+                                ), 1, 1, '') AS provincia, PIP.costo_pi ,N.denom_nivel_estudio,avance_entregbale 
+                                 from ESTUDIO_INVERSION EI INNER JOIN PROYECTO_INVERSION PIP on EI.id_pi=PIP.id_pi inner join NIVEL_ESTUDIO N on EI.id_nivel_estudio=N.id_nivel_estudio left join UF_ENTREGABLE UFE ON EI.id_est_inv=UFE.id_est_inv LEFT JOIN UF_MODULO_ENTREGABLE UFM ON UFE.id_entregable=UFM.id_entregable");
+
+        return $data->result();
+    }
 }
