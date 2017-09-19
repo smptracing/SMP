@@ -33,7 +33,7 @@
             <div class=".col-xs-12 .col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <div class="col-md-12">
+                    	<div class="col-md-12">
                             <div class=".col-xs-12 .col-md-10">
                                 <label for="listaProyectos">Proyecto PMI<span class="required"></span></label>
 						        <select   id="listaProyectos" name="listaProyectos" class="selectpicker form-control col-md-9 col-xs-12" data-live-search="true"  title="Buscar Proyecto...">	        
@@ -43,18 +43,8 @@
 						     	</select>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-	<div class="row ">
-        <div class="col-md-12">
-            <div class=".col-xs-12 .col-md-12">
-                <div class="panel panel-default">
-                    <div class="panel-body">
                         <div class="col-md-12">
+                        	<br>
                             <div class=".col-xs-12 .col-md-10">
                                 <label for="name">Nombre de Estudio de Inversión<span class="required"></span>
                                 </label>
@@ -75,13 +65,13 @@
                             <div class=".col-xs-6 .col-md-12">
                             <br>
                             <label for="name">Monto de Inversión<span class="required"></span></label>
-                            <input id="txtMontoInversion" name="txtMontoInversion"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2"  required="required" type="number" step='0.01'  placeholder="0.00">
+                            <input id="txtMontoInversion" name="txtMontoInversion"  class="form-control col-md-1 col-xs-1" required="required" type="text" placeholder="0.00">
                             </div>
                         </div>
 						<div class="col-md-3">
 							<br>
 							<label for="name">Costo del Estudio<span class="required"></span></label>
-						    <input id="txtcostoestudio" name="txtcostoestudio"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2"  required="required" type="number" step='0.01'  placeholder="0.00">
+						    <input id="txtcostoestudio" name="txtcostoestudio"  class="form-control col-md-1 col-xs-1" required="required" type="text" placeholder="0.00">
 						</div>
 						<div class="col-md-3">
 							<br>
