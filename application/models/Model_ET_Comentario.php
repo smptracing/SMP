@@ -35,4 +35,11 @@ class Model_ET_Comentario extends CI_Model
 
 		return true;
 	}
+
+	public function ETComentarioPorIdETComentarioYIdPersona($idETComentario, $idPersona)
+	{
+		$data=$this->db->query("select * from ET_COMENTARIO as ETC inner join ET_ESPECIALISTA_TAREA as ETET on ETC.id_especialista_tarea=ETET.id_especialista_tarea inner join ET_PER_REQ as ETPR on ETET.id_per_req=ETPR.id_per_req where ETPR.id_persona=$idPersona and ETC.id_et_comentario=$idETComentario");
+
+		return count($data->result())==0 ? null : $data->result()[0];
+	}
 }

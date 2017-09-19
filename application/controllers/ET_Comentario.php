@@ -89,7 +89,14 @@ class ET_Comentario extends CI_Controller
 			{
 				$this->db->trans_start();
 
+				$idPersonaTemp=$this->session->userdata('idPersona');
+
 				$idETComentario=$this->input->post('idETComentario');
+
+				if($this->Model_ET_Comentario->ETComentarioPorIdETComentarioYIdPersona($idETComentario, $idPersonaTemp)==null)
+				{
+					echo json_encode(['proceso' => 'Error', 'mensaje' => 'Ud. no tiene autorización para borrar este comentario.']);exit;
+				}
 
 				$listaETArchivo=$this->Model_ET_Archivo->ETArchivoPorIdETComentario($idETComentario);
 
