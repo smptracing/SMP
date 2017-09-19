@@ -4,39 +4,38 @@ $(document).on("ready" ,function()
     listar_Meta();
     listar_meta_presupuestal();
     /*listar_meta_pi(id_pi);*/
-   /* $("#txt_pia").keyup(function() 
+    $("#txt_pia").keyup(function(e)
     {
-        $(event.target).val(function(index, value) 
-        {
-            //addCommas(($('#txt_pia').val()));
-            formatNumber(($('#txt_pia').val()));
+        $(this).val(format($(this).val()));
+    });
+    $("#txt_pim").keyup(function(e)
+    {
+        $(this).val(format($(this).val()));
+    });
+    $("#txt_certificado").keyup(function(e)
+    {
+        $(this).val(format($(this).val()));
+    });
+    $("#txt_compromiso").keyup(function(e)
+    {
+        $(this).val(format($(this).val()));
+    });
+    $("#txt_devengado").keyup(function(e)
+    {
+        $(this).val(format($(this).val()));
+    });
+    $("#txt_girado").keyup(function(e)
+    {
+        $(this).val(format($(this).val()));
+    });
 
-            //var pim = $(this).val();
-            //alert($('#txt_pim').val(pim.split('.')[1]));
-            /*
-            valor = value.split('.');
-            alert(valor);*/
-
-            //return value.replace(/\D/g, "")
-            /*return value.split('.')
-            .replace(/([0-9])$/, '$1')
-            .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");
-        });*/
-      /*return value.replace(/\D/g, "")
-        .replace(/([0-9])([0-9]{2})$/, '$1.$2')
-        .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");*/
-       /* });
-
-    });*/
-
-    $('#txt_pia').inputmask("decimal", {
+    /*$('#txt_pia').inputmask("decimal", {
         radixPoint: ".",
         groupSeparator: ",",
         digits: 2,
         autoGroup: true,
         rightAlign: false,
-    });
-    
+    });    
     $('#txt_pim').inputmask("decimal", {
         radixPoint: ".",
         groupSeparator: ",",
@@ -71,7 +70,7 @@ $(document).on("ready" ,function()
         digits: 2,
         autoGroup: true,
         rightAlign: false,
-    });
+    });*/
     $("#form_AddProgramacion").submit(function(event)
     {
         event.preventDefault();
@@ -141,22 +140,58 @@ $(document).on("ready" ,function()
     }
 });
 
-function formatNumber (num) 
-{
-    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
-}
+var format = function(num){
+    var str = num.replace("", ""), parts = false, output = [], i = 1, formatted = null;
+    if(str.indexOf(".") > 0) 
+    {
+        parts = str.split(".");
+        str = parts[0];
+    }
+    str = str.split("").reverse();
+    for(var j = 0, len = str.length; j < len; j++) 
+    {
+        if(str[j] != ",") 
+        {
+            output.push(str[j]);
+            if(i%3 == 0 && j < (len - 1))
+            {
+                output.push(",");
+            }
+            i++;
+        }
+    }
+    formatted = output.reverse().join("");
+    return("" + formatted + ((parts) ? "." + parts[1].substr(0, 2) : ""));
+};
 
-function addCommas(nStr) 
+function addCommas(str)
 {
-    nStr += '';
-    x = nStr.split('.');
-    x1 = x[0];
-    x2 = x.length > 1 ? '.' + x[1] : '';
+    /*nStr += '';
+    var x = nStr.split('.');
+    var x1 = x[0];
+    var x2 = x.length > 1 ? '.' + x[1] : '';
     var rgx = /(\d+)(\d{3})/;
     while (rgx.test(x1)) {
-            x1 = x1.replace(rgx, '$1' + ',' + '$2');
+    x1 = x1.replace(rgx, '$1' + ',' + '$2');
     }
-    return x1 + x2;
+    return x1 + x2;*/
+    //return str.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return String(str).replace(/(\d)(?=(\d{3})+$)/g, "$1,")
+}
+
+function formatNumber(value) 
+{
+    nStr += '';
+    var x = value.split('.');
+    var x1 = x[0];
+    alert(x1);
+
+    x1.replace(/\D/g, "")
+            .replace(/([0-9])([0-9]{2})$/, '$1.$2')
+            .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");
+            return 
+
+    //return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
 }
 
 $(function()
@@ -167,7 +202,7 @@ $(function()
         excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
         live: 'enabled',
         message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
-        trigger: null,
+        trigger: null,        
         fields:
         {
             txt_anio_meta:
@@ -180,7 +215,7 @@ $(function()
                     },
                     regexp:
                     {
-                        regexp: /^([0-9]){4}$/,
+                        regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
                         message: '<b style="color: red;">El campo "Año" debe ser un numero de 4 digitos.</b>'
                     }
                 }
@@ -191,7 +226,7 @@ $(function()
                 {
                     notEmpty:
                     {
-                        message: '<b style="color: red;">El campo "Año" es requerido.</b>'
+                        message: '<b style="color: red;">El campo "Meta Presupuestal" es requerido.</b>'
                     }
                 }
             },
@@ -201,7 +236,7 @@ $(function()
                 {
                     notEmpty:
                     {
-                        message: '<b style="color: red;">El campo "Año" es requerido.</b>'
+                        message: '<b style="color: red;">El campo "Correlativo Meta" es requerido.</b>'
                     }
                 }
             },
@@ -211,12 +246,12 @@ $(function()
                 {
                     notEmpty:
                     {
-                        message: '<b style="color: red;">El campo "Año" es requerido.</b>'
+                        message: '<b style="color: red;">El campo "PIA" es requerido.</b>'
                     },
                     regexp:
                     {
-                        regexp: "^[0-9]+(\\.\\d{1,2})?$",
-                        message: '<b style="color: red;">El campo "Año" debe ser un numero de 4 digitos.</b>'
+                        regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
+                        message: '<b style="color: red;">El campo "PIA" debe ser númerico.</b>'
                     }
                 }
             },
@@ -226,7 +261,12 @@ $(function()
                 {
                     notEmpty:
                     {
-                        message: '<b style="color: red;">El campo "Año" es requerido.</b>'
+                        message: '<b style="color: red;">El campo "PIM" es requerido.</b>'
+                    },
+                    regexp:
+                    {
+                        regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
+                        message: '<b style="color: red;">El campo "PIM" debe ser númerico.</b>'
                     }
                 }
             },
@@ -236,7 +276,12 @@ $(function()
                 {
                     notEmpty:
                     {
-                        message: '<b style="color: red;">El campo "Año" es requerido.</b>'
+                        message: '<b style="color: red;">El campo "Certificado" es requerido.</b>'
+                    },
+                    regexp:
+                    {
+                        regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
+                        message: '<b style="color: red;">El campo "Certificado" debe ser númerico.</b>'
                     }
                 }
             },
@@ -246,7 +291,12 @@ $(function()
                 {
                     notEmpty:
                     {
-                        message: '<b style="color: red;">El campo "Año" es requerido.</b>'
+                        message: '<b style="color: red;">El campo "Compromiso" es requerido.</b>'
+                    },
+                    regexp:
+                    {
+                        regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
+                        message: '<b style="color: red;">El campo "Compromiso" debe ser númerico.</b>'
                     }
                 }
             },
@@ -256,7 +306,12 @@ $(function()
                 {
                     notEmpty:
                     {
-                        message: '<b style="color: red;">El campo "Año" es requerido.</b>'
+                        message: '<b style="color: red;">El campo "Devengado" es requerido.</b>'
+                    },
+                    regexp:
+                    {
+                        regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
+                        message: '<b style="color: red;">El campo "Devengado" debe ser númerico.</b>'
                     }
                 }
             },
@@ -266,7 +321,12 @@ $(function()
                 {
                     notEmpty:
                     {
-                        message: '<b style="color: red;">El campo "Año" es requerido.</b>'
+                        message: '<b style="color: red;">El campo "Girado" es requerido.</b>'
+                    },
+                    regexp:
+                    {
+                        regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
+                        message: '<b style="color: red;">El campo "Girado" debe ser númerico.</b>'
                     }
                 }
             }

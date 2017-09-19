@@ -126,7 +126,7 @@
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>Devengado</label></center>
-                                      <input  class="form-control" id="txt_devengado" name="txt_devengado" type="number" required="required" value="0.00"  disabled="disabled">
+                                      <input  class="form-control" id="txt_devengadoo" name="txt_devengadoo" type="number" required="required" value="0.00"  disabled="disabled">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>Prioridad</label></center>
@@ -245,7 +245,7 @@
                     </div>
                     <div class="item form-group">
                         <div class="col-md-3 col-sm-6 col-xs-12">
-                            <label for="txt_pia">PIAA</label>
+                            <label for="txt_pia">PIAAAA</label>
                             <input  class="form-control" id="txt_pia" name="txt_pia" type="text" autocomplete="off">
                         </div>
                         <div class="col-md-3 col-sm-6 col-xs-12">
@@ -268,14 +268,15 @@
                             <label for="txt_girado">Girado</label>
                             <input  class="form-control" id="txt_girado" name="txt_girado" type="text" autocomplete="off">
                         </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <label>.</label><br>
-                            <button  id="send" type="submit" class="btn btn-success">
-                                <span class="glyphicon glyphicon-floppy-saved"></span> Guardar
-                            </button>
-                        </div>
                     </div>
                 </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <label>.</label><br>
+                    <button  id="send" type="submit" class="btn btn-success">
+                        <span class="glyphicon glyphicon-floppy-saved"></span> Guardar
+                    </button>
+                </div>                  
+                
                 <div class="ln_solid"></div>
                 <div class="x_panel" style="background-color: #EEEEEE;">
                     <center>
