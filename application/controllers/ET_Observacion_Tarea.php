@@ -72,7 +72,12 @@ class ET_Observacion_Tarea extends CI_Controller
 			$idTareaET=$this->input->get('idTareaET');
 			$idET=$this->input->get('idET');
 
-			$listaETObservacionTarea=[];
+			$listaETObservacionTarea=$this->Model_ET_Observacion_Tarea->ETObservacionTareaPorIdTareaET($idTareaET);
+
+			foreach($listaETObservacionTarea as $key => $value)
+			{
+				$value->childETArchivoObs=$this->Model_ET_Archivo_Obs->ETArchivoObsPorIdObservacionTarea($value->id_observacion_tarea);
+			}
 
 			return $this->load->view('front/Ejecucion/ETObservacionTarea/insertar', ['idTareaET' => $idTareaET, 'idET' => $idET, 'listaETObservacionTarea' => $listaETObservacionTarea]);
 		}
