@@ -141,4 +141,30 @@
 		    }
 		});
 	}
+
+	function eliminarObservacionTarea(idObservacionTarea, element)
+	{
+		if(confirm('¿Realmente desea eliminar esta observación?'))
+		{
+			paginaAjaxJSON({ idObservacionTarea : idObservacionTarea }, '<?=base_url()?>index.php/ET_Observacion_Tarea/eliminar', 'POST', null, function(objectJSON)
+			{
+				objectJSON=JSON.parse(objectJSON);
+
+				swal(
+				{
+					title: '',
+					text: objectJSON.mensaje,
+					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
+				},
+				function(){});
+
+				if(objectJSON.proceso=='Error')
+				{
+					return false;
+				}
+
+				$(element).parent().parent().parent().remove();
+			}, false, true);
+		}
+	}
 </script>

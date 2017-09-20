@@ -82,5 +82,43 @@ class ET_Observacion_Tarea extends CI_Controller
 			return $this->load->view('front/Ejecucion/ETObservacionTarea/insertar', ['idTareaET' => $idTareaET, 'idET' => $idET, 'listaETObservacionTarea' => $listaETObservacionTarea]);
 		}
 	}
+
+	public function eliminar()
+	{
+		if($this->input->is_ajax_request())
+		{
+			if($_POST)
+			{
+				$this->db->trans_start();
+
+				$idPersonaTemp=$this->session->userdata('idPersona');
+
+				$idObservacionTarea=$this->input->post('idObservacionTarea');
+
+				if($this->Model_ET_Observacion_Tarea->ETObervacionTareaPorIdObservacionTareaYIdPersona($idObservacionTarea, $idPersonaTemp)==null)
+				{
+					echo json_encode(['proceso' => 'Error', 'mensaje' => 'Ud. no tiene autorización para borrar esta observación.']);exit;
+				}
+
+				$listaETArchivoObs=$this->Model_ET_Archivo_Obs->ETArchivoObsPorIdObservacionTarea($idObservacionTarea);
+
+				foreach($listaETArchivoObs as $key => $value)
+				{
+					$rutaArchivoObsTemp='./uploads/ArchivoObservacionTareaGanttET/'.$value->id_archivo_obs.'.'.$value->ext_archivo;
+
+					if(file_exists($rutaArchivoObsTemp))
+					{
+						unlink($rutaArchivoObsTemp);
+					}
+				}
+
+				$this->Model_ET_Observacion_Tarea->eliminar($idObservacionTarea);
+
+				$this->db->trans_complete();
+
+				echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Observación eliminada correctamente.']);exit;
+			}
+		}
+	}
 }
 ?>
