@@ -27,7 +27,9 @@ class ET_Observacion_Tarea extends CI_Controller
 
 			$idTareaET=$this->input->get('idTareaET');
 
-			return $this->load->view('front/Ejecucion/ETObservacionTarea/insertar', ['idTareaET' => $idTareaET]);
+			$listaETObservacionTarea=[];
+
+			return $this->load->view('front/Ejecucion/ETObservacionTarea/insertar', ['idTareaET' => $idTareaET, 'listaETObservacionTarea' => $listaETObservacionTarea]);
 		}
 	}
 }
