@@ -1,5 +1,97 @@
+function mostrarPrioridad(proyecto){
+  $.getJSON(base_url+"index.php/criterio/getPrioridad/"+proyecto,function(json){
+    $("#txt_prioridad").val(json[0]['n']);
+  });
+ 
+}
+function guardarPrioridad(id_proyecto){
+  var c=0;
+  var arrayValorizacion=new Array();
+  $("#frmPrioridad :input[name*='tx_peso_']").each(function(){
+    var criterio=(($(this).attr("id")).split('tx_peso_'))[1];
+    arrayValorizacion[c]=[$('input:radio[name=rb_'+criterio+']:checked').val(),$("#tx_ptje_"+criterio).val(),$("#tx_peso_"+criterio).val()];
+    c++;
+  });
+  var formData={id_proyecto:id_proyecto,arrayValorizacion:arrayValorizacion};  
+  $.ajax({
+      url:base_url+"index.php/criterio/addPrioridad",
+      type:"POST",
+      data:formData,
+      dataType:'json',
+      success:function(data){
+        if(data==true)
+          swal("","Se grabaron los datos!","success");
+        else
+          swal("","Error... no se grabaron los datos","error");
+      }
+  });
+}
+function total(){
+    var total=0;
+    $("#frmPrioridad :input[name*='tx_peso_']").each(function(){
+      if($(this).val()!='')
+        total=total+parseFloat($(this).val());
+    });
+    $("#tx_ptjeTotal").val(total.toFixed(2));
+}
+function puntaje(id,valor,peso){
+    $("#tx_ptje_"+id).val(valor);
+    $("#tx_peso_"+id).val(valor*peso/100);
+    total();
+}
 $(document).on("ready" ,function(){
      lista_no_pip();/*llamar a mi datatablet listar proyectosinverision*/
+      $('#form_AddProgramacion').formValidation({
+      excluded: ':disabled',
+      fields:
+      {
+        cbxBrecha:{
+          validators:{
+            notEmpty:{
+              message: '<b style="color: red;">El campo "Brecha" es requerido.</b>'
+            }
+          }
+        },
+        txt_saldoprogramar:{
+          validators:{
+            notEmpty:{
+              message: '<b style="color: red;">El campo "Saldo a Programar" es requerido.</b>'
+            }
+          }
+        },
+        txt_anio1:{
+          validators:{
+            notEmpty:{
+              message: '<b style="color: red;">El campo "Año de Programación" es requerido.</b>'
+            }
+          }
+        },
+      }
+    });
+     $("body").on("click","#send_addProgramacion",function(e){
+      $('#form_AddProgramacion').data('formValidation').validate();
+      if($('#form_AddProgramacion').data('formValidation').isValid()==true){
+          $('#form_AddProgramacion').submit();
+          var txt_codigo_unico_pi=$("#txt_codigo_unico_pi").val();
+          var txt_nombre_proyecto=$("#txt_nombre_proyecto").val();
+          var txt_costo_proyecto=$("#txt_costo_proyecto").val();
+          var txt_pia_fye=$("#txt_pia_fye").val();
+          var txt_pim_pia_fye=$("#txt_pim_pia_fye").val();
+          var txt_devengado_pia_fye=$("#txt_devengado_pia_fye").val();
+          $('#form_AddProgramacion').each(function(){ 
+            this.reset();
+          });
+          $("#txt_codigo_unico_pi").val(txt_codigo_unico_pi);
+          $("#txt_nombre_proyecto").val(txt_nombre_proyecto);
+          $("#txt_costo_proyecto").val(txt_costo_proyecto);
+          $("#txt_pia_fye").val(txt_pia_fye);
+          $("#txt_pim_pia_fye").val(txt_pim_pia_fye);
+          $("#txt_devengado_pia_fye").val(txt_devengado_pia_fye);
+
+          $('.selectpicker').selectpicker('refresh');
+          $('#form_AddProgramacion').data('formValidation').resetForm();
+      }
+    });
      $("#form_AddProgramacion").submit(function(event)
                   {
                       event.preventDefault();
@@ -67,6 +159,7 @@ $(document).on("ready" ,function(){
                                     {"defaultContent":"<td>#</td>"},
                                     {"data":"codigo_unico_pi"},
                                     {"data":"nombre_pi"},
+                                    {"data":"nombre_funcion"},
                                     {"data":"costo_pi"},
                                     {"data":"desc_tipo_nopip"},
                                     {"data": function (data, type, dataToSet) {
@@ -90,7 +183,12 @@ $(document).on("ready" ,function(){
                                         return '<h5><span class="label label-danger">No Programado</span></h5>';
                                       }
                                    }},
-                                    {"defaultContent":"<center><button type='button' title='Programar' class='programar_pip btn btn-warning btn-xs' data-toggle='modal' data-target='#Ventana_Programar'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button></center>"}
+                                   
+                                   /* {"defaultContent":"<center><button type='button' title='Programar' class='programar_pip btn btn-warning btn-xs' data-toggle='modal' data-target='#Ventana_Programar'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button></center>"}*/
+                                     {"data":'nombre_pi',render:function(data,type,row){
+                                      return "<center> <button title='ESTABLECER PRIORIDAD' type='button'  data-toggle='tooltip'  class='editar btn btn-success btn-xs' data-toggle='modal' onclick=paginaAjaxDialogo('null','Prioridad',{id_proyecto:"+row.id_pi+",id_funcion:"+row.id_funcion+"},'"+base_url+"index.php/criterio/itemPrioridad','GET',null,null,false,true);><i class='ace-icon fa fa-list-ol bigger-120'></i></button> <button type='button' title='Programar' class='programar_pip btn btn-warning btn-xs' data-toggle='modal' data-target='#Ventana_Programar' onclick=mostrarPrioridad('"+row.id_pi+"');><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button></center>";
+                                      }
+                                    },
                                 ],
                                "language":idioma_espanol
                     });
@@ -280,6 +378,8 @@ if (data.ultimo_pim_meta_pres==""|| parseFloat(data.ultimo_pim_meta_pres)=="0.00
                             $('select[name=Cbx_AnioCartera]').change();
                             $('.selectpicker').selectpicker('refresh');
                             listar_Brecha();//listar brecha
+
+                            $("#Cbx_AnioCartera").trigger("change");
                         }
                     });
                 }

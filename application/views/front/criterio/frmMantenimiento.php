@@ -17,7 +17,7 @@
                             <div class="row">
 								<div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="x_panel">
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ventana_registrar_meta"><span class="fa fa-plus-circle"></span> Nuevo</button>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" onclick=paginaAjaxDialogo('null','Registrar&nbsp;factor',{},base_url+"index.php/criterio/itemFactor",'GET',null,null,false,true);><span class="fa fa-plus-circle"></span> Nuevo</button>
                                         <div class="x_content">
                                             <table id="table_factor" class="table table-striped table-bordered table-hover" ellspacing="0" width="100%">
                                           		<thead style="background-color:#5A738E;color:#FFFFFF;">
@@ -36,17 +36,24 @@
                             <div class="row">
 								<div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="x_panel">
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ventana_registrar_meta"><span class="fa fa-plus-circle"></span> Nuevo</button>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" onclick=paginaAjaxDialogo('null','Registrar&nbsp;criterio',{},base_url+"index.php/criterio/itemCriterio",'GET',null,null,false,true);><span class="fa fa-plus-circle"></span> Nuevo</button>
                                         <div class="x_content">
                                             <table id="table_criterio" class="table table-striped table-bordered table-hover" ellspacing="0" width="100%">
                                           		<thead style="background-color:#5A738E;color:#FFFFFF;">
                                             		<tr>
-                                              			<th style="width:200px;">Factor</th>
-                                              			<th style="width:100px;">Peso</th>
+                                              			<th style="width:20%;">Función</th>
+                                                        <th style="width:20%;">Factor</th>
+                                              			<th style="width:10%;">Peso</th>
                                               			<th >Criterio</th>
-                                                        <th style="width:50px;"></th>
+                                                        <th style="width:10%"></th>
                                             		</tr>
                                           		</thead>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th></th>
+                                                        
+                                                    </tr>
+                                                </tfoot>
                                             </table>
                                         </div>
                                     </div>
@@ -75,7 +82,7 @@ function listarFactor(){
 		"columns":[
 			{"data":"nombre_factor"},
 			{"data":'nombre_factor',render:function(data,type,row){
-				    return "<button type='button'  data-toggle='tooltip'  class='editar btn btn-primary btn-xs' data-toggle='modal' onclick=paginaAjaxDialogo('null','Modificar',{id_cartera:"+row.nombre_factor+"},'"+base_url+"index.php/CarteraInversion/itemCartera','GET',null,null,false,true);><i class='ace-icon fa fa-pencil bigger-120'></i></button>";
+				    return "<button type='button'  data-toggle='tooltip'  class='editar btn btn-primary btn-xs' data-toggle='modal' onclick=paginaAjaxDialogo('null','Modificar&nbsp;factor',{id_factor:"+row.id_factor+"},'"+base_url+"index.php/criterio/itemFactor','GET',null,null,false,true);><i class='ace-icon fa fa-pencil bigger-120'></i></button>";
 				}
 			}
 		],
@@ -93,14 +100,35 @@ function listarCriterio(){
 			"dataSrc":""
 		},
 		"columns":[
-			{"data":"nombre_factor"},
+			{"data":"nombre_funcion"},
+            {"data":"nombre_factor"},
 			{"data":"denPeso"},
 			{"data":"nombre_criterio"},
 			{"data":'nombre_criterio',render:function(data,type,row){
-				    return "<button type='button'  data-toggle='tooltip'  class='editar btn btn-primary btn-xs' data-toggle='modal' onclick=paginaAjaxDialogo('null','Modificar',{id_cartera:"+row.nombre_factor+"},'"+base_url+"index.php/CarteraInversion/itemCartera','GET',null,null,false,true);><i class='ace-icon fa fa-pencil bigger-120'></i></button>";
+				    return "<button type='button'  data-toggle='tooltip'  class='editar btn btn-primary btn-xs' data-toggle='modal' onclick=paginaAjaxDialogo('null','Modificar&nbsp;criterio',{id_criterio:"+row.id_criterio+"},'"+base_url+"index.php/criterio/itemCriterio','GET',null,null,false,true);><i class='ace-icon fa fa-pencil bigger-120'></i></button>";
 				}
 			}
 		],
+        initComplete: function () {
+            this.api().columns().every( function () {
+                var column = this;
+                var select = $('<select><option value=""></option></select>')
+                    .appendTo( $(column.footer()).empty() )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+ 
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+ 
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            } );
+        }
 	}); 
 }
 $(function(){

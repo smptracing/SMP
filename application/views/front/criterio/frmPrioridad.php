@@ -20,9 +20,10 @@
                                             <table id="table_proyecto" class="table table-striped table-bordered table-hover" ellspacing="0" width="100%">
                                           		<thead style="background-color:#5A738E;color:#FFFFFF;">
                                             		<tr>
-                                                        <th style="width:100px;">Código</th>
+                                                        <th style="width:60px;">Código</th>
                                               			<th >Nombre del Proyecto</th>
                                                         <th style="width:100px;">Costo</th>
+                                                        <th style="width:100px;">Función</th>
                                                         <th style="width:100px;">Estado Ciclo</th>
                                                         <th style="width:30px;"></th>
                                             		</tr>
@@ -91,9 +92,10 @@ function listarProyectos(){
             {"data":"codigo_unico_pi"},
             {"data":"nombre_pi"},
             {"data":"costo_pi"},
+            {"data":"nombre_funcion"},
             {"data":"nombre_estado_ciclo"},
 			{"data":'nombre_pi',render:function(data,type,row){
-                return "<button title='ESTABLECER PRIORIDAD' type='button'  data-toggle='tooltip'  class='editar btn btn-success btn-xs' data-toggle='modal' onclick=paginaAjaxDialogo('null','Prioridad',{id_proyecto:"+row.id_pi+"},'"+base_url+"index.php/criterio/itemPrioridad','GET',null,null,false,true);><i class='ace-icon fa fa-list-ol bigger-120'></i></button>";
+                return "<button title='ESTABLECER PRIORIDAD' type='button'  data-toggle='tooltip'  class='editar btn btn-success btn-xs' data-toggle='modal' onclick=paginaAjaxDialogo('null','Prioridad',{id_proyecto:"+row.id_pi+",id_funcion:"+row.id_funcion+"},'"+base_url+"index.php/criterio/itemPrioridad','GET',null,null,false,true);><i class='ace-icon fa fa-list-ol bigger-120'></i></button>";
 				}
 			}
 		],
