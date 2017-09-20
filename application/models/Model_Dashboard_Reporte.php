@@ -88,6 +88,19 @@ class Model_Dashboard_Reporte extends CI_Model
         }
     }
 
+    function InformacionFinanciera($CodigoUnico)
+    {
+        $data = $this->db->query("select codigo_unico_pi,SUM(costo_pi) as costo_pi,SUM(pia_meta_pres) as pia_meta_pres ,SUM(pim_acumulado) AS pim_acumulado,
+        SUM(compromiso_acumulado) as compromiso_acumulado ,SUM(devengado_acumulado) as devengado_acumulado from 
+        PROYECTO_INVERSION inner join META_PRESUPUESTAL_PI on  PROYECTO_INVERSION.id_pi=META_PRESUPUESTAL_PI.id_pi 
+        where PROYECTO_INVERSION.codigo_unico_pi='".$CodigoUnico."' GROUP BY codigo_unico_pi");//listar EVAL
+        if ($data->num_rows()> 0) {
+            return $data->result();
+        } else {
+            return false;
+        }
+    }
+
     function FuncionNumeroPip()
     {
         $data=$this->db->query("select FUNCION.nombre_funcion ,count (nombre_pi)as CantidadPip, sum(costo_pi)as CostoPip from PROYECTO_INVERSION INNER JOIN GRUPO_FUNCIONAL ON PROYECTO_INVERSION.id_grupo_funcional=GRUPO_FUNCIONAL.id_grup_funcional INNER JOIN  DIVISION_FUNCIONAL on GRUPO_FUNCIONAL.id_div_funcional=DIVISION_FUNCIONAL.id_div_funcional INNER JOIN FUNCION on DIVISION_FUNCIONAL.id_funcion=FUNCION.id_funcion group by FUNCION.nombre_funcion");
@@ -128,6 +141,14 @@ class Model_Dashboard_Reporte extends CI_Model
         $data = $this->db->query("execute sp_Gestionar_SIAF @opcion='".$opcion."', @codigo_snip ='".$CodigoUnico."'");
             
             return $data->result();       
+    }
+
+    function DetalleMensualizadoMeta($correlativoMeta, $anioMeta)
+    {
+        $opcion="listar_mensualizado_meta";
+        $data = $this->db->query("execute sp_Gestionar_SIAF @opcion='".$opcion."',  @correlativo_meta='".$correlativoMeta."', @anio_meta='".$anioMeta."'");
+            
+            return $data->result();
     }
 
     function ReporteDevengadoPiaPimPorPipGraficos($CodigoUnico)
