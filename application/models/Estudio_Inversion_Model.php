@@ -102,9 +102,12 @@ class Estudio_Inversion_Model extends CI_Model
     public function get_TipoEstudio()
     {
         $TipoEstudio = $this->db->query("select id_tipo_est,nombre_tipo_est from TIPO_ESTUDIO");
-        if ($TipoEstudio->num_rows() > 0) {
+        if ($TipoEstudio->num_rows() > 0) 
+        {
             return $TipoEstudio->result();
-        } else {
+        } 
+        else 
+        {
             return false;
         }
     }

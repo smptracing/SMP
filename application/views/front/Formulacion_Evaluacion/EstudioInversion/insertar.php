@@ -8,9 +8,24 @@
             <div class=".col-xs-12 .col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-body">
+                    	<div class="col-md-3">
+                        	<br>
+                            <div class=".col-xs-12 .col-md-3">
+                                <label for="txtNombreEstudioInversion">Cartera: <span class="required">*</span>
+                                </label>
+                                <select   id="anioCartera" name="anioCartera" class="selectpicker form-control col-md-3 col-xs-12" data-live-search="true"  title="Buscar Cartera...">	        
+						        	<option value="2015">2015</option>
+						        	<option value="2016">2016</option>
+						        	<option value="2017" selected="true">2017</option>
+						        	<option value="2018">2018</option>
+						        	<option value="2019">2019</option>
+						        	<option value="2020">2020</option>
+						     	</select>
+                            </div>
+                        </div>
                     	<div class="col-md-12">
                             <div class=".col-xs-12 .col-md-10">
-                                <label for="listaProyectos">Proyecto PMI<span class="required"></span></label>
+                                <label for="listaProyectos">Proyecto PMI: <span class="required">*</span></label>
 						        <select   id="listaProyectos" name="listaProyectos" class="selectpicker form-control col-md-9 col-xs-12" data-live-search="true"  title="Buscar Proyecto...">	        
 						        <?php foreach($ListaProyectos as $item ){ ?>
 						        	<option><?=$item->nombre_pi?></option>
@@ -21,19 +36,23 @@
                         <div class="col-md-12">
                         	<br>
                             <div class=".col-xs-12 .col-md-10">
-                                <label for="name">Nombre de Estudio de Inversión<span class="required"></span>
+                                <label for="txtNombreEstudioInversion">Nombre de Estudio de Inversión: <span class="required">*</span>
                                 </label>
-                                <input id="txtEstudioInversion" name="txtEstudioInversion"  class="form-control col-md-1 col-xs-1" placeholder="Nombre de Estudio de Inversión" required="required" type="text">
+                                <input id="txtNombreEstudioInversion" name="txtNombreEstudioInversion"  class="form-control col-md-1 col-xs-1" placeholder="Nombre de Estudio de Inversión" required="required" type="text">
                             </div>
                         </div>
                     	<div class="col-md-6">
                     		<br>
-                        	<label for="name">Tipo de Estudio<span class="required"></span></label>
-                            <select   id="listaTipoInversion" name="listaTipoInversion" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Tipo de Estudio..."></select>
+                        	<label for="listaTipoEstudio">Tipo de Estudio: <span class="required">*</span></label>
+                            <select   id="listaTipoEstudio" name="listaTipoEstudio" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Tipo de Estudio...">
+                            <?php foreach($listaTipoEstudio as $item ){ ?>
+					        	<option><?=$item->nombre_tipo_est?></option>
+					     	<?php } ?>                            	
+                            </select>
                         </div>
                         <div class="col-md-6">
                             <br>
-                            <label for="name">Nivel de Estudio<span class="required"></span></label>
+                            <label for="listaNivelEstudio">Nivel de Estudio: <span class="required">*</span></label>
                             <select   id="listaNivelEstudio" name="listaNivelEstudio" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Nivel Estudio...">       
 					        <?php foreach($listaNivelEstudio as $item ){ ?>
 					        	<option><?=$item->denom_nivel_estudio?></option>
@@ -42,53 +61,53 @@
                         </div>
                         <div class="col-md-3">
 							<br>
-							<label for="name">Unidad Formuladora<span class="required"></span></label>
-						  	<select   id="lista_unid_form" name="lista_unid_form" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar UF..."></select>
+							<label for="listaUnidadFormuladora">Unidad Formuladora: <span class="required"></span></label>
+						  	<select   id="listaUnidadFormuladora" name="listaUnidadFormuladora" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar UF..."></select>
 						</div>
 						<div class="col-md-3">
 							<br>
-							<label for="name">Unidad Ejecutora<span class="required"></span></label>
-						    <select   id="lista_unid_ejec" name="lista_unid_ejec" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar UE...">
+							<label for="listaUnidadEjecutora">Unidad Ejecutora: <span class="required">*</span></label>
+						    <select   id="listaUnidadEjecutora" name="listaUnidadEjecutora" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar UE...">
 						    </select>
 						</div>
                         <div class="col-md-3">
                             <div class=".col-xs-6 .col-md-12">
                             <br>
-                            <label for="name">Monto de Inversión<span class="required"></span></label>
+                            <label for="txtMontoInversion">Monto de Inversión: <span class="required">*</span></label>
                             <input id="txtMontoInversion" name="txtMontoInversion"  class="form-control col-md-1 col-xs-1" required="required" type="text" placeholder="0.00">
                             </div>
                         </div>
 						<div class="col-md-3">
 							<br>
-							<label for="name">Costo del Estudio<span class="required"></span></label>
-						    <input id="txtcostoestudio" name="txtcostoestudio"  class="form-control col-md-1 col-xs-1" required="required" type="text" placeholder="0.00">
+							<label for="txtCostoEstudio">Costo del Estudio: <span class="required">*</span></label>
+						    <input id="txtCostoEstudio" name="txtCostoEstudio"  class="form-control col-md-1 col-xs-1" required="required" type="text" placeholder="0.00">
 						</div>
 						<div class="col-md-3">
 							<br>
-							<label for="name">Etapa del Estudio<span class="required"></span></label>
-						    <input id="txtcostoestudio" name="txtcostoestudio"  class="form-control col-md-1 col-xs-1" required="required" type="text" placeholder="0.00">
+							<label for="txtEtapaEstudio">Etapa del Estudio: <span class="required">*</span></label>
+						    <input id="txtEtapaEstudio" name="txtEtapaEstudio"  class="form-control col-md-1 col-xs-1" required="required" type="text" placeholder="Ingrese Etapa de Estudio">
 						</div>
 						<div class="col-md-3">
 							<br>
-							<label for="name">Fecha de Etapa<span class="required"></span></label>
-						    <input id="txtcostoestudio" name="txtcostoestudio"  class="form-control col-md-1 col-xs-1" required="required" type="date" placeholder="0.00">
+							<label for="txtFechaEtapa">Fecha de Etapa: <span class="required">*</span></label>
+						    <input id="txtFechaEtapa" name="txtFechaEtapa"  class="form-control col-md-1 col-xs-1" required="required" type="date">
 						</div>
 						<div class="col-md-3">
 							<br>
-							<label for="name">Monto de Etapa<span class="required"></span></label>
-						    <input id="txtcostoestudio" name="txtcostoestudio"  class="form-control col-md-1 col-xs-1" required="required" type="text" placeholder="0.00">
+							<label for="txtMontoEtapa">Monto de Etapa: <span class="required">*</span></label>
+						    <input id="txtMontoEtapa" name="txtMontoEtapa"  class="form-control col-md-1 col-xs-1" required="required" type="text" placeholder="0.00">
 						</div>
 						<div class="col-md-3">
 							<br>
-							<label for="name">Avance de Etapa<span class="required"></span></label>
-						    <input id="txtcostoestudio" name="txtcostoestudio"  class="form-control col-md-1 col-xs-1" required="required" type="text" placeholder="0.00">
+							<label for="txtAvanceEtapa">Avance de Etapa<span class="required">*</span></label>
+						    <input id="txtAvanceEtapa" name="txtAvanceEtapa"  class="form-control col-md-1 col-xs-1" required="required" type="text" placeholder="Ingrese Avance">
 						</div>
 						<div class="col-md-12">
 							<div class=".col-xs-12 .col-md-10">
 								<br>
-								<label for="name">Descripción del Estudio de Inversión<span class="required"></span>
+								<label for="txtDescripcionEstudio">Descripción del Estudio de Inversión<span class="required">*</span>
 								</label>
-								<textarea class="form-control" rows="3" name="txadescripcion" id="txadescripcion"></textarea>
+								<textarea class="form-control" rows="3" name="txtDescripcionEstudio" id="txtDescripcionEstudio"></textarea>
 							</div>
 						</div>
                     </div>
@@ -139,143 +158,4 @@
 	  size: 2
 	});
 </script>
-
-<!--
-<script src="<?php echo base_url(); ?>assets/dist/js/bootstrap-select.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/i18n/defaults-*.min.js"></script>-->
-
 <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/CargadodeDatos.js"></script>
-
-<!--
-            <form class="form-horizontal " id="form-AddEstudioInversion" action="<?php echo base_url(); ?>Estudio_Inversion/AddEstudioInversion" method="POST">
-                     
-                    <br>
-
-                          <div class="row ">
-                            <div class="col-md-2">
-                                       <div class=".col-xs-12 .col-md-2">
-                                        </div>
-                            </div>
-                            <br>
-                           <div class="col-md-12">
-                                <div class=".col-xs-12 .col-md-12">
-                               <div class="panel panel-default">
-                             
-                                      <div class="panel-body">
-                                      <form class="form-horizontal " id="form-AddEstudioInversion" action="<?php echo base_url(); ?>Estudio_Inversion/AddEstudioInversion" method="POST">
-
-                                          <div class="col-md-12">
-                                          <div class=".col-xs-12 .col-md-10">
-                                           <label for="name">Estado<span class="required"></span>
-                                            </label>
-                                                <select   id="comboEstadoFe" name="comboEstadoFe" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Elija estado">
-
-                                                </select>
-                                          </div>
-                                          <div class=".col-xs-12 .col-md-10">
-                                           <label for="name">Proyecto PMI<span class="required"></span>
-                                            </label>
-                                                <select   id="listaFuncionC" name="listaFuncionC" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Proyecto...">
-                                                </select>
-                                          </div>
-                                          <div class=".col-xs-7 .col-md-7">
-                                           <label for="name">Código Único<span class="required"></span>
-                                            </label>
-                                                <input id="txtCodigoUnico" name="txtCodigoUnico" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese único " required="required" autocomplete="off" type="text">
-                                          </div>
-
-                                          </div>
-                                      </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                                                    <div class="row ">
-                            <div class="col-md-2">
-                                       <div class=".col-xs-12 .col-md-2">
-                                        </div>
-                            </div>
-                           <div class="col-md-12">
-                                <div class=".col-xs-12 .col-md-12">
-                               <div class="panel panel-default">
-
-                                      <div class="panel-body">
-                                          <div class="col-md-12">
-                                          <div class=".col-xs-12 .col-md-10">
-                                           <label for="name">Nombre de Estudio de Inversión<span class="required"></span>
-                                            </label>
-                                                  <input id="txtnombres" name="txtnombres"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2" placeholder="Nombre de Estudio de Inversión" required="required" type="text">
-                                          </div>
-                                          </div>
-                                         <div class="col-md-6">
-                                          <br>
-                                           <label for="name">Tipo de Estudio<span class="required"></span>
-                                            </label>
-                                                 <select   id="listaTipoInversion" name="listaTipoInversion" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Tipo de Estudio...">
-                                                </select>
-
-                                          </div>
-                                          <div class="col-md-6">
-                                          <br>
-                                           <label for="name">Tipo Documento Técnico<span class="required"></span>
-                                            </label>
-                                                 <select   id="listaNivelEstudio" name="listaNivelEstudio" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Nivel Estudio...">
-                                                </select>
-                                            </div>
-
-                                          <div class="col-md-3">
-                                          <div class=".col-xs-6 .col-md-12">
-                                          <br>
-                                           <label for="name">Monto de Inversión<span class="required"></span>
-                                            </label>
-                                                  <input id="txtMontoInversion" name="txtMontoInversion"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2"  required="required" type="number" step='0.01'  placeholder="0.00">
-                                          </div>
-                                          </div>
-
-                                          <div class="col-md-3">
-                                          <br>
-                                           <label for="name">Costo del Estudio<span class="required"></span>
-                                            </label>
-                                                  <input id="txtcostoestudio" name="txtcostoestudio"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2"  required="required" type="number" step='0.01'  placeholder="0.00">
-                                          </div>
-                                          <div class="col-md-3">
-                                          <br>
-                                           <label for="name">Unidad Formuladora<span class="required"></span>
-                                            </label>
-                                                  <select   id="lista_unid_form" name="lista_unid_form" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar UF...">
-                                                </select>
-                                          </div>
-                                          <div class="col-md-3">
-                                          <br>
-                                           <label for="name">Unidad Ejecutora<span class="required"></span>
-                                            </label>
-                                                   <select   id="lista_unid_ejec" name="lista_unid_ejec" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar UE...">
-                                                </select>
-                                          </div>
-
-                                           <div class="col-md-12">
-                                          <div class=".col-xs-12 .col-md-10">
-                                          <br>
-                                           <label for="name">Descripción del Estudio de Inversión<span class="required"></span>
-                                            </label>
-                                              <textarea class="form-control" rows="3" name="txadescripcion" id="txadescripcion"></textarea>
-                                          </div>
-                                          </div>
-                                            <div class="col-md-3">
-                                          <br>
-                                           <label for="name">.<span class="required"></span>
-                                            </label> <br>
-                                            <center>
-                                                 <button id="btn-GuardarMontoProgramado"  class="btn btn-success">
-                               <span  aria-hidden="true"></span><strong>Guardar</strong> </button>
-                               <button type="button" class="btn btn-danger" data-dismiss="modal"><strong>Cancelar</strong> </button>
-
-                               </center>
-                                          </div>
-                                       </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
--->

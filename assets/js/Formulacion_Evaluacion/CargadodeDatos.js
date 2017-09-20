@@ -1,6 +1,7 @@
 $(document).on("ready" ,function()
 {
     ListarEvaluacionFE();
+    
     /*listaProvinciaCombo();
     
     $("#btn_Nuevadivision").click(function()
