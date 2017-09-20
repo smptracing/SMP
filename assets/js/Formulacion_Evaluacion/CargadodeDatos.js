@@ -1,8 +1,55 @@
+
+$("#txtCostoEstudio").keyup(function(e)
+{
+    $(this).val(format($(this).val()));
+});
+$("#txtMontoEtapa").keyup(function(e)
+{
+    $(this).val(format($(this).val()));
+});
+$("#txtCostoEstudio").keyup(function(e)
+{
+    $(this).val(format($(this).val()));
+});
+$("#txtMontoInversion").keyup(function(e)
+{
+    $(this).val(format($(this).val()));
+});
+
+
 $('#anioCartera').on('change', function() 
 {
-    var anio = $("#anioCartera").val();
     listaProyectosParaCartera();
 });
+
+$('#listaProyectos').on('change', function() 
+{
+    ProyectoParaCartera();
+});
+
+var format = function(num){
+    var str = num.replace("", ""), parts = false, output = [], i = 1, formatted = null;
+    if(str.indexOf(".") > 0) 
+    {
+        parts = str.split(".");
+        str = parts[0];
+    }
+    str = str.split("").reverse();
+    for(var j = 0, len = str.length; j < len; j++) 
+    {
+        if(str[j] != ",") 
+        {
+            output.push(str[j]);
+            if(i%3 == 0 && j < (len - 1))
+            {
+                output.push(",");
+            }
+            i++;
+        }
+    }
+    formatted = output.reverse().join("");
+    return("" + formatted + ((parts) ? "." + parts[1].substr(0, 2) : ""));
+};
 
 var listaProyectosParaCartera=function(valor)
 {
@@ -22,360 +69,23 @@ var listaProyectosParaCartera=function(valor)
         $('.selectpicker').selectpicker('refresh'); 
     }, false, true);
 }
-/*
-$('#listaProyectos').on('change', function() 
+
+var ProyectoParaCartera=function(valor)
 {
-    var idProyecto = $("#listaProyectos").val();
-    $('#txtNombreEstudioInversion').val(idProyecto);
-    $('select[name=listaTipoInversion]').val(valor);
-    $('select[name=listaTipoInversion]').change();
-    $('.selectpicker').selectpicker('refresh');
-})*/
-
-
-
-$(document).on("ready" ,function()
-{
-    //ListarEvaluacionFE();
-    /*$('#listaProyectos').on('change', function() 
-    {
-        alert("Hola");
-        var idProyecto = $("#listaProyectos").val();
-        $('select[name=listaTipoInversion]').val(valor);
-        $('select[name=listaTipoInversion]').change();
-        $('.selectpicker').selectpicker('refresh');
-    })*/
-    
-    /*listaProvinciaCombo();
-    
-    $("#btn_Nuevadivision").click(function()
-    {
-         listaFuncionCombo();
-    });
-
-    $('#listaFuncion').on('change', function() 
-    {
-        var idFuncion = $("#listaFuncion").val();
-        if(idFuncion == '')
-        {
-            $("#listaDivisionFuncional").html('');
-            $("#listaDivisionFuncional").selectpicker('refresh');
-            $("#listaGrupoFuncional").html('');
-            $("#listaGrupoFuncional").selectpicker('refresh');
-        }
-        else
-        {
-            listaDivisionFuncionalCombo(null); 
-        } 
-    })
-    $('#listaDivisionFuncional').on('change', function() 
-    {
-        var idDivisionFuncional = $("#listaDivisionFuncional").val(); 
-        if(idDivisionFuncional == '')
-        {
-            $("#listaGrupoFuncional").html('');
-            $("#listaGrupoFuncional").selectpicker('refresh');
-        }
-        else
-        {
-            listaGrupoFuncionalCombo(null);
-        }
-    })
-    $('#listaProvincia').on('change', function() 
-    {
-        listaDistritoCombo(null);
-    })
-
-    $("#btnBuscar").click(function()
-    {
-        listaProyectos();
-    });
-
-    $("#form-AddDivisionFuncion").submit(function(event)//para añadir nuevo division funcional
-    {
-        event.preventDefault();
-
-        $.ajax(
-        {
-            url:base_url+"index.php/DivisionFuncional/AddDivisionFucion",
-            type:$(this).attr('method'),
-            data:$(this).serialize(),
-            success:function(resp)
-            {
-                swal("",resp, "success");
-
-                $('#table-DivisionF').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
-
-                $('#VentanaRegistraDivisionF').modal('hide');
-            }
-        });
-    });
-
-    $("#form-UpdateDivisionFuncion").submit(function(event)//para modificar la  division funcional
-    {
-        event.preventDefault();
-
-        $.ajax(
-        {
-            url : base_url+"index.php/DivisionFuncional/UpdateDivisionFucion",
-            type : $(this).attr('method'),
-            data : $(this).serialize(),
-            success : function(resp)
-            {
-                swal("",resp, "success");
-
-                $('#table-DivisionF').dataTable()._fnAjaxUpdate();
-                
-                $('#VentanaUpdateDivisionF').modal('hide');
-            }
-        });
-    });*/
-});
-
-/*Mostrar division funcional en base a la funcion*/
-var ListarProyectos=function()
-{
-    var htmlTemp='';
-    $("#listaProyectos").html(htmlTemp);
-    paginaAjaxJSON(null, base_url +"index.php/FEformulacion/GetProyectos", "POST", null, function(objectJSON)
+    var anio = $("#anioCartera").val();
+    var id_pi = $("#listaProyectos").val();
+    paginaAjaxJSON({ anio : anio, id_pi:id_pi}, base_url +"index.php/FEformulacion/getProyectoParaEstudioInversion", "POST", null, function(objectJSON)
     {
         objectJSON=JSON.parse(objectJSON);
-        var registros=eval(objectJSON);
-        for(var i=0; i<registros.length; i++)
-        {
-            htmlTemp+='<option value="'+registros[i]['id_pi']+'">'+registros[i]['nombre_pi']+ '</option>';    
-        };
+        $("#txtNombreEstudioInversion").val(objectJSON.estudioInversion.nombre_pi);
+        $("#txtMontoInversion").val(objectJSON.estudioInversion.costo_pi);
+        $('select[name=listaUnidadFormuladora]').val(objectJSON.estudioInversion.id_uf);
+        $('select[name=listaUnidadFormuladora]').change();
 
-        $("#listaProyectos").html(htmlTemp);
+        $('select[name=listaUnidadEjecutora]').val(objectJSON.estudioInversion.id_ue);
+        $('select[name=listaUnidadEjecutora]').change();
+
         $('.selectpicker').selectpicker('refresh'); 
+               
     }, false, true);
 }
-
-    /*listra funcion*/
-    var listaFuncionCombo=function(valor)//COMO CON LAS FUNCIONES PARA AGREGAR DIVIVISION FUNCIONAL
-    {
-        event.preventDefault(); 
-
-        var htmlTemp="";
-
-        $("#listaFuncionC").html(htmlTemp);
-
-        $.ajax(
-        {
-            "url" : base_url +"index.php/Funcion/GetFuncion",
-            type : "POST",
-            success : function(respuesta)
-            {
-                var registros=eval(respuesta);
-
-                for(var i=0; i<registros.length; i++)
-                {
-                    htmlTemp+="<option value="+registros[i]["id_funcion"]+"> "+ registros[i]["codigo_funcion"]+": "+registros[i]["nombre_funcion"]+" </option>";   
-                };
-
-                $("#listaFuncionC").html(htmlTemp);//para modificar las entidades
-                $("#listaFuncionCM").html(htmlTemp);//para modificar las entidades 
-                $('select[name=listaFuncionCM]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
-                $('select[name=listaFuncionCM]').change();
-
-                $('.selectpicker').selectpicker('refresh'); 
-            }
-        });
-    }
-
-    /* listar y lista en tabla entidad*/ 
-    var listarDivisionF=function()
-    {
-        var table=$("#table-DivisionF").DataTable(
-        {
-            "processing" : true,
-            "serverSide" : false,
-            "destroy" : true,
-            "language" : idioma_espanol,
-            "ajax" :
-            {
-                "url" : base_url+"index.php/DivisionFuncional/GetDivisionFuncional",
-                "method" : "POST",
-                "dataSrc" : ""
-            },
-            "columns" : [
-            { "data" : "id_div_funcional","visible" : false },
-            { "data" : "id_funcion","visible" : false },
-            { "data" : "nombre_funcion" },
-            { "data" : "codigo_div_funcional" },
-            { "data" : "nombre_div_funcional" },
-            { "defaultContent" : "<button type='button'  class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaUpdateDivisionF'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>" }]
-        });
-
-        DivisionFuncionData("#table-DivisionF", table);  //obtener data de la division funcional para agregar  AGREGAR                 
-    }
-
-    var  DivisionFuncionData=function(tbody, table)
-    {
-        $(tbody).on("click","button.editar",function()
-        {
-            var data=table.row( $(this).parents("tr")).data();
-            var id_funcion=data.id_funcion;
-            var id_DfuncionalM=$('#id_DfuncionalM').val(data.id_div_funcional);
-            var txt_CodigoDfuncionalM=$('#txt_CodigoDfuncionalM').val(data.codigo_div_funcional);
-            var txt_Nombre_DFuncionalM=$('#txt_Nombre_DFuncionalM').val(data.nombre_div_funcional);
-
-            listaFuncionCombo(id_funcion);//para agregar funcion selecionada mandamos parametro
-        });
-    }
-
-              
-    /*Idioma de datatablet table-sector */
-    var idioma_espanol=
-    {
-        "sProcessing":     "Procesando...",
-        "sLengthMenu":     "Mostrar _MENU_ registros",
-        "sZeroRecords":    "No se encontraron resultados",
-        "sEmptyTable":     "Ningún dato disponible en esta tabla",
-        "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-        "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-        "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-        "sInfoPostFix":    "",
-        "sSearch":         "Buscar:",
-        "sUrl":            "",
-        "sInfoThousands":  ",",
-        "sLoadingRecords": "Cargando...",
-        "oPaginate": {
-            "sFirst":    "Primero",
-            "sLast":     "Último",
-            "sNext":     "Siguiente",
-            "sPrevious": "Anterior"
-        },
-        "oAria": {
-            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-        }
-    }
-
-   
-
-
-    /*Mostrar division funcional en base a la funcion*/
-    var listaDivisionFuncionalCombo=function(valor)
-    {
-        //var htmlTemp='';
-        var htmlTemp='<option value = "">Seleccionar Division Funcional</option>';
-        $("#listaDivisionFuncional").html(htmlTemp);
-        var idFuncion = $("#listaFuncion").val(); 
-        paginaAjaxJSON({ idFuncion : idFuncion }, base_url +"index.php/Funcion/GetDivisionFuncional", "POST", null, function(objectJSON)
-        {
-            objectJSON=JSON.parse(objectJSON);
-            var registros=eval(objectJSON);
-            for(var i=0; i<registros.length; i++)
-            {
-                //htmlTemp+='<option value="'+registros[i]['id_div_funcional']+'">'+ registros[i]['codigo_div_funcional']+':'+registros[i]['nombre_div_funcional']+'</option>';   
-                htmlTemp+='<option value="'+registros[i]['id_div_funcional']+'">'+registros[i]['nombre_div_funcional']+'</option>';   
-            };
-
-            $("#listaDivisionFuncional").html(htmlTemp);
-            $('.selectpicker').selectpicker('refresh'); 
-        }, false, true);
-    }
-
-    /*Mostrar grupo funcional en base a la division funcional*/
-    var listaGrupoFuncionalCombo=function(valor)
-    {
-        //var htmlTemp='';
-        var htmlTemp='<option value = "">Seleccionar Grupo Funcional</option>';
-        $("#listaGrupoFuncional").html(htmlTemp);
-        var idDivisionFuncional = $("#listaDivisionFuncional").val(); 
-        paginaAjaxJSON({ idDivisionFuncional : idDivisionFuncional }, base_url +"index.php/Funcion/GetGrupoFuncional", "POST", null, function(objectJSON)
-        {
-            objectJSON=JSON.parse(objectJSON);
-            var registros=eval(objectJSON);
-            for(var i=0; i<registros.length; i++)
-            {
-                htmlTemp+='<option value="'+registros[i]['id_grup_funcional']+'">'+registros[i]['nombre_grup_funcional']+'</option>';   
-            };
-
-            $("#listaGrupoFuncional").html(htmlTemp);
-            $('.selectpicker').selectpicker('refresh'); 
-        }, false, true);
-    }
-
-    /*Mostrar listado de provincias en un combobox*/
-    var listaProvinciaCombo=function(valor)
-    {
-        var htmlTemp='<option value = "">Seleccionar Provincia</option>';
-        $("#listaProvincia").html(htmlTemp);
-        paginaAjaxJSON(null, base_url +"index.php/Funcion/GetProvincia", "POST", null, function(objectJSON)
-        {
-            objectJSON=JSON.parse(objectJSON);
-            var registros=eval(objectJSON);
-            for(var i=0; i<registros.length; i++)
-            {
-                htmlTemp+='<option value="'+registros[i]['provincia']+'">'+registros[i]['provincia']+'</option>';   
-            };
-
-            $("#listaProvincia").html(htmlTemp);
-            $('.selectpicker').selectpicker('refresh'); 
-        }, false, true);
-    }
-
-    /*Mostrar listado de distritos en base a la Provincia*/
-    var listaDistritoCombo=function(valor)
-    {
-        var htmlTemp="<option value = ''>Seleccionar Distrito</option>";
-        $("#listaDistrito").html(htmlTemp);
-        var provincia = $("#listaProvincia").val(); 
-        paginaAjaxJSON({ provincia : provincia }, base_url +"index.php/Funcion/GetDistrito", "POST", null, function(objectJSON)
-        {
-            objectJSON=JSON.parse(objectJSON);
-            var registros=eval(objectJSON);
-            for(var i=0; i<registros.length; i++)
-            {
-                htmlTemp+='<option value="'+registros[i]['distrito']+'">'+registros[i]['distrito']+' </option>';   
-            };
-
-            $("#listaDistrito").html(htmlTemp);
-            $('.selectpicker').selectpicker('refresh'); 
-        }, false, true);
-    }
-
-    /*Listar proyectos por distintos parametros*/
-    var listaProyectos=function()
-    {
-        var idFuncion = $("#listaFuncion").val(); 
-        var idDivisionFuncional = $("#listaDivisionFuncional").val();
-        var idGrupoFuncional = $("#listaGrupoFuncional").val();
-        var idProvincia = $("#listaProvincia").val();
-        var idDistrito = $("#listaDistrito").val();
-        var deFecha = $('#deFecha').val();
-        var aFecha = $("#aFecha").val(); 
-        $.ajax({
-            url: base_url +"index.php/Funcion/ProyectosPorCadenaFuncional",
-            type: 'POST',
-            cache: false,
-            data:
-            {
-                idFuncion: idFuncion,
-                idDivisionFuncional : idDivisionFuncional,
-                idGrupoFuncional: idGrupoFuncional,
-                idProvincia:idProvincia,
-                idDistrito:idDistrito,
-                deFecha:deFecha,
-                aFecha:aFecha
-            },
-            beforeSend: function(xhr)
-            {
-                renderLoading();
-            },
-            success: function (data)
-            {
-                $('#divModalCargaAjax').hide();
-
-                $('#dataTableFuncion').html(data);
-            },
-            error: function ()
-            {
-                $('#divModalCargaAjax').hide();
-
-                alert("Ocurrio un error!");
-            }
-        });
-    }

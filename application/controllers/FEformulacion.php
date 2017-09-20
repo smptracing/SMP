@@ -151,6 +151,21 @@ class FEformulacion extends CI_Controller
         }
     }
 
+    public function getProyectoParaEstudioInversion()
+    {
+        if ($this->input->is_ajax_request()) 
+        {
+            $anio=$this->input->post("anio");     
+            $id_pi=$this->input->post("id_pi");       
+            $data= $this->Estudio_Inversion_Model->GetProyectoParaEstudioInversion($anio,$id_pi);  
+            echo json_encode(['estudioInversion' => $data]);         
+        } 
+        else 
+        {
+            show_404();
+        }
+    }
+
 
     public function _load_layout($template)
     {

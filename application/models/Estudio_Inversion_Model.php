@@ -336,6 +336,20 @@ class Estudio_Inversion_Model extends CI_Model
         }
     }
 
+    public function GetProyectoParaEstudioInversion($anio, $id_pi)
+    {
+        $datos = $this->db->query("exec sp_Gestionar_UfEstudioInversion @opcion = 'listar_pip_programados', @anio_cartera= '$anio', @id_pi = '$id_pi'");        
+
+        if ($datos->num_rows() > 0) 
+        {
+            return $datos->result()[0];
+        } 
+        else 
+        {
+            return false;
+        }
+    }
+
 
     public function get_listaproyectosCargar($id_Pi)
     {

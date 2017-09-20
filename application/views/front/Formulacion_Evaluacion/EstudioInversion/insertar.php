@@ -10,7 +10,6 @@
                     <div class="panel-body">
                     	<div class="row">
 	                    	<div class="col-md-3">
-	                        	<br>
 	                            <div class=".col-xs-12 .col-md-3">
 	                                <label for="txtNombreEstudioInversion">Cartera: <span class="required">*</span>
 	                                </label>
@@ -157,8 +156,6 @@
 <script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/CargadodeDatos.js"></script>
 <script>
 
-	
-
 	$(function()
 	{
 		$('#frmInsertarEstudio').formValidation(
@@ -171,14 +168,14 @@
 			fields:
 			{
 				listaProyectos:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Proyecto PMI" es requerido.</b>'
-						}
-					}
+				 {
+				 	validators:
+				 	{
+				 		notEmpty:
+				 		{
+				 			message: '<b style="color: red;">El campo "Proyecto PMI" es requerido.</b>'
+				 		}
+				 	}
 				},
 				txtNombreEstudioInversion:
 				{
@@ -237,7 +234,12 @@
 						notEmpty:
 						{
 							message: '<b style="color: red;">El campo "Monto de Inversión" es requerido.</b>'
-						}
+						},
+	                    regexp:
+	                    {
+	                        regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
+	                        message: '<b style="color: red;">El campo "Girado" debe ser númerico.</b>'
+	                    }
 					}
 				},
 				txtCostoEstudio:
@@ -247,7 +249,12 @@
 						notEmpty:
 						{
 							message: '<b style="color: red;">El campo "Costo de Estudio" es requerido.</b>'
-						}
+						},
+	                    regexp:
+	                    {
+	                        regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
+	                        message: '<b style="color: red;">El campo "Girado" debe ser númerico.</b>'
+	                    }
 					}
 				},
 				txtEtapaEstudio:
@@ -277,7 +284,12 @@
 						notEmpty:
 						{
 							message: '<b style="color: red;">El campo "Monto" es requerido.</b>'
-						}
+						},
+	                    regexp:
+	                    {
+	                        regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
+	                        message: '<b style="color: red;">El campo "Girado" debe ser númerico.</b>'
+	                    }						
 					}
 				},
 				txtAvanceEtapa:
