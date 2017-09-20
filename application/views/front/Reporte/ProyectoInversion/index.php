@@ -31,7 +31,6 @@
 													</div>
 													<div class="x_content">
 														BÚSQUEDA POR CÓDIGO 
-
 														<div class="row">
 													
 														  <div class="col-lg-6">
@@ -42,8 +41,15 @@
 														      </span>
 														    </div>
 														  </div>
-														</div>
-			
+														   <div class="col-lg-6">
+														    <div class="input-group">
+														      <span class="input-group-btn">
+
+														        <a href="javascript:siafActualizador('http://192.168.1.100:8080/siaf/')"><button id="BtnAcatualizar" class="btn btn-success" type="button"><i class="fa fa-spinner"></i> Actualizar</button></a>
+														      </span>
+														    </div>
+														  </div>
+														</div>			
 														<div class="row">
 															<div class="row" style="margin-left: 10px; margin:10px; ">
 															<div class="panel panel-default">
@@ -812,5 +818,8 @@ $("#CodigoUnico").on( "click", function()
 		paginaAjaxDialogo(null, 'Ver Detallado Mensualizado',{ anio: anio, meta:meta}, base_url+'index.php/PrincipalReportes/DetalleMensualizado', 'GET', null, null, false, true);
 		
 	}
+    function siafActualizador(URL) {
+        window.open(URL, 'Nombre de la ventana', 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=1,width=700,height=500,left = 390,top = 50');
+    }
 </script>
 
