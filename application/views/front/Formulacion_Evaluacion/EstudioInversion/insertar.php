@@ -3,31 +3,6 @@
 <!-- Latest compiled and minified JavaScript -->
 
 <form class="form-horizontal" id="frmInsertarEstudio" action="<?php echo base_url();?>index.php/Feformulacion/insertar" method="POST" >
-	<!--<div class="row">
-		<div class="item form-group">
-			<div class="col-md-12">
-				<div class="col-xs-12 col-md-9">
-			    	<label for="listaProyectos">Proyecto PMI<span class="required"></span></label>
-			        <select   id="listaProyectos" name="listaProyectos" class="selectpicker form-control col-md-9 col-xs-12" data-live-search="true"  title="Buscar Proyecto...">	        
-			        <?php foreach($ListaProyectos as $item ){ ?>
-			        	<option><?=$item->nombre_pi?></option>
-			     	<?php } ?>
-			     	</select>
-			    </div>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="item form-group">
-			<div class="col-md-12">
-				<div class="col-xs-12 col-md-9">
-			    	<label for="listaProyectos">Nombre de Estudio de Inversion<span class="required"></span></label>
-			    	<input id="txtnombres" name="txtnombres"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2" placeholder="Nombre de Estudio de Inversión" required="required" type="text">
-			    </div>
-			</div>
-		</div>
-	</div>-->
-
 	<div class="row ">
         <div class="col-md-12">
             <div class=".col-xs-12 .col-md-12">
@@ -48,7 +23,7 @@
                             <div class=".col-xs-12 .col-md-10">
                                 <label for="name">Nombre de Estudio de Inversión<span class="required"></span>
                                 </label>
-                                <input id="txtnombres" name="txtnombres"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2" placeholder="Nombre de Estudio de Inversión" required="required" type="text">
+                                <input id="txtEstudioInversion" name="txtEstudioInversion"  class="form-control col-md-1 col-xs-1" placeholder="Nombre de Estudio de Inversión" required="required" type="text">
                             </div>
                         </div>
                     	<div class="col-md-6">
@@ -59,7 +34,11 @@
                         <div class="col-md-6">
                             <br>
                             <label for="name">Nivel de Estudio<span class="required"></span></label>
-                            <select   id="listaNivelEstudio" name="listaNivelEstudio" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Nivel Estudio..."></select>
+                            <select   id="listaNivelEstudio" name="listaNivelEstudio" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Nivel Estudio...">       
+					        <?php foreach($listaNivelEstudio as $item ){ ?>
+					        	<option><?=$item->denom_nivel_estudio?></option>
+					     	<?php } ?>
+					     	</select>
                         </div>
                         <div class="col-md-3">
 							<br>

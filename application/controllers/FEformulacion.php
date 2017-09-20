@@ -124,24 +124,23 @@ class FEformulacion extends CI_Controller
             $this->session->set_flashdata('correcto', 'Se registró correctamente');
             return redirect('/Modulo_FE');  */
         }
+
         $data= $this->Estudio_Inversion_Model->GetProyectosparaEstudio();  
-        return $this->load->view('Front/Formulacion_Evaluacion/EstudioInversion/insertar',['ListaProyectos' => $data]);
+        $listaNivelEstudio= $this->Estudio_Inversion_Model->get_NivelEstudio();
+        return $this->load->view('Front/Formulacion_Evaluacion/EstudioInversion/insertar',['ListaProyectos' => $data , 'listaNivelEstudio' => $listaNivelEstudio] );
     }
 
-    public function getProyectos()
+    /*public function getProyectos()
     {
-        $data= $this->Estudio_Inversion_Model->GetProyectosparaEstudio();
-        json_encode($data);
-        exit;
-        /*if ($this->input->is_ajax_request()) 
+        if ($this->input->is_ajax_request()) 
         {
             $data= $this->Estudio_Inversion_Model->GetProyectosparaEstudio();            
         } 
         else 
         {
             show_404();
-        }*/
-    }
+        }
+    }*/
 
 
     public function _load_layout($template)

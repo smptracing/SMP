@@ -110,10 +110,13 @@ class Estudio_Inversion_Model extends CI_Model
     }
     public function get_NivelEstudio()
     {
-        $NivelEstudio = $this->db->query("select id_nivel_estudio,denom_nivel_estudio from NIVEL_ESTUDIO");
-        if ($NivelEstudio->num_rows() > 0) {
+        $NivelEstudio = $this->db->query("select id_nivel_estudio, denom_nivel_estudio from NIVEL_ESTUDIO");
+        if ($NivelEstudio->num_rows() > 0) 
+        {
             return $NivelEstudio->result();
-        } else {
+        } 
+        else 
+        {
             return false;
         }
     }
