@@ -15,12 +15,12 @@
 							<small>
 								<?=count($value->childETArchivoObs)!=0 ? '<b>Archivos adjuntos: </b>' : ''?>
 								<?php foreach($value->childETArchivoObs as $index => $item){ ?>
-									<a href="#" onclick="window.location.href='<?=base_url()?>index.php/ET_Archivo_Obs/descargar/<?=$item->id_et_archivo_obs?>';"><?=html_escape($item->nombre_archivo)?></a><?=(count($value->childETArchivoObs)-1)!=$index ? ', ' : ''?>
+									<a href="#" onclick="window.location.href='<?=base_url()?>index.php/ET_Archivo_Obs/descargar/<?=$item->id_archivo_obs?>';"><?=html_escape($item->nombre_archivo)?></a><?=(count($value->childETArchivoObs)-1)!=$index ? ', ' : ''?>
 								<?php } ?>
 							</small>
 						</div>
 						<div style="color: #999999;font-size: 9px;text-align: right;">
-							<a href="#" style="color: red;font-size: 10px;" onclick="eliminarObservacionTarea(<?=$value->id_et_observacion_tarea?>, this);">Eliminar</a> | <?=$value->fecha_observacion_tarea?>
+							<a href="#" style="color: red;font-size: 10px;" onclick="eliminarObservacionTarea(<?=$value->id_observacion_tarea?>, this);">Eliminar</a> | <?=$value->fecha_observacion_tarea?>
 						</div>
 					</td>
 				</tr>
@@ -111,7 +111,7 @@
 
 				$.each(objectJSON.etObservacionTarea.childETArchivoObs, function(key, value)
 				{
-					htmlArchivosTemp+='<a href="#" onclick="window.location.href=\'<?=base_url()?>index.php/ET_Archivo_Obs/descargar/'+value.id_et_archivo_obs+'\';">'+replaceAll(replaceAll(value.nombre_archivo, '<', '&lt;'), '>', '&gt')+'</a>'+((objectJSON.etObservacionTarea.childETArchivoObs.length-1)!=key ? ', ' : '');
+					htmlArchivosTemp+='<a href="#" onclick="window.location.href=\'<?=base_url()?>index.php/ET_Archivo_Obs/descargar/'+value.id_archivo_obs+'\';">'+replaceAll(replaceAll(value.nombre_archivo, '<', '&lt;'), '>', '&gt')+'</a>'+((objectJSON.etObservacionTarea.childETArchivoObs.length-1)!=key ? ', ' : '');
 				});
 
 				if(objectJSON.etObservacionTarea.childETArchivoObs.length!=0)
@@ -128,7 +128,7 @@
 						'<small>'+objectJSON.etObservacionTarea.desc_observacion_tarea+'</small>'+
 						htmlArchivosTemp+
 						'<div style="color: #999999;font-size: 9px;text-align: right;">'+
-							'<a href="#" style="color: red;font-size: 10px;" onclick="eliminarObservacionTarea('+objectJSON.etObservacionTarea.id_et_observacion_tarea+', this);">Eliminar</a> | '+objectJSON.etObservacionTarea.fecha_observacion_tarea+
+							'<a href="#" style="color: red;font-size: 10px;" onclick="eliminarObservacionTarea('+objectJSON.etObservacionTarea.id_observacion_tarea+', this);">Eliminar</a> | '+objectJSON.etObservacionTarea.fecha_observacion_tarea+
 						'</div>'+
 					'</td>'+
 				'</tr>';
