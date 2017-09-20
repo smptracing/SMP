@@ -56,11 +56,12 @@
                                                         <tr>
                                                           <th style="width: 1%">#</th>
                                                           <th style="width: 8%"><i class="fa fa-thumb-tack"></i> Cod. </th>
-                                                          <th style="width: 46%"><i class="fa fa-bookmark-o"></i> Nombre</th>
+                                                          <th ><i class="fa fa-bookmark-o"></i> Nombre</th>
+                                                           <th style="width: 8%"> Función</th>
                                                           <th style="width: 8%"><i class="fa fa-money"></i> Costo</th>
                                                           <th style="width: 12%"> Estado Ciclo</th>
                                                           <th style="width: 12%"> Estado</th>
-                                                        <th style="width: 6%">Programar</th>
+                                                        <th style="width: 12%">&nbsp;</th>
                                                         </tr>
                                                       </thead>
 
@@ -91,11 +92,12 @@
                                                           <th style="width: 1%">#</th>
                                                           <th style="width: 1%">#</th>
                                                           <th style="width: 8%"><i class="fa fa-thumb-tack"></i> Cod. </th>
-                                                          <th style="width: 38%"><i class="fa fa-bookmark-o"></i> Nombre</th>
+                                                          <th><i class="fa fa-bookmark-o"></i> Nombre</th>
+                                                           <th style="width: 8%"> Función</th>
                                                           <th style="width: 12%"><i class="fa fa-money"></i> Costo</th>
                                                           <th style="width: 12%"> Estado Ciclo</th>
                                                           <th style="width: 12%"> Estado</th>
-                                                        <th style="width: 8%">Opción</th>
+                                                        <th style="width: 12%">&nbsp;</th>
                                                         </tr>
                                                       </thead>
 
@@ -126,11 +128,12 @@
                                                           <th style="width: 1%">#</th>
                                                           <th style="width: 1%">#</th>
                                                           <th style="width: 8%"><i class="fa fa-thumb-tack"></i> Cod. </th>
-                                                          <th style="width: 38%"><i class="fa fa-bookmark-o"></i> Nombre</th>
+                                                          <th><i class="fa fa-bookmark-o"></i> Nombre</th>
+                                                          <th style="width: 8%"> Función</th>
                                                           <th style="width: 12%"><i class="fa fa-money"></i> Costo</th>
                                                           <th style="width: 12%"> Estado Ciclo</th>
                                                           <th style="width: 12%"> Estado</th>
-                                                        <th style="width: 8%">Opción</th>
+                                                        <th style="width: 12%">&nbsp;</th>
                                                         </tr>
                                                       </thead>
 
@@ -225,7 +228,7 @@
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12 form-group">
                                       <center><label>Prioridad</label></center>
-                                      <input  class="form-control " id="txt_prioridad" name="txt_prioridad"  type="number"   />
+                                      <input  class="form-control " id="txt_prioridad" name="txt_prioridad"  type="number" readonly="" disabled="disabled"   />
                                     </div>
                                  </div>
                                 <h6><i class="fa fa-list"></i><b> Monto Programación</b></h6>
@@ -513,7 +516,7 @@
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12 form-group">
                                       <center><label>Prioridad</label></center>
-                                      <input  class="form-control" id="txt_prioridad_" name="txt_prioridad_" type="number" required="required">
+                                      <input  class="form-control" id="txt_prioridad_" name="txt_prioridad_" type="number"  readonly="" disabled="disabled" >
                                     </div>
                                  </div>
                               <h6><i class="fa fa-list"></i><b> Monto Programación</b></h6>
