@@ -131,7 +131,9 @@ class FEformulacion extends CI_Controller
 
         $listaNivelEstudio= $this->Estudio_Inversion_Model->get_NivelEstudio();
         $listaTipoEstudio= $this->Estudio_Inversion_Model->get_TipoEstudio();
-        return $this->load->view('Front/Formulacion_Evaluacion/EstudioInversion/insertar',['listaNivelEstudio' => $listaNivelEstudio, 'listaTipoEstudio' => $listaTipoEstudio]);
+        $listaUnidadFormuladora = $this->Estudio_Inversion_Model->get_UnidadFormuladora();
+
+        return $this->load->view('Front/Formulacion_Evaluacion/EstudioInversion/insertar',['listaNivelEstudio' => $listaNivelEstudio, 'listaTipoEstudio' => $listaTipoEstudio , 'listaUnidadFormuladora' => $listaUnidadFormuladora]);
     }
 
     public function getProyectos()

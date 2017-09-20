@@ -63,7 +63,11 @@
                         <div class="col-md-3">
 							<br>
 							<label for="listaUnidadFormuladora">Unidad Formuladora: <span class="required"></span></label>
-						  	<select   id="listaUnidadFormuladora" name="listaUnidadFormuladora" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar UF..."></select>
+						  	<select   id="listaUnidadFormuladora" name="listaUnidadFormuladora" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar UF...">
+						  	<?php foreach($listaUnidadFormuladora as $item ){ ?>
+					        	<option value="<?= $item->id_uf?>"><?=$item->nombre_uf?></option>
+					     	<?php } ?>      
+						  	</select>
 						</div>
 						<div class="col-md-3">
 							<br>
