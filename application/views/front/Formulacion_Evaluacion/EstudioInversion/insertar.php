@@ -16,7 +16,7 @@
                                 <select   id="anioCartera" name="anioCartera" class="selectpicker form-control col-md-3 col-xs-12" data-live-search="true"  title="Buscar Cartera...">	        
 						        	<option value="2015">2015</option>
 						        	<option value="2016">2016</option>
-						        	<option value="2017" selected="true">2017</option>
+						        	<option value="2017">2017</option>
 						        	<option value="2018">2018</option>
 						        	<option value="2019">2019</option>
 						        	<option value="2020">2020</option>
@@ -24,12 +24,13 @@
                             </div>
                         </div>
                     	<div class="col-md-12">
+                    		<br>
                             <div class=".col-xs-12 .col-md-10">
                                 <label for="listaProyectos">Proyecto PMI: <span class="required">*</span></label>
-						        <select   id="listaProyectos" name="listaProyectos" class="selectpicker form-control col-md-9 col-xs-12" data-live-search="true"  title="Buscar Proyecto...">	        
-						        <?php foreach($ListaProyectos as $item ){ ?>
-						        	<option><?=$item->nombre_pi?></option>
-						     	<?php } ?>
+						        <select id="listaProyectos" name="listaProyectos" class="selectpicker form-control col-md-9 col-xs-12" data-live-search="true"  title="Buscar Proyecto...">	        
+						        <!--<?php foreach($ListaProyectos as $item ){ ?>
+						        	<option value="<?= $item->id_pi?>"><?=$item->nombre_pi?></option>
+						     	<?php } ?>-->
 						     	</select>
                             </div>
                         </div>
@@ -46,7 +47,7 @@
                         	<label for="listaTipoEstudio">Tipo de Estudio: <span class="required">*</span></label>
                             <select   id="listaTipoEstudio" name="listaTipoEstudio" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Tipo de Estudio...">
                             <?php foreach($listaTipoEstudio as $item ){ ?>
-					        	<option><?=$item->nombre_tipo_est?></option>
+					        	<option value="<?= $item->id_tipo_est?>"><?=$item->nombre_tipo_est?></option>
 					     	<?php } ?>                            	
                             </select>
                         </div>
@@ -55,7 +56,7 @@
                             <label for="listaNivelEstudio">Nivel de Estudio: <span class="required">*</span></label>
                             <select   id="listaNivelEstudio" name="listaNivelEstudio" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Nivel Estudio...">       
 					        <?php foreach($listaNivelEstudio as $item ){ ?>
-					        	<option><?=$item->denom_nivel_estudio?></option>
+					        	<option value="<?= $item->id_nivel_estudio?>"><?=$item->denom_nivel_estudio?></option>
 					     	<?php } ?>
 					     	</select>
                         </div>
@@ -129,10 +130,15 @@
 		</div>
 	</div>
 </form>
+
+<script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/CargadodeDatos.js"></script>s
 <script>
+
+	
+
 	$(function()
 	{
-		$('#frmInsertarModulo').formValidation(
+		$('#frmInsertarEstudio').formValidation(
 		{
 			framework: 'bootstrap',
 			excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
@@ -141,7 +147,7 @@
 			trigger: null,
 			fields:
 			{
-				txtNombre:
+				txtNombreEstudioInversion:
 				{
 					validators:
 					{
@@ -155,7 +161,9 @@
 		});
 	});
 	$('.selectpicker').selectpicker({
-	  size: 2
+		size: 4
 	});
+
+
 </script>
-<script src="<?php echo base_url(); ?>assets/js/Formulacion_Evaluacion/CargadodeDatos.js"></script>
+

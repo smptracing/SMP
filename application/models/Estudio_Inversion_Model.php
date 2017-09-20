@@ -310,10 +310,10 @@ class Estudio_Inversion_Model extends CI_Model
         }
     }
 
-    public function GetProyectosparaEstudio()
+    public function GetProyectosparaEstudio($anio)
     {
         //$datos = $this->db->query("select * from proyecto_inversion py inner join estado_ciclo_pi ec on py.id_pi=ec.id_pi where ec.id_estado_ciclo = 1 or ec.id_estado_ciclo = 2 or ec.id_estado_ciclo = 3");
-        $datos = $this->db->query("select MAX(id_prog)as id_prog, año_apertura_cartera, 
+        /*$datos = $this->db->query("select MAX(id_prog)as id_prog, año_apertura_cartera, 
         nombre_tipo_inversion,ESTADO_CICLO.id_estado_ciclo, nombre_estado_ciclo, PROYECTO_INVERSION.id_pi, 
         nombre_pi FROM ESTADO_CICLO inner join ESTADO_CICLO_PI ON ESTADO_CICLO.id_estado_ciclo=ESTADO_CICLO_PI.id_estado_ciclo 
         INNER JOIN PROYECTO_INVERSION on ESTADO_CICLO_PI.id_pi=PROYECTO_INVERSION.id_pi INNER JOIN PROGRAMACION on 
@@ -321,8 +321,10 @@ class Estudio_Inversion_Model extends CI_Model
         inner join TIPO_INVERSION ON PROYECTO_INVERSION.id_tipo_inversion=TIPO_INVERSION.id_tipo_inversion
         where year(año_apertura_cartera)=year(GETDATE()) and TIPO_INVERSION.nombre_tipo_inversion='PIP' 
         AND nombre_estado_ciclo='FORMULACION Y EVALUACION' or nombre_estado_ciclo= 'IDEA' or nombre_estado_ciclo='VIABLE' GROUP BY año_apertura_cartera, nombre_tipo_inversion,
-        ESTADO_CICLO.id_estado_ciclo, nombre_estado_ciclo, PROYECTO_INVERSION.id_pi, nombre_pi");
-        
+        ESTADO_CICLO.id_estado_ciclo, nombre_estado_ciclo, PROYECTO_INVERSION.id_pi, nombre_pi");*/
+
+        $datos = $this->db->query("exec sp_Gestionar_UfEstudioInversion @opcion = 'listar_pip_programados', 
+        @anio_cartera = '$anio'");        
 
         if ($datos->num_rows() > 0) 
         {

@@ -1,6 +1,50 @@
+$('#anioCartera').on('change', function() 
+{
+    var anio = $("#anioCartera").val();
+    listaProyectosParaCartera();
+});
+
+var listaProyectosParaCartera=function(valor)
+{
+    var htmlTemp='';
+    $("#listaProyectos").html(htmlTemp);
+    var anio = $("#anioCartera").val();
+    paginaAjaxJSON({ anio : anio }, base_url +"index.php/FEformulacion/getProyectos", "POST", null, function(objectJSON)
+    {
+        objectJSON=JSON.parse(objectJSON);
+        var registros=eval(objectJSON);
+        for(var i=0; i<registros.length; i++)
+        {
+            htmlTemp+='<option value="'+registros[i]['id_pi']+'">'+registros[i]['nombre_pi']+' </option>';   
+        };
+
+        $("#listaProyectos").html(htmlTemp);
+        $('.selectpicker').selectpicker('refresh'); 
+    }, false, true);
+}
+/*
+$('#listaProyectos').on('change', function() 
+{
+    var idProyecto = $("#listaProyectos").val();
+    $('#txtNombreEstudioInversion').val(idProyecto);
+    $('select[name=listaTipoInversion]').val(valor);
+    $('select[name=listaTipoInversion]').change();
+    $('.selectpicker').selectpicker('refresh');
+})*/
+
+
+
 $(document).on("ready" ,function()
 {
-    ListarEvaluacionFE();
+    //ListarEvaluacionFE();
+    /*$('#listaProyectos').on('change', function() 
+    {
+        alert("Hola");
+        var idProyecto = $("#listaProyectos").val();
+        $('select[name=listaTipoInversion]').val(valor);
+        $('select[name=listaTipoInversion]').change();
+        $('.selectpicker').selectpicker('refresh');
+    })*/
     
     /*listaProvinciaCombo();
     

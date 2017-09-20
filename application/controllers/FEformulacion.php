@@ -124,24 +124,29 @@ class FEformulacion extends CI_Controller
             $this->session->set_flashdata('correcto', 'Se registró correctamente');
             return redirect('/Modulo_FE');  */
         }
-
-        $data= $this->Estudio_Inversion_Model->GetProyectosparaEstudio();  
+        /*$data= $this->Estudio_Inversion_Model->GetProyectosparaEstudio();  
         $listaNivelEstudio= $this->Estudio_Inversion_Model->get_NivelEstudio();
         $listaTipoEstudio= $this->Estudio_Inversion_Model->get_TipoEstudio();
-        return $this->load->view('Front/Formulacion_Evaluacion/EstudioInversion/insertar',['ListaProyectos' => $data , 'listaNivelEstudio' => $listaNivelEstudio, 'listaTipoEstudio' => $listaTipoEstudio]);
+        return $this->load->view('Front/Formulacion_Evaluacion/EstudioInversion/insertar',['ListaProyectos' => $data , 'listaNivelEstudio' => $listaNivelEstudio, 'listaTipoEstudio' => $listaTipoEstudio]);*/
+
+        $listaNivelEstudio= $this->Estudio_Inversion_Model->get_NivelEstudio();
+        $listaTipoEstudio= $this->Estudio_Inversion_Model->get_TipoEstudio();
+        return $this->load->view('Front/Formulacion_Evaluacion/EstudioInversion/insertar',['listaNivelEstudio' => $listaNivelEstudio, 'listaTipoEstudio' => $listaTipoEstudio]);
     }
 
-    /*public function getProyectos()
+    public function getProyectos()
     {
         if ($this->input->is_ajax_request()) 
         {
-            $data= $this->Estudio_Inversion_Model->GetProyectosparaEstudio();            
+            $anio=$this->input->post("anio");         
+            $data= $this->Estudio_Inversion_Model->GetProyectosparaEstudio($anio);  
+            echo json_encode($data);         
         } 
         else 
         {
             show_404();
         }
-    }*/
+    }
 
 
     public function _load_layout($template)
