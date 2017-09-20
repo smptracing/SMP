@@ -8,6 +8,8 @@ class ET_Observacion_Tarea extends CI_Controller
 		parent::__construct();
 
 		$this->load->model('Model_ET_Observacion_Tarea');
+		$this->load->model('Model_ET_Archivo_Obs');
+		$this->load->model('Model_ET_Per_Req');
 	}
 
 	public function insertar()
@@ -21,10 +23,11 @@ class ET_Observacion_Tarea extends CI_Controller
 				$idPersonaTemp=$this->session->userdata('idPersona');
 
 				$idTareaET=$this->input->post('idTareaET');
+				$idET=$this->input->post('idET');
 				$descObservacionTarea=$this->input->post('descObservacionTarea');
 				$fechaObservacionTarea=date('Y-m-d H:i:s');
 
-				$etPerReq=$this->Model_ET_Per_Req->ETPerReqCraetPorIdETYIdPersona($idTareaET, $idPersonaTemp);
+				$etPerReq=$this->Model_ET_Per_Req->ETPerReqCraetPorIdETYIdPersona($idET, $idPersonaTemp);
 
 				if($etPerReq==null)
 				{
@@ -33,9 +36,9 @@ class ET_Observacion_Tarea extends CI_Controller
 					echo json_encode(['proceso' => 'Error', 'mensaje' => 'Ud. no puede realizar observación porque no es CRAET de este proyecto.']);exit;
 				}
 
-				$this->Model_ET_Observacion_Tarea->insertar($idTareaET, $etPerReq->id_per_req, $descObservacionTarea, $fechaObservacionTarea, false);
+				$this->Model_ET_Observacion_Tarea->insertar($idTareaET, $etPerReq->id_per_req, $descObservacionTarea, $fechaObservacionTarea, 0);
 
-				$ultimoETObservacion=$this->Model_ET_Observacion_Tarea->ultimoETObservacion();
+				$ultimoETObservacionTarea=$this->Model_ET_Observacion_Tarea->ultimoETObservacionTarea();
 
 				$config['upload_path']='./uploads/ArchivoObservacionTareaGanttET';
 				$config['allowed_types']='*';
@@ -46,7 +49,7 @@ class ET_Observacion_Tarea extends CI_Controller
 
 				foreach($_FILES as $key => $value)
 				{
-					$this->Model_ET_Archivo_Obs->insertar($ultimoETObservacion->id_observacion_tarea, $value['name'], date('Y-m-d H:i:s'), explode('.', $value['name'])[count(explode('.', $value['name']))-1]);
+					$this->Model_ET_Archivo_Obs->insertar($ultimoETObservacionTarea->id_observacion_tarea, $value['name'], date('Y-m-d H:i:s'), explode('.', $value['name'])[count(explode('.', $value['name']))-1]);
 
 					$ultimoETArchivoObs=$this->Model_ET_Archivo_Obs->ultimoETArchivoObs();
 
@@ -59,18 +62,19 @@ class ET_Observacion_Tarea extends CI_Controller
 					$this->upload->do_upload($key);
 				}
 
-				$ultimoETObservacion->childETArchivoObs=$this->Model_ET_Archivo_Obs->ETArchivoObsPorIdETObservacionTarea($ultimoETObservacion->id_observacion_tarea);
+				$ultimoETObservacionTarea->childETArchivoObs=$this->Model_ET_Archivo_Obs->ETArchivoObsPorIdObservacionTarea($ultimoETObservacionTarea->id_observacion_tarea);
 
 				$this->db->trans_complete();
 
-				echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Observación realizada correctamente.', 'etObservacionTarea' => $ultimoETObservacion]);exit;
+				echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Observación realizada correctamente.', 'etObservacionTarea' => $ultimoETObservacionTarea]);exit;
 			}
 
 			$idTareaET=$this->input->get('idTareaET');
+			$idET=$this->input->get('idET');
 
 			$listaETObservacionTarea=[];
 
-			return $this->load->view('front/Ejecucion/ETObservacionTarea/insertar', ['idTareaET' => $idTareaET, 'listaETObservacionTarea' => $listaETObservacionTarea]);
+			return $this->load->view('front/Ejecucion/ETObservacionTarea/insertar', ['idTareaET' => $idTareaET, 'idET' => $idET, 'listaETObservacionTarea' => $listaETObservacionTarea]);
 		}
 	}
 }

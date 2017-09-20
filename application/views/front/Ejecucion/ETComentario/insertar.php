@@ -120,7 +120,7 @@
 				}
 
 				var htmlTemp='<tr>'+
-					'<td style="padding: 2px;padding-top: 4px;">'+
+					'<td style="padding: 2px;padding-top: 4px;width: 45px;">'+
 						'<img src="<?=base_url()?>assets/img/user.png" height="45" width="45" style="background-color: #ffffff;border: 1px solid #cccccc;border-radius: 50px;">'+
 					'</td>'+
 					'<td style="padding: 4px;padding-left: 0px;">'+

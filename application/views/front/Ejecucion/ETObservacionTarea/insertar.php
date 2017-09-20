@@ -6,7 +6,7 @@
 			<?php foreach($listaETObservacionTarea as $key => $value){ ?>
 				<tr>
 					<td style="padding: 2px;padding-top: 4px;width: 45px;">
-						<img src="<?=base_url()?>assets/img/duda.png" height="45" width="45" style="background-color: #ffffff;border: 1px solid #cccccc;border-radius: 50px;">
+						<img src="<?=base_url()?>assets/img/duda.jpg" height="45" width="45" style="background-color: #ffffff;border: 1px solid #cccccc;border-radius: 50px;">
 					</td>
 					<td style="padding: 4px;padding-left: 0px;">
 						<b><?=html_escape($value->nombres.' '.$value->apellido_p.' '.$value->apellido_m)?> <small style="color: #999999;">(<?=html_escape($value->nombre_esp)?>)</small></b><br>
@@ -62,6 +62,7 @@
 		var dataAjax=new FormData();
 
 		dataAjax.append('idTareaET', <?=$idTareaET?>);
+		dataAjax.append('idET', <?=$idET?>);
 
 		$.each($($('#fileArchivosObservacionTarea')[0]).get(0).files, function(key, value)
 		{
@@ -120,8 +121,8 @@
 				}
 
 				var htmlTemp='<tr>'+
-					'<td style="padding: 2px;padding-top: 4px;">'+
-						'<img src="<?=base_url()?>assets/img/duda.png" height="45" width="45" style="background-color: #ffffff;border: 1px solid #cccccc;border-radius: 50px;">'+
+					'<td style="padding: 2px;padding-top: 4px;width: 45px;">'+
+						'<img src="<?=base_url()?>assets/img/duda.jpg" height="45" width="45" style="background-color: #ffffff;border: 1px solid #cccccc;border-radius: 50px;">'+
 					'</td>'+
 					'<td style="padding: 4px;padding-left: 0px;">'+
 						'<b>'+replaceAll(replaceAll((objectJSON.etObservacionTarea.nombres+' '+objectJSON.etObservacionTarea.apellido_p+' '+objectJSON.etObservacionTarea.apellido_m), '<', '&lt;'), '>', '&gt')+' <small style="color: #999999;">('+replaceAll(replaceAll(objectJSON.etObservacionTarea.nombre_esp, '<', '&lt;'), '>', '&gt')+')</small></b><br>'+

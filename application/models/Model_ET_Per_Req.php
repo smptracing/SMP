@@ -63,4 +63,11 @@ class Model_ET_Per_Req extends CI_Model
 
 		return true;
 	}
+
+	function ETPerReqCraetPorIdETYIdPersona($idET, $idPersona)
+	{
+		$data=$this->db->query("select * from ET_PER_REQ where id_et=$idET and id_persona=$idPersona and craet=1");
+
+		return count($data->result())==0 ? null : $data->result()[0];
+	}
 }
