@@ -62,6 +62,17 @@
                             <select   id="listaNivelEstudio" name="listaNivelEstudio" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Nivel Estudio..."></select>
                         </div>
                         <div class="col-md-3">
+							<br>
+							<label for="name">Unidad Formuladora<span class="required"></span></label>
+						  	<select   id="lista_unid_form" name="lista_unid_form" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar UF..."></select>
+						</div>
+						<div class="col-md-3">
+							<br>
+							<label for="name">Unidad Ejecutora<span class="required"></span></label>
+						    <select   id="lista_unid_ejec" name="lista_unid_ejec" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar UE...">
+						    </select>
+						</div>
+                        <div class="col-md-3">
                             <div class=".col-xs-6 .col-md-12">
                             <br>
                             <label for="name">Monto de Inversión<span class="required"></span></label>
@@ -75,14 +86,23 @@
 						</div>
 						<div class="col-md-3">
 							<br>
-							<label for="name">Unidad Formuladora<span class="required"></span></label>
-						  	<select   id="lista_unid_form" name="lista_unid_form" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar UF..."></select>
+							<label for="name">Etapa del Estudio<span class="required"></span></label>
+						    <input id="txtcostoestudio" name="txtcostoestudio"  class="form-control col-md-1 col-xs-1" required="required" type="text" placeholder="0.00">
 						</div>
 						<div class="col-md-3">
 							<br>
-							<label for="name">Unidad Ejecutora<span class="required"></span></label>
-						    <select   id="lista_unid_ejec" name="lista_unid_ejec" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar UE...">
-						    </select>
+							<label for="name">Fecha de Etapa<span class="required"></span></label>
+						    <input id="txtcostoestudio" name="txtcostoestudio"  class="form-control col-md-1 col-xs-1" required="required" type="date" placeholder="0.00">
+						</div>
+						<div class="col-md-3">
+							<br>
+							<label for="name">Monto de Etapa<span class="required"></span></label>
+						    <input id="txtcostoestudio" name="txtcostoestudio"  class="form-control col-md-1 col-xs-1" required="required" type="text" placeholder="0.00">
+						</div>
+						<div class="col-md-3">
+							<br>
+							<label for="name">Avance de Etapa<span class="required"></span></label>
+						    <input id="txtcostoestudio" name="txtcostoestudio"  class="form-control col-md-1 col-xs-1" required="required" type="text" placeholder="0.00">
 						</div>
 						<div class="col-md-12">
 							<div class=".col-xs-12 .col-md-10">

@@ -26,7 +26,7 @@
 									<div class="row">  
 										<div class="col-md-12 col-sm-12 col-xs-12">
 											<div class="x_panel">
-												<button type="button" class="btn btn-primary " onclick="paginaAjaxDialogo(null, 'Registrar Estudio', null, base_url+'index.php/FEformulacion/insertar', 'GET', null, null, false, true);">
+												<button type="button" class="btn btn-primary " onclick="paginaAjaxDialogo(null, 'Registrar Estudio de Inversión', null, base_url+'index.php/FEformulacion/insertar', 'GET', null, null, false, true);">
 													NUEVO
 												</button>
 													<div class="x_title">                                                              
