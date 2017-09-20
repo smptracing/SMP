@@ -76,13 +76,21 @@
 								</li>
 							</ul>
 						</div>
-	
+					
+					
+
 					<ul class="nav side-menu">
 						<li><a href="<?php echo site_url('ProyectoInversion/ReporteBuscadorPorPip'); ?>"> <i class="fa fa-area-chart"></i> Avance financiero<span class=""></span></a>
 						</li>
 					</ul>
+
 					<ul class="nav side-menu">
-						<li><a href="<?php echo site_url('funcion/CadenaFuncional'); ?>""> <i class="fa fa-list"></i> Consulta de PIP<span class=""></span></a>
+						<li><a href="<?php echo site_url('ProyectoInversion/ReporteBuscadorPorAnio'); ?>"> <i class="fa fa-area-chart"></i> Avance financiero Total<span class=""></span></a>
+						</li>
+					</ul>
+
+					<ul class="nav side-menu">
+						<li><a href="<?php echo site_url('funcion/CadenaFuncional'); ?>"> <i class="fa fa-list"></i> Consulta de PIP<span class=""></span></a>
 						</li>
 					</ul>
 					<ul class="nav side-menu">

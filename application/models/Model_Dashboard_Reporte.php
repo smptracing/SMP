@@ -167,4 +167,20 @@ class Model_Dashboard_Reporte extends CI_Model
         }
     }
 
+    function ReporteConsolidadoAvanceFisicoFinan($anio)
+    {
+        $opcion="calificacion_seguimiento_certificado_a_devengado";
+        $data = $this->db->query("execute sp_Gestionar_SIAF @opcion='".$opcion."', @anio_meta ='".$anio."'");
+            
+            return $data->result();  
+    }
+
+    /*function ReporteConsolidadoAvanceFisicoFinan($anio)
+    {
+        $opcion="calificacion_seguimiento_certificado_a_devengado";
+        $data = $this->db->query("execute sp_Gestionar_SIAF @opcion='".$opcion."', @anio_meta ='".$anio"'");
+            
+            return $data->result();       
+    }*/
+
 }

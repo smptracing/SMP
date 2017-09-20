@@ -197,6 +197,13 @@ class PrincipalReportes extends CI_Controller
         show_404();
     }
 
+    function ConsolidadoAvanceFisicoFinan()
+    {
+        $anio=$this->input->POST('anio');
+        $data=$this->Model_Dashboard_Reporte->ReporteConsolidadoAvanceFisicoFinan($anio);
+        echo  json_encode($data);
+    }
+
     public function _load_layout($template)
     {
         $this->load->view('layout/Reportes/header');
