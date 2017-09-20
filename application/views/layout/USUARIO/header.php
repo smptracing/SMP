@@ -91,7 +91,7 @@
 
                 <h3></i>Administración</h3>
                 <ul class="nav side-menu">
-                     <li><a href="<?php echo site_url('CarteraInversion/'); ?>"><i class="fa fa-suitcase"></i>Usuario</a></li>
+                     <li><a href="<?php echo site_url('Usuario/'); ?>"><i class="fa fa-suitcase"></i>Usuario</a></li>
                 </ul>
               </div>
             </div>
