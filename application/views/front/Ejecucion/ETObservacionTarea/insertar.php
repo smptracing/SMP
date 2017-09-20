@@ -20,8 +20,33 @@
 							</small>
 						</div>
 						<div style="color: #999999;font-size: 9px;text-align: right;">
-							<a href="#" style="color: red;font-size: 10px;" onclick="eliminarObservacionTarea(<?=$value->id_observacion_tarea?>, this);">Eliminar</a> | <?=$value->fecha_observacion_tarea?>
+							<a href="#" style="color: blue;font-size: 10px;" onclick="mostrarOcultarResponderObservacionTarea(<?=$value->id_observacion_tarea?>, true);">Responder</a> | <a href="#" style="color: red;font-size: 10px;" onclick="eliminarObservacionTarea(<?=$value->id_observacion_tarea?>, this);">Eliminar</a> | <?=$value->fecha_observacion_tarea?>
 						</div>
+						<div id="divResponderObservacionTarea<?=$value->id_observacion_tarea?>" style="display: none;padding-left: 35px;">
+							<div class="col-md-12">
+								<textarea id="txtDescLevObs" rows="3" class="form-control" style="resize: none;" placeholder="Escribe una respuesta a esta observación."></textarea>
+							</div>
+							<div class="col-md-12" style="margin-top: 4px;">
+								<div class="col-md-6"></div>
+								<div class="col-md-6" style="text-align: right;">
+									<input type="button" class="btn btn-danger" style="margin: 2px;" value="Cancelar" onclick="mostrarOcultarResponderObservacionTarea(<?=$value->id_observacion_tarea?>, false);">
+									<input type="button" class="btn btn-success" style="margin: 2px;" value="Publicar observación" onclick="insertarLevantamientoObs();">
+								</div>
+							</div>
+						</div>
+						<table id="tableLevantamientoObs" style="width: 100%;">
+							<tbody>
+									<tr>
+										<td style="padding: 4px;padding-left: 50px;">
+											<b><?=html_escape($value->nombres.' '.$value->apellido_p.' '.$value->apellido_m)?> <small style="color: #999999;">(<?=html_escape($value->nombre_esp)?>)</small></b><br>
+											<small><?=html_escape($value->desc_observacion_tarea)?></small>
+											<div style="color: #999999;font-size: 9px;text-align: right;">
+												<a href="#" style="color: red;font-size: 10px;" onclick="eliminarObservacionTarea(<?=$value->id_observacion_tarea?>, this);">Eliminar</a> | <?=$value->fecha_observacion_tarea?>
+											</div>
+										</td>
+									</tr>
+							</tbody>
+						</table>
 					</td>
 				</tr>
 			<?php } ?>
@@ -165,6 +190,18 @@
 
 				$(element).parent().parent().parent().remove();
 			}, false, true);
+		}
+	}
+
+	function mostrarOcultarResponderObservacionTarea(idObservacionTarea, boolResponder)
+	{
+		if(boolResponder)
+		{
+			$('#divResponderObservacionTarea'+idObservacionTarea).show();
+		}
+		else
+		{
+			$('#divResponderObservacionTarea'+idObservacionTarea).hide();
 		}
 	}
 </script>
