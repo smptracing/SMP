@@ -1,3 +1,20 @@
+<style>
+	.modal-dialog
+	{
+		width: 90%;
+		margin: 0;
+		margin-left: 5%;
+		padding: 0;
+	}
+
+	.modal-content
+	{
+		height: auto;
+		min-height: 100%;
+		border-radius: 0;
+	}
+</style>
+
 <div class="right_col" role="main">
 	<div class="">
 		<div class="clearfix"></div>
@@ -192,7 +209,7 @@ window.setTimeout(function()
 			};
 
 			option = {
-			    color: ['#003366', '#006699', '#4cabce', '#e5323e','#F1C40F'],
+			    color: ['#003366', '#16A085', '#4cabce', '#e5323e','#D35400'],
 			    tooltip: {
 			        trigger: 'axis',
 			        axisPointer: {
