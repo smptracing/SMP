@@ -90,8 +90,6 @@ $("#AnioPip").on( "click", function()
 		data:{anio:anio},
 		success: function(data)
 			{
-				alert(data);
-		        console.log(data);
 		        var datos=JSON.parse(data); 
 		        var html;
 				html+="<thead><tr><th>Proy snip</th><th>Sec</th><th>Nombre</th><th>Costo</th><th>Pim</th><th>Monto Certif</th><th>Avance</th><th>Seguimiento</th><th>Saldo porProg</th></tr></thead>"
