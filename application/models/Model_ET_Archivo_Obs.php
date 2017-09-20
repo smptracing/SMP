@@ -28,4 +28,11 @@ class Model_ET_Archivo_Obs extends CI_Model
 
 		return $data->result();
 	}
+
+	public function ETArchivoObs($idETArchivoObs)
+	{
+		$data=$this->db->query("select * from ET_ARCHIVO_OBS where id_archivo_obs=$idETArchivoObs");
+
+		return count($data->result())==0 ? null : $data->result()[0];
+	}
 }
