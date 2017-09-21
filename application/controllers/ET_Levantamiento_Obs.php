@@ -93,6 +93,18 @@ class ET_Levantamiento_Obs extends CI_Controller
 					echo json_encode(['proceso' => 'Error', 'mensaje' => 'Ud. no tiene autorización para borrar esta respuesta.']);exit;
 				}
 
+				$etLevantamientoObsTemp=$this->Model_ET_Levantamiento_Obs->ETLevantamientoObs($idLevantamientoObs);
+
+				if($etLevantamientoObsTemp->ext_archivo!='')
+				{
+					$rutaArchivoTemp='./uploads/ArchivoLevantamientoObsTareaGanttET/'.$etLevantamientoObsTemp->id_levantamiento_obs.'.'.$etLevantamientoObsTemp->ext_archivo;
+
+					if(file_exists($rutaArchivoTemp))
+					{
+						unlink($rutaArchivoTemp);
+					}
+				}
+
 				$this->Model_ET_Levantamiento_Obs->eliminar($idLevantamientoObs);
 
 				$this->db->trans_complete();

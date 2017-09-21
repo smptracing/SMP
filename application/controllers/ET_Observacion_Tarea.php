@@ -114,6 +114,23 @@ class ET_Observacion_Tarea extends CI_Controller
 					}
 				}
 
+				$listaETLevantamientoObsTemp=$this->Model_ET_Levantamiento_Obs->ETLevantamientoObsPorIdObservacionTarea($idObservacionTarea);
+
+				foreach($listaETLevantamientoObsTemp as $key => $value)
+				{
+					if($value->ext_archivo=='')
+					{
+						continue;
+					}
+
+					$rutaArchivoTemp='./uploads/ArchivoLevantamientoObsTareaGanttET/'.$value->id_levantamiento_obs.'.'.$value->ext_archivo;
+
+					if(file_exists($rutaArchivoTemp))
+					{
+						unlink($rutaArchivoTemp);
+					}
+				}
+
 				$this->Model_ET_Observacion_Tarea->eliminar($idObservacionTarea);
 
 				$this->db->trans_complete();
