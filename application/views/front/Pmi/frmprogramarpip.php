@@ -167,7 +167,7 @@
           <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
           Programar PIP </h4>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" style="height:500px;overflow:auto;">
          <div class="row">
                     <div class="col-xs-12">
                                         <!-- PAGE CONTENT BEGINS -->
@@ -228,7 +228,7 @@
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12 form-group">
                                       <center><label>Prioridad</label></center>
-                                      <input  class="form-control " id="txt_prioridad" name="txt_prioridad"  type="number" readonly="" disabled="disabled"   />
+                                      <input  class="form-control " id="txt_prioridad" name="txt_prioridad"  type="text" readonly=""  style="background:#EEEEEE;"   />
                                     </div>
                                  </div>
                                 <h6><i class="fa fa-list"></i><b> Monto Programación</b></h6>
@@ -516,7 +516,7 @@
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12 form-group">
                                       <center><label>Prioridad</label></center>
-                                      <input  class="form-control" id="txt_prioridad_" name="txt_prioridad_" type="number"  readonly="" disabled="disabled" >
+                                      <input  class="form-control" id="txt_prioridad_" name="txt_prioridad_" type="text"  readonly="" style="background:#EEEEEE;" >
                                     </div>
                                  </div>
                               <h6><i class="fa fa-list"></i><b> Monto Programación</b></h6>
@@ -621,6 +621,7 @@ function calculoFecha(fecha1,fecha2) {
   return dias;       
 }
 $(function(){
+
   $('#Ventana_Programar').on('hidden.bs.modal', function () {
       
       $('#form_AddProgramacion').each(function(){ 

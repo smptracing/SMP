@@ -228,7 +228,7 @@
                 </li>
                  <li role="presentation" class="dropdown">
                  <br>
-                      <div class="col-md-2">
+                      <div class="col-md-2" style="display:none;">
                         <select  id="Aniocartera_dasboard" selected name="Aniocartera_dasboard"  class="selectpicker"></select>
                         <input type="hidden" id="Aniocartera_dasboard_imput" value="<?=(isset($anio) ? $anio : date('Y'))?>">
                       </div>

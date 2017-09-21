@@ -39,7 +39,7 @@ class programar_nopip extends CI_Controller
             $txt_anio1               = $this->input->post("txt_anio1");
             $txt_anio2               = "0.00";
             $txt_anio3               = "0.00";
-            $txt_prioridad           = $this->input->post("txt_prioridad");
+            $txt_prioridad           = floatval($this->input->post("txt_prioridad"));
             if ($this->programar_nopip_modal->AddProgramacion($flat, $id_programacion, $Cbx_AnioCartera, $cbxBrecha, $txt_id_pip_programacion, $txt_anio1, $txt_anio2, $txt_anio3, $txt_prioridad) == false) {
                 echo "1";
             } else {
