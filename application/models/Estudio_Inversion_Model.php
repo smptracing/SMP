@@ -365,7 +365,7 @@ class Estudio_Inversion_Model extends CI_Model
         }
     }
 
-    public function RegistrarEstudioInversion($idPersona,$nombreEstudio,$idPi,$idTipoEstudio,$idNivelEstudio,$idUnidadFormuladora,$idUnidadEjecutora,$descripcionEstudio,$montoInversion,$costoEstudio,$etapaEstudio,$fechaEtapa,$montoEtapa,$avance)
+    public function RegistrarEstudioInversion($idPersona,$nombreEstudio,$idPi,$idTipoEstudio,$idNivelEstudio,$idUnidadFormuladora,$idUnidadEjecutora,$descripcionEstudio,$montoInversion,$costoEstudio)
     {
         $this->db->query("exec sp_Gestionar_UfEstudioInversion @opcion = 'C', 
         @id_persona = '$idPersona', 
@@ -378,10 +378,10 @@ class Estudio_Inversion_Model extends CI_Model
         @des_est_inv = '$descripcionEstudio', 
         @monto_inv = '$montoInversion', 
         @costo_estudio ='$costoEstudio' , 
-        @etapa_estu = '$etapaEstudio', 
-        @fecha_etapa = '$fechaEtapa' , 
-        @monto_etapa = '$montoEtapa', 
-        @avance = '$avance'");
+        @etapa_estu = NULL, 
+        @fecha_etapa = NULL , 
+        @monto_etapa = NULL, 
+        @avance = NULL");
         if ($this->db->affected_rows() > 0) 
         {
             return true;

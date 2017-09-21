@@ -123,12 +123,8 @@ class FEformulacion extends CI_Controller
             $descripcionEstudio=$this->input->post("txtDescripcionEstudio");
             $montoInversion=floatval(str_replace(",","",$this->input->post("txtMontoInversion")));
             $costoEstudio=floatval(str_replace(",","",$this->input->post("txtCostoEstudio")));
-            $etapaEstudio=$this->input->post("txtEtapaEstudio");
-            $fechaEtapa=$this->input->post("txtFechaEtapa");
-            $montoEtapa=floatval(str_replace(",","",$this->input->post("txtMontoEtapa")));
-            $avance=$this->input->post("txtAvanceEtapa");
 
-            $datos = $this->Estudio_Inversion_Model->RegistrarEstudioInversion($idPersona,$nombreEstudio,$idPi,$idTipoEstudio,$idNivelEstudio,$idUnidadFormuladora,$idUnidadEjecutora,$descripcionEstudio,$montoInversion,$costoEstudio,$etapaEstudio,$fechaEtapa,$montoEtapa,$avance);
+            $datos = $this->Estudio_Inversion_Model->RegistrarEstudioInversion($idPersona,$nombreEstudio,$idPi,$idTipoEstudio,$idNivelEstudio,$idUnidadFormuladora,$idUnidadEjecutora,$descripcionEstudio,$montoInversion,$costoEstudio);
 
             $this->session->set_flashdata('correcto', 'Se registró correctamente');
             return redirect('/FEformulacion/FeEstudioInversion');  

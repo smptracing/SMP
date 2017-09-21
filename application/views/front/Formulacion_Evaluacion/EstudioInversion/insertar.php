@@ -30,9 +30,6 @@
 	                            <div class=".col-xs-12 .col-md-10">
 	                                <label for="listaProyectos">Proyecto PMI: <span class="required">*</span></label>
 							        <select id="listaProyectos" name="listaProyectos" class="selectpicker form-control col-md-9 col-xs-12" data-live-search="true"  title="Buscar Proyecto...">	        
-							        <!--<?php foreach($ListaProyectos as $item ){ ?>
-							        	<option value="<?= $item->id_pi?>"><?=$item->nombre_pi?></option>
-							     	<?php } ?>-->
 							     	</select>
 	                            </div>
 	                        </div>
@@ -113,28 +110,6 @@
 								<br>
 								<label for="txtCostoEstudio">Costo del Estudio: <span class="required">*</span></label>
 							    <input id="txtCostoEstudio" name="txtCostoEstudio"  class="form-control col-md-1 col-xs-1" required="required" type="text" placeholder="0.00" autocomplete="off">
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-3">
-								<br>
-								<label for="txtEtapaEstudio">Etapa del Estudio: <span class="required">*</span></label>
-							    <input id="txtEtapaEstudio" name="txtEtapaEstudio"  class="form-control col-md-1 col-xs-1" required="required" type="text" placeholder="Ingrese Etapa de Estudio" autocomplete="off">
-							</div>
-							<div class="col-md-3">
-								<br>
-								<label for="txtFechaEtapa">Fecha de Etapa: <span class="required">*</span></label>
-							    <input id="txtFechaEtapa" name="txtFechaEtapa"  class="form-control col-md-1 col-xs-1" required="required" type="date" autocomplete="off">
-							</div>
-							<div class="col-md-3">
-								<br>
-								<label for="txtMontoEtapa">Monto de Etapa: <span class="required">*</span></label>
-							    <input id="txtMontoEtapa" name="txtMontoEtapa"  class="form-control col-md-1 col-xs-1" required="required" type="text" placeholder="0.00" autocomplete="off">
-							</div>
-							<div class="col-md-3">
-								<br>
-								<label for="txtAvanceEtapa">Avance de Etapa<span class="required">*</span></label>
-							    <input id="txtAvanceEtapa" name="txtAvanceEtapa"  class="form-control col-md-1 col-xs-1" required="required" type="text" placeholder="Ingrese Avance" autocomplete="off">
 							</div>
 						</div>
 						<div class="row">
@@ -281,51 +256,6 @@
 	                    }
 					}
 				},
-				txtEtapaEstudio:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Etapa de Estudio" es requerido.</b>'
-						}
-					}
-				},
-				txtFechaEtapa:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Fecha" es requerido.</b>'
-						}
-					}
-				},
-				txtMontoEtapa:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Monto" es requerido.</b>'
-						},
-	                    regexp:
-	                    {
-	                        regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
-	                        message: '<b style="color: red;">El campo "Monto" debe ser númerico.</b>'
-	                    }						
-					}
-				},
-				txtAvanceEtapa:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Avance" es requerido.</b>'
-						}
-					}
-				},
 				txtDescripcionEstudio:
 				{
 					validators:
@@ -334,7 +264,7 @@
 						{
 							message: '<b style="color: red;">El campo "Descripción" es requerido.</b>'
 						}
-					}
+					}					
 				}
 			}
 		});
