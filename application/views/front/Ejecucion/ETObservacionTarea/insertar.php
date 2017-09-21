@@ -34,7 +34,7 @@
 								</div>
 							</div>
 						</div>
-						<table id="tableLevantamientoObs" style="width: 100%;">
+						<table id="tableLevantamientoObs<?=$value->id_observacion_tarea?>" style="width: 100%;">
 							<tbody>
 								<?php foreach($value->childETLevantamientoObs as $index => $item){ ?>
 									<tr>
@@ -226,7 +226,20 @@
 				return false;
 			}
 
-			
+			var htmlTemp='<tr>'+
+				'<td style="padding: 4px;padding-left: 50px;">'+
+					'<b>'+replaceAll(replaceAll(objectJSON.etLevantamientoObs.nombres+' '+objectJSON.etLevantamientoObs.apellido_p+' '+objectJSON.etLevantamientoObs.apellido_m, '<', '&lt;'), '>', '&gt;')+' <small style="color: #999999;">('+replaceAll(replaceAll(objectJSON.etLevantamientoObs.nombre_esp, '<', '&lt;'), '>', '&gt;')+')</small></b><br>'+
+					'<small>'+replaceAll(replaceAll(objectJSON.etLevantamientoObs.desc_lev_obs, '<', '&lt;'), '>', '&gt;')+'</small>'+
+					'<div style="color: #999999;font-size: 9px;text-align: left;">'+
+						'<a href="#" style="color: red;font-size: 10px;" onclick="eliminarObservacionTarea('+objectJSON.etLevantamientoObs.id_levantamiento_obs+', this);">Eliminar</a> | '+objectJSON.etLevantamientoObs.fecha_lev_obs+
+					'</div>'+
+				'</td>'+
+			'</tr>';
+
+			$('#tableLevantamientoObs'+idObservacionTarea+' > tbody').append(htmlTemp);
+
+			$('#txtDescLevObs'+idObservacionTarea).val(null);
+			$('#divResponderObservacionTarea'+idObservacionTarea).hide();
 		}, false, true);
 	}
 </script>
