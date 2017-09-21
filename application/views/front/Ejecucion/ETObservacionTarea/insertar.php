@@ -27,8 +27,8 @@
 								<textarea id="txtDescLevObs<?=$value->id_observacion_tarea?>" rows="3" class="form-control" style="resize: none;" placeholder="Escribe una respuesta a esta observación."></textarea>
 							</div>
 							<div class="col-md-12" style="margin-top: 4px;">
-								<div class="col-md-6"></div>
-								<div class="col-md-6" style="text-align: right;">
+								<div class="col-md-12" style="text-align: right;">
+									<input type="file" id="fileArchivosLevantamientoObs<?=$value->id_observacion_tarea?>" style="display: inline-block;vertical-align: middle;">
 									<input type="button" class="btn btn-danger" style="margin: 2px;" value="Cancelar" onclick="mostrarOcultarResponderObservacionTarea(<?=$value->id_observacion_tarea?>, false);">
 									<input type="button" class="btn btn-success" style="margin: 2px;" value="Publicar observación" onclick="insertarLevantamientoObs(<?=$value->id_observacion_tarea?>);">
 								</div>
@@ -62,7 +62,7 @@
 			<textarea id="txtDescripcionObservacionTarea" rows="3" class="form-control" style="resize: none;" placeholder="Escribe un observación con respecto a la actividad actualmente seleccionada."></textarea>
 		</div>
 		<div class="col-md-12" style="margin-top: 4px;">
-			<input type="file" id="fileArchivosObservacionTarea" value="Publicar" multiple class="col-md-7">
+			<input type="file" id="fileArchivosObservacionTarea" multiple class="col-md-7">
 			<div class="col-md-1"></div>
 			<input type="button" class="btn btn-primary col-md-4" value="Publicar observación" onclick="insertarObservacionTarea();">
 		</div>
@@ -163,8 +163,8 @@
 								'<textarea id="txtDescLevObs'+objectJSON.etObservacionTarea.id_observacion_tarea+'" rows="3" class="form-control" style="resize: none;" placeholder="Escribe una respuesta a esta observación."></textarea>'+
 							'</div>'+
 							'<div class="col-md-12" style="margin-top: 4px;">'+
-								'<div class="col-md-6"></div>'+
-								'<div class="col-md-6" style="text-align: right;">'+
+								'<div class="col-md-12" style="text-align: right;">'+
+									'<input type="file" id="fileArchivosLevantamientoObs'+objectJSON.etObservacionTarea.id_observacion_tarea+'" style="display: inline-block;vertical-align: middle;">'+
 									'<input type="button" class="btn btn-danger" style="margin: 2px;" value="Cancelar" onclick="mostrarOcultarResponderObservacionTarea('+objectJSON.etObservacionTarea.id_observacion_tarea+', false);">'+
 									'<input type="button" class="btn btn-success" style="margin: 2px;" value="Publicar observación" onclick="insertarLevantamientoObs('+objectJSON.etObservacionTarea.id_observacion_tarea+');">'+
 								'</div>'+

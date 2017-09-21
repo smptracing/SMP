@@ -320,7 +320,7 @@
 				return;
 			}
 
-			paginaAjaxDialogo(null, replaceAll(replaceAll(nombreTarea, '<', '&lt;'), '>', '&gt;'), { idTareaET : taskId }, '<?=base_url()?>index.php/ET_Comentario/insertar', 'GET', null, null, false, true);
+			paginaAjaxDialogo(null, replaceAll(replaceAll(nombreTarea, '<', '&lt;'), '>', '&gt;')+' (Comentarios)', { idTareaET : taskId }, '<?=base_url()?>index.php/ET_Comentario/insertar', 'GET', null, null, false, true);
 		}
 
 		function administrarObservaciones(taskId, nombreTarea)
@@ -338,7 +338,7 @@
 				return;
 			}
 
-			paginaAjaxDialogo(null, replaceAll(replaceAll(nombreTarea, '<', '&lt;'), '>', '&gt;'), { idTareaET : taskId, idET : <?=$idExpedienteTecnico?> }, '<?=base_url()?>index.php/ET_Observacion_Tarea/insertar', 'GET', null, null, false, true);
+			paginaAjaxDialogo(null, replaceAll(replaceAll(nombreTarea, '<', '&lt;'), '>', '&gt;')+' (Observaciones)', { idTareaET : taskId, idET : <?=$idExpedienteTecnico?> }, '<?=base_url()?>index.php/ET_Observacion_Tarea/insertar', 'GET', null, null, false, true);
 		}
 	</script>
 </body>
