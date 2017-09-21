@@ -41,6 +41,9 @@
 										<td style="padding: 4px;padding-left: 50px;">
 											<b><?=html_escape($item->nombres.' '.$item->apellido_p.' '.$item->apellido_m)?> <small style="color: #999999;">(<?=html_escape($item->nombre_esp)?>)</small></b><br>
 											<small><?=html_escape($item->desc_lev_obs)?></small>
+											<?php if($item->ext_archivo!=''){ ?>
+												<div><small><a href="#">Descargar archivo adjunto (*.<?=$item->ext_archivo?>)</a></small></div>
+											<?php } ?>
 											<div style="color: #999999;font-size: 9px;text-align: left;">
 												<a href="#" style="color: red;font-size: 10px;" onclick="eliminarLevantamientoObs(<?=$item->id_levantamiento_obs?>, this);">Eliminar</a> | <?=$item->fecha_lev_obs?>
 											</div>
@@ -269,10 +272,18 @@
 					return false;
 				}
 
+				var htmlDescargarArchivoTemp='';
+
+				if(objectJSON.etLevantamientoObs.ext_archivo!='')
+				{
+					htmlDescargarArchivoTemp+='<div><small><a href="#">Descargar archivo adjunto (*.'+objectJSON.etLevantamientoObs.ext_archivo+')</a></small></div>';
+				}
+
 				var htmlTemp='<tr>'+
 					'<td style="padding: 4px;padding-left: 50px;">'+
 						'<b>'+replaceAll(replaceAll(objectJSON.etLevantamientoObs.nombres+' '+objectJSON.etLevantamientoObs.apellido_p+' '+objectJSON.etLevantamientoObs.apellido_m, '<', '&lt;'), '>', '&gt;')+' <small style="color: #999999;">('+replaceAll(replaceAll(objectJSON.etLevantamientoObs.nombre_esp, '<', '&lt;'), '>', '&gt;')+')</small></b><br>'+
 						'<small>'+replaceAll(replaceAll(objectJSON.etLevantamientoObs.desc_lev_obs, '<', '&lt;'), '>', '&gt;')+'</small>'+
+						htmlDescargarArchivoTemp+
 						'<div style="color: #999999;font-size: 9px;text-align: left;">'+
 							'<a href="#" style="color: red;font-size: 10px;" onclick="eliminarLevantamientoObs('+objectJSON.etLevantamientoObs.id_levantamiento_obs+', this);">Eliminar</a> | '+objectJSON.etLevantamientoObs.fecha_lev_obs+
 						'</div>'+
