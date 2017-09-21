@@ -213,7 +213,7 @@ window.setTimeout(function()
 			};
 
 			option = {
-			    color: ['#003366', '#16A085', '#4cabce', '#e5323e','#D35400'],
+			    color: ['#003366', '#16A085', '#4cabce', '#e5323e','#D35400','#8E44AD'],
 			    tooltip: {
 			        trigger: 'axis',
 			        axisPointer: {
@@ -221,7 +221,7 @@ window.setTimeout(function()
 			        }
 			    },
 			    legend: {
-			        data: ['Ejecucion', 'Compromiso', 'Devengado', 'Girado','Pagado']
+			        data: ['Ejecucion', 'Compromiso','Certificado','Devengado', 'Girado','Pagado']
 			    },
 			    toolbox: {
 			        show: true,
@@ -263,23 +263,29 @@ window.setTimeout(function()
 			            label: labelOption,
 			            data: pip[2]
 			        },
-			        {
-			            name: 'Devengado',
+			          {
+			            name: 'Certificado',
 			            type: 'bar',
 			            label: labelOption,
 			            data: pip[3]
 			        },
 			        {
-			            name: 'Girado',
+			            name: 'Devengado',
 			            type: 'bar',
 			            label: labelOption,
 			            data: pip[4]
 			        },
 			        {
-			            name: 'Pagado',
+			            name: 'Girado',
 			            type: 'bar',
 			            label: labelOption,
 			            data: pip[5]
+			        },
+			        {
+			            name: 'Pagado',
+			            type: 'bar',
+			            label: labelOption,
+			            data: pip[6]
 			        }
 			    ]
 			};

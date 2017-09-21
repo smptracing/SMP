@@ -181,6 +181,7 @@ class PrincipalReportes extends CI_Controller
                 $nombre[]=$Itemp->mes_eje;
                 $ejecucion[]=$Itemp->ejecucion;
                 $compromiso[]=$Itemp->compromiso;
+                $certificado[]=$Itemp->certificado;
                 $devengado[]=$Itemp->devengado;
                 $girado[]=$Itemp->girado;
                 $pagado[]=$Itemp->pagado;
@@ -188,6 +189,7 @@ class PrincipalReportes extends CI_Controller
             $var1[]=$nombre;
             $var1[]=$ejecucion;
             $var1[]=$compromiso;
+            $var1[]=$certificado;
             $var1[]=$devengado;
             $var1[]=$girado;
             $var1[]=$pagado;
