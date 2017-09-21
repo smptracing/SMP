@@ -44,6 +44,7 @@
 														<td>Mes</td>
 														<td>Ejecución</td>
 														<td>Compromiso</td>
+														<td>Certificado</td>
 														<td>Devengado</td>
 														<td>Girado</td>
 														<td>Pagado</td>
@@ -63,6 +64,9 @@
 													    	</td>
 													    	<td>
 																<?= number_format($item->compromiso,2)?>
+													    	</td>
+													    	<td>
+																<?= number_format($item->certificado,2)?>
 													    	</td>
 													    	<td>
 																<?= number_format($item->devengado,2)?>
