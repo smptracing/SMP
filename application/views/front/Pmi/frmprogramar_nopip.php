@@ -145,7 +145,7 @@
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12 form-group">
                                       <center><label>Prioridad</label></center>
-                                      <input  class="form-control" id="txt_prioridad" name="txt_prioridad" type="number" readonly="" disabled="disabled">
+                                      <input  class="form-control" id="txt_prioridad" name="txt_prioridad" type="text" readonly="" style="background:#EEEEEE;">
                                     </div>
                                  </div>
                               <h6><i class="fa fa-list"></i><b> Monto Programación</b></h6>
