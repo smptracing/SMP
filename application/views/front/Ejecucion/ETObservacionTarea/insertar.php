@@ -156,8 +156,23 @@
 						'<small>'+objectJSON.etObservacionTarea.desc_observacion_tarea+'</small>'+
 						htmlArchivosTemp+
 						'<div style="color: #999999;font-size: 9px;text-align: right;">'+
-							'<a href="#" style="color: red;font-size: 10px;" onclick="eliminarObservacionTarea('+objectJSON.etObservacionTarea.id_observacion_tarea+', this);">Eliminar</a> | '+objectJSON.etObservacionTarea.fecha_observacion_tarea+
+							'<a href="#" style="color: blue;font-size: 10px;" onclick="mostrarOcultarResponderObservacionTarea('+objectJSON.etObservacionTarea.id_observacion_tarea+', true);">Responder</a> | <a href="#" style="color: red;font-size: 10px;" onclick="eliminarObservacionTarea('+objectJSON.etObservacionTarea.id_observacion_tarea+', this);">Eliminar</a> | '+objectJSON.etObservacionTarea.fecha_observacion_tarea+
 						'</div>'+
+						'<div id="divResponderObservacionTarea'+objectJSON.etObservacionTarea.id_observacion_tarea+'" style="display: none;padding-left: 35px;">'+
+							'<div class="col-md-12">'+
+								'<textarea id="txtDescLevObs'+objectJSON.etObservacionTarea.id_observacion_tarea+'" rows="3" class="form-control" style="resize: none;" placeholder="Escribe una respuesta a esta observación."></textarea>'+
+							'</div>'+
+							'<div class="col-md-12" style="margin-top: 4px;">'+
+								'<div class="col-md-6"></div>'+
+								'<div class="col-md-6" style="text-align: right;">'+
+									'<input type="button" class="btn btn-danger" style="margin: 2px;" value="Cancelar" onclick="mostrarOcultarResponderObservacionTarea('+objectJSON.etObservacionTarea.id_observacion_tarea+', false);">'+
+									'<input type="button" class="btn btn-success" style="margin: 2px;" value="Publicar observación" onclick="insertarLevantamientoObs('+objectJSON.etObservacionTarea.id_observacion_tarea+');">'+
+								'</div>'+
+							'</div>'+
+						'</div>'+
+						'<table id="tableLevantamientoObs'+objectJSON.etObservacionTarea.id_observacion_tarea+'" style="width: 100%;">'+
+							'<tbody></tbody>'+
+						'</table>'+
 					'</td>'+
 				'</tr>';
 
