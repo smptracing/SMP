@@ -10,6 +10,7 @@ class FEformulacion extends CI_Controller
         parent::__construct();
         $this->load->model('FEformulacion_Modal');
         $this->load->model('Estudio_Inversion_Model');
+        $this->load->helper('FormatNumber_helper');
     }
 
     public function GetFormulacion()
@@ -157,8 +158,9 @@ class FEformulacion extends CI_Controller
         {
             $anio=$this->input->post("anio");     
             $id_pi=$this->input->post("id_pi");       
-            $data= $this->Estudio_Inversion_Model->GetProyectoParaEstudioInversion($anio,$id_pi);  
-            echo json_encode(['estudioInversion' => $data]);         
+            $datos= $this->Estudio_Inversion_Model->GetProyectoParaEstudioInversion($anio,$id_pi);             
+            $datos->costo_pi = a_number_format($datos->costo_pi , 2, '.',",",3);
+            echo json_encode(['estudioInversion' => $datos]);         
         } 
         else 
         {

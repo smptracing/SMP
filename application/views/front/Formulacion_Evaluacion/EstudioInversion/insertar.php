@@ -238,7 +238,7 @@
 	                    regexp:
 	                    {
 	                        regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
-	                        message: '<b style="color: red;">El campo "Girado" debe ser númerico.</b>'
+	                        message: '<b style="color: red;">El campo "Monto de Inversión" debe ser númerico.</b>'
 	                    }
 					}
 				},
@@ -253,7 +253,7 @@
 	                    regexp:
 	                    {
 	                        regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
-	                        message: '<b style="color: red;">El campo "Girado" debe ser númerico.</b>'
+	                        message: '<b style="color: red;">El campo "Costo de Estudio" debe ser númerico.</b>'
 	                    }
 					}
 				},
@@ -288,7 +288,7 @@
 	                    regexp:
 	                    {
 	                        regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
-	                        message: '<b style="color: red;">El campo "Girado" debe ser númerico.</b>'
+	                        message: '<b style="color: red;">El campo "Monto" debe ser númerico.</b>'
 	                    }						
 					}
 				},
@@ -318,7 +318,5 @@
 	$('.selectpicker').selectpicker({
 		size: 4
 	});
-
-
 </script>
 
