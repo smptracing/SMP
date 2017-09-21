@@ -39,9 +39,14 @@
           <div class="ln_solid"></div>
           <div class="form-group">
             <div class="col-md-4 col-md-offset-8">
-              <button onclick=guardarPrioridad("<?php echo $id_proyecto;?>"); class="btn btn-success" type="button" id="sendPrioridad"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
+              <button onclick=guardarPrioridad("<?php echo $id_proyecto;?>");$('#null').modal('hide');$('#bt_<?php echo $id_proyecto;?>').trigger('click'); class="btn btn-success" type="button" id="sendPrioridad"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
               <button  data-dismiss="modal" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span>
                 Cancelar</button>
+
+                <!--<button  type='button' title='Programar' id="bt_prioridadAProgramar"  class='btn btn-warning btn-xs'  ><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button>-->
+
+
+
             </div>
           </div>
         </div>
@@ -63,6 +68,9 @@
     $("#tx_peso_"+id).val(valor*peso/100);
     total();
   }
+  $(function(){
+  
+  }); 
   $(document).ready(function(){
     $("#frmPrioridad :input[type='radio']:checked").each(function(){
       $(this).trigger("click");
