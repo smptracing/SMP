@@ -171,6 +171,19 @@ class FEformulacion extends CI_Controller
         }
     }
 
+    public function FeEstudioInversionFormulador()
+    {
+        /*$data= $this->Estudio_Inversion_Model->GetProyectosEstudio();
+        foreach ($data as $key => $value) 
+        {
+            $value->costo_estudio = a_number_format($value->costo_estudio , 2, '.',",",3);
+        } */ 
+        $this->load->view('layout/Formulacion_Evaluacion/header');
+        $this->load->view('Front/Formulacion_Evaluacion/ProyectosFormulacion/index');
+        $this->load->view('layout/Formulacion_Evaluacion/footer');
+    }
+
+
 
     public function _load_layout($template)
     {
