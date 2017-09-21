@@ -51,13 +51,13 @@
 																<?php foreach($ListaEstudio as $item ){ ?>
 																<tr>
 																	<td>
-																		<?=$item->codigo_unico_est_inv?>
+																		<?=$item->codigo_unico_pi?>		
 																    </td>
 																    <td>
-																		<?=$item->nombre_est_inv?>
+																		<?=$item->nombre_estudio_inv?>
 																    </td>
 																    <td>
-																		
+																    	<?=$item->nombre_funcion?>			
 																    </td>
 																    <td>
 																		<?=$item->costo_estudio?>
@@ -69,7 +69,7 @@
 																		
 																    </td>
 																    <td>
-																		
+																    	<?=$item->coordinador?>				
 																    </td>
 																	<td>
 																	  	<button type='button' class='editar btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Modificar Modulo',{id:'<?=$item->id_est_inv?>'}, base_url+'index.php/Modulo_FE/editar', 'POST', null, null, false, true)"><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' onclick="EliminarModulo('<?=$item->id_est_inv?>');"><i class='fa fa-trash-o'></i></button>

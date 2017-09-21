@@ -299,7 +299,12 @@ class Estudio_Inversion_Model extends CI_Model
 
     public function GetProyectosEstudio()
     {
-        $datos = $this->db->query("select * from estudio_inversion");    
+        $datos = $this->db->query("select uf.id_est_inv, py.id_pi, py.codigo_unico_pi, uf.nombre_estudio_inv, f.nombre_funcion, uf.costo_estudio, p.nombres+' '+p.apellido_p+' '+p.apellido_m as coordinador from uf_estudio_inversion_2 uf inner join proyecto_inversion py on py.id_pi = uf.id_pi 
+inner join grupo_funcional gf on py.id_grupo_funcional= gf.id_grup_funcional
+inner join division_funcional df on df.id_div_funcional = gf.id_div_funcional
+inner join funcion f on f.id_funcion = df.id_funcion
+inner join persona p on p.id_persona = uf.id_persona
+");    
         if ($datos->num_rows() > 0) 
         {
             return $datos->result();
@@ -312,17 +317,6 @@ class Estudio_Inversion_Model extends CI_Model
 
     public function GetProyectosparaEstudio($anio)
     {
-        //$datos = $this->db->query("select * from proyecto_inversion py inner join estado_ciclo_pi ec on py.id_pi=ec.id_pi where ec.id_estado_ciclo = 1 or ec.id_estado_ciclo = 2 or ec.id_estado_ciclo = 3");
-        /*$datos = $this->db->query("select MAX(id_prog)as id_prog, año_apertura_cartera, 
-        nombre_tipo_inversion,ESTADO_CICLO.id_estado_ciclo, nombre_estado_ciclo, PROYECTO_INVERSION.id_pi, 
-        nombre_pi FROM ESTADO_CICLO inner join ESTADO_CICLO_PI ON ESTADO_CICLO.id_estado_ciclo=ESTADO_CICLO_PI.id_estado_ciclo 
-        INNER JOIN PROYECTO_INVERSION on ESTADO_CICLO_PI.id_pi=PROYECTO_INVERSION.id_pi INNER JOIN PROGRAMACION on 
-        PROYECTO_INVERSION.id_pi=PROGRAMACION.id_pi INNER JOIN CARTERA_INVERSION ON CARTERA_INVERSION.id_cartera=PROGRAMACION.id_cartera
-        inner join TIPO_INVERSION ON PROYECTO_INVERSION.id_tipo_inversion=TIPO_INVERSION.id_tipo_inversion
-        where year(año_apertura_cartera)=year(GETDATE()) and TIPO_INVERSION.nombre_tipo_inversion='PIP' 
-        AND nombre_estado_ciclo='FORMULACION Y EVALUACION' or nombre_estado_ciclo= 'IDEA' or nombre_estado_ciclo='VIABLE' GROUP BY año_apertura_cartera, nombre_tipo_inversion,
-        ESTADO_CICLO.id_estado_ciclo, nombre_estado_ciclo, PROYECTO_INVERSION.id_pi, nombre_pi");*/
-
         $datos = $this->db->query("exec sp_Gestionar_UfEstudioInversion @opcion = 'listar_pip_programados', 
         @anio_cartera = '$anio'");        
 

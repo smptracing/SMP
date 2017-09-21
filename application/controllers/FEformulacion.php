@@ -103,7 +103,11 @@ class FEformulacion extends CI_Controller
 
     public function FeEstudioInversion()
     {
-        $data= $this->Estudio_Inversion_Model->GetProyectosEstudio();  
+        $data= $this->Estudio_Inversion_Model->GetProyectosEstudio();
+        foreach ($data as $key => $value) 
+        {
+            $value->costo_estudio = a_number_format($value->costo_estudio , 2, '.',",",3);
+        }  
         $this->load->view('layout/Formulacion_Evaluacion/header');
         $this->load->view('Front/Formulacion_Evaluacion/EstudioInversion/index',['ListaEstudio' => $data]);
         $this->load->view('layout/Formulacion_Evaluacion/footer');
