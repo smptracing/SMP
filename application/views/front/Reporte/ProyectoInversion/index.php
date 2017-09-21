@@ -45,7 +45,7 @@
 														    <div class="input-group">
 														      <span class="input-group-btn">
 
-														        <a href="javascript:siafActualizador('http://192.168.1.100:8080/siaf/')"><button id="BtnAcatualizar" class="btn btn-success" type="button"><i class="fa fa-spinner"></i> Actualizar</button></a>
+														        <a href="javascript:siafActualizador()"><button id="BtnAcatualizar" class="btn btn-success" type="button"><i class="fa fa-spinner"></i> Actualizar</button></a>
 														      </span>
 														    </div>
 														  </div>
@@ -187,10 +187,26 @@
 <script>
 
 $(document).on("ready" ,function(){
+
+$("#BtnAcatualizar").on( "click", function()
+	{
+		var codigounico=$("#BuscarPip").val();
+		$.ajax({
+		"url":"http://localhost:8080/siaf/index.php/Importacion/inicio",
+		type:"GET",
+		dataType:"jsonp",
+		data:{CodigoUnico:codigounico},
+		success: function(data)
+			{
+		        
+			}
+
+		});
+
+
+	});
 	
 $("#EjecucionAnual").hide();
-
-
 $("#CodigoUnico").on( "click", function()
 	{
 		$("#EjecucionAnual").show(2000);
@@ -836,8 +852,10 @@ $("#CodigoUnico").on( "click", function()
 		paginaAjaxDialogo(null, 'Ver Detallado Mensualizado',{ anio: anio, meta:meta}, base_url+'index.php/PrincipalReportes/DetalleMensualizado', 'GET', null, null, false, true);
 		
 	}
-    function siafActualizador(URL) {
-        window.open(URL, 'Nombre de la ventana', 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=1,width=700,height=500,left = 390,top = 50');
+    function siafActualizador() {
+    	var codigounico=$("#BuscarPip").val();
+    	var urll="http://localhost:8080/siaf/index.php/Importacion/inicio/"+codigounico;
+        ventana=window.open(urll, 'Nombre de la ventana', 'width=1400,height=800');
     }
 </script>
 
