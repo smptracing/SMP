@@ -42,7 +42,7 @@
 											<b><?=html_escape($item->nombres.' '.$item->apellido_p.' '.$item->apellido_m)?> <small style="color: #999999;">(<?=html_escape($item->nombre_esp)?>)</small></b><br>
 											<small><?=html_escape($item->desc_lev_obs)?></small>
 											<div style="color: #999999;font-size: 9px;text-align: left;">
-												<a href="#" style="color: red;font-size: 10px;" onclick="eliminarObservacionTarea(<?=$item->id_levantamiento_obs?>, this);">Eliminar</a> | <?=$item->fecha_lev_obs?>
+												<a href="#" style="color: red;font-size: 10px;" onclick="eliminarLevantamientoObs(<?=$item->id_levantamiento_obs?>, this);">Eliminar</a> | <?=$item->fecha_lev_obs?>
 											</div>
 										</td>
 									</tr>
@@ -231,7 +231,7 @@
 					'<b>'+replaceAll(replaceAll(objectJSON.etLevantamientoObs.nombres+' '+objectJSON.etLevantamientoObs.apellido_p+' '+objectJSON.etLevantamientoObs.apellido_m, '<', '&lt;'), '>', '&gt;')+' <small style="color: #999999;">('+replaceAll(replaceAll(objectJSON.etLevantamientoObs.nombre_esp, '<', '&lt;'), '>', '&gt;')+')</small></b><br>'+
 					'<small>'+replaceAll(replaceAll(objectJSON.etLevantamientoObs.desc_lev_obs, '<', '&lt;'), '>', '&gt;')+'</small>'+
 					'<div style="color: #999999;font-size: 9px;text-align: left;">'+
-						'<a href="#" style="color: red;font-size: 10px;" onclick="eliminarObservacionTarea('+objectJSON.etLevantamientoObs.id_levantamiento_obs+', this);">Eliminar</a> | '+objectJSON.etLevantamientoObs.fecha_lev_obs+
+						'<a href="#" style="color: red;font-size: 10px;" onclick="eliminarLevantamientoObs('+objectJSON.etLevantamientoObs.id_levantamiento_obs+', this);">Eliminar</a> | '+objectJSON.etLevantamientoObs.fecha_lev_obs+
 					'</div>'+
 				'</td>'+
 			'</tr>';
@@ -241,5 +241,31 @@
 			$('#txtDescLevObs'+idObservacionTarea).val(null);
 			$('#divResponderObservacionTarea'+idObservacionTarea).hide();
 		}, false, true);
+	}
+
+	function eliminarLevantamientoObs(idLevantamientoObs, element)
+	{
+		if(confirm('¿Realmente desea eliminar esta respuesta?'))
+		{
+			paginaAjaxJSON({ idLevantamientoObs : idLevantamientoObs }, '<?=base_url()?>index.php/ET_Levantamiento_Obs/eliminar', 'POST', null, function(objectJSON)
+			{
+				objectJSON=JSON.parse(objectJSON);
+
+				swal(
+				{
+					title: '',
+					text: objectJSON.mensaje,
+					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
+				},
+				function(){});
+
+				if(objectJSON.proceso=='Error')
+				{
+					return false;
+				}
+
+				$(element).parent().parent().parent().remove();
+			}, false, true);
+		}
 	}
 </script>

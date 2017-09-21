@@ -46,5 +46,31 @@ class ET_Levantamiento_Obs extends CI_Controller
 			}
 		}
 	}
+
+	public function eliminar()
+	{
+		if($this->input->is_ajax_request())
+		{
+			if($_POST)
+			{
+				$this->db->trans_start();
+
+				$idPersonaTemp=$this->session->userdata('idPersona');
+
+				$idLevantamientoObs=$this->input->post('idLevantamientoObs');
+
+				if($this->Model_ET_Levantamiento_Obs->ETLevantamientoObsPorIdLevantamientoObsYIdPersona($idLevantamientoObs, $idPersonaTemp)==null)
+				{
+					echo json_encode(['proceso' => 'Error', 'mensaje' => 'Ud. no tiene autorización para borrar esta respuesta.']);exit;
+				}
+
+				$this->Model_ET_Levantamiento_Obs->eliminar($idLevantamientoObs);
+
+				$this->db->trans_complete();
+
+				echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Respuesta eliminada correctamente.']);exit;
+			}
+		}
+	}
 }
 ?>
