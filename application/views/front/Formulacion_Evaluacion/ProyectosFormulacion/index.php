@@ -26,11 +26,7 @@
 									<div class="row">  
 										<div class="col-md-12 col-sm-12 col-xs-12">
 											<div class="x_panel">
-												<button type="button" class="btn btn-primary " onclick="paginaAjaxDialogo(null, 'Registrar Estudio de Inversión', null, base_url+'index.php/FEformulacion/insertar', 'GET', null, null, false, true);">
-													NUEVO
-												</button>
-													<div class="x_title">                                                              
-											
+													<div class="x_title">                          
 														<div class="clearfix"></div>
 													</div>
 													<div class="x_content" >
@@ -39,11 +35,12 @@
                                                                	<tr>
                                                                		<th style="width: 1%">Código</th>
                                                                  	<th style="width: 40%"><i class="fa fa-thumb-tack"></i> Nombre</th>
-                                                                 	<th style="width: 5%"> Función</th>
                                                                  	<th style="width: 5%"> Costo</th>
-                                                                 	<th style="width: 5%"> Situación</th>
-                                                                 	<th style="width: 5%"> Avance</th>
-                                                                 	<th style="width: 20%"><i class="fa fa-users"></i> Coordinador</th>
+                                                                 	<th style="width: 5%"> Monto</th>
+                                                                 	<th style="width: 5%"> Ubicación</th>
+                                                                 	<th style="width: 5%"> Nivel</th>
+                                                                 	<th style="width: 20%"> Avance</th>
+                                                                 	<th style="width: 20%"> Situación</th>
                                                                  	<th style="width: 19%"> Acciones</th>
                                                               </tr>
                                                            </thead>
@@ -82,7 +79,6 @@
 											</div>
 										</div>
 									</div>
-										<!-- / fin tabla de sector desde el row -->
 								</div>
 							</div>
 						</div>
