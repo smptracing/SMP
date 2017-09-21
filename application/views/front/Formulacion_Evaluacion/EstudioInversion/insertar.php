@@ -43,7 +43,21 @@
 	                            <div class=".col-xs-12 .col-md-10">
 	                                <label for="txtNombreEstudioInversion">Nombre de Estudio de Inversión: <span class="required">*</span>
 	                                </label>
-	                                <input id="txtNombreEstudioInversion" name="txtNombreEstudioInversion"  class="form-control col-md-1 col-xs-1" placeholder="Nombre de Estudio de Inversión" required="required" type="text">
+	                                <input id="txtNombreEstudioInversion" name="txtNombreEstudioInversion"  class="form-control col-md-1 col-xs-1" placeholder="Nombre de Estudio de Inversión" required="required" type="text" autocomplete="off">
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="row">
+	                        <div class="col-md-12">
+	                        	<br>
+	                            <div class=".col-xs-12 .col-md-10">
+	                                <label for="listaCoordinador">Asignar Coordinador: <span class="required">*</span>
+	                                </label>
+	                                <select   id="listaCoordinador" name="listaCoordinador" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Responsable...">
+		                            <?php foreach($listaCoordinador as $item ){ ?>
+							        	<option value="<?= $item->id_persona?>"><?=$item->nombres." ".$item->apellido_p." ".$item->apellido_m?></option>
+							     	<?php } ?>                         	
+		                            </select>
 	                            </div>
 	                        </div>
 	                    </div>
@@ -92,35 +106,35 @@
 	                            <div class=".col-xs-6 .col-md-12">
 	                            <br>
 	                            <label for="txtMontoInversion">Monto de Inversión: <span class="required">*</span></label>
-	                            <input id="txtMontoInversion" name="txtMontoInversion"  class="form-control col-md-1 col-xs-1" required="required" type="text" placeholder="0.00">
+	                            <input id="txtMontoInversion" name="txtMontoInversion"  class="form-control col-md-1 col-xs-1" required="required" type="text" placeholder="0.00" autocomplete="off">
 	                            </div>
 	                        </div>
 							<div class="col-md-3">
 								<br>
 								<label for="txtCostoEstudio">Costo del Estudio: <span class="required">*</span></label>
-							    <input id="txtCostoEstudio" name="txtCostoEstudio"  class="form-control col-md-1 col-xs-1" required="required" type="text" placeholder="0.00">
+							    <input id="txtCostoEstudio" name="txtCostoEstudio"  class="form-control col-md-1 col-xs-1" required="required" type="text" placeholder="0.00" autocomplete="off">
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-3">
 								<br>
 								<label for="txtEtapaEstudio">Etapa del Estudio: <span class="required">*</span></label>
-							    <input id="txtEtapaEstudio" name="txtEtapaEstudio"  class="form-control col-md-1 col-xs-1" required="required" type="text" placeholder="Ingrese Etapa de Estudio">
+							    <input id="txtEtapaEstudio" name="txtEtapaEstudio"  class="form-control col-md-1 col-xs-1" required="required" type="text" placeholder="Ingrese Etapa de Estudio" autocomplete="off">
 							</div>
 							<div class="col-md-3">
 								<br>
 								<label for="txtFechaEtapa">Fecha de Etapa: <span class="required">*</span></label>
-							    <input id="txtFechaEtapa" name="txtFechaEtapa"  class="form-control col-md-1 col-xs-1" required="required" type="date">
+							    <input id="txtFechaEtapa" name="txtFechaEtapa"  class="form-control col-md-1 col-xs-1" required="required" type="date" autocomplete="off">
 							</div>
 							<div class="col-md-3">
 								<br>
 								<label for="txtMontoEtapa">Monto de Etapa: <span class="required">*</span></label>
-							    <input id="txtMontoEtapa" name="txtMontoEtapa"  class="form-control col-md-1 col-xs-1" required="required" type="text" placeholder="0.00">
+							    <input id="txtMontoEtapa" name="txtMontoEtapa"  class="form-control col-md-1 col-xs-1" required="required" type="text" placeholder="0.00" autocomplete="off">
 							</div>
 							<div class="col-md-3">
 								<br>
 								<label for="txtAvanceEtapa">Avance de Etapa<span class="required">*</span></label>
-							    <input id="txtAvanceEtapa" name="txtAvanceEtapa"  class="form-control col-md-1 col-xs-1" required="required" type="text" placeholder="Ingrese Avance">
+							    <input id="txtAvanceEtapa" name="txtAvanceEtapa"  class="form-control col-md-1 col-xs-1" required="required" type="text" placeholder="Ingrese Avance" autocomplete="off">
 							</div>
 						</div>
 						<div class="row">
@@ -129,7 +143,7 @@
 									<br>
 									<label for="txtDescripcionEstudio">Descripción del Estudio de Inversión<span class="required">*</span>
 									</label>
-									<textarea class="form-control" rows="3" name="txtDescripcionEstudio" id="txtDescripcionEstudio"></textarea>
+									<textarea class="form-control" rows="3" name="txtDescripcionEstudio" id="txtDescripcionEstudio" autocomplete="off"></textarea>
 								</div>
 							</div>
 						</div>

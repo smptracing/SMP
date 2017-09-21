@@ -336,6 +336,21 @@ class Estudio_Inversion_Model extends CI_Model
         }
     }
 
+    public function get_coordinador()
+    {
+        $datos = $this->db->query("select p.id_persona, p.nombres , p.apellido_p, p.apellido_m from persona p inner join USUARIO u on p.id_persona=u.id_persona where u.id_usuario_tipo = 2");        
+
+        if ($datos->num_rows() > 0) 
+        {
+            return $datos->result();
+        } 
+        else 
+        {
+            return false;
+        }
+
+    }
+
     public function GetProyectoParaEstudioInversion($anio, $id_pi)
     {
         $datos = $this->db->query("exec sp_Gestionar_UfEstudioInversion @opcion = 'listar_pip_programados', @anio_cartera= '$anio', @id_pi = '$id_pi'");        
