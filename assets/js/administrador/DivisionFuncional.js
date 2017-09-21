@@ -2,7 +2,7 @@ $(document).on("ready" ,function()
 {
     FuncionCombo();
     listaProvinciaCombo();
-    
+    listarDivisionF();
     $("#btn_Nuevadivision").click(function()
     {
          listaFuncionCombo();

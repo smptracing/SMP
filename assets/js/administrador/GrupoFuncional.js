@@ -1,6 +1,6 @@
  $(document).on("ready" ,function(){
                 //alert("sdas");
-               //lista();
+               lista();
             //division funcional
 
              $("#btn_nuevoGrupoFuncional").click(function(){
@@ -224,7 +224,7 @@ var GrupoFuncionalData=function(tbody,table)
                     }
                 }
 
-        /* function lista()
+        function lista()
 					{
 						event.preventDefault();
 						$.ajax({
@@ -236,4 +236,4 @@ var GrupoFuncionalData=function(tbody,table)
 
 							}
 						});
-					}*/
+					}
