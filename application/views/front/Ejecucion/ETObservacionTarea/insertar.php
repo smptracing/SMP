@@ -30,7 +30,7 @@
 								<div class="col-md-6"></div>
 								<div class="col-md-6" style="text-align: right;">
 									<input type="button" class="btn btn-danger" style="margin: 2px;" value="Cancelar" onclick="mostrarOcultarResponderObservacionTarea(<?=$value->id_observacion_tarea?>, false);">
-									<input type="button" class="btn btn-success" style="margin: 2px;" value="Publicar observación" onclick="insertarLevantamientoObs();">
+									<input type="button" class="btn btn-success" style="margin: 2px;" value="Publicar observación" onclick="insertarLevantamientoObs(<?=$value->id_observacion_tarea?>);">
 								</div>
 							</div>
 						</div>
@@ -203,5 +203,28 @@
 		{
 			$('#divResponderObservacionTarea'+idObservacionTarea).hide();
 		}
+	}
+
+	function insertarLevantamientoObs(idObservacionTarea)
+	{
+		paginaAjaxJSON({ idTareaET : <?=$idTareaET?>, idObservacionTarea : idObservacionTarea, descLevObs : $('#txtDescLevObs').val().trim() }, '<?=base_url()?>index.php/ET_Levantamiento_Obs/insertar', 'POST', null, function(objectJSON)
+		{
+			objectJSON=JSON.parse(objectJSON);
+
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
+			},
+			function(){});
+
+			if(objectJSON.proceso=='Error')
+			{
+				return false;
+			}
+
+			
+		}, false, true);
 	}
 </script>
