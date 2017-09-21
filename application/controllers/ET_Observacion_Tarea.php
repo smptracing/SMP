@@ -10,6 +10,7 @@ class ET_Observacion_Tarea extends CI_Controller
 		$this->load->model('Model_ET_Observacion_Tarea');
 		$this->load->model('Model_ET_Archivo_Obs');
 		$this->load->model('Model_ET_Per_Req');
+		$this->load->model('Model_ET_Levantamiento_Obs');
 	}
 
 	public function insertar()
@@ -77,6 +78,7 @@ class ET_Observacion_Tarea extends CI_Controller
 			foreach($listaETObservacionTarea as $key => $value)
 			{
 				$value->childETArchivoObs=$this->Model_ET_Archivo_Obs->ETArchivoObsPorIdObservacionTarea($value->id_observacion_tarea);
+				$value->childETLevantamientoObs=$this->Model_ET_Levantamiento_Obs->ETLevantamientoObsPorIdObservacionTarea($value->id_observacion_tarea);
 			}
 
 			return $this->load->view('front/Ejecucion/ETObservacionTarea/insertar', ['idTareaET' => $idTareaET, 'idET' => $idET, 'listaETObservacionTarea' => $listaETObservacionTarea]);

@@ -36,15 +36,17 @@
 						</div>
 						<table id="tableLevantamientoObs" style="width: 100%;">
 							<tbody>
+								<?php foreach($value->childETLevantamientoObs as $index => $item){ ?>
 									<tr>
 										<td style="padding: 4px;padding-left: 50px;">
-											<b><?=html_escape($value->nombres.' '.$value->apellido_p.' '.$value->apellido_m)?> <small style="color: #999999;">(<?=html_escape($value->nombre_esp)?>)</small></b><br>
-											<small><?=html_escape($value->desc_observacion_tarea)?></small>
+											<b><?=html_escape($item->nombres.' '.$item->apellido_p.' '.$item->apellido_m)?> <small style="color: #999999;">(<?=html_escape($item->nombre_esp)?>)</small></b><br>
+											<small><?=html_escape($item->desc_lev_obs)?></small>
 											<div style="color: #999999;font-size: 9px;text-align: right;">
-												<a href="#" style="color: red;font-size: 10px;" onclick="eliminarObservacionTarea(<?=$value->id_observacion_tarea?>, this);">Eliminar</a> | <?=$value->fecha_observacion_tarea?>
+												<a href="#" style="color: red;font-size: 10px;" onclick="eliminarObservacionTarea(<?=$item->id_levantamiento_obs?>, this);">Eliminar</a> | <?=$item->fecha_lev_obs?>
 											</div>
 										</td>
 									</tr>
+								<?php } ?>
 							</tbody>
 						</table>
 					</td>
