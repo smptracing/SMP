@@ -258,8 +258,8 @@
 				<td class="gdfCell" style="text-align: center;"><a href="#" style="cursor: pointer;user-select: none;" onclick="administrarComentarios('(#=obj.id#)', '(#=obj.name#)');">((#=obj.quantityComment#))</a></td>
 				<td class="gdfCell indentCell" style="padding-left:(#=obj.level*10+18#)px;">
 					<div class="exp-controller" style="margin-left: 0px;"></div>
-					<small><a href="#" style="color: red;cursor: pointer;user-select: none;" title="Observaciones" onclick="administrarObservaciones('(#=obj.id#)', '(#=obj.name#)');">(0)</a></small>
-					<input type="text" name="name" value="(#=obj.name#)" placeholder="Nombre" autocomplete="off">
+					<small><a href="#" style="color: red;cursor: pointer;user-select: none;" title="Observaciones" onclick="administrarObservaciones('(#=obj.id#)', '(#=obj.name#)');">((#=obj.quantityObservation#))</a></small>
+					<input type="text" name="name" value="(#=obj.name#)" placeholder="Nombre" autocomplete="off" style="(#=(obj.observationPending ? 'color: red;' : '')#)">
 				</td>
 				<td class="gdfCell"><input type="text" name="depends" autocomplete="off" value="(#=obj.depends#)" (#=obj.hasExternalDep?"readonly":""#) style="text-align: center;"></td>
 				<td class="gdfCell"><input type="text" name="start" value="" class="date" style="text-align: center;"></td>

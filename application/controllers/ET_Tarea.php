@@ -16,6 +16,8 @@ class ET_Tarea extends CI_Controller
 		$this->load->model('Model_Especialidad');
 		$this->load->model('Model_ET_Especialista_Tarea');
 		$this->load->model('Model_ET_Comentario');
+		$this->load->model('Model_ET_Observacion_Tarea');
+		$this->load->model('Model_ET_Levantamiento_Obs');
 	}
 
 	private function number_of_working_days($from, $to)
@@ -73,6 +75,22 @@ class ET_Tarea extends CI_Controller
 
 			$value->childETEspecialidadTarea=$this->Model_ET_Especialista_Tarea->EspecialistaTareaPorIdTarea($value->id_tarea_et);
 			$value->countETComentario=count($this->Model_ET_Comentario->ETComentarioPorIdTareaET($value->id_tarea_et));
+			
+			$listaETObservacionTareaTemp=$this->Model_ET_Observacion_Tarea->ETObservacionTareaPorIdTareaET($value->id_tarea_et);
+
+			$value->countETObservacionTarea=count($listaETObservacionTareaTemp);
+
+			$value->observationPending=false;
+
+			foreach($listaETObservacionTareaTemp as $index => $item)
+			{
+				$value->observationPending=(count($this->Model_ET_Levantamiento_Obs->ETLevantamientoObsPorIdObservacionTarea($item->id_observacion_tarea))==0 ? true : false);
+
+				if($value->observationPending)
+				{
+					break;
+				}
+			}
 
 			$personaAsignadaTemp='';
 			$ultimaEspecialidadTemp=null;
@@ -100,6 +118,8 @@ class ET_Tarea extends CI_Controller
 				'id' => $value->id_tarea_et,
 				'name' => html_escape($value->nombre_tarea),
 				'quantityComment' => $value->countETComentario,
+				'quantityObservation' => $value->countETObservacionTarea,
+				'observationPending' => $value->observationPending,
 				'progress' => $value->avance_tarea,
 				'progressByWorklog' => false,
 				'relevance' => 0,
