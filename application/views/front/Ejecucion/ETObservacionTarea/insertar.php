@@ -24,7 +24,7 @@
 						</div>
 						<div id="divResponderObservacionTarea<?=$value->id_observacion_tarea?>" style="display: none;padding-left: 35px;">
 							<div class="col-md-12">
-								<textarea id="txtDescLevObs" rows="3" class="form-control" style="resize: none;" placeholder="Escribe una respuesta a esta observación."></textarea>
+								<textarea id="txtDescLevObs<?=$value->id_observacion_tarea?>" rows="3" class="form-control" style="resize: none;" placeholder="Escribe una respuesta a esta observación."></textarea>
 							</div>
 							<div class="col-md-12" style="margin-top: 4px;">
 								<div class="col-md-6"></div>
@@ -41,7 +41,7 @@
 										<td style="padding: 4px;padding-left: 50px;">
 											<b><?=html_escape($item->nombres.' '.$item->apellido_p.' '.$item->apellido_m)?> <small style="color: #999999;">(<?=html_escape($item->nombre_esp)?>)</small></b><br>
 											<small><?=html_escape($item->desc_lev_obs)?></small>
-											<div style="color: #999999;font-size: 9px;text-align: right;">
+											<div style="color: #999999;font-size: 9px;text-align: left;">
 												<a href="#" style="color: red;font-size: 10px;" onclick="eliminarObservacionTarea(<?=$item->id_levantamiento_obs?>, this);">Eliminar</a> | <?=$item->fecha_lev_obs?>
 											</div>
 										</td>
@@ -209,7 +209,7 @@
 
 	function insertarLevantamientoObs(idObservacionTarea)
 	{
-		paginaAjaxJSON({ idTareaET : <?=$idTareaET?>, idObservacionTarea : idObservacionTarea, descLevObs : $('#txtDescLevObs').val().trim() }, '<?=base_url()?>index.php/ET_Levantamiento_Obs/insertar', 'POST', null, function(objectJSON)
+		paginaAjaxJSON({ idTareaET : <?=$idTareaET?>, idObservacionTarea : idObservacionTarea, descLevObs : $('#txtDescLevObs'+idObservacionTarea).val().trim() }, '<?=base_url()?>index.php/ET_Levantamiento_Obs/insertar', 'POST', null, function(objectJSON)
 		{
 			objectJSON=JSON.parse(objectJSON);
 
