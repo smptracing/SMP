@@ -224,38 +224,64 @@
 
 	function insertarLevantamientoObs(idObservacionTarea)
 	{
-		paginaAjaxJSON({ idTareaET : <?=$idTareaET?>, idObservacionTarea : idObservacionTarea, descLevObs : $('#txtDescLevObs'+idObservacionTarea).val().trim() }, '<?=base_url()?>index.php/ET_Levantamiento_Obs/insertar', 'POST', null, function(objectJSON)
+		var dataAjax=new FormData();
+
+		dataAjax.append('idTareaET', <?=$idTareaET?>);
+		dataAjax.append('idObservacionTarea', idObservacionTarea);
+
+		$.each($($('#fileArchivosLevantamientoObs'+idObservacionTarea)[0]).get(0).files, function(key, value)
 		{
-			objectJSON=JSON.parse(objectJSON);
+			dataAjax.append('archivo'+key, value);
+		});
+		
+		dataAjax.append('descLevObs', $('#txtDescLevObs'+idObservacionTarea).val().trim());
 
-			swal(
-			{
-				title: '',
-				text: objectJSON.mensaje,
-				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
-			},
-			function(){});
+		$.ajax({
+		    type: 'POST',
+		    url: '<?=base_url()?>index.php/ET_Levantamiento_Obs/insertar',
+		    contentType: false,
+		    processData: false,
+		    data: dataAjax,
+		    beforeSend: function(xhr)
+		    {
+		        renderLoading();
+		    },
+		    success: function(objectJSON)
+		    {
+		    	$('#txtDescLevObs'+idObservacionTarea).val(null);
+				$('#divResponderObservacionTarea'+idObservacionTarea).hide();
+		    	$('#fileArchivosLevantamientoObs'+idObservacionTarea).val(null);
 
-			if(objectJSON.proceso=='Error')
-			{
-				return false;
-			}
+		    	$('#divModalCargaAjax').hide();
 
-			var htmlTemp='<tr>'+
-				'<td style="padding: 4px;padding-left: 50px;">'+
-					'<b>'+replaceAll(replaceAll(objectJSON.etLevantamientoObs.nombres+' '+objectJSON.etLevantamientoObs.apellido_p+' '+objectJSON.etLevantamientoObs.apellido_m, '<', '&lt;'), '>', '&gt;')+' <small style="color: #999999;">('+replaceAll(replaceAll(objectJSON.etLevantamientoObs.nombre_esp, '<', '&lt;'), '>', '&gt;')+')</small></b><br>'+
-					'<small>'+replaceAll(replaceAll(objectJSON.etLevantamientoObs.desc_lev_obs, '<', '&lt;'), '>', '&gt;')+'</small>'+
-					'<div style="color: #999999;font-size: 9px;text-align: left;">'+
-						'<a href="#" style="color: red;font-size: 10px;" onclick="eliminarLevantamientoObs('+objectJSON.etLevantamientoObs.id_levantamiento_obs+', this);">Eliminar</a> | '+objectJSON.etLevantamientoObs.fecha_lev_obs+
-					'</div>'+
-				'</td>'+
-			'</tr>';
+		    	objectJSON=JSON.parse(objectJSON);
 
-			$('#tableLevantamientoObs'+idObservacionTarea+' > tbody').append(htmlTemp);
+				swal(
+				{
+					title: '',
+					text: objectJSON.mensaje,
+					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
+				},
+				function(){});
 
-			$('#txtDescLevObs'+idObservacionTarea).val(null);
-			$('#divResponderObservacionTarea'+idObservacionTarea).hide();
-		}, false, true);
+				if(objectJSON.proceso=='Error')
+				{
+					return false;
+				}
+
+				var htmlTemp='<tr>'+
+					'<td style="padding: 4px;padding-left: 50px;">'+
+						'<b>'+replaceAll(replaceAll(objectJSON.etLevantamientoObs.nombres+' '+objectJSON.etLevantamientoObs.apellido_p+' '+objectJSON.etLevantamientoObs.apellido_m, '<', '&lt;'), '>', '&gt;')+' <small style="color: #999999;">('+replaceAll(replaceAll(objectJSON.etLevantamientoObs.nombre_esp, '<', '&lt;'), '>', '&gt;')+')</small></b><br>'+
+						'<small>'+replaceAll(replaceAll(objectJSON.etLevantamientoObs.desc_lev_obs, '<', '&lt;'), '>', '&gt;')+'</small>'+
+						'<div style="color: #999999;font-size: 9px;text-align: left;">'+
+							'<a href="#" style="color: red;font-size: 10px;" onclick="eliminarLevantamientoObs('+objectJSON.etLevantamientoObs.id_levantamiento_obs+', this);">Eliminar</a> | '+objectJSON.etLevantamientoObs.fecha_lev_obs+
+						'</div>'+
+					'</td>'+
+				'</tr>';
+
+				$('#tableLevantamientoObs'+idObservacionTarea+' > tbody').append(htmlTemp);
+		    }
+		});
 	}
 
 	function eliminarLevantamientoObs(idLevantamientoObs, element)

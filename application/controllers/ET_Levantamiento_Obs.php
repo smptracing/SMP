@@ -36,9 +36,38 @@ class ET_Levantamiento_Obs extends CI_Controller
 					echo json_encode(['proceso' => 'Error', 'mensaje' => 'Ud. no puede responder esta observación porque no fuiste asignado a esta actividad.']);exit;
 				}
 
-				$this->Model_ET_Levantamiento_Obs->insertar($etEspecialistaTarea->id_especialista_tarea, $idObservacionTarea, $descLevObs, $fechaLevObs, '');
+				$ultimoETLevantamientoObs=null;
 
-				$ultimoETLevantamientoObs=$this->Model_ET_Levantamiento_Obs->ultimoETLevantamientoObs();
+				if(count($_FILES)==0)
+				{
+					$this->Model_ET_Levantamiento_Obs->insertar($etEspecialistaTarea->id_especialista_tarea, $idObservacionTarea, $descLevObs, $fechaLevObs, '');
+
+					$ultimoETLevantamientoObs=$this->Model_ET_Levantamiento_Obs->ultimoETLevantamientoObs();
+				}
+				else
+				{
+					$config['upload_path']='./uploads/ArchivoLevantamientoObsTareaGanttET';
+					$config['allowed_types']='*';
+					$config['max_width']=2000;
+					$config['max_height']=2000;
+					$config['max_size']=50000;
+					$config['encrypt_name']=false;
+
+					foreach($_FILES as $key => $value)
+					{
+						$this->Model_ET_Levantamiento_Obs->insertar($etEspecialistaTarea->id_especialista_tarea, $idObservacionTarea, $descLevObs, $fechaLevObs, explode('.', $value['name'])[count(explode('.', $value['name']))-1]);
+
+						$ultimoETLevantamientoObs=$this->Model_ET_Levantamiento_Obs->ultimoETLevantamientoObs();
+						
+						$config['file_name']=$ultimoETLevantamientoObs->id_levantamiento_obs;
+
+						$this->load->library('upload', $config);
+						
+						$this->upload->initialize($config);
+						
+						$this->upload->do_upload($key);
+					}
+				}
 
 				$this->db->trans_complete();
 
