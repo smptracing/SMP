@@ -101,5 +101,20 @@ class ET_Levantamiento_Obs extends CI_Controller
 			}
 		}
 	}
+
+	public function descargarArchivo($idLevantamientoObs)
+	{
+		$etIdLevantamientoObs=$this->Model_ET_Levantamiento_Obs->ETLevantamientoObs($idLevantamientoObs);
+
+		$extensionArchivoTemp=$etIdLevantamientoObs->ext_archivo;
+
+		$rutaArchivoObsTemp='./uploads/ArchivoLevantamientoObsTareaGanttET/'.$idLevantamientoObs.'.'.$extensionArchivoTemp;
+
+		$data=file_get_contents($rutaArchivoObsTemp);
+
+		$this->load->helper('download');
+		
+		force_download($idLevantamientoObs.'.'.$extensionArchivoTemp, $data);
+	}
 }
 ?>
