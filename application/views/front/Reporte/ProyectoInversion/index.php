@@ -245,8 +245,8 @@ $("#CodigoUnico").on( "click", function()
 		        var html;
 				html+="<thead><tr><th>AÑO EJECUCIÓN</th><th>COSTO ACTUAL</th><th>COSTO DE EXPEDIENTE</th><th>COSTO DE VIABILIDAD</th><th>COSTO DE EXP AÑO ANTERIOR</th></tr></thead>"
 				$.each( ejecucionPresupuestal, function( key, value ) {
-				  html +="<tbody> <tr><th>"+value.ano_eje+"</th><th>"+value.costo_actual+"</th><th>"+value.costo_expediente+"</th><th>"+value.costo_viabilidad+"</th><th>"+value.ejecucion_ano_anterior+"</th></tr>";      
-						html +="</tbody>";
+				  html +="<tbody> <tr><th>"+value.ano_eje+"</th><th>"+(value.costo_actual).toLocaleString("en-ESP")+"</th><th>"+value.costo_expediente+"</th><th>"+value.costo_viabilidad+"</th><th>"+value.ejecucion_ano_anterior+"</th></tr>";      
+						html +="</tbody>";"en-US"
 				});
 				
 				$("#table-EjecucionPresupuestal").html(html);

@@ -59,19 +59,19 @@
 																<?=$item->mes_eje?>
 													    	</td>
 													    	<td>
-																<?=$item->ejecucion?>
+																<?= number_format($item->ejecucion,2)?>
 													    	</td>
 													    	<td>
-																<?=$item->compromiso?>
+																<?= number_format($item->compromiso,2)?>
 													    	</td>
 													    	<td>
-																<?=$item->devengado?>
+																<?= number_format($item->devengado,2)?>
 													    	</td>
 													    	<td>
-																<?=$item->girado?>
+																<?= number_format($item->girado,2)?>
 													    	</td>
 													    	<td>
-																<?=$item->pagado?>
+																<?=number_format($item->pagado,2)?>
 													    	</td>
 													  </tr>
 													<?php } ?>
