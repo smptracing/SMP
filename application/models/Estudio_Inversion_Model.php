@@ -338,7 +338,7 @@ class Estudio_Inversion_Model extends CI_Model
 
     public function get_coordinador()
     {
-        $datos = $this->db->query("select p.id_persona, p.nombres , p.apellido_p, p.apellido_m from persona p inner join USUARIO u on p.id_persona=u.id_persona where u.id_usuario_tipo = 2");        
+        $datos = $this->db->query("exec sp_Gestionar_UsuarioTipo 'listar_usuarios_por_tipo', 'coordinador'");        
 
         if ($datos->num_rows() > 0) 
         {
@@ -363,6 +363,34 @@ class Estudio_Inversion_Model extends CI_Model
         {
             return false;
         }
+    }
+
+    public function RegistrarEstudioInversion($idPersona,$nombreEstudio,$idPi,$idTipoEstudio,$idNivelEstudio,$idUnidadFormuladora,$idUnidadEjecutora,$descripcionEstudio,$montoInversion,$costoEstudio,$etapaEstudio,$fechaEtapa,$montoEtapa,$avance)
+    {
+        $this->db->query("exec sp_Gestionar_UfEstudioInversion @opcion = 'C', 
+        @id_persona = '$idPersona', 
+        @nombre_estudio_inv = '$nombreEstudio', 
+        @id_pi = '$idPi', 
+        @id_tipo_est = '$idTipoEstudio', 
+        @id_nivel_estudio = '$idNivelEstudio', 
+        @id_uf='$idUnidadFormuladora', 
+        @id_ue = '$idUnidadEjecutora', 
+        @des_est_inv = '$descripcionEstudio', 
+        @monto_inv = '$montoInversion', 
+        @costo_estudio ='$costoEstudio' , 
+        @etapa_estu = '$etapaEstudio', 
+        @fecha_etapa = '$fechaEtapa' , 
+        @monto_etapa = '$montoEtapa', 
+        @avance = '$avance'");
+        if ($this->db->affected_rows() > 0) 
+        {
+            return true;
+        } 
+        else 
+        {
+            return false;
+        }
+
     }
 
 

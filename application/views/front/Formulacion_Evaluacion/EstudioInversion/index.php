@@ -141,24 +141,4 @@ if($sessionTempError){ ?>
 			"language":idioma_espanol
 		});
 	});
-	function EliminarModulo(codigo)
-	{
-		swal(
-        {
-            title: "Confirmación",
-            text: "Realmente desea eliminar este registro",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonClass: "btn-danger",
-            confirmButtonText: "Aceptar",
-            cancelButtonText: "Cancelar",
-            closeOnConfirm: false
-        },
-        function(isConfirm)
-        {
-        	renderLoading();
-        	window.location.href = base_url+'index.php/Modulo_FE/eliminar/'+codigo;
-        });
-
-	}
 </script>

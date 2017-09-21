@@ -89,3 +89,33 @@ var ProyectoParaCartera=function(valor)
                
     }, false, true);
 }
+
+/*$("#form-AddEtapaEstudio").submit(function(event)
+{
+    $('#frmInsertarEstudio').data('formValidation').resetField($('#txtNombreEstudioInversion'));
+    $('#frmInsertarEstudio').data('formValidation').resetField($('#txtMontoInversion'));
+    event.preventDefault();
+    $('#frmInsertarEstudio').data('formValidation').validate();
+    if(!($('#frmInsertarEstudio').data('formValidation').isValid()))
+    {
+        return;
+    }
+    
+    $.ajax({
+    url:base_url+"index.php/FEformulacion/insertar",
+    type : 'POST',
+    data : $(this).serialize(),
+        success:function(resp)
+        {
+            if (resp=='1') 
+            {
+                swal("REGISTRADO","Se regristró correctamente", "success");
+            }
+            if (resp=='2') 
+            {
+                swal("NO SE REGISTRÓ","NO se regristró ", "error");
+            }
+        }
+    });
+});
+*/

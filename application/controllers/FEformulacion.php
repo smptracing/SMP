@@ -113,34 +113,31 @@ class FEformulacion extends CI_Controller
     {
         if($_POST)
         {
-            /*$txtNombre=$this->input->post("txtNombre");
+            $idPersona=$this->input->post("listaCoordinador");
+            $nombreEstudio=$this->input->post("txtNombreEstudioInversion");
+            $idPi=$this->input->post("listaProyectos");
+            $idTipoEstudio=$this->input->post("listaTipoEstudio");
+            $idNivelEstudio=$this->input->post("listaNivelEstudio");
+            $idUnidadFormuladora=$this->input->post("listaUnidadFormuladora");
+            $idUnidadEjecutora=$this->input->post("listaUnidadEjecutora");
+            $descripcionEstudio=$this->input->post("txtDescripcionEstudio");
+            $montoInversion=floatval(str_replace(",","",$this->input->post("txtMontoInversion")));
+            $costoEstudio=floatval(str_replace(",","",$this->input->post("txtCostoEstudio")));
+            $etapaEstudio=$this->input->post("txtEtapaEstudio");
+            $fechaEtapa=$this->input->post("txtFechaEtapa");
+            $montoEtapa=floatval(str_replace(",","",$this->input->post("txtMontoEtapa")));
+            $avance=$this->input->post("txtAvanceEtapa");
 
-            if(count($this->Model_ModuloFE->ModuloPorNombre($txtNombre))>0)
-            {
-                $this->session->set_flashdata('error', 'Este módulo ya fue registrado con anterioridad.');
-                return redirect('/Modulo_FE');
-            }
+            $datos = $this->Estudio_Inversion_Model->RegistrarEstudioInversion($idPersona,$nombreEstudio,$idPi,$idTipoEstudio,$idNivelEstudio,$idUnidadFormuladora,$idUnidadEjecutora,$descripcionEstudio,$montoInversion,$costoEstudio,$etapaEstudio,$fechaEtapa,$montoEtapa,$avance);
 
-            $Data=$this->Model_ModuloFE->insertar($txtNombre);
             $this->session->set_flashdata('correcto', 'Se registró correctamente');
-            return redirect('/Modulo_FE');  */
+            return redirect('/FEformulacion/FeEstudioInversion');  
         }
-        /*$data= $this->Estudio_Inversion_Model->GetProyectosparaEstudio();  
-        $listaNivelEstudio= $this->Estudio_Inversion_Model->get_NivelEstudio();
-        $listaTipoEstudio= $this->Estudio_Inversion_Model->get_TipoEstudio();
-        return $this->load->view('Front/Formulacion_Evaluacion/EstudioInversion/insertar',['ListaProyectos' => $data , 'listaNivelEstudio' => $listaNivelEstudio, 'listaTipoEstudio' => $listaTipoEstudio]);*/
-
         $listaNivelEstudio= $this->Estudio_Inversion_Model->get_NivelEstudio();
         $listaTipoEstudio= $this->Estudio_Inversion_Model->get_TipoEstudio();
         $listaUnidadFormuladora = $this->Estudio_Inversion_Model->get_UnidadFormuladora();
         $listaUnidadEjecutora = $this->Estudio_Inversion_Model->get_UnidadEjecutora();
         $listaCoordinador = $this->Estudio_Inversion_Model->get_coordinador();
-        /*foreach ($listaCoordinador as $key => $value) 
-        {
-            $value->coordinador = $value->nombres." ".$value->apellido_p." ".$value->apellido_m;
-            echo $value->coordinador;
-            exit;
-        }*/
         return $this->load->view('Front/Formulacion_Evaluacion/EstudioInversion/insertar',['listaNivelEstudio' => $listaNivelEstudio, 'listaTipoEstudio' => $listaTipoEstudio , 'listaUnidadFormuladora' => $listaUnidadFormuladora, 'listaUnidadEjecutora' => $listaUnidadEjecutora, 'listaCoordinador' => $listaCoordinador]);
     }
 

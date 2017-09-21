@@ -55,7 +55,7 @@
 	                                </label>
 	                                <select   id="listaCoordinador" name="listaCoordinador" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Responsable...">
 		                            <?php foreach($listaCoordinador as $item ){ ?>
-							        	<option value="<?= $item->id_persona?>"><?=$item->nombres." ".$item->apellido_p." ".$item->apellido_m?></option>
+							        	<option value="<?= $item->id_persona?>"><?=$item->nombres." ".$item->apellido_p?></option>
 							     	<?php } ?>                         	
 		                            </select>
 	                            </div>
@@ -155,7 +155,7 @@
 	<div class="ln_solid"></div>
 	<div class="form-group">
 		<div class="col-md-6 col-md-offset-3">
-			<button type="submit" class="btn btn-success">
+			<button type="submit" class="btn btn-success" >
 				<span class="glyphicon glyphicon-floppy-disk"></span>
 				Guardar
 			</button>
@@ -198,6 +198,16 @@
 						notEmpty:
 						{
 							message: '<b style="color: red;">El campo "Nombre" es requerido.</b>'
+						}
+					}
+				},
+				listaCoordinador:
+				{
+					validators:
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Coordinador" es requerido.</b>'
 						}
 					}
 				},
