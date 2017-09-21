@@ -105,15 +105,27 @@
 
 												            <div class="row" style="margin-left: 10px; margin:10px; ">
 												                <div class="panel panel-default">
-																 <div class="panel-heading">PIA, PIM Y DEVENGADO ACTUAL </div>
-												                        <div id="pimdevengadopia"></div>
+																 	<div class="panel-heading">PIA, PIM Y DEVENGADO ACTUAL </div>
+												                        <div id="GrafPimDevenPia" class="table-responsive">
+																			<br>
+																			<table id="tableGrafPimDevenPia" class="table  table-striped jambo_table bulk_action table-responsive" style="text-align: left;"> 
+																			 	<div id="pimdevengadopia"></div>
+																		  </table> 
+																	    </div>
+												                       
 												                </div>
 													        </div>
 
 													        <div class="row" style="margin-left: 10px; margin:10px; ">
 												                <div class="panel panel-default">
-																 <div class="panel-heading">PIA, PIM Y DEVENGADO ANUAL</div>
-												                        <div id="pimdevengadopialineasAnual"></div>
+																<div class="panel-heading">PIA, PIM Y DEVENGADO ANUAL</div>
+												                       
+												                        <div id="GrafdevengadolinealAnual" class="table-responsive">
+																			<br>
+																			<table id="tableGrafdevengadolinealAnual" class="table  table-striped jambo_table bulk_action table-responsive" style="text-align: left;"> 
+																			 	<div id="pimdevengadopialineasAnual"></div>
+																		    </table> 
+																	    </div>
 												                </div>
 													        </div>
 
@@ -121,7 +133,7 @@
 																<div class="panel panel-default">
 																	<div class="panel-heading"> EJECUCIÓN PRESUPUESTAL </div>
 																 
-																	  	<div id="actproynombre">
+																	  	<div id="actproynombre" class="table-responsive">
 																			<br>
 																			<table id="table-EjecucionPresupuestal" class="table  table-striped jambo_table bulk_action" style="text-align: left;"> 
 																			 
@@ -133,20 +145,26 @@
 															<div class="row" style="margin-left: 10px; margin:10px; ">
 																<div class="panel panel-default">
 																	<div class="panel-heading">INFORMACIÓN FINANCIERA</div>
-																 
-																	  	<div id="metaAcumulada">
+																	  	<div id="metaAcumulada" class="table-responsive">
 																			<br>
 																			<table id="table-MetaAcumulada" class="table  table-striped jambo_table bulk_action table-responsive" style="text-align: left;"> 
 																			 
 																		  </table> 
-																	  </div>
+																	    </div>
 																</div>
 															</div>
 
 															<div class="row" style="margin-left: 10px; margin:10px; ">
 												                <div class="panel panel-default">
 																 <div class="panel-heading">GRÁFICO ESTADÍSTICO DE INFORMACIÓN FINANCIERA</div>
-												                        <div id="MetaPimPiaPorCadaAño"></div>
+												                        
+																		<div id="GrafmetaAcumulada" class="table-responsive">
+																			<br>
+																			<table id="tableGraf" class="table  table-striped jambo_table bulk_action table-responsive" style="text-align: left;"> 
+																			 	 <div id="MetaPimPiaPorCadaAño"></div>
+																		  </table> 
+																	    </div>
+												                       
 												                </div>
 													        </div>
 

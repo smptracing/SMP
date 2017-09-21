@@ -49,9 +49,9 @@
 																<div class="panel panel-default">
 																	<div class="panel-heading"> CONSOLIDADO DE AVANCE FISICO Y FINANCIERO DE OBRA </div>
 																 
-																	  	<div id="avancefisicoFinan">
+																	  	<div id="avancefisicoFinan" class="table-responsive">
 																			<br>
-																			<table id="table-consolidadoAvance" class="table  table-striped jambo_table bulk_action" style="text-align: left;"> 
+																			<table id="table-consolidadoAvance" class="table  table-striped jambo_table bulk_action " style="text-align: left;"> 
 																			 
 																		  </table> 
 																	  </div>
