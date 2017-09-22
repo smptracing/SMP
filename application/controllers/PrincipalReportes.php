@@ -200,6 +200,10 @@ class PrincipalReportes extends CI_Controller
         //$this->load->view('front/Reporte/ProyectoInversion/detalle');
     }
 
+    function DetalleAnalitico()
+    {
+        $this->load->view('front/Reporte/ProyectoInversion/detalleAnalitico');
+    }
     public function GrafDetalleMensualizado()
     { 
        

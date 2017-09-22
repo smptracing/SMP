@@ -167,6 +167,7 @@
 												                       
 												                </div>
 													        </div>
+															
 
 													        <div class="row" style="margin-left: 10px; margin:10px; ">
 												                <div class="panel panel-default">
@@ -181,6 +182,18 @@
 												                       
 												                </div>
 													        </div>
+
+													        <div class="row" style="margin-left: 10px; margin:10px; ">
+																<div class="panel panel-default">
+																	<div class="panel-heading">ANALÍTICO DEL AVANCE FINANCIERO POR PROYECTO</div>
+																	  	<div id="analitico" class="table-responsive">
+																			<br>
+																			<table id="table-AnaliticoAvanceFinanciero" class="table  table-striped jambo_table bulk_action table-responsive" style="text-align: left;"> 
+																			 
+																		  </table> 
+																	    </div>
+																</div>
+															</div>
 
 														</div>
 											</div>
@@ -258,10 +271,10 @@ $("#CodigoUnico").on( "click", function()
 		        console.log(data);
 		        var ejecucionPresupuestal=JSON.parse(data); 
 		        var html;
-				html+="<thead><tr><th>AÑO EJECUCIÓN</th><th>COSTO ACTUAL</th><th>COSTO DE EXPEDIENTE</th><th>COSTO DE VIABILIDAD</th><th>COSTO DE EXP AÑO ANTERIOR</th></tr></thead>"
+				html+="<thead><tr><th>AÑO EJECUCIÓN</th><th>COSTO ACTUAL</th><th>COSTO DE EXPEDIENTE</th><th>COSTO DE VIABILIDAD</th><th>COSTO DE EXP AÑO ANTERIOR</th><th>Ver</th></tr></thead>"
 				$.each( ejecucionPresupuestal, function( key, value ) {
-				  html +="<tbody> <tr><th>"+value.ano_eje+"</th><th>"+(value.costo_actual).toLocaleString("en-ESP")+"</th><th>"+value.costo_expediente+"</th><th>"+value.costo_viabilidad+"</th><th>"+value.ejecucion_ano_anterior+"</th></tr>";      
-						html +="</tbody>";"en-US"
+				  html +="<tbody> <tr><th>"+value.ano_eje+"</th><th>"+(value.costo_actual).toLocaleString("en-ESP")+"</th><th>"+value.costo_expediente+"</th><th>"+value.costo_viabilidad+"</th><th>"+value.ejecucion_ano_anterior+"</th><th><button type='button' class='editar btn btn-primary btn-xs' onclick='detalleAnalitico();'><i class='ace-icon fa fa-eye bigger-120'></i></button></th></tr>";      
+						html +="</tbody>";
 				});
 				
 				$("#table-EjecucionPresupuestal").html(html);
@@ -956,6 +969,12 @@ $("#CodigoUnico").on( "click", function()
 	{
 		//paginaAjaxDialogo(null, 'Ver Detallado Mensualizado',null, base_url+'index.php/PrincipalReportes/DetalleMensualizado', 'GET', null, null, false, true);
 		paginaAjaxDialogo(null, 'Ver Detallado Mensualizado',{ anio: anio, meta:meta}, base_url+'index.php/PrincipalReportes/DetalleMensualizado', 'GET', null, null, false, true);
+		
+	}
+
+	function detalleAnalitico()
+	{
+		paginaAjaxDialogo(null, 'Analítico del Avance Financiero del Proyecto por año',null, base_url+'index.php/PrincipalReportes/DetalleAnalitico', 'GET', null, null, false, true);
 		
 	}
     function siafActualizador() {
