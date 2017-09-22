@@ -18,6 +18,22 @@
 	</div>
 </div>
 <script type="text/javascript">
+	function eliminarMensaje(id){
+		var formData={id_mensaje:id};  
+		$.ajax({
+		    url:base_url+"index.php/mensaje/eliminarMensaje",
+		    type:"POST",
+		    data:formData,
+		    dataType:'json', 
+		    success:function(data){
+		        if(data==true)
+		          swal("","Se eliminó el mensaje!","success");
+		        else
+		          swal("","Error... no se eliminó el mensaje","error");
+		      	$('#table_mensaje').dataTable()._fnAjaxUpdate();
+		    }
+		});
+	}
 	function listarMensaje(){
 		var table=$("#table_mensaje").DataTable({
 			"processing":true,
@@ -36,10 +52,10 @@
 				{"data":"procedencia"},
 				{"data":"mensaje"},
 				{"data":"fecha"},
-				/*{"data":'nombre_val',render:function(data,type,row){
-					    return "<button type='button'  data-toggle='tooltip'  class='editar btn btn-primary btn-xs' data-toggle='modal' onclick=paginaAjaxDialogo('m_Valorizacion','Modificar&nbsp;valorizaci&oacute;n',{id_valorizacion:"+row.id_valorizacion+"},'"+base_url+"index.php/criterio/itemValorizacion','GET',null,null,false,true);><i class='ace-icon fa fa-pencil bigger-120'></i></button>";
+				{"data":'mensaje',render:function(data,type,row){
+					    return "<button type='button'  data-toggle='tooltip'  class='editar btn btn-danger btn-xs' data-toggle='modal' onclick=eliminarMensaje("+row.id_mensaje+");><i class='ace-icon fa fa-trash bigger-120'></i></button>";
 					}
-				}*/
+				}
 			],
 		}); 
 	}
