@@ -135,8 +135,8 @@
                         </ul>-->
                         <ul class="nav child_menu">
                             <li><a href="<?php echo site_url('FEformulacion/FeEstudioInversion'); ?>">Subgerente</a></li>
-                            <li><a href="<?php echo site_url('FEformulacion/FeEstudioInversionFormulador'); ?>">Coordinador</a></li>
-                            <li><a href="#">Formulador </a></li>
+                            <li><a href="#">Coordinador</a></li>
+                            <li><a href="<?php echo site_url('FEformulacion/FeEstudioInversionFormulador'); ?>">Formulador </a></li>
                         </ul>
                         </li>
                       </ul>
