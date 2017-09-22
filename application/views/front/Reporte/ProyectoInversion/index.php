@@ -279,9 +279,9 @@ $("#CodigoUnico").on( "click", function()
 
 		    	var meta=JSON.parse(data); 
 		        var html;
-				html+="<thead><tr><th>Año Ejec</th><th>Meta</th><th>Pia</th><th>Pim</th><th>Pim Acum.</th><th>Ejecución</th><th>Compromiso</th><th>Monto Certificado</th><th>Devengado</th><th>Girado</th><th>Pagado</th><th>Avan Fin.</th><th>Monto comprometido</th><th>Monto precertificado</th><th>Ver</th>/tr></thead>"
+				html+="<thead><tr><th>Año Ejec</th><th>Meta</th><th>Nombre</th><th>Pia</th><th>Pim</th><th>Pim Acum.</th><th>Ejecución</th><th>Compromiso</th><th>Monto Certificado</th><th>Devengado</th><th>Girado</th><th>Pagado</th><th>Avan Fin.</th><th>Monto comprometido</th><th>Monto precertificado</th><th>Ver</th>/tr></thead>"
 				$.each( meta, function( key, value ) {
-				  html +="<tbody> <tr><th>"+value.ano_eje+"</th><th>"+value.meta+"</th><th>"+value.pia+"</th><th>"+value.pim+"</th><th>"+value.pim_acumulado+"</th><th>"+value.ejecucion+"</th><th>"+value.compromiso+"</th><th>"+value.monto_certificado+"</th><th>"+value.devengado+"</th><th>"+value.girado+"</th><th>"+value.pagado+"</th><th>"+value.avance_financiero+'%'+"</th><th>"+value.monto_comprometido_anual+"</th><th>"+value.monto_precertificado+"</th><th><button type='button' class='editar btn btn-primary btn-xs' onclick='detalladoMensualizado("+value.ano_eje+","+value.meta+");'><i class='ace-icon fa fa-eye bigger-120'></i></button></th></tr>";      
+				  html +="<tbody> <tr><th>"+value.ano_eje+"</th><th>"+value.meta+"</th><th>"+value.nombre+"</th><th>"+value.pia+"</th><th>"+value.pim+"</th><th>"+value.pim_acumulado+"</th><th>"+value.ejecucion+"</th><th>"+value.compromiso+"</th><th>"+value.monto_certificado+"</th><th>"+value.devengado+"</th><th>"+value.girado+"</th><th>"+value.pagado+"</th><th>"+value.avance_financiero+'%'+"</th><th>"+value.monto_comprometido_anual+"</th><th>"+value.monto_precertificado+"</th><th><button type='button' class='editar btn btn-primary btn-xs' onclick='detalladoMensualizado("+value.ano_eje+","+value.meta+");'><i class='ace-icon fa fa-eye bigger-120'></i></button></th></tr>";      
 						html +="</tbody>";
 				});
 				
@@ -684,80 +684,80 @@ $("#CodigoUnico").on( "click", function()
 				cache:false,
 				success:function(resp)
 				{
-				alert(resp);
-						var pip=JSON.parse(resp);	
-			var dom = document.getElementById("AvanceInfFinanciera");
-			var myChart = echarts.init(dom);
-			var app = {};
-			option = null;
-			option = {
-				    title: {
-				        text: 'Inf. Financiero'
-				    },
-				    tooltip: {
-				        trigger: 'axis'
-				    },
-				    legend: {
-				        data:['Ejecucion','Compromiso','Certificado','Devengado','Girado','Pagado']
-				    },
-				    grid: {
-				        left: '3%',
-				        right: '4%',
-				        bottom: '3%',
-				        containLabel: true
-				    },
-				    toolbox: {
-				        feature: {
-				            saveAsImage: {}
-				        }
-				    },
-				    xAxis: {
-				        type: 'category',
-				        boundaryGap: false,
-				        data: pip[0]
-				    },
-				    yAxis: {
-				        type: 'value'
-				    },
-				    series: [
-				        {
-				            name:'Ejecucion',
-				            type:'line',
-				            stack: '总量',
-				            data:pip[1]
-				        },
-				        {
-				            name:'Compromiso',
-				            type:'line',
-				            stack: '总量',
-				            data:pip[2]
-				        },
-				        {
-				            name:'Certificado',
-				            type:'line',
-				            stack: '总量',
-				            data:pip[3]
-				        },
-				        {
-				            name:'Devengado',
-				            type:'line',
-				            stack: '总量',
-				            data:pip[4]
-				        },
-				        {
-				            name:'Girado',
-				            type:'line',
-				            stack: '总量',
-				            data:pip[5]
-				        },
-				        {
-				            name:'Pagado',
-				            type:'line',
-				            stack: '总量',
-				            data:pip[6]
-				        }
-				    ]
-				};
+				//alert(resp);
+					var pip=JSON.parse(resp);	
+					var dom = document.getElementById("AvanceInfFinanciera");
+					var myChart = echarts.init(dom);
+					var app = {};
+					option = null;
+					option = {
+						    title: {
+						        text: 'Inf. Financiero'
+						    },
+						    tooltip: {
+						        trigger: 'axis'
+						    },
+						    legend: {
+						        data:['Ejecucion','Compromiso','Certificado','Devengado','Girado','Pagado']
+						    },
+						    grid: {
+						        left: '3%',
+						        right: '4%',
+						        bottom: '3%',
+						        containLabel: true
+						    },
+						    toolbox: {
+						        feature: {
+						            saveAsImage: {}
+						        }
+						    },
+						    xAxis: {
+						        type: 'category',
+						        boundaryGap: false,
+						        data: pip[0]
+						    },
+						    yAxis: {
+						        type: 'value'
+						    },
+						    series: [
+						        {
+						            name:'Ejecucion',
+						            type:'line',
+						            stack: '总量',
+						            data:pip[1]
+						        },
+						        {
+						            name:'Compromiso',
+						            type:'line',
+						            stack: '总量',
+						            data:pip[2]
+						        },
+						        {
+						            name:'Certificado',
+						            type:'line',
+						            stack: '总量',
+						            data:pip[3]
+						        },
+						        {
+						            name:'Devengado',
+						            type:'line',
+						            stack: '总量',
+						            data:pip[4]
+						        },
+						        {
+						            name:'Girado',
+						            type:'line',
+						            stack: '总量',
+						            data:pip[5]
+						        },
+						        {
+						            name:'Pagado',
+						            type:'line',
+						            stack: '总量',
+						            data:pip[6]
+						        }
+						    ]
+						};
 			if (option && typeof option === "object") {
 			    myChart.setOption(option, true);
 				}
@@ -765,8 +765,6 @@ $("#CodigoUnico").on( "click", function()
 				}
 			});
 	
-    
-
 
 			$.ajax({
 				"url":base_url+"index.php/PrincipalReportes/ReporteDevengadoPiaPimPorPipGraficos",
