@@ -90,7 +90,10 @@
 									<div class="row" style="margin-left: 10px; margin:10px; ">
 						                <div class="panel panel-default">
 										 <div class="panel-heading">GRÁFICO ESTADÍSTICO DE DETALLE MENSUALIZADO</div>
-						                        <div id="contenedorGrafico"></div>
+						                        <div id="contenedorGrafico">
+						                        	
+						                        </div>
+
 						                </div>
 						        	</div>
 	
@@ -111,7 +114,7 @@ window.setTimeout(function()
 	var meta=document.getElementById("txtcorrelativo").value;
 	var anio=document.getElementById("txtanioMeta").value;
 
-	$("#contenedorGrafico").css({"height":"350"});
+	$("#contenedorGrafico").css({"height":"450"});
 	$.ajax({
 		"url":base_url+"index.php/PrincipalReportes/GrafDetalleMensualizado",
 		type:"GET", 
