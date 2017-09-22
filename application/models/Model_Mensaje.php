@@ -22,6 +22,15 @@ class Model_Mensaje extends CI_Model
         return false;
       }
   }
+  function eliminarMensaje($id){
+    $query=$this->db->query("delete from  MENSAJE where id_mensaje=".$id);
+      if($query){
+        return true;
+      }
+      else{
+        return false;
+      }
+  }
   function listarMensaje(){
       $query=$this->db->query("select M.*,P.nombres+' '+P.apellido_p+' '+P.apellido_m as procedencia
 from MENSAJE M
