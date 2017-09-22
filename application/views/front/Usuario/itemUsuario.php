@@ -3,13 +3,13 @@
         <div class="col-xs-12">
             <form class="form-horizontal" id='formUsuario' name="formUsuario"  method="post" onSubmit="return false;"  >
                   <div class="form-group">
-                         <label class="col-sm-3 control-label no-padding-right"  for="form-field-1-1">Buscar Persona</label>
+                          <label class="col-sm-3 control-label no-padding-right"  for="form-field-1-1">Buscar Persona</label>
                           <div class="col-sm-6">
                                <select 
                       class="form-control input-sm" 
                                 id="comboPersona" name="comboPersona"  title="Buscar persona" >
                                </select>                 
-                         </div>
+                          </div>
                   </div>
                   <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right"  for="form-field-1-1">Usuario </label>
@@ -65,6 +65,16 @@
 <script src="<?php echo base_url();?>assets/js/Helper/jsHelper.js"></script>
 <script>
   $(function(){
+      $("#cbb_TipoUsuario").change(function(event){
+        listaMenu();
+        $('#cbb_listaMenuDestino').empty();
+        $.getJSON(base_url+"index.php/Usuario/ListarTipoUsuarioMenu/"+$("#cbb_TipoUsuario").val(),function(json){
+            $.each(json,function(i){
+                $('#cbb_listaMenuDestino').append("<option  value='"+json[i]['id_submenu']+"'>"+json[i]['id_modulo']+": "+json[i]['nombre']+": "+json[i]['nombreSubmenu']+"</option>");
+                $("#cbb_listaMenu option[value='"+json[i]['id_submenu']+"']").remove();
+            });
+        });
+      });
       $("#formUsuario").submit(function(event){
         event.preventDefault();
         var stringMenuUsuario ='';

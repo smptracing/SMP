@@ -207,8 +207,8 @@
                       <a>
                         <span class="image"><img src="<?php echo base_url(); ?>assets/images/img.jpg" alt="Profile Image" /></span>
                         <span>
-                          <span>Usuario</span>
-                          <span class="time">3 Nuevos proyecto</span>
+                          <span><?php echo $this->session->userdata('nombreUsuario') ?></span>
+                          <span class="time" onclick=paginaAjaxDialogo('dg_bandejaEntradaMensaje','Bandeja&nbsp;de&nbsp;Entrada',{},base_url+"index.php/mensaje/bandejaEntrada",'GET',null,null,false,true);>Bandeja de Entrada</span>
                         </span>
                         <span class="message">
 
@@ -218,9 +218,8 @@
 
                     <li>
                       <div class="text-center">
-                        <a>
-                          <strong>Nuevos Proyectos</strong>
-                          <i class="fa fa-angle-right"></i>
+                        <a  onclick=paginaAjaxDialogo('dg_enviarMensaje','Nuevo&nbsp;mensaje',{},base_url+"index.php/mensaje/itemMensaje",'GET',null,null,false,true);>
+                          Nuevo
                         </a>
                       </div>
                     </li>
