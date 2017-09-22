@@ -20,5 +20,8 @@ class Mensaje extends CI_Controller {/* Mantenimiento de sector entidad Y servic
 	function enviar(){
 	   echo $this->Model_Mensaje->enviar($this->input->post("tx_mensaje"),$this->input->post("sl_destino"));
 	}
+	function eliminarMensaje(){
+	   echo $this->Model_Mensaje->eliminarMensaje($this->input->post("id_mensaje"));
+	}
 	
 }
