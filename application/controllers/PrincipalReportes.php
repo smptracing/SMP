@@ -112,6 +112,37 @@ class PrincipalReportes extends CI_Controller
         show_404();
     }
 
+  public function GrafAvanceFinanciero()
+    { 
+       
+        if ($this->input->is_ajax_request()) {
+            $CodigoUnico=$this->input->get('codigounico');
+            $datos = $this->Model_Dashboard_Reporte->ReporteCorrelativoMeta($CodigoUnico);
+            $var1=[];
+            foreach ($datos as $key => $Itemp) {
+                $anio[]=$Itemp->ano_eje;
+                //$avance_financiero[]=$Itemp->avance_financiero;
+                $ejecucion[]=$Itemp->ejecucion;
+                $compromiso[]=$Itemp->compromiso;
+                $certificado[]=$Itemp->monto_certificado;
+                $devengado[]=$Itemp->devengado;
+                $girado[]=$Itemp->girado;
+                $pagado[]=$Itemp->pagado;
+            }
+            $var1[]=$anio;
+            $var1[]=$ejecucion;
+            $var1[]=$compromiso;
+            $var1[]=$certificado;
+            $var1[]=$devengado;
+            $var1[]=$girado;
+            $var1[]=$pagado;
+           // $var1[]=$avance_financiero;
+
+            echo json_encode($var1);
+        } else
+        show_404();
+    }
+
     public function FuncionNumeroPip()
     {
         if ($this->input->is_ajax_request()) 

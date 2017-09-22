@@ -677,53 +677,94 @@ $("#CodigoUnico").on( "click", function()
 					}
 				});
 	
-			
+		$.ajax({
+				"url":base_url+"index.php/PrincipalReportes/GrafAvanceFinanciero",
+				type:"GET", 
+				data:{codigounico:codigounico},
+				cache:false,
+				success:function(resp)
+				{
+				alert(resp);
+						var pip=JSON.parse(resp);	
 			var dom = document.getElementById("AvanceInfFinanciera");
 			var myChart = echarts.init(dom);
 			var app = {};
 			option = null;
 			option = {
-			    title: {
-			        text: 'Avance Financiero'
-			    },
-			    tooltip: {
-			        trigger: 'axis'
-			    },
-			    legend: {
-			        data:['Avance Financiero']
-			    },
-			    grid: {
-			        left: '3%',
-			        right: '4%',
-			        bottom: '3%',
-			        containLabel: true
-			    },
-			    toolbox: {
-			        feature: {
-			            saveAsImage: {}
-			        }
-			    },
-			    xAxis: {
-			        type: 'category',
-			        boundaryGap: false,
-			        data: ['周一','周二','周三','周四','周五','周六','周日']
-			    },
-			    yAxis: {
-			        type: 'value'
-			    },
-			    series: [
-			        {
-			            name:'Avance Financiero',
-			            type:'line',
-			            stack: '总量',
-			            data:[820, 932, 901, 934, 1290, 1330, 1320]
-			        }
-			    ]
-			};
-			;
+				    title: {
+				        text: 'Inf. Financiero'
+				    },
+				    tooltip: {
+				        trigger: 'axis'
+				    },
+				    legend: {
+				        data:['Ejecucion','Compromiso','Certificado','Devengado','Girado','Pagado']
+				    },
+				    grid: {
+				        left: '3%',
+				        right: '4%',
+				        bottom: '3%',
+				        containLabel: true
+				    },
+				    toolbox: {
+				        feature: {
+				            saveAsImage: {}
+				        }
+				    },
+				    xAxis: {
+				        type: 'category',
+				        boundaryGap: false,
+				        data: pip[0]
+				    },
+				    yAxis: {
+				        type: 'value'
+				    },
+				    series: [
+				        {
+				            name:'Ejecucion',
+				            type:'line',
+				            stack: '总量',
+				            data:pip[1]
+				        },
+				        {
+				            name:'Compromiso',
+				            type:'line',
+				            stack: '总量',
+				            data:pip[2]
+				        },
+				        {
+				            name:'Certificado',
+				            type:'line',
+				            stack: '总量',
+				            data:pip[3]
+				        },
+				        {
+				            name:'Devengado',
+				            type:'line',
+				            stack: '总量',
+				            data:pip[4]
+				        },
+				        {
+				            name:'Girado',
+				            type:'line',
+				            stack: '总量',
+				            data:pip[5]
+				        },
+				        {
+				            name:'Pagado',
+				            type:'line',
+				            stack: '总量',
+				            data:pip[6]
+				        }
+				    ]
+				};
 			if (option && typeof option === "object") {
 			    myChart.setOption(option, true);
-			}
+				}
+			
+				}
+			});
+	
     
 
 
