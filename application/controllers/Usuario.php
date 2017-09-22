@@ -9,6 +9,14 @@ public function __construct(){
 		$this->load->model('Model_Personal');
 		
 	}
+	function ListarTipoUsuarioMenu($tipo){
+        // if ($this->input->is_ajax_request()) {
+            $datos = $this->Model_Usuario->ListarTipoUsuarioMenu($tipo);
+            echo json_encode($datos);
+        // } else {
+            // show_404();
+        // }
+	}
 	function ListarTipoUsuario(){
         if ($this->input->is_ajax_request()) {
             $datos = $this->Model_Usuario->ListarTipoUsuario();
