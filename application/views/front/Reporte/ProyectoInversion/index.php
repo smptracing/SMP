@@ -45,7 +45,7 @@
 														    <div class="input-group">
 														      <span class="input-group-btn">
 
-														        <a href="javascript:siafActualizador('http://192.168.1.100:8080/siaf/')"><button id="BtnAcatualizar" class="btn btn-success" type="button"><i class="fa fa-spinner"></i> Actualizar</button></a>
+														        <a href="javascript:siafActualizador()"><button id="BtnAcatualizar" class="btn btn-success" type="button"><i class="fa fa-spinner"></i> Actualizar</button></a>
 														      </span>
 														    </div>
 														  </div>
@@ -167,6 +167,33 @@
 												                       
 												                </div>
 													        </div>
+															
+
+													        <div class="row" style="margin-left: 10px; margin:10px; ">
+												                <div class="panel panel-default">
+																 <div class="panel-heading">GRÁFICO DE AVANCE DE INFORMACIÓN FINANCIERA</div>
+												                        
+																		<div id="Grafinformacionfinanciera" class="table-responsive">
+																			<br>
+																			<table id="tableGrafinfFinanciera" class="table  table-striped jambo_table bulk_action table-responsive" style="text-align: left;"> 
+																			 	 <div id="AvanceInfFinanciera"></div>
+																		  </table> 
+																	    </div>
+												                       
+												                </div>
+													        </div>
+
+													        <div class="row" style="margin-left: 10px; margin:10px; ">
+																<div class="panel panel-default">
+																	<div class="panel-heading">ANALÍTICO DEL AVANCE FINANCIERO POR PROYECTO</div>
+																	  	<div id="analitico" class="table-responsive">
+																			<br>
+																			<table id="table-AnaliticoAvanceFinanciero" class="table  table-striped jambo_table bulk_action table-responsive" style="text-align: left;"> 
+																			 
+																		  </table> 
+																	    </div>
+																</div>
+															</div>
 
 														</div>
 											</div>
@@ -187,10 +214,26 @@
 <script>
 
 $(document).on("ready" ,function(){
+
+$("#BtnAcatualizar").on( "click", function()
+	{
+		var codigounico=$("#BuscarPip").val();
+		$.ajax({
+		"url":"http://localhost:8080/siaf/index.php/Importacion/inicio",
+		type:"GET",
+		dataType:"jsonp",
+		data:{CodigoUnico:codigounico},
+		success: function(data)
+			{
+		        
+			}
+
+		});
+
+
+	});
 	
 $("#EjecucionAnual").hide();
-
-
 $("#CodigoUnico").on( "click", function()
 	{
 		$("#EjecucionAnual").show(2000);
@@ -199,6 +242,7 @@ $("#CodigoUnico").on( "click", function()
 		$("#actproynombre").show(2000);
 		$("#metaAcumulada").show(2000);
 		$("#MetaPimPiaPorCadaAño").css({"height":"420"}); 
+		$("#AvanceInfFinanciera").css({"height":"420"}); 
 
 		var codigounico=$("#BuscarPip").val();
 		$.ajax({
@@ -227,9 +271,9 @@ $("#CodigoUnico").on( "click", function()
 		        console.log(data);
 		        var ejecucionPresupuestal=JSON.parse(data); 
 		        var html;
-				html+="<thead><tr><th>AÑO EJECUCIÓN</th><th>COSTO ACTUAL</th><th>COSTO DE EXPEDIENTE</th><th>COSTO DE VIABILIDAD</th><th>COSTO DE EXP AÑO ANTERIOR</th></tr></thead>"
+				html+="<thead><tr><th>AÑO EJECUCIÓN</th><th>COSTO ACTUAL</th><th>COSTO DE EXPEDIENTE</th><th>COSTO DE VIABILIDAD</th><th>COSTO DE EXP AÑO ANTERIOR</th><th>Ver</th></tr></thead>"
 				$.each( ejecucionPresupuestal, function( key, value ) {
-				  html +="<tbody> <tr><th>"+value.ano_eje+"</th><th>"+value.costo_actual+"</th><th>"+value.costo_expediente+"</th><th>"+value.costo_viabilidad+"</th><th>"+value.ejecucion_ano_anterior+"</th></tr>";      
+				  html +="<tbody> <tr><th>"+value.ano_eje+"</th><th>"+(value.costo_actual).toLocaleString("en-ESP")+"</th><th>"+value.costo_expediente+"</th><th>"+value.costo_viabilidad+"</th><th>"+value.ejecucion_ano_anterior+"</th><th><button type='button' class='editar btn btn-primary btn-xs' onclick='detalleAnalitico();'><i class='ace-icon fa fa-eye bigger-120'></i></button></th></tr>";      
 						html +="</tbody>";
 				});
 				
@@ -248,9 +292,11 @@ $("#CodigoUnico").on( "click", function()
 
 		    	var meta=JSON.parse(data); 
 		        var html;
-				html+="<thead><tr><th>Año Ejec</th><th>Meta</th><th>Pia</th><th>Pim</th><th>Pim Acum.</th><th>Ejecución</th><th>Compromiso</th><th>Devengado</th><th>% Avan Fin.</th><th>Girado</th><th>Pagado</th><th>Monto Certif</th><th>Monto comprom</th><th>Monto precert</th><th>Ver</th>/tr></thead>"
+				html+="<thead><tr><th>Año Ejec</th><th>Meta</th><th>Pia</th><th>Pim</th><th>Pim Acum.</th><th>Ejecución</th><th>Compromiso</th><th>Monto Certificado</th><th>Devengado</th><th>Girado</th><th>Pagado</th><th>Avan Fin.</th><th>Monto comprometido</th><th>Monto precertificado</th><th>Ver</th>/tr></thead>"
 				$.each( meta, function( key, value ) {
-				  html +="<tbody> <tr><th>"+value.ano_eje+"</th><th>"+value.meta+"</th><th>"+value.pia+"</th><th>"+value.pim+"</th><th>"+value.pim_acumulado+"</th><th>"+value.ejecucion+"</th><th>"+value.compromiso+"</th><th>"+value.devengado+"</th><th>"+value.avance_financiero+'%'+"</th><th>"+value.girado+"</th><th>"+value.pagado+"</th><th>"+value.monto_certificado+"</th><th>"+value.monto_comprometido_anual+"</th><th>"+value.monto_precertificado+"</th><th><button type='button' class='editar btn btn-primary btn-xs' onclick='detalladoMensualizado("+value.ano_eje+","+value.meta+");'><i class='ace-icon fa fa-eye bigger-120'></i></button></th></tr>";      
+                   	html +="<tr>";
+                              html +="<th  colspan='15'>"+value.nombre_finalidad+"</th></tr> <tr>";
+				 	html +="<tbody> <tr><th>"+value.ano_eje+"</th><th>"+value.meta+"</th><th>"+value.pia+"</th><th>"+value.pim+"</th><th>"+value.pim_acumulado+"</th><th>"+value.ejecucion+"</th><th>"+value.compromiso+"</th><th>"+value.monto_certificado+"</th><th>"+value.devengado+"</th><th>"+value.girado+"</th><th>"+value.pagado+"</th><th>"+value.avance_financiero+'%'+"</th><th>"+value.monto_comprometido_anual+"</th><th>"+value.monto_precertificado+"</th><th><button type='button' class='editar btn btn-primary btn-xs' onclick='detalladoMensualizado("+value.ano_eje+","+value.meta+");'><i class='ace-icon fa fa-eye bigger-120'></i></button></th></tr>";      
 						html +="</tbody>";
 				});
 				
@@ -645,6 +691,95 @@ $("#CodigoUnico").on( "click", function()
 						
 					}
 				});
+	
+		$.ajax({
+				"url":base_url+"index.php/PrincipalReportes/GrafAvanceFinanciero",
+				type:"GET", 
+				data:{codigounico:codigounico},
+				cache:false,
+				success:function(resp)
+				{
+				//alert(resp);
+					var pip=JSON.parse(resp);	
+					var dom = document.getElementById("AvanceInfFinanciera");
+					var myChart = echarts.init(dom);
+					var app = {};
+					option = null;
+					option = {
+						    title: {
+						        text: 'Inf. Financiero'
+						    },
+						    tooltip: {
+						        trigger: 'axis'
+						    },
+						    legend: {
+						        data:['Ejecucion','Compromiso','Certificado','Devengado','Girado','Pagado']
+						    },
+						    grid: {
+						        left: '3%',
+						        right: '4%',
+						        bottom: '3%',
+						        containLabel: true
+						    },
+						    toolbox: {
+						        feature: {
+						            saveAsImage: {}
+						        }
+						    },
+						    xAxis: {
+						        type: 'category',
+						        boundaryGap: false,
+						        data: pip[0]
+						    },
+						    yAxis: {
+						        type: 'value'
+						    },
+						    series: [
+						        {
+						            name:'Ejecucion',
+						            type:'line',
+						            stack: '总量',
+						            data:pip[1]
+						        },
+						        {
+						            name:'Compromiso',
+						            type:'line',
+						            stack: '总量',
+						            data:pip[2]
+						        },
+						        {
+						            name:'Certificado',
+						            type:'line',
+						            stack: '总量',
+						            data:pip[3]
+						        },
+						        {
+						            name:'Devengado',
+						            type:'line',
+						            stack: '总量',
+						            data:pip[4]
+						        },
+						        {
+						            name:'Girado',
+						            type:'line',
+						            stack: '总量',
+						            data:pip[5]
+						        },
+						        {
+						            name:'Pagado',
+						            type:'line',
+						            stack: '总量',
+						            data:pip[6]
+						        }
+						    ]
+						};
+			if (option && typeof option === "object") {
+			    myChart.setOption(option, true);
+				}
+			
+				}
+			});
+	
 
 			$.ajax({
 				"url":base_url+"index.php/PrincipalReportes/ReporteDevengadoPiaPimPorPipGraficos",
@@ -836,8 +971,16 @@ $("#CodigoUnico").on( "click", function()
 		paginaAjaxDialogo(null, 'Ver Detallado Mensualizado',{ anio: anio, meta:meta}, base_url+'index.php/PrincipalReportes/DetalleMensualizado', 'GET', null, null, false, true);
 		
 	}
-    function siafActualizador(URL) {
-        window.open(URL, 'Nombre de la ventana', 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=1,width=700,height=500,left = 390,top = 50');
+
+	function detalleAnalitico()
+	{
+		paginaAjaxDialogo(null, 'Analítico del Avance Financiero del Proyecto por año',null, base_url+'index.php/PrincipalReportes/DetalleAnalitico', 'GET', null, null, false, true);
+		
+	}
+    function siafActualizador() {
+    	var codigounico=$("#BuscarPip").val();
+    	var urll="http://192.168.1.100:8080/importador_siaf/index.php/Importacion/inicio/"+codigounico;
+        ventana=window.open(urll, 'Nombre de la ventana', 'width=1400,height=800');
     }
 </script>
 

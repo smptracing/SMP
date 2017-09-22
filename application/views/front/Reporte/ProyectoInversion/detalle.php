@@ -44,6 +44,7 @@
 														<td>Mes</td>
 														<td>Ejecución</td>
 														<td>Compromiso</td>
+														<td>Certificado</td>
 														<td>Devengado</td>
 														<td>Girado</td>
 														<td>Pagado</td>
@@ -59,19 +60,22 @@
 																<?=$item->mes_eje?>
 													    	</td>
 													    	<td>
-																<?=$item->ejecucion?>
+																<?= number_format($item->ejecucion,2)?>
 													    	</td>
 													    	<td>
-																<?=$item->compromiso?>
+																<?= number_format($item->compromiso,2)?>
 													    	</td>
 													    	<td>
-																<?=$item->devengado?>
+																<?= number_format($item->certificado,2)?>
 													    	</td>
 													    	<td>
-																<?=$item->girado?>
+																<?= number_format($item->devengado,2)?>
 													    	</td>
 													    	<td>
-																<?=$item->pagado?>
+																<?= number_format($item->girado,2)?>
+													    	</td>
+													    	<td>
+																<?=number_format($item->pagado,2)?>
 													    	</td>
 													  </tr>
 													<?php } ?>
@@ -86,7 +90,10 @@
 									<div class="row" style="margin-left: 10px; margin:10px; ">
 						                <div class="panel panel-default">
 										 <div class="panel-heading">GRÁFICO ESTADÍSTICO DE DETALLE MENSUALIZADO</div>
-						                        <div id="contenedorGrafico"></div>
+						                        <div id="contenedorGrafico">
+						                        	
+						                        </div>
+
 						                </div>
 						        	</div>
 	
@@ -107,7 +114,7 @@ window.setTimeout(function()
 	var meta=document.getElementById("txtcorrelativo").value;
 	var anio=document.getElementById("txtanioMeta").value;
 
-	$("#contenedorGrafico").css({"height":"350"});
+	$("#contenedorGrafico").css({"height":"450"});
 	$.ajax({
 		"url":base_url+"index.php/PrincipalReportes/GrafDetalleMensualizado",
 		type:"GET", 
@@ -209,7 +216,7 @@ window.setTimeout(function()
 			};
 
 			option = {
-			    color: ['#003366', '#16A085', '#4cabce', '#e5323e','#D35400'],
+			    color: ['#003366', '#16A085', '#4cabce', '#e5323e','#D35400','#8E44AD'],
 			    tooltip: {
 			        trigger: 'axis',
 			        axisPointer: {
@@ -217,7 +224,7 @@ window.setTimeout(function()
 			        }
 			    },
 			    legend: {
-			        data: ['Ejecucion', 'Compromiso', 'Devengado', 'Girado','Pagado']
+			        data: ['Ejecucion', 'Compromiso','Certificado','Devengado', 'Girado','Pagado']
 			    },
 			    toolbox: {
 			        show: true,
@@ -259,23 +266,29 @@ window.setTimeout(function()
 			            label: labelOption,
 			            data: pip[2]
 			        },
-			        {
-			            name: 'Devengado',
+			          {
+			            name: 'Certificado',
 			            type: 'bar',
 			            label: labelOption,
 			            data: pip[3]
 			        },
 			        {
-			            name: 'Girado',
+			            name: 'Devengado',
 			            type: 'bar',
 			            label: labelOption,
 			            data: pip[4]
 			        },
 			        {
-			            name: 'Pagado',
+			            name: 'Girado',
 			            type: 'bar',
 			            label: labelOption,
 			            data: pip[5]
+			        },
+			        {
+			            name: 'Pagado',
+			            type: 'bar',
+			            label: labelOption,
+			            data: pip[6]
 			        }
 			    ]
 			};
