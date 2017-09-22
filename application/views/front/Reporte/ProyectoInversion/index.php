@@ -168,6 +168,20 @@
 												                </div>
 													        </div>
 
+													        <div class="row" style="margin-left: 10px; margin:10px; ">
+												                <div class="panel panel-default">
+																 <div class="panel-heading">GRÁFICO DE AVANCE DE INFORMACIÓN FINANCIERA</div>
+												                        
+																		<div id="Grafinformacionfinanciera" class="table-responsive">
+																			<br>
+																			<table id="tableGrafinfFinanciera" class="table  table-striped jambo_table bulk_action table-responsive" style="text-align: left;"> 
+																			 	 <div id="AvanceInfFinanciera"></div>
+																		  </table> 
+																	    </div>
+												                       
+												                </div>
+													        </div>
+
 														</div>
 											</div>
 										</div>
@@ -215,6 +229,7 @@ $("#CodigoUnico").on( "click", function()
 		$("#actproynombre").show(2000);
 		$("#metaAcumulada").show(2000);
 		$("#MetaPimPiaPorCadaAño").css({"height":"420"}); 
+		$("#AvanceInfFinanciera").css({"height":"420"}); 
 
 		var codigounico=$("#BuscarPip").val();
 		$.ajax({
@@ -661,6 +676,56 @@ $("#CodigoUnico").on( "click", function()
 						
 					}
 				});
+	
+			
+			var dom = document.getElementById("AvanceInfFinanciera");
+			var myChart = echarts.init(dom);
+			var app = {};
+			option = null;
+			option = {
+			    title: {
+			        text: 'Avance Financiero'
+			    },
+			    tooltip: {
+			        trigger: 'axis'
+			    },
+			    legend: {
+			        data:['Avance Financiero']
+			    },
+			    grid: {
+			        left: '3%',
+			        right: '4%',
+			        bottom: '3%',
+			        containLabel: true
+			    },
+			    toolbox: {
+			        feature: {
+			            saveAsImage: {}
+			        }
+			    },
+			    xAxis: {
+			        type: 'category',
+			        boundaryGap: false,
+			        data: ['周一','周二','周三','周四','周五','周六','周日']
+			    },
+			    yAxis: {
+			        type: 'value'
+			    },
+			    series: [
+			        {
+			            name:'Avance Financiero',
+			            type:'line',
+			            stack: '总量',
+			            data:[820, 932, 901, 934, 1290, 1330, 1320]
+			        }
+			    ]
+			};
+			;
+			if (option && typeof option === "object") {
+			    myChart.setOption(option, true);
+			}
+    
+
 
 			$.ajax({
 				"url":base_url+"index.php/PrincipalReportes/ReporteDevengadoPiaPimPorPipGraficos",
