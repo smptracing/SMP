@@ -279,9 +279,11 @@ $("#CodigoUnico").on( "click", function()
 
 		    	var meta=JSON.parse(data); 
 		        var html;
-				html+="<thead><tr><th>Año Ejec</th><th>Meta</th><th>Nombre</th><th>Pia</th><th>Pim</th><th>Pim Acum.</th><th>Ejecución</th><th>Compromiso</th><th>Monto Certificado</th><th>Devengado</th><th>Girado</th><th>Pagado</th><th>Avan Fin.</th><th>Monto comprometido</th><th>Monto precertificado</th><th>Ver</th>/tr></thead>"
+				html+="<thead><tr><th>Año Ejec</th><th>Meta</th><th>Pia</th><th>Pim</th><th>Pim Acum.</th><th>Ejecución</th><th>Compromiso</th><th>Monto Certificado</th><th>Devengado</th><th>Girado</th><th>Pagado</th><th>Avan Fin.</th><th>Monto comprometido</th><th>Monto precertificado</th><th>Ver</th>/tr></thead>"
 				$.each( meta, function( key, value ) {
-				  html +="<tbody> <tr><th>"+value.ano_eje+"</th><th>"+value.meta+"</th><th>"+value.nombre_finalidad+"</th><th>"+value.pia+"</th><th>"+value.pim+"</th><th>"+value.pim_acumulado+"</th><th>"+value.ejecucion+"</th><th>"+value.compromiso+"</th><th>"+value.monto_certificado+"</th><th>"+value.devengado+"</th><th>"+value.girado+"</th><th>"+value.pagado+"</th><th>"+value.avance_financiero+'%'+"</th><th>"+value.monto_comprometido_anual+"</th><th>"+value.monto_precertificado+"</th><th><button type='button' class='editar btn btn-primary btn-xs' onclick='detalladoMensualizado("+value.ano_eje+","+value.meta+");'><i class='ace-icon fa fa-eye bigger-120'></i></button></th></tr>";      
+                   	html +="<tr>";
+                              html +="<th  colspan='15'>"+value.nombre_finalidad+"</th></tr> <tr>";
+				 	html +="<tbody> <tr><th>"+value.ano_eje+"</th><th>"+value.meta+"</th><th>"+value.pia+"</th><th>"+value.pim+"</th><th>"+value.pim_acumulado+"</th><th>"+value.ejecucion+"</th><th>"+value.compromiso+"</th><th>"+value.monto_certificado+"</th><th>"+value.devengado+"</th><th>"+value.girado+"</th><th>"+value.pagado+"</th><th>"+value.avance_financiero+'%'+"</th><th>"+value.monto_comprometido_anual+"</th><th>"+value.monto_precertificado+"</th><th><button type='button' class='editar btn btn-primary btn-xs' onclick='detalladoMensualizado("+value.ano_eje+","+value.meta+");'><i class='ace-icon fa fa-eye bigger-120'></i></button></th></tr>";      
 						html +="</tbody>";
 				});
 				
