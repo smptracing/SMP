@@ -19,7 +19,7 @@
 							<?php foreach($listaETExpedienteTecnico as $key => $value){ ?>
 								<tr>
 									<td style="text-align: center;"><?=$value->codigo_unico_pi?></td>
-									<td><?=$value->nombre_pi?></td>
+									<td><?=html_escape($value->nombre_pi)?></td>
 									<td style="text-align: center;width: 150px;"><?=($value->existeGantt ? substr($value->primeraETTarea->fecha_inicio_tarea, 0, 10).'/'.substr($value->ultimaETTarea->fecha_final_tarea, 0, 10) : '')?></td>
 									<td>
 										<?php if($value->existeGantt){ ?>
