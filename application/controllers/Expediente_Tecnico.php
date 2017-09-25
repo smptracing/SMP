@@ -449,6 +449,26 @@ class Expediente_Tecnico extends CI_Controller
 		$this->mydompdf->stream("reportePresupuestoFF05.pdf", array("Attachment" => false));
 	}
 
+	public function valorizacionEjecucionProyecto($idExpedienteTecnico)
+	{
+		$expedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnico($idExpedienteTecnico);
+		$expedienteTecnico->childComponente=$this->Model_ET_Componente->ETComponentePorIdET($expedienteTecnico->id_et);
+
+		foreach($expedienteTecnico->childComponente as $key => $value)
+		{
+			$value->childMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($value->id_componente);
+
+			foreach($value->childMeta as $index => $item)
+			{
+				$this->obtenerMetaAnidada($item);
+			}
+		}
+
+		$this->load->view('layout/Ejecucion/header');
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/valorizacionEjecucionProyecto', ['expedienteTecnico' => $expedienteTecnico]);
+		$this->load->view('layout/Ejecucion/footer');
+	}
+
 	private function obtenerMetaAnidadaReporteF005($meta)
 	{
 		$temp=$this->Model_ET_Meta->ETMetaPorIdMetaPadre($meta->id_meta);
