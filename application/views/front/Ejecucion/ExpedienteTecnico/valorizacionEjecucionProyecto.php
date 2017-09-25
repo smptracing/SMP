@@ -20,10 +20,10 @@ function mostrarMetaAnidada($meta)
 			$htmlTemp.='<tr>'.
 				'<td style="text-align: center;">'.$value->numeracion.'</td>'.
 				'<td>'.$value->desc_partida.'</td>'.
-				'<td style="text-align: center;"></td>'.
-				'<td style="text-align: center;"></td>'.
-				'<td style="text-align: center;"></td>'.
-				'<td style="text-align: center;"></td>'.
+				'<td style="text-align: center;">'.$value->descripcion.'</td>'.
+				'<td style="text-align: center;">'.$value->cantidad.'</td>'.
+				'<td style="text-align: right;">S/.'.$value->precio_unitario.'</td>'.
+				'<td style="text-align: right;">S/.'.number_format($value->cantidad*$value->precio_unitario, 2).'</td>'.
 				'<td></td>'.
 			'</tr>';
 		}
