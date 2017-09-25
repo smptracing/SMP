@@ -42,8 +42,8 @@
 							<tbody>
 								<?php foreach($expedienteTecnico->childComponente as $key => $value){ ?>
 									<tr>
-										<td style="text-align: center;"><?=$value->numeracion?></td>
-										<td><?=$value->descripcion?></td>
+										<td style="text-align: center;"><b><i><?=$value->numeracion?></i></b></td>
+										<td><b><i><?=$value->descripcion?></i></b></td>
 										<td style="text-align: center;"></td>
 										<td style="text-align: center;"></td>
 										<td style="text-align: center;"></td>
@@ -52,14 +52,25 @@
 									</tr>
 									<?php foreach($value->childMeta as $index => $item){ ?>
 										<tr>
-											<td style="text-align: center;"><?=$item->numeracion?></td>
-											<td><?=$item->desc_meta?></td>
+											<td style="text-align: center;"><b><i><?=$item->numeracion?></i></b></td>
+											<td><b><i><?=$item->desc_meta?></i></b></td>
 											<td style="text-align: center;"></td>
 											<td style="text-align: center;"></td>
 											<td style="text-align: center;"></td>
 											<td style="text-align: center;"></td>
 											<td></td>
 										</tr>
+										<?php foreach($item->childPartida as $k => $v){ ?>
+											<tr>
+												<td style="text-align: center;"><?=$v->numeracion?></td>
+												<td><?=$v->desc_partida?></td>
+												<td style="text-align: center;"></td>
+												<td style="text-align: center;"></td>
+												<td style="text-align: center;"></td>
+												<td style="text-align: center;"></td>
+												<td></td>
+											</tr>
+										<?php } ?>
 									<?php } ?>
 								<?php } ?>
 							</tbody>
