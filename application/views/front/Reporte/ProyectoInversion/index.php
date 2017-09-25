@@ -45,7 +45,7 @@
 														    <div class="input-group">
 														      <span class="input-group-btn">
 
-														        <a href="javascript:siafActualizador()"><button id="BtnAcatualizar" class="btn btn-success" type="button"><i class="fa fa-spinner"></i> Actualizar</button></a>
+														        <a href="javascript:siafActualizador()"><button id="BtnAcatualizar" class="btn btn-success" type="button"><i class="fa fa-spinner"></i> Actualizar Avance Financiero</button></a>
 														      </span>
 														    </div>
 														  </div>

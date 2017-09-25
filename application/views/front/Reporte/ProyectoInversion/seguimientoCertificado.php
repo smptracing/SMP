@@ -118,11 +118,11 @@ function avanceFisico()
 
 function siafActualizadorCertificado() 
 	{
-    	var anio=$("#BuscarPipAnio").val();
-    	var urll="http://192.168.1.100:8080/importador_siaf/index.php/ImporSeguimientoCertificado/inicio/"+anio;
-        ventana=window.open(urll, 'Nombre de la ventana', 'width=1400,height=800');
-        setTimeOut(avanceFisico,3000);
-    }
+		var anio=$("#BuscarPipAnio").val();
+		var urll="http://192.168.1.100:8080/importador_siaf/index.php/ImporSeguimientoCertificado/inicio/"+anio;
+	    ventana=window.open(urll, 'Nombre de la ventana', 'width=1400,height=800');
+	    setTimeOut(avanceFisico,3000);
+	}
 
 
 
