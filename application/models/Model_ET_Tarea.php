@@ -38,7 +38,7 @@ class Model_ET_Tarea extends CI_Model
 
 	public function ultimaETTareaPorIdET($idET)
 	{
-		$data=$this->db->query("select * from ET_TAREA as ETT inner join ET_TAREA_GANTT as ETTG on ETT.id_tarea_gantt=ETTG.id_tarea_gantt where ETTG.id_et=$idET order by (ETT.fecha_inicio_tarea) desc");
+		$data=$this->db->query("select * from ET_TAREA as ETT inner join ET_TAREA_GANTT as ETTG on ETT.id_tarea_gantt=ETTG.id_tarea_gantt where ETTG.id_et=$idET order by (ETT.fecha_final_tarea) desc");
 
 		return count($data->result())==0 ? null : $data->result()[0];
 	}

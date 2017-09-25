@@ -14,7 +14,10 @@ class ET_Tarea extends CI_Controller
 		$this->load->model('Model_ET_Documento_Ejecucion');
 		$this->load->model('Model_Personal');
 		$this->load->model('Model_Especialidad');
-		$this->load->model('Model_Especialidad_Tarea');
+		$this->load->model('Model_ET_Especialista_Tarea');
+		$this->load->model('Model_ET_Comentario');
+		$this->load->model('Model_ET_Observacion_Tarea');
+		$this->load->model('Model_ET_Levantamiento_Obs');
 	}
 
 	private function number_of_working_days($from, $to)
@@ -70,9 +73,53 @@ class ET_Tarea extends CI_Controller
 
 			$seconds_diff=$ts2-$ts1;
 
+			$value->childETEspecialidadTarea=$this->Model_ET_Especialista_Tarea->EspecialistaTareaPorIdTarea($value->id_tarea_et);
+			$value->countETComentario=count($this->Model_ET_Comentario->ETComentarioPorIdTareaET($value->id_tarea_et));
+			
+			$listaETObservacionTareaTemp=$this->Model_ET_Observacion_Tarea->ETObservacionTareaPorIdTareaET($value->id_tarea_et);
+
+			$value->countETObservacionTarea=count($listaETObservacionTareaTemp);
+
+			$value->observationPending=false;
+
+			foreach($listaETObservacionTareaTemp as $index => $item)
+			{
+				$value->observationPending=(count($this->Model_ET_Levantamiento_Obs->ETLevantamientoObsPorIdObservacionTarea($item->id_observacion_tarea))==0 ? true : false);
+
+				if($value->observationPending)
+				{
+					break;
+				}
+			}
+
+			$personaAsignadaTemp='';
+			$ultimaEspecialidadTemp=null;
+
+			foreach($value->childETEspecialidadTarea as $index => $item)
+			{
+				if($item->nombres!=null)
+				{
+					if($ultimaEspecialidadTemp!=$item->nombre_esp)
+					{
+						$ultimaEspecialidadTemp=$item->nombre_esp;
+
+						$personaAsignadaTemp.='<b>'.$item->nombre_esp.':</b> '.$item->nombres.' '.$item->apellido_p.' '.$item->apellido_m.', ';
+					}
+					else
+					{
+						$personaAsignadaTemp.=$item->nombres.' '.$item->apellido_p.' '.$item->apellido_m.', ';
+					}
+				}
+			}
+
+			$personaAsignadaTemp=strlen($personaAsignadaTemp)>0 ? substr($personaAsignadaTemp, 0, -2) : '';
+
 			$arrayTask[]=[
 				'id' => $value->id_tarea_et,
 				'name' => html_escape($value->nombre_tarea),
+				'quantityComment' => $value->countETComentario,
+				'quantityObservation' => $value->countETObservacionTarea,
+				'observationPending' => $value->observationPending,
 				'progress' => $value->avance_tarea,
 				'progressByWorklog' => false,
 				'relevance' => 0,
@@ -90,6 +137,7 @@ class ET_Tarea extends CI_Controller
 				'startIsMilestone' => false,
 				'endIsMilestone' => false,
 				'assigs' => [],
+				'personaAsignada' => $personaAsignadaTemp,
 				'hasChild' => (count($listaETTarea)-1!=$key ? ($listaETTarea[$key+1]->nivel_tarea>$value->nivel_tarea ? true : false) : false)
 			];
 		}
@@ -225,7 +273,7 @@ class ET_Tarea extends CI_Controller
 		$listaETResponsableTarea=$this->Model_ET_Responsable_Tarea->ETResponsableTareaPorIdTareaET($idTareaET);
 		$listaETDocumentoEjecucion=$this->Model_ET_Documento_Ejecucion->ETDocumentoEjecucionPorIdTareaET($idTareaET);
 		$listaEspecialidad=$this->Model_Especialidad->ListarEspecialidad();
-		$listaEspecialidadTarea=$this->Model_Especialidad_Tarea->EspecialidadTareaPorIdTarea($idTareaET);
+		$listaEspecialidadTarea=$this->Model_ET_Especialista_Tarea->EspecialidadTareaPorIdTarea($idTareaET);
 
 		return $this->load->view('Front/Ejecucion/ETTarea/administrardetalleettarea', ['listaETTareaObservacion' => $listaETTareaObservacion, 'listaETResponsableTarea' => $listaETResponsableTarea, 'listaETDocumentoEjecucion' => $listaETDocumentoEjecucion, 'etTarea' => $etTarea, 'listaPersona' => $listaPersona, 'listaEspecialidad' => $listaEspecialidad, 'listaEspecialidadTarea' => $listaEspecialidadTarea]);
 	}

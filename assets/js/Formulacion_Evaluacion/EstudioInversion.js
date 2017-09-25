@@ -1,6 +1,6 @@
 $(document).on("ready" ,function(){
 
-  var listarpicombo=function(valor){
+ var listarpicombo=function(valor){
                      var htmlPip="";
                      //alert(valor);
                     $("#listaFuncionC").html(htmlPip);

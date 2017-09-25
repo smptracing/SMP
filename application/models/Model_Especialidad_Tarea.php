@@ -31,7 +31,7 @@ class Model_Especialidad_Tarea extends CI_Model
 
 	public function EspecialidadTareaPorIdTarea($idTareaET)
 	{
-		$data=$this->db->query("select * from ESPECIALIDAD_TAREA where id_tarea_et=$idTareaET");
+		$data=$this->db->query("select * from ESPECIALIDAD_TAREA as ESPT left join ET_PER_REQ as ETPR on ESPT.id_per_req=ETPR.id_per_req left join PERSONA as P on ETPR.id_persona=P.id_persona where ESPT.id_tarea_et=$idTareaET");
 
 		return $data->result();
 	}

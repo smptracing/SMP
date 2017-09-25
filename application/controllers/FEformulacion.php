@@ -10,6 +10,7 @@ class FEformulacion extends CI_Controller
         parent::__construct();
         $this->load->model('FEformulacion_Modal');
         $this->load->model('Estudio_Inversion_Model');
+        $this->load->helper('FormatNumber_helper');
     }
 
     public function GetFormulacion()
@@ -99,6 +100,91 @@ class FEformulacion extends CI_Controller
         $this->session->set_userdata($data);
         $this->_load_layout_jsViabilizado('Front/Formulacion_Evaluacion/frmViabilizado');
     }
+
+    public function FeEstudioInversion()
+    {
+        $data= $this->Estudio_Inversion_Model->GetProyectosEstudio();
+        foreach ($data as $key => $value) 
+        {
+            $value->costo_estudio = a_number_format($value->costo_estudio , 2, '.',",",3);
+        }  
+        $this->load->view('layout/Formulacion_Evaluacion/header');
+        $this->load->view('Front/Formulacion_Evaluacion/EstudioInversion/index',['ListaEstudio' => $data]);
+        $this->load->view('layout/Formulacion_Evaluacion/footer');
+    }
+
+    public function insertar()
+    {
+        if($_POST)
+        {
+            $idPersona=$this->input->post("listaCoordinador");
+            $nombreEstudio=$this->input->post("txtNombreEstudioInversion");
+            $idPi=$this->input->post("listaProyectos");
+            $idTipoEstudio=$this->input->post("listaTipoEstudio");
+            $idNivelEstudio=$this->input->post("listaNivelEstudio");
+            $idUnidadFormuladora=$this->input->post("listaUnidadFormuladora");
+            $idUnidadEjecutora=$this->input->post("listaUnidadEjecutora");
+            $descripcionEstudio=$this->input->post("txtDescripcionEstudio");
+            $montoInversion=floatval(str_replace(",","",$this->input->post("txtMontoInversion")));
+            $costoEstudio=floatval(str_replace(",","",$this->input->post("txtCostoEstudio")));
+
+            $datos = $this->Estudio_Inversion_Model->RegistrarEstudioInversion($idPersona,$nombreEstudio,$idPi,$idTipoEstudio,$idNivelEstudio,$idUnidadFormuladora,$idUnidadEjecutora,$descripcionEstudio,$montoInversion,$costoEstudio);
+
+            $this->session->set_flashdata('correcto', 'Se registró correctamente');
+            return redirect('/FEformulacion/FeEstudioInversion');  
+        }
+        $listaNivelEstudio= $this->Estudio_Inversion_Model->get_NivelEstudio();
+        $listaTipoEstudio= $this->Estudio_Inversion_Model->get_TipoEstudio();
+        $listaUnidadFormuladora = $this->Estudio_Inversion_Model->get_UnidadFormuladora();
+        $listaUnidadEjecutora = $this->Estudio_Inversion_Model->get_UnidadEjecutora();
+        $listaCoordinador = $this->Estudio_Inversion_Model->get_coordinador();
+        return $this->load->view('Front/Formulacion_Evaluacion/EstudioInversion/insertar',['listaNivelEstudio' => $listaNivelEstudio, 'listaTipoEstudio' => $listaTipoEstudio , 'listaUnidadFormuladora' => $listaUnidadFormuladora, 'listaUnidadEjecutora' => $listaUnidadEjecutora, 'listaCoordinador' => $listaCoordinador]);
+    }
+
+    public function getProyectos()
+    {
+        if ($this->input->is_ajax_request()) 
+        {
+            $anio=$this->input->post("anio");         
+            $data= $this->Estudio_Inversion_Model->GetProyectosparaEstudio($anio);  
+            echo json_encode($data);         
+        } 
+        else 
+        {
+            show_404();
+        }
+    }
+
+    public function getProyectoParaEstudioInversion()
+    {
+        if ($this->input->is_ajax_request()) 
+        {
+            $anio=$this->input->post("anio");     
+            $id_pi=$this->input->post("id_pi");       
+            $datos= $this->Estudio_Inversion_Model->GetProyectoParaEstudioInversion($anio,$id_pi);             
+            $datos->costo_pi = a_number_format($datos->costo_pi , 2, '.',",",3);
+            echo json_encode(['estudioInversion' => $datos]);         
+        } 
+        else 
+        {
+            show_404();
+        }
+    }
+
+    public function FeEstudioInversionFormulador()
+    {
+        /*$data= $this->Estudio_Inversion_Model->GetProyectosEstudio();
+        foreach ($data as $key => $value) 
+        {
+            $value->costo_estudio = a_number_format($value->costo_estudio , 2, '.',",",3);
+        } */ 
+        $this->load->view('layout/Formulacion_Evaluacion/header');
+        $this->load->view('Front/Formulacion_Evaluacion/ProyectosFormulacion/index');
+        $this->load->view('layout/Formulacion_Evaluacion/footer');
+    }
+
+
+
     public function _load_layout($template)
     {
         $this->load->view('layout/Formulacion_Evaluacion/header');
