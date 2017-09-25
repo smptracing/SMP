@@ -41,6 +41,14 @@
 														      </span>
 														    </div>
 														  </div>
+														  <div class="col-lg-6">
+														    <div class="input-group">
+														      <span class="input-group-btn">
+
+														        <a href="javascript:siafActualizadorCertificado()"><button id="BtnAcatualizar" class="btn btn-success" type="button"><i class="fa fa-spinner"></i> Actualizar Avance Financiero Total</button></a>
+														      </span>
+														    </div>
+														  </div>
 								
 														</div>			
 			
@@ -80,7 +88,12 @@ $(document).on("ready" ,function(){
 	
 $("#AnioPip").on( "click", function()
 	{
-		$("#avancefisicoFinan").show(2000);
+		avanceFisico();
+	});	
+});
+function avanceFisico()
+{
+	$("#avancefisicoFinan").show(2000);
 
 		var anio=$("#BuscarPipAnio").val();
 		
@@ -99,12 +112,19 @@ $("#AnioPip").on( "click", function()
 				});
 	
 				$("#table-consolidadoAvance").html(html);
-
-				
 			}
 		});
-		});	
-});
+}
+
+function siafActualizadorCertificado() 
+	{
+    	var anio=$("#BuscarPipAnio").val();
+    	var urll="http://192.168.1.100:8080/importador_siaf/index.php/ImporSeguimientoCertificado/inicio/"+anio;
+        ventana=window.open(urll, 'Nombre de la ventana', 'width=1400,height=800');
+        setTimeOut(avanceFisico,3000);
+    }
+
+
 
 </script>
 
