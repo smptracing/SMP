@@ -51,10 +51,7 @@
                                       <ul id="myTab" class="nav nav-tabs" role="tablist">
                                         <li role="presentation" class="active"><a href="#tab_brecha" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Usuario</a>
                                         </li>
-                                        <li role="presentation" class=""><a href="#tab_Indicador" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Permisos</a>
-                                        </li>
-                                        <li role="presentation" class=""><a href="#tab_BrechaIndicador" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Menus</a>
-                                        </li>
+                                        
                                       </ul>
                                       <div id="myTabContent" class="tab-content">
                                            <!-- /panel de brechas desde el row -->
@@ -95,7 +92,7 @@
                                         </div>
                                            <!-- / fin panel de brechas desde el row -->
                                           
-                                        <div role="tabpanel" class="tab-pane fade" id="tab_Indicador" aria-labelledby="profile-tab">
+                                        <div style="display:none;" role="tabpanel" class="tab-pane fade" id="tab_Indicador" aria-labelledby="profile-tab">
                                             <!-- / panel de indicador desde el row -->
                                              <div role="tabpanel" class="tab-pane fade active in" id="tab_brecha" aria-labelledby="home-tab">
                                              <!-- /tabla de brechas desde el row -->
@@ -133,7 +130,7 @@
                                             
                                             
                                         </div>
-                                        <div role="tabpanel" class="tab-pane fade" id="tab_BrechaIndicador" aria-labelledby="profile-tab">
+                                        <div style="display:none;" role="tabpanel" class="tab-pane fade" id="tab_BrechaIndicador" aria-labelledby="profile-tab">
                                           <p>Menu </p>
                                         </div>
                                           

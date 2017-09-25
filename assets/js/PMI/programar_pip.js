@@ -1,29 +1,57 @@
+function mostrarPrioridad(proyecto){
+  $.getJSON(base_url+"index.php/criterio/getPrioridad/"+proyecto,function(json){
+    $("#txt_prioridad").val(json[0]['n']);
+  });
+ 
+}
+function mostrarPrioridad_operacion_mantenimiento(proyecto){
+  $.getJSON(base_url+"index.php/criterio/getPrioridad/"+proyecto,function(json){
+    $("#txt_prioridad_").val(json[0]['n']);
+  });
+}
+function guardarPrioridad(id_proyecto){
+  var c=0;
+  var arrayValorizacion=new Array();
+  $("#frmPrioridad :input[name*='tx_peso_']").each(function(){
+    var criterio=(($(this).attr("id")).split('tx_peso_'))[1];
+    arrayValorizacion[c]=[$('input:radio[name=rb_'+criterio+']:checked').val(),$("#tx_ptje_"+criterio).val(),$("#tx_peso_"+criterio).val()];
+    c++;
+  });
+  var formData={id_proyecto:id_proyecto,arrayValorizacion:arrayValorizacion};  
+  $.ajax({
+      url:base_url+"index.php/criterio/addPrioridad",
+      type:"POST",
+      data:formData,
+      dataType:'json',
+      success:function(data){
+        if(data==true)
+          swal("","Se grabaron los datos!","success");
+        else
+          swal("","Error... no se grabaron los datos","error");
+      }
+  });
+}
+function total(){
+    var total=0;
+    $("#frmPrioridad :input[name*='tx_peso_']").each(function(){
+      if($(this).val()!='')
+        total=total+parseFloat($(this).val());
+    });
+    $("#tx_ptjeTotal").val(total.toFixed(2));
+}
+function puntaje(id,valor,peso){
+    $("#tx_ptje_"+id).val(valor);
+    $("#tx_peso_"+id).val(valor*peso/100);
+    total();
+}
 $(document).on("ready" ,function(){
      lista_formulacion_evaluacion();/*llamar a mi datatablet listar proyectosinverision*/
      lista_ejecucion();
      lista_funcionamiento();
 //agregar progrmacion para operacion y mantenimiento   
-$("body").on("change","#Cbx_AnioCartera",function(e){
-  var anio=parseInt($('#Cbx_AnioCartera option:selected').text());
-  $("#lb_anio1").html(anio+1);
-  $("#lb_anio2").html(anio+2);
-  $("#lb_anio3").html(anio+3);
-  $("#lb_anio4").html(anio+1);
-  $("#lb_anio5").html(anio+2);
-  $("#lb_anio6").html(anio+3);
-    
-});
-$("body").on("change","#Cbx_AnioCartera_",function(e){
-  var anio=parseInt($('#Cbx_AnioCartera_ option:selected').text());
-  $("#lb_anio1_").html(anio+1);
-  $("#lb_anio2_").html(anio+2);
-  $("#lb_anio3_").html(anio+3);
-  $("#lb_anio4_").html(anio+1);
-  $("#lb_anio5_").html(anio+2);
-  $("#lb_anio6_").html(anio+3);
-    
-});   
+   
     $('#form_AddProgramacion_operacion_mantenieminto').formValidation({
+      excluded: ':disabled',
       fields:
       {
         cbxBrecha_:{
@@ -37,13 +65,6 @@ $("body").on("change","#Cbx_AnioCartera_",function(e){
           validators:{
             notEmpty:{
               message: '<b style="color: red;">El campo "Saldo a Programar" es requerido.</b>'
-            }
-          }
-        },
-        txt_prioridad_:{
-          validators:{
-            notEmpty:{
-              message: '<b style="color: red;">El campo "Prioridad" es requerido.</b>'
             }
           }
         },
@@ -74,9 +95,22 @@ $("body").on("change","#Cbx_AnioCartera_",function(e){
       $('#form_AddProgramacion_operacion_mantenieminto').data('formValidation').validate();
       if($('#form_AddProgramacion_operacion_mantenieminto').data('formValidation').isValid()==true){
           $('#form_AddProgramacion_operacion_mantenieminto').submit();
+          var txt_codigo_unico_pi_=$("#txt_codigo_unico_pi_").val();
+          var txt_nombre_proyecto_=$("#txt_nombre_proyecto_").val();
+          var txt_costo_proyecto_=$("#txt_costo_proyecto_").val();
+          var txt_pia_oper=$("#txt_pia_oper").val();
+          var txt_pim_oper=$("#txt_pim_oper").val();
+          var txt_devengado_oper=$("#txt_devengado_oper").val();
           $('#form_AddProgramacion_operacion_mantenieminto').each(function(){ 
             this.reset();
           });
+          $("#txt_codigo_unico_pi_").val(txt_codigo_unico_pi_);
+          $("#txt_nombre_proyecto_").val(txt_nombre_proyecto_);
+          $("#txt_costo_proyecto_").val(txt_costo_proyecto_);
+          $("#txt_pia_oper").val(txt_pia_oper);
+          $("#txt_pim_oper").val(txt_pim_oper);
+          $("#txt_devengado_oper").val(txt_devengado_oper);
+          
           $('.selectpicker').selectpicker('refresh');
           $('#form_AddProgramacion_operacion_mantenieminto').data('formValidation').resetForm();
       }
@@ -97,15 +131,18 @@ $("body").on("change","#Cbx_AnioCartera_",function(e){
               if (resp=='2') {
                swal("NO SE REGISTRÓ","NO se regristró ", "error");
              }
+             $('#Table_funcionamiento').dataTable()._fnAjaxUpdate();
+            
             $('#Table_Programar').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
             $('#table_formulacion_evaluacion').dataTable()._fnAjaxUpdate();
             $('#table_ejecucion').dataTable()._fnAjaxUpdate();
-            $('#Table_funcionamiento').dataTable()._fnAjaxUpdate();
+            //$('#Table_funcionamiento').dataTable()._fnAjaxUpdate();
              //  formReset();
            }
         });
     });
     $('#form_AddProgramacion').formValidation({
+      excluded: ':disabled',
       fields:
       {
         cbxBrecha:{
@@ -119,13 +156,6 @@ $("body").on("change","#Cbx_AnioCartera_",function(e){
           validators:{
             notEmpty:{
               message: '<b style="color: red;">El campo "Saldo a Programar" es requerido.</b>'
-            }
-          }
-        },
-        txt_prioridad:{
-          validators:{
-            notEmpty:{
-              message: '<b style="color: red;">El campo "Prioridad" es requerido.</b>'
             }
           }
         },
@@ -156,9 +186,22 @@ $("body").on("change","#Cbx_AnioCartera_",function(e){
       $('#form_AddProgramacion').data('formValidation').validate();
       if($('#form_AddProgramacion').data('formValidation').isValid()==true){
           $('#form_AddProgramacion').submit();
+          var txt_codigo_unico_pi=$("#txt_codigo_unico_pi").val();
+          var txt_nombre_proyecto=$("#txt_nombre_proyecto").val();
+          var txt_costo_proyecto=$("#txt_costo_proyecto").val();
+          var txt_pia_fye=$("#txt_pia_fye").val();
+          var txt_pim_pia_fye=$("#txt_pim_pia_fye").val();
+          var txt_devengado_pia_fye=$("#txt_devengado_pia_fye").val();
           $('#form_AddProgramacion').each(function(){ 
             this.reset();
           });
+          $("#txt_codigo_unico_pi").val(txt_codigo_unico_pi);
+          $("#txt_nombre_proyecto").val(txt_nombre_proyecto);
+          $("#txt_costo_proyecto").val(txt_costo_proyecto);
+          $("#txt_pia_fye").val(txt_pia_fye);
+          $("#txt_pim_pia_fye").val(txt_pim_pia_fye);
+          $("#txt_devengado_pia_fye").val(txt_devengado_pia_fye);
+
           $('.selectpicker').selectpicker('refresh');
           $('#form_AddProgramacion').data('formValidation').resetForm();
       }
@@ -239,6 +282,7 @@ $("body").on("change","#Cbx_AnioCartera_",function(e){
                                     {"defaultContent":"<td>#</td>"},
                                     {"data":"codigo_unico_pi"},
                                     {"data":"nombre_pi"},
+                                    {"data":"nombre_funcion"},
                                     {"data":"costo_pi"},
                                     {"data":"nombre_estado_ciclo"},
                                     {"data": function (data, type, dataToSet) {
@@ -246,14 +290,14 @@ $("body").on("change","#Cbx_AnioCartera_",function(e){
                                       if (data.estado_programado !='0') //estap programado
                                       {
                                        // return '<a  href="#"><button type="button" class="btn btn btn-success btn-xs">Programado</button></a>';
-                                       var cadena=data.anioProgramacion.split(' ');
+                                       /*var cadena=data.anioProgramacion.split(' ');
                                        var string='';
                                        for(var i=0;i<cadena.length;i++){
                                         var item=cadena[i].split(':');
                                         string+='<a class="linkItem" title="S/. '+item[1]+'">'+item[0]+'<a> ';
-                                       }
+                                       }*/
                                        //cadena=data.anioProgramacion; 
-                                       return '<h5><span class="label label-success"> Programado</span></h5><div>'+string+'</div>';
+                                       return '<h5><span class="label label-success"> Programado</span></h5><div>'+data.anioProgramacion+'</div>';
                                       }
                                       if (data.estado_programado =='0') //no esta progrmado
                                       {
@@ -261,7 +305,11 @@ $("body").on("change","#Cbx_AnioCartera_",function(e){
                                         return '<h5><span class="label label-danger">No Programado</span></h5>';
                                       }
                                    }},
-                                    {"defaultContent":"<center><button type='button' title='Programar' class='programar_pip btn btn-warning btn-xs' data-toggle='modal' data-target='#Ventana_Programar'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button></center>"}
+                                  {"data":'nombre_pi',render:function(data,type,row){
+                                            return "<center> <button title='ESTABLECER PRIORIDAD' type='button'  data-toggle='tooltip'  class='editar btn btn-success btn-xs' data-toggle='modal' onclick=paginaAjaxDialogo('null','Prioridad',{id_proyecto:"+row.id_pi+",id_funcion:"+row.id_funcion+"},'"+base_url+"index.php/criterio/itemPrioridad','GET',null,null,false,true); ><i class='ace-icon fa fa-list-ol bigger-120'></i></button> <button type='button' title='Programar' onclick=mostrarPrioridad('"+row.id_pi+"'); class='programar_pip btn btn-warning btn-xs' id='bt_"+row.id_pi+"' data-toggle='modal' data-target='#Ventana_Programar'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button></center>";
+                                    }
+                                  },
+                               
                                 ],
                                "language":idioma_espanol
                     });
@@ -404,6 +452,7 @@ $("#Cbx_AnioCartera").change(function() {
                                     {"data":"id_pi" ,"visible": false},
                                     {"data":"codigo_unico_pi"},
                                     {"data":"nombre_pi"},
+                                      {"data":"nombre_funcion"},
                                     {"data":"costo_pi"},
                                     {"data":"nombre_estado_ciclo"},
                                     {"data": function (data, type, dataToSet) {
@@ -411,14 +460,14 @@ $("#Cbx_AnioCartera").change(function() {
                                       if (data.estado_programado !='0') //estap programado
                                       {
                                        // return '<a  href="#"><button type="button" class="btn btn btn-success btn-xs">Programado</button></a>';
-                                       var cadena=data.anioProgramacion.split(' ');
+                                       /*var cadena=data.anioProgramacion.split(' ');
                                        var string='';
                                        for(var i=0;i<cadena.length;i++){
                                         var item=cadena[i].split(':');
                                         string+='<a class="linkItem" title="S/. '+item[1]+'">'+item[0]+'<a> ';
-                                       }
+                                       }*/
                                        //cadena=data.anioProgramacion; 
-                                       return '<h5><span class="label label-success"> Programado</span></h5><div>'+string+'</div>';
+                                       return '<h5><span class="label label-success"> Programado</span></h5><div>'+data.anioProgramacion+'</div>';
                                        //return '<h5><span class="label label-success"> Programado</span></h5>';
                                       }
                                       if (data.estado_programado =='0') //no esta progrmado
@@ -427,7 +476,11 @@ $("#Cbx_AnioCartera").change(function() {
                                         return '<h5><span class="label label-danger">No Programado</span></h5>';
                                       }
                                    }},
-                                    {"defaultContent":"<center><button type='button' title='Programar' class='programar_pip btn btn-warning btn-xs' data-toggle='modal' data-target='#Ventana_Programar'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button></center>"}
+                                    {"data":'nombre_pi',render:function(data,type,row){
+                                      return "<center> <button title='ESTABLECER PRIORIDAD' type='button'  data-toggle='tooltip'  class='editar btn btn-success btn-xs' data-toggle='modal' onclick=paginaAjaxDialogo('null','Prioridad',{id_proyecto:"+row.id_pi+",id_funcion:"+row.id_funcion+"},'"+base_url+"index.php/criterio/itemPrioridad','GET',null,null,false,true);><i class='ace-icon fa fa-list-ol bigger-120'></i></button> <button type='button' title='Programar' onclick=mostrarPrioridad('"+row.id_pi+"'); id='bt_"+row.id_pi+"'  class='programar_pip btn btn-warning btn-xs' data-toggle='modal' data-target='#Ventana_Programar'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button></center>";
+                                      }
+                                    },
+                                    /*{"defaultContent":"<center><button type='button' title='Programar' class='programar_pip btn btn-warning btn-xs' data-toggle='modal' data-target='#Ventana_Programar'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button></center>"}*/
                                 ],
                                "language":idioma_espanol
                     });
@@ -452,6 +505,7 @@ $("#Cbx_AnioCartera").change(function() {
                                     {"data":"id_pi" ,"visible": false},
                                     {"data":"codigo_unico_pi"},
                                     {"data":"nombre_pi"},
+                                      {"data":"nombre_funcion"},
                                     {"data":"costo_pi"},
                                     {"data":"nombre_estado_ciclo"},
                                     {"data": function (data, type, dataToSet) {
@@ -459,14 +513,14 @@ $("#Cbx_AnioCartera").change(function() {
                                       if (data.estado_programado !='0') //estap programado
                                       {
                                        // return '<a  href="#"><button type="button" class="btn btn btn-success btn-xs">Programado</button></a>';
-                                        var cadena=data.anioProgramacion.split(' ');
+                                       /* var cadena=data.anioProgramacion.split(' ');
                                        var string='';
                                        for(var i=0;i<cadena.length;i++){
                                         var item=cadena[i].split(':');
                                         string+='<a class="linkItem" title="S/. '+item[1]+'">'+item[0]+'<a> ';
-                                       }
+                                       }*/
                                        //cadena=data.anioProgramacion; 
-                                       return '<h5><span class="label label-success"> Programado</span></h5><div>'+string+'</div>';
+                                       return '<h5><span class="label label-success"> Programado</span></h5><div>'+data.anioProgramacion+'</div>';
                                        
                                        //return '<h5><span class="label label-success"> Programado</span></h5>';
                                       }
@@ -476,7 +530,11 @@ $("#Cbx_AnioCartera").change(function() {
                                         return '<h5><span class="label label-danger">No Programado</span></h5>';
                                       }
                                    }},
-                                       {"defaultContent":"<center><button type='button' title='Programar' class='programar_pip_operacion_mantenimiento btn btn-warning btn-xs' data-toggle='modal' data-target='#Ventana_Programar_operacion_mantenimiento'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button></center>"}
+                                   {"data":'nombre_pi',render:function(data,type,row){
+                                      return "<center> <button title='ESTABLECER PRIORIDAD' type='button'  data-toggle='tooltip'  class='editar btn btn-success btn-xs' data-toggle='modal' onclick=paginaAjaxDialogo('null','Prioridad',{id_proyecto:"+row.id_pi+",id_funcion:"+row.id_funcion+"},'"+base_url+"index.php/criterio/itemPrioridad','GET',null,null,false,true);><i class='ace-icon fa fa-list-ol bigger-120'></i></button> <button type='button' title='Programar' onclick=mostrarPrioridad_operacion_mantenimiento('"+row.id_pi+"');  id='bt_"+row.id_pi+"'  class='programar_pip_operacion_mantenimiento btn btn-warning btn-xs' data-toggle='modal' data-target='#Ventana_Programar_operacion_mantenimiento'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button></center>";
+                                      }
+                                    },
+                                       /*{"defaultContent":"<center><button type='button' title='Programar' class='programar_pip_operacion_mantenimiento btn btn-warning btn-xs' data-toggle='modal' data-target='#Ventana_Programar_operacion_mantenimiento'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button></center>"}*/
                                 ],
                                "language":idioma_espanol
                     });
@@ -582,11 +640,15 @@ var  AddMeta_Pi=function(tbody,table){
                        var  id_pi=data.id_pi;
                        $("#txt_codigo_unico_pi").val(data.codigo_unico_pi);
                       $("#txt_id_pip_programacion").val(data.id_pi);
+
                       $("#txt_costo_proyecto").val(data.costo_pi);
                       $("#txt_nombre_proyecto").val(data.nombre_pi);
-                      $("#txt_pia_fye").val(data.ultimo_pia_meta_pres);
-                      $("#txt_devengado_pia_fye").val(data.devengado_acumulado_total);
-                      $("#txt_pim_pia_fye").val(data.ultimo_pim_meta_pres);
+                      if(data.ultimo_pia_meta_pres!=null && data.ultimo_pia_meta_pres!='')
+                        $("#txt_pia_fye").val(data.ultimo_pia_meta_pres);
+                      if(data.devengado_acumulado_total!=null && data.devengado_acumulado_total!='')
+                        $("#txt_devengado_pia_fye").val(data.devengado_acumulado_total);
+                      if(data.ultimo_pim_meta_pres!=null && data.ultimo_pim_meta_pres!='')
+                        $("#txt_pim_pia_fye").val(data.ultimo_pim_meta_pres);
 
                       //$("#lb_anio1").val();
                       if(data.nombre_estado_ciclo=='IDEA' || data.nombre_estado_ciclo=='FORMULACION Y EVALUACION'){
@@ -598,11 +660,13 @@ var  AddMeta_Pi=function(tbody,table){
 if (parseFloat(data.ultimo_pim_meta_pres)>0) {
  // alert("nuevo");
     costopi=parseFloat(data.costo_pi)-parseFloat(data.ultimo_pim_meta_pres)-parseFloat(data.devengado_acumulado_total);
+                  if(costopi!='' && costopi!=null)
                     $("#txt_saldoprogramar").val(costopi); 
 }
 if (data.ultimo_pim_meta_pres==""|| parseFloat(data.ultimo_pim_meta_pres)=="0.00") {
  // alert("vacio");
     costopi=parseFloat(data.costo_pi)-parseFloat(data.ultimo_pia_meta_pres)-parseFloat(data.devengado_acumulado_total);
+                  if(costopi!='' && costopi!=null)
                     $("#txt_saldoprogramar").val(costopi); 
 }
                       
@@ -621,9 +685,12 @@ if (data.ultimo_pim_meta_pres==""|| parseFloat(data.ultimo_pim_meta_pres)=="0.00
                       $("#txt_id_pip_programacion_").val(data.id_pi);
                       $("#txt_costo_proyecto_").val(data.costo_pi);
                       $("#txt_nombre_proyecto_").val(data.nombre_pi);
-                       $("#txt_pia_oper").val(data.ultimo_pia_meta_pres);
-                      $("#txt_devengado_oper").val(data.devengado_acumulado_total);
-                      $("#txt_pim_oper").val(data.ultimo_pim_meta_pres);
+                      if(data.ultimo_pia_meta_pres!='' && data.ultimo_pia_meta_pres!=null)
+                        $("#txt_pia_oper").val(data.ultimo_pia_meta_pres);
+                      if(data.devengado_acumulado_total!='' && data.devengado_acumulado_total!=null)
+                        $("#txt_devengado_oper").val(data.devengado_acumulado_total);
+                      if(data.ultimo_pim_meta_pres!='' && data.ultimo_pim_meta_pres!=null)
+                        $("#txt_pim_oper").val(data.ultimo_pim_meta_pres);
             
                       if(data.nombre_estado_ciclo=='IDEA' || data.nombre_estado_ciclo=='FORMULACION Y EVALUACION'){
                         $("#ct_anio").css("display","none");
@@ -634,11 +701,13 @@ if (data.ultimo_pim_meta_pres==""|| parseFloat(data.ultimo_pim_meta_pres)=="0.00
 if (parseFloat(data.ultimo_pim_meta_pres)>0) {
  // alert("nuevo");
     costopi=parseFloat(data.costo_pi)-parseFloat(data.ultimo_pim_meta_pres)-parseFloat(data.devengado_acumulado_total);
+                  if(costopi!='' && costopi!=null)
                     $("#txt_saldoprogramar_oper").val(costopi); 
 }
 if (data.ultimo_pim_meta_pres==""|| parseFloat(data.ultimo_pim_meta_pres)=="0.00") {
  // alert("vacio");
     costopi=parseFloat(data.costo_pi)-parseFloat(data.ultimo_pia_meta_pres)-parseFloat(data.devengado_acumulado_total);
+                  if(costopi!='' && costopi!=null)
                     $("#txt_saldoprogramar_oper").val(costopi); 
 }
                         listar_aniocartera_();
@@ -682,12 +751,13 @@ if (data.ultimo_pim_meta_pres==""|| parseFloat(data.ultimo_pim_meta_pres)=="0.00
                             };
                             $("#cbxBrecha_").html(html);
                             $('select[name=cbxBrecha_]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
-                            $('select[name=cbxBrecha_]').change();
+                           // $('select[name=cbxBrecha_]').change();
                             $('.selectpicker').selectpicker('refresh');
                         }
                     });
                 }
                  var listar_aniocartera=function(valor){
+            
                     var html="";
                     $("#Cbx_AnioCartera").html(html);
                     event.preventDefault();
@@ -731,7 +801,7 @@ if (data.ultimo_pim_meta_pres==""|| parseFloat(data.ultimo_pim_meta_pres)=="0.00
                             };
                             $("#cbxBrecha").html(html);
                             $('select[name=cbxBrecha]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
-                            $('select[name=cbxBrecha]').change();
+                            //$('select[name=cbxBrecha]').change();
                             $('.selectpicker').selectpicker('refresh');
                         }
                     });

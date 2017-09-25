@@ -75,7 +75,7 @@
     <nav class="navbar navbar-static-top">
       <div class="container">
         <div class="navbar-header">
-          <a href="../../index2.html" class="navbar-brand tituloLogo"><b style="font-size: 40px; padding-top: 25px;">SMP</b> Tracing v1.0</a>
+          <a href="" class="navbar-brand tituloLogo"><b style="font-size: 40px; padding-top: 25px;">SMP</b> Tracing v1.0</a>
         </div>
         <div class="navbar-custom-menu">
          <span class="tituloHeader">Software de Seguimiento y Monitoreo de PIP's</span><br>
@@ -121,7 +121,18 @@
             </div>
             <div class="box-body">
                   <div class="row">
-                      <div class="col-lg-4 col-xs-12 col-sm-6">
+
+
+                      <?php
+                      $CI = & get_instance();
+                      $modulo=[];
+                      foreach ($CI->session->userdata('menuUsuario') as $item) {
+                        if(!in_array($item['id_modulo'],$modulo))
+                          array_push($modulo,$item['id_modulo']);
+                      }
+                      if(in_array('PMI',$modulo)){
+                        ?>
+                        <div class="col-lg-4 col-xs-12 col-sm-6">
                             <div class="small-box bg-teal">
                                 <div class="inner">
                                     <h3>PMI</h3>
@@ -134,7 +145,11 @@
                                     Ingresar <i class="fa fa-arrow-circle-right"></i>
                                 </a>
                             </div>
-                      </div>
+                        </div>
+                        <?php
+                      }
+                      ?>
+                      
                       <div class="col-lg-4 col-xs-12 col-sm-6">
                           <div class="small-box bg-olive">
                               <div class="inner">

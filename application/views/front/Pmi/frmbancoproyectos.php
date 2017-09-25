@@ -140,7 +140,6 @@
                                         </label>
                                          <div class="col-md-12 col-sm-12 col-xs-12">
                                           <input id="txtNombrePip" name="txtNombrePip" class="form-control col-md-12 col-xs-5" placeholder="Nombre Inversion" type="text">
-                                            <!--<textarea  id="txtNombrePip" name="txtNombrePip" class="form-control" data-validate-length-range="6" data-validate-words="2" placeholder="Nombre Inversion"></textarea>-->
                                         </div>
                                       </div>
                                  </div>
@@ -229,7 +228,7 @@
                                            <div class="col-md-11 col-sm-6 col-xs-12  form-group">
                                              <label for="textbox"><span class="required">Número de beneficiarios</span>
                                              </label>
-                                              <input id="txt_beneficiarios" name="txt_beneficiarios" class="form-control col-md-7 col-xs-7 notValidate" data-validate-length-range="20" data-validate-words="2" placeholder="Número de beneficiarios"  type="number">
+                                              <input id="txt_beneficiarios" name="txt_beneficiarios" class="form-control col-md-7 col-xs-7" data-validate-length-range="20" data-validate-words="2" placeholder="Número de beneficiarios"  type="number">
                                             </div>
                                       </div>
                                       <div class="col-md-4">
@@ -838,7 +837,6 @@
                                         </label>
                                          <div class="col-md-12 col-sm-12 col-xs-12">
                                           <input id="txtNombrePip_m" name="txtNombrePip_m" class="form-control col-md-12 col-xs-5" placeholder="Nombre Inversion" required="required" type="text">
-                                            <!--<textarea  id="txtNombrePip" name="txtNombrePip" class="form-control" data-validate-length-range="6" data-validate-words="2" placeholder="Nombre Inversion"></textarea>-->
                                         </div>
                                       </div>
 

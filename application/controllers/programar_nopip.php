@@ -39,7 +39,7 @@ class programar_nopip extends CI_Controller
             $txt_anio1               = $this->input->post("txt_anio1");
             $txt_anio2               = "0.00";
             $txt_anio3               = "0.00";
-            $txt_prioridad           = $this->input->post("txt_prioridad");
+            $txt_prioridad           = floatval($this->input->post("txt_prioridad"));
             if ($this->programar_nopip_modal->AddProgramacion($flat, $id_programacion, $Cbx_AnioCartera, $cbxBrecha, $txt_id_pip_programacion, $txt_anio1, $txt_anio2, $txt_anio3, $txt_prioridad) == false) {
                 echo "1";
             } else {
@@ -60,12 +60,19 @@ class programar_nopip extends CI_Controller
             $cbx_meta_presupuestal      = $this->input->post("cbx_meta_presupuestal");
             $txt_id_pip_programacion_mp = $this->input->post("txt_id_pip_programacion_mp");
             $cbx_Meta                   = $this->input->post("cbx_Meta");
-            $txt_pia                    = $this->input->post("txt_pia");
+            $txt_pia        = floatval(str_replace(",","",$this->input->post("txt_pia")));
+            $txt_pim        = floatval(str_replace(",","",$this->input->post("txt_pim")));
+            $txt_certificado       = floatval(str_replace(",","",$this->input->post("txt_certificado")));
+            $txt_compromiso        = floatval(str_replace(",","",$this->input->post("txt_compromiso")));
+            $txt_devengado       = floatval(str_replace(",","",$this->input->post("txt_devengado")));
+            $txt_girado       = floatval(str_replace(",","",$this->input->post("txt_girado")));
+            
+            /*$txt_pia                    = $this->input->post("txt_pia");
             $txt_pim                    = $this->input->post("txt_pim");
             $txt_certificado            = $this->input->post("txt_certificado");
             $txt_compromiso             = $this->input->post("txt_compromiso");
             $txt_devengado              = $this->input->post("txt_devengado");
-            $txt_girado                 = $this->input->post("txt_girado");
+            $txt_girado                 = $this->input->post("txt_girado");*/
             if ($this->programar_nopip_modal->AddMeta_PI($flat, $id_meta_pi, $txt_anio_meta, $cbx_meta_presupuestal, $txt_id_pip_programacion_mp, $cbx_Meta, $txt_pia, $txt_pim, $txt_certificado, $txt_compromiso, $txt_devengado, $txt_girado) == false) {
                 echo "1";
             } else {

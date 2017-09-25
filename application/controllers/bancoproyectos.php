@@ -352,11 +352,17 @@ class bancoproyectos extends CI_Controller
     //listar proyectos de inversion
     public function GetNOPIP()
     {
-        if ($this->input->is_ajax_request()) {
+        if ($this->input->is_ajax_request()) 
+        {
             $flat  = "LISTARNOPIP";
             $datos = $this->bancoproyectos_modal->GetNOPIP($flat);
+            foreach ($datos as $key => $value) 
+            {
+                $value->costo_pi = a_number_format($value->costo_pi , 2, '.',",",3);
+            }
             echo json_encode($datos);
-        } else {
+        } 
+        else {
             show_404();
         }
     }

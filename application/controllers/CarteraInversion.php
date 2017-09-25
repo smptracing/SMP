@@ -79,6 +79,18 @@ public function __construct(){
     	}
     	
 	}
+
+    function GetCarteraFechaCierre($idCartera){
+		if ($this->input->is_ajax_request()) {
+			echo ($this->Model_CarteraInversion->getCartera($idCartera)[0]->fecha_cierre_cartera);
+		}
+		else
+		{
+			show_404();
+		}
+	}
+
+
 	function getCarteraAnio($anio)//La variable "$anio" se esté recuperando en la vista "Front/Pmi/frmMProyectoInversion"; por tal motivo, no hay que borrar este parámetro.
 	{
 		$this->load->view('layout/Pmi/header');
@@ -98,6 +110,7 @@ public function __construct(){
 			show_404();
 		}
 	}
+
 	function GetCarteraInversion(){
 		if ($this->input->is_ajax_request()) 
 		{

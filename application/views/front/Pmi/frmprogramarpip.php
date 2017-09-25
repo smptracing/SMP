@@ -56,11 +56,12 @@
                                                         <tr>
                                                           <th style="width: 1%">#</th>
                                                           <th style="width: 8%"><i class="fa fa-thumb-tack"></i> Cod. </th>
-                                                          <th style="width: 46%"><i class="fa fa-bookmark-o"></i> Nombre</th>
+                                                          <th ><i class="fa fa-bookmark-o"></i> Nombre</th>
+                                                           <th style="width: 8%"> Función</th>
                                                           <th style="width: 8%"><i class="fa fa-money"></i> Costo</th>
                                                           <th style="width: 12%"> Estado Ciclo</th>
                                                           <th style="width: 12%"> Estado</th>
-                                                        <th style="width: 6%">Programar</th>
+                                                        <th style="width: 12%">&nbsp;</th>
                                                         </tr>
                                                       </thead>
 
@@ -91,11 +92,12 @@
                                                           <th style="width: 1%">#</th>
                                                           <th style="width: 1%">#</th>
                                                           <th style="width: 8%"><i class="fa fa-thumb-tack"></i> Cod. </th>
-                                                          <th style="width: 38%"><i class="fa fa-bookmark-o"></i> Nombre</th>
+                                                          <th><i class="fa fa-bookmark-o"></i> Nombre</th>
+                                                           <th style="width: 8%"> Función</th>
                                                           <th style="width: 12%"><i class="fa fa-money"></i> Costo</th>
                                                           <th style="width: 12%"> Estado Ciclo</th>
                                                           <th style="width: 12%"> Estado</th>
-                                                        <th style="width: 8%">Opción</th>
+                                                        <th style="width: 12%">&nbsp;</th>
                                                         </tr>
                                                       </thead>
 
@@ -126,11 +128,12 @@
                                                           <th style="width: 1%">#</th>
                                                           <th style="width: 1%">#</th>
                                                           <th style="width: 8%"><i class="fa fa-thumb-tack"></i> Cod. </th>
-                                                          <th style="width: 38%"><i class="fa fa-bookmark-o"></i> Nombre</th>
+                                                          <th><i class="fa fa-bookmark-o"></i> Nombre</th>
+                                                          <th style="width: 8%"> Función</th>
                                                           <th style="width: 12%"><i class="fa fa-money"></i> Costo</th>
                                                           <th style="width: 12%"> Estado Ciclo</th>
                                                           <th style="width: 12%"> Estado</th>
-                                                        <th style="width: 8%">Opción</th>
+                                                        <th style="width: 12%">&nbsp;</th>
                                                         </tr>
                                                       </thead>
 
@@ -164,7 +167,7 @@
           <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
           Programar PIP </h4>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" style="height:500px;overflow:auto;">
          <div class="row">
                     <div class="col-xs-12">
                                         <!-- PAGE CONTENT BEGINS -->
@@ -175,10 +178,13 @@
                               </div>
                             </div>
                              <div class="item form-group">
-                               <div class="col-md-2 col-sm-6 col-xs-12">
-                               <label>Cartera</label>
+                               <div class="col-md-4">
+                               <label>Cartera </label> 
                                     <select  id="Cbx_AnioCartera" selected name="Cbx_AnioCartera" class="selectpicker"></select>
                                     <!--<input type="text" id="Aniocartera" value="<?=(isset($anio) ? $anio : date('Y'))?>">-->
+                                </div>
+                                <div class="col-md-8" style="padding-top: 3px;">
+                                        <span id="lb_addProgramacion" style='color:white;padding:4px;background:#D9534F;font-weight:bold;font-size:17px;'></span>
                                 </div>
                               </div>
                                <div class="item">
@@ -192,7 +198,7 @@
                                     </div>
                                    <div class="col-md-2 col-sm-6 col-xs-12">
                                       <label>Costo del Proyecto</label>
-                                      <input  class="form-control" id="txt_costo_proyecto" name="txt_costo_proyecto" type="number" disabled="disabled" />
+                                      <input  class="form-control" id="txt_costo_proyecto" name="txt_costo_proyecto"  disabled="disabled" />
                                     </div>
                                     <div class="col-md-4 col-sm-12 col-xs-12 form-group">
                                       <label>Brecha Proyecto</label>
@@ -200,8 +206,8 @@
                                       </select>
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12 form-group">
-                                      <center><label style="color: red">Saldo a Programar</label></center>
-                                      <input  class="form-control" id="txt_saldoprogramar" name="txt_saldoprogramar" type="number" >
+                                      <center><label>Saldo a Programar</label></center>
+                                      <input  class="form-control" id="txt_saldoprogramar" name="txt_saldoprogramar" value="0.00" type="number" >
                                     </div>
 
                                  </div>
@@ -222,7 +228,7 @@
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12 form-group">
                                       <center><label>Prioridad</label></center>
-                                      <input  class="form-control " id="txt_prioridad" name="txt_prioridad"  type="number"   />
+                                      <input  class="form-control " id="txt_prioridad" name="txt_prioridad"  type="text" readonly=""  style="background:#EEEEEE;"   />
                                     </div>
                                  </div>
                                 <h6><i class="fa fa-list"></i><b> Monto Programación</b></h6>
@@ -260,15 +266,16 @@
                          
                                 </div>
                                
-
+                                 <div class="row item " 
                                <div class="item form-group">
                                    
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                    <div class="col-md-12">
                                         <button  id="send_addProgramacion"  type='button' class="btn btn-success">
                                              <span class="glyphicon glyphicon-floppy-saved"></span> Guardar
                                         </button>
                                     </div>
                                  </div>
+                                 </form>
 
 
                      <div class="ln_solid"></div>
@@ -389,6 +396,7 @@
                                        <button  id="send" type="submit" class="btn btn-success">
                                              <span class="glyphicon glyphicon-floppy-saved"></span> Guardar
                                         </button>
+
                                     </div>
                                  </div>
 
@@ -459,10 +467,13 @@
                             </div>
 
                              <div class="item form-group">
-                               <div class="col-md-2 col-sm-6 col-xs-12">
-                               <label>Cartera</label>
+                               <div class="col-md-4">
+                               <label>Cartera </label>
                                     <select  id="Cbx_AnioCartera_" selected name="Cbx_AnioCartera_" class="selectpicker"></select>
                                     <!--<input type="text" id="Aniocartera" value="<?=(isset($anio) ? $anio : date('Y'))?>">-->
+                                </div>
+                                <div class="col-md-8" style="padding-top: 3px;">
+                                  <span id="lb_addProgramacion_operacion_mantenieminto" style='color:white;padding:4px;background:#D9534F;font-weight:bold;font-size:17px;'></span>
                                 </div>
                               </div>
                                <div class="item ">
@@ -476,7 +487,7 @@
                                     </div>
                                    <div class="col-md-2 col-sm-6 col-xs-12">
                                       <label>Costo del Proyecto</label>
-                                      <input  class="form-control" id="txt_costo_proyecto_" name="txt_costo_proyecto_" type="number" disabled="disabled">
+                                      <input  class="form-control" id="txt_costo_proyecto_" name="txt_costo_proyecto_"  disabled="disabled">
                                     </div>
                                     <div class="col-md-4 col-sm-12 col-xs-12  form-group">
                                       <label>Brecha Proyecto </label>
@@ -484,8 +495,8 @@
                                       </select>
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12 form-group">
-                                      <center><label style="color: red">Saldo a Programar</label></center>
-                                      <input  class="form-control" id="txt_saldoprogramar_oper" name="txt_saldoprogramar_oper" type="number" required="required">
+                                      <center><label>Saldo a Programar</label></center>
+                                      <input  class="form-control" id="txt_saldoprogramar_oper" name="txt_saldoprogramar_oper" value='0.00' type="number" required="required">
                                     </div>
                                  </div>
                                     <div style="clear:both;height:0;">&nbsp;</div>
@@ -505,7 +516,7 @@
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12 form-group">
                                       <center><label>Prioridad</label></center>
-                                      <input  class="form-control" id="txt_prioridad_" name="txt_prioridad_" type="number" required="required">
+                                      <input  class="form-control" id="txt_prioridad_" name="txt_prioridad_" type="text"  readonly="" style="background:#EEEEEE;" >
                                     </div>
                                  </div>
                               <h6><i class="fa fa-list"></i><b> Monto Programación</b></h6>
@@ -542,12 +553,15 @@
 
                          
                                 </div>
-                                 <div class="col-md-3 col-sm-6 col-xs-12">
+                                  <div class="row item ">
+                                 <div class="col-md-12">
                                       <label>.</label><br>
                                        <button  id="send_addProgramacion_operacion_mantenieminto" type="button" class="btn btn-success">
                                              <span class="glyphicon glyphicon-floppy-saved"></span> Guardar
                                         </button>
+                                        
                                     </div>
+                                  </div>
 
 
                      <div class="ln_solid"></div>
@@ -598,3 +612,86 @@
     cursor: pointer;
   }
 </style>
+<script>
+function calculoFecha(fecha1,fecha2) {               
+  var fechaInicio = new Date(fecha1).getTime();
+  var fechaFin    = new Date(fecha2).getTime();
+  var tiempo = fechaFin-fechaInicio; 
+  var dias = Math.floor(tiempo / (1000 * 60 * 60 * 24));            
+  return dias;       
+}
+$(function(){
+
+  $('#Ventana_Programar').on('hidden.bs.modal', function () {
+      
+      $('#form_AddProgramacion').each(function(){ 
+        this.reset();
+      });  
+      $('.selectpicker').selectpicker('refresh');
+      $('#form_AddProgramacion').data('formValidation').resetForm();
+  })
+  $('#Ventana_Programar_operacion_mantenimiento').on('hidden.bs.modal', function () {
+      
+      $('#form_AddProgramacion_operacion_mantenieminto').each(function(){ 
+        this.reset();
+      });  
+      $('.selectpicker').selectpicker('refresh');
+      $('#form_AddProgramacion_operacion_mantenieminto').data('formValidation').resetForm();
+  })
+  $("body").on("change","#Cbx_AnioCartera",function(e){
+    if($("#Cbx_AnioCartera").val()!='' && $("#Cbx_AnioCartera").val()!=null){
+        $.ajax({
+            "url":base_url +"index.php/CarteraInversion/GetCarteraFechaCierre/"+$("#Cbx_AnioCartera").val(),
+            type:"POST",
+            success:function(data){
+                if(calculoFecha(data,'<?php echo date("Y-m-d"); ?>')>0){
+                  $("#send_addProgramacion").css("display","none");
+                  $("#lb_addProgramacion").css("display","");
+                  $("#lb_addProgramacion").html("LA FECHA DE CIERRE DE LA CARTERA FUE EL: "+data);
+                }
+                else{
+                  $("#send_addProgramacion").css("display","");
+                  $("#lb_addProgramacion").css("display","none");
+                  $("#lb_addProgramacion").html("");
+                }
+                var anio=parseInt($('#Cbx_AnioCartera option:selected').text());
+                $("#lb_anio1").html(anio+1);
+                $("#lb_anio2").html(anio+2);
+                $("#lb_anio3").html(anio+3);
+                $("#lb_anio4").html(anio+1);
+                $("#lb_anio5").html(anio+2);
+                $("#lb_anio6").html(anio+3); 
+            }
+        });   
+    }
+  });
+  $("body").on("change","#Cbx_AnioCartera_",function(e){
+     if($("#Cbx_AnioCartera_").val()!='' && $("#Cbx_AnioCartera_").val()!=null){
+        $.ajax({
+            "url":base_url +"index.php/CarteraInversion/GetCarteraFechaCierre/"+$("#Cbx_AnioCartera_").val(),
+            type:"POST",
+            success:function(data){
+                if(calculoFecha(data,'<?php echo date("Y-m-d"); ?>')>0){
+                  $("#send_addProgramacion_operacion_mantenieminto").css("display","none");
+                  $("#lb_addProgramacion_operacion_mantenieminto").css("display","");
+                  $("#lb_addProgramacion_operacion_mantenieminto").html("LA FECHA DE CIERRE DE LA CARTERA FUE EL: "+data);
+                }
+                else{
+                  $("#send_addProgramacion_operacion_mantenieminto").css("display","");
+                  $("#lb_addProgramacion_operacion_mantenieminto").css("display","none");
+                  $("#lb_addProgramacion_operacion_mantenieminto").html("");
+                }
+                var anio=parseInt($('#Cbx_AnioCartera_ option:selected').text());
+                $("#lb_anio1_").html(anio+1);
+                $("#lb_anio2_").html(anio+2);
+                $("#lb_anio3_").html(anio+3);
+                $("#lb_anio4_").html(anio+1);
+                $("#lb_anio5_").html(anio+2);
+                $("#lb_anio6_").html(anio+3);
+            }
+        });   
+    }
+      
+  }); 
+}); 
+</script>

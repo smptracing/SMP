@@ -31,6 +31,8 @@
 	<script src="<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/ckeditor/ckeditor.js"></script>
   <script src="<?php echo base_url(); ?>assets//vendors/echarts/dist/echarts.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/Helper/jsHelper.js"></script>
+
 	<style>
 		#navtittlemin
       {
@@ -74,9 +76,27 @@
 								</li>
 							</ul>
 						</div>
-	
+					
+					
 					<ul class="nav side-menu">
-						<li><a href="<?php echo site_url('ProyectoInversion/ReporteBuscadorPorPip'); ?>"> <i class="fa fa-area-chart"></i> Avance financiero<span class=""></span></a>
+                        <li>
+                         <a>
+                            <i class="fa fa-bar-chart"></i>Avance por Proyecto
+                            <span class="fa fa-chevron-down"></span>
+                         </a>
+                            <ul class="nav child_menu">
+                                <li><a href="<?php echo site_url('ProyectoInversion/ReporteBuscadorPorPip'); ?>">Avance financiero</a></li>
+                                <li><a href="<?php echo site_url('ProyectoInversion/ReporteBuscadorPorAnio'); ?>">Consolidado Avance Financiero Total</a></li>
+                            </ul>
+                        </li>
+                	</ul>
+
+					<ul class="nav side-menu">
+						<li><a href="<?php echo site_url('funcion/CadenaFuncional'); ?>"> <i class="fa fa-list"></i> Consulta de PIP<span class=""></span></a>
+						</li>
+					</ul>
+					<ul class="nav side-menu">
+						<li><a href="#"> <i class="fa fa-bars"></i> Consulta de No PIP<span class=""></span></a>
 						</li>
 					</ul>
 		
@@ -88,7 +108,6 @@
                             <span class="fa fa-chevron-down"></span>
                          </a>
                             <ul class="nav child_menu">
-                            	<li><a href="<?php echo site_url('funcion/CadenaFuncional'); ?>">Cadena Funcional</a></li>
                                 <li><a href="<?php echo site_url('funcion/index'); ?>">Funcion</a></li>
                                 <li><a href="<?php echo site_url('DivisionFuncional/index'); ?>">Division Funcional</a></li>
                                 <li><a href="<?php echo site_url('GrupoFuncional/index')?>">Grupo Funcional</a></li>

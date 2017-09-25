@@ -21,9 +21,39 @@
 </form>
 
 <script>
+
+	$(function()
+	{
+		$('#form-addTipoResponsable').formValidation(
+		{
+			framework: 'bootstrap',
+			excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+			live: 'enabled',
+			message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+			trigger: null,
+			fields:
+			{
+				txtDescripcion:
+				{
+					validators:
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Descripción" es requerido.</b>'
+						}
+					}
+				}
+			}
+		});
+	});
 	$('#btnEnviarFormulario').on('click', function(event)
 	{
 		event.preventDefault();
+		$('#form-addTipoResponsable').data('formValidation').validate();
+        if(!($('#form-addTipoResponsable').data('formValidation').isValid()))
+        {
+            return;
+        }
 
 		paginaAjaxJSON($('#form-addTipoResponsable').serialize(), '<?=base_url();?>index.php/ET_Tipo_Responsable/insertar', 'POST', null, function(objectJSON)
 		{

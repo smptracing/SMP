@@ -96,6 +96,7 @@
                     $openTag=false;
                     $arrayMenu=$this->session->userdata('menuUsuario');
                     for($i=0;$i<count($arrayMenu);$i++){
+                    if($arrayMenu[$i]['id_modulo']=='PMI'){
                       if($i>0 and ($arrayMenu[$i]['id_menu']!=$arrayMenu[$i-1]['id_menu'])){
                         if($openTag==true){
                           echo '</ul></li>';
@@ -129,6 +130,7 @@
                         </li>
                         <?php
                       }
+                    }
                     }
                   ?>
                   </ul>
@@ -205,8 +207,8 @@
                       <a>
                         <span class="image"><img src="<?php echo base_url(); ?>assets/images/img.jpg" alt="Profile Image" /></span>
                         <span>
-                          <span>Usuario</span>
-                          <span class="time">3 Nuevos proyecto</span>
+                          <span><?php echo $this->session->userdata('nombreUsuario') ?></span>
+                          <span class="time" onclick=paginaAjaxDialogo('dg_bandejaEntradaMensaje','Bandeja&nbsp;de&nbsp;Entrada',{},base_url+"index.php/mensaje/bandejaEntrada",'GET',null,null,false,true);>Bandeja de Entrada</span>
                         </span>
                         <span class="message">
 
@@ -216,9 +218,8 @@
 
                     <li>
                       <div class="text-center">
-                        <a>
-                          <strong>Nuevos Proyectos</strong>
-                          <i class="fa fa-angle-right"></i>
+                        <a  onclick=paginaAjaxDialogo('dg_enviarMensaje','Nuevo&nbsp;mensaje',{},base_url+"index.php/mensaje/itemMensaje",'GET',null,null,false,true);>
+                          Nuevo
                         </a>
                       </div>
                     </li>
@@ -226,7 +227,7 @@
                 </li>
                  <li role="presentation" class="dropdown">
                  <br>
-                      <div class="col-md-2">
+                      <div class="col-md-2" style="display:none;">
                         <select  id="Aniocartera_dasboard" selected name="Aniocartera_dasboard"  class="selectpicker"></select>
                         <input type="hidden" id="Aniocartera_dasboard_imput" value="<?=(isset($anio) ? $anio : date('Y'))?>">
                       </div>

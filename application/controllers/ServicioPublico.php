@@ -56,10 +56,21 @@ function AddServicioAsociado()
 	  
 
  	 }
- 	  function EliminarServicioPublico()
-       {
-
-       }
+ 	function EliminarServicioPublico()
+    {
+       	if($this->input->is_ajax_request()) 
+	    {
+	    	$id_servicio=$this->input->post("id_servicio");
+	     	if($this->Model_ServicioPublico->DeleteServicio($id_servicio)== false)
+	     		echo "Se elimino el servicio";
+		    else
+		    	echo "No se elimino el servicio"; 
+		} 
+	    else
+	    {
+	    	show_404();
+	    }
+    }
     /*Fin Servicios publico asociado*/
 	function _load_layout($template)
     {
