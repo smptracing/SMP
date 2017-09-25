@@ -1,3 +1,42 @@
+<?php
+function mostrarMetaAnidada($meta)
+{
+	$htmlTemp='';
+
+	$htmlTemp.='<tr>'.
+		'<td style="text-align: center;"><b><i>'.$meta->numeracion.'</i></b></td>'.
+		'<td><b><i>'.$meta->desc_meta.'</i></b></td>'.
+		'<td style="text-align: center;"></td>'.
+		'<td style="text-align: center;"></td>'.
+		'<td style="text-align: center;"></td>'.
+		'<td style="text-align: center;"></td>'.
+		'<td></td>'.
+	'</tr>';
+
+	if(count($meta->childMeta)==0)
+	{
+		foreach($meta->childPartida as $key => $value)
+		{
+			$htmlTemp.='<tr>'.
+				'<td style="text-align: center;">'.$value->numeracion.'</td>'.
+				'<td>'.$value->desc_partida.'</td>'.
+				'<td style="text-align: center;"></td>'.
+				'<td style="text-align: center;"></td>'.
+				'<td style="text-align: center;"></td>'.
+				'<td style="text-align: center;"></td>'.
+				'<td></td>'.
+			'</tr>';
+		}
+	}
+
+	foreach($meta->childMeta as $key => $value)
+	{
+		$htmlTemp.=mostrarMetaAnidada($value);
+	}
+
+	return $htmlTemp;
+}
+?>
 <style>
 	#tableValorizacion
 	{
@@ -51,26 +90,7 @@
 										<td></td>
 									</tr>
 									<?php foreach($value->childMeta as $index => $item){ ?>
-										<tr>
-											<td style="text-align: center;"><b><i><?=$item->numeracion?></i></b></td>
-											<td><b><i><?=$item->desc_meta?></i></b></td>
-											<td style="text-align: center;"></td>
-											<td style="text-align: center;"></td>
-											<td style="text-align: center;"></td>
-											<td style="text-align: center;"></td>
-											<td></td>
-										</tr>
-										<?php foreach($item->childPartida as $k => $v){ ?>
-											<tr>
-												<td style="text-align: center;"><?=$v->numeracion?></td>
-												<td><?=$v->desc_partida?></td>
-												<td style="text-align: center;"></td>
-												<td style="text-align: center;"></td>
-												<td style="text-align: center;"></td>
-												<td style="text-align: center;"></td>
-												<td></td>
-											</tr>
-										<?php } ?>
+										<?=mostrarMetaAnidada($item)?>
 									<?php } ?>
 								<?php } ?>
 							</tbody>
