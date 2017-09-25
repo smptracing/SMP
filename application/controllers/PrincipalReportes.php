@@ -201,8 +201,13 @@ class PrincipalReportes extends CI_Controller
     }
 
     function DetalleAnalitico()
-    {
-        $this->load->view('front/Reporte/ProyectoInversion/detalleAnalitico');
+    {  
+        $anio=$this->input->GET('anio');
+        $codigounico=$this->input->GET('codigounico');
+        $listaDetalleAnaliticoAvancFinE=$this->Model_Dashboard_Reporte->ReporteDetalleAnaliticoFinancieroE($anio,$codigounico);
+        $listaDetalleAnaliticoAvancFin=$this->Model_Dashboard_Reporte->ReporteDetalleAnaliticoFinanciero($anio,$codigounico);
+        //var_dump($listaDetalleAnaliticoAvancFin);exit;
+        $this->load->view('front/Reporte/ProyectoInversion/detalleAnalitico',['listaDetalleAnaliticoAvancFin'=> $listaDetalleAnaliticoAvancFin,'listaDetalleAnaliticoAvancFinE'=>$listaDetalleAnaliticoAvancFinE]);
     }
     public function GrafDetalleMensualizado()
     { 

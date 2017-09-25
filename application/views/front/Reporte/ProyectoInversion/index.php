@@ -268,12 +268,13 @@ $("#CodigoUnico").on( "click", function()
 		data:{codigounico:codigounico},
 		success: function(data)
 			{
+		        alert(data);
 		        console.log(data);
 		        var ejecucionPresupuestal=JSON.parse(data); 
 		        var html;
 				html+="<thead><tr><th>AÑO EJECUCIÓN</th><th>COSTO ACTUAL</th><th>COSTO DE EXPEDIENTE</th><th>COSTO DE VIABILIDAD</th><th>COSTO DE EXP AÑO ANTERIOR</th><th>Ver</th></tr></thead>"
 				$.each( ejecucionPresupuestal, function( key, value ) {
-				  html +="<tbody> <tr><th>"+value.ano_eje+"</th><th>"+(value.costo_actual).toLocaleString("en-ESP")+"</th><th>"+value.costo_expediente+"</th><th>"+value.costo_viabilidad+"</th><th>"+value.ejecucion_ano_anterior+"</th><th><button type='button' class='editar btn btn-primary btn-xs' onclick='detalleAnalitico();'><i class='ace-icon fa fa-eye bigger-120'></i></button></th></tr>";      
+				  html +="<tbody> <tr><th>"+value.ano_eje+"</th><th>"+(value.costo_actual).toLocaleString("en-ESP")+"</th><th>"+value.costo_expediente+"</th><th>"+value.costo_viabilidad+"</th><th>"+value.ejecucion_ano_anterior+"</th><th><button type='button' class='editar btn btn-primary btn-xs' onclick='detalleAnalitico("+value.ano_eje+","+codigounico+");'><i class='ace-icon fa fa-eye bigger-120'></i></button></th></tr>";      
 						html +="</tbody>";
 				});
 				
@@ -972,9 +973,9 @@ $("#CodigoUnico").on( "click", function()
 		
 	}
 
-	function detalleAnalitico()
+	function detalleAnalitico(anio,codigounico)
 	{
-		paginaAjaxDialogo(null, 'Analítico del Avance Financiero del Proyecto por año',null, base_url+'index.php/PrincipalReportes/DetalleAnalitico', 'GET', null, null, false, true);
+		paginaAjaxDialogo(null, 'Analítico del Avance Financiero del Proyecto por año',{anio: anio,codigounico:codigounico}, base_url+'index.php/PrincipalReportes/DetalleAnalitico', 'GET', null, null, false, true);
 		
 	}
     function siafActualizador() {
