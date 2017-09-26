@@ -131,6 +131,34 @@
               </li>
             </ul>
           </div>
+          <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav">
+            <li class="dropdown user user-menu">
+              <!-- Menu Toggle Button -->
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <img src="<?php echo base_url(); ?>assets/images/img.jpg" class="user-image" alt="User Image"/>
+                <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                <span class="hidden-xs"> <?php echo $this->session->userdata('nombreUsuario')?></span>
+              </a>
+              <ul class="dropdown-menu">
+                <!-- The user image in the menu -->
+                <li class="user-header">
+                  <!--<img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">-->
+                  <img src="<?php echo base_url(); ?>assets/images/img.jpg" class="img-circle" alt="Profile Image" />
+
+                  <p>
+                    <?php echo $this->session->userdata('nombreUsuario')?> <br> <?php echo $this->session->userdata('desc_usuario_tipo')?>
+                  </p>
+                </li>
+                <li class="user-footer">
+                  <div class="pull-right">
+                    <a href="<?php echo base_url("index.php/Login/logout");?>" class="btn btn-default btn-flat">Cerrar Sesion</a>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
         
       </div>
 
