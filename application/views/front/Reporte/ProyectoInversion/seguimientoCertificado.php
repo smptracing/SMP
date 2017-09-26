@@ -1,14 +1,8 @@
-<style type="text/css">
-	.tableTools-container
-	{
-		color: 2px solid red;
-	}
-</style>
 <div class="right_col" role="main">
 	<div class="">
 		<div class="clearfix"></div>
 		<div class="">
-			<div class="col-md-12 col-xs-12 col-xs-12">
+			<div class="col-md-12 col-xs-12 col-xs-12" style="overflow:hidden;height:1150px;">
 				<div class="x_panel">
 					<div class="x_title">
 						<h5><b>REPORTE GENERAL DE  AVANCE FISICO Y FINANCIERO</b> </h5> 
@@ -124,7 +118,6 @@
 
 $(document).on("ready" ,function(){
 	
-
 $("#AnioPip").on( "click", function()
 	{
 		avanceFisico();
