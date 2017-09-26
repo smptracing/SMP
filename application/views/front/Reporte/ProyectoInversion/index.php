@@ -268,7 +268,7 @@ $("#CodigoUnico").on( "click", function()
 		data:{codigounico:codigounico},
 		success: function(data)
 			{
-		        alert(data);
+		        //alert(data);
 		        console.log(data);
 		        var ejecucionPresupuestal=JSON.parse(data); 
 		        var html;
@@ -297,7 +297,7 @@ $("#CodigoUnico").on( "click", function()
 				$.each( meta, function( key, value ) {
                    	html +="<tr>";
                               html +="<th  colspan='15'>"+value.nombre_finalidad+"</th></tr> <tr>";
-				 	html +="<tbody> <tr><th>"+value.ano_eje+"</th><th>"+value.meta+"</th><th>"+value.pia+"</th><th>"+value.pim+"</th><th>"+value.pim_acumulado+"</th><th>"+value.ejecucion+"</th><th>"+value.compromiso+"</th><th>"+value.monto_certificado+"</th><th>"+value.devengado+"</th><th>"+value.girado+"</th><th>"+value.pagado+"</th><th>"+value.avance_financiero+'%'+"</th><th>"+value.monto_comprometido_anual+"</th><th>"+value.monto_precertificado+"</th><th><button type='button' class='editar btn btn-primary btn-xs' onclick='detalladoMensualizado("+value.ano_eje+","+value.meta+");'><i class='ace-icon fa fa-eye bigger-120'></i></button></th></tr>";      
+				 	html +="<tbody> <tr><th>"+value.ano_eje+"</th><th><button type='button' class='editar btn btn-primary btn-xs' onclick='detalladoMensualizadoFuenteFinan("+value.ano_eje+","+value.meta+");'>"+value.meta+"<i class='ace-icon bigger-120'></i></button></th><th>"+value.pia+"</th><th>"+value.pim+"</th><th>"+value.pim_acumulado+"</th><th>"+value.ejecucion+"</th><th>"+value.compromiso+"</th><th>"+value.monto_certificado+"</th><th>"+value.devengado+"</th><th>"+value.girado+"</th><th>"+value.pagado+"</th><th>"+value.avance_financiero+'%'+"</th><th>"+value.monto_comprometido_anual+"</th><th>"+value.monto_precertificado+"</th><th><button type='button' class='editar btn btn-primary btn-xs' onclick='detalladoMensualizado("+value.ano_eje+","+value.meta+");'><i class='ace-icon fa fa-eye bigger-120'></i></button></th></tr>";      
 						html +="</tbody>";
 				});
 				
@@ -970,14 +970,18 @@ $("#CodigoUnico").on( "click", function()
 	{
 		//paginaAjaxDialogo(null, 'Ver Detallado Mensualizado',null, base_url+'index.php/PrincipalReportes/DetalleMensualizado', 'GET', null, null, false, true);
 		paginaAjaxDialogo(null, 'Ver Detallado Mensualizado',{ anio: anio, meta:meta}, base_url+'index.php/PrincipalReportes/DetalleMensualizado', 'GET', null, null, false, true);
-		
 	}
 
 	function detalleAnalitico(anio,codigounico)
 	{
-		paginaAjaxDialogo(null, 'Analítico del Avance Financiero del Proyecto por año',{anio: anio,codigounico:codigounico}, base_url+'index.php/PrincipalReportes/DetalleAnalitico', 'GET', null, null, false, true);
-		
+		paginaAjaxDialogo(null, 'Analítico del Avance Financiero del Proyecto por año',{anio: anio,codigounico:codigounico}, base_url+'index.php/PrincipalReportes/DetalleAnalitico', 'GET', null, null, false, true);	
 	}
+
+	function detalladoMensualizadoFuenteFinan(anio,meta)
+	{
+		paginaAjaxDialogo(null, 'Ver Detalle',{ anio: anio, meta:meta}, base_url+'index.php/PrincipalReportes/DetalleMensualizadoFuenteFinan', 'GET', null, null, false, true);	
+	}
+
     function siafActualizador() {
     	var codigounico=$("#BuscarPip").val();
     	var urll="http://192.168.1.100:8080/importador_siaf/index.php/Importacion/inicio/"+codigounico;
