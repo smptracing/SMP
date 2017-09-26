@@ -121,8 +121,6 @@
             </div>
             <div class="box-body">
                   <div class="row">
-
-
                       <?php
                       $CI = & get_instance();
                       $modulo=[];
