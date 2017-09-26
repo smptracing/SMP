@@ -22,7 +22,7 @@
 			<div class="col-md-12 col-xs-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
-						<h2><b>DETALLE MENSUAL DE FUENTE DE FINANCIAMIENTO POR META</b> </h2>
+						<h2><b>DATOS GENERALES Y DETALLE POR FUENTE DE FINANCIAMIENTO</b> </h2>
 						<ul class="nav navbar-right panel_toolbox">
 						</ul>
 						<div class="clearfix"></div>
@@ -34,26 +34,106 @@
 								<!-- /Contenido del sector -->
 								<div role="tabpanel" class="tab-pane fade active in" id="tab_Sector" aria-labelledby="home-tab">
 									<!-- /tabla de sector desde el row -->
+									
+									<div class="row">
+						                <div class="col-md-12 col-sm-12 col-xs-12">
 										
+					                        <div>
+					                        	<table id="table-DatoGenerales"  class="table-hover" cellspacing="0" width="100%">
+												<body>
+													
+													<tr>
+														<td>AÑO: <?=$listaDetalleMensualizadoFuenteFinanDatosG->ano_eje;?>  </td>
+													</tr>
+													<tr>
+														<td>CORRELATIVO META: <?=$listaDetalleMensualizadoFuenteFinanDatosG->meta;?>  </td>
+													</tr>
+													<tr>
+														<td>NOMBRE DEL PROYECTO: <?=$listaDetalleMensualizadoFuenteFinanDatosG->nombre;?>  </td>
+													</tr>
+													<tr>
+														<td>FINALIDAD: <?=$listaDetalleMensualizadoFuenteFinanDatosG->nombre_finalidad;?>  </td>
+													</tr>
+												</body>
+											
+											</table>
+
+					                        </div>
+
+						                </div>
+						        	</div>
+									<br>
 									<div class="row">  
 										<div class="col-md-12 col-sm-12 col-xs-12">
 											<table id="table-DetalleMensualizado"  class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 												<thead>
 													<tr>
-														<td>Año</td>
-														<td>Meta</td>
+										
 														<td>Fuente Financiamiento</td>
-														<td>Nombre</td>
 														<td>Pia</td>
 														<td>Pim</td>
 														<td>Pim Acumulado</td>
+														<td>Monto Finan 1</td>
+														<td>Monto Finan 2</td>
 														<td>Ejecución</td>
+														<td>Compromiso</td>
+														<td>Certificado</td>
+														<td>Devengado</td>
+														<td>Girado</td>
+														<td>Pagado</td>
 														<td>Ampliación</td>
 														<td>Crédito</td>
+														
 													</tr>
 												</thead>
 												<tbody>
-													
+													<?php foreach($listaDetalleMensualizadoFuenteFinan as $item ){ ?>
+													  	<tr>
+															<td>
+																<?=$item->fuente_financ?>
+													    	</td>
+													    	<td>
+																<?=$item->pia?>
+													    	</td>
+													    	<td>
+																<?=$item->pim?>
+													    	</td>
+													    	<td>
+																<?=$item->pim_acumulado?>
+													    	</td>
+													    	<td>
+																<?=$item->monto_financ1?>
+													    	</td>
+													    	<td>
+																<?=$item->monto_financ2?>
+													    	</td>
+													    	<td>
+																<?=$item->ejecucion?>
+													    	</td>
+													    	<td>
+																<?=$item->compromiso?>
+													    	</td>
+													    	<td>
+																<?=$item->monto_certificado?>
+													    	</td>
+													    	<td>
+																<?=$item->devengado?>
+													    	</td>
+													    	<td>
+																<?=$item->girado?>
+													    	</td>
+													    	<td>
+																<?=$item->pagado?>
+													    	</td>
+													    	<td>
+																<?=$item->ampliacion?>
+													    	</td>
+													    	<td>
+																<?=$item->credito?>
+													    	</td>
+													    	
+													  </tr>
+													<?php } ?>
 												</tbody>
 											
 											</table>
