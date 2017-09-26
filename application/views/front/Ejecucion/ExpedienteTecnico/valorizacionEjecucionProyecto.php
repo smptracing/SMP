@@ -11,9 +11,9 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 		'<td>---</td>'.
 		'<td>---</td>';
 		
-	if($expedienteTecnico->propCantidadMeses!=null)
+	if($expedienteTecnico->num_meses!=null)
 	{
-		for($i=0; $i<$expedienteTecnico->propCantidadMeses; $i++)
+		for($i=0; $i<$expedienteTecnico->num_meses; $i++)
 		{
 			$htmlTemp.='<td>---</td>';
 		}
@@ -33,9 +33,9 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 				'<td style="text-align: right;">S/.'.$value->precio_unitario.'</td>'.
 				'<td style="text-align: right;">S/.'.number_format($value->cantidad*$value->precio_unitario, 2).'</td>';
 
-			if($expedienteTecnico->propCantidadMeses!=null)
+			if($expedienteTecnico->num_meses!=null)
 			{
-				for($i=0; $i<$expedienteTecnico->propCantidadMeses; $i++)
+				for($i=0; $i<$expedienteTecnico->num_meses; $i++)
 				{
 					$htmlTemp.='<td style="background-color: #fff1b0;"><div><input type="text" style="display: none;width: 40px;" onkeyup="onKeyUpCalcularPrecio('.$value->cantidad.', '.$value->precio_unitario.', this);"></div><span class="spanMontoValorizacion">S/.0.00</span></td>';
 				}
@@ -89,8 +89,8 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 								<tr>
 									<th>PROY:</th>
 									<th colspan="5"><?=$expedienteTecnico->nombre_pi?></th>
-									<?php if($expedienteTecnico->propCantidadMeses!=null){ ?>
-										<th colspan="<?=$expedienteTecnico->propCantidadMeses?>">CRONOGRAMA VALORIZADO DE EJECUCIÓN DEL PROYECTO</th>
+									<?php if($expedienteTecnico->num_meses!=null){ ?>
+										<th colspan="<?=$expedienteTecnico->num_meses?>">CRONOGRAMA VALORIZADO DE EJECUCIÓN DEL PROYECTO</th>
 									<?php } ?>
 								</tr>
 								<tr>
@@ -100,8 +100,8 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 									<th style="width: 100px;">CANT.</th>
 									<th style="width: 100px;">P.U.</th>
 									<th style="width: 100px;">TOTAL</th>
-									<?php if($expedienteTecnico->propCantidadMeses!=null){
-										for($i=0; $i<$expedienteTecnico->propCantidadMeses; $i++){ ?>
+									<?php if($expedienteTecnico->num_meses!=null){
+										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
 											<th style="width: 85px;">M<?=($i+1)?></th>
 										<?php }
 									} ?>
@@ -116,8 +116,8 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 										<td>---</td>
 										<td>---</td>
 										<td>---</td>
-										<?php if($expedienteTecnico->propCantidadMeses!=null){
-											for($i=0; $i<$expedienteTecnico->propCantidadMeses; $i++){ ?>
+										<?php if($expedienteTecnico->num_meses!=null){
+											for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
 												<td>---</td>
 											<?php }
 										} ?>
@@ -138,7 +138,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 <script>
 	$(document).on('ready', function()
 	{
-		$('#tableValorizacion').css({ "width" : "<?=($expedienteTecnico->propCantidadMeses==null ? 0 : ($expedienteTecnico->propCantidadMeses*85)+1200)?>px" });
+		$('#tableValorizacion').css({ "width" : "<?=($expedienteTecnico->num_meses==null ? 0 : ($expedienteTecnico->num_meses*85)+1200)?>px" });
 
 		$('.spanMontoValorizacion').on('click', function()
 		{

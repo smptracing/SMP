@@ -455,21 +455,6 @@ class Expediente_Tecnico extends CI_Controller
 		$expedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnico($idExpedienteTecnico);
 		$expedienteTecnico->childComponente=$this->Model_ET_Componente->ETComponentePorIdET($expedienteTecnico->id_et);
 
-		$expedienteTecnico->propCantidadMeses=null;
-		$expedienteTecnico->primeraETTarea=$this->Model_ET_Tarea->primeraETTareaPorIdET($expedienteTecnico->id_et);
-		$expedienteTecnico->ultimaETTarea=$this->Model_ET_Tarea->ultimaETTareaPorIdET($expedienteTecnico->id_et);
-
-		if($expedienteTecnico->primeraETTarea!=null)
-		{
-			$fechainicial=new DateTime(substr($expedienteTecnico->primeraETTarea->fecha_inicio_tarea, 0, 10));
-			$fechafinal=new DateTime(substr($expedienteTecnico->ultimaETTarea->fecha_final_tarea, 0, 10));
-
-			$diferencia=$fechainicial->diff($fechafinal);
-
-			$expedienteTecnico->propCantidadMeses=($diferencia->y*12)+$diferencia->m;
-			$expedienteTecnico->propCantidadMeses+=1;
-		}
-
 		foreach($expedienteTecnico->childComponente as $key => $value)
 		{
 			$value->childMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($value->id_componente);
