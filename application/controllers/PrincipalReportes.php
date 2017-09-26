@@ -204,7 +204,9 @@ class PrincipalReportes extends CI_Controller
     {
         $correlativoMeta=$this->input->GET('meta');
         $anioMeta=$this->input->GET('anio');
+       
         $listaDetalleMensualizadoFuenteFinan=$this->Model_Dashboard_Reporte->DetalleMensualizadoMetaFuente($correlativoMeta,$anioMeta);
+
         $listaDetalleMensualizadoFuenteFinanDatosG=$this->Model_Dashboard_Reporte->DetalleMensualizadoMetaFuenteDatosG($correlativoMeta,$anioMeta);
         $this->load->view('front/Reporte/ProyectoInversion/DetalleMensualizadoFuenteFinan',['listaDetalleMensualizadoFuenteFinan'=>$listaDetalleMensualizadoFuenteFinan,'listaDetalleMensualizadoFuenteFinanDatosG'=>$listaDetalleMensualizadoFuenteFinanDatosG,'correlativoMeta'=>$correlativoMeta,'anioMeta'=>$anioMeta]);
         //$this->load->view('front/Reporte/ProyectoInversion/detalle');
