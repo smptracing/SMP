@@ -6,7 +6,7 @@ class ProyectoInversion extends CI_Controller {/* Mantenimiento de sector entida
 	public function __construct(){
       parent::__construct();
       $this->load->model('Model_ProyectoInversion');
-   //   $this->load->model('Ubicacion_Model');
+      $this->load->model('Model_Dashboard_Reporte');
 	}
    /*INSERTAR UN PROYECTO EN LA TABLA PROYECTO Y SIMULTANEO EN LA TABLA PROYECTO UBIGEO*/
    function AddProyecto()
@@ -104,10 +104,12 @@ class ProyectoInversion extends CI_Controller {/* Mantenimiento de sector entida
 	    $this->load->view('layout/Reportes/footer');
     }
 
-    public function ReporteBuscadorPorAnio()
+    public function ReporteBuscadorPorAnio($anio=2017)
     {
+      $data=$this->Model_Dashboard_Reporte->ReporteConsolidadoAvanceFisicoFinan($anio);
+      //var_dump($data);exit;
       $this->load->view('layout/Reportes/header');
-      $this->load->view('front/Reporte/ProyectoInversion/seguimientoCertificado');
+      $this->load->view('front/Reporte/ProyectoInversion/seguimientoCertificado',['Consolidado' => $data,'anio' =>$anio]);
       $this->load->view('layout/Reportes/footer');
     }
 

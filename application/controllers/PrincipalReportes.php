@@ -243,7 +243,9 @@ class PrincipalReportes extends CI_Controller
     {
         $anio=$this->input->POST('anio');
         $data=$this->Model_Dashboard_Reporte->ReporteConsolidadoAvanceFisicoFinan($anio);
-        echo  json_encode($data);
+        
+        $this->load->view('front/Reporte/ProyectoInversion/seguimientoCertificado');
+
     }
 
     public function _load_layout($template)
