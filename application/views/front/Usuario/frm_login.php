@@ -219,11 +219,18 @@
                                         <div class="quoteContainer">
                                             <p class="quote-phrase col-md-12 col-xs-12 msgTitulo">Función</p><br>
                                             <p class="quote-phrase col-md-12 col-xs-12 msg"><?=$item->nombre_funcion?></p><br>
-                                            <!--<p class="quote-phrase col-md-12 col-xs-12 msgTitulo">Cantidad de Proyectos</p><br>-->
-                                            <p class="quote-phrase col-md-12 col-xs-12 msg"><?=$item->cantidad_pip?> Proyectos Registrados</p><br>
-                                           <!-- <p class="quote-phrase col-md-12 col-xs-12 msgTitulo">Beneficiarios</p><br>-->
-                                            <p class="quote-phrase col-md-12 col-xs-12 msg"><?=$item->total_beneficiarios?> Beneficiarios</p><br>
-                                            <!--<p class="quote-phrase col-md-12 col-xs-12 msgTitulo">Costo</p><br>-->
+                                            <br>
+                                            <p class="quote-phrase col-md-12 col-xs-12 msg">
+                                            <?php if($item->cantidad_pip>=2) 
+                                                    echo $item->cantidad_pip." Proyectos Registrados";
+                                                else
+                                                    echo $item->cantidad_pip." Proyecto Registrado";?>
+                                            </p>
+                                            <br>
+                                            <p class="quote-phrase col-md-12 col-xs-12 msg">
+                                            <?=
+                                            ($item->total_beneficiarios)?> Beneficiarios</p>
+                                            <br>
                                             <p class="quote-phrase col-md-12 col-xs-12 msg">S/. <?=$item->costo_total?></p><br>
                                         </div>
                                     </li>
