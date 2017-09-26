@@ -59,6 +59,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 		border: 1px solid #999999;
 		padding: 4px;
 		vertical-align: middle;
+		font-size: 10px;
 	}
 </style>
 <div class="right_col" role="main">
@@ -123,3 +124,9 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 		<div class="clearfix"></div>
 	</div>
 </div>
+<script>
+	$(document).on('ready', function()
+	{
+		$('#tableValorizacion').css({ "width" : "<?=($expedienteTecnico->propCantidadMeses==null ? 0 : ($expedienteTecnico->propCantidadMeses*50)+1200)?>px" });
+	});
+</script>
