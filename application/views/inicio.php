@@ -58,6 +58,31 @@
     {
         height: 120px;
     }
+    .thebox{
+        color:white;
+        cursor: pointer;
+        height: 150px;        
+        padding: 20px; 
+        width: auto; 
+        text-align: center;
+        -webkit-transition: transform 0.3s;
+        -moz-transition: transform 0.3s;
+        -ms-transition: transform 0.3s;
+        -o-transition: transform 0.3s;
+        transition: transform 0.4s;
+        user-select : none;
+
+    }
+    .zoom-in{
+        padding-top: 30px;
+    }
+    .thebox:hover {
+        transform: scale(1.125);
+    }
+    .box-container{
+        padding-top: 10px;
+        padding-bottom: 50px;
+    }
     @media (max-width: 770px) {
       .tituloHeader{
         display: none;
@@ -75,7 +100,7 @@
     <nav class="navbar navbar-static-top">
       <div class="container">
         <div class="navbar-header">
-          <a href="" class="navbar-brand tituloLogo"><b style="font-size: 40px; padding-top: 25px;">SMP</b> Tracing v1.0</a>
+          <a href="<?php echo site_url('Inicio'); ?>" class="navbar-brand tituloLogo"><b style="font-size: 40px; padding-top: 25px;">SMP</b> Tracing v1.0</a>
         </div>
         <div class="navbar-custom-menu">
          <span class="tituloHeader">Software de Seguimiento y Monitoreo de PIP's</span><br>
@@ -114,9 +139,166 @@
   <div class="content-wrapper">
     <div class="container">
       <section class="content" style="margin-top: 50px;">
-      <div class="row">
-        <div class="col-md-12">
-            <div class="box-header with-border">              
+      <div class="row box-container">
+        <div class="col-md-12 col-xs-12">
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="zoom-in">
+                            <a href="<?php echo site_url('PrincipalPmi/pmi'); ?>">
+                            <div style="background-color: #39cccc;" class="col-md-12 thebox">                                 
+                                <div class="span 6">
+                                    <span class="fa fa-calendar fa-3x"></span>                                    
+                                </div>
+                                <div class="span 6">
+                                    <br>
+                                    Programación Multianual de Inversión.                                       
+                                </div>                            
+                                
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+
+                        <div class="zoom-in">
+                            <a href="<?php echo site_url('PrincipalFyE/PrincipalFyED'); ?>">
+                            <div style="background-color: #3d9970;" class="col-md-12 thebox">                                 
+                                <div class="span 6">
+                                    <span class="fa fa-edit fa-3x"></span>                                     
+                                </div>
+                                <div class="span 6">
+                                    <br>
+                                    Formulación y Evaluación de Proyectos de Inversión.                                        
+                                </div>                                   
+                                
+                            </div>
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+
+                        <div class="zoom-in">
+                            <a href="<?php echo site_url('PrincipalEjecucion/PrincipalEjec'); ?>">
+                            <div style="background-color: #0073b7;" class="col-md-12 thebox">                                 
+                                <div class="span 6">
+                                    <span class="fa fa-play fa-3x"></span>                                     
+                                </div>
+                                <div class="span 6">
+                                <br>
+                                    Ejecución de Proyectos de Inversión.                                    
+                                </div>                                                               
+                            </div>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+
+                        <div class="zoom-in">
+
+                            <div style="background-color: #f39c12;" class="col-md-12 thebox">                                 
+                                <div class="span 6">
+                                    <span class="fa fa-random fa-3x"></span>                                     
+                                </div>
+                                <div class="span 6">
+                                <br>
+                                    Seguimiento de Proyectos de Inversión.                                     
+                                </div>                                   
+                                
+                            </div>
+
+                        </div>
+
+                    </div>   
+                </div>
+                <div class="col-md-12 col-xs-12">
+                 <div class="col-md-3 col-sm-6 col-xs-12">
+
+                        <div class="zoom-in">
+
+                            <div style="background-color: #605ca8;" class="col-md-12 thebox">                                 
+                                <div class="span 6">
+                                    <span class="fa fa-eye fa-3x"></span>                                     
+                                </div>
+                                <div class="span 6">
+                                <br>
+                                    Monitoreo de Proyectos de Inversión.                                     
+                                </div>                                   
+                                
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+
+                        <div class="zoom-in">
+                            <a href="<?php echo site_url('PrincipalReportes/PrincipalReportes'); ?>">
+                            <div style="background-color: #46607b;" class="col-md-12 thebox">                                 
+                                <div class="span 6">
+                                    <span class="fa fa-bar-chart fa-3x"></span>                                     
+                                </div>
+                                <div class="span 6">
+                                <br>
+                                    Reportes, Estadísticas e Informes.
+                                   
+                                </div>                                  
+                                
+                            </div>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+
+                        <div class="zoom-in">
+                            <a href="<?php echo site_url('PrincipalParametros/parametros'); ?>">
+                            <div style="background-color: #E74C3C;" class="col-md-12 thebox">                                 
+                                <div class="span 6">
+                                    <span class="fa fa-cogs fa-3x"></span>                                     
+                                </div>
+                                <div class="span 6">
+                                <br>
+                                    Mantenimiento de Parámetros Generales.                                      
+                                </div>                                   
+                                
+                            </div>
+                            </a>
+                        </div>
+
+                    </div>                     
+
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+
+                        <div class="zoom-in">
+                            <a href="<?php echo site_url('Usuario/'); ?>">
+                            <div style="background-color: #3c8dbc;" class="col-md-12 thebox">                                 
+                                <div class="span 6">
+                                    <span class="fa fa-users fa-3x"></span>                                     
+                                </div>
+                                <div class="span 6">
+                                <br>
+                                    Usuarios, Permisos y Administración                                     
+                                </div>                                   
+                                
+                            </div>
+                            </a>
+
+                        </div>
+
+                    </div>   
+                    
+                </div>
+            </div> 
+
+           <!-- <div class="box-header with-border">              
               <h3 class="box-title"> <br><i class="fa fa-refresh"></i> CICLO DE INVERSIONES</h3>
             </div>
             <div class="box-body">
@@ -196,7 +378,7 @@
                               </a>
                           </div>
                       </div>
-                      <!--<div class="col-lg-4 col-xs-12 col-sm-6">
+                      <div class="col-lg-4 col-xs-12 col-sm-6">
                           <div class="small-box bg-purple">
                               <div class="inner">
                                   <h3>M</h3>
@@ -210,7 +392,7 @@
                                   Ingresar <i class="fa fa-arrow-circle-right"></i>
                               </a>
                           </div>
-                      </div>-->
+                      </div>
                       <div class="col-lg-4 col-xs-12 col-sm-6">
                           <div class="small-box bg-navy">
                               <div class="inner">
@@ -266,9 +448,8 @@
                           </div>
                       </div>
                 </div>
-            <!--</div>-->
           </div>
-      </div>
+      </div>-->
     </section>
     </div>
   </div>

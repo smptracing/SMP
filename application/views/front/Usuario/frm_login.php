@@ -236,41 +236,7 @@
                                     </li>
                                     <?php } ?>
                                 </ul>
-                            </div>  
-                            <!--<div id="slides" class="col-md-12 col-xs-12">
-                                <ul>
-                                    <?php foreach($Reporte as $item ) { ?>
-                                    <li class="slide">
-                                        <div class="quoteContainer">
-                                            <p class="quote-phrase col-md-12 col-xs-12 msgTitulo">Función</p><br>
-                                            <p class="quote-phrase col-md-12 col-xs-12 msg">Educación</p><br>
-                                            <p class="quote-phrase col-md-12 col-xs-12 msgTitulo">Beneficiarios</p><br>
-                                            <p class="quote-phrase col-md-12 col-xs-12 msg">36,446.00</p><br>
-                                            <p class="quote-phrase col-md-12 col-xs-12 msgTitulo">Costo</p><br>
-                                            <p class="quote-phrase col-md-12 col-xs-12 msg">S/. 97,279,294.42</p><br>
-                                        </div>
-                                    </li>
-                                    <li class="slide" class="col-md-12 col-xs-12">
-                                        <div class="quoteContainer col-md-12 col-xs-12" >
-                                            <p class="quote-phrase col-md-12 col-xs-12" > 122 I could not stop staring! </p>
-                                            <br>
-                                            <p class="quote-phrase col-md-12 col-xs-12"> 112 I was literally BLOWN!</p>
-                                            <br>
-                                            <p class="quote-phrase col-md-12 col-xs-12"> 112 I was literally BLOWN!</p>
-                                        </div>
-                                    </li>
-                                    <li class="slide col-md-12 col-xs-12">
-                                        <div class="quoteContainer col-md-12 col-xs-12">
-                                            <p class="quote-phrase col-md-12 col-xs-12"> 133 Carl Fakeguy, was the most helpful designer I've ever hired!</p>
-                                            <br>
-                                            <p class="quote-phrase col-md-12 col-xs-12"> 113 I was literally BLOWN!</p>
-                                            <br>
-                                            <p class="quote-phrase col-md-12 col-xs-12"> 113 I was literally BLOWN!</p>
-                                        </div>
-                                    </li>
-                                    <?php } ?>
-                                </ul>
-                            </div>     -->            
+                            </div>           
                         </div>
                     </div>
                     <div class="col-md-6 col-xs-12">
@@ -377,15 +343,6 @@
 <script src="<?php echo base_url(); ?>assets/adminlte/app.min.js"> </script>
 <script src="<?php echo base_url(); ?>assets/adminlte/adminlte.min.js"> </script>
 <script src="<?php echo base_url(); ?>assets/adminlte/demo.js"> </script>
-
-<!--
-
-<script src="../../bower_components/jquery/jquery-3.2.1.min.js"></script>
-<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<script src="../../bower_components/fastclick/lib/fastclick.js"></script>
-<script src="../../dist/js/adminlte.min.js"></script>
-<script src="../../dist/js/demo.js"></script>-->
 </body>
 </html>
 

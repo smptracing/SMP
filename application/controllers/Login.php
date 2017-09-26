@@ -22,8 +22,6 @@ class Login extends CI_Controller {
            $this->singin();
         }
     }
-   
-
     public function singin()
     {
         $data = $this->Login_model->Reporte_Login();   
@@ -45,9 +43,6 @@ class Login extends CI_Controller {
         {
             show_404();
         }
-
-
-
     }
     public function ingresar()
     {
@@ -87,6 +82,4 @@ class Login extends CI_Controller {
         $this->session->sess_destroy();
         redirect('Login/muestralog');
     } 
-
-
 }
