@@ -1,3 +1,9 @@
+<style type="text/css">
+	.tableTools-container
+	{
+		color: 2px solid red;
+	}
+</style>
 <div class="right_col" role="main">
 	<div class="">
 		<div class="clearfix"></div>
@@ -5,10 +11,7 @@
 			<div class="col-md-12 col-xs-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
-						<h2><b>REPORTE DE CALIFICACIÓN DE SEGUIMIENTO A CERTIFICADO</b> </h2>
-						<ul class="nav navbar-right panel_toolbox">
-						</ul>
-						<div class="clearfix"></div>
+						<h5><b>REPORTE GENERAL DE  AVANCE FISICO Y FINANCIERO</b> </h5> 
 					</div>
 					<div class="x_content">
 						<div class="" role="tabpanel" data-example-id="togglable-tabs">
@@ -26,14 +29,11 @@
 									<div class="row">  
 										<div class="col-md-12 col-sm-12 col-xs-12">
 											<div class="x_panel">
-													<div class="clearfix">
-														<div class="pull-right tableTools-container"></div>
-													</div>
-													<div class="x_content">
+													<div class="container">
 														BÚSQUEDA POR AÑO: 
 														<div class="row">
 													
-														  <div class="col-lg-6">
+														  <div class="col-lg-5">
 														    <div class="input-group">
 														      <input type="text" id="BuscarPipAnio" value="<?= $anio?>"  class="form-control" placeholder="Ingrese Año">
 														      <span class="input-group-btn">
@@ -41,24 +41,21 @@
 														      </span>
 														    </div>
 														  </div>
-														  <div class="col-lg-6">
+														  <div class="col-lg-3">
+														        <a href="javascript:siafActualizadorCertificado()"><button id="BtnAcatualizar" class="btn btn-success" type="button"><i class="fa fa-spinner"></i> Actualizar Avance Financiero</button></a>
+														  </div>
+														  <div class="col-lg-4">
 														    <div class="input-group">
-														      <span class="input-group-btn">
-
-														        <a href="javascript:siafActualizadorCertificado()"><button id="BtnAcatualizar" class="btn btn-success" type="button"><i class="fa fa-spinner"></i> Actualizar Avance Financiero Total</button></a>
-														      </span>
+																		<div class="pull-left tableTools-container"></div>
 														    </div>
 														  </div>
+								
 								
 														</div>			
 			
 
 															<div class="row" style="margin-left: 10px; margin:10px; ">
-																<div class="panel panel-default">
-																	<div class="panel-heading"> CONSOLIDADO DE AVANCE FISICO Y FINANCIERO DE OBRA </div>
-																 
-																	  	<div id="avancefisicoFinan" class="">
-																			<br>
+																 					
 																			<table id="table-consolidadoAvance" style="text-align: center;" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%"> 
 																			 	<thead>
 																				 	<tr>
@@ -82,7 +79,7 @@
 																					    	<td>
 																								<?=$item->sec_func?>
 																					    	</td>
-																					    	<td>
+																					    	<td style="font-size: 10px;">
 																								<?=$item->nombre?>
 																					    	</td>
 																					    	<td>
@@ -107,14 +104,8 @@
 																					<?php } ?>
 																				</tbody>	
 																		  </table> 
-
-																	  </div>
-																</div>
 															</div>
-															
-												    </table>																	
-												</div>
-											</div>
+														</div>
 										</div>
 									</div>
 										<!-- / fin tabla de sector desde el row -->
@@ -156,7 +147,9 @@ $("#AnioPip").on( "click", function()
 		  {
 			"extend": "pdf",
 			"text": "<i class='fa fa-file-pdf-o bigger-110 red'></i> <span class='hidden'>Export to PDF</span>",
-			"className": "btn btn-white btn-primary btn-bold"
+			"className": "btn btn-white btn-primary btn-bold",
+			"pageSize": 'LEGAL',
+			orientation: 'landscape',
 		  },
 		  {
 			"extend": "print",
@@ -182,9 +175,12 @@ function avanceFisico()
 function siafActualizadorCertificado() 
 	{
 		var anio=$("#BuscarPipAnio").val();
+		var params  = 'width='+screen.width;
+        params += ', height='+screen.height;
+        params += ', top=0, left=10'
+        params += ', fullscreen=no';
 		var urll="http://192.168.1.100:8080/importador_siaf/index.php/ImporSeguimientoCertificado/inicio/"+anio;
-	    ventana=window.open(urll, 'Nombre de la ventana', 'widtd=1400,height=800');
-	    window.location.href=base_url+"index.php/ProyectoInversion/ReporteBuscadorPorAnio/"+anio;
+	    ventana=window.open(urll,"",params);
 	}
 
 </script>
