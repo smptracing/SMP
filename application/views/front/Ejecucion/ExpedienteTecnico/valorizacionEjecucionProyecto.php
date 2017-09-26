@@ -37,7 +37,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 			{
 				for($i=0; $i<$expedienteTecnico->propCantidadMeses; $i++)
 				{
-					$htmlTemp.='<td style="text-align: center;"><input type="text" style="text-align: center;width: 40px;" onkeyup="onKeyUpCalcularPrecio('.$value->cantidad.', '.$value->precio_unitario.', this);"><br><span>S/.0.00</span></td>';
+					$htmlTemp.='<td style="background-color: #fff1b0;text-align: center;"><div><input type="text" style="display: none;text-align: center;width: 40px;" onkeyup="onKeyUpCalcularPrecio('.$value->cantidad.', '.$value->precio_unitario.', this);"></div><span class="spanMontoValorizacion">S/.0.00</span></td>';
 				}
 			}
 
@@ -60,6 +60,16 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 		padding: 4px;
 		vertical-align: middle;
 		font-size: 10px;
+	}
+
+	.spanMontoValorizacion
+	{
+		cursor: pointer;
+	}
+
+	.spanMontoValorizacion:hover
+	{
+		text-decoration: underline;
 	}
 </style>
 <div class="right_col" role="main">
@@ -84,7 +94,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 								</tr>
 								<tr>
 									<th style="text-align: center;width: 70px;">ÍTEM</th>
-									<th style="width: 700px;">DESCRIPCIÓN</th>
+									<th style="width: 500px;">DESCRIPCIÓN</th>
 									<th style="text-align: center;width: 100px;">UND.</th>
 									<th style="text-align: center;width: 100px;">CANT.</th>
 									<th style="text-align: center;width: 100px;">P.U.</th>
@@ -128,6 +138,19 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 	$(document).on('ready', function()
 	{
 		$('#tableValorizacion').css({ "width" : "<?=($expedienteTecnico->propCantidadMeses==null ? 0 : ($expedienteTecnico->propCantidadMeses*85)+1200)?>px" });
+
+		$('.spanMontoValorizacion').on('click', function()
+		{
+			if($(this).parent().find('input[type="text"]').is(':visible'))
+			{
+				$(this).parent().find('input[type="text"]').hide();
+			}
+			else
+			{
+				$('.spanMontoValorizacion').parent().find('input[type="text"]').hide();
+				$(this).parent().find('input[type="text"]').show();
+			}
+		});
 	});
 
 	function onKeyUpCalcularPrecio(cantidad, precioUnitario, element)
@@ -135,6 +158,6 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 		var cantidadTemp=$(element).val();
 		var monto=cantidadTemp*precioUnitario;
 
-		$($(element).parent().find('span')[0]).text('S/.'+monto.toFixed(2));
+		$($(element).parent().parent().find('span')[0]).text('S/.'+monto.toFixed(2));
 	}
 </script>
