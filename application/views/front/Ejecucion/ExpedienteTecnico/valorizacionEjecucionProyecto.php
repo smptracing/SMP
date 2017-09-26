@@ -37,7 +37,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 			{
 				for($i=0; $i<$expedienteTecnico->propCantidadMeses; $i++)
 				{
-					$htmlTemp.='<td style="text-align: center;">S/.0.00</td>';
+					$htmlTemp.='<td style="text-align: center;"><input type="text" style="text-align: center;width: 40px;" onkeyup="onKeyUpCalcularPrecio('.$value->cantidad.', '.$value->precio_unitario.', this);"><br><span>S/.0.00</span></td>';
 				}
 			}
 
@@ -91,7 +91,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 									<th style="text-align: center;width: 100px;">TOTAL</th>
 									<?php if($expedienteTecnico->propCantidadMeses!=null){
 										for($i=0; $i<$expedienteTecnico->propCantidadMeses; $i++){ ?>
-											<th style="text-align: center;">M<?=($i+1)?></th>
+											<th style="text-align: center;width: 85px;">M<?=($i+1)?></th>
 										<?php }
 									} ?>
 								</tr>
@@ -127,6 +127,14 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 <script>
 	$(document).on('ready', function()
 	{
-		$('#tableValorizacion').css({ "width" : "<?=($expedienteTecnico->propCantidadMeses==null ? 0 : ($expedienteTecnico->propCantidadMeses*50)+1200)?>px" });
+		$('#tableValorizacion').css({ "width" : "<?=($expedienteTecnico->propCantidadMeses==null ? 0 : ($expedienteTecnico->propCantidadMeses*85)+1200)?>px" });
 	});
+
+	function onKeyUpCalcularPrecio(cantidad, precioUnitario, element)
+	{
+		var cantidadTemp=$(element).val();
+		var monto=cantidadTemp*precioUnitario;
+
+		$($(element).parent().find('span')[0]).text('S/.'+monto.toFixed(2));
+	}
 </script>
