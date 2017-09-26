@@ -4,18 +4,18 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 	$htmlTemp='';
 
 	$htmlTemp.='<tr>'.
-		'<td style="text-align: center;"><b><i>'.$meta->numeracion.'</i></b></td>'.
-		'<td><b><i>'.$meta->desc_meta.'</i></b></td>'.
-		'<td style="text-align: center;">---</td>'.
-		'<td style="text-align: center;">---</td>'.
-		'<td style="text-align: center;">---</td>'.
-		'<td style="text-align: center;">---</td>';
+		'<td><b><i>'.$meta->numeracion.'</i></b></td>'.
+		'<td style="text-align: left;"><b><i>'.$meta->desc_meta.'</i></b></td>'.
+		'<td>---</td>'.
+		'<td>---</td>'.
+		'<td>---</td>'.
+		'<td>---</td>';
 		
 	if($expedienteTecnico->propCantidadMeses!=null)
 	{
 		for($i=0; $i<$expedienteTecnico->propCantidadMeses; $i++)
 		{
-			$htmlTemp.='<td style="text-align: center;">---</td>';
+			$htmlTemp.='<td>---</td>';
 		}
 	}
 
@@ -26,10 +26,10 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 		foreach($meta->childPartida as $key => $value)
 		{
 			$htmlTemp.='<tr>'.
-				'<td style="text-align: center;">'.$value->numeracion.'</td>'.
-				'<td>'.$value->desc_partida.'</td>'.
-				'<td style="text-align: center;">'.$value->descripcion.'</td>'.
-				'<td style="text-align: center;">'.$value->cantidad.'</td>'.
+				'<td>'.$value->numeracion.'</td>'.
+				'<td style="text-align: left;">'.$value->desc_partida.'</td>'.
+				'<td>'.$value->descripcion.'</td>'.
+				'<td>'.$value->cantidad.'</td>'.
 				'<td style="text-align: right;">S/.'.$value->precio_unitario.'</td>'.
 				'<td style="text-align: right;">S/.'.number_format($value->cantidad*$value->precio_unitario, 2).'</td>';
 
@@ -37,7 +37,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 			{
 				for($i=0; $i<$expedienteTecnico->propCantidadMeses; $i++)
 				{
-					$htmlTemp.='<td style="background-color: #fff1b0;text-align: center;"><div><input type="text" style="display: none;text-align: center;width: 40px;" onkeyup="onKeyUpCalcularPrecio('.$value->cantidad.', '.$value->precio_unitario.', this);"></div><span class="spanMontoValorizacion">S/.0.00</span></td>';
+					$htmlTemp.='<td style="background-color: #fff1b0;"><div><input type="text" style="display: none;width: 40px;" onkeyup="onKeyUpCalcularPrecio('.$value->cantidad.', '.$value->precio_unitario.', this);"></div><span class="spanMontoValorizacion">S/.0.00</span></td>';
 				}
 			}
 
@@ -57,9 +57,10 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 	#tableValorizacion th, #tableValorizacion td
 	{
 		border: 1px solid #999999;
-		padding: 4px;
-		vertical-align: middle;
 		font-size: 10px;
+		padding: 4px;
+		text-align: center;
+		vertical-align: middle;
 	}
 
 	.spanMontoValorizacion
@@ -93,15 +94,15 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 									<?php } ?>
 								</tr>
 								<tr>
-									<th style="text-align: center;width: 70px;">ÍTEM</th>
+									<th style="width: 70px;">ÍTEM</th>
 									<th style="width: 500px;">DESCRIPCIÓN</th>
-									<th style="text-align: center;width: 100px;">UND.</th>
-									<th style="text-align: center;width: 100px;">CANT.</th>
-									<th style="text-align: center;width: 100px;">P.U.</th>
-									<th style="text-align: center;width: 100px;">TOTAL</th>
+									<th style="width: 100px;">UND.</th>
+									<th style="width: 100px;">CANT.</th>
+									<th style="width: 100px;">P.U.</th>
+									<th style="width: 100px;">TOTAL</th>
 									<?php if($expedienteTecnico->propCantidadMeses!=null){
 										for($i=0; $i<$expedienteTecnico->propCantidadMeses; $i++){ ?>
-											<th style="text-align: center;width: 85px;">M<?=($i+1)?></th>
+											<th style="width: 85px;">M<?=($i+1)?></th>
 										<?php }
 									} ?>
 								</tr>
@@ -109,15 +110,15 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 							<tbody>
 								<?php foreach($expedienteTecnico->childComponente as $key => $value){ ?>
 									<tr>
-										<td style="text-align: center;"><b><i><?=$value->numeracion?></i></b></td>
-										<td><b><i><?=$value->descripcion?></i></b></td>
-										<td style="text-align: center;">---</td>
-										<td style="text-align: center;">---</td>
-										<td style="text-align: center;">---</td>
-										<td style="text-align: center;">---</td>
+										<td><b><i><?=$value->numeracion?></i></b></td>
+										<td style="text-align: left;"><b><i><?=$value->descripcion?></i></b></td>
+										<td>---</td>
+										<td>---</td>
+										<td>---</td>
+										<td>---</td>
 										<?php if($expedienteTecnico->propCantidadMeses!=null){
 											for($i=0; $i<$expedienteTecnico->propCantidadMeses; $i++){ ?>
-												<td style="text-align: center;">---</td>
+												<td>---</td>
 											<?php }
 										} ?>
 									</tr>
