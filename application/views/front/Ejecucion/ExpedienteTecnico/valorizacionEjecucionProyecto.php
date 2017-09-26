@@ -1,17 +1,25 @@
 <?php
-function mostrarMetaAnidada($meta)
+function mostrarMetaAnidada($meta, $expedienteTecnico)
 {
 	$htmlTemp='';
 
 	$htmlTemp.='<tr>'.
 		'<td style="text-align: center;"><b><i>'.$meta->numeracion.'</i></b></td>'.
 		'<td><b><i>'.$meta->desc_meta.'</i></b></td>'.
-		'<td style="text-align: center;"></td>'.
-		'<td style="text-align: center;"></td>'.
-		'<td style="text-align: center;"></td>'.
-		'<td style="text-align: center;"></td>'.
-		'<td></td>'.
-	'</tr>';
+		'<td style="text-align: center;">---</td>'.
+		'<td style="text-align: center;">---</td>'.
+		'<td style="text-align: center;">---</td>'.
+		'<td style="text-align: center;">---</td>';
+		
+	if($expedienteTecnico->propCantidadMeses!=null)
+	{
+		for($i=0; $i<$expedienteTecnico->propCantidadMeses; $i++)
+		{
+			$htmlTemp.='<td style="text-align: center;">---</td>';
+		}
+	}
+
+	$htmlTemp.='</tr>';
 
 	if(count($meta->childMeta)==0)
 	{
@@ -23,26 +31,29 @@ function mostrarMetaAnidada($meta)
 				'<td style="text-align: center;">'.$value->descripcion.'</td>'.
 				'<td style="text-align: center;">'.$value->cantidad.'</td>'.
 				'<td style="text-align: right;">S/.'.$value->precio_unitario.'</td>'.
-				'<td style="text-align: right;">S/.'.number_format($value->cantidad*$value->precio_unitario, 2).'</td>'.
-				'<td></td>'.
-			'</tr>';
+				'<td style="text-align: right;">S/.'.number_format($value->cantidad*$value->precio_unitario, 2).'</td>';
+
+			if($expedienteTecnico->propCantidadMeses!=null)
+			{
+				for($i=0; $i<$expedienteTecnico->propCantidadMeses; $i++)
+				{
+					$htmlTemp.='<td style="text-align: center;">S/.0.00</td>';
+				}
+			}
+
+			$htmlTemp.='</tr>';
 		}
 	}
 
 	foreach($meta->childMeta as $key => $value)
 	{
-		$htmlTemp.=mostrarMetaAnidada($value);
+		$htmlTemp.=mostrarMetaAnidada($value, $expedienteTecnico);
 	}
 
 	return $htmlTemp;
 }
 ?>
 <style>
-	#tableValorizacion
-	{
-
-	}
-
 	#tableValorizacion th, #tableValorizacion td
 	{
 		border: 1px solid #999999;
@@ -66,16 +77,22 @@ function mostrarMetaAnidada($meta)
 								<tr>
 									<th>PROY:</th>
 									<th colspan="5"><?=$expedienteTecnico->nombre_pi?></th>
-									<th>CRONOGRAMA VALORIZADO DE EJECUCIÓN DEL PROYECTO</th>
+									<?php if($expedienteTecnico->propCantidadMeses!=null){ ?>
+										<th colspan="<?=$expedienteTecnico->propCantidadMeses?>">CRONOGRAMA VALORIZADO DE EJECUCIÓN DEL PROYECTO</th>
+									<?php } ?>
 								</tr>
 								<tr>
-									<th style="text-align: center;">ÍTEM</th>
-									<th>DESCRIPCIÓN</th>
-									<th style="text-align: center;">UND.</th>
-									<th style="text-align: center;">CANT.</th>
-									<th style="text-align: center;">P.U.</th>
-									<th style="text-align: center;">TOTAL</th>
-									<th></th>
+									<th style="text-align: center;width: 70px;">ÍTEM</th>
+									<th style="width: 700px;">DESCRIPCIÓN</th>
+									<th style="text-align: center;width: 100px;">UND.</th>
+									<th style="text-align: center;width: 100px;">CANT.</th>
+									<th style="text-align: center;width: 100px;">P.U.</th>
+									<th style="text-align: center;width: 100px;">TOTAL</th>
+									<?php if($expedienteTecnico->propCantidadMeses!=null){
+										for($i=0; $i<$expedienteTecnico->propCantidadMeses; $i++){ ?>
+											<th style="text-align: center;">M<?=($i+1)?></th>
+										<?php }
+									} ?>
 								</tr>
 							</thead>
 							<tbody>
@@ -83,14 +100,18 @@ function mostrarMetaAnidada($meta)
 									<tr>
 										<td style="text-align: center;"><b><i><?=$value->numeracion?></i></b></td>
 										<td><b><i><?=$value->descripcion?></i></b></td>
-										<td style="text-align: center;"></td>
-										<td style="text-align: center;"></td>
-										<td style="text-align: center;"></td>
-										<td style="text-align: center;"></td>
-										<td></td>
+										<td style="text-align: center;">---</td>
+										<td style="text-align: center;">---</td>
+										<td style="text-align: center;">---</td>
+										<td style="text-align: center;">---</td>
+										<?php if($expedienteTecnico->propCantidadMeses!=null){
+											for($i=0; $i<$expedienteTecnico->propCantidadMeses; $i++){ ?>
+												<td style="text-align: center;">---</td>
+											<?php }
+										} ?>
 									</tr>
 									<?php foreach($value->childMeta as $index => $item){ ?>
-										<?=mostrarMetaAnidada($item)?>
+										<?=mostrarMetaAnidada($item, $expedienteTecnico)?>
 									<?php } ?>
 								<?php } ?>
 							</tbody>

@@ -6,13 +6,14 @@ class Expediente_Tecnico extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+
 		$this->load->model('Model_ET_Expediente_Tecnico');
 		$this->load->model('Model_ET_Analisis_Unitario');
 		$this->load->model('Model_ET_Componente');
 		$this->load->model('Model_ET_Meta');
 		$this->load->model('Model_ET_Partida');
 		$this->load->model('Model_Personal');
-		$this->load->model("Model_ET_Tipo_Responsable"); 
+		$this->load->model("Model_ET_Tipo_Responsable");
 		$this->load->model("Model_ET_Responsable");
 		$this->load->model("Cargo_Modal");
 		$this->load->model("Model_ET_Presupuesto_Analitico");
@@ -23,8 +24,8 @@ class Expediente_Tecnico extends CI_Controller
 		$this->load->model('Model_ET_Detalle_Partida');
 		$this->load->model('Model_ET_Detalle_Analisis_Unitario');
 		$this->load->model('Model_ET_Tarea');
+
 		$this->load->library('mydompdf');
-		
 	}
 
 	function _load_layout($template, $data)
@@ -453,6 +454,21 @@ class Expediente_Tecnico extends CI_Controller
 	{
 		$expedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnico($idExpedienteTecnico);
 		$expedienteTecnico->childComponente=$this->Model_ET_Componente->ETComponentePorIdET($expedienteTecnico->id_et);
+
+		$expedienteTecnico->propCantidadMeses=null;
+		$expedienteTecnico->primeraETTarea=$this->Model_ET_Tarea->primeraETTareaPorIdET($expedienteTecnico->id_et);
+		$expedienteTecnico->ultimaETTarea=$this->Model_ET_Tarea->ultimaETTareaPorIdET($expedienteTecnico->id_et);
+
+		if($expedienteTecnico->primeraETTarea!=null)
+		{
+			$fechainicial=new DateTime(substr($expedienteTecnico->primeraETTarea->fecha_inicio_tarea, 0, 10));
+			$fechafinal=new DateTime(substr($expedienteTecnico->ultimaETTarea->fecha_final_tarea, 0, 10));
+
+			$diferencia=$fechainicial->diff($fechafinal);
+
+			$expedienteTecnico->propCantidadMeses=($diferencia->y*12)+$diferencia->m;
+			$expedienteTecnico->propCantidadMeses+=1;
+		}
 
 		foreach($expedienteTecnico->childComponente as $key => $value)
 		{
