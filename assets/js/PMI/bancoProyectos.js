@@ -17,8 +17,13 @@ $(document).ready(function(){
     
 }); 
 
+
+
 $(function()
 {
+    
+   
+
     $("body").on("click","#sendSave",function(e)
     {
         $('#form-AddProyectosInversion').data('formValidation').resetField($('#txtCostoPip'));
