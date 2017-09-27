@@ -222,6 +222,10 @@ class PrincipalReportes extends CI_Controller
         //var_dump($listaDetalleAnaliticoAvancFin);exit;
         $this->load->view('front/Reporte/ProyectoInversion/detalleAnalitico',['listaDetalleAnaliticoAvancFin'=> $listaDetalleAnaliticoAvancFin,'listaDetalleAnaliticoAvancFinE'=>$listaDetalleAnaliticoAvancFinE]);
     }
+    function DetalleClasificador()
+    {
+        $this->load->view('front/Reporte/ProyectoInversion/detalleClasificador');
+    }
     public function GrafDetalleMensualizado()
     { 
        

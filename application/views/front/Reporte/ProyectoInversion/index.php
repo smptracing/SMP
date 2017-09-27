@@ -272,9 +272,9 @@ $("#CodigoUnico").on( "click", function()
 		        console.log(data);
 		        var ejecucionPresupuestal=JSON.parse(data); 
 		        var html;
-				html+="<thead><tr><th>AÑO EJECUCIÓN</th><th>COSTO ACTUAL</th><th>COSTO DE EXPEDIENTE</th><th>COSTO DE VIABILIDAD</th><th>COSTO DE EXP AÑO ANTERIOR</th><th>Ver</th></tr></thead>"
+				html+="<thead><tr><th>AÑO EJECUCIÓN</th><th>COSTO ACTUAL</th><th>COSTO DE EXPEDIENTE</th><th>COSTO DE VIABILIDAD</th><th>COSTO DE EXP AÑO ANTERIOR</th></tr></thead>"
 				$.each( ejecucionPresupuestal, function( key, value ) {
-				  html +="<tbody> <tr><th>"+value.ano_eje+"</th><th>"+(value.costo_actual).toLocaleString("en-ESP")+"</th><th>"+value.costo_expediente+"</th><th>"+value.costo_viabilidad+"</th><th>"+value.ejecucion_ano_anterior+"</th><th><button type='button' class='editar btn btn-primary btn-xs' onclick='detalleAnalitico("+value.ano_eje+","+codigounico+");'><i class='ace-icon fa fa-eye bigger-120'></i></button></th></tr>";      
+				  html +="<tbody> <tr><th><button type='button' class='editar btn btn-success btn-xs' onclick='detalleAnalitico("+value.ano_eje+","+codigounico+");'>"+value.ano_eje+"<i class='ace-icon bigger-120'></i></button><button type='button' class='clasificador btn btn-primary btn-xs' onclick='detalleClasificadorPip("+value.ano_eje+","+codigounico+");'>clasif.<i class='ace-icon bigger-120'></i></button></th><th>"+(value.costo_actual).toLocaleString("en-ESP")+"</th><th>"+value.costo_expediente+"</th><th>"+value.costo_viabilidad+"</th><th>"+value.ejecucion_ano_anterior+"</th></tr>";      
 						html +="</tbody>";
 				});
 				
@@ -965,17 +965,23 @@ $("#CodigoUnico").on( "click", function()
 	
 });
 
-	function detalladoMensualizado(anio,meta)
-	{
-		//paginaAjaxDialogo(null, 'Ver Detallado Mensualizado',null, base_url+'index.php/PrincipalReportes/DetalleMensualizado', 'GET', null, null, false, true);
-		paginaAjaxDialogo(null, 'Ver Detallado Mensualizado',{ anio: anio, meta:meta}, base_url+'index.php/PrincipalReportes/DetalleMensualizado', 'GET', null, null, false, true);
-	}
+	
 
 	function detalleAnalitico(anio,codigounico)
 	{
 		paginaAjaxDialogo(null, 'Analítico del Avance Financiero del Proyecto por año',{anio: anio,codigounico:codigounico}, base_url+'index.php/PrincipalReportes/DetalleAnalitico', 'GET', null, null, false, true);	
 	}
 
+	function detalleClasificadorPip(anio,codigounico)
+	{
+		paginaAjaxDialogo(null, 'Detalle de Clasificador por Pip',{anio: anio,codigounico:codigounico}, base_url+'index.php/PrincipalReportes/DetalleClasificador', 'GET', null, null, false, true);	
+	}
+
+	function detalladoMensualizado(anio,meta)
+	{
+		//paginaAjaxDialogo(null, 'Ver Detallado Mensualizado',null, base_url+'index.php/PrincipalReportes/DetalleMensualizado', 'GET', null, null, false, true);
+		paginaAjaxDialogo(null, 'Ver Detallado Mensualizado',{ anio: anio, meta:meta}, base_url+'index.php/PrincipalReportes/DetalleMensualizado', 'GET', null, null, false, true);
+	}
 	function detalladoMensualizadoFuenteFinan(anio,meta)
 	{
 		paginaAjaxDialogo(null, 'Ver Detalle',{ anio: anio, meta:meta}, base_url+'index.php/PrincipalReportes/DetalleMensualizadoFuenteFinan', 'GET', null, null, false, true);	
