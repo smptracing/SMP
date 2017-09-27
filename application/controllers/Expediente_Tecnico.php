@@ -439,7 +439,6 @@ class Expediente_Tecnico extends CI_Controller
 			foreach ($value->childMeta as $index => $item) 
 			{
 				$this->obtenerMetaAnidadaReporteF005($item);
-				
 			}
 	    } 
 
@@ -531,7 +530,7 @@ class Expediente_Tecnico extends CI_Controller
 
 		foreach($meta->childMeta as $key => $value)
 		{
-			$this->obtenerMetaAnidada($value);
+			$this->obtenerMetaAnidadaParaValorizacion($value);
 		}
 	}
 

@@ -37,7 +37,21 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 			{
 				for($i=0; $i<$expedienteTecnico->num_meses; $i++)
 				{
-					$htmlTemp.='<td style="background-color: #fff1b0;"><div><input type="text" style="display: none;width: 40px;" onkeyup="onKeyUpCalcularPrecio('.$value->cantidad.', '.$value->precio_unitario.', this);"></div><span class="spanMontoValorizacion">S/.0.00</span></td>';
+					$precioTotalMesValorizacionTemp=0;
+					$cantidadMesValorizacionTemp=0;
+
+					foreach($value->childDetallePartida->childMesValorizacion as $index => $item)
+					{
+						if($item->id_detalle_partida==$value->childDetallePartida->id_detalle_partida && $item->numero_mes==($i+1))
+						{
+							$precioTotalMesValorizacionTemp=$item->precio;
+							$cantidadMesValorizacionTemp=$item->cantidad;
+
+							break;
+						}
+					}
+
+					$htmlTemp.='<td style="background-color: #fff1b0;"><div><input type="text" style="display: none;width: 40px;" value="'.$cantidadMesValorizacionTemp.'" onkeyup="onKeyUpCalcularPrecio('.$value->cantidad.', '.$value->precio_unitario.', this);"></div><span class="spanMontoValorizacion">S/.'.number_format($precioTotalMesValorizacionTemp, 2).'</span></td>';
 				}
 			}
 
