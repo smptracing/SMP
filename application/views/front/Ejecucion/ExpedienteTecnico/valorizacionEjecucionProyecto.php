@@ -54,7 +54,12 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 }
 ?>
 <style>
-	#tableValorizacion th, #tableValorizacion td
+	#tableValorizacion td input[type="text"]
+	{
+		text-align: center;
+	}
+
+	#tableValorizacion td, #tableValorizacion th
 	{
 		border: 1px solid #999999;
 		font-size: 10px;
