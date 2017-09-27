@@ -51,7 +51,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 						}
 					}
 
-					$htmlTemp.='<td style="background-color: #fff1b0;"><div><input type="text" style="display: none;width: 40px;" value="'.$cantidadMesValorizacionTemp.'" onkeyup="onKeyUpCalcularPrecio('.$value->cantidad.', '.$value->precio_unitario.', '.$value->childDetallePartida->id_detalle_partida.', '.($i+1).', this);"></div><span class="spanMontoValorizacion">S/.'.number_format($precioTotalMesValorizacionTemp, 2).'</span></td>';
+					$htmlTemp.='<td style="background-color: #fff1b0;"><div><input type="text" style="display: none;width: 40px;" value="'.$cantidadMesValorizacionTemp.'" onkeyup="onKeyUpCalcularPrecio('.$value->cantidad.', '.$value->precio_unitario.', '.$value->childDetallePartida->id_detalle_partida.', '.($i+1).', this, event);"></div><span class="spanMontoValorizacion">S/.'.number_format($precioTotalMesValorizacionTemp, 2).'</span></td>';
 				}
 			}
 
@@ -173,7 +173,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 		});
 	});
 
-	function onKeyUpCalcularPrecio(cantidad, precioUnitario, idDetallePartida, numeroMes, element)
+	function onKeyUpCalcularPrecio(cantidad, precioUnitario, idDetallePartida, numeroMes, element, event)
 	{
 		var cantidadTemp=$(element).val();
 

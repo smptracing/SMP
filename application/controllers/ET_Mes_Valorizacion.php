@@ -23,7 +23,16 @@ class ET_Mes_Valorizacion extends CI_Controller
 				$cantidad=$this->input->post('cantidad');
 				$precio=$this->input->post('precio');
 
-				$this->Model_ET_Mes_Valorizacion->insertar($idDetallePartida, 'NULL', $numeroMes, $cantidad, $precio);
+				$etMesValorizacionTemp=$this->Model_ET_Mes_Valorizacion->ETMesValorizacionPorIdDetallePartidaAndNumeroMes($idDetallePartida, $numeroMes);
+
+				if($etMesValorizacionTemp==null)
+				{
+					$this->Model_ET_Mes_Valorizacion->insertar($idDetallePartida, 'NULL', $numeroMes, $cantidad, $precio);
+				}
+				else
+				{
+					$this->Model_ET_Mes_Valorizacion->editarCantidadYPrecio($etMesValorizacionTemp->id_mes_valorizacion, $cantidad, $precio);
+				}
 
 				$this->db->trans_complete();
 

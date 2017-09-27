@@ -21,4 +21,18 @@ class Model_ET_Mes_Valorizacion extends CI_Model
 
 		return $data->result();
 	}
+
+	function ETMesValorizacionPorIdDetallePartidaAndNumeroMes($idDetallePartida, $numeroMes)
+	{
+		$data=$this->db->query("select * from ET_MES_VALORIZACION where id_detalle_partida=$idDetallePartida and numero_mes=$numeroMes");
+
+		return count($data->result())==0 ? null : $data->result()[0];
+	}
+
+	function editarCantidadYPrecio($idMesValorizacion, $cantidad, $precio)
+	{
+		$this->db->query("execute sp_Gestionar_ETMesValorizacion @opcion='editarCantidadYPrecio', @idMesValorizacion=$idMesValorizacion, @cantidad=$cantidad, @precio=$precio");
+
+		return true;
+	}
 }
