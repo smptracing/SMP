@@ -956,8 +956,7 @@ $("#CodigoUnico").on( "click", function()
 						if (option && typeof option === "object") {
 						    myChart.setOption(option, true);
 						}
-						
-												
+					
 				}
 
 			});

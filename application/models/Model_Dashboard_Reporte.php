@@ -151,6 +151,14 @@ class Model_Dashboard_Reporte extends CI_Model
             return $data->result();
     }
 
+    function DetalleMensualizadoMetaEst($correlativoMeta, $anioMeta)
+    {
+        $opcion="listar_mensualizado_meta";
+        $data = $this->db->query("execute sp_Gestionar_SIAF @opcion='".$opcion."',  @correlativo_meta='".$correlativoMeta."', @anio_meta='".$anioMeta."'");
+            
+            return $data->result()[0];
+    }
+
     function DetalleMensualizadoMetaFuente($correlativoMeta, $anioMeta)
     {
         $opcion="listar_acumulado_meta_fuente_financ";

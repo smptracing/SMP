@@ -34,7 +34,28 @@
 								<!-- /Contenido del sector -->
 								<div role="tabpanel" class="tab-pane fade active in" id="tab_Sector" aria-labelledby="home-tab">
 									<!-- /tabla de sector desde el row -->
+									<div class="row">
+						                <div class="col-md-12 col-sm-12 col-xs-12">
 										
+					                        <div>
+					                        	<table id="table-DatoGen"  class="table-hover" cellspacing="0" width="100%">
+												<body>
+													
+													<tr>
+														<td>AÑO: <?=$listaDetalleMensualizadoEst->ano_eje;?>  </td>
+													</tr>
+													<tr>
+														<td>CORRELATIVO META: <?=$listaDetalleMensualizadoEst->meta;?>  </td>
+													</tr>
+											
+												</body>
+											</table>
+
+					                        </div>
+
+						                </div>
+						        	</div>
+									<br>	
 									<div class="row">  
 										<div class="col-md-12 col-sm-12 col-xs-12">
 											<table id="table-DetalleMensualizado"  class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
