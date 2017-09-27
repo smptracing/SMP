@@ -30,8 +30,8 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 				'<td style="text-align: left;">'.$value->desc_partida.'</td>'.
 				'<td>'.$value->descripcion.'</td>'.
 				'<td>'.$value->cantidad.'</td>'.
-				'<td style="text-align: right;">S/.'.$value->precio_unitario.'</td>'.
-				'<td style="text-align: right;">S/.'.number_format($value->cantidad*$value->precio_unitario, 2).'</td>';
+				'<td>S/.'.$value->precio_unitario.'</td>'.
+				'<td>S/.'.number_format($value->cantidad*$value->precio_unitario, 2).'</td>';
 
 			if($expedienteTecnico->num_meses!=null)
 			{
@@ -51,7 +51,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 						}
 					}
 
-					$htmlTemp.='<td style="background-color: #fff1b0;"><div><input type="text" style="display: none;width: 40px;" value="'.$cantidadMesValorizacionTemp.'" onkeyup="onKeyUpCalcularPrecio('.$value->cantidad.', '.$value->precio_unitario.', '.$value->childDetallePartida->id_detalle_partida.', '.($i+1).', this, event);"></div><span class="spanMontoValorizacion">S/.'.number_format($precioTotalMesValorizacionTemp, 2).'</span></td>';
+					$htmlTemp.='<td style="background-color: #fff1b0;"><div><input type="text" style="display: none;padding: 0px;width: 40px;" value="'.$cantidadMesValorizacionTemp.'" onkeyup="onKeyUpCalcularPrecio('.$value->cantidad.', '.$value->precio_unitario.', '.$value->childDetallePartida->id_detalle_partida.', '.($i+1).', this, event);"></div><span class="spanMontoValorizacion">S/.'.number_format($precioTotalMesValorizacionTemp, 2).'</span></td>';
 				}
 			}
 
@@ -113,15 +113,15 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 									<?php } ?>
 								</tr>
 								<tr>
-									<th style="width: 70px;">ÍTEM</th>
-									<th style="width: 500px;">DESCRIPCIÓN</th>
-									<th style="width: 100px;">UND.</th>
-									<th style="width: 100px;">CANT.</th>
-									<th style="width: 100px;">P.U.</th>
-									<th style="width: 100px;">TOTAL</th>
+									<th>ÍTEM</th>
+									<th>DESCRIPCIÓN</th>
+									<th>UND.</th>
+									<th>CANT.</th>
+									<th>P.U.</th>
+									<th>TOTAL</th>
 									<?php if($expedienteTecnico->num_meses!=null){
 										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
-											<th style="width: 85px;">M<?=($i+1)?></th>
+											<th>M<?=($i+1)?></th>
 										<?php }
 									} ?>
 								</tr>
@@ -157,8 +157,6 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 <script>
 	$(document).on('ready', function()
 	{
-		$('#tableValorizacion').css({ "width" : "<?=($expedienteTecnico->num_meses==null ? 0 : ($expedienteTecnico->num_meses*85)+1200)?>px" });
-
 		$('.spanMontoValorizacion').on('click', function()
 		{
 			if($(this).parent().find('input[type="text"]').is(':visible'))
@@ -175,25 +173,45 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 
 	function onKeyUpCalcularPrecio(cantidad, precioUnitario, idDetallePartida, numeroMes, element, event)
 	{
-		var cantidadTemp=$(element).val();
+		var evt=event || window.event;
 
-		if(isNaN(cantidadTemp) || cantidadTemp.trim()=='')
+		var code=0;
+
+		if(evt!='noEventHandle')
 		{
-			return;
+			code=evt.charCode || evt.keyCode || evt.which;
 		}
 
-		var monto=cantidadTemp*precioUnitario;
-
-		paginaAjaxJSON({ idDetallePartida : idDetallePartida, numeroMes : numeroMes, cantidad : cantidadTemp, precio : monto.toFixed(2) }, '<?=base_url()?>index.php/ET_Mes_Valorizacion/insertar', 'POST', null, function(objectJSON)
+		if(code==13)
 		{
-			objectJSON=JSON.parse(objectJSON);
+			var cantidadTemp=$(element).val();
 
-			if(objectJSON.proceso=='Error')
+			if(isNaN(cantidadTemp) || cantidadTemp.trim()=='')
 			{
-				return false;
+				return;
 			}
 
-			$($(element).parent().parent().find('span')[0]).text('S/.'+monto.toFixed(2));
-		}, false, true);
+			var monto=cantidadTemp*precioUnitario;
+
+			paginaAjaxJSON({ idDetallePartida : idDetallePartida, numeroMes : numeroMes, cantidad : cantidadTemp, precio : monto.toFixed(2) }, '<?=base_url()?>index.php/ET_Mes_Valorizacion/insertar', 'POST', null, function(objectJSON)
+			{
+				objectJSON=JSON.parse(objectJSON);
+
+				if(objectJSON.proceso=='Error')
+				{
+					swal(
+					{
+						title: '',
+						text: objectJSON.mensaje,
+						type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
+					},
+					function(){});
+
+					return false;
+				}
+
+				$($(element).parent().parent().find('span')[0]).text('S/.'+monto.toFixed(2));
+			}, false, true);
+		}
 	}
 </script>

@@ -8,6 +8,7 @@ class ET_Mes_Valorizacion extends CI_Controller
 		parent::__construct();
 
 		$this->load->model("Model_ET_Mes_Valorizacion");
+		$this->load->model("Model_ET_Detalle_Partida");
 	}
 
 	public function insertar()
@@ -32,6 +33,16 @@ class ET_Mes_Valorizacion extends CI_Controller
 				else
 				{
 					$this->Model_ET_Mes_Valorizacion->editarCantidadYPrecio($etMesValorizacionTemp->id_mes_valorizacion, $cantidad, $precio);
+				}
+
+				$sumatoriaPrecio=$this->Model_ET_Mes_Valorizacion->sumPrecioPorIdDetallePartida($idDetallePartida);
+				$etDetallePartida=$this->Model_ET_Detalle_Partida->ETDetallePartida($idDetallePartida);
+
+				if($etDetallePartida->parcial<$sumatoriaPrecio)
+				{
+					$this->db->trans_rollback();
+
+					echo json_encode(['proceso' => 'Error', 'mensaje' => 'El monto calculado de la sumatoria total de meses no puede ser mayor al destinado en la partida.']);exit;
 				}
 
 				$this->db->trans_complete();
