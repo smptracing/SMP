@@ -227,7 +227,8 @@ class PrincipalReportes extends CI_Controller
         $anio=$this->input->GET('anio');
         $codigounico=$this->input->GET('codigounico');
         $listaDetalleClasificador=$this->Model_Dashboard_Reporte->ReporteDetalleClasificador($anio,$codigounico);
-        $this->load->view('front/Reporte/ProyectoInversion/detalleClasificador',['listaDetalleClasificador'=>$listaDetalleClasificador]);
+        $listaDetalleClasificadorFijos=$this->Model_Dashboard_Reporte->ReporteDetalleClasificadorFijos($anio,$codigounico);
+        $this->load->view('front/Reporte/ProyectoInversion/detalleClasificador',['listaDetalleClasificador'=>$listaDetalleClasificador,'listaDetalleClasificadorFijos'=>$listaDetalleClasificadorFijos]);
     }
     public function GrafDetalleMensualizado()
     { 

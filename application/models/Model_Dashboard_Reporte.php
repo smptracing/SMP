@@ -222,6 +222,14 @@ class Model_Dashboard_Reporte extends CI_Model
         return $data->result();
     }
 
+    function ReporteDetalleClasificadorFijos($anio,$codigounico)
+    {
+        $opcion="listar_montos_proyecto_por_clasificadores";
+        $data = $this->db->query("execute sp_Gestionar_SIAF @opcion='".$opcion."',  @anio_meta='".$anio."', @codigo_snip='".$codigounico."'");
+        
+        return $data->result()[0];
+    }
+
     /*function ReporteConsolidadoAvanceFisicoFinan($anio)
     {
         $opcion="calificacion_seguimiento_certificado_a_devengado";

@@ -40,9 +40,9 @@
 											<table id="table-DetalleClasificador"  class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 												<thead>
 													<tr>
-														<td>Tipo de transacción</td>
+														<!--<td>Tipo de transacción</td>
 														<td>Generica</td>
-														<td>Descripción Generica</td>
+														<td>Descripción Generica</td>-->
 														<td>Sub generica</td>
 														<td>Descripción Sub generica</td>
 														<td>Específica </td>
@@ -60,9 +60,12 @@
 													</tr>
 												</thead>
 												<tbody>
+													<tr><td colspan="14"><?=$listaDetalleClasificadorFijos->tipo_transaccion ?></td></tr>
+													<tr><td colspan="14"><?=$listaDetalleClasificadorFijos->generica,' ', $listaDetalleClasificadorFijos->desc_generica ?></td></tr>
+
 													<?php foreach($listaDetalleClasificador as $item ){ ?>
 													  	<tr>
-															<td>
+															<!--<td>
 																<?=$item->tipo_transaccion?>
 													    	</td>
 													    	<td>
@@ -70,7 +73,7 @@
 													    	</td>
 													    	<td>
 																<?=$item->desc_generica?>
-													    	</td>
+													    	</td>-->
 													    	<td>
 																<?=$item->sub_generica?>
 													    	</td>
@@ -81,7 +84,7 @@
 																<?=$item->especifica?>
 													    	</td>
 													    	<td>
-																<?=$item->especifica?>
+																<?=$item->desc_especifica?>
 													    	</td>
 													    	<td>
 																<?=$item->especifica_det?>
