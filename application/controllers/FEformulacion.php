@@ -182,6 +182,20 @@ class FEformulacion extends CI_Controller
         $this->load->view('Front/Formulacion_Evaluacion/ProyectosFormulacion/index');
         $this->load->view('layout/Formulacion_Evaluacion/footer');
     }
+    //Nuevo refactorizacion
+     
+    public function UFEstudioInversionFormulacionFormulador()
+    {
+        $listarEstudioFormulacionlacionForulador = $this->FEformulacion_Modal->UFEstudioInversionFormulacion();
+        /*foreach ($data as $key => $value) 
+        {
+            $value->costo_estudio = a_number_format($value->costo_estudio , 2, '.',",",3);
+        }*/
+        $this->load->view('layout/Formulacion_Evaluacion/header');
+        $this->load->view('Front/Formulacion_Evaluacion/ProyectosFormulacion/index',['listarEstudioFormulacionlacionForulador' =>$listarEstudioFormulacionlacionForulador]);
+        $this->load->view('layout/Formulacion_Evaluacion/footer');
+    }
+    //fin nueva refatorizacion 
 
 
 
