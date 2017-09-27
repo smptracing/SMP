@@ -104,9 +104,33 @@
                                 <span>Software de Seguimiento y Monitoreo de los PIPs</span>                                
                             </div>
                             <div class="col-md-12 container-box">
-                                <div class="col-md-12 box-slider" style="background-color: #ceebe5; border:1px solid #5fbeaa; box-shadow: 1px 3px 3px #888888;">
-                                    <span>Software de Seguimiento y Monitoreo de los PIPs</span>                                
+                                <!--<div class="col-md-12 box-slider" style="background-color: #ceebe5; border:1px solid #5fbeaa; box-shadow: 1px 3px 3px #888888; overflow-x: scroll;">
+                                    <div style="width:2120px;">
+                                        <div style="background-color: blue; width: 700px;">
+                                            <span>Software de Seguimiento y Monitoreo de los PIPs</span>
+                                        </div>
+                                        <div style="background-color: red; width: 700px;">
+                                            <span>Software de Seguimiento y Monitoreo de los PIPs</span>
+                                        </div>
+                                        <div style="background-color: green; width: 700px;">
+                                            <span>Software de Seguimiento y Monitoreo de los PIPs</span>
+                                        </div>   
+                                    </div>                            
+                                </div>-->
+                                <div class="box-slider col-md-12" style="background-color: #ceebe5; border:1px solid #5fbeaa; box-shadow: 1px 3px 3px #888888; overflow:hidden;" id="slider">
+                                    <div style="width:1508px;">
+                                        <div style="background-color: blue;display: inline-block; width: 500px;">
+                                            <span>Software de Seguimiento y Monitoreo de los PIPs</span>
+                                        </div>
+                                        <div style="background-color: red;display: inline-block; width: 500px;">
+                                            <span>Software de Seguimiento y Monitoreo de los PIPs</span>
+                                        </div>
+                                        <div style="background-color: green;display: inline-block; width: 500px;">
+                                            <span>Software de Seguimiento y Monitoreo de los PIPs</span>
+                                        </div>   
+                                    </div>                            
                                 </div>
+
                                 <div class="col-md-12 box-slider" style="background-color: #e3e0f1; border:1px solid #7266ba; box-shadow: 1px 3px 3px #888888;">
                                     <span>Software de Seguimiento y Monitoreo de los PIPs</span>                                
                                 </div>    
@@ -125,7 +149,7 @@
                                     <p class="login-box-msg">Iniciar Sesión</p>
                                     <form method="post" action="<?php echo base_url("index.php/Login/ingresar");?>">
                                         <div class="form-group has-feedback">
-                                            <input type="text" class="form-control" placeholder="Usuario" name="txtUsuario" id="txtUsuario">
+                                            <input type="text" class="form-control" placeholder="Usuario" name="txtUsuario" id="txtUsuario" autocomplete="off">
                                             <span class="glyphicon glyphicon-user form-control-feedback"></span>
                                         </div>
                                         <div class="form-group has-feedback">
@@ -151,6 +175,25 @@
                         
                     </div>
                 </div>
+                <!--<div class="row">
+                    <div class="col-md-1">
+                        <button id="btnLeft" name="btnLeft"><</button>
+                    </div>
+                    <div style="background-color: pink; height: 70px;width: 900px;overflow: hidden;" id="slider">
+                        
+                        <div style="width: 2120px;">
+                            <div class="boxslider" style="display: inline-block;background-color: blue; height: 70px; width: 700px;">                            
+                            </div>
+                            <div class="boxslider" style="display: inline-block;background-color: red; height: 70px; width: 700px;">                                
+                            </div>
+                            <div class="boxslider" style="display: inline-block;background-color: green; height: 70px; width: 700px;">                              
+                            </div>
+                        </div>                                              
+                    </div>
+                    <div class="col-md-1" style="text-align: right;">
+                        <button id="btnRight" name="btnRight">></button>                            
+                    </div>
+                </div>-->
             </section>
         </div>
     </div>
@@ -162,6 +205,32 @@
 <script src="<?php echo base_url(); ?>assets/adminlte/app.min.js"> </script>
 <script src="<?php echo base_url(); ?>assets/adminlte/adminlte.min.js"> </script>
 <script src="<?php echo base_url(); ?>assets/adminlte/demo.js"> </script>
+<script>
+    /*$('#btnLeft').on('click', function()
+    {
+        //var temporal=$($(this).parent().find('.galeria'));
+        var temporal = $(this).parent().parent();
+        var temp = $('#slider')
+        temp.stop().animate({scrollLeft: temp.scrollLeft()+151}, 500);
+    });
+    $('#btnRight').on('click', function()
+    {
+        var temporal = $(this).parent().parent();
+        var temp = $('#slider')
+        temp.stop().animate({scrollLeft: temp.scrollLeft()-151}, 500);
+    });*/
+    function AvanzarSlider()
+    {
+        var temp = $('#slider')
+        temp.stop().animate({scrollLeft: temp.scrollLeft()+151}, 500);
+        setTimeout(function(){AvanzarSlider();},5000);
+    }
+
+    $(document).on('ready', function()
+    {
+        AvanzarSlider();
+    })
+</script>
 </body>
 </html>
 
