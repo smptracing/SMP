@@ -5,7 +5,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 
 	$htmlTemp.='<tr>'.
 		'<td><b><i>'.$meta->numeracion.'</i></b></td>'.
-		'<td style="text-align: left;"><b><i>'.$meta->desc_meta.'</i></b></td>'.
+		'<td style="text-align: left;"><b><i>'.html_escape($meta->desc_meta).'</i></b></td>'.
 		'<td>---</td>'.
 		'<td>---</td>'.
 		'<td>---</td>'.
@@ -27,8 +27,8 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 		{
 			$htmlTemp.='<tr>'.
 				'<td>'.$value->numeracion.'</td>'.
-				'<td style="text-align: left;">'.$value->desc_partida.'</td>'.
-				'<td>'.$value->descripcion.'</td>'.
+				'<td style="text-align: left;">'.html_escape($value->desc_partida).'</td>'.
+				'<td>'.html_escape($value->descripcion).'</td>'.
 				'<td>'.$value->cantidad.'</td>'.
 				'<td>S/.'.$value->precio_unitario.'</td>'.
 				'<td>S/.'.number_format($value->cantidad*$value->precio_unitario, 2).'</td>';
@@ -107,7 +107,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 							<thead>
 								<tr>
 									<th>PROY:</th>
-									<th colspan="5"><?=$expedienteTecnico->nombre_pi?></th>
+									<th colspan="5"><?=html_escape($expedienteTecnico->nombre_pi)?></th>
 									<?php if($expedienteTecnico->num_meses!=null){ ?>
 										<th colspan="<?=$expedienteTecnico->num_meses?>">CRONOGRAMA VALORIZADO DE EJECUCIÓN DEL PROYECTO</th>
 									<?php } ?>
@@ -130,7 +130,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 								<?php foreach($expedienteTecnico->childComponente as $key => $value){ ?>
 									<tr>
 										<td><b><i><?=$value->numeracion?></i></b></td>
-										<td style="text-align: left;"><b><i><?=$value->descripcion?></i></b></td>
+										<td style="text-align: left;"><b><i><?=html_escape($value->descripcion)?></i></b></td>
 										<td>---</td>
 										<td>---</td>
 										<td>---</td>
