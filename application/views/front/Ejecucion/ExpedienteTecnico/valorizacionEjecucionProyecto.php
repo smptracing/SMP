@@ -51,7 +51,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 						}
 					}
 
-					$htmlTemp.='<td style="background-color: #fff1b0;"><div><input type="text" style="display: none;width: 40px;" value="'.$cantidadMesValorizacionTemp.'" onkeyup="onKeyUpCalcularPrecio('.$value->cantidad.', '.$value->precio_unitario.', this);"></div><span class="spanMontoValorizacion">S/.'.number_format($precioTotalMesValorizacionTemp, 2).'</span></td>';
+					$htmlTemp.='<td style="background-color: #fff1b0;"><div><input type="text" style="display: none;width: 40px;" value="'.$cantidadMesValorizacionTemp.'" onkeyup="onKeyUpCalcularPrecio('.$value->cantidad.', '.$value->precio_unitario.', '.$value->childDetallePartida->id_detalle_partida.', '.($i+1).', this);"></div><span class="spanMontoValorizacion">S/.'.number_format($precioTotalMesValorizacionTemp, 2).'</span></td>';
 				}
 			}
 
@@ -173,19 +173,27 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 		});
 	});
 
-	function onKeyUpCalcularPrecio(cantidad, precioUnitario, element)
+	function onKeyUpCalcularPrecio(cantidad, precioUnitario, idDetallePartida, numeroMes, element)
 	{
 		var cantidadTemp=$(element).val();
 
-		if(isNaN(cantidadTemp))
+		if(isNaN(cantidadTemp) || cantidadTemp.trim()=='')
 		{
-			$($(element).parent().parent().find('span')[0]).text('S/.0.00');
-
 			return;
 		}
 
 		var monto=cantidadTemp*precioUnitario;
 
-		$($(element).parent().parent().find('span')[0]).text('S/.'+monto.toFixed(2));
+		paginaAjaxJSON({ idDetallePartida : idDetallePartida, numeroMes : numeroMes, cantidad : cantidadTemp, precio : monto.toFixed(2) }, '<?=base_url()?>index.php/ET_Mes_Valorizacion/insertar', 'POST', null, function(objectJSON)
+		{
+			objectJSON=JSON.parse(objectJSON);
+
+			if(objectJSON.proceso=='Error')
+			{
+				return false;
+			}
+
+			$($(element).parent().parent().find('span')[0]).text('S/.'+monto.toFixed(2));
+		}, false, true);
 	}
 </script>
