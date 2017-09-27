@@ -974,7 +974,7 @@ $("#CodigoUnico").on( "click", function()
 
 	function detalleClasificadorPip(anio,codigounico)
 	{
-		paginaAjaxDialogo(null, 'Detalle de Clasificador por Pip',{anio: anio,codigounico:codigounico}, base_url+'index.php/PrincipalReportes/DetalleClasificador', 'GET', null, null, false, true);	
+		paginaAjaxDialogo(null, 'Detalle de Clasificador por PIP',{anio: anio,codigounico:codigounico}, base_url+'index.php/PrincipalReportes/DetalleClasificador', 'GET', null, null, false, true);	
 	}
 
 	function detalladoMensualizado(anio,meta)
