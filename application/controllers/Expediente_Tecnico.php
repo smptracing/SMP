@@ -24,6 +24,7 @@ class Expediente_Tecnico extends CI_Controller
 		$this->load->model('Model_ET_Detalle_Partida');
 		$this->load->model('Model_ET_Detalle_Analisis_Unitario');
 		$this->load->model('Model_ET_Tarea');
+		$this->load->model('Model_ET_Mes_Valorizacion');
 
 		$this->load->library('mydompdf');
 	}
@@ -461,7 +462,7 @@ class Expediente_Tecnico extends CI_Controller
 
 			foreach($value->childMeta as $index => $item)
 			{
-				$this->obtenerMetaAnidada($item);
+				$this->obtenerMetaAnidadaParaValorizacion($item);
 			}
 		}
 
@@ -498,6 +499,32 @@ class Expediente_Tecnico extends CI_Controller
 		if(count($temp)==0)
 		{
 			$meta->childPartida=$this->Model_ET_Partida->ETPartidaPorIdMeta($meta->id_meta);
+
+			return false;
+		}
+
+		foreach($meta->childMeta as $key => $value)
+		{
+			$this->obtenerMetaAnidada($value);
+		}
+	}
+
+	private function obtenerMetaAnidadaParaValorizacion($meta)
+	{
+		$temp=$this->Model_ET_Meta->ETMetaPorIdMetaPadre($meta->id_meta);
+
+		$meta->childMeta=$temp;
+
+		if(count($temp)==0)
+		{
+			$meta->childPartida=$this->Model_ET_Partida->ETPartidaPorIdMeta($meta->id_meta);
+
+			foreach($meta->childPartida as $key => $value)
+			{
+				$value->childDetallePartida=$this->Model_ET_Detalle_Partida->ETDetallePartidaPorIdPartidaParaValorizacion($value->id_partida);
+
+				$value->childDetallePartida->childMesValorizacion=$this->Model_ET_Mes_Valorizacion->ETMesValorizacionPorIdDetallePartida($value->childDetallePartida->id_detalle_partida);
+			}
 
 			return false;
 		}
