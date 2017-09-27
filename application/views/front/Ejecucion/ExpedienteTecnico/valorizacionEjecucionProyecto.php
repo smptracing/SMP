@@ -176,6 +176,14 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 	function onKeyUpCalcularPrecio(cantidad, precioUnitario, element)
 	{
 		var cantidadTemp=$(element).val();
+
+		if(isNaN(cantidadTemp))
+		{
+			$($(element).parent().parent().find('span')[0]).text('S/.0.00');
+
+			return;
+		}
+
 		var monto=cantidadTemp*precioUnitario;
 
 		$($(element).parent().parent().find('span')[0]).text('S/.'+monto.toFixed(2));
