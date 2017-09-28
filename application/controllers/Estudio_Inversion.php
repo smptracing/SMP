@@ -318,6 +318,10 @@ class Estudio_Inversion extends CI_Controller
         $this->load->view('front/Formulacion_Evaluacion/EstudioCoordinador/index',['listarEstudioCoordinadorFuncion'=>$listarEstudioCoordinadorFuncion]);
         $this->load->view('layout/Formulacion_Evaluacion/footer');
     }
+    public function AsignarFormulador()
+    {
+         $this->load->view('front/Formulacion_Evaluacion/EstudioCoordinador/AsignarFormulador.php');
+    }
 //------------------------------------------------------------------------------------------------------------------
 
     public function _load_layout($template)
