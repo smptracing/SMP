@@ -33,7 +33,7 @@
             margin:10px;
             padding: 20px;
             text-align: center;
-            box-shadow:             
+            height: 180px;       
         }
         .log-box
         {
@@ -81,6 +81,29 @@
                 padding-bottom: 0px;
             }
         }
+        .body {
+          background-color: #333333;
+        }
+        .carousel-inner{
+            text-align: center;
+        }
+
+        .carousel-content {
+            color:black;
+            /*display:flex;*/
+            align-items:center;
+        }
+
+        #text-carousel {
+          width: 100%;
+          height: auto;
+          padding: 0px;
+        }
+        .msg{
+            text-align: center;
+            color: black;
+            font-size: 15px;
+        }
     </style>
 </head>
 
@@ -104,40 +127,116 @@
                                 <span>Software de Seguimiento y Monitoreo de los PIPs</span>                                
                             </div>
                             <div class="col-md-12 container-box">
-                                <!--<div class="col-md-12 box-slider" style="background-color: #ceebe5; border:1px solid #5fbeaa; box-shadow: 1px 3px 3px #888888; overflow-x: scroll;">
-                                    <div style="width:2120px;">
-                                        <div style="background-color: blue; width: 700px;">
-                                            <span>Software de Seguimiento y Monitoreo de los PIPs</span>
-                                        </div>
-                                        <div style="background-color: red; width: 700px;">
-                                            <span>Software de Seguimiento y Monitoreo de los PIPs</span>
-                                        </div>
-                                        <div style="background-color: green; width: 700px;">
-                                            <span>Software de Seguimiento y Monitoreo de los PIPs</span>
-                                        </div>   
-                                    </div>                            
-                                </div>-->
-                                <div class="box-slider col-md-12" style="background-color: #ceebe5; border:1px solid #5fbeaa; box-shadow: 1px 3px 3px #888888; overflow:hidden;" id="slider">
-                                    <div style="width:1508px;">
-                                        <div style="background-color: blue;display: inline-block; width: 500px;">
-                                            <span>Software de Seguimiento y Monitoreo de los PIPs</span>
-                                        </div>
-                                        <div style="background-color: red;display: inline-block; width: 500px;">
-                                            <span>Software de Seguimiento y Monitoreo de los PIPs</span>
-                                        </div>
-                                        <div style="background-color: green;display: inline-block; width: 500px;">
-                                            <span>Software de Seguimiento y Monitoreo de los PIPs</span>
-                                        </div>   
-                                    </div>                            
+                                <div class="box-slider col-md-12" style="background-color: #ceebe5; border:1px solid #5fbeaa; box-shadow: 1px 3px 3px #888888;"">
+                                    <div class="row">
+                                        <div id="text-carousel" class="carousel slide" data-ride="carousel">
+                                            <div class="row">
+                                                <div class="col-xs-offset-3 col-xs-6">
+                                                    <div class="carousel-inner">
+                                                        <div class="item active">
+                                                            <div class="carousel-content">
+                                                                <div class="msg">
+                                                                    <p ><?=$Reporte[0]->nombre_funcion?></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <?php foreach($Reporte as $item ) { ?>  
+                                                        <div class="item">
+                                                            <div class="carousel-content">
+                                                                <div class="msg">
+                                                                    <p><?=$item->nombre_funcion?></p>
+                                                                    <p><?=$item->cantidad_pip?> Proyectos Registrados.</p>
+                                                                    <p><?=$item->total_beneficiarios?> Beneficiarios.</p>
+                                                                    <p>S/. <?=$item->costo_total?></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <?php } ?>                                 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a class="left carousel-control" href="#text-carousel" data-slide="prev">
+                                                <span class="glyphicon glyphicon-chevron-left"></span>
+                                            </a>
+                                            <a class="right carousel-control" href="#text-carousel" data-slide="next">
+                                                <span class="glyphicon glyphicon-chevron-right"></span>
+                                            </a>
+                                        </div>                   
+                                    </div>                   
                                 </div>
 
-                                <div class="col-md-12 box-slider" style="background-color: #e3e0f1; border:1px solid #7266ba; box-shadow: 1px 3px 3px #888888;">
-                                    <span>Software de Seguimiento y Monitoreo de los PIPs</span>                                
+                                <!--<div class="col-md-12 box-slider" style="background-color: #e3e0f1; border:1px solid #7266ba; box-shadow: 1px 3px 3px #888888;">
+                                    <div class="row">
+                                        <div id="text-carousel" class="carousel slide" data-ride="carousel">
+                                            <div class="row">
+                                                <div class="col-xs-offset-3 col-xs-6">
+                                                    <div class="carousel-inner">
+                                                        <div class="item active">
+                                                            <div class="carousel-content">
+                                                                <div class="msg">
+                                                                    <p><?=$Reporte[0]->cantidad_pip?></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <?php foreach($Reporte as $item ) { ?>  
+                                                        <div class="item">
+                                                            <div class="carousel-content">
+                                                                <div class="msg">
+                                                                    <p><?=$item->cantidad_pip?></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <?php } ?>  
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a class="left carousel-control" href="#text-carousel" data-slide="prev">
+                                                <span class="glyphicon glyphicon-chevron-left"></span>
+                                            </a>
+                                            <a class="right carousel-control" href="#text-carousel" data-slide="next">
+                                                <span class="glyphicon glyphicon-chevron-right"></span>
+                                            </a>
+                                        </div>                   
+                                    </div>                                   
                                 </div>    
                                 <div class="col-md-12 box-slider" style="background-color: #fff2db; border:1px solid #ffbd4a; box-shadow: 1px 3px 3px #888888;">
-                                    <span>Software de Seguimiento y Monitoreo de los PIPs</span>                                
+                                    <div class="row">
+                                        <div id="text-carousel" class="carousel slide" data-ride="carousel">
+                                            <div class="row">
+                                                <div class="col-xs-offset-3 col-xs-6">
+                                                    <div class="carousel-inner">
+                                                        <div class="item active">
+                                                            <div class="carousel-content">
+                                                                <div>
+                                                                    <p><?=$Reporte[0]->costo_total?></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <?php foreach($Reporte as $item ) { ?>  
+                                                        <div class="item">
+                                                            <div class="carousel-content">
+                                                                <div>
+                                                                    <p><?=$item->costo_total?></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <?php } ?>  
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a class="left carousel-control" href="#text-carousel" data-slide="prev">
+                                                <span class="glyphicon glyphicon-chevron-left"></span>
+                                            </a>
+                                            <a class="right carousel-control" href="#text-carousel" data-slide="next">
+                                                <span class="glyphicon glyphicon-chevron-right"></span>
+                                            </a>
+                                        </div>                   
+                                    </div>                                   
                                 </div>                                                            
-                            </div>                          
+                            </div>-->     
+                            </div>                     
                             
                         </div>
                         <div class="col-md-6" style="background-color: #ebeff2;">
@@ -175,25 +274,6 @@
                         
                     </div>
                 </div>
-                <!--<div class="row">
-                    <div class="col-md-1">
-                        <button id="btnLeft" name="btnLeft"><</button>
-                    </div>
-                    <div style="background-color: pink; height: 70px;width: 900px;overflow: hidden;" id="slider">
-                        
-                        <div style="width: 2120px;">
-                            <div class="boxslider" style="display: inline-block;background-color: blue; height: 70px; width: 700px;">                            
-                            </div>
-                            <div class="boxslider" style="display: inline-block;background-color: red; height: 70px; width: 700px;">                                
-                            </div>
-                            <div class="boxslider" style="display: inline-block;background-color: green; height: 70px; width: 700px;">                              
-                            </div>
-                        </div>                                              
-                    </div>
-                    <div class="col-md-1" style="text-align: right;">
-                        <button id="btnRight" name="btnRight">></button>                            
-                    </div>
-                </div>-->
             </section>
         </div>
     </div>
@@ -205,32 +285,6 @@
 <script src="<?php echo base_url(); ?>assets/adminlte/app.min.js"> </script>
 <script src="<?php echo base_url(); ?>assets/adminlte/adminlte.min.js"> </script>
 <script src="<?php echo base_url(); ?>assets/adminlte/demo.js"> </script>
-<script>
-    /*$('#btnLeft').on('click', function()
-    {
-        //var temporal=$($(this).parent().find('.galeria'));
-        var temporal = $(this).parent().parent();
-        var temp = $('#slider')
-        temp.stop().animate({scrollLeft: temp.scrollLeft()+151}, 500);
-    });
-    $('#btnRight').on('click', function()
-    {
-        var temporal = $(this).parent().parent();
-        var temp = $('#slider')
-        temp.stop().animate({scrollLeft: temp.scrollLeft()-151}, 500);
-    });*/
-    function AvanzarSlider()
-    {
-        var temp = $('#slider')
-        temp.stop().animate({scrollLeft: temp.scrollLeft()+151}, 500);
-        setTimeout(function(){AvanzarSlider();},5000);
-    }
-
-    $(document).on('ready', function()
-    {
-        AvanzarSlider();
-    })
-</script>
 </body>
 </html>
 
