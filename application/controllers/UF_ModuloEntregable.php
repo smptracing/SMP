@@ -7,9 +7,9 @@ class UF_ModuloEntregable extends CI_Controller
 	{
 		parent::__construct();
 
-		$this->load->model('Model_Especialidad');
 		$this->load->model('Model_UF_Req_Personal_Estudio');
-		$this->load->model('Model_Personal');
+		$this->load->model('Model_ModuloFE');
+		$this->load->model('Model_UFentregables');
 	}
 
 	public function insertar()
@@ -23,10 +23,13 @@ class UF_ModuloEntregable extends CI_Controller
 				echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Dastos registrados correctamente.', 'idPerReq' => $etPerReqTemp->id_req_per]);exit;
 			}
 
+			$listarModulo=$this->Model_ModuloFE->ListarModulo();
+			$listarEntregable=$this->Model_UFentregables->LitarEntregable();
+
 			$id_est_inv=$this->input->get('id_est_inv');
 			$DetallEstudioInversion=$this->Model_UF_Req_Personal_Estudio->listaIndependienteEstudio($id_est_inv);
 
-			return $this->load->view('front/Formulacion_Evaluacion/UfModuloEntregable/insertar',['nombre_estudio_inv' => $DetallEstudioInversion->nombre_estudio_inv ]);
+			return $this->load->view('front/Formulacion_Evaluacion/UfModuloEntregable/insertar',['nombre_estudio_inv' => $DetallEstudioInversion->nombre_estudio_inv ,'listarModulo' => $listarModulo, 'listarEntregable' => $listarEntregable]);
 		}
 	}
 

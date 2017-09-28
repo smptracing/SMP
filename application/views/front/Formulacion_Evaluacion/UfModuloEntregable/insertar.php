@@ -1,6 +1,6 @@
 <form class="form-horizontal"  id="form-addFePresupuesto">
-		<h4 style="margin-bottom: 0px;">Datos generales</h4>
-		<hr style="margin: 2px;margin-bottom: 5px;">
+		<h4 style="margin-bottom: 0px;">Datos Estudio</h4>
+		<hr style="margin: 1px;margin-bottom: 5px;">
 		<div class="row">
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<input type="text" class="form-control" name="cbx_estudioInversion" value="<?= $nombre_estudio_inv?>" id="cbx_estudioInversion" autocomplete="off" disabled="disabled">
@@ -10,13 +10,19 @@
 		<div class="row">
 			<div class="col-md-4 col-sm-4 col-xs-4">
 				<label>Modulo</label>
-				<select id="cbx_Sector" name="cbx_Sector" class="form-control notValidate" required="">
-				
+				<select id="cbx_modulos" name="cbx_modulos" class="form-control notValidate" required="">
+					<?php foreach ($listarModulo as $itemp) {?>
+						<option> <?= $itemp->nombre_modulo?></option>
+					<?php } ?>
 				</select>
 			</div>
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<label>Entregable</label>
-				<input  type="text" class="form-control" id="txtPliego" name="txtPliego" placeholder="Entregable" autocomplete="off">
+					<select id="cbx_entregable" name="cbx_entregable" class="form-control notValidate" required=""> 
+							<?php foreach ($listarEntregable as $itemp) {?>
+								<option> <?= $itemp->nombre_entregable?></option>
+							<?php } ?>
+					</select>
 			</div>
 			<div class="col-md-2 col-sm-2 col-xs-12">
 				<label>.</label>
