@@ -38,6 +38,20 @@ class Model_UF_Req_Personal_Estudio extends CI_Model
 		return true;
 	}
 
+	function asignarPersonal($idPerReq,$idPersona,$fecha_desig)
+	{
 
-   
+		$this->db->query("exec sp_Gestionar_UfRPersonalEstudio @opcion='asignarPersonal', @id_req_per=$idPerReq,@id_persona=$idPersona,@fecha_desig='$fecha_desig' ");
+
+		return true;
+	}
+
+	function existePersonaPorET($idPersona, $id_est_inv)
+	{
+		
+			$data=$this->db->query(" select * from UF_REQ_PERSONAL_ESTUDIO where UF_REQ_PERSONAL_ESTUDIO.id_persona=$idPersona and id_est_inv=$id_est_inv ");
+			return count($data->result())>0 ? true : false;
+	}
+
+
 }

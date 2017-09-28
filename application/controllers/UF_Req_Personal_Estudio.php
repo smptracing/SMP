@@ -61,7 +61,7 @@ class UF_Req_Personal_Estudio extends CI_Controller
 				echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos eliminados correctamente.']);exit;
 			}
 		}
-	}
+	}*/
 
 	public function asignarPersonal()
 	{
@@ -73,21 +73,21 @@ class UF_Req_Personal_Estudio extends CI_Controller
 				
 				$idPerReq=$this->input->post('idPerReq');
 				$idPersona=$this->input->post('idPersona');
-				$idET=$this->input->post('idET');
+				$id_est_inv=$this->input->post('id_est_inv');
 
-				if($idPersona!='' && $this->Model_ET_Per_Req->existePersonaPorET(($idPersona=="" ? 'NULL' : $idPersona), $idET))
+				if($idPersona!='' && $this->Model_UF_Req_Personal_Estudio->existePersonaPorET(($idPersona=="" ? 'NULL' : $idPersona), $id_est_inv))
 				{
-					echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede asignar a la misma persona a dos cargos diferentes en el mismo expediente técnico.']);exit;
+					echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede asignar a la misma persona a dos cargos diferentes en el la misma formulacion.']);exit;
 				}
 
-				$this->Model_ET_Per_Req->asignarPersonal($idPerReq, ($idPersona=="" ? 'NULL' : $idPersona), date('Y-m-d H:m:s'));
+				$this->Model_UF_Req_Personal_Estudio->asignarPersonal($idPerReq, ($idPersona=="" ? 'NULL' : $idPersona), date('Y-m-d H:m:s'));
 
 				$this->db->trans_complete();
 
 				echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Personal asignado correctamente.']);exit;
 			}
 		}
-	}*/
+	}
 
 	public function asignarQuitarFormulador()
 	{
@@ -102,7 +102,7 @@ class UF_Req_Personal_Estudio extends CI_Controller
 
 				$this->Model_UF_Req_Personal_Estudio->asignarQuitarFormulador($idPerReq,$formulador);
 
-				//$this->db->trans_complete();
+				$this->db->trans_complete();
 
 				echo json_encode(['proceso' => 'Correcto', 'mensaje' => "correcto"]);exit;
 			}

@@ -31,7 +31,8 @@
 		<thead>
 			<tr>
 				<th style="text-align: center;height: 25px"><b></b></th>
-				<th style="text-align: center;height: 25px"><b>Especialistas requeridos para formulación</b></th>
+				<th style="text-align: center;height: 25px; font-size: 12px;"><b><u>Especialistas requeridos para formulación <input type="hidden" id="id_est_inv" value="<?= $id_est_inv?>"> </u></b></th>
+
 			</tr>
 		</thead>
 		<tbody>
@@ -56,7 +57,7 @@
 								<table style="width: 100%;">
 									<tbody>
 										<tr>
-											<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;margin: 4px;padding: 4px;"><label style="cursor: pointer;"><b>Formulador___</b><input type="checkbox" value="formulador" style="margin-left: -15px;" onchange="asignarQuitarFormuladorResponsable(<?=$value->id_req_per?>, this);" <?=($value->formulador ? 'formulador=true' : '')?>></label><?=html_escape($value->nombre_esp)?></div></td>
+											<td style="width: 50%;"><div style="background-color: #1F838D ;border-radius: 5px;color: #ffffff;margin: 4px;padding: 4px;"><label style="cursor: pointer;"><b>Formulador___</b><input type="checkbox" value="formulador" style="margin-left: -15px;" onchange="asignarQuitarFormuladorResponsable(<?=$value->id_req_per?>, this);" <?=($value->formulador ? 'checked=true' : '')?>></label><?=html_escape($value->nombre_esp)?></div></td>
 											<td>
 												<select class="selectPersonaETPerReq" data-live-search="true" data-width="100%" onchange="asignarPersonalETPerReq(<?=$value->id_req_per?>, this);">
 													<option value=""></option>
@@ -84,6 +85,32 @@
 	{
 		$('.selectPersonaETPerReq').selectpicker();
 	});
+
+	function asignarPersonalETPerReq(idPerReq, element)
+	{
+		var id_est_inv=$("#id_est_inv").val();
+		paginaAjaxJSON({ idPerReq : idPerReq, idPersona : $(element).val(), id_est_inv : id_est_inv }, '<?=base_url()?>index.php/UF_Req_Personal_Estudio/asignarPersonal', 'POST', null, function(objectJSON)
+		{
+			objectJSON=JSON.parse(objectJSON);
+
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
+			},
+			function(){});
+
+			if(objectJSON.proceso=='Error')
+			{
+				$(element).val("");
+
+				$(element).selectpicker("refresh");
+
+				return false;
+			}
+		}, false, true);
+	}
 
 	function allowDrop(ev, element)
 	{
@@ -169,5 +196,6 @@
 			}, false, true);
 		}
 
+		
 
 </script>
