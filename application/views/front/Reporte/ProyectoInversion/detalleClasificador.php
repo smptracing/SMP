@@ -57,11 +57,24 @@
 														<td>Pagado</td>
 														<td>Comprometido Anual</td>
 														<td>Certificado</td>
+														<td>Ene</td>
+														<td>Feb</td>
+														<td>Mar</td>
+														<td>Abr</td>
+														<td>May</td>
+														<td>Jun</td>
+														<td>Jul</td>
+														<td>Agost</td>
+														<td>Set</td>
+														<td>Oct</td>
+														<td>Nov</td>
+														<td>Dic</td>
+
 													</tr>
 												</thead>
 												<tbody>
-													<tr><td colspan="14"><?=$listaDetalleClasificadorFijos->tipo_transaccion ?></td></tr>
-													<tr><td colspan="14"><?=$listaDetalleClasificadorFijos->generica,' ', $listaDetalleClasificadorFijos->desc_generica ?></td></tr>
+													<tr><td colspan="26"><?=$listaDetalleClasificadorFijos->tipo_transaccion ?></td></tr>
+													<tr><td colspan="26"><?=$listaDetalleClasificadorFijos->generica,' ', $listaDetalleClasificadorFijos->desc_generica ?></td></tr>
 
 													<?php foreach($listaDetalleClasificador as $item ){ ?>
 													  	<tr>
@@ -116,6 +129,43 @@
 													    	<td>
 																<?=$item->certificado?>
 													    	</td>
+													    	<td>
+																<?=$item->ene?>
+													    	</td>
+													    	<td>
+																<?=$item->feb?>
+													    	</td>
+													    	<td>
+																<?=$item->mar?>
+													    	</td>
+													    	<td>
+																<?=$item->abr?>
+													    	</td>
+													    	<td>
+																<?=$item->may?>
+													    	</td>
+													    	<td>
+																<?=$item->jun?>
+													    	</td>
+													    	<td>
+																<?=$item->jul?>
+													    	</td>
+													    	<td>
+																<?=$item->ago?>
+													    	</td>
+													    	<td>
+																<?=$item->sep?>
+													    	</td>
+													    	<td>
+																<?=$item->oct?>
+													    	</td>
+													    	<td>
+																<?=$item->nov?>
+													    	</td>
+													    	<td>
+																<?=$item->dic?>
+													    	</td>
+
 													  </tr>
 													<?php } ?>
 												</tbody>

@@ -228,13 +228,13 @@ class PrincipalReportes extends CI_Controller
         $codigounico=$this->input->GET('codigounico');
         $listaDetalleClasificador=$this->Model_Dashboard_Reporte->ReporteDetalleClasificador($anio,$codigounico);
         $listaDetalleClasificadorFijos=$this->Model_Dashboard_Reporte->ReporteDetalleClasificadorFijos($anio,$codigounico);
-
-        foreach ($listaDetalleClasificador as $key => $value) {
+        //var_dump($listaDetalleClasificador);exit;
+        /*foreach ($listaDetalleClasificador as $key => $value) {
             $value->ChilDetalleClasificador=$this->Model_Dashboard_Reporte->ReporteDetalleClasificador($anio,$codigounico);
             foreach ($value->ChilDetalleClasificador as $key => $Itemp) {
                 $Itemp->ChilDetalladoClas=$this->Model_Dashboard_Reporte->ReporteDetalleClasificador($anio,$codigounico);
             }
-        }
+        }*/
 
         $this->load->view('front/Reporte/ProyectoInversion/detalleClasificador',['listaDetalleClasificador'=>$listaDetalleClasificador,'listaDetalleClasificadorFijos'=>$listaDetalleClasificadorFijos]);
     }
