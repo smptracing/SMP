@@ -192,6 +192,25 @@ class ProyectoInversion extends CI_Controller {/* Mantenimiento de sector entida
 
 		        		$temp[$key0]->child[$key1]->child[$key2]->child[$key3]->sub_generica_det=$value3->sub_generica_det;
 		        		$temp[$key0]->child[$key1]->child[$key2]->child[$key3]->des_sub_generica_det=$value2->desc_sub_generica;
+
+		        		$temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child=[];
+
+			        	$quintoCodigoTemp=null;
+
+			        	foreach($listaDetalleClasificador as $key4 => $value4)
+			        	{
+			        		if($quintoCodigoTemp==$value4->especifica || $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->sub_generica_det!=substr($value4->especifica, 0, strlen($temp[$key0]->child[$key1]->child[$key2]->child[$key3]->sub_generica_det)))
+					    	{
+					    		continue;
+					    	}
+
+					    	$quintoCodigoTemp=$value4->especifica;
+
+			        		$temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]=new stdClass();
+
+			        		$temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->sub_generica_det=$value4->especifica;
+			        		$temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->desc_especifica=$value4->desc_especifica;
+			        	}
 		        	}
 	        	}
         	}
