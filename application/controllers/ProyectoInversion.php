@@ -111,15 +111,10 @@ class ProyectoInversion extends CI_Controller {/* Mantenimiento de sector entida
 		ini_set('xdebug.var_display_max_children', 256);
 		ini_set('xdebug.var_display_max_data', 1024);
 
-		/*$this->load->view('layout/Reportes/header');
-		$this->load->view('front/Reporte/ProyectoInversion/prueba');
-		$this->load->view('layout/Reportes/footer');*/
 		$anio='2017';
         $codigounico='275116';
 
         $listaDetalleClasificador=$this->Model_Dashboard_Reporte->ReporteDetalleClasificador($anio,$codigounico);
-
-        // var_dump($listaDetalleClasificador);exit;
 
         $temp=[];
 
@@ -191,7 +186,7 @@ class ProyectoInversion extends CI_Controller {/* Mantenimiento de sector entida
 		        		$temp[$key0]->child[$key1]->child[$key2]->child[$key3]=new stdClass();
 
 		        		$temp[$key0]->child[$key1]->child[$key2]->child[$key3]->sub_generica_det=$value3->sub_generica_det;
-		        		$temp[$key0]->child[$key1]->child[$key2]->child[$key3]->des_sub_generica_det=$value2->desc_sub_generica;
+		        		$temp[$key0]->child[$key1]->child[$key2]->child[$key3]->des_sub_generica_det=$value3->des_sub_generica_det;
 
 		        		$temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child=[];
 
@@ -208,8 +203,27 @@ class ProyectoInversion extends CI_Controller {/* Mantenimiento de sector entida
 
 			        		$temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]=new stdClass();
 
-			        		$temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->sub_generica_det=$value4->especifica;
+			        		$temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->especifica=$value4->especifica;
 			        		$temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->desc_especifica=$value4->desc_especifica;
+
+			        		$temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child=[];
+
+				        	$sextoCodigoTemp=null;
+
+				        	foreach($listaDetalleClasificador as $key5 => $value5)
+				        	{
+				        		if($sextoCodigoTemp==$value5->especifica_det || $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->especifica!=substr($value5->especifica_det, 0, strlen($temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->especifica)))
+						    	{
+						    		continue;
+						    	}
+
+						    	$sextoCodigoTemp=$value5->especifica_det;
+
+				        		$temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]=new stdClass();
+
+				        		$temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]->especifica_det=$value5->especifica_det;
+				        		$temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]->desc_especifica_det=$value5->desc_especifica_det;
+				        	}
 			        	}
 		        	}
 	        	}
