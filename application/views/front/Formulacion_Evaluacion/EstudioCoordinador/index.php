@@ -56,7 +56,7 @@
 																		<?=$item->codigo_unico_pi?>
 															    	</td>
 															    	<td>
-																		<?=$item->nombre_est_inv?>
+																		<?=$item->nombre_estudio_inv?>
 															    	</td>	
 																	<td>
 																		<?=$item->costo_pi?>

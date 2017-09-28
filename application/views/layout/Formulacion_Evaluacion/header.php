@@ -115,7 +115,6 @@
                     <ul class="nav child_menu">
                       <li><a href="<?php echo site_url('Estudio_Inversion/'); ?>">Estudio de Preinversion de PIP</a></li>
                       <li><a href="<?php echo site_url('NoPipProgramados/nopipformulacion'); ?>">Estudio de Preinversion  de No PIP</a></li>
-                      <li><a href="<?php echo site_url('Estudio_Inversion/EstudioCoordinadorFunc'); ?>">Estudio Coordinador-Funcion</a></li>
                     </ul>
                   </li>
 
@@ -135,7 +134,7 @@
                         </ul>-->
                         <ul class="nav child_menu">
                             <li><a href="<?php echo site_url('FEformulacion/FeEstudioInversion'); ?>">Subgerente</a></li>
-                            <li><a href="#">Coordinador</a></li>
+                            <li><a href="<?php echo site_url('Estudio_Inversion/EstudioCoordinadorFunc'); ?>">Coordinador</a></li>
                             <li><a href="<?php echo site_url('FEformulacion/UFEstudioInversionFormulacionFormulador'); ?>">Formulador </a></li>
                         </ul>
                         </li>
