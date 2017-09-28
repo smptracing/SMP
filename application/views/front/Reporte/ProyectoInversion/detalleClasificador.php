@@ -73,8 +73,6 @@
 													</tr>
 												</thead>
 												<tbody>
-													<tr><td colspan="26"><?=$listaDetalleClasificadorFijos->tipo_transaccion ?></td></tr>
-													<tr><td colspan="26"><?=$listaDetalleClasificadorFijos->generica,' ', $listaDetalleClasificadorFijos->desc_generica ?></td></tr>
 
 													<?php foreach($listaDetalleClasificador as $item ){ ?>
 													  	<tr>

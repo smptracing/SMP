@@ -227,16 +227,10 @@ class PrincipalReportes extends CI_Controller
         $anio=$this->input->GET('anio');
         $codigounico=$this->input->GET('codigounico');
         $listaDetalleClasificador=$this->Model_Dashboard_Reporte->ReporteDetalleClasificador($anio,$codigounico);
-        $listaDetalleClasificadorFijos=$this->Model_Dashboard_Reporte->ReporteDetalleClasificadorFijos($anio,$codigounico);
+        
+        
         //var_dump($listaDetalleClasificador);exit;
-        /*foreach ($listaDetalleClasificador as $key => $value) {
-            $value->ChilDetalleClasificador=$this->Model_Dashboard_Reporte->ReporteDetalleClasificador($anio,$codigounico);
-            foreach ($value->ChilDetalleClasificador as $key => $Itemp) {
-                $Itemp->ChilDetalladoClas=$this->Model_Dashboard_Reporte->ReporteDetalleClasificador($anio,$codigounico);
-            }
-        }*/
-        var_dump($listaDetalleClasificador);exit;
-        /*$this->load->view('front/Reporte/ProyectoInversion/detalleClasificador',['listaDetalleClasificador'=>$listaDetalleClasificador,'listaDetalleClasificadorFijos'=>$listaDetalleClasificadorFijos]);*/
+        //$this->load->view('front/Reporte/ProyectoInversion/detalleClasificador',['listaDetalleClasificador'=>$listaDetalleClasificador,'listaDetalleClasificadorFijos'=>$listaDetalleClasificadorFijos]);
         $this->load->view('front/Reporte/ProyectoInversion/detalleClasificador',['listaDetalleClasificador'=>$listaDetalleClasificador]);
     }
     public function GrafDetalleMensualizado()

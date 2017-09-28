@@ -229,8 +229,10 @@ class ProyectoInversion extends CI_Controller {/* Mantenimiento de sector entida
 	        	}
         	}
         }
-
-        var_dump($temp);exit;
+        echo "<pre>";
+         var_dump($temp);exit;
+        echo "</pre>";
+       
     }
     public function ReporteBuscadorPorAnio($anio=2017)
     {
