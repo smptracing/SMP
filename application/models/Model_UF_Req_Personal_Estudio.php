@@ -53,5 +53,13 @@ class Model_UF_Req_Personal_Estudio extends CI_Model
 			return count($data->result())>0 ? true : false;
 	}
 
+	function listaIndependienteEstudio($id_est_inv)
+	{
+		
+		$data=$this->db->query("select * from UF_ESTUDIO_INVERSION_2 where UF_ESTUDIO_INVERSION_2.id_est_inv='$id_est_inv'");
+
+		return $data->result()[0];
+	}
+
 
 }

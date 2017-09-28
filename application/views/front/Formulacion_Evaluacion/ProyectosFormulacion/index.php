@@ -38,7 +38,7 @@
                                                                  	<th style="width: 5%"> Costo</th>
                                                                  	<th style="width: 5%"> Monto</th>
                                                                  	<th style="width: 20%"> Avance</th>
-                                                                 	<th style="width: 19%"> Acciones</th>
+                                                                 	<th style="width: 10%"> Acciones</th>
                                                               </tr>
                                                            </thead>
                                                           <tbody>
@@ -67,7 +67,7 @@
 
 																	<td>
 																		<button type='button' data-toggle="tooltip" data-original-title="Personal" class='btn btn-success btn-xs' onclick="paginaAjaxDialogo(null, 'Asignación de especialistas requeridos', { id_est_inv : <?=$item->id_est_inv?> }, base_url+'index.php/UF_Req_Personal_Estudio/insertar', 'GET', null, null, false, true);"><i class="glyphicon glyphicon-user"></i></button>
-																	  	<button type='button' class='editar btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Modificar Modulo',{id:'<?=$item->id_est_inv?>'}, base_url+'index.php/Modulo_FE/editar', 'POST', null, null, false, true)"><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' onclick="EliminarModulo('<?=$item->id_est_inv?>');"><i class='fa fa-trash-o'></i></button>
+																	  	<button type='button' data-toggle="tooltip" data-original-title="Entregable" class='btn btn-info btn-xs' onclick="paginaAjaxDialogo(null, 'Agregar Entregable',{id_est_inv : <?=$item->id_est_inv?> }, base_url+'index.php/UF_ModuloEntregable/insertar', 'GET', null, null, false, true)"><i class='ace-icon fa fa-file-text bigger-120'></i></button>
 																	</td>
 																</tr>
 															    <?php } ?>
