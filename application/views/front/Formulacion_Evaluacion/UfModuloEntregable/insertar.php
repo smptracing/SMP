@@ -36,7 +36,7 @@
 			</table>
 		</div>
 		<div class="row" style="text-align: right;">
-			<button type="submit" id="btnEnviarFormulario" class="btn btn-success">Registrar fuente de finan.</button>
+			<button type="submit" id="btnEnviarFormulario" class="btn btn-success">Registrar Entregable.</button>
 			<button class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 		</div>
 </form>
