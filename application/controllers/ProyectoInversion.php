@@ -104,6 +104,21 @@ class ProyectoInversion extends CI_Controller {/* Mantenimiento de sector entida
 	    $this->load->view('layout/Reportes/footer');
     }
 
+
+    public function ReportePrueba()
+    {
+      /*$this->load->view('layout/Reportes/header');
+      $this->load->view('front/Reporte/ProyectoInversion/prueba');
+      $this->load->view('layout/Reportes/footer');*/
+      $anio='2017';
+        $codigounico='275116';
+
+         $listaDetalleClasificador=$this->Model_Dashboard_Reporte->ReporteDetalleClasificador($anio,$codigounico);
+       
+        var_dump($listaDetalleClasificador);exit;
+
+        $this->load->view('front/Reporte/ProyectoInversion/prueba',['listaDetalleClasificador'=>$listaDetalleClasificador]);
+    }
     public function ReporteBuscadorPorAnio($anio=2017)
     {
       $data=$this->Model_Dashboard_Reporte->ReporteConsolidadoAvanceFisicoFinan($anio);

@@ -235,8 +235,9 @@ class PrincipalReportes extends CI_Controller
                 $Itemp->ChilDetalladoClas=$this->Model_Dashboard_Reporte->ReporteDetalleClasificador($anio,$codigounico);
             }
         }*/
-
-        $this->load->view('front/Reporte/ProyectoInversion/detalleClasificador',['listaDetalleClasificador'=>$listaDetalleClasificador,'listaDetalleClasificadorFijos'=>$listaDetalleClasificadorFijos]);
+        var_dump($listaDetalleClasificador);exit;
+        /*$this->load->view('front/Reporte/ProyectoInversion/detalleClasificador',['listaDetalleClasificador'=>$listaDetalleClasificador,'listaDetalleClasificadorFijos'=>$listaDetalleClasificadorFijos]);*/
+        $this->load->view('front/Reporte/ProyectoInversion/detalleClasificador',['listaDetalleClasificador'=>$listaDetalleClasificador]);
     }
     public function GrafDetalleMensualizado()
     { 
