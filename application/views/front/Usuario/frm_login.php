@@ -17,10 +17,20 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <style>
         .content-wrapper{
-            /*background: url('assets/images/001.jpg');
+            background: url('../../assets/images/mu.jpg');
             background-repeat: repeat;
-            background-size: 80px 60px;*/
+            background-size: 200px 180px;
             background-color: #36404a;
+            /*background-color:#f1f4f7;*/
+              /*background-image: -webkit-gradient(linear, left 0%, left 100%, from(#555555), to(#111111));
+              background-image: -webkit-linear-gradient(top, #555555, 0%, #111111, 100%);
+              background-image: -moz-linear-gradient(top, #555555 0%, #111111 100%);
+              background-image: linear-gradient(to bottom, #555555 0%, #111111 100%);
+              background-repeat: repeat-x;
+              filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff555555', endColorstr='#ff111111', GradientType=0);
+              background-attachment: fixed;
+              padding: 0;
+              margin: 0;*/
 
         }
         .container-box
@@ -33,7 +43,7 @@
             margin:10px;
             padding: 20px;
             text-align: center;
-            height: 180px;       
+            /*height: 180px;  */     
         }
         .log-box
         {
@@ -58,6 +68,7 @@
         .footer-leg
         {
             padding: 20px;
+            border:1px solid #5fbeaa;
         }
         .btn-primary {
             background-color: #5fbeaa;
@@ -101,8 +112,24 @@
         }
         .msg{
             text-align: center;
-            color: black;
+            color: white;
             font-size: 15px;
+            /*text-transform: uppercase;*/
+        }
+        .Titulo{
+            font-size: 20px;
+            color: white;
+            padding: 10px;
+        }
+        .Subtitulo
+        {
+            font-size: 15px;
+            color: white;
+        }
+        .contenedorPrincipal
+        {
+            padding: 20px;
+            background-color: #b4e0e1;
         }
     </style>
 </head>
@@ -118,8 +145,8 @@
             </section>
             <section class="content">
                 <div class="row">
-                    <div class="col-md-12" style="background-color: #ebeff2;">
-                        <div class="col-md-6" style="background-color: #ebeff2;">
+                    <div class="col-md-12 contenedorPrincipal">
+                        <div class="col-md-6"">
                             <div class="col-md-12 header-left">
                                 <img style="display: inline-block; height: 70px; width: 200px;" src="<?php echo base_url(); ?>assets/images/logo.png" class="img-responsive">                                
                             </div>
@@ -127,7 +154,7 @@
                                 <span>Software de Seguimiento y Monitoreo de los PIPs</span>                                
                             </div>
                             <div class="col-md-12 container-box">
-                                <div class="box-slider col-md-12" style="background-color: #ceebe5; border:1px solid #5fbeaa; box-shadow: 1px 3px 3px #888888;"">
+                                <div class="box-slider col-md-12" style="background-color: #2abfd4;">
                                     <div class="row">
                                         <div id="text-carousel" class="carousel slide" data-ride="carousel">
                                             <div class="row">
@@ -137,6 +164,9 @@
                                                             <div class="carousel-content">
                                                                 <div class="msg">
                                                                     <p ><?=$Reporte[0]->nombre_funcion?></p>
+                                                                    <p><?=$Reporte[0]->cantidad_pip?> Proyectos Registrados.</p>
+                                                                    <p><?=$Reporte[0]->total_beneficiarios?> Beneficiarios.</p>
+                                                                    <p>S/. <?=$Reporte[0]->costo_total?></p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -239,7 +269,7 @@
                             </div>                     
                             
                         </div>
-                        <div class="col-md-6" style="background-color: #ebeff2;">
+                        <div class="col-md-6">
                             <div class="col-md-12 header-logo">
                                 <img style="display: inline-block; height: 70px; width: 200px;" src="<?php echo base_url(); ?>assets/images/log.png" alt=""  class="img-responsive">
                             </div>
@@ -268,9 +298,9 @@
                             
                         </div>                        
                     </div>
-                    <div class="col-md-12 footer-leg" style="background-color: #ffffff; ">
-                        <span>¿Que es SMP TRACING?</span>
-                        <p>SMP Tracing v1.0 es un Sistema que permite optimizar, gestionar y admistrar los procesos de inversión pública en sus diferentes fases y etapas. Su objetivo es brindar información relevante, oportuna y disponible para una toma de decisiones rápidas, informadas y efectivas.</p>
+                    <div class="col-md-12 footer-leg" style="background-color: #224687; ">
+                        <span class="Titulo">¿Que es SMP TRACING?</span>
+                        <p class="Subtitulo">SMP Tracing v1.0 es un Sistema que permite optimizar, gestionar y admistrar los procesos de inversión pública en sus diferentes fases y etapas. Su objetivo es brindar información relevante, oportuna y disponible para una toma de decisiones rápidas, informadas y efectivas.</p>
                         
                     </div>
                 </div>
