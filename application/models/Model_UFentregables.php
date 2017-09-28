@@ -13,6 +13,12 @@ class Model_UFentregables extends CI_Model
         return $data->result();
     }
 
+     public function insertarEntregable($id_est_inv, $id_modulo, $id_entregable,$ValorEntregable)
+    {
+        $data = $this->db->query("select * from UF_ENTREGABLE");
+        return $data->result();
+    }
+
 
 
 }

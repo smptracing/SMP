@@ -18,9 +18,17 @@ class UF_ModuloEntregable extends CI_Controller
 		{
 			if($_POST)
 			{
-				
+				$id_est_inv=$this->input->post('id_est_inv');
+				$id_modulo=$this->input->post('hdIdmodulo');
+				$id_entregable=$this->input->post('hdidEntregable');
+				$ValorEntregable=$this->input->post('ValorEntregable');
 
-				echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Dastos registrados correctamente.', 'idPerReq' => $etPerReqTemp->id_req_per]);exit;
+				for($i=0; $i<count($id_entregable); $i++)
+		    	{
+		    		$this->Model_UFentregables->insertarEntregable($id_est_inv, $id_modulo[$i], $id_entregable[$i],$ValorEntregable[$i]);
+		    	}
+
+				echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Dastos Resgistrados del  entregables.', 'idPerReq' => '']);exit;
 			}
 
 			$listarModulo=$this->Model_ModuloFE->ListarModulo();
@@ -29,7 +37,7 @@ class UF_ModuloEntregable extends CI_Controller
 			$id_est_inv=$this->input->get('id_est_inv');
 			$DetallEstudioInversion=$this->Model_UF_Req_Personal_Estudio->listaIndependienteEstudio($id_est_inv);
 
-			return $this->load->view('front/Formulacion_Evaluacion/UfModuloEntregable/insertar',['nombre_estudio_inv' => $DetallEstudioInversion->nombre_estudio_inv ,'listarModulo' => $listarModulo, 'listarEntregable' => $listarEntregable]);
+			return $this->load->view('front/Formulacion_Evaluacion/UfModuloEntregable/insertar',['DetallEstudioInversion' => $DetallEstudioInversion ,'listarModulo' => $listarModulo, 'listarEntregable' => $listarEntregable]);
 		}
 	}
 
