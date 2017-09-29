@@ -1,3 +1,19 @@
+<style type="text/css">
+	.modal-dialog
+	{
+		width: 90%;
+		margin: 0;
+		margin-left: 5%;
+		padding: 0;
+	}
+
+	.modal-content
+	{
+		height: auto;
+		min-height: 100%;
+		border-radius: 0;
+	}
+</style>
 <form class="form-horizontal"  id="form-addEntregable">
 		<h4 style="margin-bottom: 0px;">Datos Estudio</h4>
 		<hr style="margin: 1px;margin-bottom: 5px;">
@@ -8,7 +24,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-6 col-sm-6 col-xs-12">
+			<div class="col-md-5 col-sm-5 col-xs-12">
 				<label>Entregable</label>
 					<select id="cbx_entregable" name="cbx_entregable" class="form-control notValidate" required=""> 
 							<?php foreach ($listarEntregable as $itemp) {?>
@@ -17,18 +33,13 @@
 					</select>
 
 			</div>
-			<div class="col-md-4 col-sm-4 col-xs-4">
+			<div class="col-md-5 col-sm-5 col-xs-5">
 				<label>Modulo</label><br/>
-				<select id="cbx_modulos" name="cbx_modulos[]"  class="selectpicker" multiple data-live-search="true" data-live-search-placeholder="Search" data-actions-box="true">
+				<select id="cbx_modulos" name="cbx_modulos[]"  class="selectpicker" multiple data-live-search="true" data-live-search-placeholder="Search" data-actions-box="true" data-width="100%" >
 					<?php foreach ($listarModulo as $itemp) {?>
 						<option value="<?=$itemp->id_modulo.','.$itemp->nombre_modulo?>"> <?= $itemp->nombre_modulo?></option>
 					<?php } ?>
 				</select>
-			</div>
-			
-			<div class="col-md-2 col-sm-2 col-xs-12">
-				<label>Valor</label>
-				<input type="text" class="form-control" name="valorEntregable" id="valorEntregable">
 			</div>
 			<div class="col-md-2 col-sm-2 col-xs-12">
 				<label>.</label>
@@ -36,12 +47,12 @@
 			</div>
 		</div>
 		<div><br/>
-			<table id="table-Entregable" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+			<table id="table-Entregable" class="table table-striped jambo_table bulk_action" with="100%">
 				<thead>
 					<tr>
 						<td>Entregable  </td>
 						<td>Modulo</td>
-						<td>Valor Entregable</td>
+						<td style="width:10%; ">Valor </td>
 						<td></td>
 					</tr>
 				</thead>
@@ -58,7 +69,6 @@
 $( document ).ready(function() {
 	 
 	 $('#cbx_modulos').selectpicker('refresh');
-
 
 	$("#btnAgregarFEntregable").on('click', function(event)
 	{
@@ -77,7 +87,7 @@ $( document ).ready(function() {
 			htmlTemp +='<tr>'+
 				'<td><input type="hidden" value='+identregable+' name="hdidEntregable[]">'+descripcionEntregable+'</td>'+
 				'<td><input type="hidden" value='+idmodulo+' name="hdIdmodulo[]"> '+descripcionModulo+'</td>'+
-				'<td><input type="hidden" value='+valorEntregable+' name="ValorEntregable[]">'+valorEntregable+'</td>'+
+				'<td><input style="height:30px;" class="form-control" type="text" placeholder="Valor" name="ValorEntregable[]"></td>'+
 				'<td><a href="#" onclick="$(this).parent().parent().remove();" style="color: red;font-weight: bold;text-decoration: underline;">Eliminar</a></td>'+
 			'</tr>'
 		}
