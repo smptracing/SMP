@@ -66,9 +66,9 @@
 
 
 																	<td>
+																		<a data-toggle="tooltip" data-original-title="Entregable" href="../FE_Presupuesto_Inv/index/<?=$item->id_est_inv?>"><button type="button" class="btn btn-primary btn-xs"> <i class='ace-icon fa fa-file-text bigger-120'></i></button></a>
 																		<button type='button' data-toggle="tooltip" data-original-title="Personal" class='btn btn-success btn-xs' onclick="paginaAjaxDialogo(null, 'Asignación de especialistas requeridos', { id_est_inv : <?=$item->id_est_inv?> }, base_url+'index.php/UF_Req_Personal_Estudio/insertar', 'GET', null, null, false, true);"><i class="glyphicon glyphicon-user"></i></button>
-																	  	<button type='button' data-toggle="tooltip" data-original-title="Entregable" class='btn btn-info btn-xs' onclick="paginaAjaxDialogo(null, 'Agregar Entregable',{id_est_inv : <?=$item->id_est_inv?> }, base_url+'index.php/UF_ModuloEntregable/insertar', 'GET', null, null, false, true)"><i class='ace-icon fa fa-file-text bigger-120'></i></button>
-																		<a href="../UFentregables/inicio/<?=$item->id_est_inv?>"><button type="button" class="btn btn btn-success btn-xs">Entregable </button></a>
+																		<a data-toggle="tooltip" data-original-title="Entregable" href="../UFentregables/inicio/<?=$item->id_est_inv?>"><button type="button" class="btn btn-primary btn-xs"> <i class='ace-icon fa fa-file-text bigger-120'></i></button></a>
 																	</td>
 																</tr>
 															    <?php } ?>

@@ -33,7 +33,7 @@
 					</select>
 
 			</div>
-			<div class="col-md-5 col-sm-5 col-xs-5">
+			<div class="col-md-7 col-sm-7 col-xs-7">
 				<label>Modulo</label><br/>
 				<select id="cbx_modulos" name="cbx_modulos[]"  class="selectpicker" multiple data-live-search="true" data-live-search-placeholder="Search" data-actions-box="true" data-width="100%" >
 					<?php foreach ($listarModulo as $itemp) {?>
@@ -41,7 +41,17 @@
 					<?php } ?>
 				</select>
 			</div>
-			<div class="col-md-2 col-sm-2 col-xs-12">
+			<div class="col-md-5 col-sm-5 col-xs-5">
+				<label>Descripcion Entregable</label><br/>
+					<textarea rows="4" cols="100" class="form-control" name="txtDescripcionEntregable" id="txtDescripcionEntregable" >
+					 
+					</textarea>
+			</div>
+			<div class="col-md-1 col-sm-1 col-xs-1" style="margin-top: 60px ">
+				<label>Valor</label><br/>
+				<input type="text" name="" class="form-control">	
+			</div>
+			<div class="col-md-2 col-sm-2 col-xs-12" style="margin-top: 60px;">
 				<label>.</label>
 				<input type="button" id="btnAgregarFEntregable" class="btn btn-success form-control" value="Agregar">
 			</div>
@@ -50,7 +60,8 @@
 			<table id="table-Entregable" class="table table-striped jambo_table bulk_action" with="100%">
 				<thead>
 					<tr>
-						<td>Entregable  </td>
+						<td style="width:10%; ">Entregable  </td>
+						<td style="width:30%; ">Descripcion</td>
 						<td>Modulo</td>
 						<td style="width:10%; ">Valor </td>
 						<td></td>
@@ -79,14 +90,17 @@ $( document ).ready(function() {
 		
 		var valorEntregable	=$("#valorEntregable").val();
 
+		var txtDescripcionEntregable=$('#txtDescripcionEntregable').val();
+
 		var modulo=$("#cbx_modulos").val();
 		for (var i = 0; i < modulo.length; i++) {
 			var posicionSeparadorTemp=modulo[i].indexOf(',');
 			var idmodulo=modulo[i].substring(0, posicionSeparadorTemp);
 			var descripcionModulo=replaceAll(replaceAll(modulo[i].substring(posicionSeparadorTemp+1, modulo[i].length), '<', '&lt;'), '>', '&gt;');
 			htmlTemp +='<tr>'+
-				'<td><input type="hidden" value='+identregable+' name="hdidEntregable[]">'+descripcionEntregable+'</td>'+
-				'<td><input type="hidden" value='+idmodulo+' name="hdIdmodulo[]"> '+descripcionModulo+'</td>'+
+				'<td><input type="hidden" value='+identregable+' name="hdidEntregable[]">'+descripcionEntregable+'</td>'+ 
+				'<td><input type="hidden"> '+txtDescripcionEntregable+'</td>'+
+				'<td><input type="hidden" name="hdidEntregable[]">'+descripcionModulo+'</td>'+
 				'<td><input style="height:30px;" class="form-control" type="text" placeholder="Valor" name="ValorEntregable[]"></td>'+
 				'<td><a href="#" onclick="$(this).parent().parent().remove();" style="color: red;font-weight: bold;text-decoration: underline;">Eliminar</a></td>'+
 			'</tr>'
