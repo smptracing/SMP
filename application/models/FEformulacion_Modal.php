@@ -58,4 +58,16 @@ class FEformulacion_Modal extends CI_Model
 
     }
     /*LISTAR DENOMINACION FORMULACION Y EVALUACION*/
+
+    /*Codigo de refactorizacion*/
+
+    public function UFEstudioInversionFormulacion()
+    {
+
+        $opcion="listarEstudioFormulador";
+        $FEAprobados = $this->db->query("execute sp_Gestionar_UFEstudioInversionF @opcion='".$opcion."'");
+        return $FEAprobados->result();
+        
+
+    }
 }

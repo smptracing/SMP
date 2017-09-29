@@ -5,7 +5,7 @@
 			<div class="col-md-12 col-xs-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
-						<h2><b>ESTUDIO DE INVERSIÒN COORDINADOR/FUNCIÒN</b> </h2>
+						<h2><b>ESTUDIO DE INVERSIÓN COORDINADOR/FUNCIÓN</b> </h2>
 						<ul class="nav navbar-right panel_toolbox">
 						</ul>
 						<div class="clearfix"></div>
@@ -56,7 +56,7 @@
 																		<?=$item->codigo_unico_pi?>
 															    	</td>
 															    	<td>
-																		<?=$item->nombre_est_inv?>
+																		<?=$item->nombre_estudio_inv?>
 															    	</td>	
 																	<td>
 																		<?=$item->costo_pi?>
@@ -68,16 +68,18 @@
 																		<?=$item->denom_nivel_estudio?>
 															    	</td>
 															    	<td>
-																		<?=$item->denom_nivel_estudio?>
+																		
 															    	</td>
 															    	<td>
-																		<?=$item->avance_entregbale?>
+																		
 															    	</td>
 															    	<td>
-																		<?=$item->avance_entregbale?>
+																		<?=$item->avance?>
 															    	</td>
 															    	<td>
-															    	</td>
+																		<button type='button' data-toggle="tooltip" data-original-title="Personal" class='btn btn-success btn-xs' onclick="paginaAjaxDialogo(null, 'Asignar formuladores',null, base_url+'index.php/Estudio_Inversion/AsignarFormulador', 'GET', null, null, false, true);"><i class="glyphicon glyphicon-user"></i></button>
+																	</td>
+															    
 															   </tr>
 															<?php } ?>
 															</tbody>

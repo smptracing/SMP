@@ -144,12 +144,7 @@
                      <li><a><i class="fa fa-gears"></i> Mantenimiento<span class="fa fa-chevron-down"></span></a>
 
                     <ul class="nav child_menu">
-                      <li><a href="<?php echo site_url('FEdocumento/ver_Documentos'); ?>">Documentos</a></li>
-                      <li><a href="<?php echo site_url('FEsituacion/ver_FEsistuacion'); ?>">Situaciones</a></li>
-                      <li><a href="<?php echo site_url('FEestado/ver_EstadoFE'); ?>">Estado</a></li>
-                      <li><a href="<?php echo site_url('DenominacionFE/'); ?>">Denominacion</a></li>
-                      <li><a href="<?php echo site_url('EtapasFE/'); ?>">Etapas</a></li>
-                      <li><a href="<?php echo site_url('Tipo_Gasto_FE/'); ?>">Tipo Gasto</a></li>
+                      <li><a href="<?php echo site_url('Tipo_Gasto_FE/'); ?>">Entregable</a></li>
                       <li><a href="<?php echo site_url('Modulo_FE/'); ?>">Módulo</a></li>
                     </ul>
                   </li>

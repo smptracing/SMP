@@ -96,7 +96,6 @@
                 <div class="x_panel">
                     <div class="x_title">
                         <h5> Cantidad de PIP por provincias</h5>
-
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
