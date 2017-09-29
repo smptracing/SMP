@@ -70,19 +70,19 @@
 													<tr>
 										
 														<td>Fuente Financiamiento</td>
-														<td>Pia</td>
-														<td>Pim</td>
-														<td>Pim Acumulado</td>
-														<td>Monto Finan 1</td>
-														<td>Monto Finan 2</td>
-														<td>Ejecución</td>
-														<td>Compromiso</td>
-														<td>Certificado</td>
-														<td>Devengado</td>
-														<td>Girado</td>
-														<td>Pagado</td>
-														<td>Ampliación</td>
-														<td>Crédito</td>
+														<td style="text-align:right">Pia</td>
+														<td style="text-align:right">Pim</td>
+														<td style="text-align:right">Pim Acumulado</td>
+														<td style="text-align:right">Monto Finan 1</td>
+														<td style="text-align:right">Monto Finan 2</td>
+														<td style="text-align:right">Ejecución</td>
+														<td style="text-align:right">Compromiso</td>
+														<td style="text-align:right">Certificado</td>
+														<td style="text-align:right">Devengado</td>
+														<td style="text-align:right">Girado</td>
+														<td style="text-align:right">Pagado</td>
+														<td style="text-align:right">Ampliación</td>
+														<td style="text-align:right">Crédito</td>
 														
 													</tr>
 												</thead>
@@ -92,43 +92,43 @@
 															<td>
 																<?=$item->fuente_financ?>
 													    	</td>
-													    	<td>
+													    	<td style="text-align:right">
 																<?=$item->pia?>
 													    	</td>
-													    	<td>
+													    	<td style="text-align:right">
 																<?=$item->pim?>
 													    	</td>
-													    	<td>
+													    	<td style="text-align:right">
 																<?=$item->pim_acumulado?>
 													    	</td>
-													    	<td>
+													    	<td style="text-align:right">
 																<?=$item->monto_financ1?>
 													    	</td>
-													    	<td>
+													    	<td style="text-align:right">
 																<?=$item->monto_financ2?>
 													    	</td>
-													    	<td>
+													    	<td style="text-align:right">
 																<?=$item->ejecucion?>
 													    	</td>
-													    	<td>
+													    	<td style="text-align:right">
 																<?=$item->compromiso?>
 													    	</td>
-													    	<td>
+													    	<td style="text-align:right">
 																<?=$item->monto_certificado?>
 													    	</td>
-													    	<td>
+													    	<td style="text-align:right">
 																<?=$item->devengado?>
 													    	</td>
-													    	<td>
+													    	<td style="text-align:right">
 																<?=$item->girado?>
 													    	</td>
-													    	<td>
+													    	<td style="text-align:right">
 																<?=$item->pagado?>
 													    	</td>
-													    	<td>
+													    	<td style="text-align:right">
 																<?=$item->ampliacion?>
 													    	</td>
-													    	<td>
+													    	<td style="text-align:right">
 																<?=$item->credito?>
 													    	</td>
 													    	

@@ -47,10 +47,10 @@
 									<div class="row">  
 										<div class="col-md-12 col-sm-12 col-xs-12">
 											 <div id="DetalleClasificador" class="table-responsive" style="font-size:9.5px">
-											<table id="table-DetalleClasificador" cellspacing="0" width="100%">
+											<table id="table-DetalleClasificador"  cellspacing="0" width="100%">
 												<thead>
-													<tr>
-														<td>Datos</td>
+													<tr style="text-align:center">
+														<td>Clasificadores</td>
 														<td>En</td>
 														<td>Feb</td>
 														<td>Mar</td>
@@ -118,64 +118,64 @@
 																			<td>
 																			<?='&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp', $value5->especifica_det,' ',$value5->desc_especifica_det ; ?>
 																			</td>
-																			<td>
+																			<td style="text-align:right">
 																			<?= $value5->ene; ?> 
 																			</td>
-																			<td>
+																			<td style="text-align:right">
 																			<?= $value5->feb; ?> 
 																			</td>
-																			<td>
+																			<td style="text-align:right">
 																			<?= $value5->mar; ?> 
 																			</td>
-																			<td>
+																			<td style="text-align:right">
 																			<?= $value5->abr; ?> 
 																			</td>
-																			<td>
+																			<td style="text-align:right">
 																			<?= $value5->may; ?> 
 																			</td>
-																			<td>
+																			<td style="text-align:right">
 																			<?= $value5->jun; ?> 
 																			</td>
-																			<td>
+																			<td style="text-align:right">
 																			<?= $value5->jul; ?> 
 																			</td>
-																			<td>
+																			<td style="text-align:right">
 																			<?= $value5->ago; ?> 
 																			</td>
-																			<td>
+																			<td style="text-align:right">
 																			<?= $value5->sep; ?> 
 																			</td>
-																			<td>
+																			<td style="text-align:right">
 																			<?= $value5->oct; ?> 
 																			</td>
-																			<td>
+																			<td style="text-align:right">
 																			<?= $value5->nov; ?> 
 																			</td>
-																			<td>
+																			<td style="text-align:right">
 																			<?= $value5->dic; ?> 
 																			</td>
-																			<td>
+																			<td style="text-align:right">
 																				<?=$value5->devengado; ?>
 																	    	</td>
-																	    	<td>
+																	    	<td style="text-align:right">
 																				<?=$value5->compromiso; ?>
 																	    	</td>
-																	    	<td>
+																	    	<td style="text-align:right">
 																				<?=$value5->girado; ?>
 																	    	</td>
-																	    	<td>
+																	    	<td style="text-align:right">
 																				<?=$value5->pagado; ?>
 																	    	</td>
-																	    	<td>
+																	    	<td style="text-align:right">
 																				<?=$value5->comprometido_anual; ?>
 																	    	</td>
-																	    	<td>
+																	    	<td style="text-align:right">
 																				<?=$value5->certificado; ?>
 																	    	</td>
-																	    	<td>
+																	    	<td style="text-align:right">
 																				<?=$value5->ejecucion; ?>
 																	    	</td>
-																	    	<td>
+																	    	<td style="text-align:right">
 																				<?=$value5->anulacion; ?>
 																	    	</td>
 																		</tr>
@@ -195,6 +195,7 @@
 												</tbody>
 											
 											</table>
+											<br>
 											 </div>
 										</div>
 									

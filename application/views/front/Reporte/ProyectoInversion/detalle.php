@@ -63,12 +63,12 @@
 													<tr>
 														<td>Nombre</td>
 														<td>Mes</td>
-														<td>Ejecución</td>
-														<td>Compromiso</td>
-														<td>Certificado</td>
-														<td>Devengado</td>
-														<td>Girado</td>
-														<td>Pagado</td>
+														<td style="text-align:right">Ejecución</td>
+														<td style="text-align:right">Compromiso</td>
+														<td style="text-align:right">Certificado</td>
+														<td style="text-align:right">Devengado</td>
+														<td style="text-align:right">Girado</td>
+														<td style="text-align:right">Pagado</td>
 													</tr>
 												</thead>
 												<tbody>
@@ -80,22 +80,22 @@
 													    	<td>
 																<?=$item->mes_eje?>
 													    	</td>
-													    	<td>
+													    	<td style="text-align:right">
 																<?= number_format($item->ejecucion,2)?>
 													    	</td>
-													    	<td>
+													    	<td style="text-align:right">
 																<?= number_format($item->compromiso,2)?>
 													    	</td>
-													    	<td>
+													    	<td style="text-align:right">
 																<?= number_format($item->certificado,2)?>
 													    	</td>
-													    	<td>
+													    	<td style="text-align:right">
 																<?= number_format($item->devengado,2)?>
 													    	</td>
-													    	<td>
+													    	<td style="text-align:right">
 																<?= number_format($item->girado,2)?>
 													    	</td>
-													    	<td>
+													    	<td style="text-align:right">
 																<?=number_format($item->pagado,2)?>
 													    	</td>
 													  </tr>
