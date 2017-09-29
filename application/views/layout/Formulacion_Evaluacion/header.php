@@ -133,6 +133,7 @@
 
                         </ul>-->
                         <ul class="nav child_menu">
+                            <li><a href="<?php echo site_url('FEformulacion/Feformulacion/all'); ?>">Formulación y evaluación</a></li>
                             <li><a href="<?php echo site_url('FEformulacion/FeEstudioInversion'); ?>">Subgerente</a></li>
                             <li><a href="<?php echo site_url('Estudio_Inversion/EstudioCoordinadorFunc'); ?>">Coordinador</a></li>
                             <li><a href="<?php echo site_url('FEformulacion/UFEstudioInversionFormulacionFormulador'); ?>">Formulador </a></li>
