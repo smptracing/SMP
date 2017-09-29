@@ -6,13 +6,14 @@ class Expediente_Tecnico extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+
 		$this->load->model('Model_ET_Expediente_Tecnico');
 		$this->load->model('Model_ET_Analisis_Unitario');
 		$this->load->model('Model_ET_Componente');
 		$this->load->model('Model_ET_Meta');
 		$this->load->model('Model_ET_Partida');
 		$this->load->model('Model_Personal');
-		$this->load->model("Model_ET_Tipo_Responsable"); 
+		$this->load->model("Model_ET_Tipo_Responsable");
 		$this->load->model("Model_ET_Responsable");
 		$this->load->model("Cargo_Modal");
 		$this->load->model("Model_ET_Presupuesto_Analitico");
@@ -23,8 +24,9 @@ class Expediente_Tecnico extends CI_Controller
 		$this->load->model('Model_ET_Detalle_Partida');
 		$this->load->model('Model_ET_Detalle_Analisis_Unitario');
 		$this->load->model('Model_ET_Tarea');
+		$this->load->model('Model_ET_Mes_Valorizacion');
+
 		$this->load->library('mydompdf');
-		
 	}
 
 	function _load_layout($template, $data)
@@ -437,7 +439,6 @@ class Expediente_Tecnico extends CI_Controller
 			foreach ($value->childMeta as $index => $item) 
 			{
 				$this->obtenerMetaAnidadaReporteF005($item);
-				
 			}
 	    } 
 
@@ -447,6 +448,26 @@ class Expediente_Tecnico extends CI_Controller
 		$this->mydompdf->load_html($html);
 		$this->mydompdf->render();
 		$this->mydompdf->stream("reportePresupuestoFF05.pdf", array("Attachment" => false));
+	}
+
+	public function valorizacionEjecucionProyecto($idExpedienteTecnico)
+	{
+		$expedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnico($idExpedienteTecnico);
+		$expedienteTecnico->childComponente=$this->Model_ET_Componente->ETComponentePorIdET($expedienteTecnico->id_et);
+
+		foreach($expedienteTecnico->childComponente as $key => $value)
+		{
+			$value->childMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($value->id_componente);
+
+			foreach($value->childMeta as $index => $item)
+			{
+				$this->obtenerMetaAnidadaParaValorizacion($item);
+			}
+		}
+
+		$this->load->view('layout/Ejecucion/header');
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/valorizacionEjecucionProyecto', ['expedienteTecnico' => $expedienteTecnico]);
+		$this->load->view('layout/Ejecucion/footer');
 	}
 
 	private function obtenerMetaAnidadaReporteF005($meta)
@@ -484,6 +505,32 @@ class Expediente_Tecnico extends CI_Controller
 		foreach($meta->childMeta as $key => $value)
 		{
 			$this->obtenerMetaAnidada($value);
+		}
+	}
+
+	private function obtenerMetaAnidadaParaValorizacion($meta)
+	{
+		$temp=$this->Model_ET_Meta->ETMetaPorIdMetaPadre($meta->id_meta);
+
+		$meta->childMeta=$temp;
+
+		if(count($temp)==0)
+		{
+			$meta->childPartida=$this->Model_ET_Partida->ETPartidaPorIdMeta($meta->id_meta);
+
+			foreach($meta->childPartida as $key => $value)
+			{
+				$value->childDetallePartida=$this->Model_ET_Detalle_Partida->ETDetallePartidaPorIdPartidaParaValorizacion($value->id_partida);
+
+				$value->childDetallePartida->childMesValorizacion=$this->Model_ET_Mes_Valorizacion->ETMesValorizacionPorIdDetallePartida($value->childDetallePartida->id_detalle_partida);
+			}
+
+			return false;
+		}
+
+		foreach($meta->childMeta as $key => $value)
+		{
+			$this->obtenerMetaAnidadaParaValorizacion($value);
 		}
 	}
 

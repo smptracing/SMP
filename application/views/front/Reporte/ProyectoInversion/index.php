@@ -45,7 +45,7 @@
 														    <div class="input-group">
 														      <span class="input-group-btn">
 
-														        <a href="javascript:siafActualizador()"><button id="BtnAcatualizar" class="btn btn-success" type="button"><i class="fa fa-spinner"></i> Actualizar</button></a>
+														        <a href="javascript:siafActualizador()"><button id="BtnAcatualizar" class="btn btn-success" type="button"><i class="fa fa-spinner"></i> Actualizar Avance Financiero</button></a>
 														      </span>
 														    </div>
 														  </div>
@@ -268,12 +268,13 @@ $("#CodigoUnico").on( "click", function()
 		data:{codigounico:codigounico},
 		success: function(data)
 			{
+		        //alert(data);
 		        console.log(data);
 		        var ejecucionPresupuestal=JSON.parse(data); 
 		        var html;
-				html+="<thead><tr><th>AÑO EJECUCIÓN</th><th>COSTO ACTUAL</th><th>COSTO DE EXPEDIENTE</th><th>COSTO DE VIABILIDAD</th><th>COSTO DE EXP AÑO ANTERIOR</th><th>Ver</th></tr></thead>"
+				html+="<thead><tr><th>AÑO EJECUCIÓN</th><th style='text-align:right'>COSTO ACTUAL</th><th style='text-align:right'>COSTO DE EXPEDIENTE</th><th style='text-align:right'>COSTO DE VIABILIDAD</th><th style='text-align:right'>COSTO DE EXP AÑO ANTERIOR</th></tr></thead>"
 				$.each( ejecucionPresupuestal, function( key, value ) {
-				  html +="<tbody> <tr><th>"+value.ano_eje+"</th><th>"+(value.costo_actual).toLocaleString("en-ESP")+"</th><th>"+value.costo_expediente+"</th><th>"+value.costo_viabilidad+"</th><th>"+value.ejecucion_ano_anterior+"</th><th><button type='button' class='editar btn btn-primary btn-xs' onclick='detalleAnalitico();'><i class='ace-icon fa fa-eye bigger-120'></i></button></th></tr>";      
+				  html +="<tbody> <tr><th><button type='button' class='editar btn btn-success btn-xs' onclick='detalleAnalitico("+value.ano_eje+","+codigounico+");'>"+value.ano_eje+"<i class='ace-icon bigger-120'></i></button><button type='button' class='clasificador btn btn-primary btn-xs' onclick='detalleClasificadorPip("+value.ano_eje+","+codigounico+");'>clasif.<i class='ace-icon bigger-120'></i></button></th><th style='text-align:right'>"+(value.costo_actual)+"</th><th style='text-align:right'>"+value.costo_expediente+"</th><th style='text-align:right'>"+value.costo_viabilidad+"</th><th style='text-align:right'>"+value.ejecucion_ano_anterior+"</th></tr>";      
 						html +="</tbody>";
 				});
 				
@@ -290,13 +291,13 @@ $("#CodigoUnico").on( "click", function()
 			{
 		    	console.log(data);
 
-		    	var meta=JSON.parse(data); 
+		    	var meta1=JSON.parse(data); 
 		        var html;
-				html+="<thead><tr><th>Año Ejec</th><th>Meta</th><th>Pia</th><th>Pim</th><th>Pim Acum.</th><th>Ejecución</th><th>Compromiso</th><th>Monto Certificado</th><th>Devengado</th><th>Girado</th><th>Pagado</th><th>Avan Fin.</th><th>Monto comprometido</th><th>Monto precertificado</th><th>Ver</th>/tr></thead>"
-				$.each( meta, function( key, value ) {
+				html+="<thead><tr><th>Año Ejec</th><th>Meta</th><th style='text-align:right'>Pia</th><th style='text-align:right'>Pim</th><th style='text-align:right'>Pim Acum.</th><th style='text-align:right'>Ejecución</th><th style='text-align:right'>Compromiso</th><th style='text-align:right'>Monto Certificado</th><th style='text-align:right'>Devengado</th><th style='text-align:right'>Girado</th><th style='text-align:right'>Pagado</th><th style='text-align:right'>Avan Fin.</th><th style='text-align:right'>Monto comprometido</th><th style='text-align:right'>Monto precertificado</th></tr></thead>"
+				$.each( meta1, function( key, value ) {
                    	html +="<tr>";
                               html +="<th  colspan='15'>"+value.nombre_finalidad+"</th></tr> <tr>";
-				 	html +="<tbody> <tr><th>"+value.ano_eje+"</th><th>"+value.meta+"</th><th>"+value.pia+"</th><th>"+value.pim+"</th><th>"+value.pim_acumulado+"</th><th>"+value.ejecucion+"</th><th>"+value.compromiso+"</th><th>"+value.monto_certificado+"</th><th>"+value.devengado+"</th><th>"+value.girado+"</th><th>"+value.pagado+"</th><th>"+value.avance_financiero+'%'+"</th><th>"+value.monto_comprometido_anual+"</th><th>"+value.monto_precertificado+"</th><th><button type='button' class='editar btn btn-primary btn-xs' onclick='detalladoMensualizado("+value.ano_eje+","+value.meta+");'><i class='ace-icon fa fa-eye bigger-120'></i></button></th></tr>";      
+				 	html +="<tbody> <tr><th><button type='button' class='editar btn btn-success btn-xs' onclick='detalladoMensualizado("+value.ano_eje+","+parseInt(value.meta)+");'>"+parseInt(value.ano_eje)+" <i class='ace-icon fa fa-eye bigger-120'></i></button></th><th><button type='button' class='editar btn btn-primary btn-xs' onclick='detalladoMensualizadoFuenteFinan("+value.ano_eje+","+parseInt(value.meta)+");'>"+parseInt(value.meta)+"<i class='ace-icon bigger-120'></i></button></th><th style='text-align:right'>"+value.pia+"</th><th style='text-align:right'>"+value.pim+"</th><th style='text-align:right'>"+value.pim_acumulado+"</th><th style='text-align:right'>"+value.ejecucion+"</th><th style='text-align:right'>"+value.compromiso+"</th><th style='text-align:right'>"+value.monto_certificado+"</th><th style='text-align:right'>"+value.devengado+"</th><th style='text-align:right'>"+value.girado+"</th><th style='text-align:right'>"+value.pagado+"</th><th style='text-align:right'>"+value.avance_financiero+'%'+"</th><th style='text-align:right'>"+value.monto_comprometido_anual+"</th><th style='text-align:right'>"+value.monto_precertificado+"</th></tr>";      
 						html +="</tbody>";
 				});
 				
@@ -955,8 +956,7 @@ $("#CodigoUnico").on( "click", function()
 						if (option && typeof option === "object") {
 						    myChart.setOption(option, true);
 						}
-						
-												
+					
 				}
 
 			});
@@ -965,18 +965,28 @@ $("#CodigoUnico").on( "click", function()
 	
 });
 
+	
+
+	function detalleAnalitico(anio,codigounico)
+	{
+		paginaAjaxDialogo(null, 'Analítico del Avance Financiero del Proyecto por año',{anio: anio,codigounico:codigounico}, base_url+'index.php/PrincipalReportes/DetalleAnalitico', 'GET', null, null, false, true);	
+	}
+
+	function detalleClasificadorPip(anio,codigounico)
+	{
+		paginaAjaxDialogo(null, 'Detalle de Clasificador por PIP',{anio: anio,codigounico:codigounico}, base_url+'index.php/PrincipalReportes/DetalleClasificador', 'GET', null, null, false, true);	
+	}
+
 	function detalladoMensualizado(anio,meta)
 	{
 		//paginaAjaxDialogo(null, 'Ver Detallado Mensualizado',null, base_url+'index.php/PrincipalReportes/DetalleMensualizado', 'GET', null, null, false, true);
 		paginaAjaxDialogo(null, 'Ver Detallado Mensualizado',{ anio: anio, meta:meta}, base_url+'index.php/PrincipalReportes/DetalleMensualizado', 'GET', null, null, false, true);
-		
+	}
+	function detalladoMensualizadoFuenteFinan(anio,meta)
+	{
+		paginaAjaxDialogo(null, 'Ver Detalle',{ anio: anio, meta:meta}, base_url+'index.php/PrincipalReportes/DetalleMensualizadoFuenteFinan', 'GET', null, null, false, true);	
 	}
 
-	function detalleAnalitico()
-	{
-		paginaAjaxDialogo(null, 'Analítico del Avance Financiero del Proyecto por año',null, base_url+'index.php/PrincipalReportes/DetalleAnalitico', 'GET', null, null, false, true);
-		
-	}
     function siafActualizador() {
     	var codigounico=$("#BuscarPip").val();
     	var urll="http://192.168.1.100:8080/importador_siaf/index.php/Importacion/inicio/"+codigounico;

@@ -196,13 +196,182 @@ class PrincipalReportes extends CI_Controller
         $correlativoMeta=$this->input->GET('meta');
         $anioMeta=$this->input->GET('anio');
         $listaDetalleMensualizado=$this->Model_Dashboard_Reporte->DetalleMensualizadoMeta($correlativoMeta,$anioMeta);
-        $this->load->view('front/Reporte/ProyectoInversion/detalle',['listaDetalleMensualizado'=>$listaDetalleMensualizado,'correlativoMeta'=>$correlativoMeta,'anioMeta'=>$anioMeta]);
+        $listaDetalleMensualizadoEst=$this->Model_Dashboard_Reporte->DetalleMensualizadoMetaEst($correlativoMeta,$anioMeta);
+        $this->load->view('front/Reporte/ProyectoInversion/detalle',['listaDetalleMensualizado'=>$listaDetalleMensualizado,'listaDetalleMensualizadoEst'=>$listaDetalleMensualizadoEst,'correlativoMeta'=>$correlativoMeta,'anioMeta'=>$anioMeta]);
+        //$this->load->view('front/Reporte/ProyectoInversion/detalle');
+    }
+
+     function DetalleMensualizadoFuenteFinan()
+    {
+        $correlativoMeta=$this->input->GET('meta');
+        $anioMeta=$this->input->GET('anio');
+       
+        $listaDetalleMensualizadoFuenteFinan=$this->Model_Dashboard_Reporte->DetalleMensualizadoMetaFuente($correlativoMeta,$anioMeta);
+
+        $listaDetalleMensualizadoFuenteFinanDatosG=$this->Model_Dashboard_Reporte->DetalleMensualizadoMetaFuenteDatosG($correlativoMeta,$anioMeta);
+        $this->load->view('front/Reporte/ProyectoInversion/DetalleMensualizadoFuenteFinan',['listaDetalleMensualizadoFuenteFinan'=>$listaDetalleMensualizadoFuenteFinan,'listaDetalleMensualizadoFuenteFinanDatosG'=>$listaDetalleMensualizadoFuenteFinanDatosG,'correlativoMeta'=>$correlativoMeta,'anioMeta'=>$anioMeta]);
         //$this->load->view('front/Reporte/ProyectoInversion/detalle');
     }
 
     function DetalleAnalitico()
+    {  
+        $anio=$this->input->GET('anio');
+        $codigounico=$this->input->GET('codigounico');
+        $listaDetalleAnaliticoAvancFinE=$this->Model_Dashboard_Reporte->ReporteDetalleAnaliticoFinancieroE($anio,$codigounico);
+        $listaDetalleAnaliticoAvancFin=$this->Model_Dashboard_Reporte->ReporteDetalleAnaliticoFinanciero($anio,$codigounico);
+        //var_dump($listaDetalleAnaliticoAvancFin);exit;
+        $this->load->view('front/Reporte/ProyectoInversion/detalleAnalitico',['listaDetalleAnaliticoAvancFin'=> $listaDetalleAnaliticoAvancFin,'listaDetalleAnaliticoAvancFinE'=>$listaDetalleAnaliticoAvancFinE]);
+    }
+    function DetalleClasificador()
     {
-        $this->load->view('front/Reporte/ProyectoInversion/detalleAnalitico');
+        ini_set('xdebug.var_display_max_depth', 100);
+        ini_set('xdebug.var_display_max_children', 256);
+        ini_set('xdebug.var_display_max_data', 1024);
+
+        $anio=$this->input->GET('anio');
+        $codigounico=$this->input->GET('codigounico');
+        $listaDetalleClasificador=$this->Model_Dashboard_Reporte->ReporteDetalleClasificador($anio,$codigounico);
+        
+
+        $temp=[];
+
+        $primerCodigoTemp=null;
+
+        foreach($listaDetalleClasificador as $key0 => $value0)
+        {
+            if($primerCodigoTemp==$value0->cod_tt)
+            {
+                continue;
+            }
+
+            $primerCodigoTemp=$value0->cod_tt;
+
+            $temp[$key0]=new stdClass();
+
+            $temp[$key0]->cod_tt=$value0->cod_tt;
+            $temp[$key0]->tipo_transaccion=$value0->tipo_transaccion;
+
+            $temp[$key0]->child=[];
+
+            $segundoCodigoTemp=null;
+
+            foreach($listaDetalleClasificador as $key1 => $value1)
+            {
+                if($segundoCodigoTemp==$value1->generica || $temp[$key0]->cod_tt!=substr($value1->generica, 0, strlen($temp[$key0]->cod_tt)))
+                {
+                    continue;
+                }
+
+                $segundoCodigoTemp=$value1->generica;
+
+                $temp[$key0]->child[$key1]=new stdClass();
+
+                $temp[$key0]->child[$key1]->generica=$value1->generica;
+                $temp[$key0]->child[$key1]->desc_generica=$value1->desc_generica;
+
+                $temp[$key0]->child[$key1]->child=[];
+
+                $tercerCodigoTemp=null;
+
+                foreach($listaDetalleClasificador as $key2 => $value2)
+                {
+                    if($tercerCodigoTemp==$value2->sub_generica || $temp[$key0]->child[$key1]->generica!=substr($value2->sub_generica, 0, strlen($temp[$key0]->child[$key1]->generica)))
+                    {
+                        continue;
+                    }
+
+                    $tercerCodigoTemp=$value2->sub_generica;
+
+                    $temp[$key0]->child[$key1]->child[$key2]=new stdClass();
+
+                    $temp[$key0]->child[$key1]->child[$key2]->sub_generica=$value2->sub_generica;
+                    $temp[$key0]->child[$key1]->child[$key2]->desc_sub_generica=$value2->desc_sub_generica;
+
+                    $temp[$key0]->child[$key1]->child[$key2]->child=[];
+
+                    $cuartoCodigoTemp=null;
+
+                    foreach($listaDetalleClasificador as $key3 => $value3)
+                    {
+                        if($cuartoCodigoTemp==$value3->sub_generica_det || $temp[$key0]->child[$key1]->child[$key2]->sub_generica!=substr($value3->sub_generica_det, 0, strlen($temp[$key0]->child[$key1]->child[$key2]->sub_generica)))
+                        {
+                            continue;
+                        }
+
+                        $cuartoCodigoTemp=$value3->sub_generica_det;
+
+                        $temp[$key0]->child[$key1]->child[$key2]->child[$key3]=new stdClass();
+
+                        $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->sub_generica_det=$value3->sub_generica_det;
+                        $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->des_sub_generica_det=$value3->des_sub_generica_det;
+
+                        $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child=[];
+
+                        $quintoCodigoTemp=null;
+
+                        foreach($listaDetalleClasificador as $key4 => $value4)
+                        {
+                            if($quintoCodigoTemp==$value4->especifica || $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->sub_generica_det!=substr($value4->especifica, 0, strlen($temp[$key0]->child[$key1]->child[$key2]->child[$key3]->sub_generica_det)))
+                            {
+                                continue;
+                            }
+
+                            $quintoCodigoTemp=$value4->especifica;
+
+                            $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]=new stdClass();
+
+                            $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->especifica=$value4->especifica;
+                            $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->desc_especifica=$value4->desc_especifica;
+
+                            $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child=[];
+
+                            $sextoCodigoTemp=null;
+
+                            foreach($listaDetalleClasificador as $key5 => $value5)
+                            {
+                                if($sextoCodigoTemp==$value5->especifica_det || $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->especifica!=substr($value5->especifica_det, 0, strlen($temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->especifica)))
+                                {
+                                    continue;
+                                }
+
+                                $sextoCodigoTemp=$value5->especifica_det;
+
+                                $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]=new stdClass();
+
+                                $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]->especifica_det=$value5->especifica_det;
+                                $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]->desc_especifica_det=$value5->desc_especifica_det;
+                                $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]->ene=$value5->ene;
+                                $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]->feb=$value5->feb;
+                                $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]->mar=$value5->mar;
+                                $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]->abr=$value5->abr;
+                                $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]->may=$value5->may;
+                                $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]->jun=$value5->jun;                     
+                                $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]->jul=$value5->jul;
+                                $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]->ago=$value5->ago;
+                                $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]->sep=$value5->sep;
+                                $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]->oct=$value5->oct;
+                                $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]->nov=$value5->nov;
+                                $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]->dic=$value5->dic;  
+                                $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]->devengado=$value5->devengado;
+                                $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]->compromiso=$value5->compromiso;
+                                $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]->girado=$value5->girado;
+                                $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]->pagado=$value5->pagado;
+                                $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]->comprometido_anual=$value5->comprometido_anual;
+                                $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]->certificado=$value5->certificado;
+                                $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]->ejecucion=$value5->ejecucion;
+                                $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]->anulacion=$value5->anulacion;                        
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        /*echo "<pre>";
+         var_dump($temp);exit;
+        echo "</pre>";*/
+
+
+        $this->load->view('front/Reporte/ProyectoInversion/detalleClasificador',['listaDetalleClasificador'=>$listaDetalleClasificador,'temp'=>$temp]);
     }
     public function GrafDetalleMensualizado()
     { 
@@ -238,7 +407,9 @@ class PrincipalReportes extends CI_Controller
     {
         $anio=$this->input->POST('anio');
         $data=$this->Model_Dashboard_Reporte->ReporteConsolidadoAvanceFisicoFinan($anio);
-        echo  json_encode($data);
+        
+        $this->load->view('front/Reporte/ProyectoInversion/seguimientoCertificado');
+
     }
 
     public function _load_layout($template)

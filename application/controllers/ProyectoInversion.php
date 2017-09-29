@@ -6,7 +6,7 @@ class ProyectoInversion extends CI_Controller {/* Mantenimiento de sector entida
 	public function __construct(){
       parent::__construct();
       $this->load->model('Model_ProyectoInversion');
-   //   $this->load->model('Ubicacion_Model');
+      $this->load->model('Model_Dashboard_Reporte');
 	}
    /*INSERTAR UN PROYECTO EN LA TABLA PROYECTO Y SIMULTANEO EN LA TABLA PROYECTO UBIGEO*/
    function AddProyecto()
@@ -104,10 +104,142 @@ class ProyectoInversion extends CI_Controller {/* Mantenimiento de sector entida
 	    $this->load->view('layout/Reportes/footer');
     }
 
-    public function ReporteBuscadorPorAnio()
+
+    public function ReportePrueba()
     {
+		ini_set('xdebug.var_display_max_depth', 100);
+		ini_set('xdebug.var_display_max_children', 256);
+		ini_set('xdebug.var_display_max_data', 1024);
+
+		$anio='2017';
+        $codigounico='275116';
+
+        $listaDetalleClasificador=$this->Model_Dashboard_Reporte->ReporteDetalleClasificador($anio,$codigounico);
+
+        $temp=[];
+
+        $primerCodigoTemp=null;
+
+        foreach($listaDetalleClasificador as $key0 => $value0)
+        {
+        	if($primerCodigoTemp==$value0->cod_tt)
+        	{
+        		continue;
+        	}
+
+        	$primerCodigoTemp=$value0->cod_tt;
+
+        	$temp[$key0]=new stdClass();
+
+        	$temp[$key0]->cod_tt=$value0->cod_tt;
+        	$temp[$key0]->tipo_transaccion=$value0->tipo_transaccion;
+
+        	$temp[$key0]->child=[];
+
+        	$segundoCodigoTemp=null;
+
+        	foreach($listaDetalleClasificador as $key1 => $value1)
+        	{
+        		if($segundoCodigoTemp==$value1->generica || $temp[$key0]->cod_tt!=substr($value1->generica, 0, strlen($temp[$key0]->cod_tt)))
+		    	{
+		    		continue;
+		    	}
+
+		    	$segundoCodigoTemp=$value1->generica;
+
+        		$temp[$key0]->child[$key1]=new stdClass();
+
+        		$temp[$key0]->child[$key1]->generica=$value1->generica;
+        		$temp[$key0]->child[$key1]->desc_generica=$value1->desc_generica;
+
+        		$temp[$key0]->child[$key1]->child=[];
+
+	        	$tercerCodigoTemp=null;
+
+	        	foreach($listaDetalleClasificador as $key2 => $value2)
+	        	{
+	        		if($tercerCodigoTemp==$value2->sub_generica || $temp[$key0]->child[$key1]->generica!=substr($value2->sub_generica, 0, strlen($temp[$key0]->child[$key1]->generica)))
+			    	{
+			    		continue;
+			    	}
+
+			    	$tercerCodigoTemp=$value2->sub_generica;
+
+	        		$temp[$key0]->child[$key1]->child[$key2]=new stdClass();
+
+	        		$temp[$key0]->child[$key1]->child[$key2]->sub_generica=$value2->sub_generica;
+	        		$temp[$key0]->child[$key1]->child[$key2]->desc_sub_generica=$value2->desc_sub_generica;
+
+	        		$temp[$key0]->child[$key1]->child[$key2]->child=[];
+
+		        	$cuartoCodigoTemp=null;
+
+		        	foreach($listaDetalleClasificador as $key3 => $value3)
+		        	{
+		        		if($cuartoCodigoTemp==$value3->sub_generica_det || $temp[$key0]->child[$key1]->child[$key2]->sub_generica!=substr($value3->sub_generica_det, 0, strlen($temp[$key0]->child[$key1]->child[$key2]->sub_generica)))
+				    	{
+				    		continue;
+				    	}
+
+				    	$cuartoCodigoTemp=$value3->sub_generica_det;
+
+		        		$temp[$key0]->child[$key1]->child[$key2]->child[$key3]=new stdClass();
+
+		        		$temp[$key0]->child[$key1]->child[$key2]->child[$key3]->sub_generica_det=$value3->sub_generica_det;
+		        		$temp[$key0]->child[$key1]->child[$key2]->child[$key3]->des_sub_generica_det=$value3->des_sub_generica_det;
+
+		        		$temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child=[];
+
+			        	$quintoCodigoTemp=null;
+
+			        	foreach($listaDetalleClasificador as $key4 => $value4)
+			        	{
+			        		if($quintoCodigoTemp==$value4->especifica || $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->sub_generica_det!=substr($value4->especifica, 0, strlen($temp[$key0]->child[$key1]->child[$key2]->child[$key3]->sub_generica_det)))
+					    	{
+					    		continue;
+					    	}
+
+					    	$quintoCodigoTemp=$value4->especifica;
+
+			        		$temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]=new stdClass();
+
+			        		$temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->especifica=$value4->especifica;
+			        		$temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->desc_especifica=$value4->desc_especifica;
+
+			        		$temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child=[];
+
+				        	$sextoCodigoTemp=null;
+
+				        	foreach($listaDetalleClasificador as $key5 => $value5)
+				        	{
+				        		if($sextoCodigoTemp==$value5->especifica_det || $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->especifica!=substr($value5->especifica_det, 0, strlen($temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->especifica)))
+						    	{
+						    		continue;
+						    	}
+
+						    	$sextoCodigoTemp=$value5->especifica_det;
+
+				        		$temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]=new stdClass();
+
+				        		$temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]->especifica_det=$value5->especifica_det;
+				        		$temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]->desc_especifica_det=$value5->desc_especifica_det;
+				        	}
+			        	}
+		        	}
+	        	}
+        	}
+        }
+        echo "<pre>";
+         var_dump($temp);exit;
+        echo "</pre>";
+       
+    }
+    public function ReporteBuscadorPorAnio($anio=2017)
+    {
+      $data=$this->Model_Dashboard_Reporte->ReporteConsolidadoAvanceFisicoFinan($anio);
+      //var_dump($data);exit;
       $this->load->view('layout/Reportes/header');
-      $this->load->view('front/Reporte/ProyectoInversion/seguimientoCertificado');
+      $this->load->view('front/Reporte/ProyectoInversion/seguimientoCertificado',['Consolidado' => $data,'anio' =>$anio]);
       $this->load->view('layout/Reportes/footer');
     }
 

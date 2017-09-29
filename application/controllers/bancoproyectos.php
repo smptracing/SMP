@@ -433,6 +433,14 @@ class bancoproyectos extends CI_Controller
         }
     }
 
+     public function BuscarProyectoSiaf()
+    {
+        
+        $data  = $this->bancoproyectos_modal->BuscarProyectoSiaf($this->input->post('codigo'));
+        echo json_encode($data);exit;
+
+    }
+
     public function NoPip()
     {
         $this->_load_layout_NoPip('Front/Pmi/frmbancoproyectosNoPip');

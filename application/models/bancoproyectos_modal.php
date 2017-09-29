@@ -8,6 +8,12 @@ class bancoproyectos_modal extends CI_Model
         // $this->db->free_db_resource();
 
     }
+    public function BuscarProyectoSiaf($CodigoSiaf)
+    {
+        $Opcion='listar_datos_proyecto_importacion';
+        $data=$this->db->query("execute sp_Gestionar_SIAF   @codigo_snip ='".$CodigoSiaf."',  @Opcion='" .$Opcion. "'");
+        return $data->result();
+    }
     //Add ubigeo a un proyecto
     public function Add_ubigeo_proyecto($flat, $id_ubigeo_pi, $id_ubigeo, $txt_id_pip, $direccion, $txt_latitud,
         $txt_longitud) {

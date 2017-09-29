@@ -66,7 +66,7 @@
 											<button type='button' data-toggle="tooltip" data-original-title="Presupuesto analítico"   class='editar btn btn-dark btn-xs' onclick="paginaAjaxDialogo(null, 'Presupuesto analítico', { idExpedienteTecnico : <?=$item->id_et?> }, base_url+'index.php/ET_Presupuesto_Analitico/insertar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-usd bigger-120'></i></button>
 											<button type='button' data-toggle="tooltip" data-original-title="Enviar E.T. a la siguiente etapa"   class='btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Seleccionar etapa de ejecución para la clonación', { idExpedienteTecnico : <?=$item->id_et?> }, base_url+'index.php/Expediente_Tecnico/clonar', 'POST', null, null, false, true);"><i class='ace-icon fa fa-arrow-right bigger-120'></i></button>
 											<button type='button' data-toggle="tooltip" data-original-title="Dar Visto Bueno del E.T."   class='btn btn-success btn-xs' onclick="paginaAjaxDialogo(null, 'Visto Bueno del E.T.', { id_ExpedienteTecnico : <?=$item->id_et?> }, base_url+'index.php/Expediente_Tecnico/vistoBueno', 'GET', null, null, false, true);"><i class="fa fa-check"></i></button>
-
+											<button type="button" data-toggle="tooltip" data-original-title="Valororización de ejecución del proyecto" class="btn btn-success btn-xs" onclick="window.open(base_url+'index.php/Expediente_Tecnico/valorizacionEjecucionProyecto/<?=$item->id_et?>', '_blank');"><i class="fa fa-align-justify"></i></button>
 											<div class="btn-group">
 												<button data-toggle="dropdown" class="btn btn-info dropdown-toggle btn-xs" type="button">Reportes <span class="caret"></span></button>
 												<ul role="menu"  class="dropdown-menu">

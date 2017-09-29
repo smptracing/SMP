@@ -160,6 +160,24 @@ $(document).on("ready" ,function(){
                          }
                       });
                   });
+
+ 
+          $('#txtCodigoUnico').keyup(function () {
+                codigo2='2187136';
+                var codigo=$("#txtCodigoUnico").val();
+                $.getJSON({
+                          url: base_url+'index.php/bancoproyectos/BuscarProyectoSiaf',
+                          type:'POST',
+                          data:{codigo:codigo},
+                          success:function(resp){
+                            console.log(resp);
+                           $.each(resp, function(index, val) {
+                              $("#txtNombrePip").val(val.nombre_pi);
+                              $("#txtCostoPip").val(val.costo_actual);
+                           });
+                         }
+                      });
+        });
         //limpiar campos
           function formReset()
           {
@@ -170,6 +188,7 @@ $(document).on("ready" ,function(){
          document.getElementById("form_AddModalidadEjec").reset();
          document.getElementById("form_AddOperacionMantenimiento").reset();         
           }
+
       });
 //listar operacion y mantenimiento de un proyecto
  var listar_pip_OperMant=function(id_pi)

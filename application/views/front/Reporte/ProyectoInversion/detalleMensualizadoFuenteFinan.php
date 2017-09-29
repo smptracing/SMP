@@ -22,7 +22,7 @@
 			<div class="col-md-12 col-xs-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
-						<h2><b>DETALLE MENSUAL DE LA META</b> </h2>
+						<h2><b>DATOS GENERALES Y DETALLE POR FUENTE DE FINANCIAMIENTO</b> </h2>
 						<ul class="nav navbar-right panel_toolbox">
 						</ul>
 						<div class="clearfix"></div>
@@ -34,92 +34,115 @@
 								<!-- /Contenido del sector -->
 								<div role="tabpanel" class="tab-pane fade active in" id="tab_Sector" aria-labelledby="home-tab">
 									<!-- /tabla de sector desde el row -->
+									
 									<div class="row">
 						                <div class="col-md-12 col-sm-12 col-xs-12">
 										
 					                        <div>
-					                        	<table id="table-DatoGen"  class="table-hover" cellspacing="0" width="100%">
+					                        	<table id="table-DatoGenerales"  class="table-hover" cellspacing="0" width="100%">
 												<body>
 													
 													<tr>
-														<td>AÑO: <?=$listaDetalleMensualizadoEst->ano_eje;?>  </td>
+														<td>AÑO: <?=$listaDetalleMensualizadoFuenteFinanDatosG->ano_eje;?>  </td>
 													</tr>
 													<tr>
-														<td>CORRELATIVO META: <?=$listaDetalleMensualizadoEst->meta;?>  </td>
+														<td>CORRELATIVO META: <?=$listaDetalleMensualizadoFuenteFinanDatosG->meta;?>  </td>
 													</tr>
-											
+													<tr>
+														<td>NOMBRE DEL PROYECTO: <?=$listaDetalleMensualizadoFuenteFinanDatosG->nombre;?>  </td>
+													</tr>
+													<tr>
+														<td>FINALIDAD: <?=$listaDetalleMensualizadoFuenteFinanDatosG->nombre_finalidad;?>  </td>
+													</tr>
 												</body>
+											
 											</table>
 
 					                        </div>
 
 						                </div>
 						        	</div>
-									<br>	
+									<br>
 									<div class="row">  
 										<div class="col-md-12 col-sm-12 col-xs-12">
 											<table id="table-DetalleMensualizado"  class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 												<thead>
 													<tr>
-														<td>Nombre</td>
-														<td>Mes</td>
+										
+														<td>Fuente Financiamiento</td>
+														<td style="text-align:right">Pia</td>
+														<td style="text-align:right">Pim</td>
+														<td style="text-align:right">Pim Acumulado</td>
+														<td style="text-align:right">Monto Finan 1</td>
+														<td style="text-align:right">Monto Finan 2</td>
 														<td style="text-align:right">Ejecución</td>
 														<td style="text-align:right">Compromiso</td>
 														<td style="text-align:right">Certificado</td>
 														<td style="text-align:right">Devengado</td>
 														<td style="text-align:right">Girado</td>
 														<td style="text-align:right">Pagado</td>
+														<td style="text-align:right">Ampliación</td>
+														<td style="text-align:right">Crédito</td>
+														
 													</tr>
 												</thead>
 												<tbody>
-													<?php foreach($listaDetalleMensualizado as $item ){ ?>
+													<?php foreach($listaDetalleMensualizadoFuenteFinan as $item ){ ?>
 													  	<tr>
 															<td>
-																<?=$item->nombre?>
-													    	</td>
-													    	<td>
-																<?=$item->mes_eje?>
+																<?=$item->fuente_financ?>
 													    	</td>
 													    	<td style="text-align:right">
-																<?= number_format($item->ejecucion,2)?>
+																<?=$item->pia?>
 													    	</td>
 													    	<td style="text-align:right">
-																<?= number_format($item->compromiso,2)?>
+																<?=$item->pim?>
 													    	</td>
 													    	<td style="text-align:right">
-																<?= number_format($item->certificado,2)?>
+																<?=$item->pim_acumulado?>
 													    	</td>
 													    	<td style="text-align:right">
-																<?= number_format($item->devengado,2)?>
+																<?=$item->monto_financ1?>
 													    	</td>
 													    	<td style="text-align:right">
-																<?= number_format($item->girado,2)?>
+																<?=$item->monto_financ2?>
 													    	</td>
 													    	<td style="text-align:right">
-																<?=number_format($item->pagado,2)?>
+																<?=$item->ejecucion?>
 													    	</td>
+													    	<td style="text-align:right">
+																<?=$item->compromiso?>
+													    	</td>
+													    	<td style="text-align:right">
+																<?=$item->monto_certificado?>
+													    	</td>
+													    	<td style="text-align:right">
+																<?=$item->devengado?>
+													    	</td>
+													    	<td style="text-align:right">
+																<?=$item->girado?>
+													    	</td>
+													    	<td style="text-align:right">
+																<?=$item->pagado?>
+													    	</td>
+													    	<td style="text-align:right">
+																<?=$item->ampliacion?>
+													    	</td>
+													    	<td style="text-align:right">
+																<?=$item->credito?>
+													    	</td>
+													    	
 													  </tr>
 													<?php } ?>
 												</tbody>
-												<input type="hidden" id="txtcorrelativo" name="txtcorrelativo" value="<?php echo $correlativoMeta ?>">
-												<input type="hidden" id="txtanioMeta" name="txtanioMeta" value="<?php echo $anioMeta ?>">
+											
 											</table>
 										</div>
 									
 									</div>
 										<!-- / fin tabla de sector desde el row -->
-									<div class="row" style="margin-left: 10px; margin:10px; ">
-						                <div class="panel panel-default">
-										 <div class="panel-heading">GRÁFICO ESTADÍSTICO DE DETALLE MENSUALIZADO</div>
-						                        <div id="contenedorGrafico">
-						                        	
-						                        </div>
 
-						                </div>
-						        	</div>
-	
-
-								</div>
+								</div>	
 							</div>
 						</div>
 					</div>
