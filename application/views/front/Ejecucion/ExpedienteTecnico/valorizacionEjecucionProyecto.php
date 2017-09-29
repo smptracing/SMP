@@ -3,7 +3,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 {
 	$htmlTemp='';
 
-	$htmlTemp.='<tr>'.
+	$htmlTemp.='<tr class="elementoBuscar">'.
 		'<td><b><i>'.$meta->numeracion.'</i></b></td>'.
 		'<td style="text-align: left;"><b><i>'.html_escape($meta->desc_meta).'</i></b></td>'.
 		'<td>---</td>'.
@@ -25,7 +25,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 	{
 		foreach($meta->childPartida as $key => $value)
 		{
-			$htmlTemp.='<tr>'.
+			$htmlTemp.='<tr class="elementoBuscar">'.
 				'<td>'.$value->numeracion.'</td>'.
 				'<td style="text-align: left;">'.html_escape($value->desc_partida).'</td>'.
 				'<td>'.html_escape($value->descripcion).'</td>'.
@@ -102,6 +102,9 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 					<div class="clearfix"></div>
 				</div>
 				<div class="x_content">
+					<div style="text-align: right;">
+						<input type="text" class="form-control" placeholder="Buscar partidas por su descripción" autocomplete="off" style="margin-bottom: 4px;" onkeyup="filtrarHtml('tableValorizacion', this.value, true, 0, event);">
+					</div>
 					<div id="divContenedorGeneral" style="overflow-x: scroll;">
 						<table id="tableValorizacion">
 							<thead>
@@ -128,7 +131,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 							</thead>
 							<tbody>
 								<?php foreach($expedienteTecnico->childComponente as $key => $value){ ?>
-									<tr>
+									<tr class="elementoBuscar">
 										<td><b><i><?=$value->numeracion?></i></b></td>
 										<td style="text-align: left;"><b><i><?=html_escape($value->descripcion)?></i></b></td>
 										<td>---</td>
