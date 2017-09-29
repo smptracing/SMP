@@ -18,8 +18,8 @@
 
 			</div>
 			<div class="col-md-4 col-sm-4 col-xs-4">
-				<label>Modulo</label>
-				<select id="cbx_modulos" name="cbx_modulos" class="form-control notValidate" required="">
+				<label>Modulo</label><br/>
+				<select id="cbx_modulos" name="cbx_modulos[]"  class="selectpicker" multiple data-live-search="true" data-live-search-placeholder="Search" data-actions-box="true">
 					<?php foreach ($listarModulo as $itemp) {?>
 						<option value="<?=$itemp->id_modulo.','.$itemp->nombre_modulo?>"> <?= $itemp->nombre_modulo?></option>
 					<?php } ?>
@@ -39,8 +39,8 @@
 			<table id="table-Entregable" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
 				<thead>
 					<tr>
-						<td>Modulo </td>
-						<td>Entregable</td>
+						<td>Entregable  </td>
+						<td>Modulo</td>
 						<td>Valor Entregable</td>
 						<td></td>
 					</tr>
@@ -55,26 +55,33 @@
 </form>
 
 <script>
+$( document ).ready(function() {
+	 
+	 $('#cbx_modulos').selectpicker('refresh');
+
+
 	$("#btnAgregarFEntregable").on('click', function(event)
 	{
-		
-
-		var posicionSeparadorTemp=$('#cbx_modulos').val().indexOf(',');
-		var idmodulo=$('#cbx_modulos').val().substring(0, posicionSeparadorTemp);
-		var descripcionModulo=replaceAll(replaceAll($('#cbx_modulos').val().substring(posicionSeparadorTemp+1, $('#cbx_modulos').val().length), '<', '&lt;'), '>', '&gt;');
-
+		var htmlTemp;
 		var posicionSeparadorTemp1=$('#cbx_entregable').val().indexOf(',');
 		var identregable=$('#cbx_entregable').val().substring(0, posicionSeparadorTemp1);
 		var descripcionEntregable=replaceAll(replaceAll($('#cbx_entregable').val().substring(posicionSeparadorTemp1+1, $('#cbx_entregable').val().length), '<', '&lt;'), '>', '&gt;');
 		
 		var valorEntregable	=$("#valorEntregable").val();
-		var htmlTemp='<tr>'+
-			'<td><input type="hidden" value='+idmodulo+' name="hdIdmodulo[]"> '+descripcionModulo+'</td>'+
-			'<td><input type="hidden" value='+identregable+' name="hdidEntregable[]">'+descripcionEntregable+'</td>'+
-			'<td><input type="hidden" value='+valorEntregable+' name="ValorEntregable[]">'+valorEntregable+'</td>'+
-			'<td><a href="#" onclick="$(this).parent().parent().remove();" style="color: red;font-weight: bold;text-decoration: underline;">Eliminar</a></td>'+
-		'</tr>'
 
+		var modulo=$("#cbx_modulos").val();
+		for (var i = 0; i < modulo.length; i++) {
+			var posicionSeparadorTemp=modulo[i].indexOf(',');
+			var idmodulo=modulo[i].substring(0, posicionSeparadorTemp);
+			var descripcionModulo=replaceAll(replaceAll(modulo[i].substring(posicionSeparadorTemp+1, modulo[i].length), '<', '&lt;'), '>', '&gt;');
+			htmlTemp +='<tr>'+
+				'<td><input type="hidden" value='+identregable+' name="hdidEntregable[]">'+descripcionEntregable+'</td>'+
+				'<td><input type="hidden" value='+idmodulo+' name="hdIdmodulo[]"> '+descripcionModulo+'</td>'+
+				'<td><input type="hidden" value='+valorEntregable+' name="ValorEntregable[]">'+valorEntregable+'</td>'+
+				'<td><a href="#" onclick="$(this).parent().parent().remove();" style="color: red;font-weight: bold;text-decoration: underline;">Eliminar</a></td>'+
+			'</tr>'
+		}
+		
 		$('#table-Entregable > tbody').append(htmlTemp);
 
 		//limpiarText('divPresupuestoFuente', []);
@@ -111,4 +118,5 @@
 			});
 		}, false, true);
 	});
+});
 </script>
