@@ -68,13 +68,13 @@
 																		<?=$item->denom_nivel_estudio?>
 															    	</td>
 															    	<td>
-																		<?=$item->denom_nivel_estudio?>
+																		
 															    	</td>
 															    	<td>
-																		<?=$item->avance_entregbale?>
+																		
 															    	</td>
 															    	<td>
-																		<?=$item->avance_entregbale?>
+																		<?=$item->avance?>
 															    	</td>
 															    	<td>
 																		<button type='button' data-toggle="tooltip" data-original-title="Personal" class='btn btn-success btn-xs' onclick="paginaAjaxDialogo(null, 'Asignar formuladores',null, base_url+'index.php/Estudio_Inversion/AsignarFormulador', 'GET', null, null, false, true);"><i class="glyphicon glyphicon-user"></i></button>
