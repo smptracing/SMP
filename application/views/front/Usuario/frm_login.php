@@ -16,7 +16,7 @@
     <![endif]-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <style>
-        /*.login-page
+        .login-page
         {
             background-color:#f1f4f7;
             background-image: -webkit-gradient(linear, left 0%, left 100%, from(#555555), to(#111111));
@@ -26,7 +26,7 @@
             background-repeat: repeat-x;
             filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff555555', endColorstr='#ff111111', GradientType=0);
             background-attachment: fixed;
-        }*/
+        }
         .logo
         {
             text-align: center;
@@ -37,14 +37,13 @@
         }
         .box-slider
         {
-            background-color: rgba(29, 101, 160, 0.42);
+            background-color: /*rgba(29, 101, 160, 0.42);*/#f7f7f7;
         }
         .carousel-inner
         {
             text-align: center;
             font-size: 13px;
             line-height: 1.25;
-            font-family: "Raleway", Helvetica, Arial, sans-serif;
         }
         .carousel-content 
         {
@@ -58,7 +57,30 @@
           height: auto;
           padding: 0px;
         }
-        .
+        .funcion{
+            color: #58bf77;
+            font-family: Open Sans, sans-serif;     
+            text-transform: uppercase;
+            font-weight: bold;    
+            font-size: 15px;  
+        }
+        .cantidad
+        {
+            color: #3c8dbc;
+             font-family: Open Sans, sans-serif;  
+               
+        }
+        .Beneficiarios
+        {
+            color: #e04f00;
+            font-family: Open Sans, sans-serif;           
+
+        }
+        .costo
+        {
+            color: #58bf77;
+            font-family: Open Sans, sans-serif;   
+        }
     </style>
 </head>
 <body class="hold-transition login-page">
@@ -95,22 +117,22 @@
                                             <div class="carousel-inner">
                                                 <div class="item active">
                                                     <div class="carousel-content">
-                                                        <div class="msg">
-                                                            <p ><?=$Reporte[0]->nombre_funcion?></p>
-                                                            <p><?=$Reporte[0]->cantidad_pip?> Proyectos Registrados.</p>
-                                                            <p><?=$Reporte[0]->total_beneficiarios?> Beneficiarios.</p>
-                                                            <p>S/. <?=$Reporte[0]->costo_total?></p>
+                                                        <div>
+                                                            <p class="funcion"><?=$Reporte[0]->nombre_funcion?></p>
+                                                            <p class="cantidad"><?=$Reporte[0]->cantidad_pip?> Proyectos Registrados.</p>
+                                                            <p class="Beneficiarios"><?=$Reporte[0]->total_beneficiarios?> Beneficiarios.</p>
+                                                            <p class="costo">S/. <?=$Reporte[0]->costo_total?></p>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <?php foreach($Reporte as $item ) { ?>  
                                                 <div class="item">
                                                     <div class="carousel-content">
-                                                        <div class="msg">
-                                                            <p><?=$item->nombre_funcion?></p>
-                                                            <p><?=$item->cantidad_pip?> Proyectos Registrados.</p>
-                                                            <p><?=$item->total_beneficiarios?> Beneficiarios.</p>
-                                                            <p>S/. <?=$item->costo_total?></p>
+                                                        <div>
+                                                            <p class="funcion"><?=$item->nombre_funcion?></p>
+                                                            <p class="cantidad"><?=$item->cantidad_pip?> Proyectos Registrados.</p>
+                                                            <p class="Beneficiarios"><?=$item->total_beneficiarios?> Beneficiarios.</p>
+                                                            <p class="costo">S/. <?=$item->costo_total?></p>
                                                         </div>
                                                     </div>
                                                 </div>
