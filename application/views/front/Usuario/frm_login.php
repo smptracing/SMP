@@ -37,7 +37,7 @@
         }
         .box-slider
         {
-            background-color: /*rgba(29, 101, 160, 0.42);*/#f7f7f7;
+            background-color: #f7f7f7;
         }
         .carousel-inner
         {
@@ -58,7 +58,7 @@
           padding: 0px;
         }
         .funcion{
-            color: #58bf77;
+            color: #2aaf67;;
             font-family: Open Sans, sans-serif;     
             text-transform: uppercase;
             font-weight: bold;    
@@ -66,19 +66,19 @@
         }
         .cantidad
         {
-            color: #3c8dbc;
+            color: #5a8ab9;
              font-family: Open Sans, sans-serif;  
                
         }
         .Beneficiarios
         {
-            color: #e04f00;
+            color: #f26522;
             font-family: Open Sans, sans-serif;           
 
         }
         .costo
         {
-            color: #58bf77;
+            color: #e52b50;
             font-family: Open Sans, sans-serif;   
         }
     </style>
