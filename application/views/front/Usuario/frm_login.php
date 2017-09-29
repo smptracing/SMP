@@ -125,7 +125,9 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <?php foreach($Reporte as $item ) { ?>  
+                                                <?php
+                                                unset($Reporte[0]);
+                                                foreach($Reporte as $item ) { ?>  
                                                 <div class="item">
                                                     <div class="carousel-content">
                                                         <div>
