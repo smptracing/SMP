@@ -99,8 +99,10 @@
   <header class="main-header">
     <nav class="navbar navbar-static-top">
       <div class="container">
-        <div class="navbar-header">
-          <a href="<?php echo site_url('Inicio'); ?>" class="navbar-brand tituloLogo"><b style="font-size: 40px; padding-top: 25px;">SMP</b> Tracing v1.0</a>
+        <div class="navbar-header" style="padding-top: 13px;">
+          <a href="<?php echo site_url('Inicio'); ?>" >
+            <img style="display: inline-block; height: 50px; width: 185px; opacity: 1;" src="<?php echo base_url(); ?>assets/images/logo.png" class="img-responsive">
+          </a>
         </div>
         <div class="navbar-custom-menu">
          <span class="tituloHeader">Software de Seguimiento y Monitoreo de PIP's</span><br>
@@ -325,177 +327,12 @@
                     
                 </div>
             </div> 
-
-           <!-- <div class="box-header with-border">              
-              <h3 class="box-title"> <br><i class="fa fa-refresh"></i> CICLO DE INVERSIONES</h3>
-            </div>
-            <div class="box-body">
-                  <div class="row">
-                      <?php
-                      $CI = & get_instance();
-                      $modulo=[];
-                      foreach ($CI->session->userdata('menuUsuario') as $item) {
-                        if(!in_array($item['id_modulo'],$modulo))
-                          array_push($modulo,$item['id_modulo']);
-                      }
-                      if(in_array('PMI',$modulo)){
-                        ?>
-                        <div class="col-lg-4 col-xs-12 col-sm-6">
-                            <div class="small-box bg-teal">
-                                <div class="inner">
-                                    <h3>PMI</h3>
-                                    <p>Programación Multianual de Inversión (PMI)</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fa fa-calendar"></i>
-                                </div>
-                                <a href="<?php echo site_url('PrincipalPmi/pmi'); ?>" class="small-box-footer">
-                                    Ingresar <i class="fa fa-arrow-circle-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <?php
-                      }
-                      ?>
-                      
-                      <div class="col-lg-4 col-xs-12 col-sm-6">
-                          <div class="small-box bg-olive">
-                              <div class="inner">
-                                  <h3>FE</h3>
-                                  <p>Formulación y Evaluación de Proyectos de Inversión Pública</p>
-                              </div>
-                              <div class="icon">
-                                  <i class="fa fa-edit"></i>
-                              </div>
-                              <a href="<?php echo site_url('PrincipalFyE/PrincipalFyED'); ?>" class="small-box-footer">
-                                  Ingresar <i class="fa fa-arrow-circle-right"></i>
-                              </a>
-                          </div>
-                      </div>
-                      <div class="col-lg-4 col-xs-12 col-sm-6">
-                          <div class="small-box bg-blue">
-                              <div class="inner">
-                                  <h3>E</h3>
-                                  <p>Ejecución de Proyectos de Inversión Pública</p>
-                              </div>
-                              <div class="icon">
-                                  <i class="fa fa-play"></i>
-                              </div>
-                              <a href="<?php echo site_url('PrincipalEjecucion/PrincipalEjec'); ?>" class="small-box-footer">
-                                  Ingresar <i class="fa fa-arrow-circle-right"></i>
-                              </a>
-                          </div>
-                      </div>
-                </div>
-                <div class="box-header with-border">
-                   <h3 class="box-title"><i class="fa fa-list"></i> MÓDULOS<br></h3><br>
-                </div>
-                <div class="row">
-                      <div class="col-lg-4 col-xs-12 col-sm-6">
-                          <div class="small-box bg-yellow">
-                              <div class="inner">
-                                  <h3>SM</h3>
-                                  <p>Seguimiento y Monitoreo de Proyectos de Inversión Pública</p>
-                              </div>
-                              <div class="icon">
-                                  <i class="fa fa-random"></i>
-                              </div>
-                              <a href="#"
-                                 class="small-box-footer">
-                                  Ingresar <i class="fa fa-arrow-circle-right"></i>
-                              </a>
-                          </div>
-                      </div>
-                      <div class="col-lg-4 col-xs-12 col-sm-6">
-                          <div class="small-box bg-purple">
-                              <div class="inner">
-                                  <h3>M</h3>
-                                  <p>Monitoreo de Proyectos de Inversión Pública</p>
-                              </div>
-                              <div class="icon">
-                                  <i class="fa fa-eye"></i>
-                              </div>
-                              <a href="#"
-                                 class="small-box-footer">
-                                  Ingresar <i class="fa fa-arrow-circle-right"></i>
-                              </a>
-                          </div>
-                      </div>
-                      <div class="col-lg-4 col-xs-12 col-sm-6">
-                          <div class="small-box bg-navy">
-                              <div class="inner">
-                                  <h3>R</h3>
-                                  <p>
-                                      Reportes, Estadísticas e Informes
-                                  </p>
-                              </div>
-                              <div class="icon">
-                                  <i class="fa fa-bar-chart"></i>
-                              </div>
-                              <a href="<?php echo site_url('PrincipalReportes/PrincipalReportes'); ?>"
-                                 class="small-box-footer">
-                                  Ingresar <i class="fa fa-arrow-circle-right"></i>
-                              </a>
-
-                          </div>
-                      </div>
-                </div>
-                <div class="box-header with-border">
-                  <h3 class="box-title"><i class="fa fa-cog"></i> CONFIGURACIÓN DE PARÁMETROS<br> </h3><br>
-                </div>
-                <div class="row">
-                      <div class="col-lg-4 col-xs-12 col-sm-6">
-                          <div class="small-box bg-red">
-                              <div class="inner">
-                                  <h3>P</h3>
-                                  <p>Mantenimiento de Parámetros Generales</p>
-                              </div>
-                              <div class="icon">
-                                  <i class="fa fa-cogs"></i>
-                              </div>
-                              <a href="<?php echo site_url('PrincipalParametros/parametros'); ?>"
-                                 class="small-box-footer">
-                                  Ingresar <i class="fa fa-arrow-circle-right"></i>
-                              </a>
-                          </div>
-                      </div>
-
-                      <div class="col-lg-4 col-xs-12 col-sm-6">
-                          <div class="small-box bg-light-blue">
-                              <div class="inner">
-                                  <h3>U</h3>
-                                  <p>Usuarios, Permisos y Administracion</p>
-                              </div>
-                              <div class="icon">
-                                  <i class="fa fa-users"></i>
-                              </div>
-                              <a href="<?php echo site_url('Usuario/'); ?>"
-                                 class="small-box-footer">
-                                  Ingresar <i class="fa fa-arrow-circle-right"></i>
-                              </a>
-                          </div>
-                      </div>
-                </div>
-          </div>
-      </div>-->
     </section>
     </div>
   </div>
   <footer class="main-footer">
     <div class="container">
       <div class="row">
-       <!-- <div class="col-lg-4 col-sm-6">
-            <span class="TituloListaFooter"><strong>Guía de Usuario</strong></span>
-            <ul>
-                <li><a style="color:#fff;" href="#">Mantenimiento de Parámetros</a></li>
-                <li><a style="color:#fff;" href="#">PMI</a></li>
-                <li><a style="color:#fff;" href="#">Formulación y Evaluación</a></li>
-                <li><a style="color:#fff;" href="#">Ejecución</a></li>
-                <li><a style="color:#fff;" href="#">Liquidación</a></li>
-                <li><a style="color:#fff;" href="#">Reportes</a></li>
-                <li><a style="color:#fff;" href="#">Control de Usuarios</a></li>
-            </ul>          
-        </div>-->
         <div class="col-lg-4 col-sm-6" >
             <span class="TituloListaFooter"><strong>Enlaces</strong></span>
             <ul>
@@ -513,19 +350,9 @@
                 <li><a style="color:#fff;" href="https://www.mef.gob.pe/es/anexos-y-formatos#anexos" target="_blank">Anexos  InviertePe</a></li>
                 <li><a style="color:#fff;" href="https://www.mef.gob.pe/es/anexos-y-formatos#formatos" target="_blank">Formatos</a></li>
             </ul>
-            <!--<span class="TituloListaFooter"><strong>Normatividad</strong></span>
-            <ul>
-                <li><a style="color:#fff;" href="https://www.mef.gob.pe/es/documentacion-sp-30574/temas/sistema-nacional-de-programacion-multianual-y-gestion-de-inversiones-invierte-pe/15837-decreto-supremo-n-027-2017-ef-2/file">Decreto Supremo Nº 027-2017-EF</a></li>
-                <li><a style="color:#fff;" href="https://www.mef.gob.pe/es/documentacion-sp-30574/temas/sistema-nacional-de-programacion-multianual-y-gestion-de-inversiones-invierte-pe/15836-decreto-legislativo-n-1252-1/file">Decreto Legislativo N° 1252</a></li>
-            </ul>    -->      
         </div>
 
         <div class="col-lg-4 col-sm-6">
-            <!--<span class="TituloListaFooter"><strong>Descargas</strong></span>
-            <ul>
-                <li><a style="color:#fff;" href="https://www.mef.gob.pe/es/anexos-y-formatos#anexos">Anexos  InviertePe</a></li>
-                <li><a style="color:#fff;" href="https://www.mef.gob.pe/es/anexos-y-formatos#formatos">Formatos</a></li>
-            </ul>-->
             <span class="TituloListaFooter"><strong>Normatividad</strong></span>
             <ul>
                 <li><a style="color:#fff;" href="https://www.mef.gob.pe/es/documentacion-sp-30574/temas/sistema-nacional-de-programacion-multianual-y-gestion-de-inversiones-invierte-pe/15837-decreto-supremo-n-027-2017-ef-2/file" target="_blank">Decreto Supremo Nº 027-2017-EF</a></li>
