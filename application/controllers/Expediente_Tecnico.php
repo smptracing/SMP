@@ -95,9 +95,7 @@ class Expediente_Tecnico extends CI_Controller
 		}
 		var_dump($listaETExpedienteTecnico);exit;
 		//$this->_load_layout('front/Ejecucion/ExpedienteTecnico/monitorcoordinador.php', ['listaETExpedienteTecnico' => $listaETExpedienteTecnico]);
-		$this->load->view('layout/Ejecucion/header');
-		$this->load->view('front/Ejecucion/ExpedienteTecnico/index.php',['listaETExpedienteTecnico'=>$listaETExpedienteTecnico]);
-		$this->load->view('layout/Ejecucion/footer');
+	
 	}*/
 	public function ejecucion()
 	{

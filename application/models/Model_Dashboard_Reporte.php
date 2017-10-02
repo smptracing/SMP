@@ -212,7 +212,8 @@ class Model_Dashboard_Reporte extends CI_Model
         $opcion="listar_analitico_avance_proyecto";
         $data = $this->db->query("execute sp_Gestionar_SIAF @opcion='".$opcion."',  @anio_meta='".$anio."', @codigo_snip='".$codigounico."'");
             
-            return $data->result()[0];
+            //return $data->result()[0];
+            return count($data->result())>0 ? $data->result()[0] : false;
     }
 
     function ReporteDetalleClasificador($anio,$codigounico)

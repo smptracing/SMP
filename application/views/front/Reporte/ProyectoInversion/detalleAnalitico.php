@@ -47,68 +47,32 @@
 												</thead>
 												<tbody>
 													
-												<!--<table border="2px"> 
-										            <tr>
-										                <td>Campo 1</td>
-										                <td>Campo 2</td>
-										                <td>Campo 3</td>
-										            </tr>
-										            <tr>
-										                 <td colspan="2">Campos 4 y 5</td>
-										                <td >Campo 6</td>
-										               
-										            </tr>
 
-										      
-										        </table>-->
-
-													<!--<tr>
-										                <td><?=$listaDetalleAnaliticoAvancFinE->act_proy;?> </td>
-										                <td colspan="2"><?=$listaDetalleAnaliticoAvancFinE->proyecto;?> </td>
-										                <td></td>
-										  
-										                <td>Presupuesto</td>
-										            </tr>
-													<tr>
-										                <td></td>
-										                <td ><?=$listaDetalleAnaliticoAvancFinE->meta;?> </td>
-										                <td><?=$listaDetalleAnaliticoAvancFinE->proyecto;?> </td>
-										                 <td>Presupuesto</td>
-										                  <td>Presupuesto</td>
-										            </tr>
-										            <tr>
-										                <td></td>
-										                <td></td>
-										                <td ><?=$listaDetalleAnaliticoAvancFinE->meta,'',$listaDetalleAnaliticoAvancFinE->proyecto;?> </td>
-										                <td><?=$listaDetalleAnaliticoAvancFinE->proyecto;?> </td>
-										                 <td>Presupuesto</td>
-										             
-										            </tr>-->
-										 
+													<?php if($listaDetalleAnaliticoAvancFinE ==false){?>
+														<tr>
+														<td>Prod/Proy. Cat.Pptal. Act/AI/Obr Fun. Div.Fn. Finalidad Meta A Gen</td>
+														</tr>
 												
-													<tr>
+														<?php  }else { ?>
+														<tr>
 														<td><?=$listaDetalleAnaliticoAvancFinE->act_proy ,' ',$listaDetalleAnaliticoAvancFinE->proyecto;?>  </td>
 											
-													</tr>
+														</tr>
 			
-													<tr>
-													
-														<td><?=$listaDetalleAnaliticoAvancFinE->meta,' ', $listaDetalleAnaliticoAvancFinE->proyecto;?>  </td>
-											
-													</tr>
+														<tr>
+															<td><?=$listaDetalleAnaliticoAvancFinE->meta,' ', $listaDetalleAnaliticoAvancFinE->proyecto;?></td>
+														</tr>
+														<tr>
+															<td><?=$listaDetalleAnaliticoAvancFinE->programa,' ', $listaDetalleAnaliticoAvancFinE->programa_nombre;?>  </td>
+														</tr>
+														<tr>
+															<td><?=$listaDetalleAnaliticoAvancFinE->sub_programa,' ', $listaDetalleAnaliticoAvancFinE->sub_programa_nombre;?>  </td>
+														</tr>
+														<tr>
+															<td><?=$listaDetalleAnaliticoAvancFinE->funcion,' ', $listaDetalleAnaliticoAvancFinE->funcion_nombre;?>  </td>	
+														</tr>
+													<?php  } ?>
 												
-													<tr>
-											
-														<td><?=$listaDetalleAnaliticoAvancFinE->programa,' ', $listaDetalleAnaliticoAvancFinE->programa_nombre;?>  </td>
-										
-													<tr>
-											
-														<td><?=$listaDetalleAnaliticoAvancFinE->sub_programa,' ', $listaDetalleAnaliticoAvancFinE->sub_programa_nombre;?>  </td>
-											
-													</tr>
-													<tr>
-											
-														<td><?=$listaDetalleAnaliticoAvancFinE->funcion,' ', $listaDetalleAnaliticoAvancFinE->funcion_nombre;?>  </td>
 												</tbody>
 										
 											</table>
