@@ -43,18 +43,18 @@
 
                                                           <div class="x_content">
                                                             <table id="table-Personal" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
-																<thead>
-																	<tr>
-																		<th>DNI</th>
-																		<th>A. Paterno</th>
-																		<th>A. Materno</th>
-																		<th>Nombres</th>
-																		<th>Direción</th>
-																		<th>Grado académico</th>
-																		<th>Especialidad</th>
-																		<th>ACCIONES</th>
-																	</tr>
-																</thead>
+                              																<thead>
+                              																	<tr>
+                              																		<th>DNI</th>
+                              																		<th>A. Paterno</th>
+                              																		<th>A. Materno</th>
+                              																		<th>Nombres</th>
+                              																		<th>Direción</th>
+                              																		<th>Grado académico</th>
+                              																		<th>Especialidad</th>
+                              																		<th>ACCIONES</th>
+                              																	</tr>
+                              																</thead>
                                                             </table>
                                                           </div>
                                                         </div>
@@ -229,13 +229,22 @@
                         </div>
                       </div>
 
-                         <div class="item form-group">
+                     <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Especialidad<span class="required"></span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input id="txt_especialidad" name="txt_especialidad" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Especialidad" type="text">
                         </div>
                       </div>
+
+                      
+                    <div class="form-group">
+                           <label class="control-label col-md-3 col-sm-3 col-xs-6">Especialidad</label>
+                            <div class="col-md-6 col-sm-9 col-xs-6">
+                                     <select   id="Cbx_especialidad" name="Cbx_especialidad" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Especialidad...">
+                                      </select>
+                            </div>
+                    </div>
 
                         <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Fecha Nacimiento<span class="required">*</span>

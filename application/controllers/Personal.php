@@ -180,6 +180,16 @@ class Personal extends CI_Controller
         }
 
     }
+
+    public function GetEspecilidad()
+    {
+        if ($this->input->is_ajax_request()) {
+            $datos = $this->Model_Personal->GetEspecilidad();
+            echo json_encode($datos);
+        } else {
+            show_404();
+        } 
+    }
 /* fin Personal actividad*/
 
     public function _load_layout($template)

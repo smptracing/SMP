@@ -110,4 +110,10 @@ class Model_Personal extends CI_Model
         $personal = $this->db->query("select * from PERSONA"); 
         return $personal->result();
     }
+
+    public function GetEspecilidad()
+    {
+         $especialidad = $this->db->query("select * from ESPECIALIDAD"); 
+        return $especialidad->result();
+    }
 }

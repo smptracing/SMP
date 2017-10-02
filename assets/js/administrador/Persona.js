@@ -1,7 +1,7 @@
 $(document).on("ready" ,function()
 {
 	listarpersona();//para mostrar lista de las personas
-	
+	listarEspecialidad();
 	$("#btn_nuevoPersonal").click(function()//para que cargue el como una vez echo click sino repetira datos
 	{
 		listarOficina();
@@ -175,6 +175,36 @@ $(document).on("ready" ,function()
 				$("#Cbx_Oficinas").html(html);
 				$('select[name=Cbx_Oficinas]').val(id_oficina);//PARA AGREGAR UN COMBO PSELECIONADO
 				$('select[name=Cbx_Oficinas]').change();
+				$('.selectpicker').selectpicker('refresh'); 
+			}
+		});
+	}
+
+	var listarEspecialidad=function()
+	{
+		event.preventDefault(); 
+
+		var html="";
+
+		$("#Cbx_especialidad").html(html); 
+
+		$.ajax(
+		{
+			"url" : base_url+"index.php/Personal/GetEspecilidad",
+			"type" : "POST",
+			success : function(respuesta3)
+			{
+				var registros = eval(respuesta3);
+
+				for(var i=0; i<registros.length; i++)
+				{
+					html +="<option  value="+registros[i]["id_esp"]+"> "+registros[i]["nombre_esp"]+" </option>";   
+				}
+
+				$("#Cbx_especialidad").html(html);
+				$("#Cbx_especialidad").html(html);
+				$('select[name=Cbx_especialidad]').val(id_oficina);//PARA AGREGAR UN COMBO PSELECIONADO
+				$('select[name=Cbx_especialidad]').change();
 				$('.selectpicker').selectpicker('refresh'); 
 			}
 		});
