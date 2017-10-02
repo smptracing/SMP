@@ -1,30 +1,37 @@
 $(document).on("ready" ,function(){
-  $("#btn_NuevoPip").click(function(){
-                 listarCicloInver();
-                 listarufcombo();
-             }); 
-     listar_proyectos_inversion();/*llamar a mi datatablet listar proyectosinverision*/
+    $("#btn_NuevoPip").click(function()
+    {
+        listarCicloInver();
+        listarufcombo();
+    }); 
+    listar_proyectos_inversion();
+    /*$("#form_EditarProyectosInversion").submit(function(event)
+    {
+        event.preventDefault();
+        $('#validarEditarPip').data('formValidation').validate();
+        if(!($('#validarEditarPip').data('formValidation').isValid()))
+        {
+          return;
+        }
+        $.ajax({
+            url:base_url+"index.php/bancoproyectos/update_pip",
+            type:$(this).attr('method'),
+            data:$(this).serialize(),
+            success:function(resp){
+              if (resp=='1') {
+                 swal("ACTUALIZADO","Se actualizó correctamente", "success");
+                // formReset();
 
-            $("#form_EditarProyectosInversion").submit(function(event)
-                {
-                    event.preventDefault();
-                    $.ajax({
-                        url:base_url+"index.php/bancoproyectos/update_pip",
-                        type:$(this).attr('method'),
-                        data:$(this).serialize(),
-                        success:function(resp){
-                          if (resp=='1') {
-                             swal("ACTUALIZADO","Se actualizó correctamente", "success");
-                            // formReset();
+               }
+                if (resp=='2') {
+                 swal("NO SE ACTUALIZÓ","No se actualizó ", "error");
+               }
+                $('#table_proyectos_inversion').dataTable()._fnAjaxUpdate();
+             }
+        });
+    });*/
 
-                           }
-                            if (resp=='2') {
-                             swal("NO SE ACTUALIZÓ","No se actualizó ", "error");
-                           }
-                            $('#table_proyectos_inversion').dataTable()._fnAjaxUpdate();
-                         }
-                    });
-                    });
+            
                 //REGISTARAR OPERACION Y MANTENIMIENTO
      $("#form_AddOperacionMantenimiento").submit(function(event)
                   {
