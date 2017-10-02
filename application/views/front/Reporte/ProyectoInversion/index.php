@@ -1,3 +1,4 @@
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts-all-3.js"></script>
 <div class="right_col" role="main">
 	<div class="">
 		<div class="clearfix"></div>
