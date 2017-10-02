@@ -1,3 +1,4 @@
+
 <div class="right_col" role="main">
 	<div class="">
 		<div class="clearfix"></div>
@@ -183,17 +184,7 @@
 												                </div>
 													        </div>
 
-													        <div class="row" style="margin-left: 10px; margin:10px; ">
-																<div class="panel panel-default">
-																	<div class="panel-heading">ANALÍTICO DEL AVANCE FINANCIERO POR PROYECTO</div>
-																	  	<div id="analitico" class="table-responsive">
-																			<br>
-																			<table id="table-AnaliticoAvanceFinanciero" class="table  table-striped jambo_table bulk_action table-responsive" style="text-align: left;"> 
-																			 
-																		  </table> 
-																	    </div>
-																</div>
-															</div>
+				
 
 														</div>
 											</div>
@@ -622,7 +613,7 @@ $("#CodigoUnico").on( "click", function()
 						            data: [cantidadpipprovincias.devengado_acumulado]
 						        }   
 						    ]
-						};;
+						};
 						if (option && typeof option === "object") {
 						    myChart.setOption(option, true);
 						}
@@ -709,12 +700,12 @@ $("#CodigoUnico").on( "click", function()
 						        }
 						    ]
 						};
-			if (option && typeof option === "object") {
-			    myChart.setOption(option, true);
-				}
-			
-				}
-			});
+						if (option && typeof option === "object") {
+						    myChart.setOption(option, true);
+							}
+						
+							}
+						});
 	
 			$.ajax({
 				"url":base_url+"index.php/PrincipalReportes/ReporteDevengadoPiaPimPorPipGraficos",
@@ -885,7 +876,7 @@ $("#CodigoUnico").on( "click", function()
 						            data: [devengadoPiaGraficos.compromiso_acumulado]
 						        }    
 						    ]
-						};;
+						};
 						if (option && typeof option === "object") {
 						    myChart.setOption(option, true);
 						}					

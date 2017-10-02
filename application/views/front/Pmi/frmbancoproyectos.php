@@ -10,7 +10,7 @@
 
             </div>
             <div class="clearfix"></div>
-            <div class="">f
+            <div class="">
               <div class="col-md-12 col-sm-12 col-xs-12">
                                 <div class="x_panel">
                                   <div class="x_title">
@@ -342,14 +342,17 @@
                                         <!-- PAGE CONTENT BEGINS -->
               <form class="form-horizontal " id="form_AddUbigeo"   action="<?php echo base_url(); ?>bancoproyectos/Get_ubigeo_pip" method="POST" >
 
-              <div class="item form-group">
-                        <div class="item form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="txt_id_pip" name="txt_id_pip" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
-                        </div>
-                      </div>
-                </div>
+                <input id="txt_id_pip" name="txt_id_pip" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
+
                <div class="item form-group">
+                                    <div class="col-md-12">
+                                        <div class=".col-xs-12 .col-md-12">
+                                            <label for="name">Proyecto:</label>
+                                        </div>
+                                        <textarea class="form-control" rows="2" readonly="readonly" id="nombreProyecto" name="nombreProyecto"></textarea>
+                                        
+                                    </div>
+                                    <br>
                                    <div class="col-md-4">
                                            <label for="name">Departamento.<span class="required"></span>
                                             </label>
