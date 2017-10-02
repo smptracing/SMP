@@ -14,6 +14,11 @@ $(document).ready(function(){
     {
         $(this).val(format($(this).val()));
     });
+    /*$("#txt_monto_operacion").keyup(function(e)
+    {
+        $(this).val(format($(this).val()));
+    });*/
+    
     $("#form_EditarProyectosInversion").submit(function(event)
     {
         event.preventDefault();

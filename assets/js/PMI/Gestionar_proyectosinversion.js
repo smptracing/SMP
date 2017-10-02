@@ -657,6 +657,7 @@ var listarFuenteFinanciamiento=function(valor){
                       var data=table.row( $(this).parents("tr")).data();
                        var  id_pi=data.id_pi;
                       $("#txt_id_pip_OperMant").val(data.id_pi);
+                      $("#nombreProyectoOperacion").val(data.nombre_pi);
                         listar_pip_OperMant(id_pi);
                     });
                 }
@@ -677,8 +678,8 @@ var listarFuenteFinanciamiento=function(valor){
               var  AddEstadoCiclo=function(tbody,table){
                     $(tbody).on("click","button.ver_estado_ciclo",function(){
                       var data=table.row( $(this).parents("tr")).data();
-                       var  id_pi=data.id_pi;
                       $("#txt_id_pip_Ciclopi").val(data.id_pi);
+                      $("#nombreProyectoEstado").val(data.nombre_pi);
                       listarEstadoCiclo();
                       listar_estado_ciclo(id_pi);
                     });
