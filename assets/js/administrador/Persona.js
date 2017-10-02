@@ -62,7 +62,7 @@ $(document).on("ready" ,function()
          /*listra Persona*/
                 var listaPersonaCombo=function(valor)//COMO CON LAS PersonaES PARA AGREGAR DIVIVISION Personal
                 {
-                    html="";
+                    var html="";
                     $("#listaPersonaC").html(html); 
                     event.preventDefault(); 
                     $.ajax({
@@ -154,7 +154,7 @@ $(document).on("ready" ,function()
 	{
 		event.preventDefault(); 
 
-		html="";
+		var html="";
 
 		$("#Cbx_Oficina").html(html); 
 
