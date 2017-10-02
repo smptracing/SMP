@@ -345,14 +345,13 @@
                 <input id="txt_id_pip" name="txt_id_pip" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
 
                <div class="item form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 col-xs-12 col-sm-12">
                                         <div class=".col-xs-12 .col-md-12">
                                             <label for="name">Proyecto:</label>
                                         </div>
                                         <textarea class="form-control" rows="2" readonly="readonly" id="nombreProyecto" name="nombreProyecto"></textarea>
-                                        
+                                        <br>                                        
                                     </div>
-                                    <br>
                                    <div class="col-md-4">
                                            <label for="name">Departamento.<span class="required"></span>
                                             </label>
@@ -540,16 +539,18 @@
          <div class="row">
                     <div class="col-xs-12">
                                         <!-- PAGE CONTENT BEGINS -->
-              <form class="form-horizontal " id="form_AddRubro"   action="<?php echo base_url(); ?>bancoproyectos/listar_rubro" method="POST" >
+            <form class="form-horizontal " id="form_AddRubro"   action="<?php echo base_url(); ?>bancoproyectos/listar_rubro" method="POST" >
 
-              <div class="item form-group">
-                        <div class="item form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="txt_id_pip_RubroPI" name="txt_id_pip_RubroPI" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
-                        </div>
-                      </div>
-                </div>
+                <input id="txt_id_pip_RubroPI" name="txt_id_pip_RubroPI" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
+                    
                                <div class="item form-group">
+                                    <div class="col-md-12 col-xs-12 col-sm-12">
+                                        <div class=".col-xs-12 .col-md-12">
+                                            <label for="name">Proyecto:</label>
+                                        </div>
+                                        <textarea class="form-control" rows="2" readonly="readonly" id="nombreProyectoRubro" name="nombreProyectoRubro"></textarea>
+                                        <br>                                    
+                                    </div>
                                      <div class="col-md-4">
 
                                            <label for="name">Rubro.<span class="required"></span>
@@ -621,15 +622,16 @@
                     <div class="col-xs-12">
                                         <!-- PAGE CONTENT BEGINS -->
               <form class="form-horizontal " id="form_AddModalidadEjec"   action="<?php echo base_url(); ?>bancoproyectos/listar_rubro" method="POST" >
-
-              <div class="item form-group">
-                        <div class="item form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
                         <input id="txt_id_pip_ModalidadEjec" name="txt_id_pip_ModalidadEjec" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
-                        </div>
-                      </div>
-                </div>
+                        
                                <div class="item form-group">
+                                    <div class="col-md-12 col-xs-12 col-sm-12">
+                                        <div class=".col-xs-12 .col-md-12">
+                                            <label for="name">Proyecto:</label>
+                                        </div>
+                                        <textarea class="form-control" rows="2" readonly="readonly" id="nombreProyectoModalidad" name="nombreProyectoMmodalidad"></textarea>
+                                        <br>                                        
+                                    </div>
                                      <div class="col-md-4">
 
                                            <label for="name">Modalidad.<span class="required"></span>

@@ -688,7 +688,9 @@ var listarFuenteFinanciamiento=function(valor){
                     $(tbody).on("click","button.RegistarNuevoRubro",function(){
                       var data=table.row( $(this).parents("tr")).data();
                        var  id_pi=data.id_pi;
+                       var nombre_proy = data.nombre_pi;
                       $("#txt_id_pip_RubroPI").val(data.id_pi);
+                      $("#nombreProyectoRubro").val(nombre_proy);
                         ListarRubro();
                         listarRubroPI(id_pi);
                     });
@@ -696,9 +698,12 @@ var listarFuenteFinanciamiento=function(valor){
                 //listar y agregar modalidad de ejecución
               var  AddModalidadEjecucion=function(tbody,table){
                     $(tbody).on("click","button.nueva_modalidad_ejec",function(){
-                      var data=table.row( $(this).parents("tr")).data();
-                       var  id_pi=data.id_pi;
-                      $("#txt_id_pip_ModalidadEjec").val(data.id_pi);
+                        var data=table.row( $(this).parents("tr")).data();
+                        var  id_pi=data.id_pi;
+                        var  nombre_pi=data.nombre_pi;
+                        $("#txt_id_pip_ModalidadEjec").val(data.id_pi);
+                        $("#nombreProyectoModalidad").val(data.nombre_pi);
+
                         ListarModalidad();
                         listarModalidadPI(id_pi);
                     });
