@@ -1,4 +1,4 @@
-<!-- page content -->
+<script src="<?php echo base_url(); ?>assets/vendors/echarts/dist/echarts.min.js"></script>
 <div class="right_col" role="main">
 	<div class="">
 

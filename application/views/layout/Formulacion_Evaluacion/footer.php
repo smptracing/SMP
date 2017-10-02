@@ -25,11 +25,6 @@
     <!-- Skycons -->
     <script src="<?php echo base_url(); ?>assets/vendors/skycons/skycons.js"></script>
     <!-- Flot -->
-    <!-- ECharts -->
-    <script src="<?php echo base_url(); ?>assets/vendors/echarts/dist/echarts.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets/vendors/echarts/map/js/world.js"></script>
-
-
  <!-- jQuery Smart Wizard -->
     <script src="<?php echo base_url(); ?>assets/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
 
