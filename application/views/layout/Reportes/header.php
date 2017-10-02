@@ -87,7 +87,6 @@
                             <ul class="nav child_menu">
                                 <li><a href="<?php echo site_url('ProyectoInversion/ReporteBuscadorPorPip'); ?>">Avance financiero</a></li>
                                 <li><a href="<?php echo site_url('ProyectoInversion/ReporteBuscadorPorAnio'); ?>">Consolidado Avance Financiero Total</a></li>
-                                 <li><a href="<?php echo site_url('ProyectoInversion/ReportePrueba'); ?>">Prueba</a></li>
                             </ul>
                         </li>
                 	</ul>
