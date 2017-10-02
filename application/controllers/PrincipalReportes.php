@@ -11,8 +11,9 @@ class PrincipalReportes extends CI_Controller
 
     public function PrincipalReportes()
     {
-
-        $this->_load_layout('Reportes');
+        $this->load->view('layout/Reportes/header');
+        $this->load->view('Reportes');
+        $this->load->view('layout/Reportes/footer');
 
     }
 

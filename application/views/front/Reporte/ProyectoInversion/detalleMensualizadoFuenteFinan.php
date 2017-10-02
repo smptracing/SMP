@@ -1,3 +1,4 @@
+<script src="<?php echo base_url(); ?>assets/vendors/echarts/dist/echarts-all-3.js"></script>
 <style>
 	.modal-dialog
 	{

@@ -19,7 +19,6 @@
 
 	<link href="<?php echo base_url(); ?>assets/vendors/animate/animate.min.css" rel="stylesheet">
 	<script src="<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
-	<script src="<?php echo base_url(); ?>assets/vendors/echarts/dist/echarts-all-3.js"></script>
  	<script src="<?php echo base_url(); ?>assets/js/Helper/jsHelper.js"></script>
 
 	<style>

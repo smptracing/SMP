@@ -1,4 +1,4 @@
-
+<script src="<?php echo base_url(); ?>assets/vendors/echarts/dist/echarts-all-3.js"></script>
 <div class="right_col" role="main">
 	<div class="">
 		<div class="clearfix"></div>
