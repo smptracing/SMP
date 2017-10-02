@@ -268,8 +268,7 @@ $("#CodigoUnico").on( "click", function()
 		data:{codigounico:codigounico},
 		success: function(data)
 			{
-		        //alert(data);
-		        console.log(data);
+		        //console.log(data);
 		        var ejecucionPresupuestal=JSON.parse(data); 
 		        var html;
 				html+="<thead><tr><th>AÑO EJECUCIÓN</th><th style='text-align:right'>COSTO ACTUAL</th><th style='text-align:right'>COSTO DE EXPEDIENTE</th><th style='text-align:right'>COSTO DE VIABILIDAD</th><th style='text-align:right'>COSTO DE EXP AÑO ANTERIOR</th></tr></thead>"
@@ -289,7 +288,7 @@ $("#CodigoUnico").on( "click", function()
 		data:{codigounico:codigounico},
 		success: function(data)
 			{
-		    	console.log(data);
+		    	//console.log(data);
 
 		    	var meta1=JSON.parse(data); 
 		        var html;
@@ -306,7 +305,6 @@ $("#CodigoUnico").on( "click", function()
 
 		});
 
-
 		$.ajax({
 				"url":base_url+"index.php/PrincipalReportes/GrafEstInfFinanciera",
 				type:"GET", 
@@ -320,62 +318,6 @@ $("#CodigoUnico").on( "click", function()
 						var dom = document.getElementById("MetaPimPiaPorCadaAño");
 						var myChart = echarts.init(dom);
 				
-						/*option = {
-						    tooltip: {
-						        trigger: 'axis',
-						        axisPointer: {
-						            type: 'cross',
-						            crossStyle: {
-						                color: '#999'
-						            }
-						        }
-						    },
-						    toolbox: {
-						        feature: {
-						            dataView: {show: true, readOnly: false},
-						            magicType: {show: true, type: ['line', 'bar']},
-						            restore: {show: true},
-						            saveAsImage: {show: true}
-						        }
-						    },
-						    legend: {
-						        data:['Pim','Devengado']
-						    },
-						    xAxis: [
-						        {
-						            type: 'category',
-						            data: pip[0], //AÑOS 
-						            
-						            axisPointer: {
-						                type: 'shadow'
-						            }
-						        }
-						    ],
-						    yAxis: [
-						        {
-						            type: 'value',
-						            name: 'Pim',
-						            min: 0,
-						            max: 1000000,
-						            interval: 160000,
-						            axisLabel: {
-						                formatter: '{value}'
-						            }
-						        }
-						    ],
-						    series: [
-						        {
-						            name:'Pim',
-						            type:'bar',
-						            data: pip[1],
-						        },
-						        {
-						            name:'Devengado',
-						            type:'bar',
-						            data:pip[2]
-						        }
-						    ]
-						};*/
 						var app = {};
 						option = null;
 							var posList = [
@@ -445,7 +387,6 @@ $("#CodigoUnico").on( "click", function()
 						        });
 						    }
 						};
-
 
 						var labelOption = {
 						    normal: {
@@ -518,8 +459,6 @@ $("#CodigoUnico").on( "click", function()
 						        } 
 						    ]
 						};
-
-
 
 						if (option && typeof option === "object") {
 						    myChart.setOption(option, true);
@@ -607,7 +546,6 @@ $("#CodigoUnico").on( "click", function()
 						    }
 						};
 
-
 						var labelOption = {
 						    normal: {
 						        show: true,
@@ -688,8 +626,6 @@ $("#CodigoUnico").on( "click", function()
 						if (option && typeof option === "object") {
 						    myChart.setOption(option, true);
 						}
-
-						
 					}
 				});
 	
@@ -700,7 +636,6 @@ $("#CodigoUnico").on( "click", function()
 				cache:false,
 				success:function(resp)
 				{
-				//alert(resp);
 					var pip=JSON.parse(resp);	
 					var dom = document.getElementById("AvanceInfFinanciera");
 					var myChart = echarts.init(dom);
@@ -781,7 +716,6 @@ $("#CodigoUnico").on( "click", function()
 				}
 			});
 	
-
 			$.ajax({
 				"url":base_url+"index.php/PrincipalReportes/ReporteDevengadoPiaPimPorPipGraficos",
 				type:"GET", 
@@ -862,7 +796,6 @@ $("#CodigoUnico").on( "click", function()
 						        });
 						    }
 						};
-
 
 						var labelOption = {
 						    normal: {
@@ -955,17 +888,13 @@ $("#CodigoUnico").on( "click", function()
 						};;
 						if (option && typeof option === "object") {
 						    myChart.setOption(option, true);
-						}
-					
+						}					
 				}
 
 			});
 
 		});
-	
 });
-
-	
 
 	function detalleAnalitico(anio,codigounico)
 	{
@@ -979,7 +908,6 @@ $("#CodigoUnico").on( "click", function()
 
 	function detalladoMensualizado(anio,meta)
 	{
-		//paginaAjaxDialogo(null, 'Ver Detallado Mensualizado',null, base_url+'index.php/PrincipalReportes/DetalleMensualizado', 'GET', null, null, false, true);
 		paginaAjaxDialogo(null, 'Ver Detallado Mensualizado',{ anio: anio, meta:meta}, base_url+'index.php/PrincipalReportes/DetalleMensualizado', 'GET', null, null, false, true);
 	}
 	function detalladoMensualizadoFuenteFinan(anio,meta)
