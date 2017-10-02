@@ -29,12 +29,12 @@
 							<table id="table-ExpedienteTecnico" style="text-align: center;" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 								<thead>
 									<tr>
-										<td>Unidad Ejecutora</td>
-										<td>Nombre del proyecto</td>
-										<td>Costo Total del proyecto Preinversion</td>
-										<td>Costo Total del proyecto Inversion</td>
-										<td>Tiempo Ejecucion</td>
-										<td>Numero Beneficiarios</td>
+										<td class="col-md-1 col-xs-12">Unidad Ejecutora</td>
+										<td class="col-md-4 col-xs-12">Nombre del proyecto</td>
+										<td class="col-md-1 col-xs-12">Costo Total del proyecto Preinversion</td>
+										<td class="col-md-1 col-xs-12">Costo Total del proyecto Inversion</td>
+										<td class="col-md-1 col-xs-12">Tiempo Ejecucion</td>
+										<td class="col-md-1 col-xs-12">Numero Beneficiarios</td>
 										<td class="col-md-3 col-xs-12"></td>
 									</tr>
 								</thead>

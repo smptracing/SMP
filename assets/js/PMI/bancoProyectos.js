@@ -6,16 +6,39 @@ $(document).ready(function(){
             return false;
         }
     });
-    $('#txtCostoPip').inputmask("decimal", 
+    $("#txtCostoPip").keyup(function(e)
     {
-        radixPoint: ".",
-        groupSeparator: ",",
-        digits: 2,
-        autoGroup: true,
-        rightAlign: false,
+        $(this).val(format($(this).val()));
+    });
+    $("#txtCostoPip_m").keyup(function(e)
+    {
+        $(this).val(format($(this).val()));
     });
     
 }); 
+var format = function(num){
+    var str = num.replace("", ""), parts = false, output = [], i = 1, formatted = null;
+    if(str.indexOf(".") > 0) 
+    {
+        parts = str.split(".");
+        str = parts[0];
+    }
+    str = str.split("").reverse();
+    for(var j = 0, len = str.length; j < len; j++) 
+    {
+        if(str[j] != ",") 
+        {
+            output.push(str[j]);
+            if(i%3 == 0 && j < (len - 1))
+            {
+                output.push(",");
+            }
+            i++;
+        }
+    }
+    formatted = output.reverse().join("");
+    return("" + formatted + ((parts) ? "." + parts[1].substr(0, 2) : ""));
+};
 
 
 
@@ -138,6 +161,11 @@ $(function()
               validators:{
                 notEmpty:{
                   message: '<b style="color: red;">El campo "Costo de inversión" es requerido.</b>'
+                },
+                regexp:
+                {
+                    regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
+                    message: '<b style="color: red;">El campo "Costo de Inversión" debe ser númerico.</b>'
                 }
               }
             },

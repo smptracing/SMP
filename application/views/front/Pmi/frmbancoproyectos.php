@@ -10,7 +10,7 @@
 
             </div>
             <div class="clearfix"></div>
-            <div class="">
+            <div class="">f
               <div class="col-md-12 col-sm-12 col-xs-12">
                                 <div class="x_panel">
                                   <div class="x_title">
@@ -902,8 +902,8 @@
 
                                             <div class="col-md-11 col-sm-6 col-xs-12">
                                             <label  for="name">Costo de Inversion<span class="required">*</span>
-                                        </label>
-                                            <input id="txtCostoPip_m" name="txtCostoPip_m" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Costo de inversion" required="required" type="number">
+                                            </label>
+                                            <input id="txtCostoPip_m" name="txtCostoPip_m" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Costo de inversion" required="required" type="text">
                                          </div>
                                       </div>
                                        <div class="col-md-4">

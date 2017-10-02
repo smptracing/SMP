@@ -3,15 +3,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class bancoproyectos extends CI_Controller
 {
-/* Mantenimiento de sector entidad Y servicio publico asociado*/
-
     public function __construct()
     {
         parent::__construct();
         $this->load->model('bancoproyectos_modal');
         $this->load->helper('FormatNumber_helper');
     }
-    /*INSERTAR UN PROYECTO EN LA TABLA PROYECTO Y SIMULTANEO EN LA TABLA PROYECTO UBIGEO*/
     public function AddProyectos()
     {
         if ($this->input->is_ajax_request()) {
@@ -135,7 +132,7 @@ class bancoproyectos extends CI_Controller
             $cbxProgramaPresupuestal_m = $this->input->post("cbxProgramaPresupuestal_m");
             $txtCodigoUnico_m          = $this->input->post("txtCodigoUnico_m");
             $txtNombrePip_m            = $this->input->post("txtNombrePip_m");
-            $txtCostoPip_m             = $this->input->post("txtCostoPip_m");
+            $txtCostoPip_m             = floatval(str_replace(",","",$this->input->post("txtCostoPip_m")));
             $txt_beneficiarios_m       = $this->input->post("txt_beneficiarios_m");
             // $dateFechaInPip    = $this->input->post("fecha_registro");
             // $dateFechaViabilidad = $this->input->post("fecha_viabilidad");
