@@ -156,7 +156,8 @@ class Model_Dashboard_Reporte extends CI_Model
         $opcion="listar_mensualizado_meta";
         $data = $this->db->query("execute sp_Gestionar_SIAF @opcion='".$opcion."',  @correlativo_meta='".$correlativoMeta."', @anio_meta='".$anioMeta."'");
             
-            return $data->result()[0];
+            //return $data->result()[0];
+            return count($data->result())>0 ? $data->result()[0] : false;
     }
 
     function DetalleMensualizadoMetaFuente($correlativoMeta, $anioMeta)

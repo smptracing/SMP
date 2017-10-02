@@ -41,12 +41,22 @@
 					                        	<table id="table-DatoGen"  class="table-hover" cellspacing="0" width="100%">
 												<body>
 													
-													<tr>
-														<td>AÑO: <?=$listaDetalleMensualizadoEst->ano_eje;?>  </td>
-													</tr>
-													<tr>
-														<td>CORRELATIVO META: <?=$listaDetalleMensualizadoEst->meta;?>  </td>
-													</tr>
+														<?php if($listaDetalleMensualizadoEst ==false){?>
+														<tr>
+														<td>AÑO:  </td>
+														</tr>
+														<tr>
+															<td>CORRELATIVO META:  </td>
+														</tr>
+														<?php  }else { ?>
+																<tr>
+																	<td>AÑO: <?=$listaDetalleMensualizadoEst->ano_eje ;?>  </td>
+																</tr>
+																<tr>
+																	<td>CORRELATIVO META: <?=$listaDetalleMensualizadoEst->meta;?>  </td>
+																</tr>
+															
+														<?php  } ?>
 											
 												</body>
 											</table>

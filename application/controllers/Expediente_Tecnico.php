@@ -57,12 +57,48 @@ class Expediente_Tecnico extends CI_Controller
 		$flat="LISTARETAPA";
 		$id_etapa_et="1";
 		$listaExpedienteTecnicoElaboracion=$this->Model_ET_Expediente_Tecnico->ExpedienteListarElaboracion($flat,$id_etapa_et);
+
+		$listaETExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->ListarExpedienteTecnico();
+		foreach($listaETExpedienteTecnico as $key => $value)
+		{
+			$value->primeraETTarea=$this->Model_ET_Tarea->primeraETTareaPorIdET($value->id_et);
+			$value->ultimaETTarea=$this->Model_ET_Tarea->ultimaETTareaPorIdET($value->id_et);
+
+			$value->existeGantt=false;
+
+			if($value->primeraETTarea!=null)
+			{
+				$value->existeGantt=true;
+			}
+		}
 		//var_dump($listaExpedienteTecnicoModificacion);exit;
 		$this->load->view('layout/Ejecucion/header');
-		$this->load->view('front/Ejecucion/ExpedienteTecnico/index.php',['listaExpedienteTecnicoElaboracion'=>$listaExpedienteTecnicoElaboracion]);
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/index.php',['listaExpedienteTecnicoElaboracion'=>$listaExpedienteTecnicoElaboracion,'listaETExpedienteTecnico'=>$listaETExpedienteTecnico]);
 		$this->load->view('layout/Ejecucion/footer');
 	}
 
+	/*public function monitorCoordinador()
+	{
+		$listaETExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->ListarExpedienteTecnico();
+
+		foreach($listaETExpedienteTecnico as $key => $value)
+		{
+			$value->primeraETTarea=$this->Model_ET_Tarea->primeraETTareaPorIdET($value->id_et);
+			$value->ultimaETTarea=$this->Model_ET_Tarea->ultimaETTareaPorIdET($value->id_et);
+
+			$value->existeGantt=false;
+
+			if($value->primeraETTarea!=null)
+			{
+				$value->existeGantt=true;
+			}
+		}
+		var_dump($listaETExpedienteTecnico);exit;
+		//$this->_load_layout('front/Ejecucion/ExpedienteTecnico/monitorcoordinador.php', ['listaETExpedienteTecnico' => $listaETExpedienteTecnico]);
+		$this->load->view('layout/Ejecucion/header');
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/index.php',['listaETExpedienteTecnico'=>$listaETExpedienteTecnico]);
+		$this->load->view('layout/Ejecucion/footer');
+	}*/
 	public function ejecucion()
 	{
 		$flat1="LISTARCOMPATIBILIDAD";
@@ -629,25 +665,7 @@ class Expediente_Tecnico extends CI_Controller
 		$this->load->view('front/Ejecucion/ExpedienteTecnico/detalleExpediente.php',["detalleExpediente" => $detalleExpediente]);	
 	}
 
-	public function monitorCoordinador()
-	{
-		$listaETExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->ListarExpedienteTecnico();
-
-		foreach($listaETExpedienteTecnico as $key => $value)
-		{
-			$value->primeraETTarea=$this->Model_ET_Tarea->primeraETTareaPorIdET($value->id_et);
-			$value->ultimaETTarea=$this->Model_ET_Tarea->ultimaETTareaPorIdET($value->id_et);
-
-			$value->existeGantt=false;
-
-			if($value->primeraETTarea!=null)
-			{
-				$value->existeGantt=true;
-			}
-		}
-
-		$this->_load_layout('front/Ejecucion/ExpedienteTecnico/monitorcoordinador.php', ['listaETExpedienteTecnico' => $listaETExpedienteTecnico]);
-	}
+	
 
 	public function vistoBueno()
 	{

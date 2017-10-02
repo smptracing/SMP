@@ -14,6 +14,8 @@
 							<a href="#tab_Sector"  id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">	<b>Expediente</b>
 							</a>
 						</li>
+						 <li role="presentation" class=""><a href="#tab_Monitoreo"  role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"> <b>Monitoreo de ET</b></a>
+                        </li>
 					</ul>
 				<div id="myTabContent" class="tab-content">
 				<div role="tabpanel" class="tab-pane fade active in" id="tab_Sector" aria-labelledby="home-tab">
@@ -114,6 +116,61 @@
 					</div>
 					</div>
 
+							
+                        <div role="tabpanel" class="tab-pane fade" id="tab_Monitoreo" aria-labelledby="profile-tab">
+                         <!-- /tabla de grupo funcional desde el row -->
+                        <div class="row">
+
+                              <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="x_panel">
+                                  
+                                      <div class="x_title">
+                                        <div class="clearfix"></div>
+                                      </div>
+                                      <div class="x_content">
+                                      
+                                      				<table id="tableExpedienteTecnico" class="table table-striped">
+														<thead>
+															<th style="text-align: center;">Código único</th>
+															<th>Nombre PI</th>
+															<th style="text-align: center;">Inicio/Fin</th>
+															<th></th>
+														</thead>
+														<tbody>
+															<?php foreach($listaETExpedienteTecnico as $key => $value){ ?>
+																<tr>
+																	<td style="text-align: center;"><?=$value->codigo_unico_pi?></td>
+																	<td><?=html_escape($value->nombre_pi)?></td>
+																	<td style="text-align: center;width: 150px;"><?=($value->existeGantt ? substr($value->primeraETTarea->fecha_inicio_tarea, 0, 10).'/'.substr($value->ultimaETTarea->fecha_final_tarea, 0, 10) : '')?></td>
+																	<td>
+																		<?php if($value->existeGantt){ ?>
+																			<?php if(substr($value->primeraETTarea->fecha_inicio_tarea, 0, 10)<=date('Y-m-d') && substr($value->ultimaETTarea->fecha_final_tarea, 0, 10)>=date('Y-m-d')){ ?>
+																				<div style="background-color: #58aaff;border-radius: 20px;display: inline-block;height: 20px;width: 20px;" title="En proceso"></div>
+																			<?php } ?>
+																			<?php if(substr($value->primeraETTarea->fecha_inicio_tarea, 0, 10)>date('Y-m-d')){ ?>
+																				<div style="background-color: #12b112;border-radius: 20px;display: inline-block;height: 20px;width: 20px;" title="En espera"></div>
+																			<?php } ?>
+																			<?php if(substr($value->ultimaETTarea->fecha_final_tarea, 0, 10)<date('Y-m-d')){ ?>
+																				<div style="background-color: #bdbdc4;border-radius: 20px;display: inline-block;height: 20px;width: 20px;" title="Fuera de fecha"></div>
+																			<?php } ?>
+																		<?php } else{ ?>
+																			<div style="background-color: #12b112;border-radius: 20px;display: inline-block;height: 20px;width: 20px;" title="Sin cronograma"></div>
+																		<?php } ?>
+																	</td>
+																</tr>
+															<?php } ?>
+														</tbody>
+													</table>
+
+
+
+                                      </div>
+                                    </div>
+                                  </div>
+
+                        </div>
+                     <!-- / fin tabla grupo funcional asociados el row -->
+                    </div>
 
 					</div>
 					</div>
@@ -146,6 +203,7 @@ if($sessionTempError){ ?>
 	</script>
 <?php } ?>
 <script>
+
 
 	$(document).ready(function()
 	{
@@ -185,6 +243,14 @@ if($sessionTempError){ ?>
 	$(document).ready(function()
 	{
 		$('#table-Ejecucion-Adicional').DataTable(
+		{
+			"language":idioma_espanol
+		});
+
+	});
+	$(document).ready(function()
+	{
+		$('#tableExpedienteTecnico').DataTable(
 		{
 			"language":idioma_espanol
 		});
