@@ -37,11 +37,38 @@ $(document).on("ready" ,function()
                     swal("NO SE ACTUALIZÓ","No se actualizó ", "error");
                 }
                 $('#table_no_pip').dataTable()._fnAjaxUpdate();
-                $('#table_metas_presupuestales').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
-                $('#Table_TipoNoPip').dataTable()._fnAjaxUpdate();
                 $('#form_Edit_no_pip')[0].reset();
                 $('#venta_editar_proyecto').modal('hide');
-             }
+            }
+        });
+    });
+
+    $("#form-AddProyectosInversion").submit(function(event)
+    {
+        event.preventDefault();
+        $('#validarRegistroNoPip').data('formValidation').validate();
+        if(!($('#validarRegistroNoPip').data('formValidation').isValid()))
+        {
+          return;
+        }
+        $.ajax({
+            url:base_url+"index.php/bancoproyectos/AddNoPip",
+            type:$(this).attr('method'),
+            data:$(this).serialize(),
+            success:function(resp)
+            {
+                if (resp=='1') 
+                {
+                    swal("REGISTRADO","Se regristró correctamente", "success");
+                }
+                if (resp=='2') 
+                {
+                    swal("NO SE REGISTRÓ","NO se regristró ", "error");
+                }
+                $('#table_no_pip').dataTable()._fnAjaxUpdate();
+                $('#form-AddProyectosInversion')[0].reset();
+                $('#VentanaRegistraPIP').modal('hide');
+            }
         });
     });
           //REGISTARAR OPERACION Y MANTENIMIENTO
@@ -182,27 +209,7 @@ $(document).on("ready" ,function()
                   });
 
                 //registar proyectos en banco de proyectos
-   $("#form-AddProyectosInversion").submit(function(event)
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/bancoproyectos/AddNoPip",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           //alert(resp);
-                           if (resp=='1') {
-                             swal("REGISTRADO","Se regristró correctamente", "success");
-                             formReset();
-                           }
-                            if (resp=='2') {
-                             swal("NO SE REGISTRÓ","NO se regristró ", "error");
-                           }
-                          $('#table_no_pip').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
-                             formReset();
-                         }
-                      });
-                  });
+   
         //limpiar campos
           function formReset()
           {
@@ -997,7 +1004,198 @@ var format = function(num){
 
 
 $(function()
-{   
+{  
+    $('#validarRegistroNoPip').formValidation({
+        framework: 'bootstrap',
+        excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+        live: 'enabled',
+        message: '<b style="color: #9d9d9d;">Asegúreseeee que realmente no necesita este valor.</b>',
+        trigger: null,
+        fields:
+        {
+            txtCodigoUnico:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Código único" es requerido.</b>'
+                    }
+                }
+            },
+            cbx:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Tipo de inversión" es requerido.</b>'
+                    }
+                }
+            },
+            cbxEstCicInv_:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Ciclo de inversión" es requerido.</b>'
+                    }
+                }
+            },
+            txtNombrePip:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Nombre de inversión" es requerido.</b>'
+                    }
+                }
+            },
+            fecha_registro:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Fecha de Registro" es requerido.</b>'
+                    }
+                }
+            },
+            cbxNivelGob:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Nivel de Gobierno" es requerido.</b>'
+                    }
+                }
+            },
+            cbxUnidadEjecutora:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Unidad Ejecutora" es requerido.</b>'
+                    }
+                }
+            },
+            cbxFuncion:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Función" es requerido.</b>'
+                    }
+                }
+            },
+            cbxDivFunc:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "División Funcional" es requerido.</b>'
+                    }
+                }
+            },
+            cbxGrupoFunc:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Grupo Funcional" es requerido.</b>'
+                    }
+                }
+            },
+            txtCostoPip:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Costo de inversión" es requerido.</b>'
+                    },
+                    regexp:
+                    {
+                        regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
+                        message: '<b style="color: red;">El campo "Costo de Inversión" debe ser númerico.</b>'
+                    }
+                }
+            },
+            txt_beneficiarios:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Beneficiarios" es requerido.</b>'
+                    },
+                    regexp:
+                    {
+                        regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
+                        message: '<b style="color: red;">El campo "Beneficiarios" debe ser un número.</b>'
+                    }
+                }
+            },
+            cbxFuenteFinanc:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Fuente de financiamiento" es requerido.</b>'
+                    }
+                }
+            },
+            cbxRubro:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Rubro" es requerido.</b>'
+                    }
+                }
+            },
+            cbxModalidadEjec:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Modalidad de Ejecución" es requerido.</b>'
+                    }
+                }
+            },
+            Cbx_TipoNoPip_i:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Tipo" es requerido.</b>'
+                    }
+                }
+            },
+            cbx_estado:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Estado" es requerido.</b>'
+                    }
+                }
+            }
+        }
+    });
+
     $('#validarEdicionNoPip').formValidation({
         framework: 'bootstrap',
         excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
@@ -1150,250 +1348,10 @@ $(function()
                         message: '<b style="color: red;">El campo "Modalidad de Ejecución" es requerido.</b>'
                     }
                 }
-            } 
-        }
-    });
-
-    /*$('#validarEditarPip').formValidation({
-        framework: 'bootstrap',
-        excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
-        live: 'enabled',
-        message: '<b style="color: #9d9d9d;">Asegúreseeee que realmente no necesita este valor.</b>',
-        trigger: null,
-        fields:
-        {
-            txtCodigoUnico_m:
-            {
-                validators:
-                {
-                    notEmpty:
-                    {
-                        message: '<b style="color: red;">El campo "Código único" es requerido.</b>'
-                    }
-                }
-            },
-            cbx_m:
-            {
-                validators:
-                {
-                    notEmpty:
-                    {
-                        message: '<b style="color: red;">El campo "Tipo de inversión" es requerido.</b>'
-                    }
-                }
-            },
-            cbxEstCicInv_m:
-            {
-                validators:
-                {
-                    notEmpty:
-                    {
-                        message: '<b style="color: red;">El campo "Ciclo de inversión" es requerido.</b>'
-                    }
-                }
-            },
-            txtNombrePip_m:
-            {
-                validators:
-                {
-                    notEmpty:
-                    {
-                        message: '<b style="color: red;">El campo "Nombre de inversión" es requerido.</b>'
-                    }
-                }
-            },
-            cbxNatI_m:
-            {
-                validators:
-                {
-                    notEmpty:
-                    {
-                        message: '<b style="color: red;">El campo "Naturaleza" es requerido.</b>'
-                    }
-                }
-            },
-            cbxNivelGob_m:
-            {
-                validators:
-                {
-                    notEmpty:
-                    {
-                        message: '<b style="color: red;">El campo "Nivel de Gobierno" es requerido.</b>'
-                    }
-                }
-            },
-            cbxUnidadEjecutora_m:
-            {
-                validators:
-                {
-                    notEmpty:
-                    {
-                        message: '<b style="color: red;">El campo "Unidad Ejecutora" es requerido.</b>'
-                    }
-                }
-            },
-            cbxFuncion_m:
-            {
-                validators:
-                {
-                    notEmpty:
-                    {
-                        message: '<b style="color: red;">El campo "Función" es requerido.</b>'
-                    }
-                }
-            },
-            cbxDivFunc_inicio:
-            {
-                validators:
-                {
-                    notEmpty:
-                    {
-                        message: '<b style="color: red;">El campo "División Funcional" es requerido.</b>'
-                    }
-                }
-            },
-            cbxGrupoFunc_m:
-            {
-                validators:
-                {
-                    notEmpty:
-                    {
-                        message: '<b style="color: red;">El campo "Grupo Funcional" es requerido.</b>'
-                    }
-                }
-            },
-            txtCostoPip_m:
-            {
-                validators:
-                {
-                    notEmpty:
-                    {
-                        message: '<b style="color: red;">El campo "Costo de inversión" es requerido.</b>'
-                    },
-                    regexp:
-                    {
-                        regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
-                        message: '<b style="color: red;">El campo "Costo de Inversión" debe ser númerico.</b>'
-                    }
-                }
-            },
-            txt_beneficiarios_m:
-            {
-                validators:
-                {
-                    notEmpty:
-                    {
-                        message: '<b style="color: red;">El campo "Beneficiarios" es requerido.</b>'
-                    },
-                    regexp:
-                    {
-                        regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
-                        message: '<b style="color: red;">El campo "Beneficiarios" debe ser un número.</b>'
-                    }
-                }
-            },
-            cbxTipologiaInversion_m:
-            {
-                validators:
-                {
-                    notEmpty:
-                    {
-                        message: '<b style="color: red;">El campo "Tipologia de inversión" es requerido.</b>'
-                    }
-                }
-            },
-            cbxProgramaPresupuestal_m:
-            {
-                validators:
-                {
-                    notEmpty:
-                    {
-                        message: '<b style="color: red;">El campo "Programa Presupuestal" es requerido.</b>'
-                    }
-                }
-            },
-            lista_unid_form_m:
-            {
-                validators:
-                {
-                    notEmpty:
-                    {
-                        message: '<b style="color: red;">El campo "Unidad Formuladora" es requerido.</b>'
-                    }
-                }
-            },
-            cbx_estado_pi_m:
-            {
-                validators:
-                {
-                    notEmpty:
-                    {
-                        message: '<b style="color: red;">El campo "Estado" es requerido.</b>'
-                    }
-                }
             }
         }
     });
 
-    $('#validarAddOperacionMantenimiento').formValidation({
-        framework: 'bootstrap',
-        excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
-        live: 'enabled',
-        message: '<b style="color: #9d9d9d;">Asegúreseeee que realmente no necesita este valor.</b>',
-        trigger: null,
-        fields:
-        {
-            txt_monto_operacion:
-            {
-                validators:
-                {
-                    notEmpty:
-                    {
-                        message: '<b style="color: red;">El campo "Monto de Operación" es requerido.</b>'
-                    },
-                    regexp:
-                    {
-                        regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
-                        message: '<b style="color: red;">El campo "Monto de Operación" debe ser númerico.</b>'
-                    }
-                }
-            },
-            txt_responsable_operacion:
-            {
-                validators:
-                {
-                    notEmpty:
-                    {
-                        message: '<b style="color: red;">El campo "Responsable de Operación" es requerido.</b>'
-                    }
-                }
-            },
-            txt_monto_mantenimiento:
-            {
-                validators:
-                {
-                    notEmpty:
-                    {
-                        message: '<b style="color: red;">El campo "Monto de Mantenimiento" es requerido.</b>'
-                    },
-                    regexp:
-                    {
-                        regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
-                        message: '<b style="color: red;">El campo "Monto de Mantenimiento" debe ser númerico.</b>'
-                    }
-                }
-            },
-            txt_responsable_mantenimiento:
-            {
-                validators:
-                {
-                    notEmpty:
-                    {
-                        message: '<b style="color: red;">El campo "Responsable de Mantenimiento" es requerido.</b>'
-                    }
-                }
-            }
-        }
-    });*/
+    
 });
 
