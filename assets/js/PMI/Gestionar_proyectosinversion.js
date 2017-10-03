@@ -6,31 +6,6 @@ $(document).on("ready" ,function()
         listarufcombo();
     }); 
     listar_proyectos_inversion();
-
-    $("#form_AddOperacionMantenimiento").submit(function(event)
-    {
-        event.preventDefault();
-        $.ajax({
-            url:base_url+"index.php/bancoproyectos/AddOperacionMantenimiento",
-            type:$(this).attr('method'),
-            data:$(this).serialize(),
-            success:function(resp)
-            {
-                if (resp=='1') 
-                {
-                    swal("REGISTRADO","Se regristró correctamente", "success");
-                    formReset();
-                }
-                if (resp=='2') 
-                {
-                    swal("NO SE REGISTRÓ","NO se regristró ", "error");
-                }
-                $('#Table_OperacionMantenimiento').dataTable()._fnAjaxUpdate();
-                formReset();
-                $('#ventana_ver_operacion_mantenimeinto').modal('hide');
-            }
-        });
-    });
     
     $("#form_AddModalidadEjec").submit(function(event)
     {

@@ -398,27 +398,38 @@ class bancoproyectos extends CI_Controller
     //listar operacion mantenimiento
     public function Get_OperacionMantenimiento()
     {
-        if ($this->input->is_ajax_request()) {
+        if ($this->input->is_ajax_request()) 
+        {
             $flat  = "listar_operacion_mantenimiento";
             $id_pi = $this->input->post("id_pi");
             $data  = $this->bancoproyectos_modal->Get_OperacionMantenimiento($flat, $id_pi);
+            foreach ($data as $key => $value) 
+            {
+                $value->monto_operacion = a_number_format($value->monto_operacion , 2, '.',",",3);
+                $value->monto_mantenimiento = a_number_format($value->monto_mantenimiento , 2, '.',",",3);
+            }
             echo json_encode(array('data' => $data));
-        } else {
+        } 
+        else 
+        {
             show_404();
         }
     }
     //agregar operacion y mantenimiento
     public function AddOperacionMantenimiento()
     {
-        if ($this->input->is_ajax_request()) {
+        if ($this->input->is_ajax_request()) 
+        {
             $flat                          = "C";
             $id_OperacionMantenimiento     = "0";
             $txt_id_pip_OperMant           = $this->input->post("txt_id_pip_OperMant");
-            $txt_monto_operacion           = $this->input->post("txt_monto_operacion");
-            $txt_monto_mantenimiento       = $this->input->post("txt_monto_mantenimiento");
+            $txt_monto_operacion           = floatval(str_replace(",","",$this->input->post("txt_monto_operacion")));
+            $txt_monto_mantenimiento       = floatval(str_replace(",","",$this->input->post("txt_monto_mantenimiento")));
+            //$txt_monto_operacion           = $this->input->post("txt_monto_operacion");
+            //$txt_monto_mantenimiento       = $this->input->post("txt_monto_mantenimiento");
+
             $txt_responsable_operacion     = $this->input->post("txt_responsable_operacion");
             $txt_responsable_mantenimiento = $this->input->post("txt_responsable_mantenimiento");
-            // $dateFechaIniC            = $this->input->post("dateFechaIniC"); //esta campo se esta registrando en la base de datos
             if ($this->bancoproyectos_modal->AddOperacionMantenimiento($flat, $id_OperacionMantenimiento, $txt_id_pip_OperMant, $txt_monto_operacion, $txt_monto_mantenimiento, $txt_responsable_operacion, $txt_responsable_mantenimiento) == false) {
                 echo "1";
             } else {

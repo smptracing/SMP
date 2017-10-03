@@ -345,9 +345,12 @@ class bancoproyectos_modal extends CI_Model
         $Get_TipoNoPip = $this->db->query("execute sp_Gestionar_OperacionMantenimientoPI
             @opcion='" . $flat . "',
             @id_pi='" . $id_pi . "'");
-        if ($Get_TipoNoPip->num_rows() > 0) {
+        if ($Get_TipoNoPip->num_rows() > 0) 
+        {
             return $Get_TipoNoPip->result();
-        } else {
+        } 
+        else 
+        {
             return false;
         }
     }

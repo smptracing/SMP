@@ -14,10 +14,14 @@ $(document).ready(function(){
     {
         $(this).val(format($(this).val()));
     });
-    /*$("#txt_monto_operacion").keyup(function(e)
+    $("#txt_monto_operacion").keyup(function(e)
     {
         $(this).val(format($(this).val()));
-    });*/
+    });
+    $("#txt_monto_mantenimiento").keyup(function(e)
+    {
+        $(this).val(format($(this).val()));
+    });
     
     $("#form_EditarProyectosInversion").submit(function(event)
     {
@@ -42,6 +46,35 @@ $(document).ready(function(){
                     swal("NO SE ACTUALIZÓ","No se actualizó ", "error");
                 }
                 $('#table_proyectos_inversion').dataTable()._fnAjaxUpdate();
+            }
+        });
+    });
+
+    $("#form_AddOperacionMantenimiento").submit(function(event)
+    {
+        event.preventDefault();
+        $('#validarAddOperacionMantenimiento').data('formValidation').validate();
+        if(!($('#validarAddOperacionMantenimiento').data('formValidation').isValid()))
+        {
+            return;
+        }
+        $.ajax({
+            url:base_url+"index.php/bancoproyectos/AddOperacionMantenimiento",
+            type:$(this).attr('method'),
+            data:$(this).serialize(),
+            success:function(resp)
+            {
+                if (resp=='1') 
+                {
+                    swal("REGISTRADO","Se regristró correctamente", "success");
+                }
+                if (resp=='2') 
+                {
+                    swal("NO SE REGISTRÓ","NO se regristró ", "error");
+                }
+                $('#Table_OperacionMantenimiento').dataTable()._fnAjaxUpdate();
+                $('#form_AddOperacionMantenimiento')[0].reset();  
+                $('#ventana_ver_operacion_mantenimeinto').modal('hide');
             }
         });
     });
@@ -474,6 +507,67 @@ $(function()
                     notEmpty:
                     {
                         message: '<b style="color: red;">El campo "Estado" es requerido.</b>'
+                    }
+                }
+            }
+        }
+    });
+
+    $('#validarAddOperacionMantenimiento').formValidation({
+        framework: 'bootstrap',
+        excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+        live: 'enabled',
+        message: '<b style="color: #9d9d9d;">Asegúreseeee que realmente no necesita este valor.</b>',
+        trigger: null,
+        fields:
+        {
+            txt_monto_operacion:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Monto de Operación" es requerido.</b>'
+                    }/*,
+                    regexp:
+                    {
+                        regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
+                        message: '<b style="color: red;">El campo "Monto de Operación" debe ser númerico.</b>'
+                    }*/
+                }
+            },
+            txt_responsable_operacion:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Responsable de Operación" es requerido.</b>'
+                    }
+                }
+            },
+            txt_monto_mantenimiento:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Monto de Mantenimiento" es requerido.</b>'
+                    }/*,
+                    regexp:
+                    {
+                        regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
+                        message: '<b style="color: red;">El campo "Monto de Mantenimiento" debe ser númerico.</b>'
+                    }*/
+                }
+            },
+            txt_responsable_mantenimiento:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Responsable de Mantenimiento" es requerido.</b>'
                     }
                 }
             }
