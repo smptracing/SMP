@@ -15,12 +15,6 @@
                                 <div class="x_panel">
                                   <div class="x_title">
                                     <h2>PROYECTOS<small></small></h2>
-                                    <ul class="nav navbar-right panel_toolbox">
-                                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                      </li>
-                                      <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                      </li>
-                                    </ul>
                                     <div class="clearfix"></div>
                                   </div>
                                   <div class="x_content">
@@ -308,10 +302,10 @@
         <div class="modal-body">
          <div class="row">
                     <div class="col-xs-12">
-                                        <!-- PAGE CONTENT BEGINS -->
-              <form class="form-horizontal " id="form_AddMeta_Pi"   action="<?php echo base_url(); ?>bancoproyectos/Get_OperacionMantenimiento" method="POST" >
+              <form class="form-horizontal " id="form_AddMeta_Pi"   action="" method="POST" >
 
                         <input id="txt_id_pip_programacion_mp" name="txt_id_pip_programacion_mp" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
+                        <div id="validarAddMetaPip">
                               <div class="item form-group">
                                <div class="col-md-2 col-sm-6 col-xs-12">
                                       <label>Año</label>
@@ -344,32 +338,38 @@
                                     </div>
                                   </div>
                                   <div class="item form-group">
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
-                                      <label>PIA</label>
-                                      <input  class="form-control" id="txt_pia" name="txt_pia" type="text" required="required">
+                                    <div class="row">
+                                      <div class="col-md-3 col-sm-6 col-xs-12">
+                                        <label>PIA</label>
+                                        <input class="form-control" id="txt_pia" name="txt_pia" type="text" autocomplete="off" >
+                                      </div>
+                                      <div class="col-md-3 col-sm-6 col-xs-12">
+                                        <label>PIM</label>
+                                        <input  class="form-control" id="txt_pim" name="txt_pim" type="text" autocomplete="off" >
+                                      </div>
+                                      <div class="col-md-3 col-sm-6 col-xs-12">
+                                        <label>Certificado</label>
+                                        <input  class="form-control" id="txt_certificado" name="txt_certificado" type="text" autocomplete="off">
+                                      </div>
+                                      <div class="col-md-3 col-sm-6 col-xs-12">
+                                        <label>compromiso</label>
+                                        <input  class="form-control" id="txt_compromiso" name="txt_compromiso" type="text" autocomplete="off" >
+                                      </div>
                                     </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
-                                      <label>PIM</label>
-                                      <input  class="form-control" id="txt_pim" name="txt_pim" type="text" required="required">
+                                    <div class="row">
+                                      <div class="col-md-3 col-sm-6 col-xs-12">
+                                        <label>Devengado</label>
+                                        <input  class="form-control" id="txt_devengado" name="txt_devengado" type="text" autocomplete="off">
+                                      </div>
+                                      <div class="col-md-3 col-sm-6 col-xs-12">
+                                        <label>Girado</label>
+                                        <input  class="form-control" id="txt_girado" name="txt_girado" type="text" autocomplete="off">
+                                      </div>
                                     </div>
+                                 </div>
+                                 </div>
+                                 <div class="item form-group">
                                     <div class="col-md-3 col-sm-6 col-xs-12">
-                                      <label>Certificado</label>
-                                      <input  class="form-control" id="txt_certificado" name="txt_certificado" type="text" required="required">
-                                    </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
-                                      <label>compromiso</label>
-                                      <input  class="form-control" id="txt_compromiso" name="txt_compromiso" type="text" required="required">
-                                    </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
-                                      <label>Devengado</label>
-                                      <input  class="form-control" id="txt_devengado" name="txt_devengado" type="text" required="required">
-                                    </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
-                                      <label>Girado</label>
-                                      <input  class="form-control" id="txt_girado" name="txt_girado" type="text" required="required">
-                                    </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
-                                      <label>.</label><br>
                                        <button  id="send" type="submit" class="btn btn-success">
                                              <span class="glyphicon glyphicon-floppy-saved"></span> Guardar
                                         </button>

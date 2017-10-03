@@ -66,13 +66,6 @@ class programar_nopip extends CI_Controller
             $txt_compromiso        = floatval(str_replace(",","",$this->input->post("txt_compromiso")));
             $txt_devengado       = floatval(str_replace(",","",$this->input->post("txt_devengado")));
             $txt_girado       = floatval(str_replace(",","",$this->input->post("txt_girado")));
-            
-            /*$txt_pia                    = $this->input->post("txt_pia");
-            $txt_pim                    = $this->input->post("txt_pim");
-            $txt_certificado            = $this->input->post("txt_certificado");
-            $txt_compromiso             = $this->input->post("txt_compromiso");
-            $txt_devengado              = $this->input->post("txt_devengado");
-            $txt_girado                 = $this->input->post("txt_girado");*/
             if ($this->programar_nopip_modal->AddMeta_PI($flat, $id_meta_pi, $txt_anio_meta, $cbx_meta_presupuestal, $txt_id_pip_programacion_mp, $cbx_Meta, $txt_pia, $txt_pim, $txt_certificado, $txt_compromiso, $txt_devengado, $txt_girado) == false) {
                 echo "1";
             } else {
@@ -98,12 +91,31 @@ class programar_nopip extends CI_Controller
     //listar meta proyecto
     public function listar_metas_pi()
     {
-        if ($this->input->is_ajax_request()) {
+        if ($this->input->is_ajax_request()) 
+        {
             $flat  = "R";
             $id_pi = $this->input->post("id_pi");
             $data  = $this->programar_nopip_modal->listar_metas_pi($flat, $id_pi);
-            echo json_encode(array('data' => $data));
-        } else {
+            if($data == false)
+            {
+                echo json_encode(array('data' => $data));
+            }
+            else
+            {
+                foreach ($data as $key => $value) 
+                {
+                    $value->pia_meta_pres = a_number_format($value->pia_meta_pres , 2, '.',",",3);
+                    $value->pim_acumulado = a_number_format($value->pim_acumulado , 2, '.',",",3);
+                    $value->certificacion_acumulado = a_number_format($value->certificacion_acumulado , 2, '.',",",3);
+                    $value->compromiso_acumulado = a_number_format($value->compromiso_acumulado , 2, '.',",",3);
+                    $value->devengado_acumulado = a_number_format($value->devengado_acumulado , 2, '.',",",3);
+                    $value->girado_acumulado = a_number_format($value->girado_acumulado , 2, '.',",",3);
+                }
+                echo json_encode(array('data' => $data));
+            }
+        } 
+        else 
+        {
             show_404();
         }
     }
