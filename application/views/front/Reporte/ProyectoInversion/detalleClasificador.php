@@ -47,30 +47,30 @@
 									<div class="row">  
 										<div class="col-md-12 col-sm-12 col-xs-12">
 											 <div id="DetalleClasificador" class="table-responsive" style="font-size:9.5px">
-											<table id="table-DetalleClasificador"  cellspacing="0" width="100%">
+											<table id="table-DetalleClasificador" border="1" cellspacing="0" width="100%">
 												<thead>
 													<tr style="text-align:center">
-														<td>Clasificadores</td>
-														<td>En</td>
-														<td>Feb</td>
-														<td>Mar</td>
-														<td>Abr</td>
-														<td>May</td>
-														<td>Jun</td>
-														<td>Jul</td>
-														<td>Agost</td>
-														<td>Set</td>
-														<td>Oct</td>
-														<td>Nov</td>
-														<td>Dic</td>
-														<td>D</td>
-														<td>C</td>
-														<td>G</td>
-														<td>P</td>
-														<td>Comprom Anu.</td>
-														<td>Cert</td>
-														<td>Ejec</td>
-														<td>Anul</td>
+														<td bgcolor="#D6EAF8">Clasificadores</td>
+														<td bgcolor="#D6EAF8">En</td>
+														<td bgcolor="#D6EAF8">Feb</td>
+														<td bgcolor="#D6EAF8">Mar</td>
+														<td bgcolor="#D6EAF8">Abr</td>
+														<td bgcolor="#D6EAF8">May</td>
+														<td bgcolor="#D6EAF8">Jun</td>
+														<td bgcolor="#D6EAF8">Jul</td>
+														<td bgcolor="#D6EAF8">Agost</td>
+														<td bgcolor="#D6EAF8">Set</td>
+														<td bgcolor="#D6EAF8">Oct</td>
+														<td bgcolor="#D6EAF8">Nov</td>
+														<td bgcolor="#D6EAF8">Dic</td>
+														<td bgcolor="#D6EAF8">D</td>
+														<td bgcolor="#D6EAF8">C</td>
+														<td bgcolor="#D6EAF8">G</td>
+														<td bgcolor="#D6EAF8">P</td>
+														<td bgcolor="#D6EAF8">Comprom Anu.</td>
+														<td bgcolor="#D6EAF8">Cert</td>
+														<td bgcolor="#D6EAF8">Ejec</td>
+														<td bgcolor="#D6EAF8">Anul</td>
 													</tr>
 												</thead>
 												<tbody>
