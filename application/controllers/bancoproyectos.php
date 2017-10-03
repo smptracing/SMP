@@ -398,17 +398,25 @@ class bancoproyectos extends CI_Controller
     //listar operacion mantenimiento
     public function Get_OperacionMantenimiento()
     {
+
         if ($this->input->is_ajax_request()) 
         {
             $flat  = "listar_operacion_mantenimiento";
             $id_pi = $this->input->post("id_pi");
             $data  = $this->bancoproyectos_modal->Get_OperacionMantenimiento($flat, $id_pi);
-            foreach ($data as $key => $value) 
+            if($data == false) 
             {
-                $value->monto_operacion = a_number_format($value->monto_operacion , 2, '.',",",3);
-                $value->monto_mantenimiento = a_number_format($value->monto_mantenimiento , 2, '.',",",3);
+                echo json_encode(array('data' => $data));
             }
-            echo json_encode(array('data' => $data));
+            else
+            {
+                foreach ($data as $key => $value) 
+                {
+                    $value->monto_operacion = a_number_format($value->monto_operacion , 2, '.',",",3);
+                    $value->monto_mantenimiento = a_number_format($value->monto_mantenimiento , 2, '.',",",3);
+                }
+                echo json_encode(array('data' => $data));
+            }                
         } 
         else 
         {
@@ -425,9 +433,6 @@ class bancoproyectos extends CI_Controller
             $txt_id_pip_OperMant           = $this->input->post("txt_id_pip_OperMant");
             $txt_monto_operacion           = floatval(str_replace(",","",$this->input->post("txt_monto_operacion")));
             $txt_monto_mantenimiento       = floatval(str_replace(",","",$this->input->post("txt_monto_mantenimiento")));
-            //$txt_monto_operacion           = $this->input->post("txt_monto_operacion");
-            //$txt_monto_mantenimiento       = $this->input->post("txt_monto_mantenimiento");
-
             $txt_responsable_operacion     = $this->input->post("txt_responsable_operacion");
             $txt_responsable_mantenimiento = $this->input->post("txt_responsable_mantenimiento");
             if ($this->bancoproyectos_modal->AddOperacionMantenimiento($flat, $id_OperacionMantenimiento, $txt_id_pip_OperMant, $txt_monto_operacion, $txt_monto_mantenimiento, $txt_responsable_operacion, $txt_responsable_mantenimiento) == false) {
@@ -441,7 +446,7 @@ class bancoproyectos extends CI_Controller
         }
     }
 
-     public function BuscarProyectoSiaf()
+    public function BuscarProyectoSiaf()
     {
         
         $data  = $this->bancoproyectos_modal->BuscarProyectoSiaf($this->input->post('codigo'));
