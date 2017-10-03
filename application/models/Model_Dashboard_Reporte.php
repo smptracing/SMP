@@ -232,6 +232,17 @@ class Model_Dashboard_Reporte extends CI_Model
         return $data->result()[0];
     }
 
+    
+function DetallePorOrden($correlativoMeta,$anioMeta)
+    {
+        $opcion="listar_pedidos_proyecto";
+        $data = $this->db->query("execute sp_Gestionar_SIGA @opcion='".$opcion."',  @anio_meta='".$anioMeta."', @correlativo_meta='".$correlativoMeta."'");
+        
+        return $data->result();
+    }
+
+
+
     /*function ReporteConsolidadoAvanceFisicoFinan($anio)
     {
         $opcion="calificacion_seguimiento_certificado_a_devengado";

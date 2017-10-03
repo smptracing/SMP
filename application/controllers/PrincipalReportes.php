@@ -411,6 +411,18 @@ class PrincipalReportes extends CI_Controller
         $this->load->view('front/Reporte/ProyectoInversion/seguimientoCertificado');
 
     }
+     function detalladoMensualizadoConceptoClasificador()
+    {
+        $correlativoMeta=$this->input->GET('meta');
+        $anioMeta=$this->input->GET('anio');
+       
+        $listaDetallePorOrden=$this->Model_Dashboard_Reporte->DetallePorOrden($correlativoMeta,$anioMeta);  
+        //var_dump($listaDetallePorOrden);exit;
+        $this->load->view('front/Reporte/ProyectoInversion/DetalleConcepto',['listaDetallePorOrden'=>$listaDetallePorOrden]);
+
+    }
+
+
 
     public function _load_layout($template)
     {
