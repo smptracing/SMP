@@ -707,6 +707,7 @@ var listarFuenteFinanciamiento=function(valor){
                       var data=table.row( $(this).parents("tr")).data();
                        var  id_pi=data.id_pi;
                       $("#txt_id_pip_Tipologia").val(data.id_pi);
+                      $("#nombreProyectoTipologia").val(data.nombre_pi);
                         listar_TipologiaNoPip();//combox
                         listar_TipoNoPip(id_pi);
                     });
@@ -717,6 +718,7 @@ var listarFuenteFinanciamiento=function(valor){
                       var data=table.row( $(this).parents("tr")).data();
                        var  id_pi=data.id_pi;
                       $("#txt_id_pip").val(data.id_pi);
+                      $("#nombreProyectoUbicacion").val(data.nombre_pi);
                         listar_provincia();
                         listar_ubigeo_pi(id_pi);
                     });
@@ -727,6 +729,7 @@ var listarFuenteFinanciamiento=function(valor){
                       var data=table.row( $(this).parents("tr")).data();
                        var  id_pi=data.id_pi;
                       $("#txt_id_pip_Ciclopi").val(data.id_pi);
+                      $("#nombreProyectoCiclo").val(data.nombre_pi);
                       listarEstadoCiclo();
                       listar_estado_ciclo(id_pi);
                     });
@@ -737,6 +740,7 @@ var listarFuenteFinanciamiento=function(valor){
                       var data=table.row( $(this).parents("tr")).data();
                        var  id_pi=data.id_pi;
                       $("#txt_id_pip_RubroPI").val(data.id_pi);
+                      $("#nombreProyectoRubro").val(data.nombre_pi);
                         ListarRubro();
                         listarRubroPI(id_pi);
                     });
@@ -747,6 +751,7 @@ var listarFuenteFinanciamiento=function(valor){
                       var data=table.row( $(this).parents("tr")).data();
                        var  id_pi=data.id_pi;
                       $("#txt_id_pip_ModalidadEjec").val(data.id_pi);
+                      $("#nombreProyectoModalidad").val(data.nombre_pi);
                         ListarModalidad();
                         listarModalidadPI(id_pi);
                     });

@@ -563,14 +563,15 @@
                                         <!-- PAGE CONTENT BEGINS -->
               <form class="form-horizontal " id="form_AddUbigeo"   action="<?php echo base_url(); ?>bancoproyectos/Get_ubigeo_pip" method="POST" >
 
-              <div class="item form-group">
-                        <div class="item form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="txt_id_pip" name="txt_id_pip" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
-                        </div>
-                      </div>
-                </div>
-               <div class="item form-group">
+                <input id="txt_id_pip" name="txt_id_pip" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
+                <div class="item form-group">
+                                    <div class="col-md-12">
+                                        <label for="name">Proyecto:<span class="required"></span></label>
+                                        <div class="col-md-12">
+                                            <textarea readonly="readonly" name="nombreProyectoUbicacion" id="nombreProyectoUbicacion" rows="2" class="form-control"></textarea>
+                                            <br>                                            
+                                        </div>                                        
+                                    </div>
                                      <div class="col-md-4">
                                            <label for="name">Departamento.<span class="required"></span>
                                             </label>
@@ -679,14 +680,16 @@
                                         <!-- PAGE CONTENT BEGINS -->
               <form class="form-horizontal " id="form_AddEstadoCiclo"   action="<?php echo base_url(); ?>bancoproyectos/listar_estados" method="POST" >
 
-              <div class="item form-group">
-                        <div class="item form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
                         <input id="txt_id_pip_Ciclopi" name="txt_id_pip_Ciclopi" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
-                        </div>
-                      </div>
-                </div>
                                <div class="item form-group">
+                                    <div class="col-md-12">
+                                        <label for="name">Proyecto:<span class="required"></span></label>
+                                        <div class="col-md-12">
+                                            <textarea readonly="readonly" name="nombreProyectoCiclo" id="nombreProyectoCiclo" rows="2" class="form-control"></textarea>
+                                            <br>                                            
+                                        </div>                                        
+                                    </div>
+
                                      <div class="col-md-4">
 
                                            <label for="name">Estado.<span class="required"></span>
@@ -760,14 +763,14 @@
                                         <!-- PAGE CONTENT BEGINS -->
               <form class="form-horizontal " id="form_AddRubro"   action="<?php echo base_url(); ?>bancoproyectos/listar_rubro" method="POST" >
 
-              <div class="item form-group">
-                        <div class="item form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="txt_id_pip_RubroPI" name="txt_id_pip_RubroPI" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
-                        </div>
-                      </div>
-                </div>
-                               <div class="item form-group">
+                        <input id="txt_id_pip_RubroPI" name="txt_id_pip_RubroPI" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">      <div class="item form-group">
+                                    <div class="col-md-12">
+                                        <label for="name">Proyecto:<span class="required"></span></label>
+                                        <div class="col-md-12">
+                                            <textarea readonly="readonly" name="nombreProyectoRubro" id="nombreProyectoRubro" rows="2" class="form-control"></textarea>
+                                            <br>                                            
+                                        </div>                                        
+                                    </div>
                                      <div class="col-md-4">
 
                                            <label for="name">Rubro.<span class="required"></span>
@@ -840,14 +843,15 @@
                                         <!-- PAGE CONTENT BEGINS -->
               <form class="form-horizontal " id="form_AddModalidadEjec"   action="<?php echo base_url(); ?>bancoproyectos/listar_modalidad_ejec" method="POST" >
 
-              <div class="item form-group">
-                        <div class="item form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
                         <input id="txt_id_pip_ModalidadEjec" name="txt_id_pip_ModalidadEjec" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
-                        </div>
-                      </div>
-                </div>
                                <div class="item form-group">
+                                    <div class="col-md-12">
+                                        <label for="name">Proyecto:<span class="required"></span></label>
+                                        <div class="col-md-12">
+                                            <textarea readonly="readonly" name="nombreProyectoModalidad" id="nombreProyectoModalidad" rows="2" class="form-control"></textarea>
+                                            <br>                                            
+                                        </div>                                        
+                                    </div>
                                      <div class="col-md-4">
 
                                            <label for="name">Modalidad.<span class="required"></span>
@@ -919,15 +923,15 @@
                     <div class="col-xs-12">
                                         <!-- PAGE CONTENT BEGINS -->
               <form class="form-horizontal " id="form_AddTipoNoPip"   action="<?php echo base_url(); ?>bancoproyectos/Get_TipoNoPip" method="POST" >
-
-              <div class="item form-group">
-                        <div class="item form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="txt_id_pip_Tipologia" name="txt_id_pip_Tipologia" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
-                        </div>
-                      </div>
-                </div>
+              <input id="txt_id_pip_Tipologia" name="txt_id_pip_Tipologia" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
                                <div class="item form-group">
+                                    <div class="col-md-12">
+                                        <label for="name">Proyecto:<span class="required"></span></label>
+                                        <div class="col-md-12">
+                                            <textarea readonly="readonly" name="nombreProyectoTipologia" id="nombreProyectoTipologia" rows="2" class="form-control"></textarea>
+                                            <br>                                            
+                                        </div>                                        
+                                    </div>
                                      <div class="col-md-4">
 
                                            <label for="name">Tipo No Pip.<span class="required"></span>
