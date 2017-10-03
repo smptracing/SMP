@@ -528,12 +528,12 @@ $(function()
                     notEmpty:
                     {
                         message: '<b style="color: red;">El campo "Monto de Operación" es requerido.</b>'
-                    }/*,
+                    },
                     regexp:
                     {
                         regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
                         message: '<b style="color: red;">El campo "Monto de Operación" debe ser númerico.</b>'
-                    }*/
+                    }
                 }
             },
             txt_responsable_operacion:
@@ -553,12 +553,12 @@ $(function()
                     notEmpty:
                     {
                         message: '<b style="color: red;">El campo "Monto de Mantenimiento" es requerido.</b>'
-                    }/*,
+                    },
                     regexp:
                     {
                         regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
                         message: '<b style="color: red;">El campo "Monto de Mantenimiento" debe ser númerico.</b>'
-                    }*/
+                    }
                 }
             },
             txt_responsable_mantenimiento:
