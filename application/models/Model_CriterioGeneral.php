@@ -23,10 +23,8 @@ class Model_criterioGeneral extends CI_Model
 
 	function ListarCriterioGenerales($id_funcion)
 	{
-		$ListarCriterioGenerales=$this->db->query(" select id_criterio_gen,peso_criterio_gen,nombre_criterio_gen,anio_criterio_gen,
-												CONVERT(decimal(6,2),((peso_criterio_gen*100)/(select sum(cri.peso_criterio_gen) from CRITERIO_GEN as cri  where id_funcion=$id_funcion)))
-												as  porcentaje from CRITERIO_GEN  
-												where id_funcion=$id_funcion ");
+		$opcion="ListarCriterioGeneral";
+		$ListarCriterioGenerales=$this->db->query("execute sp_Gestionar_CriterioGeneral @opcion='".$opcion."', @id_funcion=$id_funcion ");
 
 		return $ListarCriterioGenerales->result();
 	}
