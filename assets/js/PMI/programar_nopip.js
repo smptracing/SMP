@@ -39,58 +39,43 @@ function puntaje(id,valor,peso){
     $("#tx_peso_"+id).val(valor*peso/100);
     total();
 }
-$(document).on("ready" ,function(){
-     lista_no_pip();/*llamar a mi datatablet listar proyectosinverision*/
-      $('#form_AddProgramacion').formValidation({
-      excluded: ':disabled',
-      fields:
-      {
-        cbxBrecha:{
-          validators:{
-            notEmpty:{
-              message: '<b style="color: red;">El campo "Brecha" es requerido.</b>'
-            }
-          }
-        },
-        txt_saldoprogramar:{
-          validators:{
-            notEmpty:{
-              message: '<b style="color: red;">El campo "Saldo a Programar" es requerido.</b>'
-            }
-          }
-        },
-        txt_anio1:{
-          validators:{
-            notEmpty:{
-              message: '<b style="color: red;">El campo "Año de Programación" es requerido.</b>'
-            }
-          }
-        },
-      }
+$(document).on("ready" ,function()
+{
+    lista_no_pip();
+    $("#txt_saldoprogramar").keyup(function(e)
+    {
+        $(this).val(format($(this).val()));
     });
-     $("body").on("click","#send_addProgramacion",function(e){
-      $('#form_AddProgramacion').data('formValidation').validate();
-      if($('#form_AddProgramacion').data('formValidation').isValid()==true){
-          $('#form_AddProgramacion').submit();
-          var txt_codigo_unico_pi=$("#txt_codigo_unico_pi").val();
-          var txt_nombre_proyecto=$("#txt_nombre_proyecto").val();
-          var txt_costo_proyecto=$("#txt_costo_proyecto").val();
-          var txt_pia_fye=$("#txt_pia_fye").val();
-          var txt_pim_pia_fye=$("#txt_pim_pia_fye").val();
-          var txt_devengado_pia_fye=$("#txt_devengado_pia_fye").val();
-          $('#form_AddProgramacion').each(function(){ 
+    $("#txt_anio1").keyup(function(e)
+    {
+        $(this).val(format($(this).val()));
+    });
+    $("body").on("click","#send_addProgramacion",function(e){
+        $('#validarRegistroProgramarNoPip').data('formValidation').validate();
+        if(!($('#validarRegistroProgramarNoPip').data('formValidation').isValid()))
+        {
+            return;
+        }
+        $('#form_AddProgramacion').submit();
+        var txt_codigo_unico_pi=$("#txt_codigo_unico_pi").val();
+        var txt_nombre_proyecto=$("#txt_nombre_proyecto").val();
+        var txt_costo_proyecto=$("#txt_costo_proyecto").val();
+        var txt_pia_fye=$("#txt_pia_fye").val();
+        var txt_pim_pia_fye=$("#txt_pim_pia_fye").val();
+        var txt_devengado_pia_fye=$("#txt_devengado_pia_fye").val();
+        $('#form_AddProgramacion').each(function()
+        { 
             this.reset();
-          });
-          $("#txt_codigo_unico_pi").val(txt_codigo_unico_pi);
-          $("#txt_nombre_proyecto").val(txt_nombre_proyecto);
-          $("#txt_costo_proyecto").val(txt_costo_proyecto);
-          $("#txt_pia_fye").val(txt_pia_fye);
-          $("#txt_pim_pia_fye").val(txt_pim_pia_fye);
-          $("#txt_devengado_pia_fye").val(txt_devengado_pia_fye);
+        });
+        $("#txt_codigo_unico_pi").val(txt_codigo_unico_pi);
+        $("#txt_nombre_proyecto").val(txt_nombre_proyecto);
+        $("#txt_costo_proyecto").val(txt_costo_proyecto);
+        $("#txt_pia_fye").val(txt_pia_fye);
+        $("#txt_pim_pia_fye").val(txt_pim_pia_fye);
+        $("#txt_devengado_pia_fye").val(txt_devengado_pia_fye);
 
-          $('.selectpicker').selectpicker('refresh');
-          $('#form_AddProgramacion').data('formValidation').resetForm();
-      }
+        $('.selectpicker').selectpicker('refresh');
+        $('#form_AddProgramacion')[0].reset();
     });
      $("#form_AddProgramacion").submit(function(event)
                   {
@@ -470,3 +455,91 @@ if (data.ultimo_pim_meta_pres==""|| parseFloat(data.ultimo_pim_meta_pres)=="0.00
                         "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                     }
                 }
+
+var format = function(num){
+    var str = num.replace("", ""), parts = false, output = [], i = 1, formatted = null;
+    if(str.indexOf(".") > 0) 
+    {
+        parts = str.split(".");
+        str = parts[0];
+    }
+    str = str.split("").reverse();
+    for(var j = 0, len = str.length; j < len; j++) 
+    {
+        if(str[j] != ",") 
+        {
+            output.push(str[j]);
+            if(i%3 == 0 && j < (len - 1))
+            {
+                output.push(",");
+            }
+            i++;
+        }
+    }
+    formatted = output.reverse().join("");
+    return("" + formatted + ((parts) ? "." + parts[1].substr(0, 2) : ""));
+};
+$(function()
+{   
+    $('#validarRegistroProgramarNoPip').formValidation({
+        framework: 'bootstrap',
+        excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+        live: 'enabled',
+        message: '<b style="color: #9d9d9d;">Asegúreseeee que realmente no necesita este valor.</b>',
+        trigger: null,
+        fields:
+        {
+
+            Cbx_AnioCartera:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Año cartera" es requerido.</b>'
+                    }
+                }
+            },
+            cbxBrecha:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Brecha " es requerido.</b>'
+                    }
+                }
+            },
+            txt_saldoprogramar:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Saldo" es requerido.</b>'
+                    },
+                    regexp:
+                    {
+                        regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
+                        message: '<b style="color: red;">El campo "Monto de Operación" debe ser númerico.</b>'
+                    }
+                }
+            },
+            txt_anio1:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Monto Programación" es requerido.</b>'
+                    },
+                    regexp:
+                    {
+                        regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
+                        message: '<b style="color: red;">El campo "Monto Programación" debe ser númerico.</b>'
+                    }
+                }
+            },
+        }
+    });
+});

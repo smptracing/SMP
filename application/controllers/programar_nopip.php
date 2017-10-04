@@ -30,23 +30,29 @@ class programar_nopip extends CI_Controller
     }
     public function AddProgramacion()
     {
-        if ($this->input->is_ajax_request()) {
+        if ($this->input->is_ajax_request()) 
+        {
             $flat                    = "programar_no_pip";
             $id_programacion         = "0";
             $Cbx_AnioCartera         = $this->input->post("Cbx_AnioCartera");
             $cbxBrecha               = $this->input->post("cbxBrecha");
             $txt_id_pip_programacion = $this->input->post("txt_id_pip_programacion");
-            $txt_anio1               = $this->input->post("txt_anio1");
+            $txt_anio1               = floatval(str_replace(",", "", $this->input->post("txt_anio1")));
             $txt_anio2               = "0.00";
             $txt_anio3               = "0.00";
             $txt_prioridad           = floatval($this->input->post("txt_prioridad"));
-            if ($this->programar_nopip_modal->AddProgramacion($flat, $id_programacion, $Cbx_AnioCartera, $cbxBrecha, $txt_id_pip_programacion, $txt_anio1, $txt_anio2, $txt_anio3, $txt_prioridad) == false) {
+            if ($this->programar_nopip_modal->AddProgramacion($flat, $id_programacion, $Cbx_AnioCartera, $cbxBrecha, $txt_id_pip_programacion, $txt_anio1, $txt_anio2, $txt_anio3, $txt_prioridad) == false) 
+            {
                 echo "1";
-            } else {
+            } 
+            else 
+            {
                 echo "2";
             }
 
-        } else {
+        } 
+        else 
+        {
             show_404();
         }
     }
@@ -79,12 +85,26 @@ class programar_nopip extends CI_Controller
     //Listar programación
     public function listar_programacion()
     {
-        if ($this->input->is_ajax_request()) {
-            $flat  = "listar_programado_pip"; //LISTAR NO PIP PROGRMAADOS
+        if ($this->input->is_ajax_request()) 
+        {
+            $flat  = "listar_programado_pip";
             $id_pi = $this->input->post("id_pi");
             $data  = $this->programar_nopip_modal->listar_programacion($flat, $id_pi);
-            echo json_encode(array('data' => $data));
-        } else {
+            if($data == false)
+            {
+                echo json_encode(array('data' => $data));
+            }
+            else
+            {
+                foreach ($data as $key => $value) 
+                {
+                    $value->monto_prog = a_number_format($value->monto_prog , 2, '.',",",3);
+                }
+                echo json_encode(array('data' => $data));
+            }
+        } 
+        else 
+        {
             show_404();
         }
     }
