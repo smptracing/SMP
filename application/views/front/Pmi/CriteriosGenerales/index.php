@@ -12,7 +12,7 @@
 					<div class="x_content">
 						<div class="" role="tabpanel" data-example-id="togglable-tabs">
 							<ul id="myTab" class="nav nav-tabs" role="tablist">
-								<li role="presentation" class="active"><a href="#tab_etapasFE" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"> <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>Presupuesto</a>
+								<li role="presentation" class="active"><a href="#tab_etapasFE" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"> <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>Criterio Generales</a>
 								</li>
 							</ul>
 							<div id="myTabContent" class="tab-content">
@@ -20,7 +20,7 @@
 									<div class="row">
 										<div class="col-md-12 col-xs-12">
 											<div class="x_panel">
-												<button type="button" class="btn btn-primary " onclick="paginaAjaxDialogo(null, 'Registro de presupuesto para formulación y evaluación', {  }, base_url+'index.php/FE_Presupuesto_Inv/insertar', 'GET', null, null, false, true);"  >
+												<button type="button" class="btn btn-primary " onclick="paginaAjaxDialogo(null, 'Registro Criterio Generales', {  }, base_url+'index.php/PmiCriterioG/insertar', 'GET', null, null, false, true);"  >
 													<span class="fa fa-plus-circle"></span>
 													Nuevo
 												</button>
