@@ -23,6 +23,19 @@
 				<div class="x_panel">
 					<div class="x_title">
 						<h2><b>DATOS GENERALES Y DETALLE POR ORDEN DE PEDIDOS</b> </h2>
+								<?php $anio=0 ?>
+
+								<?php foreach($listaDetallePorOrden as $item ){ ?>
+													  	<tr>
+															<td>
+
+																<?php  $anio = $item->ANO_EJE ;?>
+													    	</td>	    	
+													  </tr>
+								<?php } ?>
+
+
+
 						<ul class="nav navbar-right panel_toolbox">
 						</ul>
 						<div class="clearfix"></div>
@@ -34,34 +47,38 @@
 								<!-- /Contenido del sector -->
 								<div role="tabpanel" class="tab-pane fade active in" id="tab_Sector" aria-labelledby="home-tab">
 									<!-- /tabla de sector desde el row -->
+									<label>AÑO :<?php  echo $anio ?></label>
 									<div class="clearfix">
 										<div class="pull-right tableTools-container"></div>
 									</div>
+
 									<br>
+
 									<div class="row">
 						                <div class="col-md-12 col-sm-12 col-xs-12">
 										
 					                        <div class="table-responsive" >
-					                        	<table id="dynamic-table"  class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
+					                        	<table id="dynamic-table"  class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="2500px">
 												<thead>
 												<tr>
-													<td>Año</td>
-													<td>MES_CALEND</td>
-													<td>NRO_ORDEN</td>
-													<td>DOCUM_REFERENCIA</td>
-													<td>CLASIFICAD</td>
+													
+													<td>MES</td>
+													<td>N°ORDEN</td>
+													<td>DOC.REFERENCIA</td>
+													<td>CLASIFICADOR</td>
 													<td>CONCEPTO</td>
-													<td>FECHA_ORDEN</td>
-													<td>TIPO_BIEN</td>
-													<td>SUBTOTAL_MONEDA</td>
-													<td>TOTAL_IGV_MONEDA</td>
-													<td>TOTAL_FACT_MONEDA</td>
-													<td>SUBTOTAL_SOLES</td>
-													<td>TOTAL_IGV_SOLES</td>
-													<td>TOTAL_FACT_SOLES</td>
-													<td>EXP_SIAF</td>
-													<td>EXP_SIGA</td>
-													<td>NRO_CERTIFICA</td>	
+													<td>FECHA ORDEN</td>
+													<td>TIPO BIEN</td>
+
+													
+
+													<td>SUBTOTAL</td>
+													<td>TOTAL IGV</td>
+													<td>TOTAL FACT</td>
+
+													<td>EXP SIAF</td>
+													<td>EXP SIGA</td>
+													<td>N° CERTIFICA</td>	
 													<td>NRO</td>		
 												 </tr>
 												</thead>
@@ -69,9 +86,7 @@
 													
 													<?php foreach($listaDetallePorOrden as $item ){ ?>
 													  	<tr>
-															<td>
-																<?=$item->ANO_EJE?>
-													    	</td>
+															
 													    	<td>
 																<?=$item->MES_CALEND?>
 													    	</td>
@@ -93,25 +108,18 @@
 													    	<td>
 																<?=$item->TIPO_BIEN?>
 													    	</td>
-													    	<td>
-																<?=$item->SUBTOTAL_MONEDA?>
-													    	</td>
-													    	<td>
-																<?=$item->TOTAL_IGV_MONEDA?>
-													    	</td>
-													    	<td>
-																<?=$item->TOTAL_FACT_MONEDA?>
-													    	</td>
+													    	
 													    	
 															<td>
 																<?=$item->SUBTOTAL_SOLES?>
 													    	</td>
 													    	<td>
-																<?=$item->TOTAL_FACT_MONEDA?>
-													    	</td>
-													    	<td>
 																<?=$item->TOTAL_IGV_SOLES?>
 													    	</td>
+													    	<td>
+																<?=$item->TOTAL_FACT_MONEDA?>
+													    	</td>
+													    	
 													    	<td>
 																<?=$item->TOTAL_FACT_SOLES?>
 													    	</td>
