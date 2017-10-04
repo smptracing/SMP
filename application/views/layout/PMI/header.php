@@ -140,7 +140,7 @@
                      <li><a><i class="fa fa-gears"></i> Mantenimiento<span class="fa fa-chevron-down"></span></a>
 
                     <ul class="nav child_menu">
-                      <li><a href="">Criterios Generales</a></li>
+                      <li><a href="<?php echo site_url('PmiCriterioG/'); ?>">Criterios Generales</a></li>
                     </ul>
                   </li>
 
