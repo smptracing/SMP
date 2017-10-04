@@ -20,10 +20,7 @@
 									<div class="row">
 										<div class="col-md-12 col-xs-12">
 											<div class="x_panel">
-												<button type="button" class="btn btn-primary " onclick="paginaAjaxDialogo(null, 'Registro Criterio Generales', {  }, base_url+'index.php/PmiCriterioG/insertar', 'GET', null, null, false, true);"  >
-													<span class="fa fa-plus-circle"></span>
-													Nuevo
-												</button>
+												
 											</button>
 											<div class="x_title">
 												<ul class="nav navbar-right panel_toolbox">

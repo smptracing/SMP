@@ -25,29 +25,14 @@
 													Nuevo
 												</button>
 											</button>
-											<div class="x_title">
-												<ul class="nav navbar-right panel_toolbox">
-													<li>
-														<a class="collapse-link">
-															<i class="fa fa-chevron-up"></i>
-														</a>
-													</li>
-													<li>
-														<a class="close-link">
-															<i class="fa fa-close"></i>
-														</a>
-													</li>
-												</ul>
-												<div class="clearfix"></div>
-											</div>
 											<div class="x_content">
 												<table id="table-Presupuesto" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 													<thead>
 														<tr>
-															<td>Codigo</td>
-															<td>Funcion</td>
-															<td>NumeronCriterio</td>
-															<td class="col-md-2 col-md-2 col-xs-12">Opciones</td>
+															<td style="width: 1%">Codigo</td>
+															<td>Función</td>
+															<td style="width: 1%">N° Criterio</td>
+															<td style="width: 1%">Opciones</td>
 														</tr>
 													</thead>
 													<tbody>
@@ -62,8 +47,9 @@
 													    	<td>
 																<?=$item->CantCriteriosG?>
 													    	</td>
-													    	<td>
-																
+													    	<td style="text-align: left;">
+																<button type="button" class="btn btn-primary btn-xs " onclick="paginaAjaxDialogo(null, 'Registro Criterio Generales', {  }, base_url+'index.php/PmiCriterioG/insertar', 'GET', null, null, false, true);"><span class="fa fa-plus-circle"></span>
+																</button>
 													    	</td>
 												
 													  </tr>
