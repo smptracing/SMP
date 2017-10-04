@@ -52,7 +52,26 @@
 														</tr>
 													</thead>
 													<tbody>
-														
+														<?php foreach($listaCriterioGen as $item ){ ?>
+													  	<tr>
+															<td>
+																<?=$item->nombre_criterio_gen?>
+													    	</td>
+													    	<td>
+																<?=$item->peso_criterio_gen?>
+													    	</td>
+													    	<td>
+																<?=$item->anio_criterio_gen?>
+													    	</td>
+													    	<td>
+																<?=$item->nombre_funcion?>
+													    	</td>
+													    	<td>
+																
+													    	</td>
+												
+													  </tr>
+													<?php } ?>
 													</tbody>
 													
 												</table>
