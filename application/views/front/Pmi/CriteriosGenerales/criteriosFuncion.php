@@ -50,8 +50,10 @@
 													    	<td style="text-align: left;">
 																<button type="button" class="btn btn-primary btn-xs " onclick="paginaAjaxDialogo(null, 'Registro Criterio Generales', {  }, base_url+'index.php/PmiCriterioG/insertar', 'GET', null, null, false, true);"><span class="fa fa-plus-circle"></span>
 																</button>
+																<button type="button" class="btn btn-primary btn-xs " onclick="paginaAjaxDialogo(null, 'Registro Criterio Específicos', null, base_url+'index.php/PmiCriterioEspecifico/index', 'GET', null, null, false, true);"><span class="fa fa-plus-circle"></span>
+																</button>
+
 													    	</td>
-												
 													  </tr>
 													<?php } ?>
 													</tbody>
