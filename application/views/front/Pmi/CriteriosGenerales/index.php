@@ -12,7 +12,7 @@
 					<div class="x_content">
 						<div class="" role="tabpanel" data-example-id="togglable-tabs">
 							<ul id="myTab" class="nav nav-tabs" role="tablist">
-								<li role="presentation" class="active"><a href="#tab_etapasFE" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"> <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>Presupuesto</a>
+								<li role="presentation" class="active"><a href="#tab_etapasFE" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"> <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Criterio</a>
 								</li>
 							</ul>
 							<div id="myTabContent" class="tab-content">
@@ -44,10 +44,11 @@
 												<table id="table-Presupuesto" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 													<thead>
 														<tr>
-															<td>Sector</td>
-															<td>Pliego</td>
-															<td>Presupuesto</td>
-															<td class="col-md-2 col-md-2 col-xs-12"></td>
+															<td>Criterio Gen</td>
+															<td>Peso</td>
+															<td>Año</td>
+															<td>Función</td>
+															<td class="col-md-2 col-md-2 col-xs-12">Opciones</td>
 														</tr>
 													</thead>
 													<tbody>
