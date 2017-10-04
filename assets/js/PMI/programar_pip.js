@@ -48,6 +48,11 @@ $(document).on("ready" ,function(){
      lista_formulacion_evaluacion();/*llamar a mi datatablet listar proyectosinverision*/
      lista_ejecucion();
      lista_funcionamiento();
+
+    $("#txt_saldoprogramar").keyup(function(e)
+    {
+        $(this).val(format($(this).val()));
+    });
 //agregar progrmacion para operacion y mantenimiento   
    
     $('#form_AddProgramacion_operacion_mantenieminto').formValidation({
@@ -657,19 +662,9 @@ var  AddMeta_Pi=function(tbody,table){
                       else{
                          $("#ct_anio").css("display",""); 
                       }
-if (parseFloat(data.ultimo_pim_meta_pres)>0) {
- // alert("nuevo");
-    costopi=parseFloat(data.costo_pi)-parseFloat(data.ultimo_pim_meta_pres)-parseFloat(data.devengado_acumulado_total);
-                  if(costopi!='' && costopi!=null)
-                    $("#txt_saldoprogramar").val(costopi); 
-}
-if (data.ultimo_pim_meta_pres==""|| parseFloat(data.ultimo_pim_meta_pres)=="0.00") {
- // alert("vacio");
-    costopi=parseFloat(data.costo_pi)-parseFloat(data.ultimo_pia_meta_pres)-parseFloat(data.devengado_acumulado_total);
-                  if(costopi!='' && costopi!=null)
-                    $("#txt_saldoprogramar").val(costopi); 
-}
-                      
+                      $("#txt_saldoprogramar").val(data.saldo);
+
+                                                         
                       
                         listar_aniocartera();
                         listar_programacion(id_pi);
@@ -698,18 +693,37 @@ if (data.ultimo_pim_meta_pres==""|| parseFloat(data.ultimo_pim_meta_pres)=="0.00
                       else{
                          $("#ct_anio").css("display",""); 
                       }
-if (parseFloat(data.ultimo_pim_meta_pres)>0) {
- // alert("nuevo");
-    costopi=parseFloat(data.costo_pi)-parseFloat(data.ultimo_pim_meta_pres)-parseFloat(data.devengado_acumulado_total);
-                  if(costopi!='' && costopi!=null)
-                    $("#txt_saldoprogramar_oper").val(costopi); 
-}
-if (data.ultimo_pim_meta_pres==""|| parseFloat(data.ultimo_pim_meta_pres)=="0.00") {
- // alert("vacio");
-    costopi=parseFloat(data.costo_pi)-parseFloat(data.ultimo_pia_meta_pres)-parseFloat(data.devengado_acumulado_total);
-                  if(costopi!='' && costopi!=null)
-                    $("#txt_saldoprogramar_oper").val(costopi); 
-}
+                      if (parseFloat(data.ultimo_pim_meta_pres.replace(",", ""))>0) 
+            {
+                var datacostopi = data.costo_pi.replace(",", "");
+                var dataultimopim = data.ultimo_pim_meta_pres.replace(",", "");
+                var datadevengado = data.devengado_acumulado_total.replace(",", "");
+                costopi=parseFloat(datacostopi)-parseFloat(dataultimopim)-parseFloat(datadevengado);
+                if(costopi!='' && costopi!=null)
+                    //$("#txt_saldoprogramar").val(costopi);
+                    $("#txt_saldoprogramar").val("costopi");
+
+                /*costopi=parseFloat(datacosto_pi)-parseFloat(data.ultimo_pim_meta_pres)-parseFloat(data.devengado_acumulado_total);
+                if(costopi!='' && costopi!=null)
+                    $("#txt_saldoprogramar").val(costopi); */
+            }
+            if (data.ultimo_pim_meta_pres==""|| parseFloat(data.ultimo_pim_meta_pres.replace(",", ""))=="0.00") 
+            {
+                var datacostopi = data.costo_pi.replace(",", "");
+                var dataultimopia = data.ultimo_pia_meta_pres.replace(",", "");
+                var datadevengado = data.devengado_acumulado_total.replace(",", "");
+
+                costopi=parseFloat(datacostopi)-parseFloat(dataultimopia)-parseFloat(datadevengado);
+                if(costopi!='' && costopi!=null)
+                    //$("#txt_saldoprogramar").val(costopi); 
+                    $("#txt_saldoprogramar").val("2costopi");
+                /*
+                costopi=parseFloat(datacostopi)-parseFloat(data.ultimo_pia_meta_pres)-parseFloat(data.devengado_acumulado_total);
+                if(costopi!='' && costopi!=null)
+                    $("#txt_saldoprogramar").val(costopi); 
+                */
+            }
+
                         listar_aniocartera_();
                         listar_programacion_operacion_mantenimiento(id_pi);
                   });
@@ -873,3 +887,27 @@ if (data.ultimo_pim_meta_pres==""|| parseFloat(data.ultimo_pim_meta_pres)=="0.00
                         "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                     }
                 }
+
+var format = function(num){
+    var str = num.replace("", ""), parts = false, output = [], i = 1, formatted = null;
+    if(str.indexOf(".") > 0) 
+    {
+        parts = str.split(".");
+        str = parts[0];
+    }
+    str = str.split("").reverse();
+    for(var j = 0, len = str.length; j < len; j++) 
+    {
+        if(str[j] != ",") 
+        {
+            output.push(str[j]);
+            if(i%3 == 0 && j < (len - 1))
+            {
+                output.push(",");
+            }
+            i++;
+        }
+    }
+    formatted = output.reverse().join("");
+    return("" + formatted + ((parts) ? "." + parts[1].substr(0, 2) : ""));
+};

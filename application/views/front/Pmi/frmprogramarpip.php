@@ -207,7 +207,7 @@
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12 form-group">
                                       <center><label>Saldo a Programar</label></center>
-                                      <input  class="form-control" id="txt_saldoprogramar" name="txt_saldoprogramar" value="0.00" type="number" >
+                                      <input  class="form-control" id="txt_saldoprogramar" name="txt_saldoprogramar" value="0.00" type="text" >
                                     </div>
 
                                  </div>
@@ -216,15 +216,15 @@
                               <div class="item ">
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>PIA</label></center>
-                                      <input  class="form-control" id="txt_pia_fye" name="txt_pia_fye" type="number"  value="0.00" disabled="disabled" />
+                                      <input  class="form-control" id="txt_pia_fye" name="txt_pia_fye" type="text"  value="0.00" disabled="disabled" />
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>PIM</label></center>
-                                      <input  class="form-control" id="txt_pim_pia_fye" name="txt_pim_pia_fye" type="number"   value="0.00"  disabled="disabled" />
+                                      <input  class="form-control" id="txt_pim_pia_fye" name="txt_pim_pia_fye" type="text"   value="0.00"  disabled="disabled" />
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>Devengado</label></center>
-                                      <input  class="form-control" id="txt_devengado_pia_fye" name="txt_devengado_pia_fye" type="number"  value="0.00"  disabled="disabled" />
+                                      <input  class="form-control" id="txt_devengado_pia_fye" name="txt_devengado_pia_fye" type="text"  value="0.00"  disabled="disabled" />
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12 form-group">
                                       <center><label>Prioridad</label></center>
@@ -235,15 +235,15 @@
                                 <div class="row item ">
                                    <div class="col-md-3 col-sm-6 col-xs-12 form-group">
                                       <CENTER><label id="lb_anio1">Año 1.</label></CENTER>
-                                      <input  class="form-control" id="txt_anio1" name="txt_anio1" type="number" />
+                                      <input  class="form-control" id="txt_anio1" name="txt_anio1" type="text" />
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12 form-group">
                                       <CENTER><label id="lb_anio2">Año 2</label></CENTER>
-                                      <input  class="form-control" id="txt_anio2" name="txt_anio2" type="number" />
+                                      <input  class="form-control" id="txt_anio2" name="txt_anio2" type="text" />
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12 form-group">
                                       <CENTER><label id="lb_anio3">Año 3</label></CENTER>
-                                      <input  class="form-control" id="txt_anio3" name="txt_anio3" type="number" />
+                                      <input  class="form-control" id="txt_anio3" name="txt_anio3" type="text" />
                                     </div>
 
                          

@@ -13,13 +13,51 @@ class programar_pip extends CI_Controller
     //listar proyectos de inversion en FORMULACION Y EVALUACIÓN
     public function GetProyectosFormulacionEvaluacion()
     {
+
+       /* $flat  = "listarpip_formulacion_evaluacion";
+        $datos = $this->programar_pip_modal->GetProyectosFormulacionEvaluacion($flat);
+        $saldo = 0;
+        foreach ($datos as $key => $value) 
+        {
+            if($value->ultimo_pim_meta_pres==0.00 || $value->ultimo_pim_meta_pres==null )
+            {
+                $saldo = $value->costo_pi-$value->ultimo_pia_meta_pres-$value->devengado_acumulado_total;
+            }
+            else
+            {
+                $saldo = $value->costo_pi-$value->ultimo_pim_meta_pres-$value->devengado_acumulado_total;
+            }
+
+            $value->costo_pi = a_number_format($value->costo_pi , 2, '.',",",3);
+            $value->ultimo_pia_meta_pres = a_number_format($value->ultimo_pia_meta_pres , 2, '.',",",3);
+            $value->devengado_acumulado_total = a_number_format($value->devengado_acumulado_total , 2, '.',",",3);
+            $value->ultimo_pim_meta_pres = a_number_format($value->ultimo_pim_meta_pres , 2, '.',",",3); 
+            $value->saldo = a_number_format($saldo , 2, '.',",",3);            
+        }
+        echo json_encode($datos);
+        exit;*/
+
         if ($this->input->is_ajax_request())
         {
             $flat  = "listarpip_formulacion_evaluacion";
             $datos = $this->programar_pip_modal->GetProyectosFormulacionEvaluacion($flat);
+            $saldo = 0;
             foreach ($datos as $key => $value) 
             {
+                if($value->ultimo_pim_meta_pres==0.00 || $value->ultimo_pim_meta_pres==null )
+                {
+                    $saldo = $value->costo_pi-$value->ultimo_pia_meta_pres-$value->devengado_acumulado_total;
+                }
+                else
+                {
+                    $saldo = $value->costo_pi-$value->ultimo_pim_meta_pres-$value->devengado_acumulado_total;
+                }
+
                 $value->costo_pi = a_number_format($value->costo_pi , 2, '.',",",3);
+                $value->ultimo_pia_meta_pres = a_number_format($value->ultimo_pia_meta_pres , 2, '.',",",3);
+                $value->devengado_acumulado_total = a_number_format($value->devengado_acumulado_total , 2, '.',",",3);
+                $value->ultimo_pim_meta_pres = a_number_format($value->ultimo_pim_meta_pres , 2, '.',",",3); 
+                $value->saldo = a_number_format($saldo , 2, '.',",",3);            
             }
             echo json_encode($datos);
         } 
@@ -180,16 +218,29 @@ class programar_pip extends CI_Controller
     //Listar programación
     public function listar_programacion()
     {
-        if ($this->input->is_ajax_request()) {
+        if ($this->input->is_ajax_request()) 
+        {
             $flat  = "listar_programado_pip";
             $id_pi = $this->input->post("id_pi");
             $data  = $this->programar_pip_modal->listar_programacion($flat, $id_pi);
-            echo json_encode(array('data' => $data));
-        } else {
+            if($data == false)
+            {
+                echo json_encode(array('data' => $data));
+            }
+            else
+            {
+                foreach ($data as $key => $value) 
+                {
+                    $value->monto_prog = a_number_format($value->monto_prog , 2, '.',",",3);                
+                }
+                echo json_encode(array('data' => $data));
+            }            
+        } 
+        else 
+        {
             show_404();
         }
-    }
-    //Listar programación en modal operacion y mantenimiento
+    }    //Listar programación en modal operacion y mantenimiento
     public function listar_programacion_operacion_mantenimiento()
     {
         if ($this->input->is_ajax_request()) {
