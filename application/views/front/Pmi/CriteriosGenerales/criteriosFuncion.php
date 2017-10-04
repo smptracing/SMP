@@ -44,14 +44,30 @@
 												<table id="table-Presupuesto" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 													<thead>
 														<tr>
-															<td>Criterio Gen</td>
+															<td>Codigo</td>
 															<td>Funcion</td>
-															<td>NumeroCriterio</td>
+															<td>NumeronCriterio</td>
 															<td class="col-md-2 col-md-2 col-xs-12">Opciones</td>
 														</tr>
 													</thead>
 													<tbody>
-											
+															<?php foreach($listaCriterioFuncion as $item ){ ?>
+													  	<tr>
+															<td>
+																<?=$item->codigo_funcion?>
+													    	</td>
+															<td>
+																<?=$item->nombre_funcion?>
+													    	</td>
+													    	<td>
+																<?=$item->CantCriteriosG?>
+													    	</td>
+													    	<td>
+																
+													    	</td>
+												
+													  </tr>
+													<?php } ?>
 													</tbody>
 													
 												</table>
