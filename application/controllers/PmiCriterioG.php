@@ -14,8 +14,15 @@ class PmiCriterioG extends CI_Controller {/* Mantenimiento de sector entidad Y s
 		{
 
 		}
+
+		$id_funcion=$this->input->GET('id_funcion');
+		$nombre_funcion=$this->input->GET('nombre_funcion');
+
 		$function=$this->Model_Funcion->GetFuncion();
-		$this->load->view('front/Pmi/CriteriosGenerales/insertar',['function' => $function]);
+
+		$listaCritetioGeneral=$this->Model_CriterioGeneral->ListarCriterioGenerales($id_funcion);
+
+		$this->load->view('front/Pmi/CriteriosGenerales/insertar',['function' => $function,'id_funcion' => $id_funcion,'nombre_funcion'=> $nombre_funcion,'listaCritetioGeneral' => $listaCritetioGeneral]);
 	}
 
 	public function index(){
