@@ -47,7 +47,7 @@
 										<td><?= $item->peso_criterio_gen?></td>
 										<td><?= $item->porcentaje?></td>
 										<td>
-											<button type="button" class="btn btn-primary btn-xs " onclick="paginaAjaxDialogo(null, 'Registro Criterio Específicos', null, base_url+'index.php/PmiCriterioEspecifico/index', 'GET', null, null, false, true);"><span class="fa fa-plus-circle"></span></button>
+											<button type="button" class="btn btn-primary btn-xs " onclick="paginaAjaxDialogo(null, 'Registro Criterio Específicos',{ id_criterio_gen:'<?=$item->id_criterio_gen?>',nombre_criterio_gen:'<?=$item->nombre_criterio_gen?>' }, base_url+'index.php/PmiCriterioEspecifico/index', 'GET', null, null, false, true);"><span class="fa fa-plus-circle"></span></button>
 											<button onclick="EliminarPresClasiAnalitico(<?=$item->id_criterio_gen?>,this);" data-toggle="tooltip" data-original-title="Eliminar Analitico"   class='btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button></td>									
 									</tr>
 						</tr>						
