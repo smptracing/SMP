@@ -48,6 +48,64 @@ $(document).on("ready" ,function(){
      lista_formulacion_evaluacion();/*llamar a mi datatablet listar proyectosinverision*/
      lista_ejecucion();
      lista_funcionamiento();
+
+     $("#txt_anio1").keyup(function(e)
+    {
+        $(this).val(format($(this).val()));
+    });
+    $("#txt_anio2").keyup(function(e)
+    {
+        $(this).val(format($(this).val()));
+    });
+    $("#txt_anio3").keyup(function(e)
+    {
+        $(this).val(format($(this).val()));
+    });
+
+    $("#txt_anio4").keyup(function(e)
+    {
+        $(this).val(format($(this).val()));
+    });
+    $("#txt_anio5").keyup(function(e)
+    {
+        $(this).val(format($(this).val()));
+    });
+    $("#txt_anio6").keyup(function(e)
+    {
+        $(this).val(format($(this).val()));
+    });
+    $("#txt_saldoprogramar").keyup(function(e)
+    {
+        $(this).val(format($(this).val()));
+    });
+    $("#txt_saldoprogramar_oper").keyup(function(e)
+    {
+        $(this).val(format($(this).val()));
+    });
+    $("#txt_anio1_").keyup(function(e)
+    {
+        $(this).val(format($(this).val()));
+    });
+    $("#txt_anio2_").keyup(function(e)
+    {
+        $(this).val(format($(this).val()));
+    });
+    $("#txt_anio3_").keyup(function(e)
+    {
+        $(this).val(format($(this).val()));
+    });
+    $("#txt_anio4_").keyup(function(e)
+    {
+        $(this).val(format($(this).val()));
+    });
+    $("#txt_anio5_").keyup(function(e)
+    {
+        $(this).val(format($(this).val()));
+    });
+    $("#txt_anio6_").keyup(function(e)
+    {
+        $(this).val(format($(this).val()));
+    });
 //agregar progrmacion para operacion y mantenimiento   
    
     $('#form_AddProgramacion_operacion_mantenieminto').formValidation({
@@ -65,27 +123,77 @@ $(document).on("ready" ,function(){
           validators:{
             notEmpty:{
               message: '<b style="color: red;">El campo "Saldo a Programar" es requerido.</b>'
+            },
+            regexp:
+            {
+                regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
+                message: '<b style="color: red;">El campo "Saldo" debe ser númerico.</b>'
             }
+
           }
         },
         txt_anio1_:{
           validators:{
             notEmpty:{
-              message: '<b style="color: red;">El campo "Año de Programación" es requerido.</b>'
+              message: '<b style="color: red;">El campo "Monto Programación" es requerido.</b>'
+            },
+            regexp:
+            {
+                regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
+                message: '<b style="color: red;">El campo "Monto Programación" debe ser númerico.</b>'
             }
+
           }
         },
         txt_anio2_:{
           validators:{
             notEmpty:{
-              message: '<b style="color: red;">El campo "Año de Programación" es requerido.</b>'
+              message: '<b style="color: red;">El campo "Monto Programación" es requerido.</b>'
+            },
+            regexp:
+            {
+                regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
+                message: '<b style="color: red;">El campo "Monto Programación" debe ser númerico.</b>'
             }
+
           }
         },
         txt_anio3_:{
           validators:{
             notEmpty:{
-              message: '<b style="color: red;">El campo "Año de Programación" es requerido.</b>'
+              message: '<b style="color: red;">El campo "Monto Programación" es requerido.</b>'
+            },
+            regexp:
+            {
+                regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
+                message: '<b style="color: red;">El campo "Monto Programación" debe ser númerico.</b>'
+            }
+          }
+        },
+        txt_anio4_:{
+          validators:{
+            regexp:
+            {
+                regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
+                message: '<b style="color: red;">El campo "Saldo" debe ser númerico.</b>'
+            }
+          }
+        },
+        txt_anio5_:{
+          validators:{
+            regexp:
+            {
+                regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
+                message: '<b style="color: red;">El campo "Saldo" debe ser númerico.</b>'
+            }
+          }
+        },
+        txt_anio6_:{
+          validators:{
+            regexp:
+            {
+                regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
+                message: '<b style="color: red;">El campo "Saldo" debe ser númerico.</b>'
             }
           }
         },
@@ -156,28 +264,48 @@ $(document).on("ready" ,function(){
           validators:{
             notEmpty:{
               message: '<b style="color: red;">El campo "Saldo a Programar" es requerido.</b>'
+            },
+            regexp:
+            {
+                regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
+                message: '<b style="color: red;">El campo "Saldo" debe ser númerico.</b>'
             }
           }
         },
         txt_anio1:{
           validators:{
             notEmpty:{
-              message: '<b style="color: red;">El campo "Año de Programación" es requerido.</b>'
-            }
+              message: '<b style="color: red;">El campo "Monto de Programación" es requerido.</b>'
+            },
+                    regexp:
+                    {
+                        regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
+                        message: '<b style="color: red;">El campo "Monto de Programación" debe ser númerico.</b>'
+                    }
           }
         },
         txt_anio2:{
           validators:{
             notEmpty:{
-              message: '<b style="color: red;">El campo "Año de Programación" es requerido.</b>'
-            }
+              message: '<b style="color: red;">El campo "Monto de Programación" es requerido.</b>'
+            },
+                    regexp:
+                    {
+                        regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
+                        message: '<b style="color: red;">El campo "Monto de Programación" debe ser númerico.</b>'
+                    }
           }
         },
         txt_anio3:{
           validators:{
             notEmpty:{
-              message: '<b style="color: red;">El campo "Año de Programación" es requerido.</b>'
-            }
+              message: '<b style="color: red;">El campo "Monto de Programación" es requerido.</b>'
+            },
+                    regexp:
+                    {
+                        regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
+                        message: '<b style="color: red;">El campo "Monto de Programación" debe ser númerico.</b>'
+                    }
           }
         },
       }
@@ -657,19 +785,9 @@ var  AddMeta_Pi=function(tbody,table){
                       else{
                          $("#ct_anio").css("display",""); 
                       }
-if (parseFloat(data.ultimo_pim_meta_pres)>0) {
- // alert("nuevo");
-    costopi=parseFloat(data.costo_pi)-parseFloat(data.ultimo_pim_meta_pres)-parseFloat(data.devengado_acumulado_total);
-                  if(costopi!='' && costopi!=null)
-                    $("#txt_saldoprogramar").val(costopi); 
-}
-if (data.ultimo_pim_meta_pres==""|| parseFloat(data.ultimo_pim_meta_pres)=="0.00") {
- // alert("vacio");
-    costopi=parseFloat(data.costo_pi)-parseFloat(data.ultimo_pia_meta_pres)-parseFloat(data.devengado_acumulado_total);
-                  if(costopi!='' && costopi!=null)
-                    $("#txt_saldoprogramar").val(costopi); 
-}
-                      
+                      $("#txt_saldoprogramar").val(data.saldo);
+
+                                                         
                       
                         listar_aniocartera();
                         listar_programacion(id_pi);
@@ -698,18 +816,8 @@ if (data.ultimo_pim_meta_pres==""|| parseFloat(data.ultimo_pim_meta_pres)=="0.00
                       else{
                          $("#ct_anio").css("display",""); 
                       }
-if (parseFloat(data.ultimo_pim_meta_pres)>0) {
- // alert("nuevo");
-    costopi=parseFloat(data.costo_pi)-parseFloat(data.ultimo_pim_meta_pres)-parseFloat(data.devengado_acumulado_total);
-                  if(costopi!='' && costopi!=null)
-                    $("#txt_saldoprogramar_oper").val(costopi); 
-}
-if (data.ultimo_pim_meta_pres==""|| parseFloat(data.ultimo_pim_meta_pres)=="0.00") {
- // alert("vacio");
-    costopi=parseFloat(data.costo_pi)-parseFloat(data.ultimo_pia_meta_pres)-parseFloat(data.devengado_acumulado_total);
-                  if(costopi!='' && costopi!=null)
-                    $("#txt_saldoprogramar_oper").val(costopi); 
-}
+                      $("#txt_saldoprogramar_oper").val(data.saldo);
+
                         listar_aniocartera_();
                         listar_programacion_operacion_mantenimiento(id_pi);
                   });
@@ -873,3 +981,27 @@ if (data.ultimo_pim_meta_pres==""|| parseFloat(data.ultimo_pim_meta_pres)=="0.00
                         "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                     }
                 }
+
+var format = function(num){
+    var str = num.replace("", ""), parts = false, output = [], i = 1, formatted = null;
+    if(str.indexOf(".") > 0) 
+    {
+        parts = str.split(".");
+        str = parts[0];
+    }
+    str = str.split("").reverse();
+    for(var j = 0, len = str.length; j < len; j++) 
+    {
+        if(str[j] != ",") 
+        {
+            output.push(str[j]);
+            if(i%3 == 0 && j < (len - 1))
+            {
+                output.push(",");
+            }
+            i++;
+        }
+    }
+    formatted = output.reverse().join("");
+    return("" + formatted + ((parts) ? "." + parts[1].substr(0, 2) : ""));
+};

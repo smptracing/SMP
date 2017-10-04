@@ -12,7 +12,7 @@
 					<div class="x_content">
 						<div class="" role="tabpanel" data-example-id="togglable-tabs">
 							<ul id="myTab" class="nav nav-tabs" role="tablist">
-								<li role="presentation" class="active"><a href="#tab_etapasFE" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"> <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Criterio</a>
+								<li role="presentation" class="active"><a href="#tab_etapasFE" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"> <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Criterio Funcion</a>
 								</li>
 							</ul>
 							<div id="myTabContent" class="tab-content">
@@ -20,53 +20,40 @@
 									<div class="row">
 										<div class="col-md-12 col-xs-12">
 											<div class="x_panel">
-												
+												<button type="button" class="btn btn-primary " onclick="paginaAjaxDialogo(null, 'Registro Criterio Generales', {  }, base_url+'index.php/PmiCriterioG/insertar', 'GET', null, null, false, true);"  >
+													<span class="fa fa-plus-circle"></span>
+													Nuevo
+												</button>
 											</button>
-											<div class="x_title">
-												<ul class="nav navbar-right panel_toolbox">
-													<li>
-														<a class="collapse-link">
-															<i class="fa fa-chevron-up"></i>
-														</a>
-													</li>
-													<li>
-														<a class="close-link">
-															<i class="fa fa-close"></i>
-														</a>
-													</li>
-												</ul>
-												<div class="clearfix"></div>
-											</div>
 											<div class="x_content">
 												<table id="table-Presupuesto" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 													<thead>
 														<tr>
-															<td>Criterio Gen</td>
-															<td>Peso</td>
-															<td>Año</td>
+															<td style="width: 1%">Codigo</td>
 															<td>Función</td>
-															<td class="col-md-2 col-md-2 col-xs-12">Opciones</td>
+															<td style="width: 1%">N° Criterio</td>
+															<td style="width: 1%">Opciones</td>
 														</tr>
 													</thead>
 													<tbody>
-														<?php foreach($listaCriterioGen as $item ){ ?>
+															<?php foreach($listaCriterioFuncion as $item ){ ?>
 													  	<tr>
 															<td>
-																<?=$item->nombre_criterio_gen?>
+																<?=$item->codigo_funcion?>
 													    	</td>
-													    	<td>
-																<?=$item->peso_criterio_gen?>
-													    	</td>
-													    	<td>
-																<?=$item->anio_criterio_gen?>
-													    	</td>
-													    	<td>
+															<td>
 																<?=$item->nombre_funcion?>
 													    	</td>
 													    	<td>
-																
+																<?=$item->CantCriteriosG?>
 													    	</td>
-												
+													    	<td style="text-align: left;">
+																<button type="button" class="btn btn-primary btn-xs " onclick="paginaAjaxDialogo(null, 'Registro Criterio Generales', {  }, base_url+'index.php/PmiCriterioG/insertar', 'GET', null, null, false, true);"><span class="fa fa-plus-circle"></span>
+																</button>
+																<button type="button" class="btn btn-primary btn-xs " onclick="paginaAjaxDialogo(null, 'Registro Criterio Específicos', null, base_url+'index.php/PmiCriterioEspecifico/index', 'GET', null, null, false, true);"><span class="fa fa-plus-circle"></span>
+																</button>
+
+													    	</td>
 													  </tr>
 													<?php } ?>
 													</tbody>
