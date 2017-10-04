@@ -119,64 +119,65 @@
 																			<?='&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp', $value5->especifica_det,' ',$value5->desc_especifica_det ; ?>
 																			</td>
 																			<td style="text-align:right">
-																			<?= $value5->ene; ?> 
+																			<?= number_format($value5->ene,2) ?> 
 																			</td>
 																			<td style="text-align:right">
-																			<?= $value5->feb; ?> 
+																			<?= number_format($value5->feb,2) ?> 
 																			</td>
 																			<td style="text-align:right">
-																			<?= $value5->mar; ?> 
+																			<?= number_format($value5->mar,2) ?> 
 																			</td>
 																			<td style="text-align:right">
-																			<?= $value5->abr; ?> 
+																			<?= number_format($value5->abr,2) ?> 
 																			</td>
 																			<td style="text-align:right">
-																			<?= $value5->may; ?> 
+																			<?= number_format($value5->may,2) ?> 
 																			</td>
 																			<td style="text-align:right">
-																			<?= $value5->jun; ?> 
+																			<?= number_format($value5->jun,2) ?> 
 																			</td>
 																			<td style="text-align:right">
-																			<?= $value5->jul; ?> 
+																			<?= number_format($value5->jul,2) ?> 
 																			</td>
 																			<td style="text-align:right">
-																			<?= $value5->ago; ?> 
+																			<?= number_format($value5->ago,2) ?> 
 																			</td>
 																			<td style="text-align:right">
-																			<?= $value5->sep; ?> 
+																			<?= number_format($value5->sep,2) ?> 
 																			</td>
 																			<td style="text-align:right">
-																			<?= $value5->oct; ?> 
+																			<?= number_format($value5->oct,2) ?> 
 																			</td>
 																			<td style="text-align:right">
-																			<?= $value5->nov; ?> 
+																			<?= number_format($value5->nov,2) ?> 
 																			</td>
 																			<td style="text-align:right">
-																			<?= $value5->dic; ?> 
+																			<?= number_format($value5->dic,2) ?> 
 																			</td>
 																			<td style="text-align:right">
-																				<?=$value5->devengado; ?>
+																				<?= number_format($value5->devengado,2) ?>
 																	    	</td>
 																	    	<td style="text-align:right">
-																				<?=$value5->compromiso; ?>
+																				<?= number_format($value5->compromiso,2) ?>
 																	    	</td>
 																	    	<td style="text-align:right">
-																				<?=$value5->girado; ?>
+																				<?= number_format($value5->girado,2) ?>
 																	    	</td>
 																	    	<td style="text-align:right">
-																				<?=$value5->pagado; ?>
+																				<?= number_format($value5->pagado,2) ?>
 																	    	</td>
 																	    	<td style="text-align:right">
-																				<?=$value5->comprometido_anual; ?>
+																				<?= number_format($value5->comprometido_anual,2) ?>
 																	    	</td>
 																	    	<td style="text-align:right">
-																				<?=$value5->certificado; ?>
+																	    		<?= number_format($value5->certificado,2)?>
+																		
 																	    	</td>
 																	    	<td style="text-align:right">
-																				<?=$value5->ejecucion; ?>
+																				<?=number_format($value5->ejecucion,2) ?>
 																	    	</td>
 																	    	<td style="text-align:right">
-																				<?=$value5->anulacion; ?>
+																				<?=number_format($value5->anulacion,2) ?>
 																	    	</td>
 																		</tr>
 
