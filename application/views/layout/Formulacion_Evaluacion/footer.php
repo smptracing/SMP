@@ -103,7 +103,6 @@
     <script src="<?php echo base_url(); ?>assets/js/Estadisticas/FormulacionEvaluacion.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/growl/growl.js"></script>
     <!-- graficos para el formulacion y evaluacion -->
-     <script src="<?php echo base_url(); ?>assets/js/Estadisticas/EstadisticasFE.js"></script>
      <script src="<?php echo base_url();?>assets/js/Usuario/login.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="<?php echo base_url(); ?>assets/js/formValidation.min.js"></script>

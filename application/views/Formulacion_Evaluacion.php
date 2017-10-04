@@ -122,3 +122,4 @@
 	</div>
 </div>
 <!-- /page content -->
+     <script src="<?php echo base_url(); ?>assets/js/Estadisticas/EstadisticasFE.js"></script>
