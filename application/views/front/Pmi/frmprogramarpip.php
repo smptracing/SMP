@@ -249,18 +249,18 @@
                          
                                 </div>
                                 <div class="row item " id='ct_anio'>
-                                   <h6><i class="fa fa-list"></i><b> Monto Operación y Mantenimiento</b></h6>
+                                   <h6><i class="fa fa-list"></i><b> Monnnto Operación y Mantenimiento</b></h6>
                                    <div class="col-md-3 col-sm-6 col-xs-12 form-group">
                                       <CENTER><label id="lb_anio4">Año 4</label></CENTER>
-                                      <input  class="form-control" id="txt_anio4" name="txt_anio4" type="number" />
+                                      <input  class="form-control" id="txt_anio4" name="txt_anio4" type="text" />
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12 form-group">
                                       <CENTER><label id="lb_anio5">Año 5</label></CENTER>
-                                      <input  class="form-control" id="txt_anio5" name="txt_anio5" type="number" />
+                                      <input  class="form-control" id="txt_anio5" name="txt_anio5" type="text" />
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12 form-group">
                                       <CENTER><label id="lb_anio6">Año 6</label></CENTER>
-                                      <input  class="form-control" id="txt_anio6" name="txt_anio6" type="number" />
+                                      <input  class="form-control" id="txt_anio6" name="txt_anio6" type="text" />
                                     </div>
 
                          
@@ -486,8 +486,8 @@
                                       <input  class="form-control" id="txt_nombre_proyecto_" name="txt_nombre_proyecto_" type="text" disabled="disabled">
                                     </div>
                                    <div class="col-md-2 col-sm-6 col-xs-12">
-                                      <label>Costo del Proyecto</label>
-                                      <input  class="form-control" id="txt_costo_proyecto_" name="txt_costo_proyecto_"  disabled="disabled">
+                                      <label>Cooosto del Proyecto</label>
+                                      <input  class="form-control" id="txt_costo_proyecto_" name="txt_costo_proyecto_"  disabled="disabled" type="text">
                                     </div>
                                     <div class="col-md-4 col-sm-12 col-xs-12  form-group">
                                       <label>Brecha Proyecto </label>
@@ -496,7 +496,7 @@
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12 form-group">
                                       <center><label>Saldo a Programar</label></center>
-                                      <input  class="form-control" id="txt_saldoprogramar_oper" name="txt_saldoprogramar_oper" value='0.00' type="number" required="required">
+                                      <input  class="form-control" id="txt_saldoprogramar_oper" name="txt_saldoprogramar_oper" value='0.00' type="text" required="required">
                                     </div>
                                  </div>
                                     <div style="clear:both;height:0;">&nbsp;</div>
@@ -504,15 +504,15 @@
                               <div class="item ">
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>PIA</label></center>
-                                      <input  class="form-control" id="txt_pia_oper" name="txt_pia_oper" type="number" required="required" value="0.00" disabled="disabled">
+                                      <input  class="form-control" id="txt_pia_oper" name="txt_pia_oper" type="text" required="required" value="0.00" disabled="disabled">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>PIM</label></center>
-                                      <input  class="form-control" id="txt_pim_oper" name="txt_pim_oper" type="number" required="required" value="0.00"  disabled="disabled">
+                                      <input  class="form-control" id="txt_pim_oper" name="txt_pim_oper" type="text" required="required" value="0.00"  disabled="disabled">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <center><label>Devengado</label></center>
-                                      <input  class="form-control" id="txt_devengado_oper" name="txt_devengado_oper" type="number" required="required" value="0.00"  disabled="disabled">
+                                      <input class="form-control" id="txt_devengado_oper" name="txt_devengado_oper" type="text" required="required" value="0.00"  disabled="disabled">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12 form-group">
                                       <center><label>Prioridad</label></center>
@@ -523,15 +523,15 @@
                                <div class="row item ">
                                    <div class="col-md-3 col-sm-6 col-xs-12 form-group">
                                       <CENTER><label id="lb_anio1_">Año 1</label></CENTER>
-                                      <input  class="form-control" id="txt_anio1_" name="txt_anio1_" type="number" required="required">
+                                      <input  class="form-control" id="txt_anio1_" name="txt_anio1_" type="text" required="required">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12 form-group">
                                       <CENTER><label id="lb_anio2_">Año 2</label></CENTER>
-                                      <input  class="form-control" id="txt_anio2_" name="txt_anio2_" type="number" required="required">
+                                      <input  class="form-control" id="txt_anio2_" name="txt_anio2_" type="text" required="required">
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12 form-group">
                                       <CENTER><label id="lb_anio3_">Año 3</label></CENTER>
-                                      <input  class="form-control" id="txt_anio3_" name="txt_anio3_" type="number" required="required">
+                                      <input  class="form-control" id="txt_anio3_" name="txt_anio3_" type="text" required="required">
                                     </div>
 
                                    
@@ -540,15 +540,15 @@
                                   <h6><i class="fa fa-list"></i><b> Monto Operación y Mantenimiento</b></h6>
                                    <div class="col-md-3 col-sm-6 col-xs-12 form-group">
                                       <CENTER><label id="lb_anio4_">Año 4</label></CENTER>
-                                      <input  class="form-control" id="txt_anio4_" name="txt_anio4_" type="number" />
+                                      <input  class="form-control" id="txt_anio4_" name="txt_anio4_" type="text" />
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12 form-group">
                                       <CENTER><label id="lb_anio5_">Año 5</label></CENTER>
-                                      <input  class="form-control" id="txt_anio5_" name="txt_anio5_" type="number" />
+                                      <input  class="form-control" id="txt_anio5_" name="txt_anio5_" type="text" />
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12 form-group">
                                       <CENTER><label id="lb_anio6_">Año 6</label></CENTER>
-                                      <input  class="form-control" id="txt_anio6_" name="txt_anio6_" type="number" />
+                                      <input  class="form-control" id="txt_anio6_" name="txt_anio6_" type="text" />
                                     </div>
 
                          

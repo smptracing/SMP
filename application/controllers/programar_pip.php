@@ -13,30 +13,6 @@ class programar_pip extends CI_Controller
     //listar proyectos de inversion en FORMULACION Y EVALUACIÓN
     public function GetProyectosFormulacionEvaluacion()
     {
-
-       /* $flat  = "listarpip_formulacion_evaluacion";
-        $datos = $this->programar_pip_modal->GetProyectosFormulacionEvaluacion($flat);
-        $saldo = 0;
-        foreach ($datos as $key => $value) 
-        {
-            if($value->ultimo_pim_meta_pres==0.00 || $value->ultimo_pim_meta_pres==null )
-            {
-                $saldo = $value->costo_pi-$value->ultimo_pia_meta_pres-$value->devengado_acumulado_total;
-            }
-            else
-            {
-                $saldo = $value->costo_pi-$value->ultimo_pim_meta_pres-$value->devengado_acumulado_total;
-            }
-
-            $value->costo_pi = a_number_format($value->costo_pi , 2, '.',",",3);
-            $value->ultimo_pia_meta_pres = a_number_format($value->ultimo_pia_meta_pres , 2, '.',",",3);
-            $value->devengado_acumulado_total = a_number_format($value->devengado_acumulado_total , 2, '.',",",3);
-            $value->ultimo_pim_meta_pres = a_number_format($value->ultimo_pim_meta_pres , 2, '.',",",3); 
-            $value->saldo = a_number_format($saldo , 2, '.',",",3);            
-        }
-        echo json_encode($datos);
-        exit;*/
-
         if ($this->input->is_ajax_request())
         {
             $flat  = "listarpip_formulacion_evaluacion";
@@ -72,9 +48,23 @@ class programar_pip extends CI_Controller
         {
             $flat  = "listarpip_viable_ejecucion";
             $datos = $this->programar_pip_modal->GetProyectosEjecucion($flat);
+            $saldo = 0;
             foreach ($datos as $key => $value) 
             {
+                if($value->ultimo_pim_meta_pres==0.00 || $value->ultimo_pim_meta_pres==null )
+                {
+                    $saldo = $value->costo_pi-$value->ultimo_pia_meta_pres-$value->devengado_acumulado_total;
+                }
+                else
+                {
+                    $saldo = $value->costo_pi-$value->ultimo_pim_meta_pres-$value->devengado_acumulado_total;
+                }
+
                 $value->costo_pi = a_number_format($value->costo_pi , 2, '.',",",3);
+                $value->ultimo_pia_meta_pres = a_number_format($value->ultimo_pia_meta_pres , 2, '.',",",3);
+                $value->devengado_acumulado_total = a_number_format($value->devengado_acumulado_total , 2, '.',",",3);
+                $value->ultimo_pim_meta_pres = a_number_format($value->ultimo_pim_meta_pres , 2, '.',",",3); 
+                $value->saldo = a_number_format($saldo , 2, '.',",",3);            
             }
             echo json_encode($datos);
         } 
@@ -89,9 +79,23 @@ class programar_pip extends CI_Controller
         {
             $flat  = "listarpip_funcionamiento";
             $datos = $this->programar_pip_modal->GetProyectosFuncionamiento($flat);
+            $saldo = 0;
             foreach ($datos as $key => $value) 
             {
+                if($value->ultimo_pim_meta_pres==0.00 || $value->ultimo_pim_meta_pres==null )
+                {
+                    $saldo = $value->costo_pi-$value->ultimo_pia_meta_pres-$value->devengado_acumulado_total;
+                }
+                else
+                {
+                    $saldo = $value->costo_pi-$value->ultimo_pim_meta_pres-$value->devengado_acumulado_total;
+                }
+
                 $value->costo_pi = a_number_format($value->costo_pi , 2, '.',",",3);
+                $value->ultimo_pia_meta_pres = a_number_format($value->ultimo_pia_meta_pres , 2, '.',",",3);
+                $value->devengado_acumulado_total = a_number_format($value->devengado_acumulado_total , 2, '.',",",3);
+                $value->ultimo_pim_meta_pres = a_number_format($value->ultimo_pim_meta_pres , 2, '.',",",3); 
+                $value->saldo = a_number_format($saldo , 2, '.',",",3);            
             }
             echo json_encode($datos);
         } 
@@ -127,13 +131,12 @@ class programar_pip extends CI_Controller
             $Cbx_AnioCartera         = $this->input->post("Cbx_AnioCartera");
             $cbxBrecha               = $this->input->post("cbxBrecha");
             $txt_id_pip_programacion = $this->input->post("txt_id_pip_programacion");
-            $txt_anio1               = $this->input->post("txt_anio1");
-            $txt_anio2               = $this->input->post("txt_anio2");
-            $txt_anio3               = $this->input->post("txt_anio3");
-            
-            $txt_anio1_oper=($this->input->post("txt_anio1_oper")=='')?0:$this->input->post("txt_anio1_oper");
-            $txt_anio2_oper=($this->input->post("txt_anio2_oper")=='')?0:$this->input->post("txt_anio2_oper");
-            $txt_anio3_oper=($this->input->post("txt_anio3_oper")=='')?0:$this->input->post("txt_anio3_oper");
+            $txt_anio1               = floatval(str_replace(",", "", $this->input->post("txt_anio1")));
+            $txt_anio2               = floatval(str_replace(",", "", $this->input->post("txt_anio2")));
+            $txt_anio3               = floatval(str_replace(",", "", $this->input->post("txt_anio3")));            
+            $txt_anio1_oper=($this->input->post("txt_anio1_oper")=='')?0:floatval(str_replace(",", "", $this->input->post("txt_anio1_oper")));
+            $txt_anio2_oper=($this->input->post("txt_anio2_oper")=='')?0:floatval(str_replace(",", "", $this->input->post("txt_anio2_oper")));
+            $txt_anio3_oper=($this->input->post("txt_anio3_oper")=='')?0:floatval(str_replace(",", "", $this->input->post("txt_anio3_oper")));
             
 
             $txt_prioridad           =  floatval($this->input->post("txt_prioridad"));
@@ -156,9 +159,9 @@ class programar_pip extends CI_Controller
             $Cbx_AnioCartera_         = $this->input->post("Cbx_AnioCartera_");
             $cbxBrecha_               = $this->input->post("cbxBrecha_");
             $txt_id_pip_programacion_ = $this->input->post("txt_id_pip_programacion_");
-            $txt_anio1_               = $this->input->post("txt_anio1_");
-            $txt_anio2_               = $this->input->post("txt_anio2_");
-            $txt_anio3_               = $this->input->post("txt_anio3_");
+            $txt_anio1_               = floatval(str_replace(",", "", $this->input->post("txt_anio1_")));
+            $txt_anio2_               = floatval(str_replace(",", "", $this->input->post("txt_anio2_")));
+            $txt_anio3_               = floatval(str_replace(",", "", $this->input->post("txt_anio3_")));
             $txt_prioridad_           = floatval($this->input->post("txt_prioridad_"));
             if ($this->programar_pip_modal->AddProgramacion_operacion_mantenimiento($flat, $id_programacion_, $Cbx_AnioCartera_, $cbxBrecha_, $txt_id_pip_programacion_, $txt_anio1_, $txt_anio2_, $txt_anio3_, $txt_prioridad_) == false) {
                 echo "1";
@@ -247,8 +250,21 @@ class programar_pip extends CI_Controller
             $flat  = "listar_programacion_operacion"; //para listar en el modal
             $id_pi = $this->input->post("id_pi");
             $data  = $this->programar_pip_modal->listar_programacion_operacion_mantenimiento($flat, $id_pi);
-            echo json_encode(array('data' => $data));
-        } else {
+            if($data == false)
+            {
+                echo json_encode(array('data' => $data));
+            }
+            else
+            {
+                foreach ($data as $key => $value) 
+                {
+                    $value->monto_opera_mant_prog = a_number_format($value->monto_opera_mant_prog, 2, '.',",",3);                
+                }
+                echo json_encode(array('data' => $data));
+            }   
+        } 
+        else 
+        {
             show_404();
         }
     }
