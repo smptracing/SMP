@@ -1,7 +1,8 @@
-<form class="form-horizontal"  id="form-addFePresupuesto">
+<form class="form-horizontal"  id="form-addCriterioGeneral">
 		<div class="row">
 			<div class="col-md-4 col-sm-4 col-xs-12">
 				<label>Función</label><br/>
+				<input type="hidden" class="form-control" id="txtIdFuncion" name="txtIdFuncion" value="<?= $id_funcion;?>" placeholder="" autocomplete="off">
 				<select id="cbx_funcion" name="cbx_funcion" class="selectpicker" data-live-search="true"  disabled>
 						<?php foreach ($function as $Itemp) {?>
 								 <option value="<?=$Itemp->id_funcion.','.$Itemp->nombre_funcion?>" <?=($Itemp->nombre_funcion==$nombre_funcion ? 'selected' : '')?> ><?=$Itemp->nombre_funcion?></option>
@@ -65,7 +66,43 @@
 <script>
 $( document ).ready(function() {
     $('#cbx_funcion').selectpicker('refresh');
+    $('#btnAgregarCriterioGeneral').on('click', function(event)
+	{
+		event.preventDefault();
+		paginaAjaxJSON($('#form-addCriterioGeneral').serialize(), '<?=base_url();?>index.php/PmiCriterioG/insertar', 'POST', null, function(objectJSON)
+		{
+			//$('#modalTemp').modal('hide');
+
+			objectJSON=JSON.parse(objectJSON);
+
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+			},
+			function()
+			{
+				var html;
+                    	$("#bodyCriterioGenerales").html('');
+                    	$.each(objectJSON.listaCritetioGeneral,function(index,element)
+                    	{
+                    	    html +='<tr>';
+                    		html +='<td colspan="4">'+element.nombre_criterio_gen+'</td>';
+                    		html +='<td colspan="4">'+element.peso_criterio_gen+'</td>';
+                    		html +='<td colspan="4">'+element.porcentaje+'</td>';
+                    		html +='<td colspan="4"> <button type="button" class="btn btn-primary btn-xs " onclick="paginaAjaxDialogo(null, "Registro Criterio Específicos", null, base_url+"index.php/PmiCriterioEspecifico/index", "GET", null, null, false, true);"><span class="fa fa-plus-circle"></span></button></td>';
+                    		html +='</tr>';
+                    	});
+                 $("#table-GriterioGenerales > #bodyCriterioGenerales").append(html);
+			});
+
+		}, false, true);
+
+	});
 
 });
+	
+
 </script>
 

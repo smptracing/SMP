@@ -12,7 +12,9 @@ class PmiCriterioG extends CI_Controller {/* Mantenimiento de sector entidad Y s
 	{
 		if($_POST)
 		{
-
+			$txtIdFuncion=$this->input->post('txtIdFuncion');
+			$listaCritetioGeneral=$this->Model_CriterioGeneral->ListarCriterioGenerales($txtIdFuncion);
+			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Dastos registrados correctamente.', 'listaCritetioGeneral' => $listaCritetioGeneral]);exit;
 		}
 
 		$id_funcion=$this->input->GET('id_funcion');
