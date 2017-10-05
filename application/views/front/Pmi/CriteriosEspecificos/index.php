@@ -2,7 +2,7 @@
 		<div class="row">
 			<div class="col-md-6 col-sm-4 col-xs-12">
 				<label>Criterio General</label>
-				<input type="text" class="form-control" id="txtNombreCriterioG" value="<?=$nombre_criterio_gen?>" name="txtNombreCriterio" >
+				<input type="text" class="form-control" id="txtNombreCriterioG" value="<?=$nombre_criterio_gen?>" name="txtNombreCriterio" readonly="readonly" >
 			</div>
 			<div class="col-md-6 col-sm-8 col-xs-12">
 				<label>Criterio Específico</label>
@@ -36,8 +36,9 @@
 										<td style="text-align:center;"><?= $item->peso?></td>
 										<td style="text-align:center;"><?= $item->porcentaje?>%</td>
 										<td>
-											<button onclick="ModificarCriterioEspecifico(<?=$item->id_criterio?>,this);" data-toggle="tooltip" data-original-title="Modificar Criterio Específico"   class='btn btn-success btn-xs'><i class="fa fa-pencil"></i></button>
-									
+
+											<button type='button' class='editar btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Modificar Criterio Específico', { id_criterio: '<?=$item->id_criterio?>' }, base_url+'index.php/PmiCriterioEspecifico/editar', 'GET', null, null, false, true);"><i class='fa fa-pencil'></i></button>
+										
 											<button onclick="EliminarCriterioEspefico(<?=$item->id_criterio?>,this);" data-toggle="tooltip" data-original-title="Eliminar Criterio Específico"   class='btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button>
 										</td>
 																
