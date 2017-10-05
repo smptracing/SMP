@@ -49,8 +49,8 @@ class Model_CriterioEspecifico extends CI_Model
     function eliminar($id)
     {
         $opcion='eliminar';
-        $data=$this->db->query("execute sp_Gestionar_CriterioEspecifico  @Opcion='".$opcion."',@id_criterio='".$id."'");
-        return $data->result();
+        $this->db->query("execute sp_Gestionar_CriterioEspecifico  @Opcion='".$opcion."',@id_criterio='".$id."'");
+        return true;
     }
 
 }

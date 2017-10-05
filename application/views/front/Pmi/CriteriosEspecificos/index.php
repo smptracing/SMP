@@ -41,7 +41,7 @@
 										
 											<!--<button onclick="EliminarCriterioEspefico(<?=$item->id_criterio?>,this);" data-toggle="tooltip" data-original-title="Eliminar Criterio Específico"   class='btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button>-->
 
-											<button type='button' class='eliminar btn btn-danger btn-xs' onclick="Eliminar(<?=$item->id_criterio?>)"><i class='fa fa-trash-o'></i></button>
+											<button type='button' class='eliminar btn btn-danger btn-xs' onclick="Eliminar(<?=$item->id_criterio?>,<?=$item->id_criterio_gen?>);"><i class='fa fa-trash-o'></i></button>
 										</td>
 																
 									</tr>
@@ -92,7 +92,7 @@ $( document ).ready(function() {
                     		html +='<td>'+element.peso+'</td>';
                     		html +='<td>'+element.porcentaje+'</td>';
                     		html +='<td><button type="button" class="btn btn-primary btn-xs " onclick="paginaAjaxDialogo(null, "Registro de Criterios Específicos",{ id_criterio_gen:'+element.id_criterio_gen+',nombre_criterio:'+element.nombre_criterio+' }, base_url+"index.php/PmiCriterioEspecifico/index", "GET", null, null, false, true);"><span class="fa fa-plus-circle"></span></button>';
-                    		html +='<button onclick="EliminarPresClasiAnalitico('+element.id_criterio_gen+',this);" data-toggle="tooltip" data-original-title="Eliminar Criterio Específico"   class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>';
+                    		html +='<button onclick="Eliminar('+element.id_criterio+','+element.id_criterio_gen+');" data-toggle="tooltip" data-original-title="Eliminar Criterio Específico"   class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>';
                     		html +='</td>';
                     		html +='</tr>';
                     	});
@@ -113,8 +113,13 @@ $( document ).ready(function() {
 		paginaAjaxDialogo(null, 'Modificar Criterio EspecíficoidCriterio',{ id:id}, base_url+'index.php/PmiCriterioEspecifico/editar', 'GET', null, null, false, true);
 	}
 
-	function Eliminar(id_criterio)
+	function Eliminar(id_criterio,id_criterio_gen)
 	{
+		event.preventDefault();
+		alert(id_criterio_gen);
+		paginaAjaxJSON({ "id_criterio" : id_criterio,"id_criterio_gen":id_criterio_gen}, '<?=base_url();?>index.php/PmiCriterioEspecifico/eliminar', 'POST', null, function(objectJSON)
+		{
+			objectJSON=JSON.parse(objectJSON);
 		swal({
 				title: "Esta seguro que desea eliminar el presupuesto de ejecucion?",
 				text: "",
@@ -124,21 +129,31 @@ $( document ).ready(function() {
 				confirmButtonText: "SI,Eliminar",
 				closeOnConfirm: false
 			},
+			
 			function()
 			{
-				$.ajax({
-                        url:base_url+"index.php/PmiCriterioEspecifico/eliminar",
-                        type:"POST",
-                        data:{id_criterio:id_criterio},
-                        success:function(respuesta)
-                        {
-							
-							swal("ELIMINADO!", "Se elimino correctamente el clasificador.", "success");
-							window.location.href='<?=base_url();?>index.php/PmiCriterioEspecifico/index/';
-							renderLoading();
-                        }
-                    });
+				var html;
+                    	$("#bodyCriteriosEspecificos").html('');
+                    	var peso=0;var porcentaje=100;
+                    	$.each(objectJSON.listaCriteriosEspecificos,function(index,element)
+                    	{
+                    	    peso = (parseInt(peso) + parseInt(element.peso));
+                    	    html +='<tr>';
+                    		html +='<td>'+element.nombre_criterio+'</td>';
+                    		html +='<td>'+element.peso+'</td>';
+                    		html +='<td>'+element.porcentaje+'</td>';
+                    		html +='<td><button type="button" class="btn btn-primary btn-xs " onclick="paginaAjaxDialogo(null, "Registro de Criterios Específicos",{ id_criterio_gen:'+element.id_criterio_gen+',nombre_criterio:'+element.nombre_criterio+' }, base_url+"index.php/PmiCriterioEspecifico/index", "GET", null, null, false, true);"><span class="fa fa-plus-circle"></span></button>';
+                    		html +='<button onclick="Eliminar('+element.id_criterio+','+element.id_criterio_gen+');" data-toggle="tooltip" data-original-title="Eliminar Criterio Específico"   class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>';
+                    		html +='</td>';
+                    		html +='</tr>';
+                    	});
+                    	html +='<td> </td>';
+                    	html +='<td>'+peso+'</h6> ';
+                    	html +='<td> '+porcentaje+' % </td>';
+                    	html +='<td> </td>';
+                 $("#table-GriteriosEspecificos > #bodyCriteriosEspecificos").append(html);
 			});
-	}s
+		}, false, true);
+	}
 
 </script>

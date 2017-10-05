@@ -42,10 +42,9 @@ class PmiCriterioEspecifico extends CI_Controller {
 	{
 		if($_POST)
 		{
-
-	            $id=$this->input->post('hdId');
-	            $txtcriterioespecifico=$this->input->post('txtcriterioespecifico');
-	            $txtpeso=$this->input->post('txtpeso');
+            $id=$this->input->post('hdId');
+            $txtcriterioespecifico=$this->input->post('txtcriterioespecifico');
+            $txtpeso=$this->input->post('txtpeso');
 
 	        $this->Model_CriterioEspecifico->editar($id,$txtcriterioespecifico,$txtpeso);
 
@@ -61,12 +60,14 @@ class PmiCriterioEspecifico extends CI_Controller {
 
 	function eliminar()
     {
-        if ($this->input->is_ajax_request()) 
-        {
+        if($_POST)
+		{
             $id=$this->input->post('id_criterio');
             $this->Model_CriterioEspecifico->eliminar($id);
-            echo json_encode($Data);
-        }
-    }   
+            $id_criterio_gen=$this->input->post('id_criterio_gen');
+            $listaCriteriosEspecificos=$this->Model_CriterioEspecifico->ListarCriterioEspecifico($id_criterio_gen);
+            echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos actualizados correctamente.','listaCriteriosEspecificos'=>$listaCriteriosEspecificos]);exit;  
+    	} 
+    }  
 	
 }
