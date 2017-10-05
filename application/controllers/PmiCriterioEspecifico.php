@@ -16,6 +16,11 @@ class PmiCriterioEspecifico extends CI_Controller {
 			$txtNombreCriterioEspecifico=$this->input->post('txtNombreCriterioEspecifico');
 			$txtpeso=$this->input->post('txtpeso');
 			
+			if(count($this->Model_CriterioEspecifico->CriterioEspecificoData($txtNombreCriterioEspecifico))>0)
+            {
+                echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede registrar .']);exit; 
+            }
+
 			$this->Model_CriterioEspecifico->insertar($txtIdCriterioG,$txtNombreCriterioEspecifico,$txtpeso);
 			$listaCriteriosEspecificos=$this->Model_CriterioEspecifico->ListarCriterioEspecifico($txtIdCriterioG);
 

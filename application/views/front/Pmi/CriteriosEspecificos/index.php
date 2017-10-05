@@ -11,7 +11,7 @@
 			</div>
 			<div class="col-md-3 col-sm-8 col-xs-12">
 				<label>Peso</label>
-				<input type="text" class="form-control" id="txtpeso" name="txtpeso" placeholder="Ingrese Criterio Específico" autocomplete="off">
+				<input type="text" class="form-control" id="txtpeso" name="txtpeso" placeholder="Ingrese peso" autocomplete="off">
 			</div>
 			<div class="col-md-3 col-sm-6 col-xs-12">
 				<label>.</label>
@@ -90,7 +90,7 @@ $( document ).ready(function() {
                     		html +='<td>'+element.nombre_criterio+'</td>';
                     		html +='<td>'+element.peso+'</td>';
                     		html +='<td>'+element.porcentaje+'</td>';
-                    		html +='<td><button type="button" class="btn btn-primary btn-xs " onclick="paginaAjaxDialogo(null, "Registro Criterio Específicos",{ id_criterio_gen:'+element.id_criterio_gen+',nombre_criterio:'+element.nombre_criterio+' }, base_url+"index.php/PmiCriterioEspecifico/index", "GET", null, null, false, true);"><span class="fa fa-plus-circle"></span></button>';
+                    		html +='<td><button type="button" class="btn btn-primary btn-xs " onclick="paginaAjaxDialogo(null, "Registro de Criterios Específicos",{ id_criterio_gen:'+element.id_criterio_gen+',nombre_criterio:'+element.nombre_criterio+' }, base_url+"index.php/PmiCriterioEspecifico/index", "GET", null, null, false, true);"><span class="fa fa-plus-circle"></span></button>';
                     		html +='<button onclick="EliminarPresClasiAnalitico('+element.id_criterio_gen+',this);" data-toggle="tooltip" data-original-title="Eliminar Criterio Específico"   class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>';
                     		html +='</td>';
                     		html +='</tr>';

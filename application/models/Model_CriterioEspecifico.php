@@ -39,4 +39,11 @@ class Model_CriterioEspecifico extends CI_Model
 		return $data->result();
     }
 
+    function CriterioEspecificoData($txtNombreCriterioEspecifico)
+    {
+        $data=$this->db->query("select * from CRITERIO_ESP where replace(nombre_criterio, ' ', '')=replace('".$txtNombreCriterioEspecifico."', ' ', '')");
+
+        return $data->result();
+    }
+
 }
