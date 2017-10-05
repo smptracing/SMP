@@ -31,4 +31,12 @@ class Model_CriterioEspecifico extends CI_Model
          return $data->result()[0];
     }
 
+    function insertar($txtIdCriterioG,$txtNombreCriterioEspecifico,$txtpeso)
+    {
+    	$opcion="insertar";
+		$data=$this->db->query("execute sp_Gestionar_CriterioEspecifico @opcion='".$opcion."', @id_criterio_gen='".$txtIdCriterioG."',@nombre_criterio='".$txtNombreCriterioEspecifico."',@peso='".$txtpeso."'");
+
+		return $data->result();
+    }
+
 }

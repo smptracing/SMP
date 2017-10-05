@@ -9,15 +9,29 @@ class PmiCriterioEspecifico extends CI_Controller {
 	}
 	public function index()
 	{	
+		
+		if($_POST)
+		{
+			$txtIdCriterioG=$this->input->post('txtIdCriterioG');
+			$txtNombreCriterioEspecifico=$this->input->post('txtNombreCriterioEspecifico');
+			$txtpeso=$this->input->post('txtpeso');
+			
+			$this->Model_CriterioEspecifico->insertar($txtIdCriterioG,$txtNombreCriterioEspecifico,$txtpeso);
+			$listaCriteriosEspecificos=$this->Model_CriterioEspecifico->ListarCriterioEspecifico($txtIdCriterioG);
+
+			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos registrados correctamente.', 'listaCriteriosEspecificos' => $listaCriteriosEspecificos]);exit;
+		}
+
 		$id_criterio_gen=$this->input->GET('id_criterio_gen');
 
 		$nombre_criterio_gen=$this->input->GET('nombre_criterio_gen');
-
 
 		$listaCriterioEspec=$this->Model_CriterioEspecifico->ListarCriterioEspecifico($id_criterio_gen);
 
 		$this->load->view('front/Pmi/CriteriosEspecificos/index',['id_criterio_gen' => $id_criterio_gen,'nombre_criterio_gen'=> $nombre_criterio_gen,'listaCriterioEspec' => $listaCriterioEspec]);		
 	}
+
+
 
 	public function editar()
 	{
