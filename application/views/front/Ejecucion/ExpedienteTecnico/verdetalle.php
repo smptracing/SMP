@@ -8,7 +8,7 @@
 					<div class="clearfix"></div>
 				</div>
 				<div class="x_content">
-				<p>Gentellela provides you with several dropdown designs for your choosing.</p>
+				<p></p>
                   	<ul class="nav nav-pills" role="tablist">
                     	<li role="presentation" class="dropdown">
                       		<a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">	Acciones
@@ -16,56 +16,82 @@
                             </a>
                       		<ul id="menu6" class="dropdown-menu animated fadeInDown" role="menu">
                         		<li role="presentation">
-	                        		<a role="menuitem" tabindex="-1" href="#" onclick="paginaAjaxDialogo(null, 'Asignación de especialistas requeridos', { idExpedienteTecnico : 2 }, base_url+'index.php/ET_PER_REQ/insertar', 'GET', null, null, false, true); return false;"> Asignar Personal	
+	                        		<a role="menuitem" tabindex="-1" href="#" onclick="paginaAjaxDialogo(null, 'Asignación de especialistas requeridos', { idExpedienteTecnico : <?=$ExpedienteTecnicoElaboracion[0]->id_et?> }, base_url+'index.php/ET_PER_REQ/insertar', 'GET', null, null, false, true); return false;"> Asignar Personal	
 		                        	</a>
 		                        </li>
 		                        <li role="presentation">
-	                        		<a role="menuitem" tabindex="-1" href="#" onclick="window.open(base_url+'index.php/ET_Tarea/index/2', '_blank'); return false;"> Gestionar Actividades</a>
+	                        		<a role="menuitem" tabindex="-1" href="#" onclick="window.open(base_url+'index.php/ET_Tarea/index/<?=$ExpedienteTecnicoElaboracion[0]->id_et?>', '_blank'); return false;"> Gestionar Actividades
+	                        		</a>
 		                        </li>
-                        		<li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Another action</a>
-                        		</li>
-                        		<li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Something else here</a>
-                        		</li>
-                        		<li role="presentation" class="divider"></li>
-                        		<li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Separated link</a>
-                        		</li>
+                        		<li>
+	                        		<a role="menuitem" tabindex="-1" href="#" class="editar" onclick="paginaAjaxDialogo(null, 'Registro de componentes, metas y partidas', { idExpedienteTecnico : <?=$ExpedienteTecnicoElaboracion[0]->id_et?> }, base_url+'index.php/ET_Componente/insertar', 'GET', null, null, false, true); return false;" >Componentes, Metas y Partidas	
+		                        	</a>
+		                        </li>
+		                        <li>
+	                        		<a role="menuitem" tabindex="-1" href="#" onclick="paginaAjaxDialogo(null, 'Presupuesto analítico', { idExpedienteTecnico : <?=$ExpedienteTecnicoElaboracion[0]->id_et?> }, base_url+'index.php/ET_Presupuesto_Analitico/insertar', 'GET', null, null, false, true); return false;"> Presupuesto Analítico	
+		                        	</a>
+		                        </li>
+		                        <li>
+	                        		<a role="menuitem" tabindex="-1" href="#"  onclick="paginaAjaxDialogo(null, 'Seleccionar etapa de ejecución para la clonación', { idExpedienteTecnico : <?=$ExpedienteTecnicoElaboracion[0]->id_et?> }, base_url+'index.php/Expediente_Tecnico/clonar', 'POST', null, null, false, true); return false;"> 		Enviar E.T. a la siguiente etapa	
+		                        	</a>
+		                        </li>
+		                        <li>
+	                        		<a role="menuitem" tabindex="-1" href="#" onclick="paginaAjaxDialogo(null, 'Visto Bueno del E.T.', { id_ExpedienteTecnico : <?=$ExpedienteTecnicoElaboracion[0]->id_et?> }, base_url+'index.php/Expediente_Tecnico/vistoBueno','GET', null, null, false, true); return false;"> 	Dar Visto Bueno	
+		                        	</a>
+		                        </li>
+		                        <li>
+	                        		<a role="menuitem" tabindex="-1" href="#" onclick="window.open(base_url+'index.php/Expediente_Tecnico/valorizacionEjecucionProyecto/<?=$ExpedienteTecnicoElaboracion[0]->id_et?>', '_blank'); return false;"> Valorización de 			Ejecución.	
+		                        	</a>
+		                        </li>
+	                        	<li role="presentation" class="divider"></li>
+	                        	<li>
+		                        	<a role="menuitem" tabindex="-1" href="#" onclick="paginaAjaxDialogo(null, 'Modificar Expediente Técnico',{ id_et: '<?=$ExpedienteTecnicoElaboracion[0]->id_et?>' }, base_url+'index.php/Expediente_Tecnico/editar', 'GET', null, null, false, true);return false;">Editar Expediente Técnico 	
+		                        	</a> 
+	                        	</li>
+	                        	<li>
+	                        		<a role="menuitem" tabindex="-1" class='eliminarExpediente' href="#" onclick="Eliminar(<?=$ExpedienteTecnicoElaboracion[0]->id_et?>);return false;"> Eliminar Expediente Técnico 	
+		                        	</a>
+		                        </li>
+
                     		</ul>
                     	</li>
-                    <li role="presentation" class="dropdown">
-                      <a id="drop5" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
-                                  Reportes
-                                  <span class="caret"></span>
-                              </a>
-                      <ul id="menu2" class="dropdown-menu animated fadeInDown" role="menu" aria-labelledby="drop5">
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Action</a>
-                        </li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Another action</a>
-                        </li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Something else here</a>
-                        </li>
-                        <li role="presentation" class="divider"></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Separated link</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li role="presentation" class="dropdown">
-                      <a id="drop6" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
-                                  Detalle Expendiente
-                                  <span class="caret"></span>
-                              </a>
-                      <ul id="menu3" class="dropdown-menu animated fadeInDown" role="menu" aria-labelledby="drop6">
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Action</a>
-                        </li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Another action</a>
-                        </li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Something else here</a>
-                        </li>
-                        <li role="presentation" class="divider"></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Separated link</a>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
+                    	<li role="presentation" class="dropdown">
+                      		<a id="drop5" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"> Reportes <span class="caret"></span>
+                            </a>
+                      		<ul id="menu2" class="dropdown-menu animated fadeInDown" role="menu" aria-labelledby="drop5">
+                      			<li role="presentation">
+									<a role="menuitem" tabindex="-1" title='Ficha tecnica de expediente tecnico'  href="<?= site_url('Expediente_Tecnico/reportePdfExpedienteTecnico/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">Expediente Técnico 001</a>
+								</li>
+								<li role="presentation">
+								<a role="menuitem" tabindex="-1" title='Reporte Metrados'  href="<?= site_url('Expediente_Tecnico/reportePdfMetrado/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">Metrado</a>
+								</li>
+								<li role="presentation">
+								<a role="menuitem" tabindex="-1" title='Presupuesto Resumen'  href="<?= site_url('Expediente_Tecnico/reportePdfPresupuestoFF05/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">Formato FF-05</a>
+								</li>
+								<li role="presentation">
+								<a role="menuitem" tabindex="-1" title='Reporte de Presupuesto Analitico'  href="<?= site_url('Expediente_Tecnico/reportePdfPresupuestoAnalitico/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">Presupuesto Analitico</a>
+								</li>
+								<li role="presentation">
+								<a role="menuitem" tabindex="-1" title='Reporte de AnalisiS de precios unitarios'  href="<?= site_url('Expediente_Tecnico/reportePdfAnalisisPrecioUnitarioFF11/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">Formato FF-11</a>
+								</li>
+                      		</ul>
+                    	</li>
+                    	<li role="presentation" class="dropdown">
+                      		<a id="drop6" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"> Detalle Expendiente <span class="caret"></span>
+                            </a>
+                      		<ul id="menu3" class="dropdown-menu animated fadeInDown" role="menu" aria-labelledby="drop6">
+                      			<li role="presentation">
+									<a role="menuitem" tabindex="-1" title='Listar Responsable'  onclick="paginaAjaxDialogo(null, 'Listar Responsables del Expediente Técnico',{ id_et: '<?=$ExpedienteTecnicoElaboracion[0]->id_et?>' }, base_url+'index.php/Expediente_Tecnico/ResponsableExpediente', 'POST', null, null, false, true);" >Responsable</a>
+								</li>
+								<li role="presentation">
+								<a role="menuitem" tabindex="-1" title='Documentos adjuntados'  onclick="paginaAjaxDialogo(null, 'Listar Documentos',{ id_et: '<?=$ExpedienteTecnicoElaboracion[0]->id_et?>' }, base_url+'index.php/Expediente_Tecnico/DocumentoExpediente', 'GET', null, null, false, true);" >Documentos</a>
+								</li>
+								<li role="presentation">
+								<a role="menuitem" tabindex="-1" onclick="paginaAjaxDialogo(null, 'Detalle de expediente técnico',{id_et:'<?=$ExpedienteTecnicoElaboracion[0]->id_et?>'}, base_url+'index.php/Expediente_Tecnico/DetalleExpediente', 'POST', null, null, false, true);" >Detalle Expediente</a>
+								</li>                        
+                      		</ul>
+                    	</li>
+                 	</ul>
                   	<br />
                     <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
 
@@ -248,6 +274,7 @@
 		<div class="clearfix"></div>
 	</div>
 </div>
+
 <?php
 $sessionTempCorrecto=$this->session->flashdata('correcto');
 $sessionTempError=$this->session->flashdata('error');
@@ -262,12 +289,85 @@ if($sessionTempCorrecto){ ?>
 <?php }
 
 if($sessionTempError){ ?>
-	<script>
+<script>
 	$(document).ready(function()
 	{
 	swal('','<?=$sessionTempError?>', "error");
 	});
-	</script>
+</script>
 <?php } ?>
 <script>
+
+
+$(document).ready(function()
+{
+	$('#table-ExpedienteTecnico').DataTable(
+	{
+		"language":idioma_espanol
+	});
+
+});
+
+
+$(document).ready(function()
+{
+	$('#table-Compatibilidad').DataTable(
+	{
+		"language":idioma_espanol
+	});
+
+});
+$(document).ready(function()
+{
+	$('#table-Modificacion').DataTable(
+	{
+		"language":idioma_espanol
+	});
+
+});
+
+$(document).ready(function()
+{
+	$('#table-Ejecucion_Deductivos').DataTable(
+	{
+		"language":idioma_espanol
+	});
+
+});
+$(document).ready(function()
+{
+	$('#table-Ejecucion-Adicional').DataTable(
+	{
+		"language":idioma_espanol
+	});
+
+});
+$(document).ready(function()
+{
+	$('#tableExpedienteTecnico').DataTable(
+	{
+		"language":idioma_espanol
+	});
+
+});
+function Eliminar(id_et)
+{
+	swal({
+		title: "Esta seguro que desea eliminar el Expediente Técnico, ya que se eliminara también los responsables y sus imagenes?",
+		text: "",
+		type: "warning",
+		showCancelButton: true,
+		confirmButtonColor: "#DD6B55",
+		confirmButtonText: "SI,ELIMINAR",
+		closeOnConfirm: false
+	},
+	function(){$.ajax({url:base_url+"index.php/Expediente_Tecnico/eliminar",type:"POST",data:{id_et:id_et},success:function(respuesta)
+			{
+				swal("ELIMINADO!", "Se elimino correctamente el expediente técnico.", "success");
+				window.location.href='<?=base_url();?>index.php/Expediente_Tecnico/index/';
+				renderLoading();
+			}
+		});
+	});
+}
 </script>

@@ -29,8 +29,8 @@
 							<table id="table-ExpedienteTecnico" style="text-align: center;" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 								<thead>
 									<tr>
-										<td class="col-md-1 col-xs-12">Código</td>
-										<td class="col-md-1 col-xs-12">Opciones</td>
+										<td class="col-md-1 col-xs-12">Detalle</td>
+										<!--<td class="col-md-1 col-xs-12">Opciones</td>-->
 										<td class="col-md-2 col-xs-12">Unidad Ejecutora</td>
 										<td class="col-md-5 col-xs-12">Nombre del proyecto</td>
 										<td class="col-md-1 col-xs-12">Costo Total del proyecto Preinversion</td>
@@ -44,10 +44,10 @@
 								<?php foreach($listaExpedienteTecnicoElaboracion as $item){ ?>
 								  	<tr>
 								  		<td>
-								  			<a href="<?= site_url('Expediente_Tecnico/verdetalle/'.$item->id_pi);?>" role="button" class="btn btn-info btn-sm"><span class="fa fa-eye"></span> <?= $item->codigo_unico_pi?></a>
+								  			<a href="<?= site_url('Expediente_Tecnico/verdetalle/'.$item->id_pi);?>" role="button" class="btn btn-success btn-sm"><span class="fa fa-eye"></span> <?= $item->codigo_unico_pi?></a>
 								  				
 								  		</td>
-								  		<td>
+								  		<!--<td>
 
 
 											<ul class="nav nav-pills" role="tablist">
@@ -131,7 +131,7 @@
 							                    </li>
 							                  </ul>
 
-										</td>
+										</td>-->
 										<td>
 											<?= $item->nombre_ue?>
 										</td>
