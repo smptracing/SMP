@@ -42,10 +42,21 @@ class Model_criterioGeneral extends CI_Model
 
 		return $ListarCriterioGenerales->result();
 	}
+	function eliminar($id_criterio_gen)
+	{
+		$opcion="eliminar";
+		$this->db->query("execute sp_Gestionar_CriterioGeneral @opcion='".$opcion."', @id_criterio_gen='$id_criterio_gen' ");        
+        return true;
+	}
 	function listadoUnicoCGeneral($id_criterio_gen)
 	{
 		$funcion=$this->db->query("select * FROM CRITERIO_GEN where id_criterio_gen='$id_criterio_gen'");        
         return $funcion->result()[0];
+	}
+	function virificarCriterioEspe($id_criterio_gen)
+	{
+		$data=$this->db->query("SELECT * FROM CRITERIO_ESP where id_criterio_gen='$id_criterio_gen'");        
+        return $data->result();
 	}
 	function getcriterioGeneral()
 	{

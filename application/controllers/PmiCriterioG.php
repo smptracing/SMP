@@ -56,6 +56,28 @@ class PmiCriterioG extends CI_Controller {/* Mantenimiento de sector entidad Y s
 
 		 $this->load->view('front/Pmi/CriteriosGenerales/modificar',['listadoUnicoCGeneral' => $listadoUnicoCGeneral,'function' => $function]);
 	}
+
+	public function eliminar()
+	{
+		if($_POST)
+		{
+			$id_criterio_gen=$this->input->post('idCriterioGeneral');
+			$id_funcion =$this->input->post('id_funcion');
+			$listarCriterioEsp=$this->Model_CriterioGeneral->virificarCriterioEspe($id_criterio_gen);
+			if(count($listarCriterioEsp)=='')
+			{
+				$this->Model_CriterioGeneral->eliminar($id_criterio_gen);
+				$listaCritetioGeneral=$this->Model_CriterioGeneral->ListarCriterioGenerales($id_funcion);
+				echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Se elimino el criterio General', 'listaCritetioGeneral' => $listaCritetioGeneral]);exit;
+			}else
+			{
+
+				$listaCritetioGeneral=$this->Model_CriterioGeneral->ListarCriterioGenerales($id_funcion);
+				echo json_encode(['proceso' => 'Error', 'mensaje' =>'No es posible eliminar el criterio General,tiene criterios especificos', 'listaCritetioGeneral' => $listaCritetioGeneral]);exit;
+			}
+			
+		}
+	}
 	public function index(){
 		$listaCriterioGen=$this->Model_CriterioGeneral->CriteriosGenerales();
 		$this->load->view('layout/PMI/header');

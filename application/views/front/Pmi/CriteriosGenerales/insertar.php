@@ -27,11 +27,11 @@
 			</div>
 			<div class="col-md-3 col-sm-6 col-xs-12">
 				<label></label>
-				<input type="button" id="btnAgregarCriterioGeneral" class="btn btn-primary form-control" value="Agregar">
+				<input style="margin-top: 5px;" type="button" id="btnAgregarCriterioGeneral" class="btn btn-primary form-control" value="Agregar">
 			</div>
 		</div>
 		<div style="height:300px;overflow:scroll;overflow-x: hidden; "><br/>
-			<table id="table-GriterioGenerales" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
+			<table id="table-GriterioGenerales" class="table table-striped table-bordered jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 				<thead>
 					<tr>
 						<td>Nombre</td>
@@ -46,11 +46,11 @@
 									<tr>
 										<td><?= $item->nombre_criterio_gen?></td>
 										<td><?= $item->peso_criterio_gen?></td>
-										<td><?= $item->porcentaje?></td>
+										<td><?php  if($item->porcentaje<1){ echo '0'.$item->porcentaje;}else{ echo $item->porcentaje;} ?> %</td>
 										<td>
 											<button type="button" class="btn btn-primary btn-xs " onclick="EditarCriterioGeneral(<?=$item->id_criterio_gen?>)"><i class="fa fa-pencil"></i></button>
 											<button type="button" class="btn btn-primary btn-xs " onclick="paginaAjaxDialogo(null, 'Registro Criterio Específicos',{ id_criterio_gen:'<?=$item->id_criterio_gen?>',nombre_criterio_gen:'<?=$item->nombre_criterio_gen?>' }, base_url+'index.php/PmiCriterioEspecifico/index', 'GET', null, null, false, true);"><i class="fa fa-bars"></i></button>
-											<button onclick="EliminarPresClasiAnalitico(<?=$item->id_criterio_gen?>,this);" data-toggle="tooltip" data-original-title="Eliminar Analitico"   class='btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button></td>									
+											<button onclick="EliminarCriterioGeneral(<?=$item->id_criterio_gen?>,<?=$item->id_funcion?>);" data-toggle="tooltip" data-original-title="Eliminar Analitico"   class='btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button></td>									
 									</tr>
 						</tr>						
 					<?php }?>
@@ -96,7 +96,7 @@ $( document ).ready(function() {
                     		html +='<td>'+element.peso_criterio_gen+'</td>';
                     		html +='<td>'+element.porcentaje+'</td>';
                     		html +='<td><button type="button" class="btn btn-primary btn-xs " onclick="EditarCriterioGeneral('+element.id_criterio_gen+')"><i class="fa fa-pencil"></i></button>';
-                    		html +='<button onclick="EliminarPresClasiAnalitico('+element.id_criterio_gen+',this);" data-toggle="tooltip" data-original-title="Eliminar Analitico"   class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>';
+                    		html +='<button onclick="EliminarCriterioGeneral('+element.id_criterio_gen+','+element.id_funcion+');" data-toggle="tooltip" data-original-title="Eliminar Analitico"   class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>';
                     		html +='</td>';
                     		html +='</tr>';
                     	});
@@ -116,6 +116,48 @@ function EditarCriterioGeneral(idCriterioGeneral)
 {
 	paginaAjaxDialogo(null, 'Editar Criterio General',{ idCriterioGeneral:idCriterioGeneral}, base_url+'index.php/PmiCriterioG/editar', 'GET', null, null, false, true);
 }
+function EliminarCriterioGeneral(idCriterioGeneral,id_funcion)
+{
+		$('#cbx_funcion').selectpicker('refresh');
+		event.preventDefault();
+		paginaAjaxJSON({ "idCriterioGeneral" : idCriterioGeneral,"id_funcion" : id_funcion}, '<?=base_url();?>index.php/PmiCriterioG/eliminar', 'POST', null, function(objectJSON)
+		{
+			//$('#modalTemp').modal('hide');
 
+			objectJSON=JSON.parse(objectJSON);
+
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+			},
+			function()
+			{
+				var html;
+                    	$("#bodyCriterioGenerales").html('');
+                    	var peso=0;var por=100;
+                    	$.each(objectJSON.listaCritetioGeneral,function(index,element)
+                    	{
+                    	    peso = (parseInt(peso) + parseInt(element.peso_criterio_gen));
+                    	    html +='<tr>';
+                    		html +='<td>'+element.nombre_criterio_gen+'</td>';
+                    		html +='<td>'+element.peso_criterio_gen+'</td>';
+                    		html +='<td>'+element.porcentaje+'</td>';
+                    		html +='<td><button type="button" class="btn btn-primary btn-xs " onclick="EditarCriterioGeneral('+element.id_criterio_gen+')"><i class="fa fa-pencil"></i></button>';
+                    		html +='<button onclick="EliminarCriterioGeneral('+element.id_criterio_gen+','+element.id_funcion+');" data-toggle="tooltip" data-original-title="Eliminar Analitico"   class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>';
+                    		html +='</td>';
+                    		html +='</tr>';
+                    	});
+                    	html +='<td> </td>';
+                    	html +='<td> <h6>'+peso+'</h6> </td>';
+                    	html +='<td> <h6> '+por+' %</h6> </td>';
+                    	html +='<td> </td>';
+                 $("#table-GriterioGenerales > #bodyCriterioGenerales").append(html);
+			});
+
+		}, false, true);
+	
+}
 </script>
 
