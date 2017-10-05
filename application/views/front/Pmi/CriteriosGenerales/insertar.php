@@ -37,7 +37,7 @@
 						<td>Nombre</td>
 						<td>Peso</td>
 						<td>Porcentaje %</td>
-						<td></td>
+						<td style="width:15%"></td>
 					</tr>
 				</thead>
 				<tbody id="bodyCriterioGenerales">
