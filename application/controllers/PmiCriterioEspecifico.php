@@ -40,18 +40,18 @@ class PmiCriterioEspecifico extends CI_Controller {
 
 	public function editar()
 	{
-		if($this->input->post('hdId'))
-        {
-            $this->db->trans_start(); 
+		if($_POST)
+		{
+
 	            $id=$this->input->post('hdId');
 	            $txtcriterioespecifico=$this->input->post('txtcriterioespecifico');
 	            $txtpeso=$this->input->post('txtpeso');
 
 	        $this->Model_CriterioEspecifico->editar($id,$txtcriterioespecifico,$txtpeso);
-            $this->db->trans_complete();
 
+	        $id_criterio_gen=$this->input->post('id_criterio_gen');
 
-           echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos actualizados correctamente.']);exit;  
+           echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos actualizados correctamente.','id_criterio_gen'=>$id_criterio_gen]);exit;  
         }
         $id=$this->input->get('id');
         $CriterioEspecifico=$this->Model_CriterioEspecifico->criterioEspecifico($id);

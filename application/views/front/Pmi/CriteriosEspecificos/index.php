@@ -37,8 +37,7 @@
 										<td style="text-align:center;"><?= $item->peso?></td>
 										<td style="text-align:center;"><?= $item->porcentaje?>%</td>
 										<td>
-
-											<button type='button' class='editar btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Modificar Criterio Específico', { id: '<?=$item->id_criterio?>' }, base_url+'index.php/PmiCriterioEspecifico/editar', 'GET', null, null, false, true);"><i class='fa fa-pencil'></i></button>
+											<button type="button"  class='editar btn btn-primary btn-xs' onclick="EditarCriterioEspecifico(<?=$item->id_criterio?>)"><i class="fa fa-pencil"></i></button>
 										
 											<button onclick="EliminarCriterioEspefico(<?=$item->id_criterio?>,this);" data-toggle="tooltip" data-original-title="Eliminar Criterio Específico"   class='btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button>
 										</td>
@@ -107,6 +106,9 @@ $( document ).ready(function() {
 	});
 
 });
-	
+	function EditarCriterioEspecifico(id)
+	{
+		paginaAjaxDialogo(null, 'Modificar Criterio EspecíficoidCriterio',{ id:id}, base_url+'index.php/PmiCriterioEspecifico/editar', 'GET', null, null, false, true);
+	}
 
 </script>

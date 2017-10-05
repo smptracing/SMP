@@ -56,9 +56,7 @@
 			},
 			function()
 			{
-				window.location.href='<?=base_url();?>index.php/PmiCriterioEspecifico/index/';
-
-				renderLoading();
+				paginaAjaxDialogo(null, 'Registro Criterio Específicos',{ id_criterio_gen:objectJSON.id_criterio_gen}, base_url+'index.php/PmiCriterioEspecifico/index', 'GET', null, null, false, true);
 			});
 		}, false, true);
 	});
