@@ -141,7 +141,7 @@
 
                     <ul class="nav child_menu">
                       <li><a href="<?php echo site_url('PmiCriterioG/'); ?>">Criterios Generales</a></li>
-                       <li><a href="<?php echo site_url('PmiCriterioG/criterioFuncion'); ?>">Criterios por funcion</a></li>
+                       <li><a href="<?php echo site_url('PmiCriterioG/criterioFuncion/2018'); ?>">Criterios por funcion</a></li>
                     </ul>
            
                      

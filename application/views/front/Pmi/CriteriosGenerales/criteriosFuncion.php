@@ -22,7 +22,7 @@
 											<div class="x_panel">
 											<div class="row">
 												<div class="col-md-2 col-xs-2"  style="margin-left: 300px;">
-													 <input type="text" class="form-control" placeholder="Ingrese Año" data-inputmask="'mask' : '9999'">
+													 <input type="text" class="form-control" placeholder="Ingrese Año" id="textAnio" name="textAnio"  data-inputmask="'mask' : '9999'">
 												</div>
 												<div class="col-md-3 col-xs-3"  style="margin-left: 50px;">
 													 <button type="button" class="btn btn-success">Filtar Por años</button>
@@ -109,5 +109,15 @@
 		} );
 		myTable.buttons().container().appendTo( $('.tableTools-container') );
 
+		$('#textAnio').bind('keyup', function(e)
+		{
+			if(e.keyCode==13)
+			{
+				var anio=$("#textAnio").val();
+				window.location.href=base_url+"index.php/PmiCriterioG/criterioFuncion/"+anio;
+			}
+		});
+
 	});
+
 </script>
