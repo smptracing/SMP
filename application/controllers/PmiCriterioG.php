@@ -33,6 +33,29 @@ class PmiCriterioG extends CI_Controller {/* Mantenimiento de sector entidad Y s
 		$this->load->view('front/Pmi/CriteriosGenerales/insertar',['function' => $function,'id_funcion' => $id_funcion,'nombre_funcion'=> $nombre_funcion,'listaCritetioGeneral' => $listaCritetioGeneral]);
 	}
 
+	public function editar()
+	{
+		 if($_POST)
+		 {
+
+		 	$hdIdcriterioGeneral=$this->input->post('hdIdcriterioGeneral');
+		 	$txtNombreCriterio=$this->input->post('txtNombreCriterio');
+		 	$txtPesoCriterioG=$this->input->post('txtPesoCriterioG');
+			$txtAnioCriterioG=$this->input->post('txtAnioCriterioG');
+			$listaCritetioGeneral=$this->Model_CriterioGeneral->Editar($hdIdcriterioGeneral,$txtNombreCriterio,$txtPesoCriterioG,$txtAnioCriterioG);
+			
+		 	$id_funcion=$this->input->post('cbx_funcion');
+		 	echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Dastos editados  correctamente.', 'id_funcion' => $id_funcion]);exit;
+
+		 }
+
+		 $id_criterio_gen=$this->input->get('idCriterioGeneral');
+		 $listadoUnicoCGeneral=$this->Model_CriterioGeneral->listadoUnicoCGeneral($id_criterio_gen);
+
+		 $function=$this->Model_Funcion->GetFuncion();
+
+		 $this->load->view('front/Pmi/CriteriosGenerales/modificar',['listadoUnicoCGeneral' => $listadoUnicoCGeneral,'function' => $function]);
+	}
 	public function index(){
 		$listaCriterioGen=$this->Model_CriterioGeneral->CriteriosGenerales();
 		$this->load->view('layout/PMI/header');

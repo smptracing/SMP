@@ -5,7 +5,7 @@
 				<input type="hidden" class="form-control" id="txtIdFuncion" name="txtIdFuncion" value="<?= $id_funcion;?>" placeholder="" autocomplete="off">
 				<select id="cbx_funcion" name="cbx_funcion" class="selectpicker" data-live-search="true"  disabled>
 						<?php foreach ($function as $Itemp) {?>
-								 <option value="<?=$Itemp->id_funcion.','.$Itemp->nombre_funcion?>" <?=($Itemp->nombre_funcion==$nombre_funcion ? 'selected' : '')?> ><?=$Itemp->nombre_funcion?></option>
+								 <option value="<?=$Itemp->id_funcion?>" <?=($Itemp->id_funcion==$id_funcion ? 'selected' : '')?> ><?=$Itemp->nombre_funcion?></option>
 						<?php  } ?>
 				</select>
 			</div>
@@ -48,7 +48,8 @@
 										<td><?= $item->peso_criterio_gen?></td>
 										<td><?= $item->porcentaje?></td>
 										<td>
-											<button type="button" class="btn btn-primary btn-xs " onclick="paginaAjaxDialogo(null, 'Registro Criterio Específicos',{ id_criterio_gen:'<?=$item->id_criterio_gen?>',nombre_criterio_gen:'<?=$item->nombre_criterio_gen?>' }, base_url+'index.php/PmiCriterioEspecifico/index', 'GET', null, null, false, true);"><span class="fa fa-plus-circle"></span></button>
+											<button type="button" class="btn btn-primary btn-xs " onclick="EditarCriterioGeneral(<?=$item->id_criterio_gen?>)"><i class="fa fa-pencil"></i></button>
+											<button type="button" class="btn btn-primary btn-xs " onclick="paginaAjaxDialogo(null, 'Registro Criterio Específicos',{ id_criterio_gen:'<?=$item->id_criterio_gen?>',nombre_criterio_gen:'<?=$item->nombre_criterio_gen?>' }, base_url+'index.php/PmiCriterioEspecifico/index', 'GET', null, null, false, true);"><i class="fa fa-bars"></i></button>
 											<button onclick="EliminarPresClasiAnalitico(<?=$item->id_criterio_gen?>,this);" data-toggle="tooltip" data-original-title="Eliminar Analitico"   class='btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button></td>									
 									</tr>
 						</tr>						
@@ -94,7 +95,7 @@ $( document ).ready(function() {
                     		html +='<td>'+element.nombre_criterio_gen+'</td>';
                     		html +='<td>'+element.peso_criterio_gen+'</td>';
                     		html +='<td>'+element.porcentaje+'</td>';
-                    		html +='<td><button type="button" class="btn btn-primary btn-xs " onclick="paginaAjaxDialogo(null, "Registro Criterio Específicos",{ id_criterio_gen:'+element.id_criterio_gen+',nombre_criterio_gen:'+element.nombre_criterio_gen+' }, base_url+"index.php/PmiCriterioEspecifico/index", "GET", null, null, false, true);"><span class="fa fa-plus-circle"></span></button>';
+                    		html +='<td><button type="button" class="btn btn-primary btn-xs " onclick="EditarCriterioGeneral('+element.id_criterio_gen+')"><i class="fa fa-pencil"></i></button>';
                     		html +='<button onclick="EliminarPresClasiAnalitico('+element.id_criterio_gen+',this);" data-toggle="tooltip" data-original-title="Eliminar Analitico"   class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>';
                     		html +='</td>';
                     		html +='</tr>';
@@ -111,7 +112,10 @@ $( document ).ready(function() {
 	});
 
 });
-	
+function EditarCriterioGeneral(idCriterioGeneral)
+{
+	paginaAjaxDialogo(null, 'Editar Criterio General',{ idCriterioGeneral:idCriterioGeneral}, base_url+'index.php/PmiCriterioG/editar', 'GET', null, null, false, true);
+}
 
 </script>
 
