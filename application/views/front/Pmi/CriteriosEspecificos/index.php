@@ -29,17 +29,27 @@
 					</tr>
 				</thead>
 				<tbody>
-					<?php foreach ($listaCriterioEspec as $key => $item) {?>
+					<?php $peso=0;$porcentaje=0; foreach ($listaCriterioEspec as $key => $item) { $peso +=$item->peso; $porcentaje+=$item->porcentaje;?>
 						<tr>
 									<tr>
 										<td><?= $item->nombre_criterio?></td>
-										<td><?= $item->peso?></td>
-										<td><?= $item->porcentaje?></td>
-										<td><?= $item->porcentaje?></td>
+										<td style="text-align:center;"><?= $item->peso?></td>
+										<td style="text-align:center;"><?= $item->porcentaje?>%</td>
+										<td>
+											<button onclick="ModificarCriterioEspecifico(<?=$item->id_criterio?>,this);" data-toggle="tooltip" data-original-title="Modificar Criterio Específico"   class='btn btn-success btn-xs'><i class="fa fa-pencil"></i></button>
+									
+											<button onclick="EliminarCriterioEspefico(<?=$item->id_criterio?>,this);" data-toggle="tooltip" data-original-title="Eliminar Criterio Específico"   class='btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button>
+										</td>
 																
 									</tr>
 						</tr>						
 					<?php }?>
+					<tr>
+						<td></td>
+						<td style="text-align:center;"><?php echo $peso;?></td>
+						<td style="text-align:center;"><?php echo $porcentaje;?> %</td>
+						<td></td>
+					</tr>
 				</tbody>
 			</table>
 		</div>
