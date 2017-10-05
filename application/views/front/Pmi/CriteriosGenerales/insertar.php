@@ -41,7 +41,7 @@
 					</tr>
 				</thead>
 				<tbody id="bodyCriterioGenerales">
-						<?php $peso=0;$por=0; foreach ($listaCritetioGeneral as $key => $item) { $peso +=$item->peso_criterio_gen; $por+=$item->porcentaje; ?>
+						<?php $peso=0;$por=0; foreach ($listaCritetioGeneral as $key => $item) { $peso +=$item->peso_criterio_gen; $por=100; ?>
 						<tr>
 									<tr>
 										<td><?= $item->nombre_criterio_gen?></td>
@@ -56,7 +56,7 @@
 					<tr>
 						<td> </td>
 						<td> <h6>Total <?php echo $peso;?></h6> </td>
-						<td> <h6><?php echo $por;?> %</h6> </td>
+						<td> <h6><?php echo $por ;?> %</h6> </td>
 						<td> </td>
 					</tr>
 				</tbody>
@@ -65,6 +65,7 @@
 </form>
 <script>
 $( document ).ready(function() {
+
     $('#cbx_funcion').selectpicker('refresh');
     $('#btnAgregarCriterioGeneral').on('click', function(event)
 	{
@@ -85,11 +86,10 @@ $( document ).ready(function() {
 			{
 				var html;
                     	$("#bodyCriterioGenerales").html('');
-                    	var peso=0;var por=0;
+                    	var peso=0;var por=100;
                     	$.each(objectJSON.listaCritetioGeneral,function(index,element)
                     	{
                     	    peso = (parseInt(peso) + parseInt(element.peso_criterio_gen));
-                    	    por = (parseFloat(por) + parseFloat(element.porcentaje));
                     	    html +='<tr>';
                     		html +='<td>'+element.nombre_criterio_gen+'</td>';
                     		html +='<td>'+element.peso_criterio_gen+'</td>';
