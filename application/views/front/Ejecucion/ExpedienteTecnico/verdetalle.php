@@ -1,3 +1,11 @@
+<style>
+	.btn.btn-app{
+		background-color: #f2f5f7;
+	}
+	.dropdown:hover{
+		background-color: #eeeeee;
+	}
+</style>
 <div class="right_col" role="main">
 	<div>
 		<div class="clearfix"></div>
@@ -9,8 +17,9 @@
 				</div>
 				<div class="x_content">
 				<p></p>
-                  	<ul class="nav nav-pills" role="tablist">
-                    	<li role="presentation" class="dropdown">
+                  	<ul class="nav nav-pills" role="tablist" style="background-color:#f2f5f7; color: #73879c; font-size: 15px;">
+
+                    	<li role="presentation" class="dropdown" style="font-size: 15px; color: #73879c;">
                       		<a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">	Expediente Técnico<span class="caret"></span>
                             </a>
                       		<ul id="menu6" class="dropdown-menu animated fadeInDown" role="menu">
@@ -44,7 +53,7 @@
                       		</ul>
                     	</li>
                     	<li role="presentation" class="dropdown">
-                      		<a id="drop5" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"> Operaciones <span class="caret"></span>
+                      		<a id="drop6" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"> Operaciones <span class="caret"></span>
                             </a>
                       		<ul id="menu2" class="dropdown-menu animated fadeInDown" role="menu" aria-labelledby="drop5">
 		                        <li role="presentation">
@@ -67,7 +76,7 @@
                     	</li>
 
                     	<li role="presentation" class="dropdown">
-                      		<a id="drop6" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"> Detalle Expendiente <span class="caret"></span>
+                      		<a id="drop7" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"> Detalle Expendiente <span class="caret"></span>
                             </a>
                       		<ul id="menu3" class="dropdown-menu animated fadeInDown" role="menu" aria-labelledby="drop6">
                       			<li role="presentation">

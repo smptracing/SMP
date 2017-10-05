@@ -30,7 +30,6 @@
 								<thead>
 									<tr>
 										<td class="col-md-1 col-xs-12">Detalle</td>
-										<!--<td class="col-md-1 col-xs-12">Opciones</td>-->
 										<td class="col-md-2 col-xs-12">Unidad Ejecutora</td>
 										<td class="col-md-5 col-xs-12">Nombre del proyecto</td>
 										<td class="col-md-1 col-xs-12">Costo Total del proyecto Preinversion</td>
@@ -47,91 +46,6 @@
 								  			<a href="<?= site_url('Expediente_Tecnico/verdetalle/'.$item->id_pi);?>" role="button" class="btn btn-success btn-sm"><span class="fa fa-eye"></span> <?= $item->codigo_unico_pi?></a>
 								  				
 								  		</td>
-								  		<!--<td>
-
-
-											<ul class="nav nav-pills" role="tablist">
-							                    <li role="presentation" class="dropdown">
-							                        <button data-toggle="dropdown" class="btn btn-info dropdown-toggle btn-xs" type="button"> Acciones<span class="caret"></span></button>
-							                      	<ul id="menu6" class="dropdown-menu animated fadeInDown" role="menu">							                        	
-								                        <li>
-							                        		<a role="menuitem" tabindex="-1" href="#" onclick="paginaAjaxDialogo(null, 'Asignación de especialistas requeridos', { idExpedienteTecnico : <?=$item->id_et?> }, base_url+'index.php/ET_PER_REQ/insertar', 'GET', null, null, false, true); return false;"> Asignar Personal	
-								                        	</a>
-								                        </li>
-								                        <li>
-							                        		<a role="menuitem" tabindex="-1" href="#" onclick="window.open(base_url+'index.php/ET_Tarea/index/<?=$item->id_et?>', '_blank'); return false;"> Gestionar Actividades	
-								                        	</a>
-								                        </li>
-								                        <li>
-							                        		<a role="menuitem" tabindex="-1" href="#" class="editar" onclick="paginaAjaxDialogo(null, 'Registro de componentes, metas y partidas', { idExpedienteTecnico : <?=$item->id_et?> }, base_url+'index.php/ET_Componente/insertar', 'GET', null, null, false, true); return false;" >Componentes, Metas y Partidas	
-								                        	</a>
-								                        </li>
-								                        <li>
-							                        		<a role="menuitem" tabindex="-1" href="#" onclick="paginaAjaxDialogo(null, 'Presupuesto analítico', { idExpedienteTecnico : <?=$item->id_et?> }, base_url+'index.php/ET_Presupuesto_Analitico/insertar', 'GET', null, null, false, true); return false;"> Presupuesto Analítico	
-								                        	</a>
-								                        </li>
-								                        <li>
-							                        		<a role="menuitem" tabindex="-1" href="#"  onclick="paginaAjaxDialogo(null, 'Seleccionar etapa de ejecución para la clonación', { idExpedienteTecnico : <?=$item->id_et?> }, base_url+'index.php/Expediente_Tecnico/clonar', 'POST', null, null, false, true); return false;"> 		Enviar E.T. a la siguiente etapa	
-								                        	</a>
-								                        </li>
-								                        <li>
-							                        		<a role="menuitem" tabindex="-1" href="#" onclick="paginaAjaxDialogo(null, 'Visto Bueno del E.T.', { id_ExpedienteTecnico : <?=$item->id_et?> }, base_url+'index.php/Expediente_Tecnico/vistoBueno','GET', null, null, false, true); return false;"> 	Dar Visto Bueno	
-								                        	</a>
-								                        </li>
-								                        <li>
-							                        		<a role="menuitem" tabindex="-1" href="#" onclick="window.open(base_url+'index.php/Expediente_Tecnico/valorizacionEjecucionProyecto/<?=$item->id_et?>', '_blank'); return false;"> Valorización de 			Ejecución.	
-								                        	</a>
-								                        </li>
-							                        	<li role="presentation" class="divider"></li>
-							                        	<li>
-								                        	<a role="menuitem" tabindex="-1" href="#" onclick="paginaAjaxDialogo(null, 'Modificar Expediente Técnico',{ id_et: '<?=$item->id_et?>' }, base_url+'index.php/Expediente_Tecnico/editar', 'GET', null, null, false, true);return false;">Editar Expediente Técnico 	
-								                        	</a> 
-							                        	</li>
-							                        	<li>
-							                        		<a role="menuitem" tabindex="-1" class='eliminarExpediente' href="#" onclick="Eliminar(<?=$item->id_et?>);return false;"> Eliminar Expediente Técnico 	
-								                        	</a>
-								                        </li>
-							                      	</ul>
-							                    </li>
-							                    <li role="presentation" class="dropdown">
-								                    <button data-toggle="dropdown" class="btn btn-info dropdown-toggle btn-xs" type="button">Reportes <span class="caret"></span></button>		
-
-													<ul id="menu2" class="dropdown-menu animated fadeInDown" role="menu" aria-labelledby="drop5">
-														<li role="presentation">
-															<a role="menuitem" tabindex="-1" title='Ficha tecnica de expediente tecnico'  href="<?= site_url('Expediente_Tecnico/reportePdfExpedienteTecnico/'.$item->id_et);?>" target="_blank">Expediente Técnico 001</a>
-														</li>
-														<li role="presentation">
-														<a role="menuitem" tabindex="-1" title='Reporte Metrados'  href="<?= site_url('Expediente_Tecnico/reportePdfMetrado/'.$item->id_et);?>" target="_blank">Metrado</a>
-														</li>
-														<li role="presentation">
-														<a role="menuitem" tabindex="-1" title='Presupuesto Resumen'  href="<?= site_url('Expediente_Tecnico/reportePdfPresupuestoFF05/'.$item->id_et);?>" target="_blank">Formato FF-05</a>
-														</li>
-														<li role="presentation">
-														<a role="menuitem" tabindex="-1" title='Reporte de Presupuesto Analitico'  href="<?= site_url('Expediente_Tecnico/reportePdfPresupuestoAnalitico/'.$item->id_et);?>" target="_blank">Presupuesto Analitico</a>
-														</li>
-														<li role="presentation">
-														<a role="menuitem" tabindex="-1" title='Reporte de AnalisiS de precios unitarios'  href="<?= site_url('Expediente_Tecnico/reportePdfAnalisisPrecioUnitarioFF11/'.$item->id_et);?>" target="_blank">Formato FF-11</a>
-														</li>
-													</ul>
-							                    </li>
-							                    <li role="presentation" class="dropdown">
-							                      	<button data-toggle="dropdown" class="btn btn-info dropdown-toggle btn-xs" type="button"> Detalle Expediente <span class="caret"></span></button>
-							                      	<ul id="menu2" class="dropdown-menu animated fadeInDown" role="menu" aria-labelledby="drop5">
-														<li role="presentation">
-															<a role="menuitem" tabindex="-1" title='Listar Responsable'  onclick="paginaAjaxDialogo(null, 'Listar Responsables del Expediente Técnico',{ id_et: '<?=$item->id_et?>' }, base_url+'index.php/Expediente_Tecnico/ResponsableExpediente', 'POST', null, null, false, true);" >Responsable</a>
-														</li>
-														<li role="presentation">
-														<a role="menuitem" tabindex="-1" title='Documentos adjuntados'  onclick="paginaAjaxDialogo(null, 'Listar Documentos',{ id_et: '<?=$item->id_et?>' }, base_url+'index.php/Expediente_Tecnico/DocumentoExpediente', 'GET', null, null, false, true);" >Documentos</a>
-														</li>
-														<li role="presentation">
-														<a role="menuitem" tabindex="-1" onclick="paginaAjaxDialogo(null, 'Detalle de expediente técnico',{id_et:'<?=$item->id_et?>'}, base_url+'index.php/Expediente_Tecnico/DetalleExpediente', 'POST', null, null, false, true);" >Detalle Expediente</a>
-														</li>
-													</ul>
-							                     
-							                    </li>
-							                  </ul>
-
-										</td>-->
 										<td>
 											<?= $item->nombre_ue?>
 										</td>
@@ -149,80 +63,68 @@
 										</td>
 										<td>
 											<?= $item->num_beneficiarios?>
-										</td>
-										
+										</td>										
 								  	</tr>
 								<?php } ?>
 								</tbody>
 							</table>
 						</div>
 					</div>
-					</div>
-					</div>
-
-							
-                        <div role="tabpanel" class="tab-pane fade" id="tab_Monitoreo" aria-labelledby="profile-tab">
-                         <!-- /tabla de grupo funcional desde el row -->
-                        <div class="row">
-
-                              <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <div class="x_panel">
-                                  
-                                      <div class="x_title">
-                                        <div class="clearfix"></div>
-                                      </div>
-                                      <div class="x_content">
-                                      
-                                      				<table id="tableExpedienteTecnico" class="table table-striped">
-														<thead>
-															<th style="text-align: center;">Código único</th>
-															<th>Nombre PI</th>
-															<th style="text-align: center;">Inicio/Fin</th>
-															<th></th>
-														</thead>
-														<tbody>
-															<?php foreach($listaETExpedienteTecnico as $key => $value){ ?>
-																<tr>
-																	<td style="text-align: center;"><?=$value->codigo_unico_pi?></td>
-																	<td><?=html_escape($value->nombre_pi)?></td>
-																	<td style="text-align: center;width: 150px;"><?=($value->existeGantt ? substr($value->primeraETTarea->fecha_inicio_tarea, 0, 10).'/'.substr($value->ultimaETTarea->fecha_final_tarea, 0, 10) : '')?></td>
-																	<td>
-																		<?php if($value->existeGantt){ ?>
-																			<?php if(substr($value->primeraETTarea->fecha_inicio_tarea, 0, 10)<=date('Y-m-d') && substr($value->ultimaETTarea->fecha_final_tarea, 0, 10)>=date('Y-m-d')){ ?>
-																				<div style="background-color: #58aaff;border-radius: 20px;display: inline-block;height: 20px;width: 20px;" title="En proceso"></div>
-																			<?php } ?>
-																			<?php if(substr($value->primeraETTarea->fecha_inicio_tarea, 0, 10)>date('Y-m-d')){ ?>
-																				<div style="background-color: #12b112;border-radius: 20px;display: inline-block;height: 20px;width: 20px;" title="En espera"></div>
-																			<?php } ?>
-																			<?php if(substr($value->ultimaETTarea->fecha_final_tarea, 0, 10)<date('Y-m-d')){ ?>
-																				<div style="background-color: #bdbdc4;border-radius: 20px;display: inline-block;height: 20px;width: 20px;" title="Fuera de fecha"></div>
-																			<?php } ?>
-																		<?php } else{ ?>
-																			<div style="background-color: #12b112;border-radius: 20px;display: inline-block;height: 20px;width: 20px;" title="Sin cronograma"></div>
-																		<?php } ?>
-																	</td>
-																</tr>
+				</div>
+				</div>
+				<div role="tabpanel" class="tab-pane fade" id="tab_Monitoreo" aria-labelledby="profile-tab">
+                    <div class="row">
+                    	<div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                	<table id="tableExpedienteTecnico" class="table table-striped">
+                                		<thead>
+                                			<th style="text-align: center;">Código único</th>
+											<th>Nombre PI</th>
+											<th style="text-align: center;">Inicio/Fin</th>
+											<th></th>
+										</thead>
+										<tbody>
+											<?php foreach($listaETExpedienteTecnico as $key => $value){ ?>
+												<tr>
+													<td style="text-align: center;"><?=$value->codigo_unico_pi?></td>
+													<td><?=html_escape($value->nombre_pi)?></td>
+													<td style="text-align: center;width: 150px;"><?=($value->existeGantt ? substr($value->primeraETTarea->fecha_inicio_tarea, 0, 10).'/'.substr($value->ultimaETTarea->fecha_final_tarea, 0, 10) : '')?></td>
+													<td>
+														<?php if($value->existeGantt){ ?>
+															<?php if(substr($value->primeraETTarea->fecha_inicio_tarea, 0, 10)<=date('Y-m-d') && substr($value->ultimaETTarea->fecha_final_tarea, 0, 10)>=date('Y-m-d')){ ?>
+																<div style="background-color: #58aaff;border-radius: 20px;display: inline-block;height: 20px;width: 20px;" title="En proceso"></div>
 															<?php } ?>
-														</tbody>
-													</table>
-
-
-
-                                      </div>
-                                    </div>
-                                  </div>
-
+															<?php if(substr($value->primeraETTarea->fecha_inicio_tarea, 0, 10)>date('Y-m-d')){ ?>
+																<div style="background-color: #12b112;border-radius: 20px;display: inline-block;height: 20px;width: 20px;" title="En espera"></div>
+															<?php } ?>
+															<?php if(substr($value->ultimaETTarea->fecha_final_tarea, 0, 10)<date('Y-m-d')){ ?>
+																<div style="background-color: #bdbdc4;border-radius: 20px;display: inline-block;height: 20px;width: 20px;" title="Fuera de fecha"></div>
+															<?php } ?>
+														<?php } else{ ?>
+															<div style="background-color: #12b112;border-radius: 20px;display: inline-block;height: 20px;width: 20px;" title="Sin cronograma"></div>
+														<?php } ?>
+													</td>
+												</tr>
+											<?php } ?>
+										</tbody>
+									</table>
+								</div>
+                            </div>
                         </div>
-                     <!-- / fin tabla grupo funcional asociados el row -->
                     </div>
+                </div>
 
-					</div>
-					</div>
-				</div>
-				</div>
+			</div>
+			</div>
 			</div>
 		</div>
-		<div class="clearfix"></div>
+		</div>
+	</div>
+	<div class="clearfix"></div>
 	</div>
 </div>
 <?php
@@ -340,30 +242,5 @@ function BuscarProyectocodigo()
 		}
 
 	});
-}
-
-function Eliminar(id_et)
-{
-	swal({
-		title: "Esta seguro que desea eliminar el Expediente Técnico, ya que se eliminara también los responsables y sus imagenes?",
-		text: "",
-		type: "warning",
-		showCancelButton: true,
-		confirmButtonColor: "#DD6B55",
-		confirmButtonText: "SI,ELIMINAR",
-		closeOnConfirm: false
-	},
-	function(){$.ajax({url:base_url+"index.php/Expediente_Tecnico/eliminar",type:"POST",data:{id_et:id_et},success:function(respuesta)
-			{
-				swal("ELIMINADO!", "Se elimino correctamente el expediente técnico.", "success");
-				window.location.href='<?=base_url();?>index.php/Expediente_Tecnico/index/';
-				renderLoading();
-			}
-		});
-	});
-}
-function seleccionarOpcion()
-{
-	
 }
 </script>
