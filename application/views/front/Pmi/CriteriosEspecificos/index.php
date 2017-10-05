@@ -39,7 +39,9 @@
 										<td>
 											<button type="button"  class='editar btn btn-primary btn-xs' onclick="EditarCriterioEspecifico(<?=$item->id_criterio?>)"><i class="fa fa-pencil"></i></button>
 										
-											<button onclick="EliminarCriterioEspefico(<?=$item->id_criterio?>,this);" data-toggle="tooltip" data-original-title="Eliminar Criterio Específico"   class='btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button>
+											<!--<button onclick="EliminarCriterioEspefico(<?=$item->id_criterio?>,this);" data-toggle="tooltip" data-original-title="Eliminar Criterio Específico"   class='btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button>-->
+
+											<button type='button' class='eliminar btn btn-danger btn-xs' onclick="Eliminar(<?=$item->id_criterio?>)"><i class='fa fa-trash-o'></i></button>
 										</td>
 																
 									</tr>
@@ -110,5 +112,33 @@ $( document ).ready(function() {
 	{
 		paginaAjaxDialogo(null, 'Modificar Criterio EspecíficoidCriterio',{ id:id}, base_url+'index.php/PmiCriterioEspecifico/editar', 'GET', null, null, false, true);
 	}
+
+	function Eliminar(id_criterio)
+	{
+		swal({
+				title: "Esta seguro que desea eliminar el presupuesto de ejecucion?",
+				text: "",
+				type: "warning",
+				showCancelButton: true,
+				confirmButtonColor: "#DD6B55",
+				confirmButtonText: "SI,Eliminar",
+				closeOnConfirm: false
+			},
+			function()
+			{
+				$.ajax({
+                        url:base_url+"index.php/PmiCriterioEspecifico/eliminar",
+                        type:"POST",
+                        data:{id_criterio:id_criterio},
+                        success:function(respuesta)
+                        {
+							
+							swal("ELIMINADO!", "Se elimino correctamente el clasificador.", "success");
+							window.location.href='<?=base_url();?>index.php/PmiCriterioEspecifico/index/';
+							renderLoading();
+                        }
+                    });
+			});
+	}s
 
 </script>

@@ -58,5 +58,15 @@ class PmiCriterioEspecifico extends CI_Controller {
 		
 		return $this->load->view('front/Pmi/CriteriosEspecificos/editar',['CriterioEspecifico'=>$CriterioEspecifico]); 
 	}
+
+	function eliminar()
+    {
+        if ($this->input->is_ajax_request()) 
+        {
+            $id=$this->input->post('id_criterio');
+            $this->Model_CriterioEspecifico->eliminar($id);
+            echo json_encode($Data);
+        }
+    }   
 	
 }
