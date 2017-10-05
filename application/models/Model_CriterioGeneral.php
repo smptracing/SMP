@@ -31,7 +31,7 @@ class Model_criterioGeneral extends CI_Model
 	function insert($txtNombreCriterio,$txtPesoCriterioG,$txtAnioCriterioG,$txtIdFuncion)
 	{
 		$opcion="insertar";
-		$ListarCriterioGenerales=$this->db->query("execute sp_Gestionar_CriterioGeneral @opcion='".$opcion."', @nombre_criterio_gen='".$txtNombreCriterio."',@peso_criterio_gen='$txtPesoCriterioG',@id_funcion=$txtIdFuncion ");
+		$ListarCriterioGenerales=$this->db->query("execute sp_Gestionar_CriterioGeneral @opcion='".$opcion."', @nombre_criterio_gen='".$txtNombreCriterio."',@peso_criterio_gen='$txtPesoCriterioG',@anio_criterio_gen='$txtAnioCriterioG',@id_funcion=$txtIdFuncion ");
 
 		return $ListarCriterioGenerales->result();
 	}
