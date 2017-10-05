@@ -25,8 +25,8 @@ class Expediente_Tecnico extends CI_Controller
 		$this->load->model('Model_ET_Detalle_Analisis_Unitario');
 		$this->load->model('Model_ET_Tarea');
 		$this->load->model('Model_ET_Mes_Valorizacion');
-
 		$this->load->library('mydompdf');
+		$this->load->helper('FormatNumber_helper');
 	}
 
 	function _load_layout($template, $data)
@@ -791,7 +791,11 @@ class Expediente_Tecnico extends CI_Controller
 		$id_etapa_et="1";
 
 		$ExpedienteTecnicoElaboracion=$this->Model_ET_Expediente_Tecnico->ExpedienteListarElaboracionPorId($flat,$id_etapa_et,$id_pi);
-
+		foreach ($ExpedienteTecnicoElaboracion as $key => $value) 
+		{
+			$value->costo_total_preinv_et = a_number_format($value->costo_total_preinv_et , 2, '.',",",3);
+			$value->costo_total_inv_et = a_number_format($value->costo_total_inv_et , 2, '.',",",3);
+		}
 		$this->load->view('layout/Ejecucion/header');
 		$this->load->view('front/Ejecucion/ExpedienteTecnico/verdetalle', [ 'ExpedienteTecnicoElaboracion' => $ExpedienteTecnicoElaboracion ]);
 		$this->load->view('layout/Ejecucion/footer');

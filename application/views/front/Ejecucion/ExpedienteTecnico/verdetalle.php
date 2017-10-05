@@ -86,50 +86,50 @@
                     <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
 
                     <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Codigo:<span class="required">*</span>
+                    <br><br>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Codigo:
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input readonly="readonly" type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12" value="<?=$ExpedienteTecnicoElaboracion[0]->codigo_unico_pi?>">
                         </div>
                      </div>
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Nombre: <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Nombre: 
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <textarea class="form-control col-md-7 col-xs-12" readonly="readonly" rows="5">
-                          	<?= trim($ExpedienteTecnicoElaboracion[0]->nombre_pi);?>
+                          <textarea class="form-control col-md-7 col-xs-12" readonly="readonly" rows="4"><?= trim($ExpedienteTecnicoElaboracion[0]->nombre_pi);?>
                           </textarea>
                         </div>
                       </div>
                       <div class="form-group">
-                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Unidad Ejecutora</label>
+                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Unidad Ejecutora: </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input readonly="readonly" type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12" value="<?=$ExpedienteTecnicoElaboracion[0]->nombre_ue?>">
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Costo Total del Proyecto PreInversion <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Costo Total del Proyecto PreInversion: 
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input readonly="readonly" type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12" value="<?=$ExpedienteTecnicoElaboracion[0]->costo_total_preinv_et?>">
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Costo Total del Proyecto Inversion <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Costo Total del Proyecto Inversion: 
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input readonly="readonly" type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12" value="<?=$ExpedienteTecnicoElaboracion[0]->costo_total_inv_et?>">
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Tiempo de Ejecucion<span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Tiempo de Ejecucion: 
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input readonly="readonly" type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12" value="<?=$ExpedienteTecnicoElaboracion[0]->tiempo_ejecucion_pi_et?>">
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Numero de Beneficiarios<span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Numero de Beneficiarios: 
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input readonly="readonly" type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12" value="<?=$ExpedienteTecnicoElaboracion[0]->num_beneficiarios?>">
