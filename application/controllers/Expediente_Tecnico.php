@@ -785,4 +785,15 @@ class Expediente_Tecnico extends CI_Controller
 
 		return false;
 	}
+	public function verdetalle($id_pi)
+	{
+		$flat="LISTARETAPA";
+		$id_etapa_et="1";
+
+		$ExpedienteTecnicoElaboracion=$this->Model_ET_Expediente_Tecnico->ExpedienteListarElaboracionPorId($flat,$id_etapa_et,$id_pi);
+
+		$this->load->view('layout/Ejecucion/header');
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/verdetalle', [ 'ExpedienteTecnicoElaboracion' => $ExpedienteTecnicoElaboracion ]);
+		$this->load->view('layout/Ejecucion/footer');
+	}
 }

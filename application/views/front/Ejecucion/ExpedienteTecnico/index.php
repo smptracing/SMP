@@ -29,43 +29,29 @@
 							<table id="table-ExpedienteTecnico" style="text-align: center;" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 								<thead>
 									<tr>
-										<td class="col-md-1 col-xs-12">Unidad Ejecutora</td>
-										<td class="col-md-4 col-xs-12">Nombre del proyecto</td>
+										<td class="col-md-1 col-xs-12">Código</td>
+										<td class="col-md-1 col-xs-12">Opciones</td>
+										<td class="col-md-2 col-xs-12">Unidad Ejecutora</td>
+										<td class="col-md-5 col-xs-12">Nombre del proyecto</td>
 										<td class="col-md-1 col-xs-12">Costo Total del proyecto Preinversion</td>
 										<td class="col-md-1 col-xs-12">Costo Total del proyecto Inversion</td>
 										<td class="col-md-1 col-xs-12">Tiempo Ejecucion</td>
 										<td class="col-md-1 col-xs-12">Numero Beneficiarios</td>
-										<td class="col-md-3 col-xs-12"></td>
+										
 									</tr>
 								</thead>
 								<tbody>
 								<?php foreach($listaExpedienteTecnicoElaboracion as $item){ ?>
 								  	<tr>
-										 <td>
-											<?= $item->nombre_ue?>
-										</td>
-										<td>
-											<?= $item->nombre_pi?>
-										</td>
-										<td>
-											S/. <?= $item->costo_total_preinv_et?> 
-										</td>
-										<td>
-											S/. <?= $item->costo_total_inv_et?>
-										</td>
-										<td>
-											<?= $item->tiempo_ejecucion_pi_et?>
-										</td>
-										<td>
-											<?= $item->num_beneficiarios?>
-										</td>
-										<td>
+								  		<td>
+								  			<a href="<?= site_url('Expediente_Tecnico/verdetalle/'.$item->id_pi);?>" role="button" class="btn btn-info btn-sm"><span class="fa fa-eye"></span> <?= $item->codigo_unico_pi?></a>
+								  				
+								  		</td>
+								  		<td>
 
 
 											<ul class="nav nav-pills" role="tablist">
 							                    <li role="presentation" class="dropdown">
-							                      	<!--<a id="drop4" href="#" class="btn btn-info dropdown-toggle btn-xs" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">Acciones<span class="caret"></span>
-							                        </a>-->
 							                        <button data-toggle="dropdown" class="btn btn-info dropdown-toggle btn-xs" type="button"> Acciones<span class="caret"></span></button>
 							                      	<ul id="menu6" class="dropdown-menu animated fadeInDown" role="menu">							                        	
 								                        <li>
@@ -145,55 +131,26 @@
 							                    </li>
 							                  </ul>
 
-
-
-									  		<!--<button type='button' data-toggle="tooltip" data-original-title="Personal" class='btn btn-success btn-xs' onclick="paginaAjaxDialogo(null, 'Asignación de especialistas requeridos', { idExpedienteTecnico : <?=$item->id_et?> }, base_url+'index.php/ET_PER_REQ/insertar', 'GET', null, null, false, true);"><i class="glyphicon glyphicon-user"></i></button>
-									  		<button type='button' data-toggle="tooltip" data-original-title="Gestionar actividades" class='btn btn-success btn-xs' onclick="window.open(base_url+'index.php/ET_Tarea/index/<?=$item->id_et?>', '_blank');"><i class="glyphicon glyphicon-fullscreen"></i></button>
-									  		<button type='button' data-toggle="tooltip" data-original-title="Editar Expediente" class='editar btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Modificar Expediente Técnico',{ id_et: '<?=$item->id_et?>' }, base_url+'index.php/Expediente_Tecnico/editar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-pencil bigger-120'></i></button>
-											<button type='button' data-toggle="tooltip" data-original-title="Registro de componentes, metas y partidas"  class='editar btn btn-warning btn-xs' onclick="paginaAjaxDialogo(null, 'Registro de componentes, metas y partidas', { idExpedienteTecnico : <?=$item->id_et?> }, base_url+'index.php/ET_Componente/insertar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-align-left bigger-120'></i></button>
-											<button type='button' data-toggle="tooltip" data-original-title="Presupuesto analítico"   class='editar btn btn-dark btn-xs' onclick="paginaAjaxDialogo(null, 'Presupuesto analítico', { idExpedienteTecnico : <?=$item->id_et?> }, base_url+'index.php/ET_Presupuesto_Analitico/insertar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-usd bigger-120'></i></button>
-											<button type='button' data-toggle="tooltip" data-original-title="Enviar E.T. a la siguiente etapa"   class='btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Seleccionar etapa de ejecución para la clonación', { idExpedienteTecnico : <?=$item->id_et?> }, base_url+'index.php/Expediente_Tecnico/clonar', 'POST', null, null, false, true);"><i class='ace-icon fa fa-arrow-right bigger-120'></i></button>
-											<button type='button' data-toggle="tooltip" data-original-title="Dar Visto Bueno del E.T."   class='btn btn-success btn-xs' onclick="paginaAjaxDialogo(null, 'Visto Bueno del E.T.', { id_ExpedienteTecnico : <?=$item->id_et?> }, base_url+'index.php/Expediente_Tecnico/vistoBueno', 'GET', null, null, false, true);"><i class="fa fa-check"></i></button>
-											<button type="button" data-toggle="tooltip" data-original-title="Valororización de ejecución del proyecto" class="btn btn-success btn-xs" onclick="window.open(base_url+'index.php/Expediente_Tecnico/valorizacionEjecucionProyecto/<?=$item->id_et?>', '_blank');"><i class="fa fa-align-justify"></i></button>
-											<button onclick="Eliminar(<?=$item->id_et?>);" data-toggle="tooltip" data-original-title="Eliminar Expediente Técnico"   class='eliminarExpediente btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button>
-											<div class="btn-group">
-												<button data-toggle="dropdown" class="btn btn-info dropdown-toggle btn-xs" type="button">Reportes <span class="caret"></span></button>
-												<ul role="menu"  class="dropdown-menu">
-													<li>
-														<a title='Ficha tecnica de expediente tecnico'  href="<?= site_url('Expediente_Tecnico/reportePdfExpedienteTecnico/'.$item->id_et);?>" target="_blank">Expediente Técnico 001</a>
-													</li>
-													<li>
-														<a title='Reporte Metrados'  href="<?= site_url('Expediente_Tecnico/reportePdfMetrado/'.$item->id_et);?>" target="_blank">Metrado</a>
-													</li>
-													<li>
-													<a  title='Presupuesto Resumen'  href="<?= site_url('Expediente_Tecnico/reportePdfPresupuestoFF05/'.$item->id_et);?>" target="_blank">Formato FF-05</a>
-													</li>
-													<li>
-														<a title='Reporte de Presupuesto Analitico'  href="<?= site_url('Expediente_Tecnico/reportePdfPresupuestoAnalitico/'.$item->id_et);?>" target="_blank">Presupuesto Analitico</a>
-													</li>
-													<li>
-														<a title='Reporte de AnalisiS de precios unitarios'  href="<?= site_url('Expediente_Tecnico/reportePdfAnalisisPrecioUnitarioFF11/'.$item->id_et);?>" target="_blank">Formato FF-11</a>
-													</li>
-												</ul>
-											</div>
-											
-											<div class="btn-group">
-											<button data-toggle="dropdown" class="btn btn-info dropdown-toggle btn-xs" type="button">Detalle Expediente <span class="caret"></span>
-												</button>
-												<ul role="menu"  class="dropdown-menu">
-													<li>
-														<a title='Listar Responsable'  onclick="paginaAjaxDialogo(null, 'Listar Responsables del Expediente Técnico',{ id_et: '<?=$item->id_et?>' }, base_url+'index.php/Expediente_Tecnico/ResponsableExpediente', 'POST', null, null, false, true);" >Responsable</a>
-													</li>
-													<li>
-														<a title='Documentos adjuntados'  onclick="paginaAjaxDialogo(null, 'Listar Documentos',{ id_et: '<?=$item->id_et?>' }, base_url+'index.php/Expediente_Tecnico/DocumentoExpediente', 'GET', null, null, false, true);" >Documentos</a>
-													</li>
-													<li>
-														<a title='Detalle de expediente técnico'  onclick="paginaAjaxDialogo(null, 'Detalle de expediente técnico',{id_et:'<?=$item->id_et?>'}, base_url+'index.php/Expediente_Tecnico/DetalleExpediente', 'POST', null, null, false, true);" >Detalle Expediente</a>
-													</li>
-												</ul>
-											</div>-->
-
 										</td>
+										<td>
+											<?= $item->nombre_ue?>
+										</td>
+										<td>
+											<?= $item->nombre_pi?>
+										</td>
+										<td>
+											S/. <?= $item->costo_total_preinv_et?> 
+										</td>
+										<td>
+											S/. <?= $item->costo_total_inv_et?>
+										</td>
+										<td>
+											<?= $item->tiempo_ejecucion_pi_et?>
+										</td>
+										<td>
+											<?= $item->num_beneficiarios?>
+										</td>
+										
 								  	</tr>
 								<?php } ?>
 								</tbody>
@@ -404,5 +361,9 @@ function Eliminar(id_et)
 			}
 		});
 	});
+}
+function seleccionarOpcion()
+{
+	
 }
 </script>
