@@ -16,5 +16,19 @@ class Model_CriterioEspecifico extends CI_Model
 		return $data->result();
 	}
 	
+	function editar($id,$txtcriterioespecifico,$txtpeso)
+	{
+		$opcion="editar";
+		$data=$this->db->query("execute sp_Gestionar_CriterioEspecifico  @opcion='".$opcion."',@id_criterio='".$id."',@nombre_criterio='".$txtcriterioespecifico."',@peso='".$txtpeso."'");
+
+        return true;
+	}
+
+	function criterioEspecifico($id)
+    {
+        $data=$this->db->query("select * from CRITERIO_ESP where id_criterio='".$id."'");
+
+         return $data->result()[0];
+    }
 
 }

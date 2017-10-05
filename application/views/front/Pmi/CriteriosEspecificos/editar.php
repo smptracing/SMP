@@ -9,8 +9,8 @@
 						<div class="col-md-12 col-sm-3 col-xs-12">
 							<label class="control-label">Criterio específico</label>
 							<div>
-								<input id="hdId" name="hdId" value="" class="form-control col-md-7 col-xs-12" type="hidden">
-								<input id="txtcriterioespecifico" name="txtcriterioespecifico" value="" class="form-control col-md-4 col-xs-12">	
+								<input id="hdId" name="hdId" value="<?=$CriterioEspecifico->id_criterio;?>" class="form-control col-md-7 col-xs-12" type="hidden">
+								<input id="txtcriterioespecifico" name="txtcriterioespecifico" value="<?=$CriterioEspecifico->nombre_criterio;?>" class="form-control col-md-4 col-xs-12">	
 							</div>	
 						</div>
 					</div>
@@ -19,7 +19,7 @@
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Peso</label>
 							<div>
-								<input id="txtpeso" name="txtpeso" value="" class="form-control col-md-4 col-xs-12">	
+								<input id="txtpeso" name="txtpeso" value="<?=$CriterioEspecifico->peso;?>" class="form-control col-md-4 col-xs-12">	
 							</div>	
 						</div>
 					</div>

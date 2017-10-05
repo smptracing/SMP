@@ -21,7 +21,22 @@ class PmiCriterioEspecifico extends CI_Controller {
 
 	public function editar()
 	{
-		$this->load->view('front/Pmi/CriteriosEspecificos/editar'); 
+		if($this->input->post('hdId'))
+        {
+            $this->db->trans_start(); 
+	            $id=$this->input->post('hdId');
+	            $txtcriterioespecifico=$this->input->post('txtcriterioespecifico');
+	            $txtpeso=$this->input->post('txtpeso');
+
+	            $this->Model_CriterioEspecifico->editar($id,$txtcriterioespecifico,$txtpeso);
+            $this->db->trans_complete();
+
+            echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos actualizados correctamente.']);exit;  
+        }
+        $id=$this->input->get('id');
+        $CriterioEspecifico=$this->Model_CriterioEspecifico->criterioEspecifico($id);
+		
+		return $this->load->view('front/Pmi/CriteriosEspecificos/editar',['CriterioEspecifico'=>$CriterioEspecifico]); 
 	}
 	
 }
