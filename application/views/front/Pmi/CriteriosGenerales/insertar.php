@@ -30,7 +30,7 @@
 				<input type="button" id="btnAgregarCriterioGeneral" class="btn btn-primary form-control" value="Agregar">
 			</div>
 		</div>
-		<div><br/>
+		<div style="height:300px;overflow:scroll;overflow-x: hidden; "><br/>
 			<table id="table-GriterioGenerales" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 				<thead>
 					<tr>
