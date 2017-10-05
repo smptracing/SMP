@@ -11,21 +11,21 @@ class Model_Personal extends CI_Model
     //division funcional
     public function GetPersonal($flat, $skip, $numberRow, $valueSearch)
     {
-        $personal=$this->db->query("execute sp_GestionarPersona '" . $flat . "', null, null, null, null, null, null, null, null, null, null, null, ".$skip.",".$numberRow.", '".$valueSearch."'");//listar de division funcional
+        $personal=$this->db->query("execute sp_GestionarPersona '" . $flat . "', null, null, null, null, null, null, null, null, null, null, null, null, ".$skip.",".$numberRow.", '".$valueSearch."'");//listar de division funcional
 
         return $personal->result();
     }
 
     public function CountPersonalParaPaginacion($flat, $valueSearch)
     {
-        $personal=$this->db->query("execute sp_GestionarPersona '" . $flat . "', null, null, null, null, null, null, null, null, null, null, null, 0, 0, '".$valueSearch."'");//listar de division funcional
+        $personal=$this->db->query("execute sp_GestionarPersona '" . $flat . "', null, null, null, null, null, null, null, null, null, null, null,null, 0, 0, '".$valueSearch."'");//listar de division funcional
 
         return $personal->result();
     }
 
-    public function AddPersonal($flat, $id_oficina, $nombres, $apellido_p, $apellido_m, $dni, $direccion, $telefonos, $correo, $grado_academico, $especialidad, $fecha_nac)
+    public function AddPersonal($flat, $id_oficina, $nombres, $apellido_p, $apellido_m, $dni, $direccion, $telefonos, $correo, $grado_academico, $especialidad,$Cbx_especialidad, $fecha_nac)
     {
-        $personal = $this->db->query("execute sp_GestionarPersona '" . $flat . "','" . $id_oficina . "','" . $nombres . "','" . $apellido_p . "','" . $apellido_m . "','" . $dni . "','" . $direccion . "','" . $telefonos . "','" . $correo . "','" . $grado_academico . "','" . $especialidad . "','" . $fecha_nac . "'"); //listar de division funcional
+        $personal = $this->db->query("execute sp_GestionarPersona '" . $flat . "','" . $id_oficina . "','" . $nombres . "','" . $apellido_p . "','" . $apellido_m . "','" . $dni . "','" . $direccion . "','" . $telefonos . "','" . $correo . "','" . $grado_academico . "','" . $especialidad . "','" . $fecha_nac . "','". $Cbx_especialidad. "' "); //listar de division funcional
         if ($personal->num_rows() > 0) {
             return $personal->result();
         } else {
@@ -109,5 +109,11 @@ class Model_Personal extends CI_Model
     {
         $personal = $this->db->query("select * from PERSONA"); 
         return $personal->result();
+    }
+
+    public function GetEspecilidad()
+    {
+         $especialidad = $this->db->query("select * from ESPECIALIDAD"); 
+        return $especialidad->result();
     }
 }

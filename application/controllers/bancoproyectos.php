@@ -3,15 +3,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class bancoproyectos extends CI_Controller
 {
-/* Mantenimiento de sector entidad Y servicio publico asociado*/
-
     public function __construct()
     {
         parent::__construct();
         $this->load->model('bancoproyectos_modal');
         $this->load->helper('FormatNumber_helper');
     }
-    /*INSERTAR UN PROYECTO EN LA TABLA PROYECTO Y SIMULTANEO EN LA TABLA PROYECTO UBIGEO*/
     public function AddProyectos()
     {
         if ($this->input->is_ajax_request()) {
@@ -63,7 +60,8 @@ class bancoproyectos extends CI_Controller
             $cbxProgramaPres     = null;
             $txtCodigoUnico      = $this->input->post("txtCodigoUnico");
             $txtNombrePip        = $this->input->post("txtNombrePip");
-            $txtCostoPip         = $this->input->post("txtCostoPip");
+            $txtCostoPip         = floatval(str_replace(",", "", $this->input->post('txtCostoPip')));
+            //$txtCostoPip         = $this->input->post("txtCostoPip");
             $txt_beneficiarios   = $this->input->post("txt_beneficiarios");
             $dateFechaInPip      = $this->input->post("fecha_registro");
             $dateFechaViabilidad = $this->input->post("fecha_viabilidad");
@@ -91,20 +89,13 @@ class bancoproyectos extends CI_Controller
             $flat               = "U_IPCNOPIP";
             $id_pi              = $this->input->post("txt_idNo_Pip");
             $cbxUnidadEjecutora = $this->input->post("cbxUnidadEjecutora_m");
-            //$cbxNatI            = $this->input->post("cbxNatI");
-            // $cbxTipologiaInv    = $this->input->post("cbxTipologiaInv");
             $cbx_tipo_no_pip_m = $this->input->post("cbx_tipo_no_pip_m");
             $cbxGrupoFunc      = $this->input->post("cbxGrupoFunc_m");
             $cbxNivelGob       = $this->input->post("cbxNivelGob_m");
-            // $cbxProgramaPres   = $this->input->post("cbxProgramaPres");
             $txtCodigoUnico    = $this->input->post("txtCodigoUnico_m");
             $txtNombrePip      = $this->input->post("txtNombrePip_m");
-            $txtCostoPip       = $this->input->post("txtCostoPip_m");
+            $txtCostoPip       = floatval(str_replace(",", "", $this->input->post('txtCostoPip_m')));
             $txt_beneficiarios = $this->input->post("txt_beneficiarios_m");
-            // $dateFechaInPip    = $this->input->post("fecha_registro");
-            // $dateFechaViabilidad = $this->input->post("fecha_viabilidad");
-            // $lista_unid_form  = $this->input->post("lista_unid_form");
-            //  $cbx_estado       = $this->input->post("cbx_estado_m");
             $cbx_tipo_inversion = $this->input->post("cbxEstCicInv_m");
             $cbxEstado_pi       = $this->input->post("cbx_estado_m");
             $cbxRubro           = $this->input->post("cbxRubroEjecucion_m");
@@ -135,7 +126,7 @@ class bancoproyectos extends CI_Controller
             $cbxProgramaPresupuestal_m = $this->input->post("cbxProgramaPresupuestal_m");
             $txtCodigoUnico_m          = $this->input->post("txtCodigoUnico_m");
             $txtNombrePip_m            = $this->input->post("txtNombrePip_m");
-            $txtCostoPip_m             = $this->input->post("txtCostoPip_m");
+            $txtCostoPip_m             = floatval(str_replace(",","",$this->input->post("txtCostoPip_m")));
             $txt_beneficiarios_m       = $this->input->post("txt_beneficiarios_m");
             // $dateFechaInPip    = $this->input->post("fecha_registro");
             // $dateFechaViabilidad = $this->input->post("fecha_viabilidad");
@@ -401,27 +392,43 @@ class bancoproyectos extends CI_Controller
     //listar operacion mantenimiento
     public function Get_OperacionMantenimiento()
     {
-        if ($this->input->is_ajax_request()) {
+
+        if ($this->input->is_ajax_request()) 
+        {
             $flat  = "listar_operacion_mantenimiento";
             $id_pi = $this->input->post("id_pi");
             $data  = $this->bancoproyectos_modal->Get_OperacionMantenimiento($flat, $id_pi);
-            echo json_encode(array('data' => $data));
-        } else {
+            if($data == false) 
+            {
+                echo json_encode(array('data' => $data));
+            }
+            else
+            {
+                foreach ($data as $key => $value) 
+                {
+                    $value->monto_operacion = a_number_format($value->monto_operacion , 2, '.',",",3);
+                    $value->monto_mantenimiento = a_number_format($value->monto_mantenimiento , 2, '.',",",3);
+                }
+                echo json_encode(array('data' => $data));
+            }                
+        } 
+        else 
+        {
             show_404();
         }
     }
     //agregar operacion y mantenimiento
     public function AddOperacionMantenimiento()
     {
-        if ($this->input->is_ajax_request()) {
+        if ($this->input->is_ajax_request()) 
+        {
             $flat                          = "C";
             $id_OperacionMantenimiento     = "0";
             $txt_id_pip_OperMant           = $this->input->post("txt_id_pip_OperMant");
-            $txt_monto_operacion           = $this->input->post("txt_monto_operacion");
-            $txt_monto_mantenimiento       = $this->input->post("txt_monto_mantenimiento");
+            $txt_monto_operacion           = floatval(str_replace(",","",$this->input->post("txt_monto_operacion")));
+            $txt_monto_mantenimiento       = floatval(str_replace(",","",$this->input->post("txt_monto_mantenimiento")));
             $txt_responsable_operacion     = $this->input->post("txt_responsable_operacion");
             $txt_responsable_mantenimiento = $this->input->post("txt_responsable_mantenimiento");
-            // $dateFechaIniC            = $this->input->post("dateFechaIniC"); //esta campo se esta registrando en la base de datos
             if ($this->bancoproyectos_modal->AddOperacionMantenimiento($flat, $id_OperacionMantenimiento, $txt_id_pip_OperMant, $txt_monto_operacion, $txt_monto_mantenimiento, $txt_responsable_operacion, $txt_responsable_mantenimiento) == false) {
                 echo "1";
             } else {
@@ -431,6 +438,14 @@ class bancoproyectos extends CI_Controller
         } else {
             show_404();
         }
+    }
+
+    public function BuscarProyectoSiaf()
+    {
+        
+        $data  = $this->bancoproyectos_modal->BuscarProyectoSiaf($this->input->post('codigo'));
+        echo json_encode($data);exit;
+
     }
 
     public function NoPip()

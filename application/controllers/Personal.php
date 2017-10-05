@@ -107,9 +107,10 @@ class Personal extends CI_Controller
             $correo          = $txt_correo          = $this->input->post("txt_correo");
             $grado_academico = $txt_gradoacademico = $this->input->post("txt_gradoacademico");
             $especialidad    = $txt_especialidad    = $this->input->post("txt_especialidad");
+            $Cbx_especialidad= $Cbx_especialidad    = $this->input->post("Cbx_especialidad");
             $fecha_nac       = $date_fechanac       = $this->input->post("date_fechanac");
 
-            if ($this->Model_Personal->AddPersonal($flat, $id_oficina, $nombres, $apellido_p, $apellido_m, $dni, $direccion, $telefonos, $correo, $grado_academico, $especialidad, $fecha_nac) == false) {
+            if ($this->Model_Personal->AddPersonal($flat, $id_oficina, $nombres, $apellido_p, $apellido_m, $dni, $direccion, $telefonos, $correo, $grado_academico, $especialidad,$Cbx_especialidad, $fecha_nac) == false) {
                 echo "Se añadio un  Personal";
             } else {
                 echo "NO Se añadio  un Personal";
@@ -179,6 +180,16 @@ class Personal extends CI_Controller
             show_404();
         }
 
+    }
+
+    public function GetEspecilidad()
+    {
+        if ($this->input->is_ajax_request()) {
+            $datos = $this->Model_Personal->GetEspecilidad();
+            echo json_encode($datos);
+        } else {
+            show_404();
+        } 
     }
 /* fin Personal actividad*/
 

@@ -9,6 +9,8 @@ class Programacion extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Model_Programacion');
+
+        $this->load->helper('FormatNumber_helper');
     }
     /*INSERTAR UN PROYECTO*/
     public function AddProgramacion()
@@ -72,6 +74,18 @@ class Programacion extends CI_Controller
             $valueSearch          = $this->input->post('search[value]');
 
             $datos      = $this->Model_Programacion->GetProgramacion($id_proyecto_filtro, $anio_apertura_actual, $skip, $numberRow, $valueSearch);
+
+            foreach ($datos as $key => $value) 
+            {
+                $value->Inv_2018 = a_number_format($value->Inv_2018 , 2, '.',",",3);
+                $value->Inv_2019 = a_number_format($value->Inv_2019 , 2, '.',",",3);
+                $value->Inv_2020 = a_number_format($value->Inv_2020 , 2, '.',",",3);
+                $value->OyM_2018 = a_number_format($value->OyM_2018 , 2, '.',",",3);
+                $value->OyM_2019 = a_number_format($value->OyM_2019 , 2, '.',",",3);
+                $value->OyM_2020 = a_number_format($value->OyM_2020 , 2, '.',",",3);
+                $value->costo_pi = a_number_format($value->costo_pi , 2, '.',",",3);
+            }
+
             $totalDatos = $this->Model_Programacion->GetProgramacion($id_proyecto_filtro, $anio_apertura_actual, 0, 0, $valueSearch);
 
             echo '{ "recordsTotal" : ' . (count($totalDatos)) . ', "recordsFiltered" : ' . (count($totalDatos)) . ', "data" : ' . json_encode($datos) . ' }';

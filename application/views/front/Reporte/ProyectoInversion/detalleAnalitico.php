@@ -37,23 +37,89 @@
 										
 									<div class="row">  
 										<div class="col-md-12 col-sm-12 col-xs-12">
-											<table id="table-DetalleAnaliticoAvance"  class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
+											
+											<table id="table-DetalleAnaliticoAvance" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 												<thead>
+
 													<tr>
-														<td>Año</td>
-														<td>Nombre</td>
-														<td>Proyecto</td>
-														<td>Finalidad</td>
-														<td>Nombre de Finalidad</td>
-														<td>Meta</td>
-														<td>Programa</td>
-														<td>Nombre del Programa</td>
-														<td>Sub Programa</td>
-														<td>Sub Programa Nombre</td>
-														<td>Funcion</td>
+														<td>Prod/Proy. Cat.Pptal. Act/AI/Obr Fun. Div.Fn. Finalidad Meta A Gen</td>
 													</tr>
 												</thead>
 												<tbody>
+													
+
+													<?php if($listaDetalleAnaliticoAvancFinE ==false){?>
+														<tr>
+														<td>Prod/Proy. Cat.Pptal. Act/AI/Obr Fun. Div.Fn. Finalidad Meta A Gen</td>
+														</tr>
+												
+														<?php  }else { ?>
+														<tr>
+														<td><?=$listaDetalleAnaliticoAvancFinE->act_proy ,' ',$listaDetalleAnaliticoAvancFinE->proyecto;?>  </td>
+											
+														</tr>
+			
+														<tr>
+															<td><?=$listaDetalleAnaliticoAvancFinE->meta,' ', $listaDetalleAnaliticoAvancFinE->proyecto;?></td>
+														</tr>
+														<tr>
+															<td><?=$listaDetalleAnaliticoAvancFinE->programa,' ', $listaDetalleAnaliticoAvancFinE->programa_nombre;?>  </td>
+														</tr>
+														<tr>
+															<td><?=$listaDetalleAnaliticoAvancFinE->sub_programa,' ', $listaDetalleAnaliticoAvancFinE->sub_programa_nombre;?>  </td>
+														</tr>
+														<tr>
+															<td><?=$listaDetalleAnaliticoAvancFinE->funcion,' ', $listaDetalleAnaliticoAvancFinE->funcion_nombre;?>  </td>	
+														</tr>
+													<?php  } ?>
+												
+												</tbody>
+										
+											</table>
+										</div>
+									
+									</div>
+
+									<div class="row">  
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											
+											<table id="table-DetalleAnalitico" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
+												<thead>
+
+													<tr>
+														<td>Finalidad</td>
+														<td>Presupuesto</td>
+														<td>Modificación</td>
+														<td>Pim Acumulado</td>
+														<td>Ejecución</td>
+														<td>Compromiso</td>
+														<td>Certificado</td>
+														<td>Devengado</td>
+														<td>Girado</td>
+														<td>Pagado</td>
+													</tr>
+												</thead>
+												<tbody>
+
+													<?php foreach($listaDetalleAnaliticoAvancFin as $item ){ ?>
+													
+													  <tr>
+															<td>
+																<?=$item->finalidad,' ',$item->finalidad_nombre?>
+													    	</td>
+													    	<td><?=$item->presupuesto?></td>
+													    	<td><?=$item->modificacion?></td>
+															<td><?=$item->pim_acumulado?></td>
+															<td><?=$item->ejecucion?></td>
+															<td><?=$item->compromiso?></td>
+															<td><?=$item->certificado?></td>
+															<td><?=$item->devengado?></td>
+															<td><?=$item->girado?></td>
+															<td><?=$item->pagado?></td>
+													  </tr>
+													<?php } ?>
+
+
 													
 												</tbody>
 										
@@ -72,3 +138,7 @@
 		<div class="clearfix"></div>
 	</div>
 </div>
+
+<script>
+
+</script>

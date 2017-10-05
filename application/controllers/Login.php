@@ -7,10 +7,12 @@ class Login extends CI_Controller {
     {
         parent::__construct();
         $this->load->model("Login_model");
+        $this->load->helper('FormatNumber_helper');
   	}
 
     public function muestralog()
     {
+        
         if($this->session->userdata('nombreUsuario'))
         {
             redirect('Inicio');
@@ -20,11 +22,15 @@ class Login extends CI_Controller {
            $this->singin();
         }
     }
-   
-
     public function singin()
     {
-        $this->load->view('front/usuario/frm_login');
+        $data = $this->Login_model->Reporte_Login();   
+        foreach ($data as $key => $value) 
+        {
+            $value->costo_total = a_number_format($value->costo_total , 2, '.',",",3);
+            $value->total_beneficiarios = a_number_format($value->total_beneficiarios , 0, '.',",",3);
+        }     
+        $this->load->view('front/usuario/frm_login',['Reporte' => $data]);
     }
     public function recuperarMenu($usuario){
         if($this->input->is_ajax_request())
@@ -37,9 +43,6 @@ class Login extends CI_Controller {
         {
             show_404();
         }
-
-
-
     }
     public function ingresar()
     {
@@ -79,6 +82,4 @@ class Login extends CI_Controller {
         $this->session->sess_destroy();
         redirect('Login/muestralog');
     } 
-
-
 }

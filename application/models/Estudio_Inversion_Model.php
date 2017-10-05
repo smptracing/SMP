@@ -102,18 +102,24 @@ class Estudio_Inversion_Model extends CI_Model
     public function get_TipoEstudio()
     {
         $TipoEstudio = $this->db->query("select id_tipo_est,nombre_tipo_est from TIPO_ESTUDIO");
-        if ($TipoEstudio->num_rows() > 0) {
+        if ($TipoEstudio->num_rows() > 0) 
+        {
             return $TipoEstudio->result();
-        } else {
+        } 
+        else 
+        {
             return false;
         }
     }
     public function get_NivelEstudio()
     {
-        $NivelEstudio = $this->db->query("select id_nivel_estudio,denom_nivel_estudio from NIVEL_ESTUDIO");
-        if ($NivelEstudio->num_rows() > 0) {
+        $NivelEstudio = $this->db->query("select id_nivel_estudio, denom_nivel_estudio from NIVEL_ESTUDIO");
+        if ($NivelEstudio->num_rows() > 0) 
+        {
             return $NivelEstudio->result();
-        } else {
+        } 
+        else 
+        {
             return false;
         }
     }
@@ -290,14 +296,113 @@ class Estudio_Inversion_Model extends CI_Model
             return false;
         }
     }
+
+    public function GetProyectosEstudio()
+    {
+        $datos = $this->db->query("select uf.id_est_inv, py.id_pi, py.codigo_unico_pi, uf.nombre_estudio_inv, f.nombre_funcion, uf.costo_estudio, p.nombres+' '+p.apellido_p+' '+p.apellido_m as coordinador from uf_estudio_inversion_2 uf inner join proyecto_inversion py on py.id_pi = uf.id_pi 
+inner join grupo_funcional gf on py.id_grupo_funcional= gf.id_grup_funcional
+inner join division_funcional df on df.id_div_funcional = gf.id_div_funcional
+inner join funcion f on f.id_funcion = df.id_funcion
+inner join persona p on p.id_persona = uf.id_persona
+");    
+        if ($datos->num_rows() > 0) 
+        {
+            return $datos->result();
+        } 
+        else 
+        {
+            return false;
+        }
+    }
+
+    public function GetProyectosparaEstudio($anio)
+    {
+        $datos = $this->db->query("exec sp_Gestionar_UfEstudioInversion @opcion = 'listar_pip_programados', 
+        @anio_cartera = '$anio'");        
+
+        if ($datos->num_rows() > 0) 
+        {
+            return $datos->result();
+        } 
+        else 
+        {
+            return false;
+        }
+    }
+
+    public function get_coordinador()
+    {
+        $datos = $this->db->query("exec sp_Gestionar_UsuarioTipo 'listar_usuarios_por_tipo', 'coordinador'");        
+
+        if ($datos->num_rows() > 0) 
+        {
+            return $datos->result();
+        } 
+        else 
+        {
+            return false;
+        }
+
+    }
+
+    public function GetProyectoParaEstudioInversion($anio, $id_pi)
+    {
+        $datos = $this->db->query("exec sp_Gestionar_UfEstudioInversion @opcion = 'listar_pip_programados', @anio_cartera= '$anio', @id_pi = '$id_pi'");        
+
+        if ($datos->num_rows() > 0) 
+        {
+            return $datos->result()[0];
+        } 
+        else 
+        {
+            return false;
+        }
+    }
+
+    public function RegistrarEstudioInversion($idPersona,$nombreEstudio,$idPi,$idTipoEstudio,$idNivelEstudio,$idUnidadFormuladora,$idUnidadEjecutora,$descripcionEstudio,$montoInversion,$costoEstudio)
+    {
+        $this->db->query("exec sp_Gestionar_UfEstudioInversion @opcion = 'C', 
+        @id_persona = '$idPersona', 
+        @nombre_estudio_inv = '$nombreEstudio', 
+        @id_pi = '$idPi', 
+        @id_tipo_est = '$idTipoEstudio', 
+        @id_nivel_estudio = '$idNivelEstudio', 
+        @id_uf='$idUnidadFormuladora', 
+        @id_ue = '$idUnidadEjecutora', 
+        @des_est_inv = '$descripcionEstudio', 
+        @monto_inv = '$montoInversion', 
+        @costo_estudio ='$costoEstudio' , 
+        @etapa_estu = NULL, 
+        @fecha_etapa = NULL , 
+        @monto_etapa = NULL, 
+        @avance = NULL");
+        if ($this->db->affected_rows() > 0) 
+        {
+            return true;
+        } 
+        else 
+        {
+            return false;
+        }
+
+    }
+
+
     public function get_listaproyectosCargar($id_Pi)
-      {
+    {
           $opcion="obtenerdatosporpipdelabusquedaproyectoinversion";
           $EstudioInversionCargar = $this->db->query("execute  sp_Gestionar_ProyectoInversion @Opcion='".$opcion."',@id_pi='".$id_Pi."'");
-          if ($EstudioInversionCargar->num_rows() > 0) 
+            if ($EstudioInversionCargar->num_rows() > 0) 
           {
               return $EstudioInversionCargar->result();
           }
-      }
+    }
 
+    public function EstudioCoordinadorF()
+    {
+        $opcion="listarEstudioCoordinador";
+        $data=$this->db->query("execute sp_Gestionar_UFEstudioInversionF @opcion='".$opcion."'");
+
+        return $data->result();
+    }
 }

@@ -25,7 +25,7 @@
     <!-- bootstrap-daterangepicker -->
     <link href="<?php echo base_url(); ?>assets/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/css/bootstrap-select.css"><!--- para el selector con buscardor---->
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/css/bootstrap-select.css"><!--- para el selector con buscardor-->
 
     <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
@@ -136,6 +136,19 @@
                   </ul>
 
               </div>
+               <ul class="nav side-menu">
+                     <li><a><i class="fa fa-gears"></i> Mantenimiento<span class="fa fa-chevron-down"></span></a>
+
+                    <ul class="nav child_menu">
+                      <li><a href="<?php echo site_url('PmiCriterioG/'); ?>">Criterios Generales</a></li>
+                       <li><a href="<?php echo site_url('PmiCriterioG/criterioFuncion'); ?>">Criterios por funcion</a></li>
+                    </ul>
+           
+                     
+                 
+                  </li>
+
+                </ul>
             </div>
 
           

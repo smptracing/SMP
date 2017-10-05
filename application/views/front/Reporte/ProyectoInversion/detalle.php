@@ -34,7 +34,38 @@
 								<!-- /Contenido del sector -->
 								<div role="tabpanel" class="tab-pane fade active in" id="tab_Sector" aria-labelledby="home-tab">
 									<!-- /tabla de sector desde el row -->
+									<div class="row">
+						                <div class="col-md-12 col-sm-12 col-xs-12">
 										
+					                        <div>
+					                        	<table id="table-DatoGen"  class="table-hover" cellspacing="0" width="100%">
+												<body>
+													
+														<?php if($listaDetalleMensualizadoEst ==false){?>
+														<tr>
+														<td>AÑO:  </td>
+														</tr>
+														<tr>
+															<td>CORRELATIVO META:  </td>
+														</tr>
+														<?php  }else { ?>
+																<tr>
+																	<td>AÑO: <?=$listaDetalleMensualizadoEst->ano_eje ;?>  </td>
+																</tr>
+																<tr>
+																	<td>CORRELATIVO META: <?=$listaDetalleMensualizadoEst->meta;?>  </td>
+																</tr>
+															
+														<?php  } ?>
+											
+												</body>
+											</table>
+
+					                        </div>
+
+						                </div>
+						        	</div>
+									<br>	
 									<div class="row">  
 										<div class="col-md-12 col-sm-12 col-xs-12">
 											<table id="table-DetalleMensualizado"  class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
@@ -42,12 +73,12 @@
 													<tr>
 														<td>Nombre</td>
 														<td>Mes</td>
-														<td>Ejecución</td>
-														<td>Compromiso</td>
-														<td>Certificado</td>
-														<td>Devengado</td>
-														<td>Girado</td>
-														<td>Pagado</td>
+														<td style="text-align:right">Ejecución</td>
+														<td style="text-align:right">Compromiso</td>
+														<td style="text-align:right">Certificado</td>
+														<td style="text-align:right">Devengado</td>
+														<td style="text-align:right">Girado</td>
+														<td style="text-align:right">Pagado</td>
 													</tr>
 												</thead>
 												<tbody>
@@ -59,22 +90,22 @@
 													    	<td>
 																<?=$item->mes_eje?>
 													    	</td>
-													    	<td>
+													    	<td style="text-align:right">
 																<?= number_format($item->ejecucion,2)?>
 													    	</td>
-													    	<td>
+													    	<td style="text-align:right">
 																<?= number_format($item->compromiso,2)?>
 													    	</td>
-													    	<td>
+													    	<td style="text-align:right">
 																<?= number_format($item->certificado,2)?>
 													    	</td>
-													    	<td>
+													    	<td style="text-align:right">
 																<?= number_format($item->devengado,2)?>
 													    	</td>
-													    	<td>
+													    	<td style="text-align:right">
 																<?= number_format($item->girado,2)?>
 													    	</td>
-													    	<td>
+													    	<td style="text-align:right">
 																<?=number_format($item->pagado,2)?>
 													    	</td>
 													  </tr>

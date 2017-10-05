@@ -1,142 +1,106 @@
-$(document).on("ready" ,function(){
-  $("#btn_NuevoPip").click(function(){
-                 listarCicloInver();
-                 listarufcombo();
-             }); 
-     listar_proyectos_inversion();/*llamar a mi datatablet listar proyectosinverision*/
-
-            $("#form_EditarProyectosInversion").submit(function(event)
+$(document).on("ready" ,function()
+{
+    $("#btn_NuevoPip").click(function()
+    {
+        listarCicloInver();
+        listarufcombo();
+    }); 
+    listar_proyectos_inversion();
+    
+    $("#form_AddModalidadEjec").submit(function(event)
+    {
+        event.preventDefault();
+        $.ajax({
+            url:base_url+"index.php/bancoproyectos/AddModalidadEjecPI",
+            type:$(this).attr('method'),
+            data:$(this).serialize(),
+            success:function(resp)
+            {
+                if (resp=='1') 
                 {
-                    event.preventDefault();
-                    $.ajax({
-                        url:base_url+"index.php/bancoproyectos/update_pip",
-                        type:$(this).attr('method'),
-                        data:$(this).serialize(),
-                        success:function(resp){
-                          if (resp=='1') {
-                             swal("ACTUALIZADO","Se actualizó correctamente", "success");
-                            // formReset();
+                    swal("REGISTRADO","Se regristró correctamente", "success");
+                }
+                if (resp=='2')
+                {
+                    swal("NO SE REGISTRÓ","NO se regristró ", "error");
+                }
+                $('#Table_ModalidadPI').dataTable()._fnAjaxUpdate();
+                formReset();
+                $('#ventanaModalidadEjecucion').modal('hide');
+            }
+        });
+    });
 
-                           }
-                            if (resp=='2') {
-                             swal("NO SE ACTUALIZÓ","No se actualizó ", "error");
-                           }
-                            $('#table_proyectos_inversion').dataTable()._fnAjaxUpdate();
-                         }
-                    });
-                    });
-                //REGISTARAR OPERACION Y MANTENIMIENTO
-     $("#form_AddOperacionMantenimiento").submit(function(event)
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/bancoproyectos/AddOperacionMantenimiento",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           //alert(resp);
-                           if (resp=='1') {
-                             swal("REGISTRADO","Se regristró correctamente", "success");
-                             formReset();
-                           }
-                            if (resp=='2') {
-                             swal("NO SE REGISTRÓ","NO se regristró ", "error");
-                           }
-                          $('#Table_OperacionMantenimiento').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
-                             formReset();
-                         }
-                      });
-                  });
-     //registar modalidad de ejecucion
-     $("#form_AddModalidadEjec").submit(function(event)
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/bancoproyectos/AddModalidadEjecPI",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           //alert(resp);
-                           if (resp=='1') {
-                             swal("REGISTRADO","Se regristró correctamente", "success");
-                             formReset();
-                           }
-                            if (resp=='2') {
-                             swal("NO SE REGISTRÓ","NO se regristró ", "error");
-                           }
-                          $('#Table_ModalidadPI').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
-                             formReset();
-                         }
-                      });
-                  });
-       //REGISTARAR rubro pi
-     $("#form_AddRubro").submit(function(event)
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/bancoproyectos/AddRurboPI",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           //alert(resp);
-                           if (resp=='1') {
-                             swal("REGISTRADO","Se regristró correctamente", "success");
-                             formReset();
-                           }
-                            if (resp=='2') {
-                             swal("NO SE REGISTRÓ","NO se regristró ", "error");
-                           }
-                          $('#Table_RubroPI').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
-                             formReset();
-                         }
-                      });
-                  });
-  //REGISTARAR ESTADO ETAPA
-     $("#form_AddEstadoCiclo").submit(function(event)
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/bancoproyectos/AddEstadoCicloPI",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           //alert(resp);
-                           if (resp=='1') {
-                             swal("REGISTRADO","Se regristró correctamente", "success");
-                             formReset();
-                           }
-                            if (resp=='2') {
-                             swal("NO SE REGISTRÓ","NO se regristró ", "error");
-                           }
-                          $('#Table_Estado_Ciclo').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
-                          $('#table_proyectos_inversion').dataTable()._fnAjaxUpdate();
-                             formReset();
-                         }
-                      });
-                  });
+    $("#form_AddRubro").submit(function(event)
+    {
+        event.preventDefault();
+        $.ajax({
+            url:base_url+"index.php/bancoproyectos/AddRurboPI",
+            type:$(this).attr('method'),
+            data:$(this).serialize(),
+            success:function(resp)
+            {
+                if (resp=='1') 
+                {
+                    swal("REGISTRADO","Se regristró correctamente", "success");
+                }
+                if (resp=='2') 
+                {
+                    swal("NO SE REGISTRÓ","NO se regristró ", "error");
+                }
+                $('#Table_RubroPI').dataTable()._fnAjaxUpdate();
+                formReset();
+                $('#venta_registar_rubro').modal('hide');
+            }
+        });
+    });
+    $("#form_AddEstadoCiclo").submit(function(event)
+    {
+        event.preventDefault();
+        $.ajax({
+            url:base_url+"index.php/bancoproyectos/AddEstadoCicloPI",
+            type:$(this).attr('method'),
+            data:$(this).serialize(),
+            success:function(resp)
+            {
+                if (resp=='1') 
+                {
+                    swal("REGISTRADO","Se regristró correctamente", "success");
+                }
+                if (resp=='2') 
+                {
+                    swal("NO SE REGISTRÓ","NO se regristró ", "error");
+                }
+                $('#Table_Estado_Ciclo').dataTable()._fnAjaxUpdate();
+                $('#table_proyectos_inversion').dataTable()._fnAjaxUpdate();
+                $('#ventana_ver_estado_ciclo').modal('hide');
+            }
+        });
+    });
 
-  //registar nuevo ubigeo con latitud y longitud
-   $("#form_AddUbigeo").submit(function(event)
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/bancoproyectos/Add_ubigeo_proyecto",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           //alert(resp);
-                           if (resp=='1') {
-                             swal("REGISTRADO","Se regristró correctamente", "success");
-                             formReset();
-                           }
-                            if (resp=='2') {
-                             swal("NO SE REGISTRÓ","NO se regristró ", "error");
-                           }
-                          $('#TableUbigeoProyecto_x').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
-                             formReset();
-                         }
-                      });
-                  });
+    $("#form_AddUbigeo").submit(function(event)
+    {
+        event.preventDefault();
+        $.ajax({
+            url:base_url+"index.php/bancoproyectos/Add_ubigeo_proyecto",
+            type:$(this).attr('method'),
+            data:$(this).serialize(),
+            success:function(resp)
+            {
+                if (resp=='1') 
+                {
+                    swal("REGISTRADO","Se regristró correctamente", "success");
+                }
+                if (resp=='2') 
+                {
+                    swal("NO SE REGISTRÓ","NO se regristró ", "error");
+                }
+                $('#TableUbigeoProyecto_x').dataTable()._fnAjaxUpdate();
+                formReset();
+                $('#venta_ubicacion_geografica').modal('hide');                
+            }
+        });
+    });
 
                 //registar proyectos en banco de proyectos
    $("#form-AddProyectosInversion").submit(function(event)
@@ -160,6 +124,24 @@ $(document).on("ready" ,function(){
                          }
                       });
                   });
+
+ 
+          $('#txtCodigoUnico').keyup(function () {
+                codigo2='2187136';
+                var codigo=$("#txtCodigoUnico").val();
+                $.getJSON({
+                          url: base_url+'index.php/bancoproyectos/BuscarProyectoSiaf',
+                          type:'POST',
+                          data:{codigo:codigo},
+                          success:function(resp){
+                            console.log(resp);
+                           $.each(resp, function(index, val) {
+                              $("#txtNombrePip").val(val.nombre_pi);
+                              $("#txtCostoPip").val(val.costo_actual);
+                           });
+                         }
+                      });
+        });
         //limpiar campos
           function formReset()
           {
@@ -170,6 +152,7 @@ $(document).on("ready" ,function(){
          document.getElementById("form_AddModalidadEjec").reset();
          document.getElementById("form_AddOperacionMantenimiento").reset();         
           }
+
       });
 //listar operacion y mantenimiento de un proyecto
  var listar_pip_OperMant=function(id_pi)
@@ -658,16 +641,20 @@ var listarFuenteFinanciamiento=function(valor){
                       var data=table.row( $(this).parents("tr")).data();
                        var  id_pi=data.id_pi;
                       $("#txt_id_pip_OperMant").val(data.id_pi);
+                      $("#nombreProyectoOperacion").val(data.nombre_pi);
                         listar_pip_OperMant(id_pi);
                     });
                 }
     //listar y agregar ubicacion geográfica
               var  AddListarUbigeo=function(tbody,table){
-                    $(tbody).on("click","button.ubicacion_geografica",function(){
-                      var data=table.row( $(this).parents("tr")).data();
-                       var  id_pi=data.id_pi;
-                      $("#txt_id_pip").val(data.id_pi);
-                      listar_provincia();
+                    $(tbody).on("click","button.ubicacion_geografica",function()
+                    {
+                        var data=table.row( $(this).parents("tr")).data();
+                        var  id_pi=data.id_pi;
+                        var nombre_pi = data.nombre_pi;
+                        $("#txt_id_pip").val(data.id_pi);
+                        $("#nombreProyecto").val(nombre_pi);
+                        listar_provincia();
                         listar_ubigeo_pi(id_pi);
                     });
                 }
@@ -675,8 +662,9 @@ var listarFuenteFinanciamiento=function(valor){
               var  AddEstadoCiclo=function(tbody,table){
                     $(tbody).on("click","button.ver_estado_ciclo",function(){
                       var data=table.row( $(this).parents("tr")).data();
-                       var  id_pi=data.id_pi;
+                      var  id_pi=data.id_pi;
                       $("#txt_id_pip_Ciclopi").val(data.id_pi);
+                      $("#nombreProyectoEstado").val(data.nombre_pi);
                       listarEstadoCiclo();
                       listar_estado_ciclo(id_pi);
                     });
@@ -686,7 +674,9 @@ var listarFuenteFinanciamiento=function(valor){
                     $(tbody).on("click","button.RegistarNuevoRubro",function(){
                       var data=table.row( $(this).parents("tr")).data();
                        var  id_pi=data.id_pi;
+                       var nombre_proy = data.nombre_pi;
                       $("#txt_id_pip_RubroPI").val(data.id_pi);
+                      $("#nombreProyectoRubro").val(nombre_proy);
                         ListarRubro();
                         listarRubroPI(id_pi);
                     });
@@ -694,9 +684,12 @@ var listarFuenteFinanciamiento=function(valor){
                 //listar y agregar modalidad de ejecución
               var  AddModalidadEjecucion=function(tbody,table){
                     $(tbody).on("click","button.nueva_modalidad_ejec",function(){
-                      var data=table.row( $(this).parents("tr")).data();
-                       var  id_pi=data.id_pi;
-                      $("#txt_id_pip_ModalidadEjec").val(data.id_pi);
+                        var data=table.row( $(this).parents("tr")).data();
+                        var  id_pi=data.id_pi;
+                        var  nombre_pi=data.nombre_pi;
+                        $("#txt_id_pip_ModalidadEjec").val(data.id_pi);
+                        $("#nombreProyectoModalidad").val(data.nombre_pi);
+
                         ListarModalidad();
                         listarModalidadPI(id_pi);
                     });

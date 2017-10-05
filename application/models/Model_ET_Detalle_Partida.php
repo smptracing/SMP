@@ -22,6 +22,13 @@ class Model_ET_Detalle_Partida extends CI_Model
 		return $data->result()[0]->idDetallePartida;
 	}
 
+	function ETDetallePartida($idDetallePartida)
+	{
+		$data=$this->db->query("select * from ET_DETALLE_PARTIDA where id_detalle_partida=$idDetallePartida");
+
+		return count($data->result())==0 ? null : $data->result()[0];
+	}
+
 	function ultimoETDetallePartida()
 	{
 		$data=$this->db->query("select * from ET_DETALLE_PARTIDA where id_detalle_partida=(select max(id_detalle_partida) from ET_DETALLE_PARTIDA) and estado=1");
@@ -49,6 +56,13 @@ class Model_ET_Detalle_Partida extends CI_Model
 		$data=$this->db->query("select * from ET_DETALLE_PARTIDA where id_partida=".$idPartida." and estado=1");
 
 		return $data->result();
+	}
+
+	function ETDetallePartidaPorIdPartidaParaValorizacion($idPartida)
+	{
+		$data=$this->db->query("select * from ET_DETALLE_PARTIDA where id_partida=".$idPartida." and estado=1");
+
+		return count($data->result())==0 ? null : $data->result()[0];
 	}
 
 	function ETDetallePartidaPorIdPartidaMontoff05($id_meta)

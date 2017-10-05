@@ -6,32 +6,20 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>SMP-APURIMAC</title>
-		<script src="<?php echo base_url(); ?>assets/ckeditor/ckeditor.js"></script>
 
 	<link href="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-	<link href="<?php echo base_url(); ?>assets/vendors/nprogress/nprogress.css" rel="stylesheet">
-	<link href="<?php echo base_url(); ?>assets/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-	<link href="<?php echo base_url(); ?>assets/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
-	<link href="<?php echo base_url(); ?>assets/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/css/bootstrap-select.css">
 	<link href="<?php echo base_url(); ?>assets/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
-	<link href="<?php echo base_url(); ?>assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
 
 	<link href="<?php echo base_url(); ?>assets/vendors/select2/dist/css/select2.min.css" rel="stylesheet">
 
 	<link href="<?php echo base_url(); ?>assets/vendors/animate/animate.min.css" rel="stylesheet">
-	<link href="<?php echo base_url(); ?>assets/css/jquery.growl.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>assets/vendors/dropzone/dist/min/dropzone.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/formValidation.min.css">
-	<script src="<?php echo base_url(); ?>assets/js/Helper/jsHelper.js"></script>
 	<script src="<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
-	<script src="<?php echo base_url(); ?>assets/ckeditor/ckeditor.js"></script>
-  <script src="<?php echo base_url(); ?>assets//vendors/echarts/dist/echarts.min.js"></script>
-  <script src="<?php echo base_url(); ?>assets/js/Helper/jsHelper.js"></script>
+ 	<script src="<?php echo base_url(); ?>assets/js/Helper/jsHelper.js"></script>
 
 	<style>
 		#navtittlemin
@@ -194,7 +182,7 @@
 									</li>
 									<li><a href="javascript:;">Ayuda</a></li>
 
-									<li><a href="javascript:void(0)" id="Cerrar"><i class="fa fa-sign-out pull-right"></i> Cerrar sesión</a></li>
+									<li><a href="<?php echo site_url('Login/logout');?>" ><i class="fa fa-sign-out pull-right"></i> Cerrar sesión</a></li>
 								</ul>
 							</li>
 							<li role="presentation" class="dropdown">

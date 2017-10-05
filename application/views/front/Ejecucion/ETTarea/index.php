@@ -40,8 +40,6 @@
 		}
 	</style>
 
-	<script src="<?=base_url()?>assets/js/Helper/jsHelper.js"></script>
-
 	<script src="<?=base_url()?>assets/vendors/jquery/dist/jquery.min.js"></script>
 	<script src="<?=base_url()?>assets/vendors/jquery/dist/jquery-ui.min.js"></script>
 	<script src="<?=base_url()?>assets/vendors/JQueryGantt/libs/jquery/jquery.livequery.1.1.1.min.js"></script>
@@ -54,14 +52,15 @@
 	<script src="<?=base_url()?>assets/vendors/JQueryGantt/libs/i18nJs.js"></script>
 	<script src="<?=base_url()?>assets/vendors/JQueryGantt/libs/jquery/dateField/jquery.dateField.js"></script>
 	<script src="<?=base_url()?>assets/vendors/JQueryGantt/libs/jquery/JST/jquery.JST.js"></script>
-	<script type="text/javascript" src="<?=base_url()?>assets/vendors/JQueryGantt/libs/jquery/svg/jquery.svg.min.js"></script>
-	<script type="text/javascript" src="<?=base_url()?>assets/vendors/JQueryGantt/libs/jquery/svg/jquery.svgdom.1.8.js"></script>
+	<script src="<?=base_url()?>assets/vendors/JQueryGantt/libs/jquery/svg/jquery.svg.min.js"></script>
+	<script src="<?=base_url()?>assets/vendors/JQueryGantt/libs/jquery/svg/jquery.svgdom.1.8.js"></script>
 	<script src="<?=base_url()?>assets/vendors/JQueryGantt/ganttUtilities.js"></script>
 	<script src="<?=base_url()?>assets/vendors/JQueryGantt/ganttTask.js"></script>
 	<script src="<?=base_url()?>assets/vendors/JQueryGantt/ganttDrawerSVG.js"></script>
 	<script src="<?=base_url()?>assets/vendors/JQueryGantt/ganttGridEditor.js"></script>
 	<script src="<?=base_url()?>assets/vendors/JQueryGantt/ganttMaster.js"></script>  
-	<script src="<?php echo base_url(); ?>assets/dist/js/sweetalert-dev.js"></script>
+	<script src="<?=base_url()?>assets/dist/js/sweetalert-dev.js"></script>
+	<script src="<?=base_url()?>assets/js/Helper/jsHelper.js"></script>
 </head>
 <body style="background-color: #ffffff;overflow-x: hidden;">
 	<input type="hidden" id="hdIdTareaGantt" name="hdIdTareaGantt" value="<?=$idTareaGantt?>">
@@ -238,13 +237,14 @@
 						<th class="gdfColHeader" style="width:35px;border-right: none"></th>
 						<th class="gdfColHeader" style="width:25px;"></th>
 						<th class="gdfColHeader" style="width:75px;">Código</th>
-						<th class="gdfColHeader" style="width:300px;">Nombre largo</th>
-						<th class="gdfColHeader" style="width:80px;">Inicio</th>
-						<th class="gdfColHeader" style="width:80px;">Fin</th>
-						<th class="gdfColHeader" style="width:50px;">Dur.</th>
-						<th class="gdfColHeader" style="width:70px;">%</th>
+						<th class="gdfColHeader" style="width:70px;">Coment.</th>
+						<th class="gdfColHeader" style="width:600px;">Nombre largo</th>
 						<th class="gdfColHeader" style="width:50px;">Dep.</th>
-						<th class="gdfColHeader" style="width:1000px;text-align: left;padding-left: 10px;">Detalles de la actividad</th>
+						<th class="gdfColHeader" style="width:80px;">Inicio</th>
+						<th class="gdfColHeader" style="width:50px;">Dur.</th>
+						<th class="gdfColHeader" style="width:80px;">Fin</th>
+						<th class="gdfColHeader" style="width:70px;">%</th>
+						<th class="gdfColHeader" style="width:2000px;text-align: left;padding-left: 10px;">Profesionales asignados</th>
 					</tr>
 				</thead>
 			</table>
@@ -254,17 +254,19 @@
 			<tr taskId="(#=obj.id#)" class="taskEditRow (#=obj.isParent()?'isParent':''#) (#=obj.collapsed?'collapsed':''#)" level="(#=level#)">
 				<th class="gdfCell" style="cursor:pointer;text-aling: center;"><span class="taskRowIndex">(#=obj.getRow()+1#)</span></th>
 				<td class="gdfCell noClip"><div class="taskStatus cvcColorSquare" status="(#=obj.status#)"></div></td>
-				<td class="gdfCell"><input type="text" name="code" value="(#=obj.code?obj.code:''#)" placeholder="Código" readonly="readonly"></td>
+				<td class="gdfCell"><input type="text" name="code" value="(#=obj.code?obj.code:''#)" placeholder="Código" readonly="readonly" style="text-align: center;"></td>
+				<td class="gdfCell" style="text-align: center;"><a href="#" style="cursor: pointer;user-select: none;" onclick="administrarComentarios('(#=obj.id#)', '(#=obj.name#)');">((#=obj.quantityComment#))</a></td>
 				<td class="gdfCell indentCell" style="padding-left:(#=obj.level*10+18#)px;">
-					<div class="exp-controller" align="center"></div>
-					<input type="text" name="name" value="(#=obj.name#)" placeholder="Nombre" autocomplete="off">
+					<div class="exp-controller" style="margin-left: 0px;"></div>
+					<small><a href="#" style="color: red;cursor: pointer;user-select: none;" title="Observaciones" onclick="administrarObservaciones('(#=obj.id#)', '(#=obj.name#)');">((#=obj.quantityObservation#))</a></small>
+					<input type="text" name="name" value="(#=obj.name#)" placeholder="Nombre" autocomplete="off" style="(#=(obj.observationPending ? 'color: red;' : '')#)">
 				</td>
-				<td class="gdfCell"><input type="text" name="start" value="" class="date"></td>
-				<td class="gdfCell"><input type="text" name="end" value="" class="date"></td>
-				<td class="gdfCell"><input type="text" name="duration" autocomplete="off" value="(#=obj.duration#)"></td>
-				<td class="gdfCell"><input type="text" name="progress" class="validated" entrytype="PERCENTILE" autocomplete="off" value="(#=obj.progress?obj.progress:''#)" (#=obj.progressByWorklog?"readOnly":""#)></td>
-				<td class="gdfCell"><input type="text" name="depends" autocomplete="off" value="(#=obj.depends#)" (#=obj.hasExternalDep?"readonly":""#)></td>
-				<td class="gdfCell"><a href="#" style="cursor: pointer; user-select: none;" onclick="adminDetailActivity('(#=obj.id#)');">Admin. detalle (<span style="color: #57bc57;">(#=obj.name#)</span>)</a></td>
+				<td class="gdfCell"><input type="text" name="depends" autocomplete="off" value="(#=obj.depends#)" (#=obj.hasExternalDep?"readonly":""#) style="text-align: center;"></td>
+				<td class="gdfCell"><input type="text" name="start" value="" class="date" style="text-align: center;"></td>
+				<td class="gdfCell"><input type="text" name="duration" autocomplete="off" value="(#=obj.duration#)" style="text-align: center;"></td>
+				<td class="gdfCell"><input type="text" name="end" value="" class="date" style="text-align: center;"></td>
+				<td class="gdfCell"><input type="text" name="progress" class="validated" entrytype="PERCENTILE" autocomplete="off" value="(#=obj.progress?obj.progress:''#)" (#=obj.progressByWorklog?"readOnly":""#) style="text-align: center;"></td>
+				<td class="gdfCell"><a href="#" style="cursor: pointer; user-select: none;" onclick="administrarPersonal('(#=obj.id#)', '(#=obj.name#)');">Admin.</a> <small>(#=obj.personaAsignada?obj.personaAsignada:''#)</small></td>
 			</tr>
 		--></div>
 
@@ -280,17 +282,13 @@
 				<td class="gdfCell"></td>
 				<td class="gdfCell"></td>
 				<td class="gdfCell"></td>
+				<td class="gdfCell"></td>
 			</tr>
 		--></div>
 	</div>
-	<div id="divDialogoGeneralGantt" style="background-color: #ffffff;border: 1px solid #000000;bottom: 0px;display: none;width: 100%;z-index: 1000;padding: 7px;padding-bottom: 0px;padding-top: 10px;position: fixed;left: 0px;top: 0px;">
-		
-	</div>
 	<script>
-		function adminDetailActivity(taskId)
+		function administrarPersonal(taskId, nombreTarea)
 		{
-			$('#divDialogoGeneralGantt').hide();
-
 			if(taskId.substring(0, 3)=='tmp')
 			{
 				swal(
@@ -304,10 +302,43 @@
 				return;
 			}
 
-			paginaAjax('divDialogoGeneralGantt', { idTareaET : taskId }, '<?=base_url()?>index.php/ET_Tarea/administrarDetalleETTarea', 'POST', null, function()
+			paginaAjaxDialogo(null, replaceAll(replaceAll(nombreTarea, '<', '&lt;'), '>', '&gt;'), { idTareaET : taskId, idET : <?=$idExpedienteTecnico?> }, '<?=base_url()?>index.php/ET_Especialista_Tarea/insertar', 'GET', null, null, false, true);
+		}
+
+		function administrarComentarios(taskId, nombreTarea)
+		{
+			if(taskId.substring(0, 3)=='tmp')
 			{
-				$('#divDialogoGeneralGantt').show();
-			}, false, true);
+				swal(
+				{
+					title: '',
+					text: 'Debe guardar los datos actuales antes de asignar esta información.',
+					type: 'error' 
+				},
+				function(){});
+
+				return;
+			}
+
+			paginaAjaxDialogo(null, replaceAll(replaceAll(nombreTarea, '<', '&lt;'), '>', '&gt;')+' (Comentarios)', { idTareaET : taskId }, '<?=base_url()?>index.php/ET_Comentario/insertar', 'GET', null, null, false, true);
+		}
+
+		function administrarObservaciones(taskId, nombreTarea)
+		{
+			if(taskId.substring(0, 3)=='tmp')
+			{
+				swal(
+				{
+					title: '',
+					text: 'Debe guardar los datos actuales antes de asignar esta información.',
+					type: 'error' 
+				},
+				function(){});
+
+				return;
+			}
+
+			paginaAjaxDialogo(null, replaceAll(replaceAll(nombreTarea, '<', '&lt;'), '>', '&gt;')+' (Observaciones)', { idTareaET : taskId, idET : <?=$idExpedienteTecnico?> }, '<?=base_url()?>index.php/ET_Observacion_Tarea/insertar', 'GET', null, null, false, true);
 		}
 	</script>
 </body>

@@ -15,12 +15,6 @@
                                 <div class="x_panel">
                                   <div class="x_title">
                                     <h2>No Pip</h2>
-                                    <ul class="nav navbar-right panel_toolbox">
-                                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                      </li>
-                                      <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                      </li>
-                                    </ul>
                                     <div class="clearfix"></div>
                                   </div>
                                   <div class="x_content">
@@ -89,25 +83,23 @@
           Registrar proyectos de inversión </h4>
         </div>
         <div class="modal-body">
-         <div class="row">
-                    <div class="col-xs-12">
-                                        <!-- PAGE CONTENT BEGINS -->
-              <form class="form-horizontal " id="form-AddProyectosInversion"   action="<?php echo base_url(); ?>bancoproyectos/AddProyectos" method="POST" >
+        <div class="row">
+            <div class="col-xs-12">
+            <form class="form-horizontal" id="form-AddProyectosInversion" action="" method="POST" >
+                <div id="validarRegistroNoPip">
                                  <div class="row">
                                       <div class="col-md-4">
-                                       <div class="col-md-7 col-sm-6 col-xs-12">
+                                            <div class="col-md-7 col-sm-6 col-xs-12">
                                             <label for="name">Codigo Único<span class="required">*</span>
                                             </label>
-                                                  <input id="txtCodigoUnico" name="txtCodigoUnico"  class="form-control col-md-7 col-xs-5" placeholder="Codigo Unico" required="required" type="text">
+                                                  <input id="txtCodigoUnico" name="txtCodigoUnico"  class="form-control col-md-7 col-xs-5" placeholder="Codigo Unico" type="text">
                                              </div>
                                       </div>
-                                      <div class="col-md-4">
+                                        <div class="col-md-4">
 
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                             <label  for="name">Tipo inversion<span class="required">*</span>
                                         </label>
-                                          <!--  <select id="cbxTipoInv" name="cbxTipoInv" class="selectpicker" disabled>
-                                            </select>-->
                                                 <select id="cbx" name="cbx" class="selectpicker" >
                                                     <option selected value="2">NO PIP</option>
                                               </select>
@@ -117,18 +109,19 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                              <label  for="textbox"><span class="required">Ciclo Inversión</span>
                                               </label>
-                                            <select id="cbxEstCicInv_" name="cbxEstCicInv_" class="selectpicker"  title="Elija Ciclo de Inversión" required="required">
+                                            <select id="cbxEstCicInv_" name="cbxEstCicInv_" class="selectpicker"  title="Elija Ciclo de Inversión" >
                                             </select>
                                             </div>
                                       </div>
                                     </div>
+                                    
 
                                  <div class="row">
                                       <div class="col-md-12">
                                         <label class="control-label col-md-1 col-sm-12 col-xs-12" for="name">Inversion<span class="required"></span>
                                         </label>
                                          <div class="col-md-12 col-sm-12 col-xs-12">
-                                          <input id="txtNombrePip" name="txtNombrePip" class="form-control col-md-12 col-xs-5" placeholder="Nombre Inversion" required="required" type="text">
+                                          <input id="txtNombrePip" name="txtNombrePip" class="form-control col-md-12 col-xs-5" placeholder="Nombre Inversion" type="text">
                                         </div>
                                       </div>
                                  </div>
@@ -137,31 +130,12 @@
                                             <div class="col-md-11 col-sm-11 col-xs-12">
                                              <label  for="textbox"><span class="required">Fecha Registro</span>
                                               </label>
-                                            <input type="date" id="fecha_registro" name="fecha_registro" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text">
+                                            <input type="date" id="fecha_registro" name="fecha_registro" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" type="text">
                                             </div>
                                       </div>
-                                      <!--
-                                      <div class="col-md-4">
-                                            <div class="col-md-11 col-sm-11 col-xs-12">
-                                             <label  for="textbox"><span class="required">Fecha Viabilidad</span>
-                                              </label>
-                                            <input type="date" id="fecha_viabilidad" name="fecha_viabilidad" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text">
-                                            </div>
-                                      </div>
-                                      -->
                                  </div>
                                  <hr>
                                <div class="row">
-                                     <!-- <div class="col-md-4">
-
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <label  for="name">Naturaleza<span class="required">*</span>
-                                        </label>
-                                            <select id="cbxNatI" name="cbxNatI" class="selectpicker"  title="Elija Naturaleza">
-                                            </select>
-                                         </div>
-                                      </div>
-                                      -->
                                       <div class="col-md-4">
 
                                             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -213,14 +187,14 @@
                                             <div class="col-md-11 col-sm-6 col-xs-12">
                                             <label  for="name">Costo de Inversion<span class="required">*</span>
                                         </label>
-                                            <input id="txtCostoPip" name="txtCostoPip" class="form-control col-md-7 col-xs-5" data-validate-length-range="20" data-validate-words="2" placeholder="Costo de inversion" required="required" type="number">
+                                            <input id="txtCostoPip" name="txtCostoPip" class="form-control col-md-7 col-xs-5" data-validate-length-range="20" data-validate-words="2" placeholder="Costo de inversion" type="text">
                                          </div>
                                       </div>
                                        <div class="col-md-4">
                                            <div class="col-md-11 col-sm-6 col-xs-12">
                                              <label for="textbox"><span class="required">Número de beneficiarios</span>
                                              </label>
-                                              <input id="txt_beneficiarios" name="txt_beneficiarios" class="form-control col-md-7 col-xs-7 notValidate" data-validate-length-range="20" data-validate-words="2" placeholder="Número de beneficiarios" required="required" type="text">
+                                              <input id="txt_beneficiarios" name="txt_beneficiarios" class="form-control col-md-7 col-xs-7" data-validate-length-range="20" data-validate-words="2" placeholder="Número de beneficiarios" type="text">
                                             </div>
                                       </div>
                                       <div class="col-md-4">
@@ -261,24 +235,8 @@
                                             </select>
                                          </div>
                                       </div>
-                                      <!--
-                                       <div class="col-md-4">
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <label  for="textbox"><span class="required">Tipologia de Inversion</span></label>
-                                                <select id="cbxTipologiaInv" name="cbxTipologiaInv" class="selectpicker" title="Elija Tipología de Inversión"></select>
-                                            </div>
-                                      </div>-->
                               </div>
                                <div class="row">
-                                   <!-- <div class="col-md-4">
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <label  for="name">Programa.<span class="required">*</span>
-                                            </label>
-                                              <select id="cbxProgramaPres" name="cbxProgramaPres" class="selectpicker"  title="Elija Programa presupuestal">
-                                            </select>
-                                         </div>
-                                      </div>-->
-
                                        <div class="col-md-4">
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                             <label  for="name">Estado<span class="required">*</span>
@@ -290,9 +248,9 @@
                                          </div>
                                       </div>
                               </div>
-
-                    <div class="ln_solid"></div>
-                      <div class="form-group">
+                              </div>
+                
+                    <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
                         <center>
                           <button id="send" type="submit" class="btn btn-success">
@@ -306,7 +264,7 @@
                           </center>
                         </div>
                       </div>
-                    </form>
+                </form>
                         </div><!-- /.span -->
                  </div><!-- /.row -->
         </div>
@@ -328,99 +286,65 @@
           Editar proyectos de inversión </h4>
         </div>
         <div class="modal-body">
-         <div class="row">
-                    <div class="col-xs-12">
-                                        <!-- PAGE CONTENT BEGINS -->
-              <form class="form-horizontal " id="form_Edit_no_pip"   action="<?php echo base_url(); ?>bancoproyectos/AddProyectos" method="POST" >
-                      <div class="item form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="txt_idNo_Pip" name="txt_idNo_Pip" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
+        <div class="row">
+        <div class="col-xs-12">
+            <form class="form-horizontal " id="form_Edit_no_pip"   action="" method="POST" >
+                <input id="txt_idNo_Pip" name="txt_idNo_Pip" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
+                <div id="validarEdicionNoPip">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="col-md-7 col-sm-6 col-xs-12">
+                            <label for="name">Codigo Único<span class="required">*</span></label>
+                            <input id="txtCodigoUnico_m" name="txtCodigoUnico_m"  class="form-control col-md-7 col-xs-5" placeholder="Codigo Unico" required="required" type="text">
                         </div>
-                      </div>
-                                 <div class="row">
-                                      <div class="col-md-4">
-                                       <div class="col-md-7 col-sm-6 col-xs-12">
-                                            <label for="name">Codigo Único<span class="required">*</span>
-                                            </label>
-                                                  <input id="txtCodigoUnico_m" name="txtCodigoUnico_m"  class="form-control col-md-7 col-xs-5" placeholder="Codigo Unico" required="required" type="text">
-                                             </div>
-                                      </div>
-                                      <div class="col-md-4">
-
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <label  for="name">Tipo inversión<span class="required">*</span>
-                                        </label>
-                                          <!--  <select id="cbxTipoInv" name="cbxTipoInv" class="selectpicker" disabled>
-                                            </select>-->
-                                                <select id="cbx_tipo_no_pip_m" name="cbx_tipo_no_pip_m" class="selectpicker" >
-                                                    <option selected value="2">NO PIP</option>
-                                              </select>
-                                         </div>
-                                      </div>
-                                      <div class="col-md-4">
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                             <label  for="textbox"><span class="required">Ciclo Inversión</span>
-                                              </label>
-                                            <!--<select id="cbxEstCicInv_m" name="cbxEstCicInv_m" class="selectpicker"  title="Elija Ciclo de Inversión" required="required">
-                                            </select>-->
-                                            <select id="cbxEstCicInv_m" name="cbxEstCicInv_m" class="selectpicker"  >
-                                 </select>
-                                            </div>
-                                      </div>
-                                    </div>
-
-                                 <div class="row">
-
-                                      <div class="col-md-12">
-
-                                        <label class="control-label col-md-1 col-sm-12 col-xs-12" for="name">Inversion<span class="required"></span>
-                                        </label>
-                                         <div class="col-md-12 col-sm-12 col-xs-12">
-                                          <input id="txtNombrePip_m" name="txtNombrePip_m" class="form-control col-md-12 col-xs-5" placeholder="Nombre Inversion" required="required" type="text">
-                                            <!--<textarea  id="txtNombrePip" name="txtNombrePip" class="form-control" data-validate-length-range="6" data-validate-words="2" placeholder="Nombre Inversion"></textarea>-->
-                                        </div>
-                                      </div>
-
-                                 </div>
-                                 <hr>
-                               <div class="row">
-                                    <!--  <div class="col-md-4">
-
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <label  for="name">Naturaleza<span class="required">*</span>
-                                        </label>
-                                            <select id="cbxNatI_m" name="cbxNatI_m" class="selectpicker"  >
-                                            </select>
-                                         </div>
-                                      </div>-->
-                                      <div class="col-md-4">
-
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                             <label  for="textbox"><span class="required">Nivel de Gobierno</span>
-                                        </label>
-                                            <select id="cbxNivelGob_m" name="cbxNivelGob_m" class="selectpicker" >
-                                            </select>
-                                            </div>
-                                      </div>
-                                       <div class="col-md-4">
-
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                               <label  for="textbox"><span class="required">Unidad Ejecutora</span>
-                                                </label>
-                                                <select id="cbxUnidadEjecutora_m"  name="cbxUnidadEjecutora_m" class="selectpicker">
-                                                </select>
-                                            </div>
-                                      </div>
-                                      <div class="col-md-4">
-                                          <div class="col-md-6 col-sm-6 col-xs-12">
-                                              <label for="name" style="text-align:left">Función<span class="required">*</span></label>
-                                              <select id="cbxFuncion_m" name="cbxFuncion_m" class="selectpicker" ></select>
-                                          </div>
-                                      </div>
-                              </div>
-
-
-
+                    </div>
+                    <div class="col-md-4">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <label  for="name">Tipo inversión<span class="required">*</span></label>
+                            <select id="cbx_tipo_no_pip_m" name="cbx_tipo_no_pip_m" class="selectpicker" >
+                                <option selected value="2">NO PIP</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <label  for="textbox"><span class="required">Ciclo Inversión</span></label>
+                                <select id="cbxEstCicInv_m" name="cbxEstCicInv_m" class="selectpicker"  >
+                                </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label class="control-label col-md-1 col-sm-12 col-xs-12" for="name">Inversion<span class="required"></span></label>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <input id="txtNombrePip_m" name="txtNombrePip_m" class="form-control col-md-12 col-xs-5" placeholder="Nombre Inversion" required="required" type="text">
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <label  for="textbox"><span class="required">Nivel de Gobierno</span></label>
+                            <select id="cbxNivelGob_m" name="cbxNivelGob_m" class="selectpicker" >
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <label  for="textbox"><span class="required">Unidad Ejecutora</span></label>
+                            <select id="cbxUnidadEjecutora_m"  name="cbxUnidadEjecutora_m" class="selectpicker">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <label for="name" style="text-align:left">Función<span class="required">*</span></label>
+                            <select id="cbxFuncion_m" name="cbxFuncion_m" class="selectpicker" ></select>
+                        </div>
+                    </div>
+                </div>
                             <div class="row">
 
                                 <div class="col-md-4">
@@ -444,14 +368,14 @@
                                             <div class="col-md-11 col-sm-6 col-xs-12">
                                             <label  for="name">Costo de Inversion<span class="required">*</span>
                                         </label>
-                                            <input id="txtCostoPip_m" name="txtCostoPip_m" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Costo de inversion" required="required" type="number">
+                                            <input id="txtCostoPip_m" name="txtCostoPip_m" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Costo de inversion" required="required" type="text">
                                          </div>
                                       </div>
                                        <div class="col-md-4">
                                            <div class="col-md-11 col-sm-6 col-xs-12">
                                              <label for="textbox"><span class="required">Número de beneficiarios</span>
                                              </label>
-                                              <input id="txt_beneficiarios_m" name="txt_beneficiarios_m" class="form-control col-md-7 col-xs-7 notValidate" data-validate-length-range="6" data-validate-words="2" placeholder="Número de beneficiarios" required="required" type="number">
+                                              <input id="txt_beneficiarios_m" name="txt_beneficiarios_m" class="form-control col-md-7 col-xs-7" data-validate-length-range="6" data-validate-words="2" placeholder="Número de beneficiarios" required="required" type="number">
                                             </div>
                                       </div>
                                       <div class="col-md-4">
@@ -484,12 +408,6 @@
                                                 </select>
                                             </div>
                                       </div>
-                                    <!--   <div class="col-md-4">
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <label  for="textbox"><span class="required">Tipologia de Inversion</span></label>
-                                                <select id="cbxTipologiaInversion_m" name="cbxTipologiaInversion_m" class="selectpicker"></select>
-                                            </div>
-                                      </div>-->
                                          <div class="col-md-4">
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                             <label  for="name">Tipología NO PIP<span class="required">*</span>
@@ -500,15 +418,6 @@
                                       </div>
                               </div>
                                <div class="row">
-                                   <!-- <div class="col-md-4">
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <label  for="name">Programa<span class="required">*</span>
-                                            </label>
-                                              <select id="cbxProgramaPresupuestal_m" name="cbxProgramaPresupuestal_m" class="selectpicker"  >
-                                            </select>
-                                         </div>
-                                      </div>-->
-
                                        <div class="col-md-4">
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                             <label  for="name">Estado<span class="required">*</span>
@@ -520,6 +429,7 @@
                                          </div>
                                       </div>
                               </div>
+                        </div>
 
                     <div class="ln_solid"></div>
                       <div class="form-group">
@@ -563,14 +473,15 @@
                                         <!-- PAGE CONTENT BEGINS -->
               <form class="form-horizontal " id="form_AddUbigeo"   action="<?php echo base_url(); ?>bancoproyectos/Get_ubigeo_pip" method="POST" >
 
-              <div class="item form-group">
-                        <div class="item form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="txt_id_pip" name="txt_id_pip" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
-                        </div>
-                      </div>
-                </div>
-               <div class="item form-group">
+                <input id="txt_id_pip" name="txt_id_pip" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
+                <div class="item form-group">
+                                    <div class="col-md-12">
+                                        <label for="name">Proyecto:<span class="required"></span></label>
+                                        <div class="col-md-12">
+                                            <textarea readonly="readonly" name="nombreProyectoUbicacion" id="nombreProyectoUbicacion" rows="2" class="form-control"></textarea>
+                                            <br>                                            
+                                        </div>                                        
+                                    </div>
                                      <div class="col-md-4">
                                            <label for="name">Departamento.<span class="required"></span>
                                             </label>
@@ -679,14 +590,16 @@
                                         <!-- PAGE CONTENT BEGINS -->
               <form class="form-horizontal " id="form_AddEstadoCiclo"   action="<?php echo base_url(); ?>bancoproyectos/listar_estados" method="POST" >
 
-              <div class="item form-group">
-                        <div class="item form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
                         <input id="txt_id_pip_Ciclopi" name="txt_id_pip_Ciclopi" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
-                        </div>
-                      </div>
-                </div>
                                <div class="item form-group">
+                                    <div class="col-md-12">
+                                        <label for="name">Proyecto:<span class="required"></span></label>
+                                        <div class="col-md-12">
+                                            <textarea readonly="readonly" name="nombreProyectoCiclo" id="nombreProyectoCiclo" rows="2" class="form-control"></textarea>
+                                            <br>                                            
+                                        </div>                                        
+                                    </div>
+
                                      <div class="col-md-4">
 
                                            <label for="name">Estado.<span class="required"></span>
@@ -760,14 +673,14 @@
                                         <!-- PAGE CONTENT BEGINS -->
               <form class="form-horizontal " id="form_AddRubro"   action="<?php echo base_url(); ?>bancoproyectos/listar_rubro" method="POST" >
 
-              <div class="item form-group">
-                        <div class="item form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="txt_id_pip_RubroPI" name="txt_id_pip_RubroPI" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
-                        </div>
-                      </div>
-                </div>
-                               <div class="item form-group">
+                        <input id="txt_id_pip_RubroPI" name="txt_id_pip_RubroPI" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">      <div class="item form-group">
+                                    <div class="col-md-12">
+                                        <label for="name">Proyecto:<span class="required"></span></label>
+                                        <div class="col-md-12">
+                                            <textarea readonly="readonly" name="nombreProyectoRubro" id="nombreProyectoRubro" rows="2" class="form-control"></textarea>
+                                            <br>                                            
+                                        </div>                                        
+                                    </div>
                                      <div class="col-md-4">
 
                                            <label for="name">Rubro.<span class="required"></span>
@@ -840,14 +753,15 @@
                                         <!-- PAGE CONTENT BEGINS -->
               <form class="form-horizontal " id="form_AddModalidadEjec"   action="<?php echo base_url(); ?>bancoproyectos/listar_modalidad_ejec" method="POST" >
 
-              <div class="item form-group">
-                        <div class="item form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
                         <input id="txt_id_pip_ModalidadEjec" name="txt_id_pip_ModalidadEjec" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
-                        </div>
-                      </div>
-                </div>
                                <div class="item form-group">
+                                    <div class="col-md-12">
+                                        <label for="name">Proyecto:<span class="required"></span></label>
+                                        <div class="col-md-12">
+                                            <textarea readonly="readonly" name="nombreProyectoModalidad" id="nombreProyectoModalidad" rows="2" class="form-control"></textarea>
+                                            <br>                                            
+                                        </div>                                        
+                                    </div>
                                      <div class="col-md-4">
 
                                            <label for="name">Modalidad.<span class="required"></span>
@@ -919,15 +833,15 @@
                     <div class="col-xs-12">
                                         <!-- PAGE CONTENT BEGINS -->
               <form class="form-horizontal " id="form_AddTipoNoPip"   action="<?php echo base_url(); ?>bancoproyectos/Get_TipoNoPip" method="POST" >
-
-              <div class="item form-group">
-                        <div class="item form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="txt_id_pip_Tipologia" name="txt_id_pip_Tipologia" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
-                        </div>
-                      </div>
-                </div>
+              <input id="txt_id_pip_Tipologia" name="txt_id_pip_Tipologia" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
                                <div class="item form-group">
+                                    <div class="col-md-12">
+                                        <label for="name">Proyecto:<span class="required"></span></label>
+                                        <div class="col-md-12">
+                                            <textarea readonly="readonly" name="nombreProyectoTipologia" id="nombreProyectoTipologia" rows="2" class="form-control"></textarea>
+                                            <br>                                            
+                                        </div>                                        
+                                    </div>
                                      <div class="col-md-4">
 
                                            <label for="name">Tipo No Pip.<span class="required"></span>

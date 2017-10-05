@@ -15,12 +15,6 @@
                                 <div class="x_panel">
                                   <div class="x_title">
                                     <h2>PROYECTOS<small></small></h2>
-                                    <ul class="nav navbar-right panel_toolbox">
-                                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                      </li>
-                                      <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                      </li>
-                                    </ul>
                                     <div class="clearfix"></div>
                                   </div>
                                   <div class="x_content">
@@ -93,6 +87,7 @@
                     <div class="col-xs-12">
                                         <!-- PAGE CONTENT BEGINS -->
               <form class="form-horizontal " id="form_AddProgramacion"   action="<?php echo base_url(); ?>bancoproyectos/Get_OperacionMantenimiento" method="POST"  onSubmit="return false;">
+                    <div id="validarRegistroProgramarNoPip">
 
                         <input id="txt_id_pip_programacion" name="txt_id_pip_programacion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
                              <div class="item form-group">
@@ -116,7 +111,7 @@
                                     </div>
                                    <div class="col-md-2 col-sm-6 col-xs-12">
                                       <label>Costo del Proyecto</label>
-                                      <input  class="form-control" id="txt_costo_proyecto" name="txt_costo_proyecto" type="number" disabled="disabled">
+                                      <input class="form-control" id="txt_costo_proyecto" name="txt_costo_proyecto" type="text" disabled="disabled">
                                     </div>
                                     <div class="col-md-4 col-sm-12 col-xs-12 form-group">
                                       <label>Brecha  Proyecto.</label>
@@ -125,44 +120,37 @@
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12 form-group">
                                       <center><label style="color: red">Saldo a Programar</label></center>
-                                      <input  class="form-control" id="txt_saldoprogramar" name="txt_saldoprogramar" type="number" required="required">
+                                      <input class="form-control" id="txt_saldoprogramar" name="txt_saldoprogramar" type="text" required="required">
                                     </div>
 
                                  </div>
                               <h6><i class="fa fa-money"></i><b> Meta Presupuestal</b></h6>
                               <div class="item form-group">
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                    <div class="col-md-2 col-sm-6 col-xs-12">
                                       <center><label>PIA</label></center>
                                       <input  class="form-control" id="txt_pia_nopip" name="txt_pia_nopip" type="number" required="required" value="0.00" disabled="disabled">
                                     </div>
-                                   <div class="col-md-3 col-sm-6 col-xs-12">
+                                   <div class="col-md-2 col-sm-6 col-xs-12">
                                       <center><label>PIM</label></center>
                                       <input  class="form-control" id="txt_pim_nopip" name="txt_pim_nopip" type="number" required="required" value="0.00"  disabled="disabled">
                                     </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                    <div class="col-md-2 col-sm-6 col-xs-12">
                                       <center><label>Devengado</label></center>
                                       <input  class="form-control" id="txt_devengado_nopip" name="txt_devengado_nopip" type="number" required="required" value="0.00"  disabled="disabled">
                                     </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12 form-group">
+                                    <div class="col-md-2 col-sm-6 col-xs-12 form-group">
                                       <center><label>Prioridad</label></center>
                                       <input  class="form-control" id="txt_prioridad" name="txt_prioridad" type="text" readonly="" style="background:#EEEEEE;">
                                     </div>
+                                    <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+                                      <CENTER><label><b> Monto Programación:</b>Año 1</label></CENTER>
+                                      <input  class="form-control" id="txt_anio1" name="txt_anio1" type="text" required="required">
+                                    </div>
                                  </div>
-                              <h6><i class="fa fa-list"></i><b> Monto Programación</b></h6>
-                               <div class="item form-group">
-                                   <div class="col-md-3 col-sm-6 col-xs-12 form-group">
-                                      <CENTER><label>Año 1</label></CENTER>
-                                      <input  class="form-control" id="txt_anio1" name="txt_anio1" type="number" required="required">
-                                    </div>
-                                <!--<div class="col-md-3 col-sm-6 col-xs-12">
-                                      <CENTER><label>Año 2</label></CENTER>
-                                      <input  class="form-control" id="txt_anio2" name="txt_anio2" type="number" required="required">
-                                    </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
-                                      <CENTER><label>Año 3</label></CENTER>
-                                      <input  class="form-control" id="txt_anio3" name="txt_anio3" type="number" required="required">
-                                    </div>-->
+                            </div>
 
+
+                                 <div class="item form-group">
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                       <label>.</label><br>
                                        <button  id="send_addProgramacion"  type='button' class="btn btn-success">

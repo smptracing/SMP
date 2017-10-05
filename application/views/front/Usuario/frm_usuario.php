@@ -19,7 +19,7 @@
 		top: 0;
 		left: 50%;
 		margin-left: -5px;
-		border-bottom-color: lightgray; /* black */
+		border-bottom-color: lightgrasy; /* black */
 		border-width: 0 5px 5px;
 	}
 

@@ -151,6 +151,30 @@ class Model_Dashboard_Reporte extends CI_Model
             return $data->result();
     }
 
+    function DetalleMensualizadoMetaEst($correlativoMeta, $anioMeta)
+    {
+        $opcion="listar_mensualizado_meta";
+        $data = $this->db->query("execute sp_Gestionar_SIAF @opcion='".$opcion."',  @correlativo_meta='".$correlativoMeta."', @anio_meta='".$anioMeta."'");
+            
+            //return $data->result()[0];
+            return count($data->result())>0 ? $data->result()[0] : false;
+    }
+
+    function DetalleMensualizadoMetaFuente($correlativoMeta, $anioMeta)
+    {
+        $opcion="listar_acumulado_meta_fuente_financ";
+        $data = $this->db->query("execute sp_Gestionar_SIAF @opcion='".$opcion."',  @correlativo_meta='".$correlativoMeta."', @anio_meta='".$anioMeta."'");
+
+        return $data->result();
+    }
+
+    function DetalleMensualizadoMetaFuenteDatosG($correlativoMeta, $anioMeta)
+    {
+        $opcion="listar_acumulado_meta_fuente_financ";
+        $data = $this->db->query("execute sp_Gestionar_SIAF @opcion='".$opcion."',  @correlativo_meta='".$correlativoMeta."', @anio_meta='".$anioMeta."'");
+
+        return $data->result()[0];
+    }
     function ReporteDevengadoPiaPimPorPipGraficos($CodigoUnico)
     {
         $data = $this->db->query("select codigo_unico_pi,SUM(costo_pi) as costo_pi,SUM(pia_meta_pres) as pia_meta_pres ,SUM(pim_acumulado) AS pim_acumulado,
@@ -174,6 +198,50 @@ class Model_Dashboard_Reporte extends CI_Model
             
             return $data->result();  
     }
+
+    function ReporteDetalleAnaliticoFinanciero($anio,$codigounico)
+    {
+        $opcion="listar_analitico_avance_proyecto";
+        $data = $this->db->query("execute sp_Gestionar_SIAF @opcion='".$opcion."',  @anio_meta='".$anio."', @codigo_snip='".$codigounico."'");
+            
+            return $data->result();
+    }
+
+    function ReporteDetalleAnaliticoFinancieroE($anio,$codigounico)
+    {
+        $opcion="listar_analitico_avance_proyecto";
+        $data = $this->db->query("execute sp_Gestionar_SIAF @opcion='".$opcion."',  @anio_meta='".$anio."', @codigo_snip='".$codigounico."'");
+            
+            //return $data->result()[0];
+            return count($data->result())>0 ? $data->result()[0] : false;
+    }
+
+    function ReporteDetalleClasificador($anio,$codigounico)
+    {
+        $opcion="listar_montos_proyecto_por_clasificadores";
+        $data = $this->db->query("execute sp_Gestionar_SIAF @opcion='".$opcion."',  @anio_meta='".$anio."', @codigo_snip='".$codigounico."'");
+            
+        return $data->result();
+    }
+
+    function ReporteDetalleClasificadorFijos($anio,$codigounico)
+    {
+        $opcion="listar_montos_proyecto_por_clasificadores";
+        $data = $this->db->query("execute sp_Gestionar_SIAF @opcion='".$opcion."',  @anio_meta='".$anio."', @codigo_snip='".$codigounico."'");
+        
+        return $data->result()[0];
+    }
+
+    
+function DetallePorOrden($correlativoMeta,$anioMeta)
+    {
+        $opcion="listar_pedidos_proyecto";
+        $data = $this->db->query("execute sp_Gestionar_SIGA @opcion='".$opcion."',  @anio_meta='".$anioMeta."', @correlativo_meta='".$correlativoMeta."'");
+        
+        return $data->result();
+    }
+
+
 
     /*function ReporteConsolidadoAvanceFisicoFinan($anio)
     {

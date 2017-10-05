@@ -181,7 +181,7 @@ $(document).on("ready" ,function()
                     });
                 }
           //FIN TRAER DATOS EN UN COMBO DE CICLO DE INVERSION
-           var listarMetaPresupuestal=function()
+        /*var listarMetaPresupuestal=function()
                 {
                     htmlMeta="";
                     $("#cbxMetaPresupuestal").html(htmlMeta); //nombre del selectpicker UNIDAD EJECUTORA
@@ -199,7 +199,7 @@ $(document).on("ready" ,function()
                             $('.selectpicker').selectpicker('refresh'); 
                         }
                     });
-                }
+                }*/
     listaProyectoInversion();
     listarCicloInversion();
     listarTipologiaInversion();
@@ -208,7 +208,7 @@ $(document).on("ready" ,function()
     listaUnidadEjecutora();
     listarFuncion();
     listarFuenteFinan();
-    listarMetaPresupuestal();
+    //listarMetaPresupuestal();
     $("#btn-NuevoProyectoI").click(function()
     {
         listarTipoInversion();

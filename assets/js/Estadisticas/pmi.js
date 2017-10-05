@@ -19,8 +19,7 @@ function MontoProgramadoPip(anio)
         data :{anio:anio},
         success: function(respuesta)
         {
-         var registros=eval(respuesta);
-
+            var registros = eval(respuesta);
             var sum=0;
             var sum_monto=0;
             var sumaTotal = 0 ;

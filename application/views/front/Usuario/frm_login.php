@@ -1,53 +1,173 @@
 <!DOCTYPE html>
-<html >
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>SMP APURÍMAC</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SMP TRACING</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link href="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/adminlte/ionicons.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/adminlte/AdminLTE.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/adminlte/_all-skins.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <style>
+        .login-page
+        {
+            background-color:#f1f4f7;
+            background-image: -webkit-gradient(linear, left 0%, left 100%, from(#555555), to(#111111));
+            background-image: -webkit-linear-gradient(top, #555555, 0%, #111111, 100%);
+            background-image: -moz-linear-gradient(top, #555555 0%, #111111 100%);
+            background-image: linear-gradient(to bottom, #555555 0%, #111111 100%);
+            background-repeat: repeat-x;
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff555555', endColorstr='#ff111111', GradientType=0);
+            background-attachment: fixed;
+        }
+        .logo
+        {
+            text-align: center;
+        }
+        .login-box
+        {
+            margin-top: 50px;
+        }
+        .box-slider
+        {
+            background-color: #f7f7f7;
+        }
+        .carousel-inner
+        {
+            text-align: center;
+            font-size: 13px;
+            line-height: 1.25;
+        }
+        .carousel-content 
+        {
+            color:black;
+            align-items:center;
+            padding: 13px 5px;
+        }
+        #text-carousel
+        {
+          width: 100%;
+          height: auto;
+          padding: 0px;
+        }
+        .funcion{
+            color: #2aaf67;;
+            font-family: Open Sans, sans-serif;     
+            text-transform: uppercase;
+            font-weight: bold;    
+            font-size: 15px;  
+        }
+        .cantidad
+        {
+            color: #5a8ab9;
+             font-family: Open Sans, sans-serif;  
+               
+        }
+        .Beneficiarios
+        {
+            color: #f26522;
+            font-family: Open Sans, sans-serif;           
 
-  <link href="<?php echo base_url(); ?>assets/login/css/smp.css" rel="stylesheet">
-  <link href="<?php echo base_url(); ?>assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="<?php echo base_url(); ?>assets/login/css/style.css" rel="stylesheet">
-
+        }
+        .costo
+        {
+            color: #e52b50;
+            font-family: Open Sans, sans-serif;   
+        }
+    </style>
 </head>
-
-<body>
-<div class="pen-title">
-  <h1 style="font-size: 40px;">Inicio de Sesión</h1><span>Gobierno Regional de Apurímac</span>
-</div>
-<div class="module form-module">
-  <div class="toggle"><i class="fa fa-times fa-pencil"></i>
-    <div class="tooltip">Registrate</div>
-  </div>
-  <div class="form">
-    <h2>Ingresa a tu cuenta</h2>
-    <form id="login" method="post" action="<?php echo base_url("index.php/Login/ingresar");?>">
-      <input type="text" placeholder="Ingrese su nombre de Usuario" name="txtUsuario" autocomplete="off" />
-      <input type="password" placeholder="Ingrese su  Contraseña" name="txtPassword" />
-      <button type="submit">Entrar</button>
-    </form>
-  </div>
-  <div class="form">
-    <h2>Crea una Cuenta</h2> 
-    <form>
-        <input type="text" placeholder="Ingresa tu nombre"/>
-        <input type="text" placeholder="Ingresa tu apellido paterno"/>
-        <input type="text" placeholder="Ingresa tu apellido materno"/>
-        <input type="text" placeholder="Ingresa tu DNI"/>
-        <input type="text" placeholder="Ingresa tu Direccion"/>
-        <input type="tel" placeholder="Ingresa tu Telefono"/>
-        <input type="email" placeholder="Ingresa tu Correo Electrónico"/>
-        <input type="text" placeholder="Ingresa tu grado Acádemico"/>
-        <input type="text" placeholder="Ingresa tu Especialidad"/>
-        <input type="date" placeholder="Ingresa tu Fecha de Nacimiento"/>
-        <input type="password" placeholder="Password"/>
-        <button>Registrarse</button>
-    </form>
-  </div>
-  <div class="cta"><a href="#">Olvidaste tu contraseña?</a></div>
-</div>
-  <script src="<?php echo base_url(); ?>assets/adminlte/jquery-2.2.3.min.js"></script>
-  <script src="<?php echo base_url(); ?>assets/login/js/index.js"></script>
-
+<body class="hold-transition login-page">
+    <div class="login-box">
+        <div class="login-box-body">
+            <div class="row">
+                <div class="col-md-12 logo">
+                    <img style="display: inline-block; height: 50px; width: 170px;" src="<?php echo base_url(); ?>assets/images/logo.png" class="img-responsive">                              
+                </div>
+                <p class="login-box-msg">Inicie sesión</p>                
+            </div>       
+            <form action="<?php echo base_url("index.php/Login/ingresar");?>" method="post">
+                <div class="form-group has-feedback">
+                    <input type="text" autocomplete="off" class="form-control" placeholder="Ingrese usuario" name="txtUsuario" id="txtUsuario">
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                </div>
+                <div class="form-group has-feedback">
+                    <input type="password" class="form-control" placeholder="Ingrese Contraseña" name="txtPassword" id="txtPassword">
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Ingresar</button>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-12 container-box">
+                        <div class="box-slider col-md-12">
+                            <div class="row">
+                                <div id="text-carousel" class="carousel slide" data-ride="carousel">
+                                    <div class="row">
+                                        <div class="col-xs-offset-3 col-xs-6">
+                                            <div class="carousel-inner">
+                                                <div class="item active">
+                                                    <div class="carousel-content">
+                                                        <div>
+                                                            <p class="funcion"><?=$Reporte[0]->nombre_funcion?></p>
+                                                            <p class="cantidad"><?=$Reporte[0]->cantidad_pip?> Proyectos Registrados.</p>
+                                                            <p class="Beneficiarios"><?=$Reporte[0]->total_beneficiarios?> Beneficiarios.</p>
+                                                            <p class="costo">S/. <?=$Reporte[0]->costo_total?></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <?php
+                                                unset($Reporte[0]);
+                                                foreach($Reporte as $item ) { ?>  
+                                                <div class="item">
+                                                    <div class="carousel-content">
+                                                        <div>
+                                                            <p class="funcion"><?=$item->nombre_funcion?></p>
+                                                            <p class="cantidad"><?=$item->cantidad_pip?> Proyectos Registrados.</p>
+                                                            <p class="Beneficiarios"><?=$item->total_beneficiarios?> Beneficiarios.</p>
+                                                            <p class="costo">S/. <?=$item->costo_total?></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <?php } ?>                                 
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a class="left carousel-control" href="#text-carousel" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left"></span>
+                                    </a>
+                                    <a class="right carousel-control" href="#text-carousel" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                    </a>
+                                </div>                   
+                            </div>                   
+                        </div>   
+                    </div>   
+                </div>
+            </form>
+            <div style="text-align: center; padding:10px;">
+                <a href="http://regionapurimac.gob.pe/" target="_blank">Gobierno Regional de Apurímac</a><br>             
+            </div>            
+        </div>
+    </div>
+<script src="<?php echo base_url(); ?>assets/adminlte/jquery-2.2.3.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/adminlte/jquery.slimscroll.min.js"> </script>
+<script src="<?php echo base_url(); ?>assets/adminlte/fastclick.min.js"> </script>
+<script src="<?php echo base_url(); ?>assets/adminlte/app.min.js"> </script>
+<script src="<?php echo base_url(); ?>assets/adminlte/adminlte.min.js"> </script>
+<script src="<?php echo base_url(); ?>assets/adminlte/demo.js"> </script>
 </body>
 </html>
+
+
 
