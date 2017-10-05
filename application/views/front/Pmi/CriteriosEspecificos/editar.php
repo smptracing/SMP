@@ -35,3 +35,31 @@
 			<button  class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 		</div>
 </form>
+
+<script>
+
+	$('#btnEnviarFormulario').on('click', function(event)
+	{
+		event.preventDefault();
+
+		paginaAjaxJSON($('#form-editarCriteriosEspecificos').serialize(), '<?=base_url();?>index.php/PmiCriterioEspecifico/editar', 'POST', null, function(objectJSON)
+		{
+			$('#modalTemp').modal('hide');
+
+			objectJSON=JSON.parse(objectJSON);
+
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+			},
+			function()
+			{
+				window.location.href='<?=base_url();?>index.php/PmiCriterioEspecifico/index/';
+
+				renderLoading();
+			});
+		}, false, true);
+	});
+</script>

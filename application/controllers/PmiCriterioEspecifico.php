@@ -28,10 +28,11 @@ class PmiCriterioEspecifico extends CI_Controller {
 	            $txtcriterioespecifico=$this->input->post('txtcriterioespecifico');
 	            $txtpeso=$this->input->post('txtpeso');
 
-	            $this->Model_CriterioEspecifico->editar($id,$txtcriterioespecifico,$txtpeso);
+	        $this->Model_CriterioEspecifico->editar($id,$txtcriterioespecifico,$txtpeso);
             $this->db->trans_complete();
 
-            echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos actualizados correctamente.']);exit;  
+
+           echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos actualizados correctamente.']);exit;  
         }
         $id=$this->input->get('id');
         $CriterioEspecifico=$this->Model_CriterioEspecifico->criterioEspecifico($id);
