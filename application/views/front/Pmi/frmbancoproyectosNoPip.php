@@ -3,6 +3,10 @@
   {
     vertical-align: middle;
   }
+  #table_no_pip>tbody>tr>td:nth-child(0n+4)
+  {
+    text-align: right;
+  }
 </style>
 <div class="right_col" role="main">
           <div class="">
@@ -48,7 +52,7 @@
                                                           <th style="width: 1%">#</th>
                                                           <th style="width: 8%"><i class="fa fa-thumb-tack"></i> Cod. </th>
                                                           <th style="width: 32%"><i class="fa fa-bookmark-o"></i> Nombre</th>
-                                                          <th style="width: 12%"><i class="fa fa-money"></i> Costo</th>
+                                                          <th style="width: 12%; text-align: right;"><i class="fa fa-money"></i> Costo</th>
                                                           <th style="width: 12%">Tipo NO PIP</th>
                                                         <th style="width: 20%">Opción</th>
                                                         </tr>

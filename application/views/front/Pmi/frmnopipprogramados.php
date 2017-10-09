@@ -3,6 +3,10 @@
   {
     vertical-align: middle;
   }
+   #table_operacion_mantenimiento>tbody>tr>td:nth-child(0n+6)
+  {
+    text-align: right;
+  }
 </style>
 <div class="right_col" role="main">
           <div class="">
@@ -57,9 +61,9 @@
                                                                   <th style="width: 1%">Id</th>
                                                                   <th style="width: 5%">Cód único</th>
                                                                   <th style="width: 5%">Tipo NO PIP</th>
-                                                                  <th style="width: 30%">Inversión</th>
+                                                                  <th style="width: 20%">Inversión</th>
                                                                   <th style="width: 4%">Prioridad</th>
-                                                                  <th style="width: 4%">Brecha</th>
+                                                                  <th style="width: 14%">Brecha</th>
                                                                   <th style="width: 4%">AÑO 1</th>
                                                                 </tr>
                                                       </thead>

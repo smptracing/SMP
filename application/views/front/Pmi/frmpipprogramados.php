@@ -3,6 +3,54 @@
   {
     vertical-align: middle;
   }
+  #table_formulacion_evaluacion>tbody>tr>td:nth-child(0n+6)
+  {
+    text-align: right;
+  }
+  #table_formulacion_evaluacion>tbody>tr>td:nth-child(0n+7)
+  {
+    text-align: right;
+  }
+  #table_formulacion_evaluacion>tbody>tr>td:nth-child(0n+8)
+  {
+    text-align: right;
+  }
+  #table_ejecucion>tbody>tr>td:nth-child(0n+6)
+  {
+    text-align: right;
+  }
+  #table_ejecucion>tbody>tr>td:nth-child(0n+7)
+  {
+    text-align: right;
+  }
+  #table_ejecucion>tbody>tr>td:nth-child(0n+8)
+  {
+    text-align: right;
+  }
+  #table_ejecucion>tbody>tr>td:nth-child(0n+9)
+  {
+    text-align: right;
+  }
+  #table_ejecucion>tbody>tr>td:nth-child(0n+10)
+  {
+    text-align: right;
+  }
+  #table_ejecucion>tbody>tr>td:nth-child(0n+11)
+  {
+    text-align: right;
+  }
+  #table_operacion_mantenimiento>tbody>tr>td:nth-child(0n+7)
+  {
+    text-align: right;
+  }
+   #table_operacion_mantenimiento>tbody>tr>td:nth-child(0n+8)
+  {
+    text-align: right;
+  }
+   #table_operacion_mantenimiento>tbody>tr>td:nth-child(0n+9)
+  {
+    text-align: right;
+  }
 </style>
 <div class="right_col" role="main">
           <div class="">

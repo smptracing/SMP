@@ -1,7 +1,17 @@
 <style>
+  
+
   #table-ProyectoInversionProgramado > tbody > tr > td
   {
     vertical-align: middle;
+  }
+  #table_NoPip>tbody>tr>td:nth-child(0n+5)
+  {
+    text-align: right;
+  }
+  #Table_Programar>tbody>tr>td:nth-child(0n+4)
+  {
+    text-align: right;
   }
 </style>
 <div class="right_col" role="main">

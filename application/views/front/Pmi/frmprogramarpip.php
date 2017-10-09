@@ -3,6 +3,26 @@
   {
     vertical-align: middle;
   }
+  #table_formulacion_evaluacion>tbody>tr>td:nth-child(0n+5)
+  {
+    text-align: right;
+  }
+  #table_ejecucion>tbody>tr>td:nth-child(0n+5)
+  {
+    text-align: right;
+  }
+  #Table_Programar>tbody>tr>td:nth-child(0n+4)
+  {
+    text-align: right;
+  }
+  #Table_funcionamiento>tbody>tr>td:nth-child(0n+5)
+  {
+      text-align: right;
+  }
+  #Table_Programar_operacion_mantenimiento>tbody>tr>td:nth-child(0n+4)
+  {
+      text-align: right;
+  }
 </style>
 
 <div class="right_col" role="main">

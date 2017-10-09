@@ -3,6 +3,18 @@
   {
     vertical-align: middle;
   }
+  #table_proyectos_inversion>tbody>tr>td:nth-child(0n+4)
+  {
+    text-align: right;
+  }
+  #Table_OperacionMantenimiento>tbody>tr>td:nth-child(0n+1)
+  {
+    text-align: right;
+  }
+  #Table_OperacionMantenimiento>tbody>tr>td:nth-child(0n+3)
+  {
+    text-align: right;
+  }
 </style>
 <div class="right_col" role="main">
           <div class="">
@@ -48,7 +60,7 @@
                                                           <th style="width: 1%">#</th>
                                                           <th style="width: 8%"><i class="fa fa-thumb-tack"></i> Cod. </th>
                                                           <th style="width: 36%"><i class="fa fa-bookmark-o"></i> Nombre</th>
-                                                          <th style="width: 12%"><i class="fa fa-money"></i> Costo</th>
+                                                          <th style="width: 12%; text-align: right;"><i class="fa fa-money"></i> Costo</th>
                                                           <th style="width: 12%"> Estado Ciclo</th>
                                                         <th style="width: 16%">Opción</th>
                                                         </tr>
@@ -748,9 +760,9 @@
                     <thead >
                        <tr>
                          <th  ><i class="fa fa-thumb-tack"></i> #</th>
-                         <th  ><i class="fa fa-thumb-tack"></i> Monto Operación</th>
+                         <th style="text-align: right;"   ><i class="fa fa-thumb-tack"></i> Monto Operación</th>
                          <th  ><i class="fa fa-thumb-tack"></i> Responsable Operación</th>
-                         <th  ><i class="fa fa-thumb-tack"></i> Monto Operación</th>
+                         <th style="text-align: right;" ><i class="fa fa-thumb-tack"></i> Monto Operación</th>
                          <th  ><i class="fa fa-thumb-tack"></i> Responsable Operación</th>
                          <th  ><i class="fa fa-thumb-tack"></i> Fecha Registro</th>
                       </tr>
