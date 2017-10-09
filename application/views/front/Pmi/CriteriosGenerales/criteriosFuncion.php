@@ -125,8 +125,9 @@
 		{
 				
 				var anio=$("#textAnio").val();
-				window.location.href=base_url+"index.php/PmiCriterioG/ReporteCriteriosG/"+anio;
-			
+		    	var urll=base_url+"index.php/PmiCriterioG/ReporteCriteriosG/"+anio;
+		        ventana=window.open(urll, 'Nombre de la ventana', 'width=1400,height=800');
+					
 		});
 
 		
