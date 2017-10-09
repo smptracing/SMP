@@ -40,22 +40,69 @@
 											<table id="table-DetalleMensualizado"  class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 												<thead>
 													<tr>
-														<td>Nombre</td>
-														<td>Mes</td>
-														<td>Mes </td>
 														<td>Nro Orden</td>
 														<td>Referencia</td>
 														<td>Clasificador</td>
+														<td>Concepto</td>
 														<td>Tipo de bien</td>
 														<td>Sub total de moneda</td>
-														<td>Igv</td>
-														<td>Fact moneda</td>
-														<td>Ssub total</td>
-														<td>Total igv</td>
+														<td>Total igv moneda</td>
+														<td>Total Fact moneda</td>
+														<td>Sub total</td>
+														<td>Total igv soles </td>
+														<td>Total Fact soles</td>
+														<td>Exp Siaf</td>
+														<td>Exp Siga</td>
+														<td>Nro Certificado</td>
 													</tr>
 												</thead>
 												<tbody>
-									
+													<?php foreach($listaDetallePorOrdenCompraMeta as $item ){ ?>
+													  	<tr>
+													    	<td>
+																<?=$item->NRO_ORDEN?>
+													    	</td>
+													    	<td>
+																<?=$item->DOCUM_REFERENCIA?>
+													    	</td>
+													    	<td>
+																<?=$item->CLASIFICAD?>
+													    	</td>
+													    	<td>
+																<?=$item->CONCEPTO?>
+													    	</td>
+													    	<td>
+																<?=$item->TIPO_BIEN?>
+													    	</td>
+													    	<td>
+																<?=$item->SUBTOTAL_MONEDA?>
+													    	</td>
+													    	<td>
+																<?=$item->TOTAL_IGV_MONEDA?>
+													    	</td>
+													    	<td>
+																<?=$item->TOTAL_FACT_MONEDA?>
+													    	</td>
+													    	<td>
+																<?=$item->SUBTOTAL_SOLES?>
+													    	</td>
+													    	<td>
+																<?=$item->TOTAL_IGV_SOLES?>
+													    	</td>
+													    	<td>
+																<?=$item->TOTAL_FACT_SOLES?>
+													    	</td>
+													    	<td>
+																<?=$item->EXP_SIAF?>
+													    	</td>
+													    	<td>
+																<?=$item->EXP_SIGA?>
+													    	</td>
+													    	<td>
+																<?=$item->NRO_CERTIFICA?>
+													    	</td>
+													  </tr>
+													<?php } ?>
 												</tbody>
 											</table>
 										</div>

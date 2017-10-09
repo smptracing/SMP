@@ -241,7 +241,13 @@ function DetallePorOrden($correlativoMeta,$anioMeta)
         return $data->result();
     }
 
-
+    function DetallePorOrdenCompraMeta($correlativoMeta,$anioMeta)
+    {
+    $opcion="listar_orden_compra_meta";
+        $data = $this->db->query("execute sp_Gestionar_SIGA @opcion='".$opcion."',  @anio_meta='".$anioMeta."', @correlativo_meta='".$correlativoMeta."'");
+        
+        return $data->result();  
+    }
 
     /*function ReporteConsolidadoAvanceFisicoFinan($anio)
     {
