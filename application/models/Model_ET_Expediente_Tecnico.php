@@ -173,14 +173,26 @@ class Model_ET_Expediente_Tecnico extends CI_Model
 
     public function detalleExpediente($id_et)
     {
-    	$data=$this->db->query("select ET.id_et, ET.direccion_ue,ET.distrito_provincia_departamento_ue,ET.telefono_ue, ET.ruc_ue, P.nombre_pi, 
+    	/*$data=$this->db->query("select ET.id_et, ET.direccion_ue,ET.distrito_provincia_departamento_ue,ET.telefono_ue, ET.ruc_ue, P.nombre_pi, 
 			STUFF((SELECT  ',' + provincia + ' '+distrito AS [text()]
 	        from dbo.UBIGEO_PI ubp inner join UBIGEO ub on ubp.id_ubigeo =ub.id_ubigeo 
 		    where ubp.id_pi=P.id_pi
 		    Order by ub.id_ubigeo for xml PATH('')),1,1,'') AS provincia , P.codigo_unico_pi,ET.costo_total_preinv_et,ET.costo_directo_preinv_et,ET.costo_indirecto_preinv_et,et.costo_total_inv_et,et.gastos_generales_et,ET.gastos_supervision_et,ET.funcion_et,ET.programa_et,ET.sub_programa_et,ET.proyecto_et,et.componente_et,ET.meta_et,ET.fuente_financiamiento_et,ET.modalidad_ejecucion_et,ET.tiempo_ejecucion_pi_et,ET.num_beneficiarios_indirectos,ET.desc_situacion_actual_et,ET.relevancia_economica_et,ET.resumen_pi_et,et.num_folios
 			from 
 			ET_EXPEDIENTE_TECNICO ET INNER join PROYECTO_INVERSION P ON ET.id_pi=P.id_pi INNER JOIN UBIGEO_PI UP on P.id_pi=UP.id_pi INNER JOIN UBIGEO U ON UP.id_ubigeo=U.id_ubigeo where id_et ='".$id_et."' group by ET.id_et,ET.direccion_ue,ET.distrito_provincia_departamento_ue,ET.telefono_ue, ET.ruc_ue, P.nombre_pi, P.codigo_unico_pi,ET.costo_total_preinv_et,ET.costo_directo_preinv_et,ET.costo_indirecto_preinv_et,et.costo_total_inv_et,et.gastos_generales_et,ET.gastos_supervision_et,ET.funcion_et,ET.programa_et,ET.sub_programa_et,ET.proyecto_et,et.componente_et,ET.meta_et,ET.fuente_financiamiento_et,ET.modalidad_ejecucion_et,ET.tiempo_ejecucion_pi_et,ET.num_beneficiarios_indirectos,ET.desc_situacion_actual_et,ET.relevancia_economica_et,ET.resumen_pi_et,et.num_folios, P.id_pi	");
+        return $data->result()[0];*/
+        $data = $this->db->query("select et.id_et,et.direccion_ue,et.distrito_provincia_departamento_ue, et.telefono_ue, et.ruc_ue,
+				py.nombre_pi,u.provincia,py.codigo_unico_pi, et.costo_total_preinv_et,et.costo_directo_preinv_et, et.costo_indirecto_preinv_et,
+				et.costo_total_inv_et, et.gastos_generales_et,et.gastos_supervision_et,et.funcion_et, et.programa_et,
+				et.sub_programa_et,et.proyecto_et,et.componente_et, et.meta_et, et.fuente_financiamiento_et,
+				et.modalidad_ejecucion_et, et.tiempo_ejecucion_pi_et, et.num_beneficiarios_indirectos, et.desc_situacion_actual_et,
+				et.relevancia_economica_et, et.resumen_pi_et, et.num_folios
+				from ET_EXPEDIENTE_TECNICO et inner join PROYECTO_INVERSION py on py.id_pi=et.id_pi
+				left join UBIGEO_PI up on up.id_pi=py.id_pi 
+				left join UBIGEO u on u.id_ubigeo = up.id_ubigeo
+				where et.id_et=$id_et");
         return $data->result()[0];
+
     }
 
     public function ExpedienteTecnicoPorIdETPadre($idExpedienteTecnico)
