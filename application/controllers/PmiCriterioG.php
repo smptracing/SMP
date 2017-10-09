@@ -78,7 +78,7 @@ class PmiCriterioG extends CI_Controller {/* Mantenimiento de sector entidad Y s
 			
 		}
 	}
-	public function index(){
+	public function index($año=0){
 		$listaCriterioGen=$this->Model_CriterioGeneral->CriteriosGenerales();
 		$this->load->view('layout/PMI/header');
 		$this->load->view('front/Pmi/CriteriosGenerales/index',['listaCriterioGen'=>$listaCriterioGen]);

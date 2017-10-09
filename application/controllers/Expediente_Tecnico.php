@@ -659,11 +659,8 @@ class Expediente_Tecnico extends CI_Controller
 	{
 		$id_et=$this->input->post('id_et');
 		$detalleExpediente=$this->Model_ET_Expediente_Tecnico->DetalleExpediente($id_et);
-		//var_dump($detalleExpediente);exit;
 		$this->load->view('front/Ejecucion/ExpedienteTecnico/detalleExpediente.php',["detalleExpediente" => $detalleExpediente]);	
 	}
-
-	
 
 	public function vistoBueno()
 	{

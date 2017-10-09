@@ -52,19 +52,19 @@
 													</tr>
 													<tr>
 														<td><b>3. Costo Total Proyecto(Pre Invesión)</b></td>
-														<td><?=$detalleExpediente->costo_total_preinv_et;?></td>		
+														<td>S/. <?=a_number_format($detalleExpediente->costo_total_preinv_et, 2, '.',",",3);?></td>		
 													</tr>
 													<tr>
 														<td>3.1. Costo Directo</td>
-														<td><?=$detalleExpediente->costo_directo_preinv_et;?></td>		
+														<td>S/. <?=a_number_format($detalleExpediente->costo_directo_preinv_et,2,'.',",",3);?></td>		
 													</tr>
 													<tr>
 														<td>3.2. Costo Indirecto</td>
-														<td><?=$detalleExpediente->costo_indirecto_preinv_et;?></td>		
+														<td>S/. <?=a_number_format($detalleExpediente->costo_indirecto_preinv_et,2,'.',",",3);?></td>		
 													</tr>
 													<tr>
 														<td><b>4. Costo Total Proyecto(Invesión)</b></td>
-														<td><?=$detalleExpediente->costo_total_inv_et;?></td>		
+														<td>S/. <?=a_number_format($detalleExpediente->costo_total_inv_et,2,'.',",",3);?></td>		
 													</tr>
 													<tr>
 														<td>4.1. Costo Directo</td>
@@ -72,11 +72,11 @@
 													</tr>
 													<tr>
 														<td>4.2. Gasto General</td>
-														<td><?=$detalleExpediente->gastos_generales_et;?></td>		
+														<td>S/. <?=a_number_format($detalleExpediente->gastos_generales_et,2,'.',",",3);?></td>	
 													</tr>
 													<tr>
 														<td>4.3. Gasto de Supervisión</td>
-														<td><?=$detalleExpediente->gastos_supervision_et;?></td>		
+														<td>S/. <?=a_number_format($detalleExpediente->gastos_supervision_et,2,'.',",",3);?></td>		
 													</tr>
 													<tr>
 														<td><b>5. Función Programática</b></td>
@@ -120,7 +120,7 @@
 													</tr>
 													<tr>
 														<td><b>7. Número de beneficiarios</b> </td>
-														<td><?=$detalleExpediente->num_beneficiarios_indirectos;?></td>		
+														<td><?=a_number_format($detalleExpediente->num_beneficiarios_indirectos,0,'.',",",3);?></td>		
 													</tr>
 													
 												</thead>

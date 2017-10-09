@@ -44,7 +44,7 @@
                                                           <th style="width: 8%"><i class="fa fa-thumb-tack"></i> Cod. </th>
                                                           <th><i class="fa fa-bookmark-o"></i> Nombre</th>
                                                            <th style="width: 8%"> Función</th>
-                                                          <th style="width: 8%"><i class="fa fa-money"></i> Costo</th>
+                                                          <th style="width: 8%; text-align: right;"><i class="fa fa-money"></i> Costo</th>
                                                           <th style="width: 12%"> Tipo NO PIP</th>
                                                           <th style="width: 12%"> Estado</th>
                                                         <th style="width: 12%">&nbsp;</th>
