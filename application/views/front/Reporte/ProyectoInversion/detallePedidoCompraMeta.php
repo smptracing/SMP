@@ -42,25 +42,68 @@
 												<thead>
 													<tr>
 														<td>Tipo bien</td>
+														<td>Tipo Pedido</td>
 														<td>Nro Pedido</td>
-														<td>Clasificador</td>
-														<td>Nombre clasificador</td>
+														<td>Fecha Pedido</td>
 														<td>Motivo pedido</td>
-														<td>Cant. solicitada</td>
-														<td>Cant. aprobada</td>
-														<td>Cant. atentida</td>
-														<td>Precio unitario</td>
-														<td>valo total</td>
-														<td>empleado</td>
-														<td>fecha pedido</td>
-														<td>Fecha aprobado</td>
-														<td>Fecha atendido</td>
-														<td>Fecha registro</td>
-														<td>Fecha registro de visto bueno</td>
+														<td>Estado</td>
+														<td>Fecha Aprobado</td>
+														<td>Fecha Atendido</td>
+														<td>Fecha Registro </td>
+														<td>Equipo Registro</td>
+														<td>Fecha Registro visto bueno</td>
+														<td>Equipo Registro visto bueno</td>
+														<td>Personal</td>
 													</tr>
 												</thead>
 												<tbody>
-													
+													<?php foreach($listaDetallePorPedidoCompraMeta as $item ){ ?>
+													  	<tr>
+															
+													    	<td>
+																<?=$item->TIPO_BIEN?>
+													    	</td>
+													    	<td>
+																<?=$item->TIPO_PEDIDO?>
+													    	</td>
+													    	<td>
+																<?=$item->NRO_PEDIDO?>
+													    	</td>
+													    	<td>
+																<?=$item->FECHA_PEDIDO?>
+													    	</td>
+													    	<td>
+																<?=$item->MOTIVO_PEDIDO?>
+													    	</td>
+											
+													    	<td>
+																<?=$item->ESTADO?>
+													    	</td>
+															<td>
+																<?=$item->FECHA_APROB?>
+													    	</td>
+													    	<td>
+																<?=$item->FECHA_ATENC?>
+													    	</td>
+													    	<td>
+																<?=$item->FECHA_REG?>
+													    	</td>
+													    	
+													    	<td>
+																<?=$item->EQUIPO_REG?>
+													    	</td>
+													    	<td>
+																<?=$item->fecha_reg_vb?>
+													    	</td>
+													    	<td>
+																<?=$item->equipo_reg_vb?>
+													    	</td>
+													    	<td>
+																<?=$item->personal?>
+													    	</td>
+
+													  </tr>
+													<?php } ?>
 												</tbody>
 											</table>
 										</div>
