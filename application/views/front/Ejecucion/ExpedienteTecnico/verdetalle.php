@@ -57,7 +57,7 @@
                     	<li role="presentation" class="dropdown" style="font-size: 15px; color: red;">
                       		<a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">	Expediente Técnico<span class="caret"></span>
                             </a>
-                      		<ul id="menu6" class="dropdown-menu animated fadeInDown subMenu" role="menu">
+                      		<ul id="menu6" class="dropdown-menu subMenu" role="menu">
 	                        	<li role="presentation">
 		                        	<a role="menuitem" tabindex="-1" href="#" onclick="paginaAjaxDialogo(null, 'Modificar Expediente Técnico',{ id_et: '<?=$ExpedienteTecnicoElaboracion[0]->id_et?>' }, base_url+'index.php/Expediente_Tecnico/editar', 'GET', null, null, false, true);return false;">Editar Expediente Técnico 	
 		                        	</a> 
@@ -70,7 +70,7 @@
                     	</li><li role="presentation" class="dropdown">
                       		<a id="drop5" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"> Mantenimiento<span class="caret"></span>
                             </a>
-                      		<ul id="menu2" class="dropdown-menu animated fadeInDown subMenu" role="menu" aria-labelledby="drop5">
+                      		<ul id="menu2" class="dropdown-menu subMenu" role="menu" aria-labelledby="drop5">
                       			<li role="presentation">
 	                        		<a role="menuitem" tabindex="-1" href="#" onclick="paginaAjaxDialogo(null, 'Asignación de especialistas requeridos', { idExpedienteTecnico : <?=$ExpedienteTecnicoElaboracion[0]->id_et?> }, base_url+'index.php/ET_PER_REQ/insertar', 'GET', null, null, false, true); return false;"> Asignar Personal	
 		                        	</a>
@@ -87,7 +87,7 @@
                     	</li><li role="presentation" class="dropdown">
                       		<a id="drop6" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"> Operaciones <span class="caret"></span>
                             </a>
-                      		<ul id="menu2" class="dropdown-menu animated fadeInDown subMenu" role="menu" aria-labelledby="drop5">
+                      		<ul id="menu2" class="dropdown-menu subMenu" role="menu" aria-labelledby="drop5">
 		                        <li role="presentation">
 	                        		<a role="menuitem" tabindex="-1" href="#" onclick="window.open(base_url+'index.php/ET_Tarea/index/<?=$ExpedienteTecnicoElaboracion[0]->id_et?>', '_blank'); return false;"> Gestionar Actividades
 	                        		</a>
@@ -108,7 +108,7 @@
                     	</li><li role="presentation" class="dropdown">
                       		<a id="drop7" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"> Detalle Expendiente <span class="caret"></span>
                             </a>
-                      		<ul id="menu3" class="dropdown-menu animated fadeInDown subMenu" role="menu" aria-labelledby="drop6">
+                      		<ul id="menu3" class="dropdown-menu subMenu" role="menu" aria-labelledby="drop6">
                       			<li role="presentation">
 									<a role="menuitem" tabindex="-1" title='Listar Responsable'  onclick="paginaAjaxDialogo(null, 'Listar Responsables del Expediente Técnico',{ id_et: '<?=$ExpedienteTecnicoElaboracion[0]->id_et?>' }, base_url+'index.php/Expediente_Tecnico/ResponsableExpediente', 'POST', null, null, false, true);" >Responsable</a>
 								</li>

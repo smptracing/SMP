@@ -102,8 +102,15 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 					<div class="clearfix"></div>
 				</div>
 				<div class="x_content">
-					<div style="text-align: right;">
-						<input type="text" class="form-control" placeholder="Buscar partidas por su descripción" autocomplete="off" style="margin-bottom: 4px;" onkeyup="filtrarHtml('tableValorizacion', this.value, true, 0, event);">
+					
+					<div class="row">
+						<div class="col-md-10 col-xs-12">
+							<input type="text" class="form-control" placeholder="Buscar partidas por su descripción" autocomplete="off" style="margin-bottom: 15px;" onkeyup="filtrarHtml('tableValorizacion', this.value, true, 0, event);">			
+						</div>
+						<div class="col-md-2 col-xs-12">
+							<a href="<?= site_url('Expediente_Tecnico/reportePdfalorizacionEjecucion/');?>" role=button class="btn btn-primary" target="_blank"><i class="fa fa-file-pdf-o"></i> Exportar a PDF</a>
+						</div>	
+						<br>					
 					</div>
 					<div id="divContenedorGeneral" style="overflow-x: scroll;">
 						<table id="tableValorizacion">
