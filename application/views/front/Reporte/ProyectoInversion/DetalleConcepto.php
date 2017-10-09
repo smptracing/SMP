@@ -117,10 +117,6 @@
 																<?=$item->TOTAL_IGV_SOLES?>
 													    	</td>
 													    	<td>
-																<?=$item->TOTAL_FACT_MONEDA?>
-													    	</td>
-													    	
-													    	<td>
 																<?=$item->TOTAL_FACT_SOLES?>
 													    	</td>
 													    	<td>
