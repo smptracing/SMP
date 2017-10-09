@@ -287,7 +287,7 @@ $("#CodigoUnico").on( "click", function()
 				$.each( meta1, function( key, value ) {
                    	html +="<tr>";
                               html +="<th  colspan='15'>"+value.nombre_finalidad+"</th></tr> <tr>";
-				 	html +="<tbody> <tr><th><button type='button' class='editar btn btn-success btn-xs' onclick='detalladoMensualizado("+value.ano_eje+","+parseInt(value.meta)+");'>"+parseInt(value.ano_eje)+" <i class='ace-icon fa fa-eye bigger-120'></i></button></th><th><button type='button' class='editar btn btn-primary btn-xs' onclick='detalladoMensualizadoFuenteFinan("+value.ano_eje+","+parseInt(value.meta)+");'>"+parseInt(value.meta)+"<i class='ace-icon bigger-120'></i></button></button><button type='button' class='editar btn btn-primary btn-xs' onclick='detalladoMensualizadoConceptoClasificador("+value.ano_eje+","+parseInt(value.meta)+");'>Cons<i class='ace-icon bigger-120'></i></button></th><th style='text-align:right'>"+value.pia+"</th><th style='text-align:right'>"+value.pim+"</th><th style='text-align:right'>"+value.pim_acumulado+"</th><th style='text-align:right'>"+value.ejecucion+"</th><th style='text-align:right'>"+value.compromiso+"</th><th style='text-align:right'>"+value.monto_certificado+"</th><th style='text-align:right'>"+value.devengado+"</th><th style='text-align:right'>"+value.girado+"</th><th style='text-align:right'>"+value.pagado+"</th><th style='text-align:right'>"+value.avance_financiero+'%'+"</th><th style='text-align:right'>"+value.monto_comprometido_anual+"</th><th style='text-align:right'>"+value.monto_precertificado+"</th><th><button type='button' class='editar btn btn-success btn-xs' onclick='detalleOrdenCompraMeta("+value.ano_eje+","+parseInt(value.meta)+");'> Orden</i></button></th></tr>";      
+				 	html +="<tbody> <tr><th><button type='button' class='editar btn btn-success btn-xs' onclick='detalladoMensualizado("+value.ano_eje+","+parseInt(value.meta)+");'>"+parseInt(value.ano_eje)+" <i class='ace-icon fa fa-eye bigger-120'></i></button></th><th><button type='button' class='editar btn btn-primary btn-xs' onclick='detalladoMensualizadoFuenteFinan("+value.ano_eje+","+parseInt(value.meta)+");'>"+parseInt(value.meta)+"<i class='ace-icon bigger-120'></i></button></button><button type='button' class='editar btn btn-primary btn-xs' onclick='detalladoMensualizadoConceptoClasificador("+value.ano_eje+","+parseInt(value.meta)+");'>Orden<i class='ace-icon bigger-120'></i></button></th><th style='text-align:right'>"+value.pia+"</th><th style='text-align:right'>"+value.pim+"</th><th style='text-align:right'>"+value.pim_acumulado+"</th><th style='text-align:right'>"+value.ejecucion+"</th><th style='text-align:right'>"+value.compromiso+"</th><th style='text-align:right'>"+value.monto_certificado+"</th><th style='text-align:right'>"+value.devengado+"</th><th style='text-align:right'>"+value.girado+"</th><th style='text-align:right'>"+value.pagado+"</th><th style='text-align:right'>"+value.avance_financiero+'%'+"</th><th style='text-align:right'>"+value.monto_comprometido_anual+"</th><th style='text-align:right'>"+value.monto_precertificado+"</th><th><button type='button' class='editar btn btn-success btn-xs' onclick='detallePedidoCompraMeta("+value.ano_eje+","+parseInt(value.meta)+");'>Pedido</i></button></th></tr>";      
 						html +="</tbody>";
 				});
 				
@@ -918,9 +918,9 @@ $("#CodigoUnico").on( "click", function()
 	{
 		paginaAjaxDialogo(null, 'Ver Concepto',{ anio: anio, meta:meta}, base_url+'index.php/PrincipalReportes/detalladoMensualizadoConceptoClasificador', 'GET', null, null, false, true);	
 	}
-	function detalleOrdenCompraMeta(anio,meta)
+	function detallePedidoCompraMeta(anio,meta)
 	{
-		paginaAjaxDialogo(null, 'Orden de Compra por Meta',{ anio: anio, meta:meta}, base_url+'index.php/PrincipalReportes/detalleOrdenCompraMeta', 'GET', null, null, false, true);	
+		paginaAjaxDialogo(null, 'Orden de Compra por Meta',{ anio: anio, meta:meta}, base_url+'index.php/PrincipalReportes/detallePedidoCompraMeta', 'GET', null, null, false, true);	
 	}
 
 </script>

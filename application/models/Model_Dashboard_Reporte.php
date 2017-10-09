@@ -235,15 +235,15 @@ class Model_Dashboard_Reporte extends CI_Model
     
 function DetallePorOrden($correlativoMeta,$anioMeta)
     {
-        $opcion="listar_pedidos_proyecto";
+        $opcion="listar_orden_proyecto";
         $data = $this->db->query("execute sp_Gestionar_SIGA @opcion='".$opcion."',  @anio_meta='".$anioMeta."', @correlativo_meta='".$correlativoMeta."'");
         
         return $data->result();
     }
 
-    function DetallePorOrdenCompraMeta($correlativoMeta,$anioMeta)
+    function DetallePedidoCompraMeta($correlativoMeta,$anioMeta)
     {
-    $opcion="listar_orden_compra_meta";
+    $opcion="listar_pedidos_proyecto";
         $data = $this->db->query("execute sp_Gestionar_SIGA @opcion='".$opcion."',  @anio_meta='".$anioMeta."', @correlativo_meta='".$correlativoMeta."'");
         
         return $data->result();  
