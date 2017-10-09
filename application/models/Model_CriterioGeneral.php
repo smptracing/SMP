@@ -14,17 +14,19 @@ class Model_criterioGeneral extends CI_Model
 
 		return $data->result();
 	}
-	function CriteriosGeneralesPorFuncion()
+	function CriteriosGeneralesPorFuncion($anio)
 	{
-		$data=$this->db->query("select FUNCION.id_funcion,codigo_funcion,nombre_funcion,COUNT(nombre_criterio_gen) AS CantCriteriosG FROM CRITERIO_GEN INNER JOIN FUNCION ON CRITERIO_GEN.id_funcion=FUNCION.id_funcion group by nombre_funcion,FUNCION.id_funcion,codigo_funcion");
+		$data=$this->db->query("select CRITERIO_GEN.anio_criterio_gen,FUNCION.id_funcion,codigo_funcion,nombre_funcion,COUNT(nombre_criterio_gen) AS CantCriteriosG 
+							FROM CRITERIO_GEN INNER JOIN FUNCION ON CRITERIO_GEN.id_funcion=FUNCION.id_funcion where CRITERIO_GEN.anio_criterio_gen='".$anio."'
+							group by nombre_funcion,FUNCION.id_funcion,codigo_funcion,anio_criterio_gen ");
 
 		return $data->result();
 	}
 
-	function ListarCriterioGenerales($id_funcion)
+	function ListarCriterioGenerales($id_funcion,$anio)
 	{
 		$opcion="ListarCriterioGeneral";
-		$ListarCriterioGenerales=$this->db->query("execute sp_Gestionar_CriterioGeneral @opcion='".$opcion."', @id_funcion='$id_funcion' ");
+		$ListarCriterioGenerales=$this->db->query("execute sp_Gestionar_CriterioGeneral @opcion='".$opcion."', @id_funcion='$id_funcion',@anio_criterio_gen='".$anio."' ");
 
 		return $ListarCriterioGenerales->result();
 	}

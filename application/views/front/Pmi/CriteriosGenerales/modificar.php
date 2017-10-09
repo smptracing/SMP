@@ -53,7 +53,7 @@
 					function()
 					{
 
-						paginaAjaxDialogo(null, 'Registro Criterio Generales', { id_funcion:objectJSON.id_funcion, nombre_funcion:'SALUD' }, base_url+'index.php/PmiCriterioG/insertar', 'GET', null, null, false, true);
+						paginaAjaxDialogo(null, 'Registro Criterio Generales', { id_funcion:objectJSON.id_funcion, nombre_funcion:'SALUD',anio:objectJSON.anio }, base_url+'index.php/PmiCriterioG/insertar', 'GET', null, null, false, true);
 					});
 
 				}, false, true);

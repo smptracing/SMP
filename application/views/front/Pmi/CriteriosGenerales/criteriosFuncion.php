@@ -22,7 +22,7 @@
 											<div class="x_panel">
 											<div class="row">
 												<div class="col-md-2 col-xs-2"  style="margin-left: 300px;">
-													 <input type="text" class="form-control" placeholder="Ingrese Año" id="textAnio" name="textAnio"  data-inputmask="'mask' : '9999'">
+													 <input type="text" class="form-control" placeholder="Ingrese Año" id="textAnio" name="textAnio" value="<?= $anio;?>" data-inputmask="'mask' : '9999'">
 												</div>
 												<div class="col-md-3 col-xs-3"  style="margin-left: 50px;">
 													 <button type="button" class="btn btn-success">Filtar Por años</button>
@@ -42,6 +42,7 @@
 													<tbody>
 															<?php foreach($listaCriterioFuncion as $item ){ ?>
 													  	<tr>
+															
 															<td>
 																<?=$item->codigo_funcion?>
 													    	</td>
@@ -49,10 +50,10 @@
 																<?=$item->nombre_funcion?>
 													    	</td>
 													    	<td>
-																N° <?=$item->CantCriteriosG?>
+																<?=$item->CantCriteriosG?>
 													    	</td>
 													    	<td style="text-align: left;">
-																<button type="button" class="btn btn-primary btn-xs " onclick="paginaAjaxDialogo(null, 'Registro Criterio Generales', { id_funcion:'<?=$item->id_funcion?>', nombre_funcion:'<?=$item->nombre_funcion?>' }, base_url+'index.php/PmiCriterioG/insertar', 'GET', null, null, false, true);"><span class="fa fa-plus-circle"></span>
+																<button type="button" class="btn btn-primary btn-xs " onclick="paginaAjaxDialogo(null, 'Registro Criterio Generales', { id_funcion:'<?=$item->id_funcion?>', nombre_funcion:'<?=$item->nombre_funcion?>',anio:'<?= $anio;?>' }, base_url+'index.php/PmiCriterioG/insertar', 'GET', null, null, false, true);"><span class="fa fa-plus-circle"></span>
 																</button>
 													    	</td>
 													  </tr>
@@ -79,7 +80,10 @@
 	{
 		var myTable=$('#table-Presupuesto').DataTable(
 		{
-			"language" : idioma_espanol
+			
+			"language" : idioma_espanol,
+
+				
 		});
 
 		$.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';

@@ -19,7 +19,7 @@
 		<div class="row" id="divCriterioGeneral">
 			<div class="col-md-3 col-sm-6 col-xs-12">
 				<label>Año</label>
-				<input type="text" class="form-control" id="txtAnioCriterioG" name="txtAnioCriterioG" placeholder="Año" autocomplete="off">
+				<input type="text" class="form-control" id="txtAnioCriterioG" name="txtAnioCriterioG" value="<?= $anio;?>" placeholder="Año" autocomplete="off">
 			</div>
 			<div class="col-md-3 col-sm-6 col-xs-12">
 				<label>Peso</label>	
@@ -50,7 +50,7 @@
 										<td>
 											<button type="button" class="btn btn-primary btn-xs " onclick="EditarCriterioGeneral(<?=$item->id_criterio_gen?>)"><i class="fa fa-pencil"></i></button>
 											<button type="button" class="btn btn-primary btn-xs " onclick="paginaAjaxDialogo(null, 'Registro Criterio Específicos',{ id_criterio_gen:'<?=$item->id_criterio_gen?>',nombre_criterio_gen:'<?=$item->nombre_criterio_gen?>' }, base_url+'index.php/PmiCriterioEspecifico/index', 'GET', null, null, false, true);"><i class="fa fa-bars"></i></button>
-											<button onclick="EliminarCriterioGeneral(<?=$item->id_criterio_gen?>,<?=$item->id_funcion?>);" data-toggle="tooltip" data-original-title="Eliminar Analitico"   class='btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button></td>									
+											<button onclick="EliminarCriterioGeneral(<?=$item->id_criterio_gen?>,<?=$item->id_funcion?>,<?=$item->anio_criterio_gen ?>);" data-toggle="tooltip" data-original-title="Eliminar Analitico"   class='btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button></td>									
 									</tr>
 						</tr>						
 					<?php }?>
@@ -67,6 +67,7 @@
 <script>
 $( document ).ready(function() {
 
+ 
     $('#cbx_funcion').selectpicker('refresh');
     $('#btnAgregarCriterioGeneral').on('click', function(event)
 	{
@@ -116,11 +117,11 @@ function EditarCriterioGeneral(idCriterioGeneral)
 {
 	paginaAjaxDialogo(null, 'Editar Criterio General',{ idCriterioGeneral:idCriterioGeneral}, base_url+'index.php/PmiCriterioG/editar', 'GET', null, null, false, true);
 }
-function EliminarCriterioGeneral(idCriterioGeneral,id_funcion)
+function EliminarCriterioGeneral(idCriterioGeneral,id_funcion,anio_criterio_gen)
 {
 		$('#cbx_funcion').selectpicker('refresh');
 		event.preventDefault();
-		paginaAjaxJSON({ "idCriterioGeneral" : idCriterioGeneral,"id_funcion" : id_funcion}, '<?=base_url();?>index.php/PmiCriterioG/eliminar', 'POST', null, function(objectJSON)
+		paginaAjaxJSON({ "idCriterioGeneral" : idCriterioGeneral,"id_funcion" : id_funcion,'anio_criterio_gen':anio_criterio_gen}, '<?=base_url();?>index.php/PmiCriterioG/eliminar', 'POST', null, function(objectJSON)
 		{
 			//$('#modalTemp').modal('hide');
 
