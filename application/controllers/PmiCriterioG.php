@@ -86,18 +86,16 @@ class PmiCriterioG extends CI_Controller {/* Mantenimiento de sector entidad Y s
 
 	public function ReporteCriteriosG($anio='')
 	{
-		$listarfuncion=$this->Model_CriterioEspecifico->listarFuncion();
+		$listarfuncion=$this->Model_CriterioEspecifico->listarFuncion($anio);
 		
 		foreach ($listarfuncion as $key => $value) 
 			    {
-					if(count($this->Model_CriterioGeneral->ListarCriterioGenerales($value->id_funcion,$anio))>0)
-					{
+
 						$value->childCriteriGeneral=$this->Model_CriterioGeneral->ListarCriterioGenerales($value->id_funcion,$anio);
 						foreach ($value->childCriteriGeneral as $index => $item) 
 						{
 								$item->childEspecificos=$this->Model_CriterioEspecifico->ListarCriterioEspecifico($item->id_criterio_gen);
 						}
-					}
 					
 			    }
 		$html= $this->load->view('front/Pmi/CriteriosGenerales/reporteCriteriosGeneralesEspecificos', ["listarfuncionCriterioGeneral" => $listarfuncion], true);
