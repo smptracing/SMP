@@ -1,3 +1,7 @@
+
+<link href="<?php echo base_url(); ?>assets/li/css/layout.css" rel="stylesheet">
+<link href="<?php echo base_url(); ?>assets/li/css/menu.css" rel="stylesheet">
+<script src="<?php echo base_url(); ?>assets/li/js/script.js"></script>
 <style>
 	.btn.btn-app{
 		background-color: #f2f5f7;
@@ -198,8 +202,7 @@
 								</a> 
 							</div>                     		
                     	</div>
-                    </div>
-                  		
+                    </div>                  		
                 </div>
 			</div>
 		</div>
