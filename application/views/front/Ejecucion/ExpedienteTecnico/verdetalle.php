@@ -1,10 +1,45 @@
 <style>
 	.btn.btn-app{
 		background-color: #f2f5f7;
+		color:#001f3f;
+	}
+	.menuPrincipal
+	{
+		background-color: #001f3f;
+		color: #73879c; 
+		font-size: 15px;
+
+	}
+	.nav>li>a
+	{
+    	color: white;
+	}
+	.nav .open>a, .nav .open>a:focus, .nav .open>a:hover 
+	{
+    	background-color: #26576f;
+    	color: white;
+	}
+	.nav>li>a:hover 
+	{
+    	padding: 13px 15px 12px;
+    	background-color: #26576f;
+    	color: white;
+
 	}
 	.dropdown:hover{
-		background-color: #eeeeee;
+		background-color: #001f3f;
 	}
+	.dropdown-menu >li>a:hover{
+		background-color: #001f3f;
+		color:white;
+	}
+	.dropdown-menu >li>a
+	{
+		padding: 10px 10px;
+		color:#001f3f;
+		font-size: 13px;
+	}
+
 </style>
 <div class="right_col" role="main">
 	<div>
@@ -17,9 +52,9 @@
 				</div>
 				<div class="x_content">
 				<p></p>
-                  	<ul class="nav nav-pills" role="tablist" style="background-color:#f2f5f7; color: #73879c; font-size: 15px;">
+                  	<ul class="nav nav-pills menuPrincipal" role="tablist">
 
-                    	<li role="presentation" class="dropdown" style="font-size: 15px; color: #73879c;">
+                    	<li role="presentation" class="dropdown" style="font-size: 15px; color: red;">
                       		<a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">	Expediente Técnico<span class="caret"></span>
                             </a>
                       		<ul id="menu6" class="dropdown-menu animated fadeInDown" role="menu">
@@ -32,9 +67,7 @@
 		                        	</a>
 		                        </li>
                     		</ul>
-                    	</li>
-
-                    	<li role="presentation" class="dropdown">
+                    	</li><li role="presentation" class="dropdown">
                       		<a id="drop5" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"> Mantenimiento<span class="caret"></span>
                             </a>
                       		<ul id="menu2" class="dropdown-menu animated fadeInDown" role="menu" aria-labelledby="drop5">
@@ -51,8 +84,7 @@
 		                        	</a>
 		                        </li>
                       		</ul>
-                    	</li>
-                    	<li role="presentation" class="dropdown">
+                    	</li><li role="presentation" class="dropdown">
                       		<a id="drop6" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"> Operaciones <span class="caret"></span>
                             </a>
                       		<ul id="menu2" class="dropdown-menu animated fadeInDown" role="menu" aria-labelledby="drop5">
@@ -69,13 +101,11 @@
 		                        	</a>
 		                        </li>
 		                        <li role="presentation">
-	                        		<a role="menuitem" tabindex="-1" href="#" onclick="window.open(base_url+'index.php/Expediente_Tecnico/valorizacionEjecucionProyecto/<?=$ExpedienteTecnicoElaboracion[0]->id_et?>', '_blank'); return false;"> Valorización de Ejecución.	
+	                        		<a role="menuitem" tabindex="-1" href="#" onclick="window.open(base_url+'index.php/Expediente_Tecnico/valorizacionEjecucionProyecto/<?=$ExpedienteTecnicoElaboracion[0]->id_et?>', '_blank'); return false;"> Valorización de Ejecución	
 		                        	</a>
 		                        </li>
                       		</ul>
-                    	</li>
-
-                    	<li role="presentation" class="dropdown">
+                    	</li><li role="presentation" class="dropdown">
                       		<a id="drop7" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"> Detalle Expendiente <span class="caret"></span>
                             </a>
                       		<ul id="menu3" class="dropdown-menu animated fadeInDown" role="menu" aria-labelledby="drop6">
