@@ -7,6 +7,9 @@ class PmiCriterioG extends CI_Controller {/* Mantenimiento de sector entidad Y s
 		parent::__construct();
 		$this->load->model('Model_CriterioGeneral');
 		$this->load->model('Model_Funcion');
+		$this->load->model('Model_CriterioEspecifico');
+		$this->load->library('mydompdf');
+
 	}
 	public function insertar()
 	{
@@ -79,6 +82,32 @@ class PmiCriterioG extends CI_Controller {/* Mantenimiento de sector entidad Y s
 			}
 			
 		}
+	}
+
+	public function ReporteCriteriosG($anio='')
+	{
+		$listarfuncion=$this->Model_CriterioEspecifico->listarFuncion();
+		
+		foreach ($listarfuncion as $key => $value) 
+			    {
+					if(count($this->Model_CriterioGeneral->ListarCriterioGenerales($value->id_funcion,$anio))>0)
+					{
+						$value->childCriteriGeneral=$this->Model_CriterioGeneral->ListarCriterioGenerales($value->id_funcion,$anio);
+						foreach ($value->childCriteriGeneral as $index => $item) 
+						{
+								$item->childEspecificos=$this->Model_CriterioEspecifico->ListarCriterioEspecifico($item->id_criterio_gen);
+						}
+					}
+					
+			    }
+		$html= $this->load->view('front/Pmi/CriteriosGenerales/reporteCriteriosGeneralesEspecificos', ["listarfuncionCriterioGeneral" => $listarfuncion], true);
+		
+		$this->mydompdf->load_html($html);
+		$this->mydompdf->set_paper('letter', 'landscape');
+		$this->mydompdf->render();
+		$this->mydompdf->set_base_path('./assets/css/dompdf.css'); //agregar de nuevo el css
+
+		$this->mydompdf->stream("reporteAnalisisPreciosFF11.pdf", array("Attachment" => false));
 	}
 	public function index($año=0){
 		$listaCriterioGen=$this->Model_CriterioGeneral->CriteriosGenerales();

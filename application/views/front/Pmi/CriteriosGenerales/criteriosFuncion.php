@@ -25,7 +25,7 @@
 													 <input type="text" class="form-control" placeholder="Ingrese Año" id="textAnio" name="textAnio" value="<?= $anio;?>" data-inputmask="'mask' : '9999'">
 												</div>
 												<div class="col-md-3 col-xs-3"  style="margin-left: 50px;">
-													 <button type="button" class="btn btn-success">Filtar Por años</button>
+													 <button type="button" class="btn btn-success" id="ReporteCriteriosGenerales"> <i class="fa fa-file-pdf-o"> Reporte PDF</i> </button>
 												</div>
 												<div class="pull-left tableTools-container ">Reportes&nbsp;&nbsp;</div>
 											</div>			
@@ -121,6 +121,15 @@
 				window.location.href=base_url+"index.php/PmiCriterioG/criterioFuncion/"+anio;
 			}
 		});
+		$('#ReporteCriteriosGenerales').on('click', function(e)
+		{
+				
+				var anio=$("#textAnio").val();
+				window.location.href=base_url+"index.php/PmiCriterioG/ReporteCriteriosG/"+anio;
+			
+		});
+
+		
 
 	});
 

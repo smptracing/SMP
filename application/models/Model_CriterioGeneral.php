@@ -65,5 +65,6 @@ class Model_criterioGeneral extends CI_Model
 		 $funcion=$this->db->query("select * from CRITERIO_GEN");        
         return $funcion->result();
 	}
+	
 
 }

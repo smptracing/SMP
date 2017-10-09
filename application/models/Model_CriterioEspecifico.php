@@ -52,5 +52,11 @@ class Model_CriterioEspecifico extends CI_Model
         $this->db->query("execute sp_Gestionar_CriterioEspecifico  @Opcion='".$opcion."',@id_criterio='".$id."'");
         return true;
     }
+    function listarFuncion()
+    {
+        $data=$this->db->query("select  distinct funcion.nombre_funcion,funcion.id_funcion from funcion inner join CRITERIO_GEN
+         on funcion.id_funcion=CRITERIO_GEN.id_funcion");
+        return $data->result();
+    }
 
 }
