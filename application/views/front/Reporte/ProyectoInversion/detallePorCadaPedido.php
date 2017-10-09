@@ -15,6 +15,8 @@
 	}
 </style>
 
+
+
 <div class="right_col" role="main">
 	<div class="">
 		<div class="clearfix"></div>
@@ -22,7 +24,7 @@
 			<div class="col-md-12 col-xs-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
-						<h2><b>DETALLE DE PEDIDOS DE COMPRAS POR META</b> </h2>
+						<h2><b>DETALLE POR CADA PEDIDO</b> </h2>
 						<ul class="nav navbar-right panel_toolbox">
 						</ul>
 						<div class="clearfix"></div>
@@ -42,77 +44,30 @@
 									<div class="row">  
 										<div class="col-md-12 col-sm-12 col-xs-12">
 											 <div class="table-responsive" >
-											<table id="table-DetallePedido"  class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="2500px">
+											<table id="table-DetallePorCadaPedido"  class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="2500px">
 												<thead>
 													<tr>
 														<td>Tipo bien</td>
 														<td>Tipo Pedido</td>
 														<td>Nro Pedido</td>
-														<td>Fecha Pedido</td>
-														<td>Motivo pedido</td>
-														<td>Estado</td>
-														<td>Fecha Aprobado</td>
-														<td>Fecha Atendido</td>
-														<td>Fecha Registro </td>
-														<td>Equipo Registro</td>
-														<td>Fecha Registro visto bueno</td>
-														<td>Equipo Registro visto bueno</td>
-														<td>Personal</td>
+														<td>Secuencia</td>
+														<td>Cant. solicitada</td>
+														<td>Cant. Aprobada</td>
+														<td>Cant. Atendida</td>
+														<td>Precio unitario</td>
+														<td>Valor total </td>
+														<td>Fecha conformidad</td>
+														<td>Fecha cuadro</td>
+														<td>Fecha registro</td>
+														<td>Fecha pecosa</td>
+														<td>Fecha aprobado</td>
+														<td>Clasificador</td>
+														<td>Nombre Clasificador</td>
 														<td>ver</td>
 													</tr>
 												</thead>
 												<tbody>
-													<?php foreach($listaDetallePorPedidoCompraMeta as $item ){ ?>
-													  	<tr>
-															
-													    	<td>
-																<?=$item->TIPO_BIEN?>
-													    	</td>
-													    	<td>
-																<?=$item->TIPO_PEDIDO?>
-													    	</td>
-													    	<td>
-																
-																<button type='button' class='clasificador btn btn-primary btn-xs' onclick='detallepedidoPip();'><?=$item->NRO_PEDIDO?><i class='ace-icon bigger-120'></i></button>
-													    	</td>
-													    	<td>
-																<?=$item->FECHA_PEDIDO?>
-													    	</td>
-													    	<td>
-																<?=$item->MOTIVO_PEDIDO?>
-													    	</td>
-											
-													    	<td>
-																<?=$item->ESTADO?>
-													    	</td>
-															<td>
-																<?=$item->FECHA_APROB?>
-													    	</td>
-													    	<td>
-																<?=$item->FECHA_ATENC?>
-													    	</td>
-													    	<td>
-																<?=$item->FECHA_REG?>
-													    	</td>
-													    	
-													    	<td>
-																<?=$item->EQUIPO_REG?>
-													    	</td>
-													    	<td>
-																<?=$item->fecha_reg_vb?>
-													    	</td>
-													    	<td>
-																<?=$item->equipo_reg_vb?>
-													    	</td>
-													    	<td>
-																<?=$item->personal?>
-													    	</td>
-													    	<td>
-													    		<button type="button" class="btn btn-primary btn-xs " onclick="EditarCriterioGeneral()"><i class="fa fa-pencil"></i></button>
-													    	</td>
-
-													  </tr>
-													<?php } ?>
+													
 												</tbody>
 											</table>
 										</div>
