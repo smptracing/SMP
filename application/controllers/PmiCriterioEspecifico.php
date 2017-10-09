@@ -68,6 +68,10 @@ class PmiCriterioEspecifico extends CI_Controller {
             $listaCriteriosEspecificos=$this->Model_CriterioEspecifico->ListarCriterioEspecifico($id_criterio_gen);
             echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos actualizados correctamente.','listaCriteriosEspecificos'=>$listaCriteriosEspecificos]);exit;  
     	} 
-    }  
+    } 
+    function criteriosGenEspec()
+    {
+    	
+    } 
 	
 }
