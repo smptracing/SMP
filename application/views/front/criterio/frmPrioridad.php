@@ -1,3 +1,9 @@
+<style>
+  #table_proyecto>tbody>tr>td:nth-child(0n+3)
+  {
+    text-align: right;
+  }
+</style>
 <div class="right_col" role="main">
 	<div class="clearfix"></div>
   	<div class="col-md-12 col-sm-12 col-xs-12">
@@ -22,7 +28,7 @@
                                             		<tr>
                                                         <th style="width:60px;">Código</th>
                                               			<th >Nombre del Proyecto</th>
-                                                        <th style="width:100px;">Costo</th>
+                                                        <th style="width:100px; text-align: right;">Costo</th>
                                                         <th style="width:100px;">Función</th>
                                                         <th style="width:100px;">Estado Ciclo</th>
                                                         <th style="width:30px;"></th>

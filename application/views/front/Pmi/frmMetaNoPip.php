@@ -3,6 +3,34 @@
   {
     vertical-align: middle;
   }
+  #table_NoPip>tbody>tr>td:nth-child(0n+4)
+  {
+    text-align: right;
+  }
+  #Table_meta_pi>tbody>tr>td:nth-child(0n+7)
+  {
+    text-align: right;
+  }
+  #Table_meta_pi>tbody>tr>td:nth-child(0n+2)
+  {
+    text-align: right;
+  }
+  #Table_meta_pi>tbody>tr>td:nth-child(0n+3)
+  {
+    text-align: right;
+  }
+  #Table_meta_pi>tbody>tr>td:nth-child(0n+4)
+  {
+    text-align: right;
+  }
+  #Table_meta_pi>tbody>tr>td:nth-child(0n+5)
+  {
+    text-align: right;
+  }
+  #Table_meta_pi>tbody>tr>td:nth-child(0n+6)
+  {
+    text-align: right;
+  }
 </style>
 <div class="right_col" role="main">
           <div class="">
@@ -43,7 +71,7 @@
                                                           <th style="width: 1%">#</th>
                                                           <th style="width: 8%"><i class="fa fa-thumb-tack"></i> Cod. </th>
                                                           <th style="width: 46%"><i class="fa fa-bookmark-o"></i> Nombre</th>
-                                                          <th style="width: 8%"><i class="fa fa-money"></i> Costo</th>
+                                                          <th style="width: 8%; text-align: right;"><i class="fa fa-money"></i> Costo</th>
                                                           <th style="width: 12%"> Tipo NO PIP</th>
                                                         <!--  <th style="width: 12%"> Estado</th>-->
                                                         <th style="width: 6%">Asig. Meta</th>
@@ -285,12 +313,12 @@
                        <tr>
                          <th  ><i class="fa fa-thumb-tack"></i> #</th>
                          <th  ><i class="fa fa-thumb-tack"></i> Año </th>
-                         <th  ><i class="fa fa-thumb-tack"></i> PIA</th>
-                         <th  ><i class="fa fa-thumb-tack"></i> PIM</th>
-                         <th  ><i class="fa fa-thumb-tack"></i> Certificación</th>
-                         <th  ><i class="fa fa-thumb-tack"></i> Compromiso</th>
-                         <th  ><i class="fa fa-thumb-tack"></i> Devengado</th>
-                         <th  ><i class="fa fa-thumb-tack"></i> Girado</th>
+                         <th style="text-align: right;"><i class="fa fa-thumb-tack"></i> PIA</th>
+                         <th style="text-align: right;"><i class="fa fa-thumb-tack"></i> PIM</th>
+                         <th style="text-align: right;"><i class="fa fa-thumb-tack"></i> Certificación</th>
+                         <th style="text-align: right;"><i class="fa fa-thumb-tack"></i> Compromiso</th>
+                         <th style="text-align: right;"><i class="fa fa-thumb-tack"></i> Devengado</th>
+                         <th style="text-align: right;"><i class="fa fa-thumb-tack"></i> Girado</th>
                          <th  ><i class="fa fa-thumb-tack"></i> Opción</th>
                       </tr>
                     </thead>
