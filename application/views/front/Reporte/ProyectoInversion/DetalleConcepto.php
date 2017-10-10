@@ -119,11 +119,9 @@
 													    	<td>
 																<?=$item->TOTAL_FACT_SOLES?>
 													    	</td>
-													    	<td>
-																
-															<button type="button" class="DetalleOrdenExpeSiaf btn btn-primary btn-xs" onclick="detalleordenexpsiaf();"><?=$item->EXP_SIAF?><i class='ace-icon bigger-120'></i></button>
+													    	<td>	
+															<button type="button" class="DetalleOrdenExpeSiaf btn btn-primary btn-xs" onclick="detalleordenexpsiaf(<?= (int)$item->ANO_EJE?>,<?= (int)$item->EXP_SIAF?>);"><?=$item->EXP_SIAF?><i class='ace-icon bigger-120'></i></button>
 															</td>
-													    
 													    	<td>
 																<?=$item->EXP_SIGA?>
 													    	</td>
@@ -199,11 +197,9 @@ $(document).ready(function()
 			
 			})
 
-function detalleordenexpsiaf()
+function detalleordenexpsiaf(anio,expsiaf)
 {
-	paginaAjaxDialogo(null, 'Detalle de Expediente Siaf por Orden de Compra',{}, base_url+'index.php/PrincipalReportes/detalleOrdenExpSiaf', 'GET', null, null, false, true);	
+	paginaAjaxDialogo(null, 'Detalle de Expediente Siaf por Orden de Compra',{anio:anio,expsiaf:expsiaf}, base_url+'index.php/PrincipalReportes/detalleOrdenExpSiaf', 'GET', null, null, false, true);	
 }
-
-    
 
 </script>

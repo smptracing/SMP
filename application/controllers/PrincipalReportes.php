@@ -443,7 +443,10 @@ class PrincipalReportes extends CI_Controller
 
     function detalleOrdenExpSiaf()
     {
-        $this->load->view('front/Reporte/ProyectoInversion/detalleOrdenExpSiaf.php');
+        $anio=$this->input->GET('anio');
+        $expsiaf=$this->input->GET('expsiaf');
+        $listadetalleOrdenExpSiaf=$this->Model_Dashboard_Reporte->DetalleOrdenExpedSiaf($anio,$expsiaf);  
+        $this->load->view('front/Reporte/ProyectoInversion/detalleOrdenExpSiaf.php',['listadetalleOrdenExpSiaf'=>$listadetalleOrdenExpSiaf]);
     }
     
     public function _load_layout($template)

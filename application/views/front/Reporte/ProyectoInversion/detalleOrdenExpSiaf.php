@@ -41,23 +41,41 @@
 					                        	<table id="table-DatoGen"  class="table-hover" cellspacing="0" width="100%">
 												<body>
 										
+													<?php $anio=0 ?>
+													<?php $entidad=0 ?>
+													<?php $expediente=0 ?>
+													<?php $tipoOpe=0 ?>
+													<?php $modalidadCompra=0 ?>
+													<?php $tipoProceso=0 ?>
+
+													<?php foreach($listadetalleOrdenExpSiaf as $item ){ ?>
+														<?php  $anio = $item->ano_eje ;?>
+														<?php  $entidad = $item->entidad;?>
+														<?php  $expediente = $item->expediente;?>
+														<?php  $tipoOpe = $item->tipo_operacion;?>
+														<?php  $modalidadCompra = $item->modalidad_compra;?>
+														<?php  $tipoProceso = $item->tipo_proceso;?>
+																		    
+													<?php } ?>
+
+
 													<tr>
-													<td>Año:  </td>
+													<td>Año: <?php  echo $anio ?> </td>
 													</tr>
 													<tr>
-														<td>Entidad:  </td>
+														<td>Entidad: <?php  echo $entidad ?> </td>
 													</tr>
 													<tr>
-														<td>Expediente:  </td>
+														<td>Expediente: <?php  echo $expediente ?> </td>
 													</tr>
 													<tr>
-														<td>Tipo de operación:  </td>
+														<td>Tipo de operación: <?php  echo $tipoOpe ?> </td>
 													</tr>
 													<tr>
-														<td>Modalidad de compra:  </td>
+														<td>Modalidad de compra:  <?php  echo $modalidadCompra ?>  </td>
 													</tr>
 													<tr>
-														<td>Tipo de proceso:  </td>
+														<td>Tipo de proceso:  <?php  echo $tipoProceso ?>  </td>
 													</tr>
 													
 											
@@ -69,7 +87,8 @@
 
 						                </div>
 						        	</div>
-									<br>	
+									<br>
+
 									<div class="row">  
 										<div class="col-md-12 col-sm-12 col-xs-12">
 											<table id="table-DetalleOrdenExpSiaf"  class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
@@ -81,14 +100,43 @@
 														<td>Correlativo</td>
 														<td>Cod Doc</td>
 														<td>Num Doc</td>
-														<td>Correlativo</td>
 														<td>Fecha Doc</td>
 														<td>Moneda</td>
 														<td>Monto</td>
 													</tr>
 												</thead>
 												<tbody>
-													
+													<?php foreach($listadetalleOrdenExpSiaf as $item ){ ?>
+													  	<tr>
+													    	<td>
+																<?=$item->ciclo?>
+													    	</td>
+													    	<td>
+																<?=$item->fase?>
+													    	</td>
+													    	<td>
+																<?=$item->secuencia?>
+													    	</td>
+													    	<td>
+																<?=$item->correlativo?>
+													    	</td>
+													    	<td>
+																<?=$item->cod_doc?>
+													    	</td>
+													    	<td>
+																<?=$item->num_doc?>
+													    	</td>
+													    	<td>
+																<?=$item->fecha_doc?>
+													    	</td>
+													    	<td>
+																<?=$item->moneda?>
+													    	</td>
+															<td>
+																<?=$item->monto?>
+													    	</td>
+													  </tr>
+													<?php } ?>
 												</tbody>
 								
 											</table>

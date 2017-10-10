@@ -257,6 +257,13 @@ function DetallePorOrden($correlativoMeta,$anioMeta)
         return $data->result(); 
     }
 
+    function DetalleOrdenExpedSiaf($anio,$expsiaf)
+    {
+        $opcion="consulta_expediente_siaf";
+        $data = $this->db->query("execute sp_Gestionar_SIAF @opcion='".$opcion."', @anio_meta='".$anio."', @expediente_siaf='".$expsiaf."'");
+        
+        return $data->result(); 
+    }
     /*function ReporteConsolidadoAvanceFisicoFinan($anio)
     {
         $opcion="calificacion_seguimiento_certificado_a_devengado";
