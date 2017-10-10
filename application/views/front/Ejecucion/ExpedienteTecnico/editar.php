@@ -58,7 +58,12 @@
 					</div>
 				
 					<div class="row">
-				
+						<div class="col-md-8 col-sm-3 col-xs-12">
+							<label class="control-label">Ubicación</label>
+							<div>
+								<input id="txtUbicacion" name="txtUbicacion" value="" class="form-control col-md-4 col-xs-12" autocomplete="off" readonly="readonly">
+							</div>
+						</div>		
 
 						<div class="col-md-4 col-sm-3 col-xs-12">
 							<label class="control-label">Codigo SNIP</label>
@@ -205,6 +210,74 @@
                             	<label style="font-size: 11px;margin-top: 24px;color: red;margin-left: 20px;"> En caso de subir otra resolución remplazara a la anterior</label>
                             </div>
                         </div>
+					</div>
+					<div class="row">
+						
+						<div class="col-md-3 col-sm-3 col-xs-12">
+							<label class="control-label">Cargo</label>
+							<select  id="comboCargoElaboracion" name="comboCargoElaboracion" class="form-control col-md-2 col-xs-2">
+									<?php foreach($listarCargo as $item){ ?>
+										<option value="<?=$item->id_cargo; ?>"><?= $item->Desc_cargo;?></option>
+									<?php } ?>
+								</select>
+							<div>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-3 col-xs-12">
+							<label class="control-label">Responsable de la Elaboración del Proyecto</label>
+							<select  id="comboResponsableElaboracion" name="comboResponsableElaboracion" class="form-control col-md-2 col-xs-2">
+									<?php foreach($listarPersona as $item){ ?>
+										<option value="<?=$item->id_persona; ?>"><?= $item->nombreCompleto;?></option>
+									<?php } ?>
+								</select>
+							<div>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-3 col-xs-12">
+							<label class="control-label">Tipo de Responsable</label>
+							<select  id="comboTipoResponsableElaboracion" name="comboTipoResponsableElaboracion" class="form-control col-md-2 col-xs-2">
+									<?php foreach($listaTipoResponsableElaboracion as $item){ ?>
+										<option value="<?=$item->id_tipo_responsable_et; ?>"><?= $item->desc_tipo_responsable_et;?></option>
+									<?php } ?>
+								</select>
+							<div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="row">
+						
+						<div class="col-md-3 col-sm-2 col-xs-12">
+							<label class="control-label">Cargo</label>
+							<select  id="comboCargoElaboracion" name="comboCargoEjecucion" class="form-control col-md-2 col-xs-2">
+									<?php foreach($listarCargo as $item){ ?>
+										<option value="<?=$item->id_cargo; ?>"><?= $item->Desc_cargo;?></option>
+									<?php } ?>
+							</select>
+							<div>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-3 col-xs-12">
+							<label class="control-label">Responsable de la Ejecución del Proyecto</label>
+								<select  id="ComboResponsableEjecucion" name="ComboResponsableEjecucion" class="form-control col-md-2 col-xs-2">
+									<?php foreach($listarPersona as $item){ ?>
+										<option value="<?=$item->id_persona; ?>"><?= $item->nombreCompleto;?></option>
+									<?php } ?>
+								</select>
+						</div>
+
+						<div class="col-md-4 col-sm-3 col-xs-12">
+							<label class="control-label">Tipo de Responsable</label>
+							<select  id="ComboTipoResponsableEjecucion" name="ComboTipoResponsableEjecucion" class="form-control col-md-2 col-xs-2">
+									<?php foreach($listaTipoResponsableEjecucion as $item){ ?>
+										<option value="<?=$item->id_tipo_responsable_et; ?>"><?= $item->desc_tipo_responsable_et;?></option>
+									<?php } ?>
+								</select>
+							<div>
+							</div>
+						</div>
+
 					</div>
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12">
