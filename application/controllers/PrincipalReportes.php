@@ -441,6 +441,11 @@ class PrincipalReportes extends CI_Controller
         $this->load->view('front/Reporte/ProyectoInversion/detallePorCadaPedido',['listadetalleporcadapedido'=>$listadetalleporcadapedido]);
     }
 
+    function detalleOrdenExpSiaf()
+    {
+        $this->load->view('front/Reporte/ProyectoInversion/detalleOrdenExpSiaf.php');
+    }
+    
     public function _load_layout($template)
     {
         $this->load->view('layout/Reportes/header');
