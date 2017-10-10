@@ -115,7 +115,7 @@ $( document ).ready(function() {
 });
 function EditarCriterioGeneral(idCriterioGeneral)
 {
-	paginaAjaxDialogo(null, 'Editar Criterio General',{ idCriterioGeneral:idCriterioGeneral}, base_url+'index.php/PmiCriterioG/editar', 'GET', null, null, false, true);
+	paginaAjaxDialogo(idCriterioGeneral, 'Editar Criterio General',{ idCriterioGeneral:idCriterioGeneral}, base_url+'index.php/PmiCriterioG/editar', 'GET', null, null, false, true);
 }
 function EliminarCriterioGeneral(idCriterioGeneral,id_funcion,anio_criterio_gen)
 {

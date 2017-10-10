@@ -58,7 +58,7 @@ class PmiCriterioG extends CI_Controller {/* Mantenimiento de sector entidad Y s
 
 		 $function=$this->Model_Funcion->GetFuncion();
 
-		 $this->load->view('front/Pmi/CriteriosGenerales/modificar',['listadoUnicoCGeneral' => $listadoUnicoCGeneral,'function' => $function]);
+		 $this->load->view('front/Pmi/CriteriosGenerales/modificar',['listadoUnicoCGeneral' => $listadoUnicoCGeneral,'function' => $function,'id_criterio_gen' => $id_criterio_gen]);
 	}
 
 	public function eliminar()

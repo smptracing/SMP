@@ -3,7 +3,7 @@
 			<div class="col-md-4 col-sm-4 col-xs-12">
 				<label>Función</label><br/>
 				<input type="hidden" class="form-control" id="hdIdcriterioGeneral" name="hdIdcriterioGeneral" value="<?= $listadoUnicoCGeneral->id_criterio_gen?>" placeholder="" autocomplete="off">
-				<select id="cbx_funcion" name="cbx_funcion" class="selectpicker" data-live-search="true">
+				<select id="cbx_funcion" name="cbx_funcion" class="form-control" >
 						<?php foreach ($function as $Itemp) {?>
 								 <option value="<?=$Itemp->id_funcion?>" <?=($Itemp->id_funcion==$listadoUnicoCGeneral->id_funcion ? 'selected' : '')?> ><?=$Itemp->nombre_funcion?></option>
 						<?php  } ?>
@@ -40,7 +40,7 @@
 				event.preventDefault();
 				paginaAjaxJSON($('#form-EditarCriterioGeneral').serialize(), '<?=base_url();?>index.php/PmiCriterioG/editar', 'POST', null, function(objectJSON)
 				{
-					$('#modalTemp').modal('hide');
+					
 
 					objectJSON=JSON.parse(objectJSON);
 
@@ -52,7 +52,8 @@
 					},
 					function()
 					{
-
+						hdIdcriterioGeneral=$('#hdIdcriterioGeneral').val();
+						$('#'+hdIdcriterioGeneral).hide();
 						paginaAjaxDialogo(null, 'Registro Criterio Generales', { id_funcion:objectJSON.id_funcion, nombre_funcion:'SALUD',anio:objectJSON.anio }, base_url+'index.php/PmiCriterioG/insertar', 'GET', null, null, false, true);
 					});
 
