@@ -249,10 +249,10 @@ function DetallePorOrden($correlativoMeta,$anioMeta)
         return $data->result();  
     }
 
-    function DetallePorCadaPedido($nropedido,$anio)
+    function DetallePorCadaPedido($nropedido,$anio,$tipopedido,$tipobien)
     {
         $opcion="listar_detalle_pedidos_proyecto";
-        $data = $this->db->query("execute sp_Gestionar_SIGA @opcion='".$opcion."',  @num_pedido='".$nropedido."', @anio_meta='".$anio."'");
+        $data = $this->db->query("execute sp_Gestionar_SIGA @opcion='".$opcion."',  @num_pedido='".$nropedido."', @anio_meta='".$anio."', @tipo_pedido='".$tipopedido."',@tipo_bien='".$tipobien."'");
         
         return $data->result(); 
     }

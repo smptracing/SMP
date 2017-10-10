@@ -73,7 +73,8 @@
 													    	</td>
 													    	<td>
 																
-				<button type="button" class="clasificador btn btn-primary btn-xs" onclick="detallepedidoPip(<?= (int)$item->NRO_PEDIDO?>,<?= (int)$item->ANO_EJE?>);"><?=$item->NRO_PEDIDO?><i class='ace-icon bigger-120'></i></button>
+				<button type="button" class="clasificador btn btn-primary btn-xs" onclick="detallepedidoPip(<?= (int)$item->NRO_PEDIDO?>,<?= (int)$item->ANO_EJE?>,<?= (int)$item->TIPO_PEDIDO?>,<?=(string)$item->TIPO_BIEN?>);"><?=$item->NRO_PEDIDO?><i class='ace-icon bigger-120'></i></button>
+
 													    	</td>
 													    	<td>
 																<?=$item->FECHA_PEDIDO?>
@@ -168,9 +169,9 @@ $(document).ready(function()
 				myTable.buttons().container().appendTo( $('.tableTools-container') );			
 			
 			})   
-function detallepedidoPip(nropedido,anio)
+function detallepedidoPip(nropedido,anio,tipopedido,tipobien)
 	{
-		paginaAjaxDialogo(null, 'Detalle por pedido',{nropedido:nropedido,anio:anio}, base_url+'index.php/PrincipalReportes/detallePorCadaPedido', 'GET', null, null, false, true);	
+		paginaAjaxDialogo(null, 'Detalle por pedido',{nropedido:nropedido,anio:anio,tipopedido:tipopedido,tipobien:tipobien}, base_url+'index.php/PrincipalReportes/detallePorCadaPedido', 'GET', null, null, false, true);	
 	}
 </script>
 
