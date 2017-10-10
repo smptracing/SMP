@@ -1,6 +1,8 @@
 <?php
 function mostrarMetaAnidada($meta, $expedienteTecnico)
 {
+	$sumarTotal = 0;
+	$sumamensual= 0;
 	$htmlTemp='';
 
 	$htmlTemp.='<tr class="elementoBuscar">'.
@@ -23,17 +25,17 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 
 	if(count($meta->childMeta)==0)
 	{
-		$sumarTotal = 0;
+		
 		foreach($meta->childPartida as $key => $value)
 		{
-			//$sumarTotal += ($value->cantidad*$value->precio_unitario);
+			$sumarTotal += ($value->cantidad*$value->precio_unitario);
 			$htmlTemp.='<tr class="elementoBuscar">'.
 				'<td>'.$value->numeracion.'</td>'.
 				'<td style="text-align: left;">'.html_escape($value->desc_partida).'</td>'.
 				'<td>'.html_escape($value->descripcion).'</td>'.
 				'<td>'.$value->cantidad.'</td>'.
 				'<td>S/.'.$value->precio_unitario.'</td>'.
-				'<td>Sf/.'.number_format($value->cantidad*$value->precio_unitario, 2).'</td>';
+				'<td>S/.'.number_format($value->cantidad*$value->precio_unitario, 2).'</td>';
 
 			if($expedienteTecnico->num_meses!=null)
 			{
@@ -46,6 +48,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 					{
 						if($item->id_detalle_partida==$value->childDetallePartida->id_detalle_partida && $item->numero_mes==($i+1))
 						{
+							$sumamensual+=$item->precio;
 
 							//var_dump($item->precio);
 							//var_dump($value->childDetallePartida->childMesValorizacion);
@@ -57,6 +60,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 
 
 							$precioTotalMesValorizacionTemp=$item->precio;
+
 							//var_dump($precioTotalMesValorizacionTemp);
 
 							//echo "".$precioTotalMesValorizacionTemp;
@@ -76,8 +80,11 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 
 			$htmlTemp.='</tr>';
 		}
+		
 	}
-
+//echo "sumita:".$sumarTotal;
+	//echo json_encode($sumarTotal);
+	//echo "sumamen: ".$sumamensual;
 	foreach($meta->childMeta as $key => $value)
 	{
 		$htmlTemp.=mostrarMetaAnidada($value, $expedienteTecnico);
@@ -180,7 +187,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 										} ?>
 									</tr>
 									<?php foreach($value->childMeta as $index => $item){ ?>
-										<?=mostrarMetaAnidada($item, $expedienteTecnico)?>
+										<?= mostrarMetaAnidada($item, $expedienteTecnico)?>
 									<?php } ?>
 								<?php } ?>
 							</tbody>
@@ -390,18 +397,40 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 				$(this).parent().find('input[type="text"]').show();
 			}
 		});
-		//calcularSumatoria();
+		calcularSumatoria();
 	});
 
 	function calcularSumatoria()
 	{
-		alert("Hola");
+		//alert("Hola");
 		var totalDeuda=0;
-		$("#tableValorizacion").each(function()
+		var columnaTotal = $('#tableValorizacion').find("td:nth-child(0n+6)").text();
+		var nuevoTotal = columnaTotal.replace(/---/g, "");
+		var nuevoTotal = nuevoTotal.replace(/,/g, "");
+		//var nuevoTotal = nuevoTotal.replace(/S/g, "");
+		miValor=nuevoTotal.replace(/S/g,"+");
+		miValor=miValor.replace(/\/./g,"");
+		//alert(miValor);
+		var sumaTotal = 0;
+
+		 var valNew = miValor.split('+');
+		for(var i=0; i<valNew.length; i++)
+		{
+			(valNew[i]==''? 0 : valNew[i]);
+			//alert(valNew[i]);
+			//sumaTotal += valNew;
+			sumaTotal = sumaTotal + parseFloat(trim(valNew[i]));
+    	}
+    	alert(sumaTotal);
+
+
+
+  		
+		/*$("#tableValorizacion").each(function()
 		{
 			//totalDeuda+=parseInt($(this).html()) || 0;
 			alert("totalDeuda");
-		});
+		});*/
 		/*function SumarColumna(grilla, columna) 
 		{*/
  
