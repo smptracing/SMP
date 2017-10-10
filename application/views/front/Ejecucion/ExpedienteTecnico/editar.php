@@ -253,7 +253,8 @@
 							<select  id="comboCargoElaboracion" name="comboCargoEjecucion" class="form-control col-md-2 col-xs-2">
 									<?php foreach($listarCargo as $item){ ?>
 										<option value="<?=$item->id_cargo; ?>" <?=($item->id_cargo==$listarUResponsableERespoEjecucion->id_cargo ? 'selected' : '')?>><?= $item->Desc_cargo;?></option>
-							</select>>
+									<?php } ?>
+							</select>
 						</div>
 						<div class="col-md-4 col-sm-3 col-xs-12">
 							<label class="control-label">Responsable de la Ejecución del Proyecto</label>
