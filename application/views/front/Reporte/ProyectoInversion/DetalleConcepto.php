@@ -79,7 +79,7 @@
 													<td>EXP SIAF</td>
 													<td>EXP SIGA</td>
 													<td>N° CERTIFICA</td>	
-													<td>NRO</td>		
+										
 												 </tr>
 												</thead>
 												<body>

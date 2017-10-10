@@ -438,7 +438,6 @@ class PrincipalReportes extends CI_Controller
         $tipopedido=$this->input->GET('tipopedido');
         $tipobien=$this->input->GET('tipobien');
         $listadetalleporcadapedido=$this->Model_Dashboard_Reporte->DetallePorCadaPedido($nropedido,$anio,$tipopedido,$tipobien);  
-        var_dump($tipopedido);exit;
         $this->load->view('front/Reporte/ProyectoInversion/detallePorCadaPedido',['listadetalleporcadapedido'=>$listadetalleporcadapedido]);
     }
 

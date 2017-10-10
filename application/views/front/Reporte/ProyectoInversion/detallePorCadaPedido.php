@@ -75,11 +75,48 @@
 													    	<td>
 																<?=$item->TIPO_PEDIDO?>
 													    	</td>
-
-													 
-															
-													  
-
+															<td>
+																<?=$item->NRO_PEDIDO?>
+													    	</td>
+													    	<td>
+																<?=$item->SECUENCIA?>
+													    	</td>
+													 		<td>
+																<?=$item->CANT_SOLICITADA?>
+													    	</td>
+															<td>
+																<?=$item->CANT_APROBADA?>
+													    	</td>
+													  		<td>
+																<?=$item->CANT_ATENDIDA?>
+													    	</td>
+													    	<td>
+																<?=$item->PRECIO_UNIT?>
+													    	</td>
+															<td>
+																<?=$item->VALOR_TOTAL?>
+													    	</td>
+													    	<td>
+																<?=$item->FECHA_CONFOR?>
+													    	</td>
+													    	<td>
+																<?=$item->FECHA_CUADRO?>
+													    	</td>
+													    	<td>
+																<?=$item->FECHA_REG?>
+													    	</td>
+													    	<td>
+																<?=$item->FECHA_PECOSA?>
+													    	</td>
+													    	<td>
+																<?=$item->FECHA_APROB?>
+													    	</td>
+													    	<td>
+																<?=$item->CLASIFICADOR?>
+													    	</td>
+													    	<td>
+																<?=$item->NOMBRE_CLASIF?>
+													    	</td>
 													  </tr>
 													<?php } ?>
 												</tbody>

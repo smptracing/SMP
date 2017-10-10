@@ -58,7 +58,7 @@
 														<td>Fecha Registro visto bueno</td>
 														<td>Equipo Registro visto bueno</td>
 														<td>Personal</td>
-														<td>ver</td>
+							
 													</tr>
 												</thead>
 												<tbody>
@@ -108,9 +108,7 @@
 													    	<td>
 																<?=$item->personal?>
 													    	</td>
-													    	<td>
-													    		<button type="button" class="btn btn-primary btn-xs " onclick="EditarCriterioGeneral()"><i class="fa fa-pencil"></i></button>
-													    	</td>
+													  
 
 													  </tr>
 													<?php } ?>
