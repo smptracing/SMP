@@ -23,15 +23,17 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 
 	if(count($meta->childMeta)==0)
 	{
+		$sumarTotal = 0;
 		foreach($meta->childPartida as $key => $value)
 		{
+			//$sumarTotal += ($value->cantidad*$value->precio_unitario);
 			$htmlTemp.='<tr class="elementoBuscar">'.
 				'<td>'.$value->numeracion.'</td>'.
 				'<td style="text-align: left;">'.html_escape($value->desc_partida).'</td>'.
 				'<td>'.html_escape($value->descripcion).'</td>'.
 				'<td>'.$value->cantidad.'</td>'.
 				'<td>S/.'.$value->precio_unitario.'</td>'.
-				'<td>S/.'.number_format($value->cantidad*$value->precio_unitario, 2).'</td>';
+				'<td>Sf/.'.number_format($value->cantidad*$value->precio_unitario, 2).'</td>';
 
 			if($expedienteTecnico->num_meses!=null)
 			{
@@ -44,13 +46,30 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 					{
 						if($item->id_detalle_partida==$value->childDetallePartida->id_detalle_partida && $item->numero_mes==($i+1))
 						{
+
+							//var_dump($item->precio);
+							//var_dump($value->childDetallePartida->childMesValorizacion);
+							//var_dump($value->childDetallePartida->childMesValorizacion[1]);
+
+
+
+							//echo "".$item->id_detalle_partida;
+
+
 							$precioTotalMesValorizacionTemp=$item->precio;
+							//var_dump($precioTotalMesValorizacionTemp);
+
+							//echo "".$precioTotalMesValorizacionTemp;
+							//$sumaM1=$item[1];
+							//$sumaM1=$item[0]->precio;
+							//var_dump($item->precio);
+							//exit;
 							$cantidadMesValorizacionTemp=$item->cantidad;
+							//var_dump($item->cantidad);
 
 							break;
 						}
 					}
-
 					$htmlTemp.='<td '.($precioTotalMesValorizacionTemp==0 ? 'style="background-color: #f5f5f5;"' : 'style="background-color: #fff1b0;"').'><div><input type="text" style="display: none;padding: 0px;width: 40px;" value="'.$cantidadMesValorizacionTemp.'" onkeyup="onKeyUpCalcularPrecio('.$value->cantidad.', '.$value->precio_unitario.', '.$value->childDetallePartida->id_detalle_partida.', '.($i+1).', this, event);"></div><span class="spanMontoValorizacion">S/.'.number_format($precioTotalMesValorizacionTemp, 2).'</span></td>';
 				}
 			}
@@ -371,7 +390,40 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 				$(this).parent().find('input[type="text"]').show();
 			}
 		});
+		//calcularSumatoria();
 	});
+
+	function calcularSumatoria()
+	{
+		alert("Hola");
+		var totalDeuda=0;
+		$("#tableValorizacion").each(function()
+		{
+			//totalDeuda+=parseInt($(this).html()) || 0;
+			alert("totalDeuda");
+		});
+		/*function SumarColumna(grilla, columna) 
+		{*/
+ 
+		    /*var resultado = 0.0;		         
+		    $("#" + grilla + " tbody tr").not(':first').not(':last').each(
+		        function() {
+		         
+		            var celdaValor = $(this).find('td:eq(' + columna + ')');
+		            
+		            if (celdaValor.val() != null)
+		                    resultVal += parseFloat(celdaValor.html().replace(',','.'));
+		                     
+		        }
+		         
+		    )
+		    $("#" + grilla + " tbody tr:last td:eq(" + columna + ")").html(resultVal.toFixed(2).toString().replace('.',','));   */
+			/*var totalDeuda=0;
+			$(".deuda").each(function(){
+				totalDeuda+=parseInt($(this).html()) || 0;
+			});*/
+					 
+	}
 
 	function onKeyUpCalcularPrecio(cantidad, precioUnitario, idDetallePartida, numeroMes, element, event)
 	{

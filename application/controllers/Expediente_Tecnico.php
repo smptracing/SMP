@@ -498,6 +498,11 @@ class Expediente_Tecnico extends CI_Controller
 				$this->obtenerMetaAnidadaParaValorizacion($item);
 			}
 		}
+		//var_dump($expedienteTecnico);
+		//exit;
+
+		
+
 
 		$this->load->view('layout/Ejecucion/header');
 		$this->load->view('front/Ejecucion/ExpedienteTecnico/valorizacionEjecucionProyecto', ['expedienteTecnico' => $expedienteTecnico]);
