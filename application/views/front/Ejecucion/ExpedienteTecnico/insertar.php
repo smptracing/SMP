@@ -201,7 +201,7 @@
 					 	<div class="col-md-4 col-sm-3 col-xs-12">
                             <label class="control-label">Subir Resolución</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                            	<input type="hidden" id="url" name="url" notValidate>
+                            	<input type="text" id="url" name="url" notValidate>
                                 <input type="file" id="Documento_Resolucion" name="Documento_Resolucion" notValidate>
                              </div>
                         </div>
@@ -617,7 +617,6 @@ $(function()
 			}
 		});
 	});
-
     $('#btnEnviarFormulario').on('click', function(event)
    	{
             event.preventDefault();
@@ -659,7 +658,7 @@ $(function()
     function getFileExtension(filename)
     {
 
-		return filename.slice((filename.lastIndexOf(".") - 1 >>> 0) + 2);
+		return filename.slice((filename.lastIndexOf(".") - 2 >>> 0) + 2);
 
 	}
 			  
