@@ -41,7 +41,7 @@
 				paginaAjaxJSON($('#form-EditarCriterioGeneral').serialize(), '<?=base_url();?>index.php/PmiCriterioG/editar', 'POST', null, function(objectJSON)
 				{
 					
-
+					$('#1').modal('hide');
 					objectJSON=JSON.parse(objectJSON);
 
 					swal(
@@ -52,9 +52,9 @@
 					},
 					function()
 					{
-						hdIdcriterioGeneral=$('#hdIdcriterioGeneral').val();
-						$('#'+hdIdcriterioGeneral).hide();
+						
 						paginaAjaxDialogo(null, 'Registro Criterio Generales', { id_funcion:objectJSON.id_funcion, nombre_funcion:'SALUD',anio:objectJSON.anio }, base_url+'index.php/PmiCriterioG/insertar', 'GET', null, null, false, true);
+
 					});
 
 				}, false, true);

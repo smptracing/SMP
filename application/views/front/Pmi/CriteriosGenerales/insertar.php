@@ -3,7 +3,7 @@
 			<div class="col-md-4 col-sm-4 col-xs-12">
 				<label>Función</label><br/>
 				<input type="hidden" class="form-control" id="txtIdFuncion" name="txtIdFuncion" value="<?= $id_funcion;?>" placeholder="" autocomplete="off">
-				<select id="cbx_funcion" name="cbx_funcion" class="selectpicker" data-live-search="true"  disabled>
+				<select id="cbx_funcion" name="cbx_funcion" class="selectpicker" data-live-search="true" >
 						<?php foreach ($function as $Itemp) {?>
 								 <option value="<?=$Itemp->id_funcion?>" <?=($Itemp->id_funcion==$id_funcion ? 'selected' : '')?> ><?=$Itemp->nombre_funcion?></option>
 						<?php  } ?>
@@ -43,7 +43,6 @@
 				<tbody id="bodyCriterioGenerales">
 						<?php $peso=0;$por=0; foreach ($listaCritetioGeneral as $key => $item) { $peso +=$item->peso_criterio_gen; $por=100; ?>
 						<tr>
-									<tr>
 										<td><?= $item->nombre_criterio_gen?></td>
 										<td><?= $item->peso_criterio_gen?></td>
 										<td><?php  if($item->porcentaje<1){ echo '0'.$item->porcentaje;}else{ echo $item->porcentaje;} ?> %</td>
@@ -51,7 +50,6 @@
 											<button type="button" class="btn btn-primary btn-xs " onclick="EditarCriterioGeneral(<?=$item->id_criterio_gen?>)"><i class="fa fa-pencil"></i></button>
 											<button type="button" class="btn btn-primary btn-xs " onclick="paginaAjaxDialogo(null, 'Registro Criterio Específicos',{ id_criterio_gen:'<?=$item->id_criterio_gen?>',nombre_criterio_gen:'<?=$item->nombre_criterio_gen?>' }, base_url+'index.php/PmiCriterioEspecifico/index', 'GET', null, null, false, true);"><i class="fa fa-bars"></i></button>
 											<button onclick="EliminarCriterioGeneral(<?=$item->id_criterio_gen?>,<?=$item->id_funcion?>,<?=$item->anio_criterio_gen ?>);" data-toggle="tooltip" data-original-title="Eliminar Analitico"   class='btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button></td>									
-									</tr>
 						</tr>						
 					<?php }?>
 					<tr>
@@ -65,8 +63,8 @@
 		</div>
 </form>
 <script>
-$( document ).ready(function() {
-
+$(function()
+	{
  
     $('#cbx_funcion').selectpicker('refresh');
     $('#btnAgregarCriterioGeneral').on('click', function(event)
@@ -97,14 +95,14 @@ $( document ).ready(function() {
                     		html +='<td>'+element.peso_criterio_gen+'</td>';
                     		html +='<td>'+element.porcentaje+'</td>';
                     		html +='<td><button type="button" class="btn btn-primary btn-xs " onclick="EditarCriterioGeneral('+element.id_criterio_gen+')"><i class="fa fa-pencil"></i></button>';
-                    		html +='<button onclick="EliminarCriterioGeneral('+element.id_criterio_gen+','+element.id_funcion+');" data-toggle="tooltip" data-original-title="Eliminar Analitico"   class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>';
+                    		html +='<button onclick="EliminarCriterioGeneral('+element.id_criterio_gen+','+element.id_funcion+','+element.anio_criterio_gen+');" data-toggle="tooltip" data-original-title="Eliminar Analitico"   class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>';
                     		html +='</td>';
                     		html +='</tr>';
                     	});
-                    	html +='<td> </td>';
+                    	html +='<tr><td> </td>';
                     	html +='<td> <h6>'+peso+'</h6> </td>';
                     	html +='<td> <h6> '+por+' %</h6> </td>';
-                    	html +='<td> </td>';
+                    	html +='<td> </td></tr>';
                  $("#table-GriterioGenerales > #bodyCriterioGenerales").append(html);
 			});
 
@@ -115,7 +113,8 @@ $( document ).ready(function() {
 });
 function EditarCriterioGeneral(idCriterioGeneral)
 {
-	paginaAjaxDialogo(idCriterioGeneral, 'Editar Criterio General',{ idCriterioGeneral:idCriterioGeneral}, base_url+'index.php/PmiCriterioG/editar', 'GET', null, null, false, true);
+	//alert(idCriterioGeneral);
+	paginaAjaxDialogo(1, 'Editar Criterio General',{ idCriterioGeneral:idCriterioGeneral}, base_url+'index.php/PmiCriterioG/editar', 'GET', null, null, false, true);
 }
 function EliminarCriterioGeneral(idCriterioGeneral,id_funcion,anio_criterio_gen)
 {
@@ -146,14 +145,14 @@ function EliminarCriterioGeneral(idCriterioGeneral,id_funcion,anio_criterio_gen)
                     		html +='<td>'+element.peso_criterio_gen+'</td>';
                     		html +='<td>'+element.porcentaje+'</td>';
                     		html +='<td><button type="button" class="btn btn-primary btn-xs " onclick="EditarCriterioGeneral('+element.id_criterio_gen+')"><i class="fa fa-pencil"></i></button>';
-                    		html +='<button onclick="EliminarCriterioGeneral('+element.id_criterio_gen+','+element.id_funcion+');" data-toggle="tooltip" data-original-title="Eliminar Analitico"   class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>';
+                    		html +='<button onclick="EliminarCriterioGeneral('+element.id_criterio_gen+','+element.id_funcion+','+element.anio_criterio_gen+');" data-toggle="tooltip" data-original-title="Eliminar Analitico"   class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>';
                     		html +='</td>';
                     		html +='</tr>';
                     	});
-                    	html +='<td> </td>';
+                    	html +='<tr><td> </td>';
                     	html +='<td> <h6>'+peso+'</h6> </td>';
                     	html +='<td> <h6> '+por+' %</h6> </td>';
-                    	html +='<td> </td>';
+                    	html +='<td> </td></tr>';
                  $("#table-GriterioGenerales > #bodyCriterioGenerales").append(html);
 			});
 

@@ -77,7 +77,7 @@ class PmiCriterioG extends CI_Controller {/* Mantenimiento de sector entidad Y s
 			}else
 			{
 
-				$listaCritetioGeneral=$this->Model_CriterioGeneral->ListarCriterioGenerales($id_funcion);
+				$listaCritetioGeneral=$this->Model_CriterioGeneral->ListarCriterioGenerales($id_funcion,$anio_criterio_gen);
 				echo json_encode(['proceso' => 'Error', 'mensaje' =>'No es posible eliminar el criterio General,tiene criterios especificos', 'listaCritetioGeneral' => $listaCritetioGeneral]);exit;
 			}
 			
