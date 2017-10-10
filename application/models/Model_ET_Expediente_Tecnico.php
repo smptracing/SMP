@@ -216,4 +216,18 @@ class Model_ET_Expediente_Tecnico extends CI_Model
 
 		return true;
     }
+    public function listarUResponsableERespoElaboracion($id_et)
+    {
+    	$data=$this->db->query("select * from ET_RESPONSABLE  inner join  ET_TIPO_RESPONSABLE on ET_RESPONSABLE.id_tipo_responsable_et=ET_TIPO_RESPONSABLE.id_tipo_responsable_et
+								where ET_RESPONSABLE.id_et='".$id_et."' and ET_TIPO_RESPONSABLE.codigo_tipo_responsable_et='001' ");
+
+		return $data->result()[0];
+    }
+    public function listarUResponsableERespoEjecucion($id_et)
+    {
+    	$data=$this->db->query("select * from ET_RESPONSABLE  inner join  ET_TIPO_RESPONSABLE on ET_RESPONSABLE.id_tipo_responsable_et=ET_TIPO_RESPONSABLE.id_tipo_responsable_et
+		where ET_RESPONSABLE.id_et='".$id_et."' and ET_TIPO_RESPONSABLE.codigo_tipo_responsable_et='002'");
+		
+		return $data->result()[0];
+    }
 }
