@@ -23,7 +23,7 @@
 		</table>
 	</header>
 	<div>
-			<table style="width: 90%; font-size:8px; border-collapse: separate;border-spacing:  0px;">
+			<table style="width: 90%; font-size:8px;margin-left: 20px;" width="760" border=1 cellspacing=0 cellpadding=1  bordercolor="666633">
 				<tr>
 					<th style="height: 15px;text-align: left;width: 0px;">FUNCIÓN</th>
 					<th style="height: 15px;text-align: center;width: 0px;">C. GENERAL</th>
@@ -32,11 +32,19 @@
 					<th style="text-align: center;width: 10px;">C. ESPECIFICOS</th>
 					<th style="text-align: center;width: 10px;">P</th>
 					<th style="text-align: center;width: 10px;">%(100)</th>
+					<th style="text-align: center;width: 10px;">P FINAL</th>
 				</tr>
 				<tbody>
 					<?php foreach($listarfuncionCriterioGeneral as $key => $value){  ?>
 						<tr>
 							<td style="width: 10px;"><b><?=$value->nombre_funcion?>.</b></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
 						</tr>
 						<?php foreach($value->childCriteriGeneral  as $index => $item){  ?>
 							<tr>
@@ -45,8 +53,10 @@
 								<td style="text-align: right"><b><?=strtoupper(html_escape($item->peso_criterio_gen))?></b></td>
 								<td style="text-align: right"><b><?=strtoupper(html_escape($item->porcentaje))?></b></td>
 								<td></td>
-								<th style="text-align: right;width: 10px;"></th>
-								<th style="text-align: right;width: 10px;"></th>
+								<td style="text-align: right;width: 10px;"></td>
+								<td style="text-align: right;width: 10px;"></td>
+								<td style="text-align: right;width: 10px;"></td>
+
 							</tr>
 								<?php foreach($item->childEspecificos  as $index => $itemp){  ?>
 								<tr>
@@ -57,6 +67,7 @@
 									<td><?=strtoupper(html_escape($itemp->nombre_criterio))?></td>
 									<td style="text-align: right"><?=strtoupper(html_escape($itemp->peso))?></td>
 									<td style="text-align: right"><?=strtoupper(html_escape($itemp->porcentaje))?></td>
+									<td style="text-align: right"><?=number_format(($item->porcentaje*$itemp->porcentaje)/(100), 2, '.', ' ');  ?></td>
 								</tr>
 								<?php } ?>
 						<?php } ?>

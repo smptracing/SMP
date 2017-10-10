@@ -6,6 +6,7 @@ class PmiCriterioEspecifico extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('Model_CriterioEspecifico');
+		$this->load->model('Model_criterioGeneral');
 	}
 	public function index()
 	{	
@@ -28,12 +29,12 @@ class PmiCriterioEspecifico extends CI_Controller {
 		}
 
 		$id_criterio_gen=$this->input->GET('id_criterio_gen');
-
+		$listadoUnicoCGeneral=$this->Model_criterioGeneral->listadoUnicoCGeneral($id_criterio_gen);
 		$nombre_criterio_gen=$this->input->GET('nombre_criterio_gen');
 
 		$listaCriterioEspec=$this->Model_CriterioEspecifico->ListarCriterioEspecifico($id_criterio_gen);
 
-		$this->load->view('front/Pmi/CriteriosEspecificos/index',['id_criterio_gen' => $id_criterio_gen,'nombre_criterio_gen'=> $nombre_criterio_gen,'listaCriterioEspec' => $listaCriterioEspec]);		
+		$this->load->view('front/Pmi/CriteriosEspecificos/index',['id_criterio_gen' => $id_criterio_gen,'listadoUnicoCGeneral'=> $listadoUnicoCGeneral,'listaCriterioEspec' => $listaCriterioEspec]);		
 	}
 
 

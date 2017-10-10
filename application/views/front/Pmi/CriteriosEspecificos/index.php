@@ -3,7 +3,7 @@
 			<div class="col-md-6 col-sm-4 col-xs-12">
 				<label>Criterio General</label>
 				<input type="hidden" class="form-control" id="txtIdCriterioG" name="txtIdCriterioG" value="<?= $id_criterio_gen;?>" placeholder="" autocomplete="off">
-				<input type="text" class="form-control" id="txtNombreCriterioG" value="<?=$nombre_criterio_gen?>" name="txtNombreCriterio" readonly="readonly" >
+				<input type="text" class="form-control" id="txtNombreCriterioG" value="<?=$listadoUnicoCGeneral->nombre_criterio_gen?>" name="txtNombreCriterio" readonly="readonly" >
 			</div>
 			<div class="col-md-6 col-sm-8 col-xs-12">
 				<label>Criterio Específico</label>
