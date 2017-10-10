@@ -249,6 +249,14 @@ function DetallePorOrden($correlativoMeta,$anioMeta)
         return $data->result();  
     }
 
+    function DetallePorCadaPedido($nropedido,$anio)
+    {
+        $opcion="listar_detalle_pedidos_proyecto";
+        $data = $this->db->query("execute sp_Gestionar_SIGA @opcion='".$opcion."',  @num_pedido='".$nropedido."', @anio_meta='".$anio."'");
+        
+        return $data->result(); 
+    }
+
     /*function ReporteConsolidadoAvanceFisicoFinan($anio)
     {
         $opcion="calificacion_seguimiento_certificado_a_devengado";

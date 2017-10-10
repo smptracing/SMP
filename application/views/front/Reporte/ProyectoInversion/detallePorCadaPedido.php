@@ -63,11 +63,25 @@
 														<td>Fecha aprobado</td>
 														<td>Clasificador</td>
 														<td>Nombre Clasificador</td>
-														<td>ver</td>
 													</tr>
 												</thead>
 												<tbody>
-													
+														<?php foreach($listadetalleporcadapedido as $item ){ ?>
+													  	<tr>
+															
+													    	<td>
+																<?=$item->TIPO_BIEN?>
+													    	</td>
+													    	<td>
+																<?=$item->TIPO_PEDIDO?>
+													    	</td>
+
+													 
+															
+													  
+
+													  </tr>
+													<?php } ?>
 												</tbody>
 											</table>
 										</div>
@@ -123,9 +137,6 @@ $(document).ready(function()
 				myTable.buttons().container().appendTo( $('.tableTools-container') );			
 			
 			})   
-function detallepedidoPip()
-	{
-		paginaAjaxDialogo(null, 'Detalle por pedido',{}, base_url+'index.php/PrincipalReportes/detallePorCadaPedido', 'GET', null, null, false, true);	
-	}
+
 </script>
 
