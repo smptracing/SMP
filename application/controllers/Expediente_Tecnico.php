@@ -531,18 +531,29 @@ class Expediente_Tecnico extends CI_Controller
 			//var_dump($value->childMeta);
 			
 		}
-
-		//var_dump($expedienteTecnico);
-		//exit;
-
+		/*$sumatoriaTotal =  $this->Model_ET_Mes_Valorizacion->ETMesValorizacionReporte($idExpedienteTecnico);
+		
+		foreach ($sumatoriaTotal as $key => $value) 
+		{
+			$CostoDirectoTotal += $value->sumatotal;
+		}*/
+		$CostoDirectoTotal = 0;
 		$sumatoriaTotal =  $this->Model_ET_Mes_Valorizacion->ETMesValorizacionReporte($idExpedienteTecnico);
+		/*for ($i=0; $i < $expedienteTecnico->num_meses; $i++) 
+		{ 
+			if($i != $sumatoriaTotal->num_meses)
+			{
+				$sumatoriaTotal->num_meses[$i] = $i;
+				$sumatoriaTotal->sumatotal[$i] = 0;
+			}
+		}*/
 
 		//var_dump($sumatoriaTotal);
 		//exit;
 
 
 		$this->load->view('layout/Ejecucion/header');
-		$this->load->view('front/Ejecucion/ExpedienteTecnico/valorizacionEjecucionProyecto', ['expedienteTecnico' => $expedienteTecnico, 'sumatoriaTotal' => $sumatoriaTotal]);
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/valorizacionEjecucionProyecto', ['expedienteTecnico' => $expedienteTecnico, 'sumatoriaTotal' => $sumatoriaTotal,'CostoDirectoTotal'=> $CostoDirectoTotal]);
 		$this->load->view('layout/Ejecucion/footer');
 	}
 	public function reportePdfValorizacionEjecucion($idExpedienteTecnico)

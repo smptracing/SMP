@@ -200,7 +200,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 						<table id="tableValorizacionResumen">
 							<tr>
 								<td>COSTO DIRECTO TOTAL</td>
-								<td></td>
+								<td><?= $CostoDirectoTotal?></td>
 								<td><?= $sumatoriaTotal[0]->sumatotal?></td>
 								<td><?= $sumatoriaTotal[1]->sumatotal?></td>
 								<td><?= $sumatoriaTotal[2]->sumatotal?></td>
