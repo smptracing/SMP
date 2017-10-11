@@ -215,6 +215,7 @@
 						
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Cargo</label>
+							<input type="hidden" name="id_tipo_responsableElabo" value="<?= $listarUResponsableERespoElabo->id_responsable_et ?>">
 							<select  id="comboCargoElaboracion" name="comboCargoElaboracion" class="form-control col-md-2 col-xs-2">
 									<?php foreach($listarCargo as $item){ ?>
 										<option value="<?=$item->id_cargo; ?>" <?=($item->id_cargo==$listarUResponsableERespoElabo->id_cargo ? 'selected' : '')?>><?= $item->Desc_cargo;?></option>
@@ -250,6 +251,7 @@
 						
 						<div class="col-md-3 col-sm-2 col-xs-12">
 							<label class="control-label">Cargos</label>
+							<input type="hidden" name="id_tipo_responsableEjecucion" value="<?= $listarUResponsableERespoEjecucion->id_responsable_et ?>">
 							<select  id="comboCargoElaboracion" name="comboCargoEjecucion" class="form-control col-md-2 col-xs-2">
 									<?php foreach($listarCargo as $item){ ?>
 										<option value="<?=$item->id_cargo; ?>" <?=($item->id_cargo==$listarUResponsableERespoEjecucion->id_cargo ? 'selected' : '')?>><?= $item->Desc_cargo;?></option>

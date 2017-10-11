@@ -312,6 +312,20 @@ class Expediente_Tecnico extends CI_Controller
 			$txtNumFolio=$this->input->post('txtNumFolio');
 	
 			$this->Model_ET_Expediente_Tecnico->editar($flat,$hdIdExpediente,$txtNombreUe,$txtDireccionUE,$txtUbicacionUE,$txtTelefonoUE,$txtRucUE,$txtCostoTotalPreInversion,$txtCostoDirectoPre,$txtCostoIndirectoPre,$txtCostoTotalInversion,$txtCostoDirectoInversion,$txtGastosGenerales,$txtGastosSupervision,$txtFuncionProgramatica,$txtFuncion,$txtPrograma,$txtSubPrograma,$txtProyecto,$txtComponente,$txtMeta,$txtFuenteFinanciamiento,$txtModalidadEjecucion,$txtTiempoEjecucionPip,$txtNumBeneficiarios,$urlD,$txtSituacioActual,$txtSituacioDeseada,$txtContribucioInterv,$txtNumFolio);
+			
+
+			$id_tipo_responsableElabo=$this->input->post('id_tipo_responsableElabo');
+			$comboCargoElaboracion =$this->input->post('comboCargoElaboracion');
+			$comboResponsableElaboracion =$this->input->post('comboResponsableElaboracion');
+
+			$this->Model_ET_Expediente_Tecnico->EditarResponsableElabor($id_tipo_responsableElabo,$comboCargoElaboracion,$comboResponsableElaboracion);
+
+			$id_tipo_responsableEjecucion=$this->input->post('id_tipo_responsableEjecucion');
+			$comboCargoEjecucion =$this->input->post('comboCargoEjecucion');
+			$ComboResponsableEjecucion =$this->input->post('ComboResponsableEjecucion');
+
+			$this->Model_ET_Expediente_Tecnico->EditarResponsableEjecucion($id_tipo_responsableEjecucion,$comboCargoEjecucion,$ComboResponsableEjecucion);
+
 
 			$config = array(
 				"upload_path" => "./uploads/ImageExpediente",

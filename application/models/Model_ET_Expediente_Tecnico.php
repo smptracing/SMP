@@ -230,4 +230,23 @@ class Model_ET_Expediente_Tecnico extends CI_Model
 		
 		return $data->result()[0];
     }
+
+    public function EditarResponsableElabor($id_tipo_responsableElabo,$comboCargoElaboracion,$comboResponsableElaboracion)
+    {
+    	$this->db->query("update ET_RESPONSABLE 
+						SET id_persona = '".$comboResponsableElaboracion."',id_cargo='".$comboCargoElaboracion."'
+						where id_responsable_et='".$id_tipo_responsableElabo."' ");
+
+    	return true;
+
+    }
+
+    public function EditarResponsableEjecucion($id_tipo_responsableEjecucion,$comboCargoEjecucion,$ComboResponsableEjecucion)
+    {
+    	$this->db->query("update ET_RESPONSABLE 
+						SET id_persona = '".$ComboResponsableEjecucion."',id_cargo='".$comboCargoEjecucion."'
+						where id_responsable_et='".$id_tipo_responsableEjecucion."' ");
+
+    	return true;
+    }
 }
