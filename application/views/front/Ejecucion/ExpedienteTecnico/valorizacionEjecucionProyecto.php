@@ -37,7 +37,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
 				'<td>S/.'.$value->precio_unitario.'</td>'.
 				'<td>S/.'.number_format($value->cantidad*$value->precio_unitario, 2).'</td>';
 
-			$totalGeneral+=$value->cantidad*$value->precio_unitario;
+			$totalGeneral+=($value->cantidad*$value->precio_unitario);
 
 			if($expedienteTecnico->num_meses!=null)
 			{
@@ -72,6 +72,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
 		}
 		
 	}
+
 	foreach($meta->childMeta as $key => $value)
 	{
 		$htmlTemp.=mostrarMetaAnidada($value, $expedienteTecnico, $sumatoriasTotales,$totalGeneral);
@@ -112,6 +113,9 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
 	.spanMontoValorizacion:hover
 	{
 		text-decoration: underline;
+	}
+	.espacio{
+		height: 20px;
 	}
 </style>
 <div class="right_col" role="main">
@@ -179,188 +183,100 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
 										<?= mostrarMetaAnidada($item, $expedienteTecnico, $sumatoriasTotales,$totalGeneral)?>
 									<?php } ?>
 								<?php } ?>
+								<tr class="espacio">
+								</tr>
+								<tr>
+									<td colspan="5" style="text-align: left"><b>COSTO DIRECTO TOTAL</b></td>
+									<td><b>S/.<?=a_number_format($totalGeneral, 2, '.',",",3);?></b></td>
+									<?php if($expedienteTecnico->num_meses!=null){
+										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
+											<td><b>S/.<?=a_number_format($sumatoriasTotales[$i], 2, '.',",",3);?></b></td>
+										<?php }
+									}?>
+								</tr>
+								<tr>
+									<td colspan="5" style="text-align: left"><b>GASTOS GENERALES (11.68% de Costo Directo)</b></td>
+									<td></td>
+									<?php if($expedienteTecnico->num_meses!=null){
+										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
+											<td></td>
+										<?php }
+									}?>
+								</tr>
+								<tr>
+									<td colspan="5" style="text-align: left"><b>GASTOS DE SUPERVISION (6.16% de Costo Directo)</b></td>
+									<td></td>
+									<?php if($expedienteTecnico->num_meses!=null){
+										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
+											<td></td>
+										<?php }
+									}?>
+								</tr>
+								<tr>
+									<td colspan="5" style="text-align: left"><b>LIQUIDACION DE OBRA (1.00% de Costo Directo)</b></td>
+									<td></td>
+									<?php if($expedienteTecnico->num_meses!=null){
+										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
+											<td></td>
+										<?php }
+									}?>
+								</tr>
+								<tr>
+									<td colspan="5" style="text-align: left"><b>MITIGACION AMBIENTAL</b></td>
+									<td></td>
+									<?php if($expedienteTecnico->num_meses!=null){
+										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
+											<td></td>
+										<?php }
+									}?>
+								</tr>
+								<tr>
+									<td colspan="5" style="text-align: left"><b>GESTION DEL PROYECTO (3.65% de Costo Directo)</b></td>
+									<td></td>
+									<?php if($expedienteTecnico->num_meses!=null){
+										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
+											<td></td>
+										<?php }
+									}?>
+								</tr>
+								<tr>
+									<td colspan="5" style="text-align: left"><b>EXPEDIENTE TECNICO</b></td>
+									<td></td>
+									<?php if($expedienteTecnico->num_meses!=null){
+										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
+											<td></td>
+										<?php }
+									}?>
+								</tr>
+								<tr>
+									<td colspan="5" style="text-align: left"><b>PRESUPUESTO TOTAL</b></td>
+									<td></td>
+									<?php if($expedienteTecnico->num_meses!=null){
+										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
+											<td></td>
+										<?php }
+									}?>
+								</tr>
+								<tr>
+									<td colspan="5" style="text-align: left"><b>PORCENTAJE DE GASTO FINANCIERO DEL PROYECTO</b></td>
+									<td></td>
+									<?php if($expedienteTecnico->num_meses!=null){
+										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
+											<td></td>
+										<?php }
+									}?>
+								</tr>
+								<tr>
+									<td colspan="5" style="text-align: left"><b>% AVANCE FISICO PROGRAMADO</b></td>
+									<td></td>
+									<?php if($expedienteTecnico->num_meses!=null){
+										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
+											<td></td>
+										<?php }
+									}?>
+								</tr>
+
 							</tbody>
-						</table>
-						<br>
-						<table id="tableValorizacionResumen">
-							<tr>
-								<td><b>COSTO DIRECTO TOTAL</b></td>
-								<td><b>S/.<?=a_number_format($totalGeneral, 2, '.',",",3);?></b></td>
-								<?php foreach($sumatoriasTotales as $key => $value){ ?>
-									<td><b>S/.<?=a_number_format($value, 2, '.',",",3);?></b></td>
-								<?php } ?>
-							</tr>
-							<tr>
-								<td>GASTOS GENERALES</td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>GASTOS DE SUPERVISIÓN</td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>LIQUIDACIÓN DE OBRA</td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>MITIGACIÓN AMBIENTAL</td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>GESTIÓN DEL PROYECTO</td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>EXPEDIENTE TÉCNICO</td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>PRESUPUESTO TOTAL</td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>PORCENTAJE DE GASTO FINANCIERO DEL PROYECTO</td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>% AVANCE FÍSICO FINANCIERO</td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
 						</table>
 					</div>
 				</div>
