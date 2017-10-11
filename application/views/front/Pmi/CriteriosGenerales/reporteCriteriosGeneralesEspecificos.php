@@ -14,7 +14,7 @@
 				<td id="header_texto">
 					<div style="text-align: center;"><b>CRITERIOS GENERALES</b></div>
 					<br>
-					<div style="text-align: center;"> </div>
+					<div style="text-align: center;"> Año <?= $anio?></div>
 				</td>
 				<td style="width: 85px;">
 					<img style="width: 80px;" src="./assets/images/logo.jpg">
@@ -23,7 +23,7 @@
 		</table>
 	</header>
 	<div>
-			<table style="width: 90%; font-size:8px;margin-left: 20px;" width="760" border=1 cellspacing=0 cellpadding=1  bordercolor="666633">
+			<table style="width: 90%; font-size:8px;margin-left: 20px;margin-top: 10px;" width="760" border=1 cellspacing=0 cellpadding=1  bordercolor="666633">
 				<tr>
 					<th style="height: 15px;text-align: left;width: 0px;">FUNCIÓN</th>
 					<th style="height: 15px;text-align: center;width: 0px;">C. GENERAL</th>
@@ -46,7 +46,7 @@
 							<td></td>
 							<td></td>
 						</tr>
-						<?php foreach($value->childCriteriGeneral  as $index => $item){  ?>
+						<?php $putaje=0; foreach($value->childCriteriGeneral  as $index => $item){  $putaje=(int)$putaje+(int)$item->peso_criterio_gen;?>
 							<tr>
 								<td></td>
 								<td style=""><b><?=$item->nombre_criterio_gen?>.</b></td>
@@ -72,6 +72,16 @@
 								<?php } ?>
 						<?php } ?>
 					<?php } ?>
+					<tr>
+							<td style="width: 10px;"></td>
+							<td></td>
+							<td style="text-align: center"><?=strtoupper(html_escape( $putaje))?></td>
+							<td style="text-align: center">100%</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
 				</tbody>
 			</table>
 	</div>

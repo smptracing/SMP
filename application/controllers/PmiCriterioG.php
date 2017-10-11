@@ -104,7 +104,7 @@ class PmiCriterioG extends CI_Controller {/* Mantenimiento de sector entidad Y s
 						}
 					
 			    }
-		$html= $this->load->view('front/Pmi/CriteriosGenerales/reporteCriteriosGeneralesEspecificos', ["listarfuncionCriterioGeneral" => $listarfuncion], true);
+		$html= $this->load->view('front/Pmi/CriteriosGenerales/reporteCriteriosGeneralesEspecificos', ["listarfuncionCriterioGeneral" => $listarfuncion,"anio"=>$anio_criterio_gen], true);
 		$this->mydompdf->load_html($html);
 		$this->mydompdf->set_paper('letter', 'landscape');
 		$this->mydompdf->render();
