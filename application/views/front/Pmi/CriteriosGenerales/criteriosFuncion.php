@@ -1,3 +1,56 @@
+<style type="text/css">
+	.search-form .form-group {
+  float: right !important;
+  transition: all 0.35s, border-radius 0s;
+  width: 32px;
+  height: 32px;
+  background-color: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+}
+.search-form .form-group input.form-control {
+  padding-right: 20px;
+  border: 0 none;
+  background: transparent;
+  box-shadow: none;
+  display:block;
+}
+.search-form .form-group input.form-control::-webkit-input-placeholder {
+  display: none;
+}
+.search-form .form-group input.form-control:-moz-placeholder {
+  /* Firefox 18- */
+  display: none;
+}
+.search-form .form-group input.form-control::-moz-placeholder {
+  /* Firefox 19+ */
+  display: none;
+}
+.search-form .form-group input.form-control:-ms-input-placeholder {
+  display: none;
+}
+.search-form .form-group:hover,
+.search-form .form-group.hover {
+  width: 100%;
+  border-radius: 4px 25px 25px 4px;
+}
+.search-form .form-group span.form-control-feedback {
+  position: absolute;
+  top: -1px;
+  right: -2px;
+  z-index: 2;
+  display: block;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  color: #3596e0;
+  left: initial;
+  font-size: 14px;
+}
+
+</style>
 <div class="right_col" role="main">
 	<div class="">
 		<div class="clearfix"></div>
@@ -21,13 +74,25 @@
 										<div class="col-md-12 col-xs-12">
 											<div class="x_panel">
 											<div class="row">
-												<div class="col-md-2 col-xs-2"  style="margin-left: 300px;">
-													 <input type="text" class="form-control" placeholder="Ingrese Año" id="textAnio" name="textAnio" value="<?= $anio;?>" data-inputmask="'mask' : '9999'">
+												<div class="col-md-3 col-xs-3"  style="margin-left: 300px;">
+													<div class="form-group">
+										                <label class="control-label" for="inputGroup">Buscar Criterio Por Años </label>
+										                <div class="input-group">
+															<input type="text" class="form-control" placeholder="Ingrese Año" id="textAnio" name="textAnio" value="<?= $anio;?>" data-inputmask="'mask' : '9999'">
+										                    <span class="input-group-addon">
+										                        <i class="fa fa-search"></i>
+										                    </span>
+										                </div>
+								            		</div>
 												</div>
-												<div class="col-md-3 col-xs-3"  style="margin-left: 50px;">
-													 <button type="button" class="btn btn-success" id="ReporteCriteriosGenerales"> <i class="fa fa-file-pdf-o"> Reporte PDF</i> </button>
-												</div>
-												<div class="pull-left tableTools-container ">Reportes&nbsp;&nbsp;</div>
+											
+												<div class="form-group">
+										                <label class="control-label" for="inputGroup">Reportes </label>
+										                <div class="input-group">
+														<div class="pull-left tableTools-container ">&nbsp;&nbsp;</div>
+
+										                </div>
+								            		</div>
 											</div>			
 											<div class="x_content">
 												<table id="table-Presupuesto" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
@@ -53,7 +118,10 @@
 																<?=$item->CantCriteriosG?>
 													    	</td>
 													    	<td style="text-align: left;">
+													    		
 																<button type="button" class="btn btn-primary btn-xs " onclick="paginaAjaxDialogo(null, 'Registro Criterio Generales', { id_funcion:'<?=$item->id_funcion?>', nombre_funcion:'<?=$item->nombre_funcion?>',anio:'<?= $anio;?>' }, base_url+'index.php/PmiCriterioG/insertar', 'GET', null, null, false, true);"><span class="fa fa-plus-circle"></span>
+																</button>
+																<button type="button" class="btn btn-success btn-xs " onclick="ReporteCriteriosGenerales(<?=$item->id_funcion?>,<?=$item->anio_criterio_gen?>);"><i class="fa fa-file-pdf-o"></i>
 																</button>
 													    	</td>
 													  </tr>
@@ -121,17 +189,33 @@
 				window.location.href=base_url+"index.php/PmiCriterioG/criterioFuncion/"+anio;
 			}
 		});
-		$('#ReporteCriteriosGenerales').on('click', function(e)
-		{
-				
-				var anio=$("#textAnio").val();
-		    	var urll=base_url+"index.php/PmiCriterioG/ReporteCriteriosG/"+anio;
-		        ventana=window.open(urll, 'Nombre de la ventana', 'width=1400,height=800');
-					
-		});
+		
 
 		
 
 	});
+
+	function ReporteCriteriosGenerales(id_funcion,anio_criterio_gen)
+		{
+				
+				/*var parametros = {
+                "anio_criterio_gen" : anio_criterio_gen,
+                "id_funcion" : id_funcion
+        		};
+				$.ajax({
+		                data:  parametros,
+		                url:   base_url+"index.php/PmiCriterioG/ReporteCriteriosG/",
+		                type:  'post',
+		                beforeSend: function () {
+		                        //$("#resultado").html("Procesando, espere por favor...");
+		                },
+		                success:  function (response) {
+		                       //alert(response);
+		                }
+		        });*/
+		    	var urll=base_url+"index.php/PmiCriterioG/ReporteCriteriosG/"+id_funcion+'.'+anio_criterio_gen;
+		        ventana=window.open(urll, 'Nombre de la ventana', 'width=1400,height=800');
+					
+		}
 
 </script>

@@ -84,14 +84,20 @@ class PmiCriterioG extends CI_Controller {/* Mantenimiento de sector entidad Y s
 		}
 	}
 
-	public function ReporteCriteriosG($anio='')
+	public function ReporteCriteriosG($idfuncio_anio)
 	{
-		$listarfuncion=$this->Model_CriterioEspecifico->listarFuncion($anio);
+		$cadena = $idfuncio_anio;
+		$array = explode(".", $cadena);
+
+		 $id_funcion=$array[0];
+		 $anio_criterio_gen=$array[1];
 		
+		 $listarfuncion=$this->Model_CriterioEspecifico->listarFuncion($anio_criterio_gen,$id_funcion);
+	
 		foreach ($listarfuncion as $key => $value) 
 			    {
 
-						$value->childCriteriGeneral=$this->Model_CriterioGeneral->ListarCriterioGenerales($value->id_funcion,$anio);
+						$value->childCriteriGeneral=$this->Model_CriterioGeneral->ListarCriterioGenerales($value->id_funcion,$anio_criterio_gen);
 						foreach ($value->childCriteriGeneral as $index => $item) 
 						{
 								$item->childEspecificos=$this->Model_CriterioEspecifico->ListarCriterioEspecifico($item->id_criterio_gen);
@@ -99,7 +105,6 @@ class PmiCriterioG extends CI_Controller {/* Mantenimiento de sector entidad Y s
 					
 			    }
 		$html= $this->load->view('front/Pmi/CriteriosGenerales/reporteCriteriosGeneralesEspecificos', ["listarfuncionCriterioGeneral" => $listarfuncion], true);
-		
 		$this->mydompdf->load_html($html);
 		$this->mydompdf->set_paper('letter', 'landscape');
 		$this->mydompdf->render();
