@@ -1,8 +1,9 @@
 <?php
-function mostrarMetaAnidada($meta, $expedienteTecnico)
+
+$sumatoriasTotales=[];
+function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales )
 {
-	$sumarTotal = 0;
-	$sumamensual= 0;
+	$sumaTotalCostoDirecto = 0;
 	$htmlTemp='';
 
 	$htmlTemp.='<tr class="elementoBuscar">'.
@@ -28,7 +29,6 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 		
 		foreach($meta->childPartida as $key => $value)
 		{
-			$sumarTotal += ($value->cantidad*$value->precio_unitario);
 			$htmlTemp.='<tr class="elementoBuscar">'.
 				'<td>'.$value->numeracion.'</td>'.
 				'<td style="text-align: left;">'.html_escape($value->desc_partida).'</td>'.
@@ -41,6 +41,11 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 			{
 				for($i=0; $i<$expedienteTecnico->num_meses; $i++)
 				{
+					if(!isset($sumatoriasTotales[$i]))
+					{
+						$sumatoriasTotales[]=0;
+					}
+
 					$precioTotalMesValorizacionTemp=0;
 					$cantidadMesValorizacionTemp=0;
 
@@ -48,32 +53,11 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 					{
 						if($item->id_detalle_partida==$value->childDetallePartida->id_detalle_partida && $item->numero_mes==($i+1))
 						{
-							$sumamensual+=$item->precio;
-
-							//var_dump($item->precio);
-							foreach ($item as $key => $newItem) 
-							{
-								//var_dump($item->precio);
-							}
-							//var_dump($value->childDetallePartida->childMesValorizacion);
-							//var_dump($value->childDetallePartida->childMesValorizacion[1]);
-
-
-
-							//echo "".$item->id_detalle_partida;
-
+							$sumatoriasTotales[$i]+=$item->precio;
 
 							$precioTotalMesValorizacionTemp=$item->precio;
 
-							//var_dump($precioTotalMesValorizacionTemp);
-
-							//echo "".$precioTotalMesValorizacionTemp;
-							//$sumaM1=$item[1];
-							//$sumaM1=$item[0]->precio;
-							//var_dump($item->precio);
-							//exit;
 							$cantidadMesValorizacionTemp=$item->cantidad;
-							//var_dump($item->cantidad);
 
 							break;
 						}
@@ -86,12 +70,9 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 		}
 		
 	}
-//echo "sumita:".$sumarTotal;
-	//echo json_encode($sumarTotal);
-	//echo "sumamen: ".$sumamensual;
 	foreach($meta->childMeta as $key => $value)
 	{
-		$htmlTemp.=mostrarMetaAnidada($value, $expedienteTecnico);
+		$htmlTemp.=mostrarMetaAnidada($value, $expedienteTecnico, $sumatoriasTotales);
 	}
 
 	return $htmlTemp;
@@ -168,8 +149,10 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 									<th>CANT.</th>
 									<th>P.U.</th>
 									<th>TOTAL</th>
-									<?php if($expedienteTecnico->num_meses!=null){
-										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
+									<?php if($expedienteTecnico->num_meses!=null)
+									{
+										for($i=0; $i<$expedienteTecnico->num_meses; $i++)
+										{ ?>
 											<th>M<?=($i+1)?></th>
 										<?php }
 									} ?>
@@ -191,7 +174,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 										} ?>
 									</tr>
 									<?php foreach($value->childMeta as $index => $item){ ?>
-										<?= mostrarMetaAnidada($item, $expedienteTecnico)?>
+										<?= mostrarMetaAnidada($item, $expedienteTecnico, $sumatoriasTotales)?>
 									<?php } ?>
 								<?php } ?>
 							</tbody>
@@ -200,24 +183,14 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 						<table id="tableValorizacionResumen">
 							<tr>
 								<td>COSTO DIRECTO TOTAL</td>
-								<td><?= $CostoDirectoTotal?></td>
-								<td><?= $sumatoriaTotal[0]->sumatotal?></td>
-								<td><?= $sumatoriaTotal[1]->sumatotal?></td>
-								<td><?= $sumatoriaTotal[2]->sumatotal?></td>
-								<td><?= $sumatoriaTotal[3]->sumatotal?></td>
-								<td><?= $sumatoriaTotal[4]->sumatotal?></td>
-								<td><?= $sumatoriaTotal[0]->sumatotal?></td>
-								<td><?= $sumatoriaTotal[0]->sumatotal?></td>
-								<td><?= $sumatoriaTotal[0]->sumatotal?></td>
-								<td><?= $sumatoriaTotal[0]->sumatotal?></td>
-								<td><?= $sumatoriaTotal[0]->sumatotal?></td>
-								<td><?= $sumatoriaTotal[0]->sumatotal?></td>
-								<td><?= $sumatoriaTotal[0]->sumatotal?></td>
-								<td><?= $sumatoriaTotal[0]->sumatotal?></td>
-								<td><?= $sumatoriaTotal[0]->sumatotal?></td>
+								<td>sdsdsd<?php //$sumaTotalCostoDirecto?></td>
+								<?php foreach($sumatoriasTotales as $key => $value){ ?>
+									<td><b>S/.<?=a_number_format($value, 2, '.',",",3);?></b></td>
+								<?php } ?>
 							</tr>
 							<tr>
 								<td>GASTOS GENERALES</td>
+								<td></td>
 								<td></td>
 								<td></td>
 								<td></td>
@@ -251,9 +224,11 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 								<td></td>
 								<td></td>
 								<td></td>
+								<td></td>
 							</tr>
 							<tr>
 								<td>LIQUIDACIÓN DE OBRA</td>
+								<td></td>
 								<td></td>
 								<td></td>
 								<td></td>
@@ -287,9 +262,11 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 								<td></td>
 								<td></td>
 								<td></td>
+								<td></td>
 							</tr>
 							<tr>
 								<td>GESTIÓN DEL PROYECTO</td>
+								<td></td>
 								<td></td>
 								<td></td>
 								<td></td>
@@ -323,9 +300,11 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 								<td></td>
 								<td></td>
 								<td></td>
+								<td></td>
 							</tr>
 							<tr>
 								<td>PRESUPUESTO TOTAL</td>
+								<td></td>
 								<td></td>
 								<td></td>
 								<td></td>
@@ -359,9 +338,11 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 								<td></td>
 								<td></td>
 								<td></td>
+								<td></td>
 							</tr>
 							<tr>
 								<td>% AVANCE FÍSICO FINANCIERO</td>
+								<td></td>
 								<td></td>
 								<td></td>
 								<td></td>
@@ -403,60 +384,6 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 		});
 		calcularSumatoria();
 	});
-
-	function calcularSumatoria()
-	{
-		//alert("Hola");
-		var totalDeuda=0;
-		var columnaTotal = $('#tableValorizacion').find("td:nth-child(0n+6)").text();
-		var nuevoTotal = columnaTotal.replace(/---/g, "");
-		var nuevoTotal = nuevoTotal.replace(/,/g, "");
-		//var nuevoTotal = nuevoTotal.replace(/S/g, "");
-		miValor=nuevoTotal.replace(/S/g,"+");
-		miValor=miValor.replace(/\/./g,"");
-		//alert(miValor);
-		var sumaTotal = 0;
-
-		 var valNew = miValor.split('+');
-		for(var i=0; i<valNew.length; i++)
-		{
-			(valNew[i] == ''? 0 : valNew[i]);
-			//alert(valNew[i]);
-			//sumaTotal += valNew;
-			//sumaTotal = sumaTotal + parseFloat(valNew[i]);
-    	}
-    	//alert(sumaTotal);
-
-
-
-  		
-		/*$("#tableValorizacion").each(function()
-		{
-			//totalDeuda+=parseInt($(this).html()) || 0;
-			alert("totalDeuda");
-		});*/
-		/*function SumarColumna(grilla, columna) 
-		{*/
- 
-		    /*var resultado = 0.0;		         
-		    $("#" + grilla + " tbody tr").not(':first').not(':last').each(
-		        function() {
-		         
-		            var celdaValor = $(this).find('td:eq(' + columna + ')');
-		            
-		            if (celdaValor.val() != null)
-		                    resultVal += parseFloat(celdaValor.html().replace(',','.'));
-		                     
-		        }
-		         
-		    )
-		    $("#" + grilla + " tbody tr:last td:eq(" + columna + ")").html(resultVal.toFixed(2).toString().replace('.',','));   */
-			/*var totalDeuda=0;
-			$(".deuda").each(function(){
-				totalDeuda+=parseInt($(this).html()) || 0;
-			});*/
-					 
-	}
 
 	function onKeyUpCalcularPrecio(cantidad, precioUnitario, idDetallePartida, numeroMes, element, event)
 	{
