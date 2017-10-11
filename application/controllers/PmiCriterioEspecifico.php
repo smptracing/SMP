@@ -37,8 +37,6 @@ class PmiCriterioEspecifico extends CI_Controller {
 		$this->load->view('front/Pmi/CriteriosEspecificos/index',['id_criterio_gen' => $id_criterio_gen,'listadoUnicoCGeneral'=> $listadoUnicoCGeneral,'listaCriterioEspec' => $listaCriterioEspec]);		
 	}
 
-
-
 	public function editar()
 	{
 		if($_POST)

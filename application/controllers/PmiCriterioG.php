@@ -49,7 +49,7 @@ class PmiCriterioG extends CI_Controller {/* Mantenimiento de sector entidad Y s
 			$listaCritetioGeneral=$this->Model_CriterioGeneral->Editar($hdIdcriterioGeneral,$txtNombreCriterio,$txtPesoCriterioG,$txtAnioCriterioG);
 			
 		 	$id_funcion=$this->input->post('cbx_funcion');
-		 	echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Dastos editados  correctamente.', 'id_funcion' => $id_funcion,'anio' => $txtAnioCriterioG]);exit;
+		 	echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos editados  correctamente.', 'id_funcion' => $id_funcion,'anio' => $txtAnioCriterioG]);exit;
 
 		 }
 

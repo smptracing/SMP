@@ -37,14 +37,15 @@
 </form>
 
 <script>
-
+$( document ).ready(function() {
 	$('#btnEnviarFormulario').on('click', function(event)
 	{
 		event.preventDefault();
 
 		paginaAjaxJSON($('#form-editarCriteriosEspecificos').serialize(), '<?=base_url();?>index.php/PmiCriterioEspecifico/editar', 'POST', null, function(objectJSON)
 		{
-			$('#modalTemp').modal('hide');
+			//$('#modalTemp').modal('hide');
+			$('#1').modal('hide');
 
 			objectJSON=JSON.parse(objectJSON);
 
@@ -60,4 +61,5 @@
 			});
 		}, false, true);
 	});
+});
 </script>

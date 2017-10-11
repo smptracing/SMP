@@ -110,7 +110,7 @@ $( document ).ready(function() {
 });
 	function EditarCriterioEspecifico(id)
 	{
-		paginaAjaxDialogo(null, 'Modificar Criterio EspecíficoidCriterio',{ id:id}, base_url+'index.php/PmiCriterioEspecifico/editar', 'GET', null, null, false, true);
+		paginaAjaxDialogo(1, 'Modificar Criterio EspecíficoidCriterio',{ id:id}, base_url+'index.php/PmiCriterioEspecifico/editar', 'GET', null, null, false, true);
 	}
 
 	function Eliminar(id_criterio,id_criterio_gen)
