@@ -133,7 +133,7 @@
 																<?=$item->moneda?>
 													    	</td>
 															<td>
-																<?=$item->monto?>
+																<?=number_format($item->monto,2)?>
 													    	</td>
 													  </tr>
 													<?php } ?>

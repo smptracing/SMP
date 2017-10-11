@@ -104,7 +104,7 @@
 																</div>
 															</div>
 
-												            <div class="row" style="margin-left: 10px; margin:10px; ">
+												            <!--<div class="row" style="margin-left: 10px; margin:10px; ">
 												                <div class="panel panel-default">
 																 	<div class="panel-heading">PIA, PIM Y DEVENGADO ACTUAL </div>
 												                        <div id="GrafPimDevenPia" class="table-responsive">
@@ -128,7 +128,7 @@
 																		    </table> 
 																	    </div>
 												                </div>
-													        </div>
+													        </div>-->
 
 															<div class="row" style="margin-left: 10px; margin:10px; ">
 																<div class="panel panel-default">

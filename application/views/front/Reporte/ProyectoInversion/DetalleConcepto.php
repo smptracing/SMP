@@ -61,7 +61,8 @@
 					                        	<table id="dynamic-table"  class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="2500px">
 												<thead>
 												<tr>
-													
+													<td>EXP SIAF</td>
+													<td>EXP SIGA</td>
 													<td>MES</td>
 													<td>N°ORDEN</td>
 													<td>DOC.REFERENCIA</td>
@@ -72,12 +73,11 @@
 
 													
 
-													<td>SUBTOTAL</td>
-													<td>TOTAL IGV</td>
-													<td>TOTAL FACT</td>
+													<td style="text-align:right">SUBTOTAL</td>
+													<td style="text-align:right">TOTAL IGV</td>
+													<td style="text-align:right">TOTAL FACT</td>
 
-													<td>EXP SIAF</td>
-													<td>EXP SIGA</td>
+												
 													<td>N° CERTIFICA</td>	
 										
 												 </tr>
@@ -86,7 +86,12 @@
 													
 													<?php foreach($listaDetallePorOrden as $item ){ ?>
 													  	<tr>
-															
+															<td>	
+															<button type="button" class="DetalleOrdenExpeSiaf btn btn-primary btn-xs" onclick="detalleordenexpsiaf(<?= (int)$item->ANO_EJE?>,<?= (int)$item->EXP_SIAF?>);"><?=$item->EXP_SIAF?><i class='ace-icon bigger-120'></i></button>
+															</td>
+													    	<td>
+																<?=$item->EXP_SIGA?>
+													    	</td>
 													    	<td>
 																<?=$item->MES_CALEND?>
 													    	</td>
@@ -110,22 +115,17 @@
 													    	</td>
 													    	
 													    	
-															<td>
-																<?=$item->SUBTOTAL_SOLES?>
+															<td style="text-align:right">
+																<?=number_format($item->SUBTOTAL_SOLES,2)?>
 													    	</td>
-													    	<td>
-																<?=$item->TOTAL_IGV_SOLES?>
+													    	<td style="text-align:right">
+																<?=number_format($item->TOTAL_IGV_SOLES,2)?>
 													    	</td>
-													    	<td>
-																<?=$item->TOTAL_FACT_SOLES?>
+													    	<td style="text-align:right">
+																<?=number_format($item->TOTAL_FACT_SOLES,2)?>
 													    	</td>
-													    	<td>	
-															<button type="button" class="DetalleOrdenExpeSiaf btn btn-primary btn-xs" onclick="detalleordenexpsiaf(<?= (int)$item->ANO_EJE?>,<?= (int)$item->EXP_SIAF?>);"><?=$item->EXP_SIAF?><i class='ace-icon bigger-120'></i></button>
-															</td>
-													    	<td>
-																<?=$item->EXP_SIGA?>
-													    	</td>
-													    	<td>
+													    	
+													    	<td style="text-align:center;">
 																<?=$item->NRO_CERTIFICA?>
 													    	</td>
 
