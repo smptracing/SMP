@@ -514,6 +514,7 @@ class Expediente_Tecnico extends CI_Controller
 	{
 		$expedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnico($idExpedienteTecnico);
 		$expedienteTecnico->childComponente=$this->Model_ET_Componente->ETComponentePorIdET($expedienteTecnico->id_et);
+		$suma = 0;
 
 		foreach($expedienteTecnico->childComponente as $key => $value)
 		{
@@ -521,17 +522,27 @@ class Expediente_Tecnico extends CI_Controller
 
 			foreach($value->childMeta as $index => $item)
 			{
+				//var_dump($item);
 				$this->obtenerMetaAnidadaParaValorizacion($item);
+				//$item->suma = 4; 
+				//var_dump($item);
+				
 			}
+			//var_dump($value->childMeta);
+			
 		}
+
 		//var_dump($expedienteTecnico);
 		//exit;
 
-		
+		$sumatoriaTotal =  $this->Model_ET_Mes_Valorizacion->ETMesValorizacionReporte($idExpedienteTecnico);
+
+		//var_dump($sumatoriaTotal);
+		//exit;
 
 
 		$this->load->view('layout/Ejecucion/header');
-		$this->load->view('front/Ejecucion/ExpedienteTecnico/valorizacionEjecucionProyecto', ['expedienteTecnico' => $expedienteTecnico]);
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/valorizacionEjecucionProyecto', ['expedienteTecnico' => $expedienteTecnico, 'sumatoriaTotal' => $sumatoriaTotal]);
 		$this->load->view('layout/Ejecucion/footer');
 	}
 	public function reportePdfValorizacionEjecucion($idExpedienteTecnico)
@@ -597,18 +608,30 @@ class Expediente_Tecnico extends CI_Controller
 	{
 		$temp=$this->Model_ET_Meta->ETMetaPorIdMetaPadre($meta->id_meta);
 
+		//echo $meta->id_meta." - ";
+		//exit;
+
 		$meta->childMeta=$temp;
+		//var_dump($meta);
 
 		if(count($temp)==0)
 		{
 			$meta->childPartida=$this->Model_ET_Partida->ETPartidaPorIdMeta($meta->id_meta);
 
+
 			foreach($meta->childPartida as $key => $value)
 			{
 				$value->childDetallePartida=$this->Model_ET_Detalle_Partida->ETDetallePartidaPorIdPartidaParaValorizacion($value->id_partida);
 
+				//var_dump($meta);
+
 				$value->childDetallePartida->childMesValorizacion=$this->Model_ET_Mes_Valorizacion->ETMesValorizacionPorIdDetallePartida($value->childDetallePartida->id_detalle_partida);
+
 			}
+
+			//var_dump($meta);
+
+			//exit;
 
 			return false;
 		}

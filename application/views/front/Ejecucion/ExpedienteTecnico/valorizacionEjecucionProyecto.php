@@ -51,6 +51,10 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 							$sumamensual+=$item->precio;
 
 							//var_dump($item->precio);
+							foreach ($item as $key => $newItem) 
+							{
+								//var_dump($item->precio);
+							}
 							//var_dump($value->childDetallePartida->childMesValorizacion);
 							//var_dump($value->childDetallePartida->childMesValorizacion[1]);
 
@@ -197,20 +201,20 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 							<tr>
 								<td>COSTO DIRECTO TOTAL</td>
 								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
+								<td><?= $sumatoriaTotal[0]->sumatotal?></td>
+								<td><?= $sumatoriaTotal[1]->sumatotal?></td>
+								<td><?= $sumatoriaTotal[2]->sumatotal?></td>
+								<td><?= $sumatoriaTotal[3]->sumatotal?></td>
+								<td><?= $sumatoriaTotal[4]->sumatotal?></td>
+								<td><?= $sumatoriaTotal[0]->sumatotal?></td>
+								<td><?= $sumatoriaTotal[0]->sumatotal?></td>
+								<td><?= $sumatoriaTotal[0]->sumatotal?></td>
+								<td><?= $sumatoriaTotal[0]->sumatotal?></td>
+								<td><?= $sumatoriaTotal[0]->sumatotal?></td>
+								<td><?= $sumatoriaTotal[0]->sumatotal?></td>
+								<td><?= $sumatoriaTotal[0]->sumatotal?></td>
+								<td><?= $sumatoriaTotal[0]->sumatotal?></td>
+								<td><?= $sumatoriaTotal[0]->sumatotal?></td>
 							</tr>
 							<tr>
 								<td>GASTOS GENERALES</td>
@@ -416,12 +420,12 @@ function mostrarMetaAnidada($meta, $expedienteTecnico)
 		 var valNew = miValor.split('+');
 		for(var i=0; i<valNew.length; i++)
 		{
-			(valNew[i]==''? 0 : valNew[i]);
+			(valNew[i] == ''? 0 : valNew[i]);
 			//alert(valNew[i]);
 			//sumaTotal += valNew;
-			sumaTotal = sumaTotal + parseFloat(trim(valNew[i]));
+			//sumaTotal = sumaTotal + parseFloat(valNew[i]);
     	}
-    	alert(sumaTotal);
+    	//alert(sumaTotal);
 
 
 
