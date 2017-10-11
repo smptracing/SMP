@@ -49,7 +49,27 @@
 														</tr>
 													</thead>
 													<tbody>
-														
+													<?php foreach($listaPipPriorizar as $item ){ ?>
+													  	<tr>
+													    	<td>
+																<?=$item->codigo_unico_pi?>
+													    	</td>
+													    	<td>
+																<?=$item->nombre_pi?>
+													    	</td>
+													    	<td>
+																
+													    	</td>
+													    	<td>
+																<?=$item->nombre_funcion?>
+													    	</td>
+													    	<td>
+															
+													    	</td>
+											
+
+													  </tr>
+													<?php } ?>	
 													</tbody>
 													
 												</table>
