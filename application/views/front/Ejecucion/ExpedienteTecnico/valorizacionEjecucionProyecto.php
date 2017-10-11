@@ -1,9 +1,9 @@
 <?php
 
 $sumatoriasTotales=[];
-function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales )
+$totalGeneral=0;
+function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$totalGeneral)
 {
-	$sumaTotalCostoDirecto = 0;
 	$htmlTemp='';
 
 	$htmlTemp.='<tr class="elementoBuscar">'.
@@ -12,7 +12,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales )
 		'<td>---</td>'.
 		'<td>---</td>'.
 		'<td>---</td>'.
-		'<td>---</td>';
+		'<td>---</td>';	
 		
 	if($expedienteTecnico->num_meses!=null)
 	{
@@ -36,6 +36,8 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales )
 				'<td>'.$value->cantidad.'</td>'.
 				'<td>S/.'.$value->precio_unitario.'</td>'.
 				'<td>S/.'.number_format($value->cantidad*$value->precio_unitario, 2).'</td>';
+
+			$totalGeneral+=$value->cantidad*$value->precio_unitario;
 
 			if($expedienteTecnico->num_meses!=null)
 			{
@@ -72,7 +74,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales )
 	}
 	foreach($meta->childMeta as $key => $value)
 	{
-		$htmlTemp.=mostrarMetaAnidada($value, $expedienteTecnico, $sumatoriasTotales);
+		$htmlTemp.=mostrarMetaAnidada($value, $expedienteTecnico, $sumatoriasTotales,$totalGeneral);
 	}
 
 	return $htmlTemp;
@@ -174,7 +176,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales )
 										} ?>
 									</tr>
 									<?php foreach($value->childMeta as $index => $item){ ?>
-										<?= mostrarMetaAnidada($item, $expedienteTecnico, $sumatoriasTotales)?>
+										<?= mostrarMetaAnidada($item, $expedienteTecnico, $sumatoriasTotales,$totalGeneral)?>
 									<?php } ?>
 								<?php } ?>
 							</tbody>
@@ -182,8 +184,8 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales )
 						<br>
 						<table id="tableValorizacionResumen">
 							<tr>
-								<td>COSTO DIRECTO TOTAL</td>
-								<td>sdsdsd<?php //$sumaTotalCostoDirecto?></td>
+								<td><b>COSTO DIRECTO TOTAL</b></td>
+								<td><b>S/.<?=a_number_format($totalGeneral, 2, '.',",",3);?></b></td>
 								<?php foreach($sumatoriasTotales as $key => $value){ ?>
 									<td><b>S/.<?=a_number_format($value, 2, '.',",",3);?></b></td>
 								<?php } ?>
