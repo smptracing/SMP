@@ -545,6 +545,7 @@ class Expediente_Tecnico extends CI_Controller
 				$this->obtenerMetaAnidadaParaValorizacion($item);
 			}
 		}
+		//$this->load->view('front/Ejecucion/ExpedienteTecnico/reportePdfValorizacionEjecucion',['expedienteTecnico'=>$expedienteTecnico]);
 		$html = $this->load->view('front/Ejecucion/ExpedienteTecnico/reportePdfValorizacionEjecucion',['expedienteTecnico'=>$expedienteTecnico],true);
 		$this->mydompdf->load_html($html);
 		$this->mydompdf->set_paper("A4", "landscape");
