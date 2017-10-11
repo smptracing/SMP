@@ -140,8 +140,17 @@
                      <li><a><i class="fa fa-gears"></i> Mantenimiento<span class="fa fa-chevron-down"></span></a>
 
                     <ul class="nav child_menu">
-                      <li><a href="<?php echo site_url('PmiCriterioG/'); ?>">Criterios Generales</a></li>
                        <li><a href="<?php echo site_url('PmiCriterioG/criterioFuncion/2018'); ?>">Criterios por funcion</a></li>
+                    </ul>
+                 
+                  </li>
+
+                </ul>
+                <ul class="nav side-menu">
+                     <li><a><i class="fa fa-gears"></i> Criterios<span class="fa fa-chevron-down"></span></a>
+
+                    <ul class="nav child_menu">
+                       <li><a href="<?php echo site_url('PuntajeCriterioPi/index'); ?>">Criterios por Pip</a></li>
                     </ul>
                  
                   </li>
