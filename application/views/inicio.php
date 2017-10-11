@@ -233,13 +233,13 @@
 
                         <div class="zoom-in">
 
-                            <div style="background-color: #f39c12;" class="col-md-12 thebox">                                 
+                            <div style="background-color: #46607b;" class="col-md-12 thebox">                                 
                                 <div class="span 6">
-                                    <span class="fa fa-random fa-3x"></span>                                     
+                                    <span class="fa fa-bar-chart fa-3x"></span>                                     
                                 </div>
                                 <div class="span 6">
                                 <br>
-                                    Seguimiento de Proyectos de Inversión.                                     
+                                  Reportes, Estadísticas e Informes.                                     
                                 </div>                                   
                                 
                             </div>
@@ -249,6 +249,27 @@
                     </div>   
                 </div>
                 <div class="col-md-12 col-xs-12">
+                                   <div class="col-md-3 col-sm-6 col-xs-12">
+
+                        <div class="zoom-in">
+                            <a href="<?php echo site_url('PrincipalReportes/PrincipalReportes'); ?>">
+                            <div style="background-color: #f39c12;" class="col-md-12 thebox">                                 
+                                <div class="span 6">
+                                    <span class="fa fa-random fa-3x"></span>                                     
+                                </div>
+                                <div class="span 6">
+                                <br>
+  
+                                    Seguimiento de Proyectos de Inversión. 
+                                   
+                                </div>                                  
+                                
+                            </div>
+                            </a>
+
+                        </div>
+
+                    </div>
                  <div class="col-md-3 col-sm-6 col-xs-12">
 
                         <div class="zoom-in">
@@ -268,26 +289,7 @@
 
                     </div>
 
-                    <div class="col-md-3 col-sm-6 col-xs-12">
-
-                        <div class="zoom-in">
-                            <a href="<?php echo site_url('PrincipalReportes/PrincipalReportes'); ?>">
-                            <div style="background-color: #46607b;" class="col-md-12 thebox">                                 
-                                <div class="span 6">
-                                    <span class="fa fa-bar-chart fa-3x"></span>                                     
-                                </div>
-                                <div class="span 6">
-                                <br>
-                                    Reportes, Estadísticas e Informes.
-                                   
-                                </div>                                  
-                                
-                            </div>
-                            </a>
-
-                        </div>
-
-                    </div>
+   
 
                     <div class="col-md-3 col-sm-6 col-xs-12">
 
