@@ -65,6 +65,13 @@ class Model_criterioGeneral extends CI_Model
 		 $funcion=$this->db->query("select * from CRITERIO_GEN");        
         return $funcion->result();
 	}
+
+	function CriterioGeneralData($txtNombreCriterio)
+    {
+        $data=$this->db->query("select * from CRITERIO_GEN where replace(nombre_criterio_gen, ' ', '')=replace('".$txtNombreCriterio."', ' ', '')");
+
+        return $data->result();
+    }
 	
 
 }
