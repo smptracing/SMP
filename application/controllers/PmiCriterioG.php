@@ -56,6 +56,14 @@ class PmiCriterioG extends CI_Controller {/* Mantenimiento de sector entidad Y s
 		 	$txtNombreCriterio=$this->input->post('txtNombreCriterio');
 		 	$txtPesoCriterioG=$this->input->post('txtPesoCriterioG');
 			$txtAnioCriterioG=$this->input->post('txtAnioCriterioG');
+
+			if(count($this->Model_CriterioGeneral->CriterioGeneralModifId($hdIdcriterioGeneral, $txtNombreCriterio))>0)
+            {
+            	$listaCritetioGeneral=$this->Model_CriterioGeneral->ListarCriterioGenerales($txtIdFuncion,$txtAnioCriterioG);
+
+                echo json_encode(['proceso' => 'Error', 'mensaje' => 'Este criterio general ya fue registrado anteriormente.','listaCritetioGeneral'=>$listaCritetioGeneral]);exit; 
+            }
+
 			$listaCritetioGeneral=$this->Model_CriterioGeneral->Editar($hdIdcriterioGeneral,$txtNombreCriterio,$txtPesoCriterioG,$txtAnioCriterioG);
 			
 		 	$id_funcion=$this->input->post('cbx_funcion');

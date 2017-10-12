@@ -73,5 +73,11 @@ class Model_criterioGeneral extends CI_Model
         return $data->result();
     }
 	
+	function CriterioGeneralModifId($hdIdcriterioGeneral, $txtNombreCriterio)
+	{
+		$data=$this->db->query("select * from CRITERIO_GEN where id_criterio_gen!='".$hdIdcriterioGeneral."' and replace(nombre_criterio_gen, ' ', '')=replace('".$txtNombreCriterio."', ' ', '')");
+
+        return $data->result();
+	}
 
 }
