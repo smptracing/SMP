@@ -3,8 +3,8 @@
 			<div class="col-md-12 col-sm-3 col-xs-12">
 				<label class="control-label">Nombre del Proyecto de Inversion</label>
 				<div>
-					<input id="txtIdPi" name="txtIdPi" value="" class="form-control col-md-4 col-xs-12"  placeholder="Nombre del proyecto" autocomplete="off"  type="hidden">	
-					<input id="txtNombreUe" name="txtNombrePi" value="" class="form-control col-md-4 col-xs-12"  autocomplete="off" readonly="readonly">	
+					<input id="txtIdPi" name="txtIdPi" value="<?= $listaUnicaProIv->id_pi?>" class="form-control col-md-4 col-xs-12"  placeholder="Nombre del proyecto" autocomplete="off"  type="hidden">	
+					<input id="txtNombreUe" name="txtNombrePi" value="<?= $listaUnicaProIv->nombre_pi?>" class="form-control col-md-4 col-xs-12"  autocomplete="off" readonly="readonly">	
 				</div>	
 			</div>
 		</div>

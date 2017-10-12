@@ -19,7 +19,14 @@ class PuntajeCriterioPi extends CI_Controller {/* Mantenimiento de sector entida
 
 	public function insertar()
 	{
-		$this->load->view('front/Pmi/PuntajeCriterioPi/insertar');
+		if($_POST)
+		{
+
+		}
+		$id_pi=$this->input->Get('id_pi');
+		$listaUnicaProIv=$this->Model_PuntajeCriterioPi->proyectoInvUnico($id_pi);
+		$this->load->view('front/Pmi/PuntajeCriterioPi/insertar',['listaUnicaProIv' =>$listaUnicaProIv]);
+
 	}
 
 	
