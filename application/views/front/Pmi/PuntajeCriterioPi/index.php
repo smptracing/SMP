@@ -55,10 +55,9 @@
 																<?=$item->nombre_funcion?>
 													    	</td>
 													    	<td>
-															
+															<button type="button" class="btn btn-primary btn-xs " onclick="paginaAjaxDialogo(null, 'Asignar Prioridad', {}, base_url+'index.php/PuntajeCriterioPi/insertar', 'GET', null, null, false, true);"><span class="fa fa-plus-circle"></span>
+																</button>
 													    	</td>
-											
-
 													  </tr>
 													<?php } ?>	
 													</tbody>

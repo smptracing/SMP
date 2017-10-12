@@ -17,5 +17,10 @@ class PuntajeCriterioPi extends CI_Controller {/* Mantenimiento de sector entida
 		$this->load->view('layout/PMI/footer');	
 	}
 
+	public function insertar()
+	{
+		$this->load->view('front/Pmi/PuntajeCriterioPi/insertar');
+	}
+
 	
 }
