@@ -848,10 +848,11 @@ class Expediente_Tecnico extends CI_Controller
 		$this->load->view('front/Ejecucion/ExpedienteTecnico/verdetalle', [ 'ExpedienteTecnicoElaboracion' => $ExpedienteTecnicoElaboracion ]);
 		$this->load->view('layout/Ejecucion/footer');
 	}
-	public function ListarPartida()
+	public function ListarPartida($id_et)
 	{
+		$listaPartida = $this->Model_ET_Expediente_Tecnico->listarPartidaporEt($id_et);
 		$this->load->view('layout/Ejecucion/header');
-		$this->load->view('front/Ejecucion/ExpedienteTecnico/listarpartida');
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/listarpartida',['listaPartida' => $listaPartida]);
 		$this->load->view('layout/Ejecucion/footer');
 	}
 }

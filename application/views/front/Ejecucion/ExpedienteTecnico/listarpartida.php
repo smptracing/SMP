@@ -19,19 +19,20 @@
                         	</tr>
                       	</thead>
                       	<tbody>
-                        <tr>
-                          	<td>#</td>
-                          	<td>
-	                            <a>Pesamakini Backend UI</a>
-	                            <br />
-	                            <small>Created 01.01.2015</small>
-                          	</td>
-                          	<td>
-	                            <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
-	                            <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
-	                            <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
-                          	</td>
-                        </tr>                          
+                      	<?php foreach($listaPartida as $item){ ?>
+						  	<tr>						  		
+								<td>
+									#
+								</td>
+								<td>
+									<?= $item->desc_partida?>
+								</td>
+								<td>
+						  			<a href="<?= site_url('Expediente_Tecnico/verdetalle/'.$item->id_partida);?>" role="button" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Asignar orden</a>
+						  				
+						  		</td>									
+						  	</tr>
+						<?php } ?>                        
                       </tbody>
                     </table>
                 </div>

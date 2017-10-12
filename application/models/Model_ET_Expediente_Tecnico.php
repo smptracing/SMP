@@ -249,4 +249,9 @@ class Model_ET_Expediente_Tecnico extends CI_Model
 
     	return true;
     }
+    public function listarPartidaporEt($id_et)
+    {
+    	$data=$this->db->query("select p.id_partida, p.desc_partida from ET_PARTIDA p inner join ET_META m on p.id_meta=m.id_meta inner join ET_COMPONENTE c on m.id_componente=c.id_componente inner join ET_EXPEDIENTE_TECNICO et on c.id_et=et.id_et where et.id_et=$id_et");
+        return $data->result();
+    }
 }
