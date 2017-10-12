@@ -211,8 +211,7 @@
                             </div>
                         </div>
 					</div>
-					<div class="row">
-						
+					<!--<div class="row">						
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Cargo</label>
 							<input type="hidden" name="id_tipo_responsableElabo" value="<?= $listarUResponsableERespoElabo->id_responsable_et ?>">
@@ -245,9 +244,9 @@
 							</div>
 						</div>
 
-					</div>
+					</div>-->
 
-					<div class="row">
+					<!--<div class="row">
 						
 						<div class="col-md-3 col-sm-2 col-xs-12">
 							<label class="control-label">Cargos</label>
@@ -266,7 +265,6 @@
 									<?php } ?>
 								</select>
 						</div>
-
 						<div class="col-md-4 col-sm-3 col-xs-12">
 							<label class="control-label">Tipo de Responsable</label>
 							<select  id="ComboTipoResponsableEjecucion" name="ComboTipoResponsableEjecucion" class="form-control col-md-2 col-xs-2">
@@ -277,8 +275,8 @@
 							<div>
 							</div>
 						</div>
+					</div>-->
 
-					</div>
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<label class="control-label">Sustento para la presentacion del proyecto</label></br>

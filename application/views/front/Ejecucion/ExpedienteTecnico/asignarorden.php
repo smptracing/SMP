@@ -57,7 +57,6 @@
 		<button  id="btnEnviarFormulario" class="btn btn-success">Guardar</button>
 		<button  class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 	</div>
-	<div class="ln_solid"></div>
 </form>
 <div class="row">
 	<div class="col-md-12 col-sm-12 col-xs-12">
@@ -65,15 +64,15 @@
 			<table id="tableListaOrden" style="text-align: left;" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 				<thead>
 					<tr>
-						<th style="width: 20%" class="col-md-1 col-xs-12">Número de Orden</th>
-						<th style="width: 80%" class="col-md-2 col-xs-12">Concepto</th>						
+						<th style="width: 5%" class="col-md-1 col-xs-12">Número de Orden</th>
+						<th style="width: 30%" class="col-md-2 col-xs-12">Concepto</th>						
 					</tr>
 				</thead>
 				<tbody>
 				<?php foreach($listaOrden as $item){ ?>
 				  	<tr>				  		
-						<td style="width: 20%" ><?= $item->nro_orden?></td>
-						<td style="width: 80%"><?= $item->desc_det_seg_orden?></td>	
+						<td style="width: 5%" ><?= $item->nro_orden?></td>
+						<td style="width: 30%"><?= $item->desc_det_seg_orden?></td>	
 						<!--<td>
 				  			<a href="<?= site_url('Expediente_Tecnico/verdetalle/'.$item->id_pi);?>" role="button" class="btn btn-success btn-sm"><span class="fa fa-eye"></span> <?= $item->codigo_unico_pi?></a>				  				
 				  		</td>-->									

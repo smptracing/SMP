@@ -367,21 +367,21 @@ class Expediente_Tecnico extends CI_Controller
 		
 		$id_et=$this->input->GET('id_et');
 		$listaimg=$this->Model_ET_Img->ListarImagen($id_et);
-
-		$listarUResponsableERespoElabo=$this->Model_ET_Expediente_Tecnico->listarUResponsableERespoElaboracion($id_et);
-		$listarUResponsableERespoEjecucion=$this->Model_ET_Expediente_Tecnico->listarUResponsableERespoEjecucion($id_et);
+		//$listarUResponsableERespoElabo=$this->Model_ET_Expediente_Tecnico->listarUResponsableERespoElaboracion($id_et);
+		//$listarUResponsableERespoEjecucion=$this->Model_ET_Expediente_Tecnico->listarUResponsableERespoEjecucion($id_et);
 
 		$listarCargo=$this->Cargo_Modal->getcargo();
-		$opcion  = "001";//Responsable de elaboración
+		$opcion  = "001";
 		$listaTipoResponsableElaboracion=$this->Model_ET_Tipo_Responsable->NombreTipoResponsable($opcion);
 
-		$opcion  = "002";//
+		$opcion  = "002";
 		$listaTipoResponsableEjecucion=$this->Model_ET_Tipo_Responsable->NombreTipoResponsable($opcion);
 
 		$listarPersona=$this->Model_Personal->listarPersona();
 
 		$ExpedienteTecnicoM=$this->Model_ET_Expediente_Tecnico->DatosExpediente($id_et);
-		return $this->load->view('front/Ejecucion/ExpedienteTecnico/editar',['ExpedienteTecnicoM'=>$ExpedienteTecnicoM, 'listaimg'=>$listaimg,'listarCargo' => $listarCargo,'listaTipoResponsableElaboracion' => $listaTipoResponsableElaboracion,'listaTipoResponsableEjecucion' => $listaTipoResponsableEjecucion,'listarPersona'=>$listarPersona,'listarUResponsableERespoElabo' =>$listarUResponsableERespoElabo,'listarUResponsableERespoEjecucion' =>$listarUResponsableERespoEjecucion]);
+		return $this->load->view('front/Ejecucion/ExpedienteTecnico/editar',['ExpedienteTecnicoM'=>$ExpedienteTecnicoM, 'listaimg'=>$listaimg]);
+		/*return $this->load->view('front/Ejecucion/ExpedienteTecnico/editar',['ExpedienteTecnicoM'=>$ExpedienteTecnicoM, 'listaimg'=>$listaimg,'listarCargo' => $listarCargo,'listaTipoResponsableElaboracion' => $listaTipoResponsableElaboracion,'listaTipoResponsableEjecucion' => $listaTipoResponsableEjecucion,'listarPersona'=>$listarPersona,'listarUResponsableERespoElabo' =>$listarUResponsableERespoElabo,'listarUResponsableERespoEjecucion' =>$listarUResponsableERespoEjecucion]);*/
 	}
 
     function registroBuscarProyecto()
@@ -899,9 +899,5 @@ class Expediente_Tecnico extends CI_Controller
 		}
 		$orden = $this->Model_DetSegOrden->buscarOrden($anio,$ultimaMeta,$txtOrden);
 		echo json_encode($orden);
-    }
-    public function anio()
-    {
-    	echo "hola".date('Y');
     }
 }
