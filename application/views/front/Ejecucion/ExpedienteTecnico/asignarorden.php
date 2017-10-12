@@ -19,6 +19,7 @@
 						<div class="col-md-12 col-sm-3 col-xs-12">
 							<label class="control-label">Partida</label>
 							<div>
+								<input class="form-control" name="hdIdPartida" id="hdIdPartida" readonly="readonly" type="hidden" value="<?= $partida->id_partida?>"> 	
 								<input class="form-control" placeholder="descripcion de Partida" autocomplete="off" readonly="readonly" value="<?= $partida->desc_partida?>">	
 							</div>	
 						</div>
@@ -153,7 +154,7 @@ $(function()
             var dataString = $('#frmAsignarOrden').serialize();
             $.ajax({
                 type:"POST",
-                url:base_url+"index.php/Expediente_Tecnico/insertar",
+                url:base_url+"index.php/Expediente_Tecnico/AsignarOrden",
                 data: formData,
                 cache: false,
                 contentType:false,
@@ -164,10 +165,10 @@ $(function()
 			    },
                 success:function(resp)
                 {
-                    window.location.href=base_url+"index.php/Expediente_Tecnico/"
+                    //window.location.href=base_url+"index.php/Expediente_Tecnico/"
                 }
             });
-          $('#form-addExpedienteTecnico')[0].reset();
+          $('#frmAsignarOrden')[0].reset();
     });
 </script>
 

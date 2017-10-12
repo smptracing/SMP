@@ -25,6 +25,7 @@ class Expediente_Tecnico extends CI_Controller
 		$this->load->model('Model_ET_Detalle_Analisis_Unitario');
 		$this->load->model('Model_ET_Tarea');
 		$this->load->model('Model_ET_Mes_Valorizacion');
+		$this->load->model('Model_DetSegOrden');
 		$this->load->library('mydompdf');
 		$this->load->helper('FormatNumber_helper');
 	}
@@ -857,10 +858,21 @@ class Expediente_Tecnico extends CI_Controller
 	}
 	public function AsignarOrden()
 	{
-		/*if ($_POST) 
+		if ($_POST) 
 		{
-
-		}*/
+			$idPartida=$this->input->post('hdIdPartida');
+			$numeroOrden=$this->input->post('txtNumeroOrden');
+			$concepto=$this->input->post('txtConceptoOrden');	
+			$data = $this->Model_DetSegOrden->insertar($idPartida,$numeroOrden,$concepto);		
+			/*if ($data==true) 
+			{
+				echo "Registrado Correctamente";
+			}	
+			else
+			{
+				echo "Ha ocurrido un error";
+			}*/
+		}
 		$idPartida=$this->input->get('id_partida');
 		$partida=$this->Model_ET_Expediente_Tecnico->DetallePartida($idPartida);
 		$this->load->view('front/Ejecucion/ExpedienteTecnico/asignarorden',['partida' => $partida ]);
