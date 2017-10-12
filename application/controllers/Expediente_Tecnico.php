@@ -881,4 +881,12 @@ class Expediente_Tecnico extends CI_Controller
 		}
 		
 	}
+	function registroBuscarMeta()
+    {
+    		$CodigoUnico=$this->input->get('inputValue');
+    		$listaAcumuladoMeta = $this->Model_DetSegOrden->listarAcumuladoMeta($CodigoUnico);
+    		
+			$Registrosproyectobuscos=$this->Model_ET_Expediente_Tecnico->ExpedienteContarRegistros($CodigoUnico);
+			echo  json_encode($Registrosproyectobuscos);
+    }
 }

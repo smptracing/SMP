@@ -256,7 +256,7 @@ class Model_ET_Expediente_Tecnico extends CI_Model
     }
     public function DetallePartida($idPartida)
     {
-    	$data=$this->db->query("select et.id_et, py.nombre_pi, p.id_partida, p.desc_partida from ET_PARTIDA p inner join ET_META m on p.id_meta=m.id_meta
+    	$data=$this->db->query("select py.codigo_unico_pi, et.id_et, py.nombre_pi, p.id_partida, p.desc_partida from ET_PARTIDA p inner join ET_META m on p.id_meta=m.id_meta
 		inner join ET_COMPONENTE c on m.id_componente=c.id_componente inner join ET_EXPEDIENTE_TECNICO et on c.id_et=et.id_et
 		inner join proyecto_inversion py on et.id_pi = py.id_pi where p.id_partida=$idPartida");
         return $data->result()[0];

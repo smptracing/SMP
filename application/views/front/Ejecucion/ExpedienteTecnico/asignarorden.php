@@ -65,40 +65,40 @@ function BuscarOrden()
 {
 	swal({
 	  title: "Buscar",
-	  text: "Proyecto: Ingrese Nro de Orden",
+	  text: "Ingrese Número de Orden",
 	  type: "input",
 	  showCancelButton: true,
 	  closeOnConfirm: false,
-	  inputPlaceholder: "Ingrese Nro de Orden"
+	  inputPlaceholder: "Ingrese Número de Orden"
 	}, function (inputValue) {
 	
-	/*if (inputValue === "")
-	  {
-	  	swal.showInputError("Ingresar codigo!");
+	if (inputValue === "")
+	{
+	  	swal.showInputError("Ingresar Número de Orden!");
     	return false
-	  }
-	 else 
-	 {
-			event.preventDefault();
-			$.ajax({
-				"url":base_url+"index.php/Expediente_Tecnico/registroBuscarProyecto",
-				type:"GET", 
-				data:{inputValue:inputValue},
-				cache:false,
-				success:function(resp){
-					var ProyetoEncontrado=eval(resp);
-					if(ProyetoEncontrado.length==1){
-							var buscar="true";
-							paginaAjaxDialogo(null, 'Registrar Expediente Técnico',{CodigoUnico:inputValue,buscar:buscar}, base_url+'index.php/Expediente_Tecnico/insertar', 'GET', null, null, false, true);
-	  						swal("Correcto!", "Se Encontro el Proyecto: " + inputValue, "success");
-					}else{
-							swal.showInputError("No se encontro el  Codigo Unico. Intente Nuevamente!");
-	    					return false
-					}
-					
+	}
+	else 
+	{
+		event.preventDefault();
+		$.ajax({
+			"url":base_url+"index.php/Expediente_Tecnico/registroBuscarProyecto",
+			type:"GET", 
+			data:{inputValue:inputValue},
+			cache:false,
+			success:function(resp){
+				var ProyetoEncontrado=eval(resp);
+				if(ProyetoEncontrado.length==1){
+						var buscar="true";
+						paginaAjaxDialogo(null, 'Registrar Expediente Técnico',{CodigoUnico:inputValue,buscar:buscar}, base_url+'index.php/Expediente_Tecnico/insertar', 'GET', null, null, false, true);
+  						swal("Correcto!", "Se Encontro el Proyecto: " + inputValue, "success");
+				}else{
+						swal.showInputError("No se encontro el  Codigo Unico. Intente Nuevamente!");
+    					return false
 				}
-			});
-		}*/
+				
+			}
+		});
+	}
 
 	});
 }
