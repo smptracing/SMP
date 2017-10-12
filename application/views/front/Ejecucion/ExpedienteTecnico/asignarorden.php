@@ -29,7 +29,7 @@
 						<div class="col-md-3">
 							<label class="control-label">Ingrese Nro de Orden</label>
 							<div>
-								<button onclick="BuscarOrden();" class="btn btn-primary">Buscar</button>
+								<button onclick="BuscarOrden('<?=$partida->codigo_unico_pi?>');" class="btn btn-primary">Buscar</button>
 							</div>	
 							
 						</div>						
@@ -61,7 +61,7 @@
 	</div>
 </form>
 <script>
-function BuscarOrden()
+function BuscarOrden(codigoUnico)
 {
 	swal({
 	  title: "Buscar",
@@ -70,35 +70,47 @@ function BuscarOrden()
 	  showCancelButton: true,
 	  closeOnConfirm: false,
 	  inputPlaceholder: "Ingrese Número de Orden"
-	}, function (inputValue) {
-	
-	if (inputValue === "")
-	{
-	  	swal.showInputError("Ingresar Número de Orden!");
-    	return false
-	}
-	else 
-	{
-		event.preventDefault();
-		$.ajax({
-			"url":base_url+"index.php/Expediente_Tecnico/registroBuscarProyecto",
-			type:"GET", 
-			data:{inputValue:inputValue},
-			cache:false,
-			success:function(resp){
-				var ProyetoEncontrado=eval(resp);
-				if(ProyetoEncontrado.length==1){
-						var buscar="true";
-						paginaAjaxDialogo(null, 'Registrar Expediente Técnico',{CodigoUnico:inputValue,buscar:buscar}, base_url+'index.php/Expediente_Tecnico/insertar', 'GET', null, null, false, true);
-  						swal("Correcto!", "Se Encontro el Proyecto: " + inputValue, "success");
-				}else{
-						swal.showInputError("No se encontro el  Codigo Unico. Intente Nuevamente!");
-    					return false
+	}, 
+	function (inputValue) 
+	{	
+		if (inputValue === "")
+		{
+		  	swal.showInputError("Ingresar Número de Orden!");
+	    	return false
+		}
+		else 
+		{
+			event.preventDefault();
+			$.ajax({
+				"url":base_url+"index.php/Expediente_Tecnico/registroBuscarMeta",
+				type:"GET", 
+				data:{inputValue:inputValue, txtCodigoUnico:codigoUnico},
+				cache:false,
+				success:function(resp)
+				{
+					var OrdenEncontrado=eval(resp);
+					if(OrdenEncontrado.length==1)
+					{
+						swal("Correcto!", "Se Encontro la orden: " + inputValue, "success");
+						alert("encontrado");
+						//var buscar="true";
+
+						/*paginaAjaxDialogo(null, 'Registrar Expediente Técnico',{CodigoUnico:inputValue,buscar:buscar}, base_url+'index.php/Expediente_Tecnico/insertar', 'GET', null, null, false, true);*/
+						/*swal("Correcto!", "Se Encontro el Proyecto: " + inputValue, "success");
+						$('#txtNumeroOrden').val("hola num");
+						$('#txtConceptoOrden').val("hola con");*/
+
+
+					}
+					else
+					{
+						swal.showInputError("No se encontro ninguna Orden con ese número");
+	    				return false
+					}
+					
 				}
-				
-			}
-		});
-	}
+			});
+		}
 
 	});
 }

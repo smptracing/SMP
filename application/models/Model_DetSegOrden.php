@@ -18,5 +18,12 @@ class Model_DetSegOrden extends CI_Model
         $data = $this->db->query("execute sp_Gestionar_SIAF @opcion='listar_acumulado_meta', @codigo_snip ='".$codigo_unico."'");
         return $data->result();    
 	}
+	public function buscarOrden($anio,$ultimaMeta,$txtOrden)
+	{
+        $data = $this->db->query("execute sp_Gestionar_SIGA @opcion='listar_orden_proyecto', @anio_meta=$anio, @correlativo_meta=$ultimaMeta, @num_orden = $txtOrden");
+        return $data->result()[0];
+
+
+	}
 }
 ?>

@@ -881,12 +881,25 @@ class Expediente_Tecnico extends CI_Controller
 		}
 		
 	}
-	function registroBuscarMeta()
+	public function registroBuscarMeta()
     {
-    		$CodigoUnico=$this->input->get('inputValue');
-    		$listaAcumuladoMeta = $this->Model_DetSegOrden->listarAcumuladoMeta($CodigoUnico);
-    		
-			$Registrosproyectobuscos=$this->Model_ET_Expediente_Tecnico->ExpedienteContarRegistros($CodigoUnico);
-			echo  json_encode($Registrosproyectobuscos);
+    	$CodigoUnico=$this->input->get('txtCodigoUnico');
+		$txtOrden=$this->input->get('inputValue');
+		$listaAcumuladoMeta = $this->Model_DetSegOrden->listarAcumuladoMeta($CodigoUnico);
+		$ultimaMeta = '';
+		$anio = date('Y');
+		foreach ($listaAcumuladoMeta as $key => $value) 
+		{
+			if ($value->ano_eje == $anio) 
+			{
+				$ultimaMeta = $value->meta;
+			}
+		}
+		$orden = $this->Model_DetSegOrden->buscarOrden($anio,$ultimaMeta,$txtOrden);
+		echo json_encode($orden);
+    }
+    public function anio()
+    {
+    	echo "hola".date('Y');
     }
 }
