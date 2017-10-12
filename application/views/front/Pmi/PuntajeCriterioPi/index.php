@@ -22,7 +22,7 @@
 														<label class="control-label">Seleccionar función</label>
 														<select  id="combofuncion" name="combofuncion" class="form-control col-md-2 col-xs-2">
 															<?php foreach($listarFuncion as $item){ ?>
-																<option value="<?=$item->id_funcion; ?>"><?= $item->nombre_funcion;?></option>
+																<option value="<?=$item->id_funcion; ?>" <?=($item->id_funcion==$id_funcion ? 'selected' : '')?>><?= $item->nombre_funcion;?></option>
 															<?php } ?>
 														</select>
 									                </div>
