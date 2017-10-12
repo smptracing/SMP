@@ -855,4 +855,14 @@ class Expediente_Tecnico extends CI_Controller
 		$this->load->view('front/Ejecucion/ExpedienteTecnico/listarpartida',['listaPartida' => $listaPartida]);
 		$this->load->view('layout/Ejecucion/footer');
 	}
+	public function AsignarOrden()
+	{
+		/*if ($_POST) 
+		{
+
+		}*/
+		$idPartida=$this->input->get('id_partida');
+		$partida=$this->Model_ET_Expediente_Tecnico->DetallePartida($idPartida);
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/asignarorden',['partida' => $partida ]);
+	}
 }

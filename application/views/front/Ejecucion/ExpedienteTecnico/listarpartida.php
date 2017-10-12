@@ -28,8 +28,7 @@
 									<?= $item->desc_partida?>
 								</td>
 								<td>
-						  			<a href="<?= site_url('Expediente_Tecnico/verdetalle/'.$item->id_partida);?>" role="button" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Asignar orden</a>
-						  				
+						  			<a onclick="paginaAjaxDialogo(null, 'Asignar Orden',{ id_partida: '<?=$item->id_partida?>' }, base_url+'index.php/Expediente_Tecnico/AsignarOrden', 'GET', null, null, false, true);return false;" role="button" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Asignar orden</a>			  				
 						  		</td>									
 						  	</tr>
 						<?php } ?>                        
