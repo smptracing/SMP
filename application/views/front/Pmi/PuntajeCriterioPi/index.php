@@ -37,6 +37,18 @@
 												</ul>
 												<div class="clearfix"></div>
 											</div>
+											<div class="col-md-3 col-xs-3"  style="margin-left: 300px;">
+												<div class="form-group">
+									                <div class="input-group">
+														<label class="control-label">Seleccionar función</label>
+														<select  id="combofuncion" name="combofuncion" class="form-control col-md-2 col-xs-2">
+															<?php foreach($listarFuncion as $item){ ?>
+																<option value="<?=$item->id_funcion; ?>"><?= $item->nombre_funcion;?></option>
+															<?php } ?>
+														</select>
+									                </div>
+							            		</div>
+											</div>
 											<div class="x_content">
 												<table id="table-pip" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 													<thead>

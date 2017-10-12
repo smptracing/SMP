@@ -14,5 +14,11 @@ class Model_PuntajeCriterioPi extends CI_Model
 
         return $data->result();
     }
+    function FuncionPip()
+    {
+    	$data=$this->db->query("select * from FUNCION");
+
+        return $data->result();
+    }
 
 }

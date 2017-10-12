@@ -10,10 +10,12 @@ class PuntajeCriterioPi extends CI_Controller {/* Mantenimiento de sector entida
 	public function index(){	
 
 		$listaPipPriorizar=$this->Model_PuntajeCriterioPi->PipPriorizar();
+		$listarFuncion=$this->Model_PuntajeCriterioPi->FuncionPip();
 
 		$this->load->view('layout/PMI/header');
-		$this->load->view('front/Pmi/PuntajeCriterioPi/index',['listaPipPriorizar'=>$listaPipPriorizar]);
+		$this->load->view('front/Pmi/PuntajeCriterioPi/index',['listaPipPriorizar'=>$listaPipPriorizar,'listarFuncion'=>$listarFuncion]);
 		$this->load->view('layout/PMI/footer');	
 	}
+
 	
 }
