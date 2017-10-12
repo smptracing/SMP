@@ -1,5 +1,5 @@
 
-<form  id="form-addExpedienteTecnico"   action="<?php echo base_url();?>index.php/Expediente_Tecnico/insertar" method="POST" enctype="multipart/form-data" >
+<form  id="frmAsignarOrden"   action="<?php echo base_url();?>index.php/Expediente_Tecnico/insertar" method="POST">
 
 	<div class="row">
 
@@ -37,13 +37,13 @@
 						<div class="col-md-3 col-sm-12 col-xs-12">
 							<label class="control-label">Numero de Orden</label>
 							<div>
-								<input class="form-control"  placeholder="Número de Orden "  autocomplete="off">	
+								<input class="form-control" name="txtNumeroOrden" id="txtNumeroOrden" placeholder="Número de Orden "  autocomplete="off">	
 							</div>	
 						</div>
 						<div class="col-md-9 col-sm-12 col-xs-12">
 							<label class="control-label">Concepto</label>
 							<div>
-								<input class="form-control"  placeholder="Concepto"  autocomplete="off">	
+								<input class="form-control" name="txtConceptoOrden" id="txtConceptoOrden" placeholder="Concepto" autocomplete="off">	
 							</div>	
 						</div>
 					</div>					
@@ -71,14 +71,14 @@ function BuscarOrden()
 	  inputPlaceholder: "Ingrese Nro de Orden"
 	}, function (inputValue) {
 	
-	if (inputValue === "")
+	/*if (inputValue === "")
 	  {
 	  	swal.showInputError("Ingresar codigo!");
     	return false
 	  }
 	 else 
 	 {
-			/*event.preventDefault();
+			event.preventDefault();
 			$.ajax({
 				"url":base_url+"index.php/Expediente_Tecnico/registroBuscarProyecto",
 				type:"GET", 
@@ -96,25 +96,14 @@ function BuscarOrden()
 					}
 					
 				}
-			});*/
-		}
+			});
+		}*/
 
 	});
 }
-/*
 $(function()
 	{
-		CKEDITOR.replace('txtSituacioActual' ,{
-		filebrowserImageBrowseUrl : '<?php echo base_url('assets/filemanager/index.html');?>'
-		});
-		CKEDITOR.replace('txtSituacioEconomica' ,{
-		filebrowserImageBrowseUrl : '<?php echo base_url('assets/filemanager/index.html');?>'
-		});
-		CKEDITOR.replace('txtResumenProyecto' ,{
-		filebrowserImageBrowseUrl : '<?php echo base_url('assets/filemanager/index.html');?>'
-		});
-
-		$('#form-addExpedienteTecnico').formValidation(
+		$('#frmAsignarOrden').formValidation(
 		{
 			framework: 'bootstrap',
 			excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
@@ -123,269 +112,29 @@ $(function()
 			trigger: null,
 			fields:
 			{
-				txtDireccionUE:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Dirección UE." es requerido.</b>'
-						}
-					}
-				},
-				txtUbicacionUE:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Ubicación UE." es requerido.</b>'
-						}
-					}
-				},
-				txtNombreUe:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Nombre unidad ejecutora" es requerido.</b>'
-						}
-					}
-				},
-				txtTelefonoUE:
+				txtNumeroOrden:
 				{
 					validators:
 					{
 					
 						notEmpty:
 						{
-							message: '<b style="color: red;">El campo "Teléfono" es requerido.</b>'
+							message: '<b style="color: red;">El campo "Número de Orden" es requerido.</b>'
 						},
 						regexp:
 						{
 							regexp: /^[0-9]+$/,
-							message: '<b style="color: red;">El campo "Teléfono" debe ser un numero.</b>'
+							message: '<b style="color: red;">El campo "Número de Orden" debe ser un numero.</b>'
 						}
 					}
 				},
-				txtRuc:
+				txtConceptoOrden:
 				{
 					validators:
 					{
 						notEmpty:
 						{
-							message: '<b style="color: red;">El campo "Ruc" es requerido.</b>'
-						},
-						regexp:
-						{
-							regexp: /^([0-9]){11}$/,
-							message: '<b style="color: red;">El campo "Ruc" debe ser un número de 11 dígitos.</b>'
-						}
-					}
-				},
-				txtCostoTotalPreInversion:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Costo total de preinversion" es requerido.</b>'
-						},
-						regexp:
-						{
-							regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
-							message: '<b style="color: red;">El campo "Costo U." debe ser un valor en soles.</b>'
-						}
-					}
-				},
-				txtCostoDirectoPre:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Costo Directo de preinversion" es requerido.</b>'
-						},
-						regexp:
-						{
-							regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
-							message: '<b style="color: red;">El campo "Costo U." debe ser un valor en soles.</b>'
-						}
-					}
-				},
-				txtCostoIndirectoPre:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Costo Indirecto de preinversion" es requerido.</b>'
-						},
-						regexp:
-						{
-							regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
-							message: '<b style="color: red;">El campo "Costo U." debe ser un valor en soles.</b>'
-						}
-					}
-				},
-				txtCostoTotalInversion:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Costo total de Inversión" es requerido.</b>'
-						},
-						regexp:
-						{
-							regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
-							message: '<b style="color: red;">El campo "Costo total de Inversión" debe ser un valor en soles.</b>'
-						}
-					}
-				},
-				txtCostoDirectoInversion:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Costo Directo de Inversión" es requerido.</b>'
-						},
-						regexp:
-						{
-							regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
-							message: '<b style="color: red;">El campo "Costo Directo de Inversión" debe ser un valor en soles.</b>'
-						}
-					}
-				},
-				txtGastosGenerales:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Costo General" es requerido.</b>'
-						},
-						regexp:
-						{
-							regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
-							message: '<b style="color: red;">El campo "Costo General." debe ser un valor en soles.</b>'
-						}
-					}
-				},
-				txtGastosSupervision:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Gastos de supervisión" es requerido.</b>'
-						},
-						regexp:
-						{
-							regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
-							message: '<b style="color: red;">El campo "Gastos de supervisión" debe ser un valor en soles.</b>'
-						}
-					}
-				},
-				txtFuncionProgramatica:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Función Programatica" es requerido.</b>'
-						}
-					}
-				},
-				txtProyecto:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Proyecto" es requerido.</b>'
-						}
-					}
-				},
-				txtComponente:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Componente" es requerido.</b>'
-						}
-					}
-				},
-				txtMeta:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Meta" es requerido.</b>'
-						}
-					}
-				},
-				txtNumBeneficiarios:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Numero de beneficiarios" es requerido.</b>'
-						},
-						regexp:
-						{
-							regexp: /^\d*$/,
-							message: '<b style="color: red;">El campo "Numero de beneficiarios" debe ser un numero.</b>'
-						}
-					}
-				},
-				txtFuenteFinanciamiento:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Fuente Financiamiento" es requerido.</b>'
-						}
-					}
-				},
-				txtModalidadEjecucion:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Modalidad de Ejecución" es requerido.</b>'
-						}
-					}
-				},
-				txtTiempoEjecucionPip:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Titmpo de ejecución" es requerido.</b>'
-						}
-					}
-				},
-				txtNumFolio:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Numero de folios" es requerido.</b>'
-						},
-						regexp:
-						{
-							regexp: /^\d*$/,
-							message: '<b style="color: red;">El campo "Numero de folios" debe ser un número.</b>'
+							message: '<b style="color: red;">El campo "Concepto" es requerido.</b>'
 						}
 					}
 				}
@@ -395,48 +144,31 @@ $(function()
     $('#btnEnviarFormulario').on('click', function(event)
    	{
             event.preventDefault();
-            $('#form-addExpedienteTecnico').data('formValidation').validate();
-			if(!($('#form-addExpedienteTecnico').data('formValidation').isValid()))
+            $('#frmAsignarOrden').data('formValidation').validate();
+			if(!($('#frmAsignarOrden').data('formValidation').isValid()))
 			{
 				return;
 			}
-			var extension=$("#Documento_Resolucion").val();
-            var url=getFileExtension(extension);
-            $("#url").val(url);
-
-            $("#hdtxtSituacioActual").val(CKEDITOR.instances.txtSituacioActual.getData());
-            $("#hdtxtSituacioEconomica").val(CKEDITOR.instances.txtSituacioEconomica.getData());
-            $("#hdtxtResumenProyecto").val(CKEDITOR.instances.txtResumenProyecto.getData());
-
-            var formData=new FormData($("#form-addExpedienteTecnico")[0]);
-            var dataString = $('#form-addExpedienteTecnico').serialize();
+            var formData=new FormData($("#frmAsignarOrden")[0]);
+            var dataString = $('#frmAsignarOrden').serialize();
             $.ajax({
                 type:"POST",
-                enctype: 'multipart/form-data',
                 url:base_url+"index.php/Expediente_Tecnico/insertar",
                 data: formData,
                 cache: false,
                 contentType:false,
                 processData:false,
-                beforeSend: function() {
+                beforeSend: function() 
+                {
                 	renderLoading();
 			    },
                 success:function(resp)
                 {
-                  	//console.log(resp);
                     window.location.href=base_url+"index.php/Expediente_Tecnico/"
                 }
             });
           $('#form-addExpedienteTecnico')[0].reset();
     });
-
-    function getFileExtension(filename)
-    {
-
-		return filename.slice((filename.lastIndexOf(".") - 2 >>> 0) + 2);
-
-	}
-			  */
 </script>
 
 
