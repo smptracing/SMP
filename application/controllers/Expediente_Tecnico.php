@@ -848,4 +848,10 @@ class Expediente_Tecnico extends CI_Controller
 		$this->load->view('front/Ejecucion/ExpedienteTecnico/verdetalle', [ 'ExpedienteTecnicoElaboracion' => $ExpedienteTecnicoElaboracion ]);
 		$this->load->view('layout/Ejecucion/footer');
 	}
+	public function ListarPartida()
+	{
+		$this->load->view('layout/Ejecucion/header');
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/listarpartida');
+		$this->load->view('layout/Ejecucion/footer');
+	}
 }
