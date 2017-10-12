@@ -29,48 +29,6 @@ $(document).on("ready" ,function()
         $(this).val(format($(this).val()));
     });
 
-    /*$('#txt_pia').inputmask("decimal", {
-        radixPoint: ".",
-        groupSeparator: ",",
-        digits: 2,
-        autoGroup: true,
-        rightAlign: false,
-    });    
-    $('#txt_pim').inputmask("decimal", {
-        radixPoint: ".",
-        groupSeparator: ",",
-        digits: 2,
-        autoGroup: true,
-        rightAlign: false,
-    });
-    $('#txt_certificado').inputmask("decimal", {
-        radixPoint: ".",
-        groupSeparator: ",",
-        digits: 2,
-        autoGroup: true,
-        rightAlign: false,
-    });
-    $('#txt_compromiso').inputmask("decimal", {
-        radixPoint: ".",
-        groupSeparator: ",",
-        digits: 2,
-        autoGroup: true,
-        rightAlign: false,
-    });
-    $('#txt_devengado').inputmask("decimal", {
-        radixPoint: ".",
-        groupSeparator: ",",
-        digits: 2,
-        autoGroup: true,
-        rightAlign: false,
-    });
-    $('#txt_girado').inputmask("decimal", {
-        radixPoint: ".",
-        groupSeparator: ",",
-        digits: 2,
-        autoGroup: true,
-        rightAlign: false,
-    });*/
     $("#form_AddProgramacion").submit(function(event)
     {
         event.preventDefault();
@@ -163,22 +121,6 @@ var format = function(num){
     formatted = output.reverse().join("");
     return("" + formatted + ((parts) ? "." + parts[1].substr(0, 2) : ""));
 };
-
-function addCommas(str)
-{
-    /*nStr += '';
-    var x = nStr.split('.');
-    var x1 = x[0];
-    var x2 = x.length > 1 ? '.' + x[1] : '';
-    var rgx = /(\d+)(\d{3})/;
-    while (rgx.test(x1)) {
-    x1 = x1.replace(rgx, '$1' + ',' + '$2');
-    }
-    return x1 + x2;*/
-    //return str.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    return String(str).replace(/(\d)(?=(\d{3})+$)/g, "$1,")
-}
-
 function formatNumber(value) 
 {
     nStr += '';
@@ -190,8 +132,6 @@ function formatNumber(value)
             .replace(/([0-9])([0-9]{2})$/, '$1.$2')
             .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");
             return 
-
-    //return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
 }
 
 $(function()

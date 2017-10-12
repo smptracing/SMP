@@ -88,26 +88,18 @@ function BuscarOrden(codigoUnico)
 				cache:false,
 				success:function(resp)
 				{
-					var OrdenEncontrado=eval(resp);
-					if(OrdenEncontrado.length==1)
+					var orden=eval(resp);
+					if(orden.length==1)
 					{
 						swal("Correcto!", "Se Encontro la orden: " + inputValue, "success");
-						alert("encontrado");
-						//var buscar="true";
-
-						/*paginaAjaxDialogo(null, 'Registrar Expediente Técnico',{CodigoUnico:inputValue,buscar:buscar}, base_url+'index.php/Expediente_Tecnico/insertar', 'GET', null, null, false, true);*/
-						/*swal("Correcto!", "Se Encontro el Proyecto: " + inputValue, "success");
-						$('#txtNumeroOrden').val("hola num");
-						$('#txtConceptoOrden').val("hola con");*/
-
-
+						$('#txtNumeroOrden').val(orden[0].NRO_ORDEN);
+						$('#txtConceptoOrden').val(orden[0].CONCEPTO);
 					}
 					else
 					{
 						swal.showInputError("No se encontro ninguna Orden con ese número");
 	    				return false
-					}
-					
+					}					
 				}
 			});
 		}
@@ -157,6 +149,8 @@ $(function()
     $('#btnEnviarFormulario').on('click', function(event)
    	{
             event.preventDefault();
+            $('#frmAsignarOrden').data('formValidation').resetField($('#txtNumeroOrden'));
+            $('#frmAsignarOrden').data('formValidation').resetField($('#txtConceptoOrden'));
             $('#frmAsignarOrden').data('formValidation').validate();
 			if(!($('#frmAsignarOrden').data('formValidation').isValid()))
 			{

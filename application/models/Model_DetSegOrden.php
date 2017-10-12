@@ -21,7 +21,7 @@ class Model_DetSegOrden extends CI_Model
 	public function buscarOrden($anio,$ultimaMeta,$txtOrden)
 	{
         $data = $this->db->query("execute sp_Gestionar_SIGA @opcion='listar_orden_proyecto', @anio_meta=$anio, @correlativo_meta=$ultimaMeta, @num_orden = $txtOrden");
-        return $data->result()[0];
+        return $data->result();
 
 
 	}
