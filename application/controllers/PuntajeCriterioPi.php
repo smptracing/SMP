@@ -29,5 +29,12 @@ class PuntajeCriterioPi extends CI_Controller {/* Mantenimiento de sector entida
 
 	}
 
+	public function pipPriorizadas(){
+
+		$this->load->view('layout/PMI/header');
+		$this->load->view('front/Pmi/PuntajeCriterioPi/pipPriorizadas');
+		$this->load->view('layout/PMI/footer');	
+	}
+
 	
 }
