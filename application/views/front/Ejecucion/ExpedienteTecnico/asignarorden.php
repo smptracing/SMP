@@ -165,7 +165,15 @@ $(function()
 			    },
                 success:function(resp)
                 {
-                    //window.location.href=base_url+"index.php/Expediente_Tecnico/"
+                	if (resp=='1') 
+	                {
+	                    swal("Correcto","Se registró correctamente", "success");
+	                }
+	                if (resp=='2') 
+	                {
+	                    swal("Error","Ocurrio un error ", "error");
+	                }
+                    window.location.href=base_url+"index.php/Expediente_Tecnico/ListarPartida/"+<?= $partida->id_et?>;
                 }
             });
           $('#frmAsignarOrden')[0].reset();

@@ -864,17 +864,21 @@ class Expediente_Tecnico extends CI_Controller
 			$numeroOrden=$this->input->post('txtNumeroOrden');
 			$concepto=$this->input->post('txtConceptoOrden');	
 			$data = $this->Model_DetSegOrden->insertar($idPartida,$numeroOrden,$concepto);		
-			/*if ($data==true) 
+			if ($data==true) 
 			{
-				echo "Registrado Correctamente";
+				echo "1";
 			}	
 			else
 			{
-				echo "Ha ocurrido un error";
-			}*/
+				echo "0";
+			}
 		}
-		$idPartida=$this->input->get('id_partida');
-		$partida=$this->Model_ET_Expediente_Tecnico->DetallePartida($idPartida);
-		$this->load->view('front/Ejecucion/ExpedienteTecnico/asignarorden',['partida' => $partida ]);
+		else
+		{
+			$idPartida=$this->input->get('id_partida');
+			$partida=$this->Model_ET_Expediente_Tecnico->DetallePartida($idPartida);
+			$this->load->view('front/Ejecucion/ExpedienteTecnico/asignarorden',['partida' => $partida ]);
+		}
+		
 	}
 }
