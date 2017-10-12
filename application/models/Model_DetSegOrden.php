@@ -22,8 +22,11 @@ class Model_DetSegOrden extends CI_Model
 	{
         $data = $this->db->query("execute sp_Gestionar_SIGA @opcion='listar_orden_proyecto', @anio_meta=$anio, @correlativo_meta=$ultimaMeta, @num_orden = $txtOrden");
         return $data->result();
-
-
+	}
+	public function listarOrdenPorPartida($idPartida)
+	{
+		$data = $this->db->query("select * from DET_SEG_ORDEN where id_partida=$idPartida");
+		return $data->result();
 	}
 }
 ?>
