@@ -85,5 +85,16 @@
 		{
 			"language" : idioma_espanol
 		});
+
+		$('#combofuncion').change('click', function(e)
+		{
+			//alert('hola');
+				var funcion=$("#combofuncion").val();
+				window.location.href=base_url+"index.php/PuntajeCriterioPi/index/"+funcion;
+			
+		});
 	});
+
+
+		
 </script>
