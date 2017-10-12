@@ -13,11 +13,13 @@
 				<label class="control-label">Seleccionar criterio general</label>
 				<div>
 				
-					<select  id="combocriteriogeneral" name="combocriteriogeneral" class="form-control col-md-2 col-xs-2">
+					<select  id="combocriteriogeneral" name="combocriteriogeneral" onclick="listarCriterioEpe();" class="form-control col-md-2 col-xs-2">
 							
-								<option value=""></option>
+						<?php foreach($listaCritetioGeneral as $item){ ?>
+							<option value="<?=$item->id_criterio_gen; ?>"><?= $item->nombre_criterio_gen;?></option>
+						<?php } ?>
 						
-						</select>	
+					</select>	
 				</div>	
 			</div>
 		</div>
@@ -28,9 +30,9 @@
 				
 					<select  id="combocriterioespecif" name="combocriterioespecif" class="form-control col-md-2 col-xs-2">
 							
-								<option value=""></option>
 						
-						</select>	
+						
+					</select>	
 				</div>	
 			</div>
 		</div>
@@ -57,3 +59,12 @@
 			</table>
 		</div>
 </form>
+
+<script>
+	function listarCriterioEpe()
+	{
+		id_criterio_gen=$("#combocriteriogeneral").val();
+		console.log(id_criterio_gen);
+	}
+</script>
+
