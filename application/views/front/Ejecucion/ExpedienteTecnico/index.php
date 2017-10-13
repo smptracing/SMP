@@ -14,8 +14,8 @@
 							<a href="#tab_Sector"  id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">	<b>Expediente</b>
 							</a>
 						</li>
-						 <li role="presentation" class=""><a href="#tab_Monitoreo"  role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"> <b>Monitoreo de ET</b></a>
-                        </li>
+						<!--<li role="presentation" class=""><a href="#tab_Monitoreo"  role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"> <b>Monitoreo de ET</b></a>
+                        </li>-->
 					</ul>
 				<div id="myTabContent" class="tab-content">
 				<div role="tabpanel" class="tab-pane fade active in" id="tab_Sector" aria-labelledby="home-tab">
@@ -72,7 +72,7 @@
 					</div>
 				</div>
 				</div>
-				<div role="tabpanel" class="tab-pane fade" id="tab_Monitoreo" aria-labelledby="profile-tab">
+				<!--<div role="tabpanel" class="tab-pane fade" id="tab_Monitoreo" aria-labelledby="profile-tab">
                     <div class="row">
                     	<div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
@@ -116,7 +116,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>-->
 
 			</div>
 			</div>

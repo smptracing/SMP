@@ -79,7 +79,7 @@ class Expediente_Tecnico extends CI_Controller
 		$this->load->view('layout/Ejecucion/footer');
 	}
 
-	/*public function monitorCoordinador()
+	public function monitorCoordinador()
 	{
 		$listaETExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->ListarExpedienteTecnico();
 
@@ -95,10 +95,9 @@ class Expediente_Tecnico extends CI_Controller
 				$value->existeGantt=true;
 			}
 		}
-		var_dump($listaETExpedienteTecnico);exit;
-		//$this->_load_layout('front/Ejecucion/ExpedienteTecnico/monitorcoordinador.php', ['listaETExpedienteTecnico' => $listaETExpedienteTecnico]);
+		$this->_load_layout('front/Ejecucion/ExpedienteTecnico/monitorcoordinador.php', ['listaETExpedienteTecnico' => $listaETExpedienteTecnico]);
 	
-	}*/
+	}
 	public function ejecucion()
 	{
 		$flat1="LISTARCOMPATIBILIDAD";
@@ -918,26 +917,6 @@ class Expediente_Tecnico extends CI_Controller
 				$this->obtenerMetaAnidada($item);				
 			}			
 		}
-
-
-		/*$expedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnico($this->input->get('idExpedienteTecnico'));
-		$listaUnidadMedida=$this->Model_Unidad_Medida->UnidadMedidad_Listar();
-
-		$expedienteTecnico->childComponente=$this->Model_ET_Componente->ETComponentePorIdET($expedienteTecnico->id_et);
-
-		foreach($expedienteTecnico->childComponente as $key => $value)
-		{
-			$value->childMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($value->id_componente);
-
-			foreach($value->childMeta as $index => $item)
-			{
-				$this->obtenerMetaAnidada($item);
-			}
-		}
-
-		$this->load->view('front/Ejecucion/ETComponente/insertar.php', ['expedienteTecnico' => $expedienteTecnico, 'listaUnidadMedida' => $listaUnidadMedida]);*/
-
-
 		$this->load->view('layout/Ejecucion/header');
 		$this->load->view('front/Ejecucion/EControlMetrado/controlmetrado', ['expedienteTecnico' => $expedienteTecnico, 'listaUnidadMedida' => $listaUnidadMedida]);
 		$this->load->view('layout/Ejecucion/footer');

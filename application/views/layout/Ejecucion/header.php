@@ -74,7 +74,7 @@
 							<h3></i>Configuracion de parametros</h3>
 							<ul class="nav side-menu">
 
-								<li><a><i class="fa fa-book"></i> Mantenimiento <span class="fa fa-chevron-down"></span></a>
+								<li><a><i class="fa fa-cogs"></i> MANTENIMIENTO <span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a href="<?php echo site_url('ET_Presupuesto_Ejecucion/index'); ?>">Presupuesto Ejecucion</a></li>
 										<li><a href="<?php echo site_url('ET_Recurso/index'); ?>">Recurso</a></li>
@@ -85,11 +85,19 @@
 										
 									</ul>
 								</li> 
-								<li><a><i class="fa fa-book"></i> EJECUCIÓN <span class="fa fa-chevron-down"></span></a>
+								<li><a><i class="fa fa-book"></i> EXPEDIENTE TÉCNICO<span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a href="<?php echo site_url('Expediente_Tecnico/index'); ?>">Expediente técnico</a></li>
+										<li><a href="<?php echo site_url('Expediente_Tecnico/monitorCoordinador'); ?>">Monitoreo de ET</a></li>
+									</ul>
+								</li>
+								<li><a><i class="fa fa-play"></i> EJECUCIÓN <span class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a href="#">Designar Personal</a></li>
+										<li><a href="#">Compatibilidad</a></li>
+										<li><a href="#">Plan Operativo Anual</a></li>
 										<!--<li><a href="<?php echo site_url('Expediente_Tecnico/monitorCoordinador'); ?>">Monitoreo de ET (Coordinador)</a></li>-->
-										<li><a href="<?php echo site_url('Expediente_Tecnico/ejecucion'); ?>">Ejecucion</a></li>
+										<li><a href="<?php echo site_url('Expediente_Tecnico/ejecucion'); ?>">Ejecución</a></li>
 									</ul>
 								</li> 
 							</ul>

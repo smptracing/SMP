@@ -48,6 +48,9 @@
 <script>
 	$(document).on('ready', function()
 	{
-		$('#tableExpedienteTecnico').DataTable();
+		$('#tableExpedienteTecnico').DataTable(
+		{
+			"language":idioma_espanol
+		});
 	});
 </script>
