@@ -60,22 +60,22 @@
 
 
 													<tr>
-													<td>Año: <?php  echo $anio ?> </td>
+														<td><b>Año:</b> <?php  echo $anio ?> </td>
 													</tr>
 													<tr>
-														<td>Entidad: <?php  echo $entidad ?> </td>
+														<td><b>Entidad: </b><?php  echo $entidad ?> </td>
 													</tr>
 													<tr>
-														<td>Expediente: <?php  echo $expediente ?> </td>
+														<td><b>Expediente:</b> <?php  echo $expediente ?> </td>
 													</tr>
 													<tr>
-														<td>Tipo de operación: <?php  echo $tipoOpe ?> </td>
+														<td><b>Tipo de operación:</b> <?php  echo $tipoOpe ?> </td>
 													</tr>
 													<tr>
-														<td>Modalidad de compra:  <?php  echo $modalidadCompra ?>  </td>
+														<td><b>Modalidad de compra:</b>  <?php  echo $modalidadCompra ?>  </td>
 													</tr>
 													<tr>
-														<td>Tipo de proceso:  <?php  echo $tipoProceso ?>  </td>
+														<td><b>Tipo de proceso: </b> <?php  echo $tipoProceso ?>  </td>
 													</tr>
 													
 											

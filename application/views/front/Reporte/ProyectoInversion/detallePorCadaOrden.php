@@ -66,13 +66,13 @@
 																<?=$item->CANT_ITEM?>
 													    	</td>
 													    	<td>
-																<?=$item->PREC_UNIT_MONEDA?>
+																<?=number_format($item->PREC_UNIT_MONEDA,2)?>
 													    	</td>
 													    	<td>
-																<?=$item->PREC_TOT_MONEDA?>
+																<?=number_format($item->PREC_TOT_MONEDA,2)?>
 													    	</td>
 													    	<td>
-																<?=$item->ITEM_BIEN?>
+																<?=number_format($item->ITEM_BIEN,2)?>
 													    	</td>
 													  </tr>
 													<?php } ?>

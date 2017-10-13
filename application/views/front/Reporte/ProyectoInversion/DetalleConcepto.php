@@ -69,9 +69,9 @@
 													<td>FECHA DE ORDEN</td>
 													<td>DOC REFERENCIA</td>
 													<td>CONCEPTO</td>
-													<td>SUB TOTAL SOLES</td>
-													<td>TOTAL IGV SOLES</td>
-													<td>TOTAL FACT SOLES</td>
+													<td style="text-align:right">SUB TOTAL SOLES</td>
+													<td style="text-align:right">TOTAL IGV SOLES</td>
+													<td style="text-align:right">TOTAL FACT SOLES</td>
 													<td>PROVEEDOR</td>
 													<td>DIRECCION</td>
 													<td>GIRO GENERAL</td>
@@ -107,14 +107,14 @@
 													    	<td>
 																<?=$item->CONCEPTO?>
 													    	</td>
-													    	<td>
-																<?=$item->SUBTOTAL_SOLES?>
+													    	<td style="text-align:right">
+																<?=number_format($item->SUBTOTAL_SOLES,2)?>
 													    	</td>
-													    	<td>
-																<?=$item->TOTAL_IGV_SOLES?>
+													    	<td style="text-align:right">
+																<?=number_format($item->TOTAL_IGV_SOLES,2)?>
 													    	</td>
-													    	<td>
-																<?=$item->TOTAL_FACT_SOLES?>
+													    	<td style="text-align:right">
+																<?=number_format($item->TOTAL_FACT_SOLES,2)?>
 													    	</td>
 													    	<td>
 																<?=$item->NOMBRE_PROV?>

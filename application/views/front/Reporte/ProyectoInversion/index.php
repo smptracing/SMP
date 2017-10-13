@@ -51,58 +51,60 @@
 														</div>			
 														<div class="row">
 															<div class="row" style="margin-left: 10px; margin:10px; ">
-															<div class="panel panel-default">
-																 <div class="panel-heading"> EJECUCIÓN ANUAL DEL PROYECTO</div>
-																 
-																	  <div id="EjecucionAnual">
-																			
-																			<table class="table  table-striped jambo_table bulk_action" style="text-align: left;">
-																			    <thead>
-																			      
-																			    </thead>
-																			    <tbody>
-																			      <tr>
-																				        <td>NOMBRE</td>
-																				        <td> <label style="text-align: center;" id="txtnombre" name="txtnombre"></label></td>
-																				        <td></td>
-																			      </tr>
-																			      <tr>
-																				        <td>CÓDIGO</td>
-																				        <td> <label  id="txtCodigo" name="txtCodigo"></label> </td>
-																				        <td></td>
-																			      </tr>
-																			      <tr>
-																				        <td>N° BENEFICIARIOS</td>
-																				        <td> <label id="txtbeneficiario" name="txtbeneficiario"></label> </td>
-																				        <td></td>
-																			      </tr>
-																			       <tr>
-																				        <td>MONTO DE INSERSIÓN</td>
-																				        <td> S/. <label id="txtmontoInversion" name="txtmontoInversion"></label> </td>
-																				        <td></td>
-																			      </tr>
-																			       <tr>
-																				        <td>PIA</td>
-																				        <td> <label id="txtPIA" name="txtPIA"></label> </td>
-																				        <td></td>
-																			      </tr>
-																			       <tr>
-																				        <td>PIM</td>
-																				        <td> <label id="txtPIN" name="txtPIN"></label> </td>
-																				        <td></td>
-																			      </tr>
-																			       <tr>
-																				        <td>DEVENGADO</td>
-																				        <td> <label id="txtdevengado" name="txtdevengado"></label> </td>
-																				        <td></td>
-																			      </tr>
-																			    </tbody>
-																		  </table> 
-																	  </div>
-																</div>
-															</div>
+																<div class="panel panel-default">
+																	<div class="panel-heading">DATOS DEL PIP</div>
+																	 	<br>
 
-												            <div class="row" style="margin-left: 10px; margin:10px; ">
+
+																		    <div id="EjecucionAnual">
+																				
+																				<table class="table" STYLE="table-layout:fixed">
+																				  
+																				       <tr>
+																					        <td class="blue" width="200"><b>CÓDIGO</b></td>
+																					        <td > <label  id="txtCodigo" name="txtCodigo"></label> </td>
+																					     
+																				      </tr>
+																				      <tr>
+																					        <td class="blue"><b>NOMBRE</b></td>
+																					        <td > <label  id="txtnombre" name="txtnombre"></label></td>
+																					        
+																				      </tr>
+																	
+																				   
+																				      <tr>
+																					        <td class="blue" ><b>N° BENEFICIARIOS</b></td>
+																					        <td> <label id="txtbeneficiario" name="txtbeneficiario"></label> </td>
+																					
+																				      </tr>
+																				       <tr>
+																					        <td class="blue" ><b>MONTO DE INvERSIÓN</b></td>
+																					        <td> S/. <label id="txtmontoInversion" name="txtmontoInversion"></label> </td>
+																					 
+																				      </tr>
+																				       <tr>
+																					        <td class="blue" ><b>PIA</b></td>
+																					        <td> <label id="txtPIA" name="txtPIA"></label> </td>
+																					
+																				      </tr>
+																				       <tr>
+																					        <td class="blue" ><b>PIM</b></td>
+																					        <td> <label id="txtPIN" name="txtPIN"></label> </td>
+																				
+																				      </tr>
+																				       <tr>
+																					        <td class="blue"><b>DEVENGADO</b></td>
+																					        <td> <label id="txtdevengado" name="txtdevengado"></label> </td>
+																					   
+																				      </tr>
+																				   
+																			  </table> 
+															
+																		</div>
+																	</div>
+																</div>
+
+												            <!--<div class="row" style="margin-left: 10px; margin:10px; ">
 												                <div class="panel panel-default">
 																 	<div class="panel-heading">PIA, PIM Y DEVENGADO ACTUAL </div>
 												                        <div id="GrafPimDevenPia" class="table-responsive">
@@ -126,7 +128,7 @@
 																		    </table> 
 																	    </div>
 												                </div>
-													        </div>
+													        </div>-->
 
 															<div class="row" style="margin-left: 10px; margin:10px; ">
 																<div class="panel panel-default">
