@@ -75,7 +75,6 @@
 												 </tr>
 												</thead>
 												<body>
-													
 													<?php foreach($listaPorOrden as $item ){ ?>
 													  	<tr>
 															<td>	
@@ -85,7 +84,7 @@
 																<?=$item->EXP_SIGA?>
 													    	</td>
 													    	<td>
-																<?=$item->NRO_ORDEN?>
+													    		<button type="button" class="DetalleOrdenExpeSiaf btn btn-success btn-xs" onclick="detalleporcadanumorden();"><?=$item->NRO_ORDEN?><i class='ace-icon bigger-120'></i></button>		
 													    	</td>
 													    	<td>
 																<?=$item->TIPO_BIEN?>
@@ -109,10 +108,6 @@
 																<?=$item->TOTAL_FACT_SOLES?>
 													    	</td>
 
-
-
-
-
 													  </tr>
 													<?php } ?>
 													
@@ -125,7 +120,6 @@
 						                </div>
 						        	</div>
 									<br>
-									
 									
 									</div>
 										<!-- / fin tabla de sector desde el row -->
@@ -183,7 +177,7 @@ $(document).ready(function()
 
 function detalleordenexpsiaf(anio,expsiaf)
 {
-	paginaAjaxDialogo(null, 'Detalle de Expediente Siaf por Orden de Compra',{anio:anio,expsiaf:expsiaf}, base_url+'index.php/PrincipalReportes/detalleOrdenExpSiaf', 'GET', null, null, false, true);	
+	paginaAjaxDialogo(1, 'Detalle de Expediente Siaf por Orden de Compra',{anio:anio,expsiaf:expsiaf}, base_url+'index.php/PrincipalReportes/detalleOrdenExpSiaf', 'GET', null, null, false, true);	
 }
 
 </script>
