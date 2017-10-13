@@ -72,6 +72,15 @@
 													<td>SUB TOTAL SOLES</td>
 													<td>TOTAL IGV SOLES</td>
 													<td>TOTAL FACT SOLES</td>
+													<td>PROVEEDOR</td>
+													<td>DIRECCION</td>
+													<td>GIRO GENERAL</td>
+													<td>NRO RUC</td>
+													<td>TELEFONOS</td>
+													<td>CCI</td>
+													<td>TELEFONO FAX</td>
+													<td>ANO EJE</td>
+													<td>TIPO PPTO</td>
 												 </tr>
 												</thead>
 												<body>
@@ -107,6 +116,35 @@
 													    	<td>
 																<?=$item->TOTAL_FACT_SOLES?>
 													    	</td>
+													    	<td>
+																<?=$item->NOMBRE_PROV?>
+													    	</td>
+													    	<td>
+																<?=$item->DIRECCION?>
+													    	</td>
+													    	<td>
+																<?=$item->GIRO_GENERAL?>
+													    	</td>
+													    	<td>
+																<?=$item->NRO_RUC?>
+													    	</td>
+													    	<td>
+																<?=$item->TELEFONOS?>
+													    	</td>
+													    	<td>
+																<?=$item->CCI?>
+													    	</td>
+													    	<td>
+																<?=$item->TELEFONO_FAX?>
+													    	</td>
+													    	<td>
+																<?=$item->ANO_EJE?>
+													    	</td>
+													    	<td>
+																<?=$item->TIPO_PPTO?>
+													    	</td>
+
+
 
 													  </tr>
 													<?php } ?>
