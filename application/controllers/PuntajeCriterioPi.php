@@ -40,23 +40,29 @@ class PuntajeCriterioPi extends CI_Controller {/* Mantenimiento de sector entida
 			$fechaA=date("Y-m-d");
 			$cadena=explode('-', $fechaA);
 			$anio=$cadena[0];
-
+			$contarCriterioNoInse=count($combocriterioespecif);
                 for($i=0;$i<count($combocriterioespecif);$i++){
 
-                	$CriterioEspecifico=$this->Model_CriterioEspecifico->criterioEspecifico($combocriterioespecif[$i]);
+                	if(count($this->Model_PuntajeCriterioPi->contarRegistrosDeUnCriterio($combocriterioespecif[$i],$anio))==0)
+                	{
+                		$CriterioEspecifico=$this->Model_CriterioEspecifico->criterioEspecifico($combocriterioespecif[$i]);
 
-                	$porcentajeCriterioEpe=((int)$CriterioEspecifico->peso*100)/(int)$SumaTotaCriterio;
+	                	$porcentajeCriterioEpe=((int)$CriterioEspecifico->peso*100)/(int)$SumaTotaCriterio;
 
-                	$puntajeFinal=((int)$porcentajeCriterioGene*(int)$porcentajeCriterioEpe)/100;
+	                	$puntajeFinal=((int)$porcentajeCriterioGene*(int)$porcentajeCriterioEpe)/100;
 
-                	$resuPuntajeCriterio=(int)$CriterioEspecifico->peso*round($puntajeFinal,2);
+	                	$resuPuntajeCriterio=(int)$CriterioEspecifico->peso*round($puntajeFinal,2);
 
-                	$this->Model_PuntajeCriterioPi->insertar(round($resuPuntajeCriterio,0),$anio,$txtIdPi,$CriterioEspecifico->id_criterio);
+	                	$this->Model_PuntajeCriterioPi->insertar(round($resuPuntajeCriterio,0),$anio,$txtIdPi,$CriterioEspecifico->id_criterio);
+                	}else{
+                		$contarCriterioNoInse =(int)$contarCriterioNoInse -1;
+                	}
+                	
 
                 }
 
             $listarPuntajeCriterioPip=$this->Model_PuntajeCriterioPi->listarPuntajePip($txtIdPi);
-			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos registrados correctamente.', 'listarPuntajeCriterioPip' => $listarPuntajeCriterioPip]);exit;
+			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Total Datos a Registra: '.count($combocriterioespecif).'.Registrados: '.$contarCriterioNoInse.' No pude haber Criterios Especificos Repetidos.', 'listarPuntajeCriterioPip' => $listarPuntajeCriterioPip]);exit;
 
 		}
 

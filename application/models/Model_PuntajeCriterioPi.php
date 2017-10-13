@@ -54,5 +54,11 @@ GROUP BY PRV.id_pi,PRV.codigo_unico_pi,PRV.nombre_pi,FUNCION.id_funcion,FUNCION.
 
         return true;
     }
+    function contarRegistrosDeUnCriterio($id_criterio,$anio_ptje_criterio)
+    {
+        $data=$this->db->query("select * from PUNTAJE_CRITERIO_PI where id_criterio='".$id_criterio."' and anio_ptje_criterio='".$anio_ptje_criterio."' ");
+
+        return $data->result();
+    }
 
 }
