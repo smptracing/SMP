@@ -25,6 +25,7 @@ class Expediente_Tecnico extends CI_Controller
 		$this->load->model('Model_ET_Detalle_Analisis_Unitario');
 		$this->load->model('Model_ET_Tarea');
 		$this->load->model('Model_ET_Mes_Valorizacion');
+		$this->load->model('Model_Unidad_Medida');
 		$this->load->model('Model_DetSegOrden');
 		$this->load->library('mydompdf');
 		$this->load->helper('FormatNumber_helper');
@@ -900,5 +901,45 @@ class Expediente_Tecnico extends CI_Controller
 		}
 		$orden = $this->Model_DetSegOrden->buscarOrden($anio,$ultimaMeta,$txtOrden);
 		echo json_encode($orden);
+    }
+    public function ControlMetrado($idExpedienteTecnico)
+    {
+		$expedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnico($idExpedienteTecnico);
+		$listaUnidadMedida=$this->Model_Unidad_Medida->UnidadMedidad_Listar();
+
+		$expedienteTecnico->childComponente=$this->Model_ET_Componente->ETComponentePorIdET($expedienteTecnico->id_et);
+
+		foreach($expedienteTecnico->childComponente as $key => $value)
+		{
+			$value->childMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($value->id_componente);
+
+			foreach($value->childMeta as $index => $item)
+			{
+				$this->obtenerMetaAnidada($item);				
+			}			
+		}
+
+
+		/*$expedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnico($this->input->get('idExpedienteTecnico'));
+		$listaUnidadMedida=$this->Model_Unidad_Medida->UnidadMedidad_Listar();
+
+		$expedienteTecnico->childComponente=$this->Model_ET_Componente->ETComponentePorIdET($expedienteTecnico->id_et);
+
+		foreach($expedienteTecnico->childComponente as $key => $value)
+		{
+			$value->childMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($value->id_componente);
+
+			foreach($value->childMeta as $index => $item)
+			{
+				$this->obtenerMetaAnidada($item);
+			}
+		}
+
+		$this->load->view('front/Ejecucion/ETComponente/insertar.php', ['expedienteTecnico' => $expedienteTecnico, 'listaUnidadMedida' => $listaUnidadMedida]);*/
+
+
+		$this->load->view('layout/Ejecucion/header');
+		$this->load->view('front/Ejecucion/EControlMetrado/controlmetrado', ['expedienteTecnico' => $expedienteTecnico, 'listaUnidadMedida' => $listaUnidadMedida]);
+		$this->load->view('layout/Ejecucion/footer');
     }
 }
