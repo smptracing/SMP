@@ -853,7 +853,6 @@ class Expediente_Tecnico extends CI_Controller
 	public function ListarPartida($id_et)
 	{
 		$listaPartida = $this->Model_ET_Expediente_Tecnico->listarPartidaporEt($id_et);
-
 		$this->load->view('layout/Ejecucion/header');
 		$this->load->view('front/Ejecucion/ExpedienteTecnico/listarpartida',['listaPartida' => $listaPartida]);
 		$this->load->view('layout/Ejecucion/footer');
@@ -914,11 +913,35 @@ class Expediente_Tecnico extends CI_Controller
 
 			foreach($value->childMeta as $index => $item)
 			{
-				$this->obtenerMetaAnidada($item);				
+				$this->obtenerMetaAnidadaParaValorizacion($item);				
 			}			
 		}
 		$this->load->view('layout/Ejecucion/header');
 		$this->load->view('front/Ejecucion/EControlMetrado/controlmetrado', ['expedienteTecnico' => $expedienteTecnico, 'listaUnidadMedida' => $listaUnidadMedida]);
 		$this->load->view('layout/Ejecucion/footer');
     }
+    public function AsignarValorizacion()
+	{
+		if ($_POST) 
+		{
+			/*$idPartida=$this->input->post('hdIdPartida');
+			$numeroOrden=$this->input->post('txtNumeroOrden');
+			$concepto=$this->input->post('txtConceptoOrden');	
+			$data = $this->Model_DetSegOrden->insertar($idPartida,$numeroOrden,$concepto);		
+			if ($data==true) 
+			{
+				echo "1";
+			}	
+			else
+			{
+				echo "0";
+			}*/
+		}
+		else
+		{
+			$idDetallePartida=$this->input->get('id_DetallePartida');
+			$this->load->view('front/Ejecucion/EControlMetrado/valorizacionpartida');
+		}
+		
+	}
 }
