@@ -17,17 +17,21 @@
 		<h4 style="margin-bottom: 0px;">Detalle</h4>
 		<hr style="margin: 2px;margin-bottom: 5px;">
 		<div class="row" id="divCriterioGeneral">
-			<div class="col-md-3 col-sm-6 col-xs-12">
+			<div class="col-md-2 col-sm-6 col-xs-12">
 				<label>Año</label>
 				<input type="text" class="form-control" id="txtAnioCriterioG" name="txtAnioCriterioG" value="<?= $anio;?>" placeholder="Año" autocomplete="off">
 			</div>
-			<div class="col-md-3 col-sm-6 col-xs-12">
+			<div class="col-md-2 col-sm-6 col-xs-12">
 				<label>Peso</label>	
 				<input type="text" class="form-control" id="txtPesoCriterioG" name="txtPesoCriterioG" placeholder="Peso" autocomplete="off">
 			</div>
-			<div class="col-md-3 col-sm-6 col-xs-12">
+			<div class="col-md-3 col-sm-3 col-xs-12">
 				<label></label>
 				<input style="margin-top: 5px;" type="button" id="btnAgregarCriterioGeneral" class="btn btn-primary form-control" value="Agregar">
+			</div>
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<label></label>
+				<button class="btn btn-info form-control" style="margin-top: 5px;margin-left: 100px;" id="btnGuardarCambios"><i class="fa fa-refresh"> Guardar</i> </button>
 			</div>
 		</div>
 		<div style="height:300px;overflow:scroll;overflow-x: hidden; "><br/>
@@ -65,11 +69,83 @@
 <script>
 $(function()
 	{
+		$('#btnGuardarCambios').on('click', function(event)
+		{
+			txtAnioCriterioG=$('#txtAnioCriterioG').val();
+			window.location.href=base_url+"index.php/PmiCriterioG/criterioFuncion/"+txtAnioCriterioG;
+			renderLoading();
+		});
+		
+		$('#form-addCriterioGeneral').formValidation(
+				{
+					framework: 'bootstrap',
+					excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+					live: 'enabled',
+					message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+					trigger: null,
+					fields:
+					{
+						txtNombreCriterio:
+						{
+							validators: 
+							{
+								notEmpty:
+								{
+									message: '<b style="color: red;text-align: center;">El campo "Criterio General" es requerido.</b>'
+								}
+							}
+						},
+						txtAnioCriterioG:
+						{
+							validators: 
+							{
+								notEmpty:
+								{
+									message: '<b style="color: red;text-align: center;">El campo "Anio Criterio" debe ser un número entero.</b>'
+								},
+								regexp:
+					            {
+					                regexp: /^\d*$/,
+					                message: '<b style="color: red;">El campo "Anio Criterio" debe ser un número entero.</b>'
+					            }
+							}
+						},
+						txtPesoCriterioG:
+						{
+							validators: 
+							{
+								notEmpty:
+								{
+									message: '<b style="color: red;text-align: center;">El campo "Criterio General" es requerido.</b>'
+								},
+								regexp:
+					            {
+					                regexp: /^\d*$/,
+					                message: '<b style="color: red;">El campo "Peso Criterio General" debe ser un número entero.</b>'
+					            }
+							}
+						}
+						
+						
+					}
+				});
+});
+
+$(function()
+	{
  
     $('#cbx_funcion').selectpicker('refresh');
+
     $('#btnAgregarCriterioGeneral').on('click', function(event)
 	{
 		event.preventDefault();
+		$('#form-addCriterioGeneral').data('formValidation').validate();
+
+		if(!($('#form-addCriterioGeneral').data('formValidation').isValid()))
+		{
+			return;
+		}
+
 		paginaAjaxJSON($('#form-addCriterioGeneral').serialize(), '<?=base_url();?>index.php/PmiCriterioG/insertar', 'POST', null, function(objectJSON)
 		{
 			//$('#modalTemp').modal('hide');
