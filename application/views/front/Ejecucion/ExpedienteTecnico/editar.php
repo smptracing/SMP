@@ -211,7 +211,7 @@
                             </div>
                         </div>
 					</div>
-					<!--<div class="row">						
+					<div class="row">						
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Cargo</label>
 							<input type="hidden" name="id_tipo_responsableElabo" value="<?= $listarUResponsableERespoElabo->id_responsable_et ?>">
@@ -244,9 +244,9 @@
 							</div>
 						</div>
 
-					</div>-->
+					</div>
 
-					<!--<div class="row">
+					<div class="row">
 						
 						<div class="col-md-3 col-sm-2 col-xs-12">
 							<label class="control-label">Cargos</label>
@@ -275,7 +275,7 @@
 							<div>
 							</div>
 						</div>
-					</div>-->
+					</div>
 
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12">
