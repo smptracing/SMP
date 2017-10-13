@@ -57,7 +57,7 @@
 									<div class="row">
 						                <div class="col-md-12 col-sm-12 col-xs-12">
 										
-					                        <div class="table-responsive" >
+					                        <div class="table-responsive" style="height:300px;overflow:scroll;overflow-x: hidden; ">
 					                        	<table id="dynamic-table"  class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="2500px">
 												<thead>
 												<tr>
