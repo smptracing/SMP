@@ -55,7 +55,7 @@
 																<?=$item->nombre_funcion?>
 													    	</td>
 													    	<td>
-															<button type="button" class="btn btn-success btn-xs " onclick="paginaAjaxDialogo(10, 'Asignar Prioridad', {id_pi:<?=$item->id_pi?>,id_funcion:<?=$id_funcion?>}, base_url+'index.php/PuntajeCriterioPi/insertar', 'GET', null, null, false, true);"><span class="fa fa-bars"></span>
+															<button type="button" class="btn btn-success btn-xs " onclick="paginaAjaxDialogo(null, 'Asignar Prioridad', {id_pi:<?=$item->id_pi?>,id_funcion:<?=$id_funcion?>}, base_url+'index.php/PuntajeCriterioPi/insertar', 'GET', null, null, false, true);"><span class="fa fa-bars"></span>
 															</button>
 													    	</td>
 													  </tr>
@@ -92,8 +92,9 @@
 				window.location.href=base_url+"index.php/PuntajeCriterioPi/index/"+funcion;
 			
 		});
-	});
-
 
 		
+	});
+
+	
 </script>

@@ -32,9 +32,13 @@
 		</div>
 
 		<div class="row" id="divCriterioGeneral">
-			<div class="col-md-3 col-sm-6 col-xs-12">
+			<div class="col-md-2 col-sm-2 col-xs-12">
 				<label></label>
-				<input style="margin-top: 5px;" type="button" id="btnAsignarPuntajePip" class="btn btn-primary form-control" value="Agregar">
+				<input style="margin-top: 5px;margin-left: 100px;" type="button" id="btnAsignarPuntajePip" class="btn btn-primary form-control" value="Agregar">
+			</div>
+			<div class="col-md-2 col-sm-2 col-xs-12">
+				<label></label>
+				<button class="btn btn-info form-control" style="margin-top: 5px;margin-left: 100px;" id="btnGuardarCambios"><i class="fa fa-refresh"> Guardar</i> </button>
 			</div>
 		</div>
 
@@ -70,8 +74,16 @@
 </form>
 
 <script>
+
+
 $(function()
 	{
+		$('#btnGuardarCambios').on('click', function(event)
+		{
+			id_funcion=$('#id_funcion').val();
+			window.location.href=base_url+"index.php/PuntajeCriterioPi/index/"+id_funcion;
+			renderLoading();
+		});
 		$('#combocriterioespecif').selectpicker('refresh');
 		$('#combocriteriogeneral').selectpicker('refresh');
 	
@@ -112,6 +124,7 @@ $(function()
 
 $("#combocriteriogeneral" ).change(function() {
 
+		
 		id_criterio_gen=$("#combocriteriogeneral").val();
 		var parametros = {
                 "id_criterio_gen" : id_criterio_gen,
@@ -190,12 +203,6 @@ $(function()
 
 	});
 
-/*$('#10').on('click', function(event)
-	{
-		id_funcion=$('#id_funcion').val();
-		window.location.href=base_url+"index.php/PuntajeCriterioPi/index/"+id_funcion;
-		renderLoading();
-	});*/
 });
 function eliminarPuntaje(id_ptje_criterio,id_pi)
 	{
