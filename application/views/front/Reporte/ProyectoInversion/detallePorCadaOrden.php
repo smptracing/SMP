@@ -54,7 +54,28 @@
 													</tr>
 												</thead>
 												<tbody>
-														
+														<?php foreach($listaDetallePorCadaOrden as $item ){ ?>
+													  	<tr>
+													    	<td>
+																<?=$item->CODIGO_ITEM?>
+													    	</td>
+													    	<td>
+																<?=$item->NOMBRE_ITEM?>
+													    	</td>
+													    	<td>
+																<?=$item->CANT_ITEM?>
+													    	</td>
+													    	<td>
+																<?=$item->PREC_UNIT_MONEDA?>
+													    	</td>
+													    	<td>
+																<?=$item->PREC_TOT_MONEDA?>
+													    	</td>
+													    	<td>
+																<?=$item->ITEM_BIEN?>
+													    	</td>
+													  </tr>
+													<?php } ?>
 												</tbody>
 											</table>
 										</div>

@@ -451,7 +451,14 @@ class PrincipalReportes extends CI_Controller
     
     function detallePorCadaNumOrden()
     {
-        $this->load->view('front/Reporte/ProyectoInversion/detallePorCadaOrden.php');
+        $anio=$this->input->GET('anio');
+        $tipobien=$this->input->GET('tipobien');
+        $numorden=$this->input->GET('numorden');
+        $tipoppto=$this->input->GET('tipoppto');
+        $listaDetallePorCadaOrden=$this->Model_Dashboard_Reporte->DetallePorCadaNumOrden($anio,$tipobien,$numorden,$tipoppto);
+        
+       // var_dump($listaDetallePorCadaOrden);exit;
+        $this->load->view('front/Reporte/ProyectoInversion/detallePorCadaOrden.php',['listaDetallePorCadaOrden'=>$listaDetallePorCadaOrden]);
     }
     public function _load_layout($template)
     {

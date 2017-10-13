@@ -84,7 +84,7 @@
 																<?=$item->EXP_SIGA?>
 													    	</td>
 													    	<td>
-													    		<button type="button" class="DetalleOrdenExpeSiaf btn btn-success btn-xs" onclick="detalleporcadanumorden();"><?=$item->NRO_ORDEN?><i class='ace-icon bigger-120'></i></button>		
+													    		<button type="button" class="DetalleOrdenExpeSiaf btn btn-success btn-xs" onclick="detalleporcadanumorden(<?= (int)$item->ANO_EJE?>,'<?=$item->TIPO_BIEN?>',<?=(int)$item->NRO_ORDEN?>,<?=(int)$item->TIPO_PPTO?>);"><?=$item->NRO_ORDEN?><i class='ace-icon bigger-120'></i></button>		
 													    	</td>
 													    	<td>
 																<?=$item->TIPO_BIEN?>
@@ -180,9 +180,9 @@ function detalleordenexpsiaf(anio,expsiaf)
 	paginaAjaxDialogo(1, 'Detalle de Expediente Siaf por Orden de Compra',{anio:anio,expsiaf:expsiaf}, base_url+'index.php/PrincipalReportes/detalleOrdenExpSiaf', 'GET', null, null, false, true);	
 }
 
-function detalleporcadanumorden()
+function detalleporcadanumorden(anio,tipobien,numorden,tipoppto)
 {
-	paginaAjaxDialogo(2, 'Detalle por cada N° Orden',{}, base_url+'index.php/PrincipalReportes/detallePorCadaNumOrden', 'GET', null, null, false, true);	
+	paginaAjaxDialogo(2, 'Detalle por cada N° Orden',{anio:anio,tipobien:tipobien,numorden:numorden,tipoppto:tipoppto}, base_url+'index.php/PrincipalReportes/detallePorCadaNumOrden', 'GET', null, null, false, true);	
 }
 
 </script>

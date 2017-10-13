@@ -264,6 +264,14 @@ function DetallePorOrden($correlativoMeta,$anioMeta)
         
         return $data->result(); 
     }
+
+    function DetallePorCadaNumOrden($anio,$tipobien,$numorden,$tipoppto)
+    {
+        $opcion="listar_detalle_orden_compra";
+        $data = $this->db->query("execute sp_Gestionar_SIGA @opcion='".$opcion."',  @anio_meta='".$anio."', @tipo_bien='".$tipobien."', @num_orden='".$numorden."',@tipo_ppto='".$tipoppto."'");
+        
+        return $data->result(); 
+    }
     /*function ReporteConsolidadoAvanceFisicoFinan($anio)
     {
         $opcion="calificacion_seguimiento_certificado_a_devengado";
