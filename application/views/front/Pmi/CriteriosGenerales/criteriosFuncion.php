@@ -92,7 +92,7 @@
 														<div class="pull-left tableTools-container ">&nbsp;&nbsp;</div>
 
 										                </div>
-								            		</div>
+								            	</div>
 											</div>			
 											<div class="x_content">
 												<table id="table-Presupuesto" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">

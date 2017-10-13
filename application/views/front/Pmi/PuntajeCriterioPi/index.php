@@ -3,9 +3,7 @@
 		<div class="">
 			<div class="col-md-12 col-xs-12">
 				<div class="x_panel">
-					<div class="x_title" style="color: black; ">
-						
-					</div>
+
 					<div class="x_content">
 						<div class="" role="tabpanel" data-example-id="togglable-tabs">
 							<ul id="myTab" class="nav nav-tabs" role="tablist">
@@ -28,6 +26,13 @@
 									                </div>
 							            		</div>
 											</div>
+											<div class="form-group"></br>
+										                <label class="control-label" for="inputGroup">Reportes </label>
+										                <div class="input-group">
+														<div class="pull-left tableTools-container ">&nbsp;&nbsp;</div>
+
+										                </div>
+								            </div>
 											<div class="x_content">
 												<table id="table-pip" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 													<thead>
@@ -80,11 +85,42 @@
 <script>
 	$(document).ready(function()
 	{
-		$('#table-pip').DataTable(
+
+
+		var myTable=$('#table-pip').DataTable(
 		{
-			"language" : idioma_espanol
+			
+			"language" : idioma_espanol,
+
+				
 		});
 
+		$.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
+
+		new $.fn.dataTable.Buttons( myTable, {
+			buttons: [
+			  {
+				"extend": "excel",
+				"text": "<i class='fa fa-file-excel-o bigger-110 green'></i> <span class='hidden'>Export to Excel</span>",
+				"className": "btn btn-white btn-primary btn-bold"
+			  },
+			  {
+				"extend": "pdf",
+				"text": "<i class='fa fa-file-pdf-o bigger-110 red'></i> <span class='hidden'>Export to PDF</span>",
+				"className": "btn btn-white btn-primary btn-bold",
+				"pageSize": 'LEGAL',
+				orientation: 'landscape',
+			  },
+			  {
+				"extend": "print",
+				"text": "<i class='fa fa-print bigger-110 grey'></i> <span class='hidden'>Print</span>",
+				"className": "btn btn-white btn-primary btn-bold",
+				autoPrint: false,
+				message: 'This print was produced using the Print button for DataTables'
+			  }		  
+			]
+		} );
+		myTable.buttons().container().appendTo( $('.tableTools-container') );
 		$('#combofuncion').change('click', function(e)
 		{
 			//alert('hola');
