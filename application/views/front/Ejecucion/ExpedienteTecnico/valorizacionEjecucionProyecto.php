@@ -196,7 +196,10 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
 								</tr>
 								<tr>
 									<td colspan="5" style="text-align: left"><b>GASTOS GENERALES (11.68% de Costo Directo)</b></td>
-									<td></td>
+									<td>
+										<!--<?php $gastoGeneralTotal = $totalGeneral*(11.68/100);?> 
+										S/.<?=a_number_format($gastoGeneralTotal, 2, '.',",",3);?>-->
+									</td>
 									<?php if($expedienteTecnico->num_meses!=null){
 										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
 											<td></td>
@@ -205,7 +208,10 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
 								</tr>
 								<tr>
 									<td colspan="5" style="text-align: left"><b>GASTOS DE SUPERVISION (6.16% de Costo Directo)</b></td>
-									<td></td>
+									<td>
+										<!--<?php $gastoSupervisionTotal = $totalGeneral*(6.16/100);?> 
+										S/.<?=a_number_format($gastoSupervisionTotal, 2, '.',",",3);?>-->										
+									</td>
 									<?php if($expedienteTecnico->num_meses!=null){
 										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
 											<td></td>
@@ -214,7 +220,10 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
 								</tr>
 								<tr>
 									<td colspan="5" style="text-align: left"><b>LIQUIDACION DE OBRA (1.00% de Costo Directo)</b></td>
-									<td></td>
+									<td>
+										<!--<?php $gastoLiquidacionTotal = $totalGeneral*(1.00/100);?> 
+										S/.<?=a_number_format($gastoLiquidacionTotal, 2, '.',",",3);?>-->
+									</td>
 									<?php if($expedienteTecnico->num_meses!=null){
 										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
 											<td></td>
@@ -232,7 +241,10 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
 								</tr>
 								<tr>
 									<td colspan="5" style="text-align: left"><b>GESTION DEL PROYECTO (3.65% de Costo Directo)</b></td>
-									<td></td>
+									<td>
+										<!--<?php $gestiondelProyecto = $totalGeneral*(3.65/100);?> 
+										S/.<?=a_number_format($gestiondelProyecto, 2, '.',",",3);?>-->
+									</td>
 									<?php if($expedienteTecnico->num_meses!=null){
 										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
 											<td></td>

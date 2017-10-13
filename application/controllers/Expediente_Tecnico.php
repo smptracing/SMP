@@ -115,6 +115,7 @@ class Expediente_Tecnico extends CI_Controller
 		$flat2="LISTARMODIFICACION";
 		$id_etapa_et="5";
 		$listaExpedienteTecnicoModificacion=$this->Model_ET_Expediente_Tecnico->ExpedienteListarModificacion($flat1,$id_etapa_et);
+		
 		$this->load->view('layout/Ejecucion/header');
 		$this->load->view('front/Ejecucion/ExpedienteTecnico/ejecucion.php',['listaExpedienteTecnicoEtapa'=>$listaExpedienteTecnicoEtapa,'listaExpedienteTecnicoModificacion'=>$listaExpedienteTecnicoModificacion,'listaExpedienteEjecucionDeductivo'=>$listaExpedienteEjecucionDeductivo,'listaExpedienteEjecucionAdicional'=>$listaExpedienteEjecucionAdicional]);
 		$this->load->view('layout/Ejecucion/footer');
@@ -367,8 +368,8 @@ class Expediente_Tecnico extends CI_Controller
 		
 		$id_et=$this->input->GET('id_et');
 		$listaimg=$this->Model_ET_Img->ListarImagen($id_et);
-		//$listarUResponsableERespoElabo=$this->Model_ET_Expediente_Tecnico->listarUResponsableERespoElaboracion($id_et);
-		//$listarUResponsableERespoEjecucion=$this->Model_ET_Expediente_Tecnico->listarUResponsableERespoEjecucion($id_et);
+		$listarUResponsableERespoElabo=$this->Model_ET_Expediente_Tecnico->listarUResponsableERespoElaboracion($id_et);
+		$listarUResponsableERespoEjecucion=$this->Model_ET_Expediente_Tecnico->listarUResponsableERespoEjecucion($id_et);
 
 		$listarCargo=$this->Cargo_Modal->getcargo();
 		$opcion  = "001";
