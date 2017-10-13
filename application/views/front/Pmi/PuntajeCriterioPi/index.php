@@ -40,7 +40,7 @@
 														</tr>
 													</thead>
 													<tbody>
-													<?php foreach($listaPipPriorizar as $item ){ ?>
+													<?php $i=0; foreach($listaPipPriorizar as $item ){  ?>
 													  	<tr>
 													    	<td>
 																<?=$item->codigo_unico_pi?>
@@ -49,7 +49,7 @@
 																<?=$item->nombre_pi?>
 													    	</td>
 													    	<td>
-																
+																<?php if($item->puntaje==null){ echo 'na'; }else{$i++; echo $i;} ?>
 													    	</td>
 													    	<td>
 																<?=$item->nombre_funcion?>

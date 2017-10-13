@@ -53,7 +53,7 @@
 								<td><?= $itemp->nombre_criterio ?></td>
 	                    		<td><?= $itemp->puntaje_criterio ?></td>
 	                    		<td>
-	                    			<button type="button" class="btn btn-success btn-xs " onclick=""><span class="fa fa-bars"></span></button>
+	                    			<button type="button" class="btn btn-success btn-xs " onclick=""><span class="fa fa-trash"></span></button>
 	                    		</td>
 	                    	</tr>
 						<?php } ?>
@@ -133,7 +133,7 @@ $(function()
                     	   	 html +='<tr>';
 	                    		html +='<td>'+element.nombre_criterio+'</td>';
 	                    		html +='<td>'+element.puntaje_criterio+'</td>';
-	                    		html +='<td><button type="button" class="btn btn-success btn-xs "><span class="fa fa-bars"></span></button> </td>';
+	                    		html +='<td><button type="button" class="btn btn-success btn-xs "><span class="fa fa-trash"></span></button> </td>';
                     		html +='</tr>';
                     	});
                     	html +='<tr><td> </td>';
