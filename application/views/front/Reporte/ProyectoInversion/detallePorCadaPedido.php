@@ -37,13 +37,11 @@
 								<div role="tabpanel" class="tab-pane fade active in" id="tab_Sector" aria-labelledby="home-tab">
 									<!-- /tabla de sector desde el row -->
 									
-									<div class="clearfix">
-										<div class="pull-right tableTools-container"></div>
-									</div>
+								
 
 									<div class="row">  
 										<div class="col-md-12 col-sm-12 col-xs-12">
-											 <div class="table-responsive" >
+											<div class="table-responsive">
 											<table id="table-DetallePorCadaPedido"  class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="2500px">
 												<thead>
 													<tr>
@@ -146,6 +144,7 @@ $(document).ready(function()
             "searching": true,
              "info":     true,
             "paging":   true,
+            destroy: true,
 		});
 			
 				$.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';

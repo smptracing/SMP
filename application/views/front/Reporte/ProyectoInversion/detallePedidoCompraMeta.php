@@ -41,7 +41,7 @@
 
 									<div class="row">  
 										<div class="col-md-12 col-sm-12 col-xs-12">
-											<div class="table-responsive" >
+											<div class="table-responsive" style="height:300px;overflow:scroll;overflow-x: hidden; " >
 												<table id="table-DetallePedido"  class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="2500px">
 													<thead>
 														<tr>
@@ -164,12 +164,12 @@
 			}		  
 			]
 		} );
-		myTable.buttons().container().appendTo( $('.tableTools-container') );			
+		myTable.buttons().container().appendTo( $('.tableTools-container1') );			
 
 	});
 	function detallepedidoPip(nropedido,anio,tipopedido,tipobien)
 	{
-		paginaAjaxDialogo(null, 'Detalle por pedido',{nropedido:nropedido,anio:anio,tipopedido:tipopedido,tipobien:tipobien}, base_url+'index.php/PrincipalReportes/detallePorCadaPedido', 'GET', null, null, false, true);	
+		paginaAjaxDialogo(1, 'Detalle por pedido',{nropedido:nropedido,anio:anio,tipopedido:tipopedido,tipobien:tipobien}, base_url+'index.php/PrincipalReportes/detallePorCadaPedido', 'GET', null, null, false, true);	
 	}
 </script>
 

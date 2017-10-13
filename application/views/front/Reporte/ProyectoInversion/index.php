@@ -27,9 +27,7 @@
 									<div class="row">  
 										<div class="col-md-12 col-sm-12 col-xs-12">
 											<div class="x_panel">
-													<div class="clearfix">
-														<div class="pull-right tableTools-container"></div>
-													</div>
+													
 													<div class="x_content">
 														BÚSQUEDA POR CÓDIGO 
 														<div class="row">
@@ -151,7 +149,7 @@
 																			<br>
 																			<table id="table-MetaAcumulada" class="table  table-striped jambo_table bulk_action table-responsive" style="text-align: left;"> 
 																			 
-																		  </table> 
+																			 </table> 
 																	    </div>
 																</div>
 															</div>
