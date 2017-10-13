@@ -87,11 +87,11 @@ class PuntajeCriterioPi extends CI_Controller {/* Mantenimiento de sector entida
 
 	}
 
-	public function pipPriorizadas(){
+	public function pipPriorizadas($anio=''){
 
-		$listaPipPriorizadasPorAño=$this->Model_PuntajeCriterioPi->PipPriorizadasPorAño();
+		$listaPipPriorizadasPorAño=$this->Model_PuntajeCriterioPi->PipPriorizadasPorAño($anio);
 		$this->load->view('layout/PMI/header');
-		$this->load->view('front/Pmi/PuntajeCriterioPi/pipPriorizadas',['listaPipPriorizadasPorAño'=>$listaPipPriorizadasPorAño]);
+		$this->load->view('front/Pmi/PuntajeCriterioPi/pipPriorizadas',['listaPipPriorizadasPorAño'=>$listaPipPriorizadasPorAño,'anio' => $anio]);
 		$this->load->view('layout/PMI/footer');	
 	}
 
