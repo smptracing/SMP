@@ -180,4 +180,9 @@ function detalleordenexpsiaf(anio,expsiaf)
 	paginaAjaxDialogo(1, 'Detalle de Expediente Siaf por Orden de Compra',{anio:anio,expsiaf:expsiaf}, base_url+'index.php/PrincipalReportes/detalleOrdenExpSiaf', 'GET', null, null, false, true);	
 }
 
+function detalleporcadanumorden()
+{
+	paginaAjaxDialogo(2, 'Detalle por cada N° Orden',{}, base_url+'index.php/PrincipalReportes/detallePorCadaNumOrden', 'GET', null, null, false, true);	
+}
+
 </script>
