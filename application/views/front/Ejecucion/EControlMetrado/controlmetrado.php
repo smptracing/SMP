@@ -24,7 +24,7 @@ function mostrarAnidado($meta, $expedienteTecnico)
 				'<td>'.$value->cantidad.'</td>'.
 				'<td>S/.'.$value->precio_unitario.'</td>'.
 				'<td>S/.'.number_format($value->cantidad*$value->precio_unitario, 2).'</td>'.
-				'<td><a role="button" class= "btn btn-info btn-xs" data-toggle="tooltip" title="Presupuesto Resumen" ><i class="fa fa-plus"></i> Agregar</a></td>'.
+				'<td><a role="button" class= "btn btn-info btn-xs" data-toggle="tooltip" title="Agregar"><i class="fa fa-plus"></i> Agregar</a></td>'.
 				'</tr>';
 		}		
 	}
@@ -37,6 +37,13 @@ function mostrarAnidado($meta, $expedienteTecnico)
 }
 ?>
 <style>
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+	padding:6px;
+}
+.btn, .buttons, .modal-footer .btn+.btn, button {
+    margin-bottom: 0px;
+    margin-right: 5px;
+}
 	/*#tableValorizacion td input[type="text"]
 	{
 		text-align: center;
@@ -93,10 +100,10 @@ function mostrarAnidado($meta, $expedienteTecnico)
                     
                     <div class="row">
                     	<div class="col-md-12">
-                    		<label class="control-label"> Nombre del Proyecto</label>
+                    		<label class="control-label"> Nombre del Proyecto:</label>
                     		<div>
                     			<textarea rows="2" class="form-control" readonly="readonly"><?=trim($expedienteTecnico->nombre_pi)?></textarea>
-                    			<!--<input type="text" class="form-control" readonly="readonly" name="" value="<?=trim($expedienteTecnico->nombre_pi)?>">--><br>
+                    			<br>
                     		</div>
                     	</div>
 						<div class="col-md-12 col-sm-12 col-xs-12" style="font-size: 12px;">
