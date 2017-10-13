@@ -14,8 +14,8 @@
 					<label class="control-label">Criterio general: &nbsp;&nbsp;&nbsp;</label>
 					<input type="hidden"  name="sumaPesoTotalGeberal" value="<?= $sumaPesoTotalGeberal ?>">
 					<select  id="combocriteriogeneral" name="combocriteriogeneral"  class="selectpicker" data-width="75%" data-live-search="true">
+						<option value=""> Criterio General</option>
 						<?php foreach($listaCritetioGeneral as $item){ ?>
-							<option value=""> Criterio General</option>
 							<option value="<?=$item->id_criterio_gen; ?>"><?= $item->nombre_criterio_gen;?></option>
 						<?php } ?>
 					</select>	
@@ -38,7 +38,7 @@
 			</div>
 		</div>
 
-		<div><br/>
+		<div style="height:300px;overflow:scroll;overflow-x: hidden; "><br/>
 			<table id="table-puntaje" class="table table-striped table-bordered jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 				<thead>
 					<tr>
@@ -129,7 +129,7 @@ $(function()
                     	var puntaje=0;
                     	$.each(objectJSON.listarPuntajeCriterioPip,function(index,element)
                     	{
-                    	    puntaje = (parseInt(puntaje) + parseInt(element.puntaje_criterio));
+                    	    puntaje = parseFloat(puntaje) + parseFloat(element.puntaje_criterio);
                     	   	 html +='<tr>';
 	                    		html +='<td>'+element.nombre_criterio+'</td>';
 	                    		html +='<td>'+element.puntaje_criterio+'</td>';
@@ -137,7 +137,7 @@ $(function()
                     		html +='</tr>';
                     	});
                     	html +='<tr><td> </td>';
-                    	html +='<td><button type="button" class="btn btn-success">Puntaje Total <span class="badge">'+puntaje+'</span></button></td>';
+                    	html +='<td><button type="button" class="btn btn-success">Puntaje Total <span class="badge">'+puntaje+'.00'+'</span></button></td>';
                     	html +='<td></td></tr>';
                  $("#table-puntaje > #bodyPuntaje").append(html);
 			});
