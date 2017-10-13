@@ -41,7 +41,25 @@
 														</tr>
 													</thead>
 													<tbody>
-										
+													<?php $i=0; foreach($listaPipPriorizadasPorAño as $item ){  ?>
+													  	<tr>
+													    	<td>
+																<?=$item->codigo_unico_pi?>
+													    	</td>
+													    	<td>
+																<?=$item->nombre_pi?>
+													    	</td>
+													    	<td>
+																<?php if($item->puntaje==null){ echo 'na'; }else{$i++; echo $i;} ?>
+													    	</td>
+													    	<td>
+																<?=$item->nombre_funcion?>
+													    	</td>
+													    	<td>
+												
+													    	</td>
+													  </tr>
+													<?php } ?>	
 													</tbody>
 													
 												</table>
