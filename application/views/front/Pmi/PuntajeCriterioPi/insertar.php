@@ -2,6 +2,7 @@
 		<div class="row">
 			<div class="col-md-12 col-sm-3 col-xs-12">
 				<label class="control-label">Nombre del Proyecto de Inversion </label>
+				<input type="hidden" name="id_funcion" id="id_funcion" value="<?= $id_funcion?>">
 				<div>
 					<input type="hidden" id="txtIdPi" name="txtIdPi" value="<?= $listaUnicaProIv->id_pi?>" class="form-control col-md-4 col-xs-12"  placeholder="Nombre del proyecto" autocomplete="off"  type="hidden">	
 					<input id="txtNombreUe" name="txtNombrePi" value="<?= $listaUnicaProIv->nombre_pi?>" class="form-control col-md-4 col-xs-12"  autocomplete="off" readonly="readonly">	
@@ -53,7 +54,7 @@
 								<td><?= $itemp->nombre_criterio ?></td>
 	                    		<td><?= $itemp->puntaje_criterio ?></td>
 	                    		<td>
-	                    			<button type="button" class="btn btn-success btn-xs " onclick=""><span class="fa fa-trash"></span></button>
+	                    			<button type="button" class="btn btn-danger btn-xs " onclick="eliminarPuntaje(<?=$itemp->id_ptje_criterio?>,<?=$itemp->id_pi?>)"><span class="fa fa-trash"></span></button>
 	                    		</td>
 	                    	</tr>
 						<?php } ?>
@@ -133,7 +134,7 @@ $(function()
                     	   	 html +='<tr>';
 	                    		html +='<td>'+element.nombre_criterio+'</td>';
 	                    		html +='<td>'+element.puntaje_criterio+'</td>';
-	                    		html +='<td><button type="button" class="btn btn-success btn-xs "><span class="fa fa-trash"></span></button> </td>';
+	                    		html +='<td><button type="button" class="btn btn-danger btn-xs " onclick="eliminarPuntaje('+element.id_ptje_criterio+','+element.id_pi+')"><span class="fa fa-trash"></span></button> </td>';
                     		html +='</tr>';
                     	});
                     	html +='<tr><td> </td>';
@@ -146,6 +147,52 @@ $(function()
 
 	});
 
+/*$('#10').on('click', function(event)
+	{
+		id_funcion=$('#id_funcion').val();
+		window.location.href=base_url+"index.php/PuntajeCriterioPi/index/"+id_funcion;
+		renderLoading();
+	});*/
 });
+function eliminarPuntaje(id_ptje_criterio,id_pi)
+	{
+		event.preventDefault();
+		paginaAjaxJSON({ "id_ptje_criterio" : id_ptje_criterio,"id_pi" : id_pi}, '<?=base_url();?>index.php/PuntajeCriterioPi/eliminarPuntajecriterio', 'POST', null, function(objectJSON)
+		{
+			//$('#modalTemp').modal('hide');
+			objectJSON=JSON.parse(objectJSON);
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+			},
+			function()
+			{
+				
+
+				var html;
+                    	$("#bodyPuntaje").html('');
+                    	var puntaje=0;
+                    	$.each(objectJSON.listarPuntajeCriterioPip,function(index,element)
+                    	{
+                    	    puntaje = parseFloat(puntaje) + parseFloat(element.puntaje_criterio);
+                    	   	 html +='<tr>';
+	                    		html +='<td>'+element.nombre_criterio+'</td>';
+	                    		html +='<td>'+element.puntaje_criterio+'</td>';
+	                    		html +='<td><button type="button" class="btn btn-danger btn-xs " onclick="eliminarPuntaje('+element.id_ptje_criterio+','+element.id_pi+')"><span class="fa fa-trash"></span></button> </td>';
+                    		html +='</tr>';
+                    	});
+                    	html +='<tr><td> </td>';
+                    	html +='<td><button type="button" class="btn btn-success">Puntaje Total <span class="badge">'+puntaje+'.00'+'</span></button></td>';
+                    	html +='<td></td></tr>';
+                 $("#table-puntaje > #bodyPuntaje").append(html);
+			});
+
+		}, false, true);
+
+	}
+
+
 </script>
 

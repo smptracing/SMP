@@ -77,7 +77,7 @@ class PuntajeCriterioPi extends CI_Controller {/* Mantenimiento de sector entida
 		$listaUnicaProIv=$this->Model_PuntajeCriterioPi->proyectoInvUnico($id_pi);
 
 		 $listarPuntajeCriterioPip=$this->Model_PuntajeCriterioPi->listarPuntajePip($id_pi);
-		$this->load->view('front/Pmi/PuntajeCriterioPi/insertar',['listaUnicaProIv' =>$listaUnicaProIv,'listaCritetioGeneral' => $listaCritetioGeneral,'sumaPesoTotalGeberal' =>$sumaPesoTotalGeberal,'listarPuntajeCriterioPip' => $listarPuntajeCriterioPip]);
+		$this->load->view('front/Pmi/PuntajeCriterioPi/insertar',['listaUnicaProIv' =>$listaUnicaProIv,'listaCritetioGeneral' => $listaCritetioGeneral,'sumaPesoTotalGeberal' =>$sumaPesoTotalGeberal,'listarPuntajeCriterioPip' => $listarPuntajeCriterioPip,'id_funcion' =>$id_funcion]);
 
 	}
 
@@ -87,6 +87,18 @@ class PuntajeCriterioPi extends CI_Controller {/* Mantenimiento de sector entida
 		$this->load->view('front/Pmi/PuntajeCriterioPi/pipPriorizadas');
 		$this->load->view('layout/PMI/footer');	
 	}
+
+	public function eliminarPuntajecriterio()
+	{
+		$id_pi=$this->input->post('id_pi');
+		$id_ptje_criterio=$this->input->post('id_ptje_criterio');
+		$this->Model_PuntajeCriterioPi->eliminarPuntajecriterio($id_ptje_criterio);
+
+		$listarPuntajeCriterioPip=$this->Model_PuntajeCriterioPi->listarPuntajePip($id_pi);
+		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos Eliminados correctamente.', 'listarPuntajeCriterioPip' => $listarPuntajeCriterioPip]);exit;
+
+	}
+
 
 	
 }

@@ -48,4 +48,11 @@ GROUP BY PRV.id_pi,PRV.codigo_unico_pi,PRV.nombre_pi,FUNCION.id_funcion,FUNCION.
         return $data->result();
     }
 
+    function eliminarPuntajecriterio($id_ptje_criterio)
+    {
+        $data=$this->db->query("delete from PUNTAJE_CRITERIO_PI  where PUNTAJE_CRITERIO_PI.id_ptje_criterio='".$id_ptje_criterio."' ");
+
+        return true;
+    }
+
 }
