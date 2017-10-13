@@ -6,7 +6,6 @@
 				<div>
 					<input type="hidden" id="txtIdPi" name="txtIdPi" value="<?= $listaUnicaProIv->id_pi?>" class="form-control col-md-4 col-xs-12"  placeholder="Nombre del proyecto" autocomplete="off"  type="hidden">	
 					<input id="txtNombreUe" name="txtNombrePi" value="<?= $listaUnicaProIv->nombre_pi?>" class="form-control col-md-4 col-xs-12"  autocomplete="off" readonly="readonly">	
-					
 				</div>	
 			</div>
 		</div><br/>
@@ -15,7 +14,7 @@
 					<label class="control-label">Criterio general: &nbsp;&nbsp;&nbsp;</label>
 					<input type="hidden"  name="sumaPesoTotalGeberal" value="<?= $sumaPesoTotalGeberal ?>">
 					<select  id="combocriteriogeneral" name="combocriteriogeneral"  class="selectpicker" data-width="75%" data-live-search="true">
-						<option value=""> Criterio General</option>
+						<option value="">Buscar Criterio General</option>
 						<?php foreach($listaCritetioGeneral as $item){ ?>
 							<option value="<?=$item->id_criterio_gen; ?>"><?= $item->nombre_criterio_gen;?></option>
 						<?php } ?>
@@ -26,7 +25,7 @@
 			<input type="hidden" name="SumaTotaCriterio" id="SumaTotaCriterio">
 			<div class="col-md-12 col-sm-3 col-xs-12">
 					<label class="control-label">Criterio especifico:</label>
-					<select  id="combocriterioespecif" name="combocriterioespecif[]" class="selectpicker" multiple data-actions-box="true" data-width="75%" data-live-search="true" >
+					<select  id="combocriterioespecif" name="combocriterioespecif[]" class="selectpicker" multiple data-actions-box="true" data-width="75%" data-live-search="true" required="required" class="form-control">
 								
 					</select>	
 			</div>
@@ -71,8 +70,44 @@
 </form>
 
 <script>
-	$('#combocriterioespecif').selectpicker('refresh');
-	$('#combocriteriogeneral').selectpicker('refresh');
+$(function()
+	{
+		$('#combocriterioespecif').selectpicker('refresh');
+		$('#combocriteriogeneral').selectpicker('refresh');
+	
+		$('#form-addAsignarPuntajePi').formValidation(
+		{
+			framework: 'bootstrap',
+			excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+			live: 'enabled',
+			message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+			trigger: null,
+			fields:
+			{
+				combocriteriogeneral:
+				{
+					validators: 
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;text-align: center;">El campo "Criterio General" es requerido.</b>'
+						}
+					}
+				},
+				combocriterioespecif:
+				{
+					validators: 
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;text-align: center;">El campo "Criterio especifico" es requerido.</b>'
+						}
+					}
+				}
+				
+			}
+		});
+	});
 	
 
 $("#combocriteriogeneral" ).change(function() {
@@ -109,6 +144,14 @@ $(function()
     $('#btnAsignarPuntajePip').on('click', function(event)
 	{
 		event.preventDefault();
+
+		$('#form-addAsignarPuntajePi').data('formValidation').validate();
+
+		if(!($('#form-addAsignarPuntajePi').data('formValidation').isValid()))
+		{
+			return;
+		}
+
 		paginaAjaxJSON($('#form-addAsignarPuntajePi').serialize(), '<?=base_url();?>index.php/PuntajeCriterioPi/insertar', 'POST', null, function(objectJSON)
 		{
 			//$('#modalTemp').modal('hide');
@@ -195,4 +238,5 @@ function eliminarPuntaje(id_ptje_criterio,id_pi)
 
 
 </script>
+
 
