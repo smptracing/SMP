@@ -416,8 +416,8 @@ class PrincipalReportes extends CI_Controller
         $correlativoMeta=$this->input->GET('meta');
         $anioMeta=$this->input->GET('anio');
        
-        $listaDetallePorOrden=$this->Model_Dashboard_Reporte->DetallePorOrden($correlativoMeta,$anioMeta);  
-        $this->load->view('front/Reporte/ProyectoInversion/DetalleConcepto',['listaDetallePorOrden'=>$listaDetallePorOrden]);
+        $listaPorOrden=$this->Model_Dashboard_Reporte->DetallePorOrden($correlativoMeta,$anioMeta);  
+        $this->load->view('front/Reporte/ProyectoInversion/DetalleConcepto',['listaPorOrden'=>$listaPorOrden]);
 
     }
 

@@ -235,7 +235,7 @@ class Model_Dashboard_Reporte extends CI_Model
     
 function DetallePorOrden($correlativoMeta,$anioMeta)
     {
-        $opcion="listar_orden_proyecto";
+        $opcion="listar_orden_compra";
         $data = $this->db->query("execute sp_Gestionar_SIGA @opcion='".$opcion."',  @anio_meta='".$anioMeta."', @correlativo_meta='".$correlativoMeta."'");
         
         return $data->result();

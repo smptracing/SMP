@@ -25,7 +25,7 @@
 						<h2><b>DATOS GENERALES Y DETALLE POR ORDEN DE PEDIDOS</b> </h2>
 								<?php $anio=0 ?>
 
-								<?php foreach($listaDetallePorOrden as $item ){ ?>
+								<?php foreach($listaPorOrden as $item ){ ?>
 													  	<tr>
 															<td>
 
@@ -63,28 +63,20 @@
 												<tr>
 													<td>EXP SIAF</td>
 													<td>EXP SIGA</td>
-													<td>MES</td>
-													<td>N°ORDEN</td>
-													<td>DOC.REFERENCIA</td>
-													<td>CLASIFICADOR</td>
+									
+													<td>N° ORDEN</td>
+													<td>TIPO DE BIEN</td>
+													<td>FECHA DE ORDEN</td>
+													<td>DOC REFERENCIA</td>
 													<td>CONCEPTO</td>
-													<td>FECHA ORDEN</td>
-													<td>TIPO BIEN</td>
-
-													
-
-													<td style="text-align:right">SUBTOTAL</td>
-													<td style="text-align:right">TOTAL IGV</td>
-													<td style="text-align:right">TOTAL FACT</td>
-
-												
-													<td>N° CERTIFICA</td>	
-										
+													<td>SUB TOTAL SOLES</td>
+													<td>TOTAL IGV SOLES</td>
+													<td>TOTAL FACT SOLES</td>
 												 </tr>
 												</thead>
 												<body>
 													
-													<?php foreach($listaDetallePorOrden as $item ){ ?>
+													<?php foreach($listaPorOrden as $item ){ ?>
 													  	<tr>
 															<td>	
 															<button type="button" class="DetalleOrdenExpeSiaf btn btn-primary btn-xs" onclick="detalleordenexpsiaf(<?= (int)$item->ANO_EJE?>,<?= (int)$item->EXP_SIAF?>);"><?=$item->EXP_SIAF?><i class='ace-icon bigger-120'></i></button>
@@ -93,41 +85,33 @@
 																<?=$item->EXP_SIGA?>
 													    	</td>
 													    	<td>
-																<?=$item->MES_CALEND?>
-													    	</td>
-													    	<td>
 																<?=$item->NRO_ORDEN?>
 													    	</td>
 													    	<td>
-																<?=$item->DOCUM_REFERENCIA?>
-													    	</td>
-													    	<td>
-																<?=$item->CLASIFICAD?>
-													    	</td>
-													    	<td>
-																<?=$item->CONCEPTO?>
+																<?=$item->TIPO_BIEN?>
 													    	</td>
 													    	<td>
 																<?=$item->FECHA_ORDEN?>
 													    	</td>
 													    	<td>
-																<?=$item->TIPO_BIEN?>
+																<?=$item->DOCUM_REFERENCIA?>
 													    	</td>
-													    	
-													    	
-															<td style="text-align:right">
-																<?=number_format($item->SUBTOTAL_SOLES,2)?>
+													    	<td>
+																<?=$item->CONCEPTO?>
 													    	</td>
-													    	<td style="text-align:right">
-																<?=number_format($item->TOTAL_IGV_SOLES,2)?>
+													    	<td>
+																<?=$item->SUBTOTAL_SOLES?>
 													    	</td>
-													    	<td style="text-align:right">
-																<?=number_format($item->TOTAL_FACT_SOLES,2)?>
+													    	<td>
+																<?=$item->TOTAL_IGV_SOLES?>
 													    	</td>
-													    	
-													    	<td style="text-align:center;">
-																<?=$item->NRO_CERTIFICA?>
+													    	<td>
+																<?=$item->TOTAL_FACT_SOLES?>
 													    	</td>
+
+
+
+
 
 													  </tr>
 													<?php } ?>
