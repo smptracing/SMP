@@ -12,14 +12,34 @@ class PuntajeCriterioPi extends CI_Controller {/* Mantenimiento de sector entida
 
 
 	}
-	public function index($funcion=''){	
+	public function index($cadena=''){	
 
 		$listarFuncion=$this->Model_PuntajeCriterioPi->FuncionPip();
-		$listaPipPriorizar=$this->Model_PuntajeCriterioPi->PipPriorizar($funcion);
+		$cadena=explode('.', $cadena);
+		$funcion=$cadena[0];
+		$anio=$cadena[1];
+		$listaPipPriorizar=$this->Model_PuntajeCriterioPi->PipPriorizar($funcion,$anio);
+
+		if($anio='')
+		{
+			/*$fechaA=date("Y-m-d");
+			$cadena=explode('-', $fechaA);
+			$anioActual=$cadena[0];
+
+			$listarFuncion=$this->Model_PuntajeCriterioPi->FuncionPip();
+			$listaPipPriorizar=$this->Model_PuntajeCriterioPi->PipPriorizar($funcion,$anioActual);
+
+			$this->load->view('layout/PMI/header');
+			$this->load->view('front/Pmi/PuntajeCriterioPi/index',['listaPipPriorizar'=>$listaPipPriorizar,'listarFuncion'=>$listarFuncion,'id_funcion'=>$funcion]);
+			$this->load->view('layout/PMI/footer');	*/
+		}else{
 
 		$this->load->view('layout/PMI/header');
 		$this->load->view('front/Pmi/PuntajeCriterioPi/index',['listaPipPriorizar'=>$listaPipPriorizar,'listarFuncion'=>$listarFuncion,'id_funcion'=>$funcion]);
 		$this->load->view('layout/PMI/footer');	
+
+		}
+		
 	}
 
 	public function insertar()

@@ -14,10 +14,19 @@
 								<div role="tabpanel" class="tab-pane fade active in" id="#tab_etapasFE" aria-labelledby="home-tab">
 									<div class="row">
 										<div class="col-md-12 col-xs-12">
-											<div class="col-md-3 col-xs-3"  style="margin-left: 300px;">
+											<div class="col-md-3 col-xs-3"  style="margin-left: 100px;">
 												<div class="form-group">
 									                <div class="input-group"><br/>
-														<label class="control-label">Seleccionar función</label>
+														<label class="control-label">ANIO</label>
+														<select  id="comboanio" name="comboanio" class="form-control col-md-2 col-xs-2">
+														</select>
+									                </div>
+							            		</div>
+											</div>
+											<div class="col-md-3 col-xs-3"  style="margin-left: 50px;">
+												<div class="form-group">
+									                <div class="input-group"><br/>
+														<label class="control-label">FUNCION</label>
 														<select  id="combofuncion" name="combofuncion" class="form-control col-md-2 col-xs-2">
 															<?php foreach($listarFuncion as $item){ ?>
 																<option value="<?=$item->id_funcion; ?>" <?=($item->id_funcion==$id_funcion ? 'selected' : '')?>><?= $item->nombre_funcion;?></option>
@@ -92,7 +101,7 @@
 	$(document).ready(function()
 	{
 
-
+		anios();
 		var myTable=$('#table-pip').DataTable(
 		{
 			
@@ -130,9 +139,10 @@
 		$('#combofuncion').change('click', function(e)
 		{
 			//alert('hola');
+				var anioPriorizacion=$("#comboanio").val();
 				var funcion=$("#combofuncion").val();
-				window.location.href=base_url+"index.php/PuntajeCriterioPi/index/"+funcion;
-			
+				window.location.href=base_url+"index.php/PuntajeCriterioPi/index/"+funcion+'.'+anioPriorizacion;
+				anios();
 		});
 
 		
@@ -142,5 +152,14 @@
 	{
 		var dirurl=base_url+"index.php/PuntajeCriterioPi/reporteCriteriosPorCadaPi/"+id_funcion+'.'+anio_criterio_gen;
 		        ventana=window.open(dirurl, 'Nombre de la ventana', 'width=1400,height=800');
+	}
+	function anios()
+	{
+		var aniosI=2016;
+		var html;
+		for (var i =0; i <=2100; i++) {
+			html +='<option value="'+(parseInt(aniosI)+parseInt(i))+'" >'+(parseInt(aniosI)+parseInt(i))+'</option>';
+		}
+		$("#comboanio").append(html);
 	}
 </script>
