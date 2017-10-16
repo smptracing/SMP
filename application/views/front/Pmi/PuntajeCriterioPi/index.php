@@ -14,6 +14,7 @@
 								<div role="tabpanel" class="tab-pane fade active in" id="#tab_etapasFE" aria-labelledby="home-tab">
 									<div class="row">
 										<div class="col-md-12 col-xs-12">
+											<input type="hidden" name="Aniao" id="Aniao" value="<?= $anioActual?>">
 											<div class="col-md-3 col-xs-3"  style="margin-left: 100px;">
 												<div class="form-group">
 									                <div class="input-group"><br/>
@@ -28,6 +29,7 @@
 									                <div class="input-group"><br/>
 														<label class="control-label">FUNCION</label>
 														<select  id="combofuncion" name="combofuncion" class="form-control col-md-2 col-xs-2">
+															<option value="1"> Buscar Función</option>
 															<?php foreach($listarFuncion as $item){ ?>
 																<option value="<?=$item->id_funcion; ?>" <?=($item->id_funcion==$id_funcion ? 'selected' : '')?>><?= $item->nombre_funcion;?></option>
 															<?php } ?>
@@ -100,14 +102,15 @@
 <script>
 	$(document).ready(function()
 	{
-
 		anios();
+		var valor=$("#Aniao").val();
+		$("#comboanio option[value="+valor+"]").attr("selected", true);
+
 		var myTable=$('#table-pip').DataTable(
 		{
 			
 			"language" : idioma_espanol,
-
-				
+		
 		});
 
 		$.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
@@ -144,6 +147,14 @@
 				window.location.href=base_url+"index.php/PuntajeCriterioPi/index/"+funcion+'.'+anioPriorizacion;
 				anios();
 		});
+		$('#comboanio').change('click', function(e)
+		{
+			//alert('hola');
+				var anioPriorizacion=$("#comboanio").val();
+				var funcion=$("#combofuncion").val();
+				window.location.href=base_url+"index.php/PuntajeCriterioPi/index/"+funcion+'.'+anioPriorizacion;
+				anios();
+		});
 
 		
 	});
@@ -158,7 +169,7 @@
 		var aniosI=2016;
 		var html;
 		for (var i =0; i <=2100; i++) {
-			html +='<option value="'+(parseInt(aniosI)+parseInt(i))+'" >'+(parseInt(aniosI)+parseInt(i))+'</option>';
+			html +='<option value="'+(parseInt(aniosI)+parseInt(i))+'">'+(parseInt(aniosI)+parseInt(i))+'</option>';
 		}
 		$("#comboanio").append(html);
 	}
