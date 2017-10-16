@@ -71,4 +71,11 @@ class Model_ET_Detalle_Partida extends CI_Model
 
 		return $data->result();
 	}
+
+	function ETPDetallePartida($idDetallePartida)
+	{
+		$data=$this->db->query("select p.id_partida,dp.id_detalle_partida, p.desc_partida, dp.precio_unitario,dp.cantidad from ET_PARTIDA p inner join ET_DETALLE_PARTIDA dp on p.id_partida= dp.id_partida where dp.id_detalle_partida=$idDetallePartida");
+		return $data->result()[0];
+	}
+
 }

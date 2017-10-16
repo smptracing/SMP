@@ -924,8 +924,8 @@ class Expediente_Tecnico extends CI_Controller
 	{
 		if ($_POST) 
 		{
-			/*$idPartida=$this->input->post('hdIdPartida');
-			$numeroOrden=$this->input->post('txtNumeroOrden');
+			/*$idDetallePartida=$this->input->post('hdIdPartida');
+			$cantidad=$this->input->post('txtNumeroOrden');
 			$concepto=$this->input->post('txtConceptoOrden');	
 			$data = $this->Model_DetSegOrden->insertar($idPartida,$numeroOrden,$concepto);		
 			if ($data==true) 
@@ -940,7 +940,8 @@ class Expediente_Tecnico extends CI_Controller
 		else
 		{
 			$idDetallePartida=$this->input->get('id_DetallePartida');
-			$this->load->view('front/Ejecucion/EControlMetrado/valorizacionpartida');
+			$DetallePartida = $this->Model_ET_Detalle_Partida->ETPDetallePartida($idDetallePartida);
+			$this->load->view('front/Ejecucion/EControlMetrado/valorizacionpartida', ['DetallePartida' => $DetallePartida]);
 		}
 		
 	}
