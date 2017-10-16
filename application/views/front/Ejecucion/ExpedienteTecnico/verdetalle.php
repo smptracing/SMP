@@ -108,8 +108,12 @@
 	                        		<a role="menuitem" tabindex="-1" href="#" onclick="window.open(base_url+'index.php/Expediente_Tecnico/valorizacionEjecucionProyecto/<?=$ExpedienteTecnicoElaboracion[0]->id_et?>', '_blank'); return false;"> Valorización de Ejecución	
 		                        	</a>
 		                        </li>
-		                        <li role="presentation">
+		                        <!--<li role="presentation">
 	                        		<a role="menuitem" tabindex="-1" href="<?= site_url('Expediente_Tecnico/ListarPartida/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target='_blank'); return false;">Ordenes y Pedidos
+		                        	</a>
+		                        </li>-->
+		                         <li role="presentation">
+	                        		<a role="menuitem" tabindex="-1" href="<?= site_url('Expediente_Tecnico/ControlMetrado/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target='_blank'); return false;">Valorizacion
 		                        	</a>
 		                        </li>
                       		</ul>

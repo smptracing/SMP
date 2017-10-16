@@ -309,16 +309,6 @@ $(function()
                     }
                 }
             },
-            cbxProgramaPres:
-            {
-                validators:
-                {
-                    notEmpty:
-                    {
-                        message: '<b style="color: red;">El campo "Programa" es requerido.</b>'
-                    }
-                }
-            },
             lista_unid_form:
             {
                 validators:

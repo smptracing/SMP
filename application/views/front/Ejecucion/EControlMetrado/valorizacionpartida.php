@@ -15,13 +15,19 @@
 						</div>
 					</div>	
 					<div class="row" id="validarValorizacion">
-						<div class="col-md-6 col-sm-6 col-xs-12">
+						<div class="col-md-4 col-sm-6 col-xs-12">
 							<label class="control-label">Fecha: </label>
 							<div>
 								<input class="form-control" name="txtFecha" id="txtFecha" type="date" autocomplete="off" value="<?=$fecha?>">	
 							</div>	
 						</div>
-						<div class="col-md-6 col-sm-6 col-xs-12">
+						<div class="col-md-4 col-sm-6 col-xs-12">
+							<label class="control-label">Cantidad Máxima: </label>
+							<div>
+								<input class="form-control" placeholder="Cantidad" autocomplete="off" value="<?=$DetallePartida->cantidad?>" readonly="readonly" >	
+							</div>	
+						</div>
+						<div class="col-md-4 col-sm-6 col-xs-12">
 							<label class="control-label">Cantidad: </label>
 							<div>
 								<input class="form-control" placeholder="Cantidad" autocomplete="off" name="txtCantidad" id="txtCantidad">	
@@ -92,8 +98,8 @@ $(function()
 					},
 					regexp:
 					{
-						regexp: /^[0-9]+$/,
-						message: '<b style="color: red;">El campo "Cantidad" debe ser un numero.</b>'
+						regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
+	                    message: '<b style="color: red;">El campo "Cantidad" debe ser un número.</b>'
 					}
 				}
 			},
@@ -147,10 +153,12 @@ $('#btnEnviarFormulario').on('click', function(event)
             {
                 swal("Error","Ocurrio un error ", "error");
             }
-            //window.location.href=base_url+"index.php/Expediente_Tecnico/ControlMetrado/";
+            paginaAjaxDialogo(null, 'Valorizacion de Partida',{ id_DetallePartida: <?=$DetallePartida->id_detalle_partida?> }, base_url+'index.php/Expediente_Tecnico/AsignarValorizacion', 'GET', null, null, false, true);
+  			$('#frmValorizacion')[0].reset();
         }
     });
-  	$('#frmValorizacion')[0].reset();
+   
+
 });
 </script>
 
