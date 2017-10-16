@@ -18,7 +18,7 @@
 						<div class="col-md-6 col-sm-6 col-xs-12">
 							<label class="control-label">Fecha: </label>
 							<div>
-								<input class="form-control" name="txtFecha" id="txtFecha" type="date" autocomplete="off">	
+								<input class="form-control" name="txtFecha" id="txtFecha" type="date" autocomplete="off" value="<?=$fecha?>">	
 							</div>	
 						</div>
 						<div class="col-md-6 col-sm-6 col-xs-12">
@@ -137,7 +137,7 @@ $('#btnEnviarFormulario').on('click', function(event)
             {
                 swal("Error","Ocurrio un error ", "error");
             }
-            //window.location.href=base_url+"index.php/Expediente_Tecnico/ListarPartida/";
+            window.location.href=base_url+"index.php/Expediente_Tecnico/ControlMetrado/"+<?= $DetallePartida->id_et?>;
         }
     });
   	$('#frmValorizacion')[0].reset();

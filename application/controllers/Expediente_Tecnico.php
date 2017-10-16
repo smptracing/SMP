@@ -27,6 +27,7 @@ class Expediente_Tecnico extends CI_Controller
 		$this->load->model('Model_ET_Mes_Valorizacion');
 		$this->load->model('Model_Unidad_Medida');
 		$this->load->model('Model_DetSegOrden');
+		$this->load->model('Model_DetSegValorizacion');		
 		$this->load->library('mydompdf');
 		$this->load->helper('FormatNumber_helper');
 	}
@@ -924,10 +925,23 @@ class Expediente_Tecnico extends CI_Controller
 	{
 		if ($_POST) 
 		{
-			/*$idDetallePartida=$this->input->post('hdIdPartida');
-			$cantidad=$this->input->post('txtNumeroOrden');
-			$concepto=$this->input->post('txtConceptoOrden');	
-			$data = $this->Model_DetSegOrden->insertar($idPartida,$numeroOrden,$concepto);		
+			$idDetallePartida=$this->input->post('hdIdDetallePartida');
+			$cantidad=$this->input->post('txtCantidad');
+			$fechadia=$this->input->post('txtFecha');	
+			$fecha = date('Y-m-d H:i:s');
+			$subtotal = 4;
+			//exit;
+
+			/*$DetallePartida = $this->Model_ET_Detalle_Partida->ETPDetallePartida($idDetallePartida);
+			$cantidadTotaldePartidas=0;
+			foreach ($DetallePartida as $key => $value) 
+			{
+				$cantidadTotaldePartidas+=$value->cantidad;
+			}
+			echo $cantidadTotaldePartidas;
+			exit;*/
+
+			$data = $this->Model_DetSegValorizacion->insertar($fecha, $cantidad, $subtotal, $fechadia,$idDetallePartida);		
 			if ($data==true) 
 			{
 				echo "1";
@@ -935,13 +949,14 @@ class Expediente_Tecnico extends CI_Controller
 			else
 			{
 				echo "0";
-			}*/
+			}
 		}
 		else
 		{
+			$fechaActual=date('Y-m-d');
 			$idDetallePartida=$this->input->get('id_DetallePartida');
 			$DetallePartida = $this->Model_ET_Detalle_Partida->ETPDetallePartida($idDetallePartida);
-			$this->load->view('front/Ejecucion/EControlMetrado/valorizacionpartida', ['DetallePartida' => $DetallePartida]);
+			$this->load->view('front/Ejecucion/EControlMetrado/valorizacionpartida', ['DetallePartida' => $DetallePartida, 'fecha' => $fechaActual]);
 		}
 		
 	}
