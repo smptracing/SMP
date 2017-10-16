@@ -34,11 +34,11 @@
 		<div class="row" id="divCriterioGeneral">
 			<div class="col-md-2 col-sm-2 col-xs-12">
 				<label></label>
-				<input style="margin-top: 5px;margin-left: 100px;" type="button" id="btnAsignarPuntajePip" class="btn btn-primary form-control" value="Agregar">
+				<input style="margin-top: 5px;" type="button" id="btnAsignarPuntajePip" class="btn btn-primary form-control" value="Agregar"/>
 			</div>
 			<div class="col-md-2 col-sm-2 col-xs-12">
 				<label></label>
-				<button class="btn btn-info form-control" style="margin-top: 5px;margin-left: 100px;" id="btnGuardarCambios"><i class="fa fa-refresh"> Guardar</i> </button>
+				<button class="btn btn-info form-control" style="margin-top: 5px;margin-left: 50px;" id="btnGuardarCambios"><i class="fa fa-refresh"> Guardar</i> </button>
 			</div>
 		</div>
 
