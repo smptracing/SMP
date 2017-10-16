@@ -27,7 +27,7 @@ class Expediente_Tecnico extends CI_Controller
 		$this->load->model('Model_ET_Mes_Valorizacion');
 		$this->load->model('Model_Unidad_Medida');
 		$this->load->model('Model_DetSegOrden');
-		$this->load->model('Model_DetSegValorizacion');		
+		//$this->load->model('Model_DetSegValorizacion');		
 		$this->load->library('mydompdf');
 		$this->load->helper('FormatNumber_helper');
 	}
@@ -931,7 +931,8 @@ class Expediente_Tecnico extends CI_Controller
 			$fecha = date('Y-m-d H:i:s');
 			$DetallePartida = $this->Model_ET_Detalle_Partida->ETPDetallePartida($idDetallePartida);
 			$subtotal = $cantidad * $DetallePartida->precio_unitario;
-			$listaPartida = $this->Model_DetSegValorizacion->listarValorizacionPorDetallePartida($idDetallePartida);
+			//$listaPartida = $this->Model_DetSegValorizacion->listarValorizacionPorDetallePartida($idDetallePartida);
+			$listaPartida = $this->Model_DetSegOrden->listarValorizacionPorDetallePartida($idDetallePartida);
 
 			$cantidadTotaldePartidas=0;
 
@@ -945,7 +946,8 @@ class Expediente_Tecnico extends CI_Controller
 			}
 			else
 			{
-				$data = $this->Model_DetSegValorizacion->insertar($fecha, $cantidad, $subtotal, $fechadia,$idDetallePartida);		
+				//$data = $this->Model_DetSegValorizacion->insertar($fecha, $cantidad, $subtotal, $fechadia,$idDetallePartida);	
+				$data = $this->Model_DetSegOrden->insertar($fecha, $cantidad, $subtotal, $fechadia,$idDetallePartida);		
 				if ($data==true) 
 				{
 					echo "1";
@@ -961,7 +963,8 @@ class Expediente_Tecnico extends CI_Controller
 			$fechaActual=date('Y-m-d');
 			$idDetallePartida=$this->input->get('id_DetallePartida');
 			$DetallePartida = $this->Model_ET_Detalle_Partida->ETPDetallePartida($idDetallePartida);
-			$listaValorizacion = $this->Model_DetSegValorizacion->listarValorizacionPorDetallePartida($idDetallePartida);
+			//$listaValorizacion = $this->Model_DetSegValorizacion->listarValorizacionPorDetallePartida($idDetallePartida);
+			$listaValorizacion = $this->Model_DetSegOrden->listarValorizacionPorDetallePartida($idDetallePartida);
 			$this->load->view('front/Ejecucion/EControlMetrado/valorizacionpartida', ['DetallePartida' => $DetallePartida, 'fecha' => $fechaActual, 'listaValorizacion' => $listaValorizacion]);
 		}
 		

@@ -8,11 +8,11 @@ class Model_DetSegOrden extends CI_Model
 		parent::__construct();
 	}
 
-	public function insertar($idPartida,$numeroOrden,$concepto)
+	/*public function insertar($idPartida,$numeroOrden,$concepto)
 	{
 		$this->db->query("insert into DET_SEG_ORDEN (id_partida,nro_orden,desc_det_seg_orden) values ('".$idPartida."','".$numeroOrden."','".$concepto."') ");
 		return true;
-	}
+	}*/
 	public function listarAcumuladoMeta($codigo_unico)
 	{
         $data = $this->db->query("execute sp_Gestionar_SIAF @opcion='listar_acumulado_meta', @codigo_snip ='".$codigo_unico."'");
@@ -28,5 +28,15 @@ class Model_DetSegOrden extends CI_Model
 		$data = $this->db->query("select * from DET_SEG_ORDEN where id_partida=$idPartida");
 		return $data->result();
 	}
+
+	public function insertar($fecha, $cantidad, $subtotal, $fechadia, $idDetallePartida)
+	{
+		$this->db->query("exec sp_Gestionar_Det_Seg_Valorizacion @Opcion = 'C', @fecha = '".$fecha."', @cantidad = $cantidad, @sub_total = $subtotal, @fecha_dia = '".$fechadia."', @id_detalle_partida = $idDetallePartida");
+		return true;
+	}
+	public function listarValorizacionPorDetallePartida($idDetallePartida)
+	{
+		$data = $this->db->query("select * from DET_SEG_VALORIZACION where id_detalle_partida = $idDetallePartida");
+		return $data->result();
+	}
 }
-?>
