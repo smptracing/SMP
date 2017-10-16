@@ -15,13 +15,19 @@
 						</div>
 					</div>	
 					<div class="row" id="validarValorizacion">
-						<div class="col-md-6 col-sm-6 col-xs-12">
+						<div class="col-md-4 col-sm-6 col-xs-12">
 							<label class="control-label">Fecha: </label>
 							<div>
 								<input class="form-control" name="txtFecha" id="txtFecha" type="date" autocomplete="off" value="<?=$fecha?>">	
 							</div>	
 						</div>
-						<div class="col-md-6 col-sm-6 col-xs-12">
+						<div class="col-md-4 col-sm-6 col-xs-12">
+							<label class="control-label">Cantidad Máxima: </label>
+							<div>
+								<input class="form-control" placeholder="Cantidad" autocomplete="off" value="<?=$DetallePartida->cantidad?>" readonly="readonly" >	
+							</div>	
+						</div>
+						<div class="col-md-4 col-sm-6 col-xs-12">
 							<label class="control-label">Cantidad: </label>
 							<div>
 								<input class="form-control" placeholder="Cantidad" autocomplete="off" name="txtCantidad" id="txtCantidad">	
@@ -129,10 +135,6 @@ $('#btnEnviarFormulario').on('click', function(event)
         cache: false,
         contentType:false,
         processData:false,
-        beforeSend: function() 
-        {
-        	renderLoading();
-	    },
         success:function(resp)
         {
         	if (resp=='3') 
@@ -143,11 +145,10 @@ $('#btnEnviarFormulario').on('click', function(event)
             {
                 swal("Correcto","Se registró correctamente", "success");
             }
-            if (resp=='2') 
+            if (resp=='0') 
             {
                 swal("Error","Ocurrio un error ", "error");
             }
-            //window.location.href=base_url+"index.php/Expediente_Tecnico/ControlMetrado/";
         }
     });
   	$('#frmValorizacion')[0].reset();
