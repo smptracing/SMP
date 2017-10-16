@@ -8,6 +8,7 @@ class PuntajeCriterioPi extends CI_Controller {/* Mantenimiento de sector entida
 		$this->load->model('Model_PuntajeCriterioPi');
 		$this->load->model('Model_CriterioGeneral');
 		$this->load->model('Model_CriterioEspecifico');
+		$this->load->library('mydompdf');
 
 
 	}
@@ -104,6 +105,23 @@ class PuntajeCriterioPi extends CI_Controller {/* Mantenimiento de sector entida
 		$listarPuntajeCriterioPip=$this->Model_PuntajeCriterioPi->listarPuntajePip($id_pi);
 		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos Eliminados correctamente.', 'listarPuntajeCriterioPip' => $listarPuntajeCriterioPip]);exit;
 
+	}
+
+	public function reporteCriteriosPorCadaPi($idfuncion_anio)
+	{
+		$cadena = $idfuncion_anio;
+		$array = explode(".", $cadena);
+
+		 $id_funcion=$array[0];
+		 $anio_criterio_gen=$array[1]; 
+
+		$html= $this->load->view('front/Pmi/PuntajeCriterioPi/reporteCriteriosPorCadaPip');
+		$this->mydompdf->load_html($html);
+		$this->mydompdf->set_paper('letter', 'landscape');
+		$this->mydompdf->render();
+		$this->mydompdf->set_base_path('./assets/css/dompdf.css'); //agregar de nuevo el css
+
+		$this->mydompdf->stream("reporteCriteriosPorCadaPip.pdf", array("Attachment" => false));
 	}
 
 	

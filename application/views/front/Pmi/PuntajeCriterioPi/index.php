@@ -41,6 +41,7 @@
 															<td style="width:40%">Proyecto</td>
 															<td style="width:5%">Prioridad</td>
 															<td style="width:15%">Función</td>
+															<td style="">Año criterio </td>
 															<td style="width:5%">Opciones</td>
 														</tr>
 													</thead>
@@ -60,8 +61,13 @@
 																<?=$item->nombre_funcion?>
 													    	</td>
 													    	<td>
+																<?=$item->anio_criterio_gen ?>
+													    	</td>
+													    	<td>
 															<button type="button" class="btn btn-success btn-xs " onclick="paginaAjaxDialogo(null, 'Asignar Prioridad', {id_pi:<?=$item->id_pi?>,id_funcion:<?=$id_funcion?>}, base_url+'index.php/PuntajeCriterioPi/insertar', 'GET', null, null, false, true);"><span class="fa fa-bars"></span>
 															</button>
+															<!--<button type="button" class="btn btn-success btn-xs " onclick="ReporteCriteriosPorPip(<?=$item->id_funcion?>,<?=$item->anio_criterio_gen?>);"><i class="fa fa-file-pdf-o"></i>
+															</button>-->
 													    	</td>
 													  </tr>
 													<?php } ?>	
@@ -132,5 +138,9 @@
 		
 	});
 
-	
+	function ReporteCriteriosPorPip()
+	{
+		var dirurl=base_url+"index.php/PuntajeCriterioPi/reporteCriteriosPorCadaPi/"+id_funcion+'.'+anio_criterio_gen;
+		        ventana=window.open(dirurl, 'Nombre de la ventana', 'width=1400,height=800');
+	}
 </script>

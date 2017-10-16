@@ -91,7 +91,7 @@ $(function()
 						regexp:
 			            {
 			                regexp: /^\d*$/,
-			                message: '<b style="color: red;">El campo "Peso Criterio General" debe ser un número entero.</b>'
+			                message: '<b style="color: red;">El campo "Peso" debe ser un número entero.</b>'
 			            }
 					}
 				}
