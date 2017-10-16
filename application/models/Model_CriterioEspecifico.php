@@ -59,4 +59,12 @@ class Model_CriterioEspecifico extends CI_Model
         return $data->result();
     }
 
+    function listarCriterioGeneralUnico($id_criterio)
+    {
+        $data=$this->db->query("select * from CRITERIO_GEN inner join CRITERIO_ESP on CRITERIO_GEN.id_criterio_gen=CRITERIO_ESP.id_criterio_gen
+        where CRITERIO_ESP.id_criterio='$id_criterio'");
+        return $data->result()[0];
+
+    }
+
 }

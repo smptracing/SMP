@@ -50,8 +50,13 @@ class PmiCriterioEspecifico extends CI_Controller {
 
 	        $id_criterio_gen=$this->input->post('id_criterio_gen');
 
-           echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos actualizados correctamente.','id_criterio_gen'=>$id_criterio_gen]);exit;  
+	        $data=$this->Model_CriterioEspecifico->criterioEspecifico($id);
+
+	        $datas=$this->Model_CriterioEspecifico->listarCriterioGeneralUnico($this->input->post('hdId'));
+            echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos actualizados correctamente.','id_criterio_gen'=>$data->id_criterio_gen,'anio_criterio_gen' => $datas->anio_criterio_gen,'id_funcion' => $datas->id_funcion]);exit;  
+
         }
+
         $id=$this->input->get('id');
         $CriterioEspecifico=$this->Model_CriterioEspecifico->criterioEspecifico($id);
 		

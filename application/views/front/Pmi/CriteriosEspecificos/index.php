@@ -56,10 +56,7 @@
 				</tbody>
 			</table>
 		</div>
-		<div class="row" style="text-align: right;">
-			<button type="submit" id="btnEnviarFormulario" class="btn btn-primary">Registrar Criterio Especifico</button>
-			<button class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-		</div>
+
 </form>
 
 <script>
@@ -91,7 +88,7 @@ $( document ).ready(function() {
                     		html +='<td>'+element.nombre_criterio+'</td>';
                     		html +='<td>'+element.peso+'</td>';
                     		html +='<td>'+element.porcentaje+'</td>';
-                    		html +='<td><button type="button" class="btn btn-primary btn-xs " onclick="paginaAjaxDialogo(null, "Registro de Criterios Específicos",{ id_criterio_gen:'+element.id_criterio_gen+',nombre_criterio:'+element.nombre_criterio+' }, base_url+"index.php/PmiCriterioEspecifico/index", "GET", null, null, false, true);"><span class="fa fa-plus-circle"></span></button>';
+                    		html +='<td><button type="button" class="btn btn-primary btn-xs " onclick="EditarCriterioEspecifico('+element.id_criterio+')"><span class="fa fa-plus-circle"></span></button>';
                     		html +='<button onclick="Eliminar('+element.id_criterio+','+element.id_criterio_gen+');" data-toggle="tooltip" data-original-title="Eliminar Criterio Específico"   class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>';
                     		html +='</td>';
                     		html +='</tr>';
@@ -110,13 +107,12 @@ $( document ).ready(function() {
 });
 	function EditarCriterioEspecifico(id)
 	{
-		paginaAjaxDialogo(1, 'Modificar Criterio EspecíficoidCriterio',{ id:id}, base_url+'index.php/PmiCriterioEspecifico/editar', 'GET', null, null, false, true);
+		paginaAjaxDialogo(11, 'Modificar Criterio Específico Criterio',{ id:id}, base_url+'index.php/PmiCriterioEspecifico/editar', 'GET', null, null, false, true);
 	}
 
 	function Eliminar(id_criterio,id_criterio_gen)
 	{
 		event.preventDefault();
-		alert(id_criterio_gen);
 		paginaAjaxJSON({ "id_criterio" : id_criterio,"id_criterio_gen":id_criterio_gen}, '<?=base_url();?>index.php/PmiCriterioEspecifico/eliminar', 'POST', null, function(objectJSON)
 		{
 			objectJSON=JSON.parse(objectJSON);
@@ -142,7 +138,7 @@ $( document ).ready(function() {
                     		html +='<td>'+element.nombre_criterio+'</td>';
                     		html +='<td>'+element.peso+'</td>';
                     		html +='<td>'+element.porcentaje+'</td>';
-                    		html +='<td><button type="button" class="btn btn-primary btn-xs " onclick="paginaAjaxDialogo(null, "Registro de Criterios Específicos",{ id_criterio_gen:'+element.id_criterio_gen+',nombre_criterio:'+element.nombre_criterio+' }, base_url+"index.php/PmiCriterioEspecifico/index", "GET", null, null, false, true);"><span class="fa fa-plus-circle"></span></button>';
+                    		html +='<td>';
                     		html +='<button onclick="Eliminar('+element.id_criterio+','+element.id_criterio_gen+');" data-toggle="tooltip" data-original-title="Eliminar Criterio Específico"   class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>';
                     		html +='</td>';
                     		html +='</tr>';

@@ -1,4 +1,5 @@
-<form  id="form-editarCriteriosEspecificos"   action="<?php echo base_url();?>index.php/PmiCriterioEspecifico/editar" method="POST" >
+
+<form  id="form-editarCriteriosEspecificos">
 
 	<div class="row">
 
@@ -29,26 +30,32 @@
 			</div>
 		</div>
 	</div>
-	<div class="ln_solid"></div>
 		<div class="row" style="text-align: right;">
-			<button  id="btnEnviarFormulario" class="btn btn-success">Guardar</button>
-			<button  class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<input type="button" id="btnEnviarFormulario" onclick="btnEnviarFormularioE();" class="btn btn-primary form-control" value="Guardar">
+			</div>
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<button  class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+			</div>
+
 		</div>
 </form>
 
 <script>
-$( document ).ready(function() {
-	$('#btnEnviarFormulario').on('click', function(event)
-	{
+$(function()
+{
+
+});
+function btnEnviarFormularioE()
+{
 		event.preventDefault();
 
 		paginaAjaxJSON($('#form-editarCriteriosEspecificos').serialize(), '<?=base_url();?>index.php/PmiCriterioEspecifico/editar', 'POST', null, function(objectJSON)
 		{
-			//$('#modalTemp').modal('hide');
-			$('#1').modal('hide');
-
+			$('#modalTemp').modal('show');
+			$('#2').modal('hide');
+			$('#11').modal('hide');
 			objectJSON=JSON.parse(objectJSON);
-
 			swal(
 			{
 				title: '',
@@ -57,9 +64,11 @@ $( document ).ready(function() {
 			},
 			function()
 			{
-				paginaAjaxDialogo(null, 'Registro Criterio Específicos',{ id_criterio_gen:objectJSON.id_criterio_gen}, base_url+'index.php/PmiCriterioEspecifico/index', 'GET', null, null, false, true);
+				paginaAjaxDialogo(null, 'Registro Criterio Generales', { id_funcion:objectJSON.id_funcion, nombre_funcion:'SALUD',anio:objectJSON.anio_criterio_gen}, base_url+'index.php/PmiCriterioG/insertar', 'GET', null, null, false, true);
+
+				paginaAjaxDialogo(2, 'Registro Criterio Específicos',{ id_criterio_gen:objectJSON.id_criterio_gen}, base_url+'index.php/PmiCriterioEspecifico/index', 'GET', null, null, false, true);
+
 			});
 		}, false, true);
-	});
-});
+}
 </script>
