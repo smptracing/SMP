@@ -1,0 +1,156 @@
+
+<form  id="frmValorizacion" action="<?php echo base_url();?>index.php/Expediente_Tecnico/insertar" method="POST">
+	<div class="row">
+
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<div class="x_panel">
+				<div class="x_content">		
+					<div class="row">
+						<div class="col-md-12 col-sm-3 col-xs-12">
+							<label class="control-label">Partida</label>
+							<div>
+								<input class="form-control" name="hdIdDetallePartida" id="hdIdDetallePartida" readonly="readonly" type="hidden" value="<?=$DetallePartida->id_detalle_partida?>"> 	
+								<input class="form-control" placeholder="descripcion de Partida" autocomplete="off" readonly="readonly" value="<?=$DetallePartida->desc_partida?>">	
+							</div>	
+						</div>
+					</div>	
+					<div class="row" id="validarValorizacion">
+						<div class="col-md-6 col-sm-6 col-xs-12">
+							<label class="control-label">Fecha: </label>
+							<div>
+								<input class="form-control" name="txtFecha" id="txtFecha" type="date" autocomplete="off" value="<?=$fecha?>">	
+							</div>	
+						</div>
+						<div class="col-md-6 col-sm-6 col-xs-12">
+							<label class="control-label">Cantidad: </label>
+							<div>
+								<input class="form-control" placeholder="Cantidad" autocomplete="off" name="txtCantidad" id="txtCantidad">	
+							</div>	
+						</div>
+					</div>			
+				</br>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	<div class="row" style="text-align: center;">
+		<button  id="btnEnviarFormulario" class="btn btn-success">Guardar</button>
+		<button  class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+	</div>
+</form>
+<div class="row">
+	<div class="col-md-12 col-sm-12 col-xs-12">
+		<div class="x_panel">
+			<table id="tableListaValorizacion" style="text-align: left;" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
+				<thead>
+					<tr>
+						<th style="width: 5%" class="col-md-1 col-xs-12">Fecha</th>
+						<th style="width: 30%" class="col-md-2 col-xs-12">Cantidad</th>						
+					</tr>
+				</thead>
+				<tbody>
+				<?php foreach ($listaValorizacion as $key => $value) { ?>
+					<tr>
+						<td><?=(new DateTime($value->fecha_dia))->format('d-m-Y')?></td>
+						<td><?=$value->cantidad?></td>
+					</tr>
+				<?php } ?>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<script>
+$(document).ready(function()
+{
+	$('#tableListaValorizacion').DataTable(
+	{
+		"language":idioma_espanol
+	});
+
+});
+$(function()
+{
+	$('#validarValorizacion').formValidation(
+	{
+		framework: 'bootstrap',
+		excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+		live: 'enabled',
+		message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+		trigger: null,
+		fields:
+		{
+			txtCantidad:
+			{
+				validators:
+				{
+				
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Cantidad" es requerido.</b>'
+					},
+					regexp:
+					{
+						regexp: /^[0-9]+$/,
+						message: '<b style="color: red;">El campo "Cantidad" debe ser un numero.</b>'
+					}
+				}
+			},
+			txtFecha:
+			{
+				validators:
+				{
+					notEmpty:
+					{
+						message: '<b style="color: red;">El campo "Fecha" es requerido.</b>'
+					}
+				}
+			}
+		}
+	});
+});
+$('#btnEnviarFormulario').on('click', function(event)
+{
+    event.preventDefault();
+    $('#validarValorizacion').data('formValidation').resetField($('#txtFecha'));
+    $('#validarValorizacion').data('formValidation').resetField($('#txtCantidad'));
+    $('#validarValorizacion').data('formValidation').validate();
+	if(!($('#validarValorizacion').data('formValidation').isValid()))
+	{
+		return;
+	}
+    var formData=new FormData($("#frmValorizacion")[0]);
+    var dataString = $('#frmValorizacion').serialize();
+    $.ajax({
+        type:"POST",
+        url:base_url+"index.php/Expediente_Tecnico/AsignarValorizacion",
+        data: formData,
+        cache: false,
+        contentType:false,
+        processData:false,
+        beforeSend: function() 
+        {
+        	renderLoading();
+	    },
+        success:function(resp)
+        {
+        	if (resp=='3') 
+            {
+                swal("Correcto","Supero la cantidad máxima requerida para la partida, Ingrese un valor menor", "error");
+            }
+        	if (resp=='1') 
+            {
+                swal("Correcto","Se registró correctamente", "success");
+            }
+            if (resp=='2') 
+            {
+                swal("Error","Ocurrio un error ", "error");
+            }
+            //window.location.href=base_url+"index.php/Expediente_Tecnico/ControlMetrado/";
+        }
+    });
+  	$('#frmValorizacion')[0].reset();
+});
+</script>
+
