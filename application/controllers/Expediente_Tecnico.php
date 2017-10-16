@@ -931,19 +931,20 @@ class Expediente_Tecnico extends CI_Controller
 			$fecha = date('Y-m-d H:i:s');
 			$DetallePartida = $this->Model_ET_Detalle_Partida->ETPDetallePartida($idDetallePartida);
 			$subtotal = $cantidad * $DetallePartida->precio_unitario;
-			$DetallePartida = $this->Model_DetSegValorizacion->listarValorizacionPorDetallePartida($idDetallePartida);
+			$listaPartida = $this->Model_DetSegValorizacion->listarValorizacionPorDetallePartida($idDetallePartida);
+
 			$cantidadTotaldePartidas=0;
 
-			/*foreach ($DetallePartida as $key => $value) 
+			foreach ($listaPartida as $key => $value) 
 			{
 				$cantidadTotaldePartidas+=$value->cantidad;
 			}
-			if ($cantidadTotaldePartidas > $DetallePartida->cantidad) 
+			if (($cantidadTotaldePartidas+$cantidad) > $DetallePartida->cantidad) 
 			{
 				echo "3";
 			}
 			else
-			{*/
+			{
 				$data = $this->Model_DetSegValorizacion->insertar($fecha, $cantidad, $subtotal, $fechadia,$idDetallePartida);		
 				if ($data==true) 
 				{
@@ -953,8 +954,7 @@ class Expediente_Tecnico extends CI_Controller
 				{
 					echo "0";
 				}
-
-			//}
+			}
 		}
 		else
 		{

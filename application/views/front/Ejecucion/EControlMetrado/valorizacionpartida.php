@@ -143,7 +143,7 @@ $('#btnEnviarFormulario').on('click', function(event)
         {
         	if (resp=='3') 
             {
-                swal("Correcto","Supero la cantidad máxima requerida para la partida, Ingrese un valor menor", "error");
+                swal("Error","Supero la cantidad máxima requerida para la partida, Ingrese un valor menor", "error");
             }
         	if (resp=='1') 
             {
