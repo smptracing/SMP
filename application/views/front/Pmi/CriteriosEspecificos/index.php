@@ -56,13 +56,49 @@
 				</tbody>
 			</table>
 		</div>
-		<div class="row" style="text-align: right;">
-			<button type="submit" id="btnEnviarFormulario" class="btn btn-primary">Registrar Criterio Especifico</button>
-			<button class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-		</div>
 </form>
 
 <script>
+$(function()
+	{	
+	$('#form-addCriteriosEspecificos').formValidation(
+		{
+			framework: 'bootstrap',
+			excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+			live: 'enabled',
+			message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+			trigger: null,
+			fields:
+			{
+				txtNombreCriterioEspecifico:
+				{
+					validators: 
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;text-align: center;">El campo "Criterio General" es requerido.</b>'
+						}
+					}
+				},
+				txtpeso:
+				{
+					validators: 
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;text-align: center;">El campo "Peso" es requerido.</b>'
+						},
+						regexp:
+			            {
+			                regexp: /^\d*$/,
+			                message: '<b style="color: red;">El campo "Peso Criterio General" debe ser un número entero.</b>'
+			            }
+					}
+				}
+			}
+		});
+	});
+
 $( document ).ready(function() {
 
     $('#btnAgregarCriterioEspecifico').on('click', function(event)
