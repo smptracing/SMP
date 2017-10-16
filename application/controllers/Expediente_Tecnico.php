@@ -929,34 +929,40 @@ class Expediente_Tecnico extends CI_Controller
 			$cantidad=$this->input->post('txtCantidad');
 			$fechadia=$this->input->post('txtFecha');	
 			$fecha = date('Y-m-d H:i:s');
-			$subtotal = 4;
-			//exit;
-
-			/*$DetallePartida = $this->Model_ET_Detalle_Partida->ETPDetallePartida($idDetallePartida);
+			$DetallePartida = $this->Model_ET_Detalle_Partida->ETPDetallePartida($idDetallePartida);
+			$subtotal = $cantidad * $DetallePartida->precio_unitario;
+			$DetallePartida = $this->Model_DetSegValorizacion->listarValorizacionPorDetallePartida($idDetallePartida);
 			$cantidadTotaldePartidas=0;
-			foreach ($DetallePartida as $key => $value) 
+
+			/*foreach ($DetallePartida as $key => $value) 
 			{
 				$cantidadTotaldePartidas+=$value->cantidad;
 			}
-			echo $cantidadTotaldePartidas;
-			exit;*/
-
-			$data = $this->Model_DetSegValorizacion->insertar($fecha, $cantidad, $subtotal, $fechadia,$idDetallePartida);		
-			if ($data==true) 
+			if ($cantidadTotaldePartidas > $DetallePartida->cantidad) 
 			{
-				echo "1";
-			}	
-			else
-			{
-				echo "0";
+				echo "3";
 			}
+			else
+			{*/
+				$data = $this->Model_DetSegValorizacion->insertar($fecha, $cantidad, $subtotal, $fechadia,$idDetallePartida);		
+				if ($data==true) 
+				{
+					echo "1";
+				}	
+				else
+				{
+					echo "0";
+				}
+
+			//}
 		}
 		else
 		{
 			$fechaActual=date('Y-m-d');
 			$idDetallePartida=$this->input->get('id_DetallePartida');
 			$DetallePartida = $this->Model_ET_Detalle_Partida->ETPDetallePartida($idDetallePartida);
-			$this->load->view('front/Ejecucion/EControlMetrado/valorizacionpartida', ['DetallePartida' => $DetallePartida, 'fecha' => $fechaActual]);
+			$listaValorizacion = $this->Model_DetSegValorizacion->listarValorizacionPorDetallePartida($idDetallePartida);
+			$this->load->view('front/Ejecucion/EControlMetrado/valorizacionpartida', ['DetallePartida' => $DetallePartida, 'fecha' => $fechaActual, 'listaValorizacion' => $listaValorizacion]);
 		}
 		
 	}

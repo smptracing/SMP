@@ -50,6 +50,12 @@
 					</tr>
 				</thead>
 				<tbody>
+				<?php foreach ($listaValorizacion as $key => $value) { ?>
+					<tr>
+						<td><?=(new DateTime($value->fecha_dia))->format('d-m-Y')?></td>
+						<td><?=$value->cantidad?></td>
+					</tr>
+				<?php } ?>
 				</tbody>
 			</table>
 		</div>
@@ -129,6 +135,10 @@ $('#btnEnviarFormulario').on('click', function(event)
 	    },
         success:function(resp)
         {
+        	if (resp=='3') 
+            {
+                swal("Correcto","Supero la cantidad máxima requerida para la partida, Ingrese un valor menor", "error");
+            }
         	if (resp=='1') 
             {
                 swal("Correcto","Se registró correctamente", "success");
@@ -137,7 +147,7 @@ $('#btnEnviarFormulario').on('click', function(event)
             {
                 swal("Error","Ocurrio un error ", "error");
             }
-            window.location.href=base_url+"index.php/Expediente_Tecnico/ControlMetrado/"+<?= $DetallePartida->id_et?>;
+            //window.location.href=base_url+"index.php/Expediente_Tecnico/ControlMetrado/";
         }
     });
   	$('#frmValorizacion')[0].reset();
