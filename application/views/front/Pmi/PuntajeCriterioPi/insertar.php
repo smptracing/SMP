@@ -3,6 +3,7 @@
 			<div class="col-md-12 col-sm-3 col-xs-12">
 				<label class="control-label">Nombre del Proyecto de Inversion </label>
 				<input type="hidden" name="id_funcion" id="id_funcion" value="<?= $id_funcion?>">
+				<input type="hidden" name="anioPriorizacion" id="anioPriorizacion" value="<?= $anio?>">
 				<div>
 					<input type="hidden" id="txtIdPi" name="txtIdPi" value="<?= $listaUnicaProIv->id_pi?>" class="form-control col-md-4 col-xs-12"  placeholder="Nombre del proyecto" autocomplete="off"  type="hidden">	
 					<input id="txtNombreUe" name="txtNombrePi" value="<?= $listaUnicaProIv->nombre_pi?>" class="form-control col-md-4 col-xs-12"  autocomplete="off" readonly="readonly">	
@@ -80,9 +81,11 @@ $(function()
 	{
 		$('#btnGuardarCambios').on('click', function(event)
 		{
-			id_funcion=$('#id_funcion').val();
-			window.location.href=base_url+"index.php/PuntajeCriterioPi/index/"+id_funcion;
+			var id_funcion=$('#id_funcion').val();
+			var anioPriorizacion=$('#anioPriorizacion').val();
+			window.location.href=base_url+"index.php/PuntajeCriterioPi/index/"+id_funcion+'.'+anioPriorizacion;
 			renderLoading();
+			
 		});
 		$('#combocriterioespecif').selectpicker('refresh');
 		$('#combocriteriogeneral').selectpicker('refresh');
