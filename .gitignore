@@ -36,3 +36,4 @@ uploads/ImageExpediente/*.jpg
 uploads/ResolucioExpediente/*.docx
 uploads/ResolucioExpediente/*.pdf
 *.xlsx
+*.php

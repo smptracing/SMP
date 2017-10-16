@@ -71,4 +71,12 @@ class Model_ET_Detalle_Partida extends CI_Model
 
 		return $data->result();
 	}
+
+	function ETPDetallePartida($idDetallePartida)
+	{
+		/*$data=$this->db->query("select et.id_et, p.id_partida,dp.id_detalle_partida, p.desc_partida, dp.precio_unitario,dp.cantidad from ET_PARTIDA p inner join ET_DETALLE_PARTIDA dp on p.id_partida= dp.id_partida inner join ET_META m on p.id_meta=m.id_meta left join ET_COMPONENTE c on m.id_componente=c.id_componente left join ET_EXPEDIENTE_TECNICO et on c.id_et = et.id_et  where dp.id_detalle_partida=$idDetallePartida");*/
+		$data=$this->db->query("select p.id_partida,dp.id_detalle_partida, p.desc_partida, dp.precio_unitario,dp.cantidad from ET_PARTIDA p inner join ET_DETALLE_PARTIDA dp on p.id_partida= dp.id_partida where dp.id_detalle_partida=$idDetallePartida");
+		return $data->result()[0];
+	}
+
 }

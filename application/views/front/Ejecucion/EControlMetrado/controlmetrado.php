@@ -13,18 +13,17 @@ function mostrarAnidado($meta, $expedienteTecnico)
 		'<td></td>';		
 	$htmlTemp.='</tr>';
 	if(count($meta->childMeta)==0)
-	{
-		
+	{		
 		foreach($meta->childPartida as $key => $value)
 		{
 			$htmlTemp.='<tr class="elementoBuscar">'.
 				'<td>'.$value->numeracion.'</td>'.
 				'<td style="text-align: left;">'.html_escape($value->desc_partida).'</td>'.
 				'<td>'.html_escape($value->descripcion).'</td>'.
-				'<td>'.$value->cantidad.'</td>'.
-				'<td>S/.'.$value->precio_unitario.'</td>'.
-				'<td>S/.'.number_format($value->cantidad*$value->precio_unitario, 2).'</td>'.
-				'<td><a role="button" class= "btn btn-info btn-xs" data-toggle="tooltip" title="Agregar"><i class="fa fa-plus"></i> Agregar</a></td>'.
+				'<td style="text-align: right;">'.$value->cantidad.'</td>'.
+				'<td style="text-align: right;">S/.'.$value->precio_unitario.'</td>'.
+				'<td style="text-align: right;">S/.'.number_format($value->cantidad*$value->precio_unitario, 2).'</td>'.
+				'<td style="text-align: center;"><a class= "btn btn-info btn-xs" onclick="valorizar('.$value->childDetallePartida->id_detalle_partida.');"><i class="fa fa-plus"></i> Agregar</a></td>'.
 				'</tr>';
 		}		
 	}
@@ -32,7 +31,6 @@ function mostrarAnidado($meta, $expedienteTecnico)
 	{
 		$htmlTemp.=mostrarAnidado($value, $expedienteTecnico);
 	}
-
 	return $htmlTemp;
 }
 ?>
@@ -118,10 +116,10 @@ function mostrarAnidado($meta, $expedienteTecnico)
 									<th>ÍTEM</th>
 									<th>DESCRIPCIÓN</th>
 									<th>UND.</th>
-									<th>CANT.</th>
-									<th>P.U.</th>
-									<th>TOTAL</th>
-									<th></th>
+									<th style="text-align: right;">CANT.</th>
+									<th style="text-align: right;">P.U.</th>
+									<th style="text-align: right;">TOTAL</th>
+									<th style="text-align: center;"> OPCIONES</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -159,5 +157,9 @@ function mostrarAnidado($meta, $expedienteTecnico)
 		});
 
 	});*/
+	function valorizar(codigo)
+	{
+		paginaAjaxDialogo(null, 'Valorizacion de Partida',{ id_DetallePartida: codigo }, base_url+'index.php/Expediente_Tecnico/AsignarValorizacion', 'GET', null, null, false, true);
+	}
 
 </script>
