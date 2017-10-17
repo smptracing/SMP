@@ -1,6 +1,7 @@
 <?php
 function mostrarAnidado($meta, $expedienteTecnico)
 {
+	$cantidad = 0;
 	$htmlTemp='';
 
 	$htmlTemp.='<tr class="elementoBuscar">'.
@@ -25,24 +26,32 @@ function mostrarAnidado($meta, $expedienteTecnico)
 	{		
 		foreach($meta->childPartida as $key => $value)
 		{
+			$metradoActual = 0;
+			$valorizadoActual=0;
 			$htmlTemp.='<tr class="elementoBuscar">'.
 				'<td>'.$value->numeracion.'</td>'.
 				'<td style="text-align: left;">'.html_escape($value->desc_partida).'</td>'.
 				'<td>'.html_escape($value->descripcion).'</td>'.
 				'<td style="text-align: right;">'.$value->cantidad.'</td>'.
 				'<td style="text-align: right;">S/.'.$value->precio_unitario.'</td>'.
-				'<td style="text-align: right;">S/.'.number_format($value->cantidad*$value->precio_unitario, 2).'</td>'.
-				'<td style="text-align: center;"></td>'.
-				'<td style="text-align: center;"></td>'.
-				'<td style="text-align: center;"></td>'.
-				'<td style="text-align: center;"></td>'.
-				'<td style="text-align: center;"></td>'.
-				'<td style="text-align: center;"></td>'.
-				'<td style="text-align: center;"></td>'.
-				'<td style="text-align: center;"></td>'.
-				'<td style="text-align: center;"></td>'.
-				'<td style="text-align: center;"></td>'.
-				'</tr>';
+				'<td style="text-align: right;">S/.'.number_format($value->cantidad*$value->precio_unitario, 2).'</td>';
+
+				foreach($value->childDetallePartida->childDetSegValorizacion as $index => $item)
+				{
+					if($item->id_detalle_partida==$value->childDetallePartida->id_detalle_partida)
+					{
+						$metradoActual = $item->metrado;
+						$valorizadoActual = $item->valorizado;
+						break;
+					}
+				}
+				$htmlTemp.='<td></td>';
+				$htmlTemp.='<td></td>';
+				$htmlTemp.='<td style="text-align: right;">S/.'.$metradoActual.'</td>';
+				$htmlTemp.='<td style="text-align: right;">S/.'.number_format($valorizadoActual, 2).'</td>';
+
+			$htmlTemp.='</tr>';
+
 		}		
 	}
 	foreach($meta->childMeta as $key => $value)

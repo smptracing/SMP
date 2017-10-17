@@ -995,12 +995,45 @@ class Expediente_Tecnico extends CI_Controller
 
 			foreach($value->childMeta as $index => $item)
 			{
-				$this->obtenerMetaAnidadaParaValorizacion($item);				
+				$this->obtenerMetaAnidadaParaValorizacionFisica($item);				
 			}			
 		}
 		$this->load->view('layout/Ejecucion/header');
 		$this->load->view('front/Ejecucion/EControlMetrado/valorizacionfisica', ['expedienteTecnico' => $expedienteTecnico, 'listaUnidadMedida' => $listaUnidadMedida]);
 		$this->load->view('layout/Ejecucion/footer');
+	}
+	private function obtenerMetaAnidadaParaValorizacionFisica($meta)
+	{
+		$temp=$this->Model_ET_Meta->ETMetaPorIdMetaPadre($meta->id_meta);
+
+		$meta->childMeta=$temp;
+
+		if(count($temp)==0)
+		{
+			$meta->childPartida=$this->Model_ET_Partida->ETPartidaPorIdMeta($meta->id_meta);
+
+
+			foreach($meta->childPartida as $key => $value)
+			{
+				$value->childDetallePartida=$this->Model_ET_Detalle_Partida->ETDetallePartidaPorIdPartidaParaValorizacion($value->id_partida);
+
+				$value->childDetallePartida->childDetSegValorizacion=$this->Model_DetSegOrden->valorizadaActual($value->childDetallePartida->id_detalle_partida);
+				
+				/*$value->childDetallePartida->childDetSegValorizacion=$this->Model_DetSegOrden->listarValorizacionPorDetallePartida($value->childDetallePartida->id_detalle_partida);*/
+
+				/*$value->childDetallePartida=$this->Model_ET_Detalle_Partida->ETDetallePartidaPorIdPartidaParaValorizacion($value->id_partida);
+
+				$value->childDetallePartida->childMesValorizacion=$this->Model_ET_Mes_Valorizacion->ETMesValorizacionPorIdDetallePartida($value->childDetallePartida->id_detalle_partida);*/
+
+			}
+
+			return false;
+		}
+
+		foreach($meta->childMeta as $key => $value)
+		{
+			$this->obtenerMetaAnidadaParaValorizacionFisica($value);
+		}
 	}
 
 

@@ -39,9 +39,16 @@ class Model_DetSegOrden extends CI_Model
 		$data = $this->db->query("select * from DET_SEG_VALORIZACION where id_detalle_partida = $idDetallePartida");
 		return $data->result();
 	}
+
 	public function eliminar($id_detSegValorizacion)
 	{
 		$data = $this->db->query("exec sp_Gestionar_Det_Seg_Valorizacion @Opcion = 'D', @id_det_seg_valorizacion =$id_detSegValorizacion");
 		return true;
+	}
+	public function valorizadaActual($idDetallePartida)
+	{
+		$data= $this->db->query("select Datepart(mm,dv.fecha_dia) as mesActual,dv.id_detalle_partida,sum(dv.cantidad) as metrado, sum(dv.sub_total) as valorizado from DET_SEG_VALORIZACION dv where dv.id_detalle_partida = $idDetallePartida and Datepart(mm,dv.fecha_dia)= '10' group by Datepart(mm,dv.fecha_dia),dv.id_detalle_partida ");
+		return $data->result();
+
 	}
 }
