@@ -121,6 +121,10 @@
 	                        		<a role="menuitem" tabindex="-1" href="<?= site_url('Expediente_Tecnico/ControlMetrado/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target='_blank'); return false;">Valorizacion
 		                        	</a>
 		                        </li>
+		                        <li role="presentation">
+	                        		<a role="menuitem" tabindex="-1" href="<?= site_url('Expediente_Tecnico/ValorizacionFisicaMetrado/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target='_blank'); return false;">Valorizacion Fisica de obra de Mmayores Metrados
+		                        	</a>
+		                        </li>
                       		</ul>
                     	</li><li role="presentation" class="dropdown">
                       		<a id="drop7" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"> Detalle Expendiente <span class="caret"></span>

@@ -30,6 +30,12 @@ function mostrarAnidado($meta, $expedienteTecnico)
 			$valorizadoActual=0;
 			$metradoAnterior = 0;
 			$valorizadoAnterior =0;
+			$metradoAcumulado = 0;
+			$valorizadoAcumulado = 0;
+			$porcentajeAcumulado = 0;
+			$metradoSaldo = 0;
+			$valorizadoSaldo = 0;
+			$porcentajeSaldo = 0;
 			$htmlTemp.='<tr class="elementoBuscar">'.
 				'<td>'.$value->numeracion.'</td>'.
 				'<td style="text-align: left;">'.html_escape($value->desc_partida).'</td>'.
@@ -58,11 +64,23 @@ function mostrarAnidado($meta, $expedienteTecnico)
 					}
 				}
 
+				$metradoAcumulado= $metradoAnterior + $metradoActual;
+				$valorizadoAcumulado=$valorizadoAnterior + $valorizadoActual;
+				$porcentajeAcumulado = (100 * $metradoAcumulado)/($value->cantidad);
+				$metradoSaldo = $value->cantidad - $metradoAcumulado;
+				$valorizadoSaldo = ($value->cantidad*$value->precio_unitario) - $valorizadoAcumulado;
+				$porcentajeSaldo = 100 - $porcentajeAcumulado;
 
 				$htmlTemp.='<td style="text-align: right;">'.number_format($metradoAnterior, 2).'</td>';
 				$htmlTemp.='<td style="text-align: right;">S/.'.number_format($valorizadoAnterior, 2).'</td>';
 				$htmlTemp.='<td style="text-align: right;">'.number_format($metradoActual, 2).'</td>';
 				$htmlTemp.='<td style="text-align: right;">S/.'.number_format($valorizadoActual, 2).'</td>';
+				$htmlTemp.='<td style="text-align: right;">'.number_format($metradoAcumulado, 2).'</td>';
+				$htmlTemp.='<td style="text-align: right;">S/. '.number_format($valorizadoAcumulado, 2).'</td>';
+				$htmlTemp.='<td style="text-align: right;">'.number_format($porcentajeAcumulado, 2).'% </td>';
+				$htmlTemp.='<td style="text-align: right;">'.number_format($metradoSaldo, 2).'</td>';
+				$htmlTemp.='<td style="text-align: right;">S/. '.number_format($valorizadoSaldo, 2).'</td>';
+				$htmlTemp.='<td style="text-align: right;">'.number_format($porcentajeSaldo, 2).'% </td>';
 
 			$htmlTemp.='</tr>';
 
@@ -91,6 +109,10 @@ function mostrarAnidado($meta, $expedienteTecnico)
 	{
 		text-align: center;
 	}
+	#tableValorizacion
+	{
+		color: #001f3f;
+	}
 
 	#tableValorizacion td, #tableValorizacion th
 	{
@@ -102,7 +124,7 @@ function mostrarAnidado($meta, $expedienteTecnico)
 	}
 	#tableValorizacionResumen td, #tableValorizacionResumen th
 	{
-		border: 1px solid #999999;
+		border: 1px solid #001f3f;
 		font-size: 10px;
 		padding: 4px;
 		text-align: left;
@@ -150,65 +172,67 @@ function mostrarAnidado($meta, $expedienteTecnico)
                     		</div>
                     	</div>
 						<div class="col-md-12 col-sm-12 col-xs-12" style="font-size: 12px;">
-							<table id="tableValorizacion"  >
-							<thead>
-								<tr>
-									<th>PROY:</th>
-									<th><?=trim($expedienteTecnico->nombre_pi)?></th>
-									<th rowspan="3">UNIDAD</th>
-									<th rowspan="2" colspan="3" >PRESUPUESTO</th>
-									<th colspan="7">AVANCES</th>
-									<th colspan="3" rowspan="2">SALDO</th>
-								</tr>
-								<tr>
-									<th rowspan="2">ÍTEM</th>
-									<th rowspan="2">DESCRIPCIÓN</th>
-									<th colspan="2">ANTERIOR</th>
-									<th colspan="2">ACTUAL</th>
-									<th colspan="3">ACUMULADO</th>
-								</tr>
-								<tr>
-									<th>Metrado</th>
-									<th>P.Unit. S/.</th>
-									<th>Pres.</th>
-									<th>Metrado</th>
-									<th>Valorizado S/.</th>
-									<th>Metrado</th>
-									<th>Valorizado S/.</th>
-									<th>Metrado</th>
-									<th>Valorizado S/.</th>
-									<th>%</th>
-									<th>Metrado</th>
-									<th>Valorizado S/.</th>
-									<th>%</th>
-								</tr>
-							</thead>
-							<tbody>
-								<?php foreach($expedienteTecnico->childComponente as $key => $value){ ?>
-									<tr class="elementoBuscar">
-										<td><b><i><?=$value->numeracion?></i></b></td>
-										<td style="text-align: left;"><b><i><?=html_escape($value->descripcion)?></i></b></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
+							<div class="row" style="overflow-y: scroll;overflow-x: scroll;">
+								<table id="tableValorizacion"  >
+								<thead>
+									<tr>
+										<th>PROY:</th>
+										<th><?=trim($expedienteTecnico->nombre_pi)?></th>
+										<th rowspan="3">UNIDAD</th>
+										<th rowspan="2" colspan="3" >PRESUPUESTO</th>
+										<th colspan="7">AVANCES</th>
+										<th colspan="3" rowspan="2">SALDO</th>
 									</tr>
-									<?php foreach($value->childMeta as $index => $item){ ?>
-										<?= mostrarAnidado($item, $expedienteTecnico)?>
+									<tr>
+										<th rowspan="2">ÍTEM</th>
+										<th style="width: 400px;"; rowspan="2">DESCRIPCIÓN</th>
+										<th colspan="2">ANTERIOR</th>
+										<th colspan="2">ACTUAL</th>
+										<th colspan="3">ACUMULADO</th>
+									</tr>
+									<tr>
+										<th>Metrado</th>
+										<th>P.Unit. S/.</th>
+										<th>Pres.</th>
+										<th>Metrado</th>
+										<th>Valorizado S/.</th>
+										<th>Metrado</th>
+										<th>Valorizado S/.</th>
+										<th>Metrado</th>
+										<th>Valorizado S/.</th>
+										<th>%</th>
+										<th>Metrado</th>
+										<th>Valorizado S/.</th>
+										<th>%</th>
+									</tr>
+								</thead>
+								<tbody>
+									<?php foreach($expedienteTecnico->childComponente as $key => $value){ ?>
+										<tr class="elementoBuscar">
+											<td><b><i><?=$value->numeracion?></i></b></td>
+											<td style="text-align: left;"><b><i><?=html_escape($value->descripcion)?></i></b></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+										</tr>
+										<?php foreach($value->childMeta as $index => $item){ ?>
+											<?= mostrarAnidado($item, $expedienteTecnico)?>
+										<?php } ?>
 									<?php } ?>
-								<?php } ?>
-							</tbody>
-						</table>
+								</tbody>
+							</table>
+						</div>
 						</div>
 					</div>
                 </div>

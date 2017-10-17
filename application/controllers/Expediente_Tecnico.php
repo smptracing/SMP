@@ -1040,17 +1040,23 @@ class Expediente_Tecnico extends CI_Controller
 
 			foreach($meta->childPartida as $key => $value)
 			{
+				$fechaActual = date('Y-m-d');
+				$mesActual=   date('m');
+				$fechaMesPasado = strtotime ('-1 month', strtotime($fechaActual));
+				$mesPasado = date("m", $fechaMesPasado); 
+
+				/*echo "Fecha Actual : ".$fechaActual;
+				echo "mes Actual : ".$mesActual;
+				echo "Fecha Pasaso : ".$fechaMesPasado;
+				echo "mes Pasado : ".$mesPasado;
+
+				exit;*/
+
 				$value->childDetallePartida=$this->Model_ET_Detalle_Partida->ETDetallePartidaPorIdPartidaParaValorizacion($value->id_partida);
 
-				$value->childDetallePartida->childDetSegValorizacion=$this->Model_DetSegOrden->valorizadaActual($value->childDetallePartida->id_detalle_partida);
+				$value->childDetallePartida->childDetSegValorizacion=$this->Model_DetSegOrden->valorizadaActual($value->childDetallePartida->id_detalle_partida, $mesActual);
 
-				$value->childDetallePartida->childDetSegValorizacionAnterior=$this->Model_DetSegOrden->valorizadoAnterior($value->childDetallePartida->id_detalle_partida);
-				
-				/*$value->childDetallePartida->childDetSegValorizacion=$this->Model_DetSegOrden->listarValorizacionPorDetallePartida($value->childDetallePartida->id_detalle_partida);*/
-
-				/*$value->childDetallePartida=$this->Model_ET_Detalle_Partida->ETDetallePartidaPorIdPartidaParaValorizacion($value->id_partida);
-
-				$value->childDetallePartida->childMesValorizacion=$this->Model_ET_Mes_Valorizacion->ETMesValorizacionPorIdDetallePartida($value->childDetallePartida->id_detalle_partida);*/
+				$value->childDetallePartida->childDetSegValorizacionAnterior=$this->Model_DetSegOrden->valorizadoAnterior($value->childDetallePartida->id_detalle_partida, $mesPasado);
 
 			}
 
