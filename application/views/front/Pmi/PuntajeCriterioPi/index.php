@@ -18,7 +18,7 @@
 											<div class="col-md-3 col-xs-3"  style="margin-left: 100px;">
 												<div class="form-group">
 									                <div class="input-group"><br/>
-														<label class="control-label">ANIO</label>
+														<label class="control-label">AÑO</label>
 														<select  id="comboanio" name="comboanio" class="form-control col-md-2 col-xs-2">
 														</select>
 									                </div>
@@ -75,7 +75,7 @@
 																<?=$item->anio_criterio_gen ?>
 													    	</td>
 													    	<td>
-															<button type="button" class="btn btn-success btn-xs " onclick="paginaAjaxDialogo(null, 'Asignar Prioridad', {id_pi:<?=$item->id_pi?>,id_funcion:<?=$id_funcion?>}, base_url+'index.php/PuntajeCriterioPi/insertar', 'GET', null, null, false, true);"><span class="fa fa-bars"></span>
+															<button type="button" class="btn btn-success btn-xs " onclick="paginaAjaxDialogo(null, 'Asignar Prioridad', {id_pi:<?=$item->id_pi?>,id_funcion:<?=$id_funcion?>,anioActualPriorizacion:<?= $anioActual?>}, base_url+'index.php/PuntajeCriterioPi/insertar', 'GET', null, null, false, true);"><span class="fa fa-bars"></span>
 															</button>
 															<!--<button type="button" class="btn btn-success btn-xs " onclick="ReporteCriteriosPorPip(<?=$item->id_funcion?>,<?=$item->anio_criterio_gen?>);"><i class="fa fa-file-pdf-o"></i>
 															</button>-->

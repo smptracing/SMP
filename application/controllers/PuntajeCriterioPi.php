@@ -44,6 +44,8 @@ class PuntajeCriterioPi extends CI_Controller {/* Mantenimiento de sector entida
 	{
 		if($_POST)
 		{
+			
+
 			$txtIdPi=$this->input->post('txtIdPi');	
 
 			$sumaPesoTotalGeberalCriterio=$this->input->post('sumaPesoTotalGeberal');
@@ -59,7 +61,9 @@ class PuntajeCriterioPi extends CI_Controller {/* Mantenimiento de sector entida
 			$fechaA=date("Y-m-d");
 			$cadena=explode('-', $fechaA);
 			$anio=$cadena[0];
-			$contarCriterioNoInse=count($combocriterioespecif);
+			//$contarCriterioNoInse=count($combocriterioespecif);
+			$contadorRegistro=0;
+			$contadorNoRegistro=0;
                 for($i=0;$i<count($combocriterioespecif);$i++){
 
                 	if(count($this->Model_PuntajeCriterioPi->contarRegistrosDeUnCriterio($combocriterioespecif[$i],$anio,$txtIdPi))==0)
@@ -73,26 +77,25 @@ class PuntajeCriterioPi extends CI_Controller {/* Mantenimiento de sector entida
 	                	$resuPuntajeCriterio=(int)$CriterioEspecifico->peso*round($puntajeFinal,2);
 
 	                	$this->Model_PuntajeCriterioPi->insertar(round($resuPuntajeCriterio,0),$anio,$txtIdPi,$CriterioEspecifico->id_criterio);
+	                	$contadorRegistro =(int)$contadorRegistro +1;
                 	}else{
-                		$contarCriterioNoInse =(int)$contarCriterioNoInse -1;
+
+                		$contadorNoRegistro =(int)$contadorNoRegistro +1;
                 	}
                 	
 
                 }
 
             $listarPuntajeCriterioPip=$this->Model_PuntajeCriterioPi->listarPuntajePip($txtIdPi);
-			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Total Datos a Registra: '.count($combocriterioespecif).'.Registrados: '.$contarCriterioNoInse.' No pude haber Criterios Especificos Repetidos.', 'listarPuntajeCriterioPip' => $listarPuntajeCriterioPip]);exit;
+			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Total Datos a Registra: '.count($combocriterioespecif).'.Registrados: '.$contadorRegistro.' No Registrados '.$contadorNoRegistro.' Por ser Repetidos los  Criterios Especificos.', 'listarPuntajeCriterioPip' => $listarPuntajeCriterioPip]);exit;
 
 		}
 
-		$fechaA=date("Y-m-d");
-		$cadena=explode('-', $fechaA);
-		$anio=$cadena[0];
+		$anio=$this->input->Get('anioActualPriorizacion');
 
 		$id_funcion=$this->input->Get('id_funcion');
 		$id_pi=$this->input->Get('id_pi');
 
-		$anio=$cadena[0];
 		$listaCritetioGeneral=$this->Model_CriterioGeneral->ListarCriterioGenerales($id_funcion,$anio);
 		$sumaPesoTotalGeberal=0;
 		foreach ($listaCritetioGeneral as  $value) {

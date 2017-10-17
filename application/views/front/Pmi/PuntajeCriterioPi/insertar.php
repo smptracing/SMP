@@ -3,11 +3,18 @@
 			<div class="col-md-12 col-sm-3 col-xs-12">
 				<label class="control-label">Nombre del Proyecto de Inversion </label>
 				<input type="hidden" name="id_funcion" id="id_funcion" value="<?= $id_funcion?>">
-				<input type="hidden" name="anioPriorizacion" id="anioPriorizacion" value="<?= $anio?>">
 				<div>
 					<input type="hidden" id="txtIdPi" name="txtIdPi" value="<?= $listaUnicaProIv->id_pi?>" class="form-control col-md-4 col-xs-12"  placeholder="Nombre del proyecto" autocomplete="off"  type="hidden">	
 					<input id="txtNombreUe" name="txtNombrePi" value="<?= $listaUnicaProIv->nombre_pi?>" class="form-control col-md-4 col-xs-12"  autocomplete="off" readonly="readonly">	
 				</div>	
+			</div>
+		</div><br/>
+		<div class="row">
+			<div class="col-md-3 col-sm-3 col-xs-12">
+					<label class="control-label">Año</label>
+			</div>
+			<div class="col-md-3 col-sm-3 col-xs-12">
+					<input style="margin-left: -120px;" type="text" class=" form-control " name="anioPriorizacion" id="anioPriorizacion" value="<?= $anio?>" readonly>
 			</div>
 		</div><br/>
 		<div class="row">
