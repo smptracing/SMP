@@ -65,7 +65,7 @@
 								<td><?= $itemp->nombre_criterio ?></td>
 	                    		<td><?= $itemp->puntaje_criterio ?></td>
 	                    		<td>
-	                    			<button type="button" class="btn btn-danger btn-xs " onclick="eliminarPuntaje(<?=$itemp->id_ptje_criterio?>,<?=$itemp->id_pi?>)"><span class="fa fa-trash"></span></button>
+	                    			<button type="button" class="btn btn-danger btn-xs " onclick="eliminarPuntaje(<?=$itemp->id_ptje_criterio?>,<?=$itemp->id_pi?>,<?= $itemp->anio_ptje_criterio ?>)"><span class="fa fa-trash"></span></button>
 	                    		</td>
 	                    	</tr>
 						<?php } ?>
@@ -200,7 +200,7 @@ $(function()
                     	   	 html +='<tr>';
 	                    		html +='<td>'+element.nombre_criterio+'</td>';
 	                    		html +='<td>'+element.puntaje_criterio+'</td>';
-	                    		html +='<td><button type="button" class="btn btn-danger btn-xs " onclick="eliminarPuntaje('+element.id_ptje_criterio+','+element.id_pi+')"><span class="fa fa-trash"></span></button> </td>';
+	                    		html +='<td><button type="button" class="btn btn-danger btn-xs " onclick="eliminarPuntaje('+element.id_ptje_criterio+','+element.id_pi+','+element.anio_ptje_criterio+')"><span class="fa fa-trash"></span></button> </td>';
                     		html +='</tr>';
                     	});
                     	html +='<tr><td> </td>';
@@ -214,10 +214,10 @@ $(function()
 	});
 
 });
-function eliminarPuntaje(id_ptje_criterio,id_pi)
+function eliminarPuntaje(id_ptje_criterio,id_pi,anio)
 	{
 		event.preventDefault();
-		paginaAjaxJSON({ "id_ptje_criterio" : id_ptje_criterio,"id_pi" : id_pi}, '<?=base_url();?>index.php/PuntajeCriterioPi/eliminarPuntajecriterio', 'POST', null, function(objectJSON)
+		paginaAjaxJSON({ "id_ptje_criterio" : id_ptje_criterio,"id_pi" : id_pi,"anio" : anio}, '<?=base_url();?>index.php/PuntajeCriterioPi/eliminarPuntajecriterio', 'POST', null, function(objectJSON)
 		{
 			//$('#modalTemp').modal('hide');
 			objectJSON=JSON.parse(objectJSON);
@@ -240,7 +240,7 @@ function eliminarPuntaje(id_ptje_criterio,id_pi)
                     	   	 html +='<tr>';
 	                    		html +='<td>'+element.nombre_criterio+'</td>';
 	                    		html +='<td>'+element.puntaje_criterio+'</td>';
-	                    		html +='<td><button type="button" class="btn btn-danger btn-xs " onclick="eliminarPuntaje('+element.id_ptje_criterio+','+element.id_pi+')"><span class="fa fa-trash"></span></button> </td>';
+	                    		html +='<td><button type="button" class="btn btn-danger btn-xs " onclick="eliminarPuntaje('+element.id_ptje_criterio+','+element.id_pi+','+element.anio_ptje_criterio+')"><span class="fa fa-trash"></span></button> </td>';
                     		html +='</tr>';
                     	});
                     	html +='<tr><td> </td>';
