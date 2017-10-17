@@ -47,7 +47,7 @@ function mostrarAnidado($meta, $expedienteTecnico)
 				}
 				$htmlTemp.='<td></td>';
 				$htmlTemp.='<td></td>';
-				$htmlTemp.='<td style="text-align: right;">S/.'.$metradoActual.'</td>';
+				$htmlTemp.='<td style="text-align: right;">'.number_format($metradoActual, 2).'</td>';
 				$htmlTemp.='<td style="text-align: right;">S/.'.number_format($valorizadoActual, 2).'</td>';
 
 			$htmlTemp.='</tr>';

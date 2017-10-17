@@ -240,6 +240,11 @@ class Model_ET_Expediente_Tecnico extends CI_Model
     	return true;
 
     }
+     public function PeriodoEjecucion($fechaInicio, $fechaFin, $id_et)
+    {
+    	$this->db->query("update ET_EXPEDIENTE_TECNICO set fecha_inicio_et = '$fechaInicio', fecha_fin_et = '$fechaFin' where id_et = $id_et");
+    	return true;
+    }
 
     public function EditarResponsableEjecucion($id_tipo_responsableEjecucion,$comboCargoEjecucion,$ComboResponsableEjecucion)
     {

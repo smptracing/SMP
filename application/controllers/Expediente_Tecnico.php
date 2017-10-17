@@ -851,6 +851,31 @@ class Expediente_Tecnico extends CI_Controller
 		$this->load->view('front/Ejecucion/ExpedienteTecnico/verdetalle', [ 'ExpedienteTecnicoElaboracion' => $ExpedienteTecnicoElaboracion ]);
 		$this->load->view('layout/Ejecucion/footer');
 	}
+	public function PeriodoEjecucion()
+	{
+		if ($_POST) 
+		{
+			$id_et=$this->input->post('hdIdEt');
+			$fechaInicio=$this->input->post('txtFechaInicio');
+			$fechaFin=$this->input->post('txtFechaFin');
+			$data=$this->Model_ET_Expediente_Tecnico->PeriodoEjecucion($fechaInicio, $fechaFin, $id_et);
+			if ($data==true) 
+			{
+				echo "1";
+			}	
+			else
+			{
+				echo "0";
+			}
+		}
+		else
+		{
+			$id_et=$this->input->get('id_et');
+			$expedienteTecnico = $this->Model_ET_Expediente_Tecnico->ExpedienteTecnico($id_et);
+			$this->load->view('front/Ejecucion/ExpedienteTecnico/periododeejecucion',['ExpedienteTecnico' => $expedienteTecnico ]);
+		}
+
+	}
 	public function ListarPartida($id_et)
 	{
 		$listaPartida = $this->Model_ET_Expediente_Tecnico->listarPartidaporEt($id_et);

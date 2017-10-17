@@ -70,6 +70,11 @@
 	                        		<a role="menuitem" tabindex="-1" class='eliminarExpediente' href="#" onclick="Eliminar(<?=$ExpedienteTecnicoElaboracion[0]->id_et?>);return false;"> Eliminar Expediente Técnico 	
 		                        	</a>
 		                        </li>
+		                        <li role="presentation">
+		                        	<a role="menuitem" tabindex="-1" href="#" onclick="paginaAjaxDialogo(null, 'Agregar Periodo de Ejecucion',{ id_et: '<?=$ExpedienteTecnicoElaboracion[0]->id_et?>' }, base_url+'index.php/Expediente_Tecnico/PeriodoEjecucion', 'GET', null, null, false, true);return false;">Agregar Periodo de Ejecución	
+		                        	</a> 
+	                        	</li>
+
                     		</ul>
                     	</li><li role="presentation" class="dropdown">
                       		<a id="drop5" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"> Mantenimiento<span class="caret"></span>
