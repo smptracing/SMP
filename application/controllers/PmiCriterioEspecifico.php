@@ -67,11 +67,22 @@ class PmiCriterioEspecifico extends CI_Controller {
     {
         if($_POST)
 		{
-            $id=$this->input->post('id_criterio');
-            $this->Model_CriterioEspecifico->eliminar($id);
-            $id_criterio_gen=$this->input->post('id_criterio_gen');
-            $listaCriteriosEspecificos=$this->Model_CriterioEspecifico->ListarCriterioEspecifico($id_criterio_gen);
-            echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos actualizados correctamente.','listaCriteriosEspecificos'=>$listaCriteriosEspecificos]);exit;  
+			 $id=$this->input->post('id_criterio');
+			 $id_criterio_gen=$this->input->post('id_criterio_gen');
+			 $listaCriteriosEspecificos=$this->Model_CriterioEspecifico->ListarCriterioEspecifico($id_criterio_gen);
+
+			if(count($this->Model_CriterioEspecifico->validarAsociacionProyecto($id))>0)
+			{
+				   
+	            echo json_encode(['proceso' => 'Error', 'mensaje' => 'No es posible Eliminar, se encuentra asociado a un proyecto.','listaCriteriosEspecificos'=>$listaCriteriosEspecificos]);exit;  
+
+			}else{
+	            $this->Model_CriterioEspecifico->eliminar($id);
+	            echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Registro Eliminado.','listaCriteriosEspecificos'=>$listaCriteriosEspecificos]);exit;  
+
+			}
+
+	         
     	} 
     } 
     function listarCriterioEspecificos()

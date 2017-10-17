@@ -117,13 +117,9 @@ $( document ).ready(function() {
 		{
 			objectJSON=JSON.parse(objectJSON);
 		swal({
-				title: "Esta seguro que desea eliminar el presupuesto de ejecucion?",
-				text: "",
-				type: "warning",
-				showCancelButton: true,
-				confirmButtonColor: "#DD6B55",
-				confirmButtonText: "SI,Eliminar",
-				closeOnConfirm: false
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
 			},
 			
 			function()
@@ -138,7 +134,7 @@ $( document ).ready(function() {
                     		html +='<td>'+element.nombre_criterio+'</td>';
                     		html +='<td>'+element.peso+'</td>';
                     		html +='<td>'+element.porcentaje+'</td>';
-                    		html +='<td>';
+                    		html +='<td><button type="button" class="btn btn-primary btn-xs " onclick="EditarCriterioEspecifico('+element.id_criterio+')"><span class="fa fa-plus-circle"></span></button>';
                     		html +='<button onclick="Eliminar('+element.id_criterio+','+element.id_criterio_gen+');" data-toggle="tooltip" data-original-title="Eliminar Criterio Específico"   class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>';
                     		html +='</td>';
                     		html +='</tr>';

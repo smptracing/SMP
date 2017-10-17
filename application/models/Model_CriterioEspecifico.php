@@ -67,4 +67,12 @@ class Model_CriterioEspecifico extends CI_Model
 
     }
 
+    function validarAsociacionProyecto($id_criterio)
+    {
+       
+        $data=$this->db->query(" select * from PUNTAJE_CRITERIO_PI where id_criterio='$id_criterio'");
+        return $data->result();
+
+    }
+
 }
