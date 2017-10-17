@@ -16,9 +16,7 @@ class Model_criterioGeneral extends CI_Model
 	}
 	function CriteriosGeneralesPorFuncion($anio)
 	{
-		$data=$this->db->query("select CRITERIO_GEN.anio_criterio_gen,FUNCION.id_funcion,codigo_funcion,nombre_funcion,COUNT(nombre_criterio_gen) AS CantCriteriosG 
-							FROM CRITERIO_GEN INNER JOIN FUNCION ON CRITERIO_GEN.id_funcion=FUNCION.id_funcion where CRITERIO_GEN.anio_criterio_gen='".$anio."'
-							group by nombre_funcion,FUNCION.id_funcion,codigo_funcion,anio_criterio_gen ");
+		$data=$this->db->query("select * from FUNCION");
 
 		return $data->result();
 	}
@@ -66,9 +64,9 @@ class Model_criterioGeneral extends CI_Model
         return $funcion->result();
 	}
 
-	function CriterioGeneralData($txtNombreCriterio)
+	function CriterioGeneralData($txtNombreCriterio,$txtAnioCriterioG)
     {
-        $data=$this->db->query("select * from CRITERIO_GEN where replace(nombre_criterio_gen, ' ', '')=replace('".$txtNombreCriterio."', ' ', '')");
+        $data=$this->db->query("select * from CRITERIO_GEN where CRITERIO_GEN.nombre_criterio_gen='$txtNombreCriterio' and  CRITERIO_GEN.anio_criterio_gen='$txtAnioCriterioG'");
 
         return $data->result();
     }

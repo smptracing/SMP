@@ -115,13 +115,14 @@
 																<?=$item->nombre_funcion?>
 													    	</td>
 													    	<td>
-																<?=$item->CantCriteriosG?>
+																
+                               							 <?= 0 ?>
 													    	</td>
 													    	<td style="text-align: left;">
 													    		
-																<button type="button" class="btn btn-primary btn-xs " onclick="paginaAjaxDialogo(null, 'Registro Criterio Generales', { id_funcion:'<?=$item->id_funcion?>', nombre_funcion:'<?=$item->nombre_funcion?>',anio:'<?= $anio;?>' }, base_url+'index.php/PmiCriterioG/insertar', 'GET', null, null, false, true);"><span class="fa fa-plus-circle"></span>
+																<button type="button" class="btn btn-info btn-xs " data-placement="top" data-toggle="tooltip" data-original-title="Agregar criterios Generales" onclick="paginaAjaxDialogo(null, 'Registro Criterio Generales', { id_funcion:'<?=$item->id_funcion?>', nombre_funcion:'<?=$item->nombre_funcion?>',anio:'<?= $anio;?>' }, base_url+'index.php/PmiCriterioG/insertar', 'GET', null, null, false, true);"><span class="fa fa-th-list"></span>
 																</button>
-																<button type="button" class="btn btn-success btn-xs " onclick="ReporteCriteriosGenerales(<?=$item->id_funcion?>,<?=$item->anio_criterio_gen?>);"><i class="fa fa-file-pdf-o"></i>
+																<button type="button" class="btn btn-success btn-xs " data-placement="top" data-toggle="tooltip" data-original-title="Reporte De Criterios Generales y Especificos" onclick="ReporteCriteriosGenerales(<?=$item->id_funcion?>,<?= $anio;?>);"><i class="fa fa-file-pdf-o"></i>
 																</button>
 													    	</td>
 													  </tr>
