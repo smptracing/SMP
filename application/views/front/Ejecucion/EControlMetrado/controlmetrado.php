@@ -35,48 +35,15 @@ function mostrarAnidado($meta, $expedienteTecnico)
 }
 ?>
 <style>
-.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
-	padding:6px;
-}
-.btn, .buttons, .modal-footer .btn+.btn, button {
-    margin-bottom: 0px;
-    margin-right: 5px;
-}
-	/*#tableValorizacion td input[type="text"]
+	.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th 
 	{
-		text-align: center;
+		padding:6px;
 	}
-
-	#tableValorizacion td, #tableValorizacion th
+	.btn, .buttons, .modal-footer .btn+.btn, button 
 	{
-		border: 1px solid #999999;
-		font-size: 10px;
-		padding: 4px;
-		text-align: center;
-		vertical-align: middle;
+	    margin-bottom: 0px;
+	    margin-right: 5px;
 	}
-	#tableValorizacionResumen td, #tableValorizacionResumen th
-	{
-		border: 1px solid #999999;
-		font-size: 10px;
-		padding: 4px;
-		text-align: left;
-		vertical-align: middle;
-	}
-	
-
-	.spanMontoValorizacion
-	{
-		cursor: pointer;
-	}
-
-	.spanMontoValorizacion:hover
-	{
-		text-decoration: underline;
-	}
-	.espacio{
-		height: 20px;
-	}*/
 </style>
 <div class="right_col" role="main">
 	<div>
@@ -107,11 +74,6 @@ function mostrarAnidado($meta, $expedienteTecnico)
 						<div class="col-md-12 col-sm-12 col-xs-12" style="font-size: 12px;">
 							<table id="tableValorizacion" class="table table-striped jambo_table bulk_action  table-hover" >
 							<thead>
-								<!--<tr>
-									<th>PROY:</th>
-									<th colspan="5"><?=html_escape($expedienteTecnico->nombre_pi)?></th>
-									<th>OPERACIONES</th>
-								</tr>-->
 								<tr>
 									<th>ÍTEM</th>
 									<th>DESCRIPCIÓN</th>

@@ -969,4 +969,19 @@ class Expediente_Tecnico extends CI_Controller
 		}
 		
 	}
+	public function eliminarValorizacionPartida()
+	{
+		$id_detSegValorizacion =$this->input->get('idDetSegValorizacion');
+		$data = $this->Model_DetSegOrden->eliminar($id_detSegValorizacion);
+		if ($data==true) 
+		{
+			echo "1";
+		}	
+		else
+		{
+			echo "0";
+		}
+	}
+
+
 }

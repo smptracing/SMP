@@ -52,7 +52,8 @@
 				<thead>
 					<tr>
 						<th style="width: 5%" class="col-md-1 col-xs-12">Fecha</th>
-						<th style="width: 30%" class="col-md-2 col-xs-12">Cantidad</th>						
+						<th style="width: 30%" class="col-md-2 col-xs-12">Cantidad</th>	
+						<th style="width: 3%" class="col-md-2 col-xs-12">Opciones</th>							
 					</tr>
 				</thead>
 				<tbody>
@@ -60,6 +61,7 @@
 					<tr>
 						<td><?=(new DateTime($value->fecha_dia))->format('d-m-Y')?></td>
 						<td><?=$value->cantidad?></td>
+						<td><button type="button" class="btn btn-danger btn-xs" onclick="eliminar('<?=$value->id_det_seg_valorizacion?>');"><i class="fa fa-trash-o"></i> Eliminar</button></td>
 					</tr>
 				<?php } ?>
 				</tbody>
@@ -156,9 +158,45 @@ $('#btnEnviarFormulario').on('click', function(event)
             paginaAjaxDialogo(null, 'Valorizacion de Partida',{ id_DetallePartida: <?=$DetallePartida->id_detalle_partida?> }, base_url+'index.php/Expediente_Tecnico/AsignarValorizacion', 'GET', null, null, false, true);
   			$('#frmValorizacion')[0].reset();
         }
-    });
-   
-
+    });  
 });
+function eliminar(codigo)
+{
+	swal(
+        {
+            title: "Confirmación",
+            text: "Realmente desea realizar esta operación",
+            type: "info",
+            showCancelButton: true,
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: "Consentir proceso",
+            cancelButtonText: "Cancelar",
+            closeOnConfirm: false
+        },
+        function(isConfirm)
+        {
+            if(isConfirm)
+            {
+                $.ajax({
+			        type:"GET",
+			        url:base_url+"index.php/Expediente_Tecnico/eliminarValorizacionPartida",
+			        data: {idDetSegValorizacion : codigo},
+			        cache: false,
+			        success:function(resp)
+			        {
+			        	if (resp=='1') 
+			            {
+			                swal("Correcto","El registro se eliminó correctamente", "success");
+			            }
+			            else
+			            {
+			                swal("Error","Ocurrio un error ", "error");
+			            }
+			            paginaAjaxDialogo(null, 'Valorizacion de Partida',{ id_DetallePartida: <?=$DetallePartida->id_detalle_partida?> }, base_url+'index.php/Expediente_Tecnico/AsignarValorizacion', 'GET', null, null, false, true);
+			        }
+			    }); 
+            }
+        });
+}
 </script>
 
