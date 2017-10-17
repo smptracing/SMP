@@ -55,10 +55,10 @@ GROUP BY PRV.id_pi,PRV.codigo_unico_pi,PRV.nombre_pi,FUNCION.id_funcion,FUNCION.
         $data=$this->db->query("insert into PUNTAJE_CRITERIO_PI(puntaje_criterio,anio_ptje_criterio,id_pi,id_criterio) values ($resuPuntajeCriterio,$anio,$txtIdPi,$id_criterio)");
         return true;
     }
-    function listarPuntajePip($txtIdPi)
+    function listarPuntajePip($txtIdPi,$anio)
     {
         $data=$this->db->query("select * from PUNTAJE_CRITERIO_PI inner join  CRITERIO_ESP on  
-        PUNTAJE_CRITERIO_PI.id_criterio=CRITERIO_ESP.id_criterio  where id_pi='".$txtIdPi."' ");
+        PUNTAJE_CRITERIO_PI.id_criterio=CRITERIO_ESP.id_criterio  where id_pi='".$txtIdPi."' and anio_ptje_criterio='".$anio."' ");
 
         return $data->result();
     }
