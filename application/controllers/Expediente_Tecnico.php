@@ -1042,21 +1042,17 @@ class Expediente_Tecnico extends CI_Controller
 			{
 				$fechaActual = date('Y-m-d');
 				$mesActual=   date('m');
-				$fechaMesPasado = strtotime ('-1 month', strtotime($fechaActual));
-				$mesPasado = date("m", $fechaMesPasado); 
+				//$fechaMesPasado = date('Y-m-d', strtotime('-1 month')) ;
+				//$mesPasado = date("m", strtotime('-1 month')); 
 
-				/*echo "Fecha Actual : ".$fechaActual;
-				echo "mes Actual : ".$mesActual;
-				echo "Fecha Pasaso : ".$fechaMesPasado;
-				echo "mes Pasado : ".$mesPasado;
-
-				exit;*/
+				$ultimaFechaMesPasado = new DateTime($fechaActual);
+				$ultimaFechaMesPasado->modify('last day of previous month');
 
 				$value->childDetallePartida=$this->Model_ET_Detalle_Partida->ETDetallePartidaPorIdPartidaParaValorizacion($value->id_partida);
 
 				$value->childDetallePartida->childDetSegValorizacion=$this->Model_DetSegOrden->valorizadaActual($value->childDetallePartida->id_detalle_partida, $mesActual);
 
-				$value->childDetallePartida->childDetSegValorizacionAnterior=$this->Model_DetSegOrden->valorizadoAnterior($value->childDetallePartida->id_detalle_partida, $mesPasado);
+				$value->childDetallePartida->childDetSegValorizacionAnterior=$this->Model_DetSegOrden->valorizadoAnterior($value->childDetallePartida->id_detalle_partida, $ultimaFechaMesPasado->format('Y-m-d'));
 
 			}
 
