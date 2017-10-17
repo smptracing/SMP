@@ -1043,6 +1043,8 @@ class Expediente_Tecnico extends CI_Controller
 				$value->childDetallePartida=$this->Model_ET_Detalle_Partida->ETDetallePartidaPorIdPartidaParaValorizacion($value->id_partida);
 
 				$value->childDetallePartida->childDetSegValorizacion=$this->Model_DetSegOrden->valorizadaActual($value->childDetallePartida->id_detalle_partida);
+
+				$value->childDetallePartida->childDetSegValorizacionAnterior=$this->Model_DetSegOrden->valorizadoAnterior($value->childDetallePartida->id_detalle_partida);
 				
 				/*$value->childDetallePartida->childDetSegValorizacion=$this->Model_DetSegOrden->listarValorizacionPorDetallePartida($value->childDetallePartida->id_detalle_partida);*/
 

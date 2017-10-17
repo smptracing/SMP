@@ -28,6 +28,8 @@ function mostrarAnidado($meta, $expedienteTecnico)
 		{
 			$metradoActual = 0;
 			$valorizadoActual=0;
+			$metradoAnterior = 0;
+			$valorizadoAnterior =0;
 			$htmlTemp.='<tr class="elementoBuscar">'.
 				'<td>'.$value->numeracion.'</td>'.
 				'<td style="text-align: left;">'.html_escape($value->desc_partida).'</td>'.
@@ -45,8 +47,20 @@ function mostrarAnidado($meta, $expedienteTecnico)
 						break;
 					}
 				}
-				$htmlTemp.='<td></td>';
-				$htmlTemp.='<td></td>';
+
+				foreach($value->childDetallePartida->childDetSegValorizacionAnterior as $index => $item)
+				{
+					if($item->id_detalle_partida==$value->childDetallePartida->id_detalle_partida)
+					{
+						$metradoAnterior = $item->metradoAnterior;
+						$valorizadoAnterior = $item->valorizadoAnterior;
+						break;
+					}
+				}
+
+
+				$htmlTemp.='<td style="text-align: right;">'.number_format($metradoAnterior, 2).'</td>';
+				$htmlTemp.='<td style="text-align: right;">S/.'.number_format($valorizadoAnterior, 2).'</td>';
 				$htmlTemp.='<td style="text-align: right;">'.number_format($metradoActual, 2).'</td>';
 				$htmlTemp.='<td style="text-align: right;">S/.'.number_format($valorizadoActual, 2).'</td>';
 
