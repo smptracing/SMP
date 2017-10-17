@@ -45,6 +45,8 @@ class PuntajeCriterioPi extends CI_Controller {/* Mantenimiento de sector entida
 		if($_POST)
 		{
 			
+			
+			$anio=$this->input->post('anioPriorizacion');	
 
 			$txtIdPi=$this->input->post('txtIdPi');	
 
@@ -58,9 +60,9 @@ class PuntajeCriterioPi extends CI_Controller {/* Mantenimiento de sector entida
 			$SumaTotaCriterio=$this->input->post('SumaTotaCriterio');	
 			$combocriterioespecif=$this->input->post('combocriterioespecif');
 
-			$fechaA=date("Y-m-d");
+			/*$fechaA=date("Y-m-d");
 			$cadena=explode('-', $fechaA);
-			$anio=$cadena[0];
+			$anio=$cadena[0];*/
 			//$contarCriterioNoInse=count($combocriterioespecif);
 			$contadorRegistro=0;
 			$contadorNoRegistro=0;
@@ -104,7 +106,7 @@ class PuntajeCriterioPi extends CI_Controller {/* Mantenimiento de sector entida
 
 		$listaUnicaProIv=$this->Model_PuntajeCriterioPi->proyectoInvUnico($id_pi);
 
-		 $listarPuntajeCriterioPip=$this->Model_PuntajeCriterioPi->listarPuntajePip($id_pi);
+		$listarPuntajeCriterioPip=$this->Model_PuntajeCriterioPi->listarPuntajePip($id_pi,$anio);
 		$this->load->view('front/Pmi/PuntajeCriterioPi/insertar',['listaUnicaProIv' =>$listaUnicaProIv,'listaCritetioGeneral' => $listaCritetioGeneral,'sumaPesoTotalGeberal' =>$sumaPesoTotalGeberal,'listarPuntajeCriterioPip' => $listarPuntajeCriterioPip,'id_funcion' =>$id_funcion,'anio' => $anio]);
 
 	}
