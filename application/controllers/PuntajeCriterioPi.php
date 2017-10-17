@@ -88,7 +88,7 @@ class PuntajeCriterioPi extends CI_Controller {/* Mantenimiento de sector entida
 
                 }
 
-            $listarPuntajeCriterioPip=$this->Model_PuntajeCriterioPi->listarPuntajePip($txtIdPi);
+            $listarPuntajeCriterioPip=$this->Model_PuntajeCriterioPi->listarPuntajePip($txtIdPi,$anio);
 			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Total Datos a Registra: '.count($combocriterioespecif).'.Registrados: '.$contadorRegistro.' No Registrados '.$contadorNoRegistro.' Por ser Repetidos los  Criterios Especificos.', 'listarPuntajeCriterioPip' => $listarPuntajeCriterioPip]);exit;
 
 		}
@@ -121,11 +121,12 @@ class PuntajeCriterioPi extends CI_Controller {/* Mantenimiento de sector entida
 
 	public function eliminarPuntajecriterio()
 	{
+		$anio=$this->input->post('anio');
 		$id_pi=$this->input->post('id_pi');
 		$id_ptje_criterio=$this->input->post('id_ptje_criterio');
 		$this->Model_PuntajeCriterioPi->eliminarPuntajecriterio($id_ptje_criterio);
 
-		$listarPuntajeCriterioPip=$this->Model_PuntajeCriterioPi->listarPuntajePip($id_pi);
+		$listarPuntajeCriterioPip=$this->Model_PuntajeCriterioPi->listarPuntajePip($id_pi,$anio);
 		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos Eliminados correctamente.', 'listarPuntajeCriterioPip' => $listarPuntajeCriterioPip]);exit;
 
 	}
