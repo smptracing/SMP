@@ -35,6 +35,40 @@ class PuntajeCriterioPi extends CI_Controller {/* Mantenimiento de sector entida
 		
 	}
 
+	public function pipPriorizadasPorFuncion($cadena='')
+	{
+		/*$PipFuncion=$this->Model_PuntajeCriterioPi->FuncionPip();
+		$listarPipPriorizadaPorCadaFuncion=$this->Model_PuntajeCriterioPi->PipPriorizadaPorCadaFuncion();
+		//var_dump($listarPipFuncion);exit;
+		$this->load->view('layout/PMI/header');
+		$this->load->view('front/Pmi/PuntajeCriterioPi/pipPriorizadasporFuncion',['PipFuncion'=>$PipFuncion,'listarPipPriorizadaPorCadaFuncion'=>$listarPipPriorizadaPorCadaFuncion]);
+		$this->load->view('layout/PMI/footer');	*/
+
+		if($cadena=='')
+		{
+			$fechaA=date("Y-m-d");
+			$cadena=explode('-', $fechaA);
+			$anioActual=$cadena[0];
+			$funcion=11;
+			$PipFuncion=$this->Model_PuntajeCriterioPi->FuncionPip();
+			$listarPipPriorizadaPorCadaFuncion=$this->Model_PuntajeCriterioPi->PipPriorizadaPorCadaFuncion($funcion,$anioActual);
+			$this->load->view('layout/PMI/header');
+			$this->load->view('front/Pmi/PuntajeCriterioPi/pipPriorizadasporFuncion',['listarPipPriorizadaPorCadaFuncion'=>$listarPipPriorizadaPorCadaFuncion,'PipFuncion'=>$PipFuncion,'id_funcion'=>$funcion,'anioActual' => $anioActual]);
+			$this->load->view('layout/PMI/footer');	
+		}else{
+			$PipFuncion=$this->Model_PuntajeCriterioPi->FuncionPip();
+			$cadena=explode('.', $cadena);
+			$funcion=$cadena[0];
+			$anio=$cadena[1];
+			$listarPipPriorizadaPorCadaFuncion=$this->Model_PuntajeCriterioPi->PipPriorizadaPorCadaFuncion($funcion,$anio);
+			$this->load->view('layout/PMI/header');
+			$this->load->view('front/Pmi/PuntajeCriterioPi/pipPriorizadasporFuncion',['listarPipPriorizadaPorCadaFuncion'=>$listarPipPriorizadaPorCadaFuncion,'PipFuncion'=>$PipFuncion,'id_funcion'=>$funcion,'anioActual' => $anio]);
+			$this->load->view('layout/PMI/footer');	
+
+		}
+
+	}
+
 	public function insertar()
 	{
 		if($_POST)
@@ -114,6 +148,8 @@ class PuntajeCriterioPi extends CI_Controller {/* Mantenimiento de sector entida
 		$this->load->view('front/Pmi/PuntajeCriterioPi/pipPriorizadas',['listaPipPriorizadasPorAño'=>$listaPipPriorizadasPorAño,'anio' => $anio]);
 		$this->load->view('layout/PMI/footer');	
 	}
+
+	
 
 	public function eliminarPuntajecriterio()
 	{
