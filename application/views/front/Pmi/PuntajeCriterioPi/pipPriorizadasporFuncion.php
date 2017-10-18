@@ -16,16 +16,25 @@
 								<div role="tabpanel" class="tab-pane fade active in" id="#tab_etapasFE" aria-labelledby="home-tab">
 										<br>
 									<div class="row">
-										
+										<input type="hidden" name="Aniao" id="Aniao" value="<?=$anioActual?>">
+										<div class="col-md-3 col-xs-3"  style="margin-left: 100px;">
+											<div class="form-group">
+								                <div class="input-group"><br/>
+													<label class="control-label">AÑO</label>
+													<select  id="comboanio" name="comboanio" class="form-control col-md-2 col-xs-2">
+													</select>
+								                </div>
+						            		</div>
+										</div>
 										<div class="col-md-3 col-xs-3"  style="margin-left: 150px;">
 											<div class="form-group">
 								                <div class="input-group"><br/>
-													<label class="control-label">FUNCION</label>
+													<label class="control-label">FUNCIÓN</label>
 													<select  id="combofuncion" name="combofuncion" class="form-control col-md-2 col-xs-2">
 														<option value="1"> Buscar Función</option>
 													
-															<?php foreach($listarPipPorFuncion as $item){ ?>
-																<option value="<?=$item->id_funcion; ?>" ><?= $item->nombre_funcion;?></option>
+															<?php foreach($PipFuncion as $item){ ?>
+																<option value="<?=$item->id_funcion; ?>"  <?=($item->id_funcion==$id_funcion ? 'selected' : '')?>    ><?= $item->nombre_funcion;?></option>
 															<?php } ?>
 
 											
@@ -34,17 +43,7 @@
 						            		</div>
 										</div>
 
-										<div class="col-md-3 col-xs-3"  style="margin-left: 300px;">
-											<div class="form-group">
-								                <label class="control-label" for="inputGroup">Buscar PIP por Año Priorizado</label>
-								                <div class="input-group">
-													<input type="text" class="form-control" placeholder="Ingrese Año Priorizado" id="textAnio" name="textAnio" value="" data-inputmask="'mask' : '9999'">
-								                    <span class="input-group-addon">
-								                        <i class="fa fa-search"></i>
-								                    </span>
-								                </div>
-						            		</div>
-										</div>
+										
 
 										<div class="col-md-12 col-xs-12">
 						
@@ -61,7 +60,28 @@
 														</tr>
 													</thead>
 													<tbody>
+													<?php $i=0; foreach($listarPipPriorizadaPorCadaFuncion as $item ){  ?>
+													  	<tr>
+													    	<td>
+																<?=$item->codigo_unico_pi?>
+													    	</td>
+													    	<td>
+																<?=$item->nombre_pi?>
+													    	</td>
+													    	<td>
+																<?php if($item->puntaje==null){ echo 'na'; }else{$i++; echo $i;} ?>
+													    	</td>
+													    	<td>
+																<?=$item->puntaje?>
+													    	</td>
+													    	<td>
+																<?=$item->nombre_funcion?>
+													    	</td>
+													    	<td>
 												
+													    	</td>
+													  </tr>
+													<?php } ?>	
 													</tbody>
 													
 												</table>
@@ -82,12 +102,42 @@
 <script>
 	$(document).ready(function()
 	{
+		anios();
+		var valor=$("#Aniao").val();
+		$("#comboanio option[value="+valor+"]").attr("selected", true);
+
 		$('#table-pippriorizadasporfuncion').DataTable(
 		{
 			"language" : idioma_espanol
 		});
 
+		$('#combofuncion').change('click', function(e)
+		{
+			//alert('hola');
+				var anioPriorizacion=$("#comboanio").val();
+				var funcion=$("#combofuncion").val();
+				window.location.href=base_url+"index.php/PuntajeCriterioPi/pipPriorizadasPorFuncion/"+funcion+'.'+anioPriorizacion;
+				anios();
+		});
+		$('#comboanio').change('click', function(e)
+		{
+				var anioPriorizacion=$("#comboanio").val();
+				var funcion=$("#combofuncion").val();
+				window.location.href=base_url+"index.php/PuntajeCriterioPi/pipPriorizadasPorFuncion/"+funcion+'.'+anioPriorizacion;
+				anios();
+		});
+
 
 	});
+	function anios()
+	{
+		var aniosI=2016;
+		var html;
+		for (var i =0; i <=2100; i++) {
+			html +='<option value="'+(parseInt(aniosI)+parseInt(i))+'">'+(parseInt(aniosI)+parseInt(i))+'</option>';
+		}
+		$("#comboanio").append(html);
+
+	}
 	
 </script>
