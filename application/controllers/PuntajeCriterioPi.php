@@ -119,6 +119,13 @@ class PuntajeCriterioPi extends CI_Controller {/* Mantenimiento de sector entida
 		$this->load->view('layout/PMI/footer');	
 	}
 
+	public function pipPriorizadasPorFuncion()
+	{
+		$this->load->view('layout/PMI/header');
+		$this->load->view('front/Pmi/PuntajeCriterioPi/pipPriorizadasporFuncion');
+		$this->load->view('layout/PMI/footer');	
+	}
+
 	public function eliminarPuntajecriterio()
 	{
 		$anio=$this->input->post('anio');

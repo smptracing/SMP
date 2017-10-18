@@ -36,6 +36,7 @@
 															<td style="width:5%">Código</td>
 															<td style="width:40%">Proyecto</td>
 															<td style="width:5%">Prioridad</td>
+															<td style="width:5%">Puntaje</td>
 															<td style="width:15%">Función</td>
 															<td style="width:5%">Opciones</td>
 														</tr>
@@ -51,6 +52,9 @@
 													    	</td>
 													    	<td>
 																<?php if($item->puntaje==null){ echo 'na'; }else{$i++; echo $i;} ?>
+													    	</td>
+													    	<td>
+																<?=$item->puntaje?>
 													    	</td>
 													    	<td>
 																<?=$item->nombre_funcion?>
