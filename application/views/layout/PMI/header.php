@@ -151,6 +151,7 @@
 
                     <ul class="nav child_menu">
                        <li><a href="<?php echo site_url('PuntajeCriterioPi/pipPriorizadas/'); ?>">Pip</a></li>
+                       <li><a href="<?php echo site_url('PuntajeCriterioPi/pipPriorizadasPorFuncion/'); ?>">Pip por Funcion</a></li>
                     </ul>
                  
                   </li>
