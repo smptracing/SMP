@@ -42,16 +42,20 @@ class Expediente_Tecnico extends CI_Controller
 	public function reportePdfExpedienteTecnico($id_ExpedienteTecnico)
 	{
 		$responsableElaboracion=$this->Model_Personal->ResponsableExpedieteElaboracion($id_ExpedienteTecnico);
+
 		$responsableEjecucion=$this->Model_Personal->ResponsableExpedieteEjecucion($id_ExpedienteTecnico);
 		
 		$Opcion="ReporteFichaTecnica01";
+
 		$ImagenesExpediente=$this->Model_ET_Expediente_Tecnico->ET_Img($id_ExpedienteTecnico);
+
 		$listarExpedienteFicha001=$this->Model_ET_Expediente_Tecnico->reporteExpedienteFicha001($Opcion,$id_ExpedienteTecnico);
+
 		$html= $this->load->view('front/Ejecucion/ExpedienteTecnico/reporteExpedienteTecnico',["listarExpedienteFicha001" => $listarExpedienteFicha001, "ImagenesExpediente" =>$ImagenesExpediente,"responsableElaboracion" => $responsableElaboracion,"responsableEjecucion" => $responsableEjecucion],true);
 		$this->mydompdf->load_html($html);
 		$this->mydompdf->set_paper("A4", "portrait");
 		$this->mydompdf->render();
-		$this->mydompdf->set_base_path('./assets/css/dompdf.css'); //agregar de nuevo el css
+		$this->mydompdf->set_base_path('./assets/css/dompdf.css');
 		$this->mydompdf->stream("ReporteExpedienteTecnico.pdf", array("Attachment" => false));
 	}
 

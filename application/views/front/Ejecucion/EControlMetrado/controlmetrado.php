@@ -111,14 +111,16 @@ function mostrarAnidado($meta, $expedienteTecnico)
 </div>
 </div>
 <script>
-	/*$(document).ready(function()
+	$(document).ready(function()
 	{
 		$('#tableValorizacion').DataTable(
 		{
-			"language":idioma_espanol
+			"language":idioma_espanol,
+			"pageLength": 25,
+			"ordering":  false
 		});
 
-	});*/
+	});
 	function valorizar(codigo)
 	{
 		paginaAjaxDialogo(null, 'Valorizacion de Partida',{ id_DetallePartida: codigo }, base_url+'index.php/Expediente_Tecnico/AsignarValorizacion', 'GET', null, null, false, true);
