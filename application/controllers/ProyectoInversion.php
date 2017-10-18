@@ -97,10 +97,12 @@ class ProyectoInversion extends CI_Controller {/* Mantenimiento de sector entida
     } 
 
 
-    public function ReporteBuscadorPorPip()
+    public function ReporteBuscadorPorPip($Codigo='')
     {
-	    $this->load->view('layout/Reportes/header');
-	    $this->load->view('front/Reporte/ProyectoInversion/index');
+	    
+
+      $this->load->view('layout/Reportes/header');
+	    $this->load->view('front/Reporte/ProyectoInversion/index',["codigo" => $Codigo]);
 	    $this->load->view('layout/Reportes/footer');
     }
 

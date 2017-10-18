@@ -68,7 +68,9 @@
 																					<?php foreach($Consolidado as $item ){ ?>
 																					  	<tr>
 																							<td>
-																								<?=$item->proyecto_snip?>
+																							
+																									<button type="button" class="DetalleOrdenExpeSiaf btn btn-success btn-xs" ><a href="<?php echo site_url('ProyectoInversion/ReporteBuscadorPorPip/'.$item->proyecto_snip); ?>"> 
+																									<?=$item->proyecto_snip?></a> <i class='ace-icon bigger-120'></i></button>
 																					    	</td>
 																					    	<td>
 																								<?=$item->sec_func?>

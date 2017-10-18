@@ -34,9 +34,9 @@
 													
 														  <div class="col-lg-6">
 														    <div class="input-group">
-														      <input type="text" id="BuscarPip"  class="form-control" placeholder="Ingrese código Unico">
+														      <input type="text" id="BuscarPip"  class="form-control" placeholder="Ingrese código Unico" value="<?= $codigo ?>">
 														      <span class="input-group-btn">
-														        <button id="CodigoUnico" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"> Buscar</span></button>
+														        <button id="CodigoUnico" class="btn btn-default" type="button" ><span class="glyphicon glyphicon-search"> Buscar</span></button>
 														      </span>
 														    </div>
 														  </div>
