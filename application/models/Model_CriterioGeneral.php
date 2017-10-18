@@ -78,4 +78,9 @@ class Model_criterioGeneral extends CI_Model
         return $data->result();
 	}
 
+	function listarCriterioGPorAnios($anio)
+	{
+		$data=$this->db->query("select * from CRITERIO_GEN where CRITERIO_GEN.anio_criterio_gen='$anio'");        
+        return $data->result();
+	}
 }
