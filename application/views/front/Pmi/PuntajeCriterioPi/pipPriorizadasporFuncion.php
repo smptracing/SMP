@@ -16,7 +16,36 @@
 								<div role="tabpanel" class="tab-pane fade active in" id="#tab_etapasFE" aria-labelledby="home-tab">
 										<br>
 									<div class="row">
-									
+										
+										<div class="col-md-3 col-xs-3"  style="margin-left: 150px;">
+											<div class="form-group">
+								                <div class="input-group"><br/>
+													<label class="control-label">FUNCION</label>
+													<select  id="combofuncion" name="combofuncion" class="form-control col-md-2 col-xs-2">
+														<option value="1"> Buscar Función</option>
+													
+															<?php foreach($listarPipPorFuncion as $item){ ?>
+																<option value="<?=$item->id_funcion; ?>" ><?= $item->nombre_funcion;?></option>
+															<?php } ?>
+
+											
+													</select>
+								                </div>
+						            		</div>
+										</div>
+
+										<div class="col-md-3 col-xs-3"  style="margin-left: 300px;">
+											<div class="form-group">
+								                <label class="control-label" for="inputGroup">Buscar PIP por Año Priorizado</label>
+								                <div class="input-group">
+													<input type="text" class="form-control" placeholder="Ingrese Año Priorizado" id="textAnio" name="textAnio" value="" data-inputmask="'mask' : '9999'">
+								                    <span class="input-group-addon">
+								                        <i class="fa fa-search"></i>
+								                    </span>
+								                </div>
+						            		</div>
+										</div>
+
 										<div class="col-md-12 col-xs-12">
 						
 											<div class="x_content">
