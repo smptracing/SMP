@@ -15,13 +15,19 @@
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Fecha de Inicio:</label>
 							<div>
-								<input type="date" class="form-control" name="txtFechaInicio" id="txtFechaInicio" value="<?=$ExpedienteTecnico->fecha_inicio_et?>">	
+								<input type="date" class="form-control" name="txtFechaInicio" id="txtFechaInicio" value="<?=(new DateTime($ExpedienteTecnico->fecha_inicio_et))->format('Y-m-d')?>">	
 							</div>	
 						</div>
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Fecha Fin:</label>
 							<div>
-								<input type="date" name="txtFechaFin" class="form-control" id="txtFechaFin" value="<?=$ExpedienteTecnico->fecha_fin_et?>">	
+								<input type="date" name="txtFechaFin" class="form-control" id="txtFechaFin" value="<?=(new DateTime($ExpedienteTecnico->fecha_fin_et))->format('Y-m-d')?>" >
+							</div>	
+						</div>
+						<div class="col-md-3 col-sm-3 col-xs-12">
+							<label class="control-label">Numero de Meses:</label>
+							<div>
+								<input type="text" readonly="readonly" class="form-control" value="<?=$ExpedienteTecnico->num_meses?> meses"  >
 							</div>	
 						</div>
 					</div>
@@ -102,7 +108,7 @@
 	                {
 	                    swal("Error","Ocurrio un error ", "error");
 	                }
-                    window.location.href=base_url+"index.php/Expediente_Tecnico/verdetalle/"+<?= $ExpedienteTecnico->id_pi?>;
+                    window.location.href=base_url+"index.php/Expediente_Tecnico/verdetalle/"+<?= $ExpedienteTecnico->id_et?>;
                 }
             });
           $('#frmAsignarOrden')[0].reset();
