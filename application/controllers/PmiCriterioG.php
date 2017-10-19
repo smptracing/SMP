@@ -15,13 +15,14 @@ class PmiCriterioG extends CI_Controller {/* Mantenimiento de sector entidad Y s
 	{
 		if($_POST)
 		{
+			
 			$txtNombreCriterio=$this->input->post('txtNombreCriterio');
 			$txtAnioCriterioG=$this->input->post('txtAnioCriterioG');
 			$txtPesoCriterioG=$this->input->post('txtPesoCriterioG');
 			$txtIdFuncion=$this->input->post('txtIdFuncion');
 
 			
-			if(count($this->Model_CriterioGeneral->CriterioGeneralData($txtNombreCriterio))>0)
+			if(count($this->Model_CriterioGeneral->CriterioGeneralData($txtNombreCriterio,$txtAnioCriterioG))>0)
             {
             	$listaCritetioGeneral=$this->Model_CriterioGeneral->ListarCriterioGenerales($txtIdFuncion,$txtAnioCriterioG);
 
@@ -111,8 +112,10 @@ class PmiCriterioG extends CI_Controller {/* Mantenimiento de sector entidad Y s
 		 $anio_criterio_gen=$array[1];
 		
 		 $listarfuncion=$this->Model_CriterioEspecifico->listarFuncion($anio_criterio_gen,$id_funcion);
-	
-		foreach ($listarfuncion as $key => $value) 
+		
+		if(count($listarfuncion)>0)
+		{
+			foreach ($listarfuncion as $key => $value) 
 			    {
 
 						$value->childCriteriGeneral=$this->Model_CriterioGeneral->ListarCriterioGenerales($value->id_funcion,$anio_criterio_gen);
@@ -122,13 +125,25 @@ class PmiCriterioG extends CI_Controller {/* Mantenimiento de sector entidad Y s
 						}
 					
 			    }
-		$html= $this->load->view('front/Pmi/CriteriosGenerales/reporteCriteriosGeneralesEspecificos', ["listarfuncionCriterioGeneral" => $listarfuncion,"anio"=>$anio_criterio_gen], true);
-		$this->mydompdf->load_html($html);
-		$this->mydompdf->set_paper('letter', 'landscape');
-		$this->mydompdf->render();
-		$this->mydompdf->set_base_path('./assets/css/dompdf.css'); //agregar de nuevo el css
+			$html= $this->load->view('front/Pmi/CriteriosGenerales/reporteCriteriosGeneralesEspecificos', ["listarfuncionCriterioGeneral" => $listarfuncion,"anio"=>$anio_criterio_gen], true);
+			$this->mydompdf->load_html($html);
+			$this->mydompdf->set_paper('letter', 'landscape');
+			$this->mydompdf->render();
+			$this->mydompdf->set_base_path('./assets/css/dompdf.css'); //agregar de nuevo el css
 
-		$this->mydompdf->stream("reporteAnalisisPreciosFF11.pdf", array("Attachment" => false));
+			$this->mydompdf->stream("reporteAnalisisPreciosFF11.pdf", array("Attachment" => false));
+		}else
+		{
+			$html= $this->load->view('front/Pmi/CriteriosGenerales/reporteVacioCriterioEspecifico',['Anio' => $anio_criterio_gen], true);
+			$this->mydompdf->load_html($html);
+			$this->mydompdf->set_paper('letter', 'landscape');
+			$this->mydompdf->render();
+			$this->mydompdf->set_base_path('./assets/css/dompdf.css'); //agregar de nuevo el css
+
+			$this->mydompdf->stream("reporteAnalisisPreciosFF11.pdf", array("Attachment" => false));
+
+		}
+		
 	}
 	public function index($año=0){
 		$listaCriterioGen=$this->Model_CriterioGeneral->CriteriosGenerales();
@@ -144,6 +159,15 @@ class PmiCriterioG extends CI_Controller {/* Mantenimiento de sector entidad Y s
 		$this->load->view('layout/PMI/header');
 		$this->load->view('front/Pmi/CriteriosGenerales/criteriosFuncion',['listaCriterioFuncion'=>$listaCriterioFuncion,'anio' => $anio]);
 		$this->load->view('layout/PMI/footer');	
+	}
+
+	public function listarCriterioGPorAnios()
+	{
+
+		$anio=$this->input->Post('anio');
+		$dataCriterioGeneralAni=$this->Model_CriterioGeneral->listarCriterioGPorAnios($anio);
+		 echo json_encode(['dataCriterioGeneralAni'=>$dataCriterioGeneralAni]);exit;  
+
 	}
 	
 }

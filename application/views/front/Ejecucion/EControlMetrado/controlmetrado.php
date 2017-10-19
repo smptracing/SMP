@@ -23,7 +23,7 @@ function mostrarAnidado($meta, $expedienteTecnico)
 				'<td style="text-align: right;">'.$value->cantidad.'</td>'.
 				'<td style="text-align: right;">S/.'.$value->precio_unitario.'</td>'.
 				'<td style="text-align: right;">S/.'.number_format($value->cantidad*$value->precio_unitario, 2).'</td>'.
-				'<td style="text-align: center;"><a class= "btn btn-info btn-xs" onclick="valorizar('.$value->childDetallePartida->id_detalle_partida.');"><i class="fa fa-plus"></i> Agregar</a></td>'.
+				'<td style="text-align: center;"><a class= "btn btn-info btn-xs" onclick="valorizar('.$value->childDetallePartida->id_detalle_partida.');"><i class="fa fa-plus"></i> Registrar</a></td>'.
 				'</tr>';
 		}		
 	}
@@ -111,14 +111,16 @@ function mostrarAnidado($meta, $expedienteTecnico)
 </div>
 </div>
 <script>
-	/*$(document).ready(function()
+	$(document).ready(function()
 	{
 		$('#tableValorizacion').DataTable(
 		{
-			"language":idioma_espanol
+			"language":idioma_espanol,
+			"pageLength": 25,
+			"ordering":  false
 		});
 
-	});*/
+	});
 	function valorizar(codigo)
 	{
 		paginaAjaxDialogo(null, 'Valorizacion de Partida',{ id_DetallePartida: codigo }, base_url+'index.php/Expediente_Tecnico/AsignarValorizacion', 'GET', null, null, false, true);

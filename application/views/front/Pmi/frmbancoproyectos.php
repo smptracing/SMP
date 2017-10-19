@@ -62,7 +62,9 @@
                                                           <th style="width: 36%"><i class="fa fa-bookmark-o"></i> Nombre</th>
                                                           <th style="width: 12%; text-align: right;"><i class="fa fa-money"></i> Costo</th>
                                                           <th style="width: 12%"> Estado Ciclo</th>
-                                                        <th style="width: 16%">Opción</th>
+                                                          <th style="width: 12%"> Fecha Registro</th>
+                                                          <th style="width: 16%">Opción</th>
+                                                        
                                                         </tr>
                                                       </thead>
 

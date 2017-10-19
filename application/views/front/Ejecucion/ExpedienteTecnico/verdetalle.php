@@ -39,7 +39,7 @@
 	}
 	.subMenu >li>a
 	{
-		padding: 10px 10px;
+		padding: 5px 5px;
 		color:#001f3f;
 		font-size: 13px;
 	}
@@ -110,21 +110,27 @@
 		                        	</a>
 		                        </li>
 		                        <li role="presentation">
-	                        		<a role="menuitem" tabindex="-1" href="#" onclick="window.open(base_url+'index.php/Expediente_Tecnico/valorizacionEjecucionProyecto/<?=$ExpedienteTecnicoElaboracion[0]->id_et?>', '_blank'); return false;"> Valorización de Ejecución	
+	                        		<a role="menuitem" tabindex="-1" href="#" onclick="window.open(base_url+'index.php/Expediente_Tecnico/valorizacionEjecucionProyecto/<?=$ExpedienteTecnicoElaboracion[0]->id_et?>', '_blank'); return false;"> Cronograma Valorizado de Ejecución
 		                        	</a>
-		                        </li>
-		                        <!--<li role="presentation">
-	                        		<a role="menuitem" tabindex="-1" href="<?= site_url('Expediente_Tecnico/ListarPartida/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target='_blank'); return false;">Ordenes y Pedidos
-		                        	</a>
-		                        </li>-->
-		                         <li role="presentation">
-	                        		<a role="menuitem" tabindex="-1" href="<?= site_url('Expediente_Tecnico/ControlMetrado/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target='_blank'); return false;">Valorizacion
-		                        	</a>
-		                        </li>
-		                        <li role="presentation">
-	                        		<a role="menuitem" tabindex="-1" href="<?= site_url('Expediente_Tecnico/ValorizacionFisicaMetrado/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target='_blank'); return false;">Valorizacion Fisica de obra de Mmayores Metrados
-		                        	</a>
-		                        </li>
+			                    </li>
+
+		                        <?php if($ExpedienteTecnicoElaboracion[0]->id_etapa_et == 2 || $ExpedienteTecnicoElaboracion[0]->id_etapa_et == 3)
+		                        { ?>
+		                        	
+			                        <!--<li role="presentation">
+		                        		<a role="menuitem" tabindex="-1" href="<?= site_url('Expediente_Tecnico/ListarPartida/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target='_blank'); return false;">Ordenes y Pedidos
+			                        	</a>
+			                        </li>-->
+			                         <li role="presentation">
+		                        		<a role="menuitem" tabindex="-1" href="<?= site_url('Expediente_Tecnico/ControlMetrado/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target='_blank'); return false;">Ejecución diaria de Metrados
+			                        	</a>
+			                        </li>
+			                        <li role="presentation">
+		                        		<a role="menuitem" tabindex="-1" href="<?= site_url('Expediente_Tecnico/ValorizacionFisicaMetrado/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target='_blank'); return false;">Valorizacion Mensual
+			                        	</a>
+			                        </li>
+		                        <?php } ?>
+		                        
                       		</ul>
                     	</li><li role="presentation" class="dropdown">
                       		<a id="drop7" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"> Detalle Expendiente <span class="caret"></span>
@@ -171,14 +177,14 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Costo Total del Proyecto PreInversion: 
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input readonly="readonly" type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12" value="<?=$ExpedienteTecnicoElaboracion[0]->costo_total_preinv_et?>">
+                          <input readonly="readonly" type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12" value="<?=a_number_format($ExpedienteTecnicoElaboracion[0]->costo_total_preinv_et,2,'.',",",3)?>">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Costo Total del Proyecto Inversion: 
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input readonly="readonly" type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12" value="<?=$ExpedienteTecnicoElaboracion[0]->costo_total_inv_et?>">
+                          <input readonly="readonly" type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12" value="<?=a_number_format($ExpedienteTecnicoElaboracion[0]->costo_total_inv_et,2,'.',",",3)?>">
                         </div>
                       </div>
                       <div class="form-group">
@@ -201,9 +207,9 @@
                     <div class="row">
                     	<div class="col-md-12" style="text-align: center; display: inline-block;">
                     		<div>
-			                    <h6><code>Formatos</code>.</h6>
+			                    <h6><code>Formatos de Expediente Técnico</code>.</h6>
 								<a class="btn btn-app"  data-toggle="tooltip" title="Ficha Técnica del Proyectos" href="<?= site_url('Expediente_Tecnico/reportePdfExpedienteTecnico/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank" >
-									<i class="fa fa-file-pdf-o"></i> Formarto FE-01
+									<i class="fa fa-file-pdf-o"></i> Formarto FF-01
 								</a>                  		
 								<a class="btn btn-app"  data-toggle="tooltip" title="Presupuesto Resumen"  href="<?= site_url('Expediente_Tecnico/reportePdfPresupuestoFF05/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
 									<i class="fa fa-file-pdf-o"></i> Formato FF-05
@@ -220,27 +226,6 @@
 								<a class="btn btn-app"  data-toggle="tooltip" title="Cronograma Valorizado de Ejecución del Proyecto" href="<?= site_url('Expediente_Tecnico/reportePdfValorizacionEjecucion/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
 									<i class="fa fa-file-pdf-o"></i> Formato FF-15
 								</a>
-								<!--
-								<h6><code>Formatos</code>.</h6>
-								<a class="btn btn-app"  data-toggle="tooltip" title="Ficha Técnica del Proyectos" href="<?= site_url('Expediente_Tecnico/reportePdfExpedienteTecnico/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank" >
-									<i class="fa fa-file-pdf-o"></i> Formarto FE-01
-								</a>                  		
-								<a class="btn btn-app"  data-toggle="tooltip" title="Presupuesto Resumen"  href="<?= site_url('Expediente_Tecnico/reportePdfMetrado/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
-									<i class="fa fa-file-pdf-o"></i> Formato FF-05
-								</a>                     		
-								<a class="btn btn-app" data-toggle="tooltip" title="Cuadro de Presupuesto Analítico General" href="<?= site_url('Expediente_Tecnico/reportePdfPresupuestoFF05/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
-									<i class="fa fa-file-pdf-o"></i> Formato FF-06
-								</a>                     		
-								<a class="btn btn-app"  data-toggle="tooltip" title="Sustentación de Metrados" href="<?= site_url('Expediente_Tecnico/reportePdfPresupuestoAnalitico/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
-									<i class="fa fa-file-pdf-o"></i> Formato FF-10
-								</a>                     		
-								<a class="btn btn-app"  data-toggle="tooltip" title="Análisis de Costos Unitarios" href="<?= site_url('Expediente_Tecnico/reportePdfAnalisisPrecioUnitarioFF11/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
-									<i class="fa fa-file-pdf-o"></i> Formato FF-11
-								</a> 
-								<a class="btn btn-app"  data-toggle="tooltip" title="Cronograma Valorizado de Ejecución del Proyecto" href="<?= site_url('Expediente_Tecnico/reportePdfValorizacionEjecucion/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
-									<i class="fa fa-file-pdf-o"></i> Formato FF-15
-								</a>
-								-->
 							</div>                     		
                     	</div>
                     </div>                  		

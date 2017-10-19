@@ -2,8 +2,8 @@
 		<div class="row">
 			<div class="col-md-4 col-sm-4 col-xs-12">
 				<label>Función</label><br/>
-				<input type="hidden" class="form-control" id="txtIdFuncion" name="txtIdFuncion" value="<?= $id_funcion;?>" placeholder="" autocomplete="off">
-				<select id="cbx_funcion" name="cbx_funcion" class="selectpicker" data-live-search="true" disabled>
+				<input type="hidden" class="form-control" id="txtIdFuncion" name="txtIdFuncion" value="<?= $id_funcion;?>" placeholder="" autocomplete="off" >
+				<select id="cbx_funcion" name="cbx_funcion" class="selectpicker" data-live-search="true" readonly>
 						<?php foreach ($function as $Itemp) {?>
 								 <option value="<?=$Itemp->id_funcion?>" <?=($Itemp->id_funcion==$id_funcion ? 'selected' : '')?> ><?=$Itemp->nombre_funcion?></option>
 						<?php  } ?>
@@ -19,7 +19,7 @@
 		<div class="row" id="divCriterioGeneral">
 			<div class="col-md-2 col-sm-6 col-xs-12">
 				<label>Año</label>
-				<input type="text" class="form-control" id="txtAnioCriterioG" name="txtAnioCriterioG" value="<?= $anio;?>" placeholder="Año" autocomplete="off" readonly="readonly">
+				<input type="text" class="form-control" id="txtAnioCriterioG" name="txtAnioCriterioG" value="<?= $anio;?>" placeholder="Año" autocomplete="off">
 			</div>
 			<div class="col-md-2 col-sm-6 col-xs-12">
 				<label>Peso</label>	
