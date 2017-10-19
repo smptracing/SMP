@@ -837,7 +837,15 @@ class Expediente_Tecnico extends CI_Controller
 			$id_et=$this->input->post('hdIdEt');
 			$fechaInicio=$this->input->post('txtFechaInicio');
 			$fechaFin=$this->input->post('txtFechaFin');
-			$data=$this->Model_ET_Expediente_Tecnico->PeriodoEjecucion($fechaInicio, $fechaFin, $id_et);
+
+			$ts1 = strtotime($fechaInicio);
+			$ts2 = strtotime($fechaFin);
+			$year1 = date('Y', $ts1);
+			$year2 = date('Y', $ts2);
+			$month1 = date('m', $ts1);
+			$month2 = date('m', $ts2);
+			$numerodemeses = (($year2 - $year1) * 12) + ($month2 - $month1);
+			$data=$this->Model_ET_Expediente_Tecnico->PeriodoEjecucion($fechaInicio, $fechaFin, $id_et,$numerodemeses);
 			if ($data==true) 
 			{
 				echo "1";

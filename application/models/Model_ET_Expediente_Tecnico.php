@@ -251,9 +251,9 @@ class Model_ET_Expediente_Tecnico extends CI_Model
     	return true;
 
     }
-     public function PeriodoEjecucion($fechaInicio, $fechaFin, $id_et)
+     public function PeriodoEjecucion($fechaInicio, $fechaFin, $id_et, $num_meses)
     {
-    	$this->db->query("update ET_EXPEDIENTE_TECNICO set fecha_inicio_et = '$fechaInicio', fecha_fin_et = '$fechaFin' where id_et = $id_et");
+    	$this->db->query("update ET_EXPEDIENTE_TECNICO set fecha_inicio_et = '$fechaInicio', fecha_fin_et = '$fechaFin', num_meses = $num_meses where id_et = $id_et");
     	return true;
     }
 

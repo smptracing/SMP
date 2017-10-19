@@ -21,7 +21,13 @@
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Fecha Fin:</label>
 							<div>
-								<input type="text" name="txtFechaFin" class="form-control" id="txtFechaFin" value="<?=(new DateTime($ExpedienteTecnico->fecha_fin_et))->format('Y-m-d')?>" >
+								<input type="date" name="txtFechaFin" class="form-control" id="txtFechaFin" value="<?=(new DateTime($ExpedienteTecnico->fecha_fin_et))->format('Y-m-d')?>" >
+							</div>	
+						</div>
+						<div class="col-md-3 col-sm-3 col-xs-12">
+							<label class="control-label">Numero de Meses:</label>
+							<div>
+								<input type="text" readonly="readonly" class="form-control" value="<?=$ExpedienteTecnico->num_meses?> meses"  >
 							</div>	
 						</div>
 					</div>
