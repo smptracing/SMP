@@ -101,26 +101,52 @@
 function initMap() {
  // Creamos un objeto mapa y especificamos el elemento DOM donde se va a mostrar.
  var map = new google.maps.Map(document.getElementById('mapa'), {
- center: {lat: 43.2686751, lng: -2.9340005},
- scrollwheel: false,
- zoom: 8,
- zoomControl: true,
- rotateControl : false,
- mapTypeControl: true,
- streetViewControl: false,
+ center: {lat: -13.871858, lng: -72.685349 },
+    zoom: 8,
+    panControl: true,
+    zoomControl: true,
+    mapTypeControl: true,
+    scaleControl: true,
+    streetViewControl: true,
+    overviewMapControl: true,
+    rotateControl: true,
+
+
+
  });
- // Creamos dos marcadores.
+
+
+ //Creamos dos marcadores.
  var marker1 = new google.maps.Marker({
- position: {lat: 43.2686751, lng: -2.9340005}, 
+ position: {lat: -13.871858, lng: -72.867959}, 
  icon: "<?php echo base_url(); ?>assets/images/localizacion/carretera.png", 
- draggable: false
+ name: 'Parking',
+ draggable: false,
  });
+ google.maps.event.addListener(marker1, 'click', function(){
+      var popup = new google.maps.InfoWindow();
+      var note = 'Wohoooo, salió el InfoWindow cuando pulsé el marcador y en el lugar: ' + this.title
+        + ', por fin se arreglo, pero ¿por qué salen varias burbujas?';
+      popup.setContent(note);
+      popup.open(map, this);
+    });
+
  // a este marcador le añadimos un icono personalizado
+ 
  var marker2 = new google.maps.Marker({
- position: {lat: 42.8286751, lng: -3.0990005}, 
+ position: {lat: -14.115294, lng: -72.685349}, 
  icon: "<?php echo base_url(); ?>assets/images/localizacion/obras.png", 
- draggable: false
+ name: 'Parking',
+ draggable: false,
  });
+
+  google.maps.event.addListener(marker2, 'click', function(){
+      var popup = new google.maps.InfoWindow();
+      var note = 'Wohoooo, salió el InfoWindow cuando pulsé el marcador y en el lugar: ' + this.title
+        + ', por fin se arreglo, pero ¿por qué salen varias burbujas?';
+      popup.setContent(note);
+      popup.open(map, this);
+    });
 // Le asignamos el mapa a los marcadores.
  marker1.setMap(map);
  marker2.setMap(map);
