@@ -78,7 +78,6 @@ class Expediente_Tecnico extends CI_Controller
 				$value->existeGantt=true;
 			}
 		}
-		//var_dump($listaExpedienteTecnicoModificacion);exit;
 		$this->load->view('layout/Ejecucion/header');
 		$this->load->view('front/Ejecucion/ExpedienteTecnico/index.php',['listaExpedienteTecnicoElaboracion'=>$listaExpedienteTecnicoElaboracion,'listaETExpedienteTecnico'=>$listaETExpedienteTecnico]);
 		$this->load->view('layout/Ejecucion/footer');
@@ -103,50 +102,14 @@ class Expediente_Tecnico extends CI_Controller
 		$this->_load_layout('front/Ejecucion/ExpedienteTecnico/monitorcoordinador.php', ['listaETExpedienteTecnico' => $listaETExpedienteTecnico]);
 	
 	}
-	public function compatibilidad()
-	{
-		$flat="LISTARETAPA";
-		$id_etapa_et="2";
-		$listaExpedienteTecnicoElaboracion=$this->Model_ET_Expediente_Tecnico->ExpedienteListarElaboracion($flat,$id_etapa_et);
-
-		$listaETExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->ListarExpedienteTecnico();
-		foreach($listaETExpedienteTecnico as $key => $value)
-		{
-			$value->primeraETTarea=$this->Model_ET_Tarea->primeraETTareaPorIdET($value->id_et);
-			$value->ultimaETTarea=$this->Model_ET_Tarea->ultimaETTareaPorIdET($value->id_et);
-
-			$value->existeGantt=false;
-
-			if($value->primeraETTarea!=null)
-			{
-				$value->existeGantt=true;
-			}
-		}
-		$this->load->view('layout/Ejecucion/header');
-		$this->load->view('front/Ejecucion/ExpedienteTecnico/compatibilidad',['listaExpedienteTecnicoElaboracion'=>$listaExpedienteTecnicoElaboracion,'listaETExpedienteTecnico'=>$listaETExpedienteTecnico]);
-		$this->load->view('layout/Ejecucion/footer');
-
-	}
 	public function ejecucion()
 	{
-		$flat1="LISTARCOMPATIBILIDAD";
-		$id_etapa_et="2";
-		$listaExpedienteTecnicoEtapa=$this->Model_ET_Expediente_Tecnico->ExpedienteListarEstudioCompatibilidad($flat1,$id_etapa_et);
-
-		$flat="LISTARDEDUCTIVO";
-		$id_etapa_et="3";
-		$listaExpedienteEjecucionDeductivo=$this->Model_ET_Expediente_Tecnico->ExpedienteListarEjecucionDeductivo($flat,$id_etapa_et);
-
-		$flat="LISTARADICIONAL";
-		$id_etapa_et="4";
-		$listaExpedienteEjecucionAdicional=$this->Model_ET_Expediente_Tecnico->ExpedienteListarEjecucionAdicional($flat,$id_etapa_et);
-
-		$flat2="LISTARMODIFICACION";
-		$id_etapa_et="5";
-		$listaExpedienteTecnicoModificacion=$this->Model_ET_Expediente_Tecnico->ExpedienteListarModificacion($flat1,$id_etapa_et);
-		
+		$listaCompatibilidad = $this->Model_ET_Expediente_Tecnico->ListarExpedientePorEtapa(2);
+		$listaEjecucionDeductivo = $this->Model_ET_Expediente_Tecnico->ListarExpedientePorEtapa(3);
+		$listaEjecucionAdicional = $this->Model_ET_Expediente_Tecnico->ListarExpedientePorEtapa(4);
+		$listaModificacion = $this->Model_ET_Expediente_Tecnico->ListarExpedientePorEtapa(5);
 		$this->load->view('layout/Ejecucion/header');
-		$this->load->view('front/Ejecucion/ExpedienteTecnico/ejecucion.php',['listaExpedienteTecnicoEtapa'=>$listaExpedienteTecnicoEtapa,'listaExpedienteTecnicoModificacion'=>$listaExpedienteTecnicoModificacion,'listaExpedienteEjecucionDeductivo'=>$listaExpedienteEjecucionDeductivo,'listaExpedienteEjecucionAdicional'=>$listaExpedienteEjecucionAdicional]);
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/ejecucion.php',['listaCompatibilidad' => $listaCompatibilidad, 'listaEjecucionDeductivo' => $listaEjecucionDeductivo, 'listaEjecucionAdicional' => $listaEjecucionAdicional, 'listaModificacion' => $listaModificacion]);
 		$this->load->view('layout/Ejecucion/footer');
 	}
 
@@ -867,11 +830,6 @@ class Expediente_Tecnico extends CI_Controller
 	public function verdetalle($id_et)
 	{
 		$ExpedienteTecnicoElaboracion=$this->Model_ET_Expediente_Tecnico->ExpedienteListarElaboracionPorId($id_et);
-		/*foreach ($ExpedienteTecnicoElaboracion as $key => $value) 
-		{
-			$value->costo_total_preinv_et = a_number_format($value->costo_total_preinv_et , 2, '.',",",3);
-			$value->costo_total_inv_et = a_number_format($value->costo_total_inv_et , 2, '.',",",3);
-		}*/
 		$this->load->view('layout/Ejecucion/header');
 		$this->load->view('front/Ejecucion/ExpedienteTecnico/verdetalle', [ 'ExpedienteTecnicoElaboracion' => $ExpedienteTecnicoElaboracion ]);
 		$this->load->view('layout/Ejecucion/footer');

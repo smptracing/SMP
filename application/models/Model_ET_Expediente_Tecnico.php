@@ -44,7 +44,13 @@ class Model_ET_Expediente_Tecnico extends CI_Model
         return $data->result();
 	}
 
-	public function ExpedienteListarEstudioCompatibilidad($flat1,$id_etapa_et)
+	public function ListarExpedientePorEtapa($id_etapa_et)
+	{
+		$data=$this->db->query("execute sp_Gestionar_ET_Expediente_Tecnico @Opcion='LISTARETAPA',@id_etapa_et='".$id_etapa_et."'");
+        return $data->result();
+	}
+
+	/*public function ExpedienteListarEstudioCompatibilidad($flat1,$id_etapa_et)
 	{
 		$data=$this->db->query("execute sp_Gestionar_ET_Expediente_Tecnico @Opcion='".$flat1."',@id_etapa_et='".$id_etapa_et."'");
         return $data->result();
@@ -67,7 +73,7 @@ class Model_ET_Expediente_Tecnico extends CI_Model
 	{
 		$data=$this->db->query("execute sp_Gestionar_ET_Expediente_Tecnico @Opcion='".$flat1."',@id_etapa_et='".$id_etapa_et."'");
         return $data->result();
-	}
+	}*/
 
 	public function ExpedienteContarRegistros($codigo_unico_pi)
 	{
