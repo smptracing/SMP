@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Movil-GORE</title>
+  <title>Localización</title>
+  <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/images/localizacion/favicon.ico">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link href="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <!--<link href="<?php echo base_url(); ?>assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">-->
@@ -161,7 +162,7 @@ function initMap() {
       <div class="container">
         <div class="navbar-header" style="padding-top: 13px;">
           <a href="<?php echo site_url('Inicio'); ?>" >
-            <img style="display: inline-block; height: 50px; width: 185px; opacity: 1;" src="<?php echo base_url(); ?>assets/images/gore.png" class="img-responsive">
+            <img id="logoRegion" style="display: inline-block; height: 70px; width: 185px; opacity: 1;margin-top: -15px;" src="<?php echo base_url(); ?>assets/images/gore.png" class="img-responsive">
           </a>
         </div>
         <div class="navbar-custom-menu">
@@ -191,7 +192,7 @@ function initMap() {
           <!-- MAP & BOX PANE -->
           <div class="box box-success">
             <div class="box-header with-border">
-              <h3 class="box-title">Proyectos de localización</h3>
+              <h3 class="box-title">Localización</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -202,10 +203,10 @@ function initMap() {
             <!-- /.box-header -->
             <div class="box-body no-padding">
               <div class="row">
-                <div class="col-md-9 col-sm-8">
+                <div class="col-md-12 col-sm-8">
                   <div class="pad">
                     <!-- Map will be created here -->
-                    <div id="mapa" style="height: 325px;">
+                    <div id="mapa" style="height: 350px;">
                       assd
                     </div>
 
