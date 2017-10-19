@@ -119,7 +119,6 @@ class Expediente_Tecnico extends CI_Controller
 	        $Etapa_Ejecucion='Elaboración de expediente técnico';
 	        $nombreEtapa=$this->Model_ET_Etapa_Ejecucion->BuscarNombreEtapaEjecucion($Etapa_Ejecucion);
 	        $id_etapa_et=$nombreEtapa->id_etapa_et;
-
 	       
 			$flat  = "INSERTAR";
 			$txtIdPi=$this->input->post('txtIdPi');
@@ -831,37 +830,6 @@ class Expediente_Tecnico extends CI_Controller
 		$this->load->view('front/Ejecucion/ExpedienteTecnico/verdetalle', [ 'ExpedienteTecnicoElaboracion' => $ExpedienteTecnicoElaboracion ]);
 		$this->load->view('layout/Ejecucion/footer');
 	}
-
-	/* public function verdetalle($id_pi)
-	{
-		$flat="LISTARETAPA";
-		$id_etapa_et="1";
-
-		$ExpedienteTecnicoElaboracion=$this->Model_ET_Expediente_Tecnico->ExpedienteListarElaboracionPorId($flat,$id_etapa_et,$id_pi);
-		foreach ($ExpedienteTecnicoElaboracion as $key => $value) 
-		{
-			$value->costo_total_preinv_et = a_number_format($value->costo_total_preinv_et , 2, '.',",",3);
-			$value->costo_total_inv_et = a_number_format($value->costo_total_inv_et , 2, '.',",",3);
-		}
-		$this->load->view('layout/Ejecucion/header');
-		$this->load->view('front/Ejecucion/ExpedienteTecnico/verdetalle', [ 'ExpedienteTecnicoElaboracion' => $ExpedienteTecnicoElaboracion ]);
-		$this->load->view('layout/Ejecucion/footer');
-	}
-	public function verdetalleCompatibilidad($id_pi)
-	{
-		$flat="LISTARETAPA";
-		$id_etapa_et="2";
-
-		$ExpedienteTecnicoElaboracion=$this->Model_ET_Expediente_Tecnico->ExpedienteListarElaboracionPorId($flat,$id_etapa_et,$id_pi);
-		foreach ($ExpedienteTecnicoElaboracion as $key => $value) 
-		{
-			$value->costo_total_preinv_et = a_number_format($value->costo_total_preinv_et , 2, '.',",",3);
-			$value->costo_total_inv_et = a_number_format($value->costo_total_inv_et , 2, '.',",",3);
-		}
-		$this->load->view('layout/Ejecucion/header');
-		$this->load->view('front/Ejecucion/ExpedienteTecnico/verdetalle', [ 'ExpedienteTecnicoElaboracion' => $ExpedienteTecnicoElaboracion ]);
-		$this->load->view('layout/Ejecucion/footer');
-	}*/
 	public function PeriodoEjecucion()
 	{
 		if ($_POST) 
@@ -972,6 +940,7 @@ class Expediente_Tecnico extends CI_Controller
 			$cantidad=$this->input->post('txtCantidad');
 			$fechadia=$this->input->post('txtFecha');	
 			$fecha = date('Y-m-d H:i:s');
+
 			$DetallePartida = $this->Model_ET_Detalle_Partida->ETPDetallePartida($idDetallePartida);
 			$subtotal = $cantidad * $DetallePartida->precio_unitario;
 			//$listaPartida = $this->Model_DetSegValorizacion->listarValorizacionPorDetallePartida($idDetallePartida);
@@ -1003,7 +972,9 @@ class Expediente_Tecnico extends CI_Controller
 		}
 		else
 		{
-			$fechaActual=date('Y-m-d');
+			/*$fechaActual=date('Y-m-d');
+			echo $fechaActual;
+			exit;*/
 			$idDetallePartida=$this->input->get('id_DetallePartida');
 			$DetallePartida = $this->Model_ET_Detalle_Partida->ETPDetallePartida($idDetallePartida);
 			//$listaValorizacion = $this->Model_DetSegValorizacion->listarValorizacionPorDetallePartida($idDetallePartida);
@@ -1066,6 +1037,7 @@ class Expediente_Tecnico extends CI_Controller
 			{
 				$fechaActual = date('Y-m-d');
 				$mesActual=   date('m');
+
 				//$fechaMesPasado = date('Y-m-d', strtotime('-1 month')) ;
 				//$mesPasado = date("m", strtotime('-1 month')); 
 

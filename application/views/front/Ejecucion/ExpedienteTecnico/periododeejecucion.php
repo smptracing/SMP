@@ -15,13 +15,13 @@
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Fecha de Inicio:</label>
 							<div>
-								<input type="date" class="form-control" name="txtFechaInicio" id="txtFechaInicio" value="<?=$ExpedienteTecnico->fecha_inicio_et?>">	
+								<input type="date" class="form-control" name="txtFechaInicio" id="txtFechaInicio" value="<?=(new DateTime($ExpedienteTecnico->fecha_inicio_et))->format('Y-m-d')?>">	
 							</div>	
 						</div>
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Fecha Fin:</label>
 							<div>
-								<input type="date" name="txtFechaFin" class="form-control" id="txtFechaFin" value="<?=$ExpedienteTecnico->fecha_fin_et?>">	
+								<input type="text" name="txtFechaFin" class="form-control" id="txtFechaFin" value="<?=(new DateTime($ExpedienteTecnico->fecha_fin_et))->format('Y-m-d')?>" >
 							</div>	
 						</div>
 					</div>

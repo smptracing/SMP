@@ -68,9 +68,6 @@
 				<div class="x_content">
 				<p></p>
                   	<ul class="nav nav-pills menuPrincipal" role="tablist">
-
-                  		<?php if($ExpedienteTecnicoElaboracion[0]->id_etapa_et == 1)
-		                { ?>
                     	<li role="presentation" class="dropdown" style="font-size: 15px; color: red;">
                       		<a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">	Expediente Técnico<span class="caret"></span>
                             </a>
@@ -85,8 +82,6 @@
 		                        </li>
 		                    </ul>
                     	</li>
-                    	<?php } ?>
-
                     	<li role="presentation" class="dropdown">
                       		<a id="drop5" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"> Mantenimiento<span class="caret"></span>
                             </a>
@@ -104,7 +99,7 @@
 		                        	</a>
 		                        </li>
 		                        <li role="presentation">
-		                        	<a role="menuitem" tabindex="-1" href="#" onclick="paginaAjaxDialogo(null, 'Agregar Periodo de Ejecucion',{ id_et: '<?=$ExpedienteTecnicoElaboracion[0]->id_et?>' }, base_url+'index.php/Expediente_Tecnico/PeriodoEjecucion', 'GET', null, null, false, true);return false;">Agregar Periodo de Ejecución	
+		                        	<a role="menuitem" tabindex="-1" href="#" onclick="paginaAjaxDialogo(null, 'Agregar Periodo de Ejecucion',{ id_et: '<?=$ExpedienteTecnicoElaboracion[0]->id_et?>' }, base_url+'index.php/Expediente_Tecnico/PeriodoEjecucion', 'GET', null, null, false, true);return false;"> Periodo de Ejecución	
 		                        	</a> 
 	                        	</li>
                       		</ul>
@@ -125,17 +120,12 @@
 		                        	</a>
 		                        </li>
 		                        <li role="presentation">
-	                        		<a role="menuitem" tabindex="-1" href="#" onclick="window.open(base_url+'index.php/Expediente_Tecnico/valorizacionEjecucionProyecto/<?=$ExpedienteTecnicoElaboracion[0]->id_et?>', '_blank'); return false;"> Cronograma Valorizado de Ejecución
+	                        		<a role="menuitem" tabindex="-1" href="#" onclick="window.open(base_url+'index.php/Expediente_Tecnico/valorizacionEjecucionProyecto/<?=$ExpedienteTecnicoElaboracion[0]->id_et?>', '_blank'); return false;"> Cronogramación
 		                        	</a>
 			                    </li>
 
 		                        <?php if($ExpedienteTecnicoElaboracion[0]->id_etapa_et == 2 || $ExpedienteTecnicoElaboracion[0]->id_etapa_et == 3)
 		                        { ?>
-		                        	
-			                        <!--<li role="presentation">
-		                        		<a role="menuitem" tabindex="-1" href="<?= site_url('Expediente_Tecnico/ListarPartida/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target='_blank'); return false;">Ordenes y Pedidos
-			                        	</a>
-			                        </li>-->
 			                         <li role="presentation">
 		                        		<a role="menuitem" tabindex="-1" href="<?= site_url('Expediente_Tecnico/ControlMetrado/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target='_blank'); return false;">Ejecución diaria de Metrados
 			                        	</a>
