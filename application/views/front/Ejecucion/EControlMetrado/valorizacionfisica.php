@@ -151,7 +151,7 @@ function mostrarAnidado($meta, $expedienteTecnico)
 		<div class="col-md-12 col-xs-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2><b>EXPEDIENTE TÉCNICO</b></h2>
+					<h2><b>Valorización Mensual</b></h2>
 					<div class="clearfix"></div>
 				</div>
 				<div class="x_content">

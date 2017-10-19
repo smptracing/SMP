@@ -51,13 +51,26 @@
 		<div class="col-md-12 col-xs-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2><b>EXPEDIENTE TÉCNICO</b></h2>
+					<h2><b>
+						<?php 
+						if($ExpedienteTecnicoElaboracion[0]->id_etapa_et == 1)
+						{ ?>
+							Expediente Técnico
+						<?php } ?>
+						<?php 
+						if($ExpedienteTecnicoElaboracion[0]->id_etapa_et == 3)
+						{ ?>
+							Proyecto en Ejecución
+						<?php } ?>						
+					</b></h2>
 					<div class="clearfix"></div>
 				</div>
 				<div class="x_content">
 				<p></p>
                   	<ul class="nav nav-pills menuPrincipal" role="tablist">
 
+                  		<?php if($ExpedienteTecnicoElaboracion[0]->id_etapa_et == 1)
+		                { ?>
                     	<li role="presentation" class="dropdown" style="font-size: 15px; color: red;">
                       		<a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">	Expediente Técnico<span class="caret"></span>
                             </a>
@@ -70,13 +83,11 @@
 	                        		<a role="menuitem" tabindex="-1" class='eliminarExpediente' href="#" onclick="Eliminar(<?=$ExpedienteTecnicoElaboracion[0]->id_et?>);return false;"> Eliminar Expediente Técnico 	
 		                        	</a>
 		                        </li>
-		                        <li role="presentation">
-		                        	<a role="menuitem" tabindex="-1" href="#" onclick="paginaAjaxDialogo(null, 'Agregar Periodo de Ejecucion',{ id_et: '<?=$ExpedienteTecnicoElaboracion[0]->id_et?>' }, base_url+'index.php/Expediente_Tecnico/PeriodoEjecucion', 'GET', null, null, false, true);return false;">Agregar Periodo de Ejecución	
-		                        	</a> 
-	                        	</li>
+		                    </ul>
+                    	</li>
+                    	<?php } ?>
 
-                    		</ul>
-                    	</li><li role="presentation" class="dropdown">
+                    	<li role="presentation" class="dropdown">
                       		<a id="drop5" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"> Mantenimiento<span class="caret"></span>
                             </a>
                       		<ul id="menu2" class="dropdown-menu subMenu" role="menu" aria-labelledby="drop5">
@@ -92,6 +103,10 @@
 	                        		<a role="menuitem" tabindex="-1" href="#" onclick="paginaAjaxDialogo(null, 'Visto Bueno del E.T.', { id_ExpedienteTecnico : <?=$ExpedienteTecnicoElaboracion[0]->id_et?> }, base_url+'index.php/Expediente_Tecnico/vistoBueno','GET', null, null, false, true); return false;"> Dar Visto Bueno	
 		                        	</a>
 		                        </li>
+		                        <li role="presentation">
+		                        	<a role="menuitem" tabindex="-1" href="#" onclick="paginaAjaxDialogo(null, 'Agregar Periodo de Ejecucion',{ id_et: '<?=$ExpedienteTecnicoElaboracion[0]->id_et?>' }, base_url+'index.php/Expediente_Tecnico/PeriodoEjecucion', 'GET', null, null, false, true);return false;">Agregar Periodo de Ejecución	
+		                        	</a> 
+	                        	</li>
                       		</ul>
                     	</li><li role="presentation" class="dropdown">
                       		<a id="drop6" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"> Operaciones <span class="caret"></span>

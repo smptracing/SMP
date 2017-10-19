@@ -940,22 +940,29 @@ class Expediente_Tecnico extends CI_Controller
     public function ControlMetrado($idExpedienteTecnico)
     {
 		$expedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnico($idExpedienteTecnico);
-		$listaUnidadMedida=$this->Model_Unidad_Medida->UnidadMedidad_Listar();
-
-		$expedienteTecnico->childComponente=$this->Model_ET_Componente->ETComponentePorIdET($expedienteTecnico->id_et);
-
-		foreach($expedienteTecnico->childComponente as $key => $value)
+		if($expedienteTecnico->id_etapa_et == 1)
 		{
-			$value->childMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($value->id_componente);
-
-			foreach($value->childMeta as $index => $item)
-			{
-				$this->obtenerMetaAnidadaParaValorizacion($item);				
-			}			
+			show_404();
 		}
-		$this->load->view('layout/Ejecucion/header');
-		$this->load->view('front/Ejecucion/EControlMetrado/controlmetrado', ['expedienteTecnico' => $expedienteTecnico, 'listaUnidadMedida' => $listaUnidadMedida]);
-		$this->load->view('layout/Ejecucion/footer');
+		else
+		{
+			$listaUnidadMedida=$this->Model_Unidad_Medida->UnidadMedidad_Listar();
+			$expedienteTecnico->childComponente=$this->Model_ET_Componente->ETComponentePorIdET($expedienteTecnico->id_et);
+
+			foreach($expedienteTecnico->childComponente as $key => $value)
+			{
+				$value->childMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($value->id_componente);
+
+				foreach($value->childMeta as $index => $item)
+				{
+					$this->obtenerMetaAnidadaParaValorizacion($item);				
+				}			
+			}
+			$this->load->view('layout/Ejecucion/header');
+			$this->load->view('front/Ejecucion/EControlMetrado/controlmetrado', ['expedienteTecnico' => $expedienteTecnico, 'listaUnidadMedida' => $listaUnidadMedida]);
+			$this->load->view('layout/Ejecucion/footer');
+		}
+		
     }
     public function AsignarValorizacion()
 	{
@@ -1021,22 +1028,28 @@ class Expediente_Tecnico extends CI_Controller
 	public function ValorizacionFisicaMetrado($idExpedienteTecnico)
 	{
 		$expedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnico($idExpedienteTecnico);
-		$listaUnidadMedida=$this->Model_Unidad_Medida->UnidadMedidad_Listar();
-
-		$expedienteTecnico->childComponente=$this->Model_ET_Componente->ETComponentePorIdET($expedienteTecnico->id_et);
-
-		foreach($expedienteTecnico->childComponente as $key => $value)
+		if($expedienteTecnico->id_etapa_et == 1)
 		{
-			$value->childMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($value->id_componente);
-
-			foreach($value->childMeta as $index => $item)
-			{
-				$this->obtenerMetaAnidadaParaValorizacionFisica($item);				
-			}			
+			show_404();
 		}
-		$this->load->view('layout/Ejecucion/header');
-		$this->load->view('front/Ejecucion/EControlMetrado/valorizacionfisica', ['expedienteTecnico' => $expedienteTecnico, 'listaUnidadMedida' => $listaUnidadMedida]);
-		$this->load->view('layout/Ejecucion/footer');
+		else
+		{
+			$listaUnidadMedida=$this->Model_Unidad_Medida->UnidadMedidad_Listar();
+			$expedienteTecnico->childComponente=$this->Model_ET_Componente->ETComponentePorIdET($expedienteTecnico->id_et);
+
+			foreach($expedienteTecnico->childComponente as $key => $value)
+			{
+				$value->childMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($value->id_componente);
+
+				foreach($value->childMeta as $index => $item)
+				{
+					$this->obtenerMetaAnidadaParaValorizacionFisica($item);				
+				}			
+			}
+			$this->load->view('layout/Ejecucion/header');
+			$this->load->view('front/Ejecucion/EControlMetrado/valorizacionfisica', ['expedienteTecnico' => $expedienteTecnico, 'listaUnidadMedida' => $listaUnidadMedida]);
+			$this->load->view('layout/Ejecucion/footer');
+		}
 	}
 	private function obtenerMetaAnidadaParaValorizacionFisica($meta)
 	{

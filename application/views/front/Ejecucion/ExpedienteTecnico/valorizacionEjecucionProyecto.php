@@ -124,7 +124,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
 		<div class="col-md-12 col-xs-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2><b>EXPEDIENTE TÉCNICO (VALORIZACIÓN DE EJECUCIÓN)</b></h2>
+					<h2><b>Cronograma Valorizado de Ejecución</b></h2>
 					<div class="clearfix"></div>
 				</div>
 				<div class="x_content">
