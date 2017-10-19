@@ -39,7 +39,7 @@
 	}
 	.subMenu >li>a
 	{
-		padding: 10px 10px;
+		padding: 5px 5px;
 		color:#001f3f;
 		font-size: 13px;
 	}

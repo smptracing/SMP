@@ -104,12 +104,9 @@ class Expediente_Tecnico extends CI_Controller
 	}
 	public function ejecucion()
 	{
-		$listaCompatibilidad = $this->Model_ET_Expediente_Tecnico->ListarExpedientePorEtapa(2);
-		$listaEjecucionDeductivo = $this->Model_ET_Expediente_Tecnico->ListarExpedientePorEtapa(3);
-		$listaEjecucionAdicional = $this->Model_ET_Expediente_Tecnico->ListarExpedientePorEtapa(4);
-		$listaModificacion = $this->Model_ET_Expediente_Tecnico->ListarExpedientePorEtapa(5);
+		$listaEjecucion = $this->Model_ET_Expediente_Tecnico->ListarExpedientePorEtapa(3);
 		$this->load->view('layout/Ejecucion/header');
-		$this->load->view('front/Ejecucion/ExpedienteTecnico/ejecucion.php',['listaCompatibilidad' => $listaCompatibilidad, 'listaEjecucionDeductivo' => $listaEjecucionDeductivo, 'listaEjecucionAdicional' => $listaEjecucionAdicional, 'listaModificacion' => $listaModificacion]);
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/ejecucion.php',['listaEjecucion' => $listaEjecucion]);
 		$this->load->view('layout/Ejecucion/footer');
 	}
 

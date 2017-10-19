@@ -36,7 +36,7 @@
 									</tr>
 								</thead>
 								<tbody>
-								<?php foreach($listaEjecucionDeductivo as $item){ ?>
+								<?php foreach($listaEjecucion as $item){ ?>
 								  	<tr>
 								  		<td>
 								  			<a href="<?= site_url('Expediente_Tecnico/verdetalle/'.$item->id_et);?>" role="button" class="btn btn-success btn-sm"><span class="fa fa-eye"></span> <?= $item->codigo_unico_pi?></a>

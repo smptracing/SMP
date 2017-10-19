@@ -31,7 +31,7 @@
 										<td class="col-md-2 col-xs-12">Unidad Ejecutora</td>
 										<td class="col-md-5 col-xs-12">Nombre del proyecto</td>
 										<td class="col-md-1 col-xs-12">Costo Total del proyecto Preinversion</td>
-										<td class="col-md-1 col-xs-12">Costo Total del proyecto Inversion</td>
+										<td class="col-md-2 col-xs-12">Costo Total del proyecto Inversion</td>
 										<td class="col-md-1 col-xs-12">Tiempo Ejecucion</td>
 										<td class="col-md-1 col-xs-12">Numero Beneficiarios</td>										
 									</tr>
@@ -50,17 +50,17 @@
 											<?= $item->nombre_pi?>
 										</td>
 										<td>
-											S/. <?= $item->costo_total_preinv_et?> 
+											S/. <?=a_number_format($item->costo_total_preinv_et,2,'.',",",3)?> 
 										</td>
 										<td>
-											S/. <?= $item->costo_total_inv_et?>
+											S/. <?=a_number_format($item->costo_total_inv_et,2,'.',",",3)?>
 										</td>
 										<td>
 											<?= $item->tiempo_ejecucion_pi_et?>
 										</td>
 										<td>
-											<?= $item->num_beneficiarios?>
-										</td>										
+											<?=a_number_format($item->num_beneficiarios,0,'.',",",3) ?>
+										</td>												
 								  	</tr>
 								<?php } ?>
 								</tbody>
