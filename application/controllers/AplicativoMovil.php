@@ -6,9 +6,15 @@ class AplicativoMovil extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+        $this->load->model('Model_Funcion');
 	}
- public function index()
+    
+    public function index()
     {
-        $this->load->view('front/Aplicativo_Movil/index');
-    }   
+        $comboboxfuncion=$this->Model_Funcion->GetFuncion();
+        //var_dump($comboboxfuncion);exit;
+        $this->load->view('front/Aplicativo_Movil/index',['comboboxfuncion'=>$comboboxfuncion]);
+    } 
+
+
 }

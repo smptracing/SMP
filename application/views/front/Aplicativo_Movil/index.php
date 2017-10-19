@@ -276,23 +276,30 @@ function initMap() {
                   </div>
                   <div id="collapseTwo" class="panel-collapse collapse">
                     <div class="box-body">
+
+					
+
 	                    <div>
-							<label>Función</label>
-							<select>
-							<option>Elija Función</option>
+							<label style="color: gray">Función</label>
+							<select class="form-control">
+							<option value="1" style="font-size:9.5px">Elija Función</option>
+							<?php foreach($comboboxfuncion as $item){ ?>
+								<option value="<?=$item->id_funcion; ?>"  style="font-size:9.5px"><?= $item->nombre_funcion;?></option>
+							<?php } ?>
+					
 							</select>
 	                    </div>
 	                    <div>
-							<label>División funcional</label>
-							<select>
-								<option>Elija División Funcional</option>
+							<label style="color: gray">División funcional</label>
+							<select class="form-control">
+								<option style="font-size:9.5px">Elija División Funcional</option>
 							</select>
 	                  	</div>
 
 	                  	<div>
-							<label>Grupo funcional</label>
-							<select>
-								<option>Elija Grupo Funcional</option>
+							<label style="color: gray">Grupo funcional</label>
+							<select class="form-control">
+								<option style="font-size:9.5px">Elija Grupo Funcional</option>
 							</select>
 	                  	</div>
                     </div>
