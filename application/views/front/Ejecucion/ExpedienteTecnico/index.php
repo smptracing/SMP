@@ -43,7 +43,7 @@
 								<?php foreach($listaExpedienteTecnicoElaboracion as $item){ ?>
 								  	<tr>
 								  		<td>
-								  			<a href="<?= site_url('Expediente_Tecnico/verdetalle/'.$item->id_pi);?>" role="button" class="btn btn-success btn-sm"><span class="fa fa-eye"></span> <?= $item->codigo_unico_pi?></a>
+								  			<a href="<?= site_url('Expediente_Tecnico/verdetalle/'.$item->id_et);?>" role="button" class="btn btn-success btn-sm"><span class="fa fa-eye"></span> <?= $item->codigo_unico_pi?></a>
 								  				
 								  		</td>
 										<td>

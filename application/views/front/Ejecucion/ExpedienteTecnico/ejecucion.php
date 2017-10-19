@@ -39,19 +39,23 @@
 							<table id="table-Compatibilidad" style="text-align: center;" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 								<thead>
 									<tr>
-										<td>Unidad Ejecutora</td>
-										<td>Nombre del proyecto</td>
-										<td>Costo Total del proyecto Preinversion</td>
-										<td>Costo Total del proyecto Inversion</td>
-										<td>Tiempo Ejecucion</td>
-										<td>Numero Beneficiarios</td>
-										<td></td>
+										<!--<td class="col-md-1 col-xs-12">Detalle</td>-->
+										<td class="col-md-2 col-xs-12">Unidad Ejecutora</td>
+										<td class="col-md-5 col-xs-12">Nombre del proyecto</td>
+										<td class="col-md-1 col-xs-12">Costo Total del proyecto Preinversion</td>
+										<td class="col-md-1 col-xs-12">Costo Total del proyecto Inversion</td>
+										<td class="col-md-1 col-xs-12">Tiempo Ejecucion</td>
+										<td class="col-md-1 col-xs-12">Numero Beneficiarios</td>
+										<td class="col-md-1 col-xs-12"></td>
 									</tr>
 								</thead>	
 								<tbody>
 								<?php foreach($listaExpedienteTecnicoEtapa as $item1){ ?>
 								  	<tr>
-										 <td>
+								  		<!--<td>
+								  			<a href="<?= site_url('Expediente_Tecnico/verdetalle/'.$item1->id_pi);?>" role="button" class="btn btn-success btn-sm"><span class="fa fa-eye"></span> <?= $item1->codigo_unico_pi?></a>
+								  		</td>-->
+										<td>
 											<?= $item1->nombre_ue?>
 										</td>
 										<td>
@@ -72,10 +76,10 @@
 										<td>
 									  		<button type='button' data-toggle="tooltip" data-original-title="Editar Expediente" class='editar btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Modificar Expediente Técnico',{ id_et: '<?=$item1->id_et?>' }, base_url+'index.php/Expediente_Tecnico/editar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-pencil bigger-120'></i></button>
 											<button type='button' data-toggle="tooltip" data-original-title="Registro de componentes, metas y partidas"  class='editar btn btn-warning btn-xs' onclick="paginaAjaxDialogo(null, 'Registro de componentes, metas y partidas', { idExpedienteTecnico : <?=$item1->id_et?> }, base_url+'index.php/ET_Componente/insertar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-align-left bigger-120'></i></button>
-											<!--<button type='button' data-toggle="tooltip" data-original-title="Administración de partidas y analítico"   class='editar btn btn-success btn-xs' onclick="paginaAjaxDialogo(null, 'Administración de partidas y analítico', { idExpedienteTecnico : <?=$item->id_et?> }, base_url+'index.php/ET_Detalle_Partida/insertar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-indent bigger-120'></i></button>-->
+											<button type='button' data-toggle="tooltip" data-original-title="Administración de partidas y analítico"   class='editar btn btn-success btn-xs' onclick="paginaAjaxDialogo(null, 'Administración de partidas y analítico', { idExpedienteTecnico : <?=$item1->id_et?> }, base_url+'index.php/ET_Detalle_Partida/insertar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-indent bigger-120'></i></button>
 											<button type='button' data-toggle="tooltip" data-original-title="Presupuesto analítico"   class='editar btn btn-dark btn-xs' onclick="paginaAjaxDialogo(null, 'Presupuesto analítico', { idExpedienteTecnico : <?=$item1->id_et?> }, base_url+'index.php/ET_Presupuesto_Analitico/insertar', 'GET', null, null, false, true);"><i class='ace-icon fa fa-usd bigger-120'></i></button>
 											<button onclick="Eliminar(<?=$item1->id_et?>);" data-toggle="tooltip" data-original-title="Eliminar Expediente Técnico"   class='eliminarExpediente btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button>
-											<!--<button type='button' data-toggle="tooltip" data-original-title="Enviar E.T. a la siguiente etapa"   class='btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Seleccionar etapa de ejecución para la clonación', { idExpedienteTecnico : <?=$item1->id_et?> }, base_url+'index.php/Expediente_Tecnico/clonar', 'POST', null, null, false, true);"><i class='ace-icon fa fa-arrow-right bigger-120'></i></button>-->
+											<button type='button' data-toggle="tooltip" data-original-title="Enviar E.T. a la siguiente etapa"   class='btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Seleccionar etapa de ejecución para la clonación', { idExpedienteTecnico : <?=$item1->id_et?> }, base_url+'index.php/Expediente_Tecnico/clonar', 'POST', null, null, false, true);"><i class='ace-icon fa fa-arrow-right bigger-120'></i></button>
 										</td>
 
 					

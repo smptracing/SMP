@@ -176,14 +176,14 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Costo Total del Proyecto PreInversion: 
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input readonly="readonly" type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12" value="<?=$ExpedienteTecnicoElaboracion[0]->costo_total_preinv_et?>">
+                          <input readonly="readonly" type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12" value="<?=a_number_format($ExpedienteTecnicoElaboracion[0]->costo_total_preinv_et,2,'.',",",3)?>">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Costo Total del Proyecto Inversion: 
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input readonly="readonly" type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12" value="<?=$ExpedienteTecnicoElaboracion[0]->costo_total_inv_et?>">
+                          <input readonly="readonly" type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12" value="<?=a_number_format($ExpedienteTecnicoElaboracion[0]->costo_total_inv_et,2,'.',",",3)?>">
                         </div>
                       </div>
                       <div class="form-group">

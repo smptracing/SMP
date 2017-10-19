@@ -103,6 +103,30 @@ class Expediente_Tecnico extends CI_Controller
 		$this->_load_layout('front/Ejecucion/ExpedienteTecnico/monitorcoordinador.php', ['listaETExpedienteTecnico' => $listaETExpedienteTecnico]);
 	
 	}
+	public function compatibilidad()
+	{
+		$flat="LISTARETAPA";
+		$id_etapa_et="2";
+		$listaExpedienteTecnicoElaboracion=$this->Model_ET_Expediente_Tecnico->ExpedienteListarElaboracion($flat,$id_etapa_et);
+
+		$listaETExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->ListarExpedienteTecnico();
+		foreach($listaETExpedienteTecnico as $key => $value)
+		{
+			$value->primeraETTarea=$this->Model_ET_Tarea->primeraETTareaPorIdET($value->id_et);
+			$value->ultimaETTarea=$this->Model_ET_Tarea->ultimaETTareaPorIdET($value->id_et);
+
+			$value->existeGantt=false;
+
+			if($value->primeraETTarea!=null)
+			{
+				$value->existeGantt=true;
+			}
+		}
+		$this->load->view('layout/Ejecucion/header');
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/compatibilidad',['listaExpedienteTecnicoElaboracion'=>$listaExpedienteTecnicoElaboracion,'listaETExpedienteTecnico'=>$listaETExpedienteTecnico]);
+		$this->load->view('layout/Ejecucion/footer');
+
+	}
 	public function ejecucion()
 	{
 		$flat1="LISTARCOMPATIBILIDAD";
@@ -840,7 +864,20 @@ class Expediente_Tecnico extends CI_Controller
 
 		return false;
 	}
-	public function verdetalle($id_pi)
+	public function verdetalle($id_et)
+	{
+		$ExpedienteTecnicoElaboracion=$this->Model_ET_Expediente_Tecnico->ExpedienteListarElaboracionPorId($id_et);
+		/*foreach ($ExpedienteTecnicoElaboracion as $key => $value) 
+		{
+			$value->costo_total_preinv_et = a_number_format($value->costo_total_preinv_et , 2, '.',",",3);
+			$value->costo_total_inv_et = a_number_format($value->costo_total_inv_et , 2, '.',",",3);
+		}*/
+		$this->load->view('layout/Ejecucion/header');
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/verdetalle', [ 'ExpedienteTecnicoElaboracion' => $ExpedienteTecnicoElaboracion ]);
+		$this->load->view('layout/Ejecucion/footer');
+	}
+
+	/* public function verdetalle($id_pi)
 	{
 		$flat="LISTARETAPA";
 		$id_etapa_et="1";
@@ -855,6 +892,21 @@ class Expediente_Tecnico extends CI_Controller
 		$this->load->view('front/Ejecucion/ExpedienteTecnico/verdetalle', [ 'ExpedienteTecnicoElaboracion' => $ExpedienteTecnicoElaboracion ]);
 		$this->load->view('layout/Ejecucion/footer');
 	}
+	public function verdetalleCompatibilidad($id_pi)
+	{
+		$flat="LISTARETAPA";
+		$id_etapa_et="2";
+
+		$ExpedienteTecnicoElaboracion=$this->Model_ET_Expediente_Tecnico->ExpedienteListarElaboracionPorId($flat,$id_etapa_et,$id_pi);
+		foreach ($ExpedienteTecnicoElaboracion as $key => $value) 
+		{
+			$value->costo_total_preinv_et = a_number_format($value->costo_total_preinv_et , 2, '.',",",3);
+			$value->costo_total_inv_et = a_number_format($value->costo_total_inv_et , 2, '.',",",3);
+		}
+		$this->load->view('layout/Ejecucion/header');
+		$this->load->view('front/Ejecucion/ExpedienteTecnico/verdetalle', [ 'ExpedienteTecnicoElaboracion' => $ExpedienteTecnicoElaboracion ]);
+		$this->load->view('layout/Ejecucion/footer');
+	}*/
 	public function PeriodoEjecucion()
 	{
 		if ($_POST) 
