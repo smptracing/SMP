@@ -13,6 +13,7 @@
   <link href="<?php echo base_url(); ?>assets/adminlte/ionicons.min.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/adminlte/AdminLTE.min.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/adminlte/_all-skins.min.css" rel="stylesheet">
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1uRF6cxgwFc9DGwREFvIE6oorBaWny64&callback=initMap"></script>
   <style>
     .main-footer 
     {
@@ -96,8 +97,38 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+  <script>
+function initMap() {
+ // Creamos un objeto mapa y especificamos el elemento DOM donde se va a mostrar.
+ var map = new google.maps.Map(document.getElementById('mapa'), {
+ center: {lat: 43.2686751, lng: -2.9340005},
+ scrollwheel: false,
+ zoom: 8,
+ zoomControl: true,
+ rotateControl : false,
+ mapTypeControl: true,
+ streetViewControl: false,
+ });
+ // Creamos dos marcadores.
+ var marker1 = new google.maps.Marker({
+ position: {lat: 43.2686751, lng: -2.9340005}, 
+ icon: "<?php echo base_url(); ?>assets/images/localizacion/carretera.png", 
+ draggable: false
+ });
+ // a este marcador le añadimos un icono personalizado
+ var marker2 = new google.maps.Marker({
+ position: {lat: 42.8286751, lng: -3.0990005}, 
+ icon: "<?php echo base_url(); ?>assets/images/localizacion/obras.png", 
+ draggable: false
+ });
+// Le asignamos el mapa a los marcadores.
+ marker1.setMap(map);
+ marker2.setMap(map);
+}
+</script>
 </head>
-<body class="hold-transition skin-blue layout-top-nav">
+</head>
+<body class="hold-transition skin-blue layout-top-nav"  onload="initMap()">
 <div class="wrapper">
   <header class="main-header">
     <nav class="navbar navbar-static-top">
@@ -256,7 +287,7 @@
           <!-- MAP & BOX PANE -->
           <div class="box box-success">
             <div class="box-header with-border">
-              <h3 class="box-title">Visitors Report</h3>
+              <h3 class="box-title">Proyectos de localización</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -270,7 +301,10 @@
                 <div class="col-md-9 col-sm-8">
                   <div class="pad">
                     <!-- Map will be created here -->
-                    <div id="world-map-markers" style="height: 325px;"></div>
+                    <div id="mapa" style="height: 325px;">
+                      assd
+                    </div>
+
                   </div>
                 </div>
                 <!-- /.col -->
