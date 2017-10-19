@@ -108,7 +108,7 @@
 	                {
 	                    swal("Error","Ocurrio un error ", "error");
 	                }
-                    window.location.href=base_url+"index.php/Expediente_Tecnico/verdetalle/"+<?= $ExpedienteTecnico->id_pi?>;
+                    window.location.href=base_url+"index.php/Expediente_Tecnico/verdetalle/"+<?= $ExpedienteTecnico->id_et?>;
                 }
             });
           $('#frmAsignarOrden')[0].reset();
