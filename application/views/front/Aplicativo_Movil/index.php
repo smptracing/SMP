@@ -163,7 +163,7 @@ function initMap() {
             <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">CPU Traffic</span>
+              <span class="info-box-text">PMI</span>
               <span class="info-box-number">90<small>%</small></span>
             </div>
             <!-- /.info-box-content -->
@@ -176,7 +176,7 @@ function initMap() {
             <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Likes</span>
+              <span class="info-box-text">FORMULACION</span>
               <span class="info-box-number">41,410</span>
             </div>
             <!-- /.info-box-content -->
@@ -193,7 +193,7 @@ function initMap() {
             <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Sales</span>
+              <span class="info-box-text">EJECUCIÓN</span>
               <span class="info-box-number">760</span>
             </div>
             <!-- /.info-box-content -->
@@ -206,7 +206,7 @@ function initMap() {
             <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">New Members</span>
+              <span class="info-box-text">FUNCIONAMIENTO</span>
               <span class="info-box-number">2,000</span>
             </div>
             <!-- /.info-box-content -->
@@ -349,7 +349,7 @@ function initMap() {
             <span class="info-box-icon"><i class="ion ion-ios-pricetag-outline"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Inventory</span>
+              <span class="info-box-text">PIP</span>
               <span class="info-box-number">5,200</span>
 
               <div class="progress">
@@ -366,9 +366,9 @@ function initMap() {
             <span class="info-box-icon"><i class="ion ion-ios-heart-outline"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Mentions</span>
+              <span class="info-box-text">NO PIP</span>
               <span class="info-box-number">92,050</span>
-
+				
               <div class="progress">
                 <div class="progress-bar" style="width: 20%"></div>
               </div>
@@ -376,6 +376,7 @@ function initMap() {
                     20% Increase in 30 Days
                   </span>
             </div>
+            
             <!-- /.info-box-content -->
           </div>
           <!-- /.info-box -->
