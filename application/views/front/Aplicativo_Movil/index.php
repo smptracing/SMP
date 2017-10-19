@@ -14,7 +14,7 @@
   <link href="<?php echo base_url(); ?>assets/adminlte/ionicons.min.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/adminlte/AdminLTE.min.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/adminlte/_all-skins.min.css" rel="stylesheet">
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1uRF6cxgwFc9DGwREFvIE6oorBaWny64&callback=initMap"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1uRF6cxgwFc9DGwREFvIE6oorBaWny64&callback=initialize"></script>
   <style>
     .main-footer 
     {
@@ -98,64 +98,12 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-  <script>
-function initMap() {
- // Creamos un objeto mapa y especificamos el elemento DOM donde se va a mostrar.
- var map = new google.maps.Map(document.getElementById('mapa'), {
- center: {lat: -13.871858, lng: -72.685349 },
-    zoom: 8,
-    panControl: true,
-    zoomControl: true,
-    mapTypeControl: true,
-    scaleControl: true,
-    streetViewControl: true,
-    overviewMapControl: true,
-    rotateControl: true,
-
-
-
- });
-
-
- //Creamos dos marcadores.
- var marker1 = new google.maps.Marker({
- position: {lat: -13.871858, lng: -72.867959}, 
- icon: "<?php echo base_url(); ?>assets/images/localizacion/carretera.png", 
- name: 'Parking',
- draggable: false,
- });
- google.maps.event.addListener(marker1, 'click', function(){
-      var popup = new google.maps.InfoWindow();
-      var note = 'Wohoooo, salió el InfoWindow cuando pulsé el marcador y en el lugar: ' + this.title
-        + ', por fin se arreglo, pero ¿por qué salen varias burbujas?';
-      popup.setContent(note);
-      popup.open(map, this);
-    });
-
- // a este marcador le añadimos un icono personalizado
- 
- var marker2 = new google.maps.Marker({
- position: {lat: -14.115294, lng: -72.685349}, 
- icon: "<?php echo base_url(); ?>assets/images/localizacion/obras.png", 
- name: 'Parking',
- draggable: false,
- });
-
-  google.maps.event.addListener(marker2, 'click', function(){
-      var popup = new google.maps.InfoWindow();
-      var note = 'Wohoooo, salió el InfoWindow cuando pulsé el marcador y en el lugar: ' + this.title
-        + ', por fin se arreglo, pero ¿por qué salen varias burbujas?';
-      popup.setContent(note);
-      popup.open(map, this);
-    });
-// Le asignamos el mapa a los marcadores.
- marker1.setMap(map);
- marker2.setMap(map);
-}
+</head>
+<script>
+var base_url = '<?php echo base_url(); ?>';
 </script>
 </head>
-</head>
-<body class="hold-transition skin-blue layout-top-nav"  onload="initMap()">
+<body class="hold-transition skin-blue layout-top-nav"  onload="initialize()">
 <div class="wrapper">
   <header class="main-header">
     <nav class="navbar navbar-static-top">
@@ -178,14 +126,7 @@ function initMap() {
       <section class="content" style="margin-top: 30px;"> <!-- Main content -->
       <div class="row box-container">
       
-            <div class="col-md-12 col-xs-12">
-                                 
-               
-
-
-
-
-      <!-- Main row -->
+    <div class="col-md-12 col-xs-12">
       <div class="row">
         <!-- Left col -->
         <div class="col-md-8">
@@ -194,12 +135,7 @@ function initMap() {
             <div class="box-header with-border">
               <h3 class="box-title">Localización</h3>
 
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
+           		 </div>
             <!-- /.box-header -->
             <div class="box-body no-padding">
               <div class="row">
@@ -207,7 +143,7 @@ function initMap() {
                   <div class="pad">
                     <!-- Map will be created here -->
                     <div id="mapa" style="height: 350px;">
-                      assd
+                      
                     </div>
 
                   </div>
@@ -261,9 +197,9 @@ function initMap() {
                   </span>
             </div>
             
-            <!-- /.info-box-content -->
+
           </div>
-          <!-- /.info-box -->
+
           <div class="info-box bg-red">
             <span class="info-box-icon"><i class="ion ion-ios-cloud-download-outline"></i></span>
 
@@ -278,9 +214,9 @@ function initMap() {
                     70% Increase in 30 Days
                   </span>
             </div>
-            <!-- /.info-box-content -->
+
           </div>
-          <!-- /.info-box -->
+
           <div class="info-box bg-aqua">
             <span class="info-box-icon"><i class="ion-ios-chatbubble-outline"></i></span>
 
@@ -295,26 +231,20 @@ function initMap() {
                     40% Increase in 30 Days
                   </span>
             </div>
-            <!-- /.info-box-content -->
+
           </div>
           
         </div>
-        <!-- /.col -->
+
       </div>
 
-            <div class="row">
+       <div class="row">
         <div class="col-md-12">
           <div class="box">
-     
-            <!-- /.box-header -->
             <div class="box-body">
               <div class="row">
-           
-                <!-- /.col -->
-
-                <!-- /.col -->
+ 
               </div>
-              <!-- /.row -->
             </div>
             <!-- ./box-body -->
             <div class="box-footer">
@@ -367,11 +297,7 @@ function initMap() {
       <!-- /.row -->
 
     <!-- /.content -->
-
-
-
-
-                    
+     
              </div>
      	</div> 
     </section>
@@ -386,11 +312,54 @@ function initMap() {
     </div>
   </footer>
 </div>
+
 <script src="<?php echo base_url(); ?>assets/adminlte/jquery-2.2.3.min.js"> </script>
 <script src="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/adminlte/jquery.slimscroll.min.js"> </script>
 <script src="<?php echo base_url(); ?>assets/adminlte/fastclick.min.js"> </script>
 <script src="<?php echo base_url(); ?>assets/adminlte/app.min.js"> </script>
 <script src="<?php echo base_url(); ?>assets/adminlte/demo.js"> </script>
+<script type="text/javascript">
+    function initialize() {
+      
+      var map = new google.maps.Map(document.getElementById('mapa'), {
+        zoom: 7,
+        center: new google.maps.LatLng(-13.871858, -72.867959),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      });
+      var marker, i;
+      var infowindow = new google.maps.InfoWindow();
+
+      $.ajax(
+   		 {
+		        url: base_url+"index.php/PrincipalPmi/listaTotalDeUbicacionesProyecto",
+		        type: "POST",
+		        success: function(marcadores)
+		        {
+
+		        	 var marcadores=JSON.parse(marcadores);
+
+				      for (i = 0; i < marcadores.length; i++) {  
+				        marker = new google.maps.Marker({
+				          position: new google.maps.LatLng(marcadores[i][1], marcadores[i][2]),
+				          map: map,
+				          icon: "<?php echo base_url(); ?>assets/images/localizacion/arbol.png", 
+				        });
+				        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+				          return function() {
+				            infowindow.setContent(marcadores[i][0]);
+				            infowindow.open(map, marker);
+				          }
+				        })(marker, i));
+				      }	
+
+		  		}
+
+   		 });
+ 
+
+     
+    }
+    </script>
 </body>
 </html>
