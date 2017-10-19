@@ -93,7 +93,6 @@
 								</li>
 								<li><a><i class="fa fa-play"></i> EJECUCIÓN <span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="#">Compatibilidad</a></li>
 										<!--<li><a href="<?php echo site_url('Expediente_Tecnico/monitorCoordinador'); ?>">Monitoreo de ET (Coordinador)</a></li>-->
 										<li><a href="<?php echo site_url('Expediente_Tecnico/ejecucion'); ?>">Ejecución</a></li>
 									</ul>

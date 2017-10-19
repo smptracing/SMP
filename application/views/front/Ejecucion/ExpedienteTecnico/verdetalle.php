@@ -109,23 +109,24 @@
 	                        		<a role="menuitem" tabindex="-1" href="#" onclick="paginaAjaxDialogo(null, 'Presupuesto analítico', { idExpedienteTecnico : <?=$ExpedienteTecnicoElaboracion[0]->id_et?> }, base_url+'index.php/ET_Presupuesto_Analitico/insertar', 'GET', null, null, false, true); return false;"> Presupuesto Analítico	
 		                        	</a>
 		                        </li>
+		                        <li role="presentation">
+	                        		<a role="menuitem" tabindex="-1" href="#" onclick="window.open(base_url+'index.php/Expediente_Tecnico/valorizacionEjecucionProyecto/<?=$ExpedienteTecnicoElaboracion[0]->id_et?>', '_blank'); return false;"> Cronograma Valorizado de Ejecución
+		                        	</a>
+			                    </li>
 
 		                        <?php if($ExpedienteTecnicoElaboracion[0]->id_etapa_et == 2 || $ExpedienteTecnicoElaboracion[0]->id_etapa_et == 3)
 		                        { ?>
-		                        	<li role="presentation">
-	                        		<a role="menuitem" tabindex="-1" href="#" onclick="window.open(base_url+'index.php/Expediente_Tecnico/valorizacionEjecucionProyecto/<?=$ExpedienteTecnicoElaboracion[0]->id_et?>', '_blank'); return false;"> Valorización de Ejecución	
-		                        	</a>
-			                        </li>
+		                        	
 			                        <!--<li role="presentation">
 		                        		<a role="menuitem" tabindex="-1" href="<?= site_url('Expediente_Tecnico/ListarPartida/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target='_blank'); return false;">Ordenes y Pedidos
 			                        	</a>
 			                        </li>-->
 			                         <li role="presentation">
-		                        		<a role="menuitem" tabindex="-1" href="<?= site_url('Expediente_Tecnico/ControlMetrado/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target='_blank'); return false;">Valorizacion
+		                        		<a role="menuitem" tabindex="-1" href="<?= site_url('Expediente_Tecnico/ControlMetrado/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target='_blank'); return false;">Ejecución diaria de Metrados
 			                        	</a>
 			                        </li>
 			                        <li role="presentation">
-		                        		<a role="menuitem" tabindex="-1" href="<?= site_url('Expediente_Tecnico/ValorizacionFisicaMetrado/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target='_blank'); return false;">Valorizacion Fisica de obra de Mmayores Metrados
+		                        		<a role="menuitem" tabindex="-1" href="<?= site_url('Expediente_Tecnico/ValorizacionFisicaMetrado/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target='_blank'); return false;">Valorizacion Mensual
 			                        	</a>
 			                        </li>
 		                        <?php } ?>
