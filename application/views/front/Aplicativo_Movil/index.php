@@ -6,23 +6,39 @@
   <title>Localización</title>
   <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/images/localizacion/favicon.ico">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link href="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!--<link href="<?php echo base_url(); ?>assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">-->
-	<link href="<?php echo base_url(); ?>assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
-  <link href="<?php echo base_url(); ?>assets/adminlte/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
-  <link href="<?php echo base_url(); ?>assets/adminlte/ionicons.min.css" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="<?php echo base_url(); ?>assets/adminlte/jquery-2.2.3.min.js"> </script>
+  <script src="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+  <link href="<?php echo base_url(); ?>assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/adminlte/ionicons.min.css">
+
   <link href="<?php echo base_url(); ?>assets/adminlte/AdminLTE.min.css" rel="stylesheet">
+
   <link href="<?php echo base_url(); ?>assets/adminlte/_all-skins.min.css" rel="stylesheet">
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1uRF6cxgwFc9DGwREFvIE6oorBaWny64&callback=initialize"></script>
-  
-	|<script src="<?php echo base_url(); ?>assets/adminlte/jquery-2.2.3.min.js"> </script>
-	<script src="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/adminlte/bower_components/morris.js/morris.css">
+
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/adminlte/bower_components/jvectormap/jquery-jvectormap.css">
+
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/adminlte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/adminlte/bower_components/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/adminlte/bower_components/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+	
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+  <link href="<?php echo base_url(); ?>assets/adminlte/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 	<script src="<?php echo base_url(); ?>assets/adminlte/jquery.slimscroll.min.js"> </script>
 	<script src="<?php echo base_url(); ?>assets/adminlte/fastclick.min.js"> </script>
 	<script src="<?php echo base_url(); ?>assets/adminlte/app.min.js"> </script>
 	<script src="<?php echo base_url(); ?>assets/adminlte/demo.js"> </script>
-
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1uRF6cxgwFc9DGwREFvIE6oorBaWny64&callback=initialize">
+  </script>
   <style>
     .main-footer 
     {
@@ -124,8 +140,8 @@
 var base_url = '<?php echo base_url(); ?>';
 </script>
 </head>
-<body class="hold-transition skin-blue layout-top-nav"  onload="initialize()">
-<div class="wrapper">
+<body class="hold-transition skin-blue layout-top-nav">
+<div class="">
   <header class="main-header">
     <nav class="navbar navbar-static-top">
       <div class="container">
@@ -149,128 +165,113 @@ var base_url = '<?php echo base_url(); ?>';
       
     <div class="col-md-12 col-xs-12">
       <div class="row">
-        <!-- Left col -->
+
         <div class="col-md-8">
-          <!-- MAP & BOX PANE -->
+
           <div class="box box-success">
-            <div class="box-header with-border">
-              <h3 class="box-title">Localización</h3>
+	            <div class="box-header with-border">
+					<div class="row">
 
-           		 </div>
-            <!-- /.box-header -->
-            <div class="box-body no-padding">
-              <div class="row">
-                <div class="col-md-12 col-sm-8">
-                  <div class="pad">
-                    <!-- Map will be created here -->
-                    <div id="mapa" style="height: 350px;">
-                      
-                    </div>
+			             <div class="col-md-5 col-sm-8">
+			             	<p class="bg-success"><label>Localización</label></p>
+			             </div>
+						 <div class="col-md-5 col-sm-8" style="margin-top: -10px;margin-left: 123px;">
+							<div class="input-group">
+									<input type="text" id="BuscarPip"  class="form-control" placeholder="Ingrese código Único" value="">
+									<span class="input-group-btn">
+									<button id="CodigoUnico" class="btn btn-default" type="button" ><span class="glyphicon glyphicon-search"> Buscar</span></button>
+									</span>
+							</div>
+						</div>
+	              </div>
 
-                  </div>
-                </div>
-                <!-- /.col -->
-      
-         
-              </div>
-              <!-- /.row -->
-            </div>
-            <!-- /.box-body -->
+	           	</div>
+		            <div class="box-body no-padding">
+		              <div class="row">
+		                <div class="col-md-12 col-sm-8">
+		                  <div class="pad">
+		                    <div id="mapa" style="height: 490px;margin-top: -21px;">
+		                      
+		                    </div>
+
+		                  </div>
+		                </div>
+		              </div>
+		            </div>
           </div>
-          <!-- /.box -->
-
-          <!-- /.row -->
-
         </div>
-        <!-- /.col -->
 
         <div class="col-md-4">
-          <!-- Info Boxes Style 2 -->
 
-		  <div class="row">
-        <div class="col-md-12">
-          <div class="box box-solid">
-            <div class="box-header with-border">
-              
-
-				<div class="input-group">
-					<input type="text" id="BuscarPip"  class="form-control" placeholder="Ingrese código Único" value="">
-					<span class="input-group-btn">
-					<button id="CodigoUnico" class="btn btn-default" type="button" ><span class="glyphicon glyphicon-search"> Buscar</span></button>
-					</span>
-				</div>
-				<br>
-
-			    <div id="EjecucionAnual" align="justify">
+			 <div class="row" style="margin-top: -50px;">
+	        	<div class="col-md-12">
+	          		<div class="box box-solid">
+	           			 <div class="box-header with-border">
+							<label>BUSQUEDA</label>
+			  			  <div id="EjecucionAnual" align="justify">
 					
-					<table>
-					  
-						<tr>
-							<td class="blue" width="120"><b>Código</b></td>
-							<td > <label  id="txtCodigo" name="txtCodigo"></label> </td>
-						</tr>
-						<tr>
-							<td class="blue"><b>Nombre</b></td>
-							<td > <label  id="txtnombre" name="txtnombre"></label></td>
-						</tr>
-						<tr>
-							<td class="blue" ><b>N° Beneficiarios</b></td>
-							<td> <label id="txtbeneficiario" name="txtbeneficiario"></label> </td>
-						</tr>
-						<tr>
-							<td class="blue" ><b>Monto de Inversión</b></td>
-							<td> S/. <label id="txtmontoInversion" name="txtmontoInversion"></label> </td>
-						</tr>
-						
-				  </table> 
-			</div>
+								<table class="table table-striped  table-hover">
+								  
+									<tr>
+										<td class="blue" width="120"><b>Código</b></td>
+										<td > <label  id="txtCodigo" name="txtCodigo"></label> </td>
+									</tr>
+									<tr>
+										<td class="blue"><b>Nombre</b></td>
+										<td > <label  id="txtnombre" name="txtnombre"></label></td>
+									</tr>
+									<tr>
+										<td class="blue" ><b>N° Beneficiarios</b></td>
+										<td> <label id="txtbeneficiario" name="txtbeneficiario"></label> </td>
+									</tr>
+									<tr>
+										<td class="blue" ><b>Monto de Inversión</b></td>
+										<td> S/. <label id="txtmontoInversion" name="txtmontoInversion"></label> </td>
+									</tr>
+									
+							  </table> 
+
+						</div>
 
 
             </div>
-            <!-- /.box-header -->
             <div class="box-body">
               <div class="box-group" id="accordion">
-                <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
-            
-
+           
                 <div class="panel box box-primary">
                   <div class="box-header with-border">
                     <h4 class="box-title">
                       <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
                     
-
 						<div class="info-box bg-yellow">
-			            <span class="info-box-icon"><i class="fa fa-area-chart"></i></span>
+				            <span class="info-box-icon"><i class="fa fa-area-chart"></i></span>
 
-				            <div class="info-box-content">
-				              <span class="info-box-text">PIP</span>
-				              <span class="info-box-number">5,200</span>
+					            <div class="info-box-content">
+					              <span class="info-box-text">PIP</span>
+					              <span class="info-box-number">5,200</span>
 
-				              <div class="progress">
-				                <div class="progress-bar" style="width: 50%"></div>
-				              </div>
-				              <span class="progress-description">
-				                    50% Increase in 30 Days
-				                  </span>
-				            </div>
-			            <!-- /.info-box-content -->
+					              <div class="progress">
+					                <div class="progress-bar" style="width: 50%"></div>
+					              </div>
+					              <span class="progress-description">
+					                    50% Increase in 30 Days
+					                  </span>
+					            </div>
 			          	</div>
-
 
                       </a>
                     </h4>
                   </div>
                   <div id="collapseTwo" class="panel-collapse collapse">
                     <div class="box-body">
-
-	                    <div>
+	                    <div style="margin-top: -30px;">
 							<label style="color: gray">Función</label>
 							<select class="form-control" id="comboboxfuncion" name="comboboxfuncion">
-							<option value="1" style="font-size:9.5px">Elija Función</option>
-							<?php foreach($comboboxfuncion as $item){ ?>
-								<option value="<?=$item->id_funcion; ?>"  style="font-size:9.5px"><?= $item->nombre_funcion;?></option>
-							<?php } ?>
-					
+								<option value="1" style="font-size:10px">Elija Función</option>
+								<?php foreach($comboboxfuncion as $item){ ?>
+									<option value="<?=$item->id_funcion; ?>"  style="font-size:9.5px"><?= $item->nombre_funcion;?></option>
+								<?php } ?>
+						
 							</select>
 	                    </div>
 	                    <div>
@@ -334,25 +335,20 @@ var base_url = '<?php echo base_url(); ?>';
 
               </div>
             </div>
-            <!-- /.box-body -->
           </div>
-          <!-- /.box -->
         </div>
-        <!-- /.col -->
 
-        <!-- /.col -->
       </div>
 
-            </div>
+    </div>
 
-          </div>
+  </div>
 
          
 
-        </div>
+   </div>
 
       </div>
-
        <div class="row">
         <div class="col-md-12">
           <div class="box">
@@ -361,7 +357,6 @@ var base_url = '<?php echo base_url(); ?>';
  
               </div>
             </div>
-            <!-- ./box-body -->
             <div class="box-footer">
               <div class="row">
                 <div class="col-sm-3 col-xs-6">
@@ -370,50 +365,35 @@ var base_url = '<?php echo base_url(); ?>';
                     <h5 class="description-header">$35,210.43</h5>
                     <span class="description-text">TOTAL REVENUE</span>
                   </div>
-                  <!-- /.description-block -->
                 </div>
-                <!-- /.col -->
                 <div class="col-sm-3 col-xs-6">
                   <div class="description-block border-right">
                     <span class="description-percentage text-yellow"><i class="fa fa-caret-left"></i> 0%</span>
                     <h5 class="description-header">$10,390.90</h5>
                     <span class="description-text">TOTAL COST</span>
                   </div>
-                  <!-- /.description-block -->
                 </div>
-                <!-- /.col -->
                 <div class="col-sm-3 col-xs-6">
                   <div class="description-block border-right">
                     <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 20%</span>
                     <h5 class="description-header">$24,813.53</h5>
                     <span class="description-text">TOTAL PROFIT</span>
                   </div>
-                  <!-- /.description-block -->
                 </div>
-                <!-- /.col -->
                 <div class="col-sm-3 col-xs-6">
                   <div class="description-block">
                     <span class="description-percentage text-red"><i class="fa fa-caret-down"></i> 18%</span>
                     <h5 class="description-header">1200</h5>
                     <span class="description-text">GOAL COMPLETIONS</span>
                   </div>
-                  <!-- /.description-block -->
                 </div>
               </div>
-              <!-- /.row -->
             </div>
-            <!-- /.box-footer -->
           </div>
-          <!-- /.box -->
         </div>
-        <!-- /.col -->
       </div>
-      <!-- /.row -->
-      <!-- /.row -->
-
-    <!-- /.content -->
-     
-             </div>
+   
+         </div>
      	</div> 
     </section>
     </div>
@@ -430,10 +410,10 @@ var base_url = '<?php echo base_url(); ?>';
 
 
 <script type="text/javascript">
-	
+	initialize();
     function initialize() {
     	 var map = new google.maps.Map(document.getElementById('mapa'), {
-        zoom: 7,
+        zoom: 9,
         center: new google.maps.LatLng(-13.871858, -72.867959),
         mapTypeId: google.maps.MapTypeId.ROADMAP
       });
@@ -475,7 +455,7 @@ var base_url = '<?php echo base_url(); ?>';
     {
     	 
     	 var map = new google.maps.Map(document.getElementById('mapa'), {
-	        zoom: 7,
+	        zoom: 9,
 	        center: new google.maps.LatLng(-13.871858, -72.867959),
 	        mapTypeId: google.maps.MapTypeId.ROADMAP
 	      });
@@ -516,14 +496,8 @@ var base_url = '<?php echo base_url(); ?>';
 
    		 });
     }
-    </script>
-</body>
-</html>
 
-<script>
-$(document).ready(function()
-	{
-		$("#comboboxfuncion" ).change(function() {
+    $("#comboboxfuncion" ).change(function() {
 
 		var idFuncion=$("#comboboxfuncion").val();
 		var parametros = {
@@ -601,7 +575,7 @@ $("#EjecucionAnual").hide();
 					}
 				});
 		});
+    </script>
 
-	});
-
-</script>
+</body>
+</html>
