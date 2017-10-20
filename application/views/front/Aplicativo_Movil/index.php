@@ -16,7 +16,12 @@
   <link href="<?php echo base_url(); ?>assets/adminlte/_all-skins.min.css" rel="stylesheet">
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1uRF6cxgwFc9DGwREFvIE6oorBaWny64&callback=initialize"></script>
   
-
+	|<script src="<?php echo base_url(); ?>assets/adminlte/jquery-2.2.3.min.js"> </script>
+	<script src="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/adminlte/jquery.slimscroll.min.js"> </script>
+	<script src="<?php echo base_url(); ?>assets/adminlte/fastclick.min.js"> </script>
+	<script src="<?php echo base_url(); ?>assets/adminlte/app.min.js"> </script>
+	<script src="<?php echo base_url(); ?>assets/adminlte/demo.js"> </script>
 
   <style>
     .main-footer 
@@ -427,12 +432,7 @@ var base_url = '<?php echo base_url(); ?>';
   </footer>
 </div>
 
-<script src="<?php echo base_url(); ?>assets/adminlte/jquery-2.2.3.min.js"> </script>
-<script src="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/adminlte/jquery.slimscroll.min.js"> </script>
-<script src="<?php echo base_url(); ?>assets/adminlte/fastclick.min.js"> </script>
-<script src="<?php echo base_url(); ?>assets/adminlte/app.min.js"> </script>
-<script src="<?php echo base_url(); ?>assets/adminlte/demo.js"> </script>
+
 <script type="text/javascript">
 	
     function initialize() {
@@ -459,7 +459,7 @@ var base_url = '<?php echo base_url(); ?>';
 					        marker = new google.maps.Marker({
 					          position: new google.maps.LatLng(marcadores[i][1], marcadores[i][2]),
 					          map: map,
-					          icon: "<?php echo base_url(); ?>uploads/IconosSector/1.png", 
+					          icon: "<?php echo base_url(); ?>uploads/IconosSector/"+marcadores[i][3], 
 					        });
 					        google.maps.event.addListener(marker, 'click', (function(marker, i) {
 					          return function() {
