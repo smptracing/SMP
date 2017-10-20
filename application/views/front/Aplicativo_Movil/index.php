@@ -217,7 +217,7 @@ var base_url = '<?php echo base_url(); ?>';
 
 	                    <div>
 							<label style="color: gray">Función</label>
-							<select class="form-control">
+							<select class="form-control" id="comboboxfuncion" name="comboboxfuncion">
 							<option value="1" style="font-size:9.5px">Elija Función</option>
 							<?php foreach($comboboxfuncion as $item){ ?>
 								<option value="<?=$item->id_funcion; ?>"  style="font-size:9.5px"><?= $item->nombre_funcion;?></option>
@@ -227,14 +227,14 @@ var base_url = '<?php echo base_url(); ?>';
 	                    </div>
 	                    <div>
 							<label style="color: gray">División funcional</label>
-							<select class="form-control">
+							<select class="form-control" id="comboboxdivisionfuncional" name="comboboxdivisionfuncional">
 								<option style="font-size:9.5px">Elija División Funcional</option>
 							</select>
 	                  	</div>
 
 	                  	<div>
 							<label style="color: gray">Grupo funcional</label>
-							<select class="form-control">
+							<select class="form-control" id="comboboxgrupofuncional" name="comboboxgrupofuncional">
 								<option style="font-size:9.5px">Elija Grupo Funcional</option>
 							</select>
 	                  	</div>
@@ -427,3 +427,39 @@ var base_url = '<?php echo base_url(); ?>';
     </script>
 </body>
 </html>
+
+<script>
+$(document).ready(function()
+	{
+		$("#comboboxfuncion" ).change(function() {
+
+		var idFuncion=$("#comboboxfuncion").val();
+		var parametros = {
+                "idFuncion" : idFuncion
+        };
+        $.ajax({
+                data:  parametros,
+                url:    base_url+'index.php/Funcion/GetDivisionFuncional',
+                type:  'post',
+                beforeSend: function () {
+                },
+                success:  function (response) {
+                	//alert(response);
+                	var html;
+            		objectJSON=JSON.parse(response);
+                 	
+                	$("#comboboxdivisionfuncional").html('');
+
+                	html +='<option value="">Elija División Funcional </option>';
+                	$.each(objectJSON,function(index,element)
+                	{
+                	 html +='<option value="'+element.id_div_funcional+'">'+element.nombre_div_funcional+'</option>';
+                	});
+             		$("#comboboxdivisionfuncional").append(html);               
+                }
+        });
+	});
+
+	});
+
+</script>
