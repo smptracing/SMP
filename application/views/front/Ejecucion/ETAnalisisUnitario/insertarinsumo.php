@@ -35,14 +35,6 @@
 	</div>
 </form>
 <script>
-$(document).ready(function()
-{
-	$('#tableListaValorizacion').DataTable(
-	{
-		"language":idioma_espanol
-	});
-
-});
 $(function()
 {
 	$('#validarInsumo').formValidation(
@@ -77,48 +69,6 @@ $(function()
 		}
 	});
 });
-/*function registrarInsumo()
-{
-	var id_unidad=$('#listaUnidadMedida').val();
-	var descripcion=$('#descripcion').val();
-
-	paginaAjaxJSON({ "id_unidad" : id_unidad, "descripcion" : descripcion }, base_url+'index.php/ET_Analisis_Unitario/insertarinsumo', 'POST', null, function(objectJSON)
-			{
-				objectJSON=JSON.parse(objectJSON);
-				
-				if(objectJSON.proceso=='Error')
-				{					
-					swal("Error","ha ocurrido un error", "error");
-				}
-				else
-				{
-					swal("Correcto","la información se registró correctamente", "success");
-				}
-				
-			}, false, true);
-	if(confirm('Relamente desea eliminar este especialista asignado?'))
-	{
-		paginaAjaxJSON({ idEspecialistaTarea : idEspecialistaTarea }, '<?=base_url()?>index.php/ET_Especialista_Tarea/eliminar', 'POST', null, function(objectJSON)
-		{
-			objectJSON=JSON.parse(objectJSON);
-
-			swal(
-			{
-				title: '',
-				text: objectJSON.mensaje,
-				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
-			},
-			function(){});
-
-			if(objectJSON.proceso=='Error')
-			{
-				return false;
-			}
-
-			$(element).parent().parent().remove();
-		}, false, true);
-	}
-}*/
 $('#btnEnviarFormulario').on('click', function(event)
 {
     event.preventDefault();
