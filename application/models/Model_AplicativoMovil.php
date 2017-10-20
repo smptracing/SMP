@@ -18,7 +18,15 @@ class Model_AplicativoMovil extends CI_Model
         
     }
 
-    public function listarNoPip()
+    public function listaNoPipPorTipoNoPip($id_tipo_nopip)
+    {
+        $data=$this->db->query("select * from GRUPO_FUNCIONAL Gfun inner join SECTOR ON Gfun.id_sector=SECTOR.id_sector inner join PROYECTO_INVERSION  ProInv on Gfun.id_grup_funcional=ProInv.id_grupo_funcional 
+        inner join UBIGEO_PI on ProInv.id_pi= UBIGEO_PI.id_pi inner join NOPIP np on ProInv.id_pi=np.id_pi inner join  TIPO_NOPIP on np.id_tipo_nopip=TIPO_NOPIP.id_tipo_nopip  where TIPO_NOPIP.id_tipo_nopip='$id_tipo_nopip'");
+
+        return $data->result();
+    }
+
+    public function listaTipoNoPip()
     {
         $data = $this->db->query("select * from TIPO_NOPIP");
         
