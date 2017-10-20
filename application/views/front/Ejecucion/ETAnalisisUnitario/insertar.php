@@ -98,8 +98,7 @@
 										<div class="col-md-2 col-sm-7 col-xs-12">
 											<label for="control-label">.</label>
 											<div>
-												<input type="button" class="btn btn-danger btn-xs" value="Registrar Nuevo Insumo" style="width: 100%;" onclick=" paginaAjaxDialogo('otherModal2', 'Insertar Insumo',{ id_DetallePartida: 7 }, base_url+'index.php/ET_Analisis_Unitario/insertarinsumo', 'GET', null, null, false, true);">
-											
+												<input type="button" class="btn btn-danger btn-xs" value="Registrar Nuevo Insumo" style="width: 100%;" onclick=" paginaAjaxDialogo('otherModal2', 'Insertar Insumo',{ id_DetallePartida: 7 }, base_url+'index.php/ET_Analisis_Unitario/insertarinsumo', 'GET', null, null, false, true);">											
 											</div>
 										</div>
 
@@ -591,10 +590,18 @@
 										'<div class="col-md-12 col-sm-12 col-xs-12">'+
 											'<input type="button" class="btn btn-danger btn btn-xs" value="Eliminar este análisis unitario" onclick="eliminarAnalisisUnitario('+objectJSON.idAnalisis+', this);">'+
 										'</div>'+
-										'<div class="col-md-7 col-sm-7 col-xs-12">'+
+
+
+										'<div class="col-md-5 col-sm-7 col-xs-12">'+
 											'<label for="control-label">Descripción del insunmo</label>'+
 											'<div>'+
 												'<select name="selectDescripcionDetalleAnalisis'+objectJSON.idAnalisis+'" id="selectDescripcionDetalleAnalisis'+objectJSON.idAnalisis+'" class="form-control"></select>'+
+											'</div>'+
+										'</div>'+
+										'<div class="col-md-2 col-sm-7 col-xs-12">'+
+											'<label for="control-label">.</label>'+
+											'<div>'+
+												'<input type="button" class="btn btn-danger btn-xs" value="Registrar Nuevo Insumo" style="width: 100%;" onclick=" paginaAjaxDialogo(\'otherModal2\', \'Insertar Insumo\',{id:2}, base_url+\'index.php/ET_Analisis_Unitario/insertarinsumo\', \'GET\', null, null, false, true);">'+											
 											'</div>'+
 										'</div>'+
 										'<div class="col-md-2 col-sm-2 col-xs-12">'+
