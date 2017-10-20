@@ -8,6 +8,7 @@ class Estudio_Inversion extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Estudio_Inversion_Model');
+        $this->load->helper('FormatNumber_helper');
 
     }
     public function index()
@@ -48,11 +49,18 @@ class Estudio_Inversion extends CI_Controller
 
     {
 
-        if ($this->input->is_ajax_request()) {
+        if ($this->input->is_ajax_request()) 
+        {
             $id_Pi=$this->input->post('id_Pi');
             $datos = $this->Estudio_Inversion_Model->get_listaproyectosCargar($id_Pi);
+            foreach ($datos as $key => $value) 
+            {
+                $value->costo_pi = a_number_format($value->costo_pi, 2, '.',",",3);
+            }
             echo json_encode($datos);
-        } else {
+        } 
+        else 
+        {
             show_404();
         }
     }

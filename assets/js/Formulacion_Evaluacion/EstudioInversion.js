@@ -21,7 +21,7 @@ $(document).on("ready" ,function(){
                             $('select[name=listaFuncionC]').change();
                             $('.selectpicker').selectpicker('refresh');
                           // listarpicombotipo_inversion(id_pi);
-                             txt_tipoinversion.value=id_pi;
+                            // txt_tipoinversion.value=id_pi;
                         }
                     });
                 }

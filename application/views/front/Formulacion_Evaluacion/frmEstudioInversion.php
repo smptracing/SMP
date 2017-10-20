@@ -176,7 +176,7 @@
                                           <br>
                                            <label for="name">Monto de Inversión<span class="required"></span>
                                             </label>
-                                                  <input id="txtMontoInversion" name="txtMontoInversion"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2"  required="required" type="number" step='0.01'  placeholder="0.00">
+                                                  <input id="txtMontoInversion" name="txtMontoInversion"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2"  required="required" type="text" placeholder="0.00">
                                           </div>
                                           </div>
 
@@ -184,7 +184,7 @@
                                           <br>
                                            <label for="name">Costo del Estudio<span class="required"></span>
                                             </label>
-                                                  <input id="txtcostoestudio" name="txtcostoestudio"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2"  required="required" type="number" step='0.01'  placeholder="0.00">
+                                                  <input id="txtcostoestudio" name="txtcostoestudio"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2"  required="required" placeholder="0.00" type="text" >
                                           </div>
                                           <div class="col-md-3">
                                           <br>
@@ -554,32 +554,66 @@
     </script>
 <?php } ?>
 <script>
-  $('.modal').on('hidden.bs.modal', function(){ 
-    $(this).find('form')[0].reset(); //para borrar todos los datos que tenga los input, textareas, select.
-    $("label.error").remove();  //lo utilice para borrar la etiqueta de error del jquery validate
-  });
-  $(function()
-  {
-    $('#form-AddEstudioInversion').formValidation(
+    $("#txtCostoPip").keyup(function(e)
     {
-      framework: 'bootstrap',
-      excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
-      live: 'enabled',
-      message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
-      trigger: null,
-      fields:
-      {
-        txtnombres:
-        {
-          validators:
-          {
-            notEmpty:
-            {
-              message: '<b style="color: red;">El campo "Descripción" es requerido.</b>'
-            }
-          }
-        }
-      }
+        $(this).val(format($(this).val()));
     });
-  });
+    $("#txtcostoestudio").keyup(function(e)
+    {
+        $(this).val(format($(this).val()));
+    });
+
+    $('.modal').on('hidden.bs.modal', function()
+    { 
+        $(this).find('form')[0].reset(); //para borrar todos los datos que tenga los input, textareas, select.
+        $("label.error").remove();  //lo utilice para borrar la etiqueta de error del jquery validate
+    });
+    $(function()
+    {
+        $('#form-AddEstudioInversion').formValidation(
+        {
+            framework: 'bootstrap',
+            excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+            live: 'enabled',
+            message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+            trigger: null,
+            fields:
+            {
+                txtnombres:
+                {
+                    validators:
+                    {
+                        notEmpty:
+                        {
+                            message: '<b style="color: red;">El campo "Descripción" es requerido.</b>'
+                        }
+                    }
+                }
+            }
+        });
+    });
+    var format = function(num)
+    {
+        var str = num.replace("", ""), parts = false, output = [], i = 1, formatted = null;
+        if(str.indexOf(".") > 0) 
+        {
+            parts = str.split(".");
+            str = parts[0];
+        }
+        str = str.split("").reverse();
+        for(var j = 0, len = str.length; j < len; j++) 
+        {
+            if(str[j] != ",") 
+            {
+                output.push(str[j]);
+                if(i%3 == 0 && j < (len - 1))
+                {
+                    output.push(",");
+                }
+                i++;
+            }
+        }
+        formatted = output.reverse().join("");
+        return("" + formatted + ((parts) ? "." + parts[1].substr(0, 2) : ""));
+    };
 </script>
