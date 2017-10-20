@@ -62,6 +62,14 @@ class ET_Analisis_Unitario extends CI_Controller
 
 		$this->load->view('Front/Ejecucion/ETAnalisisUnitario/insertar', ['etDetallePartida' => $etDetallePartida, 'listaUnidadMedida' => $listaUnidadMedida, 'listaETAnalisisUnitario' => $listaETAnalisisUnitario, 'listaETRecurso' => $listaETRecurso, 'listaETPresupuestoAnalitico' => $listaETPresupuestoAnalitico, 'idPartida' => $idPartida]);
 	}
+	public function insertarinsumo()
+	{
+		if($_POST)
+		{
+		}
+
+		$this->load->view('Front/Ejecucion/ETAnalisisUnitario/insertarinsumo');
+	}
 
 	public function eliminar()
 	{
