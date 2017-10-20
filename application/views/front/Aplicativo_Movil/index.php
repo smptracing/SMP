@@ -565,10 +565,6 @@ $(document).ready(function()
                 beforeSend: function () {
                 },
                 success:  function (response) {
-<<<<<<< HEAD
-=======
-                	//alert(response);
->>>>>>> origin/desarrollo
                 	var html;
             		objectJSON=JSON.parse(response);
                  	
@@ -605,9 +601,6 @@ $("#EjecucionAnual").hide();
 					}
 				});
 		});
-
-
-
 
 	});
 
