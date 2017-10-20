@@ -8,13 +8,16 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link href="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <!--<link href="<?php echo base_url(); ?>assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">-->
-
+	<link href="<?php echo base_url(); ?>assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/adminlte/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
   <link href="<?php echo base_url(); ?>assets/adminlte/ionicons.min.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/adminlte/AdminLTE.min.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/adminlte/_all-skins.min.css" rel="stylesheet">
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1uRF6cxgwFc9DGwREFvIE6oorBaWny64&callback=initialize"></script>
+  
+
+
   <style>
     .main-footer 
     {
@@ -97,6 +100,15 @@
         display: none;
       }
     }
+    table{
+    	font-size:10px;
+    	font-family: arial, sans-serif;
+    }
+    /*table {
+	   width: 100%;
+	   border: 1px solid #000;
+	}
+	table tr {background-color: yellow; }*/
   </style>
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -174,13 +186,48 @@ var base_url = '<?php echo base_url(); ?>';
         <div class="col-md-12">
           <div class="box box-solid">
             <div class="box-header with-border">
-              <h3 class="box-title">Consulta</h3>
+              
+
+				<div class="input-group">
+					<input type="text" id="BuscarPip"  class="form-control" placeholder="Ingrese código Único" value="">
+					<span class="input-group-btn">
+					<button id="CodigoUnico" class="btn btn-default" type="button" ><span class="glyphicon glyphicon-search"> Buscar</span></button>
+					</span>
+				</div>
+				<br>
+
+			    <div id="EjecucionAnual" align="justify">
+					
+					<table>
+					  
+						<tr>
+							<td class="blue" width="120"><b>Código</b></td>
+							<td > <label  id="txtCodigo" name="txtCodigo"></label> </td>
+						</tr>
+						<tr>
+							<td class="blue"><b>Nombre</b></td>
+							<td > <label  id="txtnombre" name="txtnombre"></label></td>
+						</tr>
+						<tr>
+							<td class="blue" ><b>N° Beneficiarios</b></td>
+							<td> <label id="txtbeneficiario" name="txtbeneficiario"></label> </td>
+						</tr>
+						<tr>
+							<td class="blue" ><b>Monto de Inversión</b></td>
+							<td> S/. <label id="txtmontoInversion" name="txtmontoInversion"></label> </td>
+						</tr>
+						
+				  </table> 
+			</div>
+
+
             </div>
             <!-- /.box-header -->
             <div class="box-body">
               <div class="box-group" id="accordion">
                 <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
             
+
                 <div class="panel box box-primary">
                   <div class="box-header with-border">
                     <h4 class="box-title">
@@ -205,15 +252,11 @@ var base_url = '<?php echo base_url(); ?>';
 			          	</div>
 
 
-
-
                       </a>
                     </h4>
                   </div>
                   <div id="collapseTwo" class="panel-collapse collapse">
                     <div class="box-body">
-
-					
 
 	                    <div>
 							<label style="color: gray">Función</label>
@@ -241,6 +284,7 @@ var base_url = '<?php echo base_url(); ?>';
                     </div>
                   </div>
                 </div>
+
                 <div class="panel box box-success">
                   <div class="box-header with-border">
                     <h4 class="box-title">
@@ -263,23 +307,26 @@ var base_url = '<?php echo base_url(); ?>';
 			            <!-- /.info-box-content -->
 			          	</div>
 
-
-
                       </a>
                     </h4>
                   </div>
                   <div id="collapseThree" class="panel-collapse collapse">
                     <div class="box-body">
-                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-                      wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                      eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
-                      assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
-                      nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
-                      farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
-                      labore sustainable VHS.
+                      
+                		<div>
+							<label style="color: gray">Tipo No Pip</label>
+							<select class="form-control" id="comboboxtiponopip" name="comboboxtiponopip">
+							<option value="1" style="font-size:9.5px">Elija Tipo No PIP</option>
+								<option value=""  style="font-size:9.5px"></option>
+							</select>
+	                    </div>
+
                     </div>
                   </div>
                 </div>
+
+				
+
               </div>
             </div>
             <!-- /.box-body -->
@@ -518,6 +565,10 @@ $(document).ready(function()
                 beforeSend: function () {
                 },
                 success:  function (response) {
+<<<<<<< HEAD
+=======
+                	//alert(response);
+>>>>>>> origin/desarrollo
                 	var html;
             		objectJSON=JSON.parse(response);
                  	
@@ -532,6 +583,31 @@ $(document).ready(function()
                 }
         	});
 		});
+
+$("#EjecucionAnual").hide();
+		$("#CodigoUnico").on("click", function() 
+		{
+			$("#EjecucionAnual").show(2000);
+			var codigounico=$("#BuscarPip").val();
+
+				$.ajax({
+				"url":base_url+"index.php/PrincipalReportes/DatosParaEstadisticaAnualProyecto",
+				type:"POST",
+				data:{codigounico:codigounico},
+				success: function(data)
+					{
+				        var cantidadpipprovincias=JSON.parse(data); 
+				        $("#txtCodigo").html(cantidadpipprovincias.codigo_unico_pi);
+				        $("#txtnombre").html(cantidadpipprovincias.nombre_pi);
+				        $("#txtbeneficiario").html(cantidadpipprovincias.num_beneficiarios);
+				        $("#txtmontoInversion").html(cantidadpipprovincias.costo_pi);
+				       
+					}
+				});
+		});
+
+
+
 
 	});
 

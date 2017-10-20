@@ -8,6 +8,7 @@ class Estudio_Inversion extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Estudio_Inversion_Model');
+        $this->load->helper('FormatNumber_helper');
 
     }
     public function index()
@@ -48,11 +49,18 @@ class Estudio_Inversion extends CI_Controller
 
     {
 
-        if ($this->input->is_ajax_request()) {
+        if ($this->input->is_ajax_request()) 
+        {
             $id_Pi=$this->input->post('id_Pi');
             $datos = $this->Estudio_Inversion_Model->get_listaproyectosCargar($id_Pi);
+            foreach ($datos as $key => $value) 
+            {
+                $value->costo_pi = a_number_format($value->costo_pi, 2, '.',",",3);
+            }
             echo json_encode($datos);
-        } else {
+        } 
+        else 
+        {
             show_404();
         }
     }
@@ -177,8 +185,8 @@ class Estudio_Inversion extends CI_Controller
             $lista_unid_form    = $this->input->post("lista_unid_form");
             $lista_unid_ejec    = $this->input->post("lista_unid_ejec");
             $txadescripcion     = $this->input->post("txadescripcion");
-            $txtMontoInversion  = $this->input->post("txtMontoInversion");
-            $txtcostoestudio    = $this->input->post("txtcostoestudio");
+            $txtMontoInversion  = floatval(str_replace(",","",$this->input->post("txtMontoInversion")));
+            $txtcostoestudio    = floatval(str_replace(",","",$this->input->post("txtcostoestudio")));
             if ($this->Estudio_Inversion_Model->AddEstudioInversion($flat, $id_est_inv, $txtCodigoUnico, $txtnombres, $listaFuncionC, $listaTipoInversion, $listaNivelEstudio, $lista_unid_form, $lista_unid_ejec, $txadescripcion, $txtMontoInversion, $txtcostoestudio) == false) {
                 echo "1";
             } else {
