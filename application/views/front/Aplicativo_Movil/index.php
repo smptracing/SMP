@@ -390,7 +390,7 @@ var base_url = '<?php echo base_url(); ?>';
         center: new google.maps.LatLng(-13.871858, -72.867959),
         mapTypeId: google.maps.MapTypeId.ROADMAP
       });
-      var marker, i;
+      var marker, i,marker1;
       var infowindow = new google.maps.InfoWindow();
 
       $.ajax(
@@ -403,20 +403,36 @@ var base_url = '<?php echo base_url(); ?>';
 		        	 console.log(marcadores);
 		        	 var marcadores=JSON.parse(marcadores);
 
-				      for (i = 0; i < marcadores.length; i++) {  
-				        marker = new google.maps.Marker({
-				          position: new google.maps.LatLng(marcadores[i][1], marcadores[i][2]),
-				          map: map,
-				          icon: "<?php echo base_url(); ?>assets/images/localizacion/arbol.png", 
-				        });
-				        google.maps.event.addListener(marker, 'click', (function(marker, i) {
-				          return function() {
-				            infowindow.setContent(marcadores[i][0]);
-				            infowindow.open(map, marker);
-				          }
-				        })(marker, i));
-				      }	
+				      for (i = 0; i < marcadores.length; i++) 
+				  		{  
+					        marker = new google.maps.Marker({
+					          position: new google.maps.LatLng(marcadores[i][1], marcadores[i][2]),
+					          map: map,
+					          icon: "<?php echo base_url(); ?>assets/images/localizacion/arbol.png", 
+					        });
+					        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+					          return function() {
+					            infowindow.setContent(marcadores[i][0]);
+					            infowindow.open(map, marker);
+					          }
+					        })(marker, i));
 
+		  				}
+		  				 for (i = 0; i < marcadores.length; i++) 
+				  		{  
+					        marker1 = new google.maps.Marker({
+					          position: new google.maps.LatLng(marcadores[i][1], marcadores[i][2]),
+					          map: map,
+					          icon: "<?php echo base_url(); ?>assets/images/localizacion/educacion.png", 
+					        });
+					        google.maps.event.addListener(marker1, 'click', (function(marker, i) {
+					          return function() {
+					            infowindow.setContent(marcadores[i][0]);
+					            infowindow.open(map, marker1);
+					          }
+					        })(marker1, i));
+
+		  				}
 		  		}
 
    		 });
