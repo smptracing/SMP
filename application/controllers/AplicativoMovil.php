@@ -26,7 +26,7 @@ class AplicativoMovil extends CI_Controller
     {
         $comboboxfuncion=$this->Model_Funcion->GetFuncion();
         $comboboxtiponopip=$this->Model_AplicativoMovil->listarNoPip();
-       // var_dump($comboboxtiponopip);exit;
+        var_dump($comboboxtiponopip);exit;
         $this->load->view('front/Aplicativo_Movil/index',['comboboxfuncion'=>$comboboxfuncion,'comboboxtiponopip'=>$comboboxtiponopip]);
     } 
 
