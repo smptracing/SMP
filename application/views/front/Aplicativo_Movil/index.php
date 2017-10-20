@@ -174,7 +174,40 @@ var base_url = '<?php echo base_url(); ?>';
         <div class="col-md-12">
           <div class="box box-solid">
             <div class="box-header with-border">
-              <h3 class="box-title">Consulta</h3>
+              
+
+				<div class="input-group">
+					<input type="text" id="BuscarPip"  class="form-control" placeholder="Ingrese código Único" value="">
+					<span class="input-group-btn">
+					<button id="CodigoUnico" class="btn btn-default" type="button" ><span class="glyphicon glyphicon-search"> Buscar</span></button>
+					</span>
+				</div>
+
+			    <div id="EjecucionAnual">
+					
+					<table class="table" STYLE="table-layout:fixed">
+					  
+						<tr>
+							<td class="blue" width="200"><b>CÓDIGO</b></td>
+							<td > <label  id="txtCodigo" name="txtCodigo"></label> </td>
+						</tr>
+						<tr>
+							<td class="blue"><b>NOMBRE</b></td>
+							<td > <label  id="txtnombre" name="txtnombre"></label></td>
+						</tr>
+						<tr>
+							<td class="blue" ><b>N° BENEFICIARIOS</b></td>
+							<td> <label id="txtbeneficiario" name="txtbeneficiario"></label> </td>
+						</tr>
+						<tr>
+							<td class="blue" ><b>MONTO DE INvERSIÓN</b></td>
+							<td> S/. <label id="txtmontoInversion" name="txtmontoInversion"></label> </td>
+						</tr>
+						
+				  </table> 
+			</div>
+
+
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -212,8 +245,6 @@ var base_url = '<?php echo base_url(); ?>';
                   </div>
                   <div id="collapseTwo" class="panel-collapse collapse">
                     <div class="box-body">
-
-					
 
 	                    <div>
 							<label style="color: gray">Función</label>
@@ -270,13 +301,7 @@ var base_url = '<?php echo base_url(); ?>';
                   </div>
                   <div id="collapseThree" class="panel-collapse collapse">
                     <div class="box-body">
-                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-                      wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                      eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
-                      assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
-                      nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
-                      farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
-                      labore sustainable VHS.
+                      NO PIPPPP
                     </div>
                   </div>
                 </div>
@@ -489,7 +514,7 @@ $(document).ready(function()
                 beforeSend: function () {
                 },
                 success:  function (response) {
-                	alert(response);
+                	//alert(response);
                 	var html;
             		objectJSON=JSON.parse(response);
                  	
@@ -504,6 +529,31 @@ $(document).ready(function()
                 }
         	});
 		});
+
+$("#EjecucionAnual").hide();
+		$("#CodigoUnico").on("click", function() 
+		{
+			$("#EjecucionAnual").show(2000);
+			var codigounico=$("#BuscarPip").val();
+
+				$.ajax({
+				"url":base_url+"index.php/PrincipalReportes/DatosParaEstadisticaAnualProyecto",
+				type:"POST",
+				data:{codigounico:codigounico},
+				success: function(data)
+					{
+				        var cantidadpipprovincias=JSON.parse(data); 
+				        $("#txtCodigo").html(cantidadpipprovincias.codigo_unico_pi);
+				        $("#txtnombre").html(cantidadpipprovincias.nombre_pi);
+				        $("#txtbeneficiario").html(cantidadpipprovincias.num_beneficiarios);
+				        $("#txtmontoInversion").html(cantidadpipprovincias.costo_pi);
+				       
+					}
+				});
+		});
+
+
+
 
 	});
 
