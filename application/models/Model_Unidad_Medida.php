@@ -49,4 +49,9 @@ class Model_Unidad_Medida extends CI_Model
 
 		return true;
 	}
+	function insertarInsumo($idUnidad, $descripcion)
+	{
+		$unidadMedida=$this->db->query("execute sp_Gestionar_EtInsumo @Opcion = 'C', @id_unidad = $idUnidad, @desc_insumo = '$descripcion'");
+		return true;
+	}
 }
