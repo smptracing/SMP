@@ -1,5 +1,5 @@
 
-<form  id="frmInsertarInsumo" action="<?php echo base_url();?>index.php/Expediente_Tecnico/insertar" method="POST">
+<form  id="frmInsertarInsumo" action="<?php echo base_url();?>index.php/ET_Analisis_Unitario/insertarinsumo" method="POST">
 	<div class="row">
 
 		<div class="col-md-12 col-sm-12 col-xs-12">
@@ -30,7 +30,7 @@
 		</div>
 	</div>
 	<div class="row" style="text-align: center;">
-		<button  id="btnEnviarFormulario" class="btn btn-success">Guardar</button>
+		<button  class="btn btn-success" id="btnEnviarFormulario" >Guardar</button>
 		<button  class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 	</div>
 </form>
@@ -77,6 +77,48 @@ $(function()
 		}
 	});
 });
+/*function registrarInsumo()
+{
+	var id_unidad=$('#listaUnidadMedida').val();
+	var descripcion=$('#descripcion').val();
+
+	paginaAjaxJSON({ "id_unidad" : id_unidad, "descripcion" : descripcion }, base_url+'index.php/ET_Analisis_Unitario/insertarinsumo', 'POST', null, function(objectJSON)
+			{
+				objectJSON=JSON.parse(objectJSON);
+				
+				if(objectJSON.proceso=='Error')
+				{					
+					swal("Error","ha ocurrido un error", "error");
+				}
+				else
+				{
+					swal("Correcto","la información se registró correctamente", "success");
+				}
+				
+			}, false, true);
+	if(confirm('Relamente desea eliminar este especialista asignado?'))
+	{
+		paginaAjaxJSON({ idEspecialistaTarea : idEspecialistaTarea }, '<?=base_url()?>index.php/ET_Especialista_Tarea/eliminar', 'POST', null, function(objectJSON)
+		{
+			objectJSON=JSON.parse(objectJSON);
+
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
+			},
+			function(){});
+
+			if(objectJSON.proceso=='Error')
+			{
+				return false;
+			}
+
+			$(element).parent().parent().remove();
+		}, false, true);
+	}
+}*/
 $('#btnEnviarFormulario').on('click', function(event)
 {
     event.preventDefault();
@@ -87,8 +129,8 @@ $('#btnEnviarFormulario').on('click', function(event)
 	{
 		return;
 	}
-    var formData=new FormData($("#validarInsumo")[0]);
-    var dataString = $('#validarInsumo').serialize();
+    var formData=new FormData($("#frmInsertarInsumo")[0]);
+    var dataString = $('#frmInsertarInsumo').serialize();
     $.ajax({
         type:"POST",
         url:base_url+"index.php/ET_Analisis_Unitario/insertarinsumo",
@@ -96,10 +138,6 @@ $('#btnEnviarFormulario').on('click', function(event)
         cache: false,
         contentType:false,
         processData:false,
-        /*beforeSend: function() 
-        {
-        	renderLoading();
-	    },*/
         success:function(resp)
         {
         	if (resp=='1') 
