@@ -8,13 +8,16 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link href="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <!--<link href="<?php echo base_url(); ?>assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">-->
-
+	<link href="<?php echo base_url(); ?>assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/adminlte/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
   <link href="<?php echo base_url(); ?>assets/adminlte/ionicons.min.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/adminlte/AdminLTE.min.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/adminlte/_all-skins.min.css" rel="stylesheet">
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1uRF6cxgwFc9DGwREFvIE6oorBaWny64&callback=initialize"></script>
+  
+
+
   <style>
     .main-footer 
     {
@@ -97,6 +100,15 @@
         display: none;
       }
     }
+    table{
+    	font-size:10px;
+    	font-family: arial, sans-serif;
+    }
+    /*table {
+	   width: 100%;
+	   border: 1px solid #000;
+	}
+	table tr {background-color: yellow; }*/
   </style>
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -182,25 +194,26 @@ var base_url = '<?php echo base_url(); ?>';
 					<button id="CodigoUnico" class="btn btn-default" type="button" ><span class="glyphicon glyphicon-search"> Buscar</span></button>
 					</span>
 				</div>
+				<br>
 
-			    <div id="EjecucionAnual">
+			    <div id="EjecucionAnual" align="justify">
 					
-					<table class="table" STYLE="table-layout:fixed">
+					<table>
 					  
 						<tr>
-							<td class="blue" width="200"><b>CÓDIGO</b></td>
+							<td class="blue" width="120"><b>Código</b></td>
 							<td > <label  id="txtCodigo" name="txtCodigo"></label> </td>
 						</tr>
 						<tr>
-							<td class="blue"><b>NOMBRE</b></td>
+							<td class="blue"><b>Nombre</b></td>
 							<td > <label  id="txtnombre" name="txtnombre"></label></td>
 						</tr>
 						<tr>
-							<td class="blue" ><b>N° BENEFICIARIOS</b></td>
+							<td class="blue" ><b>N° Beneficiarios</b></td>
 							<td> <label id="txtbeneficiario" name="txtbeneficiario"></label> </td>
 						</tr>
 						<tr>
-							<td class="blue" ><b>MONTO DE INvERSIÓN</b></td>
+							<td class="blue" ><b>Monto de Inversión</b></td>
 							<td> S/. <label id="txtmontoInversion" name="txtmontoInversion"></label> </td>
 						</tr>
 						
@@ -214,6 +227,7 @@ var base_url = '<?php echo base_url(); ?>';
               <div class="box-group" id="accordion">
                 <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
             
+
                 <div class="panel box box-primary">
                   <div class="box-header with-border">
                     <h4 class="box-title">
@@ -236,8 +250,6 @@ var base_url = '<?php echo base_url(); ?>';
 				            </div>
 			            <!-- /.info-box-content -->
 			          	</div>
-
-
 
 
                       </a>
@@ -272,6 +284,7 @@ var base_url = '<?php echo base_url(); ?>';
                     </div>
                   </div>
                 </div>
+
                 <div class="panel box box-success">
                   <div class="box-header with-border">
                     <h4 class="box-title">
@@ -294,17 +307,26 @@ var base_url = '<?php echo base_url(); ?>';
 			            <!-- /.info-box-content -->
 			          	</div>
 
-
-
                       </a>
                     </h4>
                   </div>
                   <div id="collapseThree" class="panel-collapse collapse">
                     <div class="box-body">
-                      NO PIPPPP
+                      
+                		<div>
+							<label style="color: gray">Tipo No Pip</label>
+							<select class="form-control" id="comboboxtiponopip" name="comboboxtiponopip">
+							<option value="1" style="font-size:9.5px">Elija Tipo No PIP</option>
+								<option value=""  style="font-size:9.5px"></option>
+							</select>
+	                    </div>
+
                     </div>
                   </div>
                 </div>
+
+				
+
               </div>
             </div>
             <!-- /.box-body -->
