@@ -234,7 +234,7 @@ var base_url = '<?php echo base_url(); ?>';
 
 	                  	<div>
 							<label style="color: gray">Grupo funcional</label>
-							<select class="form-control" id="comboboxgrupofuncional" name="comboboxgrupofuncional">
+							<select class="form-control" id="comboboxgrupofuncional" name="comboboxgrupofuncional" onclick="mapaUbicacionProyecto();">
 								<option style="font-size:9.5px">Elija Grupo Funcional</option>
 							</select>
 	                  	</div>
@@ -258,7 +258,7 @@ var base_url = '<?php echo base_url(); ?>';
 				              </div>
 				              <span class="progress-description">
 				                    50% Increase in 30 Days
-				                  </span>
+				               </span>
 				            </div>
 			            <!-- /.info-box-content -->
 			          	</div>
@@ -383,9 +383,9 @@ var base_url = '<?php echo base_url(); ?>';
 <script src="<?php echo base_url(); ?>assets/adminlte/app.min.js"> </script>
 <script src="<?php echo base_url(); ?>assets/adminlte/demo.js"> </script>
 <script type="text/javascript">
+	
     function initialize() {
-      
-      var map = new google.maps.Map(document.getElementById('mapa'), {
+    	 var map = new google.maps.Map(document.getElementById('mapa'), {
         zoom: 7,
         center: new google.maps.LatLng(-13.871858, -72.867959),
         mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -395,12 +395,12 @@ var base_url = '<?php echo base_url(); ?>';
 
       $.ajax(
    		 {
-		        url: base_url+"index.php/PrincipalPmi/listaTotalDeUbicacionesProyecto",
+		        url: base_url+"index.php/AplicativoMovil/listaTotalDeUbicacionesProyecto",
 		        type: "POST",
 		        success: function(marcadores)
 		        {
 
-		        	 console.log(marcadores);
+		        	// console.log(marcadores);
 		        	 var marcadores=JSON.parse(marcadores);
 
 				      for (i = 0; i < marcadores.length; i++) 
@@ -408,7 +408,7 @@ var base_url = '<?php echo base_url(); ?>';
 					        marker = new google.maps.Marker({
 					          position: new google.maps.LatLng(marcadores[i][1], marcadores[i][2]),
 					          map: map,
-					          icon: "<?php echo base_url(); ?>assets/images/localizacion/arbol.png", 
+					          icon: "<?php echo base_url(); ?>uploads/IconosSector/1.png", 
 					        });
 					        google.maps.event.addListener(marker, 'click', (function(marker, i) {
 					          return function() {
@@ -418,27 +418,56 @@ var base_url = '<?php echo base_url(); ?>';
 					        })(marker, i));
 
 		  				}
-		  				 for (i = 0; i < marcadores.length; i++) 
-				  		{  
-					        marker1 = new google.maps.Marker({
-					          position: new google.maps.LatLng(marcadores[i][1], marcadores[i][2]),
-					          map: map,
-					          icon: "<?php echo base_url(); ?>assets/images/localizacion/educacion.png", 
-					        });
-					        google.maps.event.addListener(marker1, 'click', (function(marker, i) {
-					          return function() {
-					            infowindow.setContent(marcadores[i][0]);
-					            infowindow.open(map, marker1);
-					          }
-					        })(marker1, i));
-
-		  				}
+		  				
 		  		}
 
    		 });
- 
+   
+    }
+    function mapaUbicacionProyecto()
+    {
+    	 
+    	 var map = new google.maps.Map(document.getElementById('mapa'), {
+	        zoom: 7,
+	        center: new google.maps.LatLng(-13.871858, -72.867959),
+	        mapTypeId: google.maps.MapTypeId.ROADMAP
+	      });
+	      var marker, i,marker1;
+	      var infowindow = new google.maps.InfoWindow();
 
-     
+    	 var id_grup_funcional=$("#comboboxgrupofuncional").val();
+    	 var parametros = {
+                "id_grup_funcional" : id_grup_funcional
+        	};
+    	 $.ajax(
+   		 {
+		        data:  parametros,
+		        url: base_url+"index.php/AplicativoMovil/listadoProyectoGrupoFuncional",
+		        type: "POST",
+		        success: function(marcadores)
+		        {
+		        	console.log(marcadores);
+		        	 var marcadores=JSON.parse(marcadores);
+
+				      for (i = 0; i < marcadores.length; i++) 
+				  		{  
+					        marker = new google.maps.Marker({
+					          position: new google.maps.LatLng(marcadores[i][1], marcadores[i][2]),
+					          map: map,
+					          icon: "<?php echo base_url(); ?>uploads/IconosSector/"+marcadores[i][3], 
+					        });
+					        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+					          return function() {
+					            infowindow.setContent(marcadores[i][0]);
+					            infowindow.open(map, marker);
+					          }
+					        })(marker, i));
+
+		  				}
+		  				
+		  		}
+
+   		 });
     }
     </script>
 </body>
@@ -489,7 +518,6 @@ $(document).ready(function()
                 beforeSend: function () {
                 },
                 success:  function (response) {
-                	alert(response);
                 	var html;
             		objectJSON=JSON.parse(response);
                  	

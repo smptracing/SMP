@@ -106,23 +106,7 @@ class PrincipalPmi extends CI_Controller
         }
 
     }
-
-     public function listaTotalDeUbicacionesProyecto()
-    {
-        if ($this->input->is_ajax_request()) {
-            $listaTotaProyecto= array();
-            $datos = $this->Model_DashboardPmi->GetDatosUbicacion();
-            foreach ($datos as $key => $Itemp) {
-               $listaTotaProyecto[$key]=[$Itemp->nombre_pi.'Codigo<a href="https://www.google.com/">'.$Itemp->latitud.' </a></h6>',$Itemp->latitud,$Itemp->longitud];
-            }
-            echo json_encode($listaTotaProyecto);
-        } else {
-            show_404();
-        }
-
-    }
     
-
 
     public function _load_layout($template)
     {
