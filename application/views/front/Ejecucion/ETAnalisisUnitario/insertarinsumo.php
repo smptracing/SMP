@@ -6,16 +6,20 @@
 			<div class="x_panel">
 				<div class="x_content">		
 					<div class="row" id="validarValorizacion">
-						<div class="col-md-4 col-sm-6 col-xs-12">
-							<label class="control-label">Seleccione Unidad de Medida: </label>
+						<div class="col-md-4 col-sm-2 col-xs-12">
+							<label for="control-label">Unidad de Medida: </label>
 							<div>
-								<input class="form-control" name="txtFecha" id="txtFecha" type="date" autocomplete="off">	
-							</div>	
+								<select name="listaUnidadMedida" name="listaUnidadMedida" class="form-control">
+									<?php foreach($listaUnidadMedida as $item){ ?>
+										<option value="<?=$item->id_unidad?>"><?=html_escape($item->descripcion)?></option>
+									<?php } ?>
+								</select>
+							</div>
 						</div>
 						<div class="col-md-8 col-sm-6 col-xs-12">
 							<label class="control-label">Insumo: </label>
 							<div>
-								<input class="form-control" placeholder="Cantidad" autocomplete="off"  >	
+								<input class="form-control" name="txtInsumo" id="Insumo" autocomplete="off"  >	
 							</div>	
 						</div>
 					</div>			

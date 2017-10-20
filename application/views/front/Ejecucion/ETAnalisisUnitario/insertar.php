@@ -98,7 +98,8 @@
 										<div class="col-md-2 col-sm-7 col-xs-12">
 											<label for="control-label">.</label>
 											<div>
-												<input type="button" class="btn btn-danger btn-xs" value="Registrar Nuevo Insumo" style="width: 100%;" onclick=" paginaAjaxDialogo(null, 'Insertar Insumo',{ id_DetallePartida: 7 }, base_url+'index.php/ET_Analisis_Unitario/insertarinsumo', 'GET', null, null, false, true);">
+												<input type="button" class="btn btn-danger btn-xs" value="Registrar Nuevo Insumo" style="width: 100%;" onclick=" paginaAjaxDialogo('otherModal', 'Insertar Insumo',{ id_DetallePartida: 7 }, base_url+'index.php/ET_Analisis_Unitario/insertarinsumo', 'GET', null, null, false, true);">
+											
 											</div>
 										</div>
 

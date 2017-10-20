@@ -68,7 +68,8 @@ class ET_Analisis_Unitario extends CI_Controller
 		{
 		}
 
-		$this->load->view('Front/Ejecucion/ETAnalisisUnitario/insertarinsumo');
+		$listaUnidadMedida = $this->Model_Unidad_Medida->UnidadMedidad_Listar();
+		$this->load->view('Front/Ejecucion/ETAnalisisUnitario/insertarinsumo',['listaUnidadMedida' => $listaUnidadMedida]);
 	}
 
 	public function eliminar()
