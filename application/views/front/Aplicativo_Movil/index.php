@@ -436,7 +436,7 @@ $(document).ready(function()
 		var idFuncion=$("#comboboxfuncion").val();
 		var parametros = {
                 "idFuncion" : idFuncion
-        };
+        	};
         $.ajax({
                 data:  parametros,
                 url:    base_url+'index.php/Funcion/GetDivisionFuncional',
@@ -457,8 +457,37 @@ $(document).ready(function()
                 	});
              		$("#comboboxdivisionfuncional").append(html);               
                 }
-        });
-	});
+        	});
+		});
+
+		$("#comboboxdivisionfuncional" ).change(function() {
+
+		var idDivisionFuncional=$("#comboboxdivisionfuncional").val();
+		var parametros = {
+                "idDivisionFuncional" : idDivisionFuncional
+        	};
+        $.ajax({
+                data:  parametros,
+                url:    base_url+'index.php/Funcion/GetGrupoFuncional',
+                type:  'post',
+                beforeSend: function () {
+                },
+                success:  function (response) {
+                	alert(response);
+                	var html;
+            		objectJSON=JSON.parse(response);
+                 	
+                	$("#comboboxgrupofuncional").html('');
+
+                	html +='<option value="">Elija Grupo Funcional </option>';
+                	$.each(objectJSON,function(index,element)
+                	{
+                	 html +='<option value="'+element.id_grup_funcional+'">'+element.nombre_grup_funcional+'</option>';
+                	});
+             		$("#comboboxgrupofuncional").append(html);             
+                }
+        	});
+		});
 
 	});
 
