@@ -17,5 +17,11 @@ class Model_AplicativoMovil extends CI_Model
         return $dato->result();
         
     }
+    public function listarNoPip()
+    {
+        $data = $this->db->query("select * from TIPO_NOPIP");
+        
+        return $data->result();
+    }
 
 }

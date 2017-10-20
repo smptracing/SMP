@@ -315,9 +315,13 @@ var base_url = '<?php echo base_url(); ?>';
                       
                 		<div>
 							<label style="color: gray">Tipo No Pip</label>
-							<select class="form-control" id="comboboxtiponopip" name="comboboxtiponopip">
+							<select class="form-control" id="comboboxtiponopi" name="comboboxtiponopi">
 							<option value="1" style="font-size:9.5px">Elija Tipo No PIP</option>
-								<option value=""  style="font-size:9.5px"></option>
+			
+							<?php foreach($comboboxtiponopip as $item){ ?>
+								<option value="<?=$item->id_tipo_nopip; ?>"  style="font-size:9.5px"><?= $item->desc_tipo_nopip;?></option>
+							<?php } ?>
+					
 							</select>
 	                    </div>
 

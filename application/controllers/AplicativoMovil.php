@@ -25,8 +25,9 @@ class AplicativoMovil extends CI_Controller
     public function index()
     {
         $comboboxfuncion=$this->Model_Funcion->GetFuncion();
-        //var_dump($comboboxfuncion);exit;
-        $this->load->view('front/Aplicativo_Movil/index',['comboboxfuncion'=>$comboboxfuncion]);
+        $comboboxtiponopip=$this->Model_AplicativoMovil->listarNoPip();
+       // var_dump($comboboxtiponopip);exit;
+        $this->load->view('front/Aplicativo_Movil/index',['comboboxfuncion'=>$comboboxfuncion,'comboboxtiponopip'=>$comboboxtiponopip]);
     } 
 
      public function listaTotalDeUbicacionesProyecto()
