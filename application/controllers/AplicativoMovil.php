@@ -33,9 +33,9 @@ class AplicativoMovil extends CI_Controller
     {
         if ($this->input->is_ajax_request()) {
             $listaTotaProyecto= array();
-            $datos = $this->Model_DashboardPmi->GetDatosUbicacion();
+            $datos = $this->Model_AplicativoMovil->listaTotalDeUbicacionesProyecto();
             foreach ($datos as $key => $Itemp) {
-               $listaTotaProyecto[$key]=[$Itemp->nombre_pi.'Codigo<a href="https://www.google.com/">'.$Itemp->latitud.' </a></h6>',$Itemp->latitud,$Itemp->longitud];
+               $listaTotaProyecto[$key]=[$Itemp->nombre_pi.'Codigo<a href="https://www.google.com/">'.$Itemp->latitud.' </a></h6>',$Itemp->latitud,$Itemp->longitud,$Itemp->icono_sector];
             }
             echo json_encode($listaTotaProyecto);
         } else {
