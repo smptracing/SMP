@@ -174,13 +174,14 @@ var listarestudiocombo=function(valor){
                                    $('.selectpicker').selectpicker('refresh'); 
 
                                    $("#txtMontoInversion").val(element.costo_pi);
+
                                    if(element.pim_acumulado==0)
                                    {
-                                    $("#txtcostoestudio").val(element.pia_meta_pres);
+                                      $("#txtcostoestudio").val(element.pia_meta_pres);
                                    }
                                   else
                                    {
-                                     $("#txtcostoestudio").val(element.pim_acumulado);
+                                      $("#txtcostoestudio").val(element.pim_acumulado);
                                    } 
                                    
                              });
@@ -191,27 +192,33 @@ var listarestudiocombo=function(valor){
               });
 
 //REGISTARAR NUEVA
-   $("#form-AddEstudioInversion").submit(function(event)
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/Estudio_Inversion/AddEstudioInversion",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           //alert(resp);
-                           if (resp=='1') {
-                             swal("REGISTRADO","Se regristró correctamente", "success");
-                             formReset();
-                           }
-                            if (resp=='2') {
-                             swal("NO SE REGISTRÓ","NO se regristró ", "error");
-                           }
-                          $('#dynamic-table-EstudioInversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
-                             formReset();
-                         }
-                      });
-                  });
+$("#form-AddEstudioInversion").submit(function(event)
+{
+    event.preventDefault();
+    $('#form-AddEstudioInversion').data('formValidation').validate();
+    if(!($('#form-AddEstudioInversion').data('formValidation').isValid()))
+    {
+        return;
+    }
+    $.ajax({
+        url:base_url+"index.php/Estudio_Inversion/AddEstudioInversion",
+        type:$(this).attr('method'),
+        data:$(this).serialize(),
+        success:function(resp)
+        {
+            if (resp=='1') 
+            {
+                swal("REGISTRADO","Se regristró correctamente", "success");
+            }
+            if (resp=='2') 
+            {
+                swal("NO SE REGISTRÓ","NO se regristró ", "error");
+            }
+            $('#dynamic-table-EstudioInversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
+            $('#form-AddEstudioInversion')[0].reset();
+        }
+    });
+});
 
 //Subida de documentos de inversion
 
@@ -272,9 +279,9 @@ var listarestudiocombo=function(valor){
 //limpiar campos
           function formReset()
           {
-          document.getElementById("form-AddEtapaEstudio").reset();
-         document.getElementById("form-AddEstudioInversion").reset();
-          document.getElementById("form-AddResponsableEstudio").reset();
+            document.getElementById("form-AddEtapaEstudio").reset();
+            document.getElementById("form-AddEstudioInversion").reset();
+            document.getElementById("form-AddResponsableEstudio").reset();
           }
 //REGISTARAR NUEVA ETAPA DE ESTUDIO
    $("#form-AddResponsableEstudio").submit(function(event)
@@ -650,3 +657,53 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
                         "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                     }
                 }
+
+$(function()
+{
+    $('#form-AddEstudioInversion').formValidation(
+    {
+        framework: 'bootstrap',
+        excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+        live: 'enabled',
+        message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+        trigger: null,
+        fields:
+        {
+            txtnombres:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Descripción" es requerido.</b>'
+                    }
+                }
+            },
+            txtcostoestudio:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Costo de estudio" es requerido.</b>'
+                    },
+                    regexp:
+                    {
+                        regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
+                        message: '<b style="color: red;">El campo "Costo de estudio" debe ser númerico.</b>'
+                    }
+                }
+            },
+            listaNivelEstudio:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Tipo de Estudio" es requerido.</b>'
+                    }
+                }
+            }
+        }
+    });
+});

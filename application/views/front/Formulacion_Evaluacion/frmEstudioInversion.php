@@ -176,7 +176,7 @@
                                           <br>
                                            <label for="name">Monto de Inversión<span class="required"></span>
                                             </label>
-                                                  <input id="txtMontoInversion" name="txtMontoInversion"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2"  required="required" type="text" placeholder="0.00">
+                                                  <input id="txtMontoInversion" name="txtMontoInversion"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" autocomplete="off" data-validate-words="2"  required="required" type="text" placeholder="0.00">
                                           </div>
                                           </div>
 
@@ -184,7 +184,7 @@
                                           <br>
                                            <label for="name">Costo del Estudio<span class="required"></span>
                                             </label>
-                                                  <input id="txtcostoestudio" name="txtcostoestudio"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2"  required="required" placeholder="0.00" type="text" >
+                                                  <input id="txtcostoestudio" name="txtcostoestudio"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2" autocomplete="off" required="required" placeholder="0.00" type="text" >
                                           </div>
                                           <div class="col-md-3">
                                           <br>
@@ -568,30 +568,7 @@
         $(this).find('form')[0].reset(); //para borrar todos los datos que tenga los input, textareas, select.
         $("label.error").remove();  //lo utilice para borrar la etiqueta de error del jquery validate
     });
-    $(function()
-    {
-        $('#form-AddEstudioInversion').formValidation(
-        {
-            framework: 'bootstrap',
-            excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
-            live: 'enabled',
-            message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
-            trigger: null,
-            fields:
-            {
-                txtnombres:
-                {
-                    validators:
-                    {
-                        notEmpty:
-                        {
-                            message: '<b style="color: red;">El campo "Descripción" es requerido.</b>'
-                        }
-                    }
-                }
-            }
-        });
-    });
+
     var format = function(num)
     {
         var str = num.replace("", ""), parts = false, output = [], i = 1, formatted = null;

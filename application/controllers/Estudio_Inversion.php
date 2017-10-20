@@ -185,8 +185,8 @@ class Estudio_Inversion extends CI_Controller
             $lista_unid_form    = $this->input->post("lista_unid_form");
             $lista_unid_ejec    = $this->input->post("lista_unid_ejec");
             $txadescripcion     = $this->input->post("txadescripcion");
-            $txtMontoInversion  = $this->input->post("txtMontoInversion");
-            $txtcostoestudio    = $this->input->post("txtcostoestudio");
+            $txtMontoInversion  = floatval(str_replace(",","",$this->input->post("txtMontoInversion")));
+            $txtcostoestudio    = floatval(str_replace(",","",$this->input->post("txtcostoestudio")));
             if ($this->Estudio_Inversion_Model->AddEstudioInversion($flat, $id_est_inv, $txtCodigoUnico, $txtnombres, $listaFuncionC, $listaTipoInversion, $listaNivelEstudio, $lista_unid_form, $lista_unid_ejec, $txadescripcion, $txtMontoInversion, $txtcostoestudio) == false) {
                 echo "1";
             } else {
