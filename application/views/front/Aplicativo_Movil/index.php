@@ -181,6 +181,9 @@ var base_url = '<?php echo base_url(); ?>';
 		  									</span>
 		  							</div>
 		  						</div>
+		  						<div class="col-md-5">
+		  							<button id="mostrartodo" class="btn btn-default" type="button" ><li><a href="<?php echo site_url('ProyectoInversion/ReporteBuscadorPorAnio'); ?>">Mostrar Todos los PIP</a></li></button>
+		  						</div>
 			        	</div>
 
 					</div>
