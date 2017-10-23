@@ -51,7 +51,7 @@
 		</div>
 	</div>
 	<hr style="margin: 4px;">
-	<div id="divListaAnalisisUnitario">
+	<div id="divListaAnalisisUnitario" style="height: 400px;overflow-y: scroll;">
 		<?php foreach($listaETAnalisisUnitario as $value){ ?>
 			<div class="panel-group" style="margin: 2px;">
 				<div class="panel panel-default">
@@ -60,7 +60,7 @@
 							<a class="accordion-toggle"><?=html_escape($value->desc_recurso)?></a>
 						</h4>
 					</div>
-					<div id="collapse<?=$value->id_analisis?>">
+					<div id="collapse<?=$value->id_analisis?>" class="panel-collapse collapse in" aria-expanded="true">
 						<div class="row">
 							<div class="col-md-12 col-sm-12 col-xs-12">
 								<div id="divFormDetallaAnalisisUnitario<?=$value->id_analisis?>" style="padding: 4px;">
