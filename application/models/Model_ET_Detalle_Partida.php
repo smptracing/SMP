@@ -14,6 +14,16 @@ class Model_ET_Detalle_Partida extends CI_Model
 
 		return true;
 	}
+	function PartidaporAnalitico($idAnalisis)
+	{
+		$data=$this->db->query("select p.id_partida from ET_ANALISIS_UNITARIO au inner join ET_DETALLE_PARTIDA dp on au.id_detalle_partida=dp.id_detalle_partida inner join ET_PARTIDA p on dp.id_partida=p.id_partida where au.id_analisis=$idAnalisis");
+		return $data->result()[0];
+	}
+	function partidaAnaliticoEt($idAnalisis)
+	{
+		$data=$this->db->query("select et.id_et, p.id_partida from ET_ANALISIS_UNITARIO au inner join ET_DETALLE_PARTIDA dp on au.id_detalle_partida=dp.id_detalle_partida inner join ET_PARTIDA p on dp.id_partida=p.id_partida left join ET_META m on p.id_meta=m.id_meta left join ET_COMPONENTE c on m.id_componente=c.id_componente left join ET_EXPEDIENTE_TECNICO et on c.id_et=et.id_et where au.id_analisis=$idAnalisis");
+		return $data->result()[0];
+	}
 
 	function ultimoId()
 	{

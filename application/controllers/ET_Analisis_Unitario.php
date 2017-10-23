@@ -123,8 +123,20 @@ class ET_Analisis_Unitario extends CI_Controller
 		else
 		{
 			$idAnalisis=$this->input->get('id_AnalisisUnitario');
+			$Partida = $this->Model_ET_Detalle_Partida->partidaAnaliticoEt($idAnalisis);
+			/*$idPartida = $idPartida->id_partida;
+			$idet = $uri->segment(2);
+
+			$uri_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+			$uri_segments = explode('/', $uri_path);
+
+			echo $uri_segments[3];
+
+			echo $idPartida;*/
+			//echo $idet;
+			//exit;
 			$listaUnidadMedida = $this->Model_Unidad_Medida->UnidadMedidad_Listar();
-			$this->load->view('Front/Ejecucion/ETAnalisisUnitario/insertardetalleanalisisunitario',['idAnalisis'=>$idAnalisis,'listaUnidadMedida'=>$listaUnidadMedida]);
+			$this->load->view('Front/Ejecucion/ETAnalisisUnitario/insertardetalleanalisisunitario',['idAnalisis'=>$idAnalisis,'listaUnidadMedida'=>$listaUnidadMedida,'partida' =>$Partida]);
 		}		
 	}
 

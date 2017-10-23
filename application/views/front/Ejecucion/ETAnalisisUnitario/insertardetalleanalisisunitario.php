@@ -61,12 +61,6 @@
 								<input type="text" id="txtSubTotal" class="form-control" readonly="readonly">
 							</div>
 						</div>
-						<!--<div class="col-md-2 col-sm-2 col-xs-12">
-							<label for="control-label">.</label>
-							<div>
-								<input type="button" class="btn btn-info" value="Agregar" style="width: 100%;" onclick="registrarDetalleAnalisisUnitario(<?=$idAnalisis?>);">
-							</div>
-						</div>-->
 					</div>		
 				</br>
 				</div>
@@ -327,6 +321,7 @@ function guardarDetalleAnalisisPresupuestal()
         	if (resp=='1') 
             {
                 swal("Correcto","Se registró correctamente", "success");
+                paginaAjaxDialogo('otherModal', 'Análisis presupuestal', { idET : <?=$partida->id_et?> , idPartida : <?=$partida->id_partida?> }, base_url+'index.php/ET_Analisis_Unitario/insertar', 'GET', null, null, false, true);
             }
             if (resp=='0') 
             {

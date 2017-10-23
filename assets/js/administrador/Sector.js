@@ -3,15 +3,21 @@
                   listaSector();/*llamar a mi datatablet listarSector*/
                   listaSectorCombo();//para listar en un combo los sectores
                 
-	$("#form-addSector").submit(function(event)//para añadir nuevo sector
-	{
-		event.preventDefault();
 
+  $("#form-addSector").submit(function(event)//para añadir nuevo sector
+	{
+		 event.preventDefault();
+
+     var formData=new FormData($("#form-addSector")[0]);
 		$.ajax(
 		{
-			url : base_url+"index.php/Sector/AddSector",
-			type : $(this).attr('method'),
-			data : $(this).serialize(),
+			type:"POST",
+      enctype: 'multipart/form-data',
+      url : base_url+"index.php/Sector/AddSector",
+			data: formData,
+      cache: false,
+      contentType:false,
+      processData:false,
 			success : function(resp)
 			{
 				var registros=eval(resp);
@@ -33,7 +39,7 @@
 
 				$('#table-sector').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
 
-				listaSectorCombo();//llamado para la recarga al añadir un nuevo secto
+				listaSectorCombo();//llamado para la recarga al añadir un nuevo secto*/
 			}
 		});
 	});          
@@ -43,12 +49,16 @@
 	$("#form-ActulizarSector").submit(function(event)//para añadir nuevo sector
 	{
 		event.preventDefault();  
-
+    var formData=new FormData($("#form-ActulizarSector")[0]);
 		$.ajax(
 		{
-			url : base_url+"index.php/Sector/UpdateSector",
-			type : $(this).attr('method'),
-			data : $(this).serialize(),
+			type:"POST",
+      enctype: 'multipart/form-data',
+      url : base_url+"index.php/Sector/UpdateSector",
+			data: formData,
+      cache: false,
+      contentType:false,
+      processData:false,
 			success : function(resp)
 			{
 				swal("",resp, "success");
@@ -82,6 +92,11 @@
                                 "columns":[
                                     {"data":"id_sector", "visible" : false},
                                     {"data":"nombre_sector"},
+                                    {"data":"icono_sector",
+                                    "render" : function ( data, type, row, meta) {
+                                      url= base_url+"uploads/IconosSector/"+data;
+                                      return '<img height="20" width="20" src="'+url+'" />';
+                                    }},
                                     {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaModificarSector'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
 

@@ -21,9 +21,9 @@ class Model_Sector extends CI_Model
              }
    
         }
-        function AddSector($txt_NombreSector)
+        function AddSector($txt_NombreSector,$imagen)
         {
-           $mensaje=$this->db->query("execute sp_Sector_c '".$txt_NombreSector."'");
+           $mensaje=$this->db->query("execute sp_Sector_c '".$txt_NombreSector."', '".$imagen."'");
              if($mensaje->num_rows()>0)
              {
               return $mensaje->result();
@@ -47,6 +47,13 @@ class Model_Sector extends CI_Model
             return false;
           }
 
+    }
+
+    function UpdateSectorTodosCampos($txt_IdModificar,$txt_NombreSectorM,$imagen)
+    {
+        $this->db->query("update sector set nombre_sector = '".$txt_NombreSectorM."',icono_sector='".$imagen."' where id_sector =".$txt_IdModificar."");
+
+        return true;
     }
   
     function EliminarSector($id_sector){

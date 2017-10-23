@@ -980,9 +980,7 @@ class Expediente_Tecnico extends CI_Controller
 		}
 		else
 		{
-			/*$fechaActual=date('Y-m-d');
-			echo $fechaActual;
-			exit;*/
+			$fechaActual=date('Y-m-d');
 			$idDetallePartida=$this->input->get('id_DetallePartida');
 			$DetallePartida = $this->Model_ET_Detalle_Partida->ETPDetallePartida($idDetallePartida);
 			//$listaValorizacion = $this->Model_DetSegValorizacion->listarValorizacionPorDetallePartida($idDetallePartida);
