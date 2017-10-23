@@ -112,6 +112,66 @@ $(function()
 			}
 		}
 	});
+
+	$('#selectRecurso').selectpicker({ liveSearch: true });
+	$('#selectPresupuestoAnalitico').selectpicker({ liveSearch: true });
+
+	$('#selectPresupuestoAnalitico').on('change', function()
+    {
+		var selected=$(this).find("option:selected").val();
+
+		if(selected.trim()!='')
+		{
+			$('#txtPresupuestoEjecucion').val(selected.substring(selected.indexOf(',')+1, selected.length));
+		}
+		else
+		{
+			$('#txtPresupuestoEjecucion').val(null);
+		}
+    });
+
+	$('[id*="selectDescripcionDetalleAnalisis"]').selectpicker({ liveSearch: true }).ajaxSelectPicker(
+	{
+        ajax: {
+            url: base_url+'index.php/ET_Insumo/verPorDescripcion',
+            data: { valueSearch : '{{{q}}}' }
+        },
+        locale:
+        {
+            emptyTitle: 'Buscar insumo'
+        },
+        preprocessData: function(data)
+        {
+        	var dataForSelect=[];
+
+        	for(var i=0; i<data.length; i++)
+        	{
+        		dataForSelect.push(
+                {
+                    "value" : data[i].desc_insumo,
+                    "text" : data[i].desc_insum,
+                    "data" :
+                    {
+                    	"id-unidad" : data[i].id_unidad
+                    },
+                    "disabled" : false
+                });
+        	}
+
+            return dataForSelect;
+        },
+        preserveSelected: false
+    });
+
+    $('[id*="selectDescripcionDetalleAnalisis"]').on('change', function()
+    {
+		var selected=$(this).find("option:selected").val();
+
+		if(selected.trim()!='')
+		{
+			$('#selectUnidadMedida'+$(this).attr('id').substring(32)).val($(this).find("option:selected").data('id-unidad'));
+		}
+    });
 });
 $('#btnEnviarFormulario').on('click', function(event)
 {
@@ -146,59 +206,147 @@ $('#btnEnviarFormulario').on('click', function(event)
     });  
 });
 function calcularCantidad(idAnalisisUnitario)
+{
+	var cuadrilla=$('#txtCuadrilla'+idAnalisisUnitario).val();
+	var horas=$('#txtHoras'+idAnalisisUnitario).val();
+	var rendimiento=$('#txtRendimiento'+idAnalisisUnitario).val();
+	var cantidad=null;
+
+	if(!isNaN(cuadrilla) && cuadrilla.trim()!='' && !isNaN(horas) && horas.trim()!='' && !isNaN(rendimiento) && rendimiento.trim()!='')
 	{
-		var cuadrilla=$('#txtCuadrilla'+idAnalisisUnitario).val();
-		var horas=$('#txtHoras'+idAnalisisUnitario).val();
-		var rendimiento=$('#txtRendimiento'+idAnalisisUnitario).val();
-		var cantidad=null;
+		cantidad=parseFloat(cuadrilla)/(parseFloat(horas)*parseFloat(rendimiento));
 
-		if(!isNaN(cuadrilla) && cuadrilla.trim()!='' && !isNaN(horas) && horas.trim()!='' && !isNaN(rendimiento) && rendimiento.trim()!='')
-		{
-			cantidad=parseFloat(cuadrilla)/(parseFloat(horas)*parseFloat(rendimiento));
+		$('#txtCantidad'+idAnalisisUnitario).val(cantidad);
+	}
+	else
+	{
+		$('#txtCantidad'+idAnalisisUnitario).val('');
+	}
+}
 
-			$('#txtCantidad'+idAnalisisUnitario).val(cantidad);
-		}
-		else
-		{
-			$('#txtCantidad'+idAnalisisUnitario).val('');
-		}
+function calcularRendimiento(idAnalisisUnitario)
+{
+	var cuadrilla=$('#txtCuadrilla'+idAnalisisUnitario).val();
+	var cantidad=$('#txtCantidad'+idAnalisisUnitario).val();
+	var horas=$('#txtHoras'+idAnalisisUnitario).val();
+	var rendimiento=null;
+
+	if(!isNaN(cuadrilla) && cuadrilla.trim()!='' && !isNaN(cantidad) && cantidad.trim()!='' && !isNaN(horas) && horas.trim()!='')
+	{
+		rendimiento=parseFloat(cuadrilla)/(parseFloat(cantidad))/(parseFloat(horas));
+
+		$('#txtRendimiento'+idAnalisisUnitario).val(rendimiento);
+	}
+	else
+	{
+		$('#txtRendimiento'+idAnalisisUnitario).val('');
+	}
+}
+
+function calcularSubTotal(idAnalisisUnitario)
+{
+	var cantidad=$('#txtCantidad'+idAnalisisUnitario).val();
+	var precioUnitario=$('#txtPrecioUnitario'+idAnalisisUnitario).val();
+	var subTotal=null;
+
+	if(!isNaN(cantidad) && cantidad.trim()!='' && !isNaN(precioUnitario) && precioUnitario.trim()!='')
+	{
+		subTotal=cantidad*precioUnitario;
+
+		$('#txtSubTotal'+idAnalisisUnitario).val(subTotal.toFixed(2));
+	}
+	else
+	{
+		$('#txtSubTotal'+idAnalisisUnitario).val('');
+	}
+}
+
+function registrarDetalleAnalisisUnitario(idAnalisis)
+{
+	$('#divFormDetallaAnalisisUnitario'+idAnalisis).data('formValidation').resetField($('#selectDescripcionDetalleAnalisis'+idAnalisis));
+	$('#divFormDetallaAnalisisUnitario'+idAnalisis).data('formValidation').resetField($('#txtCuadrilla'+idAnalisis));
+	$('#divFormDetallaAnalisisUnitario'+idAnalisis).data('formValidation').resetField($('#txtHoras'+idAnalisis));
+	$('#divFormDetallaAnalisisUnitario'+idAnalisis).data('formValidation').resetField($('#selectUnidadMedida'+idAnalisis));
+	$('#divFormDetallaAnalisisUnitario'+idAnalisis).data('formValidation').resetField($('#txtRendimiento'+idAnalisis));
+	$('#divFormDetallaAnalisisUnitario'+idAnalisis).data('formValidation').resetField($('#txtCantidad'+idAnalisis));
+	$('#divFormDetallaAnalisisUnitario'+idAnalisis).data('formValidation').resetField($('#txtPrecioUnitario'+idAnalisis));
+
+	$('#divFormDetallaAnalisisUnitario'+idAnalisis).data('formValidation').validate();
+
+	if(!($('#divFormDetallaAnalisisUnitario'+idAnalisis).data('formValidation').isValid()))
+	{
+		return;
 	}
 
-	function calcularRendimiento(idAnalisisUnitario)
+	var descripcion=$('#selectDescripcionDetalleAnalisis'+idAnalisis).val()==null ? '' : $('#selectDescripcionDetalleAnalisis'+idAnalisis).val();
+	var cuadrilla=$('#txtCuadrilla'+idAnalisis).val();
+	var unidadMedida=$('#selectUnidadMedida'+idAnalisis).val();
+	var rendimiento=$('#txtRendimiento'+idAnalisis).val();
+	var cantidad=$('#txtCantidad'+idAnalisis).val();
+	var precioUnitario=$('#txtPrecioUnitario'+idAnalisis).val();
+	var subTotal=parseFloat(parseFloat(precioUnitario).toFixed(2))*cantidad;
+
+	var existeComponente=false;
+
+	$('#tableDetalleAnalisisUnitario'+idAnalisis+' > tbody').find('tr').each(function(index, element)
 	{
-		var cuadrilla=$('#txtCuadrilla'+idAnalisisUnitario).val();
-		var cantidad=$('#txtCantidad'+idAnalisisUnitario).val();
-		var horas=$('#txtHoras'+idAnalisisUnitario).val();
-		var rendimiento=null;
-
-		if(!isNaN(cuadrilla) && cuadrilla.trim()!='' && !isNaN(cantidad) && cantidad.trim()!='' && !isNaN(horas) && horas.trim()!='')
+		if(replaceAll(descripcion, ' ', '')==replaceAll($($(element).find('td')[0]).text(), ' ', ''))
 		{
-			rendimiento=parseFloat(cuadrilla)/(parseFloat(cantidad))/(parseFloat(horas));
+			existeComponente=true;
 
-			$('#txtRendimiento'+idAnalisisUnitario).val(rendimiento);
+			return false;
 		}
-		else
+	});
+
+	if(existeComponente)
+	{
+		swal(
 		{
-			$('#txtRendimiento'+idAnalisisUnitario).val('');
-		}
+			title: '',
+			text: 'No se puede agregar dos veces el mismo detalle de análisis.',
+			type: 'error'
+		},
+		function(){});
+
+		return;
 	}
 
-	function calcularSubTotal(idAnalisisUnitario)
+	paginaAjaxJSON({ "idAnalisis" : idAnalisis, "idUnidad" : unidadMedida, "descripcionDetalleAnalisis" : descripcion.trim(), "cuadrilla" : cuadrilla, "cantidad" : cantidad, "precioUnitario" : precioUnitario, "precioParcial" : subTotal, "rendimiento" : rendimiento }, base_url+'index.php/ET_Detalle_Analisis_Unitario/insertar', 'POST', null, function(objectJSON)
 	{
-		var cantidad=$('#txtCantidad'+idAnalisisUnitario).val();
-		var precioUnitario=$('#txtPrecioUnitario'+idAnalisisUnitario).val();
-		var subTotal=null;
+		objectJSON=JSON.parse(objectJSON);
 
-		if(!isNaN(cantidad) && cantidad.trim()!='' && !isNaN(precioUnitario) && precioUnitario.trim()!='')
+		swal(
 		{
-			subTotal=cantidad*precioUnitario;
+			title: '',
+			text: objectJSON.mensaje,
+			type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+		},
+		function(){});
 
-			$('#txtSubTotal'+idAnalisisUnitario).val(subTotal.toFixed(2));
-		}
-		else
+		if(objectJSON.proceso=='Error')
 		{
-			$('#txtSubTotal'+idAnalisisUnitario).val('');
+			return false;
 		}
-	}
+
+		var htmlTemp='<tr>'+
+			'<td>'+replaceAll(replaceAll(descripcion, '<', '&lt;'), '>', '&gt;')+'</td>'+
+			'<td>'+parseFloat(cuadrilla).toFixed(2)+'</td>'+
+			'<td>'+replaceAll(replaceAll(objectJSON.nombreUnidadMedida, '<', '&lt;'), '>', '&gt;')+'</td>'+
+			'<td>'+parseFloat(rendimiento).toFixed(2)+'</td>'+
+			'<td>'+parseFloat(cantidad).toFixed(2)+'</td>'+
+			'<td>'+parseFloat(precioUnitario).toFixed(2)+'</td>'+
+			'<td class="subTotalDetalleAnalisisUnitario">'+parseFloat(subTotal).toFixed(2)+'</td>'+
+			'<td>'+
+				'<a href="#" style="color: red;text-decoration: underline;" onclick="eliminarDetalleAnalisisUnitario('+objectJSON.idDetalleAnalisisUnitario+', this)"><b>Eliminar</b></a>'+
+			'</td>'+
+		'</tr>';
+
+		$('#tableDetalleAnalisisUnitario'+idAnalisis+' > tbody').append(htmlTemp);
+
+		limpiarText('divFormDetallaAnalisisUnitario'+idAnalisis, ['txtHoras'+idAnalisis]);
+
+		renderizarNuevoMontoPartida();
+	}, false, true);
+}
 
 </script>
