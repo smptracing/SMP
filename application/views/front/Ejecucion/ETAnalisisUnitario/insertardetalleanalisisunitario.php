@@ -75,7 +75,7 @@
 		</div>
 	</div>
 	<div class="row" style="text-align: center;">
-		<button  class="btn btn-success" id="btnEnviarFormulario" >Guardar</button>
+		<button  class="btn btn-success" onclick="guardarDetalleAnalisisPresupuestal();">Guardar</button>
 		<button  class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 	</div>
 </form>
@@ -249,38 +249,7 @@ $(function()
 		}
     });
 });
-$('#btnEnviarFormulario').on('click', function(event)
-{
-    event.preventDefault();
-    //$('#divFormDetallaAnalisisUnitario').data('formValidation').resetField($('#listaUnidadMedida'));
-    //$('#divFormDetallaAnalisisUnitario').data('formValidation').resetField($('#txtInsumo'));
-    $('#divFormDetallaAnalisisUnitario').data('formValidation').validate();
-	if(!($('#divFormDetallaAnalisisUnitario').data('formValidation').isValid()))
-	{
-		return;
-	}
-    var formData=new FormData($("#frmInsertarDetalleAnalisisUnitario")[0]);
-    var dataString = $('#frmInsertarDetalleAnalisisUnitario').serialize();
-    $.ajax({
-        type:"POST",
-        url:base_url+"index.php/ET_Analisis_Unitario/insertarDetalleAnalisisUnitario",
-        data: formData,
-        cache: false,
-        contentType:false,
-        processData:false,
-        success:function(resp)
-        {
-        	if (resp=='1') 
-            {
-                swal("Correcto","Se registró correctamente", "success");
-            }
-            if (resp=='0') 
-            {
-                swal("Error","No se puede agregar dos veces el mismo detalle de análisis.", "error");
-            }
-        }
-    });  
-});
+
 function calcularCantidad(idAnalisisUnitario)
 {
 	var cuadrilla=$('#txtCuadrilla').val();
@@ -336,94 +305,34 @@ function calcularSubTotal(idAnalisisUnitario)
 		$('#txtSubTotal').val('');
 	}
 }
-/*
-
-function registrarDetalleAnalisisUnitario(idAnalisis)
+function guardarDetalleAnalisisPresupuestal()
 {
-	$('#divFormDetallaAnalisisUnitario'+idAnalisis).data('formValidation').resetField($('#selectDescripcionDetalleAnalisis'+idAnalisis));
-	$('#divFormDetallaAnalisisUnitario'+idAnalisis).data('formValidation').resetField($('#txtCuadrilla'+idAnalisis));
-	$('#divFormDetallaAnalisisUnitario'+idAnalisis).data('formValidation').resetField($('#txtHoras'+idAnalisis));
-	$('#divFormDetallaAnalisisUnitario'+idAnalisis).data('formValidation').resetField($('#selectUnidadMedida'+idAnalisis));
-	$('#divFormDetallaAnalisisUnitario'+idAnalisis).data('formValidation').resetField($('#txtRendimiento'+idAnalisis));
-	$('#divFormDetallaAnalisisUnitario'+idAnalisis).data('formValidation').resetField($('#txtCantidad'+idAnalisis));
-	$('#divFormDetallaAnalisisUnitario'+idAnalisis).data('formValidation').resetField($('#txtPrecioUnitario'+idAnalisis));
-
-	$('#divFormDetallaAnalisisUnitario'+idAnalisis).data('formValidation').validate();
-
-	if(!($('#divFormDetallaAnalisisUnitario'+idAnalisis).data('formValidation').isValid()))
+	event.preventDefault();
+	$('#divFormDetallaAnalisisUnitario').data('formValidation').validate();
+	if(!($('#divFormDetallaAnalisisUnitario').data('formValidation').isValid()))
 	{
 		return;
 	}
-
-	var descripcion=$('#selectDescripcionDetalleAnalisis'+idAnalisis).val()==null ? '' : $('#selectDescripcionDetalleAnalisis'+idAnalisis).val();
-	var cuadrilla=$('#txtCuadrilla'+idAnalisis).val();
-	var unidadMedida=$('#selectUnidadMedida'+idAnalisis).val();
-	var rendimiento=$('#txtRendimiento'+idAnalisis).val();
-	var cantidad=$('#txtCantidad'+idAnalisis).val();
-	var precioUnitario=$('#txtPrecioUnitario'+idAnalisis).val();
-	var subTotal=parseFloat(parseFloat(precioUnitario).toFixed(2))*cantidad;
-
-	var existeComponente=false;
-
-	$('#tableDetalleAnalisisUnitario'+idAnalisis+' > tbody').find('tr').each(function(index, element)
-	{
-		if(replaceAll(descripcion, ' ', '')==replaceAll($($(element).find('td')[0]).text(), ' ', ''))
-		{
-			existeComponente=true;
-
-			return false;
-		}
-	});
-
-	if(existeComponente)
-	{
-		swal(
-		{
-			title: '',
-			text: 'No se puede agregar dos veces el mismo detalle de análisis.',
-			type: 'error'
-		},
-		function(){});
-
-		return;
-	}
-
-	paginaAjaxJSON({ "idAnalisis" : idAnalisis, "idUnidad" : unidadMedida, "descripcionDetalleAnalisis" : descripcion.trim(), "cuadrilla" : cuadrilla, "cantidad" : cantidad, "precioUnitario" : precioUnitario, "precioParcial" : subTotal, "rendimiento" : rendimiento }, base_url+'index.php/ET_Detalle_Analisis_Unitario/insertar', 'POST', null, function(objectJSON)
-	{
-		objectJSON=JSON.parse(objectJSON);
-
-		swal(
-		{
-			title: '',
-			text: objectJSON.mensaje,
-			type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
-		},
-		function(){});
-
-		if(objectJSON.proceso=='Error')
-		{
-			return false;
-		}
-
-		var htmlTemp='<tr>'+
-			'<td>'+replaceAll(replaceAll(descripcion, '<', '&lt;'), '>', '&gt;')+'</td>'+
-			'<td>'+parseFloat(cuadrilla).toFixed(2)+'</td>'+
-			'<td>'+replaceAll(replaceAll(objectJSON.nombreUnidadMedida, '<', '&lt;'), '>', '&gt;')+'</td>'+
-			'<td>'+parseFloat(rendimiento).toFixed(2)+'</td>'+
-			'<td>'+parseFloat(cantidad).toFixed(2)+'</td>'+
-			'<td>'+parseFloat(precioUnitario).toFixed(2)+'</td>'+
-			'<td class="subTotalDetalleAnalisisUnitario">'+parseFloat(subTotal).toFixed(2)+'</td>'+
-			'<td>'+
-				'<a href="#" style="color: red;text-decoration: underline;" onclick="eliminarDetalleAnalisisUnitario('+objectJSON.idDetalleAnalisisUnitario+', this)"><b>Eliminar</b></a>'+
-			'</td>'+
-		'</tr>';
-
-		$('#tableDetalleAnalisisUnitario'+idAnalisis+' > tbody').append(htmlTemp);
-
-		limpiarText('divFormDetallaAnalisisUnitario'+idAnalisis, ['txtHoras'+idAnalisis]);
-
-		renderizarNuevoMontoPartida();
-	}, false, true);
-}*/
-
+	var formData=new FormData($("#frmInsertarDetalleAnalisisUnitario")[0]);
+    var dataString = $('#frmInsertarDetalleAnalisisUnitario').serialize();
+    $.ajax({
+        type:"POST",
+        url:base_url+"index.php/ET_Analisis_Unitario/insertarDetalleAnalisisUnitario",
+        data: formData,
+        cache: false,
+        contentType:false,
+        processData:false,
+        success:function(resp)
+        {
+        	if (resp=='1') 
+            {
+                swal("Correcto","Se registró correctamente", "success");
+            }
+            if (resp=='0') 
+            {
+                swal("Error","No se puede agregar dos veces el mismo detalle de análisis.", "error");
+            }
+        }
+    }); 
+}
 </script>

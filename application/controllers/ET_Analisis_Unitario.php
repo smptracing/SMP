@@ -104,7 +104,6 @@ class ET_Analisis_Unitario extends CI_Controller
 
 				echo "0";
 
-				//echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede agregar dos veces el mismo detalle de análisis.']);exit;
 			}
 			else
 			{
@@ -116,28 +115,14 @@ class ET_Analisis_Unitario extends CI_Controller
 
 				$this->db->trans_complete();
 
-				//echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Detalle de análisis registrado correctamente.', 'idDetalleAnalisisUnitario' => $idDetalleAnalisisUnitario, 'nombreUnidadMedida' => $unidadMedida[0]->descripcion]);exit;
 				echo "1";
 
 			}
-
-
-			/*$data = $this->Model_Unidad_Medida->insertarInsumo($idUnidad, $descripcionInsumo);
-
-			if($data==true)
-			{
-				echo "1";
-			}
-			else
-			{
-				echo "0";
-			}*/			
+	
 		}
 		else
 		{
 			$idAnalisis=$this->input->get('id_AnalisisUnitario');
-			//echo $idAnalisis;
-			//exit;
 			$listaUnidadMedida = $this->Model_Unidad_Medida->UnidadMedidad_Listar();
 			$this->load->view('Front/Ejecucion/ETAnalisisUnitario/insertardetalleanalisisunitario',['idAnalisis'=>$idAnalisis,'listaUnidadMedida'=>$listaUnidadMedida]);
 		}		
