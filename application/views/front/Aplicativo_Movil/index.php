@@ -423,7 +423,7 @@ var base_url = '<?php echo base_url(); ?>';
 			var codigounico=$("#BuscarPip").val();
 
 				$.ajax({
-				"url":base_url+"index.php/PrincipalReportes/DatosParaEstadisticaAnualProyecto",
+				"url":base_url+"index.php/AplicativoMovil/DatosGeneralesdelPip",
 				type:"POST",
 				data:{codigounico:codigounico},
 				success: function(data)

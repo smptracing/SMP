@@ -33,7 +33,7 @@ class Model_AplicativoMovil extends CI_Model
         return $data->result();
     }
 
-     public function listaTotalDeUbicacionesProyecto()
+    public function listaTotalDeUbicacionesProyecto()
     {
         $dato = $this->db->query("select ProInv.nombre_pi,ProInv.codigo_unico_pi,Gfun.id_grup_funcional,UBIGEO_PI.latitud,UBIGEO_PI.longitud,SECTOR.nombre_sector,SECTOR.id_sector,SECTOR.icono_sector
         from GRUPO_FUNCIONAL Gfun inner join SECTOR ON Gfun.id_sector=SECTOR.id_sector inner join PROYECTO_INVERSION  ProInv on Gfun.id_grup_funcional=ProInv.id_grupo_funcional 
@@ -41,6 +41,13 @@ class Model_AplicativoMovil extends CI_Model
         
         return $dato->result();
         
+    }
+    public function busquedaPorCodigoDatosGeneralesPip($codigounico)
+    {
+       $data = $this->db->query("select * from PROYECTO_INVERSION LEFT join META_PRESUPUESTAL_PI on PROYECTO_INVERSION.id_pi=META_PRESUPUESTAL_PI.id_pi LEFT JOIN DEVENGADO_META ON
+         META_PRESUPUESTAL_PI.id_meta_pi=DEVENGADO_META.id_meta_pi WHERE PROYECTO_INVERSION.codigo_unico_pi='".$codigoUnico."' and year(anio_meta_pres)=year(GETDATE())");
+
+        return $data->result()[0];
     }
 
 

@@ -40,7 +40,7 @@ class AplicativoMovil extends CI_Controller
         $this->load->view('front/Aplicativo_Movil/index',['comboboxfuncion'=>$comboboxfuncion,'comboboxtiponopip'=>$comboboxtiponopip]);
     } 
 
-     public function listaTotalDeUbicacionesProyecto()
+    public function listaTotalDeUbicacionesProyecto()
     {
         if ($this->input->is_ajax_request()) {
             $listaTotaProyecto= array();
@@ -55,5 +55,11 @@ class AplicativoMovil extends CI_Controller
 
     }
 
+    function  DatosGeneralesdelPip()
+    {
+        $codigounico=$this->input->POST('codigounico');
+        $data=$this->Model_AplicativoMovil->busquedaPorCodigoDatosGeneralesPip($codigounico);
+        echo  json_encode($data);
+    }
 
 }
