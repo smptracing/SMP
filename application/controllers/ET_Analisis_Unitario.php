@@ -89,9 +89,41 @@ class ET_Analisis_Unitario extends CI_Controller
 	{
 		if($_POST)
 		{
-			$idUnidad=$this->input->post('listaUnidadMedida');
-			$descripcionInsumo=$this->input->post('txtInsumo');
-			$data = $this->Model_Unidad_Medida->insertarInsumo($idUnidad, $descripcionInsumo);
+			$this->db->trans_start();
+			$idAnalisis=$this->input->post('idAnalisis');
+			$descripcion=$this->input->post('selectDescripcionDetalleAnalisis');
+			$cuadrilla=$this->input->post('txtCuadrilla');
+			$idUnidad=$this->input->post('selectUnidadMedida');
+			$rendimiento=$this->input->post('txtRendimiento');
+			$cantidad=$this->input->post('txtCantidad');
+			$precioUnitario=$this->input->post('txtPrecioUnitario');
+
+			if($this->Model_ET_Detalle_Analisis_Unitario->ETDetalleAnalisisUnitarioPorIdAnalisisAndDescDetalleAnalisis($idAnalisis, $descripcion)!=null)
+			{
+				$this->db->trans_rollback();
+
+				echo "0";
+
+				//echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede agregar dos veces el mismo detalle de análisis.']);exit;
+			}
+			else
+			{
+				$this->Model_ET_Detalle_Analisis_Unitario->insertar($idAnalisis, $idUnidad, $descripcion, $cuadrilla, $cantidad, $precioUnitario, $rendimiento);
+
+				$idDetalleAnalisisUnitario=$this->Model_ET_Detalle_Analisis_Unitario->ultimoId();
+
+				$unidadMedida=$this->Model_Unidad_Medida->UnidadMedida($idUnidad);
+
+				$this->db->trans_complete();
+
+				//echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Detalle de análisis registrado correctamente.', 'idDetalleAnalisisUnitario' => $idDetalleAnalisisUnitario, 'nombreUnidadMedida' => $unidadMedida[0]->descripcion]);exit;
+				echo "1";
+
+			}
+
+
+			/*$data = $this->Model_Unidad_Medida->insertarInsumo($idUnidad, $descripcionInsumo);
+
 			if($data==true)
 			{
 				echo "1";
@@ -99,7 +131,7 @@ class ET_Analisis_Unitario extends CI_Controller
 			else
 			{
 				echo "0";
-			}			
+			}*/			
 		}
 		else
 		{

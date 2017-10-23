@@ -79,14 +79,12 @@
 										<div class="col-md-1 col-sm-2 col-xs-12">
 											<label for="control-label">.</label>
 											<div>
-												<!--<input type="button" class="btn btn-primary btn-sm" value="Guardar" onclick="guardarPresupuestoAnaliticoParaAnalisisUnitario(<?=$value->id_analisis?>);">-->
 												<button  id="btnEnviarFormulario" class="btn btn-primary btn-sm" onclick="guardarPresupuestoAnaliticoParaAnalisisUnitario(<?=$value->id_analisis?>);"> <span class="fa fa-save"></span> Guardar</button>
 											</div>											
 										</div>
 										<div class="col-md-2 col-sm-12 col-xs-12">
 											<label for="control-label">.</label>
 											<div>
-												<!--<input type="button" class="btn btn-danger btn-sm" value="Eliminar A.U." onclick="eliminarAnalisisUnitario(<?=$value->id_analisis?>, this);">-->
 												<button  class="btn btn-danger btn-sm" onclick="eliminarAnalisisUnitario(<?=$value->id_analisis?>, this);"> <span class="fa fa-trash-o"></span> Eliminar A.U.</button>											
 											</div>											
 										</div>
@@ -94,8 +92,6 @@
 									<hr style="margin: 2px;">
 									<div class="row">
 										<div class="col-md-12 col-sm-12 col-xs-12">
-											<!--<input type="button" class="btn btn-danger btn btn-xs" value="Agregar" onclick="eliminarAnalisisUnitario(<?=$value->id_analisis?>, this);">-->
-											<!--<input type="button" class="btn btn-success btn-sm" value="Registrar A.u."  onclick=" paginaAjaxDialogo('otherModal2', 'Análisis Unitario',{ id_AnalisisUnitario: <?=$value->id_analisis?> }, base_url+'index.php/ET_Analisis_Unitario/insertarDetalleAnalisisUnitario', 'GET', null, null, false, true);">	-->
 											<button  class="btn btn-success btn-sm" onclick=" paginaAjaxDialogo('otherModal2', 'Análisis Unitario',{ id_AnalisisUnitario: <?=$value->id_analisis?> }, base_url+'index.php/ET_Analisis_Unitario/insertarDetalleAnalisisUnitario', 'GET', null, null, false, true);" > <span class="fa fa-plus"></span> Registrar A.U.</button>
 										</div>
 										
