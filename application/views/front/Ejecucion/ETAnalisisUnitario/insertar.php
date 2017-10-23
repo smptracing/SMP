@@ -60,7 +60,7 @@
 							<a class="accordion-toggle"><?=html_escape($value->desc_recurso)?></a>
 						</h4>
 					</div>
-					<div id="collapse<?=$value->id_analisis?>" class="panel-collapse collapse in" aria-expanded="true">
+					<div id="collapse<?=$value->id_analisis?>" class="panel-collapse collapse in">
 						<div class="row">
 							<div class="col-md-12 col-sm-12 col-xs-12">
 								<div id="divFormDetallaAnalisisUnitario<?=$value->id_analisis?>" style="padding: 4px;">
@@ -85,7 +85,8 @@
 										<div class="col-md-2 col-sm-12 col-xs-12">
 											<label for="control-label">.</label>
 											<div>
-												<button  class="btn btn-danger btn-sm" onclick="eliminarAnalisisUnitario(<?=$value->id_analisis?>, this);"> <span class="fa fa-trash-o"></span> Eliminar A.U.</button>											
+												<button  class="btn btn-danger btn-sm" onclick="eliminarAnalisisUnitario(<?=$value->id_analisis?>, this);"><span class="fa fa-trash-o"></span> Eliminar A.U.
+												</button>								
 											</div>											
 										</div>
 									</div>
@@ -96,81 +97,6 @@
 										</div>
 										
 									</div>
-									<!--<div class="row">
-										<div class="col-md-12 col-sm-12 col-xs-12">
-											<input type="button" class="btn btn-danger btn btn-xs" value="Eliminar este análisis unitario" onclick="eliminarAnalisisUnitario(<?=$value->id_analisis?>, this);">
-										</div>
-
-
-										<div class="col-md-5 col-sm-7 col-xs-12">
-											<label for="control-label">Descripción del insunmo</label>
-											<div>
-												<select name="selectDescripcionDetalleAnalisis<?=$value->id_analisis?>" id="selectDescripcionDetalleAnalisis<?=$value->id_analisis?>" class="form-control"></select>
-											</div>
-										</div>
-
-										<div class="col-md-2 col-sm-7 col-xs-12">
-											<label for="control-label">.</label>
-											<div>
-												<input type="button" class="btn btn-danger btn-xs" value="Registrar Nuevo Insumo" style="width: 100%;" onclick=" paginaAjaxDialogo('otherModal2', 'Insertar Insumo',{ id_DetallePartida: 7 }, base_url+'index.php/ET_Analisis_Unitario/insertarinsumo', 'GET', null, null, false, true);">											
-											</div>
-										</div>
-
-										<div class="col-md-2 col-sm-2 col-xs-12">
-											<label for="control-label">Cuadrilla</label>
-											<div>
-												<input type="text" id="txtCuadrilla<?=$value->id_analisis?>" name="txtCuadrilla<?=$value->id_analisis?>" class="form-control" onkeyup="calcularCantidad(<?=$value->id_analisis?>);calcularSubTotal(<?=$value->id_analisis?>);">
-											</div>
-										</div>
-										<div class="col-md-1 col-sm-1 col-xs-12">
-											<label for="control-label">Horas</label>
-											<div>
-												<input type="text" id="txtHoras<?=$value->id_analisis?>" name="txtHoras<?=$value->id_analisis?>" class="form-control" onkeyup="calcularCantidad(<?=$value->id_analisis?>);calcularSubTotal(<?=$value->id_analisis?>);" value="8">
-											</div>
-										</div>
-										<div class="col-md-2 col-sm-2 col-xs-12">
-											<label for="control-label">Undidad</label>
-											<div>
-												<select name="selectUnidadMedida<?=$value->id_analisis?>" id="selectUnidadMedida<?=$value->id_analisis?>" class="form-control">
-													<?php foreach($listaUnidadMedida as $item){ ?>
-														<option value="<?=$item->id_unidad?>"><?=html_escape($item->descripcion)?></option>
-													<?php } ?>
-												</select>
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-md-2 col-sm-2 col-xs-12">
-											<label for="control-label">Rendimiento</label>
-											<div>
-												<input type="text" id="txtRendimiento<?=$value->id_analisis?>" name="txtRendimiento<?=$value->id_analisis?>" class="form-control" onkeyup="calcularCantidad(<?=$value->id_analisis?>);calcularSubTotal(<?=$value->id_analisis?>);">
-											</div>
-										</div>
-										<div class="col-md-2 col-sm-2 col-xs-12">
-											<label for="control-label">Cantidad</label>
-											<div>
-												<input type="text" id="txtCantidad<?=$value->id_analisis?>" name="txtCantidad<?=$value->id_analisis?>" class="form-control" onkeyup="calcularRendimiento(<?=$value->id_analisis?>);calcularSubTotal(<?=$value->id_analisis?>);">
-											</div>
-										</div>
-										<div class="col-md-3 col-sm-3 col-xs-12">
-											<label for="control-label">Precio unitario</label>
-											<div>
-												<input type="text" id="txtPrecioUnitario<?=$value->id_analisis?>" name="txtPrecioUnitario<?=$value->id_analisis?>" class="form-control" onkeyup="calcularSubTotal(<?=$value->id_analisis?>);">
-											</div>
-										</div>
-										<div class="col-md-3 col-sm-3 col-xs-12">
-											<label for="control-label">Sub total</label>
-											<div>
-												<input type="text" id="txtSubTotal<?=$value->id_analisis?>" class="form-control" readonly="readonly">
-											</div>
-										</div>
-										<div class="col-md-2 col-sm-2 col-xs-12">
-											<label for="control-label">.</label>
-											<div>
-												<input type="button" class="btn btn-info" value="Agregar" style="width: 100%;" onclick="registrarDetalleAnalisisUnitario(<?=$value->id_analisis?>);">
-											</div>
-										</div>
-									</div>-->
 								</div>
 								<div>
 									<table id="tableDetalleAnalisisUnitario<?=$value->id_analisis?>" class="table">
@@ -568,18 +494,17 @@
 
 			var htmlTemp='<div class="panel-group" style="margin: 2px;">'+
 				'<div class="panel panel-default">'+
-					'<div class="panel-heading" data-toggle="collapse" href="#collapse'+objectJSON.idAnalisis+'" style="cursor: pointer;">'+
+					'<div class="panel-heading" data-toggle="collapse" href="#collapse'+objectJSON.idAnalisis+'" style="cursor: pointer; background-color: #cacbe0; color: black;">'+
 						'<h4 class="panel-title">'+
 							'<a class="accordion-toggle">'+replaceAll(replaceAll(descripcionRecurso, '<', '&lt;'), '>', '&gt;')+'</a>'+
 						'</h4>'+
 					'</div>'+
-					'<div id="collapse'+objectJSON.idAnalisis+'" class="panel-collapse collapse">'+
+					'<div id="collapse'+objectJSON.idAnalisis+'" class="panel-collapse collapse in">'+
 						'<div class="row">'+
 							'<div class="col-md-12 col-sm-12 col-xs-12">'+
 								'<div id="divFormDetallaAnalisisUnitario'+objectJSON.idAnalisis+'" style="padding: 4px;">'+
-
 									'<div class="row">'+
-										'<div class="col-md-10 col-sm-10 col-xs-12">'+
+										'<div class="col-md-9 col-sm-10 col-xs-12">'+
 											'<label for="control-label">Presupuesto analítico (Clasificador | Presupuesto ejecución)</label>'+
 											'<div>'+
 												'<select name="selectPresupuestoAnalitico'+objectJSON.idAnalisis+'" id="selectPresupuestoAnalitico'+objectJSON.idAnalisis+'" class="form-control">'+
@@ -592,89 +517,27 @@
 												htmlTemp+='</select>'+
 											'</div>'+
 										'</div>'+
+										'<div class="col-md-1 col-sm-2 col-xs-12">'+
+											'<label for="control-label">.</label>'+
+											'<div>'+
+												'<button class="btn btn-primary btn-sm" onclick="guardarPresupuestoAnaliticoParaAnalisisUnitario('+objectJSON.idAnalisis+');"> <span class="fa fa-save"></span> Guardar</button>'+
+											'</div>'+
+										'</div>'+
 										'<div class="col-md-2 col-sm-2 col-xs-12">'+
 											'<label for="control-label">.</label>'+
 											'<div>'+
-												'<input type="button" class="btn btn-primary" value="Guardar" style="width: 100%;" onclick="guardarPresupuestoAnaliticoParaAnalisisUnitario('+objectJSON.idAnalisis+');">'+
+												'<button  class="btn btn-danger btn-sm" onclick="eliminarAnalisisUnitario('+objectJSON.idAnalisis+', this);"><span class="fa fa-trash-o"></span> Eliminar A.U. </button>'+
 											'</div>'+
 										'</div>'+
 									'</div>'+
 									'<hr style="margin: 2px;">'+
 
 									'<div class="row">'+
+
 										'<div class="col-md-12 col-sm-12 col-xs-12">'+
-											'<input type="button" class="btn btn-danger btn btn-xs" value="Eliminar este análisis unitario" onclick="eliminarAnalisisUnitario('+objectJSON.idAnalisis+', this);">'+
+											'<button  class="btn btn-success btn-sm" onclick=" paginaAjaxDialogo(\'otherModal2\', \'Análisis Unitario\',{ id_AnalisisUnitario: '+objectJSON.idAnalisis+' }, base_url+\'index.php/ET_Analisis_Unitario/insertarDetalleAnalisisUnitario\', \'GET\', null, null, false, true);" > <span class="fa fa-plus"></span> Registrar A.U.</button>'
 										'</div>'+
 
-
-										'<div class="col-md-5 col-sm-7 col-xs-12">'+
-											'<label for="control-label">Descripción del insunmo</label>'+
-											'<div>'+
-												'<select name="selectDescripcionDetalleAnalisis'+objectJSON.idAnalisis+'" id="selectDescripcionDetalleAnalisis'+objectJSON.idAnalisis+'" class="form-control"></select>'+
-											'</div>'+
-										'</div>'+
-										'<div class="col-md-2 col-sm-7 col-xs-12">'+
-											'<label for="control-label">.</label>'+
-											'<div>'+
-												'<input type="button" class="btn btn-danger btn-xs" value="Registrar Nuevo Insumo" style="width: 100%;" onclick=" paginaAjaxDialogo(\'otherModal2\', \'Insertar Insumo\',{id:2}, base_url+\'index.php/ET_Analisis_Unitario/insertarinsumo\', \'GET\', null, null, false, true);">'+											
-											'</div>'+
-										'</div>'+
-										'<div class="col-md-2 col-sm-2 col-xs-12">'+
-											'<label for="control-label">Cuadrilla</label>'+
-											'<div>'+
-												'<input type="text" id="txtCuadrilla'+objectJSON.idAnalisis+'" name="txtCuadrilla'+objectJSON.idAnalisis+'" class="form-control" onkeyup="calcularCantidad('+objectJSON.idAnalisis+');calcularSubTotal('+objectJSON.idAnalisis+');">'+
-											'</div>'+
-										'</div>'+
-										'<div class="col-md-1 col-sm-1 col-xs-12">'+
-											'<label for="control-label">Horas</label>'+
-											'<div>'+
-												'<input type="text" id="txtHoras'+objectJSON.idAnalisis+'" name="txtHoras'+objectJSON.idAnalisis+'" class="form-control" onkeyup="calcularCantidad('+objectJSON.idAnalisis+');calcularSubTotal('+objectJSON.idAnalisis+');" value="8">'+
-											'</div>'+
-										'</div>'+
-										'<div class="col-md-2 col-sm-2 col-xs-12">'+
-											'<label for="control-label">Undidad</label>'+
-											'<div>'+
-												'<select name="selectUnidadMedida'+objectJSON.idAnalisis+'" id="selectUnidadMedida'+objectJSON.idAnalisis+'" class="form-control">';
-
-													<?php foreach($listaUnidadMedida as $item){ ?>
-														htmlTemp+='<option value="<?=$item->id_unidad?>"><?=html_escape($item->descripcion)?></option>';
-													<?php } ?>
-
-												htmlTemp+='</select>'+
-											'</div>'+
-										'</div>'+
-									'</div>'+
-									'<div class="row">'+
-										'<div class="col-md-2 col-sm-2 col-xs-12">'+
-											'<label for="control-label">Rendimiento</label>'+
-											'<div>'+
-												'<input type="text" id="txtRendimiento'+objectJSON.idAnalisis+'" name="txtRendimiento'+objectJSON.idAnalisis+'" class="form-control" onkeyup="calcularCantidad('+objectJSON.idAnalisis+');calcularSubTotal('+objectJSON.idAnalisis+');">'+
-											'</div>'+
-										'</div>'+
-										'<div class="col-md-2 col-sm-2 col-xs-12">'+
-											'<label for="control-label">Cantidad</label>'+
-											'<div>'+
-												'<input type="text" id="txtCantidad'+objectJSON.idAnalisis+'" name="txtCantidad'+objectJSON.idAnalisis+'" class="form-control" onkeyup="calcularRendimiento('+objectJSON.idAnalisis+');calcularSubTotal('+objectJSON.idAnalisis+');">'+
-											'</div>'+
-										'</div>'+
-										'<div class="col-md-3 col-sm-3 col-xs-12">'+
-											'<label for="control-label">Precio unitario</label>'+
-											'<div>'+
-												'<input type="text" id="txtPrecioUnitario'+objectJSON.idAnalisis+'" name="txtPrecioUnitario'+objectJSON.idAnalisis+'" class="form-control" onkeyup="calcularSubTotal('+objectJSON.idAnalisis+');">'+
-											'</div>'+
-										'</div>'+
-										'<div class="col-md-3 col-sm-3 col-xs-12">'+
-											'<label for="control-label">Sub total</label>'+
-											'<div>'+
-												'<input type="text" id="txtSubTotal'+objectJSON.idAnalisis+'" name="txtSubTotal'+objectJSON.idAnalisis+'" class="form-control" readonly="readonly">'+
-											'</div>'+
-										'</div>'+
-										'<div class="col-md-2 col-sm-2 col-xs-12">'+
-											'<label for="control-label">.</label>'+
-											'<div>'+
-												'<input type="button" class="btn btn-info" value="Agregar" style="width: 100%;" onclick="registrarDetalleAnalisisUnitario('+objectJSON.idAnalisis+');">'+
-											'</div>'+
-										'</div>'+
 									'</div>'+
 								'</div>'+
 								'<div>'+
