@@ -37,6 +37,15 @@
 	<script src="<?php echo base_url(); ?>assets/adminlte/demo.js"> </script>
 	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1uRF6cxgwFc9DGwREFvIE6oorBaWny64&callback=initialize">
   </script>
+
+
+ <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+
+
   <style>
     .main-footer 
     {
@@ -195,7 +204,7 @@ var base_url = '<?php echo base_url(); ?>';
 
                  	<div class="nav-tabs-custom">
 			            <ul class="nav nav-tabs">
-			              <li class="active"><a href="#tab_1" data-toggle="tab">Tab 1</a></li>
+			              <li class="active"><a href="#tab_1" data-toggle="tab">Proyecto de Inversión</a></li>
 			              <li><a href="#tab_2" data-toggle="tab">Tab 2</a></li>
 			              <li><a href="#tab_3" data-toggle="tab">Tab 3</a></li>
 			              <li class="dropdown">
@@ -214,17 +223,76 @@ var base_url = '<?php echo base_url(); ?>';
 			            </ul>
 			            <div class="tab-content">
 			              <div class="tab-pane active" id="tab_1">
-			                <b>How to use:</b>
+			                <b></b>
 
-			                <p>Exactly like the original bootstrap tabs except you should use
-			                  the custom wrapper <code>.nav-tabs-custom</code> to achieve this style.</p>
-			                A wonderful serenity has taken possession of my entire soul,
-			                like these sweet mornings of spring which I enjoy with my whole heart.
-			                I am alone, and feel the charm of existence in this spot,
-			                which was created for the bliss of souls like mine. I am so happy,
-			                my dear friend, so absorbed in the exquisite sense of mere tranquil existence,
-			                that I neglect my talents. I should be incapable of drawing a single stroke
-			                at the present moment; and yet I feel that I never was a greater artist than now.
+			                		
+			                									<div class="row">
+						                <div class="col-md-12 col-sm-12 col-xs-12" >
+										<div class="table-responsive" >
+                                         <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                                          <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>Exp Siaf | Nro Orden</th>
+                                                <th>Concepto</th>
+                                                <th>Sub total S/.</th>
+                                                <th>Total Igv S/.</th>
+                                                <th>Total Fact S/.</th>
+                                                <th>Tipo bien</th>
+                                                <th>Fecha de orden</th>
+                                                <th>Doc referencia</th>
+                                                 <th>Exp Siga</th>
+                                        
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                           
+                                                        <tr>
+                                                            <td></td>
+                                                            <td>    
+                                                         
+                                                            </td>
+                                                            <td>
+                                                               
+                                                            </td>
+                                                              <td style="text-align:right">
+                                                              
+                                                            </td>
+                                                            <td style="text-align:right">
+                                                           
+                                                            </td>
+                                                            <td style="text-align:right">
+                                                             
+                                                            </td>
+                                                            <td>
+                                                              
+                                                            </td>
+                                                            <td>
+                                                           
+                                                            </td>
+                                                            <td>
+                                                               
+                                                            </td>
+                                                            <td>
+                                                            </td>
+                                                          
+                                                         
+
+                                                              </tr>
+                                        
+                                          </tbody>
+                                        </table>
+
+                                        </div>
+                                        </div>
+
+
+						        	</div>
+
+
+
+
+
 			              </div>
 			              <!-- /.tab-pane -->
 			              <div class="tab-pane" id="tab_2">
@@ -306,3 +374,15 @@ var base_url = '<?php echo base_url(); ?>';
     </script>
 </body>
 </html>
+
+
+ <script src="<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Datatables -->
+
+    <script src="<?php echo base_url(); ?>assets/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+    <script src="<?php echo base_url(); ?>assets/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script> <!--PARA EL BOTON-->
+    <script src="<?php echo base_url(); ?>assets/build/js/custom.min.js"></script>
