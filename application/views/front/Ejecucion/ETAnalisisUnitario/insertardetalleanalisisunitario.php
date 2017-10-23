@@ -5,56 +5,29 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_content">		
-					<!--<div class="row" id="validarInsumo">
-						<div class="col-md-4 col-sm-2 col-xs-12">
-							<label for="control-label">Unidad de Medida: </label>
-							<div>
-								<select name="listaUnidadMedida" name="listaUnidadMedida" class="form-control">
-									<?php foreach($listaUnidadMedida as $item){ ?>
-										<option value="<?=$item->id_unidad?>"><?=html_escape($item->descripcion)?></option>
-									<?php } ?>
-								</select>
-							</div>
-						</div>
-						<div class="col-md-8 col-sm-6 col-xs-12">
-							<label class="control-label">Insumo: </label>
-							<div>
-								<input class="form-control" name="txtInsumo" id="txtInsumo" autocomplete="off"  >	
-							</div>	
-						</div>
-					</div>	-->
-
 					<div class="row">
 						<div class="col-md-7 col-sm-7 col-xs-12">
 							<label for="control-label">Descripción del insunmo</label>
 							<div>
-								<select name="selectDescripcionDetalleAnalisis<?=$value->id_analisis?>" id="selectDescripcionDetalleAnalisis<?=$value->id_analisis?>" class="form-control"></select>
+								<select name="selectDescripcionDetalleAnalisis<?=$idAnalisis?>" id="selectDescripcionDetalleAnalisis<?=$idAnalisis?>" class="form-control"></select>
 							</div>
 						</div>
-
-						<!--<div class="col-md-2 col-sm-7 col-xs-12">
-							<label for="control-label">.</label>
-							<div>
-								<input type="button" class="btn btn-danger btn-xs" value="Registrar Nuevo Insumo" style="width: 100%;" onclick=" paginaAjaxDialogo('otherModal2', 'Insertar Insumo',{ id_DetallePartida: 7 }, base_url+'index.php/ET_Analisis_Unitario/insertarinsumo', 'GET', null, null, false, true);">											
-							</div>
-						</div>-->
-
 						<div class="col-md-2 col-sm-2 col-xs-12">
 							<label for="control-label">Cuadrilla</label>
 							<div>
-								<input type="text" id="txtCuadrilla<?=$value->id_analisis?>" name="txtCuadrilla<?=$value->id_analisis?>" class="form-control" onkeyup="calcularCantidad(<?=$value->id_analisis?>);calcularSubTotal(<?=$value->id_analisis?>);">
+								<input type="text" id="txtCuadrilla<?=$idAnalisis?>" name="txtCuadrilla<?=$idAnalisis?>" class="form-control" onkeyup="calcularCantidad(<?=$idAnalisis?>);calcularSubTotal(<?=$idAnalisis?>);">
 							</div>
 						</div>
 						<div class="col-md-1 col-sm-1 col-xs-12">
 							<label for="control-label">Horas</label>
 							<div>
-								<input type="text" id="txtHoras<?=$value->id_analisis?>" name="txtHoras<?=$value->id_analisis?>" class="form-control" onkeyup="calcularCantidad(<?=$value->id_analisis?>);calcularSubTotal(<?=$value->id_analisis?>);" value="8">
+								<input type="text" id="txtHoras<?=$idAnalisis?>" name="txtHoras<?=$idAnalisis?>" class="form-control" onkeyup="calcularCantidad(<?=$idAnalisis?>);calcularSubTotal(<?=$idAnalisis?>);" value="8">
 							</div>
 						</div>
 						<div class="col-md-2 col-sm-2 col-xs-12">
-							<label for="control-label">Undidad</label>
+							<label for="control-label">Uniddad</label>
 							<div>
-								<select name="selectUnidadMedida<?=$value->id_analisis?>" id="selectUnidadMedida<?=$value->id_analisis?>" class="form-control">
+								<select name="selectUnidadMedida<?=$idAnalisis?>" id="selectUnidadMedida<?=$idAnalisis?>" class="form-control">
 									<?php foreach($listaUnidadMedida as $item){ ?>
 										<option value="<?=$item->id_unidad?>"><?=html_escape($item->descripcion)?></option>
 									<?php } ?>
@@ -66,31 +39,31 @@
 						<div class="col-md-2 col-sm-2 col-xs-12">
 							<label for="control-label">Rendimiento</label>
 							<div>
-								<input type="text" id="txtRendimiento<?=$value->id_analisis?>" name="txtRendimiento<?=$value->id_analisis?>" class="form-control" onkeyup="calcularCantidad(<?=$value->id_analisis?>);calcularSubTotal(<?=$value->id_analisis?>);">
+								<input type="text" id="txtRendimiento<?=$idAnalisis?>" name="txtRendimiento<?=$idAnalisis?>" class="form-control" onkeyup="calcularCantidad(<?=$idAnalisis?>);calcularSubTotal(<?=$idAnalisis?>);">
 							</div>
 						</div>
 						<div class="col-md-2 col-sm-2 col-xs-12">
 							<label for="control-label">Cantidad</label>
 							<div>
-								<input type="text" id="txtCantidad<?=$value->id_analisis?>" name="txtCantidad<?=$value->id_analisis?>" class="form-control" onkeyup="calcularRendimiento(<?=$value->id_analisis?>);calcularSubTotal(<?=$value->id_analisis?>);">
+								<input type="text" id="txtCantidad<?=$idAnalisis?>" name="txtCantidad<?=$idAnalisis?>" class="form-control" onkeyup="calcularRendimiento(<?=$idAnalisis?>);calcularSubTotal(<?=$idAnalisis?>);">
 							</div>
 						</div>
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label for="control-label">Precio unitario</label>
 							<div>
-								<input type="text" id="txtPrecioUnitario<?=$value->id_analisis?>" name="txtPrecioUnitario<?=$value->id_analisis?>" class="form-control" onkeyup="calcularSubTotal(<?=$value->id_analisis?>);">
+								<input type="text" id="txtPrecioUnitario<?=$idAnalisis?>" name="txtPrecioUnitario<?=$idAnalisis?>" class="form-control" onkeyup="calcularSubTotal(<?=$idAnalisis?>);">
 							</div>
 						</div>
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label for="control-label">Sub total</label>
 							<div>
-								<input type="text" id="txtSubTotal<?=$value->id_analisis?>" class="form-control" readonly="readonly">
+								<input type="text" id="txtSubTotal<?=$idAnalisis?>" class="form-control" readonly="readonly">
 							</div>
 						</div>
 						<div class="col-md-2 col-sm-2 col-xs-12">
 							<label for="control-label">.</label>
 							<div>
-								<input type="button" class="btn btn-info" value="Agregar" style="width: 100%;" onclick="registrarDetalleAnalisisUnitario(<?=$value->id_analisis?>);">
+								<input type="button" class="btn btn-info" value="Agregar" style="width: 100%;" onclick="registrarDetalleAnalisisUnitario(<?=$idAnalisis?>);">
 							</div>
 						</div>
 					</div>		

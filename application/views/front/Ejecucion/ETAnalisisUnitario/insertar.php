@@ -93,7 +93,7 @@
 									<div class="row">
 										<div class="col-md-12 col-sm-12 col-xs-12">
 											<!--<input type="button" class="btn btn-danger btn btn-xs" value="Agregar" onclick="eliminarAnalisisUnitario(<?=$value->id_analisis?>, this);">-->
-											<input type="button" class="btn btn-danger btn-xs" value="Registrar A.u."  onclick=" paginaAjaxDialogo('otherModal2', 'Insertar Insumo',{ id_DetallePartida: 7 }, base_url+'index.php/ET_Analisis_Unitario/insertarinsumo', 'GET', null, null, false, true);">	
+											<input type="button" class="btn btn-danger btn-xs" value="Registrar A.u."  onclick=" paginaAjaxDialogo('otherModal2', 'Análisis Unitario',{ id_AnalisisUnitario: <?=$value->id_analisis?> }, base_url+'index.php/ET_Analisis_Unitario/insertarDetalleAnalisisUnitario', 'GET', null, null, false, true);">	
 										</div>
 										
 									</div>
