@@ -233,7 +233,6 @@ var base_url = '<?php echo base_url(); ?>';
 
 						</div>
 
-
             </div>
             <div class="box-body">
               <div class="box-group" id="accordion">
@@ -414,7 +413,87 @@ var base_url = '<?php echo base_url(); ?>';
 
 
 <script type="text/javascript">
-	initialize();
+	$(document).ready(function()
+	{
+		initialize();
+		$("#EjecucionAnual").hide();
+		$("#CodigoUnico").on("click", function() 
+		{
+			$("#EjecucionAnual").show(2000);
+			var codigounico=$("#BuscarPip").val();
+
+				$.ajax({
+				"url":base_url+"index.php/PrincipalReportes/DatosParaEstadisticaAnualProyecto",
+				type:"POST",
+				data:{codigounico:codigounico},
+				success: function(data)
+					{
+				        var cantidadpipprovincias=JSON.parse(data); 
+				        $("#txtCodigo").html(cantidadpipprovincias.codigo_unico_pi);
+				        $("#txtnombre").html(cantidadpipprovincias.nombre_pi);
+				        $("#txtbeneficiario").html(cantidadpipprovincias.num_beneficiarios);
+				        $("#txtmontoInversion").html(cantidadpipprovincias.costo_pi);
+				       
+					}
+				});
+		});
+
+
+		$("#comboboxfuncion" ).change(function() {
+		var idFuncion=$("#comboboxfuncion").val();
+		var parametros = {
+                "idFuncion" : idFuncion
+        	};
+        $.ajax({
+                data:  parametros,
+                url:    base_url+'index.php/Funcion/GetDivisionFuncional',
+                type:  'post',
+                beforeSend: function () {
+                },
+                success:  function (response) {
+                	//alert(response);
+                	var html;
+            		objectJSON=JSON.parse(response);
+                 	
+                	$("#comboboxdivisionfuncional").html('');
+                	html +='<option value="">Elija División Funcional </option>';
+                	$.each(objectJSON,function(index,element)
+                	{
+                	 html +='<option value="'+element.id_div_funcional+'">'+element.nombre_div_funcional+'</option>';
+                	});
+             		$("#comboboxdivisionfuncional").append(html);               
+                }
+        	});
+		});
+		$("#comboboxdivisionfuncional" ).change(function() {
+		var idDivisionFuncional=$("#comboboxdivisionfuncional").val();
+		var parametros = {
+                "idDivisionFuncional" : idDivisionFuncional
+        	};
+        $.ajax({
+                data:  parametros,
+                url:    base_url+'index.php/Funcion/GetGrupoFuncional',
+                type:  'post',
+                beforeSend: function () {
+                },
+                success:  function (response) {
+                	var html;
+            		objectJSON=JSON.parse(response);
+                 	
+                	$("#comboboxgrupofuncional").html('');
+                	html +='<option value="">Elija Grupo Funcional </option>';
+                	$.each(objectJSON,function(index,element)
+                	{
+                	 html +='<option value="'+element.id_grup_funcional+'">'+element.nombre_grup_funcional+'</option>';
+                	});
+             		$("#comboboxgrupofuncional").append(html);             
+                }
+        	});
+		});
+	
+	});
+
+
     function initialize() {
     	 var map = new google.maps.Map(document.getElementById('mapa'), {
         zoom: 9,
@@ -505,7 +584,7 @@ var base_url = '<?php echo base_url(); ?>';
     {
     	 
     	var map = new google.maps.Map(document.getElementById('mapa'), {
-	        zoom: 7,
+	        zoom: 9,
 	        center: new google.maps.LatLng(-13.871858, -72.867959),
 	        mapTypeId: google.maps.MapTypeId.ROADMAP
 	    });
@@ -547,28 +626,8 @@ var base_url = '<?php echo base_url(); ?>';
 
    		 });
     }
-    $("#EjecucionAnual").hide();
-		$("#CodigoUnico").on("click", function() 
-		{
-			$("#EjecucionAnual").show(2000);
-			var codigounico=$("#BuscarPip").val();
-
-				$.ajax({
-				"url":base_url+"index.php/PrincipalReportes/DatosParaEstadisticaAnualProyecto",
-				type:"POST",
-				data:{codigounico:codigounico},
-				success: function(data)
-					{
-				        var cantidadpipprovincias=JSON.parse(data); 
-				        $("#txtCodigo").html(cantidadpipprovincias.codigo_unico_pi);
-				        $("#txtnombre").html(cantidadpipprovincias.nombre_pi);
-				        $("#txtbeneficiario").html(cantidadpipprovincias.num_beneficiarios);
-				        $("#txtmontoInversion").html(cantidadpipprovincias.costo_pi);
-				       
-					}
-				});
-		});
-
+  
+   	
     </script>
 </body>
 </html>
