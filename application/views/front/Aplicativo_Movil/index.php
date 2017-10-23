@@ -26,8 +26,6 @@
 
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/adminlte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
 
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/adminlte/bower_components/bower_components/bootstrap-daterangepicker/daterangepicker.css">
-
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/adminlte/bower_components/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 	
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -168,37 +166,40 @@ var base_url = '<?php echo base_url(); ?>';
 
         <div class="col-md-8">
 
-          <div class="box box-success">
-	            <div class="box-header with-border">
-					<div class="row">
+		    <div class="panel panel-default">
+					<div class="panel-heading">
+					 	<div class="row">
 
-			             <div class="col-md-5 col-sm-8">
-			             	<p class="bg-success"><label>Localización</label></p>
-			             </div>
-						 <div class="col-md-5 col-sm-8" style="margin-top: -10px;margin-left: 123px;">
-							<div class="input-group">
-									<input type="text" id="BuscarPip"  class="form-control" placeholder="Ingrese código Único" value="">
-									<span class="input-group-btn">
-									<button id="CodigoUnico" class="btn btn-default" type="button" ><span class="glyphicon glyphicon-search"> Buscar</span></button>
-									</span>
-							</div>
-						</div>
-	              </div>
+					             <div class="col-md-5 col-sm-8">
+					             	<h5>Localización</h5>
+					             </div>
+		  						 <div class="col-md-5">
+		  							<div class="input-group">
+		  									<input type="text" id="BuscarPip"  class="form-control" placeholder="Ingrese código Único" value="">
+		  									<span class="input-group-btn">
+		  									<button id="CodigoUnico" class="btn btn-default" type="button" ><span class="glyphicon glyphicon-search"> Buscar</span></button>
+		  									</span>
+		  							</div>
+		  						</div>
+			        	</div>
 
-	           	</div>
-		            <div class="box-body no-padding">
-		              <div class="row">
-		                <div class="col-md-12 col-sm-8">
-		                  <div class="pad">
-		                    <div id="mapa" style="height: 490px;margin-top: -21px;">
-		                      
-		                    </div>
+					</div>
+					<div class="panel-body">
+							
 
-		                  </div>
-		                </div>
-		              </div>
-		            </div>
-          </div>
+				              <div class="row">
+				                <div class="col-md-12 col-sm-8">
+				                  <div class="pad">
+				                    <div id="mapa" style="height: 490px;margin-top: -21px;">
+				                      
+				                    </div>
+
+				                  </div>
+				                </div>
+				              </div>
+				    </div>
+
+		    </div>
         </div>
 
         <div class="col-md-4">
@@ -207,7 +208,6 @@ var base_url = '<?php echo base_url(); ?>';
 	        	<div class="col-md-12">
 	          		<div class="box box-solid">
 	           			 <div class="box-header with-border">
-							<label>BUSQUEDA</label>
 			  			  <div id="EjecucionAnual" align="justify">
 					
 								<table class="table table-striped  table-hover">
