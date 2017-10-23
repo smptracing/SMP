@@ -55,17 +55,17 @@
 		<?php foreach($listaETAnalisisUnitario as $value){ ?>
 			<div class="panel-group" style="margin: 2px;">
 				<div class="panel panel-default">
-					<div class="panel-heading" data-toggle="collapse" href="#collapse<?=$value->id_analisis?>" style="cursor: pointer;">
+					<div class="panel-heading" data-toggle="collapse" href="#collapse<?=$value->id_analisis?>" style="cursor: pointer; background-color: #cacbe0; color: black; ">
 						<h4 class="panel-title">
 							<a class="accordion-toggle"><?=html_escape($value->desc_recurso)?></a>
 						</h4>
 					</div>
-					<div id="collapse<?=$value->id_analisis?>" class="panel-collapse collapse">
+					<div id="collapse<?=$value->id_analisis?>">
 						<div class="row">
 							<div class="col-md-12 col-sm-12 col-xs-12">
 								<div id="divFormDetallaAnalisisUnitario<?=$value->id_analisis?>" style="padding: 4px;">
 									<div class="row">
-										<div class="col-md-10 col-sm-10 col-xs-12">
+										<div class="col-md-8 col-sm-10 col-xs-12">
 											<label for="control-label">Presupuesto analítico (Clasificador | Presupuesto ejecución)</label>
 											<div>
 												<select name="selectPresupuestoAnalitico<?=$value->id_analisis?>" id="selectPresupuestoAnalitico<?=$value->id_analisis?>" class="form-control selectPresupuestoAnaliticoAux">
@@ -82,12 +82,27 @@
 												<input type="button" class="btn btn-primary" value="Guardar" style="width: 100%;" onclick="guardarPresupuestoAnaliticoParaAnalisisUnitario(<?=$value->id_analisis?>);">
 											</div>
 										</div>
+										<div class="col-md-2 col-sm-12 col-xs-12">
+											<label for="control-label">.</label>
+											<div>
+												<input type="button" class="btn btn-danger" value="Eliminar este A.U." onclick="eliminarAnalisisUnitario(<?=$value->id_analisis?>, this);">											
+											</div>											
+										</div>
 									</div>
 									<hr style="margin: 2px;">
 									<div class="row">
 										<div class="col-md-12 col-sm-12 col-xs-12">
+											<!--<input type="button" class="btn btn-danger btn btn-xs" value="Agregar" onclick="eliminarAnalisisUnitario(<?=$value->id_analisis?>, this);">-->
+											<input type="button" class="btn btn-danger btn-xs" value="Registrar A.u."  onclick=" paginaAjaxDialogo('otherModal2', 'Insertar Insumo',{ id_DetallePartida: 7 }, base_url+'index.php/ET_Analisis_Unitario/insertarinsumo', 'GET', null, null, false, true);">	
+										</div>
+										
+									</div>
+									<!--<div class="row">
+										<div class="col-md-12 col-sm-12 col-xs-12">
 											<input type="button" class="btn btn-danger btn btn-xs" value="Eliminar este análisis unitario" onclick="eliminarAnalisisUnitario(<?=$value->id_analisis?>, this);">
 										</div>
+
+
 										<div class="col-md-5 col-sm-7 col-xs-12">
 											<label for="control-label">Descripción del insunmo</label>
 											<div>
@@ -156,7 +171,7 @@
 												<input type="button" class="btn btn-info" value="Agregar" style="width: 100%;" onclick="registrarDetalleAnalisisUnitario(<?=$value->id_analisis?>);">
 											</div>
 										</div>
-									</div>
+									</div>-->
 								</div>
 								<div>
 									<table id="tableDetalleAnalisisUnitario<?=$value->id_analisis?>" class="table">
@@ -194,6 +209,7 @@
 						</div>		
 					</div>
 				</div>
+				<br>
 			</div>
 		<?php } ?>
 	</div>
