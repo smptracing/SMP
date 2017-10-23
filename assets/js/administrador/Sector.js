@@ -1,6 +1,5 @@
  $(document).on("ready" ,function(){
            //sector
-                  var base_url = '<?php echo base_url(); ?>';
                   listaSector();/*llamar a mi datatablet listarSector*/
                   listaSectorCombo();//para listar en un combo los sectores
                 
@@ -21,10 +20,9 @@
       processData:false,
 			success : function(resp)
 			{
-        alert(resp);
 				var registros=eval(resp);
 
-				/*for(var i=0; i<registros.length; i++)
+				for(var i=0; i<registros.length; i++)
 				{
 					if(registros[i]["VALOR"]==1)
 					{
@@ -51,12 +49,16 @@
 	$("#form-ActulizarSector").submit(function(event)//para añadir nuevo sector
 	{
 		event.preventDefault();  
-
+    var formData=new FormData($("#form-ActulizarSector")[0]);
 		$.ajax(
 		{
-			url : base_url+"index.php/Sector/UpdateSector",
-			type : $(this).attr('method'),
-			data : $(this).serialize(),
+			type:"POST",
+      enctype: 'multipart/form-data',
+      url : base_url+"index.php/Sector/UpdateSector",
+			data: formData,
+      cache: false,
+      contentType:false,
+      processData:false,
 			success : function(resp)
 			{
 				swal("",resp, "success");

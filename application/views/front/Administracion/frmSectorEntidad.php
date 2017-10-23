@@ -246,7 +246,7 @@
          <div class="row">
                 <div class="col-xs-12">
                  <!-- FORMULARIO PARA REGISTRA NUEVO SERVICIO ASOCIADO-->
-                <form class="form-horizontal " id="form-ActulizarSector" action="<?php echo  base_url();?>Sector/UpdateSector" method="POST" >
+                <form class="form-horizontal " id="form-ActulizarSector" action="<?php echo  base_url();?>Sector/UpdateSector" enctype="multipart/form-data" method="POST" >
 
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Modificar El sector<span class="required">*</span>
@@ -257,6 +257,9 @@
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input id="txt_NombreSectorM" name="txt_NombreSectorM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name"  required="required" type="text">
                         </div>
+                         <div class="col-md-6 col-sm-6 col-xs-12" style="margin-left: 220px;"></br>
+                              Adjuntar Imagen: <input type="file" name="faviconSectorActualizar">
+                        </div>    
                       </div>
                       <div class="ln_solid"></div>
                       <div class="form-group">

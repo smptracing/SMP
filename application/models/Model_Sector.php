@@ -48,6 +48,13 @@ class Model_Sector extends CI_Model
           }
 
     }
+
+    function UpdateSectorTodosCampos($txt_IdModificar,$txt_NombreSectorM,$imagen)
+    {
+        $this->db->query("update sector set nombre_sector = '".$txt_NombreSectorM."',icono_sector='".$imagen."' where id_sector =".$txt_IdModificar."");
+
+        return true;
+    }
   
     function EliminarSector($id_sector){
     	return true;
