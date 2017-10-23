@@ -62,4 +62,9 @@ class AplicativoMovil extends CI_Controller
         echo  json_encode($data);
     }
 
+    public function Pips()
+    {
+        $this->load->view('front/Aplicativo_Movil/pip');
+    }
+
 }
