@@ -519,7 +519,7 @@ var base_url = '<?php echo base_url(); ?>';
 					        
 					         var image = {
 							  	url: "<?php echo base_url(); ?>uploads/IconosSector/"+marcadores[i][3],
-							    scaledSize: new google.maps.Size(20, 20), // scaled size
+							    scaledSize: new google.maps.Size(40, 40), // scaled size
 							    origin: new google.maps.Point(0,0), // origin
 							    anchor: new google.maps.Point(0, 0) // anchor
 							};
