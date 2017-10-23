@@ -418,6 +418,7 @@ var base_url = '<?php echo base_url(); ?>';
 <script type="text/javascript">
 	$(document).ready(function()
 	{
+		
 		initialize();
 		$("#EjecucionAnual").hide();
 		$("#CodigoUnico").on("click", function() 
@@ -498,7 +499,7 @@ var base_url = '<?php echo base_url(); ?>';
 
 
     function initialize() {
-    	 var map = new google.maps.Map(document.getElementById('mapa'), {
+    	var map = new google.maps.Map(document.getElementById('mapa'), {
         zoom: 9,
         center: new google.maps.LatLng(-13.871858, -72.867959),
         mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -518,11 +519,21 @@ var base_url = '<?php echo base_url(); ?>';
 
 				      for (i = 0; i < marcadores.length; i++) 
 				  		{  
-					        marker = new google.maps.Marker({
+					        
+					         var image = {
+							  	url: "<?php echo base_url(); ?>uploads/IconosSector/"+marcadores[i][3],
+							    scaledSize: new google.maps.Size(20, 20), // scaled size
+							    origin: new google.maps.Point(0,0), // origin
+							    anchor: new google.maps.Point(0, 0) // anchor
+							};
+					       	  marker = new google.maps.Marker({
 					          position: new google.maps.LatLng(marcadores[i][1], marcadores[i][2]),
 					          map: map,
-					          icon: "<?php echo base_url(); ?>uploads/IconosSector/"+marcadores[i][3], 
+					          icon: image, 
+					          labelAnchor: new google.maps.Point(100, 100)
 					        });
+
+
 					        google.maps.event.addListener(marker, 'click', (function(marker, i) {
 					          return function() {
 					            infowindow.setContent(marcadores[i][0]);

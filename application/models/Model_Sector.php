@@ -21,9 +21,9 @@ class Model_Sector extends CI_Model
              }
    
         }
-        function AddSector($txt_NombreSector)
+        function AddSector($txt_NombreSector,$imagen)
         {
-           $mensaje=$this->db->query("execute sp_Sector_c '".$txt_NombreSector."'");
+           $mensaje=$this->db->query("execute sp_Sector_c '".$txt_NombreSector."', '".$imagen."'");
              if($mensaje->num_rows()>0)
              {
               return $mensaje->result();

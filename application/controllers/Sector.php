@@ -7,6 +7,8 @@ class Sector extends CI_Controller {/* Mantenimiento de sector entidad Y servici
       parent::__construct();
       $this->load->model('Model_Sector');
       $this->load->helper('FormatNumber_helper');
+      $this->load->helper('file');
+
 	}
     
     /* Pagina principal de la vista entidad Y servicio publico asociado */
@@ -41,10 +43,36 @@ class Sector extends CI_Controller {/* Mantenimiento de sector entidad Y servici
 	 {
 	    if ($this->input->is_ajax_request()) 
 	    {
-	      $txt_NombreSector =$this->input->post("txt_NombreSector");
+	      	
+
+	    	$config['image_library'] = 'gd2';
+	    	$config['upload_path']          = './uploads/IconosSector/';
+		    $config['allowed_types'] = 'gif|jpg|png';
+	        $config['create_thumb'] = TRUE;
+			$config['maintain_ratio'] = TRUE;
+			$config['width']         = 75;
+			$config['height']       = 50;
+	        $this->load->library('upload', $config);
+
+			$this->upload->initialize($config);
+	         if (!$this->upload->do_upload('faviconSector')) {
+
+           		
+     		  } else {
+
+		            $file_info = $this->upload->data();
+		            $txt_NombreSector = $this->input->post('txt_NombreSector');
+		            $imagen = $file_info['file_name'];
+
+		            $data=$this->Model_Sector->AddSector($txt_NombreSector,$imagen);
+	     			//echo json_encode($txt_NombreSector);
+
+		            echo json_encode($data);
+
+     		  }
 	     
-	     	$data=$this->Model_Sector->AddSector($txt_NombreSector);
-	     	echo json_encode($data);
+	     	
+
 	
 		 }
 		 else
@@ -78,5 +106,7 @@ class Sector extends CI_Controller {/* Mantenimiento de sector entidad Y servici
       $this->load->view($template);
       $this->load->view('layout/ADMINISTRACION/footer');
     }
+
+    
 
 }
