@@ -229,57 +229,61 @@ var base_url = '<?php echo base_url(); ?>';
 			                									<div class="row">
 						                <div class="col-md-12 col-sm-12 col-xs-12" >
 										<div class="table-responsive" >
-                                         <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                                         <table id="datatable-responsive" class="table table-striped 
+                                         dt-responsive nowrap" cellspacing="0" width="100%">
                                           <thead>
                                             <tr>
+
                                                 <th></th>
-                                                <th>Exp Siaf | Nro Orden</th>
-                                                <th>Concepto</th>
-                                                <th>Sub total S/.</th>
-                                                <th>Total Igv S/.</th>
-                                                <th>Total Fact S/.</th>
-                                                <th>Tipo bien</th>
-                                                <th>Fecha de orden</th>
-                                                <th>Doc referencia</th>
-                                                 <th>Exp Siga</th>
-                                        
+                                        		<th>Proyecto de Inversión</th>
+                                        		<th>Código</th>
+                                                <th>Función</th>
+                                                <th>Div Funcional</th>
+                                                <th>Grup Funcional</th>
+                                                <th>Costo</th>
+                                                <th>Num Beneficiarios</th>
+                                                <th>Fecha registro</th>
+                                               
                                             </tr>
                                           </thead>
                                           <tbody>
-                                           
+                                           	 	<?php foreach($listarpip as $item ){ ?>	
                                                         <tr>
-                                                            <td></td>
+                                                            <td>
+                                                            	
+                                                            </td>
+                                                            <td>
+                                                             	 <?=$item->nombre_pi?>
+                                                            </td>
+                                                             <td>
+                                                             	 <?=$item->codigo_unico_pi?>
+                                                            </td>
                                                             <td>    
-                                                         
+                                                         		<?=$item->nombre_funcion?>
                                                             </td>
                                                             <td>
-                                                               
+                                                                <?=$item->nombre_div_funcional?>
                                                             </td>
-                                                              <td style="text-align:right">
-                                                              
+                                                            <td>
+                                                             	 <?=$item->nombre_grup_funcional?>
                                                             </td>
-                                                            <td style="text-align:right">
+                                                            <td>
+                                                             	 <?=$item->costo_pi?>
+                                                            </td>
+
+                                                             <td>
+                                                             	 <?=$item->num_beneficiarios?>
+                                                            </td>
+                                                             <td>
+                                                             	 <?=$item->fecha_registro_pi?>
+                                                            </td>
                                                            
-                                                            </td>
-                                                            <td style="text-align:right">
-                                                             
-                                                            </td>
-                                                            <td>
-                                                              
-                                                            </td>
-                                                            <td>
                                                            
-                                                            </td>
-                                                            <td>
-                                                               
-                                                            </td>
-                                                            <td>
-                                                            </td>
-                                                          
-                                                         
+
+
 
                                                               </tr>
-                                        
+                                        			    <?php } ?>
                                           </tbody>
                                         </table>
 

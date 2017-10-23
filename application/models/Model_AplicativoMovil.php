@@ -50,5 +50,10 @@ class Model_AplicativoMovil extends CI_Model
         return $data->result()[0];
     }
 
+    public function listapip()
+    {
+        $data = $this->db->query("select id_pi,FUNCION.nombre_funcion,DIVISION_FUNCIONAL.nombre_div_funcional, GRUPO_FUNCIONAL.nombre_grup_funcional, codigo_unico_pi,  nombre_pi , costo_pi, num_beneficiarios, fecha_registro_pi  from PROYECTO_INVERSION inner join GRUPO_FUNCIONAL ON PROYECTO_INVERSION.id_grupo_funcional=GRUPO_FUNCIONAL.id_grup_funcional INNER JOIN DIVISION_FUNCIONAL ON GRUPO_FUNCIONAL.id_div_funcional=DIVISION_FUNCIONAL.id_div_funcional INNER JOIN FUNCION ON DIVISION_FUNCIONAL.id_funcion=FUNCION.id_funcion");     
+        return $data->result();
+    }
 
 }

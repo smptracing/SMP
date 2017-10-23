@@ -64,7 +64,9 @@ class AplicativoMovil extends CI_Controller
 
     public function Pips()
     {
-        $this->load->view('front/Aplicativo_Movil/pip');
+        $listarpip=$this->Model_AplicativoMovil->listapip();
+
+        $this->load->view('front/Aplicativo_Movil/pip',['listarpip'=>$listarpip]);
     }
 
 }
