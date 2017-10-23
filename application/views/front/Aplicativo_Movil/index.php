@@ -144,7 +144,7 @@ var base_url = '<?php echo base_url(); ?>';
     <nav class="navbar navbar-static-top">
       <div class="container">
         <div class="navbar-header" style="padding-top: 13px;">
-          <a href="<?php echo site_url('Inicio'); ?>" >
+          <a href="" >
             <img id="logoRegion" style="display: inline-block; height: 70px; width: 185px; opacity: 1;margin-top: -15px;" src="<?php echo base_url(); ?>assets/images/gore.png" class="img-responsive">
           </a>
         </div>
@@ -210,8 +210,8 @@ var base_url = '<?php echo base_url(); ?>';
 			 <div class="row" style="margin-top: -50px;">
 	        	<div class="col-md-12">
 	          		<div class="box box-solid">
-	           			 <div class="box-header with-border">
-			  			  <div id="EjecucionAnual" align="justify">
+	           			<div class="box-header with-border">
+			  			    <div id="EjecucionAnual" align="justify">
 					
 								<table class="table table-striped  table-hover">
 								  
@@ -231,12 +231,9 @@ var base_url = '<?php echo base_url(); ?>';
 										<td class="blue" ><b>Monto de Inversión</b></td>
 										<td> S/. <label id="txtmontoInversion" name="txtmontoInversion"></label> </td>
 									</tr>
-									
 							  </table> 
-
 						</div>
-
-            </div>
+           		 	</div>
             <div class="box-body">
               <div class="box-group" id="accordion">
            
