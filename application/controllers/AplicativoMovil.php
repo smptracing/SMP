@@ -32,6 +32,8 @@ class AplicativoMovil extends CI_Controller
             }
            echo json_encode($listaTotaProyecto);
     }
+
+
     public function index()
     {
         $comboboxfuncion=$this->Model_Funcion->GetFuncion();
@@ -64,6 +66,22 @@ class AplicativoMovil extends CI_Controller
             echo json_encode($data);
         
     }
+
+    function  GraficarPip()
+    {
+        $codigounico=$this->input->POST('codigounico');        
+        $data=$this->Model_AplicativoMovil->busquedaPorCodigoMostrarEnMapaPip($codigounico);
+        
+        
+        $listaTotaProyecto= array();
+           foreach ($data as $key => $Itemp) {
+               $listaTotaProyecto[$key]=[$Itemp->nombre_pi.'</br><center><img src='.base_url().'uploads/IconosSector/620.jpg  width="150" height="120" alt="Flowers in Chania"> <a href="https://www.google.com/"></center> </br>Codigo &nbsp;&nbsp; '.$Itemp->codigo_unico_pi.' </a></h6>',$Itemp->latitud,$Itemp->longitud,$Itemp->icono_sector];
+            }
+           echo json_encode($listaTotaProyecto);
+        
+    }
+
+
 
     public function Pips()
     {

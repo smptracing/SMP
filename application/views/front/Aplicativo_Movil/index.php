@@ -176,7 +176,7 @@ var base_url = '<?php echo base_url(); ?>';
 		  							<div class="input-group">
 		  									<input type="text" id="BuscarPip"  name="BuscarPip" class="form-control" placeholder="Ingrese código Único">
 		  									<span class="input-group-btn">
-		  									<button id="CodigoUnico" class="btn btn-default" type="button" ><span class="glyphicon glyphicon-search"> Buscar</span></button>
+		  									<button id="CodigoUnico" name ="CodigoUnico" class="btn btn-default" type="button" onclick="mapaUbicacionPorCodigodeCadaPip();"><span class="glyphicon glyphicon-search" > Buscar</span></button>
 		  									</span>
 		  							</div>
 		  						</div>
@@ -669,6 +669,52 @@ var base_url = '<?php echo base_url(); ?>';
 		        {
 		        	//alert(marcadores);
 		        	console.log(marcadores);
+		        	var marcadores=JSON.parse(marcadores);
+
+				      for (i = 0; i < marcadores.length; i++) 
+				  		{  
+					        marker = new google.maps.Marker({
+					          position: new google.maps.LatLng(marcadores[i][1], marcadores[i][2]),
+					          map: map,
+					          icon: "<?php echo base_url(); ?>uploads/IconosSector/"+marcadores[i][3], 
+					        });
+					        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+					          return function() {
+					            infowindow.setContent(marcadores[i][0]);
+					            infowindow.open(map, marker);
+					          }
+					        })(marker, i));
+
+		  				}
+		  				
+		  		}
+
+   		 });
+    }
+
+    function mapaUbicacionPorCodigodeCadaPip()
+    {  	 
+    	var map = new google.maps.Map(document.getElementById('mapa'), {
+	        zoom: 9,
+	        center: new google.maps.LatLng(-13.871858, -72.867959),
+	        mapTypeId: google.maps.MapTypeId.ROADMAP
+	    });
+	    var marker, i,marker1;
+	    var infowindow = new google.maps.InfoWindow();
+
+    	var codigounico=$("#BuscarPip").val();
+    	var parametros = {
+                "codigounico" : codigounico
+        	};
+    	 $.ajax(
+   		 {
+		        data:  parametros,
+		        url: base_url+"index.php/AplicativoMovil/GraficarPip",
+		        type: "POST",
+		        success: function(marcadores)
+		        {
+		        	//alert(marcadores);
+		        	//console.log(marcadores);
 		        	var marcadores=JSON.parse(marcadores);
 
 				      for (i = 0; i < marcadores.length; i++) 
