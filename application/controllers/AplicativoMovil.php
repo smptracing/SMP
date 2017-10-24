@@ -48,7 +48,7 @@ class AplicativoMovil extends CI_Controller
             $listaTotaProyecto= array();
             $datos = $this->Model_AplicativoMovil->listaTotalDeUbicacionesProyecto();
             foreach ($datos as $key => $Itemp) {
-               $listaTotaProyecto[$key]=['<strong><center>'.$Itemp->nombre_pi.'</center></strong></br><strong>Codigo:</strong> &nbsp;&nbsp;  '.$Itemp->codigo_unico_pi.' &nbsp;&nbsp;<center><img src='.base_url().'uploads/IconosSector/620.jpg  width="150" height="120"></center> </h6>',$Itemp->latitud,$Itemp->longitud,$Itemp->icono_sector];
+               $listaTotaProyecto[$key]=['<strong><center>'.$Itemp->nombre_pi.'</center></strong></br><strong>Codigo:</strong> &nbsp;&nbsp;  '.$Itemp->codigo_unico_pi.' &nbsp;&nbsp;<center><img src='.base_url().'uploads/ImgUbicacionProyecto/'.$Itemp->url_img.'  width="150" height="120"></center> </h6>',$Itemp->latitud,$Itemp->longitud,$Itemp->icono_sector];
             }
             echo json_encode($listaTotaProyecto);
         } else {
