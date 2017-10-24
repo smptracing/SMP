@@ -78,13 +78,24 @@ $(document).on("ready" ,function()
         });
     });
 
+
+
+
+
+
+
     $("#form_AddUbigeo").submit(function(event)
     {
         event.preventDefault();
+        var formData=new FormData($("#form_AddUbigeo")[0]);
         $.ajax({
+            type:"POST",
+            enctype: 'multipart/form-data',
             url:base_url+"index.php/bancoproyectos/Add_ubigeo_proyecto",
-            type:$(this).attr('method'),
-            data:$(this).serialize(),
+            data: formData,
+            cache: false,
+            contentType:false,
+            processData:false,
             success:function(resp)
             {
                 if (resp=='1') 
@@ -97,7 +108,7 @@ $(document).on("ready" ,function()
                 }
                 $('#TableUbigeoProyecto_x').dataTable()._fnAjaxUpdate();
                 formReset();
-                $('#venta_ubicacion_geografica').modal('hide');                
+                $('#venta_ubicacion_geografica').modal('hide');           
             }
         });
     });

@@ -8,6 +8,7 @@ class bancoproyectos extends CI_Controller
         parent::__construct();
         $this->load->model('bancoproyectos_modal');
         $this->load->helper('FormatNumber_helper');
+        $this->load->model('Model_PMI_ubicacion');
     }
     public function AddProyectos()
     {
@@ -240,17 +241,43 @@ class bancoproyectos extends CI_Controller
     public function Add_ubigeo_proyecto()
     {
         if ($this->input->is_ajax_request()) {
-            $flat         = "C ";
-            $id_ubigeo_pi = "0";
-            $id_ubigeo    = $this->input->post("cbx_distrito");
-            $txt_id_pip   = $this->input->post("txt_id_pip");
-            $direccion    = "null";
-            $txt_latitud  = $this->input->post("txt_latitud");
-            $txt_longitud = $this->input->post("txt_longitud");
-            if ($this->bancoproyectos_modal->Add_ubigeo_proyecto($flat, $id_ubigeo_pi, $id_ubigeo, $txt_id_pip, $direccion, $txt_latitud, $txt_longitud) == false) {
-                echo "1";
-            } else {
-                echo "2";
+            
+            $config['upload_path']   = './uploads/ImgUbicacionProyecto/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size']      = '2000';
+            $config['max_width']     ='2024';
+            $config['max_height']    = '2008';
+            $this->load->library('upload', $config);
+
+            $this->upload->initialize($config);
+             if (!$this->upload->do_upload('ImgUbicacion')) {
+
+                
+              } else {
+
+                    $flat         = "C ";
+                    $id_ubigeo_pi = "0";
+                    $id_ubigeo    = $this->input->post("cbx_distrito");
+                    $txt_id_pip   = $this->input->post("txt_id_pip");
+                    $direccion    = "null";
+                    $txt_latitud  = $this->input->post("txt_latitud");
+                    $txt_longitud = $this->input->post("txt_longitud");
+
+                    $file_info = $this->upload->data();
+                    $imagen = $file_info['file_name'];
+
+                    
+                    if ($this->bancoproyectos_modal->Add_ubigeo_proyecto($flat, $id_ubigeo_pi, $id_ubigeo, $txt_id_pip, $direccion, $txt_latitud, $txt_longitud) == false) {
+                        
+                        
+                        $dataUltima=$this->Model_PMI_ubicacion->ultipoUbigeoPEI();
+
+                        $this->Model_PMI_ubicacion->insertar($dataUltima->id_ubigeo_pi,$imagen);
+                        echo "1";
+
+                    } else {
+                        echo "2";
+                    }
             }
 
         } else {
