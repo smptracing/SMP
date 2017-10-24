@@ -423,17 +423,17 @@
                                           </div>
                       </div>
                      <div class="ln_solid"></div>
-                     <div class="x_panel" style="border: 2px solid #EEEEEE;">
+                     <div class="x_panel" style="border: 1px solid #EEEEEE;">
                     <center>
-                    <table id="TableUbigeoProyecto_x" class="ttable table-striped jambo_table bulk_action  table-hover" >
+                    <table id="TableUbigeoProyecto_x" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%" >
                     <thead >
                        <tr>
-                         <th style="width: 40%" ><i class="fa fa-thumb-tack"></i> Provincia</th>
-                         <th style="width: 40%" ><i class="fa fa-thumb-tack"></i> Distrito</th>
-                         <th style="width: 40%" ><i class="fa fa-thumb-tack"></i> Latitud</th>
-                         <th style="width: 40%" ><i class="fa fa-thumb-tack"></i> Longitud</th>
-                         <th style="width: 40%" ><i class="fa fa-thumb-tack"></i> Imagen</th>
-                         <th style="width: 20%" ><i class="fa fa-thumb-tack"></i> </th>
+                         <th style="width: 20%" ><i class="fa fa-thumb-tack"></i> Provincia</th>
+                         <th style="width: 20%" ><i class="fa fa-thumb-tack"></i> Distrito</th>
+                         <th style="width: 20%" ><i class="fa fa-thumb-tack"></i> Latitud</th>
+                         <th style="width: 20%" ><i class="fa fa-thumb-tack"></i> Longitud</th>
+                         <th style="width: 20%" ><i class="fa fa-thumb-tack"></i> Imagen</th>
+                         <th style="width: 50%" ><i class="fa fa-thumb-tack"></i> </th>
                       </tr>
                     </thead>
                     </table>
