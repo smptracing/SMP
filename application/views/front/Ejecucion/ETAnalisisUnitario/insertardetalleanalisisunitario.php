@@ -1,3 +1,13 @@
+<!--<script type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="../../themes/icon.css">-->
+
+<link href="<?php echo base_url(); ?>assets/easyui/themes/default/easyui.css" rel="stylesheet">
+<link href="<?php echo base_url(); ?>assets/easyui/themes/icon.css" rel="stylesheet">
+
+<!--<script src="<?php echo base_url(); ?>assets/easyui/jquery.min.js"></script>-->
+<script src="<?php echo base_url(); ?>assets/easyui/jquery.easyui.min.js"></script>
+
 
 <form  id="frmInsertarDetalleAnalisisUnitario" action="" method="POST">
 	<div class="row">
@@ -10,7 +20,9 @@
 							<input type="hidden" id="idAnalisis" name="idAnalisis" class="form-control" value="<?=$idAnalisis?>">
 							<label for="control-label">Descripción del insunmo</label>
 							<div>
-								<select name="selectDescripcionDetalleAnalisis" id="selectDescripcionDetalleAnalisis" class="form-control"></select>
+								<!--<select name="selectDescripcionDetalleAnalisis" id="selectDescripcionDetalleAnalisis" class="form-control"></select>-->
+								<input class="easyui-combotree" data-options="url:'data.json',method:'get',labelPosition:'top'" style="width:100%">
+							
 							</div>
 						</div>
 						<div class="col-md-2 col-sm-2 col-xs-12">
