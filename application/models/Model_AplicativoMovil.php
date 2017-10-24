@@ -44,8 +44,7 @@ class Model_AplicativoMovil extends CI_Model
     }
     public function busquedaPorCodigoDatosGeneralesPip($codigounico)
     {
-       $data = $this->db->query("select * from PROYECTO_INVERSION LEFT join META_PRESUPUESTAL_PI on PROYECTO_INVERSION.id_pi=META_PRESUPUESTAL_PI.id_pi LEFT JOIN DEVENGADO_META ON
-         META_PRESUPUESTAL_PI.id_meta_pi=DEVENGADO_META.id_meta_pi WHERE PROYECTO_INVERSION.codigo_unico_pi='".$codigounico."' and year(anio_meta_pres)=year(GETDATE())");
+       $data = $this->db->query("select * from PROYECTO_INVERSION iNNER JOIN GRUPO_FUNCIONAL ON PROYECTO_INVERSION.id_grupo_funcional=GRUPO_FUNCIONAL.id_grup_funcional inner join DIVISION_FUNCIONAL on GRUPO_FUNCIONAL.id_div_funcional=DIVISION_FUNCIONAL.id_div_funcional inner join FUNCION on DIVISION_FUNCIONAL.id_funcion=FUNCION.id_funcion INNER JOIN ESTADO_CICLO_PI ON PROYECTO_INVERSION.id_pi=ESTADO_CICLO_PI.id_pi INNER JOIN ESTADO_CICLO ON ESTADO_CICLO_PI.id_estado_ciclo=ESTADO_CICLO.id_estado_ciclo WHERE PROYECTO_INVERSION.codigo_unico_pi='".$codigounico."'");
 
         return $data->result()[0];
     }

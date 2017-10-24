@@ -223,6 +223,22 @@ var base_url = '<?php echo base_url(); ?>';
         										<td > <label  id="txtnombre" name="txtnombre"></label></td>
         									</tr>
         									<tr>
+					                            <td class="blue" ><b>Función</b></td>
+					                            <td> S/. <label id="txtfuncion" name="txtfuncion"></label> </td>
+				                          	</tr>
+				                         	 <tr>
+					                            <td class="blue" ><b>Division funcional</b></td>
+					                            <td> S/. <label id="txtdivisionfuncional" name="txtdivisionfuncional"></label> </td>
+				                          	</tr>
+				                          	<tr>
+					                            <td class="blue" ><b>Grupo funcional</b></td>
+					                            <td> S/. <label id="txtgrupofuncional" name="txtgrupofuncional"></label> </td>
+				                          	</tr>
+				                          	<tr>
+					                            <td class="blue" ><b>Estado</b></td>
+					                            <td> S/. <label id="txtestadociclo" name="txtestadociclo"></label> </td>
+				                          	</tr>
+        									<tr>
         										<td class="blue" ><b>N° Beneficiarios</b></td>
         										<td> <label id="txtbeneficiario" name="txtbeneficiario"></label> </td>
         									</tr>
@@ -230,7 +246,12 @@ var base_url = '<?php echo base_url(); ?>';
         										<td class="blue" ><b>Monto de Inversión</b></td>
         										<td> S/. <label id="txtmontoInversion" name="txtmontoInversion"></label> </td>
         									</tr>
-        							  </table> 
+					                          <tr>
+					                            <td class="blue" ><b>Fecha de registro</b></td>
+					                            <td> S/. <label id="txtfecharegistro" name="txtfecharegistro"></label> </td>
+					                          </tr>
+                    
+        				  </table> 
 						     </div>
            		 	</div>
             <div class="box-body">
@@ -427,16 +448,21 @@ var base_url = '<?php echo base_url(); ?>';
             type:"POST",
             data:{codigounico:codigounico},
             success: function(data)
-              {
+              	{
 
-                      var cantidadpipprovincias=JSON.parse(data); 
+                var cantidadpipprovincias=JSON.parse(data); 
 
-                        $("#txtCodigo").html(cantidadpipprovincias.codigo_unico_pi);
-                        $("#txtnombre").html(cantidadpipprovincias.nombre_pi);
-                        $("#txtbeneficiario").html(cantidadpipprovincias.num_beneficiarios);
-                        $("#txtmontoInversion").html(cantidadpipprovincias.costo_pi); 
+                    $("#txtCodigo").html(cantidadpipprovincias.codigo_unico_pi);
+                    $("#txtnombre").html(cantidadpipprovincias.nombre_pi);
+                    $("#txtbeneficiario").html(cantidadpipprovincias.num_beneficiarios);
+                    $("#txtmontoInversion").html(cantidadpipprovincias.costo_pi); 
+                    $("#txtfecharegistro").html(cantidadpipprovincias.fecha_registro_pi);
+                    $("#txtfuncion").html(cantidadpipprovincias.nombre_funcion);
+                    $("#txtdivisionfuncional").html(cantidadpipprovincias.nombre_div_funcional);
+                    $("#txtgrupofuncional").html(cantidadpipprovincias.nombre_grup_funcional);
+                   	$("#txtestadociclo").html(cantidadpipprovincias.nombre_estado_ciclo);
                    
-              }
+              	}
             });
           }
       }); 
@@ -457,6 +483,11 @@ var base_url = '<?php echo base_url(); ?>';
                     $("#txtnombre").html(cantidadpipprovincias.nombre_pi);
                     $("#txtbeneficiario").html(cantidadpipprovincias.num_beneficiarios);
                     $("#txtmontoInversion").html(cantidadpipprovincias.costo_pi);
+                    $("#txtfecharegistro").html(cantidadpipprovincias.fecha_registro_pi);
+                    $("#txtfuncion").html(cantidadpipprovincias.nombre_funcion);
+                    $("#txtdivisionfuncional").html(cantidadpipprovincias.nombre_div_funcional);
+                    $("#txtgrupofuncional").html(cantidadpipprovincias.nombre_grup_funcional);
+                    $("#txtestadociclo").html(cantidadpipprovincias.nombre_estado_ciclo);
                    
               }
             });
