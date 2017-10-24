@@ -60,11 +60,7 @@
 																				
 																				<table class="table" STYLE="table-layout:fixed">
 																				  
-																				       <tr>
-																					        <td class="blue" width="200"><b>CÓDIGO</b></td>
-																					        <td > <label  id="txtCodigo" name="txtCodigo"></label> </td>
-																					     
-																				      </tr>
+
 																				      <tr>
 																					        <td class="blue"><b>NOMBRE</b></td>
 																					        <td > <label  id="txtnombre" name="txtnombre"></label></td>
@@ -73,30 +69,26 @@
 																	
 																				   
 																				      <tr>
-																					        <td class="blue" ><b>N° BENEFICIARIOS</b></td>
+																					        <td class="blue" ><b>MONTO DE INVERSIÓN</b></td>
 																					        <td> <label id="txtbeneficiario" name="txtbeneficiario"></label> </td>
 																					
 																				      </tr>
 																				       <tr>
-																					        <td class="blue" ><b>MONTO DE INvERSIÓN</b></td>
+																					        <td class="blue" ><b>COSTO DE EXPEDIENTE</b></td>
 																					        <td> S/. <label id="txtmontoInversion" name="txtmontoInversion"></label> </td>
 																					 
 																				      </tr>
 																				       <tr>
-																					        <td class="blue" ><b>PIA</b></td>
+																					        <td class="blue" ><b>COSTO DE VIABLIDAD</b></td>
 																					        <td> <label id="txtPIA" name="txtPIA"></label> </td>
 																					
 																				      </tr>
 																				       <tr>
-																					        <td class="blue" ><b>PIM</b></td>
+																					        <td class="blue" ><b>MONTO EJECUCIÓN</b></td>
 																					        <td> <label id="txtPIN" name="txtPIN"></label> </td>
 																				
 																				      </tr>
-																				       <tr>
-																					        <td class="blue"><b>DEVENGADO</b></td>
-																					        <td> <label id="txtdevengado" name="txtdevengado"></label> </td>
-																					   
-																				      </tr>
+																				    
 																				   
 																			  </table> 
 															
@@ -244,13 +236,11 @@ $("#CodigoUnico").on( "click", function()
 		success: function(data)
 			{
 		        var cantidadpipprovincias=JSON.parse(data); 
-		        $("#txtCodigo").html(cantidadpipprovincias.codigo_unico_pi);
-		        $("#txtnombre").html(cantidadpipprovincias.nombre_pi);
-		        $("#txtbeneficiario").html(cantidadpipprovincias.num_beneficiarios);
-		        $("#txtmontoInversion").html(cantidadpipprovincias.costo_pi);
-		        $("#txtPIA").html(cantidadpipprovincias.pia_meta_pres);
-		        $("#txtPIN").html(cantidadpipprovincias.pim_acumulado);
-		        $("#txtdevengado").html(cantidadpipprovincias.pim_acumulado);
+		        $("#txtnombre").html(cantidadpipprovincias.nombre);
+		        $("#txtbeneficiario").html(cantidadpipprovincias.costo_actual);
+		        $("#txtmontoInversion").html(cantidadpipprovincias.costo_expediente);
+		        $("#txtPIA").html(cantidadpipprovincias.costo_viabilidad);
+		        $("#txtPIN").html(cantidadpipprovincias.ejecucion_ano_anterior);
 			}
 		});
 
