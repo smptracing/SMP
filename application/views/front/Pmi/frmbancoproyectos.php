@@ -405,7 +405,7 @@
 
                                           </div>
                                     </div>    
-                                    <div class="col-md-2" style="margin-left: 2px;position: absolute;">
+                                    <div class="col-md-2" style="margin-left: 70px;">
                                     <BR><BR>
                                            <label for="name"> <span class="required"></span>
                                             </label>
@@ -413,7 +413,7 @@
 
                                     </div>
 
-                                          <div class="col-md-2" style="margin-left: 100px;">
+                                          <div class="col-md-2" style="margin-left: 130px;margin-top: -50px;">
                                           <BR><BR>
                                            <label for="name"> <span class="required"></span>
                                             </label>
@@ -423,16 +423,17 @@
                                           </div>
                       </div>
                      <div class="ln_solid"></div>
-                     <div class="x_panel" style="background-color: #EEEEEE;">
+                     <div class="x_panel" style="border: 2px solid #EEEEEE;">
                     <center>
-                    <table id="TableUbigeoProyecto_x" class="table   table-hover" >
+                    <table id="TableUbigeoProyecto_x" class="ttable table-striped jambo_table bulk_action  table-hover" >
                     <thead >
                        <tr>
-                         <th style="width: 20%" ><i class="fa fa-thumb-tack"></i> Provincia</th>
-                         <th style="width: 20%" ><i class="fa fa-thumb-tack"></i> Distrito</th>
-                         <th style="width: 20%" ><i class="fa fa-thumb-tack"></i> Latitud</th>
-                         <th style="width: 20%" ><i class="fa fa-thumb-tack"></i> Longitud</th>
-                         <th style="width: 20%" ><i class="fa fa-thumb-tack"></i> Imagen</th>
+                         <th style="width: 40%" ><i class="fa fa-thumb-tack"></i> Provincia</th>
+                         <th style="width: 40%" ><i class="fa fa-thumb-tack"></i> Distrito</th>
+                         <th style="width: 40%" ><i class="fa fa-thumb-tack"></i> Latitud</th>
+                         <th style="width: 40%" ><i class="fa fa-thumb-tack"></i> Longitud</th>
+                         <th style="width: 40%" ><i class="fa fa-thumb-tack"></i> Imagen</th>
+                         <th style="width: 20%" ><i class="fa fa-thumb-tack"></i> </th>
                       </tr>
                     </thead>
                     </table>

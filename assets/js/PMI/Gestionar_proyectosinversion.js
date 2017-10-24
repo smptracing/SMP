@@ -205,8 +205,13 @@ $(document).on("ready" ,function()
                                     {"data":"provincia"},
                                     {"data":"distrito"},
                                     {"data":"latitud"},
-                                    {"data":"longitud"}
-                                    //{"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaupdateEstadoFE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
+                                    {"data":"longitud"},
+                                    {"data":"url_img",
+                                    "render" : function ( data, type, row, meta) {
+                                      url= base_url+"uploads/ImgUbicacionProyecto/"+data;
+                                      return '<img height="20" width="20" src="'+url+'" />';
+                                    }},
+                                    {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaupdateEstadoFE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
                                "language":idioma_espanol
                     });
