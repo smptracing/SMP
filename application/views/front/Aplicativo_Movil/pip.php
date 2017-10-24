@@ -329,22 +329,7 @@ var base_url = '<?php echo base_url(); ?>';
   </footer>
 </div>
 
-
-<script type="text/javascript">
-
-	
-
-
-		
-  
-
-   	
-    </script>
-</body>
-</html>
-
-
- <script src="<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- Datatables -->
@@ -354,3 +339,8 @@ var base_url = '<?php echo base_url(); ?>';
 
     <script src="<?php echo base_url(); ?>assets/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script> <!--PARA EL BOTON-->
     <script src="<?php echo base_url(); ?>assets/build/js/custom.min.js"></script>
+</body>
+</html>
+
+
+ 

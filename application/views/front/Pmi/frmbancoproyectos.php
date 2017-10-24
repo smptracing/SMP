@@ -106,7 +106,7 @@
                                  <div class="row">
                                       <div class="col-md-4">
                                         <div class="col-md-9 col-sm-6 col-xs-12 form-group">
-                                            <label for="name">Codigo Único<span class="required">*</span>
+                                            <label for="name">Codigo Único (Codigo SIAF)<span class="required">*</span>
                                             </label>
                                      
                                                   <input id="txtCodigoUnico" name="txtCodigoUnico"  class="form-control col-md-7 col-xs-5" placeholder="Codigo Unico" type="text">
