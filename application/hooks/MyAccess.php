@@ -14,7 +14,8 @@ if ( ! function_exists('autentificar'))
 		$libres = array(
 			'/',
 			'Login/muestralog',
-			'Login/ingresar',			
+			'Login/ingresar',	
+			'AplicativoMovil/',			
 		);
 		if(in_array($url, $libres)) 
 		{
