@@ -380,31 +380,40 @@
                                             </label>
                                               <select name="cbx_distrito" id="cbx_distrito" data-live-search="true"  class="selectpicker" title="Elija distrito"></select>
                                     </div>
-                                    <div class="col-md-4">
-                                          <div class=".col-xs-4 .col-md-10">
+                                    <div class="col-md-3">
+                                          <div class=".col-xs-3 .col-md-10">
                                           <br>
                                            <label for="name">Latitud<span class="required"></span>
                                             </label>
                                                   <input id="txt_latitud" name="txt_latitud"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2" placeholder="Latitud" required="required" type="text">
                                           </div>
                                     </div>
-                                    <div class="col-md-4">
-                                          <div class=".col-xs-4 .col-md-10">
+                                    <div class="col-md-3">
+                                          <div class=".col-xs-3 .col-md-10">
                                           <br>
                                            <label for="name">Longitud<span class="required"></span>
                                             </label>
                                                   <input id="txt_longitud" name="txt_longitud"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2" placeholder="Longitud" required="required" type="text">
                                           </div>
-                                    </div>
-
+                                    </div> 
                                     <div class="col-md-2">
+                                          <div class=".col-xs-3 .col-md-10">
+                                          <br>
+                                           <label for="name"><br/>Adjuntar Imagen: <span class="required"></span>
+                                            </label>
+                                             <input type="file" name="ImgUbicacion">
+
+                                          </div>
+                                    </div>    
+                                    <div class="col-md-2" style="margin-left: 70px;">
                                     <BR><BR>
                                            <label for="name"> <span class="required"></span>
                                             </label>
                                             <li><a target="_blank" href="http://www.coordenadas-gps.com/latitud-longitud/-13.613956/-72.902527/8/roadmap"><i class='fa fa-map-marker red' aria-hidden='true'> Mapa</i></a></li>
-                                          </div>
 
-                                          <div class="col-md-2">
+                                    </div>
+
+                                          <div class="col-md-2" style="margin-left: 130px;margin-top: -50px;">
                                           <BR><BR>
                                            <label for="name"> <span class="required"></span>
                                             </label>
@@ -414,15 +423,17 @@
                                           </div>
                       </div>
                      <div class="ln_solid"></div>
-                     <div class="x_panel" style="background-color: #EEEEEE;">
+                     <div class="x_panel" style="border: 2px solid #EEEEEE;">
                     <center>
-                    <table id="TableUbigeoProyecto_x" class="table   table-hover" >
+                    <table id="TableUbigeoProyecto_x" class="ttable table-striped jambo_table bulk_action  table-hover" >
                     <thead >
                        <tr>
-                         <th style="width: 20%" ><i class="fa fa-thumb-tack"></i> Provincia</th>
-                         <th style="width: 20%" ><i class="fa fa-thumb-tack"></i> Distrito</th>
-                         <th style="width: 20%" ><i class="fa fa-thumb-tack"></i> Latitud</th>
-                         <th style="width: 20%" ><i class="fa fa-thumb-tack"></i> Longitud</th>
+                         <th style="width: 40%" ><i class="fa fa-thumb-tack"></i> Provincia</th>
+                         <th style="width: 40%" ><i class="fa fa-thumb-tack"></i> Distrito</th>
+                         <th style="width: 40%" ><i class="fa fa-thumb-tack"></i> Latitud</th>
+                         <th style="width: 40%" ><i class="fa fa-thumb-tack"></i> Longitud</th>
+                         <th style="width: 40%" ><i class="fa fa-thumb-tack"></i> Imagen</th>
+                         <th style="width: 20%" ><i class="fa fa-thumb-tack"></i> </th>
                       </tr>
                     </thead>
                     </table>

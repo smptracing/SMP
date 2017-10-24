@@ -6,6 +6,8 @@ class bancoproyectos_modal extends CI_Model
     {
         parent::__construct();
         // $this->db->free_db_resource();
+        $this->load->helper('file');
+
 
     }
     public function BuscarProyectoSiaf($CodigoSiaf)
