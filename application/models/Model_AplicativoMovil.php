@@ -45,7 +45,7 @@ class Model_AplicativoMovil extends CI_Model
     public function busquedaPorCodigoDatosGeneralesPip($codigounico)
     {
        $data = $this->db->query("select * from PROYECTO_INVERSION LEFT join META_PRESUPUESTAL_PI on PROYECTO_INVERSION.id_pi=META_PRESUPUESTAL_PI.id_pi LEFT JOIN DEVENGADO_META ON
-         META_PRESUPUESTAL_PI.id_meta_pi=DEVENGADO_META.id_meta_pi WHERE PROYECTO_INVERSION.codigo_unico_pi='".$codigoUnico."' and year(anio_meta_pres)=year(GETDATE())");
+         META_PRESUPUESTAL_PI.id_meta_pi=DEVENGADO_META.id_meta_pi WHERE PROYECTO_INVERSION.codigo_unico_pi='".$codigounico."' and year(anio_meta_pres)=year(GETDATE())");
 
         return $data->result()[0];
     }

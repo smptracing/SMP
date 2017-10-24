@@ -28,7 +28,6 @@
 
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/adminlte/bower_components/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 	
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
   <link href="<?php echo base_url(); ?>assets/adminlte/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 	<script src="<?php echo base_url(); ?>assets/adminlte/jquery.slimscroll.min.js"> </script>
@@ -138,7 +137,7 @@
 var base_url = '<?php echo base_url(); ?>';
 </script>
 </head>
-<body class="hold-transition skin-blue layout-top-nav">
+<body class="hold-transition skin-blue layout-top-nav" onload="initialize();">
 <div class="">
   <header class="main-header">
     <nav class="navbar navbar-static-top">
@@ -170,19 +169,19 @@ var base_url = '<?php echo base_url(); ?>';
 					<div class="panel-heading">
 					 	<div class="row">
 
-					             <div class="col-md-5 col-sm-8">
+					             <div class="col-md-2 col-sm-8">
 					             	<h5>Localización</h5>
 					             </div>
 		  						 <div class="col-md-5">
 		  							<div class="input-group">
-		  									<input type="text" id="BuscarPip"  class="form-control" placeholder="Ingrese código Único" value="">
+		  									<input type="text" id="BuscarPip"  name="BuscarPip" class="form-control" placeholder="Ingrese código Único">
 		  									<span class="input-group-btn">
 		  									<button id="CodigoUnico" class="btn btn-default" type="button" ><span class="glyphicon glyphicon-search"> Buscar</span></button>
 		  									</span>
 		  							</div>
 		  						</div>
-		  						<div class="col-md-5">
-		  							<button id="mostrartodo" class="btn btn-default" type="button" ><li><a href="<?php echo site_url('AplicativoMovil/Pips'); ?>">Mostrar Todos los PIP</a></li></button>
+		  						<div class="col-md-4">
+		  							 <button id="mostrartodo" class="btn btn-default" type="button" ><li><a href="<?php echo site_url('AplicativoMovil/Pips'); ?>">Mostrar Todos los PIP</a></li></button>
 		  						</div>
 			        	</div>
 
@@ -211,28 +210,28 @@ var base_url = '<?php echo base_url(); ?>';
 	        	<div class="col-md-12">
 	          		<div class="box box-solid">
 	           			<div class="box-header with-border">
-			  			    <div id="EjecucionAnual" align="justify">
+			  			      <div id="EjecucionAnual" align="justify">
 					
-								<table class="table table-striped  table-hover">
-								  
-									<tr>
-										<td class="blue" width="120"><b>Código</b></td>
-										<td > <label  id="txtCodigo" name="txtCodigo"></label> </td>
-									</tr>
-									<tr>
-										<td class="blue"><b>Nombre</b></td>
-										<td > <label  id="txtnombre" name="txtnombre"></label></td>
-									</tr>
-									<tr>
-										<td class="blue" ><b>N° Beneficiarios</b></td>
-										<td> <label id="txtbeneficiario" name="txtbeneficiario"></label> </td>
-									</tr>
-									<tr>
-										<td class="blue" ><b>Monto de Inversión</b></td>
-										<td> S/. <label id="txtmontoInversion" name="txtmontoInversion"></label> </td>
-									</tr>
-							  </table> 
-						</div>
+        								<table class="table table-striped  table-hover">
+        								  
+        									<tr>
+        										<td class="blue" width="120"><b>Código</b></td>
+        										<td > <label  id="txtCodigo" name="txtCodigo"></label> </td>
+        									</tr>
+        									<tr>
+        										<td class="blue"><b>Nombre</b></td>
+        										<td > <label  id="txtnombre" name="txtnombre"></label></td>
+        									</tr>
+        									<tr>
+        										<td class="blue" ><b>N° Beneficiarios</b></td>
+        										<td> <label id="txtbeneficiario" name="txtbeneficiario"></label> </td>
+        									</tr>
+        									<tr>
+        										<td class="blue" ><b>Monto de Inversión</b></td>
+        										<td> S/. <label id="txtmontoInversion" name="txtmontoInversion"></label> </td>
+        									</tr>
+        							  </table> 
+						     </div>
            		 	</div>
             <div class="box-body">
               <div class="box-group" id="accordion">
@@ -415,30 +414,54 @@ var base_url = '<?php echo base_url(); ?>';
 <script type="text/javascript">
 	$(document).ready(function()
 	{
-		
-		initialize();
-		$("#EjecucionAnual").hide();
-		$("#CodigoUnico").on("click", function() 
-		{
-			$("#EjecucionAnual").show(2000);
-			var codigounico=$("#BuscarPip").val();
+		 $("#EjecucionAnual").fadeOut();
+		  $('#BuscarPip').bind('keyup', function(e)
+        {
+          var codigounico=$("#BuscarPip").val();
+           $("#EjecucionAnual").fadeOut();
+          if(e.keyCode==13)
+          {
+            $("#EjecucionAnual").fadeIn();
+             $.ajax({
+            "url":base_url+"index.php/AplicativoMovil/DatosGeneralesdelPip",
+            type:"POST",
+            data:{codigounico:codigounico},
+            success: function(data)
+              {
 
-				$.ajax({
-				"url":base_url+"index.php/AplicativoMovil/DatosGeneralesdelPip",
-				type:"POST",
-				data:{codigounico:codigounico},
-				success: function(data)
-					{
-				        var cantidadpipprovincias=JSON.parse(data); 
-				        $("#txtCodigo").html(cantidadpipprovincias.codigo_unico_pi);
-				        $("#txtnombre").html(cantidadpipprovincias.nombre_pi);
-				        $("#txtbeneficiario").html(cantidadpipprovincias.num_beneficiarios);
-				        $("#txtmontoInversion").html(cantidadpipprovincias.costo_pi);
-				       
-					}
-				});
-		});
+                      var cantidadpipprovincias=JSON.parse(data); 
 
+                        $("#txtCodigo").html(cantidadpipprovincias.codigo_unico_pi);
+                        $("#txtnombre").html(cantidadpipprovincias.nombre_pi);
+                        $("#txtbeneficiario").html(cantidadpipprovincias.num_beneficiarios);
+                        $("#txtmontoInversion").html(cantidadpipprovincias.costo_pi); 
+                   
+              }
+            });
+          }
+      }); 
+      $('#CodigoUnico').click(function() 
+      {
+            
+            var codigounico=$("#BuscarPip").val();
+            $("#EjecucionAnual").fadeIn();
+            $.ajax({
+            "url":base_url+"index.php/AplicativoMovil/DatosGeneralesdelPip",
+            type:"POST",
+            data:{codigounico:codigounico},
+            success: function(data)
+              {
+
+                    var cantidadpipprovincias=JSON.parse(data); 
+                    $("#txtCodigo").html(cantidadpipprovincias.codigo_unico_pi);
+                    $("#txtnombre").html(cantidadpipprovincias.nombre_pi);
+                    $("#txtbeneficiario").html(cantidadpipprovincias.num_beneficiarios);
+                    $("#txtmontoInversion").html(cantidadpipprovincias.costo_pi);
+                   
+              }
+            });
+        
+      }); 
 
 		$("#comboboxfuncion" ).change(function() {
 		var idFuncion=$("#comboboxfuncion").val();

@@ -46,7 +46,7 @@ class AplicativoMovil extends CI_Controller
             $listaTotaProyecto= array();
             $datos = $this->Model_AplicativoMovil->listaTotalDeUbicacionesProyecto();
             foreach ($datos as $key => $Itemp) {
-               $listaTotaProyecto[$key]=[$Itemp->nombre_pi.'Codigo<a href="https://www.google.com/">'.$Itemp->latitud.' </a></h6>',$Itemp->latitud,$Itemp->longitud,$Itemp->icono_sector];
+               $listaTotaProyecto[$key]=[$Itemp->nombre_pi.'Codigo<a href="https://www.google.com/">'.$Itemp->codigo_unico_pi.' </a></h6>',$Itemp->latitud,$Itemp->longitud,$Itemp->icono_sector];
             }
             echo json_encode($listaTotaProyecto);
         } else {
@@ -58,8 +58,11 @@ class AplicativoMovil extends CI_Controller
     function  DatosGeneralesdelPip()
     {
         $codigounico=$this->input->POST('codigounico');
+
         $data=$this->Model_AplicativoMovil->busquedaPorCodigoDatosGeneralesPip($codigounico);
-        echo  json_encode($data);
+        
+            echo json_encode($data);
+        
     }
 
     public function Pips()
