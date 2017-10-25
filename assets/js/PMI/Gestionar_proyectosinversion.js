@@ -107,8 +107,8 @@ $(document).on("ready" ,function()
                     swal("NO SE REGISTRÓ","NO se regristró ", "error");
                 }
                 $('#TableUbigeoProyecto_x').dataTable()._fnAjaxUpdate();
-                formReset();
-                $('#venta_ubicacion_geografica').modal('hide');           
+                //formReset();
+                //$('#venta_ubicacion_geografica').modal('hide');           
             }
         });
     });
@@ -211,11 +211,38 @@ $(document).on("ready" ,function()
                                       url= base_url+"uploads/ImgUbicacionProyecto/"+data;
                                       return '<img height="20" width="20" src="'+url+'" />';
                                     }},
-                                    {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaupdateEstadoFE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
+                                    {"data":'id_ubigeo_pi',render:function(data,type,row){
+                                        return "<button type='button'  data-toggle='tooltip'  class='editar btn btn-danger btn-xs' data-toggle='modal' onclick=eliminarUbigeo("+data+",this)><i class='ace-icon fa fa-trash-o bigger-120'></i></button>";
+                                    }}
+
                                 ],
                                "language":idioma_espanol
                     });
                 }
+var eliminarUbigeo=function(id_ubigeo_pi,element)
+{
+    if(!confirm('Se esta seguro de eliminar. ¿Realmente desea proseguir con la operaición?'))
+    {
+      return;
+    }
+
+    paginaAjaxJSON({ "id_ubigeo_pi" : id_ubigeo_pi }, base_url+'index.php/bancoproyectos/eliminarUbigeo', 'POST', null, function(objectJSON)
+    {
+      objectJSON=JSON.parse(objectJSON);
+
+      swal(
+      {
+        title: '',
+        text: objectJSON.mensaje,
+        type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+      },
+      function(){});
+
+      $(element).parent().parent().remove();
+
+    }, false, true);
+
+}
 //listar el estado ciclo de los proyectos
  var listar_estado_ciclo=function(id_pi)
                 {

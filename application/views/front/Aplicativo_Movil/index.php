@@ -145,7 +145,9 @@ var base_url = '<?php echo base_url(); ?>';
 </script>
 </head>
 <body class="hold-transition skin-blue layout-top-nav" onload="initialize();">
+
 <div class="">
+
   <header class="main-header">
     <nav class="navbar navbar-static-top">
       <div class="container">
@@ -162,7 +164,7 @@ var base_url = '<?php echo base_url(); ?>';
     </nav>
 
   </header>
-  <div class="content-wrapper">
+  
     <div class="container">
       <section class="content" style="margin-top: 30px;"> <!-- Main content -->
       <div class="row box-container">
@@ -372,7 +374,7 @@ var base_url = '<?php echo base_url(); ?>';
 
     </div>
 
-  </div>
+</div>
 
          
 

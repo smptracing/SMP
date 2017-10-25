@@ -23,10 +23,6 @@ li
     line-height: 1.471;
     margin : 2px;
 }
-/*span:hover 
-{
-	background-color: #b3d2f1;
-}*/
 </style>
 
 
@@ -49,7 +45,7 @@ li
 						    				<li>
 								    			<input type="button" class="btn btn-default btn-xs" value="+" onclick="MostrarSubLista('<?=$value->CodInsumo?>', 1, this);" style="margin: 1px;">
 								    			<input type="button" class="btn btn-default btn-xs" value="-" onclick="ContraerSubLista(this);" style="margin: 1px;">
-								    			<span class="nivel"><?=$value->Descripcion?></span>
+								    			<span class="nivel"><?=$value->Descripcion?> <?=($value->Simbolo==null ? '' : ($value->Simbolo))?> </span>
 								    		</li>
 						    			<?php } else { ?>
 						    				<li>
@@ -257,66 +253,6 @@ $(function()
 			}
 		}
 	});
-
-	/*$('#selectRecurso').selectpicker({ liveSearch: true });
-	$('#selectPresupuestoAnalitico').selectpicker({ liveSearch: true });
-
-	$('#selectPresupuestoAnalitico').on('change', function()
-    {
-		var selected=$(this).find("option:selected").val();
-
-		if(selected.trim()!='')
-		{
-			$('#txtPresupuestoEjecucion').val(selected.substring(selected.indexOf(',')+1, selected.length));
-		}
-		else
-		{
-			$('#txtPresupuestoEjecucion').val(null);
-		}
-    });
-
-	$('[id*="selectDescripcionDetalleAnalisis"]').selectpicker({ liveSearch: true }).ajaxSelectPicker(
-	{
-        ajax: {
-            url: base_url+'index.php/ET_Insumo/verPorDescripcion',
-            data: { valueSearch : '{{{q}}}' }
-        },
-        locale:
-        {
-            emptyTitle: 'Buscar insumo'
-        },
-        preprocessData: function(data)
-        {
-        	var dataForSelect=[];
-
-        	for(var i=0; i<data.length; i++)
-        	{
-        		dataForSelect.push(
-                {
-                    "value" : data[i].desc_insumo,
-                    "text" : data[i].desc_insum,
-                    "data" :
-                    {
-                    	"id-unidad" : data[i].id_unidad
-                    },
-                    "disabled" : false
-                });
-        	}
-
-            return dataForSelect;
-        },
-        preserveSelected: false
-    });
-
-    $('[id*="selectDescripcionDetalleAnalisis"]').on('change', function()
-    {
-		var selected=$(this).find("option:selected").val();
-
-		if(selected.trim()!='')
-		{
-			$('#selectUnidadMedida'+$(this).attr('id').substring(32)).val($(this).find("option:selected").data('id-unidad'));
-		}
-    });*/
 });
 
 function calcularCantidad(idAnalisisUnitario)
@@ -431,7 +367,8 @@ function MostrarSubLista(codigoInsumo, nivel, element)
 				if(obj[i].hasChild == false)
 				{
 					htmlTemp+='<li>'+
-					'<span class="nivel">'+obj[i].Descripcion+'</span>'+
+					'<input type="button" class="btn btn-warning btn-xs" value="A" onclick="seleccionar(\''+obj[i].Descripcion+'\', this);" style="margin: 1px;">'+
+					'<span class="nivel">'+obj[i].Descripcion+' ('+ obj[i].Simbolo+')</span>'+
 					'</li>';
 				}
 				else
@@ -439,14 +376,13 @@ function MostrarSubLista(codigoInsumo, nivel, element)
 					htmlTemp+='<li>'+
 					'<input type="button" class="btn btn-default btn-xs" value="+" onclick="MostrarSubLista(\''+obj[i].CodInsumo+'\', '+(obj[i].Nivel+1)+', this);" style="margin: 1px;">'+
 					'<input type="button" class="btn btn-default btn-xs" value="-" onclick="ContraerSubLista(this);" style="margin: 1px;">'+
-					'<span class="nivel">'+obj[i].Descripcion+'</span>'+
+					'<span class="nivel">'+obj[i].Descripcion+ ((obj[i].Simbolo == null) ? "" : ' ('+obj[i].Simbolo+')')+'</span>'+
 				'</li>';
 				}
 				
 			}
 
 			htmlTemp+='</ul>';
-
 			$(element).parent().append(htmlTemp);        											            
 		}
 	});
@@ -455,5 +391,10 @@ function MostrarSubLista(codigoInsumo, nivel, element)
 function ContraerSubLista(element)
 {
 	$(element).parent().find('>ul').remove();
+}
+
+function seleccionar(insumo,element)
+{
+	$('#selectDescripcionDetalleAnalisis').val(""+insumo);
 }
 </script>
