@@ -68,7 +68,7 @@ class ET_Analisis_Unitario extends CI_Controller
 		{
 			$idUnidad=$this->input->post('listaUnidadMedida');
 			$descripcionInsumo=$this->input->post('txtInsumo');
-			$data = $this->Model_Unidad_Medida->insertarInsumo($idUnidad, $descripcionInsumo);
+			$data=$this->Model_Unidad_Medida->insertarInsumo($idUnidad, $descripcionInsumo);
 			if($data==true)
 			{
 				echo "1";
@@ -124,19 +124,15 @@ class ET_Analisis_Unitario extends CI_Controller
 		{
 			$idAnalisis=$this->input->get('id_AnalisisUnitario');
 			$Partida = $this->Model_ET_Detalle_Partida->partidaAnaliticoEt($idAnalisis);
-			/*$idPartida = $idPartida->id_partida;
-			$idet = $uri->segment(2);
-
-			$uri_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-			$uri_segments = explode('/', $uri_path);
-
-			echo $uri_segments[3];
-
-			echo $idPartida;*/
-			//echo $idet;
-			//exit;
 			$listaUnidadMedida = $this->Model_Unidad_Medida->UnidadMedidad_Listar();
-			$this->load->view('Front/Ejecucion/ETAnalisisUnitario/insertardetalleanalisisunitario',['idAnalisis'=>$idAnalisis,'listaUnidadMedida'=>$listaUnidadMedida,'partida' =>$Partida]);
+			$listaInsumoNivel1 = $this->Model_Unidad_Medida->listaInsumoNivel1();
+			foreach ($listaInsumoNivel1 as $key => $value) 
+			{
+				$value->hasChild = (count($this->Model_Unidad_Medida->listaInsumoporNivel($value->CodInsumo, ($value->Nivel+1)))==0 ? false : true);
+			}
+			/*var_dump($listaInsumoNivel1);
+			exit;*/
+			$this->load->view('Front/Ejecucion/ETAnalisisUnitario/insertardetalleanalisisunitario',['idAnalisis'=>$idAnalisis,'listaUnidadMedida'=>$listaUnidadMedida,'partida' =>$Partida, 'listaNivel1' => $listaInsumoNivel1 ]);
 		}		
 	}
 
@@ -193,5 +189,21 @@ class ET_Analisis_Unitario extends CI_Controller
 		}
 
 		return $partidaCompleta;
+	}
+
+	public function cargarNivel()
+	{
+		$codigoInsumo=$this->input->post('codigoInsumo');
+		$nivel=$this->input->post('nivel');
+		$data=$this->Model_Unidad_Medida->listaInsumoporNivel($codigoInsumo, $nivel);
+
+		foreach($data as $key => $value)
+		{
+			$value->hasChild=(count($this->Model_Unidad_Medida->listaInsumoporNivel($value->CodInsumo, ($value->Nivel+1)))==0 ? false : true);
+			
+		}
+		//var_dump($data);exit;
+
+		echo json_encode($data);exit;
 	}
 }

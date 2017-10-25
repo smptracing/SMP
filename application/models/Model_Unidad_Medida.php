@@ -54,4 +54,15 @@ class Model_Unidad_Medida extends CI_Model
 		$unidadMedida=$this->db->query("execute sp_Gestionar_EtInsumo @Opcion = 'C', @id_unidad = $idUnidad, @desc_insumo = '$descripcion'");
 		return true;
 	}
+	function listaInsumoNivel1()
+	{
+		$nivel1=$this->db->query("exec sp_gestionar_insumopartida @opcion = 'listar_insumos_nivel' ,  @codinsumo = '', @nivelinsumo = '0'");
+		return $nivel1->result();
+	}
+	function listaInsumoporNivel($codigoInsumo,$nivel)
+	{
+		$data=$this->db->query("exec sp_gestionar_insumopartida @opcion = 'listar_insumos_nivel' ,  @codinsumo = '$codigoInsumo', @nivelinsumo = $nivel");
+		return $data->result();
+
+	}
 }

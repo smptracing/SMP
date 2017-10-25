@@ -1,78 +1,153 @@
+<style>
+	.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+}
+.dropdown:hover {
+}
+li
+{
+	list-style:none;
+}
+.nivel
+{
+	color: #73879C;
+    font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.471;
+    margin : 2px;
+}
+/*span:hover 
+{
+	background-color: #b3d2f1;
+}*/
+</style>
+
 
 <form  id="frmInsertarDetalleAnalisisUnitario" action="" method="POST">
 	<div class="row">
 
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
-				<div class="x_content" id ="divFormDetallaAnalisisUnitario">		
+				<div class="x_content" >		
 					<div class="row">
-						<div class="col-md-7 col-sm-7 col-xs-12">
+						<div class="col-md-6 col-sm-6 col-xs-12">
 							<input type="hidden" id="idAnalisis" name="idAnalisis" class="form-control" value="<?=$idAnalisis?>">
-							<label for="control-label">Descripción del insunmo</label>
-							<div>
-								<select name="selectDescripcionDetalleAnalisis" id="selectDescripcionDetalleAnalisis" class="form-control"></select>
+							<label for="control-label">Descripción del insumo</label>
+							<div style="height: 250px;overflow-y: scroll; background-color: #f2f5f7;">
+								<ul>
+							    	<?php foreach ($listaNivel1 as $key => $value) 
+							    	{
+						    			if($value->hasChild)
+						    			{?>
+						    				<li>
+								    			<input type="button" class="btn btn-default btn-xs" value="+" onclick="MostrarSubLista('<?=$value->CodInsumo?>', 1, this);" style="margin: 1px;">
+								    			<input type="button" class="btn btn-default btn-xs" value="-" onclick="ContraerSubLista(this);" style="margin: 1px;">
+								    			<span class="nivel"><?=$value->Descripcion?></span>
+								    		</li>
+						    			<?php } else { ?>
+						    				<li>
+								    			<span class="nivel"><?=$value->Descripcion?></span>
+								    		</li>
+						    			<?php } ?>							    		
+							    	<?php } ?>
+							    </ul>
 							</div>
 						</div>
-						<div class="col-md-2 col-sm-2 col-xs-12">
-							<label for="control-label">Cuadrilla</label>
-							<div>
-								<input type="text" id="txtCuadrilla" name="txtCuadrilla" autocomplete="off" class="form-control" onkeyup="calcularCantidad(<?=$idAnalisis?>);calcularSubTotal(<?=$idAnalisis?>);">
+						<div class="col-md-6">
+							<div id ="divFormDetallaAnalisisUnitario">
+								<div class="row">
+									<div class="col-md-12 col-sm-2 col-xs-12">
+										<label for="control-label">Insumo:</label>
+										<div>
+											<input type="text" id="selectDescripcionDetalleAnalisis" name="selectDescripcionDetalleAnalisis" autocomplete="off" class="form-control" onkeyup="calcularCantidad(<?=$idAnalisis?>);calcularSubTotal(<?=$idAnalisis?>);">
+										</div>
+									</div>								
+								</div>
+								<div class="row">
+									<div class="col-md-4 col-sm-2 col-xs-12">
+										<label for="control-label">Cuadrilla</label>
+										<div>
+											<input type="text" id="txtCuadrilla" name="txtCuadrilla" autocomplete="off" class="form-control" onkeyup="calcularCantidad(<?=$idAnalisis?>);calcularSubTotal(<?=$idAnalisis?>);">
+										</div>
+									</div>
+									<div class="col-md-4 col-sm-1 col-xs-12">
+										<label for="control-label">Horas</label>
+										<div>
+											<input type="text" id="txtHoras" name="txtHoras" autocomplete="off" class="form-control" onkeyup="calcularCantidad(<?=$idAnalisis?>);calcularSubTotal(<?=$idAnalisis?>);" value="8">
+										</div>
+									</div>
+									<div class="col-md-4 col-sm-2 col-xs-12">
+										<label for="control-label">Uniddad</label>
+										<div>
+											<select name="selectUnidadMedida" id="selectUnidadMedida" class="form-control">
+												<?php foreach($listaUnidadMedida as $item){ ?>
+													<option value="<?=$item->id_unidad?>"><?=html_escape($item->descripcion)?></option>
+												<?php } ?>
+											</select>
+										</div>
+									</div>									
+								</div>
+								<div class="row">
+									<div class="col-md-4 col-sm-2 col-xs-12">
+										<label for="control-label">Rendimiento</label>
+										<div>
+											<input type="text" id="txtRendimiento" autocomplete="off" name="txtRendimiento" class="form-control" onkeyup="calcularCantidad(<?=$idAnalisis?>);calcularSubTotal(<?=$idAnalisis?>);">
+										</div>
+									</div>
+									<div class="col-md-4 col-sm-2 col-xs-12">
+										<label for="control-label">Cantidad</label>
+										<div>
+											<input type="text" id="txtCantidad" autocomplete="off" name="txtCantidad" class="form-control" onkeyup="calcularRendimiento(<?=$idAnalisis?>);calcularSubTotal(<?=$idAnalisis?>);">
+										</div>
+									</div>
+									<div class="col-md-4 col-sm-3 col-xs-12">
+										<label for="control-label">Precio unitario</label>
+										<div>
+											<input type="text" id="txtPrecioUnitario" autocomplete="off" name="txtPrecioUnitario" class="form-control" onkeyup="calcularSubTotal(<?=$idAnalisis?>);">
+										</div>
+									</div>										
+								</div>
+								<div class="row">
+									<div class="col-md-4 col-sm-3 col-xs-12">
+										<label for="control-label">Sub total</label>
+										<div>
+											<input type="text" id="txtSubTotal" class="form-control" readonly="readonly">
+										</div>
+									</div>
+								</div>
 							</div>
-						</div>
-						<div class="col-md-1 col-sm-1 col-xs-12">
-							<label for="control-label">Horas</label>
-							<div>
-								<input type="text" id="txtHoras" name="txtHoras" autocomplete="off" class="form-control" onkeyup="calcularCantidad(<?=$idAnalisis?>);calcularSubTotal(<?=$idAnalisis?>);" value="8">
-							</div>
-						</div>
-						<div class="col-md-2 col-sm-2 col-xs-12">
-							<label for="control-label">Uniddad</label>
-							<div>
-								<select name="selectUnidadMedida" id="selectUnidadMedida" class="form-control">
-									<?php foreach($listaUnidadMedida as $item){ ?>
-										<option value="<?=$item->id_unidad?>"><?=html_escape($item->descripcion)?></option>
-									<?php } ?>
-								</select>
+							<div class="row">
+								<br>
+								<div class="col-md-6 col-sm-2 col-xs-12">
+									<button  class="btn btn-success" onclick="guardarDetalleAnalisisPresupuestal();">Guardar</button>
+									<button  class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+								</div>	
 							</div>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-md-2 col-sm-2 col-xs-12">
-							<label for="control-label">Rendimiento</label>
-							<div>
-								<input type="text" id="txtRendimiento" autocomplete="off" name="txtRendimiento" class="form-control" onkeyup="calcularCantidad(<?=$idAnalisis?>);calcularSubTotal(<?=$idAnalisis?>);">
-							</div>
-						</div>
-						<div class="col-md-2 col-sm-2 col-xs-12">
-							<label for="control-label">Cantidad</label>
-							<div>
-								<input type="text" id="txtCantidad" autocomplete="off" name="txtCantidad" class="form-control" onkeyup="calcularRendimiento(<?=$idAnalisis?>);calcularSubTotal(<?=$idAnalisis?>);">
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-3 col-xs-12">
-							<label for="control-label">Precio unitario</label>
-							<div>
-								<input type="text" id="txtPrecioUnitario" autocomplete="off" name="txtPrecioUnitario" class="form-control" onkeyup="calcularSubTotal(<?=$idAnalisis?>);">
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-3 col-xs-12">
-							<label for="control-label">Sub total</label>
-							<div>
-								<input type="text" id="txtSubTotal" class="form-control" readonly="readonly">
-							</div>
-						</div>
-					</div>		
-				</br>
-				</div>
-				
+				</div>				
 			</div>
 		</div>
 	</div>
-	<div class="row" style="text-align: center;">
-		<button  class="btn btn-success" onclick="guardarDetalleAnalisisPresupuestal();">Guardar</button>
-		<button  class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-	</div>
 </form>
+<script>
+$(document).ready(function(){
+  $('.dropdown-submenu a.test').on("click", function(e){
+    $(this).next('ul').toggle();
+    e.stopPropagation();
+    e.preventDefault();
+  });
+  $('.selectpicker').selectpicker('refresh');
+
+});
+</script>
 <script>
 $(function()
 {
@@ -183,7 +258,7 @@ $(function()
 		}
 	});
 
-	$('#selectRecurso').selectpicker({ liveSearch: true });
+	/*$('#selectRecurso').selectpicker({ liveSearch: true });
 	$('#selectPresupuestoAnalitico').selectpicker({ liveSearch: true });
 
 	$('#selectPresupuestoAnalitico').on('change', function()
@@ -241,7 +316,7 @@ $(function()
 		{
 			$('#selectUnidadMedida'+$(this).attr('id').substring(32)).val($(this).find("option:selected").data('id-unidad'));
 		}
-    });
+    });*/
 });
 
 function calcularCantidad(idAnalisisUnitario)
@@ -329,5 +404,56 @@ function guardarDetalleAnalisisPresupuestal()
             }
         }
     }); 
+}
+function MostrarSubLista(codigoInsumo, nivel, element)
+{
+	var marginLeftTemp=45;
+
+	$.ajax(
+	{
+		type: "POST",
+		url: base_url+"index.php/ET_Analisis_Unitario/cargarNivel",
+		cache: false,
+		data: { codigoInsumo: codigoInsumo, nivel: nivel },
+		success: function(resp)
+		{
+			var obj=JSON.parse(resp);
+
+			if(obj.length==0)
+			{
+				return false;
+			}
+
+			var htmlTemp='<ul style="margin-left: '+marginLeftTemp+'px;">';
+
+			for(var i=0; i<obj.length; i++)
+			{
+				if(obj[i].hasChild == false)
+				{
+					htmlTemp+='<li>'+
+					'<span class="nivel">'+obj[i].Descripcion+'</span>'+
+					'</li>';
+				}
+				else
+				{
+					htmlTemp+='<li>'+
+					'<input type="button" class="btn btn-default btn-xs" value="+" onclick="MostrarSubLista(\''+obj[i].CodInsumo+'\', '+(obj[i].Nivel+1)+', this);" style="margin: 1px;">'+
+					'<input type="button" class="btn btn-default btn-xs" value="-" onclick="ContraerSubLista(this);" style="margin: 1px;">'+
+					'<span class="nivel">'+obj[i].Descripcion+'</span>'+
+				'</li>';
+				}
+				
+			}
+
+			htmlTemp+='</ul>';
+
+			$(element).parent().append(htmlTemp);        											            
+		}
+	});
+}
+
+function ContraerSubLista(element)
+{
+	$(element).parent().find('>ul').remove();
 }
 </script>
