@@ -1,12 +1,16 @@
-<!--<script type="text/javascript"></script>
-<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
-<link rel="stylesheet" type="text/css" href="../../themes/icon.css">-->
+<style>
+	.dropdown-submenu {
+    position: relative;
+}
 
-<link href="<?php echo base_url(); ?>assets/easyui/themes/default/easyui.css" rel="stylesheet">
-<link href="<?php echo base_url(); ?>assets/easyui/themes/icon.css" rel="stylesheet">
-
-<!--<script src="<?php echo base_url(); ?>assets/easyui/jquery.min.js"></script>-->
-<script src="<?php echo base_url(); ?>assets/easyui/jquery.easyui.min.js"></script>
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+}
+.dropdown:hover {
+}
+</style>
 
 
 <form  id="frmInsertarDetalleAnalisisUnitario" action="" method="POST">
@@ -18,11 +22,25 @@
 					<div class="row">
 						<div class="col-md-7 col-sm-7 col-xs-12">
 							<input type="hidden" id="idAnalisis" name="idAnalisis" class="form-control" value="<?=$idAnalisis?>">
-							<label for="control-label">Descripción del insunmo</label>
-							<div>
-								<!--<select name="selectDescripcionDetalleAnalisis" id="selectDescripcionDetalleAnalisis" class="form-control"></select>-->
-								<input class="easyui-combotree" data-options="url:'data.json',method:'get',labelPosition:'top'" style="width:100%">
-							
+							<label for="control-label">Descripción del insumo</label>
+							<div style="height: 300px;overflow-y: scroll;">
+								<ul>
+							    	<?php foreach ($listaNivel1 as $key => $value) 
+							    	{
+						    			if($value->hasChild)
+						    			{?>
+						    				<li>
+								    			<input type="button" class="btn btn-default btn-xs" value="+" onclick="MostrarSubLista('<?=$value->CodInsumo?>', 1, this);" style="margin: 2px;">
+								    			<input type="button" class="btn btn-default btn-xs" value="-" onclick="ContraerSubLista(this);" style="margin: 4px;">
+								    			<span><?=$value->Descripcion?></span>
+								    		</li>
+						    			<?php } else { ?>
+						    				<li>
+								    			<span><?=$value->Descripcion?></span>
+								    		</li>
+						    			<?php } ?>							    		
+							    	<?php } ?>
+							    </ul>
 							</div>
 						</div>
 						<div class="col-md-2 col-sm-2 col-xs-12">
@@ -85,6 +103,17 @@
 		<button  class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 	</div>
 </form>
+<script>
+$(document).ready(function(){
+  $('.dropdown-submenu a.test').on("click", function(e){
+    $(this).next('ul').toggle();
+    e.stopPropagation();
+    e.preventDefault();
+  });
+  $('.selectpicker').selectpicker('refresh');
+
+});
+</script>
 <script>
 $(function()
 {
@@ -341,5 +370,57 @@ function guardarDetalleAnalisisPresupuestal()
             }
         }
     }); 
+}
+function MostrarSubLista(codigoInsumo, nivel, element)
+{
+	var marginLeftTemp=nivel*15;
+
+	$.ajax(
+	{
+		type: "POST",
+		url: base_url+"index.php/ET_Analisis_Unitario/cargarNivel",
+		cache: false,
+		data: { codigoInsumo: codigoInsumo, nivel: nivel },
+		success: function(resp)
+		{
+			var obj=JSON.parse(resp);
+
+			if(obj.length==0)
+			{
+				return false;
+			}
+
+			var htmlTemp='<ul style="margin-left: '+marginLeftTemp+'px;">';
+
+			for(var i=0; i<obj.length; i++)
+			{
+				if(obj[i].hasChild == false)
+				{
+					htmlTemp+='<li>'+
+					'<span>'+obj[i].Descripcion+'</span>'+
+					'</li>';
+				}
+				else
+				{
+					htmlTemp+='<li>'+
+					'<input type="button" class="btn btn-default btn-xs" value="+" onclick="MostrarSubLista(\''+obj[i].CodInsumo+'\', '+(obj[i].Nivel+1)+', this);" style="margin: 4px;">'+
+					'<input type="button" class="btn btn-default btn-xs" value="-" onclick="ContraerSubLista(this);" style="margin: 4px;">'+
+					'<span>'+obj[i].Descripcion+'</span>'+
+				'</li>';
+
+				}
+				
+			}
+
+			htmlTemp+='</ul>';
+
+			$(element).parent().append(htmlTemp);        											            
+		}
+	});
+}
+
+function ContraerSubLista(element)
+{
+	$(element).parent().find('>ul').remove();
 }
 </script>
