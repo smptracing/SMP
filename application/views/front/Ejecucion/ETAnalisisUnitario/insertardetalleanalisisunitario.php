@@ -140,17 +140,6 @@ li
 	</div>
 </form>
 <script>
-$(document).ready(function(){
-  $('.dropdown-submenu a.test').on("click", function(e){
-    $(this).next('ul').toggle();
-    e.stopPropagation();
-    e.preventDefault();
-  });
-  $('.selectpicker').selectpicker('refresh');
-
-});
-</script>
-<script>
 $(function()
 {
 	$('#divFormDetallaAnalisisUnitario').formValidation(
@@ -371,8 +360,8 @@ function MostrarSubLista(codigoInsumo, nivel, element)
 				if(obj[i].hasChild == false)
 				{
 					htmlTemp+='<li>'+
-					'<input type="button" class="btn btn-warning btn-xs" value="A" onclick="seleccionar(\''+obj[i].Descripcion+'\',\''+obj[i].Unidad+'\', this);" style="margin: 1px;">'+
-					'<span class="nivel">'+obj[i].Descripcion+' ('+ obj[i].Simbolo+')</span>'+
+					'<input type="button" class="btn btn-warning btn-xs" value="A" onclick="seleccionar(\''+replaceAll(obj[i].Descripcion,'"','*')+'\',\''+obj[i].Unidad+'\', this);" style="margin: 1px;">'+
+					'<span class="nivel">'+obj[i].Descripcion+ ((obj[i].Simbolo == null) ? "" : ' ('+obj[i].Simbolo+')')+'</span>'+
 					'</li>';
 				}
 				else
@@ -398,8 +387,16 @@ function ContraerSubLista(element)
 
 function seleccionar(insumo,unidad,element)
 {
-	$('#selectDescripcionDetalleAnalisis').val(""+insumo);
-	$('#txtUnidad').val(""+unidad);
+	var nuevoInsumo = replaceAll(insumo,'*','"');
+	$('#selectDescripcionDetalleAnalisis').val(""+nuevoInsumo);
+	if(unidad=='null')
+	{
+		$('#txtUnidad').val("");
+	}
+	else
+	{
+		$('#txtUnidad').val(unidad);
+	}	
 	//$('#selectUnidadMedida').append('<option value="' + unidad + '" selected="selected">' + unidad + '</option>');
 }
 </script>
