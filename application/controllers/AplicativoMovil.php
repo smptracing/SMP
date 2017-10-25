@@ -51,7 +51,7 @@ class AplicativoMovil extends CI_Controller
     	$listanopiportiponopip=$this->Model_AplicativoMovil->listaNoPipPorTipoNoPip($id_tipo_nopip);
     	$listaTotaProyecto= array();
            foreach ($listanopiportiponopip as $key => $Itemp) {
-               $listaTotaProyecto[$key]=[$Itemp->nombre_pi.'</br><center><img src='.base_url().'uploads/IconosSector/620.jpg  width="150" height="120" alt="Flowers in Chania"> <a href="https://www.google.com/"></center> </br>Codigo &nbsp;&nbsp; '.$Itemp->codigo_unico_pi.' </a></h6>',$Itemp->latitud,$Itemp->longitud,$Itemp->icono_sector];
+               $listaTotaProyecto[$key]=[$Itemp->nombre_pi.'</br><center><img src='.base_url().'uploads/ImgUbicacionProyecto/'.$Itemp->url_img.' width="150" height="120" alt=""> <a href="https://www.google.com/"></center> </br>Codigo &nbsp;&nbsp; '.$Itemp->codigo_unico_pi.' </a></h6>',$Itemp->latitud,$Itemp->longitud,$Itemp->icono_sector];
             }
            echo json_encode($listaTotaProyecto);
     }
@@ -98,7 +98,7 @@ class AplicativoMovil extends CI_Controller
         
         $listaTotaProyecto= array();
            foreach ($data as $key => $Itemp) {
-               $listaTotaProyecto[$key]=[$Itemp->nombre_pi.'</br><center><img src='.base_url().'uploads/IconosSector/620.jpg  width="150" height="120" alt="Flowers in Chania"> <a href="https://www.google.com/"></center> </br>Codigo &nbsp;&nbsp; '.$Itemp->codigo_unico_pi.' </a></h6>',$Itemp->latitud,$Itemp->longitud,$Itemp->icono_sector];
+               $listaTotaProyecto[$key]=[$Itemp->nombre_pi.'</br><center><img src='.base_url().'uploads/ImgUbicacionProyecto/'.$Itemp->url_img.'  width="150" height="120" alt=""> <a href="https://www.google.com/"></center> </br>Codigo &nbsp;&nbsp; '.$Itemp->codigo_unico_pi.' </a></h6>',$Itemp->latitud,$Itemp->longitud,$Itemp->icono_sector];
             }
            echo json_encode($listaTotaProyecto);
         
