@@ -63,7 +63,7 @@ li
 									<div class="col-md-12 col-sm-2 col-xs-12">
 										<label for="control-label">Insumo:</label>
 										<div>
-											<input type="text" id="selectDescripcionDetalleAnalisis" name="selectDescripcionDetalleAnalisis" autocomplete="off" class="form-control" onkeyup="calcularCantidad();calcularSubTotal();">
+											<input type="text" id="txtInsumo" name="txtInsumo" autocomplete="off" class="form-control">
 										</div>
 									</div>								
 								</div>
@@ -315,7 +315,7 @@ function guardarDetalleAnalisisPresupuestal()
 {
 	event.preventDefault();
 	$('#divFormDetallaAnalisisUnitario').data('formValidation').resetField($('#txtCantidad'));
-	$('#divFormDetallaAnalisisUnitario').data('formValidation').resetField($('#selectDescripcionDetalleAnalisis'));
+	$('#divFormDetallaAnalisisUnitario').data('formValidation').resetField($('#txtInsumo'));
 	$('#divFormDetallaAnalisisUnitario').data('formValidation').validate();
 	if(!($('#divFormDetallaAnalisisUnitario').data('formValidation').isValid()))
 	{
@@ -398,7 +398,7 @@ function ContraerSubLista(element)
 function seleccionar(insumo,unidad,element)
 {
 	var nuevoInsumo = replaceAll(insumo,'*','"');
-	$('#selectDescripcionDetalleAnalisis').val(""+nuevoInsumo);
+	$('#txtInsumo').val(nuevoInsumo);
 	if(unidad=='null')
 	{
 		$('#txtUnidad').val("UNIDAD");

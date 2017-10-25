@@ -91,7 +91,7 @@ class ET_Analisis_Unitario extends CI_Controller
 		{
 			$this->db->trans_start();
 			$idAnalisis=$this->input->post('idAnalisis');
-			$descripcion=$this->input->post('selectDescripcionDetalleAnalisis');
+			$descripcion=$this->input->post('txtInsumo');
 			$cuadrilla=$this->input->post('txtCuadrilla');
 			$unidad=$this->input->post('txtUnidad');
 			if($unidad!="")
