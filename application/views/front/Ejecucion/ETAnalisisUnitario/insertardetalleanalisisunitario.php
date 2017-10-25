@@ -79,16 +79,22 @@ li
 											<input type="text" id="txtHoras" name="txtHoras" autocomplete="off" class="form-control" onkeyup="calcularCantidad(<?=$idAnalisis?>);calcularSubTotal(<?=$idAnalisis?>);" value="8">
 										</div>
 									</div>
-									<div class="col-md-4 col-sm-2 col-xs-12">
-										<label for="control-label">Uniddad</label>
+									<div class="col-md-4 col-sm-1 col-xs-12">
+										<label for="control-label">Unidad</label>
 										<div>
-											<select name="selectUnidadMedida" id="selectUnidadMedida" class="form-control">
+											<input type="text" readonly="readonly" id="txtUnidad" name="txtUnidad" autocomplete="off" class="form-control">
+										</div>
+									</div>
+									<!--<div class="col-md-4 col-sm-2 col-xs-12">
+										<label for="control-label">Unidad</label>
+										<div>
+											<select name="selectUnidadMedida" id="selectUnidadMedida" class="form-control" disabled="disabled">
 												<?php foreach($listaUnidadMedida as $item){ ?>
 													<option value="<?=$item->id_unidad?>"><?=html_escape($item->descripcion)?></option>
 												<?php } ?>
 											</select>
 										</div>
-									</div>									
+									</div>-->									
 								</div>
 								<div class="row">
 									<div class="col-md-4 col-sm-2 col-xs-12">
@@ -332,6 +338,7 @@ function guardarDetalleAnalisisPresupuestal()
         	if (resp=='1') 
             {
                 swal("Correcto","Se registró correctamente", "success");
+                $('#frmInsertarDetalleAnalisisUnitario')[0].reset();                
                 paginaAjaxDialogo('otherModal', 'Análisis presupuestal', { idET : <?=$partida->id_et?> , idPartida : <?=$partida->id_partida?> }, base_url+'index.php/ET_Analisis_Unitario/insertar', 'GET', null, null, false, true);
             }
             if (resp=='0') 
@@ -344,7 +351,6 @@ function guardarDetalleAnalisisPresupuestal()
 function MostrarSubLista(codigoInsumo, nivel, element)
 {
 	var marginLeftTemp=45;
-
 	$.ajax(
 	{
 		type: "POST",
@@ -359,15 +365,13 @@ function MostrarSubLista(codigoInsumo, nivel, element)
 			{
 				return false;
 			}
-
 			var htmlTemp='<ul style="margin-left: '+marginLeftTemp+'px;">';
-
 			for(var i=0; i<obj.length; i++)
 			{
 				if(obj[i].hasChild == false)
 				{
 					htmlTemp+='<li>'+
-					'<input type="button" class="btn btn-warning btn-xs" value="A" onclick="seleccionar(\''+obj[i].Descripcion+'\', this);" style="margin: 1px;">'+
+					'<input type="button" class="btn btn-warning btn-xs" value="A" onclick="seleccionar(\''+obj[i].Descripcion+'\',\''+obj[i].Unidad+'\', this);" style="margin: 1px;">'+
 					'<span class="nivel">'+obj[i].Descripcion+' ('+ obj[i].Simbolo+')</span>'+
 					'</li>';
 				}
@@ -378,8 +382,7 @@ function MostrarSubLista(codigoInsumo, nivel, element)
 					'<input type="button" class="btn btn-default btn-xs" value="-" onclick="ContraerSubLista(this);" style="margin: 1px;">'+
 					'<span class="nivel">'+obj[i].Descripcion+ ((obj[i].Simbolo == null) ? "" : ' ('+obj[i].Simbolo+')')+'</span>'+
 				'</li>';
-				}
-				
+				}				
 			}
 
 			htmlTemp+='</ul>';
@@ -393,8 +396,10 @@ function ContraerSubLista(element)
 	$(element).parent().find('>ul').remove();
 }
 
-function seleccionar(insumo,element)
+function seleccionar(insumo,unidad,element)
 {
 	$('#selectDescripcionDetalleAnalisis').val(""+insumo);
+	$('#txtUnidad').val(""+unidad);
+	//$('#selectUnidadMedida').append('<option value="' + unidad + '" selected="selected">' + unidad + '</option>');
 }
 </script>

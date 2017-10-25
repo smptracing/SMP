@@ -63,6 +63,10 @@ class Model_Unidad_Medida extends CI_Model
 	{
 		$data=$this->db->query("exec sp_gestionar_insumopartida @opcion = 'listar_insumos_nivel' ,  @codinsumo = '$codigoInsumo', @nivelinsumo = $nivel");
 		return $data->result();
-
+	}
+	function validarInsumo($insumo)
+	{
+		$data=$this->db->query("select * from UNIDAD_MEDIDA where descripcion = '$insumo'");
+		return $data->result()[0];
 	}
 }

@@ -93,7 +93,10 @@ class ET_Analisis_Unitario extends CI_Controller
 			$idAnalisis=$this->input->post('idAnalisis');
 			$descripcion=$this->input->post('selectDescripcionDetalleAnalisis');
 			$cuadrilla=$this->input->post('txtCuadrilla');
-			$idUnidad=$this->input->post('selectUnidadMedida');
+			$unidad=$this->input->post('txtUnidad');
+
+			$data = $this->Model_Unidad_Medida->validarInsumo(trim($unidad));
+			$idUnidad = $data->id_unidad;
 			$rendimiento=$this->input->post('txtRendimiento');
 			$cantidad=$this->input->post('txtCantidad');
 			$precioUnitario=$this->input->post('txtPrecioUnitario');
@@ -130,8 +133,6 @@ class ET_Analisis_Unitario extends CI_Controller
 			{
 				$value->hasChild = (count($this->Model_Unidad_Medida->listaInsumoporNivel($value->CodInsumo, ($value->Nivel+1)))==0 ? false : true);
 			}
-			/*var_dump($listaInsumoNivel1);
-			exit;*/
 			$this->load->view('Front/Ejecucion/ETAnalisisUnitario/insertardetalleanalisisunitario',['idAnalisis'=>$idAnalisis,'listaUnidadMedida'=>$listaUnidadMedida,'partida' =>$Partida, 'listaNivel1' => $listaInsumoNivel1 ]);
 		}		
 	}
