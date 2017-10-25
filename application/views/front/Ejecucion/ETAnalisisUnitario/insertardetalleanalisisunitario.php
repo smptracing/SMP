@@ -44,7 +44,7 @@ li
 						    			{?>
 						    				<li>
 						    					<!--<input type="button" class="btn btn-default btn-xs" value="+" onclick="MostrarSubLista('<?=$value->CodInsumo?>', 1, this);" style="margin: 1px;">-->								    			
-								    			<input type="button" class="btn btn-default btn-xs" value="+" onclick="MostrarSubLista('<?=$value->CodInsumo?>', 1, this);" style="margin: 1px;">
+								    			<input type="button" class="btn btn-default btn-xs" value="+" onclick="ContraerSubLista(this); MostrarSubLista('<?=$value->CodInsumo?>', 1, this);" style="margin: 1px;">
 								    			<input type="button" class="btn btn-default btn-xs" value="-" onclick="ContraerSubLista(this);" style="margin: 1px;">
 								    			<span class="nivel"><?=$value->Descripcion?> <?=($value->Simbolo==null ? '' : ($value->Simbolo))?> </span>
 								    		</li>
@@ -377,7 +377,7 @@ function MostrarSubLista(codigoInsumo, nivel, element)
 				else
 				{
 					htmlTemp+='<li>'+
-					'<input type="button" class="btn btn-default btn-xs" value="+" onclick="MostrarSubLista(\''+obj[i].CodInsumo+'\', '+(obj[i].Nivel+1)+', this);" style="margin: 1px;">'+
+					'<input type="button" class="btn btn-default btn-xs" value="+" onclick="ContraerSubLista(this); MostrarSubLista(\''+obj[i].CodInsumo+'\', '+(obj[i].Nivel+1)+', this);" style="margin: 1px;">'+
 					'<input type="button" class="btn btn-default btn-xs" value="-" onclick="ContraerSubLista(this);" style="margin: 1px;">'+
 					'<span class="nivel">'+obj[i].Descripcion+ ((obj[i].Simbolo == null) ? "" : ' ('+obj[i].Simbolo+')')+'</span>'+
 				'</li>';

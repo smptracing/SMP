@@ -70,7 +70,46 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 		</div>
 	</div>
 	<div id="divAgregarPartida" class="row" style="display: none;margin-top: 4px;">
-		<div class="col-md-12 col-sm-12 col-xs-12">
+		<div class="col-md-6">
+			<label for="control-label">Descripción de la Partida</label>
+			<div style="height: 250px;overflow-y: scroll; background-color: #f2f5f7;">
+				<ul>
+			    </ul>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="row">
+				<div class="col-md-12 col-sm-2 col-xs-12">
+					<br>
+					<label for="control-label">Insumo:</label>
+					<div>
+						<input type="text" id="selectDescripcionDetalleAnalisis" name="selectDescripcionDetalleAnalisis" autocomplete="off" class="form-control" onkeyup="calcularCantidad();calcularSubTotal();">
+					</div>
+				</div>								
+			</div>
+			<div class="row">
+				<div class="col-md-4 col-sm-2 col-xs-12">
+					<label for="control-label">Unidad:</label>
+					<div>
+						<input type="text" id="selectDescripcionDetalleAnalisis" name="selectDescripcionDetalleAnalisis" autocomplete="off" class="form-control" onkeyup="calcularCantidad();calcularSubTotal();">
+					</div>
+				</div>	
+				<div class="col-md-4 col-sm-2 col-xs-12">
+					<label for="control-label">Cantidad:</label>
+					<div>
+						<input type="text" id="selectDescripcionDetalleAnalisis" name="selectDescripcionDetalleAnalisis" autocomplete="off" class="form-control" onkeyup="calcularCantidad();calcularSubTotal();">
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-2 col-xs-12">
+					<label for="control-label">Precio:</label>
+					<div>
+						<input type="text" id="selectDescripcionDetalleAnalisis" name="selectDescripcionDetalleAnalisis" autocomplete="off" class="form-control" onkeyup="calcularCantidad();calcularSubTotal();">
+					</div>
+				</div>									
+			</div>			
+		</div>
+
+		<!--<div class="col-md-12 col-sm-12 col-xs-12">
 			<label class="control-label">Descripción partida</label>
 			<div>
 				<select name="selectDescripcionPartida" id="selectDescripcionPartida" class="form-control"></select>
@@ -110,7 +149,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 				<input type="hidden" id="hdIdListaPartida" name="hdIdListaPartida">
 				<input type="button" class="btn btn-info" value="+" onclick="agregarPartida();" style="width: 100%;">
 			</div>
-		</div>
+		</div>-->
 	</div>
 	<hr style="margin-top: 4px;">
 	<div class="row" style="height: 300px;overflow-y: scroll;">
