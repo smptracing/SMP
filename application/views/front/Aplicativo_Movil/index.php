@@ -292,7 +292,7 @@ var base_url = '<?php echo base_url(); ?>';
                     <div class="box-body">
 	                    <div style="margin-top: -30px;">
 							<label style="color: gray">Función</label>
-							<select class="form-control" id="comboboxfuncion" name="comboboxfuncion">
+							<select class="form-control" id="comboboxfuncion" name="comboboxfuncion" onclick="mapaUbicacionProyectoFuncion();">
 								<option value="1" style="font-size:10px">Elija Función</option>
 								<?php foreach($comboboxfuncion as $item){ ?>
 									<option value="<?=$item->id_funcion; ?>"  style="font-size:9.5px"><?= $item->nombre_funcion;?></option>
@@ -656,6 +656,53 @@ var base_url = '<?php echo base_url(); ?>';
 
        });
     }
+
+    function mapaUbicacionProyectoFuncion()
+    {     
+       var map = new google.maps.Map(document.getElementById('mapa'), {
+          zoom: 9,
+          center: new google.maps.LatLng(-13.871858, -72.867959),
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+        var marker, i,marker1;
+        var infowindow = new google.maps.InfoWindow();
+
+       var id_funcion=$("#comboboxfuncion").val();
+       var parametros = {
+                "id_funcion" : id_funcion
+          };
+       $.ajax(
+       {
+            data:  parametros,
+            url: base_url+"index.php/AplicativoMovil/listadoProyectoFuncion",
+            type: "POST",
+            success: function(marcadores)
+            {
+            //alert(marcadores);
+              //console.log(marcadores);
+               var marcadores=JSON.parse(marcadores);
+
+             for (i = 0; i < marcadores.length; i++) 
+              {  
+                  marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(marcadores[i][1], marcadores[i][2]),
+                    map: map,
+                    icon: "<?php echo base_url(); ?>uploads/IconosSector/"+marcadores[i][3], 
+                  });
+                  google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                    return function() {
+                      infowindow.setContent(marcadores[i][0]);
+                      infowindow.open(map, marker);
+                    }
+                  })(marker, i));
+
+              }
+              
+          }
+
+       });
+    }
+
 
     function mapaUbicacionNoPip()
     {

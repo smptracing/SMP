@@ -33,6 +33,18 @@ class AplicativoMovil extends CI_Controller
            echo json_encode($listaTotaProyecto);
     }
 
+    public function listadoProyectoFuncion()
+    {
+
+        $id_funcion=$this->input->post('id_funcion');
+           $listaProyectoFuncion=$this->Model_AplicativoMovil->listadoProyectoFuncion($id_funcion);
+           $listaTotaProyecto= array();
+           foreach ($listaProyectoFuncion as $key => $Itemp) {
+               $listaTotaProyecto[$key]=[$Itemp->nombre_pi.'Codigo<a href="https://www.google.com/">'.$Itemp->latitud.' </a></h6>',$Itemp->latitud,$Itemp->longitud,$Itemp->icono_sector];
+            }
+           echo json_encode($listaTotaProyecto);
+    }
+
     public function listadoNoPipPorTipoNoPip()
     {
     	$id_tipo_nopip=$this->input->post('id_tipo_nopip');
