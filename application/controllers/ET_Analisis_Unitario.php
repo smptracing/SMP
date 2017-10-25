@@ -200,10 +200,7 @@ class ET_Analisis_Unitario extends CI_Controller
 		foreach($data as $key => $value)
 		{
 			$value->hasChild=(count($this->Model_Unidad_Medida->listaInsumoporNivel($value->CodInsumo, ($value->Nivel+1)))==0 ? false : true);
-			
 		}
-		//var_dump($data);exit;
-
 		echo json_encode($data);exit;
 	}
 }
