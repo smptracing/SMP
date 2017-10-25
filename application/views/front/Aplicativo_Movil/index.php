@@ -118,6 +118,13 @@
         display: none;
       }
     }
+
+    @media (min-width: 1200px){
+    .container {
+        width: 1350px;
+    }
+    }
+
     table{
     	font-size:10px;
     	font-family: arial, sans-serif;
@@ -372,17 +379,7 @@ var base_url = '<?php echo base_url(); ?>';
    </div>
 
       </div>
-       <div class="row">
-        <div class="col-md-12">
-          <div class="box">
-            <div class="box-body">
-              <div class="row">
- 
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    
    
          </div>
      	</div> 

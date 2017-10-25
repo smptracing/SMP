@@ -128,6 +128,13 @@
         display: none;
       }
     }
+
+   @media (min-width: 1200px){
+    .container {
+        width: 1350px;
+    }
+    }
+    
     table{
     	font-size:10px;
     	font-family: arial, sans-serif;

@@ -15,7 +15,8 @@ if ( ! function_exists('autentificar'))
 			'/',
 			'Login/muestralog',
 			'Login/ingresar',	
-			'AplicativoMovil/',			
+			//'AplicativoMovil/',
+			//'AplicativoMovil/Pips',				
 		);
 		if(in_array($url, $libres)) 
 		{
