@@ -237,6 +237,21 @@ class bancoproyectos extends CI_Controller
         }
     }
 
+    public function  eliminarUbigeo ()
+    {
+        if ($this->input->is_ajax_request()) 
+        {
+            $id_ubigeo_pi = $this->input->post("id_ubigeo_pi");
+
+            $this->bancoproyectos_modal->eliminarUbigeo($id_ubigeo_pi);
+            
+            echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Se elimino Correctamente el ubigeo.']);exit;
+
+        } else {
+            show_404();
+        }
+    }
+
 //Agregar ubigeo en proyecto de inversión
     public function Add_ubigeo_proyecto()
     {

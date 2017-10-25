@@ -224,6 +224,13 @@ class bancoproyectos_modal extends CI_Model
             return false;
         }
     }
+    public function eliminarUbigeo($id_ubigeo_pi)
+    {
+         $flat='D';
+         $this->db->query("execute sp_Gestionar_UbigeoPI @opcion = '".$flat . "', @id_ubigeo_pi ='".$id_ubigeo_pi. "'");
+         return true;
+
+    }
     //listar general estados de acuerdo al pryecto selecionado
     public function listar_estados($flat, $id_pi)
     {
