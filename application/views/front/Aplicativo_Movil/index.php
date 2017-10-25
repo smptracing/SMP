@@ -302,7 +302,7 @@ var base_url = '<?php echo base_url(); ?>';
 	                    </div>
 	                    <div>
 							<label style="color: gray">División funcional</label>
-							<select class="form-control" id="comboboxdivisionfuncional" name="comboboxdivisionfuncional">
+							<select class="form-control" id="comboboxdivisionfuncional" name="comboboxdivisionfuncional" onclick="mapaUbicacionProyectoDivFuncional();">
 								<option style="font-size:9.5px">Elija División Funcional</option>
 							</select>
 	                  	</div>
@@ -608,6 +608,53 @@ var base_url = '<?php echo base_url(); ?>';
 		  		}
 
    		 });
+    }
+
+    function mapaUbicacionProyectoDivFuncional()
+    {
+       
+       var map = new google.maps.Map(document.getElementById('mapa'), {
+          zoom: 9,
+          center: new google.maps.LatLng(-13.871858, -72.867959),
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+        var marker, i,marker1;
+        var infowindow = new google.maps.InfoWindow();
+
+       var id_div_funcional=$("#comboboxdivisionfuncional").val();
+       var parametros = {
+                "id_div_funcional" : id_div_funcional
+          };
+       $.ajax(
+       {
+            data:  parametros,
+            url: base_url+"index.php/AplicativoMovil/listadoProyectoDivisionFuncional",
+            type: "POST",
+            success: function(marcadores)
+            {
+            	//alert(marcadores);
+              //console.log(marcadores);
+               var marcadores=JSON.parse(marcadores);
+
+              for (i = 0; i < marcadores.length; i++) 
+              {  
+                  marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(marcadores[i][1], marcadores[i][2]),
+                    map: map,
+                    icon: "<?php echo base_url(); ?>uploads/IconosSector/"+marcadores[i][3], 
+                  });
+                  google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                    return function() {
+                      infowindow.setContent(marcadores[i][0]);
+                      infowindow.open(map, marker);
+                    }
+                  })(marker, i));
+
+              }
+              
+          }
+
+       });
     }
 
     function mapaUbicacionNoPip()

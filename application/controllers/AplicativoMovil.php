@@ -21,6 +21,17 @@ class AplicativoMovil extends CI_Controller
             }
            echo json_encode($listaTotaProyecto);
     }
+    public function listadoProyectoDivisionFuncional()
+    {
+
+        $id_div_funcional=$this->input->post('id_div_funcional');
+           $listaProyectoDivisionFuncional=$this->Model_AplicativoMovil->listadoProyectoDivisionFuncional($id_div_funcional);
+           $listaTotaProyecto= array();
+           foreach ($listaProyectoDivisionFuncional as $key => $Itemp) {
+               $listaTotaProyecto[$key]=[$Itemp->nombre_pi.'Codigo<a href="https://www.google.com/">'.$Itemp->latitud.' </a></h6>',$Itemp->latitud,$Itemp->longitud,$Itemp->icono_sector];
+            }
+           echo json_encode($listaTotaProyecto);
+    }
 
     public function listadoNoPipPorTipoNoPip()
     {

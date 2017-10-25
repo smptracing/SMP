@@ -18,6 +18,14 @@ class Model_AplicativoMovil extends CI_Model
         
     }
 
+    public function listadoProyectoDivisionFuncional($id_div_funcional)
+    {
+        $dato = $this->db->query("select DIVISION_FUNCIONAL.nombre_div_funcional,ProInv.nombre_pi,ProInv.codigo_unico_pi,Gfun.id_grup_funcional,UBIGEO_PI.latitud,UBIGEO_PI.longitud,SECTOR.nombre_sector,SECTOR.id_sector,SECTOR.icono_sector from GRUPO_FUNCIONAL Gfun inner join SECTOR ON Gfun.id_sector=SECTOR.id_sector inner join PROYECTO_INVERSION  ProInv on Gfun.id_grup_funcional=ProInv.id_grupo_funcional 
+        inner join UBIGEO_PI on ProInv.id_pi= UBIGEO_PI.id_pi INNER JOIN DIVISION_FUNCIONAL on Gfun.id_div_funcional=DIVISION_FUNCIONAL.id_div_funcional  WHERE DIVISION_FUNCIONAL.id_div_funcional='$id_div_funcional'");
+        
+        return $dato->result();
+    }
+
     public function listaNoPipPorTipoNoPip($id_tipo_nopip)
     {
         $data=$this->db->query("select * from GRUPO_FUNCIONAL Gfun inner join SECTOR ON Gfun.id_sector=SECTOR.id_sector inner join PROYECTO_INVERSION  ProInv on Gfun.id_grup_funcional=ProInv.id_grupo_funcional 
