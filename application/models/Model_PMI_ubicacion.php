@@ -21,6 +21,28 @@ class Model_PMI_ubicacion extends CI_Model
          return $data->result()[0];
 
     }
+    public function ListarPipProvinciDistrito($id_ubigeo)
+    {
+
+      $data=$this->db->query("select * from UBIGEO where id_ubigeo='".$id_ubigeo."' ");
+      return $data->result()[0];
+    }
+
+    public function id_ubigeo_pi_img($id_ubigeo_pi)
+    {
+      $data=$this->db->query("select * from UBIGEO_PI  INNER JOIN  UBIGEO_PI_IMG ON UBIGEO_PI.id_ubigeo_pi=UBIGEO_PI_IMG.id_ubigeo_pi 
+      where  UBIGEO_PI.id_ubigeo_pi='$id_ubigeo_pi' ");
+      return $data->result()[0];
+      
+    }
+
+    public function actualizar($id_ubigeo_pi_img,$imagen)
+    {
+        $this->db->query("update UBIGEO_PI_IMG  SET url_img ='".$imagen."' WHERE id_ubigeo_pi_img = $id_ubigeo_pi_img");
+        return true;
+    }
+
+
 
 
 }

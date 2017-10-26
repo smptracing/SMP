@@ -40,7 +40,16 @@ class AplicativoMovil extends CI_Controller
            $listaProyectoFuncion=$this->Model_AplicativoMovil->listadoProyectoFuncion($id_funcion);
            $listaTotaProyecto= array();
            foreach ($listaProyectoFuncion as $key => $Itemp) {
-               $listaTotaProyecto[$key]=[$Itemp->nombre_pi.'Codigo<a href="https://www.google.com/">'.$Itemp->latitud.' </a></h6>',$Itemp->latitud,$Itemp->longitud,$Itemp->icono_sector];
+              if($Itemp->url_img=='')
+                {
+                    $url_img='SinImagen.jpg';
+                    $listaTotaProyecto[$key]=['<strong><center>'.$Itemp->nombre_pi.'</center></strong></br><strong>Codigo:</strong> &nbsp;&nbsp;  '.$Itemp->codigo_unico_pi.' &nbsp;&nbsp;<center><img src='.base_url().'uploads/ImgUbicacionProyecto/'.$url_img.'  width="150" height="120"></center> </h6>',$Itemp->latitud,$Itemp->longitud,$Itemp->icono_sector];
+
+                }else{
+
+                     $listaTotaProyecto[$key]=['<strong><center>'.$Itemp->nombre_pi.'</center></strong></br><strong>Codigo:</strong> &nbsp;&nbsp;  '.$Itemp->codigo_unico_pi.' &nbsp;&nbsp;<center><img src='.base_url().'uploads/ImgUbicacionProyecto/'.$Itemp->url_img.'  width="150" height="120"></center> </h6>',$Itemp->latitud,$Itemp->longitud,$Itemp->icono_sector];
+
+                }
             }
            echo json_encode($listaTotaProyecto);
     }
@@ -50,10 +59,22 @@ class AplicativoMovil extends CI_Controller
     	$id_tipo_nopip=$this->input->post('id_tipo_nopip');
     	$listanopiportiponopip=$this->Model_AplicativoMovil->listaNoPipPorTipoNoPip($id_tipo_nopip);
     	$listaTotaProyecto= array();
-        foreach ($listanopiportiponopip as $key => $Itemp) {
-           $listaTotaProyecto[$key]=[$Itemp->nombre_pi.'</br><center><img src='.base_url().'uploads/ImgUbicacionProyecto/'.$Itemp->url_img.' width="150" height="120" alt=""> <a href="https://www.google.com/"></center> </br>Codigo &nbsp;&nbsp; '.$Itemp->codigo_unico_pi.' </a></h6>',$Itemp->latitud,$Itemp->longitud,$Itemp->icono_sector];
-        }
-       echo json_encode($listaTotaProyecto);
+
+           foreach ($listanopiportiponopip as $key => $Itemp) {
+
+              if($Itemp->url_img=='')
+                {
+                    $url_img='SinImagen.jpg';
+                    $listaTotaProyecto[$key]=['<strong><center>'.$Itemp->nombre_pi.'</center></strong></br><strong>Codigo:</strong> &nbsp;&nbsp;  '.$Itemp->codigo_unico_pi.' &nbsp;&nbsp;<center><img src='.base_url().'uploads/ImgUbicacionProyecto/'.$url_img.'  width="150" height="120"></center> </h6>',$Itemp->latitud,$Itemp->longitud,$Itemp->icono_sector];
+
+                }else{
+
+                     $listaTotaProyecto[$key]=['<strong><center>'.$Itemp->nombre_pi.'</center></strong></br><strong>Codigo:</strong> &nbsp;&nbsp;  '.$Itemp->codigo_unico_pi.' &nbsp;&nbsp;<center><img src='.base_url().'uploads/ImgUbicacionProyecto/'.$Itemp->url_img.'  width="150" height="120"></center> </h6>',$Itemp->latitud,$Itemp->longitud,$Itemp->icono_sector];
+
+                }
+            }
+           echo json_encode($listaTotaProyecto);
+
     }
 
     public function index()
@@ -70,7 +91,17 @@ class AplicativoMovil extends CI_Controller
             $listaTotaProyecto= array();
             $datos = $this->Model_AplicativoMovil->listaTotalDeUbicacionesProyecto();
             foreach ($datos as $key => $Itemp) {
-               $listaTotaProyecto[$key]=['<strong><center>'.$Itemp->nombre_pi.'</center></strong></br><strong>Codigo:</strong> &nbsp;&nbsp;  '.$Itemp->codigo_unico_pi.' &nbsp;&nbsp;<center><img src='.base_url().'uploads/ImgUbicacionProyecto/'.$Itemp->url_img.'  width="150" height="120"></center> </h6>',$Itemp->latitud,$Itemp->longitud,$Itemp->icono_sector];
+                if($Itemp->url_img=='')
+                {
+                    $url_img='SinImagen.jpg';
+                    $listaTotaProyecto[$key]=['<strong><center>'.$Itemp->nombre_pi.'</center></strong></br><strong>Codigo:</strong> &nbsp;&nbsp;  '.$Itemp->codigo_unico_pi.' &nbsp;&nbsp;<center><img src='.base_url().'uploads/ImgUbicacionProyecto/'.$url_img.'  width="150" height="120"></center> </h6>',$Itemp->latitud,$Itemp->longitud,$Itemp->icono_sector];
+
+                }else{
+
+                     $listaTotaProyecto[$key]=['<strong><center>'.$Itemp->nombre_pi.'</center></strong></br><strong>Codigo:</strong> &nbsp;&nbsp;  '.$Itemp->codigo_unico_pi.' &nbsp;&nbsp;<center><img src='.base_url().'uploads/ImgUbicacionProyecto/'.$Itemp->url_img.'  width="150" height="120"></center> </h6>',$Itemp->latitud,$Itemp->longitud,$Itemp->icono_sector];
+
+                }
+            
             }
             echo json_encode($listaTotaProyecto);
         } else {
@@ -94,7 +125,17 @@ class AplicativoMovil extends CI_Controller
         
         $listaTotaProyecto= array();
            foreach ($data as $key => $Itemp) {
-               $listaTotaProyecto[$key]=[$Itemp->nombre_pi.'</br><center><img src='.base_url().'uploads/ImgUbicacionProyecto/'.$Itemp->url_img.'  width="150" height="120" alt=""> <a href="https://www.google.com/"></center> </br>Codigo &nbsp;&nbsp; '.$Itemp->codigo_unico_pi.' </a></h6>',$Itemp->latitud,$Itemp->longitud,$Itemp->icono_sector];
+
+              if($Itemp->url_img=='')
+                {
+                    $url_img='SinImagen.jpg';
+                    $listaTotaProyecto[$key]=['<strong><center>'.$Itemp->nombre_pi.'</center></strong></br><strong>Codigo:</strong> &nbsp;&nbsp;  '.$Itemp->codigo_unico_pi.' &nbsp;&nbsp;<center><img src='.base_url().'uploads/ImgUbicacionProyecto/'.$url_img.'  width="150" height="120"></center> </h6>',$Itemp->latitud,$Itemp->longitud,$Itemp->icono_sector];
+
+                }else{
+
+                     $listaTotaProyecto[$key]=['<strong><center>'.$Itemp->nombre_pi.'</center></strong></br><strong>Codigo:</strong> &nbsp;&nbsp;  '.$Itemp->codigo_unico_pi.' &nbsp;&nbsp;<center><img src='.base_url().'uploads/ImgUbicacionProyecto/'.$Itemp->url_img.'  width="150" height="120"></center> </h6>',$Itemp->latitud,$Itemp->longitud,$Itemp->icono_sector];
+
+                }
             }
            echo json_encode($listaTotaProyecto);     
     }

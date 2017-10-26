@@ -10,7 +10,8 @@ class Model_ET_Partida extends CI_Model
 
 	function insertar($idMeta, $idUnidad, $idListaPartida, $descripcion, $rendimiento, $cantidad)
 	{
-		$this->db->query("execute sp_Gestionar_ETPartida 'insertar', '".$idMeta."', '".$idUnidad."', '".$idListaPartida."', '".$descripcion."', '".$rendimiento."', '".$cantidad."'");
+
+		$this->db->query("execute sp_Gestionar_ETPartida @Opcion = 'insertar', 	@idMeta = $idMeta, 	@idUnidad = $idUnidad, @idListaPartida = $idListaPartida, @descripcion ='$descripcion', @rendimiento = '$rendimiento', @cantidad = $cantidad");
 
 		return true;
 	}

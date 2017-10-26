@@ -23,12 +23,18 @@ class ET_Partida extends CI_Controller
 		$this->db->trans_start();
 
 		$idMeta=$this->input->post('idMeta');
-		$idUnidad=$this->input->post('idUnidad');
+		$unidad=$this->input->post('idUnidad');
 		$descripcionPartida=$this->input->post('descripcionPartida');
 		$rendimientoPartida=$this->input->post('rendimientoPartida');
 		$cantidadPartida=$this->input->post('cantidadPartida');
 		$precioUnitarioPartida=$this->input->post('precioUnitarioPartida');
-		$idListaPartida=$this->input->post('idListaPartida');
+		//$idListaPartida=$this->input->post('idListaPartida');
+		$idListaPartida=6;
+		if($unidad!="")
+		{
+			$data = $this->Model_Unidad_Medida->validarInsumo($unidad);
+			$idUnidad=$data->id_unidad;
+		}
 
 		if(count($this->Model_ET_Partida->ETPartidaPorIdMetaAndDescPartida($idMeta, $descripcionPartida))>0)
 		{
