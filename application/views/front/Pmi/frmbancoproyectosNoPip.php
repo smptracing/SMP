@@ -53,6 +53,7 @@
                                                           <th style="width: 8%"><i class="fa fa-thumb-tack"></i> Cod. </th>
                                                           <th style="width: 32%"><i class="fa fa-bookmark-o"></i> Nombre</th>
                                                           <th style="width: 12%; text-align: right;"><i class="fa fa-money"></i> Costo</th>
+                                                          <th style="width: 12%"><center>Tipo NO</br> PIP</center></th>
                                                         <th style="width: 10%">Opción</th>
                                                         </tr>
                                                       </thead>
