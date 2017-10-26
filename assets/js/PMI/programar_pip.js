@@ -434,7 +434,8 @@ $(document).on("ready" ,function(){
                                       }
                                    }},
                                   {"data":'nombre_pi',render:function(data,type,row){
-                                            return "<center> <button title='ESTABLECER PRIORIDAD' type='button'  data-toggle='tooltip'  class='editar btn btn-success btn-xs' data-toggle='modal' onclick=paginaAjaxDialogo('null','Prioridad',{id_proyecto:"+row.id_pi+",id_funcion:"+row.id_funcion+"},'"+base_url+"index.php/criterio/itemPrioridad','GET',null,null,false,true); ><i class='ace-icon fa fa-list-ol bigger-120'></i></button> <button type='button' title='Programar' onclick=mostrarPrioridad('"+row.id_pi+"'); class='programar_pip btn btn-warning btn-xs' id='bt_"+row.id_pi+"' data-toggle='modal' data-target='#Ventana_Programar'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button></center>";
+                                           // return "<center> <button title='ESTABLECER PRIORIDAD' type='button'  data-toggle='tooltip'  class='editar btn btn-success btn-xs' data-toggle='modal' onclick=paginaAjaxDialogo('null','Prioridad',{id_proyecto:"+row.id_pi+",id_funcion:"+row.id_funcion+"},'"+base_url+"index.php/criterio/itemPrioridad','GET',null,null,false,true); ><i class='ace-icon fa fa-list-ol bigger-120'></i></button> <button type='button' title='Programar' onclick=mostrarPrioridad('"+row.id_pi+"'); class='programar_pip btn btn-warning btn-xs' id='bt_"+row.id_pi+"' data-toggle='modal' data-target='#Ventana_Programar'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button></center>";//
+                                            return "<center>  <button type='button' title='Programar' onclick=mostrarPrioridad('"+row.id_pi+"'); class='programar_pip btn btn-warning btn-xs' id='bt_"+row.id_pi+"' data-toggle='modal' data-target='#Ventana_Programar'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button></center>";//
                                     }
                                   },
                                
@@ -605,7 +606,8 @@ $("#Cbx_AnioCartera").change(function() {
                                       }
                                    }},
                                     {"data":'nombre_pi',render:function(data,type,row){
-                                      return "<center> <button title='ESTABLECER PRIORIDAD' type='button'  data-toggle='tooltip'  class='editar btn btn-success btn-xs' data-toggle='modal' onclick=paginaAjaxDialogo('null','Prioridad',{id_proyecto:"+row.id_pi+",id_funcion:"+row.id_funcion+"},'"+base_url+"index.php/criterio/itemPrioridad','GET',null,null,false,true);><i class='ace-icon fa fa-list-ol bigger-120'></i></button> <button type='button' title='Programar' onclick=mostrarPrioridad('"+row.id_pi+"'); id='bt_"+row.id_pi+"'  class='programar_pip btn btn-warning btn-xs' data-toggle='modal' data-target='#Ventana_Programar'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button></center>";
+                                      return "<center> <button type='button' title='Programar' onclick=mostrarPrioridad('"+row.id_pi+"'); id='bt_"+row.id_pi+"'  class='programar_pip btn btn-warning btn-xs' data-toggle='modal' data-target='#Ventana_Programar'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button></center>";
+
                                       }
                                     },
                                     /*{"defaultContent":"<center><button type='button' title='Programar' class='programar_pip btn btn-warning btn-xs' data-toggle='modal' data-target='#Ventana_Programar'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button></center>"}*/
@@ -659,7 +661,7 @@ $("#Cbx_AnioCartera").change(function() {
                                       }
                                    }},
                                    {"data":'nombre_pi',render:function(data,type,row){
-                                      return "<center> <button title='ESTABLECER PRIORIDAD' type='button'  data-toggle='tooltip'  class='editar btn btn-success btn-xs' data-toggle='modal' onclick=paginaAjaxDialogo('null','Prioridad',{id_proyecto:"+row.id_pi+",id_funcion:"+row.id_funcion+"},'"+base_url+"index.php/criterio/itemPrioridad','GET',null,null,false,true);><i class='ace-icon fa fa-list-ol bigger-120'></i></button> <button type='button' title='Programar' onclick=mostrarPrioridad_operacion_mantenimiento('"+row.id_pi+"');  id='bt_"+row.id_pi+"'  class='programar_pip_operacion_mantenimiento btn btn-warning btn-xs' data-toggle='modal' data-target='#Ventana_Programar_operacion_mantenimiento'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button></center>";
+                                      return "<center><button type='button' title='Programar' onclick=mostrarPrioridad_operacion_mantenimiento('"+row.id_pi+"');  id='bt_"+row.id_pi+"'  class='programar_pip_operacion_mantenimiento btn btn-warning btn-xs' data-toggle='modal' data-target='#Ventana_Programar_operacion_mantenimiento'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button></center>";
                                       }
                                     },
                                        /*{"defaultContent":"<center><button type='button' title='Programar' class='programar_pip_operacion_mantenimiento btn btn-warning btn-xs' data-toggle='modal' data-target='#Ventana_Programar_operacion_mantenimiento'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button></center>"}*/
