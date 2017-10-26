@@ -94,15 +94,20 @@ class ET_Analisis_Unitario extends CI_Controller
 			$descripcion=$this->input->post('txtInsumo');
 			$cuadrilla=$this->input->post('txtCuadrilla');
 			$unidad=$this->input->post('txtUnidad');
+			$rendimiento=$this->input->post('txtRendimiento');
+			$cantidad=$this->input->post('txtCantidad');
+			$precioUnitario=$this->input->post('txtPrecioUnitario');
+
+			$cuadrilla=(($cuadrilla=='' || $cuadrilla==null) ? 'NULL' : $cuadrilla);
+			$rendimiento=(($rendimiento=='' || $rendimiento==null) ? 'NULL' : $rendimiento);
+
+
 			if($unidad!="")
 			{
 				$data = $this->Model_Unidad_Medida->validarInsumo($unidad);
 				$idUnidad=$data->id_unidad;
 			}
-			$rendimiento=$this->input->post('txtRendimiento');
-			$cantidad=$this->input->post('txtCantidad');
-			$precioUnitario=$this->input->post('txtPrecioUnitario');
-
+			
 			if($this->Model_ET_Detalle_Analisis_Unitario->ETDetalleAnalisisUnitarioPorIdAnalisisAndDescDetalleAnalisis($idAnalisis, $descripcion)!=null)
 			{
 				$this->db->trans_rollback();

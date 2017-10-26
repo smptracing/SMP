@@ -10,7 +10,9 @@ class Model_ET_Detalle_Analisis_Unitario extends CI_Model
 
 	function insertar($idAnalisis, $idUnidad, $descripcionDetalleAnalisis, $cuadrilla, $cantidad, $precioUnitario, $rendimiento)
 	{
-		$this->db->query("execute sp_Gestionar_ETDetalleAnalisisUnitario 'insertar', ".$idAnalisis.", ".$idUnidad.", '".$descripcionDetalleAnalisis."', '".$cuadrilla."', ".$cantidad.", ".$precioUnitario.", '".$rendimiento."'");
+		$this->db->query("execute sp_Gestionar_ETDetalleAnalisisUnitario @Opcion = 'insertar',
+			@idAnalisis = $idAnalisis, @idUnidad = $idUnidad, @descripcionDetalleAnalisis = '$descripcionDetalleAnalisis', 
+			@cuadrilla = $cuadrilla, @cantidad = $cantidad, @precioUnitario = $precioUnitario, @rendimiento = $rendimiento");
 
 		return true;
 	}

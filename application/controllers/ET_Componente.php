@@ -105,7 +105,13 @@ class ET_Componente extends CI_Controller
 			}
 		}
 
-		$this->load->view('front/Ejecucion/ETComponente/insertar.php', ['expedienteTecnico' => $expedienteTecnico, 'listaUnidadMedida' => $listaUnidadMedida]);
+		$listaPartidaNivel1 = $this->Model_Unidad_Medida->listaPartidaNivel1();
+		foreach ($listaPartidaNivel1 as $key => $value) 
+		{
+			$value->hasChild = (count($this->Model_Unidad_Medida->listaPartidaNivel1($value->CodPartida, ($value->Nivel+1)))==0 ? false : true);
+		}
+
+		$this->load->view('front/Ejecucion/ETComponente/insertar.php', ['expedienteTecnico' => $expedienteTecnico, 'listaUnidadMedida' => $listaUnidadMedida,'listaPartidaNivel1' => $listaPartidaNivel1]);
 	}
 
 	public function editarDescComponente()
@@ -195,6 +201,19 @@ class ET_Componente extends CI_Controller
 		$this->db->trans_complete();
 
 		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Componente eliminado correctamente.']);exit;
+	}
+
+	public function cargarNivel()
+	{
+		$codigoPartida=$this->input->post('codigoPartida');
+		$nivel=$this->input->post('nivel');
+		$data=$this->Model_Unidad_Medida->listaPartidaporNivel($codigoPartida, $nivel);
+
+		foreach($data as $key => $value)
+		{
+			$value->hasChild=(count($this->Model_Unidad_Medida->listaPartidaporNivel($value->CodPartida, ($value->Nivel+1)))==0 ? false : true);
+		}
+		echo json_encode($data);exit;
 	}
 
 	private function eliminarMetaAnidada($meta)

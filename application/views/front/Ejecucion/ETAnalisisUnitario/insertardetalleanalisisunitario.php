@@ -152,7 +152,7 @@ $(function()
 		trigger: null,
 		fields:
 		{
-			selectDescripcionDetalleAnalisis:
+			txtInsumo:
 			{
 				validators:
 				{				
@@ -162,7 +162,7 @@ $(function()
 					}
 				}
 			},
-			txtCuadrilla:
+			/*txtCuadrilla:
 			{
 				validators:
 				{
@@ -216,7 +216,7 @@ $(function()
 						message: '<b style="color: red;">El campo "Rendimiento" debe ser un valor en decimales.</b>'
 					}
 				}
-			},
+			},*/
 			txtCantidad:
 			{
 				validators:
