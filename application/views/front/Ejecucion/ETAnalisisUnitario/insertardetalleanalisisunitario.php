@@ -43,7 +43,8 @@ li
 						    			if($value->hasChild)
 						    			{?>
 						    				<li>
-								    			<input type="button" class="btn btn-default btn-xs" value="+" onclick="MostrarSubLista('<?=$value->CodInsumo?>', 1, this);" style="margin: 1px;">
+						    					<!--<input type="button" class="btn btn-default btn-xs" value="+" onclick="MostrarSubLista('<?=$value->CodInsumo?>', 1, this);" style="margin: 1px;">-->								    			
+								    			<input type="button" class="btn btn-default btn-xs" value="+" onclick="ContraerSubLista(this); MostrarSubLista('<?=$value->CodInsumo?>', 1, this);" style="margin: 1px;">
 								    			<input type="button" class="btn btn-default btn-xs" value="-" onclick="ContraerSubLista(this);" style="margin: 1px;">
 								    			<span class="nivel"><?=$value->Descripcion?> <?=($value->Simbolo==null ? '' : ($value->Simbolo))?> </span>
 								    		</li>
@@ -62,7 +63,7 @@ li
 									<div class="col-md-12 col-sm-2 col-xs-12">
 										<label for="control-label">Insumo:</label>
 										<div>
-											<input type="text" id="selectDescripcionDetalleAnalisis" name="selectDescripcionDetalleAnalisis" autocomplete="off" class="form-control" onkeyup="calcularCantidad(<?=$idAnalisis?>);calcularSubTotal(<?=$idAnalisis?>);">
+											<input type="text" id="txtInsumo" name="txtInsumo" autocomplete="off" class="form-control">
 										</div>
 									</div>								
 								</div>
@@ -70,13 +71,13 @@ li
 									<div class="col-md-4 col-sm-2 col-xs-12">
 										<label for="control-label">Cuadrilla</label>
 										<div>
-											<input type="text" id="txtCuadrilla" name="txtCuadrilla" autocomplete="off" class="form-control" onkeyup="calcularCantidad(<?=$idAnalisis?>);calcularSubTotal(<?=$idAnalisis?>);">
+											<input type="text" id="txtCuadrilla" name="txtCuadrilla" autocomplete="off" class="form-control" onkeyup="calcularCantidad();calcularSubTotal();">
 										</div>
 									</div>
 									<div class="col-md-4 col-sm-1 col-xs-12">
 										<label for="control-label">Horas</label>
 										<div>
-											<input type="text" id="txtHoras" name="txtHoras" autocomplete="off" class="form-control" onkeyup="calcularCantidad(<?=$idAnalisis?>);calcularSubTotal(<?=$idAnalisis?>);" value="8">
+											<input type="text" id="txtHoras" name="txtHoras" autocomplete="off" class="form-control" onkeyup="calcularCantidad();calcularSubTotal();">
 										</div>
 									</div>
 									<div class="col-md-4 col-sm-1 col-xs-12">
@@ -100,19 +101,19 @@ li
 									<div class="col-md-4 col-sm-2 col-xs-12">
 										<label for="control-label">Rendimiento</label>
 										<div>
-											<input type="text" id="txtRendimiento" autocomplete="off" name="txtRendimiento" class="form-control" onkeyup="calcularCantidad(<?=$idAnalisis?>);calcularSubTotal(<?=$idAnalisis?>);">
+											<input type="text" id="txtRendimiento" autocomplete="off" name="txtRendimiento" class="form-control" onkeyup="calcularCantidad();calcularSubTotal();">
 										</div>
 									</div>
 									<div class="col-md-4 col-sm-2 col-xs-12">
 										<label for="control-label">Cantidad</label>
 										<div>
-											<input type="text" id="txtCantidad" autocomplete="off" name="txtCantidad" class="form-control" onkeyup="calcularRendimiento(<?=$idAnalisis?>);calcularSubTotal(<?=$idAnalisis?>);">
+											<input type="text" id="txtCantidad" autocomplete="off" name="txtCantidad" class="form-control" onkeyup="calcularRendimiento();calcularSubTotal();">
 										</div>
 									</div>
 									<div class="col-md-4 col-sm-3 col-xs-12">
 										<label for="control-label">Precio unitario</label>
 										<div>
-											<input type="text" id="txtPrecioUnitario" autocomplete="off" name="txtPrecioUnitario" class="form-control" onkeyup="calcularSubTotal(<?=$idAnalisis?>);">
+											<input type="text" id="txtPrecioUnitario" autocomplete="off" name="txtPrecioUnitario" class="form-control" onkeyup="calcularSubTotal();">
 										</div>
 									</div>										
 								</div>
@@ -139,17 +140,6 @@ li
 		</div>
 	</div>
 </form>
-<script>
-$(document).ready(function(){
-  $('.dropdown-submenu a.test').on("click", function(e){
-    $(this).next('ul').toggle();
-    e.stopPropagation();
-    e.preventDefault();
-  });
-  $('.selectpicker').selectpicker('refresh');
-
-});
-</script>
 <script>
 $(function()
 {
@@ -261,45 +251,50 @@ $(function()
 	});
 });
 
-function calcularCantidad(idAnalisisUnitario)
+function calcularCantidad()
 {
 	var cuadrilla=$('#txtCuadrilla').val();
 	var horas=$('#txtHoras').val();
 	var rendimiento=$('#txtRendimiento').val();
 	var cantidad=null;
-
-	if(!isNaN(cuadrilla) && cuadrilla.trim()!='' && !isNaN(horas) && horas.trim()!='' && !isNaN(rendimiento) && rendimiento.trim()!='')
+	if(cuadrilla > 0 && horas > 0)
 	{
-		cantidad=parseFloat(cuadrilla)/(parseFloat(horas)*parseFloat(rendimiento));
+		if(!isNaN(cuadrilla) && cuadrilla.trim()!='' && !isNaN(horas) && horas.trim()!='' && !isNaN(rendimiento) && rendimiento.trim()!='')
+		{
+			cantidad=parseFloat(cuadrilla)/(parseFloat(horas)*parseFloat(rendimiento));
 
-		$('#txtCantidad').val(cantidad);
-	}
-	else
-	{
-		$('#txtCantidad').val('');
+			$('#txtCantidad').val(cantidad);
+		}
+		else
+		{
+			$('#txtCantidad').val('');
+		}
 	}
 }
 
-function calcularRendimiento(idAnalisisUnitario)
+function calcularRendimiento()
 {
 	var cuadrilla=$('#txtCuadrilla').val();
 	var cantidad=$('#txtCantidad').val();
 	var horas=$('#txtHoras').val();
 	var rendimiento=null;
 
-	if(!isNaN(cuadrilla) && cuadrilla.trim()!='' && !isNaN(cantidad) && cantidad.trim()!='' && !isNaN(horas) && horas.trim()!='')
+	if(cuadrilla>0 && horas>0)
 	{
-		rendimiento=parseFloat(cuadrilla)/(parseFloat(cantidad))/(parseFloat(horas));
+		if(!isNaN(cuadrilla) && cuadrilla.trim()!='' && !isNaN(cantidad) && cantidad.trim()!='' && !isNaN(horas) && horas.trim()!='')
+		{
+			rendimiento=parseFloat(cuadrilla)/(parseFloat(cantidad))/(parseFloat(horas));
 
-		$('#txtRendimiento').val(rendimiento);
-	}
-	else
-	{
-		$('#txtRendimiento').val('');
+			$('#txtRendimiento').val(rendimiento);
+		}
+		else
+		{
+			$('#txtRendimiento').val('');
+		}
 	}
 }
 
-function calcularSubTotal(idAnalisisUnitario)
+function calcularSubTotal()
 {
 	var cantidad=$('#txtCantidad').val();
 	var precioUnitario=$('#txtPrecioUnitario').val();
@@ -319,6 +314,8 @@ function calcularSubTotal(idAnalisisUnitario)
 function guardarDetalleAnalisisPresupuestal()
 {
 	event.preventDefault();
+	$('#divFormDetallaAnalisisUnitario').data('formValidation').resetField($('#txtCantidad'));
+	$('#divFormDetallaAnalisisUnitario').data('formValidation').resetField($('#txtInsumo'));
 	$('#divFormDetallaAnalisisUnitario').data('formValidation').validate();
 	if(!($('#divFormDetallaAnalisisUnitario').data('formValidation').isValid()))
 	{
@@ -338,8 +335,10 @@ function guardarDetalleAnalisisPresupuestal()
         	if (resp=='1') 
             {
                 swal("Correcto","Se registró correctamente", "success");
-                $('#frmInsertarDetalleAnalisisUnitario')[0].reset();                
+                $('#frmInsertarDetalleAnalisisUnitario')[0].reset();
+                $('#otherModal2').modal('hide');
                 paginaAjaxDialogo('otherModal', 'Análisis presupuestal', { idET : <?=$partida->id_et?> , idPartida : <?=$partida->id_partida?> }, base_url+'index.php/ET_Analisis_Unitario/insertar', 'GET', null, null, false, true);
+                
             }
             if (resp=='0') 
             {
@@ -371,14 +370,14 @@ function MostrarSubLista(codigoInsumo, nivel, element)
 				if(obj[i].hasChild == false)
 				{
 					htmlTemp+='<li>'+
-					'<input type="button" class="btn btn-warning btn-xs" value="A" onclick="seleccionar(\''+obj[i].Descripcion+'\',\''+obj[i].Unidad+'\', this);" style="margin: 1px;">'+
-					'<span class="nivel">'+obj[i].Descripcion+' ('+ obj[i].Simbolo+')</span>'+
+					'<input type="button" class="btn btn-warning btn-xs" value="A" onclick="seleccionar(\''+replaceAll(obj[i].Descripcion,'"','*')+'\',\''+obj[i].Unidad+'\', this);" style="margin: 1px;">'+
+					'<span class="nivel">'+obj[i].Descripcion+ ((obj[i].Simbolo == null) ? "" : ' ('+obj[i].Simbolo+')')+'</span>'+
 					'</li>';
 				}
 				else
 				{
 					htmlTemp+='<li>'+
-					'<input type="button" class="btn btn-default btn-xs" value="+" onclick="MostrarSubLista(\''+obj[i].CodInsumo+'\', '+(obj[i].Nivel+1)+', this);" style="margin: 1px;">'+
+					'<input type="button" class="btn btn-default btn-xs" value="+" onclick="ContraerSubLista(this); MostrarSubLista(\''+obj[i].CodInsumo+'\', '+(obj[i].Nivel+1)+', this);" style="margin: 1px;">'+
 					'<input type="button" class="btn btn-default btn-xs" value="-" onclick="ContraerSubLista(this);" style="margin: 1px;">'+
 					'<span class="nivel">'+obj[i].Descripcion+ ((obj[i].Simbolo == null) ? "" : ' ('+obj[i].Simbolo+')')+'</span>'+
 				'</li>';
@@ -398,8 +397,15 @@ function ContraerSubLista(element)
 
 function seleccionar(insumo,unidad,element)
 {
-	$('#selectDescripcionDetalleAnalisis').val(""+insumo);
-	$('#txtUnidad').val(""+unidad);
-	//$('#selectUnidadMedida').append('<option value="' + unidad + '" selected="selected">' + unidad + '</option>');
+	var nuevoInsumo = replaceAll(insumo,'*','"');
+	$('#txtInsumo').val(nuevoInsumo);
+	if(unidad=='null')
+	{
+		$('#txtUnidad').val("UNIDAD");
+	}
+	else
+	{
+		$('#txtUnidad').val(unidad);
+	}	
 }
 </script>

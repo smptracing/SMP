@@ -91,12 +91,14 @@ class ET_Analisis_Unitario extends CI_Controller
 		{
 			$this->db->trans_start();
 			$idAnalisis=$this->input->post('idAnalisis');
-			$descripcion=$this->input->post('selectDescripcionDetalleAnalisis');
+			$descripcion=$this->input->post('txtInsumo');
 			$cuadrilla=$this->input->post('txtCuadrilla');
 			$unidad=$this->input->post('txtUnidad');
-
-			$data = $this->Model_Unidad_Medida->validarInsumo(trim($unidad));
-			$idUnidad = $data->id_unidad;
+			if($unidad!="")
+			{
+				$data = $this->Model_Unidad_Medida->validarInsumo($unidad);
+				$idUnidad=$data->id_unidad;
+			}
 			$rendimiento=$this->input->post('txtRendimiento');
 			$cantidad=$this->input->post('txtCantidad');
 			$precioUnitario=$this->input->post('txtPrecioUnitario');
@@ -111,10 +113,6 @@ class ET_Analisis_Unitario extends CI_Controller
 			else
 			{
 				$this->Model_ET_Detalle_Analisis_Unitario->insertar($idAnalisis, $idUnidad, $descripcion, $cuadrilla, $cantidad, $precioUnitario, $rendimiento);
-
-				$idDetalleAnalisisUnitario=$this->Model_ET_Detalle_Analisis_Unitario->ultimoId();
-
-				$unidadMedida=$this->Model_Unidad_Medida->UnidadMedida($idUnidad);
 
 				$this->db->trans_complete();
 

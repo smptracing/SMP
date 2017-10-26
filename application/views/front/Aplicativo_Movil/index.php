@@ -166,13 +166,13 @@ var base_url = '<?php echo base_url(); ?>';
   </header>
   
     <div class="container">
-      <section class="content" style="margin-top: 30px;"> <!-- Main content -->
+      <section class="content" style="margin-top: -5px;"> <!-- Main content -->
       <div class="row box-container">
       
-    <div class="col-md-12 col-xs-12">
+    <div class="col-md-12 col-xs-16">
       <div class="row">
 
-        <div class="col-md-8">
+        <div class="col-md-10">
 
 		    <div class="panel panel-default">
 					<div class="panel-heading">
@@ -199,32 +199,26 @@ var base_url = '<?php echo base_url(); ?>';
 							
 
 				              <div class="row">
-				                <div class="col-md-12 col-sm-8">
-				                  <div class="pad">
-				                    <div id="mapa" style="height: 490px;margin-top: -21px;">
-				                      
-				                    </div>
-
-				                  </div>
-				                </div>
+				                 <div id="mapa" style="height: 490px;margin-top: -11px;">
+                                      
+                                    </div>
 				              </div>
 				    </div>
 
 		    </div>
         </div>
 
-        <div class="col-md-4">
-
-			 <div class="row" style="margin-top: -50px;">
-	        	<div class="col-md-12">
+        <div class="col-md-2">
+			 <div class="row" style="margin-top: -5  px;">
+	        	<div class="col-md-16">
 	          		<div class="box box-solid">
-	           			<div class="box-header with-border">
+	           			<div class="table-responsive">
 			  			      <div id="EjecucionAnual" align="justify">
 					
         								<table class="table table-striped  table-hover">
         								  
         									<tr>
-        										<td class="blue" width="120"><b>Código</b></td>
+        										<td class="blue" width="12"><b>Código</b></td>
         										<td > <label  id="txtCodigo" name="txtCodigo"></label> </td>
         									</tr>
         									<tr>
@@ -260,7 +254,7 @@ var base_url = '<?php echo base_url(); ?>';
 					                            <td> S/. <label id="txtfecharegistro" name="txtfecharegistro"></label> </td>
 					                          </tr>
                     
-        				  </table> 
+        				         </table> 
 						     </div>
            		 	</div>
             <div class="box-body">
@@ -271,21 +265,9 @@ var base_url = '<?php echo base_url(); ?>';
                     <h4 class="box-title">
                       <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
                     
-						<div class="info-box bg-yellow">
-				            <span class="info-box-icon"><i class="fa fa-area-chart"></i></span>
-
-					            <div class="info-box-content">
-					              <span class="info-box-text">PIP</span>
-					              <span class="info-box-number">5,200</span>
-
-					              <div class="progress">
-					                <div class="progress-bar" style="width: 50%"></div>
-					              </div>
-					              <span class="progress-description">
-					                    50% Increase in 30 Days
-					                  </span>
-					            </div>
-			          	</div>
+          						<div class="alert alert-success" style="width: 150px;">
+                                   <span class="glyphicon glyphicon-arrow-down"></span> PIP 
+          			          	</div>
 
                       </a>
                     </h4>
@@ -324,22 +306,9 @@ var base_url = '<?php echo base_url(); ?>';
                     <h4 class="box-title">
                       <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
                         
-						<div class="info-box bg-green">
-			            <span class="info-box-icon"><i class="fa fa-bar-chart"></i></span>
-
-				            <div class="info-box-content">
-				              <span class="info-box-text">NO PIP</span>
-				              <span class="info-box-number">5,200</span>
-
-				              <div class="progress">
-				                <div class="progress-bar" style="width: 50%"></div>
-				              </div>
-				              <span class="progress-description">
-				                    50% Increase in 30 Days
-				               </span>
-				            </div>
-			            <!-- /.info-box-content -->
-			          	</div>
+						 <div class="alert alert-info"  style="width: 150px;">
+                              <span class="glyphicon glyphicon-arrow-down"></span> No PIP
+                         </div>
 
                       </a>
                     </h4>
