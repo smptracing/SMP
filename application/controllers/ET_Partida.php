@@ -28,8 +28,12 @@ class ET_Partida extends CI_Controller
 		$rendimientoPartida=$this->input->post('rendimientoPartida');
 		$cantidadPartida=$this->input->post('cantidadPartida');
 		$precioUnitarioPartida=$this->input->post('precioUnitarioPartida');
-		//$idListaPartida=$this->input->post('idListaPartida');
+		//$ListaPartida=$this->input->post('idListaPartida');
+
+		//$idListaPartida=(($ListaPartida=='' || $ListaPartida==null) ? 'NULL' : $ListaPartida);
 		$idListaPartida=6;
+
+
 		if($unidad!="")
 		{
 			$data = $this->Model_Unidad_Medida->validarInsumo($unidad);

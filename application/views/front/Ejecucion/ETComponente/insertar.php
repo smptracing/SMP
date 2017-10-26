@@ -51,6 +51,19 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 		min-height: 100%;
 		border-radius: 0;
 	}
+	.nivel
+	{
+		color: #73879C;
+	    font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
+	    font-size: 13px;
+	    font-weight: 400;
+	    line-height: 1.471;
+	    margin : 2px;
+	}
+	li
+	{
+		list-style:none;
+	}
 </style>
 <div class="form-horizontal">
 	<div class="row">
@@ -136,7 +149,8 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 				<br>
 				<div class="col-md-6 col-sm-2 col-xs-12">
 					<input type="hidden" id="hdIdListaPartida" name="hdIdListaPartida">
-					<input type="button" class="btn btn-info" value="Guardar" onclick="agregarPartida();">
+					<input type="button" class="btn btn-success" value="Guardar" onclick="agregarPartida();">
+					<input type="button" class="btn btn-danger" value="Cerrar" onclick="cerrar();">
 				</div>	
 			</div>			
 		</div>
@@ -210,6 +224,10 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 	</div>
 </div>
 <script>
+	function cerrar()
+	{
+		$('#divAgregarPartida').hide();
+	}
 	function limpiarArbolCompletoMasOpciones()
 	{
 		$('#divAgregarPartida').hide();
@@ -550,7 +568,6 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 		var cantidad = $('#txtCantidadPartida').val();
 		var precio = $('#txtPrecioUnitarioPartida').val();
 		var idLista = $('#hdIdListaPartida').val();
-		//alert("unidad"+idUnidad+"descripcion"+descripcion+"rendimiento"+rendimiento+"cantidad"+cantidad+"precio"+precio+"idLista"+idLista);
 
 		paginaAjaxJSON({ "idMeta" : metaPadreParaAgregarPartida, "idUnidad" : idUnidad, "descripcionPartida" : descripcion, "rendimientoPartida" : rendimiento, "cantidadPartida" : cantidad, "precioUnitarioPartida" : precio, "idListaPartida" : idLista }, base_url+'index.php/ET_Partida/insertar', 'POST', null, function(objectJSON)
 		{
@@ -574,7 +591,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 					'<input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida('+objectJSON.idPartida+', this);" style="width: 30px;">'+
 					'<input type="button" class="btn btn-default btn-xs" value="A" onclick="paginaAjaxDialogo(\'otherModal\', \'Análisis presupuestal\', { idET : <?=$expedienteTecnico->id_et?>, idPartida : '+objectJSON.idPartida+' }, \''+base_url+'index.php/ET_Analisis_Unitario/insertar\''+', \'get\', null, null, false, true);" style="width: 30px;">'+
 				'</td>'+
-				'<td style="padding-left: 10px;"><b>&#9658;'+replaceAll(replaceAll($('#selectDescripcionPartida').find("option:selected").val().trim(), '<', '&lt;'), '>', '&gt;')+'</b></td>'+
+				'<td style="padding-left: 10px;"><b>&#9658;'+replaceAll(replaceAll($('#selectDescripcionPartida').val().trim(), '<', '&lt;'), '>', '&gt;')+'</b></td>'+
 				'<td style="padding-left: 4px;">'+replaceAll(replaceAll($('#txtRendimientoPartida').val().trim(), '<', '&lt;'), '>', '&gt;')+'</td>'+
 				'<td style="padding-left: 4px;text-align: center;">'+replaceAll(replaceAll(objectJSON.descripcionUnidadMedida, '<', '&lt;'), '>', '&gt;')+'</td>'+
 				'<td style="padding-left: 4px;text-align: center;">'+parseFloat(objectJSON.cantidadDetallePartida).toFixed(2)+'</td>'+
@@ -592,124 +609,6 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 		}, false, true);
 
 	}
-
-	function guardarPartida()
-	{
-		/*event.preventDefault();
-		$('#divFormDetallaAnalisisUnitario').data('formValidation').resetField($('#txtCantidad'));
-		$('#divFormDetallaAnalisisUnitario').data('formValidation').resetField($('#txtInsumo'));
-		$('#divFormDetallaAnalisisUnitario').data('formValidation').validate();
-		if(!($('#divFormDetallaAnalisisUnitario').data('formValidation').isValid()))
-		{
-			return;
-		}
-		var formData=new FormData($("#frmInsertarDetalleAnalisisUnitario")[0]);
-	    var dataString = $('#frmInsertarDetalleAnalisisUnitario').serialize();*/
-	   
-	    /*$.ajax({
-	        type:"POST",
-	        url:base_url+"index.php/ET_Partida/insertar",
-	        data: { "idMeta" : metaPadreParaAgregarPartida, "idUnidad" : $('#selectUnidadMedidaPartida').val().trim(), "descripcionPartida" : $('#selectDescripcionPartida').find("option:selected").val().trim(), "rendimientoPartida" : $('#txtRendimientoPartida').val().trim(), "cantidadPartida" : $('#txtCantidadPartida').val(), "precioUnitarioPartida" : $('#txtPrecioUnitarioPartida').val(), "idListaPartida" : $('#hdIdListaPartida').val() }
-	        cache: false,
-	        contentType:false,
-	        processData:false,
-	        success:function(resp)
-	        {
-	        	if (resp=='1') 
-	            {
-	                swal("Correcto","Se registró correctamente", "success");
-	                $('#frmInsertarDetalleAnalisisUnitario')[0].reset();
-	                $('#otherModal2').modal('hide');
-	                paginaAjaxDialogo('otherModal', 'Análisis presupuestal', { idET : <?=$partida->id_et?> , idPartida : <?=$partida->id_partida?> }, base_url+'index.php/ET_Analisis_Unitario/insertar', 'GET', null, null, false, true);
-	                
-	            }
-	            if (resp=='0') 
-	            {
-	                swal("Error","No se puede agregar dos veces el mismo detalle de análisis.", "error");
-	            }
-	        }
-	    }); */
-	}
-
-	/*function agregarPartida()
-	{
-		$('#divAgregarPartida').data('formValidation').resetField($('#selectDescripcionPartida'));
-		$('#divAgregarPartida').data('formValidation').resetField($('#txtRendimientoPartida'));
-		$('#divAgregarPartida').data('formValidation').resetField($('#selectUnidadMedidaPartida'));
-		$('#divAgregarPartida').data('formValidation').resetField($('#txtCantidadPartida'));
-		$('#divAgregarPartida').data('formValidation').resetField($('#txtPrecioUnitarioPartida'));
-
-		$('#divAgregarPartida').data('formValidation').validate();
-
-		if(!($('#divAgregarPartida').data('formValidation').isValid()))
-		{
-			return;
-		}
-
-		var existePartida=false;
-
-		$($(elementoPadreParaAgregarPartida).find('table')[0]).find('> tbody > tr > td > b').each(function(index, element)
-		{
-			if(replaceAll($(element).text(), ' ', '').toLowerCase()==replaceAll($('#selectDescripcionPartida').find("option:selected").val(), ' ', '').toLowerCase())
-			{
-				existePartida=true;
-
-				return false;
-			}
-		});
-
-		if(existePartida)
-		{
-			swal(
-			{
-				title: '',
-				text: 'No se puede agregar dos partidas iguales en el mismo nivel.',
-				type: 'error'
-			},
-			function(){});
-
-			return;
-		}
-
-		paginaAjaxJSON({ "idMeta" : metaPadreParaAgregarPartida, "idUnidad" : $('#selectUnidadMedidaPartida').val().trim(), "descripcionPartida" : $('#selectDescripcionPartida').find("option:selected").val().trim(), "rendimientoPartida" : $('#txtRendimientoPartida').val().trim(), "cantidadPartida" : $('#txtCantidadPartida').val(), "precioUnitarioPartida" : $('#txtPrecioUnitarioPartida').val(), "idListaPartida" : $('#hdIdListaPartida').val() }, base_url+'index.php/ET_Partida/insertar', 'POST', null, function(objectJSON)
-		{
-			objectJSON=JSON.parse(objectJSON);
-
-			swal(
-			{
-				title: '',
-				text: objectJSON.mensaje,
-				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
-			},
-			function(){});
-
-			if(objectJSON.proceso=='Error')
-			{
-				return false;
-			}
-
-			var htmlTemp='<tr id="rowPartida'+objectJSON.idPartida+'" style="color: red;" class="liPartida">'+
-				'<td style="width: 75px;">'+
-					'<input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida('+objectJSON.idPartida+', this);" style="width: 30px;">'+
-					'<input type="button" class="btn btn-default btn-xs" value="A" onclick="paginaAjaxDialogo(\'otherModal\', \'Análisis presupuestal\', { idET : <?=$expedienteTecnico->id_et?>, idPartida : '+objectJSON.idPartida+' }, \''+base_url+'index.php/ET_Analisis_Unitario/insertar\''+', \'get\', null, null, false, true);" style="width: 30px;">'+
-				'</td>'+
-				'<td style="padding-left: 10px;"><b>&#9658;'+replaceAll(replaceAll($('#selectDescripcionPartida').find("option:selected").val().trim(), '<', '&lt;'), '>', '&gt;')+'</b></td>'+
-				'<td style="padding-left: 4px;">'+replaceAll(replaceAll($('#txtRendimientoPartida').val().trim(), '<', '&lt;'), '>', '&gt;')+'</td>'+
-				'<td style="padding-left: 4px;text-align: center;">'+replaceAll(replaceAll(objectJSON.descripcionUnidadMedida, '<', '&lt;'), '>', '&gt;')+'</td>'+
-				'<td style="padding-left: 4px;text-align: center;">'+parseFloat(objectJSON.cantidadDetallePartida).toFixed(2)+'</td>'+
-				'<td style="padding-left: 4px;text-align: center;">'+parseFloat(objectJSON.precioParcialDetallePartida).toFixed(2)+'</td>'+
-			'</tr>';
-
-			if(!($(elementoPadreParaAgregarPartida).find('table').length))
-			{
-				$($(elementoPadreParaAgregarPartida).find('ul')[0]).replaceWith('<table><tbody></tbody></table>');
-			}
-
-			$($(elementoPadreParaAgregarPartida).find('table > tbody')[0]).append(htmlTemp);
-
-			limpiarArbolCompletoMasOpciones();
-		}, false, true);
-	}*/
 
 	function eliminarPartida(idPartida, element)
 	{
@@ -816,51 +715,6 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 	$(function()
 	{
 		limpiarArbolCompletoMasOpciones();
-
-		/*$('#selectDescripcionPartida').selectpicker({ liveSearch: true }).ajaxSelectPicker(
-		{
-	        ajax: {
-	            url: base_url+'index.php/ET_Lista_Partida/verPorDescripcion',
-	            data: { valueSearch : '{{{q}}}' }
-	        },
-	        locale:
-	        {
-	            emptyTitle: 'Buscar partida'
-	        },
-	        preprocessData: function(data)
-	        {
-	        	var dataForSelect=[];
-
-	        	for(var i=0; i<data.length; i++)
-	        	{
-	        		dataForSelect.push(
-	                {
-	                    "value" : data[i].desc_lista_partida,
-	                    "text" : data[i].desc_lista_partida,
-	                    "data" :
-	                    {
-	                    	"id-lista-partida" : data[i].id_lista_partida,
-	                    	"id-unidad" : data[i].id_unidad
-	                    },
-	                    "disabled" : false
-	                });
-	        	}
-
-	            return dataForSelect;
-	        },
-	        preserveSelected: false
-	    });
-
-	    $('#selectDescripcionPartida').on('change', function()
-	    {
-			var selected=$(this).find("option:selected").val();
-
-			if(selected.trim()!='')
-			{
-				$('#hdIdListaPartida').val($(this).find("option:selected").data('id-lista-partida'));
-				$('#selectUnidadMedidaPartida').val($(this).find("option:selected").data('id-unidad'));
-			}
-	    });*/
 
 		$('#divAgregarComponente').formValidation(
 		{
