@@ -51,7 +51,7 @@
 		</div>
 	</div>
 	<hr style="margin: 4px;">
-	<div id="divListaAnalisisUnitario" style="height: 400px;overflow-y: scroll;">
+	<div id="divListaAnalisisUnitario" style="height: 300px;overflow-y: scroll;">
 		<?php foreach($listaETAnalisisUnitario as $value){ ?>
 			<div class="panel-group" style="margin: 2px;">
 				<div class="panel panel-default">

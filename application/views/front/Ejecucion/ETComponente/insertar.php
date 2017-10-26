@@ -72,8 +72,23 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 	<div id="divAgregarPartida" class="row" style="display: none;margin-top: 4px;">
 		<div class="col-md-6">
 			<label for="control-label">Descripción de la Partida</label>
-			<div style="height: 250px;overflow-y: scroll; background-color: #f2f5f7;">
+			<div style="height: 220px;overflow-y: scroll; background-color: #f2f5f7;">
 				<ul>
+			    	<?php foreach ($listaPartidaNivel1 as $key => $value) 
+			    	{
+		    			if($value->hasChild)
+		    			{?>
+		    				<li>							    			
+				    			<input type="button" class="btn btn-default btn-xs" value="+" onclick="ContraerSubLista(this); MostrarSubLista('<?=$value->CodPartida?>',3, this);" style="margin: 1px;">
+				    			<input type="button" class="btn btn-default btn-xs" value="-" onclick="ContraerSubLista(this);" style="margin: 1px;">
+				    			<span class="nivel"><?=$value->Descripcion?> <?=($value->Simbolo==null ? '' : ($value->Simbolo))?> </span>							    		
+				    		</li>
+		    			<?php } else { ?>
+		    				<li>
+				    			<span class="nivel"><?=$value->Descripcion?></span>
+				    		</li>
+		    			<?php } ?>							    		
+			    	<?php } ?>
 			    </ul>
 			</div>
 		</div>
@@ -581,6 +596,54 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 
 			limpiarArbolCompletoMasOpciones();
 		}, false, true);
+	}
+
+	function MostrarSubLista(codigoPartida, nivel, element)
+	{
+		var marginLeftTemp=45;
+		$.ajax(
+		{
+			type: "POST",
+			url: base_url+"index.php/ET_Componente/cargarNivel",
+			cache: false,
+			data: { codigoPartida: codigoPartida, nivel: nivel },
+			success: function(resp)
+			{
+				var obj=JSON.parse(resp);
+
+				if(obj.length==0)
+				{
+					return false;
+				}
+				var htmlTemp='<ul style="margin-left: '+marginLeftTemp+'px;">';
+				for(var i=0; i<obj.length; i++)
+				{
+					if(obj[i].hasChild == false)
+					{
+						htmlTemp+='<li>'+
+						'<input type="button" class="btn btn-warning btn-xs" value="A" onclick="seleccionar(\''+replaceAll(obj[i].Descripcion,'"','*')+'\',\''+obj[i].Unidad+'\', this);" style="margin: 1px;">'+
+						'<span class="nivel">'+obj[i].Descripcion+ ((obj[i].Simbolo == null) ? "" : ' ('+obj[i].Simbolo+')')+'</span>'+
+						'</li>';
+					}
+					else
+					{
+						htmlTemp+='<li>'+
+						'<input type="button" class="btn btn-default btn-xs" value="+" onclick="ContraerSubLista(this); MostrarSubLista(\''+obj[i].CodPartida+'\', '+(obj[i].Nivel+1)+', this);" style="margin: 1px;">'+
+						'<input type="button" class="btn btn-default btn-xs" value="-" onclick="ContraerSubLista(this);" style="margin: 1px;">'+
+						'<span class="nivel">'+obj[i].Descripcion+ ((obj[i].Simbolo == null) ? "" : ' ('+obj[i].Simbolo+')')+'</span>'+
+					'</li>';
+					}				
+				}
+
+				htmlTemp+='</ul>';
+				$(element).parent().append(htmlTemp);        											            
+			}
+		});
+	}
+
+	function ContraerSubLista(element)
+	{
+		$(element).parent().find('>ul').remove();
 	}
 
 	$(function()
