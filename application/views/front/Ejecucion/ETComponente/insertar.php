@@ -68,13 +68,13 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 <div class="form-horizontal">
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
-			<label class="control-label">Nombre del proyecto de inversión</label>
+			<!--<label class="control-label">Nombre del proyecto de inversión</label>-->
 			<div>
-				<textarea name="txtNombreProyectoInversion" id="txtNombreProyectoInversion" rows="3" class="form-control" style="resize: none;resize: vertical;" readonly="readonly"><?=html_escape($expedienteTecnico->nombre_pi)?></textarea>
+				<textarea name="txtNombreProyectoInversion" id="txtNombreProyectoInversion" rows="2" class="form-control" style="resize: none;resize: vertical;" readonly="readonly"><?=html_escape(trim($expedienteTecnico->nombre_pi))?></textarea>
 			</div>
 		</div>
 	</div>
-	<div id="divAgregarComponente" class="row" style="margin-top: 4px;">
+	<div id="divAgregarComponente" class="row" style="margin-top: 3px;">
 		<div class="col-md-9 col-sm-9 col-xs-9">
 			<input type="text" class="form-control" id="txtDescripcionComponente" name="txtDescripcionComponente" placeholder="Descripción del componente">
 		</div>
@@ -82,7 +82,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 			<input type="button" class="btn btn-info" value="Agregar componente" onclick="agregarComponente();" style="width: 100%;">
 		</div>
 	</div>
-	<div id="divAgregarPartida" class="row" style="display: none;margin-top: 4px;">
+	<div id="divAgregarPartida" class="row" style="display: none;margin-top: 2px;">
 		<div class="col-md-6">
 			<label for="control-label">Descripción de la Partida</label>
 			<div style="height: 220px;overflow-y: scroll; background-color: #f2f5f7;">
@@ -197,7 +197,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 			</div>
 		</div>-->
 	</div>
-	<hr style="margin-top: 4px;">
+	<hr style="margin-top: 1px;">
 	<div class="row" style="height: 300px;overflow-y: scroll;">
 		<div class="col-md-12 col-sm-12 col-xs-12" style="font-size: 12px;">
 			<ul id="ulComponenteMetaPartida" style="background-color: #f5f5f5;list-style-type: upper-roman;">
@@ -230,7 +230,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 	}
 	function limpiarArbolCompletoMasOpciones()
 	{
-		$('#divAgregarPartida').hide();
+		//$('#divAgregarPartida').hide();
 
 		$('#ulComponenteMetaPartida').find('li').css({ "background-color" : "#ffffff" });
 

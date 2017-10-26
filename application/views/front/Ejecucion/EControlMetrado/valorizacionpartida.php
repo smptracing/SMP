@@ -155,11 +155,16 @@ $('#btnEnviarFormulario').on('click', function(event)
             {
                 swal("Error","Ocurrio un error ", "error");
             }
-            paginaAjaxDialogo(null, 'Valorizacion de Partida',{ id_DetallePartida: <?=$DetallePartida->id_detalle_partida?> }, base_url+'index.php/Expediente_Tecnico/AsignarValorizacion', 'GET', null, null, false, true);
+            paginaAjaxDialogo('otherModal', 'Valorizacion de Partida',{ id_DetallePartida: <?=$DetallePartida->id_detalle_partida?> }, base_url+'index.php/Expediente_Tecnico/AsignarValorizacion', 'GET', null, null, false, true);
   			$('#frmValorizacion')[0].reset();
         }
     });  
 });
+/*$('#otherModal').on('hidden.bs.modal', function () 
+{
+	$("#tableListaValorizacion").dataTable().fnReloadAjax();
+
+})*/
 function eliminar(codigo)
 {
 	swal(
@@ -192,7 +197,7 @@ function eliminar(codigo)
 			            {
 			                swal("Error","Ocurrio un error ", "error");
 			            }
-			            paginaAjaxDialogo(null, 'Valorizacion de Partida',{ id_DetallePartida: <?=$DetallePartida->id_detalle_partida?> }, base_url+'index.php/Expediente_Tecnico/AsignarValorizacion', 'GET', null, null, false, true);
+			            paginaAjaxDialogo('otherModal', 'Valorizacion de Partida',{ id_DetallePartida: <?=$DetallePartida->id_detalle_partida?> }, base_url+'index.php/Expediente_Tecnico/AsignarValorizacion', 'GET', null, null, false, true);
 			        }
 			    }); 
             }

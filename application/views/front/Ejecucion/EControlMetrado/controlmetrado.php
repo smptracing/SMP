@@ -1,5 +1,5 @@
 <?php
-function mostrarAnidado($meta, $expedienteTecnico)
+function mostrarAnidado($meta, $expedienteTecnico,$countValorizacionDiaria)
 {
 	$htmlTemp='';
 
@@ -16,6 +16,20 @@ function mostrarAnidado($meta, $expedienteTecnico)
 	{		
 		foreach($meta->childPartida as $key => $value)
 		{
+			$valorSuperado = false;
+
+			foreach ($countValorizacionDiaria as $key => $item) 
+			{
+				if($item->id_detalle_partida == $value->childDetallePartida->id_detalle_partida)
+				{
+					if($item->cantidad>=$value->childDetallePartida->cantidad)
+					{
+						$valorSuperado = true;
+						
+					}
+				}
+			}
+			
 			$htmlTemp.='<tr class="elementoBuscar">'.
 				'<td>'.$value->numeracion.'</td>'.
 				'<td style="text-align: left;">'.html_escape($value->desc_partida).'</td>'.
@@ -23,13 +37,13 @@ function mostrarAnidado($meta, $expedienteTecnico)
 				'<td style="text-align: right;">'.$value->cantidad.'</td>'.
 				'<td style="text-align: right;">S/.'.$value->precio_unitario.'</td>'.
 				'<td style="text-align: right;">S/.'.number_format($value->cantidad*$value->precio_unitario, 2).'</td>'.
-				'<td style="text-align: center;"><a class= "btn btn-info btn-xs" onclick="valorizar('.$value->childDetallePartida->id_detalle_partida.');"><i class="fa fa-plus"></i> Registrar</a></td>'.
+				'<td style="text-align: center;"><a class= "'.($valorSuperado == true ? 'btn btn-success btn-xs' : 'btn btn-info btn-xs').'"  onclick="valorizar('.$value->childDetallePartida->id_detalle_partida.');"><i class="fa fa-plus"></i> Registrar</a></td>'.
 				'</tr>';
 		}		
 	}
 	foreach($meta->childMeta as $key => $value)
 	{
-		$htmlTemp.=mostrarAnidado($value, $expedienteTecnico);
+		$htmlTemp.=mostrarAnidado($value, $expedienteTecnico,$countValorizacionDiaria);
 	}
 	return $htmlTemp;
 }
@@ -96,7 +110,7 @@ function mostrarAnidado($meta, $expedienteTecnico)
 										<td></td>
 									</tr>
 									<?php foreach($value->childMeta as $index => $item){ ?>
-										<?= mostrarAnidado($item, $expedienteTecnico)?>
+										<?= mostrarAnidado($item, $expedienteTecnico, $countValorizacionDiaria)?>
 									<?php } ?>
 								<?php } ?>
 							</tbody>
@@ -123,7 +137,12 @@ function mostrarAnidado($meta, $expedienteTecnico)
 	});
 	function valorizar(codigo)
 	{
-		paginaAjaxDialogo(null, 'Valorizacion de Partida',{ id_DetallePartida: codigo }, base_url+'index.php/Expediente_Tecnico/AsignarValorizacion', 'GET', null, null, false, true);
+		paginaAjaxDialogo('otherModal', 'Valorizacion de Partida',{ id_DetallePartida: codigo }, base_url+'index.php/Expediente_Tecnico/AsignarValorizacion', 'GET', null, null, false, true);
 	}
+	/*$('#otherModal').on('hidden.bs.modal', function () 
+	{
+		alert("cerrado");
+
+	})*/
 
 </script>
