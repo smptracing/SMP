@@ -184,10 +184,7 @@ $(function()
             {
                 validators: 
                 {
-                    notEmpty:
-                    {
-                        message: '<b style="color: red;">El campo "PIA" es requerido.</b>'
-                    },
+    
                     regexp:
                     {
                         regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
@@ -199,10 +196,7 @@ $(function()
             {
                 validators: 
                 {
-                    notEmpty:
-                    {
-                        message: '<b style="color: red;">El campo "PIM" es requerido.</b>'
-                    },
+     
                     regexp:
                     {
                         regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
@@ -214,10 +208,7 @@ $(function()
             {
                 validators: 
                 {
-                    notEmpty:
-                    {
-                        message: '<b style="color: red;">El campo "Certificado" es requerido.</b>'
-                    },
+    
                     regexp:
                     {
                         regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
@@ -229,10 +220,7 @@ $(function()
             {
                 validators: 
                 {
-                    notEmpty:
-                    {
-                        message: '<b style="color: red;">El campo "Compromiso" es requerido.</b>'
-                    },
+
                     regexp:
                     {
                         regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
@@ -244,10 +232,7 @@ $(function()
             {
                 validators: 
                 {
-                    notEmpty:
-                    {
-                        message: '<b style="color: red;">El campo "Devengado" es requerido.</b>'
-                    },
+     
                     regexp:
                     {
                         regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
@@ -259,10 +244,7 @@ $(function()
             {
                 validators: 
                 {
-                    notEmpty:
-                    {
-                        message: '<b style="color: red;">El campo "Girado" es requerido.</b>'
-                    },
+
                     regexp:
                     {
                         regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,

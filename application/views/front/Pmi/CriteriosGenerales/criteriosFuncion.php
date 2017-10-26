@@ -100,7 +100,7 @@
 														<tr>
 															<td style="width: 1%">Codigo</td>
 															<td>Función</td>
-															<td style="width: 1%">N° Criterio</td>
+															
 															<td style="width: 1%">Opciones</td>
 														</tr>
 													</thead>
@@ -114,10 +114,7 @@
 															<td>
 																<?=$item->nombre_funcion?>
 													    	</td>
-													    	<td>
-																
-                               							 <?= 0 ?>
-													    	</td>
+													    
 													    	<td style="text-align: left;">
 													    		
 																<button type="button" class="btn btn-info btn-xs " data-placement="top" data-toggle="tooltip" data-original-title="Agregar criterios Generales" onclick="paginaAjaxDialogo(null, 'Registro Criterio Generales', { id_funcion:'<?=$item->id_funcion?>', nombre_funcion:'<?=$item->nombre_funcion?>',anio:'<?= $anio;?>' }, base_url+'index.php/PmiCriterioG/insertar', 'GET', null, null, false, true);"><span class="fa fa-th-list"></span>
