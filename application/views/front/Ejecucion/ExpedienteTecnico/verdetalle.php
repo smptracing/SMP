@@ -43,6 +43,10 @@
 		color:#001f3f;
 		font-size: 13px;
 	}
+	.modal
+	{
+	   overflow:auto !important;
+	}
 
 </style>
 <div class="right_col" role="main">
@@ -335,4 +339,14 @@ function Eliminar(id_et)
 		});
 	});
 }
+/*$(document).on('hidden.bs.modal', '.modal', function () {
+    if ($('body').find('.modal.show').length > 0) {
+        $('body').addClass('modal-open');
+    }
+});*/
+$(document).on('hidden.bs.modal', '.modal', function () {
+    if ($('body').find('.modal.in').length > 0) {
+        $('body').addClass('modal-open');
+    }
+});
 </script>
