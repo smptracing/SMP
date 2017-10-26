@@ -28,7 +28,18 @@ class AplicativoMovil extends CI_Controller
            $listaProyectoDivisionFuncional=$this->Model_AplicativoMovil->listadoProyectoDivisionFuncional($id_div_funcional);
            $listaTotaProyecto= array();
            foreach ($listaProyectoDivisionFuncional as $key => $Itemp) {
-               $listaTotaProyecto[$key]=[$Itemp->nombre_pi.'Codigo<a href="https://www.google.com/">'.$Itemp->latitud.' </a></h6>',$Itemp->latitud,$Itemp->longitud,$Itemp->icono_sector];
+
+                if($Itemp->url_img=='')
+                {
+                    $url_img='SinImagen.jpg';
+                    $listaTotaProyecto[$key]=['<strong><center>'.$Itemp->nombre_pi.'</center></strong></br><strong>Codigo:</strong> &nbsp;&nbsp;  '.$Itemp->codigo_unico_pi.' &nbsp;&nbsp;<center><img src='.base_url().'uploads/ImgUbicacionProyecto/'.$url_img.'  width="150" height="120"></center> </h6>',$Itemp->latitud,$Itemp->longitud,$Itemp->icono_sector];
+
+                }else{
+
+                     $listaTotaProyecto[$key]=['<strong><center>'.$Itemp->nombre_pi.'</center></strong></br><strong>Codigo:</strong> &nbsp;&nbsp;  '.$Itemp->codigo_unico_pi.' &nbsp;&nbsp;<center><img src='.base_url().'uploads/ImgUbicacionProyecto/'.$Itemp->url_img.'  width="150" height="120"></center> </h6>',$Itemp->latitud,$Itemp->longitud,$Itemp->icono_sector];
+
+                }
+
             }
            echo json_encode($listaTotaProyecto);
     }
