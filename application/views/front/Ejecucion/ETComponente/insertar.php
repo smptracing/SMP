@@ -4,7 +4,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 	$htmlTemp='';
 
 	$htmlTemp.='<li>'.
-		'<input type="button" class="btn btn-default btn-xs" value="G" onclick="guardarCambiosMeta('.$meta->id_meta.');" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(\'\', $(this).parent(), '.$meta->id_meta.')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="+P" onclick="renderizarAgregarPartida($(this).parent(), '.$meta->id_meta.')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarMeta('.$meta->id_meta.', this);" style="width: 30px;"> <span id="nombreMeta'.$meta->id_meta.'" contenteditable>'.html_escape($meta->desc_meta).'</span>'.
+		'<input type="button" class="btn btn-default btn-xs" value="G" onclick="guardarCambiosMeta('.$meta->id_meta.');" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(\'\', $(this).parent(), '.$meta->id_meta.')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="+P" onclick="renderizarAgregarPartida($(this).parent(), '.$meta->id_meta.')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarMeta('.$meta->id_meta.', this);" style="width: 30px;"> <span style="text-transform: uppercase;" id="nombreMeta'.$meta->id_meta.'" contenteditable>'.html_escape($meta->desc_meta).'</span>'.
 		((count($meta->childMeta)==0 && count($meta->childPartida))>0 ? '<table><tbody>' : '<ul>');
 
 	if(count($meta->childMeta)==0)
@@ -16,7 +16,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 					'<input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida('.$value->id_partida.', this);" style="width: 30px;">'.
 					'<input type="button" class="btn btn-default btn-xs" value="A" onclick="paginaAjaxDialogo(\'otherModal\', \'Análisis presupuestal\', { idET : '.$idExpedienteTecnico.', idPartida : '.$value->id_partida.' }, \''.base_url().'index.php/ET_Analisis_Unitario/insertar\', \'get\', null, null, false, true);" style="width: 30px;">'.
 				'</td>'.
-				'<td style="padding-left: 10px;"><b>&#9658;'.html_escape($value->desc_partida).'</b></td>'.
+				'<td style="padding-left: 10px;"><b style="text-transform: uppercase;">'.html_escape($value->desc_partida).'</b></td>'.
 				'<td style="padding-left: 4px;">'.html_escape($value->rendimiento).'</td>'.
 				'<td style="padding-left: 4px;text-align: center;">'.html_escape($value->descripcion).'</td>'.
 				'<td style="padding-left: 4px;text-align: center;">'.$value->cantidad.'</td>'.
@@ -33,6 +33,48 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 	$htmlTemp.=((count($meta->childMeta)==0 && count($meta->childPartida))>0 ? '</tbody></table>' : '</ul>').
 	'</li>';
 
+	return $htmlTemp;
+}
+
+
+function mostrarAnidado($meta, $expedienteTecnico)
+{
+	$htmlTemp='';
+
+	$htmlTemp.='<tr class="elementoBuscar">'.
+		'<td><b><i>'.$meta->numeracion.'</i></b></td>'.
+		'<td style="text-align: left;"><b><i>'.html_escape($meta->desc_meta).'</i></b></td>'.
+		'<td></td>'.
+		'<td></td>'.
+		'<td></td>'.
+		'<td></td>'.
+		'<td><input type="button" class="btn btn-default btn-xs" value="G" onclick="guardarCambiosMeta('.$meta->id_meta.');" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(\'\', $(this).parent(), '.$meta->id_meta.')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="+P" onclick="renderizarAgregarPartida($(this).parent(), '.$meta->id_meta.')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarMeta('.$meta->id_meta.', this);" style="width: 30px;"></td>';		
+	$htmlTemp.='</tr>';
+	if(count($meta->childMeta)==0)
+	{		
+		foreach($meta->childPartida as $key => $value)
+		{
+
+			
+			$htmlTemp.='<tr class="elementoBuscar">'.
+				'<td>'.$value->numeracion.'</td>'.
+				//.'" style="color: '.($value->partidaCompleta ? 'blue' : 'red').';"
+				'<td style="text-align: left; color: '.($value->partidaCompleta ? '#337ab7;' : '#d9534f;').' ">'.html_escape($value->desc_partida).'</td>'.
+				'<td>'.html_escape($value->descripcion).'</td>'.
+				'<td style="text-align: right;">'.$value->cantidad.'</td>'.
+				'<td style="text-align: right;">S/.'.$value->precio_unitario.'</td>'.
+				'<td style="text-align: right;">S/.'.number_format($value->cantidad*$value->precio_unitario, 2).'</td>'.
+				'<td>';
+				$htmlTemp.= '<input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida('.$value->id_partida.', this);" style="width: 30px;">';
+
+				$htmlTemp.='<input type="button" class="btn btn-default btn-xs" value="A" onclick="paginaAjaxDialogo(\'otherModal\', \'Análisis presupuestal\', { idET : '.$expedienteTecnico.', idPartida : '.$value->id_partida.' }, \''.base_url().'index.php/ET_Analisis_Unitario/insertar\', \'get\', null, null, false, true);" style="width: 30px;">';
+				$htmlTemp.='</td></tr>';
+		}		
+	}
+	foreach($meta->childMeta as $key => $value)
+	{
+		$htmlTemp.=mostrarAnidado($value, $expedienteTecnico);
+	}
 	return $htmlTemp;
 }
 ?>
@@ -61,6 +103,10 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 	    margin : 2px;
 	}
 	li
+	{
+		list-style:none;
+	}
+	.liPartida
 	{
 		list-style:none;
 	}
@@ -203,7 +249,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 			<ul id="ulComponenteMetaPartida" style="background-color: #f5f5f5;list-style-type: upper-roman;">
 				<?php foreach($expedienteTecnico->childComponente as $key => $value){ ?>
 					<li>
-						<input type="button" class="btn btn-default btn-xs" value="G" onclick="guardarCambiosComponente(<?=$value->id_componente?>);" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(<?=$value->id_componente?>, $(this).parent(), '');" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarComponente(<?=$value->id_componente?>, this);" style="width: 30px;"> <b id="nombreComponente<?=$value->id_componente?>" contenteditable><?=html_escape($value->descripcion)?></b>
+						<input type="button" class="btn btn-default btn-xs" value="G" onclick="guardarCambiosComponente(<?=$value->id_componente?>);" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(<?=$value->id_componente?>, $(this).parent(), '');" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarComponente(<?=$value->id_componente?>, this);" style="width: 30px;"> <b style="text-transform: uppercase;" id="nombreComponente<?=$value->id_componente?>" contenteditable><?=html_escape($value->descripcion)?></b>
 						<ul style="background-color: #f5f5f5;">
 							<?php foreach($value->childMeta as $index => $item){ ?>
 								<?=mostrarMetaAnidada($item, $expedienteTecnico->id_et);?>
@@ -213,6 +259,37 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 				<?php } ?>
 			</ul>
 		</div>
+		<!--<div class="col-md-12 col-sm-12 col-xs-12" style="font-size: 12px;">
+			<table id="tableValorizacion" class="table table-striped jambo_table bulk_action  table-hover" >
+				<thead>
+					<tr>
+						<th>ÍTEM</th>
+						<th>DESCRIPCIÓN</th>
+						<th>UND.</th>
+						<th style="text-align: right;">CANT.</th>
+						<th style="text-align: right;">P.U.</th>
+						<th style="text-align: right;">TOTAL</th>
+						<th style="text-align: center;"> OPCIONES</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php foreach($expedienteTecnico->childComponente as $key => $value){ ?>
+						<tr class="elementoBuscar">
+							<td><b><i><?=$value->numeracion?></i></b></td>
+							<td style="text-align: left;"><b><i><?=html_escape($value->descripcion)?></i></b></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td><input type="button" class="btn btn-default btn-xs" value="G" onclick="guardarCambiosComponente(<?=$value->id_componente?>);" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(<?=$value->id_componente?>, $(this).parent(), '');" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarComponente(<?=$value->id_componente?>, this);" style="width: 30px;"> </td>
+						</tr>
+						<?php foreach($value->childMeta as $index => $item){ ?>
+							<?= mostrarAnidado($item, $expedienteTecnico->id_et)?>
+						<?php } ?>
+					<?php } ?>
+				</tbody>
+			</table>
+		</div>-->
 	</div>
 	<hr>
 	<div class="row" style="text-align: right;">
