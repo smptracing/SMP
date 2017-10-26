@@ -53,7 +53,6 @@
                                                           <th style="width: 8%"><i class="fa fa-thumb-tack"></i> Cod. </th>
                                                           <th style="width: 32%"><i class="fa fa-bookmark-o"></i> Nombre</th>
                                                           <th style="width: 12%; text-align: right;"><i class="fa fa-money"></i> Costo</th>
-                                                          <th style="width: 12%">Tipo NO PIP</th>
                                                         <th style="width: 10%">Opción</th>
                                                         </tr>
                                                       </thead>
@@ -481,6 +480,10 @@
 
                <div class="item form-group">
                                     <div class="col-md-12 col-xs-12 col-sm-12">
+                                        <div style="margin-left: 750px;position: absolute;">
+                                             <li><a target="_blank" href="http://www.coordenadas-gps.com/latitud-longitud/-13.613956/-72.902527/8/roadmap"><i class='fa fa-map-marker red' aria-hidden='true'> Mapa</i></a></li>
+                                        </div>
+
                                         <div class=".col-xs-12 .col-md-12">
                                             <label for="name">Proyecto:</label>
                                         </div>
@@ -533,10 +536,8 @@
                                           </div>
                                     </div>    
                                     <div class="col-md-2" style="margin-left: 70px;">
-                                    <BR><BR>
-                                           <label for="name"> <span class="required"></span>
-                                            </label>
-                                            <li><a target="_blank" href="http://www.coordenadas-gps.com/latitud-longitud/-13.613956/-72.902527/8/roadmap"><i class='fa fa-map-marker red' aria-hidden='true'> Mapa</i></a></li>
+                                    <BR><BR><BR>
+                                           
 
                                     </div>
 
