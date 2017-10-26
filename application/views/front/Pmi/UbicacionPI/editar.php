@@ -112,6 +112,27 @@
 			        });
 				
 	         });  
+
+			$( "#cbx_provinciaEditar" ).change(function() {
+			  	var cbx_provinciaEditar=$("#cbx_provinciaEditar").val();
+	
+	    		var html='';
+	            $("#cbx_distritoEditar").html(html);
+	            event.preventDefault();
+	            $.ajax({
+	                "url":base_url +"index.php/bancoproyectos/listar_distrito",
+	                type:"POST",
+	                data :{nombre_distrito:cbx_provinciaEditar},
+	                success:function(respuesta3){
+	                 var registros = eval(respuesta3);
+	                    for (var i = 0; i <registros.length;i++) {
+	                      html +="<option  value="+registros[i]["id_ubigeo"]+"  > "+registros[i]["distrito"]+" </option>";
+	                    };
+	                    $("#cbx_distritoEditar").html(html);
+	                    $('#cbx_distritoEditar').selectpicker('refresh');
+	            	}
+	            });
+			});
       });   
 	    
 </script>
