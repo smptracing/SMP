@@ -53,8 +53,8 @@
 
                                                           </div>
                                                       <div class="x_content">
-                                                        <table id="table_proyectos_inversion" class="table table-striped table-bordered table-hover table-responsive display  compact " ellspacing="0" width="100%">
-                                                     <thead style="background-color: #5A738E;color:#FFFFFF; ">
+                                                        <table id="table_proyectos_inversion" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
+                                                     <thead>
                                                         <tr>
                                                           <th style="width: 1%">#</th>
                                                           <th style="width: 1%">#</th>
@@ -401,7 +401,7 @@
                                           <br>
                                            <label for="name"><br/>Adjuntar Imagen: <span class="required"></span>
                                             </label>
-                                             <input type="file" name="ImgUbicacion">
+                                             <input type="file" name="ImgUbicacion" required="required">
 
                                           </div>
                                     </div>    
