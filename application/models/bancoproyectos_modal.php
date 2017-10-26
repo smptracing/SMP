@@ -231,6 +231,22 @@ class bancoproyectos_modal extends CI_Model
          return true;
 
     }
+
+    public function idUbigeoPI($id_ubigeo_pi)
+    {
+         
+         $data=$this->db->query("select * from UBIGEO_PI where id_ubigeo_pi=$id_ubigeo_pi ");
+
+         return $data->result()[0];
+
+        
+    }
+    public function actualizar_ubigeo_proyecto($id_ubigeo_pi,$id_ubigeo,$txt_latitudEditar,$txt_longitudEditar)
+    {
+         $flat='U';
+         $this->db->query("execute sp_Gestionar_UbigeoPI @opcion = '".$flat . "', @id_ubigeo_pi  ='".$id_ubigeo_pi. "' , @id_ubigeo='".$id_ubigeo."' , @latitud ='".$txt_latitudEditar."' , @longitud='".$txt_longitudEditar."' ");
+         return true;  
+    }
     //listar general estados de acuerdo al pryecto selecionado
     public function listar_estados($flat, $id_pi)
     {

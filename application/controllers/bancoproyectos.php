@@ -252,6 +252,41 @@ class bancoproyectos extends CI_Controller
         }
     }
 
+    public function editarUbicacionGeografica()
+    {
+        if($_POST)
+        {   
+            /*$this->db->trans_start(); 
+            $opcion="U";
+            $hdIdClasificadro=$this->input->post('hdIdClasificadro');
+            $txtNumeroClasi=$this->input->post('txtNumeroClasi');
+            $txtDescripcionClasi=$this->input->post('txtDescripcionClasi');
+            $txtDetalleClasi=$this->input->post('txtDetalleClasi');
+            if(count($this->Model_ET_Clasificador->ValidarClasificadorEtapaEditar($hdIdClasificadro,$txtDescripcionClasi))>0)
+            {   
+                echo json_encode(['proceso' => 'error', 'mensaje' => 'Este tipo de descripcion ya fue registrado con anterioridad .']);exit;
+            }
+            $this->Model_ET_Clasificador->editar($opcion,$hdIdClasificadro,$txtNumeroClasi,$txtDescripcionClasi,$txtDetalleClasi);
+            $this->db->trans_complete();
+            echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos Editados Correctamente.', 'txtNumeroClasi' => $txtNumeroClasi]);exit;*/
+
+        }
+        $flat  = "listar_provincia";
+        $provincias = $this->bancoproyectos_modal->listar_provincia($flat);
+
+        $id_ubigeo_pi=$this->input->GET('id_ubigeo_pi');
+
+        $detalleUbigeoPi =$this->bancoproyectos_modal->idUbigeoPI($id_ubigeo_pi);
+
+        $id_ubigeo=$detalleUbigeoPi->id_ubigeo;
+
+        $UbicacionPipProvinciDistrito=$this->Model_PMI_ubicacion->ListarPipProvinciDistrito($id_ubigeo);
+
+        //$id_ubigeo_pi=$this->input->GET('id_ubigeo_pi');
+       // $ETClasificador=$this->Model_ET_Clasificador->nombreClasificador($id_clasificador);
+        $this->load->view('Front/Pmi/UbicacionPI/editar',['provincias' => $provincias,'detalleUbigeoPi'  => $detalleUbigeoPi, 'UbicacionPipProvinciDistrito' => $UbicacionPipProvinciDistrito]);
+    }
+
 //Agregar ubigeo en proyecto de inversión
     public function Add_ubigeo_proyecto()
     {
@@ -298,6 +333,49 @@ class bancoproyectos extends CI_Controller
         } else {
             show_404();
         }
+    }
+
+    public function Editar_ubigeo_proyecto()
+    {
+        
+            
+            $config['upload_path']   = './uploads/ImgUbicacionProyecto/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size']      = '2000';
+            $config['max_width']     ='2024';
+            $config['max_height']    = '2008';
+            $this->load->library('upload', $config);
+
+            $this->upload->initialize($config);
+             if (!$this->upload->do_upload('ImgUbicacionEditar')) {
+
+                    $id_ubigeo_pi =  $this->input->post("txt_id_id_ubigeo_pi");
+                    $id_ubigeo    = $this->input->post("cbx_distritoEditar");
+                    $txt_latitudEditar  = $this->input->post("txt_latitudEditar");
+                    $txt_longitudEditar = $this->input->post("txt_longitudEditar");
+                    $this->bancoproyectos_modal->actualizar_ubigeo_proyecto($id_ubigeo_pi,$id_ubigeo , $txt_latitudEditar, $txt_longitudEditar);
+                
+              } else {
+
+                    $id_ubigeo_pi =  $this->input->post("txt_id_id_ubigeo_pi");
+                    $id_ubigeo    = $this->input->post("cbx_distritoEditar");
+                    $txt_latitudEditar  = $this->input->post("txt_latitudEditar");
+                    $txt_longitudEditar = $this->input->post("txt_longitudEditar");
+                    $file_info = $this->upload->data();
+                    $imagen = $file_info['file_name'];
+                    
+                    if ($this->bancoproyectos_modal->actualizar_ubigeo_proyecto($id_ubigeo_pi,$id_ubigeo , $txt_latitudEditar, $txt_longitudEditar) == true) {
+                        
+                        
+                        $dataId=$this->Model_PMI_ubicacion->id_ubigeo_pi_img($id_ubigeo_pi);
+                        //var_dump($id_ubigeo_pi);
+                        $this->Model_PMI_ubicacion->actualizar($dataId->id_ubigeo_pi_img,$imagen);
+
+                        echo $id_ubigeo_pi;
+                    } 
+            }
+
+       
     }
 
     //Agregar estado ciclo
