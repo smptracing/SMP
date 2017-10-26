@@ -75,7 +75,8 @@ var listaCarteraInversion=function()
 		},
 		/*{ "defaultContent" : "<button type='button' class='editar btn btn-success btn-xs' data-toggle='modal' data-target='#VentanaVerCartera'><i class='ace-icon fa fa-eye bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>" }*/
 		{"data":'anios',render: function ( data, type, row ) {
-			    return "<button type='button'  data-toggle='tooltip'  class='editar btn btn-primary btn-xs' data-toggle='modal' onclick=paginaAjaxDialogo('null','Modificar',{id_cartera:"+row.id_cartera+"},'"+base_url+"index.php/CarteraInversion/itemCartera','GET',null,null,false,true);><i class='ace-icon fa fa-pencil bigger-120'></i></button>";
+			   /* return "<button type='button'  data-toggle='tooltip'  class='editar btn btn-primary btn-xs' data-toggle='modal' onclick=paginaAjaxDialogo('null','Modificar',{id_cartera:"+row.id_cartera+"},'"+base_url+"index.php/CarteraInversion/itemCartera','GET',null,null,false,true);><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button'  data-toggle='tooltip'  class='editar btn btn-success btn-xs' data-toggle='modal' onclick=paginaAjaxDialogo('null','Modificar',{id_cartera:"+row.id_cartera+"},'"+base_url+"index.php/CarteraInversion/editarCartera','GET',null,null,false,true);><i class='ace-icon fa fa-pencil bigger-120'></i></button>";*/
+				return "<button type='button'  data-toggle='tooltip'  class='editar btn btn-success btn-xs' data-toggle='modal' onclick=paginaAjaxDialogo('null','Modificar',{id_cartera:"+row.id_cartera+"},'"+base_url+"index.php/CarteraInversion/editarCartera','GET',null,null,false,true);><i class='ace-icon fa fa-pencil bigger-120'></i></button>";
 			}
 		}
 

@@ -67,6 +67,21 @@ public function __construct(){
 	      show_404();
 	     }  
  	}
+
+ 	 function editarCartera()
+    {   
+    	if($this->input->get('id_cartera')!=''){
+    		$data['arrayCartera']=$this->Model_CarteraInversion->getCartera($this->input->get('id_cartera'))[0];
+			$this->load->view('Front/Pmi/Cartera/editar',$data);
+    	}
+    	else{
+    		$this->load->view('front/Pmi/Cartera/editar'); 
+			//$this->load->view('Front/Pmi/itemCartera');
+    	}
+
+
+       
+    }
 	//FIN INSERTAR UNA CARTERA DE INVERSION
   function itemCartera(){
     	//$data['id_persona']=$this->input->get('id_persona');
