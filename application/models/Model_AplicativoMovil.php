@@ -10,7 +10,7 @@ class Model_AplicativoMovil extends CI_Model
     }
     public function listadoProyectoGrupoFuncional($id_grup_funcional)
     {
-        $dato = $this->db->query("select ProInv.nombre_pi,ProInv.codigo_unico_pi,Gfun.id_grup_funcional,UBIGEO_PI.latitud,UBIGEO_PI.longitud,SECTOR.nombre_sector,SECTOR.id_sector,SECTOR.icono_sector
+        $dato = $this->db->query("select ProInv.nombre_pi,ProInv.codigo_unico_pi,Gfun.id_grup_funcional,UBIGEO_PI.latitud,UBIGEO_PI.longitud,SECTOR.nombre_sector,SECTOR.id_sector,SECTOR.icono_sector,UBIGEO_PI_IMG.url_img
         from GRUPO_FUNCIONAL Gfun inner join SECTOR ON Gfun.id_sector=SECTOR.id_sector inner join PROYECTO_INVERSION  ProInv on Gfun.id_grup_funcional=ProInv.id_grupo_funcional 
         inner join UBIGEO_PI on ProInv.id_pi= UBIGEO_PI.id_pi left join UBIGEO_PI_IMG ON UBIGEO_PI.id_ubigeo_pi=UBIGEO_PI_IMG.id_ubigeo_pi  WHERE Gfun.id_grup_funcional='$id_grup_funcional' ");
         
@@ -20,7 +20,7 @@ class Model_AplicativoMovil extends CI_Model
 
     public function listadoProyectoDivisionFuncional($id_div_funcional)
     {
-        $dato = $this->db->query("select DIVISION_FUNCIONAL.nombre_div_funcional,ProInv.nombre_pi,ProInv.codigo_unico_pi,Gfun.id_grup_funcional,UBIGEO_PI.latitud,UBIGEO_PI.longitud,SECTOR.nombre_sector,SECTOR.id_sector,SECTOR.icono_sector from GRUPO_FUNCIONAL Gfun inner join SECTOR ON Gfun.id_sector=SECTOR.id_sector inner join PROYECTO_INVERSION  ProInv on Gfun.id_grup_funcional=ProInv.id_grupo_funcional 
+        $dato = $this->db->query("select DIVISION_FUNCIONAL.nombre_div_funcional,ProInv.nombre_pi,ProInv.codigo_unico_pi,Gfun.id_grup_funcional,UBIGEO_PI.latitud,UBIGEO_PI.longitud,SECTOR.nombre_sector,SECTOR.id_sector,SECTOR.icono_sector,UBIGEO_PI_IMG.url_img from GRUPO_FUNCIONAL Gfun inner join SECTOR ON Gfun.id_sector=SECTOR.id_sector inner join PROYECTO_INVERSION  ProInv on Gfun.id_grup_funcional=ProInv.id_grupo_funcional 
         inner join UBIGEO_PI on ProInv.id_pi= UBIGEO_PI.id_pi INNER JOIN DIVISION_FUNCIONAL on Gfun.id_div_funcional=DIVISION_FUNCIONAL.id_div_funcional left join UBIGEO_PI_IMG ON UBIGEO_PI.id_ubigeo_pi=UBIGEO_PI_IMG.id_ubigeo_pi   WHERE DIVISION_FUNCIONAL.id_div_funcional='$id_div_funcional'");
         
         return $dato->result();
@@ -29,7 +29,7 @@ class Model_AplicativoMovil extends CI_Model
     public function listadoProyectoFuncion($id_funcion)
     {
         $dato = $this->db->query("            
-select FUNCION.nombre_funcion, ProInv.nombre_pi,ProInv.codigo_unico_pi,Gfun.id_grup_funcional,UBIGEO_PI.latitud,UBIGEO_PI.longitud,SECTOR.nombre_sector,SECTOR.id_sector,SECTOR.icono_sector
+select FUNCION.nombre_funcion, ProInv.nombre_pi,ProInv.codigo_unico_pi,Gfun.id_grup_funcional,UBIGEO_PI.latitud,UBIGEO_PI.longitud,SECTOR.nombre_sector,SECTOR.id_sector,SECTOR.icono_sector,UBIGEO_PI_IMG.url_img
         from GRUPO_FUNCIONAL Gfun inner join SECTOR ON Gfun.id_sector=SECTOR.id_sector inner join PROYECTO_INVERSION  ProInv on Gfun.id_grup_funcional=ProInv.id_grupo_funcional 
         inner join UBIGEO_PI on ProInv.id_pi= UBIGEO_PI.id_pi INNER JOIN DIVISION_FUNCIONAL on Gfun.id_div_funcional=DIVISION_FUNCIONAL.id_div_funcional inner join FUNCION on FUNCION.id_funcion=DIVISION_FUNCIONAL.id_funcion  left join UBIGEO_PI_IMG ON UBIGEO_PI.id_ubigeo_pi=UBIGEO_PI_IMG.id_ubigeo_pi  WHERE FUNCION.id_funcion='$id_funcion'");
         

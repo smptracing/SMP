@@ -400,6 +400,7 @@ var base_url = '<?php echo base_url(); ?>';
                    
               	}
             });
+            mapaUbicacionPorCodigodeCadaPip();
           }
       }); 
       $('#CodigoUnico').click(function() 
