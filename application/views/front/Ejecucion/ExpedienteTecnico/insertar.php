@@ -419,8 +419,8 @@ $(function()
 						},
 						regexp:
 						{
-							regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
-							message: '<b style="color: red;">El campo "Costo U." debe ser un valor en soles.</b>'
+							regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
+							message: '<b style="color: red;">El campo "Costo total" debe ser un valor en soles.</b>'
 						}
 					}
 				},
@@ -434,8 +434,8 @@ $(function()
 						},
 						regexp:
 						{
-							regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
-							message: '<b style="color: red;">El campo "Costo U." debe ser un valor en soles.</b>'
+							regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
+							message: '<b style="color: red;">El campo "Costo Directo" debe ser un valor en soles.</b>'
 						}
 					}
 				},
@@ -449,8 +449,8 @@ $(function()
 						},
 						regexp:
 						{
-							regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
-							message: '<b style="color: red;">El campo "Costo U." debe ser un valor en soles.</b>'
+							regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
+							message: '<b style="color: red;">El campo "Costo Indirecto" debe ser un valor en soles.</b>'
 						}
 					}
 				},
@@ -464,7 +464,7 @@ $(function()
 						},
 						regexp:
 						{
-							regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
+							regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
 							message: '<b style="color: red;">El campo "Costo total de Inversión" debe ser un valor en soles.</b>'
 						}
 					}
@@ -479,7 +479,7 @@ $(function()
 						},
 						regexp:
 						{
-							regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
+							regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
 							message: '<b style="color: red;">El campo "Costo Directo de Inversión" debe ser un valor en soles.</b>'
 						}
 					}
@@ -494,7 +494,7 @@ $(function()
 						},
 						regexp:
 						{
-							regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
+							regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
 							message: '<b style="color: red;">El campo "Costo General." debe ser un valor en soles.</b>'
 						}
 					}
@@ -509,7 +509,7 @@ $(function()
 						},
 						regexp:
 						{
-							regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
+							regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
 							message: '<b style="color: red;">El campo "Gastos de supervisión" debe ser un valor en soles.</b>'
 						}
 					}
@@ -661,6 +661,60 @@ $(function()
 		return filename.slice((filename.lastIndexOf(".") - 2 >>> 0) + 2);
 
 	}
+	$("#txtCostoTotalPreInversion").keyup(function(e)
+    {
+        $(this).val(format($(this).val()));
+    });
+    $("#txtCostoDirectoPre").keyup(function(e)
+    {
+        $(this).val(format($(this).val()));
+    });
+    $("#txtCostoIndirectoPre").keyup(function(e)
+    {
+        $(this).val(format($(this).val()));
+    });
+    $("#txtCostoTotalInversion").keyup(function(e)
+    {
+        $(this).val(format($(this).val()));
+    });
+    $("#txtCostoDirectoInversion").keyup(function(e)
+    {
+        $(this).val(format($(this).val()));
+    });
+    $("#txtGastosGenerales").keyup(function(e)
+    {
+        $(this).val(format($(this).val()));
+    });
+    $("#txtGastosSupervision").keyup(function(e)
+    {
+        $(this).val(format($(this).val()));
+    }); 
+    
+   
+    var format = function(num)
+    {
+	    var str = num.replace("", ""), parts = false, output = [], i = 1, formatted = null;
+	    if(str.indexOf(".") > 0) 
+	    {
+	        parts = str.split(".");
+	        str = parts[0];
+	    }
+	    str = str.split("").reverse();
+	    for(var j = 0, len = str.length; j < len; j++) 
+	    {
+	        if(str[j] != ",") 
+	        {
+	            output.push(str[j]);
+	            if(i%3 == 0 && j < (len - 1))
+	            {
+	                output.push(",");
+	            }
+	            i++;
+	        }
+	    }
+	    formatted = output.reverse().join("");
+	    return("" + formatted + ((parts) ? "." + parts[1].substr(0, 2) : ""));
+	};
 			  
 </script>
 
