@@ -64,7 +64,7 @@ $(document).on("ready" ,function()
                //  formReset();
                }
                 if (resp=='2') {
-                 swal("NO SE REGISTRÓ","NO se regristró ", "error");
+                 swal("NO SE REGISTRÓ","No se registró ", "error");
                }
               $('#Table_Programar').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
               $('#table_formulacion_evaluacion').dataTable()._fnAjaxUpdate();
