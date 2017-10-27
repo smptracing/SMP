@@ -45,16 +45,16 @@
 
                                                           </div>
                                                       <div class="x_content">
-                                                        <table id="table_no_pip" class="table table-striped table-bordered table-hover table-responsive display  compact " ellspacing="0" width="100%">
-                                                     <thead style="background-color: #5A738E;color:#FFFFFF; ">
+                                                        <table id="table_no_pip" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
+                                                     <thead>
                                                         <tr>
                                                           <th style="width: 1%">#</th>
                                                           <th style="width: 1%">#</th>
                                                           <th style="width: 8%"><i class="fa fa-thumb-tack"></i> Cod. </th>
                                                           <th style="width: 32%"><i class="fa fa-bookmark-o"></i> Nombre</th>
                                                           <th style="width: 12%; text-align: right;"><i class="fa fa-money"></i> Costo</th>
-                                                          <th style="width: 12%">Tipo NO PIP</th>
-                                                        <th style="width: 20%">Opción</th>
+                                                          <th style="width: 12%"><center>Tipo NO</br> PIP</center></th>
+                                                        <th style="width: 10%">Opción</th>
                                                         </tr>
                                                       </thead>
                                                             </table>
@@ -478,15 +478,20 @@
               <form class="form-horizontal " id="form_AddUbigeo"   action="<?php echo base_url(); ?>bancoproyectos/Get_ubigeo_pip" method="POST" >
 
                 <input id="txt_id_pip" name="txt_id_pip" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
-                <div class="item form-group">
-                                    <div class="col-md-12">
-                                        <label for="name">Proyecto:<span class="required"></span></label>
-                                        <div class="col-md-12">
-                                            <textarea readonly="readonly" name="nombreProyectoUbicacion" id="nombreProyectoUbicacion" rows="2" class="form-control"></textarea>
-                                            <br>                                            
-                                        </div>                                        
+
+               <div class="item form-group">
+                                    <div class="col-md-12 col-xs-12 col-sm-12">
+                                        <div style="margin-left: 750px;position: absolute;">
+                                             <li><a target="_blank" href="http://www.coordenadas-gps.com/latitud-longitud/-13.613956/-72.902527/8/roadmap"><i class='fa fa-map-marker red' aria-hidden='true'> Mapa</i></a></li>
+                                        </div>
+
+                                        <div class=".col-xs-12 .col-md-12">
+                                            <label for="name">Proyecto:</label>
+                                        </div>
+                                        <textarea class="form-control" rows="2" readonly="readonly" id="nombreProyecto" name="nombreProyecto"></textarea>
+                                        <br>                                        
                                     </div>
-                                     <div class="col-md-4">
+                                   <div class="col-md-4">
                                            <label for="name">Departamento.<span class="required"></span>
                                             </label>
                                                  <select  class="selectpicker" disabled="disabled">
@@ -506,31 +511,38 @@
                                             </label>
                                               <select name="cbx_distrito" id="cbx_distrito" data-live-search="true"  class="selectpicker" title="Elija distrito"></select>
                                     </div>
-                                    <div class="col-md-4">
-                                          <div class=".col-xs-4 .col-md-10">
+                                    <div class="col-md-3">
+                                          <div class=".col-xs-3 .col-md-10">
                                           <br>
                                            <label for="name">Latitud<span class="required"></span>
                                             </label>
                                                   <input id="txt_latitud" name="txt_latitud"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2" placeholder="Latitud" required="required" type="text">
                                           </div>
                                     </div>
-                                    <div class="col-md-4">
-                                          <div class=".col-xs-4 .col-md-10">
+                                    <div class="col-md-3">
+                                          <div class=".col-xs-3 .col-md-10">
                                           <br>
                                            <label for="name">Longitud<span class="required"></span>
                                             </label>
                                                   <input id="txt_longitud" name="txt_longitud"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2" placeholder="Longitud" required="required" type="text">
                                           </div>
+                                    </div> 
+                                    <div class="col-md-2">
+                                          <div class=".col-xs-3 .col-md-10">
+                                          <br>
+                                           <label for="name"><br/>Adjuntar Imagen: <span class="required"></span>
+                                            </label>
+                                             <input type="file" name="ImgUbicacion" required="required">
+
+                                          </div>
+                                    </div>    
+                                    <div class="col-md-2" style="margin-left: 70px;">
+                                    <BR><BR><BR>
+                                           
+
                                     </div>
 
-                                    <div class="col-md-2">
-                                    <BR><BR>
-                                           <label for="name"> <span class="required"></span>
-                                            </label>
-                                            <li><a target="_blank" href="http://www.coordenadas-gps.com/latitud-longitud/-13.613956/-72.902527/8/roadmap"><i class='fa fa-map-marker red' aria-hidden='true'> Mapa</i></a></li>
-                                          </div>
-
-                                          <div class="col-md-2">
+                                          <div class="col-md-2" style="margin-left: 130px;margin-top: -50px;">
                                           <BR><BR>
                                            <label for="name"> <span class="required"></span>
                                             </label>
@@ -539,16 +551,17 @@
                                             </button>
                                           </div>
                       </div>
-                     <div class="ln_solid"></div>
-                     <div class="x_panel" style="background-color: #EEEEEE;">
+                     <div class="x_panel" style="border: 1px solid #EEEEEE;">
                     <center>
-                    <table id="TableUbigeoProyecto_x" class="table   table-hover" >
+                    <table id="TableUbigeoProyecto_x" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%" >
                     <thead >
                        <tr>
                          <th style="width: 20%" ><i class="fa fa-thumb-tack"></i> Provincia</th>
                          <th style="width: 20%" ><i class="fa fa-thumb-tack"></i> Distrito</th>
                          <th style="width: 20%" ><i class="fa fa-thumb-tack"></i> Latitud</th>
                          <th style="width: 20%" ><i class="fa fa-thumb-tack"></i> Longitud</th>
+                         <th style="width: 10%" ><i class="fa fa-thumb-tack"></i> Imagen</th>
+                         <th style="width: 50%" ><i class="fa fa-thumb-tack"></i> </th>
                       </tr>
                     </thead>
                     </table>

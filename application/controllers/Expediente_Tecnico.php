@@ -924,18 +924,20 @@ class Expediente_Tecnico extends CI_Controller
 		{
 			$listaUnidadMedida=$this->Model_Unidad_Medida->UnidadMedidad_Listar();
 			$expedienteTecnico->childComponente=$this->Model_ET_Componente->ETComponentePorIdET($expedienteTecnico->id_et);
+			$countValorizacionDiaria  = $this->Model_DetSegOrden->sumatoriaValorizacion();
 
 			foreach($expedienteTecnico->childComponente as $key => $value)
 			{
 				$value->childMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($value->id_componente);
-
+				//$value->countValorizacionDiaria = $this->Model_DetSegOrden->sumatoriaValorizacion();
 				foreach($value->childMeta as $index => $item)
 				{
 					$this->obtenerMetaAnidadaParaValorizacion($item);				
 				}			
 			}
+
 			$this->load->view('layout/Ejecucion/header');
-			$this->load->view('front/Ejecucion/EControlMetrado/controlmetrado', ['expedienteTecnico' => $expedienteTecnico, 'listaUnidadMedida' => $listaUnidadMedida]);
+			$this->load->view('front/Ejecucion/EControlMetrado/controlmetrado', ['expedienteTecnico' => $expedienteTecnico, 'listaUnidadMedida' => $listaUnidadMedida,'countValorizacionDiaria' => $countValorizacionDiaria]);
 			$this->load->view('layout/Ejecucion/footer');
 		}
 		

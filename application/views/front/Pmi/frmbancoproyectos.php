@@ -53,8 +53,8 @@
 
                                                           </div>
                                                       <div class="x_content">
-                                                        <table id="table_proyectos_inversion" class="table table-striped table-bordered table-hover table-responsive display  compact " ellspacing="0" width="100%">
-                                                     <thead style="background-color: #5A738E;color:#FFFFFF; ">
+                                                        <table id="table_proyectos_inversion" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
+                                                     <thead>
                                                         <tr>
                                                           <th style="width: 1%">#</th>
                                                           <th style="width: 1%">#</th>
@@ -354,6 +354,9 @@
 
                <div class="item form-group">
                                     <div class="col-md-12 col-xs-12 col-sm-12">
+                                        <div style="margin-left: 750px;position: absolute;">
+                                             <li><a target="_blank" href="http://www.coordenadas-gps.com/latitud-longitud/-13.613956/-72.902527/8/roadmap"><i class='fa fa-map-marker red' aria-hidden='true'> Mapa</i></a></li>
+                                        </div>
                                         <div class=".col-xs-12 .col-md-12">
                                             <label for="name">Proyecto:</label>
                                         </div>
@@ -401,14 +404,13 @@
                                           <br>
                                            <label for="name"><br/>Adjuntar Imagen: <span class="required"></span>
                                             </label>
-                                             <input type="file" name="ImgUbicacion">
+                                             <input type="file" name="ImgUbicacion" required="required">
 
                                           </div>
                                     </div>    
                                     <div class="col-md-2" style="margin-left: 70px;">
-                                    <BR><BR>
-                                           <label for="name"> <span class="required"></span>
-                                            </label>
+                                    <BR><BR><BR>
+                                         
                                             <li><a target="_blank" href="http://www.coordenadas-gps.com/latitud-longitud/-13.613956/-72.902527/8/roadmap"><i class='fa fa-map-marker red' aria-hidden='true'> Mapa</i></a></li>
 
                                     </div>

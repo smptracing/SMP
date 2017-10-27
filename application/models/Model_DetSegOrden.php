@@ -57,4 +57,9 @@ class Model_DetSegOrden extends CI_Model
 		$data = $this->db->query("select dv.id_detalle_partida,sum(dv.cantidad) as metradoAnterior, sum(dv.sub_total) as valorizadoAnterior from DET_SEG_VALORIZACION dv inner join ET_DETALLE_PARTIDA dp on dv.id_detalle_partida=dp.id_detalle_partida inner join ET_PARTIDA p on dp.id_partida = p.id_partida inner join ET_META m on p.id_meta = m.id_meta inner join ET_COMPONENTE c on m.id_componente= c.id_componente inner join ET_EXPEDIENTE_TECNICO et on c.id_et = et.id_et where dv.id_detalle_partida = $idDetallePartida and dv.fecha_dia BETWEEN  et.fecha_inicio_et and '".$mesPasado ."' group by dv.id_detalle_partida ");
 		return $data->result();
 	}
+	public function sumatoriaValorizacion()
+	{
+		$data = $this->db->query("select ds.id_detalle_partida, sum(ds.cantidad) as cantidad from ET_DETALLE_PARTIDA dp inner join DET_SEG_VALORIZACION ds on dp.id_detalle_partida=ds.id_detalle_partida group by(ds.id_detalle_partida)");
+		return $data->result();
+	}
 }

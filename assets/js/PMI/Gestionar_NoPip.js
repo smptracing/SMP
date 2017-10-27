@@ -186,28 +186,35 @@ $(document).on("ready" ,function()
                   });
 
   //registar nuevo ubigeo con latitud y longitud
-   $("#form_AddUbigeo").submit(function(event)
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/bancoproyectos/Add_ubigeo_proyecto",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           //alert(resp);
-                           if (resp=='1') {
-                             swal("REGISTRADO","Se regristró correctamente", "success");
-                             formReset();
-                           }
-                            if (resp=='2') {
-                             swal("NO SE REGISTRÓ","NO se regristró ", "error");
-                           }
-                          $('#TableUbigeoProyecto_x').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
-                             formReset();
-                         }
-                      });
-                  });
-
+   
+    $("#form_AddUbigeo").submit(function(event)
+    {
+        event.preventDefault();
+        var formData=new FormData($("#form_AddUbigeo")[0]);
+        $.ajax({
+            type:"POST",
+            enctype: 'multipart/form-data',
+            url:base_url+"index.php/bancoproyectos/Add_ubigeo_proyecto",
+            data: formData,
+            cache: false,
+            contentType:false,
+            processData:false,
+            success:function(resp)
+            {
+                if (resp=='1') 
+                {
+                    swal("REGISTRADO","Se regristró correctamente", "success");
+                }
+                if (resp=='2') 
+                {
+                    swal("NO SE REGISTRÓ","NO se regristró ", "error");
+                }
+                $('#TableUbigeoProyecto_x').dataTable()._fnAjaxUpdate();
+                //formReset();
+                //$('#venta_ubicacion_geografica').modal('hide');           
+            }
+        });
+    });
                 //registar proyectos en banco de proyectos
    
         //limpiar campos
@@ -284,12 +291,49 @@ $(document).on("ready" ,function()
                                     {"data":"provincia"},
                                     {"data":"distrito"},
                                     {"data":"latitud"},
-                                    {"data":"longitud"}
+                                    {"data":"longitud"},
+                                    {"data":"url_img",
+                                    "render" : function ( data, type, row, meta) {
+                                      url= base_url+"uploads/ImgUbicacionProyecto/"+data;
+                                      return '<img height="20" width="20" src="'+url+'" />';
+                                    }},
+                                    {"data":'id_ubigeo_pi',render:function(data,type,row){
+                                        return "<button type='button'  data-toggle='tooltip'  class='editar btn btn-primary btn-xs' data-toggle='modal' onclick=ModificarUbigeoPi("+data+")><i class='ace-icon fa fa-pencil bigger-120'></i></button> <button type='button'  data-toggle='tooltip'  class='editar btn btn-danger btn-xs' data-toggle='modal' onclick=eliminarUbigeo("+data+",this)><i class='ace-icon fa fa-trash-o bigger-120'></i></button>";
+                                    }}
                                     //{"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaupdateEstadoFE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
                                "language":idioma_espanol
                     });
                 }
+var eliminarUbigeo=function(id_ubigeo_pi,element)
+{
+    if(!confirm('Se esta seguro de eliminar. ¿Realmente desea proseguir con la operaición?'))
+    {
+      return;
+    }
+
+    paginaAjaxJSON({ "id_ubigeo_pi" : id_ubigeo_pi }, base_url+'index.php/bancoproyectos/eliminarUbigeo', 'POST', null, function(objectJSON)
+    {
+      objectJSON=JSON.parse(objectJSON);
+
+      swal(
+      {
+        title: '',
+        text: objectJSON.mensaje,
+        type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+      },
+      function(){});
+
+      $(element).parent().parent().remove();
+
+    }, false, true);
+
+}
+
+var ModificarUbigeoPi=function(id_ubigeo_pi)
+{
+  paginaAjaxDialogo(2, 'Edición de Ubicación Geografica', { id_ubigeo_pi : id_ubigeo_pi }, base_url+'index.php/bancoproyectos/editarUbicacionGeografica', 'GET', null, null, false, true);
+}
 //listar el estado ciclo de los proyectos
  var listar_estado_ciclo=function(id_pi)
                 {
@@ -372,7 +416,7 @@ $(document).on("ready" ,function()
                                     {"data":"nombre_pi"},
                                     {"data":"costo_pi"},
                                     {"data":"desc_tipo_nopip"},
-                                    {"defaultContent":"<center><button type='button' title='Ubicación' class='ubicacion_geografica btn btn-primary btn-xs' data-toggle='modal' data-target='#venta_ubicacion_geografica'><i class='fa fa-map-marker' aria-hidden='true'></i></button><button type='button' title='Ver Rubro PI' class='RegistarNuevoRubro btn btn-info btn-xs' data-toggle='modal' data-target='#venta_registar_rubro'><i class='fa fa-spinner' aria-hidden='true'></i></button><button type='button' title='Modalidad de Ejecución' class='nueva_modalidad_ejec btn btn-warning btn-xs' data-toggle='modal' data-target='#ventanaModalidadEjecucion'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button' title='Ver Estado Ciclo' class='ver_estado_ciclo btn btn-success btn-xs' data-toggle='modal' data-target='#ventana_ver_estado_ciclo'><i class='fa fa-paw' aria-hidden='true'></i></button><button type='button' title='Ver Tipología No PIP' class='ver_tipologia_nopip btn btn-danger btn-xs' data-toggle='modal' data-target='#ventana_ver_tipologia'><i class='fa fa-random' aria-hidden='true'></i></button></i></button></center>"}
+                                    {"defaultContent":"<div class='dropup'><button class='btn  btn-group-xs dropdown-toggle' type='button' data-toggle='dropdown'> Opciones <span class='glyphicon glyphicon-option-vertical' aria-hidden='true'></span></button><ul class='dropdown-menu dropdown-menu-right'><li><a href='#'><center><button type='button' title='Ubicación' class='ubicacion_geografica btn btn-primary btn-xs' data-toggle='modal' data-target='#venta_ubicacion_geografica'><i class='fa fa-map-marker' aria-hidden='true'></i></button><button type='button' title='Ver Rubro PI' class='RegistarNuevoRubro btn btn-info btn-xs' data-toggle='modal' data-target='#venta_registar_rubro'><i class='fa fa-spinner' aria-hidden='true'></i></button></br><button type='button' title='Modalidad de Ejecución' class='nueva_modalidad_ejec btn btn-warning btn-xs' data-toggle='modal' data-target='#ventanaModalidadEjecucion'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button' title='Ver Estado Ciclo' class='ver_estado_ciclo btn btn-success btn-xs' data-toggle='modal' data-target='#ventana_ver_estado_ciclo'><i class='fa fa-paw' aria-hidden='true'></i></button><button type='button' title='Ver Tipología No PIP' class='ver_tipologia_nopip btn btn-danger btn-xs' data-toggle='modal' data-target='#ventana_ver_tipologia'><i class='fa fa-random' aria-hidden='true'></i></button></i></button></center></div>"}
                                    //{"defaultContent":"<center><button type='button' title='Ubicación' class='ubicacion_geografica btn btn-primary btn-xs' data-toggle='modal' data-target='#venta_ubicacion_geografica'><i class='fa fa-map-marker' aria-hidden='true'></i></button><button type='button' title='Ver Rubro PI' class='RegistarNuevoRubro btn btn-info btn-xs' data-toggle='modal' data-target='#venta_registar_rubro'><i class='fa fa-spinner' aria-hidden='true'></i></button><button type='button' title='Modalidad de Ejecución' class='nueva_modalidad_ejec btn btn-warning btn-xs' data-toggle='modal' data-target='#ventanaModalidadEjecucion'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button' title='Ver Estado Ciclo' class='ver_estado_ciclo btn btn-success btn-xs' data-toggle='modal' data-target='#ventana_ver_estado_ciclo'><i class='fa fa-paw' aria-hidden='true'></i></button><button type='button' title='Ver Tipología No PIP' class='ver_tipologia_nopip btn btn-danger btn-xs' data-toggle='modal' data-target='#ventana_ver_tipologia'><i class='fa fa-random' aria-hidden='true'></i></button><button type='button' title='Operación y Mantenimiento' class='ver_operacion_mantenimiento btn btn-info btn-xs' data-toggle='modal' data-target='#ventana_ver_operacion_mantenimeinto'><i class='fa fa-building' aria-hidden='true'></i></button></center>"}
                                 
                                 ],
@@ -741,9 +785,10 @@ var listarFuenteFinanciamiento=function(valor){
                       var data=table.row( $(this).parents("tr")).data();
                        var  id_pi=data.id_pi;
                       $("#txt_id_pip").val(data.id_pi);
-                      $("#nombreProyectoUbicacion").val(data.nombre_pi);
+                      $("#nombreProyecto").val(data.nombre_pi);
                         listar_provincia();
                         listar_ubigeo_pi(id_pi);
+
                     });
                 }
                 //listar y agregar ubicacion geográfica

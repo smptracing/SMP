@@ -1,5 +1,5 @@
 <?php
-function mostrarAnidado($meta, $expedienteTecnico)
+function mostrarAnidado($meta, $expedienteTecnico,$countValorizacionDiaria)
 {
 	$htmlTemp='';
 
@@ -16,6 +16,20 @@ function mostrarAnidado($meta, $expedienteTecnico)
 	{		
 		foreach($meta->childPartida as $key => $value)
 		{
+			$valorSuperado = false;
+
+			foreach ($countValorizacionDiaria as $key => $item) 
+			{
+				if($item->id_detalle_partida == $value->childDetallePartida->id_detalle_partida)
+				{
+					if($item->cantidad>=$value->childDetallePartida->cantidad)
+					{
+						$valorSuperado = true;
+						
+					}
+				}
+			}
+			
 			$htmlTemp.='<tr class="elementoBuscar">'.
 				'<td>'.$value->numeracion.'</td>'.
 				'<td style="text-align: left;">'.html_escape($value->desc_partida).'</td>'.
@@ -23,13 +37,13 @@ function mostrarAnidado($meta, $expedienteTecnico)
 				'<td style="text-align: right;">'.$value->cantidad.'</td>'.
 				'<td style="text-align: right;">S/.'.$value->precio_unitario.'</td>'.
 				'<td style="text-align: right;">S/.'.number_format($value->cantidad*$value->precio_unitario, 2).'</td>'.
-				'<td style="text-align: center;"><a class= "btn btn-info btn-xs" onclick="valorizar('.$value->childDetallePartida->id_detalle_partida.');"><i class="fa fa-plus"></i> Registrar</a></td>'.
+				'<td style="text-align: center;"><a class= "'.($valorSuperado == true ? 'btn btn-success btn-xs' : 'btn btn-info btn-xs').'"  onclick="valorizar('.$value->childDetallePartida->id_detalle_partida.');"><i class="fa fa-plus"></i> Registrar</a></td>'.
 				'</tr>';
 		}		
 	}
 	foreach($meta->childMeta as $key => $value)
 	{
-		$htmlTemp.=mostrarAnidado($value, $expedienteTecnico);
+		$htmlTemp.=mostrarAnidado($value, $expedienteTecnico,$countValorizacionDiaria);
 	}
 	return $htmlTemp;
 }
@@ -51,7 +65,7 @@ function mostrarAnidado($meta, $expedienteTecnico)
 		<div class="col-md-12 col-xs-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2><b>Ejecución diria de Metrados</b></h2>
+					<h2><b>Ejecución diaria de Metrados</b></h2>
 					<div class="clearfix"></div>
 				</div>
 				<div class="x_content">
@@ -73,34 +87,34 @@ function mostrarAnidado($meta, $expedienteTecnico)
                     	</div>
 						<div class="col-md-12 col-sm-12 col-xs-12" style="font-size: 12px;">
 							<table id="tableValorizacion" class="table table-striped jambo_table bulk_action  table-hover" >
-							<thead>
-								<tr>
-									<th>ÍTEM</th>
-									<th>DESCRIPCIÓN</th>
-									<th>UND.</th>
-									<th style="text-align: right;">CANT.</th>
-									<th style="text-align: right;">P.U.</th>
-									<th style="text-align: right;">TOTAL</th>
-									<th style="text-align: center;"> OPCIONES</th>
-								</tr>
-							</thead>
-							<tbody>
-								<?php foreach($expedienteTecnico->childComponente as $key => $value){ ?>
-									<tr class="elementoBuscar">
-										<td><b><i><?=$value->numeracion?></i></b></td>
-										<td style="text-align: left;"><b><i><?=html_escape($value->descripcion)?></i></b></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
+								<thead>
+									<tr>
+										<th>ÍTEM</th>
+										<th>DESCRIPCIÓN</th>
+										<th>UND.</th>
+										<th style="text-align: right;">CANT.</th>
+										<th style="text-align: right;">P.U.</th>
+										<th style="text-align: right;">TOTAL</th>
+										<th style="text-align: center;"> OPCIONES</th>
 									</tr>
-									<?php foreach($value->childMeta as $index => $item){ ?>
-										<?= mostrarAnidado($item, $expedienteTecnico)?>
+								</thead>
+								<tbody>
+									<?php foreach($expedienteTecnico->childComponente as $key => $value){ ?>
+										<tr class="elementoBuscar">
+											<td><b><i><?=$value->numeracion?></i></b></td>
+											<td style="text-align: left;"><b><i><?=html_escape($value->descripcion)?></i></b></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+										</tr>
+										<?php foreach($value->childMeta as $index => $item){ ?>
+											<?= mostrarAnidado($item, $expedienteTecnico, $countValorizacionDiaria)?>
+										<?php } ?>
 									<?php } ?>
-								<?php } ?>
-							</tbody>
-						</table>
+								</tbody>
+							</table>
 						</div>
 					</div>
                 </div>
@@ -123,7 +137,15 @@ function mostrarAnidado($meta, $expedienteTecnico)
 	});
 	function valorizar(codigo)
 	{
-		paginaAjaxDialogo(null, 'Valorizacion de Partida',{ id_DetallePartida: codigo }, base_url+'index.php/Expediente_Tecnico/AsignarValorizacion', 'GET', null, null, false, true);
+		paginaAjaxDialogo('otherModal', 'Valorizacion de Partida',{ id_DetallePartida: codigo }, base_url+'index.php/Expediente_Tecnico/AsignarValorizacion', 'GET', null, null, false, true);
 	}
+	$('#otherModal').on('hide.bs.modal', function () 
+	{
+		alert("cerrado");
+
+	})
+	//$("#myModal").on("hidden.bs.modal", function () {
+    //put your default event here
+	//});
 
 </script>
