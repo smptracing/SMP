@@ -43,9 +43,9 @@ li
 						    			if($value->hasChild)
 						    			{?>
 						    				<li>
-						    					<!--<input type="button" class="btn btn-default btn-xs" value="+" onclick="MostrarSubLista('<?=$value->CodInsumo?>', 1, this);" style="margin: 1px;">-->								    			
-								    			<input type="button" class="btn btn-default btn-xs" value="+" onclick="ContraerSubLista(this); MostrarSubLista('<?=$value->CodInsumo?>', 1, this);" style="margin: 1px;">
-								    			<input type="button" class="btn btn-default btn-xs" value="-" onclick="ContraerSubLista(this);" style="margin: 1px;">
+						    					<input type="button" style="width: 25px;" class="btn btn-default btn-xs" id="btnAccion" name="Accion" value="+" onclick="elegirAccion('<?=$value->CodInsumo?>', 1, this);" style="margin: 1px;">								    			
+								    			<!--<input type="button" class="btn btn-default btn-xs" value="+" onclick="ContraerSubLista(this); MostrarSubLista('<?=$value->CodInsumo?>', 1, this);" style="margin: 1px;">
+								    			<input type="button" class="btn btn-default btn-xs" value="-" onclick="ContraerSubLista(this);" style="margin: 1px;">-->
 								    			<span class="nivel"><?=$value->Descripcion?> <?=($value->Simbolo==null ? '' : ($value->Simbolo))?> </span>
 								    		</li>
 						    			<?php } else { ?>
@@ -349,7 +349,7 @@ function guardarDetalleAnalisisPresupuestal()
 }
 function MostrarSubLista(codigoInsumo, nivel, element)
 {
-	var marginLeftTemp=45;
+	var marginLeftTemp=35;
 	$.ajax(
 	{
 		type: "POST",
@@ -370,15 +370,14 @@ function MostrarSubLista(codigoInsumo, nivel, element)
 				if(obj[i].hasChild == false)
 				{
 					htmlTemp+='<li>'+
-					'<input type="button" class="btn btn-warning btn-xs" value="A" onclick="seleccionar(\''+replaceAll(obj[i].Descripcion,'"','*')+'\',\''+obj[i].Unidad+'\', this);" style="margin: 1px;">'+
+					'<input type="button" class="btn btn-warning btn-xs" style="width: 25px;" value="A" onclick="seleccionar(\''+replaceAll(obj[i].Descripcion,'"','*')+'\',\''+obj[i].Unidad+'\', this);" style="margin: 1px;">'+
 					'<span class="nivel">'+obj[i].Descripcion+ ((obj[i].Simbolo == null) ? "" : ' ('+obj[i].Simbolo+')')+'</span>'+
 					'</li>';
 				}
 				else
 				{
 					htmlTemp+='<li>'+
-					'<input type="button" class="btn btn-default btn-xs" value="+" onclick="ContraerSubLista(this); MostrarSubLista(\''+obj[i].CodInsumo+'\', '+(obj[i].Nivel+1)+', this);" style="margin: 1px;">'+
-					'<input type="button" class="btn btn-default btn-xs" value="-" onclick="ContraerSubLista(this);" style="margin: 1px;">'+
+					'<input type="button" style="width: 25px;" class="btn btn-default btn-xs" value="+" onclick="elegirAccion(\''+obj[i].CodInsumo+'\', '+(obj[i].Nivel+1)+', this);" style="margin: 1px;">'+
 					'<span class="nivel">'+obj[i].Descripcion+ ((obj[i].Simbolo == null) ? "" : ' ('+obj[i].Simbolo+')')+'</span>'+
 				'</li>';
 				}				
@@ -407,5 +406,21 @@ function seleccionar(insumo,unidad,element)
 	{
 		$('#txtUnidad').val(unidad);
 	}	
+}
+
+function elegirAccion(codigoInsumo, nivel, element)
+{
+	var valueButton =  $(element).attr('value');
+	if(valueButton == '+')
+	{
+		MostrarSubLista(codigoInsumo, nivel, element);
+		$(element).attr('value','-');
+	}
+	else
+	{
+		ContraerSubLista(element);
+		$(element).attr('value','+');
+	}
+	
 }
 </script>
