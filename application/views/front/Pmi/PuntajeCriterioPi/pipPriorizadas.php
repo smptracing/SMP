@@ -83,11 +83,16 @@
 </div>
 <script>
 	$(document).ready(function()
-	{
-		$('#table-pippriorizadas').DataTable(
+	{	
+		var myTable=$('#table-pippriorizadas').DataTable(
 		{
-			"language" : idioma_espanol
+			"language":idioma_espanol,
+			"searching": true,
+			"info":     true,
+			"paging":   true,
+			"order": [[ 3, "DESC" ]],
 		});
+
 
 		$('#textAnio').bind('keyup', function(e)
 		{

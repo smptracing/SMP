@@ -44,7 +44,7 @@ class Model_PuntajeCriterioPi extends CI_Model
         DIVISION_FUNCIONAL on
         GRUPO_FUNCIONAL.id_div_funcional=DIVISION_FUNCIONAL.id_div_funcional left join FUNCION on
         DIVISION_FUNCIONAL.id_funcion=FUNCION.id_funcion left join CRITERIO_GEN ON CRITERIO_GEN.id_criterio_gen=CRITERIO_ESP.id_criterio_gen where CRITERIO_GEN.anio_criterio_gen='".$anio."'
-        GROUP BY PRV.id_pi,PRV.codigo_unico_pi,PRV.nombre_pi,FUNCION.id_funcion,FUNCION.nombre_funcion  ORDER BY puntaje DESC;");
+        GROUP BY PRV.id_pi,PRV.codigo_unico_pi,PRV.nombre_pi,FUNCION.id_funcion,FUNCION.nombre_funcion ORDER BY puntaje DESC;");
 
         return $data->result();
     }
