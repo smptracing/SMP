@@ -165,7 +165,8 @@ class PmiCriterioG extends CI_Controller {/* Mantenimiento de sector entidad Y s
 	{
 
 		$anio=$this->input->Post('anio');
-		$dataCriterioGeneralAni=$this->Model_CriterioGeneral->listarCriterioGPorAnios($anio);
+		$id_funcion=$this->input->Post('id_funcion');
+		$dataCriterioGeneralAni=$this->Model_CriterioGeneral->listarCriterioGPorAniosFuncion($anio,$id_funcion);
 		 echo json_encode(['dataCriterioGeneralAni'=>$dataCriterioGeneralAni]);exit;  
 
 	}

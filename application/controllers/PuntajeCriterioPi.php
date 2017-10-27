@@ -118,7 +118,13 @@ class PuntajeCriterioPi extends CI_Controller {/* Mantenimiento de sector entida
                 }
 
             $listarPuntajeCriterioPip=$this->Model_PuntajeCriterioPi->listarPuntajePip($txtIdPi,$anio);
-			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Total Datos a Registra: '.count($combocriterioespecif).'.Registrados: '.$contadorRegistro.' No Registrados '.$contadorNoRegistro.' Por ser Repetidos los  Criterios Especificos.', 'listarPuntajeCriterioPip' => $listarPuntajeCriterioPip]);exit;
+
+            $id_funcion=$this->input->post("id_funcion");
+			$dataCriterioGeneralAniFuncion=$this->Model_CriterioGeneral->listarCriterioGPorAniosFuncion($anio,$id_funcion);
+
+			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Total Datos a Registra: '.count($combocriterioespecif).'.Registrados: '.$contadorRegistro.' No Registrados '.$contadorNoRegistro.' Por ser Repetidos los  Criterios Especificos.', 'listarPuntajeCriterioPip' => $listarPuntajeCriterioPip, 'dataCriterioGeneralAniFuncion' => $dataCriterioGeneralAniFuncion]);exit;
+
+
 
 		}
 		$fechaA=date("Y-m-d");
@@ -137,7 +143,10 @@ class PuntajeCriterioPi extends CI_Controller {/* Mantenimiento de sector entida
 		$listaUnicaProIv=$this->Model_PuntajeCriterioPi->proyectoInvUnico($id_pi);
 
 		$listarPuntajeCriterioPip=$this->Model_PuntajeCriterioPi->listarPuntajePip($id_pi,$anio);
-		$this->load->view('front/Pmi/PuntajeCriterioPi/insertar',['listaUnicaProIv' =>$listaUnicaProIv,'listaCritetioGeneral' => $listaCritetioGeneral,'sumaPesoTotalGeberal' =>$sumaPesoTotalGeberal,'listarPuntajeCriterioPip' => $listarPuntajeCriterioPip,'id_funcion' =>$id_funcion,'anio' => $anio]);
+
+		$dataCriterioGeneralAniFuncion=$this->Model_CriterioGeneral->listarCriterioGPorAniosFuncion($anio,$id_funcion);
+
+		$this->load->view('front/Pmi/PuntajeCriterioPi/insertar',['listaUnicaProIv' =>$listaUnicaProIv,'listaCritetioGeneral' => $listaCritetioGeneral,'sumaPesoTotalGeberal' =>$sumaPesoTotalGeberal,'listarPuntajeCriterioPip' => $listarPuntajeCriterioPip,'id_funcion' =>$id_funcion,'anio' => $anio,'dataCriterioGeneralAniFuncion' => $dataCriterioGeneralAniFuncion]);
 
 	}
 
@@ -159,7 +168,10 @@ class PuntajeCriterioPi extends CI_Controller {/* Mantenimiento de sector entida
 		$this->Model_PuntajeCriterioPi->eliminarPuntajecriterio($id_ptje_criterio);
 
 		$listarPuntajeCriterioPip=$this->Model_PuntajeCriterioPi->listarPuntajePip($id_pi,$anio);
-		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos Eliminados correctamente.', 'listarPuntajeCriterioPip' => $listarPuntajeCriterioPip]);exit;
+		$id_funcion=$this->input->post("id_funcion");
+		$dataCriterioGeneralAniFuncion=$this->Model_CriterioGeneral->listarCriterioGPorAniosFuncion($anio,$id_funcion);
+
+		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos Eliminados correctamente.', 'listarPuntajeCriterioPip' => $listarPuntajeCriterioPip,'dataCriterioGeneralAniFuncion' => $dataCriterioGeneralAniFuncion]);exit;
 
 	}
 
@@ -182,9 +194,15 @@ class PuntajeCriterioPi extends CI_Controller {/* Mantenimiento de sector entida
 	public function listarPuntajePorAnios()
 	{
         $id_pi=$this->input->post('IdPi');
+
         $anio=$this->input->post('anio');
+
+        $id_funcion=$this->input->post("id_funcion");
+
+		$dataCriterioGeneralAniFuncion=$this->Model_CriterioGeneral->listarCriterioGPorAniosFuncion($anio,$id_funcion);
+
 		$listarPuntajeCriterioPip=$this->Model_PuntajeCriterioPi->listarPuntajePip($id_pi,$anio);
-		echo json_encode(['listarPuntajeCriterioPip'=>$listarPuntajeCriterioPip]);exit;  
+		echo json_encode(['listarPuntajeCriterioPip'=>$listarPuntajeCriterioPip,'dataCriterioGeneralAniFuncion' => $dataCriterioGeneralAniFuncion]);exit;  
 
 	}
 

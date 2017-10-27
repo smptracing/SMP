@@ -1,3 +1,5 @@
+
+</style>
 <form class="form-horizontal"  id="form-addAsignarPuntajePi">
 		<div class="row">
 			<div class="col-md-12 col-sm-3 col-xs-12">
@@ -60,20 +62,31 @@
 			<table id="table-puntaje" class="table table-striped table-bordered jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 				<thead>
 					<tr>
-						<td>Criterio</td>
-						<td>Puntaje</td>
-						<td>Opcion</td>
+						<td width="40%"><u> Criterio General</u> | <u style="margin-left: 10px;"> Criterio Especificos</u></td>
+						<td width="1%">Puntaje</td>
+						<td width="5%">Opcion</td>
 					</tr>
 				</thead>
 				<tbody id="bodyPuntaje">
-						<?php $puntaje=0; foreach ($listarPuntajeCriterioPip as $itemp) { $puntaje =round($puntaje,2)+round($itemp->puntaje_criterio,2)?>
+
+						<?php foreach ($dataCriterioGeneralAniFuncion as $ite) {?>
 							<tr>
-								<td><?= $itemp->nombre_criterio ?></td>
-	                    		<td><?= $itemp->puntaje_criterio ?></td>
-	                    		<td>
-	                    			<button type="button" class="btn btn-danger btn-xs " onclick="eliminarPuntaje(<?=$itemp->id_ptje_criterio?>,<?=$itemp->id_pi?>,<?= $itemp->anio_ptje_criterio ?>)"><span class="fa fa-trash"></span></button>
-	                    		</td>
-	                    	</tr>
+									<td  class="success" colspan="3"><strong><?= $ite->nombre_criterio_gen ?></strong></td>
+										
+										<?php $puntaje=0; foreach ($listarPuntajeCriterioPip as $itemp) { $puntaje =round($puntaje,2)+round($itemp->puntaje_criterio,2)?>
+											<?php if($ite->id_criterio_gen==$itemp->id_criterio_gen) {?>
+												<tr>
+													
+													<td><ol style="margin-left: 60px;text-align: left;"><?= $itemp->nombre_criterio ?></ol></td>
+						                    		<td style="text-align: right;"><?= $itemp->puntaje_criterio ?></td>
+						                    		<td>
+						                    			<button type="button" class="btn btn-danger btn-xs " onclick="eliminarPuntaje(<?=$itemp->id_ptje_criterio?>,<?=$itemp->id_pi?>,<?= $itemp->anio_ptje_criterio ?>)"><span class="fa fa-trash"></span></button>
+						                    		</td>
+						                    	</tr>
+											<?php } ?>
+										<?php } ?>
+									
+							</tr>
 						<?php } ?>
 					<tr>
 						<td></td>
@@ -83,7 +96,7 @@
 
 				</tbody>
 			</table>
-
+			
 		</div>
 </form>
 
@@ -150,8 +163,10 @@ $("#comboanioCriterioG" ).change(function() {
 		$('#combocriterioespecif').selectpicker('refresh');
 
 		var anio=$("#comboanioCriterioG").val();
+		var id_funcion=$("#id_funcion").val();
 		var parametros = {
                 "anio" : anio,
+                "id_funcion" :id_funcion,
         };
         $.ajax({
                 data:  parametros,
@@ -208,12 +223,14 @@ $("#combocriteriogeneral" ).change(function() {
 	});
 
 $("#ComboListadoCriterios").change(function() {
-
 		var anio=$("#ComboListadoCriterios").val();
 		var txtIdPi=$("#txtIdPi").val();
+		var id_funcion=$("#id_funcion").val();
+
 		var parametros = {
                 "IdPi" : txtIdPi,
                 "anio":anio,
+                "id_funcion" :id_funcion,
         };
         $.ajax({
                 data:  parametros,
@@ -223,24 +240,37 @@ $("#ComboListadoCriterios").change(function() {
                 },
                 success:  function (response) {
 						objectJSON=JSON.parse(response);
-                		var html;
-                    	$("#bodyPuntaje").html('');
+						var html;
+                		$("#bodyPuntaje").html('');
                     	var puntaje=0;
-                    	$.each(objectJSON.listarPuntajeCriterioPip,function(index,element)
+                    	
+                    	$.each(objectJSON.dataCriterioGeneralAniFuncion,function(index,elemento)
                     	{
-                    	    puntaje = parseFloat(puntaje) + parseFloat(element.puntaje_criterio);
-                    	   	 html +='<tr>';
-	                    		html +='<td>'+element.nombre_criterio+'</td>';
-	                    		html +='<td>'+element.puntaje_criterio+'</td>';
-	                    		html +='<td><button type="button" class="btn btn-danger btn-xs " onclick="eliminarPuntaje('+element.id_ptje_criterio+','+element.id_pi+','+element.anio_ptje_criterio+')"><span class="fa fa-trash"></span></button> </td>';
-                    		html +='</tr>';
+            				html +='<tr>';
+							html +='<td  class="success" colspan="3"><strong>'+elemento.nombre_criterio_gen+'</strong></td>';
+
+		                    	$.each(objectJSON.listarPuntajeCriterioPip,function(index,element)
+		                    	{
+		                    	    if(elemento.id_criterio_gen==element.id_criterio_gen)
+		                    	    {
+		                    	    	puntaje = parseFloat(puntaje) + parseFloat(element.puntaje_criterio);
+		                    	    	html +='<tr>';
+				                    		html +='<td><ol style="margin-left: 60px;text-align: left;">'+element.nombre_criterio+'</ol></td>';
+				                    		html +='<td style="text-align: right;">'+element.puntaje_criterio+'</td>';
+				                    		html +='<td><button type="button" class="btn btn-danger btn-xs " onclick="eliminarPuntaje('+element.id_ptje_criterio+','+element.id_pi+','+element.anio_ptje_criterio+')"><span class="fa fa-trash"></span></button> </td>';
+			                    		html +='</tr>';
+		                    	    }
+			                    	   	 
+		                    	});
+
+							html +='<tr>';
                     	});
                     	html +='<tr><td> </td>';
                     	html +='<td><button type="button" class="btn btn-success">Puntaje Total <span class="badge">'+puntaje+'.00'+'</span></button></td>';
                     	html +='<td></td></tr>';
-                 $("#table-puntaje > #bodyPuntaje").append(html);
-                 $("#anio").html('');
-                 $("#anio").html(anio);
+		                 $("#table-puntaje > #bodyPuntaje").append(html);
+		                 $("#anio").html('');
+		                 $("#anio").html(anio);
                 }
         });
 	});
@@ -278,18 +308,32 @@ $(function()
 				var html;
                     	$("#bodyPuntaje").html('');
                     	var puntaje=0;
-                    	$.each(objectJSON.listarPuntajeCriterioPip,function(index,element)
+                    	
+                    	$.each(objectJSON.dataCriterioGeneralAniFuncion,function(index,elemento)
                     	{
-                    	    puntaje = parseFloat(puntaje) + parseFloat(element.puntaje_criterio);
-                    	   	 html +='<tr>';
-	                    		html +='<td>'+element.nombre_criterio+'</td>';
-	                    		html +='<td>'+element.puntaje_criterio+'</td>';
-	                    		html +='<td><button type="button" class="btn btn-danger btn-xs " onclick="eliminarPuntaje('+element.id_ptje_criterio+','+element.id_pi+','+element.anio_ptje_criterio+')"><span class="fa fa-trash"></span></button> </td>';
-                    		html +='</tr>';
+            				html +='<tr>';
+							html +='<td  class="success" colspan="3"><strong>'+elemento.nombre_criterio_gen+'</strong></td>';
+
+		                    	$.each(objectJSON.listarPuntajeCriterioPip,function(index,element)
+		                    	{
+		                    	    if(elemento.id_criterio_gen==element.id_criterio_gen)
+		                    	    {
+		                    	    	puntaje = parseFloat(puntaje) + parseFloat(element.puntaje_criterio);
+		                    	    	html +='<tr>';
+				                    		html +='<td><ol style="margin-left: 60px;text-align: left;">'+element.nombre_criterio+'</ol></td>';
+				                    		html +='<td style="text-align: right;">'+element.puntaje_criterio+'</td>';
+				                    		html +='<td><button type="button" class="btn btn-danger btn-xs " onclick="eliminarPuntaje('+element.id_ptje_criterio+','+element.id_pi+','+element.anio_ptje_criterio+')"><span class="fa fa-trash"></span></button> </td>';
+			                    		html +='</tr>';
+		                    	    }
+			                    	   	 
+		                    	});
+
+							html +='<tr>';
                     	});
                     	html +='<tr><td> </td>';
                     	html +='<td><button type="button" class="btn btn-success">Puntaje Total <span class="badge">'+puntaje+'.00'+'</span></button></td>';
                     	html +='<td></td></tr>';
+
                  $("#table-puntaje > #bodyPuntaje").append(html);
 			});
 
@@ -301,8 +345,9 @@ $(function()
 });
 function eliminarPuntaje(id_ptje_criterio,id_pi,anio)
 	{
+		var id_funcion=$("#id_funcion").val();
 		event.preventDefault();
-		paginaAjaxJSON({ "id_ptje_criterio" : id_ptje_criterio,"id_pi" : id_pi,"anio" : anio}, '<?=base_url();?>index.php/PuntajeCriterioPi/eliminarPuntajecriterio', 'POST', null, function(objectJSON)
+		paginaAjaxJSON({ "id_ptje_criterio" : id_ptje_criterio,"id_pi" : id_pi,"anio" : anio,"id_funcion" :id_funcion}, '<?=base_url();?>index.php/PuntajeCriterioPi/eliminarPuntajecriterio', 'POST', null, function(objectJSON)
 		{
 			//$('#modalTemp').modal('hide');
 			objectJSON=JSON.parse(objectJSON);
@@ -319,18 +364,32 @@ function eliminarPuntaje(id_ptje_criterio,id_pi,anio)
 				var html;
                     	$("#bodyPuntaje").html('');
                     	var puntaje=0;
-                    	$.each(objectJSON.listarPuntajeCriterioPip,function(index,element)
+                    	
+                    	$.each(objectJSON.dataCriterioGeneralAniFuncion,function(index,elemento)
                     	{
-                    	    puntaje = parseFloat(puntaje) + parseFloat(element.puntaje_criterio);
-                    	   	 html +='<tr>';
-	                    		html +='<td>'+element.nombre_criterio+'</td>';
-	                    		html +='<td>'+element.puntaje_criterio+'</td>';
-	                    		html +='<td><button type="button" class="btn btn-danger btn-xs " onclick="eliminarPuntaje('+element.id_ptje_criterio+','+element.id_pi+','+element.anio_ptje_criterio+')"><span class="fa fa-trash"></span></button> </td>';
-                    		html +='</tr>';
+            				html +='<tr>';
+							html +='<td  class="success" colspan="3"><strong>'+elemento.nombre_criterio_gen+'</strong></td>';
+
+		                    	$.each(objectJSON.listarPuntajeCriterioPip,function(index,element)
+		                    	{
+		                    	    if(elemento.id_criterio_gen==element.id_criterio_gen)
+		                    	    {
+		                    	    	puntaje = parseFloat(puntaje) + parseFloat(element.puntaje_criterio);
+		                    	    	html +='<tr>';
+				                    		html +='<td><ol style="margin-left: 60px;text-align: left;">'+element.nombre_criterio+'</ol></td>';
+				                    		html +='<td style="text-align: right;">'+element.puntaje_criterio+'</td>';
+				                    		html +='<td><button type="button" class="btn btn-danger btn-xs " onclick="eliminarPuntaje('+element.id_ptje_criterio+','+element.id_pi+','+element.anio_ptje_criterio+')"><span class="fa fa-trash"></span></button> </td>';
+			                    		html +='</tr>';
+		                    	    }
+			                    	   	 
+		                    	});
+
+							html +='<tr>';
                     	});
                     	html +='<tr><td> </td>';
                     	html +='<td><button type="button" class="btn btn-success">Puntaje Total <span class="badge">'+puntaje+'.00'+'</span></button></td>';
                     	html +='<td></td></tr>';
+
                  $("#table-puntaje > #bodyPuntaje").append(html);
 			});
 

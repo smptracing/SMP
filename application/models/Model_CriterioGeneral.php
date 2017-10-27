@@ -83,4 +83,11 @@ class Model_criterioGeneral extends CI_Model
 		$data=$this->db->query("select * from CRITERIO_GEN where CRITERIO_GEN.anio_criterio_gen='$anio'");        
         return $data->result();
 	}
+	function listarCriterioGPorAniosFuncion($anio,$id_funcion)
+	{
+		$data=$this->db->query("select * from CRITERIO_GEN  INNER JOIN FUNCION ON CRITERIO_GEN.id_funcion=FUNCION.id_funcion  WHERE  
+			CRITERIO_GEN.anio_criterio_gen='$anio'  and FUNCION.id_funcion='$id_funcion' ");        
+        return $data->result();
+
+	}
 }
