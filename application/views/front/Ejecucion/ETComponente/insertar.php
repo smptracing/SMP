@@ -115,9 +115,10 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 			    	{
 		    			if($value->hasChild)
 		    			{?>
-		    				<li>							    			
-				    			<input type="button" class="btn btn-default btn-xs" value="+" onclick="ContraerSubLista(this); MostrarSubLista('<?=$value->CodPartida?>',3, this);" style="margin: 1px;">
-				    			<input type="button" class="btn btn-default btn-xs" value="-" onclick="ContraerSubLista(this);" style="margin: 1px;">
+		    				<li>
+		    					<input type="button" style="width: 25px;" class="btn btn-default btn-xs" id="btnAccion" name="Accion" value="+" onclick="elegirAccion('<?=$value->CodPartida?>', 3, this);" style="margin: 1px;">							    			
+				    			<!--<input type="button" class="btn btn-default btn-xs" value="+" onclick="ContraerSubLista(this); MostrarSubLista('<?=$value->CodPartida?>',3, this);" style="margin: 1px;">
+				    			<input type="button" class="btn btn-default btn-xs" value="-" onclick="ContraerSubLista(this);" style="margin: 1px;">-->
 				    			<span class="nivel"><?=$value->Descripcion?> <?=($value->Simbolo==null ? '' : ($value->Simbolo))?> </span>							    		
 				    		</li>
 		    			<?php } else { ?>
@@ -624,7 +625,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 
 	function MostrarSubLista(codigoPartida, nivel, element)
 	{
-		var marginLeftTemp=45;
+		var marginLeftTemp=35;
 		$.ajax(
 		{
 			type: "POST",
@@ -645,15 +646,14 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 					if(obj[i].hasChild == false)
 					{
 						htmlTemp+='<li>'+
-						'<input type="button" class="btn btn-warning btn-xs" value="A" onclick="seleccionar(\''+replaceAll(obj[i].Descripcion,'"','*')+'\',\''+obj[i].Unidad+'\', \''+obj[i].RendimientoMO+'\');" style="margin: 1px;">'+
+						'<input type="button" class="btn btn-warning btn-xs" value="A" style="width: 25px;" onclick="seleccionar(\''+replaceAll(obj[i].Descripcion,'"','*')+'\',\''+obj[i].Unidad+'\', \''+obj[i].RendimientoMO+'\');" style="margin: 1px;">'+
 						'<span class="nivel">'+obj[i].Descripcion+ ((obj[i].Simbolo == null) ? "" : ' ('+obj[i].Simbolo+')')+'</span>'+
 						'</li>';
 					}
 					else
 					{
 						htmlTemp+='<li>'+
-						'<input type="button" class="btn btn-default btn-xs" value="+" onclick="ContraerSubLista(this); MostrarSubLista(\''+obj[i].CodPartida+'\', '+(obj[i].Nivel+1)+', this);" style="margin: 1px;">'+
-						'<input type="button" class="btn btn-default btn-xs" value="-" onclick="ContraerSubLista(this);" style="margin: 1px;">'+
+						'<input type="button" style="width: 25px;" class="btn btn-default btn-xs" value="+" onclick="elegirAccion(\''+obj[i].CodPartida+'\', '+(obj[i].Nivel+1)+', this);" style="margin: 1px;">'+
 						'<span class="nivel">'+obj[i].Descripcion+ ((obj[i].Simbolo == null) ? "" : ' ('+obj[i].Simbolo+')')+'</span>'+
 					'</li>';
 					}				
@@ -690,6 +690,22 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 		{
 			$('#txtRendimientoPartida').val(rendimiento);
 		}
+	}
+
+	function elegirAccion(codigoInsumo, nivel, element)
+	{
+		var valueButton =  $(element).attr('value');
+		if(valueButton == '+')
+		{
+			MostrarSubLista(codigoInsumo, nivel, element);
+			$(element).attr('value','-');
+		}
+		else
+		{
+			ContraerSubLista(element);
+			$(element).attr('value','+');
+		}
+		
 	}
 
 	$(function()

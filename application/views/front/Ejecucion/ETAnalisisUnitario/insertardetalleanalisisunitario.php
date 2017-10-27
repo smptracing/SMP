@@ -43,7 +43,7 @@ li
 						    			if($value->hasChild)
 						    			{?>
 						    				<li>
-						    					<input type="button" style="width: 25px;" class="btn btn-default btn-xs" id="btnAccion" name="Accion" value="+" onclick="elegirAccion('<?=$value->CodInsumo?>', 1, this);" style="margin: 1px;">								    			
+						    					<input type="button" style="width: 25px;" class="btn btn-default btn-xs" id="btnAccion" name="Accion" value="+" onclick="elegirAccion('<?=$value->CodInsumo?>', 1, this);" style="margin: 1px;">						    			
 								    			<!--<input type="button" class="btn btn-default btn-xs" value="+" onclick="ContraerSubLista(this); MostrarSubLista('<?=$value->CodInsumo?>', 1, this);" style="margin: 1px;">
 								    			<input type="button" class="btn btn-default btn-xs" value="-" onclick="ContraerSubLista(this);" style="margin: 1px;">-->
 								    			<span class="nivel"><?=$value->Descripcion?> <?=($value->Simbolo==null ? '' : ($value->Simbolo))?> </span>
@@ -423,4 +423,5 @@ function elegirAccion(codigoInsumo, nivel, element)
 	}
 	
 }
+
 </script>
