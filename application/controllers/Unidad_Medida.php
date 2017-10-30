@@ -71,4 +71,9 @@ class Unidad_Medida extends CI_Controller
 
         return $this->load->view('front/Administracion/UnidadMedida/editar', ['unidadMedida' => $unidadMedida]);
     }
+    public function listaUnidadMedida()
+    {
+        $data=$this->Model_Unidad_Medida->ETListaUnidadPorDescripcion($this->input->post('valueSearch'));
+        echo json_encode($data);exit;
+    }
 }

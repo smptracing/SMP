@@ -88,7 +88,7 @@ class ET_Partida extends CI_Controller
 
 		$this->db->trans_complete();
 
-		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Partida registrada correctamente.', 'idPartida' => $ultimoIdPartida, 'descripcionUnidadMedida' => $unidadMedida->descripcion, 'cantidadDetallePartida' => $ultimoETDetallePartida->cantidad, 'precioParcialDetallePartida' => $ultimoETDetallePartida->parcial]);exit;
+		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Partida registrada correctamente.', 'idPartida' => $ultimoIdPartida, 'descripcionUnidadMedida' => $unidadMedida->descripcion, 'cantidadDetallePartida' => $ultimoETDetallePartida->cantidad, 'precioParcialDetallePartida' => $ultimoETDetallePartida->parcial, 'precioUnitarioDetallePartida' => $ultimoETDetallePartida->precio_unitario]);exit;
 	}
 
 	private function updateNumerationPartida($idMeta)
@@ -123,5 +123,21 @@ class ET_Partida extends CI_Controller
 		}
 
 		$this->load->view('Front/Ejecucion/ETPartida/insertar');
+	}
+	public function editarCantidadPartida()
+	{
+		$idPartida=$this->input->post('idPartida');
+		$cantidadPartida=$this->input->post('cantidadPartida');
+
+		$this->Model_ET_Partida->updateCantidaPartida($idPartida,$cantidadPartida);
+		$this->Model_ET_Detalle_Partida->updateCantidaDetallePartida($idPartida,$cantidadPartida);
+
+		$partida = $this->Model_ET_Partida->ETPartidaPorIdPartida($idPartida);
+		$detallePartida = $this->Model_ET_Detalle_Partida->ETDetallePartidaPorIdPartida($idPartida);
+
+		$cantidad  = $detallePartida[0]->cantidad;
+		$parcial =  $detallePartida[0]->parcial;
+
+		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Cambios guardados correctamente.','idPartida' => $idPartida, 'cantidad' => $cantidad, 'precioParcial' => $parcial  ]);exit;
 	}
 }

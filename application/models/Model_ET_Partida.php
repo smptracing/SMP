@@ -64,4 +64,11 @@ class Model_ET_Partida extends CI_Model
 
 		return true;
 	}
+
+	public function updateCantidaPartida($idPartida, $cantidad)
+	{
+		$this->db->query("update ET_PARTIDA set cantidad=$cantidad where id_partida=".$idPartida);
+
+		return true;
+	}
 }

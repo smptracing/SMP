@@ -2,10 +2,33 @@
 function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 {
 	$htmlTemp='';
-
 	$htmlTemp.='<li>'.
-		'<input type="button" class="btn btn-default btn-xs" value="G" onclick="guardarCambiosMeta('.$meta->id_meta.');" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarMeta('.$meta->id_meta.', this);" style="width: 30px;"><button type="button" title="Mostrar Partidas" class="btn btn-default btn-xs" style="width: 30px;" data-toggle="collapse" data-target="#demo'.$meta->id_meta.'"><i class="fa fa-expand"></i></button><input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(\'\', $(this).parent(), '.$meta->id_meta.')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="+P" onclick="renderizarAgregarPartida($(this).parent(), '.$meta->id_meta.')" style="width: 30px;"><span style="text-transform: uppercase; color:#611e7b; font-weight: bold;" id="nombreMeta'.$meta->id_meta.'" contenteditable>'.html_escape($meta->desc_meta).'</span>'.
-		((count($meta->childMeta)==0 && count($meta->childPartida))>0 ? '<div style="margin-bottom : 8px;margin-top : 2px;" id="demo'.$meta->id_meta.'" class="collapse"><table class ="tablaPartidas"><thead><th class = "col-md-1">OPCIONES</th><th class = "col-md-6">PARTIDA</th><th class = "col-md-1">RENDIMIENTO</th><th class = "col-md-1">U. MEDIDA</th><th class = "col-md-1">CANTIDAD</th><th class = "col-md-1">TOTAL</th></thead><tbody>' : '<ul>');
+		'<input type="button" class="btn btn-default btn-xs" value="G" onclick="guardarCambiosMeta('.$meta->id_meta.');" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarMeta('.$meta->id_meta.', this);" style="width: 30px;"><button type="button" title="Mostrar Partidas" class="btn btn-default btn-xs" style="width: 30px;" data-toggle="collapse" data-target="#demo'.$meta->id_meta.'"><i class="fa fa-expand"></i></button>';
+		$haschild = (count($meta->childMeta)==0 ? false : true);
+		$hasPartida = false;
+		/*if(isset($meta->childPartida))
+		{
+			$hasPartida = (count($meta->childPartida)==0 ? false : true);
+		}
+		else
+		{
+			$hasPartida = false;
+		}
+		if(!$hasPartida)
+		{
+			$htmlTemp.='<input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(\'\', $(this).parent(), '.$meta->id_meta.')" style="width: 30px;">';
+
+		}
+		if(!$haschild)
+		{
+			$htmlTemp.='<input type="button" class="btn btn-default btn-xs" value="+P" onclick="renderizarAgregarPartida($(this).parent(), '.$meta->id_meta.')" style="width: 30px;">';
+		}*/
+		$htmlTemp.='<input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(\'\', $(this).parent(), '.$meta->id_meta.')" style="width: 30px;">';
+
+		$htmlTemp.='<input type="button" class="btn btn-default btn-xs" value="+P" onclick="renderizarAgregarPartida($(this).parent(), '.$meta->id_meta.')" style="width: 30px;">';
+
+		$htmlTemp.='<span style="text-transform: uppercase; color:#611e7b; font-weight: bold;" id="nombreMeta'.$meta->id_meta.'" contenteditable>'.html_escape($meta->desc_meta).'</span>'.
+		((count($meta->childMeta)==0 && count($meta->childPartida))>0 ? '<div style="margin-bottom : 8px;margin-top : 2px;" id="demo'.$meta->id_meta.'" class="collapse"><table class ="tablaPartidas"><thead><th class = "col-md-2">OPCIONES</th><th class = "col-md-5">PARTIDA</th><th class = "col-md-1">RENDIMIENTO</th><th class = "col-md-1">U. MEDIDA</th><th class = "col-md-1">CANTIDAD</th><th class = "col-md-1">PRECIO U.</th><th class = "col-md-1">TOTAL</th></thead><tbody>' : '<ul>');
 
 	if(count($meta->childMeta)==0)
 	{		
@@ -13,13 +36,15 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 		{
 			$htmlTemp.='<tr id="rowPartida'.$value->id_partida.'" style="color: '.($value->partidaCompleta ? 'blue' : 'red').';" class="liPartida">'.
 				'<td>'.
+					'<input type="button" class="btn btn-default btn-xs" value="G" onclick="guardarCambiosPartida('.$value->id_partida.');" style="width: 30px;">'.
 					'<input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida('.$value->id_partida.', this);" style="width: 30px;">'.
 					'<input type="button" class="btn btn-default btn-xs" value="A" onclick="paginaAjaxDialogo(\'otherModal\', \'Análisis presupuestal\', { idET : '.$idExpedienteTecnico.', idPartida : '.$value->id_partida.' }, \''.base_url().'index.php/ET_Analisis_Unitario/insertar\', \'get\', null, null, false, true);" style="width: 30px;">'.
 				'</td>'.
 				'<td style="text-transform: uppercase;">'.html_escape($value->desc_partida).'</td>'.
 				'<td style="text-align:right;">'.html_escape($value->rendimiento).'</td>'.
 				'<td style="text-align: right; text-transform: uppercase;">'.html_escape($value->descripcion).'</td>'.
-				'<td style="text-align: right;">'.$value->cantidad.'</td>'.
+				'<td style="text-align: right;"><span id="nombrePartida'.$value->id_partida.'" contenteditable>'.html_escape($value->cantidad).'</span></td>'.
+				'<td style="text-align: right;">'.$value->precio_unitario.'</td>'.
 				'<td style="text-align: right;">'.number_format($value->parcial, 2).'</td>'.
 			'</tr>';
 		}
@@ -117,8 +142,6 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 		    			{?>
 		    				<li>
 		    					<input type="button" style="width: 25px;" class="btn btn-default btn-xs" id="btnAccion" name="Accion" value="+" onclick="elegirAccion('<?=$value->CodPartida?>', 3, this);" style="margin: 1px;">							    			
-				    			<!--<input type="button" class="btn btn-default btn-xs" value="+" onclick="ContraerSubLista(this); MostrarSubLista('<?=$value->CodPartida?>',3, this);" style="margin: 1px;">
-				    			<input type="button" class="btn btn-default btn-xs" value="-" onclick="ContraerSubLista(this);" style="margin: 1px;">-->
 				    			<span class="nivel"><?=$value->Descripcion?> <?=($value->Simbolo==null ? '' : ($value->Simbolo))?> </span>							    		
 				    		</li>
 		    			<?php } else { ?>
@@ -134,7 +157,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 			<div id="validarPartida">
 				<div class="row">
 					<div class="col-md-12 col-sm-2 col-xs-12">
-						<br>
+						<br>						
 						<label for="control-label">Partida:</label>
 						<div>
 							<input type="text" id="selectDescripcionPartida" name="selectDescripcionPartida" autocomplete="off" class="form-control">
@@ -149,9 +172,13 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 						</div>
 					</div>	
 					<div class="col-md-6 col-sm-2 col-xs-12">
-						<label for="control-label">Unidad:</label>
+						<!--<label for="control-label">Unidad:</label>
 						<div>
-							<input type="text" id="selectUnidadMedidaPartida" name="selectUnidadMedidaPartida" autocomplete="off" class="form-control">
+							<input type="text" id="selectUnidadMedidaPartida" name="selectUnidadMedidaPartida" autocomplete="off" class="form-control">-->
+						<label class="control-label">Unidad</label>
+						<div>
+							<select name="selectUnidadMedidaPartida" id="selectUnidadMedidaPartida" class="form-control"></select>
+						</div>
 						</div>
 					</div>								
 				</div>	
@@ -351,6 +378,43 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 			$('#nombreMeta'+idMeta).text($('#nombreMeta'+idMeta).text().trim());
 		}, false, true);
 	}
+	function guardarCambiosPartida(idPartida)
+	{
+		if($('#nombrePartida'+idPartida).text().trim()=='')
+		{
+			swal(
+			{
+				title: '',
+				text: 'Cantidad es un campo obligatorio.',
+				type: 'error'
+			},
+			function(){});
+
+			$('#nombrePartida'+idPartida).text('___');
+
+			return;
+		}
+
+		paginaAjaxJSON({ "idPartida" : idPartida, 'cantidadPartida' : replaceAll(replaceAll($('#nombrePartida'+idPartida).text().trim(), '<', '&lt;'), '>', '&gt;') }, base_url+'index.php/ET_Partida/editarCantidadPartida', 'POST', null, function(objectJSON)
+		{
+			objectJSON=JSON.parse(objectJSON);
+
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+			},
+			function(){});
+			
+			var currentRow = $("#rowPartida"+objectJSON.idPartida);
+			/*currentRow.find("td:eq(4)").text('<span id="nombrePartida'+objectJSON.idPartida+'" contenteditable>'+parseFloat(objectJSON.cantidad).toFixed(2))+'</span>');*/
+			currentRow.find("td:eq(6)").text(parseFloat(objectJSON.precioParcial).toFixed(2));
+			currentRow.find("td:eq(4)").html('<span id="nombrePartida'+objectJSON.idPartida+'" contenteditable>'+(parseFloat(objectJSON.cantidad).toFixed(2))+'</span>');
+			limpiarArbolCompletoMasOpciones();
+		}, false, true);
+	}
+
 
 	function eliminarComponente(idComponente, element)
 	{
@@ -467,8 +531,8 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 			}
 
 			var htmlTemp='<li>'+
-				'<input type="button" class="btn btn-default btn-xs" value="G" onclick="guardarCambiosMeta('+objectJSON.idMeta+');" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarMeta('+objectJSON.idMeta+', this);" style="width: 30px;"><button type="button" title="Mostrar Partidas" class="btn btn-default btn-xs" style="width: 30px;" data-toggle="collapse" data-target="#demo'+objectJSON.idMeta+'"><i class="fa fa-expand"></i></button><input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(\'\', $(this).parent(), '+objectJSON.idMeta+')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="+P" onclick="renderizarAgregarPartida($(this).parent(), '+objectJSON.idMeta+')" style="width: 30px;"><span style="text-transform: uppercase; color:#611e7b; font-weight: bold;" id="nombreMeta'+objectJSON.idMeta+'" contenteditable>'+replaceAll(replaceAll(descripcionMeta.trim(), '<', '&lt;'), '>', '&gt;')+'</span>'+
-					'<div id="demo'+objectJSON.idMeta+'" style="margin-bottom : 8px;margin-top : 2px;" class="collapse"><table class ="tablaPartidas"><thead><th class = "col-md-1">OPCIONES</th><th class = "col-md-7">PARTIDA</th><th class = "col-md-1">RENDIMIENTO</th><th class = "col-md-1">U. MEDIDA</th><th class = "col-md-1">CANTIDAD</th><th class = "col-md-1">TOTAL</th></thead><tbody><ul></ul></li>';
+				'<input type="button" class="btn btn-default btn-xs" value="G" onclick="guardarCambiosMeta('+objectJSON.idMeta+');" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarMeta('+objectJSON.idMeta+', this);" style="width: 30px;"><button type="button" title="Mostrar Partidas" class="btn btn-default btn-xs" style="width: 30px;" data-toggle="collapse" data-target="#demo'+objectJSON.idMeta+'"><i class="fa fa-expand"></i></button><input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(\'\', $(this).parent(), '+objectJSON.idMeta+')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="+P" onclick="renderizarAgregarPartida($(this).parent(), '+objectJSON.idMeta+')" style="width: 30px;"><span style="text-transform: uppercase; color:#611e7b; font-weight: bold;" id="nombreMeta'+objectJSON.idMeta+'" contenteditable>'+descripcionMeta+'</span>'+
+					'<div id="demo'+objectJSON.idMeta+'" style="margin-bottom : 8px;margin-top : 2px;" class="collapse"><table class ="tablaPartidas"><thead><th class = "col-md-1">OPCIONES</th><th class = "col-md-7">PARTIDA</th><th class = "col-md-1">RENDIMIENTO</th><th class = "col-md-1">U. MEDIDA</th><th class = "col-md-1">CANTIDAD</th><th class = "col-md-1">PRECIO U.</th><th class = "col-md-1">TOTAL</th></thead><tbody><ul></ul></li>';
 
 			$($(elementoPadre).find('ul')[0]).append(htmlTemp);
 
@@ -570,6 +634,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 
 			var htmlTemp='<tr id="rowPartida'+objectJSON.idPartida+'" style="color: red;" class="liPartida">'+
 				'<td>'+
+					'<input type="button" class="btn btn-default btn-xs" value="G" onclick="guardarCambiosPartida('+objectJSON.idPartida+');" style="width: 30px;">'+
 					'<input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarPartida('+objectJSON.idPartida+', this);" style="width: 30px;">'+
 					'<input type="button" class="btn btn-default btn-xs" value="A" onclick="paginaAjaxDialogo(\'otherModal\', \'Análisis presupuestal\', { idET : <?=$expedienteTecnico->id_et?>, idPartida : '+objectJSON.idPartida+' }, \''+base_url+'index.php/ET_Analisis_Unitario/insertar\''+', \'get\', null, null, false, true);" style="width: 30px;">'+
 				'</td>'+
@@ -577,6 +642,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 				'<td style="text-align:right;">'+replaceAll(replaceAll($('#txtRendimientoPartida').val().trim(), '<', '&lt;'), '>', '&gt;')+'</td>'+
 				'<td style="text-align: right; text-transform: uppercase;">'+replaceAll(replaceAll(objectJSON.descripcionUnidadMedida, '<', '&lt;'), '>', '&gt;')+'</td>'+
 				'<td style="text-align: right;">'+parseFloat(objectJSON.cantidadDetallePartida).toFixed(2)+'</td>'+
+				'<td style="text-align: right;">'+parseFloat(objectJSON.precioUnitarioDetallePartida).toFixed(2)+'</td>'+
 				'<td style="text-align: right;">'+parseFloat(objectJSON.precioParcialDetallePartida).toFixed(2)+'</td>'+
 			'</tr>';
 			if(!($(elementoPadreParaAgregarPartida).find('table').length))
@@ -711,6 +777,96 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 	$(function()
 	{
 		limpiarArbolCompletoMasOpciones();
+
+		$('#selectPartida').selectpicker({ liveSearch: true }).ajaxSelectPicker(
+		{
+	        ajax: {
+	            url: base_url+'index.php/ET_Lista_Partida/verPorDescripcion',
+	            data: { valueSearch : '{{{q}}}' }
+	        },
+	        locale:
+	        {
+	            emptyTitle: 'Buscar partida'
+	        },
+	        preprocessData: function(data)
+	        {
+	        	var dataForSelect=[];
+
+	        	for(var i=0; i<data.length; i++)
+	        	{
+	        		dataForSelect.push(
+	                {
+	                    "value" : data[i].desc_lista_partida,
+	                    "text" : data[i].desc_lista_partida,
+	                    "data" :
+	                    {
+	                    	"id-lista-partida" : data[i].id_lista_partida,
+	                    	"id-unidad" : data[i].id_unidad
+	                    },
+	                    "disabled" : false
+	                });
+	        	}
+
+	            return dataForSelect;
+	        },
+	        preserveSelected: false
+	    });
+
+	    $('#selectPartida').on('change', function()
+	    {
+			var selected=$(this).find("option:selected").val();
+
+			if(selected.trim()!='')
+			{
+				$('#hdIdListaPartida').val($(this).find("option:selected").data('id-lista-partida'));
+				$('#selectDescripcionPartida').val($('#selectPartida').val());
+				//$('#selectUnidadMedidaPartida').val($(this).find("option:selected").data('id-unidad'));
+			}
+	    });
+	    $('#selectUnidadMedidaPartida').selectpicker({ liveSearch: true }).ajaxSelectPicker(
+		{
+	        ajax: {
+	            url: base_url+'index.php/Unidad_Medida/listaUnidadMedida',
+	            data: { valueSearch : '{{{q}}}' }
+	        },
+	        locale:
+	        {
+	            emptyTitle: 'Buscar Unidad'
+	        },
+	        preprocessData: function(data)
+	        {
+	        	var dataForSelect=[];
+
+	        	for(var i=0; i<data.length; i++)
+	        	{
+	        		dataForSelect.push(
+	                {
+	                    "value" : data[i].descripcion,
+	                    "text" : data[i].descripcion,
+	                    "data" :
+	                    {
+	                    	"id-unidad" : data[i].id_unidad
+	                    },
+	                    "disabled" : false
+	                });
+	        	}
+
+	            return dataForSelect;
+	        },
+	        preserveSelected: false
+	    });
+
+	    $('#selectUnidadMedidaPartida').on('change', function()
+	    {
+			var selected=$(this).find("option:selected").val();
+
+			if(selected.trim()!='')
+			{
+				//$('#hdIdListaPartida').val($(this).find("option:selected").data('id-lista-partida'));
+				//$('#selectDescripcionPartida').val($('#selectPartida').val());
+				//$('#selectUnidadMedidaPartida').val($(this).find("option:selected").data('id-unidad'));
+			}
+	    });
 
 		$('#divAgregarComponente').formValidation(
 		{

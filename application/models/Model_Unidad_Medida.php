@@ -79,4 +79,11 @@ class Model_Unidad_Medida extends CI_Model
 		$data=$this->db->query("exec sp_gestionar_insumopartida @opcion = 'listar_partidas_nivel' ,  @CodInsumoPartida = '$codigoPartida', @NivelInsumoPartida = $nivel");
 		return $data->result();
 	}
+
+	public function ETListaUnidadPorDescripcion($valueSearch)
+	{
+		$data=$this->db->query("select * from UNIDAD_MEDIDA where replace(descripcion, ' ', '') like '%'+replace('".$valueSearch."', ' ', '')+'%'");
+
+		return $data->result();
+	}
 }
