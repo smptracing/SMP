@@ -25,12 +25,12 @@
 			</div>
 		</div>
 		<div class="col-md-6 col-sm-6 col-xs-12">
-			<label for="control-label">Presupuesto analítico (Clasificador)</label>
+			<label for="control-label">Presupuesto analíticos (Clasificador)</label>
 			<div>
 				<select name="selectPresupuestoAnalitico" id="selectPresupuestoAnalitico" class="form-control">
 					<option></option>
 					<?php foreach($listaETPresupuestoAnalitico as $value){ ?>
-						<option value="<?=$value->id_analitico?>,<?=html_escape($value->desc_presupuesto_ej)?>"><?=html_escape($value->desc_clasificador)?></option>
+						<option value="<?=$value->id_analitico?>,<?=html_escape($value->desc_presupuesto_ej)?>"><?=html_escape($value->desc_presupuesto_ej)?> <?=html_escape($value->num_clasificador)?> : <?=html_escape($value->desc_clasificador)?></option>
 					<?php } ?>
 				</select>
 			</div>
