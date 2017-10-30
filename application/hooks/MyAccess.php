@@ -24,7 +24,7 @@ if ( ! function_exists('autentificar'))
 			'AplicativoMovil/DatosGeneralesdelPip',
 			'AplicativoMovil/GraficarPip',
 			'AplicativoMovil/',
-			//'AplicativoMovil/Pips',				
+			'AplicativoMovil/Pips',				
 		);
 		if(in_array($url, $libres)) 
 		{
