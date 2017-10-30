@@ -5,6 +5,7 @@ $(document).on("ready" ,function()
 	$("#btn_nuevoPersonal").click(function()//para que cargue el como una vez echo click sino repetira datos
 	{
 		listarOficina();
+
 	});
 
 	$("#form-addPersonal").submit(function(event)//para añadir nuevo division Personal
@@ -143,13 +144,42 @@ $(document).on("ready" ,function()
 			var txt_correom=$('#txt_correom').val(data.correo);
 			var txt_gradoacademicom=$('#txt_gradoacademicom').val(data.grado_academico);
 			var txt_especialidadm=$('#txt_especialidadm').val(data.especialidad);
-			var date_fechanacm=$('#date_fechanacm').val(data.date_fechanacm);
+			var date_fechanacm=$('#date_fechanacm').val(data.fecha_nac);
 
 			listarOficina(id_oficina);
+			listarOficinaModificar(id_oficina);
+
 		});
 
 	}
+	var listarOficinaModificar=function(id_oficina)
+	{
+		event.preventDefault(); 
+		var html="";
 
+		$("#Cbx_OficinaModificar").html(html); 
+
+		$.ajax(
+		{
+			"url" : base_url+"index.php/Oficina/GetOficina",
+			"type" : "POST",
+			success : function(respuesta3)
+			{
+				var registros = eval(respuesta3);
+
+				for(var i=0; i<registros.length; i++)
+				{
+					html +="<option  value="+registros[i]["id_oficina"]+"> "+registros[i]["denom_oficina"]+" </option>";   
+				}
+
+				$("#Cbx_OficinaModificar").html(html);
+				$('#Cbx_OficinaModificar option[value='+id_oficina+']').prop('selected', true);
+				$('#Cbx_OficinaModificar').selectpicker('refresh');
+
+
+			}
+		});
+	}
 	var listarOficina=function(id_oficina)
 	{
 		event.preventDefault(); 
@@ -176,6 +206,8 @@ $(document).on("ready" ,function()
 				$('select[name=Cbx_Oficinas]').val(id_oficina);//PARA AGREGAR UN COMBO PSELECIONADO
 				$('select[name=Cbx_Oficinas]').change();
 				$('.selectpicker').selectpicker('refresh'); 
+
+
 			}
 		});
 	}

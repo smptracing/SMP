@@ -303,6 +303,13 @@
                         </div>
                       </div>
                     <div class="form-group">
+                           <label class="control-label col-md-3 col-sm-3 col-xs-6">Oficina</label>
+                            <div class="col-md-6 col-sm-9 col-xs-6">
+                                     <select   id="Cbx_OficinaModificar" name="Cbx_OficinaModificar"  data-live-search="true"  title="">
+                                      </select>
+                            </div>
+                    </div>
+                    <div class="form-group">
                            <label class="control-label col-md-3 col-sm-3 col-xs-6">Personal</label>
                             <div class="col-md-6 col-sm-9 col-xs-6">
                                  <select   id="Cbx_Oficinas" name="Cbx_Oficinas" class="selectpicker form-control col-md-12 col-xs-12"  title="Buscar Estado FE...">
