@@ -3,9 +3,6 @@
 		<div class="">
 			<div class="col-md-12 col-xs-12">
 				<div class="x_panel">
-					<div class="x_title" style="color: black; ">
-						
-					</div>
 					<div class="x_content">
 						<div class="" role="tabpanel" data-example-id="togglable-tabs">
 							<ul id="myTab" class="nav nav-tabs" role="tablist">
@@ -14,19 +11,21 @@
 							</ul>
 							<div id="myTabContent" class="tab-content">
 								<div role="tabpanel" class="tab-pane fade active in" id="#tab_etapasFE" aria-labelledby="home-tab">
-										<br>
 									<div class="row">
-										<div class="col-md-3 col-xs-3"  style="margin-left: 300px;">
-											<div class="form-group">
-								                <label class="control-label" for="inputGroup">Buscar PIP por Año Priorizado</label>
-								                <div class="input-group">
-													<input type="text" class="form-control"  id="textAnio" name="textAnio" value="<?= $anio;?>" data-inputmask="'mask' : '9999'">
-								                    <span class="input-group-addon">
-								                        <i class="fa fa-search"></i>
-								                    </span>
-								                </div>
-						            		</div>
-										</div>
+											<div class="row"> <br/>
+												<div class="col-md-3 col-xs-3" style="margin-left: 200px;position: absolute;margin-top: 7px;">
+													Buscar PIP por Año Priorizado
+						            			</div>
+						            			<div class="col-md-3 col-xs-3"  style="margin-left: 300px;">
+													<select  id="PipPriorizadoAnio" name="PipPriorizadoAnio" class="form-control" class="selectpicker" data-width="75%" data-live-search="true"></select>
+						            			</div>
+						            			<div class="col-md-3 col-xs-3"  style="margin-left: 460px;margin-top: -35px;">
+													 <div class="pull-right tableTools-container"> Reportes </div>
+												</div>
+
+						            			</div>
+											</div>
+											
 										<div class="col-md-12 col-xs-12">
 						
 											<div class="x_content">
@@ -84,6 +83,8 @@
 <script>
 	$(document).ready(function()
 	{	
+		$('#PipPriorizadoAnio').selectpicker('refresh');
+		anios();
 		var myTable=$('#table-pippriorizadas').DataTable(
 		{
 			"language":idioma_espanol,
@@ -93,17 +94,60 @@
 			"order": [[ 3, "DESC" ]],
 		});
 
+		$("#PipPriorizadoAnio").change(function(){
+			var anio=$("#PipPriorizadoAnio").val();
+			window.location.href=base_url+"index.php/PuntajeCriterioPi/pipPriorizadas/"+anio;
+		});
 
-		$('#textAnio').bind('keyup', function(e)
-		{
-			if(e.keyCode==13)
-			{
-				var anio=$("#textAnio").val();
-				window.location.href=base_url+"index.php/PuntajeCriterioPi/pipPriorizadas/"+anio;
-			}
-		});	
+		$.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
+				
+				new $.fn.dataTable.Buttons( myTable, {
+					buttons: [
+					  {
+						"extend": "excel",
+						"text": "<i class='fa fa-file-excel-o bigger-110 green'></i> <span class='hidden'>Export to Excel</span>",
+						"className": "btn btn-white btn-primary btn-bold"
+					  },
+					  {
+						"extend": "pdf",
+						"text": "<i class='fa fa-file-pdf-o bigger-110 red'></i> <span class='hidden'>Export to PDF</span>",
+						"className": "btn btn-white btn-primary btn-bold"
+					  },
+					  {
+						"extend": "print",
+						"text": "<i class='fa fa-print bigger-110 grey'></i> <span class='hidden'>Print</span>",
+						"className": "btn btn-white btn-primary btn-bold",
+						autoPrint: false,
+						message: 'This print was produced using the Print button for DataTables'
+					  }		  
+					]
+				} );
+				myTable.buttons().container().appendTo( $('.tableTools-container') );
 
+
+	
 	});
+
+	function anios()
+		{
+			
+			var aniosI=2015;
+
+			var html;
+			var itn=1;
+			html +='<option value=""> Buscar Años </option>';
+			for (var i=2015; i<=2050; i++) {
+				
+				html +='<option value="'+(parseInt(aniosI)+parseInt(itn))+'"> '+(parseInt(aniosI)+parseInt(itn))+' </option>';
+				itn++;
+			}
+			var anio='<?= $anio;?>';
+			$("#PipPriorizadoAnio").append(html);
+			$('#PipPriorizadoAnio option[value='+anio+']').prop('selected', true);
+			$('#PipPriorizadoAnio').selectpicker('refresh');
+
+
+		}
 
 	
 </script>
