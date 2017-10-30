@@ -20,7 +20,7 @@
 											<div class="form-group">
 								                <label class="control-label" for="inputGroup">Buscar PIP por Año Priorizado</label>
 								                <div class="input-group">
-													<input type="text" class="form-control" placeholder="Ingrese Año Priorizado" id="textAnio" name="textAnio" value="<?= $anio;?>" data-inputmask="'mask' : '9999'">
+													<input type="text" class="form-control"  id="textAnio" name="textAnio" value="<?= $anio;?>" data-inputmask="'mask' : '9999'">
 								                    <span class="input-group-addon">
 								                        <i class="fa fa-search"></i>
 								                    </span>

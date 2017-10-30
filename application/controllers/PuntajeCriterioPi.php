@@ -152,10 +152,27 @@ class PuntajeCriterioPi extends CI_Controller {/* Mantenimiento de sector entida
 
 	public function pipPriorizadas($anio=''){
 
-		$listaPipPriorizadasPorAño=$this->Model_PuntajeCriterioPi->PipPriorizadasPorAño($anio);
-		$this->load->view('layout/PMI/header');
-		$this->load->view('front/Pmi/PuntajeCriterioPi/pipPriorizadas',['listaPipPriorizadasPorAño'=>$listaPipPriorizadasPorAño,'anio' => $anio]);
-		$this->load->view('layout/PMI/footer');	
+		if($anio=='')
+		{
+			$fechaA=date("Y-m-d");
+			$cadena=explode('-', $fechaA);
+			$anioActual=$cadena[0];
+
+			$listaPipPriorizadasPorAño=$this->Model_PuntajeCriterioPi->PipPriorizadasPorAño($anioActual);
+			$this->load->view('layout/PMI/header');
+			$this->load->view('front/Pmi/PuntajeCriterioPi/pipPriorizadas',['listaPipPriorizadasPorAño'=>$listaPipPriorizadasPorAño,'anio' => $anioActual]);
+			$this->load->view('layout/PMI/footer');	
+
+		}else
+		{
+			$listaPipPriorizadasPorAño=$this->Model_PuntajeCriterioPi->PipPriorizadasPorAño($anio);
+			$this->load->view('layout/PMI/header');
+			$this->load->view('front/Pmi/PuntajeCriterioPi/pipPriorizadas',['listaPipPriorizadasPorAño'=>$listaPipPriorizadasPorAño,'anio' => $anio]);
+			$this->load->view('layout/PMI/footer');	
+
+		}
+
+		
 	}
 
 	
