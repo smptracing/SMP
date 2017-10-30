@@ -15,7 +15,15 @@ if ( ! function_exists('autentificar'))
 			'/',
 			'Login/muestralog',
 			'Login/ingresar',	
-			//'AplicativoMovil/',
+			'AplicativoMovil/listadoProyectoGrupoFuncional',
+			'AplicativoMovil/listadoProyectoDivisionFuncional',
+			'AplicativoMovil/listadoProyectoFuncion',
+			'AplicativoMovil/listadoNoPipPorTipoNoPip',
+			'AplicativoMovil/index',
+			'AplicativoMovil/listaTotalDeUbicacionesProyecto',
+			'AplicativoMovil/DatosGeneralesdelPip',
+			'AplicativoMovil/GraficarPip',
+			'AplicativoMovil/',
 			//'AplicativoMovil/Pips',				
 		);
 		if(in_array($url, $libres)) 
