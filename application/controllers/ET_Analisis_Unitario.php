@@ -123,20 +123,20 @@ class ET_Analisis_Unitario extends CI_Controller
 
 				echo "1";
 
-			}
-	
+			}	
 		}
 		else
 		{
 			$idAnalisis=$this->input->get('id_AnalisisUnitario');
 			$Partida = $this->Model_ET_Detalle_Partida->partidaAnaliticoEt($idAnalisis);
+			$idET = $this->config->item('variableExpedienteTecnico');
 			$listaUnidadMedida = $this->Model_Unidad_Medida->UnidadMedidad_Listar();
 			$listaInsumoNivel1 = $this->Model_Unidad_Medida->listaInsumoNivel1();
 			foreach ($listaInsumoNivel1 as $key => $value) 
 			{
 				$value->hasChild = (count($this->Model_Unidad_Medida->listaInsumoporNivel($value->CodInsumo, ($value->Nivel+1)))==0 ? false : true);
 			}
-			$this->load->view('Front/Ejecucion/ETAnalisisUnitario/insertardetalleanalisisunitario',['idAnalisis'=>$idAnalisis,'listaUnidadMedida'=>$listaUnidadMedida,'partida' =>$Partida, 'listaNivel1' => $listaInsumoNivel1 ]);
+			$this->load->view('Front/Ejecucion/ETAnalisisUnitario/insertardetalleanalisisunitario',['idAnalisis'=>$idAnalisis,'listaUnidadMedida'=>$listaUnidadMedida,'partida' =>$Partida, 'listaNivel1' => $listaInsumoNivel1 , 'idET'=>$idET ]);
 		}		
 	}
 

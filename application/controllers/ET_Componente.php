@@ -110,6 +110,7 @@ class ET_Componente extends CI_Controller
 		{
 			$value->hasChild = (count($this->Model_Unidad_Medida->listaPartidaNivel1($value->CodPartida, ($value->Nivel+1)))==0 ? false : true);
 		}
+		//var_dump($expedienteTecnico);
 
 		$this->load->view('front/Ejecucion/ETComponente/insertar.php', ['expedienteTecnico' => $expedienteTecnico, 'listaUnidadMedida' => $listaUnidadMedida,'listaPartidaNivel1' => $listaPartidaNivel1]);
 	}

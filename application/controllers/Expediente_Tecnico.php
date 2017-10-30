@@ -825,6 +825,7 @@ class Expediente_Tecnico extends CI_Controller
 	}
 	public function verdetalle($id_et)
 	{
+		$this->config->set_item('variableExpedienteTecnico', $id_et);
 		$ExpedienteTecnicoElaboracion=$this->Model_ET_Expediente_Tecnico->ExpedienteListarElaboracionPorId($id_et);
 		$this->load->view('layout/Ejecucion/header');
 		$this->load->view('front/Ejecucion/ExpedienteTecnico/verdetalle', [ 'ExpedienteTecnicoElaboracion' => $ExpedienteTecnicoElaboracion ]);

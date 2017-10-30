@@ -1,9 +1,10 @@
 <?php
-function mostrarMetaAnidada($meta, $idExpedienteTecnico)
+function mostrarMetaAnidada($meta, $idExpedienteTecnico, $componente)
 {
 	$htmlTemp='';
 	$htmlTemp.='<li>'.
 		'<input type="button" class="btn btn-default btn-xs" value="G" onclick="guardarCambiosMeta('.$meta->id_meta.');" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarMeta('.$meta->id_meta.', this);" style="width: 30px;"><button type="button" title="Mostrar Partidas" class="btn btn-default btn-xs" style="width: 30px;" data-toggle="collapse" data-target="#demo'.$meta->id_meta.'"><i class="fa fa-expand"></i></button>';
+		//echo $componente;
 		$haschild = (count($meta->childMeta)==0 ? false : true);
 		$hasPartida = false;
 		/*if(isset($meta->childPartida))
@@ -23,7 +24,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 		{
 			$htmlTemp.='<input type="button" class="btn btn-default btn-xs" value="+P" onclick="renderizarAgregarPartida($(this).parent(), '.$meta->id_meta.')" style="width: 30px;">';
 		}*/
-		$htmlTemp.='<input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(\'\', $(this).parent(), '.$meta->id_meta.')" style="width: 30px;">';
+		$htmlTemp.='<input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta('.$componente.', $(this).parent(), '.$meta->id_meta.')" style="width: 30px;">';
 
 		$htmlTemp.='<input type="button" class="btn btn-default btn-xs" value="+P" onclick="renderizarAgregarPartida($(this).parent(), '.$meta->id_meta.')" style="width: 30px;">';
 
@@ -52,12 +53,11 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 
 	foreach($meta->childMeta as $key => $value)
 	{
-		$htmlTemp.=mostrarMetaAnidada($value, $idExpedienteTecnico);
+		$htmlTemp.=mostrarMetaAnidada($value, $idExpedienteTecnico, $componente);
 	}
 
 	$htmlTemp.=((count($meta->childMeta)==0 && count($meta->childPartida))>0 ? '</tbody></table></div>' : '</ul>').
 	'</li>';
-
 	return $htmlTemp;
 }
 ?>
@@ -216,7 +216,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 					<li>
 						<input type="button" class="btn btn-default btn-xs" value="G" onclick="guardarCambiosComponente(<?=$value->id_componente?>);" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(<?=$value->id_componente?>, $(this).parent(), '');" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarComponente(<?=$value->id_componente?>, this);" style="width: 30px;"><b style="text-transform: uppercase; color: black;" id="nombreComponente<?=$value->id_componente?>" contenteditable><?=html_escape($value->descripcion)?></b><ul style="padding-left: 40px;">
 							<?php foreach($value->childMeta as $index => $item){ ?>
-								<?=mostrarMetaAnidada($item, $expedienteTecnico->id_et);?>
+								<?=mostrarMetaAnidada($item, $expedienteTecnico->id_et, $value->id_componente);?>
 							<?php } ?>
 						</ul>
 					</li>

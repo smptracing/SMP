@@ -67,6 +67,8 @@ li
 										</div>
 									</div>								
 								</div>
+								<!--<input type="text" value="<?=$idET?>" autocomplete="off" class="form-control">-->
+								
 								<div class="row">
 									<div class="col-md-4 col-sm-2 col-xs-12">
 										<label for="control-label">Cuadrilla</label>
@@ -337,7 +339,7 @@ function guardarDetalleAnalisisPresupuestal()
                 swal("Correcto","Se registró correctamente", "success");
                 $('#frmInsertarDetalleAnalisisUnitario')[0].reset();
                 $('#otherModal2').modal('hide');
-                paginaAjaxDialogo('otherModal', 'Análisis presupuestal', { idET : <?=$partida->id_et?> , idPartida : <?=$partida->id_partida?> }, base_url+'index.php/ET_Analisis_Unitario/insertar', 'GET', null, null, false, true);
+                paginaAjaxDialogo('otherModal', 'Análisis presupuestal', { idET : <?=$idET?> , idPartida : <?=$partida->id_partida?> }, base_url+'index.php/ET_Analisis_Unitario/insertar', 'GET', null, null, false, true);
                 
             }
             if (resp=='0') 
