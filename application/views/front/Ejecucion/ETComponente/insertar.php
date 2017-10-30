@@ -177,8 +177,9 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 							<input type="text" id="selectUnidadMedidaPartida" name="selectUnidadMedidaPartida" autocomplete="off" class="form-control">-->
 						<label class="control-label">Unidad</label>
 						<div>
-							<select name="selectUnidadMedidaPartida" id="selectUnidadMedidaPartida" class="form-control"></select>
-						</div>
+							<select  name="selectUnidadMedidaPartida" id="selectUnidadMedidaPartida" class="form-control selectpicker">
+								<option value="">Buscar Unidad</option>
+							</select>
 						</div>
 					</div>								
 				</div>	
@@ -652,6 +653,9 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 
 			$($(elementoPadreParaAgregarPartida).find('table > tbody')[0]).append(htmlTemp);
 
+			$('#selectUnidadMedidaPartida').html('<option val="">Buscar Partida</option>');			
+			$('#selectUnidadMedidaPartida').selectpicker('refresh');
+
 			limpiarArbolCompletoMasOpciones();
 		}, false, true);
 
@@ -712,7 +716,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 					if(obj[i].hasChild == false)
 					{
 						htmlTemp+='<li>'+
-						'<input type="button" class="btn btn-warning btn-xs" value="A" style="width: 25px;" onclick="seleccionar(\''+replaceAll(obj[i].Descripcion,'"','*')+'\',\''+obj[i].Unidad+'\', \''+obj[i].RendimientoMO+'\');" style="margin: 1px;">'+
+						'<input type="button" id="btnAgregar" class="btn btn-warning btn-xs" value="A" style="width: 25px;" onclick="seleccionar(\''+replaceAll(obj[i].Descripcion,'"','*')+'\',\''+obj[i].Unidad+'\', \''+obj[i].RendimientoMO+'\');" style="margin: 1px;">'+
 						'<span class="nivel">'+obj[i].Descripcion+ ((obj[i].Simbolo == null) ? "" : ' ('+obj[i].Simbolo+')')+'</span>'+
 						'</li>';
 					}
@@ -742,11 +746,19 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 		$('#selectDescripcionPartida').val(nuevoPartida);
 		if(unidad=='null')
 		{
-			$('#selectUnidadMedidaPartida').val("UNIDAD");
+			$('#selectUnidadMedidaPartida').html('<option val="UNIDAD">UNIDAD</option>');		
+			$('#selectUnidadMedidaPartida').selectpicker('refresh');
+			$('#selectUnidadMedidaPartida').selectpicker('val', "UNIDAD");
+			//$('#selectUnidadMedidaPartida').attr('disabled', true);
+			//$('#selectUnidadMedidaPartida').selectpicker('refresh');
 		}
 		else
 		{
-			$('#selectUnidadMedidaPartida').val(unidad);
+			$('#selectUnidadMedidaPartida').html('<option val="'+unidad+'">'+unidad+'</option>');
+			$('#selectUnidadMedidaPartida').selectpicker('refresh');	
+			$('#selectUnidadMedidaPartida').selectpicker('val', unidad);
+			//$('#selectUnidadMedidaPartida').attr('disabled', true);		
+			//$('#selectUnidadMedidaPartida').selectpicker('refresh');
 		}
 		if(rendimiento == 'null')
 		{
@@ -811,32 +823,15 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 	        },
 	        preserveSelected: false
 	    });
-
-	    $('#selectPartida').on('change', function()
-	    {
-			var selected=$(this).find("option:selected").val();
-
-			if(selected.trim()!='')
-			{
-				$('#hdIdListaPartida').val($(this).find("option:selected").data('id-lista-partida'));
-				$('#selectDescripcionPartida').val($('#selectPartida').val());
-				//$('#selectUnidadMedidaPartida').val($(this).find("option:selected").data('id-unidad'));
-			}
-	    });
 	    $('#selectUnidadMedidaPartida').selectpicker({ liveSearch: true }).ajaxSelectPicker(
 		{
 	        ajax: {
 	            url: base_url+'index.php/Unidad_Medida/listaUnidadMedida',
 	            data: { valueSearch : '{{{q}}}' }
 	        },
-	        locale:
-	        {
-	            emptyTitle: 'Buscar Unidad'
-	        },
 	        preprocessData: function(data)
 	        {
 	        	var dataForSelect=[];
-
 	        	for(var i=0; i<data.length; i++)
 	        	{
 	        		dataForSelect.push(
@@ -854,18 +849,6 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 	            return dataForSelect;
 	        },
 	        preserveSelected: false
-	    });
-
-	    $('#selectUnidadMedidaPartida').on('change', function()
-	    {
-			var selected=$(this).find("option:selected").val();
-
-			if(selected.trim()!='')
-			{
-				//$('#hdIdListaPartida').val($(this).find("option:selected").data('id-lista-partida'));
-				//$('#selectDescripcionPartida').val($('#selectPartida').val());
-				//$('#selectUnidadMedidaPartida').val($(this).find("option:selected").data('id-unidad'));
-			}
 	    });
 
 		$('#divAgregarComponente').formValidation(
