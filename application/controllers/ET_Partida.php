@@ -139,7 +139,9 @@ class ET_Partida extends CI_Controller
 
 		$cantidad  = $detallePartida[0]->cantidad;
 		$parcial =  $detallePartida[0]->parcial;
+		$rendimiento =  $detallePartida[0]->rendimiento;
+		$precioUnitario =  $detallePartida[0]->precio_unitario;
 
-		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Cambios guardados correctamente.','idPartida' => $idPartida, 'cantidad' => $cantidad, 'precioParcial' => $parcial  ]);exit;
+		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Cambios guardados correctamente.','idPartida' => $idPartida, 'cantidad' => $cantidad, 'precioParcial' => $parcial, 'rendimiento' => $rendimiento, 'precioUnitario' => $precioUnitario  ]);exit;
 	}
 }

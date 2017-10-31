@@ -460,9 +460,15 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 			function(){});
 			
 			var currentRow = $("#rowPartida"+objectJSON.idPartida);
-			/*currentRow.find("td:eq(4)").text('<span id="nombrePartida'+objectJSON.idPartida+'" contenteditable>'+parseFloat(objectJSON.cantidad).toFixed(2))+'</span>');*/
-			currentRow.find("td:eq(6)").text(parseFloat(objectJSON.precioParcial).toFixed(2));
+			
+			currentRow.find("td:eq(2)").html('<span id="rendimientoPartida'+objectJSON.idPartida+'" contenteditable>'+objectJSON.rendimiento+'</span>');			
+
 			currentRow.find("td:eq(4)").html('<span id="nombrePartida'+objectJSON.idPartida+'" contenteditable>'+(parseFloat(objectJSON.cantidad).toFixed(2))+'</span>');
+
+			currentRow.find("td:eq(5)").html('<span id="precioUnitarioPartida'+objectJSON.idPartida+'" contenteditable>'+(parseFloat(objectJSON.precioUnitario).toFixed(2))+'</span>');
+
+			currentRow.find("td:eq(6)").text(parseFloat(objectJSON.precioParcial).toFixed(2));
+			
 			limpiarArbolCompletoMasOpciones();
 		}, false, true);
 	}
@@ -691,10 +697,15 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 					'<input type="button" class="btn btn-default btn-xs" value="A" onclick="paginaAjaxDialogo(\'otherModal\', \'Análisis presupuestal\', { idET : <?=$expedienteTecnico->id_et?>, idPartida : '+objectJSON.idPartida+' }, \''+base_url+'index.php/ET_Analisis_Unitario/insertar\''+', \'get\', null, null, false, true);" style="width: 30px;">'+
 				'</td>'+
 				'<td style="text-transform: uppercase;">'+replaceAll(replaceAll($('#selectDescripcionPartida').val().trim(), '<', '&lt;'), '>', '&gt;')+'</td>'+
-				'<td style="text-align:right;">'+replaceAll(replaceAll($('#txtRendimientoPartida').val().trim(), '<', '&lt;'), '>', '&gt;')+'</td>'+
+
+				'<td style="text-align:right;"><span id="rendimientoPartida'+objectJSON.idPartida+'" contenteditable>'+replaceAll(replaceAll($('#txtRendimientoPartida').val().trim(), '<', '&lt;'), '>', '&gt;')+'</span></td>'+
+
 				'<td style="text-align: right; text-transform: uppercase;">'+replaceAll(replaceAll(objectJSON.descripcionUnidadMedida, '<', '&lt;'), '>', '&gt;')+'</td>'+
+
 				'<td style="text-align: right;"><span id="nombrePartida'+objectJSON.idPartida+'" contenteditable>'+ parseFloat(objectJSON.cantidadDetallePartida).toFixed(2)+'</span></td>'+
-				'<td style="text-align: right;">'+parseFloat(objectJSON.precioUnitarioDetallePartida).toFixed(2)+'</td>'+
+
+				'<td style="text-align: right;"><span id="precioUnitarioPartida'+objectJSON.idPartida+'" contenteditable>'+parseFloat(objectJSON.precioUnitarioDetallePartida).toFixed(2)+'</span></td>'+
+
 				'<td style="text-align: right;">'+parseFloat(objectJSON.precioParcialDetallePartida).toFixed(2)+'</td>'+
 			'</tr>';
 			if(!($(elementoPadreParaAgregarPartida).find('table').length))
