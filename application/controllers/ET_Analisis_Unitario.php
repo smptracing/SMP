@@ -45,7 +45,8 @@ class ET_Analisis_Unitario extends CI_Controller
 		}
 
 		$idPartida=$this->input->get('idPartida');
-
+		$idET = $this->input->get('idET');
+		
 		$listaUnidadMedida=$this->Model_Unidad_Medida->UnidadMedidad_Listar();
 
 		$etEtapaEjecucion=$this->Model_ET_Etapa_Ejecucion->ETEtapaEjecucionPorDescEtaoaET('Elaboración de expediente técnico');
@@ -58,7 +59,7 @@ class ET_Analisis_Unitario extends CI_Controller
 		}
 
 		$listaETRecurso=$this->Model_ET_Recurso->RecursoListar('R');
-		$listaETPresupuestoAnalitico=$this->Model_ET_Presupuesto_Analitico->ETPresupuestoAnaliticoPorIdET($this->input->get('idET'));
+		$listaETPresupuestoAnalitico=$this->Model_ET_Presupuesto_Analitico->ETPresupuestoAnaliticoPorIdET($idET);
 
 		$this->load->view('Front/Ejecucion/ETAnalisisUnitario/insertar', ['etDetallePartida' => $etDetallePartida, 'listaUnidadMedida' => $listaUnidadMedida, 'listaETAnalisisUnitario' => $listaETAnalisisUnitario, 'listaETRecurso' => $listaETRecurso, 'listaETPresupuestoAnalitico' => $listaETPresupuestoAnalitico, 'idPartida' => $idPartida]);
 	}
@@ -93,7 +94,7 @@ class ET_Analisis_Unitario extends CI_Controller
 			$idAnalisis=$this->input->post('idAnalisis');
 			$descripcion=$this->input->post('txtInsumo');
 			$cuadrilla=$this->input->post('txtCuadrilla');
-			$unidad=$this->input->post('txtUnidad');
+			$unidad=$this->input->post('selectUnidadMedida');
 			$rendimiento=$this->input->post('txtRendimiento');
 			$cantidad=$this->input->post('txtCantidad');
 			$precioUnitario=$this->input->post('txtPrecioUnitario');
