@@ -215,27 +215,39 @@
                     </form>
                     <div class="row">
                     	<div class="col-md-12" style="text-align: center; display: inline-block;">
-                    		<div>
-			                    <h6><code>Formatos de Expediente Técnico</code>.</h6>
-								<a class="btn btn-app"  data-toggle="tooltip" title="Ficha Técnica del Proyectos" href="<?= site_url('Expediente_Tecnico/reportePdfExpedienteTecnico/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank" >
-									<i class="fa fa-file-pdf-o"></i> Formarto FF-01
-								</a>                  		
-								<a class="btn btn-app"  data-toggle="tooltip" title="Presupuesto Resumen"  href="<?= site_url('Expediente_Tecnico/reportePdfPresupuestoFF05/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
-									<i class="fa fa-file-pdf-o"></i> Formato FF-05
-								</a>                     		
-								<a class="btn btn-app" data-toggle="tooltip" title="Cuadro de Presupuesto Analítico General" href="<?= site_url('Expediente_Tecnico/reportePdfPresupuestoAnalitico/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
-									<i class="fa fa-file-pdf-o"></i> Formato FF-06
-								</a>                     		
-								<a class="btn btn-app"  data-toggle="tooltip" title="Sustentación de Metrados" href="<?= site_url('Expediente_Tecnico/reportePdfMetrado/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
-									<i class="fa fa-file-pdf-o"></i> Formato FF-10
-								</a>                     		
-								<a class="btn btn-app"  data-toggle="tooltip" title="Análisis de Costos Unitarios" href="<?= site_url('Expediente_Tecnico/reportePdfAnalisisPrecioUnitarioFF11/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
-									<i class="fa fa-file-pdf-o"></i> Formato FF-11
-								</a> 
-								<a class="btn btn-app"  data-toggle="tooltip" title="Cronograma Valorizado de Ejecución del Proyecto" href="<?= site_url('Expediente_Tecnico/reportePdfValorizacionEjecucion/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
-									<i class="fa fa-file-pdf-o"></i> Formato FF-15
-								</a>
-							</div>                     		
+                    		<?php if($ExpedienteTecnicoElaboracion[0]->id_etapa_et == 1 )
+		                    { ?>
+	                    		<div>
+				                    <h6><code>Formatos de Expediente Técnico</code>.</h6>
+									<a class="btn btn-app"  data-toggle="tooltip" title="Ficha Técnica del Proyectos" href="<?= site_url('Expediente_Tecnico/reportePdfExpedienteTecnico/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank" >
+										<i class="fa fa-file-pdf-o"></i> Formarto FF-01
+									</a>                  		
+									<a class="btn btn-app"  data-toggle="tooltip" title="Presupuesto Resumen"  href="<?= site_url('Expediente_Tecnico/reportePdfPresupuestoFF05/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
+										<i class="fa fa-file-pdf-o"></i> Formato FF-05
+									</a>                     		
+									<a class="btn btn-app" data-toggle="tooltip" title="Cuadro de Presupuesto Analítico General" href="<?= site_url('Expediente_Tecnico/reportePdfPresupuestoAnalitico/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
+										<i class="fa fa-file-pdf-o"></i> Formato FF-06
+									</a>                     		
+									<a class="btn btn-app"  data-toggle="tooltip" title="Sustentación de Metrados" href="<?= site_url('Expediente_Tecnico/reportePdfMetrado/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
+										<i class="fa fa-file-pdf-o"></i> Formato FF-10
+									</a>                     		
+									<a class="btn btn-app"  data-toggle="tooltip" title="Análisis de Costos Unitarios" href="<?= site_url('Expediente_Tecnico/reportePdfAnalisisPrecioUnitarioFF11/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
+										<i class="fa fa-file-pdf-o"></i> Formato FF-11
+									</a> 
+									<a class="btn btn-app"  data-toggle="tooltip" title="Cronograma Valorizado de Ejecución del Proyecto" href="<?= site_url('Expediente_Tecnico/reportePdfValorizacionEjecucion/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
+										<i class="fa fa-file-pdf-o"></i> Formato FF-15
+									</a>
+								</div>  
+							<?php } ?> 
+							<?php if($ExpedienteTecnicoElaboracion[0]->id_etapa_et == 2 || $ExpedienteTecnicoElaboracion[0]->id_etapa_et == 3)
+		                    { ?>
+								<div>
+				                    <h6><code>Formatos de Ejecución</code>.</h6>
+									<a class="btn btn-app"  data-toggle="tooltip" title="Valorizacion Mensual" href="<?= site_url('Expediente_Tecnico/reportePdfValorizacionFisica/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank" >
+										<i class="fa fa-file-pdf-o"></i> Formarto FF-03
+									</a>                  		
+								</div> 
+							<?php } ?>                   		
                     	</div>
                     </div>                  		
                 </div>

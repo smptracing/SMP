@@ -5,8 +5,8 @@ function mostrarAnidado($meta, $expedienteTecnico)
 	$htmlTemp='';
 
 	$htmlTemp.='<tr class="elementoBuscar">'.
-		'<td><b><i>'.$meta->numeracion.'</i></b></td>'.
-		'<td style="text-align: left;"><b><i>'.html_escape($meta->desc_meta).'</i></b></td>'.
+		'<td><b>'.$meta->numeracion.'</b></td>'.
+		'<td style="text-align: left;"><b>'.html_escape($meta->desc_meta).'</b></td>'.
 		'<td></td>'.
 		'<td></td>'.
 		'<td></td>'.
@@ -98,6 +98,7 @@ function mostrarAnidado($meta, $expedienteTecnico)
 	table 
 	{
 	    border-collapse: collapse;
+	    font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif;
 	}
 
 	#tableValorizacion td, #tableValorizacion th
@@ -106,6 +107,9 @@ function mostrarAnidado($meta, $expedienteTecnico)
 		font-size: 10px;
 		padding: 2px;
 		text-transform: uppercase;
+	}
+	p{
+		font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif;
 	}
 </style>
 <head>
@@ -118,10 +122,10 @@ function mostrarAnidado($meta, $expedienteTecnico)
 		<div class="col-md-12 col-xs-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<P style="text-align: center; font-size: 12px;"><b>FORMATO FE-03</b><br>
+					<p style="text-align: center; font-size: 12px;"><b>FORMATO FE-03</b><br>
 					<b style="font-size: 13px;">VALORIZACIÓN MENSUAL / FINAL DE OBRA</b><br>
 					<b style="text-transform: uppercase;font-size: 12px;">MES DE : <?=$mes?></b><br>
-					</P>
+					</p>
 					<div class="clearfix"></div>
 				</div>
 				<div class="x_content">
@@ -181,8 +185,8 @@ function mostrarAnidado($meta, $expedienteTecnico)
 								<tbody>
 									<?php foreach($expedienteTecnico->childComponente as $key => $value){ ?>
 										<tr class="elementoBuscar">
-											<td><b><i><?=$value->numeracion?></i></b></td>
-											<td style="text-align: left;"><b><i><?=html_escape($value->descripcion)?></i></b></td>
+											<td><b><?=$value->numeracion?></b></td>
+											<td style="text-align: left;"><b><?=html_escape($value->descripcion)?></b></td>
 											<td></td>
 											<td></td>
 											<td></td>
