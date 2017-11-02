@@ -1056,7 +1056,7 @@ class Expediente_Tecnico extends CI_Controller
 					$this->obtenerMetaAnidadaParaValorizacionFisica($item);				
 				}			
 			}
-			//$this->load->view('front/Ejecucion/EControlMetrado/reportepdfvalorizacionfisica', ['expedienteTecnico' => $expedienteTecnico, 'listaUnidadMedida' => $listaUnidadMedida , 'mes' => $mes]);
+			/*$this->load->view('front/Ejecucion/EControlMetrado/reportepdfvalorizacionfisica', ['expedienteTecnico' => $expedienteTecnico, 'listaUnidadMedida' => $listaUnidadMedida , 'mes' => $mes]);*/
 
 			$html = $this->load->view('front/Ejecucion/EControlMetrado/reportepdfvalorizacionfisica', ['expedienteTecnico' => $expedienteTecnico, 'listaUnidadMedida' => $listaUnidadMedida , 'mes' => $mes],true);
 			$this->mydompdf->load_html($html);
@@ -1065,6 +1065,40 @@ class Expediente_Tecnico extends CI_Controller
 			$this->mydompdf->stream("reporteValorizacionFisica.pdf", array("Attachment" => false));
 		}
 	}
+
+	public function reportePdfInformeMensual($idExpedienteTecnico)
+	{
+		$expedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnico($idExpedienteTecnico);
+		$mesActual =  strftime("%B");		
+		$mes = $this->mes($mesActual);
+
+		if($expedienteTecnico->id_etapa_et == 1)
+		{
+			show_404();
+		}
+		else
+		{
+			$listaUnidadMedida=$this->Model_Unidad_Medida->UnidadMedidad_Listar();
+			$expedienteTecnico->childComponente=$this->Model_ET_Componente->ETComponentePorIdET($expedienteTecnico->id_et);
+			foreach($expedienteTecnico->childComponente as $key => $value)
+			{
+				$value->childMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($value->id_componente);
+
+				foreach($value->childMeta as $index => $item)
+				{
+					$this->obtenerMetaAnidadaParaValorizacionFisica($item);				
+				}			
+			}
+			//$this->load->view('front/Ejecucion/EControlMetrado/formatoFE02', ['expedienteTecnico' => $expedienteTecnico, 'listaUnidadMedida' => $listaUnidadMedida , 'mes' => $mes]);
+
+			$html = $this->load->view('front/Ejecucion/EControlMetrado/formatoFE02', ['expedienteTecnico' => $expedienteTecnico, 'listaUnidadMedida' => $listaUnidadMedida , 'mes' => $mes],true);
+			$this->mydompdf->load_html($html);
+			$this->mydompdf->set_paper("A4", "portrait");
+			$this->mydompdf->render();
+			$this->mydompdf->stream("reporteValorizacionFisica.pdf", array("Attachment" => false));
+		}
+	}
+
 
 
 	private function obtenerMetaAnidadaParaValorizacionFisica($meta)

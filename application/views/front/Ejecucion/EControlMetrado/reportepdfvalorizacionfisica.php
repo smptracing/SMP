@@ -152,16 +152,14 @@ function mostrarAnidado($meta, $expedienteTecnico)
 								<table id="tableValorizacion"  >
 								<thead>
 									<tr>
-										<th>PROY:</th>
-										<th><?=trim($expedienteTecnico->nombre_pi)?></th>
+										<th rowspan="3">ÍTEM</th>
+										<th rowspan="3">DESCRIPCIÓN</th>
 										<th rowspan="3">UNIDAD</th>
 										<th rowspan="2" colspan="3" >PRESUPUESTO</th>
 										<th colspan="7">AVANCES</th>
 										<th colspan="3" rowspan="2">SALDO</th>
 									</tr>
 									<tr>
-										<th rowspan="2">ÍTEM</th>
-										<th rowspan="2">DESCRIPCIÓN</th>
 										<th colspan="2">ANTERIOR</th>
 										<th colspan="2">ACTUAL</th>
 										<th colspan="3">ACUMULADO</th>

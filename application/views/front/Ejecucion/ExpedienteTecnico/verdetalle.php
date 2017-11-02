@@ -243,8 +243,11 @@
 		                    { ?>
 								<div>
 				                    <h6><code>Formatos de Ejecución</code>.</h6>
+				                    <a class="btn btn-app"  data-toggle="tooltip" title="Informe Mensual" href="<?= site_url('Expediente_Tecnico/reportePdfInformeMensual/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank" >
+										<i class="fa fa-file-pdf-o"></i> Formarto FE-02
+									</a>  
 									<a class="btn btn-app"  data-toggle="tooltip" title="Valorizacion Mensual" href="<?= site_url('Expediente_Tecnico/reportePdfValorizacionFisica/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank" >
-										<i class="fa fa-file-pdf-o"></i> Formarto FF-03
+										<i class="fa fa-file-pdf-o"></i> Formarto FE-03
 									</a>                  		
 								</div> 
 							<?php } ?>                   		
