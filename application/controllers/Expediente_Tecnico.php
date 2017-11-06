@@ -825,6 +825,7 @@ class Expediente_Tecnico extends CI_Controller
 	}
 	public function verdetalle($id_et)
 	{
+		$this->config->set_item('variableExpedienteTecnico', $id_et);
 		$ExpedienteTecnicoElaboracion=$this->Model_ET_Expediente_Tecnico->ExpedienteListarElaboracionPorId($id_et);
 		$this->load->view('layout/Ejecucion/header');
 		$this->load->view('front/Ejecucion/ExpedienteTecnico/verdetalle', [ 'ExpedienteTecnicoElaboracion' => $ExpedienteTecnicoElaboracion ]);
@@ -1030,6 +1031,76 @@ class Expediente_Tecnico extends CI_Controller
 			$this->load->view('layout/Ejecucion/footer');
 		}
 	}
+
+	public function reportePdfValorizacionFisica($idExpedienteTecnico)
+	{
+		$expedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnico($idExpedienteTecnico);
+		$mesActual =  strftime("%B");		
+		$mes = $this->mes($mesActual);
+
+		if($expedienteTecnico->id_etapa_et == 1)
+		{
+			show_404();
+		}
+		else
+		{
+			$listaUnidadMedida=$this->Model_Unidad_Medida->UnidadMedidad_Listar();
+			$expedienteTecnico->childComponente=$this->Model_ET_Componente->ETComponentePorIdET($expedienteTecnico->id_et);
+
+			foreach($expedienteTecnico->childComponente as $key => $value)
+			{
+				$value->childMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($value->id_componente);
+
+				foreach($value->childMeta as $index => $item)
+				{
+					$this->obtenerMetaAnidadaParaValorizacionFisica($item);				
+				}			
+			}
+			/*$this->load->view('front/Ejecucion/EControlMetrado/reportepdfvalorizacionfisica', ['expedienteTecnico' => $expedienteTecnico, 'listaUnidadMedida' => $listaUnidadMedida , 'mes' => $mes]);*/
+
+			$html = $this->load->view('front/Ejecucion/EControlMetrado/reportepdfvalorizacionfisica', ['expedienteTecnico' => $expedienteTecnico, 'listaUnidadMedida' => $listaUnidadMedida , 'mes' => $mes],true);
+			$this->mydompdf->load_html($html);
+			$this->mydompdf->set_paper("A4", "landscape");
+			$this->mydompdf->render();
+			$this->mydompdf->stream("reporteValorizacionFisica.pdf", array("Attachment" => false));
+		}
+	}
+
+	public function reportePdfInformeMensual($idExpedienteTecnico)
+	{
+		$expedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnico($idExpedienteTecnico);
+		$mesActual =  strftime("%B");		
+		$mes = $this->mes($mesActual);
+
+		if($expedienteTecnico->id_etapa_et == 1)
+		{
+			show_404();
+		}
+		else
+		{
+			$listaUnidadMedida=$this->Model_Unidad_Medida->UnidadMedidad_Listar();
+			$expedienteTecnico->childComponente=$this->Model_ET_Componente->ETComponentePorIdET($expedienteTecnico->id_et);
+			foreach($expedienteTecnico->childComponente as $key => $value)
+			{
+				$value->childMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($value->id_componente);
+
+				foreach($value->childMeta as $index => $item)
+				{
+					$this->obtenerMetaAnidadaParaValorizacionFisica($item);				
+				}			
+			}
+			//$this->load->view('front/Ejecucion/EControlMetrado/formatoFE02', ['expedienteTecnico' => $expedienteTecnico, 'listaUnidadMedida' => $listaUnidadMedida , 'mes' => $mes]);
+
+			$html = $this->load->view('front/Ejecucion/EControlMetrado/formatoFE02', ['expedienteTecnico' => $expedienteTecnico, 'listaUnidadMedida' => $listaUnidadMedida , 'mes' => $mes],true);
+			$this->mydompdf->load_html($html);
+			$this->mydompdf->set_paper("A4", "portrait");
+			$this->mydompdf->render();
+			$this->mydompdf->stream("reporteValorizacionFisica.pdf", array("Attachment" => false));
+		}
+	}
+
+
+
 	private function obtenerMetaAnidadaParaValorizacionFisica($meta)
 	{
 		$temp=$this->Model_ET_Meta->ETMetaPorIdMetaPadre($meta->id_meta);
@@ -1039,16 +1110,10 @@ class Expediente_Tecnico extends CI_Controller
 		if(count($temp)==0)
 		{
 			$meta->childPartida=$this->Model_ET_Partida->ETPartidaPorIdMeta($meta->id_meta);
-
-
 			foreach($meta->childPartida as $key => $value)
 			{
 				$fechaActual = date('Y-m-d');
 				$mesActual=   date('m');
-
-				//$fechaMesPasado = date('Y-m-d', strtotime('-1 month')) ;
-				//$mesPasado = date("m", strtotime('-1 month')); 
-
 				$ultimaFechaMesPasado = new DateTime($fechaActual);
 				$ultimaFechaMesPasado->modify('last day of previous month');
 
@@ -1057,7 +1122,6 @@ class Expediente_Tecnico extends CI_Controller
 				$value->childDetallePartida->childDetSegValorizacion=$this->Model_DetSegOrden->valorizadaActual($value->childDetallePartida->id_detalle_partida, $mesActual);
 
 				$value->childDetallePartida->childDetSegValorizacionAnterior=$this->Model_DetSegOrden->valorizadoAnterior($value->childDetallePartida->id_detalle_partida, $ultimaFechaMesPasado->format('Y-m-d'));
-
 			}
 
 			return false;
@@ -1069,7 +1133,22 @@ class Expediente_Tecnico extends CI_Controller
 		}
 	}
 
-
-
+	private function Mes($mes)
+	{
+		$mesenespaniol = '';
+		if ($mes=="January") $mesenespaniol="Enero";
+		if ($mes=="February") $mesenespaniol="Febrero";
+		if ($mes=="March") $mesenespaniol="Marzo";
+		if ($mes=="April") $mesenespaniol="Abril";
+		if ($mes=="May") $mesenespaniol="Mayo";
+		if ($mes=="June") $mesenespaniol="Junio";
+		if ($mes=="July") $mesenespaniol="Julio";
+		if ($mes=="August") $mesenespaniol="Agosto";
+		if ($mes=="September") $mesenespaniol="Setiembre";
+		if ($mes=="October") $mesenespaniol="Octubre";
+		if ($mes=="November") $mesenespaniol="Noviembre";
+		if ($mes=="December") $mesenespaniol="Diciembre";
+		return $mesenespaniol;
+	}
 
 }

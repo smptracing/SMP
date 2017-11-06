@@ -124,20 +124,24 @@ class ET_Partida extends CI_Controller
 
 		$this->load->view('Front/Ejecucion/ETPartida/insertar');
 	}
-	public function editarCantidadPartida()
+	public function editarCambiosPartida()
 	{
 		$idPartida=$this->input->post('idPartida');
 		$cantidadPartida=$this->input->post('cantidadPartida');
+		$rendimientoPartida=$this->input->post('rendimientoPartida');
+		$precioUnitarioPartida=$this->input->post('precioUnitarioPartida');
 
-		$this->Model_ET_Partida->updateCantidaPartida($idPartida,$cantidadPartida);
-		$this->Model_ET_Detalle_Partida->updateCantidaDetallePartida($idPartida,$cantidadPartida);
+		$this->Model_ET_Partida->updateCambiosPartida($idPartida, $cantidadPartida, $rendimientoPartida);
+		$this->Model_ET_Detalle_Partida->updateCambiosDetallePartida($idPartida, $cantidadPartida, $rendimientoPartida, $precioUnitarioPartida );
 
 		$partida = $this->Model_ET_Partida->ETPartidaPorIdPartida($idPartida);
 		$detallePartida = $this->Model_ET_Detalle_Partida->ETDetallePartidaPorIdPartida($idPartida);
 
 		$cantidad  = $detallePartida[0]->cantidad;
 		$parcial =  $detallePartida[0]->parcial;
+		$rendimiento =  $detallePartida[0]->rendimiento;
+		$precioUnitario =  $detallePartida[0]->precio_unitario;
 
-		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Cambios guardados correctamente.','idPartida' => $idPartida, 'cantidad' => $cantidad, 'precioParcial' => $parcial  ]);exit;
+		echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Cambios guardados correctamente.','idPartida' => $idPartida, 'cantidad' => $cantidad, 'precioParcial' => $parcial, 'rendimiento' => $rendimiento, 'precioUnitario' => $precioUnitario  ]);exit;
 	}
 }

@@ -411,14 +411,17 @@ var ModificarUbigeoPi=function(id_ubigeo_pi)
                         "url":base_url +"index.php/EstadoCicloInversion/get_EstadoCicloInversion",
                         type:"POST",
                         success:function(respuesta3){
-                         //  alert(respuesta);
                          var registros = eval(respuesta3);
                             for (var i = 0; i <registros.length;i++) {
                               html +="<option  value="+registros[i]["id_estado_ciclo"]+"> "+registros[i]["nombre_estado_ciclo"]+" </option>";
                             };
+                            
+                            var id_estado=4;
                             $("#cbxEstCicInv_").html(html);
-                             $("#cbxEstCicInv_m").html(html);//para modificar las entidades 
+                            $("#cbxEstCicInv_m").html(html);//para modificar las entidades 
                             $('select[name=cbxEstCicInv_m]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=cbxEstCicInv_]').val(id_estado);//PARA AGREGAR UN COMBO PSELECIONADO
+
                             $('select[name=cbxEstCicInv_m]').change();
                             $('.selectpicker').selectpicker('refresh');
                         }

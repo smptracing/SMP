@@ -43,9 +43,7 @@ li
 						    			if($value->hasChild)
 						    			{?>
 						    				<li>
-						    					<input type="button" style="width: 25px;" class="btn btn-default btn-xs" id="btnAccion" name="Accion" value="+" onclick="elegirAccion('<?=$value->CodInsumo?>', 1, this);" style="margin: 1px;">						    			
-								    			<!--<input type="button" class="btn btn-default btn-xs" value="+" onclick="ContraerSubLista(this); MostrarSubLista('<?=$value->CodInsumo?>', 1, this);" style="margin: 1px;">
-								    			<input type="button" class="btn btn-default btn-xs" value="-" onclick="ContraerSubLista(this);" style="margin: 1px;">-->
+						    					<input type="button" style="width: 25px;" class="btn btn-default btn-xs" id="btnAccion" name="Accion" value="+" onclick="elegirAccion('<?=$value->CodInsumo?>', 1, this);" style="margin: 1px;">	
 								    			<span class="nivel"><?=$value->Descripcion?> <?=($value->Simbolo==null ? '' : ($value->Simbolo))?> </span>
 								    		</li>
 						    			<?php } else { ?>
@@ -80,22 +78,28 @@ li
 											<input type="text" id="txtHoras" name="txtHoras" autocomplete="off" class="form-control" onkeyup="calcularCantidad();calcularSubTotal();">
 										</div>
 									</div>
-									<div class="col-md-4 col-sm-1 col-xs-12">
+									<!--<div class="col-md-4 col-sm-1 col-xs-12">
 										<label for="control-label">Unidad</label>
 										<div>
 											<input type="text" readonly="readonly" id="txtUnidad" name="txtUnidad" autocomplete="off" class="form-control">
 										</div>
-									</div>
-									<!--<div class="col-md-4 col-sm-2 col-xs-12">
-										<label for="control-label">Unidad</label>
+									</div>-->
+									<div class="col-md-4 col-sm-2 col-xs-12">
+										<!--<label for="control-label">Unidad</label>
 										<div>
-											<select name="selectUnidadMedida" id="selectUnidadMedida" class="form-control" disabled="disabled">
+											<select name="selectUnidadMedida" id="selectUnidadMedida" class="form-control">
 												<?php foreach($listaUnidadMedida as $item){ ?>
 													<option value="<?=$item->id_unidad?>"><?=html_escape($item->descripcion)?></option>
 												<?php } ?>
 											</select>
+										</div>-->
+										<label class="control-label">Unidad:</label>
+										<div>
+											<select  name="selectUnidadMedida" id="selectUnidadMedida" class="form-control selectpicker">
+												<option value="">Buscar Unidad</option>
+											</select>
 										</div>
-									</div>-->									
+									</div>									
 								</div>
 								<div class="row">
 									<div class="col-md-4 col-sm-2 col-xs-12">
@@ -143,6 +147,34 @@ li
 <script>
 $(function()
 {
+	$('#selectUnidadMedida').selectpicker({ liveSearch: true }).ajaxSelectPicker(
+	{
+        ajax: {
+            url: base_url+'index.php/Unidad_Medida/listaUnidadMedida',
+            data: { valueSearch : '{{{q}}}' }
+        },
+        preprocessData: function(data)
+        {
+        	var dataForSelect=[];
+        	for(var i=0; i<data.length; i++)
+        	{
+        		dataForSelect.push(
+                {
+                    "value" : data[i].descripcion,
+                    "text" : data[i].descripcion,
+                    "data" :
+                    {
+                    	"id-unidad" : data[i].id_unidad
+                    },
+                    "disabled" : false
+                });
+        	}
+
+            return dataForSelect;
+        },
+        preserveSelected: false
+    });
+
 	$('#divFormDetallaAnalisisUnitario').formValidation(
 	{
 		framework: 'bootstrap',
@@ -337,8 +369,7 @@ function guardarDetalleAnalisisPresupuestal()
                 swal("Correcto","Se registró correctamente", "success");
                 $('#frmInsertarDetalleAnalisisUnitario')[0].reset();
                 $('#otherModal2').modal('hide');
-                paginaAjaxDialogo('otherModal', 'Análisis presupuestal', { idET : <?=$partida->id_et?> , idPartida : <?=$partida->id_partida?> }, base_url+'index.php/ET_Analisis_Unitario/insertar', 'GET', null, null, false, true);
-                
+                paginaAjaxDialogo('otherModal', 'Análisis presupuestal', { idET : <?=$idET?> , idPartida : <?=$partida->id_partida?> }, base_url+'index.php/ET_Analisis_Unitario/insertar', 'GET', null, null, false, true);                
             }
             if (resp=='0') 
             {
@@ -400,11 +431,17 @@ function seleccionar(insumo,unidad,element)
 	$('#txtInsumo').val(nuevoInsumo);
 	if(unidad=='null')
 	{
-		$('#txtUnidad').val("UNIDAD");
+		//$('#txtUnidad').val("UNIDAD");
+		$('#selectUnidadMedida').html('<option val="UNIDAD">UNIDAD</option>');		
+		$('#selectUnidadMedida').selectpicker('refresh');
+		$('#selectUnidadMedida').selectpicker('val', "UNIDAD");
 	}
 	else
 	{
-		$('#txtUnidad').val(unidad);
+		//$('#txtUnidad').val(unidad);
+		$('#selectUnidadMedida').html('<option val="'+unidad+'">'+unidad+'</option>');
+		$('#selectUnidadMedida').selectpicker('refresh');	
+		$('#selectUnidadMedida').selectpicker('val', unidad);
 	}	
 }
 
@@ -420,8 +457,7 @@ function elegirAccion(codigoInsumo, nivel, element)
 	{
 		ContraerSubLista(element);
 		$(element).attr('value','+');
-	}
-	
+	}	
 }
 
 </script>

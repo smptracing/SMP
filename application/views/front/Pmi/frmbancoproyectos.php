@@ -104,8 +104,18 @@
               <form class="form-horizontal " id="form-AddProyectosInversion"   action="<?php echo base_url(); ?>bancoproyectos/AddProyectos" method="POST" onSubmit="return false;" >
                                  
                                  <div class="row">
+                                      <div class="col-md-4 form-group" >
+
+                                               <label for="name">Estado.<span class="required"></span>
+                                                </label>
+                                                 <select   id="cbxEstCicInv_" name="cbxEstCicInv_" class="form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Estado..." >
+                                                </select>
+                                    </div>
+
                                       <div class="col-md-4">
-                                        <div class="col-md-9 col-sm-6 col-xs-12 form-group">
+                                        <label id="textcodigoIdMensaje" style="color: #0431B4; margin-top: 15px;">El Sistema Generara su Código<span class="required"></span></label>
+
+                                        <div class="col-md-9 col-sm-6 col-xs-12 form-group" id="divCodigoIdea">
                                             <label for="name">Codigo Único (Codigo SIAF)<span class="required">*</span>
                                             </label>
                                      
@@ -133,13 +143,7 @@
                                             </select>
                                             </div>
                                       </div>-->
-                                      <div class="col-md-4 form-group">
-
-                                           <label for="name">Estado.<span class="required"></span>
-                                            </label>
-                                                 <select   id="cbxEstCicInv_" name="cbxEstCicInv_" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Estado..." >
-                                                </select>
-                                    </div>
+                                      
                                     </div>
 
                                  <div class="row">
@@ -1007,4 +1011,37 @@
 <!-- /.FIN VENTANA EDITAR PROYECTOS DE INVERSION-->
 
 <script src="<?php echo base_url(); ?>assets/js/PMI/bancoProyectos.js"></script>
+
+<script type="text/javascript">
+   $('#textcodigoIdMensaje').hide();
+
+   $("#cbxEstCicInv_").change(function(){//para cargar los distritos
+    
+    if($("#cbxEstCicInv_").val()=='1' || $("#cbxEstCicInv_").val()=='2' )
+    {
+        
+        $('#textcodigoIdMensaje').show();
+        $('#divCodigoIdea').hide();
+        if($("#cbxEstCicInv_").val()=='1')
+        {
+             $codigoGenerado='ID-000001';
+            $("#txtCodigoUnico").val($codigoGenerado);
+      
+        }else {
+            $codigoGenerado='FE-000001';
+            $("#txtCodigoUnico").val($codigoGenerado);
+        }
+       
+    }else {
+      
+      $('#textcodigoIdMensaje').hide();
+
+      $("#txtCodigoUnico").val("");
+      $('#divCodigoIdea').show();
+    }
+                   
+  
+  });
+
+</script>
    
