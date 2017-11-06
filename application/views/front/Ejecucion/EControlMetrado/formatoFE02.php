@@ -27,14 +27,14 @@
 <head>
 	<title>FORMATO FE-02</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/dompdf.css">
 </head>
 	<div class="col-md-12 col-xs-12 col-xs-12">
 		<div class="x_panel">
 			<div class="x_title">
-				<p style="text-align: center; font-size: 12px;"><b>FORMATO FE-02</b><br>
-				<b style="font-size: 13px;">INFORME MENSUAL / FINAL DE OBRA</b><br>
-				<b style="text-transform: uppercase;font-size: 12px;">MES DE <?=$mes?></b><br>
+				<p style="text-align: center; font-size: 12px;">
+					<b>FORMATO FE-02</b><br>
+					<b style="font-size: 13px;">INFORME MENSUAL / FINAL DE OBRA</b><br>
+					<b style="text-transform: uppercase;font-size: 12px;">MES DE <?=$mes?></b><br>
 				</p>
 			</div>
 			<div class="x_content">
@@ -138,15 +138,15 @@
 							<table class="tabla" style="border: none;">
 								<tr>
 									<td style="width: 20%;"><b>MONTO APROBADO:</b></td>
-									<td style="width: 80%;"><?=$expedienteTecnico->funcion_et?></td>
+									<td style="width: 80%;">S/. <?=a_number_format($expedienteTecnico->costo_total_inv_et , 2, '.',",",3)?></td>
 								</tr>
 								<tr>
 									<td style="width: 20%;"><b>MONTO ASIGNADO:</b></td>
-									<td style="width: 80%;"><?=$expedienteTecnico->programa_et?></td>
+									<td style="width: 80%;">-</td>
 								</tr>
 								<tr>
 									<td style="width: 20%;"><b>FUENTE FINANCIAMIENTO</b></td>
-									<td style="width: 80%;"><?=$expedienteTecnico->sub_programa_et?></td>
+									<td style="width: 80%;">-</td>
 								</tr>
 							</table>								
 						</div>
@@ -163,12 +163,45 @@
 									<td style="width: 25%;"><b>Fecha de Termino Real</b></td>
 								</tr>
 								<tr>
-									<td style="width: 25%;"></td>
-									<td style="width: 25%;"></td>
-									<td style="width: 25%;"></td>
-									<td style="width: 25%;"></td>
+									<td style="width: 25%; height: 17px;"></td>
+									<td style="width: 25%; height: 17px;"></td>
+									<td style="width: 25%; height: 17px;"></td>
+									<td style="width: 25%; height: 17px;"></td>
 								</tr>
-							</table>								
+							</table>
+							<br>	
+							<table class="tabla" style="border: none;">
+								<tr>
+									<td style="width: 35%;"><b>Plazo de Ejec. Programado Original</b></td>
+									<td colspan="3"></td>
+								</tr>
+								<tr>
+									<td style="width: 35%;">Ampliación de plazo Nº 1</td>
+									<td style="width: 15%;"></td>
+									<td style="width: 25%;">R.G.Nº </td>
+									<td style="width: 25%;">Fecha: </td>
+								</tr>
+								<tr>
+									<td style="width: 35%;">Ampliación de plazo Nº 2</td>
+									<td style="width: 15%;"></td>
+									<td style="width: 25%;">R.G.Nº </td>
+									<td style="width: 25%;">Fecha: </td>
+								</tr>
+								<tr>
+									<td style="width: 35%;">Ampliación de plazo Nº 3</td>
+									<td style="width: 15%;"></td>
+									<td style="width: 25%;">R.G.Nº </td>
+									<td style="width: 25%;">Fecha: </td>
+								</tr>
+								<tr>
+									<td style="width: 35%;"><b>Plazo Total Aprobado</b></td>
+									<td colspan="3"></td>
+								</tr>
+								<tr>
+									<td style="width: 35%;"><b>Plazo de Ejec. Real</b></td>
+									<td colspan="3"></td>
+								</tr>
+							</table>							
 						</div>
 						<p>
 							<b style="padding-left: 12px;">2.2.- PARTIDAS EJECUTADAS DURANTE EL PERIODO</b><br>
@@ -182,12 +215,14 @@
 									<td style="width: 25%;"><b>Unidad</b></td>
 									<td style="width: 25%;"><b>Metrado</b></td>
 								</tr>
+								<?php for ($i=0; $i < 9 ; $i++) { ?>
 								<tr>
-									<td style="width: 25%;"></td>
-									<td style="width: 25%;"></td>
-									<td style="width: 25%;"></td>
-									<td style="width: 25%;"></td>
+									<td style="width: 25%; height: 17px;"></td>
+									<td style="width: 25%; height: 17px;"></td>
+									<td style="width: 25%; height: 17px;"></td>
+									<td style="width: 25%; height: 17px;"></td>
 								</tr>
+								<?php } ?>
 							</table>
 							<br>
 							<table id="tabladetalle" class="tabla" style="border: none;">
@@ -197,12 +232,8 @@
 								<tr>
 									<td style="width: 25%; height: 50px;"></td>
 								</tr>
-							</table>									
-						</div>
-						<p>
-							<b style="padding-left: 12px;">2.2.- PARTIDAS EJECUTADAS DURANTE EL PERIODO</b><br>
-						</p>
-						<div style="padding-left: 44px;">
+							</table>	
+							<br>								
 							<p style="font-size: 10px;">OBRAS ADICIONALES RESOLUCIÓN Nº</p>
 							<table id="tablaAdicional" class="tabla" style="border: none;">
 								<tr>
@@ -211,12 +242,14 @@
 									<td style="width: 25%;"><b>Unidad</b></td>
 									<td style="width: 25%;"><b>Metrado</b></td>
 								</tr>
+								<?php for ($i=0; $i < 6 ; $i++) { ?>
 								<tr>
-									<td style="width: 25%;"></td>
-									<td style="width: 25%;"></td>
-									<td style="width: 25%;"></td>
-									<td style="width: 25%;"></td>
+									<td style="width: 25%; height: 17px;"></td>
+									<td style="width: 25%; height: 17px;"></td>
+									<td style="width: 25%; height: 17px;"></td>
+									<td style="width: 25%; height: 17px;"></td>
 								</tr>
+								<?php } ?>
 							</table>
 							<br>
 							<table id="tabladetalleAdicional" class="tabla" style="border: none;">
@@ -364,7 +397,7 @@
 							<table id="tablaAvanceFisico" class="tabla" style="border: none;">
 								<thead>
 									<tr>
-										<th colspan="12">MES DE <?=$mes?></th>
+										<th colspan="10">MES DE <?=$mes?></th>
 									</tr>
 									<tr>
 										<th rowspan="3">Nº de semana del mes</th>
@@ -383,23 +416,32 @@
 										<th>Oficial</th>
 										<th>Operario</th>						
 									</tr>
+									<tr>
+										<th style="height: 20px;"></th>
+										<th style="height: 20px;"></th>
+										<th style="height: 20px;"></th>
+										<th style="height: 20px;"></th>
+										<th style="height: 20px;"></th>
+										<th style="height: 20px;"></th>
+										<th style="height: 20px;"></th>
+										<th style="height: 20px;"></th>
+									</tr>
 								</thead>
 								<tbody>
-									<?php for ($i=0; $i <5 ; $i++) 
-									{  ?>
-										<tr>
-											<td><?=$i+1?></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-										</tr>
-									<?php } ?>	
+								<?php for ($i=0; $i <6 ; $i++) { ?>
+									<tr>
+										<td><?=$i+1?></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<?php }?>
 									<tr>
 										<td colspan="3">Total de Jornales del mes </td>
 										<td></td>
@@ -410,7 +452,7 @@
 										<td></td>
 										<td></td>
 									</tr>						
-								</tbody>							
+								</tbody>						
 							</table>
 							<br>
 							<table id="tablaManodeObra" class="tabla" style="border: none;">
@@ -462,6 +504,7 @@
 									</tr>								
 								</tbody>							
 							</table>
+							<br>
 							<table id="tablaObservaciones" class="tabla" style="border: none;">
 								<tr>
 									<td><b>Observaciones y/o comentarios:</b></td>
@@ -472,71 +515,93 @@
 							</table>								
 						</div>
 						<p>
-							<b style="padding-left: 12px;">2.2.- PARTIDAS EJECUTADAS DURANTE EL PERIODO</b><br>
+							<b>IV.- PRINCIPALES OCURRENCIAS EN EL MES</b><br>
 						</p>
-						<p>
-							<b style="padding-left: 12px;">2.2.- PARTIDAS EJECUTADAS DURANTE EL PERIODO</b><br>
-						</p>
-						<p>
-							<b style="padding-left: 12px;">2.2.- PARTIDAS EJECUTADAS DURANTE EL PERIODO</b><br>
-						</p>
-						<p>
-							<b style="padding-left: 12px;">2.2.- PARTIDAS EJECUTADAS DURANTE EL PERIODO</b><br>
-						</p>
-						<div>
-							<table class="tabla">
+						<div style="padding-left: 44px;">
+							<p>Comentarios de las principales ocurrencias respecto a los materiales utilizados, personal, equipo, maquinarias, alcance de las metas previstas.</p>
+							<table id="tablaObservaciones" class="tabla" style="border: none;">
 								<tr>
-									<td>gfgfg</td>
-									<td>gfgfg</td>
-									<td>gfgfg</td>
-									<td>gfgfg</td>
-									<td>gfgfg</td>
+									<td style="width: 25%; height: 100px;"></td>
+								</tr>
+							</table>		
+							<br>
+							<table id="tablaImg" class="tabla" style="border: none;">
+								<tr>
+									<td style="width: 25%; height: 380px;"></td>
+								</tr>
+								<tr>
+									<td><b>Fecha de la Fotográfia:</b>Describir la fotografia, indicando cual es la partida que se esta ejecutando y la actividad.</td>
+								</tr>
+								<tr>
+									<td><b>Nombre del Proyecto:</b></td>
 								</tr>
 							</table>
+							<br>
+							<table id="tablaImg" class="tabla" style="border: none;">
+								<tr>
+									<td style="width: 25%; height: 380px;"></td>
+								</tr>
+								<tr>
+									<td><b>Fecha de la Fotográfia:</b>Describir la fotografia, indicando cual es la partida que se esta ejecutando y la actividad.</td>
+								</tr>
+								<tr>
+									<td><b>Nombre del Proyecto:</b></td>
+								</tr>
+							</table>							
 						</div>
-						<!--<div style="padding-left: 44px;">
-							<table class="tabla">
-								<th>
-									<td style="width: 25%;"><b>Item</b></td>
-									<td style="width: 25%;"><b>Partida</b></td>
-									<td style="width: 25%;"><b>Unidad</b></td>
-									<td style="width: 25%;"><b>Metrado</b></td>
-								</th>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+
+						<p>
+							<b>V.- DOCUMENTACIÓN </b><br>
+						</p>
+						<p>
+							<b style="padding-left: 12px;">4.1.- CUADERNO DE OBRA</b><br>
+						</p>
+						<div style="padding-left: 44px;">
+							<table id="tablaObra" class="tabla" style="border: none;">
 								<tr>
-									<td style="width: 25%;"></td>
-									<td style="width: 25%;"></td>
-									<td style="width: 25%;"></td>
-									<td style="width: 25%;"></td>
+									<td colspan="2"> Mes de :</td>
+								</tr>
+								<tr>
+									<td>Del Folio</td>
+									<td>Al Folio</td>
+								</tr>
+								<tr>
+									<td style="height: 16px;"></td>
+									<td style="height: 16px;"></td>
+								</tr>
+							</table>		
+							<br>
+							<table id="tablaImg" class="tabla" style="border: none;">
+								<tr>
+									<td style="width: 25%; height: 375px;"></td>
+								</tr>
+								<tr>
+									<td><b>Fecha de la Fotográfia:</b>Describir la fotografia, indicando cual es la partida que se esta ejecutando y la actividad.</td>
+								</tr>
+								<tr>
+									<td><b>Nombre del Proyecto:</b></td>
 								</tr>
 							</table>
-						</div>-->
-						
-						<!--<table class="tabla" style="border: none;">
-							<tr>
-								<td style="width: 100%;">Información descriptiva de metas físicas alcanzadas:</td>
-							</tr>
-						</table>-->
+							<br>
+							<table id="tablaImg" class="tabla" style="border: none;">
+								<tr>
+									<td style="width: 25%; height: 375px;"></td>
+								</tr>
+								<tr>
+									<td><b>Fecha de la Fotográfia:</b>Describir la fotografia, indicando cual es la partida que se esta ejecutando y la actividad.</td>
+								</tr>
+								<tr>
+									<td><b>Nombre del Proyecto:</b></td>
+								</tr>
+							</table>							
+						</div>
 
-						<!--<b style="padding-left: 12px;">2.3.- INFORMACIÓN FÍSICA - FINANCIERA DEL PERIODO</b><br>
-						</p>-->
-						<!--<p> 
-							<b>II.- EJECUCIÓN DE OBRA</b><br>
-							<b style="padding-left: 12px;">2.1.- PLAZO DE EJECUCIÓN</b><br>
-							<b style="padding-left: 12px;">2.2.- PARTIDAS EJECUTADAS DURANTE EL PERIODO</b><br>
-							<b style="padding-left: 12px;">2.3.- INFORMACIÓN FÍSICA - FINANCIERA DEL PERIODO</b><br>
-						</p>
-						<p> 
-							<b>II.- EJECUCIÓN DE OBRA</b><br>
-							<b style="padding-left: 12px;">2.1.- PLAZO DE EJECUCIÓN</b><br>
-							<b style="padding-left: 12px;">2.2.- PARTIDAS EJECUTADAS DURANTE EL PERIODO</b><br>
-							<b style="padding-left: 12px;">2.3.- INFORMACIÓN FÍSICA - FINANCIERA DEL PERIODO</b><br>
-						</p>
-						<p> 
-							<b>II.- EJECUCIÓN DE OBRA</b><br>
-							<b style="padding-left: 12px;">2.1.- PLAZO DE EJECUCIÓN</b><br>
-							<b style="padding-left: 12px;">2.2.- PARTIDAS EJECUTADAS DURANTE EL PERIODO</b><br>
-							<b style="padding-left: 12px;">2.3.- INFORMACIÓN FÍSICA - FINANCIERA DEL PERIODO</b><br>
-						</p>-->
 					</div>
 				</div>
 	        </div>

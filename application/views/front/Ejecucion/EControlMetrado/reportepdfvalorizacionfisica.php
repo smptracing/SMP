@@ -100,6 +100,13 @@ function mostrarAnidado($meta, $expedienteTecnico)
 	    border-collapse: collapse;
 	    font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif;
 	}
+	#presentacion td, #presentacion th
+	{
+		border: 1px solid black;
+		font-size: 10px;
+		padding: 2px;
+		text-transform: uppercase;
+	}
 
 	#tableValorizacion td, #tableValorizacion th
 	{
@@ -130,15 +137,31 @@ function mostrarAnidado($meta, $expedienteTecnico)
 				</div>
 				<div class="x_content">
                     <div class="row">
-						<div class="col-md-12 col-sm-12 col-xs-12" style="font-size: 12px;">
-							<table >
+						<div class="col-md-12 col-sm-12 col-xs-12" style="font-size: 11px;">
+							<table id="presentacion" >
 								<tr>
-									<td class="col-md-3" style="padding: 1px;"><b>PROYECTO</b></td>
-									<td class="col-md-9" style="padding: 1px;"><?=trim($expedienteTecnico->nombre_pi)?></td>
+									<td  style="padding: 1px;"><b>PROYECTO</b></td>
+									<td style="padding: 1px;"><?=trim($expedienteTecnico->nombre_pi)?></td>
 								</tr>
 								<tr>
-									<td class="col-md-3" style="padding: 1px;"><b>FECHA</b></td>
-									<td class="col-md-9" style="padding: 1px;"><?=date('Y-m-d')?></td>
+									<td  style="padding: 1px;"><b>COMPONENTE</b></td>
+									<td  style="padding: 1px;"><?=trim($expedienteTecnico->componente_et)?></td>
+								</tr>
+								<tr>
+									<td  style="padding: 1px;"><b>SUBMETA</b></td>
+									<td  style="padding: 1px;"><?=trim($expedienteTecnico->meta_et)?></td>
+								</tr>
+								<tr>
+									<td  style="padding: 1px;"><b>FTE-FTO</b></td>
+									<td  style="padding: 1px;"><?=trim($expedienteTecnico->fuente_financiamiento_et)?></td>
+								</tr>
+								<tr>
+									<td  style="padding: 1px;"><b>MODALIDAD</b></td>
+									<td  style="padding: 1px;"><?=trim($expedienteTecnico->modalidad_ejecucion_et)?></td>
+								</tr>
+								<tr>
+									<td  style="padding: 1px;"><b>FECHA</b></td>
+									<td  style="padding: 1px;"><?=date('Y-m-d')?></td>
 								</tr>
 							</table>
 							<br>
