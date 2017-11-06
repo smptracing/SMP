@@ -53,15 +53,18 @@
 																			<table id="table-consolidadoAvance" style="text-align: center;" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%"> 
 																			 	<thead>
 																				 	<tr>
-																					 	<td>Proy snip</td>
-																					 	<td>Sec</td>
-																					 	<td>Nombre</td>
+																					 	<td>Snip</td>
+																					 	<td>Meta</td>
+																					 	<td>Siaf</td>
+																					 	<td>Proyecto</td>
 																					 	<td>Costo</td>
-																					 	<td>Pim</td>
-																					 	<td>Monto Certif</td>
-																					 	<td>Avance</td>
+																					 	<td>Pim Acumulado</td>
+																					 	<td>Certificado</td>
+																					 	<td>Avance Pim Certificado</td>
+																					 	<td>Devengado</td>
+																					 	<td>Avance Pim Devengado</td>
 																					 	<td>Seguimiento</td>
-																					 	<td>Saldo porProg</td>
+																					 	<td>Por Gastar</td>
 																				 	</tr>
 																			 	</thead>
 																			 	<tbody>
@@ -74,6 +77,9 @@
 																					    	</td>
 																					    	<td>
 																								<?=$item->sec_func?>
+																					    	</td>
+																					    	<td>
+																								<?=$item->act_proy?>
 																					    	</td>
 																					    	<td style="font-size: 10px;">
 																								<?=$item->nombre?>
@@ -89,6 +95,12 @@
 																					    	</td>
 																					    	<td>
 																								<?=$item->avance_pim_cert?>
+																					    	</td>
+																					    	<td>
+																								<?=$item->devengado?>
+																					    	</td>
+																					    	<td>
+																								<?=$item->avance_pim_deven?>
 																					    	</td>
 																					    	<td>
 																								<?=$item->para_seguimiento?>
