@@ -78,7 +78,7 @@
 						</p>
 						<div style="padding-left: 44px;">
 							<table class="tabla" >
-								<tr>
+								<!--<tr>
 									<td style="width: 20%;"><b>Departamento:</b></td>
 									<td style="width: 80%;"></td>
 								</tr>
@@ -89,10 +89,14 @@
 								<tr>
 									<td style="width: 20%;"><b>Distrito:</b></td>
 									<td style="width: 80%;"></td>
+								</tr>-->
+								<tr>
+									<td style="width: 20%;"><b>Ubicacion:</b></td>
+									<td style="width: 80%;"><?=trim($expedienteTecnico->distrito_provincia_departamento_ue)?></td>
 								</tr>
 								<tr>
 									<td style="width: 20%;"><b>Dirección y/o Ubicación:</b></td>
-									<td style="width: 80%;"></td>
+									<td style="width: 80%;"><?=trim($expedienteTecnico->direccion_ue)?></td>
 								</tr>
 							</table>								
 						</div>
@@ -199,7 +203,7 @@
 								</tr>
 								<tr>
 									<td style="width: 35%;"><b>Plazo de Ejec. Real</b></td>
-									<td colspan="3"></td>
+									<td colspan="3"><?=$expedienteTecnico->num_meses?> MESES</td>
 								</tr>
 							</table>							
 						</div>
@@ -210,20 +214,79 @@
 							<p style="font-size: 10px;">OBRAS PRINCIPAL EXPEDIENTE TECNICO</p>
 							<table id="tablaPartidas" class="tabla" style="border: none;">
 								<tr>
-									<td style="width: 25%;"><b>Item</b></td>
-									<td style="width: 25%;"><b>Partidas</b></td>
+									<td style="width: 10%;"><b>Item</b></td>
+									<td style="width: 40%;"><b>Partidas</b></td>
 									<td style="width: 25%;"><b>Unidad</b></td>
 									<td style="width: 25%;"><b>Metrado</b></td>
 								</tr>
-								<?php for ($i=0; $i < 9 ; $i++) { ?>
+								<?php foreach ($partidaPeriodo as $key => $value) { ?>
 								<tr>
-									<td style="width: 25%; height: 17px;"></td>
-									<td style="width: 25%; height: 17px;"></td>
-									<td style="width: 25%; height: 17px;"></td>
-									<td style="width: 25%; height: 17px;"></td>
+									<td style="width: 10%; height: 17px;"><?=$value->numeracion?></td>
+									<td style="width: 40%; height: 17px;"><?=$value->desc_partida?></td>
+									<td style="width: 25%; height: 17px;"><?=$value->descripcion?></td>
+									<td style="width: 25%; height: 17px;"><?=$value->cantidad?></td>
 								</tr>
 								<?php } ?>
 							</table>
+							<!--<table id="tableValorizacion"  >
+								<thead>
+									<tr>
+										<th>PROY:</th>
+										<th><?=trim($expedienteTecnico->nombre_pi)?></th>
+										<th rowspan="3">UNIDAD</th>
+										<th rowspan="2" colspan="3" >PRESUPUESTO</th>
+										<th colspan="7">AVANCES</th>
+										<th colspan="3" rowspan="2">SALDO</th>
+									</tr>
+									<tr>
+										<th rowspan="2">ÍTEM</th>
+										<th style="width: 400px;"; rowspan="2">DESCRIPCIÓN</th>
+										<th colspan="2">ANTERIOR</th>
+										<th colspan="2">ACTUAL</th>
+										<th colspan="3">ACUMULADO</th>
+									</tr>
+									<tr>
+										<th>Metrado</th>
+										<th>P.Unit. S/.</th>
+										<th>Pres.</th>
+										<th>Metrado</th>
+										<th>Valorizado S/.</th>
+										<th>Metrado</th>
+										<th>Valorizado S/.</th>
+										<th>Metrado</th>
+										<th>Valorizado S/.</th>
+										<th>%</th>
+										<th>Metrado</th>
+										<th>Valorizado S/.</th>
+										<th>%</th>
+									</tr>
+								</thead>
+								<tbody>
+									<?php foreach($expedienteTecnico->childComponente as $key => $value){ ?>
+										<tr class="elementoBuscar">
+											<td><b><i><?=$value->numeracion?></i></b></td>
+											<td style="text-align: left;"><b><i><?=html_escape($value->descripcion)?></i></b></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+										</tr>
+										<?php foreach($value->childMeta as $index => $item){ ?>
+											<?= mostrarAnidado($item, $expedienteTecnico)?>
+										<?php } ?>
+									<?php } ?>
+								</tbody>
+							</table>-->
 							<br>
 							<table id="tabladetalle" class="tabla" style="border: none;">
 								<tr>
@@ -237,8 +300,8 @@
 							<p style="font-size: 10px;">OBRAS ADICIONALES RESOLUCIÓN Nº</p>
 							<table id="tablaAdicional" class="tabla" style="border: none;">
 								<tr>
-									<td style="width: 25%;"><b>Item</b></td>
-									<td style="width: 25%;"><b>Partidas</b></td>
+									<td style="width: 15%;"><b>Item</b></td>
+									<td style="width: 35%;"><b>Partidas</b></td>
 									<td style="width: 25%;"><b>Unidad</b></td>
 									<td style="width: 25%;"><b>Metrado</b></td>
 								</tr>
@@ -572,14 +635,14 @@
 									<td>Al Folio</td>
 								</tr>
 								<tr>
-									<td style="height: 16px;"></td>
-									<td style="height: 16px;"></td>
+									<td style="height: 14px;"></td>
+									<td style="height: 14px;"></td>
 								</tr>
 							</table>		
 							<br>
 							<table id="tablaImg" class="tabla" style="border: none;">
 								<tr>
-									<td style="width: 25%; height: 375px;"></td>
+									<td style="width: 25%; height: 370px;"></td>
 								</tr>
 								<tr>
 									<td><b>Fecha de la Fotográfia:</b>Describir la fotografia, indicando cual es la partida que se esta ejecutando y la actividad.</td>
@@ -591,7 +654,7 @@
 							<br>
 							<table id="tablaImg" class="tabla" style="border: none;">
 								<tr>
-									<td style="width: 25%; height: 375px;"></td>
+									<td style="width: 25%; height: 370px;"></td>
 								</tr>
 								<tr>
 									<td><b>Fecha de la Fotográfia:</b>Describir la fotografia, indicando cual es la partida que se esta ejecutando y la actividad.</td>

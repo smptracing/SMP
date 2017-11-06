@@ -1080,7 +1080,9 @@ class Expediente_Tecnico extends CI_Controller
 		{
 			$listaUnidadMedida=$this->Model_Unidad_Medida->UnidadMedidad_Listar();
 			$expedienteTecnico->childComponente=$this->Model_ET_Componente->ETComponentePorIdET($expedienteTecnico->id_et);
-			foreach($expedienteTecnico->childComponente as $key => $value)
+			$mesActual=   date('m');
+			$partidaPeriodo  = $this->Model_DetSegOrden->PartidasEjecutadasPeriodo($mesActual);
+			/*foreach($expedienteTecnico->childComponente as $key => $value)
 			{
 				$value->childMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($value->id_componente);
 
@@ -1088,10 +1090,10 @@ class Expediente_Tecnico extends CI_Controller
 				{
 					$this->obtenerMetaAnidadaParaValorizacionFisica($item);				
 				}			
-			}
-			//$this->load->view('front/Ejecucion/EControlMetrado/formatoFE02', ['expedienteTecnico' => $expedienteTecnico, 'listaUnidadMedida' => $listaUnidadMedida , 'mes' => $mes]);
+			}*/
+			//$this->load->view('front/Ejecucion/EControlMetrado/formatoFE02', ['expedienteTecnico' => $expedienteTecnico, 'mes' => $mes, 'partidaPeriodo' => $partidaPeriodo]);
 
-			$html = $this->load->view('front/Ejecucion/EControlMetrado/formatoFE02', ['expedienteTecnico' => $expedienteTecnico, 'listaUnidadMedida' => $listaUnidadMedida , 'mes' => $mes],true);
+			$html = $this->load->view('front/Ejecucion/EControlMetrado/formatoFE02', ['expedienteTecnico' => $expedienteTecnico, 'mes' => $mes, 'partidaPeriodo' => $partidaPeriodo],true);
 			$this->mydompdf->load_html($html);
 			$this->mydompdf->set_paper("A4", "portrait");
 			$this->mydompdf->render();

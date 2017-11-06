@@ -62,4 +62,9 @@ class Model_DetSegOrden extends CI_Model
 		$data = $this->db->query("select ds.id_detalle_partida, sum(ds.cantidad) as cantidad from ET_DETALLE_PARTIDA dp inner join DET_SEG_VALORIZACION ds on dp.id_detalle_partida=ds.id_detalle_partida group by(ds.id_detalle_partida)");
 		return $data->result();
 	}
+	public function PartidasEjecutadasPeriodo($mesActual)
+	{
+		$data =  $this->db->query("select p.numeracion, dp.id_detalle_partida, p.desc_partida,um.descripcion, sum( ds.cantidad) as cantidad from DET_SEG_VALORIZACION ds inner join ET_DETALLE_PARTIDA dp on ds.id_detalle_partida=dp.id_detalle_partida inner join ET_PARTIDA p on dp.id_partida = p.id_partida inner join UNIDAD_MEDIDA um on dp.id_unidad = um.id_unidad where Datepart(mm,ds.fecha_dia) = $mesActual group by p.numeracion, dp.id_detalle_partida, p.desc_partida,um.descripcion");
+		return $data->result();
+	}
 }
