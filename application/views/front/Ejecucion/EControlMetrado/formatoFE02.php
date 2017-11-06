@@ -214,15 +214,15 @@
 							<p style="font-size: 10px;">OBRAS PRINCIPAL EXPEDIENTE TECNICO</p>
 							<table id="tablaPartidas" class="tabla" style="border: none;">
 								<tr>
-									<td style="width: 25%;"><b>Item</b></td>
-									<td style="width: 25%;"><b>Partidas</b></td>
+									<td style="width: 10%;"><b>Item</b></td>
+									<td style="width: 40%;"><b>Partidas</b></td>
 									<td style="width: 25%;"><b>Unidad</b></td>
 									<td style="width: 25%;"><b>Metrado</b></td>
 								</tr>
 								<?php foreach ($partidaPeriodo as $key => $value) { ?>
 								<tr>
-									<td style="width: 25%; height: 17px;"><?=$value->numeracion?></td>
-									<td style="width: 25%; height: 17px;"><?=$value->desc_partida?></td>
+									<td style="width: 10%; height: 17px;"><?=$value->numeracion?></td>
+									<td style="width: 40%; height: 17px;"><?=$value->desc_partida?></td>
 									<td style="width: 25%; height: 17px;"><?=$value->descripcion?></td>
 									<td style="width: 25%; height: 17px;"><?=$value->cantidad?></td>
 								</tr>
@@ -300,8 +300,8 @@
 							<p style="font-size: 10px;">OBRAS ADICIONALES RESOLUCIÓN Nº</p>
 							<table id="tablaAdicional" class="tabla" style="border: none;">
 								<tr>
-									<td style="width: 25%;"><b>Item</b></td>
-									<td style="width: 25%;"><b>Partidas</b></td>
+									<td style="width: 15%;"><b>Item</b></td>
+									<td style="width: 35%;"><b>Partidas</b></td>
 									<td style="width: 25%;"><b>Unidad</b></td>
 									<td style="width: 25%;"><b>Metrado</b></td>
 								</tr>
