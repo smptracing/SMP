@@ -37,4 +37,3 @@ uploads/ResolucioExpediente/*.docx
 uploads/ResolucioExpediente/*.pdf
 *.xlsx
 *.pdf
-application/config/config.php
