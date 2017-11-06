@@ -5,11 +5,15 @@
 <style>
 	.btn.btn-app{
 		background-color: #f2f5f7;
-		color:#001f3f;
+		color:white;
+	}
+	.btn.btn-app:hover{
+		background-color: #f2f5f7;
+		color:white;
 	}
 	.menuPrincipal
 	{
-		background-color: #001f3f;
+		background-color: #35495d;
 		color: #73879c; 
 		font-size: 15px;
 
@@ -23,24 +27,24 @@
     	background-color: #26576f;
     	color: white;
 	}
-	.nav>li>a:hover 
+	.menuPrincipal>li>a:hover 
 	{
     	padding: 13px 15px 12px;
-    	background-color: #26576f;
+    	background-color: #5c94a0;
     	color: white;
 
 	}
 	.dropdown:hover{
-		background-color: #001f3f;
+		background-color: #35495d;
 	}
 	.subMenu >li>a:hover{
-		background-color: #001f3f;
+		background-color: #35495d;
 		color:white;
 	}
 	.subMenu >li>a
 	{
 		padding: 5px 5px;
-		color:#001f3f;
+		color:#35495d;
 		font-size: 13px;
 	}
 	.modal
@@ -319,22 +323,22 @@
 		                    { ?>
 	                    		<div>
 				                    <h6><code>Formatos de Expediente Técnico</code>.</h6>
-									<a class="btn btn-app"  data-toggle="tooltip" title="Ficha Técnica del Proyectos" href="<?= site_url('Expediente_Tecnico/reportePdfExpedienteTecnico/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank" >
-										<i class="fa fa-file-pdf-o"></i> Formarto FF-01
+									<a style="background-color: #fd9b15;" class="btn btn-app"  data-toggle="tooltip" title="Ficha Técnica del Proyectos" href="<?= site_url('Expediente_Tecnico/reportePdfExpedienteTecnico/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank" >
+										<i class="fa fa-file-pdf-o"></i> Formato FF-01
 									</a>                  		
-									<a class="btn btn-app"  data-toggle="tooltip" title="Presupuesto Resumen"  href="<?= site_url('Expediente_Tecnico/reportePdfPresupuestoFF05/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
+									<a style="background-color: #e73e3a;" class="btn btn-app"  data-toggle="tooltip" title="Presupuesto Resumen"  href="<?= site_url('Expediente_Tecnico/reportePdfPresupuestoFF05/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
 										<i class="fa fa-file-pdf-o"></i> Formato FF-05
 									</a>                     		
-									<a class="btn btn-app" data-toggle="tooltip" title="Cuadro de Presupuesto Analítico General" href="<?= site_url('Expediente_Tecnico/reportePdfPresupuestoAnalitico/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
+									<a style="background-color: #5cb360;" class="btn btn-app" data-toggle="tooltip" title="Cuadro de Presupuesto Analítico General" href="<?= site_url('Expediente_Tecnico/reportePdfPresupuestoAnalitico/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
 										<i class="fa fa-file-pdf-o"></i> Formato FF-06
 									</a>                     		
-									<a class="btn btn-app"  data-toggle="tooltip" title="Sustentación de Metrados" href="<?= site_url('Expediente_Tecnico/reportePdfMetrado/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
+									<a style="background-color: #11b8cc;" class="btn btn-app"  data-toggle="tooltip" title="Sustentación de Metrados" href="<?= site_url('Expediente_Tecnico/reportePdfMetrado/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
 										<i class="fa fa-file-pdf-o"></i> Formato FF-10
 									</a>                     		
-									<a class="btn btn-app"  data-toggle="tooltip" title="Análisis de Costos Unitarios" href="<?= site_url('Expediente_Tecnico/reportePdfAnalisisPrecioUnitarioFF11/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
+									<a style="background-color: #f3632e;" class="btn btn-app"  data-toggle="tooltip" title="Análisis de Costos Unitarios" href="<?= site_url('Expediente_Tecnico/reportePdfAnalisisPrecioUnitarioFF11/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
 										<i class="fa fa-file-pdf-o"></i> Formato FF-11
 									</a> 
-									<a class="btn btn-app"  data-toggle="tooltip" title="Cronograma Valorizado de Ejecución del Proyecto" href="<?= site_url('Expediente_Tecnico/reportePdfValorizacionEjecucion/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
+									<a style="background-color: #0976b4;" class="btn btn-app"  data-toggle="tooltip" title="Cronograma Valorizado de Ejecución del Proyecto" href="<?= site_url('Expediente_Tecnico/reportePdfValorizacionEjecucion/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
 										<i class="fa fa-file-pdf-o"></i> Formato FF-15
 									</a>
 								</div>  
@@ -343,10 +347,10 @@
 		                    { ?>
 								<div>
 				                    <h6><code>Formatos de Ejecución</code>.</h6>
-				                    <a class="btn btn-app"  data-toggle="tooltip" title="Informe Mensual" href="<?= site_url('Expediente_Tecnico/reportePdfInformeMensual/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank" >
+				                    <a style="background-color: #fd9b15;" class="btn btn-app"  data-toggle="tooltip" title="Informe Mensual" href="<?= site_url('Expediente_Tecnico/reportePdfInformeMensual/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank" >
 										<i class="fa fa-file-pdf-o"></i> Formarto FE-02
 									</a>  
-									<a class="btn btn-app"  data-toggle="tooltip" title="Valorizacion Mensual" href="<?= site_url('Expediente_Tecnico/reportePdfValorizacionFisica/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank" >
+									<a style="background-color: #e73e3a;" class="btn btn-app"  data-toggle="tooltip" title="Valorizacion Mensual" href="<?= site_url('Expediente_Tecnico/reportePdfValorizacionFisica/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank" >
 										<i class="fa fa-file-pdf-o"></i> Formarto FE-03
 									</a>                  		
 								</div> 
