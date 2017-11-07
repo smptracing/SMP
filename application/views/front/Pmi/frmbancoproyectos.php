@@ -391,7 +391,7 @@
                                          <input id="txt_longitud" name="txt_longitud"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2" placeholder="Longitud" required="required" type="text">
                                       </div>
                                       <div class="col-md-4">
-                                          <input type="file" name="ImgUbicacion" required="required">
+                                          <input type="file" name="ImgUbicacion">
                                       </div>
                                     </div>
                                     <br>

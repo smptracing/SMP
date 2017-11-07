@@ -301,7 +301,29 @@ class bancoproyectos extends CI_Controller
 
             $this->upload->initialize($config);
              if (!$this->upload->do_upload('ImgUbicacion')) {
+                    $flat         = "C ";
+                    $id_ubigeo_pi = "0";
+                    $id_ubigeo    = $this->input->post("cbx_distrito");
+                    $txt_id_pip   = $this->input->post("txt_id_pip");
+                    $direccion    = "null";
+                    $txt_latitud  = $this->input->post("txt_latitud");
+                    $txt_longitud = $this->input->post("txt_longitud");
 
+                    $file_info = $this->upload->data();
+                    $imagen = $file_info['file_name'];
+
+                    
+                    if ($this->bancoproyectos_modal->Add_ubigeo_proyecto($flat, $id_ubigeo_pi, $id_ubigeo, $txt_id_pip, $direccion, $txt_latitud, $txt_longitud) == false) {
+                        
+                        
+                        $dataUltima=$this->Model_PMI_ubicacion->ultipoUbigeoPEI();
+
+                        $this->Model_PMI_ubicacion->insertar($dataUltima->id_ubigeo_pi,$imagen);
+                        echo "1";
+
+                    } else {
+                        echo "2";
+                    }
                 
               } else {
 
