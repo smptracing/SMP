@@ -82,13 +82,13 @@
 								
 								<li><a><i class="fa fa-book"></i> Expediente Técnico<span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="<?php echo site_url('Expediente_Tecnico/index'); ?>">Expediente técnico</a></li>
+										<li><a href="<?php echo site_url('Expediente_Tecnico/index'); ?>">Elaboración Expediente técnico</a></li>
 										<li><a href="<?php echo site_url('Expediente_Tecnico/monitorCoordinador'); ?>">Monitoreo de ET</a></li>
 									</ul>
 								</li>
 								<li><a><i class="fa fa-play"></i> Ejecución <span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="<?php echo site_url('Expediente_Tecnico/ejecucion'); ?>">Ejecución</a></li>
+										<li><a href="<?php echo site_url('Expediente_Tecnico/ejecucion'); ?>">Ejecución del proyecto</a></li>
 									</ul>
 								</li>
 								<li><a><i class="fa fa-cogs"></i> Mantenimiento <span class="fa fa-chevron-down"></span></a>
