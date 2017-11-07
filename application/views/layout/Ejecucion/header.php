@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -76,20 +76,10 @@
 
 							</ul>
 
-							<h3><span style="font-size: 10px;">Configuración de parámetros</span></h3>
+							<h3><span style="font-size: 10px;">Módulo ejecución</span></h3>
 							<ul class="nav side-menu">
 
-								<li><a><i class="fa fa-cogs"></i> Mantenimiento <span class="fa fa-chevron-down"></span></a>
-									<ul class="nav child_menu">
-										<li><a href="<?php echo site_url('ET_Presupuesto_Ejecucion/index'); ?>">Presupuesto Ejecucion</a></li>
-										<li><a href="<?php echo site_url('ET_Recurso/index'); ?>">Recurso</a></li>
-										<li><a href="<?php echo site_url('ET_Etapa_Ejecucion/index'); ?>">Etapa Ejecución</a></li>
-										<li><a href="<?php echo site_url('ET_Clasificador/index'); ?>">Clasificador</a></li>
-										<li><a href="<?php echo site_url('CronogramaValorizacion/index'); ?>">Cronograma Valoración</a></li>
-										<li><a href="<?php echo site_url('ET_Tipo_Responsable/index'); ?>">Tipo de responsable</a></li>
-										
-									</ul>
-								</li> 
+								
 								<li><a><i class="fa fa-book"></i> Expediente Técnico<span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a href="<?php echo site_url('Expediente_Tecnico/index'); ?>">Expediente técnico</a></li>
@@ -99,6 +89,17 @@
 								<li><a><i class="fa fa-play"></i> Ejecución <span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a href="<?php echo site_url('Expediente_Tecnico/ejecucion'); ?>">Ejecución</a></li>
+									</ul>
+								</li>
+								<li><a><i class="fa fa-cogs"></i> Mantenimiento <span class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a href="<?php echo site_url('ET_Presupuesto_Ejecucion/index'); ?>">Presupuesto Ejecucion</a></li>
+										<li><a href="<?php echo site_url('ET_Recurso/index'); ?>">Recurso</a></li>
+										<li><a href="<?php echo site_url('ET_Etapa_Ejecucion/index'); ?>">Etapa Ejecución</a></li>
+										<li><a href="<?php echo site_url('ET_Clasificador/index'); ?>">Clasificador</a></li>
+										<li><a href="<?php echo site_url('CronogramaValorizacion/index'); ?>">Cronograma Valoración</a></li>
+										<li><a href="<?php echo site_url('ET_Tipo_Responsable/index'); ?>">Tipo de responsable</a></li>
+										
 									</ul>
 								</li> 
 							</ul>
