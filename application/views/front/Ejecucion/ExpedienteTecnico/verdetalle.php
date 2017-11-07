@@ -6,10 +6,14 @@
 	.btn.btn-app{
 		background-color: #f2f5f7;
 		color:white;
+		box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.2);
+		border: none;
 	}
 	.btn.btn-app:hover{
 		background-color: #f2f5f7;
 		color:white;
+		transform: scale(1.125);
+		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 	}
 	.menuPrincipal
 	{
@@ -178,9 +182,11 @@
                   	<br/>
                   	<div class="row invoice-info">
                         <div class="col-sm-12 invoice-col">
-                          	<address style="text-align: center;"><br><br>
-                            	<b>"<?= trim($ExpedienteTecnicoElaboracion[0]->nombre_pi);?>"</b>
-                            </address><br>
+                          	<address><br><br>
+                            	<!--<b>"<?= trim($ExpedienteTecnicoElaboracion[0]->nombre_pi);?>"</b>-->
+                            	<strong>Nombre del Proyecto:</strong>
+                                <br><?= trim($ExpedienteTecnicoElaboracion[0]->nombre_pi);?>
+                            </address>
                         </div>
                         <div class="col-sm-4 invoice-col">
                           	<address>
@@ -196,7 +202,7 @@
                           		<strong>Costo de Preinversion:</strong>
                                 <br>S/. <?=a_number_format($ExpedienteTecnicoElaboracion[0]->costo_total_preinv_et,2,'.',",",3)?><br>
                                 <strong>Costo de Inversion:</strong>
-                                <br>s/. <?=a_number_format($ExpedienteTecnicoElaboracion[0]->costo_total_inv_et,2,'.',",",3)?><br>
+                                <br>S/. <?=a_number_format($ExpedienteTecnicoElaboracion[0]->costo_total_inv_et,2,'.',",",3)?><br>
                             </address>
                         </div>
                         <div class="col-sm-4 invoice-col">
