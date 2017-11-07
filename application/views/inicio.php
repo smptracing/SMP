@@ -14,6 +14,9 @@
   <link href="<?php echo base_url(); ?>assets/adminlte/AdminLTE.min.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/adminlte/_all-skins.min.css" rel="stylesheet">
   <style>
+    /*.skin-blue .main-header li.user-header {
+      background-color: #2a3f54;
+    }*/
     .main-footer 
     {
       background: #2a3f54;
@@ -88,6 +91,22 @@
         padding-top: 10px;
         padding-bottom: 50px;
     }
+    .Menu>li>a:hover
+    {
+      background-color: #5c94a0;
+      color: white;
+
+    }
+
+
+    .subMenu >li>a:hover{
+      background-color: #35495d;
+      color:white;
+    }
+    .subMenu{
+      box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.2);
+      margin: 0px 0 0;
+    }
     .content-wrapper
     {
       background-color: #f7f7f7;
@@ -95,14 +114,15 @@
     .skin-blue .main-header .navbar .nav>li>a {
         color: black;
     }
-    .skin-blue .main-header .navbar .nav>li>a : hover {
-        color: red;
+    .dropdown:hover
+    {
+      background-color: #5c94a0;
+
     }
-/*.nav>li>a:hover, .skin-blue .main-header .navbar .nav>li>a:active, .skin-blue .main-header .navbar .nav>li>a:focus, .skin-blue .main-header .navbar .nav .open>a, .skin-blue .main-header .navbar .nav .open>a:hover, .skin-blue .main-header .navbar .nav .open>a:focus, .skin-blue .main-header .navbar .nav>.active>a {
-    background: rgba(0,0,0,0.1);
-    color: white;
-    background-color:  #5c94a0;
-}*/
+    .dropdown:hover .dropdown-menu
+    {
+      display: block;
+    }
     @media (max-width: 770px) {
       .tituloHeader{
         display: none;
@@ -138,10 +158,10 @@
             </button>
           </div>
           <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav Menu">
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Guía de Usuario<span class="caret"></span></a>
-                  <ul class="dropdown-menu" role="menu">
+                <a href="#" class="dropdown-toggle" >Guía de Usuario<span class="caret"></span></a>
+                  <ul class="dropdown-menu subMenu " role="menu">
                       <li><a href="#">Mantenimiento de Parámetros</a></li>
                       <li><a href="#">PMI</a></li>
                       <li><a href="#">Formulación y Evaluación</a></li>
