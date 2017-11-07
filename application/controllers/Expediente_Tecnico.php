@@ -1133,8 +1133,12 @@ class Expediente_Tecnico extends CI_Controller
 			$this->mydompdf->stream("reporteValorizacionFisica.pdf", array("Attachment" => false));
 		}
 	}
-
-
+	public function ReporteEstadistico($id_et)
+	{
+		$this->load->view('layout/Ejecucion/header');
+		$this->load->view('front/Ejecucion/Reporte/estadisticasejecucion');
+		$this->load->view('layout/Ejecucion/footer');
+	}
 
 	private function obtenerMetaAnidadaParaValorizacionFisica($meta)
 	{
