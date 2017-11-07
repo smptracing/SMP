@@ -16,7 +16,7 @@
   <style>
     .main-footer 
     {
-      background: #3c5767;
+      background: #2a3f54;
       padding: 15px;
       color: #fff;
       border-top: 1px solid #d2d6de;
@@ -51,7 +51,7 @@
       height: 70px;
     }
     .skin-blue .main-header .navbar {
-        background-color: #3c5767;
+        background-color: #2a3f54;
     }
     .box.box-info 
     {
@@ -74,6 +74,7 @@
         -o-transition: transform 0.3s;
         transition: transform 0.4s;
         user-select : none;
+        box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.2);
 
     }
     .zoom-in{
@@ -81,11 +82,27 @@
     }
     .thebox:hover {
         transform: scale(1.125);
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     }
     .box-container{
         padding-top: 10px;
         padding-bottom: 50px;
     }
+    .content-wrapper
+    {
+      background-color: #f7f7f7;
+    }
+    .skin-blue .main-header .navbar .nav>li>a {
+        color: black;
+    }
+    .skin-blue .main-header .navbar .nav>li>a : hover {
+        color: red;
+    }
+/*.nav>li>a:hover, .skin-blue .main-header .navbar .nav>li>a:active, .skin-blue .main-header .navbar .nav>li>a:focus, .skin-blue .main-header .navbar .nav .open>a, .skin-blue .main-header .navbar .nav .open>a:hover, .skin-blue .main-header .navbar .nav .open>a:focus, .skin-blue .main-header .navbar .nav>.active>a {
+    background: rgba(0,0,0,0.1);
+    color: white;
+    background-color:  #5c94a0;
+}*/
     @media (max-width: 770px) {
       .tituloHeader{
         display: none;
@@ -113,7 +130,7 @@
       </div>
 
     </nav>
-    <nav class="navbar navbar-static-top" style="background-color: #424949;">
+    <nav class="navbar navbar-static-top" style="background-color: #ededed;">
       <div class="container">
           <div class="navbar-header" style="height: 0px;">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">

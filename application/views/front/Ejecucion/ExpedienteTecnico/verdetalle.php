@@ -6,8 +6,14 @@
 	.btn.btn-app{
 		background-color: #f2f5f7;
 		color:white;
-		box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.2);
+		box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.2);
 		border: none;
+		-webkit-transition: transform 0.3s;
+        -moz-transition: transform 0.3s;
+        -ms-transition: transform 0.3s;
+        -o-transition: transform 0.3s;
+        transition: transform 0.4s;
+        user-select : none;
 	}
 	.btn.btn-app:hover{
 		background-color: #f2f5f7;
@@ -277,7 +283,7 @@
                     		<?php if($ExpedienteTecnicoElaboracion[0]->id_etapa_et == 1 )
 		                    { ?>
 	                    		<div>
-				                    <h6><code>Formatos de Expediente Técnico</code>.</h6>
+				                    <h6><span>Formatos de Expediente Técnico</span></h6>
 									<a style="background-color: #fd9b15;" class="btn btn-app"  data-toggle="tooltip" title="Ficha Técnica del Proyectos" href="<?= site_url('Expediente_Tecnico/reportePdfExpedienteTecnico/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank" >
 										<i class="fa fa-file-pdf-o"></i> Formato FF-01
 									</a>                  		
