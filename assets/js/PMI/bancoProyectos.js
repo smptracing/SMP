@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $("#form-AddProyectosInversion").keypress(function(e)
-    {   
+    {
         if(e == 13)
         {
             return false;
@@ -22,7 +22,7 @@ $(document).ready(function(){
     {
         $(this).val(format($(this).val()));
     });
-    
+
     $("#form_EditarProyectosInversion").submit(function(event)
     {
         event.preventDefault();
@@ -37,11 +37,11 @@ $(document).ready(function(){
             data:$(this).serialize(),
             success:function(resp)
             {
-                if (resp=='1') 
+                if (resp=='1')
                 {
                     swal("ACTUALIZADO","Se actualizó correctamente", "success");
                 }
-                if (resp=='2') 
+                if (resp=='2')
                 {
                     swal("NO SE ACTUALIZÓ","No se actualizó ", "error");
                 }
@@ -64,34 +64,34 @@ $(document).ready(function(){
             data:$(this).serialize(),
             success:function(resp)
             {
-                if (resp=='1') 
+                if (resp=='1')
                 {
                     swal("REGISTRADO","Se regristró correctamente", "success");
                 }
-                if (resp=='2') 
+                if (resp=='2')
                 {
                     swal("NO SE REGISTRÓ","NO se regristró ", "error");
                 }
                 $('#Table_OperacionMantenimiento').dataTable()._fnAjaxUpdate();
-                $('#form_AddOperacionMantenimiento')[0].reset();  
+                $('#form_AddOperacionMantenimiento')[0].reset();
                 $('#ventana_ver_operacion_mantenimeinto').modal('hide');
             }
         });
     });
 
-    
-}); 
+
+});
 var format = function(num){
     var str = num.replace("", ""), parts = false, output = [], i = 1, formatted = null;
-    if(str.indexOf(".") > 0) 
+    if(str.indexOf(".") > 0)
     {
         parts = str.split(".");
         str = parts[0];
     }
     str = str.split("").reverse();
-    for(var j = 0, len = str.length; j < len; j++) 
+    for(var j = 0, len = str.length; j < len; j++)
     {
-        if(str[j] != ",") 
+        if(str[j] != ",")
         {
             output.push(str[j]);
             if(i%3 == 0 && j < (len - 1))
@@ -108,7 +108,7 @@ var format = function(num){
 
 
 $(function()
-{   
+{
     $("body").on("click","#sendSave",function(e)
     {
         $('#form-AddProyectosInversion').data('formValidation').resetField($('#txtCostoPip'));
@@ -117,7 +117,7 @@ $(function()
         {
 	        $('#form-AddProyectosInversion').submit();
 	        $('#form-AddProyectosInversion').each(function()
-            { 
+            {
 	          this.reset();
 	        });
 	        $('.selectpicker').selectpicker('refresh');
@@ -318,7 +318,7 @@ $(function()
                         message: '<b style="color: red;">El campo "Unidad Formuladora" es requerido.</b>'
                     }
                 }
-            }     
+            }
         }
     });
 

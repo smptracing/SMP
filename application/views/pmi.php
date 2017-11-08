@@ -1,4 +1,5 @@
 <script src="<?php echo base_url(); ?>assets/vendors/echarts/dist/echarts-all-3.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/Estadisticas/pmi.js"></script>
 
 <div class="right_col" role="main">
     <!-- top tiles -->
@@ -52,11 +53,11 @@
                 </center>
         </div>
         </div>
-        
-        
 
 
-        
+
+
+
 
     </div>
     <!-- /top tiles -->
@@ -111,7 +112,7 @@
                     </div>
                 </div>
             </div>
-            
+
              <div class="col-md-4 col-sm-4 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">

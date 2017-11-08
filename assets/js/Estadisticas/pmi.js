@@ -2,7 +2,7 @@ function MontoProgramadoPip(anio)
 {
   //  alert(anio);
    $("#monto_programado").text("");
-   $("#totalpip").text(""); 
+   $("#totalpip").text("");
    $("#monto_programado_nopip").text("");
    $("#totalnopip").text("");
 
@@ -39,27 +39,27 @@ function MontoProgramadoPip(anio)
             if(tipo[0]=="NO PIP")
             {
                // alert("1");
-            $("#monto_programado_nopip").text("S/. "+registros[0]["SumaCosto"]); 
-            $("#totalnopip").text(registros[0]["Cant_pi"]); 
+            $("#monto_programado_nopip").text("S/. "+registros[0]["SumaCosto"]);
+            $("#totalnopip").text(registros[0]["Cant_pi"]);
             }
                 if(tipo[1]=="PIP")
             {
                // alert("2");
-            $("#monto_programado").text("S/. "+registros[1]["SumaCosto"]); 
-            $("#totalpip").text(registros[1]["Cant_pi"]); 
+            $("#monto_programado").text("S/. "+registros[1]["SumaCosto"]);
+            $("#totalpip").text(registros[1]["Cant_pi"]);
             }
 
             if(tipo[0]=="PIP")
             {
                // alert("3");
-            $("#monto_programado").text("S/. "+registros[0]["SumaCosto"]); 
-            $("#totalpip").text(registros[0]["Cant_pi"]); 
+            $("#monto_programado").text("S/. "+registros[0]["SumaCosto"]);
+            $("#totalpip").text(registros[0]["Cant_pi"]);
             }
             if(tipo[1]=="NO PIP")
             {
               //  alert("4");
-            $("#monto_programado_nopip").text("S/. "+registros[1]["SumaCosto"]); 
-            $("#totalnopip").text(registros[1]["Cant_pi"]); 
+            $("#monto_programado_nopip").text("S/. "+registros[1]["SumaCosto"]);
+            $("#totalnopip").text(registros[1]["Cant_pi"]);
             }
         }
     });
@@ -86,9 +86,9 @@ function EstaProyProvincia()
                 provincias[i]=registros[i]["Cantidadpip"];
                 sum=provincias[i]+sum;
             }
-            
+
              //OBTENER NUMERO DE PIP EN LA CABECERA
-           
+
             $("#NumPips").text(provincias);
             cantidadPIPAbancay=(100*(parseInt(provincias[0]))/sum);
 
@@ -191,7 +191,7 @@ var EstadistMontosPipProv=function()
 						+'<td style="text-align: right;">'+registros[i]['MontoProyecto']+'</td>'
 				+'</tr>';
             }
-            
+
             html1+="</tbody>";
 
             $("#table-estaditMontPIPProv").html(html1);
@@ -221,7 +221,7 @@ function EstadisticasPorCiclosInversion() {
             var total_otros=registros[0]["TotalNoCiclo"];
             var panel_estadistica=$("#panel_estadistica_ciclo_inversion");
             var porcentaje=0.00;
-            for (var i=0; i<registros.length; i++) 
+            for (var i=0; i<registros.length; i++)
             {
                 NumProyectos=registros[i]["Num_Proyectos"];
                 porcentaje=Math.round((NumProyectos / total_proyectos) * 100);
@@ -328,7 +328,7 @@ var listar_aniocartera_r=function(valor){ //listar ani cartera operacion y mante
                           var anio=$("#Aniocartera_dasboard").val();
                            $("#Aniocartera_dasboard_imput").val(anio);
                            MontoProgramadoPip(anio);
-                        }); 
+                        });
 
 
 
@@ -399,7 +399,7 @@ $(document).on('ready', function()
                 }
                 ]
             };
-            if (option && typeof option === "object") 
+            if (option && typeof option === "object")
             {
                 myChart.setOption(option, true);
         }
@@ -424,8 +424,8 @@ $.ajax({
                 color: ['#45B39D'],
                 tooltip : {
                     trigger: 'axis',
-                    axisPointer : {          
-                        type : 'shadow'        
+                    axisPointer : {
+                        type : 'shadow'
                     }
                 },
                 grid: {
@@ -521,7 +521,7 @@ $.ajax({
                 }
                 ]
             };
-            if (option && typeof option === "object") 
+            if (option && typeof option === "object")
             {
                 myChart.setOption(option, true);
         }
@@ -546,8 +546,8 @@ $.ajax({
                 color: ['#F1948A'],
                 tooltip : {
                     trigger: 'axis',
-                    axisPointer : {          
-                        type : 'shadow'        
+                    axisPointer : {
+                        type : 'shadow'
                     }
                 },
                 grid: {
