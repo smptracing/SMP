@@ -1,7 +1,13 @@
 <?php
+$sumatoriaMetrado=[];
+
 function mostrarAnidado($meta, $expedienteTecnico)
 {
 	$cantidad = 0;
+	$metradoporMeta = 0;
+
+	$valorizadoGeneral = 0 ;
+	
 	$htmlTemp='';
 
 	$htmlTemp.='<tr class="elementoBuscar">'.
@@ -36,6 +42,11 @@ function mostrarAnidado($meta, $expedienteTecnico)
 			$metradoSaldo = 0;
 			$valorizadoSaldo = 0;
 			$porcentajeSaldo = 0;
+
+			$metradoporMeta+=$value->cantidad;
+
+			//echo $metradoporMeta.'-';
+
 			$htmlTemp.='<tr class="elementoBuscar">'.
 				'<td>'.$value->numeracion.'</td>'.
 				'<td style="text-align: left;">'.html_escape($value->desc_partida).'</td>'.
@@ -60,6 +71,7 @@ function mostrarAnidado($meta, $expedienteTecnico)
 					{
 						$metradoAnterior = $item->metradoAnterior;
 						$valorizadoAnterior = $item->valorizadoAnterior;
+						$valorizadoGeneral += $item->valorizadoAnterior;
 						break;
 					}
 				}
@@ -83,14 +95,17 @@ function mostrarAnidado($meta, $expedienteTecnico)
 				$htmlTemp.='<td style="text-align: right;">'.number_format($porcentajeSaldo, 2).'% </td>';
 
 			$htmlTemp.='</tr>';
-
 		}		
 	}
+
+	echo "-VA".$valorizadoGeneral;
+
 	foreach($meta->childMeta as $key => $value)
 	{
 		$htmlTemp.=mostrarAnidado($value, $expedienteTecnico);
 	}
 	return $htmlTemp;
+
 }
 ?>
 
@@ -209,7 +224,7 @@ function mostrarAnidado($meta, $expedienteTecnico)
 											<td><b><?=$value->numeracion?></b></td>
 											<td style="text-align: left;"><b><?=html_escape($value->descripcion)?></b></td>
 											<td></td>
-											<td></td>
+											<td id = "metrado"></td>
 											<td></td>
 											<td></td>
 											<td></td>
@@ -229,6 +244,12 @@ function mostrarAnidado($meta, $expedienteTecnico)
 									<?php } ?>
 								</tbody>
 							</table>
+							<!--
+
+			                <?php if($expedienteTecnico->num_meses!=null)
+			                {
+			                    echo $metradoporMeta[0];
+			                }?>-->
 						</div>
 						</div>
 					</div>

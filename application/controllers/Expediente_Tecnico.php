@@ -535,7 +535,7 @@ class Expediente_Tecnico extends CI_Controller
 				$this->obtenerMetaAnidadaParaValorizacion($item);
 			}
 		}
-		//$this->load->view('front/Ejecucion/ExpedienteTecnico/reportePdfValorizacionEjecucion',['expedienteTecnico'=>$expedienteTecnico]);
+
 		$html = $this->load->view('front/Ejecucion/ExpedienteTecnico/reportePdfValorizacionEjecucion',['expedienteTecnico'=>$expedienteTecnico],true);
 		$this->mydompdf->load_html($html);
 		$this->mydompdf->set_paper("A4", "landscape");
@@ -668,7 +668,7 @@ class Expediente_Tecnico extends CI_Controller
 					} 
            		}
            		if($this->Model_ET_Expediente_Tecnico->eliminar($flat,$id_et)==true)
-	            {	//$img=$this->Model_ET_Img->eliminarimg()
+	            {
 	            	
 	            	echo json_encode("correcto se elimino");
 	            }		

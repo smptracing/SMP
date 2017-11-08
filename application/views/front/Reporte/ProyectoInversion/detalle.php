@@ -155,11 +155,130 @@ window.setTimeout(function()
 		cache:false,
 		success:function(resp)
 		{
-			//alert(resp);
 			var pip=JSON.parse(resp);
-			console.log(pip);
-			var dom = document.getElementById("contenedorGrafico");
+			var echartLine = echarts.init(document.getElementById('contenedorGrafico'));
+
+      echartLine.setOption({
+        title: {
+          text: '',
+          subtext: ''
+        },
+        tooltip: {
+          trigger: 'axis'
+        },
+        
+        toolbox: {
+          show: true,
+          feature: {
+            magicType: {
+              show: true,
+              title: {
+                line: 'Linea',
+                bar: 'Barra'
+              },
+              type: ['line', 'bar']
+            },
+            restore: {
+              show: true,
+              title: "Restaurar"
+            },
+            saveAsImage: {
+              show: true,
+              title: "Guardar Image"
+            }
+          }
+        },
+        calculable: true,
+        xAxis: [{
+          type: 'category',
+          boundaryGap: false,
+          data: pip[0]
+        }], 
+        yAxis: [{
+          type: 'value'
+        }],
+        series: [{
+          name: 'Ejecutado',
+          type: 'line',
+          smooth: true,
+          itemStyle: {
+            normal: {
+              areaStyle: {
+                type: 'default'
+              }
+            }
+          },
+          data: pip[1]
+        }, {
+          name: 'Comprometido',
+          type: 'line',
+          smooth: true,
+          itemStyle: {
+            normal: {
+              areaStyle: {
+                type: 'default'
+              }
+            }
+          },
+          data: pip[2]
+        },
+        {
+          name: 'Certificado',
+          type: 'line',
+          smooth: true,
+          itemStyle: {
+            normal: {
+              areaStyle: {
+                type: 'default'
+              }
+            }
+          },
+          data: pip[3]
+        },
+        {
+          name: 'Devengado',
+          type: 'line',
+          smooth: true,
+          itemStyle: {
+            normal: {
+              areaStyle: {
+                type: 'default'
+              }
+            }
+          },
+          data: pip[4]
+        },{
+          name: 'Girado',
+          type: 'line',
+          smooth: true,
+          itemStyle: {
+            normal: {
+              areaStyle: {
+                type: 'default'
+              }
+            }
+          },
+          data: pip[5]
+        },{
+          name: 'Pagado',
+          type: 'line',
+          smooth: true,
+          itemStyle: {
+            normal: {
+              areaStyle: {
+                type: 'default'
+              }
+            }
+          },
+          data: pip[6]
+        },]
+      });
+
+
+			/*var dom = document.getElementById("contenedorGrafico");
+			
 			var myChart = echarts.init(dom);
+
 			var app = {};
 			option = null;
 			var posList = [
@@ -229,14 +348,6 @@ window.setTimeout(function()
 			        });
 			    }
 			};
-
-			var a_Ejecucion=0;
-			var a_Compromiso=0;
-			var a_Certificado=0;
-			var a_Devengado=0;
-			var a_Girado=0;
-			var a_Pagado=0;
-
 
 			var labelOption = {
 			    normal: {
@@ -340,7 +451,7 @@ window.setTimeout(function()
 
 			if (option && typeof option === "object") {
 			    myChart.setOption(option, true);
-			}
+			}*/
 		}
 	});
 }, 5000);
