@@ -495,7 +495,7 @@
 
                                            <label for="name">Fecha <span class="required"></span>
                                             </label>
-                                                  <input type="date" id="dateFechaIniC" name="dateFechaIniC" class="form-control col-md-6 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text" value="<?php echo date("Y-m-d"); ?>" disabled="true">
+                                                  <input type="date" id="dateFechaIniC" name="dateFechaIniC" class="form-control col-md-6 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text" value="<?php echo date("Y-m-d"); ?>">
                                           </div>
                                           <div class="col-md-4">
                                              <label for="name">. <span class="required"></span>
@@ -577,7 +577,7 @@
                                           <div class="col-md-4">
                                            <label for="name">Fecha <span class="required"></span>
                                             </label>
-                                                  <input type="date" id="dateFechaIniC" name="dateFechaIniC" class="form-control col-md-6 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text" value="<?php echo date("Y-m-d"); ?>" disabled="true">
+                                                  <input type="date" id="dateFechaIniC" name="dateFechaIniC" class="form-control col-md-6 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text" value="<?php echo date("Y-m-d"); ?>" >
                                           </div>
                                           <div class="col-md-4">
                                              <label for="name">. <span class="required"></span>
@@ -594,8 +594,9 @@
                     <table  id="Table_RubroPI" class="table   table-hover" >
                     <thead >
                        <tr>
-                         <th  ><i class="fa fa-thumb-tack"></i> Estado Ciclo</th>
+                         <th  ><i class="fa fa-thumb-tack"></i> Rubro</th>
                          <th  ><i class="fa fa-thumb-tack"></i> Fecha</th>
+                         <th  ><i class="fa fa-thumb-tack"></i> Opción</th>
                       </tr>
                     </thead>
                     </table>
@@ -658,7 +659,7 @@
                                           <div class="col-md-4">
                                            <label for="name">Fecha <span class="required"></span>
                                             </label>
-                                                  <input type="date" id="dateFechaIniC" name="dateFechaIniC" class="form-control col-md-6 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text" value="<?php echo date("Y-m-d"); ?>" disabled="true">
+                                                  <input type="date" id="dateFechaIniC" name="dateFechaIniC" class="form-control col-md-6 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text" value="<?php echo date("Y-m-d"); ?>">
                                           </div>
                                           <div class="col-md-4">
                                              <label for="name">. <span class="required"></span>
@@ -773,6 +774,7 @@
                          <th style="text-align: right;" ><i class="fa fa-thumb-tack"></i> Monto Operación</th>
                          <th  ><i class="fa fa-thumb-tack"></i> Responsable Operación</th>
                          <th  ><i class="fa fa-thumb-tack"></i> Fecha Registro</th>
+                         <th  ><i class="fa fa-thumb-tack"></i> Opción</th>
                       </tr>
                     </thead>
                     </table>

@@ -1,3 +1,60 @@
+<?php
+
+$sumatoriasTotales=[];
+$totalGeneral=0;
+function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$totalGeneral)
+{
+    $htmlTemp='';
+
+
+    if(count($meta->childMeta)==0)
+    {
+        
+        foreach($meta->childPartida as $key => $value)
+        {
+
+            $totalGeneral+=($value->cantidad*$value->precio_unitario);
+
+            if($expedienteTecnico->num_meses!=null)
+            {
+                for($i=0; $i<$expedienteTecnico->num_meses; $i++)
+                {
+                    if(!isset($sumatoriasTotales[$i]))
+                    {
+                        $sumatoriasTotales[]=0;
+                    }
+
+                    $precioTotalMesValorizacionTemp=0;
+                    $cantidadMesValorizacionTemp=0;
+
+                    foreach($value->childDetallePartida->childMesValorizacion as $index => $item)
+                    {
+                        if($item->id_detalle_partida==$value->childDetallePartida->id_detalle_partida && $item->numero_mes==($i+1))
+                        {
+                            $sumatoriasTotales[$i]+=$item->precio;
+
+                            $precioTotalMesValorizacionTemp=$item->precio;
+
+                            $cantidadMesValorizacionTemp=$item->cantidad;
+
+                            break;
+                        }
+                    }
+                }
+            }
+
+        }
+        
+    }
+
+    foreach($meta->childMeta as $key => $value)
+    {
+        $htmlTemp.=mostrarMetaAnidada($value, $expedienteTecnico, $sumatoriasTotales,$totalGeneral);
+    }
+
+    return $htmlTemp;
+}
+?>
 <style>
 .thebox{
     height: 90px;
@@ -112,5 +169,104 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div>
+                <?php foreach($expedienteTecnico->childComponente as $key => $value){ ?>
+                    <?php foreach($value->childMeta as $index => $item){ ?>
+                        <?= mostrarMetaAnidada($item, $expedienteTecnico, $sumatoriasTotales,$totalGeneral)?>
+                    <?php } ?>
+                <?php } ?>
+
+                <!--<?php if($expedienteTecnico->num_meses!=null)
+                {
+                    $suma = 0;
+                    for($i=0; $i<$expedienteTecnico->num_meses; $i++) { ?>
+                        <p><b><?=a_number_format($sumatoriasTotales[$i], 2, '.',",",3);?></b></p>
+                        <p><b> <?=$suma+=$sumatoriasTotales[$i]?>  </b></p>
+                    <?php }
+                }?>-->
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 col-sm-6 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Reporte Estadístico<small></small></h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <canvas id="grafico"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+<script src="<?php echo base_url(); ?>assets/vendors/Chart.js/dist/Chart.min.js"></script>
+<script>
+      Chart.defaults.global.legend = {
+        enabled: false
+      };
+
+      var ctx = document.getElementById("grafico");
+      var lineChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ["",
+            <?php if($expedienteTecnico->num_meses!=null)
+            {
+                for($i=0; $i<$expedienteTecnico->num_meses; $i++) 
+                { 
+                    echo '"Mes '.($i+1).'",';
+                }
+            }?>
+          ],
+          datasets: [{
+            label: "Costo",
+            backgroundColor: "rgba(38, 185, 154, 0.31)",
+            borderColor: "rgba(38, 185, 154, 0.7)",
+            pointBorderColor: "rgba(38, 185, 154, 0.7)",
+            pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(220,220,220,1)",
+            pointBorderWidth: 1,
+            data: [0,
+
+                <?php if($expedienteTecnico->num_meses!=null)
+                {
+                    $suma = 0;
+                    for($i=0; $i<$expedienteTecnico->num_meses; $i++) 
+                    {
+                        $monto = $suma+=$sumatoriasTotales[$i];
+
+                        echo ''.$monto.',';
+                    }
+                } ?>
+
+            ]
+
+
+
+
+
+          }, {
+            label: "My Second dataset",
+            backgroundColor: "rgba(3, 88, 106, 0.3)",
+            borderColor: "rgba(3, 88, 106, 0.70)",
+            pointBorderColor: "rgba(3, 88, 106, 0.70)",
+            pointBackgroundColor: "rgba(3, 88, 106, 0.70)",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(151,187,205,1)",
+            pointBorderWidth: 1,
+            data: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+          }]
+        },
+      });
+
+
+    </script>

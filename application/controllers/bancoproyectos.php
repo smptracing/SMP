@@ -559,6 +559,22 @@ class bancoproyectos extends CI_Controller
             show_404();
         }
     }
+
+    //eliminar op y mant
+    public function eliminarOperacionMantenimiento()
+    {
+        if ($this->input->is_ajax_request()) 
+        {
+            $id_operacion_mantenimiento_pi = $this->input->post("id_operacion_mantenimiento_pi");
+
+            $this->bancoproyectos_modal->eliminarOperacionMantenimiento($id_operacion_mantenimiento_pi);
+            
+            echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Se elimino Correctamente el registro.']);exit;
+
+        } else {
+            show_404();
+        }
+    }
     //agregar operacion y mantenimiento
     public function AddOperacionMantenimiento()
     {
@@ -612,5 +628,20 @@ class bancoproyectos extends CI_Controller
         $this->load->view('layout/PMI/footer');
         $this->load->view('Front/Pmi/js/jsPip');
     }
+    public function eliminarrubroPI()
+    {
+        if ($this->input->is_ajax_request()) 
+        {
+            $id_rubro_pi = $this->input->post("id_rubro_pi");
+
+            $this->bancoproyectos_modal->eliminarrubroPI($id_rubro_pi);
+            
+            echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Se elimino Correctamente el ubigeo.']);exit;
+
+        } else {
+            show_404();
+        }
+    }
+
 
 }
