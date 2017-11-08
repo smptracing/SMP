@@ -184,6 +184,16 @@
 								</li>                        
                       		</ul>
                     	</li>
+                    	<li role="presentation" class="dropdown">
+                      		<a id="drop7" href="#" class="dropdown-toggle" role="button" aria-expanded="false"> Reporte Estadístico <span class="caret"></span>
+                            </a>
+                      		<ul id="menu3" class="dropdown-menu subMenu" role="menu" aria-labelledby="drop6">
+                      			<li role="presentation">
+									<a role="menuitem" tabindex="-1" href="<?= site_url('Expediente_Tecnico/ReporteEstadistico/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target='_blank'); return false;"><i class="fa fa-line-chart"></i> Reporte
+			                        	</a>
+								</li>                        
+                      		</ul>
+                    	</li>
                  	</ul>                 	
                   	<br/>
                   	<div class="table-responsive">
