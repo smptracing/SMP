@@ -1002,9 +1002,6 @@
 <!-- /.FIN VENTANA EDITAR PROYECTOS DE INVERSION-->
 <script src="<?php echo base_url(); ?>assets/js/PMI/bancoProyectos.js"></script>
 
-<script type="text/javascript"
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6v5-2uaq_wusHDktM9ILcqIrlPtnZgEk&sensor=false">
-</script>
 <script type="text/javascript">
 
     function initialize() {
@@ -1014,11 +1011,6 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6v5-2uaq_wusHDktM9ILcqIr
             center: myLatlng,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         }
-        var myOptions = {
-                zoom:7,
-                center: myLatlng,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            }
             map = new google.maps.Map(document.getElementById("gmap"), myOptions);
             // marker refers to a global variable
             marker = new google.maps.Marker({
@@ -1043,8 +1035,8 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6v5-2uaq_wusHDktM9ILcqIr
     }
     window.onload = function () { initialize() };
 
-    document.getElementById("txt_latitud").innerHTML = location.lat();
-    document.getElementById("txt_longitud").innerHTML = location.lng();
+    //document.getElementById("txt_latitud").innerHTML = location.lat();
+    //document.getElementById("txt_longitud").innerHTML = location.lng();
 </script>
 <style>
    div#gmap {

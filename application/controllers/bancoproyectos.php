@@ -151,18 +151,18 @@ class bancoproyectos extends CI_Controller
 //listar proyectos de inversion
     public function GetProyectoInversion()
     {
-        if ($this->input->is_ajax_request()) 
+        if ($this->input->is_ajax_request())
         {
             $flat  = "LISTARPIP";
             $datos = $this->bancoproyectos_modal->GetProyectoInversion($flat);
-            foreach ($datos as $key => $value) 
+            foreach ($datos as $key => $value)
             {
                 $value->costo_pi = a_number_format($value->costo_pi , 2, '.',",",3);
             }
 
             echo json_encode($datos);
-        } 
-        else 
+        }
+        else
         {
             show_404();
         }
@@ -239,12 +239,12 @@ class bancoproyectos extends CI_Controller
 
     public function  eliminarUbigeo ()
     {
-        if ($this->input->is_ajax_request()) 
+        if ($this->input->is_ajax_request())
         {
             $id_ubigeo_pi = $this->input->post("id_ubigeo_pi");
 
             $this->bancoproyectos_modal->eliminarUbigeo($id_ubigeo_pi);
-            
+
             echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Se elimino Correctamente el ubigeo.']);exit;
 
         } else {
@@ -255,15 +255,15 @@ class bancoproyectos extends CI_Controller
     public function editarUbicacionGeografica()
     {
         if($_POST)
-        {   
-            /*$this->db->trans_start(); 
+        {
+            /*$this->db->trans_start();
             $opcion="U";
             $hdIdClasificadro=$this->input->post('hdIdClasificadro');
             $txtNumeroClasi=$this->input->post('txtNumeroClasi');
             $txtDescripcionClasi=$this->input->post('txtDescripcionClasi');
             $txtDetalleClasi=$this->input->post('txtDetalleClasi');
             if(count($this->Model_ET_Clasificador->ValidarClasificadorEtapaEditar($hdIdClasificadro,$txtDescripcionClasi))>0)
-            {   
+            {
                 echo json_encode(['proceso' => 'error', 'mensaje' => 'Este tipo de descripcion ya fue registrado con anterioridad .']);exit;
             }
             $this->Model_ET_Clasificador->editar($opcion,$hdIdClasificadro,$txtNumeroClasi,$txtDescripcionClasi,$txtDetalleClasi);
@@ -291,7 +291,7 @@ class bancoproyectos extends CI_Controller
     public function Add_ubigeo_proyecto()
     {
         if ($this->input->is_ajax_request()) {
-            
+
             $config['upload_path']   = './uploads/ImgUbicacionProyecto/';
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size']      = '2000';
@@ -312,10 +312,10 @@ class bancoproyectos extends CI_Controller
                     $file_info = $this->upload->data();
                     $imagen = $file_info['file_name'];
 
-                    
+
                     if ($this->bancoproyectos_modal->Add_ubigeo_proyecto($flat, $id_ubigeo_pi, $id_ubigeo, $txt_id_pip, $direccion, $txt_latitud, $txt_longitud) == false) {
-                        
-                        
+
+
                         $dataUltima=$this->Model_PMI_ubicacion->ultipoUbigeoPEI();
 
                         $this->Model_PMI_ubicacion->insertar($dataUltima->id_ubigeo_pi,$imagen);
@@ -324,7 +324,7 @@ class bancoproyectos extends CI_Controller
                     } else {
                         echo "2";
                     }
-                
+
               } else {
 
                     $flat         = "C ";
@@ -338,10 +338,10 @@ class bancoproyectos extends CI_Controller
                     $file_info = $this->upload->data();
                     $imagen = $file_info['file_name'];
 
-                    
+
                     if ($this->bancoproyectos_modal->Add_ubigeo_proyecto($flat, $id_ubigeo_pi, $id_ubigeo, $txt_id_pip, $direccion, $txt_latitud, $txt_longitud) == false) {
-                        
-                        
+
+
                         $dataUltima=$this->Model_PMI_ubicacion->ultipoUbigeoPEI();
 
                         $this->Model_PMI_ubicacion->insertar($dataUltima->id_ubigeo_pi,$imagen);
@@ -359,8 +359,8 @@ class bancoproyectos extends CI_Controller
 
     public function Editar_ubigeo_proyecto()
     {
-        
-            
+
+
             $config['upload_path']   = './uploads/ImgUbicacionProyecto/';
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size']      = '2000';
@@ -376,7 +376,7 @@ class bancoproyectos extends CI_Controller
                     $txt_latitudEditar  = $this->input->post("txt_latitudEditar");
                     $txt_longitudEditar = $this->input->post("txt_longitudEditar");
                     $this->bancoproyectos_modal->actualizar_ubigeo_proyecto($id_ubigeo_pi,$id_ubigeo , $txt_latitudEditar, $txt_longitudEditar);
-                
+
               } else {
 
                     $id_ubigeo_pi =  $this->input->post("txt_id_id_ubigeo_pi");
@@ -385,19 +385,19 @@ class bancoproyectos extends CI_Controller
                     $txt_longitudEditar = $this->input->post("txt_longitudEditar");
                     $file_info = $this->upload->data();
                     $imagen = $file_info['file_name'];
-                    
+
                     if ($this->bancoproyectos_modal->actualizar_ubigeo_proyecto($id_ubigeo_pi,$id_ubigeo , $txt_latitudEditar, $txt_longitudEditar) == true) {
-                        
-                        
+
+
                         $dataId=$this->Model_PMI_ubicacion->id_ubigeo_pi_img($id_ubigeo_pi);
                         //var_dump($id_ubigeo_pi);
                         $this->Model_PMI_ubicacion->actualizar($dataId->id_ubigeo_pi_img,$imagen);
 
                         echo $id_ubigeo_pi;
-                    } 
+                    }
             }
 
-       
+
     }
 
     //Agregar estado ciclo
@@ -485,16 +485,16 @@ class bancoproyectos extends CI_Controller
     //listar proyectos de inversion
     public function GetNOPIP()
     {
-        if ($this->input->is_ajax_request()) 
+        if ($this->input->is_ajax_request())
         {
             $flat  = "LISTARNOPIP";
             $datos = $this->bancoproyectos_modal->GetNOPIP($flat);
-            foreach ($datos as $key => $value) 
+            foreach ($datos as $key => $value)
             {
                 $value->costo_pi = a_number_format($value->costo_pi , 2, '.',",",3);
             }
             echo json_encode($datos);
-        } 
+        }
         else {
             show_404();
         }
@@ -535,26 +535,26 @@ class bancoproyectos extends CI_Controller
     public function Get_OperacionMantenimiento()
     {
 
-        if ($this->input->is_ajax_request()) 
+        if ($this->input->is_ajax_request())
         {
             $flat  = "listar_operacion_mantenimiento";
             $id_pi = $this->input->post("id_pi");
             $data  = $this->bancoproyectos_modal->Get_OperacionMantenimiento($flat, $id_pi);
-            if($data == false) 
+            if($data == false)
             {
                 echo json_encode(array('data' => $data));
             }
             else
             {
-                foreach ($data as $key => $value) 
+                foreach ($data as $key => $value)
                 {
                     $value->monto_operacion = a_number_format($value->monto_operacion , 2, '.',",",3);
                     $value->monto_mantenimiento = a_number_format($value->monto_mantenimiento , 2, '.',",",3);
                 }
                 echo json_encode(array('data' => $data));
-            }                
-        } 
-        else 
+            }
+        }
+        else
         {
             show_404();
         }
@@ -578,7 +578,7 @@ class bancoproyectos extends CI_Controller
     //agregar operacion y mantenimiento
     public function AddOperacionMantenimiento()
     {
-        if ($this->input->is_ajax_request()) 
+        if ($this->input->is_ajax_request())
         {
             $flat                          = "C";
             $id_OperacionMantenimiento     = "0";
@@ -600,7 +600,7 @@ class bancoproyectos extends CI_Controller
 
     public function BuscarProyectoSiaf()
     {
-        
+
         $data  = $this->bancoproyectos_modal->BuscarProyectoSiaf($this->input->post('codigo'));
         echo json_encode($data);exit;
 

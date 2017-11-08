@@ -7,7 +7,7 @@ class Model_Usuario extends CI_Model
 	          parent::__construct();
 	      }
         function ListarTipoUsuarioMenu($tipo){
-            $query=$this->db->query("   select M2.id_modulo,M2.id_menu,M.id_menu as id_submenu,M2.nombre,M2.url,M2.class_icono,M.nombre as nombreSubmenu, M.url as urlSubmenu 
+            $query=$this->db->query("   select M2.id_modulo,M2.id_menu,M.id_menu as id_submenu,M2.nombre,M2.url,M2.class_icono,M.nombre as nombreSubmenu, M.url as urlSubmenu
     from USUARIO U
     inner join ACCESS_MENU A on U.id_persona=A.id_persona
     inner join MENU M on M.id_menu=A.id_menu
@@ -55,12 +55,12 @@ class Model_Usuario extends CI_Model
                         }
                     }
                     return true;
-		        } 
+		        }
                 else {
 		            return false;
 		        }
         }
-        function editUsuario($id_persona,$txt_usuario,$txt_contrasenia,$cbb_TipoUsuario,$cbb_listaMenuDestino,$cbb_estado)
+        function editUsuario($id_persona,$txt_usuario,$txt_contrasenia,$cbb_TipoUsuario,$cbb_listaMenuDestino,$cbb_estado,$cbb_listaMenuDestino2)
         {
             if($txt_contrasenia=='')
                 $query=$this->db->query("update USUARIO set id_persona='".$id_persona."',usuario='".$txt_usuario."',id_usuario_tipo='".$cbb_TipoUsuario."',activo=".$cbb_estado." WHERE id_persona='".$id_persona."'");
@@ -74,10 +74,17 @@ class Model_Usuario extends CI_Model
                     for($i=0;$i<count($arrayMenuUsuario);$i++){
                         $this->db->close();
                         $this->db->query("insert into ACCESS_MENU(id_menu,id_persona) values(".$arrayMenuUsuario[$i].",".$id_persona.");");
-                    }   
-                }                    
+                    }
+                }
+								if($cbb_listaMenuDestino2!=''){
+										$arrayMenuUsuario=explode("-",$cbb_listaMenuDestino2);
+										for($i=0;$i<count($arrayMenuUsuario);$i++){
+												$this->db->close();
+												$this->db->query("insert into USUARIO_PROYECTO(id_persona, id_pi, fecha_asignacion) values(".$id_persona.",".$arrayMenuUsuario[$i].",'17/12/2015');");
+										}
+								}
                 return true;
-            } 
+            }
             else {
                 return false;
             }
@@ -91,7 +98,7 @@ class Model_Usuario extends CI_Model
              }else
              {
               return false;
-             }	
+             }
         }
-      
+
 }
