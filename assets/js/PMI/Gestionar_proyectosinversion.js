@@ -183,12 +183,42 @@ $(document).on("ready" ,function()
                                     {"data":"responsable_operacion"},
                                     {"data":"monto_mantenimiento"},
                                     {"data":"responsable_mantenimiento"},
-                                    {"data":"fecha_registro"}
+                                    {"data":"fecha_registro"},
+                                    {"data":"id_operacion_mantenimiento_pi",render:function(data,type,row){
+                                        return "<button type='button'  data-toggle='tooltip'  class='editar btn btn-danger btn-xs' data-toggle='modal' onclick=eliminarOperacionMantenimiento("+data+",this)><i class='ace-icon fa fa-trash-o bigger-120'></i></button>";
+                                    }}
                                     //{"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaupdateEstadoFE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
                                "language":idioma_espanol
                     });
                 }
+//eliminar op y mant
+//
+var eliminarOperacionMantenimiento=function(id_operacion_mantenimiento_pi,element)
+{
+    if(!confirm('Se esta seguro de eliminar. ¿Realmente desea proseguir con la operación?'))
+    {
+      return;
+    }
+
+    paginaAjaxJSON({ "id_operacion_mantenimiento_pi" : id_operacion_mantenimiento_pi }, base_url+'index.php/bancoproyectos/eliminarOperacionMantenimiento', 'POST', null, function(objectJSON)
+    {
+      objectJSON=JSON.parse(objectJSON);
+
+      swal(
+      {
+        title: '',
+        text: objectJSON.mensaje,
+        type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+      },
+      function(){});
+
+      $(element).parent().parent().remove();
+
+    }, false, true);
+
+}
+//
  //listar ubigeo de un proyecto en le modal
  var listar_ubigeo_pi=function(id_pi)
                 {
@@ -221,7 +251,7 @@ $(document).on("ready" ,function()
                 }
 var eliminarUbigeo=function(id_ubigeo_pi,element)
 {
-    if(!confirm('Se esta seguro de eliminar. ¿Realmente desea proseguir con la operaición?'))
+    if(!confirm('Se esta seguro de eliminar. ¿Realmente desea proseguir con la operación?'))
     {
       return;
     }
@@ -262,7 +292,7 @@ var ModificarUbigeoPi=function(id_ubigeo_pi)
                                     },
                                 "columns":[
                                     {"data":"nombre_estado_ciclo"},
-                                    {"data":"fecha_estado_ciclo_pi"},
+                                    {"data":"fecha_estado_ciclo_pi"}
                                     //{"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaupdateEstadoFE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
                                "language":idioma_espanol
@@ -282,13 +312,42 @@ var ModificarUbigeoPi=function(id_ubigeo_pi)
                                     },
                                 "columns":[
                                       {"data":"nombre_rubro"},
-                                    {"data":"fecha_rubro_pi"}
+                                    {"data":"fecha_rubro_pi"},
+                                     {"data":'id_rubro_pi',render:function(data,type,row){
+                                        return "<button type='button'  data-toggle='tooltip'  class='editar btn btn-danger btn-xs' data-toggle='modal' onclick=eliminarrubroPI("+data+",this)><i class='ace-icon fa fa-trash-o bigger-120'></i></button>";
+                                    }}
                                     //{"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaupdateEstadoFE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
                                "language":idioma_espanol
                     });
                 }
-                                //listar modalidad de ejecucion PI
+//eliminar rubro pi
+var eliminarrubroPI=function(id_rubro_pi,element)
+{
+    if(!confirm('Se esta seguro de eliminar. ¿Realmente desea proseguir con la operación?'))
+    {
+      return;
+    }
+
+    paginaAjaxJSON({ "id_rubro_pi" : id_rubro_pi }, base_url+'index.php/bancoproyectos/eliminarrubroPI', 'POST', null, function(objectJSON)
+    {
+      objectJSON=JSON.parse(objectJSON);
+
+      swal(
+      {
+        title: '',
+        text: objectJSON.mensaje,
+        type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+      },
+      function(){});
+
+      $(element).parent().parent().remove();
+
+    }, false, true);
+
+}
+
+ //listar modalidad de ejecucion PI
  var listarModalidadPI=function(id_pi)
                 {
                     var table=$("#Table_ModalidadPI").DataTable({
