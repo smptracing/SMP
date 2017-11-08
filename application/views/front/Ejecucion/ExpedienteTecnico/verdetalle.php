@@ -25,7 +25,7 @@
 	{
 		background-color: #35495d;
 		color: #73879c; 
-		font-size: 15px;
+		font-size: 13px;
 
 	}
 	.nav>li>a
@@ -101,7 +101,7 @@
 				<p></p>
 
                   	<ul class="nav nav-pills menuPrincipal" role="tablist">
-                    	<li role="presentation" class="dropdown" style="font-size: 15px; color: red;">
+                    	<li role="presentation" class="dropdown">
                       		<a id="drop4" href="#" class="dropdown-toggle" role="button" aria-expanded="false">	Expediente Técnico<span class="caret"></span>
                             </a><ul id="menu6" class="dropdown-menu subMenu" role="menu">
 	                        	<li role="presentation">
