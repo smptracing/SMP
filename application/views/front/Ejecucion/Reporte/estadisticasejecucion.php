@@ -177,17 +177,19 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
                     <?php } ?>
                 <?php } ?>
 
-                <?php if($expedienteTecnico->num_meses!=null)
+                <!--<?php if($expedienteTecnico->num_meses!=null)
                 {
+                    $suma = 0;
                     for($i=0; $i<$expedienteTecnico->num_meses; $i++) { ?>
-                        <p><b>S/.<?=a_number_format($sumatoriasTotales[$i], 2, '.',",",3);?> - </b></p>
+                        <p><b><?=a_number_format($sumatoriasTotales[$i], 2, '.',",",3);?></b></p>
+                        <p><b> <?=$suma+=$sumatoriasTotales[$i]?>  </b></p>
                     <?php }
-                }?>
+                }?>-->
 
             </div>
         </div>
         <div class="row">
-            <div class="col-md-8 col-sm-6 col-xs-12">
+            <div class="col-md-10 col-sm-6 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
                         <h2>Reporte Estadístico<small></small></h2>
@@ -210,15 +212,22 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
       Chart.defaults.global.legend = {
         enabled: false
       };
-      //"rgba(255, 255, 255, 0.34)",
 
       var ctx = document.getElementById("grafico");
       var lineChart = new Chart(ctx, {
         type: 'line',
         data: {
-          labels: ["", "January", "February", "Msssssssarch", "April", "May", "June", "July", "otr"],
+          labels: ["",
+            <?php if($expedienteTecnico->num_meses!=null)
+            {
+                for($i=0; $i<$expedienteTecnico->num_meses; $i++) 
+                { 
+                    echo '"Mes '.($i+1).'",';
+                }
+            }?>
+          ],
           datasets: [{
-            label: "My First dataset",
+            label: "Costo",
             backgroundColor: "rgba(38, 185, 154, 0.31)",
             borderColor: "rgba(38, 185, 154, 0.7)",
             pointBorderColor: "rgba(38, 185, 154, 0.7)",
@@ -226,7 +235,25 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
             pointHoverBackgroundColor: "#fff",
             pointHoverBorderColor: "rgba(220,220,220,1)",
             pointBorderWidth: 1,
-            data: [0, 2345451000, 74, 6, 39, 20, 85, 7, 20]
+            data: [0,
+
+                <?php if($expedienteTecnico->num_meses!=null)
+                {
+                    $suma = 0;
+                    for($i=0; $i<$expedienteTecnico->num_meses; $i++) 
+                    {
+                        $monto = $suma+=$sumatoriasTotales[$i];
+
+                        echo ''.$monto.',';
+                    }
+                } ?>
+
+            ]
+
+
+
+
+
           }, {
             label: "My Second dataset",
             backgroundColor: "rgba(3, 88, 106, 0.3)",
@@ -236,7 +263,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
             pointHoverBackgroundColor: "#fff",
             pointHoverBorderColor: "rgba(151,187,205,1)",
             pointBorderWidth: 1,
-            data: [0, 35, 23, 66, 9, 99, 4, 2, 40]
+            data: [0, 0, 0, 0, 0, 0, 0, 0, 0]
           }]
         },
       });
