@@ -140,6 +140,8 @@
 	</div>
 </div>
 <script>
+
+
 window.setTimeout(function()
 {
 	var meta=document.getElementById("txtcorrelativo").value;
@@ -155,6 +157,7 @@ window.setTimeout(function()
 		{
 			//alert(resp);
 			var pip=JSON.parse(resp);
+			console.log(pip);
 			var dom = document.getElementById("contenedorGrafico");
 			var myChart = echarts.init(dom);
 			var app = {};
@@ -227,6 +230,13 @@ window.setTimeout(function()
 			    }
 			};
 
+			var a_Ejecucion=0;
+			var a_Compromiso=0;
+			var a_Certificado=0;
+			var a_Devengado=0;
+			var a_Girado=0;
+			var a_Pagado=0;
+
 
 			var labelOption = {
 			    normal: {
@@ -283,13 +293,17 @@ window.setTimeout(function()
 			            type: 'value'
 			        }
 			    ],
+				
 			    series: [
 			        {
 			            name: 'Ejecucion',
 			            type: 'bar',
 			            barGap: 0,
 			            label: labelOption,
-			            data: pip[1]
+			            data: 
+			            
+
+			            pip[1]
 			        },
 			        {
 			            name: 'Compromiso',

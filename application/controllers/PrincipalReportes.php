@@ -380,15 +380,40 @@ class PrincipalReportes extends CI_Controller
             $correlativoMeta=$this->input->GET('meta');
             $anioMeta=$this->input->GET('anio');
             $datos=$this->Model_Dashboard_Reporte->DetalleMensualizadoMeta($correlativoMeta,$anioMeta);
+            
+            $a_ejecucion = 0;
+            $a_compromiso = 0;
+            $a_certificado = 0;
+            $a_devengado = 0;
+            $a_girado = 0;
+            $a_pagado= 0;
+
+
+
             $var1=[];
-            foreach ($datos as $key => $Itemp) {
+            foreach ($datos as $key => $Itemp) 
+            {
                 $nombre[]=$Itemp->mes_eje;
-                $ejecucion[]=$Itemp->ejecucion;
-                $compromiso[]=$Itemp->compromiso;
-                $certificado[]=$Itemp->certificado;
-                $devengado[]=$Itemp->devengado;
-                $girado[]=$Itemp->girado;
-                $pagado[]=$Itemp->pagado;
+
+                $a_ejecucion += $Itemp->ejecucion;                
+                $ejecucion[]=$a_ejecucion;
+
+                $a_compromiso += $Itemp->compromiso;               
+                $compromiso[]=$a_compromiso;
+
+                 $a_certificado += $Itemp->certificado;               
+                $certificado[]=$a_certificado;
+
+                $a_devengado += $Itemp->devengado;               
+                $devengado[]=$a_devengado;
+
+                $a_girado+= $Itemp->girado;               
+                $girado[]=$a_girado;
+
+                $a_pagado += $Itemp->pagado;               
+                $pagado[]= $a_pagado;
+
+               
             }
             $var1[]=$nombre;
             $var1[]=$ejecucion;

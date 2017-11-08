@@ -186,44 +186,50 @@
                     	</li>
                  	</ul>                 	
                   	<br/>
-                  	<div class="row invoice-info">
-                        <div class="col-sm-12 invoice-col">
-                          	<address><br><br>
-                            	<!--<b>"<?= trim($ExpedienteTecnicoElaboracion[0]->nombre_pi);?>"</b>-->
-                            	<strong>Nombre del Proyecto:</strong>
-                                <br><?= trim($ExpedienteTecnicoElaboracion[0]->nombre_pi);?>
-                            </address>
-                        </div>
-                        <div class="col-sm-4 invoice-col">
-                          	<address>
-                                <strong>Codigo:</strong>
-                                <br><?=$ExpedienteTecnicoElaboracion[0]->codigo_unico_pi?><br>
-                                <strong>Unidad Ejecutora:</strong>
-                                <br><?=$ExpedienteTecnicoElaboracion[0]->nombre_ue?><br>
-                                                         
-                            </address>
-                        </div>
-                        <div class="col-sm-4 invoice-col">
-                          	<address>
-                          		<strong>Costo de Preinversion:</strong>
-                                <br>S/. <?=a_number_format($ExpedienteTecnicoElaboracion[0]->costo_total_preinv_et,2,'.',",",3)?><br>
-                                <strong>Costo de Inversion:</strong>
-                                <br>S/. <?=a_number_format($ExpedienteTecnicoElaboracion[0]->costo_total_inv_et,2,'.',",",3)?><br>
-                            </address>
-                        </div>
-                        <div class="col-sm-4 invoice-col">
-                          	<address>
-                          		<strong>Tiempo de Ejecución:</strong>
-                                <br><?=$ExpedienteTecnicoElaboracion[0]->tiempo_ejecucion_pi_et?><br>   
-                                <strong>Número de Beneficiarios:</strong>
-                                <br><?=a_number_format($ExpedienteTecnicoElaboracion[0]->num_beneficiarios,0,'.',",",3)?><br>
-                            </address>
-                        </div>
-                        <div class="col-sm-12">
-                        	<p><br></p>
-                        </div>
-                    </div>
-                    <!--<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                  	<div class="table-responsive">
+                  		<h5 style="padding-bottom: 4px;"><b>Datos Generales del Proyecto:</b></h5>
+                  		<table class="table table-bordered">
+	                      	<tbody>
+	                      		<tr>
+	                      			<td style="width: 15%; text-align: right;"><b>Nombre del Proyecto:</b></td>
+	                      			<td colspan="3" style="width: 85%;"><?= trim($ExpedienteTecnicoElaboracion[0]->nombre_pi);?></td>
+	                      		</tr>
+	                      		<tr>
+	                      			<td style="width: 15%; text-align: right;"><b>Codigo:</b></td>
+	                      			<td colspan="3" style="font-size: 13px;"><?=$ExpedienteTecnicoElaboracion[0]->codigo_unico_pi?></td>
+	                      		</tr>
+	                      		<tr>
+	                      			<td style="width: 15%; text-align: right;"><b>Unidad Ejecutora:</b></td>
+	                      			<td colspan="3"><?=$ExpedienteTecnicoElaboracion[0]->nombre_ue?></td>
+	                      		</tr>
+	                      		<tr>
+	                      			<td style="width: 15%; text-align: right;"><b>Costo de Preinversion:</b></td>
+	                      			<td style="width: 35%;"> S/. <?=a_number_format($ExpedienteTecnicoElaboracion[0]->costo_total_preinv_et,2,'.',",",3)?></td>
+	                      			<td style="width: 15%; text-align: right;"><b>Función:</b></td>
+	                      			<td style="width: 35%;"><?=$ExpedienteTecnicoElaboracion[0]->funcion_et?></td>
+	                      		</tr>
+	                      		<tr>
+	                      			<td style="width: 15%; text-align: right;"><b>Costo de Inversion:</b></td>
+	                      			<td style="width: 35%;">S/. <?=a_number_format($ExpedienteTecnicoElaboracion[0]->costo_total_inv_et,2,'.',",",3)?></td>
+	                      			<td style="width: 15%; text-align: right;"><b>Programa:</b></td>
+	                      			<td style="width: 35%;"><?=$ExpedienteTecnicoElaboracion[0]->programa_et?></td>
+	                      		</tr>
+	                      		<tr>
+	                      			<td style="width: 15%; text-align: right;"><b>Tiempo de Ejecución:</b></td>
+	                      			<td style="width: 35%;"><?=$ExpedienteTecnicoElaboracion[0]->tiempo_ejecucion_pi_et?></td>
+	                      			<td style="width: 15%; text-align: right;"><b>SubPrograma:</b></td>
+	                      			<td style="width: 35%;"><?=$ExpedienteTecnicoElaboracion[0]->sub_programa_et?></td>
+	                      		</tr>
+	                      		<tr>
+	                      			<td style="width: 15%; text-align: right;"><b>Número de Beneficiarios:</b></td>
+	                      			<td style="width: 35%;"><?=a_number_format($ExpedienteTecnicoElaboracion[0]->num_beneficiarios,0,'.',",",3)?></td>
+	                      			<td style="width: 15%; text-align: right;"><b>Modalidad:</b></td>
+	                      			<td style="width: 35%;"><?=$ExpedienteTecnicoElaboracion[0]->modalidad_ejecucion_et?></td>
+	                      		</tr>
+	                      	</tbody>
+	                    </table>
+                  	</div>
+                   	<!--<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
 
                     <div class="form-group">
                     <br><br>
@@ -307,7 +313,7 @@
 							<?php if($ExpedienteTecnicoElaboracion[0]->id_etapa_et == 2 || $ExpedienteTecnicoElaboracion[0]->id_etapa_et == 3)
 		                    { ?>
 								<div>
-				                    <h6><code>Formatos de Ejecución</code>.</h6>
+				                    <h6><span>Formatos de Expediente Técnico</span></h6>
 				                    <a style="background-color: #fd9b15;" class="btn btn-app"  data-toggle="tooltip" title="Informe Mensual" href="<?= site_url('Expediente_Tecnico/reportePdfInformeMensual/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank" >
 										<i class="fa fa-file-pdf-o"></i> Formarto FE-02
 									</a>  

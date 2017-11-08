@@ -1135,10 +1135,24 @@ class Expediente_Tecnico extends CI_Controller
 	}
 	public function ReporteEstadistico($id_et)
 	{
+		$expedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnico($id_et);
+		$expedienteTecnico->childComponente=$this->Model_ET_Componente->ETComponentePorIdET($expedienteTecnico->id_et);
+		
+		foreach($expedienteTecnico->childComponente as $key => $value)
+		{
+			$value->childMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($value->id_componente);
+
+			foreach($value->childMeta as $index => $item)
+			{
+				$this->obtenerMetaAnidadaParaValorizacion($item);
+				
+			}			
+		}
 		$this->load->view('layout/Ejecucion/header');
-		$this->load->view('front/Ejecucion/Reporte/estadisticasejecucion');
+		$this->load->view('front/Ejecucion/Reporte/estadisticasejecucion', ['expedienteTecnico' => $expedienteTecnico]);
 		$this->load->view('layout/Ejecucion/footer');
 	}
+
 
 	private function obtenerMetaAnidadaParaValorizacionFisica($meta)
 	{

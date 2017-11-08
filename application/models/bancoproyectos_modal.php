@@ -380,4 +380,19 @@ class bancoproyectos_modal extends CI_Model
         }
     }
 
+    public function eliminarOperacionMantenimiento($id_operacion_mantenimiento_pi)
+    {
+         $flat='D';
+         $this->db->query("execute sp_Gestionar_OperacionMantenimientoPI @opcion = '".$flat . "', @id_operacion_mantenimiento_pi ='".$id_operacion_mantenimiento_pi. "'");
+         return true;
+
+    }
+    public function eliminarrubroPI($id_rubro_pi)
+    {
+         $flat='D';
+         $this->db->query("execute sp_Gestionar_RubroPI @opcion = '".$flat . "', @id_rubro_pi ='".$id_rubro_pi. "'");
+         return true;
+
+    }
+
 }

@@ -31,6 +31,7 @@
 	<script src="<?php echo base_url(); ?>assets/js/Helper/jsHelper.js"></script>	
 	<script src="<?php echo base_url(); ?>assets/TemplateEjecucion/vendors/jquery/dist/jquery.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/ckeditor/ckeditor.js"></script>
+	
 	<style>
 		#navtittlemin
       {
