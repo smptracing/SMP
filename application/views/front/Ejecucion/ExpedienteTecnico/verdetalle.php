@@ -229,42 +229,6 @@
 	                      	</tbody>
 	                    </table>
                   	</div>
-                  	<!--<div class="row invoice-info">
-                        <div class="col-sm-12 invoice-col">
-                          	<address><br><br>
-                            	<strong>Nombre del Proyecto:</strong>
-                                <br><?= trim($ExpedienteTecnicoElaboracion[0]->nombre_pi);?>
-                            </address>
-                        </div>
-                        <div class="col-sm-4 invoice-col">
-                          	<address>
-                                <strong>Codigo:</strong>
-                                <br><?=$ExpedienteTecnicoElaboracion[0]->codigo_unico_pi?><br>
-                                <strong>Unidad Ejecutora:</strong>
-                                <br><?=$ExpedienteTecnicoElaboracion[0]->nombre_ue?><br>
-                                                         
-                            </address>
-                        </div>
-                        <div class="col-sm-4 invoice-col">
-                          	<address>
-                          		<strong>Costo de Preinversion:</strong>
-                                <br>S/. <?=a_number_format($ExpedienteTecnicoElaboracion[0]->costo_total_preinv_et,2,'.',",",3)?><br>
-                                <strong>Costo de Inversion:</strong>
-                                <br>S/. <?=a_number_format($ExpedienteTecnicoElaboracion[0]->costo_total_inv_et,2,'.',",",3)?><br>
-                            </address>
-                        </div>
-                        <div class="col-sm-4 invoice-col">
-                          	<address>
-                          		<strong>Tiempo de Ejecución:</strong>
-                                <br><?=$ExpedienteTecnicoElaboracion[0]->tiempo_ejecucion_pi_et?><br>   
-                                <strong>Número de Beneficiarios:</strong>
-                                <br><?=a_number_format($ExpedienteTecnicoElaboracion[0]->num_beneficiarios,0,'.',",",3)?><br>
-                            </address>
-                        </div>
-                        <div class="col-sm-12">
-                        	<p><br></p>
-                        </div>
-                    </div>-->
                    	<!--<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
 
                     <div class="form-group">
@@ -349,7 +313,7 @@
 							<?php if($ExpedienteTecnicoElaboracion[0]->id_etapa_et == 2 || $ExpedienteTecnicoElaboracion[0]->id_etapa_et == 3)
 		                    { ?>
 								<div>
-				                    <h6><code>Formatos de Ejecución</code>.</h6>
+				                    <h6><span>Formatos de Expediente Técnico</span></h6>
 				                    <a style="background-color: #fd9b15;" class="btn btn-app"  data-toggle="tooltip" title="Informe Mensual" href="<?= site_url('Expediente_Tecnico/reportePdfInformeMensual/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank" >
 										<i class="fa fa-file-pdf-o"></i> Formarto FE-02
 									</a>  
