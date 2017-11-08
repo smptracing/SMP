@@ -65,7 +65,9 @@ class Login extends CI_Controller {
             $result = $this->Login_model->recuperarMenu(0);
             $this->session->set_userdata('menu',$result);
 
-            $this->db2 = $this->load->database('seconddb', TRUE);
+            if ($usuario->cod_usuario_tipo == '04' ) {
+              $this->db2 = $this->load->database('seconddb', TRUE);
+            }
 
             redirect('Inicio');
         }
