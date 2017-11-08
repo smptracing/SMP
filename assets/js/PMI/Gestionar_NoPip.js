@@ -3,7 +3,7 @@ $(document).on("ready" ,function()
     $("#btn_nuevoNoPip").click(function(){
         listarCicloInver();
         listar_TipologiaNoPipRegistro();
-    }); 
+    });
      listar_no_pip();
     $("#txtCostoPip_m").keyup(function(e)
     {
@@ -12,7 +12,7 @@ $(document).on("ready" ,function()
     $("#txtCostoPip").keyup(function(e)
     {
         $(this).val(format($(this).val()));
-    });    
+    });
 
    $("#form_Edit_no_pip").submit(function(event)
     {
@@ -28,11 +28,11 @@ $(document).on("ready" ,function()
             data:$(this).serialize(),
             success:function(resp)
             {
-                if (resp=='1') 
+                if (resp=='1')
                 {
                     swal("ACTUALIZADO","Se actualizó correctamente", "success");
                 }
-                if (resp=='2') 
+                if (resp=='2')
                 {
                     swal("NO SE ACTUALIZÓ","No se actualizó ", "error");
                 }
@@ -57,11 +57,11 @@ $(document).on("ready" ,function()
             data:$(this).serialize(),
             success:function(resp)
             {
-                if (resp=='1') 
+                if (resp=='1')
                 {
                     swal("REGISTRADO","Se regristró correctamente", "success");
                 }
-                if (resp=='2') 
+                if (resp=='2')
                 {
                     swal("NO SE REGISTRÓ","NO se regristró ", "error");
                 }
@@ -186,7 +186,7 @@ $(document).on("ready" ,function()
                   });
 
   //registar nuevo ubigeo con latitud y longitud
-   
+
     $("#form_AddUbigeo").submit(function(event)
     {
         event.preventDefault();
@@ -201,22 +201,22 @@ $(document).on("ready" ,function()
             processData:false,
             success:function(resp)
             {
-                if (resp=='1') 
+                if (resp=='1')
                 {
                     swal("REGISTRADO","Se regristró correctamente", "success");
                 }
-                if (resp=='2') 
+                if (resp=='2')
                 {
                     swal("NO SE REGISTRÓ","NO se regristró ", "error");
                 }
                 $('#TableUbigeoProyecto_x').dataTable()._fnAjaxUpdate();
                 //formReset();
-                //$('#venta_ubicacion_geografica').modal('hide');           
+                //$('#venta_ubicacion_geografica').modal('hide');
             }
         });
     });
                 //registar proyectos en banco de proyectos
-   
+
         //limpiar campos
           function formReset()
           {
@@ -320,7 +320,7 @@ var eliminarUbigeo=function(id_ubigeo_pi,element)
       {
         title: '',
         text: objectJSON.mensaje,
-        type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+        type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
       },
       function(){});
 
@@ -406,7 +406,7 @@ var ModificarUbigeoPi=function(id_ubigeo_pi)
                          "ajax":{
                                     "url":base_url+"index.php/bancoproyectos/GetNOPIP",
                                     "method":"POST",
-                                    "dataSrc":""                                    
+                                    "dataSrc":""
                                   },
                                 "columns":[
                                     {"defaultContent":"<center><button type='button' title='Editar' class='Editar_proyecto btn btn-primary btn-xs' data-toggle='modal' data-target='#venta_editar_proyecto'><i class='fa fa-edit' aria-hidden='true'></i></button></center>"},
@@ -416,9 +416,9 @@ var ModificarUbigeoPi=function(id_ubigeo_pi)
                                     {"data":"nombre_pi"},
                                     {"data":"costo_pi"},
                                     {"data":"desc_tipo_nopip"},
-                                    {"defaultContent":"<div class='dropup'><button class='btn  btn-group-xs dropdown-toggle' type='button' data-toggle='dropdown'> Opciones <span class='glyphicon glyphicon-option-vertical' aria-hidden='true'></span></button><ul class='dropdown-menu dropdown-menu-right'><li><a href='#'><center><button type='button' title='Ubicación' class='ubicacion_geografica btn btn-primary btn-xs' data-toggle='modal' data-target='#venta_ubicacion_geografica'><i class='fa fa-map-marker' aria-hidden='true'></i></button><button type='button' title='Ver Rubro PI' class='RegistarNuevoRubro btn btn-info btn-xs' data-toggle='modal' data-target='#venta_registar_rubro'><i class='fa fa-spinner' aria-hidden='true'></i></button></br><button type='button' title='Modalidad de Ejecución' class='nueva_modalidad_ejec btn btn-warning btn-xs' data-toggle='modal' data-target='#ventanaModalidadEjecucion'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button' title='Ver Estado Ciclo' class='ver_estado_ciclo btn btn-success btn-xs' data-toggle='modal' data-target='#ventana_ver_estado_ciclo'><i class='fa fa-paw' aria-hidden='true'></i></button><button type='button' title='Ver Tipología No PIP' class='ver_tipologia_nopip btn btn-danger btn-xs' data-toggle='modal' data-target='#ventana_ver_tipologia'><i class='fa fa-random' aria-hidden='true'></i></button></i></button></center></div>"}
+                                    {"defaultContent":"<div class='dropup'><button class='btn  btn-group-xs dropdown-toggle' type='button' data-toggle='dropdown'> Opciones <span class='glyphicon glyphicon-option-vertical' aria-hidden='true'></span></button><ul class='dropdown-menu dropdown-menu-right'><li><a href='#'><center><button type='button' title='Ubicación' class='ubicacion_geografica btn btn-primary btn-xs' data-toggle='modal' data-target='#venta_ubicacion_geografica'><i class='fa fa-map-marker' aria-hidden='true'></i></button><button type='button' title='Ver Rubro PI' class='RegistarNuevoRubro btn btn-info btn-xs' data-toggle='modal' data-target='#venta_registar_rubro'><i class='fa fa-spinner' aria-hidden='true'></i></button><button type='button' title='Modalidad de Ejecución' class='nueva_modalidad_ejec btn btn-warning btn-xs' data-toggle='modal' data-target='#ventanaModalidadEjecucion'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button' title='Ver Estado Ciclo' class='ver_estado_ciclo btn btn-success btn-xs' data-toggle='modal' data-target='#ventana_ver_estado_ciclo'><i class='fa fa-paw' aria-hidden='true'></i></button><button type='button' title='Ver Tipología No PIP' class='ver_tipologia_nopip btn btn-danger btn-xs' data-toggle='modal' data-target='#ventana_ver_tipologia'><i class='fa fa-random' aria-hidden='true'></i></button></i></button></center></div>"}
                                    //{"defaultContent":"<center><button type='button' title='Ubicación' class='ubicacion_geografica btn btn-primary btn-xs' data-toggle='modal' data-target='#venta_ubicacion_geografica'><i class='fa fa-map-marker' aria-hidden='true'></i></button><button type='button' title='Ver Rubro PI' class='RegistarNuevoRubro btn btn-info btn-xs' data-toggle='modal' data-target='#venta_registar_rubro'><i class='fa fa-spinner' aria-hidden='true'></i></button><button type='button' title='Modalidad de Ejecución' class='nueva_modalidad_ejec btn btn-warning btn-xs' data-toggle='modal' data-target='#ventanaModalidadEjecucion'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button' title='Ver Estado Ciclo' class='ver_estado_ciclo btn btn-success btn-xs' data-toggle='modal' data-target='#ventana_ver_estado_ciclo'><i class='fa fa-paw' aria-hidden='true'></i></button><button type='button' title='Ver Tipología No PIP' class='ver_tipologia_nopip btn btn-danger btn-xs' data-toggle='modal' data-target='#ventana_ver_tipologia'><i class='fa fa-random' aria-hidden='true'></i></button><button type='button' title='Operación y Mantenimiento' class='ver_operacion_mantenimiento btn btn-info btn-xs' data-toggle='modal' data-target='#ventana_ver_operacion_mantenimeinto'><i class='fa fa-building' aria-hidden='true'></i></button></center>"}
-                                
+
                                 ],
                                "language":idioma_espanol
                     });
@@ -435,7 +435,7 @@ var ModificarUbigeoPi=function(id_ubigeo_pi)
 
    var  EditNoPip=function(tbody,table){
                     $(tbody).on("click","button.Editar_proyecto",function(){
-                     
+
                 var data=table.row( $(this).parents("tr")).data();
                 var  id_estado_ciclo=data.id_estado_ciclo;
                 var  id_naturaleza_inv=data.id_naturaleza_inv;
@@ -473,9 +473,9 @@ var ModificarUbigeoPi=function(id_ubigeo_pi)
                       listarProgramaPresupuestal(id_programa_pres);
                       listar_TipologiaNoPipRegistro(id_tipo_nopip);
                       $("#txt_idNo_Pip").val(data.id_pi);
-            
+
                       $("#cbx_estado_m").val(estado_pi);
-      
+
 
 
                     });
@@ -498,7 +498,7 @@ var ModificarUbigeoPi=function(id_ubigeo_pi)
                               html +="<option  value="+registros[i]["id_estado_ciclo"]+"> "+registros[i]["nombre_estado_ciclo"]+" </option>";
                             };
                             $("#cbxEstCicInv_").html(html);
-                             $("#cbxEstCicInv_m").html(html);//para modificar las entidades 
+                             $("#cbxEstCicInv_m").html(html);//para modificar las entidades
                             $('select[name=cbxEstCicInv_m]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=cbxEstCicInv_m]').change();
                             $('.selectpicker').selectpicker('refresh');
@@ -520,7 +520,7 @@ var listarNaturalezaInver=function(valor){
                               html +="<option  value="+registros[i]["id_naturaleza_inv"]+"> "+registros[i]["nombre_naturaleza_inv"]+" </option>";
                             };
                             $("#cbxInicio").html(html);
-                             $("#cbxNatI_m").html(html);//para modificar las entidades 
+                             $("#cbxNatI_m").html(html);//para modificar las entidades
                             $('select[name=cbxNatI_m]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=cbxNatI_m]').change();
                             $('.selectpicker').selectpicker('refresh');
@@ -543,7 +543,7 @@ var listarNaturalezaInver=function(valor){
                               html +="<option  value="+registros[i]["id_nivel_gob"]+"> "+registros[i]["nombre_nivel_gob"]+" </option>";
                             };
                             $("#cbxNivelGob_Inicio").html(html);
-                             $("#cbxNivelGob_m").html(html);//para modificar las entidades 
+                             $("#cbxNivelGob_m").html(html);//para modificar las entidades
                             $('select[name=cbxNivelGob_m]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=cbxNivelGob_m]').change();
                             $('.selectpicker').selectpicker('refresh');
@@ -565,7 +565,7 @@ var listarNaturalezaInver=function(valor){
                               html +="<option  value="+registros[i]["id_ue"]+"> "+registros[i]["nombre_ue"]+" </option>";
                             };
                             $("#cbxUnidadEjecutora_inicio").html(html);
-                             $("#cbxUnidadEjecutora_m").html(html);//para modificar las entidades 
+                             $("#cbxUnidadEjecutora_m").html(html);//para modificar las entidades
                             $('select[name=cbxUnidadEjecutora_m]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=cbxUnidadEjecutora_m]').change();
                             $('.selectpicker').selectpicker('refresh');
@@ -587,7 +587,7 @@ var listarFuncion=function(valor){
                               html +="<option  value="+registros[i]["id_funcion"]+"> "+registros[i]["nombre_funcion"]+" </option>";
                             };
                             $("#cbxFuncion_inicio").html(html);
-                             $("#cbxFuncion_m").html(html);//para modificar las entidades 
+                             $("#cbxFuncion_m").html(html);//para modificar las entidades
                             $('select[name=cbxFuncion_m]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=cbxFuncion_m]').change();
                             $('.selectpicker').selectpicker('refresh');
@@ -595,7 +595,7 @@ var listarFuncion=function(valor){
                     });
                 }
 
-    
+
     $("#cbxFuncion_m").change(function()
        {
       var id_funcion=$("#cbxFuncion_m").val();
@@ -607,7 +607,7 @@ var listarDivisionFuncional=function(id_funcion,valor)
                  // alert(valor);
                    var html="";
                     $("#cbxDivFunc_inicio").html(html); //nombre del selectpicker UNIDAD EJECUTORA
-                    event.preventDefault(); 
+                    event.preventDefault();
                     $.ajax({
                         "url":base_url +"index.php/DivisionFuncional/GetDivisioFuncuonaId",
                         type:"POST",
@@ -616,13 +616,13 @@ var listarDivisionFuncional=function(id_funcion,valor)
                            //alert(respuesta);
                          var registros = eval(respuesta);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option value="+registros[i]["id_div_funcional"]+"> "+ registros[i]["nombre_div_funcional"]+" </option>";   
+                              html +="<option value="+registros[i]["id_div_funcional"]+"> "+ registros[i]["nombre_div_funcional"]+" </option>";
                             }
                             $("#cbxDivFunc_inicio").html(html);
-                           // $("#cbxDivFunc_m").html(html);//para modificar las entidades 
+                           // $("#cbxDivFunc_m").html(html);//para modificar las entidades
                               $('select[name=cbxDivFunc_inicio]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             //$('select[name=cbxDivFunc_inicio]').change();
-                            $('.selectpicker').selectpicker('refresh'); 
+                            $('.selectpicker').selectpicker('refresh');
 
                         }
                     });
@@ -631,7 +631,7 @@ var listarDivisionFuncional=function(id_funcion,valor)
                 {
                     html="";
                     $("#cbxGrupoFunc").html(html); //nombre del selectpicker UNIDAD EJECUTORA
-                    event.preventDefault(); 
+                    event.preventDefault();
                     $.ajax({
                         "url":base_url +"index.php/GrupoFuncional/GetGrupoFuncional",
                         type:"POST",
@@ -639,13 +639,13 @@ var listarDivisionFuncional=function(id_funcion,valor)
                         {
                          var registros = eval(respuesta);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option value="+registros[i]["id_grup_funcional"]+"> "+ registros[i]["nombre_grup_funcional"]+" </option>";   
+                              html +="<option value="+registros[i]["id_grup_funcional"]+"> "+ registros[i]["nombre_grup_funcional"]+" </option>";
                             }
                             $("#cbxGrupoFunc").html(html);
-                            $("#cbxGrupoFunc_m").html(html);//para modificar las entidades 
+                            $("#cbxGrupoFunc_m").html(html);//para modificar las entidades
                             $('select[name=cbxGrupoFunc_m]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=cbxGrupoFunc_m]').change();
-                            $('.selectpicker').selectpicker('refresh'); 
+                            $('.selectpicker').selectpicker('refresh');
                         }
                     });
                 }
@@ -663,7 +663,7 @@ var listarFuenteFinanciamiento=function(valor){
                               html +="<option  value="+registros[i]["id_fuente_finan"]+"> "+registros[i]["nombre_fuente_finan"]+" </option>";
                             };
                             $("#cbxFuenteFinanciamiento").html(html);
-                            $("#cbxFuenteFinanciamiento_m").html(html);//para modificar las entidades 
+                            $("#cbxFuenteFinanciamiento_m").html(html);//para modificar las entidades
                             $('select[name=cbxFuenteFinanciamiento_m]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=cbxFuenteFinanciamiento_m]').change();
                             $('.selectpicker').selectpicker('refresh');
@@ -685,7 +685,7 @@ var listarFuenteFinanciamiento=function(valor){
                               html +="<option  value="+registros[i]["id_rubro"]+"> "+registros[i]["nombre_rubro"]+" </option>";
                             };
                             $("#cbxRubroEjecucion").html(html);
-                            $("#cbxRubroEjecucion_m").html(html);//para modificar las entidades 
+                            $("#cbxRubroEjecucion_m").html(html);//para modificar las entidades
                             $('select[name=cbxRubroEjecucion_m]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=cbxRubroEjecucion_m]').change();
                             $('.selectpicker').selectpicker('refresh');
@@ -706,7 +706,7 @@ var listarFuenteFinanciamiento=function(valor){
                               html +="<option  value="+registros[i]["id_tipologia_inv"]+"> "+registros[i]["nombre_tipologia_inv"]+" </option>";
                             };
                             $("#cbxTipologiaInversion").html(html);
-                            $("#cbxTipologiaInversion_m").html(html);//para modificar las entidades 
+                            $("#cbxTipologiaInversion_m").html(html);//para modificar las entidades
                             $('select[name=cbxTipologiaInversion_m]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=cbxTipologiaInversion_m]').change();
                             $('.selectpicker').selectpicker('refresh');
@@ -727,7 +727,7 @@ var listarFuenteFinanciamiento=function(valor){
                               html +="<option  value="+registros[i]["id_programa_pres"]+"> "+registros[i]["nombre_programa_pres"]+" </option>";
                             };
                             $("#cbxProgramaPresupuestal").html(html);
-                            $("#cbxProgramaPresupuestal_m").html(html);//para modificar las entidades 
+                            $("#cbxProgramaPresupuestal_m").html(html);//para modificar las entidades
                             $('select[name=cbxProgramaPresupuestal_m]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=cbxProgramaPresupuestal_m]').change();
                             $('.selectpicker').selectpicker('refresh');
@@ -748,14 +748,14 @@ var listarFuenteFinanciamiento=function(valor){
                               html +="<option  value="+registros[i]["id_modalidad_ejec"]+"> "+registros[i]["nombre_modalidad_ejec"]+" </option>";
                             };
                             $("#cbxModalidadEjecucion").html(html);
-                            $("#cbxModalidadEjecucion_m").html(html);//para modificar las entidades 
+                            $("#cbxModalidadEjecucion_m").html(html);//para modificar las entidades
                             $('select[name=cbxModalidadEjecucion_m]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=cbxModalidadEjecucion_m]').change();
                             $('.selectpicker').selectpicker('refresh');
                         }
                     });
                 }
-                
+
  /**************************************************************************************/
 
 //add operacion y manteniemito
@@ -824,7 +824,7 @@ var listarFuenteFinanciamiento=function(valor){
                         listarModalidadPI(id_pi);
                     });
                 }
-                 //combox listar modalidad de ejecucion 
+                 //combox listar modalidad de ejecucion
                 var ListarModalidad=function(valor){
                      html="";
                     $("#Cbx_ModalidadEjec").html(html);
@@ -845,7 +845,7 @@ var listarFuenteFinanciamiento=function(valor){
                         }
                     });
                 }
-                     //combox listar estado ciclo 
+                     //combox listar estado ciclo
                 var listarEstadoCiclo=function(valor){
                      html="";
                     $("#Cbx_EstadoCiclo").html(html);
@@ -987,15 +987,15 @@ var listarFuenteFinanciamiento=function(valor){
                               html +="<option  value="+registros[i]["id_tipo_nopip"]+"> "+registros[i]["desc_tipo_nopip"]+" </option>";
                             };
                             $("#Cbx_TipoNoPip_i").html(html);
-                            $("#Cbx_TipoNoPip_m").html(html);//para modificar las entidades 
+                            $("#Cbx_TipoNoPip_m").html(html);//para modificar las entidades
                             $('select[name=Cbx_TipoNoPip_m]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=Cbx_TipoNoPip_m]').change();
                             $('.selectpicker').selectpicker('refresh');
                         }
                     });
                 }
-                
-                
+
+
 
 /*Idioma de datatablet table-sector */
             var idioma_espanol=
@@ -1025,15 +1025,15 @@ var listarFuenteFinanciamiento=function(valor){
                 }
 var format = function(num){
     var str = num.replace("", ""), parts = false, output = [], i = 1, formatted = null;
-    if(str.indexOf(".") > 0) 
+    if(str.indexOf(".") > 0)
     {
         parts = str.split(".");
         str = parts[0];
     }
     str = str.split("").reverse();
-    for(var j = 0, len = str.length; j < len; j++) 
+    for(var j = 0, len = str.length; j < len; j++)
     {
-        if(str[j] != ",") 
+        if(str[j] != ",")
         {
             output.push(str[j]);
             if(i%3 == 0 && j < (len - 1))
@@ -1049,7 +1049,7 @@ var format = function(num){
 
 
 $(function()
-{  
+{
     $('#validarRegistroNoPip').formValidation({
         framework: 'bootstrap',
         excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
@@ -1397,6 +1397,5 @@ $(function()
         }
     });
 
-    
-});
 
+});
