@@ -64,7 +64,7 @@
                                                           <th style="width: 12%"> Estado Ciclo</th>
                                                           <th style="width: 12%"> Fecha Registro</th>
                                                           <th style="width: 16%">Opción</th>
-                                                        
+
                                                         </tr>
                                                       </thead>
 
@@ -102,7 +102,7 @@
                     <div class="col-xs-12">
                                         <!-- PAGE CONTENT BEGINS -->
               <form class="form-horizontal " id="form-AddProyectosInversion"   action="<?php echo base_url(); ?>bancoproyectos/AddProyectos" method="POST" onSubmit="return false;" >
-                                 
+
                                  <div class="row">
                                       <div class="col-md-4 form-group" >
 
@@ -118,9 +118,9 @@
                                         <div class="col-md-9 col-sm-6 col-xs-12 form-group" id="divCodigoIdea">
                                             <label for="name">Codigo Único (Codigo SIAF)<span class="required">*</span>
                                             </label>
-                                     
+
                                                   <input id="txtCodigoUnico" name="txtCodigoUnico"  class="form-control col-md-7 col-xs-5" placeholder="Codigo Unico" type="text">
-                                
+
                                              </div>
                                       </div>
                                       <div class="col-md-4">
@@ -143,7 +143,7 @@
                                             </select>
                                             </div>
                                       </div>-->
-                                      
+
                                     </div>
 
                                  <div class="row">
@@ -319,7 +319,7 @@
                             Guardar...
                           </button>
                            <button  class="btn btn-danger"  type="button" data-dismiss="modal">
-        
+
                              <span class="glyphicon glyphicon-remove"></span>
                             Cancelar
                           </button>
@@ -357,76 +357,66 @@
                 <input id="txt_id_pip" name="txt_id_pip" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
 
                <div class="item form-group">
-                                    <div class="col-md-12 col-xs-12 col-sm-12">
-                                        <div style="margin-left: 750px;position: absolute;">
-                                             <li><a target="_blank" href="http://www.coordenadas-gps.com/latitud-longitud/-13.613956/-72.902527/8/roadmap"><i class='fa fa-map-marker red' aria-hidden='true'> Mapa</i></a></li>
-                                        </div>
                                         <div class=".col-xs-12 .col-md-12">
                                             <label for="name">Proyecto:</label>
                                         </div>
                                         <textarea class="form-control" rows="2" readonly="readonly" id="nombreProyecto" name="nombreProyecto"></textarea>
-                                        <br>                                        
+                                        <br>
+
+                                    <div class="row">
+                                      <div class="col-md-4">
+
+                                                    <select  class="selectpicker" disabled="disabled">
+                                                       <option value="Apurímac">Apurímac</option>
+                                                    </select>
+                                       </div>
+
+                                        <div class="col-md-4">
+
+                                                  <select  id="cbx_provincia"  name="cbx_provincia" class="selectpicker"  title="Elija provincia(s)"></select>
+                                       </div>
+
+
+                                        <div class="col-md-4">
+
+                                                 <select name="cbx_distrito" id="cbx_distrito" data-live-search="true"  class="selectpicker" title="Elija distrito"></select>
+                                       </div>
                                     </div>
-                                   <div class="col-md-4">
-                                           <label for="name">Departamento.<span class="required"></span>
-                                            </label>
-                                                 <select  class="selectpicker" disabled="disabled">
-                                                    <option value="Apurímac">Apurímac</option>
-                                                 </select>
+                                    <br>
+                                    <div class="row">
+                                      <div class="col-md-4">
+                                        <input id="txt_latitud" name="txt_latitud"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2" placeholder="Latitud" required="required" type="text">
+                                      </div>
+                                      <div class="col-md-4">
+                                         <input id="txt_longitud" name="txt_longitud"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2" placeholder="Longitud" required="required" type="text">
+                                      </div>
+                                      <div class="col-md-4">
+                                          <input type="file" name="ImgUbicacion">
+                                      </div>
+                                    </div>
+                                    <br>
+                                    <div class="col-md-12 col-xs-12 col-sm-12">
+                                        <div class=".col-xs-12 .col-md-12">
+                                            <label for="name">Mapa:</label>
+                                        </div>
+                                        <div class="modal-body">
+                                          <!-- MAP HOLDER -->
+                                          <div id="gmap"></div>
+                                          <!-- REFERENCES -->
+                                          <!--Lat: <input type="text" id='lat'>
+                                          Lon: <input type="text" id='lon'>-->
+                        								</div>
+
+                                        <br>
+                                        <label for="name"> <span class="required"></span>
+                                         </label>
+                                          <button id="send" type="submit" class="btn btn-success">
+                                          <span class="glyphicon glyphicon-floppy-saved"></span>Agregar
+                                         </button>
                                     </div>
 
-                                     <div class="col-md-4">
-                                           <label for="name">Provincia.<span class="required"></span>
-                                            </label>
-                                               <select  id="cbx_provincia"  name="cbx_provincia" class="selectpicker"  title="Elija provincia(s)"></select>
-                                    </div>
 
 
-                                     <div class="col-md-4">
-                                           <label for="name">Distritos.<span class="required"></span>
-                                            </label>
-                                              <select name="cbx_distrito" id="cbx_distrito" data-live-search="true"  class="selectpicker" title="Elija distrito"></select>
-                                    </div>
-                                    <div class="col-md-3">
-                                          <div class=".col-xs-3 .col-md-10">
-                                          <br>
-                                           <label for="name">Latitud<span class="required"></span>
-                                            </label>
-                                                  <input id="txt_latitud" name="txt_latitud"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2" placeholder="Latitud" required="required" type="text">
-                                          </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                          <div class=".col-xs-3 .col-md-10">
-                                          <br>
-                                           <label for="name">Longitud<span class="required"></span>
-                                            </label>
-                                                  <input id="txt_longitud" name="txt_longitud"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2" placeholder="Longitud" required="required" type="text">
-                                          </div>
-                                    </div> 
-                                    <div class="col-md-2">
-                                          <div class=".col-xs-3 .col-md-10">
-                                          <br>
-                                           <label for="name"><br/>Adjuntar Imagen: <span class="required"></span>
-                                            </label>
-                                             <input type="file" name="ImgUbicacion" required="required">
-
-                                          </div>
-                                    </div>    
-                                    <div class="col-md-2" style="margin-left: 70px;">
-                                    <BR><BR><BR>
-                                         
-                                            <li><a target="_blank" href="http://www.coordenadas-gps.com/latitud-longitud/-13.613956/-72.902527/8/roadmap"><i class='fa fa-map-marker red' aria-hidden='true'> Mapa</i></a></li>
-
-                                    </div>
-
-                                          <div class="col-md-2" style="margin-left: 130px;margin-top: -50px;">
-                                          <BR><BR>
-                                           <label for="name"> <span class="required"></span>
-                                            </label>
-                                             <button id="send" type="submit" class="btn btn-success">
-                                             <span class="glyphicon glyphicon-floppy-saved"></span>Agregar
-                                            </button>
-                                          </div>
                       </div>
                      <div class="x_panel" style="border: 1px solid #EEEEEE;">
                     <center>
@@ -484,14 +474,14 @@
                                         <!-- PAGE CONTENT BEGINS -->
               <form class="form-horizontal " id="form_AddEstadoCiclo"   action="<?php echo base_url(); ?>bancoproyectos/listar_estados" method="POST" >
                         <input id="txt_id_pip_Ciclopi" name="txt_id_pip_Ciclopi" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
-                        
+
                                <div class="item form-group">
                                     <div class="col-md-12 col-xs-12 col-sm-12">
                                         <div class=".col-xs-12 .col-md-12">
                                             <label for="name">Proyecto:</label>
                                         </div>
                                         <textarea class="form-control" rows="2" readonly="readonly" id="nombreProyectoEstado" name="nombreProyectoEstado"></textarea>
-                                        <br>                                        
+                                        <br>
                                     </div>
 
                                      <div class="col-md-4">
@@ -505,7 +495,7 @@
 
                                            <label for="name">Fecha <span class="required"></span>
                                             </label>
-                                                  <input type="date" id="dateFechaIniC" name="dateFechaIniC" class="form-control col-md-6 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text" value="<?php echo date("Y-m-d"); ?>" disabled="true">
+                                                  <input type="date" id="dateFechaIniC" name="dateFechaIniC" class="form-control col-md-6 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text" value="<?php echo date("Y-m-d"); ?>">
                                           </div>
                                           <div class="col-md-4">
                                              <label for="name">. <span class="required"></span>
@@ -568,14 +558,14 @@
             <form class="form-horizontal " id="form_AddRubro"   action="<?php echo base_url(); ?>bancoproyectos/listar_rubro" method="POST" >
 
                 <input id="txt_id_pip_RubroPI" name="txt_id_pip_RubroPI" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
-                    
+
                                <div class="item form-group">
                                     <div class="col-md-12 col-xs-12 col-sm-12">
                                         <div class=".col-xs-12 .col-md-12">
                                             <label for="name">Proyecto:</label>
                                         </div>
                                         <textarea class="form-control" rows="2" readonly="readonly" id="nombreProyectoRubro" name="nombreProyectoRubro"></textarea>
-                                        <br>                                    
+                                        <br>
                                     </div>
                                      <div class="col-md-4">
 
@@ -587,7 +577,7 @@
                                           <div class="col-md-4">
                                            <label for="name">Fecha <span class="required"></span>
                                             </label>
-                                                  <input type="date" id="dateFechaIniC" name="dateFechaIniC" class="form-control col-md-6 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text" value="<?php echo date("Y-m-d"); ?>" disabled="true">
+                                                  <input type="date" id="dateFechaIniC" name="dateFechaIniC" class="form-control col-md-6 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text" value="<?php echo date("Y-m-d"); ?>" >
                                           </div>
                                           <div class="col-md-4">
                                              <label for="name">. <span class="required"></span>
@@ -604,8 +594,9 @@
                     <table  id="Table_RubroPI" class="table   table-hover" >
                     <thead >
                        <tr>
-                         <th  ><i class="fa fa-thumb-tack"></i> Estado Ciclo</th>
+                         <th  ><i class="fa fa-thumb-tack"></i> Rubro</th>
                          <th  ><i class="fa fa-thumb-tack"></i> Fecha</th>
+                         <th  ><i class="fa fa-thumb-tack"></i> Opción</th>
                       </tr>
                     </thead>
                     </table>
@@ -649,14 +640,14 @@
                                         <!-- PAGE CONTENT BEGINS -->
               <form class="form-horizontal " id="form_AddModalidadEjec"   action="<?php echo base_url(); ?>bancoproyectos/listar_rubro" method="POST" >
                         <input id="txt_id_pip_ModalidadEjec" name="txt_id_pip_ModalidadEjec" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
-                        
+
                                <div class="item form-group">
                                     <div class="col-md-12 col-xs-12 col-sm-12">
                                         <div class=".col-xs-12 .col-md-12">
                                             <label for="name">Proyecto:</label>
                                         </div>
                                         <textarea class="form-control" rows="2" readonly="readonly" id="nombreProyectoModalidad" name="nombreProyectoMmodalidad"></textarea>
-                                        <br>                                        
+                                        <br>
                                     </div>
                                      <div class="col-md-4">
 
@@ -668,7 +659,7 @@
                                           <div class="col-md-4">
                                            <label for="name">Fecha <span class="required"></span>
                                             </label>
-                                                  <input type="date" id="dateFechaIniC" name="dateFechaIniC" class="form-control col-md-6 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text" value="<?php echo date("Y-m-d"); ?>" disabled="true">
+                                                  <input type="date" id="dateFechaIniC" name="dateFechaIniC" class="form-control col-md-6 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text" value="<?php echo date("Y-m-d"); ?>">
                                           </div>
                                           <div class="col-md-4">
                                              <label for="name">. <span class="required"></span>
@@ -734,7 +725,7 @@
                             <div class=".col-xs-12 .col-md-12">
                                 <label for="name">Proyecto:</label>
                             </div>
-                            <textarea class="form-control" rows="2" readonly="readonly" class="notValidate" id="nombreProyectoOperacion" name="nombreProyectoOperacion"></textarea><br>                         
+                            <textarea class="form-control" rows="2" readonly="readonly" class="notValidate" id="nombreProyectoOperacion" name="nombreProyectoOperacion"></textarea><br>
                         </div>
                         <div class="row">
                             <div class="col-md-3 col-sm-6 col-xs-12">
@@ -748,7 +739,7 @@
                             <div class="col-md-3 col-sm-6 col-xs-12">
                                 <label for="name">Fecha <span class="required"></span></label>
                                 <input type="date" id="dateFechaIniC" name="dateFechaIniC" class="form-control col-md-6 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text" value="<?php echo date("Y-m-d"); ?>" class="notValidate" disabled="true">
-                            </div>                            
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-md-3 col-sm-6 col-xs-12">
@@ -758,9 +749,9 @@
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <label>Responsable Mantenimiento</label>
                                 <input type="text" class="form-control" id="txt_responsable_mantenimiento" name="txt_responsable_mantenimiento" autocomplete="off">
-                            </div>                            
-                        </div>                       
-                        
+                            </div>
+                        </div>
+
                     </div>
                     <div class="item form-group">
                         <div class="col-md-3 col-sm-6 col-xs-12">
@@ -783,6 +774,7 @@
                          <th style="text-align: right;" ><i class="fa fa-thumb-tack"></i> Monto Operación</th>
                          <th  ><i class="fa fa-thumb-tack"></i> Responsable Operación</th>
                          <th  ><i class="fa fa-thumb-tack"></i> Fecha Registro</th>
+                         <th  ><i class="fa fa-thumb-tack"></i> Opción</th>
                       </tr>
                     </thead>
                     </table>
@@ -1007,41 +999,83 @@
       </div>
     </div>
 </div>
-
 <!-- /.FIN VENTANA EDITAR PROYECTOS DE INVERSION-->
-
 <script src="<?php echo base_url(); ?>assets/js/PMI/bancoProyectos.js"></script>
 
 <script type="text/javascript">
+
+    function initialize() {
+        var myLatlng = new google.maps.LatLng(-13.637,-72.878);
+        var myOptions = {
+            zoom:7,
+            center: myLatlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+            map = new google.maps.Map(document.getElementById("gmap"), myOptions);
+            // marker refers to a global variable
+            marker = new google.maps.Marker({
+                position: myLatlng,
+                map: map
+            });
+
+            google.maps.event.addListener(map, "click", function(event) {
+                // get lat/lon of click
+                var clickLat = event.latLng.lat();
+                var clickLon = event.latLng.lng();
+
+                // show in input box
+                document.getElementById("txt_latitud").value = clickLat.toFixed(5);
+                document.getElementById("txt_longitud").value = clickLon.toFixed(5);
+
+                  var marker = new google.maps.Marker({
+                        position: new google.maps.LatLng(clickLat,clickLon),
+                        map: map
+                     });
+            });
+    }
+    window.onload = function () { initialize() };
+
+    //document.getElementById("txt_latitud").innerHTML = location.lat();
+    //document.getElementById("txt_longitud").innerHTML = location.lng();
+</script>
+<style>
+   div#gmap {
+          width: 100%;
+          height: 300px;
+          /*border:double;*/
+   }
+</style>
+
+<script type="text/javascript">
+
    $('#textcodigoIdMensaje').hide();
 
    $("#cbxEstCicInv_").change(function(){//para cargar los distritos
-    
+
     if($("#cbxEstCicInv_").val()=='1' || $("#cbxEstCicInv_").val()=='2' )
     {
-        
+
         $('#textcodigoIdMensaje').show();
         $('#divCodigoIdea').hide();
         if($("#cbxEstCicInv_").val()=='1')
         {
              $codigoGenerado='ID-000001';
             $("#txtCodigoUnico").val($codigoGenerado);
-      
+
         }else {
             $codigoGenerado='FE-000001';
             $("#txtCodigoUnico").val($codigoGenerado);
         }
-       
+
     }else {
-      
+
       $('#textcodigoIdMensaje').hide();
 
       $("#txtCodigoUnico").val("");
       $('#divCodigoIdea').show();
     }
-                   
-  
+
+
   });
 
 </script>
-   

@@ -14,9 +14,12 @@
   <link href="<?php echo base_url(); ?>assets/adminlte/AdminLTE.min.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/adminlte/_all-skins.min.css" rel="stylesheet">
   <style>
+    /*.skin-blue .main-header li.user-header {
+      background-color: #2a3f54;
+    }*/
     .main-footer 
     {
-      background: #3c5767;
+      background: #2a3f54;
       padding: 15px;
       color: #fff;
       border-top: 1px solid #d2d6de;
@@ -51,7 +54,7 @@
       height: 70px;
     }
     .skin-blue .main-header .navbar {
-        background-color: #3c5767;
+        background-color: #2a3f54;
     }
     .box.box-info 
     {
@@ -74,6 +77,7 @@
         -o-transition: transform 0.3s;
         transition: transform 0.4s;
         user-select : none;
+        box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.2);
 
     }
     .zoom-in{
@@ -81,10 +85,43 @@
     }
     .thebox:hover {
         transform: scale(1.125);
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     }
     .box-container{
         padding-top: 10px;
         padding-bottom: 50px;
+    }
+    .Menu>li>a:hover
+    {
+      background-color: #5c94a0;
+      color: white;
+
+    }
+
+
+    .subMenu >li>a:hover{
+      background-color: #35495d;
+      color:white;
+    }
+    .subMenu{
+      box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.2);
+      margin: 0px 0 0;
+    }
+    .content-wrapper
+    {
+      background-color: #f7f7f7;
+    }
+    .skin-blue .main-header .navbar .nav>li>a {
+        color: black;
+    }
+    .dropdown:hover
+    {
+      background-color: #5c94a0;
+
+    }
+    .dropdown:hover .dropdown-menu
+    {
+      display: block;
     }
     @media (max-width: 770px) {
       .tituloHeader{
@@ -113,7 +150,7 @@
       </div>
 
     </nav>
-    <nav class="navbar navbar-static-top" style="background-color: #424949;">
+    <nav class="navbar navbar-static-top" style="background-color: #ededed;">
       <div class="container">
           <div class="navbar-header" style="height: 0px;">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
@@ -121,10 +158,10 @@
             </button>
           </div>
           <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav Menu">
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Guía de Usuario<span class="caret"></span></a>
-                  <ul class="dropdown-menu" role="menu">
+                <a href="#" class="dropdown-toggle" >Guía de Usuario<span class="caret"></span></a>
+                  <ul class="dropdown-menu subMenu " role="menu">
                       <li><a href="#">Mantenimiento de Parámetros</a></li>
                       <li><a href="#">PMI</a></li>
                       <li><a href="#">Formulación y Evaluación</a></li>

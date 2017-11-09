@@ -23,7 +23,7 @@
 		border-width: 0 5px 5px;
 	}
 
-	.tooltip.in 
+	.tooltip.in
 	{
 		opacity: 1;
 		filter: alpha(opacity=100);
@@ -51,14 +51,14 @@
                                       <ul id="myTab" class="nav nav-tabs" role="tablist">
                                         <li role="presentation" class="active"><a href="#tab_brecha" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Usuario</a>
                                         </li>
-                                        
+
                                       </ul>
                                       <div id="myTabContent" class="tab-content">
                                            <!-- /panel de brechas desde el row -->
                                         <div role="tabpanel" class="tab-pane fade active in" id="tab_brecha" aria-labelledby="home-tab">
                                              <!-- /tabla de brechas desde el row -->
-                                            <div class="row">  
-                                            
+                                            <div class="row">
+
                                                   <div class="col-md-12 col-sm-12">
                                                         <div class="x_panel">
                                                             <button type="button" class="btn btn-primary" data-toggle="modal"
@@ -66,7 +66,7 @@
                                                             <?php /* data-target="#VentanaRegistraUsuario"*/?>
                                                              onclick=paginaAjaxDialogo('null','Registrar',{},base_url+"index.php/Usuario/itemUsuario",'GET',null,null,false,true);
                                                             > <i class="fa fa-file"> Nuevo </i> </button>
-                                                          <div class="x_title">     
+                                                          <div class="x_title">
                                                           </div>
                                                           <div class="x_content">
                                                             <table id="table-Usuarios" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
@@ -78,7 +78,7 @@
                                                                   <th>CONTRASEÑA </th>
                                                                   <th>USUARIO</th>
                                                                   <th style="width: 9%">ACCIONES</th>
-                                                                 </tr>  
+                                                                 </tr>
                                                               </thead>
 	                                                           <tbody>
 	                                                           </tbody>
@@ -86,55 +86,55 @@
                                                           </div>
                                                         </div>
                                                       </div>
-                                                     
+
                                             </div>
                                          <!-- / fin tabla de brechas desde el row -->
                                         </div>
                                            <!-- / fin panel de brechas desde el row -->
-                                          
+
                                         <div style="display:none;" role="tabpanel" class="tab-pane fade" id="tab_Indicador" aria-labelledby="profile-tab">
                                             <!-- / panel de indicador desde el row -->
                                              <div role="tabpanel" class="tab-pane fade active in" id="tab_brecha" aria-labelledby="home-tab">
                                              <!-- /tabla de brechas desde el row -->
-                                            <div class="row">  
-                                            
+                                            <div class="row">
+
                                                   <div class="col-md-12 col-sm-12 col-xs-12">
                                                         <div class="x_panel">
                                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaRegistraIndicador"><span class="fa fa-file-o"></span> Nuevo Permisos</button>
                                                           <div class="x_title">
-                                                              
+
                                                             <ul class="nav navbar-right panel_toolbox">
-                                                                
+
                                                               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                                               </li>
-                                                              
+
                                                               <li><a class="close-link"><i class="fa fa-close"></i></a>
                                                               </li>
-                                                                
+
                                                             </ul>
-                                                              
+
                                                             <div class="clearfix"></div>
-                                                              
+
                                                           </div>
                                                           <div class="x_content">
-                                                            
+
                                                           </div>
                                                         </div>
                                                       </div>
-                                                     
+
                                             </div>
                                          <!-- / fin tabla de indicador desde el row -->
                                         </div>
                                            <!-- / fin panel de indicador  -->
-                                            
-                                            
-                                            
+
+
+
                                         </div>
                                         <div style="display:none;" role="tabpanel" class="tab-pane fade" id="tab_BrechaIndicador" aria-labelledby="profile-tab">
                                           <p>Menu </p>
                                         </div>
-                                          
-                        
+
+
                                       </div>
                                     </div>
 
@@ -142,12 +142,12 @@
                                 </div>
               </div>
 
-             
+
           </div>
           <div class="clearfix"></div>
         </div>
      </div>
-        
+
 <div class="modal fade" id="VentanaRegistraUsuario" role="dialog" data-backdrop="static">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
@@ -163,7 +163,7 @@
                                      <label class="col-sm-3 control-label no-padding-right"  for="form-field-1-1">Buscar Persona</label>
                                       <div class="col-sm-6">
                                            <select  class="form-control input-sm" id="comboPersona" name="comboPersona"  title="Buscar persona" >
-                                           </select>                    
+                                           </select>
                                      </div>
                               </div>
                               <div class="form-group">
@@ -176,17 +176,17 @@
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">Tipo de Usuario </label>
                                 <div class="col-sm-6">
                                   <select  class="form-control input-sm" id="cbb_TipoUsuario" name="cbb_TipoUsuario">
-                                    
-                                   </select>                    
+
+                                   </select>
                                 </div>
                               </div>
                               <div class="form-group">
                                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">Estado </label>
                                     <div class="col-sm-6">
                                            <select  class="form-control input-sm">
-                                           <option values="1"> Activo </option>  
-                                           <option values="0"> Inactivo </option>  
-                                           </select>                    
+                                           <option values="1"> Activo </option>
+                                           <option values="0"> Inactivo </option>
+                                           </select>
                                     </div>
                               </div>
                               <div class="form-group">
@@ -217,7 +217,7 @@
                 </div>
             </div>-->
             <div class="modal-footer">
-                  
+
             </div>
       </div>
     </div>
@@ -233,8 +233,8 @@
          <div class="row">
                     <div class="col-xs-12">
                                 <form class="form-horizontal" role="form">
-                                    
-                                    
+
+
                                     <table class="table table-bordered table-condensed table-hover  table-striped table-condensed">
                                          <thead>
                                             <tr><th colspan="3"><p class="text-center">PERMISOS POR USUARIO</p></th></tr>
@@ -242,12 +242,12 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th>MENU</th>
-                                                <th>PERMISOS</th>          
-                                            </tr>  
+                                                <th>PERMISOS</th>
+                                            </tr>
                                         </thead>
-                                            
+
                                         <body>
-                                        
+
                                             <tr>
                                                 <td>1</td>
                                                 <td>
@@ -315,10 +315,10 @@
                                                 <td>
                                                     <div class="checkbox">
                                                             <label><input type="checkbox" value="">Liquidacion</label>
-                                                    </div> 
+                                                    </div>
                                                 </td>
                                             </tr>
-                                        
+
                                              <tr>
                                                 <td>4</td>
                                                 <td>
@@ -346,7 +346,7 @@
                                         <button type="submit" class="btn btn-primary">guardar permisos </button></center>
                                     </div>
                   <div class="space-4"></div>
-                    
+
                    </form>
                         </div><!-- /.span -->
                  </div><!-- /.row -->
@@ -357,13 +357,13 @@
       </div>
     </div>
   </div>
-<!-- /.FIN ventana para asignar permisos a un usuario --> 
+<!-- /.FIN ventana para asignar permisos a un usuario -->
 <script src="<?php echo base_url();?>assets/js/Helper/jsHelper.js"></script>
 
 <script>
 	$(function()
 	{
-  
+
 		$('#txt_usuario').tooltip({ "placement" : "right", "html" : true, "trigger" : "focus", "title" : "<div style=\"padding: 4px;text-align: left;\"><p>Ingrese su nombre de usuario.</p><p><b>Recomendación:</b><br>Introducir su nombre seguido de su fecha de nacimiento.</p></div>" });
 		$('#txt_contrasenia').tooltip({ "placement" : "right", "html" : true, "trigger" : "focus", "title" : "<div style=\"padding: 4px;text-align: left;\"><p>Ingrese una contraseña segura.</p><p><b>Recomendación:</b><br>Su contraseña debería contener minimamente una<br>letra mayúscula, una letra minúscula, un número<br>y un caracter especial para que sea considerada segura.</p><h3>Nivel de seguridad: </h3><span id=\"spanNivelSeguridadBajo\" style=\"display: block;margin: 2px;font-size: 10px;padding: 7px;\" class=\"label label-danger\">Bajo</span><span id=\"spanNivelSeguridadMedio\" style=\"display: none;margin: 2px;font-size: 10px;padding: 7px;\" class=\"label label-info\">Medio</span><span id=\"spanNivelSeguridadNormal\" style=\"display: none;margin: 2px;font-size: 10px;padding: 7px;\" class=\"label label-primary\">Normal</span><span id=\"spanNivelSeguridadAlto\" style=\"display: none;margin: 2px;font-size: 10px;padding: 7px;\" class=\"label label-success\">Alto</span></div>" });
 

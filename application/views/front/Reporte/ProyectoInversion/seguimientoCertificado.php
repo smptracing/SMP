@@ -75,11 +75,15 @@
 																									<button type="button" class="DetalleOrdenExpeSiaf btn btn-success btn-xs" ><a href="<?php echo site_url('ProyectoInversion/ReporteBuscadorPorPip/'.$item->proyecto_snip); ?>"> 
 																									<?=$item->proyecto_snip?></a> <i class='ace-icon bigger-120'></i></button>
 																					    	</td>
+																					    	
 																					    	<td>
 																								<?=$item->sec_func?>
 																					    	</td>
+																					    	
 																					    	<td>
-																								<?=$item->act_proy?>
+																					    		<button type="button" class="DetalleOrdenExpeSiaf btn btn-success btn-xs" ><a href="<?php echo site_url('ProyectoInversion/ReporteBuscadorPorPip/'.$item->act_proy); ?>"> 
+																									<?=$item->act_proy?></a> <i class='ace-icon bigger-120'></i></button>
+																								
 																					    	</td>
 																					    	<td style="font-size: 10px;">
 																								<?=$item->nombre?>
@@ -94,13 +98,13 @@
 																								<?=$item->monto_certificado?>
 																					    	</td>
 																					    	<td>
-																								<?=$item->avance_pim_cert?>
+																								<?=$item->avance_pim_cert?>%
 																					    	</td>
 																					    	<td>
 																								<?=$item->devengado?>
 																					    	</td>
 																					    	<td>
-																								<?=$item->avance_pim_deven?>
+																								<?=$item->avance_pim_deven?>%
 																					    	</td>
 																					    	<td>
 																								<?=$item->para_seguimiento?>

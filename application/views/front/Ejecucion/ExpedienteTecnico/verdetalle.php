@@ -5,13 +5,27 @@
 <style>
 	.btn.btn-app{
 		background-color: #f2f5f7;
-		color:#001f3f;
+		color:white;
+		box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.2);
+		border: none;
+		-webkit-transition: transform 0.3s;
+        -moz-transition: transform 0.3s;
+        -ms-transition: transform 0.3s;
+        -o-transition: transform 0.3s;
+        transition: transform 0.4s;
+        user-select : none;
+	}
+	.btn.btn-app:hover{
+		background-color: #f2f5f7;
+		color:white;
+		transform: scale(1.125);
+		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 	}
 	.menuPrincipal
 	{
-		background-color: #001f3f;
+		background-color: #35495d;
 		color: #73879c; 
-		font-size: 15px;
+		font-size: 13px;
 
 	}
 	.nav>li>a
@@ -23,29 +37,43 @@
     	background-color: #26576f;
     	color: white;
 	}
-	.nav>li>a:hover 
+	.menuPrincipal>li>a:hover 
 	{
     	padding: 13px 15px 12px;
-    	background-color: #26576f;
+    	background-color: #5c94a0;
     	color: white;
 
 	}
 	.dropdown:hover{
-		background-color: #001f3f;
+		background-color: #35495d;
 	}
 	.subMenu >li>a:hover{
-		background-color: #001f3f;
+		background-color: #35495d;
 		color:white;
 	}
 	.subMenu >li>a
 	{
 		padding: 5px 5px;
-		color:#001f3f;
+		color:#35495d;
 		font-size: 13px;
 	}
 	.modal
 	{
 	   overflow:auto !important;
+	}
+	.dropdown:hover .dropdown-menu{
+		display: block;
+
+	}
+	.dropdown-menu
+	{
+		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		margin: 0px 0 0;
+
+	}
+	address{
+		font-size: 13px;
+
 	}
 
 </style>
@@ -71,94 +99,147 @@
 				</div>
 				<div class="x_content">
 				<p></p>
+
                   	<ul class="nav nav-pills menuPrincipal" role="tablist">
-                    	<li role="presentation" class="dropdown" style="font-size: 15px; color: red;">
-                      		<a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">	Expediente Técnico<span class="caret"></span>
-                            </a>
-                      		<ul id="menu6" class="dropdown-menu subMenu" role="menu">
+                    	<li role="presentation" class="dropdown">
+                      		<a id="drop4" href="#" class="dropdown-toggle" role="button" aria-expanded="false">	Expediente Técnico<span class="caret"></span>
+                            </a><ul id="menu6" class="dropdown-menu subMenu" role="menu">
 	                        	<li role="presentation">
-		                        	<a role="menuitem" tabindex="-1" href="#" onclick="paginaAjaxDialogo(null, 'Modificar Expediente Técnico',{ id_et: '<?=$ExpedienteTecnicoElaboracion[0]->id_et?>' }, base_url+'index.php/Expediente_Tecnico/editar', 'GET', null, null, false, true);return false;">Editar Expediente Técnico 	
+		                        	<a role="menuitem" tabindex="-1" href="#"  onclick="paginaAjaxDialogo(null, 'Modificar Expediente Técnico',{ id_et: '<?=$ExpedienteTecnicoElaboracion[0]->id_et?>' }, base_url+'index.php/Expediente_Tecnico/editar', 'GET', null, null, false, true);return false;"><i class="fa fa-edit"></i> Editar Expediente Técnico 	
 		                        	</a> 
 	                        	</li>
 	                        	<li  role="presentation">
-	                        		<a role="menuitem" tabindex="-1" class='eliminarExpediente' href="#" onclick="Eliminar(<?=$ExpedienteTecnicoElaboracion[0]->id_et?>);return false;"> Eliminar Expediente Técnico 	
+	                        		<a role="menuitem" tabindex="-1" class='eliminarExpediente' href="#" onclick="Eliminar(<?=$ExpedienteTecnicoElaboracion[0]->id_et?>);return false;"><i class="fa fa-trash-o"></i> Eliminar Expediente Técnico 	
 		                        	</a>
 		                        </li>
 		                    </ul>
+
                     	</li>
                     	<li role="presentation" class="dropdown">
-                      		<a id="drop5" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"> Mantenimiento<span class="caret"></span>
+                      		<a id="drop5" href="#" class="dropdown-toggle"  role="button" aria-expanded="false"> Mantenimiento<span class="caret"></span>
                             </a>
                       		<ul id="menu2" class="dropdown-menu subMenu" role="menu" aria-labelledby="drop5">
                       			<li role="presentation">
-	                        		<a role="menuitem" tabindex="-1" href="#" onclick="paginaAjaxDialogo(null, 'Asignación de especialistas requeridos', { idExpedienteTecnico : <?=$ExpedienteTecnicoElaboracion[0]->id_et?> }, base_url+'index.php/ET_PER_REQ/insertar', 'GET', null, null, false, true); return false;"> Asignar Personal	
+	                        		<a role="menuitem" tabindex="-1" href="#" onclick="paginaAjaxDialogo(null, 'Asignación de especialistas requeridos', { idExpedienteTecnico : <?=$ExpedienteTecnicoElaboracion[0]->id_et?> }, base_url+'index.php/ET_PER_REQ/insertar', 'GET', null, null, false, true); return false;"><i class="fa fa-users"></i> Asignar Personal	
 		                        	</a>
 		                        </li>
 		                        <li role="presentation">
-	                        		<a role="menuitem" tabindex="-1" href="#"  onclick="paginaAjaxDialogo(null, 'Seleccionar etapa de ejecución para la clonación', { idExpedienteTecnico : <?=$ExpedienteTecnicoElaboracion[0]->id_et?> }, base_url+'index.php/Expediente_Tecnico/clonar', 'POST', null, null, false, true); return false;"> Enviar E.T. a la siguiente etapa	
+	                        		<a role="menuitem" tabindex="-1" href="#"  onclick="paginaAjaxDialogo(null, 'Seleccionar etapa de ejecución para la clonación', { idExpedienteTecnico : <?=$ExpedienteTecnicoElaboracion[0]->id_et?> }, base_url+'index.php/Expediente_Tecnico/clonar', 'POST', null, null, false, true); return false;"><i class="fa fa-sign-out"></i> Enviar E.T. a la siguiente etapa	
 		                        	</a>
 		                        </li>
 		                        <li role="presentation">
-	                        		<a role="menuitem" tabindex="-1" href="#" onclick="paginaAjaxDialogo(null, 'Visto Bueno del E.T.', { id_ExpedienteTecnico : <?=$ExpedienteTecnicoElaboracion[0]->id_et?> }, base_url+'index.php/Expediente_Tecnico/vistoBueno','GET', null, null, false, true); return false;"> Dar Visto Bueno	
+	                        		<a role="menuitem" tabindex="-1" href="#" onclick="paginaAjaxDialogo(null, 'Visto Bueno del E.T.', { id_ExpedienteTecnico : <?=$ExpedienteTecnicoElaboracion[0]->id_et?> }, base_url+'index.php/Expediente_Tecnico/vistoBueno','GET', null, null, false, true); return false;"><i class="fa fa-check-square"></i> Dar Visto Bueno	
 		                        	</a>
 		                        </li>
 		                        <li role="presentation">
-		                        	<a role="menuitem" tabindex="-1" href="#" onclick="paginaAjaxDialogo(null, 'Agregar Periodo de Ejecucion',{ id_et: '<?=$ExpedienteTecnicoElaboracion[0]->id_et?>' }, base_url+'index.php/Expediente_Tecnico/PeriodoEjecucion', 'GET', null, null, false, true);return false;"> Periodo de Ejecución	
+		                        	<a role="menuitem" tabindex="-1" href="#" onclick="paginaAjaxDialogo(null, 'Agregar Periodo de Ejecucion',{ id_et: '<?=$ExpedienteTecnicoElaboracion[0]->id_et?>' }, base_url+'index.php/Expediente_Tecnico/PeriodoEjecucion', 'GET', null, null, false, true);return false;"><i class="fa fa-calendar-check-o"></i> Periodo de Ejecución	
 		                        	</a> 
 	                        	</li>
                       		</ul>
                     	</li><li role="presentation" class="dropdown">
-                      		<a id="drop6" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"> Operaciones <span class="caret"></span>
+                      		<a id="drop6" href="#" class="dropdown-toggle" role="button" aria-expanded="false"> Operaciones <span class="caret"></span>
                             </a>
                       		<ul id="menu2" class="dropdown-menu subMenu" role="menu" aria-labelledby="drop5">
 		                        <li role="presentation">
-	                        		<a role="menuitem" tabindex="-1" href="#" onclick="window.open(base_url+'index.php/ET_Tarea/index/<?=$ExpedienteTecnicoElaboracion[0]->id_et?>', '_blank'); return false;"> Gestionar Actividades
+	                        		<a role="menuitem" tabindex="-1" href="#" onclick="window.open(base_url+'index.php/ET_Tarea/index/<?=$ExpedienteTecnicoElaboracion[0]->id_et?>', '_blank'); return false;"><i class="fa fa-list-ol"></i> Gestionar Actividades
 	                        		</a>
 		                        </li>
                         		<li role="presentation">
-	                        		<a role="menuitem" tabindex="-1" href="#" class="editar" onclick="paginaAjaxDialogo(null, 'Registro de componentes, metas y partidas', { idExpedienteTecnico : <?=$ExpedienteTecnicoElaboracion[0]->id_et?> }, base_url+'index.php/ET_Componente/insertar', 'GET', null, null, false, true); return false;" >Componentes, Metas y Partidas	
+	                        		<a role="menuitem" tabindex="-1" href="#" class="editar" onclick="paginaAjaxDialogo(null, 'Registro de componentes, metas y partidas', { idExpedienteTecnico : <?=$ExpedienteTecnicoElaboracion[0]->id_et?> }, base_url+'index.php/ET_Componente/insertar', 'GET', null, null, false, true); return false;" ><i class="fa fa-bars"></i> Componentes, Metas y Partidas	
 		                        	</a>
 		                        </li>
 		                        <li role="presentation">
-	                        		<a role="menuitem" tabindex="-1" href="#" onclick="paginaAjaxDialogo(null, 'Presupuesto analítico', { idExpedienteTecnico : <?=$ExpedienteTecnicoElaboracion[0]->id_et?> }, base_url+'index.php/ET_Presupuesto_Analitico/insertar', 'GET', null, null, false, true); return false;"> Presupuesto Analítico	
+	                        		<a role="menuitem" tabindex="-1" href="#" onclick="paginaAjaxDialogo(null, 'Presupuesto analítico', { idExpedienteTecnico : <?=$ExpedienteTecnicoElaboracion[0]->id_et?> }, base_url+'index.php/ET_Presupuesto_Analitico/insertar', 'GET', null, null, false, true); return false;"><i class="fa fa-money"></i> Presupuesto Analítico	
 		                        	</a>
 		                        </li>
 		                        <li role="presentation">
-	                        		<a role="menuitem" tabindex="-1" href="#" onclick="window.open(base_url+'index.php/Expediente_Tecnico/valorizacionEjecucionProyecto/<?=$ExpedienteTecnicoElaboracion[0]->id_et?>', '_blank'); return false;"> Cronogramación
+	                        		<a role="menuitem" tabindex="-1" href="#" onclick="window.open(base_url+'index.php/Expediente_Tecnico/valorizacionEjecucionProyecto/<?=$ExpedienteTecnicoElaboracion[0]->id_et?>', '_blank'); return false;"><i class="fa fa-calendar"></i> Cronogramación
 		                        	</a>
 			                    </li>
 
 		                        <?php if($ExpedienteTecnicoElaboracion[0]->id_etapa_et == 2 || $ExpedienteTecnicoElaboracion[0]->id_etapa_et == 3)
 		                        { ?>
 			                         <li role="presentation">
-		                        		<a role="menuitem" tabindex="-1" href="<?= site_url('Expediente_Tecnico/ControlMetrado/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target='_blank'); return false;">Ejecución diaria de Metrados
+		                        		<a role="menuitem" tabindex="-1" href="<?= site_url('Expediente_Tecnico/ControlMetrado/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target='_blank'); return false;"><i class="fa fa-play"></i> Ejecución diaria de Metrados
 			                        	</a>
 			                        </li>
 			                        <li role="presentation">
-		                        		<a role="menuitem" tabindex="-1" href="<?= site_url('Expediente_Tecnico/ValorizacionFisicaMetrado/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target='_blank'); return false;">Valorizacion Mensual
+		                        		<a role="menuitem" tabindex="-1" href="<?= site_url('Expediente_Tecnico/ValorizacionFisicaMetrado/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target='_blank'); return false;"><i class="fa fa-th-list"></i> Valorizacion Mensual
 			                        	</a>
 			                        </li>
-		                        <?php } ?>
-		                        
+		                        <?php } ?>		                        
                       		</ul>
                     	</li><li role="presentation" class="dropdown">
-                      		<a id="drop7" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"> Detalle Expendiente <span class="caret"></span>
+                      		<a id="drop7" href="#" class="dropdown-toggle" role="button" aria-expanded="false"> Detalle Expendiente <span class="caret"></span>
                             </a>
                       		<ul id="menu3" class="dropdown-menu subMenu" role="menu" aria-labelledby="drop6">
                       			<li role="presentation">
-									<a role="menuitem" tabindex="-1" title='Listar Responsable'  onclick="paginaAjaxDialogo(null, 'Listar Responsables del Expediente Técnico',{ id_et: '<?=$ExpedienteTecnicoElaboracion[0]->id_et?>' }, base_url+'index.php/Expediente_Tecnico/ResponsableExpediente', 'POST', null, null, false, true);" >Responsable</a>
+									<a role="menuitem" tabindex="-1" title='Listar Responsable'  onclick="paginaAjaxDialogo(null, 'Listar Responsables del Expediente Técnico',{ id_et: '<?=$ExpedienteTecnicoElaboracion[0]->id_et?>' }, base_url+'index.php/Expediente_Tecnico/ResponsableExpediente', 'POST', null, null, false, true);" ><i class="fa fa-user"></i> Responsable</a>
 								</li>
 								<li role="presentation">
-								<a role="menuitem" tabindex="-1" title='Documentos adjuntados'  onclick="paginaAjaxDialogo(null, 'Listar Documentos',{ id_et: '<?=$ExpedienteTecnicoElaboracion[0]->id_et?>' }, base_url+'index.php/Expediente_Tecnico/DocumentoExpediente', 'GET', null, null, false, true);" >Documentos</a>
+								<a role="menuitem" tabindex="-1" title='Documentos adjuntados'  onclick="paginaAjaxDialogo(null, 'Listar Documentos',{ id_et: '<?=$ExpedienteTecnicoElaboracion[0]->id_et?>' }, base_url+'index.php/Expediente_Tecnico/DocumentoExpediente', 'GET', null, null, false, true);" ><i class="fa fa-file"></i> Documentos</a>
 								</li>
 								<li role="presentation">
-								<a role="menuitem" tabindex="-1" onclick="paginaAjaxDialogo(null, 'Detalle de expediente técnico',{id_et:'<?=$ExpedienteTecnicoElaboracion[0]->id_et?>'}, base_url+'index.php/Expediente_Tecnico/DetalleExpediente', 'POST', null, null, false, true);" >Detalle Expediente</a>
+								<a role="menuitem" tabindex="-1" onclick="paginaAjaxDialogo(null, 'Detalle de expediente técnico',{id_et:'<?=$ExpedienteTecnicoElaboracion[0]->id_et?>'}, base_url+'index.php/Expediente_Tecnico/DetalleExpediente', 'POST', null, null, false, true);" ><i class="fa fa-list"></i> Detalle Expediente</a>
 								</li>                        
                       		</ul>
                     	</li>
-                 	</ul>
-                  	<br />
-                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                    	<li role="presentation" class="dropdown">
+                      		<a id="drop7" href="#" class="dropdown-toggle" role="button" aria-expanded="false"> Reporte Estadístico <span class="caret"></span>
+                            </a>
+                      		<ul id="menu3" class="dropdown-menu subMenu" role="menu" aria-labelledby="drop6">
+                      			<li role="presentation">
+									<a role="menuitem" tabindex="-1" href="<?= site_url('Expediente_Tecnico/ReporteEstadistico/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target='_blank'); return false;"><i class="fa fa-line-chart"></i> Reporte
+			                        	</a>
+								</li>                        
+                      		</ul>
+                    	</li>
+                 	</ul>                 	
+                  	<br/>
+                  	<div class="table-responsive">
+                  		<h5 style="padding-bottom: 4px;"><b>Datos Generales del Proyecto:</b></h5>
+                  		<table class="table table-bordered">
+	                      	<tbody>
+	                      		<tr>
+	                      			<td style="width: 15%; text-align: right;"><b>Nombre del Proyecto:</b></td>
+	                      			<td colspan="3" style="width: 85%;"><?= trim($ExpedienteTecnicoElaboracion[0]->nombre_pi);?></td>
+	                      		</tr>
+	                      		<tr>
+	                      			<td style="width: 15%; text-align: right;"><b>Codigo:</b></td>
+	                      			<td colspan="3" style="font-size: 13px;"><?=$ExpedienteTecnicoElaboracion[0]->codigo_unico_pi?></td>
+	                      		</tr>
+	                      		<tr>
+	                      			<td style="width: 15%; text-align: right;"><b>Unidad Ejecutora:</b></td>
+	                      			<td colspan="3"><?=$ExpedienteTecnicoElaboracion[0]->nombre_ue?></td>
+	                      		</tr>
+	                      		<tr>
+	                      			<td style="width: 15%; text-align: right;"><b>Costo de Preinversion:</b></td>
+	                      			<td style="width: 35%;"> S/. <?=a_number_format($ExpedienteTecnicoElaboracion[0]->costo_total_preinv_et,2,'.',",",3)?></td>
+	                      			<td style="width: 15%; text-align: right;"><b>Función:</b></td>
+	                      			<td style="width: 35%;"><?=$ExpedienteTecnicoElaboracion[0]->funcion_et?></td>
+	                      		</tr>
+	                      		<tr>
+	                      			<td style="width: 15%; text-align: right;"><b>Costo de Inversion:</b></td>
+	                      			<td style="width: 35%;">S/. <?=a_number_format($ExpedienteTecnicoElaboracion[0]->costo_total_inv_et,2,'.',",",3)?></td>
+	                      			<td style="width: 15%; text-align: right;"><b>Programa:</b></td>
+	                      			<td style="width: 35%;"><?=$ExpedienteTecnicoElaboracion[0]->programa_et?></td>
+	                      		</tr>
+	                      		<tr>
+	                      			<td style="width: 15%; text-align: right;"><b>Tiempo de Ejecución:</b></td>
+	                      			<td style="width: 35%;"><?=$ExpedienteTecnicoElaboracion[0]->tiempo_ejecucion_pi_et?></td>
+	                      			<td style="width: 15%; text-align: right;"><b>SubPrograma:</b></td>
+	                      			<td style="width: 35%;"><?=$ExpedienteTecnicoElaboracion[0]->sub_programa_et?></td>
+	                      		</tr>
+	                      		<tr>
+	                      			<td style="width: 15%; text-align: right;"><b>Número de Beneficiarios:</b></td>
+	                      			<td style="width: 35%;"><?=a_number_format($ExpedienteTecnicoElaboracion[0]->num_beneficiarios,0,'.',",",3)?></td>
+	                      			<td style="width: 15%; text-align: right;"><b>Modalidad:</b></td>
+	                      			<td style="width: 35%;"><?=$ExpedienteTecnicoElaboracion[0]->modalidad_ejecucion_et?></td>
+	                      		</tr>
+	                      	</tbody>
+	                    </table>
+                  	</div>
+                   	<!--<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
 
                     <div class="form-group">
                     <br><br>
@@ -212,29 +293,29 @@
                       </div>
                       <div class="ln_solid"></div>
 
-                    </form>
+                    </form>-->
                     <div class="row">
                     	<div class="col-md-12" style="text-align: center; display: inline-block;">
                     		<?php if($ExpedienteTecnicoElaboracion[0]->id_etapa_et == 1 )
 		                    { ?>
 	                    		<div>
-				                    <h6><code>Formatos de Expediente Técnico</code>.</h6>
-									<a class="btn btn-app"  data-toggle="tooltip" title="Ficha Técnica del Proyectos" href="<?= site_url('Expediente_Tecnico/reportePdfExpedienteTecnico/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank" >
-										<i class="fa fa-file-pdf-o"></i> Formarto FF-01
+				                    <h6><span>Formatos de Expediente Técnico</span></h6>
+									<a style="background-color: #fd9b15;" class="btn btn-app"  data-toggle="tooltip" title="Ficha Técnica del Proyectos" href="<?= site_url('Expediente_Tecnico/reportePdfExpedienteTecnico/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank" >
+										<i class="fa fa-file-pdf-o"></i> Formato FF-01
 									</a>                  		
-									<a class="btn btn-app"  data-toggle="tooltip" title="Presupuesto Resumen"  href="<?= site_url('Expediente_Tecnico/reportePdfPresupuestoFF05/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
+									<a style="background-color: #e73e3a;" class="btn btn-app"  data-toggle="tooltip" title="Presupuesto Resumen"  href="<?= site_url('Expediente_Tecnico/reportePdfPresupuestoFF05/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
 										<i class="fa fa-file-pdf-o"></i> Formato FF-05
 									</a>                     		
-									<a class="btn btn-app" data-toggle="tooltip" title="Cuadro de Presupuesto Analítico General" href="<?= site_url('Expediente_Tecnico/reportePdfPresupuestoAnalitico/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
+									<a style="background-color: #5cb360;" class="btn btn-app" data-toggle="tooltip" title="Cuadro de Presupuesto Analítico General" href="<?= site_url('Expediente_Tecnico/reportePdfPresupuestoAnalitico/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
 										<i class="fa fa-file-pdf-o"></i> Formato FF-06
 									</a>                     		
-									<a class="btn btn-app"  data-toggle="tooltip" title="Sustentación de Metrados" href="<?= site_url('Expediente_Tecnico/reportePdfMetrado/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
+									<a style="background-color: #11b8cc;" class="btn btn-app"  data-toggle="tooltip" title="Sustentación de Metrados" href="<?= site_url('Expediente_Tecnico/reportePdfMetrado/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
 										<i class="fa fa-file-pdf-o"></i> Formato FF-10
 									</a>                     		
-									<a class="btn btn-app"  data-toggle="tooltip" title="Análisis de Costos Unitarios" href="<?= site_url('Expediente_Tecnico/reportePdfAnalisisPrecioUnitarioFF11/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
+									<a style="background-color: #f3632e;" class="btn btn-app"  data-toggle="tooltip" title="Análisis de Costos Unitarios" href="<?= site_url('Expediente_Tecnico/reportePdfAnalisisPrecioUnitarioFF11/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
 										<i class="fa fa-file-pdf-o"></i> Formato FF-11
 									</a> 
-									<a class="btn btn-app"  data-toggle="tooltip" title="Cronograma Valorizado de Ejecución del Proyecto" href="<?= site_url('Expediente_Tecnico/reportePdfValorizacionEjecucion/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
+									<a style="background-color: #0976b4;" class="btn btn-app"  data-toggle="tooltip" title="Cronograma Valorizado de Ejecución del Proyecto" href="<?= site_url('Expediente_Tecnico/reportePdfValorizacionEjecucion/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
 										<i class="fa fa-file-pdf-o"></i> Formato FF-15
 									</a>
 								</div>  
@@ -242,11 +323,11 @@
 							<?php if($ExpedienteTecnicoElaboracion[0]->id_etapa_et == 2 || $ExpedienteTecnicoElaboracion[0]->id_etapa_et == 3)
 		                    { ?>
 								<div>
-				                    <h6><code>Formatos de Ejecución</code>.</h6>
-				                    <a class="btn btn-app"  data-toggle="tooltip" title="Informe Mensual" href="<?= site_url('Expediente_Tecnico/reportePdfInformeMensual/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank" >
+				                    <h6><span>Formatos de Expediente Técnico</span></h6>
+				                    <a style="background-color: #fd9b15;" class="btn btn-app"  data-toggle="tooltip" title="Informe Mensual" href="<?= site_url('Expediente_Tecnico/reportePdfInformeMensual/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank" >
 										<i class="fa fa-file-pdf-o"></i> Formarto FE-02
 									</a>  
-									<a class="btn btn-app"  data-toggle="tooltip" title="Valorizacion Mensual" href="<?= site_url('Expediente_Tecnico/reportePdfValorizacionFisica/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank" >
+									<a style="background-color: #e73e3a;" class="btn btn-app"  data-toggle="tooltip" title="Valorizacion Mensual" href="<?= site_url('Expediente_Tecnico/reportePdfValorizacionFisica/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank" >
 										<i class="fa fa-file-pdf-o"></i> Formarto FE-03
 									</a>                  		
 								</div> 

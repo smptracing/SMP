@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -6,28 +6,32 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>SMP-APURIMAC</title>
-		<script src="<?php echo base_url(); ?>assets/ckeditor/ckeditor.js"></script>
 
-	<link href="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link href="<?php echo base_url(); ?>assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-	<link href="<?php echo base_url(); ?>assets/vendors/nprogress/nprogress.css" rel="stylesheet">
-	<link href="<?php echo base_url(); ?>assets/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-	<link href="<?php echo base_url(); ?>assets/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
-	<link href="<?php echo base_url(); ?>assets/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>assets/TemplateEjecucion/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>assets/TemplateEjecucion/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>assets/TemplateEjecucion/vendors/nprogress/nprogress.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>assets/TemplateEjecucion/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>assets/TemplateEjecucion/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+
+	<link href="<?php echo base_url(); ?>assets/TemplateEjecucion/build/css/custom.min.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>assets/TemplateEjecucion/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/css/bootstrap-select.css">
-	<link href="<?php echo base_url(); ?>assets/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
-	<link href="<?php echo base_url(); ?>assets/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
-	<link href="<?php echo base_url(); ?>assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-	<link href="<?php echo base_url(); ?>assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
-	<link href="<?php echo base_url(); ?>assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
-	<link href="<?php echo base_url(); ?>assets/vendors/animate/animate.min.css" rel="stylesheet">
-	<link href="<?php echo base_url(); ?>assets/css/jquery.growl.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>assets/vendors/dropzone/dist/min/dropzone.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/formValidation.min.css">
-	<script src="<?php echo base_url(); ?>assets/js/Helper/jsHelper.js"></script>
-	<script src="<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
-	<script src="<?php echo base_url(); ?>assets/ckeditor/ckeditor.js"></script>
+	<link href="<?php echo base_url(); ?>assets/TemplateEjecucion/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>assets/TemplateEjecucion/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>assets/TemplateEjecucion/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>assets/TemplateEjecucion/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>assets/TemplateEjecucion/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>assets/TemplateEjecucion/vendors/animate.css/animate.min.css" rel="stylesheet">
+	
+    <link href="<?php echo base_url(); ?>assets/TemplateEjecucion/vendors/dropzone/dist/min/dropzone.min.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/formValidation.min.css">
+    <link href="<?php echo base_url(); ?>assets/css/jquery.growl.css" rel="stylesheet">
+
+	<script src="<?php echo base_url(); ?>assets/js/Helper/jsHelper.js"></script>	
+	<script src="<?php echo base_url(); ?>assets/TemplateEjecucion/vendors/jquery/dist/jquery.min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/ckeditor/ckeditor.js"></script>
+	
 	<style>
 		#navtittlemin
       {
@@ -43,6 +47,10 @@
         display: inline-block;
       }
     }
+    body
+    {
+    	font-size: 11px;
+    }
 	</style>
 
 	
@@ -51,9 +59,7 @@
 		var base_url = '<?php echo base_url(); ?>';
 	</script>
 
-	<link href="<?php echo base_url(); ?>assets/build/css/custom.min.css" rel="stylesheet">
 </head>
-
 <body class="nav-md">
 	<div class="container body">
 		<div class="main_container">
@@ -63,17 +69,29 @@
 						<a href="<?php echo site_url('Inicio') ?>" class="site_title"><i class="fa fa-users"></i> <span>SMPTRACING</span></a>
 					</div>
 					<div class="clearfix"></div>
-					<!-- menu profile quick info -->
 					<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
 						<div class="menu_section">
 							<ul class="nav side-menu">
 								<li><a href="<?php echo site_url('PrincipalEjecucion/PrincipalEjec'); ?>"> <i class="fa fa-home"></i> INICIO<span class=""></span></a>
 								</li>
+
 							</ul>
 
-							<h3></i>Configuracion de parametros</h3>
+							<h3><span style="font-size: 10px;">Módulo ejecución</span></h3>
 							<ul class="nav side-menu">
 
+								
+								<li><a><i class="fa fa-book"></i> Expediente Técnico<span class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a href="<?php echo site_url('Expediente_Tecnico/index'); ?>">Elaboración Expediente técnico</a></li>
+										<li><a href="<?php echo site_url('Expediente_Tecnico/monitorCoordinador'); ?>">Monitoreo de ET</a></li>
+									</ul>
+								</li>
+								<li><a><i class="fa fa-play"></i> Ejecución <span class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a href="<?php echo site_url('Expediente_Tecnico/ejecucion'); ?>">Ejecución del proyecto</a></li>
+									</ul>
+								</li>
 								<li><a><i class="fa fa-cogs"></i> Mantenimiento <span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a href="<?php echo site_url('ET_Presupuesto_Ejecucion/index'); ?>">Presupuesto Ejecucion</a></li>
@@ -83,18 +101,6 @@
 										<li><a href="<?php echo site_url('CronogramaValorizacion/index'); ?>">Cronograma Valoración</a></li>
 										<li><a href="<?php echo site_url('ET_Tipo_Responsable/index'); ?>">Tipo de responsable</a></li>
 										
-									</ul>
-								</li> 
-								<li><a><i class="fa fa-book"></i> Expediente Técnico<span class="fa fa-chevron-down"></span></a>
-									<ul class="nav child_menu">
-										<li><a href="<?php echo site_url('Expediente_Tecnico/index'); ?>">Expediente técnico</a></li>
-										<li><a href="<?php echo site_url('Expediente_Tecnico/monitorCoordinador'); ?>">Monitoreo de ET</a></li>
-									</ul>
-								</li>
-								<li><a><i class="fa fa-play"></i> Ejecución <span class="fa fa-chevron-down"></span></a>
-									<ul class="nav child_menu">
-										<!--<li><a href="<?php echo site_url('Expediente_Tecnico/monitorCoordinador'); ?>">Monitoreo de ET (Coordinador)</a></li>-->
-										<li><a href="<?php echo site_url('Expediente_Tecnico/ejecucion'); ?>">Ejecución</a></li>
 									</ul>
 								</li> 
 							</ul>
@@ -119,9 +125,6 @@
 			<div class="top_nav">
 				<div class="nav_menu">
 					<nav>
-						<!--<div class="nav toggle">
-							<a id="menu_toggle"><i class="fa fa-bars"></i></a>
-						</div>-->
 						<div class="nav toggle" style="position: relative;">
 			                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
 			                  <div id="navtittle"  >

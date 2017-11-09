@@ -195,7 +195,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
 									}?>
 								</tr>
 								<tr>
-									<td colspan="5" style="text-align: left"><b>GASTOS GENERALES (11.68% de Costo Directo)</b></td>
+									<td colspan="5" style="text-align: left"><b>GASTOS GENERALES</b></td>
 									<td>
 										<!--<?php $gastoGeneralTotal = $totalGeneral*(11.68/100);?> 
 										S/.<?=a_number_format($gastoGeneralTotal, 2, '.',",",3);?>-->
@@ -207,7 +207,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
 									}?>
 								</tr>
 								<tr>
-									<td colspan="5" style="text-align: left"><b>GASTOS DE SUPERVISION (6.16% de Costo Directo)</b></td>
+									<td colspan="5" style="text-align: left"><b>GASTOS DE SUPERVISION</b></td>
 									<td>
 										<!--<?php $gastoSupervisionTotal = $totalGeneral*(6.16/100);?> 
 										S/.<?=a_number_format($gastoSupervisionTotal, 2, '.',",",3);?>-->										
@@ -219,7 +219,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
 									}?>
 								</tr>
 								<tr>
-									<td colspan="5" style="text-align: left"><b>LIQUIDACION DE OBRA (1.00% de Costo Directo)</b></td>
+									<td colspan="5" style="text-align: left"><b>LIQUIDACION DE OBRA</b></td>
 									<td>
 										<!--<?php $gastoLiquidacionTotal = $totalGeneral*(1.00/100);?> 
 										S/.<?=a_number_format($gastoLiquidacionTotal, 2, '.',",",3);?>-->
@@ -240,7 +240,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
 									}?>
 								</tr>
 								<tr>
-									<td colspan="5" style="text-align: left"><b>GESTION DEL PROYECTO (3.65% de Costo Directo)</b></td>
+									<td colspan="5" style="text-align: left"><b>GESTION DEL PROYECTO</b></td>
 									<td>
 										<!--<?php $gestiondelProyecto = $totalGeneral*(3.65/100);?> 
 										S/.<?=a_number_format($gestiondelProyecto, 2, '.',",",3);?>-->
@@ -251,6 +251,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
 										<?php }
 									}?>
 								</tr>
+								<?php if($expedienteTecnico->id_etapa_et == 1 ) { ?>
 								<tr>
 									<td colspan="5" style="text-align: left"><b>EXPEDIENTE TECNICO</b></td>
 									<td></td>
@@ -260,6 +261,8 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
 										<?php }
 									}?>
 								</tr>
+								<?php } ?>
+
 								<tr>
 									<td colspan="5" style="text-align: left"><b>PRESUPUESTO TOTAL</b></td>
 									<td></td>

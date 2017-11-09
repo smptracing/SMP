@@ -140,6 +140,8 @@
 	</div>
 </div>
 <script>
+
+
 window.setTimeout(function()
 {
 	var meta=document.getElementById("txtcorrelativo").value;
@@ -153,10 +155,137 @@ window.setTimeout(function()
 		cache:false,
 		success:function(resp)
 		{
-			//alert(resp);
 			var pip=JSON.parse(resp);
-			var dom = document.getElementById("contenedorGrafico");
+			var echartLine = echarts.init(document.getElementById('contenedorGrafico'));
+			console.log(pip)
+      echartLine.setOption({
+        title: {
+          text: '',
+          subtext: ''
+        },
+        tooltip: {
+          trigger: 'axis'
+        },
+        legend: {
+          x: 220,
+          y: 40,
+          data: ['Ejecutado', 'Comprometido', 'Certificado','Devengado', 'Girado', 'Pagado']
+        },
+        
+        toolbox: {
+          show: true,
+          feature: {
+            magicType: {
+              show: true,
+              title: {
+                line: 'Linea',
+                bar: 'Barra',
+                stack: 'Stack',
+                tiled: 'Tiled'
+              },
+              type: ['line', 'bar', 'stack', 'tiled']
+            },
+            restore: {
+              show: true,
+              title: "Actualizar"
+            },
+            saveAsImage: {
+              show: true,
+              title: "Descargar"
+            }
+          }
+        },
+        calculable: true,
+        xAxis: [{
+          type: 'category',
+          boundaryGap: false,
+          data: pip[0]
+        }], 
+        yAxis: [{
+          type: 'value'
+        }],
+        series: [{
+          name: 'Ejecutado',
+          type: 'line',
+          smooth: true,
+          itemStyle: {
+            normal: {
+              areaStyle: {
+                type: 'default'
+              }
+            }
+          },
+          data: pip[1]
+        }, {
+          name: 'Comprometido',
+          type: 'line',
+          smooth: true,
+          itemStyle: {
+            normal: {
+              areaStyle: {
+                type: 'default'
+              }
+            }
+          },
+          data: pip[2]
+        },
+        {
+          name: 'Certificado',
+          type: 'line',
+          smooth: true,
+          itemStyle: {
+            normal: {
+              areaStyle: {
+                type: 'default'
+              }
+            }
+          },
+          data: pip[3]
+        },
+        {
+          name: 'Devengado',
+          type: 'line',
+          smooth: true,
+          itemStyle: {
+            normal: {
+              areaStyle: {
+                type: 'default'
+              }
+            }
+          },
+          data: pip[4]
+        },{
+          name: 'Girado',
+          type: 'line',
+          smooth: true,
+          itemStyle: {
+            normal: {
+              areaStyle: {
+                type: 'default'
+              }
+            }
+          },
+          data: pip[5]
+        },{
+          name: 'Pagado',
+          type: 'line',
+          smooth: true,
+          itemStyle: {
+            normal: {
+              areaStyle: {
+                type: 'default'
+              }
+            }
+          },
+          data: pip[6]
+        },]
+      });
+
+
+			/*var dom = document.getElementById("contenedorGrafico");
+			
 			var myChart = echarts.init(dom);
+
 			var app = {};
 			option = null;
 			var posList = [
@@ -227,7 +356,6 @@ window.setTimeout(function()
 			    }
 			};
 
-
 			var labelOption = {
 			    normal: {
 			        show: true,
@@ -283,13 +411,17 @@ window.setTimeout(function()
 			            type: 'value'
 			        }
 			    ],
+				
 			    series: [
 			        {
 			            name: 'Ejecucion',
 			            type: 'bar',
 			            barGap: 0,
 			            label: labelOption,
-			            data: pip[1]
+			            data: 
+			            
+
+			            pip[1]
 			        },
 			        {
 			            name: 'Compromiso',
@@ -326,7 +458,7 @@ window.setTimeout(function()
 
 			if (option && typeof option === "object") {
 			    myChart.setOption(option, true);
-			}
+			}*/
 		}
 	});
 }, 5000);

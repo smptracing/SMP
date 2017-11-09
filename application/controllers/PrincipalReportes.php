@@ -7,6 +7,7 @@ class PrincipalReportes extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Model_Dashboard_Reporte');
+        $this->load->helper('FormatNumber_helper');
     }
 
     public function PrincipalReportes()
@@ -380,16 +381,65 @@ class PrincipalReportes extends CI_Controller
             $correlativoMeta=$this->input->GET('meta');
             $anioMeta=$this->input->GET('anio');
             $datos=$this->Model_Dashboard_Reporte->DetalleMensualizadoMeta($correlativoMeta,$anioMeta);
+            
+            $a_ejecucion = 0;
+            $a_compromiso = 0;
+            $a_certificado = 0;
+            $a_devengado = 0;
+            $a_girado = 0;
+            $a_pagado= 0;
+
             $var1=[];
-            foreach ($datos as $key => $Itemp) {
-                $nombre[]=$Itemp->mes_eje;
-                $ejecucion[]=$Itemp->ejecucion;
-                $compromiso[]=$Itemp->compromiso;
-                $certificado[]=$Itemp->certificado;
-                $devengado[]=$Itemp->devengado;
-                $girado[]=$Itemp->girado;
-                $pagado[]=$Itemp->pagado;
+            foreach ($datos as $key => $Itemp) 
+            {
+                if($Itemp->mes_eje=="01")
+                    {$nombre[]="Ene";}
+                if($Itemp->mes_eje=="02")
+                    {$nombre[]="Feb";}
+                if($Itemp->mes_eje=="03")
+                    {$nombre[]="Mar";}
+                if($Itemp->mes_eje=="04")
+                    {$nombre[]="Abr";}
+                if($Itemp->mes_eje=="05")
+                    {$nombre[]="May";}
+                if($Itemp->mes_eje=="06")
+                    {$nombre[]="Jun";}
+                if($Itemp->mes_eje=="07")
+                    {$nombre[]="Jul";}
+                if($Itemp->mes_eje=="08")
+                    {$nombre[]="Ago";}
+                if($Itemp->mes_eje=="09")
+                    {$nombre[]="Set";}
+                if($Itemp->mes_eje=="10")
+                    {$nombre[]="Oct";}
+                if($Itemp->mes_eje=="11")
+                    {$nombre[]="Nov";}
+                if($Itemp->mes_eje=="12")
+                    {$nombre[]="Dic";}
+
+              
+
+                $a_ejecucion += $Itemp->ejecucion;                
+                $ejecucion[]= a_number_format($a_ejecucion, 2, '.',",",0);
+
+                $a_compromiso += $Itemp->compromiso;               
+                $compromiso[]= a_number_format($a_compromiso, 2, '.',",",0);
+
+                 $a_certificado += $Itemp->certificado;               
+                $certificado[]= a_number_format($a_certificado, 2, '.',",",0);
+
+                $a_devengado += $Itemp->devengado;               
+                $devengado[]= a_number_format($a_devengado, 2, '.',",",0);
+
+                $a_girado+= $Itemp->girado;               
+                $girado[]=a_number_format($a_girado, 2, '.',",",0);
+
+                $a_pagado += $Itemp->pagado;               
+                $pagado[]=a_number_format($a_pagado, 2, '.',",",0);
+
+               
             }
+
             $var1[]=$nombre;
             $var1[]=$ejecucion;
             $var1[]=$compromiso;
