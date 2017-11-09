@@ -130,13 +130,16 @@ class Expediente_Tecnico extends CI_Controller
 			$txtNombrePip=$this->input->post('txtNombrePip');
 			$txtUbicacionPip=$this->input->post('txtUbicacionPip');
 			$txtCodigoUnico=$this->input->post('txtCodigoUnico');
-			$txtCostoTotalPreInversion=$this->input->post('txtCostoTotalPreInversion');
-			$txtCostoDirectoPre=$this->input->post('txtCostoDirectoPre');
-			$txtCostoIndirectoPre=$this->input->post('txtCostoIndirectoPre');
-			$txtCostoTotalInversion=$this->input->post('txtCostoTotalInversion');
-			$txtCostoDirectoInversion=$this->input->post('txtCostoDirectoInversion');
-			$txtGastosGenerales=$this->input->post('txtGastosGenerales');
-			$txtGastosSupervision=$this->input->post('txtGastosSupervision');
+
+
+			
+			$txtCostoTotalPreInversion=floatval(str_replace(",","",$this->input->post("txtCostoTotalPreInversion")));
+			$txtCostoDirectoPre=floatval(str_replace(",","",$this->input->post('txtCostoDirectoPre')));
+			$txtCostoIndirectoPre=floatval(str_replace(",","",$this->input->post('txtCostoIndirectoPre')));
+			$txtCostoTotalInversion=floatval(str_replace(",","",$this->input->post('txtCostoTotalInversion')));
+			$txtCostoDirectoInversion=floatval(str_replace(",","",$this->input->post('txtCostoDirectoInversion')));
+			$txtGastosGenerales=floatval(str_replace(",","",$this->input->post('txtGastosGenerales')));
+			$txtGastosSupervision=floatval(str_replace(",","",$this->input->post('txtGastosSupervision')));
 			$txtFuncionProgramatica=$this->input->post('txtFuncionProgramatica');
 			$txtFuncion=$this->input->post('txtFuncion');
 			$txtPrograma=$this->input->post('txtPrograma');
@@ -181,7 +184,10 @@ class Expediente_Tecnico extends CI_Controller
 			$ComboTipoResponsableEjecucion=$this->input->post('ComboTipoResponsableEjecucion');									
 			$comboCargoEjecucion=$this->input->post('comboCargoEjecucion');
 
-			$this->Model_ET_Responsable->insertarET_Epediente($id_et,$ComboResponsableEjecucion,$ComboTipoResponsableEjecucion,$comboCargoEjecucion);
+
+			$this->Model_ET_Expediente_Tecnico->EditarResponsableEjecucion($id_tipo_responsableEjecucion,$comboCargoEjecucion,$ComboResponsableEjecucion);
+
+
 			$config = array(
 				"upload_path" => "./uploads/ImageExpediente",
 				'allowed_types' => "jpg|png"
@@ -189,28 +195,30 @@ class Expediente_Tecnico extends CI_Controller
 			$variablefile= $_FILES;
 			$info = array();
 			$files = count($_FILES['imagen']['name']);
-			for ($i=0; $i < $files; $i++) 
-			{ 
-				$idImageExp=$this->Model_ET_Expediente_Tecnico->Ultimo_Img();
-				$_FILES['imagen']['name'] = $variablefile['imagen']['name'][$i];
-				$_FILES['imagen']['type'] = $variablefile['imagen']['type'][$i];
-				$_FILES['imagen']['tmp_name'] = $variablefile['imagen']['tmp_name'][$i];
-				$_FILES['imagen']['error'] = $variablefile['imagen']['error'][$i];
-				$_FILES['imagen']['size'] = $variablefile['imagen']['size'][$i];
-				$dato=(string)$_FILES['imagen']['name'];
-				$nombre=explode('.',$dato); 
-				$_FILES['imagen']['name'] =$idImageExp->id_img.'.'.$nombre[1];//(string)($idImageExp->id_img.'.'.$nombre[1].'.'.$nombre[1]);// $variablefile['imagen']['name'][$i];
-				$this->upload->initialize($config);
-				if ($this->upload->do_upload('imagen'))
-				 {
-					$this->Model_ET_Img->insertarImgExpediente($UltimoExpedienteTecnico->id_et,($idImageExp->id_img.'.'.$nombre[1]));
-				 }
-				else
-				 {
-						$this->db->trans_rollback();
-
-						$error = "ERROR NO SE CARGO LAS FOTOS DE EXPEDIENTE TÉCNICO";
-				 }
+			$this->session->set_flashdata('correcto', 'Expediente Tecnico modificado correctamente.');
+			if($files>1)
+			{
+				for ($i=0; $i < $files; $i++) 
+				{ 
+					$idImageExp=$this->Model_ET_Expediente_Tecnico->Ultimo_Img();
+					$_FILES['imagen']['name'] = $variablefile['imagen']['name'][$i];
+					$_FILES['imagen']['type'] = $variablefile['imagen']['type'][$i];
+					$_FILES['imagen']['tmp_name'] = $variablefile['imagen']['tmp_name'][$i];
+					$_FILES['imagen']['error'] = $variablefile['imagen']['error'][$i];
+					$_FILES['imagen']['size'] = $variablefile['imagen']['size'][$i];
+					$dato=(string)$_FILES['imagen']['name'];
+					$nombre=explode('.',$dato); 
+					$_FILES['imagen']['name'] =$idImageExp->id_img.'.'.$nombre[1];//(string)($idImageExp->id_img.'.'.$nombre[1].'.'.$nombre[1]);// $variablefile['imagen']['name'][$i];
+					$this->upload->initialize($config);
+					if ($this->upload->do_upload('imagen'))
+					 {
+						$this->Model_ET_Img->insertarImgExpediente($hdIdExpediente,($idImageExp->id_img.'.'.$nombre[1]));
+					 }
+					else
+					 {
+							return redirect('/Expediente_Tecnico');
+					 }
+				}
 			}
 			$this->db->trans_complete();
 

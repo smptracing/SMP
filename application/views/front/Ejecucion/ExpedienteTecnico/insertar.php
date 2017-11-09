@@ -74,19 +74,19 @@
 						<div class="col-md-4 col-sm-3 col-xs-12">
 							<label class="control-label">Costo Total del Proyecto (Pre Inversión)</label>
 							<div>
-								<input id="txtCostoTotalPreInversion" name="txtCostoTotalPreInversion" value=""  class="form-control col-md-4 col-xs-12"  placeholder="Total del Proyecto (Pre Inversión)" autocomplete="off" >
+								<input id="txtCostoTotalPreInversion" name="txtCostoTotalPreInversion" value=""  class="form-control col-md-4 col-xs-12 moneda"  placeholder="Total del Proyecto (Pre Inversión)" autocomplete="off" >
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-3 col-xs-12">
 							<label class="control-label">Costo Directo</label>
 							<div>
-								<input id="txtCostoDirectoPre" name="txtCostoDirectoPre" class="form-control col-md-4 col-xs-12"  placeholder="Costo Directo"  autocomplete="off" >
+								<input id="txtCostoDirectoPre" name="txtCostoDirectoPre" class="form-control col-md-4 col-xs-12 moneda"  placeholder="Costo Directo"  autocomplete="off" >
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-3 col-xs-12">
 							<label class="control-label">Costo Indirecto</label>
 							<div>
-								<input id="txtCostoIndirectoPre" name="txtCostoIndirectoPre" class="form-control col-md-4 col-xs-12"  placeholder="Costo Indirecto"  autocomplete="off" >
+								<input id="txtCostoIndirectoPre" name="txtCostoIndirectoPre" class="form-control col-md-4 col-xs-12 moneda"  placeholder="Costo Indirecto"  autocomplete="off" >
 							</div>
 						</div>
 					</div>
@@ -95,25 +95,25 @@
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Costo Total del Proyecto (Inversión)</label>
 							<div>
-								<input id="txtCostoTotalInversion" name="txtCostoTotalInversion" value="" class="form-control col-md-4 col-xs-12"  placeholder="Costo Total del Proyecto (Inversión)"  autocomplete="off" >
+								<input id="txtCostoTotalInversion" name="txtCostoTotalInversion" value="" class="form-control col-md-4 col-xs-12 moneda"  placeholder="Costo Total del Proyecto (Inversión)"  autocomplete="off" >
 							</div>
 						</div>
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Costo Directo</label>
 							<div>
-								<input id="txtCostoDirectoInversion" name="txtCostoDirectoInversion" class="form-control col-md-4 col-xs-12"  placeholder="Costo Directo"  autocomplete="off" >
+								<input id="txtCostoDirectoInversion" name="txtCostoDirectoInversion" class="form-control col-md-4 col-xs-12 moneda"  placeholder="Costo Directo"  autocomplete="off" >
 							</div>
 						</div>
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Gastos generales</label>
 							<div>
-								<input id="txtGastosGenerales" name="txtGastosGenerales" class="form-control col-md-4 col-xs-12"  placeholder="Gastos generales"  autocomplete="off" >
+								<input id="txtGastosGenerales" name="txtGastosGenerales" class="form-control col-md-4 col-xs-12 moneda"  placeholder="Gastos generales"  autocomplete="off" >
 							</div>
 						</div>
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Gastos de supervisión</label>
 							<div>
-								<input id="txtGastosSupervision" name="txtGastosSupervision" class="form-control col-md-4 col-xs-12"  placeholder="Gastos de supervisión"  autocomplete="off" >
+								<input id="txtGastosSupervision" name="txtGastosSupervision" class="form-control col-md-4 col-xs-12 moneda"  placeholder="Gastos de supervisión"  autocomplete="off" >
 							</div>
 						</div>
 					</div>
@@ -201,7 +201,7 @@
 					 	<div class="col-md-4 col-sm-3 col-xs-12">
                             <label class="control-label">Subir Resolución</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                            	<input type="text" id="url" name="url" notValidate>
+                            	<input type="hidden" id="url" name="url" notValidate>
                                 <input type="file" id="Documento_Resolucion" name="Documento_Resolucion" notValidate>
                              </div>
                         </div>
@@ -626,7 +626,7 @@ $(function()
 				return;
 			}
 			var extension=$("#Documento_Resolucion").val();
-            var url=getFileExtension(extension);
+			var url = "."+extension.split('.').pop();
             $("#url").val(url);
 
             $("#hdtxtSituacioActual").val(CKEDITOR.instances.txtSituacioActual.getData());
@@ -648,44 +648,13 @@ $(function()
 			    },
                 success:function(resp)
                 {
-                  	//console.log(resp);
                     window.location.href=base_url+"index.php/Expediente_Tecnico/"
                 }
             });
           $('#form-addExpedienteTecnico')[0].reset();
     });
 
-    function getFileExtension(filename)
-    {
-
-		return filename.slice((filename.lastIndexOf(".") - 2 >>> 0) + 2);
-
-	}
-	$("#txtCostoTotalPreInversion").keyup(function(e)
-    {
-        $(this).val(format($(this).val()));
-    });
-    $("#txtCostoDirectoPre").keyup(function(e)
-    {
-        $(this).val(format($(this).val()));
-    });
-    $("#txtCostoIndirectoPre").keyup(function(e)
-    {
-        $(this).val(format($(this).val()));
-    });
-    $("#txtCostoTotalInversion").keyup(function(e)
-    {
-        $(this).val(format($(this).val()));
-    });
-    $("#txtCostoDirectoInversion").keyup(function(e)
-    {
-        $(this).val(format($(this).val()));
-    });
-    $("#txtGastosGenerales").keyup(function(e)
-    {
-        $(this).val(format($(this).val()));
-    });
-    $("#txtGastosSupervision").keyup(function(e)
+    $(".moneda").keyup(function(e)
     {
         $(this).val(format($(this).val()));
     }); 

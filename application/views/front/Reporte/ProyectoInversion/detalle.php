@@ -267,6 +267,7 @@ window.setTimeout(function()
 	var anio=document.getElementById("txtanioMeta").value;
 
 	$("#contenedorGrafico").css({"height":"450"});
+	
 	$.ajax({
 		"url":base_url+"index.php/PrincipalReportes/GrafDetalleMensualizado",
 		type:"GET", 
