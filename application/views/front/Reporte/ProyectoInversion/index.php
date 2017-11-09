@@ -44,11 +44,11 @@
 														    <div class="input-group">
 														      <span class="input-group-btn">
 
-														        <a href="javascript:siafActualizador()"><button id="BtnAcatualizar" class="btn btn-success" type="button"><i class="fa fa-spinner"></i> Actualizar Avance Financiero</button></a>
+														        <a href="javascript:siafActualizador()"><button id="BtnAcatualizar" class="btn btn-success" type="button"><i class="fa fa-spinner"></i> Actualizar (Importar de SIAF)</button></a>													
 														      </span>
 														    </div>
 														  </div>
-														</div>			
+														</div>
 														<div class="row">
 															<div class="row" style="margin-left: 10px; margin:10px; ">
 																<div class="panel panel-default">
