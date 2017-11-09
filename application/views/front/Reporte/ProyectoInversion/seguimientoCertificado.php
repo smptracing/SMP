@@ -7,23 +7,12 @@
 					<div class="x_title">
 						<h5><b>REPORTE GENERAL DE  AVANCE FISICO Y FINANCIERO</b> </h5> 
 					</div>
-					<div class="x_content">
-						<div class="" role="tabpanel" data-example-id="togglable-tabs">
-							<ul id="myTab" class="nav nav-tabs" role="tablist">
-								<li role="presentation" class="active">
-									<a href="#tabde_Sector"  id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">
-										<b> Proyecto de Inversión</b>
-									</a>
-								</li>
-							</ul>
-							<div id="myTabContent" class="tab-content">
-								<!-- /Contenido del sector -->
-								<div role="tabpanel" class="tab-pane fade active in" id="tab_Sector" aria-labelledby="home-tab">
+					
 									<!-- /tabla de sector desde el row -->
+
 									<div class="row">  
 										<div class="col-md-12 col-sm-12 col-xs-12">
-											<div class="x_panel">
-													<div class="container">
+											
 														BÚSQUEDA POR AÑO: 
 														<div class="row">
 													
@@ -70,10 +59,7 @@
 																			 	<tbody>
 																					<?php foreach($Consolidado as $item ){ ?>
 																					  	<tr>
-																							<td>
-																							
-																									<button type="button" class="DetalleOrdenExpeSiaf btn btn-success btn-xs" ><a href="<?php echo site_url('ProyectoInversion/ReporteBuscadorPorPip/'.$item->proyecto_snip); ?>"> 
-																									<?=$item->proyecto_snip?></a> <i class='ace-icon bigger-120'></i></button>
+																							<td>							<?=$item->proyecto_snip?>
 																					    	</td>
 																					    	
 																					    	<td>
@@ -116,12 +102,11 @@
 																					<?php } ?>
 																				</tbody>	
 																		  </table> 
-															</div>
-														</div>
+														
 										</div>
 									</div>
 										<!-- / fin tabla de sector desde el row -->
-								</div>
+							
 							</div>
 						</div>
 					</div>
