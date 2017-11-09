@@ -12,7 +12,8 @@
 
 									<div class="row">  
 										<div class="col-md-12 col-sm-12 col-xs-12">
-											
+											<div class="x_panel">
+													<div class="container">
 														BÚSQUEDA POR AÑO: 
 														<div class="row">
 													
@@ -102,7 +103,8 @@
 																					<?php } ?>
 																				</tbody>	
 																		  </table> 
-														
+															</div>
+														</div>
 										</div>
 									</div>
 										<!-- / fin tabla de sector desde el row -->
