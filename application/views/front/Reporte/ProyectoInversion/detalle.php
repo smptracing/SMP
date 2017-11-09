@@ -166,6 +166,11 @@ window.setTimeout(function()
         tooltip: {
           trigger: 'axis'
         },
+        legend: {
+          x: 220,
+          y: 40,
+          data: ['Ejecutado', 'Comprometido', 'Certificado','Devengado', 'Girado', 'Pagado']
+        },
         
         toolbox: {
           show: true,
@@ -174,17 +179,19 @@ window.setTimeout(function()
               show: true,
               title: {
                 line: 'Linea',
-                bar: 'Barra'
+                bar: 'Barra',
+                stack: 'Stack',
+                tiled: 'Tiled'
               },
-              type: ['line', 'bar']
+              type: ['line', 'bar', 'stack', 'tiled']
             },
             restore: {
               show: true,
-              title: "Restaurar"
+              title: "Actualizar"
             },
             saveAsImage: {
               show: true,
-              title: "Guardar Image"
+              title: "Descargar"
             }
           }
         },

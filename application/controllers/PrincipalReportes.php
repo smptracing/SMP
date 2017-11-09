@@ -7,6 +7,7 @@ class PrincipalReportes extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Model_Dashboard_Reporte');
+        $this->load->helper('FormatNumber_helper');
     }
 
     public function PrincipalReportes()
@@ -388,8 +389,6 @@ class PrincipalReportes extends CI_Controller
             $a_girado = 0;
             $a_pagado= 0;
 
-
-
             $var1=[];
             foreach ($datos as $key => $Itemp) 
             {
@@ -421,22 +420,22 @@ class PrincipalReportes extends CI_Controller
               
 
                 $a_ejecucion += $Itemp->ejecucion;                
-                $ejecucion[]=$a_ejecucion;
+                $ejecucion[]= a_number_format($a_ejecucion, 2, '.',",",0);
 
                 $a_compromiso += $Itemp->compromiso;               
-                $compromiso[]=$a_compromiso;
+                $compromiso[]= a_number_format($a_compromiso, 2, '.',",",0);
 
                  $a_certificado += $Itemp->certificado;               
-                $certificado[]=$a_certificado;
+                $certificado[]= a_number_format($a_certificado, 2, '.',",",0);
 
                 $a_devengado += $Itemp->devengado;               
-                $devengado[]=$a_devengado;
+                $devengado[]= a_number_format($a_devengado, 2, '.',",",0);
 
                 $a_girado+= $Itemp->girado;               
-                $girado[]=$a_girado;
+                $girado[]=a_number_format($a_girado, 2, '.',",",0);
 
                 $a_pagado += $Itemp->pagado;               
-                $pagado[]= $a_pagado;
+                $pagado[]=a_number_format($a_pagado, 2, '.',",",0);
 
                
             }
