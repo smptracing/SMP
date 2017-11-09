@@ -7,29 +7,29 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>SMP-APURIMAC</title>
 
-	<link href="<?php echo base_url(); ?>assets/TemplateEjecucion/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link href="<?php echo base_url(); ?>assets/TemplateEjecucion/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-	<link href="<?php echo base_url(); ?>assets/TemplateEjecucion/vendors/nprogress/nprogress.css" rel="stylesheet">
-	<link href="<?php echo base_url(); ?>assets/TemplateEjecucion/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-	<link href="<?php echo base_url(); ?>assets/TemplateEjecucion/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>assets/Template/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>assets/Template/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>assets/Template/vendors/nprogress/nprogress.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>assets/Template/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>assets/Template/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
 
-	<link href="<?php echo base_url(); ?>assets/TemplateEjecucion/build/css/custom.min.css" rel="stylesheet">
-	<link href="<?php echo base_url(); ?>assets/TemplateEjecucion/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>assets/Template/build/css/custom.min.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>assets/Template/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/css/bootstrap-select.css">
-	<link href="<?php echo base_url(); ?>assets/TemplateEjecucion/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
-	<link href="<?php echo base_url(); ?>assets/TemplateEjecucion/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
-	<link href="<?php echo base_url(); ?>assets/TemplateEjecucion/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-	<link href="<?php echo base_url(); ?>assets/TemplateEjecucion/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
-	<link href="<?php echo base_url(); ?>assets/TemplateEjecucion/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
-	<link href="<?php echo base_url(); ?>assets/TemplateEjecucion/vendors/animate.css/animate.min.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>assets/Template/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>assets/Template/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>assets/Template/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>assets/Template/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>assets/Template/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>assets/Template/vendors/animate.css/animate.min.css" rel="stylesheet">
 	
-    <link href="<?php echo base_url(); ?>assets/TemplateEjecucion/vendors/dropzone/dist/min/dropzone.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/Template/vendors/dropzone/dist/min/dropzone.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/formValidation.min.css">
     <link href="<?php echo base_url(); ?>assets/css/jquery.growl.css" rel="stylesheet">
 
 	<script src="<?php echo base_url(); ?>assets/js/Helper/jsHelper.js"></script>	
-	<script src="<?php echo base_url(); ?>assets/TemplateEjecucion/vendors/jquery/dist/jquery.min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/Template/vendors/jquery/dist/jquery.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/ckeditor/ckeditor.js"></script>
 	
 	<style>
