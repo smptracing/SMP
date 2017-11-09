@@ -33,6 +33,8 @@
 							<div id="myTabContent" class="tab-content">
 								<!-- /Contenido del sector -->
 								<div role="tabpanel" class="tab-pane fade active in" id="tab_Sector" aria-labelledby="home-tab">
+
+
 									<!-- /tabla de sector desde el row -->
 									<div class="row">
 						                <div class="col-md-12 col-sm-12 col-xs-12">
@@ -40,7 +42,7 @@
 					                        <div>
 					                        	<table id="table-DatoGen"  class="table-hover" cellspacing="0" width="100%">
 												<body>
-													
+													<td><b>REPORTE MENSUALISADO:  </b></td>
 														<?php if($listaDetalleMensualizadoEst ==false){?>
 														<tr>
 														<td>AÑO:  </td>
@@ -57,7 +59,7 @@
 																</tr>
 															
 														<?php  } ?>
-											
+													
 												</body>
 											</table>
 
@@ -118,6 +120,119 @@
 									
 									</div>
 										<!-- / fin tabla de sector desde el row -->
+
+
+
+									<!-- /REPORTE ACUMULADO MENSUAL DE LA META -->
+									<!-- /tabla de sector desde el row -->
+									<div class="row">
+						                <div class="col-md-12 col-sm-12 col-xs-12">
+										
+					                        <div>
+					                        	<table id="table-DatoGen"  class="table-hover" cellspacing="0" width="100%">
+												<body>
+													<td><b>REPORTE ACUMULADO MENSUALISADO:  </b></td>
+														<?php if($listaDetalleMensualizadoEst ==false){?>
+														<tr>
+														<td>AÑO:  </td>
+														</tr>
+														<tr>
+															<td>CORRELATIVO META:  </td>
+														</tr>
+														<?php  }else { ?>
+																<tr>
+																	<td>AÑO: <?=$listaDetalleMensualizadoEst->ano_eje ;?>  </td>
+																</tr>
+																<tr>
+																	<td>CORRELATIVO META: <?=$listaDetalleMensualizadoEst->meta;?>  </td>
+																</tr>
+															
+														<?php  } ?>
+											
+												</body>
+											</table>
+
+					                        </div>
+
+						                </div>
+						        	</div>
+									<br>	
+									<div class="row">  
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											<table id="table-DetalleMensualizado"  class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
+												<thead>
+													<tr>
+														<td>Nombre</td>
+														<td>Mes</td>
+														<td style="text-align:right">Ejecución</td>
+														<td style="text-align:right">Compromiso</td>
+														<td style="text-align:right">Certificado</td>
+														<td style="text-align:right">Devengado</td>
+														<td style="text-align:right">Girado</td>
+														<td style="text-align:right">Pagado</td>
+													</tr>
+												</thead>
+												<tbody>
+													<?php $a_ejecución=0; 
+													 $a_compromiso=0; 
+													 $a_certificado=0; 
+													 $a_devengado=0; 
+													 $a_girado=0; 
+													 $a_pagado=0; ?>
+
+
+													<?php foreach($listaDetalleMensualizado as $item ){ ?>
+													  	<tr>
+															<td>
+																<?=$item->nombre?>
+													    	</td>
+													    	<td>
+																<?=$item->mes_eje?>
+													    	</td>
+													    	<td style="text-align:right">
+
+													    		<?php $a_ejecución=$a_ejecución+$item->ejecucion; ?>
+																<?= number_format($a_ejecución,2)?>
+													    	</td>
+													    	<td style="text-align:right">
+													    		<?php $a_compromiso=$a_compromiso+$item->compromiso; ?>
+																<?= number_format($a_compromiso,2)?>
+													    	</td>
+													    	<td style="text-align:right">
+													    		<?php $a_certificado=$a_certificado+$item->certificado; ?>
+																<?= number_format($a_certificado,2)?>
+													    	</td>
+													    	<td style="text-align:right">
+													    		<?php $a_devengado=$a_devengado+$item->devengado; ?>
+																<?= number_format($a_devengado,2)?>
+													    	</td>
+													    	<td style="text-align:right">
+													    		<?php $a_girado=$a_girado+$item->girado; ?>
+																<?= number_format($a_girado,2)?>
+													    	</td>
+													    	<td style="text-align:right">
+													    		<?php $a_pagado=$a_pagado+$item->pagado; ?>
+																<?=number_format($a_pagado,2)?>
+													    	</td>
+													  </tr>
+													<?php } ?>
+												</tbody>
+												<input type="hidden" id="txtcorrelativo" name="txtcorrelativo" value="<?php echo $correlativoMeta ?>">
+												<input type="hidden" id="txtanioMeta" name="txtanioMeta" value="<?php echo $anioMeta ?>">
+											</table>
+										</div>
+									
+									</div>
+										<!-- / fin tabla de sector desde el row -->
+
+
+
+
+
+
+
+
+
 									<div class="row" style="margin-left: 10px; margin:10px; ">
 						                <div class="panel panel-default">
 										 <div class="panel-heading">GRÁFICO ESTADÍSTICO DE DETALLE MENSUALIZADO</div>
@@ -139,6 +254,10 @@
 		<div class="clearfix"></div>
 	</div>
 </div>
+
+
+
+
 <script>
 
 
