@@ -157,7 +157,7 @@ window.setTimeout(function()
 		{
 			var pip=JSON.parse(resp);
 			var echartLine = echarts.init(document.getElementById('contenedorGrafico'));
-
+			console.log(pip)
       echartLine.setOption({
         title: {
           text: '',

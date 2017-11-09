@@ -393,7 +393,32 @@ class PrincipalReportes extends CI_Controller
             $var1=[];
             foreach ($datos as $key => $Itemp) 
             {
-                $nombre[]=$Itemp->mes_eje;
+                if($Itemp->mes_eje=="01")
+                    {$nombre[]="Ene";}
+                if($Itemp->mes_eje=="02")
+                    {$nombre[]="Feb";}
+                if($Itemp->mes_eje=="03")
+                    {$nombre[]="Mar";}
+                if($Itemp->mes_eje=="04")
+                    {$nombre[]="Abr";}
+                if($Itemp->mes_eje=="05")
+                    {$nombre[]="May";}
+                if($Itemp->mes_eje=="06")
+                    {$nombre[]="Jun";}
+                if($Itemp->mes_eje=="07")
+                    {$nombre[]="Jul";}
+                if($Itemp->mes_eje=="08")
+                    {$nombre[]="Ago";}
+                if($Itemp->mes_eje=="09")
+                    {$nombre[]="Set";}
+                if($Itemp->mes_eje=="10")
+                    {$nombre[]="Oct";}
+                if($Itemp->mes_eje=="11")
+                    {$nombre[]="Nov";}
+                if($Itemp->mes_eje=="12")
+                    {$nombre[]="Dic";}
+
+              
 
                 $a_ejecucion += $Itemp->ejecucion;                
                 $ejecucion[]=$a_ejecucion;
@@ -415,6 +440,7 @@ class PrincipalReportes extends CI_Controller
 
                
             }
+
             $var1[]=$nombre;
             $var1[]=$ejecucion;
             $var1[]=$compromiso;
