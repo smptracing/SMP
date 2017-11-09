@@ -194,7 +194,7 @@ function siafActualizadorCertificado()
 		// 	echo 'true';
 		// }
 
-		var urll=base_url.slice(0,-1)+":8080/importador_siaf/index.php/ImporSeguimientoCertificado/inicio/"+anio;
+		var urll="http://200.37.200.182:8080/importador_siaf/index.php/ImporSeguimientoCertificado/inicio/"+anio;
 	    ventana=window.open(urll,"",params);
 	}
 
