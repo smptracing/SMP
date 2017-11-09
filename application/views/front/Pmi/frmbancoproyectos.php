@@ -15,6 +15,14 @@
   {
     text-align: right;
   }
+  .btn-group .btn, .btn-group-vertical .btn {
+    margin-bottom: 0;
+    margin-right: 0;
+    width: 160px !important;
+  }
+  .btn {
+    border-radius: 0px !important;
+  }
 </style>
 <div class="right_col" role="main">
           <div class="">

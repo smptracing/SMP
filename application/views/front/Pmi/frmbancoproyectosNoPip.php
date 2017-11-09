@@ -7,6 +7,14 @@
   {
     text-align: right;
   }
+  .btn-group .btn, .btn-group-vertical .btn {
+    margin-bottom: 0;
+    margin-right: 0;
+    width: 160px !important;
+  }
+  .btn {
+    border-radius: 0px !important;
+  }
 </style>
 <div class="right_col" role="main">
           <div class="">
@@ -118,7 +126,7 @@
                                             </div>
                                       </div>
                                     </div>
-                                    
+
 
                                  <div class="row">
                                       <div class="col-md-12">
@@ -253,7 +261,7 @@
                                       </div>
                               </div>
                               </div>
-                
+
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
                         <center>
@@ -489,7 +497,7 @@
                                             <label for="name">Proyecto:</label>
                                         </div>
                                         <textarea class="form-control" rows="2" readonly="readonly" id="nombreProyecto" name="nombreProyecto"></textarea>
-                                        <br>                                        
+                                        <br>
                                     </div>
                                    <div class="col-md-4">
                                            <label for="name">Departamento.<span class="required"></span>
@@ -526,7 +534,7 @@
                                             </label>
                                                   <input id="txt_longitud" name="txt_longitud"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2" placeholder="Longitud" required="required" type="text">
                                           </div>
-                                    </div> 
+                                    </div>
                                     <div class="col-md-2">
                                           <div class=".col-xs-3 .col-md-10">
                                           <br>
@@ -535,10 +543,10 @@
                                              <input type="file" name="ImgUbicacion" required="required">
 
                                           </div>
-                                    </div>    
+                                    </div>
                                     <div class="col-md-2" style="margin-left: 70px;">
                                     <BR><BR><BR>
-                                           
+
 
                                     </div>
 
@@ -613,8 +621,8 @@
                                         <label for="name">Proyecto:<span class="required"></span></label>
                                         <div class="col-md-12">
                                             <textarea readonly="readonly" name="nombreProyectoCiclo" id="nombreProyectoCiclo" rows="2" class="form-control"></textarea>
-                                            <br>                                            
-                                        </div>                                        
+                                            <br>
+                                        </div>
                                     </div>
 
                                      <div class="col-md-4">
@@ -695,8 +703,8 @@
                                         <label for="name">Proyecto:<span class="required"></span></label>
                                         <div class="col-md-12">
                                             <textarea readonly="readonly" name="nombreProyectoRubro" id="nombreProyectoRubro" rows="2" class="form-control"></textarea>
-                                            <br>                                            
-                                        </div>                                        
+                                            <br>
+                                        </div>
                                     </div>
                                      <div class="col-md-4">
 
@@ -776,8 +784,8 @@
                                         <label for="name">Proyecto:<span class="required"></span></label>
                                         <div class="col-md-12">
                                             <textarea readonly="readonly" name="nombreProyectoModalidad" id="nombreProyectoModalidad" rows="2" class="form-control"></textarea>
-                                            <br>                                            
-                                        </div>                                        
+                                            <br>
+                                        </div>
                                     </div>
                                      <div class="col-md-4">
 
@@ -856,8 +864,8 @@
                                         <label for="name">Proyecto:<span class="required"></span></label>
                                         <div class="col-md-12">
                                             <textarea readonly="readonly" name="nombreProyectoTipologia" id="nombreProyectoTipologia" rows="2" class="form-control"></textarea>
-                                            <br>                                            
-                                        </div>                                        
+                                            <br>
+                                        </div>
                                     </div>
                                      <div class="col-md-4">
 
