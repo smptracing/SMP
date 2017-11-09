@@ -25,6 +25,12 @@
    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/js/sweetalert.css">
 
    <script src="<?php echo base_url(); ?>assets/js/Helper/jsHelper.js"></script>
+   <style>
+      body
+        {
+            font-size: 11px;
+        }
+   </style>
 
      <script>
     var base_url = '<?php echo base_url(); ?>';

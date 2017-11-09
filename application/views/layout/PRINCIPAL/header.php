@@ -38,6 +38,7 @@
     <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css"
           rel="stylesheet">
 
+    
     <script>
         var base_url = '<?php echo base_url(); ?>';
     </script>
@@ -48,6 +49,12 @@
     <link href="<?php echo base_url(); ?>assets/adminlte/font-awesome.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/adminlte/_all-skins.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/adminlte/ionicons.min.css" rel="stylesheet">
+    <style>
+         body
+        {
+            font-size: 11px;
+        }
+    </style>
 
 </head>
 <body class="nav-md">

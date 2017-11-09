@@ -57,6 +57,7 @@
    #ProgramacionHorizontal{
       width: 100% !important;
     }
+
   </style>
 <!--   diagrama de gant          -->
 
@@ -65,6 +66,7 @@
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/codebase/dhtmlxgantt.css" type="text/css" media="screen" title="no title" charset="utf-8">
   <script type="text/javascript" src="<?php echo base_url(); ?>assets/common/testdata.js"></script>
   <script type="text/javascript" src="<?php echo base_url(); ?>assets/codebase/locale/locale_es.js"></script>
+  <link href="<?php echo base_url(); ?>assets/build/css/custom.min.css" rel="stylesheet">
   <style type="text/css">
       #gantt{
         height:600px;
@@ -75,6 +77,10 @@
         #navtittlemin
         {
           display: none;
+        }
+        body
+        {
+            font-size: 11px;
         }
 
       @media (max-width: 550px) {
@@ -87,7 +93,7 @@
         }
     </style>
     <!-- Custom Theme Style -->
-    <link href="<?php echo base_url(); ?>assets/build/css/custom.min.css" rel="stylesheet">
+    
   </head>
 
   <body class="nav-md">

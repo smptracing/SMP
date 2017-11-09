@@ -38,51 +38,22 @@
                                     <div class="clearfix"></div>
                                   </div>
                                   <div class="x_content">
-                                  <div class="" role="tabpanel" data-example-id="togglable-tabs">
-                                      <ul id="myTab" class="nav nav-tabs" role="tablist">
-                                        <li role="presentation"  class="active"><a  href="#tab_brecha" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Proyectos de Inversión</a>
-                                        </li>
-                                      </ul>
-                                      <div id="myTabContent" class="tab-content">
-                                           <!-- /panel de PROYECTOS desde el row -->
-                                        <div role="tabpanel" class="tab-pane fade active in" id="tab_brecha" aria-labelledby="home-tab">
-                                             <!-- /tabla de PROYECTOS desde el row -->
-                                            <div class="row">
-                                              <div class="col-md-12 col-sm-12 col-xs-12">
-                                                        <div class="x_panel">
-                                                          <div class="row" class="container-fluid">
-
-                                                                <div class="col-md-1">
-                                                                    <button id="btn_NuevoPip" name="btn_NuevoPip" type="button" class="btn btn-primary " data-toggle="modal" data-target="#VentanaRegistraPIP">  <span class="fa fa-plus-circle"></span> Nuevo </button>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                               </div>
-
-
-                                                          </div>
-                                                      <div class="x_content">
-                                                        <table id="table_proyectos_inversion" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
-                                                     <thead>
-                                                        <tr>
-                                                          <th style="width: 1%">#</th>
-                                                          <th style="width: 1%">#</th>
-                                                          <th style="width: 8%"><i class="fa fa-thumb-tack"></i> Cod. </th>
-                                                          <th style="width: 36%"><i class="fa fa-bookmark-o"></i> Nombre</th>
-                                                          <th style="width: 12%; text-align: right;"><i class="fa fa-money"></i> Costo</th>
-                                                          <th style="width: 12%"> Estado Ciclo</th>
-                                                          <th style="width: 12%"> Fecha Registro</th>
-                                                          <th style="width: 16%">Opción</th>
-
-                                                        </tr>
-                                                      </thead>
-
-                                                            </table>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                            </div>
-                                        </div>
-                                      </div>
+                                    <button id="btn_NuevoPip" name="btn_NuevoPip" style="margin-top: 5px;margin-bottom: 15px;" type="button" class="btn btn-primary " data-toggle="modal" data-target="#VentanaRegistraPIP">  <span class="fa fa-plus-circle"></span> Nuevo </button>
+                                    <div class="table-responsive">
+                                        <table id="table_proyectos_inversion" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 1%">#</th>
+                                                    <th style="width: 1%">#</th>
+                                                    <th style="width: 8%"><i class="fa fa-thumb-tack"></i> Cod. </th>
+                                                    <th style="width: 36%"><i class="fa fa-bookmark-o"></i> Nombre</th>
+                                                    <th style="width: 12%; text-align: right;"><i class="fa fa-money"></i> Costo</th>
+                                                    <th style="width: 12%"> Estado Ciclo</th>
+                                                    <th style="width: 12%"> Fecha Registro</th>
+                                                    <th style="width: 16%">Opción</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
                                     </div>
                                   </div>
                                 </div>

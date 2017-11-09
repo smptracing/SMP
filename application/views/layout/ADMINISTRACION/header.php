@@ -38,6 +38,7 @@
     <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/build/css/custom.min.css" rel="stylesheet">
     <script src="<?php echo base_url(); ?>assets/js/Helper/jsHelper.js"></script>
 
      <script src="<?php echo base_url(); ?>assets/dist/js/sweetalert-dev.js"></script>
@@ -46,7 +47,7 @@
     var base_url = '<?php echo base_url(); ?>';
     </script>
     <!-- Custom Theme Style -->
-    <link href="<?php echo base_url(); ?>assets/build/css/custom.min.css" rel="stylesheet">
+    
     <style>
         #navtittlemin
         {
@@ -61,7 +62,12 @@
         {
           display: inline-block;
         }
+         
       }
+      body
+        {
+            font-size: 11px;
+        }
     </style>
   </head>
 

@@ -20,6 +20,7 @@
 	<link href="<?php echo base_url(); ?>assets/vendors/animate/animate.min.css" rel="stylesheet">
 	<script src="<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
  	<script src="<?php echo base_url(); ?>assets/js/Helper/jsHelper.js"></script>
+ 	<link href="<?php echo base_url(); ?>assets/build/css/custom.min.css" rel="stylesheet">
 
 	<style>
 		#navtittlemin
@@ -36,6 +37,10 @@
         display: inline-block;
       }
     }
+     body
+        {
+            font-size: 11px;
+        }
 	</style>
 
 	
@@ -44,7 +49,7 @@
 		var base_url = '<?php echo base_url(); ?>';
 	</script>
 
-	<link href="<?php echo base_url(); ?>assets/build/css/custom.min.css" rel="stylesheet">
+	
 </head>
 
 <body class="nav-md">

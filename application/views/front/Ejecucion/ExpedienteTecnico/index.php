@@ -19,7 +19,7 @@
 									<td class="col-md-1 col-xs-12">Costo Total del proyecto Preinversion</td>
 									<td class="col-md-2 col-xs-12">Costo Total del proyecto Inversion</td>
 									<td class="col-md-1 col-xs-12">Tiempo Ejecucion</td>
-									<td class="col-md-1 col-xs-12">Numero Beneficiarios</td>										
+									<td class="col-md-1 col-xs-12">Numero Beneficiarios</td>									
 								</tr>
 							</thead>
 							<tbody>

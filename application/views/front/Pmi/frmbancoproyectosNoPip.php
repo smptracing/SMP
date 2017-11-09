@@ -17,71 +17,38 @@
   }
 </style>
 <div class="right_col" role="main">
-          <div class="">
-            <div class="page-title">
-
+    <div class="">
+        
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>No Pip</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <button id="btn_nuevoNoPip" name="btn_nuevoNoPip" style="margin-top: 5px;margin-bottom: 15px;" type="button" class="btn btn-primary " data-toggle="modal" data-target="#VentanaRegistraPIP">  <span class="fa fa-plus-circle"></span> Nuevo </button>
+                    <div class="table-responsive">
+                        <table id="table_no_pip" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th style="width: 1%">#</th>
+                                    <th style="width: 1%">#</th>
+                                    <th style="width: 8%"><i class="fa fa-thumb-tack"></i> Cod. </th>
+                                    <th style="width: 32%"><i class="fa fa-bookmark-o"></i> Nombre</th>
+                                    <th style="width: 12%; text-align: right;"><i class="fa fa-money"></i> Costo</th>
+                                    <th style="width: 12%"><center>Tipo</center></th>
+                                    <th style="width: 10%">Opción</th>
+                                </tr>
+                            </thead>
+                        </table>                            
+                    </div>
+                </div>
             </div>
-            <div class="clearfix"></div>
-            <div class="">
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                                <div class="x_panel">
-                                  <div class="x_title">
-                                    <h2>No Pip</h2>
-                                    <div class="clearfix"></div>
-                                  </div>
-                                  <div class="x_content">
-
-
-                                    <div class="" role="tabpanel" data-example-id="togglable-tabs">
-                                      <ul id="myTab" class="nav nav-tabs" role="tablist">
-                                        <li role="presentation"  class="active"><a  href="#tab_brecha" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Proyectos de Inversión</a>
-                                        </li>
-                                      </ul>
-                                      <div id="myTabContent" class="tab-content">
-                                           <!-- /panel de PROYECTOS desde el row -->
-                                        <div role="tabpanel" class="tab-pane fade active in" id="tab_brecha" aria-labelledby="home-tab">
-                                             <!-- /tabla de PROYECTOS desde el row -->
-                                            <div class="row">
-                                              <div class="col-md-12 col-sm-12 col-xs-12">
-                                                        <div class="x_panel">
-                                                          <div class="row" class="container-fluid">
-                                                                <div class="col-md-1">
-                                                                    <button id="btn_nuevoNoPip" name="btn_nuevoNoPip" type="button" class="btn btn-primary " data-toggle="modal" data-target="#VentanaRegistraPIP">  <span class="fa fa-plus-circle"></span> Nuevo </button>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                               </div>
-
-                                                          </div>
-                                                      <div class="x_content">
-                                                        <table id="table_no_pip" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
-                                                     <thead>
-                                                        <tr>
-                                                          <th style="width: 1%">#</th>
-                                                          <th style="width: 1%">#</th>
-                                                          <th style="width: 8%"><i class="fa fa-thumb-tack"></i> Cod. </th>
-                                                          <th style="width: 32%"><i class="fa fa-bookmark-o"></i> Nombre</th>
-                                                          <th style="width: 12%; text-align: right;"><i class="fa fa-money"></i> Costo</th>
-                                                          <th style="width: 12%"><center>Tipo NO</br> PIP</center></th>
-                                                        <th style="width: 10%">Opción</th>
-                                                        </tr>
-                                                      </thead>
-                                                            </table>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                            </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-              </div>
-
-
-          </div>
-          <div class="clearfix"></div>
         </div>
-     </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
 
 <!-- modal -->
 
