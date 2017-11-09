@@ -176,8 +176,6 @@ function avanceFisico()
 
 		var anio=$("#BuscarPipAnio").val();
 		window.location.href=base_url+"index.php/ProyectoInversion/ReporteBuscadorPorAnio/"+anio;
-
-
 }
 function siafActualizadorCertificado() 
 	{
@@ -186,7 +184,13 @@ function siafActualizadorCertificado()
         params += ', height='+screen.height;
         params += ', top=0, left=10'
         params += ', fullscreen=no';
-		var urll="http://200.37.200.182:8080/importador_siaf/index.php/ImporSeguimientoCertificado/inicio/"+anio;
+
+		// $foo = base_url;
+		// if (strpos($foo, 'localhost') !== false) {
+		// 	echo 'true';
+		// }
+
+		var urll=base_url.slice(0,-1)+":8080/importador_siaf/index.php/ImporSeguimientoCertificado/inicio/"+anio;
 	    ventana=window.open(urll,"",params);
 	}
 

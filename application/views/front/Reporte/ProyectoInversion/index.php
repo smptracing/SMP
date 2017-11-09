@@ -899,7 +899,7 @@ $("#CodigoUnico").on( "click", function()
 
     function siafActualizador() {
     	var codigounico=$("#BuscarPip").val();
-    	var urll="http://200.37.200.182:8080/importador_siaf/index.php/Importacion/inicio/"+codigounico;
+    	var urll=base_url.slice(0,-1)+":8080/importador_siaf/index.php/Importacion/inicio/"+codigounico;
         ventana=window.open(urll, 'Nombre de la ventana', 'width=1400,height=800');
     }
 
