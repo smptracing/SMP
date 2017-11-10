@@ -129,10 +129,7 @@ class Expediente_Tecnico extends CI_Controller
 			$txtRuc=$this->input->post('txtRuc');
 			$txtNombrePip=$this->input->post('txtNombrePip');
 			$txtUbicacionPip=$this->input->post('txtUbicacionPip');
-			$txtCodigoUnico=$this->input->post('txtCodigoUnico');
-
-
-			
+			$txtCodigoUnico=$this->input->post('txtCodigoUnico');			
 			$txtCostoTotalPreInversion=floatval(str_replace(",","",$this->input->post("txtCostoTotalPreInversion")));
 			$txtCostoDirectoPre=floatval(str_replace(",","",$this->input->post('txtCostoDirectoPre')));
 			$txtCostoIndirectoPre=floatval(str_replace(",","",$this->input->post('txtCostoIndirectoPre')));
@@ -152,13 +149,14 @@ class Expediente_Tecnico extends CI_Controller
 			$txtTiempoEjecucionPip=$this->input->post('txtTiempoEjecucionPip');
 			$txtNumBeneficiarios=$this->input->post('txtNumBeneficiarios');
 			$txtUrlDocAprobacion=$this->input->post('url');
+			$txtFechaAprobacion=$this->input->post('txtFechaAprobacion');
 			$txtSituacioActual=$this->input->post('hdtxtSituacioActual');
 			$txtSituacioEconomica=$this->input->post('hdtxtSituacioEconomica');
 			$txtResumenProyecto=$this->input->post('hdtxtResumenProyecto');
 			$txtNumFolio=$this->input->post('txtNumFolio');
 			$etapa_et=$id_etapa_et;
 
-			$this->Model_ET_Expediente_Tecnico->insertar($flat,$txtNombreUe,$txtIdPi,$txtDireccionUE,$txtUbicacionUE,$txtTelefonoUE,$txtRuc,$txtCostoTotalPreInversion,$txtCostoDirectoPre,$txtCostoIndirectoPre,$txtCostoTotalInversion,$txtCostoDirectoInversion,$txtGastosGenerales,$txtGastosSupervision,$txtFuncionProgramatica,$txtFuncion,$txtPrograma,$txtSubPrograma,$txtProyecto,$txtComponente,$txtMeta,$txtFuenteFinanciamiento,$txtModalidadEjecucion,$txtTiempoEjecucionPip,$txtNumBeneficiarios,$txtUrlDocAprobacion,$txtSituacioActual,$txtSituacioEconomica,$txtResumenProyecto,$txtNumFolio,$etapa_et); 
+			$this->Model_ET_Expediente_Tecnico->insertar($flat,$txtNombreUe,$txtIdPi,$txtDireccionUE,$txtUbicacionUE,$txtTelefonoUE,$txtRuc,$txtCostoTotalPreInversion,$txtCostoDirectoPre,$txtCostoIndirectoPre,$txtCostoTotalInversion,$txtCostoDirectoInversion,$txtGastosGenerales,$txtGastosSupervision,$txtFuncionProgramatica,$txtFuncion,$txtPrograma,$txtSubPrograma,$txtProyecto,$txtComponente,$txtMeta,$txtFuenteFinanciamiento,$txtModalidadEjecucion,$txtTiempoEjecucionPip,$txtNumBeneficiarios,$txtUrlDocAprobacion,$txtFechaAprobacion,$txtSituacioActual,$txtSituacioEconomica,$txtResumenProyecto,$txtNumFolio,$etapa_et); 
 			
 			$UltimoExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->UltimoExpedienteTecnico();
 			$id_et=$UltimoExpedienteTecnico->id_et;
@@ -185,8 +183,7 @@ class Expediente_Tecnico extends CI_Controller
 			$comboCargoEjecucion=$this->input->post('comboCargoEjecucion');
 
 
-			$this->Model_ET_Expediente_Tecnico->EditarResponsableEjecucion($id_tipo_responsableEjecucion,$comboCargoEjecucion,$ComboResponsableEjecucion);
-
+			$this->Model_ET_Responsable->insertarET_Epediente($id_et,$ComboResponsableEjecucion,$ComboTipoResponsableEjecucion,$comboCargoEjecucion);
 
 			$config = array(
 				"upload_path" => "./uploads/ImageExpediente",
@@ -208,7 +205,7 @@ class Expediente_Tecnico extends CI_Controller
 					$_FILES['imagen']['size'] = $variablefile['imagen']['size'][$i];
 					$dato=(string)$_FILES['imagen']['name'];
 					$nombre=explode('.',$dato); 
-					$_FILES['imagen']['name'] =$idImageExp->id_img.'.'.$nombre[1];//(string)($idImageExp->id_img.'.'.$nombre[1].'.'.$nombre[1]);// $variablefile['imagen']['name'][$i];
+					$_FILES['imagen']['name'] =$idImageExp->id_img.'.'.$nombre[1];
 					$this->upload->initialize($config);
 					if ($this->upload->do_upload('imagen'))
 					 {

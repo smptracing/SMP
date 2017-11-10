@@ -74,21 +74,22 @@
 					</div>
 					<div class="row">
 						<div class="col-md-4 col-sm-3 col-xs-12">
+
 							<label class="control-label">Costo Total del Proyecto (Pre Inversión)</label>
 							<div>
-								<input id="txtCostoTotalPreInversion" name="txtCostoTotalPreInversion" value="<?= $ExpedienteTecnicoM->costo_total_preinv_et?>"  class="form-control col-md-4 col-xs-12"  placeholder="Total del Proyecto (Pre Inversión)" autocomplete="off" >
+								<input id="txtCostoTotalPreInversion" name="txtCostoTotalPreInversion" value="<?=a_number_format($ExpedienteTecnicoM->costo_total_preinv_et , 2, '.',",",3) ?>"  class="form-control col-md-4 col-xs-12 moneda"  placeholder="Total del Proyecto (Pre Inversión)" autocomplete="off" >
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-3 col-xs-12">
 							<label class="control-label">Costo Directo</label>
 							<div>
-								<input id="txtCostoDirectoPre" name="txtCostoDirectoPre" value="<?= $ExpedienteTecnicoM->costo_directo_preinv_et?>" class="form-control col-md-4 col-xs-12"  placeholder="Costo Directo"  autocomplete="off" >
+								<input id="txtCostoDirectoPre" name="txtCostoDirectoPre" value="<?= a_number_format($ExpedienteTecnicoM->costo_directo_preinv_et , 2, '.',",",3) ?>" class="form-control col-md-4 col-xs-12 moneda"  placeholder="Costo Directo"  autocomplete="off" >
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-3 col-xs-12">
 							<label class="control-label">Costo Indirecto</label>
 							<div>
-								<input id="txtCostoIndirectoPre" name="txtCostoIndirectoPre" value="<?= $ExpedienteTecnicoM->costo_indirecto_preinv_et?>" class="form-control col-md-4 col-xs-12"  placeholder="Costo Indirecto"  autocomplete="off" >
+								<input id="txtCostoIndirectoPre" name="txtCostoIndirectoPre" value=" <?= a_number_format($ExpedienteTecnicoM->costo_indirecto_preinv_et , 2, '.',",",3) ?>" class="form-control col-md-4 col-xs-12 moneda"  placeholder="Costo Indirecto"  autocomplete="off" >
 							</div>
 						</div>
 					</div>
@@ -97,25 +98,25 @@
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Costo Total del Proyecto (Inversión)</label>
 							<div>
-								<input id="txtCostoTotalInversion" name="txtCostoTotalInversion" value="<?= $ExpedienteTecnicoM->costo_total_inv_et?>" class="form-control col-md-4 col-xs-12"  placeholder="Costo Total del Proyecto (Inversión)"  autocomplete="off" >
+								<input id="txtCostoTotalInversion" name="txtCostoTotalInversion" value="<?=a_number_format($ExpedienteTecnicoM->costo_total_inv_et , 2, '.',",",3)  ?>" class="form-control col-md-4 col-xs-12 moneda"  placeholder="Costo Total del Proyecto (Inversión)"  autocomplete="off" >
 							</div>
 						</div>
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Costo Directo</label>
 							<div>
-								<input id="txtCostoDirectoInversion" name="txtCostoDirectoInversion" value="<?= $ExpedienteTecnicoM->costo_directo_inv_et?>" class="form-control col-md-4 col-xs-12"  placeholder="Costo Directo"  autocomplete="off" >
+								<input id="txtCostoDirectoInversion" name="txtCostoDirectoInversion" value="<?= a_number_format($ExpedienteTecnicoM->costo_directo_inv_et , 2, '.',",",3) ?>" class="form-control col-md-4 col-xs-12 moneda"  placeholder="Costo Directo"  autocomplete="off" >
 							</div>
 						</div>
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Gastos generales</label>
 							<div>
-								<input id="txtGastosGenerales" name="txtGastosGenerales" value="<?= $ExpedienteTecnicoM->gastos_generales_et?>" class="form-control col-md-4 col-xs-12"  placeholder="Costo Indirecto"  autocomplete="off" >
+								<input id="txtGastosGenerales" name="txtGastosGenerales" value="<?= a_number_format($ExpedienteTecnicoM->gastos_generales_et , 2, '.',",",3) ?>" class="form-control col-md-4 col-xs-12 moneda"  placeholder="Costo Indirecto"  autocomplete="off" >
 							</div>
 						</div>
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Gastos de supervisión</label>
 							<div>
-								<input id="txtGastosSupervision" name="txtGastosSupervision" value ="<?= $ExpedienteTecnicoM->gastos_supervision_et?>" class="form-control col-md-4 col-xs-12"  placeholder="Costo Indirecto" autocomplete="off" >
+								<input id="txtGastosSupervision" name="txtGastosSupervision" value ="<?= a_number_format($ExpedienteTecnicoM->gastos_supervision_et , 2, '.',",",3) ?>" class="form-control col-md-4 col-xs-12 moneda"  placeholder="Costo Indirecto" autocomplete="off" >
 							</div>
 						</div>
 					</div>
@@ -710,15 +711,40 @@ $(function()
 	 $('#btnEnviarFormulario').on('click', function(event)
 	   	{
             var resolucion=$("#Documento_Resolucion").val(); 
-            var url=getFileExtension(resolucion);
+            var url = "."+resolucion.split('.').pop();
             $("#Editurl").val(url);
         });
 
-	function getFileExtension(filename)
-	{
-
-		return filename.slice((filename.lastIndexOf(".") - 1 >>> 0) + 2);
-	}
+	$(".moneda").keyup(function(e)
+    {
+        $(this).val(format($(this).val()));
+    }); 
+    
+   
+    var format = function(num)
+    {
+	    var str = num.replace("", ""), parts = false, output = [], i = 1, formatted = null;
+	    if(str.indexOf(".") > 0) 
+	    {
+	        parts = str.split(".");
+	        str = parts[0];
+	    }
+	    str = str.split("").reverse();
+	    for(var j = 0, len = str.length; j < len; j++) 
+	    {
+	        if(str[j] != ",") 
+	        {
+	            output.push(str[j]);
+	            if(i%3 == 0 && j < (len - 1))
+	            {
+	                output.push(",");
+	            }
+	            i++;
+	        }
+	    }
+	    formatted = output.reverse().join("");
+	    return("" + formatted + ((parts) ? "." + parts[1].substr(0, 2) : ""));
+	};
 
 </script>
 

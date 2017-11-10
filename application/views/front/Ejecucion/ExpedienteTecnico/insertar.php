@@ -196,16 +196,7 @@
 								<input id="txtNumBeneficiarios" name="txtNumBeneficiarios" value="" class="form-control col-md-4 col-xs-12"  placeholder="Número de beneficiarios indirectos"  autocomplete="off" >
 							</div>
 						</div>
-					</div>
-					<div class="row">
-					 	<div class="col-md-4 col-sm-3 col-xs-12">
-                            <label class="control-label">Subir Resolución</label>
-                            <div class="col-md-9 col-sm-9 col-xs-12">
-                            	<input type="hidden" id="url" name="url" notValidate>
-                                <input type="file" id="Documento_Resolucion" name="Documento_Resolucion" notValidate>
-                             </div>
-                        </div>
-					</div>
+					</div>					
 					<div class="row">
 						
 						<div class="col-md-3 col-sm-3 col-xs-12">
@@ -299,23 +290,33 @@
 					</div>
 						
 					<div class="row">
-						<div class="col-md-4 col-sm-3 col-xs-12">
+						<div class="col-md-3 col-sm-12 col-xs-12">
 							<label class="control-label">Número de folios</label>
 							<div>
 								<input id="txtNumFolio" name="txtNumFolio" class="form-control col-md-4 col-xs-12"  placeholder="Número de folios"  autocomplete="off" >
 							</div>
-						</div>	
+						</div>
+						<div class="col-md-6 col-sm-12 col-xs-12">
+                            <label class="control-label">Subir Resolución de Aprobacion:</label>
+                            <div class="col-md-12 col-sm-9 col-xs-12">
+                            	<input type="hidden" id="url" name="url" notValidate>
+                                <input type="file" id="Documento_Resolucion" name="Documento_Resolucion" notValidate class="form-control">
+                             </div>
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <label class="control-label">Fecha de Aprobacion:</label>
+                            <input class="form-control col-md-4 col-xs-12" type="date" name="txtFechaAprobacion" id="txtFechaAprobacion" notValidate>
+                        </div>
 					</div>
 					<div class="row">
 						<div class="col-md-4 col-sm-3 col-xs-12">
-							<label class="control-label">Fotografías(04 minimo)</label>
+							<label class="control-label">Fotografías</label>
 							<div>
-								<input  type="file" name="imagen[]" id="imagen" value="" placeholder="Fotografias" required="required"   autocomplete="off" multiple  >
+								<input  type="file" name="imagen[]" id="imagen" autocomplete="off" multiple notValidate>
 							</div>
 						</div>
 					</div>		
-				</div>
-				
+				</div>				
 			</div>
 		</div>
 	</div>
