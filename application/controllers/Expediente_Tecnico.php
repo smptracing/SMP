@@ -182,7 +182,6 @@ class Expediente_Tecnico extends CI_Controller
 			$ComboTipoResponsableEjecucion=$this->input->post('ComboTipoResponsableEjecucion');									
 			$comboCargoEjecucion=$this->input->post('comboCargoEjecucion');
 
-
 			$this->Model_ET_Responsable->insertarET_Epediente($id_et,$ComboResponsableEjecucion,$ComboTipoResponsableEjecucion,$comboCargoEjecucion);
 
 			$config = array(

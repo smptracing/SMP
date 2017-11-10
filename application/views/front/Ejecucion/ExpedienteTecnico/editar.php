@@ -711,7 +711,7 @@ $(function()
 	 $('#btnEnviarFormulario').on('click', function(event)
 	   	{
             var resolucion=$("#Documento_Resolucion").val(); 
-            var url = "."+resolucion.split('.').pop();
+            var url = resolucion.split('.').pop();
             $("#Editurl").val(url);
         });
 

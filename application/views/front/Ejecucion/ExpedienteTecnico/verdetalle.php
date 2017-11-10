@@ -124,7 +124,7 @@
 		                        	</a>
 		                        </li>
 		                        <li role="presentation">
-	                        		<a role="menuitem" tabindex="-1" href="#"  onclick="paginaAjaxDialogo(null, 'Seleccionar etapa de ejecución para la clonación', { idExpedienteTecnico : <?=$ExpedienteTecnicoElaboracion[0]->id_et?> }, base_url+'index.php/Expediente_Tecnico/clonar', 'POST', null, null, false, true); return false;"><i class="fa fa-sign-out"></i> Enviar E.T. a la siguiente etapa	
+	                        		<a role="menuitem" tabindex="-1" href="#"  onclick="paginaAjaxDialogo(null, 'Aprobar Expediente Técnico', { idExpedienteTecnico : <?=$ExpedienteTecnicoElaboracion[0]->id_et?> }, base_url+'index.php/Expediente_Tecnico/clonar', 'POST', null, null, false, true); return false;"><i class="fa fa-sign-out"></i> Aprobar E.T.	
 		                        	</a>
 		                        </li>
 		                        <li role="presentation">

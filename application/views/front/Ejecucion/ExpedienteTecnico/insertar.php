@@ -627,7 +627,7 @@ $(function()
 				return;
 			}
 			var extension=$("#Documento_Resolucion").val();
-			var url = "."+extension.split('.').pop();
+			var url = extension.split('.').pop();
             $("#url").val(url);
 
             $("#hdtxtSituacioActual").val(CKEDITOR.instances.txtSituacioActual.getData());
