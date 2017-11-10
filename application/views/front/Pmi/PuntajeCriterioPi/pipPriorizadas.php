@@ -3,74 +3,63 @@
 		<div class="">
 			<div class="col-md-12 col-xs-12">
 				<div class="x_panel">
+					<div class="x_title">
+						<h2>PIP PRIORIZADOS</h2>
+						<div class="clearfix"></div>
+					</div>
 					<div class="x_content">
-						<div class="" role="tabpanel" data-example-id="togglable-tabs">
-							<ul id="myTab" class="nav nav-tabs" role="tablist">
-								<li role="presentation" class="active"><a href="#tab_etapasFE" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"> <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Pip Priorizadas</a>
-								</li>
-							</ul>
-							<div id="myTabContent" class="tab-content">
-								<div role="tabpanel" class="tab-pane fade active in" id="#tab_etapasFE" aria-labelledby="home-tab">
-									<div class="row">
-											<div class="row"> <br/>
-												<div class="col-md-3 col-xs-3" style="margin-left: 200px;position: absolute;margin-top: 7px;">
-													Buscar PIP por Año Priorizado
-						            			</div>
-						            			<div class="col-md-3 col-xs-3"  style="margin-left: 300px;">
-													<select  id="PipPriorizadoAnio" name="PipPriorizadoAnio" class="form-control" class="selectpicker" data-width="75%" data-live-search="true"></select>
-						            			</div>
-						            			<div class="col-md-3 col-xs-3"  style="margin-left: 460px;margin-top: -35px;">
-													 <div class="pull-right tableTools-container"> Reportes </div>
-												</div>
-
-						            			</div>
-											</div>
-											
-										<div class="col-md-12 col-xs-12">
-						
-											<div class="x_content">
-												<table id="table-pippriorizadas" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
-													<thead>
-														<tr>
-															<td style="width:5%">Código</td>
-															<td style="width:40%">Proyecto</td>
-															<td style="width:5%">Prioridad</td>
-															<td style="width:5%">Puntaje</td>
-															<td style="width:15%">Función</td>
-															<td style="width:5%">Opciones</td>
-														</tr>
-													</thead>
-													<tbody>
-													<?php $i=0; foreach($listaPipPriorizadasPorAño as $item ){  ?>
-													  	<tr>
-													    	<td>
-																<?=$item->codigo_unico_pi?>
-													    	</td>
-													    	<td>
-																<?=$item->nombre_pi?>
-													    	</td>
-													    	<td>
-																<?php if($item->puntaje==null){ echo 'na'; }else{$i++; echo $i;} ?>
-													    	</td>
-													    	<td>
-																<?=$item->puntaje?>
-													    	</td>
-													    	<td>
-																<?=$item->nombre_funcion?>
-													    	</td>
-													    	<td>
-												
-													    	</td>
-													  </tr>
-													<?php } ?>	
-													</tbody>
-													
-												</table>
-											</div>
+						<div class="row">
+							<div class="col-md-3 col-xs-12">
+								<div class="form-group">
+					                <div class="input-group"><br/>
+										<label class="control-label">Buscar PIP por Año Priorizado</label>
+										<select  id="PipPriorizadoAnio" name="PipPriorizadoAnio" class="form-control col-md-2 col-xs-2" class="selectpicker" data-width="75%" data-live-search="true"></select>
+					                </div>
+			            		</div>
+			            	</div>
+			            	<div class="col-md-3 col-xs-12">
+				            	<div class="form-group" style="padding-top: 14px;">
+				                	<label class="control-label" for="inputGroup">Reportes </label>
+				                	<div class="input-group">
+										<div class="pull-right tableTools-container ">&nbsp;&nbsp;
 										</div>
-									</div>
-								</div>
-							</div>
+				                	</div>
+			            		</div>			            		
+			            	</div>		            		
+						</div>
+						<div class="table-responsive">
+							<table id="table-pippriorizadas" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
+								<thead>
+									<tr>
+										<td style="width:5%">Código</td>
+										<td style="width:40%">Proyecto</td>
+										<td style="width:5%">Prioridad</td>
+										<td style="width:5%">Puntaje</td>
+										<td style="width:15%">Función</td>
+									</tr>
+								</thead>
+								<tbody>
+								<?php $i=0; foreach($listaPipPriorizadasPorAño as $item ){  ?>
+								  	<tr>
+								    	<td>
+											<?=$item->codigo_unico_pi?>
+								    	</td>
+								    	<td>
+											<?=$item->nombre_pi?>
+								    	</td>
+								    	<td>
+											<?php if($item->puntaje==null){ echo 'na'; }else{$i++; echo $i;} ?>
+								    	</td>
+								    	<td>
+											<?=$item->puntaje?>
+								    	</td>
+								    	<td>
+											<?=$item->nombre_funcion?>
+								    	</td>
+								  </tr>
+								<?php } ?>	
+								</tbody>								
+							</table>					
 						</div>
 					</div>
 				</div>

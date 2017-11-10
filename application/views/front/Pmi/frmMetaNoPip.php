@@ -33,71 +33,35 @@
   }
 </style>
 <div class="right_col" role="main">
-          <div class="">
-            <div class="page-title">
-
+    <div class="">
+        <div class="page-title"></div>
+        <div class="clearfix"></div>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>PROYECTOS</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="table-responsive">
+                        <table id="table_NoPip" class="table table-striped table-bordered table-hover table-responsive display  compact " ellspacing="0" width="100%">
+                            <thead style="background-color: #5A738E;color:#FFFFFF; ">
+                                <tr>
+                                    <th style="width: 1%">#</th>
+                                    <th style="width: 8%"><i class="fa fa-thumb-tack"></i> Cod. </th>
+                                    <th style="width: 46%"><i class="fa fa-bookmark-o"></i> Nombre</th>
+                                    <th style="width: 8%; text-align: right;"><i class="fa fa-money"></i> Costo</th>
+                                    <th style="width: 12%"> Tipo NO PIP</th>
+                                    <th style="width: 6%">Asig. Meta</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
             </div>
-            <div class="clearfix"></div>
-            <div class="">
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                                <div class="x_panel">
-                                  <div class="x_title">
-                                    <h2>PROYECTOS</h2>
-                                    <div class="clearfix"></div>
-                                  </div>
-                                  <div class="x_content">
-
-
-                                    <div class="" role="tabpanel" data-example-id="togglable-tabs">
-                                      <ul id="myTab" class="nav nav-tabs" role="tablist">
-                                        <li role="presentation"  class="active"><a  href="#tab_nopip" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> NO PIP</a>
-                                         </li>
-                                      </ul>
-                                      <div id="myTabContent" class="tab-content">
-                                          <!-- /panel de PROYECTOS desde el row -->
-                                        <div role="tabpanel" class="tab-pane fade active in" id="tab_nopip" aria-labelledby="home-tab">
-                                             <!-- /tabla de PROYECTOS desde el row -->
-                                            <div class="row">
-                                              <div class="col-md-12 col-sm-12 col-xs-12">
-                                                        <div class="x_panel">
-                                                          <div class="row" class="container-fluid">
-                                                          <div class="col-md-4">
-                                                               </div>
-                                                          </div>
-                                                      <div class="x_content">
-                                                        <table id="table_NoPip" class="table table-striped table-bordered table-hover table-responsive display  compact " ellspacing="0" width="100%">
-                                                   <thead style="background-color: #5A738E;color:#FFFFFF; ">
-                                                        <tr>
-                                                          <th style="width: 1%">#</th>
-                                                          <th style="width: 8%"><i class="fa fa-thumb-tack"></i> Cod. </th>
-                                                          <th style="width: 46%"><i class="fa fa-bookmark-o"></i> Nombre</th>
-                                                          <th style="width: 8%; text-align: right;"><i class="fa fa-money"></i> Costo</th>
-                                                          <th style="width: 12%"> Tipo NO PIP</th>
-                                                        <!--  <th style="width: 12%"> Estado</th>-->
-                                                        <th style="width: 6%">Asig. Meta</th>
-                                                        </tr>
-                                                      </thead>
-
-
-                                                            </table>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                            </div>
-                                        </div>
-                                        <!--FIN PANEL DE  Formulacion y evalucion-->
-
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-              </div>
-
-
-          </div>
-          <div class="clearfix"></div>
         </div>
-     </div>
+    <div class="clearfix"></div>
+</div>
 
 <!-- modal -->
 <!-- /.Ventana Programar-->
