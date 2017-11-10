@@ -32,12 +32,14 @@
 					                </div>
 			            		</div>
 							</div>
-							<div class="col-md-12 col-xs-12">
-								<div class="clearfix">
-									<div class="pull-right tableTools-container"></div>
-								</div>
-								<br>
-							</div>
+							<div class="col-md-3 col-xs-12">
+								<div class="form-group"></br>
+					                <label class="control-label" for="inputGroup">REPORTES</label>
+					                <div class="input-group">
+										<div class="pull-left tableTools-container ">&nbsp;&nbsp;</div>
+					                </div>
+					            </div>
+							</div>							
 						</div>
 						<div class="table-responsive">
 							<table id="table-pippriorizadasporfuncion" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">

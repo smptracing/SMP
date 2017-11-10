@@ -10,8 +10,7 @@
 
 <!-- Bootstrap -->
 <script src="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/formValidation.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/bootstrap.validation.min.js"></script>
+
 <!-- FastClick -->
 <script src="<?php echo base_url(); ?>assets/vendors/fastclick/lib/fastclick.js"></script>
 <!-- NProgress -->
