@@ -17,7 +17,7 @@
     /*.skin-blue .main-header li.user-header {
       background-color: #2a3f54;
     }*/
-    .main-footer 
+    .main-footer
     {
       background: #2a3f54;
       padding: 15px;
@@ -30,7 +30,7 @@
     }
     .TituloListaFooter
     {
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.7); 
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
       font-size: 14px;
       color: white;
       padding-left: 20px;
@@ -47,7 +47,7 @@
     .tituloLogo
     {
       padding-top: 25px;
-      
+
     }
     .navbar-header
     {
@@ -56,7 +56,7 @@
     .skin-blue .main-header .navbar {
         background-color: #2a3f54;
     }
-    .box.box-info 
+    .box.box-info
     {
         border-top-color: #fff;
     }
@@ -67,9 +67,9 @@
     .thebox{
         color:white;
         cursor: pointer;
-        height: 150px;        
-        padding: 20px; 
-        width: auto; 
+        height: 150px;
+        padding: 20px;
+        width: auto;
         text-align: center;
         -webkit-transition: transform 0.3s;
         -moz-transition: transform 0.3s;
@@ -146,7 +146,7 @@
         </div>
         <div class="navbar-custom-menu">
          <span class="tituloHeader">Software de Seguimiento y Monitoreo de PIP's</span><br>
-        </div>    
+        </div>
       </div>
 
     </nav>
@@ -169,7 +169,7 @@
                       <li><a href="#">Liquidación</a></li>
                       <li><a href="#">Reportes</a></li>
                       <li><a href="#">Control de Usuarios</a></li>
-                  </ul> 
+                  </ul>
               </li>
             </ul>
           </div>
@@ -201,7 +201,7 @@
             </li>
           </ul>
         </div>
-        
+
       </div>
 
     </nav>
@@ -214,15 +214,15 @@
                     <div class="col-md-3 col-sm-6 col-xs-12">
                         <div class="zoom-in">
                             <a href="<?php echo site_url('PrincipalPmi/pmi'); ?>">
-                            <div style="background-color: #39cccc;" class="col-md-12 thebox">                                 
+                            <div style="background-color: #39cccc;" class="col-md-12 thebox">
                                 <div class="span 6">
-                                    <span class="fa fa-calendar fa-3x"></span>                                    
+                                    <span class="fa fa-calendar fa-3x"></span>
                                 </div>
                                 <div class="span 6">
                                     <br>
-                                    Programación Multianual de Inversión.                                       
-                                </div>                            
-                                
+                                    Programación Multianual de Inversión.
+                                </div>
+
                             </div>
                             </a>
                         </div>
@@ -232,15 +232,15 @@
 
                         <div class="zoom-in">
                             <a href="<?php echo site_url('PrincipalFyE/PrincipalFyED'); ?>">
-                            <div style="background-color: #3d9970;" class="col-md-12 thebox">                                 
+                            <div style="background-color: #3d9970;" class="col-md-12 thebox">
                                 <div class="span 6">
-                                    <span class="fa fa-edit fa-3x"></span>                                     
+                                    <span class="fa fa-edit fa-3x"></span>
                                 </div>
                                 <div class="span 6">
                                     <br>
-                                    Formulación y Evaluación de Proyectos de Inversión.                                        
-                                </div>                                   
-                                
+                                    Formulación y Evaluación de Proyectos de Inversión.
+                                </div>
+
                             </div>
                             </a>
                         </div>
@@ -251,14 +251,14 @@
 
                         <div class="zoom-in">
                             <a href="<?php echo site_url('PrincipalEjecucion/PrincipalEjec'); ?>">
-                            <div style="background-color: #0073b7;" class="col-md-12 thebox">                                 
+                            <div style="background-color: #0073b7;" class="col-md-12 thebox">
                                 <div class="span 6">
-                                    <span class="fa fa-play fa-3x"></span>                                     
+                                    <span class="fa fa-play fa-3x"></span>
                                 </div>
                                 <div class="span 6">
                                 <br>
-                                    Ejecución de Proyectos de Inversión.                                    
-                                </div>                                                               
+                                    Ejecución de Proyectos de Inversión.
+                                </div>
                             </div>
                             </a>
 
@@ -270,37 +270,37 @@
 
                         <div class="zoom-in">
 
-                            <div style="background-color: #46607b;" class="col-md-12 thebox">                                 
+                            <div style="background-color: #46607b;" class="col-md-12 thebox">
                                 <div class="span 6">
-                                    <span class="fa fa-bar-chart fa-3x"></span>                                     
+                                    <span class="fa fa-bar-chart fa-3x"></span>
                                 </div>
                                 <div class="span 6">
                                 <br>
-                                  Reportes, Estadísticas e Informes.                                     
-                                </div>                                   
-                                
+                                  Reportes, Estadísticas e Informes.
+                                </div>
+
                             </div>
 
                         </div>
 
-                    </div>   
+                    </div>
                 </div>
                 <div class="col-md-12 col-xs-12">
                                    <div class="col-md-3 col-sm-6 col-xs-12">
 
                         <div class="zoom-in">
                             <a href="<?php echo site_url('PrincipalReportes/PrincipalReportes'); ?>">
-                            <div style="background-color: #f39c12;" class="col-md-12 thebox">                                 
+                            <div style="background-color: #f39c12;" class="col-md-12 thebox">
                                 <div class="span 6">
-                                    <span class="fa fa-random fa-3x"></span>                                     
+                                    <span class="fa fa-random fa-3x"></span>
                                 </div>
                                 <div class="span 6">
                                 <br>
-  
-                                    Seguimiento de Proyectos de Inversión. 
-                                   
-                                </div>                                  
-                                
+
+                                    Seguimiento de Proyectos de Inversión.
+
+                                </div>
+
                             </div>
                             </a>
 
@@ -311,64 +311,66 @@
 
                         <div class="zoom-in">
 
-                            <div style="background-color: #605ca8;" class="col-md-12 thebox">                                 
+                            <div style="background-color: #605ca8;" class="col-md-12 thebox">
                                 <div class="span 6">
-                                    <span class="fa fa-eye fa-3x"></span>                                     
+                                    <span class="fa fa-eye fa-3x"></span>
                                 </div>
                                 <div class="span 6">
                                 <br>
-                                    Monitoreo de Proyectos de Inversión.                                     
-                                </div>                                   
-                                
+                                    Monitoreo de Proyectos de Inversión.
+                                </div>
+
                             </div>
 
                         </div>
 
                     </div>
 
-   
+
 
                     <div class="col-md-3 col-sm-6 col-xs-12">
 
                         <div class="zoom-in">
                             <a href="<?php echo site_url('PrincipalParametros/parametros'); ?>">
-                            <div style="background-color: #E74C3C;" class="col-md-12 thebox">                                 
+                            <div style="background-color: #E74C3C;" class="col-md-12 thebox">
                                 <div class="span 6">
-                                    <span class="fa fa-cogs fa-3x"></span>                                     
+                                    <span class="fa fa-cogs fa-3x"></span>
                                 </div>
                                 <div class="span 6">
                                 <br>
-                                    Mantenimiento de Parámetros Generales.                                      
-                                </div>                                   
-                                
+                                    Mantenimiento de Parámetros Generales.
+                                </div>
+
                             </div>
                             </a>
                         </div>
 
-                    </div>                     
-
+                    </div>
+                    <?php if( $this->session->userdata('cod_usuario_tipo') == '01' ) { ?>
                     <div class="col-md-3 col-sm-6 col-xs-12">
 
                         <div class="zoom-in">
                             <a href="<?php echo site_url('Usuario/'); ?>">
-                            <div style="background-color: #3c8dbc;" class="col-md-12 thebox">                                 
+                            <div style="background-color: #3c8dbc;" class="col-md-12 thebox">
                                 <div class="span 6">
-                                    <span class="fa fa-users fa-3x"></span>                                     
+                                    <span class="fa fa-users fa-3x"></span>
                                 </div>
                                 <div class="span 6">
                                 <br>
-                                    Usuarios, Permisos y Administración                                     
-                                </div>                                   
-                                
+                                    Usuarios, Permisos y Administración
+                                </div>
+
                             </div>
                             </a>
 
                         </div>
 
-                    </div>   
-                    
+                    </div>
+
+                  <?php } ?>
+
                 </div>
-            </div> 
+            </div>
     </section>
     </div>
   </div>
@@ -385,7 +387,7 @@
                 <li><a style="color:#fff;" href="http://apps2.mef.gob.pe/consulta-vfp-webapp/consultaExpediente.jspx" target="_blank">Consulta SIAF</a></li>
             </ul>
         </div>
-        
+
         <div class="col-lg-4 col-sm-6">
             <span class="TituloListaFooter"><strong>Descargas</strong></span>
             <ul>
@@ -399,7 +401,7 @@
             <ul>
                 <li><a style="color:#fff;" href="https://www.mef.gob.pe/es/documentacion-sp-30574/temas/sistema-nacional-de-programacion-multianual-y-gestion-de-inversiones-invierte-pe/15837-decreto-supremo-n-027-2017-ef-2/file" target="_blank">Decreto Supremo Nº 027-2017-EF</a></li>
                 <li><a style="color:#fff;" href="https://www.mef.gob.pe/es/documentacion-sp-30574/temas/sistema-nacional-de-programacion-multianual-y-gestion-de-inversiones-invierte-pe/15836-decreto-legislativo-n-1252-1/file" target="_blank">Decreto Legislativo N° 1252</a></li>
-            </ul>          
+            </ul>
         </div>
       </div>
       <div class="pull-right hidden-xs">

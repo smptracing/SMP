@@ -57,6 +57,7 @@ class Login extends CI_Controller {
                                   'idPersona' => $usuario->id_persona,
                                   'tipoUsuario' => $usuario->id_usuario_tipo,
                                   'desc_usuario_tipo' => $usuario->desc_usuario_tipo,
+                                  'cod_usuario_tipo' => $usuario->cod_usuario_tipo
                                   );
             $this->session->set_userdata($datosSession);
             $result = $this->Login_model->recuperarMenu($usuario->id_persona);

@@ -6,13 +6,13 @@ class Menu extends CI_Controller {
 public function __construct(){
 		parent::__construct();
 		$this->load->model('Model_Menu');
-		
+
 	}
 
 
 	public function index()
 	{
-		
+
 		$this->_load_layout('Front/Usuario/frm_menu');
 	}
 
@@ -70,7 +70,7 @@ public function __construct(){
 			$this->load->view('Front/Usuario/itemMenu');
     	}
 	}
-  
- 
+
+
 
 }
