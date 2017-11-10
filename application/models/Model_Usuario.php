@@ -60,7 +60,7 @@ class Model_Usuario extends CI_Model
 		            return false;
 		        }
         }
-        function editUsuario($id_persona,$txt_usuario,$txt_contrasenia,$cbb_TipoUsuario,$cbb_listaMenuDestino,$cbb_estado,$cbb_listaMenuDestino2)
+        function editUsuario($id_persona,$txt_usuario,$txt_contrasenia,$cbb_TipoUsuario,$cbb_listaMenuDestino,$cbb_estado)
         {
             if($txt_contrasenia=='')
                 $query=$this->db->query("update USUARIO set id_persona='".$id_persona."',usuario='".$txt_usuario."',id_usuario_tipo='".$cbb_TipoUsuario."',activo=".$cbb_estado." WHERE id_persona='".$id_persona."'");
@@ -76,13 +76,6 @@ class Model_Usuario extends CI_Model
                         $this->db->query("insert into ACCESS_MENU(id_menu,id_persona) values(".$arrayMenuUsuario[$i].",".$id_persona.");");
                     }
                 }
-								if($cbb_listaMenuDestino2!=''){
-										$arrayMenuUsuario=explode("-",$cbb_listaMenuDestino2);
-										for($i=0;$i<count($arrayMenuUsuario);$i++){
-												$this->db->close();
-												$this->db->query("insert into USUARIO_PROYECTO(id_persona, id_pi, fecha_asignacion) values(".$id_persona.",".$arrayMenuUsuario[$i].",'17/12/2015');");
-										}
-								}
                 return true;
             }
             else {

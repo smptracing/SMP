@@ -52,7 +52,7 @@
                         <div class="col-sm-4">
                           <select style="height:130px;width:100%;" id="cbb_listaMenuDestino" name="cbb_listaMenuDestino[]" multiple=""></select>
                         </div>
-                  </div>
+                  </div> <!--
                   <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">Acceso al pip</label>
                         <div class="col-sm-4">
@@ -65,7 +65,7 @@
                         <div class="col-sm-4">
                           <select style="height:130px;width:100%;" id="cbb_listaMenuDestino2" name="cbb_listaMenuDestino2[]" multiple=""></select>
                         </div>
-                  </div>
+                  </div> -->
                   <div class="form-group" style="text-align: center;">
                       <button type="button" id="sendUsuario" class="btn btn-primary">Registrar Usuario </button>
                       <input  id="btnCerrar" class="btn btn-danger" data-dismiss="modal" value="Cancelar">
@@ -92,6 +92,7 @@
       $("#formUsuario").submit(function(event){
         event.preventDefault();
         var stringMenuUsuario ='';
+        var stringMenuUsuario2 ='';
         var c=0;
         $("#cbb_listaMenuDestino option").each(function(){
             if(c>0)
@@ -103,23 +104,6 @@
             url:$("#formUsuario").attr("action"),
             type:$(this).attr('method'),
             data:$(this).serialize()+"&cbb_listaMenuDestino="+stringMenuUsuario,
-            success:function(resp){
-              swal("",resp, "success");
-              $('#table-Usuarios').dataTable()._fnAjaxUpdate();
-
-           }
-        });
-        //FOO
-        $("#cbb_listaMenuDestino2 option").each(function(){
-            if(c>0)
-              stringMenuUsuario+='-';
-            stringMenuUsuario+=$(this).attr('value');
-            c++;
-        });
-        $.ajax({
-            url:$("#formUsuario").attr("action"),
-            type:$(this).attr('method'),
-            data:$(this).serialize()+"&cbb_listaMenuDestino2="+stringMenuUsuario,
             success:function(resp){
               swal("",resp, "success");
               $('#table-Usuarios').dataTable()._fnAjaxUpdate();

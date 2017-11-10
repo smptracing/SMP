@@ -64,9 +64,8 @@ public function __construct(){
 	      	$txt_contrasenia='';
 	      $cbb_TipoUsuario =$this->input->post("cbb_TipoUsuario");
 	      $cbb_listaMenuDestino =$this->input->post("cbb_listaMenuDestino");
-				$cbb_listaMenuDestino2 =$this->input->post("cbb_listaMenuDestino2");
 	      $cbb_estado =$this->input->post("cbb_estado");
-	      if($this->Model_Usuario->editUsuario($id_persona,$txt_usuario,$txt_contrasenia,$cbb_TipoUsuario,$cbb_listaMenuDestino,$cbb_estado,$cbb_listaMenuDestino2) == true)
+	      if($this->Model_Usuario->editUsuario($id_persona,$txt_usuario,$txt_contrasenia,$cbb_TipoUsuario,$cbb_listaMenuDestino,$cbb_estado) == true)
 		       echo "Se modificó el usuario";
 		  else
 		       echo "Error... no se grabaron los datos del Usuario.";
