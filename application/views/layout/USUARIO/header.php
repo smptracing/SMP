@@ -39,13 +39,10 @@
       <link href="<?php echo base_url();?>assets/css/jquery.growl.css" rel="stylesheet">
           <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/formValidation.min.css">
           <link href="<?php echo base_url(); ?>assets/build/css/custom.min.css" rel="stylesheet">
+
+  <script src="<?php echo base_url(); ?>assets/js/Helper/jsHelper.js"></script> 
+  <script src="<?php echo base_url(); ?>assets/Template/vendors/jquery/dist/jquery.min.js"></script>
           
-<script src="<?php echo base_url(); ?>assets/Template/vendors/jquery/dist/jquery.min.js"></script>
-  
-
-
-<script src="<?php echo base_url(); ?>assets/js/formValidation.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/bootstrap.validation.min.js"></script>
   <style>
    #ProgramacionHorizontal{
       width: 100% !important;
@@ -69,9 +66,6 @@
             font-size: 11px;
         }
   </style>
-
-  <!-- jQuery -->
-  <script src="<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
 
      <script>
     var base_url = '<?php echo base_url(); ?>';
