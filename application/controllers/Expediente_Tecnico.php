@@ -303,9 +303,10 @@ class Expediente_Tecnico extends CI_Controller
 			$txtSituacioActual=$this->input->post('txtSituacioActual');
 			$txtSituacioDeseada=$this->input->post('txtSituacioDeseada');
 			$txtContribucioInterv=$this->input->post('txtContribucioInterv');
+			$txtFechaAprobacion=$this->input->post('txtFechaAprobacion');
 			$txtNumFolio=$this->input->post('txtNumFolio');
 	
-			$this->Model_ET_Expediente_Tecnico->editar($flat,$hdIdExpediente,$txtNombreUe,$txtDireccionUE,$txtUbicacionUE,$txtTelefonoUE,$txtRucUE,$txtCostoTotalPreInversion,$txtCostoDirectoPre,$txtCostoIndirectoPre,$txtCostoTotalInversion,$txtCostoDirectoInversion,$txtGastosGenerales,$txtGastosSupervision,$txtFuncionProgramatica,$txtFuncion,$txtPrograma,$txtSubPrograma,$txtProyecto,$txtComponente,$txtMeta,$txtFuenteFinanciamiento,$txtModalidadEjecucion,$txtTiempoEjecucionPip,$txtNumBeneficiarios,$urlD,$txtSituacioActual,$txtSituacioDeseada,$txtContribucioInterv,$txtNumFolio);
+			$this->Model_ET_Expediente_Tecnico->editar($flat,$hdIdExpediente,$txtNombreUe,$txtDireccionUE,$txtUbicacionUE,$txtTelefonoUE,$txtRucUE,$txtCostoTotalPreInversion,$txtCostoDirectoPre,$txtCostoIndirectoPre,$txtCostoTotalInversion,$txtCostoDirectoInversion,$txtGastosGenerales,$txtGastosSupervision,$txtFuncionProgramatica,$txtFuncion,$txtPrograma,$txtSubPrograma,$txtProyecto,$txtComponente,$txtMeta,$txtFuenteFinanciamiento,$txtModalidadEjecucion,$txtTiempoEjecucionPip,$txtNumBeneficiarios,$urlD,$txtSituacioActual,$txtSituacioDeseada,$txtContribucioInterv,$txtNumFolio,$txtFechaAprobacion);
 			
 
 			$id_tipo_responsableElabo=$this->input->post('id_tipo_responsableElabo');
