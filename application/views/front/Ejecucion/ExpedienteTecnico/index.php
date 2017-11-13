@@ -114,17 +114,20 @@ function BuscarProyectocodigo()
 				type:"GET", 
 				data:{inputValue:inputValue},
 				cache:false,
-				success:function(resp){
-					var ProyetoEncontrado=eval(resp);
-					if(ProyetoEncontrado.length==1){
-							var buscar="true";
-							paginaAjaxDialogo(null, 'Registrar Expediente Técnico',{CodigoUnico:inputValue,buscar:buscar}, base_url+'index.php/Expediente_Tecnico/insertar', 'GET', null, null, false, true);
-	  						swal("Correcto!", "Se Encontro el Proyecto: " + inputValue, "success");
-					}else{
-							swal.showInputError("No se encontro el  Codigo Unico. Intente Nuevamente!");
-	    					return false
+				success:function(resp)
+				{
+					var ProyetoEncontrado = JSON.parse(resp);
+					if(ProyetoEncontrado.length==1)
+					{
+						var buscar="true";
+						paginaAjaxDialogo(null, 'Registrar Expediente Técnico',{CodigoUnico:inputValue,buscar:buscar}, base_url+'index.php/Expediente_Tecnico/insertar', 'GET', null, null, false, true);
+	  					swal("Correcto!", "Se Encontro el Proyecto: " + inputValue, "success");
 					}
-					
+					else
+					{
+						swal.showInputError("No se encontro el  Codigo Unico. Intente Nuevamente!");
+	    				return false
+					}					
 				}
 			});
 		}

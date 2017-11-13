@@ -380,9 +380,18 @@ class Expediente_Tecnico extends CI_Controller
 
     function registroBuscarProyecto()
     {
-    		$CodigoUnico=$this->input->get('inputValue');
-			$Registrosproyectobuscos=$this->Model_ET_Expediente_Tecnico->ExpedienteContarRegistros($CodigoUnico); //BUSCAR PIP
-			echo  json_encode($Registrosproyectobuscos);
+		/*$CodigoUnico=$this->input->get('inputValue');
+		$Registrosproyectobuscos=$this->Model_ET_Expediente_Tecnico->ExpedienteContarRegistros($CodigoUnico);
+		echo  json_encode($Registrosproyectobuscos);*/
+		$CodigoUnico=$this->input->get('inputValue');
+		$Registrosproyectobuscos=$this->Model_ET_Expediente_Tecnico->ProyectoViable($CodigoUnico);
+		$proyectoBuscar = count($Registrosproyectobuscos);
+		
+
+
+		echo  json_encode($Registrosproyectobuscos);
+
+		//execute sp_ListarEstudioViabilizados @id_estudio_inv= 0 , @codigo_unico = '279110'
     }
 
 	function reportePdfMetrado($id_ExpedienteTecnico)
@@ -1178,7 +1187,7 @@ class Expediente_Tecnico extends CI_Controller
 		$expedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnico($id_et);
 		$expedienteTecnico->childComponente=$this->Model_ET_Componente->ETComponentePorIdET($expedienteTecnico->id_et);
 
-		
+
 
 
 		
