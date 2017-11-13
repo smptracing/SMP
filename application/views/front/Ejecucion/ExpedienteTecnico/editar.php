@@ -125,7 +125,7 @@
 						<div class="col-md-12 col-sm-3 col-xs-12">
 							<label class="control-label">Funcion Programatica</label>
 							<div>
-								<input id="txtFuncionProgramatica" name="txtFuncionProgramatica" class="form-control col-md-4 col-xs-12"  placeholder="Funcion Programatica" autocomplete="off" >
+								<input id="txtFuncionProgramatica" name="txtFuncionProgramatica" class="form-control col-md-4 col-xs-12"  placeholder="Funcion Programatica" autocomplete="off" value="<?= $ExpedienteTecnicoM->funcion_programatica?>">
 							</div>
 						</div>
 					</div>
@@ -200,18 +200,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="row">
-					 	<div class="col-md-12 col-sm-12 col-xs-12">
-                            <div class="col-md-3 col-sm-3 col-xs-12" style="position: left">
-                           	 	<label class="control-label">Subir Resolución:</label>
-                           	 	<input type="hidden" name="Editurl" id="Editurl" value="<?= $ExpedienteTecnicoM->url_doc_aprobacion_et?>">
-                            	<input type="file" id="Documento_Resolucion" name="Documento_Resolucion">
-                            </div>
-                             <div class="col-md-5 col-sm-5 col-xs-12">
-                            	<label style="font-size: 11px;margin-top: 24px;color: red;margin-left: 20px;"> En caso de subir otra resolución remplazara a la anterior</label>
-                            </div>
-                        </div>
-					</div>
+					
 					<div class="row">						
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Cargo</label>
@@ -298,15 +287,27 @@
 							<input type="hidden" id="hdtxtContribucioInterv" value="<?=htmlspecialchars($ExpedienteTecnicoM->resumen_pi_et)?>" type="hidden">
 							<p><textarea name="txtContribucioInterv" id="txtContribucioInterv" rows="10" cols="80"></textarea></p>
 						</div>	
-					</div>			
+					</div>									
 					<div class="row">
-						<div class="col-md-4 col-sm-3 col-xs-12">
+						<div class="col-md-3 col-sm-12 col-xs-12">
 							<label class="control-label">Número de folios</label>
 							<div>
 								<input id="txtNumFolio" name="txtNumFolio" value="<?= $ExpedienteTecnicoM->num_folios?>" class="form-control col-md-4 col-xs-12"  placeholder="Número de folios" autocomplete="off" >
 							</div>
-						</div>	
-					</div>	
+						</div>
+						<div class="col-md-6 col-sm-12 col-xs-12">
+                            <label class="control-label">Subir Resolución de Aprobacion: </label>                            
+                            <div class="col-md-12 col-sm-9 col-xs-12">
+                            	<input type="hidden" name="Editurl" id="Editurl" value="<?= $ExpedienteTecnicoM->url_doc_aprobacion_et?>" notValidate>
+                                <input type="file" id="Documento_Resolucion" name="Documento_Resolucion" notValidate >
+                                <b style="color: red; font-size: 10px;">En caso de subir otra resolución remplazara a la anterior</b>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <label class="control-label">Fecha de Aprobacion:</label>
+                            <input class="form-control col-md-4 col-xs-12" type="date" name="txtFechaAprobacion" id="txtFechaAprobacion" notValidate>
+                        </div>
+					</div>
 					<div class="row">
 						<div class="col-md-4 col-sm-3 col-xs-12">
 							<label class="control-label">Fotografías(04 minimo)</label>
@@ -461,7 +462,7 @@ $(function()
 					},
 					regexp:
 					{
-						regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
+						regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
 						message: '<b style="color: red;">El campo "Costo total pre Inversion " debe ser un valor en soles.</b>'
 					} 
 				}
@@ -476,7 +477,7 @@ $(function()
 					},
 					regexp:
 					{
-						regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
+						regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
 						message: '<b style="color: red;">El campo "Costo Directo pre Inversion " debe ser un valor en soles.</b>'
 					}  
 				}
@@ -491,7 +492,7 @@ $(function()
 					},
 					regexp:
 					{
-						regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
+						regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
 						message: '<b style="color: red;">El campo "Costo Indirecto Pre Inversion " debe ser un valor en soles.</b>'
 					}   
 				}
@@ -506,7 +507,7 @@ $(function()
 					},
 					regexp:
 					{
-						regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
+						regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
 						message: '<b style="color: red;">El campo "Costo Total de Inversion " debe ser un valor en soles.</b>'
 					}  
 				}
@@ -521,7 +522,7 @@ $(function()
 					},
 					regexp:
 					{
-						regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
+						regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
 						message: '<b style="color: red;">El campo "Costo Directo de inversion" debe ser un valor en soles.</b>'
 					}  
 				}
@@ -536,7 +537,7 @@ $(function()
 					},
 					regexp:
 					{
-						regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
+						regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
 						message: '<b style="color: red;">El campo "Gastos Generales" debe ser un valor en soles.</b>'
 					}  
 				}
@@ -551,7 +552,7 @@ $(function()
 					},
 					regexp:
 					{
-						regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
+						regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
 						message: '<b style="color: red;">El campo "Gastos Supervision" debe ser un valor en soles.</b>'
 					}  
 				}

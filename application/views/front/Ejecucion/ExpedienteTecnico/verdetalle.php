@@ -124,13 +124,15 @@
 		                        	</a>
 		                        </li>
 		                        <li role="presentation">
-	                        		<a role="menuitem" tabindex="-1" href="#"  onclick="paginaAjaxDialogo(null, 'Aprobar Expediente Técnico', { idExpedienteTecnico : <?=$ExpedienteTecnicoElaboracion[0]->id_et?> }, base_url+'index.php/Expediente_Tecnico/clonar', 'POST', null, null, false, true); return false;"><i class="fa fa-sign-out"></i> Aprobar E.T.	
+	                        		<a role="menuitem" tabindex="-1" href="#" onclick="paginaAjaxDialogo(null, 'Visto Bueno del E.T.', { id_ExpedienteTecnico : <?=$ExpedienteTecnicoElaboracion[0]->id_et?> }, base_url+'index.php/Expediente_Tecnico/vistoBueno','GET', null, null, false, true); return false;"><i class="fa fa-thumbs-up"></i> Dar Visto Bueno	
 		                        	</a>
 		                        </li>
+		                        <?php if($ExpedienteTecnicoElaboracion[0]->estado_revision == 1) { ?>
 		                        <li role="presentation">
-	                        		<a role="menuitem" tabindex="-1" href="#" onclick="paginaAjaxDialogo(null, 'Visto Bueno del E.T.', { id_ExpedienteTecnico : <?=$ExpedienteTecnicoElaboracion[0]->id_et?> }, base_url+'index.php/Expediente_Tecnico/vistoBueno','GET', null, null, false, true); return false;"><i class="fa fa-check-square"></i> Dar Visto Bueno	
+	                        		<a role="menuitem" tabindex="-1" href="#"  onclick="paginaAjaxDialogo(null, 'Aprobar Expediente Técnico', { idExpedienteTecnico : <?=$ExpedienteTecnicoElaboracion[0]->id_et?> }, base_url+'index.php/Expediente_Tecnico/clonar', 'GET', null, null, false, true); return false;"><i class="fa fa-check-square"></i> Aprobar E.T.	
 		                        	</a>
 		                        </li>
+		                        <?php }?>		                        
 		                        <li role="presentation">
 		                        	<a role="menuitem" tabindex="-1" href="#" onclick="paginaAjaxDialogo(null, 'Agregar Periodo de Ejecucion',{ id_et: '<?=$ExpedienteTecnicoElaboracion[0]->id_et?>' }, base_url+'index.php/Expediente_Tecnico/PeriodoEjecucion', 'GET', null, null, false, true);return false;"><i class="fa fa-calendar-check-o"></i> Periodo de Ejecución	
 		                        	</a> 

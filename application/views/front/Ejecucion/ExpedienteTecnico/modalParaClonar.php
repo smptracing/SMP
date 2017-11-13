@@ -6,17 +6,30 @@
 			<div class="x_panel">
 				<div class="x_content">						
 					<div class="row">
-						<div class="col-md-6 col-sm-12 col-xs-12">
-                            <label class="control-label">Adjuntar Resolución de Aprobacion:</label>
-                            <div class="col-md-12 col-sm-9 col-xs-12">                            
-                            	<input type="hidden" id="url" name="url" notValidate>
-                            	<input type="file" id="fileResolucion" name="fileResolucion" notValidate class="form-control">
-                             </div>
-                        </div>
-                        <div class="col-md-3 col-sm-12 col-xs-12">
-                            <label class="control-label">Fecha de Aprobacion:</label>
-                            <input class="form-control col-md-4 col-xs-12" type="date" name="txtFechaAprobacion" id="txtFechaAprobacion" notValidate>
-                        </div>
+						<?php if($fechaAprobacion == '') { ?>
+							<div class="col-md-6 col-sm-12 col-xs-12">
+	                            <label class="control-label">Adjuntar Resolución de Aprobacion:</label>
+	                            <div class="col-md-12 col-sm-9 col-xs-12">                            
+	                            	<input type="hidden" id="url" name="url" notValidate>
+	                            	<input type="hidden" id="idEtapaExpedienteTecnico" name="idEtapaExpedienteTecnico" notValidate value="3">
+	                            	<input type="hidden" id="idExpedienteTecnico" name="idExpedienteTecnico" notValidate value="<?=$idExpedienteTecnico?>">	                            	
+	                            	<input type="file" id="fileResolucion" name="fileResolucion" notValidate class="form-control">
+	                             </div>
+	                        </div>
+	                        <div class="col-md-3 col-sm-12 col-xs-12">
+	                            <label class="control-label">Fecha de Aprobacion:</label>
+	                            <input class="form-control col-md-4 col-xs-12" type="date" name="txtFechaAprobacion" id="txtFechaAprobacion" notValidate>
+	                        </div>
+	                    <?php } 
+	                    else
+	                    {?>
+	                		<div class="col-md-12 col-sm-12 col-xs-12">
+	                			<input type="hidden" id="url" name="url" notValidate>
+                            	<input type="hidden" id="idEtapaExpedienteTecnico" name="idEtapaExpedienteTecnico" notValidate value="3">
+                            	<input type="hidden" id="idExpedienteTecnico" name="idExpedienteTecnico" notValidate value="<?=$idExpedienteTecnico?>">	
+	                            <label class="control-label" style="color: #337ab7; font-size: 14px;">Se adjunto anteriormente la Resolución de Aprobación con fecha : <?=$fechaAprobacion?></label>
+	                        </div>
+	                    <?php } ?>
 					</div>	
 				</div>				
 			</div>
@@ -24,7 +37,7 @@
 	</div>
 	<div class="ln_solid"></div>
 	<div class="row" style="text-align: right;">
-		<input type="button" value="Clonar expediente técnico" class="btn btn-success" onclick="aprobarExpedienteTecnico(<?=$idExpedienteTecnico?>);">
+		<button  id="btnEnviarFormulario" class="btn btn-success">Aprobar Expediente Técnico</button>
 		<button  class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 	</div>
 </form>
@@ -72,9 +85,16 @@ $(function()
 		{
 			return;
 		}
-		var extension=$("#fileResolucion").val();
-		var url = "."+extension.split('.').pop();
-        $("#url").val(url);
+		var archivo=$("#fileResolucion").val();
+		if(typeof archivo!='undefined')
+		{
+			var extension = archivo.split('.').pop();
+        	$("#url").val(extension);
+		}
+		else
+		{
+			$("#url").val("");
+		}
 
         var formData=new FormData($("#frmAprobarExpediente")[0]);
         var dataString = $('#frmAprobarExpediente').serialize();
@@ -91,46 +111,25 @@ $(function()
 		    },
             success:function(resp)
             {
-                window.location.href=base_url+"index.php/Expediente_Tecnico/"
+            	//console.log(resp);
+            	objectJSON=JSON.parse(resp);
+				swal(
+				{
+					title: '',
+					text: objectJSON.mensaje,
+					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+				},
+				function()
+				{
+					if(objectJSON.proceso=='Correcto')
+					{
+						renderLoading();
+
+						window.location.href=base_url+'index.php/Expediente_Tecnico/index';
+					}
+				});
             }
         });
       	$('#frmAprobarExpediente')[0].reset();
     });			  
 </script>
-
-
-
-<!--<select name="selectEtapaEjecucion" id="selectEtapaEjecucion" class="form-control">
-	<?php foreach($listaETEtapaEjecucion as $value){ ?>
-		<option value="<?=$value->id_etapa_et?>"><?=$value->desc_etapa_et?></option>
-	<?php } ?>
-</select>
-<hr style="margin: 4px;">
-<div style="text-align: right;">
-	<input type="button" value="Clonar expediente técnico" class="btn btn-success" onclick="clonarExpedienteTecnico(<?=$idExpedienteTecnico?>);">
-</div>
-<script>
-	function clonarExpedienteTecnico(idExpedienteTecnico)
-	{
-		paginaAjaxJSON({ idExpedienteTecnico : idExpedienteTecnico, idEtapaExpedienteTecnico : $('#selectEtapaEjecucion').val() }, base_url+'index.php/Expediente_Tecnico/clonar', 'POST', null, function(objectJSON)
-		{
-			objectJSON=JSON.parse(objectJSON);
-
-			swal(
-			{
-				title: '',
-				text: objectJSON.mensaje,
-				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
-			},
-			function()
-			{
-				if(objectJSON.proceso=='Correcto')
-				{
-					renderLoading();
-
-					window.location.href=base_url+'index.php/Expediente_Tecnico/index';
-				}
-			});
-		}, false, true);
-	}
-</script>-->
