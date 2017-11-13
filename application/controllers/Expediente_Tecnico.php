@@ -273,13 +273,15 @@ class Expediente_Tecnico extends CI_Controller
 			$txtUbicacionUE=$this->input->post('txtUbicacionUE');
 			$txtTelefonoUE=$this->input->post('txtTelefonoUE');
 			$txtRucUE=$this->input->post('txtRucUE');
-			$txtCostoTotalPreInversion=$this->input->post('txtCostoTotalPreInversion');
-			$txtCostoDirectoPre=$this->input->post('txtCostoDirectoPre');
-			$txtCostoIndirectoPre=$this->input->post('txtCostoIndirectoPre');
-			$txtCostoTotalInversion=$this->input->post('txtCostoTotalInversion');
-			$txtCostoDirectoInversion=$this->input->post('txtCostoDirectoInversion');
-			$txtGastosGenerales=$this->input->post('txtGastosGenerales');
-			$txtGastosSupervision=$this->input->post('txtGastosSupervision');
+
+			$txtCostoTotalPreInversion=floatval(str_replace(",","",$this->input->post('txtCostoTotalPreInversion')));
+			$txtCostoDirectoPre=floatval(str_replace(",","",$this->input->post('txtCostoDirectoPre')));
+			$txtCostoIndirectoPre=floatval(str_replace(",","",$this->input->post('txtCostoIndirectoPre')));
+			$txtCostoTotalInversion=floatval(str_replace(",","",$this->input->post('txtCostoTotalInversion')));
+			$txtCostoDirectoInversion=floatval(str_replace(",","",$this->input->post('txtCostoDirectoInversion')));
+			$txtGastosGenerales=floatval(str_replace(",","",$this->input->post('txtGastosGenerales')));
+			$txtGastosSupervision=floatval(str_replace(",","",$this->input->post('txtGastosSupervision')));
+			
 			$txtFuncionProgramatica=$this->input->post('txtFuncionProgramatica');
 			$txtFuncion=$this->input->post('txtFuncion');
 			$txtPrograma=$this->input->post('txtPrograma');
@@ -386,7 +388,7 @@ class Expediente_Tecnico extends CI_Controller
 		$CodigoUnico=$this->input->get('inputValue');
 		$Registrosproyectobuscos=$this->Model_ET_Expediente_Tecnico->ProyectoViable($CodigoUnico);
 		$proyectoBuscar = count($Registrosproyectobuscos);
-		
+
 
 
 		echo  json_encode($Registrosproyectobuscos);

@@ -197,6 +197,12 @@
 
 <script>
 
+$(document).on('hidden.bs.modal', '.modal', function () {
+    if ($('body').find('.modal.in').length > 0) {
+        $('body').addClass('modal-open');
+    }
+});
+
 $(document).on("ready" ,function(){
 
 $("#BtnAcatualizar").on( "click", function()
@@ -903,7 +909,7 @@ $("#CodigoUnico").on( "click", function()
         ventana=window.open(urll, 'Nombre de la ventana', 'width=1400,height=800');
     }
 
-    detalladoMensualizadoConceptoClasificador
+    //detalladoMensualizadoConceptoClasificador
 
 	function detalladoMensualizadoConceptoClasificador(anio,meta)
 	{
