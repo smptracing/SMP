@@ -1,4 +1,106 @@
-<select name="selectEtapaEjecucion" id="selectEtapaEjecucion" class="form-control">
+<form  id="frmAprobarExpediente"   action="<?php echo base_url();?>index.php/Expediente_Tecnico/insertar" method="POST" enctype="multipart/form-data" >
+
+	<div class="row">
+
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<div class="x_panel">
+				<div class="x_content">						
+					<div class="row">
+						<div class="col-md-6 col-sm-12 col-xs-12">
+                            <label class="control-label">Adjuntar Resolución de Aprobacion:</label>
+                            <div class="col-md-12 col-sm-9 col-xs-12">                            
+                            	<input type="hidden" id="url" name="url" notValidate>
+                            	<input type="file" id="fileResolucion" name="fileResolucion" notValidate class="form-control">
+                             </div>
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <label class="control-label">Fecha de Aprobacion:</label>
+                            <input class="form-control col-md-4 col-xs-12" type="date" name="txtFechaAprobacion" id="txtFechaAprobacion" notValidate>
+                        </div>
+					</div>	
+				</div>				
+			</div>
+		</div>
+	</div>
+	<div class="ln_solid"></div>
+	<div class="row" style="text-align: right;">
+		<input type="button" value="Clonar expediente técnico" class="btn btn-success" onclick="aprobarExpedienteTecnico(<?=$idExpedienteTecnico?>);">
+		<button  class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+	</div>
+</form>
+ <script>
+ 
+$(function()
+	{
+		$('#frmAprobarExpediente').formValidation(
+		{
+			framework: 'bootstrap',
+			excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+			live: 'enabled',
+			message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+			trigger: null,
+			fields:
+			{
+				fileResolucion:
+				{
+					validators:
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Resolución de Aprobación" es requerido.</b>'
+						}
+					}
+				},
+				txtFechaAprobacion:
+				{
+					validators:
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Fecha de Aprobación" es requerido.</b>'
+						}
+					}
+				}
+			}
+		});
+	});
+    $('#btnEnviarFormulario').on('click', function(event)
+   	{
+        event.preventDefault();
+        $('#frmAprobarExpediente').data('formValidation').validate();
+		if(!($('#frmAprobarExpediente').data('formValidation').isValid()))
+		{
+			return;
+		}
+		var extension=$("#fileResolucion").val();
+		var url = "."+extension.split('.').pop();
+        $("#url").val(url);
+
+        var formData=new FormData($("#frmAprobarExpediente")[0]);
+        var dataString = $('#frmAprobarExpediente').serialize();
+        $.ajax({
+            type:"POST",
+            enctype: 'multipart/form-data',
+            url:base_url+"index.php/Expediente_Tecnico/clonar",
+            data: formData,
+            cache: false,
+            contentType:false,
+            processData:false,
+            beforeSend: function() {
+            	renderLoading();
+		    },
+            success:function(resp)
+            {
+                window.location.href=base_url+"index.php/Expediente_Tecnico/"
+            }
+        });
+      	$('#frmAprobarExpediente')[0].reset();
+    });			  
+</script>
+
+
+
+<!--<select name="selectEtapaEjecucion" id="selectEtapaEjecucion" class="form-control">
 	<?php foreach($listaETEtapaEjecucion as $value){ ?>
 		<option value="<?=$value->id_etapa_et?>"><?=$value->desc_etapa_et?></option>
 	<?php } ?>
@@ -31,4 +133,4 @@
 			});
 		}, false, true);
 	}
-</script>
+</script>-->
