@@ -27,6 +27,8 @@ class Expediente_Tecnico extends CI_Controller
 		$this->load->model('Model_ET_Mes_Valorizacion');
 		$this->load->model('Model_Unidad_Medida');
 		$this->load->model('Model_DetSegOrden');
+		$this->load->model('Model_ModalidadE');
+		$this->load->model('FuenteFinanciamiento_Model');
 		//$this->load->model('Model_DetSegValorizacion');		
 		$this->load->library('mydompdf');
 		$this->load->helper('FormatNumber_helper');
@@ -227,13 +229,15 @@ class Expediente_Tecnico extends CI_Controller
 			$opcion  = "001";//Responsable de elaboración
   			$listaTipoResponsableElaboracion=$this->Model_ET_Tipo_Responsable->NombreTipoResponsable($opcion);
 
-  			$opcion  = "002";//
+  			$opcion  = "002";
   			$listaTipoResponsableEjecucion=$this->Model_ET_Tipo_Responsable->NombreTipoResponsable($opcion);
 			
 			$listarPersona=$this->Model_Personal->listarPersona();
 			$codigo_unico_pi=$this->input->get('CodigoUnico');
-			$Listarproyectobuscado=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoBuscar($codigo_unico_pi); //BUSCAR PIP
-			$this->load->view('front/Ejecucion/ExpedienteTecnico/insertar',['Listarproyectobuscado'=>$Listarproyectobuscado,'listarPersona' =>$listarPersona,'listaTipoResponsableElaboracion' => $listaTipoResponsableElaboracion,'listaTipoResponsableEjecucion' => $listaTipoResponsableEjecucion,'listarCargo' =>$listarCargo]);
+			$Listarproyectobuscado=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoBuscar($codigo_unico_pi);
+			$listaModalidadEjecucion=$this->Model_ModalidadE->GetModalidadE();
+			$listaFuenteFinanciamiento=$this->FuenteFinanciamiento_Model->get_FuenteFinanciamiento();
+			$this->load->view('front/Ejecucion/ExpedienteTecnico/insertar',['Listarproyectobuscado'=>$Listarproyectobuscado,'listarPersona' =>$listarPersona,'listaTipoResponsableElaboracion' => $listaTipoResponsableElaboracion,'listaTipoResponsableEjecucion' => $listaTipoResponsableEjecucion,'listarCargo' =>$listarCargo,'listaModalidadEjecucion' => $listaModalidadEjecucion , 'listaFuenteFinanciamiento' => $listaFuenteFinanciamiento]);
 		}			
 	}
 
@@ -376,24 +380,18 @@ class Expediente_Tecnico extends CI_Controller
 		$listarPersona=$this->Model_Personal->listarPersona();
 
 		$ExpedienteTecnicoM=$this->Model_ET_Expediente_Tecnico->DatosExpediente($id_et);
-		//return $this->load->view('front/Ejecucion/ExpedienteTecnico/editar',['ExpedienteTecnicoM'=>$ExpedienteTecnicoM, 'listaimg'=>$listaimg]);
-		return $this->load->view('front/Ejecucion/ExpedienteTecnico/editar',['ExpedienteTecnicoM'=>$ExpedienteTecnicoM, 'listaimg'=>$listaimg,'listarCargo' => $listarCargo,'listaTipoResponsableElaboracion' => $listaTipoResponsableElaboracion,'listaTipoResponsableEjecucion' => $listaTipoResponsableEjecucion,'listarPersona'=>$listarPersona,'listarUResponsableERespoElabo' =>$listarUResponsableERespoElabo,'listarUResponsableERespoEjecucion' =>$listarUResponsableERespoEjecucion]);
+
+		$listaModalidadEjecucion=$this->Model_ModalidadE->GetModalidadE();
+		$listaFuenteFinanciamiento=$this->FuenteFinanciamiento_Model->get_FuenteFinanciamiento();
+
+		return $this->load->view('front/Ejecucion/ExpedienteTecnico/editar',['ExpedienteTecnicoM'=>$ExpedienteTecnicoM, 'listaimg'=>$listaimg,'listarCargo' => $listarCargo,'listaTipoResponsableElaboracion' => $listaTipoResponsableElaboracion,'listaTipoResponsableEjecucion' => $listaTipoResponsableEjecucion,'listarPersona'=>$listarPersona,'listarUResponsableERespoElabo' =>$listarUResponsableERespoElabo,'listarUResponsableERespoEjecucion' =>$listarUResponsableERespoEjecucion, 'listaModalidadEjecucion' => $listaModalidadEjecucion , 'listaFuenteFinanciamiento' => $listaFuenteFinanciamiento ]);
 	}
 
     function registroBuscarProyecto()
     {
-		/*$CodigoUnico=$this->input->get('inputValue');
-		$Registrosproyectobuscos=$this->Model_ET_Expediente_Tecnico->ExpedienteContarRegistros($CodigoUnico);
-		echo  json_encode($Registrosproyectobuscos);*/
 		$CodigoUnico=$this->input->get('inputValue');
 		$Registrosproyectobuscos=$this->Model_ET_Expediente_Tecnico->ProyectoViable($CodigoUnico);
-		$proyectoBuscar = count($Registrosproyectobuscos);
-
-
-
 		echo  json_encode($Registrosproyectobuscos);
-
-		//execute sp_ListarEstudioViabilizados @id_estudio_inv= 0 , @codigo_unico = '279110'
     }
 
 	function reportePdfMetrado($id_ExpedienteTecnico)

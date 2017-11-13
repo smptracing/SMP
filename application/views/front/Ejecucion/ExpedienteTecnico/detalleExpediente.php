@@ -5,14 +5,8 @@
 			<div class="col-md-12 col-xs-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
-						<h2><b>DETALLE EXPEDIENTE TECNICO</b> </h2>
-						<ul class="nav navbar-right panel_toolbox">
-						</ul>
-						<div class="clearfix"></div>
 					</div>
 							<div id="myTabContent" class="tab-content">
-								<!-- /Contenido del sector -->
-									<!-- /tabla de sector desde el row -->
 								<div class="row">  
 									<div class="col-md-12 col-sm-12 col-xs-12">	
 										<div class="x_content">
