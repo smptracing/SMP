@@ -170,18 +170,25 @@
 						</div>
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Fuente de financiamiento</label>
-							<div>
-								<input id="txtFuenteFinanciamiento" name="txtFuenteFinanciamiento" class="form-control col-md-4 col-xs-12"  placeholder="Fuente de financiamiento"  autocomplete="off" >
-							</div>
+					    	<div class="form-group">
+						      	<select class="selectpicker form-control" id="txtFuenteFinanciamiento" name="txtFuenteFinanciamiento" data-live-search="true">
+						        	<?php foreach ($listaFuenteFinanciamiento as $key => $value) { ?>
+										<option value="<?=$value->nombre_fuente_finan?>"><?=$value->nombre_fuente_finan?></option>
+									<?php } ?>
+						      	</select>
+					    	</div>
 						</div>
-
-						<div class="col-md-3 col-sm-3 col-xs-12">
-							<label class="control-label">Modalidad de Ejecución</label>
-							<div>
-								<input id="txtModalidadEjecucion" name="txtModalidadEjecucion"  value="" class="form-control col-md-4 col-xs-12"  placeholder="Modalidad de Ejecución"  autocomplete="off" >
-							</div>
-						</div>
-
+						<div class=" col-md-3">
+					  		<label class="control-label">Modalidad de Ejecución</label>
+					    	<div class="form-group">
+						      	<select class="selectpicker form-control" id="txtModalidadEjecucion" name="txtModalidadEjecucion" data-live-search="true">
+						      		<?php foreach ($listaModalidadEjecucion as $key => $value) { ?>
+						      			<option value='<?=$value->nombre_modalidad_ejec?>'><?=$value->nombre_modalidad_ejec?></option>
+						      			
+						      		<?php } ?>
+						      	</select>
+					    	</div>
+					  	</div>
 					</div>
 					<div class="row">
 						<div class="col-md-6 col-sm-3 col-xs-12">
@@ -685,6 +692,9 @@ $(function()
 	    formatted = output.reverse().join("");
 	    return("" + formatted + ((parts) ? "." + parts[1].substr(0, 2) : ""));
 	};
+	$('.selectpicker').selectpicker({
+	});
+
 			  
 </script>
 
