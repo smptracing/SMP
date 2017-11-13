@@ -210,168 +210,31 @@
     <div class="container">
       <section class="content" style="margin-top: 50px;">
       <div class="row box-container">
-        <div class="col-md-12 col-xs-12">
-                    <div class="col-md-3 col-sm-6 col-xs-12">
-                        <div class="zoom-in">
-                            <a href="<?php echo site_url('PrincipalPmi/pmi'); ?>">
-                            <div style="background-color: #39cccc;" class="col-md-12 thebox">
-                                <div class="span 6">
-                                    <span class="fa fa-calendar fa-3x"></span>
-                                </div>
-                                <div class="span 6">
-                                    <br>
-                                    Programación Multianual de Inversión.
-                                </div>
 
-                            </div>
-                            </a>
-                        </div>
-                    </div>
+        <?php foreach ($resp as $value): ?>
+          <?php if($value->id_modulo=='HOME') { ?>
+                     <div class="col-md-3 col-sm-6 col-xs-12">
+                         <div class="zoom-in">
+                             <a href="<?php echo site_url($value->url); ?>">
+                             <div style="background-color: <?php echo $value->color; ?>;" class="col-md-12 thebox">
+                                 <div class="span 6">
+                                     <span class="<?php echo $value->class_icono; ?>"></span>
+                                 </div>
+                                 <div class="span 6">
+                                     <br>
+                                     <?php echo $value->nombre; ?>
+                                 </div>
 
-                    <div class="col-md-3 col-sm-6 col-xs-12">
+                             </div>
+                             </a>
+                         </div>
+                     </div>
+          <?php } ?>
+        <?php endforeach; ?>
 
-                        <div class="zoom-in">
-                            <a href="<?php echo site_url('PrincipalFyE/PrincipalFyED'); ?>">
-                            <div style="background-color: #3d9970;" class="col-md-12 thebox">
-                                <div class="span 6">
-                                    <span class="fa fa-edit fa-3x"></span>
-                                </div>
-                                <div class="span 6">
-                                    <br>
-                                    Formulación y Evaluación de Proyectos de Inversión.
-                                </div>
-
-                            </div>
-                            </a>
-                        </div>
-
-                    </div>
-
-                    <div class="col-md-3 col-sm-6 col-xs-12">
-
-                        <div class="zoom-in">
-                            <a href="<?php echo site_url('PrincipalEjecucion/PrincipalEjec'); ?>">
-                            <div style="background-color: #0073b7;" class="col-md-12 thebox">
-                                <div class="span 6">
-                                    <span class="fa fa-play fa-3x"></span>
-                                </div>
-                                <div class="span 6">
-                                <br>
-                                    Ejecución de Proyectos de Inversión.
-                                </div>
-                            </div>
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                    <div class="col-md-3 col-sm-6 col-xs-12">
-
-                        <div class="zoom-in">
-
-                            <div style="background-color: #46607b;" class="col-md-12 thebox">
-                                <div class="span 6">
-                                    <span class="fa fa-bar-chart fa-3x"></span>
-                                </div>
-                                <div class="span 6">
-                                <br>
-                                  Reportes, Estadísticas e Informes.
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-md-12 col-xs-12">
-                                   <div class="col-md-3 col-sm-6 col-xs-12">
-
-                        <div class="zoom-in">
-                            <a href="<?php echo site_url('PrincipalReportes/PrincipalReportes'); ?>">
-                            <div style="background-color: #f39c12;" class="col-md-12 thebox">
-                                <div class="span 6">
-                                    <span class="fa fa-random fa-3x"></span>
-                                </div>
-                                <div class="span 6">
-                                <br>
-
-                                    Seguimiento de Proyectos de Inversión.
-
-                                </div>
-
-                            </div>
-                            </a>
-
-                        </div>
-
-                    </div>
-                 <div class="col-md-3 col-sm-6 col-xs-12">
-
-                        <div class="zoom-in">
-
-                            <div style="background-color: #605ca8;" class="col-md-12 thebox">
-                                <div class="span 6">
-                                    <span class="fa fa-eye fa-3x"></span>
-                                </div>
-                                <div class="span 6">
-                                <br>
-                                    Monitoreo de Proyectos de Inversión.
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <div class="col-md-3 col-sm-6 col-xs-12">
-
-                        <div class="zoom-in">
-                            <a href="<?php echo site_url('PrincipalParametros/parametros'); ?>">
-                            <div style="background-color: #E74C3C;" class="col-md-12 thebox">
-                                <div class="span 6">
-                                    <span class="fa fa-cogs fa-3x"></span>
-                                </div>
-                                <div class="span 6">
-                                <br>
-                                    Mantenimiento de Parámetros Generales.
-                                </div>
-
-                            </div>
-                            </a>
-                        </div>
-
-                    </div>
-                    <?php if( $this->session->userdata('cod_usuario_tipo') == '01' ) { ?>
-                    <div class="col-md-3 col-sm-6 col-xs-12">
-
-                        <div class="zoom-in">
-                            <a href="<?php echo site_url('Usuario/'); ?>">
-                            <div style="background-color: #3c8dbc;" class="col-md-12 thebox">
-                                <div class="span 6">
-                                    <span class="fa fa-users fa-3x"></span>
-                                </div>
-                                <div class="span 6">
-                                <br>
-                                    Usuarios, Permisos y Administración
-                                </div>
-
-                            </div>
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                  <?php } ?>
-
-                </div>
-            </div>
+      </div>
     </section>
+
     </div>
   </div>
   <footer class="main-footer">

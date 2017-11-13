@@ -11,11 +11,11 @@ public function __construct(){
 	{
 		$this->_load_layout('Front/Pmi/frmMantenimientoBrecha');
 	}
-//----------------MANTENIMIENTO DE LOS DATOS DE BRECHAS---------------------	
+//----------------MANTENIMIENTO DE LOS DATOS DE BRECHAS---------------------
 	/*INSERTAR UNA NUEVA BRECHA*/
 	 function AddBrecha()
 	 {
-	    if ($this->input->is_ajax_request()) 
+	    if ($this->input->is_ajax_request())
 	    {
 	    $cbxServPubAsoc=$this->input->post("cbxServPubAsoc");
 	      $txt_NombreBrecha =$this->input->post("txt_NombreBrecha");
@@ -23,7 +23,7 @@ public function __construct(){
 	      /*if($this->Model_Brecha->AddBrecha($cbxServPubAsoc,$txt_NombreBrecha,$txtArea_DescBrecha) == true)
 	        echo "No se añadio una  Brecha";
 	      else
-	        echo "Se añadio  una Brecha";  
+	        echo "Se añadio  una Brecha";
 	    }*/
 	     $Data=$this->Model_Brecha->AddBrecha($cbxServPubAsoc,$txt_NombreBrecha, $txtArea_DescBrecha);
             echo json_encode($Data);
@@ -37,7 +37,7 @@ public function __construct(){
     /* LISTAR BRECHAS*/
 	 function GetBrecha()
 	{
-		if ($this->input->is_ajax_request()) 
+		if ($this->input->is_ajax_request())
 		{
 		$datos=$this->Model_Brecha->GetBrecha();
 		echo json_encode($datos);
@@ -47,11 +47,11 @@ public function __construct(){
 			show_404();
 		}
 	}
-//FIN LISTAR BRECHAS 
+//FIN LISTAR BRECHAS
 //ACTUALIZAR O MODIFICAR DATOS DE LAS BRECHAS
  	function UpdateBrecha()
 	 {
-	    if ($this->input->is_ajax_request()) 
+	    if ($this->input->is_ajax_request())
 	    {
 		      $txt_IdBrechaModif =$this->input->post("txt_IdBrechaModif");
 		      $id_ServPubAsoc=$this->input->post("cbxSerPubAsocModificar");
@@ -60,7 +60,7 @@ public function __construct(){
 		      if($this->Model_Brecha->UpdateBrecha($txt_IdBrechaModif,$id_ServPubAsoc,$txt_NombreBrechaU,$txtArea_DescBrechaU) == false)
 		        echo "Se actualizo correctamente la brecha";
 		      else
-		        echo "No Se actualizo correctamente la brecha"; 
+		        echo "No Se actualizo correctamente la brecha";
 	    }
 	    else
 	    {
@@ -72,15 +72,15 @@ public function __construct(){
  	 //ELIMINAR BRECHA
  	 function DeleteBrecha()
  	 {
- 	 	if($this->input->is_ajax_request()) 
+ 	 	if($this->input->is_ajax_request())
 	    {
 
 	      $id_brecha=$this->input->post("id_brecha");
 	     if($this->Model_Brecha->DeleteBrecha($id_brecha)== false)
 		       echo "Se elimino la brecha";
 		      else
-		      echo "No se elimino ella brecha"; 
-		 } 
+		      echo "No se elimino ella brecha";
+		 }
 	     else
 	     {
 	      show_404();

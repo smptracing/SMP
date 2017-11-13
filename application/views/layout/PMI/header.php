@@ -37,7 +37,7 @@
             display: none;
         }
 
-        @media (max-width: 550px) 
+        @media (max-width: 550px)
         {
             #navtittle{
                 display: none;
@@ -46,7 +46,7 @@
             {
                 display: inline-block;
             }
-            
+
         }
         body
         {
@@ -76,7 +76,7 @@
 
 
 
-           
+
 
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
@@ -103,13 +103,13 @@
                           <li>
                             <a> <i class="<?php echo $arrayMenu[$i]['class_icono']; ?>"></i> <?php echo $arrayMenu[$i]['nombre']; ?> <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
-                               <li><a href="<?php echo site_url($arrayMenu[$i]["urlSubmenu"]); ?>"><?php echo $arrayMenu[$i]["nombreSubmenu"] ?></a></li> 
+                               <li><a href="<?php echo site_url($arrayMenu[$i]["urlSubmenu"]); ?>"><?php echo $arrayMenu[$i]["nombreSubmenu"] ?></a></li>
                           <?php
                           $openTag=true;
                         }
                         else{
                           ?>
-                          <li><a href="<?php echo site_url($arrayMenu[$i]["urlSubmenu"]); ?>"><?php echo $arrayMenu[$i]["nombreSubmenu"] ?></a></li> 
+                          <li><a href="<?php echo site_url($arrayMenu[$i]["urlSubmenu"]); ?>"><?php echo $arrayMenu[$i]["nombreSubmenu"] ?></a></li>
                           <?php
                         }
                       }
@@ -132,7 +132,7 @@
                     <ul class="nav child_menu">
                        <li><a href="<?php echo site_url('PmiCriterioG/criterioFuncion/2018'); ?>">Criterios por funcion</a></li>
                     </ul>
-                 
+
                   </li>
 
                 </ul>
@@ -143,16 +143,16 @@
                        <li><a href="<?php echo site_url('PuntajeCriterioPi/pipPriorizadas/'); ?>">Pip</a></li>
                        <li><a href="<?php echo site_url('PuntajeCriterioPi/pipPriorizadasPorFuncion/'); ?>">Pip por Funcion</a></li>
                     </ul>
-                 
+
                   </li>
 
                 </ul>-->
 
             </div>
 
-          
 
-        
+
+
 
 
             <!-- /menu footer buttons -->

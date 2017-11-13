@@ -17,19 +17,19 @@ class PrincipalPmi extends CI_Controller
     //Listar prioridad
     public function get_cantidad_costo_tipo_pi()
     {
-        if ($this->input->is_ajax_request()) 
+        if ($this->input->is_ajax_request())
         {
             $Opcion = "cantidad_costo_tipo_pi";
             $anio   = $this->input->post("anio");
             $data   = $this->Model_DashboardPmi->get_cantidad_costo_tipo_pi($Opcion, $anio);
-            foreach ($data as $key => $value) 
+            foreach ($data as $key => $value)
             {
-                $value->SumaTotal = a_number_format((floatval($data[0]->SumaCosto) + floatval($data[1]->SumaCosto)) , 2, '.',",",3);  
+                $value->SumaTotal = a_number_format((floatval($data[0]->SumaCosto) + floatval($data[1]->SumaCosto)) , 2, '.',",",3);
                 $value->SumaCosto = a_number_format($value->SumaCosto , 2, '.',",",3);
-            }         
+            }
             echo json_encode($data);
         }
-        else 
+        else
         {
             show_404();
         }
@@ -106,7 +106,7 @@ class PrincipalPmi extends CI_Controller
         }
 
     }
-    
+
 
     public function _load_layout($template)
     {

@@ -1,9 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 
-if ( ! function_exists('autentificar')) 
+if ( ! function_exists('autentificar'))
 {
-	function autentificar() 
+	function autentificar()
 	{
 		$CI = & get_instance();
 
@@ -14,7 +14,7 @@ if ( ! function_exists('autentificar'))
 		$libres = array(
 			'/',
 			'Login/muestralog',
-			'Login/ingresar',	
+			'Login/ingresar',
 			'AplicativoMovil/listadoProyectoGrupoFuncional',
 			'AplicativoMovil/listadoProyectoDivisionFuncional',
 			'AplicativoMovil/listadoProyectoFuncion',
@@ -24,9 +24,9 @@ if ( ! function_exists('autentificar'))
 			'AplicativoMovil/DatosGeneralesdelPip',
 			'AplicativoMovil/GraficarPip',
 			'AplicativoMovil/',
-			'AplicativoMovil/Pips',				
+			'AplicativoMovil/Pips',
 		);
-		if(in_array($url, $libres)) 
+		if(in_array($url, $libres))
 		{
 			echo $CI->output->get_output();
 		}
@@ -45,9 +45,9 @@ if ( ! function_exists('autentificar'))
 				if(in_array($url,$menu)){
 					if(in_array($url,$menuUsuario)){
 						echo $CI->output->get_output();
-					}	
+					}
 					else{
-						redirect('Login/muestralog');		
+						redirect('Login/muestralog');
 					}
 				}
 				else{
@@ -56,12 +56,12 @@ if ( ! function_exists('autentificar'))
 			}
 			/*
 			if($CI->session->userdata('nombreUsuario')){
-				echo $CI->output->get_output();	
+				echo $CI->output->get_output();
 			}*/
 			else {
 				redirect('Login/muestralog');
 			}
-			
+
 		}
 
 	}
