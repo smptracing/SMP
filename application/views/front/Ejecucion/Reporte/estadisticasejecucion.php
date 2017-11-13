@@ -127,47 +127,101 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
             <div class="col-md-3 col-sm-4 col-xs-12">
                 <div class="thebox">                  
                     <div class="box-header box-orange">    
-                        <i class="fa fa-home"></i>                    
+                        <i class="fa fa-money"></i>                    
                     </div>
                     <div class="box-content">
-                        <p class="titulo">PIA</p>
-                        <p class="parrafo">S/. 1,234,321.45</p>
+                        <p class="titulo">Costo de Preinversión</p>
+                        <p class="parrafo">S/. <?=a_number_format($expedienteTecnico->costo_total_preinv_et , 2, '.',",",3)?> </p>
                     </div>
                 </div>
             </div>
             <div class="col-md-3 col-sm-4 col-xs-12">
                 <div class="thebox">                  
                     <div class="box-header box-red">    
-                        <i class="fa fa-home"></i>                     
+                        <i class="fa fa-money"></i>                     
                     </div>
                     <div class="box-content">
-                        <p class="titulo">PIM</p>
-                        <p class="parrafo">S/. 123,234,321.43</p>
+                        <p class="titulo">Costo de Inversión</p>
+                        <p class="parrafo">S/. <?=a_number_format($expedienteTecnico->costo_total_inv_et , 2, '.',",",3)?> </p>
                     </div>
                 </div>
             </div>
             <div class="col-md-3 col-sm-4 col-xs-12">
                 <div class="thebox">                  
                     <div class="box-header box-green">  
-                        <i class="fa fa-home"></i>                       
+                        <i class="fa fa-circle-o-notch"></i>                       
                     </div>
                     <div class="box-content">
-                        <p class="titulo">DEVENGADO</p>
-                        <p class="parrafo">S/. 1,234,321</p>
+                        <p class="titulo">Tiempo de Ejecución</p>
+                        <p class="parrafo"><?=$expedienteTecnico->tiempo_ejecucion_pi_et?></p>
                     </div>
                 </div>
             </div>
             <div class="col-md-3 col-sm-4 col-xs-12">
                 <div class="thebox">                  
                     <div class="box-header box-blue"> 
-                        <i class="fa fa-home"></i>                        
+                        <i class="fa fa-users"></i>                        
                     </div>
                     <div class="box-content">
-                        <p class="titulo">GIRADO</p>
-                        <p class="parrafo">S/. 1,234,321</p>
+                        <p class="titulo">Número de Beneficiarios</p>
+                        <p class="parrafo"><?=a_number_format($expedienteTecnico->num_beneficiarios_indirectos , 0, '.',",",3)?></p>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h5 style="padding-bottom: 4px;"><b>Datos Generales del Proyecto:</b></h5>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <td style="width: 15%; text-align: right;"><b>Nombre del Proyecto:</b></td>
+                                        <td colspan="3" style="width: 85%;"><?= trim($expedienteTecnico->nombre_pi);?></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 15%; text-align: right;"><b>Codigo:</b></td>
+                                        <td colspan="3" style="font-size: 13px;"><?=$expedienteTecnico->codigo_unico_pi?></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 15%; text-align: right;"><b>Unidad Ejecutora:</b></td>
+                                        <td colspan="3"><?=$expedienteTecnico->nombre_ue?></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 15%; text-align: right;"><b>Costo de Preinversion:</b></td>
+                                        <td style="width: 35%;"> S/. <?=a_number_format($expedienteTecnico->costo_total_preinv_et,2,'.',",",3)?></td>
+                                        <td style="width: 15%; text-align: right;"><b>Función:</b></td>
+                                        <td style="width: 35%;"><?=$expedienteTecnico->funcion_et?></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 15%; text-align: right;"><b>Costo de Inversion:</b></td>
+                                        <td style="width: 35%;">S/. <?=a_number_format($expedienteTecnico->costo_total_inv_et,2,'.',",",3)?></td>
+                                        <td style="width: 15%; text-align: right;"><b>Programa:</b></td>
+                                        <td style="width: 35%;"><?=$expedienteTecnico->programa_et?></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 15%; text-align: right;"><b>Tiempo de Ejecución:</b></td>
+                                        <td style="width: 35%;"><?=$expedienteTecnico->tiempo_ejecucion_pi_et?></td>
+                                        <td style="width: 15%; text-align: right;"><b>SubPrograma:</b></td>
+                                        <td style="width: 35%;"><?=$expedienteTecnico->sub_programa_et?></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 15%; text-align: right;"><b>Número de Beneficiarios:</b></td>
+                                        <td style="width: 35%;"><?=a_number_format($expedienteTecnico->num_beneficiarios,0,'.',",",3)?></td>
+                                        <td style="width: 15%; text-align: right;"><b>Modalidad:</b></td>
+                                        <td style="width: 35%;"><?=$expedienteTecnico->modalidad_ejecucion_et?></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>            
         </div>
         <div class="row">
             <div>
