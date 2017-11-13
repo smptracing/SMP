@@ -721,79 +721,114 @@ class Expediente_Tecnico extends CI_Controller
 		$this->load->view('front/Ejecucion/ExpedienteTecnico/modalParaVistoBueno',['expedienteVistoBueno'=>$expedienteVistoBueno]);	
 	}
 
-	public function clonar($idExpedienteTecnico=null, $idEtapaExpedienteTecnico=null)
+	public function clonar()
 	{
-		$idExpedienteTecnico=$this->input->post('idExpedienteTecnico');
-		$idEtapaExpedienteTecnico=$this->input->post('idEtapaExpedienteTecnico');
-
-		if($idExpedienteTecnico!=null && $idEtapaExpedienteTecnico!=null)
+		if($_POST)
 		{
-			$this->db->trans_start();
+			$idExpedienteTecnico=$this->input->post('idExpedienteTecnico');
+			$idEtapaExpedienteTecnico=$this->input->post('idEtapaExpedienteTecnico');
+			$txtUrlDocAprobacion=$this->input->post('url');
+			$txtFechaAprobacion=$this->input->post('txtFechaAprobacion');
 
-			$etExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnico($idExpedienteTecnico);
-
-			if($etExpedienteTecnico->estado_revision!=1)
+			if($idExpedienteTecnico!=null && $idEtapaExpedienteTecnico!=null)
 			{
-				echo json_encode(['proceso' => 'Error', 'mensaje' => 'Aún no se ha dado el visto bueno a este expediente técnico para proceder con el pase de etapa.']);exit;
-			}
+				$this->db->trans_start();
 
-			if($etExpedienteTecnico->id_etapa_et==$idEtapaExpedienteTecnico)
-			{
-				echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede clonar expediente técnico para la misma etapa.']);exit;
-			}
+				$etExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnico($idExpedienteTecnico);
 
-			if($this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoPorIdETPadre($etExpedienteTecnico->id_et)!=null)
-			{
-				echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede clonar dos veces de un mismo expediente técnico.']);exit;
-			}
-
-			$listaETComponente=$this->Model_ET_Componente->ETComponentePorIdET($etExpedienteTecnico->id_et);
-
-			foreach($listaETComponente as $key => $value)
-			{
-				$listaETMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($value->id_componente);
-
-				foreach($listaETMeta as $index => $item)
+				if($etExpedienteTecnico->estado_revision!=1)
 				{
-					if($this->analisisUnitarioSinAnalitico($item))
+					echo json_encode(['proceso' => 'Error', 'mensaje' => 'Aún no se ha dado el visto bueno a este expediente técnico para proceder con el pase de etapa.']);exit;
+				}
+
+				if($etExpedienteTecnico->id_etapa_et==$idEtapaExpedienteTecnico)
+				{
+					echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede clonar expediente técnico para la misma etapa.']);exit;
+				}
+
+				if($this->Model_ET_Expediente_Tecnico->ExpedienteTecnicoPorIdETPadre($etExpedienteTecnico->id_et)!=null)
+				{
+					echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede clonar dos veces de un mismo expediente técnico.']);exit;
+				}
+
+				$listaETComponente=$this->Model_ET_Componente->ETComponentePorIdET($etExpedienteTecnico->id_et);
+
+				foreach($listaETComponente as $key => $value)
+				{
+					$listaETMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($value->id_componente);
+
+					foreach($listaETMeta as $index => $item)
 					{
-						echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede clonar expediente técnico porque existen análisis unitarios sin asignación de analítico.']);exit;
+						if($this->analisisUnitarioSinAnalitico($item))
+						{
+							echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede clonar expediente técnico porque existen análisis unitarios sin asignación de analítico.']);exit;
+						}
 					}
 				}
-			}
 
-			$this->Model_ET_Expediente_Tecnico->clonar($etExpedienteTecnico->id_et, $idEtapaExpedienteTecnico);
+				/*aca de sube el documento de apribacion y se edita la fecha de aprobacion*/
 
-			$idUltimoExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->UltimoExpedienteTecnico()->id_et;
+				$config['upload_path']   = './uploads/ResolucioExpediente/';
+		        $config['allowed_types'] = '*';
+		        $config['max_width']     = 2000;
+		        $config['max_height']    = 2000;
+		        $config['max_size']      = 50000;
+		        $config['encrypt_name']  = false;
+		        $config['file_name'] =$idExpedienteTecnico;
+		        $this->load->library('upload', $config);
+		        $this->upload->initialize($config);
+				$this->upload->do_upload('fileResolucion');	
 
-			$listaETImgOrigen=$this->Model_ET_Img->ListarImagen($etExpedienteTecnico->id_et);
-			$listaETImgDestino=$this->Model_ET_Img->ListarImagen($idUltimoExpedienteTecnico);
+				$this->Model_ET_Expediente_Tecnico->AprobarExpediente($txtUrlDocAprobacion, $txtFechaAprobacion, $idExpedienteTecnico);
 
-			foreach($listaETImgOrigen as $key => $value)
-			{
-				$nombreImgTemp=$listaETImgDestino[$key]->id_img.'.'.(explode('.', $value->desc_img)[count(explode('.', $value->desc_img))-1]);
+				$this->Model_ET_Expediente_Tecnico->clonar($etExpedienteTecnico->id_et, $idEtapaExpedienteTecnico);
 
-				$this->Model_ET_Img->updateDescImagePorIdImg($listaETImgDestino[$key]->id_img, $nombreImgTemp);
+				$idUltimoExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->UltimoExpedienteTecnico()->id_et;
 
-				if(file_exists('./uploads/ImageExpediente/'.$value->desc_img))
+				$listaETImgOrigen=$this->Model_ET_Img->ListarImagen($etExpedienteTecnico->id_et);
+				$listaETImgDestino=$this->Model_ET_Img->ListarImagen($idUltimoExpedienteTecnico);
+
+				foreach($listaETImgOrigen as $key => $value)
 				{
-					copy('./uploads/ImageExpediente/'.$value->desc_img, './uploads/ImageExpediente/'.$nombreImgTemp);
+					$nombreImgTemp=$listaETImgDestino[$key]->id_img.'.'.(explode('.', $value->desc_img)[count(explode('.', $value->desc_img))-1]);
+
+					$this->Model_ET_Img->updateDescImagePorIdImg($listaETImgDestino[$key]->id_img, $nombreImgTemp);
+
+					if(file_exists('./uploads/ImageExpediente/'.$value->desc_img))
+					{
+						copy('./uploads/ImageExpediente/'.$value->desc_img, './uploads/ImageExpediente/'.$nombreImgTemp);
+					}
 				}
-			}
 
-			if(file_exists('./uploads/ResolucioExpediente/'.$etExpedienteTecnico->id_et.'.'.$etExpedienteTecnico->url_doc_aprobacion_et))
+				if(file_exists('./uploads/ResolucioExpediente/'.$etExpedienteTecnico->id_et.'.'.$etExpedienteTecnico->url_doc_aprobacion_et))
+				{
+					copy('./uploads/ResolucioExpediente/'.$etExpedienteTecnico->id_et.'.'.$etExpedienteTecnico->url_doc_aprobacion_et, './uploads/ResolucioExpediente/'.$idUltimoExpedienteTecnico.'.'.$etExpedienteTecnico->url_doc_aprobacion_et);
+				}
+
+				$this->db->trans_complete();
+
+				echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Clonación de expediente en la etapa seleccionada realizado correctamente.']);exit;
+			}
+		}
+		else
+		{
+			$listaETEtapaEjecucion=$this->Model_ET_Etapa_Ejecucion->ETEtapaEjecucion_Listar('R');
+
+			$idExpedienteTecnico= $this->input->get('idExpedienteTecnico');
+
+			$ExpedienteTecnico = $this->Model_ET_Expediente_Tecnico->ExpedienteTecnico($idExpedienteTecnico);
+
+			$fechaAprobacion = '';
+
+			if($ExpedienteTecnico->url_doc_aprobacion_et!=null && $ExpedienteTecnico->fecha_aprobacion != null)
 			{
-				copy('./uploads/ResolucioExpediente/'.$etExpedienteTecnico->id_et.'.'.$etExpedienteTecnico->url_doc_aprobacion_et, './uploads/ResolucioExpediente/'.$idUltimoExpedienteTecnico.'.'.$etExpedienteTecnico->url_doc_aprobacion_et);
+				$fechaAprobacion = $ExpedienteTecnico->fecha_aprobacion;
 			}
 
-			$this->db->trans_complete();
-
-			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Clonación de expediente en la etapa seleccionada realizado correctamente.']);exit;
+			return $this->load->view('front/Ejecucion/ExpedienteTecnico/modalParaClonar', ['idExpedienteTecnico' => $idExpedienteTecnico, 'listaETEtapaEjecucion' => $listaETEtapaEjecucion,'fechaAprobacion' => $fechaAprobacion]);
 		}
 
-		$listaETEtapaEjecucion=$this->Model_ET_Etapa_Ejecucion->ETEtapaEjecucion_Listar('R');
-
-		return $this->load->view('front/Ejecucion/ExpedienteTecnico/modalParaClonar', ['idExpedienteTecnico' => $idExpedienteTecnico, 'listaETEtapaEjecucion' => $listaETEtapaEjecucion]);
+		
 	}
 
 	private function analisisUnitarioSinAnalitico($meta)
