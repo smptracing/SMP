@@ -87,7 +87,11 @@ class Expediente_Tecnico extends CI_Controller
 
 	public function monitorCoordinador()
 	{
-		$listaETExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->ListarExpedienteTecnico();
+		$flat="LISTARETAPA";
+		$id_etapa_et="1";
+		//$listaExpedienteTecnicoElaboracion=$this->Model_ET_Expediente_Tecnico->ExpedienteListarElaboracion($flat,$id_etapa_et);
+
+		$listaETExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteListarElaboracion($flat,$id_etapa_et);
 
 		foreach($listaETExpedienteTecnico as $key => $value)
 		{
@@ -360,7 +364,7 @@ class Expediente_Tecnico extends CI_Controller
 			}
 			$this->db->trans_complete();
 
-			return redirect('/Expediente_Tecnico');
+			return redirect('/Expediente_Tecnico/verdetalle/'.$hdIdExpediente);
 		}
 		
 		$id_et=$this->input->GET('id_et');

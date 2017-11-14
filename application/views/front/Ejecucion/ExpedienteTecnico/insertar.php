@@ -50,7 +50,7 @@
 						<div class="col-md-12 col-sm-3 col-xs-12">
 							<label class="control-label">Nombre del Proyecto</label>
 							<div>
-								<input id="txtProyecto" name="txtProyecto" value="<?= $Listarproyectobuscado->nombre_pi?>" class="form-control col-md-4 col-xs-12"  placeholder="Nombre del proyecto"  autocomplete="off">	
+								<input id="txtProyecto" name="txtProyecto" value="<?= $Listarproyectobuscado->nombre_pi?>" class="form-control col-md-4 col-xs-12" readonly="readonly"  placeholder="Nombre del proyecto"  autocomplete="off">	
 							</div>	
 						</div>
 					</div>				
@@ -181,7 +181,7 @@
 						<div class="col-md-6 col-sm-3 col-xs-12">
 							<label class="control-label">Número de beneficiarios indirectos del proyecto</label>
 							<div>
-								<input id="txtNumBeneficiarios" name="txtNumBeneficiarios" value="" class="form-control col-md-4 col-xs-12"  placeholder="Número de beneficiarios indirectos"  autocomplete="off" >
+								<input id="txtNumBeneficiarios" name="txtNumBeneficiarios" class="form-control col-md-4 col-xs-12"  placeholder="Número de beneficiarios indirectos"  autocomplete="off" >
 							</div>
 						</div>
 					</div>					

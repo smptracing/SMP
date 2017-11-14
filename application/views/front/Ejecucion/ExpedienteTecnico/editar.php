@@ -689,12 +689,12 @@ $(function()
                     });
 			});
 	}
-	 $('#btnEnviarFormulario').on('click', function(event)
-	   	{
-            var resolucion=$("#Documento_Resolucion").val(); 
-            var url = resolucion.split('.').pop();
-            $("#Editurl").val(url);
-        });
+	$('#btnEnviarFormulario').on('click', function(event)
+   	{
+        var resolucion=$("#Documento_Resolucion").val(); 
+        var url = resolucion.split('.').pop();
+        $("#Editurl").val(url);
+    });
 
 	$(".moneda").keyup(function(e)
     {
