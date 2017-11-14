@@ -129,7 +129,6 @@ class Expediente_Tecnico extends CI_Controller
 			$txtUbicacionUE=$this->input->post('txtUbicacionUE');
 			$txtTelefonoUE=$this->input->post('txtTelefonoUE');
 			$txtRuc=$this->input->post('txtRuc');
-			$txtNombrePip=$this->input->post('txtNombrePip');
 			$txtUbicacionPip=$this->input->post('txtUbicacionPip');
 			$txtCodigoUnico=$this->input->post('txtCodigoUnico');			
 			$txtCostoTotalPreInversion=floatval(str_replace(",","",$this->input->post("txtCostoTotalPreInversion")));
@@ -138,11 +137,11 @@ class Expediente_Tecnico extends CI_Controller
 			$txtCostoTotalInversion=floatval(str_replace(",","",$this->input->post('txtCostoTotalInversion')));
 			$txtCostoDirectoInversion=floatval(str_replace(",","",$this->input->post('txtCostoDirectoInversion')));
 			$txtGastosGenerales=floatval(str_replace(",","",$this->input->post('txtGastosGenerales')));
-			$txtGastosSupervision=floatval(str_replace(",","",$this->input->post('txtGastosSupervision')));
-			$txtFuncionProgramatica=$this->input->post('txtFuncionProgramatica');
+			$txtGastosSupervision=floatval(str_replace(",","",$this->input->post('txtGastosSupervision')));			
 			$txtFuncion=$this->input->post('txtFuncion');
 			$txtPrograma=$this->input->post('txtPrograma');
 			$txtSubPrograma=$this->input->post('txtSubPrograma');
+			$txtFuncionProgramatica=$txtFuncion."/".$txtPrograma."/".$txtSubPrograma;
 			$txtProyecto=$this->input->post('txtProyecto');
 			$txtComponente=$this->input->post('txtComponente');
 			$txtMeta=$this->input->post('txtMeta');
@@ -270,8 +269,7 @@ class Expediente_Tecnico extends CI_Controller
 	        $this->load->library('upload', $config);
 			$this->upload->do_upload('Documento_Resolucion');
 			$flat ="EDITAR";
-			$hdIdExpediente=$this->input->post('hdIdExpediente');
-			//$txtIdPi=$this->input->post('txtIdPi');
+			$hdIdExpediente=$this->input->post('hdIdExpediente');			
 			$txtNombreUe=$this->input->post('txtNombreUe');
 			$txtDireccionUE=$this->input->post('txtDireccionUE');
 			$txtUbicacionUE=$this->input->post('txtUbicacionUE');
@@ -285,11 +283,11 @@ class Expediente_Tecnico extends CI_Controller
 			$txtCostoDirectoInversion=floatval(str_replace(",","",$this->input->post('txtCostoDirectoInversion')));
 			$txtGastosGenerales=floatval(str_replace(",","",$this->input->post('txtGastosGenerales')));
 			$txtGastosSupervision=floatval(str_replace(",","",$this->input->post('txtGastosSupervision')));
-			
-			$txtFuncionProgramatica=$this->input->post('txtFuncionProgramatica');
+
 			$txtFuncion=$this->input->post('txtFuncion');
 			$txtPrograma=$this->input->post('txtPrograma');
 			$txtSubPrograma=$this->input->post('txtSubPrograma');
+			$txtFuncionProgramatica=$txtFuncion."/".$txtPrograma."/".$txtSubPrograma;
 			$txtProyecto=$this->input->post('txtProyecto');
 			$txtComponente=$this->input->post('txtComponente');
 			$txtMeta=$this->input->post('txtMeta');
@@ -348,7 +346,7 @@ class Expediente_Tecnico extends CI_Controller
 					$_FILES['imagen']['size'] = $variablefile['imagen']['size'][$i];
 					$dato=(string)$_FILES['imagen']['name'];
 					$nombre=explode('.',$dato); 
-					$_FILES['imagen']['name'] =$idImageExp->id_img.'.'.$nombre[1];//(string)($idImageExp->id_img.'.'.$nombre[1].'.'.$nombre[1]);// $variablefile['imagen']['name'][$i];
+					$_FILES['imagen']['name'] =$idImageExp->id_img.'.'.$nombre[1];
 					$this->upload->initialize($config);
 					if ($this->upload->do_upload('imagen'))
 					 {

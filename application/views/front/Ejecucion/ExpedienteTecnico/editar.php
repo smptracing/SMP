@@ -50,10 +50,10 @@
 					</div>
 					<div class="row">
 						<div class="col-md-12 col-sm-3 col-xs-12">
-							<label class="control-label">Nombre del Proyecto</label>
+							<label class="control-label">Proyecto</label>
 							<div>
-								<input id="txtNombrePip" name="txtNombrePip" value="<?= $ExpedienteTecnicoM->nombre_pi?>" class="form-control col-md-4 col-xs-12"  placeholder="Nombre del proyecto" required="required" autocomplete="off" readonly="readonly">
-							</div>	
+								<input id="txtProyecto" name="txtProyecto" value="<?= $ExpedienteTecnicoM->proyecto_et?>" class="form-control col-md-4 col-xs-12"  placeholder="Proyecto"  autocomplete="off" >
+							</div>
 						</div>
 					</div>
 				
@@ -119,17 +119,7 @@
 								<input id="txtGastosSupervision" name="txtGastosSupervision" value ="<?= a_number_format($ExpedienteTecnicoM->gastos_supervision_et , 2, '.',",",3) ?>" class="form-control col-md-4 col-xs-12 moneda"  placeholder="Costo Indirecto" autocomplete="off" >
 							</div>
 						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-md-12 col-sm-3 col-xs-12">
-							<label class="control-label">Funcion Programatica</label>
-							<div>
-								<input id="txtFuncionProgramatica" name="txtFuncionProgramatica" class="form-control col-md-4 col-xs-12"  placeholder="Funcion Programatica" autocomplete="off" value="<?= $ExpedienteTecnicoM->funcion_programatica?>">
-							</div>
-						</div>
-					</div>
-					
+					</div>					
 					<div class="row">
 						<div class="col-md-4 col-sm-3 col-xs-12">
 							<label class="control-label">Funcion</label>
@@ -149,15 +139,7 @@
 								<input id="txtSubPrograma" name="txtSubPrograma" class="form-control col-md-4 col-xs-12" value="<?= $ExpedienteTecnicoM->sub_programa_et?>" placeholder="Sub Programa"  autocomplete="off" readonly="readonly">
 							</div>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12 col-sm-3 col-xs-12">
-							<label class="control-label">Proyecto</label>
-							<div>
-								<input id="txtProyecto" name="txtProyecto" value="<?= $ExpedienteTecnicoM->proyecto_et?>" class="form-control col-md-4 col-xs-12"  placeholder="Proyecto"  autocomplete="off" >
-							</div>
-						</div>
-					</div>
+					</div>					
 					<div class="row">
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Componente</label>
@@ -313,7 +295,7 @@
                         </div>
                         <div class="col-md-3 col-sm-12 col-xs-12">
                             <label class="control-label">Fecha de Aprobacion:</label>
-                            <input class="form-control col-md-4 col-xs-12" type="date" name="txtFechaAprobacion" id="txtFechaAprobacion" notValidate>
+                            <input class="form-control col-md-4 col-xs-12" type="date" name="txtFechaAprobacion" value="<?=$ExpedienteTecnicoM->fecha_aprobacion?>" id="txtFechaAprobacion" notValidate>
                         </div>
 					</div>
 					<div class="row">
@@ -417,6 +399,11 @@ $(function()
 					notEmpty:
 					{
 						message: '<b style="color: red;">El campo "Telefono unidad ejecutora" es requerido.</b>'
+					},
+					regexp:
+					{
+						regexp: /^[0-9]+$/,
+						message: '<b style="color: red;">El campo "Teléfono" debe ser un numero.</b>'
 					}
 				}
 			},
@@ -427,26 +414,11 @@ $(function()
 					notEmpty:
 					{
 						message: '<b style="color: red;">El campo "Ruc" es requerido.</b>'
-					}
-				}
-			},
-			txtRucUE:
-			{
-				validators:
-				{
-					notEmpty:
+					},
+					regexp:
 					{
-						message: '<b style="color: red;">El campo "Ruc" es requerido.</b>'
-					}
-				}
-			},
-			txtNombrePip:
-			{
-				validators:
-				{
-					notEmpty:
-					{
-						message: '<b style="color: red;">El campo "Nombre del PIP" es requerido.</b>'
+						regexp: /^([0-9]){11}$/,
+						message: '<b style="color: red;">El campo "Ruc" debe ser un número de 11 dígitos.</b>'
 					}
 				}
 			},
@@ -565,16 +537,6 @@ $(function()
 					}  
 				}
 			},
-			txtFuncionProgramatica:
-			{
-				validators:
-				{
-					notEmpty:
-					{
-						message: '<b style="color: red;">El campo "Funcion Programatica" es requerido.</b>'
-					} 
-				}
-			},
 			txtFuncion:
 			{
 				validators:
@@ -672,7 +634,12 @@ $(function()
 					notEmpty:
 					{
 						message: '<b style="color: red;">El campo "Tiempo Ejecucion" es requerido.</b>'
-					} 
+					},
+					regexp:
+					{
+						regexp: /^\d*$/,
+						message: '<b style="color: red;">El campo "Numero de beneficiarios" debe ser un numero.</b>'
+					}
 				}
 			},
 			txtNumFolio:
@@ -682,6 +649,11 @@ $(function()
 					notEmpty:
 					{
 						message: '<b style="color: red;">El campo "Numero de Folio" es requerido.</b>'
+					},
+					regexp:
+					{
+						regexp: /^\d*$/,
+						message: '<b style="color: red;">El campo "Numero de folios" debe ser un número.</b>'
 					} 
 				}
 			}					

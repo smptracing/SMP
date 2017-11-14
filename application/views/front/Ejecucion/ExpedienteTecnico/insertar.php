@@ -50,11 +50,10 @@
 						<div class="col-md-12 col-sm-3 col-xs-12">
 							<label class="control-label">Nombre del Proyecto</label>
 							<div>
-								<input id="txtNombrePip" name="txtNombrePip" value="<?= $Listarproyectobuscado->nombre_pi?>" class="form-control col-md-4 col-xs-12"  placeholder="Nombre del proyecto"  autocomplete="off" readonly="readonly">	
+								<input id="txtProyecto" name="txtProyecto" value="<?= $Listarproyectobuscado->nombre_pi?>" class="form-control col-md-4 col-xs-12"  placeholder="Nombre del proyecto"  autocomplete="off">	
 							</div>	
 						</div>
-					</div>
-				
+					</div>				
 					<div class="row">
 						<div class="col-md-6 col-sm-3 col-xs-12">
 							<label class="control-label">Ubicación donde se plantea su Ejecución</label>
@@ -117,16 +116,6 @@
 							</div>
 						</div>
 					</div>
-
-					<div class="row">
-						<div class="col-md-12 col-sm-3 col-xs-12">
-							<label class="control-label">Funcion Programatica</label>
-							<div>
-								<input id="txtFuncionProgramatica" name="txtFuncionProgramatica" class="form-control col-md-4 col-xs-12"  placeholder="Funcion Programatica" autocomplete="off" >
-							</div>
-						</div>
-					</div>
-					
 					<div class="row">
 						<div class="col-md-4 col-sm-3 col-xs-12">
 							<label class="control-label">Funcion</label>
@@ -146,15 +135,7 @@
 								<input id="txtSubPrograma" name="txtSubPrograma" class="form-control col-md-4 col-xs-12" value="<?= $Listarproyectobuscado->nombre_grup_funcional?>" placeholder="Sub Programa"  autocomplete="off" readonly="readonly">
 							</div>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12 col-sm-3 col-xs-12">
-							<label class="control-label">Proyecto</label>
-							<div>
-								<input id="txtProyecto" name="txtProyecto" class="form-control col-md-4 col-xs-12"  placeholder="Proyecto"  autocomplete="off" >
-							</div>
-						</div>
-					</div>
+					</div>					
 					<div class="row">
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Componente</label>
@@ -522,23 +503,13 @@ $(function()
 						}
 					}
 				},
-				txtFuncionProgramatica:
-				{
-					validators:
-					{
-						notEmpty:
-						{
-							message: '<b style="color: red;">El campo "Función Programatica" es requerido.</b>'
-						}
-					}
-				},
 				txtProyecto:
 				{
 					validators:
 					{
 						notEmpty:
 						{
-							message: '<b style="color: red;">El campo "Proyecto" es requerido.</b>'
+							message: '<b style="color: red;">El campo "Nombre del Proyecto" es requerido.</b>'
 						}
 					}
 				},

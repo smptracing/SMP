@@ -431,7 +431,7 @@ function Eliminar(id_et)
 	function(){$.ajax({url:base_url+"index.php/Expediente_Tecnico/eliminar",type:"POST",data:{id_et:id_et},success:function(respuesta)
 			{
 				swal("ELIMINADO!", "Se elimino correctamente el expediente técnico.", "success");
-				window.location.href='<?=base_url();?>index.php/Expediente_Tecnico/index/';
+				//window.location.href='<?=base_url();?>index.php/Expediente_Tecnico/index/';
 				renderLoading();
 			}
 		});
