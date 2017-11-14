@@ -9,6 +9,7 @@
 						<div class="col-md-12 col-sm-3 col-xs-12">
 							<label class="control-label">Partida</label>
 							<div>
+								<input type="text" name="" value="<?=$idExpedienteTecnico?>">
 								<input class="form-control" name="hdIdDetallePartida" id="hdIdDetallePartida" readonly="readonly" type="hidden" value="<?=$DetallePartida->id_detalle_partida?>"> 	
 								<input class="form-control" placeholder="descripcion de Partida" autocomplete="off" readonly="readonly" value="<?=$DetallePartida->desc_partida?>">	
 							</div>	
@@ -155,16 +156,12 @@ $('#btnEnviarFormulario').on('click', function(event)
             {
                 swal("Error","Ocurrio un error ", "error");
             }
-            paginaAjaxDialogo('otherModal', 'Valorizacion de Partida',{ id_DetallePartida: <?=$DetallePartida->id_detalle_partida?> }, base_url+'index.php/Expediente_Tecnico/AsignarValorizacion', 'GET', null, null, false, true);
   			$('#frmValorizacion')[0].reset();
+  			window.location.href='<?=base_url();?>index.php/Expediente_Tecnico/ControlMetrado/'+<?=$idExpedienteTecnico?>;
+			renderLoading();
         }
     });  
 });
-/*$('#otherModal').on('hidden.bs.modal', function () 
-{
-	$("#tableListaValorizacion").dataTable().fnReloadAjax();
-
-})*/
 function eliminar(codigo)
 {
 	swal(
@@ -197,7 +194,8 @@ function eliminar(codigo)
 			            {
 			                swal("Error","Ocurrio un error ", "error");
 			            }
-			            paginaAjaxDialogo('otherModal', 'Valorizacion de Partida',{ id_DetallePartida: <?=$DetallePartida->id_detalle_partida?> }, base_url+'index.php/Expediente_Tecnico/AsignarValorizacion', 'GET', null, null, false, true);
+			            window.location.href='<?=base_url();?>index.php/Expediente_Tecnico/ControlMetrado/'+<?=$idExpedienteTecnico?>;
+						renderLoading();
 			        }
 			    }); 
             }

@@ -37,7 +37,7 @@ function mostrarAnidado($meta, $expedienteTecnico,$countValorizacionDiaria)
 				'<td style="text-align: right;">'.$value->cantidad.'</td>'.
 				'<td style="text-align: right;">S/.'.$value->precio_unitario.'</td>'.
 				'<td style="text-align: right;">S/.'.number_format($value->cantidad*$value->precio_unitario, 2).'</td>'.
-				'<td style="text-align: center;"><a class= "'.($valorSuperado == true ? 'btn btn-success btn-xs' : 'btn btn-info btn-xs').'"  onclick="valorizar('.$value->childDetallePartida->id_detalle_partida.');"><i class="fa fa-plus"></i> Registrar</a></td>'.
+				'<td style="text-align: center;"><a class= "'.($valorSuperado == true ? 'btn btn-success btn-xs' : 'btn btn-info btn-xs').'"  onclick="valorizar('.$expedienteTecnico->id_et.','.$value->childDetallePartida->id_detalle_partida.');"><i class="fa fa-plus"></i> Registrar</a></td>'.
 				'</tr>';
 		}		
 	}
@@ -135,17 +135,8 @@ function mostrarAnidado($meta, $expedienteTecnico,$countValorizacionDiaria)
 		});
 
 	});
-	function valorizar(codigo)
+	function valorizar(idEt,codigo)
 	{
-		paginaAjaxDialogo('otherModal', 'Valorizacion de Partida',{ id_DetallePartida: codigo }, base_url+'index.php/Expediente_Tecnico/AsignarValorizacion', 'GET', null, null, false, true);
+		paginaAjaxDialogo('otherModal', 'Valorizacion de Partida',{ idExpediente: idEt, id_DetallePartida: codigo }, base_url+'index.php/Expediente_Tecnico/AsignarValorizacion', 'GET', null, null, false, true);
 	}
-	$('#otherModal').on('hide.bs.modal', function () 
-	{
-		alert("cerrado");
-
-	})
-	//$("#myModal").on("hidden.bs.modal", function () {
-    //put your default event here
-	//});
-
 </script>

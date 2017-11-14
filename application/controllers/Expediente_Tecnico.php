@@ -192,7 +192,7 @@ class Expediente_Tecnico extends CI_Controller
 			$variablefile= $_FILES;
 			$info = array();
 			$files = count($_FILES['imagen']['name']);
-			$this->session->set_flashdata('correcto', 'Expediente Tecnico modificado correctamente.');
+			$this->session->set_flashdata('correcto', 'Expediente Tecnico registrado correctamente.');
 			if($files>1)
 			{
 				for ($i=0; $i < $files; $i++) 
@@ -682,7 +682,7 @@ class Expediente_Tecnico extends CI_Controller
            		if($this->Model_ET_Expediente_Tecnico->eliminar($flat,$id_et)==true)
 	            {
 	            	
-	            	echo json_encode("correcto se elimino");
+	            	echo json_encode("correcto se elimino");exit;
 	            }		
            	}
 		}
@@ -977,7 +977,6 @@ class Expediente_Tecnico extends CI_Controller
 			foreach($expedienteTecnico->childComponente as $key => $value)
 			{
 				$value->childMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($value->id_componente);
-				//$value->countValorizacionDiaria = $this->Model_DetSegOrden->sumatoriaValorizacion();
 				foreach($value->childMeta as $index => $item)
 				{
 					$this->obtenerMetaAnidadaParaValorizacion($item);				
@@ -1001,7 +1000,6 @@ class Expediente_Tecnico extends CI_Controller
 
 			$DetallePartida = $this->Model_ET_Detalle_Partida->ETPDetallePartida($idDetallePartida);
 			$subtotal = $cantidad * $DetallePartida->precio_unitario;
-			//$listaPartida = $this->Model_DetSegValorizacion->listarValorizacionPorDetallePartida($idDetallePartida);
 			$listaPartida = $this->Model_DetSegOrden->listarValorizacionPorDetallePartida($idDetallePartida);
 
 			$cantidadTotaldePartidas=0;
@@ -1016,7 +1014,6 @@ class Expediente_Tecnico extends CI_Controller
 			}
 			else
 			{
-				//$data = $this->Model_DetSegValorizacion->insertar($fecha, $cantidad, $subtotal, $fechadia,$idDetallePartida);	
 				$data = $this->Model_DetSegOrden->insertar($fecha, $cantidad, $subtotal, $fechadia,$idDetallePartida);		
 				if ($data==true) 
 				{
@@ -1031,11 +1028,13 @@ class Expediente_Tecnico extends CI_Controller
 		else
 		{
 			$fechaActual=date('Y-m-d');
+			
 			$idDetallePartida=$this->input->get('id_DetallePartida');
+			$idExpedienteTecnico=$this->input->get('idExpediente');
+
 			$DetallePartida = $this->Model_ET_Detalle_Partida->ETPDetallePartida($idDetallePartida);
-			//$listaValorizacion = $this->Model_DetSegValorizacion->listarValorizacionPorDetallePartida($idDetallePartida);
 			$listaValorizacion = $this->Model_DetSegOrden->listarValorizacionPorDetallePartida($idDetallePartida);
-			$this->load->view('front/Ejecucion/EControlMetrado/valorizacionpartida', ['DetallePartida' => $DetallePartida, 'fecha' => $fechaActual, 'listaValorizacion' => $listaValorizacion]);
+			$this->load->view('front/Ejecucion/EControlMetrado/valorizacionpartida', ['DetallePartida' => $DetallePartida, 'fecha' => $fechaActual, 'listaValorizacion' => $listaValorizacion,'idExpedienteTecnico' => $idExpedienteTecnico]);
 		}
 		
 	}
