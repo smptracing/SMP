@@ -664,7 +664,7 @@ class Expediente_Tecnico extends CI_Controller
 
 			if((count($this->Model_ET_Expediente_Tecnico->VerificarComponenteExpedienteAntesEliminar($id_et))>0) || (count($this->Model_ET_Expediente_Tecnico->VerificarETPresupuestoAnaliticoExpedienteAntesEliminar($id_et))>0) || (count($this->Model_ET_Expediente_Tecnico->VerificarETTareaGantt($id_et))>0) )
             {	
-            	echo json_encode('No se puede eliminar este expediente tecnico.');exit;
+            	echo json_encode(['proceso' => 'Error', 'mensaje' => 'No se puede eliminar este expediente.']);exit;
             }
            	else
            	{
@@ -682,7 +682,8 @@ class Expediente_Tecnico extends CI_Controller
            		if($this->Model_ET_Expediente_Tecnico->eliminar($flat,$id_et)==true)
 	            {
 	            	
-	            	echo json_encode("correcto se elimino");exit;
+	            	//echo json_encode("correcto se elimino");
+	            	echo json_encode(['proceso' => 'correcto', 'mensaje' => 'El registro fue eliminado correctamente.']);exit;
 	            }		
            	}
 		}

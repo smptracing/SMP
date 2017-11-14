@@ -365,58 +365,6 @@ if($sessionTempError){ ?>
 <?php } ?>
 <script>
 
-
-$(document).ready(function()
-{
-	$('#table-ExpedienteTecnico').DataTable(
-	{
-		"language":idioma_espanol
-	});
-
-});
-
-
-$(document).ready(function()
-{
-	$('#table-Compatibilidad').DataTable(
-	{
-		"language":idioma_espanol
-	});
-
-});
-$(document).ready(function()
-{
-	$('#table-Modificacion').DataTable(
-	{
-		"language":idioma_espanol
-	});
-
-});
-
-$(document).ready(function()
-{
-	$('#table-Ejecucion_Deductivos').DataTable(
-	{
-		"language":idioma_espanol
-	});
-
-});
-$(document).ready(function()
-{
-	$('#table-Ejecucion-Adicional').DataTable(
-	{
-		"language":idioma_espanol
-	});
-
-});
-$(document).ready(function()
-{
-	$('#tableExpedienteTecnico').DataTable(
-	{
-		"language":idioma_espanol
-	});
-
-});
 function Eliminar(id_et)
 {
 	swal({
@@ -430,16 +378,28 @@ function Eliminar(id_et)
 	},
 	function(){$.ajax({url:base_url+"index.php/Expediente_Tecnico/eliminar",type:"POST",data:{id_et:id_et},success:function(respuesta)
 			{
-				swal("ELIMINADO!", "Se elimino correctamente el expediente técnico.", "success");
-				window.location.href='<?=base_url();?>index.php/Expediente_Tecnico/index/';
-				renderLoading();
+				var object = JSON.parse(respuesta);
+				if(<?=$ExpedienteTecnicoElaboracion[0]->id_etapa_et?> == 1)
+				{
+					(object.proceso == 'Error' ? swal(object.proceso,object.mensaje, "error") : swal(object.proceso,object.mensaje, "success"));
+					window.location.href='<?=base_url();?>index.php/Expediente_Tecnico/index/';
+					renderLoading();
+				}
+				if(<?=$ExpedienteTecnicoElaboracion[0]->id_etapa_et?> == 3)
+				{
+					(object.proceso == 'Error' ? swal(object.proceso,object.mensaje, "error") : swal(object.proceso,object.mensaje, "success"));
+					window.location.href='<?=base_url();?>index.php/Expediente_Tecnico/index/';
+					renderLoading();
+				}				
 			}
 		});
 	});
 }
 
-$(document).on('hidden.bs.modal', '.modal', function () {
-    if ($('body').find('.modal.in').length > 0) {
+$(document).on('hidden.bs.modal', '.modal', function () 
+{
+    if ($('body').find('.modal.in').length > 0) 
+    {
         $('body').addClass('modal-open');
     }
 });
