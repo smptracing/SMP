@@ -388,7 +388,7 @@ function Eliminar(id_et)
 				if(<?=$ExpedienteTecnicoElaboracion[0]->id_etapa_et?> == 3)
 				{
 					(object.proceso == 'Error' ? swal(object.proceso,object.mensaje, "error") : swal(object.proceso,object.mensaje, "success"));
-					window.location.href='<?=base_url();?>index.php/Expediente_Tecnico/index/';
+					window.location.href='<?=base_url();?>index.php/Expediente_Tecnico/ejecucion/';
 					renderLoading();
 				}				
 			}
