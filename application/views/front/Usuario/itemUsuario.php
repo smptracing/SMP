@@ -1,3 +1,7 @@
+<link rel="stylesheet" href="http://kendo.cdn.telerik.com/2017.3.1026/styles/kendo.common.min.css" />
+<link href="//cdn.kendostatic.com/2013.1.319/styles/kendo.default.min.css" rel="stylesheet" />
+<link href="//cdn.kendostatic.com/2013.1.319/styles/kendo.default.mobile.min.css" rel="stylesheet" />
+
 <div class="modal-body">
    <div class="row">
         <div class="col-xs-12">
@@ -52,7 +56,23 @@
                         <div class="col-sm-4">
                           <select style="height:130px;width:100%;" id="cbb_listaMenuDestino" name="cbb_listaMenuDestino[]" multiple=""></select>
                         </div>
-                  </div> <!--
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">Acceso al menú</label>
+                    <div class="col-sm-9">
+                      <div class="demo-section k-content">
+                          <div>
+                              <h4>Check nodes</h4>
+                              <div id="treeview"></div>
+                          </div>
+                          <div style="padding-top: 2em;">
+                              <h4>Status</h4>
+                              <p id="result">No nodes checked.</p>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                   <!--
                   <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">Acceso al pip</label>
                         <div class="col-sm-4">
@@ -74,8 +94,109 @@
         </div>
     </div>
 </div>
+
+
+
 <script src="<?php echo base_url();?>assets/js/usuario/usuario.js"></script>
-<script src="<?php echo base_url();?>assets/js/Helper/jsHelper.js"></script>
+
+<script type="text/javascript">
+    console.log("<?php echo ' - '.$arrayUsuario->usuario; ?>");
+</script>
+
+<script>
+/*
+$.ajax({
+    "url":base_url +"index.php/Login/recuperarMenu/0",
+    async:false,
+    type:"POST",
+    success:function(respuesta){
+        var registros = eval(respuesta);
+        for (var i = 0; i <registros.length;i++) {
+          html +="<option value="+registros[i]["id_submenu"]+"> "+registros[i]["id_modulo"]+": "+registros[i]["nombre"]+": "+ registros[i]["nombreSubmenu"]+" </option>";
+        };
+        console.log(" HOOOOLA"+html);
+    }
+});*/
+
+
+$.getJSON(base_url+"index.php/Login/recuperarMenu/0",function(json){
+
+  var json2 = [];
+
+    $.each(json,function(i){
+        //$('#cbb_listaMenuDestino').append("<option  value='"+json[i]['id_submenu']+"'>"+json[i]['id_modulo']+": "+json[i]['nombre']+": "+json[i]['nombreSubmenu']+"</option>");
+        //console.log(json[i]['nombreSubmenu']);
+        if (json[i]['id_modulo'] == "HOME") {
+        json2.push(
+          {
+              id: 66, text: json[i]['nombreSubmenu'], expanded: true, spriteCssClass: "folder", items: [
+                  { id: 3, text: "about", spriteCssClass: "html", checked: true },
+                  { id: 4, text: "about", spriteCssClass: "html", checked: true },
+                  { id: 5, text: "logo.png", spriteCssClass: "html", checked: true }
+              ]
+          }
+        );
+      }
+    });
+
+    console.log(json2);
+
+        $("#treeview").kendoTreeView({
+            checkboxes: {
+                checkChildren: true
+            },
+
+            check: onCheck,
+
+            dataSource: [{
+                id: 1, text: "Inicio", expanded: true, spriteCssClass: "rootfolder", items: json2
+            }]
+        });
+
+});
+        // function that gathers IDs of checked nodes
+        function checkedNodeIds(nodes, checkedNodes) {
+            for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].checked) {
+                    checkedNodes.push(nodes[i].id);
+                }
+
+                if (nodes[i].hasChildren) {
+                    checkedNodeIds(nodes[i].children.view(), checkedNodes);
+                }
+            }
+        }
+
+        // show checked node IDs on datasource change
+        function onCheck() {
+            var checkedNodes = [],
+                treeView = $("#treeview").data("kendoTreeView"),
+                message;
+
+            checkedNodeIds(treeView.dataSource.view(), checkedNodes);
+
+            if (checkedNodes.length > 0) {
+                message = "IDs of checked nodes: " + checkedNodes.join(",");
+            } else {
+                message = "No nodes checked.";
+            }
+
+            $("#result").html(message);
+        }
+  </script>
+
+    <style>
+        #treeview .k-sprite {
+            background-image: url("http://demos.kendoui.com/content/web/treeview/coloricons-sprite.png");
+        }
+
+        .rootfolder { background-position: 0 0; }
+        .folder     { background-position: 0 -16px; }
+        .pdf        { background-position: 0 -32px; }
+        .html       { background-position: 0 -48px; }
+        .image      { background-position: 0 -64px; }
+    </style>
+
 <script>
   $(function(){
       $("#cbb_TipoUsuario").change(function(event){

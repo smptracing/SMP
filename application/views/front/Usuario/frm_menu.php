@@ -21,7 +21,7 @@
                                             <table id="table_menu" class="table table-striped table-bordered table-hover" ellspacing="0" width="100%">
                                               <thead style="background-color:#5A738E;color:#FFFFFF;">
                                                 <tr>
-                                               
+
                                                     <th >Módulo</th>
                                                     <th >Menú</th>
                                                     <th >URL</th>
@@ -34,13 +34,13 @@
                                 </div>
                             </div>
                         </div>
-                        
+
           </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="clearfix"></div>      
+    <div class="clearfix"></div>
 </div>
 <script>
 function listarMenu(){
@@ -64,13 +64,13 @@ function listarMenu(){
         }
       }
     ],
-  }); 
+  });
 }
 $(function(){
-  
-}); 
+
+});
 $(document).ready(function(){
   listarMenu();
-}); 
+});
 </script>
 <script src="<?php echo base_url();?>assets/js/Helper/jsHelper.js"></script>

@@ -40,9 +40,11 @@
           <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/formValidation.min.css">
           <link href="<?php echo base_url(); ?>assets/build/css/custom.min.css" rel="stylesheet">
 
-  <script src="<?php echo base_url(); ?>assets/js/Helper/jsHelper.js"></script> 
+  <script src="<?php echo base_url(); ?>assets/js/Helper/jsHelper.js"></script>
   <script src="<?php echo base_url(); ?>assets/Template/vendors/jquery/dist/jquery.min.js"></script>
-          
+
+  <script src="http://kendo.cdn.telerik.com/2017.3.1026/js/kendo.all.min.js"></script>
+
   <style>
    #ProgramacionHorizontal{
       width: 100% !important;
@@ -71,7 +73,7 @@
     var base_url = '<?php echo base_url(); ?>';
     </script>
     <!-- Custom Theme Style -->
-    
+
   </head>
 
   <body class="nav-md">
@@ -167,7 +169,7 @@
                           <span class="time">3 Nuevos proyecto</span>
                         </span>
                         <span class="message">
-                          
+
                         </span>
                       </a>
                     </li>
