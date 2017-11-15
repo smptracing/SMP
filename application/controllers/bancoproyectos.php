@@ -33,13 +33,22 @@ class bancoproyectos extends CI_Controller
             $cbxEstCicInv_       = $this->input->post("cbxEstCicInv_");
             $cbxRubro            = $this->input->post("cbxRubro");
             $cbxModalidadEjec    = $this->input->post("cbxModalidadEjec");
-            if ($this->bancoproyectos_modal->AddProyectos(
+            $data = $this->bancoproyectos_modal->AddProyectos(
                 $flat, $id_pi, $cbxUnidadEjecutora, $cbxNatI, $cbxTipologiaInv, $cbxTipoInv, $cbxGrupoFunc, $cbxNivelGob, $cbxProgramaPres, $txtCodigoUnico, $txtNombrePip, $txtCostoPip, $txt_beneficiarios, $dateFechaInPip, $dateFechaViabilidad, $lista_unid_form, $cbx_estado, $cbxEstCicInv_,
-                $cbxRubro, $cbxModalidadEjec) == false) {
+                $cbxRubro, $cbxModalidadEjec);
+
+            if($data)
+            {
                 echo "1";
-            } else {
-                echo "2";
             }
+            else
+            {
+               echo "0" 
+            }
+            
+            echo json_encode($data);
+            exit;
+
 
         } else {
             show_404();
