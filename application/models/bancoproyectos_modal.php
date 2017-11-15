@@ -26,9 +26,12 @@ class bancoproyectos_modal extends CI_Model
             . $direccion . "','"
             . $txt_latitud . "','"
             . $txt_longitud . "'");
-        if ($this->db->affected_rows() > 0) {
+        if ($this->db->affected_rows() > 0) 
+        {
             return true;
-        } else {
+        } 
+        else 
+        {
             return false;
         }
     }

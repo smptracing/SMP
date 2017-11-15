@@ -448,9 +448,12 @@ class bancoproyectos extends CI_Controller
             $Cbx_ModalidadEjec        = $this->input->post("Cbx_ModalidadEjec");
             $txt_id_pip_ModalidadEjec = $this->input->post("txt_id_pip_ModalidadEjec");
             // $dateFechaIniC            = $this->input->post("dateFechaIniC"); //esta campo se esta registrando en la base de datos
-            if ($this->bancoproyectos_modal->AddModalidadEjecPI($flat, $id_modalidad_ejec_pi, $Cbx_ModalidadEjec, $txt_id_pip_ModalidadEjec) == false) {
+            if ($this->bancoproyectos_modal->AddModalidadEjecPI($flat, $id_modalidad_ejec_pi, $Cbx_ModalidadEjec, $txt_id_pip_ModalidadEjec) == false) 
+            {
                 echo "1";
-            } else {
+            } 
+            else 
+            {
                 echo "2";
             }
 

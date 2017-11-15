@@ -747,7 +747,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 
 			if(!($(tBodyTemporal).find('tr').length))
 			{
-				$($(tBodyTemporal).parent()[0]).replaceWith('<ul></ul>');
+				$($(tBodyTemporal).parent()[0]).parent().replaceWith('<ul></ul>');
 			}
 
 			limpiarArbolCompletoMasOpciones();

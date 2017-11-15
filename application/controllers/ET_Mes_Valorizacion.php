@@ -44,6 +44,12 @@ class ET_Mes_Valorizacion extends CI_Controller
 
 					echo json_encode(['proceso' => 'Error', 'mensaje' => 'El monto calculado de la sumatoria total de meses no puede ser mayor al destinado en la partida.']);exit;
 				}
+				if($etDetallePartida->parcial==$sumatoriaPrecio)
+				{
+					$this->db->trans_complete();
+
+					echo json_encode(['proceso' => 'Completo', 'mensaje' => 'La valorizacion fue distribuida correctamente']);exit;
+				}
 
 				$this->db->trans_complete();
 
