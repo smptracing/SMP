@@ -29,7 +29,8 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
 		
 		foreach($meta->childPartida as $key => $value)
 		{
-			$htmlTemp.='<tr class="elementoBuscar">'.
+			//style = "background-color:#baf9c4;"
+			$htmlTemp.='<tr class="elementoBuscar" id = "fila">'.
 				'<td>'.$value->numeracion.'</td>'.
 				'<td style="text-align: left;">'.html_escape($value->desc_partida).'</td>'.
 				'<td>'.html_escape($value->descripcion).'</td>'.
@@ -38,9 +39,11 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
 				'<td>S/.'.number_format($value->cantidad*$value->precio_unitario, 2).'</td>';
 
 			$totalGeneral+=($value->cantidad*$value->precio_unitario);
+			$ValorizacionporPartida = 0;
 
 			if($expedienteTecnico->num_meses!=null)
 			{
+				
 				for($i=0; $i<$expedienteTecnico->num_meses; $i++)
 				{
 					if(!isset($sumatoriasTotales[$i]))
@@ -49,7 +52,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
 					}
 
 					$precioTotalMesValorizacionTemp=0;
-					$cantidadMesValorizacionTemp=0;
+					$cantidadMesValorizacionTemp=0;				
 
 					foreach($value->childDetallePartida->childMesValorizacion as $index => $item)
 					{
@@ -58,6 +61,8 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
 							$sumatoriasTotales[$i]+=$item->precio;
 
 							$precioTotalMesValorizacionTemp=$item->precio;
+
+							$ValorizacionporPartida += $precioTotalMesValorizacionTemp;
 
 							$cantidadMesValorizacionTemp=$item->cantidad;
 
@@ -68,7 +73,16 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
 				}
 			}
 
-			$htmlTemp.='</tr>';
+			if($ValorizacionporPartida == $value->parcial)
+			{
+				$htmlTemp.='</tr><script>$("#fila").css("background-color", "#baf9c4")</script>';
+			}
+			else
+			{
+				$htmlTemp.='</tr>';
+			}
+
+			
 		}
 		
 	}
@@ -197,8 +211,6 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
 								<tr>
 									<td colspan="5" style="text-align: left"><b>GASTOS GENERALES</b></td>
 									<td>
-										<!--<?php $gastoGeneralTotal = $totalGeneral*(11.68/100);?> 
-										S/.<?=a_number_format($gastoGeneralTotal, 2, '.',",",3);?>-->
 									</td>
 									<?php if($expedienteTecnico->num_meses!=null){
 										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
@@ -208,9 +220,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
 								</tr>
 								<tr>
 									<td colspan="5" style="text-align: left"><b>GASTOS DE SUPERVISION</b></td>
-									<td>
-										<!--<?php $gastoSupervisionTotal = $totalGeneral*(6.16/100);?> 
-										S/.<?=a_number_format($gastoSupervisionTotal, 2, '.',",",3);?>-->										
+									<td>									
 									</td>
 									<?php if($expedienteTecnico->num_meses!=null){
 										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
@@ -221,8 +231,6 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
 								<tr>
 									<td colspan="5" style="text-align: left"><b>LIQUIDACION DE OBRA</b></td>
 									<td>
-										<!--<?php $gastoLiquidacionTotal = $totalGeneral*(1.00/100);?> 
-										S/.<?=a_number_format($gastoLiquidacionTotal, 2, '.',",",3);?>-->
 									</td>
 									<?php if($expedienteTecnico->num_meses!=null){
 										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
@@ -242,8 +250,6 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
 								<tr>
 									<td colspan="5" style="text-align: left"><b>GESTION DEL PROYECTO</b></td>
 									<td>
-										<!--<?php $gestiondelProyecto = $totalGeneral*(3.65/100);?> 
-										S/.<?=a_number_format($gestiondelProyecto, 2, '.',",",3);?>-->
 									</td>
 									<?php if($expedienteTecnico->num_meses!=null){
 										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
@@ -315,7 +321,6 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
 				$(this).parent().find('input[type="text"]').show();
 			}
 		});
-		calcularSumatoria();
 	});
 
 	function onKeyUpCalcularPrecio(cantidad, precioUnitario, idDetallePartida, numeroMes, element, event)
@@ -357,7 +362,19 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
 					return false;
 				}
 
+
 				$($(element).parent().parent().find('span')[0]).text('S/.'+monto.toFixed(2));
+				$($(element).parent().parent().css('background-color', '#fff1b0'));
+
+				if(objectJSON.proceso=='Completo')
+				{
+					$($(element).parent().parent().parent().css('background-color', '#baf9c4'));
+				}
+				else
+				{
+					$($(element).parent().parent().parent().css('background-color', 'white'));
+				}
+
 			}, false, true);
 		}
 	}

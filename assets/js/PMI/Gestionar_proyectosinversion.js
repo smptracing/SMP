@@ -16,11 +16,11 @@ $(document).on("ready" ,function()
             data:$(this).serialize(),
             success:function(resp)
             {
-                if (resp=='1')
+                if (resp=='2')
                 {
                     swal("REGISTRADO","Se regristró correctamente", "success");
                 }
-                if (resp=='2')
+                if (resp=='1')
                 {
                     swal("NO SE REGISTRÓ","NO se regristró ", "error");
                 }

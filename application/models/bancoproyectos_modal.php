@@ -26,9 +26,12 @@ class bancoproyectos_modal extends CI_Model
             . $direccion . "','"
             . $txt_latitud . "','"
             . $txt_longitud . "'");
-        if ($this->db->affected_rows() > 0) {
+        if ($this->db->affected_rows() > 0) 
+        {
             return true;
-        } else {
+        } 
+        else 
+        {
             return false;
         }
     }
@@ -76,33 +79,63 @@ class bancoproyectos_modal extends CI_Model
 
     //AGREGAR UN PROYECTO
     public function AddProyectos($flat, $id_pi, $cbxUnidadEjecutora, $cbxNatI, $cbxTipologiaInv, $cbxTipoInv, $cbxGrupoFunc, $cbxNivelGob, $cbxProgramaPres, $txtCodigoUnico, $txtNombrePip, $txtCostoPip, $txt_beneficiarios, $dateFechaInPip, $dateFechaViabilidad, $lista_unid_form, $cbx_estado, $cbxEstCicInv_,
-        $cbxRubro, $cbxModalidadEjec) {
-        $this->db->query("execute sp_Gestionar_ProyectoInversion
-            @Opcion='" . $flat . "',
-            @id_pi='" . $id_pi . "',
-            @id_ue='" . $cbxUnidadEjecutora . "',
-            @id_naturaleza_inv='" . $cbxNatI . "',
-            @id_tipologia_inv='" . $cbxTipologiaInv . "',
-            @id_tipo_inv='" . $cbxTipoInv . "',
-            @id_grupo_funcional='" . $cbxGrupoFunc . "',
-            @id_nivel_gob='" . $cbxNivelGob . "',
-            @id_programa_pres='" . $cbxProgramaPres . "',
-            @codigo_unico_pi='" . $txtCodigoUnico . "',
-            @nombre_pi='" . $txtNombrePip . "',
-            @costo_pi='" . $txtCostoPip . "',
-            @num_beneficiarios='" . $txt_beneficiarios . "',
-            @fecha_registro_pi='" . $dateFechaInPip . "',
-            @fecha_viabilidad_pi='" . $dateFechaViabilidad . "',
-            @id_uf='" . $lista_unid_form . "',
-            @estado_pi='" . $cbx_estado . "',
-            @id_estado_ciclo='" . $cbxEstCicInv_ . "',
-            @id_rubro='" . $cbxRubro . "',
-            @id_modalidad_ejec='" . $cbxModalidadEjec . "'");
-        if ($this->db->affected_rows() > 0) {
-            return true;
-        } else {
+        $cbxRubro, $cbxModalidadEjec) 
+    {
+        return $this->db->query("execute sp_Gestionar_ProyectoInversion
+                @Opcion='" . $flat . "',
+                @id_pi='" . $id_pi . "',
+                @id_ue='" . $cbxUnidadEjecutora . "',
+                @id_naturaleza_inv='" . $cbxNatI . "',
+                @id_tipologia_inv='" . $cbxTipologiaInv . "',
+                @id_tipo_inv='" . $cbxTipoInv . "',
+                @id_grupo_funcional='" . $cbxGrupoFunc . "',
+                @id_nivel_gob='" . $cbxNivelGob . "',
+                @id_programa_pres='" . $cbxProgramaPres . "',
+                @codigo_unico_pi='" . $txtCodigoUnico . "',
+                @nombre_pi='" . $txtNombrePip . "',
+                @costo_pi='" . $txtCostoPip . "',
+                @num_beneficiarios='" . $txt_beneficiarios . "',
+                @fecha_registro_pi='" . $dateFechaInPip . "',
+                @fecha_viabilidad_pi='" . $dateFechaViabilidad . "',
+                @id_uf='" . $lista_unid_form . "',
+                @estado_pi='" . $cbx_estado . "',
+                @id_estado_ciclo='" . $cbxEstCicInv_ . "',
+                @id_rubro='" . $cbxRubro . "',
+                @id_modalidad_ejec='" . $cbxModalidadEjec . "'");
+
+        //$query = $this->db->get();
+
+        //return $query->result();
+        /*$proyecto = $this->db->query("select * from PROYECTO_INVERSION where codigo_unico_pi ='$txtCodigoUnico'");
+        if ($proyecto->num_rows() >= 1) 
+        {
             return false;
-        }
+        } 
+        else 
+        {
+            $data = $this->db->query("declare @resultado int execute @resultado  = sp_Gestionar_ProyectoInversion
+                @Opcion='" . $flat . "',
+                @id_pi='" . $id_pi . "',
+                @id_ue='" . $cbxUnidadEjecutora . "',
+                @id_naturaleza_inv='" . $cbxNatI . "',
+                @id_tipologia_inv='" . $cbxTipologiaInv . "',
+                @id_tipo_inv='" . $cbxTipoInv . "',
+                @id_grupo_funcional='" . $cbxGrupoFunc . "',
+                @id_nivel_gob='" . $cbxNivelGob . "',
+                @id_programa_pres='" . $cbxProgramaPres . "',
+                @codigo_unico_pi='" . $txtCodigoUnico . "',
+                @nombre_pi='" . $txtNombrePip . "',
+                @costo_pi='" . $txtCostoPip . "',
+                @num_beneficiarios='" . $txt_beneficiarios . "',
+                @fecha_registro_pi='" . $dateFechaInPip . "',
+                @fecha_viabilidad_pi='" . $dateFechaViabilidad . "',
+                @id_uf='" . $lista_unid_form . "',
+                @estado_pi='" . $cbx_estado . "',
+                @id_estado_ciclo='" . $cbxEstCicInv_ . "',
+                @id_rubro='" . $cbxRubro . "',
+                @id_modalidad_ejec='" . $cbxModalidadEjec . "' select @resultado as codigoSiaf ");
+            return true;
+        }*/
     }
     //FIN AGREGAR UN PROYECTO
 

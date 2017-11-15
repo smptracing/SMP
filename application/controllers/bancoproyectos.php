@@ -33,13 +33,22 @@ class bancoproyectos extends CI_Controller
             $cbxEstCicInv_       = $this->input->post("cbxEstCicInv_");
             $cbxRubro            = $this->input->post("cbxRubro");
             $cbxModalidadEjec    = $this->input->post("cbxModalidadEjec");
-            if ($this->bancoproyectos_modal->AddProyectos(
+            $data = $this->bancoproyectos_modal->AddProyectos(
                 $flat, $id_pi, $cbxUnidadEjecutora, $cbxNatI, $cbxTipologiaInv, $cbxTipoInv, $cbxGrupoFunc, $cbxNivelGob, $cbxProgramaPres, $txtCodigoUnico, $txtNombrePip, $txtCostoPip, $txt_beneficiarios, $dateFechaInPip, $dateFechaViabilidad, $lista_unid_form, $cbx_estado, $cbxEstCicInv_,
-                $cbxRubro, $cbxModalidadEjec) == false) {
+                $cbxRubro, $cbxModalidadEjec);
+
+            if($data)
+            {
                 echo "1";
-            } else {
-                echo "2";
             }
+            else
+            {
+               echo "0" 
+            }
+            
+            echo json_encode($data);
+            exit;
+
 
         } else {
             show_404();
@@ -448,9 +457,12 @@ class bancoproyectos extends CI_Controller
             $Cbx_ModalidadEjec        = $this->input->post("Cbx_ModalidadEjec");
             $txt_id_pip_ModalidadEjec = $this->input->post("txt_id_pip_ModalidadEjec");
             // $dateFechaIniC            = $this->input->post("dateFechaIniC"); //esta campo se esta registrando en la base de datos
-            if ($this->bancoproyectos_modal->AddModalidadEjecPI($flat, $id_modalidad_ejec_pi, $Cbx_ModalidadEjec, $txt_id_pip_ModalidadEjec) == false) {
+            if ($this->bancoproyectos_modal->AddModalidadEjecPI($flat, $id_modalidad_ejec_pi, $Cbx_ModalidadEjec, $txt_id_pip_ModalidadEjec) == false) 
+            {
                 echo "1";
-            } else {
+            } 
+            else 
+            {
                 echo "2";
             }
 
