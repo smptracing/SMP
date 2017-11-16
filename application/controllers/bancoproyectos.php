@@ -43,12 +43,8 @@ class bancoproyectos extends CI_Controller
             }
             else
             {
-               echo "0" 
+               echo "2";
             }
-            
-            echo json_encode($data);
-            exit;
-
 
         } else {
             show_404();

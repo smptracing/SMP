@@ -107,6 +107,8 @@
         </div>
     </div>
 </body>
+
+
 <script src="<?php echo base_url(); ?>assets/templateLogin/js/core/jquery-3.1.1.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/templateLogin/js/core/jquery-ui.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/templateLogin/js/core/bootstrap.min.js"></script>
