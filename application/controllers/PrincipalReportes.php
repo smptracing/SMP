@@ -175,21 +175,51 @@ class PrincipalReportes extends CI_Controller
     {
         $codigounico=$this->input->POST('codigounico');
         $data=$this->Model_Dashboard_Reporte->ReporteDevengadoPiaPimPorPip($codigounico);
+
+        $data->costo_actual = a_number_format($data->costo_actual, 2, '.',",",3);
+        $data->costo_expediente = a_number_format($data->costo_expediente, 2, '.',",",3);
+        $data->costo_viabilidad = a_number_format($data->costo_viabilidad, 2, '.',",",3);
+        $data->ejecucion_ano_anterior = a_number_format($data->ejecucion_ano_anterior, 2, '.',",",3);
+
         echo  json_encode($data);
+        exit;
     }
 
     function DatosEjecucionPresupuestal()
     {
         $codigounico=$this->input->POST('codigounico');
-        $data=$this->Model_Dashboard_Reporte->ReporteEjecucionPresupuestal($codigounico);
-        echo  json_encode($data);
+        $datos=$this->Model_Dashboard_Reporte->ReporteEjecucionPresupuestal($codigounico);
+
+        foreach ($datos as $key => $data) 
+        {
+            $data->costo_actual = a_number_format($data->costo_actual, 2, '.',",",3);
+            $data->costo_expediente = a_number_format($data->costo_expediente, 2, '.',",",3);
+            $data->costo_viabilidad = a_number_format($data->costo_viabilidad, 2, '.',",",3);
+            $data->ejecucion_ano_anterior = a_number_format($data->ejecucion_ano_anterior, 2, '.',",",3);
+        }
+
+        echo  json_encode($datos);
     }
 
     function DatosCorrelativoMeta()
     {
         $codigounico=$this->input->POST('codigounico');
-        $data=$this->Model_Dashboard_Reporte->ReporteCorrelativoMeta($codigounico);
-        echo  json_encode($data);
+        $datos=$this->Model_Dashboard_Reporte->ReporteCorrelativoMeta($codigounico);
+        foreach ($datos as $key => $data) 
+        {
+            $data->pia = a_number_format($data->pia, 2, '.',",",3);
+            $data->pim = a_number_format($data->pim, 2, '.',",",3);
+            $data->pim_acumulado = a_number_format($data->pim_acumulado, 2, '.',",",3);
+            $data->ejecucion = a_number_format($data->ejecucion, 2, '.',",",3);
+            $data->compromiso = a_number_format($data->compromiso, 2, '.',",",3);
+            $data->devengado = a_number_format($data->devengado, 2, '.',",",3);
+            $data->girado = a_number_format($data->girado, 2, '.',",",3);
+            $data->pagado = a_number_format($data->pagado, 2, '.',",",3);
+            $data->monto_certificado = a_number_format($data->monto_certificado, 2, '.',",",3);
+            $data->monto_comprometido_anual = a_number_format($data->monto_comprometido_anual, 2, '.',",",3);
+            $data->monto_precertificado = a_number_format($data->monto_precertificado, 2, '.',",",3);
+        }
+        echo  json_encode($datos);
     }
 
     function  ReporteDevengadoPiaPimPorPipGraficos()
