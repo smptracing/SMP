@@ -76,28 +76,28 @@
 																								<?=$item->nombre?>
 																					    	</td>
 																					    	<td>
-																								<?=$item->costo_actual?>
+																								<?= number_format($item->costo_actual,2,'.',',') ?>
 																					    	</td>
 																					    	<td>
-																								<?=$item->pim_acumulado?>
+																								<?= number_format($item->pim_acumulado,2,'.',',') ?>
 																					    	</td>
 																					    	<td>
-																								<?=$item->monto_certificado?>
+																								<?= number_format($item->monto_certificado,2,'.',',') ?>
 																					    	</td>
 																					    	<td>
-																								<?=$item->avance_pim_cert?>%
+																								<?= $item->avance_pim_cert?>%
 																					    	</td>
 																					    	<td>
-																								<?=$item->devengado?>
+																								<?= number_format($item->devengado,2,'.',',') ?>
 																					    	</td>
 																					    	<td>
 																								<?=$item->avance_pim_deven?>%
 																					    	</td>
 																					    	<td>
-																								<?=$item->para_seguimiento?>
+																								<?= number_format($item->para_seguimiento,2,'.',',') ?>
 																					    	</td>
 																					    	<td>
-																								<?=$item->saldo_por_gastar?>
+																								<?= number_format($item->saldo_por_gastar,2,'.',',') ?>
 																					    	</td>
 																					  </tr>
 																					<?php } ?>
