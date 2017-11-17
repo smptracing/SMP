@@ -446,65 +446,6 @@ $.ajax({
     cache:false,
     success:function(respuesta)
     {
-        /*var arrayModalidadMontosPip=new Array();
-        $.each(respuesta,function(index,element)
-        {
-            arrayModalidadMontosPip[index]=element.Monto;
-        });
-
-        var dom = document.getElementById("MontoPipsModalidad");
-        var myChart = echarts.init(dom);
-        var app = {};
-
-        app.title = '';
-
-        option = {
-            tooltip: {
-                trigger: 'item',
-                formatter: "{a} <br/>{b}: {c} ({d}%)"
-            },
-            legend: {
-                orient: 'horizontal',
-                left: 'left',
-                data: ['Administracion Directa','Contrata Consultores Externos','Mixto']
-            },
-            series: [
-                {
-                    name:'访问来源',
-                    type:'pie',
-                    radius: ['27%', '50%'],
-                    avoidLabelOverlap: false,
-                    label: {
-                        normal: {
-                            show: false,
-                            position: 'center'
-                        },
-                        emphasis: {
-                            show: true,
-                            textStyle: {
-                                fontSize: '12',
-                                fontWeight: 'bold'
-                            }
-                        }
-                    },
-                    labelLine: {
-                        normal: {
-                            show: false
-                        }
-                    },
-                   data:[
-                        {value:arrayModalidadMontosPip[0], name:'Administracion Directa'},
-                        {value:arrayModalidadMontosPip[1], name:'Contrata Consultores Externos'},
-                        {value:arrayModalidadMontosPip[2], name:'Mixto'}
-                        ]
-
-                }
-            ]
-        };
-    
-        if (option && typeof option === "object") {
-            myChart.setOption(option, true);
-        }*/
         var arrayModalidadMontosPip=new Array();
         $.each(respuesta,function(index,element)
         {

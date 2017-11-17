@@ -7,6 +7,7 @@ class ProyectoInversion extends CI_Controller {/* Mantenimiento de sector entida
       parent::__construct();
       $this->load->model('Model_ProyectoInversion');
       $this->load->model('Model_Dashboard_Reporte');
+      $this->load->helper('FormatNumber_helper');
 	}
    /*INSERTAR UN PROYECTO EN LA TABLA PROYECTO Y SIMULTANEO EN LA TABLA PROYECTO UBIGEO*/
    function AddProyecto()

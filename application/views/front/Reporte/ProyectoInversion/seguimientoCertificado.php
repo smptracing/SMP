@@ -1,129 +1,117 @@
+<style>
+	.table-consolidadoAvance{
+		width: 100%;
+	}
+	.alineacionDerecha
+	{
+		text-align: right;
+	}
+</style>
 <div class="right_col" role="main">
-	<div class="">
+	<div>
 		<div class="clearfix"></div>
-		<div class="">
-			<div class="col-md-12 col-xs-12 col-xs-12" style="overflow:hidden;height:1150px;">
-				<div class="x_panel">
-					<div class="x_title">
-						<h5><b>REPORTE GENERAL DE  AVANCE FISICO Y FINANCIERO</b> </h5> 
-					</div>
-					
-									<!-- /tabla de sector desde el row -->
-
-									<div class="row">  
-										<div class="col-md-12 col-sm-12 col-xs-12">
-											<div class="x_panel">
-													<div class="container">
-														BÚSQUEDA POR AÑO: 
-														<div class="row">
-													
-														  <div class="col-lg-5">
-														    <div class="input-group">
-														      <input type="text" id="BuscarPipAnio" value="<?= $anio?>"  class="form-control" placeholder="Ingrese Año">
-														      <span class="input-group-btn">
-														        <button id="AnioPip" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"> Buscar</span></button>
-														      </span>
-														    </div>
-														  </div>
-														  <div class="col-lg-3">
-														        <a href="javascript:siafActualizadorCertificado()"><button id="BtnAcatualizar" class="btn btn-success" type="button"><i class="fa fa-spinner"></i> Actualizar Avance Financiero</button></a>
-														  </div>
-														  <div class="col-lg-4">
-														    <div class="input-group">
-																		<div class="pull-left tableTools-container"></div>
-														    </div>
-														  </div>
-								
-								
-														</div>			
-			
-
-															<div class="row" style="margin-left: 10px; margin:10px; ">
-																 					
-																			<table id="table-consolidadoAvance" style="text-align: center;" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%"> 
-																			 	<thead>
-																				 	<tr>
-																					 	<td>Snip</td>
-																					 	<td>Meta</td>
-																					 	<td>Siaf</td>
-																					 	<td>Proyecto</td>
-																					 	<td>Costo</td>
-																					 	<td>Pim Acumulado</td>
-																					 	<td>Certificado</td>
-																					 	<td>Avance Pim Certificado</td>
-																					 	<td>Devengado</td>
-																					 	<td>Avance Pim Devengado</td>
-																					 	<td>Seguimiento</td>
-																					 	<td>Por Gastar</td>
-																				 	</tr>
-																			 	</thead>
-																			 	<tbody>
-																					<?php foreach($Consolidado as $item ){ ?>
-																					  	<tr>
-																							<td>							<?=$item->proyecto_snip?>
-																					    	</td>
-																					    	
-																					    	<td>
-																								<?=$item->sec_func?>
-																					    	</td>
-																					    	
-																					    	<td>
-																					    		<button type="button" class="DetalleOrdenExpeSiaf btn btn-success btn-xs" ><a href="<?php echo site_url('ProyectoInversion/ReporteBuscadorPorPip/'.$item->act_proy); ?>"> 
-																									<?=$item->act_proy?></a> <i class='ace-icon bigger-120'></i></button>
-																								
-																					    	</td>
-																					    	<td style="font-size: 10px;">
-																								<?=$item->nombre?>
-																					    	</td>
-																					    	<td>
-																								<?= number_format($item->costo_actual,2,'.',',') ?>
-																					    	</td>
-																					    	<td>
-																								<?= number_format($item->pim_acumulado,2,'.',',') ?>
-																					    	</td>
-																					    	<td>
-																								<?= number_format($item->monto_certificado,2,'.',',') ?>
-																					    	</td>
-																					    	<td>
-																								<?= $item->avance_pim_cert?>%
-																					    	</td>
-																					    	<td>
-																								<?= number_format($item->devengado,2,'.',',') ?>
-																					    	</td>
-																					    	<td>
-																								<?=$item->avance_pim_deven?>%
-																					    	</td>
-																					    	<td>
-																								<?= number_format($item->para_seguimiento,2,'.',',') ?>
-																					    	</td>
-																					    	<td>
-																								<?= number_format($item->saldo_por_gastar,2,'.',',') ?>
-																					    	</td>
-																					  </tr>
-																					<?php } ?>
-																				</tbody>	
-																		  </table> 
-															</div>
-														</div>
-										</div>
-									</div>
-										<!-- / fin tabla de sector desde el row -->
-							
-							</div>
-						</div>
-					</div>
+		<div class="col-md-12 col-xs-12 col-xs-12">
+			<div class="x_panel">
+				<div class="x_title">
+					<h5><b>REPORTE GENERAL DE AVANCE FISICO Y FINANCIERO</b></h5>
+					<div class="clearfix"></div>
+				</div>
+				<div class="x_content">
+					BÚSQUEDA POR AÑO: 
+					<div class="row">
+						<div class="col-lg-5">
+					    	<div class="input-group">
+					      		<input type="text" id="BuscarPipAnio" value="<?= $anio?>"  class="form-control" placeholder="Ingrese Año">
+					      		<span class="input-group-btn">
+					        		<button id="AnioPip" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"> Buscar</span></button>
+					      		</span>
+					    	</div>
+					  	</div>
+					  	<div class="col-lg-3">
+					        <a href="javascript:siafActualizadorCertificado()">
+					        	<button id="BtnAcatualizar" class="btn btn-success" type="button"><i class="fa fa-spinner"></i> Actualizar Avance Financiero</button>
+					        </a>
+					  	</div>
+					  	<div class="col-lg-4">
+					    	<div class="input-group">
+								<div class="pull-left tableTools-container"></div>
+					    	</div>
+					  	</div>
+					</div>	
+					<div class="table-responsive">
+						<table id="table-consolidadoAvance" class="table table-striped jambo_table" cellspacing="0" width="150%"> 
+						 	<thead>
+							 	<tr>
+								 	<th style="c;">Snip</th>
+								 	<th style="width: 5%;">Meta</th>
+								 	<th style="width: 5%;">Siaf</th>
+								 	<th style="width: 45%;">Proyecto</th>
+								 	<th class="alineacionDerecha" style="width: 5%;">Costo</th>
+								 	<th class="alineacionDerecha" style="width: 5%;">Pim Acumulado</th>
+								 	<th class="alineacionDerecha" style="width: 5%;">Certificado</th>
+								 	<th class="alineacionDerecha" style="width: 5%;">Avance Pim Certificado</th>
+								 	<th class="alineacionDerecha" style="width: 5%;">Devengado</th>
+								 	<th class="alineacionDerecha" style="width: 5%;">Avance Pim Devengado</th>
+								 	<th class="alineacionDerecha" style="width: 5%;">Seguimiento</th>
+								 	<th class="alineacionDerecha" style="width: 5%;">Por Gastar</th>
+							 	</tr>
+						 	</thead>
+						 	<tbody>
+								<?php foreach($Consolidado as $item ){ ?>
+								  	<tr>
+										<td>
+											<?=$item->proyecto_snip?>
+								    	</td>								    	
+								    	<td>
+											<?=$item->sec_func?>
+								    	</td>								    	
+								    	<td>
+								    		<button type="button" class="DetalleOrdenExpeSiaf btn btn-success btn-xs" ><a style="color: white;" href="<?php echo site_url('ProyectoInversion/ReporteBuscadorPorPip/'.$item->act_proy); ?>"> 
+												<?=$item->act_proy?></a> <i class='ace-icon bigger-120'></i></button>											
+								    	</td>
+								    	<td style="font-size: 10px;">
+											<?=$item->nombre?>
+								    	</td>
+								    	<td class="alineacionDerecha">
+											S/. <?= a_number_format($item->costo_actual, 2, '.',",",3)?>
+								    	</td>
+								    	<td class="alineacionDerecha">								    		
+											S/. <?=a_number_format($item->pim_acumulado, 2, '.',",",3)?>
+								    	</td>
+								    	<td class="alineacionDerecha">								    		
+											S/. <?=a_number_format($item->monto_certificado, 2, '.',",",3)?>
+								    	</td>
+								    	<td class="alineacionDerecha">								    		
+											<?=$item->avance_pim_cert?>%
+								    	</td>
+								    	<td class="alineacionDerecha">
+											S/. <?=a_number_format($item->devengado, 2, '.',",",3)?>
+								    	</td>
+								    	<td class="alineacionDerecha">
+											<?=$item->avance_pim_deven?>%
+								    	</td>
+								    	<td class="alineacionDerecha">
+											S/. <?=a_number_format($item->para_seguimiento, 2, '.',",",3)?>
+								    	</td>
+								    	<td class="alineacionDerecha">
+											S/. <?=a_number_format($item->saldo_por_gastar, 2, '.',",",3)?>
+								    	</td>
+								  </tr>
+								<?php } ?>
+							</tbody>	
+					  	</table> 
+					</div>							
+									
 				</div>
 			</div>
 		</div>
-		<div class="clearfix"></div>
 	</div>
 </div>
-
 <script>
 
-$(document).on("ready" ,function(){
-	
-$("#AnioPip").on( "click", function()
+$(document).on("ready" ,function()
+{	
+	$("#AnioPip").on( "click", function()
 	{
 		avanceFisico();
 	});	
@@ -161,6 +149,7 @@ $("#AnioPip").on( "click", function()
 	myTable.buttons().container().appendTo( $('.tableTools-container') );
 
 });
+
 function avanceFisico()
 {
 		$("#avancefisicoFinan").show(2000);
@@ -168,22 +157,17 @@ function avanceFisico()
 		var anio=$("#BuscarPipAnio").val();
 		window.location.href=base_url+"index.php/ProyectoInversion/ReporteBuscadorPorAnio/"+anio;
 }
+
 function siafActualizadorCertificado() 
-	{
-		var anio=$("#BuscarPipAnio").val();
-		var params  = 'width='+screen.width;
-        params += ', height='+screen.height;
-        params += ', top=0, left=10'
-        params += ', fullscreen=no';
-
-		// $foo = base_url;
-		// if (strpos($foo, 'localhost') !== false) {
-		// 	echo 'true';
-		// }
-
-		var urll="http://200.37.200.182:8080/importador_siaf/index.php/ImporSeguimientoCertificado/inicio/"+anio;
-	    ventana=window.open(urll,"",params);
-	}
+{
+	var anio=$("#BuscarPipAnio").val();
+	var params  = 'width='+screen.width;
+    params += ', height='+screen.height;
+    params += ', top=0, left=10'
+    params += ', fullscreen=no';
+	var urll="http://200.37.200.182:8080/importador_siaf/index.php/ImporSeguimientoCertificado/inicio/"+anio;
+    ventana=window.open(urll,"",params);
+}
 
 </script>
 

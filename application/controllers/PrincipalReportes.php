@@ -8,6 +8,7 @@ class PrincipalReportes extends CI_Controller
         parent::__construct();
         $this->load->model('Model_Dashboard_Reporte');
         $this->load->helper('FormatNumber_helper');
+
     }
 
     public function PrincipalReportes()
@@ -66,6 +67,12 @@ class PrincipalReportes extends CI_Controller
     {
         if ($this->input->is_ajax_request()) {
             $datos = $this->Model_Dashboard_Reporte->MontoPipModalidad();
+            
+            foreach ($datos as $key => $value) 
+            {
+                $value->Monto = a_number_format($value->Monto, 2, '.',",",0);
+            }
+
             echo json_encode($datos);
         } else
         show_404();
