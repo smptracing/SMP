@@ -169,18 +169,6 @@
 
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
-              <a data-toggle="tooltip" data-placement="top" title="Settings">
-                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="Lock">
-                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
-                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-              </a>
             </div>
             <!-- /menu footer buttons -->
           </div>
@@ -206,18 +194,11 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="<?php echo base_url(); ?>assets/images/img.jpg" alt="">
+                    <img src="<?php echo base_url(); ?>assets/images/img.jpg" alt=""><?= $this->session->userdata('nombreUsuario')?>
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;">Usuario: <?= $this->session->userdata('nombreUsuario')?> <br/>Tipo Usuario <?= $this->session->userdata('desc_usuario_tipo');?> <br/>id:Usuario<?= $this->session->userdata('idPersona');?></a></li>
-                    <li>
-                      <a href="javascript:;">
-                        <span class="badge bg-red pull-right">50%</span>
-                        <span>Ajustes</span>
-                      </a>
-                    </li>
-                    <li><a href="javascript:;">Ayuda</a></li>
+                    <li><a href="javascript:;"><?= $this->session->userdata('desc_usuario_tipo');?></a></li>
                     <li><a href="<?php echo base_url("index.php/Login/logout");?>"><i class="fa fa-sign-out pull-right"></i> Cerrar sesión</a></li>
                   </ul>
                 </li>
