@@ -259,9 +259,14 @@ class Model_ET_Expediente_Tecnico extends CI_Model
 		inner join proyecto_inversion py on et.id_pi = py.id_pi where p.id_partida=$idPartida");
         return $data->result()[0];
     }
-    public function ProyectoViable($codigoUnico)
+    /*public function ProyectoViable($codigoUnico)
     {
     	$data = $this->db->query("execute sp_ListarEstudioViabilizados @id_estudio_inv= 0 , @codigo_unico = '$codigoUnico'");
+    	return $data->result();
+    }*/
+    public function ProyectoViable($codigoUnico)
+    {
+    	$data = $this->db->query("EXEC	sp_ListarProyectoEtapaEstudio @codigo_unico = '$codigoUnico', @etapa_estudio = 'viabilizado'");
     	return $data->result();
     }
 }
