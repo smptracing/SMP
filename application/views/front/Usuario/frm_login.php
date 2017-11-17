@@ -50,7 +50,7 @@
         </div>
     </nav>
     <div class="wrapper wrapper-full-page">
-        <div class="full-page login-page" filter-color="black" data-image="<?php echo base_url(); ?>assets/Img/laguna4.jpg" style ="-webkit-filter: grayscale(15%); filter: grayscale(15%);">
+        <div class="full-page login-page" filter-color="black" data-image="<?php echo base_url(); ?>assets/Img/lagunagray.jpg" style ="-webkit-filter: grayscale(15%); filter: grayscale(15%);">
 
             <div class="content">
                 <div class="container">
