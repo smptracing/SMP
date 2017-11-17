@@ -1,80 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SMP-APURIMAC</title>
+<html lang="es">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>SMP-APURIMAC</title>
+        <link href="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>assets/vendors/nprogress/nprogress.css" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>assets/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>assets/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>assets/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+        <link href="<?php echo base_url(); ?>assets/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/css/bootstrap-select.css">
+        <link href="<?php echo base_url();?>assets/vendors/datatables.net-bs/css/jquery.dataTables.min.css" rel="stylesheet">
+        <link href="<?php echo base_url();?>assets/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+        <link href="<?php echo base_url();?>assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+        <link href="<?php echo base_url();?>assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+        <link href="<?php echo base_url();?>assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
 
+        <link href="<?php echo base_url();?>assets/vendors/animate/animate.min.css" rel="stylesheet">
+        <link href="<?php echo base_url();?>assets/css/jquery.growl.css" rel="stylesheet">
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/formValidation.min.css">
+        <link href="<?php echo base_url(); ?>assets/build/css/custom.min.css" rel="stylesheet">
 
-    <!-- Bootstrap -->
-    <link href="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="<?php echo base_url(); ?>assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="<?php echo base_url(); ?>assets/vendors/nprogress/nprogress.css" rel="stylesheet">
-    <!-- iCheck -->
-    <link href="<?php echo base_url(); ?>assets/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+        <script src="<?php echo base_url(); ?>assets/js/Helper/jsHelper.js"></script>
+        <script src="<?php echo base_url(); ?>assets/Template/vendors/jquery/dist/jquery.min.js"></script>
 
-    <!-- bootstrap-progressbar -->
-    <link href="<?php echo base_url(); ?>assets/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
-    <!-- JQVMap -->
-    <link href="<?php echo base_url(); ?>assets/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
-    <!-- bootstrap-daterangepicker -->
-    <link href="<?php echo base_url(); ?>assets/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+        <script src="http://kendo.cdn.telerik.com/2017.3.1026/js/kendo.all.min.js"></script>
 
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/css/bootstrap-select.css"><!--- para el selector con buscardor---->
+        <style>
+            #ProgramacionHorizontal
+            {
+                width: 100% !important;
+            }
+            #navtittlemin
+            {
+                display: none;
+            }
+            @media (max-width: 550px) 
+            {
+                #navtittle{
+                    display: none;
+                }
+                #navtittlemin
+                {
+                    display: inline-block;
+                }
+            }
+            body
+            {
+                font-size: 11px;
+            }
+        </style>
 
-      <!-- Datatables -->
-
-    <link href="<?php echo base_url();?>assets/vendors/datatables.net-bs/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="<?php echo base_url();?>assets/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url();?>assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url();?>assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url();?>assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
-
-    <link href="<?php echo base_url();?>assets/vendors/animate/animate.min.css" rel="stylesheet">
-      <link href="<?php echo base_url();?>assets/css/jquery.growl.css" rel="stylesheet">
-          <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/formValidation.min.css">
-          <link href="<?php echo base_url(); ?>assets/build/css/custom.min.css" rel="stylesheet">
-
-  <script src="<?php echo base_url(); ?>assets/js/Helper/jsHelper.js"></script>
-  <script src="<?php echo base_url(); ?>assets/Template/vendors/jquery/dist/jquery.min.js"></script>
-
-  <script src="http://kendo.cdn.telerik.com/2017.3.1026/js/kendo.all.min.js"></script>
-
-  <style>
-   #ProgramacionHorizontal{
-      width: 100% !important;
-    }
-      #navtittlemin
-      {
-        display: none;
-      }
-
-      @media (max-width: 550px) {
-      #navtittle{
-        display: none;
-      }
-      #navtittlemin
-      {
-        display: inline-block;
-      }
-    }
-     body
-        {
-            font-size: 11px;
-        }
-  </style>
-
-     <script>
-    var base_url = '<?php echo base_url(); ?>';
-    </script>
-    <!-- Custom Theme Style -->
-
-  </head>
+        <script>
+        var base_url = '<?php echo base_url(); ?>';
+        </script>
+    </head>
 
   <body class="nav-md">
     <div class="container body">
@@ -86,9 +70,6 @@
             </div>
 
             <div class="clearfix"></div>
-
-
-                    <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
               <ul class="nav side-menu">
@@ -102,10 +83,6 @@
                 </ul>
               </div>
             </div>
-            <!-- /sidebar menu -->
-
-
-            <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
               <a data-toggle="tooltip" data-placement="top" title="Settings">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
@@ -120,10 +97,8 @@
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>
-            <!-- /menu footer buttons -->
           </div>
         </div>
-        <!-- top navigation -->
         <div class="top_nav">
           <div class="nav_menu">
             <nav>
@@ -140,18 +115,11 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="<?php echo base_url(); ?>assets/images/img.jpg" alt="">
+                    <img src="<?php echo base_url(); ?>assets/images/img.jpg" alt=""><?= $this->session->userdata('nombreUsuario')?>
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;">Perfil</a></li>
-                    <li>
-                      <a href="javascript:;">
-                        <span class="badge bg-red pull-right">50%</span>
-                        <span>Ajustes</span>
-                      </a>
-                    </li>
-                    <li><a href="javascript:;">Ayuda</a></li>
+                    <li><a href="javascript:;"><?= $this->session->userdata('desc_usuario_tipo');?></a></li>
                     <li><a href="<?php echo base_url("index.php/Login/logout");?>"><i class="fa fa-sign-out pull-right"></i> Cerrar sesión</a></li>
                   </ul>
                 </li>
@@ -188,4 +156,4 @@
             </nav>
           </div>
         </div>
-        <!-- /top navigation -->
+
