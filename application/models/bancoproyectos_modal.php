@@ -88,7 +88,7 @@ class bancoproyectos_modal extends CI_Model
         } 
         else
         {
-            return $this->db->query("execute sp_Gestionar_ProyectoInversion
+            $this->db->query("execute sp_Gestionar_ProyectoInversion
                 @Opcion='" . $flat . "',
                 @id_pi='" . $id_pi . "',
                 @id_ue='" . $cbxUnidadEjecutora . "',
@@ -109,6 +109,8 @@ class bancoproyectos_modal extends CI_Model
                 @id_estado_ciclo='" . $cbxEstCicInv_ . "',
                 @id_rubro='" . $cbxRubro . "',
                 @id_modalidad_ejec='" . $cbxModalidadEjec . "'");
+            
+            return true;
         }
     }
     //FIN AGREGAR UN PROYECTO
