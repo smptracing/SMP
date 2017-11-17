@@ -8,13 +8,13 @@ class Model_Usuario extends CI_Model
 	      }
         function ListarTipoUsuarioMenu($tipo){
             $query=$this->db->query("   select M2.id_modulo,M2.id_menu,M.id_menu as id_submenu,M2.nombre,M2.url,M2.class_icono,M.nombre as nombreSubmenu, M.url as urlSubmenu
-    from USUARIO U
-    inner join ACCESS_MENU A on U.id_persona=A.id_persona
-    inner join MENU M on M.id_menu=A.id_menu
-    inner join MENU M2 on M.id_menu_padre=M2.id_menu
-    left join USARIO_MENU UM on UM.id_menu=M.id_menu
-    where UM.id_usuario_tipo=".$tipo."
-    order by M2.posicion asc");
+				    from USUARIO U
+				    inner join ACCESS_MENU A on U.id_persona=A.id_persona
+				    inner join MENU M on M.id_menu=A.id_menu
+				    inner join MENU M2 on M.id_menu_padre=M2.id_menu
+				    left join USARIO_MENU UM on UM.id_menu=M.id_menu
+				    where UM.id_usuario_tipo=".$tipo."
+				    order by M2.posicion asc");
                 if($query){
 
                   return  $query->result_array();

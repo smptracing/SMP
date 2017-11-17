@@ -234,9 +234,20 @@ $(function(){
                              $('#cbb_listaMenuDestino option').each(function(){
                                 $("#cbb_listaMenu option[value='"+$(this).val()+"']").remove();
                             });
+
                         }
                     });
 
+                }
+
+                var listaMenuUsuarioByID = function(idUsuario){
+                  var item = {};
+                  $.getJSON(base_url +"index.php/Login/recuperarMenu/"+idUsuario, function(json) {
+                    $.each(json,function(i){
+                      item[i] = json[i].id_submenu;
+                    });
+                  });
+                  return item;
                 }
 
             var idioma_espanol=

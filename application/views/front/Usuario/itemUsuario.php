@@ -104,42 +104,59 @@
 </script>
 
 <script>
-/*
-$.ajax({
-    "url":base_url +"index.php/Login/recuperarMenu/0",
-    async:false,
-    type:"POST",
-    success:function(respuesta){
-        var registros = eval(respuesta);
-        for (var i = 0; i <registros.length;i++) {
-          html +="<option value="+registros[i]["id_submenu"]+"> "+registros[i]["id_modulo"]+": "+registros[i]["nombre"]+": "+ registros[i]["nombreSubmenu"]+" </option>";
-        };
-        console.log(" HOOOOLA"+html);
-    }
-});*/
 
+/*
+var listaMenuUsuarioByID = function(idUsuario){
+  var menuUsuarioId = [];
+  $.getJSON(base_url +"index.php/Login/recuperarMenu/"+idUsuario, function(json) {
+    $.each(json,function(i){
+      menuUsuarioId.push(json[i].id_submenu);
+    });
+  });
+  return menuUsuarioId;
+}*/
+
+var menuUsuarioId = [];
+$.getJSON(base_url +"index.php/Login/recuperarMenu/"+<?php echo $arrayUsuario->id_persona; ?>, function(json) {
+  $.each(json,function(i){
+      menuUsuarioId.push(json[i].id_submenu);
+      console.log(menuUsuarioId[i]);
+  });
+});
 
 $.getJSON(base_url+"index.php/Login/recuperarMenu/0",function(json){
-
   var json2 = [];
+  var subMenu = [];
+  var count = 0;
+  var item = [];
+/*
+  json.forEach( function(valor, i, json) {
+      count++;
+  });
+  for (var i = 0; i < 15; i++) {
+    item.push({ id: 3, text: "title", spriteCssClass: "html", checked: true });
+  }*/
+var it = [];
+// console.log(listaMenuUsuarioByID("<?php echo $arrayUsuario->id_persona; ?>"));
+
 
     $.each(json,function(i){
-        //$('#cbb_listaMenuDestino').append("<option  value='"+json[i]['id_submenu']+"'>"+json[i]['id_modulo']+": "+json[i]['nombre']+": "+json[i]['nombreSubmenu']+"</option>");
-        //console.log(json[i]['nombreSubmenu']);
+
+          if(json[i]['id_padre_home']==22) {
+            item.push({ id: json[i]['id_submenu'], text: json[i]['id_modulo']+": "+json[i]['nombre']+": "+ json[i]['nombreSubmenu']+ " - "+json[i]['id_submenu'], spriteCssClass: "html", checked: json[i]['id_submenu'] == menuUsuarioId[i] ? true : false   });
+            count++;
+          }
+
+          subMenu[0]=item;
+
         if (json[i]['id_modulo'] == "HOME") {
         json2.push(
           {
-              id: 66, text: json[i]['nombreSubmenu'], expanded: true, spriteCssClass: "folder", items: [
-                  { id: 3, text: "about", spriteCssClass: "html", checked: true },
-                  { id: 4, text: "about", spriteCssClass: "html", checked: true },
-                  { id: 5, text: "logo.png", spriteCssClass: "html", checked: true }
-              ]
+              id: json[i]['id_submenu'], text: json[i]['nombreSubmenu'], expanded: true, spriteCssClass: "folder", items: subMenu[i]
           }
         );
       }
     });
-
-    console.log(json2);
 
         $("#treeview").kendoTreeView({
             checkboxes: {
