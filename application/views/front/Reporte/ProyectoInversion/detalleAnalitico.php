@@ -22,10 +22,6 @@
 			<div class="col-md-12 col-xs-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
-						<h2><b>ANALÍTICO DEL AVANCE FINANCIERO</b> </h2>
-						<ul class="nav navbar-right panel_toolbox">
-						</ul>
-						<div class="clearfix"></div>
 					</div>
 					<div class="x_content">
 						<div class="" role="tabpanel" data-example-id="togglable-tabs">
@@ -107,15 +103,15 @@
 															<td>
 																<?=$item->finalidad,' ',$item->finalidad_nombre?>
 													    	</td>
-													    	<td><?=$item->presupuesto?></td>
-													    	<td><?=$item->modificacion?></td>
-															<td><?=$item->pim_acumulado?></td>
-															<td><?=$item->ejecucion?></td>
-															<td><?=$item->compromiso?></td>
-															<td><?=$item->certificado?></td>
-															<td><?=$item->devengado?></td>
-															<td><?=$item->girado?></td>
-															<td><?=$item->pagado?></td>
+													    	<td><?=a_number_format($item->presupuesto, 2, '.',",",3)?></td>
+													    	<td><?=a_number_format($item->modificacion, 2, '.',",",3)?></td>
+															<td><?=a_number_format($item->pim_acumulado, 2, '.',",",3)?></td>
+															<td><?=a_number_format($item->ejecucion, 2, '.',",",3)?></td>
+															<td><?=a_number_format($item->compromiso, 2, '.',",",3)?></td>
+															<td><?=a_number_format($item->certificado, 2, '.',",",3)?></td>
+															<td><?=a_number_format($item->devengado, 2, '.',",",3)?></td>
+															<td><?=a_number_format($item->girado, 2, '.',",",3)?></td>
+															<td><?=a_number_format($item->pagado, 2, '.',",",3)?></td>
 													  </tr>
 													<?php } ?>
 

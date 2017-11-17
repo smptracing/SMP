@@ -90,47 +90,48 @@
 												<tbody>
 													<?php foreach($listaDetalleMensualizadoFuenteFinan as $item ){ ?>
 													  	<tr>
+
 															<td>
-																<?=$item->fuente_financ?>
+																<?=a_number_format($item->fuente_financ, 2, '.',",",3)?>
 													    	</td>
 													    	<td style="text-align:right">
-																<?=$item->pia?>
+																<?=a_number_format($item->pia, 2, '.',",",3)?>
 													    	</td>
 													    	<td style="text-align:right">
-																<?=$item->pim?>
+																<?=a_number_format($item->pim, 2, '.',",",3)?>
 													    	</td>
 													    	<td style="text-align:right">
-																<?=$item->pim_acumulado?>
+																<?=a_number_format($item->pim_acumulado, 2, '.',",",3)?>
 													    	</td>
 													    	<td style="text-align:right">
-																<?=$item->monto_financ1?>
+																<?=a_number_format($item->monto_financ1, 2, '.',",",3)?>
 													    	</td>
 													    	<td style="text-align:right">
-																<?=$item->monto_financ2?>
+																<?=a_number_format($item->monto_financ2, 2, '.',",",3)?>
 													    	</td>
 													    	<td style="text-align:right">
-																<?=$item->ejecucion?>
+																<?=a_number_format($item->ejecucion, 2, '.',",",3)?>
 													    	</td>
 													    	<td style="text-align:right">
-																<?=$item->compromiso?>
+																<?=a_number_format($item->compromiso, 2, '.',",",3)?>
 													    	</td>
 													    	<td style="text-align:right">
-																<?=$item->monto_certificado?>
+																<?=a_number_format($item->monto_certificado, 2, '.',",",3)?>
 													    	</td>
 													    	<td style="text-align:right">
-																<?=$item->devengado?>
+																<?=a_number_format($item->devengado, 2, '.',",",3)?>
 													    	</td>
 													    	<td style="text-align:right">
-																<?=$item->girado?>
+																<?=a_number_format($item->girado, 2, '.',",",3)?>
 													    	</td>
 													    	<td style="text-align:right">
-																<?=$item->pagado?>
+																<?=a_number_format($item->pagado, 2, '.',",",3)?>
 													    	</td>
 													    	<td style="text-align:right">
-																<?=$item->ampliacion?>
+																<?=a_number_format($item->ampliacion, 2, '.',",",3)?>
 													    	</td>
 													    	<td style="text-align:right">
-																<?=$item->credito?>
+																<?=a_number_format($item->credito, 2, '.',",",3)?>
 													    	</td>
 													    	
 													  </tr>
