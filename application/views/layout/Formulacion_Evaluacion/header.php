@@ -132,14 +132,14 @@
                     <ul class="nav side-menu">
                       <li><a><i class="fa fa-database"></i> Principal <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                          <li><a href="<?php echo site_url('FEformulacion/Feformulacion/all'); ?>">Formulación y evaluación</a></li>
+                          <li><a href="<?php echo site_url('FEformulacion/Feformulacion/all'); ?>">Formulación</a></li>
                           <li><a href="<?php echo site_url('EvaluacionFE/FeEvaluacion/all'); ?>">Evaluación</a></li>
-                          <li><a href="<?php echo site_url('FEformulacion/FeAprobado/all'); ?>">Aprobado</a></li> 
-                          <li><a href="<?php echo site_url('FEformulacion/FeViabilizado/all'); ?>">Viabilizados</a></li>
+                          <!--<li><a href="<?php echo site_url('FEformulacion/FeAprobado/all'); ?>">Aprobado</a></li>--> 
+                          <li><a href="<?php echo site_url('FEformulacion/FeViabilizado/all'); ?>">Viabilizado</a></li>
 
                         </ul>
                         <ul class="nav child_menu">
-                            <li><a href="<?php echo site_url('FEformulacion/Feformulacion/all'); ?>">Formulación y evaluación</a></li>
+                            <!--<li><a href="<?php echo site_url('FEformulacion/Feformulacion/all'); ?>">Formulación y evaluación</a></li>-->
                                <!--<li><a href="<?php echo site_url('FEformulacion/FeEstudioInversion'); ?>">Subgerente</a></li>-->
                             <!--<li><a href="<?php echo site_url('Estudio_Inversion/EstudioCoordinadorFunc'); ?>">Coordinador</a></li>-->
                             <!--<li><a href="<?php echo site_url('FEformulacion/UFEstudioInversionFormulacionFormulador'); ?>">Formulador </a></li>-->
