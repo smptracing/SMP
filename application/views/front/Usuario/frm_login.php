@@ -87,6 +87,17 @@
                                     <div class="footer text-center">
                                         <button type="submit" class="btn btn-rose btn-simple btn-wd btn-lg">Ingresar</button>
                                     </div>
+                                    <div class="notificacion" style="padding: 5px 20px;">
+                                        <?php $sessionTempError=$this->session->flashdata('error');
+                                        if($sessionTempError){ ?>                                   
+                                        <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="padding-right: 20px;"><span aria-hidden="true">×</span>
+                                            </button>
+                                            <strong>Error: </strong><?=$sessionTempError?>
+                                        </div>
+                                        <?php } ?>                                      
+                                    </div>
+                                    
 
                                 </div>
                             </form>
@@ -107,7 +118,6 @@
         </div>
     </div>
 </body>
-
 
 <script src="<?php echo base_url(); ?>assets/templateLogin/js/core/jquery-3.1.1.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/templateLogin/js/core/jquery-ui.min.js"></script>

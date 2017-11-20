@@ -16,7 +16,7 @@
 							<label class="control-label">Nombre de la Unidad Ejecutora</label>
 							<div>
 								<input id="txtIdPi" name="txtIdPi" value="<?= $Listarproyectobuscado->id_pi?>" class="form-control col-md-4 col-xs-12"  placeholder="Nombre del proyecto" autocomplete="off"  type="hidden">	
-								<input id="txtNombreUe" name="txtNombreUe" value="<?= $Listarproyectobuscado->nombre_ue?>" class="form-control col-md-4 col-xs-12"  placeholder="Nombre del proyecto"  autocomplete="off" >	
+								<input id="txtNombreUe" name="txtNombreUe" value="<?= $Listarproyectobuscado->nombre_ue?>" class="form-control col-md-4 col-xs-12"  placeholder="Nombre de la Unidad Ejecutora"  autocomplete="off" >	
 							</div>	
 						</div>
 					</div>
