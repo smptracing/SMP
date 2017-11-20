@@ -24,15 +24,8 @@ class Login extends CI_Controller {
     }
     public function singin()
     {
-        $data = $this->Login_model->Reporte_Login();
-        foreach ($data as $key => $value)
-        {
-            $value->costo_total = a_number_format($value->costo_total , 2, '.',",",3);
-            $value->total_beneficiarios = a_number_format($value->total_beneficiarios , 0, '.',",",3);
-        }
-        $this->load->view('front/usuario/frm_login',['Reporte' => $data]);
+        $this->load->view('front/usuario/frm_login');
     }
-    //Corregido
     public function recuperarMenu($usuario){
         if($this->input->is_ajax_request())
         {
@@ -74,6 +67,7 @@ class Login extends CI_Controller {
         }
         else
         {
+            $this->session->set_flashdata('error', 'Usuario y/o Contraseña Incorrrecto');
             $this->muestralog();
         }
     }
