@@ -146,14 +146,14 @@
 	                        		<a role="menuitem" tabindex="-1" href="#" onclick="window.open(base_url+'index.php/ET_Tarea/index/<?=$ExpedienteTecnicoElaboracion[0]->id_et?>', '_blank'); return false;"><i class="fa fa-list-ol"></i> Gestionar Actividades
 	                        		</a>
 		                        </li>
-                        		<li role="presentation">
-	                        		<a role="menuitem" tabindex="-1" href="#" class="editar" onclick="paginaAjaxDialogo(null, 'Registro de componentes, metas y partidas', { idExpedienteTecnico : <?=$ExpedienteTecnicoElaboracion[0]->id_et?> }, base_url+'index.php/ET_Componente/insertar', 'GET', null, null, false, true); return false;" ><i class="fa fa-bars"></i> Componentes, Metas y Partidas	
-		                        	</a>
-		                        </li>
 		                        <li role="presentation">
 	                        		<a role="menuitem" tabindex="-1" href="#" onclick="paginaAjaxDialogo(null, 'Presupuesto analítico', { idExpedienteTecnico : <?=$ExpedienteTecnicoElaboracion[0]->id_et?> }, base_url+'index.php/ET_Presupuesto_Analitico/insertar', 'GET', null, null, false, true); return false;"><i class="fa fa-money"></i> Presupuesto Analítico	
 		                        	</a>
 		                        </li>
+                        		<li role="presentation">
+	                        		<a role="menuitem" tabindex="-1" href="#" class="editar" onclick="paginaAjaxDialogo(null, 'Registro de componentes, metas y partidas', { idExpedienteTecnico : <?=$ExpedienteTecnicoElaboracion[0]->id_et?> }, base_url+'index.php/ET_Componente/insertar', 'GET', null, null, false, true); return false;" ><i class="fa fa-bars"></i> Componentes, Metas y Partidas	
+		                        	</a>
+		                        </li>		                        
 		                        <li role="presentation">
 	                        		<a role="menuitem" tabindex="-1" href="#" onclick="window.open(base_url+'index.php/Expediente_Tecnico/valorizacionEjecucionProyecto/<?=$ExpedienteTecnicoElaboracion[0]->id_et?>', '_blank'); return false;"><i class="fa fa-calendar"></i> Cronogramación
 		                        	</a>
