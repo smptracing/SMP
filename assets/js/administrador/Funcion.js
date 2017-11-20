@@ -57,7 +57,8 @@
                     var table=$("#table-Funcion").DataTable({
                      "processing": true,
                       "serverSide": false,
-                     destroy:true,
+                       "order": [[1,'asc']],
+                        destroy:true,
 
                          "ajax":{
                                     "url":base_url+"index.php/Funcion/GetFuncion",

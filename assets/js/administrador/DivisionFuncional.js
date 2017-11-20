@@ -127,6 +127,7 @@ $(document).on("ready" ,function()
             "processing" : true,
             "serverSide" : false,
             "destroy" : true,
+            "order": [[3,'asc']],
             "language" : idioma_espanol,
             "ajax" :
             {

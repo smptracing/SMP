@@ -156,6 +156,7 @@
 		{
 			"processing" : true,
 			"serverSide" : false,
+			"order": [[1,'asc']],
 			"destroy" : true,
 			"language" : idioma_espanol,
 			"ajax" : 
