@@ -32,6 +32,7 @@ class Login extends CI_Controller {
         }
         $this->load->view('front/usuario/frm_login',['Reporte' => $data]);
     }
+    //Corregido
     public function recuperarMenu($usuario){
         if($this->input->is_ajax_request())
         {
