@@ -35,21 +35,21 @@
 					<table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
 						<thead>
 							<tr>
-								<th></th>
-								<th>Exp Siaf | Nro Orden</th>
+								<th>Exp SIAF</th>
+								<th>No Orden</th>
 								<th>Concepto</th>
 								<th>Sub total S/.</th>
-								<th>Total Igv S/.</th>
+								<th>Total IGV S/.</th>
 								<th>Total Fact S/.</th>
-								<th>Tipo bien</th>
-								<th>Fecha de orden</th>
-								<th>Doc referencia</th>
-								<th>Exp Siga</th>
+								<th>Tipo Bien</th>
+								<th>Fecha de Orden</th>
+								<th>Doc Referencia</th>
+								<th>Exp SIGA</th>
 
 								<th>Proveedor</th>
 								<th>Dirección</th>
 								<th>Giro General</th>
-								<th>Nro Ruc</th>
+								<th>Nro RUC</th>
 								<th>Teléfonos</th>
 								<th>CCI</th>
 								<th>Teléfono Fax</th>
@@ -60,9 +60,9 @@
 						<tbody>
 						<?php foreach($listaPorOrden as $item ){ ?>
 							<tr>
-								<td></td>
-								<td>    
-								<button type="button" class="DetalleOrdenExpeSiaf btn btn-primary btn-xs" onclick="detalleordenexpsiaf(<?= (int)$item->ANO_EJE?>,<?= (int)$item->EXP_SIAF?>);"><?=$item->EXP_SIAF?><i class='ace-icon bigger-120'></i></button>
+								<td><button type="button" class="DetalleOrdenExpeSiaf btn btn-primary btn-xs" onclick="detalleordenexpsiaf(<?= (int)$item->ANO_EJE?>,<?= (int)$item->EXP_SIAF?>);"><?=$item->EXP_SIAF?><i class='ace-icon bigger-120'></i></button></td>
+
+								<td style="text-align:right">  								
 								<button type="button" class="DetalleOrdenExpeSiaf btn btn-success btn-xs" onclick="detalleporcadanumorden(<?= (int)$item->ANO_EJE?>,'<?=$item->TIPO_BIEN?>',<?=(int)$item->NRO_ORDEN?>,<?=(int)$item->TIPO_PPTO?>);"><?=$item->NRO_ORDEN?><i class='ace-icon bigger-120'></i></button>    
 								</td>
 								<td>
