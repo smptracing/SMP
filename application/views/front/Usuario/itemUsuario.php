@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2017.3.1026/styles/kendo.common.min.css" />
 <link href="//cdn.kendostatic.com/2013.1.319/styles/kendo.default.min.css" rel="stylesheet" />
-<link href="//cdn.kendostatic.com/2013.1.319/styles/kendo.default.mobile.min.css" rel="stylesheet" />
+<!--<link href="//cdn.kendostatic.com/2013.1.319/styles/kendo.default.mobile.min.css" rel="stylesheet" />-->
 
 <div class="modal-body">
    <div class="row">
@@ -62,7 +62,7 @@
                     <div class="col-sm-9">
                       <div class="demo-section k-content">
                           <div>
-                              <h4>Check nodes</h4>
+                              <h4>Estructura</h4>
                               <div id="treeview"></div>
                           </div>
                           <div style="padding-top: 2em;">
@@ -72,20 +72,6 @@
                       </div>
                     </div>
                   </div>
-                   <!--
-                  <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">Acceso al pip</label>
-                        <div class="col-sm-4">
-                          <select style="height:130px;width:100%;" id="cbb_listaMenu2" name="cbb_listaMenu2[]" multiple=""></select>
-                        </div>
-                        <div class="col-sm-1" style="padding-top:20px;">
-                          <button id="bt_Der2" class="btn btn-info" type="button" style="width:100%; text-align:center;"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
-                          <button id="bt_Izq2" type="button" class="btn btn-warning" style="width:100%;margin-top:10px; text-align:center;"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></button>
-                        </div>
-                        <div class="col-sm-4">
-                          <select style="height:130px;width:100%;" id="cbb_listaMenuDestino2" name="cbb_listaMenuDestino2[]" multiple=""></select>
-                        </div>
-                  </div> -->
                   <div class="form-group" style="text-align: center;">
                       <button type="button" id="sendUsuario" class="btn btn-primary">Registrar Usuario </button>
                       <input  id="btnCerrar" class="btn btn-danger" data-dismiss="modal" value="Cancelar">
@@ -94,33 +80,29 @@
         </div>
     </div>
 </div>
+<style>
+    #treeview .k-sprite {
+        background-image: url("http://demos.kendoui.com/content/web/treeview/coloricons-sprite.png");
+    }
 
-
+    .rootfolder { background-position: 0 0; }
+    .folder     { background-position: 0 -16px; }
+    .pdf        { background-position: 0 -32px; }
+    .html       { background-position: 0 -48px; }
+    .image      { background-position: 0 -64px; }
+</style>
 
 <script src="<?php echo base_url();?>assets/js/usuario/usuario.js"></script>
-
-<script type="text/javascript">
-    console.log("<?php echo ' - '.$arrayUsuario->usuario; ?>");
-</script>
+<script src="<?php echo base_url();?>assets/js/Helper/jsHelper.js"></script>
 
 <script>
-
-/*
-var listaMenuUsuarioByID = function(idUsuario){
-  var menuUsuarioId = [];
-  $.getJSON(base_url +"index.php/Login/recuperarMenu/"+idUsuario, function(json) {
-    $.each(json,function(i){
-      menuUsuarioId.push(json[i].id_submenu);
-    });
-  });
-  return menuUsuarioId;
-}*/
 
 var menuUsuarioId = [];
 $.getJSON(base_url +"index.php/Login/recuperarMenu/"+<?php echo $arrayUsuario->id_persona; ?>, function(json) {
   $.each(json,function(i){
+    if(json[i]['id_padre_home']==22) {
       menuUsuarioId.push(json[i].id_submenu);
-      console.log(menuUsuarioId[i]);
+    }
   });
 });
 
@@ -129,21 +111,25 @@ $.getJSON(base_url+"index.php/Login/recuperarMenu/0",function(json){
   var subMenu = [];
   var count = 0;
   var item = [];
-/*
-  json.forEach( function(valor, i, json) {
-      count++;
-  });
-  for (var i = 0; i < 15; i++) {
-    item.push({ id: 3, text: "title", spriteCssClass: "html", checked: true });
-  }*/
-var it = [];
-// console.log(listaMenuUsuarioByID("<?php echo $arrayUsuario->id_persona; ?>"));
 
+function compara(json, menuUsuarioId) {
+  var bool = false;
+    for (var i = 0; i < json.length; i++) {
+      if (json[i].id_submenu == menuUsuarioId) {
+        console.log(json[i].id_submenu+" = "+menuUsuarioId);
+        bool = true;
+      }
+    }
+    return bool;
+}
 
     $.each(json,function(i){
-
           if(json[i]['id_padre_home']==22) {
-            item.push({ id: json[i]['id_submenu'], text: json[i]['id_modulo']+": "+json[i]['nombre']+": "+ json[i]['nombreSubmenu']+ " - "+json[i]['id_submenu'], spriteCssClass: "html", checked: json[i]['id_submenu'] == menuUsuarioId[i] ? true : false   });
+            item.push({ id:  json[i]['id_submenu'],
+              text: json[i]['id_modulo']+": "+json[i]['nombre']+": "+ json[i]['nombreSubmenu']+" - "+json[i]['id_submenu'],
+              spriteCssClass: "html",
+              checked: compara(json,menuUsuarioId[count])
+            });
             count++;
           }
 
@@ -202,23 +188,10 @@ var it = [];
         }
   </script>
 
-    <style>
-        #treeview .k-sprite {
-            background-image: url("http://demos.kendoui.com/content/web/treeview/coloricons-sprite.png");
-        }
-
-        .rootfolder { background-position: 0 0; }
-        .folder     { background-position: 0 -16px; }
-        .pdf        { background-position: 0 -32px; }
-        .html       { background-position: 0 -48px; }
-        .image      { background-position: 0 -64px; }
-    </style>
-
 <script>
   $(function(){
       $("#cbb_TipoUsuario").change(function(event){
         listaMenu();
-        listaMenu2();
         $('#cbb_listaMenuDestino').empty();
         $.getJSON(base_url+"index.php/Usuario/ListarTipoUsuarioMenu/"+$("#cbb_TipoUsuario").val(),function(json){
             $.each(json,function(i){
@@ -262,8 +235,6 @@ var it = [];
               $('#formUsuario').remove();
               $('#formUsuario').empty();
               $('#null').modal('hide');
-
-
           }
       });
   });
@@ -309,7 +280,6 @@ var it = [];
 		listaPersonaCombo("<?php if(isset($arrayUsuario->id_persona)) echo $arrayUsuario->id_persona; ?>");
 		listatipoUsuario("<?php if(isset($arrayUsuario->id_usuario_tipo)) echo $arrayUsuario->id_usuario_tipo; ?>");
     listaMenu();
-    listaMenu2();
     <?php
     if(isset($arrayUsuario->id_persona)){
     ?>
@@ -317,8 +287,6 @@ var it = [];
     <?php
     }
     ?>
-
-
     //$("#comboPersona").val(15);
 	});
 </script>
