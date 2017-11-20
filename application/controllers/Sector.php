@@ -81,6 +81,8 @@ class Sector extends CI_Controller {/* Mantenimiento de sector entidad Y servici
 		   }
 
  	 }
+
+
  	 function UpdateSector()
 	 {
 	    if ($this->input->is_ajax_request()) 
@@ -131,6 +133,21 @@ class Sector extends CI_Controller {/* Mantenimiento de sector entidad Y servici
 	    }
 
  	 }
+
+
+ 	function EliminarSector(){
+
+ 		if ($this->input->is_ajax_request())
+        {
+            $id_sector = $this->input->post("id_sector");
+            $this->Model_Sector->EliminarSector($id_sector);
+            echo "1";
+
+        } else {
+            show_404();
+        }
+
+ 	}
     /*fin sector*/
     
     function _load_layout($template)

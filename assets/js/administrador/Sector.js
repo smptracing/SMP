@@ -82,6 +82,7 @@
                     var table=$("#table-sector").DataTable({
                      "processing":true,
                      "serverSide":false,
+                     "order": [[1,'asc']],
                       "bAutoWidth": false,
                      destroy:true,
                          "ajax":{
@@ -133,7 +134,7 @@
                                           type:"POST",
                                           data:{id_sector:id_sector},
                                           success:function(respuesta){
-                                            //alert(respuesta);
+                                         //   alert(respuesta);
                                             swal("Eliminado!", "Se elimino corectamente el sector.", "success");
                                             $('#table-sector').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
 

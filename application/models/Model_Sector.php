@@ -57,7 +57,9 @@ class Model_Sector extends CI_Model
     }
   
     function EliminarSector($id_sector){
-    	return true;
+    	
+      $this->db->query("execute sp_Sector_d '".$id_sector."'");
+      return true;
     }
 
     function SectorPipListar()
