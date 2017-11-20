@@ -41,11 +41,6 @@
 	<script src="<?php echo base_url(); ?>assets/js/administrador/ServicioPublico.js"></script>
 
 	<script src="<?php echo base_url(); ?>assets/js/administrador/DivisionFuncional.js"></script>
-	 <!-- ECharts -->
-	
-
-
-
 
 </body>
 </html>

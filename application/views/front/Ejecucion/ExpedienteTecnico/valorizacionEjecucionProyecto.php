@@ -81,7 +81,6 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
 			{
 				$htmlTemp.='</tr>';
 			}
-
 			
 		}
 		
