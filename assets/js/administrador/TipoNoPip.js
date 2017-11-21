@@ -26,7 +26,7 @@
 				}
 
 				$('#table_no_pip').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
-			formReset();
+			 $('#VentanaRegTipoNoPIP').modal('hide');
       }
 		});
 	});
@@ -49,7 +49,7 @@
 			{
 				swal(resp,"", "success");
 				$('#table_no_pip').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
-        formReset();
+        $('#VentanaEditTipoNoPip').modal('hide');
 			}
 		});
 	});

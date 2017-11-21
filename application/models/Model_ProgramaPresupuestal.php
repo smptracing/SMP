@@ -8,14 +8,19 @@ class Model_ProgramaPresupuestal extends CI_Model
     }
 //----------------------METODOS PARA EL MANTENIMIENTO DE RUBRO DE EJECUCION--------------------------------------------
     //AGREGAR UN PROGRAMA PRESUPUESTAL
-    public function AddProgramaP($txt_NombreProgramaP)
+    public function AddProgramaP($txt_CodigoProgramaP,$txt_NombreProgramaP)
     {
-        $this->db->query("execute sp_ProgramaPresupuestal_c'" . $txt_NombreProgramaP . "'");
-        if ($this->db->affected_rows() > 0) {
-            return true;
-        } else {
-            return false;
-        }
+         $mensaje1=$this->db->query("execute sp_ProgramaPresupuestal_c '".$txt_CodigoProgramaP."','".$txt_NombreProgramaP."'");
+            if($mensaje1->num_rows()>0)
+            {
+               return $mensaje1->result();
+           
+            }
+            else
+              {
+                return false;
+              }
+
     }
     //FIN AGREGAR UN PROGRAMA PRESUPUESTAL
     //LISTAR PROGRAMA PRESUPUESTAL
@@ -30,7 +35,7 @@ class Model_ProgramaPresupuestal extends CI_Model
     }
     //FIN LISTAR UN PROGRAMA PRESUPUESTAL
     //MODIFICAR DATOS DE PROGRAMA PRESUPUESTAL
-    public function UpdateProgramaP($id_prog_pres, $nombre_prog_pres)
+    public function UpdateProgramaP($id_prog_pres,$codigo_prog_pres, $nombre_prog_pres)
     {
         $this->db->query("execute sp_ProgramaPresupuestal_u '" . $id_prog_pres . "','" . $nombre_prog_pres . "'");
         if ($this->db->affected_rows() > 0) {

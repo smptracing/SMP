@@ -29,7 +29,8 @@ class Model_Entidad extends CI_Model
             $mensaje1=$this->db->query("execute sp_Entidad_c '".$listaSector."','".$txt_NombreEntidad."','".$txt_DenominacionEntidad."'");
            	if($mensaje1->num_rows()>0)
             {
-              return $mensaje1->result();
+               return $mensaje1->result();
+           
             }
             else
               {

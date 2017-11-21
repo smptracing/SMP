@@ -10,10 +10,10 @@
                     <div class="x_title">
                         <h2><b>INFORMACIÓN PRESUPUESTAL</b> </h2>
                         <ul class="nav navbar-right panel_toolbox">
-                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                           <!-- <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                             </li>
                             <li><a class="close-link"><i class="fa fa-close"></i></a>
-                            </li>
+                            </li>-->
                         </ul>
                         <div class="clearfix"></div>
                     </div>
@@ -428,6 +428,13 @@
                         <!-- PAGE CONTENT BEGINS -->
                         <form class="form-horizontal form-label-left" id="form-addProgramaP" action="<?php echo base_url(); ?>ProgramaPresupuestal/AddProgramaP" method="POST">
 
+                                <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Codigo del programa presupuestal<span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="txt_CodigoProgramaP" name="txt_CodigoProgramaP" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Codigo del programa presupuestal" required="required" type="text">
+                                </div>
+                            </div>
                             <div class="item form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre programa presupuestal<span class="required">*</span>
                                 </label>
@@ -473,15 +480,23 @@
                     <div class="col-xs-12">
 
                         <form class="form-horizontal " id="form-ActualizarProgramaP" action="<?php echo base_url(); ?>ProgramaPresupuestal/UpdateProgramaP" method="POST" >
-
+                            <div class="item form-group">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="txt_IdProgramaPU" type="hidden" name="txt_IdProgramaPU" type="text">
+                                </div>
+                             </div>
+                            <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Codigo del Programa presupuestal<span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="txt_CodigoProgramaPU" name="txt_CodigoProgramaPU" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Codigo de Programa presupuestal" required="required" type="text">
+                                </div>
+                            </div>
                             <div class="item form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre Programa presupuestal<span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input id="txt_IdProgramaPModif" type="hidden" name="txt_IdProgramaPModif" type="text">
-                                </div>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input id="txt_NombreProgramaPU" name="txt_NombreProgramaPU" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Nombre de meta presupuestal" required="required" type="text">
+                                    <input id="txt_NombreProgramaPU" name="txt_NombreProgramaPU" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Nombre de Programa presupuestal" required="required" type="text">
                                 </div>
                             </div>
 
