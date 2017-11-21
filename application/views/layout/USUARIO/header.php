@@ -39,7 +39,7 @@
             {
                 display: none;
             }
-            @media (max-width: 550px) 
+            @media (max-width: 550px)
             {
                 #navtittle{
                     display: none;
@@ -144,4 +144,3 @@
             </nav>
           </div>
         </div>
-

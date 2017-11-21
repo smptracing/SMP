@@ -43,7 +43,7 @@
                         <div class="col-sm-3">
                           <input type="password" id="txt_contrasenia" name="txt_contrasenia" placeholder="Contraseña" class="form-control" />
                         </div>
-                  </div>
+                  </div><!--
                   <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">Acceso al menú</label>
                         <div class="col-sm-4">
@@ -56,7 +56,7 @@
                         <div class="col-sm-4">
                           <select style="height:130px;width:100%;" id="cbb_listaMenuDestino" name="cbb_listaMenuDestino[]" multiple=""></select>
                         </div>
-                  </div>
+                  </div>-->
                   <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">Acceso al menú</label>
                     <div class="col-sm-9">
@@ -102,28 +102,6 @@ $.getJSON(base_url+"index.php/Login/recuperarMenu/0",function(json){
   var subMenu = [];
   var count = 0;
   var item = [];
-/*
-function compara(json, menuUsuarioId) {
-  var bool = false;
-
-    for (var i = 0; i < json.length; i++) {
-      //console.log(json[i].id_submenu+" = "+menuUsuarioId);
-      if (json[i].id_submenu == menuUsuarioId) {
-        bool = true;
-      }
-    }
-    return bool;
-}*/
-function compara(json, menuUsuarioId) {
-  var bool = false;
-  //console.log(menuUsuarioId);
-  for (var i = 0; i < menuUsuarioId.length; i++) {
-    if (json == menuUsuarioId[i]) {
-      bool = true;
-    }
-  }
-  return bool;
-}
 
     $.each(json,function(i){
 
@@ -176,7 +154,6 @@ function compara(json, menuUsuarioId) {
                 }
             }
         }
-
         // show checked node IDs on datasource change
         function onCheck() {
             var checkedNodes = [],
@@ -184,14 +161,12 @@ function compara(json, menuUsuarioId) {
                 message;
 
             checkedNodeIds(treeView.dataSource.view(), checkedNodes);
-
             if (checkedNodes.length > 0) {
-                message = "IDs of checked nodes: " + checkedNodes.join(",");
-                //document.getElementById("cbb_listaMenuDestino").innerHTML = checkedNodes;
+                //message = "IDs of checked nodes: " + checkedNodes.join("-");
+                message = checkedNodes.join(",");
             } else {
                 message = "No nodes checked.";
             }
-
             $("#result").html(message);
         }
   </script>
@@ -210,6 +185,7 @@ function compara(json, menuUsuarioId) {
 
 <script>
   $(function(){
+
       $("#cbb_TipoUsuario").change(function(event){
         listaMenu();
         $('#cbb_listaMenuDestino').empty();
@@ -220,10 +196,10 @@ function compara(json, menuUsuarioId) {
             });
         });
       });
+      /*
       $("#formUsuario").submit(function(event){
         event.preventDefault();
         var stringMenuUsuario ='';
-        var stringMenuUsuario2 ='';
         var c=0;
         $("#cbb_listaMenuDestino option").each(function(){
             if(c>0)
@@ -231,6 +207,32 @@ function compara(json, menuUsuarioId) {
             stringMenuUsuario+=$(this).attr('value');
             c++;
         });
+        $.ajax({
+            url:$("#formUsuario").attr("action"),
+            type:$(this).attr('method'),
+            data:$(this).serialize()+"&cbb_listaMenuDestino="+stringMenuUsuario,
+            success:function(resp){
+              swal("",resp, "success");
+              $('#table-Usuarios').dataTable()._fnAjaxUpdate();
+
+           }
+        });
+      }); */
+
+      $("#formUsuario").submit(function(event){
+        event.preventDefault();
+        var stringMenuUsuario ='';
+        var c=0;
+        var dat = $("#result").text();
+        var b = dat.split(',').map(Number);
+        console.log(b[0]);
+
+        for (var i = 0; i < b.length; i++) {
+          if(c>0)
+            stringMenuUsuario+='-';
+          stringMenuUsuario+=b[i];
+          c++;
+        }
         $.ajax({
             url:$("#formUsuario").attr("action"),
             type:$(this).attr('method'),
@@ -255,8 +257,6 @@ function compara(json, menuUsuarioId) {
               $('#formUsuario').remove();
               $('#formUsuario').empty();
               $('#null').modal('hide');
-
-
           }
       });
   });

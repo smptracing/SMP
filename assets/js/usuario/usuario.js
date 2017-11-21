@@ -189,32 +189,16 @@ $(function(){
                     });
 
                 }
-                var listaMenu2=function(){
-                   var html="";
-                   event.preventDefault();
-                   $.ajax({
-                     "url":base_url +"index.php/Login/recuperarMenu/0",
-                     async:false,
-                     type:"POST",
-                     success:function(respuesta){
-                       var registros = eval(respuesta);
-                       for (var i = 0; i <registros.length;i++) {
-                           html +="<li><input type='checkbox' class='tw-control' checked>"
-                           html += registros[i].nombreSubmenu + " - " + registros[i].id_modulo
-                           /*
-                           if ( registros[i].id_modulo == 'PMI') {
-                             html += "<ul><li><input type='checkbox' class='tw-control' checked> string<li></ul>";
-                           }*/
-                           html += "</li>";
-                       };
-                       $("#cbb_listaMenu2").html(html); /*
-                       $('select[name=cbb_listaMenu2]').val(html);
-                       $('select[name=cbb_listaMenu2]').change();
-                       $('.selectpicker').selectpicker('refresh');
-                       console.log(registros[0].codigo_unico_pi);*/
-                     }
-                   });
-               }
+                function compara(json, menuUsuarioId) {
+                  var bool = false;
+                  //console.log(menuUsuarioId);
+                  for (var i = 0; i < menuUsuarioId.length; i++) {
+                    if (json == menuUsuarioId[i]) {
+                      bool = true;
+                    }
+                  }
+                  return bool;
+                }
                  var listaMenuUsuario=function(idUsuario){
                     var html="";
                     event.preventDefault();
@@ -240,15 +224,7 @@ $(function(){
 
                 }
 
-                var listaMenuUsuarioByID = function(idUsuario){
-                  var item = {};
-                  $.getJSON(base_url +"index.php/Login/recuperarMenu/"+idUsuario, function(json) {
-                    $.each(json,function(i){
-                      item[i] = json[i].id_submenu;
-                    });
-                  });
-                  return item;
-                }
+
 
             var idioma_espanol=
                 {
