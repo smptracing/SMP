@@ -217,23 +217,22 @@
 											
 		
 												</tbody>
-											
 											</table>
 											<table id ="tablaResumen">
 												<tr>
 													<td>Total</td>
-													<td><?=$sumatoriaEne?></td>
-													<td><?=$sumatoriaFeb?></td>
-													<td><?=$sumatoriaMar?></td>
-													<td><?=$sumatoriaAbr?></td>
-													<td><?=$sumatoriaMay?></td>
-													<td><?=$sumatoriaJun?></td>
-													<td><?=$sumatoriaJul?></td>
-													<td><?=$sumatoriaAgo?></td>
-													<td><?=$sumatoriaSet?></td>
-													<td><?=$sumatoriaOct?></td>
-													<td><?=$sumatoriaNov?></td>
-													<td><?=$sumatoriaDic?></td>
+													<td><?=a_number_format($sumatoriaEne, 2, '.',",",0)?></td>
+													<td><?=a_number_format($sumatoriaFeb, 2, '.',",",0)?></td>
+													<td><?=a_number_format($sumatoriaMar, 2, '.',",",0)?></td>
+													<td><?=a_number_format($sumatoriaAbr, 2, '.',",",0)?></td>
+													<td><?=a_number_format($sumatoriaMay, 2, '.',",",0)?></td>
+													<td><?=a_number_format($sumatoriaJun, 2, '.',",",0)?></td>
+													<td><?=a_number_format($sumatoriaJul, 2, '.',",",0)?></td>
+													<td><?=a_number_format($sumatoriaAgo, 2, '.',",",0)?></td>
+													<td><?=a_number_format($sumatoriaSet, 2, '.',",",0)?></td>
+													<td><?=a_number_format($sumatoriaOct, 2, '.',",",0)?></td>
+													<td><?=a_number_format($sumatoriaNov, 2, '.',",",0)?></td>
+													<td><?=a_number_format($sumatoriaDic, 2, '.',",",0)?></td>
 												</tr>
 											</table>
 											<br>
@@ -245,6 +244,7 @@
 							</div>
 						</div>
 						<div class="row" style="margin-left: 10px; margin:10px; ">
+							<div><button onclick="generarGrafico();" class="btn btn-primary btn-sm">Generar Gráfico</button></div>
 						                <div class="panel panel-default">
 										 <div class="panel-heading">GRÁFICO ESTADÍSTICO DE DETALLE MENSUALIZADO</div>
 						                        <div id="contenedorGrafico">
@@ -261,9 +261,7 @@
 	</div>
 </div>
 <script>
-
-
-window.setTimeout(function()
+function generarGrafico()
 {
 	$("#contenedorGrafico").css({"height":"450"});
 	var echartLine = echarts.init(document.getElementById('contenedorGrafico'));
@@ -278,7 +276,7 @@ window.setTimeout(function()
         legend: {
           x: 220,
           y: 40,
-          data: ['Ejecutado', 'Comprometido', 'Certificado','Devengado', 'Girado', 'Pagado']
+          data: ['Total']
         },
         
         toolbox: {
@@ -308,13 +306,13 @@ window.setTimeout(function()
         xAxis: [{
           type: 'category',
           boundaryGap: false,
-          data: ["ene","dic","dic","dic"]
+          data: ["ene","feb","mar","abr","may","jun","jul","ago","set","oct","nov","dic"]
         }], 
         yAxis: [{
           type: 'value'
         }],
         series: [{
-          name: 'Ejecutado',
+          name: 'Total',
           type: 'line',
           smooth: true,
           itemStyle: {
@@ -324,7 +322,8 @@ window.setTimeout(function()
               }
             }
           },
-          data:  [0,<?=$sumatoriaEne?>,7,10]
+          data:
+          [<?=a_number_format($sumatoriaEne, 2, '.',",",0)?>,<?=a_number_format($sumatoriaFeb, 2, '.',",",0)?>,<?=a_number_format($sumatoriaMar, 2, '.',",",0)?>,<?=a_number_format($sumatoriaAbr, 2, '.',",",0)?>,<?=a_number_format($sumatoriaMay, 2, '.',",",0)?>,<?=a_number_format($sumatoriaJun, 2, '.',",",0)?>,<?=a_number_format($sumatoriaJul, 2, '.',",",0)?>,<?=a_number_format($sumatoriaAgo, 2, '.',",",0)?>,<?=a_number_format($sumatoriaSet, 2, '.',",",0)?>,<?=a_number_format($sumatoriaOct, 2, '.',",",0)?>,<?=a_number_format($sumatoriaNov, 2, '.',",",0)?>,<?=a_number_format($sumatoriaDic, 2, '.',",",0)?>]
         }/*, {
           name: 'Comprometido',
           type: 'line',
@@ -389,6 +388,6 @@ window.setTimeout(function()
           data:  [4,10]
         }*/]
       });
-}, 5000);
+}
 </script>
 
