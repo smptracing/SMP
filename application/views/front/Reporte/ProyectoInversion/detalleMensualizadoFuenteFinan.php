@@ -92,7 +92,7 @@
 													  	<tr>
 
 															<td>
-																<?=a_number_format($item->fuente_financ, 2, '.',",",3)?>
+																<?=$item->fuente_financ?>
 													    	</td>
 													    	<td style="text-align:right">
 																<?=a_number_format($item->pia, 2, '.',",",3)?>
