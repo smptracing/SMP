@@ -80,28 +80,19 @@
         </div>
     </div>
 </div>
-<style>
-    #treeview .k-sprite {
-        background-image: url("http://demos.kendoui.com/content/web/treeview/coloricons-sprite.png");
-    }
-
-    .rootfolder { background-position: 0 0; }
-    .folder     { background-position: 0 -16px; }
-    .pdf        { background-position: 0 -32px; }
-    .html       { background-position: 0 -48px; }
-    .image      { background-position: 0 -64px; }
-</style>
-
 <script src="<?php echo base_url();?>assets/js/usuario/usuario.js"></script>
-<script src="<?php echo base_url();?>assets/js/Helper/jsHelper.js"></script>
+
 
 <script>
 
-var menuUsuarioId = [];
+var menuUsuarioId = [], menuUsuarioHome = [];
 $.getJSON(base_url +"index.php/Login/recuperarMenu/"+<?php echo $arrayUsuario->id_persona; ?>, function(json) {
   $.each(json,function(i){
     if(json[i]['id_padre_home']==22) {
       menuUsuarioId.push(json[i].id_submenu);
+    }
+    if(json[i]['id_modulo']=="HOME") {
+      menuUsuarioHome.push(json[i].id_submenu);
     }
   });
 });
@@ -111,24 +102,36 @@ $.getJSON(base_url+"index.php/Login/recuperarMenu/0",function(json){
   var subMenu = [];
   var count = 0;
   var item = [];
-
+/*
 function compara(json, menuUsuarioId) {
   var bool = false;
+
     for (var i = 0; i < json.length; i++) {
+      //console.log(json[i].id_submenu+" = "+menuUsuarioId);
       if (json[i].id_submenu == menuUsuarioId) {
-        console.log(json[i].id_submenu+" = "+menuUsuarioId);
         bool = true;
       }
     }
     return bool;
+}*/
+function compara(json, menuUsuarioId) {
+  var bool = false;
+  //console.log(menuUsuarioId);
+  for (var i = 0; i < menuUsuarioId.length; i++) {
+    if (json == menuUsuarioId[i]) {
+      bool = true;
+    }
+  }
+  return bool;
 }
 
     $.each(json,function(i){
+
           if(json[i]['id_padre_home']==22) {
             item.push({ id:  json[i]['id_submenu'],
               text: json[i]['id_modulo']+": "+json[i]['nombre']+": "+ json[i]['nombreSubmenu']+" - "+json[i]['id_submenu'],
               spriteCssClass: "html",
-              checked: compara(json,menuUsuarioId[count])
+              checked: compara(json[i]['id_submenu'],menuUsuarioId)
             });
             count++;
           }
@@ -136,17 +139,21 @@ function compara(json, menuUsuarioId) {
           subMenu[0]=item;
 
         if (json[i]['id_modulo'] == "HOME") {
-        json2.push(
-          {
-              id: json[i]['id_submenu'], text: json[i]['nombreSubmenu'], expanded: true, spriteCssClass: "folder", items: subMenu[i]
-          }
-        );
-      }
+          json2.push(
+            {
+                id: json[i]['id_submenu'], text: json[i]['nombreSubmenu']+" - "+json[i]['id_submenu'],
+                expanded: false,
+                spriteCssClass: "folder",
+                items: subMenu[i],
+                checked: compara(json[i]['id_submenu'],menuUsuarioHome)
+            }
+          );
+        }
     });
 
         $("#treeview").kendoTreeView({
             checkboxes: {
-                checkChildren: true
+                checkChildren: false
             },
 
             check: onCheck,
@@ -180,6 +187,7 @@ function compara(json, menuUsuarioId) {
 
             if (checkedNodes.length > 0) {
                 message = "IDs of checked nodes: " + checkedNodes.join(",");
+                //document.getElementById("cbb_listaMenuDestino").innerHTML = checkedNodes;
             } else {
                 message = "No nodes checked.";
             }
@@ -187,6 +195,18 @@ function compara(json, menuUsuarioId) {
             $("#result").html(message);
         }
   </script>
+
+    <style>
+        #treeview .k-sprite {
+            background-image: url("http://demos.kendoui.com/content/web/treeview/coloricons-sprite.png");
+        }
+
+        .rootfolder { background-position: 0 0; }
+        .folder     { background-position: 0 -16px; }
+        .pdf        { background-position: 0 -32px; }
+        .html       { background-position: 0 -48px; }
+        .image      { background-position: 0 -64px; }
+    </style>
 
 <script>
   $(function(){
@@ -235,6 +255,8 @@ function compara(json, menuUsuarioId) {
               $('#formUsuario').remove();
               $('#formUsuario').empty();
               $('#null').modal('hide');
+
+
           }
       });
   });
@@ -287,6 +309,8 @@ function compara(json, menuUsuarioId) {
     <?php
     }
     ?>
+
+
     //$("#comboPersona").val(15);
 	});
 </script>
