@@ -45,7 +45,7 @@
 										<?= $item->tiempo_ejecucion_pi_et?>
 									</td>
 									<td>
-										<?=a_number_format($item->num_beneficiarios,0,'.',",",3) ?>
+										<?=a_number_format($item->num_beneficiarios_indirectos,0,'.',",",3) ?>
 									</td>												
 							  	</tr>
 							<?php } ?>

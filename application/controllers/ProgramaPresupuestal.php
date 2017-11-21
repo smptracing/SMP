@@ -16,14 +16,12 @@ class ProgramaPresupuestal extends CI_Controller
     //AGREGAR UN PROGRAMA PRESUPUESTAL
     public function AddProgramaP()
     {
-        if ($this->input->is_ajax_request()) {
+        if ($this->input->is_ajax_request()) 
+        {
+            $txt_CodigoProgramaP=$this->input->post("txt_CodigoProgramaP");
             $txt_NombreProgramaP = $this->input->post("txt_NombreProgramaP");
-            if ($this->Model_ProgramaPresupuestal->AddProgramaP($txt_NombreProgramaP) == true) {
-                echo "Se añadio un programa presupuestal";
-            } else {
-                echo "No se añadio  un programa presupuestal";
-            }
-
+            $Data=$this->Model_ProgramaPresupuestal->AddProgramaP($txt_CodigoProgramaP,$txt_NombreProgramaP);
+           echo json_encode($Data);
         } else {
             show_404();
         }

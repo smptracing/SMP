@@ -20,17 +20,18 @@
 					if(registros[i]["VALOR"]==1)
 					{
 						swal("",registros[i]["MENSAJE"], "success");
-
-						$('#form-addEntidad')[0].reset();
-						$("#VentanaRegistraEntidad").modal("hide");
+            $('#form-addEntidad')[0].reset();
+            $("#VentanaRegistraEntidad").modal("hide");
 					}
 					else
 					{
-						swal('',registros[i]["MENSAJE"],'error' )
+						swal('',registros[i]["MENSAJE"],'error' );
+            $("#VentanaRegistraEntidad").modal("hide");
 					}
+
 					/*swal("",  registros[i]["MENSAJE"], "success");*/
 				}
-				$('#table-entidad').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
+			$('#table-entidad').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
 			}
 		});
 	});  
@@ -64,6 +65,7 @@
                     var table=$("#table-entidad").DataTable({
                      "processing":true,
                      "serverSide":false,
+                     "order":[[2,'asc'],[3,'asc']],
                      destroy:true,
                          "ajax":{
                                     "url":base_url+"index.php/Entidad/GetEntidad",
