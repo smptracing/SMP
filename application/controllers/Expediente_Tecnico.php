@@ -389,11 +389,17 @@ class Expediente_Tecnico extends CI_Controller
 		return $this->load->view('front/Ejecucion/ExpedienteTecnico/editar',['ExpedienteTecnicoM'=>$ExpedienteTecnicoM, 'listaimg'=>$listaimg,'listarCargo' => $listarCargo,'listaTipoResponsableElaboracion' => $listaTipoResponsableElaboracion,'listaTipoResponsableEjecucion' => $listaTipoResponsableEjecucion,'listarPersona'=>$listarPersona,'listarUResponsableERespoElabo' =>$listarUResponsableERespoElabo,'listarUResponsableERespoEjecucion' =>$listarUResponsableERespoEjecucion, 'listaModalidadEjecucion' => $listaModalidadEjecucion , 'listaFuenteFinanciamiento' => $listaFuenteFinanciamiento ]);
 	}
 
-    function registroBuscarProyecto()
+    /*function registroBuscarProyecto()
     {
 		$CodigoUnico=$this->input->get('inputValue');
 		$Registrosproyectobuscos=$this->Model_ET_Expediente_Tecnico->ProyectoViable($CodigoUnico);
 		echo  json_encode($Registrosproyectobuscos);
+    }*/
+    function registroBuscarProyecto()
+    {
+    		$CodigoUnico=$this->input->get('inputValue');
+			$Registrosproyectobuscos=$this->Model_ET_Expediente_Tecnico->ExpedienteContarRegistros($CodigoUnico);
+			echo  json_encode($Registrosproyectobuscos);
     }
 
 	function reportePdfMetrado($id_ExpedienteTecnico)
