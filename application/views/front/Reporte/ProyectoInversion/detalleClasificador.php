@@ -55,26 +55,26 @@
 							<thead style="font-size: 11px;">
 								<tr style="text-align:center">
 									<th>Clasificadores</th>
-									<th>En</th>
-									<th>Feb</th>
-									<th>Mar</th>
-									<th>Abr</th>
-									<th>May</th>
-									<th>Jun</th>
-									<th>Jul</th>
-									<th>Agost</th>
-									<th>Set</th>
-									<th>Oct</th>
-									<th>Nov</th>
-									<th>Dic</th>
-									<th>D</th>
-									<th>C</th>
-									<th>G</th>
-									<th>P</th>
+									<th>Enero</th>
+									<th>Febrero</th>
+									<th>Marzo</th>
+									<th>Abril</th>
+									<th>Mayo</th>
+									<th>Junio</th>
+									<th>Julio</th>
+									<th>Agosto</th>
+									<th>Setiembre</th>
+									<th>Octubre</th>
+									<th>Noviembre</th>
+									<th>Diciembre</th>
+									<th>Devengado</th>
+									<th>Compromiso</th>
+									<th>Girado</th>
+									<th>Pagado</th>
 									<th>Comprom Anu.</th>
-									<th>Cert</th>
-									<th>Ejec</th>
-									<th>Anul</th>
+									<th>Certificado</th>
+									<th>Ejecuado</th>
+									<th>Anulación</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -120,7 +120,7 @@
 												
 												<?php foreach ($value4->child as $key =>  $value5) {?>
 													<tr>
-														<td style="padding-left: 90px;"> <input type="checkbox" name="vehicle" value="Bike">
+														<td style="padding-left: 90px;">
 														<?=$value5->especifica_det,' ',$value5->desc_especifica_det ; ?>
 														</td>
 														<td style="text-align:right">
@@ -232,30 +232,6 @@
 						<br>
 					</div>
 					<div class="row" style="margin-left: 10px; margin:10px; ">
-						<div class="col-md-1 col-sm-1 col-xs-12">
-							<label class="control-label"> Comparar con: </label>							
-						</div>
-						<div class="col-md-6 col-sm-6 col-xs-12">
-					    	<div class="form-group">
-						      	<select class="selectpicker form-control" data-live-search="true" name="selectClasificador" id="selectClasificador">
-						        	<?php foreach ($temp as  $value) {?>
-										<?php foreach ($value->child as $key =>  $value1) {?>
-											<?php foreach ($value1->child as $key =>  $value2) {?>
-												<?php foreach ($value2->child as $key =>  $value3) {?>
-													<?php foreach ($value3->child as $key =>  $value4) {?>
-														<?php foreach ($value4->child as $key =>  $value5) {?>
-															<option value="<?=$value5->ene?>">
-																<?=$value5->especifica_det,' ',$value5->desc_especifica_det?>
-															</option>
-														<?php } ?>
-													<?php } ?>
-												<?php } ?>
-											<?php } ?>
-										<?php } ?>
-									<?php } ?>
-						      	</select>
-					    	</div>
-						</div>
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<button onclick="generarGrafico();" class="btn btn-info btn-sm">Generar Gráfico</button>
 						</div>
@@ -266,6 +242,24 @@
 				            <div id="contenedorGrafico"></div>
 				        </div>
 				    </div>
+				    <?php $array = array("TOTAL");
+				    foreach ($temp as  $value) {
+						foreach ($value->child as $key =>  $value1) {
+							foreach ($value1->child as $key =>  $value2) {
+								foreach ($value2->child as $key =>  $value3) {
+									foreach ($value3->child as $key =>  $value4) {
+										foreach ($value4->child as $key =>  $value5) {
+											$array[] = $value5->desc_especifica_det;
+										} 
+									}
+								} 
+							} 
+						}
+					}
+					$total =  [];
+					$total = $array;
+					$total = json_encode($total);
+				    ?>
 				</div>
 			</div>
 		</div>
@@ -275,31 +269,9 @@
 <script>
 function generarGrafico()
 {
-	var valor = $('#selectClasificador').val();
-	<?php $valor =[];
-    foreach ($temp as  $value) {
-		foreach ($value->child as $key =>  $value1) {
-			foreach ($value1->child as $key =>  $value2) {
-				foreach ($value2->child as $key =>  $value3) {
-					foreach ($value3->child as $key =>  $value4) {
-						foreach ($value4->child as $key =>  $value5) {
-							$valor[]=$value5->desc_especifica_det;					
-						} 
-					}
-				} 
-			} 
-		}
-	}
-    ?>
-    /*<?php foreach ($valor as $key => $value) 
-    {?>
-    	alert(""<?=$value?>);
-    <?php }?>*/
-    console.log(<?=json_encode($valor)?>);
-    
+	//console.log(<?=$total[0]?>);
 
-
-	$("#contenedorGrafico").css({"height":"450"});
+	$("#contenedorGrafico").css({"height":"400"});
 	var echartLine = echarts.init(document.getElementById('contenedorGrafico'));
       echartLine.setOption({
         title: {
@@ -310,23 +282,10 @@ function generarGrafico()
           trigger: 'axis'
         },
         legend: {
-          x: 220,
-          y: 40,
-          data: ['TOTAL',<?php 
-	        foreach ($temp as  $value) {
-				foreach ($value->child as $key =>  $value1) {
-					foreach ($value1->child as $key =>  $value2) {
-						foreach ($value2->child as $key =>  $value3) {
-							foreach ($value3->child as $key =>  $value4) {
-								foreach ($value4->child as $key =>  $value5) {
-									echo "'".$value5->desc_especifica_det."',";
-								} 
-							}
-						} 
-					} 
-				}
-			}
-	        ?>]
+        	x: 'center',
+          y: 'bottom',
+          orient: 'horizontal',
+          data: <?php print_r($total);?>
         },
         
         toolbox: {
