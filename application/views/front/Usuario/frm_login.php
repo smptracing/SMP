@@ -4,7 +4,7 @@
     img{
         -webkit-filter: grayscale(60%);
         filter: grayscale(60%);
-    }    
+    }
 </style>
 
 <head>
@@ -83,21 +83,33 @@
                                                 <input type="password" class="form-control"  name="txtPassword" id="txtPassword">
                                             </div>
                                         </div>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-lock"></i>
+                                            </span>
+                                            <div class="form-group label-floating">
+                                              <div
+                                              class="g-recaptcha"
+                                              data-sitekey="6LcA-jkUAAAAANxuEr-2Wc-ZkUM3bNefbgpd7PBe"
+                                              data-callback="YourOnSubmitFn">
+                                              </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="footer text-center">
                                         <button type="submit" class="btn btn-rose btn-simple btn-wd btn-lg">Ingresar</button>
                                     </div>
                                     <div class="notificacion" style="padding: 5px 20px;">
                                         <?php $sessionTempError=$this->session->flashdata('error');
-                                        if($sessionTempError){ ?>                                   
+                                        if($sessionTempError){ ?>
                                         <div class="alert alert-danger alert-dismissible fade in" role="alert">
                                             <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="padding-right: 20px;"><span aria-hidden="true">×</span>
                                             </button>
                                             <strong>Error: </strong><?=$sessionTempError?>
                                         </div>
-                                        <?php } ?>                                      
+                                        <?php } ?>
                                     </div>
-                                    
+
 
                                 </div>
                             </form>
@@ -119,6 +131,8 @@
     </div>
 </body>
 
+<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?render=onload&hl=en" async defer></script>
+
 <script src="<?php echo base_url(); ?>assets/templateLogin/js/core/jquery-3.1.1.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/templateLogin/js/core/jquery-ui.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/templateLogin/js/core/bootstrap.min.js"></script>
@@ -139,7 +153,3 @@
 </script>
 
 </html>
-
-
-
-

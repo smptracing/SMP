@@ -40,6 +40,23 @@ class Login extends CI_Controller {
     }
     public function ingresar()
     {
+      $arrContextOptions=array(
+          "ssl"=>array(
+              "verify_peer"=>false,
+              "verify_peer_name"=>false,
+          ),
+      );
+
+      $form_response=$this->input->post('g-recaptcha-response');
+      $url="https://www.google.com/recaptcha/api/siteverify";
+      $secretkey="6LcA-jkUAAAAAEw9rvEb_J_H15v_fWTo0pDPLTBi";
+
+      $response=file_get_contents($url."?secret=".$secretkey.
+      "&response=".$form_response."&remoteip=".$_SERVER["REMOTE_ADDR"], false, stream_context_create($arrContextOptions));
+
+      $data = json_decode($response);
+
+      if (isset($data->success) && $data->success=="true") {
         $usuario = $this->input->post('txtUsuario');
         $password = sha1($this->input->post('txtPassword'));
         $query = $this->Login_model->login($usuario, $password);
@@ -70,6 +87,10 @@ class Login extends CI_Controller {
             $this->session->set_flashdata('error', 'Usuario y/o Contraseña Incorrrecto');
             $this->muestralog();
         }
+      } else {
+            $this->session->set_flashdata('error', 'Llenar Captcha');
+            $this->muestralog();
+      }
     }
     public function logout()
     {
