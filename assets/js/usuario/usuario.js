@@ -189,16 +189,6 @@ $(function(){
                     });
 
                 }
-                function compara(json, menuUsuarioId) {
-                  var bool = false;
-                  //console.log(menuUsuarioId);
-                  for (var i = 0; i < menuUsuarioId.length; i++) {
-                    if (json == menuUsuarioId[i]) {
-                      bool = true;
-                    }
-                  }
-                  return bool;
-                }
                  var listaMenuUsuario=function(idUsuario){
                     var html="";
                     event.preventDefault();

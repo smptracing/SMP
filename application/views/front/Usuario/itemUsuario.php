@@ -43,29 +43,15 @@
                         <div class="col-sm-3">
                           <input type="password" id="txt_contrasenia" name="txt_contrasenia" placeholder="Contraseña" class="form-control" />
                         </div>
-                  </div><!--
-                  <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">Acceso al menú</label>
-                        <div class="col-sm-4">
-                          <select style="height:130px;width:100%;" id="cbb_listaMenu" name="cbb_listaMenu[]" multiple=""></select>
-                        </div>
-                        <div class="col-sm-1" style="padding-top:20px;">
-                          <button id="bt_Der" class="btn btn-info" type="button" style="width:100%; text-align:center;"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
-                          <button id="bt_Izq" type="button" class="btn btn-warning" style="width:100%;margin-top:10px; text-align:center;"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></button>
-                        </div>
-                        <div class="col-sm-4">
-                          <select style="height:130px;width:100%;" id="cbb_listaMenuDestino" name="cbb_listaMenuDestino[]" multiple=""></select>
-                        </div>
-                  </div>-->
+                  </div>
                   <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">Acceso al menú</label>
                     <div class="col-sm-9">
                       <div class="demo-section k-content">
                           <div>
-                              <h4>Estructura</h4>
                               <div id="treeview"></div>
                           </div>
-                          <div style="padding-top: 2em;">
+                          <div style="padding-top: 2em; display: none;">
                               <h4>Status</h4>
                               <p id="result">No nodes checked.</p>
                           </div>
@@ -80,12 +66,35 @@
         </div>
     </div>
 </div>
+
+<style>
+    #treeview .k-sprite {
+        background-image: url("http://demos.kendoui.com/content/web/treeview/coloricons-sprite.png");
+    }
+
+    .rootfolder { background-position: 0 0; }
+    .folder     { background-position: 0 -16px; }
+    .pdf        { background-position: 0 -32px; }
+    .html       { background-position: 0 -48px; }
+    .image      { background-position: 0 -64px; }
+</style>
+
 <script src="<?php echo base_url();?>assets/js/usuario/usuario.js"></script>
 
-
 <script>
+function compara(json, menuUsuarioId) {
+  var bool = false;
+  //console.log(menuUsuarioId);
+  for (var i = 0; i < menuUsuarioId.length; i++) {
+    if (json == menuUsuarioId[i]) {
+      bool = true;
+    }
+  }
+  return bool;
+}
 
 var menuUsuarioId = [], menuUsuarioHome = [];
+
 $.getJSON(base_url +"index.php/Login/recuperarMenu/"+<?php echo $arrayUsuario->id_persona; ?>, function(json) {
   $.each(json,function(i){
     if(json[i]['id_padre_home']==22) {
@@ -97,17 +106,16 @@ $.getJSON(base_url +"index.php/Login/recuperarMenu/"+<?php echo $arrayUsuario->i
   });
 });
 
-$.getJSON(base_url+"index.php/Login/recuperarMenu/0",function(json){
+$.getJSON(base_url+"index.php/Login/recuperarMenu/0",function(json) {
   var json2 = [];
   var subMenu = [];
   var count = 0;
   var item = [];
 
     $.each(json,function(i){
-
           if(json[i]['id_padre_home']==22) {
             item.push({ id:  json[i]['id_submenu'],
-              text: json[i]['id_modulo']+": "+json[i]['nombre']+": "+ json[i]['nombreSubmenu']+" - "+json[i]['id_submenu'],
+              text: json[i]['id_modulo']+": "+json[i]['nombre']+": "+ json[i]['nombreSubmenu'],
               spriteCssClass: "html",
               checked: compara(json[i]['id_submenu'],menuUsuarioId)
             });
@@ -119,7 +127,7 @@ $.getJSON(base_url+"index.php/Login/recuperarMenu/0",function(json){
         if (json[i]['id_modulo'] == "HOME") {
           json2.push(
             {
-                id: json[i]['id_submenu'], text: json[i]['nombreSubmenu']+" - "+json[i]['id_submenu'],
+                id: json[i]['id_submenu'], text: json[i]['nombreSubmenu'],
                 expanded: false,
                 spriteCssClass: "folder",
                 items: subMenu[i],
@@ -171,61 +179,15 @@ $.getJSON(base_url+"index.php/Login/recuperarMenu/0",function(json){
         }
   </script>
 
-    <style>
-        #treeview .k-sprite {
-            background-image: url("http://demos.kendoui.com/content/web/treeview/coloricons-sprite.png");
-        }
-
-        .rootfolder { background-position: 0 0; }
-        .folder     { background-position: 0 -16px; }
-        .pdf        { background-position: 0 -32px; }
-        .html       { background-position: 0 -48px; }
-        .image      { background-position: 0 -64px; }
-    </style>
-
 <script>
   $(function(){
-
-      $("#cbb_TipoUsuario").change(function(event){
-        listaMenu();
-        $('#cbb_listaMenuDestino').empty();
-        $.getJSON(base_url+"index.php/Usuario/ListarTipoUsuarioMenu/"+$("#cbb_TipoUsuario").val(),function(json){
-            $.each(json,function(i){
-                $('#cbb_listaMenuDestino').append("<option  value='"+json[i]['id_submenu']+"'>"+json[i]['id_modulo']+": "+json[i]['nombre']+": "+json[i]['nombreSubmenu']+"</option>");
-                $("#cbb_listaMenu option[value='"+json[i]['id_submenu']+"']").remove();
-            });
-        });
-      });
-      /*
-      $("#formUsuario").submit(function(event){
-        event.preventDefault();
-        var stringMenuUsuario ='';
-        var c=0;
-        $("#cbb_listaMenuDestino option").each(function(){
-            if(c>0)
-              stringMenuUsuario+='-';
-            stringMenuUsuario+=$(this).attr('value');
-            c++;
-        });
-        $.ajax({
-            url:$("#formUsuario").attr("action"),
-            type:$(this).attr('method'),
-            data:$(this).serialize()+"&cbb_listaMenuDestino="+stringMenuUsuario,
-            success:function(resp){
-              swal("",resp, "success");
-              $('#table-Usuarios').dataTable()._fnAjaxUpdate();
-
-           }
-        });
-      }); */
-
       $("#formUsuario").submit(function(event){
         event.preventDefault();
         var stringMenuUsuario ='';
         var c=0;
         var dat = $("#result").text();
         var b = dat.split(',').map(Number);
-        console.log(b[0]);
+        //console.log(b[0]);
 
         for (var i = 0; i < b.length; i++) {
           if(c>0)
@@ -244,6 +206,7 @@ $.getJSON(base_url+"index.php/Login/recuperarMenu/0",function(json){
            }
         });
       });
+
       $("body").on("click","#sendUsuario",function(e){
           $('#formUsuario').data('formValidation').validate();
           if($('#formUsuario').data('formValidation').isValid()==true){
@@ -301,16 +264,5 @@ $.getJSON(base_url+"index.php/Login/recuperarMenu/0",function(json){
     });
 		listaPersonaCombo("<?php if(isset($arrayUsuario->id_persona)) echo $arrayUsuario->id_persona; ?>");
 		listatipoUsuario("<?php if(isset($arrayUsuario->id_usuario_tipo)) echo $arrayUsuario->id_usuario_tipo; ?>");
-    listaMenu();
-    <?php
-    if(isset($arrayUsuario->id_persona)){
-    ?>
-    listaMenuUsuario("<?php echo $arrayUsuario->id_persona; ?>");
-    <?php
-    }
-    ?>
-
-
-    //$("#comboPersona").val(15);
 	});
 </script>
