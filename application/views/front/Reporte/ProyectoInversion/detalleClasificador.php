@@ -79,7 +79,7 @@
 							</thead>
 							<tbody>
 							
-						<?php $sumatoriaEne = 0;$sumatoriaFeb = 0;$sumatoriaMar = 0;$sumatoriaAbr = 0;$sumatoriaMay = 0;$sumatoriaJun = 0;$sumatoriaJul = 0;$sumatoriaAgo = 0;$sumatoriaSet = 0; $sumatoriaOct = 0; $sumatoriaNov = 0;$sumatoriaDic = 0; 
+						<?php $sumatoriaAcumulada = []; $sumatoriaEne = 0;$sumatoriaFeb = 0;$sumatoriaMar = 0;$sumatoriaAbr = 0;$sumatoriaMay = 0;$sumatoriaJun = 0;$sumatoriaJul = 0;$sumatoriaAgo = 0;$sumatoriaSet = 0; $sumatoriaOct = 0; $sumatoriaNov = 0;$sumatoriaDic = 0; 
 						foreach ($temp as  $value) {?>
 							<tr>
 								<td colspan="21">
@@ -207,7 +207,33 @@
 									<?php } ?>
 
 								<?php } ?>
+
 						<?php } ?>
+
+						<?php 
+						$sumatoriaAcumulada[] = $sumatoriaEne;
+						$sumatoriaAcumulada[] = $sumatoriaFeb;
+						$sumatoriaAcumulada[] = $sumatoriaMar;
+						$sumatoriaAcumulada[] = $sumatoriaAbr;
+						$sumatoriaAcumulada[] = $sumatoriaMay;
+						$sumatoriaAcumulada[] = $sumatoriaJun;
+						$sumatoriaAcumulada[] = $sumatoriaJul;
+						$sumatoriaAcumulada[] = $sumatoriaAgo;
+						$sumatoriaAcumulada[] = $sumatoriaSet;
+						$sumatoriaAcumulada[] = $sumatoriaOct;
+						$sumatoriaAcumulada[] = $sumatoriaNov;
+						$sumatoriaAcumulada[] = $sumatoriaDic;
+
+						$arrayAcumulado = [];
+						foreach ($sumatoriaAcumulada as $key => $value)
+						{
+							if(!isset($arrayAcumulado[$key]))
+							{
+								$arrayAcumulado[]=0;
+							}
+							$arrayAcumulado[$key]+=($value+($key>0 ?  $arrayAcumulado[$key-1]  : 0));
+						}
+						?>
 						
 
 							</tbody>
@@ -269,7 +295,6 @@
 <script>
 function generarGrafico()
 {
-	//console.log(<?=$total[0]?>);
 
 	$("#contenedorGrafico").css({"height":"400"});
 	var echartLine = echarts.init(document.getElementById('contenedorGrafico'));
@@ -282,17 +307,25 @@ function generarGrafico()
           trigger: 'axis'
         },
         legend: {
-        	x: 'center',
-          y: 'bottom',
-          orient: 'horizontal',
-          data: <?php print_r($total);?>
+        	orient: 'horizontal',
+        left: 'center',
+        top: 'bottom',
+        width: '100%',
+          data: ['TOTAL']
+        },
+        textStyle:
+        {
+          fontSize:9
         },
         
         toolbox: {
           show: true,
+           orient: 'horizontal',
+		        left: 'center',
+		        top: 'top',
           feature: {
             magicType: {
-              show: true,
+              show: true,             
               title: {
                 line: 'Linea',
                 bar: 'Barra',
@@ -332,37 +365,14 @@ function generarGrafico()
             }
           },
           data:
-          [<?=a_number_format($sumatoriaEne, 2, '.',",",0)?>,<?=a_number_format($sumatoriaFeb, 2, '.',",",0)?>,<?=a_number_format($sumatoriaMar, 2, '.',",",0)?>,<?=a_number_format($sumatoriaAbr, 2, '.',",",0)?>,<?=a_number_format($sumatoriaMay, 2, '.',",",0)?>,<?=a_number_format($sumatoriaJun, 2, '.',",",0)?>,<?=a_number_format($sumatoriaJul, 2, '.',",",0)?>,<?=a_number_format($sumatoriaAgo, 2, '.',",",0)?>,<?=a_number_format($sumatoriaSet, 2, '.',",",0)?>,<?=a_number_format($sumatoriaOct, 2, '.',",",0)?>,<?=a_number_format($sumatoriaNov, 2, '.',",",0)?>,<?=a_number_format($sumatoriaDic, 2, '.',",",0)?>]
-        },
-        <?php 
-        foreach ($temp as  $value) {
-			foreach ($value->child as $key =>  $value1) {
-				foreach ($value1->child as $key =>  $value2) {
-					foreach ($value2->child as $key =>  $value3) {
-						foreach ($value3->child as $key =>  $value4) {
-							foreach ($value4->child as $key =>  $value5) {
-								echo " { name: '".$value5->desc_especifica_det."',
-						          type: 'line',
-						          smooth: true,
-						          itemStyle: {
-						            normal: {
-						              areaStyle: {
-						                type: 'default'
-						              }
-						            }
-						          },
-						          data:  [".($value5->ene == '' ? 0 : $value5->ene).", ".($value5->feb == '' ? 0 : $value5->feb).", ".($value5->mar == '' ? 0 : $value5->mar).", ".($value5->abr == '' ? 0 : $value5->abr).",".($value5->may == '' ? 0 : $value5->may).", ".($value5->jun == '' ? 0 : $value5->jun).", ".($value5->jul == '' ? 0 : $value5->jul)." , ".($value5->ago == '' ? 0 : $value5->ago).",".($value5->sep == '' ? 0 : $value5->sep).", ".($value5->oct == '' ? 0 : $value5->oct).", ".($value5->nov == '' ? 0 : $value5->nov).",".($value5->dic == '' ? 0 : $value5->dic)."] },";
-							} 
-						}
-					} 
-				} 
-			}
-		}
-        ?>
+          [<?php foreach ($arrayAcumulado as $key => $value) 
+          {
+          	echo $value.',';
+          }?>]
+        }
     	]
       });
 	}
 	$('.selectpicker').selectpicker({
 	});
 </script>
-
