@@ -120,7 +120,14 @@
 												
 												<?php foreach ($value4->child as $key =>  $value5) {?>
 													<tr>
-														<td style="padding-left: 90px;">
+														<td style="padding-left: 90px;"><!--<input type="checkbox" name="listaSeleccionados" value="<?=$value5->desc_especifica_det?>" class="flat">-->
+														<!--<label class="btn btn-info active">
+															<input type="checkbox" name="listaSeleccionados" value="<?=$value5->desc_especifica_det?>"><span class="glyphicon glyphicon-ok"></span>
+
+														</label>-->
+														<label class="btn btn-info btn-xs">
+															<input type="checkbox" autocomplete="off" name="listaSeleccionados" value="<?=$value5->desc_especifica_det?>">
+														</label>
 														<?=$value5->especifica_det,' ',$value5->desc_especifica_det ; ?>
 														</td>
 														<td style="text-align:right">
@@ -290,14 +297,37 @@
 			</div>
 		</div>
 		<div class="clearfix"></div>
+		<?php foreach ($temp as  $value) {
+				foreach ($value->child as $key =>  $value1) {
+					foreach ($value1->child as $key =>  $value2) {
+						foreach ($value2->child as $key =>  $value3) {
+							foreach ($value3->child as $key =>  $value4) {
+								foreach ($value4->child as $key =>  $value5) {
+									echo $value5->desc_especifica_det."-";
+							        foreach ($value5->sumatoriaAcumuladaAnual as $key => $value6) 
+							        {
+							          	echo $value6.",";
+							        }
+								} 
+							}
+						} 
+					} 
+				}
+			}
+	        ?>
 	</div>
 </div>
 <script>
 function generarGrafico()
 {
+  $('input:checkbox[name=listaSeleccionados]').each(function() 
+  {    
+      if($(this).is(':checked'))
+        alert($(this).val());
+  });
 
-	$("#contenedorGrafico").css({"height":"400"});
-	var echartLine = echarts.init(document.getElementById('contenedorGrafico'));
+  $("#contenedorGrafico").css({"height":"400"});
+  var echartLine = echarts.init(document.getElementById('contenedorGrafico'));
       echartLine.setOption({
         title: {
           text: '',
@@ -307,11 +337,11 @@ function generarGrafico()
           trigger: 'axis'
         },
         legend: {
-        	orient: 'horizontal',
+          orient: 'horizontal',
         left: 'center',
         top: 'bottom',
         width: '100%',
-          data: ['TOTAL']
+          data: <?php print_r($total);?>
         },
         textStyle:
         {
@@ -321,8 +351,8 @@ function generarGrafico()
         toolbox: {
           show: true,
            orient: 'horizontal',
-		        left: 'center',
-		        top: 'top',
+            left: 'center',
+            top: 'top',
           feature: {
             magicType: {
               show: true,             
@@ -354,25 +384,56 @@ function generarGrafico()
           type: 'value'
         }],
         series: [{
-          name: 'TOTAL',
-          type: 'line',
-          smooth: true,
-          itemStyle: {
-            normal: {
-              areaStyle: {
-                type: 'default'
+            name: 'TOTAL',
+            type: 'line',
+            smooth: true,
+            itemStyle: {
+              normal: {
+                  areaStyle: {
+                    type: 'default'
+                  }
               }
-            }
-          },
-          data:
-          [<?php foreach ($arrayAcumulado as $key => $value) 
-          {
-          	echo $value.',';
-          }?>]
+            },
+            data:[
+              <?php 
+              foreach ($arrayAcumulado as $key => $value) 
+              {
+                echo $value.',';
+            }?>
+          ]},
+               
+          <?php foreach ($temp as  $value) {
+        foreach ($value->child as $key =>  $value1) {
+          foreach ($value1->child as $key =>  $value2) {
+            foreach ($value2->child as $key =>  $value3) {
+              foreach ($value3->child as $key =>  $value4) {
+                foreach ($value4->child as $key =>  $value5) {
+                  echo " { name: '".$value5->desc_especifica_det."',
+                        type: 'line',
+                        smooth: true,
+                        itemStyle: {
+                          normal: {
+                            areaStyle: {
+                              type: 'default'
+                            }
+                          }
+                        },
+                        data:  [";
+                        foreach ($value5->sumatoriaAcumuladaAnual as $key => $value6) 
+					        {
+					          	echo $value6.",";
+					        }
+					    echo "] },";
+                } 
+              }
+            } 
+          } 
         }
-    	]
+      }
+          ?>
+      ]
       });
-	}
-	$('.selectpicker').selectpicker({
-	});
+  }
+  $('.selectpicker').selectpicker({
+  });
 </script>
