@@ -120,14 +120,7 @@
 												
 												<?php foreach ($value4->child as $key =>  $value5) {?>
 													<tr>
-														<td style="padding-left: 90px;"><!--<input type="checkbox" name="listaSeleccionados" value="<?=$value5->desc_especifica_det?>" class="flat">-->
-														<!--<label class="btn btn-info active">
-															<input type="checkbox" name="listaSeleccionados" value="<?=$value5->desc_especifica_det?>"><span class="glyphicon glyphicon-ok"></span>
-
-														</label>-->
-														<label class="btn btn-info btn-xs">
-															<input type="checkbox" autocomplete="off" name="listaSeleccionados" value="<?=$value5->desc_especifica_det?>">
-														</label>
+														<td style="padding-left: 90px;">
 														<?=$value5->especifica_det,' ',$value5->desc_especifica_det ; ?>
 														</td>
 														<td style="text-align:right">
@@ -245,23 +238,6 @@
 
 							</tbody>
 						</table>
-						<!--<table id ="tablaResumen">
-							<tr>
-								<td>Total</td>
-								<td><?=a_number_format($sumatoriaEne, 2, '.',",",0)?></td>
-								<td><?=a_number_format($sumatoriaFeb, 2, '.',",",0)?></td>
-								<td><?=a_number_format($sumatoriaMar, 2, '.',",",0)?></td>
-								<td><?=a_number_format($sumatoriaAbr, 2, '.',",",0)?></td>
-								<td><?=a_number_format($sumatoriaMay, 2, '.',",",0)?></td>
-								<td><?=a_number_format($sumatoriaJun, 2, '.',",",0)?></td>
-								<td><?=a_number_format($sumatoriaJul, 2, '.',",",0)?></td>
-								<td><?=a_number_format($sumatoriaAgo, 2, '.',",",0)?></td>
-								<td><?=a_number_format($sumatoriaSet, 2, '.',",",0)?></td>
-								<td><?=a_number_format($sumatoriaOct, 2, '.',",",0)?></td>
-								<td><?=a_number_format($sumatoriaNov, 2, '.',",",0)?></td>
-								<td><?=a_number_format($sumatoriaDic, 2, '.',",",0)?></td>
-							</tr>
-						</table>-->
 						<br>
 					</div>
 					<div class="row" style="margin-left: 10px; margin:10px; ">
@@ -275,24 +251,6 @@
 				            <div id="contenedorGrafico"></div>
 				        </div>
 				    </div>
-				    <?php $array = array("TOTAL");
-				    foreach ($temp as  $value) {
-						foreach ($value->child as $key =>  $value1) {
-							foreach ($value1->child as $key =>  $value2) {
-								foreach ($value2->child as $key =>  $value3) {
-									foreach ($value3->child as $key =>  $value4) {
-										foreach ($value4->child as $key =>  $value5) {
-											$array[] = $value5->desc_especifica_det;
-										} 
-									}
-								} 
-							} 
-						}
-					}
-					$total =  [];
-					$total = $array;
-					$total = json_encode($total);
-				    ?>
 				</div>
 			</div>
 		</div>
@@ -303,11 +261,18 @@
 						foreach ($value2->child as $key =>  $value3) {
 							foreach ($value3->child as $key =>  $value4) {
 								foreach ($value4->child as $key =>  $value5) {
-									echo $value5->desc_especifica_det."-";
-							        foreach ($value5->sumatoriaAcumuladaAnual as $key => $value6) 
+
+									$arraySumar = [];
+
+									foreach ($value5->sumatoriaAcumuladaAnual as $key => $value6) 
 							        {
-							          	echo $value6.",";
-							        }
+							        	if(!isset($arraySumar[$key]))
+										{
+											$arraySumar[]=0;
+										}
+										$arraySumar[$key]+=($value6+($key>0 ?  $arraySumar[$key-1]  : 0));
+
+							        }				        
 								} 
 							}
 						} 
@@ -320,11 +285,6 @@
 <script>
 function generarGrafico()
 {
-  $('input:checkbox[name=listaSeleccionados]').each(function() 
-  {    
-      if($(this).is(':checked'))
-        alert($(this).val());
-  });
 
   $("#contenedorGrafico").css({"height":"400"});
   var echartLine = echarts.init(document.getElementById('contenedorGrafico'));
@@ -337,11 +297,27 @@ function generarGrafico()
           trigger: 'axis'
         },
         legend: {
-          orient: 'horizontal',
-        left: 'center',
-        top: 'bottom',
-        width: '100%',
-          data: <?php print_r($total);?>
+          	orient: 'horizontal',
+        	left: 'center',
+        	top: 'top',
+          	data: ['TOTAL',
+          		<?php
+			    foreach ($temp as  $value) {
+					foreach ($value->child as $key =>  $value1) {
+						foreach ($value1->child as $key =>  $value2) {
+							foreach ($value2->child as $key =>  $value3) {
+								foreach ($value3->child as $key =>  $value4) {
+									foreach ($value4->child as $key =>  $value5) {
+										echo "'".trim($value5->desc_especifica_det)."',";
+									} 
+								}
+							} 
+						} 
+					}
+				}
+				?>
+          	]
+
         },
         textStyle:
         {
@@ -350,9 +326,9 @@ function generarGrafico()
         
         toolbox: {
           show: true,
-           orient: 'horizontal',
-            left: 'center',
-            top: 'top',
+           orient: 'vertical',
+            left: 'right',
+            top: 'bottom',
           feature: {
             magicType: {
               show: true,             
@@ -408,7 +384,7 @@ function generarGrafico()
             foreach ($value2->child as $key =>  $value3) {
               foreach ($value3->child as $key =>  $value4) {
                 foreach ($value4->child as $key =>  $value5) {
-                  echo " { name: '".$value5->desc_especifica_det."',
+                  	echo " { name: '".trim($value5->desc_especifica_det)."',
                         type: 'line',
                         smooth: true,
                         itemStyle: {
