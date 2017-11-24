@@ -182,7 +182,7 @@
                 }
             });
 	}
-	function EliminarPresClasiAnalitico(idClasiAnalitico, element)
+	function EliminarPresClasiAnaliticoxyz(idClasiAnalitico, element)
 	{
 		if(!confirm('Se eliminará el presupuesto analítico. ¿Realmente desea proseguir con la operación?'))
 		{
@@ -211,6 +211,42 @@
 
 		}, false, true);
 	}
+	function EliminarPresClasiAnalitico(idClasiAnalitico, element)
+    {
+        swal({
+            title: "Se eliminará el presupuesto analítico. ¿Realmente desea proseguir con la operación?",
+            text: "",
+            type: "warning",
+            showCancelButton: true,
+            cancelButtonText:"CANCELAR" ,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "SI,ELIMINAR",
+            closeOnConfirm: false
+        },
+        function(){
+            paginaAjaxJSON({ "idClasiAnalitico" : idClasiAnalitico}, base_url+'index.php/ET_Presupuesto_Analitico/eliminar', 'POST', null, function(objectJSON)
+            {
+                objectJSON=JSON.parse(objectJSON);
+
+                swal(
+                {
+                    title: '',
+                    text: objectJSON.mensaje,
+                    type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+                },
+                function(){});
+                if(objectJSON.proceso=='Error')
+                {
+                    return false;
+                }
+                if(objectJSON.proceso=='Correcto')
+                {
+                    $(element).parent().parent().remove();
+                }
+
+            }, false, true);
+        });
+    }
 	
 
 </script>
