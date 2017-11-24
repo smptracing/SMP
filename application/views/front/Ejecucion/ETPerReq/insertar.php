@@ -59,7 +59,7 @@
 											<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;margin: 4px;padding: 4px;"><label style="cursor: pointer;"><b>Craet___</b><input type="checkbox" value="craet" style="margin-left: -15px;" onchange="asignarQuitarCraetETPerReq(<?=$value->id_per_req?>, this);" <?=($value->craet ? 'checked=true' : '')?>></label><?=html_escape($value->nombre_esp)?></div></td>
 											<td>
 												<select class="selectPersonaETPerReq" data-live-search="true" data-width="100%" onchange="asignarPersonalETPerReq(<?=$value->id_per_req?>, this);">
-													<option value=""></option>
+													<option value="">Seleccionar Especialista</option>
 													<?php foreach($listaPersona as $index => $item){ ?>
 														<option value="<?=$item->id_persona?>" <?=($value->id_persona==$item->id_persona ? 'selected' : '')?>><?=html_escape($item->nombres.' '.$item->apellido_p.' '.$item->apellido_m)?></option>
 													<?php } ?>
@@ -131,10 +131,19 @@
 	}
 
 	function eliminarEspecialidadAsignada(idPerReq, element)
-	{
-		if(confirm('Relamente desea eliminar este especialista asignado?'))
-		{
-			paginaAjaxJSON({ idPerReq : idPerReq }, '<?=base_url()?>index.php/ET_Per_Req/eliminar', 'POST', null, function(objectJSON)
+    {
+        swal({
+            title: "Realmente desea eliminar este especialista asignado?",
+            text: "",
+            type: "warning",
+            showCancelButton: true,
+            cancelButtonText:"CANCELAR" ,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "SI,ELIMINAR",
+            closeOnConfirm: false
+        },
+        function(){
+            paginaAjaxJSON({ idPerReq : idPerReq }, '<?=base_url()?>index.php/ET_Per_Req/eliminar', 'POST', null, function(objectJSON)
 			{
 				objectJSON=JSON.parse(objectJSON);
 
@@ -153,8 +162,10 @@
 
 				$(element).parent().parent().remove();
 			}, false, true);
-		}
-	}
+        });
+    }
+
+
 
 	function allowDrop(ev, element)
 	{
@@ -199,7 +210,7 @@
 				'<tbody>'+
 					'<tr>'+
 						'<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;margin: 4px;padding: 4px;"><label style="cursor: pointer;"><b>Craet___</b><input type="checkbox" value="craet" style="margin-left: -15px;" onchange="asignarQuitarCraetETPerReq('+objectJSON.idPerReq+', this);"></label>'+replaceAll(replaceAll($('#'+data).text(), '<', '&gt;'), '>', '&lt;')+'</div></td>'+
-						'<td>'+'<select class="selectPersonaETPerReq" data-live-search="true" data-width="100%" onchange="asignarPersonalETPerReq('+objectJSON.idPerReq+', this);"><option value=""></option>'+listaPersona+'</select>'+'</td>'+
+						'<td>'+'<select class="selectPersonaETPerReq" data-live-search="true" data-width="100%" onchange="asignarPersonalETPerReq('+objectJSON.idPerReq+', this);"><option value="">Seleccionar Especialista</option>'+listaPersona+'</select>'+'</td>'+
 						'<td style="width: 1%;">'+'<a href="#" style="color: red;padding: 2px;" onclick="eliminarEspecialidadAsignada('+objectJSON.idPerReq+', this);">Eliminar</a>'+'</td>'+
 					'</tr>'+
 				'</tbody>'+
