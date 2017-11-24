@@ -347,6 +347,8 @@ class PrincipalReportes extends CI_Controller
 
                         $quintoCodigoTemp=null;
 
+
+
                         foreach($listaDetalleClasificador as $key4 => $value4)
                         {
                             if($quintoCodigoTemp==$value4->especifica || $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->sub_generica_det!=substr($value4->especifica, 0, strlen($temp[$key0]->child[$key1]->child[$key2]->child[$key3]->sub_generica_det)))
@@ -365,8 +367,15 @@ class PrincipalReportes extends CI_Controller
 
                             $sextoCodigoTemp=null;
 
+                            
+                            //$sumatoriaAnualporClasificador = 0;
+
+                            
+
                             foreach($listaDetalleClasificador as $key5 => $value5)
                             {
+                                $arrayMensual = [];
+
                                 if($sextoCodigoTemp==$value5->especifica_det || $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->especifica!=substr($value5->especifica_det, 0, strlen($temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->especifica)))
                                 {
                                     continue;
@@ -397,16 +406,49 @@ class PrincipalReportes extends CI_Controller
                                 $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]->comprometido_anual=$value5->comprometido_anual;
                                 $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]->certificado=$value5->certificado;
                                 $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]->ejecucion=$value5->ejecucion;
-                                $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]->anulacion=$value5->anulacion;                        
+                                $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]->anulacion=$value5->anulacion;
+
+                                $arrayMensual[]=$value5->ene;
+                                $arrayMensual[]=$value5->feb;
+                                $arrayMensual[]=$value5->mar;
+                                $arrayMensual[]=$value5->abr;
+                                $arrayMensual[]=$value5->may;
+                                $arrayMensual[]=$value5->jun;
+                                $arrayMensual[]=$value5->jul;
+                                $arrayMensual[]=$value5->ago;
+                                $arrayMensual[]=$value5->sep;
+                                $arrayMensual[]=$value5->oct;
+                                $arrayMensual[]=$value5->nov;
+                                $arrayMensual[]=$value5->dic;
+
+                                $sumatoriaAcumuladaAnual = [];
+
+                                foreach ($arrayMensual as $key => $value) 
+                                {
+                                    if(!isset($sumatoriaAcumuladaAnual[$key]))
+                                    {
+                                        $sumatoriaAcumuladaAnual[]=0;
+                                    }
+                                    $sumatoriaAcumuladaAnual[$key]+=($value+($key>0 ?  $sumatoriaAcumuladaAnual[$key-1]  : 0));
+                                }
+
+
+                                /*$sumatoriaAnualporClasificador = $value5->ene + $value5->feb + $value5->mar + $value5->abr + $value5->may + $value5->jun + $value5->jul + $value5->ago + $value5->sep + $value5->oct + $value5->nov + $value5->dic; 
+
+                                $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]->sumatoriaAnualporClasificador=$sumatoriaAnualporClasificador;*/
+                                $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]->sumatoriaAcumuladaAnual=$sumatoriaAcumuladaAnual;
+
+
                             }
                         }
                     }
                 }
             }
         }
-        /*echo "<pre>";
-         var_dump($temp);exit;
-        echo "</pre>";*/
+        //exit;
+        //echo "<pre>";
+        //var_dump($temp);exit;
+        //echo "</pre>";
 
 
         $this->load->view('front/Reporte/ProyectoInversion/detalleClasificador',['listaDetalleClasificador'=>$listaDetalleClasificador,'temp'=>$temp]);

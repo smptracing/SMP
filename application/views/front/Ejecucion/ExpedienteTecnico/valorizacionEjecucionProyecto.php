@@ -42,8 +42,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
 			$ValorizacionporPartida = 0;
 
 			if($expedienteTecnico->num_meses!=null)
-			{
-				
+			{				
 				for($i=0; $i<$expedienteTecnico->num_meses; $i++)
 				{
 					if(!isset($sumatoriasTotales[$i]))
