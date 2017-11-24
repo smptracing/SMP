@@ -23,25 +23,6 @@
 	    background-color: #D6EAF8;
 	    color: #0c0d3e;
 	}
-	#tablaResumen td
-	{
-	    border: 1px solid #d4cfcf;
-	    padding: 3px;
-	    color: #0c0d3e;
-	}
-	/*#table-DetalleClasificador td, #table-DetalleClasificador th
-	{
-	    border: 1px solid #d4cfcf;
-	    padding: 3px;
-	    color: #0c0d3e;
-	}
-	#table-DetalleClasificador th
-	{
-	    border: 1px solid #d4cfcf;
-	    padding: 1px;
-	    background-color: #D6EAF8;
-	    color: #0c0d3e;
-	}*/
 </style>
 
 <div class="right_col" role="main">
@@ -354,7 +335,7 @@ function generarGrafico()
         xAxis: [{
           type: 'category',
           boundaryGap: false,
-          data: ["ene","feb","mar","abr","may","jun","jul","ago","set","oct","nov","dic"]
+          data: ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Set","Oct","Nov","Dic"]
         }], 
         yAxis: [{
           type: 'value'

@@ -53,7 +53,7 @@ class Model_ET_Expediente_Tecnico extends CI_Model
 	public function AprobarExpediente($url, $fecha, $idEt)
 	{
 		$data=$this->db->query("update ET_EXPEDIENTE_TECNICO set fecha_aprobacion = '$fecha', url_doc_aprobacion_et = '$url' where id_et = $idEt");
-        return true;
+        return $data;
 	}
 
 
@@ -235,8 +235,8 @@ class Model_ET_Expediente_Tecnico extends CI_Model
     }
      public function PeriodoEjecucion($fechaInicio, $fechaFin, $id_et, $num_meses)
     {
-    	$this->db->query("update ET_EXPEDIENTE_TECNICO set fecha_inicio_et = '$fechaInicio', fecha_fin_et = '$fechaFin', num_meses = $num_meses where id_et = $id_et");
-    	return true;
+    	$data = $this->db->query("update ET_EXPEDIENTE_TECNICO set fecha_inicio_et = '$fechaInicio', fecha_fin_et = '$fechaFin', num_meses = $num_meses where id_et = $id_et");
+    	return $data ;
     }
 
     public function EditarResponsableEjecucion($id_tipo_responsableEjecucion,$comboCargoEjecucion,$ComboResponsableEjecucion)
