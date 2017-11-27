@@ -86,7 +86,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
 	#tableValorizacion td, #tableValorizacion th
 	{
 		border: 1px solid black;
-		font-size: 10px;
+		font-size: 8px;
 		padding: 4px;
 		text-align: center;
 		vertical-align: middle;
@@ -171,99 +171,6 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
 										<?= mostrarMetaAnidada($item, $expedienteTecnico, $sumatoriasTotales,$totalGeneral)?>
 									<?php } ?>
 								<?php } ?>
-								<!--<tr style="height: 20px;">
-									
-								</tr>-->
-								<tr>
-									<td colspan="5" style="text-align: left"><b>COSTO DIRECTO TOTAL</b></td>
-									<td><b>S/.<?=a_number_format($totalGeneral, 2, '.',",",3);?></b></td>
-									<?php if($expedienteTecnico->num_meses!=null){
-										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
-											<td><b>S/.<?=a_number_format($sumatoriasTotales[$i], 2, '.',",",3);?></b></td>
-										<?php }
-									}?>
-								</tr>
-								<tr>
-									<td colspan="5" style="text-align: left"><b>GASTOS GENERALES (11.68% de Costo Directo)</b></td>
-									<td></td>
-									<?php if($expedienteTecnico->num_meses!=null){
-										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
-											<td></td>
-										<?php }
-									}?>
-								</tr>
-								<tr>
-									<td colspan="5" style="text-align: left"><b>GASTOS DE SUPERVISION (6.16% de Costo Directo)</b></td>
-									<td></td>
-									<?php if($expedienteTecnico->num_meses!=null){
-										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
-											<td></td>
-										<?php }
-									}?>
-								</tr>
-								<tr>
-									<td colspan="5" style="text-align: left"><b>LIQUIDACION DE OBRA (1.00% de Costo Directo)</b></td>
-									<td></td>
-									<?php if($expedienteTecnico->num_meses!=null){
-										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
-											<td></td>
-										<?php }
-									}?>
-								</tr>
-								<tr>
-									<td colspan="5" style="text-align: left"><b>MITIGACION AMBIENTAL</b></td>
-									<td></td>
-									<?php if($expedienteTecnico->num_meses!=null){
-										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
-											<td></td>
-										<?php }
-									}?>
-								</tr>
-								<tr>
-									<td colspan="5" style="text-align: left"><b>GESTION DEL PROYECTO (3.65% de Costo Directo)</b></td>
-									<td></td>
-									<?php if($expedienteTecnico->num_meses!=null){
-										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
-											<td></td>
-										<?php }
-									}?>
-								</tr>
-								<tr>
-									<td colspan="5" style="text-align: left"><b>EXPEDIENTE TECNICO</b></td>
-									<td></td>
-									<?php if($expedienteTecnico->num_meses!=null){
-										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
-											<td></td>
-										<?php }
-									}?>
-								</tr>
-								<tr>
-									<td colspan="5" style="text-align: left"><b>PRESUPUESTO TOTAL</b></td>
-									<td></td>
-									<?php if($expedienteTecnico->num_meses!=null){
-										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
-											<td></td>
-										<?php }
-									}?>
-								</tr>
-								<tr>
-									<td colspan="5" style="text-align: left"><b>PORCENTAJE DE GASTO FINANCIERO DEL PROYECTO</b></td>
-									<td></td>
-									<?php if($expedienteTecnico->num_meses!=null){
-										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
-											<td></td>
-										<?php }
-									}?>
-								</tr>
-								<tr>
-									<td colspan="5" style="text-align: left"><b>% AVANCE FISICO PROGRAMADO</b></td>
-									<td></td>
-									<?php if($expedienteTecnico->num_meses!=null){
-										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
-											<td></td>
-										<?php }
-									}?>
-								</tr>
 							</tbody>
 						</table>
 					</div>
