@@ -17,6 +17,7 @@
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<label for="control-label">Recurso</label>
 			<div>
+				<input type="hidden" name="" value="<?=$idExpediente?>">
 				<select name="selectRecurso" id="selectRecurso" class="form-control">
 					<?php foreach($listaETRecurso as $value){ ?>
 						<option value="<?=$value->id_recurso.','.html_escape($value->desc_recurso)?>"><?=html_escape($value->desc_recurso)?></option>
@@ -28,7 +29,7 @@
 			<label for="control-label">Presupuesto analíticos (Clasificador)</label>
 			<div>
 				<select name="selectPresupuestoAnalitico" id="selectPresupuestoAnalitico" class="form-control">
-					<option></option>
+					<option value="">Seleccione una Opción</option>
 					<?php foreach($listaETPresupuestoAnalitico as $value){ ?>
 						<option value="<?=$value->id_analitico?>,<?=html_escape($value->desc_presupuesto_ej)?>"><?=html_escape($value->desc_presupuesto_ej)?> <?=html_escape($value->num_clasificador)?> : <?=html_escape($value->desc_clasificador)?></option>
 					<?php } ?>
@@ -93,7 +94,7 @@
 									<hr style="margin: 2px;">
 									<div class="row">
 										<div class="col-md-12 col-sm-12 col-xs-12">
-											<button  class="btn btn-success btn-sm" onclick=" paginaAjaxDialogo('otherModal2', 'Análisis Unitario',{ id_AnalisisUnitario: <?=$value->id_analisis?> }, base_url+'index.php/ET_Analisis_Unitario/insertarDetalleAnalisisUnitario', 'GET', null, null, false, true);" > <span class="fa fa-plus"></span> Registrar A.U.</button>
+											<button  class="btn btn-success btn-sm" onclick=" paginaAjaxDialogo('otherModal2', 'Análisis Unitario',{ id_Et:<?=$idExpediente?>,id_AnalisisUnitario: <?=$value->id_analisis?> }, base_url+'index.php/ET_Analisis_Unitario/insertarDetalleAnalisisUnitario', 'GET', null, null, false, true);" > <span class="fa fa-plus"></span> Registrar A.U.</button>
 										</div>
 										
 									</div>
@@ -466,7 +467,7 @@
 			return;
 		}
 
-		paginaAjaxJSON({ "idAnalitico" : idAnalitico, "idRecurso" : idRecurso, "idDetallePartida" : <?=$etDetallePartida->id_detalle_partida?> }, base_url+'index.php/ET_Analisis_Unitario/insertar', 'POST', null, function(objectJSON)
+		paginaAjaxJSON({ "idAnalitico" : idAnalitico,"idET" : <?=$idExpediente?> , "idRecurso" : idRecurso, "idDetallePartida" : <?=$etDetallePartida->id_detalle_partida?> }, base_url+'index.php/ET_Analisis_Unitario/insertar', 'POST', null, function(objectJSON)
 		{
 			objectJSON=JSON.parse(objectJSON);
 
@@ -535,7 +536,7 @@
 									'<div class="row">'+
 
 										'<div class="col-md-12 col-sm-12 col-xs-12">'+
-											'<button  class="btn btn-success btn-sm" onclick=" paginaAjaxDialogo(\'otherModal2\', \'Análisis Unitario\',{ id_AnalisisUnitario: '+objectJSON.idAnalisis+' }, base_url+\'index.php/ET_Analisis_Unitario/insertarDetalleAnalisisUnitario\', \'GET\', null, null, false, true);" > <span class="fa fa-plus"></span> Registrar A.U.</button>'
+											'<button  class="btn btn-success btn-sm" onclick=" paginaAjaxDialogo(\'otherModal2\', \'Análisis Unitario\',{id_Et : '+objectJSON.id_Et+', id_AnalisisUnitario: '+objectJSON.idAnalisis+' }, base_url+\'index.php/ET_Analisis_Unitario/insertarDetalleAnalisisUnitario\', \'GET\', null, null, false, true);" > <span class="fa fa-plus"></span> Registrar A.U.</button>'
 										'</div>'+
 
 									'</div>'+

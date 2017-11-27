@@ -30,7 +30,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
 		foreach($meta->childPartida as $key => $value)
 		{
 			//style = "background-color:#baf9c4;"
-			$htmlTemp.='<tr class="elementoBuscar" id = "fila">'.
+			$htmlTemp.='<tr class="elementoBuscar " id="fila'.$value->id_partida.'">'.
 				'<td>'.$value->numeracion.'</td>'.
 				'<td style="text-align: left;">'.html_escape($value->desc_partida).'</td>'.
 				'<td>'.html_escape($value->descripcion).'</td>'.
@@ -71,15 +71,18 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
 					$htmlTemp.='<td '.($precioTotalMesValorizacionTemp==0 ? 'style="background-color: #f5f5f5;"' : 'style="background-color: #fff1b0;"').'><div><input type="text" style="display: none;padding: 0px;width: 40px;" value="'.$cantidadMesValorizacionTemp.'" onkeyup="onKeyUpCalcularPrecio('.$value->cantidad.', '.$value->precio_unitario.', '.$value->childDetallePartida->id_detalle_partida.', '.($i+1).', this, event);"></div><span class="spanMontoValorizacion">S/.'.number_format($precioTotalMesValorizacionTemp, 2).'</span></td>';
 				}
 			}
+			$htmlTemp.='<td>'.$ValorizacionporPartida.'</td>';
 
 			if($ValorizacionporPartida == $value->parcial)
 			{
-				$htmlTemp.='</tr><script>$("#fila").css("background-color", "#baf9c4")</script>';
+				//$htmlTemp.='<td>'.$ValorizacionporPartida.'</td>';
+				$htmlTemp.='</tr><script>$("#fila'.$value->id_partida.'").css("background-color", "#baf9c4")</script>';
 			}
 			else
 			{
 				$htmlTemp.='</tr>';
 			}
+			//$htmlTemp.='</tr>';
 			
 		}
 		

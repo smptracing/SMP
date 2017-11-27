@@ -904,7 +904,7 @@ class Expediente_Tecnico extends CI_Controller
 			$month2 = date('m', $ts2);
 			$numerodemeses = (($year2 - $year1) * 12) + ($month2 - $month1);
 			$data=$this->Model_ET_Expediente_Tecnico->PeriodoEjecucion($fechaInicio, $fechaFin, $id_et,$numerodemeses);
-			if ($data==true) 
+			if ($data) 
 			{
 				echo "1";
 			}	

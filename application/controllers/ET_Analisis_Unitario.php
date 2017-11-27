@@ -25,6 +25,7 @@ class ET_Analisis_Unitario extends CI_Controller
 			$idAnalitico=$this->input->post('idAnalitico');
 			$idRecurso=$this->input->post('idRecurso');
 			$idDetallePartida=$this->input->post('idDetallePartida');
+			$idET = $this->input->post('idET');
 
 			if($this->Model_ET_Analisis_Unitario->ETAnalisisUnitarioPorIdDetallePartidaAndIdRecurso($idDetallePartida, $idRecurso)!=null)
 			{
@@ -41,7 +42,7 @@ class ET_Analisis_Unitario extends CI_Controller
 
 			$this->db->trans_complete();
 
-			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Análisis unitario registrado correctamente.', 'idAnalisis' => $idAnalisis, 'idAnalitico' => $idAnalitico, 'partidaCompleta' => $partidaCompleta]);exit;
+			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Análisis unitario registrado correctamente.', 'idAnalisis' => $idAnalisis, 'idAnalitico' => $idAnalitico, 'partidaCompleta' => $partidaCompleta,'id_Et' => $idET]);exit;
 		}
 
 		$idPartida=$this->input->get('idPartida');
@@ -61,7 +62,7 @@ class ET_Analisis_Unitario extends CI_Controller
 		$listaETRecurso=$this->Model_ET_Recurso->RecursoListar('R');
 		$listaETPresupuestoAnalitico=$this->Model_ET_Presupuesto_Analitico->ETPresupuestoAnaliticoPorIdET($idET);
 
-		$this->load->view('Front/Ejecucion/ETAnalisisUnitario/insertar', ['etDetallePartida' => $etDetallePartida, 'listaUnidadMedida' => $listaUnidadMedida, 'listaETAnalisisUnitario' => $listaETAnalisisUnitario, 'listaETRecurso' => $listaETRecurso, 'listaETPresupuestoAnalitico' => $listaETPresupuestoAnalitico, 'idPartida' => $idPartida]);
+		$this->load->view('Front/Ejecucion/ETAnalisisUnitario/insertar', ['etDetallePartida' => $etDetallePartida, 'listaUnidadMedida' => $listaUnidadMedida, 'listaETAnalisisUnitario' => $listaETAnalisisUnitario, 'listaETRecurso' => $listaETRecurso, 'listaETPresupuestoAnalitico' => $listaETPresupuestoAnalitico, 'idPartida' => $idPartida,'idExpediente' => $idET]);
 	}
 	public function insertarinsumo()
 	{
@@ -130,7 +131,8 @@ class ET_Analisis_Unitario extends CI_Controller
 		{
 			$idAnalisis=$this->input->get('id_AnalisisUnitario');
 			$Partida = $this->Model_ET_Detalle_Partida->partidaAnaliticoEt($idAnalisis);
-			$idET = $this->config->item('variableExpedienteTecnico');
+			//$idET = $this->config->item('variableExpedienteTecnico');
+			$idET = $this->input->get('id_Et');
 			$listaUnidadMedida = $this->Model_Unidad_Medida->UnidadMedidad_Listar();
 			$listaInsumoNivel1 = $this->Model_Unidad_Medida->listaInsumoNivel1();
 			foreach ($listaInsumoNivel1 as $key => $value) 

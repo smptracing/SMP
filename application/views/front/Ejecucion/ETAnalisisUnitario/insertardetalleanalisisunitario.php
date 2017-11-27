@@ -96,7 +96,7 @@ li
 										<label class="control-label">Unidad:</label>
 										<div>
 											<select  name="selectUnidadMedida" id="selectUnidadMedida" class="form-control selectpicker">
-												<option value="">Buscar Unidad</option>
+												<option value="">Seleccione Unidad</option>
 											</select>
 										</div>
 									</div>									
@@ -152,6 +152,13 @@ $(function()
         ajax: {
             url: base_url+'index.php/Unidad_Medida/listaUnidadMedida',
             data: { valueSearch : '{{{q}}}' }
+        },
+        locale: {
+            statusInitialized : 'Escriba para buscar unidad',
+            statusNoResults : 'No se encontro',
+            statusSearching : 'Buscando...',
+            searchPlaceholder : 'Buscar',
+            emptyTitle : 'Buscar Unidad'
         },
         preprocessData: function(data)
         {

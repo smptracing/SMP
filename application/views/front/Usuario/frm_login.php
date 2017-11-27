@@ -85,7 +85,6 @@
                                         </div>
                                         <div class="input-group">
                                             <span class="input-group-addon">
-                                                <i class="fa fa-lock"></i>
                                             </span>
                                             <div class="form-group label-floating">
                                               <div
@@ -131,7 +130,7 @@
     </div>
 </body>
 
-<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?render=onload&hl=en" async defer></script>
+<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?render=onload&hl=es" async defer></script>
 
 <script src="<?php echo base_url(); ?>assets/templateLogin/js/core/jquery-3.1.1.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/templateLogin/js/core/jquery-ui.min.js"></script>

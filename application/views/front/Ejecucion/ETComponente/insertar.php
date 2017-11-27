@@ -474,54 +474,69 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 
 
 	function eliminarComponente(idComponente, element)
-	{
-		if(!confirm('Al borrar componente se eliminará todas las metas, sub metas y partidas asociadas. ¿Realmente desea proseguir con la operaición?'))
-		{
-			return;
-		}
-
-		paginaAjaxJSON({ "idComponente" : idComponente }, base_url+'index.php/ET_Componente/eliminar', 'POST', null, function(objectJSON)
-		{
-			objectJSON=JSON.parse(objectJSON);
-
-			swal(
+    {
+        swal({
+            title: "Al borrar componente se eliminará todas las metas, sub metas y partidas asociadas. ¿Realmente desea proseguir con la operación?",
+            text: "",
+            type: "warning",
+            showCancelButton: true,
+            cancelButtonText:"CANCELAR" ,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "SI,ELIMINAR",
+            closeOnConfirm: false
+        },
+        function(){
+            paginaAjaxJSON({ "idComponente" : idComponente }, base_url+'index.php/ET_Componente/eliminar', 'POST', null, function(objectJSON)
 			{
-				title: '',
-				text: objectJSON.mensaje,
-				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
-			},
-			function(){});
+				objectJSON=JSON.parse(objectJSON);
 
-			$(element).parent().remove();
+				swal(
+				{
+					title: '',
+					text: objectJSON.mensaje,
+					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+				},
+				function(){});
 
-			limpiarArbolCompletoMasOpciones();
-		}, false, true);
-	}
+				$(element).parent().remove();
+
+				limpiarArbolCompletoMasOpciones();
+			}, false, true);
+        });
+    }
+
 
 	function eliminarMeta(idMeta, element)
-	{
-		if(!confirm('Al borrar meta se eliminará todas las sub metas y partidas asociadas. ¿Realmente desea proseguir con la operación?'))
-		{
-			return;
-		}
-
-		paginaAjaxJSON({ "idMeta" : idMeta }, base_url+'index.php/ET_Meta/eliminar', 'POST', null, function(objectJSON)
-		{
-			objectJSON=JSON.parse(objectJSON);
-
-			swal(
+    {
+        swal({
+            title: "Al borrar meta se eliminará todas las sub metas y partidas asociadas. ¿Realmente desea proseguir con la operación?",
+            text: "",
+            type: "warning",
+            showCancelButton: true,
+            cancelButtonText:"CANCELAR" ,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "SI,ELIMINAR",
+            closeOnConfirm: false
+        },
+        function(){
+            paginaAjaxJSON({ "idMeta" : idMeta }, base_url+'index.php/ET_Meta/eliminar', 'POST', null, function(objectJSON)
 			{
-				title: '',
-				text: objectJSON.mensaje,
-				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
-			},
-			function(){});
+				objectJSON=JSON.parse(objectJSON);
 
-			$(element).parent().remove();
+				swal(
+				{
+					title: '',
+					text: objectJSON.mensaje,
+					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+				},
+				function(){});
 
-			limpiarArbolCompletoMasOpciones();
-		}, false, true);
-	}
+				$(element).parent().remove();
+
+				limpiarArbolCompletoMasOpciones();
+			}, false, true);
+        });
+    }
 
 	function agregarMeta(idComponente, elementoPadre, idMetaPadre)
 	{
@@ -723,36 +738,43 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 	}
 
 	function eliminarPartida(idPartida, element)
-	{
-		if(!confirm('Al borrar partida se eliminará todos los datos relacionados a dicha partida. ¿Realmente desea proseguir con la operaición?'))
-		{
-			return;
-		}
-
-		paginaAjaxJSON({ "idPartida" : idPartida }, base_url+'index.php/ET_Partida/eliminar', 'POST', null, function(objectJSON)
-		{
-			objectJSON=JSON.parse(objectJSON);
-
-			swal(
+    {
+        swal({
+            title: "Al borrar partida se eliminará todos los datos relacionados a dicha partida. ¿Realmente desea proseguir con la operaición?",
+            text: "",
+            type: "warning",
+            showCancelButton: true,
+            cancelButtonText:"CANCELAR" ,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "SI,ELIMINAR",
+            closeOnConfirm: false
+        },
+        function(){
+            paginaAjaxJSON({ "idPartida" : idPartida }, base_url+'index.php/ET_Partida/eliminar', 'POST', null, function(objectJSON)
 			{
-				title: '',
-				text: objectJSON.mensaje,
-				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
-			},
-			function(){});
+				objectJSON=JSON.parse(objectJSON);
 
-			var tBodyTemporal=$(element).parent().parent().parent();
+				swal(
+				{
+					title: '',
+					text: objectJSON.mensaje,
+					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+				},
+				function(){});
 
-			$(element).parent().parent().remove();
+				var tBodyTemporal=$(element).parent().parent().parent();
 
-			if(!($(tBodyTemporal).find('tr').length))
-			{
-				$($(tBodyTemporal).parent()[0]).parent().replaceWith('<ul></ul>');
-			}
+				$(element).parent().parent().remove();
 
-			limpiarArbolCompletoMasOpciones();
-		}, false, true);
-	}
+				if(!($(tBodyTemporal).find('tr').length))
+				{
+					$($(tBodyTemporal).parent()[0]).parent().replaceWith('<ul></ul>');
+				}
+
+				limpiarArbolCompletoMasOpciones();
+			}, false, true);
+        });
+    }
 
 	function MostrarSubLista(codigoPartida, nivel, element)
 	{
