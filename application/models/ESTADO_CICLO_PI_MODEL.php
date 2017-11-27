@@ -13,7 +13,7 @@ class ESTADO_CICLO_PI_MODEL extends CI_Model
     public function Insertar_ciclo($data)
     {
           $this->db->insert('ESTADO_CICLO_PI', $data);
-          return $this->db->insert_id();
+          return $this->db->affected_rows() > 0;
     }
 
 
