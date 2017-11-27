@@ -6,6 +6,19 @@ class Model_RubroE extends CI_Model
     {
         parent::__construct();
     }
+
+
+/***********************************************************************************/
+    public function Insertar_rubro($data)
+    {
+          $this->db->insert('RUBRO_PI', $data);
+          return $this->db->affected_rows() > 0;
+    }
+/***********************************************************************************/
+
+
+
+
 //----------------------METODOS PARA EL MANTENIMIENTO DE RUBRO DE EJECUCION--------------------------------------------
     //AGREGAR UN RUBRO DE EJECUCION
     public function AddRubroE($listaFuenteFinanc, $txt_NombreRubroE)

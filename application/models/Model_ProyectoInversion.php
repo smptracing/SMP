@@ -9,18 +9,31 @@ class Model_ProyectoInversion extends CI_Model
 
           }
       //AGREGAR UN PROYECTO
-      function AddProyecto($cbxUnidadEjecutora,$cbxNatI,$cbxTipologiaInv,$cbxTipoInv,$cbxGrupoFunc,$cbxNivelGob,$cbxMetaPresupuestal,$cbxProgramaPres,$txtCodigoUnico,$txtNombrePip,$txtCostoPip,$txtDevengado,$dateFechaInPip,$dateFechaViabilidad,$distrito,$txtDireccionUbigeo,$txtLatitud,$txtLongitud,$cbxEstadoCicloInv,$dateFechaEstCicInv,$cbxRubro,$dateFechaRubro,$cbxModalidadEjec,$dateFechaModalidadEjec)
+      // function AddProyecto($cbxUnidadEjecutora,$cbxNatI,$cbxTipologiaInv,$cbxTipoInv,$cbxGrupoFunc,$cbxNivelGob,$cbxMetaPresupuestal,$cbxProgramaPres,$txtCodigoUnico,$txtNombrePip,$txtCostoPip,$txtDevengado,$dateFechaInPip,$dateFechaViabilidad,$distrito,$txtDireccionUbigeo,$txtLatitud,$txtLongitud,$cbxEstadoCicloInv,$dateFechaEstCicInv,$cbxRubro,$dateFechaRubro,$cbxModalidadEjec,$dateFechaModalidadEjec)
+      //   {
+      //      $this->db->query("execute sp_ProyectoInversiont_c'".$cbxUnidadEjecutora."','".$cbxNatI."','".$cbxTipologiaInv."','".$cbxTipoInv."','".$cbxGrupoFunc."','".$cbxNivelGob."','".$cbxMetaPresupuestal."','".$cbxProgramaPres."','".$txtCodigoUnico."','".$txtNombrePip."','".$txtCostoPip."','".$txtDevengado."','".$dateFechaInPip."','".$dateFechaViabilidad."','".$distrito."','".$txtDireccionUbigeo."','".$txtLatitud."','".$txtLongitud."','".$cbxEstadoCicloInv."','".$dateFechaEstCicInv."','".$cbxRubro."','".$dateFechaRubro."','".$cbxModalidadEjec."','".$dateFechaModalidadEjec."'");
+      //       if ($this->db->affected_rows() > 0) 
+      //         {
+      //           return true;
+      //         }
+      //         else
+      //         {
+      //           return false;
+      //         }
+      //   }
+
+/************************************************************************************************************************************/
+      function Insert_pi_pip($data)
         {
-           $this->db->query("execute sp_ProyectoInversiont_c'".$cbxUnidadEjecutora."','".$cbxNatI."','".$cbxTipologiaInv."','".$cbxTipoInv."','".$cbxGrupoFunc."','".$cbxNivelGob."','".$cbxMetaPresupuestal."','".$cbxProgramaPres."','".$txtCodigoUnico."','".$txtNombrePip."','".$txtCostoPip."','".$txtDevengado."','".$dateFechaInPip."','".$dateFechaViabilidad."','".$distrito."','".$txtDireccionUbigeo."','".$txtLatitud."','".$txtLongitud."','".$cbxEstadoCicloInv."','".$dateFechaEstCicInv."','".$cbxRubro."','".$dateFechaRubro."','".$cbxModalidadEjec."','".$dateFechaModalidadEjec."'");
-            if ($this->db->affected_rows() > 0) 
-              {
-                return true;
-              }
-              else
-              {
-                return false;
-              }
+          $this->db->insert('PROYECTO_INVERSION', $data);
+          return $this->db->insert_id();
         }
+
+/************************************************************************************************************************************/
+
+
+
+
     //FIN AGREGAR UN PROYECTO
          function GetProyectoInversionUltimo()
         {

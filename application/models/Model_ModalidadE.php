@@ -6,6 +6,16 @@ class Model_ModalidadE extends CI_Model
     {
         parent::__construct();
     }
+/***********************************************************************************/
+    public function Insertar_modalidade($data)
+    {
+          $this->db->insert('modalidad_ejecucion_pi', $data);
+          return $this->db->affected_rows() > 0;
+    }
+/***********************************************************************************/
+
+
+
 
 //--------------METODOS PARA EL MANTENIMIENTO DE MODALIDAD DE EJECUCION EJECUCION--------------------------------------------
 

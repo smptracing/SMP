@@ -9,47 +9,144 @@ class bancoproyectos extends CI_Controller
         $this->load->model('bancoproyectos_modal');
         $this->load->helper('FormatNumber_helper');
         $this->load->model('Model_PMI_ubicacion');
+
+/******************************************************************/
+
+        $this->load->model('Model_ProyectoInversion');
+        $this->load->model('ESTADO_CICLO_PI_MODEL');
+        $this->load->model('Model_RubroE');
+        $this->load->model('Model_ModalidadE');
+
+        $this->load->helper('Fecha_helper');
+
+/******************************************************************/
+
+
+/******************************************************************/
+
     }
     public function AddProyectos()
     {
         if ($this->input->is_ajax_request()) {
-            $flat                = "IPC ";
-            $id_pi               = "0";
-            $cbxUnidadEjecutora  = $this->input->post("cbxUnidadEjecutora");
-            $cbxNatI             = $this->input->post("cbxNatI");
-            $cbxTipologiaInv     = $this->input->post("cbxTipologiaInv");
-            $cbxTipoInv          = $this->input->post("cbx");
-            $cbxGrupoFunc        = $this->input->post("cbxGrupoFunc");
-            $cbxNivelGob         = $this->input->post("cbxNivelGob");
-            $cbxProgramaPres     = $this->input->post("cbxProgramaPres");
-            $txtCodigoUnico      = $this->input->post("txtCodigoUnico");
-            $txtNombrePip        = $this->input->post("txtNombrePip");
-            $txtCostoPip         = floatval(str_replace(",","",$this->input->post("txtCostoPip")));
-            $txt_beneficiarios   = $this->input->post("txt_beneficiarios");
-            $dateFechaInPip      = $this->input->post("fecha_registro");
-            $dateFechaViabilidad = $this->input->post("fecha_viabilidad");
-            $lista_unid_form     = $this->input->post("lista_unid_form");
-            $cbx_estado          = $this->input->post("cbx_estado");
-            $cbxEstCicInv_       = $this->input->post("cbxEstCicInv_");
-            $cbxRubro            = $this->input->post("cbxRubro");
-            $cbxModalidadEjec    = $this->input->post("cbxModalidadEjec");
-            $data = $this->bancoproyectos_modal->AddProyectos(
-                $flat, $id_pi, $cbxUnidadEjecutora, $cbxNatI, $cbxTipologiaInv, $cbxTipoInv, $cbxGrupoFunc, $cbxNivelGob, $cbxProgramaPres, $txtCodigoUnico, $txtNombrePip, $txtCostoPip, $txt_beneficiarios, $dateFechaInPip, $dateFechaViabilidad, $lista_unid_form, $cbx_estado, $cbxEstCicInv_,
-                $cbxRubro, $cbxModalidadEjec);
 
-            if($data)
-            {
-                echo "1";
-            }
-            else
-            {
-               echo "2";
-            }
+                //proyecto_inversion
+                $c_data['id_ue'] = $this->input->post("cbxUnidadEjecutora");
+                $c_data['id_naturaleza_inv'] = $this->input->post("cbxNatI");
+                $c_data['id_tipologia_inv'] = $this->input->post("cbxTipologiaInv");
+                $c_data['id_tipo_inversion'] = $this->input->post("cbx");
+                $c_data['id_grupo_funcional'] = $this->input->post("cbxGrupoFunc");
+                $c_data['id_nivel_gob'] = $this->input->post("cbxNivelGob");
+                $c_data['id_programa_pres'] = $this->input->post("cbxProgramaPres");
+                $c_data['codigo_unico_pi'] = $this->input->post("txtCodigoUnico");
+                $c_data['nombre_pi'] = $this->input->post("txtNombrePip");
+                $c_data['costo_pi'] = floatval(str_replace(",","",$this->input->post("txtCostoPip")));
+                $c_data['num_beneficiarios'] = $this->input->post("txt_beneficiarios");
+                $c_data['fecha_registro_pi'] = $this->input->post("fecha_registro");
+                $c_data['fecha_viabilidad_pi'] = $this->input->post("fecha_viabilidad");
+                $c_data['id_uf'] = $this->input->post("lista_unid_form");
+                $c_data['estado_pi'] = $this->input->post("cbx_estado");
+
+                //estado_ciclo_pi
+                $d_data['id_estado_ciclo'] = $this->input->post("cbxEstCicInv_");
+
+                //rubro_pi
+                $e_data['id_rubro'] = $this->input->post("cbxRubro");
+
+                //modalidad_ejecucion_pi
+                $f_data['id_modalidad_ejec'] = $this->input->post("cbxModalidadEjec");
+
+                //flag and msg variables
+                $flag = 0;
+                $msg = array();
+
+                //Let's start the fire
+                $q1 = $this->Model_ProyectoInversion->Insert_pi_pip($c_data);
+
+                 if( $q1 > 0){
+
+                    $msg[0] = ';)';
+
+                    //INSERT estado_ciclo_pi
+                    $d_data['id_pi'] = $q1;
+                    $d_data['fecha_estado_ciclo_pi'] = fecha_mssql();
+                    if($this->ESTADO_CICLO_PI_MODEL->Insertar_ciclo($d_data) <= 0){  
+                        $flag = 1;
+                        $msg[1] = 'Error: x001ci';
+                    }  
+
+                    //INSERT rubro_pi
+                    $e_data['id_pi'] = $q1;
+                    $e_data['fecha_rubro_pi'] = fecha_mssql();
+                    if($this->Model_RubroE->Insertar_rubro($e_data) <= 0){  
+                        $flag = 1;
+                        $msg[2] = 'Error: x001r';
+                    }   
+
+                    //INSERT modalidad_ejecucion_pi
+                    $f_data['id_pi'] = $q1;
+                    $f_data['fecha_modalidad_ejec_pi'] = fecha_mssql();
+                    if($this->Model_ModalidadE->Insertar_modalidade($f_data) <= 0){  
+                        $flag = 1;
+                        $msg[3] = 'Error: x001m';
+                    }  
+
+
+                }else{
+                    $flag = 1;
+                    $msg[0] = 'Error x00q1';
+                }
+
+
+            $datos['flag'] = $flag;   
+            $datos['msg'] = $msg;   
+            // $datos['res'] = $q1;   
+            $data['datos'] = $datos;
+            $this->load->view('front/json/json_view', $data);                 
 
         } else {
             show_404();
         }
     }
+
+/******************************************************************/
+
+
+    // public function AddProyectos()
+    // {
+    //     if ($this->input->is_ajax_request()) {
+    //         $flat                = "IPC ";
+    //         $id_pi               = "0";
+    //         $cbxUnidadEjecutora  = $this->input->post("cbxUnidadEjecutora");
+    //         $cbxNatI             = $this->input->post("cbxNatI");
+    //         $cbxTipologiaInv     = $this->input->post("cbxTipologiaInv");
+    //         $cbxTipoInv          = $this->input->post("cbx");
+    //         $cbxGrupoFunc        = $this->input->post("cbxGrupoFunc");
+    //         $cbxNivelGob         = $this->input->post("cbxNivelGob");
+    //         $cbxProgramaPres     = $this->input->post("cbxProgramaPres");
+    //         $txtCodigoUnico      = $this->input->post("txtCodigoUnico");
+    //         $txtNombrePip        = $this->input->post("txtNombrePip");
+    //         $txtCostoPip         = floatval(str_replace(",","",$this->input->post("txtCostoPip")));
+    //         $txt_beneficiarios   = $this->input->post("txt_beneficiarios");
+    //         $dateFechaInPip      = $this->input->post("fecha_registro");
+    //         $dateFechaViabilidad = $this->input->post("fecha_viabilidad");
+    //         $lista_unid_form     = $this->input->post("lista_unid_form");
+    //         $cbx_estado          = $this->input->post("cbx_estado");
+    //         $cbxEstCicInv_       = $this->input->post("cbxEstCicInv_");
+    //         $cbxRubro            = $this->input->post("cbxRubro");
+    //         $cbxModalidadEjec    = $this->input->post("cbxModalidadEjec");
+    //         if ($this->bancoproyectos_modal->AddProyectos(
+    //             $flat, $id_pi, $cbxUnidadEjecutora, $cbxNatI, $cbxTipologiaInv, $cbxTipoInv, $cbxGrupoFunc, $cbxNivelGob, $cbxProgramaPres, $txtCodigoUnico, $txtNombrePip, $txtCostoPip, $txt_beneficiarios, $dateFechaInPip, $dateFechaViabilidad, $lista_unid_form, $cbx_estado, $cbxEstCicInv_,
+    //             $cbxRubro, $cbxModalidadEjec) == false) {
+    //             echo "1";
+    //         } else {
+    //             echo "2";
+    //         }
+
+    //     } else {
+    //         show_404();
+    //     }
+    // }
+
     /*FIN INSERTAR UN PROYECTO*/
     /*INSERTAR UN NO PIP*/
     public function AddNoPip()

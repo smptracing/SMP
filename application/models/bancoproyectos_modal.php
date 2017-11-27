@@ -77,7 +77,7 @@ class bancoproyectos_modal extends CI_Model
         }
     }
 
-    //AGREGAR UN PROYECTO
+    // AGREGAR UN PROYECTO
     public function AddProyectos($flat, $id_pi, $cbxUnidadEjecutora, $cbxNatI, $cbxTipologiaInv, $cbxTipoInv, $cbxGrupoFunc, $cbxNivelGob, $cbxProgramaPres, $txtCodigoUnico, $txtNombrePip, $txtCostoPip, $txt_beneficiarios, $dateFechaInPip, $dateFechaViabilidad, $lista_unid_form, $cbx_estado, $cbxEstCicInv_,
         $cbxRubro, $cbxModalidadEjec) 
     {
@@ -88,7 +88,7 @@ class bancoproyectos_modal extends CI_Model
         } 
         else
         {
-            $this->db->query("execute sp_Gestionar_ProyectoInversion
+           $q = $this->db->query("execute sp_Gestionar_ProyectoInversion
                 @Opcion='" . $flat . "',
                 @id_pi='" . $id_pi . "',
                 @id_ue='" . $cbxUnidadEjecutora . "',
@@ -110,9 +110,66 @@ class bancoproyectos_modal extends CI_Model
                 @id_rubro='" . $cbxRubro . "',
                 @id_modalidad_ejec='" . $cbxModalidadEjec . "'");
             
-            return true;
+            return $q;
         }
     }
+
+/***********************************************************************************************************************************/
+
+
+    // public function AddProyectos($flat, $id_pi, $cbxUnidadEjecutora, $cbxNatI, $cbxTipologiaInv, $cbxTipoInv, $cbxGrupoFunc, $cbxNivelGob, $cbxProgramaPres, $txtCodigoUnico, $txtNombrePip, $txtCostoPip, $txt_beneficiarios, $dateFechaInPip, $dateFechaViabilidad, $lista_unid_form, $cbx_estado, $cbxEstCicInv_,
+    //     $cbxRubro, $cbxModalidadEjec) 
+    // {
+    //     $proyecto = $this->db->query("select codigo_unico_pi from PROYECTO_INVERSION where codigo_unico_pi ='$txtCodigoUnico'");
+    //     if ($proyecto->num_rows() >= 1) 
+    //     {
+    //         return 7;
+    //     } 
+    //     else
+    //     {
+                // $sp = "sp_Gestionar_ProyectoInversion ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?";
+
+                // $params = array(
+                // 'Opcion' => $flat,
+                // 'id_pi' => $id_pi,
+                // 'id_ue' => $cbxUnidadEjecutora,
+                // 'id_naturaleza_inv' => $cbxNatI,
+                // 'id_tipologia_inv' => $cbxTipologiaInv,
+                // 'id_tipo_inv' => $cbxTipoInv,
+                // 'id_grupo_funcional' => $cbxGrupoFunc,
+                // 'id_nivel_gob' => $cbxNivelGob,
+                // 'id_programa_pres' => $cbxProgramaPres,
+                // 'codigo_unico_pi' => $txtCodigoUnico,
+                // 'nombre_pi' => $txtNombrePip,
+                // 'costo_pi' => $txtCostoPip,
+                // 'num_beneficiarios' => $txt_beneficiarios,
+                // 'fecha_registro_pi' => $dateFechaInPip,
+                // 'fecha_viabilidad_pi' => $dateFechaViabilidad,
+                // 'id_uf' => $lista_unid_form,
+                // 'estado_pi' => $cbx_estado,
+                // 'id_estado_ciclo' => $cbxEstCicInv_,
+                // 'id_rubro' => $cbxRubro,
+                // 'id_modalidad_ejec' => $cbxModalidadEjec);
+
+                // $q = $this->db->query($sp,$params);
+
+                // $q = $this->db->query("sp_Gestionar_ProyectoInversion
+                // N'{$flat}', N'{$id_pi}', N'{$cbxUnidadEjecutora}',
+                // N'{$cbxNatI}', N'{$cbxTipologiaInv}', N'{$cbxTipoInv}',
+                // N'{$cbxGrupoFunc}', N'{$cbxNivelGob}', N'{$cbxProgramaPres}',
+                // N'{$txtCodigoUnico}', N'{$txtNombrePip}', N'{$txtCostoPip}',
+                // N'{$txt_beneficiarios}', N'{$dateFechaInPip}',
+                // N'{$dateFechaViabilidad}', N'{$lista_unid_form}',
+                // N'{$cbx_estado}', N'{$cbxEstCicInv_}', N'{$cbxRubro}',
+                // N'{$cbxModalidadEjec}'");
+
+    //             $this->db->insert('pescador', $data);
+    //             return $this->db->affected_rows() > 0;
+
+    //     }
+    // }
+/***********************************************************************************************************************************/
+
     //FIN AGREGAR UN PROYECTO
 
     //AGREGAR UN PROYECTO
@@ -199,18 +256,40 @@ class bancoproyectos_modal extends CI_Model
             return false;
         }
     }
+
+
     //FIN EDITAR UN PROYECTO PIP
     //LISTAR  PIP
+    // public function GetProyectoInversion($flat)
+    // {
+    //     $GetProyectoInversion = $this->db->query("execute sp_Gestionar_ProyectoInversion'"
+    //         . $flat . "'");
+    //     if ($GetProyectoInversion->num_rows() > 0) {
+    //         return $GetProyectoInversion->result();
+    //     } else {
+    //         return false;
+    //     }
+    // }
+
+//LLAMAR PROCEDIMIENTO ALMACENADO SANITIZADO
+/*******************************************************************************************************************/
+
     public function GetProyectoInversion($flat)
     {
-        $GetProyectoInversion = $this->db->query("execute sp_Gestionar_ProyectoInversion'"
-            . $flat . "'");
-        if ($GetProyectoInversion->num_rows() > 0) {
-            return $GetProyectoInversion->result();
-        } else {
-            return false;
-        }
+        $sp = "sp_Gestionar_ProyectoInversion ?";
+
+        $params = array(
+        'PARAM_1' => $flat);
+
+        $q = $this->db->query($sp,$params);
+
+        return $q->result();
+
     }
+
+/*******************************************************************************************************************/
+
+
     //LISTAR NO PIP
     public function GetNOPIP($flat)
     {
