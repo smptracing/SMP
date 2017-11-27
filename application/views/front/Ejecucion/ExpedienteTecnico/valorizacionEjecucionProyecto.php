@@ -29,7 +29,6 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
 		
 		foreach($meta->childPartida as $key => $value)
 		{
-			//style = "background-color:#baf9c4;"
 			$htmlTemp.='<tr class="elementoBuscar " id="fila'.$value->id_partida.'">'.
 				'<td>'.$value->numeracion.'</td>'.
 				'<td style="text-align: left;">'.html_escape($value->desc_partida).'</td>'.
@@ -61,7 +60,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
 
 							$precioTotalMesValorizacionTemp=$item->precio;
 
-							$ValorizacionporPartida += $precioTotalMesValorizacionTemp;
+							$ValorizacionporPartida += $item->cantidad;
 
 							$cantidadMesValorizacionTemp=$item->cantidad;
 
@@ -71,18 +70,15 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
 					$htmlTemp.='<td '.($precioTotalMesValorizacionTemp==0 ? 'style="background-color: #f5f5f5;"' : 'style="background-color: #fff1b0;"').'><div><input type="text" style="display: none;padding: 0px;width: 40px;" value="'.$cantidadMesValorizacionTemp.'" onkeyup="onKeyUpCalcularPrecio('.$value->cantidad.', '.$value->precio_unitario.', '.$value->childDetallePartida->id_detalle_partida.', '.($i+1).', this, event);"></div><span class="spanMontoValorizacion">S/.'.number_format($precioTotalMesValorizacionTemp, 2).'</span></td>';
 				}
 			}
-			$htmlTemp.='<td>'.$ValorizacionporPartida.'</td>';
-
-			if($ValorizacionporPartida == $value->parcial)
+			
+			if($ValorizacionporPartida==$value->cantidad)
 			{
-				//$htmlTemp.='<td>'.$ValorizacionporPartida.'</td>';
 				$htmlTemp.='</tr><script>$("#fila'.$value->id_partida.'").css("background-color", "#baf9c4")</script>';
 			}
 			else
 			{
 				$htmlTemp.='</tr>';
 			}
-			//$htmlTemp.='</tr>';
 			
 		}
 		
@@ -198,106 +194,6 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
 										<?= mostrarMetaAnidada($item, $expedienteTecnico, $sumatoriasTotales,$totalGeneral)?>
 									<?php } ?>
 								<?php } ?>
-								<tr class="espacio">
-								</tr>
-								<tr>
-									<td colspan="5" style="text-align: left"><b>COSTO DIRECTO TOTAL</b></td>
-									<td><b>S/.<?=a_number_format($totalGeneral, 2, '.',",",3);?></b></td>
-									<?php if($expedienteTecnico->num_meses!=null){
-										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
-											<td><b>S/.<?=a_number_format($sumatoriasTotales[$i], 2, '.',",",3);?></b></td>
-										<?php }
-									}?>
-								</tr>
-								<tr>
-									<td colspan="5" style="text-align: left"><b>GASTOS GENERALES</b></td>
-									<td>
-									</td>
-									<?php if($expedienteTecnico->num_meses!=null){
-										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
-											<td></td>
-										<?php }
-									}?>
-								</tr>
-								<tr>
-									<td colspan="5" style="text-align: left"><b>GASTOS DE SUPERVISION</b></td>
-									<td>									
-									</td>
-									<?php if($expedienteTecnico->num_meses!=null){
-										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
-											<td></td>
-										<?php }
-									}?>
-								</tr>
-								<tr>
-									<td colspan="5" style="text-align: left"><b>LIQUIDACION DE OBRA</b></td>
-									<td>
-									</td>
-									<?php if($expedienteTecnico->num_meses!=null){
-										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
-											<td></td>
-										<?php }
-									}?>
-								</tr>
-								<tr>
-									<td colspan="5" style="text-align: left"><b>MITIGACION AMBIENTAL</b></td>
-									<td></td>
-									<?php if($expedienteTecnico->num_meses!=null){
-										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
-											<td></td>
-										<?php }
-									}?>
-								</tr>
-								<tr>
-									<td colspan="5" style="text-align: left"><b>GESTION DEL PROYECTO</b></td>
-									<td>
-									</td>
-									<?php if($expedienteTecnico->num_meses!=null){
-										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
-											<td></td>
-										<?php }
-									}?>
-								</tr>
-								<?php if($expedienteTecnico->id_etapa_et == 1 ) { ?>
-								<tr>
-									<td colspan="5" style="text-align: left"><b>EXPEDIENTE TECNICO</b></td>
-									<td></td>
-									<?php if($expedienteTecnico->num_meses!=null){
-										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
-											<td></td>
-										<?php }
-									}?>
-								</tr>
-								<?php } ?>
-
-								<tr>
-									<td colspan="5" style="text-align: left"><b>PRESUPUESTO TOTAL</b></td>
-									<td></td>
-									<?php if($expedienteTecnico->num_meses!=null){
-										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
-											<td></td>
-										<?php }
-									}?>
-								</tr>
-								<tr>
-									<td colspan="5" style="text-align: left"><b>PORCENTAJE DE GASTO FINANCIERO DEL PROYECTO</b></td>
-									<td></td>
-									<?php if($expedienteTecnico->num_meses!=null){
-										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
-											<td></td>
-										<?php }
-									}?>
-								</tr>
-								<tr>
-									<td colspan="5" style="text-align: left"><b>% AVANCE FISICO PROGRAMADO</b></td>
-									<td></td>
-									<?php if($expedienteTecnico->num_meses!=null){
-										for($i=0; $i<$expedienteTecnico->num_meses; $i++){ ?>
-											<td></td>
-										<?php }
-									}?>
-								</tr>
-
 							</tbody>
 						</table>
 					</div>
