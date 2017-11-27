@@ -27,7 +27,7 @@
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Numero de Meses:</label>
 							<div>
-								<input type="text" readonly="readonly" class="form-control" value="<?=$ExpedienteTecnico->num_meses?> meses"  >
+								<input type="text" readonly="readonly" name="txtTotalMeses" id= "txtTotalMeses" class="form-control" value="<?=$ExpedienteTecnico->num_meses?> meses"  >
 							</div>	
 						</div>
 					</div>
@@ -41,6 +41,35 @@
 	</div>
 </form>
 <script>
+
+	$(document).ready(function()
+	{
+	    $('input[type="date"]').change(function(){
+	    	var fecha1 = $('#txtFechaInicio').val();
+	    	var fecha2 = $('#txtFechaFin').val();
+	    	$.ajax(
+			{
+				url: base_url+"index.php/Expediente_Tecnico/CalcularNumeroMeses",
+				type: 'POST',
+				data:
+				{
+					txtFecha1: fecha1,
+					txtFecha2: fecha2
+				},
+				cache: false,
+				async: true
+			}).done(function(objectJSON) 
+			{
+				objectJSON = JSON.parse(objectJSON);
+				$('#txtTotalMeses').val(objectJSON.numerodemeses+" Meses");
+
+			}).fail(function()
+			{
+				swal('Error', 'Error no controlado.', 'error');
+			});
+	    });
+	});
+
 	$(function()
 	{
 		$('#frmAgregarPeriodo').formValidation(
