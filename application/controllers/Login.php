@@ -56,7 +56,7 @@ class Login extends CI_Controller {
 
       $data = json_decode($response);
 
-      if (isset($data->success) && $data->success=="true") {
+      // if (isset($data->success) && $data->success=="true") {
         $usuario = $this->input->post('txtUsuario');
         $password = sha1($this->input->post('txtPassword'));
         $query = $this->Login_model->login($usuario, $password);
@@ -87,10 +87,10 @@ class Login extends CI_Controller {
             $this->session->set_flashdata('error', 'Usuario y/o Contraseña Incorrrecto');
             $this->muestralog();
         }
-      } else {
-            $this->session->set_flashdata('error', 'Llenar Captcha');
-            $this->muestralog();
-      }
+      // } else {
+      //       $this->session->set_flashdata('error', 'Llenar Captcha');
+      //       $this->muestralog();
+      // }
     }
     public function logout()
     {
