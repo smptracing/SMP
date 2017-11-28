@@ -8,14 +8,14 @@
 					<div class="x_title">
 						<h2><b>REPORTE POR PROYECTO DE INVERSIÓN</b> </h2>
 						<div class="clearfix"></div>
-					</div>										
+					</div>
 					<div class="x_content">
-						BÚSQUEDA POR CÓDIGO 
+						BÚSQUEDA POR CÓDIGO
 						<div class="row">
-					
+
 						  <div class="col-lg-6">
 						    <div class="input-group">
-						      <input type="text" id="BuscarPip"  class="form-control" placeholder="Ingrese código Unico" value="<?= $codigo ?>">
+						      <input type="text" id="BuscarPip"  class="form-control" placeholder="Ingrese código Unico" value="<?=$codigo?>">
 						      <span class="input-group-btn">
 						        <button id="CodigoUnico" class="btn btn-default" type="button" ><span class="glyphicon glyphicon-search"> Aceptar</span></button>
 						      </span>
@@ -25,7 +25,7 @@
 						    <div class="input-group">
 						      <span class="input-group-btn">
 
-						        <a href="javascript:siafActualizador()"><button id="BtnAcatualizar" class="btn btn-success" type="button"><i class="fa fa-spinner"></i> Actualizar (Importar de SIAF)</button></a>													
+						        <a href="javascript:siafActualizador()"><button id="BtnAcatualizar" class="btn btn-success" type="button"><i class="fa fa-spinner"></i> Actualizar (Importar de SIAF)</button></a>
 						      </span>
 						    </div>
 						  </div>
@@ -35,7 +35,7 @@
 								<div class="panel panel-default">
 									<div class="panel-heading">DATOS DEL PIP</div>
 									<br>
-								    <div id="EjecucionAnual">												
+								    <div id="EjecucionAnual">
 										<table class="table" STYLE="table-layout:fixed">
 											<tr>
 												<td style="width: 20%" class="blue"><b>NOMBRE</b></td>
@@ -67,25 +67,25 @@
 							<div class="row" style="margin-left: 10px; margin:10px; ">
 								<div class="panel panel-default">
 									<div class="panel-heading"> EJECUCIÓN PRESUPUESTAL </div>
-								 
+
 									  	<div id="actproynombre" class="table-responsive">
 											<br>
-											<table id="table-EjecucionPresupuestal" class="table  table-striped jambo_table bulk_action" style="text-align: left;"> 
-											 
-										  </table> 
+											<table id="table-EjecucionPresupuestal" class="table  table-striped jambo_table bulk_action" style="text-align: left;">
+
+										  </table>
 
 									  </div>
 								</div>
 							</div>
-							
+
 							<div class="row" style="margin-left: 10px; margin:10px; ">
 								<div class="panel panel-default">
 									<div class="panel-heading">INFORMACIÓN FINANCIERA</div>
 									  	<div id="metaAcumulada" class="table-responsive">
 											<br>
-											<table id="table-MetaAcumulada" class="table  table-striped jambo_table bulk_action table-responsive" style="text-align: left;" width="120%"> 
-											 
-											 </table> 
+											<table id="table-MetaAcumulada" class="table  table-striped jambo_table bulk_action table-responsive" style="text-align: left;" width="120%">
+
+											 </table>
 									    </div>
 								</div>
 							</div>
@@ -93,29 +93,29 @@
 							<div class="row" style="margin-left: 10px; margin:10px; ">
 				                <div class="panel panel-default">
 								 <div class="panel-heading">GRÁFICO ESTADÍSTICO DE INFORMACIÓN FINANCIERA</div>
-				                        
+
 										<div id="GrafmetaAcumulada" class="table-responsive">
 											<br>
-											<table id="tableGraf" class="table  table-striped jambo_table bulk_action table-responsive" style="text-align: left;"> 
+											<table id="tableGraf" class="table  table-striped jambo_table bulk_action table-responsive" style="text-align: left;">
 											 	 <div id="MetaPimPiaPorCadaAño"></div>
-										  </table> 
+										  </table>
 									    </div>
-				                       
+
 				                </div>
 					        </div>
-							
+
 
 					        <div class="row" style="margin-left: 10px; margin:10px; ">
 				                <div class="panel panel-default">
 								 <div class="panel-heading">GRÁFICO DE AVANCE DE INFORMACIÓN FINANCIERA</div>
-				                        
+
 										<div id="Grafinformacionfinanciera" class="table-responsive">
 											<br>
-											<table id="tableGrafinfFinanciera" class="table  table-striped jambo_table bulk_action table-responsive" style="text-align: left;"> 
+											<table id="tableGrafinfFinanciera" class="table  table-striped jambo_table bulk_action table-responsive" style="text-align: left;">
 											 	 <div id="AvanceInfFinanciera"></div>
-										  </table> 
+										  </table>
 									    </div>
-				                       
+
 				                </div>
 					        </div>
 
@@ -149,24 +149,24 @@ $("#BtnAcatualizar").on( "click", function()
 		data:{CodigoUnico:codigounico},
 		success: function(data)
 			{
-		        
+
 			}
 
 		});
 
 
 	});
-	
+
 $("#EjecucionAnual").hide();
 $("#CodigoUnico").on( "click", function()
 	{
 		$("#EjecucionAnual").show(2000);
-		$("#pimdevengadopia").css({"height":"350"}); 
-		$("#pimdevengadopialineasAnual").css({"height":"420"}); 
+		$("#pimdevengadopia").css({"height":"350"});
+		$("#pimdevengadopialineasAnual").css({"height":"420"});
 		$("#actproynombre").show(2000);
 		$("#metaAcumulada").show(2000);
-		$("#MetaPimPiaPorCadaAño").css({"height":"420"}); 
-		$("#AvanceInfFinanciera").css({"height":"420"}); 
+		$("#MetaPimPiaPorCadaAño").css({"height":"420"});
+		$("#AvanceInfFinanciera").css({"height":"420"});
 
 		var codigounico=$("#BuscarPip").val();
 		$.ajax({
@@ -191,14 +191,14 @@ $("#CodigoUnico").on( "click", function()
 		success: function(data)
 			{
 		        //console.log(data);
-		        var ejecucionPresupuestal=JSON.parse(data); 
+		        var ejecucionPresupuestal=JSON.parse(data);
 		        var html;
 				html+="<thead><tr><th>AÑO EJECUCIÓN</th><th style='text-align:right'>COSTO ACTUAL</th><th style='text-align:right'>COSTO DE EXPEDIENTE</th><th style='text-align:right'>COSTO DE VIABILIDAD</th><th style='text-align:right'>COSTO DE EXP AÑO ANTERIOR</th></tr></thead>"
 				$.each( ejecucionPresupuestal, function( key, value ) {
-				  html +="<tbody> <tr><td><button type='button' class='editar btn btn-success btn-xs' onclick='detalleAnalitico("+value.ano_eje+","+codigounico+");'>"+value.ano_eje+"<i class='ace-icon bigger-120'></i></button><button type='button' class='clasificador btn btn-primary btn-xs' onclick='detalleClasificadorPip("+value.ano_eje+","+codigounico+");'>clasif.<i class='ace-icon bigger-120'></i></button></td><td style='text-align:right'> S/. "+(value.costo_actual)+"</td><td style='text-align:right'>S/. "+value.costo_expediente+"</td><td style='text-align:right'>S/. "+value.costo_viabilidad+"</td><td style='text-align:right'>S/. "+value.ejecucion_ano_anterior+"</td></tr>";      
+				  html +="<tbody> <tr><td><button type='button' class='editar btn btn-success btn-xs' onclick='detalleAnalitico("+value.ano_eje+","+codigounico+");'>"+value.ano_eje+"<i class='ace-icon bigger-120'></i></button><button type='button' class='clasificador btn btn-primary btn-xs' onclick='detalleClasificadorPip("+value.ano_eje+","+codigounico+");'>clasif.<i class='ace-icon bigger-120'></i></button></td><td style='text-align:right'> S/. "+(value.costo_actual)+"</td><td style='text-align:right'>S/. "+value.costo_expediente+"</td><td style='text-align:right'>S/. "+value.costo_viabilidad+"</td><td style='text-align:right'>S/. "+value.ejecucion_ano_anterior+"</td></tr>";
 						html +="</tbody>";
 				});
-				
+
 				$("#table-EjecucionPresupuestal").html(html);
 			}
 
@@ -212,16 +212,16 @@ $("#CodigoUnico").on( "click", function()
 			{
 		    	//console.log(data);
 
-		    	var meta1=JSON.parse(data); 
+		    	var meta1=JSON.parse(data);
 		        var html;
 				html+="<thead><tr><th>Año Ejec</th><th>Meta</th><th></th><th></th><th style='text-align:right'>Pia</th><th style='text-align:right'>Pim</th><th style='text-align:right'>Pim Acum.</th><th style='text-align:right'>Ejecución</th><th style='text-align:right'>Compromiso</th><th style='text-align:right'>Monto Certificado</th><th style='text-align:right'>Devengado</th><th style='text-align:right'>Girado</th><th style='text-align:right'>Pagado</th><th style='text-align:right'>Avan Fin.</th><th style='text-align:right'>Monto comprometido</th><th style='text-align:right'>Monto precertificado</th></tr></thead>"
 				$.each( meta1, function( key, value ) {
                    	html +="<tr>";
                               html +="<th  colspan='16'>"+value.nombre_finalidad+"</th></tr> <tr>";
-				 	html +="<tbody> <tr><th style='width:5%;'><button type='button' class='editar btn btn-success btn-xs' onclick='detalladoMensualizado("+value.ano_eje+","+parseInt(value.meta)+");'>"+parseInt(value.ano_eje)+" <i class='ace-icon'></i></button></th><th style='width:15%;'><button type='button' class='editar btn btn-primary btn-xs' onclick='detalladoMensualizadoFuenteFinan("+value.ano_eje+","+parseInt(value.meta)+");'>"+parseInt(value.meta)+"<i class='ace-icon bigger-120'></i></button></th><th style='width:10%;'><button type='button' class='editar btn btn-success btn-xs' onclick='detalladoMensualizadoConceptoClasificador("+value.ano_eje+","+parseInt(value.meta)+");'>Orden <i class='ace-icon'></i></button></th><th style='width:10%;'> <button type='button' class='editar btn btn-success btn-xs' onclick='detallePedidoCompraMeta("+value.ano_eje+","+parseInt(value.meta)+");'>Pedido <i class='ace-icon'></i></button>  </th><th style='text-align:right; width:10%;'>S/. "+value.pia+"</th><th style='text-align:right; width:10%;'>S/. "+value.pim+"</th><th style='text-align:right; width:10%;'>S/. "+value.pim_acumulado+"</th><th style='text-align:right; width:5%;'>S/. "+value.ejecucion+"</th><th style='text-align:right; width:10%;'>S/. "+value.compromiso+"</th><th style='text-align:right; width:10%;'>S/. "+value.monto_certificado+"</th><th style='text-align:right; width:10%;'>S/. "+value.devengado+"</th><th style='text-align:right; width:5%;'>S/. "+value.girado+"</th><th style='text-align:right; width:10%;'>S/. "+value.pagado+"</th><th style='text-align:right; width:10%;'>"+value.avance_financiero+'%'+"</th><th style='text-align:right; width:10%;'>S/. "+value.monto_comprometido_anual+"</th><th style='text-align:right; width:10%;'>S/. "+value.monto_precertificado+"</th></tr>";      
+				 	html +="<tbody> <tr><th style='width:5%;'><button type='button' class='editar btn btn-success btn-xs' onclick='detalladoMensualizado("+value.ano_eje+","+parseInt(value.meta)+");'>"+parseInt(value.ano_eje)+" <i class='ace-icon'></i></button></th><th style='width:15%;'><button type='button' class='editar btn btn-primary btn-xs' onclick='detalladoMensualizadoFuenteFinan("+value.ano_eje+","+parseInt(value.meta)+");'>"+parseInt(value.meta)+"<i class='ace-icon bigger-120'></i></button></th><th style='width:10%;'><button type='button' class='editar btn btn-success btn-xs' onclick='detalladoMensualizadoConceptoClasificador("+value.ano_eje+","+parseInt(value.meta)+");'>Orden <i class='ace-icon'></i></button></th><th style='width:10%;'> <button type='button' class='editar btn btn-success btn-xs' onclick='detallePedidoCompraMeta("+value.ano_eje+","+parseInt(value.meta)+");'>Pedido <i class='ace-icon'></i></button>  </th><th style='text-align:right; width:10%;'>S/. "+value.pia+"</th><th style='text-align:right; width:10%;'>S/. "+value.pim+"</th><th style='text-align:right; width:10%;'>S/. "+value.pim_acumulado+"</th><th style='text-align:right; width:5%;'>S/. "+value.ejecucion+"</th><th style='text-align:right; width:10%;'>S/. "+value.compromiso+"</th><th style='text-align:right; width:10%;'>S/. "+value.monto_certificado+"</th><th style='text-align:right; width:10%;'>S/. "+value.devengado+"</th><th style='text-align:right; width:5%;'>S/. "+value.girado+"</th><th style='text-align:right; width:10%;'>S/. "+value.pagado+"</th><th style='text-align:right; width:10%;'>"+value.avance_financiero+'%'+"</th><th style='text-align:right; width:10%;'>S/. "+value.monto_comprometido_anual+"</th><th style='text-align:right; width:10%;'>S/. "+value.monto_precertificado+"</th></tr>";
 						html +="</tbody>";
 				});
-				
+
 				$("#table-MetaAcumulada").html(html);
 			}
 
@@ -229,17 +229,17 @@ $("#CodigoUnico").on( "click", function()
 
 		$.ajax({
 				"url":base_url+"index.php/PrincipalReportes/GrafEstInfFinanciera",
-				type:"GET", 
+				type:"GET",
 				data:{codigounico:codigounico},
 				cache:false,
 				success:function(resp)
 				{
 				//alert(resp);
 						var pip=JSON.parse(resp);
-				
+
 						var dom = document.getElementById("MetaPimPiaPorCadaAño");
 						var myChart = echarts.init(dom);
-				
+
 						var app = {};
 						option = null;
 							var posList = [
@@ -378,7 +378,7 @@ $("#CodigoUnico").on( "click", function()
 						            type: 'bar',
 						            label: labelOption,
 						            data: pip[2]
-						        } 
+						        }
 						    ]
 						};
 
@@ -387,10 +387,10 @@ $("#CodigoUnico").on( "click", function()
 						}
 					}
 				});
-			
+
 		$.ajax({
 				"url":base_url+"index.php/PrincipalReportes/BuscadorPipPorCodigoReporte",
-				type:"GET", 
+				type:"GET",
 				data:{codigounico:codigounico},
 				cache:false,
 				success:function(resp)
@@ -542,7 +542,7 @@ $("#CodigoUnico").on( "click", function()
 						            type: 'bar',
 						            label: labelOption,
 						            data: [cantidadpipprovincias.devengado_acumulado]
-						        }   
+						        }
 						    ]
 						};
 						if (option && typeof option === "object") {
@@ -550,15 +550,15 @@ $("#CodigoUnico").on( "click", function()
 						}
 					}
 				});
-	
+
 		$.ajax({
 				"url":base_url+"index.php/PrincipalReportes/GrafAvanceFinanciero",
-				type:"GET", 
+				type:"GET",
 				data:{codigounico:codigounico},
 				cache:false,
 				success:function(resp)
 				{
-					var pip=JSON.parse(resp);	
+					var pip=JSON.parse(resp);
 					var dom = document.getElementById("AvanceInfFinanciera");
 					var myChart = echarts.init(dom);
 					var app = {};
@@ -634,13 +634,13 @@ $("#CodigoUnico").on( "click", function()
 						if (option && typeof option === "object") {
 						    myChart.setOption(option, true);
 							}
-						
+
 							}
 						});
-	
+
 			$.ajax({
 				"url":base_url+"index.php/PrincipalReportes/ReporteDevengadoPiaPimPorPipGraficos",
-				type:"GET", 
+				type:"GET",
 				data:{codigounico:codigounico},
 				cache:false,
 				success:function(resp)
@@ -805,12 +805,12 @@ $("#CodigoUnico").on( "click", function()
 						            type: 'bar',
 						            label: labelOption,
 						            data: [devengadoPiaGraficos.compromiso_acumulado]
-						        }    
+						        }
 						    ]
 						};
 						if (option && typeof option === "object") {
 						    myChart.setOption(option, true);
-						}					
+						}
 				}
 
 			});
@@ -820,12 +820,12 @@ $("#CodigoUnico").on( "click", function()
 
 	function detalleAnalitico(anio,codigounico)
 	{
-		paginaAjaxDialogo(null, 'Analítico del Avance Financiero del Proyecto por año',{anio: anio,codigounico:codigounico}, base_url+'index.php/PrincipalReportes/DetalleAnalitico', 'GET', null, null, false, true);	
+		paginaAjaxDialogo(null, 'Analítico del Avance Financiero del Proyecto por año',{anio: anio,codigounico:codigounico}, base_url+'index.php/PrincipalReportes/DetalleAnalitico', 'GET', null, null, false, true);
 	}
 
 	function detalleClasificadorPip(anio,codigounico)
 	{
-		paginaAjaxDialogo(null, 'Detalle de Clasificador por PIP',{anio: anio,codigounico:codigounico}, base_url+'index.php/PrincipalReportes/DetalleClasificador', 'GET', null, null, false, true);	
+		paginaAjaxDialogo(null, 'Detalle de Clasificador por PIP',{anio: anio,codigounico:codigounico}, base_url+'index.php/PrincipalReportes/DetalleClasificador', 'GET', null, null, false, true);
 	}
 
 	function detalladoMensualizado(anio,meta)
@@ -834,25 +834,25 @@ $("#CodigoUnico").on( "click", function()
 	}
 	function detalladoMensualizadoFuenteFinan(anio,meta)
 	{
-		paginaAjaxDialogo(null, 'Ver Detalle',{ anio: anio, meta:meta}, base_url+'index.php/PrincipalReportes/DetalleMensualizadoFuenteFinan', 'GET', null, null, false, true);	
+		paginaAjaxDialogo(null, 'Ver Detalle',{ anio: anio, meta:meta}, base_url+'index.php/PrincipalReportes/DetalleMensualizadoFuenteFinan', 'GET', null, null, false, true);
 	}
 
     function siafActualizador() {
     	var codigounico=$("#BuscarPip").val();
-    	var urll="http://200.37.200.182:8080/importador_siaf/index.php/Importacion/inicio/"+codigounico;
+    	var urll="http://192.168.1.200:8080/Importacion/inicio/"+codigounico;
         ventana=window.open(urll, 'Nombre de la ventana', 'width=1400,height=800');
     }
 
 	function detalladoMensualizadoConceptoClasificador(anio,meta)
 	{
-		paginaAjaxDialogo(null, 'Ver Concepto',{ anio: anio, meta:meta}, base_url+'index.php/PrincipalReportes/detalladoMensualizadoConceptoClasificador', 'GET', null, null, false, true);	
+		paginaAjaxDialogo(null, 'Ver Concepto',{ anio: anio, meta:meta}, base_url+'index.php/PrincipalReportes/detalladoMensualizadoConceptoClasificador', 'GET', null, null, false, true);
 	}
 	function detallePedidoCompraMeta(anio,meta)
 	{
-		paginaAjaxDialogo(null, 'Orden de Compra por Meta',{ anio: anio, meta:meta}, base_url+'index.php/PrincipalReportes/detallePedidoCompraMeta', 'GET', null, null, false, true);	
+		paginaAjaxDialogo(null, 'Orden de Compra por Meta',{ anio: anio, meta:meta}, base_url+'index.php/PrincipalReportes/detallePedidoCompraMeta', 'GET', null, null, false, true);
 	}
 
 </script>
 
-    
+
 
