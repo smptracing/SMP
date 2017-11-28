@@ -88,14 +88,12 @@ function compara(json, menuUsuarioId) {
     if (json == menuUsuarioId[i]) {
       bool = true;
     }
+    console.log(menuUsuarioId[i]);
   }
   return bool;
 }
 
 var menuUsuarioId = [], menuUsuarioHome = [];
-
-var id_persona = <?php if(isset($arrayUsuario->id_persona)) $arrayUsuario->id_persona; ?>
-console.log("hi "+id_persona);
 
 <?php if(isset($arrayUsuario->id_persona)) {?>
 $.getJSON(base_url +"index.php/Login/recuperarMenu/"+<?php echo $arrayUsuario->id_persona ?>, function(json) {
