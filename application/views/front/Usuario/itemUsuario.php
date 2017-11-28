@@ -84,7 +84,6 @@
 <script>
 function compara(json, menuUsuarioId) {
   var bool = false;
-  //console.log(menuUsuarioId);
   for (var i = 0; i < menuUsuarioId.length; i++) {
     if (json == menuUsuarioId[i]) {
       bool = true;
@@ -95,7 +94,11 @@ function compara(json, menuUsuarioId) {
 
 var menuUsuarioId = [], menuUsuarioHome = [];
 
-$.getJSON(base_url +"index.php/Login/recuperarMenu/"+<?php echo $arrayUsuario->id_persona; ?>, function(json) {
+var id_persona = <?php if(isset($arrayUsuario->id_persona)) $arrayUsuario->id_persona; ?>
+console.log("hi "+id_persona);
+
+<?php if(isset($arrayUsuario->id_persona)) {?>
+$.getJSON(base_url +"index.php/Login/recuperarMenu/"+<?php echo $arrayUsuario->id_persona ?>, function(json) {
   $.each(json,function(i){
     if(json[i]['id_padre_home']==22) {
       menuUsuarioId.push(json[i].id_submenu);
@@ -105,6 +108,7 @@ $.getJSON(base_url +"index.php/Login/recuperarMenu/"+<?php echo $arrayUsuario->i
     }
   });
 });
+<?php } ?>
 
 $.getJSON(base_url+"index.php/Login/recuperarMenu/0",function(json) {
   var json2 = [];
@@ -135,6 +139,7 @@ $.getJSON(base_url+"index.php/Login/recuperarMenu/0",function(json) {
             }
           );
         }
+
     });
 
         $("#treeview").kendoTreeView({
@@ -144,9 +149,7 @@ $.getJSON(base_url+"index.php/Login/recuperarMenu/0",function(json) {
 
             check: onCheck,
 
-            dataSource: [{
-                id: 1, text: "Inicio", expanded: true, spriteCssClass: "rootfolder", items: json2
-            }]
+            dataSource: json2
         });
 
 });
