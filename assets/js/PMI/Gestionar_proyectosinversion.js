@@ -166,56 +166,61 @@ $(document).on("ready" ,function()
 
       });
 //listar operacion y mantenimiento de un proyecto
- var listar_pip_OperMant=function(id_pi)
-                {
-                    var table=$("#Table_OperacionMantenimiento").DataTable({
-                      "processing": true,
-                      "serverSide":false,
-                       destroy:true,
-                         "ajax":{
-                                     url:base_url+"index.php/bancoproyectos/Get_OperacionMantenimiento",
-                                     type:"POST",
-                                     data :{id_pi:id_pi}
-                                    },
-                                "columns":[
-                                    {"data":"id_operacion_mantenimiento_pi","visible": false},
-                                    {"data":"monto_operacion"},
-                                    {"data":"responsable_operacion"},
-                                    {"data":"monto_mantenimiento"},
-                                    {"data":"responsable_mantenimiento"},
-                                    {"data":"fecha_registro"},
-                                    {"data":"id_operacion_mantenimiento_pi",render:function(data,type,row){
-                                        return "<button type='button'  data-toggle='tooltip'  class='editar btn btn-danger btn-xs' data-toggle='modal' onclick=eliminarOperacionMantenimiento("+data+",this)><i class='ace-icon fa fa-trash-o bigger-120'></i></button>";
-                                    }}
-                                    //{"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaupdateEstadoFE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
-                                ],
-                               "language":idioma_espanol
-                    });
-                }
-//eliminar op y mant
-//
+var listar_pip_OperMant=function(id_pi)
+{
+    var table=$("#Table_OperacionMantenimiento").DataTable({
+        "processing": true,
+        "serverSide":false,
+        destroy:true,
+        "ajax":{
+            url:base_url+"index.php/bancoproyectos/Get_OperacionMantenimiento",
+            type:"POST",
+            data :{id_pi:id_pi}
+        },
+            "columns":[
+                {"data":"id_operacion_mantenimiento_pi","visible": false},
+                {"data":"monto_operacion"},
+                {"data":"responsable_operacion"},
+                {"data":"monto_mantenimiento"},
+                {"data":"responsable_mantenimiento"},
+                {"data":"fecha_registro"},
+                {"data":"id_operacion_mantenimiento_pi",render:function(data,type,row){
+                    return "<button type='button'  data-toggle='tooltip'  class='editar btn btn-danger btn-xs' data-toggle='modal' onclick=eliminarOperacionMantenimiento("+data+",this)><i class='ace-icon fa fa-trash-o bigger-120'></i></button>";
+                }}
+            ],
+           "language":idioma_espanol
+    });
+}
+
 var eliminarOperacionMantenimiento=function(id_operacion_mantenimiento_pi,element)
 {
-    if(!confirm('Se esta seguro de eliminar. ¿Realmente desea proseguir con la operación?'))
-    {
-      return;
-    }
+    swal({
+        title: "¿Realmente desea eliminar este registro?",
+        text: "",
+        type: "warning",
+        showCancelButton: true,
+        cancelButtonText:"CANCELAR" ,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "SI,ELIMINAR",
+        closeOnConfirm: false
+    },
+    function(){
+        paginaAjaxJSON({ "id_operacion_mantenimiento_pi" : id_operacion_mantenimiento_pi }, base_url+'index.php/bancoproyectos/eliminarOperacionMantenimiento', 'POST', null, function(objectJSON)
+        {
+          objectJSON=JSON.parse(objectJSON);
 
-    paginaAjaxJSON({ "id_operacion_mantenimiento_pi" : id_operacion_mantenimiento_pi }, base_url+'index.php/bancoproyectos/eliminarOperacionMantenimiento', 'POST', null, function(objectJSON)
-    {
-      objectJSON=JSON.parse(objectJSON);
+          swal(
+          {
+            title: '',
+            text: objectJSON.mensaje,
+            type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
+          },
+          function(){});
 
-      swal(
-      {
-        title: '',
-        text: objectJSON.mensaje,
-        type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
-      },
-      function(){});
+          $(element).parent().parent().remove();
 
-      $(element).parent().parent().remove();
-
-    }, false, true);
+        }, false, true);
+    });    
 
 }
 //

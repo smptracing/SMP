@@ -134,7 +134,7 @@ li
 								<br>
 								<div class="col-md-6 col-sm-2 col-xs-12">
 									<button  class="btn btn-success" onclick="guardarDetalleAnalisisPresupuestal();">Guardar</button>
-									<button  class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+									<button  class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 								</div>	
 							</div>
 						</div>

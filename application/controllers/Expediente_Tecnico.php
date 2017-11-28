@@ -921,6 +921,20 @@ class Expediente_Tecnico extends CI_Controller
 		}
 
 	}
+	public function CalcularNumeroMeses()
+	{
+		$fechaInicio = $this->input->post('txtFecha1');
+		$fechaFin = $this->input->post('txtFecha2');
+		$ts1 = strtotime($fechaInicio);
+		$ts2 = strtotime($fechaFin);
+		$year1 = date('Y', $ts1);
+		$year2 = date('Y', $ts2);
+		$month1 = date('m', $ts1);
+		$month2 = date('m', $ts2);
+		$numerodemeses = (($year2 - $year1) * 12) + ($month2 - $month1);
+		echo json_encode(['numerodemeses' => $numerodemeses]); exit;
+
+	}
 	public function ListarPartida($id_et)
 	{
 		$listaPartida = $this->Model_ET_Expediente_Tecnico->listarPartidaporEt($id_et);

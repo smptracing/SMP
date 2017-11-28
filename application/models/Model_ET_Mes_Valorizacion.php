@@ -42,4 +42,10 @@ class Model_ET_Mes_Valorizacion extends CI_Model
 
 		return $data->result()[0]->sumatoriaPrecio;
 	}
+	function sumCantidadPorIdDetallePartida($idDetallePartida)
+	{
+		$data=$this->db->query("select sum(cantidad) as sumatoriaCantidad from ET_MES_VALORIZACION where id_detalle_partida=$idDetallePartida");
+
+		return $data->result()[0]->sumatoriaCantidad;
+	}
 }
