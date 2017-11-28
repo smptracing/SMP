@@ -165,7 +165,7 @@ function siafActualizadorCertificado()
     params += ', height='+screen.height;
     params += ', top=0, left=10'
     params += ', fullscreen=no';
-	var urll="http://200.37.200.182:8080/importador_siaf/index.php/ImporSeguimientoCertificado/inicio/"+anio;
+	var urll="http://192.168.1.200:8080/ImporSeguimientoCertificado/inicio/"+anio;
     ventana=window.open(urll,"",params);
 }
 

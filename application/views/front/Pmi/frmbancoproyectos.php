@@ -70,251 +70,226 @@
 <!-- /. INICIO VENTANA REGISTRAR PROYECTOS DE INVERSIÓN-->
 <div class="modal fade" id="VentanaRegistraPIP" role="dialog">
     <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-          Registrar proyectos de inversión </h4>
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Registrar proyectos de inversión </h4>
         </div>
         <div class="modal-body">
-         <div class="row">
-                    <div class="col-xs-12">
-                                        <!-- PAGE CONTENT BEGINS -->
-              <form class="form-horizontal " id="form-AddProyectosInversion"   action="<?php echo base_url(); ?>bancoproyectos/AddProyectos" method="POST" onSubmit="return false;" >
-
-                                 <div class="row">
-                                      <div class="col-md-4 form-group" >
-
-                                               <label for="name">Estado.<span class="required"></span>
-                                                </label>
-                                                 <select   id="cbxEstCicInv_" name="cbxEstCicInv_" class="form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Estado..." >
-                                                </select>
-                                    </div>
-
-                                      <div class="col-md-4">
-                                        <label id="textcodigoIdMensaje" style="color: #0431B4; margin-top: 15px;">El Sistema Generara su Código<span class="required"></span></label>
-
-                                        <div class="col-md-9 col-sm-6 col-xs-12 form-group" id="divCodigoIdea">
-                                            <label for="name">Codigo Único (Codigo SIAF)<span class="required">*</span>
-                                            </label>
-
-                                                  <input id="txtCodigoUnico" name="txtCodigoUnico"  class="form-control col-md-7 col-xs-5" placeholder="Codigo Unico" type="text">
-
-                                             </div>
-                                      </div>
-                                      <div class="col-md-4">
-
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <label  for="name">Tipo inversion<span class="required">*</span>
-                                        </label>
-                                           <!-- <select id="cbxTipoInv" name="cbxTipoInv" class="selectpicker">
-                                            </select>-->
-                                             <select id="cbx" name="cbx" class="selectpicker">
-                                                    <option selected value="1">PIP</option>
-                                              </select>
-                                         </div>
-                                      </div>
-                                       <!-- <div class="col-md-4">
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                             <label  for="textbox"><span class="required">Ciclo Inversión</span>
-                                              </label>
-                                            <select id="cbxEstCicInv" name="cbxEstCicInv" class="selectpicker"  title="Elija Ciclo de Inversión" required="required">
-                                            </select>
-                                            </div>
-                                      </div>-->
-
-                                    </div>
-
-                                 <div class="row">
-                                      <div class="col-md-12 form-group">
-
-                                        <label class="control-label col-md-1 col-sm-12 col-xs-12" for="name">Inversión<span class="required"></span>
-                                        </label>
-                                         <div class="col-md-12 col-sm-12 col-xs-12">
-                                          <input id="txtNombrePip" name="txtNombrePip" class="form-control col-md-12 col-xs-5" placeholder="Nombre Inversion" type="text">
-                                        </div>
-                                      </div>
-                                 </div>
-                                 <div class="row">
-                                      <div class="col-md-4 form-group">
-                                            <div class="col-md-11 col-sm-11 col-xs-12">
-                                             <label  for="textbox"><span class="required">Fecha Registro</span>
-                                              </label>
-                                            <input type="date" id="fecha_registro" name="fecha_registro" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2"  type="text">
-                                            </div>
-                                      </div>
-                                      <div class="col-md-4">
-                                            <div style="display:true;" class="ct_fechaViabilidad col-md-11 col-sm-11 col-xs-12">
-                                             <label  for="textbox"><span >Fecha Viabilidad</span>
-                                              </label>
-                                            <input type="date" id="fecha_viabilidad" name="fecha_viabilidad" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" type="text">
-                                            </div>
-                                      </div>
-                                 </div>
-
-                                 <hr>
-                               <div class="row">
-                                      <div class="col-md-4 form-group">
-
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <label  for="name">Naturaleza.<span class="required">*</span>
-                                        </label>
-                                            <select id="cbxNatI" name="cbxNatI" class="selectpicker"  title="Elija Naturaleza">
-                                            </select>
-                                         </div>
-                                      </div>
-                                      <div class="col-md-4 form-group">
-
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                             <label  for="textbox"><span class="required">Nivel de Gobierno</span>
-                                        </label>
-                                            <select id="cbxNivelGob" name="cbxNivelGob" class="selectpicker"  title="Elija nivel de gobierno">
-                                            </select>
-                                            </div>
-                                      </div>
-                                       <div class="col-md-4 form-group">
-
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                               <label  for="textbox"><span class="required">Unidad Ejecutora</span>
-                                                </label>
-                                                <select id="cbxUnidadEjecutora"  name="cbxUnidadEjecutora" class="selectpicker"   title="Elija Unidad Ejecutora">
-                                                </select>
-                                            </div>
-                                      </div>
-                              </div>
-
-
-
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="col-md-6 col-sm-6 col-xs-12  form-group">
-                                        <label for="name" style="text-align:left">Funcion<span class="required">*</span></label>
-                                        <select id="cbxFuncion" name="cbxFuncion" class="selectpicker" title="Elija función"></select>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="col-md-6 col-sm-6 col-xs-12  form-group">
-                                        <label  for="textbox"><span class="required">Division</span></label>
-                                        <select id="cbxDivFunc" name="cbxDivFunc" class="selectpicker" title="Elija división" disabled="disabled"></select>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="col-md-6 col-sm-6 col-xs-12  form-group">
-                                        <label for="textbox"><span class="required">Grupo</span></label>
-                                        <select id="cbxGrupoFunc" name="cbxGrupoFunc" class="selectpicker"  title="Elija grupo" disabled="disabled"></select>
-                                    </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <form class="form-horizontal " id="form-AddProyectosInversion"   action="<?php echo base_url(); ?>bancoproyectos/AddProyectos" method="POST" onSubmit="return false;" >
+                        <div class="row">
+                            <div class="col-md-4 form-group" >
+                                <label for="name">Estado.<span class="required"></span></label>
+                                <select   id="cbxEstCicInv_" name="cbxEstCicInv_" class="form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Estado..." >
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label id="textcodigoIdMensaje" style="color: #0431B4; margin-top: 15px;">El Sistema Generara su Código<span class="required"></span></label>
+                                <div class="col-md-9 col-sm-6 col-xs-12 form-group" id="divCodigoIdea">
+                                    <label for="name">Codigo Único (Codigo SIAF)<span class="required">*</span></label>
+                                    <input id="txtCodigoUnico" name="txtCodigoUnico"  class="form-control col-md-7 col-xs-5" placeholder="Codigo Unico" type="text">
                                 </div>
                             </div>
+                            <div class="col-md-4">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <label  for="name">Tipo inversion<span class="required">*</span></label>
+                                    <select id="cbx" name="cbx" class="selectpicker">
+                                        <option selected value="1">PIP</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
 
-                                  <hr>
-                                   <div class="row">
-                                      <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <label class="control-label col-md-1 col-sm-12 col-xs-12" for="name">Inversión<span class="required"></span></label>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <input id="txtNombrePip" name="txtNombrePip" class="form-control col-md-12 col-xs-5" placeholder="Nombre Inversion" type="text">
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-md-4 form-group">
+                        <div class="col-md-11 col-sm-11 col-xs-12">
+                        <label  for="textbox"><span class="required">Fecha Registro</span>
+                        </label>
+                        <input type="date" id="fecha_registro" name="fecha_registro" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2"  type="text">
+                        </div>
+                        </div>
+                        <div class="col-md-4">
+                        <div style="display:true;" class="ct_fechaViabilidad col-md-11 col-sm-11 col-xs-12">
+                        <label  for="textbox"><span >Fecha Viabilidad</span>
+                        </label>
+                        <input type="date" id="fecha_viabilidad" name="fecha_viabilidad" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" type="text">
+                        </div>
+                        </div>
+                        </div>
 
-                                            <div class="col-md-11 col-sm-6 col-xs-12  form-group">
-                                            <label  for="name">Costo de Inversión<span class="required">*</span>
-                                        </label>
-                                            <input type="text" id="txtCostoPip" name="txtCostoPip" class="form-control col-md-7 col-xs-5"  value="0.00" placeholder="0.00" autocomplete="off" />
-                                         </div>
-                                      </div>
-                                       <div class="col-md-4">
-                                           <div class="col-md-11 col-sm-6 col-xs-12  form-group">
-                                             <label for="textbox"><span class="required">Número de beneficiarios</span>
-                                             </label>
-                                              <input id="txt_beneficiarios" name="txt_beneficiarios" class="form-control col-md-7 col-xs-7" value="0" data-validate-length-range="20" data-validate-words="2" placeholder="Número de beneficiarios"  type="number">
-                                            </div>
-                                      </div>
-                                      <div class="col-md-4">
+                        <hr>
+                        <div class="row">
+                        <div class="col-md-4 form-group">
 
-                                            <div class="col-md-6 col-sm-6 col-xs-12  form-group">
-                                            <label  for="name">Fuente Finan.<span class="required">*</span>
-                                            </label>
-                                            <select id="cbxFuenteFinanc" name="cbxFuenteFinanc" class="selectpicker" title="Elija fuente de financiamiento">
-                                            </select>
-                                         </div>
-                                      </div>
-                              </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <label  for="name">Naturaleza.<span class="required">*</span>
+                        </label>
+                        <select id="cbxNatI" name="cbxNatI" class="selectpicker"  title="Elija Naturaleza">
+                        </select>
+                        </div>
+                        </div>
+                        <div class="col-md-4 form-group">
 
-                                  <div class="row">
-                                      <div class="col-md-4">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <label  for="textbox"><span class="required">Nivel de Gobierno</span>
+                        </label>
+                        <select id="cbxNivelGob" name="cbxNivelGob" class="selectpicker"  title="Elija nivel de gobierno">
+                        </select>
+                        </div>
+                        </div>
+                        <div class="col-md-4 form-group">
 
-                                            <div class="col-md-6 col-sm-6 col-xs-12  form-group">
-                                             <label for="textbox"><span class="required">Rubro Ejecucion</span>
-                                             </label>
-                                              <select id="cbxRubro" name="cbxRubro" class="selectpicker"  title="Elija Rubro">
-                                              </select>
-                                            </div>
-                                      </div>
-                                       <div class="col-md-4">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <label  for="textbox"><span class="required">Unidad Ejecutora</span>
+                        </label>
+                        <select id="cbxUnidadEjecutora"  name="cbxUnidadEjecutora" class="selectpicker"   title="Elija Unidad Ejecutora">
+                        </select>
+                        </div>
+                        </div>
+                        </div>
 
-                                            <div class="col-md-6 col-sm-6 col-xs-12  form-group">
-                                               <label  for="textbox"><span class="required">Modalidad</span>
-                                                </label>
-                                                 <select id="cbxModalidadEjec" name="cbxModalidadEjec" class="selectpicker"   title="Elija Modalidad de Ejecucion">
-                                                </select>
-                                            </div>
-                                      </div>
-                                       <div class="col-md-4">
-                                            <div class="col-md-6 col-sm-6 col-xs-12  form-group">
-                                                <label  for="textbox"><span class="required">Tipologia de Inversion</span></label>
-                                                <select id="cbxTipologiaInv" name="cbxTipologiaInv" class="selectpicker" title="Elija Tipología de Inversión"></select>
-                                            </div>
-                                      </div>
-                              </div>
-                               <div class="row">
-                                    <div class="col-md-4">
-                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                            <label  for="name">Programa<span class="required">*</span>
-                                            </label>
-                                              <select id="cbxProgramaPres" name="cbxProgramaPres" class="selectpicker"  title="Elija Programa presupuestal">
-                                            </select>
-                                         </div>
-                                      </div>
-                                      <div class="col-md-4">
-                                            <div class="col-md-6 col-sm-6 col-xs-12  form-group">
-                                            <label  for="name">Unidad Formuladora<span class="required">*</span>
-                                            </label>
-                                              <select id="lista_unid_form" name="lista_unid_form" class="selectpicker"  title="Elija Unidad Formuladora">
-                                            </select>
-                                         </div>
-                                      </div>
-                                       <div class="col-md-4">
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <label  for="name">Estado<span class="required">*</span>
-                                            </label>
-                                            <select id="cbx_estado" name="cbx_estado" class="selectpicker">
-                                              <option value="1">Activo</option>
-                                              <option value="0">Inactivo</option>
-                                            </select>
-                                         </div>
-                                      </div>
-                              </div>
 
-                    <div class="ln_solid"></div>
-                      <div class="form-group">
+
+                        <div class="row">
+                        <div class="col-md-4">
+                        <div class="col-md-6 col-sm-6 col-xs-12  form-group">
+                        <label for="name" style="text-align:left">Funcion<span class="required">*</span></label>
+                        <select id="cbxFuncion" name="cbxFuncion" class="selectpicker" title="Elija función"></select>
+                        </div>
+                        </div>
+                        <div class="col-md-4">
+                        <div class="col-md-6 col-sm-6 col-xs-12  form-group">
+                        <label  for="textbox"><span class="required">Division</span></label>
+                        <select id="cbxDivFunc" name="cbxDivFunc" class="selectpicker" title="Elija división" disabled="disabled"></select>
+                        </div>
+                        </div>
+                        <div class="col-md-4">
+                        <div class="col-md-6 col-sm-6 col-xs-12  form-group">
+                        <label for="textbox"><span class="required">Grupo</span></label>
+                        <select id="cbxGrupoFunc" name="cbxGrupoFunc" class="selectpicker"  title="Elija grupo" disabled="disabled"></select>
+                        </div>
+                        </div>
+                        </div>
+
+                        <hr>
+                        <div class="row">
+                        <div class="col-md-4">
+
+                        <div class="col-md-11 col-sm-6 col-xs-12  form-group">
+                        <label  for="name">Costo de Inversión<span class="required">*</span>
+                        </label>
+                        <input type="text" id="txtCostoPip" name="txtCostoPip" class="form-control col-md-7 col-xs-5"  value="0.00" placeholder="0.00" autocomplete="off" />
+                        </div>
+                        </div>
+                        <div class="col-md-4">
+                        <div class="col-md-11 col-sm-6 col-xs-12  form-group">
+                        <label for="textbox"><span class="required">Número de beneficiarios</span>
+                        </label>
+                        <input id="txt_beneficiarios" name="txt_beneficiarios" class="form-control col-md-7 col-xs-7" value="0" data-validate-length-range="20" data-validate-words="2" placeholder="Número de beneficiarios"  type="number">
+                        </div>
+                        </div>
+                        <div class="col-md-4">
+
+                        <div class="col-md-6 col-sm-6 col-xs-12  form-group">
+                        <label  for="name">Fuente Finan.<span class="required">*</span>
+                        </label>
+                        <select id="cbxFuenteFinanc" name="cbxFuenteFinanc" class="selectpicker" title="Elija fuente de financiamiento">
+                        </select>
+                        </div>
+                        </div>
+                        </div>
+
+                        <div class="row">
+                        <div class="col-md-4">
+
+                        <div class="col-md-6 col-sm-6 col-xs-12  form-group">
+                        <label for="textbox"><span class="required">Rubro Ejecucion</span>
+                        </label>
+                        <select id="cbxRubro" name="cbxRubro" class="selectpicker"  title="Elija Rubro">
+                        </select>
+                        </div>
+                        </div>
+                        <div class="col-md-4">
+
+                        <div class="col-md-6 col-sm-6 col-xs-12  form-group">
+                        <label  for="textbox"><span class="required">Modalidad</span>
+                        </label>
+                         <select id="cbxModalidadEjec" name="cbxModalidadEjec" class="selectpicker"   title="Elija Modalidad de Ejecucion">
+                        </select>
+                        </div>
+                        </div>
+                        <div class="col-md-4">
+                        <div class="col-md-6 col-sm-6 col-xs-12  form-group">
+                        <label  for="textbox"><span class="required">Tipologia de Inversion</span></label>
+                        <select id="cbxTipologiaInv" name="cbxTipologiaInv" class="selectpicker" title="Elija Tipología de Inversión"></select>
+                        </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-md-4">
+                        <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                        <label  for="name">Programa<span class="required">*</span>
+                        </label>
+                        <select id="cbxProgramaPres" name="cbxProgramaPres" class="selectpicker"  title="Elija Programa presupuestal">
+                        </select>
+                        </div>
+                        </div>
+                        <div class="col-md-4">
+                        <div class="col-md-6 col-sm-6 col-xs-12  form-group">
+                        <label  for="name">Unidad Formuladora<span class="required">*</span>
+                        </label>
+                        <select id="lista_unid_form" name="lista_unid_form" class="selectpicker"  title="Elija Unidad Formuladora">
+                        </select>
+                        </div>
+                        </div>
+                        <div class="col-md-4">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <label  for="name">Estado<span class="required">*</span>
+                        </label>
+                        <select id="cbx_estado" name="cbx_estado" class="selectpicker">
+                        <option value="1">Activo</option>
+                        <option value="0">Inactivo</option>
+                        </select>
+                        </div>
+                        </div>
+                        </div>
+
+                        <div class="ln_solid"></div>
+                        <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
                         <center>
-                          <button type='button' id="sendSave"  class="btn btn-success">
-                            <span class="glyphicon glyphicon-floppy-disk"></span>
-                            Guardar...
-                          </button>
-                           <button  class="btn btn-danger"  type="button" data-dismiss="modal">
+                        <button type='button' id="sendSave"  class="btn btn-success">
+                        <span class="glyphicon glyphicon-floppy-disk"></span>
+                        Guardar...
+                        </button>
+                        <button  class="btn btn-danger"  type="button" data-dismiss="modal">
 
-                             <span class="glyphicon glyphicon-remove"></span>
-                            Cancelar
-                          </button>
-                          </center>
+                        <span class="glyphicon glyphicon-remove"></span>
+                        Cancelar
+                        </button>
+                        </center>
                         </div>
-                      </div>
-                    </form>
+                        </div>
+                        </form>
                         </div><!-- /.span -->
-                 </div><!-- /.row -->
-        </div>
-        <div class="modal-footer">
+                        </div><!-- /.row -->
+                        </div>
+                        <div class="modal-footer">
 
-        </div>
-      </div>
-    </div>
-</div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
 <!-- /.FIN VENTANA REGISTRAR PROYECTOS DE INVERSION-->
 
 
