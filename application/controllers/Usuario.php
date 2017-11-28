@@ -3,38 +3,46 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Usuario extends CI_Controller {
 
-public function __construct(){
-		parent::__construct();
+	public function __construct()
+	{
+			parent::__construct();
 		$this->load->model('Model_Usuario');
 		$this->load->model('Model_Personal');
 
 	}
-	function ListarTipoUsuarioMenu($tipo){
-        // if ($this->input->is_ajax_request()) {
-            $datos = $this->Model_Usuario->ListarTipoUsuarioMenu($tipo);
-            echo json_encode($datos);
-        // } else {
-            // show_404();
-        // }
+	function ListarTipoUsuarioMenu($tipo)
+	{
+
+        $datos = $this->Model_Usuario->ListarTipoUsuarioMenu($tipo);
+        echo json_encode($datos);
 	}
-	function ListarTipoUsuario(){
-        if ($this->input->is_ajax_request()) {
+	function ListarTipoUsuario()
+	{
+        if ($this->input->is_ajax_request()) 
+        {
             $datos = $this->Model_Usuario->ListarTipoUsuario();
             echo json_encode($datos);
-        } else {
+        } 
+        else 
+        {
             show_404();
         }
 	}
-	function GetUsuario(){
-        if ($this->input->is_ajax_request()) {
+	function GetUsuario()
+	{
+        if ($this->input->is_ajax_request())
+        {
             $datos = $this->Model_Usuario->GetUsuario();
             echo json_encode($datos);
-        } else {
+        } 
+        else 
+        {
             show_404();
         }
 	}
 
-	function AddUsuario(){
+	function AddUsuario()
+	{
 	    if ($this->input->is_ajax_request())
 	    {
 	      $id_persona=$this->input->post("comboPersona");
@@ -53,7 +61,8 @@ public function __construct(){
 	      show_404();
 	     }
  	}
- 	function editUsuario(){
+ 	function editUsuario()
+ 	{
 	    if ($this->input->is_ajax_request())
 	    {
 	      $id_persona=$this->input->post("comboPersona");
@@ -84,23 +93,29 @@ public function __construct(){
 	}
 
 
-function _load_layout($template)
+	function _load_layout($template)
     {
       $this->load->view('layout/USUARIO/header');
       $this->load->view($template);
       $this->load->view('layout/USUARIO/footer');
     }
-    function itemUsuario(){
-    	//$data['id_persona']=$this->input->get('id_persona');
-    	if($this->input->get('id_persona')!=''){
+    function itemUsuario()
+    {
+    	if($this->input->get('id_persona')!='')
+    	{
     		$data['arrayUsuario']=$this->Model_Usuario->getUsuario($this->input->get('id_persona'))[0];
 			$this->load->view('Front/Usuario/itemUsuario',$data);
     	}
-    	else{
+    	else
+    	{
 			$this->load->view('Front/Usuario/itemUsuario');
     	}
 
 	}
+	function accesodenegado()
+	{
 
+		$this->load->view('Front/Usuario/acceso_denegado');
+	}
 
 }

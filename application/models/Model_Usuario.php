@@ -93,5 +93,11 @@ class Model_Usuario extends CI_Model
               return false;
              }
         }
+            /*Metodo para acceso */
+        function listaUrlAsignado($idPersona)
+        {
+            $data = $this->db->query("select * from MENU m inner join ACCESS_MENU am on m.id_menu = am.id_menu where am.id_persona = $idPersona");
+            return $data->result();
+        }
 
 }
