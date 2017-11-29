@@ -100,4 +100,33 @@ class Model_Usuario extends CI_Model
             return $data->result();
         }
 
+        function listaUsuario()
+        {
+            $this->db->select('*');
+            $this->db->from('USUARIO');
+            $this->db->join('USUARIO_TIPO', 'USUARIO.id_usuario_tipo = USUARIO_TIPO.id_usuario_tipo');
+            $this->db->join('PERSONA', 'USUARIO.id_persona = PERSONA.id_persona');
+            return $this->db->get()->result();
+        }
+        function listarModulos()
+        {
+            $data = $this->db->query("select * from MENU where id_padre_home IS NULL");
+            return $data->result();
+        }
+        function listarSubModulos($idPadre)
+        {
+            $data = $this->db->query("select * from MENU where id_padre_home=$idPadre");
+            return $data->result();
+        }
+        function listaPersona()
+        {
+            $data = $this->db->query("select * from PERSONA");
+            return $data->result();
+        }
+        function listaTipo()
+        {
+            $data = $this->db->query("select * from USUARIO_TIPO");
+            return $data->result();
+        }
+
 }

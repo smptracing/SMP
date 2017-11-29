@@ -42,6 +42,7 @@ if (!function_exists('autentificar'))
         {
             if($CI->session->userdata('idPersona')) 
             {
+                echo $CI->output->get_output();
                 if(autorizar($url))
                 {
                     //echo "autorizado";
