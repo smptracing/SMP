@@ -22,7 +22,7 @@
     <!-- iCheck -->
     <link href="<?php echo base_url(); ?>assets/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
        <!-- jQuery -->
-  
+
     <script src="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
     <!-- bootstrap-progressbar -->
@@ -93,7 +93,7 @@
         }
     </style>
     <!-- Custom Theme Style -->
-    
+
   </head>
 
   <body class="nav-md">
@@ -110,58 +110,50 @@
                     <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
-              <ul class="nav side-menu">
-                <li><a href="<?php echo site_url('PrincipalFyE/PrincipalFyED'); ?>"> <i class="fa fa-home"></i> INICIO<span class=""></span></a>
-                  </li>
-                </ul>
+              <ul class='nav side-menu'>
+                <li><a href="<?php echo site_url('PrincipalFyE/PrincipalFyED'); ?>"> <i class="fa fa-home"></i> INICIO<span class=""></span></a></li>
+                <?php
+                  $openTag=false;
+                  $arrayMenu=$this->session->userdata('menuUsuario');
+                  for($i=0;$i<count($arrayMenu);$i++){
+                  if($arrayMenu[$i]['id_modulo']=='FE'){
+                    if($i>0 and ($arrayMenu[$i]['id_menu']!=$arrayMenu[$i-1]['id_menu'])){
+                      if($openTag==true){
+                        echo '</ul></li>';
+                        $openTag=false;
+                      }
 
-                <ul class="nav side-menu">
-                     <li><a><i class="fa fa-gears"></i>Estudio de Preinversion en el GORE<span class="fa fa-chevron-down"></span></a>
+                      ?>
+                      <?php
+                    }
+                    if($arrayMenu[$i]['url']==''){
 
-                    <ul class="nav child_menu">
-                      <li><a href="<?php echo site_url('Estudio_Inversion/'); ?>">Estudio de Preinversion de PIP</a></li>
-                      <li><a href="<?php echo site_url('NoPipProgramados/nopipformulacion'); ?>">Estudio de Preinversion  de No PIP</a></li>
-                    </ul>
-                  </li>
-
-                </ul>
-
-        
-                <ul class="nav side-menu">
-
-                    <ul class="nav side-menu">
-                      <li><a><i class="fa fa-database"></i> Principal <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                          <li><a href="<?php echo site_url('FEformulacion/Feformulacion/all'); ?>">Formulación</a></li>
-                          <li><a href="<?php echo site_url('EvaluacionFE/FeEvaluacion/all'); ?>">Evaluación</a></li>
-                          <!--<li><a href="<?php echo site_url('FEformulacion/FeAprobado/all'); ?>">Aprobado</a></li>--> 
-                          <li><a href="<?php echo site_url('FEformulacion/FeViabilizado/all'); ?>">Viabilizado</a></li>
-
-                        </ul>
-                        <ul class="nav child_menu">
-                            <!--<li><a href="<?php echo site_url('FEformulacion/Feformulacion/all'); ?>">Formulación y evaluación</a></li>-->
-                               <!--<li><a href="<?php echo site_url('FEformulacion/FeEstudioInversion'); ?>">Subgerente</a></li>-->
-                            <!--<li><a href="<?php echo site_url('Estudio_Inversion/EstudioCoordinadorFunc'); ?>">Coordinador</a></li>-->
-                            <!--<li><a href="<?php echo site_url('FEformulacion/UFEstudioInversionFormulacionFormulador'); ?>">Formulador </a></li>-->
-                        </ul>
-                        </li>
-                      </ul>
-                </ul>
-                <ul class="nav side-menu">
-                     <li><a><i class="fa fa-gears"></i> Mantenimiento<span class="fa fa-chevron-down"></span></a>
-
-                    <ul class="nav child_menu">
-                      <li><a href="<?php echo site_url('FEdocumento/ver_Documentos'); ?>">Documentos</a></li>
-                      <li><a href="<?php echo site_url('FEsituacion/ver_FEsistuacion'); ?>">Situaciones</a></li>
-                      <li><a href="<?php echo site_url('FEestado/ver_EstadoFE'); ?>">Estado</a></li>
-                      <li><a href="<?php echo site_url('DenominacionFE/'); ?>">Denominacion</a></li>
-                      <li><a href="<?php echo site_url('EtapasFE/'); ?>">Etapas</a></li>
-                      <li><a href="<?php echo site_url('Tipo_Gasto_FE/'); ?>">Tipo Gasto</a></li>
-                      <li><a href="<?php echo site_url('Modulo_FE/'); ?>">Módulo</a></li>
-                    </ul>
-                  </li>
-
-                </ul>
+                      if($openTag==false){
+                        ?>
+                        <li>
+                          <a> <i class="<?php echo $arrayMenu[$i]['class_icono']; ?>"></i> <?php echo $arrayMenu[$i]['nombre']; ?> <span class="fa fa-chevron-down"></span></a>
+                          <ul class="nav child_menu">
+                             <li><a href="<?php echo site_url($arrayMenu[$i]["urlSubmenu"]); ?>"><?php echo $arrayMenu[$i]["nombreSubmenu"] ?></a></li>
+                        <?php
+                        $openTag=true;
+                      }
+                      else{
+                        ?>
+                        <li><a href="<?php echo site_url($arrayMenu[$i]["urlSubmenu"]); ?>"><?php echo $arrayMenu[$i]["nombreSubmenu"] ?></a></li>
+                        <?php
+                      }
+                    }
+                    else{
+                      ?>
+                      <li>
+                        <a href="<?php echo site_url($arrayMenu[$i]["url"]); ?>"> <i class="<?php echo $arrayMenu[$i]['class_icono']; ?>"></i> <?php echo $arrayMenu[$i]['nombre']; ?></a>
+                      </li>
+                      <?php
+                    }
+                  }
+                  }
+                ?>
+              </ul>
               </div>
             </div>
             <!-- /sidebar menu -->

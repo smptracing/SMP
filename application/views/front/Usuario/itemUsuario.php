@@ -130,28 +130,71 @@ $.getJSON(base_url+"index.php/Login/recuperarMenu/0",function(json)
 {
     var json2 = [];
     var subMenu = [];
-    var count = 0;
-    var item = [];
+    var pmi = [], fe = [], e =[], sm = [], p = [];
 
     $.each(json,function(i)
     {
-        if(json[i]['id_padre_home']==22)
+        if(json[i]['id_modulo']=='PMI')
         {
-            item.push(
+            pmi.push(
             {
                 id:  json[i]['id_submenu'],
                 text: json[i]['id_modulo']+": "+json[i]['nombre']+": "+ json[i]['nombreSubmenu'],
                 spriteCssClass: "html",
                 checked: compara(json[i]['id_submenu'])
             });
-            count++;
         }
-        subMenu[0]=item;
+        if(json[i]['id_modulo']=='FE')
+        {
+            fe.push(
+            {
+                id:  json[i]['id_submenu'],
+                text: json[i]['id_modulo']+": "+json[i]['nombre']+": "+ json[i]['nombreSubmenu'],
+                spriteCssClass: "html",
+                checked: compara(json[i]['id_submenu'])
+            });
+        }
+        if(json[i]['id_modulo']=='E')
+        {
+            e.push(
+            {
+                id:  json[i]['id_submenu'],
+                text: json[i]['id_modulo']+": "+json[i]['nombre']+": "+ json[i]['nombreSubmenu'],
+                spriteCssClass: "html",
+                checked: compara(json[i]['id_submenu'])
+            });
+        }
+        if(json[i]['id_modulo']=='SM')
+        {
+            sm.push(
+            {
+                id:  json[i]['id_submenu'],
+                text: json[i]['id_modulo']+": "+json[i]['nombre']+": "+ json[i]['nombreSubmenu'],
+                spriteCssClass: "html",
+                checked: compara(json[i]['id_submenu'])
+            });
+        }
+        if(json[i]['id_modulo']=='P')
+        {
+            p.push(
+            {
+                id:  json[i]['id_submenu'],
+                text: json[i]['id_modulo']+": "+json[i]['nombre']+": "+ json[i]['nombreSubmenu'],
+                spriteCssClass: "html",
+                checked: compara(json[i]['id_submenu'])
+            });
+        }
+        subMenu[0]=pmi;
+        subMenu[1]=fe;
+        subMenu[2]=e;
+        subMenu[4]=sm;
+        subMenu[6]=p;
         if (json[i]['id_modulo'] == "HOME")
         {
             json2.push(
             {
-                id: json[i]['id_submenu'], text: json[i]['nombreSubmenu'],
+                id: json[i]['id_submenu'],
+                text: json[i]['nombreSubmenu'],
                 expanded: false,
                 spriteCssClass: "folder",
                 items: subMenu[i],

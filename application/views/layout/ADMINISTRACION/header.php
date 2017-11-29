@@ -47,7 +47,7 @@
     var base_url = '<?php echo base_url(); ?>';
     </script>
     <!-- Custom Theme Style -->
-    
+
     <style>
         #navtittlemin
         {
@@ -62,7 +62,7 @@
         {
           display: inline-block;
         }
-         
+
       }
       body
         {
@@ -112,26 +112,50 @@
               <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
-              <ul class="nav side-menu">
-                  <li><a href="<?php echo site_url('PrincipalParametros/parametros'); ?>"> <i class="fa fa-home"></i> INICIO<span class=""></span></a>
-                  </li>
-                </ul>
-                <h3></i>Configuración</h3>
-                <ul class="nav side-menu">
-                        <li><a href="<?php echo site_url('Sector/'); ?>"><i class="fa fa-puzzle-piece"></i>Sector</a></li>
-                          <li><a href="<?php echo site_url('CadenaFuncional/'); ?>"> <i class="fa fa-code-fork"></i>Cadena Funcional</a></li>
-                        <li><a href="<?php echo site_url('TipologiaInversion/'); ?>"><i class="fa fa-cogs"></i>  Tipologia de inversion</a></li>
-                         <li><a href="<?php echo site_url('InformacionPresupuestal/'); ?>"><i class="fa fa-calculator"></i>  Informacion Presupuestal</a></li>
-                         <li><a href="<?php echo site_url('EstadoCicloInversion/'); ?>"><i class="fa fa-spinner"></i>  Ciclo de inversion</a></li>
-                        <li><a href="<?php echo site_url('UnidadEjecutora/'); ?>"><i class="fa fa-tasks"></i>  Unidad Ejecutora</a></li>
-                        <li><a href="<?php echo site_url('Gerencia/'); ?>"><i class="fa fa-qrcode"></i>  Gerencias</a></li>
-                        <li><a href="<?php echo site_url('Personal/'); ?>"><i class="fa fa-group"></i>  Personal</a></li>
+                <ul class='nav side-menu'>
+  								<li><a href="<?php echo site_url('PrincipalParametros/parametros'); ?>"> <i class="fa fa-home"></i> INICIO<span class=""></span></a></li>
+  								<?php
+  									$openTag=false;
+  									$arrayMenu=$this->session->userdata('menuUsuario');
+  									for($i=0;$i<count($arrayMenu);$i++){
+  									if($arrayMenu[$i]['id_modulo']=='P'){
+  										if($i>0 and ($arrayMenu[$i]['id_menu']!=$arrayMenu[$i-1]['id_menu'])){
+  											if($openTag==true){
+  												echo '</ul></li>';
+  												$openTag=false;
+  											}
 
-                        <li><a href="<?php echo site_url('Unidad_Medida/'); ?>"><i class="fa fa-group"></i>  Unida de Medida</a></li>
-                        <li><a href="<?php echo site_url('MetaPresupuestal/'); ?>"><i class="fa fa-sliders"></i> Meta Presupuestal </a></li>
+  											?>
+  											<?php
+  										}
+  										if($arrayMenu[$i]['url']==''){
 
-
-                </ul>
+  											if($openTag==false){
+  												?>
+  												<li>
+  													<a> <i class="<?php echo $arrayMenu[$i]['class_icono']; ?>"></i> <?php echo $arrayMenu[$i]['nombre']; ?> <span class="fa fa-chevron-down"></span></a>
+  													<ul class="nav child_menu">
+  														 <li><a href="<?php echo site_url($arrayMenu[$i]["urlSubmenu"]); ?>"><?php echo $arrayMenu[$i]["nombreSubmenu"] ?></a></li>
+  												<?php
+  												$openTag=true;
+  											}
+  											else{
+  												?>
+  												<li><a href="<?php echo site_url($arrayMenu[$i]["urlSubmenu"]); ?>"><?php echo $arrayMenu[$i]["nombreSubmenu"] ?></a></li>
+  												<?php
+  											}
+  										}
+  										else{
+  											?>
+  											<li>
+  												<a href="<?php echo site_url($arrayMenu[$i]["url"]); ?>"> <i class="<?php echo $arrayMenu[$i]['class_icono']; ?>"></i> <?php echo $arrayMenu[$i]['nombre']; ?></a>
+  											</li>
+  											<?php
+  										}
+  									}
+  									}
+  								?>
+  							</ul>
               </div>
             </div>
             <!-- /sidebar menu -->

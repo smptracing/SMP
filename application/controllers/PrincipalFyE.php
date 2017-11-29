@@ -79,7 +79,7 @@ class PrincipalFyE extends CI_Controller
             show_404();
         }
     }
-    
+
     public function getDatosEstudiosInversionNotificacion()
     {
         if ($this->input->is_ajax_request()) {
@@ -90,6 +90,6 @@ class PrincipalFyE extends CI_Controller
         }
     }
 
- 
+
 
 }

@@ -13,7 +13,7 @@
 	<link href="<?php echo base_url(); ?>assets/Template/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/Template/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
 
-	
+
 	<link href="<?php echo base_url(); ?>assets/Template/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/css/bootstrap-select.css">
 	<link href="<?php echo base_url(); ?>assets/Template/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
@@ -22,17 +22,17 @@
 	<link href="<?php echo base_url(); ?>assets/Template/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/Template/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/Template/vendors/animate.css/animate.min.css" rel="stylesheet">
-	
+
     <link href="<?php echo base_url(); ?>assets/Template/vendors/dropzone/dist/min/dropzone.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/Template/build/css/custom.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/formValidation.min.css">
     <link href="<?php echo base_url(); ?>assets/css/jquery.growl.css" rel="stylesheet">
 
-	<script src="<?php echo base_url(); ?>assets/js/Helper/jsHelper.js"></script>	
+	<script src="<?php echo base_url(); ?>assets/js/Helper/jsHelper.js"></script>
 	<script src="<?php echo base_url(); ?>assets/Template/vendors/jquery/dist/jquery.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/ckeditor/ckeditor.js"></script>
-	
+
 	<style>
 		#navtittlemin
       {
@@ -54,7 +54,7 @@
     }
 	</style>
 
-	
+
 
 	<script>
 		var base_url = '<?php echo base_url(); ?>';
@@ -72,39 +72,50 @@
 					<div class="clearfix"></div>
 					<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
 						<div class="menu_section">
-							<ul class="nav side-menu">
-								<li><a href="<?php echo site_url('PrincipalEjecucion/PrincipalEjec'); ?>"> <i class="fa fa-home"></i> INICIO<span class=""></span></a>
-								</li>
+              <ul class='nav side-menu'>
+                <li><a href="<?php echo site_url('PrincipalEjecucion/PrincipalEjec'); ?>"> <i class="fa fa-home"></i> INICIO<span class=""></span></a></li>
+                <?php
+                  $openTag=false;
+                  $arrayMenu=$this->session->userdata('menuUsuario');
+                  for($i=0;$i<count($arrayMenu);$i++){
+                  if($arrayMenu[$i]['id_modulo']=='E'){
+                    if($i>0 and ($arrayMenu[$i]['id_menu']!=$arrayMenu[$i-1]['id_menu'])){
+                      if($openTag==true){
+                        echo '</ul></li>';
+                        $openTag=false;
+                      }
 
-							</ul>
+                      ?>
+                      <?php
+                    }
+                    if($arrayMenu[$i]['url']==''){
 
-							<h3><span style="font-size: 10px;">Módulo ejecución</span></h3>
-							<ul class="nav side-menu">
-
-								
-								<li><a><i class="fa fa-book"></i> Expediente Técnico<span class="fa fa-chevron-down"></span></a>
-									<ul class="nav child_menu">
-										<li><a href="<?php echo site_url('Expediente_Tecnico/index'); ?>">Elaboración Expediente técnico</a></li>
-										<li><a href="<?php echo site_url('Expediente_Tecnico/monitorCoordinador'); ?>">Monitoreo de ET</a></li>
-									</ul>
-								</li>
-								<li><a><i class="fa fa-play"></i> Ejecución <span class="fa fa-chevron-down"></span></a>
-									<ul class="nav child_menu">
-										<li><a href="<?php echo site_url('Expediente_Tecnico/ejecucion'); ?>">Ejecución del proyecto</a></li>
-									</ul>
-								</li>
-								<li><a><i class="fa fa-cogs"></i> Mantenimiento <span class="fa fa-chevron-down"></span></a>
-									<ul class="nav child_menu">
-										<li><a href="<?php echo site_url('ET_Presupuesto_Ejecucion/index'); ?>">Presupuesto Ejecucion</a></li>
-										<li><a href="<?php echo site_url('ET_Recurso/index'); ?>">Recurso</a></li>
-										<li><a href="<?php echo site_url('ET_Etapa_Ejecucion/index'); ?>">Etapa Ejecución</a></li>
-										<li><a href="<?php echo site_url('ET_Clasificador/index'); ?>">Clasificador</a></li>
-										<li><a href="<?php echo site_url('CronogramaValorizacion/index'); ?>">Cronograma Valoración</a></li>
-										<li><a href="<?php echo site_url('ET_Tipo_Responsable/index'); ?>">Tipo de responsable</a></li>
-										
-									</ul>
-								</li> 
-							</ul>
+                      if($openTag==false){
+                        ?>
+                        <li>
+                          <a> <i class="<?php echo $arrayMenu[$i]['class_icono']; ?>"></i> <?php echo $arrayMenu[$i]['nombre']; ?> <span class="fa fa-chevron-down"></span></a>
+                          <ul class="nav child_menu">
+                             <li><a href="<?php echo site_url($arrayMenu[$i]["urlSubmenu"]); ?>"><?php echo $arrayMenu[$i]["nombreSubmenu"] ?></a></li>
+                        <?php
+                        $openTag=true;
+                      }
+                      else{
+                        ?>
+                        <li><a href="<?php echo site_url($arrayMenu[$i]["urlSubmenu"]); ?>"><?php echo $arrayMenu[$i]["nombreSubmenu"] ?></a></li>
+                        <?php
+                      }
+                    }
+                    else{
+                      ?>
+                      <li>
+                        <a href="<?php echo site_url($arrayMenu[$i]["url"]); ?>"> <i class="<?php echo $arrayMenu[$i]['class_icono']; ?>"></i> <?php echo $arrayMenu[$i]['nombre']; ?></a>
+                      </li>
+                      <?php
+                    }
+                  }
+                  }
+                ?>
+              </ul>
 						</div>
 					</div>
 					<div class="sidebar-footer hidden-small">
