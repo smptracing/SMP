@@ -43,16 +43,17 @@ if (!function_exists('autentificar'))
             if($CI->session->userdata('idPersona')) 
             {
                 echo $CI->output->get_output();
-                if(autorizar($url))
+                /*if(autorizar($url))
                 {
                     //echo "autorizado";
                     echo $CI->output->get_output();
                 }
                 else 
                 {
+                    echo $CI->output->get_output();
                     //echo "no autorizado";
-                    redirect('Usuario/accesodenegado');
-                }
+                    //redirect('Usuario/accesodenegado');
+                }*/
             }
             else
             {

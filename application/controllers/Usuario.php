@@ -88,8 +88,10 @@ class Usuario extends CI_Controller {
 
 	public function index()
 	{
-
-		$this->_load_layout('Front/Usuario/frm_usuario');
+		$listaUsuarios = $this->Model_Usuario->listaUsuario();
+		$this->load->view('layout/USUARIO/header');
+      	$this->load->view('Front/Usuario/frm_usuario',['listaUsuario'=>$listaUsuarios]);
+      	$this->load->view('layout/USUARIO/footer');		
 	}
 
 
@@ -114,8 +116,13 @@ class Usuario extends CI_Controller {
 	}
 	function accesodenegado()
 	{
-
 		$this->load->view('Front/Usuario/acceso_denegado');
+	}
+	function listaUrlAsignado()
+	{
+		$idPersona = $this->input->post('id_persona');
+		$data = $this->Model_Usuario->listaUrlAsignado($idPersona);
+		echo json_encode($data);
 	}
 
 }

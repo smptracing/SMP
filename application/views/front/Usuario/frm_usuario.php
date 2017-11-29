@@ -23,7 +23,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <?php foreach($listaUsuarios as $item){ ?>
+                            <?php foreach($listaUsuario as $item){ ?>
                                 <tr>                                    
                                     <td>
                                         <?= $item->nombres ?> 

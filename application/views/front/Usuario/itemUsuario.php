@@ -1,7 +1,5 @@
 <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2017.3.1026/styles/kendo.common.min.css" />
 <link href="//cdn.kendostatic.com/2013.1.319/styles/kendo.default.min.css" rel="stylesheet" />
-<!--<link href="//cdn.kendostatic.com/2013.1.319/styles/kendo.default.mobile.min.css" rel="stylesheet" />-->
-
 <div class="modal-body">
    <div class="row">
         <div class="col-xs-12">
@@ -19,6 +17,7 @@
                     <label class="col-sm-3 control-label no-padding-right"  for="form-field-1-1">Usuario </label>
                       <div class="col-sm-6">
                         <input type="text" id="txt_usuario" name="txt_usuario" placeholder="Nombre Usuario" class="form-control" autocomplete="off" value='<?php if(isset($arrayUsuario->usuario)) echo $arrayUsuario->usuario; ?>' />
+                        <input type="hidden" id="idPersona" name="idPersona" value='<?php if(isset($arrayUsuario->id_persona)) echo $arrayUsuario->id_persona; ?>' />
                       </div>
                   </div>
                   <div class="form-group">
@@ -82,73 +81,96 @@
 <script src="<?php echo base_url();?>assets/js/usuario/usuario.js"></script>
 
 <script>
-function compara(json, menuUsuarioId) {
-  var bool = false;
-  for (var i = 0; i < menuUsuarioId.length; i++) {
-    if (json == menuUsuarioId[i]) {
-      bool = true;
-    }
-    console.log(menuUsuarioId[i]);
-  }
-  return bool;
-}
 
+var definido = $('#idPersona').val();
+//alert(definido);
 var menuUsuarioId = [], menuUsuarioHome = [];
 
-<?php if(isset($arrayUsuario->id_persona)) {?>
-$.getJSON(base_url +"index.php/Login/recuperarMenu/"+<?php echo $arrayUsuario->id_persona ?>, function(json) {
-  $.each(json,function(i){
-    if(json[i]['id_padre_home']==22) {
-      menuUsuarioId.push(json[i].id_submenu);
+$(function()
+{
+    if(definido!='')
+    {
+        $.ajax(
+        {
+            url: base_url+'index.php/Usuario/listaUrlAsignado',
+            type: 'POST',
+            data:
+            {
+               id_persona : definido
+            },
+            cache: false,
+            async: false
+        }).done(function(objectJSON) 
+        {
+            objectJSON = JSON.parse(objectJSON);
+            menuUsuarioHome.push(objectJSON);
+        }).fail(function()
+        {
+            swal('Error', 'Error no controlado.', 'error');
+        });
     }
-    if(json[i]['id_modulo']=="HOME") {
-      menuUsuarioHome.push(json[i].id_submenu);
-    }
-  });
 });
-<?php } ?>
 
-$.getJSON(base_url+"index.php/Login/recuperarMenu/0",function(json) {
-  var json2 = [];
-  var subMenu = [];
-  var count = 0;
-  var item = [];
 
-    $.each(json,function(i){
-          if(json[i]['id_padre_home']==22) {
-            item.push({ id:  json[i]['id_submenu'],
-              text: json[i]['id_modulo']+": "+json[i]['nombre']+": "+ json[i]['nombreSubmenu'],
-              spriteCssClass: "html",
-              checked: compara(json[i]['id_submenu'],menuUsuarioId)
+function compara(json) 
+{
+    var bool = false;
+    if(menuUsuarioHome.length>0)
+    {
+        for (var i = 0; i < menuUsuarioHome[0].length; i++) 
+        {
+            if (json == menuUsuarioHome[0][i].id_menu) 
+            {
+                bool = true;
+            }
+        }
+    }
+    return bool;
+}
+
+
+$.getJSON(base_url+"index.php/Login/recuperarMenu/0",function(json) 
+{
+    var json2 = [];
+    var subMenu = [];
+    var count = 0;
+    var item = [];
+
+    $.each(json,function(i)
+    {
+        if(json[i]['id_padre_home']==22) 
+        {
+            item.push(
+            {
+                id:  json[i]['id_submenu'],
+                text: json[i]['id_modulo']+": "+json[i]['nombre']+": "+ json[i]['nombreSubmenu'],
+                spriteCssClass: "html",
+                checked: compara(json[i]['id_submenu'])
             });
             count++;
-          }
-
-          subMenu[0]=item;
-
-        if (json[i]['id_modulo'] == "HOME") {
-          json2.push(
+        }
+        subMenu[0]=item;
+        if (json[i]['id_modulo'] == "HOME") 
+        {
+            json2.push(
             {
                 id: json[i]['id_submenu'], text: json[i]['nombreSubmenu'],
                 expanded: false,
                 spriteCssClass: "folder",
                 items: subMenu[i],
-                checked: compara(json[i]['id_submenu'],menuUsuarioHome)
-            }
-          );
+                checked: compara(json[i]['id_submenu'])
+            });
         }
-
     });
-
-        $("#treeview").kendoTreeView({
-            checkboxes: {
-                checkChildren: false
-            },
-
-            check: onCheck,
-
-            dataSource: json2
-        });
+    $("#treeview").kendoTreeView(
+    {
+        checkboxes: 
+        {
+            checkChildren: false
+        },
+        check: onCheck,
+        dataSource: json2
+    });
 
 });
         // function that gathers IDs of checked nodes
