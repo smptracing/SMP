@@ -99,7 +99,7 @@ $(function()
             },
             cache: false,
             async: false
-        }).done(function(objectJSON) 
+        }).done(function(objectJSON)
         {
             objectJSON = JSON.parse(objectJSON);
             menuUsuarioHome.push(objectJSON);
@@ -110,14 +110,14 @@ $(function()
     }
 });
 
-function compara(json) 
+function compara(json)
 {
     var bool = false;
     if(menuUsuarioHome.length>0)
     {
-        for (var i = 0; i < menuUsuarioHome[0].length; i++) 
+        for (var i = 0; i < menuUsuarioHome[0].length; i++)
         {
-            if (json == menuUsuarioHome[0][i].id_menu) 
+            if (json == menuUsuarioHome[0][i].id_menu)
             {
                 bool = true;
             }
@@ -126,7 +126,7 @@ function compara(json)
     return bool;
 }
 
-$.getJSON(base_url+"index.php/Login/recuperarMenu/0",function(json) 
+$.getJSON(base_url+"index.php/Login/recuperarMenu/0",function(json)
 {
     var json2 = [];
     var subMenu = [];
@@ -135,7 +135,7 @@ $.getJSON(base_url+"index.php/Login/recuperarMenu/0",function(json)
 
     $.each(json,function(i)
     {
-        if(json[i]['id_padre_home']==22) 
+        if(json[i]['id_padre_home']==22)
         {
             item.push(
             {
@@ -147,7 +147,7 @@ $.getJSON(base_url+"index.php/Login/recuperarMenu/0",function(json)
             count++;
         }
         subMenu[0]=item;
-        if (json[i]['id_modulo'] == "HOME") 
+        if (json[i]['id_modulo'] == "HOME")
         {
             json2.push(
             {
@@ -161,7 +161,7 @@ $.getJSON(base_url+"index.php/Login/recuperarMenu/0",function(json)
     });
     $("#treeview").kendoTreeView(
     {
-        checkboxes: 
+        checkboxes:
         {
             checkChildren: false
         },
@@ -170,31 +170,31 @@ $.getJSON(base_url+"index.php/Login/recuperarMenu/0",function(json)
     });
 
 });
-function checkedNodeIds(nodes, checkedNodes) 
+function checkedNodeIds(nodes, checkedNodes)
 {
-    for (var i = 0; i < nodes.length; i++) 
+    for (var i = 0; i < nodes.length; i++)
     {
-        if (nodes[i].checked) 
+        if (nodes[i].checked)
         {
             checkedNodes.push(nodes[i].id);
         }
-        if (nodes[i].hasChildren) 
+        if (nodes[i].hasChildren)
         {
             checkedNodeIds(nodes[i].children.view(), checkedNodes);
         }
     }
 }
-function onCheck() 
+function onCheck()
 {
     var checkedNodes = [],
         treeView = $("#treeview").data("kendoTreeView"),
         message;
 
     checkedNodeIds(treeView.dataSource.view(), checkedNodes);
-    if (checkedNodes.length > 0) 
+    if (checkedNodes.length > 0)
     {
         message = checkedNodes.join(",");
-    } else 
+    } else
     {
         message = "No nodes checked.";
     }
@@ -212,7 +212,7 @@ $(function()
         var c=0;
         var dat = $("#result").text();
         var b = dat.split(',').map(Number);
-        for (var i = 0; i < b.length; i++) 
+        for (var i = 0; i < b.length; i++)
         {
             if(c>0)
                     stringMenuUsuario+='-';
@@ -246,7 +246,7 @@ $(function()
             $('#formUsuario').off();
             $('#formUsuario').remove();
             $('#formUsuario').empty();
-            $('#null').modal('hide');
+            $('#modalTemp').modal('hide');
         }
     });
 });
