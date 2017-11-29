@@ -83,7 +83,6 @@
 <script>
 
 var definido = $('#idPersona').val();
-//alert(definido);
 var menuUsuarioId = [], menuUsuarioHome = [];
 
 $(function()
@@ -111,7 +110,6 @@ $(function()
     }
 });
 
-
 function compara(json) 
 {
     var bool = false;
@@ -127,7 +125,6 @@ function compara(json)
     }
     return bool;
 }
-
 
 $.getJSON(base_url+"index.php/Login/recuperarMenu/0",function(json) 
 {
@@ -173,119 +170,131 @@ $.getJSON(base_url+"index.php/Login/recuperarMenu/0",function(json)
     });
 
 });
-        // function that gathers IDs of checked nodes
-        function checkedNodeIds(nodes, checkedNodes) {
-            for (var i = 0; i < nodes.length; i++) {
-                if (nodes[i].checked) {
-                    checkedNodes.push(nodes[i].id);
-                }
-
-                if (nodes[i].hasChildren) {
-                    checkedNodeIds(nodes[i].children.view(), checkedNodes);
-                }
-            }
+function checkedNodeIds(nodes, checkedNodes) 
+{
+    for (var i = 0; i < nodes.length; i++) 
+    {
+        if (nodes[i].checked) 
+        {
+            checkedNodes.push(nodes[i].id);
         }
-        // show checked node IDs on datasource change
-        function onCheck() {
-            var checkedNodes = [],
-                treeView = $("#treeview").data("kendoTreeView"),
-                message;
-
-            checkedNodeIds(treeView.dataSource.view(), checkedNodes);
-            if (checkedNodes.length > 0) {
-                //message = "IDs of checked nodes: " + checkedNodes.join("-");
-                message = checkedNodes.join(",");
-            } else {
-                message = "No nodes checked.";
-            }
-            $("#result").html(message);
+        if (nodes[i].hasChildren) 
+        {
+            checkedNodeIds(nodes[i].children.view(), checkedNodes);
         }
-  </script>
+    }
+}
+function onCheck() 
+{
+    var checkedNodes = [],
+        treeView = $("#treeview").data("kendoTreeView"),
+        message;
+
+    checkedNodeIds(treeView.dataSource.view(), checkedNodes);
+    if (checkedNodes.length > 0) 
+    {
+        message = checkedNodes.join(",");
+    } else 
+    {
+        message = "No nodes checked.";
+    }
+    $("#result").html(message);
+}
+</script>
 
 <script>
-  $(function(){
-      $("#formUsuario").submit(function(event){
+$(function()
+{
+    $("#formUsuario").submit(function(event)
+    {
         event.preventDefault();
         var stringMenuUsuario ='';
         var c=0;
         var dat = $("#result").text();
         var b = dat.split(',').map(Number);
-        //console.log(b[0]);
-
-        for (var i = 0; i < b.length; i++) {
-          if(c>0)
-            stringMenuUsuario+='-';
-          stringMenuUsuario+=b[i];
-          c++;
+        for (var i = 0; i < b.length; i++) 
+        {
+            if(c>0)
+                    stringMenuUsuario+='-';
+            stringMenuUsuario+=b[i];
+            c++;
         }
         $.ajax({
             url:$("#formUsuario").attr("action"),
             type:$(this).attr('method'),
             data:$(this).serialize()+"&cbb_listaMenuDestino="+stringMenuUsuario,
-            success:function(resp){
-              swal("",resp, "success");
-              $('#table-Usuarios').dataTable()._fnAjaxUpdate();
-
-           }
+            success:function(resp)
+            {
+                swal("",resp, "success");
+                window.location.href=base_url+"index.php/Usuario";
+            }
         });
-      });
-
-      $("body").on("click","#sendUsuario",function(e){
-          $('#formUsuario').data('formValidation').validate();
-          if($('#formUsuario').data('formValidation').isValid()==true){
-              $('#formUsuario').submit();
-              $('#formUsuario').each(function(){
-                this.reset();
-              });
-              $('.selectpicker').selectpicker('refresh');
-              $('#formUsuario').data('formValidation').resetForm();
-              $('#formUsuario').off();
-              $('#formUsuario').remove();
-              $('#formUsuario').empty();
-              $('#null').modal('hide');
-          }
-      });
-  });
-	$(document).ready(function(){
-    <?php
-    if(isset($arrayUsuario->id_persona)){
-      ?>
-      $("#formUsuario").attr("action",base_url+"index.php/Usuario/editUsuario");
-      <?php
-    }
-    else{
-      ?>
-      $("#formUsuario").attr("action",base_url+"index.php/Usuario/addUsuario");
-      <?php
-    }
-    ?>
-    $('#formUsuario').formValidation({
-      fields:
-      {
-        comboPersona:{
-          validators:{
-            notEmpty:{
-              message: '<b style="color: red;">El campo "Persona" es requerido.</b>'
-            }
-          }
-        },
-        txt_usuario:{
-          validators:{
-            notEmpty:{
-              message: '<b style="color: red;">El campo "Usuario" es requerido.</b>'
-            }
-          }
-        },
-        cbb_TipoUsuario:{
-          validators:{
-            notEmpty:{
-              message: '<b style="color: red;">El campo "Tipo de usuario" es requerido.</b>'
-            }
-          }
-        },
-      }
     });
-		listaPersonaCombo("<?php if(isset($arrayUsuario->id_persona)) echo $arrayUsuario->id_persona; ?>");
-		listatipoUsuario("<?php if(isset($arrayUsuario->id_usuario_tipo)) echo $arrayUsuario->id_usuario_tipo; ?>");
-	});
+
+    $("body").on("click","#sendUsuario",function(e)
+    {
+        $('#formUsuario').data('formValidation').validate();
+        if($('#formUsuario').data('formValidation').isValid()==true)
+        {
+            $('#formUsuario').submit();
+            $('#formUsuario').each(function()
+            {
+                this.reset();
+            });
+            $('.selectpicker').selectpicker('refresh');
+            $('#formUsuario').data('formValidation').resetForm();
+            $('#formUsuario').off();
+            $('#formUsuario').remove();
+            $('#formUsuario').empty();
+            $('#null').modal('hide');
+        }
+    });
+});
+
+$(document).ready(function()
+{
+    <?php if(isset($arrayUsuario->id_persona)){ ?>
+      $("#formUsuario").attr("action",base_url+"index.php/Usuario/editUsuario");
+    <?php }
+    else { ?>
+      $("#formUsuario").attr("action",base_url+"index.php/Usuario/addUsuario");
+    <?php } ?>
+    $('#formUsuario').formValidation({
+        fields:
+        {
+            comboPersona:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Persona" es requerido.</b>'
+                    }
+                }
+            },
+            txt_usuario:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Usuario" es requerido.</b>'
+                    }
+                }
+            },
+            cbb_TipoUsuario:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                    message: '<b style="color: red;">El campo "Tipo de usuario" es requerido.</b>'
+                }
+            }
+        },
+    }
+});
+listaPersonaCombo("<?php if(isset($arrayUsuario->id_persona)) echo $arrayUsuario->id_persona; ?>");
+listatipoUsuario("<?php if(isset($arrayUsuario->id_usuario_tipo)) echo $arrayUsuario->id_usuario_tipo; ?>");
+});
 </script>
