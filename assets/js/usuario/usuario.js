@@ -1,63 +1,6 @@
 
-$(function(){
-  $("body").on("click","#bt_Der",function(e){
-        $('#cbb_listaMenu option:selected').each(function(){
-            var seleccionado=$(this).val();
-            $('#cbb_listaMenuDestino').append("<option title='"+$(this).text()+"' value='"+$(this).val()+"'>"+$(this).text()+"</option>");
-            $(this).remove();
-        });
-  });
-  $("body").on("click","#bt_Izq",function(e){
-        $('#cbb_listaMenuDestino option:selected').each(function(){
-            var seleccionado=$(this).val();
-            $('#cbb_listaMenu').append("<option title='"+$(this).text()+"' value='"+$(this).val()+"'>"+$(this).text()+"</option>");
-            $(this).remove();
-        });
-  });
-  $("body").on("click","#bt_Der2",function(e){
-        $('#cbb_listaMenu2 option:selected').each(function(){
-            var seleccionado=$(this).val();
-            $('#cbb_listaMenuDestino2').append("<option title='"+$(this).text()+"' value='"+$(this).val()+"'>"+$(this).text()+"</option>");
-            $(this).remove();
-        });
-  });
-  $("body").on("click","#bt_Izq2",function(e){
-        $('#cbb_listaMenuDestino2 option:selected').each(function(){
-            var seleccionado=$(this).val();
-            $('#cbb_listaMenu2').append("<option title='"+$(this).text()+"' value='"+$(this).val()+"'>"+$(this).text()+"</option>");
-            $(this).remove();
-        });
-  });
-});
  $(document).on("ready" ,function(){
                 listarUsuario();
-               /* listaPersonaCombo(15);
-                listatipoUsuario();
-                listaMenuUsuario(15);
-                listaMenu();*/
-
-
-               /* $("#formUsuario").submit(function(event){
-                  event.preventDefault();
-                  var stringMenuUsuario ='';
-                  var c=0;
-                  $("#cbb_listaMenuDestino option").each(function(){
-                      if(c>0)
-                        stringMenuUsuario+='-';
-                      stringMenuUsuario+=$(this).attr('value');
-                      c++;
-                  });
-                  $.ajax({
-                      url:$("#formUsuario").attr("action"),
-                      type:$(this).attr('method'),
-                      data:$(this).serialize()+"&cbb_listaMenuDestino="+stringMenuUsuario,
-                      success:function(resp){
-                        swal("",resp, "success");
-                        $('#table-Usuarios').dataTable()._fnAjaxUpdate();
-                     }
-                  });
-                });*/
-
 
                 $("#form-AddUsuario").submit(function(event)
                 {
@@ -113,8 +56,6 @@ $(function(){
 
                                 ],
                                 "language":idioma_espanol
-
-
                     });
                 }
                var listaPersonaCombo=function(seleccionado)
@@ -162,8 +103,6 @@ $(function(){
                             if(seleccionado=='')
                                 $('select[name=cbb_TipoUsuario]').val(-1);
                             $('.selectpicker').selectpicker('refresh');
-
-
 
                         }
                     });
