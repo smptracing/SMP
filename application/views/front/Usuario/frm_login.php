@@ -83,7 +83,8 @@
                                                 <input type="password" class="form-control"  name="txtPassword" id="txtPassword">
                                             </div>
                                         </div>
-                                        <div class="input-group">
+                                        <!-- CAPTCHA -->
+                                        <!-- <div class="input-group">
                                             <span class="input-group-addon">
                                             </span>
                                             <div class="form-group label-floating">
@@ -93,7 +94,7 @@
                                               data-callback="YourOnSubmitFn">
                                               </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                     <div class="footer text-center">
                                         <button type="submit" class="btn btn-rose btn-simple btn-wd btn-lg">Ingresar</button>
