@@ -499,83 +499,72 @@
 <!-- /.ventana registar Rubro-->
 <div class="modal fade" id="venta_registar_rubro" role="dialog">
     <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-          Rubro PI </h4>
-        </div>
-        <div class="modal-body">
-         <div class="row">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>Rubro del Proyecto de Inversión</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
                     <div class="col-xs-12">
-                                        <!-- PAGE CONTENT BEGINS -->
-            <form class="form-horizontal " id="form_AddRubro"   action="<?php echo base_url(); ?>bancoproyectos/listar_rubro" method="POST" >
-
-                <input id="txt_id_pip_RubroPI" name="txt_id_pip_RubroPI" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
-
-                               <div class="item form-group">
-                                    <div class="col-md-12 col-xs-12 col-sm-12">
-                                        <div class=".col-xs-12 .col-md-12">
-                                            <label for="name">Proyecto:</label>
-                                        </div>
-                                        <textarea class="form-control" rows="2" readonly="readonly" id="nombreProyectoRubro" name="nombreProyectoRubro"></textarea>
-                                        <br>
+                        <form class="form-horizontal " id="form_AddRubro"   action="<?php echo base_url(); ?>bancoproyectos/listar_rubro" method="POST">
+                            <input id="txt_id_pip_RubroPI" name="txt_id_pip_RubroPI" required="required" type="hidden">
+                            <div class="item form-group">
+                                <div class="col-md-12 col-xs-12 col-sm-12">
+                                    <div class=".col-xs-12 .col-md-12">
+                                        <label for="name">Proyecto:</label>
                                     </div>
-                                     <div class="col-md-4">
-
-                                           <label for="name">Rubro.<span class="required"></span>
-                                            </label>
-                                                 <select   id="Cbx_RubroPI" name="Cbx_RubroPI" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Rubro...">
-                                                </select>
+                                    <textarea class="form-control" rows="2" readonly="readonly" id="nombreProyectoRubro" name="nombreProyectoRubro"></textarea>
+                                    <br>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <label for="Cbx_RubroPI" class="control-label">Rubro *</label>
+                                    <div class="form-group">
+                                        <select id="Cbx_RubroPI" name="Cbx_RubroPI" class="selectpicker form-control" data-live-search="true"  title="Buscar Rubro...">                            
+                                        </select>                                        
+                                    </div>                                    
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="name">Fecha <span class="required"></span>
+                                    </label>
+                                    <input type="date" id="dateFechaIniC" name="dateFechaIniC" class="form-control col-md-6 col-xs-5"  required="required" type="text" value="<?php echo date("Y-m-d"); ?>" >
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="name">. <span class="required"></span>
+                                    </label><BR>
+                                    <button id="send" type="submit" class="btn btn-success">
+                                        <span class="glyphicon glyphicon-floppy-saved"></span>Agregar
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="ln_solid"></div>
+                            <div class="x_panel" style="background-color: #EEEEEE;">
+                                <table  id="Table_RubroPI" class="table   table-hover" >
+                                    <thead>
+                                        <tr>
+                                            <th>Rubro</th>
+                                            <th>Fecha</th>
+                                            <th>Opción</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <center>
+                                <div class="form-group">
+                                    <div class="col-md-6 col-md-offset-3">
+                                        <button  class="btn btn-danger" data-dismiss="modal">
+                                        <span class="glyphicon glyphicon-log-out"></span> Cancelar
+                                        </button>
                                     </div>
-                                          <div class="col-md-4">
-                                           <label for="name">Fecha <span class="required"></span>
-                                            </label>
-                                                  <input type="date" id="dateFechaIniC" name="dateFechaIniC" class="form-control col-md-6 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text" value="<?php echo date("Y-m-d"); ?>" >
-                                          </div>
-                                          <div class="col-md-4">
-                                             <label for="name">. <span class="required"></span>
-                                             </label><BR>
-                                             <button id="send" type="submit" class="btn btn-success">
-                                             <span class="glyphicon glyphicon-floppy-saved"></span>Agregar
-                                             </button>
-                                          </div>
-                      </div>
-
-                     <div class="ln_solid"></div>
-                     <div class="x_panel" style="background-color: #EEEEEE;">
-                    <center>
-                    <table  id="Table_RubroPI" class="table   table-hover" >
-                    <thead >
-                       <tr>
-                         <th  ><i class="fa fa-thumb-tack"></i> Rubro</th>
-                         <th  ><i class="fa fa-thumb-tack"></i> Fecha</th>
-                         <th  ><i class="fa fa-thumb-tack"></i> Opción</th>
-                      </tr>
-                    </thead>
-                    </table>
-                    </center>
+                                </div>
+                            </center>
+                        </form>
                     </div>
-                    <center>
-                      <div class="form-group">
-                        <div class="col-md-6 col-md-offset-3">
-
-                           <button  class="btn btn-danger" data-dismiss="modal">
-                             <span class="glyphicon glyphicon-log-out"></span>
-                            Cancelar
-                          </button>
-                        </div>
-                      </div>
-                      </center>
-
-                    </form>
-                        </div><!-- /.span -->
-                 </div><!-- /.row -->
+                </div>
+            </div>
+            <div class="modal-footer">
+            </div>
         </div>
-        <div class="modal-footer">
-
-        </div>
-      </div>
     </div>
 </div>
 <!-- /.fin  ventana registar Rubro-->

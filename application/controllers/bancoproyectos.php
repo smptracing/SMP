@@ -524,19 +524,31 @@ class bancoproyectos extends CI_Controller
     //Agregar RUBRO PI
     public function AddRurboPI()
     {
-        if ($this->input->is_ajax_request()) {
-            $flat               = "C";
-            $id_rubro_pi        = "0";
-            $Cbx_RubroPI        = $this->input->post("Cbx_RubroPI");
-            $txt_id_pip_RubroPI = $this->input->post("txt_id_pip_RubroPI");
-            $dateFechaIniC      = $this->input->post("dateFechaIniC"); //esta campo se esta registrando en la base de datos
-            if ($this->bancoproyectos_modal->AddRurboPI($flat, $id_rubro_pi, $Cbx_RubroPI, $txt_id_pip_RubroPI, $dateFechaIniC) == false) {
+        if ($this->input->is_ajax_request()) 
+        {
+            $c_data['id_rubro'] = $this->input->post("Cbx_RubroPI");
+            $c_data['id_pi']= $this->input->post("txt_id_pip_RubroPI");
+            $c_data['fecha_rubro_pi'] = $this->input->post("dateFechaIniC");
+            $flag = 0;
+            $msg = array();
+            $q1 = $this->bancoproyectos_modal->AgregarRubro($c_data);
+            if($q1>0)
+            {
                 echo "1";
-            } else {
-                echo "2";
             }
+            else
+            {
+                echo "0";
 
-        } else {
+            }
+            //$datos['flag'] = $flag;   
+            //$datos['msg'] = $msg;    
+            //$data['datos'] = $datos;
+            //$this->load->view('front/json/json_view', $data);  
+
+        } 
+        else 
+        {
             show_404();
         }
     }

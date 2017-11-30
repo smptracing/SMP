@@ -42,11 +42,11 @@ $(document).on("ready" ,function()
             {
                 if (resp=='1')
                 {
-                    swal("REGISTRADO","Se regristró correctamente", "success");
+                    swal("Correcto","los datos fueron registrados correctamente", "success");
                 }
-                if (resp=='2')
+                if (resp=='0')
                 {
-                    swal("NO SE REGISTRÓ","NO se regristró ", "error");
+                    swal("Error","Ha ocurrido un error inesperado.", "error");
                 }
                 $('#Table_RubroPI').dataTable()._fnAjaxUpdate();
                 formReset();
