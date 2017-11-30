@@ -9,6 +9,7 @@ class bancoproyectos_modal extends CI_Model
         $this->load->helper('file');
 
 
+        
     }
     public function BuscarProyectoSiaf($CodigoSiaf)
     {
@@ -50,31 +51,18 @@ class bancoproyectos_modal extends CI_Model
         }
     }
     //Add Rubro PI
-    public function AddRurboPI($flat, $id_rubro_pi, $Cbx_RubroPI, $txt_id_pip_RubroPI, $dateFechaIniC)
+    public function AgregarRubro($rubroPi)
     {
-        $this->db->query("execute sp_Gestionar_RubroPI'" . $flat . "','"
-            . $id_rubro_pi . "','"
-            . $Cbx_RubroPI . "','"
-            . $txt_id_pip_RubroPI . "','"
-            . $dateFechaIniC . "'");
-        if ($this->db->affected_rows() > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        $this->db->set($rubroPi);
+        $this->db->insert('RUBRO_PI');
+        return $this->db->affected_rows();
     }
-    //Add Modalidad Ejecución
-    public function AddModalidadEjecPI($flat, $id_modalidad_ejec_pi, $Cbx_ModalidadEjec, $txt_id_pip_ModalidadEjec)
+
+    public function AgregarModalidadEjecucionPip($modalidadPi)
     {
-        $this->db->query("execute sp_Gestionar_ModalidadEjecucionPI'" . $flat . "','"
-            . $id_modalidad_ejec_pi . "','"
-            . $Cbx_ModalidadEjec . "','"
-            . $txt_id_pip_ModalidadEjec . "'");
-        if ($this->db->affected_rows() > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        $this->db->set($modalidadPi);
+        $this->db->insert('MODALIDAD_EJECUCION_PI');
+        return $this->db->affected_rows();
     }
 
     // AGREGAR UN PROYECTO
@@ -88,7 +76,7 @@ class bancoproyectos_modal extends CI_Model
         } 
         else
         {
-           $q = $this->db->query("execute sp_Gestionar_ProyectoInversion
+            $q = $this->db->query("execute sp_Gestionar_ProyectoInversion
                 @Opcion='" . $flat . "',
                 @id_pi='" . $id_pi . "',
                 @id_ue='" . $cbxUnidadEjecutora . "',

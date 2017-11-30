@@ -72,10 +72,6 @@
     <script src="<?php echo base_url(); ?>assets/vendors/butons/buttons.flash.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendors/butons/buttons.html5.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendors/butons/buttons.print.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets/plugins/input-mask/jquery.inputmask.min.js"></script>
-
-
-
     <script src="<?php echo base_url(); ?>assets/js/ubicacion/ubicacion.js"></script><!-- para la ubicacion -->
     <script src="<?php echo base_url(); ?>assets/js/administrador/Sector.js"></script><!-- para mostralos datos de sector entidad y servicios publicos asociados-->
     <script src="<?php echo base_url(); ?>assets/js/administrador/Entidad.js"></script>
