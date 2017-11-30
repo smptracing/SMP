@@ -104,9 +104,9 @@ $(function(){
         contentType: false,
         success:function(resp)
         {
-            swal("",resp, "success");
+            resp = JSON.parse(resp);
+            ((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje, "success") : swal(resp.proceso,resp.mensaje, "error"));
             $('#table-CarteraInv').dataTable()._fnAjaxUpdate();
-
         }
     });
 });
