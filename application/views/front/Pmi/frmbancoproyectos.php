@@ -275,7 +275,7 @@
                         <button  class="btn btn-danger"  type="button" data-dismiss="modal">
 
                         <span class="glyphicon glyphicon-remove"></span>
-                        Cancelar
+                        Cerrar Ventana
                         </button>
                         </center>
                         </div>
@@ -296,118 +296,92 @@
 <!-- /.ventana Asignar  ubicacion geográfica-->
 <div class="modal fade" id="venta_ubicacion_geografica" role="dialog">
     <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-          Ubicación Geográfica </h4>
-        </div>
-        <div class="modal-body">
-         <div class="row">
-                    <div class="col-xs-12">
-                                        <!-- PAGE CONTENT BEGINS -->
-              <form class="form-horizontal " id="form_AddUbigeo"   action="<?php echo base_url(); ?>bancoproyectos/Get_ubigeo_pip" method="POST" >
-
-                <input id="txt_id_pip" name="txt_id_pip" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
-
-               <div class="item form-group">
-                                        <div class=".col-xs-12 .col-md-12">
-                                            <label for="name">Proyecto:</label>
-                                        </div>
-                                        <textarea class="form-control" rows="2" readonly="readonly" id="nombreProyecto" name="nombreProyecto"></textarea>
-                                        <br>
-
-                                    <div class="row">
-                                      <div class="col-md-4">
-
-                                                    <select  class="selectpicker" disabled="disabled">
-                                                       <option value="Apurímac">Apurímac</option>
-                                                    </select>
-                                       </div>
-
-                                        <div class="col-md-4">
-
-                                                  <select  id="cbx_provincia"  name="cbx_provincia" class="selectpicker"  title="Elija provincia(s)"></select>
-                                       </div>
-
-
-                                        <div class="col-md-4">
-
-                                                 <select name="cbx_distrito" id="cbx_distrito" data-live-search="true"  class="selectpicker" title="Elija distrito"></select>
-                                       </div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Ubicación Geográfica </h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" id="form_AddUbigeo" action="<?php echo base_url(); ?>bancoproyectos/Get_ubigeo_pip" method="POST">
+                    <input id="txt_id_pip" name="txt_id_pip" required="required" type="hidden">
+                            <div class="col-xs-12 col-md-12">
+                                <label for="name">Proyecto:</label>
+                            </div>
+                            <textarea class="form-control" rows="2" readonly="readonly" id="nombreProyecto" name="nombreProyecto"></textarea>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <select class="selectpicker form-control" disabled="disabled">
+                                        <option value="Apurímac">Apurímac</option>
+                                        </select>
                                     </div>
-                                    <br>
-                                    <div class="row">
-                                      <div class="col-md-4">
-                                        <input id="txt_latitud" name="txt_latitud"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2" placeholder="Latitud" required="required" type="text">
-                                      </div>
-                                      <div class="col-md-4">
-                                         <input id="txt_longitud" name="txt_longitud"  class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2" placeholder="Longitud" required="required" type="text">
-                                      </div>
-                                      <div class="col-md-4">
-                                          <input type="file" name="ImgUbicacion">
-                                      </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <select  id="cbx_provincia" name="cbx_provincia" class="selectpicker form-control" title="Elija provincia(s)">
+                                        </select>
                                     </div>
-                                    <br>
-                                    <div class="col-md-12 col-xs-12 col-sm-12">
-                                        <div class=".col-xs-12 .col-md-12">
-                                            <label for="name">Mapa:</label>
-                                        </div>
-                                        <div class="modal-body">
-                                          <!-- MAP HOLDER -->
-                                          <div id="gmap"></div>
-                                          <!-- REFERENCES -->
-                                          <!--Lat: <input type="text" id='lat'>
-                                          Lon: <input type="text" id='lon'>-->
-                        								</div>
-
-                                        <br>
-                                        <label for="name"> <span class="required"></span>
-                                         </label>
-                                          <button id="send" type="submit" class="btn btn-success">
-                                          <span class="glyphicon glyphicon-floppy-saved"></span>Agregar
-                                         </button>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <select name="cbx_distrito" id="cbx_distrito" data-live-search="true"  class="selectpicker form-control" title="Elija distrito"></select>
                                     </div>
-
-
-
-                      </div>
-                     <div class="x_panel" style="border: 1px solid #EEEEEE;">
-                    <center>
-                    <table id="TableUbigeoProyecto_x" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%" >
-                    <thead >
-                       <tr>
-                         <th style="width: 20%" ><i class="fa fa-thumb-tack"></i> Provincia</th>
-                         <th style="width: 20%" ><i class="fa fa-thumb-tack"></i> Distrito</th>
-                         <th style="width: 20%" ><i class="fa fa-thumb-tack"></i> Latitud</th>
-                         <th style="width: 20%" ><i class="fa fa-thumb-tack"></i> Longitud</th>
-                         <th style="width: 10%" ><i class="fa fa-thumb-tack"></i> Imagen</th>
-                         <th style="width: 50%" ><i class="fa fa-thumb-tack"></i> </th>
-                      </tr>
-                    </thead>
-                    </table>
-                    </center>
-                    </div>
-                    <center>
-                      <div class="form-group">
-                        <div class="col-md-6 col-md-offset-3">
-
-                           <button  class="btn btn-danger" data-dismiss="modal">
-                             <span class="glyphicon glyphicon-log-out"></span>
-                            Cancelar
-                          </button>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <input id="txt_latitud" name="txt_latitud"  class="form-control" placeholder="Latitud" required="required" type="text">
+                                </div>
+                                <div class="col-md-4">
+                                    <input id="txt_longitud" name="txt_longitud"  class="form-control" placeholder="Longitud" required="required" type="text">
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="file" class="form-control" name="ImgUbicacion">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="col-md-12 col-xs-12 col-sm-12">
+                                <div class=".col-xs-12 .col-md-12">
+                                    <label for="name">Mapa:</label>
+                                </div>
+                                <div class="modal-body">
+                                    <div id="gmap"></div>
+                                </div>
+                                <br>
+                                <button id="send" type="submit" class="btn btn-success">
+                                    <span class="glyphicon glyphicon-floppy-saved"></span>Agregar
+                                </button>
+                            </div>
+                        <div class="x_panel" style="border: 1px solid #EEEEEE;">
+                            <table id="TableUbigeoProyecto_x" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%" >
+                                <thead >
+                                    <tr>
+                                        <th style="width: 20%" >Provincia</th>
+                                        <th style="width: 20%" >Distrito</th>
+                                        <th style="width: 20%" >Latitud</th>
+                                        <th style="width: 20%" >Longitud</th>
+                                        <th style="width: 10%" >Imagen</th>
+                                        <th style="width: 50%" ></th>
+                                    </tr>
+                                </thead>
+                            </table>
                         </div>
-                      </div>
-                      </center>
-
-                    </form>
-                        </div><!-- /.span -->
-                 </div><!-- /.row -->
+                        <center>
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-3">
+                                    <button  class="btn btn-danger" data-dismiss="modal">
+                                    <span class="glyphicon glyphicon-log-out"></span>
+                                    Cerrar Ventana
+                                    </button>
+                                </div>
+                            </div>
+                        </center>
+                </form>
+            </div>
+            <div class="modal-footer"></div>
         </div>
-        <div class="modal-footer">
-
-        </div>
-      </div>
     </div>
 </div>
 <!-- /.fin de  ventana ubicacion geografica-->
@@ -479,7 +453,7 @@
 
                            <button  class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-log-out"></span>
-                            Cancelar
+                            Cerrar ventana
                           </button>
                         </div>
                       </div>
@@ -524,12 +498,12 @@
                                         </select>                                        
                                     </div>                                    
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 col-sm-6 col-xs-12">
                                     <label for="name">Fecha <span class="required"></span>
                                     </label>
                                     <input type="date" id="dateFechaIniC" name="dateFechaIniC" class="form-control col-md-6 col-xs-5"  required="required" type="text" value="<?php echo date("Y-m-d"); ?>" >
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 col-sm-6 col-xs-12">
                                     <label for="name">. <span class="required"></span>
                                     </label><BR>
                                     <button id="send" type="submit" class="btn btn-success">
@@ -553,7 +527,7 @@
                                 <div class="form-group">
                                     <div class="col-md-6 col-md-offset-3">
                                         <button  class="btn btn-danger" data-dismiss="modal">
-                                        <span class="glyphicon glyphicon-log-out"></span> Cancelar
+                                        <span class="glyphicon glyphicon-log-out"></span> Cerrar Ventana
                                         </button>
                                     </div>
                                 </div>
@@ -632,7 +606,7 @@
 
                            <button  class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-log-out"></span>
-                            Cancelar
+                            Cerrar Ventana
                           </button>
                         </div>
                       </div>
@@ -729,7 +703,7 @@
 
                            <button  class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-log-out"></span>
-                            Cancelar
+                            Cerrar Ventana
                           </button>
                         </div>
                       </div>
@@ -927,7 +901,7 @@
                           </button>
                            <button  class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-remove"></span>
-                            Cancelar
+                            Cerrar Ventana
                           </button>
                           </center>
                         </div>
@@ -1020,5 +994,7 @@
 
 
   });
-
+$('.modal').on('hidden.bs.modal', function(){
+    $(this).find('form')[0].reset();
+});
 </script>
