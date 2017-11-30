@@ -139,23 +139,20 @@ $(document).on('hidden.bs.modal', '.modal', function () {
 
 $(document).on("ready" ,function(){
 
-$("#BtnAcatualizar").on( "click", function()
-	{
-		var codigounico=$("#BuscarPip").val();
-		$.ajax({
-		"url":"http://localhost:8080/siaf/index.php/Importacion/inicio",
-		type:"GET",
-		dataType:"jsonp",
-		data:{CodigoUnico:codigounico},
-		success: function(data)
-			{
-
-			}
-
-		});
-
-
-	});
+//No UTILIZAR
+// $("#BtnAcatualizar").on( "click", function()
+// 	{
+// 		var codigounico=$("#BuscarPip").val();
+// 		$.ajax({
+// 		"url":"http://localhost:8080/siaf/index.php/Importacion/inicio",
+// 		type:"GET",
+// 		dataType:"jsonp",
+// 		data:{CodigoUnico:codigounico},
+// 		success: function(data)
+// 			{
+// 			}
+// 		});
+// 	});
 
 $("#EjecucionAnual").hide();
 $("#CodigoUnico").on( "click", function()
@@ -839,8 +836,51 @@ $("#CodigoUnico").on( "click", function()
 
     function siafActualizador() {
     	var codigounico=$("#BuscarPip").val();
-    	var urll="http://192.168.1.200:8080/Importacion/inicio/"+codigounico;
-        ventana=window.open(urll, 'Nombre de la ventana', 'width=1400,height=800');
+		var start = +new Date();
+
+    	$.ajax({
+				url: "http://200.37.200.182:8080/Importacion/codigo/"+codigounico,
+				type: "POST",
+				cache: false,
+		        contentType:false,
+		        processData:false,
+				beforeSend: function(request) {
+					//request.setRequestHeader("Authorization", "Negotiate");
+				    renderLoading();
+				},
+				success:function(data){
+					$('#divModalCargaAjax').hide();
+					datos=JSON.parse(data);
+					var rtt = +new Date() - start;
+
+					if(datos.actualizo)
+					{
+						
+						//var rttSeg = rtt / 1000;
+						swal(
+						  'Operacion Completada',
+						  datos.mensaje + ' Tiempo: ' + (rtt/1000) +'s',
+						  'success'
+						);
+					}
+					else
+					{
+						swal(
+						  'No se pudo completar la Operacion',
+						  datos.mensaje + ' Tiempo: ' + (rtt/1000) +'s',
+						  'error'
+						);
+					}					
+				},
+				error: function (xhr, textStatus, errorMessage) {
+			        $('#divModalCargaAjax').hide();
+			        swal(
+						  'ERROR!',
+						  'Por favor consulte con el administrador, error 0x5642418',
+						  'error'
+						);			        
+			    } 
+			});
     }
 
 	function detalladoMensualizadoConceptoClasificador(anio,meta)

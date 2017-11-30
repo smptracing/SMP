@@ -17,11 +17,11 @@
 					<div class="clearfix"></div>
 				</div>
 				<div class="x_content">
-					BÚSQUEDA POR AÑO: 
+					BÚSQUEDA POR AÑO:
 					<div class="row">
 						<div class="col-lg-5">
 					    	<div class="input-group">
-					      		<input type="text" id="BuscarPipAnio" value="<?= $anio?>"  class="form-control" placeholder="Ingrese Año">
+					      		<input type="text" id="BuscarPipAnio" value="<?=$anio?>"  class="form-control" placeholder="Ingrese Año">
 					      		<span class="input-group-btn">
 					        		<button id="AnioPip" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"> Buscar</span></button>
 					      		</span>
@@ -37,9 +37,9 @@
 								<div class="pull-left tableTools-container"></div>
 					    	</div>
 					  	</div>
-					</div>	
+					</div>
 					<div class="table-responsive">
-						<table id="table-consolidadoAvance" class="table table-striped jambo_table" cellspacing="0" width="150%"> 
+						<table id="table-consolidadoAvance" class="table table-striped jambo_table" cellspacing="0" width="150%">
 						 	<thead>
 							 	<tr>
 								 	<th style="c;">Snip</th>
@@ -57,51 +57,51 @@
 							 	</tr>
 						 	</thead>
 						 	<tbody>
-								<?php foreach($Consolidado as $item ){ ?>
+								<?php foreach ($Consolidado as $item) {?>
 								  	<tr>
 										<td>
 											<?=$item->proyecto_snip?>
-								    	</td>								    	
+								    	</td>
 								    	<td>
 											<?=$item->sec_func?>
-								    	</td>								    	
+								    	</td>
 								    	<td>
-								    		<button type="button" class="DetalleOrdenExpeSiaf btn btn-success btn-xs" ><a style="color: white;" href="<?php echo site_url('ProyectoInversion/ReporteBuscadorPorPip/'.$item->act_proy); ?>"> 
-												<?=$item->act_proy?></a> <i class='ace-icon bigger-120'></i></button>											
+								    		<button type="button" class="DetalleOrdenExpeSiaf btn btn-success btn-xs" ><a style="color: white;" href="<?php echo site_url('ProyectoInversion/ReporteBuscadorPorPip/' . $item->act_proy); ?>">
+												<?=$item->act_proy?></a> <i class='ace-icon bigger-120'></i></button>
 								    	</td>
 								    	<td style="font-size: 10px;">
 											<?=$item->nombre?>
 								    	</td>
 								    	<td class="alineacionDerecha">
-											S/. <?= a_number_format($item->costo_actual, 2, '.',",",3)?>
+											S/. <?=a_number_format($item->costo_actual, 2, '.', ",", 3)?>
 								    	</td>
-								    	<td class="alineacionDerecha">								    		
-											S/. <?=a_number_format($item->pim_acumulado, 2, '.',",",3)?>
+								    	<td class="alineacionDerecha">
+											S/. <?=a_number_format($item->pim_acumulado, 2, '.', ",", 3)?>
 								    	</td>
-								    	<td class="alineacionDerecha">								    		
-											S/. <?=a_number_format($item->monto_certificado, 2, '.',",",3)?>
+								    	<td class="alineacionDerecha">
+											S/. <?=a_number_format($item->monto_certificado, 2, '.', ",", 3)?>
 								    	</td>
-								    	<td class="alineacionDerecha">								    		
+								    	<td class="alineacionDerecha">
 											<?=$item->avance_pim_cert?>%
 								    	</td>
 								    	<td class="alineacionDerecha">
-											S/. <?=a_number_format($item->devengado, 2, '.',",",3)?>
+											S/. <?=a_number_format($item->devengado, 2, '.', ",", 3)?>
 								    	</td>
 								    	<td class="alineacionDerecha">
 											<?=$item->avance_pim_deven?>%
 								    	</td>
 								    	<td class="alineacionDerecha">
-											S/. <?=a_number_format($item->para_seguimiento, 2, '.',",",3)?>
+											S/. <?=a_number_format($item->para_seguimiento, 2, '.', ",", 3)?>
 								    	</td>
 								    	<td class="alineacionDerecha">
-											S/. <?=a_number_format($item->saldo_por_gastar, 2, '.',",",3)?>
+											S/. <?=a_number_format($item->saldo_por_gastar, 2, '.', ",", 3)?>
 								    	</td>
 								  </tr>
-								<?php } ?>
-							</tbody>	
-					  	</table> 
-					</div>							
-									
+								<?php }?>
+							</tbody>
+					  	</table>
+					</div>
+
 				</div>
 			</div>
 		</div>
@@ -110,17 +110,17 @@
 <script>
 
 $(document).on("ready" ,function()
-{	
+{
 	$("#AnioPip").on( "click", function()
 	{
 		avanceFisico();
-	});	
+	});
 
 	var myTable=$('#table-consolidadoAvance').DataTable(
 	{
 		"language":idioma_espanol
 	});
-		
+
 	$.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
 
 	new $.fn.dataTable.Buttons( myTable, {
@@ -143,7 +143,7 @@ $(document).on("ready" ,function()
 			"className": "btn btn-white btn-primary btn-bold",
 			autoPrint: false,
 			message: 'This print was produced using the Print button for DataTables'
-		  }		  
+		  }
 		]
 	} );
 	myTable.buttons().container().appendTo( $('.tableTools-container') );
@@ -152,21 +152,59 @@ $(document).on("ready" ,function()
 
 function avanceFisico()
 {
-		$("#avancefisicoFinan").show(2000);
+	$("#avancefisicoFinan").show(2000);
 
-		var anio=$("#BuscarPipAnio").val();
-		window.location.href=base_url+"index.php/ProyectoInversion/ReporteBuscadorPorAnio/"+anio;
+	var anio=$("#BuscarPipAnio").val();
+	window.location.href=base_url+"index.php/ProyectoInversion/ReporteBuscadorPorAnio/"+anio;
 }
 
-function siafActualizadorCertificado() 
+function siafActualizadorCertificado()
 {
-	var anio=$("#BuscarPipAnio").val();
-	var params  = 'width='+screen.width;
-    params += ', height='+screen.height;
-    params += ', top=0, left=10'
-    params += ', fullscreen=no';
-	var urll="http://192.168.1.200:8080/ImporSeguimientoCertificado/inicio/"+anio;
-    ventana=window.open(urll,"",params);
+    var anio = $("#BuscarPipAnio").val();
+	var start = +new Date();
+			
+	$.ajax({
+			url: "http://200.37.200.182:8080/Importacion/anio/"+anio,
+			type: "POST",
+			cache: false,
+	        contentType:false,
+	        processData:false,
+			beforeSend: function(request) {
+			    renderLoading();
+			},
+			success:function(data){
+				$('#divModalCargaAjax').hide();
+				datos=JSON.parse(data);
+				var rtt = +new Date() - start;
+
+				if(datos.actualizo)
+				{
+					
+					//var rttSeg = rtt / 1000;
+					swal(
+					  'Operacion Completada',
+					  datos.mensaje + ' Tiempo: ' + (rtt/1000) +'s',
+					  'success'
+					);
+				}
+				else
+				{
+					swal(
+					  'No se pudo completar la Operacion',
+					  datos.mensaje + ' Tiempo: ' + (rtt/1000) +'s',
+					  'error'
+					);
+				}					
+			},
+			error: function (xhr, textStatus, errorMessage) {
+		        $('#divModalCargaAjax').hide();
+		        swal(
+					  'ERROR!',
+					  'Por favor consulte con el administrador, error 0x5642419',
+					  'error'
+					);			        
+		    } 
+		});
 }
 
 </script>
