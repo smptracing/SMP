@@ -107,47 +107,6 @@ class bancoproyectos extends CI_Controller
             show_404();
         }
     }
-
-/******************************************************************/
-
-
-    // public function AddProyectos()
-    // {
-    //     if ($this->input->is_ajax_request()) {
-    //         $flat                = "IPC ";
-    //         $id_pi               = "0";
-    //         $cbxUnidadEjecutora  = $this->input->post("cbxUnidadEjecutora");
-    //         $cbxNatI             = $this->input->post("cbxNatI");
-    //         $cbxTipologiaInv     = $this->input->post("cbxTipologiaInv");
-    //         $cbxTipoInv          = $this->input->post("cbx");
-    //         $cbxGrupoFunc        = $this->input->post("cbxGrupoFunc");
-    //         $cbxNivelGob         = $this->input->post("cbxNivelGob");
-    //         $cbxProgramaPres     = $this->input->post("cbxProgramaPres");
-    //         $txtCodigoUnico      = $this->input->post("txtCodigoUnico");
-    //         $txtNombrePip        = $this->input->post("txtNombrePip");
-    //         $txtCostoPip         = floatval(str_replace(",","",$this->input->post("txtCostoPip")));
-    //         $txt_beneficiarios   = $this->input->post("txt_beneficiarios");
-    //         $dateFechaInPip      = $this->input->post("fecha_registro");
-    //         $dateFechaViabilidad = $this->input->post("fecha_viabilidad");
-    //         $lista_unid_form     = $this->input->post("lista_unid_form");
-    //         $cbx_estado          = $this->input->post("cbx_estado");
-    //         $cbxEstCicInv_       = $this->input->post("cbxEstCicInv_");
-    //         $cbxRubro            = $this->input->post("cbxRubro");
-    //         $cbxModalidadEjec    = $this->input->post("cbxModalidadEjec");
-    //         if ($this->bancoproyectos_modal->AddProyectos(
-    //             $flat, $id_pi, $cbxUnidadEjecutora, $cbxNatI, $cbxTipologiaInv, $cbxTipoInv, $cbxGrupoFunc, $cbxNivelGob, $cbxProgramaPres, $txtCodigoUnico, $txtNombrePip, $txtCostoPip, $txt_beneficiarios, $dateFechaInPip, $dateFechaViabilidad, $lista_unid_form, $cbx_estado, $cbxEstCicInv_,
-    //             $cbxRubro, $cbxModalidadEjec) == false) {
-    //             echo "1";
-    //         } else {
-    //             echo "2";
-    //         }
-
-    //     } else {
-    //         show_404();
-    //     }
-    // }
-
-    /*FIN INSERTAR UN PROYECTO*/
     /*INSERTAR UN NO PIP*/
     public function AddNoPip()
     {
@@ -529,23 +488,11 @@ class bancoproyectos extends CI_Controller
             $c_data['id_rubro'] = $this->input->post("Cbx_RubroPI");
             $c_data['id_pi']= $this->input->post("txt_id_pip_RubroPI");
             $c_data['fecha_rubro_pi'] = $this->input->post("dateFechaIniC");
-            $flag = 0;
             $msg = array();
             $q1 = $this->bancoproyectos_modal->AgregarRubro($c_data);
-            if($q1>0)
-            {
-                echo "1";
-            }
-            else
-            {
-                echo "0";
 
-            }
-            //$datos['flag'] = $flag;   
-            //$datos['msg'] = $msg;    
-            //$data['datos'] = $datos;
-            //$this->load->view('front/json/json_view', $data);  
-
+            $msg = ($q1>0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
+            $this->load->view('front/json/json_view', ['datos' => $msg]);
         } 
         else 
         {
@@ -556,22 +503,22 @@ class bancoproyectos extends CI_Controller
     //Agregar estado ciclo
     public function AddModalidadEjecPI()
     {
-        if ($this->input->is_ajax_request()) {
-            $flat                     = "C";
-            $id_modalidad_ejec_pi     = "0";
-            $Cbx_ModalidadEjec        = $this->input->post("Cbx_ModalidadEjec");
-            $txt_id_pip_ModalidadEjec = $this->input->post("txt_id_pip_ModalidadEjec");
-            // $dateFechaIniC            = $this->input->post("dateFechaIniC"); //esta campo se esta registrando en la base de datos
-            if ($this->bancoproyectos_modal->AddModalidadEjecPI($flat, $id_modalidad_ejec_pi, $Cbx_ModalidadEjec, $txt_id_pip_ModalidadEjec) == false) 
-            {
-                echo "1";
-            } 
-            else 
-            {
-                echo "2";
-            }
+        if ($this->input->is_ajax_request()) 
+        {
+            $c_data['id_modalidad_ejec'] = $this->input->post("Cbx_ModalidadEjec");
+            $c_data['id_pi']= $this->input->post("txt_id_pip_ModalidadEjec");
+            $c_data['fecha_modalidad_ejec_pi'] = date("d-m-Y H:i:s");
+            $msg = array();
 
-        } else {
+            $q1 = $this->bancoproyectos_modal->AgregarModalidadEjecucionPip($c_data);
+
+            $msg = ($q1>0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
+
+            $this->load->view('front/json/json_view', ['datos' => $msg]);
+        } 
+
+        else 
+        {
             show_404();
         }
     }

@@ -16,14 +16,8 @@ $(document).on("ready" ,function()
             data:$(this).serialize(),
             success:function(resp)
             {
-                if (resp=='2')
-                {
-                    swal("REGISTRADO","Se regristró correctamente", "success");
-                }
-                if (resp=='1')
-                {
-                    swal("NO SE REGISTRÓ","NO se regristró ", "error");
-                }
+                resp = JSON.parse(resp);
+                ((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje,"success") : swal(resp.proceso,resp.mensaje,"error"));
                 $('#Table_ModalidadPI').dataTable()._fnAjaxUpdate();
                 formReset();
                 $('#ventanaModalidadEjecucion').modal('hide');
@@ -40,17 +34,11 @@ $(document).on("ready" ,function()
             data:$(this).serialize(),
             success:function(resp)
             {
-                if (resp=='1')
-                {
-                    swal("Correcto","los datos fueron registrados correctamente", "success");
-                }
-                if (resp=='0')
-                {
-                    swal("Error","Ha ocurrido un error inesperado.", "error");
-                }
-                $('#Table_RubroPI').dataTable()._fnAjaxUpdate();
-                formReset();
-                $('#venta_registar_rubro').modal('hide');
+              resp = JSON.parse(resp);
+              ((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje,"success") : swal(resp.proceso,resp.mensaje,"error"));
+              $('#Table_RubroPI').dataTable()._fnAjaxUpdate();
+              formReset();
+              $('#venta_registar_rubro').modal('hide');
             }
         });
     });
@@ -304,52 +292,58 @@ var ModificarUbigeoPi=function(id_ubigeo_pi)
                     });
                 }
                 //listar rubro pi
- var listarRubroPI=function(id_pi)
+var listarRubroPI=function(id_pi)
+{
+    var table=$("#Table_RubroPI").DataTable({
+        "processing": true,
+        "serverSide":false,
+        destroy:true,
+        "ajax":{
+            url:base_url+"index.php/bancoproyectos/listar_rubro_pi",
+            type:"POST",
+            data :{id_pi:id_pi}
+        },
+        "columns":[
+            {"data":"nombre_rubro"},
+            {"data":"fecha_rubro_pi"},
+            {"data":'id_rubro_pi',render:function(data,type,row)
                 {
-                    var table=$("#Table_RubroPI").DataTable({
-                      "processing": true,
-                      "serverSide":false,
-                      destroy:true,
-                      "ajax":{
-                                     url:base_url+"index.php/bancoproyectos/listar_rubro_pi",
-                                     type:"POST",
-                                     data :{id_pi:id_pi}
-                                    },
-                                "columns":[
-                                      {"data":"nombre_rubro"},
-                                    {"data":"fecha_rubro_pi"},
-                                     {"data":'id_rubro_pi',render:function(data,type,row){
-                                        return "<button type='button'  data-toggle='tooltip'  class='editar btn btn-danger btn-xs' data-toggle='modal' onclick=eliminarrubroPI("+data+",this)><i class='ace-icon fa fa-trash-o bigger-120'></i></button>";
-                                    }}
-                                    //{"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaupdateEstadoFE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
-                                ],
-                               "language":idioma_espanol
-                    });
+                    return "<button type='button'  data-toggle='tooltip'  class='editar btn btn-danger btn-xs' data-toggle='modal' onclick=eliminarrubroPI("+data+",this)><i class='ace-icon fa fa-trash-o bigger-120'></i></button>";
                 }
-//eliminar rubro pi
+            }
+        ],
+        "language":idioma_espanol
+    });
+}
 var eliminarrubroPI=function(id_rubro_pi,element)
 {
-    if(!confirm('Se esta seguro de eliminar. ¿Realmente desea proseguir con la operación?'))
-    {
-      return;
-    }
+    swal({
+        title: "Se eliminará el Rubro. ¿Realmente desea proseguir con la operación?",
+        text: "",
+        type: "warning",
+        showCancelButton: true,
+        cancelButtonText:"CANCELAR" ,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "SI,ELIMINAR",
+        closeOnConfirm: false
+    },
+    function(){
+        paginaAjaxJSON({ "id_rubro_pi" : id_rubro_pi }, base_url+'index.php/bancoproyectos/eliminarrubroPI', 'POST', null, function(objectJSON)
+        {
+          objectJSON=JSON.parse(objectJSON);
 
-    paginaAjaxJSON({ "id_rubro_pi" : id_rubro_pi }, base_url+'index.php/bancoproyectos/eliminarrubroPI', 'POST', null, function(objectJSON)
-    {
-      objectJSON=JSON.parse(objectJSON);
+          swal(
+          {
+            title: '',
+            text: objectJSON.mensaje,
+            type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
+          },
+          function(){});
 
-      swal(
-      {
-        title: '',
-        text: objectJSON.mensaje,
-        type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
-      },
-      function(){});
+          $(element).parent().parent().remove();
 
-      $(element).parent().parent().remove();
-
-    }, false, true);
-
+        }, false, true);
+    });
 }
 
  //listar modalidad de ejecucion PI
