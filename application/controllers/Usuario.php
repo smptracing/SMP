@@ -124,5 +124,18 @@ class Usuario extends CI_Controller {
 		$data = $this->Model_Usuario->listaUrlAsignado($idPersona);
 		echo json_encode($data);
 	}
+	function listaMenu()
+	{
+		$data = $this->Model_Usuario->listaModulo();
+		foreach ($data as $key => $value) 
+		{
+			$value->childModulo = $this->Model_Usuario->listaSubModulo($value->id_menu);
+		}
+		/*echo '<pre>';
+		var_dump($data);
+		echo '</pre>';
+		exit;*/
+		echo json_encode($data);
+	}
 
 }

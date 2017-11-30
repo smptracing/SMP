@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2017.3.1026/styles/kendo.common.min.css" />
 <link href="//cdn.kendostatic.com/2013.1.319/styles/kendo.default.min.css" rel="stylesheet" />
+
 <div class="modal-body">
    <div class="row">
         <div class="col-xs-12">
@@ -83,7 +84,7 @@
 <script>
 
 var definido = $('#idPersona').val();
-var menuUsuarioId = [], menuUsuarioHome = [];
+var menuUsuarioHome = [];
 
 $(function()
 {
@@ -126,118 +127,85 @@ function compara(json)
     return bool;
 }
 
-$.getJSON(base_url+"index.php/Login/recuperarMenu/0",function(json)
+$(function()
 {
-    var json2 = [];
-    var subMenu = [];
-    var pmi = [], fe = [], e =[], sm = [], p = [];
+    var modulo = [];
 
-    $.each(json,function(i)
+    $.ajax(
     {
-        if(json[i]['id_modulo']=='PMI')
+        url: base_url+'index.php/Usuario/listaMenu',
+        type: 'POST',
+        cache: false,
+        async: false
+    }).done(function(objectJSON) 
+    {
+        objectJSON = JSON.parse(objectJSON);
+        console.log(objectJSON);       
+
+        for (var i = 0; i < objectJSON.length; i++) 
         {
-            pmi.push(
+            var submodulo = [];
+            for (var j = 0; j < objectJSON[i].childModulo.length; j++) 
             {
-                id:  json[i]['id_submenu'],
-                text: json[i]['id_modulo']+": "+json[i]['nombre']+": "+ json[i]['nombreSubmenu'],
-                spriteCssClass: "html",
-                checked: compara(json[i]['id_submenu'])
-            });
-        }
-        if(json[i]['id_modulo']=='FE')
-        {
-            fe.push(
+                submodulo.push(
+                {
+                    id:objectJSON[i].childModulo[j].id_menu,
+                    text:objectJSON[i].childModulo[j].nombre,
+                    spriteCssClass:"html",
+                    checked:compara(objectJSON[i].childModulo[j].id_menu)
+                });  
+            }
+            modulo.push(
             {
-                id:  json[i]['id_submenu'],
-                text: json[i]['id_modulo']+": "+json[i]['nombre']+": "+ json[i]['nombreSubmenu'],
-                spriteCssClass: "html",
-                checked: compara(json[i]['id_submenu'])
-            });
-        }
-        if(json[i]['id_modulo']=='E')
-        {
-            e.push(
-            {
-                id:  json[i]['id_submenu'],
-                text: json[i]['id_modulo']+": "+json[i]['nombre']+": "+ json[i]['nombreSubmenu'],
-                spriteCssClass: "html",
-                checked: compara(json[i]['id_submenu'])
-            });
-        }
-        if(json[i]['id_modulo']=='SM')
-        {
-            sm.push(
-            {
-                id:  json[i]['id_submenu'],
-                text: json[i]['id_modulo']+": "+json[i]['nombre']+": "+ json[i]['nombreSubmenu'],
-                spriteCssClass: "html",
-                checked: compara(json[i]['id_submenu'])
-            });
-        }
-        if(json[i]['id_modulo']=='P')
-        {
-            p.push(
-            {
-                id:  json[i]['id_submenu'],
-                text: json[i]['id_modulo']+": "+json[i]['nombre']+": "+ json[i]['nombreSubmenu'],
-                spriteCssClass: "html",
-                checked: compara(json[i]['id_submenu'])
-            });
-        }
-        subMenu[0]=pmi;
-        subMenu[1]=fe;
-        subMenu[2]=e;
-        subMenu[4]=sm;
-        subMenu[6]=p;
-        if (json[i]['id_modulo'] == "HOME")
-        {
-            json2.push(
-            {
-                id: json[i]['id_submenu'],
-                text: json[i]['nombreSubmenu'],
+                id: objectJSON[i].id_menu, 
+                text: objectJSON[i].nombre,
                 expanded: false,
                 spriteCssClass: "folder",
-                items: subMenu[i],
-                checked: compara(json[i]['id_submenu'])
+                items:submodulo,
+                checked: compara(objectJSON[i].id_menu)
             });
         }
+    }).fail(function()
+    {
+        swal('Error', 'Error no controlado.', 'error');
     });
     $("#treeview").kendoTreeView(
     {
-        checkboxes:
+        checkboxes: 
         {
             checkChildren: false
         },
         check: onCheck,
-        dataSource: json2
+        dataSource: modulo
     });
 
 });
-function checkedNodeIds(nodes, checkedNodes)
+
+function checkedNodeIds(nodes, checkedNodes) 
 {
-    for (var i = 0; i < nodes.length; i++)
+    for (var i = 0; i < nodes.length; i++) 
     {
-        if (nodes[i].checked)
+        if (nodes[i].checked) 
         {
             checkedNodes.push(nodes[i].id);
         }
-        if (nodes[i].hasChildren)
+        if (nodes[i].hasChildren) 
         {
             checkedNodeIds(nodes[i].children.view(), checkedNodes);
         }
     }
 }
-function onCheck()
+function onCheck() 
 {
     var checkedNodes = [],
         treeView = $("#treeview").data("kendoTreeView"),
         message;
 
     checkedNodeIds(treeView.dataSource.view(), checkedNodes);
-    if (checkedNodes.length > 0)
+    if (checkedNodes.length > 0) 
     {
         message = checkedNodes.join(",");
-    } else
+    } else 
     {
         message = "No nodes checked.";
     }
@@ -255,7 +223,7 @@ $(function()
         var c=0;
         var dat = $("#result").text();
         var b = dat.split(',').map(Number);
-        for (var i = 0; i < b.length; i++)
+        for (var i = 0; i < b.length; i++) 
         {
             if(c>0)
                     stringMenuUsuario+='-';

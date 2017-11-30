@@ -32,7 +32,7 @@
   <script src="<?php echo base_url(); ?>assets/js/Helper/jsHelper.js"></script> 
   <script src="<?php echo base_url(); ?>assets/Template/vendors/jquery/dist/jquery.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/ckeditor/ckeditor.js"></script>
-  <script src="http://kendo.cdn.telerik.com/2017.3.1026/js/kendo.all.min.js"></script>
+  
 
   
   <style>
