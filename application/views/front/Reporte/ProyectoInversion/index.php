@@ -839,7 +839,7 @@ $("#CodigoUnico").on( "click", function()
 		var start = +new Date();
 
     	$.ajax({
-				url: "http://200.37.200.182:8080/Importacion/codigo/"+codigounico,
+				url: "http://192.168.1.100:8080/Importacion/codigo/"+codigounico,
 				type: "POST",
 				cache: false,
 		        contentType:false,
@@ -876,7 +876,7 @@ $("#CodigoUnico").on( "click", function()
 			        $('#divModalCargaAjax').hide();
 			        swal(
 						  'ERROR!',
-						  'Por favor consulte con el administrador, error 0x5642418',
+						  'No se pudo conectar con el servidor de Importacion, error 0x5642418',
 						  'error'
 						);			        
 			    } 
