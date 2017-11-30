@@ -500,7 +500,6 @@ class bancoproyectos extends CI_Controller
         }
     }
 
-    //Agregar estado ciclo
     public function AddModalidadEjecPI()
     {
         if ($this->input->is_ajax_request()) 
@@ -515,8 +514,7 @@ class bancoproyectos extends CI_Controller
             $msg = ($q1>0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
 
             $this->load->view('front/json/json_view', ['datos' => $msg]);
-        } 
-
+        }
         else 
         {
             show_404();
