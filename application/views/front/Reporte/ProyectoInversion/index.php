@@ -829,6 +829,7 @@ $("#CodigoUnico").on( "click", function()
 	{
 		paginaAjaxDialogo(null, 'Ver Detallado Mensualizado',{ anio: anio, meta:meta}, base_url+'index.php/PrincipalReportes/DetalleMensualizado', 'GET', null, null, false, true);
 	}
+
 	function detalladoMensualizadoFuenteFinan(anio,meta)
 	{
 		paginaAjaxDialogo(null, 'Ver Detalle',{ anio: anio, meta:meta}, base_url+'index.php/PrincipalReportes/DetalleMensualizadoFuenteFinan', 'GET', null, null, false, true);
@@ -839,7 +840,7 @@ $("#CodigoUnico").on( "click", function()
 		var start = +new Date();
 
     	$.ajax({
-				url: "http://192.168.1.100:8080/Importacion/codigo/"+codigounico,
+				url: "http://200.37.200.182:8088/Importacion/codigo/"+codigounico,
 				type: "POST",
 				cache: false,
 		        contentType:false,
