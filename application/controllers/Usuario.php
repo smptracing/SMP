@@ -18,12 +18,12 @@ class Usuario extends CI_Controller {
 	}
 	function ListarTipoUsuario()
 	{
-        if ($this->input->is_ajax_request()) 
+        if ($this->input->is_ajax_request())
         {
             $datos = $this->Model_Usuario->ListarTipoUsuario();
             echo json_encode($datos);
-        } 
-        else 
+        }
+        else
         {
             show_404();
         }
@@ -34,8 +34,8 @@ class Usuario extends CI_Controller {
         {
             $datos = $this->Model_Usuario->GetUsuario();
             echo json_encode($datos);
-        } 
-        else 
+        }
+        else
         {
             show_404();
         }
@@ -91,9 +91,19 @@ class Usuario extends CI_Controller {
 		$listaUsuarios = $this->Model_Usuario->listaUsuario();
 		$this->load->view('layout/USUARIO/header');
       	$this->load->view('Front/Usuario/frm_usuario',['listaUsuario'=>$listaUsuarios]);
-      	$this->load->view('layout/USUARIO/footer');		
+      	$this->load->view('layout/USUARIO/footer');
 	}
 
+	public function AsignarProyectos()
+	{
+
+		$this->load->model('bancoproyectos_modal');
+		$data = $this->bancoproyectos_modal->getBancoProyecto();
+
+		$this->load->view('layout/USUARIO/header');
+		$this->load->view('Front/Usuario/proyecto_usuario',['lista'=>$data]);
+		$this->load->view('layout/USUARIO/footer');
+	}
 
 	function _load_layout($template)
     {
@@ -127,7 +137,7 @@ class Usuario extends CI_Controller {
 	function listaMenu()
 	{
 		$data = $this->Model_Usuario->listaModulo();
-		foreach ($data as $key => $value) 
+		foreach ($data as $key => $value)
 		{
 			$value->childModulo = $this->Model_Usuario->listaSubModulo($value->id_menu);
 		}

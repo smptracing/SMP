@@ -137,15 +137,15 @@ $(function()
         type: 'POST',
         cache: false,
         async: false
-    }).done(function(objectJSON) 
+    }).done(function(objectJSON)
     {
         objectJSON = JSON.parse(objectJSON);
-        console.log(objectJSON);       
+        console.log(objectJSON);
 
-        for (var i = 0; i < objectJSON.length; i++) 
+        for (var i = 0; i < objectJSON.length; i++)
         {
             var submodulo = [];
-            for (var j = 0; j < objectJSON[i].childModulo.length; j++) 
+            for (var j = 0; j < objectJSON[i].childModulo.length; j++)
             {
                 submodulo.push(
                 {
@@ -153,11 +153,11 @@ $(function()
                     text:objectJSON[i].childModulo[j].nombre,
                     spriteCssClass:"html",
                     checked:compara(objectJSON[i].childModulo[j].id_menu)
-                });  
+                });
             }
             modulo.push(
             {
-                id: objectJSON[i].id_menu, 
+                id: objectJSON[i].id_menu,
                 text: objectJSON[i].nombre,
                 expanded: false,
                 spriteCssClass: "folder",
@@ -171,7 +171,7 @@ $(function()
     });
     $("#treeview").kendoTreeView(
     {
-        checkboxes: 
+        checkboxes:
         {
             checkChildren: false
         },
@@ -181,31 +181,31 @@ $(function()
 
 });
 
-function checkedNodeIds(nodes, checkedNodes) 
+function checkedNodeIds(nodes, checkedNodes)
 {
-    for (var i = 0; i < nodes.length; i++) 
+    for (var i = 0; i < nodes.length; i++)
     {
-        if (nodes[i].checked) 
+        if (nodes[i].checked)
         {
             checkedNodes.push(nodes[i].id);
         }
-        if (nodes[i].hasChildren) 
+        if (nodes[i].hasChildren)
         {
             checkedNodeIds(nodes[i].children.view(), checkedNodes);
         }
     }
 }
-function onCheck() 
+function onCheck()
 {
     var checkedNodes = [],
         treeView = $("#treeview").data("kendoTreeView"),
         message;
 
     checkedNodeIds(treeView.dataSource.view(), checkedNodes);
-    if (checkedNodes.length > 0) 
+    if (checkedNodes.length > 0)
     {
         message = checkedNodes.join(",");
-    } else 
+    } else
     {
         message = "No nodes checked.";
     }
@@ -223,7 +223,7 @@ $(function()
         var c=0;
         var dat = $("#result").text();
         var b = dat.split(',').map(Number);
-        for (var i = 0; i < b.length; i++) 
+        for (var i = 0; i < b.length; i++)
         {
             if(c>0)
                     stringMenuUsuario+='-';

@@ -7,9 +7,9 @@ class bancoproyectos_modal extends CI_Model
         parent::__construct();
         // $this->db->free_db_resource();
         $this->load->helper('file');
-
-
+        $this->load->database();
     }
+
     public function BuscarProyectoSiaf($CodigoSiaf)
     {
         $Opcion='listar_datos_proyecto_importacion';
@@ -26,11 +26,11 @@ class bancoproyectos_modal extends CI_Model
             . $direccion . "','"
             . $txt_latitud . "','"
             . $txt_longitud . "'");
-        if ($this->db->affected_rows() > 0) 
+        if ($this->db->affected_rows() > 0)
         {
             return true;
-        } 
-        else 
+        }
+        else
         {
             return false;
         }
@@ -79,13 +79,13 @@ class bancoproyectos_modal extends CI_Model
 
     // AGREGAR UN PROYECTO
     public function AddProyectos($flat, $id_pi, $cbxUnidadEjecutora, $cbxNatI, $cbxTipologiaInv, $cbxTipoInv, $cbxGrupoFunc, $cbxNivelGob, $cbxProgramaPres, $txtCodigoUnico, $txtNombrePip, $txtCostoPip, $txt_beneficiarios, $dateFechaInPip, $dateFechaViabilidad, $lista_unid_form, $cbx_estado, $cbxEstCicInv_,
-        $cbxRubro, $cbxModalidadEjec) 
+        $cbxRubro, $cbxModalidadEjec)
     {
         $proyecto = $this->db->query("select * from PROYECTO_INVERSION where codigo_unico_pi ='$txtCodigoUnico'");
-        if ($proyecto->num_rows() >= 1) 
+        if ($proyecto->num_rows() >= 1)
         {
             return false;
-        } 
+        }
         else
         {
            $q = $this->db->query("execute sp_Gestionar_ProyectoInversion
@@ -109,7 +109,7 @@ class bancoproyectos_modal extends CI_Model
                 @id_estado_ciclo='" . $cbxEstCicInv_ . "',
                 @id_rubro='" . $cbxRubro . "',
                 @id_modalidad_ejec='" . $cbxModalidadEjec . "'");
-            
+
             return $q;
         }
     }
@@ -118,13 +118,13 @@ class bancoproyectos_modal extends CI_Model
 
 
     // public function AddProyectos($flat, $id_pi, $cbxUnidadEjecutora, $cbxNatI, $cbxTipologiaInv, $cbxTipoInv, $cbxGrupoFunc, $cbxNivelGob, $cbxProgramaPres, $txtCodigoUnico, $txtNombrePip, $txtCostoPip, $txt_beneficiarios, $dateFechaInPip, $dateFechaViabilidad, $lista_unid_form, $cbx_estado, $cbxEstCicInv_,
-    //     $cbxRubro, $cbxModalidadEjec) 
+    //     $cbxRubro, $cbxModalidadEjec)
     // {
     //     $proyecto = $this->db->query("select codigo_unico_pi from PROYECTO_INVERSION where codigo_unico_pi ='$txtCodigoUnico'");
-    //     if ($proyecto->num_rows() >= 1) 
+    //     if ($proyecto->num_rows() >= 1)
     //     {
     //         return 7;
-    //     } 
+    //     }
     //     else
     //     {
                 // $sp = "sp_Gestionar_ProyectoInversion ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?";
@@ -322,18 +322,18 @@ class bancoproyectos_modal extends CI_Model
 
     public function idUbigeoPI($id_ubigeo_pi)
     {
-         
+
          $data=$this->db->query("select * from UBIGEO_PI where id_ubigeo_pi=$id_ubigeo_pi ");
 
          return $data->result()[0];
 
-        
+
     }
     public function actualizar_ubigeo_proyecto($id_ubigeo_pi,$id_ubigeo,$txt_latitudEditar,$txt_longitudEditar)
     {
          $flat='U';
          $this->db->query("execute sp_Gestionar_UbigeoPI @opcion = '".$flat . "', @id_ubigeo_pi  ='".$id_ubigeo_pi. "' , @id_ubigeo='".$id_ubigeo."' , @latitud ='".$txt_latitudEditar."' , @longitud='".$txt_longitudEditar."' ");
-         return true;  
+         return true;
     }
     //listar general estados de acuerdo al pryecto selecionado
     public function listar_estados($flat, $id_pi)
@@ -458,11 +458,11 @@ class bancoproyectos_modal extends CI_Model
         $Get_TipoNoPip = $this->db->query("execute sp_Gestionar_OperacionMantenimientoPI
             @opcion='" . $flat . "',
             @id_pi='" . $id_pi . "'");
-        if ($Get_TipoNoPip->num_rows() > 0) 
+        if ($Get_TipoNoPip->num_rows() > 0)
         {
             return $Get_TipoNoPip->result();
-        } 
-        else 
+        }
+        else
         {
             return false;
         }
@@ -483,4 +483,7 @@ class bancoproyectos_modal extends CI_Model
 
     }
 
+    public function getBancoProyecto() {
+        return $this->db->get('PROYECTO_INVERSION')->result();
+    }
 }

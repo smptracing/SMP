@@ -13,7 +13,7 @@
   <link href="<?php echo base_url(); ?>assets/Template/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/Template/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
 
-  
+
   <link href="<?php echo base_url(); ?>assets/Template/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/css/bootstrap-select.css">
   <link href="<?php echo base_url(); ?>assets/Template/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
@@ -22,19 +22,19 @@
   <link href="<?php echo base_url(); ?>assets/Template/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/Template/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/Template/vendors/animate.css/animate.min.css" rel="stylesheet">
-  
+
     <link href="<?php echo base_url(); ?>assets/Template/vendors/dropzone/dist/min/dropzone.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/Template/build/css/custom.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/formValidation.min.css">
     <link href="<?php echo base_url(); ?>assets/css/jquery.growl.css" rel="stylesheet">
 
-  <script src="<?php echo base_url(); ?>assets/js/Helper/jsHelper.js"></script> 
+  <script src="<?php echo base_url(); ?>assets/js/Helper/jsHelper.js"></script>
   <script src="<?php echo base_url(); ?>assets/Template/vendors/jquery/dist/jquery.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/ckeditor/ckeditor.js"></script>
-  
 
-  
+
+
   <style>
     #navtittlemin
       {
@@ -56,7 +56,7 @@
     }
   </style>
 
-  
+
 
   <script>
     var base_url = '<?php echo base_url(); ?>';
@@ -75,16 +75,14 @@
           <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
             <div class="menu_section">
               <ul class="nav side-menu">
-                <li><a href="<?php echo site_url('PrincipalEjecucion/PrincipalEjec'); ?>"> <i class="fa fa-home"></i> INICIO<span class=""></span></a>
+                <li><a href="<?php echo site_url('Usuario/'); ?>"> <i class="fa fa-home"></i> INICIO<span class=""></span></a>
                 </li>
 
               </ul>
-
-              <h3><span style="font-size: 10px;">Administración</span></h3>
               <ul class="nav side-menu">
-                    <li><a href="<?php echo site_url('Usuario/'); ?>"><i class="fa fa-suitcase"></i>Usuario</a></li>
-                </ul>
-
+                <li><a href="<?php echo site_url('Usuario/'); ?>"><i class="fa fa-suitcase"></i>Usuario</a></li>
+                <li><a href="<?php echo site_url('Usuario/AsignarProyectos'); ?>"><i class="fa fa-suitcase"></i>Asignacion de de proyectos</a></li>
+              </ul>
             </div>
           </div>
           <div class="sidebar-footer hidden-small">
