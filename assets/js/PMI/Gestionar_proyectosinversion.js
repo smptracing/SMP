@@ -80,14 +80,22 @@ $(document).on("ready" ,function()
             processData:false,
             success:function(resp)
             {
-                if (resp=='1')
+                resp = JSON.parse(resp);
+                if(resp.proceso == 'Correcto')
                 {
-                    swal("REGISTRADO","Se regristró correctamente", "success");
+                    swal(resp.proceso,resp.mensaje,"success");
                 }
-                if (resp=='2')
+                if(resp.proceso == 'Advertencia')
                 {
-                    swal("NO SE REGISTRÓ","NO se regristró ", "error");
+                    swal(resp.proceso,resp.mensaje,"info");
                 }
+                if(resp.proceso=='Error')
+                {
+                    swal(resp.proceso,resp.mensaje,"error");
+                }
+                /*((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje,"success"));
+                ((resp.proceso=='Advertencia') ? swal(resp.proceso,resp.mensaje,"info"));
+                ((resp.proceso=='Error') ? swal(resp.proceso,resp.mensaje,"error"));*/
                 $('#TableUbigeoProyecto_x').dataTable()._fnAjaxUpdate();
             }
         });

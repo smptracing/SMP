@@ -16,26 +16,19 @@ class bancoproyectos_modal extends CI_Model
         $data=$this->db->query("execute sp_Gestionar_SIAF   @codigo_snip ='".$CodigoSiaf."',  @Opcion='" .$Opcion. "'");
         return $data->result();
     }
-    //Add ubigeo a un proyecto
-    public function Add_ubigeo_proyecto($flat, $id_ubigeo_pi, $id_ubigeo, $txt_id_pip, $direccion, $txt_latitud,
-        $txt_longitud) {
-        $this->db->query("execute sp_Gestionar_UbigeoPI'" . $flat . "','"
-            . $id_ubigeo_pi . "','"
-            . $id_ubigeo . "','"
-            . $txt_id_pip . "','"
-            . $direccion . "','"
-            . $txt_latitud . "','"
-            . $txt_longitud . "'");
-        if ($this->db->affected_rows() > 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+
+    public function InsertarUbigeo_Pi($ubigeoPi) 
+    {
+        $this->db->insert('UBIGEO_PI', $ubigeoPi);
+        return array(
+            'filasAfectadas' => $this->db->affected_rows(),
+            'ultimoId' => $this->db->affected_rows(),
+        );
+        //return $this->db->affected_rows();
+        //return $this->db->affected_rows();
     }
-    //Add estado ciclo PI
+
+
     public function AddEstadoCicloPI($flat, $id_estado_ciclo_pi, $txt_id_pip_Ciclopi, $Cbx_EstadoCiclo, $dateFechaIniC)
     {
         $this->db->query("execute sp_Gestionar_EstadoCicloPI'" . $flat . "','"
@@ -49,32 +42,19 @@ class bancoproyectos_modal extends CI_Model
             return false;
         }
     }
-    //Add Rubro PI
-    public function AddRurboPI($flat, $id_rubro_pi, $Cbx_RubroPI, $txt_id_pip_RubroPI, $dateFechaIniC)
+ 	//Add Rubro PI
+    public function AgregarRubro($rubroPi)
     {
-        $this->db->query("execute sp_Gestionar_RubroPI'" . $flat . "','"
-            . $id_rubro_pi . "','"
-            . $Cbx_RubroPI . "','"
-            . $txt_id_pip_RubroPI . "','"
-            . $dateFechaIniC . "'");
-        if ($this->db->affected_rows() > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        $this->db->set($rubroPi);
+        $this->db->insert('RUBRO_PI');
+        return $this->db->affected_rows();
     }
-    //Add Modalidad Ejecución
-    public function AddModalidadEjecPI($flat, $id_modalidad_ejec_pi, $Cbx_ModalidadEjec, $txt_id_pip_ModalidadEjec)
+
+    public function AgregarModalidadEjecucionPip($modalidadPi)
     {
-        $this->db->query("execute sp_Gestionar_ModalidadEjecucionPI'" . $flat . "','"
-            . $id_modalidad_ejec_pi . "','"
-            . $Cbx_ModalidadEjec . "','"
-            . $txt_id_pip_ModalidadEjec . "'");
-        if ($this->db->affected_rows() > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        $this->db->set($modalidadPi);
+        $this->db->insert('MODALIDAD_EJECUCION_PI');
+        return $this->db->affected_rows();
     }
 
     // AGREGAR UN PROYECTO

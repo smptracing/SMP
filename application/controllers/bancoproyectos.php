@@ -348,8 +348,68 @@ class bancoproyectos extends CI_Controller
         $this->load->view('Front/Pmi/UbicacionPI/editar',['provincias' => $provincias,'detalleUbigeoPi'  => $detalleUbigeoPi, 'UbicacionPipProvinciDistrito' => $UbicacionPipProvinciDistrito]);
     }
 
-//Agregar ubigeo en proyecto de inversión
     public function Add_ubigeo_proyecto()
+    {
+        if ($this->input->is_ajax_request()) 
+        {
+            $flag = 1;
+
+            $c_data['id_ubigeo'] = $this->input->post("cbx_distrito");
+            $c_data['id_pi']= $this->input->post("txt_id_pip");
+            $c_data['direccion_ubigeo_pi'] = "NULL";
+            $c_data['latitud'] = $this->input->post("txt_latitud");
+            $c_data['longitud'] = $this->input->post("txt_longitud");
+            
+            $q1 = $this->bancoproyectos_modal->InsertarUbigeo_Pi($c_data);
+            $datos = array();
+            $msg = array();
+            if($q1['filasAfectadas']>0)
+            {
+                $flag = 0;
+                $config['upload_path']   = './uploads/ImgUbicacionProyecto/';
+                $config['allowed_types'] = 'gif|jpg|png';
+                $config['max_size']      = '2000';
+                $config['max_width']     ='2024';
+                $config['max_height']    = '2008';
+                $this->load->library('upload', $config);
+                $this->upload->initialize($config);
+
+                $datos['q2'] = 1;
+                if($this->upload->do_upload('ImgUbicacion')) 
+                {
+                    $file_info = $this->upload->data();
+                    $imagen = $file_info['file_name'];
+                    $c_data['id_ubigeo_pi'] = $q1['ultimoId'];
+                    $c_data['url_img']= $imagen;
+                    $q2 = $this->Model_PMI_ubicacion->insertarUbigeoPiImg($c_data);
+                    if($q2>0)
+                    {
+                        $datos['q2'] = 0;
+                    }                    
+                }
+            }
+
+            if($flag == 1)
+            {
+                $msg = (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']);
+            }
+            if($flag==0 && $datos['q2'] == 0)
+            {
+                $msg = (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']);
+            }
+            if($flag==0 && $datos['q2'] == 1)
+            {
+               $msg = (['proceso' => 'Advertencia', 'mensaje' => 'ha ocurrido un error al subir la imagen ']); 
+            }         
+            $this->load->view('front/json/json_view', ['datos' => $msg]);
+        }
+        else 
+        {
+            show_404();
+        }
+    }
+
+    /*public function Add_ubigeo_proyecto()
     {
         if ($this->input->is_ajax_request()) {
 
@@ -416,7 +476,7 @@ class bancoproyectos extends CI_Controller
         } else {
             show_404();
         }
-    }
+    }*/
 
     public function Editar_ubigeo_proyecto()
     {
