@@ -73,7 +73,7 @@
         <div class="modal-content">
             <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Registrar proyectos de inversión </h4>
+            <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Registrar Proyecto de Inversión </h4>
         </div>
         <div class="modal-body">
             <div class="row">
