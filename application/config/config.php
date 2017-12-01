@@ -47,8 +47,9 @@ $config['base_url'] .= str_replace(basename($_SERVER['ORIG_SCRIPT_NAME']),"",$_S
 |
  */
 $config['base_url']   = "/smp/";
-$config['index_page'] = '';
+$config['ups_url'] = 'http://200.37.200.182:8088';
 
+$config['index_page'] = '';
 $config['variableExpedienteTecnico'] = 0;
 /*
 |--------------------------------------------------------------------------

@@ -79,7 +79,6 @@
     <script src="<?php echo base_url(); ?>assets/vendors/butons/buttons.flash.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendors/butons/buttons.html5.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendors/butons/buttons.print.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets/plugins/input-mask/jquery.inputmask.min.js"></script>
     <link href="<?php echo base_url(); ?>assets/css/main.css" rel="stylesheet" type="text/css">
 <!-- admin LTE-->
  <script src="<?php echo base_url(); ?>assets/adminlte/adminlte.min.js"></script>

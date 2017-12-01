@@ -1,4 +1,5 @@
 <script src="<?php echo base_url(); ?>assets/vendors/echarts/dist/echarts-all-3.js"></script>
+
 <div class="right_col" role="main">
 	<div class="">
 		<div class="clearfix"></div>
@@ -829,6 +830,7 @@ $("#CodigoUnico").on( "click", function()
 	{
 		paginaAjaxDialogo(null, 'Ver Detallado Mensualizado',{ anio: anio, meta:meta}, base_url+'index.php/PrincipalReportes/DetalleMensualizado', 'GET', null, null, false, true);
 	}
+
 	function detalladoMensualizadoFuenteFinan(anio,meta)
 	{
 		paginaAjaxDialogo(null, 'Ver Detalle',{ anio: anio, meta:meta}, base_url+'index.php/PrincipalReportes/DetalleMensualizadoFuenteFinan', 'GET', null, null, false, true);
@@ -836,10 +838,11 @@ $("#CodigoUnico").on( "click", function()
 
     function siafActualizador() {
     	var codigounico=$("#BuscarPip").val();
-		var start = +new Date();
+		var start = +new Date();			
+		var ups_url = '<?php $ups_url = $this->config->item('ups_url'); echo $ups_url; ?>'
 
     	$.ajax({
-				url: "http://192.168.1.100:8080/Importacion/codigo/"+codigounico,
+				url: ups_url + "/Importacion/codigo/" + codigounico,
 				type: "POST",
 				cache: false,
 		        contentType:false,

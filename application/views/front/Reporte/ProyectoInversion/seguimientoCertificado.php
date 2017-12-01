@@ -162,9 +162,10 @@ function siafActualizadorCertificado()
 {
     var anio = $("#BuscarPipAnio").val();
 	var start = +new Date();
-			
+	var ups_url = '<?php $ups_url = $this->config->item('ups_url'); echo $ups_url; ?>'
+
 	$.ajax({
-			url: "http://192.168.1.100:8080/Importacion/anio/"+anio,
+			url: ups_url + "/Importacion/anio/"+anio,
 			type: "POST",
 			cache: false,
 	        contentType:false,
