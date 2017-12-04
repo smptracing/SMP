@@ -114,8 +114,7 @@ $(document).on("ready" ,function()
                 ((resp.flag==0) ? swal("Correcto","Los datos fueron registrados correctamente","success") : swal("Error","Ha ocurrido un error inesperado.","error"));
                 formReset();
                 $('#VentanaRegistraPIP').modal('hide');
-                $('#table_proyectos_inversion').dataTable()._fnAjaxUpdate();
-                
+                $('#table_proyectos_inversion').dataTable()._fnAjaxUpdate();                
             }
         });
     });
@@ -225,8 +224,15 @@ var listar_ubigeo_pi=function(id_pi)
         {"data":"url_img",
             "render" : function ( data, type, row, meta)
             {
-                url= base_url+"uploads/ImgUbicacionProyecto/"+data;
-                return '<img height="20" width="20" src="'+url+'" />';
+                if(data==null)
+                {
+                    return '<p>Sin Imagen</p>';
+                }
+                else
+                {
+                    url= base_url+"uploads/ImgUbicacionProyecto/"+data;
+                    return '<img height="20" width="20" src="'+url+'" />';
+                }                
             }},
         {"data":'id_ubigeo_pi',render:function(data,type,row)
         {
@@ -824,7 +830,7 @@ var ListarModalidad=function(valor)
                 html +="<option  value="+registros[i]["id_modalidad_ejec"]+"> "+registros[i]["nombre_modalidad_ejec"]+" </option>";
             };
             $("#Cbx_ModalidadEjec").html(html);
-            $('select[name=Cbx_ModalidadEjec]').val(valor);IONADO
+            $('select[name=Cbx_ModalidadEjec]').val(valor);
             $('select[name=Cbx_ModalidadEjec]').change();
             $('.selectpicker').selectpicker('refresh');
         }
@@ -847,7 +853,7 @@ var listarEstadoCiclo=function(valor)
                 html +="<option  value="+registros[i]["id_estado_ciclo"]+"> "+registros[i]["nombre_estado_ciclo"]+" </option>";
             };
             $("#Cbx_EstadoCiclo").html(html);
-            $('select[name=Cbx_EstadoCiclo]').val(valor);DO
+            $('select[name=Cbx_EstadoCiclo]').val(valor);
             $('select[name=Cbx_EstadoCiclo]').change();
             $('.selectpicker').selectpicker('refresh');
         }

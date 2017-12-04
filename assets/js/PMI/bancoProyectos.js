@@ -58,20 +58,21 @@ $(document).ready(function(){
         {
             return;
         }
+        var formData=new FormData($("#form_AddOperacionMantenimiento")[0]);
+        
         $.ajax({
             url:base_url+"index.php/bancoproyectos/AddOperacionMantenimiento",
-            type:$(this).attr('method'),
-            data:$(this).serialize(),
+            type:'POST',
+            enctype: 'multipart/form-data',
+            data:formData,
+            cache: false,
+            contentType:false,
+            processData:false,
             success:function(resp)
             {
-                if (resp=='1')
-                {
-                    swal("REGISTRADO","Se regristró correctamente", "success");
-                }
-                if (resp=='2')
-                {
-                    swal("NO SE REGISTRÓ","NO se regristró ", "error");
-                }
+                resp = JSON.parse(resp);
+                console.log(resp);
+
                 $('#Table_OperacionMantenimiento').dataTable()._fnAjaxUpdate();
                 $('#form_AddOperacionMantenimiento')[0].reset();
                 $('#ventana_ver_operacion_mantenimeinto').modal('hide');

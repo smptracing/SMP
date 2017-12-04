@@ -635,7 +635,7 @@
         <div class="modal-body">
         <div class="row">
             <div class="col-xs-12">
-                <form class="form-horizontal " id="form_AddOperacionMantenimiento" action="" method="POST" >
+                <form class="form-horizontal" id="form_AddOperacionMantenimiento" >
                     <input id="txt_id_pip_OperMant" name="txt_id_pip_OperMant" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
                     <div class="item form-group" id="validarAddOperacionMantenimiento">
                         <div class="col-md-12 col-xs-12 col-sm-12">
@@ -645,11 +645,11 @@
                             <textarea class="form-control" rows="2" readonly="readonly" class="notValidate" id="nombreProyectoOperacion" name="nombreProyectoOperacion"></textarea><br>
                         </div>
                         <div class="row">
-                            <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="col-md-2 col-sm-6 col-xs-12">
                                 <label>Monto Operación</label>
                                 <input  class="form-control" autocomplete="off" id="txt_monto_operacion" name="txt_monto_operacion" type="text">
                             </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="col-md-5 col-sm-6 col-xs-12">
                                 <label>Responsable Operación</label>
                                 <input type="text" class="form-control" autocomplete="off" id="txt_responsable_operacion" name="txt_responsable_operacion" >
                             </div>
@@ -659,16 +659,19 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="col-md-2 col-sm-6 col-xs-12">
                                 <label>Monto Mantenimiento</label>
                                 <input class="form-control" id="txt_monto_mantenimiento" name="txt_monto_mantenimiento" autocomplete="off" type="text">
                             </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="col-md-5 col-sm-6 col-xs-12">
                                 <label>Responsable Mantenimiento</label>
                                 <input type="text" class="form-control" id="txt_responsable_mantenimiento" name="txt_responsable_mantenimiento" autocomplete="off">
                             </div>
+                            <div class="col-md-5 col-sm-6 col-xs-12">
+                                <label>Acta de Compromiso:</label>
+                                <input type="file" class="form-control" id="fileActaCompromiso" name="fileActaCompromiso" autocomplete="off">
+                            </div>
                         </div>
-
                     </div>
                     <div class="item form-group">
                         <div class="col-md-3 col-sm-6 col-xs-12">
@@ -679,8 +682,8 @@
                         </div>
                     </div>
 
-                     <div class="ln_solid"></div>
-                     <div class="x_panel" style="background-color: #EEEEEE;">
+                    <div class="ln_solid"></div>
+                    <div class="x_panel" style="background-color: #EEEEEE;">
                     <center>
                     <table  id="Table_OperacionMantenimiento" class="table   table-hover" >
                     <thead >
@@ -709,7 +712,7 @@
                       </div>
                       </center>
 
-                    </form>
+                </form>
                         </div><!-- /.span -->
                  </div><!-- /.row -->
         </div>

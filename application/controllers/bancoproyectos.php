@@ -697,25 +697,60 @@ class bancoproyectos extends CI_Controller
             show_404();
         }
     }
-    //agregar operacion y mantenimiento
+
     public function AddOperacionMantenimiento()
     {
         if ($this->input->is_ajax_request())
         {
-            $flat                          = "C";
+            $config['upload_path']          = './uploads/';
+            $config['allowed_types']        = '*';
+            $config['max_size']             = 100;
+            $config['max_width']            = 1024;
+            $config['max_height']           = 768;
+
+            $this->load->library('upload', $config);
+
+            if (!$this->upload->do_upload('fileActaCompromiso'))
+            {
+                $error = array('error' => $this->upload->display_errors());
+
+                var_dump($error);
+
+                $this->load->view('front/json/json_view',['datos' => $error]);  
+
+                //$this->load->view('fileActaCompromiso', $error);
+            }
+            else
+            {
+                $data = array('upload_data' => $this->upload->data());
+                var_dump($data);
+
+                $this->load->view('front/json/json_view', ['datos' => $data]);
+                
+            }
+            exit;
+
+
+
+            /*$flat                          = "C";
             $id_OperacionMantenimiento     = "0";
             $txt_id_pip_OperMant           = $this->input->post("txt_id_pip_OperMant");
             $txt_monto_operacion           = floatval(str_replace(",","",$this->input->post("txt_monto_operacion")));
             $txt_monto_mantenimiento       = floatval(str_replace(",","",$this->input->post("txt_monto_mantenimiento")));
             $txt_responsable_operacion     = $this->input->post("txt_responsable_operacion");
             $txt_responsable_mantenimiento = $this->input->post("txt_responsable_mantenimiento");
-            if ($this->bancoproyectos_modal->AddOperacionMantenimiento($flat, $id_OperacionMantenimiento, $txt_id_pip_OperMant, $txt_monto_operacion, $txt_monto_mantenimiento, $txt_responsable_operacion, $txt_responsable_mantenimiento) == false) {
+            if ($this->bancoproyectos_modal->AddOperacionMantenimiento($flat, $id_OperacionMantenimiento, $txt_id_pip_OperMant, $txt_monto_operacion, $txt_monto_mantenimiento, $txt_responsable_operacion, $txt_responsable_mantenimiento) == false) 
+            {
                 echo "1";
-            } else {
+            } 
+            else 
+            {
                 echo "2";
-            }
+            }*/
 
-        } else {
+        } 
+        else 
+        {
             show_404();
         }
     }

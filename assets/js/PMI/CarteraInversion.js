@@ -65,15 +65,18 @@ var listaCarteraInversion=function()
 		},
 		{ "data" : "numero_resolucion_cartera" },
 		//{ "data" : "url_resolucion_cartera" },
-		{"data":'url_resolucion_cartera',render: function ( data, type, row ) {
+		{"data":'url_resolucion_cartera',render: function ( data, type, row ) 
+			{
 				if(row.url_resolucion_cartera=='' || row.url_resolucion_cartera==null)
-					return '';
+				{
+					return '<p>No hay archivo</p>';
+				}
 				else
-					return "<a href='../../uploads/cartera/"+row.url_resolucion_cartera+"' target='_blank'><i class='fa fa-file fa-2x'></i></a>";
+					url= base_url+"uploads/cartera/"+row.url_resolucion_cartera;
+					return "<a href='"+url+"' target='_blank'><i class='fa fa-file fa-2x'></i></a>";
 					
 			}
 		},
-		/*{ "defaultContent" : "<button type='button' class='editar btn btn-success btn-xs' data-toggle='modal' data-target='#VentanaVerCartera'><i class='ace-icon fa fa-eye bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>" }*/
 		{"data":'anios',render: function ( data, type, row ) {
 			   /* return "<button type='button'  data-toggle='tooltip'  class='editar btn btn-primary btn-xs' data-toggle='modal' onclick=paginaAjaxDialogo('null','Modificar',{id_cartera:"+row.id_cartera+"},'"+base_url+"index.php/CarteraInversion/itemCartera','GET',null,null,false,true);><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button'  data-toggle='tooltip'  class='editar btn btn-success btn-xs' data-toggle='modal' onclick=paginaAjaxDialogo('null','Modificar',{id_cartera:"+row.id_cartera+"},'"+base_url+"index.php/CarteraInversion/editarCartera','GET',null,null,false,true);><i class='ace-icon fa fa-pencil bigger-120'></i></button>";*/
 				return "<button type='button'  data-toggle='tooltip'  class='editar btn btn-success btn-xs' data-toggle='modal' onclick=paginaAjaxDialogo('null','Modificar',{id_cartera:"+row.id_cartera+"},'"+base_url+"index.php/CarteraInversion/editarCartera','GET',null,null,false,true);><i class='ace-icon fa fa-pencil bigger-120'></i></button>";
