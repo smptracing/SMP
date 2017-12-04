@@ -10,34 +10,28 @@
                 </div>
                 <div class="x_content">
                     <!--<button onclick="paginaAjaxDialogo(null,'Registrar Usuario',null,base_url+'index.php/Usuario/itemUsuario','GET',null,null,false,true);" class="btn btn-primary"><span class="fa fa-plus"></span>  NUEVO</button>-->
-                    <button onclick="paginaAjaxDialogo(null,'Registrar Usuario',null,base_url+'#','GET',null,null,false,true);" class="btn btn-primary"><span class="fa fa-plus"></span>  Asignar</button>
                     <div class="table-responsive">
                         <table id="table_usuario_proyecto"  class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
-                                    <td class="col-md-1 col-xs-12"><input type="checkbox" onchange="checkAll(this)" name="" value=""> Todo</td>
-                                    <td class="col-md-2 col-xs-12">Usuario</td>
-                                    <td class="col-md-1 col-xs-12">Corrreo Electrónico</td>
-                                    <td class="col-md-1 col-xs-12">Tipo de Usuario</td>
-                                    <td class="col-md-1 col-xs-12">Opciones</td>
+                                    <td class="col-md-1 col-xs-12">Usuario</td>
+                                    <td class="col-md-3 col-xs-12">Nombres</td>
+                                    <td class="col-md-1 col-xs-12">Opción</td>
                                 </tr>
                             </thead>
                             <tbody>
-                              <?php foreach($lista as $item){ ?>
+                              <?php foreach($listaUsuario as $item){ ?>
                                   <tr>
+                                    <td><?= $item->usuario ?></td>
+                                    <td><?= $item->nombres." ".$item->apellido_p ?></td>
                                     <td>
-                                      <input type="checkbox" name="checkbox" value="<?php echo $item->id_pi ?>">
+                                      <button onclick="paginaAjaxDialogo(null,'Editar Usuario',{id_persona:<?=$item->id_persona?>},base_url+'index.php/Usuario/asignarProyecto','GET',null,null,false,true)"; class="btn btn-primary btn-xs"><span class="fa fa-edit"></span> Editar</button>
                                     </td>
-                                    <td><?= $item->nombre_pi ?></td>
-                                    <td><?= $item->codigo_unico_pi ?></td>
-                                    <td></td>
-                                    <td></td>
                                   </tr>
                               <?php } ?>
                             </tbody>
                         </table>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -82,6 +76,7 @@ function checkAll(ele) {
         for (var i = 0; i < checkboxes.length; i++) {
             if (checkboxes[i].type == 'checkbox' && checkboxes[i].name == 'checkbox' ) {
                 checkboxes[i].checked = true;
+                console.log(checkboxes[i].value);
             }
         }
     } else {
@@ -92,4 +87,21 @@ function checkAll(ele) {
         }
     }
 }
+// Pass the checkbox name to the function
+function getCheckedBoxes(chkboxName) {
+  var checkboxes = document.getElementsByName(chkboxName);
+  var checkboxesChecked = [];
+  // loop over them all
+  for (var i=0; i<checkboxes.length; i++) {
+     // And stick the checked ones onto an array...
+     if (checkboxes[i].checked) {
+        checkboxesChecked.push(checkboxes[i]);
+        console.log(checkboxes[i].value);
+     }
+  }
+  // Return the array if it is non-empty, or null
+  return checkboxesChecked.length > 0 ? checkboxesChecked : null;
+}
+
+
 </script>

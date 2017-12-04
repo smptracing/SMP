@@ -94,14 +94,15 @@ class Usuario extends CI_Controller {
       	$this->load->view('layout/USUARIO/footer');
 	}
 
-	public function AsignarProyectos()
+	public function Proyectos()
 	{
 
 		$this->load->model('bancoproyectos_modal');
 		$data = $this->bancoproyectos_modal->getBancoProyecto();
+		$listaUsuarios = $this->Model_Usuario->listaUsuario();
 
 		$this->load->view('layout/USUARIO/header');
-		$this->load->view('Front/Usuario/proyecto_usuario',['lista'=>$data]);
+		$this->load->view('Front/Usuario/proyecto_usuario',['lista'=>$data,'listaUsuario'=>$listaUsuarios]);
 		$this->load->view('layout/USUARIO/footer');
 	}
 
@@ -123,6 +124,18 @@ class Usuario extends CI_Controller {
 			$this->load->view('Front/Usuario/itemUsuario');
     	}
 
+	}
+	function asignarProyecto()
+	{
+		if($this->input->get('id_persona')!='')
+		{
+			$data['arrayUsuario']=$this->Model_Usuario->getUsuario($this->input->get('id_persona'))[0];
+		$this->load->view('Front/Usuario/asignar_proyecto',$data);
+		}
+		else
+		{
+		$this->load->view('Front/Usuario/asignar_proyecto');
+		}
 	}
 	function accesodenegado()
 	{

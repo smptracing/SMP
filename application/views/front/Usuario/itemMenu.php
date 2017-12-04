@@ -24,7 +24,7 @@
           </div>
         </div>
 
-        
+
       	</div>
          <div class="item form-group">
 
@@ -52,7 +52,7 @@
           <div class="col-md-3 col-sm-3 col-xs-12">
               <input type="text" id="tx_class_icono" name="tx_class_icono" class="form-control" value="<?php if(isset($arrayMenu->class_icono)) echo $arrayMenu->class_icono;?>"  />
             </div>
-           
+
 
         </div>
          <div class="item form-group">
@@ -70,7 +70,7 @@
                 Cancelar</button>
             </div>
       </div>
-        
+
       </form>
     </div>
   </div>
@@ -92,7 +92,7 @@
                   htmlTemp+="<option value="+registros[i]["id_menu"]+">"+registros[i]["nombre"]+"</option>";
             }
             $("#cbx_menuPadre").html(htmlTemp);
-            $('.selectpicker').selectpicker('refresh'); 
+            $('.selectpicker').selectpicker('refresh');
         }
     });
 }
@@ -116,7 +116,7 @@ $(function(){
       $('#frmMenu').data('formValidation').validate();
       if($('#frmMenu').data('formValidation').isValid()==true){
         $('#frmMenu').submit();
-        $('#frmMenu').each(function(){ 
+        $('#frmMenu').each(function(){
           this.reset();
         });
         $('#frmMenu').data('formValidation').resetForm();
@@ -124,20 +124,20 @@ $(function(){
         $('#frmMenu').remove();
         $('#frmMenu').empty();
         $('#null').modal('hide');
-    }  
+    }
   });
   $("body").on("change","#cbx_nivel",function(e){
     if($("#cbx_nivel").val()=='2'){
       $("#ct_menuPadre").css("display","none");
-    }    
+    }
     else{
       $("#ct_menuPadre").css("display","");
     }
   });
-}); 
+});
 $(document).ready(function(){
- 
-    <?php       
+
+    <?php
     if(isset($arrayMenu->id_menu)){
     ?>
           listarMenuPadre("<?php echo $arrayMenu->id_menu_padre; ?>");
@@ -179,5 +179,5 @@ $(document).ready(function(){
 
       }
     });
-}); 
+});
 </script>
