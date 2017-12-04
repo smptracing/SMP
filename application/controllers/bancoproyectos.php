@@ -702,52 +702,44 @@ class bancoproyectos extends CI_Controller
     {
         if ($this->input->is_ajax_request())
         {
-            $config['upload_path']          = './uploads/';
-            $config['allowed_types']        = '*';
-            $config['max_size']             = 100;
-            $config['max_width']            = 1024;
-            $config['max_height']           = 768;
+            $nombreArchivo = $_FILES['fileActaCompromiso']['name'];
+            $extension = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
 
-            $this->load->library('upload', $config);
+            $this->db->trans_start();
 
-            if (!$this->upload->do_upload('fileActaCompromiso'))
+            $c_data['id_pi']=$this->input->post("txt_id_pip_OperMant");
+            $c_data['monto_operacion']=floatval(str_replace(",","",$this->input->post("txt_monto_operacion")));
+            $c_data['monto_mantenimiento']=floatval(str_replace(",","",$this->input->post("txt_monto_mantenimiento")));
+            $c_data['responsable_operacion']=$this->input->post("txt_responsable_operacion");
+            $c_data['responsable_mantenimiento']=$this->input->post("txt_responsable_mantenimiento");
+            $c_data['urlArchivo']=$extension;
+
+            $ultimoId = $this->bancoproyectos_modal->AgregarOperacionyMantenimiento($c_data);
+
+            if($nombreArchivo != '' || $nombreArchivo != null)
             {
-                $error = array('error' => $this->upload->display_errors());
+                $config['upload_path'] = './uploads/ActaCompromisoOperacionyMantenimiento/';
+                $config['allowed_types'] = '*';
+                $config['max_size'] = 50000;
+                $config['max_width'] = 2000;
+                $config['max_height'] = 2000;
+                $config['file_name'] = $ultimoId;
 
-                var_dump($error);
+                $this->load->library('upload', $config);
 
-                $this->load->view('front/json/json_view',['datos' => $error]);  
-
-                //$this->load->view('fileActaCompromiso', $error);
+                if (!$this->upload->do_upload('fileActaCompromiso'))
+                {    
+                    $error = array('error' => $this->upload->display_errors());
+                    $this->load->view('front/json/json_view',['datos' => $error]);                
+                }
             }
-            else
-            {
-                $data = array('upload_data' => $this->upload->data());
-                var_dump($data);
 
-                $this->load->view('front/json/json_view', ['datos' => $data]);
-                
-            }
-            exit;
+            $this->db->trans_complete();
 
+            $msg = array();
 
-
-            /*$flat                          = "C";
-            $id_OperacionMantenimiento     = "0";
-            $txt_id_pip_OperMant           = $this->input->post("txt_id_pip_OperMant");
-            $txt_monto_operacion           = floatval(str_replace(",","",$this->input->post("txt_monto_operacion")));
-            $txt_monto_mantenimiento       = floatval(str_replace(",","",$this->input->post("txt_monto_mantenimiento")));
-            $txt_responsable_operacion     = $this->input->post("txt_responsable_operacion");
-            $txt_responsable_mantenimiento = $this->input->post("txt_responsable_mantenimiento");
-            if ($this->bancoproyectos_modal->AddOperacionMantenimiento($flat, $id_OperacionMantenimiento, $txt_id_pip_OperMant, $txt_monto_operacion, $txt_monto_mantenimiento, $txt_responsable_operacion, $txt_responsable_mantenimiento) == false) 
-            {
-                echo "1";
-            } 
-            else 
-            {
-                echo "2";
-            }*/
-
+            $msg = ($ultimoId != '' ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
+            $this->load->view('front/json/json_view', ['datos' => $msg]);    
         } 
         else 
         {

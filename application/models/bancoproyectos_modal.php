@@ -22,7 +22,7 @@ class bancoproyectos_modal extends CI_Model
         $this->db->insert('UBIGEO_PI', $ubigeoPi);
         return array(
             'filasAfectadas' => $this->db->affected_rows(),
-            'ultimoId' => $this->db->affected_rows(),
+            'ultimoId' => $this->db->insert_id(),
         );
         //return $this->db->affected_rows();
         //return $this->db->affected_rows();
@@ -416,8 +416,14 @@ class bancoproyectos_modal extends CI_Model
             return false;
         }
     }
+
+    public function AgregarOperacionyMantenimiento($operacionPi)
+    {
+        $this->db->insert('OPERACION_MANTENIMIENTO_PI', $operacionPi);
+        return $this->db->insert_id();
+    }
     //registrar operacion y mantenimiento
-    public function AddOperacionMantenimiento($flat, $id_OperacionMantenimiento, $txt_id_pip_OperMant, $txt_monto_operacion, $txt_monto_mantenimiento, $txt_responsable_operacion, $txt_responsable_mantenimiento)
+    /*public function AddOperacionMantenimiento($flat, $id_OperacionMantenimiento, $txt_id_pip_OperMant, $txt_monto_operacion, $txt_monto_mantenimiento, $txt_responsable_operacion, $txt_responsable_mantenimiento)
     {
         $this->db->query("execute sp_Gestionar_OperacionMantenimientoPI'" . $flat . "','"
             . $id_OperacionMantenimiento . "','"
@@ -431,7 +437,9 @@ class bancoproyectos_modal extends CI_Model
         } else {
             return false;
         }
-    }
+    }*/
+
+
     //listar Operacion Mantenimiento
     public function Get_OperacionMantenimiento($flat, $id_pi)
     {

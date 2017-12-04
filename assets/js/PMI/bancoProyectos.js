@@ -58,6 +58,7 @@ $(document).ready(function(){
         {
             return;
         }
+        
         var formData=new FormData($("#form_AddOperacionMantenimiento")[0]);
         
         $.ajax({
@@ -71,8 +72,7 @@ $(document).ready(function(){
             success:function(resp)
             {
                 resp = JSON.parse(resp);
-                console.log(resp);
-
+                ((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje,"success") : swal(resp.proceso,resp.mensaje,"error"));
                 $('#Table_OperacionMantenimiento').dataTable()._fnAjaxUpdate();
                 $('#form_AddOperacionMantenimiento')[0].reset();
                 $('#ventana_ver_operacion_mantenimeinto').modal('hide');
