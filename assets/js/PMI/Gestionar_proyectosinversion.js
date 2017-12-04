@@ -93,9 +93,6 @@ $(document).on("ready" ,function()
                 {
                     swal(resp.proceso,resp.mensaje,"error");
                 }
-                /*((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje,"success"));
-                ((resp.proceso=='Advertencia') ? swal(resp.proceso,resp.mensaje,"info"));
-                ((resp.proceso=='Error') ? swal(resp.proceso,resp.mensaje,"error"));*/
                 $('#TableUbigeoProyecto_x').dataTable()._fnAjaxUpdate();
             }
         });
@@ -166,6 +163,20 @@ var listar_pip_OperMant=function(id_pi)
                 {"data":"responsable_operacion"},
                 {"data":"monto_mantenimiento"},
                 {"data":"responsable_mantenimiento"},
+                {"data":"urlArchivo", render: function ( data, type, row ) 
+                    {
+                        if(row.urlArchivo=='' || row.urlArchivo==null)
+                        {
+                            return '<p>No hay archivo</p>';
+                        }
+                        else
+                        {
+                            url= base_url+"uploads/ActaCompromisoOperacionyMantenimiento/"+row.id_operacion_mantenimiento_pi+"."+row.urlArchivo;
+                            return "<a href='"+url+"' target='_blank'><i class='fa fa-file fa-2x'></i></a>";
+
+                        }
+                            
+                    }},
                 {"data":"fecha_registro"},
                 {"data":"id_operacion_mantenimiento_pi",render:function(data,type,row){
                     return "<button type='button'  data-toggle='tooltip'  class='editar btn btn-danger btn-xs' data-toggle='modal' onclick=eliminarOperacionMantenimiento("+data+",this)><i class='ace-icon fa fa-trash-o bigger-120'></i></button>";

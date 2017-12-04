@@ -422,24 +422,7 @@ class bancoproyectos_modal extends CI_Model
         $this->db->insert('OPERACION_MANTENIMIENTO_PI', $operacionPi);
         return $this->db->insert_id();
     }
-    //registrar operacion y mantenimiento
-    /*public function AddOperacionMantenimiento($flat, $id_OperacionMantenimiento, $txt_id_pip_OperMant, $txt_monto_operacion, $txt_monto_mantenimiento, $txt_responsable_operacion, $txt_responsable_mantenimiento)
-    {
-        $this->db->query("execute sp_Gestionar_OperacionMantenimientoPI'" . $flat . "','"
-            . $id_OperacionMantenimiento . "','"
-            . $txt_id_pip_OperMant . "','"
-            . $txt_monto_operacion . "','"
-            . $txt_monto_mantenimiento . "','"
-            . $txt_responsable_operacion . "','"
-            . $txt_responsable_mantenimiento . "'");
-        if ($this->db->affected_rows() > 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }*/
-
-
+    
     //listar Operacion Mantenimiento
     public function Get_OperacionMantenimiento($flat, $id_pi)
     {
