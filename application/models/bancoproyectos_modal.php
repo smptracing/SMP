@@ -441,11 +441,23 @@ class bancoproyectos_modal extends CI_Model
 
     public function eliminarOperacionMantenimiento($id_operacion_mantenimiento_pi)
     {
-         $flat='D';
-         $this->db->query("execute sp_Gestionar_OperacionMantenimientoPI @opcion = '".$flat . "', @id_operacion_mantenimiento_pi ='".$id_operacion_mantenimiento_pi. "'");
-         return true;
+        $this->db->where('id_operacion_mantenimiento_pi', $id_operacion_mantenimiento_pi);
+        $this->db->delete('OPERACION_MANTENIMIENTO_PI');
+
+        return $this->db->affected_rows();
+    }
+
+    public function getOperacionyMantenimiento($id_operacion_mantenimiento_pi)
+    {
+        $this->db->select('OPERACION_MANTENIMIENTO_PI.*');
+        $this->db->from('OPERACION_MANTENIMIENTO_PI');
+        $this->db->where('OPERACION_MANTENIMIENTO_PI.id_operacion_mantenimiento_pi ',$id_operacion_mantenimiento_pi);
+        $query = $this->db->get();
+        return $query->result()[0];
 
     }
+    
+
     public function eliminarrubroPI($id_rubro_pi)
     {
          $flat='D';

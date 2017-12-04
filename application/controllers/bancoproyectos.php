@@ -688,12 +688,22 @@ class bancoproyectos extends CI_Controller
         if ($this->input->is_ajax_request()) 
         {
             $id_operacion_mantenimiento_pi = $this->input->post("id_operacion_mantenimiento_pi");
+            $extension = $this->bancoproyectos_modal->getOperacionyMantenimiento($id_operacion_mantenimiento_pi)->urlArchivo;
+            $data = $this->bancoproyectos_modal->eliminarOperacionMantenimiento($id_operacion_mantenimiento_pi);
+            $msg = array();
+            if($data>0)
+            {
+                if (file_exists("uploads/ActaCompromisoOperacionyMantenimiento/".$id_operacion_mantenimiento_pi.".".$extension))
+                { 
+                    unlink("uploads/ActaCompromisoOperacionyMantenimiento/".$id_operacion_mantenimiento_pi.".".$extension);
+                } 
+                $msg = ($data>0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
 
-            $this->bancoproyectos_modal->eliminarOperacionMantenimiento($id_operacion_mantenimiento_pi);
-            
-            echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Se elimino Correctamente el registro.']);exit;
-
-        } else {
+                $this->load->view('front/json/json_view', ['datos' => $msg]); 
+            }
+        } 
+        else 
+        {
             show_404();
         }
     }

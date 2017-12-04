@@ -179,7 +179,7 @@ var listar_pip_OperMant=function(id_pi)
                     }},
                 {"data":"fecha_registro"},
                 {"data":"id_operacion_mantenimiento_pi",render:function(data,type,row){
-                    return "<button type='button'  data-toggle='tooltip'  class='editar btn btn-danger btn-xs' data-toggle='modal' onclick=eliminarOperacionMantenimiento("+data+",this)><i class='ace-icon fa fa-trash-o bigger-120'></i></button>";
+                    return "<button type='button' data-toggle='tooltip'  class='editar btn btn-danger btn-xs' data-toggle='modal' onclick=eliminarOperacionMantenimiento("+data+",this)><i class='ace-icon fa fa-trash-o bigger-120'></i></button>";
                 }}
             ],
            "language":idioma_espanol
@@ -200,7 +200,7 @@ var eliminarOperacionMantenimiento=function(id_operacion_mantenimiento_pi,elemen
     },
     function()
     {
-        paginaAjaxJSON({ "id_operacion_mantenimiento_pi" : id_operacion_mantenimiento_pi }, base_url+'index.php/bancoproyectos/eliminarOperacionMantenimiento', 'POST', null, function(objectJSON)
+        paginaAjaxJSON({ "id_operacion_mantenimiento_pi" : id_operacion_mantenimiento_pi}, base_url+'index.php/bancoproyectos/eliminarOperacionMantenimiento', 'POST', null, function(objectJSON)
         {
             objectJSON=JSON.parse(objectJSON);
             swal(
