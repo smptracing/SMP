@@ -13,6 +13,6 @@ class Model_Mo_Producto extends CI_Model
 		$this->db->select('PROYECTO_INVERSION.*');
 		$this->db->from('PROYECTO_INVERSION');
 		$this->db->where('PROYECTO_INVERSION.codigo_unico_pi',$codigoUnico);
-		return $this->db->get()->result()[0];
+		return $this->db->get()->result();
 	}
 }

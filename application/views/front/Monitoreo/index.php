@@ -87,15 +87,11 @@ function BuscarProyectocodigo()
 				cache:false,
 				success:function(resp)
 				{
-					console.log(resp);
 					resp = JSON.parse(resp);
-					console.log(resp);
 					if(resp.length==1)
 					{
-						alert("Hola");
-						/*var buscar="true";
-						paginaAjaxDialogo(null, 'Registrar Expediente Técnico',{CodigoUnico:inputValue,buscar:buscar}, base_url+'index.php/Expediente_Tecnico/insertar', 'GET', null, null, false, true);
-	  					swal("Correcto!", "Se Encontro el Proyecto: " + inputValue, "success");*/
+						paginaAjaxDialogo(null, 'Registrar Producto',{codigoUnico:inputValue}, base_url+'index.php/Mo_MonitoreodeProyectos/InsertarProducto', 'GET', null, null, false, true);
+	  					swal("Correcto!", "Se Encontro el Proyecto: " + inputValue, "success");
 					}
 					else
 					{
