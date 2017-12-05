@@ -108,7 +108,12 @@ $(document).on("ready" ,function()
             success:function(resp)
             {
                 resp = JSON.parse(resp);
-                ((resp.flag==0) ? swal("Correcto","Los datos fueron registrados correctamente","success") : swal("Error","Ha ocurrido un error inesperado.","error"));
+                var mensajeError = 'Ha ocurrido un error inesperado.';
+                for (var i = 0 ; i < resp.msg.length; i--) 
+                {
+                    mensajeError += resp.msg[i];
+                }             
+                ((resp.flag==0) ? swal("Correcto","Los datos fueron registrados correctamente","success") : swal("Error",mensajeError,"error"));
                 formReset();
                 $('#VentanaRegistraPIP').modal('hide');
                 $('#table_proyectos_inversion').dataTable()._fnAjaxUpdate();                

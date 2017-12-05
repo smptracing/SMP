@@ -57,21 +57,19 @@ class bancoproyectos extends CI_Controller
 
                 //flag and msg variables
                 $flag = 0;
-                $msg = array();
+                $msg = [];
 
                 //Let's start the fire
                 $q1 = $this->Model_ProyectoInversion->Insert_pi_pip($c_data);
 
                  if( $q1 > 0){
 
-                    $msg[0] = ';)';
-
                     //INSERT estado_ciclo_pi
                     $d_data['id_pi'] = $q1;
                     $d_data['fecha_estado_ciclo_pi'] = fecha_mssql();
                     if($this->ESTADO_CICLO_PI_MODEL->Insertar_ciclo($d_data) == FALSE){  
                         $flag = 1;
-                        $msg[1] = 'Error: x001ci';
+                        $msg[] = 'Error: x001ci';
                     }  
 
                     //INSERT rubro_pi
@@ -79,7 +77,7 @@ class bancoproyectos extends CI_Controller
                     $e_data['fecha_rubro_pi'] = fecha_mssql();
                     if($this->Model_RubroE->Insertar_rubro($e_data) == FALSE){  
                         $flag = 1;
-                        $msg[2] = 'Error: x001r';
+                        $msg[] = 'Error: x001r';
                     }   
 
                     //INSERT modalidad_ejecucion_pi
@@ -87,13 +85,13 @@ class bancoproyectos extends CI_Controller
                     $f_data['fecha_modalidad_ejec_pi'] = fecha_mssql();
                     if($this->Model_ModalidadE->Insertar_modalidade($f_data) == FALSE){  
                         $flag = 1;
-                        $msg[3] = 'Error: x001m';
+                        $msg[] = 'Error: x001m';
                     }  
-
-
-                }else{
+                }
+                else
+                {
                     $flag = 1;
-                    $msg[0] = 'Error x00q1';
+                    $msg[] = 'Error x00q1';
                 }
 
 
