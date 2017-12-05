@@ -8,7 +8,7 @@
 					<div class="clearfix"></div>
 				</div>
 				<div class="x_content">
-					<button class="btn btn-primary" style="margin-top: 5px;margin-bottom: 15px;"><span class="fa fa-plus"></span>  NUEVO</button>
+					<button onclick="BuscarProyectocodigo();" class="btn btn-primary" style="margin-top: 5px;margin-bottom: 15px;"><span class="fa fa-plus"></span>  NUEVO</button>
 					<div class="table-responsive">
 						<table id="tablaMonitoreodeProyectos" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 							<thead>
@@ -58,4 +58,54 @@ $(document).ready(function()
 		"language":idioma_espanol
 	});
 });
+function BuscarProyectocodigo()
+{
+	swal({
+		title: "Buscar",
+		text: "Proyecto: Ingrese Código Único del proyecto",
+		type: "input",
+		showCancelButton: true,
+		closeOnConfirm: false,
+		cancelButtonText:"CERRAR" ,
+		confirmButtonText: "BUSCAR",
+		inputPlaceholder: "Ingrese Codigo Unico",
+
+	}, function (inputValue)
+	{
+		if (inputValue === "")
+	  	{
+	  		swal.showInputError("Ingrese código Único");
+    		return false
+	  	}
+		else 
+		{
+			event.preventDefault();
+			$.ajax({
+				"url":base_url+"index.php/Mo_MonitoreodeProyectos/BuscarProyecto",
+				type:"GET", 
+				data:{inputValue:inputValue},
+				cache:false,
+				success:function(resp)
+				{
+					console.log(resp);
+					resp = JSON.parse(resp);
+					console.log(resp);
+					if(resp.length==1)
+					{
+						alert("Hola");
+						/*var buscar="true";
+						paginaAjaxDialogo(null, 'Registrar Expediente Técnico',{CodigoUnico:inputValue,buscar:buscar}, base_url+'index.php/Expediente_Tecnico/insertar', 'GET', null, null, false, true);
+	  					swal("Correcto!", "Se Encontro el Proyecto: " + inputValue, "success");*/
+					}
+					else
+					{
+						swal.showInputError("No se encontro el  Codigo Unico. Intente Nuevamente!");
+	    				return false
+					}					
+				}
+			});
+		}
+
+	});
+}
 </script>
