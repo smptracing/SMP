@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SMP TRACING</title>
+  <title>SMP TRACING Beta</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link href="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <!--<link href="<?php echo base_url(); ?>assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">-->
@@ -231,7 +231,7 @@
                          </div>
                      </div>
           <?php } ?>
-        <?php endforeach; ?>
+        <?php endforeach; ?> 
 
       </div>
     </section>

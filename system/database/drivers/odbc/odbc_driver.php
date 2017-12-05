@@ -246,7 +246,10 @@ class CI_DB_odbc_driver extends CI_DB_driver {
 	 * Begin Transaction
 	 *
 	 * @return	bool
+
 	 */
+
+	
 	protected function _trans_begin()
 	{
 		return odbc_autocommit($this->conn_id, FALSE);
