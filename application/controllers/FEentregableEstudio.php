@@ -59,7 +59,7 @@ show_404();
     {
         if ($this->input->is_ajax_request()) {
 
-            
+
            $id_etapaestudio = $this->session->userdata('Etapa_Estudio');
           //para eliminr las sesiones que se queda almacenado
            $this->session->unset_tempdata('Codigo_único');
@@ -76,7 +76,7 @@ show_404();
                 $data = array('NombreEstudio' =>$NombreEstudio,'Codigo_único'=>$Codigo_único);
                 $this->session->set_userdata($data);
             //fin nombre detale estudio*/
-            
+
             $txt_id_etapa_estudio =$this->session->userdata('Etapa_Estudio');
             $datos                = $this->Model_FEentregableEstudio->get_Entregables($txt_id_etapa_estudio);
             echo json_encode($datos);
@@ -98,9 +98,9 @@ show_404();
             $txt_observacio_entre    = $this->input->post("txt_observacio_entre");
             $txt_levantamintoO_entre = $this->input->post("txt_levantamintoO_entre");
 
-         
+
              $data = $this->Model_FEentregableEstudio->Add_Entregable($opcion, $id_entregable, $txt_denominacion_entre, $id_etapa_estudio, $txt_nombre_entre, $txt_valoracion_entre, $txt_avance_entre, $txt_observacio_entre, $txt_levantamintoO_entre);
-             echo json_encode("SE REGISTRO CORRECTAMENTE EL ENTREGABLE");   
+             echo json_encode("SE REGISTRO CORRECTAMENTE EL ENTREGABLE");
         } else {
             show_404();
         }
@@ -116,7 +116,7 @@ show_404();
             $txt_id_etapa_estudio = $this->session->userdata('Etapa_Estudio');
             $listarSumaEntregables=$this->Model_FEentregableEstudio->sumaValorizaEntregebleValidar($txt_id_etapa_estudio,$id_entregable);
             $SumaEntregable=0;
-            foreach ($listarSumaEntregables as $itemp) 
+            foreach ($listarSumaEntregables as $itemp)
             {
                 $SumaEntregable=$SumaEntregable+(int)$itemp->valoracion;
             }
@@ -124,13 +124,13 @@ show_404();
             if($totalValidar<=100)
             {
                 $data = $this->Model_FEentregableEstudio->editar_Entregable($id_entregable,$Editxt_nombre_entre,$Editxt_denoMultiple,$Editxt_valoracion_entre);
-                echo json_encode("Se actualizo la valoracion  del entregable");   
+                echo json_encode("Se actualizo la valoracion  del entregable");
             }else
             {
-                echo json_encode("No es posible actualizar la valoración  del entregable");   
+                echo json_encode("No es posible actualizar la valoración  del entregable");
             }
 
-            
+
         } else {
             show_404();
         }
@@ -219,12 +219,12 @@ show_404();
         }
     }
     //fin generar entregables con gantt
-  
+
     public function _load_layout($template)
     {
-        $this->load->view('layout/Formulacion_Evaluacion/FEentregableEstudio/header');
+        $this->load->view('layout/Formulacion_Evaluacion/header');
         $this->load->view($template);
-        $this->load->view('layout/Formulacion_Evaluacion/FEentregableEstudio/footer');
+        $this->load->view('layout/Formulacion_Evaluacion/footer');
     }
 
 }
