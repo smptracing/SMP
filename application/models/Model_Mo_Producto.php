@@ -16,6 +16,14 @@ class Model_Mo_Producto extends CI_Model
 		return $this->db->get()->result();
 	}
 
+	function ProyectoPorId($idPi)
+	{
+		$this->db->select('PROYECTO_INVERSION.*');
+		$this->db->from('PROYECTO_INVERSION');
+		$this->db->where('PROYECTO_INVERSION.id_pi',$idPi);
+		return $this->db->get()->result();
+	}
+
 	function insertar($data)
 	{
 		$this->db->insert('MO_PRODUCTO',$data);

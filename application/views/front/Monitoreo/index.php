@@ -29,7 +29,9 @@
 										<td></td>
 										<td>
 											<a href="<?= site_url('Expediente_Tecnico/verdetalle/'.$value->id_pi);?>" role="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top" title="Detalle"><span class="fa fa-search-plus"></span></a>
-											<a href="<?= site_url('Expediente_Tecnico/verdetalle/'.$value->id_pi);?>" role="button" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Editar"><span class="fa fa-edit"></span></a>
+
+											<a onclick="paginaAjaxDialogo(null, 'Editar Producto',{ id_pi: '<?=$value->id_pi?>' }, base_url+'index.php/Mo_MonitoreodeProyectos/EditarProducto', 'GET', null, null, false, true);return false;" role="button" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Editar"><span class="fa fa-edit"></span></a>
+
 											<a href="<?= site_url('Expediente_Tecnico/verdetalle/'.$value->id_pi);?>" role="button" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Eliminar"><span class="fa fa-trash-o"></span></a>									
 										</td>
 									</tr>

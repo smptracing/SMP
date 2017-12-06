@@ -45,4 +45,15 @@ class Mo_MonitoreodeProyectos extends CI_Controller
         $this->load->view('front/Monitoreo/Mo_Producto/insertar', ['proyecto' => $proyecto]); 
 
     }
+
+    function EditarProducto()
+    {
+        if($_POST)
+        {
+
+        }
+        $idPi = $this->input->get('id_pi');
+        $proyecto = $this->Model_Mo_Producto->ProyectoPorId($idPi);
+        $this->load->view('front/Monitoreo/Mo_Producto/editar', ['proyecto' => $proyecto]);
+    }
 }

@@ -31,27 +31,3 @@
 		</button>
 	</div>
 </div>
-
-<script>
-	function agregarProducto()
-	{
-		paginaAjaxJSON({ "idPi" : $('#id_pi').val(), "descripcionProducto" : $('#txtDescripcionProducto').val().trim() }, base_url+'index.php/Mo_MonitoreodeProyectos/InsertarProducto', 'POST', null, function(objectJSON)
-		{
-			resp=JSON.parse(objectJSON);
-
-			((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje,"success") : swal(resp.proceso,resp.mensaje,"error"));
-            
-            if(resp.proceso=='Correcto')
-            {
-            	var htmlTemp= '<div class="panel"><div class="panel-heading"><h4 class="panel-title" style="float:right;"><a role = "button" class="btn btn-round btn-warning btn-xs"><span class="fa fa-plus" data-toggle="tooltip" data-placement="top" title="Agregar Actividad"></span></a></h4><a class="panel-title" id="heading'+resp.idProducto+'" data-toggle="collapse" data-parent="#accordion" href="#collapse'+resp.idProducto+'" aria-expanded="false" aria-controls="collapse'+resp.idProducto+'" style="text-transform: uppercase;">'+replaceAll(replaceAll($('#txtDescripcionProducto').val().trim(), '<', '&lt;'), '>', '&gt;')+'</a></div></div>';
-            	htmlTemp+='<div id = "listaActividad'+resp.idProducto+'"></div>';
-
-				$('#accordion').append(htmlTemp);
-
-				$('#txtDescripcionProducto').val('');
-
-            }
-		}, false, true);
-
-	}
-</script>

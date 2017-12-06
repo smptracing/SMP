@@ -74,8 +74,11 @@ class Tipo_Gasto_FE extends CI_Controller
 		$data = $this->Model_TipoGastoFE->eliminar($idTipoGasto);
 		if($data>0)
 		{
+			$this->session->set_flashdata('correcto', 'Se eliminó correctamente el registro');
 			redirect('Tipo_Gasto_FE/index');
 		}
+		$this->session->set_flashdata('error', 'Ha ocurrido un error inesperado');
+		redirect('Tipo_Gasto_FE/index');
 
 	}
 
