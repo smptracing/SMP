@@ -48,7 +48,7 @@
 																			<?=$item->desc_tipo_gasto?>
 																	    </td>
 																		<td>
-																		  	<button type='button' class='editar btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Modificar tipo  de gasto',{id:'<?=$item->id_tipo_gasto?>'}, base_url+'index.php/Tipo_Gasto_FE/editar', 'POST', null, null, false, true)"><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>
+																		  	<button type='button' class='editar btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Modificar tipo  de gasto',{id:'<?=$item->id_tipo_gasto?>'}, base_url+'index.php/Tipo_Gasto_FE/editar', 'POST', null, null, false, true)"><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#' onclick="eliminar('<?=$item->id_tipo_gasto?>');"><i class='fa fa-trash-o'></i></button>
 																		</td>
 																	  </tr>
 															     <?php } ?>
@@ -88,4 +88,23 @@ if($sessionTempError){ ?>
 			"language":idioma_espanol
 		});
 	});
+</script>
+<script>
+	function eliminar(codigo)
+	{
+		swal(
+        {
+            title: "Confirmación",
+            text: "Realmente desea realizar esta operación",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Aceptar",
+            cancelButtonText: "Cerrar",
+            closeOnConfirm: false,
+        },
+        function()
+        {
+            window.location.href = base_url+'index.php/Tipo_Gasto_FE/eliminar/'+codigo;
+        });
+	}
 </script>

@@ -69,6 +69,15 @@ class Tipo_Gasto_FE extends CI_Controller
 	    
 	    return $this->load->view('Front/PresupuestoEstudioInversion/TipoGastoFE/editar', ['TipoGastoFE' => $TipoGastoFE]);		
 	}
+	public function eliminar($idTipoGasto)
+	{
+		$data = $this->Model_TipoGastoFE->eliminar($idTipoGasto);
+		if($data>0)
+		{
+			redirect('Tipo_Gasto_FE/index');
+		}
+
+	}
 
 	function _load_layout($template)
     {

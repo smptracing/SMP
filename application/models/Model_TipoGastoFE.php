@@ -47,4 +47,10 @@ class Model_TipoGastoFE extends CI_Model
 
 	  	return true;
   	}
+  	function eliminar($id_tipo_gasto)
+  	{
+  		$this->db->where('id_tipo_gasto', $id_tipo_gasto);
+        $this->db->delete('FE_TIPO_GASTO');
+        return $this->db->affected_rows();
+  	}
 }
