@@ -6,27 +6,29 @@ $(document).on("ready" ,function(){
 	$("#form-AddFuenteFinanciamiento").submit(function(event)
 	{
 		event.preventDefault();
-
+    var formData=new FormData($("#form-AddFuenteFinanciamiento")[0]);
 		$.ajax(
 		{
-			url : base_url+"index.php/FuenteFinanciamiento/AddFuenteFinanciamiento",
-			type : $(this).attr('method'),
-			data : $(this).serialize(),
+      type:"POST",
+      enctype:'multipart/form-data',
+      url: base_url+"index.php/FuenteFinanciamiento/AddFuenteFinanciamiento",
+      data:formData,
+      cache:false,
+      contentType:false,
+      processData:false,
 			success : function(resp)
 			{
-				if(resp=='1')
-				{
-					swal("Se registró...","", "success");
-					
-					formReset();
-
-					$('#VentanaRegFuenteFinanciamiento').modal('hide');
-				}
-
-				if(resp=='2')
-				{
-					swal("NO se registró...","", "error");
-				}
+     var registros=jQuery.parseJSON(resp);
+          if(registros.flag==0)
+          {
+            swal("",registros.msg, "success");
+            $('#form-AddFuenteFinanciamiento')[0].reset();
+            $("#VentanaRegFuenteFinanciamiento").modal("hide");
+          }
+          else
+          {
+            swal("",registros.msg,"error");
+          }
 
 				$('#dynamic-table-FuenteFinanciamiento').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
 				formReset();
@@ -35,34 +37,45 @@ $(document).on("ready" ,function(){
 	});
 
 	//limpiar campos
-	function formReset()
+	/*function formReset()
 	{
 		document.getElementById("form-AddFuenteFinanciamiento").reset();
 		document.getElementById("form-EditFuenteFinanciamiento").reset();
-	}
+	}*/
 
 	//formulario para ediotar
 	$("#form-EditFuenteFinanciamiento").submit(function(event)
 	{
 		event.preventDefault();
-
+    var formData=new FormData($("#form-EditFuenteFinanciamiento")[0]);
 		$.ajax(
 		{
-			url : base_url+"index.php/FuenteFinanciamiento/UpdateFuenteFinanciamiento",
-			type : $(this).attr('method'),
-			data : $(this).serialize(),
+			type:"POST",
+      enctype:'multipart/form-data',
+      url : base_url+"index.php/FuenteFinanciamiento/UpdateFuenteFinanciamiento",
+      data: formData,
+      cache: false,
+      contentType:false,
+      processData:false,
 			success : function(resp)
 			{
-				swal(resp,"", "success");
-
+        var registros=jQuery.parseJSON(resp);
+        if(registros.flag==0){
+          swal("",registros.msg,"success");
+          $('#form-EditFuenteFinanciamiento')[0].reset();
+          $('#VentanaEditFuenteFinanciamiento').modal('hide');     
+        }
+        else{
+          swal("",registros.msg,"error");
+        }
 				$('#dynamic-table-FuenteFinanciamiento').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
-				
-				formReset();
+					formReset();
 
-				$('#VentanaEditFuenteFinanciamiento').modal('hide');
 			}
 		});
 	});
+
+  
 });
 
          /*listra */
@@ -96,9 +109,9 @@ $(document).on("ready" ,function(){
                 var  Fuente_FinanciamientoData=function(tbody,myTableFFTO){
                     $(tbody).on("click","button.editar",function(){
                         var data=myTableFFTO.row( $(this).parents("tr")).data();
-                        listaComboRubroEjecucion();//ACTUALIZAR EL COMBOX EN EL MODAL MODIFICAR
+                    //    listaComboRubroEjecucion();//ACTUALIZAR EL COMBOX EN EL MODAL MODIFICAR
                         var txt_IdFuenteFinanciamientoM=$('#txt_IdFuenteFinanciamientoM').val(data.id_fuente_finan);
-                        var cbxRubroEjecucionM=$('#cbxRubroEjecucionM').val(data.id_rubro);
+                   //     var cbxRubroEjecucionM=$('#cbxRubroEjecucionM').val(data.id_rubro);
                         var txt_NombreFuenteFinanciamientoM=$('#txt_NombreFuenteFinanciamientoM').val(data.nombre_fuente_finan);
                         var txt_AcronimoFuenteFinanciamientoM=$('#txt_AcronimoFuenteFinanciamientoM').val(data.acronimo_fuente_finan);
                    
@@ -109,9 +122,8 @@ $(document).on("ready" ,function(){
                   $(tbody).on("click","button.eliminar",function(){
                         var data=myTableFFTO.row( $(this).parents("tr")).data();
                         var id_fuente_finan=data.id_fuente_finan;
-                        console.log(data);
                          swal({
-                                title: "Desea eliminar ?",
+                                title: "Desea eliminar el Registro ?",
                                 text: "",
                                 type: "warning",
                                 showCancelButton: true,
@@ -125,11 +137,16 @@ $(document).on("ready" ,function(){
                                           type:"POST",
                                           data:{id_fuente_finan:id_fuente_finan},
                                           success:function(respuesta){
-                                            //alert(respuesta);
-                                            swal("Se eliminó corectamente.", "", "success");
-                                            $('#dynamic-table-FuenteFinanciamiento').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
-
-                                          }
+                                           var registros=jQuery.parseJSON(respuesta);
+                                           if(registros.flag==0){
+                                            swal("Elimando.",registros.msg, "success");
+                                            $('#dynamic-table-FuenteFinanciamiento').dataTable()._fnAjaxUpdate();
+                                           }
+                                           else{
+                                            swal("Error.",registros.msg, "error");
+                                            $('#dynamic-table-FuenteFinanciamiento').dataTable()._fnAjaxUpdate();
+                                           }
+                                           }
                                         });
                               });
                     });
