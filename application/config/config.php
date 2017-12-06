@@ -46,8 +46,9 @@ $config['base_url'] .= str_replace(basename($_SERVER['ORIG_SCRIPT_NAME']),"",$_S
 | variable so that it is blank.
 |
  */
-$config['base_url']   = "/SMP-dev";
+$config['base_url']   = "/";
 $config['index_page'] = 'index.php';
+$config['ups_url'] = 'http://200.37.200.182:8088';
 /*
 |--------------------------------------------------------------------------
 | URI PROTOCOL
