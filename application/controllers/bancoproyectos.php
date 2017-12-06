@@ -57,21 +57,19 @@ class bancoproyectos extends CI_Controller
 
                 //flag and msg variables
                 $flag = 0;
-                $msg = array();
+                $msg = [];
 
                 //Let's start the fire
                 $q1 = $this->Model_ProyectoInversion->Insert_pi_pip($c_data);
 
                  if( $q1 > 0){
 
-                    $msg[0] = ';)';
-
                     //INSERT estado_ciclo_pi
                     $d_data['id_pi'] = $q1;
                     $d_data['fecha_estado_ciclo_pi'] = fecha_mssql();
                     if($this->ESTADO_CICLO_PI_MODEL->Insertar_ciclo($d_data) == FALSE){  
                         $flag = 1;
-                        $msg[1] = 'Error: x001ci';
+                        $msg[] = 'Error: x001ci';
                     }  
 
                     //INSERT rubro_pi
@@ -79,7 +77,7 @@ class bancoproyectos extends CI_Controller
                     $e_data['fecha_rubro_pi'] = fecha_mssql();
                     if($this->Model_RubroE->Insertar_rubro($e_data) == FALSE){  
                         $flag = 1;
-                        $msg[2] = 'Error: x001r';
+                        $msg[] = 'Error: x001r';
                     }   
 
                     //INSERT modalidad_ejecucion_pi
@@ -87,13 +85,13 @@ class bancoproyectos extends CI_Controller
                     $f_data['fecha_modalidad_ejec_pi'] = fecha_mssql();
                     if($this->Model_ModalidadE->Insertar_modalidade($f_data) == FALSE){  
                         $flag = 1;
-                        $msg[3] = 'Error: x001m';
+                        $msg[] = 'Error: x001m';
                     }  
-
-
-                }else{
+                }
+                else
+                {
                     $flag = 1;
-                    $msg[0] = 'Error x00q1';
+                    $msg[] = 'Error x00q1';
                 }
 
 
@@ -408,76 +406,7 @@ class bancoproyectos extends CI_Controller
             show_404();
         }
     }
-
-    /*public function Add_ubigeo_proyecto()
-    {
-        if ($this->input->is_ajax_request()) {
-
-            $config['upload_path']   = './uploads/ImgUbicacionProyecto/';
-            $config['allowed_types'] = 'gif|jpg|png';
-            $config['max_size']      = '2000';
-            $config['max_width']     ='2024';
-            $config['max_height']    = '2008';
-            $this->load->library('upload', $config);
-
-            $this->upload->initialize($config);
-             if (!$this->upload->do_upload('ImgUbicacion')) {
-                    $flat         = "C ";
-                    $id_ubigeo_pi = "0";
-                    $id_ubigeo    = $this->input->post("cbx_distrito");
-                    $txt_id_pip   = $this->input->post("txt_id_pip");
-                    $direccion    = "null";
-                    $txt_latitud  = $this->input->post("txt_latitud");
-                    $txt_longitud = $this->input->post("txt_longitud");
-
-                    $file_info = $this->upload->data();
-                    $imagen = $file_info['file_name'];
-
-
-                    if ($this->bancoproyectos_modal->Add_ubigeo_proyecto($flat, $id_ubigeo_pi, $id_ubigeo, $txt_id_pip, $direccion, $txt_latitud, $txt_longitud) == false) {
-
-
-                        $dataUltima=$this->Model_PMI_ubicacion->ultipoUbigeoPEI();
-
-                        $this->Model_PMI_ubicacion->insertar($dataUltima->id_ubigeo_pi,$imagen);
-                        echo "1";
-
-                    } else {
-                        echo "2";
-                    }
-
-              } else {
-
-                    $flat         = "C ";
-                    $id_ubigeo_pi = "0";
-                    $id_ubigeo    = $this->input->post("cbx_distrito");
-                    $txt_id_pip   = $this->input->post("txt_id_pip");
-                    $direccion    = "null";
-                    $txt_latitud  = $this->input->post("txt_latitud");
-                    $txt_longitud = $this->input->post("txt_longitud");
-
-                    $file_info = $this->upload->data();
-                    $imagen = $file_info['file_name'];
-
-
-                    if ($this->bancoproyectos_modal->Add_ubigeo_proyecto($flat, $id_ubigeo_pi, $id_ubigeo, $txt_id_pip, $direccion, $txt_latitud, $txt_longitud) == false) {
-
-
-                        $dataUltima=$this->Model_PMI_ubicacion->ultipoUbigeoPEI();
-
-                        $this->Model_PMI_ubicacion->insertar($dataUltima->id_ubigeo_pi,$imagen);
-                        echo "1";
-
-                    } else {
-                        echo "2";
-                    }
-            }
-
-        } else {
-            show_404();
-        }
-    }*/
-
+    
     public function Editar_ubigeo_proyecto()
     {
 
@@ -688,12 +617,22 @@ class bancoproyectos extends CI_Controller
         if ($this->input->is_ajax_request()) 
         {
             $id_operacion_mantenimiento_pi = $this->input->post("id_operacion_mantenimiento_pi");
+            $extension = $this->bancoproyectos_modal->getOperacionyMantenimiento($id_operacion_mantenimiento_pi)->urlArchivo;
+            $data = $this->bancoproyectos_modal->eliminarOperacionMantenimiento($id_operacion_mantenimiento_pi);
+            $msg = array();
+            if($data>0)
+            {
+                if (file_exists("uploads/ActaCompromisoOperacionyMantenimiento/".$id_operacion_mantenimiento_pi.".".$extension))
+                { 
+                    unlink("uploads/ActaCompromisoOperacionyMantenimiento/".$id_operacion_mantenimiento_pi.".".$extension);
+                } 
+                $msg = ($data>0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
 
-            $this->bancoproyectos_modal->eliminarOperacionMantenimiento($id_operacion_mantenimiento_pi);
-            
-            echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Se elimino Correctamente el registro.']);exit;
-
-        } else {
+                $this->load->view('front/json/json_view', ['datos' => $msg]); 
+            }
+        } 
+        else 
+        {
             show_404();
         }
     }
@@ -702,52 +641,44 @@ class bancoproyectos extends CI_Controller
     {
         if ($this->input->is_ajax_request())
         {
-            $config['upload_path']          = './uploads/';
-            $config['allowed_types']        = '*';
-            $config['max_size']             = 100;
-            $config['max_width']            = 1024;
-            $config['max_height']           = 768;
+            $nombreArchivo = $_FILES['fileActaCompromiso']['name'];
+            $extension = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
 
-            $this->load->library('upload', $config);
+            $this->db->trans_start();
 
-            if (!$this->upload->do_upload('fileActaCompromiso'))
+            $c_data['id_pi']=$this->input->post("txt_id_pip_OperMant");
+            $c_data['monto_operacion']=floatval(str_replace(",","",$this->input->post("txt_monto_operacion")));
+            $c_data['monto_mantenimiento']=floatval(str_replace(",","",$this->input->post("txt_monto_mantenimiento")));
+            $c_data['responsable_operacion']=$this->input->post("txt_responsable_operacion");
+            $c_data['responsable_mantenimiento']=$this->input->post("txt_responsable_mantenimiento");
+            $c_data['urlArchivo']=$extension;
+
+            $ultimoId = $this->bancoproyectos_modal->AgregarOperacionyMantenimiento($c_data);
+
+            if($nombreArchivo != '' || $nombreArchivo != null)
             {
-                $error = array('error' => $this->upload->display_errors());
+                $config['upload_path'] = './uploads/ActaCompromisoOperacionyMantenimiento/';
+                $config['allowed_types'] = '*';
+                $config['max_size'] = 50000;
+                $config['max_width'] = 2000;
+                $config['max_height'] = 2000;
+                $config['file_name'] = $ultimoId;
 
-                var_dump($error);
+                $this->load->library('upload', $config);
 
-                $this->load->view('front/json/json_view',['datos' => $error]);  
-
-                //$this->load->view('fileActaCompromiso', $error);
+                if (!$this->upload->do_upload('fileActaCompromiso'))
+                {    
+                    $error = array('error' => $this->upload->display_errors());
+                    $this->load->view('front/json/json_view',['datos' => $error]);                
+                }
             }
-            else
-            {
-                $data = array('upload_data' => $this->upload->data());
-                var_dump($data);
 
-                $this->load->view('front/json/json_view', ['datos' => $data]);
-                
-            }
-            exit;
+            $this->db->trans_complete();
 
+            $msg = array();
 
-
-            /*$flat                          = "C";
-            $id_OperacionMantenimiento     = "0";
-            $txt_id_pip_OperMant           = $this->input->post("txt_id_pip_OperMant");
-            $txt_monto_operacion           = floatval(str_replace(",","",$this->input->post("txt_monto_operacion")));
-            $txt_monto_mantenimiento       = floatval(str_replace(",","",$this->input->post("txt_monto_mantenimiento")));
-            $txt_responsable_operacion     = $this->input->post("txt_responsable_operacion");
-            $txt_responsable_mantenimiento = $this->input->post("txt_responsable_mantenimiento");
-            if ($this->bancoproyectos_modal->AddOperacionMantenimiento($flat, $id_OperacionMantenimiento, $txt_id_pip_OperMant, $txt_monto_operacion, $txt_monto_mantenimiento, $txt_responsable_operacion, $txt_responsable_mantenimiento) == false) 
-            {
-                echo "1";
-            } 
-            else 
-            {
-                echo "2";
-            }*/
-
+            $msg = ($ultimoId != '' ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
+            $this->load->view('front/json/json_view', ['datos' => $msg]);    
         } 
         else 
         {

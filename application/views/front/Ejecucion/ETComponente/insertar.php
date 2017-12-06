@@ -239,7 +239,6 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 	}
 	function limpiarArbolCompletoMasOpciones()
 	{
-		//$('#divAgregarPartida').hide();
 
 		$('#ulComponenteMetaPartida').find('li').css({ "background-color" : "#ffffff" });
 
@@ -553,63 +552,85 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 			return;
 		}
 
-		var descripcionMeta=prompt('Descripción de la meta', '');
+		var descripcionMeta = '';
 
-		if(descripcionMeta==null || descripcionMeta.trim()=='')
+		swal({
+			title: "",
+			text: "Descripción de la Meta",
+			type: "input",
+			showCancelButton: true,
+			cancelButtonText:"CERRAR",
+			confirmButtonText: "ACEPTAR",
+			closeOnConfirm: false,
+		 	inputPlaceholder: ""
+		}, function (inputValue)
 		{
-			return;
-		}
+		  	if (inputValue === false) return false;
+		  	if (inputValue === "") 
+		  	{
+		    	swal.showInputError("Meta es un campo requerido");
+		    	return false
+		  	}
 
-		var existeMeta=false;
+		  	descripcionMeta = inputValue;
 
-		$($(elementoPadre).find('ul')[0]).find('> li').each(function(index, element)
-		{
-			if(replaceAll($(element).text(), ' ', '').toLowerCase()==replaceAll(descripcionMeta, ' ', '').toLowerCase())
+			if(descripcionMeta==null || descripcionMeta.trim()=='')
 			{
-				existeMeta=true;
-
-				return false;
+				return;
 			}
+
+			var existeMeta=false;
+
+			$($(elementoPadre).find('ul')[0]).find('> li').each(function(index, element)
+			{
+				if(replaceAll($(element).text(), ' ', '').toLowerCase()==replaceAll(descripcionMeta, ' ', '').toLowerCase())
+				{
+					existeMeta=true;
+
+					return false;
+				}
+			});
+
+			if(existeMeta)
+			{
+				swal(
+				{
+					title: '',
+					text: 'No se puede agregar dos metas iguales en el mismo nivel.',
+					type: 'error'
+				},
+				function(){});
+
+				return;
+			}
+
+			paginaAjaxJSON({ "idComponente" : idComponente, "descripcionMeta" : descripcionMeta.trim(), "idMetaPadre" : idMetaPadre }, base_url+'index.php/ET_Meta/insertar', 'POST', null, function(objectJSON)
+			{
+				objectJSON=JSON.parse(objectJSON);
+
+				swal(
+				{
+					title: '',
+					text: objectJSON.mensaje,
+					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+				},
+				function(){});
+
+				if(objectJSON.proceso=='Error')
+				{
+					return false;
+				}
+
+				var htmlTemp='<li>'+
+					'<input type="button" class="btn btn-default btn-xs" value="G" onclick="guardarCambiosMeta('+objectJSON.idMeta+');" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarMeta('+objectJSON.idMeta+', this);" style="width: 30px;"><button type="button" title="Mostrar Partidas" class="btn btn-default btn-xs" style="width: 30px;" data-toggle="collapse" data-target="#demo'+objectJSON.idMeta+'"><i class="fa fa-expand"></i></button><input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(\'\', $(this).parent(), '+objectJSON.idMeta+')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="+P" onclick="renderizarAgregarPartida($(this).parent(), '+objectJSON.idMeta+')" style="width: 30px;"><span style="text-transform: uppercase; color:#611e7b; font-weight: bold;" id="nombreMeta'+objectJSON.idMeta+'" contenteditable>'+descripcionMeta+'</span>';
+					htmlTemp+='<ul></ul></li>';
+
+				$($(elementoPadre).find('ul')[0]).append(htmlTemp);
+
+				limpiarArbolCompletoMasOpciones();
+			}, false, true);
 		});
-
-		if(existeMeta)
-		{
-			swal(
-			{
-				title: '',
-				text: 'No se puede agregar dos metas iguales en el mismo nivel.',
-				type: 'error'
-			},
-			function(){});
-
-			return;
-		}
-
-		paginaAjaxJSON({ "idComponente" : idComponente, "descripcionMeta" : descripcionMeta.trim(), "idMetaPadre" : idMetaPadre }, base_url+'index.php/ET_Meta/insertar', 'POST', null, function(objectJSON)
-		{
-			objectJSON=JSON.parse(objectJSON);
-
-			swal(
-			{
-				title: '',
-				text: objectJSON.mensaje,
-				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
-			},
-			function(){});
-
-			if(objectJSON.proceso=='Error')
-			{
-				return false;
-			}
-
-			var htmlTemp='<li>'+
-				'<input type="button" class="btn btn-default btn-xs" value="G" onclick="guardarCambiosMeta('+objectJSON.idMeta+');" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarMeta('+objectJSON.idMeta+', this);" style="width: 30px;"><button type="button" title="Mostrar Partidas" class="btn btn-default btn-xs" style="width: 30px;" data-toggle="collapse" data-target="#demo'+objectJSON.idMeta+'"><i class="fa fa-expand"></i></button><input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta(\'\', $(this).parent(), '+objectJSON.idMeta+')" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="+P" onclick="renderizarAgregarPartida($(this).parent(), '+objectJSON.idMeta+')" style="width: 30px;"><span style="text-transform: uppercase; color:#611e7b; font-weight: bold;" id="nombreMeta'+objectJSON.idMeta+'" contenteditable>'+descripcionMeta+'</span>';
-				htmlTemp+='<ul></ul></li>';
-
-			$($(elementoPadre).find('ul')[0]).append(htmlTemp);
-
-			limpiarArbolCompletoMasOpciones();
-		}, false, true);
+			
 	}
 
 	var elementoPadreParaAgregarPartida, metaPadreParaAgregarPartida;

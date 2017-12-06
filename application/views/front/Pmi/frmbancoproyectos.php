@@ -688,13 +688,14 @@
                     <table  id="Table_OperacionMantenimiento" class="table   table-hover" >
                     <thead >
                        <tr>
-                         <th  ><i class="fa fa-thumb-tack"></i> #</th>
-                         <th style="text-align: right;"   ><i class="fa fa-thumb-tack"></i> Monto Operación</th>
-                         <th  ><i class="fa fa-thumb-tack"></i> Responsable Operación</th>
-                         <th style="text-align: right;" ><i class="fa fa-thumb-tack"></i> Monto Operación</th>
-                         <th  ><i class="fa fa-thumb-tack"></i> Responsable Operación</th>
-                         <th  ><i class="fa fa-thumb-tack"></i> Fecha Registro</th>
-                         <th  ><i class="fa fa-thumb-tack"></i> Opción</th>
+                         <th></i> #</th>
+                         <th style="text-align: right;"> Monto Operación</th>
+                         <th> Responsable Operación</th>
+                         <th style="text-align: right;"> Monto Mantenimiento</th>
+                         <th> Responsable Mantenimiento</th>
+                         <th> Acta de Compromiso</th>
+                         <th> Fecha Registro</th>
+                         <th> Opción</th>
                       </tr>
                     </thead>
                     </table>

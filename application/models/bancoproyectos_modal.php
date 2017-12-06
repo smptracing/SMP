@@ -22,7 +22,7 @@ class bancoproyectos_modal extends CI_Model
         $this->db->insert('UBIGEO_PI', $ubigeoPi);
         return array(
             'filasAfectadas' => $this->db->affected_rows(),
-            'ultimoId' => $this->db->affected_rows(),
+            'ultimoId' => $this->db->insert_id(),
         );
         //return $this->db->affected_rows();
         //return $this->db->affected_rows();
@@ -416,22 +416,13 @@ class bancoproyectos_modal extends CI_Model
             return false;
         }
     }
-    //registrar operacion y mantenimiento
-    public function AddOperacionMantenimiento($flat, $id_OperacionMantenimiento, $txt_id_pip_OperMant, $txt_monto_operacion, $txt_monto_mantenimiento, $txt_responsable_operacion, $txt_responsable_mantenimiento)
+
+    public function AgregarOperacionyMantenimiento($operacionPi)
     {
-        $this->db->query("execute sp_Gestionar_OperacionMantenimientoPI'" . $flat . "','"
-            . $id_OperacionMantenimiento . "','"
-            . $txt_id_pip_OperMant . "','"
-            . $txt_monto_operacion . "','"
-            . $txt_monto_mantenimiento . "','"
-            . $txt_responsable_operacion . "','"
-            . $txt_responsable_mantenimiento . "'");
-        if ($this->db->affected_rows() > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        $this->db->insert('OPERACION_MANTENIMIENTO_PI', $operacionPi);
+        return $this->db->insert_id();
     }
+    
     //listar Operacion Mantenimiento
     public function Get_OperacionMantenimiento($flat, $id_pi)
     {
@@ -450,11 +441,23 @@ class bancoproyectos_modal extends CI_Model
 
     public function eliminarOperacionMantenimiento($id_operacion_mantenimiento_pi)
     {
-         $flat='D';
-         $this->db->query("execute sp_Gestionar_OperacionMantenimientoPI @opcion = '".$flat . "', @id_operacion_mantenimiento_pi ='".$id_operacion_mantenimiento_pi. "'");
-         return true;
+        $this->db->where('id_operacion_mantenimiento_pi', $id_operacion_mantenimiento_pi);
+        $this->db->delete('OPERACION_MANTENIMIENTO_PI');
+
+        return $this->db->affected_rows();
+    }
+
+    public function getOperacionyMantenimiento($id_operacion_mantenimiento_pi)
+    {
+        $this->db->select('OPERACION_MANTENIMIENTO_PI.*');
+        $this->db->from('OPERACION_MANTENIMIENTO_PI');
+        $this->db->where('OPERACION_MANTENIMIENTO_PI.id_operacion_mantenimiento_pi ',$id_operacion_mantenimiento_pi);
+        $query = $this->db->get();
+        return $query->result()[0];
 
     }
+    
+
     public function eliminarrubroPI($id_rubro_pi)
     {
          $flat='D';

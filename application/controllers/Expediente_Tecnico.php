@@ -397,9 +397,9 @@ class Expediente_Tecnico extends CI_Controller
     }*/
     function registroBuscarProyecto()
     {
-    		$CodigoUnico=$this->input->get('inputValue');
-			$Registrosproyectobuscos=$this->Model_ET_Expediente_Tecnico->ExpedienteContarRegistros($CodigoUnico);
-			echo  json_encode($Registrosproyectobuscos);
+		$CodigoUnico=$this->input->get('inputValue');
+		$Registrosproyectobuscos=$this->Model_ET_Expediente_Tecnico->ExpedienteContarRegistros($CodigoUnico);
+		echo  json_encode($Registrosproyectobuscos);
     }
 
 	function reportePdfMetrado($id_ExpedienteTecnico)
