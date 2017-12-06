@@ -46,7 +46,7 @@
                 <div class="item form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Adjuntar resolución<span class="required">*</span></label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        <div><input type="file" name="Cartera_Resoluacion" ></div>
+                        <div><input type="file" class="form-control" name="Cartera_Resoluacion" ></div>
                         <?php
                         if(isset($arrayCartera->url_resolucion_cartera) and $arrayCartera->url_resolucion_cartera!='' ){
                         ?>
@@ -57,6 +57,7 @@
                         }
                         ?>                                
                     </div>
+                    <p style="color: red; display: block;" id="Advertencia">Solo se aceptan archivos en formato PDF, JPG y PNG</p>
                 </div>
                 <div class="ln_solid"></div>
                 <div class="form-group">

@@ -31,13 +31,14 @@ function AddCartera()
 		if($nombreArchivo != '' || $nombreArchivo != null)
         {
             $config['upload_path'] = './uploads/cartera/';
-            $config['allowed_types'] = 'pdf|doc|xml|docx|PDF|DOC|DOCX|xls|xlsx';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size'] = 100;
             $config['max_width'] = 1024;
-	    	$config['max_height'] = 768;
-	    	$config['max_size'] = 15000;
+            $config['max_height'] = 768;
             $config['file_name'] = $nombreArchivo;
 
             $this->load->library('upload', $config);
+            $this->upload->initialize($config);
 
             if (!$this->upload->do_upload('Cartera_Resoluacion'))
             {    
