@@ -8,7 +8,8 @@ class Usuario extends CI_Controller {
 			parent::__construct();
 		$this->load->model('Model_Usuario');
 		$this->load->model('Model_Personal');
-
+		$this->load->model('bancoproyectos_modal');
+		$this->load->model('UsuarioProyecto_model');
 	}
 	function ListarTipoUsuarioMenu($tipo)
 	{
@@ -76,14 +77,27 @@ class Usuario extends CI_Controller {
 	      $cbb_estado =$this->input->post("cbb_estado");
 	      if($this->Model_Usuario->editUsuario($id_persona,$txt_usuario,$txt_contrasenia,$cbb_TipoUsuario,$cbb_listaMenuDestino,$cbb_estado) == true)
 		       echo "Se modificó el usuario";
-		  else
-		       echo "Error... no se grabaron los datos del Usuario.";
+			  else
+			       echo "Error... no se grabaron los datos del Usuario.";
 		}
 	     else
 	     {
 	      show_404();
 	     }
  	}
+
+	function editUsuarioProyecto() {
+		if ($this->input->is_ajax_request()) {
+
+			$id_persona =$this->input->post("id_persona");
+
+			$id_pi =$this->input->post("cbb_listaMenuDestino");
+
+			$this->Model_Usuario->editUsuarioProyecto($id_persona,$id_pi);
+		}	else {
+			show_404();
+		}
+	}
 
 
 	public function index()
@@ -96,8 +110,6 @@ class Usuario extends CI_Controller {
 
 	public function Proyectos()
 	{
-
-		$this->load->model('bancoproyectos_modal');
 		$data = $this->bancoproyectos_modal->getBancoProyecto();
 		$listaUsuarios = $this->Model_Usuario->listaUsuario();
 
@@ -129,12 +141,20 @@ class Usuario extends CI_Controller {
 	{
 		if($this->input->get('id_persona')!='')
 		{
-			$data['arrayUsuario']=$this->Model_Usuario->getUsuario($this->input->get('id_persona'))[0];
-		$this->load->view('Front/Usuario/asignar_proyecto',$data);
+
+			$data = $this->bancoproyectos_modal->getBancoProyecto();
+
+			$usuario=$this->Model_Usuario->getUsuario($this->input->get('id_persona'))[0];
+
+			$usuario_proyecto = $this->UsuarioProyecto_model->get_usuario_proyecto($this->input->get('id_persona'));
+			/*echo "<pre>";
+			var_dump($usuario_proyecto);
+			echo "</pre>";*/
+			$this->load->view('Front/Usuario/asignar_proyecto',['lista'=>$data,'usuario'=>$usuario,'usuario_proyecto'=>$usuario_proyecto]);
 		}
 		else
 		{
-		$this->load->view('Front/Usuario/asignar_proyecto');
+			show_404();
 		}
 	}
 	function accesodenegado()

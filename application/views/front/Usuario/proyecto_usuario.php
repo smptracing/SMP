@@ -25,7 +25,7 @@
                                     <td><?= $item->usuario ?></td>
                                     <td><?= $item->nombres." ".$item->apellido_p ?></td>
                                     <td>
-                                      <button onclick="paginaAjaxDialogo(null,'Editar Usuario',{id_persona:<?=$item->id_persona?>},base_url+'index.php/Usuario/asignarProyecto','GET',null,null,false,true)"; class="btn btn-primary btn-xs"><span class="fa fa-edit"></span> Editar</button>
+                                      <button onclick="paginaAjaxDialogo(null,'Asignar Proyecto',{id_persona:<?=$item->id_persona?>},base_url+'index.php/Usuario/asignarProyecto','GET',null,null,false,true)"; class="btn btn-primary btn-xs"><span class="fa fa-edit"></span> Editar</button>
                                     </td>
                                   </tr>
                               <?php } ?>
@@ -38,6 +38,7 @@
     </div>
     <div class="clearfix"></div>
 </div>
+
 <?php
 $sessionTempCorrecto=$this->session->flashdata('correcto');
 $sessionTempError=$this->session->flashdata('error');
@@ -69,39 +70,5 @@ $(document).ready(function()
         "language":idioma_espanol
     });
 });
-
-function checkAll(ele) {
-    var checkboxes = document.getElementsByTagName('input');
-    if (ele.checked) {
-        for (var i = 0; i < checkboxes.length; i++) {
-            if (checkboxes[i].type == 'checkbox' && checkboxes[i].name == 'checkbox' ) {
-                checkboxes[i].checked = true;
-                console.log(checkboxes[i].value);
-            }
-        }
-    } else {
-        for (var i = 0; i < checkboxes.length; i++) {
-            if (checkboxes[i].type == 'checkbox' && checkboxes[i].name == 'checkbox' ) {
-                checkboxes[i].checked = false;
-            }
-        }
-    }
-}
-// Pass the checkbox name to the function
-function getCheckedBoxes(chkboxName) {
-  var checkboxes = document.getElementsByName(chkboxName);
-  var checkboxesChecked = [];
-  // loop over them all
-  for (var i=0; i<checkboxes.length; i++) {
-     // And stick the checked ones onto an array...
-     if (checkboxes[i].checked) {
-        checkboxesChecked.push(checkboxes[i]);
-        console.log(checkboxes[i].value);
-     }
-  }
-  // Return the array if it is non-empty, or null
-  return checkboxesChecked.length > 0 ? checkboxesChecked : null;
-}
-
 
 </script>

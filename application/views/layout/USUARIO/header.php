@@ -81,7 +81,7 @@
               </ul>
               <ul class="nav side-menu">
                 <li><a href="<?php echo site_url('Usuario/'); ?>"><i class="fa fa-suitcase"></i>Usuario</a></li>
-                <li><a href="<?php echo site_url('Usuario/Proyectos/'); ?>"><i class="fa fa-suitcase"></i>Asignacion de de proyectos</a></li>
+                <li><a href="<?php echo site_url('Usuario/Proyectos/'); ?>"><i class="fa fa-suitcase"></i>Asignacion de proyectos</a></li>
               </ul>
             </div>
           </div>

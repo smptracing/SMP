@@ -83,6 +83,14 @@ class Model_Usuario extends CI_Model
             return false;
         }
     }
+		function editUsuarioProyecto($id_persona, $id_pi){
+			if ($id_pi != '') {
+				$id_proyecto = explode("-",$id_pi);
+				for ($i=0; $i < count($id_proyecto) ; $i++) {
+					$this->db->query("insert into USUARIO_PROYECTO(id_persona,id_pi) values(".$id_persona.",".$id_proyecto[$i].");");
+				}
+			}
+		}
     function ListarTipoUsuario()
     {
     	$ListarTipoUsuario=$this->db->query("select* from USUARIO_TIPO");
@@ -116,6 +124,6 @@ class Model_Usuario extends CI_Model
     {
         $data = $this->db->query("select * from MENU where id_padre_home = $idModulo and url is not null");
         return $data->result();
-    } 
+    }
 
 }
