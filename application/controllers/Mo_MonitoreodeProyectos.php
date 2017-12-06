@@ -26,7 +26,16 @@ class Mo_MonitoreodeProyectos extends CI_Controller
     {
         if($_POST)
         {
-            //$this->load->view('front/Monitoreo/Mo_Producto/insertar');
+            $c_data['desc_producto'] = $this->input->post('descripcionProducto');
+            $c_data['id_pi'] =  $this->input->post('idPi');
+            $data = $this->Model_Mo_Producto->insertar($c_data);
+            $msg = array();
+
+            $msg = ($data != '' || $data != null ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente', 'idProducto' => $data ]) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
+
+            echo json_encode($msg);exit;
+            
+            //$this->load->view('front/json/json_view', ['datos' => $msg]);
         }
         
         $codigoUnico = $this->input->get('codigoUnico');

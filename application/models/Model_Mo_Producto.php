@@ -15,4 +15,10 @@ class Model_Mo_Producto extends CI_Model
 		$this->db->where('PROYECTO_INVERSION.codigo_unico_pi',$codigoUnico);
 		return $this->db->get()->result();
 	}
+
+	function insertar($data)
+	{
+		$this->db->insert('MO_PRODUCTO',$data);
+		return $this->db->insert_id();
+	}
 }
