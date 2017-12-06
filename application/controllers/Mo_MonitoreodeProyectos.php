@@ -8,12 +8,14 @@ class Mo_MonitoreodeProyectos extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Model_Mo_Producto');
+        $this->load->helper('FormatNumber_helper');
     }
 
     function index()
     {
+        $listaProyecto = $this->Model_Mo_Producto->listaProyecto();
         $this->load->view('layout/MONITOREO/header');
-        $this->load->view('front/Monitoreo/index');
+        $this->load->view('front/Monitoreo/index',['listaProyecto' => $listaProyecto]);
         $this->load->view('layout/MONITOREO/footer');
     }
     function BuscarProyecto()

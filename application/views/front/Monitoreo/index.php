@@ -13,13 +13,28 @@
 						<table id="tablaMonitoreodeProyectos" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 							<thead>
 								<tr>
-									<td class="col-md-2 col-xs-12">Código Único</td>
-									<td class="col-md-5 col-xs-12">Nombre del proyecto</td>
+									<td class="col-md-1 col-xs-12">Código Único</td>
+									<td class="col-md-6 col-xs-12">Nombre del proyecto</td>
 									<td style="text-align: right;" class="col-md-1 col-xs-12">Costo</td>
 									<td class="col-md-2 col-xs-12">Estado</td>
 									<td class="col-md-2 col-xs-12">Opciones</td>					
 								</tr>
 							</thead>
+							<tbody>
+								<?php foreach ($listaProyecto as $key => $value) { ?>
+									<tr>
+										<td><?=$value->codigo_unico_pi?></td>
+										<td><?=$value->nombre_pi?></td>
+										<td style="text-align: right;"><?=a_number_format($value->costo_pi , 2, '.',",",3)?></td>
+										<td></td>
+										<td>
+											<a href="<?= site_url('Expediente_Tecnico/verdetalle/'.$value->id_pi);?>" role="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top" title="Detalle"><span class="fa fa-search-plus"></span></a>
+											<a href="<?= site_url('Expediente_Tecnico/verdetalle/'.$value->id_pi);?>" role="button" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Editar"><span class="fa fa-edit"></span></a>
+											<a href="<?= site_url('Expediente_Tecnico/verdetalle/'.$value->id_pi);?>" role="button" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Eliminar"><span class="fa fa-trash-o"></span></a>									
+										</td>
+									</tr>
+								<?php } ?>
+							</tbody>
 						</table>
 					</div>							
 									

@@ -16,11 +16,64 @@
 			<input type="button" class="btn btn-info" value="Agregar producto" onclick="agregarProducto();" style="width: 100%;">
 		</div>
 	</div>
-	<div class="row" style="height: 300px;overflow-y: scroll;">
+	<!--<div class="row" style="height: 300px;overflow-y: scroll;">
 		<div class="col-md-12 col-sm-12 col-xs-12" style="font-size: 12px;">
 			<ul id="ulProducto" style="list-style-type: upper-roman;">
 			</ul>
 		</div>
+	</div>-->
+	<div class="row" style="height: 300px;overflow-y: scroll; margin-top: 15px;">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+        	<div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+              	<div class="panel">
+                	<div class="panel-heading">
+				        <h4 class="panel-title" style="float:right;">
+				          <a role = "button" class="btn btn-round btn-warning btn-xs"><span class="fa fa-plus"></span></a>
+				        </h4>
+				        <a class="panel-title" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Collapsible Grodfdup 1</a>				        
+				    </div>
+
+                    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                      	<div class="panel-body">
+                      		<div class="table-responsive">
+                      			<table class="table table-bordered">
+	                          		<thead>
+	                            		<tr>
+	                              			<th>#</th>
+	                              			<th>First Name</th>
+	                              			<th>Last Name</th>
+	                              			<th>Username</th>
+	                            		</tr>
+	                          		</thead>
+	                          		<tbody>
+	                            		<tr>
+	                              			<th scope="row">1</th>
+	                              			<td>Mark</td>
+	                              			<td>Otto</td>
+	                              			<td>@mdo</td>
+	                            		</tr>
+	                          		</tbody>
+	                        	</table>
+                      			
+                      		</div>
+                        	
+                      	</div>
+                    </div>
+              	</div>
+              	<div class="panel">
+                	<a  class="panel-heading collapsed" role="tab" id="headingThree" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  	<h4 class="panel-title">Collapsible Group Items #3</h4>
+               		</a>
+                	<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                  		<div class="panel-body">
+                    		<p><strong>Collapsible Item 3 data</strong>
+                    		</p>
+                    		Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor
+                  		</div>
+                	</div>
+              	</div>
+            </div>
+        </div>
 	</div>
 
 	<hr>
@@ -45,13 +98,25 @@
             
             if(resp.proceso=='Correcto')
             {
-	            var htmlTemp='<li>'+
-					'<input type="button" class="btn btn-default btn-xs" value="G" onclick="guardarCambiosComponente('+objectJSON.idProducto+');" style="width: 30px;">';
-					htmlTemp+='<input type="button" class="btn btn-default btn-xs" value="+M" onclick="agregarMeta('+objectJSON.idProducto+', $(this).parent(), \'\');" style="width: 30px;"><input type="button" class="btn btn-default btn-xs" value="-" onclick="eliminarComponente('+objectJSON.idProducto+', this);" style="width: 30px;"> <b style="text-transform: uppercase; color: black;" id="nombreComponente'+objectJSON.idProducto+'" contenteditable>'+replaceAll(replaceAll($('#txtDescripcionProducto').val().trim(), '<', '&lt;'), '>', '&gt;')+'</b>';
-					htmlTemp+='<ul style="padding-left: 40px;"></ul></li>';
+            	/*
+            	<div class="panel">
+                	<div class="panel-heading">
+				        <h4 class="panel-title" style="float:right;">
+				          <a role = "button" class="btn btn-round btn-warning btn-xs"><span class="fa fa-plus"></span></a>
+				        </h4>
+				        <a class="panel-title" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Collapsible Grodfdup 1</a>				        
+				    </div>
+              	</div>
+            	*/
+            	var htmlTemp= '<div class="panel"><div class="panel-heading"><h4 class="panel-title" style="float:right;"><a role = "button" class="btn btn-round btn-warning btn-xs"><span class="fa fa-plus"></span></a></h4><a class="panel-title" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">'+replaceAll(replaceAll($('#txtDescripcionProducto').val().trim(), '<', '&lt;'), '>', '&gt;')+'</a></div></div>';
+
+	            /*var htmlTemp='<div class = "panel">'+
+					'<a class="panel-heading collapsed" role="tab" id="headingThree" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><h4 class="panel-title">'+ replaceAll(replaceAll($('#txtDescripcionProducto').val().trim(), '<', '&lt;'), '>', '&gt;')+'</h4></a></div>';*/
+
+				
 
 
-				$('#ulProducto').append(htmlTemp);
+				$('#accordion').append(htmlTemp);
 
 				$('#txtDescripcionProducto').val('');
 
