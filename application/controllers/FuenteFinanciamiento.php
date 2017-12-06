@@ -31,17 +31,33 @@ class FuenteFinanciamiento extends CI_Controller
     public function AddFuenteFinanciamiento()
     {
         if ($this->input->is_ajax_request()) {
-            $flat                             = "C";
-            $txt_IdFuenteFinanciamiento       = "0";
-            $txt_ffto                         = $this->input->post("txt_ffto");
-            $txt_AcronimoFuenteFinanciamiento = $this->input->post("txt_AcronimoFuenteFinanciamiento");
-            if ($this->FuenteFinanciamiento_Model->AddFuenteFinanciamiento($flat, $txt_IdFuenteFinanciamiento, $txt_ffto, $txt_AcronimoFuenteFinanciamiento) == false) {
-                echo "1";
-            } else {
-                echo "2";
+            $flag = 0;
+            $msg = '';
+            $txt_NombreFuenteFinanciamiento=$this->input->post("txt_ffto");
+            $txt_AcronimoFuenteFinanciamiento=$this->input->post("txt_AcronimoFuenteFinanciamiento");
+            $f_data['nombre_fuente_finan']=$txt_NombreFuenteFinanciamiento;
+            $f_data['acronimo_fuente_finan']=$txt_AcronimoFuenteFinanciamiento;
+            $f_data=$this->security->xss_clean($f_data);
+            if($this->FuenteFinanciamiento_Model->BuscarFuenteF($txt_NombreFuenteFinanciamiento)==true){
+                $flag=1;
+                $msg='Registro ya Existente';
             }
+            else{
+                if($this->FuenteFinanciamiento_Model->AddFuenteFinanciamiento($f_data)!=0){
+                    $flag=0;
+                    $msg='Registro exitoso';      
 
-        } else {
+                }
+                else{
+                    $flag=1;
+                    $msg='Error dbx0001';
+                }
+            }
+                    $datos['flag']=$flag;
+                    $datos['msg']=$msg;
+                    echo json_encode($datos);
+        } 
+        else {
             show_404();
         }
 
@@ -50,18 +66,22 @@ class FuenteFinanciamiento extends CI_Controller
     public function EliminarFuenteFinanciamiento()
     {
         if ($this->input->is_ajax_request()) {
-            $flat                             = "D";
-            $txt_IdFuenteFinanciamiento       = $this->input->post("id_fuente_finan");
-            $txt_NombreFuenteFinanciamiento   = "NULL";
-            $txt_AcronimoFuenteFinanciamiento = "NULL";
+            $flag=0;
+            $msg="";
+            $id_fuente_finan = $this->input->post("id_fuente_finan");
 
-            if ($this->FuenteFinanciamiento_Model->EliminarFuenteFinanciamiento($flat, $txt_IdFuenteFinanciamiento, $txt_NombreFuenteFinanciamiento, $txt_AcronimoFuenteFinanciamiento) == false) {
-                echo "Se Eliminó  ";
-            } else {
-                echo "No se Eliminó ";
+        if($this->FuenteFinanciamiento_Model->EliminarFuenteFinanciamiento($id_fuente_finan)==true){
+                $flag=0;
+                $msg="registro Eliminado Satisfactoriamente";
             }
-
-        } else {
+            else{
+                $flag=1;
+                $msg="No se pudo eliminar";
+            }
+                    $datos['flag']=$flag;
+                    $datos['msg']=$msg;
+                    echo json_encode($datos);
+        }  else {
             show_404();
         }
 
@@ -71,17 +91,34 @@ class FuenteFinanciamiento extends CI_Controller
     public function UpdateFuenteFinanciamiento()
     {
         if ($this->input->is_ajax_request()) {
-            $flat                              = "U";
-            $txt_IdFuenteFinanciamientoM       = $this->input->post("txt_IdFuenteFinanciamientoM");
-            $txt_NombreFuenteFinanciamientoM   = $this->input->post("txt_NombreFuenteFinanciamientoM");
-            $txt_AcronimoFuenteFinanciamientoM = $this->input->post("txt_AcronimoFuenteFinanciamientoM");
-
-            if ($this->FuenteFinanciamiento_Model->UpdateFuenteFinanciamiento($flat, $txt_IdFuenteFinanciamientoM, $txt_NombreFuenteFinanciamientoM, $txt_AcronimoFuenteFinanciamientoM) == false) {
-                echo "Se actualizó  ";
-            } else {
-                echo "No se actualizó ";
+            $flag = 0;
+            $msg = '';
+            $id_fuente_finan=$this->input->post("txt_IdFuenteFinanciamientoM");
+            $txt_NombreFuenteFinanciamiento=$this->input->post("txt_NombreFuenteFinanciamientoM");
+            $txt_AcronimoFuenteFinanciamiento=$this->input->post("txt_AcronimoFuenteFinanciamientoM");
+            $f_data['nombre_fuente_finan']=$txt_NombreFuenteFinanciamiento;
+            $f_data['acronimo_fuente_finan']=$txt_AcronimoFuenteFinanciamiento;
+            $f_data=$this->security->xss_clean($f_data);
+            if($this->FuenteFinanciamiento_Model->BuscarFuenteFU($id_fuente_finan,$txt_NombreFuenteFinanciamiento)==true){
+                    $flag=1;
+                    $msg="Registro ya existente";
             }
+            else{
+                if($this->FuenteFinanciamiento_Model->UpdateFuenteFinanciamiento($id_fuente_finan,$f_data)==true){
+                        $flag=0;
+                        $msg='Registro Actualizado';             
 
+                }
+                else{
+                        $flag=1;
+                        $msg='Error dbx0003';
+
+                }
+
+            }
+            $datos['flag']=$flag;
+            $datos['msg']=$msg;
+            echo json_encode($datos);
         } else {
             show_404();
         }
