@@ -8,6 +8,7 @@ class Mo_MonitoreodeProyectos extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Model_Mo_Producto');
+        $this->load->model('Model_Mo_Actividad');
         $this->load->helper('FormatNumber_helper');
     }
 
@@ -55,6 +56,15 @@ class Mo_MonitoreodeProyectos extends CI_Controller
         $idPi = $this->input->get('id_pi');
         $proyecto = $this->Model_Mo_Producto->ProyectoPorId($idPi);
         $producto = $this->Model_Mo_Producto->listaProducto($idPi);
+        foreach ($producto as $key => $value) 
+        {
+            $value->childActividad = $this->Model_Mo_Actividad->listaActividad($value->id_producto);
+        }
+        //echo '<pre>';
+        //var_dump($producto);
+        //echo '</pre>';
+        //exit;
+
         $this->load->view('front/Monitoreo/Mo_Producto/editar', ['proyecto' => $proyecto, 'producto'=>$producto]);
     }
 }
