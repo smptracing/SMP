@@ -78,21 +78,7 @@ li
 											<input type="text" id="txtHoras" name="txtHoras" autocomplete="off" class="form-control" onkeyup="calcularCantidad();calcularSubTotal();">
 										</div>
 									</div>
-									<!--<div class="col-md-4 col-sm-1 col-xs-12">
-										<label for="control-label">Unidad</label>
-										<div>
-											<input type="text" readonly="readonly" id="txtUnidad" name="txtUnidad" autocomplete="off" class="form-control">
-										</div>
-									</div>-->
 									<div class="col-md-4 col-sm-2 col-xs-12">
-										<!--<label for="control-label">Unidad</label>
-										<div>
-											<select name="selectUnidadMedida" id="selectUnidadMedida" class="form-control">
-												<?php foreach($listaUnidadMedida as $item){ ?>
-													<option value="<?=$item->id_unidad?>"><?=html_escape($item->descripcion)?></option>
-												<?php } ?>
-											</select>
-										</div>-->
 										<label class="control-label">Unidad:</label>
 										<div>
 											<select  name="selectUnidadMedida" id="selectUnidadMedida" class="form-control selectpicker">

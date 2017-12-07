@@ -121,4 +121,11 @@ function BuscarProyectocodigo()
 
 	});
 }
+$(document).on('hidden.bs.modal', '.modal', function () 
+{
+    if ($('body').find('.modal.in').length > 0) 
+    {
+        $('body').addClass('modal-open');
+    }
+});
 </script>
