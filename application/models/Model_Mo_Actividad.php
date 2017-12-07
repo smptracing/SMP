@@ -37,4 +37,12 @@ class Model_Mo_Actividad extends CI_Model
 		$this->db->delete('MO_ACTIVIDAD');
 		return $this->db->affected_rows();
 	}
+
+	function actividadId($idActividad)
+	{
+		$this->db->select('MO_ACTIVIDAD.*');
+		$this->db->from('MO_ACTIVIDAD');
+		$this->db->where('MO_ACTIVIDAD.id_actividad',$idActividad);
+		return $this->db->get()->result()[0];
+	}
 }

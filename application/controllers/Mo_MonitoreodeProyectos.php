@@ -37,8 +37,6 @@ class Mo_MonitoreodeProyectos extends CI_Controller
             $msg = ($data != '' || $data != null ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente', 'idProducto' => $data ]) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
 
             echo json_encode($msg);exit;
-            
-            //$this->load->view('front/json/json_view', ['datos' => $msg]);
         }
         
         $codigoUnico = $this->input->get('codigoUnico');
@@ -60,11 +58,7 @@ class Mo_MonitoreodeProyectos extends CI_Controller
         {
             $value->childActividad = $this->Model_Mo_Actividad->listaActividad($value->id_producto);
         }
-        //echo '<pre>';
-        //var_dump($producto);
-        //echo '</pre>';
-        //exit;
-
+        
         $this->load->view('front/Monitoreo/Mo_Producto/editar', ['proyecto' => $proyecto, 'producto'=>$producto]);
     }
 }

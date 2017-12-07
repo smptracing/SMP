@@ -3,7 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Mo_Actividad extends CI_Controller 
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -43,6 +42,19 @@ class Mo_Actividad extends CI_Controller
         $idProducto = $this->input->get('idProducto');
         $listaUnidadMedida=$this->Model_Unidad_Medida->UnidadMedidad_Listar();
         $this->load->view('front/Monitoreo/Mo_Actividad/insertar',['listaUnidadMedida' => $listaUnidadMedida, 'idPi' => $idPi, 'idProducto'=>$idProducto ]); 
+    }
+
+    function editar()
+    {
+        if($_POST)
+        {
+
+        }
+        $idPi = $this->input->get('idPi');
+        //$idProducto = $this->input->get('idProducto');
+        $actividad = $this->Model_Mo_Actividad->actividadId($this->input->get('idActividad'));
+        $listaUnidadMedida=$this->Model_Unidad_Medida->UnidadMedidad_Listar();
+        $this->load->view('front/Monitoreo/Mo_Actividad/editar',['listaUnidadMedida' => $listaUnidadMedida, 'idPi' => $idPi, 'actividad'=>$actividad ]);
     }
 
     function eliminar()
