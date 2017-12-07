@@ -18,8 +18,54 @@
 	</div>
 	<div class="row" style="height: 300px;overflow-y: scroll; margin-top: 15px;">
 		<div class="col-md-12 col-sm-12 col-xs-12">
-        	<div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">           	
-            </div>
+        	<div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+        		<?php foreach ($producto as $key => $value) { ?>        		
+        		<div class="panel">
+        			<div class="panel-heading" style="padding: 6px;">
+        				<h4 class="panel-title" style="float:right;">
+        					<a role = "button" class="btn btn-round btn-warning btn-xs"><span class="fa fa-plus" data-toggle="tooltip" data-placement="top" title="Agregar Actividad"></span>
+        					</a>
+        				</h4>
+        				<a class="panel-title" id="heading<?=$value->id_producto?>" data-toggle="collapse" data-parent="#accordion" href="#collapse<?=$value->id_producto?>" aria-expanded="false" aria-controls="collapse<?=$value->id_producto?>" style="text-transform: uppercase;"><?=$value->desc_producto?>
+        				</a>
+        			</div>
+        			<div id="collapse<?=$value->id_producto?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<?=$value->id_producto?>">
+			      	<div class="panel-body">
+			      		<div class="table-responsive">
+			      			<table class="table table-bordered">
+			              		<thead>
+			                		<tr>
+			                  			<th>Actividad</th>
+			                  			<th>U. Medida</th>
+			                  			<th>Meta</th>
+			                  			<th>Fecha Inicio</th>
+			                  			<th>Fecha Fin</th>
+			                  			<th>Opciones</th>
+			                		</tr>
+			              		</thead>
+			              		<tbody>
+			                		<tr>
+			                  			<th>1</th>
+			                  			<td>Mark</td>
+			                  			<td>Otto</td>
+			                  			<td>@mdo</td>
+			                  			<td>@mdo</td>
+			                  			<td>
+			                  				<a role="button" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Editar"><span class="fa fa-edit"></span></a>
+
+											<a role="button" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Eliminar"><span class="fa fa-trash-o"></span></a>
+			                  			</td>
+			                		</tr>
+			              		</tbody>
+			            	</table>
+			      			
+			      		</div>
+			        	
+			      	</div>
+			    </div>
+        		</div> 
+        		<?php } ?>       		
+        	</div>
         </div>
 	</div>
 
@@ -31,3 +77,26 @@
 		</button>
 	</div>
 </div>
+<script>
+	function agregarProducto()
+	{
+		paginaAjaxJSON({ "idPi" : $('#id_pi').val(), "descripcionProducto" : $('#txtDescripcionProducto').val().trim() }, base_url+'index.php/Mo_MonitoreodeProyectos/InsertarProducto', 'POST', null, function(objectJSON)
+		{
+			resp=JSON.parse(objectJSON);
+
+			((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje,"success") : swal(resp.proceso,resp.mensaje,"error"));
+            
+            if(resp.proceso=='Correcto')
+            {
+            	var htmlTemp= '<div class="panel"><div class="panel-heading" style="padding: 6px;"><h4 class="panel-title" style="float:right;"><a role = "button" class="btn btn-round btn-warning btn-xs"><span class="fa fa-plus" data-toggle="tooltip" data-placement="top" title="Agregar Actividad"></span></a></h4><a class="panel-title" id="heading'+resp.idProducto+'" data-toggle="collapse" data-parent="#accordion" href="#collapse'+resp.idProducto+'" aria-expanded="false" aria-controls="collapse'+resp.idProducto+'" style="text-transform: uppercase;">'+replaceAll(replaceAll($('#txtDescripcionProducto').val().trim(), '<', '&lt;'), '>', '&gt;')+'</a></div></div>';
+            	htmlTemp+='<div id = "listaActividad'+resp.idProducto+'"></div>';
+
+				$('#accordion').append(htmlTemp);
+
+				$('#txtDescripcionProducto').val('');
+
+            }
+		}, false, true);
+
+	}
+</script>

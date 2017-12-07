@@ -39,4 +39,12 @@ class Model_Mo_Producto extends CI_Model
 		$query = $this->db->get();
 		return $query->result();
 	}
+
+	function listaProducto($idpi)
+	{
+		$this->db->select('MO_PRODUCTO.*');
+		$this->db->from('MO_PRODUCTO');
+		$this->db->where('MO_PRODUCTO.id_pi',$idpi);
+		return $this->db->get()->result();
+	}
 }
