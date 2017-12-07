@@ -73,7 +73,7 @@
         <div class="modal-content">
             <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Registrar Proyecto de Inversión </h4>
+            <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Registrar PIP </h4>
         </div>
         <div class="modal-body">
             <div class="row">
@@ -90,14 +90,6 @@
                                 <div class="col-md-9 col-sm-6 col-xs-12 form-group" id="divCodigoIdea">
                                     <label for="name">Codigo Único (Codigo SIAF)<span class="required">*</span></label>
                                     <input id="txtCodigoUnico" name="txtCodigoUnico"  class="form-control col-md-7 col-xs-5" placeholder="Codigo Unico" type="text">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <label  for="name">Tipo inversion<span class="required">*</span></label>
-                                    <select id="cbx" name="cbx" class="selectpicker">
-                                        <option selected value="1">PIP</option>
-                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -188,14 +180,14 @@
                         <div class="col-md-11 col-sm-6 col-xs-12  form-group">
                         <label  for="name">Costo de Inversión<span class="required">*</span>
                         </label>
-                        <input type="text" id="txtCostoPip" name="txtCostoPip" class="form-control col-md-7 col-xs-5"  value="0.00" placeholder="0.00" autocomplete="off" />
+                        <input type="text" id="txtCostoPip" name="txtCostoPip" class="form-control col-md-7 col-xs-5"  placeholder="0.00" autocomplete="off" />
                         </div>
                         </div>
                         <div class="col-md-4">
                         <div class="col-md-11 col-sm-6 col-xs-12  form-group">
                         <label for="textbox"><span class="required">Número de beneficiarios</span>
                         </label>
-                        <input id="txt_beneficiarios" name="txt_beneficiarios" class="form-control col-md-7 col-xs-7" value="0" data-validate-length-range="20" data-validate-words="2" placeholder="Número de beneficiarios"  type="number">
+                        <input id="txt_beneficiarios" name="txt_beneficiarios" class="form-control col-md-7 col-xs-7" data-validate-length-range="20" data-validate-words="2" placeholder="Número de beneficiarios"  type="number">
                         </div>
                         </div>
                         <div class="col-md-4">
@@ -249,16 +241,6 @@
                         <label  for="name">Unidad Formuladora<span class="required">*</span>
                         </label>
                         <select id="lista_unid_form" name="lista_unid_form" class="selectpicker"  title="Elija Unidad Formuladora">
-                        </select>
-                        </div>
-                        </div>
-                        <div class="col-md-4">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                        <label  for="name">Estado<span class="required">*</span>
-                        </label>
-                        <select id="cbx_estado" name="cbx_estado" class="selectpicker">
-                        <option value="1">Activo</option>
-                        <option value="0">Inactivo</option>
                         </select>
                         </div>
                         </div>

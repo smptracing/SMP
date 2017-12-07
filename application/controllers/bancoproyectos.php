@@ -33,7 +33,7 @@ class bancoproyectos extends CI_Controller
                 $c_data['id_ue'] = $this->input->post("cbxUnidadEjecutora");
                 $c_data['id_naturaleza_inv'] = $this->input->post("cbxNatI");
                 $c_data['id_tipologia_inv'] = $this->input->post("cbxTipologiaInv");
-                $c_data['id_tipo_inversion'] = $this->input->post("cbx");
+                $c_data['id_tipo_inversion'] = 1;
                 $c_data['id_grupo_funcional'] = $this->input->post("cbxGrupoFunc");
                 $c_data['id_nivel_gob'] = $this->input->post("cbxNivelGob");
                 $c_data['id_programa_pres'] = $this->input->post("cbxProgramaPres");
@@ -44,7 +44,7 @@ class bancoproyectos extends CI_Controller
                 $c_data['fecha_registro_pi'] = $this->input->post("fecha_registro");
                 $c_data['fecha_viabilidad_pi'] = $this->input->post("fecha_viabilidad");
                 $c_data['id_uf'] = $this->input->post("lista_unid_form");
-                $c_data['estado_pi'] = $this->input->post("cbx_estado");
+                $c_data['estado_pi'] = 1;
 
                 //estado_ciclo_pi
                 $d_data['id_estado_ciclo'] = $this->input->post("cbxEstCicInv_");
