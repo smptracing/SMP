@@ -38,10 +38,10 @@
                     <table id="table-formulacion" class="table table-striped jambo_table bulk_action" style="width: 100%">
                       <thead>
                         <tr>
-                          <th style="width: 1%">#</th>
-                          <th style="width: 1%">Id PIP</th>
-                          <th style="width: 5%">Codigo Unico</th>
-                          <th style="width: 18%">Nombre Pip</th>
+                          <th>#</th>
+                          <th>Id PIP</th>
+                          <th>Codigo Unico</th>
+                          <th>Nombre Pip</th>
                           <th>Provincia</th>
                           <th>Distrito</th>
                           <th>Nivel Estudio</th>
@@ -478,6 +478,3 @@
   </div>
 </div>
 <!-- fin venta gant-->
-
-
-

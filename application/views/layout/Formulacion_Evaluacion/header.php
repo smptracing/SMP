@@ -95,7 +95,19 @@
     <!-- Custom Theme Style -->
 
   </head>
-
+  <style media="screen">
+      #table-formulacion, #table-EvaluacionFE {
+      table-layout: fixed;
+      width: 100% !important;
+      }
+      #table-formulacion td, #table-EvaluacionFE td,
+      #table-formulacion th, #table-EvaluacionFE th{
+      width: auto !important;
+      white-space: normal;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      }
+  </style>
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
