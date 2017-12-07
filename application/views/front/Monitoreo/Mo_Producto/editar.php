@@ -59,7 +59,7 @@
 				                  			<td><?=$actividad->fecha_inicio?></td>
 				                  			<td><?=$actividad->fecha_fin?></td>
 				                  			<td>
-				                  				<a onclick="editarActividad('<?=$actividad->id_actividad?>','<?=$actividad->id_producto?>','<?=$value->id_pi?>');" role="button" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Editar"><span class="fa fa-edit"></span></a>
+				                  				<a onclick="editarActividad('<?=$actividad->id_actividad?>','<?=$value->id_pi?>');" role="button" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Editar"><span class="fa fa-edit"></span></a>
 
 												<a onclick="eliminarActividad('<?=$actividad->id_actividad?>', this);" role="button" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Eliminar" ><span class="fa fa-trash-o"></span></a>
 				                  			</td>
@@ -107,9 +107,9 @@
 
 	}
 
-	function editarActividad(idActividad,idProducto, idPi)
+	function editarActividad(idActividad, idPi)
 	{
-		paginaAjaxDialogo('modal2', 'Editar Actividad',{ idActividad: idActividad, idProducto : idProducto, idPi: idPi}, base_url+'index.php/Mo_Actividad/editar', 'GET', null, null, false, true);
+		paginaAjaxDialogo('modal3', 'Editar Actividad',{ idActividad: idActividad, idPi: idPi}, base_url+'index.php/Mo_Actividad/editar', 'GET', null, null, false, true);
 	}
 
 	function eliminarActividad(idActividad, element)

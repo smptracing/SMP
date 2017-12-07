@@ -38,11 +38,29 @@ class Model_Mo_Actividad extends CI_Model
 		return $this->db->affected_rows();
 	}
 
+	function editar($actividad,$idActividad)
+	{
+		$this->db->set($actividad);
+		$this->db->where('id_actividad', $idActividad);
+		$this->db->update('MO_ACTIVIDAD');
+		return $this->db->affected_rows();
+	}
+
 	function actividadId($idActividad)
 	{
 		$this->db->select('MO_ACTIVIDAD.*');
 		$this->db->from('MO_ACTIVIDAD');
 		$this->db->where('MO_ACTIVIDAD.id_actividad',$idActividad);
 		return $this->db->get()->result()[0];
+	}
+
+	function verificarActividadDiferente($idProducto,$idActividad,$actividad)
+	{
+		$this->db->select('MO_ACTIVIDAD.*');
+		$this->db->from('MO_ACTIVIDAD');
+		$this->db->where('MO_ACTIVIDAD.desc_actividad',$actividad);
+		$this->db->where('MO_ACTIVIDAD.id_producto',$idProducto);
+		$this->db->where('MO_ACTIVIDAD.id_actividad !=',$idActividad);
+		return $this->db->get()->result();
 	}
 }

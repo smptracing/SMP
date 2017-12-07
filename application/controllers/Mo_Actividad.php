@@ -48,10 +48,29 @@ class Mo_Actividad extends CI_Controller
     {
         if($_POST)
         {
+            $msg = array();
 
+            $existe = count($this->Model_Mo_Actividad->verificarActividadDiferente($this->input->post('hdIdProducto'),$this->input->post('hdIdActividad'),$this->input->post('txtActividad')));
+            if($existe!=0)
+            {
+                $msg = (['proceso' => 'Error', 'mensaje' => 'Ya existe esa actividad.']);
+                echo json_encode($msg);
+                exit;
+            }
+
+            $c_data['desc_actividad'] = $this->input->post('txtActividad');
+            $c_data['uni_medida'] = $this->input->post('txtUnidad');
+            $c_data['fecha_inicio'] = $this->input->post('txtFechaInicio');
+            $c_data['fecha_fin'] = $this->input->post('txtFechaFin');
+            $c_data['meta'] = $this->input->post('txtMeta');
+
+            $data = $this->Model_Mo_Actividad->editar($c_data,$this->input->post('hdIdActividad'));            
+            $msg = ($data > 0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron editados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
+
+            echo json_encode($msg);exit;
         }
+
         $idPi = $this->input->get('idPi');
-        //$idProducto = $this->input->get('idProducto');
         $actividad = $this->Model_Mo_Actividad->actividadId($this->input->get('idActividad'));
         $listaUnidadMedida=$this->Model_Unidad_Medida->UnidadMedidad_Listar();
         $this->load->view('front/Monitoreo/Mo_Actividad/editar',['listaUnidadMedida' => $listaUnidadMedida, 'idPi' => $idPi, 'actividad'=>$actividad ]);
