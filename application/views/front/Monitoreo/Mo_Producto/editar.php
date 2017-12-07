@@ -44,18 +44,20 @@
 			                		</tr>
 			              		</thead>
 			              		<tbody>
-			                		<tr>
-			                  			<th>1</th>
-			                  			<td>Mark</td>
-			                  			<td>Otto</td>
-			                  			<td>@mdo</td>
-			                  			<td>@mdo</td>
+			              			<?php foreach ($value->childActividad as $key => $actividad) { ?>
+			              			<tr>
+			                  			<td><?=$actividad->desc_actividad?></td>
+			                  			<td><?=$actividad->uni_medida?></td>
+			                  			<td><?=$actividad->meta?></td>
+			                  			<td><?=$actividad->fecha_inicio?></td>
+			                  			<td><?=$actividad->fecha_fin?></td>
 			                  			<td>
 			                  				<a role="button" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Editar"><span class="fa fa-edit"></span></a>
 
-											<a role="button" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Eliminar"><span class="fa fa-trash-o"></span></a>
+											<a onclick="eliminarActividad('<?=$actividad->id_actividad?>', this);" role="button" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Eliminar" ><span class="fa fa-trash-o"></span></a>
 			                  			</td>
 			                		</tr>
+			                		<?php } ?>
 			              		</tbody>
 			            	</table>
 			      			
@@ -88,7 +90,7 @@
             
             if(resp.proceso=='Correcto')
             {
-            	var htmlTemp= '<div class="panel"><div class="panel-heading" style="padding: 6px;"><h4 class="panel-title" style="float:right;"><a role = "button" class="btn btn-round btn-warning btn-xs"><span class="fa fa-plus" data-toggle="tooltip" data-placement="top" title="Agregar Actividad"></span></a></h4><a class="panel-title" id="heading'+resp.idProducto+'" data-toggle="collapse" data-parent="#accordion" href="#collapse'+resp.idProducto+'" aria-expanded="false" aria-controls="collapse'+resp.idProducto+'" style="text-transform: uppercase;">'+replaceAll(replaceAll($('#txtDescripcionProducto').val().trim(), '<', '&lt;'), '>', '&gt;')+'</a></div></div>';
+            	var htmlTemp= '<div class="panel"><div class="panel-heading" style="padding: 6px;"><h4 class="panel-title" style="float:right;"><a onclick="paginaAjaxDialogo(\'modal2\',\'Agregar Actividad\', {idPi:'+$('#id_pi').val()+', idProducto :'+resp.idProducto+'}, base_url+\'index.php/Mo_Actividad/Insertar\',\'GET\', null, null, false, true);" role="button" class="btn btn-round btn-warning btn-xs"><span class="fa fa-plus" data-toggle="tooltip" data-placement="top" title="Agregar Actividad"></span></a></h4><a class="panel-title" id="heading'+resp.idProducto+'" data-toggle="collapse" data-parent="#accordion" href="#collapse'+resp.idProducto+'" aria-expanded="false" aria-controls="collapse'+resp.idProducto+'" style="text-transform: uppercase;">'+replaceAll(replaceAll($('#txtDescripcionProducto').val().trim(), '<', '&lt;'), '>', '&gt;')+'</a></div></div>';
             	htmlTemp+='<div id = "listaActividad'+resp.idProducto+'"></div>';
 
 				$('#accordion').append(htmlTemp);
@@ -99,4 +101,30 @@
 		}, false, true);
 
 	}
+	function eliminarActividad(idActividad, element)
+    {
+        swal({
+            title: "Esta seguro que desea eliminar la actividad?",
+            text: "",
+            type: "warning",
+            showCancelButton: true,
+            cancelButtonText:"CANCELAR" ,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "SI,ELIMINAR",
+            closeOnConfirm: false
+        },
+        function()
+        {
+            paginaAjaxJSON({ "idActividad" : idActividad }, base_url+'index.php/Mo_Actividad/eliminar', 'POST', null, function(resp)
+			{
+				resp=JSON.parse(resp);
+				((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje,"success") : swal(resp.proceso,resp.mensaje,"error"));
+				
+				if(resp.proceso=='Correcto')
+				{
+					$(element).parent().parent().remove();
+				}				
+			}, false, true);
+        });
+    }
 </script>

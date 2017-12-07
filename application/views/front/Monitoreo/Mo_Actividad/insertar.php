@@ -62,8 +62,87 @@
 </div>
 </form>
 <script>
+	$('.selectpicker').selectpicker({
+	});
+
+	$(function()
+	{
+		$('#divFormActividad').formValidation(
+		{
+			framework: 'bootstrap',
+			excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+			live: 'enabled',
+			message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+			trigger: null,
+			fields:
+			{
+				txtActividad:
+				{
+					validators:
+					{				
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Actividad" es requerido.</b>'
+						}
+					}
+				},
+				txtUnidad:
+				{
+					validators:
+					{				
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Unidad de Medida" es requerido.</b>'
+						}
+					}
+				},
+				txtMeta:
+				{
+					validators:
+					{				
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Meta" es requerido.</b>'
+						},
+						regexp:
+						{
+							regexp: /^[0-9]+$/,
+							message: '<b style="color: red;">El campo "Meta" debe ser un número</b>'
+						}
+					}
+				},
+				txtFechaInicio:
+				{
+					validators:
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Fecha de Inicio" es requerido.</b>'
+						}
+					}
+				},
+				txtFechaFin:
+				{
+					validators:
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Fecha de Fin" es requerido.</b>'
+						}
+					}
+				}
+			}
+		});
+	});
+
 	function guardarActividad()
 	{
+		event.preventDefault();
+		$('#divFormActividad').data('formValidation').validate();
+		if(!($('#divFormActividad').data('formValidation').isValid()))
+		{
+			return;
+		}
 		var formData=new FormData($("#frmInsertarActividad")[0]);
 		var idPi=$('#hdIdPi').val();
 		$.ajax({
@@ -82,8 +161,7 @@
 	        	paginaAjaxDialogo(null, 'Editar Producto',{ id_pi: idPi }, base_url+'index.php/Mo_MonitoreodeProyectos/EditarProducto', 'GET', null, null, false, true);
 	        }
     	}); 
-
 	}
-	$('.selectpicker').selectpicker({
-	});
+	
+	
 </script>
