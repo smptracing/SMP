@@ -46,14 +46,15 @@
 			              		<tbody>
 			              			<?php foreach ($value->childActividad as $key => $actividad) { ?>
 			              			<tr>
-			                  			<th><?=$actividad->desc_actividad?></th>
+			                  			<td><?=$actividad->desc_actividad?></td>
 			                  			<td><?=$actividad->uni_medida?></td>
 			                  			<td><?=$actividad->meta?></td>
 			                  			<td><?=$actividad->fecha_inicio?></td>
 			                  			<td><?=$actividad->fecha_fin?></td>
 			                  			<td>
 			                  				<a role="button" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Editar"><span class="fa fa-edit"></span></a>
-											<a role="button" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Eliminar"><span class="fa fa-trash-o"></span></a>
+
+											<a onclick="eliminarActividad('<?=$actividad->id_actividad?>', this);" role="button" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Eliminar" ><span class="fa fa-trash-o"></span></a>
 			                  			</td>
 			                		</tr>
 			                		<?php } ?>
@@ -100,4 +101,30 @@
 		}, false, true);
 
 	}
+	function eliminarActividad(idActividad, element)
+    {
+        swal({
+            title: "Esta seguro que desea eliminar la actividad?",
+            text: "",
+            type: "warning",
+            showCancelButton: true,
+            cancelButtonText:"CANCELAR" ,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "SI,ELIMINAR",
+            closeOnConfirm: false
+        },
+        function()
+        {
+            paginaAjaxJSON({ "idActividad" : idActividad }, base_url+'index.php/Mo_Actividad/eliminar', 'POST', null, function(resp)
+			{
+				resp=JSON.parse(resp);
+				((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje,"success") : swal(resp.proceso,resp.mensaje,"error"));
+				
+				if(resp.proceso=='Correcto')
+				{
+					$(element).parent().parent().remove();
+				}				
+			}, false, true);
+        });
+    }
 </script>
