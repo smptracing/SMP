@@ -10,7 +10,7 @@ class Model_Mo_Actividad extends CI_Model
 
 	function insertar($data)
 	{
-		$this->db->insert('MO_PRODUCTO',$data);
-		return $this->db->insert_id();
+		$this->db->insert('MO_ACTIVIDAD',$data);
+		return $this->db->affected_rows();
 	}
 }

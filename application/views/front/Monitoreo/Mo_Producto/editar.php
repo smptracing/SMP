@@ -23,7 +23,7 @@
         		<div class="panel">
         			<div class="panel-heading" style="padding: 6px;">
         				<h4 class="panel-title" style="float:right;">
-        					<a onclick="paginaAjaxDialogo('modal2', 'Agregar Actividad',{ idProducto: '<?=$value->id_producto?>' }, base_url+'index.php/Mo_Actividad/Insertar', 'GET', null, null, false, true);return false;" role="button" class="btn btn-round btn-warning btn-xs"><span class="fa fa-plus" data-toggle="tooltip" data-placement="top" title="Agregar Actividad"></span>
+        					<a onclick="paginaAjaxDialogo('modal2', 'Agregar Actividad',{ idPi: '<?=$value->id_pi?>' , idProducto : '<?=$value->id_producto?>' }, base_url+'index.php/Mo_Actividad/Insertar', 'GET', null, null, false, true);return false;" role="button" class="btn btn-round btn-warning btn-xs"><span class="fa fa-plus" data-toggle="tooltip" data-placement="top" title="Agregar Actividad"></span>
         					</a>
         				</h4>
         				<a class="panel-title" id="heading<?=$value->id_producto?>" data-toggle="collapse" data-parent="#accordion" href="#collapse<?=$value->id_producto?>" aria-expanded="false" aria-controls="collapse<?=$value->id_producto?>" style="text-transform: uppercase;"><?=$value->desc_producto?>
