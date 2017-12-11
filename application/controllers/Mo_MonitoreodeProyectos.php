@@ -76,4 +76,12 @@ class Mo_MonitoreodeProyectos extends CI_Controller
         
         $this->load->view('front/Monitoreo/Mo_Producto/editar', ['proyecto' => $proyecto, 'producto'=>$producto]);
     }
+
+    function eliminarMonitoreo()
+    {
+        $msg = array();
+        $data = $this->Model_Mo_Producto->eliminarMonitoreo($this->input->post('idPi'));
+        $msg = ($data > 0 ? (['proceso' => 'Correcto', 'mensaje' => 'el monitoreo del proyecto fue eliminado']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
+        echo json_encode($msg);exit;
+    }
 }

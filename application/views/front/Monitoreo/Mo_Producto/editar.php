@@ -87,6 +87,14 @@
 <script>
 	function agregarProducto()
 	{
+		$('#divAgregarProducto').data('formValidation').resetField($('#txtDescripcionProducto'));
+
+		$('#divAgregarProducto').data('formValidation').validate();
+
+		if(!($('#divAgregarProducto').data('formValidation').isValid()))
+		{
+			return;
+		}
 		paginaAjaxJSON({ "idPi" : $('#id_pi').val(), "descripcionProducto" : $('#txtDescripcionProducto').val().trim() }, base_url+'index.php/Mo_MonitoreodeProyectos/InsertarProducto', 'POST', null, function(objectJSON)
 		{
 			resp=JSON.parse(objectJSON);
@@ -138,4 +146,28 @@
 			}, false, true);
         });
     }
+    $(function()
+	{
+		$('#divAgregarProducto').formValidation(
+		{
+			framework: 'bootstrap',
+			excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+			live: 'enabled',
+			message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+			trigger: null,
+			fields:
+			{
+				txtDescripcionProducto:
+				{
+					validators: 
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Descripción del producto" es requerido.</b>'
+						}
+					}
+				}
+			}
+		});		
+	});
 </script>

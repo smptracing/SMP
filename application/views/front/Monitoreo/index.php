@@ -32,7 +32,8 @@
 
 											<a onclick="paginaAjaxDialogo(null, 'Editar Producto',{ id_pi: '<?=$value->id_pi?>' }, base_url+'index.php/Mo_MonitoreodeProyectos/EditarProducto', 'GET', null, null, false, true);return false;" role="button" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Editar"><span class="fa fa-edit"></span></a>
 
-											<a href="<?= site_url('Expediente_Tecnico/verdetalle/'.$value->id_pi);?>" role="button" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Eliminar"><span class="fa fa-trash-o"></span></a>									
+											<a onclick="eliminarMonitoreo('<?=$value->id_pi?>', this);" role="button" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Eliminar" ><span class="fa fa-trash-o"></span></a>
+
 										</td>
 									</tr>
 								<?php } ?>
@@ -67,73 +68,102 @@ if($sessionTempError){ ?>
 	});
 	</script>
 <?php } ?>
-<script>
-$(document).ready(function()
-{
-	$('#tablaMonitoreodeProyectos').DataTable(
-	{
-		"language":idioma_espanol
-	});
-});
-function BuscarProyectocodigo()
-{
-	swal({
-		title: "Buscar",
-		text: "Proyecto: Ingrese Código Único del proyecto",
-		type: "input",
-		showCancelButton: true,
-		closeOnConfirm: false,
-		cancelButtonText:"CERRAR" ,
-		confirmButtonText: "BUSCAR",
-		inputPlaceholder: "Ingrese Codigo Unico",
 
-	}, function (inputValue)
+<script>
+	$(document).ready(function()
 	{
-		if (inputValue === "")
-	  	{
-	  		swal.showInputError("Ingrese código Único");
-    		return false
-	  	}
-		else 
+		$('#tablaMonitoreodeProyectos').DataTable(
 		{
-			event.preventDefault();
-			$.ajax({
-				url:base_url+"index.php/Mo_MonitoreodeProyectos/BuscarProyecto",
-				type:"GET", 
-				data:{inputValue:inputValue},
-				cache:false,
-				success:function(resp)
-				{
-					resp = JSON.parse(resp);
-					console.log(resp.proceso);
-					if(resp.proceso=='Info')
+			"language":idioma_espanol
+		});
+	});
+
+	function BuscarProyectocodigo()
+	{
+		swal({
+			title: "Buscar",
+			text: "Proyecto: Ingrese Código Único del proyecto",
+			type: "input",
+			showCancelButton: true,
+			closeOnConfirm: false,
+			cancelButtonText:"CERRAR" ,
+			confirmButtonText: "BUSCAR",
+			inputPlaceholder: "Ingrese Codigo Unico",
+
+		}, function (inputValue)
+		{
+			if (inputValue === "")
+		  	{
+		  		swal.showInputError("Ingrese código Único");
+	    		return false
+		  	}
+			else 
+			{
+				event.preventDefault();
+				$.ajax({
+					url:base_url+"index.php/Mo_MonitoreodeProyectos/BuscarProyecto",
+					type:"GET", 
+					data:{inputValue:inputValue},
+					cache:false,
+					success:function(resp)
 					{
-						swal("Error!", resp.mensaje, "error");
-					}
-					else
-					{
-						if(resp.length==1)
+						resp = JSON.parse(resp);
+						if(resp.proceso=='Info')
 						{
-							paginaAjaxDialogo(null, 'Registrar Producto',{codigoUnico:inputValue}, base_url+'index.php/Mo_MonitoreodeProyectos/InsertarProducto', 'GET', null, null, false, true);
-		  					swal("Correcto!", "Se Encontro el Proyecto: " + inputValue, "success");
+							swal("Error!", resp.mensaje, "error");
 						}
 						else
 						{
-							swal.showInputError("No se encontro el  Codigo Unico. Intente Nuevamente!");
-		    				return false
-						}
-					}										
-				}
-			});
-		}
+							if(resp.length==1)
+							{
+								paginaAjaxDialogo(null, 'Registrar Producto',{codigoUnico:inputValue}, base_url+'index.php/Mo_MonitoreodeProyectos/InsertarProducto', 'GET', null, null, false, true);
+			  					swal("Correcto!", "Se Encontro el Proyecto: " + inputValue, "success");
+							}
+							else
+							{
+								swal.showInputError("No se encontro el  Codigo Unico. Intente Nuevamente!");
+			    				return false
+							}
+						}										
+					}
+				});
+			}
 
-	});
-}
-$(document).on('hidden.bs.modal', '.modal', function () 
-{
-    if ($('body').find('.modal.in').length > 0) 
+		});
+	}
+
+	function eliminarMonitoreo(idPi,element)
     {
-        $('body').addClass('modal-open');
+        swal({
+            title: "Esta seguro que desea eliminar el Monitoreo de este proyecto?",
+            text: "",
+            type: "warning",
+            showCancelButton: true,
+            cancelButtonText:"CANCELAR" ,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "SI,ELIMINAR",
+            closeOnConfirm: false
+        },
+        function()
+        {
+            paginaAjaxJSON({ "idPi" : idPi }, base_url+'index.php/Mo_MonitoreodeProyectos/eliminarMonitoreo', 'POST', null, function(resp)
+			{
+				resp=JSON.parse(resp);
+				((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje,"success") : swal(resp.proceso,resp.mensaje,"error"));
+
+				if(resp.proceso=='Correcto')
+				{
+					$(element).parent().parent().remove();
+				}				
+			}, false, true);
+        });
     }
-});
+
+	$(document).on('hidden.bs.modal', '.modal', function () 
+	{
+	    if ($('body').find('.modal.in').length > 0) 
+	    {
+	        $('body').addClass('modal-open');
+	    }
+	});
 </script>

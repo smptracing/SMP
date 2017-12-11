@@ -66,4 +66,11 @@ class Model_Mo_Producto extends CI_Model
 		$this->db->where('MO_PRODUCTO.id_pi',$idPi);
 		return $this->db->get()->result();
 	}
+
+	function eliminarMonitoreo($idPi)
+	{
+		$this->db->where('id_pi', $idPi);
+		$this->db->delete('MO_PRODUCTO');
+		return $this->db->affected_rows();
+	}
 }
