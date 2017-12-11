@@ -263,7 +263,7 @@ class bancoproyectos_modal extends CI_Model
 
         $q = $this->db->query($sp,$params);
 
-        return $q->result_array();
+        return $q->result();
 
     }
 
@@ -275,14 +275,7 @@ class bancoproyectos_modal extends CI_Model
     {
         $GetNOPIP = $this->db->query("execute sp_Gestionar_ProyectoInversion'"
             . $flat . "'");
-        if ($GetNOPIP->num_rows() > 0) 
-        {
-            return $GetNOPIP->result();
-        } 
-        else 
-        {
-            return false;
-        }
+        return $GetNOPIP->result();
     }
     //listar el ubigeo de acuerdo al proyecto de inversion selcionado
     public function Get_ubigeo_pip($flat, $id_pi)

@@ -29,10 +29,19 @@ class Mo_MonitoreodeProyectos extends CI_Controller
     {
         if($_POST)
         {
+            $msg = array();
+
+            $existe = count($this->Model_Mo_Producto->verificarProducto($this->input->post('descripcionProducto'),$this->input->post('idPi')));
+            if($existe!=0)
+            {
+                $msg = (['proceso' => 'Error', 'mensaje' => 'Ya existe el Producto.']);
+                echo json_encode($msg);
+                exit;
+            }
+
             $c_data['desc_producto'] = $this->input->post('descripcionProducto');
             $c_data['id_pi'] =  $this->input->post('idPi');
             $data = $this->Model_Mo_Producto->insertar($c_data);
-            $msg = array();
 
             $msg = ($data != '' || $data != null ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente', 'idProducto' => $data ]) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
 

@@ -47,4 +47,21 @@ class Model_Mo_Producto extends CI_Model
 		$this->db->where('MO_PRODUCTO.id_pi',$idpi);
 		return $this->db->get()->result();
 	}
+
+	function existeProyecto($codigoUnico)
+	{
+		$this->db->select('MO_PRODUCTO.*');
+		$this->db->from('MO_PRODUCTO');
+		$this->db->where('MO_PRODUCTO.id_pi',$idpi);
+		return $this->db->get()->result();
+	}
+
+	function verificarProducto($producto,$idPi)
+	{
+		$this->db->select('MO_PRODUCTO.*');
+		$this->db->from('MO_PRODUCTO');
+		$this->db->where('MO_PRODUCTO.desc_producto',$producto);
+		$this->db->where('MO_PRODUCTO.id_pi',$idPi);
+		return $this->db->get()->result();
+	}
 }
