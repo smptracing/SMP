@@ -275,9 +275,12 @@ class bancoproyectos_modal extends CI_Model
     {
         $GetNOPIP = $this->db->query("execute sp_Gestionar_ProyectoInversion'"
             . $flat . "'");
-        if ($GetNOPIP->num_rows() > 0) {
+        if ($GetNOPIP->num_rows() > 0) 
+        {
             return $GetNOPIP->result();
-        } else {
+        } 
+        else 
+        {
             return false;
         }
     }

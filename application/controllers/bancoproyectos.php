@@ -540,13 +540,19 @@ class bancoproyectos extends CI_Controller
         {
             $flat  = "LISTARNOPIP";
             $datos = $this->bancoproyectos_modal->GetNOPIP($flat);
+            if(!$datos)
+            {
+                echo json_encode($datos);exit;                
+            }
             foreach ($datos as $key => $value)
             {
                 $value->costo_pi = a_number_format($value->costo_pi , 2, '.',",",3);
             }
-            echo json_encode($datos);
+            echo json_encode($datos);exit;
+            
         }
-        else {
+        else
+        {
             show_404();
         }
     }
