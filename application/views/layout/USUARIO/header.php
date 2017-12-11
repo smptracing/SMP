@@ -74,14 +74,49 @@
           <div class="clearfix"></div>
           <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
             <div class="menu_section">
-              <ul class="nav side-menu">
-                <li><a href="<?php echo site_url('Usuario/'); ?>"> <i class="fa fa-home"></i> INICIO<span class=""></span></a>
-                </li>
+              <ul class='nav side-menu'>
+                <li><a href="<?php echo site_url('Usuario'); ?>"> <i class="fa fa-home"></i> INICIO<span class=""></span></a></li>
+                <?php
+                  $openTag=false;
+                  $arrayMenu=$this->session->userdata('menuUsuario');
+                  for($i=0;$i<count($arrayMenu);$i++){
+                  if($arrayMenu[$i]['id_modulo']=='U'){
+                    if($i>0 and ($arrayMenu[$i]['id_menu']!=$arrayMenu[$i-1]['id_menu'])){
+                      if($openTag==true){
+                        echo '</ul></li>';
+                        $openTag=false;
+                      }
 
-              </ul>
-              <ul class="nav side-menu">
-                <li><a href="<?php echo site_url('Usuario/'); ?>"><i class="fa fa-suitcase"></i>Usuario</a></li>
-                <li><a href="<?php echo site_url('Usuario/Proyectos/'); ?>"><i class="fa fa-suitcase"></i>Asignacion de proyectos</a></li>
+                      ?>
+                      <?php
+                    }
+                    if($arrayMenu[$i]['url']==''){
+
+                      if($openTag==false){
+                        ?>
+                        <li>
+                          <a> <i class="<?php echo $arrayMenu[$i]['class_icono']; ?>"></i> <?php echo $arrayMenu[$i]['nombre']; ?> <span class="fa fa-chevron-down"></span></a>
+                          <ul class="nav child_menu">
+                             <li><a href="<?php echo site_url($arrayMenu[$i]["urlSubmenu"]); ?>"><?php echo $arrayMenu[$i]["nombreSubmenu"] ?></a></li>
+                        <?php
+                        $openTag=true;
+                      }
+                      else{
+                        ?>
+                        <li><a href="<?php echo site_url($arrayMenu[$i]["urlSubmenu"]); ?>"><?php echo $arrayMenu[$i]["nombreSubmenu"] ?></a></li>
+                        <?php
+                      }
+                    }
+                    else{
+                      ?>
+                      <li>
+                        <a href="<?php echo site_url($arrayMenu[$i]["url"]); ?>"> <i class="<?php echo $arrayMenu[$i]['class_icono']; ?>"></i> <?php echo $arrayMenu[$i]['nombre']; ?></a>
+                      </li>
+                      <?php
+                    }
+                  }
+                  }
+                ?>
               </ul>
             </div>
           </div>
