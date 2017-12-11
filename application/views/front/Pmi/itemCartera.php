@@ -106,8 +106,6 @@ $(function(){
         success:function(resp)
         {
             resp = JSON.parse(resp);
-            console.log(resp);
-            console.log(resp.error);
             if (typeof resp.error !== "undefined") 
             {
                 swal("Error",resp.error, "error");                
@@ -116,14 +114,6 @@ $(function(){
             {
                 ((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje, "success") : swal(resp.proceso,resp.mensaje, "error"));
             }  
-            /*if(resp.error != '' )
-            {
-                
-            }
-            else
-            {
-                ((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje, "success") : swal(resp.proceso,resp.mensaje, "error"));
-            }    */        
             $('#table-CarteraInv').dataTable()._fnAjaxUpdate();
         }
     });

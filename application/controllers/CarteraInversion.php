@@ -30,40 +30,45 @@ function AddCartera()
 
 		if($nombreArchivo != '' || $nombreArchivo != null)
         {
-            $config['upload_path'] = './uploads/cartera/';
-            $config['allowed_types'] = 'gif|jpg|png';
-            $config['max_size'] = 100;
-            $config['max_width'] = 1024;
-            $config['max_height'] = 768;
-            $config['file_name'] = $nombreArchivo;
+        	$extension = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
+        	if($extension=='png' || $extension=='pdf' || $extension=='jpg')
+        	{
+        		$config['upload_path'] = './uploads/cartera/';
+	            $config['allowed_types'] = '*';
+		        $config['file_name'] = 'CARTERA_';
+		        $config['max_size'] = '20048';
 
-            $this->load->library('upload', $config);
-            $this->upload->initialize($config);
+	            $this->load->library('upload', $config);
 
-            if (!$this->upload->do_upload('Cartera_Resoluacion'))
-            {    
-                $error = array('error' => $this->upload->display_errors('', ''));
-                $this->load->view('front/json/json_view',['datos' => $error]);                
-            }
-            else
-            { 
-            	$c_data['url_resolucion_cartera'] = $nombreArchivo;
+	            if (!$this->upload->do_upload('Cartera_Resoluacion'))
+	            {    
+	                $error = array('error' => $this->upload->display_errors('', ''));
+	                $this->load->view('front/json/json_view',['datos' => $error]);                
+	            }
+	            else
+	            { 
+	            	$c_data['url_resolucion_cartera'] = $this->upload->data('file_name'); 
 
-				$data = $this->Model_CarteraInversion->AddCartera($c_data);				
-				if($data>0)
-				{
-					$msg = (['proceso' => 'Correcto', 'mensaje' => 'La cartera fue registrada correctamente']);			
-				}
-				else
-				{
-					$msg = (['proceso' => 'Error', 'mensaje' => 'El año de apertura ya existe']);
-				}	
-				$this->load->view('front/json/json_view', ['datos' => $msg]);
-            }
+					$data = $this->Model_CarteraInversion->AddCartera($c_data);				
+					if($data>0)
+					{
+						$msg = (['proceso' => 'Correcto', 'mensaje' => 'La cartera fue registrada correctamente']);			
+					}
+					else
+					{
+						$msg = (['proceso' => 'Error', 'mensaje' => 'El año de apertura ya existe']);
+					}	
+					$this->load->view('front/json/json_view', ['datos' => $msg]);
+	            }        		
+        	}
+        	else
+        	{
+        		$msg = (['proceso' => 'Error', 'mensaje' => 'El tipo de archivo que intentas subir no está permitido.']);
+        		$this->load->view('front/json/json_view', ['datos' => $msg]);
+        	}            
         }
         else
         {
-
 	        $c_data['url_resolucion_cartera'] = NULL;
 
 			$data = $this->Model_CarteraInversion->AddCartera($c_data);
