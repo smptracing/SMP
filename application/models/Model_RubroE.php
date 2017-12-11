@@ -9,29 +9,34 @@ class Model_RubroE extends CI_Model
 
 
 /***********************************************************************************/
-    public function Insertar_rubro($data)
+ /*   public function Insertar_rubro($data)
     {
           $this->db->insert('RUBRO_PI', $data);
           return $this->db->affected_rows() > 0;
-    }
+    }*/
 /***********************************************************************************/
 
-
+public function BuscarRubro($txt_NombreRubroE){
+$resultado=$this->db->select('*')->from('RUBRO')
+->where('nombre_rubro',$txt_NombreRubroE)
+->get();
+if($resultado->num_rows()>0){
+    return true;
+}
+else{
+    return false;
+}
+}
 
 
 //----------------------METODOS PARA EL MANTENIMIENTO DE RUBRO DE EJECUCION--------------------------------------------
     //AGREGAR UN RUBRO DE EJECUCION
-    public function AddRubroE($listaFuenteFinanc, $txt_NombreRubroE)
+    public function AddRubroE($data)
     {
-        $this->db->query("execute sp_Rubro_c'" . $listaFuenteFinanc . "','" . $txt_NombreRubroE . "'");
-        if ($this->db->affected_rows() > 0) {
-            return true;
-        } else {
-            return false;
-        }
+       $this->db->insert('RUBRO',$data);
+        return $this->db->insert_id();
     }
     //FIN AGREGAR UN RUBRO DE EJECUCION
-
     //LISTAR RUBRO DE EJECUCION
     public function GetRubroE()
     {
@@ -64,6 +69,18 @@ class Model_RubroE extends CI_Model
         }
 
     }
+
     //FIN MODIFICAR DATOS DE LOS RUBROS
+    //ELIMINAR
+    public function EliminarRubro($id_rubro){
+        $this->db->where('id_rubro',$id_rubro);
+        $this->db->delete('RUBRO');
+        if($this->db->affected_rows()>0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
     //--------------FIN DE METODOS PARA EL MANTENIMIENTO DE RUBRO DE EJECUCION--------------------------------------------
 }

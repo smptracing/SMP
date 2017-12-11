@@ -17,16 +17,16 @@ class FuenteFinanciamiento extends CI_Controller
     //-----------------------------------------------------------------------------------------------------------
 
     public function get_FuenteFinanciamiento() //mostra fuente financiamietno
-
     {
-        if ($this->input->is_ajax_request()) {
+        if ($this->input->is_ajax_request()) 
+        {
             $datos = $this->FuenteFinanciamiento_Model->get_FuenteFinanciamiento();
             echo json_encode($datos);
-        } else {
+        } else 
+        {
             show_404();
         }
     }
-
     //REGISTRAR NUEVA
     public function AddFuenteFinanciamiento()
     {

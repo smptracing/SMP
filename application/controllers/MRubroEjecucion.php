@@ -17,20 +17,61 @@ class MRubroEjecucion extends CI_Controller
     public function AddRubroE()
     {
         if ($this->input->is_ajax_request()) {
+            $flag = 0;
+            $msg = '';
             $listaFuenteFinanc=$this->input->post("listaFuenteFinanc");
             $txt_NombreRubroE   = $this->input->post("txt_NombreRubroE");
-            if ($this->Model_RubroE->AddRubroE($listaFuenteFinanc,$txt_NombreRubroE) == true) {
-                echo "Se añadio un rubro de ejecucion";
-            } else {
-                echo "No se añadio  un rubro de ejecucion";
+            $r_data['id_fuente_finan']=$listaFuenteFinanc;
+            $r_data['nombre_rubro']=$txt_NombreRubroE;
+            $r_data=$this->security->xss_clean($r_data);
+            if($this->Model_RubroE->BuscarRubro($txt_NombreRubroE)==true){
+            $flag=1;
+            $msg='Registro ya Existente';
             }
+            else{
+                if($this->Model_RubroE->AddRubroE($r_data)!=0){
+                    $flag=0;
+                    $msg='Registro exitoso';      
+                }
+                else{
+                    $flag=1;
+                    $msg='Error dbx0001';                    
+                }
 
-        } else {
+            }
+                    $datos['flag']=$flag;
+                    $datos['msg']=$msg;
+                    echo json_encode($datos);
+        } 
+        else {
             show_404();
         }
 
     }
 //FIN DE AGREGAR UN RUBRO DE EJECUCION
+//
+public function EliminarRubroEjecucion(){
+        if ($this->input->is_ajax_request()) {
+            $flag=0;
+            $msg="";
+            $id_rubro = $this->input->post("id_rubro");
+
+        if($this->Model_RubroE->EliminarRubro($id_rubro)==true){
+                $flag=0;
+                $msg="registro Eliminado Satisfactoriamente";
+            }
+            else{
+                $flag=1;
+                $msg="No se pudo eliminar";
+            }
+                    $datos['flag']=$flag;
+                    $datos['msg']=$msg;
+                    echo json_encode($datos);
+        }  else {
+            show_404();
+        }
+}
+
 
 /* LISTAR RUBROS DE EJECUCION*/
     public function GetRubroE()

@@ -31,7 +31,6 @@ $(document).on("ready" ,function(){
           }
 
 				$('#dynamic-table-FuenteFinanciamiento').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
-				formReset();
 			}
 		});
 	});
