@@ -12,11 +12,7 @@ class NoPipProgramados_Model extends CI_Model
         $GetNoPipProgramados = $this->db->query("execute sp_ListarProyectoInversionNoPipProgramado'"
             . $flat . "','"
             . $anio . "' ");
-        if ($GetNoPipProgramados->num_rows() > 0) {
-            return $GetNoPipProgramados->result();
-        } else {
-            return false;
-        }
+        return $GetNoPipProgramados->result();
     }
 
     public function ListarPipProgramados()

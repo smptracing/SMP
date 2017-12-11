@@ -11,9 +11,12 @@ class programar_pip_modal extends CI_Model
     {
         $GetProyectosFormulacionEvaluacion = $this->db->query("execute sp_Gestionar_ProyectoInversion'"
             . $flat . "'");
-        if ($GetProyectosFormulacionEvaluacion->num_rows() > 0) {
+        if ($GetProyectosFormulacionEvaluacion->num_rows() > 0) 
+        {
             return $GetProyectosFormulacionEvaluacion->result();
-        } else {
+        } 
+        else 
+        {
             return false;
         }
     }
@@ -21,9 +24,12 @@ class programar_pip_modal extends CI_Model
     {
         $GetProyectosEjecucion = $this->db->query("execute sp_Gestionar_ProyectoInversion'"
             . $flat . "'");
-        if ($GetProyectosEjecucion->num_rows() > 0) {
+        if ($GetProyectosEjecucion->num_rows() > 0) 
+        {
             return $GetProyectosEjecucion->result();
-        } else {
+        } 
+        else 
+        {
             return false;
         }
     }
@@ -31,9 +37,12 @@ class programar_pip_modal extends CI_Model
     {
         $GetProyectosFuncionamiento = $this->db->query("execute sp_Gestionar_ProyectoInversion'"
             . $flat . "'");
-        if ($GetProyectosFuncionamiento->num_rows() > 0) {
+        if ($GetProyectosFuncionamiento->num_rows() > 0) 
+        {
             return $GetProyectosFuncionamiento->result();
-        } else {
+        } 
+        else 
+        {
             return false;
         }
     }

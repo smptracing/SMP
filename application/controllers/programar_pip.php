@@ -18,6 +18,10 @@ class programar_pip extends CI_Controller
             $flat  = "listarpip_formulacion_evaluacion";
             $datos = $this->programar_pip_modal->GetProyectosFormulacionEvaluacion($flat);
             $saldo = 0;
+            if(!$datos)
+            {
+                echo json_encode($datos);exit;
+            }
             foreach ($datos as $key => $value) 
             {
                 if($value->ultimo_pim_meta_pres==0.00 || $value->ultimo_pim_meta_pres==null )
@@ -49,6 +53,10 @@ class programar_pip extends CI_Controller
             $flat  = "listarpip_viable_ejecucion";
             $datos = $this->programar_pip_modal->GetProyectosEjecucion($flat);
             $saldo = 0;
+            if(!$datos)
+            {
+                echo json_encode($datos);exit;
+            }
             foreach ($datos as $key => $value) 
             {
                 if($value->ultimo_pim_meta_pres==0.00 || $value->ultimo_pim_meta_pres==null )
@@ -80,6 +88,10 @@ class programar_pip extends CI_Controller
             $flat  = "listarpip_funcionamiento";
             $datos = $this->programar_pip_modal->GetProyectosFuncionamiento($flat);
             $saldo = 0;
+            if(!$datos)
+            {
+                echo json_encode($datos);exit;
+            }
             foreach ($datos as $key => $value) 
             {
                 if($value->ultimo_pim_meta_pres==0.00 || $value->ultimo_pim_meta_pres==null )

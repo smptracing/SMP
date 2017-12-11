@@ -263,7 +263,7 @@ class bancoproyectos_modal extends CI_Model
 
         $q = $this->db->query($sp,$params);
 
-        return $q->result();
+        return $q->result_array();
 
     }
 

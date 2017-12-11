@@ -12,33 +12,22 @@ class PipProgramados_Model extends CI_Model
         $GetPipProgramadosFormulacionEvaluacion = $this->db->query("execute sp_ListarProyectoInversionProgramado'"
             . $flat . "','"
             . $anio . "' ");
-        if ($GetPipProgramadosFormulacionEvaluacion->num_rows() > 0) {
-            return $GetPipProgramadosFormulacionEvaluacion->result();
-        } else {
-            return false;
-        }
+        return $GetPipProgramadosFormulacionEvaluacion->result();
     }
     public function GetPipProgramadosEjecucion($flat, $anio)
     {
         $GetPipProgramadosEjecucion = $this->db->query("execute sp_ListarProyectoInversionProgramado'"
             . $flat . "','"
             . $anio . "' ");
-        if ($GetPipProgramadosEjecucion->num_rows() > 0) {
-            return $GetPipProgramadosEjecucion->result();
-        } else {
-            return false;
-        }
+
+        return $GetPipProgramadosEjecucion->result();
     }
     public function GetPipOperacionMantenimiento($flat, $anio)
     {
         $GetPipOperacionMantenimiento = $this->db->query("execute sp_ListarProyectoInversionProgramado'"
             . $flat . "','"
             . $anio . "' ");
-        if ($GetPipOperacionMantenimiento->num_rows() > 0) {
-            return $GetPipOperacionMantenimiento->result();
-        } else {
-            return false;
-        }
+        return $GetPipOperacionMantenimiento->result();
     }
 
 }
