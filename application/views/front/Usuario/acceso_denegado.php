@@ -16,6 +16,61 @@
 		body{
 			color:#ccc;
 		}
+    @keyframes gjPulse {
+    0% {
+      width: 90px;
+      height: 90px;
+    }
+    25% {
+      width: 105px;
+      height: 105px;
+    }
+    50% {
+      width: 130px;
+      height: 130px;
+    }
+    75% {
+      width: 110px;
+      height: 110px;
+    }
+    100% {
+      width: 90px;
+      height: 90px;
+    }
+  }
+
+  #gj-counter-box {
+    margin: auto;
+    position: relative;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0.2;
+    width: 90px;
+    height: 90px;
+    background-color: rgb(183, 0, 0);
+    border-radius: 50%;
+    border: 6px solid white;
+    visibility: none;
+    display: none;
+    animation: gjPulse 1s linear infinite;
+  }
+
+  #gj-counter-box:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+
+  #gj-counter-num {
+    position: relative;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+    top: 50%;
+    transform: translate(0%, -50%);
+    color: white;
+  }
 	</style>
 </head>
 <body class="nav-md">
@@ -27,12 +82,54 @@
 	              		<h1 class="error-number">403</h1>
 	              		<h2>Acceso Denegado</h2>
 	              		<p>No tiene acceso a esta opción, Comuniquese con el administrador</p>
+                    <h1>En carga!</h1>
+                    <div id="gj-counter-box">
+                      <h1 id="gj-counter-num"></h1>
+                    </div>
             		</div>
           		</div>
         	</div>
       	</div>
     </div>
     <script src="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="<?php echo base_url(); ?>assets/build/js/custom.min.js"></script>    
+	<script src="<?php echo base_url(); ?>assets/build/js/custom.min.js"></script>
 </body>
 </html>
+<script type="text/javascript">
+
+// FUNCTION CODE
+function gjCountAndRedirect(secounds, url) {
+
+  $('#gj-counter-num').text(secounds);
+
+  $('#gj-counter-box').show();
+
+  var interval = setInterval(function() {
+
+    secounds = secounds - 1;
+
+    $('#gj-counter-num').text(secounds);
+
+    if (secounds == 0) {
+
+      clearInterval(interval);
+      window.location = url;
+      $('#gj-counter-box').hide();
+
+    }
+
+  }, 1000);
+
+  $('#gj-counter-box').click(function() {
+    clearInterval(interval);
+    window.location = url;
+
+  });
+}
+
+// Definir
+$(document).ready(function() {
+  //call
+  gjCountAndRedirect(10, <?php echo base_url(); ?>+'Inicio');
+});
+</script>

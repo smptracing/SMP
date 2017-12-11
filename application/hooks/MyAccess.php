@@ -40,20 +40,18 @@ if (!function_exists('autentificar'))
         }
         else
         {
-            if($CI->session->userdata('idPersona')) 
+            if($CI->session->userdata('idPersona'))
             {
                 echo $CI->output->get_output();
-                /*if(autorizar($url))
+                if(autorizar($url))
                 {
-                    //echo "autorizado";
                     echo $CI->output->get_output();
                 }
-                else 
+                else
                 {
                     echo $CI->output->get_output();
-                    //echo "no autorizado";
-                    //redirect('Usuario/accesodenegado');
-                }*/
+                    redirect('Usuario/accesodenegado');
+                }
             }
             else
             {
@@ -69,15 +67,16 @@ function autorizar($url)
     $CI->load->model('Model_Usuario');
     $listaRutasPermitidas = $CI->Model_Usuario->listaUrlAsignado($CI->session->userdata('idPersona'));
     $arrayPermitido = [];
-    foreach ($listaRutasPermitidas as $key => $value) 
+    foreach ($listaRutasPermitidas as $key => $value)
     {
         $arrayPermitido[] = $value->url;
     }
+    array_push($arrayPermitido, "Inicio");
     if(in_array($url, $arrayPermitido))
     {
         return true;
     }
-    else 
+    else
     {
         return false;
     }
