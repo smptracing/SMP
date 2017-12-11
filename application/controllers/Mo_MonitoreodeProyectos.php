@@ -21,7 +21,14 @@ class Mo_MonitoreodeProyectos extends CI_Controller
     }
     function BuscarProyecto()
     {
-        $codigoUnico = $this->input->get('inputValue');
+        $codigoUnico = $this->input->get('inputValue');        
+        $existe = count($this->Model_Mo_Producto->existeProyecto($codigoUnico));
+        if($existe>0)
+        {
+            $msg = (['proceso' => 'Info', 'mensaje' => 'Este proyecto ya existe']);
+                echo json_encode($msg);
+            exit;
+        }
         $proyecto = $this->Model_Mo_Producto->buscarProyecto($codigoUnico);
         $this->load->view('front/json/json_view', ['datos' => $proyecto]); 
     }
@@ -51,7 +58,6 @@ class Mo_MonitoreodeProyectos extends CI_Controller
         $codigoUnico = $this->input->get('codigoUnico');
         $proyecto = $this->Model_Mo_Producto->buscarProyecto($codigoUnico);
         $this->load->view('front/Monitoreo/Mo_Producto/insertar', ['proyecto' => $proyecto]); 
-
     }
 
     function EditarProducto()

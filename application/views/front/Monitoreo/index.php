@@ -98,23 +98,31 @@ function BuscarProyectocodigo()
 		{
 			event.preventDefault();
 			$.ajax({
-				"url":base_url+"index.php/Mo_MonitoreodeProyectos/BuscarProyecto",
+				url:base_url+"index.php/Mo_MonitoreodeProyectos/BuscarProyecto",
 				type:"GET", 
 				data:{inputValue:inputValue},
 				cache:false,
 				success:function(resp)
 				{
 					resp = JSON.parse(resp);
-					if(resp.length==1)
+					console.log(resp.proceso);
+					if(resp.proceso=='Info')
 					{
-						paginaAjaxDialogo(null, 'Registrar Producto',{codigoUnico:inputValue}, base_url+'index.php/Mo_MonitoreodeProyectos/InsertarProducto', 'GET', null, null, false, true);
-	  					swal("Correcto!", "Se Encontro el Proyecto: " + inputValue, "success");
+						swal("Error!", resp.mensaje, "error");
 					}
 					else
 					{
-						swal.showInputError("No se encontro el  Codigo Unico. Intente Nuevamente!");
-	    				return false
-					}					
+						if(resp.length==1)
+						{
+							paginaAjaxDialogo(null, 'Registrar Producto',{codigoUnico:inputValue}, base_url+'index.php/Mo_MonitoreodeProyectos/InsertarProducto', 'GET', null, null, false, true);
+		  					swal("Correcto!", "Se Encontro el Proyecto: " + inputValue, "success");
+						}
+						else
+						{
+							swal.showInputError("No se encontro el  Codigo Unico. Intente Nuevamente!");
+		    				return false
+						}
+					}										
 				}
 			});
 		}

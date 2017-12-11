@@ -50,10 +50,12 @@ class Model_Mo_Producto extends CI_Model
 
 	function existeProyecto($codigoUnico)
 	{
-		$this->db->select('MO_PRODUCTO.*');
-		$this->db->from('MO_PRODUCTO');
-		$this->db->where('MO_PRODUCTO.id_pi',$idpi);
-		return $this->db->get()->result();
+		$this->db->select('PROYECTO_INVERSION.codigo_unico_pi,MO_PRODUCTO.id_pi ');
+        $this->db->from('PROYECTO_INVERSION');
+        $this->db->join('MO_PRODUCTO', 'MO_PRODUCTO.id_pi = PROYECTO_INVERSION.id_pi');
+        $this->db->where('PROYECTO_INVERSION.codigo_unico_pi',$codigoUnico);
+        $query = $this->db->get();
+        return $query->result();
 	}
 
 	function verificarProducto($producto,$idPi)
