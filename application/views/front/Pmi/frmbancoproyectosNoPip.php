@@ -18,7 +18,7 @@
 </style>
 <div class="right_col" role="main">
     <div class="">
-        
+
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
@@ -40,7 +40,7 @@
                                     <th style="width: 10%">Opción</th>
                                 </tr>
                             </thead>
-                        </table>                            
+                        </table>
                     </div>
                 </div>
             </div>
@@ -71,7 +71,7 @@
                                             <div class="col-md-7 col-sm-6 col-xs-12">
                                             <label for="name">Codigo Único<span class="required">*</span>
                                             </label>
-                                                  <input id="txtCodigoUnico" name="txtCodigoUnico"  class="form-control col-md-7 col-xs-5" placeholder="Codigo Unico" type="text">
+                                                  <input id="txtCodigoUnico" name="txtCodigoUnico"  class="form-control col-md-7 col-xs-5" placeholder="Codigo Unico" type="text" maxlength="10">
                                              </div>
                                       </div>
                                         <div class="col-md-4">
@@ -166,7 +166,7 @@
                                             <div class="col-md-11 col-sm-6 col-xs-12">
                                             <label  for="name">Costo de Inversion<span class="required">*</span>
                                         </label>
-                                            <input id="txtCostoPip" name="txtCostoPip" class="form-control col-md-7 col-xs-5" data-validate-length-range="20" data-validate-words="2" placeholder="Costo de inversion" type="text">
+                                            <input id="txtCostoPip" name="txtCostoPip" class="form-control col-md-7 col-xs-5" data-validate-length-range="20" data-validate-words="2" placeholder="Costo de inversion" type="text" maxlength="12">
                                          </div>
                                       </div>
                                        <div class="col-md-4">
@@ -274,7 +274,7 @@
                     <div class="col-md-4">
                         <div class="col-md-7 col-sm-6 col-xs-12">
                             <label for="name">Codigo Único<span class="required">*</span></label>
-                            <input id="txtCodigoUnico_m" name="txtCodigoUnico_m"  class="form-control col-md-7 col-xs-5" placeholder="Codigo Unico" required="required" type="text">
+                            <input id="txtCodigoUnico_m" name="txtCodigoUnico_m"  class="form-control col-md-7 col-xs-5" placeholder="Codigo Unico" required="required" type="text" maxlength="10">
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -347,7 +347,7 @@
                                             <div class="col-md-11 col-sm-6 col-xs-12">
                                             <label  for="name">Costo de Inversion<span class="required">*</span>
                                         </label>
-                                            <input id="txtCostoPip_m" name="txtCostoPip_m" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Costo de inversion" required="required" type="text">
+                                            <input id="txtCostoPip_m" name="txtCostoPip_m" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" placeholder="Costo de inversion" required="required" type="text" maxlength="12">
                                          </div>
                                       </div>
                                        <div class="col-md-4">

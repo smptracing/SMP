@@ -1066,6 +1066,11 @@ $(function()
                     notEmpty:
                     {
                         message: '<b style="color: red;">El campo "Código único" es requerido.</b>'
+                    },
+                    regexp:
+                    {
+                        regexp: /^[0-9]+$/,
+                        message: '<b style="color: red;">El campo "Código único" debe contener solo números.</b>'
                     }
                 }
             },
@@ -1257,6 +1262,11 @@ $(function()
                     notEmpty:
                     {
                         message: '<b style="color: red;">El campo "Código único" es requerido.</b>'
+                    },
+                    regexp:
+                    {
+                        regexp: /^[0-9]+$/,
+                        message: '<b style="color: red;">El campo "Código único" debe contener solo números.</b>'
                     }
                 }
             },

@@ -89,7 +89,7 @@
                                 <label id="textcodigoIdMensaje" style="color: #0431B4; margin-top: 15px;">El Sistema Generara su Código<span class="required"></span></label>
                                 <div class="col-md-9 col-sm-6 col-xs-12 form-group" id="divCodigoIdea">
                                     <label for="name">Codigo Único (Codigo SIAF)<span class="required">*</span></label>
-                                    <input id="txtCodigoUnico" name="txtCodigoUnico"  class="form-control col-md-7 col-xs-5" placeholder="Codigo Unico" type="text">
+                                    <input id="txtCodigoUnico" name="txtCodigoUnico"  class="form-control col-md-7 col-xs-5" placeholder="Codigo Unico" type="text" maxlength="10">
                                 </div>
                             </div>
                         </div>
@@ -180,7 +180,7 @@
                         <div class="col-md-11 col-sm-6 col-xs-12  form-group">
                         <label  for="name">Costo de Inversión<span class="required">*</span>
                         </label>
-                        <input type="text" id="txtCostoPip" name="txtCostoPip" class="form-control col-md-7 col-xs-5"  placeholder="0.00" autocomplete="off" />
+                        <input type="text" id="txtCostoPip" name="txtCostoPip" class="form-control col-md-7 col-xs-5"  placeholder="0.00" autocomplete="off" maxlength="12">
                         </div>
                         </div>
                         <div class="col-md-4">
@@ -476,9 +476,9 @@
                                 <div class="col-md-4 col-sm-6 col-xs-12">
                                     <label for="Cbx_RubroPI" class="control-label">Rubro *</label>
                                     <div class="form-group">
-                                        <select id="Cbx_RubroPI" name="Cbx_RubroPI" class="selectpicker form-control" data-live-search="true"  title="Buscar Rubro...">                            
-                                        </select>                                        
-                                    </div>                                    
+                                        <select id="Cbx_RubroPI" name="Cbx_RubroPI" class="selectpicker form-control" data-live-search="true"  title="Buscar Rubro...">
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-12">
                                     <label for="name">Fecha <span class="required"></span>
@@ -731,7 +731,7 @@
                             <div class="col-md-4">
                                 <div class="col-md-7 col-sm-6 col-xs-12">
                                     <label for="name">Codigo Único<span class="required">*</span></label>
-                                    <input id="txtCodigoUnico_m" name="txtCodigoUnico_m"  class="form-control col-md-7 col-xs-5" placeholder="Codigo Unico" required="required" type="text">
+                                    <input id="txtCodigoUnico_m" name="txtCodigoUnico_m"  class="form-control col-md-7 col-xs-5" placeholder="Codigo Unico" required="required" type="text" maxlength="10">
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -808,7 +808,7 @@
                                 <div class="col-md-4">
                                     <div class="col-md-11 col-sm-6 col-xs-12">
                                         <label  for="name">Costo de Inversion<span class="required">*</span></label>
-                                        <input id="txtCostoPip_m" name="txtCostoPip_m" class="form-control col-md-7 col-xs-5" placeholder="Costo de inversion" required="required" type="text">
+                                        <input id="txtCostoPip_m" name="txtCostoPip_m" class="form-control col-md-7 col-xs-5" placeholder="Costo de inversion" required="required" type="text" maxlength="12">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
