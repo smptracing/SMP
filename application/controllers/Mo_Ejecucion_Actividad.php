@@ -26,7 +26,7 @@ class Mo_Ejecucion_Actividad extends CI_Controller
             
             $data = $this->Model_Mo_Ejecucion_Actividad->insertar($c_data);
 
-            $msg = ($data != '' || $data != null ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente', 'idProducto' => $data ]) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
+            $msg = ($data != '' || $data != null ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente', 'idProgramacion' => $data ]) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
 
             echo json_encode($msg);exit;
 

@@ -167,7 +167,10 @@
 			return;
 		}
 		var formData=new FormData($("#frmInsertarEjecucionActividad")[0]);
-		var idPi=$('#hdIdPi').val();
+		var idActividad=$('#hdIdActividad').val();
+		var mes=$('#txtMes').val();
+		var ejecucionFisica=$('#txtFisica').val();
+		var ejecucionFinanciera=$('#txtFinanciera').val();
 		$.ajax({
 	        type:"POST",
 	        url:base_url+"index.php/Mo_Ejecucion_Actividad/Insertar",
@@ -178,7 +181,14 @@
 	        success:function(resp)
 	        {
 	        	resp = JSON.parse(resp);
-	        	console.log(resp);	        	
+	        	((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje,"success") : swal(resp.proceso,resp.mensaje,"error"));
+	        	if(resp.proceso=='Correcto')
+	        	{
+	        		var htmlTemp = '<tr><td>'+mes+'</td><td>'+ejecucionFisica+'</td><td>'+ejecucionFinanciera+'</td><td>'+resp.idProgramacion+'</td></tr>';
+	        		$('#tbodyActividad'+idActividad).append(htmlTemp);
+	        	}	        		        	
+	        	$('#frmInsertarEjecucionActividad')[0].reset();
+                $('#modalProgramacion').modal('hide');   	
 	        }
     	});
 	}

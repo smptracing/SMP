@@ -131,7 +131,7 @@
                                                     <div class="table-responsive">
                                                         <?php foreach ($value->childActividad as $key => $actividad) { ?>
 
-                                                        <table class="table table-bordered">
+                                                        <table class="table table-bordered" id="tablaActividad<?=$actividad->id_actividad?>">
                                                             <thead>
                                                                 <tr style="text-align: center;">
                                                                     <th colspan="3" style="color: #ed5565; font-size: 12px; font-weight: bold; width: 80%;"> ACTIVIDAD: <?=$actividad->desc_actividad?></th>
@@ -146,6 +146,9 @@
                                                                     <th style="width: 20%;">Opciones</th>
                                                                 </tr>
                                                             </thead>
+                                                            <tbody id="tbodyActividad<?=$actividad->id_actividad?>">
+                                                                
+                                                            </tbody>
                                                         </table> 
 
 
