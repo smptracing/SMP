@@ -28,13 +28,13 @@
 								<div class="col-md-3 col-sm-6 col-xs-12">
 									<label for="control-label">Ejec. Fís. Programada: </label>
 									<div>
-										<input type="text" id="txtFisica" name="txtFisica" autocomplete="off" class="form-control moneda">
+										<input type="text" id="txtFisica" name="txtFisica" autocomplete="off" class="form-control">
 									</div>
 								</div>
 								<div class="col-md-3 col-sm-6 col-xs-12">
 									<label for="control-label">Ejec. Fín. Programada: </label>
 									<div>
-										<input type="text" id="txtFinanciera" name="txtFinanciera" autocomplete="off" class="form-control moneda">
+										<input type="text" id="txtFinanc" name="txtFinanc" autocomplete="off" class="form-control moneda">
 									</div>
 								</div>							
 							</div>							
@@ -134,12 +134,12 @@
 						},
 						regexp:
 						{
-							regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
+							regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
                         	message: '<b style="color: red;">El campo "Ejec. Fís. Programada" debe ser númerico.</b>'                    
 						}
 					}
 				},
-				txtFinanciera:
+				txtFinanc:
 				{
 					validators:
 					{
@@ -170,7 +170,7 @@
 		var idActividad=$('#hdIdActividad').val();
 		var mes=$('#txtMes').val();
 		var ejecucionFisica=$('#txtFisica').val();
-		var ejecucionFinanciera=$('#txtFinanciera').val();
+		var ejecucionFinanciera=$('#txtFinanc').val();
 		$.ajax({
 	        type:"POST",
 	        url:base_url+"index.php/Mo_Ejecucion_Actividad/Insertar",
@@ -181,12 +181,13 @@
 	        success:function(resp)
 	        {
 	        	resp = JSON.parse(resp);
-	        	((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje,"success") : swal(resp.proceso,resp.mensaje,"error"));
 	        	if(resp.proceso=='Correcto')
 	        	{
-	        		var htmlTemp = '<tr><td>'+mes+'</td><td>'+ejecucionFisica+'</td><td>'+ejecucionFinanciera+'</td><td>'+resp.idProgramacion+'</td></tr>';
+	        		var htmlTemp = '<tr><td>'+mes+'</td><td>'+ejecucionFisica+'</td><td>'+ejecucionFinanciera+'</td><td><a role="button" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Editar Programación"><span class="fa fa-edit"></span></a> <a onclick="eliminarProgramacion('+resp.idProgramacion+',this);" role="button" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Eliminar Programación" ><span class="fa fa-trash-o"></span></a></td></tr>';
+
 	        		$('#tbodyActividad'+idActividad).append(htmlTemp);
-	        	}	        		        	
+	        	}
+	        	((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje,"success") : swal(resp.proceso,resp.mensaje,"error"));	        		        		        	
 	        	$('#frmInsertarEjecucionActividad')[0].reset();
                 $('#modalProgramacion').modal('hide');   	
 	        }

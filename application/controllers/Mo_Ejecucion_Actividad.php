@@ -17,10 +17,19 @@ class Mo_Ejecucion_Actividad extends CI_Controller
         {
             $msg = array();
 
+            $existe = count($this->Model_Mo_Ejecucion_Actividad->verificarProgramacion($this->input->post('txtMes'),$this->input->post('txtAnio'),$this->input->post('hdIdActividad')));
+
+            if($existe!=0)
+            {
+                $msg = (['proceso' => 'Error', 'mensaje' => 'Ya existe la Programación para esa fecha y año']);
+                echo json_encode($msg);
+                exit;
+            }
+
             $c_data['mes_ejec']=$this->input->post('txtMes');
             $c_data['anio_ejec']=$this->input->post('txtAnio');
-            $c_data['ejec_fisic_prog']=floatval(str_replace(',','',$this->input->post('txtFisica')));
-            $c_data['ejec_finan_prog']=floatval(str_replace(',','',$this->input->post('txtFinanciera')));
+            $c_data['ejec_fisic_prog']=$this->input->post('txtFisica');
+            $c_data['ejec_finan_prog']=floatval(str_replace(',','',$this->input->post('txtFinanc')));
             $c_data['fecha_registro']=date('Y-m-d');
             $c_data['id_actividad']=$this->input->post('hdIdActividad');
             

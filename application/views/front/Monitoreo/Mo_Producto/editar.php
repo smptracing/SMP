@@ -146,7 +146,7 @@
                                                                     <th style="width: 20%;">Opciones</th>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody id="tablaActividad<?=$actividad->id_actividad?>">
+                                                            <tbody id="tbodyActividad<?=$actividad->id_actividad?>">
                                                             <?php foreach ($actividad->childProgramacion as $key => $programacion) { ?>
                                                             <tr>
                                                                 <td><?=$programacion->mes_ejec?></td>
