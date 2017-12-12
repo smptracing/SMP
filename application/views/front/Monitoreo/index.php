@@ -116,7 +116,7 @@ if($sessionTempError){ ?>
 						{
 							if(resp.length==1)
 							{
-								paginaAjaxDialogo(null, 'Registrar Producto',{codigoUnico:inputValue}, base_url+'index.php/Mo_MonitoreodeProyectos/InsertarProducto', 'GET', null, null, false, true);
+								paginaAjaxDialogo('nuevoProducto', 'Registrar Producto',{codigoUnico:inputValue}, base_url+'index.php/Mo_MonitoreodeProyectos/InsertarProducto', 'GET', null, null, false, true);
 			  					swal("Correcto!", "Se Encontro el Proyecto: " + inputValue, "success");
 							}
 							else

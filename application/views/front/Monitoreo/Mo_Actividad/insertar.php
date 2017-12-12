@@ -158,7 +158,7 @@
 	        	((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje,"success") : swal(resp.proceso,resp.mensaje,"error"));
 	        	$('#frmInsertarActividad')[0].reset();
                 $('#modal2').modal('hide');
-	        	paginaAjaxDialogo(null, 'Editar Producto',{ id_pi: idPi }, base_url+'index.php/Mo_MonitoreodeProyectos/EditarProducto', 'GET', null, null, false, true);
+	        	paginaAjaxDialogo('nuevoProducto', 'Editar Producto',{ id_pi: idPi }, base_url+'index.php/Mo_MonitoreodeProyectos/EditarProducto', 'GET', null, null, false, true);
 	        }
     	}); 
 	}

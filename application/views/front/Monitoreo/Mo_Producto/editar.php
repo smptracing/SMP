@@ -30,8 +30,7 @@
         		<div class="panel">
         			<div class="panel-heading" style="padding: 6px;">
         				<h4 class="panel-title" style="float:right;">
-        					<a onclick="paginaAjaxDialogo('modal2', 'Agregar Actividad',{ idPi: '<?=$value->id_pi?>' , idProducto : '<?=$value->id_producto?>' }, base_url+'index.php/Mo_Actividad/Insertar', 'GET', null, null, false, true);return false;" role="button" class="btn btn-round btn-warning btn-xs"><span class="fa fa-plus" data-toggle="tooltip" data-placement="top" title="Agregar Actividad"></span>
-        					</a>
+        					<a onclick="eliminarProducto('<?=$value->id_producto?>',this);"  role="button" class="btn btn-round btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Eliminar Producto"><span class="fa fa-trash-o"></span></a><a onclick="paginaAjaxDialogo('modal2', 'Agregar Actividad',{ idPi: '<?=$value->id_pi?>' , idProducto : '<?=$value->id_producto?>' }, base_url+'index.php/Mo_Actividad/Insertar', 'GET', null, null, false, true);return false;" data-toggle="tooltip" data-placement="top" title="Agregar Actividad" role="button" class="btn btn-round btn-warning btn-xs"><span class="fa fa-plus"></span></a>
         				</h4>
         				<a class="panel-title" id="heading<?=$value->id_producto?>" data-toggle="collapse" data-parent="#accordion" href="#collapse<?=$value->id_producto?>" aria-expanded="false" aria-controls="collapse<?=$value->id_producto?>" style="text-transform: uppercase;"><?=$value->desc_producto?>
         				</a>
@@ -103,7 +102,7 @@
             
             if(resp.proceso=='Correcto')
             {
-            	var htmlTemp= '<div class="panel"><div class="panel-heading" style="padding: 6px;"><h4 class="panel-title" style="float:right;"><a onclick="paginaAjaxDialogo(\'modal2\',\'Agregar Actividad\', {idPi:'+$('#id_pi').val()+', idProducto :'+resp.idProducto+'}, base_url+\'index.php/Mo_Actividad/Insertar\',\'GET\', null, null, false, true);" role="button" class="btn btn-round btn-warning btn-xs"><span class="fa fa-plus" data-toggle="tooltip" data-placement="top" title="Agregar Actividad"></span></a></h4><a class="panel-title" id="heading'+resp.idProducto+'" data-toggle="collapse" data-parent="#accordion" href="#collapse'+resp.idProducto+'" aria-expanded="false" aria-controls="collapse'+resp.idProducto+'" style="text-transform: uppercase;">'+replaceAll(replaceAll($('#txtDescripcionProducto').val().trim(), '<', '&lt;'), '>', '&gt;')+'</a></div>';
+            	var htmlTemp= '<div class="panel"><div class="panel-heading" style="padding: 6px;"><h4 class="panel-title" style="float:right;"><a onclick="eliminarProducto('+resp.idProducto+',this);" role = "button" class="btn btn-round btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Eliminar Producto"><span class="fa fa-trash-o"></span></a><a onclick="paginaAjaxDialogo(\'modal2\',\'Agregar Actividad\', {idPi:'+$('#id_pi').val()+', idProducto :'+resp.idProducto+'}, base_url+\'index.php/Mo_Actividad/Insertar\',\'GET\', null, null, false, true);" role="button" class="btn btn-round btn-warning btn-xs" data-toggle="tooltip" data-placement="top" title="Agregar Actividad"><span class="fa fa-plus"></span></a></h4><a class="panel-title" id="heading'+resp.idProducto+'" data-toggle="collapse" data-parent="#accordion" href="#collapse'+resp.idProducto+'" aria-expanded="false" aria-controls="collapse'+resp.idProducto+'" style="text-transform: uppercase;">'+replaceAll(replaceAll($('#txtDescripcionProducto').val().trim(), '<', '&lt;'), '>', '&gt;')+'</a></div>';
             	htmlTemp+='<div id="collapse'+resp.idProducto+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+resp.idProducto+'><div class="panel-body"><div class="table-responsive"><table class="table table-bordered"><thead><tr><th>Actividad</th><th>U. Medida</th><th>Meta</th><th>Fecha Inicio</th><th>Fecha Fin</th><th>Opciones</th></tr></thead></table></div></div></div></div>';
 
 				$('#accordion').append(htmlTemp);
@@ -114,6 +113,33 @@
 		}, false, true);
 
 	}
+
+	function eliminarProducto(idProducto, element)
+    {
+        swal({
+            title: "Esta seguro que desea eliminar el producto y sus actividades?",
+            text: "",
+            type: "warning",
+            showCancelButton: true,
+            cancelButtonText:"CANCELAR" ,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "SI,ELIMINAR",
+            closeOnConfirm: false
+        },
+        function()
+        {
+            paginaAjaxJSON({ "idProducto" : idProducto }, base_url+'index.php/Mo_MonitoreodeProyectos/eliminarProducto', 'POST', null, function(resp)
+			{
+				resp=JSON.parse(resp);
+				((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje,"success") : swal(resp.proceso,resp.mensaje,"error"));
+
+				if(resp.proceso=='Correcto')
+				{
+					$(element).parent().parent().parent().remove();
+				}				
+			}, false, true);
+        });
+    }
 
 	function editarActividad(idActividad, idPi)
 	{
@@ -146,6 +172,7 @@
 			}, false, true);
         });
     }
+
     $(function()
 	{
 		$('#divAgregarProducto').formValidation(

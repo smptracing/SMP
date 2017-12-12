@@ -84,4 +84,12 @@ class Mo_MonitoreodeProyectos extends CI_Controller
         $msg = ($data > 0 ? (['proceso' => 'Correcto', 'mensaje' => 'el monitoreo del proyecto fue eliminado']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
         echo json_encode($msg);exit;
     }
+
+    function eliminarProducto()
+    {
+        $msg = array();
+        $data = $this->Model_Mo_Producto->eliminarProducto($this->input->post('idProducto'));
+        $msg = ($data > 0 ? (['proceso' => 'Correcto', 'mensaje' => 'el monitoreo del proyecto fue eliminado']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
+        echo json_encode($msg);exit;
+    }
 }

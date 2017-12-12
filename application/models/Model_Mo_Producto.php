@@ -73,4 +73,11 @@ class Model_Mo_Producto extends CI_Model
 		$this->db->delete('MO_PRODUCTO');
 		return $this->db->affected_rows();
 	}
+
+	function eliminarProducto($idProducto)
+	{
+		$this->db->where('id_producto', $idProducto);
+		$this->db->delete('MO_PRODUCTO');
+		return $this->db->affected_rows();
+	}
 }
