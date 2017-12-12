@@ -118,50 +118,47 @@
                             </div>
                             <div class="row" style="height: 300px;overflow-y: scroll; margin-top: 15px;">
                                 <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+                                    <div class="accordion" id="accordion1" role="tablist" aria-multiselectable="true">
                                         <?php foreach ($producto as $key => $value) { ?>                
                                         <div class="panel">
                                             <div class="panel-heading" style="padding: 6px;">
-                                                <a class="panel-title" id="Pheading<?=$value->id_producto?>" data-toggle="collapse" data-parent="#accordion" href="#Pcollapse<?=$value->id_producto?>" aria-expanded="false" aria-controls="Pcollapse<?=$value->id_producto?>" style="text-transform: uppercase;"><?=$value->desc_producto?>
+                                                <a class="panel-title" id="pheading<?=$value->id_producto?>" data-toggle="collapse" data-parent="#accordion1" href="#pcollapse<?=$value->id_producto?>" aria-expanded="false" aria-controls="pcollapse<?=$value->id_producto?>" style="text-transform: uppercase;"><?=$value->desc_producto?>
                                                 </a>
                                             </div>
-                                            <div id="Pcollapse<?=$value->id_producto?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="Pheading<?=$value->id_producto?>">
+                                            <?php if(count($value->childActividad)>0) { ?>
+                                            <div id="pcollapse<?=$value->id_producto?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="pheading<?=$value->id_producto?>">
                                                 <div class="panel-body">
                                                     <div class="table-responsive">
+                                                        <?php foreach ($value->childActividad as $key => $actividad) { ?>
+
                                                         <table class="table table-bordered">
                                                             <thead>
+                                                                <tr style="text-align: center;">
+                                                                    <th colspan="3" style="color: #ed5565; font-size: 12px; font-weight: bold; width: 80%;"> ACTIVIDAD: <?=$actividad->desc_actividad?></th>
+                                                                    <th style="width: 20%;">
+                                                                        <a onclick="paginaAjaxDialogo('modalProgramacion', 'Agregar Programación',{ idPi: '<?=$value->id_pi?>' , idActividad : '<?=$actividad->id_actividad?>' }, base_url+'index.php/Mo_Ejecucion_Actividad/Insertar', 'GET', null, null, false, true);return false;" data-toggle="tooltip" data-placement="top" title="Agregar Programación" role="button" class="btn  btn-warning btn-xs"><span class="fa fa-plus"></span></a>
+                                                                    </th>
+                                                                </tr>
                                                                 <tr>
-                                                                    <th>Actividad</th>
-                                                                    <th>U. Medida</th>
-                                                                    <th>Meta</th>
-                                                                    <th>Fecha Inicio</th>
-                                                                    <th>Fecha Fin</th>
-                                                                    <th>Opciones</th>
+                                                                    <th style="width: 20%;">Mes</th>
+                                                                    <th style="width: 30%;">Ejec. Fis. Prog</th>
+                                                                    <th style="width: 30%;">Ejec. Fin. Prog</th>
+                                                                    <th style="width: 20%;">Opciones</th>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody>
-                                                                <?php foreach ($value->childActividad as $key => $actividad) { ?>
-                                                                <tr>
-                                                                    <td><?=$actividad->desc_actividad?></td>
-                                                                    <td><?=$actividad->uni_medida?></td>
-                                                                    <td><?=$actividad->meta?></td>
-                                                                    <td><?=$actividad->fecha_inicio?></td>
-                                                                    <td><?=$actividad->fecha_fin?></td>
-                                                                    <td>
-                                                                        <a onclick="editarActividad('<?=$actividad->id_actividad?>','<?=$value->id_pi?>');" role="button" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Editar"><span class="fa fa-edit"></span></a>
+                                                        </table> 
 
-                                                                        <a onclick="eliminarActividad('<?=$actividad->id_actividad?>', this);" role="button" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Eliminar" ><span class="fa fa-trash-o"></span></a>
-                                                                    </td>
-                                                                </tr>
-                                                                <?php } ?>
-                                                            </tbody>
-                                                        </table>                            
+
+                                                        <?php } ?>
+                                                                                   
                                                     </div>                      
                                                 </div>
                                             </div>
+                                            <?php }?>
                                         </div> 
                                         <?php } ?>              
                                     </div>
+                                    
                                 </div>
                             </div>
                             <hr>
