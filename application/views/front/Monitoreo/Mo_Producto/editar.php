@@ -133,7 +133,7 @@
 
                                                         <table class="table table-bordered" id="tablaActividad<?=$actividad->id_actividad?>">
                                                             <thead>
-                                                                <tr style="text-align: center;">
+                                                                <tr style="text-align: center; background-color: #f9f9f9;">
                                                                     <th colspan="3" style="color: #ed5565; font-size: 12px; font-weight: bold; width: 80%;"> ACTIVIDAD: <?=$actividad->desc_actividad?></th>
                                                                     <th style="width: 20%;">
                                                                         <a onclick="paginaAjaxDialogo('modalProgramacion', 'Agregar Programación',{ idPi: '<?=$value->id_pi?>' , idActividad : '<?=$actividad->id_actividad?>' }, base_url+'index.php/Mo_Ejecucion_Actividad/Insertar', 'GET', null, null, false, true);return false;" data-toggle="tooltip" data-placement="top" title="Agregar Programación" role="button" class="btn  btn-warning btn-xs"><span class="fa fa-plus"></span></a>
@@ -146,7 +146,20 @@
                                                                     <th style="width: 20%;">Opciones</th>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody id="tbodyActividad<?=$actividad->id_actividad?>">
+                                                            <tbody id="tablaActividad<?=$actividad->id_actividad?>">
+                                                            <?php foreach ($actividad->childProgramacion as $key => $programacion) { ?>
+                                                            <tr>
+                                                                <td><?=$programacion->mes_ejec?></td>
+                                                                <td><?=$programacion->ejec_fisic_prog?></td>
+                                                                <td><?=$programacion->ejec_finan_prog?></td>
+                                                                <td>
+                                                                    <a role="button" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Editar Programación"><span class="fa fa-edit"></span></a>
+                                                                    <a onclick="eliminarProgramacion('<?=$programacion->id_ejecucion?>',this);" role="button" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Eliminar Programación" ><span class="fa fa-trash-o"></span></a>
+                                                                </td>
+                                                            </tr>
+
+                                                            <?php } ?>
+
                                                                 
                                                             </tbody>
                                                         </table> 
@@ -256,6 +269,33 @@
         function()
         {
             paginaAjaxJSON({ "idActividad" : idActividad }, base_url+'index.php/Mo_Actividad/eliminar', 'POST', null, function(resp)
+            {
+                resp=JSON.parse(resp);
+                ((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje,"success") : swal(resp.proceso,resp.mensaje,"error"));
+
+                if(resp.proceso=='Correcto')
+                {
+                    $(element).parent().parent().remove();
+                }               
+            }, false, true);
+        });
+    }
+
+    function eliminarProgramacion(idProgramacion, element)
+    {
+        swal({
+            title: "Esta seguro que desea eliminar la programacion?",
+            text: "",
+            type: "warning",
+            showCancelButton: true,
+            cancelButtonText:"CANCELAR" ,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "SI,ELIMINAR",
+            closeOnConfirm: false
+        },
+        function()
+        {
+            paginaAjaxJSON({ "idEjecucion" : idProgramacion }, base_url+'index.php/Mo_Ejecucion_Actividad/eliminar', 'POST', null, function(resp)
             {
                 resp=JSON.parse(resp);
                 ((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje,"success") : swal(resp.proceso,resp.mensaje,"error"));

@@ -13,4 +13,20 @@ class Model_Mo_Ejecucion_Actividad extends CI_Model
 		$this->db->insert('MO_EJECUCION_ACTIVIDAD',$data);
 		return $this->db->insert_id();
 	}
+
+	function listaEjecucionActividad($idActividad)
+	{
+		$this->db->select('MO_EJECUCION_ACTIVIDAD.*');
+		$this->db->from('MO_EJECUCION_ACTIVIDAD');
+		$this->db->where('MO_EJECUCION_ACTIVIDAD.id_actividad',$idActividad);
+		return $this->db->get()->result();
+	}
+
+	function eliminar($idEjecucion)
+	{
+		$this->db->where('id_ejecucion',$idEjecucion);
+		$this->db->delete('MO_EJECUCION_ACTIVIDAD');
+		return $this->db->affected_rows();
+	}
+
 }

@@ -38,6 +38,14 @@ class Mo_Ejecucion_Actividad extends CI_Controller
         $this->load->view('front/Monitoreo/Mo_Ejecucion_Actividad/insertar', ['idActividad' => $idActividad, 'idPi' => $idPi, 'meses' => $meses]); 
     }
 
+    function eliminar()
+    {
+        $msg = array();
+        $data = $this->Model_Mo_Ejecucion_Actividad->eliminar($this->input->post('idEjecucion'));
+        $msg = ($data > 0 ? (['proceso' => 'Correcto', 'mensaje' => 'La Programación ha sido eliminada con exito']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
+        echo json_encode($msg);exit;
+    }
+
     private function listaMeses()
     {
         $array = array('Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Setiembre','Octubre','Noviembre','Diciembre');
