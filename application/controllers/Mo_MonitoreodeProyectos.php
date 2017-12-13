@@ -78,17 +78,6 @@ class Mo_MonitoreodeProyectos extends CI_Controller
                 $actividad->childProgramacion = $this->Model_Mo_Ejecucion_Actividad->listaEjecucionActividad($actividad->id_actividad);
             }
         }
-
-        /*foreach ($producto as $key => $value) 
-        {
-            foreach ($value->childActividad as $key => $actividad) 
-            {
-                $actividad->programacion = $this->Model_Mo_Ejecucion_Actividad->listaEjecucionActividad($actividad->id_actividad);
-            }
-        }*/
-        /*echo "<pre>";
-        var_dump($producto);
-        echo "</pre>";*/
         
         $this->load->view('front/Monitoreo/Mo_Producto/editar', ['proyecto' => $proyecto, 'producto'=>$producto]);
     }

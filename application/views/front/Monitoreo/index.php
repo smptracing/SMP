@@ -28,7 +28,7 @@
 										<td style="text-align: right;"><?=a_number_format($value->costo_pi , 2, '.',",",3)?></td>
 										<td></td>
 										<td>
-											<a href="<?= site_url('Expediente_Tecnico/verdetalle/'.$value->id_pi);?>" role="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top" title="Detalle"><span class="fa fa-search-plus"></span></a>
+											<a onclick="paginaAjaxDialogo('monitoreo', 'Monitorear Proyecto',{ id_pi: '<?=$value->id_pi?>' }, base_url+'index.php/Mo_Monitoreo/index', 'GET', null, null, false, true);return false;" role="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top" title="Monitoreo"><span class="fa fa-search-plus"></span></a>
 
 											<a onclick="paginaAjaxDialogo('nuevoProducto', 'Editar Producto',{ id_pi: '<?=$value->id_pi?>' }, base_url+'index.php/Mo_MonitoreodeProyectos/EditarProducto', 'GET', null, null, false, true);return false;" role="button" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Editar"><span class="fa fa-edit"></span></a>
 
