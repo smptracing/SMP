@@ -22,15 +22,15 @@
     </div>
     <div class="row" style="height: 300px;overflow-y: scroll; margin-top: 15px;">
         <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="accordion" id="accordion1" role="tablist" aria-multiselectable="true">
+            <div class="accordion" id="accordion2" role="tablist" aria-multiselectable="true">
                 <?php foreach ($producto as $key => $value) { ?>                
                 <div class="panel">
                     <div class="panel-heading" style="padding: 6px;">
-                        <a class="panel-title" id="pheading<?=$value->id_producto?>" data-toggle="collapse" data-parent="#accordion1" href="#pcollapse<?=$value->id_producto?>" aria-expanded="false" aria-controls="pcollapse<?=$value->id_producto?>" style="text-transform: uppercase;"><?=$value->desc_producto?>
+                        <a class="panel-title" id="eheading<?=$value->id_producto?>" data-toggle="collapse" data-parent="#accordion2" href="#ecollapse<?=$value->id_producto?>" aria-expanded="false" aria-controls="ecollapse<?=$value->id_producto?>" style="text-transform: uppercase;"><?=$value->desc_producto?>
                         </a>
                     </div>
                     <?php if(count($value->childActividad)>0) { ?>
-                    <div id="pcollapse<?=$value->id_producto?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="pheading<?=$value->id_producto?>">
+                    <div id="ecollapse<?=$value->id_producto?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="eheading<?=$value->id_producto?>">
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <?php foreach ($value->childActividad as $key => $actividad) { ?>

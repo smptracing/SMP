@@ -1,5 +1,7 @@
+<form  id="frmInsertarMonitoreo">
 <div class="form-horizontal">
 	<div id="divAgregarMonitoreo">
+		<input type="hidden" name="hdIdEjecucion" id="hdIdEjecucion" value="<?=$ejecucion->id_ejecucion?>">
 		<div class="row">
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<label for="control-label">Actividad:</label>
@@ -47,7 +49,7 @@
 			</div>
 			<div class="col-md-3 col-sm-4 col-xs-12">
 				<label for="control-label">.</label>
-				<input type="button" class="btn btn-info" value="Guardar Resultado" onclick="agregarProducto();" style="width: 100%;">
+				<input type="button" class="btn btn-info" value="Guardar Resultado" onclick="agregarResultado();" style="width: 100%;">
 			</div>
 		</div>
 	</div>
@@ -66,6 +68,7 @@
 		</button>
 	</div>
 </div>
+</form>
 
 <script>
 	
@@ -154,7 +157,37 @@
 		});		
 	});
 
-	$('#nuevoProducto').on('hidden.bs.modal', function(){
-	    window.location.href=base_url+'Mo_MonitoreodeProyectos/index';
-	});
+	function agregarResultado()
+	{
+		event.preventDefault();
+		$('#divAgregarMonitoreo').data('formValidation').validate();
+		if(!($('#divAgregarMonitoreo').data('formValidation').isValid()))
+		{
+			return;
+		}
+		var formData=new FormData($("#frmInsertarMonitoreo")[0]);
+		//var idActividad=$('#hdIdActividad').val();
+		$.ajax({
+	        type:"POST",
+	        url:base_url+"index.php/Mo_Monitoreo/Insertar",
+	        data: formData,
+	        cache: false,
+	        contentType:false,
+	        processData:false,
+	        success:function(resp)
+	        {
+	        	resp = JSON.parse(resp);
+	        	((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje,"success") : swal(resp.proceso,resp.mensaje,"error"));	   
+	        	/*if(resp.proceso=='Correcto')
+	        	{
+	        		var htmlTemp = '<tr><td>'+mes+'</td><td>'+ejecucionFisica+'</td><td>'+ejecucionFinanciera+'</td><td><a role="button" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Editar Programación"><span class="fa fa-edit"></span></a> <a onclick="eliminarProgramacion('+resp.idProgramacion+',this);" role="button" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Eliminar Programación" ><span class="fa fa-trash-o"></span></a></td></tr>';
+
+	        		$('#tbodyActividad'+idActividad).append(htmlTemp);
+	        	}
+	        	((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje,"success") : swal(resp.proceso,resp.mensaje,"error"));	        		        		        	
+	        	$('#frmInsertarEjecucionActividad')[0].reset();
+                $('#modalProgramacion').modal('hide');  */ 	
+	        }
+    	});
+	}
 </script>

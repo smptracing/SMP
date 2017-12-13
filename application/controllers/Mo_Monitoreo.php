@@ -10,6 +10,7 @@ class Mo_Monitoreo extends CI_Controller
         $this->load->model('Model_Mo_Producto');
         $this->load->model('Model_Mo_Actividad');
         $this->load->model('Model_Mo_Ejecucion_Actividad');
+        $this->load->model('Model_Mo_Monitoreo');
         $this->load->helper('FormatNumber_helper');
     }
 
@@ -59,5 +60,29 @@ class Mo_Monitoreo extends CI_Controller
         $nombreActividad = $this->input->get('nombreActividad');
         $ejecucion = $this->Model_Mo_Ejecucion_Actividad->verprogramacion($this->input->get('idEjecucion'));
         $this->load->view('front/Monitoreo/Mo_Monitoreo/resultado',['actividad'=>$nombreActividad, 'ejecucion' => $ejecucion]);
+    }
+    function insertar()
+    {
+        if($_POST)
+        {
+            $msg = array();
+
+            $data['ejec_fisic_real']=$this->input->post('txtEjFisReal');
+            $data['ejec_finan_real']=floatval(str_replace(',','',$this->input->post('txtEjFinReal')));
+            $data['fecha_modificacion']=date('Y-m-d');
+
+            $query1=$this->Model_Mo_Ejecucion_Actividad->editar($data,$this->input->post('hdIdEjecucion'));
+
+            $Monitoreo['desc_monitoreo']=$this->input->post('txtResultado');
+            $Monitoreo['fecha_registro']=date('Y-m-d');
+            $Monitoreo['id_ejecucion']=$this->input->post('hdIdEjecucion');
+
+            $query2=$this->Model_Mo_Monitoreo->insertar($Monitoreo);
+
+            $msg = ($query2 != ''  ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
+
+            echo json_encode($msg);exit;
+
+        }
     }
 }
