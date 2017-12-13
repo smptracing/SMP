@@ -73,6 +73,7 @@ function autorizar($url)
     }
 
     $lista_API = array(
+      '',
       'Inicio',
       'Usuario/listaMenu',
       'Usuario/listaUrlAsignado',
@@ -80,11 +81,9 @@ function autorizar($url)
       'Usuario/ListarTipoUsuario',
 
       'Personal/ListarPersonal',
-
       'Funcion/GetDivisionFuncional',
       'Funcion/GetGrupoFuncional',
       'Funcion/GetFuncion',
-
       'criterio/addPrioridad',
       'criterio/getFactor',
       'criterio/updateCriterio',
@@ -525,7 +524,13 @@ function autorizar($url)
       'Personal/getcargo',
       'personal/GetPersonal',
       'meta/listar_meta',
-      'Usuario/asignarProyecto'
+      'Usuario/asignarProyecto',
+      'Expediente_Tecnico/verdetalle/4',
+      'Mo_MonitoreodeProyectos/EditarProducto',
+      'Mo_MonitoreodeProyectos/InsertarProducto',
+      'Mo_Actividad/eliminar',
+      'Mo_MonitoreodeProyectos/eliminarProducto',
+      'Mo_MonitoreodeProyectos/eliminarMonitoreo'
     );
     foreach( $lista_API as $value ) {
       array_push($arrayPermitido, $value);
