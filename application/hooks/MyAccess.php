@@ -525,12 +525,12 @@ function autorizar($url)
       'personal/GetPersonal',
       'meta/listar_meta',
       'Usuario/asignarProyecto',
-      'Expediente_Tecnico/verdetalle/4',
       'Mo_MonitoreodeProyectos/EditarProducto',
       'Mo_MonitoreodeProyectos/InsertarProducto',
       'Mo_Actividad/eliminar',
       'Mo_MonitoreodeProyectos/eliminarProducto',
-      'Mo_MonitoreodeProyectos/eliminarMonitoreo'
+      'Mo_MonitoreodeProyectos/eliminarMonitoreo',
+      'Expediente_Tecnico/verdetalle'  // Expediente_Tecnico/verdetalle?id=variable
     );
     foreach( $lista_API as $value ) {
       array_push($arrayPermitido, $value);
