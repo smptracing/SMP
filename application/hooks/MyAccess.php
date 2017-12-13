@@ -555,7 +555,13 @@ function autorizar($url)
       'Expediente_Tecnico/ejecucion',
       'Expediente_Tecnico/index',
       'Expediente_Tecnico/ControlMetrado',
-      'Expediente_Tecnico/ValorizacionFisicaMetrado'
+      'Expediente_Tecnico/ValorizacionFisicaMetrado',
+      'PrincipalReportes/DetalleAnalitico',
+      'PrincipalReportes/DetalleClasificador',
+      'PrincipalReportes/DetalleMensualizado',
+      'PrincipalReportes/DetalleMensualizadoFuenteFinan',
+      'PrincipalReportes/detalladoMensualizadoConceptoClasificador',
+      'PrincipalReportes/detallePedidoCompraMeta'
     );
     foreach( $lista_API as $value ) {
       array_push($arrayPermitido, $value);
