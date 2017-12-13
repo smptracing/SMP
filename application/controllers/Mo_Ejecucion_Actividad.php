@@ -47,6 +47,30 @@ class Mo_Ejecucion_Actividad extends CI_Controller
         $this->load->view('front/Monitoreo/Mo_Ejecucion_Actividad/insertar', ['idActividad' => $idActividad, 'idPi' => $idPi, 'meses' => $meses]); 
     }
 
+    function editar()
+    {
+        if($_POST)
+        {
+            $msg = array();
+                       
+            $c_data['mes_ejec']=$this->input->post('txtMes');
+            $c_data['anio_ejec']=$this->input->post('txtAnio');
+            $c_data['ejec_fisic_prog']=$this->input->post('txtFisica');
+            $c_data['ejec_finan_prog']=floatval(str_replace(',','',$this->input->post('txtFinanc')));
+            $c_data['fecha_modificacion']=date('Y-m-d');
+
+            $data = $this->Model_Mo_Ejecucion_Actividad->editar($c_data,$this->input->post('hdIdEjecucion'));            
+            $msg = ($data > 0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron editados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
+
+            echo json_encode($msg);exit;
+
+        }
+
+        $programacion=$this->Model_Mo_Ejecucion_Actividad->verprogramacion($this->input->get('idEjecucion'));
+        $meses = $this->listaMeses();  
+        $this->load->view('front/Monitoreo/Mo_Ejecucion_Actividad/editar', ['programacion' => $programacion, 'meses' => $meses]);
+    }
+
     function eliminar()
     {
         $msg = array();

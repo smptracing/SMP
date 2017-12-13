@@ -148,12 +148,12 @@
                                                             </thead>
                                                             <tbody id="tbodyActividad<?=$actividad->id_actividad?>">
                                                             <?php foreach ($actividad->childProgramacion as $key => $programacion) { ?>
-                                                            <tr>
+                                                            <tr id="trProgramacion<?=$programacion->id_ejecucion?>">
                                                                 <td><?=$programacion->mes_ejec?></td>
                                                                 <td><?=$programacion->ejec_fisic_prog?></td>
-                                                                <td><?=$programacion->ejec_finan_prog?></td>
+                                                                <td><?=a_number_format($programacion->ejec_finan_prog, 2, '.',",",3) ?></td>
                                                                 <td>
-                                                                    <a role="button" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Editar Programación"><span class="fa fa-edit"></span></a>
+                                                                    <a onclick="paginaAjaxDialogo('editarProgramacion', 'Editar Programación',{ idEjecucion: '<?=$programacion->id_ejecucion?>' }, base_url+'index.php/Mo_Ejecucion_Actividad/editar', 'GET', null, null, false, true);return false;" role="button" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Editar Programación"><span class="fa fa-edit"></span></a>
                                                                     <a onclick="eliminarProgramacion('<?=$programacion->id_ejecucion?>',this);" role="button" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Eliminar Programación" ><span class="fa fa-trash-o"></span></a>
                                                                 </td>
                                                             </tr>
