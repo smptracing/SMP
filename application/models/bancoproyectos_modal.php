@@ -17,9 +17,9 @@ class bancoproyectos_modal extends CI_Model
         return $data->result();
     }
 
-    public function InsertarUbigeo_Pi($ubigeoPi) 
+    public function InsertarUbigeo_Pi($data) 
     {
-        $this->db->insert('UBIGEO_PI', $ubigeoPi);
+        $this->db->insert('UBIGEO_PI', $data);
         return array(
             'filasAfectadas' => $this->db->affected_rows(),
             'ultimoId' => $this->db->insert_id(),

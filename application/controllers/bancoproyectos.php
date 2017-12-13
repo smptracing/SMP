@@ -377,9 +377,9 @@ class bancoproyectos extends CI_Controller
                 {
                     $file_info = $this->upload->data();
                     $imagen = $file_info['file_name'];
-                    $c_data['id_ubigeo_pi'] = $q1['ultimoId'];
-                    $c_data['url_img']= $imagen;
-                    $q2 = $this->Model_PMI_ubicacion->insertarUbigeoPiImg($c_data);
+                    $d_data['id_ubigeo_pi'] = $q1['ultimoId'];
+                    $d_data['url_img']= $imagen;
+                    $q2 = $this->Model_PMI_ubicacion->insertarUbigeoPiImg($d_data);
                     if($q2>0)
                     {
                         $datos['q2'] = 0;
