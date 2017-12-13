@@ -531,7 +531,31 @@ function autorizar($url)
       'Mo_MonitoreodeProyectos/eliminarProducto',
       'Mo_MonitoreodeProyectos/eliminarMonitoreo',
       'Expediente_Tecnico/verdetalle',  // Expediente_Tecnico/verdetalle?id=variable
-      'ProyectoInversion/ReporteBuscadorPorPip'
+      'ProyectoInversion/ReporteBuscadorPorPip',
+      'Expediente_Tecnico/editar',
+      'ET_PER_REQ/insertar',
+      'Expediente_Tecnico/vistoBueno',
+      'ET_Componente/insertar',
+      'ET_Tarea/index',
+      'Expediente_Tecnico/valorizacionEjecucionProyecto',
+      'Expediente_Tecnico/ResponsableExpediente',
+      'Expediente_Tecnico/DocumentoExpediente',
+      'Expediente_Tecnico/DetalleExpediente',
+      'Expediente_Tecnico/ReporteEstadistico',
+
+      'Expediente_Tecnico/reportePdfExpedienteTecnico',
+      'Expediente_Tecnico/reportePdfPresupuestoFF05',
+      'Expediente_Tecnico/reportePdfPresupuestoAnalitico',
+      'Expediente_Tecnico/reportePdfMetrado',
+      'Expediente_Tecnico/reportePdfAnalisisPrecioUnitarioFF11',
+      'Expediente_Tecnico/reportePdfValorizacionEjecucion',
+      'Expediente_Tecnico/reportePdfInformeMensual',
+      'Expediente_Tecnico/reportePdfValorizacionFisica',
+
+      'Expediente_Tecnico/ejecucion',
+      'Expediente_Tecnico/index',
+      'Expediente_Tecnico/ControlMetrado',
+      'Expediente_Tecnico/ValorizacionFisicaMetrado'
     );
     foreach( $lista_API as $value ) {
       array_push($arrayPermitido, $value);

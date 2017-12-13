@@ -29,7 +29,7 @@ class ET_Tarea extends CI_Controller
 
 		$to=new DateTime($to);
 		$to->modify('+1 day');
-		
+
 		$interval=new DateInterval('P1D');
 		$periods=new DatePeriod($from, $interval, $to);
 
@@ -40,15 +40,16 @@ class ET_Tarea extends CI_Controller
 			if(!in_array($period->format('N'), $workingDays)) continue;
 			if(in_array($period->format('Y-m-d'), $holidayDays)) continue;
 			if(in_array($period->format('*-m-d'), $holidayDays)) continue;
-			
+
 			$days++;
 		}
-		
+
 		return $days;
 	}
 
-	public function index($idExpedienteTecnico)
+	public function index()
 	{
+		$idExpedienteTecnico = isset($_GET['id_et']) ? $_GET['id_et'] : null;
 		$this->db->trans_start();
 
 		$listaETTareaGantt=$this->Model_ET_Tarea_Gantt->ETTareaGanttPorIdET($idExpedienteTecnico);
@@ -75,7 +76,7 @@ class ET_Tarea extends CI_Controller
 
 			$value->childETEspecialidadTarea=$this->Model_ET_Especialista_Tarea->EspecialistaTareaPorIdTarea($value->id_tarea_et);
 			$value->countETComentario=count($this->Model_ET_Comentario->ETComentarioPorIdTareaET($value->id_tarea_et));
-			
+
 			$listaETObservacionTareaTemp=$this->Model_ET_Observacion_Tarea->ETObservacionTareaPorIdTareaET($value->id_tarea_et);
 
 			$value->countETObservacionTarea=count($listaETObservacionTareaTemp);

@@ -19,15 +19,15 @@
 									<td class="col-md-1 col-xs-12">Costo Total del proyecto Preinversion</td>
 									<td class="col-md-2 col-xs-12">Costo Total del proyecto Inversion</td>
 									<td class="col-md-1 col-xs-12">Tiempo Ejecucion</td>
-									<td class="col-md-1 col-xs-12">Numero Beneficiarios</td>						
+									<td class="col-md-1 col-xs-12">Numero Beneficiarios</td>
 								</tr>
 							</thead>
 							<tbody>
 							<?php foreach($listaExpedienteTecnicoElaboracion as $item){ ?>
 							  	<tr>
 							  		<td>
-							  			<a href="<?= site_url('Expediente_Tecnico/verdetalle/'.$item->id_et);?>" role="button" class="btn btn-success btn-sm"><span class="fa fa-eye"></span> <?= $item->codigo_unico_pi?></a>
-							  				
+							  			<a href="<?= site_url('Expediente_Tecnico/verdetalle?id_et='.$item->id_et);?>" role="button" class="btn btn-success btn-sm"><span class="fa fa-eye"></span> <?= $item->codigo_unico_pi?></a>
+
 							  		</td>
 									<td>
 										<?= $item->nombre_ue?>
@@ -36,7 +36,7 @@
 										<?= $item->nombre_pi?>
 									</td>
 									<td>
-										S/. <?=a_number_format($item->costo_total_preinv_et,2,'.',",",3)?> 
+										S/. <?=a_number_format($item->costo_total_preinv_et,2,'.',",",3)?>
 									</td>
 									<td>
 										S/. <?=a_number_format($item->costo_total_inv_et,2,'.',",",3)?>
@@ -46,13 +46,13 @@
 									</td>
 									<td>
 										<?=a_number_format($item->num_beneficiarios_indirectos,0,'.',",",3) ?>
-									</td>												
+									</td>
 							  	</tr>
 							<?php } ?>
 							</tbody>
 						</table>
-					</div>							
-									
+					</div>
+
 				</div>
 			</div>
 		</div>
@@ -100,18 +100,18 @@ function BuscarProyectocodigo()
 	  closeOnConfirm: false,
 	  inputPlaceholder: "Ingrese Codigo Unico"
 	}, function (inputValue) {
-	
+
 	if (inputValue === "")
 	  {
 	  	swal.showInputError("Ingresar codigo!");
     	return false
 	  }
-	 else 
+	 else
 	 {
 			event.preventDefault();
 			$.ajax({
 				"url":base_url+"index.php/Expediente_Tecnico/registroBuscarProyecto",
-				type:"GET", 
+				type:"GET",
 				data:{inputValue:inputValue},
 				cache:false,
 				success:function(resp)
@@ -127,7 +127,7 @@ function BuscarProyectocodigo()
 					{
 						swal.showInputError("No se encontro el  Codigo Unico. Intente Nuevamente!");
 	    				return false
-					}					
+					}
 				}
 			});
 		}
