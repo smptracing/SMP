@@ -55,4 +55,15 @@ class Model_Mo_Ejecucion_Actividad extends CI_Model
 		return $this->db->get()->result();
 	}
 
+	function verificarProgramacionDiferente($mes,$anio,$idActividad,$idProgramacion)
+	{
+		$this->db->select('MO_EJECUCION_ACTIVIDAD.*');
+		$this->db->from('MO_EJECUCION_ACTIVIDAD');
+		$this->db->where('MO_EJECUCION_ACTIVIDAD.mes_ejec',$mes);
+		$this->db->where('MO_EJECUCION_ACTIVIDAD.anio_ejec',$anio);
+		$this->db->where('MO_EJECUCION_ACTIVIDAD.id_actividad',$idActividad);
+		$this->db->where('MO_EJECUCION_ACTIVIDAD.id_ejecucion !=',$idProgramacion);
+		return $this->db->get()->result();
+	}
+
 }

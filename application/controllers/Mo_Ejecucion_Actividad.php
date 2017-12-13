@@ -52,7 +52,15 @@ class Mo_Ejecucion_Actividad extends CI_Controller
         if($_POST)
         {
             $msg = array();
-                       
+
+            $existe = count($this->Model_Mo_Ejecucion_Actividad->verificarProgramacionDiferente($this->input->post('txtMes'),$this->input->post('txtAnio'),$this->input->post('hdIdActividad'),$this->input->post('hdIdEjecucion')));
+            if($existe!=0)
+            {
+                $msg = (['proceso' => 'Error', 'mensaje' => 'Ya existe la programacion para ese mes.']);
+                echo json_encode($msg);
+                exit;
+            } 
+
             $c_data['mes_ejec']=$this->input->post('txtMes');
             $c_data['anio_ejec']=$this->input->post('txtAnio');
             $c_data['ejec_fisic_prog']=$this->input->post('txtFisica');

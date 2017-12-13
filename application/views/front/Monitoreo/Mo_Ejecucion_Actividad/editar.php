@@ -6,9 +6,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div id ="divFormEditarEjecucionActividad">
-							<!--<input type="hidden" id="hdIdPi" name="hdIdPi" autocomplete="off" class="form-control" value="<?=$idPi?>">
-							<input type="hidden" id="hdIdActividad" name="hdIdActividad" autocomplete="off" class="form-control" value="<?=$idActividad?>">
-							-->
+							<input type="hidden" id="hdIdActividad" name="hdIdActividad" autocomplete="off" class="form-control" value="<?=$programacion->id_actividad?>">
 							<input type="hidden" id="hdIdEjecucion" name="hdIdEjecucion" autocomplete="off" class="form-control" value="<?=$programacion->id_ejecucion?>">
 							<div class="row">
 								<div class="col-md-3 col-sm-6 col-xs-12">
