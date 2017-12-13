@@ -58,7 +58,7 @@
                                         <td><?=a_number_format($programacion->ejec_finan_prog, 2, '.',",",3) ?></td>
                                         <td><?=a_number_format($programacion->ejec_finan_real, 2, '.',",",3)?></td>
                                         <td>
-                                            <a onclick="paginaAjaxDialogo('editarProgramacion', 'Editar Programación',{ idEjecucion: '<?=$programacion->id_ejecucion?>' }, base_url+'index.php/Mo_Ejecucion_Actividad/editar', 'GET', null, null, false, true);return false;" role="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top" title="Resultado de Monitoreo"><span class="fa fa-eye"></span></a>
+                                            <a onclick="paginaAjaxDialogo('agregarResultado', 'Resultado, Observaciones y Compromisos',{ idEjecucion: '<?=$programacion->id_ejecucion?>', nombreActividad : '<?=$actividad->desc_actividad?>' }, base_url+'index.php/Mo_Monitoreo/verresultado', 'GET', null, null, false, true);return false;" role="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top" title="Resultado de Monitoreo"><span class="fa fa-eye"></span></a>
                                         </td>
                                     </tr>
                                     <?php } ?>                                        

@@ -49,4 +49,15 @@ class Mo_Monitoreo extends CI_Controller
         
         $this->load->view('front/Monitoreo/Mo_Monitoreo/index', ['proyecto' => $proyecto, 'producto'=>$producto]);
     }
+
+    function verresultado()
+    {
+        if ($_POST) 
+        {
+
+        }
+        $nombreActividad = $this->input->get('nombreActividad');
+        $ejecucion = $this->Model_Mo_Ejecucion_Actividad->verprogramacion($this->input->get('idEjecucion'));
+        $this->load->view('front/Monitoreo/Mo_Monitoreo/resultado',['actividad'=>$nombreActividad, 'ejecucion' => $ejecucion]);
+    }
 }
