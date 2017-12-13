@@ -37,7 +37,7 @@ if (!function_exists('autentificar'))
         if(in_array($url, $libres))
         {
             echo $CI->output->get_output();
-        }/*
+        }
         else
         {
             if($CI->session->userdata('idPersona'))
@@ -57,7 +57,7 @@ if (!function_exists('autentificar'))
             {
             	redirect('Login/muestralog');
             }
-        }*/
+        }
 
     }
 }
@@ -492,7 +492,40 @@ function autorizar($url)
       'Personal/ListarPersonal',
       'Usuario/ListarTipoUsuario',
       'Login/recuperarMenu/0',
-      'Login/recuperarMenu/'
+      'Login/recuperarMenu/',
+
+      'programar_nopip/Get_no_pip',
+      'programar_pip/GetProyectosEjecucion',
+      'programar_pip/GetProyectosFormulacionEvaluacion',
+      'programar_pip/GetProyectosFuncionamiento',
+      'bancoproyectos/GetProyectoInversion',
+      'bancoproyectos/GetNOPIP',
+      'CarteraInversion/GetCarteraInversion',
+      'Programacion/GetProgramacion',
+      'Programacion/GetProgramacionModificar',
+      'PipProgramados/GetPipOperacionMantenimiento',
+      'PipProgramados/GetPipProgramadosEjecucion',
+      'PipProgramados/GetPipProgramadosFormulacionEvaluacion',
+      'NoPipProgramados/GetNoPipProgramados',
+      'programar_pip/GetAnioCarteraProgramado',
+      'Indicador/GetIndicador',
+      'Funcion/GetProvincia',
+      'Funcion/GetListaFuncion',
+      'Usuario/editUsuario',
+      'Estudio_Inversion/get_EstudioInversion',
+      'FEformulacion/GetFormulacion',
+      'EvaluacionFE/GetEvaluacionFE',
+      'FEformulacion/GetFEViabilizado',
+      'TipEstudioFE/GetTipEstudioFE',
+      'FEnivelEstudio/get_FEnivelEstudio',
+      'EtapasFE/GetEtapasFE',
+      'Entidad/GetEntidad',
+      'MRubroEjecucion/GetRubroE',
+      'UnidadF/GetUnidadF',
+      'Personal/getcargo',
+      'personal/GetPersonal',
+      'meta/listar_meta',
+      'Usuario/asignarProyecto'
     );
     foreach( $lista_API as $value ) {
       array_push($arrayPermitido, $value);
