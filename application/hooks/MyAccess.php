@@ -530,7 +530,8 @@ function autorizar($url)
       'Mo_Actividad/eliminar',
       'Mo_MonitoreodeProyectos/eliminarProducto',
       'Mo_MonitoreodeProyectos/eliminarMonitoreo',
-      'Expediente_Tecnico/verdetalle'  // Expediente_Tecnico/verdetalle?id=variable
+      'Expediente_Tecnico/verdetalle',  // Expediente_Tecnico/verdetalle?id=variable
+      'ProyectoInversion/ReporteBuscadorPorPip'
     );
     foreach( $lista_API as $value ) {
       array_push($arrayPermitido, $value);

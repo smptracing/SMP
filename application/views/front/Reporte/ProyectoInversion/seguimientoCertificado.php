@@ -66,7 +66,7 @@
 											<?=$item->sec_func?>
 								    	</td>
 								    	<td>
-								    		<button type="button" class="DetalleOrdenExpeSiaf btn btn-success btn-xs" ><a style="color: white;" href="<?php echo site_url('ProyectoInversion/ReporteBuscadorPorPip/' . $item->act_proy); ?>">
+								    		<button type="button" class="DetalleOrdenExpeSiaf btn btn-success btn-xs" ><a style="color: white;" href="<?php echo site_url('ProyectoInversion/ReporteBuscadorPorPip?codigo=' . $item->act_proy); ?>">
 												<?=$item->act_proy?></a> <i class='ace-icon bigger-120'></i></button>
 								    	</td>
 								    	<td style="font-size: 10px;">
@@ -180,7 +180,7 @@ function siafActualizadorCertificado()
 
 				if(datos.actualizo)
 				{
-					
+
 					//var rttSeg = rtt / 1000;
 					swal(
 					  'Operacion Completada',
@@ -195,7 +195,7 @@ function siafActualizadorCertificado()
 					  datos.mensaje + ' Tiempo: ' + (rtt/1000) +'s',
 					  'error'
 					);
-				}					
+				}
 			},
 			error: function (xhr, textStatus, errorMessage) {
 		        $('#divModalCargaAjax').hide();
@@ -203,10 +203,9 @@ function siafActualizadorCertificado()
 					  'ERROR!',
 					  'Por favor consulte con el administrador, error 0x5642419',
 					  'error'
-					);			        
-		    } 
+					);
+		    }
 		});
 }
 
 </script>
-

@@ -12,7 +12,7 @@ class ProyectoInversion extends CI_Controller {/* Mantenimiento de sector entida
    /*INSERTAR UN PROYECTO EN LA TABLA PROYECTO Y SIMULTANEO EN LA TABLA PROYECTO UBIGEO*/
    function AddProyecto()
    {
-      if ($this->input->is_ajax_request()) 
+      if ($this->input->is_ajax_request())
       {
         $cbxUnidadEjecutora=$this->input->post("id_ue");
         $cbxNatI =$this->input->post("id_naturaleza_inv");
@@ -41,7 +41,7 @@ class ProyectoInversion extends CI_Controller {/* Mantenimiento de sector entida
        if($this->Model_ProyectoInversion->AddProyecto($cbxUnidadEjecutora,$cbxNatI,$cbxTipologiaInv,$cbxTipoInv,$cbxGrupoFunc,$cbxNivelGob,$cbxMetaPresupuestal,$cbxProgramaPres,$txtCodigoUnico,$txtNombrePip,$txtCostoPip,$txtDevengado,$dateFechaInPip,$dateFechaViabilidad,$distrito,$txtDireccionUbigeo,$txtLatitud,$txtLongitud,$cbxEstadoCicloInv,$dateFechaEstCicInv,$cbxRubro,$dateFechaRubro,$cbxModalidadEjec,$dateFechaModalidadEjec) == true)
           echo "Se añadio un proyecto";
         else
-          echo "Se añadio  un proyecto";  
+          echo "Se añadio  un proyecto";
       }
       else
       {
@@ -50,10 +50,10 @@ class ProyectoInversion extends CI_Controller {/* Mantenimiento de sector entida
    }
  /*FIN INSERTAR UN PROYECTO*/
 
-   
+
      function GetProyectoInversion()
   	{
-  		if ($this->input->is_ajax_request()) 
+  		if ($this->input->is_ajax_request())
   		{
   		$datos=$this->Model_ProyectoInversion->ProyectoInversion();
   		echo json_encode($datos);
@@ -66,7 +66,7 @@ class ProyectoInversion extends CI_Controller {/* Mantenimiento de sector entida
 //ULTIMO RPOYECTO DE INVERSION
         function GetProyectoInversionUltimo()
     {
-      if ($this->input->is_ajax_request()) 
+      if ($this->input->is_ajax_request())
       {
       $datos=$this->Model_ProyectoInversion->GetProyectoInversionUltimo();
       echo json_encode($datos);
@@ -80,7 +80,7 @@ class ProyectoInversion extends CI_Controller {/* Mantenimiento de sector entida
     //FIN ULTIO POYECTO DE INVERSION
      function BuscarProyectoInversion()
     {
-      if ($this->input->is_ajax_request()) 
+      if ($this->input->is_ajax_request())
       {
        $Id_ProyectoInver = $this->input->post("Id_ProyectoInver");
        $datos=$this->Model_ProyectoInversion->BuscarProyectoInversion($Id_ProyectoInver);
@@ -91,22 +91,20 @@ class ProyectoInversion extends CI_Controller {/* Mantenimiento de sector entida
         show_404();
       }
     }
-    
+
     public function index()
     {
       $this->_load_layout('Front/Pmi/frmMProyectoInversion');
-    } 
-
-
-    public function ReporteBuscadorPorPip($Codigo='')
-    {
-	    
-
-      $this->load->view('layout/Reportes/header');
-	    $this->load->view('front/Reporte/ProyectoInversion/index',["codigo" => $Codigo]);
-	    $this->load->view('layout/Reportes/footer');
     }
 
+
+    public function ReporteBuscadorPorPip($codigo='')
+    {
+	    $codigo = isset($_GET['codigo']) ? $_GET['codigo'] : null;
+      $this->load->view('layout/Reportes/header');
+	    $this->load->view('front/Reporte/ProyectoInversion/index',["codigo" => $codigo]);
+	    $this->load->view('layout/Reportes/footer');
+    }
 
     public function ReporteBuscadorPorAnio($anio=2017)
     {
