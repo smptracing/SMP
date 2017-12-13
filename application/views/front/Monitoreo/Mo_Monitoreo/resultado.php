@@ -1,3 +1,9 @@
+<style>
+	li
+	{
+		list-style:none;
+	}
+</style>
 <form  id="frmInsertarMonitoreo">
 <div class="form-horizontal">
 	<div id="divAgregarMonitoreo">
@@ -53,10 +59,19 @@
 			</div>
 		</div>
 	</div>
-	<div class="row" style="height: 300px;overflow-y: scroll; margin-top: 15px;">
+	<div class="row" style="background-color: #f5fbfb; height: 300px;overflow-y: scroll; margin-top: 15px;">
 		<div class="col-md-12 col-sm-12 col-xs-12">
-        	<div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">           	
-            </div>
+			<?php foreach ($monitoreo as $key => $value) { ?>
+				<ul>
+					<li style="color: #1e8c75; font-size: 15px; text-transform: uppercase; font-weight: bold;" contenteditable>
+					<a role="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Guardar Resultado"><span class="fa fa-save"></span></a>
+					<input type="button" class="btn btn-primary btn-xs" style="width: 25px;" value="G" >
+					<?=$value->desc_monitoreo?>
+
+						
+					</li>
+				</ul>
+			<?php } ?>
         </div>
 	</div>
 
