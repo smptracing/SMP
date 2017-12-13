@@ -98,7 +98,7 @@
 <script type="text/javascript">
 
 // FUNCTION CODE
-function gjCountAndRedirect(secounds, url) {
+function gjCountAndRedirect(secounds) {
 
   $('#gj-counter-num').text(secounds);
 
@@ -113,7 +113,7 @@ function gjCountAndRedirect(secounds, url) {
     if (secounds == 0) {
 
       clearInterval(interval);
-      window.location = url;
+      history.go(-1);
       $('#gj-counter-box').hide();
 
     }
@@ -122,7 +122,7 @@ function gjCountAndRedirect(secounds, url) {
 
   $('#gj-counter-box').click(function() {
     clearInterval(interval);
-    window.location = url;
+    history.go(-1);
 
   });
 }
@@ -130,6 +130,6 @@ function gjCountAndRedirect(secounds, url) {
 // Definir
 $(document).ready(function() {
   //call
-  gjCountAndRedirect(10, <?php echo base_url(); ?>+'Inicio');
+  gjCountAndRedirect(10);
 });
 </script>
