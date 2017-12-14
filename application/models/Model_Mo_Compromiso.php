@@ -22,6 +22,13 @@ class Model_Mo_Compromiso extends CI_Model
 		return $this->db->affected_rows();
 	}
 
+	function eliminar($idCompromiso)
+	{
+		$this->db->where('id_compromiso', $idCompromiso);
+		$this->db->delete('MO_COMPROMISO');
+		return $this->db->affected_rows();
+	}
+
 	function listaCompromiso($idObservacion)
 	{
 		$this->db->select('MO_COMPROMISO.*');

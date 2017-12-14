@@ -38,5 +38,11 @@ class Mo_Compromiso extends CI_Controller
         echo json_encode($msg);exit;
     }
 
-   
+    function eliminar()
+    {
+        $msg = array();
+        $data = $this->Model_Mo_Compromiso->eliminar($this->input->post('idCompromiso'));
+        $msg = ($data>0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
+        echo json_encode($msg);exit;
+    }   
 }
