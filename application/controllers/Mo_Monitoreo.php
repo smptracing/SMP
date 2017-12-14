@@ -69,12 +69,6 @@ class Mo_Monitoreo extends CI_Controller
                 $item->chilCompromiso = $this->Model_Mo_Compromiso->listaCompromiso($item->id_observacion);
             }
         }
-        /*echo "<pre>";
-        var_dump($monitoreo);
-        echo "</pre>";
-        exit;*/
-
-
         $this->load->view('front/Monitoreo/Mo_Monitoreo/resultado',['actividad'=>$nombreActividad, 'ejecucion' => $ejecucion, 'monitoreo' => $monitoreo]);
     }
     function insertar()
@@ -99,10 +93,19 @@ class Mo_Monitoreo extends CI_Controller
 
             $this->db->trans_complete();
 
-            $msg = ($query != '' || $query != NULL? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
+            $msg = ($query != '' || $query != NULL? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente', 'idMonitoreo' =>$query]) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
 
             echo json_encode($msg);exit;
 
         }
+    }
+    function editar()
+    {
+        $msg = array();
+        $u_data['desc_monitoreo']=$this->input->post('descripcionMonitoreo');
+        $u_data['fecha_modificacion']=date('Y-m-d');
+        $data = $this->Model_Mo_Monitoreo->editar($u_data,$this->input->post('idMonitoreo'));
+        $msg = ($data>0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
+        echo json_encode($msg);exit;
     }
 }

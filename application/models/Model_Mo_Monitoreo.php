@@ -21,4 +21,11 @@ class Model_Mo_Monitoreo extends CI_Model
 		$this->db->where('MO_MONITOREO.id_ejecucion',$idEjecucion);
 		return $this->db->get()->result();
 	}
+	function editar($data, $idMonitoreo)
+	{
+		$this->db->set($data);
+		$this->db->where('id_monitoreo', $idMonitoreo);
+		$this->db->update('MO_MONITOREO');
+		return $this->db->affected_rows();
+	}
 }

@@ -67,7 +67,7 @@
 		<div class="row">
 			<div class="col-md-9 col-sm-8 col-xs-12">
 				<label for="control-label">Resultado:</label>
-				<input type="text" class="form-control" id="txtResultado" name="txtResultado">
+				<input type="text" class="form-control" id="txtResultado" name="txtResultado" autocomplete="off">
 			</div>
 			<div class="col-md-3 col-sm-4 col-xs-12">
 				<label for="control-label">.</label>
@@ -78,34 +78,31 @@
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div style="background-color: #f5fbfb; height: 300px;overflow-y: scroll; margin-top: 15px;">
-				<ul>
+				<ul id="Resultado">
 					<?php foreach ($monitoreo as $key => $value) { ?>
 					<li>
 						<div class="btn-group  btn-group-xs">
-	                        <button class="btn btn-default btnli" type="button">G</button>
+	                        <button onclick="guardarCambiosMonitoreo('<?=$value->id_monitoreo?>');" class="btn btn-default btnli" type="button">G</button>
 	                        <button class="btn btn-default btnli" type="button">-</button>
 	                        <button class="btn btn-default btnli" type="button">+</button>
-                      	</div>
-                      	<b style="color: #1e8c75; font-size: 12px; text-transform: uppercase;" contenteditable><?=$value->desc_monitoreo?></b>
+                      	</div><b id="descripcionMonitoreo<?=$value->id_monitoreo?>" style="color:#1e8c75;font-size:12px;text-transform:uppercase;" contenteditable><?=$value->desc_monitoreo?></b>
                     </li>
-                    <ul style="padding-left: 27px;">
+                    <ul style="padding-left:27px;">
                     <?php foreach ($value->childObservacion as $key => $observacion) {?>
                     	<li>
 							<div class="btn-group  btn-group-xs">
 		                        <button class="btn btn-default btnli" type="button">G</button>
 		                        <button class="btn btn-default btnli" type="button">-</button>
 		                        <button class="btn btn-default btnli" type="button">+</button>
-	                      	</div>
-	                      	<b style="color: #e74c3c; font-size: 12px; text-transform: uppercase;" contenteditable><?=$observacion->desc_observacion?></b>
+	                      	</div><b style="color:#e74c3c;font-size:12px;text-transform: uppercase;" contenteditable><?=$observacion->desc_observacion?></b>
 	                    </li>
-	                    <ul style="padding-left: 57px;">
+	                    <ul style="padding-left:57px;">
 	                    <?php foreach ($observacion->chilCompromiso as $key => $compromiso) { ?>
 	                    	<li>
 								<div class="btn-group  btn-group-xs">
 			                        <button class="btn btn-default btnli" type="button">G</button>
 			                        <button class="btn btn-default btnli" type="button">-</button>
-		                      	</div>
-		                      	<b style="color: #3498db; font-size: 12px; text-transform: uppercase;" contenteditable><?=$compromiso->desc_compromiso?></b>
+		                      	</div><b style="color:#3498db;font-size:12px;text-transform:uppercase;" contenteditable><?=$compromiso->desc_compromiso?></b>
 		                    </li>
 	                    	
 	                    <?php } ?>	                    	
@@ -224,7 +221,7 @@
 			return;
 		}
 		var formData=new FormData($("#frmInsertarMonitoreo")[0]);
-		//var idActividad=$('#hdIdActividad').val();
+		var resultado=$('#txtResultado').val().trim();
 		$.ajax({
 	        type:"POST",
 	        url:base_url+"index.php/Mo_Monitoreo/Insertar",
@@ -236,16 +233,46 @@
 	        {
 	        	resp = JSON.parse(resp);
 	        	((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje,"success") : swal(resp.proceso,resp.mensaje,"error"));	   
-	        	/*if(resp.proceso=='Correcto')
+	        	if(resp.proceso=='Correcto')
 	        	{
-	        		var htmlTemp = '<tr><td>'+mes+'</td><td>'+ejecucionFisica+'</td><td>'+ejecucionFinanciera+'</td><td><a role="button" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Editar Programación"><span class="fa fa-edit"></span></a> <a onclick="eliminarProgramacion('+resp.idProgramacion+',this);" role="button" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Eliminar Programación" ><span class="fa fa-trash-o"></span></a></td></tr>';
+	        		var htmlTemp ='<li><div class="btn-group  btn-group-xs"><button onclick="guardarCambiosMonitoreo('+resp.idMonitoreo+');" class="btn btn-default btnli" type="button">G</button><button class="btn btn-default btnli" type="button">-</button><button class="btn btn-default btnli" type="button">+</button></div>';
+	        		htmlTemp+='<b id="descripcionMonitoreo'+resp.idMonitoreo+'" style="color:#1e8c75; font-size:12px; text-transform: uppercase;" contenteditable>'+resultado+'</b></li><ul style="padding-left: 27px;"></ul>';
 
-	        		$('#tbodyActividad'+idActividad).append(htmlTemp);
+	        		$('#Resultado').append(htmlTemp);
 	        	}
 	        	((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje,"success") : swal(resp.proceso,resp.mensaje,"error"));	        		        		        	
-	        	$('#frmInsertarEjecucionActividad')[0].reset();
-                $('#modalProgramacion').modal('hide');  */ 	
+	        	$('#frmInsertarMonitoreo')[0].reset();
 	        }
     	});
+	}
+
+	function guardarCambiosMonitoreo(codigoMonitoreo)
+	{
+		if($('#descripcionMonitoreo'+codigoMonitoreo).text().trim()=='')
+		{
+			swal(
+			{
+				title: '',
+				text: 'El campo resultado es requerido',
+				type: 'error'
+			},
+			function(){});
+			$('#descripcionMonitoreo'+codigoMonitoreo).text('___');
+			return;
+		}
+		paginaAjaxJSON({ "idMonitoreo" : codigoMonitoreo, 'descripcionMonitoreo' : replaceAll(replaceAll($('#descripcionMonitoreo'+codigoMonitoreo).text().trim(), '<', '&lt;'), '>', '&gt;') }, base_url+'index.php/Mo_Monitoreo/editar', 'POST', null, function(objectJSON)
+		{
+			objectJSON=JSON.parse(objectJSON);
+
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+			},
+			function(){});
+
+			$('#descripcionMonitoreo'+codigoMonitoreo).text($('#descripcionMonitoreo'+codigoMonitoreo).text().trim());
+		}, false, true);
 	}
 </script>
