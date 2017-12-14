@@ -84,7 +84,7 @@
 						<div class="btn-group  btn-group-xs">
 	                        <button onclick="guardarCambiosMonitoreo('<?=$value->id_monitoreo?>');" class="btn btn-default btnli" type="button">G</button>
 	                        <button onclick="eliminarMonitoreo('<?=$value->id_monitoreo?>',this);" class="btn btn-default btnli" type="button">-</button>
-	                        <button class="btn btn-default btnli" type="button">+</button>
+	                        <button onclick="agregarObservacion('<?=$value->id_monitoreo?>',$(this).parent().parent());" class="btn btn-default btnli" type="button">+</button>
                       	</div><b id="descripcionMonitoreo<?=$value->id_monitoreo?>" style="color:#1e8c75;font-size:12px;text-transform:uppercase;" contenteditable><?=$value->desc_monitoreo?></b>
                       	<ul style="padding-left:27px;">
 	                    <?php foreach ($value->childObservacion as $key => $observacion) {?>
@@ -305,6 +305,51 @@
 
 			}, false, true);
         });
+	}
 
+	function agregarObservacion(codigoMonitoreo,elementoPadre)
+	{
+		swal({
+			title: "",
+			text: "Agregar Observación",
+			type: "input",
+			showCancelButton: true,
+			cancelButtonText:"CERRAR",
+			confirmButtonText: "ACEPTAR",
+			closeOnConfirm: false,
+		 	inputPlaceholder: ""
+		}, function (inputValue)
+		{
+		  	if (inputValue === false) return false;
+		  	if (inputValue === "") 
+		  	{
+		    	swal.showInputError("Observación es un campo requerido");
+		    	return false
+		  	}
+
+			paginaAjaxJSON({ "idMonitoreo" : codigoMonitoreo, "descripcionObservacion" : inputValue}, base_url+'index.php/Mo_Observacion/insertar', 'POST', null, function(objectJSON)
+			{
+				objectJSON=JSON.parse(objectJSON);
+
+				swal(
+				{
+					title: '',
+					text: objectJSON.mensaje,
+					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+				},
+				function(){});
+
+				if(objectJSON.proceso=='Error')
+				{
+					return false;
+				}
+
+				var htmlTemp='<li><div class="btn-group  btn-group-xs"><button onclick="guardarCambiosMonitoreo('+objectJSON.idObservacion+');" class="btn btn-default btnli" type="button">G</button><button class="btn btn-default btnli" type="button">-</button><button class="btn btn-default btnli" type="button">+</button></div>';
+				htmlTemp+='<b style="color:#e74c3c;font-size:12px;text-transform:uppercase;" contenteditable>'+inputValue+'</b>'
+					'<ul style="padding-left:57px;"></ul></li>';
+
+				$($(elementoPadre).find('ul')[0]).append(htmlTemp);
+			}, false, true);
+		});
 	}
 </script>

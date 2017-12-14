@@ -8,6 +8,12 @@ class Model_Mo_Observacion extends CI_Model
 		parent::__construct();
 	}
 
+	function insertar($observacion)
+	{
+		$this->db->insert('MO_OBSERVACION',$observacion);
+		return $this->db->insert_id();
+	}
+
 	function listaObservacion($idMonitoreo)
 	{
 		$this->db->select('MO_OBSERVACION.*');
