@@ -15,6 +15,10 @@
 	{
 		padding-left: 5px;
 	}
+	.btnli
+	{
+		width: 30px;
+	}
 </style>
 <form  id="frmInsertarMonitoreo">
 <div class="form-horizontal">
@@ -78,36 +82,37 @@
 					<?php foreach ($monitoreo as $key => $value) { ?>
 					<li>
 						<div class="btn-group  btn-group-xs">
-                        <button style="width: 30px;" class="btn btn-default" type="button">G</button>
-                        <button style="width: 30px;" class="btn btn-default" type="button">-</button>
-                        <button style="width: 30px;" class="btn btn-default" type="button">+</button>
-                      </div><b style="color: #1e8c75; font-size: 12px; text-transform: uppercase;" contenteditable><?=$value->desc_monitoreo?></b></li>
-					<ul style="padding-left: 27px;">
-						<li>
-						<div class="btn-group  btn-group-xs">
-                        <button style="width: 30px;" class="btn btn-default" type="button">G</button>
-                        <button style="width: 30px;" class="btn btn-default" type="button">-</button>
-                        <button style="width: 30px;" class="btn btn-default" type="button">+</button>
-                      </div><b style="color: #1e8c75; font-size: 12px; text-transform: uppercase;" contenteditable><?=$value->desc_monitoreo?></b></li>
-						<ul style="padding-left: 57px;">
-							<li><div class="btn-group  btn-group-xs">
-                        <button style="width: 30px;" class="btn btn-default" type="button">G</button>
-                        <button style="width: 30px;" class="btn btn-default" type="button">-</button>
-                      </div><b style="color: #1e8c75; font-size: 12px; text-transform: uppercase;" contenteditable><?=$value->desc_monitoreo?></b></li>
-							
-							<li><div class="btn-group  btn-group-xs">
-                        <button style="width: 30px;" class="btn btn-default" type="button">G</button>
-                        <button style="width: 30px;" class="btn btn-default" type="button">-</button>
-                      </div><b style="color: #1e8c75; font-size: 12px; text-transform: uppercase;" contenteditable><?=$value->desc_monitoreo?></b></li>
-						</ul>
-
-						<li><div class="btn-group  btn-group-xs">
-                        <button style="width: 30px;" class="btn btn-default" type="button">G</button>
-                        <button style="width: 30px;" class="btn btn-default" type="button">-</button>
-                        <button style="width: 30px;" class="btn btn-default" type="button">+</button>
-                      </div><b style="color: #1e8c75; font-size: 12px; text-transform: uppercase;" contenteditable><?=$value->desc_monitoreo?></b></li>
-					</ul>
-
+	                        <button class="btn btn-default btnli" type="button">G</button>
+	                        <button class="btn btn-default btnli" type="button">-</button>
+	                        <button class="btn btn-default btnli" type="button">+</button>
+                      	</div>
+                      	<b style="color: #1e8c75; font-size: 12px; text-transform: uppercase;" contenteditable><?=$value->desc_monitoreo?></b>
+                    </li>
+                    <ul style="padding-left: 27px;">
+                    <?php foreach ($value->childObservacion as $key => $observacion) {?>
+                    	<li>
+							<div class="btn-group  btn-group-xs">
+		                        <button class="btn btn-default btnli" type="button">G</button>
+		                        <button class="btn btn-default btnli" type="button">-</button>
+		                        <button class="btn btn-default btnli" type="button">+</button>
+	                      	</div>
+	                      	<b style="color: #e74c3c; font-size: 12px; text-transform: uppercase;" contenteditable><?=$observacion->desc_observacion?></b>
+	                    </li>
+	                    <ul style="padding-left: 57px;">
+	                    <?php foreach ($observacion->chilCompromiso as $key => $compromiso) { ?>
+	                    	<li>
+								<div class="btn-group  btn-group-xs">
+			                        <button class="btn btn-default btnli" type="button">G</button>
+			                        <button class="btn btn-default btnli" type="button">-</button>
+		                      	</div>
+		                      	<b style="color: #3498db; font-size: 12px; text-transform: uppercase;" contenteditable><?=$compromiso->desc_compromiso?></b>
+		                    </li>
+	                    	
+	                    <?php } ?>	                    	
+	                    </ul>
+                    	
+                    <?php } ?>
+                    </ul>
 					<?php } ?>					
 				</ul>
 			</div>
