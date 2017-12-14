@@ -22,6 +22,13 @@ class Model_Mo_Observacion extends CI_Model
 		return $this->db->affected_rows();
 	}
 
+	function eliminar($idObservacion)
+	{
+		$this->db->where('id_observacion',$idObservacion);
+		$this->db->delete('MO_OBSERVACION');
+		return $this->db->affected_rows();
+	}
+
 	function listaObservacion($idMonitoreo)
 	{
 		$this->db->select('MO_OBSERVACION.*');

@@ -91,16 +91,16 @@
 	                    	<li>
 								<div class="btn-group  btn-group-xs">
 			                        <button data-toggle="tooltip" data-placement="top" title="Guardar Observación" onclick="guardarCambiosObservacion('<?=$observacion->id_observacion?>');" class="btn btn-default btnli" type="button">G</button>
-			                        <button data-toggle="tooltip" data-placement="top" title="Eliminar Observación" class="btn btn-default btnli" type="button">-</button>
-			                        <button data-toggle="tooltip" data-placement="top" title="Agregar compromiso" class="btn btn-default btnli" type="button">+</button>
+			                        <button data-toggle="tooltip" onclick="eliminarObservacion('<?=$observacion->id_observacion?>',this);" data-placement="top" title="Eliminar Observación" class="btn btn-default btnli" type="button">-</button>
+			                        <button data-toggle="tooltip" data-placement="top" title="Agregar compromiso" onclick="agregarCompromiso('<?=$observacion->id_observacion?>',$(this).parent().parent());" class="btn btn-default btnli" type="button">+</button>
 		                      	</div><b id="descripcionObservacion<?=$observacion->id_observacion?>" style="color:#e74c3c;font-size:12px;text-transform: uppercase;" contenteditable><?=$observacion->desc_observacion?></b>
 		                      	<ul style="padding-left:57px;">
 			                    <?php foreach ($observacion->chilCompromiso as $key => $compromiso) { ?>
 			                    	<li>
 										<div class="btn-group  btn-group-xs">
-					                        <button class="btn btn-default btnli" type="button">G</button>
-					                        <button class="btn btn-default btnli" type="button">-</button>
-				                      	</div><b style="color:#3498db;font-size:12px;text-transform:uppercase;" contenteditable><?=$compromiso->desc_compromiso?></b>
+					                        <button data-toggle="tooltip" data-placement="top" title="Guardar compromiso" class="btn btn-default btnli"  type="button">G</button>
+					                        <button data-toggle="tooltip" data-placement="top" title="Eliminar compromiso" class="btn btn-default btnli" type="button">-</button>
+				                      	</div><b id="descripcionCompromiso<?=$compromiso->id_compromiso?>" style="color:#3498db;font-size:12px;text-transform:uppercase;" contenteditable><?=$compromiso->desc_compromiso?></b>
 				                    </li>
 			                    	
 			                    <?php } ?>	                    	
@@ -343,8 +343,8 @@
 					return false;
 				}
 
-				var htmlTemp='<li><div class="btn-group  btn-group-xs"><button data-toggle="tooltip" data-placement="top" title="Guardar Observación" onclick="guardarCambiosObservacion('+objectJSON.idObservacion+');" class="btn btn-default btnli" type="button">G</button><button data-toggle="tooltip" data-placement="top" title="Eliminar Observación" class="btn btn-default btnli" type="button">-</button><button data-toggle="tooltip" data-placement="top" title="Agregar compromiso" class="btn btn-default btnli" type="button">+</button></div>';
-				htmlTemp+='<b style="color:#e74c3c;font-size:12px;text-transform:uppercase;" contenteditable>'+inputValue+'</b>'
+				var htmlTemp='<li><div class="btn-group  btn-group-xs"><button data-toggle="tooltip" data-placement="top" title="Guardar Observación" onclick="guardarCambiosObservacion('+objectJSON.idObservacion+');" class="btn btn-default btnli" type="button">G</button><button data-toggle="tooltip" data-placement="top" title="Eliminar Observación" onclick="eliminarObservacion('+objectJSON.idObservacion+',this);" class="btn btn-default btnli" type="button">-</button><button data-toggle="tooltip" data-placement="top" title="Agregar compromiso" class="btn btn-default btnli" type="button">+</button></div>';
+				htmlTemp+='<b id="descripcionObservacion'+objectJSON.idObservacion+'" style="color:#e74c3c; font-size:12px; text-transform:uppercase;" contenteditable>'+inputValue+'</b>'
 					'<ul style="padding-left:57px;"></ul></li>';
 
 				$($(elementoPadre).find('ul')[0]).append(htmlTemp);
@@ -381,4 +381,81 @@
 			$('#descripcionObservacion'+codigoObservacion).text($('#descripcionObservacion'+codigoObservacion).text().trim());
 		}, false, true);
 	}
+
+	function eliminarObservacion(codigoObservacion, element)
+	{
+		swal({
+            title: "¿Realmente desea eliminar esta observación con los compromisos respectivos?",
+            text: "",
+            type: "warning",
+            showCancelButton: true,
+            cancelButtonText:"CANCELAR" ,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "SI,ELIMINAR",
+            closeOnConfirm: false
+        },
+        function(){
+            paginaAjaxJSON({ "idObservacion" : codigoObservacion }, base_url+'index.php/Mo_Observacion/eliminar', 'POST', null, function(objectJSON)
+			{
+				objectJSON=JSON.parse(objectJSON);
+
+				swal(
+				{
+					title: '',
+					text: objectJSON.mensaje,
+					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+				},
+				function(){});
+
+				$(element).parent().parent().remove();
+
+			}, false, true);
+        });
+	}
+
+	function agregarCompromiso(codigoObservacion,elementoPadre)
+	{
+		swal({
+			title: "",
+			text: "Agregar Compromiso",
+			type: "input",
+			showCancelButton: true,
+			cancelButtonText:"CERRAR",
+			confirmButtonText: "ACEPTAR",
+			closeOnConfirm: false,
+		 	inputPlaceholder: ""
+		}, function (inputValue)
+		{
+		  	if (inputValue === false) return false;
+		  	if (inputValue === "") 
+		  	{
+		    	swal.showInputError("Compromiso es un campo requerido");
+		    	return false
+		  	}
+
+			paginaAjaxJSON({ "idObservacion" : codigoObservacion, "descripcionCompromiso" : inputValue}, base_url+'index.php/Mo_Compromiso/insertar', 'POST', null, function(objectJSON)
+			{
+				objectJSON=JSON.parse(objectJSON);
+
+				swal(
+				{
+					title: '',
+					text: objectJSON.mensaje,
+					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+				},
+				function(){});
+
+				if(objectJSON.proceso=='Error')
+				{
+					return false;
+				}
+
+				var htmlTemp='<li><div class="btn-group  btn-group-xs"><button data-toggle="tooltip" data-placement="top" title="Guardar compromiso" class="btn btn-default btnli"  type="button">G</button><button data-toggle="tooltip" data-placement="top" title="Eliminar compromiso" class="btn btn-default btnli" type="button">-</button></div>';
+				htmlTemp+='<b id="descripcionCompromiso'+objectJSON.idCompromiso+'" style="color:#3498db; font-size:12px; text-transform:uppercase;" contenteditable>'+inputValue+'</b></li>';
+
+				$($(elementoPadre).find('ul')[0]).append(htmlTemp);
+			}, false, true);
+		});
+	}
+
 </script>

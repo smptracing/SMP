@@ -8,6 +8,12 @@ class Model_Mo_Compromiso extends CI_Model
 		parent::__construct();
 	}
 
+	function insertar($data)
+	{
+		$this->db->insert('MO_COMPROMISO',$data);
+		return $this->db->insert_id();
+	}
+
 	function listaCompromiso($idObservacion)
 	{
 		$this->db->select('MO_COMPROMISO.*');

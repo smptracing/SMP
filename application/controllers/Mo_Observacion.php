@@ -37,4 +37,13 @@ class Mo_Observacion extends CI_Controller
         $msg = ($data>0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
         echo json_encode($msg);exit;
     }
+
+    function eliminar()
+    {
+        $msg = array();
+        $data = $this->Model_Mo_Observacion->eliminar($this->input->post('idObservacion'));
+        $msg = ($data>0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
+        echo json_encode($msg);exit;
+
+    }
 }
