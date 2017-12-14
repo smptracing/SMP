@@ -98,7 +98,7 @@
 			                    <?php foreach ($observacion->chilCompromiso as $key => $compromiso) { ?>
 			                    	<li>
 										<div class="btn-group  btn-group-xs">
-					                        <button data-toggle="tooltip" data-placement="top" title="Guardar compromiso" class="btn btn-default btnli"  type="button">G</button>
+					                        <button onclick="guardarCambiosCompromiso('<?=$compromiso->id_compromiso?>');"  data-toggle="tooltip" data-placement="top" title="Guardar compromiso" class="btn btn-default btnli"  type="button">G</button>
 					                        <button data-toggle="tooltip" data-placement="top" title="Eliminar compromiso" class="btn btn-default btnli" type="button">-</button>
 				                      	</div><b id="descripcionCompromiso<?=$compromiso->id_compromiso?>" style="color:#3498db;font-size:12px;text-transform:uppercase;" contenteditable><?=$compromiso->desc_compromiso?></b>
 				                    </li>
@@ -450,12 +450,42 @@
 					return false;
 				}
 
-				var htmlTemp='<li><div class="btn-group  btn-group-xs"><button data-toggle="tooltip" data-placement="top" title="Guardar compromiso" class="btn btn-default btnli"  type="button">G</button><button data-toggle="tooltip" data-placement="top" title="Eliminar compromiso" class="btn btn-default btnli" type="button">-</button></div>';
+				var htmlTemp='<li><div class="btn-group  btn-group-xs"><button onclick="guardarCambiosCompromiso('+objectJSON.idCompromiso+');" data-toggle="tooltip" data-placement="top" title="Guardar compromiso" class="btn btn-default btnli"  type="button">G</button><button data-toggle="tooltip" data-placement="top" title="Eliminar compromiso" class="btn btn-default btnli" type="button">-</button></div>';
 				htmlTemp+='<b id="descripcionCompromiso'+objectJSON.idCompromiso+'" style="color:#3498db; font-size:12px; text-transform:uppercase;" contenteditable>'+inputValue+'</b></li>';
 
 				$($(elementoPadre).find('ul')[0]).append(htmlTemp);
 			}, false, true);
 		});
+	}
+
+	function guardarCambiosCompromiso(codigoCompromiso)
+	{
+		if($('#descripcionCompromiso'+codigoCompromiso).text().trim()=='')
+		{
+			swal(
+			{
+				title: '',
+				text: 'El campo compromiso es requerido',
+				type: 'error'
+			},
+			function(){});
+			$('#descripcionCompromiso'+codigoCompromiso).text('___');
+			return;
+		}
+		paginaAjaxJSON({ "idCompromiso" : codigoCompromiso, 'descripcionObservacion' : replaceAll(replaceAll($('#descripcionCompromiso'+codigoCompromiso).text().trim(), '<', '&lt;'), '>', '&gt;') }, base_url+'index.php/Mo_Compromiso/editar', 'POST', null, function(objectJSON)
+		{
+			objectJSON=JSON.parse(objectJSON);
+
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+			},
+			function(){});
+
+			$('#descripcionCompromiso'+codigoCompromiso).text($('#descripcionCompromiso'+codigoCompromiso).text().trim());
+		}, false, true);
 	}
 
 </script>

@@ -27,5 +27,16 @@ class Mo_Compromiso extends CI_Controller
             echo json_encode($msg);exit;
         }
     }
+
+    function editar()
+    {
+        $msg = array();
+        $u_data['desc_compromiso']=$this->input->post('descripcionObservacion');
+        $u_data['fecha_modificacion']=date('Y-m-d');
+        $data = $this->Model_Mo_Compromiso->editar($u_data,$this->input->post('idCompromiso'));
+        $msg = ($data>0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
+        echo json_encode($msg);exit;
+    }
+
    
 }
