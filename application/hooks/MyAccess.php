@@ -36,11 +36,11 @@ if (!function_exists('autentificar'))
         );
         if(in_array($url, $libres))
         {
-            echo $CI->output->get_output();
+            //echo $CI->output->get_output();
         }
         else
         {
-            if($CI->session->userdata('idPersona'))
+            /*if($CI->session->userdata('idPersona'))
             {
                 echo $CI->output->get_output();
                 if(autorizar($url))
@@ -56,7 +56,7 @@ if (!function_exists('autentificar'))
             else
             {
             	redirect('Login/muestralog');
-            }
+            }*/
         }
 
     }

@@ -25,7 +25,16 @@ class Mo_Observacion extends CI_Controller
             $msg = ($idObservacion != '' || $idObservacion != NULL ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente', 'idObservacion' =>$idObservacion]) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
 
             echo json_encode($msg);exit;
-
         }
+    }
+
+    function editar()
+    {
+        $msg = array();
+        $u_data['desc_observacion']=$this->input->post('descripcionObservacion');
+        $u_data['fecha_modificacion']=date('Y-m-d');
+        $data = $this->Model_Mo_Observacion->editar($u_data,$this->input->post('idObservacion'));
+        $msg = ($data>0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
+        echo json_encode($msg);exit;
     }
 }

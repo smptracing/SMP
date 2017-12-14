@@ -82,18 +82,18 @@
 					<?php foreach ($monitoreo as $key => $value) { ?>
 					<li>
 						<div class="btn-group  btn-group-xs">
-	                        <button onclick="guardarCambiosMonitoreo('<?=$value->id_monitoreo?>');" class="btn btn-default btnli" type="button">G</button>
-	                        <button onclick="eliminarMonitoreo('<?=$value->id_monitoreo?>',this);" class="btn btn-default btnli" type="button">-</button>
-	                        <button onclick="agregarObservacion('<?=$value->id_monitoreo?>',$(this).parent().parent());" class="btn btn-default btnli" type="button">+</button>
+	                        <button data-toggle="tooltip" data-placement="top" title="Guardar Resultado" onclick="guardarCambiosMonitoreo('<?=$value->id_monitoreo?>');" class="btn btn-default btnli" type="button">G</button>
+	                        <button data-toggle="tooltip" data-placement="top" title="Eliminar Resultado" onclick="eliminarMonitoreo('<?=$value->id_monitoreo?>',this);" class="btn btn-default btnli" type="button">-</button>
+	                        <button data-toggle="tooltip" data-placement="top" title="Agregar Observación" onclick="agregarObservacion('<?=$value->id_monitoreo?>',$(this).parent().parent());" class="btn btn-default btnli" type="button">+</button>
                       	</div><b id="descripcionMonitoreo<?=$value->id_monitoreo?>" style="color:#1e8c75;font-size:12px;text-transform:uppercase;" contenteditable><?=$value->desc_monitoreo?></b>
                       	<ul style="padding-left:27px;">
 	                    <?php foreach ($value->childObservacion as $key => $observacion) {?>
 	                    	<li>
 								<div class="btn-group  btn-group-xs">
-			                        <button class="btn btn-default btnli" type="button">G</button>
-			                        <button class="btn btn-default btnli" type="button">-</button>
-			                        <button class="btn btn-default btnli" type="button">+</button>
-		                      	</div><b style="color:#e74c3c;font-size:12px;text-transform: uppercase;" contenteditable><?=$observacion->desc_observacion?></b>
+			                        <button data-toggle="tooltip" data-placement="top" title="Guardar Observación" onclick="guardarCambiosObservacion('<?=$observacion->id_observacion?>');" class="btn btn-default btnli" type="button">G</button>
+			                        <button data-toggle="tooltip" data-placement="top" title="Eliminar Observación" class="btn btn-default btnli" type="button">-</button>
+			                        <button data-toggle="tooltip" data-placement="top" title="Agregar compromiso" class="btn btn-default btnli" type="button">+</button>
+		                      	</div><b id="descripcionObservacion<?=$observacion->id_observacion?>" style="color:#e74c3c;font-size:12px;text-transform: uppercase;" contenteditable><?=$observacion->desc_observacion?></b>
 		                      	<ul style="padding-left:57px;">
 			                    <?php foreach ($observacion->chilCompromiso as $key => $compromiso) { ?>
 			                    	<li>
@@ -235,9 +235,8 @@
 	        	((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje,"success") : swal(resp.proceso,resp.mensaje,"error"));	   
 	        	if(resp.proceso=='Correcto')
 	        	{
-	        		var htmlTemp ='<li><div class="btn-group  btn-group-xs"><button onclick="guardarCambiosMonitoreo('+resp.idMonitoreo+');" class="btn btn-default btnli" type="button">G</button><button class="btn btn-default btnli" type="button">-</button><button class="btn btn-default btnli" type="button">+</button></div>';
-	        		htmlTemp+='<b id="descripcionMonitoreo'+resp.idMonitoreo+'" style="color:#1e8c75; font-size:12px; text-transform: uppercase;" contenteditable>'+resultado+'</b></li><ul style="padding-left: 27px;"></ul>';
-
+	        		var htmlTemp ='<li><div class="btn-group  btn-group-xs"><button data-toggle="tooltip" data-placement="top" title="Guardar Resultado"  onclick="guardarCambiosMonitoreo('+resp.idMonitoreo+');" class="btn btn-default btnli" type="button">G</button><button data-toggle="tooltip" data-placement="top" title="Eliminar Resultado" class="btn btn-default btnli" type="button">-</button><button  data-toggle="tooltip" data-placement="top" title="Agregar Observación" onclick="agregarObservacion('+resp.idMonitoreo+',$(this).parent().parent());" class="btn btn-default btnli" type="button">+</button></div>';
+	        		htmlTemp+='<b id="descripcionMonitoreo'+resp.idMonitoreo+'" style="color:#1e8c75; font-size:12px; text-transform: uppercase;" contenteditable>'+resultado+'</b><ul style="padding-left: 27px;"></ul></li>';
 	        		$('#Resultado').append(htmlTemp);
 	        	}
 	        	((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje,"success") : swal(resp.proceso,resp.mensaje,"error"));	        		        		        	
@@ -344,12 +343,42 @@
 					return false;
 				}
 
-				var htmlTemp='<li><div class="btn-group  btn-group-xs"><button onclick="guardarCambiosMonitoreo('+objectJSON.idObservacion+');" class="btn btn-default btnli" type="button">G</button><button class="btn btn-default btnli" type="button">-</button><button class="btn btn-default btnli" type="button">+</button></div>';
+				var htmlTemp='<li><div class="btn-group  btn-group-xs"><button data-toggle="tooltip" data-placement="top" title="Guardar Observación" onclick="guardarCambiosObservacion('+objectJSON.idObservacion+');" class="btn btn-default btnli" type="button">G</button><button data-toggle="tooltip" data-placement="top" title="Eliminar Observación" class="btn btn-default btnli" type="button">-</button><button data-toggle="tooltip" data-placement="top" title="Agregar compromiso" class="btn btn-default btnli" type="button">+</button></div>';
 				htmlTemp+='<b style="color:#e74c3c;font-size:12px;text-transform:uppercase;" contenteditable>'+inputValue+'</b>'
 					'<ul style="padding-left:57px;"></ul></li>';
 
 				$($(elementoPadre).find('ul')[0]).append(htmlTemp);
 			}, false, true);
 		});
+	}
+
+	function guardarCambiosObservacion(codigoObservacion)
+	{
+		if($('#descripcionObservacion'+codigoObservacion).text().trim()=='')
+		{
+			swal(
+			{
+				title: '',
+				text: 'El campo observación es requerido',
+				type: 'error'
+			},
+			function(){});
+			$('#descripcionObservacion'+codigoObservacion).text('___');
+			return;
+		}
+		paginaAjaxJSON({ "idObservacion" : codigoObservacion, 'descripcionObservacion' : replaceAll(replaceAll($('#descripcionObservacion'+codigoObservacion).text().trim(), '<', '&lt;'), '>', '&gt;') }, base_url+'index.php/Mo_Observacion/editar', 'POST', null, function(objectJSON)
+		{
+			objectJSON=JSON.parse(objectJSON);
+
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+			},
+			function(){});
+
+			$('#descripcionObservacion'+codigoObservacion).text($('#descripcionObservacion'+codigoObservacion).text().trim());
+		}, false, true);
 	}
 </script>
