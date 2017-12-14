@@ -16,7 +16,7 @@ public function index()
 
 function AddCartera()
 {
-	if ($this->input->is_ajax_request()) 
+	if ($this->input->is_ajax_request())
 	{
 		$nombreArchivo = $_FILES['Cartera_Resoluacion']['name'];
 
@@ -25,7 +25,7 @@ function AddCartera()
         $c_data['fecha_cierre_cartera']=$this->input->post("dateFechaFinCart");
         $c_data['estado_cartera']=0;
         $c_data['numero_resolucion_cartera']=$this->input->post("txt_NumResolucionCart");
-        
+
         $msg = array();
 
 		if($nombreArchivo != '' || $nombreArchivo != null)
@@ -41,31 +41,31 @@ function AddCartera()
 	            $this->load->library('upload', $config);
 
 	            if (!$this->upload->do_upload('Cartera_Resoluacion'))
-	            {    
+	            {
 	                $error = array('error' => $this->upload->display_errors('', ''));
-	                $this->load->view('front/json/json_view',['datos' => $error]);                
+	                $this->load->view('front/json/json_view',['datos' => $error]);
 	            }
 	            else
-	            { 
-	            	$c_data['url_resolucion_cartera'] = $this->upload->data('file_name'); 
+	            {
+	            	$c_data['url_resolucion_cartera'] = $this->upload->data('file_name');
 
-					$data = $this->Model_CarteraInversion->AddCartera($c_data);				
+					$data = $this->Model_CarteraInversion->AddCartera($c_data);
 					if($data>0)
 					{
-						$msg = (['proceso' => 'Correcto', 'mensaje' => 'La cartera fue registrada correctamente']);			
+						$msg = (['proceso' => 'Correcto', 'mensaje' => 'La cartera fue registrada correctamente']);
 					}
 					else
 					{
 						$msg = (['proceso' => 'Error', 'mensaje' => 'El año de apertura ya existe']);
-					}	
+					}
 					$this->load->view('front/json/json_view', ['datos' => $msg]);
-	            }        		
+	            }
         	}
         	else
         	{
         		$msg = (['proceso' => 'Error', 'mensaje' => 'El tipo de archivo que intentas subir no está permitido.']);
         		$this->load->view('front/json/json_view', ['datos' => $msg]);
-        	}            
+        	}
         }
         else
         {
@@ -75,22 +75,23 @@ function AddCartera()
 			$msg = array();
 			if($data>0)
 			{
-				$msg = (['proceso' => 'Correcto', 'mensaje' => 'La cartera fue registrada correctamente']);			
+				$msg = (['proceso' => 'Correcto', 'mensaje' => 'La cartera fue registrada correctamente']);
 			}
 			else
 			{
 				$msg = (['proceso' => 'Error', 'mensaje' => 'El año de apertura ya existe']);
-			}	
+			}
 			$this->load->view('front/json/json_view', ['datos' => $msg]);
         }
-	    				    
+
   	}
     else
     {
       show_404();
     }
 }
- 	 function editCartera($idCartera){
+ 	 function editCartera(){
+      $idCartera = isset($_GET['id_cartera']) ? $_GET['id_cartera'] : null;  
 	    if ($this->input->is_ajax_request()) {
 	    	$config['upload_path']          = './uploads/cartera/';
 		    $config['allowed_types']        = 'pdf|doc|xml|docx|PDF|DOC|DOCX|xls|xlsx';
@@ -98,7 +99,7 @@ function AddCartera()
 		    $config['max_height']           = 768;
 		    $config['max_size']      = 15000;
 	        $config['encrypt_name']  = false;
-	        $this->load->library('upload',$config);	
+	        $this->load->library('upload',$config);
 		    $this->upload->do_upload('Cartera_Resoluacion');
 
 
@@ -109,26 +110,26 @@ function AddCartera()
 			$txt_NumResolucionCart =$this->input->post("txt_NumResolucionCart");
 			$Cartera_Resoluacion=$this->upload->file_name;
 			echo $this->Model_CarteraInversion->editCartera($idCartera,$dateAñoAperturaCart,$dateFechaIniCart,$dateFechaFinCart,$estado,$txt_NumResolucionCart,$Cartera_Resoluacion);
-		} 
+		}
 	     else
 	     {
 	      show_404();
-	     }  
+	     }
  	}
 
  	 function editarCartera()
-    {   
+    {
     	if($this->input->get('id_cartera')!=''){
     		$data['arrayCartera']=$this->Model_CarteraInversion->getCartera($this->input->get('id_cartera'))[0];
 			$this->load->view('Front/Pmi/Cartera/editar',$data);
     	}
     	else{
-    		$this->load->view('front/Pmi/Cartera/editar'); 
+    		$this->load->view('front/Pmi/Cartera/editar');
 			//$this->load->view('Front/Pmi/itemCartera');
     	}
 
 
-       
+
     }
 	//FIN INSERTAR UNA CARTERA DE INVERSION
   function itemCartera(){
@@ -140,7 +141,7 @@ function AddCartera()
     	else{
 			$this->load->view('Front/Pmi/itemCartera');
     	}
-    	
+
 	}
 
     function GetCarteraFechaCierre($idCartera){
@@ -163,7 +164,7 @@ function AddCartera()
 
     function GetCarteraInvFechAct()
 	{
-		if ($this->input->is_ajax_request()) 
+		if ($this->input->is_ajax_request())
 		{
 		$datos=$this->Model_CarteraInversion->GetCarteraInvFechAct();
 		echo json_encode($datos);
@@ -175,7 +176,7 @@ function AddCartera()
 	}
 
 	function GetCarteraInversion(){
-		if ($this->input->is_ajax_request()) 
+		if ($this->input->is_ajax_request())
 		{
 		$datos=$this->Model_CarteraInversion->GetCarteraInversion();
 		echo json_encode($datos);
@@ -184,10 +185,10 @@ function AddCartera()
 		{
 			show_404();
 		}
-	  
+
 	}
 	function GetCarteraAnios(){
-		if ($this->input->is_ajax_request()) 
+		if ($this->input->is_ajax_request())
 		{
 		$datos=$this->Model_CarteraInversion->GetCarteraAnios();
 		echo json_encode($datos);

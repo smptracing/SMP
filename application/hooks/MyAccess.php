@@ -562,7 +562,11 @@ function autorizar($url)
       'PrincipalReportes/DetalleMensualizadoFuenteFinan',
       'PrincipalReportes/detalladoMensualizadoConceptoClasificador',
       'PrincipalReportes/detallePedidoCompraMeta',
-      'PrincipalReportes/detallePorCadaPedido'
+      'PrincipalReportes/detallePorCadaPedido',
+      'CarteraInversion/editarCartera',
+      'CarteraInversion/itemCartera',
+      'NoPipProgramados/insertar',
+      'NoPipProgramados/editar'
     );
     foreach( $lista_API as $value ) {
       array_push($arrayPermitido, $value);

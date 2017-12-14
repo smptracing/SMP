@@ -10,8 +10,8 @@
                             <div class="col-md-6 col-sm-6 col-xs-12">
                               <input id="dateAñoAperturaCart" name="dateAñoAperturaCart" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Numero Resolucion Cartera"  type="text" value="<?php if(isset($arrayCartera->anio)) echo $arrayCartera->anio;?>" readonly>
                             </div>
-                      
-                               
+
+
                       </div>
                       <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Fecha Inicio Cartera<span class="required">*</span>
@@ -48,11 +48,11 @@
                                 <?php
                                 }
                                 ?>
-                                
+
                           </div>
 
                       </div>
-                      
+
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
@@ -97,7 +97,7 @@
           if($('#form-RegistraCarteraInv').data('formValidation').isValid()==true){
 
               $('#form-RegistraCarteraInv').submit();
-              $('#form-RegistraCarteraInv').each(function(){ 
+              $('#form-RegistraCarteraInv').each(function(){
                 this.reset();
               });
               $('.selectpicker').selectpicker('refresh');
@@ -106,18 +106,18 @@
               $('#form-RegistraCarteraInv').remove();
               $('#form-RegistraCarteraInv').empty();
               $('#null').modal('hide');
-          }  
+          }
       });
       $("body").on("change","#dateAñoAperturaCart",function(e){
         $("#dateFechaIniCart").val($("#dateAñoAperturaCart").val()+'-01-01');
         $("#dateFechaFinCart").val($("#dateAñoAperturaCart").val()+'-03-30');
       });
-  }); 
+  });
   $(document).ready(function(){
     <?php
     if(isset($arrayCartera->id_cartera)){
       ?>
-      $("#form-RegistraCarteraInv").attr("action",base_url+"index.php/CarteraInversion/EditCartera/<?php echo $arrayCartera->id_cartera; ?>");
+      $("#form-RegistraCarteraInv").attr("action",base_url+"index.php/CarteraInversion/EditCartera?id_cartera=<?php echo $arrayCartera->id_cartera; ?>");
       <?php
     }
     else{
@@ -145,8 +145,8 @@
         },
       }
     });
-    
+
    // listarCarteraAnios();
-    
-  }); 
+
+  });
 </script>
