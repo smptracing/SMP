@@ -36,11 +36,11 @@ if (!function_exists('autentificar'))
         );
         if(in_array($url, $libres))
         {
-            //echo $CI->output->get_output();
+            echo $CI->output->get_output();
         }
         else
         {
-            /*if($CI->session->userdata('idPersona'))
+            if($CI->session->userdata('idPersona'))
             {
                 echo $CI->output->get_output();
                 if(autorizar($url))
@@ -56,7 +56,7 @@ if (!function_exists('autentificar'))
             else
             {
             	redirect('Login/muestralog');
-            }*/
+            }
         }
 
     }
@@ -120,9 +120,31 @@ function autorizar($url)
       'mensaje/eliminarMensaje',
       'Usuario/getUsuario',
       'mensaje/enviar',
+
+      'Mo_MonitoreodeProyectos/index',
       'Mo_MonitoreodeProyectos/BuscarProyecto',
-      'Mo_Actividad/editar',
+      'Mo_MonitoreodeProyectos/InsertarProducto',
+      'Mo_MonitoreodeProyectos/EditarProducto',
+      'Mo_MonitoreodeProyectos/eliminarMonitoreo',
+      'Mo_MonitoreodeProyectos/eliminarProducto',
       'Mo_Actividad/Insertar',
+      'Mo_Actividad/editar',
+      'Mo_Actividad/eliminar',
+      'Mo_Ejecucion_Actividad/Insertar',
+      'Mo_Ejecucion_Actividad/editar',
+      'Mo_Ejecucion_Actividad/eliminar',
+      'Mo_Monitoreo/index',
+      'Mo_Monitoreo/verresultado',
+      'Mo_Monitoreo/insertar',
+      'Mo_Monitoreo/editar',
+      'Mo_Monitoreo/eliminar',
+      'Mo_Observacion/insertar',
+      'Mo_Observacion/editar',
+      'Mo_Observacion/eliminar',
+      'Mo_Compromiso/insertar',
+      'Mo_Compromiso/editar',
+      'Mo_Compromiso/eliminar',
+
       'CarteraInversion/EditCartera',
       'CarteraInversion/AddCartera',
       'PmiCriterioG/ReporteCriteriosG',
