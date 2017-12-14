@@ -566,7 +566,9 @@ function autorizar($url)
       'CarteraInversion/editarCartera',
       'CarteraInversion/itemCartera',
       'NoPipProgramados/insertar',
-      'NoPipProgramados/editar'
+      'NoPipProgramados/editar',
+      'PrincipalReportes/detalleOrdenExpSiaf',
+      'PrincipalReportes/detallePorCadaNumOrden'
     );
     foreach( $lista_API as $value ) {
       array_push($arrayPermitido, $value);
