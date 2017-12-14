@@ -2,6 +2,18 @@
 	li
 	{
 		list-style:none;
+		padding-top:5px;
+	}
+	ul
+	{
+		list-style-type: none;
+    	margin: 0;
+    	padding: 0;
+
+	}
+	b
+	{
+		padding-left: 5px;
 	}
 </style>
 <form  id="frmInsertarMonitoreo">
@@ -59,22 +71,48 @@
 			</div>
 		</div>
 	</div>
-	<div class="row" style="background-color: #f5fbfb; height: 300px;overflow-y: scroll; margin-top: 15px;">
+	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
-			<?php foreach ($monitoreo as $key => $value) { ?>
+			<div style="background-color: #f5fbfb; height: 300px;overflow-y: scroll; margin-top: 15px;">
 				<ul>
-					<li style="color: #1e8c75; font-size: 15px; text-transform: uppercase; font-weight: bold;" contenteditable>
-					<a role="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Guardar Resultado"><span class="fa fa-save"></span></a>
-					<input type="button" class="btn btn-primary btn-xs" style="width: 25px;" value="G" >
-					<?=$value->desc_monitoreo?>
+					<?php foreach ($monitoreo as $key => $value) { ?>
+					<li>
+						<div class="btn-group  btn-group-xs">
+                        <button style="width: 30px;" class="btn btn-default" type="button">G</button>
+                        <button style="width: 30px;" class="btn btn-default" type="button">-</button>
+                        <button style="width: 30px;" class="btn btn-default" type="button">+</button>
+                      </div><b style="color: #1e8c75; font-size: 12px; text-transform: uppercase;" contenteditable><?=$value->desc_monitoreo?></b></li>
+					<ul style="padding-left: 27px;">
+						<li>
+						<div class="btn-group  btn-group-xs">
+                        <button style="width: 30px;" class="btn btn-default" type="button">G</button>
+                        <button style="width: 30px;" class="btn btn-default" type="button">-</button>
+                        <button style="width: 30px;" class="btn btn-default" type="button">+</button>
+                      </div><b style="color: #1e8c75; font-size: 12px; text-transform: uppercase;" contenteditable><?=$value->desc_monitoreo?></b></li>
+						<ul style="padding-left: 57px;">
+							<li><div class="btn-group  btn-group-xs">
+                        <button style="width: 30px;" class="btn btn-default" type="button">G</button>
+                        <button style="width: 30px;" class="btn btn-default" type="button">-</button>
+                      </div><b style="color: #1e8c75; font-size: 12px; text-transform: uppercase;" contenteditable><?=$value->desc_monitoreo?></b></li>
+							
+							<li><div class="btn-group  btn-group-xs">
+                        <button style="width: 30px;" class="btn btn-default" type="button">G</button>
+                        <button style="width: 30px;" class="btn btn-default" type="button">-</button>
+                      </div><b style="color: #1e8c75; font-size: 12px; text-transform: uppercase;" contenteditable><?=$value->desc_monitoreo?></b></li>
+						</ul>
 
-						
-					</li>
+						<li><div class="btn-group  btn-group-xs">
+                        <button style="width: 30px;" class="btn btn-default" type="button">G</button>
+                        <button style="width: 30px;" class="btn btn-default" type="button">-</button>
+                        <button style="width: 30px;" class="btn btn-default" type="button">+</button>
+                      </div><b style="color: #1e8c75; font-size: 12px; text-transform: uppercase;" contenteditable><?=$value->desc_monitoreo?></b></li>
+					</ul>
+
+					<?php } ?>					
 				</ul>
-			<?php } ?>
-        </div>
+			</div>
+		</div>
 	</div>
-
 	<hr>
 	<div class="row" style="text-align: right;">		
 		<button class="btn btn-danger" data-dismiss="modal">

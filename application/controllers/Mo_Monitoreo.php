@@ -11,6 +11,8 @@ class Mo_Monitoreo extends CI_Controller
         $this->load->model('Model_Mo_Actividad');
         $this->load->model('Model_Mo_Ejecucion_Actividad');
         $this->load->model('Model_Mo_Monitoreo');
+        $this->load->model('Model_Mo_Observacion');
+        $this->load->model('Model_Mo_Compromiso');
         $this->load->helper('FormatNumber_helper');
     }
 
@@ -20,9 +22,8 @@ class Mo_Monitoreo extends CI_Controller
         {
 
         }
-        $idPi = $this->input->get('id_pi');
-        $proyecto = $this->Model_Mo_Producto->ProyectoPorId($idPi);
-        $producto = $this->Model_Mo_Producto->listaProducto($idPi);       
+        $proyecto = $this->Model_Mo_Producto->ProyectoPorId($this->input->get('id_pi'));
+        $producto = $this->Model_Mo_Producto->listaProducto($this->input->get('id_pi'));       
 
         foreach ($producto as $key => $value) 
         {
@@ -46,7 +47,7 @@ class Mo_Monitoreo extends CI_Controller
                 $actividad->totalEjFinProg = $totalEjFinProg;
                 $actividad->totalEjFinReal = $totalEjFinReal;
             }
-        }
+        }        
         
         $this->load->view('front/Monitoreo/Mo_Monitoreo/index', ['proyecto' => $proyecto, 'producto'=>$producto]);
     }
@@ -60,6 +61,19 @@ class Mo_Monitoreo extends CI_Controller
         $nombreActividad = $this->input->get('nombreActividad');
         $ejecucion = $this->Model_Mo_Ejecucion_Actividad->verprogramacion($this->input->get('idEjecucion'));
         $monitoreo = $this->Model_Mo_Monitoreo->listaMonitoreo($this->input->get('idEjecucion'));
+        foreach ($monitoreo as $key => $value) 
+        {
+            $value->childObservacion = $this->Model_Mo_Observacion->listaObservacion($value->id_monitoreo);
+            foreach ($value->childObservacion as $key => $item) 
+            {
+                $item->chilCompromiso = $this->Model_Mo_Compromiso->listaCompromiso($item->id_observacion);
+            }
+        }
+        /*echo "<pre>";
+        var_dump($monitoreo);
+        echo "</pre>";
+        exit;*/
+
 
         $this->load->view('front/Monitoreo/Mo_Monitoreo/resultado',['actividad'=>$nombreActividad, 'ejecucion' => $ejecucion, 'monitoreo' => $monitoreo]);
     }
