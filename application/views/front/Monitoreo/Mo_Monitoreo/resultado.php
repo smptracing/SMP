@@ -83,34 +83,34 @@
 					<li>
 						<div class="btn-group  btn-group-xs">
 	                        <button onclick="guardarCambiosMonitoreo('<?=$value->id_monitoreo?>');" class="btn btn-default btnli" type="button">G</button>
-	                        <button class="btn btn-default btnli" type="button">-</button>
+	                        <button onclick="eliminarMonitoreo('<?=$value->id_monitoreo?>',this);" class="btn btn-default btnli" type="button">-</button>
 	                        <button class="btn btn-default btnli" type="button">+</button>
                       	</div><b id="descripcionMonitoreo<?=$value->id_monitoreo?>" style="color:#1e8c75;font-size:12px;text-transform:uppercase;" contenteditable><?=$value->desc_monitoreo?></b>
-                    </li>
-                    <ul style="padding-left:27px;">
-                    <?php foreach ($value->childObservacion as $key => $observacion) {?>
-                    	<li>
-							<div class="btn-group  btn-group-xs">
-		                        <button class="btn btn-default btnli" type="button">G</button>
-		                        <button class="btn btn-default btnli" type="button">-</button>
-		                        <button class="btn btn-default btnli" type="button">+</button>
-	                      	</div><b style="color:#e74c3c;font-size:12px;text-transform: uppercase;" contenteditable><?=$observacion->desc_observacion?></b>
-	                    </li>
-	                    <ul style="padding-left:57px;">
-	                    <?php foreach ($observacion->chilCompromiso as $key => $compromiso) { ?>
+                      	<ul style="padding-left:27px;">
+	                    <?php foreach ($value->childObservacion as $key => $observacion) {?>
 	                    	<li>
 								<div class="btn-group  btn-group-xs">
 			                        <button class="btn btn-default btnli" type="button">G</button>
 			                        <button class="btn btn-default btnli" type="button">-</button>
-		                      	</div><b style="color:#3498db;font-size:12px;text-transform:uppercase;" contenteditable><?=$compromiso->desc_compromiso?></b>
-		                    </li>
-	                    	
-	                    <?php } ?>	                    	
+			                        <button class="btn btn-default btnli" type="button">+</button>
+		                      	</div><b style="color:#e74c3c;font-size:12px;text-transform: uppercase;" contenteditable><?=$observacion->desc_observacion?></b>
+		                      	<ul style="padding-left:57px;">
+			                    <?php foreach ($observacion->chilCompromiso as $key => $compromiso) { ?>
+			                    	<li>
+										<div class="btn-group  btn-group-xs">
+					                        <button class="btn btn-default btnli" type="button">G</button>
+					                        <button class="btn btn-default btnli" type="button">-</button>
+				                      	</div><b style="color:#3498db;font-size:12px;text-transform:uppercase;" contenteditable><?=$compromiso->desc_compromiso?></b>
+				                    </li>
+			                    	
+			                    <?php } ?>	                    	
+			                    </ul>
+		                    </li>		                                        	
+	                    <?php } ?>
 	                    </ul>
-                    	
-                    <?php } ?>
-                    </ul>
-					<?php } ?>					
+						<?php } ?>
+                    </li>
+                    					
 				</ul>
 			</div>
 		</div>
@@ -274,5 +274,37 @@
 
 			$('#descripcionMonitoreo'+codigoMonitoreo).text($('#descripcionMonitoreo'+codigoMonitoreo).text().trim());
 		}, false, true);
+	}
+
+	function eliminarMonitoreo(codigoMonitoreo, element)
+	{
+		swal({
+            title: "¿Realmente desea proseguir con la operación?",
+            text: "",
+            type: "warning",
+            showCancelButton: true,
+            cancelButtonText:"CANCELAR" ,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "SI,ELIMINAR",
+            closeOnConfirm: false
+        },
+        function(){
+            paginaAjaxJSON({ "idMonitoreo" : codigoMonitoreo }, base_url+'index.php/Mo_Monitoreo/eliminar', 'POST', null, function(objectJSON)
+			{
+				objectJSON=JSON.parse(objectJSON);
+
+				swal(
+				{
+					title: '',
+					text: objectJSON.mensaje,
+					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+				},
+				function(){});
+
+				$(element).parent().parent().remove();
+
+			}, false, true);
+        });
+
 	}
 </script>

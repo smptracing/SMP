@@ -28,4 +28,10 @@ class Model_Mo_Monitoreo extends CI_Model
 		$this->db->update('MO_MONITOREO');
 		return $this->db->affected_rows();
 	}
+	function eliminar($idMonitoreo)
+	{
+		$this->db->where('id_monitoreo', $idMonitoreo);
+		$this->db->delete('MO_MONITOREO');
+		return $this->db->affected_rows();
+	}
 }
