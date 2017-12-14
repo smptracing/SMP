@@ -1,64 +1,59 @@
+
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-<html lang="en">
+$ci = new CI_Controller();
+$ci =& get_instance();
+$ci->load->helper('url');
+?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="eng" lang="eng">
+
+<!-- Mirrored from adraft.x10.mx/space-404/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 Dec 2017 16:21:26 GMT -->
 <head>
-<meta charset="utf-8">
-<title>404 Page Not Found</title>
-<style type="text/css">
-
-::selection { background-color: #E13300; color: white; }
-::-moz-selection { background-color: #E13300; color: white; }
-
-body {
-	background-color: #fff;
-	margin: 40px;
-	font: 13px/20px normal Helvetica, Arial, sans-serif;
-	color: #4F5155;
-}
-
-a {
-	color: #003399;
-	background-color: transparent;
-	font-weight: normal;
-}
-
-h1 {
-	color: #444;
-	background-color: transparent;
-	border-bottom: 1px solid #D0D0D0;
-	font-size: 19px;
-	font-weight: normal;
-	margin: 0 0 14px 0;
-	padding: 14px 15px 10px 15px;
-}
-
-code {
-	font-family: Consolas, Monaco, Courier New, Courier, monospace;
-	font-size: 12px;
-	background-color: #f9f9f9;
-	border: 1px solid #D0D0D0;
-	color: #002166;
-	display: block;
-	margin: 14px 0 14px 0;
-	padding: 12px 10px 12px 10px;
-}
-
-#container {
-	margin: 10px;
-	border: 1px solid #D0D0D0;
-	box-shadow: 0 0 8px #D0D0D0;
-}
-
-p {
-	margin: 12px 15px 12px 15px;
-}
-</style>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>Lost in Space - Error 404</title>
+	<link href='http://fonts.googleapis.com/css?family=Bangers&amp;v2' rel='stylesheet' type='text/css' />
+	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/css/css_404/reset.css" />
+	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/css/css_404/main.css" />
+	<script src="<?= base_url() ?>assets/js/scripts_404/jquery162.js" type="text/javascript"></script>
+	<script src="<?= base_url() ?>assets/js/scripts_404/spritely05.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		(function($) {
+			$(document).ready(function() {
+				$('#astronaut')
+					.sprite({fps: 30, no_of_frames: 1})
+					.spRandom({top: 30, bottom: 200, left: 30, right: 200})
+				$('#space').pan({fps: 40, speed: 3, dir: 'right', depth: 50});
+			});
+		})(jQuery);
+	</script>
 </head>
 <body>
-	<div id="container">
-		<h1><?php echo $heading; ?></h1>
-		<?php echo $message; ?>
+<div id="container">
+	<div id="stage" class="stage">
+		<div id="space" class="stage"></div>
+		<div id="astronaut" class="stage">
+			<div id="text_1">SMP,<br />tenemos un<br />problema!</div>
+			<div id="text_2">Error 404!</div>
+			<div id="text_3">El universo<br />que estas buscando<br />no existe</div>
+			<div id="text_4">Intente visitar otra dimension</div>
+			<div id="text_5">
+				<ul>
+					<li><a href="<?= base_url() ?>">Regresar al Inicio</a></li>
+				</ul>
+			</div>
+			<div class="search_box">
+				<form id="searchform" action="#" method="get">
+					<input id="s" class="inputField" type="text" name="s" onblur="if (this.value == '') {this.value = 'Or search for new one...';}" onfocus="if (this.value == 'Or search for new one...') {this.value = '';}" value="Or search for new one..." />
+					<input id="searchsubmit" class="btn-search" type="submit" value="" />
+				</form>
+			</div>
+		</div>
 	</div>
+</div>
 </body>
+
+
 </html>
