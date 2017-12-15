@@ -23,14 +23,6 @@ class FEformulacion extends CI_Controller
             $idPersona=$dataIdPersona->id_persona;
             $TipoUsuario=$dataIdPersona->cod_usuario_tipo;
 
-           /* if (empty($id_est_inve)) {
-                $id_est_inve = '0';
-            }
-            if ($id_est_inve == 'all') {
-
-                //$id_est_inve = '0';
-
-            }*/
             if($TipoUsuario==01)
             {
                 $id_est_inve=0;
@@ -46,32 +38,32 @@ class FEformulacion extends CI_Controller
             show_404();
         }
     }
-    public function GetFEAprobados()
-    {
-        if ($this->input->is_ajax_request()) {
-            $id_est_inve = $this->session->userdata('id_est_inve');
-            if (empty($id_est_inve)) {
-                $id_est_inve = '0';
-            }
-            if ($id_est_inve == 'all') {
-                $id_est_inve = '0';
-            }
-            //$this->session->sess_destroy();
-            $datos = $this->FEformulacion_Modal->GetFEAprobados($id_est_inve);
-            echo json_encode($datos);
-        } else {
-            show_404();
-        }
-    }
+    // public function GetFEAprobados()
+    // {
+    //     if ($this->input->is_ajax_request()) {
+    //         $id_est_inve = $this->session->userdata('id_est_inve');
+    //         if (empty($id_est_inve)) {
+    //             $id_est_inve = '0';
+    //         }
+    //         if ($id_est_inve == 'all') {
+    //             $id_est_inve = '0';
+    //         }
+    //         //$this->session->sess_destroy();
+    //         $datos = $this->FEformulacion_Modal->GetFEAprobados($id_est_inve);
+    //         echo json_encode($datos);
+    //     } else {
+    //         show_404();
+    //     }
+    // }
     public function GetFEViabilizado()
     {
         if ($this->input->is_ajax_request()) {
             $id_est_inve = $this->session->userdata('id_est_inve');
             if (empty($id_est_inve)) {
-                $id_est_inve = '0';
+                $id_est_inve = 'NULL';
             }
             if ($id_est_inve == 'all') {
-                $id_est_inve = '0';
+                $id_est_inve = 'NULL';
             }
             //$this->session->sess_destroy();
             $datos = $this->FEformulacion_Modal->GetFEViabilizado($id_est_inve);
@@ -83,7 +75,6 @@ class FEformulacion extends CI_Controller
     //mostar la vista de lista de proyectos al seleccionar un unico
     public function Feformulacion($id_est_inve)
     {
-
         $data = array('id_est_inve' => $id_est_inve);
         $this->session->set_userdata($data);
         $this->_load_layout('Front/Formulacion_Evaluacion/frmFormulacion');

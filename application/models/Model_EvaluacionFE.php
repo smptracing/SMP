@@ -22,16 +22,15 @@ class Model_EvaluacionFE extends CI_Model
     }
     /*LISTAR DENOMINACION FORMULACION Y EVALUACION*/
     public function GetEvaluacionFE($id_est_inve)
-    {
-        $EvaluacionFE = $this->db->query("execute sp_ListarEstudioEvaluacion'"
-            . $id_est_inve . "' ");
+    {   
+        $EvaluacionFE = $this->db->query("execute sp_ListarEstudioEvaluacion @id_estudio_inv="
+            . $id_est_inve . " ");
 
         if ($EvaluacionFE->num_rows() >= 0) {
             return $EvaluacionFE->result();
         } else {
             return false;
         }
-
     }
     /*LISTAR DENOMINACION FORMULACION Y EVALUACION*/
     //LISTAR EVALUADORES
