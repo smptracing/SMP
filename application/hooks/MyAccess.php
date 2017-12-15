@@ -602,7 +602,8 @@ function autorizar($url)
       'EvaluacionFE/FeEvaluacion',
       'FEformulacion/FeAprobado',
       'FEformulacion/FeViabilizado',
-      'Estudio_Inversion/get_etapas_estudio'
+      'Estudio_Inversion/get_etapas_estudio',
+      'Estudio_Inversion/get_estado_PI'
     );
     foreach( $lista_API as $value ) {
       array_push($arrayPermitido, $value);

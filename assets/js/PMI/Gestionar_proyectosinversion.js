@@ -109,19 +109,19 @@ $(document).on("ready" ,function()
             {
                 resp = JSON.parse(resp);
                 var mensajeError = 'Ha ocurrido un error inesperado.';
-                for (var i = 0 ; i < resp.msg.length; i--) 
+                for (var i = 0 ; i < resp.msg.length; i--)
                 {
                     mensajeError += resp.msg[i];
-                }             
+                }
                 ((resp.flag==0) ? swal("Correcto","Los datos fueron registrados correctamente","success") : swal("Error",mensajeError,"error"));
                 formReset();
                 $('#VentanaRegistraPIP').modal('hide');
-                $('#table_proyectos_inversion').dataTable()._fnAjaxUpdate();                
+                $('#table_proyectos_inversion').dataTable()._fnAjaxUpdate();
             }
         });
     });
 
-    $('#txtCodigoUnico').keyup(function () 
+    $('#txtCodigoUnico').keyup(function ()
     {
         codigo2='2187136';
         var codigo=$("#txtCodigoUnico").val();
@@ -131,7 +131,7 @@ $(document).on("ready" ,function()
             data:{codigo:codigo},
             success:function(resp)
             {
-                $.each(resp, function(index, val) 
+                $.each(resp, function(index, val)
                 {
                     $("#txtNombrePip").val(val.nombre_pi);
                     $("#txtCostoPip").val(val.costo_actual);
@@ -168,7 +168,7 @@ var listar_pip_OperMant=function(id_pi)
                 {"data":"responsable_operacion"},
                 {"data":"monto_mantenimiento"},
                 {"data":"responsable_mantenimiento"},
-                {"data":"urlArchivo", render: function ( data, type, row ) 
+                {"data":"urlArchivo", render: function ( data, type, row )
                     {
                         if(row.urlArchivo=='' || row.urlArchivo==null)
                         {
@@ -180,7 +180,7 @@ var listar_pip_OperMant=function(id_pi)
                             return "<a href='"+url+"' target='_blank'><i class='fa fa-file fa-2x'></i></a>";
 
                         }
-                            
+
                     }},
                 {"data":"fecha_registro"},
                 {"data":"id_operacion_mantenimiento_pi",render:function(data,type,row){
@@ -218,7 +218,7 @@ var eliminarOperacionMantenimiento=function(id_operacion_mantenimiento_pi,elemen
             $(element).parent().parent().remove();
 
         }, false, true);
-    });    
+    });
 }
 
 var listar_ubigeo_pi=function(id_pi)
@@ -248,7 +248,7 @@ var listar_ubigeo_pi=function(id_pi)
                 {
                     url= base_url+"uploads/ImgUbicacionProyecto/"+data;
                     return '<img height="20" width="20" src="'+url+'" />';
-                }                
+                }
             }},
         {"data":'id_ubigeo_pi',render:function(data,type,row)
         {
@@ -456,6 +456,7 @@ var EditPip=function(tbody,table)
     $(tbody).on("click","button.Editar_proyecto",function()
     {
         var data=table.row( $(this).parents("tr")).data();
+        var codigo_unico_pi = data.codigo_unico_pi;
         var  id_estado_ciclo=data.id_estado_ciclo;
         var  id_naturaleza_inv=data.id_naturaleza_inv;
         var id_nivel_gob=data.id_nivel_gob;
@@ -489,8 +490,9 @@ var EditPip=function(tbody,table)
         listarModalidadEjecucion(id_modalidad_ejec);
         listarTipologiaInversion(id_tipologia_inv);
         listarProgramaPresupuestal(id_programa_pres);
-        $("#cbx_estado_m").val(estado_pi);
+        //$("#cbx_estado_pi_m").val(estado_pi);
         listarufcombo(id_uf);
+        listarEstadoPI(codigo_unico_pi, estado_pi);
     });
 }
 
@@ -505,7 +507,7 @@ var listarCicloInver=function(valor)
     success:function(respuesta3)
     {
         var registros = eval(respuesta3);
-        for (var i = 0; i <registros.length;i++) 
+        for (var i = 0; i <registros.length;i++)
         {
             html +="<option  value="+registros[i]["id_estado_ciclo"]+"> "+registros[i]["nombre_estado_ciclo"]+" </option>";
         };
@@ -531,7 +533,7 @@ var listarNaturalezaInver=function(valor)
         success:function(respuesta3)
         {
             var registros = eval(respuesta3);
-            for (var i = 0; i <registros.length;i++) 
+            for (var i = 0; i <registros.length;i++)
             {
                 html +="<option  value="+registros[i]["id_naturaleza_inv"]+"> "+registros[i]["nombre_naturaleza_inv"]+" </option>";
             };
@@ -555,7 +557,7 @@ var listarNivelGobierno=function(valor)
         success:function(respuesta3)
         {
             var registros = eval(respuesta3);
-            for (var i = 0; i <registros.length;i++) 
+            for (var i = 0; i <registros.length;i++)
             {
                 html +="<option  value="+registros[i]["id_nivel_gob"]+"> "+registros[i]["nombre_nivel_gob"]+" </option>";
             };
@@ -579,7 +581,7 @@ var listarUnidadEjecutora=function(valor)
         success:function(respuesta3)
         {
             var registros = eval(respuesta3);
-            for (var i = 0; i <registros.length;i++) 
+            for (var i = 0; i <registros.length;i++)
             {
                 html +="<option  value="+registros[i]["id_ue"]+"> "+registros[i]["nombre_ue"]+" </option>";
             };
@@ -603,7 +605,7 @@ var listarFuncion=function(valor)
     success:function(respuesta3)
     {
         var registros = eval(respuesta3);
-        for (var i = 0; i <registros.length;i++) 
+        for (var i = 0; i <registros.length;i++)
         {
             html +="<option  value="+registros[i]["id_funcion"]+"> "+registros[i]["nombre_funcion"]+" </option>";
         };
@@ -637,7 +639,7 @@ var listarDivisionFuncional=function(id_funcion,valor)
         success : function(respuesta)
         {
             var registros = eval(respuesta);
-            for (var i = 0; i <registros.length;i++) 
+            for (var i = 0; i <registros.length;i++)
             {
                 html +="<option value="+registros[i]["id_div_funcional"]+"> "+ registros[i]["nombre_div_funcional"]+" </option>";
             }
@@ -665,7 +667,7 @@ var listarGrupoFuncional=function(valor)
         success : function(respuesta)
         {
             var registros = eval(respuesta);
-            for (var i = 0; i <registros.length;i++) 
+            for (var i = 0; i <registros.length;i++)
             {
                 html +="<option value="+registros[i]["id_grup_funcional"]+"> "+ registros[i]["nombre_grup_funcional"]+" </option>";
             }
@@ -689,7 +691,7 @@ var listarFuenteFinanciamiento=function(valor)
     success:function(respuesta3)
     {
         var registros = eval(respuesta3);
-        for (var i = 0; i <registros.length;i++) 
+        for (var i = 0; i <registros.length;i++)
         {
             html +="<option  value="+registros[i]["id_fuente_finan"]+"> "+registros[i]["nombre_fuente_finan"]+" </option>";
         };
@@ -713,7 +715,7 @@ var listarRubroEjecucion=function(valor)
         success:function(respuesta3)
         {
          var registros = eval(respuesta3);
-            for (var i = 0; i <registros.length;i++) 
+            for (var i = 0; i <registros.length;i++)
             {
                 html +="<option  value="+registros[i]["id_rubro"]+"> "+registros[i]["nombre_rubro"]+" </option>";
             };
@@ -737,7 +739,7 @@ var listarTipologiaInversion=function(valor)
         success:function(respuesta3)
         {
             var registros = eval(respuesta3);
-            for (var i = 0; i <registros.length;i++) 
+            for (var i = 0; i <registros.length;i++)
             {
                 html +="<option  value="+registros[i]["id_tipologia_inv"]+"> "+registros[i]["nombre_tipologia_inv"]+" </option>";
             };
@@ -760,7 +762,7 @@ var listarProgramaPresupuestal=function(valor)
         success:function(respuesta3)
         {
             var registros = eval(respuesta3);
-            for (var i = 0; i <registros.length;i++) 
+            for (var i = 0; i <registros.length;i++)
             {
                 html +="<option  value="+registros[i]["id_programa_pres"]+"> "+registros[i]["nombre_programa_pres"]+" </option>";
             };
@@ -784,7 +786,7 @@ var listarModalidadEjecucion=function(valor)
         success:function(respuesta3)
         {
             var registros = eval(respuesta3);
-            for (var i = 0; i <registros.length;i++) 
+            for (var i = 0; i <registros.length;i++)
             {
               html +="<option  value="+registros[i]["id_modalidad_ejec"]+"> "+registros[i]["nombre_modalidad_ejec"]+" </option>";
             };
@@ -877,7 +879,7 @@ var ListarModalidad=function(valor)
         success:function(respuesta3)
         {
             var registros = eval(respuesta3);
-            for (var i = 0; i <registros.length;i++) 
+            for (var i = 0; i <registros.length;i++)
             {
                 html +="<option  value="+registros[i]["id_modalidad_ejec"]+"> "+registros[i]["nombre_modalidad_ejec"]+" </option>";
             };
@@ -900,7 +902,7 @@ var listarEstadoCiclo=function(valor)
         success:function(respuesta3)
         {
             var registros = eval(respuesta3);
-            for (var i = 0; i <registros.length;i++) 
+            for (var i = 0; i <registros.length;i++)
             {
                 html +="<option  value="+registros[i]["id_estado_ciclo"]+"> "+registros[i]["nombre_estado_ciclo"]+" </option>";
             };
@@ -972,7 +974,7 @@ var ListarRubro=function(valor)
         success:function(respuesta3)
         {
             var registros = eval(respuesta3);
-            for (var i = 0; i <registros.length;i++) 
+            for (var i = 0; i <registros.length;i++)
             {
                 html +="<option  value="+registros[i]["id_rubro"]+"> "+registros[i]["nombre_rubro"]+" </option>";
             };
@@ -1007,6 +1009,31 @@ var listarufcombo=function(valor)
     });
 }
 
+var listarEstadoPI=function(codigo_unico_pi, estado_pi)
+{
+    var htmlUF="";
+    $("#cbx_estado_pi").html(htmlUF);
+    event.preventDefault();
+    $.ajax({
+        "url":base_url +"index.php/Estudio_Inversion/get_estado_PI?id_pi="+codigo_unico_pi,
+        type:"POST",
+        success:function(respuesta2)
+        {
+            var registros = eval(respuesta2);
+
+            htmlUF +="<option value='1'>Activo</option>";
+            htmlUF +="<option value='0'>Inactivo</option>";
+
+            $("#cbx_estado_pi").html(htmlUF);
+            $("#cbx_estado_pi_m").html(htmlUF);
+            $('select[name=cbx_estado_pi_m]').val(registros[0]["estado_pi"]);
+            $('select[name=cbx_estado_pi_m]').change();
+            $('.selectpicker').selectpicker('refresh');
+        }
+    });
+}
+
+
 var idioma_espanol=
 {
     "sProcessing":     "Procesando...",
@@ -1027,7 +1054,7 @@ var idioma_espanol=
         "sNext":     "Siguiente",
         "sPrevious": "Anterior"
     },
-    "oAria": 
+    "oAria":
     {
         "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
         "sSortDescending": ": Activar para ordenar la columna de manera descendente"

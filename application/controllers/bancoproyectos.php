@@ -67,26 +67,26 @@ class bancoproyectos extends CI_Controller
                     //INSERT estado_ciclo_pi
                     $d_data['id_pi'] = $q1;
                     $d_data['fecha_estado_ciclo_pi'] = fecha_mssql();
-                    if($this->ESTADO_CICLO_PI_MODEL->Insertar_ciclo($d_data) == FALSE){  
+                    if($this->ESTADO_CICLO_PI_MODEL->Insertar_ciclo($d_data) == FALSE){
                         $flag = 1;
                         $msg[] = 'Error: x001ci';
-                    }  
+                    }
 
                     //INSERT rubro_pi
                     $e_data['id_pi'] = $q1;
                     $e_data['fecha_rubro_pi'] = fecha_mssql();
-                    if($this->Model_RubroE->Insertar_rubro($e_data) == FALSE){  
+                    if($this->Model_RubroE->Insertar_rubro($e_data) == FALSE){
                         $flag = 1;
                         $msg[] = 'Error: x001r';
-                    }   
+                    }
 
                     //INSERT modalidad_ejecucion_pi
                     $f_data['id_pi'] = $q1;
                     $f_data['fecha_modalidad_ejec_pi'] = fecha_mssql();
-                    if($this->Model_ModalidadE->Insertar_modalidade($f_data) == FALSE){  
+                    if($this->Model_ModalidadE->Insertar_modalidade($f_data) == FALSE){
                         $flag = 1;
                         $msg[] = 'Error: x001m';
-                    }  
+                    }
                 }
                 else
                 {
@@ -95,11 +95,11 @@ class bancoproyectos extends CI_Controller
                 }
 
 
-            $datos['flag'] = $flag;   
-            $datos['msg'] = $msg;   
-            // $datos['res'] = $q1;   
+            $datos['flag'] = $flag;
+            $datos['msg'] = $msg;
+            // $datos['res'] = $q1;
             $data['datos'] = $datos;
-            $this->load->view('front/json/json_view', $data);                 
+            $this->load->view('front/json/json_view', $data);
 
         } else {
             show_404();
@@ -371,7 +371,7 @@ class bancoproyectos extends CI_Controller
 
     public function Add_ubigeo_proyecto()
     {
-        if ($this->input->is_ajax_request()) 
+        if ($this->input->is_ajax_request())
         {
             $flag = 1;
 
@@ -380,7 +380,7 @@ class bancoproyectos extends CI_Controller
             $c_data['direccion_ubigeo_pi'] = "NULL";
             $c_data['latitud'] = $this->input->post("txt_latitud");
             $c_data['longitud'] = $this->input->post("txt_longitud");
-            
+
             $q1 = $this->bancoproyectos_modal->InsertarUbigeo_Pi($c_data);
             $datos = array();
             $msg = array();
@@ -396,7 +396,7 @@ class bancoproyectos extends CI_Controller
                 $this->upload->initialize($config);
 
                 $datos['q2'] = 1;
-                if($this->upload->do_upload('ImgUbicacion')) 
+                if($this->upload->do_upload('ImgUbicacion'))
                 {
                     $file_info = $this->upload->data();
                     $imagen = $file_info['file_name'];
@@ -406,7 +406,7 @@ class bancoproyectos extends CI_Controller
                     if($q2>0)
                     {
                         $datos['q2'] = 0;
-                    }                    
+                    }
                 }
             }
 
@@ -420,16 +420,16 @@ class bancoproyectos extends CI_Controller
             }
             if($flag==0 && $datos['q2'] == 1)
             {
-               $msg = (['proceso' => 'Advertencia', 'mensaje' => 'ha ocurrido un error al subir la imagen ']); 
-            }         
+               $msg = (['proceso' => 'Advertencia', 'mensaje' => 'ha ocurrido un error al subir la imagen ']);
+            }
             $this->load->view('front/json/json_view', ['datos' => $msg]);
         }
-        else 
+        else
         {
             show_404();
         }
     }
-    
+
     public function Editar_ubigeo_proyecto()
     {
 
@@ -495,7 +495,7 @@ class bancoproyectos extends CI_Controller
     //Agregar RUBRO PI
     public function AddRurboPI()
     {
-        if ($this->input->is_ajax_request()) 
+        if ($this->input->is_ajax_request())
         {
             $c_data['id_rubro'] = $this->input->post("Cbx_RubroPI");
             $c_data['id_pi']= $this->input->post("txt_id_pip_RubroPI");
@@ -505,8 +505,8 @@ class bancoproyectos extends CI_Controller
 
             $msg = ($q1>0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
             $this->load->view('front/json/json_view', ['datos' => $msg]);
-        } 
-        else 
+        }
+        else
         {
             show_404();
         }
@@ -514,7 +514,7 @@ class bancoproyectos extends CI_Controller
 
     public function AddModalidadEjecPI()
     {
-        if ($this->input->is_ajax_request()) 
+        if ($this->input->is_ajax_request())
         {
             $c_data['id_modalidad_ejec'] = $this->input->post("Cbx_ModalidadEjec");
             $c_data['id_pi']= $this->input->post("txt_id_pip_ModalidadEjec");
@@ -527,7 +527,7 @@ class bancoproyectos extends CI_Controller
 
             $this->load->view('front/json/json_view', ['datos' => $msg]);
         }
-        else 
+        else
         {
             show_404();
         }
@@ -565,14 +565,14 @@ class bancoproyectos extends CI_Controller
             $datos = $this->bancoproyectos_modal->GetNOPIP($flat);
             if(!$datos)
             {
-                echo json_encode($datos);exit;                
+                echo json_encode($datos);exit;
             }
             foreach ($datos as $key => $value)
             {
                 $value->costo_pi = a_number_format($value->costo_pi , 2, '.',",",3);
             }
             echo json_encode($datos);exit;
-            
+
         }
         else
         {
@@ -636,7 +636,7 @@ class bancoproyectos extends CI_Controller
     //eliminar op y mant
     public function eliminarOperacionMantenimiento()
     {
-        if ($this->input->is_ajax_request()) 
+        if ($this->input->is_ajax_request())
         {
             $id_operacion_mantenimiento_pi = $this->input->post("id_operacion_mantenimiento_pi");
             $extension = $this->bancoproyectos_modal->getOperacionyMantenimiento($id_operacion_mantenimiento_pi)->urlArchivo;
@@ -645,15 +645,15 @@ class bancoproyectos extends CI_Controller
             if($data>0)
             {
                 if (file_exists("uploads/ActaCompromisoOperacionyMantenimiento/".$id_operacion_mantenimiento_pi.".".$extension))
-                { 
+                {
                     unlink("uploads/ActaCompromisoOperacionyMantenimiento/".$id_operacion_mantenimiento_pi.".".$extension);
-                } 
+                }
                 $msg = ($data>0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
 
-                $this->load->view('front/json/json_view', ['datos' => $msg]); 
+                $this->load->view('front/json/json_view', ['datos' => $msg]);
             }
-        } 
-        else 
+        }
+        else
         {
             show_404();
         }
@@ -689,9 +689,9 @@ class bancoproyectos extends CI_Controller
                 $this->load->library('upload', $config);
 
                 if (!$this->upload->do_upload('fileActaCompromiso'))
-                {    
+                {
                     $error = array('error' => $this->upload->display_errors());
-                    $this->load->view('front/json/json_view',['datos' => $error]);                
+                    $this->load->view('front/json/json_view',['datos' => $error]);
                 }
             }
 
@@ -700,9 +700,9 @@ class bancoproyectos extends CI_Controller
             $msg = array();
 
             $msg = ($ultimoId != '' ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
-            $this->load->view('front/json/json_view', ['datos' => $msg]);    
-        } 
-        else 
+            $this->load->view('front/json/json_view', ['datos' => $msg]);
+        }
+        else
         {
             show_404();
         }
@@ -740,12 +740,12 @@ class bancoproyectos extends CI_Controller
     }
     public function eliminarrubroPI()
     {
-        if ($this->input->is_ajax_request()) 
+        if ($this->input->is_ajax_request())
         {
             $id_rubro_pi = $this->input->post("id_rubro_pi");
 
             $this->bancoproyectos_modal->eliminarrubroPI($id_rubro_pi);
-            
+
             echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Se elimino Correctamente el ubigeo.']);exit;
 
         } else {

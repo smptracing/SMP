@@ -244,6 +244,16 @@
                         </select>
                         </div>
                         </div>
+                        <div class="col-md-4">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <label  for="name">Estado<span class="required"></span>
+                                </label>
+                                <select id="cbx_estado_pi" name="cbx_estado_pi" class="selectpicker">
+                                  <option value='1'>Activo</option>
+                                  <option value='0'>Inactivo</option>
+                                </select>
+                            </div>
+                        </div>
                         </div>
 
                         <div class="ln_solid"></div>
@@ -870,8 +880,6 @@
                                         <label  for="name">Estado<span class="required">*</span>
                                         </label>
                                         <select id="cbx_estado_pi_m" name="cbx_estado_pi_m" class="selectpicker">
-                                            <option value="1">Activo</option>
-                                            <option value="0">Inactivo</option>
                                         </select>
                                     </div>
                                 </div>

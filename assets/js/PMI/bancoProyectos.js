@@ -58,9 +58,9 @@ $(document).ready(function(){
         {
             return;
         }
-        
+
         var formData=new FormData($("#form_AddOperacionMantenimiento")[0]);
-        
+
         $.ajax({
             url:base_url+"index.php/bancoproyectos/AddOperacionMantenimiento",
             type:'POST',

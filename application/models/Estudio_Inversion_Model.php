@@ -10,13 +10,13 @@ class Estudio_Inversion_Model extends CI_Model
     }
     public function UsuarioPersona($idUsuario)
     {
-        $listarPersonaUsuario = $this->db->query("SELECT top 1 USUARIO.id_persona,  USUARIO.usuario, PERSONA.id_persona, CONCAT(PERSONA.nombres, ' ', PERSONA.apellido_p, ' ', PERSONA.apellido_m) AS nombresCompleto, 
-                                                    USUARIO_TIPO.desc_usuario_tipo, 
+        $listarPersonaUsuario = $this->db->query("SELECT top 1 USUARIO.id_persona,  USUARIO.usuario, PERSONA.id_persona, CONCAT(PERSONA.nombres, ' ', PERSONA.apellido_p, ' ', PERSONA.apellido_m) AS nombresCompleto,
+                                                    USUARIO_TIPO.desc_usuario_tipo,
                                                     USUARIO_TIPO.cod_usuario_tipo
-                                                    FROM   PERSONA inner join USUARIO on PERSONA.id_persona = usuario.id_persona      
+                                                    FROM   PERSONA inner join USUARIO on PERSONA.id_persona = usuario.id_persona
                                                     INNER JOIN USUARIO_TIPO ON USUARIO.id_usuario_tipo = USUARIO_TIPO.id_usuario_tipo
                                                     WHERE  USUARIO.id_persona='".$idUsuario."' ");
-         return $listarPersonaUsuario ->result()[0]; 
+         return $listarPersonaUsuario ->result()[0];
 
     }
     public function get_EstudioInversion($idPersona,$TipoUsuarioCodigo)
@@ -43,20 +43,20 @@ class Estudio_Inversion_Model extends CI_Model
                     return false;
                 }
         }
-        
-        
+
+
     }
 
     public function get_listaproyectos($NombreEstadoFormulacionEvalu)
     {
         //  $EstadoCicloInversion = $this->db->query("execute get");
-         $EstudioInversion = $this->db->query("select MAX(id_prog)as id_prog, año_apertura_cartera, 
-                                                nombre_tipo_inversion,ESTADO_CICLO.id_estado_ciclo, nombre_estado_ciclo, PROYECTO_INVERSION.id_pi, 
-                                                nombre_pi FROM ESTADO_CICLO inner join ESTADO_CICLO_PI ON ESTADO_CICLO.id_estado_ciclo=ESTADO_CICLO_PI.id_estado_ciclo 
-                                                INNER JOIN PROYECTO_INVERSION on ESTADO_CICLO_PI.id_pi=PROYECTO_INVERSION.id_pi INNER JOIN PROGRAMACION on 
+         $EstudioInversion = $this->db->query("select MAX(id_prog)as id_prog, año_apertura_cartera,
+                                                nombre_tipo_inversion,ESTADO_CICLO.id_estado_ciclo, nombre_estado_ciclo, PROYECTO_INVERSION.id_pi,
+                                                nombre_pi FROM ESTADO_CICLO inner join ESTADO_CICLO_PI ON ESTADO_CICLO.id_estado_ciclo=ESTADO_CICLO_PI.id_estado_ciclo
+                                                INNER JOIN PROYECTO_INVERSION on ESTADO_CICLO_PI.id_pi=PROYECTO_INVERSION.id_pi INNER JOIN PROGRAMACION on
                                                 PROYECTO_INVERSION.id_pi=PROGRAMACION.id_pi INNER JOIN CARTERA_INVERSION ON CARTERA_INVERSION.id_cartera=PROGRAMACION.id_cartera
                                                 inner join TIPO_INVERSION ON PROYECTO_INVERSION.id_tipo_inversion=TIPO_INVERSION.id_tipo_inversion
-                                                where year(año_apertura_cartera)=year(GETDATE()) and TIPO_INVERSION.nombre_tipo_inversion='PIP' 
+                                                where year(año_apertura_cartera)=year(GETDATE()) and TIPO_INVERSION.nombre_tipo_inversion='PIP'
                                                 AND nombre_estado_ciclo='".$NombreEstadoFormulacionEvalu."' GROUP BY año_apertura_cartera, nombre_tipo_inversion,
                                                 ESTADO_CICLO.id_estado_ciclo, nombre_estado_ciclo, PROYECTO_INVERSION.id_pi, nombre_pi");
         if ($EstudioInversion->num_rows() > 0) {
@@ -75,6 +75,17 @@ class Estudio_Inversion_Model extends CI_Model
         } else {
             return false;
         }
+    }
+
+    public function get_estado_PI($txtCodigoUnico) {
+
+        $estado_pi = $this->db->query("select estado_pi from PROYECTO_INVERSION where codigo_unico_pi='$txtCodigoUnico'");
+        if ($estado_pi->num_rows() > 0) {
+            return $estado_pi->result();
+        } else {
+            return false;
+        }
+
     }
 
     public function get_UnidadEjecutora()
@@ -102,11 +113,11 @@ class Estudio_Inversion_Model extends CI_Model
     public function get_TipoEstudio()
     {
         $TipoEstudio = $this->db->query("select id_tipo_est,nombre_tipo_est from TIPO_ESTUDIO");
-        if ($TipoEstudio->num_rows() > 0) 
+        if ($TipoEstudio->num_rows() > 0)
         {
             return $TipoEstudio->result();
-        } 
-        else 
+        }
+        else
         {
             return false;
         }
@@ -114,11 +125,11 @@ class Estudio_Inversion_Model extends CI_Model
     public function get_NivelEstudio()
     {
         $NivelEstudio = $this->db->query("select id_nivel_estudio, denom_nivel_estudio from NIVEL_ESTUDIO");
-        if ($NivelEstudio->num_rows() > 0) 
+        if ($NivelEstudio->num_rows() > 0)
         {
             return $NivelEstudio->result();
-        } 
-        else 
+        }
+        else
         {
             return false;
         }
@@ -299,17 +310,17 @@ class Estudio_Inversion_Model extends CI_Model
 
     public function GetProyectosEstudio()
     {
-        $datos = $this->db->query("select uf.id_est_inv, py.id_pi, py.codigo_unico_pi, uf.nombre_estudio_inv, f.nombre_funcion, uf.costo_estudio, p.nombres+' '+p.apellido_p+' '+p.apellido_m as coordinador from uf_estudio_inversion_2 uf inner join proyecto_inversion py on py.id_pi = uf.id_pi 
+        $datos = $this->db->query("select uf.id_est_inv, py.id_pi, py.codigo_unico_pi, uf.nombre_estudio_inv, f.nombre_funcion, uf.costo_estudio, p.nombres+' '+p.apellido_p+' '+p.apellido_m as coordinador from uf_estudio_inversion_2 uf inner join proyecto_inversion py on py.id_pi = uf.id_pi
 inner join grupo_funcional gf on py.id_grupo_funcional= gf.id_grup_funcional
 inner join division_funcional df on df.id_div_funcional = gf.id_div_funcional
 inner join funcion f on f.id_funcion = df.id_funcion
 inner join persona p on p.id_persona = uf.id_persona
-");    
-        if ($datos->num_rows() > 0) 
+");
+        if ($datos->num_rows() > 0)
         {
             return $datos->result();
-        } 
-        else 
+        }
+        else
         {
             return false;
         }
@@ -317,14 +328,14 @@ inner join persona p on p.id_persona = uf.id_persona
 
     public function GetProyectosparaEstudio($anio)
     {
-        $datos = $this->db->query("exec sp_Gestionar_UfEstudioInversion @opcion = 'listar_pip_programados', 
-        @anio_cartera = '$anio'");        
+        $datos = $this->db->query("exec sp_Gestionar_UfEstudioInversion @opcion = 'listar_pip_programados',
+        @anio_cartera = '$anio'");
 
-        if ($datos->num_rows() > 0) 
+        if ($datos->num_rows() > 0)
         {
             return $datos->result();
-        } 
-        else 
+        }
+        else
         {
             return false;
         }
@@ -332,13 +343,13 @@ inner join persona p on p.id_persona = uf.id_persona
 
     public function get_coordinador()
     {
-        $datos = $this->db->query("exec sp_Gestionar_UsuarioTipo 'listar_usuarios_por_tipo', 'coordinador'");        
+        $datos = $this->db->query("exec sp_Gestionar_UsuarioTipo 'listar_usuarios_por_tipo', 'coordinador'");
 
-        if ($datos->num_rows() > 0) 
+        if ($datos->num_rows() > 0)
         {
             return $datos->result();
-        } 
-        else 
+        }
+        else
         {
             return false;
         }
@@ -347,13 +358,13 @@ inner join persona p on p.id_persona = uf.id_persona
 
     public function GetProyectoParaEstudioInversion($anio, $id_pi)
     {
-        $datos = $this->db->query("exec sp_Gestionar_UfEstudioInversion @opcion = 'listar_pip_programados', @anio_cartera= '$anio', @id_pi = '$id_pi'");        
+        $datos = $this->db->query("exec sp_Gestionar_UfEstudioInversion @opcion = 'listar_pip_programados', @anio_cartera= '$anio', @id_pi = '$id_pi'");
 
-        if ($datos->num_rows() > 0) 
+        if ($datos->num_rows() > 0)
         {
             return $datos->result()[0];
-        } 
-        else 
+        }
+        else
         {
             return false;
         }
@@ -361,26 +372,26 @@ inner join persona p on p.id_persona = uf.id_persona
 
     public function RegistrarEstudioInversion($idPersona,$nombreEstudio,$idPi,$idTipoEstudio,$idNivelEstudio,$idUnidadFormuladora,$idUnidadEjecutora,$descripcionEstudio,$montoInversion,$costoEstudio)
     {
-        $this->db->query("exec sp_Gestionar_UfEstudioInversion @opcion = 'C', 
-        @id_persona = '$idPersona', 
-        @nombre_estudio_inv = '$nombreEstudio', 
-        @id_pi = '$idPi', 
-        @id_tipo_est = '$idTipoEstudio', 
-        @id_nivel_estudio = '$idNivelEstudio', 
-        @id_uf='$idUnidadFormuladora', 
-        @id_ue = '$idUnidadEjecutora', 
-        @des_est_inv = '$descripcionEstudio', 
-        @monto_inv = '$montoInversion', 
-        @costo_estudio ='$costoEstudio' , 
-        @etapa_estu = NULL, 
-        @fecha_etapa = NULL , 
-        @monto_etapa = NULL, 
+        $this->db->query("exec sp_Gestionar_UfEstudioInversion @opcion = 'C',
+        @id_persona = '$idPersona',
+        @nombre_estudio_inv = '$nombreEstudio',
+        @id_pi = '$idPi',
+        @id_tipo_est = '$idTipoEstudio',
+        @id_nivel_estudio = '$idNivelEstudio',
+        @id_uf='$idUnidadFormuladora',
+        @id_ue = '$idUnidadEjecutora',
+        @des_est_inv = '$descripcionEstudio',
+        @monto_inv = '$montoInversion',
+        @costo_estudio ='$costoEstudio' ,
+        @etapa_estu = NULL,
+        @fecha_etapa = NULL ,
+        @monto_etapa = NULL,
         @avance = NULL");
-        if ($this->db->affected_rows() > 0) 
+        if ($this->db->affected_rows() > 0)
         {
             return true;
-        } 
-        else 
+        }
+        else
         {
             return false;
         }
@@ -392,7 +403,7 @@ inner join persona p on p.id_persona = uf.id_persona
     {
           $opcion="obtenerdatosporpipdelabusquedaproyectoinversion";
           $EstudioInversionCargar = $this->db->query("execute  sp_Gestionar_ProyectoInversion @Opcion='".$opcion."',@id_pi='".$id_Pi."'");
-            if ($EstudioInversionCargar->num_rows() > 0) 
+            if ($EstudioInversionCargar->num_rows() > 0)
           {
               return $EstudioInversionCargar->result();
           }

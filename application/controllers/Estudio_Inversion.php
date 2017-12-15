@@ -77,6 +77,20 @@ class Estudio_Inversion extends CI_Controller
         }
     }
 
+    public function get_estado_PI() //mostra ESTADO INVERSION
+    {
+      $codigo_unico_pi = $_GET['id_pi'];
+      $datos = $this->Estudio_Inversion_Model->get_estado_PI($codigo_unico_pi);
+      echo json_encode($datos);
+      /*
+      if ($this->input->is_ajax_request()) {
+        $datos = $this->Estudio_Inversion_Model->get_estado_PI($codigo_unico_pi);
+        echo json_encode($datos);
+      } else {
+        show_404();
+      }*/
+    }
+
     public function get_UnidadEjecutora() //mostra ESTADO INVERSION
 
     {
