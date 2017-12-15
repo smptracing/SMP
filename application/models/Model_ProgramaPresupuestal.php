@@ -8,19 +8,34 @@ class Model_ProgramaPresupuestal extends CI_Model
     }
 //----------------------METODOS PARA EL MANTENIMIENTO DE RUBRO DE EJECUCION--------------------------------------------
     //AGREGAR UN PROGRAMA PRESUPUESTAL
-    public function AddProgramaP($txt_CodigoProgramaP,$txt_NombreProgramaP)
-    {
-         $mensaje1=$this->db->query("execute sp_ProgramaPresupuestal_c '".$txt_CodigoProgramaP."','".$txt_NombreProgramaP."'");
-            if($mensaje1->num_rows()>0)
-            {
-               return $mensaje1->result();
-           
-            }
-            else
-              {
-                return false;
-              }
+   public function BuscarProgramaP($txt_NombreProgramaP){
+        $resultado=$this->db->select('*')->from('PROGRAMA_PRESUPUESTAL')
+        ->where('nombre_programa_pres',$txt_NombreProgramaP)
+        ->get();
+        if($resultado->num_rows()>0){
+            return true;
+        }
+        else{
+            return false;
+        }
 
+   }
+   public function BuscarProgramaPU($id_programa_pres,$nombre_programa_pres){
+        $resultado=$this->db->select('*')->from('PROGRAMA_PRESUPUESTAL')
+        ->where('nombre_programa_pres',$nombre_programa_pres)
+        ->where('id_programa_pres!=',$id_programa_pres)
+        ->get();
+        if($resultado->num_rows()>0){
+            return true;
+        }
+        else{
+            return false;
+        }
+   }
+    public function AddProgramaP($data)
+    {
+        $this->db->insert('PROGRAMA_PRESUPUESTAL',$data);
+        return $this->db->insert_id();
     }
     //FIN AGREGAR UN PROGRAMA PRESUPUESTAL
     //LISTAR PROGRAMA PRESUPUESTAL
@@ -35,15 +50,27 @@ class Model_ProgramaPresupuestal extends CI_Model
     }
     //FIN LISTAR UN PROGRAMA PRESUPUESTAL
     //MODIFICAR DATOS DE PROGRAMA PRESUPUESTAL
-    public function UpdateProgramaP($id_prog_pres,$codigo_prog_pres, $nombre_prog_pres)
+    public function UpdateProgramaP($id_programa_pres,$data)
     {
-        $this->db->query("execute sp_ProgramaPresupuestal_u '" . $id_prog_pres . "','" . $nombre_prog_pres . "'");
-        if ($this->db->affected_rows() > 0) {
+        $this->db->where('id_programa_pres',$id_programa_pres);
+        $this->db->update('PROGRAMA_PRESUPUESTAL',$data);
+        if($this->db->affected_rows()>0){
             return true;
-        } else {
+        }
+        else{
             return false;
         }
     }
     //FIN MODIFICAR DATOS DE PROGRAMA PRESUPUESTAL
+    function EliminarProgramaP($id_programa_pres){
+        $this->db->where('id_programa_pres',$id_programa_pres);
+      $this->db->delete('programa_presupuestal');
+      if($this->db->affected_rows()>0){
+      return true;
+      } 
+      else{
+        return false;
+      }  
+    }
     //--------------FIN DE METODOS PARA EL MANTENIMIENTO DE PROGRAMA PRESUPUESTAL--------------------------------------------
 }

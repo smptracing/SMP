@@ -7,6 +7,8 @@ class MRubroEjecucion extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Model_RubroE');
+       $this->load->helper('FormatNumber_helper');
+      $this->load->helper('file');
     }
     public function index()
     {
@@ -100,15 +102,29 @@ public function EliminarRubroEjecucion(){
     public function UpdateRubroE()
     {
         if ($this->input->is_ajax_request()) {
-            $txt_IdRubroEModif   = $this->input->post("txt_IdRubroEModif");
-            $txt_NombreRubroEU   = $this->input->post("txt_NombreRubroEU");
-            if ($this->Model_RubroE->UpdateRubroE($txt_IdRubroEModif, $txt_NombreRubroEU) == false) {
-                echo "Se actualizo correctamente el rubro de ejecucion";
-            } else {
-                echo "Se actualizo correctamente el rubro de ejecucion";
-            }
+            $flag = 0;
+            $msg = '';
+           $id_rubro= $this->input->post("txt_IdRubroEModif");
+           $id_fuente_finan=$this->input->post("listaFuenteF");
+           $txt_NombreRubroEU=$this->input->post("txt_NombreRubroEU");
+            $r_data['id_fuente_finan']=$id_fuente_finan;
+            $r_data['nombre_rubro']=$txt_NombreRubroEU;
+            $r_data=$this->security->xss_clean($r_data);
+         if($this->Model_RubroE->UpdateRubroE($id_rubro,$r_data)==true){
+                        $flag=0;
+                        $msg='Registro Actualizado';             
+                }
+                else{
+                        $flag=1;
+                        $msg='Error dbx0003';
 
-        } else {
+                }
+
+                    $datos['flag']=$flag;
+                    $datos['msg']=$msg;
+                    echo json_encode($datos);
+        } 
+        else {
             show_404();
         }
     }

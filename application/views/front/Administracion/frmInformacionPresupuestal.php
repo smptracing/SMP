@@ -102,13 +102,12 @@
                                                 <thead>
                                                     <tr>
                                                         <th class="col-sm-1">ID</th>
+                                                        <th class="col-sm-1">ID</th>
                                                         <th class="col-sm-1">FUENTE DE FINANCIAMIENTO</th>
                                                         <th>NOMBRE RUBRO EJECUCION </th>
                                                         <th class="col-sm-1">ACCIONES</th>
                                                     </tr>
                                                 </thead>
-
-
                                             </table>
                                         </div>
                                     </div>
@@ -373,16 +372,25 @@
                 <div class="row">
                     <div class="col-xs-12">
 
-                        <form class="form-horizontal " id="form-ActualizarRubroE" action="<?php echo base_url(); ?>MRubroEjecucion/UpdateRubroE" method="POST" >
-
+                        <form class="form-horizontal" id="form-ActualizarRubroE" action="<?php echo base_url(); ?>MRubroEjecucion/UpdateRubroE" enctype="multipart/form-data" method="POST" >
+                              <div class="item form-group">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="txt_IdRubroEModif" name="txt_IdRubroEModif" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
+                                </div>
+                            </div>
+                        <div class="form-group">
+                           <label class="control-label col-md-3 col-sm-3 col-xs-6">Fuente de Financiamiento</label>
+                            <div class="col-md-6 col-sm-9 col-xs-6">
+                                <select id="listaFuenteF" name="listaFuenteF" class="selectpicker" data-live-search="true" >
+                                 </select>
+                            </div>
+                     </div>
                             <div class="item form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre del rubro de ejecucion<span class="required">*</span>
                                 </label>
+
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input id="txt_IdRubroEModif" type="hidden" name="txt_IdRubroEModif" type="text">
-                                </div>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input id="txt_NombreRubroEU" name="txt_NombreRubroEU" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="text">
+                                    <input id="txt_NombreRubroEU" name="txt_NombreRubroEU" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Nombre "  required="required" type="text">
                                 </div>
                             </div>
 

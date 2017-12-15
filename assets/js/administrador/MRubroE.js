@@ -44,7 +44,7 @@ $("#form-addRubroE").submit(function(event)
 $("#form-ActualizarRubroE").submit(function(event)
 {
 	event.preventDefault();
-  var formData=new FormData($("form-ActualizarRubroE")[0]);
+  var formData=new FormData($("#form-ActualizarRubroE")[0]);
 	$.ajax(
 	{
       type:"POST",
@@ -89,6 +89,7 @@ var listaRubroE=function()
        //para llenado y busqueda por todo los campos
                                 "columns":[
                                     {"data":"id_rubro" ,"visible": false},
+                                    {"data":"id_fuente_finan" ,"visible": false},
                                     {"data":"nombre_fuente_finan"},
                                     {"data":"nombre_rubro"},
                                     {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaModificarRubroE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
@@ -104,8 +105,10 @@ var listaRubroE=function()
        var RubroEData=function(tbody,table){
                     $(tbody).on("click","button.editar",function(){
                         var data=table.row( $(this).parents("tr")).data();
+                        var id_fuente_finan=data.id_fuente_finan;
                         var id_rubro=$('#txt_IdRubroEModif').val(data.id_rubro);
                         var nombre_rubro=$('#txt_NombreRubroEU').val(data.nombre_rubro);
+                        listaFuenteCombo(id_fuente_finan);
                     });
                 }
     // FIN DE CAMPOS QUE SE ACTUALIZARAN EN EL RUBRO DE EJECUCION
@@ -146,12 +149,15 @@ var listaRubroE=function()
     }
     // 
     //Listar fuentes de financiamiento en el combobox
-        listaFuenteCombo=function()
+        listaFuenteCombo=function(valor)
                  {
+                
                     var htmlfuen="";
                     $("#listaFuenteFinanc").html(htmlfuen);
-                    event.preventDefault(); 
-                    $.ajax({
+                   $("#listaFuenteF").html(htmlfuen);
+                   event.preventDefault(); 
+                    $.ajax(
+                    {
                         "url":base_url +"index.php/FuenteFinanciamiento/get_FuenteFinanciamiento",
                         type:"POST",
                         success:function(respuesta){
@@ -160,11 +166,19 @@ var listaRubroE=function()
                               htmlfuen +="<option value="+registros[i]["id_fuente_finan"]+"> "+registros[i]["nombre_fuente_finan"]+" </option>";   
                             };
                             $("#listaFuenteFinanc").html(htmlfuen);
+                            $("#listaFuenteF").html(htmlfuen);
+                            $('select[name=listaFuenteF]').val(valor);
+                            $('select[name=listaFuenteF]').change();
                             $('.selectpicker').selectpicker('refresh');       
                         }
                     });
                  }
  //Listar fuentes de financiamiento en el combobox  
+ 
+ 
+ 
+ 
+ 
 //-------------- FIN MANTENIMIENTO DE RUBRO DE  EJECUCION----------------------
 
 

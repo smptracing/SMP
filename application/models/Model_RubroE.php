@@ -59,15 +59,15 @@ else{
         }
     }
     //MODIFICAR DATOS DE LOS RUBROS
-    public function UpdateRubroE($id_rubro_ejecucion, $nombre_ejecucion)
+    public function UpdateRubroE($id_rubro,$data)
     {
-        $this->db->query("execute sp_Rubro_u '" . $id_rubro_ejecucion . "','" . $nombre_ejecucion . "'");
-        if ($this->db->affected_rows() > 0) {
+        $this->db->where('id_rubro',$id_rubro);
+        $this->db->update('RUBRO',$data);
+        if ($this->db->affected_rows()>0) {
             return true;
         } else {
             return false;
         }
-
     }
 
     //FIN MODIFICAR DATOS DE LOS RUBROS

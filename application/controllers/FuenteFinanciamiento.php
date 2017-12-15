@@ -46,7 +46,6 @@ class FuenteFinanciamiento extends CI_Controller
                 if($this->FuenteFinanciamiento_Model->AddFuenteFinanciamiento($f_data)!=0){
                     $flag=0;
                     $msg='Registro exitoso';      
-
                 }
                 else{
                     $flag=1;
