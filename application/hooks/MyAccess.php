@@ -148,6 +148,7 @@ function autorizar($url)
 
 //12345
       'bancoproyectos/Get_ubigeo_pip',
+      'bancoproyectos/eliminarModalidadPi',
       'bancoproyectos/editarUbicacionGeografica',
       'bancoproyectos/eliminarUbigeo',
       'bancoproyectos/listar_modalidad_ejec',

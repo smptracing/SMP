@@ -262,6 +262,25 @@ class bancoproyectos extends CI_Controller
             show_404();
         }
     }
+
+    public function eliminarModalidadPi()
+    {
+        if ($this->input->is_ajax_request()) 
+        {
+            $msg = array();
+
+            $id_rubro_pi=$this->input->post("id_modalidad");
+            $data=$this->bancoproyectos_modal->eliminarModalidadPi($id_rubro_pi);   
+            $msg=($data>0 ? (['proceso' => 'Correcto', 'mensaje' => 'Se elimino Correctamente la Modalidad de Ejecución']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado']));
+
+            $this->load->view('front/json/json_view', ['datos' => $msg]);
+        } 
+        else 
+        {
+            show_404();
+        }
+    }
+
     //listar Rubro
     public function listar_rubro()
     {

@@ -102,7 +102,7 @@
 					                        <button onclick="guardarCambiosCompromiso('<?=$compromiso->id_compromiso?>');"  data-toggle="tooltip" data-placement="top" title="Guardar compromiso" class="btn btn-default btnli"  type="button">G</button>
 					                        <button onclick="eliminarCompromiso('<?=$compromiso->id_compromiso?>',this);" data-toggle="tooltip" data-placement="top" title="Eliminar compromiso" class="btn btn-default btnli" type="button">-</button>
 					                        <button data-toggle="tooltip" data-placement="top" title="Agregar Responsable" onclick="agregarResponsable('<?=$compromiso->id_compromiso?>');" class="btn btn-default btnli" type="button">+</button>
-				                      	</div><b id="descripcionCompromiso<?=$compromiso->id_compromiso?>" style="color:#3498db;font-size:12px;text-transform:uppercase;" contenteditable><?=$compromiso->desc_compromiso?></b><b id="responsableCompromiso<?=$compromiso->id_compromiso?>"><?=$compromiso->resp_compromiso?></b>
+				                      	</div><b id="descripcionCompromiso<?=$compromiso->id_compromiso?>" style="color:#3498db;font-size:12px;text-transform:uppercase;" contenteditable><?=$compromiso->desc_compromiso?></b><b id="responsableCompromiso<?=$compromiso->id_compromiso?>">(Responsable: <?=$compromiso->resp_compromiso?>)</b>
 				                    </li>
 			                    	
 			                    <?php } ?>	                    	

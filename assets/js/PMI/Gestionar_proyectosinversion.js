@@ -371,9 +371,45 @@ var listarModalidadPI=function(id_pi)
     },
     "columns":[
         {"data":"nombre_modalidad_ejec"},
-        {"data":"fecha_modalidad_ejec_pi"}
+        {"data":"fecha_modalidad_ejec_pi"},
+        {"data":"id_modalidad_ejec_pi",render:function(data,type,row)
+            {
+                return "<button type='button' data-toggle='tooltip' class='btn btn-danger btn-xs' data-toggle='modal' onclick=eliminarModalidadPI("+data+",this)><i class='ace-icon fa fa-trash-o bigger-120'></i></button>";
+            }
+        }
     ],
     "language":idioma_espanol
+    });
+}
+
+var eliminarModalidadPI=function(codigo,element)
+{
+    swal({
+        title: "Se eliminará la Modalidad de Ejecución. ¿Realmente desea proseguir con la operación?",
+        text: "",
+        type: "warning",
+        showCancelButton: true,
+        cancelButtonText:"CANCELAR" ,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "SI,ELIMINAR",
+        closeOnConfirm: false
+    },
+    function(){
+        paginaAjaxJSON({ "id_modalidad" : codigo }, base_url+'index.php/bancoproyectos/eliminarModalidadPi', 'POST', null, function(objectJSON)
+        {
+          objectJSON=JSON.parse(objectJSON);
+
+          swal(
+          {
+            title: '',
+            text: objectJSON.mensaje,
+            type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
+          },
+          function(){});
+
+          $(element).parent().parent().remove();
+
+        }, false, true);
     });
 }
 

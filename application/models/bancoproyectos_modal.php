@@ -446,6 +446,13 @@ class bancoproyectos_modal extends CI_Model
 
     }
 
+    function eliminarModalidadPi($idModalidad)
+    {
+        $this->db->where('id_modalidad_ejec_pi',$idModalidad);
+        $this->db->delete('MODALIDAD_EJECUCION_PI');
+        return $this->db->affected_rows();
+    }
+
     public function getBancoProyecto() {
         return $this->db->get('PROYECTO_INVERSION')->result();
     }

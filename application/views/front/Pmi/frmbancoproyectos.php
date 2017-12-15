@@ -575,8 +575,9 @@
                     <table  id="Table_ModalidadPI" class="table   table-hover" >
                     <thead >
                        <tr>
-                         <th  ><i class="fa fa-thumb-tack"></i> Modalidad Ejecución</th>
-                         <th  ><i class="fa fa-thumb-tack"></i> Fecha</th>
+                         <th  >Modalidad Ejecución</th>
+                         <th  ></i> Fecha</th>
+                         <th  ></i> Opciones</th>
                       </tr>
                     </thead>
                     </table>
