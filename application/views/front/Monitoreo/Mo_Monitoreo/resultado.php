@@ -42,7 +42,7 @@
 			<div class="col-md-3 col-sm-6 col-xs-12">
 				<label for="control-label">Ejec. Fis. Programado:</label>
 				<div>
-					<input type="text" value="<?=$ejecucion->ejec_fisic_prog?>" autocomplete="off" class="form-control" readonly>				
+					<input type="text" id="txtEjFisProg" name="txtEjFisProg" value="<?=$ejecucion->ejec_fisic_prog?>" autocomplete="off" class="form-control" readonly>				
 				</div>
 			</div>
 			<div class="col-md-3 col-sm-6 col-xs-12">
@@ -221,6 +221,26 @@
 		{
 			return;
 		}
+
+		var mayor=false;
+
+		if($('#txtEjFisReal').val()>$('#txtEjFisProg').val())
+		{
+			mayor=true;
+		}
+
+		if(mayor)
+		{
+			swal(
+			{
+				title: '',
+				text: 'El Avance físico real no puede ser mayor al avance físico programado',
+				type: 'error'
+			},
+			function(){});
+
+			return;
+		}
 		var formData=new FormData($("#frmInsertarMonitoreo")[0]);
 		var resultado=$('#txtResultado').val().trim();
 		$.ajax({
@@ -233,16 +253,14 @@
 	        success:function(resp)
 	        {
 	        	resp = JSON.parse(resp);
-	        	console.log(resp);
 	        	((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje,"success") : swal(resp.proceso,resp.mensaje,"error"));	   
 	        	if(resp.proceso=='Correcto')
 	        	{
-	        		var htmlTemp ='<li><div class="btn-group  btn-group-xs"><button data-toggle="tooltip" data-placement="top" title="Guardar Resultado"  onclick="guardarCambiosMonitoreo('+resp.idMonitoreo+');" class="btn btn-default btnli" type="button">G</button><button data-toggle="tooltip" data-placement="top" title="Eliminar Resultado" class="btn btn-default btnli" type="button">-</button><button  data-toggle="tooltip" data-placement="top" title="Agregar Observación" onclick="agregarObservacion('+resp.idMonitoreo+',$(this).parent().parent());" class="btn btn-default btnli" type="button">+</button></div>';
+	        		var htmlTemp ='<li><div class="btn-group  btn-group-xs"><button data-toggle="tooltip" data-placement="top" title="Guardar Resultado"  onclick="guardarCambiosMonitoreo('+resp.idMonitoreo+');" class="btn btn-default btnli" type="button">G</button><button  onclick="eliminarMonitoreo('+resp.idMonitoreo+',this);" data-toggle="tooltip" data-placement="top" title="Eliminar Resultado" class="btn btn-default btnli" type="button">-</button><button  data-toggle="tooltip" data-placement="top" title="Agregar Observación" onclick="agregarObservacion('+resp.idMonitoreo+',$(this).parent().parent());" class="btn btn-default btnli" type="button">+</button></div>';
 	        		htmlTemp+='<b id="descripcionMonitoreo'+resp.idMonitoreo+'" style="color:#1e8c75; font-size:12px; text-transform: uppercase;" contenteditable>'+resultado+'</b><ul style="padding-left: 27px;"></ul></li>';
 	        		$('#Resultado').append(htmlTemp);
 	        	}
 	        	((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje,"success") : swal(resp.proceso,resp.mensaje,"error"));	        		        		        	
-	        	$('#frmInsertarMonitoreo')[0].reset();
 	        }
     	});
 	}
