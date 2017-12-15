@@ -263,6 +263,7 @@ function autorizar($url)
       'Personal/GetEspecilidad',
       'ProgramaPresupuestal/AddProgramaP',
       'ProgramaPresupuestal/UpdateProgramaP',
+      'ProgramaPresupuestal/EliminarProgramaP',
       'Sector/AddSector',
       'Sector/UpdateSector',
       'Sector/EliminarSector',
