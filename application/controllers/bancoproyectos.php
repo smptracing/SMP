@@ -114,7 +114,7 @@ class bancoproyectos extends CI_Controller
             $cbxUnidadEjecutora  = $this->input->post("cbxUnidadEjecutora");
             $cbxNatI             = null;
             $cbxTipologiaInv     = null;
-            $cbxTipoInv          = $this->input->post("cbx");
+            $cbxTipoInv          = 2;
             $cbxGrupoFunc        = $this->input->post("cbxGrupoFunc");
             $cbxNivelGob         = $this->input->post("cbxNivelGob");
             $cbxProgramaPres     = null;
@@ -265,17 +265,17 @@ class bancoproyectos extends CI_Controller
 
     public function eliminarModalidadPi()
     {
-        if ($this->input->is_ajax_request()) 
+        if ($this->input->is_ajax_request())
         {
             $msg = array();
 
             $id_rubro_pi=$this->input->post("id_modalidad");
-            $data=$this->bancoproyectos_modal->eliminarModalidadPi($id_rubro_pi);   
+            $data=$this->bancoproyectos_modal->eliminarModalidadPi($id_rubro_pi);
             $msg=($data>0 ? (['proceso' => 'Correcto', 'mensaje' => 'Se elimino Correctamente la Modalidad de Ejecución']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado']));
 
             $this->load->view('front/json/json_view', ['datos' => $msg]);
-        } 
-        else 
+        }
+        else
         {
             show_404();
         }
@@ -294,7 +294,7 @@ class bancoproyectos extends CI_Controller
     //listar  de los estados de un py para poner en el combobox
     public function listar_estado()
     {
-        if ($this->input->is_ajax_request()) 
+        if ($this->input->is_ajax_request())
         {
             $flat  = "R";
             $datos = $this->bancoproyectos_modal->listar_estado($flat);
@@ -306,14 +306,14 @@ class bancoproyectos extends CI_Controller
     //listar ubigeo de un proyecto
     public function Get_ubigeo_pip()
     {
-        if ($this->input->is_ajax_request()) 
+        if ($this->input->is_ajax_request())
         {
             $flat  = "listar_ubigeo";
             $id_pi = $this->input->post("id_pi");
             $data  = $this->bancoproyectos_modal->Get_ubigeo_pip($flat, $id_pi);
             echo json_encode(array('data' => $data));
         }
-        else 
+        else
         {
             show_404();
         }

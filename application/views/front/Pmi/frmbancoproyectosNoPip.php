@@ -59,7 +59,7 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-          Registrar proyectos de inversión </h4>
+            Registrar No PIP</h4>
         </div>
         <div class="modal-body">
         <div class="row">
@@ -74,23 +74,22 @@
                                                   <input id="txtCodigoUnico" name="txtCodigoUnico"  class="form-control col-md-7 col-xs-5" placeholder="Codigo Unico" type="text" maxlength="10">
                                              </div>
                                       </div>
-                                        <div class="col-md-4">
-
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <label  for="name">Tipo inversion<span class="required">*</span>
-                                        </label>
-                                                <select id="cbx" name="cbx" class="selectpicker" >
-                                                    <option selected value="2">NO PIP</option>
-                                              </select>
-                                         </div>
+                                      <div class="col-md-4">
+                                          <div class="col-md-6 col-sm-6 col-xs-12">
+                                           <label  for="textbox"><span class="required">Ciclo Inversión</span>
+                                            </label>
+                                          <select id="cbxEstCicInv_" name="cbxEstCicInv_" class="selectpicker"  title="Elija Ciclo de Inversión" >
+                                          </select>
+                                          </div>
                                       </div>
                                       <div class="col-md-4">
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                             <label  for="textbox"><span class="required">Ciclo Inversión</span>
-                                              </label>
-                                            <select id="cbxEstCicInv_" name="cbxEstCicInv_" class="selectpicker"  title="Elija Ciclo de Inversión" >
+                                        <div class="col-md-6 col-sm-6 col-xs-12" style="display: none">
+                                            <label  for="name">Tipo inversion<span class="required">*</span>
+                                            </label>
+                                            <select id="cbx" name="cbx" class="selectpicker" >
+                                              <option selected value="2">NO PIP</option>
                                             </select>
-                                            </div>
+                                         </div>
                                       </div>
                                     </div>
 
@@ -262,7 +261,7 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-          Editar proyectos de inversión </h4>
+          Editar No PIP</h4>
         </div>
         <div class="modal-body">
         <div class="row">
@@ -278,19 +277,19 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <label  for="name">Tipo inversión<span class="required">*</span></label>
-                            <select id="cbx_tipo_no_pip_m" name="cbx_tipo_no_pip_m" class="selectpicker" >
-                                <option selected value="2">NO PIP</option>
-                            </select>
-                        </div>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                          <label  for="textbox"><span class="required">Ciclo Inversión</span></label>
+                              <select id="cbxEstCicInv_m" name="cbxEstCicInv_m" class="selectpicker"  >
+                              </select>
+                      </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <label  for="textbox"><span class="required">Ciclo Inversión</span></label>
-                                <select id="cbxEstCicInv_m" name="cbxEstCicInv_m" class="selectpicker"  >
-                                </select>
-                        </div>
+                      <div class="col-md-6 col-sm-6 col-xs-12" style="display: none">
+                          <label  for="name">Tipo inversión<span class="required">*</span></label>
+                          <select id="cbx_tipo_no_pip_m" name="cbx_tipo_no_pip_m" class="selectpicker" >
+                              <option selected value="2">NO PIP</option>
+                          </select>
+                      </div>
                     </div>
                 </div>
                 <div class="row">

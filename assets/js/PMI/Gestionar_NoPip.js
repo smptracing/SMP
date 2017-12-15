@@ -472,7 +472,7 @@ var ModificarUbigeoPi=function(id_ubigeo_pi)
                       listarModalidadEjecucion(id_modalidad_ejec);
                       listarTipologiaInversion(id_tipologia_inv);
                       listarProgramaPresupuestal(id_programa_pres);
-                      listar_TipologiaNoPipRegistro(id_tipo_nopip);
+                      listar_TipologiaNoPipRegistro(id_tipo_nopip); 
                       $("#txt_idNo_Pip").val(data.id_pi);
 
                       $("#cbx_estado_m").val(estado_pi);
