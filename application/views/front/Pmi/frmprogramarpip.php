@@ -35,7 +35,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                                 <div class="x_panel">
                                   <div class="x_title">
-                                    <h2>PROYECTOS<small></small></h2>
+                                    <h2>Programación de PIP<small></small></h2>
                                     <div class="clearfix"></div>
                                   </div>
                                   <div class="x_content">
@@ -193,7 +193,7 @@
                             </div>
                              <div class="item form-group">
                                <div class="col-md-4">
-                               <label>Cartera </label> 
+                               <label>Cartera </label>
                                     <select  id="Cbx_AnioCartera" selected name="Cbx_AnioCartera" class="selectpicker"></select>
                                     <!--<input type="text" id="Aniocartera" value="<?=(isset($anio) ? $anio : date('Y'))?>">-->
                                 </div>
@@ -260,7 +260,7 @@
                                       <input  class="form-control" id="txt_anio3" name="txt_anio3" type="text" />
                                     </div>
 
-                         
+
                                 </div>
                                 <div class="row item " id='ct_anio'>
                                    <h6><i class="fa fa-list"></i><b> Monnnto Operación y Mantenimiento</b></h6>
@@ -277,12 +277,12 @@
                                       <input  class="form-control" id="txt_anio6" name="txt_anio6" type="text" />
                                     </div>
 
-                         
+
                                 </div>
-                               
-                                 <div class="row item " 
+
+                                 <div class="row item "
                                <div class="item form-group">
-                                   
+
                                     <div class="col-md-12">
                                         <button  id="send_addProgramacion"  type='button' class="btn btn-success">
                                              <span class="glyphicon glyphicon-floppy-saved"></span> Guardar
@@ -548,7 +548,7 @@
                                       <input  class="form-control" id="txt_anio3_" name="txt_anio3_" type="text" required="required">
                                     </div>
 
-                                   
+
                                  </div>
                                  <div class="row item " id='ct_anio_'>
                                   <h6><i class="fa fa-list"></i><b> Monto Operación y Mantenimiento</b></h6>
@@ -565,7 +565,7 @@
                                       <input  class="form-control" id="txt_anio6_" name="txt_anio6_" type="text" />
                                     </div>
 
-                         
+
                                 </div>
                                   <div class="row item ">
                                  <div class="col-md-12">
@@ -573,7 +573,7 @@
                                        <button  id="send_addProgramacion_operacion_mantenieminto" type="button" class="btn btn-success">
                                              <span class="glyphicon glyphicon-floppy-saved"></span> Guardar
                                         </button>
-                                        
+
                                     </div>
                                   </div>
 
@@ -627,28 +627,28 @@
   }
 </style>
 <script>
-function calculoFecha(fecha1,fecha2) {               
+function calculoFecha(fecha1,fecha2) {
   var fechaInicio = new Date(fecha1).getTime();
   var fechaFin    = new Date(fecha2).getTime();
-  var tiempo = fechaFin-fechaInicio; 
-  var dias = Math.floor(tiempo / (1000 * 60 * 60 * 24));            
-  return dias;       
+  var tiempo = fechaFin-fechaInicio;
+  var dias = Math.floor(tiempo / (1000 * 60 * 60 * 24));
+  return dias;
 }
 $(function(){
 
   $('#Ventana_Programar').on('hidden.bs.modal', function () {
-      
-      $('#form_AddProgramacion').each(function(){ 
+
+      $('#form_AddProgramacion').each(function(){
         this.reset();
-      });  
+      });
       $('.selectpicker').selectpicker('refresh');
       $('#form_AddProgramacion').data('formValidation').resetForm();
   })
   $('#Ventana_Programar_operacion_mantenimiento').on('hidden.bs.modal', function () {
-      
-      $('#form_AddProgramacion_operacion_mantenieminto').each(function(){ 
+
+      $('#form_AddProgramacion_operacion_mantenieminto').each(function(){
         this.reset();
-      });  
+      });
       $('.selectpicker').selectpicker('refresh');
       $('#form_AddProgramacion_operacion_mantenieminto').data('formValidation').resetForm();
   })
@@ -674,9 +674,9 @@ $(function(){
                 $("#lb_anio3").html(anio+3);
                 $("#lb_anio4").html(anio+1);
                 $("#lb_anio5").html(anio+2);
-                $("#lb_anio6").html(anio+3); 
+                $("#lb_anio6").html(anio+3);
             }
-        });   
+        });
     }
   });
   $("body").on("change","#Cbx_AnioCartera_",function(e){
@@ -703,9 +703,9 @@ $(function(){
                 $("#lb_anio5_").html(anio+2);
                 $("#lb_anio6_").html(anio+3);
             }
-        });   
+        });
     }
-      
-  }); 
-}); 
+
+  });
+});
 </script>

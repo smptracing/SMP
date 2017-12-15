@@ -1,5 +1,5 @@
 <style>
-  
+
 
   #table-ProyectoInversionProgramado > tbody > tr > td
   {
@@ -22,7 +22,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>PROYECTOS<small></small></h2>
+                    <h2>Programación de No PIP<small></small></h2>
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
@@ -40,7 +40,7 @@
                                     <th style="width: 12%">&nbsp;</th>
                                 </tr>
                             </thead>
-                        </table>                            
+                        </table>
                     </div>
                 </div>
             </div>
@@ -309,19 +309,19 @@
   }
 </style>
 <script>
-function calculoFecha(fecha1,fecha2) {               
+function calculoFecha(fecha1,fecha2) {
   var fechaInicio = new Date(fecha1).getTime();
   var fechaFin    = new Date(fecha2).getTime();
-  var tiempo = fechaFin-fechaInicio; 
-  var dias = Math.floor(tiempo / (1000 * 60 * 60 * 24));            
-  return dias;       
+  var tiempo = fechaFin-fechaInicio;
+  var dias = Math.floor(tiempo / (1000 * 60 * 60 * 24));
+  return dias;
 }
 $(function(){
   $('#Ventana_Programar').on('hidden.bs.modal', function () {
-      
-      $('#form_AddProgramacion').each(function(){ 
+
+      $('#form_AddProgramacion').each(function(){
         this.reset();
-      });  
+      });
       $('.selectpicker').selectpicker('refresh');
       $('#form_AddProgramacion').data('formValidation').resetForm();
   })
@@ -342,8 +342,8 @@ $(function(){
                   $("#lb_addProgramacion").html("");
                 }
             }
-        });   
+        });
     }
   });
-}); 
+});
 </script>
