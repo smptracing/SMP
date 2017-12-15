@@ -590,7 +590,11 @@ function autorizar($url)
       'NoPipProgramados/insertar',
       'NoPipProgramados/editar',
       'PrincipalReportes/detalleOrdenExpSiaf',
-      'PrincipalReportes/detallePorCadaNumOrden'
+      'PrincipalReportes/detallePorCadaNumOrden',
+      'FEformulacion/Feformulacion',
+      'EvaluacionFE/FeEvaluacion',
+      'FEformulacion/FeAprobado',
+      'FEformulacion/FeViabilizado'
     );
     foreach( $lista_API as $value ) {
       array_push($arrayPermitido, $value);

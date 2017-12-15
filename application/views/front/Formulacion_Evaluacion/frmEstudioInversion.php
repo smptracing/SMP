@@ -8,7 +8,7 @@
              <!--inicio de pestaña configurtacion-->
                 <div class="x_title">
                      <h2><b>ESTUDIO DE PREINVERSIÓN </b></h2>
-                                    
+
                       <div class="clearfix"></div>
                 </div>
               <!--final  de pestaña configurtacion-->
@@ -37,12 +37,12 @@
                                                           </button>
                                                           <div class="pull-right tableTools-container-EstudioInversion">
                                                            </div>
-                                                                                                                       
+
                                                       </div>
                                                       <!--inicio de la tabla estado -->
                                                         <!--inicio  de icono de reporte -->
                                                         <div class="clearfix">
-                                                           
+
                                                         </div>
                                                       <!--fin  de icono de reporte -->
                                                       <div class="x_content" >
@@ -96,7 +96,7 @@
          <div class="row">
                 <div class="col-xs-12">
             <form class="form-horizontal " id="form-AddEstudioInversion" action="<?php echo base_url(); ?>Estudio_Inversion/AddEstudioInversion" method="POST">
-                     
+
                     <br>
 
                           <div class="row ">
@@ -108,7 +108,7 @@
                            <div class="col-md-12">
                                 <div class=".col-xs-12 .col-md-12">
                                <div class="panel panel-default">
-                             
+
                                       <div class="panel-body">
                                       <form class="form-horizontal " id="form-AddEstudioInversion" action="<?php echo base_url(); ?>Estudio_Inversion/AddEstudioInversion" method="POST">
 
@@ -564,7 +564,7 @@
     });
 
     $('.modal').on('hidden.bs.modal', function()
-    { 
+    {
         $(this).find('form')[0].reset(); //para borrar todos los datos que tenga los input, textareas, select.
         $("label.error").remove();  //lo utilice para borrar la etiqueta de error del jquery validate
     });
@@ -572,15 +572,15 @@
     var format = function(num)
     {
         var str = num.replace("", ""), parts = false, output = [], i = 1, formatted = null;
-        if(str.indexOf(".") > 0) 
+        if(str.indexOf(".") > 0)
         {
             parts = str.split(".");
             str = parts[0];
         }
         str = str.split("").reverse();
-        for(var j = 0, len = str.length; j < len; j++) 
+        for(var j = 0, len = str.length; j < len; j++)
         {
-            if(str[j] != ",") 
+            if(str[j] != ",")
             {
                 output.push(str[j]);
                 if(i%3 == 0 && j < (len - 1))

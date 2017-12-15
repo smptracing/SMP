@@ -39,7 +39,7 @@ class EvaluacionFE extends CI_Controller
     //LISTAR A EVALUADORES
     function GetEvaluadores()
     {
-        if ($this->input->is_ajax_request()) 
+        if ($this->input->is_ajax_request())
         {
         $desc_cargo = "Evaluador";
         $datos=$this->Model_EvaluacionFE->GetEvaluadores($desc_cargo);
@@ -52,8 +52,9 @@ class EvaluacionFE extends CI_Controller
     }
     //FIN LISTAR EVALUADORES
     //LISTAR DETALLE DE LA SITUACIN ACTUAL DE LA PIP
-    public function FeEvaluacion($id_est_inve)
+    public function FeEvaluacion()
     {
+        $id_est_inve = isset($_GET['id_est_inv']) ? $_GET['id_est_inv'] : null;
         $data = array('id_est_inve' => $id_est_inve);
         $this->session->set_userdata($data);
         $this->_load_layout('Front/Formulacion_Evaluacion/frmEvaluacionFE');
