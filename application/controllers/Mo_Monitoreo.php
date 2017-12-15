@@ -77,6 +77,13 @@ class Mo_Monitoreo extends CI_Controller
         {
             $msg = array();
 
+            $ejecucion=$this->Model_Mo_Ejecucion_Actividad->verprogramacion($this->input->post('hdIdEjecucion'));
+            if($this->input->post('txtEjFisReal')>$ejecucion->ejec_fisic_prog)
+            {
+                $msg = (['proceso' => 'Error', 'mensaje' => 'El Avance físico real no puede ser mayor al avance físico programado']);
+                echo json_encode($msg);exit;
+            }
+
             $this->db->trans_start();
 
             $data['ejec_fisic_real']=$this->input->post('txtEjFisReal');

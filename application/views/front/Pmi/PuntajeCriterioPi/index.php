@@ -84,19 +84,19 @@
 			buttons: [
 			  {
 				"extend": "excel",
-				"text": "<i class='fa fa-file-excel-o bigger-110 green'></i> <span class='hidden'>Export to Excel</span>",
+				"text": "<i class='fa fa-file-excel-o bigger-110 green'></i> <span>Excel</span>",
 				"className": "btn btn-white btn-primary btn-bold"
 			  },
 			  {
 				"extend": "pdf",
-				"text": "<i class='fa fa-file-pdf-o bigger-110 red'></i> <span class='hidden'>Export to PDF</span>",
+				"text": "<i class='fa fa-file-pdf-o bigger-110 red'></i> <span>PDF</span>",
 				"className": "btn btn-white btn-primary btn-bold",
 				"pageSize": 'LEGAL',
 				orientation: 'landscape',
 			  },
 			  {
 				"extend": "print",
-				"text": "<i class='fa fa-print bigger-110 grey'></i> <span class='hidden'>Print</span>",
+				"text": "<i class='fa fa-print bigger-110 grey'></i> <span>Imprimir</span>",
 				"className": "btn btn-white btn-primary btn-bold",
 				autoPrint: false,
 				message: 'This print was produced using the Print button for DataTables'
