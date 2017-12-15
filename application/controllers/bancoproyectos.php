@@ -275,7 +275,8 @@ class bancoproyectos extends CI_Controller
     //listar  de los estados de un py para poner en el combobox
     public function listar_estado()
     {
-        if ($this->input->is_ajax_request()) {
+        if ($this->input->is_ajax_request()) 
+        {
             $flat  = "R";
             $datos = $this->bancoproyectos_modal->listar_estado($flat);
             echo json_encode($datos);
@@ -286,12 +287,15 @@ class bancoproyectos extends CI_Controller
     //listar ubigeo de un proyecto
     public function Get_ubigeo_pip()
     {
-        if ($this->input->is_ajax_request()) {
+        if ($this->input->is_ajax_request()) 
+        {
             $flat  = "listar_ubigeo";
             $id_pi = $this->input->post("id_pi");
             $data  = $this->bancoproyectos_modal->Get_ubigeo_pip($flat, $id_pi);
             echo json_encode(array('data' => $data));
-        } else {
+        }
+        else 
+        {
             show_404();
         }
     }
@@ -597,19 +601,12 @@ class bancoproyectos extends CI_Controller
             $flat  = "listar_operacion_mantenimiento";
             $id_pi = $this->input->post("id_pi");
             $data  = $this->bancoproyectos_modal->Get_OperacionMantenimiento($flat, $id_pi);
-            if($data == false)
+            foreach ($data as $key => $value)
             {
-                echo json_encode(array('data' => $data));
+                $value->monto_operacion = a_number_format($value->monto_operacion , 2, '.',",",3);
+                $value->monto_mantenimiento = a_number_format($value->monto_mantenimiento , 2, '.',",",3);
             }
-            else
-            {
-                foreach ($data as $key => $value)
-                {
-                    $value->monto_operacion = a_number_format($value->monto_operacion , 2, '.',",",3);
-                    $value->monto_mantenimiento = a_number_format($value->monto_mantenimiento , 2, '.',",",3);
-                }
-                echo json_encode(array('data' => $data));
-            }
+            echo json_encode(array('data' => $data));
         }
         else
         {

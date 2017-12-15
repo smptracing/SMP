@@ -24,8 +24,6 @@ class bancoproyectos_modal extends CI_Model
             'filasAfectadas' => $this->db->affected_rows(),
             'ultimoId' => $this->db->insert_id(),
         );
-        //return $this->db->affected_rows();
-        //return $this->db->affected_rows();
     }
 
 
@@ -282,11 +280,7 @@ class bancoproyectos_modal extends CI_Model
     {
         $Get_ubigeo_pip = $this->db->query("execute sp_Gestionar_UbigeoPI'" . $flat . "',@id_pi='"
             . $id_pi . "'");
-        if ($Get_ubigeo_pip->num_rows() > 0) {
-            return $Get_ubigeo_pip->result();
-        } else {
-            return false;
-        }
+        return $Get_ubigeo_pip->result();
     }
     public function eliminarUbigeo($id_ubigeo_pi)
     {
@@ -347,11 +341,8 @@ class bancoproyectos_modal extends CI_Model
     public function listar_estado($flat)
     {
         $listar_estado = $this->db->query("execute sp_Gestionar_EstadoCiclo'" . $flat . "'");
-        if ($listar_estado->num_rows() > 0) {
-            return $listar_estado->result();
-        } else {
-            return false;
-        }
+        return $listar_estado->result();
+
     }
     //listar general modalidad ejecucion PI
     public function listar_modalidad_ejec($flat, $id_pi)
@@ -425,14 +416,7 @@ class bancoproyectos_modal extends CI_Model
         $Get_TipoNoPip = $this->db->query("execute sp_Gestionar_OperacionMantenimientoPI
             @opcion='" . $flat . "',
             @id_pi='" . $id_pi . "'");
-        if ($Get_TipoNoPip->num_rows() > 0)
-        {
-            return $Get_TipoNoPip->result();
-        }
-        else
-        {
-            return false;
-        }
+        return $Get_TipoNoPip->result();
     }
 
     public function eliminarOperacionMantenimiento($id_operacion_mantenimiento_pi)
