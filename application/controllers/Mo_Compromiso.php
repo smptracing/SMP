@@ -44,5 +44,14 @@ class Mo_Compromiso extends CI_Controller
         $data = $this->Model_Mo_Compromiso->eliminar($this->input->post('idCompromiso'));
         $msg = ($data>0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
         echo json_encode($msg);exit;
+    }
+
+    function asignarresponsable()
+    {
+        $msg = array();
+        $u_data['resp_compromiso']=$this->input->post('responsable');
+        $data = $this->Model_Mo_Compromiso->editar($u_data,$this->input->post('idCompromiso'));
+        $msg = ($data>0 ? (['proceso' => 'Correcto', 'mensaje' => 'el responsable fue registrado correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
+        echo json_encode($msg);exit;
     }   
 }

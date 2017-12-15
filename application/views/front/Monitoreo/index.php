@@ -4,36 +4,29 @@
 		list-style-type: none;
     	margin: 0;
     	padding: 0;
-
 	}
 	.titulo
 	{
 		cursor: pointer;
 	}
-	.prod_color li {
-    margin: 0 0px;
-}
-.list-inline>li {
-    display: inline-block;
-    padding-right: 2px;
-    padding-left: 2px;
-}
-.prod_color .color {
-    border: 1px black !important;
-}
-/*
-	.prod_color .color {
-    width: 25px;
-    height: 25px;
-    border: 2px black !important;
-    padding: 2px;
-    border-radius: 50px;
-}
-.list-inline>li {
-    display: inline-block;
-}*/
-.bg-off
-{background:#6f6f6f !important;border:1px solid #6f6f6f !important;color:#fff}
+	.prod_color li
+	{
+    	margin: 0 0px;
+	}
+	.list-inline>li 
+	{
+	    display: inline-block;
+	    padding-right: 2px;
+	    padding-left: 2px;
+	}
+	.prod_color .color 
+	{
+	    border: 1px black !important;
+	}
+	.bg-off
+	{
+		background:#6f6f6f !important;border:1px solid #6f6f6f !important;color:#fff
+	}
 </style>
 <div class="right_col" role="main">
 	<div>
@@ -64,6 +57,9 @@
 										<td><?=$value->nombre_pi?></td>
 										<td style="text-align: right;"><?=a_number_format($value->costo_pi , 2, '.',",",3)?></td>
 										<td>
+											<?php if($value->porcentaje=='SinProgramacion') { ?>
+											No se programo ninguna actividad para este proyecto.
+											<?php } else { ?>
 											<ul class="list-inline prod_color">
 					                          	<li>
 					                            	<div data-toggle="tooltip" data-placement="top" title="<?php echo ($value->porcentaje<=50 ? 'Alerta: Avance al '.a_number_format($value->porcentaje , 2, '.',",",3).' %' : '')?>" class= "color <?php echo ($value->porcentaje<=50 ? 'bg-red titulo' : 'bg-off')?>"></div>
@@ -75,6 +71,7 @@
 					                            	<div data-toggle="tooltip" data-placement="top" title="<?php echo ($value->porcentaje==100 ? 'Completo: Avance al '.a_number_format($value->porcentaje , 2, '.',",",3).' %' : '' )?>" class="color <?php echo ($value->porcentaje==100 ? 'bg-green titulo' : 'bg-off')?>"></div>
 					                          	</li>
 					                        </ul>
+					                        <?php } ?>
 										</td>
 										<td>
 											<a onclick="paginaAjaxDialogo('monitoreo', 'Monitorear Proyecto',{ id_pi: '<?=$value->id_pi?>' }, base_url+'index.php/Mo_Monitoreo/index', 'GET', null, null, false, true);return false;" role="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top" title="Monitoreo"><span class="fa fa-search-plus"></span></a>

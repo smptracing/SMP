@@ -144,6 +144,7 @@ function autorizar($url)
       'Mo_Compromiso/insertar',
       'Mo_Compromiso/editar',
       'Mo_Compromiso/eliminar',
+      'Mo_Compromiso/asignarresponsable',
 
       'CarteraInversion/EditCartera',
       'CarteraInversion/AddCartera',

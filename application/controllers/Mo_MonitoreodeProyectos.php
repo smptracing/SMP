@@ -3,7 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Mo_MonitoreodeProyectos extends CI_Controller 
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -19,14 +18,13 @@ class Mo_MonitoreodeProyectos extends CI_Controller
         foreach ($listaProyecto as $key => $value) 
         {
             $montos = $this->Model_Mo_Producto->ReporteAvanceFisico(date('Y'),$value->id_pi);
-            //$value->porcentaje = $montos;
-            $porcentaje = ($montos[0]->EReal*100)/$montos[0]->EProg;
-            $value->porcentaje = $porcentaje;
+            $value->porcentaje ='SinProgramacion';
+            if($montos[0]->EProg>0)
+            {
+                $porcentaje = ($montos[0]->EReal*100)/$montos[0]->EProg;
+                $value->porcentaje = $porcentaje;
+            }            
         }
-        /*echo "<pre>";
-        var_dump($listaProyecto);
-        echo "</pre>";
-        exit;*/
 
         $this->load->view('layout/MONITOREO/header');
         $this->load->view('front/Monitoreo/index',['listaProyecto' => $listaProyecto]);
