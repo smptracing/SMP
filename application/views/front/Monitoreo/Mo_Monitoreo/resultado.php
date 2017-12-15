@@ -224,7 +224,7 @@
 		var resultado=$('#txtResultado').val().trim();
 		$.ajax({
 	        type:"POST",
-	        url:base_url+"index.php/Mo_Monitoreo/Insertar",
+	        url:base_url+"index.php/Mo_Monitoreo/insertar",
 	        data: formData,
 	        cache: false,
 	        contentType:false,
@@ -232,6 +232,7 @@
 	        success:function(resp)
 	        {
 	        	resp = JSON.parse(resp);
+	        	console.log(resp);
 	        	((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje,"success") : swal(resp.proceso,resp.mensaje,"error"));	   
 	        	if(resp.proceso=='Correcto')
 	        	{
@@ -245,7 +246,7 @@
     	});
 	}
 
-	function guardarCambiosMonitoreo(codigoMonitoreo)
+	/*function guardarCambiosMonitoreo(codigoMonitoreo)
 	{
 		if($('#descripcionMonitoreo'+codigoMonitoreo).text().trim()=='')
 		{
@@ -515,6 +516,6 @@
 
 			}, false, true);
         });
-	}
+	}*/
 
 </script>

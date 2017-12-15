@@ -16,6 +16,18 @@ class Mo_MonitoreodeProyectos extends CI_Controller
     function index()
     {
         $listaProyecto = $this->Model_Mo_Producto->listaProyecto();
+        foreach ($listaProyecto as $key => $value) 
+        {
+            $montos = $this->Model_Mo_Producto->ReporteAvanceFisico(date('Y'),$value->id_pi);
+            //$value->porcentaje = $montos;
+            $porcentaje = ($montos[0]->EReal*100)/$montos[0]->EProg;
+            $value->porcentaje = $porcentaje;
+        }
+        /*echo "<pre>";
+        var_dump($listaProyecto);
+        echo "</pre>";
+        exit;*/
+
         $this->load->view('layout/MONITOREO/header');
         $this->load->view('front/Monitoreo/index',['listaProyecto' => $listaProyecto]);
         $this->load->view('layout/MONITOREO/footer');
