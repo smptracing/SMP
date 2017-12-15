@@ -1,13 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Mo_Observacion extends CI_Controller 
+class Mo_Compromiso extends CI_Controller 
 {
 
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Model_Mo_Observacion');
+        $this->load->model('Model_Mo_Compromiso');
     }
 
     function insertar()
@@ -16,13 +16,13 @@ class Mo_Observacion extends CI_Controller
         {
             $msg = array();
 
-            $c_data['desc_observacion']=$this->input->post('descripcionObservacion');
+            $c_data['desc_compromiso']=$this->input->post('descripcionCompromiso');
             $c_data['fecha_registro']=date('Y-m-d');
-            $c_data['id_monitoreo']=$this->input->post('idMonitoreo');
+            $c_data['id_observacion']=$this->input->post('idObservacion');
 
-            $idObservacion = $this->Model_Mo_Observacion->insertar($c_data);
+            $idCompromiso = $this->Model_Mo_Compromiso->insertar($c_data);
 
-            $msg = ($idObservacion != '' || $idObservacion != NULL ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente', 'idObservacion' =>$idObservacion]) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
+            $msg = ($idCompromiso != '' || $idCompromiso != NULL ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente', 'idCompromiso' =>$idCompromiso]) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
 
             echo json_encode($msg);exit;
         }
@@ -31,9 +31,9 @@ class Mo_Observacion extends CI_Controller
     function editar()
     {
         $msg = array();
-        $u_data['desc_observacion']=$this->input->post('descripcionObservacion');
+        $u_data['desc_compromiso']=$this->input->post('descripcionObservacion');
         $u_data['fecha_modificacion']=date('Y-m-d');
-        $data = $this->Model_Mo_Observacion->editar($u_data,$this->input->post('idObservacion'));
+        $data = $this->Model_Mo_Compromiso->editar($u_data,$this->input->post('idCompromiso'));
         $msg = ($data>0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
         echo json_encode($msg);exit;
     }
@@ -41,9 +41,8 @@ class Mo_Observacion extends CI_Controller
     function eliminar()
     {
         $msg = array();
-        $data = $this->Model_Mo_Observacion->eliminar($this->input->post('idObservacion'));
+        $data = $this->Model_Mo_Compromiso->eliminar($this->input->post('idCompromiso'));
         $msg = ($data>0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
         echo json_encode($msg);exit;
-
-    }
+    }   
 }

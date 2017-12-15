@@ -49,22 +49,22 @@ class Estudio_Inversion extends CI_Controller
 
     {
 
-        if ($this->input->is_ajax_request()) 
+        if ($this->input->is_ajax_request())
         {
             $id_Pi=$this->input->post('id_Pi');
             $datos = $this->Estudio_Inversion_Model->get_listaproyectosCargar($id_Pi);
-            foreach ($datos as $key => $value) 
+            foreach ($datos as $key => $value)
             {
                 $value->costo_pi = a_number_format($value->costo_pi, 2, '.',",",3);
             }
             echo json_encode($datos);
-        } 
-        else 
+        }
+        else
         {
             show_404();
         }
     }
-  
+
     public function get_UnidadFormuladora() //mostra ESTADO INVERSION
 
     {
@@ -250,12 +250,12 @@ class Estudio_Inversion extends CI_Controller
         }
     }
 
-    
+
     //añadir documentos ala estudio de invserion
     public function AddDocumentosEstudio()
     {
 
-        if ($this->input->is_ajax_request()) 
+        if ($this->input->is_ajax_request())
         {
 
             // echo  $txt_Cartera;

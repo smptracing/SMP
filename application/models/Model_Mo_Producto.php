@@ -40,6 +40,19 @@ class Model_Mo_Producto extends CI_Model
 		return $query->result();
 	}
 
+	function ReporteAvanceFisico($anio,$idPi)
+	{
+		$this->db->select('sum(MO_EJECUCION_ACTIVIDAD.ejec_fisic_prog) as EProg, sum(MO_EJECUCION_ACTIVIDAD.ejec_fisic_real) as EReal ');
+		$this->db->from('MO_EJECUCION_ACTIVIDAD');
+		$this->db->join('MO_ACTIVIDAD','MO_EJECUCION_ACTIVIDAD.id_actividad=MO_ACTIVIDAD.id_actividad');
+		$this->db->join('MO_PRODUCTO','MO_ACTIVIDAD.id_producto=MO_PRODUCTO.id_producto');
+		$this->db->where('MO_EJECUCION_ACTIVIDAD.anio_ejec',$anio);
+		$this->db->where('MO_PRODUCTO.id_pi',$idPi);
+		//$this->db->group_by('MO_PRODUCTO.id_pi');
+		$query = $this->db->get();
+		return $query->result();
+	}
+
 	function listaProducto($idpi)
 	{
 		$this->db->select('MO_PRODUCTO.*');

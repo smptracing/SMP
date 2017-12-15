@@ -132,7 +132,7 @@ var listarestudiocombo=function(valor){
              });
 
              $("#lista_unid_form").change(function(){
-               
+
              });
               $("#lista_unid_ejec").change(function(){
                  listarpersonascombo();
@@ -144,7 +144,7 @@ var listarestudiocombo=function(valor){
                    {
                    }else
                    {
-                       $.ajax({ 
+                       $.ajax({
                             type:"POST",
                            "url":base_url+"index.php/Estudio_Inversion/get_listaproyectosCargar",
                             data:{"id_Pi":id_Pi},
@@ -152,26 +152,26 @@ var listarestudiocombo=function(valor){
                             success:function(resp){
                               $.each(resp,function(index,element)
                               {
-                                   
-                               
+
+
 
                                    $("#txtnombres").val(element.nombre_pi);
                                    $("#txtCodigoUnico").val(element.codigo_unico_pi);
-                                   
+
                                    var monto_Inversion=0;
                                    $("listaTipoInversion").val(element.nombre_tipo_inversion);
 
                                    $('select[name=listaTipoInversion]').val(element.id_tipo_inversion);
                                    $('select[name=listaTipoInversion]').change();
-                                   $('.selectpicker').selectpicker('refresh'); 
+                                   $('.selectpicker').selectpicker('refresh');
 
                                     $('select[name=lista_unid_form]').val(element.id_uf);
                                    $('select[name=lista_unid_form]').change();
-                                   $('.selectpicker').selectpicker('refresh'); 
+                                   $('.selectpicker').selectpicker('refresh');
 
                                    $('select[name=lista_unid_ejec]').val(element.id_ue);
                                    $('select[name=lista_unid_ejec]').change();
-                                   $('.selectpicker').selectpicker('refresh'); 
+                                   $('.selectpicker').selectpicker('refresh');
 
                                    $("#txtMontoInversion").val(element.costo_pi);
 
@@ -182,13 +182,13 @@ var listarestudiocombo=function(valor){
                                   else
                                    {
                                       $("#txtcostoestudio").val(element.pim_acumulado);
-                                   } 
-                                   
+                                   }
+
                              });
                            // $("#txtCodigoUnico").va(resp);
                         }
                     });
-                   }    
+                   }
               });
 
 //REGISTARAR NUEVA
@@ -206,11 +206,11 @@ $("#form-AddEstudioInversion").submit(function(event)
         data:$(this).serialize(),
         success:function(resp)
         {
-            if (resp=='1') 
+            if (resp=='1')
             {
                 swal("REGISTRADO","Se regristró correctamente", "success");
             }
-            if (resp=='2') 
+            if (resp=='2')
             {
                 swal("NO SE REGISTRÓ","NO se regristró ", "error");
             }
@@ -329,8 +329,8 @@ $("#form-AddEstudioInversion").submit(function(event)
                             $('.selectpicker').selectpicker('refresh');
                         }
                     });
-      
-  }  
+
+  }
  var listarEtapaEstudio=function(id_est_inv)
                 {
                     var table=$("#table_etapas_estudio").DataTable({
@@ -346,38 +346,38 @@ $("#form-AddEstudioInversion").submit(function(event)
                                     {"data":"id_est_inv","visible": false},
                                         {"data": function (data, type, dataToSet) {
 
-                                      if (data.denom_etapas_fe =='Formulación') 
+                                      if (data.denom_etapas_fe =='Formulación')
                                       {
                                        //return '<i class="fa fa-spinner red fa-pulse fa-2x fa-fw"></i><span class="sr-only">Loading...</span>'
                                         return '<i class="fa fa-circle red fa-2x"></i>';
                                       }
-                                        if (data.denom_etapas_fe =='Evaluación') 
+                                        if (data.denom_etapas_fe =='Evaluación')
                                       {
                                        //return '<i class="fa fa-spinner orange fa-pulse fa-2x fa-fw"></i><span class="sr-only">Loading...</span>'
                                       return '<i class="fa fa-circle purple fa-2x"></i>';
                                      }
-                                        if (data.denom_etapas_fe =='Aprobado') 
+                                        if (data.denom_etapas_fe =='Aprobado')
                                       {
                                         //return '<i class="fa fa-spinner blue fa-pulse fa-2x fa-fw"></i><span class="sr-only">Loading...</span>'
                                       return '<i class="fa fa-circle light blue fa-2x"></i>';
-                                     
+
                                       }
-                                        if (data.denom_etapas_fe =='Viabilizado') 
+                                        if (data.denom_etapas_fe =='Viabilizado')
                                       {
                                       //return '<i class="fa fa-spinner green fa-pulse fa-2x fa-fw"></i><span class="sr-only">Loading...</span>'
                                       return '<i class="fa fa-circle light green fa-2x"></i>';
                                       }
-                                      if (data.denom_etapas_fe ==null) 
+                                      if (data.denom_etapas_fe ==null)
                                       {
                                       return '<button type="button" class=" btn-round btn-warning btn-xs" data-toggle="modal" data-target="#"><i class="fa fa-flag" aria-hidden="true"></i> Asignar</button"';
-                                     
+
                                       }
                                    }},
                                     {"data":"denom_etapas_fe"},
                                     {"data":"recomendaciones"},
                                     {"data":"fecha_inicio"},
                                     {"data":"fecha_final"}
-                                 
+
                                     //{"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaupdateEstadoFE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
                                "language":idioma_espanol
@@ -413,28 +413,28 @@ $("#form-AddEstudioInversion").submit(function(event)
                                     }},
                                     {"data": function (data, type, dataToSet) {
 
-                                      if (data.denom_etapas_fe =='Formulación') 
+                                      if (data.denom_etapas_fe =='Formulación')
                                       {
-                                        return '<a  href="../FEformulacion/Feformulacion/'+data.id_est_inv+'"><button type="button" class="btn btn btn-primary btn-xs">'+data.denom_etapas_fe +' </button></a>';
+                                        return '<a  href="../FEformulacion/Feformulacion?id_est_inv='+data.id_est_inv+'"><button type="button" class="btn btn btn-primary btn-xs">'+data.denom_etapas_fe +' </button></a>';
                                       }
-                                        if (data.denom_etapas_fe =='Evaluación') 
+                                        if (data.denom_etapas_fe =='Evaluación')
                                       {
-                                     return '<a  href="../EvaluacionFE/FeEvaluacion/'+data.id_est_inv+'"><button type="button" class="btn btn btn-warning btn-xs">'+data.denom_etapas_fe +' </button></a>';
+                                     return '<a  href="../EvaluacionFE/FeEvaluacion?id_est_inv='+data.id_est_inv+'"><button type="button" class="btn btn btn-warning btn-xs">'+data.denom_etapas_fe +' </button></a>';
                                       }
-                                        if (data.denom_etapas_fe =='Aprobado') 
+                                        if (data.denom_etapas_fe =='Aprobado')
                                       {
-                                     return '<a  href="../FEformulacion/FeAprobado/'+data.id_est_inv+'"><button type="button" class="btn btn btn-info btn-xs">'+data.denom_etapas_fe +' </button></a>';
-                                     
+                                     return '<a  href="../FEformulacion/FeAprobado?id_est_inv='+data.id_est_inv+'"><button type="button" class="btn btn btn-info btn-xs">'+data.denom_etapas_fe +' </button></a>';
+
                                       }
-                                        if (data.denom_etapas_fe =='Viabilizado') 
+                                        if (data.denom_etapas_fe =='Viabilizado')
                                       {
-                                      return '<a  href="../FEformulacion/FeViabilizado/'+data.id_est_inv+'"><button type="button" class="btn btn btn-success btn-xs">'+data.denom_etapas_fe +' </button></a>';
-                                     
+                                      return '<a  href="../FEformulacion/FeViabilizado?id_est_inv='+data.id_est_inv+'"><button type="button" class="btn btn btn-success btn-xs">'+data.denom_etapas_fe +' </button></a>';
+
                                       }
-                                      if (data.denom_etapas_fe ==null) 
+                                      if (data.denom_etapas_fe ==null)
                                       {
                                       return '<button type="button" class="nuevaEtapaEstudio btn btn-warning btn-xs" data-toggle="modal" data-target="#ventanaEtapaEstudio"><i class="fa fa-flag" aria-hidden="true"></i> Asignar</button"';
-                                     
+
                                       }
                                    }},
                                   {"defaultContent":" <div class='dropdown'>  <a class='btn btn-link dropdown-toggle' type='button' data-toggle='dropdown'> <span class='glyphicon glyphicon-option-vertical' aria-hidden='true'></span></a> <ul class='dropdown-menu pull-right' style=''>  <li><button type='button' title='Subir Resolución' class='DocumentosEstudio btn btn-link btn-xs' data-toggle='modal' data-target='#VentanaDocumentosEstudio'> Documento</button> </li> <li> <button title='Asignar Respondable' class='AsignarPersona btn btn-link btn-xs' data-toggle='modal' data-target='#ventanaasiganarpersona'>Asignar Coordinador</button></li> <li><button title='Nueva Etapa Estudio' class='nuevaEtapaEstudio btn btn-link btn-xs' data-toggle='modal' data-target='#ventanaEtapaEstudio'>Nueva Etapa de Estudio</button> </li> <li> <button type='button' title='Ver Etapas Estudio' class='ver_etapas_estudio btn btn-link btn-xs' data-toggle='modal' data-target='#ventana_ver_etapas_estudio'>Ver Etapas</button></li> </ul> </div>"}
@@ -534,7 +534,7 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
 
                                            html+="<thead> <tr> <th><center>Nombre Documento</center></th> <th><center> Descripción </center></th><th> <center>Url</center></th> </tr></thead>";
                                            for (var i = 0; i <registros.length;i++) {
-                                                html +="<tbody> <tr class='info'><th>"+registros[i]["nombre_documento"]+"</th><th>"+registros[i]["desc_documento"]+"</th><th> <a href='"+base_url+"uploads/DocumentosInversion/"+registros[i]["url_documento"]+" '  >"+registros[i]["url_documento"]+" <i class='fa fa-file-pdf-o'></i> </a></th></tr>";    
+                                                html +="<tbody> <tr class='info'><th>"+registros[i]["nombre_documento"]+"</th><th>"+registros[i]["desc_documento"]+"</th><th> <a href='"+base_url+"uploads/DocumentosInversion/"+registros[i]["url_documento"]+" '  >"+registros[i]["url_documento"]+" <i class='fa fa-file-pdf-o'></i> </a></th></tr>";
                                             //alert(suma);
                                              };
                                                html +="</tbody>";
@@ -544,12 +544,12 @@ $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overla
                 }
 
               //fin listar y agregar documento
-              
-                
+
+
                 /*fin listar unidad formulador*/
-               
+
                  /*fin listar unidad formulador*/
-               
+
               var  nuevaEtapaEstudioData=function(tbody,myTableUA){
                     $(tbody).on("click","button.nuevaEtapaEstudio",function(){
                    var data=myTableUA.row( $(this).parents("tr")).data();

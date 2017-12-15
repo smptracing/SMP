@@ -14,6 +14,21 @@ class Model_Mo_Observacion extends CI_Model
 		return $this->db->insert_id();
 	}
 
+	function editar($observacion,$idObservacion)
+	{
+		$this->db->set($observacion);
+		$this->db->where('id_observacion',$idObservacion);
+		$this->db->update('MO_OBSERVACION');
+		return $this->db->affected_rows();
+	}
+
+	function eliminar($idObservacion)
+	{
+		$this->db->where('id_observacion',$idObservacion);
+		$this->db->delete('MO_OBSERVACION');
+		return $this->db->affected_rows();
+	}
+
 	function listaObservacion($idMonitoreo)
 	{
 		$this->db->select('MO_OBSERVACION.*');

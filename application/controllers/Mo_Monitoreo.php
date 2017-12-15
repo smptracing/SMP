@@ -108,4 +108,14 @@ class Mo_Monitoreo extends CI_Controller
         $msg = ($data>0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
         echo json_encode($msg);exit;
     }
+
+    function eliminar()
+    {
+        $msg = array();
+        $data = $this->Model_Mo_Monitoreo->eliminar($this->input->post('idMonitoreo'));
+        $msg = ($data>0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
+        echo json_encode($msg);exit;
+
+    }
+
 }
