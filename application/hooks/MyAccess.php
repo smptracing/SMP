@@ -421,7 +421,7 @@ function autorizar($url)
       'ProgramaPresupuestal/GetProgramaP',
       'bancoproyectos/listar_estado',
       'bancoproyectos/listar_provincia',
-      'bancoproyectos/listar_distrito',      
+      'bancoproyectos/listar_distrito',
       'TipologiaInversion/get_tipo_no_pip',
       'bancoproyectos/AddModalidadEjecPI',
       'bancoproyectos/AddRurboPI',
@@ -601,7 +601,8 @@ function autorizar($url)
       'FEformulacion/Feformulacion',
       'EvaluacionFE/FeEvaluacion',
       'FEformulacion/FeAprobado',
-      'FEformulacion/FeViabilizado'
+      'FEformulacion/FeViabilizado',
+      'Estudio_Inversion/get_etapas_estudio'
     );
     foreach( $lista_API as $value ) {
       array_push($arrayPermitido, $value);
