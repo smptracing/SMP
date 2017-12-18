@@ -11,14 +11,6 @@
 						<div class="clearfix"></div>
 					</div>
 					<div class="x_content">
-						<div class="" role="tabpanel" data-example-id="togglable-tabs">
-							<ul id="myTab" class="nav nav-tabs" role="tablist">
-								<li role="presentation" class="active">
-									<a href="#tab_Sector"  id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">
-										<b> No pip</b>
-									</a>
-								</li>
-							</ul>
 							<div id="myTabContent" class="tab-content">
 								<!-- /Contenido del sector -->
 								<div role="tabpanel" class="tab-pane fade active in" id="tab_Sector" aria-labelledby="home-tab">
@@ -34,6 +26,7 @@
 														<div class="clearfix"></div>
 													</div>
 													<div class="x_content">
+														<div class="table-responsive">
 														<table id="table-Nopip"  class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 															<thead>
 																<tr>
@@ -64,6 +57,7 @@
 															<?php } ?>
 															</tbody>
 														</table>
+														</div>
 													</div>
 											</div>
 										</div>
@@ -71,7 +65,6 @@
 										<!-- / fin tabla de sector desde el row -->
 								</div>
 							</div>
-						</div>
 					</div>
 				</div>
 			</div>

@@ -39,7 +39,7 @@ $("#form-AddSituacion").submit(function(event)
                             if (resp=='2') {
                              swal("NO SE REGISTRÓ","NO se regristró ", "error");
                            }
-                          $('#table-formulacion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
+                          $('#tabla-formulacion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
                              formReset();
                            }
                       });
@@ -61,7 +61,7 @@ $("#form-AddSituacion").submit(function(event)
                             if (resp=='2') {
                              swal("NO SE REGISTRÓ","NO se regristró ", "error");
                            }
-                          $('#table-formulacion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
+                          $('#tabla-formulacion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
                              formReset();
                          }
                       });
@@ -149,97 +149,50 @@ $("#form-AddSituacion").submit(function(event)
                                "language":idioma_espanol
                     });
                 }
- //LISTAR DENOMINACION DE FORMULACION Y EVALUACION EN TABLA
-                var ListarFormulacion=function()
-                {
-                    var table=$("#table-formulacion").DataTable({
-                     "processing": true,
-                      "serverSide":false,
-                     destroy:true,
-                         "ajax":{
-                                    "url":base_url+"index.php/FEformulacion/GetFormulacion",
-                                    "method":"POST",
-                                    "dataSrc":""
-                                    },
-                                "columns":[
-                                    {"data":"id_est_inv","visible": false},
-                                    {"data":"id_pi","visible": false},
-                                    {"data":"codigo_unico_est_inv",
-                                    "mRender": function ( data, type, full ) {
-                                     return '<a style="font-weight:normal;font-size:8" type="button" class="VerDetalleFormulacion btn btn-link" data-toggle="modal" data-target="#VerDetalleFormulacion" href="/codigo_unico_est_inv/' + data + '">' + data+ '</a>';
-                                      }
-                                    },
-                                    {"data":"nombre_est_inv"},
-                                    {"data":"provincia"},
-                                    {"data":"distrito"},
-                                    {"data":"denom_nivel_estudio"},
-                                    {"data":"coordinador"},
-                                    {"data":"costo_estudio"},
-                                    {"data":"denom_situacion_fe"},
-                                    {"data":"avance_fisico",
-                                      "mRender":function (data,type, full) {
-                                         return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Completado</small></td>";
-                                    }},
-                                    {"data":"id_etapa_estudio",
-                                    "mRender": function ( data, type, full )
-                                     {
-
-                                         return '<a href="../../FEentregableEstudio/ver_FEentregable/'+data+'"><button type="button" title="Entregables" class="btn btn btn-primary btn-xs"><i class="fa fa-tasks"></i> </button></a><button type="button" title="Ver Gantt" class="gant btn btn-info btn-xs" data-toggle="modal" data-target="#ventanagant"><i class="glyphicon glyphicon-fullscreen" aria-hidden="true"></i></button>';
-                                      }
-                                    },
-                            {"defaultContent":"<div class='dropdown'>  <a class='btn btn-link dropdown-toggle' type='button' data-toggle='dropdown'> <span class='glyphicon glyphicon-option-vertical' aria-hidden='true'></span></a> <ul class='dropdown-menu pull-right' style=''> <li><button type='button' title='Asignar Estado' class='EstadoFE btn btn-link btn-xs' data-toggle='modal' data-target='#VentanaEstadoFE'> Asignar Estado</button></li><li><button type='button' title='Asignar Situacion' class='Situacion btn btn-link btn-xs' data-toggle='modal' data-target='#VentanaSituacionActual'>Asignar Situacion</button></li><li><button type='button' title='Asignar Responsable' class='AsignarPersona btn btn-link btn-xs' data-toggle='modal' data-target='#VentanaAsignarPersona'> Asignar Responsable </button></li><li><button type='button' title='Ver Etapas Estudio' class='ver_etapas_estudio btn btn-link btn-xs' data-toggle='modal' data-target='#ventana_ver_etapas_estudio'> Ver Etapas Estudio </button></li><li><button type='button' title='Presupuesto de Inversión' class='presupuestoProyectoInv btn btn-link btn-xs'>Presupuesto de Inversión</button></li></ul> </div>"}
-                             ],
-                                 "language":idioma_espanol
-                    });
-                   presupuestoProInv("#table-formulacion",table);
-                   $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
-        new $.fn.DataTable.Buttons(table, {
-          buttons: [
-           {
-            "extend": "colvis",
-            "text": "<i class='fa fa-search bigger-110 blue'></i> <span class='hidden'>Show/hide columns</span>",
-            "className": "btn btn-white btn-primary btn-bold",
-            columns: ':not(:first):not(:last)'
+var ListarFormulacion=function()
+{
+    var table=$("#tabla-formulacion").DataTable({
+        "processing": true,
+        "serverSide":false,
+        destroy:true,
+        "ajax":{
+            "url":base_url+"index.php/FEformulacion/GetFormulacion",
+            "method":"POST",
+            "dataSrc":""
             },
-            {
-            "extend": "copy",
-            "text": "<i class='fa fa-copy bigger-110 pink'></i> <span class='hidden'>Copy to clipboard</span>",
-            "className": "btn btn-white btn-primary btn-bold"
-            },
-            {
-            "extend": "csv",
-            "text": "<i class='fa fa-database bigger-110 orange'></i> <span class='hidden'>Export to CSV</span>",
-            "className": "btn btn-white btn-primary btn-bold"
-            },
-            {
-            "extend": "excel",
-            "text": "<i class='fa fa-file-excel-o bigger-110 green'></i> <span class='hidden'>Export to Excel</span>",
-            "className": "btn btn-white btn-primary btn-bold"
-            },
-            {
-            "extend": "pdf",
-            "text": "<i class='fa fa-file-pdf-o bigger-110 red'></i> <span class='hidden'>Export to PDF</span>",
-            "className": "btn btn-white btn-primary btn-bold"
-            },
-            {
-            "extend": "print",
-            "text": "<i class='fa fa-print bigger-110 grey'></i> <span class='hidden'>Print</span>",
-            "className": "btn btn-white btn-primary btn-bold",
-            autoPrint: false,
-            message: 'This print was produced using the Print button for DataTables'
-            }
-
-          ]
-        } );
-        table.buttons().container().appendTo( $('.tableTools-container-formulacion') );
-                   // DenominacionFE("#table-DenominacionFE",table);
-                     ListaFormulacion("#table-formulacion",table);
-                    SituacionActual("#table-formulacion",table);
-                     RegistarPersona("#table-formulacion",table);
-                    ver_etapas_estudio("#table-formulacion",table);
-                     RegistarEstadoFE("#table-formulacion",table);
-                     gant("#table-formulacion",table);
-                }
+            "columns":[
+                {"data":"id_est_inv","visible": false},
+                {"data":"id_pi","visible": false},
+                {"data":"codigo_unico_est_inv",
+                    "mRender": function ( data, type, full )
+                    {
+                        return '<a style="font-weight:normal;font-size:8" type="button" class="VerDetalleFormulacion btn btn-link" data-toggle="modal" data-target="#VerDetalleFormulacion" href="/codigo_unico_est_inv/' + data + '">' + data+ '</a>';
+                    }
+                },
+                {"data":"nombre_est_inv"},
+                {"data":"provincia"},
+                {"data":"distrito"},
+                {"data":"denom_nivel_estudio"},
+                {"data":"coordinador"},
+                {"data":"costo_estudio"},
+                {"data":"denom_situacion_fe"},
+                {"data":"avance_fisico",
+                    "mRender":function (data,type, full) 
+                    {
+                        return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Completado</small></td>";
+                    }
+                },
+                {"data":"id_etapa_estudio",
+                    "mRender": function ( data, type, full )
+                    {
+                        return '<a href="../../FEentregableEstudio/ver_FEentregable/'+data+'"><button type="button" title="Entregables" class="btn btn btn-primary btn-xs"><i class="fa fa-tasks"></i> </button></a><button type="button" title="Ver Gantt" class="gant btn btn-info btn-xs" data-toggle="modal" data-target="#ventanagant"><i class="glyphicon glyphicon-fullscreen" aria-hidden="true"></i></button>';
+                    }
+                },
+                {"defaultContent":'<div class="dropdown"><a class="btn btn-link dropdown-toggle" type="button" data-toggle="dropdown"> <span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span></a> <ul class="dropdown-menu pull-right"> <li><button type="button" title="Asignar Estado" class="EstadoFE btn btn-link btn-xs" data-toggle="modal" data-target="#VentanaEstadoFE"> Asignar Estado</button></li><li><button type="button" title="Asignar Situacion" class="Situacion btn btn-link btn-xs" data-toggle="modal" data-target="#VentanaSituacionActual">Asignar Situacion</button></li><li><button type="button" title="Asignar Responsable" class="AsignarPersona btn btn-link btn-xs" data-toggle="modal" data-target="#VentanaAsignarPersona"> Asignar Responsable </button></li><li><button type="button" title="Ver Etapas Estudio" class="ver_etapas_estudio btn btn-link btn-xs" data-toggle="modal" data-target="#ventana_ver_etapas_estudio"> Ver Etapas Estudio </button></li><li><button type="button" title="Presupuesto de Inversión" class="presupuestoProyectoInv btn btn-link btn-xs">Presupuesto de Inversión</button></li></ul> </div>'}
+            ],
+        "language":idioma_espanol
+    });
+}
 //LISTAR DENOMINACION DE FORMULACION Y EVALUACION EN TABLA
 var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
   {

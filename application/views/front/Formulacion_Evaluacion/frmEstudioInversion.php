@@ -13,15 +13,8 @@
                 </div>
               <!--final  de pestaña configurtacion-->
                        <div class="x_content">
-                           <div class="" role="tabpanel" data-example-id="togglable-tabs">
-                             <!-- Inicio Menus-->
-                                <ul id="myTab" class="nav nav-tabs" role="tablist">
-                                    <li role="presentation" class="active"><a href="#tab_EstadoCicloInversion" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">
-                                        <span aria-hidden="true"></span>
-                                         <strong>Estudio</strong> </a>
-                                         </li>
-                               </ul>
-                              <!-- Fin Menus-->
+
+
                                <div id="myTabContent" class="tab-content">
                                              <!-- /Inicio Contenido -->
                                            <div role="tabpanel" class="tab-pane fade active in" id="tab_EstadoCicloInversion" aria-labelledby="home-tab">
@@ -46,6 +39,7 @@
                                                         </div>
                                                       <!--fin  de icono de reporte -->
                                                       <div class="x_content" >
+                                                        <div class="table-responsive">
                                                                 <table id="dynamic-table-EstudioInversion" class="table table-striped jambo_table bulk_action" with="100%" >
                                                                     <thead style=" ">
                                                                        <tr>
@@ -64,6 +58,7 @@
                                                                       </tr>
                                                                    </thead>
                                                                 </table>
+                                                              </div>
                                                       </div>
                                                       <!--fin de la tabla estado -->
                                            </div>
@@ -73,7 +68,6 @@
                                         </div>
                                         <!-- /fin del Contenido del estado  -->
                                </div>
-                      </div>
              </div>
            </div>
           </div>

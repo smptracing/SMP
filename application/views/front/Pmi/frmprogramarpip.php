@@ -245,7 +245,7 @@
                                       <input  class="form-control " id="txt_prioridad" name="txt_prioridad"  type="text" readonly=""  style="background:#EEEEEE;"   />
                                     </div>
                                  </div>
-                                <h6><i class="fa fa-list"></i><b> Monto Programación</b></h6>
+                                <h6><i class="fa fa-list"></i><b> Proyección de Gastos</b></h6>
                                 <div class="row item ">
                                    <div class="col-md-3 col-sm-6 col-xs-12 form-group">
                                       <CENTER><label id="lb_anio1">Año 1.</label></CENTER>
@@ -533,7 +533,7 @@
                                       <input  class="form-control" id="txt_prioridad_" name="txt_prioridad_" type="text"  readonly="" style="background:#EEEEEE;" >
                                     </div>
                                  </div>
-                              <h6><i class="fa fa-list"></i><b> Monto Programación</b></h6>
+                              <h6><i class="fa fa-list"></i><b> Proyección de Gastos</b></h6>
                                <div class="row item ">
                                    <div class="col-md-3 col-sm-6 col-xs-12 form-group">
                                       <CENTER><label id="lb_anio1_">Año 1</label></CENTER>

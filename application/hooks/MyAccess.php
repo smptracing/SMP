@@ -39,7 +39,7 @@ if (!function_exists('autentificar'))
             echo $CI->output->get_output();
         }
         else
-        {
+        {   
             if($CI->session->userdata('idPersona'))
             {
                 echo $CI->output->get_output();
@@ -603,7 +603,10 @@ function autorizar($url)
       'FEformulacion/FeAprobado',
       'FEformulacion/FeViabilizado',
       'Estudio_Inversion/get_etapas_estudio',
-      'Estudio_Inversion/get_estado_PI'
+      'Estudio_Inversion/get_estado_PI',
+      'programar_pip/listar_programacion',
+      'programar_pip/listar_programacion_operacion_mantenimiento',
+      'programar_nopip/listar_metas_pi'
     );
     foreach( $lista_API as $value ) {
       array_push($arrayPermitido, $value);
