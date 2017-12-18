@@ -17,7 +17,7 @@
 					                </div>
 			            		</div>
 			            	</div>
-			            	<div class="col-md-3 col-xs-12">
+			            	<div class="col-md-9 col-xs-12">
 				            	<div class="form-group" style="padding-top: 14px;">
 				                	<label class="control-label" for="inputGroup">Reportes </label>
 				                	<div class="input-group">
