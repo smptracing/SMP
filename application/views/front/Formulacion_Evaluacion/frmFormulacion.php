@@ -1,101 +1,60 @@
- <!-- page content -->
-        <div class="right_col" role="main">
-          <div class="">
-            <div class="clearfix"></div>
-            <div class="row">
-              <div class="col-md-12">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2><b>PROYECTOS EN FORMULACIÓN</b> </h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                          <li><a href="#">Settings 1</a>
-                          </li>
-                          <li><a href="#">Settings 2</a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li><a class="close-link"><i class="fa fa-close"></i></a>
-                      </li>
-                    </ul>
+<div class="right_col" role="main">
+    <div>
+        <div class="clearfix"></div>
+        <div class="col-md-12 col-xs-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2><b>PROYECTOS EN FORMULACIÓN</b></h2>
                     <div class="clearfix"></div>
-                  </div>
-                                <!--inicio  de icono de reporte -->
-
-                                                        <div class="clearfix">
-                                                           <div class="pull-right tableTools-container-formulacion">
-                                                           </div>
-                                                        </div>
-                                                      <!--fin  de icono de reporte -->
-
-                  <div class="x_content">
-                    <p></p>
-                    <!-- start project list -->
-                    <table id="table-formulacion" class="table table-striped jambo_table bulk_action" style="width: 100%">
-                      <thead>
-                        <tr>
-                          <th>#</th>
-                          <th>Id PIP</th>
-                          <th>Codigo Unico</th>
-                          <th>Nombre Pip</th>
-                          <th>Provincia</th>
-                          <th>Distrito</th>
-                          <th>Nivel Estudio</th>
-                          <th>Responsable de Etapa</th>
-                          <th>Costo Inversion</th>
-                          <th>Situacion</th>
-                          <th>Avance Fisico</th>
-                          <th>Entr.</th>
-                          <th>Opción</th>
-
-                        </tr>
-                      </thead>
-                      <tbody>
-
-
-                      </tbody>
-                    </table>
-                    <!-- end project list -->
-
-                  </div>
                 </div>
-              </div>
+                <div class="x_content">
+                    <div class="table-responsive">
+                        <table id="tabla-formulacion" class="table table-striped jambo_table bulk_action" style="width: 100%">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Id PIP</th>
+                                    <th>Codigo Unico</th>
+                                    <th>Nombre Pip</th>
+                                    <th>Provincia</th>
+                                    <th>Distrito</th>
+                                    <th>Nivel Estudio</th>
+                                    <th>Responsable de Etapa</th>
+                                    <th>Costo Inversion</th>
+                                    <th>Situacion</th>
+                                    <th>Avance Fisico</th>
+                                    <th>Entr.</th>
+                                    <th>Opción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-        <!-- /page content -->
-
-
-  </div>
-
-
-  <div class="modal fade" id="VerDetalleFormulacion"  role="dialog">
-    <div class="modal-dialog modal-lg">
-
-      <!-- Modal content-->
-      <div class="modal-content">
-
-        <div class="modal-body">
-           <div class="table-responsive">
-               <table id="table-DetSitActEvaluacionFE" class="table table-striped projects">
-               </table>
-
-
-            </div>
-      </div>
-<div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                </div>
     </div>
+    <div class="clearfix"></div>
+</div>
 
-  </div>
-  </div>
 
-<!-- /.ventana para registrar situacion actual-->
+<div class="modal fade" id="VerDetalleFormulacion"  role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table id="table-DetSitActEvaluacionFE" class="table table-striped projects">
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="VentanaSituacionActual" role="dialog">
     <div class="modal-dialog ">
       <div class="modal-content">
@@ -331,10 +290,7 @@
       </div>
     </div>
 </div>
-<!-- /.fin de  ventana asiganar etapa->
 
-
-<!-- /. INICIO VENTANA VER ETAPAS DE UN ESTUDIO-->
 <div class="modal fade" id="ventana_ver_etapas_estudio" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
@@ -348,37 +304,6 @@
                     <div class="col-xs-12">
                                         <!-- PAGE CONTENT BEGINS -->
               <form class="form-horizontal "   action="<?php echo base_url(); ?>Estudio_Inversion/get_etapas_estudio" method="POST" >
-
-              <!-- <div class="item form-group">
-                        <div class="item form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="txtIdEtapaEstudio_v" name="txtIdEtapaEstudio_v" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="text">
-                        </div>
-                      </div>
-                </div>
-              <div class="item form-group">
-                                     <div class="col-md-4">
-
-                                           <label for="name">Estado.<span class="required"></span>
-                                            </label>
-                                                 <select   id="Cbx_EstadoFE" name="Cbx_EstadoFE" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Estado FE...">
-                                                </select>
-                                    </div>
-                                          <div class="col-md-4">
-
-                                           <label for="name">Fecha <span class="required"></span>
-                                            </label>
-                                                  <input type="date" id="dateFechaIniC" name="dateFechaIniC" class="form-control col-md-6 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text" value="<?php echo date("Y-m-d"); ?>" disabled="true">
-                                          </div>
-                                          <div class="col-md-4">
-                                            <label for="name">. <span class="required"></span>
-                                            </label><BR>
-                                             <button id="send" type="submit" class="btn btn-success">
-                            <span class="glyphicon glyphicon-floppy-saved"></span>Agregar
-                          </button>
-                                          </div>
-                      </div>
-                      -->
                      <div class="ln_solid"></div>
                      <div class="x_panel" style="background-color: #EEEEEE;">
                     <center>
@@ -414,8 +339,8 @@
                       </center>
 
                     </form>
-                        </div><!-- /.span -->
-                 </div><!-- /.row -->
+                        </div>
+                 </div>
         </div>
         <div class="modal-footer">
 
@@ -423,13 +348,10 @@
       </div>
     </div>
 </div>
-<!-- /.FIN VENTANA VER ETAPAS DE UN ESTYUDIO-->
 
-<!-- venta gant -->
+
 <div id="ventanagant" class="modal fade" role="dialog">
   <div class="modal-dialog-lag">
-
-    <!-- Modal content-->
     <div class="modal-content" id="ProgramacionHorizontal">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -465,7 +387,6 @@
           return obj.text + " -";
         }
         gantt.init("gantt_here");
-      //  gantt.load('http://localhost/smp/index.php/FEentregableEstudio/ver_FEentregable/'+id);
       </script>
         </div>
       </div>
@@ -477,4 +398,4 @@
 
   </div>
 </div>
-<!-- fin venta gant-->
+</div>
