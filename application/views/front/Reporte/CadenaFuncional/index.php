@@ -100,12 +100,13 @@
 															  $("#hide").click(function(){
 															    $("#dataTableFuncion").hide();
 															  });
-															  $("#show").click(function(){
+															  $("#btnBuscar").click(function(){
 															    $("#dataTableFuncion").show();
 															  });
 															});
 															</script>
-															<a href="#" id="show">Mostrar</a>
+
+															<!--<a href="#" id="show">Mostrar</a> -->
 									                   
 									                    <div id="dataTableFuncion" style="display:none;">
 										                    <table id="dynamic-table"  class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">

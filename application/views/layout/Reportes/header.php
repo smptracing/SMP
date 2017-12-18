@@ -65,7 +65,7 @@
 					<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
 						<div class="menu_section">
 							<ul class='nav side-menu'>
-								<li><a href="<?php echo site_url('PrincipalReportes/PrincipalReportes'); ?>"> <i class="fa fa-home"></i> INICIO<span class=""></span></a></li>
+								<li><a href="<?php echo site_url('PrincipalReportes/PrincipalReportes'); ?>"> <i class="fa fa-home"></i>SEGUIMIENTO DE INVERSIONES<span class=""></span></a></li>
 								<?php
 									$openTag=false;
 									$arrayMenu=$this->session->userdata('menuUsuario');
@@ -123,7 +123,7 @@
 						<div class="nav toggle" style="position: relative;">
 			                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
 			                  <div id="navtittle"  >
-			                  <span style="position: absolute;top: 14px;left: 50px; width: 700px; font-size: 20px; text-shadow: 1px 1px 1px rgba(0,0,0,0.3);">Reportes</span>
+			                  <span style="position: absolute;top: 14px;left: 50px; width: 700px; font-size: 20px; text-shadow: 1px 1px 1px rgba(0,0,0,0.3);">Reportes de Seguimiento de Inversiones</span>
 			                  </div>
 
 			                  <div id="navtittlemin">

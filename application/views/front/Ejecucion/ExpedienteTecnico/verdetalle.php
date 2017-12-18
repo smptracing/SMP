@@ -312,7 +312,7 @@
 										<i class="fa fa-file-pdf-o"></i> Formato FF-06
 									</a>
 
-									<a style="background-color: #11b8cc;" class="btn btn-app"  data-toggle="tooltip" title="Presupuesto General" href="<?= site_url('Expediente_Tecnico/reportePdfEjecucion007?id_et='.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
+									<a style="background-color: #a200f9;" class="btn btn-app"  data-toggle="tooltip" title="Presupuesto General" href="<?= site_url('Expediente_Tecnico/reportePdfEjecucion007?id_et='.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
 									<i class="fa fa-file-pdf-o"></i> Formato FF-07
 									</a>
 
