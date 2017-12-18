@@ -170,7 +170,7 @@
             <div class="form-group">
                 <div class="col-md-6 col-md-offset-3">
                     <button  type="submit" class="btn btn-success"> <span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal"> <span class="glyphicon glyphicon-remove"></span> Cancelar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"> <span class="glyphicon glyphicon-remove"></span> Cerrar</button>
                 </div>
             </div>            
             </form>
@@ -214,7 +214,7 @@
                           </button>
                           <button type="submit" class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-remove"></span>
-                            Cancelar
+                            Cerrar
                           </button>
 
                         </div>
@@ -261,7 +261,7 @@
                           </button>
                           <button type="submit" class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-remove"></span>
-                            Cancelar
+                            Cerrar
                           </button>
 
                         </div>
@@ -304,7 +304,7 @@
                             </button>
                             <button type="submit" class="btn btn-danger" data-dismiss="modal">
                                <span class="glyphicon glyphicon-remove"></span>
-                              Cancelar
+                              Cerrar
                             </button>
                         </div>
                     </div>
