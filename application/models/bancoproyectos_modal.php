@@ -208,14 +208,14 @@ class bancoproyectos_modal extends CI_Model
     }
     //FIN EDITAR UN PROYECTO PIP
     //EDITAR UN PROYECTO PIP
-    public function update_pip($flat, $txt_id_Pip_m, $cbxUnidadEjecutora_m, $cbxNatI_m, $cbxTipologiaInversion_m, $cbxGrupoFunc_m, $cbxNivelGob_m, $cbxProgramaPresupuestal_m, $txtCodigoUnico_m, $txtNombrePip_m, $txtCostoPip_m, $txt_beneficiarios_m, $lista_unid_form_m, $cbx_estado_pi_m, $cbxEstCicInv_m, $cbxRubroEjecucion_m, $cbxModalidadEjecucion_m)
+    public function update_pip($flat, $txt_id_Pip_m, $cbxUnidadEjecutora_m, $cbxNatI_m, $cbxTipologiaInversion_m, $cbxGrupoFunc_m, $cbxNivelGob_m, $cbxProgramaPresupuestal_m, $txtCodigoUnico_m, $txtNombrePip_m, $txtCostoPip_m, $txt_beneficiarios_m, $txtfecha_viabilidad_m, $lista_unid_form_m, $cbx_estado_pi_m, $cbxEstCicInv_m, $cbxRubroEjecucion_m, $cbxModalidadEjecucion_m)
     {
         $this->db->query("execute sp_Gestionar_ProyectoInversion
             @Opcion='" . $flat . "',
             @id_pi='" . $txt_id_Pip_m . "',
             @id_ue='" . $cbxUnidadEjecutora_m . "',
             @id_naturaleza_inv='" . $cbxNatI_m . "',
-             @id_tipologia_inv='" . $cbxTipologiaInversion_m . "',
+            @id_tipologia_inv='" . $cbxTipologiaInversion_m . "',
             @id_grupo_funcional='" . $cbxGrupoFunc_m . "',
             @id_nivel_gob='" . $cbxNivelGob_m . "',
             @id_programa_pres='" . $cbxProgramaPresupuestal_m . "',
@@ -223,6 +223,7 @@ class bancoproyectos_modal extends CI_Model
             @nombre_pi='" . $txtNombrePip_m . "',
             @costo_pi='" . $txtCostoPip_m . "',
             @num_beneficiarios='" . $txt_beneficiarios_m . "',
+            @fecha_viabilidad_pi='" .$txtfecha_viabilidad_m. "',
             @id_uf='" . $lista_unid_form_m . "',
             @estado_pi='" . $cbx_estado_pi_m . "',
             @id_estado_ciclo='" . $cbxEstCicInv_m . "',

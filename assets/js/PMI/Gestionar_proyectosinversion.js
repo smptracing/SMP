@@ -437,7 +437,7 @@ var listar_proyectos_inversion=function()
         {"data":"nombre_pi"},
         {"data":"costo_pi"},
         {"data":"nombre_estado_ciclo"},
-        {"data":"fecha_registro_pi"},
+        {"data":"fecha_viabilidad_pi"},
         {"defaultContent":"<div class='btn-group'><button data-toggle='dropdown' class='btn btn-default dropdown-toggle' type='button' aria-expanded='false'>Opciones <span class='caret'></span></button><ul class='dropdown-menu'><li><button type='button' title='Ubicación' class='ubicacion_geografica btn btn-primary btn-xs' data-toggle='modal' data-target='#venta_ubicacion_geografica'><i class='fa fa-map-marker' aria-hidden='true'></i> Ubicación</button></li><li><button type='button' title='Ver Rubro PI' class='RegistarNuevoRubro btn btn-info btn-xs' data-toggle='modal' data-target='#venta_registar_rubro'><i class='fa fa-spinner' aria-hidden='true'></i> Ver Rubro PI</button></li><li><button type='button' title='Modalidad de Ejecución' class='nueva_modalidad_ejec btn btn-warning btn-xs' data-toggle='modal' data-target='#ventanaModalidadEjecucion'><i class='fa fa-flag' aria-hidden='true'> Modalidad de Ejecución</i></button></li><li><button type='button' title='Ver Estado Ciclo' class='ver_estado_ciclo btn btn-success btn-xs' data-toggle='modal' data-target='#ventana_ver_estado_ciclo'><i class='fa fa-paw' aria-hidden='true'> Ver Estado Ciclo</i></button></li><li><button type='button' title='Operación y Mantenimiento' class='ver_operacion_mantenimiento btn btn-info btn-xs' data-toggle='modal' data-target='#ventana_ver_operacion_mantenimeinto'><i class='fa fa-building' aria-hidden='true'> Operación y Mantenimiento</i></button></li></ul></div>"
         }
         ],
@@ -476,6 +476,7 @@ var EditPip=function(tbody,table)
         $("#txt_id_Pip_m").val(data.id_pi);
         $("#txtCodigoUnico_m").val(data.codigo_unico_pi);
         $("#txtNombrePip_m").val(data.nombre_pi);
+        $("#fecha_viabilidad_m").val(data.fecha_viable);
         listarCicloInver(id_estado_ciclo);
         listarNaturalezaInver(id_naturaleza_inv);
         listarNivelGobierno(id_nivel_gob);

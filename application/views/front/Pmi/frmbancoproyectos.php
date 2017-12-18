@@ -49,7 +49,7 @@
                                                     <th style="width: 36%"><i class="fa fa-bookmark-o"></i> Nombre</th>
                                                     <th style="width: 12%; text-align: right;"><i class="fa fa-money"></i> Costo</th>
                                                     <th style="width: 12%"> Estado Ciclo</th>
-                                                    <th style="width: 12%"> Fecha Registro</th>
+                                                    <th style="width: 12%"> Fecha Viabilidad</th>
                                                     <th style="width: 16%">Opción</th>
                                                 </tr>
                                             </thead>
@@ -762,6 +762,15 @@
                                         <input id="txtNombrePip_m" name="txtNombrePip_m" class="form-control col-md-12 col-xs-5" placeholder="Nombre Inversion" required="required" type="text">
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">
+                            <div class="col-md-4">
+                            <div style="display:true;" class="ct_fechaViabilidad col-md-11 col-sm-11 col-xs-12">
+                            <label  for="textbox"><span >Fecha Viabilidad</span>
+                            </label>
+                            <input type="date" id="fecha_viabilidad_m" name="fecha_viabilidad_m" class="form-control col-md-7 col-xs-5">
+                            </div>
+                            </div>
                             </div>
                             <hr>
                             <div class="row">
