@@ -22,7 +22,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>No Pip</h2>
+                    <h2>BANCO DE INVERSIONES NO PI</h2>
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
@@ -898,7 +898,7 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-          Operación y Mantenimiento</h4>
+          Operación y Mantenimiento NO PI</h4>
         </div>
         <div class="modal-body">
          <div class="row">
@@ -953,8 +953,8 @@
                          <th  ><i class="fa fa-thumb-tack"></i> #</th>
                          <th  ><i class="fa fa-thumb-tack"></i> Monto Operación</th>
                          <th  ><i class="fa fa-thumb-tack"></i> Responsable Operación</th>
-                         <th  ><i class="fa fa-thumb-tack"></i> Monto Operación</th>
-                         <th  ><i class="fa fa-thumb-tack"></i> Responsable Operación</th>
+                         <th  ><i class="fa fa-thumb-tack"></i> Monto Mantenimiento</th>
+                         <th  ><i class="fa fa-thumb-tack"></i> Responsable Mantenimiento</th>
                          <th  ><i class="fa fa-thumb-tack"></i> Fecha Registro</th>
                       </tr>
                     </thead>
