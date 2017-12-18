@@ -73,7 +73,7 @@
         <div class="modal-content">
             <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Registrar PIP </h4>
+            <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Registro PIP </h4>
         </div>
         <div class="modal-body">
             <div class="row">
@@ -267,7 +267,7 @@
                         <button  class="btn btn-danger"  type="button" data-dismiss="modal">
 
                         <span class="glyphicon glyphicon-remove"></span>
-                        Cerrar Ventana
+                        Cerrar
                         </button>
                         </center>
                         </div>
@@ -365,7 +365,7 @@
                                 <div class="col-md-6 col-md-offset-3">
                                     <button  class="btn btn-danger" data-dismiss="modal">
                                     <span class="glyphicon glyphicon-log-out"></span>
-                                    Cerrar Ventana
+                                    Cerrar
                                     </button>
                                 </div>
                             </div>
@@ -445,7 +445,7 @@
 
                            <button  class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-log-out"></span>
-                            Cerrar ventana
+                            Cerrar
                           </button>
                         </div>
                       </div>
@@ -519,7 +519,7 @@
                                 <div class="form-group">
                                     <div class="col-md-6 col-md-offset-3">
                                         <button  class="btn btn-danger" data-dismiss="modal">
-                                        <span class="glyphicon glyphicon-log-out"></span> Cerrar Ventana
+                                        <span class="glyphicon glyphicon-log-out"></span> Cerrar
                                         </button>
                                     </div>
                                 </div>
@@ -599,7 +599,7 @@
 
                            <button  class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-log-out"></span>
-                            Cerrar Ventana
+                            Cerrar
                           </button>
                         </div>
                       </div>
@@ -700,7 +700,7 @@
 
                            <button  class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-log-out"></span>
-                            Cerrar Ventana
+                            Cerrar
                           </button>
                         </div>
                       </div>
@@ -896,7 +896,7 @@
                           </button>
                            <button  class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-remove"></span>
-                            Cerrar Ventana
+                            Cerrar
                           </button>
                           </center>
                         </div>
