@@ -237,7 +237,7 @@
                           </button>
                            <button  class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-remove"></span>
-                            Cancelar
+                            Cerrar
                           </button>
                           </center>
                         </div>
@@ -419,7 +419,7 @@
                           </button>
                            <button  class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-remove"></span>
-                            Cancelar
+                            Cerrar
                           </button>
                           </center>
                         </div>
@@ -547,7 +547,7 @@
 
                            <button  class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-log-out"></span>
-                            Cancelar
+                            Cerrar Ventana
                           </button>
                         </div>
                       </div>
@@ -632,7 +632,7 @@
 
                            <button  class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-log-out"></span>
-                            Cancelar
+                            Cerrar Ventana
                           </button>
                         </div>
                       </div>
@@ -712,7 +712,7 @@
 
                            <button  class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-log-out"></span>
-                            Cancelar
+                            Cerrar Ventana
                           </button>
                         </div>
                       </div>
@@ -793,7 +793,7 @@
 
                            <button  class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-log-out"></span>
-                            Cancelar
+                            Cerrar Ventana
                           </button>
                         </div>
                       </div>
@@ -874,7 +874,7 @@
 
                            <button  class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-log-out"></span>
-                            Cancelar
+                            Cerrar Ventana
                           </button>
                         </div>
                       </div>
@@ -967,7 +967,7 @@
 
                            <button  class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-log-out"></span>
-                            Cancelar
+                            Cerrar Ventana
                           </button>
                         </div>
                       </div>
