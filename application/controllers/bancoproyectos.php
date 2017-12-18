@@ -216,7 +216,8 @@ class bancoproyectos extends CI_Controller
             $datos = $this->bancoproyectos_modal->GetProyectoInversion($flat);
             foreach ($datos as $key => $value)
             {
-                $value->costo_pi = a_number_format($value->costo_pi , 2, '.',",",3);
+                $value->fecha_registro_pi = date('d/m/Y', strtotime($value->fecha_registro_pi));
+                $value->costo_pi = a_number_format($value->costo_pi , 2, '.',",",3);                
             }
 
             echo json_encode($datos);

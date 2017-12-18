@@ -107,7 +107,7 @@
                         <div class="col-md-11 col-sm-11 col-xs-12">
                         <label  for="textbox"><span class="required">Fecha Registro</span>
                         </label>
-                        <input type="date" id="fecha_registro" name="fecha_registro" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2"  type="text">
+                        <input type="date" id="fecha_registro" name="fecha_registro" class="form-control col-md-7 col-xs-5" type="text">
                         </div>
                         </div>
                         <div class="col-md-4">
