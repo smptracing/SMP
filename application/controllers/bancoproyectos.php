@@ -27,72 +27,72 @@ class bancoproyectos extends CI_Controller
     }
     public function AddProyectos()
     {
-        if ($this->input->is_ajax_request()) {
+        if ($this->input->is_ajax_request()) 
+        {
+            //proyecto_inversion
+            $c_data['id_ue'] = $this->input->post("cbxUnidadEjecutora");
+            $c_data['id_naturaleza_inv'] = $this->input->post("cbxNatI");
+            $c_data['id_tipologia_inv'] = $this->input->post("cbxTipologiaInv");
+            $c_data['id_tipo_inversion'] = 1;
+            $c_data['id_grupo_funcional'] = $this->input->post("cbxGrupoFunc");
+            $c_data['id_nivel_gob'] = $this->input->post("cbxNivelGob");
+            $c_data['id_programa_pres'] = $this->input->post("cbxProgramaPres");
+            $c_data['codigo_unico_pi'] = $this->input->post("txtCodigoUnico");
+            $c_data['nombre_pi'] = $this->input->post("txtNombrePip");
+            $c_data['costo_pi'] = floatval(str_replace(",","",$this->input->post("txtCostoPip")));
+            $c_data['num_beneficiarios'] = $this->input->post("txt_beneficiarios");
+            $c_data['fecha_registro_pi'] = date('Y-m-d h:i:s');
+            $c_data['fecha_viabilidad_pi'] = $this->input->post("fecha_viabilidad");
+            $c_data['id_uf'] = $this->input->post("lista_unid_form");
+            $c_data['estado_pi'] = 1;
 
-                //proyecto_inversion
-                $c_data['id_ue'] = $this->input->post("cbxUnidadEjecutora");
-                $c_data['id_naturaleza_inv'] = $this->input->post("cbxNatI");
-                $c_data['id_tipologia_inv'] = $this->input->post("cbxTipologiaInv");
-                $c_data['id_tipo_inversion'] = 1;
-                $c_data['id_grupo_funcional'] = $this->input->post("cbxGrupoFunc");
-                $c_data['id_nivel_gob'] = $this->input->post("cbxNivelGob");
-                $c_data['id_programa_pres'] = $this->input->post("cbxProgramaPres");
-                $c_data['codigo_unico_pi'] = $this->input->post("txtCodigoUnico");
-                $c_data['nombre_pi'] = $this->input->post("txtNombrePip");
-                $c_data['costo_pi'] = floatval(str_replace(",","",$this->input->post("txtCostoPip")));
-                $c_data['num_beneficiarios'] = $this->input->post("txt_beneficiarios");
-                $c_data['fecha_registro_pi'] = $this->input->post("fecha_registro");
-                $c_data['fecha_viabilidad_pi'] = $this->input->post("fecha_viabilidad");
-                $c_data['id_uf'] = $this->input->post("lista_unid_form");
-                $c_data['estado_pi'] = 1;
+            //estado_ciclo_pi
+            $d_data['id_estado_ciclo'] = $this->input->post("cbxEstCicInv_");
 
-                //estado_ciclo_pi
-                $d_data['id_estado_ciclo'] = $this->input->post("cbxEstCicInv_");
+            //rubro_pi
+            $e_data['id_rubro'] = $this->input->post("cbxRubro");
 
-                //rubro_pi
-                $e_data['id_rubro'] = $this->input->post("cbxRubro");
+            //modalidad_ejecucion_pi
+            $f_data['id_modalidad_ejec'] = $this->input->post("cbxModalidadEjec");
 
-                //modalidad_ejecucion_pi
-                $f_data['id_modalidad_ejec'] = $this->input->post("cbxModalidadEjec");
+            //flag and msg variables
+            $flag = 0;
+            $msg = [];
 
-                //flag and msg variables
-                $flag = 0;
-                $msg = [];
+            //Let's start the fire
+            $q1 = $this->Model_ProyectoInversion->Insert_pi_pip($c_data);
 
-                //Let's start the fire
-                $q1 = $this->Model_ProyectoInversion->Insert_pi_pip($c_data);
+             if( $q1 > 0){
 
-                 if( $q1 > 0){
-
-                    //INSERT estado_ciclo_pi
-                    $d_data['id_pi'] = $q1;
-                    $d_data['fecha_estado_ciclo_pi'] = fecha_mssql();
-                    if($this->ESTADO_CICLO_PI_MODEL->Insertar_ciclo($d_data) == FALSE){
-                        $flag = 1;
-                        $msg[] = 'Error: x001ci';
-                    }
-
-                    //INSERT rubro_pi
-                    $e_data['id_pi'] = $q1;
-                    $e_data['fecha_rubro_pi'] = fecha_mssql();
-                    if($this->Model_RubroE->Insertar_rubro($e_data) == 0){
-                        $flag = 1;
-                        $msg[] = 'Error: x001r';
-                    }
-
-                    //INSERT modalidad_ejecucion_pi
-                    $f_data['id_pi'] = $q1;
-                    $f_data['fecha_modalidad_ejec_pi'] = fecha_mssql();
-                    if($this->Model_ModalidadE->Insertar_modalidade($f_data) == FALSE){
-                        $flag = 1;
-                        $msg[] = 'Error: x001m';
-                    }
-                }
-                else
-                {
+                //INSERT estado_ciclo_pi
+                $d_data['id_pi'] = $q1;
+                $d_data['fecha_estado_ciclo_pi'] = fecha_mssql();
+                if($this->ESTADO_CICLO_PI_MODEL->Insertar_ciclo($d_data) == FALSE){
                     $flag = 1;
-                    $msg[] = 'Error x00q1';
+                    $msg[] = 'Error: x001ci';
                 }
+
+                //INSERT rubro_pi
+                $e_data['id_pi'] = $q1;
+                $e_data['fecha_rubro_pi'] = fecha_mssql();
+                if($this->Model_RubroE->Insertar_rubro($e_data) == 0){
+                    $flag = 1;
+                    $msg[] = 'Error: x001r';
+                }
+
+                //INSERT modalidad_ejecucion_pi
+                $f_data['id_pi'] = $q1;
+                $f_data['fecha_modalidad_ejec_pi'] = fecha_mssql();
+                if($this->Model_ModalidadE->Insertar_modalidade($f_data) == FALSE){
+                    $flag = 1;
+                    $msg[] = 'Error: x001m';
+                }
+            }
+            else
+            {
+                $flag = 1;
+                $msg[] = 'Error x00q1';
+            }
 
 
             $datos['flag'] = $flag;
@@ -101,7 +101,9 @@ class bancoproyectos extends CI_Controller
             $data['datos'] = $datos;
             $this->load->view('front/json/json_view', $data);
 
-        } else {
+        } 
+        else 
+        {
             show_404();
         }
     }
