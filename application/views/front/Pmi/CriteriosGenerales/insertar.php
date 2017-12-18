@@ -51,9 +51,9 @@
 										<td><?= $item->peso_criterio_gen?></td>
 										<td><?php  if($item->porcentaje<1){ echo '0'.$item->porcentaje;}else{ echo $item->porcentaje;} ?> %</td>
 										<td>
-											<button type="button" class="btn btn-primary btn-xs " onclick="EditarCriterioGeneral(<?=$item->id_criterio_gen?>)"><i class="fa fa-pencil"></i></button>
-											<button type="button" class="btn btn-primary btn-xs " onclick="CriterioEspecificos(<?=$item->id_criterio_gen?>)"><i class="fa fa-bars"></i></button>
-											<button onclick="EliminarCriterioGeneral(<?=$item->id_criterio_gen?>,<?=$item->id_funcion?>,<?=$item->anio_criterio_gen ?>);" data-toggle="tooltip" data-original-title="Eliminar Analitico"   class='btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button></td>
+											<button data-toggle="tooltip" title="Editar Criterio General" type="button" class="btn btn-primary btn-xs " onclick="EditarCriterioGeneral(<?=$item->id_criterio_gen?>)"><i class="fa fa-pencil"></i></button>
+											<button data-toggle="tooltip" title="Agregar Criterio Especifico" type="button" class="btn btn-primary btn-xs " onclick="CriterioEspecificos(<?=$item->id_criterio_gen?>)"><i class="fa fa-bars"></i></button>
+											<button data-toggle="tooltip" title="Eliminar Criterio General" onclick="EliminarCriterioGeneral(<?=$item->id_criterio_gen?>,<?=$item->id_funcion?>,<?=$item->anio_criterio_gen ?>);" data-toggle="tooltip" data-original-title="Eliminar Analitico"   class='btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button></td>
 						</tr>
 					<?php }?>
 					<tr>
