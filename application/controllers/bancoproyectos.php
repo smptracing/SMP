@@ -75,7 +75,7 @@ class bancoproyectos extends CI_Controller
                     //INSERT rubro_pi
                     $e_data['id_pi'] = $q1;
                     $e_data['fecha_rubro_pi'] = fecha_mssql();
-                    if($this->Model_RubroE->Insertar_rubro($e_data) == FALSE){
+                    if($this->Model_RubroE->Insertar_rubro($e_data) == 0){
                         $flag = 1;
                         $msg[] = 'Error: x001r';
                     }

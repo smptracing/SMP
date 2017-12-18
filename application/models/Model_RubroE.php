@@ -8,13 +8,11 @@ class Model_RubroE extends CI_Model
     }
 
 
-/***********************************************************************************/
- /*   public function Insertar_rubro($data)
+   public function Insertar_rubro($data)
     {
           $this->db->insert('RUBRO_PI', $data);
-          return $this->db->affected_rows() > 0;
-    }*/
-/***********************************************************************************/
+          return $this->db->affected_rows();
+    }
 
 public function BuscarRubro($txt_NombreRubroE){
 $resultado=$this->db->select('*')->from('RUBRO')
