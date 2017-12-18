@@ -190,15 +190,14 @@ class bancoproyectos extends CI_Controller
             $txtNombrePip_m            = $this->input->post("txtNombrePip_m");
             $txtCostoPip_m             = floatval(str_replace(",","",$this->input->post("txtCostoPip_m")));
             $txt_beneficiarios_m       = $this->input->post("txt_beneficiarios_m");
-            // $dateFechaInPip    = $this->input->post("fecha_registro");
-            // $dateFechaViabilidad = $this->input->post("fecha_viabilidad");
+            $fecha_viabilidad_m      = $this->input->post("fecha_viabilidad_m");
             $lista_unid_form_m       = $this->input->post("lista_unid_form_m");
             $cbx_estado_pi_m         = $this->input->post("cbx_estado_pi_m");
             $cbxEstCicInv_m          = $this->input->post("cbxEstCicInv_m");
             $cbxRubroEjecucion_m     = $this->input->post("cbxRubroEjecucion_m");
             $cbxModalidadEjecucion_m = $this->input->post("cbxModalidadEjecucion_m");
             if ($this->bancoproyectos_modal->update_pip(
-                $flat, $txt_id_Pip_m, $cbxUnidadEjecutora_m, $cbxNatI_m, $cbxTipologiaInversion_m, $cbxGrupoFunc_m, $cbxNivelGob_m, $cbxProgramaPresupuestal_m, $txtCodigoUnico_m, $txtNombrePip_m, $txtCostoPip_m, $txt_beneficiarios_m, $lista_unid_form_m, $cbx_estado_pi_m, $cbxEstCicInv_m, $cbxRubroEjecucion_m, $cbxModalidadEjecucion_m) == false) {
+                $flat, $txt_id_Pip_m, $cbxUnidadEjecutora_m, $cbxNatI_m, $cbxTipologiaInversion_m, $cbxGrupoFunc_m, $cbxNivelGob_m, $cbxProgramaPresupuestal_m, $txtCodigoUnico_m, $txtNombrePip_m, $txtCostoPip_m, $txt_beneficiarios_m,$fecha_viabilidad_m,  $lista_unid_form_m, $cbx_estado_pi_m, $cbxEstCicInv_m, $cbxRubroEjecucion_m, $cbxModalidadEjecucion_m) == false) {
                 echo "1";
             } else {
                 echo "2";
@@ -218,10 +217,10 @@ class bancoproyectos extends CI_Controller
             $datos = $this->bancoproyectos_modal->GetProyectoInversion($flat);
             foreach ($datos as $key => $value)
             {
-                $value->fecha_registro_pi = date('d/m/Y', strtotime($value->fecha_registro_pi));
+                $value->fecha_viabilidad_pi=date('d/m/Y', strtotime($value->fecha_viabilidad_pi));
+                $value->fecha_viable=$value->fecha_registro_pi;
                 $value->costo_pi = a_number_format($value->costo_pi , 2, '.',",",3);                
             }
-
             echo json_encode($datos);
         }
         else
