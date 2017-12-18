@@ -125,7 +125,7 @@ class bancoproyectos extends CI_Controller
             $txtCostoPip         = floatval(str_replace(",", "", $this->input->post('txtCostoPip')));
             //$txtCostoPip         = $this->input->post("txtCostoPip");
             $txt_beneficiarios   = $this->input->post("txt_beneficiarios");
-            $dateFechaInPip      = $this->input->post("fecha_registro");
+            $dateFechaInPip      = date('Y-m-d H:i:s');
             $dateFechaViabilidad = $this->input->post("fecha_viabilidad");
             $cbx_estado          = $this->input->post("cbx_estado");
             $cbxEstCicInv_       = $this->input->post("cbxEstCicInv_");
