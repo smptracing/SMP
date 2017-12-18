@@ -311,6 +311,11 @@
 									<a style="background-color: #5cb360;" class="btn btn-app" data-toggle="tooltip" title="Cuadro de Presupuesto Analítico General" href="<?= site_url('Expediente_Tecnico/reportePdfPresupuestoAnalitico?id_et='.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
 										<i class="fa fa-file-pdf-o"></i> Formato FF-06
 									</a>
+
+									<a style="background-color: #11b8cc;" class="btn btn-app"  data-toggle="tooltip" title="Presupuesto General" href="<?= site_url('Expediente_Tecnico/reportePdfEjecucion007?id_et='.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
+									<i class="fa fa-file-pdf-o"></i> Formato FF-07
+									</a>
+
 									<a style="background-color: #11b8cc;" class="btn btn-app"  data-toggle="tooltip" title="Sustentación de Metrados" href="<?= site_url('Expediente_Tecnico/reportePdfMetrado?id_et='.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target="_blank">
 										<i class="fa fa-file-pdf-o"></i> Formato FF-10
 									</a>

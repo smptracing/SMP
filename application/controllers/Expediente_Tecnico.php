@@ -548,6 +548,7 @@ class Expediente_Tecnico extends CI_Controller
 		$this->load->view('front/Ejecucion/ExpedienteTecnico/valorizacionEjecucionProyecto', ['expedienteTecnico' => $expedienteTecnico]);
 		$this->load->view('layout/Ejecucion/footer');
 	}
+
 	public function reportePdfValorizacionEjecucion()
 	{
 		$idExpedienteTecnico = isset($_GET['id_et']) ? $_GET['id_et'] : null;
@@ -570,6 +571,38 @@ class Expediente_Tecnico extends CI_Controller
 		$this->mydompdf->render();
 		$this->mydompdf->stream("reporteValorizacionEjecucion.pdf", array("Attachment" => false));
     }
+
+
+// reporte expediente tecnico ejecucion 007
+
+    public function reportePdfEjecucion007()
+	{
+		$idExpedienteTecnico = isset($_GET['id_et']) ? $_GET['id_et'] : null;
+		$expedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnico($idExpedienteTecnico);
+		$expedienteTecnico->childComponente=$this->Model_ET_Componente->ETComponentePorIdET($expedienteTecnico->id_et);
+
+		foreach($expedienteTecnico->childComponente as $key => $value)
+		{
+			$value->childMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($value->id_componente);
+
+			foreach($value->childMeta as $index => $item)
+			{
+				$this->obtenerMetaAnidadaParaValorizacion($item);
+			}
+		}
+
+		$html = $this->load->view('front/Ejecucion/ExpedienteTecnico/reportePdfEjecucion007',['expedienteTecnico'=>$expedienteTecnico],true);
+		$this->mydompdf->load_html($html);
+		$this->mydompdf->set_paper("A4", "portrait");
+		$this->mydompdf->render();
+		$this->mydompdf->stream("reporteValorizacionEjecucion.pdf", array("Attachment" => false));
+    }
+
+
+
+
+
+
 
 	private function obtenerMetaAnidadaReporteF005($meta)
 	{
