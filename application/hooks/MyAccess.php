@@ -614,7 +614,9 @@ function autorizar($url)
       'PmiCriterioG/eliminar',
       'PmiCriterioEspecifico/index',
       'PmiCriterioEspecifico/editar',
-      'PmiCriterioEspecifico/eliminar'
+      'PmiCriterioEspecifico/eliminar',
+      'PuntajeCriterioPi/index',
+      'PuntajeCriterioPi/insertar'
     );
     foreach( $lista_API as $value ) {
       array_push($arrayPermitido, $value);

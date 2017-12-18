@@ -6,19 +6,19 @@
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Año Apertura Cartera<span class="required">*</span></label>
                     <div class="col-md-2 col-sm-2 col-xs-12">
                         <select class="form-control" id="dateAñoAperturaCart" name="dateAñoAperturaCart">
-                          <?php 
+                          <?php
                           if(isset($arrayCartera)){
-                            for($i=2017;$i<2099;$i++){   
+                            for($i=2017;$i<2099;$i++){
                               if($i==$arrayCartera->anio)
                                 echo '<option selected value="'.$i.'">'.$i.'</option>';
                               else
-                                echo '<option value="'.$i.'">'.$i.'</option>';  
-                            }   
+                                echo '<option value="'.$i.'">'.$i.'</option>';
+                            }
                           }
                           else{
-                            for($i=2017;$i<2099;$i++){   
-                                echo '<option value="'.$i.'">'.$i.'</option>';  
-                            }  
+                            for($i=2017;$i<2099;$i++){
+                                echo '<option value="'.$i.'">'.$i.'</option>';
+                            }
                           }
                           ?>
                           </select>
@@ -38,13 +38,13 @@
                     <p style="color: red; display: none;" id="Advertencia">La Fecha de Inicio no puede ser mayor a la Fecha de Fin</p>
                 </div>
                 <div class="item form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Numero Resolucion Cartera <span class="required">*</span></label>
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Numero Resolucion Cartera</label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <input id="txt_NumResolucionCart" name="txt_NumResolucionCart" class="form-control col-md-7 col-xs-12" placeholder="Numero Resolucion Cartera"  type="text" value="<?php if(isset($arrayCartera->numero_resolucion_cartera)) echo $arrayCartera->numero_resolucion_cartera;?>">
                     </div>
                 </div>
                 <div class="item form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Adjuntar resolución<span class="required">*</span></label>
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Adjuntar resolución</label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <div><input type="file" class="form-control" name="Cartera_Resoluacion" ></div>
                         <?php
@@ -55,7 +55,7 @@
                         </div>
                         <?php
                         }
-                        ?>                                
+                        ?>
                     </div>
                     <p style="color: red; display: block;" id="Advertencia">Solo se aceptan archivos en formato PDF, JPG y PNG</p>
                 </div>
@@ -83,13 +83,13 @@ $(document).ready(function()
     {
         var fecha1 = $('#dateFechaIniCart').val();
         var fecha2 = $('#dateFechaFinCart').val();
-        if ((Date.parse(fecha1)) > (Date.parse(fecha2))) 
+        if ((Date.parse(fecha1)) > (Date.parse(fecha2)))
         {
-            $('#Advertencia').css('display','block');           
+            $('#Advertencia').css('display','block');
         }
         else
         {
-            $('#Advertencia').css('display','none');  
+            $('#Advertencia').css('display','none');
         }
     });
 });
@@ -106,14 +106,14 @@ $(function(){
         success:function(resp)
         {
             resp = JSON.parse(resp);
-            if (typeof resp.error !== "undefined") 
+            if (typeof resp.error !== "undefined")
             {
-                swal("Error",resp.error, "error");                
+                swal("Error",resp.error, "error");
             }
             else
             {
                 ((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje, "success") : swal(resp.proceso,resp.mensaje, "error"));
-            }  
+            }
             $('#table-CarteraInv').dataTable()._fnAjaxUpdate();
         }
     });
@@ -126,7 +126,7 @@ $(function(){
         {
             $('#form-RegistraCarteraInv').submit();
             $('#form-RegistraCarteraInv').each(function()
-            { 
+            {
                 this.reset();
             });
             $('.selectpicker').selectpicker('refresh');
@@ -135,7 +135,7 @@ $(function(){
             $('#form-RegistraCarteraInv').remove();
             $('#form-RegistraCarteraInv').empty();
             $('#null').modal('hide');
-        }  
+        }
     });
 
     $("body").on("change","#dateAñoAperturaCart",function(e)
@@ -143,7 +143,7 @@ $(function(){
         $("#dateFechaIniCart").val($("#dateAñoAperturaCart").val()+'-01-01');
         $("#dateFechaFinCart").val($("#dateAñoAperturaCart").val()+'-03-30');
     });
-}); 
+});
 
 $(document).ready(function()
 {
@@ -164,7 +164,7 @@ $(document).ready(function()
                     {
                         message: '<b style="color: red;">El campo "Fecha de Inicio" es requerido.</b>'
                     }
-                }         
+                }
             },
             dateFechaIniCart:
             {
@@ -178,6 +178,6 @@ $(document).ready(function()
             },
         }
     });
-    
-}); 
+
+});
 </script>
