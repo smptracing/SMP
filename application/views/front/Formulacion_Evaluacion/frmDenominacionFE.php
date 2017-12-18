@@ -98,7 +98,7 @@
                           </button>
                           <button type="submit" class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-remove"></span>
-                            Cancelar
+                            Cerrar
                           </button>
 
                         </div>
@@ -146,7 +146,7 @@
                           </button>
                           <button type="submit" class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-remove"></span>
-                            Cancelar
+                            Cerrar
                           </button>
 
                         </div>

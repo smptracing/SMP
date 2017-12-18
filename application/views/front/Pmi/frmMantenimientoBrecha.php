@@ -214,7 +214,7 @@
                 <div class="form-group">
                     <div class="col-md-6 col-md-offset-3">
                         <button  type="submit" class="btn btn-success"><span class="fa fa-save"></span> Guardar</button>
-                        <button  class="btn btn-danger" data-dismiss="modal"><span class="fa fa-close"></span> Cancelar</button>                    
+                        <button  class="btn btn-danger" data-dismiss="modal"><span class="fa fa-close"></span> Cerrar</button>                    
                     </div>
                 </div>
             </form>
@@ -276,7 +276,7 @@
                         </button>
                         <button type="submit" class="btn btn-danger" data-dismiss="modal">
                             <span class="glyphicon glyphicon-remove"></span>
-                            Cancelar
+                            Cerrar
                         </button>
                     </div>
                 </div>
@@ -332,7 +332,7 @@
                 <div class="form-group">
                     <div class="col-md-6 col-md-offset-3">
                         <button id="send" type="submit" class="btn btn-success"><span class="fa fa-save"> </span> Guardar</button>
-                        <button type="submit" class="btn btn-danger" data-dismiss="modal"><span class="fa fa-close"></span> Cancelar</button>
+                        <button type="submit" class="btn btn-danger" data-dismiss="modal"><span class="fa fa-close"></span> Cerrar</button>
                     </div>
                 </div>
             </form>
@@ -394,7 +394,7 @@
                         </button>
                         <button type="submit" data-dismiss="modal" class="btn btn-danger">
                              <span class="glyphicon glyphicon-remove"></span>
-                            Cancelar
+                            Cerrar
                         </button>
                     </div>
                 </div>
@@ -443,7 +443,7 @@
                           </button>
                           <button type="submit" class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-remove"></span>
-                            Cancelar
+                            Cerrar
                           </button>
 
                         </div>
@@ -488,7 +488,7 @@
                           </button>
                            <button type="button" class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-remove"></span>
-                            Cancelar
+                            Cerrar
                           </button>
                         </div>
                       </div>

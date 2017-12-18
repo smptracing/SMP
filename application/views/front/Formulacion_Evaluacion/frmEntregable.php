@@ -229,7 +229,7 @@
                               </button>
                               <button  class="btn btn-danger" class="btn btn-danger" data-dismiss="modal">
                                  <span class="glyphicon glyphicon-remove"></span>
-                                Cancelar
+                                Cerrar
                               </button>
                           </div>
            </div>
@@ -288,7 +288,7 @@
                               </button>
                               <button  class="btn btn-danger" class="btn btn-danger" data-dismiss="modal">
                                  <span class="glyphicon glyphicon-remove"></span>
-                                Cancelar
+                                Cerrar
                               </button>
                           </div>
            </div>
@@ -354,7 +354,7 @@
               </button>
               <button id="btn_actividadC"  class="btn btn-danger" data-dismiss="modal">
                 <span class="glyphicon glyphicon-remove"></span>
-                Cancelar
+                Cerrar
               </button>
         </div>
       </div>
@@ -421,7 +421,7 @@
                           </button>
                           <button type="submit" class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-remove"></span>
-                            Cancelar
+                              Cerrar
                           </button>
 
                         </div>
@@ -503,7 +503,7 @@
                           </button>
                           <button type="submit" class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-remove"></span>
-                            Cancelar
+                            Cerrar
                           </button>
 
                         </div>
@@ -559,7 +559,7 @@
                             </button>
                             <button type="submit" class="btn btn-danger" data-dismiss="modal">
                                <span class="glyphicon glyphicon-remove"></span>
-                              Cancelar
+                              Cerrar
                             </button>
 
                           </div>
@@ -614,7 +614,7 @@
                             </button>
                             <button type="submit" class="btn btn-danger" data-dismiss="modal">
                                <span class="glyphicon glyphicon-remove"></span>
-                              Cancelar
+                              Cerrar
                             </button>
 
                           </div>
@@ -700,7 +700,7 @@
                           </button>
                           <button  type="submit"  class="btn btn-danger" data-dismiss="modal" >
                              <span class="glyphicon glyphicon-remove"></span>
-                            Cancelar
+                            Cerrar
                           </button>
                         </div>
                       </div>
@@ -757,7 +757,7 @@
                           </button>
                           <button  type="submit"  class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-remove"></span>
-                            Cancelar
+                            Cerrar
                           </button>
 
                         </div>

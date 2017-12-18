@@ -813,7 +813,7 @@
                                                         </button>
                                                         <button data-dismiss="modal" class="btn btn-danger">
                                                          <span class="glyphicon glyphicon-remove"></span>
-                                                        Cancelar
+                                                        Cerrar
                                                       </button>
                                                   </div>
                                             </div>
@@ -858,7 +858,7 @@
 -
                           <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
                           <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
-                           Cancelar</button>
+                           Cerrar</button>
                         </div>
                       </div>
           </form>
@@ -900,7 +900,7 @@
                              <input type="hidden" id="CodigoProgramacion" name="CodigoProgramacion">
             CARTERA          <input type="text" id="CarteradeProgramacion" name="CarteradeProgramacion">
           <button type="submit" class="btn btn-success">  <span class="fa fa-print"></span>IMPRIMIR</button>
-          <button  data-dismiss="modal" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Cancelar</button>
+          <button  data-dismiss="modal" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Cerrar</button>
           </form>
         </div>
       </div>
