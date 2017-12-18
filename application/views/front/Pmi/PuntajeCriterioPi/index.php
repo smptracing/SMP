@@ -55,9 +55,9 @@
 										</button>
 								    	</td>
 								  </tr>
-								<?php } ?>	
-								</tbody>								
-							</table>							
+								<?php } ?>
+								</tbody>
+							</table>
 						</div>
 					</div>
 				</div>
@@ -73,9 +73,9 @@
 
 		var myTable=$('#table-pip').DataTable(
 		{
-			
+
 			"language" : idioma_espanol,
-		
+
 		});
 
 		$.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
@@ -100,7 +100,7 @@
 				"className": "btn btn-white btn-primary btn-bold",
 				autoPrint: false,
 				message: 'This print was produced using the Print button for DataTables'
-			  }		  
+			  }
 			]
 		} );
 		myTable.buttons().container().appendTo( $('.tableTools-container') );
@@ -108,7 +108,7 @@
 		{
 			//alert('hola');
 				var funcion=$("#combofuncion").val();
-				window.location.href=base_url+"index.php/PuntajeCriterioPi/index/"+funcion;
+				window.location.href=base_url+"index.php/PuntajeCriterioPi/index?id="+funcion;
 		});
 
 	});

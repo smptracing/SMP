@@ -12,9 +12,10 @@ class PuntajeCriterioPi extends CI_Controller {/* Mantenimiento de sector entida
 
 
 	}
-	public function index($idfunction=''){	
+	public function index(){
 
-		
+		$idfunction = isset($_GET['id']) ? $_GET['id'] : '';
+
 		if($idfunction=='')
 		{
 
@@ -23,16 +24,16 @@ class PuntajeCriterioPi extends CI_Controller {/* Mantenimiento de sector entida
 			$listaPipPriorizar=$this->Model_PuntajeCriterioPi->PipPriorizar($funcion);
 			$this->load->view('layout/PMI/header');
 			$this->load->view('front/Pmi/PuntajeCriterioPi/index',['listaPipPriorizar'=>$listaPipPriorizar,'listarFuncion'=>$listarFuncion,'id_funcion'=>$funcion]);
-			$this->load->view('layout/PMI/footer');	
+			$this->load->view('layout/PMI/footer');
 		}else{
 			$listarFuncion=$this->Model_PuntajeCriterioPi->FuncionPip();
 			$listaPipPriorizar=$this->Model_PuntajeCriterioPi->PipPriorizar($idfunction);
 			$this->load->view('layout/PMI/header');
 			$this->load->view('front/Pmi/PuntajeCriterioPi/index',['listaPipPriorizar'=>$listaPipPriorizar,'listarFuncion'=>$listarFuncion,'id_funcion'=>$idfunction]);
-			$this->load->view('layout/PMI/footer');	
+			$this->load->view('layout/PMI/footer');
 
 		}
-		
+
 	}
 
 	public function pipPriorizadasPorFuncion($cadena='')
@@ -54,7 +55,7 @@ class PuntajeCriterioPi extends CI_Controller {/* Mantenimiento de sector entida
 			$listarPipPriorizadaPorCadaFuncion=$this->Model_PuntajeCriterioPi->PipPriorizadaPorCadaFuncion($funcion,$anioActual);
 			$this->load->view('layout/PMI/header');
 			$this->load->view('front/Pmi/PuntajeCriterioPi/pipPriorizadasporFuncion',['listarPipPriorizadaPorCadaFuncion'=>$listarPipPriorizadaPorCadaFuncion,'PipFuncion'=>$PipFuncion,'id_funcion'=>$funcion,'anioActual' => $anioActual]);
-			$this->load->view('layout/PMI/footer');	
+			$this->load->view('layout/PMI/footer');
 		}else{
 			$PipFuncion=$this->Model_PuntajeCriterioPi->FuncionPip();
 			$cadena=explode('.', $cadena);
@@ -63,7 +64,7 @@ class PuntajeCriterioPi extends CI_Controller {/* Mantenimiento de sector entida
 			$listarPipPriorizadaPorCadaFuncion=$this->Model_PuntajeCriterioPi->PipPriorizadaPorCadaFuncion($funcion,$anio);
 			$this->load->view('layout/PMI/header');
 			$this->load->view('front/Pmi/PuntajeCriterioPi/pipPriorizadasporFuncion',['listarPipPriorizadaPorCadaFuncion'=>$listarPipPriorizadaPorCadaFuncion,'PipFuncion'=>$PipFuncion,'id_funcion'=>$funcion,'anioActual' => $anio]);
-			$this->load->view('layout/PMI/footer');	
+			$this->load->view('layout/PMI/footer');
 
 		}
 
@@ -73,11 +74,11 @@ class PuntajeCriterioPi extends CI_Controller {/* Mantenimiento de sector entida
 	{
 		if($_POST)
 		{
-			
-			
-			$anio=$this->input->post('comboanioCriterioG');	
 
-			$txtIdPi=$this->input->post('txtIdPi');	
+
+			$anio=$this->input->post('comboanioCriterioG');
+
+			$txtIdPi=$this->input->post('txtIdPi');
 
 			$sumaPesoTotalGeberalCriterio=$this->input->post('sumaPesoTotalGeberal');
 			$idcombocriteriogeneral=$this->input->post('combocriteriogeneral');
@@ -86,7 +87,7 @@ class PuntajeCriterioPi extends CI_Controller {/* Mantenimiento de sector entida
 
 			$porcentajeCriterioGene=((int)$listadoUnicoCGeneral->peso_criterio_gen*(100))/($sumaPesoTotalGeberalCriterio);
 
-			$SumaTotaCriterio=$this->input->post('SumaTotaCriterio');	
+			$SumaTotaCriterio=$this->input->post('SumaTotaCriterio');
 			$combocriterioespecif=$this->input->post('combocriterioespecif');
 
 			/*$fechaA=date("Y-m-d");
@@ -113,7 +114,7 @@ class PuntajeCriterioPi extends CI_Controller {/* Mantenimiento de sector entida
 
                 		$contadorNoRegistro =(int)$contadorNoRegistro +1;
                 	}
-                	
+
 
                 }
 
@@ -161,21 +162,21 @@ class PuntajeCriterioPi extends CI_Controller {/* Mantenimiento de sector entida
 			$listaPipPriorizadasPorAño=$this->Model_PuntajeCriterioPi->PipPriorizadasPorAño($anioActual);
 			$this->load->view('layout/PMI/header');
 			$this->load->view('front/Pmi/PuntajeCriterioPi/pipPriorizadas',['listaPipPriorizadasPorAño'=>$listaPipPriorizadasPorAño,'anio' => $anioActual]);
-			$this->load->view('layout/PMI/footer');	
+			$this->load->view('layout/PMI/footer');
 
 		}else
 		{
 			$listaPipPriorizadasPorAño=$this->Model_PuntajeCriterioPi->PipPriorizadasPorAño($anio);
 			$this->load->view('layout/PMI/header');
 			$this->load->view('front/Pmi/PuntajeCriterioPi/pipPriorizadas',['listaPipPriorizadasPorAño'=>$listaPipPriorizadasPorAño,'anio' => $anio]);
-			$this->load->view('layout/PMI/footer');	
+			$this->load->view('layout/PMI/footer');
 
 		}
 
-		
+
 	}
 
-	
+
 
 	public function eliminarPuntajecriterio()
 	{
@@ -198,7 +199,7 @@ class PuntajeCriterioPi extends CI_Controller {/* Mantenimiento de sector entida
 		$array = explode(".", $cadena);
 
 		 $id_funcion=$array[0];
-		 $anio_criterio_gen=$array[1]; 
+		 $anio_criterio_gen=$array[1];
 
 		$html= $this->load->view('front/Pmi/PuntajeCriterioPi/reporteCriteriosPorCadaPip');
 		$this->mydompdf->load_html($html);
@@ -219,9 +220,9 @@ class PuntajeCriterioPi extends CI_Controller {/* Mantenimiento de sector entida
 		$dataCriterioGeneralAniFuncion=$this->Model_CriterioGeneral->listarCriterioGPorAniosFuncion($anio,$id_funcion);
 
 		$listarPuntajeCriterioPip=$this->Model_PuntajeCriterioPi->listarPuntajePip($id_pi,$anio);
-		echo json_encode(['listarPuntajeCriterioPip'=>$listarPuntajeCriterioPip,'dataCriterioGeneralAniFuncion' => $dataCriterioGeneralAniFuncion]);exit;  
+		echo json_encode(['listarPuntajeCriterioPip'=>$listarPuntajeCriterioPip,'dataCriterioGeneralAniFuncion' => $dataCriterioGeneralAniFuncion]);exit;
 
 	}
 
-	
+
 }
