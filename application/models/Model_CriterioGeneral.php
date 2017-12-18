@@ -45,22 +45,22 @@ class Model_criterioGeneral extends CI_Model
 	function eliminar($id_criterio_gen)
 	{
 		$opcion="eliminar";
-		$this->db->query("execute sp_Gestionar_CriterioGeneral @opcion='".$opcion."', @id_criterio_gen='$id_criterio_gen' ");        
+		$this->db->query("execute sp_Gestionar_CriterioGeneral @opcion='".$opcion."', @id_criterio_gen='$id_criterio_gen' ");
         return true;
 	}
 	function listadoUnicoCGeneral($id_criterio_gen)
 	{
-		$funcion=$this->db->query("select * FROM CRITERIO_GEN where id_criterio_gen='$id_criterio_gen'");        
+		$funcion=$this->db->query("select * FROM CRITERIO_GEN where id_criterio_gen='$id_criterio_gen'");
         return $funcion->result()[0];
 	}
 	function virificarCriterioEspe($id_criterio_gen)
 	{
-		$data=$this->db->query("SELECT * FROM CRITERIO_ESP where id_criterio_gen='$id_criterio_gen'");        
+		$data=$this->db->query("SELECT * FROM CRITERIO_ESP where id_criterio_gen='$id_criterio_gen'");
         return $data->result();
 	}
 	function getcriterioGeneral()
 	{
-		 $funcion=$this->db->query("select * from CRITERIO_GEN");        
+		 $funcion=$this->db->query("select * from CRITERIO_GEN");
         return $funcion->result();
 	}
 
@@ -70,7 +70,7 @@ class Model_criterioGeneral extends CI_Model
 
         return $data->result();
     }
-	
+
 	function CriterioGeneralModifId($hdIdcriterioGeneral, $txtNombreCriterio)
 	{
 		$data=$this->db->query("select * from CRITERIO_GEN where id_criterio_gen!='".$hdIdcriterioGeneral."' and replace(nombre_criterio_gen, ' ', '')=replace('".$txtNombreCriterio."', ' ', '')");
@@ -80,13 +80,13 @@ class Model_criterioGeneral extends CI_Model
 
 	function listarCriterioGPorAnios($anio)
 	{
-		$data=$this->db->query("select * from CRITERIO_GEN where CRITERIO_GEN.anio_criterio_gen='$anio'");        
+		$data=$this->db->query("select * from CRITERIO_GEN where CRITERIO_GEN.anio_criterio_gen='$anio'");
         return $data->result();
 	}
 	function listarCriterioGPorAniosFuncion($anio,$id_funcion)
 	{
-		$data=$this->db->query("select * from CRITERIO_GEN  INNER JOIN FUNCION ON CRITERIO_GEN.id_funcion=FUNCION.id_funcion  WHERE  
-			CRITERIO_GEN.anio_criterio_gen='$anio'  and FUNCION.id_funcion='$id_funcion' ");        
+		$data=$this->db->query("select * from CRITERIO_GEN  INNER JOIN FUNCION ON CRITERIO_GEN.id_funcion=FUNCION.id_funcion  WHERE
+			CRITERIO_GEN.anio_criterio_gen='$anio'  and FUNCION.id_funcion='$id_funcion' ");
         return $data->result();
 
 	}

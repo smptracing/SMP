@@ -175,11 +175,17 @@ function AddCartera()
 		}
 	}
 
-	function GetCarteraInversion(){
+	function GetCarteraInversion()
+	{		
 		if ($this->input->is_ajax_request())
 		{
-		$datos=$this->Model_CarteraInversion->GetCarteraInversion();
-		echo json_encode($datos);
+			$datos=$this->Model_CarteraInversion->GetCarteraInversion();
+			foreach ($datos as $key => $value) 
+			{
+				$value->fecha_inicio_cartera = date('d/m/Y',strtotime($value->fecha_inicio_cartera));
+				$value->fecha_cierre_cartera = date('d/m/Y',strtotime($value->fecha_cierre_cartera));
+			}
+			echo json_encode($datos);
 		}
 		else
 		{

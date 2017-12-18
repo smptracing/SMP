@@ -22,7 +22,7 @@
 				<input type="text" class="form-control" id="txtAnioCriterioG" name="txtAnioCriterioG" value="<?= $anio;?>" placeholder="Año" autocomplete="off">
 			</div>
 			<div class="col-md-2 col-sm-6 col-xs-12">
-				<label>Peso</label>	
+				<label>Peso</label>
 				<input type="text" class="form-control" id="txtPesoCriterioG" name="txtPesoCriterioG" placeholder="Peso" autocomplete="off">
 			</div>
 			<div class="col-md-3 col-sm-3 col-xs-12">
@@ -53,8 +53,8 @@
 										<td>
 											<button type="button" class="btn btn-primary btn-xs " onclick="EditarCriterioGeneral(<?=$item->id_criterio_gen?>)"><i class="fa fa-pencil"></i></button>
 											<button type="button" class="btn btn-primary btn-xs " onclick="CriterioEspecificos(<?=$item->id_criterio_gen?>)"><i class="fa fa-bars"></i></button>
-											<button onclick="EliminarCriterioGeneral(<?=$item->id_criterio_gen?>,<?=$item->id_funcion?>,<?=$item->anio_criterio_gen ?>);" data-toggle="tooltip" data-original-title="Eliminar Analitico"   class='btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button></td>									
-						</tr>						
+											<button onclick="EliminarCriterioGeneral(<?=$item->id_criterio_gen?>,<?=$item->id_funcion?>,<?=$item->anio_criterio_gen ?>);" data-toggle="tooltip" data-original-title="Eliminar Analitico"   class='btn btn-danger btn-xs'><i class="fa fa-trash-o"></i></button></td>
+						</tr>
 					<?php }?>
 					<tr>
 						<td> </td>
@@ -72,10 +72,10 @@ $(function()
 		$('#btnGuardarCambios').on('click', function(event)
 		{
 			txtAnioCriterioG=$('#txtAnioCriterioG').val();
-			window.location.href=base_url+"index.php/PmiCriterioG/criterioFuncion/"+txtAnioCriterioG;
+			window.location.href=base_url+"index.php/PmiCriterioG/criterioFuncion?anio="+txtAnioCriterioG;
 			renderLoading();
 		});
-		
+
 		$('#form-addCriterioGeneral').formValidation(
 				{
 					framework: 'bootstrap',
@@ -87,7 +87,7 @@ $(function()
 					{
 						txtNombreCriterio:
 						{
-							validators: 
+							validators:
 							{
 								notEmpty:
 								{
@@ -97,7 +97,7 @@ $(function()
 						},
 						txtAnioCriterioG:
 						{
-							validators: 
+							validators:
 							{
 								notEmpty:
 								{
@@ -112,7 +112,7 @@ $(function()
 						},
 						txtPesoCriterioG:
 						{
-							validators: 
+							validators:
 							{
 								notEmpty:
 								{
@@ -125,15 +125,15 @@ $(function()
 					            }
 							}
 						}
-						
-						
+
+
 					}
 				});
 });
 
 $(function()
 	{
- 
+
     $('#cbx_funcion').selectpicker('refresh');
 
     $('#btnAgregarCriterioGeneral').on('click', function(event)
@@ -156,7 +156,7 @@ $(function()
 			{
 				title: '',
 				text: objectJSON.mensaje,
-				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
 			},
 			function()
 			{
@@ -211,7 +211,7 @@ function EliminarCriterioGeneral(idCriterioGeneral,id_funcion,anio_criterio_gen)
 			{
 				title: '',
 				text: objectJSON.mensaje,
-				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
 			},
 			function()
 			{
@@ -239,7 +239,6 @@ function EliminarCriterioGeneral(idCriterioGeneral,id_funcion,anio_criterio_gen)
 			});
 
 		}, false, true);
-	
+
 }
 </script>
-

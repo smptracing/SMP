@@ -15,25 +15,25 @@ class PmiCriterioG extends CI_Controller {/* Mantenimiento de sector entidad Y s
 	{
 		if($_POST)
 		{
-			
+
 			$txtNombreCriterio=$this->input->post('txtNombreCriterio');
 			$txtAnioCriterioG=$this->input->post('txtAnioCriterioG');
 			$txtPesoCriterioG=$this->input->post('txtPesoCriterioG');
 			$txtIdFuncion=$this->input->post('txtIdFuncion');
 
-			
+
 			if(count($this->Model_CriterioGeneral->CriterioGeneralData($txtNombreCriterio,$txtAnioCriterioG))>0)
             {
             	$listaCritetioGeneral=$this->Model_CriterioGeneral->ListarCriterioGenerales($txtIdFuncion,$txtAnioCriterioG);
 
-                echo json_encode(['proceso' => 'Error', 'mensaje' => 'Este Criterio ya existe. Ingrese otro criterio','listaCritetioGeneral' => $listaCritetioGeneral]);exit; 
+                echo json_encode(['proceso' => 'Error', 'mensaje' => 'Este Criterio ya existe. Ingrese otro criterio','listaCritetioGeneral' => $listaCritetioGeneral]);exit;
             }
 
 			$this->Model_CriterioGeneral->insert($txtNombreCriterio,$txtPesoCriterioG,$txtAnioCriterioG,$txtIdFuncion);
 
 			$listaCritetioGeneral=$this->Model_CriterioGeneral->ListarCriterioGenerales($txtIdFuncion,$txtAnioCriterioG);
 
-			
+
 			echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Dastos registrados correctamente.', 'listaCritetioGeneral' => $listaCritetioGeneral]);exit;
 		}
 
@@ -62,11 +62,11 @@ class PmiCriterioG extends CI_Controller {/* Mantenimiento de sector entidad Y s
             {
             	$listaCritetioGeneral=$this->Model_CriterioGeneral->ListarCriterioGenerales($txtIdFuncion,$txtAnioCriterioG);
 
-                echo json_encode(['proceso' => 'Error', 'mensaje' => 'Este criterio general ya fue registrado anteriormente.','listaCritetioGeneral'=>$listaCritetioGeneral]);exit; 
+                echo json_encode(['proceso' => 'Error', 'mensaje' => 'Este criterio general ya fue registrado anteriormente.','listaCritetioGeneral'=>$listaCritetioGeneral]);exit;
             }
 
 			$listaCritetioGeneral=$this->Model_CriterioGeneral->Editar($hdIdcriterioGeneral,$txtNombreCriterio,$txtPesoCriterioG,$txtAnioCriterioG);
-			
+
 		 	$id_funcion=$this->input->post('cbx_funcion');
 		 	echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos editados  correctamente.', 'id_funcion' => $id_funcion,'anio' => $txtAnioCriterioG]);exit;
 
@@ -99,31 +99,28 @@ class PmiCriterioG extends CI_Controller {/* Mantenimiento de sector entidad Y s
 				$listaCritetioGeneral=$this->Model_CriterioGeneral->ListarCriterioGenerales($id_funcion,$anio_criterio_gen);
 				echo json_encode(['proceso' => 'Error', 'mensaje' =>'No es posible eliminar el criterio General,tiene criterios especificos', 'listaCritetioGeneral' => $listaCritetioGeneral]);exit;
 			}
-			
+
 		}
 	}
 
-	public function ReporteCriteriosG($idfuncio_anio)
+	public function ReporteCriteriosG()
 	{
-		$cadena = $idfuncio_anio;
-		$array = explode(".", $cadena);
+		 $id_funcion = isset($_GET['id_funcion']) ? $_GET['id_funcion'] : '';
+		 $anio_criterio_gen = isset($_GET['anio']) ? $_GET['anio'] : '';
 
-		 $id_funcion=$array[0];
-		 $anio_criterio_gen=$array[1];
-		
 		 $listarfuncion=$this->Model_CriterioEspecifico->listarFuncion($anio_criterio_gen,$id_funcion);
-		
+
 		if(count($listarfuncion)>0)
 		{
-			foreach ($listarfuncion as $key => $value) 
+			foreach ($listarfuncion as $key => $value)
 			    {
 
 						$value->childCriteriGeneral=$this->Model_CriterioGeneral->ListarCriterioGenerales($value->id_funcion,$anio_criterio_gen);
-						foreach ($value->childCriteriGeneral as $index => $item) 
+						foreach ($value->childCriteriGeneral as $index => $item)
 						{
 								$item->childEspecificos=$this->Model_CriterioEspecifico->ListarCriterioEspecifico($item->id_criterio_gen);
 						}
-					
+
 			    }
 			$html= $this->load->view('front/Pmi/CriteriosGenerales/reporteCriteriosGeneralesEspecificos', ["listarfuncionCriterioGeneral" => $listarfuncion,"anio"=>$anio_criterio_gen], true);
 			$this->mydompdf->load_html($html);
@@ -143,22 +140,23 @@ class PmiCriterioG extends CI_Controller {/* Mantenimiento de sector entidad Y s
 			$this->mydompdf->stream("reporteAnalisisPreciosFF11.pdf", array("Attachment" => false));
 
 		}
-		
+
 	}
 	public function index($año=0){
 		$listaCriterioGen=$this->Model_CriterioGeneral->CriteriosGenerales();
 
 		$this->load->view('layout/PMI/header');
 		$this->load->view('front/Pmi/CriteriosGenerales/index',['listaCriterioGen'=>$listaCriterioGen]);
-		$this->load->view('layout/PMI/footer');	
+		$this->load->view('layout/PMI/footer');
 	}
 
 
 	public function criterioFuncion($anio=''){
+		$anio = date("Y");
 		$listaCriterioFuncion=$this->Model_CriterioGeneral->CriteriosGeneralesPorFuncion($anio);
 		$this->load->view('layout/PMI/header');
 		$this->load->view('front/Pmi/CriteriosGenerales/criteriosFuncion',['listaCriterioFuncion'=>$listaCriterioFuncion,'anio' => $anio]);
-		$this->load->view('layout/PMI/footer');	
+		$this->load->view('layout/PMI/footer');
 	}
 
 	public function listarCriterioGPorAnios()
@@ -167,8 +165,8 @@ class PmiCriterioG extends CI_Controller {/* Mantenimiento de sector entidad Y s
 		$anio=$this->input->Post('anio');
 		$id_funcion=$this->input->Post('id_funcion');
 		$dataCriterioGeneralAni=$this->Model_CriterioGeneral->listarCriterioGPorAniosFuncion($anio,$id_funcion);
-		 echo json_encode(['dataCriterioGeneralAni'=>$dataCriterioGeneralAni]);exit;  
+		 echo json_encode(['dataCriterioGeneralAni'=>$dataCriterioGeneralAni]);exit;
 
 	}
-	
+
 }

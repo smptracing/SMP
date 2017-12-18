@@ -65,17 +65,11 @@ class Model_CarteraInversion extends CI_Model
     //FIN LISTAR CARTERA FECHA ACTUAL 
 
     //LISTAR CARTERA DE INVERSION
-      function GetCarteraInversion()
-        {
-            $cartera=$this->db->query("execute sp_CarteraInversion_r"); //PROCEDIMIENTO DE LISTAR CARTERAS
-            if($cartera->num_rows()>0)
-             {
-              return $cartera->result();
-             }else
-             {
-              return false;
-             }  
-        } 
+    function GetCarteraInversion()
+    {
+        $cartera=$this->db->query("execute sp_CarteraInversion_r");
+        return $cartera->result(); 
+    } 
     //FIN LISTAR CARTERA DE INVERSION
 //--------------FIN DE METODOS PARA EL MANTENIMIENTO DE RUBRO DE EJECUCION--------------------------------------------
      function GetCarteraAnios()

@@ -39,10 +39,10 @@ if (!function_exists('autentificar'))
             echo $CI->output->get_output();
         }
         else
-        {   
+        {
             if($CI->session->userdata('idPersona'))
             {
-                echo $CI->output->get_output();
+               /* echo $CI->output->get_output();
                 if(autorizar($url))
                 {
                     echo $CI->output->get_output();
@@ -51,7 +51,7 @@ if (!function_exists('autentificar'))
                 {
                     echo $CI->output->get_output();
                     redirect('Usuario/accesodenegado');
-                }
+                }*/
             }
             else
             {
@@ -606,7 +606,14 @@ function autorizar($url)
       'Estudio_Inversion/get_estado_PI',
       'programar_pip/listar_programacion',
       'programar_pip/listar_programacion_operacion_mantenimiento',
-      'programar_nopip/listar_metas_pi'
+      'programar_nopip/listar_metas_pi',
+      'PmiCriterioG/insertar',
+      'PmiCriterioG/criterioFuncion',
+      'PmiCriterioG/editar',
+      'PmiCriterioG/eliminar',
+      'PmiCriterioEspecifico/index',
+      'PmiCriterioEspecifico/editar',
+      'PmiCriterioEspecifico/eliminar'
     );
     foreach( $lista_API as $value ) {
       array_push($arrayPermitido, $value);

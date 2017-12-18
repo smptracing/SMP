@@ -264,7 +264,7 @@
 		                       //alert(response);
 		                }
 		        });*/
-		    	var urll=base_url+"index.php/PmiCriterioG/ReporteCriteriosG/"+id_funcion+'.'+anio_criterio_gen;
+		    	var urll=base_url+"index.php/PmiCriterioG/ReporteCriteriosG?anio="+anio_criterio_gen+'&id_funcion='+id_funcion;
 		        ventana=window.open(urll, 'Nombre de la ventana', 'width=1400,height=800');
 
 		}
