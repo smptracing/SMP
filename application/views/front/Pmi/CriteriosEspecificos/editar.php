@@ -35,7 +35,7 @@
 				<input type="button" id="btnEnviarFormulario" onclick="btnEnviarFormularioE();" class="btn btn-primary form-control" value="Guardar">
 			</div>
 			<div class="col-md-3 col-sm-3 col-xs-12">
-				<button  class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+				<button  class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 			</div>
 
 		</div>

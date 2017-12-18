@@ -15,7 +15,7 @@
 							<ul id="myTab" class="nav nav-tabs" role="tablist">
 								<li role="presentation" class="active">
 									<a href="#tab_Sector"  id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">
-										<b>Cadena Funcional</b>
+										<b>Parámetro de Busqueda Especifica por Cadena Funcional</b>
 									</a>
 								</li>
 							</ul>
@@ -85,6 +85,7 @@
 										                        </div>
 										                    </div>
 									                    </div>
+
 									                    <div class="row">
 									                    	<div class="form-group">
 										                        <div class="col-md-3 col-sm-3 col-xs-12">
@@ -92,8 +93,21 @@
 										                        </div>
 										                    </div>									                    	
 									                    </div><br>
+
+									                    <script type="text/javascript" src="jquery.js"></script>
+															<script type="text/javascript">
+															$(document).ready(function(){
+															  $("#hide").click(function(){
+															    $("#dataTableFuncion").hide();
+															  });
+															  $("#show").click(function(){
+															    $("#dataTableFuncion").show();
+															  });
+															});
+															</script>
+															<a href="#" id="show">Mostrar</a>
 									                   
-									                    <div id="dataTableFuncion">
+									                    <div id="dataTableFuncion" style="display:none;">
 										                    <table id="dynamic-table"  class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 																<thead>
 																	<tr>
