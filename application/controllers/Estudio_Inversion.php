@@ -21,7 +21,8 @@ class Estudio_Inversion extends CI_Controller
 
     {
 
-        if ($this->input->is_ajax_request()) {
+        if ($this->input->is_ajax_request()) 
+        {
             $NombreEstadoFormulacionEvalu=$this->input->post('valor');
             $datos = $this->Estudio_Inversion_Model->get_listaproyectos($NombreEstadoFormulacionEvalu);
             echo json_encode($datos);
@@ -31,17 +32,24 @@ class Estudio_Inversion extends CI_Controller
     }
 
 
-    public function get_EstudioInversion() //mostra ESTADO INVERSION
-
+    public function get_EstudioInversion()
     {
         $idUsuario    = $this->session->userdata('idPersona');
         $dataIdPersona=$this->Estudio_Inversion_Model->UsuarioPersona($idUsuario);
         $idPersona=$dataIdPersona->id_persona;
-        $TipoUsuarioCodigo=$dataIdPersona->cod_usuario_tipo;//01:administrador,
-        if ($this->input->is_ajax_request()) {
-            $datos = $this->Estudio_Inversion_Model->get_EstudioInversion($idPersona,$TipoUsuarioCodigo);
+        $TipoUsuarioCodigo=$dataIdPersona->cod_usuario_tipo;
+
+        if ($this->input->is_ajax_request()) 
+        {
+            $datos=$this->Estudio_Inversion_Model->get_EstudioInversion($idPersona,$TipoUsuarioCodigo);
+            foreach ($datos as $key => $value) 
+            {
+                $value->fecha = date('d/m/Y',strtotime($value->fecha));
+            }
             echo json_encode($datos);
-        } else {
+        } 
+        else
+        {
             show_404();
         }
     }

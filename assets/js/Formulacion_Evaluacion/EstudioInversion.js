@@ -409,7 +409,7 @@ $("#form-AddEstudioInversion").submit(function(event)
                                       {"data":"coordinador"},
                                       {"data":"avance_fisico",
                                       "mRender":function (data,type, full) {
-                                         return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Complete</small></td>";
+                                         return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Completado</small></td>";
                                     }},
                                     {"data": function (data, type, dataToSet) {
 

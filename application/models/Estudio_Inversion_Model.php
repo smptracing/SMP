@@ -23,28 +23,16 @@ class Estudio_Inversion_Model extends CI_Model
     {
         if($TipoUsuarioCodigo=='01')
         {
-          $listar_estudio_persona='listar_estudio_completo';
-
+            $listar_estudio_persona='listar_estudio_completo';
             $EstudioInversion = $this->db->query("EXEC sp_ListarEstudioInversion @opcion='".$listar_estudio_persona."' ");
-                if ($EstudioInversion->num_rows() > 0) {
-                    return $EstudioInversion->result();
-                } else {
-                    return false;
-                }
+            return $EstudioInversion->result();
         }
         else
         {
-          $listar_estudio_persona='listar_estudio_persona';
-
+            $listar_estudio_persona='listar_estudio_persona';
             $EstudioInversion = $this->db->query("EXEC sp_ListarEstudioInversion @opcion='".$listar_estudio_persona."', @id_persona='".$idPersona."' ");
-                if ($EstudioInversion->num_rows() > 0) {
-                    return $EstudioInversion->result();
-                } else {
-                    return false;
-                }
+            return $EstudioInversion->result();
         }
-
-
     }
 
     public function get_listaproyectos($NombreEstadoFormulacionEvalu)
