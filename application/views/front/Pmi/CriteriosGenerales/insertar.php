@@ -199,12 +199,22 @@ function CriterioEspecificos(id_criterio_gen)
 }
 function EliminarCriterioGeneral(idCriterioGeneral,id_funcion,anio_criterio_gen)
 {
+	swal({
+	    title: "¿Esta seguro que desea eliminar el Criterio General?",
+	    text: "",
+	    type: "warning",
+	    showCancelButton: true,
+	    cancelButtonText:"CANCELAR" ,
+	    confirmButtonColor: "#DD6B55",
+	    confirmButtonText: "SI,ELIMINAR",
+	    closeOnConfirm: false
+	},
+	function()
+	{
 		$('#cbx_funcion').selectpicker('refresh');
 		event.preventDefault();
 		paginaAjaxJSON({ "idCriterioGeneral" : idCriterioGeneral,"id_funcion" : id_funcion,'anio_criterio_gen':anio_criterio_gen}, '<?=base_url();?>index.php/PmiCriterioG/eliminar', 'POST', null, function(objectJSON)
 		{
-			//$('#modalTemp').modal('hide');
-
 			objectJSON=JSON.parse(objectJSON);
 
 			swal(
@@ -216,29 +226,31 @@ function EliminarCriterioGeneral(idCriterioGeneral,id_funcion,anio_criterio_gen)
 			function()
 			{
 				var html;
-                    	$("#bodyCriterioGenerales").html('');
-                    	var peso=0;var por=100;
-                    	$.each(objectJSON.listaCritetioGeneral,function(index,element)
-                    	{
-                    	    peso = (parseInt(peso) + parseInt(element.peso_criterio_gen));
-                    	    html +='<tr>';
-                    		html +='<td>'+element.nombre_criterio_gen+'</td>';
-                    		html +='<td>'+element.peso_criterio_gen+'</td>';
-                    		html +='<td>'+element.porcentaje+'</td>';
-                    		html +='<td><button type="button" class="btn btn-primary btn-xs " onclick="EditarCriterioGeneral('+element.id_criterio_gen+')"><i class="fa fa-pencil"></i></button>';
-                    		html +='<button type="button" class="btn btn-primary btn-xs " onclick="CriterioEspecificos('+element.id_criterio_gen+')"><i class="fa fa-bars"></i></button>';
-                    		html +='<button onclick="EliminarCriterioGeneral('+element.id_criterio_gen+','+element.id_funcion+','+element.anio_criterio_gen+');" data-toggle="tooltip" data-original-title="Eliminar Analitico"   class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>';
-                    		html +='</td>';
-                    		html +='</tr>';
-                    	});
-                    	html +='<tr><td> </td>';
-                    	html +='<td> <h6>'+peso+'</h6> </td>';
-                    	html +='<td> <h6> '+por+' %</h6> </td>';
-                    	html +='<td> </td></tr>';
-                 $("#table-GriterioGenerales > #bodyCriterioGenerales").append(html);
+            	$("#bodyCriterioGenerales").html('');
+            	var peso=0;var por=100;
+            	$.each(objectJSON.listaCritetioGeneral,function(index,element)
+            	{
+            	    peso = (parseInt(peso) + parseInt(element.peso_criterio_gen));
+            	    html +='<tr>';
+            		html +='<td>'+element.nombre_criterio_gen+'</td>';
+            		html +='<td>'+element.peso_criterio_gen+'</td>';
+            		html +='<td>'+element.porcentaje+'</td>';
+            		html +='<td><button type="button" class="btn btn-primary btn-xs " onclick="EditarCriterioGeneral('+element.id_criterio_gen+')"><i class="fa fa-pencil"></i></button>';
+            		html +='<button type="button" class="btn btn-primary btn-xs " onclick="CriterioEspecificos('+element.id_criterio_gen+')"><i class="fa fa-bars"></i></button>';
+            		html +='<button onclick="EliminarCriterioGeneral('+element.id_criterio_gen+','+element.id_funcion+','+element.anio_criterio_gen+');" data-toggle="tooltip" data-original-title="Eliminar Analitico"   class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>';
+            		html +='</td>';
+            		html +='</tr>';
+            	});
+            	html +='<tr><td> </td>';
+            	html +='<td> <h6>'+peso+'</h6> </td>';
+            	html +='<td> <h6> '+por+' %</h6> </td>';
+            	html +='<td> </td></tr>';
+                $("#table-GriterioGenerales > #bodyCriterioGenerales").append(html);
 			});
 
 		}, false, true);
+
+	});	
 
 }
 </script>
