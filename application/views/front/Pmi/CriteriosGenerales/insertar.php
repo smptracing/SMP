@@ -29,12 +29,8 @@
 				<label></label>
 				<input style="margin-top: 5px;" type="button" id="btnAgregarCriterioGeneral" class="btn btn-primary form-control" value="Agregar">
 			</div>
-			<div class="col-md-3 col-sm-3 col-xs-12">
-				<label></label>
-				<button class="btn btn-info form-control" style="margin-top: 5px;margin-left: 100px;" id="btnGuardarCambios"><i class="fa fa-refresh"> Guardar</i> </button>
-			</div>
 		</div>
-		<div style="height:300px;overflow:scroll;overflow-x: hidden; "><br/>
+		<div style="height:200px;overflow:scroll;overflow-x: hidden; "><br/>
 			<table id="table-GriterioGenerales" class="table table-striped table-bordered jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 				<thead>
 					<tr>
@@ -64,6 +60,11 @@
 					</tr>
 				</tbody>
 			</table>
+		</div>
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<button class="btn btn-danger" style="float: right;" data-dismiss="modal">
+                <span class="glyphicon glyphicon-remove"></span> Cerrar
+           	</button>
 		</div>
 </form>
 <script>
