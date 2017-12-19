@@ -84,10 +84,18 @@ class Mo_Monitoreo extends CI_Controller
                 echo json_encode($msg);exit;
             }
 
+            $ejecFinancieraReal = floatval(str_replace(',','',$this->input->post('txtEjFinReal')));
+
+            if($ejecFinancieraReal>$ejecucion->ejec_finan_prog)
+            {
+                $msg = (['proceso' => 'Error', 'mensaje' => 'El Avance financiero real no puede ser mayor al avance financiero programado']);
+                echo json_encode($msg);exit;
+            }
+
             $this->db->trans_start();
 
             $data['ejec_fisic_real']=$this->input->post('txtEjFisReal');
-            $data['ejec_finan_real']=floatval(str_replace(',','',$this->input->post('txtEjFinReal')));
+            $data['ejec_finan_real']=$ejecFinancieraReal;
             $data['fecha_modificacion']=date('Y-m-d');
 
             $this->Model_Mo_Ejecucion_Actividad->editar($data,$this->input->post('hdIdEjecucion'));
