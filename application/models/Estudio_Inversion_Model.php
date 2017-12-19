@@ -263,15 +263,10 @@ class Estudio_Inversion_Model extends CI_Model
         }
 
     }
-    public function AddDocumentosEstudio($txt_id_est_invAdd, $txt_documentosEstudio, $txt_descripcionEstudio, $Url_documento)
+    public function AddDocumentosEstudio($data)
     {
-        $this->db->query("execute sp_DocumentoInversion_r '" . $txt_id_est_invAdd . "','" . $txt_documentosEstudio . "', '" . $txt_descripcionEstudio . "','" . $Url_documento . "'");
-        if ($this->db->affected_rows() > 0) {
-            return true;
-        } else {
-            return false;
-        }
-
+        $this->db->insert('DOCUMENTOS_INVERSION',$data);
+        return $this->db->affected_rows();
     }
     //ver las etpas de estudio
     public function get_etapas_estudio($txtIdEtapaEstudio_v)

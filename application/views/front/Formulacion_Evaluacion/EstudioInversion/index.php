@@ -20,9 +20,7 @@
 								</li>
 							</ul>
 							<div id="myTabContent" class="tab-content">
-								<!-- /Contenido del sector -->
 								<div role="tabpanel" class="tab-pane fade active in" id="tab_Sector" aria-labelledby="home-tab">
-									<!-- /tabla de sector desde el row -->
 									<div class="row">  
 										<div class="col-md-12 col-sm-12 col-xs-12">
 											<div class="x_panel">
@@ -79,39 +77,9 @@
 															</tbody>
                                                         </table>
                                                     </div>
-													<!--<div class="x_content">
-														<table id="table-Modulo_FE"  class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
-															<thead>
-																<tr>
-																	<td>Código</td>
-																	<td>Nombre</td>
-																	<td>Función</td>
-																	<td>Costo</td>
-																	<td>Situación</td>
-																	<td>Avance</td>
-																	<td>Coordinador</td>
-																	<td>Acciones</td>
-																	<td class="col-md-1 col-md-1 col-xs-12"></td>
-																</tr>
-															</thead>
-															<tbody>
-																<?php foreach($ListaModuloFE as $item ){ ?>
-																	  <tr>
-																		<td>
-																			<?=$item->nombre_modulo?>
-																	    </td>
-																		<td>
-																		  	<button type='button' class='editar btn btn-primary btn-xs' onclick="paginaAjaxDialogo(null, 'Modificar Modulo',{id:'<?=$item->id_modulo?>'}, base_url+'index.php/Modulo_FE/editar', 'POST', null, null, false, true)"><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' onclick="EliminarModulo('<?=$item->id_modulo?>');"><i class='fa fa-trash-o'></i></button>
-																		</td>
-																	  </tr>
-															     <?php } ?>
-															</tbody>
-														</table>
-													</div>-->
 											</div>
 										</div>
 									</div>
-										<!-- / fin tabla de sector desde el row -->
 								</div>
 							</div>
 						</div>

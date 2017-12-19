@@ -1,30 +1,24 @@
 <div class="right_col" role="main">
-          <div class="">
-<!--Inicio primer panel General-->
+<div class="">
       <div class="clearfix"></div>
         <div class="">
           <div class="col-md-12 col-sm-6 col-xs-12">
              <div class="x_panel">
-             <!--inicio de pestaña configurtacion-->
                 <div class="x_title">
                      <h2><b>ESTUDIO DE PREINVERSIÓN </b></h2>
 
                       <div class="clearfix"></div>
                 </div>
-              <!--final  de pestaña configurtacion-->
                        <div class="x_content">
 
 
                                <div id="myTabContent" class="tab-content">
-                                             <!-- /Inicio Contenido -->
                                            <div role="tabpanel" class="tab-pane fade active in" id="tab_EstadoCicloInversion" aria-labelledby="home-tab">
-                                        <!-- /Inicio tabla estado   -->
                                            <div class="row">
                                               <div class="col-md-12 col-sm-12 col-xs-12">
                                               <div class="x_panel">
 
                                                     <div class="x_title">
-                                                           <!-- <h2>Listado de  <small>.</small></h2>-->
                                                           <button type="button" id="btn_nuevoEstInv" class="btn btn-primary" data-toggle="modal" data-target="#ventanaEstudioInversion" >
                                                                 <span  aria-hidden="true"></span><strong> Nuevo</strong>
                                                           </button>
@@ -32,12 +26,9 @@
                                                            </div>
 
                                                       </div>
-                                                      <!--inicio de la tabla estado -->
-                                                        <!--inicio  de icono de reporte -->
                                                         <div class="clearfix">
 
                                                         </div>
-                                                      <!--fin  de icono de reporte -->
                                                       <div class="x_content" >
                                                         <div class="table-responsive">
                                                                 <table id="dynamic-table-EstudioInversion" class="table table-striped jambo_table bulk_action" with="100%" >
@@ -60,25 +51,20 @@
                                                                 </table>
                                                               </div>
                                                       </div>
-                                                      <!--fin de la tabla estado -->
                                            </div>
                                               </div>
                                            </div>
-                                        <!-- / fin tabla estado del  desde el row -->
                                         </div>
-                                        <!-- /fin del Contenido del estado  -->
                                </div>
              </div>
            </div>
           </div>
       <div class="clearfix"></div>
-  <!--fin primer panel General-->
        <hr>
           </div>
           <div class="clearfix"></div>
         </div>
      </div>
-<!--- popul para registar estudio de inversion -->
 <div class="modal fade" id="ventanaEstudioInversion" data-backdrop="static" data-keyboard="false" tabindex="-1"role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
@@ -383,72 +369,64 @@
 <!-- /.ventana para la asiganacion de documentos en los entregables -->
 <div class="modal fade" id="VentanaDocumentosEstudio" role="dialog">
     <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-          Documentos de Estudio </h4>
-        </div>
-        <div class="modal-body">
-         <div class="row">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Documentos de Estudio</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
                     <div class="col-xs-12">
-                                        <!-- PAGE CONTENT BEGINS -->
-                          <form class="form-horizontal " id="form-AddDocumentosEstudio"   action="<?php echo base_url(); ?>Estudio_Inversion/AddDocumentosEstudio" method="POST" >
-                                    <div class="item form-group">
-                                              <input id="txt_id_est_invAdd" name="txt_id_est_invAdd" class="form-control col-md-7 col-xs-12"  type="hidden">
-                                      </div>
-                                       <div class="form-group">
-                                            <label class="control-label col-md-2 col-sm-3 col-xs-12">Nombre </label>
-                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                  <input  id="txt_documentosEstudio" name="txt_documentosEstudio" placeholder="Nombre del Documento"class="form-control col-md-6 col-xs-5"  type="text" >
-                                         </div>
-                                          </div>
-                                          <div class="form-group">
-                                            <label class="control-label col-md-2 col-sm-3 col-xs-12">Descripción </label>
-                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                  <input id="txt_descripcionEstudio" name="txt_descripcionEstudio" placeholder="Descripción de documento" class="form-control col-md-12 col-xs-12" type="text">
-                                          </div>
-                                          </div>
-
-                                          <div class="form-group">
-                                            <label class="control-label col-md-2 col-sm-3 col-xs-12">Subir Documento</label>
-                                                <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input type="file" name="Documento_invserion">
-                                                </div>
-                                          </div>
-                                            <div class="form-group">
-                                              <div class="col-md-6 col-md-offset-3">
-                                                <button id="send" type="submit" class="btn btn-success">
-                                                  <span class="glyphicon glyphicon-floppy-disk"></span>
-                                                  Guardar
-                                                </button>
-                                                 <button  class="btn btn-danger" data-dismiss="modal">
-                                                   <span class="glyphicon glyphicon-remove"></span>
-                                                  Cerrar
-                                                </button>
-                                              </div>
-                                            </div>
-                                           <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                              <h4>
-                                                Entregables
-                                              </h4>
-                                            </div>
-                                                  <table id="table-Documento" class="table">
-
-                                                  </table>
-                                             </div>
-                                </form>
-                        </div><!-- /.span -->
-                 </div><!-- /.row -->
+                        <form class="form-horizontal " id="form-AddDocumentosEstudio"   action="<?php echo base_url(); ?>Estudio_Inversion/AddDocumentosEstudio" method="POST" >
+                            <div class="item form-group">
+                                <input id="txt_id_est_invAdd" name="txt_id_est_invAdd" class="form-control col-md-7 col-xs-12"  type="hidden">
+                            </div>
+                            <div id="validarFrmDocumento">
+                            <div class="form-group">
+                                <label class="control-label col-md-2 col-sm-3 col-xs-12">Nombre*</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input  id="txt_documentosEstudio" name="txt_documentosEstudio" placeholder="Nombre del Documento" autocomplete="off" class="form-control col-md-6 col-xs-5"  type="text" >
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2 col-sm-3 col-xs-12">Descripción</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input id="txt_descripcionEstudio" autocomplete="off" name="txt_descripcionEstudio" placeholder="Descripción de documento" class="form-control col-md-12 col-xs-12 notValidate" type="text">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2 col-sm-3 col-xs-12">Documento*</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="file" class="form-control" name="Documento_invserion" id="Documento_invserion">
+                                    <label style="color: red;">Solo se aceptan archivos con extensión pdf, doc, docx </label>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-3">
+                                    <button id="send" type="submit" class="btn btn-success">
+                                        <span class="glyphicon glyphicon-floppy-disk"></span> Guardar
+                                    </button>
+                                    <button  class="btn btn-danger" data-dismiss="modal">
+                                        <span class="glyphicon glyphicon-remove"></span> Cerrar
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4>Entregables</h4>
+                                </div>
+                                <table id="table-Documento" class="table"></table>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer"></div>
         </div>
-        <div class="modal-footer">
-
-        </div>
-      </div>
     </div>
 </div>
-<!-- /.ventana para la asiganacion de documentos en los entregables -->
+
 
 <!-- /. INICIO VENTANA VER ETAPAS DE UN ESTUDIO-->
 <div class="modal fade" id="ventana_ver_etapas_estudio" role="dialog">

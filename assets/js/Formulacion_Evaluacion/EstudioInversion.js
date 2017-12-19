@@ -223,34 +223,40 @@ $("#form-AddEstudioInversion").submit(function(event)
 //Subida de documentos de inversion
 
 
-                      $("#form-AddDocumentosEstudio").submit(function(event)//AÑADIR NUEVA CARTERA
-                       {
-                            event.preventDefault();
-                            var formData=new FormData($("#form-AddDocumentosEstudio")[0]);
-                            $.ajax({
-                                type:"POST",
-                                enctype: 'multipart/form-data',
-                                url:base_url+"index.php/Estudio_Inversion/AddDocumentosEstudio",
-                                data: formData,
-                                cache: false,
-                                contentType:false,
-                                processData:false,
-                                success:function(resp){
-                                 if (resp=='true') {
-                                     swal("REGISTRADO","DOCUMENTO DE INSERSIÓN", "success");
-                                   }
-                                    if (resp=='false') {
-                                     swal("SE REGISTRÓ","DOCUMENTO DE INSERSIÓN ", "error");
-                                   }
-                                   var id_est_inv=$("#txt_id_est_invAdd").val();
-                                   listarDocumentos(id_est_inv);
-
-                               }
-
-                            });
-                                   //$('#form-AddDocumentosEstudio')[0].reset();
-                                   //$("#VentanaDocumentosEstudio").modal("hide");
-                       });
+$("#form-AddDocumentosEstudio").submit(function(event)//AÑADIR NUEVA CARTERA
+{
+    event.preventDefault();
+    $('#validarFrmDocumento').data('formValidation').validate();
+    if(!($('#validarFrmDocumento').data('formValidation').isValid()))
+    {
+        return;
+    }
+    var formData=new FormData($("#form-AddDocumentosEstudio")[0]);
+    $.ajax({
+        type:"POST",
+        enctype: 'multipart/form-data',
+        url:base_url+"index.php/Estudio_Inversion/AddDocumentosEstudio",
+        data: formData,
+        cache: false,
+        contentType:false,
+        processData:false,
+        success:function(resp)
+        {
+            resp = JSON.parse(resp);
+            if (typeof resp.error !== "undefined")
+            {
+                swal("Error",resp.error, "error");
+            }
+            else
+            {
+                ((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje, "success") : swal(resp.proceso,resp.mensaje, "error"));
+            }
+            var id_est_inv=$("#txt_id_est_invAdd").val();
+            $('#form-AddDocumentosEstudio')[0].reset();
+            listarDocumentos(id_est_inv);
+        }
+    });
+});
 
 //fin de documentos de inversion
 
@@ -677,6 +683,38 @@ $(function()
                     notEmpty:
                     {
                         message: '<b style="color: red;">El campo "Tipo de Estudio" es requerido.</b>'
+                    }
+                }
+            }
+        }
+    });
+
+    $('#validarFrmDocumento').formValidation(
+    {
+        framework: 'bootstrap',
+        excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+        live: 'enabled',
+        message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+        trigger: null,
+        fields:
+        {
+            txt_documentosEstudio:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Nombre" es requerido.</b>'
+                    }
+                }
+            },
+            Documento_invserion:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Documento" es requerido.</b>'
                     }
                 }
             }

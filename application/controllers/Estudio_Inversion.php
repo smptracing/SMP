@@ -276,44 +276,42 @@ class Estudio_Inversion extends CI_Controller
     //añadir documentos ala estudio de invserion
     public function AddDocumentosEstudio()
     {
-
         if ($this->input->is_ajax_request())
         {
+            $msg=array();
 
-            // echo  $txt_Cartera;
             $config['upload_path']   = './uploads/DocumentosInversion/';
-            $config['allowed_types'] = 'pdf|doc|xml|docx|PDF|DOC|DOCX|xls|xlsx';
+            $config['allowed_types'] = 'pdf|doc|docx|PDF|DOC|DOCX';
             $config['max_width']     = 1024;
             $config['max_height']    = 768;
-            $config['max_size']      = 15000;
-            $config['encrypt_name']  = false;
+            $config['file_name'] = 'DOC_';
+            $config['max_size'] = '20048';
 
             $this->load->library('upload', $config);
 
-            if (!$this->upload->do_upload('Documento_invserion')) {
-
-                $error = "ERROR NO SE CARGO EL DOCUMENTO DE INSERSIÓN";
-                echo $error;
-            } else {
-
-                $txt_id_est_invAdd      = $this->input->post("txt_id_est_invAdd");
-                $txt_documentosEstudio  = $this->input->post("txt_documentosEstudio");
-                $txt_descripcionEstudio = $this->input->post("txt_descripcionEstudio");
-                $Url_documento          = $this->upload->file_name;
-                //$error="corrercto";
-                if ($this->Estudio_Inversion_Model->AddDocumentosEstudio($txt_id_est_invAdd, $txt_documentosEstudio, $txt_descripcionEstudio, $Url_documento) == false) {
-                    echo "1";
-                } else {
-                    echo "0";
-                }
-
+            if (!$this->upload->do_upload('Documento_invserion')) 
+            {
+                $error = array('error' => $this->upload->display_errors('', ''));
+                $this->load->view('front/json/json_view',['datos' => $error]);
             }
-        } else {
+            else
+            {
+                $c_data['id_est_inv']=$this->input->post("txt_id_est_invAdd");
+                $c_data['nombre_documento']=$this->input->post("txt_documentosEstudio");
+                $c_data['desc_documento']=$this->input->post("txt_descripcionEstudio");
+                $c_data['Url_documento']=$this->upload->data('file_name');
+
+                $q1=$this->Estudio_Inversion_Model->AddDocumentosEstudio($c_data);
+
+                $msg = ($q1>0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
+                $this->load->view('front/json/json_view', ['datos' => $msg]);
+            }
+        } 
+        else
+        {
             show_404();
         }
-
     }
-    //fin documentos de inversion
 
     //listar las etapas de los estudios
     public function get_etapas_estudio() //mostra ESTADO INVERSION
