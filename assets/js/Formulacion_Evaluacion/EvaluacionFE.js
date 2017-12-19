@@ -201,7 +201,7 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
                   });
                 }
                  //para registar estado de FE
-                 var  RegistarEstadoFE=function(tbody,table){
+          var  RegistarEstadoFE=function(tbody,table){
                     $(tbody).on("click","button.EstadoFE",function(){
                         var data=table.row( $(this).parents("tr")).data();
                          var id_etapa_estudio=data.id_etapa_estudio;

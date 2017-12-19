@@ -11,7 +11,7 @@ class Model_FEestado extends CI_Model
       /*añadir funcion*/
         function get_FEestado()
         {
-            $FEestado=$this->db->query("select* from ESTADO_FE");//listar funcion
+            $FEestado=$this->db->query("select id_estado,denom_estado_fe from ESTADO_FE");//listar funcion
             if($FEestado->num_rows()>=0)
              {
               return $FEestado->result();

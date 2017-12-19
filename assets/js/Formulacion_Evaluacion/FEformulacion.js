@@ -267,7 +267,7 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
                         "url":base_url +"index.php/FEestado/get_FEestado",
                         type:"POST",
                         success:function(respuesta3){
-                         //  alert(respuesta);
+                        alert(respuesta3);
                          var registros = eval(respuesta3);
                             for (var i = 0; i <registros.length;i++) {
                               html +="<option  value="+registros[i]["id_estado"]+"> "+registros[i]["denom_estado_fe"]+" </option>";

@@ -184,7 +184,7 @@
                         <div class="col-md-11 col-sm-6 col-xs-12  form-group">
                         <label  for="name">Costo de Inversión<span class="required">*</span>
                         </label>
-                        <input type="text" id="txtCostoPip" name="txtCostoPip" class="form-control col-md-7 col-xs-5"  placeholder="0.00" autocomplete="off" maxlength="12">
+                        <input type="text" id="txtCostoPip" name="txtCostoPip" class="form-control col-md-7 col-xs-5"  placeholder="0.00" autocomplete="off" maxlength="15">
                         </div>
                         </div>
                         <div class="col-md-4">
@@ -832,7 +832,7 @@
                                 <div class="col-md-4">
                                     <div class="col-md-11 col-sm-6 col-xs-12">
                                         <label  for="name">Costo de Inversion<span class="required">*</span></label>
-                                        <input id="txtCostoPip_m" name="txtCostoPip_m" class="form-control col-md-7 col-xs-5" placeholder="Costo de inversion" required="required" type="text" maxlength="12">
+                                        <input id="txtCostoPip_m" name="txtCostoPip_m" class="form-control col-md-7 col-xs-5" placeholder="Costo de inversion" required="required" type="text" >
                                     </div>
                                 </div>
                                 <div class="col-md-4">

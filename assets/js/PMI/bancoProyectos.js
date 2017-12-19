@@ -258,11 +258,17 @@ $(function()
                     {
                         message: '<b style="color: red;">El campo "Costo de inversión" es requerido.</b>'
                     },
-                    regexp:
+                        regexp:
                     {
                         regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
                         message: '<b style="color: red;">El campo "Costo de Inversión" debe ser númerico.</b>'
+                    },
+                    stringLength:
+                    {
+                         max: 12,
+                        message: '<b style="color: red;">El campo "Costo de inversión" debe tener como máximo 12 caracteres.</b>'
                     }
+
                 }
             },
             txt_beneficiarios:
@@ -272,6 +278,11 @@ $(function()
                     notEmpty:
                     {
                         message: '<b style="color: red;">El campo "Número de beneficiarios" es requerido.</b>'
+                    },
+                    between: {
+                        min: 1,
+                        max: 999999999,
+                        message: "<b style='color: red;'>El valor debe estar entre 0 y 999'999,999</b>"
                     }
                 }
             },
@@ -459,11 +470,17 @@ $(function()
                     {
                         message: '<b style="color: red;">El campo "Costo de inversión" es requerido.</b>'
                     },
-                    regexp:
+                        regexp:
                     {
                         regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
                         message: '<b style="color: red;">El campo "Costo de Inversión" debe ser númerico.</b>'
+                    },
+                    stringLength:
+                    {
+                        max: 12,
+                        message: '<b style="color: red;">El campo "Costo de inversión" debe tener como máximo 12 caracteres.</b>'
                     }
+
                 }
             },
             txt_beneficiarios_m:
@@ -472,12 +489,12 @@ $(function()
                 {
                     notEmpty:
                     {
-                        message: '<b style="color: red;">El campo "Beneficiarios" es requerido.</b>'
+                        message: '<b style="color: red;">El campo "Número de beneficiarios" es requerido.</b>'
                     },
-                    regexp:
-                    {
-                        regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
-                        message: '<b style="color: red;">El campo "Beneficiarios" debe ser un número.</b>'
+                    between: {
+                        min: 1,
+                        max: 999999999,
+                        message: "<b style='color: red;'>El valor debe estar entre 0 y 999'999,999</b>"
                     }
                 }
             },
