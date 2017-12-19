@@ -415,20 +415,20 @@ $("#form-AddEstudioInversion").submit(function(event)
 
                                       if (data.denom_etapas_fe =='Formulación')
                                       {
-                                        return '<a  href="../FEformulacion/Feformulacion?id_est_inv='+data.id_est_inv+'"><button type="button" class="btn btn btn-primary btn-xs">'+data.denom_etapas_fe +' </button></a>';
+                                        return '<a data-toggle="tooltip" title="ver etapa"  href="../FEformulacion/Feformulacion?id_est_inv='+data.id_est_inv+'"><button data-toggle="tooltip" title="ver etapa" type="button" class="btn btn btn-primary btn-xs">'+data.denom_etapas_fe +' </button></a>';
                                       }
                                         if (data.denom_etapas_fe =='Evaluación')
                                       {
-                                     return '<a  href="../EvaluacionFE/FeEvaluacion?id_est_inv='+data.id_est_inv+'"><button type="button" class="btn btn btn-warning btn-xs">'+data.denom_etapas_fe +' </button></a>';
+                                     return '<a data-toggle="tooltip" title="ver etapa"  href="../EvaluacionFE/FeEvaluacion?id_est_inv='+data.id_est_inv+'"><button data-toggle="tooltip" title="ver etapa" type="button" class="btn btn btn-warning btn-xs">'+data.denom_etapas_fe +' </button></a>';
                                       }
                                         if (data.denom_etapas_fe =='Aprobado')
                                       {
-                                     return '<a  href="../FEformulacion/FeAprobado?id_est_inv='+data.id_est_inv+'"><button type="button" class="btn btn btn-info btn-xs">'+data.denom_etapas_fe +' </button></a>';
+                                     return '<a data-toggle="tooltip" title="ver etapa"  href="../FEformulacion/FeAprobado?id_est_inv='+data.id_est_inv+'"><button data-toggle="tooltip" title="ver etapa" type="button" class="btn btn btn-info btn-xs">'+data.denom_etapas_fe +' </button></a>';
 
                                       }
                                         if (data.denom_etapas_fe =='Viabilizado')
                                       {
-                                      return '<a  href="../FEformulacion/FeViabilizado?id_est_inv='+data.id_est_inv+'"><button type="button" class="btn btn btn-success btn-xs">'+data.denom_etapas_fe +' </button></a>';
+                                      return '<a data-toggle="tooltip" title="ver etapa"  href="../FEformulacion/FeViabilizado?id_est_inv='+data.id_est_inv+'"><button data-toggle="tooltip" title="ver etapa" type="button" class="btn btn btn-success btn-xs">'+data.denom_etapas_fe +' </button></a>';
 
                                       }
                                       if (data.denom_etapas_fe ==null)
