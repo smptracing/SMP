@@ -381,6 +381,16 @@ $(function()
                     }
                 }
             },
+            fecha_viabilidad_m:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Fecha de Viabilidad" es requerido.</b>'
+                    }
+                }
+            },
             cbxNatI_m:
             {
                 validators:

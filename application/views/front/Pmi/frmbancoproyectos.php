@@ -23,6 +23,17 @@
   .btn {
     border-radius: 0px !important;
   }
+  .btn-group
+  {
+
+  }
+  .dropdown-menu {
+    z-index: 90000;
+}
+.table-responsive
+{
+    z-index: 80000;
+}
 </style>
 <div class="right_col" role="main">
           <div class="">
@@ -994,4 +1005,13 @@
 $('.modal').on('hidden.bs.modal', function(){
     $(this).find('form')[0].reset();
 });
+
+/*$('.table-responsive').on('show.bs.dropdown', function () {
+     $('.table-responsive').css( "overflow", "inherit" );
+});
+
+$('.table-responsive').on('hide.bs.dropdown', function () {
+     $('.table-responsive').css( "overflow", "auto" );
+})*/
+
 </script>
