@@ -33,33 +33,92 @@
 
 </form>
 <script>
-	$( document ).ready(function() {
-		   $('#cbx_funcion').selectpicker('refresh');
-		   $('#btnEditarCriterioGeneral').on('click', function(event)
+	$( document ).ready(function()
+	{
+	   	$('#cbx_funcion').selectpicker('refresh');
+	   	$('#btnEditarCriterioGeneral').on('click', function(event)
+		{
+			event.preventDefault();
+			
+			$('#form-EditarCriterioGeneral').data('formValidation').validate();
+
+			if(!($('#form-EditarCriterioGeneral').data('formValidation').isValid()))
 			{
-				event.preventDefault();
-				paginaAjaxJSON($('#form-EditarCriterioGeneral').serialize(), '<?=base_url();?>index.php/PmiCriterioG/editar', 'POST', null, function(objectJSON)
+				return;
+			}
+			paginaAjaxJSON($('#form-EditarCriterioGeneral').serialize(), '<?=base_url();?>index.php/PmiCriterioG/editar', 'POST', null, function(objectJSON)
+			{
+				
+				$('#1').modal('hide');
+				objectJSON=JSON.parse(objectJSON);
+
+				swal(
 				{
-					
-					$('#1').modal('hide');
-					objectJSON=JSON.parse(objectJSON);
+					title: '',
+					text: objectJSON.mensaje,
+					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+				},
+				function()
+				{					
+					paginaAjaxDialogo(null, 'Registro Criterio Generales', { id_funcion:objectJSON.id_funcion, nombre_funcion:'SALUD',anio:objectJSON.anio }, base_url+'index.php/PmiCriterioG/insertar', 'GET', null, null, false, true);
+				});
 
-					swal(
-					{
-						title: '',
-						text: objectJSON.mensaje,
-						type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
-					},
-					function()
-					{
-						
-						paginaAjaxDialogo(null, 'Registro Criterio Generales', { id_funcion:objectJSON.id_funcion, nombre_funcion:'SALUD',anio:objectJSON.anio }, base_url+'index.php/PmiCriterioG/insertar', 'GET', null, null, false, true);
-
-					});
-
-				}, false, true);
-
+			}, false, true);
 		});
+	});
+	$(function()
+	{
+		$('#form-EditarCriterioGeneral').formValidation(
+		{
+			framework: 'bootstrap',
+			excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+			live: 'enabled',
+			message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+			trigger: null,
+			fields:
+			{
+				txtNombreCriterio:
+				{
+					validators:
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;text-align: center;">El campo "Criterio General" es requerido.</b>'
+						}
+					}
+				},
+				txtAnioCriterioG:
+				{
+					validators:
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;text-align: center;">El campo "Anio Criterio" es requerido.</b>'
+						},
+						regexp:
+			            {
+			                regexp: /^\d{4}$/,
+			                message: '<b style="color: red;">El campo "Anio Criterio" debe ser un número entero de 4 dígitos.</b>'
+			            }
+					}
+				},
+				txtPesoCriterioG:
+				{
+					validators:
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;text-align: center;">El campo "Criterio General" es requerido.</b>'
+						},
+						regexp:
+			            {
+			                regexp: /^\d*$/,
+			                message: '<b style="color: red;">El campo "Peso Criterio General" debe ser un número entero.</b>'
+			            }
+					}
+				}
 
+			}
+		});
 	});
 </script>
