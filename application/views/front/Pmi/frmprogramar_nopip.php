@@ -160,7 +160,7 @@
 
                            <button  class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-log-out"></span>
-                            Cerrar Ventana
+                            Cerrar
                           </button>
                         </div>
                       </div>
@@ -284,7 +284,7 @@
 
                            <button  class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-log-out"></span>
-                            Cerrar Ventana
+                            Cerrar
                           </button>
                         </div>
                       </div>

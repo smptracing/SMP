@@ -7,6 +7,14 @@
                     <h2><b>PROYECTOS EN FORMULACIÓN</b></h2>
                     <div class="clearfix"></div>
                 </div>
+
+                                                <!--inicio  de icono de reporte -->
+
+                                                        <div class="clearfix">
+                                                           <div class="pull-right tableTools-container-evaluacion">
+                                                           </div>
+                                                        </div>
+                                                      <!--fin  de icono de reporte -->                            
                 <div class="x_content">
                     <div class="table-responsive">
                         <table id="tabla-formulacion" class="table table-striped jambo_table bulk_action" style="width: 100%">
@@ -38,7 +46,7 @@
     <div class="clearfix"></div>
 </div>
 
-
+                                                        
 <div class="modal fade" id="VerDetalleFormulacion"  role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">

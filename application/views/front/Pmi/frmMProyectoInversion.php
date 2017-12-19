@@ -697,7 +697,7 @@
                                <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>Guardar</button>
                               <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                                  <button id="btn-GuardarMontoProgramadoOper"  class="btn btn-success">
-                               <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>Guardar1</button>
+                               <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>Guardar</button>
                             </div>
                           </div>
                         </form>

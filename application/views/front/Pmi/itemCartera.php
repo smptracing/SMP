@@ -68,7 +68,7 @@
                         </button>
                         <button  data-dismiss="modal" class="btn btn-danger">
                             <span class="glyphicon glyphicon-remove"></span>
-                            Cerrar ventana
+                            Cerrar
                         </button>
                     </div>
                 </div>
