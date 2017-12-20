@@ -75,51 +75,129 @@
 </form>
 
 <script>
-	$(document).ready(function() 
-	{
- 		 $('.selectpicker').selectpicker({
-		  
-		  });
- 		 $("#TipoNoPip").change(function()
- 		 {
-	 		 var html='';
-	 		 $("#ListadoFiltroNoPIP").html(html);
-	 		 var desc_tipo_nopip =$("#TipoNoPip").val();
-	 		 $.ajax({ url:base_url+"index.php/NoPipProgramados/listarNopip",type:"POST",data:{desc_tipo_nopip:desc_tipo_nopip},success:function(respuesta)
-	                {
-                    	console.log(respuesta);
-                    	var registros = eval(respuesta);
-                        for (var i = 0; i <registros.length;i++) 
-                        {
-                          html +="<option  value='"+registros[i]["id_pi"]+'_'+registros[i]["nombre_pi"]+"'> "+registros[i]["nombre_pi"]+" </option>";
-                        };
-                        $("#ListadoFiltroNoPIP").html(html);
-                        $('select[name=ListadoFiltroNoPIP]').change();//borrado
-                        $('.selectpicker').selectpicker('refresh');  
-	                }
-	            });
- 		 });
+$(document).ready(function() 
+{
+		 $('.selectpicker').selectpicker({
+	  
+	  });
+		 $("#TipoNoPip").change(function()
+		 {
+ 		 var html='';
+ 		 $("#ListadoFiltroNoPIP").html(html);
+ 		 var desc_tipo_nopip =$("#TipoNoPip").val();
+ 		 $.ajax({ url:base_url+"index.php/NoPipProgramados/listarNopip",type:"POST",data:{desc_tipo_nopip:desc_tipo_nopip},success:function(respuesta)
+                {
+                	console.log(respuesta);
+                	var registros = eval(respuesta);
+                    for (var i = 0; i <registros.length;i++) 
+                    {
+                      html +="<option  value='"+registros[i]["id_pi"]+'_'+registros[i]["nombre_pi"]+"'> "+registros[i]["nombre_pi"]+" </option>";
+                    };
+                    $("#ListadoFiltroNoPIP").html(html);
+                    $('select[name=ListadoFiltroNoPIP]').change();//borrado
+                    $('.selectpicker').selectpicker('refresh');  
+                }
+            });
+		 });
 
- 		$("#ListadoFiltroNoPIP").change(function()
- 		 {
-		  	var desc_tipo_nopip =$("#ListadoFiltroNoPIP").val().split('_')[1];
-	 		$("#txtnombreNoPip").val(desc_tipo_nopip);
-		});
- 		
-
- 		$('#btnEnviarFormulario').on('click', function(event)
-		{
-			var Documento_noPip =document.getElementById('Documento_noPip').files[0].name;//$("#urlDocumentoObservacion").val();
-            var url=getFileExtension(Documento_noPip);
-            $("#nombreUrlDocumento").val(url);
-		});
-
-		function getFileExtension(filename)
-	    {
-			return filename.slice((filename.lastIndexOf(".") - 1 >>> 0) + 2);
-		}
-	 		 			 
+		$("#ListadoFiltroNoPIP").change(function()
+		 {
+	  	var desc_tipo_nopip =$("#ListadoFiltroNoPIP").val().split('_')[1];
+ 		$("#txtnombreNoPip").val(desc_tipo_nopip);
 	});
+		
+
+		$('#btnEnviarFormulario').on('click', function(event)
+	{
+		var Documento_noPip =document.getElementById('Documento_noPip').files[0].name;//$("#urlDocumentoObservacion").val();
+        var url=getFileExtension(Documento_noPip);
+        $("#nombreUrlDocumento").val(url);
+	});
+
+	function getFileExtension(filename)
+    {
+		return filename.slice((filename.lastIndexOf(".") - 1 >>> 0) + 2);
+	}
+ 		 			 
+});
+
+$(function()
+{
+	$('#form-addNoPip').formValidation(
+    {
+        framework: 'bootstrap',
+        excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+        live: 'enabled',
+        message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+        trigger: null,
+        fields:
+        {
+            TipoNoPip:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Tipo" es requerido.</b>'
+                    }
+                }
+            },
+            ListadoFiltroNoPIP:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "No PIP" es requerido.</b>'
+                    }
+                }
+            },
+            txtnombreNoPip:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Nombre" es requerido.</b>'
+                    }
+                }
+            },
+            txtNombreDocumento:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message:'<b style="color:red;">El campo "Nombre del Documento" es requerido.</b>'
+                    }
+                }
+            },
+            txtDescripcionDocumento:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Descripción" es requerido.</b>'
+                    }
+                }
+            },
+            Documento_noPip:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Documento" es requerido.</b>'
+                    }
+                }
+            }
+
+        }
+    });
+
+});
+
 </script>
 
 
