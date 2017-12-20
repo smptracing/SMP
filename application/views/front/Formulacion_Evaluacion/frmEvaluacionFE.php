@@ -305,9 +305,11 @@
       <table  style="width:50%;" id="table-EstadoEtapa" class="table   table-hover" >
          <thead ><tr>
                                                                          <th style="width: 1%"><i class="fa fa-thumb-tack"></i> ID </th>
-                                                                         <th style="width: 40%" ><i class="fa fa-thumb-tack"></i> Estado</th>
-                                                                         <th style="width: 10%"><i class="fa fa-calendar"></i> Fecha Actualización
+                                                                         <th style="width: 1%"><i class="fa fa-thumb-tack"></i> ID </th>
+                                                                         <th style="width: 30%" ><i class="fa fa-thumb-tack"></i> Estado</th>
+                                                                         <th style="width: 10%"><i class="fa fa-calendar"></i> Fecha
                                                                         </th>
+                                                                        <th style="width: 20%" ><i class="fa fa-thumb-tack"></i> Opcion</th>
                                                                       </tr>
                                                                    </thead>
                                                                 </table>

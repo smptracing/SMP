@@ -46,7 +46,17 @@ class Model_FEestado extends CI_Model
               {
                 return false;
               }
+        }
 
+        function EliminarEstado($id_estado_etapa){
+          $this->db->where('id_estado_etapa',$id_estado_etapa);
+          $this->db->delete('ESTADO_ETAPA');
+          if($this->db->affected_rows()>0){
+            return true;
+          }
+          else{
+            return false;
+          }
         }
         //fin funcion
        

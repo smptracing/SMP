@@ -89,13 +89,15 @@
                                     data:{id_etapa_estudio:id_etapa_estudio}
                                     },
                                 "columns":[
+                                    {"data":"id_estado_etapa","visible": false},
                                     {"data":"id_etapa_estudio","visible": false},
                                     {"data":"denom_estado_fe"},
-                                    {"data":"fecha"}
-                                    //{"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaupdateEstadoFE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
+                                    {"data":"fecha"},
+                                    {"defaultContent":"<button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
                                "language":idioma_espanol
                     });
+                    EliminarEstadoFE("#table-EstadoEtapa",table); 
                 }
  //LISTAR DENOMINACION DE EvaluacionFE Y EVALUACION EN TABLA
                 var ListarEvaluacionFE=function()
@@ -228,6 +230,43 @@ var  ListarEvaluacion=function(tbody,table){
                         }
                     });
                 }
+var EliminarEstadoFE=function(tbody,table){
+        $(tbody).on("click","button.eliminar",function()
+       {
+        var data=table.row( $(this).parents("tr")).data();
+        var id_estado_etapa=data.id_estado_etapa;
+        swal({
+                title: "Esta seguro que desea eliminar el registro?",
+                text: "",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "SI,ELIMINAR",
+                closeOnConfirm: false
+            },
+        function()
+        {
+            $.ajax({
+            url:base_url+"index.php/FEestado/EliminarFEestado",
+            type:"POST",
+            data:{id_estado_etapa:id_estado_etapa},
+            success:function(respuesta)
+            {
+                          var registros=jQuery.parseJSON(respuesta);
+                            if(registros.flag==0){
+                        swal("Elimando.",registros.msg, "success");
+                        $('#table-EstadoEtapa').dataTable()._fnAjaxUpdate();
+                            }
+                         else{
+                           swal("Error.",registros.msg, "error");
+                        $('#table-EstadoEtapa').dataTable()._fnAjaxUpdate();
+                         }
+
+            }
+            });
+        });
+        });
+      }
                 var ListarEvaluador=function()
                 {
                     var table=$("#table-AsignarEvaluador").DataTable({

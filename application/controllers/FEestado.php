@@ -49,6 +49,28 @@ class FEestado extends CI_Controller {/* Mantenimiento de division funcional y g
 	      show_404();
 	      }
     }
+    public function EliminarFEestado(){
+    	    if ($this->input->is_ajax_request()) {
+            $flag=0;
+            $msg="";
+            $id_estado_etapa = $this->input->post("id_estado_etapa");
+
+        if($this->Model_FEestado->EliminarEstado($id_estado_etapa)==true){
+                $flag=0;
+                $msg="registro Eliminado Satisfactoriamente";
+            }
+            else{
+                $flag=1;
+                $msg="No se pudo eliminar";
+            }
+                    $datos['flag']=$flag;
+                    $datos['msg']=$msg;
+                    echo json_encode($datos);
+        }  else {
+            show_404();
+        }
+
+    }
 
     /* Pagina principal de la vista entidad Y servicio publico asociado */
 	public function ver_EstadoFE()
