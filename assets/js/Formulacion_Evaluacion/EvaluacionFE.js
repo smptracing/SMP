@@ -18,7 +18,7 @@
                             if (resp=='2') {
                              swal("NO SE REGISTRÓ","NO se regristró ", "error");
                            }
-                          $('#table-EstadoEtapa').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
+                          $('#table-EstadoEtapa').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
                              formReset();
                          }
                       });
@@ -40,7 +40,7 @@
                             if (resp=='2') {
                              swal("NO SE REGISTRÓ","NO se regristró ", "error");
                            }
-                          $('#table-EvaluacionFE').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
+                          $('#table-EvaluacionFE').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
                              formReset();
                          }
                       });
@@ -62,7 +62,7 @@
                             if (resp=='2') {
                              swal("NO SE REGISTRÓ","NO se regristró ", "error");
                            }
-                          $('#table-EvaluacionFE').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
+                          $('#table-EvaluacionFE').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
                              formReset();
                          }
                       });
@@ -72,8 +72,8 @@
           {
           document.getElementById("form-AddSituacion").reset();
            document.getElementById("form-AddAsiganarPersona").reset();
-          }            
-     
+          }
+
       });
 
  //listar estado etapa en el modal
@@ -126,19 +126,19 @@
                                     {"data":"denom_situacion_fe"},
                                     {"data":"avance_fisico",
                                       "mRender":function (data,type, full) {
-                                         return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Complete</small></td>";
+                                         return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Completado</small></td>";
                                     }},
 
-{"defaultContent":"<button type='button' class='EstadoFE btn btn-success btn-xs' data-toggle='modal' data-target='#VentanaEstadoFE'><i class='fa fa-dashboard' aria-hidden='true'></i></button><button type='button' class='Situacion btn btn-warning btn-xs' data-toggle='modal' data-target='#VentanaSituacionActual'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button'  class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#VentanaAsignarPersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button>"}                            
+{"defaultContent":"<button type='button' class='EstadoFE btn btn-success btn-xs' data-toggle='modal' data-target='#VentanaEstadoFE'><i class='fa fa-dashboard' aria-hidden='true'></i></button><button type='button' class='Situacion btn btn-warning btn-xs' data-toggle='modal' data-target='#VentanaSituacionActual'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button'  class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#VentanaAsignarPersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button>"}
                                 ],
                                  "language":idioma_espanol
                     });
-                   // DenominacionFE("#table-DenominacionFE",table);   
+                   // DenominacionFE("#table-DenominacionFE",table);
                    $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
-        
+
         new $.fn.DataTable.Buttons(table, {
           buttons: [
-            
+
             {
             "extend": "excel",
             "text": "<i class='fa fa-file-excel-o bigger-110 green'></i> <span>Excel</span>",
@@ -148,15 +148,15 @@
             "extend": "pdf",
             "text": "<i class='fa fa-file-pdf-o bigger-110 red'></i> <span>PDF</span>",
             "className": "btn btn-white btn-primary btn-bold"
-            }  
-           
+            }
+
           ]
         } );
-        table.buttons().container().appendTo( $('.tableTools-container-evaluacion') );                           
+        table.buttons().container().appendTo( $('.tableTools-container-evaluacion') );
                      ListarEvaluacion("#table-EvaluacionFE",table);
-                     RegistarEstadoFE("#table-EvaluacionFE",table);     	
-                      SituacionActual("#table-EvaluacionFE",table);  
-                     RegistarPersona("#table-EvaluacionFE",table); 
+                     RegistarEstadoFE("#table-EvaluacionFE",table);
+                      SituacionActual("#table-EvaluacionFE",table);
+                     RegistarPersona("#table-EvaluacionFE",table);
                         }
 //FIN LISTAR PROYECTOS QUE SE ENCUENTRARN EN EVALUACION
 //LISTAR DETALLE DE SITUACION ACTUAL DE UNA PIP EN EVALUACION
@@ -170,20 +170,20 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
     data:{codigo_unico_est_inv:codigo_unico_est_inv},
      success:function(respuesta)
                       {
-                         var registros = eval(respuesta);  
-                          
+                         var registros = eval(respuesta);
+
                          html1+="<thead> <tr><th  class='active'><h5>CODIGO UNICO </h5></th><th class='active'><h5>EVALUADOR</h5></th>  <th class='active'><h5>CARGO</h5></th><th class='active'><h5>SITUACION</h5></th><th class='active'><h5>OBSERVACIONES</h5></th><th class='active'><h5>FECHA</h5></th></tr></thead>"
                          for (var i = 0; i <registros.length;i++) {
-                              html1 +="<tbody> <tr><th>"+registros[i]["codigo_unico_est_inv"]+"</th><th>"+registros[i]["Evaluador"]+"</th><th>"+registros[i]["desc_cargo"]+"</th><th>"+registros[i]["denom_situacion_fe"]+"</th><th>"+registros[i]["observacion"]+"</th><th>"+registros[i]["fecha"]+"</th></tr>";    
+                              html1 +="<tbody> <tr><th>"+registros[i]["codigo_unico_est_inv"]+"</th><th>"+registros[i]["Evaluador"]+"</th><th>"+registros[i]["desc_cargo"]+"</th><th>"+registros[i]["denom_situacion_fe"]+"</th><th>"+registros[i]["observacion"]+"</th><th>"+registros[i]["fecha"]+"</th></tr>";
                           //alert(suma);
-                           };               
+                           };
                              html1 +="</tbody>";
                          $("#table-DetSitActEvaluacionFE").html(html1);
-                             
+
                       }
                     });
     }
-  
+
   //FIN LISTAR DETALLE DE SITUACION ACTUAL DE UNA PIP EN EVALUACION
 var  ListarEvaluacion=function(tbody,table){
                              $(tbody).on("click","a.VerDetalleEvaluacion",function(){
@@ -256,8 +256,8 @@ var  ListarEvaluacion=function(tbody,table){
                 }
                 var listarsituacionFE=function(valor){
                      html="";
-                    $("#Cbx_Situacion").html(html); 
-                    event.preventDefault(); 
+                    $("#Cbx_Situacion").html(html);
+                    event.preventDefault();
                     $.ajax({
                         "url":base_url +"index.php/FEsituacion/get_FEsituacion",
                         type:"POST",
@@ -265,12 +265,12 @@ var  ListarEvaluacion=function(tbody,table){
                          //  alert(respuesta);
                          var registros = eval(respuesta3);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option  value="+registros[i]["id_situacion_fe"]+"> "+registros[i]["denom_situacion_fe"]+" </option>";   
+                              html +="<option  value="+registros[i]["id_situacion_fe"]+"> "+registros[i]["denom_situacion_fe"]+" </option>";
                             };
                             $("#Cbx_Situacion").html(html);
                             $('select[name=Cbx_Situacion]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=Cbx_Situacion]').change();
-                            $('.selectpicker').selectpicker('refresh'); 
+                            $('.selectpicker').selectpicker('refresh');
                         }
                     });
                 }
@@ -280,13 +280,13 @@ var  ListarEvaluacion=function(tbody,table){
                         var data=table.row( $(this).parents("tr")).data();
                         var txt_IdEtapa_Estudio_p=$('#txt_IdEtapa_Estudio_p').val(data.id_etapa_estudio);
                          listarPersonaFE();
-                        
+
                   });
                 }
   var listarPersonaFE=function(valor){
                      html="";
-                    $("#Cbx_Persona").html(html); 
-                    event.preventDefault(); 
+                    $("#Cbx_Persona").html(html);
+                    event.preventDefault();
                     $.ajax({
                         "url":base_url +"index.php/Estudio_Inversion/get_persona",
                         type:"POST",
@@ -294,12 +294,12 @@ var  ListarEvaluacion=function(tbody,table){
                          //  alert(respuesta);
                          var registros = eval(respuesta3);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option  value="+registros[i]["id_persona"]+"> "+registros[i]["nombres_apell"]+" </option>";   
+                              html +="<option  value="+registros[i]["id_persona"]+"> "+registros[i]["nombres_apell"]+" </option>";
                             };
                             $("#Cbx_Persona").html(html);
                             $('select[name=Cbx_Persona]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=Cbx_Persona]').change();
-                            $('.selectpicker').selectpicker('refresh'); 
+                            $('.selectpicker').selectpicker('refresh');
                              listarCargoFE();
                         }
                     });
@@ -307,8 +307,8 @@ var  ListarEvaluacion=function(tbody,table){
 
                   var listarCargoFE=function(valor){
                      html="";
-                    $("#Cbx_Cargo").html(html); 
-                    event.preventDefault(); 
+                    $("#Cbx_Cargo").html(html);
+                    event.preventDefault();
                     $.ajax({
                         "url":base_url +"index.php/Estudio_Inversion/get_cargo",
                         type:"POST",
@@ -316,12 +316,12 @@ var  ListarEvaluacion=function(tbody,table){
                          //  alert(respuesta);
                          var registros = eval(respuesta3);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option  value="+registros[i]["id_cargo"]+"> "+registros[i]["desc_cargo"]+" </option>";   
+                              html +="<option  value="+registros[i]["id_cargo"]+"> "+registros[i]["desc_cargo"]+" </option>";
                             };
                             $("#Cbx_Cargo").html(html);
                             $('select[name=Cbx_Cargo]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=Cbx_Cargo]').change();
-                            $('.selectpicker').selectpicker('refresh'); 
+                            $('.selectpicker').selectpicker('refresh');
                         }
                     });
                 }
@@ -334,7 +334,7 @@ var  ListarEvaluacion=function(tbody,table){
               type:"POST",
               success:function(respuesta){
                 alert(respuesta);GetEvaluadores
-              
+
 
               }
             });
@@ -365,5 +365,3 @@ var  ListarEvaluacion=function(tbody,table){
                         "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                     }
                 }
-
-  
