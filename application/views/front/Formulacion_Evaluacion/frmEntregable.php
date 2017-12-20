@@ -2,6 +2,13 @@
   label{
     margin-top:5px;
   }
+  #datatable-actividadesV {
+    table-layout: fixed;
+    text-overflow: ellipsis;
+  }
+  #datatable-actividadesV td {
+    text-overflow: ellipsis;
+  }
 </style>
 <div class="right_col" role="main">
           <div class="">
