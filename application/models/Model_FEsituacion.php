@@ -40,19 +40,9 @@ class Model_FEsituacion extends CI_Model
         }
 
     }
-    public function AddSituacion($flat, $Cbx_Situacion, $txt_IdEtapa_Estudio, $txadescripcion)
+    public function AddSituacion($data)
     {
-        //  $EstadoCicloInversion = $this->db->query("execute get");
-        $SituacionFE = $this->db->query("execute sp_Gestionar_SituacionActual'"
-            . $flat . "','"
-            . $Cbx_Situacion . "', '"
-            . $txt_IdEtapa_Estudio . "', '"
-            . $txadescripcion . "' ");
-        if ($SituacionFE->num_rows() > 0) {
-            return $SituacionFE->result();
-        } else {
-            return false;
-        }
+        $this->db->insert('SITUACION_ACTUAL',$data);
+        return $this->db->affected_rows();
     }
-
 }

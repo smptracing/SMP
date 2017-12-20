@@ -288,19 +288,6 @@ class Estudio_Inversion extends CI_Controller
 
             $msg = ($q1>0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
             $this->load->view('front/json/json_view', ['datos' => $msg]);
-
-            /*
-            $flat                  = "UC";
-            $Cbx_Persona           = $this->input->post("Cbx_Persona");
-            $Cbx_Cargo             = $this->input->post("Cbx_Cargo");
-            $txt_IdEtapa_Estudio_p = $this->input->post("txt_IdEtapa_Estudio_p");
-            $txadescripcion        = $this->input->post("txadescripcion");
-
-            if ($this->Estudio_Inversion_Model->AddAsiganarPersona($flat, $Cbx_Persona, $Cbx_Cargo, $txt_IdEtapa_Estudio_p, $txadescripcion) == false) {
-                echo "1";
-            } else {
-                echo "2";
-            }*/
         } 
         else
         {

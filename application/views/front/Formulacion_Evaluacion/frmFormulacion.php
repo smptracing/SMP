@@ -65,73 +65,57 @@
 
 <div class="modal fade" id="VentanaSituacionActual" role="dialog">
     <div class="modal-dialog ">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-          Situación </h4>
-        </div>
-        <div class="modal-body">
-         <div class="row">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Situación </h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
                     <div class="col-xs-12">
-                                        <!-- PAGE CONTENT BEGINS -->
-              <form class="form-horizontal " id="form-AddSituacion"   action="<?php echo base_url(); ?>frmFormulacion/GetFormulacion" method="POST" >
-
-              <div class="item form-group">
+                    <form class="form-horizontal " id="form-AddSituacion"   action="<?php echo base_url(); ?>frmFormulacion/GetFormulacion" method="POST" >
                         <div class="item form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="txt_IdEtapa_Estudio" name="txt_IdEtapa_Estudio" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="txt_IdEtapa_Estudio" name="txt_IdEtapa_Estudio" type="hidden">
+                            </div>
                         </div>
-                      </div>
-                </div>
-
-
-                <div class="item form-group">
-                                     <div class="col-md-4">
-
-                                           <label for="name">Situación Form y Eval.<span class="required"></span>
-                                            </label>
-                                                 <select   id="Cbx_Situacion" name="Cbx_Situacion" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Situación FE...">
-                                                </select>
-                                    </div>
-                                             <div class="col-md-4">
-
-                                           <label for="name">Fecha <span class="required"></span>
-                                            </label>
-                                                  <input type="date" id="dateFechaIniC" name="dateFechaIniC" class="form-control col-md-6 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text" value="<?php echo date("Y-m-d"); ?>" disabled="true">
-                                          </div>
-                      </div>
-
-                <div class="item form-group">
-                <div class="col-md-12">
-                              <br>
-                              <label for="name">Observación<span class="required"></span>
-                              </label>
-                              <textarea class="form-control" rows="3" name="txadescripcion" id="txadescripcion"></textarea>
-                </div>
-</div>
-
-                     <div class="ln_solid"></div>
-                      <div class="form-group">
-                        <div class="col-md-6 col-md-offset-3">
-                          <button id="send" type="submit" class="btn btn-success">
-                            <span class="glyphicon glyphicon-floppy-disk"></span>
-                            Guardar
-                          </button>
-                           <button  class="btn btn-danger" data-dismiss="modal">
-                             <span class="glyphicon glyphicon-remove"></span>
-                            Cerrar
-                          </button>
+                    <div class="item form-group">
+                        <div class="col-md-4" id="validateSituacion">
+                            <label for="name">Situación Form y Eval*</label>
+                            <select   id="Cbx_Situacion" name="Cbx_Situacion" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true">
+                            </select>
                         </div>
-                      </div>
+                        <div class="col-md-4">
+                            <label for="name">Fecha</label>
+                            <input type="date" id="dateFechaIniC" name="dateFechaIniC" class="form-control col-md-6 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text" value="<?php echo date("Y-m-d"); ?>" disabled="true">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                    <div class="col-md-12">
+                        <br>
+                        <label for="name">Observación</label>
+                        <textarea class="form-control" rows="3" name="txadescripcion" id="txadescripcion"></textarea>
+                    </div>
+                    </div>
+                        <div class="ln_solid"></div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-3">
+                                <button id="send" type="submit" class="btn btn-success">
+                                <span class="glyphicon glyphicon-floppy-disk"></span>
+                                Guardar
+                                </button>
+                                <button  class="btn btn-danger" data-dismiss="modal">
+                                <span class="glyphicon glyphicon-remove"></span>
+                                Cerrar
+                                </button>
+                            </div>
+                        </div>
                     </form>
-                        </div><!-- /.span -->
-                 </div><!-- /.row -->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer"></div>
         </div>
-        <div class="modal-footer">
-
-        </div>
-      </div>
     </div>
 </div>
 <!-- /.fin de  ventana registrar situacion actual-->

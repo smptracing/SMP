@@ -53,17 +53,22 @@ class FEsituacion extends CI_Controller
     }
     public function AddSituacion()
     {
-        if ($this->input->is_ajax_request()) {
-            $flat                = "C";
-            $Cbx_Situacion       = $this->input->post("Cbx_Situacion");
-            $txt_IdEtapa_Estudio = $this->input->post("txt_IdEtapa_Estudio");
-            $txadescripcion      = $this->input->post("txadescripcion");
-            if ($this->Model_FEsituacion->AddSituacion($flat, $Cbx_Situacion, $txt_IdEtapa_Estudio, $txadescripcion) == false) {
-                echo "1";
-            } else {
-                echo "2";
-            }
-        } else {
+        if ($this->input->is_ajax_request()) 
+        {
+            $msg=array();
+
+            $c_data['id_situacion_fe']=$this->input->post("Cbx_Situacion");
+            $c_data['id_etapa_estudio']=$this->input->post("txt_IdEtapa_Estudio");
+            $c_data['observacion']=$this->input->post("txadescripcion");
+            $c_data['fecha']=date('d-m-Y H:i:s');
+
+            $q1=$this->Model_FEsituacion->AddSituacion($c_data);
+
+            $msg = ($q1>0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
+            $this->load->view('front/json/json_view', ['datos' => $msg]);
+        } 
+        else 
+        {
             show_404();
         }
     }
