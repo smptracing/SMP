@@ -270,10 +270,26 @@ class Estudio_Inversion extends CI_Controller
             show_404();
         }
     }
-    //REGISTRAR NUEVA
+
     public function AddAsiganarPersona()
     {
-        if ($this->input->is_ajax_request()) {
+        if ($this->input->is_ajax_request())
+        {
+            $msg=array();
+
+            $c_data['id_persona']=$this->input->post("Cbx_Persona");
+            $c_data['id_cargo']=$this->input->post("Cbx_Cargo");
+            $c_data['id_etapa_estudio']=$this->input->post("txt_IdEtapa_Estudio_p");
+            $c_data['funcion']=$this->input->post("txadescripcion");
+            $c_data['fecha']=date('Y-m-d');
+            $c_data['estado']=1;
+
+            $q1=$this->Estudio_Inversion_Model->AddAsignarPersona($c_data);
+
+            $msg = ($q1>0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
+            $this->load->view('front/json/json_view', ['datos' => $msg]);
+
+            /*
             $flat                  = "UC";
             $Cbx_Persona           = $this->input->post("Cbx_Persona");
             $Cbx_Cargo             = $this->input->post("Cbx_Cargo");
@@ -284,14 +300,15 @@ class Estudio_Inversion extends CI_Controller
                 echo "1";
             } else {
                 echo "2";
-            }
-        } else {
+            }*/
+        } 
+        else
+        {
             show_404();
         }
     }
 
 
-    //añadir documentos ala estudio de invserion
     public function AddDocumentosEstudio()
     {
         if ($this->input->is_ajax_request())

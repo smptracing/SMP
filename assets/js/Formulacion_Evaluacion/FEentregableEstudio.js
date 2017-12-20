@@ -49,15 +49,7 @@
               listarDenominacionFE();
               listadoPersona();//para las actividades
               valorizacionRestante();
-                $('body').on('hidden.bs.modal', '.modal', function () {
-                      $('#form-AddEntregable')[0].reset();
-                      $('#form-modificarEntregable')[0].reset();
-                      $('#form-AddActividades_Entregable')[0].reset();
-                      $('#form-UpdateActividades_Entregable')[0].reset();
-                      $('#form-AsignacionPersonalEntregable')[0].reset();
-                      $('#form-AsignacionPersonalActividad')[0].reset();
-                      $('#form-AsignacionPersonalActividad')[0].reset();
-                });
+              
               $("#txt_denominacion_entre").change(function(){
                 var txt_denominacion_entre        =$("#txt_denominacion_entre").val();
                 $("#txt_denoMultiple").val(txt_denominacion_entre);

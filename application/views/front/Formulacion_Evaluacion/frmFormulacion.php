@@ -139,80 +139,64 @@
 <!-- /.ventana para registrar Persona-->
 <div class="modal fade" id="VentanaAsignarPersona" role="dialog">
     <div class="modal-dialog ">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-          Asignar Persona </h4>
-        </div>
-        <div class="modal-body">
-         <div class="row">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Asignar Persona </h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
                     <div class="col-xs-12">
-                                        <!-- PAGE CONTENT BEGINS -->
-              <form class="form-horizontal " id="form-AddAsiganarPersona"   action="<?php echo base_url(); ?>frmFormulacion/GetFormulacion" method="POST" >
-
-              <div class="item form-group">
-                        <div class="item form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="txt_IdEtapa_Estudio_p" name="txt_IdEtapa_Estudio_p" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
-                        </div>
-                      </div>
+                        <form class="form-horizontal " id="form-AddAsiganarPersona" action="<?php echo base_url(); ?>frmFormulacion/GetFormulacion" method="POST">
+                            <div id="AsignarPersonaValidate">
+                            <div class="item form-group">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="txt_IdEtapa_Estudio_p" name="txt_IdEtapa_Estudio_p" class="form-control" required="required" type="hidden">
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <div class="col-md-4">
+                                    <label for="name">Responsable*<span class="required"></span></label>
+                                    <select   id="Cbx_Persona" name="Cbx_Persona" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true">
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="name">Cargo*<span class="required"></span></label>
+                                    <select   id="Cbx_Cargo" name="Cbx_Cargo" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true">
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="name">Fecha <span class="required"></span></label>
+                                    <input type="date" id="dateFechaIniC" name="dateFechaIniC" class="form-control" required="required" type="text" value="<?php echo date("Y-m-d"); ?>" disabled="true">
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <div class="col-md-12">
+                                    <br>
+                                    <label for="name">Observación<span class="required"></span></label>
+                                    <textarea class="form-control notValidate" rows="3" name="txadescripcion" id="txadescripcion"></textarea>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-3">
+                                    <button id="send" type="submit" class="btn btn-success">
+                                        <span class="glyphicon glyphicon-floppy-disk"></span>
+                                        Guardar
+                                    </button>
+                                    <button class="btn btn-danger" data-dismiss="modal">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                        Cerrar
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-
-
-                <div class="item form-group">
-                                     <div class="col-md-4">
-
-                                           <label for="name">Responsable.<span class="required"></span>
-                                            </label>
-                                                 <select   id="Cbx_Persona" name="Cbx_Persona" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Etapas FE...">
-                                                </select>
-                                    </div>
-                                     <div class="col-md-4">
-
-                                           <label for="name">Cargo.<span class="required"></span>
-                                            </label>
-                                                 <select   id="Cbx_Cargo" name="Cbx_Cargo" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Etapas FE...">
-                                                </select>
-                                    </div>
-                                             <div class="col-md-4">
-
-                                           <label for="name">Fecha <span class="required"></span>
-                                            </label>
-                                                  <input type="date" id="dateFechaIniC" name="dateFechaIniC" class="form-control col-md-6 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text" value="<?php echo date("Y-m-d"); ?>" disabled="true">
-                                          </div>
-                      </div>
-
-                <div class="item form-group">
-                <div class="col-md-12">
-                              <br>
-                              <label for="name">Observación<span class="required"></span>
-                              </label>
-                              <textarea class="form-control" rows="3" name="txadescripcion" id="txadescripcion"></textarea>
-                </div>
-</div>
-
-                     <div class="ln_solid"></div>
-                      <div class="form-group">
-                        <div class="col-md-6 col-md-offset-3">
-                          <button id="send" type="submit" class="btn btn-success">
-                            <span class="glyphicon glyphicon-floppy-disk"></span>
-                            Guardar
-                          </button>
-                           <button  class="btn btn-danger" data-dismiss="modal">
-                             <span class="glyphicon glyphicon-remove"></span>
-                            Cerrar
-                          </button>
-                        </div>
-                      </div>
-                    </form>
-                        </div><!-- /.span -->
-                 </div><!-- /.row -->
+            </div>
+            <div class="modal-footer"></div>
         </div>
-        <div class="modal-footer">
-
-        </div>
-      </div>
     </div>
 </div>
 <!-- /.fin de  ventana Registar Persona-->

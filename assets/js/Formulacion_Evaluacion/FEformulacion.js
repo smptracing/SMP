@@ -44,28 +44,24 @@ $("#form-AddSituacion").submit(function(event)
                            }
                       });
                   });
-   //REGISTARAR asiganar persona
-   $("#form-AddAsiganarPersona").submit(function(event)
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/Estudio_Inversion/AddAsiganarPersona",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           //alert(resp);
-                           if (resp=='1') {
-                             swal("REGISTRADO","Se regristró correctamente", "success");
-                             formReset();
-                           }
-                            if (resp=='2') {
-                             swal("NO SE REGISTRÓ","NO se regristró ", "error");
-                           }
-                          $('#tabla-formulacion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
-                             formReset();
-                         }
-                      });
-                  });
+
+
+$("#form-AddAsiganarPersona").submit(function(event)
+{
+    event.preventDefault();
+    $.ajax({
+        url:base_url+"index.php/Estudio_Inversion/AddAsiganarPersona",
+        type:$(this).attr('method'),
+        data:$(this).serialize(),
+        success:function(resp)
+        {
+            resp = JSON.parse(resp);
+            swal(resp.proceso,resp.mensaje,(resp.proceso=='Correcto') ? 'success':'error');
+            $('#VentanaAsignarPersona').modal('hide');            
+            $('#tabla-formulacion').dataTable()._fnAjaxUpdate();
+        }
+    });
+});
 //limpiar campos
           function formReset()
           {
@@ -425,3 +421,4 @@ var listarPersonaFE=function(valor){
                         "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                     }
                 }
+

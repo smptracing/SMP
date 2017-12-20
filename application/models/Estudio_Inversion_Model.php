@@ -189,20 +189,10 @@ class Estudio_Inversion_Model extends CI_Model
         }
     }
 
-    public function AddAsiganarPersona($flat, $Cbx_Persona, $Cbx_Cargo, $txt_IdEtapa_Estudio_p, $txadescripcion)
+    public function AddAsignarPersona($data)
     {
-        //  $EstadoCicloInversion = $this->db->query("execute get");
-        $AsiganarPersona = $this->db->query("execute sp_Gestionar_AsignarPersona'"
-            . $flat . "','"
-            . $Cbx_Persona . "', '"
-            . $Cbx_Cargo . "', '"
-            . $txt_IdEtapa_Estudio_p . "', '"
-            . $txadescripcion . "' ");
-        if ($AsiganarPersona->num_rows() > 0) {
-            return $AsiganarPersona->result();
-        } else {
-            return false;
-        }
+        $this->db->insert('ASIGNACION_PERSONA',$data);
+        return $this->db->affected_rows();
     }
     public function AddCoordinadorEstudio($flat, $Cbx_Persona, $Cbx_Cargo, $txt_IdEtapa_Estudio_p, $txadescripcion)
     {
