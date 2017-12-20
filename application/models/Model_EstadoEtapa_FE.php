@@ -20,18 +20,10 @@ class Model_EstadoEtapa_FE extends CI_Model
             return false;
         }
     }
-    public function AddEstadoEtapa_FE($flat, $Cbx_EstadoFE, $txt_IdEtapa_Estudio_FE)
+    public function AddEstadoEtapa_FE($data)
     {
-        //  $EstadoCicloInversion = $this->db->query("execute get");
-        $EstadoEtapa = $this->db->query("execute sp_Gestionar_Estado_Etapa'"
-            . $flat . "','"
-            . $Cbx_EstadoFE . "', '"
-            . $txt_IdEtapa_Estudio_FE . "' ");
-        if ($EstadoEtapa->num_rows() > 0) {
-            return $EstadoEtapa->result();
-        } else {
-            return false;
-        }
+        $this->db->insert('ESTADO_ETAPA',$data);
+        return $this->db->affected_rows();
     }
 
 }

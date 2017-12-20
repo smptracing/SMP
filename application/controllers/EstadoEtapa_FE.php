@@ -24,16 +24,30 @@ class EstadoEtapa_FE extends CI_Controller
     //REGISTRAR NUEVA
     public function AddEstadoEtapa_FE()
     {
-        if ($this->input->is_ajax_request()) {
-            $flat                   = "C";
+        if ($this->input->is_ajax_request()) 
+        {
+            $msg=array();
+
+            $c_data['id_estado']=$this->input->post("Cbx_EstadoFE");
+            $c_data['id_etapa_estudio']=$this->input->post("txt_IdEtapa_Estudio_FE");
+            $c_data['fecha']=date('d-m-Y H:i:s');
+
+            $q1=$this->Model_EstadoEtapa_FE->AddEstadoEtapa_FE($c_data);
+
+            $msg = ($q1>0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
+            $this->load->view('front/json/json_view', ['datos' => $msg]);
+
+            /*$flat                   = "C";
             $Cbx_EstadoFE           = $this->input->post("Cbx_EstadoFE");
             $txt_IdEtapa_Estudio_FE = $this->input->post("txt_IdEtapa_Estudio_FE");
             if ($this->Model_EstadoEtapa_FE->AddEstadoEtapa_FE($flat, $Cbx_EstadoFE, $txt_IdEtapa_Estudio_FE) == false) {
                 echo "1";
             } else {
                 echo "2";
-            }
-        } else {
+            }*/
+        } 
+        else 
+        {
             show_404();
         }
     }

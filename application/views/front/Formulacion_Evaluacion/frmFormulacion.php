@@ -188,48 +188,37 @@
 <!-- /.ventana para registrar ESTADO FE-->
 <div class="modal fade" id="VentanaEstadoFE" role="dialog">
     <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-          Asignar Estado Etapa </h4>
-        </div>
-        <div class="modal-body">
-         <div class="row">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Asignar Estado Etapa </h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
                     <div class="col-xs-12">
-                                        <!-- PAGE CONTENT BEGINS -->
-              <form class="form-horizontal " id="form-AddEtapaEstudio"   action="<?php echo base_url(); ?>EstadoEtapa_FE/GetEstadoEtapa_FE" method="POST" >
-
-              <div class="item form-group">
-                        <div class="item form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="txt_IdEtapa_Estudio_FE" name="txt_IdEtapa_Estudio_FE" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
-                        </div>
-                      </div>
-                </div>
-               <div class="item form-group">
-                                     <div class="col-md-4">
-
-                                           <label for="name">Estado.<span class="required"></span>
-                                            </label>
-                                                 <select   id="Cbx_EstadoFE" name="Cbx_EstadoFE" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Estado FE...">
-                                                </select>
-                                    </div>
-                                          <div class="col-md-4">
-
-                                           <label for="name">Fecha <span class="required"></span>
-                                            </label>
-                                                  <input type="date" id="dateFechaIniC" name="dateFechaIniC" class="form-control col-md-6 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text" value="<?php echo date("Y-m-d"); ?>" disabled="true">
-                                          </div>
-                                          <div class="col-md-4">
-                                             <label for="name">. <span class="required"></span>
-                                             </label><BR>
-                                             <button id="send" type="submit" class="btn btn-success">
-                                             <span class="glyphicon glyphicon-floppy-saved"></span>Agregar
-                                             </button>
-                                          </div>
-                      </div>
-                     <div class="ln_solid"></div>
+                        <form  id="form-AddEtapaEstudio" action="<?php echo base_url(); ?>EstadoEtapa_FE/GetEstadoEtapa_FE" method="POST" class="form-horizontal">
+                            <div class="item form-group">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="txt_IdEtapa_Estudio_FE" name="txt_IdEtapa_Estudio_FE" type="hidden">
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <div class="col-md-4">
+                                    <label for="name">Estado*</label>
+                                    <select   id="Cbx_EstadoFE" name="Cbx_EstadoFE" class="selectpicker form-control" data-live-search="true" ></select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="name">Fecha*</label>
+                                    <input type="date" id="dateFechaIniC" name="dateFechaIniC"  type="text" value="<?=date("Y-m-d")?>" disabled="true" class="form-control">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="name">.</label><BR>
+                                    <button id="send" type="submit" class="btn btn-success">
+                                        <span class="glyphicon glyphicon-floppy-saved"></span>Agregar
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="ln_solid"></div>
                      <div class="x_panel" style="background-color: #EEEEEE;">
                     <center>
                     <table  style="width:50%;" id="table-EstadoEtapa" class="table   table-hover" >

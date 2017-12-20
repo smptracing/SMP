@@ -1,28 +1,24 @@
- $(document).on("ready" ,function(){
-              ListarFormulacion();
-              //REGISTARAR ESTADO ETAPA
-   $("#form-AddEtapaEstudio").submit(function(event)
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/EstadoEtapa_FE/AddEstadoEtapa_FE",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           //alert(resp);
-                           if (resp=='1') {
-                             swal("REGISTRADO","Se registró correctamente", "success");
-                             formReset();
-                           }
-                            if (resp=='2') {
-                             swal("NO SE REGISTRÓ","NO se regristró ", "error");
-                           }
-                          $('#table-EstadoEtapa').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
-                             formReset();
-                         }
-                      });
-                  });
-//REGISTARAR SITUACION
+$(document).on("ready" ,function()
+{
+
+ListarFormulacion();
+
+$("#form-AddEtapaEstudio").submit(function(event)
+{
+    event.preventDefault();
+    $.ajax({
+        url:base_url+"index.php/EstadoEtapa_FE/AddEstadoEtapa_FE",
+        type:$(this).attr('method'),
+        data:$(this).serialize(),
+        success:function(resp)
+        {
+            resp = JSON.parse(resp);
+            swal(resp.proceso,resp.mensaje,(resp.proceso=='Correcto') ? 'success':'error');
+            $('#table-EstadoEtapa').dataTable()._fnAjaxUpdate();
+        }
+    });
+});
+
 $("#form-AddSituacion").submit(function(event)
 {
     event.preventDefault();
