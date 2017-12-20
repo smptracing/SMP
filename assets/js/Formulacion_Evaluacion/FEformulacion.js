@@ -73,6 +73,12 @@ $("#form-AddSituacion").submit(function(event)
            document.getElementById("form-AddAsiganarPersona").reset();
           }
 
+
+
+
+
+
+
 			});
  //listar etapas estudio en el modal
  var listarEtapaEstudio=function(id_est_inv)
@@ -100,12 +106,6 @@ $("#form-AddSituacion").submit(function(event)
                                        return '<i class="fa fa-spinner orange fa-pulse fa-2x fa-fw"></i><span class="sr-only">Loading...</span>'
                                       //return '<i class="fa fa-circle purple fa-2x"></i>';
                                      }
-                                        if (data.denom_etapas_fe =='Aprobado') 
-                                      {
-                                        return '<i class="fa fa-spinner blue fa-pulse fa-2x fa-fw"></i><span class="sr-only">Loading...</span>'
-                                     // return '<i class="fa fa-circle light blue fa-2x"></i>';
-                                     
-                                      }
                                         if (data.denom_etapas_fe =='Viabilizado') 
                                       {
                                       return '<i class="fa fa-spinner green fa-pulse fa-2x fa-fw"></i><span class="sr-only">Loading...</span>'
@@ -191,7 +191,10 @@ var ListarFormulacion=function()
                 {"defaultContent":'<div class="dropdown"><a class="btn btn-link dropdown-toggle" type="button" data-toggle="dropdown"> <span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span></a> <ul class="dropdown-menu pull-right"> <li><button type="button" title="Asignar Estado" class="EstadoFE btn btn-link btn-xs" data-toggle="modal" data-target="#VentanaEstadoFE"> Asignar Estado</button></li><li><button type="button" title="Asignar Situacion" class="Situacion btn btn-link btn-xs" data-toggle="modal" data-target="#VentanaSituacionActual">Asignar Situacion</button></li><li><button type="button" title="Asignar Responsable" class="AsignarPersona btn btn-link btn-xs" data-toggle="modal" data-target="#VentanaAsignarPersona"> Asignar Responsable </button></li><li><button type="button" title="Ver Etapas Estudio" class="ver_etapas_estudio btn btn-link btn-xs" data-toggle="modal" data-target="#ventana_ver_etapas_estudio"> Ver Etapas Estudio </button></li><li><button type="button" title="Presupuesto de Inversión" class="presupuestoProyectoInv btn btn-link btn-xs">Presupuesto de Inversión</button></li></ul> </div>'}
             ],
         "language":idioma_espanol
-    });
+    });    
+                      SituacionActual("#tabla-formulacion",table);  
+                     RegistarEstadoFE("#tabla-formulacion",table); 
+                     RegistarPersona("#tabla-formulacion",table); 
 }
 //LISTAR DENOMINACION DE FORMULACION Y EVALUACION EN TABLA
 var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
@@ -267,7 +270,6 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
                         "url":base_url +"index.php/FEestado/get_FEestado",
                         type:"POST",
                         success:function(respuesta3){
-                        alert(respuesta3);
                          var registros = eval(respuesta3);
                             for (var i = 0; i <registros.length;i++) {
                               html +="<option  value="+registros[i]["id_estado"]+"> "+registros[i]["denom_estado_fe"]+" </option>";

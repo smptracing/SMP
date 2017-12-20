@@ -302,10 +302,9 @@
                      <div class="ln_solid"></div>
                      <div class="x_panel" style="background-color: #EEEEEE;">
 <center>
-                                                                <table  style="width:50%;" id="table-EstadoEtapa" class="table   table-hover" >
-                                                                    <thead >
-                                                                       <tr>
-                                                                         <th style="width: 1%"><i class="fa fa-thumb-tack"></i> ESTADO </th>
+      <table  style="width:50%;" id="table-EstadoEtapa" class="table   table-hover" >
+         <thead ><tr>
+                                                                         <th style="width: 1%"><i class="fa fa-thumb-tack"></i> ID </th>
                                                                          <th style="width: 40%" ><i class="fa fa-thumb-tack"></i> Estado</th>
                                                                          <th style="width: 10%"><i class="fa fa-calendar"></i> Fecha Actualización
                                                                         </th>

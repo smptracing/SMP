@@ -83,7 +83,6 @@
                      "processing": true,
                       "serverSide":false,
                      destroy:true,
-
                          "ajax":{
                                     url:base_url+"index.php/EstadoEtapa_FE/GetEstadoEtapa_FE",
                                     type:"POST",
@@ -95,9 +94,8 @@
                                     {"data":"fecha"}
                                     //{"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaupdateEstadoFE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
-
-                                "language":idioma_espanol
-                    });                       
+                               "language":idioma_espanol
+                    });
                 }
  //LISTAR DENOMINACION DE EvaluacionFE Y EVALUACION EN TABLA
                 var ListarEvaluacionFE=function()
@@ -155,10 +153,11 @@
           ]
         } );
         table.buttons().container().appendTo( $('.tableTools-container-evaluacion') );                           
-                     ListarEvaluacion("#table-EvaluacionFE",table);    	
+                     ListarEvaluacion("#table-EvaluacionFE",table);
+                     RegistarEstadoFE("#table-EvaluacionFE",table);     	
                       SituacionActual("#table-EvaluacionFE",table);  
-                     RegistarPersona("#table-EvaluacionFE",table);  		   	
-                }
+                     RegistarPersona("#table-EvaluacionFE",table); 
+                        }
 //FIN LISTAR PROYECTOS QUE SE ENCUENTRARN EN EVALUACION
 //LISTAR DETALLE DE SITUACION ACTUAL DE UNA PIP EN EVALUACION
 var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
@@ -186,7 +185,7 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
     }
   
   //FIN LISTAR DETALLE DE SITUACION ACTUAL DE UNA PIP EN EVALUACION
-          var  ListarEvaluacion=function(tbody,table){
+var  ListarEvaluacion=function(tbody,table){
                              $(tbody).on("click","a.VerDetalleEvaluacion",function(){
                               var data=table.row( $(this).parents("tr")).data();
                                var codigo_unico_est_inv=data.codigo_unico_est_inv;
@@ -212,21 +211,20 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
                 }
            var listarEstadoFE=function(valor){
                      html="";
-                    $("#Cbx_EstadoFE").html(html); 
-                    event.preventDefault(); 
+                    $("#Cbx_EstadoFE").html(html);
+                    event.preventDefault();
                     $.ajax({
                         "url":base_url +"index.php/FEestado/get_FEestado",
                         type:"POST",
                         success:function(respuesta3){
-                         //  alert(respuesta);
                          var registros = eval(respuesta3);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option  value="+registros[i]["id_estado"]+"> "+registros[i]["denom_estado_fe"]+" </option>";   
+                              html +="<option  value="+registros[i]["id_estado"]+"> "+registros[i]["denom_estado_fe"]+" </option>";
                             };
                             $("#Cbx_EstadoFE").html(html);
                             $('select[name=Cbx_EstadoFE]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
                             $('select[name=Cbx_EstadoFE]').change();
-                            $('.selectpicker').selectpicker('refresh'); 
+                            $('.selectpicker').selectpicker('refresh');
                         }
                     });
                 }

@@ -80,7 +80,7 @@
               <div class="item form-group">
                         <div class="item form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="txt_IdEtapa_Estudio" name="txt_IdEtapa_Estudio" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="text">
+                        <input id="txt_IdEtapa_Estudio" name="txt_IdEtapa_Estudio" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
                         </div>
                       </div>
                 </div>
@@ -91,7 +91,7 @@
 
                                            <label for="name">Situación Form y Eval.<span class="required"></span>
                                             </label>
-                                                 <select   id="Cbx_Situacion" name="Cbx_Situacion" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Etapas FE...">
+                                                 <select   id="Cbx_Situacion" name="Cbx_Situacion" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Situación FE...">
                                                 </select>
                                     </div>
                                              <div class="col-md-4">
@@ -154,7 +154,7 @@
               <div class="item form-group">
                         <div class="item form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="txt_IdEtapa_Estudio_p" name="txt_IdEtapa_Estudio_p" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="text">
+                        <input id="txt_IdEtapa_Estudio_p" name="txt_IdEtapa_Estudio_p" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
                         </div>
                       </div>
                 </div>
@@ -267,7 +267,7 @@
                     <table  style="width:50%;" id="table-EstadoEtapa" class="table   table-hover" >
                     <thead >
                        <tr>
-                         <th style="width: 1%"><i class="fa fa-thumb-tack"></i> ESTADO </th>
+                         <th style="width: 1%"><i class="fa fa-thumb-tack"></i> ID</th>
                          <th style="width: 40%" ><i class="fa fa-thumb-tack"></i> Estado</th>
                          <th style="width: 10%"><i class="fa fa-calendar"></i> Fecha Actualización
                         </th>
