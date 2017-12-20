@@ -412,92 +412,51 @@
 <!-- /. INICIO VENTANA VER ETAPAS DE UN ESTUDIO-->
 <div class="modal fade" id="ventana_ver_etapas_estudio" role="dialog">
     <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-          Ver Etapas Estudio</h4>
-        </div>
-        <div class="modal-body">
-         <div class="row">
-                    <div class="col-xs-12">
-                                        <!-- PAGE CONTENT BEGINS -->
-              <form class="form-horizontal "   action="<?php echo base_url(); ?>Estudio_Inversion/get_etapas_estudio" method="POST" >
-
-              <!-- <div class="item form-group">
-                        <div class="item form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="txtIdEtapaEstudio_v" name="txtIdEtapaEstudio_v" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="text">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Ver Etapas Estudio</h4>
+            </div>
+            <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    <form class="form-horizontal "   action="<?php echo base_url(); ?>Estudio_Inversion/get_etapas_estudio" method="POST" >
+                        <div class="ln_solid"></div>
+                        <div class="x_panel" style="background-color: #EEEEEE;">
+                            <center>
+                            <table  style="width:100%;" id="table_etapas_estudio" class="table   table-hover" >
+                                <thead >
+                                    <tr>
+                                        <th style="width: 1%"> ESTADO </th>
+                                        <th style="width: 2%"></th>
+                                        <th style="width: 10%" > Etapa</th>
+                                        <th style="width: 50%"> Observación</th>
+                                        <th style="width: 10%"> Fecha Inicio</th>
+                                        <th style="width: 10%"> Fecha Final</th>
+                                        <th style="width: 10%"> Opciones</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            </center>
                         </div>
-                      </div>
-                </div>
-              <div class="item form-group">
-                                     <div class="col-md-4">
-
-                                           <label for="name">Estado.<span class="required"></span>
-                                            </label>
-                                                 <select   id="Cbx_EstadoFE" name="Cbx_EstadoFE" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Estado FE...">
-                                                </select>
-                                    </div>
-                                          <div class="col-md-4">
-
-                                           <label for="name">Fecha <span class="required"></span>
-                                            </label>
-                                                  <input type="date" id="dateFechaIniC" name="dateFechaIniC" class="form-control col-md-6 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text" value="<?php echo date("Y-m-d"); ?>" disabled="true">
-                                          </div>
-                                          <div class="col-md-4">
-                                            <label for="name">. <span class="required"></span>
-                                            </label><BR>
-                                             <button id="send" type="submit" class="btn btn-success">
-                            <span class="glyphicon glyphicon-floppy-saved"></span>Agregar
-                          </button>
-                                          </div>
-                      </div>
-                      -->
-                     <div class="ln_solid"></div>
-                     <div class="x_panel" style="background-color: #EEEEEE;">
-                    <center>
-                    <table  style="width:100%;" id="table_etapas_estudio" class="table   table-hover" >
-                    <thead >
-                       <tr>
-                         <th style="width: 1%"><i class="fa fa-thumb-tack"></i> ESTADO </th>
-                         <th style="width: 2%"><i class="fa fa-calendar"></i>
-                        </th>
-                         <th style="width: 10%" ><i class="fa fa-thumb-tack"></i> Etapa</th>
-                         <th style="width: 50%"><i class="fa fa-thumb-tack"></i> Observación
-                        </th>
-                         <th style="width: 10%"><i class="fa fa-calendar"></i> Fecha Inicio
-                        </th>
-                        <th style="width: 10%"><i class="fa fa-calendar"></i> Fecha Final
-                        </th>
-                      </tr>
-                    </thead>
-                    </table>
-                    </center>
-                    </div>
-                    <center>
-                      <div class="form-group">
-                        <div class="col-md-6 col-md-offset-3">
-
-                           <button  class="btn btn-danger" data-dismiss="modal">
-                             <span class="glyphicon glyphicon-log-out"></span>
-                            Cerrar
-                          </button>
-                        </div>
-                      </div>
-                      </center>
-
+                        <center>
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-3">
+                                    <button  class="btn btn-danger" data-dismiss="modal">
+                                    <span class="glyphicon glyphicon-log-out"></span> Cerrar
+                                    </button>
+                                </div>
+                            </div>
+                        </center>
                     </form>
-                        </div><!-- /.span -->
-                 </div><!-- /.row -->
+                </div>
+            </div>
+            </div>
+            <div class="modal-footer"></div>
         </div>
-        <div class="modal-footer">
-
-        </div>
-      </div>
     </div>
 </div>
-<!-- /.FIN VENTANA VER ETAPAS DE UN ESTYUDIO-->
+
 <?php
   $sessionTempo=$this->session->flashdata('correcto');
 

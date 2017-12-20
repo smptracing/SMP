@@ -203,6 +203,13 @@ class Estudio_Inversion extends CI_Controller
             show_404();
         }
     }
+    public function eliminarEtapaEstado()
+    {
+        $msg = array();
+        $q1=$this->Estudio_Inversion_Model->eliminarEtapaEstado($this->input->post('idEtapaEstudio'));
+        $msg=($q1>0 ? (['proceso' => 'Correcto', 'mensaje' => 'Se elimino Correctamente el registro']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado']));
+        $this->load->view('front/json/json_view', ['datos' => $msg]);
+    }
 
     //REGISTRAR NUEVA
     public function AddEstudioInversion()
@@ -328,11 +335,14 @@ class Estudio_Inversion extends CI_Controller
     public function get_etapas_estudio() //mostra ESTADO INVERSION
 
     {
-        if ($this->input->is_ajax_request()) {
+        if ($this->input->is_ajax_request()) 
+        {
             $id_est_inv = $this->input->post("id_est_inv");
             $data       = $this->Estudio_Inversion_Model->get_etapas_estudio($id_est_inv);
             echo json_encode(array('data' => $data));
-        } else {
+        } 
+        else 
+        {
             show_404();
         }
     }

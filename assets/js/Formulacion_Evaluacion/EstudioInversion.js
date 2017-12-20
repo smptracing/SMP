@@ -334,58 +334,84 @@ $("#form-AddEtapaEstudio").submit(function(event)
                     });
 
   }
- var listarEtapaEstudio=function(id_est_inv)
+var listarEtapaEstudio=function(id_est_inv)
+{
+    var table=$("#table_etapas_estudio").DataTable({
+    "processing": true,
+    "serverSide":false,
+    destroy:true,
+    "ajax":{
+        url:base_url+"index.php/Estudio_Inversion/get_etapas_estudio",
+        type:"POST",
+        data:{id_est_inv:id_est_inv}
+    },
+    "columns":[
+        {"data":"id_est_inv","visible": false},
+        {"data": function (data, type, dataToSet)
+            {
+                if (data.denom_etapas_fe =='Formulación')
                 {
-                    var table=$("#table_etapas_estudio").DataTable({
-                     "processing": true,
-                      "serverSide":false,
-                     destroy:true,
-                         "ajax":{
-                                    url:base_url+"index.php/Estudio_Inversion/get_etapas_estudio",
-                                    type:"POST",
-                                    data:{id_est_inv:id_est_inv}
-                                    },
-                                "columns":[
-                                    {"data":"id_est_inv","visible": false},
-                                        {"data": function (data, type, dataToSet) {
-
-                                      if (data.denom_etapas_fe =='Formulación')
-                                      {
-                                       //return '<i class="fa fa-spinner red fa-pulse fa-2x fa-fw"></i><span class="sr-only">Loading...</span>'
-                                        return '<i class="fa fa-circle red fa-2x"></i>';
-                                      }
-                                        if (data.denom_etapas_fe =='Evaluación')
-                                      {
-                                       //return '<i class="fa fa-spinner orange fa-pulse fa-2x fa-fw"></i><span class="sr-only">Loading...</span>'
-                                      return '<i class="fa fa-circle purple fa-2x"></i>';
-                                     }
-                                        if (data.denom_etapas_fe =='Aprobado')
-                                      {
-                                        //return '<i class="fa fa-spinner blue fa-pulse fa-2x fa-fw"></i><span class="sr-only">Loading...</span>'
-                                      return '<i class="fa fa-circle light blue fa-2x"></i>';
-
-                                      }
-                                        if (data.denom_etapas_fe =='Viabilizado')
-                                      {
-                                      //return '<i class="fa fa-spinner green fa-pulse fa-2x fa-fw"></i><span class="sr-only">Loading...</span>'
-                                      return '<i class="fa fa-circle light green fa-2x"></i>';
-                                      }
-                                      if (data.denom_etapas_fe ==null)
-                                      {
-                                      return '<button type="button" class=" btn-round btn-warning btn-xs" data-toggle="modal" data-target="#"><i class="fa fa-flag" aria-hidden="true"></i> Asignar</button"';
-
-                                      }
-                                   }},
-                                    {"data":"denom_etapas_fe"},
-                                    {"data":"recomendaciones"},
-                                    {"data":"fecha_inicio"},
-                                    {"data":"fecha_final"}
-
-                                    //{"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaupdateEstadoFE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
-                                ],
-                               "language":idioma_espanol
-                    });
+                    return '<i class="fa fa-circle red fa-2x"></i>';
                 }
+                if (data.denom_etapas_fe =='Evaluación')
+                {
+                    return '<i class="fa fa-circle purple fa-2x"></i>';
+                }
+                if (data.denom_etapas_fe =='Aprobado')
+                {
+                    return '<i class="fa fa-circle light blue fa-2x"></i>';
+                }
+                if (data.denom_etapas_fe =='Viabilizado')
+                {
+                    return '<i class="fa fa-circle light green fa-2x"></i>';
+                }
+                if (data.denom_etapas_fe ==null)
+                {
+                    return '<button type="button" class=" btn-round btn-warning btn-xs" data-toggle="modal" data-target="#"><i class="fa fa-flag" aria-hidden="true"></i> Asignar</button"';
+                }
+            }
+        },
+        {"data":"denom_etapas_fe"},
+        {"data":"recomendaciones"},
+        {"data":"fecha_inicio"},
+        {"data":"fecha_final"},
+        {"data":"id_etapa_estudio",render:function(data,type,row)
+            {
+                return "<button type='button' data-toggle='tooltip' class='btn btn-danger btn-xs' data-toggle='modal' onclick=eliminarEtapaEstado("+data+",this)><i class='ace-icon fa fa-trash-o'></i></button>";
+            }
+        }
+    ],
+    "language":idioma_espanol
+    });
+}
+var eliminarEtapaEstado=function(idEtapaestudio,element)
+{
+    swal({
+        title: "¿Realmente desea eliminar este registro?",
+        text: "",
+        type: "warning",
+        showCancelButton: true,
+        cancelButtonText:"CANCELAR" ,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "SI,ELIMINAR",
+        closeOnConfirm: false
+    },
+    function()
+    {
+        paginaAjaxJSON({"idEtapaEstudio":idEtapaestudio}, base_url+'index.php/Estudio_Inversion/eliminarEtapaEstado', 'POST', null, function(objectJSON)
+        {
+            objectJSON=JSON.parse(objectJSON);
+            swal(
+            {
+                title: '',
+                text: objectJSON.mensaje,
+                type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
+            },
+            function(){});
+            $(element).parent().parent().remove();
+        }, false, true);
+    });
+}
 
 
          /*listra */
