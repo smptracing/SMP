@@ -82,8 +82,8 @@
                           data:{},
                           success: function(data)
                           {
-                            
-                                var registros = eval(data); 
+
+                                var registros = eval(data);
                                 var sumaTotalValori=0;
                               	 for (var i = 0; i <registros.length;i++)
                                  {
@@ -109,7 +109,7 @@
                                   	  document.getElementById('btn_entregableC').disabled=false;
                                   	  $('#VentanaEntregable').modal('hide');
                                   	  formLimpiar();
-                                 }      
+                                 }
                             }
                         });
               });
@@ -186,7 +186,7 @@
                   return filename.slice((filename.lastIndexOf(".") - 1 >>> 0) + 2);
                 }
 
-              var txt_id_etapa_estudio=$("#txt_id_etapa_estudio").val();   
+              var txt_id_etapa_estudio=$("#txt_id_etapa_estudio").val();
 //Gant
                $("#btn_gant").click(function() {
                $('#ventanagant').modal('toggle');
@@ -198,7 +198,7 @@
              $("#btn_entregable").click(function() {
                 $("#id_etapa_estudioEE").val($("#txt_id_etapa_estudio").val())
               });
-              
+
 
                $("body").on("click","#table_entregable tbody th a",function(event){
                   event.preventDefault();
@@ -232,7 +232,7 @@
                                    swal("",registros[i]["MENSAJE"], "success");
                                    $('#form-AddEntregable')[0].reset();
                                    $("#VentanaAsignacionPersonalEntregable").modal("hide");
-                                 	
+
                                }else{
                                       $('#table_entregable').dataTable()._fnAjaxUpdate();
                                       swal('',registros[i]["MENSAJE"],'error' );
@@ -267,7 +267,7 @@
             alert();
             //location.reload();
           });
-          
+
           $("#profile-tab").click(function() {
              generarCalendarioPestniaCalendar();//actividades
             });
@@ -284,7 +284,7 @@
 			success: function(data)
 			{
         console.log(data);
-        var registros = eval(data); 
+        var registros = eval(data);
 				var sumaTotalValoriEntregable=0;
 				for (var i = 0; i <registros.length;i++)
 				{
@@ -342,7 +342,7 @@ var addEntreEstudio=function(txt_nombre_entre,txt_denominacion_entre,txt_valorac
                          }
                       });
                   };
-//lisatra denominacion 
+//lisatra denominacion
 var editarEntreEstudio=function(IdEntregable,Editxt_nombre_entre,Editxt_denoMultiple,Editxt_valoracion_entre)
 {
 		event.preventDefault();
@@ -365,22 +365,22 @@ var editarEntreEstudio=function(IdEntregable,Editxt_nombre_entre,Editxt_denoMult
  var listarDenominacionFE=function(){
                   var htmlD="";
                         $("#txt_denominacion_entre").html(htmlD);
-                        event.preventDefault(); 
+                        event.preventDefault();
                         $.ajax({
                             "url":base_url +"index.php/DenominacionFE/GetDenominacionFE",
                             type:"POST",
                             success:function(respuesta){
                              var registros = eval(respuesta);
                                 for (var i = 0; i <registros.length;i++) {
-                                   htmlD +="<option value="+registros[i]["id_denom_fe"]+"> "+registros[i]["denom_fe"]+" </option>";   
+                                   htmlD +="<option value="+registros[i]["id_denom_fe"]+"> "+registros[i]["denom_fe"]+" </option>";
                                 };
                                 $("#txt_denominacion_entre").html(htmlD);
                                 $("#Editxt_denominacion_entre").html(htmlD);
-                                $('.selectpicker').selectpicker('refresh'); 
+                                $('.selectpicker').selectpicker('refresh');
                             }
                         });
 
-              } 
+              }
 //fin listar denominacion
 //listar personas para persona en la actividadd
 
@@ -388,7 +388,7 @@ var editarEntreEstudio=function(IdEntregable,Editxt_nombre_entre,Editxt_denoMult
 //listar formuladores para agregar un responsable
 var listadoFormuladores=function()
 {
-                    var text_buscarPersona ='Formulador';   
+                    var text_buscarPersona ='Formulador';
                     var table=$("#table_responsableFormulador").DataTable({
                      "processing":true,
                      "serverSide":true,
@@ -426,7 +426,7 @@ var listadoFormuladores=function()
                     });
 
                       $('#table_responsableFormulador_filter input').unbind();
-                      
+
                       $('#table_responsableFormulador_filter input').bind('keyup', function(e)
                       {
                       if(e.keyCode==13)
@@ -435,13 +435,13 @@ var listadoFormuladores=function()
                     }
               });
                //DataAsignarResponsable("#table_responsableFormulador",table);//para listar y asignar responsables
-            
+
 
               $('#table_responsableFormulador tbody').on('click', 'tr', function () {
                   var data =table.row(this).data();
                    $("#txt_idPersona").val(data.id_persona);
-                   
-              } );             
+
+              } );
 }
 
 //listar persona  para las actividades
@@ -480,28 +480,28 @@ var listadoPersona=function()
                     });
 
                       $('#table_responsableActividad_filter input').unbind();
-                      
+
                       $('#table_responsableActividad_filter input').bind('keyup', function(e)
                       {
                       if(e.keyCode==13)
                       {
                               table.search(this.value).draw();
                             }
-                      });          
+                      });
                    $('#table_responsableActividad tbody').on('click', 'tr', function () {
                          var data =table.row(this).data();
                          $("#txt_idPersonaActividad").val(data.id_persona);
-                         
-                   } );  
+
+                   } );
 
 
-  
+
 }
 //fin listar personal
 
 var generarActividadesVertical=function(id_en)
           {
-                    $("#datatable-actividadesV" ).remove(); 
+                    $("#datatable-actividadesV" ).remove();
                     $("#datatable-actividadesV_wrapper" ).remove();
                     tempActividad='<table id="datatable-actividadesV" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">'+
                                   '<thead>'+
@@ -522,7 +522,7 @@ var generarActividadesVertical=function(id_en)
                                     '<tbody>'+
                                     '</tbody>'+
                               '</table>';
-                    $("#TemActividad").append(tempActividad);  
+                    $("#TemActividad").append(tempActividad);
 
                    var table=$("#datatable-actividadesV").DataTable({
                     "deferRender": true,
@@ -565,7 +565,7 @@ var generarActividadesVertical=function(id_en)
                                          return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Complete</small></td>";
                                     }},
                                     {"data":"estado_obs",
-                                      "mRender":function (data,type, full) 
+                                      "mRender":function (data,type, full)
                                        {
                                          var i=data;
                                          if(i==0)
@@ -596,9 +596,9 @@ var generarActividadesVertical=function(id_en)
 
               ActualizarActividadEntregableData("#datatable-actividadesV",table); //TRAER DATOS PARA ACTUALIZAR
 
-                 $('#datatable-actividadesV tbody').on('click', 'tr', function () 
+                 $('#datatable-actividadesV tbody').on('click', 'tr', function ()
                  {
-                               var data = table.row($(this)).data();  
+                               var data = table.row($(this)).data();
                                var id_ctividad=data.id;
                                var txt_idActividadCronograma=$("#txt_idActividadCronograma").val(id_ctividad);
                                $("#txt_NombreActividadTitleResponsable").html(data.title);
@@ -625,13 +625,13 @@ var generarActividadesVertical=function(id_en)
           success : function(resp)
           {
             swal("MODIFICADO!", resp, "success");
-            
+
             $('#datatable-actividadesV').dataTable()._fnAjaxUpdate();
 
             $('#modalModificarActividades').modal('hide');
           }
         });
-      }); 
+      });
 
 /*$("#form-ActualizarActividadEntregable").submit(function(event)
                   {
@@ -641,14 +641,14 @@ var generarActividadesVertical=function(id_en)
                           url:base_url+"index.php/FEActividadEntregable/Update_Actividades",
                           type:$(this).attr('method'),
                           data:$(this).serialize(),
-                          success:function(resp){ 
+                          success:function(resp){
                            $("#modalModificarActividades").modal("hide");
-                           $('#table_entregable').dataTable()._fnAjaxUpdate();  
+                           $('#table_entregable').dataTable()._fnAjaxUpdate();
                           var tx_IdActividad=$("#tx_IdActividad").val();//catura el id de la actividadd
                           var txt_idEntregable=$("#txt_idEntregable").val();//catura eñ id del entregable
                            $("#calendarActividadesFE" ).remove();
                           CalcularAvanceAc(tx_IdActividad,txt_idEntregable);//calcular elavance de los entregables
-                         
+
                          }
                       });
                   }); */
@@ -682,7 +682,7 @@ var generarActividadesVertical=function(id_en)
                               var data=table.row( $(this).parents("tr")).data();
                                     $('#tx_IdActividadLevantamiento').val(data.id_act_observacion);
                              });
-                  } 
+                  }
        var  ListarObservacionesActividad=function(tbody,table)
                   {
                             $(tbody).on("click","a.ListarObservaciones",function(){
@@ -690,7 +690,7 @@ var generarActividadesVertical=function(id_en)
                                     var idActividad=data.id;//$('#tx_IdActividadLevantamiento').val(data.id);
                                     listadoObservacion(idActividad);
                              });
-                  } 
+                  }
       function listadoObservacion(idActividad)
         {
                   $.ajax({
@@ -698,8 +698,8 @@ var generarActividadesVertical=function(id_en)
                           type:'POST',
                           data:{idActividad:idActividad},
                           success:function(resp)
-                          { 
-                               $("#ListadoObservaciones" ).remove(); 
+                          {
+                               $("#ListadoObservaciones" ).remove();
                                var tempActividad='<table id="ListadoObservaciones" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">'+
                                   '<thead>'+
                                       '<tr>'+
@@ -716,39 +716,39 @@ var generarActividadesVertical=function(id_en)
                                  '</thead>'+
                                   '<tbody>';
                               var registros = eval(resp);
-                              for (var i = 0; i < registros.length; i++) 
+                              for (var i = 0; i < registros.length; i++)
                                {
                               	if(registros[i]['estado_obs']==1)
                               	{
-	                              	tempActividad +='<tr>';	
-	                              		tempActividad +='<td>'+registros[i]['desc_obsrevacion']+'</td><td>'+registros[i]['doc_observacion']+'</td><td>'+registros[i]['desc_levantamiento']+'</td><td>'+registros[i]['doc_levantamiento']+'</td><td>'+registros[i]['fecha_observacion']+'</td><td>'+registros[i]['fecha_levantamiento']+'</td><td><ul class="list-inline prod_color"><div class="color bg-green"><br/></div></ul>Levanto</td>';	
+	                              	tempActividad +='<tr>';
+	                              		tempActividad +='<td>'+registros[i]['desc_obsrevacion']+'</td><td>'+registros[i]['doc_observacion']+'</td><td>'+registros[i]['desc_levantamiento']+'</td><td>'+registros[i]['doc_levantamiento']+'</td><td>'+registros[i]['fecha_observacion']+'</td><td>'+registros[i]['fecha_levantamiento']+'</td><td><ul class="list-inline prod_color"><div class="color bg-green"><br/></div></ul>Levanto</td>';
 	                              	tempActividad +='</tr>';
                               	}
                               	if(registros[i]['estado_obs']==0)
                               	{
-	                              	tempActividad +='<tr>';	
-	                              		tempActividad +='<td>'+registros[i]['desc_obsrevacion']+'</td><td>'+registros[i]['doc_observacion']+'</td><td>'+registros[i]['desc_levantamiento']+'</td><td>'+registros[i]['doc_levantamiento']+'</td><td>'+registros[i]['fecha_observacion']+'</td><td>'+registros[i]['fecha_levantamiento']+'</td><td> <ul class="list-inline prod_color"><div class="color bg-red"><br/></div></ul>Observado</td>';	
+	                              	tempActividad +='<tr>';
+	                              		tempActividad +='<td>'+registros[i]['desc_obsrevacion']+'</td><td>'+registros[i]['doc_observacion']+'</td><td>'+registros[i]['desc_levantamiento']+'</td><td>'+registros[i]['doc_levantamiento']+'</td><td>'+registros[i]['fecha_observacion']+'</td><td>'+registros[i]['fecha_levantamiento']+'</td><td> <ul class="list-inline prod_color"><div class="color bg-red"><br/></div></ul>Observado</td>';
 	                              	tempActividad +='</tr>';
                               	}
                               	if(registros[i]['estado_obs']==null)
                               	{
-	                              	tempActividad +='<tr>';	
-	                              		tempActividad +='<td>'+registros[i]['desc_obsrevacion']+'</td><td>'+registros[i]['desc_levantamiento']+'</td><td>'+registros[i]['fecha_observacion']+'</td><td>'+registros[i]['fecha_levantamiento']+'</td><td> Sin Observaciones </td>';	
+	                              	tempActividad +='<tr>';
+	                              		tempActividad +='<td>'+registros[i]['desc_obsrevacion']+'</td><td>'+registros[i]['desc_levantamiento']+'</td><td>'+registros[i]['fecha_observacion']+'</td><td>'+registros[i]['fecha_levantamiento']+'</td><td> Sin Observaciones </td>';
 	                              	tempActividad +='</tr>';
                               	}
-                              		
+
                                }
                                tempActividad +='</tbody>';
                                tempActividad +='</table>';
-                               $("#TemActividadObservaciones").append(tempActividad);  
-                              
+                               $("#TemActividadObservaciones").append(tempActividad);
+
                           }
                       });
         }
-        
+
   function listarEntregablesFE()
-          {     
-              $("#table_entregable" ).remove(); 
+          {
+              $("#table_entregable" ).remove();
                     $("#table_entregable_wrapper" ).remove();
                     tempEntregable='<table id="table_entregable" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">'+
                                   '<thead>'+
@@ -766,7 +766,7 @@ var generarActividadesVertical=function(id_en)
                                     '<tbody>'+
                                     '</tbody>'+
                               '</table>';
-                       $("#TemEntregable").append(tempEntregable); 
+                       $("#TemEntregable").append(tempEntregable);
                 var table=$("#table_entregable").DataTable({
                      "deferRender": true,
                     "processing": true,
@@ -774,7 +774,7 @@ var generarActividadesVertical=function(id_en)
                     destroy:true,
                     "info":     false,
                     "paging":   false,
-                      
+
                          "ajax":{
                                     "url":base_url+"index.php/FEentregableEstudio/get_Entregables",
                                     "method":"POST",
@@ -800,14 +800,14 @@ var generarActividadesVertical=function(id_en)
                                     },
                                     {"data":"valoracion",
                                       "mRender":function (data,type, full) {
-                                         return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-orange' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Complete</small></td>";
+                                         return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-orange' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Completado</small></td>";
                                     }},
                                     {"data":"avance",
                                       "mRender":function (data,type, full) {
-                                         return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Complete</small></td>" ;
+                                         return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Completado</small></td>" ;
                                     }},
-                       
-                                    {"defaultContent":"<div class='dropdown'>  <a class='btn btn-link dropdown-toggle' type='button' data-toggle='dropdown'> <span class='glyphicon glyphicon-option-vertical' aria-hidden='true'></span></a> <ul class='dropdown-menu pull-right' style=''> <button type='button' class='actividad btn btn-link btn-xs' title='Agregar actividad al entregable' data-toggle='modal' data-target='#VentanaActividades'>Agregar Actividad</button><br/><button type='button' class='EditarEntregable btn btn-link btn-xs' title='Modificar Entregable' data-toggle='modal' data-target='#ModificarVentanaEntregable'>Modificar Entregable</button></ul> </div>"}                            
+
+                                    {"defaultContent":"<div class='dropdown'>  <a class='btn btn-link dropdown-toggle' type='button' data-toggle='dropdown'> <span class='glyphicon glyphicon-option-vertical' aria-hidden='true'></span></a> <ul class='dropdown-menu pull-right' style=''> <button type='button' class='actividad btn btn-link btn-xs' title='Agregar actividad al entregable' data-toggle='modal' data-target='#VentanaActividades'>Agregar Actividad</button><br/><button type='button' class='EditarEntregable btn btn-link btn-xs' title='Modificar Entregable' data-toggle='modal' data-target='#ModificarVentanaEntregable'>Modificar Entregable</button></ul> </div>"}
 
                                 ],
 
@@ -815,11 +815,11 @@ var generarActividadesVertical=function(id_en)
                                 "order": [[ 0, "desc" ]]
                     });
 
-                     addActividades("#table_entregable",table);  
-                     getActividad("#table_entregable",table);   
-                     AsignacionPersonaEntregables("#table_entregable",table);  
-                     ListaResponsableEntregable("#table_entregable",table);  
-                     ModificarEntregable("#table_entregable",table);         
+                     addActividades("#table_entregable",table);
+                     getActividad("#table_entregable",table);
+                     AsignacionPersonaEntregables("#table_entregable",table);
+                     ListaResponsableEntregable("#table_entregable",table);
+                     ModificarEntregable("#table_entregable",table);
               }
               	  var  ModificarEntregable=function(tbody,table)
               	  {
@@ -896,13 +896,13 @@ var generarActividadesVertical=function(id_en)
                             "columns":[
                                 {"data":"nombre"},
                                 {"data":"dni"},
-                                {"data":"fecha_asignacion_entregable"}   
+                                {"data":"fecha_asignacion_entregable"}
                             ],
 
                             "language":idioma_espanol
                           });
 
-                  } 
+                  }
 
             var valorizacionRestanteActividad=function(id_entregable)
             {
@@ -912,7 +912,7 @@ var generarActividadesVertical=function(id_en)
       							data:{id_entregable:id_entregable},
       								success: function(data)
       								{
-      								var registros = eval(data); 
+      								var registros = eval(data);
       									var sumaTotalValoriEntregable=0;
       									for (var i = 0; i <registros.length;i++)
       									{
@@ -925,14 +925,14 @@ var generarActividadesVertical=function(id_en)
       								    }else
       								    {
       								     $("#valoracionAvazadadActivi").html(" Valoración Restante "+(100-parseInt(sumaTotalValoriActidadese))+" %");
-      								    } 
+      								    }
       								}
                		});
              }
 //generar actividades en el calendar
           function generarCalendario(id_en)
           {
-                  
+
 
                   var $myNewElement = $('<div id="calendarActividadesFE"></div>');
                   $myNewElement.appendTo('#contenidoActividadesFE');
@@ -977,12 +977,12 @@ var generarActividadesVertical=function(id_en)
                         var fechaIniciar=event.start;
                         var fechaI= (new Date(fechaIniciar)).toISOString().slice(0, 10);
                         $('#txt_fechaActividadIAc').val(fechaI);
-                        
+
                         var fechaConveInicio=$("#txt_fechaActividadIAc").val();
                         var fechaInicioTemp = fechaConveInicio.split("-")  //esta linea esta bien y te genera el arreglo
                         var anoI = parseInt(fechaInicioTemp[0]); // porque repites el nombre dos veces con una basta
-                        var mesI = parseInt(fechaInicioTemp[1]); 
-                        var diaI  = parseInt(fechaInicioTemp[2]); 
+                        var mesI = parseInt(fechaInicioTemp[1]);
+                        var diaI  = parseInt(fechaInicioTemp[2]);
                         var fechaInicioTemp= anoI+'/'+mesI+'/'+diaI;
 
                         var fechaFinal=event.end;
@@ -991,8 +991,8 @@ var generarActividadesVertical=function(id_en)
                           var fechaConveFin=$("#txt_fechaActividadfAc").val();
                           var fechaFinalTemp = fechaConveFin.split("-")  //esta linea esta bien y te genera el arreglo
                           var ano = parseInt(fechaFinalTemp[0]); // porque repites el nombre dos veces con una basta
-                          var mes = parseInt(fechaFinalTemp[1]); 
-                          var dia  = parseInt(fechaFinalTemp[2]); 
+                          var mes = parseInt(fechaFinalTemp[1]);
+                          var dia  = parseInt(fechaFinalTemp[2]);
                           fechaFinalTempNuevo= ano+'/'+mes+'/'+dia;
 
                         $('#FechaActividadCalendar').daterangepicker({
@@ -1033,7 +1033,7 @@ var generarActividadesVertical=function(id_en)
                         "endDate": fechaFinalTempNuevo,
                         "opens": "center"
                     });
-                         
+
                         //fecha final
                         //$( "#datepicker" ).datepicker("option", "defaultDate", new Date(date));
                         //$("#FechaActividadCalendar").val(fechaInicioTemp+'-'+);
@@ -1049,4 +1049,3 @@ var generarActividadesVertical=function(id_en)
                     });
                 //fin generacion de actividades
           }
- 
