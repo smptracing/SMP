@@ -7,7 +7,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_right">
-                  
+
               </div>
             </div>
 
@@ -51,7 +51,7 @@
 
                                                           <div class="x_content">
                                                                   <div id="TemEntregable">
-                                                                  
+
                                                                   </div>
                                                           </div>
                                                         </div>
@@ -68,20 +68,6 @@
 
                                                   <div class="col-md-12 col-sm-12 col-xs-12">
                                                         <div class="x_panel">
-
-                                                          <div class="x_title">
-                                                            <ul class="nav navbar-right panel_toolbox">
-
-                                                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                                              </li>
-
-                                                              <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                                              </li>
-
-                                                            </ul>
-                                                           <div class="clearfix"></div>
-
-                                                          </div>
                                                           <div class="x_content">
                                                             <table id="table-DivisionF" class="table table-striped table-bordered table-hover" ellspacing="0" width="100%">
                                                               <thead>
@@ -146,7 +132,7 @@
                 <div class="x_panel">
                   <div class="x_title">
                        <h2>Calendario de Actividades</h2>
-                    
+
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
@@ -168,7 +154,7 @@
                         </div>
                         <div  role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
                             <div id="TemActividad">
-                                    
+
                             </div>
                         </div>
                       </div>
@@ -191,13 +177,13 @@
                   <form class="form-horizontal " id="form-AddEntregable"  method="POST" >
                       <div class="col-md-12">
   	                      <div class="col-md-12 col-sm-12 col-xs-12">
-  	                        <label>Componente</label> 
+  	                        <label>Componente</label>
   	                          <input id="txt_nombre_entre" name="txt_nombre_entre" type="text" class="form-control" placeholder="Componente" autocomplete="off">
   	                      </div>
   	                      <div class="col-md-6 col-sm-6 col-xs-12">
                               <div class="col-md-6 col-sm-6 col-xs-12"><label>Entregable</label></div>
   	                          <select class="selectpicker" id="txt_denominacion_entre" mane="txt_denominacion_entre" class="selectpicker" data-live-search-normalize="true" data-live-search="true" data-container="body" data-header="Denominaciones"  title="Seleccionar Entregable"  >
-  	                            
+
   	                          </select>
   	                      </div>
                           <div class="col-md-6 col-sm-6 col-xs-12">
@@ -208,12 +194,12 @@
                           </div>
                           <div class="col-md-8 col-sm-8 col-xs-12">
                               <input type="hidden"  id="txt_denoMultiple" name="txt_denoMultiple" class="form-control">
-                          
+
                               <div id="PorcentajeSuperado" style="text-align: right;color: red; margin-top: 25px;" class="col-md-4">
-                                  
+
                               </div>
                               <div id="PorcentajeRestanteValorizacion" style="text-align:center ;color:#008080; margin-top:30px;" class="col-md-4">
-                                  
+
                               </div>
                           </div>
                       </div>
@@ -249,14 +235,14 @@
                   <form class="form-horizontal " id="form-modificarEntregable"  method="POST" >
                       <div class="col-md-12">
                           <div class="col-md-12 col-sm-12 col-xs-12">
-                            <label>Componente</label> 
+                            <label>Componente</label>
                                <input id="EdiEntregable" name="EdiEntregable" type="hidden" notValidate >
                               <input id="Editxt_nombre_entre" name="Editxt_nombre_entre" type="text" class="form-control" placeholder="Componente" autocomplete="off">
                           </div>
                           <div class="col-md-6 col-sm-6 col-xs-12">
                               <div class="col-md-6 col-sm-6 col-xs-12"><label>Entregable</label></div>
                               <select class="selectpicker" id="Editxt_denominacion_entre" mane="Editxt_denominacion_entre" class="selectpicker" data-live-search-normalize="true" data-live-search="true" data-container="body" data-header="Denominaciones"  title="Seleccionar Entregable"  >
-                                
+
                               </select>
                           </div>
                           <div class="col-md-6 col-sm-6 col-xs-12">
@@ -267,12 +253,12 @@
                           </div>
                           <div class="col-md-8 col-sm-8 col-xs-12">
                               <input type="hidden"  id="Editxt_denoMultiple" name="Editxt_denoMultiple" class="form-control">
-                          
+
                               <div id="PorcentajeSuperado" style="text-align: right;color: red; margin-top: 25px;" class="col-md-4">
-                                  
+
                               </div>
                               <div id="PorcentajeRestanteValorizacionModificar" style="text-align:right ;color:#008080; margin-top:30px;" class="col-md-7">
-                                  
+
                               </div>
                           </div>
                       </div>
@@ -327,7 +313,7 @@
             	                        <input class="form-control" id="txt_valoracionEAc" name="txt_valoracionEAc" class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2"  required="required" type="number" step='0.01'  placeholder="%">
                                   </div>
                                   <div class="col-md-5 col-sm-5 col-xs-5" style="margin-top: -70px;margin-left: 460px;">
-            		                     <div id="valoracionAvazadadActivi" style="text-align:center ;color:#008080; margin-left: 150px;margin-top:39px;" class="col-md-7 col-sm-7 col-xs-12"> 
+            		                     <div id="valoracionAvazadadActivi" style="text-align:center ;color:#008080; margin-left: 150px;margin-top:39px;" class="col-md-7 col-sm-7 col-xs-12">
             		                     </div>
                                   </div>
                              </div>
@@ -629,7 +615,7 @@
         </div>
       </div>
     </div>
-  </div> 
+  </div>
 
   <div class="modal fade" id="ListaObservaciones" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-lg" role="document">
@@ -642,7 +628,7 @@
          <div class="modal-body">
          <div class="row">
              <div id="TemActividadObservaciones" class="col-xs-12">
-                
+
               </div>
          </div>
         </div>
@@ -668,7 +654,7 @@
          <div class="row">
                 <div class="col-xs-12">
                       <div class="col-md-12 col-sm-12 col-xs-12 input-group">
-                        
+
                       </div>
                           <div id="contenedor_responsable">
                                <table id="table_responsableFormulador" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
@@ -679,10 +665,10 @@
                                            <td>Nombre</td>
                                            <td>Cargo</td>
                                            <td>Especialidad</td>
-                                           
+
                                         </tr>
                                       </thead>
-                                                                                 
+
                               </table>
                           </div>
               <form class="form-horizontal " id="form-AsignacionPersonalEntregable"  method="POST" >
@@ -885,7 +871,7 @@
         {
           txt_nombre_entre:
           {
-            validators: 
+            validators:
             {
               notEmpty:
               {
@@ -900,7 +886,7 @@
           },
            txt_valoracion_entre:
           {
-            validators: 
+            validators:
             {
               notEmpty:
               {
@@ -915,7 +901,7 @@
           },
           txt_fechaActividadI:
           {
-            validators: 
+            validators:
             {
               notEmpty:
               {
@@ -944,7 +930,7 @@
         {
           Editxt_nombre_entre:
           {
-            validators: 
+            validators:
             {
               notEmpty:
               {
@@ -959,7 +945,7 @@
           },
            editxt_valoracion_entre:
           {
-            validators: 
+            validators:
             {
               notEmpty:
               {
@@ -988,7 +974,7 @@
         {
           txt_nombre_act:
           {
-            validators: 
+            validators:
             {
               notEmpty:
               {
@@ -1003,7 +989,7 @@
           },
           txt_valoracionEAc:
           {
-            validators: 
+            validators:
             {
               notEmpty:
               {
@@ -1023,5 +1009,3 @@
     });
 
   </script>
-
- 
