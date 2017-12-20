@@ -18,95 +18,59 @@ function AddCartera()
 {
 	if ($this->input->is_ajax_request())
 	{
-		$nombreArchivo = $_FILES['Cartera_Resoluacion']['name'];
+    $msg=array();
 
-		$c_data['año_apertura_cartera']=$this->input->post("dateAñoAperturaCart")."-01-01";
-	    $c_data['fecha_inicio_cartera']=$this->input->post("dateFechaIniCart");
-        $c_data['fecha_cierre_cartera']=$this->input->post("dateFechaFinCart");
-        $c_data['estado_cartera']=0;
-        $c_data['numero_resolucion_cartera']=$this->input->post("txt_NumResolucionCart");
+    $config['upload_path']   = './uploads/cartera/';
+    $config['allowed_types'] = 'jpg|png|pdf|jpeg';
+    $config['max_width']     = 1024;
+    $config['max_height']    = 768;
+    //$config['file_name'] = 'DOC_';
+    $config['max_size'] = '20048';
 
-        $msg = array();
+    $this->load->library('upload', $config);
 
-		if($nombreArchivo != '' || $nombreArchivo != null)
-        {
-        	$extension = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
-        	if($extension=='png' || $extension=='pdf' || $extension=='jpg')
-        	{
-        		$config['upload_path'] = './uploads/cartera/';
-	            $config['allowed_types'] = '*';
-		        $config['file_name'] = 'CARTERA_';
-		        $config['max_size'] = '20048';
-
-	            $this->load->library('upload', $config);
-
-	            if (!$this->upload->do_upload('Cartera_Resoluacion'))
-	            {
-	                $error = array('error' => $this->upload->display_errors('', ''));
-	                $this->load->view('front/json/json_view',['datos' => $error]);
-	            }
-	            else
-	            {
-	            	$c_data['url_resolucion_cartera'] = $this->upload->data('file_name');
-
-					$data = $this->Model_CarteraInversion->AddCartera($c_data);
-					if($data>0)
-					{
-						$msg = (['proceso' => 'Correcto', 'mensaje' => 'La cartera fue registrada correctamente']);
-					}
-					else
-					{
-						$msg = (['proceso' => 'Error', 'mensaje' => 'El año de apertura ya existe']);
-					}
-					$this->load->view('front/json/json_view', ['datos' => $msg]);
-	            }
-        	}
-        	else
-        	{
-        		$msg = (['proceso' => 'Error', 'mensaje' => 'El tipo de archivo que intentas subir no está permitido.']);
-        		$this->load->view('front/json/json_view', ['datos' => $msg]);
-        	}
-        }
-        else
-        {
-	        $c_data['url_resolucion_cartera'] = NULL;
-
-			$data = $this->Model_CarteraInversion->AddCartera($c_data);
-			$msg = array();
-			if($data>0)
-			{
-				$msg = (['proceso' => 'Correcto', 'mensaje' => 'La cartera fue registrada correctamente']);
-			}
-			else
-			{
-				$msg = (['proceso' => 'Error', 'mensaje' => 'El año de apertura ya existe']);
-			}
-			$this->load->view('front/json/json_view', ['datos' => $msg]);
-        }
-
-  	}
-    else
+    if (!$this->upload->do_upload('cartera_resolucion'))
     {
-      show_404();
+        $error = array('error' => $this->upload->display_errors('', ''));
     }
+      $c_data['año_apertura_cartera']=$this->input->post("dateAñoAperturaCart")."-01-01";
+  	  $c_data['fecha_inicio_cartera']=$this->input->post("dateFechaIniCart");
+      $c_data['fecha_cierre_cartera']=$this->input->post("dateFechaFinCart");
+      $c_data['estado_cartera'] = $this->input->post("estadoCartera");
+      $c_data['numero_resolucion_cartera']=$this->input->post("txt_NumResolucionCart");
+      $c_data['file'] = $this->upload->file_name;
+
+      $query = $this->Model_CarteraInversion->getSameYearCartera($c_data);
+
+      if ($query>0) {
+        $msg = (['proceso' => 'Error', 'mensaje' => 'El año de apertura ya existe']);
+      } else {
+        $this->Model_CarteraInversion->AddCartera($c_data);
+        $msg = (['proceso' => 'Correcto', 'mensaje' => 'La cartera fue registrada correctamente: ']);
+      }
+      $this->load->view('front/json/json_view', ['datos' => $msg]);
+  }
+  else {
+    show_404();
+  }
 }
  	 function editCartera(){
-      $idCartera = isset($_GET['id_cartera']) ? $_GET['id_cartera'] : null;  
+      $idCartera = isset($_GET['id_cartera']) ? $_GET['id_cartera'] : null;
 	    if ($this->input->is_ajax_request()) {
 	    	$config['upload_path']          = './uploads/cartera/';
-		    $config['allowed_types']        = 'pdf|doc|xml|docx|PDF|DOC|DOCX|xls|xlsx';
+		    $config['allowed_types']        = 'jpg|png|pdf';
 		    $config['max_width']            = 1024;
 		    $config['max_height']           = 768;
 		    $config['max_size']      = 15000;
-	        $config['encrypt_name']  = false;
-	        $this->load->library('upload',$config);
+	      $config['encrypt_name']  = false;
+	      $this->load->library('upload',$config);
 		    $this->upload->do_upload('Cartera_Resoluacion');
 
 
-	      	$dateAñoAperturaCart=$this->input->post("dateAñoAperturaCart")."-01-01";
+	    $dateAñoAperturaCart=$this->input->post("dateAñoAperturaCart")."-01-01";
 			$dateFechaIniCart =$this->input->post("dateFechaIniCart");
 			$dateFechaFinCart =$this->input->post("dateFechaFinCart");
-			$estado=0;
+			$estado=$this->input->post("estadoCartera");
 			$txt_NumResolucionCart =$this->input->post("txt_NumResolucionCart");
 			$Cartera_Resoluacion=$this->upload->file_name;
 			echo $this->Model_CarteraInversion->editCartera($idCartera,$dateAñoAperturaCart,$dateFechaIniCart,$dateFechaFinCart,$estado,$txt_NumResolucionCart,$Cartera_Resoluacion);
@@ -176,11 +140,11 @@ function AddCartera()
 	}
 
 	function GetCarteraInversion()
-	{		
+	{
 		if ($this->input->is_ajax_request())
 		{
 			$datos=$this->Model_CarteraInversion->GetCarteraInversion();
-			foreach ($datos as $key => $value) 
+			foreach ($datos as $key => $value)
 			{
 				$value->fecha_inicio_cartera = date('d/m/Y',strtotime($value->fecha_inicio_cartera));
 				$value->fecha_cierre_cartera = date('d/m/Y',strtotime($value->fecha_cierre_cartera));

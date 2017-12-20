@@ -21,7 +21,7 @@ class Estudio_Inversion extends CI_Controller
 
     {
 
-        if ($this->input->is_ajax_request()) 
+        if ($this->input->is_ajax_request())
         {
             $NombreEstadoFormulacionEvalu=$this->input->post('valor');
             $datos = $this->Estudio_Inversion_Model->get_listaproyectos($NombreEstadoFormulacionEvalu);
@@ -39,15 +39,15 @@ class Estudio_Inversion extends CI_Controller
         $idPersona=$dataIdPersona->id_persona;
         $TipoUsuarioCodigo=$dataIdPersona->cod_usuario_tipo;
 
-        if ($this->input->is_ajax_request()) 
+        if ($this->input->is_ajax_request())
         {
             $datos=$this->Estudio_Inversion_Model->get_EstudioInversion($idPersona,$TipoUsuarioCodigo);
-            foreach ($datos as $key => $value) 
+            foreach ($datos as $key => $value)
             {
                 $value->fecha = date('d/m/Y',strtotime($value->fecha));
             }
             echo json_encode($datos);
-        } 
+        }
         else
         {
             show_404();
@@ -300,7 +300,7 @@ class Estudio_Inversion extends CI_Controller
 
             $this->load->library('upload', $config);
 
-            if (!$this->upload->do_upload('Documento_invserion')) 
+            if (!$this->upload->do_upload('Documento_invserion'))
             {
                 $error = array('error' => $this->upload->display_errors('', ''));
                 $this->load->view('front/json/json_view',['datos' => $error]);
@@ -317,7 +317,7 @@ class Estudio_Inversion extends CI_Controller
                 $msg = ($q1>0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
                 $this->load->view('front/json/json_view', ['datos' => $msg]);
             }
-        } 
+        }
         else
         {
             show_404();

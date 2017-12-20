@@ -35,6 +35,15 @@
                         </div>
                       </div>
                       <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12"  for="name">Estado <span class="required">*</span></label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select class="form-control" id="estadoCartera" name="estadoCartera">
+                            <option value="1">Activo</option>
+                            <option value="0">Inactivo</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Adjuntar resolución
                         </label>
                           <div class="col-md-6 col-sm-6 col-xs-12">
@@ -43,7 +52,7 @@
                                 if(isset($arrayCartera->url_resolucion_cartera) and $arrayCartera->url_resolucion_cartera!='' ){
                                 ?>
                                 <div style="margin-top:5px;">
-                                  <a href="../../uploads/cartera/<?php echo $arrayCartera->url_resolucion_cartera; ?>" target="_blank"><i class='fa fa-file fa-2x'></i></a>
+                                  <a href="<?= base_url(); ?>uploads/cartera/<?php echo $arrayCartera->url_resolucion_cartera; ?>" target="_blank"><i class='fa fa-file fa-2x'></i></a>
                                 </div>
                                 <?php
                                 }
@@ -145,8 +154,6 @@
         },
       }
     });
-
    // listarCarteraAnios();
-
   });
 </script>

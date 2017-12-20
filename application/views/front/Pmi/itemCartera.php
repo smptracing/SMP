@@ -1,9 +1,9 @@
 <div class="modal-body">
     <div class="row">
         <div class="col-xs-12">
-            <form class="form-horizontal " name="form-RegistraCarteraInv" id="form-RegistraCarteraInv" method="post"  enctype="multipart/form-data" onSubmit="return false;">
+            <form class="form-horizontal" name="form-RegistraCarteraInv" id="form-RegistraCarteraInv" action="<?php echo base_url(); ?>CarteraInversion/AddCartera" method="POST">
                 <div class="item form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Año Apertura Cartera<span class="required">*</span></label>
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Año Apertura Cartera <span class="required">*</span></label>
                     <div class="col-md-2 col-sm-2 col-xs-12">
                         <select class="form-control" id="dateAñoAperturaCart" name="dateAñoAperturaCart">
                           <?php
@@ -25,13 +25,13 @@
                     </div>
                 </div>
                 <div class="item form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Fecha Inicio Cartera<span class="required">*</span></label>
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Fecha Inicio Cartera <span class="required">*</span></label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <input type="date" id="dateFechaIniCart" name="dateFechaIniCart" value="<?php if(isset($arrayCartera)){echo $arrayCartera->fecha_inicio_cartera;} else { echo date('Y-m-d');}?>" class="form-control col-md-7 col-xs-5" required="required" type="text">
                     </div>
                 </div>
                 <div class="item form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12"  for="name">Fecha Fin Cartera<span class="required">*</span></label>
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12"  for="name">Fecha Fin Cartera <span class="required">*</span></label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <input type="date" id="dateFechaFinCart" name="dateFechaFinCart" value="<?php if(isset($arrayCartera)){echo $arrayCartera->fecha_cierre_cartera;} else { echo date('Y-m-d');}?>" class="form-control col-md-7 col-xs-5" required="required" type="text">
                     </div>
@@ -44,9 +44,18 @@
                     </div>
                 </div>
                 <div class="item form-group">
+                  <label class="control-label col-md-3 col-sm-3 col-xs-12"  for="name">Estado <span class="required">*</span></label>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <select class="form-control" id="estadoCartera" name="estadoCartera">
+                      <option value="1">Activo</option>
+                      <option value="0">Inactivo</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="item form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Adjuntar resolución</label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        <div><input type="file" class="form-control" name="Cartera_Resoluacion" ></div>
+                        <div><input type="file" class="form-control" name="cartera_resolucion" id="cartera_resolucion" ></div>
                         <?php
                         if(isset($arrayCartera->url_resolucion_cartera) and $arrayCartera->url_resolucion_cartera!='' ){
                         ?>
@@ -68,7 +77,7 @@
                         </button>
                         <button  data-dismiss="modal" class="btn btn-danger">
                             <span class="glyphicon glyphicon-remove"></span>
-                            Cerrar
+                            Cerrar ventana
                         </button>
                     </div>
                 </div>

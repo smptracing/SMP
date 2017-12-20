@@ -17,27 +17,30 @@ class Model_CarteraInversion extends CI_Model
           }
       }
 
+    function getSameYearCartera($c_data) {
+      $limit = 10;
+      $offset = 0;
+      $query = $this->db->get_where('CARTERA_INVERSION', array('año_apertura_cartera' => $c_data['año_apertura_cartera']), $limit, $offset);
+      return $query->num_rows();
+    }
 
-    function AddCartera($Cartera_inversion)
+    function AddCartera($c_data)
     {
-        $añoApertura = $Cartera_inversion['año_apertura_cartera'];
-        $this->db->where('año_apertura_cartera', $añoApertura);
-        $data = $this->db->get('CARTERA_INVERSION')->num_rows();
-        if($data==0)
-        {
-            $this->db->insert('CARTERA_INVERSION',$Cartera_inversion);
-            return $this->db->affected_rows();
-        }
-        else
-        {
-            return 0;
-        }
+      $data = array(
+        'año_apertura_cartera' => $c_data['año_apertura_cartera'],
+        'fecha_inicio_cartera' => $c_data['fecha_inicio_cartera'],
+        'fecha_cierre_cartera' => $c_data['fecha_cierre_cartera'],
+        'estado_cartera' => $c_data['estado_cartera'],
+        'numero_resolucion_cartera' => $c_data['numero_resolucion_cartera'],
+        'url_resolucion_cartera' => $c_data['file']
+      );
+      $this->db->insert('CARTERA_INVERSION',$data);
     }
 
         function editCartera($id_cartera,$dateAñoAperturaCart,$dateFechaIniCart,$dateFechaFinCart,$estado,$txt_NumResolucionCart,$txt_UrlResolucionCart){
-             $query=$this->db->query("execute sp_CarteraInversion_u ".$id_cartera.",'".$dateAñoAperturaCart."','".$dateFechaIniCart."','".$dateFechaFinCart."','".$txt_NumResolucionCart."','".$txt_UrlResolucionCart."'");
-           
-            if ($query) 
+             $query=$this->db->query("execute sp_CarteraInversion_u ".$id_cartera.",'".$dateAñoAperturaCart."','".$dateFechaIniCart."','".$dateFechaFinCart."','".$estado."','".$txt_NumResolucionCart."','".$txt_UrlResolucionCart."'");
+
+            if ($query)
               {
                 $result=$query->result_array();
                 if($result[0]['n']=='1')
@@ -60,16 +63,16 @@ class Model_CarteraInversion extends CI_Model
              }else
              {
               return false;
-             }  
-        } 
-    //FIN LISTAR CARTERA FECHA ACTUAL 
+             }
+        }
+    //FIN LISTAR CARTERA FECHA ACTUAL
 
     //LISTAR CARTERA DE INVERSION
     function GetCarteraInversion()
     {
         $cartera=$this->db->query("execute sp_CarteraInversion_r");
-        return $cartera->result(); 
-    } 
+        return $cartera->result();
+    }
     //FIN LISTAR CARTERA DE INVERSION
 //--------------FIN DE METODOS PARA EL MANTENIMIENTO DE RUBRO DE EJECUCION--------------------------------------------
      function GetCarteraAnios()
@@ -81,7 +84,7 @@ class Model_CarteraInversion extends CI_Model
              }else
              {
               return false;
-             }  
+             }
 
      }
 }
