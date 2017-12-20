@@ -25,7 +25,7 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                    <button type="button" class="btn btn-primary" style="margin-top: 5px;margin-bottom: 15px;" data-toggle="modal" onclick= paginaAjaxDialogo('null','Registrar',{},base_url+"index.php/CarteraInversion/itemCartera",'GET',null,null,false,true);><span class="fa fa-plus-circle"></span>Nuevo</button>
+                    <button type="button" class="btn btn-primary" style="margin-top: 5px;margin-bottom: 15px;" data-toggle="modal" onclick= paginaAjaxDialogo('null','Registrar',{},base_url+"index.php/CarteraInversion/itemCartera",'GET',null,null,false,true);><span class="fa fa-plus-circle"></span> Nuevo</button>
                     <div class="table-responsive">
                         <table id="table-CarteraInv" class="table table-condensed table-striped table-bordered table-hover table table-striped table-bordered nowrap" width="100%">
                             <thead>
@@ -41,7 +41,7 @@
                             </thead>
                             <tbody>
                             </tbody>
-                        </table>                                       
+                        </table>
                     </div>
                 </div>
             </div>
@@ -61,7 +61,6 @@
                 <button type="button" id="Btn_SiCartera" class="btn btn-info">Si</button>
                 <button type="button" class="Btn_NoCartera">No</button></center>
             </div>
-        </div>      
+        </div>
     </div>
 </div>
-

@@ -28,19 +28,19 @@
                                </div>
                       </div>
                       <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12"  for="name">Estado <span class="required">*</span></label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select class="form-control" id="estadoCartera" name="estadoCartera">
+                            <option value="1">Activo </option>
+                            <option value="0">Inactivo </option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Numero Resolucion Cartera
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input id="txt_NumResolucionCart" name="txt_NumResolucionCart" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Numero Resolucion Cartera"  type="text" value="<?php if(isset($arrayCartera->numero_resolucion_cartera)) echo $arrayCartera->numero_resolucion_cartera;?>">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12"  for="name">Estado <span class="required">*</span></label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select class="form-control" id="estadoCartera" name="estadoCartera">
-                            <option value="1">Activo</option>
-                            <option value="0">Inactivo</option>
-                          </select>
                         </div>
                       </div>
                       <div class="item form-group">
@@ -155,5 +155,6 @@
       }
     });
    // listarCarteraAnios();
+   $("#estadoCartera").val(<?= $arrayCartera->estado_cartera ?>);
   });
 </script>

@@ -38,12 +38,6 @@
                     <p style="color: red; display: none;" id="Advertencia">La Fecha de Inicio no puede ser mayor a la Fecha de Fin</p>
                 </div>
                 <div class="item form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Numero Resolucion Cartera</label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="txt_NumResolucionCart" name="txt_NumResolucionCart" class="form-control col-md-7 col-xs-12" placeholder="Numero Resolucion Cartera"  type="text" value="<?php if(isset($arrayCartera->numero_resolucion_cartera)) echo $arrayCartera->numero_resolucion_cartera;?>">
-                    </div>
-                </div>
-                <div class="item form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12"  for="name">Estado <span class="required">*</span></label>
                   <div class="col-md-6 col-sm-6 col-xs-12">
                     <select class="form-control" id="estadoCartera" name="estadoCartera">
@@ -51,6 +45,12 @@
                       <option value="0">Inactivo</option>
                     </select>
                   </div>
+                </div>
+                <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Numero Resolucion Cartera</label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input id="txt_NumResolucionCart" name="txt_NumResolucionCart" class="form-control col-md-7 col-xs-12" placeholder="Numero Resolucion Cartera"  type="text" value="<?php if(isset($arrayCartera->numero_resolucion_cartera)) echo $arrayCartera->numero_resolucion_cartera;?>">
+                    </div>
                 </div>
                 <div class="item form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Adjuntar resolución</label>
