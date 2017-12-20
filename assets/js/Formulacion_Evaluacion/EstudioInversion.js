@@ -258,30 +258,27 @@ $("#form-AddDocumentosEstudio").submit(function(event)//AÑADIR NUEVA CARTERA
     });
 });
 
-//fin de documentos de inversion
-
-//REGISTARAR NUEVA ETAPA DE ESTUDIO
-   $("#form-AddEtapaEstudio").submit(function(event)
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/Estudio_Inversion/AddEtapaEstudio",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           //alert(resp);
-                           if (resp=='1') {
-                             swal("REGISTRADO","Se regristró correctamente", "success");
-                             formReset();
-                           }
-                            if (resp=='2') {
-                             swal("NO SE REGISTRÓ","NO se regristró ", "error");
-                           }
-                          $('#dynamic-table-EstudioInversion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
-                             formReset();
-                         }
-                      });
-                  });
+$("#form-AddEtapaEstudio").submit(function(event)
+{
+    event.preventDefault();
+    $('#validateEtapaEstudio').data('formValidation').validate();
+    if(!($('#validateEtapaEstudio').data('formValidation').isValid()))
+    {
+        return;
+    }
+    $.ajax({
+        url:base_url+"index.php/Estudio_Inversion/AddEtapaEstudio",
+        type:$(this).attr('method'),
+        data:$(this).serialize(),
+        success:function(resp)
+        {
+            resp = JSON.parse(resp);
+            swal(resp.proceso,resp.mensaje,(resp.proceso=='Correcto') ? 'success':'error');
+            $('#ventanaEtapaEstudio').modal('hide');
+            $('#dynamic-table-EstudioInversion').dataTable()._fnAjaxUpdate();
+        }
+    });
+});
 //limpiar campos
           function formReset()
           {
@@ -715,6 +712,38 @@ $(function()
                     notEmpty:
                     {
                         message: '<b style="color: red;">El campo "Documento" es requerido.</b>'
+                    }
+                }
+            }
+        }
+    });
+
+    $('#validateEtapaEstudio').formValidation(
+    {
+        framework: 'bootstrap',
+        excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+        live: 'enabled',
+        message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+        trigger: null,
+        fields:
+        {
+            dateFechaIniC:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Fecha de Inicio" es requerido.</b>'
+                    }
+                }
+            },
+            dateFechaIniF:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Fecha Final" es requerido.</b>'
                     }
                 }
             }

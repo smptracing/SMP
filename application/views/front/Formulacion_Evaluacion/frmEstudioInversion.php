@@ -65,7 +65,7 @@
           <div class="clearfix"></div>
         </div>
      </div>
-<div class="modal fade" id="ventanaEstudioInversion" data-backdrop="static" data-keyboard="false" tabindex="-1"role="dialog">
+<div class="modal fade" id="ventanaEstudioInversion" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -280,91 +280,72 @@
       </div>
     </div>
 </div>
-<!-- /.fin de ventana para asignar repsonsable a edtudio de inversión-->
-<!-- /.ventana para asignar etapa de estudio -->
+
+
 <div class="modal fade" id="ventanaEtapaEstudio" role="dialog">
     <div class="modal-dialog ">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-          Etapa de Estudio </h4>
-        </div>
-        <div class="modal-body">
-         <div class="row">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Etapa de Estudio </h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
                     <div class="col-xs-12">
-                                        <!-- PAGE CONTENT BEGINS -->
-              <form class="form-horizontal " id="form-AddEtapaEstudio"   action="<?php echo base_url(); ?>Estudio_Inversion/AddEtapaEstudio" method="POST" >
-              <div class="item form-group">
-                        <div class="item form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="txt_id_est_inv" name="txt_id_est_inv" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
-                        </div>
-                      </div>
-                </div>
-                      <div class="item form-group">
-                                     <div class="col-md-4">
-
-                                           <label for="name">Etapas FE<span class="required"></span>
-                                            </label>
-                                                 <select   id="listaretapasFE_M" name="listaretapasFE_M" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Etapas FE...">
-                                                </select>
-                                    </div>
-                                    </div>
+                        <form class="form-horizontal " id="form-AddEtapaEstudio"   action="<?php echo base_url(); ?>Estudio_Inversion/AddEtapaEstudio" method="POST" >
                             <div class="item form-group">
-                                      <div class="col-md-4">
-
-                                           <label for="name">Fecha Inicio<span class="required"></span>
-                                            </label>
-                                                  <input type="date" id="dateFechaIniC" name="dateFechaIniC" class="form-control col-md-6 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text" value="<?php echo date("Y-m-d"); ?>">
-                                          </div>
-                                         <div class="col-md-4">
-                                           <label for="name">Fecha Final<span class="required"></span>
-                                            </label>
-                                                  <input type="date" id="dateFechaIniF" name="dateFechaIniF" class="form-control col-md-6 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text" value="<?php echo date("Y-m-d"); ?>">
-                                          </div>
-                                          <div class="col-md-4">
-                                           <label for="name">Avance Físico<span class="required"></span>
-                                            </label>
-                                                  <input id="txtAvanceFisico" name="txtAvanceFisico"  class="form-control col-md-12 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Avance Físico" required="required" type="text" value="0.0"disabled>
-                                          </div>
-                                        <!--     <div class="col-md-6">
-                                          <br>
-                                           <label for="name">Fecha Estado<span class="required"></span>
-                                            </label>
-                                                  <input type="date" id="dateFechaIniCart" name="dateFechaIniCart" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text">
-                                          </div>-->
-                                         <div class="col-md-12">
-                                         <br>
-                                           <label for="name">Recomendaciones<span class="required"></span>
-                                            </label>
-                                                  <textarea class="form-control" rows="3" name="txadescripcion" id="txadescripcion"></textarea>
-                                          </div>
-                      </div>
-                     <div class="ln_solid"></div>
-                      <div class="form-group">
-                        <div class="col-md-6 col-md-offset-3">
-                          <button id="send" type="submit" class="btn btn-success">
-                            <span class="glyphicon glyphicon-floppy-disk"></span>
-                            Guardar
-                          </button>
-                           <button  class="btn btn-danger" data-dismiss="modal">
-                             <span class="glyphicon glyphicon-remove"></span>
-                            Cerrar
-                          </button>
-                        </div>
-                      </div>
-                    </form>
-                        </div><!-- /.span -->
-                 </div><!-- /.row -->
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="txt_id_est_inv" name="txt_id_est_inv" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
+                                </div>
+                            </div>
+                            <div id="validateEtapaEstudio">
+                            <div class="item form-group">
+                                <div class="col-md-4">
+                                    <label for="name">Etapas FE*</label>
+                                    <select id="listaretapasFE_M" name="listaretapasFE_M" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"></select>
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <div class="col-md-4">
+                                    <label for="name">Fecha Inicio*</label>
+                                    <input type="date" id="dateFechaIniC" name="dateFechaIniC" class="form-control" type="text" value="<?=date('Y-m-d')?>">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="name">Fecha Final*</label>
+                                    <input type="date" id=dateFechaIniF" name="dateFechaIniF" class="form-control" type="text" value="<?=date('Y-m-d')?>">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="name">Avance Físico*</label>
+                                    <input id="txtAvanceFisico" name="txtAvanceFisico"  class="form-control col-md-12 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Avance Físico" required="required" type="text" value="0.0" disabled>
+                                </div>
+                                <div class="col-md-12">
+                                    <br>
+                                    <label for="name">Recomendaciones</label>
+                                    <textarea class="form-control notValidate" rows="3" name="txadescripcion" id="txadescripcion"></textarea>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-3">
+                                    <button id="send" type="submit" class="btn btn-success">
+                                        <span class="glyphicon glyphicon-floppy-disk"></span> Guardar
+                                    </button>
+                                    <button class="btn btn-danger" data-dismiss="modal">
+                                        <span class="glyphicon glyphicon-remove"></span> Cerrar
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer"></div>
         </div>
-        <div class="modal-footer">
-
-        </div>
-      </div>
     </div>
 </div>
-<!-- /.fin de  ventana para asignar etapa de estudio-->
+
+
 
 <!-- /.ventana para la asiganacion de documentos en los entregables -->
 <div class="modal fade" id="VentanaDocumentosEstudio" role="dialog">

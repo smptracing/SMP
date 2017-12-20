@@ -173,22 +173,33 @@ class Estudio_Inversion extends CI_Controller
     //REGISTRAR NUEVA
     public function AddEtapaEstudio()
     {
-        if ($this->input->is_ajax_request()) {
-            //PRIMERO ACTUALIZAR Y LUEGO REGISTAR ETAPA ESTUDIO
-            $flat             = "UC";
-            $id_etapa_estudio = "0";
-            $id_est_inv       = $this->input->post("txt_id_est_inv");
-            $listaretapasFE_M = $this->input->post("listaretapasFE_M");
-            $dateFechaIniC    = $this->input->post("dateFechaIniC");
-            $dateFechaIniF    = $this->input->post("dateFechaIniF");
-            $txtAvanceFisico  = "0.00";
-            $txadescripcion   = $this->input->post("txadescripcion");
-            if ($this->Estudio_Inversion_Model->AddEtapaEstudio($flat, $id_etapa_estudio, $id_est_inv, $listaretapasFE_M, $dateFechaIniC, $dateFechaIniF, $txtAvanceFisico, $txadescripcion) == false) {
-                echo "1";
-            } else {
-                echo "2";
+        if ($this->input->is_ajax_request()) 
+        {
+            $msg=array();
+
+            $c_data['id_est_inv']=$this->input->post("txt_id_est_inv");
+            $c_data['id_etapa_fe']=$this->input->post("listaretapasFE_M");
+            $c_data['fecha_inicio']=$this->input->post("dateFechaIniC");
+            $c_data['fecha_final']=$this->input->post("dateFechaIniF");
+            $c_data['avance_fisico']=0;
+            $c_data['fecha_estado']=date('d-m-Y H:i:s');      
+            $c_data['recomendaciones']=$this->input->post("txadescripcion");
+            $c_data['en_seguimiento']=1;
+
+            if ($this->input->post("dateFechaIniC")>$this->input->post("dateFechaIniF"))
+            {
+                $msg = (['proceso' => 'Error', 'mensaje' => 'la fecha de Inicio no puede ser superior a la fecha de finalizacion']);
+                $this->load->view('front/json/json_view', ['datos' => $msg]); 
+                return;              
             }
-        } else {
+
+            $q1=$this->Estudio_Inversion_Model->AddEtapaEstudio($c_data);
+
+            $msg = ($q1>0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
+            $this->load->view('front/json/json_view', ['datos' => $msg]);
+        } 
+        else 
+        {
             show_404();
         }
     }

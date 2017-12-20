@@ -140,25 +140,16 @@ class Estudio_Inversion_Model extends CI_Model
             return false;
         }
     }
-    //actualizar el campo en seguiimiento igual 0
-    public function AddEtapaEstudio($flat, $id_etapa_estudio, $id_est_inv, $listaretapasFE_M, $dateFechaIniC, $dateFechaIniF, $txtAvanceFisico, $txadescripcion)
+    public function AddEtapaEstudio($data)
     {
-        //  $EstadoCicloInversion = $this->db->query("execute get");
-        $EtapaEstudio = $this->db->query("execute sp_Gestionar_EstapaEstudio'"
-            . $flat . "','"
-            . $id_etapa_estudio . "', '"
-            . $id_est_inv . "', '"
-            . $listaretapasFE_M . "', '"
-            . $dateFechaIniC . "', '"
-            . $dateFechaIniF . "', '"
-            . $txtAvanceFisico . "', '"
-            . $txadescripcion . "' ");
-        if ($EtapaEstudio->num_rows() > 0) {
-            return $EtapaEstudio->result();
-        } else {
-            return false;
-        }
+        $this->db->set('en_seguimiento',0);
+        $this->db->where('id_est_inv',$data['id_est_inv']);
+        $this->db->update('ETAPA_ESTUDIO');
+
+        $this->db->insert('ETAPA_ESTUDIO',$data);
+        return $this->db->affected_rows();
     }
+
     public function AddEstudioInversion($flat, $id_est_inv, $txtCodigoUnico, $txtnombres, $listaFuncionC, $listaTipoInversion, $listaNivelEstudio, $lista_unid_form, $lista_unid_ejec, $txadescripcion, $txtMontoInversion, $txtcostoestudio)
     {
         $EstudioInversion = $this->db->query("execute sp_Gestionar_EstudioInversion'"
