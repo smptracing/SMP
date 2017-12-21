@@ -1,28 +1,23 @@
- $(document).on("ready" ,function(){
-              ListarEvaluacionFE();
-               ListarEvaluador();
-                            //REGISTARAR ESTADO ETAPA
-   $("#form-AddEtapaEstudio").submit(function(event)
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/EstadoEtapa_FE/AddEstadoEtapa_FE",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           //alert(resp);
-                           if (resp=='1') {
-                             swal("REGISTRADO","Se regristró correctamente", "success");
-                             formReset();
-                           }
-                            if (resp=='2') {
-                             swal("NO SE REGISTRÓ","NO se regristró ", "error");
-                           }
-                          $('#table-EstadoEtapa').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
-                             formReset();
-                         }
-                      });
-                  });
+ $(document).on("ready" ,function()
+ {
+    ListarEvaluacionFE();
+    ListarEvaluador();
+    $("#form-AddEtapaEstudio").submit(function(event)
+    {
+        event.preventDefault();
+        $.ajax({
+            url:base_url+"index.php/EstadoEtapa_FE/AddEstadoEtapa_FE",
+            type:$(this).attr('method'),
+            data:$(this).serialize(),
+            success:function(resp)
+            {
+                resp=JSON.parse(resp);
+                swal(resp.proceso,resp.mensaje,(resp.proceso=='Correcto') ? 'success':'error');
+                $('#table-EstadoEtapa').dataTable()._fnAjaxUpdate();
+                formReset();
+            }
+        });
+    });
 //REGISTARAR situacion
    $("#form-AddSituacion").submit(function(event)
                   {
@@ -115,7 +110,7 @@
                                     {"data":"id_pi","visible": false},
                                     {"data":"codigo_unico_est_inv",
                                     "mRender": function ( data, type, full ) {
-                                     return '<a  data-toggle="tooltip" title="Ver Detalle " style="font-weight:normal;font-size:15" type="button" class="VerDetalleEvaluacion btn btn-link" data-toggle="modal" data-target="#VerDetalleEvaluacion" href="/codigo_unico_est_inv/' + data + '">' + data+ '</a>';
+                                     return '<a  data-toggle="modal"  style="font-weight:normal;font-size:15" type="button" class="VerDetalleEvaluacion btn btn-link" data-target="#VerDetalleEvaluacion" href="/codigo_unico_est_inv/' + data + '"><span data-toggle="tooltip" title="Ver Detalle">' + data+ '<span></a>';
                                       }
                                     },
                                     {"data":"nombre_est_inv"},
@@ -131,7 +126,7 @@
                                          return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Completado</small></td>";
                                     }},
 
-{"defaultContent":"<button  data-toggle='tooltip' title='Asignar Estado' type='button' class='EstadoFE btn btn-success btn-xs' data-toggle='modal' data-target='#VentanaEstadoFE'><i class='fa fa-dashboard' aria-hidden='true'></i></button><button type='button' data-toggle='tooltip' title='Asignar Situación' class='Situacion btn btn-warning btn-xs' data-toggle='modal' data-target='#VentanaSituacionActual'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button' data-toggle='tooltip' title='Asignar Evaluador'  class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#VentanaAsignarPersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button>"}
+{"defaultContent":"<button type='button' class='EstadoFE btn btn-success btn-xs' data-toggle='modal' data-target='#VentanaEstadoFE'><i data-toggle='tooltip' title='Asignar Estado' class='fa fa-dashboard' aria-hidden='true'></i></button><button type='button' class='Situacion btn btn-warning btn-xs' data-toggle='modal' data-target='#VentanaSituacionActual'><i data-toggle='tooltip' title='Asignar Situación' class='fa fa-flag' aria-hidden='true'></i></button><button type='button' class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#VentanaAsignarPersona'><i data-toggle='tooltip' title='Asignar Evaluador' class='glyphicon glyphicon-user' aria-hidden='true'></i></button>"}
                                 ],
                                  "language":idioma_espanol
                     });

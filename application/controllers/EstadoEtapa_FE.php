@@ -37,14 +37,6 @@ class EstadoEtapa_FE extends CI_Controller
             $msg = ($q1>0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
             $this->load->view('front/json/json_view', ['datos' => $msg]);
 
-            /*$flat                   = "C";
-            $Cbx_EstadoFE           = $this->input->post("Cbx_EstadoFE");
-            $txt_IdEtapa_Estudio_FE = $this->input->post("txt_IdEtapa_Estudio_FE");
-            if ($this->Model_EstadoEtapa_FE->AddEstadoEtapa_FE($flat, $Cbx_EstadoFE, $txt_IdEtapa_Estudio_FE) == false) {
-                echo "1";
-            } else {
-                echo "2";
-            }*/
         } 
         else 
         {
