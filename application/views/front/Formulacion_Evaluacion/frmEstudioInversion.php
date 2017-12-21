@@ -1,3 +1,30 @@
+<style>
+
+  #dynamic-table-EstudioInversion>tbody>tr>td:nth-child(0n+4)
+  {
+    text-align: right;
+  }
+
+  .btn-group .btn, .btn-group-vertical .btn {
+    margin-bottom: 0;
+    margin-right: 0;
+    width: 160px !important;
+  }
+  .btn {
+    border-radius: 0px !important;
+  }
+  .btn-group
+  {
+
+  }
+  .dropdown-menu {
+    z-index: 90000;
+}
+.table-responsive
+{
+    z-index: 80000;
+}
+</style>
 <div class="right_col" role="main">
 <div class="">
       <div class="clearfix"></div>
@@ -31,12 +58,12 @@
                                                         </div>
                                                       <div class="x_content" >
                                                         <div class="table-responsive">
-                                                                <table id="dynamic-table-EstudioInversion" class="table table-striped jambo_table bulk_action" with="100%" >
+                                                                <table id="dynamic-table-EstudioInversion" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%" >
                                                                     <thead style=" ">
                                                                        <tr>
                                                                        <th style="width: 1%">Código</th>
                                                                        <th style="width: 1%">#</th>
-                                                                         <th style="width: 80%"><i class="fa fa-thumb-tack"></i>Nombre</th>
+                                                                         <th style="width: 70%"><i class="fa fa-thumb-tack"></i>Nombre</th>
                                                                          <th style="width: 12%"> Función</th>
                                                                          <th style="width: 20%">
                                                                         <i class="fa fa-users"></i>
@@ -45,7 +72,7 @@
 
                                                                          <th style="width: 12%"> Avance</th>
                                                                          <th style="width: 13%"> Etapa</th>
-                                                                         <th style="width: 1%"></th>
+                                                                         <th style="width: 12%">Opción</th>
                                                                       </tr>
                                                                    </thead>
                                                                 </table>

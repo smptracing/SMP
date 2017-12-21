@@ -1,3 +1,30 @@
+<style>
+
+  #tabla-formulacion>tbody>tr>td:nth-child(0n+4)
+  {
+    text-align: right;
+  }
+
+  .btn-group .btn, .btn-group-vertical .btn {
+    margin-bottom: 0;
+    margin-right: 0;
+    width: 160px !important;
+  }
+  .btn {
+    border-radius: 0px !important;
+  }
+  .btn-group
+  {
+
+  }
+  .dropdown-menu {
+    z-index: 90000;
+}
+.table-responsive
+{
+    z-index: 80000;
+}
+</style>
 <div class="right_col" role="main">
     <div>
         <div class="clearfix"></div>
@@ -17,7 +44,7 @@
                                                       <!--fin  de icono de reporte -->                            
                 <div class="x_content">
                     <div class="table-responsive">
-                        <table id="tabla-formulacion" class="table table-striped jambo_table bulk_action" style="width: 100%">
+                        <table id="tabla-formulacion" class="table table-striped jambo_table bulk_action  table-hover"  width="100%" cellspacing="0" >
                             <thead>
                                 <tr>
                                     <th>#</th>
