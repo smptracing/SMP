@@ -39,22 +39,26 @@ class FEActividadEntregable extends CI_Controller
 
     public function Add_Actividades()
     {
-        if ($this->input->is_ajax_request()) {
-            $opcion                 = "c";
-            $id_act                 = "0";
-            $txt_id_entregable      = $this->input->post("txt_id_entregable");
-            $txt_nombre_act         = $this->input->post("txt_nombre_act");
-            $txt_valoracionEAc      = $this->input->post("txt_valoracionEAc");
-            $txt_AvanceEAc          = 0;
-            $txt_observacio_EntreAc = $this->input->post("txt_observacio_EntreAc");
-            $txt_ActividadColor     = $this->input->post("txt_ActividadColor");
+        if ($this->input->is_ajax_request()) 
+        {
+            $msg=array();
 
-            $FechaActividad     = $this->input->post("FechaActividad");
-            $Fechas = explode("-",$FechaActividad);
-            
-            $data = $this->Model_FEActividadEntregable->Add_Actividades($opcion,$id_act, $txt_id_entregable,$txt_nombre_act,$Fechas[0],$Fechas[1],$txt_valoracionEAc,$txt_AvanceEAc,$txt_observacio_EntreAc,$txt_ActividadColor);
-            echo json_encode(['id_entregable'=>$txt_id_entregable]);exit;
-        } else {
+            $c_data['id_entregable']=$this->input->post("txt_id_entregable");
+            $c_data['nombre_act']=$this->input->post("txt_nombre_act");
+            $c_data['fecha_inicio']=date('Y-m-d',strtotime($this->input->post("fechaInicio"))); 
+            $c_data['fecha_final']=date('Y-m-d',strtotime($this->input->post("fechaFin")));
+            $c_data['valoracion']=$this->input->post("txt_valoracionEAc");     
+            $c_data['avance']=0;
+            $c_data['observacion']=$this->input->post("txt_observacio_EntreAc");
+            $c_data['color']=$this->input->post("txt_ActividadColor");
+
+            $q1=$this->Model_FEActividadEntregable->Add_Actividades($c_data);
+
+            $msg = ($q1>0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
+            $this->load->view('front/json/json_view', ['datos' => $msg]);
+        } 
+        else 
+        {
             show_404();
         }
     }

@@ -21,13 +21,19 @@ class Model_FEActividadEntregable extends CI_Model
              }
    
         }
+        function Add_Actividades($data)
+        {
+            $this->db->insert('ACTIVIDAD_CRONOGRAMA',$data);
+            return $this->db->affected_rows();
+        }
+        /*
         function Add_Actividades($opcion,$id_act,$txt_id_entregable,$txt_nombre_act,$txt_fechaActividadI,$txt_fechaActividadf,$txt_valoracionEAc,$txt_AvanceEAc,$txt_observacio_EntreAc,$txt_ActividadColor)
         {
 
             $mensaje=$this->db->query("EXECUTE sp_Gestionar_Actividad_Entregable'".$opcion."','".$id_act."', '" . $txt_id_entregable."','".$txt_nombre_act."','".$txt_fechaActividadI."','".$txt_fechaActividadf."',".$txt_valoracionEAc.",'".$txt_AvanceEAc."','".$txt_observacio_EntreAc."','".$txt_ActividadColor."'");
             return $mensaje->result();
 
-        }
+        }*/
         function Update_Actividades($opcion,$tx_IdActividad,$txt_idEntregable,$txt_NombreActividadAc,$txt_fechaActividadIAc,$txt_fechaActividadfAc,$txt_valorizacionEAct,$txt_avanceEAct,$txt_observacio_EntreAct,$txt_ActividadColorAc)
         {
           $this->db->query("EXECUTE sp_Gestionar_Actividad_Entregable'".$opcion."','".$tx_IdActividad."','" . $txt_idEntregable."','".$txt_NombreActividadAc."','".$txt_fechaActividadIAc."','".$txt_fechaActividadfAc."',".$txt_valorizacionEAct.",'".$txt_avanceEAct."','".$txt_observacio_EntreAct."','".$txt_ActividadColorAc."'");

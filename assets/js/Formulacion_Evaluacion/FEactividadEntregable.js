@@ -1,33 +1,37 @@
- $(document).on("ready" ,function(){
-
-                //añadir actividades al entregable
-                $("#btn_Addactividad" ).on( "click", function() 
-                  {
-                      var txt_id_entregable=$("#txt_id_entregable").val();
-                      var txt_nombre_act=$("#txt_nombre_act").val();
-                      var txt_valoracionEAc=$("#txt_valoracionEAc").val();
-                      var FechaActividad =$("#FechaActividad").val();
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/FEActividadEntregable/Add_Actividades",
-                          type:'POST',
-                          data: {txt_id_entregable:txt_id_entregable,txt_nombre_act:txt_nombre_act,txt_valoracionEAc:txt_valoracionEAc,FechaActividad:FechaActividad},
-                          success:function(resp)
-                          {
-                            var txt_id_entregable=parseInt($("#txt_id_entregable").val());
-                            swal("","Se registro corectamente la actividad", "success");
-                            generarActividadesVertical(txt_id_entregable);
-                            $('#VentanaActividades').modal('hide');
-                            refrescarGantt();
-                            $("#calendarActividadesFE" ).remove();
-                            generarCalendario(txt_id_entregable);//Generar calendario */
-                 
-                            var oTable = $('#datatable-actividadesV').dataTable( );
-                            // to reload
-                            oTable.api().ajax.reload();
-                          }
-                      });
-                  });
+$(document).on("ready" ,function()
+{
+    $("#btn_Addactividad" ).on( "click", function() 
+    {
+        var txt_id_entregable=$("#txt_id_entregable").val();
+        var txt_nombre_act=$("#txt_nombre_act").val();
+        var txt_valoracionEAc=$("#txt_valoracionEAc").val();
+        var FechaActividad =$("#FechaActividad").val();
+        event.preventDefault();
+        $('#validarActividadEntregable').data('formValidation').validate();
+        if(!($('#validarActividadEntregable').data('formValidation').isValid()))
+        {
+            return;
+        }
+        $.ajax({
+            url:base_url+"index.php/FEActividadEntregable/Add_Actividades",
+            type:'POST',
+            data: $('#form-AddActividades_Entregable').serialize(),
+            success:function(resp)
+            {
+                resp=JSON.parse(resp);
+                console.log(resp);
+                var txt_id_entregable=parseInt($("#txt_id_entregable").val());
+                swal(resp.proceso,resp.mensaje,(resp.proceso=='Correcto') ? 'success':'error');
+                generarActividadesVertical(txt_id_entregable);
+                $('#VentanaActividades').modal('hide');
+                refrescarGantt();
+                $("#calendarActividadesFE" ).remove();
+                generarCalendario(txt_id_entregable);     
+                var oTable = $('#datatable-actividadesV').dataTable( );
+                oTable.api().ajax.reload();
+            }
+        });
+    });
                 $("#txt_valoracionEAc").keyup(function(){//verificar si el actividades supera el o no el cien porciento para inavilitar el boton
                    var sumaValoracion=$("#txt_valoracionEAc").val();
                    var  txt_id_entregable =$("#txt_id_entregable").val();

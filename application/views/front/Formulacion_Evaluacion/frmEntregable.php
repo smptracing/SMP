@@ -10,6 +10,42 @@
     text-overflow: ellipsis;
   }
 </style>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+  $( function() 
+  {
+    var dateFormat = "mm/dd/yy",
+      from = $( "#fechaInicio" )
+        .datepicker({
+          defaultDate: "+1w",
+          changeMonth: true,
+          numberOfMonths: 3
+        })
+        .on( "change", function() {
+          to.datepicker( "option", "minDate", getDate( this ) );
+        }),
+      to = $( "#fechaFin" ).datepicker({
+        defaultDate: "+1w",
+        changeMonth: true,
+        numberOfMonths: 3
+      })
+      .on( "change", function() {
+        from.datepicker( "option", "maxDate", getDate( this ) );
+      });
+ 
+    function getDate( element ) {
+      var date;
+      try {
+        date = $.datepicker.parseDate( dateFormat, element.value );
+      } catch( error ) {
+        date = null;
+      }
+ 
+      return date;
+    }
+  } );
+  </script>
 <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
@@ -293,66 +329,67 @@
   <!--- agregar los  actividades-->
 <div class="modal fade" data-backdrop="static" id="VentanaActividades" data-backdrop="static" role="dialog">
     <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Actividades</h4>
-        </div>
-        <div class="modal-body">
-             <div class="row">
-                  <div class="col-xs-12">
-                    <form class="form-horizontal " id="form-AddActividades_Entregable"  method="POST" >
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Actividades</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <form class="form-horizontal" id="form-AddActividades_Entregable">
+                            <div id="validarActividadEntregable">
                             <div class="row">
                                 <div class="col-md-12 col-sm-12 col-xs-12 ">
-                                    <label>Actividad</label>
-                                    <input id="txt_id_entregable"  name="txt_id_entregable" type="hidden" class="form-control"  placeholder="" notValidate>
-                                    <input id="txt_nombre_act" name="txt_nombre_act" type="text" class="form-control"  placeholder="">
+                                    <label>Actividad:*</label>
+                                    <input id="txt_id_entregable" name="txt_id_entregable" type="hidden" notValidate>
+                                    <input id="txt_nombre_act" name="txt_nombre_act" type="text" class="form-control" autocomplete="off">
                                 </div>
-
                             </div>
-                            <div class="row"></br></br>
-                                  <div class="input-prepend input-group col-md-5 col-sm-5 col-xs-5" style="margin-left: 8px;">
-                                            <span class="add-on input-group-addon">Fecha Actividad <i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
-                                            <input type="text"  name="FechaActividad" id="FechaActividad" class="form-control" value=""/>
-                                  </div>
-                                  <div class="col-md-3 col-sm-3 col-xs-3" style="margin-top: -70px;margin-left: 400px;">
-            	                        <label class="col-md-6 col-sm-6 col-xs-6">Valoración</label>
-            	                        <input class="form-control" id="txt_valoracionEAc" name="txt_valoracionEAc" class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2"  required="required" type="number" step='0.01'  placeholder="%">
-                                  </div>
-                                  <div class="col-md-5 col-sm-5 col-xs-5" style="margin-top: -70px;margin-left: 460px;">
-            		                     <div id="valoracionAvazadadActivi" style="text-align:center ;color:#008080; margin-left: 150px;margin-top:39px;" class="col-md-7 col-sm-7 col-xs-12">
-            		                     </div>
-                                  </div>
+                            <div class="row">
+                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                    <label for="from">Fecha de Inicio:*</label>
+                                    <input class="form-control" type="text" id="fechaInicio" name="fechaInicio">
+                                </div>
+                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                    <label for="to">Fecha de Fin:*</label>
+                                    <input class="form-control" type="text" id="fechaFin" name="fechaFin">
+                                </div>
+                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                    <label for="to">Valoración:*</label>
+                                    <input class="form-control" id="txt_valoracionEAc" name="txt_valoracionEAc" class="form-control" type="number" step='0.01'  placeholder="%">
+                                    <div id="valoracionAvazadadActivi" style="color: green;">
+                                         </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                    <label for="to">Color:</label>
+                                    <input type="color" value="#e01ab5" class="form-control notValidate" id="txt_ActividadColor" name="txt_ActividadColor">
+                                </div>
+                             </div>
                              </div>
                              <div class="row">
                              	  <div class="col-md-12 col-sm-12 col-xs-12">
-                                  <label>Observación</label>
-                                  <input id="txt_observacio_EntreAc" name="txt_observacio_EntreAc" type="text" class="form-control" >
-                                </div>
-                             </div>
-                            <div class="row">
-                                 <div class="input-group demo2 colorpicker-element col-md-4 col-sm-4 col-xs-12" style="text-align: right;margin-left: 10px;margin-top: 10px;">
-                                       <input type="text" value="#e01ab5" class="form-control" id="txt_ActividadColor" name="txt_ActividadColor">
-                                       <span class="input-group-addon"><i style="background-color: rgb(224, 26, 181);"></i></span>
+                                  <label>Observación:</label>
+                                  <input id="txt_observacio_EntreAc" name="txt_observacio_EntreAc" type="text" class="form-control" autocomplete="off" >
                                 </div>
                             </div>
-                    </form>
-                  </div>
-             </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="float: center">
+                  <button  id="btn_Addactividad" class="btn btn-success">
+                        <span class="glyphicon glyphicon-floppy-disk"></span>
+                        Guardar
+                  </button>
+                  <button class="btn btn-danger" data-dismiss="modal">
+                        <span class="glyphicon glyphicon-remove"></span>
+                        Cerrar
+                  </button>
+            </div>
         </div>
-        <div class="modal-footer" style="float: center">
-              <button  id="btn_Addactividad" class="btn btn-success">
-                <span class="glyphicon glyphicon-floppy-disk"></span>
-                Guardar
-              </button>
-              <button id="btn_actividadC"  class="btn btn-danger" data-dismiss="modal">
-                <span class="glyphicon glyphicon-remove"></span>
-                Cerrar
-              </button>
-        </div>
-      </div>
     </div>
-  </div>
+</div>
 
 <!---Modificar eventos del calendar-->
 
@@ -970,49 +1007,68 @@
     });
     $(function()
     {
-      $('#form-AddActividades_Entregable').formValidation(
-      {
-        framework: 'bootstrap',
-        excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
-        live: 'enabled',
-        message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
-        trigger: null,
-        fields:
+        $('#validarActividadEntregable').formValidation(
         {
-          txt_nombre_act:
-          {
-            validators:
+            framework: 'bootstrap',
+            excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+            live: 'enabled',
+            message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+            trigger: null,
+            fields:
             {
-              notEmpty:
-              {
-                message: '<b style="color: red;">El campo "Nombre Actividad" es requerido.</b>'
-              },
-              regexp:
-	          {
-	                regexp: "[a-zA-Z áéíóúÁÉÍÓÚñÑ]",
-	                message: '<b style="color: red;">El campo "Nombre Actividad" debe se texto.</b>'
-	          }
+                txt_nombre_act:
+                {
+                    validators:
+                    {
+                        notEmpty:
+                        {
+                            message: '<b style="color: red;">El campo "Nombre Actividad" es requerido.</b>'
+                        }
+                    }
+                },
+                fechaInicio:
+                {
+                    validators:
+                    {
+                        notEmpty:
+                        {
+                            message: '<b style="color: red;">El campo "Fecha de Inicio" es requerido.</b>'
+                        }
+                    }
+                },
+                fechaFin:
+                {
+                    validators:
+                    {
+                        notEmpty:
+                        {
+                            message: '<b style="color: red;">El campo "Fecha de Fin" es requerido.</b>'
+                        }
+                    }
+                },
+                txt_valoracionEAc:
+                {
+                    validators:
+                    {
+                        notEmpty:
+                        {
+                            message: '<b style="color: red;">El campo "Valoración" es requerido.</b>'
+                        },
+                        regexp:
+    	                {
+    	                   regexp: /(^100([.]0{1,2})?)$|(^\d{1,2}([.]\d{0,2})?)$/,
+    	                   message: '<b style="color: red;">El campo "Valoración" debe se numero mayor a 0 y menor o igual a 100.</b>'
+    	                }
+                    }
+                }
             }
-          },
-          txt_valoracionEAc:
-          {
-            validators:
-            {
-              notEmpty:
-              {
-                message: '<b style="color: red;">El campo "Valoración" es requerido.</b>'
-              },
-              regexp:
-	          {
-	                regexp: "^0*(?:[1-9][0-9]?|100)$",
-	                message: '<b style="color: red;">El campo "Valoración" debe se numero mayor a 0 y menor o igual a 100.</b>'
-	          }
-            }
-          }
-
-
-        }
-      });
+        });
     });
 
-  </script>
+</script>
+<script>
+    $(function() 
+    {
+        $('input[name="daterange34"]').daterangepicker();
+    });
+</script>
