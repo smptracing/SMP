@@ -18,11 +18,14 @@ class FEentregableEstudio extends CI_Controller
 
         $data = array('Etapa_Estudio' => $id_etapa_estudio);
         $this->session->set_userdata($data);
-        if ($this->input->is_ajax_request()) {
+        if ($this->input->is_ajax_request())
+        {
             $datos = $this->Gant_Model->GetEntregable($id_etapa_estudio);
             $links = $this->Gant_Model->GetLink($id_etapa_estudio);
             echo json_encode(array('data' => $datos, 'links' => $links));
-        } else {
+        } 
+        else
+        {
             $data = array('Etapa_Estudio' => $id_etapa_estudio);
             $this->session->set_userdata($data);
             $this->_load_layout('Front/Formulacion_Evaluacion/frmEntregable');

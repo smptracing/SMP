@@ -115,7 +115,7 @@
                                     {"data":"id_pi","visible": false},
                                     {"data":"codigo_unico_est_inv",
                                     "mRender": function ( data, type, full ) {
-                                     return '<a style="font-weight:normal;font-size:15" type="button" class="VerDetalleEvaluacion btn btn-link" data-toggle="modal" data-target="#VerDetalleEvaluacion" href="/codigo_unico_est_inv/' + data + '">' + data+ '</a>';
+                                     return '<a  data-toggle="tooltip" title="Ver Detalle " style="font-weight:normal;font-size:15" type="button" class="VerDetalleEvaluacion btn btn-link" data-toggle="modal" data-target="#VerDetalleEvaluacion" href="/codigo_unico_est_inv/' + data + '">' + data+ '</a>';
                                       }
                                     },
                                     {"data":"nombre_est_inv"},
@@ -131,7 +131,7 @@
                                          return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Completado</small></td>";
                                     }},
 
-{"defaultContent":"<button type='button' class='EstadoFE btn btn-success btn-xs' data-toggle='modal' data-target='#VentanaEstadoFE'><i class='fa fa-dashboard' aria-hidden='true'></i></button><button type='button' class='Situacion btn btn-warning btn-xs' data-toggle='modal' data-target='#VentanaSituacionActual'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button'  class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#VentanaAsignarPersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button>"}
+{"defaultContent":"<button  data-toggle='tooltip' title='Asignar Estado' type='button' class='EstadoFE btn btn-success btn-xs' data-toggle='modal' data-target='#VentanaEstadoFE'><i class='fa fa-dashboard' aria-hidden='true'></i></button><button type='button' data-toggle='tooltip' title='Asignar Situación' class='Situacion btn btn-warning btn-xs' data-toggle='modal' data-target='#VentanaSituacionActual'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button' data-toggle='tooltip' title='Asignar Evaluador'  class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#VentanaAsignarPersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button>"}
                                 ],
                                  "language":idioma_espanol
                     });
