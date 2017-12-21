@@ -2,10 +2,6 @@ $(document).on("ready" ,function()
 {
     $("#btn_Addactividad" ).on( "click", function() 
     {
-        var txt_id_entregable=$("#txt_id_entregable").val();
-        var txt_nombre_act=$("#txt_nombre_act").val();
-        var txt_valoracionEAc=$("#txt_valoracionEAc").val();
-        var FechaActividad =$("#FechaActividad").val();
         event.preventDefault();
         $('#validarActividadEntregable').data('formValidation').validate();
         if(!($('#validarActividadEntregable').data('formValidation').isValid()))
@@ -22,6 +18,7 @@ $(document).on("ready" ,function()
                 console.log(resp);
                 var txt_id_entregable=parseInt($("#txt_id_entregable").val());
                 swal(resp.proceso,resp.mensaje,(resp.proceso=='Correcto') ? 'success':'error');
+                $('#form-AddActividades_Entregable')[0].reset();
                 generarActividadesVertical(txt_id_entregable);
                 $('#VentanaActividades').modal('hide');
                 refrescarGantt();
@@ -35,7 +32,7 @@ $(document).on("ready" ,function()
                 $("#txt_valoracionEAc").keyup(function(){//verificar si el actividades supera el o no el cien porciento para inavilitar el boton
                    var sumaValoracion=$("#txt_valoracionEAc").val();
                    var  txt_id_entregable =$("#txt_id_entregable").val();
-                   var 	valoracionCompletada=0;
+                   var  valoracionCompletada=0;
 
                   $.ajax({
                               url: base_url+"index.php/FEActividadEntregable/MostrarAvance",//MOSTRAR AVANCE EN UN CAJA DE TEXTO PARA HABILTAR O INHABILTAR
@@ -57,13 +54,13 @@ $(document).on("ready" ,function()
                                  if(valoracionCompletadaTemp<=valoracionRestanteAsignar  !=0 )
                                  {
           
-                                    	document.getElementById('btn_actividadC').disabled=false;
-                                   		$("#IdAsignadaActividad").html("Correcto");
+                                      document.getElementById('btn_actividadC').disabled=false;
+                                      $("#IdAsignadaActividad").html("Correcto");
                                     
                                  }else
                                  {
-                                 	 document.getElementById('btn_actividadC').disabled=true;
-                                   	 $("#IdAsignadaActividad").html("No es posible asignar esa valoracion");
+                                   document.getElementById('btn_actividadC').disabled=true;
+                                     $("#IdAsignadaActividad").html("No es posible asignar esa valoracion");
                                  }
                                }
                         });
@@ -169,12 +166,71 @@ function UpdateEntregableAvance(sumaTotalAvance,id_entregable){//avance total de
               type:"POST",
               data:{id_etapa_estudio:id_etapa_estudio},
               success:function(respuesta){
-              	var res  ="SE ACTUALIZO EL AVANCE DEL ENTREGABLE Y SU AVANCE FÍSICO"
-              	swal("",res, "success"); 
+                var res  ="SE ACTUALIZO EL AVANCE DEL ENTREGABLE Y SU AVANCE FÍSICO"
+                swal("",res, "success"); 
               }
             });
   }
-  //refrescar los entregables 
+  
+$(function()
+{
+    $('#validarActividadEntregable').formValidation(
+    {
+        framework: 'bootstrap',
+        excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+        live: 'enabled',
+        message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+        trigger: null,
+        fields:
+        {
+            txt_nombre_act:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Nombre Actividad" es requerido.</b>'
+                    }
+                }
+            },
+            fechaInicio:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Fecha de Inicio" es requerido.</b>'
+                    }
+                }
+            },
+            fechaFin:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Fecha de Fin" es requerido.</b>'
+                    }
+                }
+            },
+            txt_valoracionEAc:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Valoración" es requerido.</b>'
+                    },
+                    regexp:
+                    {
+                       regexp: /(^100([.]0{1,2})?)$|(^\d{1,2}([.]\d{0,2})?)$/,
+                       message: '<b style="color: red;">El campo "Valoración" debe se numero mayor a 0 y menor o igual a 100.</b>'
+                    }
+                }
+            }
+        }
+    });
+});
   
 
 

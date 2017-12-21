@@ -47,85 +47,49 @@
   } );
   </script>
 <div class="right_col" role="main">
-          <div class="">
-            <div class="page-title">
-              <div class="title_right">
-
-              </div>
-            </div>
-
-            <div class="clearfix"></div>
-            <div class="row">
-              <!-- form input mask -->
-              <div class="col-md-6 col-sm-12 col-xs-12">
+    <div class="">
+        <div class="page-title">
+            <div class="title_right"></div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-6 col-sm-12 col-xs-12">
                 <div class="x_panel">
-                  <div class="x_title">
+                    <div class="x_title">
                     <h6>Estudio: <?php echo $this->session->userdata('NombreEstudio');?> | Código Único:<?php echo $this->session->userdata('Codigo_único');?></h6>
-                   </div>
-                  <div class="x_content">
-
-                    <div class="" role="tabpanel" data-example-id="togglable-tabs">
-                                      <ul id="myTab" class="nav nav-tabs" role="tablist">
-                                          <li role="presentation" class="active"><a href="#tab_entregable" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"> <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></a>
-                                          </li>
-                                          <li role="presentation" class=""><a href="#tab_tipo_inversion" role="tab"  id="profile-tab" data-toggle="tab" aria-expanded="false"> <span class="glyphicon glyphicon-th" aria-hidden="true"></span></a>
-                                          </li>
-                                        </li>
-                                      </ul>
-                                      <div id="myTabContent" class="tab-content">
-                                      <input type="hidden" id="txt_id_etapa_estudio" name="txt_id_etapa_estudio" value="<?php echo $this->session->userdata('Etapa_Estudio'); ?>">
-                                             <!-- /Contenido del funcion -->
-                                        <div role="tabpanel" class="tab-pane fade active in" id="tab_entregable" aria-labelledby="home-tab">
-                                             <!-- /tabla de funcion desde el row -->
-                                            <div class="row">
-
-                                                  <div class="col-md-12 col-xs-12">
-                                                        <div class="x_panel">
-                                                      <ul class="bs-glyphicons-list">
-                                                      <li>
+                    </div>
+                    <div class="x_content">
+                        <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                            <ul id="myTab" class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="#tab_entregable" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Entregables de Estudio</a>
+                                </li>
+                            </ul>
+                            <div id="myTabContent" class="tab-content">
+                                <input type="hidden" id="txt_id_etapa_estudio" name="txt_id_etapa_estudio" value="<?php echo $this->session->userdata('Etapa_Estudio'); ?>">
+                                <div role="tabpanel" class="tab-pane fade active in" id="tab_entregable" aria-labelledby="home-tab">
+                                    <div class="row">
+                                        <div class="col-md-12 col-xs-12">
+                                            <div class="x_panel">
+                                                <ul class="bs-glyphicons-list">
+                                                    <li>
                                                         <button type="button" id="btn_entregable" class="btn btn-primary" data-toggle="modal" data-target="#VentanaEntregable" >
                                                               <span class="glyphicon glyphicon-new-window" aria-hidden="true"> Nuevo</span>
                                                         </button>
                                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ventanagant" >
                                                               <span class="glyphicon glyphicon-new-window" aria-hidden="true"> Gantt</span>
                                                         </button>
-                                                        </li>
-                                                       </ul>
-
-                                                          <div class="x_content">
-                                                                  <div id="TemEntregable">
-
-                                                                  </div>
-                                                          </div>
+                                                    </li>
+                                                </ul>
+                                                <div class="x_content">
+                                                    <div class="table-responsive">
+                                                        <div id="TemEntregable">
                                                         </div>
-                                                      </div>
-
+                                                    </div>
+                                                </div>
                                             </div>
-                                         <!-- / fin tabla de funcion desde el row -->
                                         </div>
-                                        <!-- /fin del funcion del sector -->
-                                        <div role="tabpanel" class="tab-pane fade" id="tab_tipo_inversion" aria-labelledby="profile-tab">
-
-                                            <!-- /tabla de division funcional desde el row -->
-                                            <div class="row">
-
-                                                  <div class="col-md-12 col-sm-12 col-xs-12">
-                                                        <div class="x_panel">
-                                                          <div class="x_content">
-                                                            <table id="table-DivisionF" class="table table-striped table-bordered table-hover" ellspacing="0" width="100%">
-                                                              <thead>
-                                                                <tr>
-                                                                </tr>
-                                                              </thead>
-
-                                                            </table>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-
-                                            </div>
-                                         <!-- / fin tabla division funcional desde el row -->
-                                        </div>
+                                    </div>
+                                </div>
                                           <!-- / fin panel grupo  funcional desde el row -->
                                         <div role="tabpanel" class="tab-pane fade" id="tab_Entregable" aria-labelledby="profile-tab">
                                              <!-- /tabla de grupo funcional desde el row -->
@@ -150,10 +114,12 @@
                                                             <div class="clearfix"></div>
                                                           </div>
                                                           <div class="x_content">
+                                                          <div class="table-responsive">
 
                                                             <table id="table-Entregable" class="table" ellspacing="0" width="100%">
 
                                                             </table>
+                                                        </div>
                                                           </div>
                                                         </div>
                                                       </div>
@@ -184,9 +150,9 @@
                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
                       <ul id="myTab" class="nav nav-tabs" role="tablist">
                         <input type="hidden" name="txtidEntregablePestana" id="txtidEntregablePestana">
-                        <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" onclick="generarCalendarioPestniaCalendar();" role="tab" data-toggle="tab" aria-expanded="true"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></a>
+                        <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" onclick="generarCalendarioPestniaCalendar();" role="tab" data-toggle="tab" aria-expanded="true">Calendario de Actividades</a>
                         </li>
-                        <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></a>
+                        <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Listado de Actividades</a>
                         </li>
                       </ul><h5><label id="nombreEntregable"> </label></h5>
                       <div id="myTabContent" class="tab-content">
@@ -196,8 +162,10 @@
                                   </div>
                         </div>
                         <div  role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
+                            <div class="table-responsive">
                             <div id="TemActividad">
 
+                            </div>
                             </div>
                         </div>
                       </div>
@@ -219,16 +187,16 @@
         <div class="modal-body">
                   <form class="form-horizontal " id="form-AddEntregable"  method="POST" >
                       <div class="col-md-12">
-  	                      <div class="col-md-12 col-sm-12 col-xs-12">
-  	                        <label>Componente</label>
-  	                          <input id="txt_nombre_entre" name="txt_nombre_entre" type="text" class="form-control" placeholder="Componente" autocomplete="off">
-  	                      </div>
-  	                      <div class="col-md-6 col-sm-6 col-xs-12">
+                          <div class="col-md-12 col-sm-12 col-xs-12">
+                            <label>Componente</label>
+                              <input id="txt_nombre_entre" name="txt_nombre_entre" type="text" class="form-control" placeholder="Componente" autocomplete="off">
+                          </div>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
                               <div class="col-md-6 col-sm-6 col-xs-12"><label>Entregable</label></div>
-  	                          <select class="selectpicker" id="txt_denominacion_entre" mane="txt_denominacion_entre" class="selectpicker" data-live-search-normalize="true" data-live-search="true" data-container="body" data-header="Denominaciones"  title="Seleccionar Entregable"  >
+                              <select class="selectpicker" id="txt_denominacion_entre" mane="txt_denominacion_entre" class="selectpicker" data-live-search-normalize="true" data-live-search="true" data-container="body" data-header="Denominaciones"  title="Seleccionar Entregable"  >
 
-  	                          </select>
-  	                      </div>
+                              </select>
+                          </div>
                           <div class="col-md-6 col-sm-6 col-xs-12">
                               <div class="col-md-6">
                                 <label>Valoración</label>
@@ -368,7 +336,7 @@
                              </div>
                              </div>
                              <div class="row">
-                             	  <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
                                   <label>Observación:</label>
                                   <input id="txt_observacio_EntreAc" name="txt_observacio_EntreAc" type="text" class="form-control" autocomplete="off" >
                                 </div>
@@ -700,7 +668,7 @@
                       <div class="col-md-12 col-sm-12 col-xs-12 input-group">
 
                       </div>
-                          <div id="contenedor_responsable">
+                          <div id="contenedor_responsable" class="table-responsive">
                                <table id="table_responsableFormulador" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
                                     <thead>
                                        <tr>
@@ -922,10 +890,10 @@
                 message: '<b style="color: red;">El campo "Nombre de Componente" es requerido.</b>'
               },
               regexp:
-	          {
-	                regexp: "[a-zA-Z áéíóúÁÉÍÓÚñÑ]",
-	                message: '<b style="color: red;">El campo "Nombre entregable" debe se texto.</b>'
-	          }
+            {
+                  regexp: "[a-zA-Z áéíóúÁÉÍÓÚñÑ]",
+                  message: '<b style="color: red;">El campo "Nombre entregable" debe se texto.</b>'
+            }
             }
           },
            txt_valoracion_entre:
@@ -937,10 +905,10 @@
                 message: '<b style="color: red;">El campo "Valoración" es requerido.</b>'
               },
               regexp:
-	          {
-	                regexp: "^0*(?:[1-9][0-9]?|100)$",
-	                message: '<b style="color: red;">El campo "Valoración" debe se numero mayor a 0 y menor o igual a 100.</b>'
-	          }
+            {
+                  regexp: "^0*(?:[1-9][0-9]?|100)$",
+                  message: '<b style="color: red;">El campo "Valoración" debe se numero mayor a 0 y menor o igual a 100.</b>'
+            }
             }
           },
           txt_fechaActividadI:
@@ -952,10 +920,10 @@
                 message: '<b style="color: red;">El campo "Valoración" es requerido.</b>'
               },
               regexp:
-	          {
-	                regexp: "^0*(?:[1-9][0-9]?|100)$",
-	                message: '<b style="color: red;">El campo "Valoración" debe se numero mayor a 0 y menor o igual a 100.</b>'
-	          }
+            {
+                  regexp: "^0*(?:[1-9][0-9]?|100)$",
+                  message: '<b style="color: red;">El campo "Valoración" debe se numero mayor a 0 y menor o igual a 100.</b>'
+            }
             }
           }
         }
@@ -1055,10 +1023,10 @@
                             message: '<b style="color: red;">El campo "Valoración" es requerido.</b>'
                         },
                         regexp:
-    	                {
-    	                   regexp: /(^100([.]0{1,2})?)$|(^\d{1,2}([.]\d{0,2})?)$/,
-    	                   message: '<b style="color: red;">El campo "Valoración" debe se numero mayor a 0 y menor o igual a 100.</b>'
-    	                }
+                      {
+                         regexp: /(^100([.]0{1,2})?)$|(^\d{1,2}([.]\d{0,2})?)$/,
+                         message: '<b style="color: red;">El campo "Valoración" debe se numero mayor a 0 y menor o igual a 100.</b>'
+                      }
                     }
                 }
             }
