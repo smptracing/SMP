@@ -283,6 +283,23 @@ class bancoproyectos extends CI_Controller
         }
     }
 
+        public function eliminarEstadoCiclo()
+    {
+        if ($this->input->is_ajax_request())
+        {
+            $msg = array();
+
+            $id_estado_ciclo_pi=$this->input->post("id_estado_ciclo_pi");
+            $data=$this->bancoproyectos_modal->eliminarEstadoCiclo($id_estado_ciclo_pi);
+            $msg=($data>0 ? (['proceso' => 'Correcto', 'mensaje' => 'Se elimino Correctamente el Estado']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado']));
+
+            $this->load->view('front/json/json_view', ['datos' => $msg]);
+        }
+        else
+        {
+            show_404();
+        }
+    }
     //listar Rubro
     public function listar_rubro()
     {

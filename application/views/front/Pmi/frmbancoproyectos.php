@@ -438,6 +438,7 @@
                        <tr>
                          <th  ><i class="fa fa-thumb-tack"></i> Estado Ciclo</th>
                          <th  ><i class="fa fa-thumb-tack"></i> Fecha</th>
+                         <th  ><i class="fa fa-thumb-tack"></i> Opción</th>
                       </tr>
                     </thead>
                     </table>
