@@ -53,47 +53,48 @@
      
       });
  //LISTAR DENOMINACION DE EvaluacionFE Y EVALUACION EN TABLA
-                var ListarEvaluacionFE=function()
+var ListarEvaluacionFE=function()
+{
+    var table=$("#table-EvaluacionFE").DataTable({
+        "processing": true,
+        "serverSide":false,
+        destroy:true,
+        "ajax":
+        {
+            "url":base_url+"index.php/FEformulacion/GetFEViabilizado",
+            "method":"POST",
+            "dataSrc":""
+        },
+       "columns":[
+            {"data":"id_pi","visible": false},
+            {"data":"codigo_unico_est_inv",
+                "mRender": function ( data, type, full )
                 {
-                    var table=$("#table-EvaluacionFE").DataTable({
-                     "processing": true,
-                      "serverSide":false,
-                     destroy:true,
-                         "ajax":{
-                                    "url":base_url+"index.php/FEformulacion/GetFEViabilizado",
-                                    "method":"POST",
-                                    "dataSrc":""
-                                    },
-                               "columns":[
-                                    {"data":"id_pi","visible": false},
-                                    {"data":"codigo_unico_est_inv",
-                                    "mRender": function ( data, type, full ) {
-                                     return '<a style="font-weight:normal;font-size:15" type="button" class="VerDetalleFormulacion btn btn-link" data-toggle="modal" data-target="#VerDetalleFormulacion" href="/codigo_unico_est_inv/' + data + '">' + data+ '</a>';
-                                      }
-                                    },
-                                    {"data":"nombre_est_inv"},
-                                    {"data":"provincia"},
-                                    {"data":"distrito"},
-                                    {"data":"denom_nivel_estudio"},
+                    return '<a style="font-weight:normal;font-size:15" type="button" class="VerDetalleFormulacion btn btn-link" data-toggle="modal" data-target="#VerDetalleFormulacion" href="/codigo_unico_est_inv/' + data + '">' + data+ '</a>';
+                }
+            },
+            {"data":"nombre_est_inv"},
+            {"data":"provincia"},
+            {"data":"distrito"},
+            {"data":"denom_nivel_estudio"},
 
-                                    {"data":"nombres"},
-                                    {"data":"costo_estudio"},
-                                    {"data":"denom_situacion_fe"},
-                                    {"data":"avance_fisico",
-                                      "mRender":function (data,type, full) {
-                                         return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Complete</small></td>";
-                                    }},
+            {"data":"nombres"},
+            {"data":"costo_estudio"},
+            {"data":"denom_situacion_fe"},
+            {"data":"avance_fisico",
+                "mRender":function (data,type, full)
+                {
+                    return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Complete</small></td>";
+                }
+            },
+            {"defaultContent":"<button type='button' class='Situacion btn btn-warning btn-xs' data-toggle='modal' data-target='#VentanaSituacionActual'><i data-toggle='tooltip' title='Asignar Situación' class='fa fa-flag' aria-hidden='true'></i></button><button type='button'  class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#VentanaAsignarPersona'><i data-toggle='tooltip' title='Asignar Responsable' class='glyphicon glyphicon-user' aria-hidden='true'></i></button>"}                            
+        ],
+        "language":idioma_espanol
+    });
 
-{"defaultContent":"<button type='button' class='Situacion btn btn-warning btn-xs' data-toggle='modal' data-target='#VentanaSituacionActual'><i class='fa fa-flag' aria-hidden='true'></i></button><button type='button'  class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#VentanaAsignarPersona'><i class='glyphicon glyphicon-user' aria-hidden='true'></i></button>"}                            
-                                ],
-                                 "language":idioma_espanol
-                    });
-                   // DenominacionFE("#table-DenominacionFE",table);   
-                   $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
-        
-        new $.fn.DataTable.Buttons(table, {
-          buttons: [
-           
+    $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
+    new $.fn.DataTable.Buttons(table, {
+        buttons: [           
             {
             "extend": "excel",
             "text": "<i class='fa fa-file-excel-o bigger-110 green'></i> <span> Excel</span>",
@@ -104,13 +105,13 @@
             "text": "<i class='fa fa-file-pdf-o bigger-110 red'></i> <span>PDF</span>",
             "className": "btn btn-white btn-primary btn-bold"
             }
-          ]
-        } );
-        table.buttons().container().appendTo( $('.tableTools-container-evaluacion') );                           
-                     ListarEvaluacion("#table-EvaluacionFE",table);     
-                      SituacionActual("#table-EvaluacionFE",table);  
-                     RegistarPersona("#table-EvaluacionFE",table);          
-                }
+        ]
+    });
+    table.buttons().container().appendTo( $('.tableTools-container-evaluacion'));                           
+        ListarEvaluacion("#table-EvaluacionFE",table);     
+        SituacionActual("#table-EvaluacionFE",table);  
+        RegistarPersona("#table-EvaluacionFE",table);          
+}
 //FIN LISTAR PROYECTOS QUE SE ENCUENTRARN EN EVALUACION
 //LISTAR DETALLE DE SITUACION ACTUAL DE UNA PIP EN EVALUACION
 var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)

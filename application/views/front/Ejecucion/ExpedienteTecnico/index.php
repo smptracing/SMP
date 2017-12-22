@@ -98,7 +98,10 @@ function BuscarProyectocodigo()
 	  type: "input",
 	  showCancelButton: true,
 	  closeOnConfirm: false,
-	  inputPlaceholder: "Ingrese Codigo Unico"
+	  cancelButtonText:"CERRAR" ,
+	  confirmButtonText: "BUSCAR",
+	  inputPlaceholder: "Ingrese Codigo Unico",
+
 	}, function (inputValue) {
 
 	if (inputValue === "")
