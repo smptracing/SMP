@@ -156,7 +156,7 @@
                          <div class="col-md-6 col-sm-6 col-xs-12">
                         <input id="txt_IdEtapa_Estudio_p" name="txt_IdEtapa_Estudio_p" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden" >
                         </div>
-                     
+
                 </div>
 
 
@@ -219,7 +219,7 @@
             <table id="table-DetSitActEvaluacionFE" class="table table-striped projects">
            </table>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
             </div>
       </div>
 
