@@ -187,14 +187,10 @@ $(function()
 					}
 				}
 			},
-			/*txtCuadrilla:
+			txtCuadrilla:
 			{
 				validators:
 				{
-					notEmpty:
-					{
-						message: '<b style="color: red;">El campo "Cuadrilla" es requerido.</b>'
-					},
 					regexp:
 		            {
 		                regexp: /^\d*$/,
@@ -206,10 +202,6 @@ $(function()
 			{
 				validators:
 				{				
-					notEmpty:
-					{
-						message: '<b style="color: red;">El campo "Horas" es requerido.</b>'
-					},
 					regexp:
 		            {
 		                regexp: /^\d*$/,
@@ -231,17 +223,13 @@ $(function()
 			{
 				validators:
 				{
-					notEmpty:
-					{
-						message: '<b style="color: red;">El campo "Rendimiento" es requerido.</b>'
-					},
 					regexp:
 					{
 						regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
 						message: '<b style="color: red;">El campo "Rendimiento" debe ser un valor en decimales.</b>'
 					}
 				}
-			},*/
+			},
 			txtCantidad:
 			{
 				validators:
