@@ -265,7 +265,7 @@ $(function()
                     },
                     stringLength:
                     {
-                         max: 12,
+                         max: 15,
                         message: '<b style="color: red;">El campo "Costo de inversión" debe tener como máximo 12 caracteres.</b>'
                     }
 
@@ -477,7 +477,7 @@ $(function()
                     },
                     stringLength:
                     {
-                        max: 12,
+                        max: 15,
                         message: '<b style="color: red;">El campo "Costo de inversión" debe tener como máximo 12 caracteres.</b>'
                     }
 
