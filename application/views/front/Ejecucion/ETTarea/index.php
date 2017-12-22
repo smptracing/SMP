@@ -58,7 +58,7 @@
 	<script src="<?=base_url()?>assets/vendors/JQueryGantt/ganttTask.js"></script>
 	<script src="<?=base_url()?>assets/vendors/JQueryGantt/ganttDrawerSVG.js"></script>
 	<script src="<?=base_url()?>assets/vendors/JQueryGantt/ganttGridEditor.js"></script>
-	<script src="<?=base_url()?>assets/vendors/JQueryGantt/ganttMaster.js"></script>  
+	<script src="<?=base_url()?>assets/vendors/JQueryGantt/ganttMaster.js"></script>
 	<script src="<?=base_url()?>assets/dist/js/sweetalert-dev.js"></script>
 	<script src="<?=base_url()?>assets/js/Helper/jsHelper.js"></script>
 </head>
@@ -115,7 +115,7 @@
 				{
 					title: '',
 					text: objectJSON.mensaje,
-					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+					type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
 				},
 				function()
 				{
@@ -126,7 +126,7 @@
 
 					renderLoading();
 
-					window.location.href='<?=base_url()?>index.php/ET_Tarea/index/<?=$idExpedienteTecnico?>';
+					window.location.href='<?=base_url()?>index.php/ET_Tarea/index?id_et=<?=$idExpedienteTecnico?>';
 				});
 			}, false, true);
 		}
@@ -295,7 +295,7 @@
 				{
 					title: '',
 					text: 'Debe guardar los datos actuales antes de asignar esta información.',
-					type: 'error' 
+					type: 'error'
 				},
 				function(){});
 
@@ -313,7 +313,7 @@
 				{
 					title: '',
 					text: 'Debe guardar los datos actuales antes de asignar esta información.',
-					type: 'error' 
+					type: 'error'
 				},
 				function(){});
 
@@ -331,7 +331,7 @@
 				{
 					title: '',
 					text: 'Debe guardar los datos actuales antes de asignar esta información.',
-					type: 'error' 
+					type: 'error'
 				},
 				function(){});
 

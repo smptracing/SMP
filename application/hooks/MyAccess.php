@@ -39,7 +39,7 @@ if (!function_exists('autentificar'))
             echo $CI->output->get_output();
         }
         else
-        { 
+        {
             if($CI->session->userdata('idPersona'))
             {
                 echo $CI->output->get_output();
@@ -618,7 +618,8 @@ function autorizar($url)
       'PuntajeCriterioPi/index',
       'PuntajeCriterioPi/insertar',
       'FEestado/EliminarFEestado',
-      'MetaPip/meta_pip'
+      'MetaPip/meta_pip',
+      'ET_Tarea/insertarBloque'
     );
     foreach( $lista_API as $value ) {
       array_push($arrayPermitido, $value);
