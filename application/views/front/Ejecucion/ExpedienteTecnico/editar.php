@@ -15,44 +15,44 @@
 				<div class="x_content">
 					<div class="row">
 						<div class="col-md-12 col-sm-3 col-xs-12">
-							<label class="control-label">Nombre de la Unidad Ejecutora</label>
+							<label class="control-label">Nombre de la Unidad Ejecutora*</label>
 							<div>
 								<input id="hdIdExpediente" name="hdIdExpediente" value="<?= $ExpedienteTecnicoM->id_et?>" class="form-control col-md-4 col-xs-12" placeholder="" autocomplete="off"  type="hidden">	
-								<input id="txtNombreUe" name="txtNombreUe" value="<?= $ExpedienteTecnicoM->nombre_ue?>" class="form-control col-md-4 col-xs-12"  placeholder="Nombre de la unidad ejecutora" autocomplete="off" >	
+								<input id="txtNombreUe" name="txtNombreUe" value="<?= $ExpedienteTecnicoM->nombre_ue?>" class="form-control col-md-4 col-xs-12"  placeholder="Nombre de la unidad ejecutora" autocomplete="off" maxlength="200">	
 							</div>	
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-3 col-sm-3 col-xs-12">
-							<label class="control-label">Dirección</label>
+							<label class="control-label">Dirección*</label>
 							<div>
-								<input id="txtDireccionUE" name="txtDireccionUE" value="<?= $ExpedienteTecnicoM->direccion_ue?>" class="form-control col-md-4 col-xs-12"  placeholder="Dirección"  autocomplete="off" >	
+								<input id="txtDireccionUE" name="txtDireccionUE" value="<?= $ExpedienteTecnicoM->direccion_ue?>" class="form-control col-md-4 col-xs-12"  placeholder="Dirección"  autocomplete="off" maxlength="200" >	
 							</div>	
 						</div>
 						<div class="col-md-3 col-sm-3 col-xs-12">
-							<label class="control-label">Distrito/Provincia/Departamento</label>
+							<label class="control-label">Distrito/Provincia/Departamento*</label>
 							<div>
-								<input id="txtUbicacionUE" name="txtUbicacionUE" value="<?= $ExpedienteTecnicoM->distrito_provincia_departamento_ue?>" class="form-control col-md-4 col-xs-12"  placeholder="Distrito/Provincia/Departamento" autocomplete="off" >	
+								<input id="txtUbicacionUE" name="txtUbicacionUE" value="<?= $ExpedienteTecnicoM->distrito_provincia_departamento_ue?>" class="form-control col-md-4 col-xs-12"  placeholder="Distrito/Provincia/Departamento" autocomplete="off" maxlength="200" >	
 							</div>	
 						</div>
 						<div class="col-md-3 col-sm-3 col-xs-12">
-							<label class="control-label">Teléfono</label>
+							<label class="control-label">Teléfono*</label>
 							<div>
-								<input id="txtTelefonoUE" name="txtTelefonoUE" value="<?= $ExpedienteTecnicoM->telefono_ue?>" class="form-control col-md-4 col-xs-12"  placeholder="Teléfono"  autocomplete="off" >	
+								<input id="txtTelefonoUE" name="txtTelefonoUE" value="<?= $ExpedienteTecnicoM->telefono_ue?>" class="form-control col-md-4 col-xs-12"  placeholder="Teléfono"  autocomplete="off" maxlength="20" >	
 							</div>	
 						</div>
 						<div class="col-md-3 col-sm-3 col-xs-12">
-							<label class="control-label">RUC</label>
+							<label class="control-label">RUC*</label>
 							<div>
-								<input id="txtRucUE" name="txtRucUE" value="<?= $ExpedienteTecnicoM->ruc_ue?>" class="form-control col-md-4 col-xs-12"  placeholder="RUC"  autocomplete="off" >	
+								<input id="txtRucUE" name="txtRucUE" value="<?= $ExpedienteTecnicoM->ruc_ue?>" class="form-control col-md-4 col-xs-12"  placeholder="RUC"  autocomplete="off" maxlength="11" >	
 							</div>	
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12 col-sm-3 col-xs-12">
-							<label class="control-label">Proyecto</label>
+							<label class="control-label">Proyecto*</label>
 							<div>
-								<input id="txtProyecto" name="txtProyecto" value="<?= $ExpedienteTecnicoM->proyecto_et?>" class="form-control col-md-4 col-xs-12"  placeholder="Proyecto"  autocomplete="off" >
+								<input id="txtProyecto" name="txtProyecto" value="<?= $ExpedienteTecnicoM->proyecto_et?>" class="form-control col-md-4 col-xs-12"  placeholder="Proyecto"  autocomplete="off" maxlength="200" >
 							</div>
 						</div>
 					</div>
@@ -74,49 +74,48 @@
 					</div>
 					<div class="row">
 						<div class="col-md-4 col-sm-3 col-xs-12">
-
-							<label class="control-label">Costo Total del Proyecto (Pre Inversión)</label>
+							<label class="control-label">Costo Total (Pre Inversión)*</label>
 							<div>
-								<input id="txtCostoTotalPreInversion" name="txtCostoTotalPreInversion" value="<?=a_number_format($ExpedienteTecnicoM->costo_total_preinv_et , 2, '.',",",3) ?>"  class="form-control col-md-4 col-xs-12 moneda"  placeholder="Total del Proyecto (Pre Inversión)" autocomplete="off" >
+								<input id="txtCostoTotalPreInversion" name="txtCostoTotalPreInversion" value="<?=a_number_format($ExpedienteTecnicoM->costo_total_preinv_et , 2, '.',",",3) ?>"  class="form-control col-md-4 col-xs-12 moneda"  placeholder="Total del Proyecto (Pre Inversión)" autocomplete="off" maxlength="40" >
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-3 col-xs-12">
-							<label class="control-label">Costo Directo</label>
+							<label class="control-label">Costo Directo*</label>
 							<div>
-								<input id="txtCostoDirectoPre" name="txtCostoDirectoPre" value="<?= a_number_format($ExpedienteTecnicoM->costo_directo_preinv_et , 2, '.',",",3) ?>" class="form-control col-md-4 col-xs-12 moneda"  placeholder="Costo Directo"  autocomplete="off" >
+								<input id="txtCostoDirectoPre" name="txtCostoDirectoPre" value="<?= a_number_format($ExpedienteTecnicoM->costo_directo_preinv_et , 2, '.',",",3) ?>" class="form-control col-md-4 col-xs-12 moneda"  placeholder="Costo Directo"  autocomplete="off" maxlength="40" >
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-3 col-xs-12">
-							<label class="control-label">Costo Indirecto</label>
+							<label class="control-label">Costo Indirecto*</label>
 							<div>
-								<input id="txtCostoIndirectoPre" name="txtCostoIndirectoPre" value=" <?= a_number_format($ExpedienteTecnicoM->costo_indirecto_preinv_et , 2, '.',",",3) ?>" class="form-control col-md-4 col-xs-12 moneda"  placeholder="Costo Indirecto"  autocomplete="off" >
+								<input id="txtCostoIndirectoPre" name="txtCostoIndirectoPre" value=" <?= a_number_format($ExpedienteTecnicoM->costo_indirecto_preinv_et , 2, '.',",",3) ?>" class="form-control col-md-4 col-xs-12 moneda"  placeholder="Costo Indirecto"  autocomplete="off" maxlength="40" >
 							</div>
 						</div>
 					</div>
 
 					<div class="row">
 						<div class="col-md-3 col-sm-3 col-xs-12">
-							<label class="control-label">Costo Total del Proyecto (Inversión)</label>
+							<label class="control-label">Costo Total (Inversión)*</label>
 							<div>
-								<input id="txtCostoTotalInversion" name="txtCostoTotalInversion" value="<?=a_number_format($ExpedienteTecnicoM->costo_total_inv_et , 2, '.',",",3)  ?>" class="form-control col-md-4 col-xs-12 moneda"  placeholder="Costo Total del Proyecto (Inversión)"  autocomplete="off" >
+								<input id="txtCostoTotalInversion" name="txtCostoTotalInversion" value="<?=a_number_format($ExpedienteTecnicoM->costo_total_inv_et , 2, '.',",",3)  ?>" class="form-control col-md-4 col-xs-12 moneda"  placeholder="Costo Total del Proyecto (Inversión)" maxlength="40" autocomplete="off" >
 							</div>
 						</div>
 						<div class="col-md-3 col-sm-3 col-xs-12">
-							<label class="control-label">Costo Directo</label>
+							<label class="control-label">Costo Directo*</label>
 							<div>
-								<input id="txtCostoDirectoInversion" name="txtCostoDirectoInversion" value="<?= a_number_format($ExpedienteTecnicoM->costo_directo_inv_et , 2, '.',",",3) ?>" class="form-control col-md-4 col-xs-12 moneda"  placeholder="Costo Directo"  autocomplete="off" >
+								<input id="txtCostoDirectoInversion" name="txtCostoDirectoInversion" value="<?= a_number_format($ExpedienteTecnicoM->costo_directo_inv_et , 2, '.',",",3) ?>" class="form-control col-md-4 col-xs-12 moneda"  placeholder="Costo Directo"  autocomplete="off" maxlength="40" >
 							</div>
 						</div>
 						<div class="col-md-3 col-sm-3 col-xs-12">
-							<label class="control-label">Gastos generales</label>
+							<label class="control-label">Gastos generales*</label>
 							<div>
-								<input id="txtGastosGenerales" name="txtGastosGenerales" value="<?= a_number_format($ExpedienteTecnicoM->gastos_generales_et , 2, '.',",",3) ?>" class="form-control col-md-4 col-xs-12 moneda"  placeholder="Costo Indirecto"  autocomplete="off" >
+								<input id="txtGastosGenerales" name="txtGastosGenerales" value="<?= a_number_format($ExpedienteTecnicoM->gastos_generales_et , 2, '.',",",3) ?>" class="form-control col-md-4 col-xs-12 moneda"  placeholder="Costo Indirecto"  autocomplete="off" maxlength="40" >
 							</div>
 						</div>
 						<div class="col-md-3 col-sm-3 col-xs-12">
-							<label class="control-label">Gastos de supervisión</label>
+							<label class="control-label">Gastos de supervisión*</label>
 							<div>
-								<input id="txtGastosSupervision" name="txtGastosSupervision" value ="<?= a_number_format($ExpedienteTecnicoM->gastos_supervision_et , 2, '.',",",3) ?>" class="form-control col-md-4 col-xs-12 moneda"  placeholder="Costo Indirecto" autocomplete="off" >
+								<input id="txtGastosSupervision" name="txtGastosSupervision" value ="<?= a_number_format($ExpedienteTecnicoM->gastos_supervision_et , 2, '.',",",3) ?>" class="form-control col-md-4 col-xs-12 moneda"  placeholder="Costo Indirecto" autocomplete="off" maxlength="40" >
 							</div>
 						</div>
 					</div>					
@@ -141,20 +140,34 @@
 						</div>
 					</div>					
 					<div class="row">
-						<div class="col-md-3 col-sm-3 col-xs-12">
-							<label class="control-label">Componente</label>
+						<div class="col-md-4 col-sm-3 col-xs-12">
+							<label class="control-label">Componente*</label>
 							<div>
-								<input id="txtComponente" name="txtComponente" value="<?= $ExpedienteTecnicoM->componente_et?>" class="form-control col-md-4 col-xs-12"  placeholder="Componente" autocomplete="off" >
+								<input id="txtComponente" name="txtComponente" value="<?= $ExpedienteTecnicoM->componente_et?>" class="form-control col-md-4 col-xs-12"  placeholder="Componente" autocomplete="off" maxlength="200" >
 							</div>
 						</div>
-						<div class="col-md-3 col-sm-3 col-xs-12">
-							<label class="control-label">Meta</label>
+						<div class="col-md-4 col-sm-3 col-xs-12">
+							<label class="control-label">Meta*</label>
 							<div>
-								<input id="txtMeta" name="txtMeta" value="<?= $ExpedienteTecnicoM->meta_et?>" class="form-control col-md-4 col-xs-12"  placeholder="Meta"  autocomplete="off" >
+								<input id="txtMeta" name="txtMeta" value="<?= $ExpedienteTecnicoM->meta_et?>" class="form-control col-md-4 col-xs-12"  placeholder="Meta"  autocomplete="off" maxlength="200" >
 							</div>
 						</div>
-						<div class="col-md-3 col-sm-3 col-xs-12">
-							<label class="control-label">Fuente de financiamiento</label>
+						<div class="col-md-4 col-sm-3 col-xs-12">
+							<label class="control-label">Tiempo de Ejecución del Proyecto*</label>
+							<div>
+								<input id="txtTiempoEjecucionPip" name="txtTiempoEjecucionPip" value="<?= $ExpedienteTecnicoM->tiempo_ejecucion_pi_et?>" class="form-control col-md-4 col-xs-12"  placeholder="Tiempo de Ejecución" autocomplete="off" maxlength="100" >
+							</div>
+						</div>
+					</div>
+					<div class="row">						
+						<div class="col-md-4 col-sm-3 col-xs-12">
+							<label class="control-label">Número de beneficiarios indirectos del proyecto*</label>
+							<div>
+								<input id="txtNumBeneficiarios" name="txtNumBeneficiarios" value="<?= $ExpedienteTecnicoM->num_beneficiarios_indirectos?>" class="form-control col-md-4 col-xs-12"  placeholder="Número de beneficiarios indirectos" autocomplete="off" maxlength="40" >
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-3 col-xs-12">
+							<label class="control-label">Fuente de financiamiento*</label>
 					    	<div class="form-group">
 						      	<select class="selectpicker form-control" id="txtFuenteFinanciamiento" name="txtFuenteFinanciamiento" data-live-search="true">
 						        	<?php foreach ($listaFuenteFinanciamiento as $key => $value) { ?>
@@ -164,8 +177,8 @@
 						      	</select>
 					    	</div>
 						</div>
-						<div class=" col-md-3">
-					  		<label class="control-label">Modalidad de Ejecución</label>
+						<div class=" col-md-4">
+					  		<label class="control-label">Modalidad de Ejecución*</label>
 					    	<div class="form-group">
 						      	<select class="selectpicker form-control" id="txtModalidadEjecucion" name="txtModalidadEjecucion" data-live-search="true">
 						      		<?php foreach ($listaModalidadEjecucion as $key => $value) { ?>
@@ -176,26 +189,12 @@
 					    	</div>
 					  	</div>
 					</div>
-					<div class="row">
-						<div class="col-md-6 col-sm-3 col-xs-12">
-							<label class="control-label">Tiempo de Ejecución del Proyecto</label>
-							<div>
-								<input id="txtTiempoEjecucionPip" name="txtTiempoEjecucionPip" value="<?= $ExpedienteTecnicoM->tiempo_ejecucion_pi_et?>" class="form-control col-md-4 col-xs-12"  placeholder="Tiempo de Ejecución" autocomplete="off" >
-							</div>
-						</div>
-						<div class="col-md-6 col-sm-3 col-xs-12">
-							<label class="control-label">Número de beneficiarios indirectos del proyecto</label>
-							<div>
-								<input id="txtNumBeneficiarios" name="txtNumBeneficiarios" value="<?= $ExpedienteTecnicoM->num_beneficiarios_indirectos?>" class="form-control col-md-4 col-xs-12"  placeholder="Número de beneficiarios indirectos" autocomplete="off" >
-							</div>
-						</div>
-					</div>
 					
 					<div class="row">						
-						<div class="col-md-3 col-sm-3 col-xs-12">
+						<div class="col-md-4 col-sm-3 col-xs-12">
 							<label class="control-label">Cargo</label>
 							<input type="hidden" name="id_tipo_responsableElabo" value="<?= $listarUResponsableERespoElabo->id_responsable_et ?>">
-							<select  id="comboCargoElaboracion" name="comboCargoElaboracion" class="form-control col-md-2 col-xs-2">
+							<select  id="comboCargoElaboracion" name="comboCargoElaboracion" class="form-control col-md-4 col-xs-2">
 									<?php foreach($listarCargo as $item){ ?>
 										<option value="<?=$item->id_cargo; ?>" <?=($item->id_cargo==$listarUResponsableERespoElabo->id_cargo ? 'selected' : '')?>><?= $item->Desc_cargo;?></option>
 									<?php } ?>
@@ -228,8 +227,8 @@
 
 					<div class="row">
 						
-						<div class="col-md-3 col-sm-2 col-xs-12">
-							<label class="control-label">Cargos</label>
+						<div class="col-md-4 col-sm-2 col-xs-12">
+							<label class="control-label">Cargo</label>
 							<input type="hidden" name="id_tipo_responsableEjecucion" value="<?= $listarUResponsableERespoEjecucion->id_responsable_et ?>">
 							<select  id="comboCargoElaboracion" name="comboCargoEjecucion" class="form-control col-md-2 col-xs-2">
 									<?php foreach($listarCargo as $item){ ?>
@@ -280,7 +279,7 @@
 					</div>									
 					<div class="row">
 						<div class="col-md-3 col-sm-12 col-xs-12">
-							<label class="control-label">Número de folios</label>
+							<label class="control-label">Número de folios*</label>
 							<div>
 								<input id="txtNumFolio" name="txtNumFolio" value="<?= $ExpedienteTecnicoM->num_folios?>" class="form-control col-md-4 col-xs-12"  placeholder="Número de folios" autocomplete="off" >
 							</div>
@@ -330,7 +329,7 @@
 <div class="ln_solid"></div>
 		<div class="row" style="text-align: right;">
 			<button type="submit" id="btnEnviarFormulario" class="btn btn-success">Guardar</button>
-			<button  class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+			<button  class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 		</div>
 </form>
  <script>

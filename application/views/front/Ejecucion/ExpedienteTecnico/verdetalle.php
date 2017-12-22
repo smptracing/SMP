@@ -379,6 +379,7 @@ function Eliminar(id_et)
 		showCancelButton: true,
 		confirmButtonColor: "#DD6B55",
 		confirmButtonText: "SI,ELIMINAR",
+		cancelButtonText:"CERRAR",
 		closeOnConfirm: false
 	},
 	function(){$.ajax({url:base_url+"index.php/Expediente_Tecnico/eliminar",type:"POST",data:{id_et:id_et},success:function(respuesta)
