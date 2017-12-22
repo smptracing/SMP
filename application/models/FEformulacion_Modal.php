@@ -35,10 +35,12 @@ class FEformulacion_Modal extends CI_Model
     // }
     public function GetFEViabilizado($id_est_inve)
     {
-        $FEAprobados = $this->db->query("execute sp_ListarEstudioViabilizados @id_estudio_inv  = ". $id_est_inve ." ");
-        if ($FEAprobados->num_rows() >= 0) {
-            return $FEAprobados->result();
-        } else {
+     $ViabFE=$this->db->query("execute sp_ListarEstudioEtapas @id_estudio_inv=".$id_est_inve." , @desc_etapa='Viab%' , @etapa_en_seguimiento=1");
+
+        if ($ViabFE->num_rows() >= 0) {
+            return $ViabFE->result();
+        } 
+        else {
             return false;
         }
     }

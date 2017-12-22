@@ -23,12 +23,15 @@ class Model_EvaluacionFE extends CI_Model
     /*LISTAR DENOMINACION FORMULACION Y EVALUACION*/
     public function GetEvaluacionFE($id_est_inve)
     {   
-        $EvaluacionFE = $this->db->query("execute sp_ListarEstudioEvaluacion @id_estudio_inv="
+       /* $EvaluacionFE = $this->db->query("execute sp_ListarEstudioEvaluacion @id_estudio_inv="
             . $id_est_inve . " ");
+*/
+        $EvaluacionFE=$this->db->query("execute sp_ListarEstudioEtapas @id_estudio_inv=".$id_est_inve." , @desc_etapa='Eval%' , @etapa_en_seguimiento=1");
 
         if ($EvaluacionFE->num_rows() >= 0) {
             return $EvaluacionFE->result();
-        } else {
+        } 
+        else {
             return false;
         }
     }
