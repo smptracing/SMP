@@ -18,28 +18,24 @@
             }
         });
     });
-//REGISTARAR situacion
-   $("#form-AddSituacion").submit(function(event)
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/FEsituacion/AddSituacion",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           //alert(resp);
-                           if (resp=='1') {
-                             swal("REGISTRADO","Se registró correctamente", "success");
-                             formReset();
-                           }
-                            if (resp=='2') {
-                             swal("NO SE REGISTRÓ","NO se regristró ", "error");
-                           }
-                          $('#table-EvaluacionFE').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
-                             formReset();
-                         }
-                      });
-                  });
+
+    $("#form-AddSituacion").submit(function(event)
+    {
+        event.preventDefault();
+        $.ajax({
+            url:base_url+"index.php/FEsituacion/AddSituacion",
+            type:$(this).attr('method'),
+            data:$(this).serialize(),
+            success:function(resp)
+            {
+                resp=JSON.parse(resp);
+                $('#VentanaSituacionActual').modal('hide');
+                swal(resp.proceso,resp.mensaje,(resp.proceso=='Correcto') ? 'success':'error');
+                $('#table-EvaluacionFE').dataTable()._fnAjaxUpdate();
+                formReset();
+            }
+        });
+    });
    //REGISTARAR asiganar persona
    $("#form-AddAsiganarPersona").submit(function(event)
                   {
