@@ -96,23 +96,17 @@
                 <div class="item form-group">
                                      <div class="col-md-4">
 
-                                           <label for="name">Situación Form y Eval.<span class="required"></span>
+                                           <label for="name">Situación Form y Eval:*<span class="required"></span>
                                             </label>
-                                                 <select   id="Cbx_Situacion" name="Cbx_Situacion" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Etapas FE...">
+                                                 <select   id="Cbx_Situacion" name="Cbx_Situacion" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true">
                                                 </select>
                                     </div>
-                                             <div class="col-md-4">
-
-                                           <label for="name">Fecha <span class="required"></span>
-                                            </label>
-                                                  <input type="date" id="dateFechaIniC" name="dateFechaIniC" class="form-control col-md-6 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text" value="<?php echo date("Y-m-d"); ?>" disabled="true">
-                                          </div>
                       </div>
 
                 <div class="item form-group">
                 <div class="col-md-12">
                               <br>
-                              <label for="name">Observación<span class="required"></span>
+                              <label for="name">Observación:<span class="required"></span>
                               </label>
                               <textarea class="form-control" rows="3" name="txadescripcion" id="txadescripcion"></textarea>
                 </div>
@@ -169,31 +163,22 @@
                 <div class="item form-group">
                                      <div class="col-md-4">
 
-                                           <label for="name">Responsable.<span class="required"></span>
-                                            </label>
-                                                 <select   id="Cbx_Persona" name="Cbx_Persona" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Etapas FE...">
+                                           <label for="name">Responsable:*</label>
+                                                 <select   id="Cbx_Persona" name="Cbx_Persona" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true" >
                                                 </select>
                                     </div>
                                      <div class="col-md-4">
 
-                                           <label for="name">Cargo.<span class="required"></span>
-                                            </label>
-                                                 <select   id="Cbx_Cargo" name="Cbx_Cargo" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Etapas FE...">
+                                           <label for="name">Cargo:* </label>
+                                                 <select   id="Cbx_Cargo" name="Cbx_Cargo" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true">
                                                 </select>
                                     </div>
-                                             <div class="col-md-4">
-
-                                           <label for="name">Fecha <span class="required"></span>
-                                            </label>
-                                                  <input type="date" id="dateFechaIniC" name="dateFechaIniC" class="form-control col-md-6 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text" value="<?php echo date("Y-m-d"); ?>" disabled="true">
-                                          </div>
                       </div>
 
                 <div class="item form-group">
                 <div class="col-md-12">
                               <br>
-                              <label for="name">Observación<span class="required"></span>
-                              </label>
+                              <label for="name">Observación:</label>
                               <textarea class="form-control" rows="3" name="txadescripcion" id="txadescripcion"></textarea>
                 </div>
 </div>

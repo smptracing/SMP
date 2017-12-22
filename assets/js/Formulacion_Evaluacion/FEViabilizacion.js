@@ -1,49 +1,42 @@
- $(document).on("ready" ,function(){
-              ListarEvaluacionFE();
-//REGISTARAR situacion
-   $("#form-AddSituacion").submit(function(event)
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/FEsituacion/AddSituacion",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           //alert(resp);
-                           if (resp=='1') {
-                             swal("REGISTRADO","Se regristró correctamente", "success");
-                             formReset();
-                           }
-                            if (resp=='2') {
-                             swal("NO SE REGISTRÓ","NO se regristró ", "error");
-                           }
-                          $('#table-EvaluacionFE').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
-                             formReset();
-                         }
-                      });
-                  });
-   //REGISTARAR asiganar persona
-   $("#form-AddAsiganarPersona").submit(function(event)
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/Estudio_Inversion/AddAsiganarPersona",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           //alert(resp);
-                           if (resp=='1') {
-                             swal("REGISTRADO","Se regristró correctamente", "success");
-                             formReset();
-                           }
-                            if (resp=='2') {
-                             swal("NO SE REGISTRÓ","NO se regristró ", "error");
-                           }
-                          $('#table-EvaluacionFE').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
-                             formReset();
-                         }
-                      });
-                  });
+$(document).on("ready" ,function()
+{
+    ListarEvaluacionFE();
+
+    $("#form-AddSituacion").submit(function(event)
+    {
+        event.preventDefault();
+        $.ajax({
+            url:base_url+"index.php/FEsituacion/AddSituacion",
+            type:$(this).attr('method'),
+            data:$(this).serialize(),
+            success:function(resp)
+            {
+                resp=JSON.parse(resp);
+                $('#VentanaSituacionActual').modal('hide');
+                swal(resp.proceso,resp.mensaje,(resp.proceso=='Correcto') ? 'success':'error');                
+                $('#table-EvaluacionFE').dataTable()._fnAjaxUpdate();
+                formReset();
+            }
+        });
+    });
+
+    $("#form-AddAsiganarPersona").submit(function(event)
+    {
+        event.preventDefault();
+        $.ajax({
+            url:base_url+"index.php/Estudio_Inversion/AddAsiganarPersona",
+            type:$(this).attr('method'),
+            data:$(this).serialize(),
+            success:function(resp)
+            {
+                resp=JSON.parse(resp);
+                $('#VentanaAsignarPersona').modal('hide');
+                swal(resp.proceso,resp.mensaje,(resp.proceso=='Correcto') ? 'success':'error'); 
+                $('#table-EvaluacionFE').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
+                formReset();
+            }
+        });
+    });
 //limpiar campos
           function formReset()
           {
@@ -84,7 +77,7 @@ var ListarEvaluacionFE=function()
             {"data":"avance_fisico",
                 "mRender":function (data,type, full)
                 {
-                    return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Complete</small></td>";
+                    return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Complado</small></td>";
                 }
             },
             {"defaultContent":"<button type='button' class='Situacion btn btn-warning btn-xs' data-toggle='modal' data-target='#VentanaSituacionActual'><i data-toggle='tooltip' title='Asignar Situación' class='fa fa-flag' aria-hidden='true'></i></button><button type='button'  class='AsignarPersona btn btn-info btn-xs' data-toggle='modal' data-target='#VentanaAsignarPersona'><i data-toggle='tooltip' title='Asignar Responsable' class='glyphicon glyphicon-user' aria-hidden='true'></i></button>"}                            
