@@ -26,9 +26,9 @@ $(document).on("ready" ,function()
     $("#txt_girado").keyup(function(e)
     {
         $(this).val(format($(this).val()));
-    });    
+    });
 
-//agregar progrmacion para operacion y mantenimiento     
+//agregar progrmacion para operacion y mantenimiento
       $("#form_AddProgramacion_operacion_mantenieminto").submit(function(event)
       {
           event.preventDefault();
@@ -88,15 +88,15 @@ $(document).on("ready" ,function()
             data:$(this).serialize(),
             success:function(resp)
             {
-                if (resp=='1') 
+                if (resp=='1')
                 {
                     swal("REGISTRADO","Se regristró correctamente", "success");
                     setTimeout("location.reload()", 5000);
                 }
-                if (resp=='2') 
+                if (resp=='2')
                 {
                     swal("NO SE REGISTRÓ","NO se regristró ", "error");
-                 
+
                 }
                 $('#Table_meta_pi').dataTable()._fnAjaxUpdate();
                 $('form_AddMeta_Pi')[0].reset();
@@ -106,8 +106,8 @@ $(document).on("ready" ,function()
     });
      function formReset()
      {
-          //document.getElementById("form_AddProgramacion").reset();       
-          document.getElementById("form_AddMeta_Pi").reset();  
+          //document.getElementById("form_AddProgramacion").reset();
+          document.getElementById("form_AddMeta_Pi").reset();
      }
 
 });
@@ -122,7 +122,7 @@ $(document).on("ready" ,function()
                          "ajax":{
                                     "url":base_url+"index.php/programar_pip/GetProyectosFormulacionEvaluacion",
                                     "method":"POST",
-                                    "dataSrc":""                                    
+                                    "dataSrc":""
                                   },
                                 "columns":[
                                     {"defaultContent":"<td>#</td>"},
@@ -132,8 +132,8 @@ $(document).on("ready" ,function()
                     return "<div style='float:right;'>S/. "+data+"</div>";
                     }},
                                     {"data":"nombre_estado_ciclo"},
-
-                                  /*  {"data": function (data, type, dataToSet) {
+                                    /*
+                                   {"data": function (data, type, dataToSet) {
 
                                       if (data.estado_programado !='0') //estap programado
                                       {
@@ -146,7 +146,11 @@ $(document).on("ready" ,function()
                                         return '<h5><span class="label label-danger">No Programado</span></h5>';
                                       }
                                    }},*/
-                                    {"defaultContent":"<center><button type='button' title='Meta Presupuestal PIP' class='meta_pip btn btn-success btn-xs' data-toggle='modal' data-target='#Ventana_Meta_Presupuestal_PI'><i class='fa fa-usd' aria-hidden='true'></i></button></center>"}
+                                    {"data": function (data, type, dataToSet) {
+                                      //return "<button onclick=\"paginaAjaxDialogo(null,'Formulacion y Evaluacion',{codigo_unico_pi:"+data.codigo_unico_pi+"},base_url+'index.php/MetaPip/meta_pip_modal','GET',null,null,false,true)\"; class=\"meta_pip btn btn-primary btn-xs\"><span class=\"fa fa-edit\"></span>  Editar</button>"
+                                      return "<a href='#Ventana_Meta_Presupuestal_PI' onclick='meta_pi_cup("+data.codigo_unico_pi+")'  class='meta_pip btn btn-success btn-xs' data-toggle='modal' data-id='"+data.codigo_unico_pi+"'>REPLY</a>"
+                                      }
+                                    }
                                 ],
                                "language":idioma_espanol
                     });
@@ -177,7 +181,7 @@ $(document).on("ready" ,function()
                                 ],
                                "language":idioma_espanol
                     });
-                    EliminarProgramacion("#Table_Programar",table); 
+                    EliminarProgramacion("#Table_Programar",table);
                 }
 //fin listar programación por cada proyecto
 //Eliminar programacion
@@ -236,7 +240,7 @@ var EliminarProgramacion=function(tbody,table){
                                   ],
                                "language":idioma_espanol
                        });
-               
+
                 }
 //fin listar prioridad
 $("#Cbx_AnioCartera").change(function() {
@@ -244,7 +248,7 @@ $("#Cbx_AnioCartera").change(function() {
                           lista_prioridad(anio);
                             //lista_ejecucion(anio);
                            //listar carteran de proyectos
-                        });   
+                        });
 
 //listar programación para operacion y manteniemitno
  var listar_programacion_operacion_mantenimiento=function(id_pi)
@@ -269,7 +273,7 @@ $("#Cbx_AnioCartera").change(function() {
                                 ],
                                "language":idioma_espanol
                     });
-                    EliminarProgramacion("#Table_Programar_operacion_mantenimiento",table); 
+                    EliminarProgramacion("#Table_Programar_operacion_mantenimiento",table);
                 }
 //fin listar programación  para operacion y manteniemitno
 //listar proyectos de inversion en Ejecucion
@@ -282,7 +286,7 @@ $("#Cbx_AnioCartera").change(function() {
                          "ajax":{
                                     "url":base_url+"index.php/programar_pip/GetProyectosEjecucion",
                                     "method":"POST",
-                                    "dataSrc":""                                    
+                                    "dataSrc":""
                                   },
                                 "columns":[
                                     {"defaultContent":"<td>#</td>"},
@@ -322,7 +326,7 @@ $("#Cbx_AnioCartera").change(function() {
                          "ajax":{
                                     "url":base_url+"index.php/programar_pip/GetProyectosFuncionamiento",
                                     "method":"POST",
-                                    "dataSrc":""                                    
+                                    "dataSrc":""
                                   },
                                 "columns":[
                                     {"defaultContent":"<td>#</td>"},
@@ -348,7 +352,7 @@ $("#Cbx_AnioCartera").change(function() {
                                 ],
                                "language":idioma_espanol
                     });
-     AddProgramacion_oper_man("#Table_funcionamiento",table); 
+     AddProgramacion_oper_man("#Table_funcionamiento",table);
      AddMeta_Pi("#Table_funcionamiento",table);
 }
 //fin de proyectos de inversion en Funcionamiento
@@ -431,7 +435,7 @@ var EliminarMetaPresupuestalPi=function(tbody,table){
 */
 var  AddMeta_Pi=function(tbody,table)
 {
-    $(tbody).on("click","button.meta_pip",function()
+    $(tbody).on("click","a.meta_pip",function()
     {
         var data=table.row( $(this).parents("tr")).data();
         var  id_pi=data.id_pi;
@@ -439,11 +443,29 @@ var  AddMeta_Pi=function(tbody,table)
         $("#txt_id_pip_programacion_mp").val(data.id_pi);
         $("#txt_costo_proyecto_mp").val("S/. "+data.costo_pi);
         $("#txt_nombre_proyecto_mp").val(data.nombre_pi);
+        //meta_pi_cup(data.codigo_unico_pi);
         listar_Meta();
         listar_meta_presupuestal();
         listar_meta_pi(id_pi);
-        
     });
+}
+
+var  meta_pi_cup=function(codigo_unico_pi)
+{
+      $.ajax(
+      {
+          url : base_url+'index.php/MetaPip/meta_pip',
+          type : 'GET',
+          data : {codigo_unico_pi: codigo_unico_pi},
+          cache : false,
+          async : true
+      }).done(function(pagina)
+      {
+        //console.log(pagina);
+      }).fail(function()
+      {
+
+      });
 }
 
 //add programar para formulacion y evaluacion
@@ -455,7 +477,7 @@ var  AddMeta_Pi=function(tbody,table)
                       $("#txt_id_pip_programacion").val(data.id_pi);
                       $("#txt_costo_proyecto").val(data.costo_pi);
                       $("#txt_nombre_proyecto").val(data.nombre_pi);
-                      
+
                         listar_aniocartera();
                         listar_programacion(id_pi);
 
@@ -632,15 +654,15 @@ var  AddMeta_Pi=function(tbody,table)
 
 var format = function(num){
     var str = num.replace("", ""), parts = false, output = [], i = 1, formatted = null;
-    if(str.indexOf(".") > 0) 
+    if(str.indexOf(".") > 0)
     {
         parts = str.split(".");
         str = parts[0];
     }
     str = str.split("").reverse();
-    for(var j = 0, len = str.length; j < len; j++) 
+    for(var j = 0, len = str.length; j < len; j++)
     {
-        if(str[j] != ",") 
+        if(str[j] != ",")
         {
             output.push(str[j]);
             if(i%3 == 0 && j < (len - 1))
@@ -656,7 +678,7 @@ var format = function(num){
 
 
 $(function()
-{   
+{
     $('#validarAddMetaPip').formValidation({
         framework: 'bootstrap',
         excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
@@ -723,7 +745,7 @@ $(function()
             {
                 validators:
                 {
-  
+
                     regexp:
                     {
                         regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
@@ -735,7 +757,7 @@ $(function()
             {
                 validators:
                 {
-   
+
                     regexp:
                     {
                         regexp: /(((\d{1,3},)(\d{3},)*\d{3})|(\d{1,3}))\.?\d{1,2}?$/,
@@ -1010,5 +1032,3 @@ $(function()
         }
     });*/
 });
-
-

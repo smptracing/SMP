@@ -18,4 +18,14 @@ class MetaPip_Model extends CI_Model
         }
     }
 
+    function getDataSiaf($anio_meta, $codigo_unico)
+    {
+      $query=$this->db->query("execute sp_ListarMontosProyectoAnio '".$anio_meta."','".$codigo_unico."'");
+      if ($query->num_rows() > 0) {
+          return $query->result();
+      } else {
+          return false;
+      }
+    }
+
 }

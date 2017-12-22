@@ -39,10 +39,10 @@ if (!function_exists('autentificar'))
             echo $CI->output->get_output();
         }
         else
-        {
+        { /*
             if($CI->session->userdata('idPersona'))
             {
-                /*echo $CI->output->get_output();
+                echo $CI->output->get_output();
                 if(autorizar($url))
                 {
                     echo $CI->output->get_output();
@@ -51,12 +51,12 @@ if (!function_exists('autentificar'))
                 {
                     echo $CI->output->get_output();
                     redirect('Usuario/accesodenegado');
-                }*/
+                }
             }
             else
             {
             	redirect('Login/muestralog');
-            }
+            }*/
         }
 
     }
@@ -617,7 +617,8 @@ function autorizar($url)
       'PmiCriterioEspecifico/eliminar',
       'PuntajeCriterioPi/index',
       'PuntajeCriterioPi/insertar',
-      'FEestado/EliminarFEestado'
+      'FEestado/EliminarFEestado',
+      'MetaPip/meta_pip'
     );
     foreach( $lista_API as $value ) {
       array_push($arrayPermitido, $value);

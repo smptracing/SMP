@@ -13,7 +13,7 @@ class programar_nopip extends CI_Controller
     //listar proyectos no pip
     public function Get_no_pip()
     {
-        if ($this->input->is_ajax_request()) 
+        if ($this->input->is_ajax_request())
         {
             $flat  = "LISTARNOPIP_PROGRAMACION";
             $datos = $this->programar_nopip_modal->Get_no_pip($flat);
@@ -21,20 +21,20 @@ class programar_nopip extends CI_Controller
             {
                 echo json_encode($datos);exit;
             }
-            foreach ($datos as $key => $value) 
+            foreach ($datos as $key => $value)
             {
                 $value->costo_pi = a_number_format($value->costo_pi , 2, '.',",",3);
             }
             echo json_encode($datos);exit;
-        } 
-        else 
+        }
+        else
         {
             show_404();
         }
     }
     public function AddProgramacion()
     {
-        if ($this->input->is_ajax_request()) 
+        if ($this->input->is_ajax_request())
         {
             $flat                    = "programar_no_pip";
             $id_programacion         = "0";
@@ -45,17 +45,17 @@ class programar_nopip extends CI_Controller
             $txt_anio2               = "0.00";
             $txt_anio3               = "0.00";
             $txt_prioridad           = floatval($this->input->post("txt_prioridad"));
-            if ($this->programar_nopip_modal->AddProgramacion($flat, $id_programacion, $Cbx_AnioCartera, $cbxBrecha, $txt_id_pip_programacion, $txt_anio1, $txt_anio2, $txt_anio3, $txt_prioridad) == false) 
+            if ($this->programar_nopip_modal->AddProgramacion($flat, $id_programacion, $Cbx_AnioCartera, $cbxBrecha, $txt_id_pip_programacion, $txt_anio1, $txt_anio2, $txt_anio3, $txt_prioridad) == false)
             {
                 echo "1";
-            } 
-            else 
+            }
+            else
             {
                 echo "2";
             }
 
-        } 
-        else 
+        }
+        else
         {
             show_404();
         }
@@ -89,7 +89,7 @@ class programar_nopip extends CI_Controller
     //Listar programación
     public function listar_programacion()
     {
-        if ($this->input->is_ajax_request()) 
+        if ($this->input->is_ajax_request())
         {
             $flat  = "listar_programado_pip";
             $id_pi = $this->input->post("id_pi");
@@ -100,14 +100,14 @@ class programar_nopip extends CI_Controller
             }
             else
             {
-                foreach ($data as $key => $value) 
+                foreach ($data as $key => $value)
                 {
                     $value->monto_prog = a_number_format($value->monto_prog , 2, '.',",",3);
                 }
                 echo json_encode(array('data' => $data));
             }
-        } 
-        else 
+        }
+        else
         {
             show_404();
         }
@@ -115,7 +115,7 @@ class programar_nopip extends CI_Controller
     //listar meta proyecto
     public function listar_metas_pi()
     {
-        if ($this->input->is_ajax_request()) 
+        if ($this->input->is_ajax_request())
         {
             $flat  = "R";
             $id_pi = $this->input->post("id_pi");
@@ -126,7 +126,7 @@ class programar_nopip extends CI_Controller
             }
             else
             {
-                foreach ($data as $key => $value) 
+                foreach ($data as $key => $value)
                 {
                     $value->pia_meta_pres = a_number_format($value->pia_meta_pres , 2, '.',",",3);
                     $value->pim_acumulado = a_number_format($value->pim_acumulado , 2, '.',",",3);
@@ -137,8 +137,8 @@ class programar_nopip extends CI_Controller
                 }
                 echo json_encode(array('data' => $data));
             }
-        } 
-        else 
+        }
+        else
         {
             show_404();
         }

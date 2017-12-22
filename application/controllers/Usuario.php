@@ -13,7 +13,6 @@ class Usuario extends CI_Controller {
 	}
 	function ListarTipoUsuarioMenu($tipo)
 	{
-
         $datos = $this->Model_Usuario->ListarTipoUsuarioMenu($tipo);
         echo json_encode($datos);
 	}

@@ -75,8 +75,6 @@
                                                         <th style="width: 6%">Asig. Meta</th>
                                                         </tr>
                                                       </thead>
-
-
                                                             </table>
                                                           </div>
                                                         </div>
@@ -357,34 +355,36 @@
                                     </div>
                                   </div>
                                   <div class="item form-group">
+                                    <?php foreach ($listar_montos as $listar_monto): ?>
                                     <div class="row">
                                       <div class="col-md-3 col-sm-6 col-xs-12">
                                         <label>PIA</label>
-                                        <input class="form-control" id="txt_pia" name="txt_pia" type="text" autocomplete="off" >
+                                        <input class="form-control" id="txt_pia" name="txt_pia" type="text" value="<?= $listar_monto->presupuesto ?>" autocomplete="off" >
                                       </div>
                                       <div class="col-md-3 col-sm-6 col-xs-12">
                                         <label>PIM</label>
-                                        <input  class="form-control" id="txt_pim" name="txt_pim" type="text" autocomplete="off" >
+                                        <input  class="form-control" id="txt_pim" name="txt_pim" type="text" value="<?= $listar_monto->modificacion ?>" autocomplete="off" >
                                       </div>
                                       <div class="col-md-3 col-sm-6 col-xs-12">
                                         <label>Certificado</label>
-                                        <input  class="form-control" id="txt_certificado" name="txt_certificado" type="text" autocomplete="off">
+                                        <input  class="form-control" id="txt_certificado" name="txt_certificado" type="text" value="<?= $listar_monto->certificado ?>" autocomplete="off">
                                       </div>
                                       <div class="col-md-3 col-sm-6 col-xs-12">
                                         <label>compromiso</label>
-                                        <input  class="form-control" id="txt_compromiso" name="txt_compromiso" type="text" autocomplete="off" >
+                                        <input  class="form-control" id="txt_compromiso" name="txt_compromiso" type="text" value="<?= $listar_monto->compromiso ?>" autocomplete="off" >
                                       </div>
                                     </div>
                                     <div class="row">
                                       <div class="col-md-3 col-sm-6 col-xs-12">
                                         <label>Devengado</label>
-                                        <input  class="form-control" id="txt_devengado" name="txt_devengado" type="text" autocomplete="off">
+                                        <input  class="form-control" id="txt_devengado" name="txt_devengado" type="text" value="<?= $listar_monto->devengado ?>" autocomplete="off">
                                       </div>
                                       <div class="col-md-3 col-sm-6 col-xs-12">
                                         <label>Girado</label>
-                                        <input  class="form-control" id="txt_girado" name="txt_girado" type="text" autocomplete="off">
+                                        <input  class="form-control" id="txt_girado" name="txt_girado" type="text" value="<?= $listar_monto->girado ?>" autocomplete="off">
                                       </div>
                                     </div>
+                                    <?php endforeach; ?>
                                  </div>
                                  </div>
                                  <div class="item form-group">

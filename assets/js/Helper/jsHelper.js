@@ -20,7 +20,7 @@ function paginaAjaxJSON(data, url, method, preFunction, postFunction, cache, asy
     {
         preFunction();
     }
-    
+
     $.ajax(
     {
         url : url,
@@ -28,10 +28,10 @@ function paginaAjaxJSON(data, url, method, preFunction, postFunction, cache, asy
         data : data,
         cache : cache,
         async : async
-    }).done(function(pagina) 
+    }).done(function(pagina)
     {
         $('#divModalCargaAjax').hide();
-        
+
         if((typeof postFunction)=='function')
         {
             postFunction(pagina);
@@ -39,7 +39,7 @@ function paginaAjaxJSON(data, url, method, preFunction, postFunction, cache, asy
     }).fail(function()
     {
         $('#divModalCargaAjax').hide();
-        
+
         alert('Error en la red (Transferencia de datos). Por favor reporte ésto al administrador del sistema. Pedimos disculpas y damos gracias por su comprensión.');
     });
 }
@@ -60,7 +60,7 @@ function paginaAjax(idSeccion, data, url, method, preFunction, postFunction, cac
         data : data,
         cache : cache,
         async : async
-    }).done(function(pagina) 
+    }).done(function(pagina)
     {
         $('#divModalCargaAjax').hide();
         $('#'+idSeccion).html(pagina);
@@ -102,7 +102,7 @@ function paginaAjaxDialogo(idModal, titulo, data, url, method, preFunction, post
             '</div>'+
         '</div>'+
     '</div>';
-    
+
     $.ajax(
     {
         url : url,
@@ -110,7 +110,7 @@ function paginaAjaxDialogo(idModal, titulo, data, url, method, preFunction, post
         data : data,
         cache : cache,
         async : async
-    }).done(function(pagina) 
+    }).done(function(pagina)
     {
         $('#divModalCargaAjax').hide();
 
