@@ -10,16 +10,10 @@ class Model_FEentregableEstudio extends CI_Model
       
         function get_Entregables($txt_id_etapa_estudio)
         {
-             //$id_estapa=3;
-            //$Entregables=$this->db->query("execute sp_Entregables_r '".$id_estapa."' ");
             $Entregables=$this->db->query("execute sp_EntregableEstudio_r '".$txt_id_etapa_estudio."' ");
-            if($Entregables->num_rows()>=0)
-             {
-              return $Entregables->result();
-             }else
-             {
-              return false;
-             }
+            
+            return $Entregables->result();
+            
         }
 
         function  get_entregableId($id_entregable){//traer el id de Estudio

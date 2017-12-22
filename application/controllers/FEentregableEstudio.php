@@ -60,30 +60,26 @@ show_404();
     //FIN OPERACIONES CON LOS AVANCES
     public function get_Entregables()
     {
-        if ($this->input->is_ajax_request()) {
-
-
-           $id_etapaestudio = $this->session->userdata('Etapa_Estudio');
-          //para eliminr las sesiones que se queda almacenado
-           $this->session->unset_tempdata('Codigo_único');
-           $this->session->unset_tempdata('NombreEstudio');
-          //fin eliminr las sesiones que se queda almacenado
-            //nombres de la etapa estudio
-            $nombre                  =$this->Model_FEentregableEstudio->get_NombreEtapaEstudio($id_etapaestudio);
+        if ($this->input->is_ajax_request()) 
+        {
+            $id_etapaestudio = $this->session->userdata('Etapa_Estudio');
+            $this->session->unset_tempdata('Codigo_único');
+            $this->session->unset_tempdata('NombreEstudio');
+            $nombre=$this->Model_FEentregableEstudio->get_NombreEtapaEstudio($id_etapaestudio);
             foreach ($nombre as $nombre )
-                {
-                  $Codigo_único = $nombre['codigo_unico_est_inv'];
-                  $NombreEstudio = $nombre['nombre_est_inv'];
-                }
+            {
+                $Codigo_único = $nombre['codigo_unico_est_inv'];
+                $NombreEstudio = $nombre['nombre_est_inv'];
+            }
+            $data = array('NombreEstudio' =>$NombreEstudio,'Codigo_único'=>$Codigo_único);
+            $this->session->set_userdata($data);
+            $txt_id_etapa_estudio=$this->session->userdata('Etapa_Estudio');
+            $datos= $this->Model_FEentregableEstudio->get_Entregables($txt_id_etapa_estudio);
 
-                $data = array('NombreEstudio' =>$NombreEstudio,'Codigo_único'=>$Codigo_único);
-                $this->session->set_userdata($data);
-            //fin nombre detale estudio*/
-
-            $txt_id_etapa_estudio =$this->session->userdata('Etapa_Estudio');
-            $datos                = $this->Model_FEentregableEstudio->get_Entregables($txt_id_etapa_estudio);
             echo json_encode($datos);
-        } else {
+        } 
+        else 
+        {
             show_404();
         }
     }

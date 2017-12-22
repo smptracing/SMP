@@ -59,17 +59,11 @@
                     <h6>Estudio: <?php echo $this->session->userdata('NombreEstudio');?> | Código Único:<?php echo $this->session->userdata('Codigo_único');?></h6>
                     </div>
                     <div class="x_content">
-                        <div class="" role="tabpanel" data-example-id="togglable-tabs">
-                            <ul id="myTab" class="nav nav-tabs" role="tablist">
-                                <li role="presentation" class="active"><a href="#tab_entregable" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Entregables de Estudio</a>
-                                </li>
-                            </ul>
-                            <div id="myTabContent" class="tab-content">
+
                                 <input type="hidden" id="txt_id_etapa_estudio" name="txt_id_etapa_estudio" value="<?php echo $this->session->userdata('Etapa_Estudio'); ?>">
-                                <div role="tabpanel" class="tab-pane fade active in" id="tab_entregable" aria-labelledby="home-tab">
+                               
                                     <div class="row">
                                         <div class="col-md-12 col-xs-12">
-                                            <div class="x_panel">
                                                 <ul class="bs-glyphicons-list">
                                                     <li>
                                                         <button type="button" id="btn_entregable" class="btn btn-primary" data-toggle="modal" data-target="#VentanaEntregable" >
@@ -86,10 +80,9 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                         
                                           <!-- / fin panel grupo  funcional desde el row -->
                                         <div role="tabpanel" class="tab-pane fade" id="tab_Entregable" aria-labelledby="profile-tab">
                                              <!-- /tabla de grupo funcional desde el row -->
@@ -127,8 +120,8 @@
                                             </div>
                                          <!-- / fin tabla grupo funcional asociados el row -->
                                         </div>
-                                      </div>
-                                    </div>
+                         
+         
 
 
 

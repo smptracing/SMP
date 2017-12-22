@@ -399,7 +399,11 @@ var listadoFormuladores=function()
                                     },
 
                                 "columns":[
-                                   {"defaultContent": ""},
+                                   {"defaultContent": "",
+                                    "mRender": function (type, full )
+                                    {
+                                        return '<a type="button" class="btn btn-success btn-xs">Asignar</a>';
+                                    }},
                                     {"data":"id_persona","visible": false},
                                     {"data":"nombres"},
                                     {"data":"especialidad"},
@@ -776,7 +780,7 @@ var generarActividadesVertical=function(id_en)
                                     {"data":"id_denom_fe","visible":false},
                                     {"data":"id_entregable","visible":false},
                                     {"data":"nombre_entregable","mRender":function (data,type, full) {
-                                         return ""+data+"</br><button type='button'  class='ListarActividad btn  btn-xs' title='Mostrar  Actividades' ><i class='glyphicon glyphicon-calendar' aria-hidden='true'></i></button></br></br>";
+                                         return "<b>"+full.denom_fe+": </b>"+data+"</br><button type='button'  class='ListarActividad btn-success  btn-xs' title='Mostrar  Actividades' ><i class='glyphicon glyphicon-calendar' aria-hidden='true'></i></button></br></br>";
                                     }},
                                     {"data":"responsable",
                                     "mRender": function ( data, type, full ) {
