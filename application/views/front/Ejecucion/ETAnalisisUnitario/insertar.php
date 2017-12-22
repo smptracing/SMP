@@ -144,7 +144,7 @@
 		<input type="hidden" id="hdIdPartidaEnAnalisisPresupuestal" value="<?=$idPartida?>">
 		<button class="btn btn-danger" data-dismiss="modal">
 			<span class="glyphicon glyphicon-remove"></span>
-			Cerrar ventana
+			Cerrar
 		</button>
 	</div>
 </div>

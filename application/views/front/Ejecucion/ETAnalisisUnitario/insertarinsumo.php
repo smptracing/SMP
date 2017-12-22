@@ -30,7 +30,7 @@
 	</div>
 	<div class="row" style="text-align: center;">
 		<button  class="btn btn-success" id="btnEnviarFormulario" >Guardar</button>
-		<button  class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+		<button  class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 	</div>
 </form>
 <script>

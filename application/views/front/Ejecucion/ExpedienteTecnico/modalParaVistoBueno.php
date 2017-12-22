@@ -3,7 +3,7 @@
 
     <div class="row" style="text-align: center;">
 			<button  class="btn btn-success" id="btnEnviarFormulario" >	<i class="fa fa-thumbs-up"> si </i></button>  
-			<button  class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+			<button  class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 </div>
 </form>
 

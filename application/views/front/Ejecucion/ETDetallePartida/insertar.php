@@ -142,7 +142,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico, $listaETEtapaEjecucion,
 	<div class="row" style="text-align: right;">
 		<button class="btn btn-danger" data-dismiss="modal">
 			<span class="glyphicon glyphicon-remove"></span>
-			Cerrar ventana
+			Cerrar
 		</button>
 	</div>
 </form>

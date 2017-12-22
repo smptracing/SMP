@@ -38,7 +38,7 @@
 		<br>
 		<small>desde el <i style="text-decoration: underline;"><?=explode(' ', $etTarea->fecha_inicio_tarea)[0]?></i> hasta el <i style="text-decoration: underline;"><?=explode(' ', $etTarea->fecha_final_tarea)[0]?></i></small>
 	</h3>
-	<input type="button" value="Cerrar ventana" class="button requireWrite newproject" style="background-color: #d43c3c;position: absolute;right: 0px;top: 10px;" onclick="$('#divDialogoGeneralGantt').hide();">
+	<input type="button" value="Cerrar" class="button requireWrite newproject" style="background-color: #d43c3c;position: absolute;right: 0px;top: 10px;" onclick="$('#divDialogoGeneralGantt').hide();">
 </div>
 <div style="overflow-x: hidden;overflow-y: scroll;height: 90%;margin-top: 55px;">
 	<div class="row">

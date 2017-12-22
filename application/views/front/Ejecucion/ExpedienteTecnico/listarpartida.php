@@ -124,6 +124,7 @@ function BuscarProyectocodigo()
 	  type: "input",
 	  showCancelButton: true,
 	  closeOnConfirm: false,
+	  cancelButtonText:"CERRAR",
 	  inputPlaceholder: "Ingrese Codigo Unico"
 	}, function (inputValue) {
 	

@@ -126,7 +126,7 @@
             text: "",
             type: "warning",
             showCancelButton: true,
-            cancelButtonText:"CANCELAR" ,
+            cancelButtonText:"CERRAR" ,
             confirmButtonColor: "#DD6B55",
             confirmButtonText: "SI,ELIMINAR",
             closeOnConfirm: false
