@@ -228,7 +228,7 @@
 	                      		</tr>
 	                      		<tr>
 	                      			<td style="width: 15%; text-align: right;"><b>Tiempo de Ejecución:</b></td>
-	                      			<td style="width: 35%;"><?=$ExpedienteTecnicoElaboracion[0]->tiempo_ejecucion_pi_et?></td>
+	                      			<td style="width: 35%;"><?=$ExpedienteTecnicoElaboracion[0]->tiempo_ejecucion_pi_et?> Meses</td>
 	                      			<td style="width: 15%; text-align: right;"><b>SubPrograma:</b></td>
 	                      			<td style="width: 35%;"><?=$ExpedienteTecnicoElaboracion[0]->sub_programa_et?></td>
 	                      		</tr>

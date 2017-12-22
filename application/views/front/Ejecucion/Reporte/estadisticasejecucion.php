@@ -9,7 +9,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
 
     if(count($meta->childMeta)==0)
     {
-        
+
         foreach($meta->childPartida as $key => $value)
         {
 
@@ -44,7 +44,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
             }
 
         }
-        
+
     }
 
     foreach($meta->childMeta as $key => $value)
@@ -125,9 +125,9 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
     <div class="">
         <div class="row">
             <div class="col-md-3 col-sm-4 col-xs-12">
-                <div class="thebox">                  
-                    <div class="box-header box-orange">    
-                        <i class="fa fa-money"></i>                    
+                <div class="thebox">
+                    <div class="box-header box-orange">
+                        <i class="fa fa-money"></i>
                     </div>
                     <div class="box-content">
                         <p class="titulo">Costo de Preinversión</p>
@@ -136,9 +136,9 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
                 </div>
             </div>
             <div class="col-md-3 col-sm-4 col-xs-12">
-                <div class="thebox">                  
-                    <div class="box-header box-red">    
-                        <i class="fa fa-money"></i>                     
+                <div class="thebox">
+                    <div class="box-header box-red">
+                        <i class="fa fa-money"></i>
                     </div>
                     <div class="box-content">
                         <p class="titulo">Costo de Inversión</p>
@@ -147,20 +147,20 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
                 </div>
             </div>
             <div class="col-md-3 col-sm-4 col-xs-12">
-                <div class="thebox">                  
-                    <div class="box-header box-green">  
-                        <i class="fa fa-circle-o-notch"></i>                       
+                <div class="thebox">
+                    <div class="box-header box-green">
+                        <i class="fa fa-circle-o-notch"></i>
                     </div>
                     <div class="box-content">
                         <p class="titulo">Tiempo de Ejecución</p>
-                        <p class="parrafo"><?=$expedienteTecnico->tiempo_ejecucion_pi_et?></p>
+                        <p class="parrafo"><?=$expedienteTecnico->tiempo_ejecucion_pi_et?> Meses</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-3 col-sm-4 col-xs-12">
-                <div class="thebox">                  
-                    <div class="box-header box-blue"> 
-                        <i class="fa fa-users"></i>                        
+                <div class="thebox">
+                    <div class="box-header box-blue">
+                        <i class="fa fa-users"></i>
                     </div>
                     <div class="box-content">
                         <p class="titulo">Número de Beneficiarios</p>
@@ -206,7 +206,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
                                     </tr>
                                     <tr>
                                         <td style="width: 15%; text-align: right;"><b>Tiempo de Ejecución:</b></td>
-                                        <td style="width: 35%;"><?=$expedienteTecnico->tiempo_ejecucion_pi_et?></td>
+                                        <td style="width: 35%;"><?=$expedienteTecnico->tiempo_ejecucion_pi_et?> Meses</td>
                                         <td style="width: 15%; text-align: right;"><b>SubPrograma:</b></td>
                                         <td style="width: 35%;"><?=$expedienteTecnico->sub_programa_et?></td>
                                     </tr>
@@ -221,7 +221,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
                         </div>
                     </div>
                 </div>
-            </div>            
+            </div>
         </div>
         <div class="row">
             <div>
@@ -488,7 +488,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
         tooltip: {
           trigger: 'axis'
         },
-        
+
         toolbox: {
           show: true,
           feature: {
@@ -516,8 +516,8 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
           boundaryGap: false,
           data: ["",<?php if($expedienteTecnico->num_meses!=null)
             {
-                for($i=0; $i<$expedienteTecnico->num_meses; $i++) 
-                { 
+                for($i=0; $i<$expedienteTecnico->num_meses; $i++)
+                {
                     echo "'Mes ".($i+1)."',";
                 }
             }?>]
@@ -541,7 +541,7 @@ function mostrarMetaAnidada($meta, $expedienteTecnico, &$sumatoriasTotales,&$tot
                 <?php if($expedienteTecnico->num_meses!=null)
                 {
                     $suma = 0;
-                    for($i=0; $i<$expedienteTecnico->num_meses; $i++) 
+                    for($i=0; $i<$expedienteTecnico->num_meses; $i++)
                     {
                         $monto = $suma+=$sumatoriasTotales[$i];
 
