@@ -39,7 +39,7 @@ if (!function_exists('autentificar'))
             echo $CI->output->get_output();
         }
         else
-        { /*
+        { 
             if($CI->session->userdata('idPersona'))
             {
                 echo $CI->output->get_output();
@@ -56,7 +56,7 @@ if (!function_exists('autentificar'))
             else
             {
             	redirect('Login/muestralog');
-            }*/
+            }
         }
 
     }
