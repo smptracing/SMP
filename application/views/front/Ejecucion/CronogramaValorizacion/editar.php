@@ -9,7 +9,7 @@
 	<div class="ln_solid"></div>
 	<div class="row" style="text-align: center;">
 			<button type="submit" id="btnEnviarFormulario" class="btn btn-success">Guardar Cronograma Valorización</button>
-			<button  class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+			<button  class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 		</div>
 </form>
 

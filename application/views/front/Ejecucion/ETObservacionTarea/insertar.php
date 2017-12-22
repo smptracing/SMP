@@ -29,7 +29,7 @@
 							<div class="col-md-12" style="margin-top: 4px;">
 								<div class="col-md-12" style="text-align: right;">
 									<input type="file" id="fileArchivosLevantamientoObs<?=$value->id_observacion_tarea?>" style="display: inline-block;vertical-align: middle;">
-									<input type="button" class="btn btn-danger" style="margin: 2px;" value="Cancelar" onclick="mostrarOcultarResponderObservacionTarea(<?=$value->id_observacion_tarea?>, false);">
+									<input type="button" class="btn btn-danger" style="margin: 2px;" value="Cerrar" onclick="mostrarOcultarResponderObservacionTarea(<?=$value->id_observacion_tarea?>, false);">
 									<input type="button" class="btn btn-success" style="margin: 2px;" value="Publicar observación" onclick="insertarLevantamientoObs(<?=$value->id_observacion_tarea?>);">
 								</div>
 							</div>
@@ -168,7 +168,7 @@
 							'<div class="col-md-12" style="margin-top: 4px;">'+
 								'<div class="col-md-12" style="text-align: right;">'+
 									'<input type="file" id="fileArchivosLevantamientoObs'+objectJSON.etObservacionTarea.id_observacion_tarea+'" style="display: inline-block;vertical-align: middle;">'+
-									'<input type="button" class="btn btn-danger" style="margin: 2px;" value="Cancelar" onclick="mostrarOcultarResponderObservacionTarea('+objectJSON.etObservacionTarea.id_observacion_tarea+', false);">'+
+									'<input type="button" class="btn btn-danger" style="margin: 2px;" value="Cerrar" onclick="mostrarOcultarResponderObservacionTarea('+objectJSON.etObservacionTarea.id_observacion_tarea+', false);">'+
 									'<input type="button" class="btn btn-success" style="margin: 2px;" value="Publicar observación" onclick="insertarLevantamientoObs('+objectJSON.etObservacionTarea.id_observacion_tarea+');">'+
 								'</div>'+
 							'</div>'+

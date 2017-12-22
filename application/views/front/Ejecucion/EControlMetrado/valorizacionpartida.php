@@ -43,7 +43,7 @@
 	</div>
 	<div class="row" style="text-align: center;">
 		<button  id="btnEnviarFormulario" class="btn btn-success">Guardar</button>
-		<button  class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+		<button  class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 	</div>
 </form>
 <div class="row">
@@ -172,7 +172,7 @@ function eliminar(codigo)
             showCancelButton: true,
             confirmButtonClass: "btn-danger",
             confirmButtonText: "Consentir proceso",
-            cancelButtonText: "Cancelar",
+            cancelButtonText: "Cerrar",
             closeOnConfirm: false
         },
         function(isConfirm)

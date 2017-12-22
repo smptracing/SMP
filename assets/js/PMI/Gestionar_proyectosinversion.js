@@ -298,9 +298,44 @@ var listar_estado_ciclo=function(id_pi)
         },
         "columns":[
             {"data":"nombre_estado_ciclo"},
-            {"data":"fecha_estado_ciclo_pi"}
+            {"data":"fecha_estado_ciclo_pi"},
+              {"data":"id_estado_ciclo_pi",render:function(data,type,row)
+                {
+                    return "<button type='button'  data-toggle='tooltip'  class='editar btn btn-danger btn-xs' data-toggle='modal' onclick=eliminarEstadoCiclo("+data+",this)><i class='ace-icon fa fa-trash-o bigger-120'></i></button>";
+                }
+            } 
         ],
         "language":idioma_espanol
+    });
+}
+var eliminarEstadoCiclo=function(codigo,element)
+{
+    swal({
+        title: "Se eliminará el Estado. ¿Realmente desea proseguir con la operación?",
+        text: "",
+        type: "warning",
+        showCancelButton: true,
+        cancelButtonText:"CANCELAR" ,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "SI,ELIMINAR",
+        closeOnConfirm: false
+    },
+    function(){
+        paginaAjaxJSON({ "id_estado_ciclo_pi" : codigo }, base_url+'index.php/bancoproyectos/eliminarEstadoCiclo', 'POST', null, function(objectJSON)
+        {
+          objectJSON=JSON.parse(objectJSON);
+
+          swal(
+          {
+            title: '',
+            text: objectJSON.mensaje,
+            type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
+          },
+          function(){});
+
+          $(element).parent().parent().remove();
+
+        }, false, true);
     });
 }
 

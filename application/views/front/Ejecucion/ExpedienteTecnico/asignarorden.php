@@ -55,7 +55,7 @@
 	</div>
 	<div class="row" style="text-align: center;">
 		<button  id="btnEnviarFormulario" class="btn btn-success">Guardar</button>
-		<button  class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+		<button  class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 	</div>
 </form>
 <div class="row">
@@ -99,6 +99,7 @@ function BuscarOrden(codigoUnico)
 	  text: "Ingrese Número de Orden",
 	  type: "input",
 	  showCancelButton: true,
+	  cancelButtonText:"CERRAR",
 	  closeOnConfirm: false,
 	  inputPlaceholder: "Ingrese Número de Orden"
 	}, 

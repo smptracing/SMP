@@ -232,7 +232,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
 		<input type="hidden" id="hdIdET" value="<?=$expedienteTecnico->id_et?>">
 		<button class="btn btn-danger" data-dismiss="modal">
 			<span class="glyphicon glyphicon-remove"></span>
-			Cerrar ventana
+			Cerrar
 		</button>
 	</div>
 </div>
@@ -483,7 +483,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
             text: "",
             type: "warning",
             showCancelButton: true,
-            cancelButtonText:"CANCELAR" ,
+            cancelButtonText:"CERRAR" ,
             confirmButtonColor: "#DD6B55",
             confirmButtonText: "SI,ELIMINAR",
             closeOnConfirm: false
@@ -516,7 +516,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
             text: "",
             type: "warning",
             showCancelButton: true,
-            cancelButtonText:"CANCELAR" ,
+            cancelButtonText:"CERRAR" ,
             confirmButtonColor: "#DD6B55",
             confirmButtonText: "SI,ELIMINAR",
             closeOnConfirm: false
@@ -769,7 +769,7 @@ function mostrarMetaAnidada($meta, $idExpedienteTecnico)
             text: "",
             type: "warning",
             showCancelButton: true,
-            cancelButtonText:"CANCELAR" ,
+            cancelButtonText:"CERRAR" ,
             confirmButtonColor: "#DD6B55",
             confirmButtonText: "SI,ELIMINAR",
             closeOnConfirm: false

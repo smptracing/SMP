@@ -56,7 +56,7 @@
 								<table style="width: 100%;">
 									<tbody>
 										<tr>
-											<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;margin: 4px;padding: 4px;"><label style="cursor: pointer;"><b>Craet___</b><input type="checkbox" value="craet" style="margin-left: -15px;" onchange="asignarQuitarCraetETPerReq(<?=$value->id_per_req?>, this);" <?=($value->craet ? 'checked=true' : '')?>></label><?=html_escape($value->nombre_esp)?></div></td>
+											<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;margin: 4px;padding: 4px;"><label style="cursor: pointer;"><input type="checkbox" value="craet" onchange="asignarQuitarCraetETPerReq(<?=$value->id_per_req?>, this);" <?=($value->craet ? 'checked=true' : '')?>><b> (CRAET):</b></label> <?=html_escape($value->nombre_esp)?></div></td>
 											<td>
 												<select class="selectPersonaETPerReq" data-live-search="true" data-width="100%" onchange="asignarPersonalETPerReq(<?=$value->id_per_req?>, this);">
 													<option value="">Seleccionar Especialista</option>
@@ -137,7 +137,7 @@
             text: "",
             type: "warning",
             showCancelButton: true,
-            cancelButtonText:"CANCELAR" ,
+            cancelButtonText:"CERRAR" ,
             confirmButtonColor: "#DD6B55",
             confirmButtonText: "SI,ELIMINAR",
             closeOnConfirm: false
@@ -209,7 +209,7 @@
 			var htmlTemp='<table style="width: 100%;">'+
 				'<tbody>'+
 					'<tr>'+
-						'<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;margin: 4px;padding: 4px;"><label style="cursor: pointer;"><b>Craet___</b><input type="checkbox" value="craet" style="margin-left: -15px;" onchange="asignarQuitarCraetETPerReq('+objectJSON.idPerReq+', this);"></label>'+replaceAll(replaceAll($('#'+data).text(), '<', '&gt;'), '>', '&lt;')+'</div></td>'+
+						'<td style="width: 50%;"><div style="background-color: #54c4b9;border-radius: 5px;color: #ffffff;margin: 4px;padding: 4px;"><label style="cursor: pointer;"><input type="checkbox" value="craet" onchange="asignarQuitarCraetETPerReq('+objectJSON.idPerReq+', this);"><b> (CRAET):</b></label>'+replaceAll(replaceAll($('#'+data).text(), '<', '&gt;'), '>', '&lt;')+'</div></td>'+
 						'<td>'+'<select class="selectPersonaETPerReq" data-live-search="true" data-width="100%" onchange="asignarPersonalETPerReq('+objectJSON.idPerReq+', this);"><option value="">Seleccionar Especialista</option>'+listaPersona+'</select>'+'</td>'+
 						'<td style="width: 1%;">'+'<a href="#" style="color: red;padding: 2px;" onclick="eliminarEspecialidadAsignada('+objectJSON.idPerReq+', this);">Eliminar</a>'+'</td>'+
 					'</tr>'+
