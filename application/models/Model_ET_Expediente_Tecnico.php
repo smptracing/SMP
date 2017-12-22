@@ -33,11 +33,6 @@ class Model_ET_Expediente_Tecnico extends CI_Model
         return $data->result();
 	}
 
-	/*public function ExpedienteListarElaboracionPorId($flat1,$id_etapa_et,$id_pi)
-	{
-		$data=$this->db->query("execute sp_Gestionar_ET_Expediente_Tecnico @Opcion='".$flat1."',@id_etapa_et='".$id_etapa_et."',@id_pi='".$id_pi."'");
-        return $data->result();
-	}*/
 	public function ExpedienteListarElaboracionPorId($id_et)
 	{
 		$data=$this->db->query("execute sp_Gestionar_ET_Expediente_Tecnico @Opcion='LISTARETAPA', @id_et=$id_et");
@@ -166,14 +161,6 @@ class Model_ET_Expediente_Tecnico extends CI_Model
 
     public function detalleExpediente($id_et)
     {
-    	/*$data=$this->db->query("select ET.id_et, ET.direccion_ue,ET.distrito_provincia_departamento_ue,ET.telefono_ue, ET.ruc_ue, P.nombre_pi, 
-			STUFF((SELECT  ',' + provincia + ' '+distrito AS [text()]
-	        from dbo.UBIGEO_PI ubp inner join UBIGEO ub on ubp.id_ubigeo =ub.id_ubigeo 
-		    where ubp.id_pi=P.id_pi
-		    Order by ub.id_ubigeo for xml PATH('')),1,1,'') AS provincia , P.codigo_unico_pi,ET.costo_total_preinv_et,ET.costo_directo_preinv_et,ET.costo_indirecto_preinv_et,et.costo_total_inv_et,et.gastos_generales_et,ET.gastos_supervision_et,ET.funcion_et,ET.programa_et,ET.sub_programa_et,ET.proyecto_et,et.componente_et,ET.meta_et,ET.fuente_financiamiento_et,ET.modalidad_ejecucion_et,ET.tiempo_ejecucion_pi_et,ET.num_beneficiarios_indirectos,ET.desc_situacion_actual_et,ET.relevancia_economica_et,ET.resumen_pi_et,et.num_folios
-			from 
-			ET_EXPEDIENTE_TECNICO ET INNER join PROYECTO_INVERSION P ON ET.id_pi=P.id_pi INNER JOIN UBIGEO_PI UP on P.id_pi=UP.id_pi INNER JOIN UBIGEO U ON UP.id_ubigeo=U.id_ubigeo where id_et ='".$id_et."' group by ET.id_et,ET.direccion_ue,ET.distrito_provincia_departamento_ue,ET.telefono_ue, ET.ruc_ue, P.nombre_pi, P.codigo_unico_pi,ET.costo_total_preinv_et,ET.costo_directo_preinv_et,ET.costo_indirecto_preinv_et,et.costo_total_inv_et,et.gastos_generales_et,ET.gastos_supervision_et,ET.funcion_et,ET.programa_et,ET.sub_programa_et,ET.proyecto_et,et.componente_et,ET.meta_et,ET.fuente_financiamiento_et,ET.modalidad_ejecucion_et,ET.tiempo_ejecucion_pi_et,ET.num_beneficiarios_indirectos,ET.desc_situacion_actual_et,ET.relevancia_economica_et,ET.resumen_pi_et,et.num_folios, P.id_pi	");
-        return $data->result()[0];*/
         $data = $this->db->query("select et.id_et,et.direccion_ue,et.distrito_provincia_departamento_ue, et.telefono_ue, et.ruc_ue,
 				py.nombre_pi,u.provincia,py.codigo_unico_pi, et.costo_total_preinv_et,et.costo_directo_preinv_et, et.costo_indirecto_preinv_et,
 				et.costo_total_inv_et, et.gastos_generales_et,et.gastos_supervision_et,et.funcion_et, et.programa_et,
@@ -259,11 +246,6 @@ class Model_ET_Expediente_Tecnico extends CI_Model
 		inner join proyecto_inversion py on et.id_pi = py.id_pi where p.id_partida=$idPartida");
         return $data->result()[0];
     }
-    /*public function ProyectoViable($codigoUnico)
-    {
-    	$data = $this->db->query("execute sp_ListarEstudioViabilizados @id_estudio_inv= 0 , @codigo_unico = '$codigoUnico'");
-    	return $data->result();
-    }*/
     public function ProyectoViable($codigoUnico)
     {
     	$data = $this->db->query("EXEC	sp_ListarProyectoEtapaEstudio @codigo_unico = '$codigoUnico', @etapa_estudio = 'viabilizado'");

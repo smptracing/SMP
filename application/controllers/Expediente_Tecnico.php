@@ -90,8 +90,6 @@ class Expediente_Tecnico extends CI_Controller
 	{
 		$flat="LISTARETAPA";
 		$id_etapa_et="1";
-		//$listaExpedienteTecnicoElaboracion=$this->Model_ET_Expediente_Tecnico->ExpedienteListarElaboracion($flat,$id_etapa_et);
-
 		$listaETExpedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteListarElaboracion($flat,$id_etapa_et);
 
 		foreach($listaETExpedienteTecnico as $key => $value)
@@ -230,7 +228,7 @@ class Expediente_Tecnico extends CI_Controller
 		{
 
 			$listarCargo=$this->Cargo_Modal->getcargo();
-			$opcion  = "001";//Responsable de elaboración
+			$opcion  = "001";
   			$listaTipoResponsableElaboracion=$this->Model_ET_Tipo_Responsable->NombreTipoResponsable($opcion);
 
   			$opcion  = "002";
@@ -264,7 +262,7 @@ class Expediente_Tecnico extends CI_Controller
 				}
 			}
 			$config['upload_path']   = './uploads/ResolucioExpediente/';
-	        $config['allowed_types'] = '*';
+	        $config['allowed_types'] = 'pdf|docx';
 	        $config['max_width']     = 2000;
 	        $config['max_height']    = 2000;
 	        $config['max_size']      = 50000;
@@ -272,7 +270,7 @@ class Expediente_Tecnico extends CI_Controller
 
 	        $config['file_name']	 = $this->input->post('hdIdExpediente');
 	        $this->load->library('upload', $config);
-			$this->upload->do_upload('Documento_Resolucion');
+
 			$flat ="EDITAR";
 			$hdIdExpediente=$this->input->post('hdIdExpediente');
 			$txtNombreUe=$this->input->post('txtNombreUe');
@@ -365,7 +363,7 @@ class Expediente_Tecnico extends CI_Controller
 			}
 			$this->db->trans_complete();
 
-			return redirect('/Expediente_Tecnico/verdetalle/'.$hdIdExpediente);
+			return redirect('/Expediente_Tecnico/verdetalle?id_et='.$hdIdExpediente);
 		}
 
 		$id_et=$this->input->GET('id_et');
@@ -390,12 +388,6 @@ class Expediente_Tecnico extends CI_Controller
 		return $this->load->view('front/Ejecucion/ExpedienteTecnico/editar',['ExpedienteTecnicoM'=>$ExpedienteTecnicoM, 'listaimg'=>$listaimg,'listarCargo' => $listarCargo,'listaTipoResponsableElaboracion' => $listaTipoResponsableElaboracion,'listaTipoResponsableEjecucion' => $listaTipoResponsableEjecucion,'listarPersona'=>$listarPersona,'listarUResponsableERespoElabo' =>$listarUResponsableERespoElabo,'listarUResponsableERespoEjecucion' =>$listarUResponsableERespoEjecucion, 'listaModalidadEjecucion' => $listaModalidadEjecucion , 'listaFuenteFinanciamiento' => $listaFuenteFinanciamiento ]);
 	}
 
-    /*function registroBuscarProyecto()
-    {
-		$CodigoUnico=$this->input->get('inputValue');
-		$Registrosproyectobuscos=$this->Model_ET_Expediente_Tecnico->ProyectoViable($CodigoUnico);
-		echo  json_encode($Registrosproyectobuscos);
-    }*/
     function registroBuscarProyecto()
     {
 		$CodigoUnico=$this->input->get('inputValue');
@@ -455,15 +447,12 @@ class Expediente_Tecnico extends CI_Controller
 		$flat  = "R";
 		$PresupuestoEjecucionListar=$this->Model_ET_Presupuesto_Ejecucion->PresupuestoEjecucionListar($flat);
 
-		/*$flat="REPORTEPRESUPUESTOANALITICO1";
-		$litarPresupuestoAnalitico=$this->Model_ET_Presupuesto_Analitico->listarPresupuestoAnalitico($flat,$id_et);*/
-
 		foreach ($PresupuestoEjecucionListar as $key => $value)
 		{
 			$value->ChilpresupuestoAnalitico=$this->Model_ET_Presupuesto_Analitico->ETPresupuestoAnaliticoDetalles($id_et,$value->id_presupuesto_ej);
 			foreach ($value->ChilpresupuestoAnalitico as $key  => $Itemp)
 			{
-				$Itemp->ChilCostoDetallePartida=$this->Model_ET_Detalle_Partida->CostoDetallePartida($Itemp->id_analitico);//costo directo
+				$Itemp->ChilCostoDetallePartida=$this->Model_ET_Detalle_Partida->CostoDetallePartida($Itemp->id_analitico);
 			}
 		}
         $this->load->library('mydompdf');
@@ -573,9 +562,7 @@ class Expediente_Tecnico extends CI_Controller
     }
 
 
-// reporte expediente tecnico ejecucion 007
-
-    public function reportePdfEjecucion007()
+	public function reportePdfEjecucion007()
 	{
 		$idExpedienteTecnico = isset($_GET['id_et']) ? $_GET['id_et'] : null;
 		$expedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnico($idExpedienteTecnico);
@@ -597,12 +584,6 @@ class Expediente_Tecnico extends CI_Controller
 		$this->mydompdf->render();
 		$this->mydompdf->stream("reporteValorizacionEjecucion.pdf", array("Attachment" => false));
     }
-
-
-
-
-
-
 
 	private function obtenerMetaAnidadaReporteF005($meta)
 	{
@@ -729,9 +710,7 @@ class Expediente_Tecnico extends CI_Controller
 					}
            		}
            		if($this->Model_ET_Expediente_Tecnico->eliminar($flat,$id_et)==true)
-	            {
-
-	            	//echo json_encode("correcto se elimino");
+	            {	            	
 	            	echo json_encode(['proceso' => 'correcto', 'mensaje' => 'El registro fue eliminado correctamente.']);exit;
 	            }
            	}
@@ -744,7 +723,6 @@ class Expediente_Tecnico extends CI_Controller
 		$id_et=$this->input->post('id_et');
 
 		$listaResponsableExpediente=$this->Model_ET_Expediente_Tecnico->ListarResponsableExpediente($flat,$id_et);
-		//var_dump($listaResponsableExpediente);exit;
 		$this->load->view('front/Ejecucion/ExpedienteTecnico/responsableExpediente.php',['listaResponsableExpediente'=>$listaResponsableExpediente]);
 
 	}
@@ -1209,12 +1187,6 @@ class Expediente_Tecnico extends CI_Controller
 				}
 			}
 			$this->load->view('front/Ejecucion/EControlMetrado/reportepdfresumenvalorizacionfisica', ['expedienteTecnico' => $expedienteTecnico, 'listaUnidadMedida' => $listaUnidadMedida , 'mes' => $mes]);
-
-			/*$html = $this->load->view('front/Ejecucion/EControlMetrado/reportepdfvalorizacionfisica', ['expedienteTecnico' => $expedienteTecnico, 'listaUnidadMedida' => $listaUnidadMedida , 'mes' => $mes],true);
-			$this->mydompdf->load_html($html);
-			$this->mydompdf->set_paper("A4", "landscape");
-			$this->mydompdf->render();
-			$this->mydompdf->stream("reporteValorizacionFisica.pdf", array("Attachment" => false));*/
 		}
 	}
 

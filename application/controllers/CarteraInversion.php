@@ -24,7 +24,7 @@ function AddCartera()
     $config['allowed_types'] = 'jpg|png|pdf|jpeg';
     $config['max_width']     = 1024;
     $config['max_height']    = 768;
-    //$config['file_name'] = 'DOC_';
+    $config['file_name'] = 'DOC_';
     $config['max_size'] = '20048';
 
     $this->load->library('upload', $config);

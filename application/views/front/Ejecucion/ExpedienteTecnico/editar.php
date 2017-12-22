@@ -289,7 +289,7 @@
                             <div class="col-md-12 col-sm-9 col-xs-12">
                             	<input type="hidden" name="Editurl" id="Editurl" value="<?= $ExpedienteTecnicoM->url_doc_aprobacion_et?>" notValidate>
                                 <input type="file" id="Documento_Resolucion" name="Documento_Resolucion" notValidate >
-                                <b style="color: red; font-size: 10px;">En caso de subir otra resolución remplazara a la anterior</b>
+                                <b style="color: red; font-size: 10px;">Solo se aceptan archivos con extensión PDF y DOCX.En caso de subir otra resolución remplazara a la anterior</b>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-12 col-xs-12">
@@ -302,6 +302,7 @@
 							<label class="control-label">Fotografías(04 minimo)</label>
 							<div>
 								<input  type="file" name="imagen[]" id="imagen" value="" placeholder="Fotografias"   autocomplete="off" multiple  >
+								<b style="color: red; font-size: 10px;">Solo se aceptan archivos con extensión png y jpg.</b>
 								<br>
 							</div>
 						</div>	
