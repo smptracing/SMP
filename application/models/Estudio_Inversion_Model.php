@@ -191,6 +191,10 @@ class Estudio_Inversion_Model extends CI_Model
 
     public function AddAsignarPersona($data)
     {
+        $this->db->set('estado',0);
+        $this->db->where('id_etapa_estudio',$data['id_etapa_estudio']);
+        $this->db->update('ASIGNACION_PERSONA');
+
         $this->db->insert('ASIGNACION_PERSONA',$data);
         return $this->db->affected_rows();
     }

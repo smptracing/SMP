@@ -14,7 +14,6 @@
                 resp=JSON.parse(resp);
                 swal(resp.proceso,resp.mensaje,(resp.proceso=='Correcto') ? 'success':'error');
                 $('#table-EstadoEtapa').dataTable()._fnAjaxUpdate();
-                formReset();
             }
         });
     });
@@ -32,40 +31,29 @@
                 $('#VentanaSituacionActual').modal('hide');
                 swal(resp.proceso,resp.mensaje,(resp.proceso=='Correcto') ? 'success':'error');
                 $('#table-EvaluacionFE').dataTable()._fnAjaxUpdate();
-                formReset();
+                $('#form-AddSituacion')[0].reset();                
             }
         });
     });
-   //REGISTARAR asiganar persona
-   $("#form-AddAsiganarPersona").submit(function(event)
-                  {
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/Estudio_Inversion/AddAsiganarPersona",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){
-                           //alert(resp);
-                           if (resp=='1') {
-                             swal("REGISTRADO","Se regristró correctamente", "success");
-                             formReset();
-                           }
-                            if (resp=='2') {
-                             swal("NO SE REGISTRÓ","NO se regristró ", "error");
-                           }
-                          $('#table-EvaluacionFE').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
-                             formReset();
-                         }
-                      });
-                  });
-//limpiar campos
-          function formReset()
-          {
-          document.getElementById("form-AddSituacion").reset();
-           document.getElementById("form-AddAsiganarPersona").reset();
-          }
 
-      });
+   $("#form-AddAsiganarPersona").submit(function(event)
+    {
+        event.preventDefault();
+        $.ajax({
+            url:base_url+"index.php/Estudio_Inversion/AddAsiganarPersona",
+            type:$(this).attr('method'),
+            data:$(this).serialize(),
+            success:function(resp)
+            {
+                resp=JSON.parse(resp);
+                $('#VentanaAsignarPersona').modal('hide');
+                swal(resp.proceso,resp.mensaje,(resp.proceso=='Correcto') ? 'success':'error');
+                $('#table-EvaluacionFE').dataTable()._fnAjaxUpdate();
+                $('#form-AddAsiganarPersona')[0].reset();
+            }
+        });
+    });
+});
 
  //listar estado etapa en el modal
  var listarEstadoEtapa=function(id_etapa_estudio)
