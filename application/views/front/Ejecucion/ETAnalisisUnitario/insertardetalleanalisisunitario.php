@@ -59,7 +59,7 @@ li
 							<div id ="divFormDetallaAnalisisUnitario">
 								<div class="row">
 									<div class="col-md-12 col-sm-2 col-xs-12">
-										<label for="control-label">Insumo:</label>
+										<label for="control-label">Insumo:*</label>
 										<div>
 											<input type="text" id="txtInsumo" name="txtInsumo" autocomplete="off" class="form-control">
 										</div>
@@ -95,13 +95,13 @@ li
 										</div>
 									</div>
 									<div class="col-md-4 col-sm-2 col-xs-12">
-										<label for="control-label">Cantidad</label>
+										<label for="control-label">Cantidad*</label>
 										<div>
 											<input type="text" id="txtCantidad" autocomplete="off" name="txtCantidad" class="form-control" onkeyup="calcularRendimiento();calcularSubTotal();">
 										</div>
 									</div>
 									<div class="col-md-4 col-sm-3 col-xs-12">
-										<label for="control-label">Precio unitario</label>
+										<label for="control-label">Precio unitario*</label>
 										<div>
 											<input type="text" id="txtPrecioUnitario" autocomplete="off" name="txtPrecioUnitario" class="form-control" onkeyup="calcularSubTotal();">
 										</div>
@@ -109,7 +109,7 @@ li
 								</div>
 								<div class="row">
 									<div class="col-md-4 col-sm-3 col-xs-12">
-										<label for="control-label">Sub total</label>
+										<label for="control-label">Sub total*</label>
 										<div>
 											<input type="text" id="txtSubTotal" class="form-control" readonly="readonly">
 										</div>
@@ -412,7 +412,6 @@ function seleccionar(insumo,unidad,element)
 	$('#txtInsumo').val(nuevoInsumo);
 	if(unidad=='null')
 	{
-		//$('#txtUnidad').val("UNIDAD");
 		$('#selectUnidadMedida').html('<option val="UNIDAD">UNIDAD</option>');		
 		$('#selectUnidadMedida').selectpicker('refresh');
 		$('#selectUnidadMedida').selectpicker('val', "UNIDAD");
