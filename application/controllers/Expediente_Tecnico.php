@@ -937,6 +937,11 @@ class Expediente_Tecnico extends CI_Controller
 			$fechaInicio=$this->input->post('txtFechaInicio');
 			$fechaFin=$this->input->post('txtFechaFin');
 
+			if($fechaInicio>$fechaFin)
+			{
+				echo json_encode(['proceso' => 'Error', 'mensaje' => 'La Fecha de Inicio no puede ser mayor a la Fecha de Fin']);exit;
+			}
+
 			$ts1 = strtotime($fechaInicio);
 			$ts2 = strtotime($fechaFin);
 			$year1 = date('Y', $ts1);
@@ -945,14 +950,16 @@ class Expediente_Tecnico extends CI_Controller
 			$month2 = date('m', $ts2);
 			$numerodemeses = (($year2 - $year1) * 12) + ($month2 - $month1);
 			$data=$this->Model_ET_Expediente_Tecnico->PeriodoEjecucion($fechaInicio, $fechaFin, $id_et,$numerodemeses);
-			if ($data)
+
+			if($data)
 			{
-				echo "1";
+				echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Se agregó el periodo de Ejecucion correctamente.']);exit;
 			}
 			else
 			{
-				echo "0";
+				echo json_encode(['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']);exit;
 			}
+			
 		}
 		else
 		{
@@ -1251,11 +1258,6 @@ class Expediente_Tecnico extends CI_Controller
 		$id_et = isset($_GET['id_et']) ? $_GET['id_et'] : null;
 		$expedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnico($id_et);
 		$expedienteTecnico->childComponente=$this->Model_ET_Componente->ETComponentePorIdET($expedienteTecnico->id_et);
-
-
-
-
-
 		foreach($expedienteTecnico->childComponente as $key => $value)
 		{
 			$value->childMeta=$this->Model_ET_Meta->ETMetaPorIdComponente($value->id_componente);

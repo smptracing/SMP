@@ -99,8 +99,9 @@ if($sessionTempError){ ?>
 				text: "",
 				type: "warning",
 				showCancelButton: true,
+				cancelButtonText:"CERRAR",
 				confirmButtonColor: "#DD6B55",
-				confirmButtonText: "SI,Eliminar",
+				confirmButtonText: "SI,ELIMINAR",
 				closeOnConfirm: false
 			},
 			function()

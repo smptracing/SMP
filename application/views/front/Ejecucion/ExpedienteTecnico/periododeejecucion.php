@@ -23,6 +23,7 @@
 							<div>
 								<input type="date" name="txtFechaFin" class="form-control" id="txtFechaFin" value="<?=(new DateTime($ExpedienteTecnico->fecha_fin_et))->format('Y-m-d')?>" >
 							</div>	
+							<p style="color: red; display: none;" id="Advertencia">La Fecha de Inicio no puede ser mayor a la Fecha de Fin</p>
 						</div>
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<label class="control-label">Numero de Meses:</label>
@@ -41,32 +42,41 @@
 	</div>
 </form>
 <script>
-
 	$(document).ready(function()
 	{
-	    $('input[type="date"]').change(function(){
+	    $('input[type="date"]').change(function()
+	    {
 	    	var fecha1 = $('#txtFechaInicio').val();
 	    	var fecha2 = $('#txtFechaFin').val();
-	    	$.ajax(
-			{
-				url: base_url+"index.php/Expediente_Tecnico/CalcularNumeroMeses",
-				type: 'POST',
-				data:
+	    	if((Date.parse(fecha1)) > (Date.parse(fecha2)))
+	    	{
+	    		$('#Advertencia').css('display','block');
+	    		$('#txtTotalMeses').val("");
+	    	}	
+	    	else
+	    	{
+	    		$('#Advertencia').css('display','none');
+	    		$.ajax(
 				{
-					txtFecha1: fecha1,
-					txtFecha2: fecha2
-				},
-				cache: false,
-				async: true
-			}).done(function(objectJSON) 
-			{
-				objectJSON = JSON.parse(objectJSON);
-				$('#txtTotalMeses').val(objectJSON.numerodemeses+" Meses");
+					url: base_url+"index.php/Expediente_Tecnico/CalcularNumeroMeses",
+					type: 'POST',
+					data:
+					{
+						txtFecha1: fecha1,
+						txtFecha2: fecha2
+					},
+					cache: false,
+					async: true
+				}).done(function(objectJSON) 
+				{
+					objectJSON = JSON.parse(objectJSON);
+					$('#txtTotalMeses').val(objectJSON.numerodemeses+" Meses");
 
-			}).fail(function()
-			{
-				swal('Error', 'Error no controlado.', 'error');
-			});
+				}).fail(function()
+				{
+					swal('Error', 'Error no controlado.', 'error');
+				});
+	    	}	    	  	
 	    });
 	});
 
@@ -129,15 +139,9 @@
 			    },
                 success:function(resp)
                 {
-                	if (resp=='1') 
-	                {
-	                    swal("Correcto","Se registró correctamente", "success");
-	                }
-	                if (resp=='2') 
-	                {
-	                    swal("Error","Ocurrio un error ", "error");
-	                }
-                    window.location.href=base_url+"index.php/Expediente_Tecnico/verdetalle/"+<?= $ExpedienteTecnico->id_et?>;
+                	resp=JSON.parse(resp);
+                	swal(resp.proceso,resp.mensaje,(resp.proceso=='Correcto') ? 'success':'error');
+                    window.location.href=base_url+"index.php/Expediente_Tecnico/verdetalle?id_et="+<?= $ExpedienteTecnico->id_et?>;
                 }
             });
           $('#frmAsignarOrden')[0].reset();
