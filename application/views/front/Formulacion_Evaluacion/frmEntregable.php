@@ -75,9 +75,8 @@
                                                     </li>
                                                 </ul>
                                                 <div class="x_content">
-                                                    <div class="table-responsive">
-                                                        <div id="TemEntregable">
-                                                        </div>
+                                                    
+                                                    <div class="table-responsive"  id="TemEntregable">
                                                     </div>
                                                 </div>
                                         </div>

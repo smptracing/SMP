@@ -96,14 +96,12 @@ if($sessionTempError){ ?>
             text: "Realmente desea eliminar este registro",
             type: "warning",
             showCancelButton: true,
-            confirmButtonClass: "btn-danger",
             confirmButtonText: "Aceptar",
-            cancelButtonText: "Cancelar",
-            closeOnConfirm: false
+            cancelButtonText: "Cerrar",
+            closeOnConfirm: false,
         },
-        function(isConfirm)
+        function()
         {
-        	renderLoading();
         	window.location.href = base_url+'index.php/Modulo_FE/eliminar/'+codigo;
         });
 

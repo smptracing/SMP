@@ -94,29 +94,18 @@
 
 
                 <div class="item form-group">
-                                     <div class="col-md-4">
-
-                                           <label for="name">Situación Form y Eval.<span class="required"></span>
-                                            </label>
-                                                 <select   id="Cbx_Situacion" name="Cbx_Situacion" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Etapas FE...">
-                                                </select>
-                                    </div>
-                                             <div class="col-md-4">
-
-                                           <label for="name">Fecha <span class="required"></span>
-                                            </label>
-                                                  <input type="date" id="dateFechaIniC" name="dateFechaIniC" class="form-control col-md-6 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text" value="<?php echo date("Y-m-d"); ?>" disabled="true">
-                                          </div>
-                      </div>
-
-                <div class="item form-group">
-                <div class="col-md-12">
-                              <br>
-                              <label for="name">Observación<span class="required"></span>
-                              </label>
-                              <textarea class="form-control" rows="3" name="txadescripcion" id="txadescripcion"></textarea>
+                    <div class="col-md-4">
+                        <label for="name">Situación Form y Eval:*</label>
+                        <select   id="Cbx_Situacion" name="Cbx_Situacion" class="selectpicker form-control col-md-12 col-xs-12">
+                        </select>
+                    </div>
                 </div>
-</div>
+                <div class="item form-group">
+                    <div class="col-md-12">
+                        <label for="name">Observación</label>
+                        <textarea class="form-control" rows="3" name="txadescripcion" id="txadescripcion"></textarea>
+                    </div>
+                </div>
 
                      <div class="ln_solid"></div>
                       <div class="form-group">
