@@ -160,3 +160,73 @@ var EliminarTipologiaData=function(tbody,myTable){
                         "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                     }
                 }
+$(function() {
+     $("tbody").on("click", "#send", function(e) {
+         $('#form-AddTipologiaInversion').data('formValidation').validate();
+         if ($('#form-AddTipologiaInversion').data('formValidation').isValid() == true) {
+             $('#form-AddTipologiaInversion').submit();
+             $('#form-AddTipologiaInversion').each(function() {
+                 this.reset();
+             });
+             $('#form-AddTipologiaInversion').data('formValidation').resetForm();
+         }
+     });
+          $("tbody").on("click", "#sendM", function(e) {
+         $('#form-EditTipologiaInversion').data('formValidation').validate();
+         if ($('#form-EditTipologiaInversion').data('formValidation').isValid() == true) {
+             $('#form-EditTipologiaInversion').submit();
+             $('#form-EditTipologiaInversion').each(function() {
+                 this.reset();
+             });
+             $('#form-EditTipologiaInversion').data('formValidation').resetForm();
+         }
+     });
+     $('#form-AddTipologiaInversion').formValidation({
+         framework: 'bootstrap',
+         excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+         live: 'enabled',
+         message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+         trigger: null,
+         fields: {
+             txt_NombreTipologiaInversion: {
+                 validators: {
+                     notEmpty: {
+                         message: '<b style="color: red;">El campo "Nombre de Tipologia" es requerido.</b>'
+                     },
+                     stringLength: {
+                         max: 99,
+                         message: '<b style="color: red;">El campo "Nombre de Tipologia" debe tener como máximo 99 caracteres.</b>'
+                     },
+                     regexp: {
+                         regexp: /^[a-z\s]+$/i,
+                         message: '<b style="color: red;">El campo "Nombre de Tipologia" debe contener solamante caracteres alfabéticos y espacios.</b>'
+                     }
+                 }
+             }
+         }
+     });
+     $('#form-EditTipologiaInversion').formValidation({
+         framework: 'bootstrap',
+         excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+         live: 'enabled',
+         message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+         trigger: null,
+         fields: {
+             txt_NombreTipologiaInversionM: {
+                 validators: {
+                     notEmpty: {
+                         message: '<b style="color: red;">El campo "Nombre de Tipologia" es requerido.</b>'
+                     },
+                     stringLength: {
+                         max: 99,
+                         message: '<b style="color: red;">El campo "Nombre de Tipologia" debe tener como máximo 99 caracteres.</b>'
+                     },
+                     regexp: {
+                         regexp: /^[a-z\s]+$/i,
+                         message: '<b style="color: red;">El campo "Nombre de Tipologia" debe contener solamante caracteres alfabéticos y espacios.</b>'
+                     }
+                 }
+             }
+         }
+     });
+ });

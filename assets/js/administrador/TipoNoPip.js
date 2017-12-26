@@ -148,3 +148,73 @@ var EliminarTipoNoPip=function(tbody,table){
                         "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                     }
                 }
+$(function() {
+     $("tbody").on("click", "#send", function(e) {
+         $('#form_AddTipoNoPip').data('formValidation').validate();
+         if ($('#form_AddTipoNoPip').data('formValidation').isValid() == true) {
+             $('#form_AddTipoNoPip').submit();
+             $('#form_AddTipoNoPip').each(function() {
+                 this.reset();
+             });
+             $('#form-AddTipoInversion').data('formValidation').resetForm();
+         }
+     });
+          $("tbody").on("click", "#sendM", function(e) {
+         $('#form_EditTipoNoPip').data('formValidation').validate();
+         if ($('#form_EditTipoNoPip').data('formValidation').isValid() == true) {
+             $('#form_EditTipoNoPip').submit();
+             $('#form_EditTipoNoPip').each(function() {
+                 this.reset();
+             });
+             $('#fform_EditTipoNoPip').data('formValidation').resetForm();
+         }
+     });
+     $('#form_AddTipoNoPip').formValidation({
+         framework: 'bootstrap',
+         excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+         live: 'enabled',
+         message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+         trigger: null,
+         fields: {
+            txt_DescripcionTipoNoPip: {
+                 validators: {
+                     notEmpty: {
+                         message: '<b style="color: red;">El campo "Descripción" es requerido.</b>'
+                     },
+                     stringLength: {
+                         max: 199,
+                         message: '<b style="color: red;">El campo "Descripción" debe tener como máximo 199 caracteres.</b>'
+                     },
+                     regexp: {
+                         regexp: /^[a-z\s]+$/i,
+                         message: '<b style="color: red;">El campo "Descripción" debe contener solamante caracteres alfabéticos y espacios.</b>'
+                     }
+                 }
+             }
+         }
+     });
+     $('#form_EditTipoNoPip').formValidation({
+         framework: 'bootstrap',
+         excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+         live: 'enabled',
+         message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+         trigger: null,
+         fields: {
+            txt_DescripcionTipoNoPipM: {
+                 validators: {
+                     notEmpty: {
+                         message: '<b style="color: red;">El campo "Descripción" es requerido.</b>'
+                     },
+                     stringLength: {
+                         max: 199,
+                         message: '<b style="color: red;">El campo "Descripción" debe tener como máximo 199 caracteres.</b>'
+                     },
+                     regexp: {
+                         regexp: /^[a-z\s]+$/i,
+                         message: '<b style="color: red;">El campo "Descripción" debe contener solamante caracteres alfabéticos y espacios.</b>'
+                     }
+                 }
+             }
+         }
+     });
+ });

@@ -250,7 +250,7 @@
 <div class="ln_solid"></div>
 <div class="form-group">
     <div class="col-md-6 col-md-offset-3">
-        <button id="send" type="submit" class="btn btn-success" >
+        <button id="sendM" type="submit" class="btn btn-success" >
             <span class="glyphicon glyphicon-floppy-disk"></span>
         Guardar</button>
         <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
@@ -402,7 +402,7 @@
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-3">
-                                    <button id="send" type="submit" class="btn btn-success" >
+                                    <button id="sendM" type="submit" class="btn btn-success" >
                                         <span class="glyphicon glyphicon-floppy-disk"></span>
                                     Guardar</button>
                                     <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
@@ -512,7 +512,7 @@
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-3">
-                                    <button id="send" type="submit" class="btn btn-success" >
+                                    <button id="sendM" type="submit" class="btn btn-success" >
                                         <span class="glyphicon glyphicon-floppy-disk"></span>
                                     Guardar</button>
                                     <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
@@ -606,7 +606,7 @@
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-3">
-                                    <button id="send" type="submit" class="btn btn-success" >
+                                    <button id="sendM" type="submit" class="btn btn-success" >
                                         <span class="glyphicon glyphicon-floppy-disk"></span>
                                     Guardar</button>
                                     <button type="button" value="Borrar información"  class="btn btn-danger"  data-dismiss="modal"  >
