@@ -31,20 +31,27 @@ class Meta extends CI_Controller
     //Agregar Meta Presupuestal
     public function AddMeta()
     {
-        if ($this->input->is_ajax_request()) {
-            $flat                 = "C";
-            $id_meta_pres         = "0";
-            $metadate             = $this->input->post("txt_anio_meta");
-            $txt_anio_meta        = $metadate . '/01/01';
-            $txt_correlativo_meta = $this->input->post("txt_correlativo_meta");
-            $txt_nombre_meta      = $this->input->post("txt_nombre_meta");
-            if ($this->Meta_Model->AddMeta($flat, $id_meta_pres, $txt_anio_meta, $txt_correlativo_meta, $txt_nombre_meta) == false) {
-                echo "1";
-            } else {
-                echo "2";
-            }
+        if ($this->input->is_ajax_request())
+        {
+            $msg=array();
 
-        } else {
+            $c_data['nombre_meta_pres']=$this->input->post("txt_nombre_meta");
+
+            $query = $this->Meta_Model->AddMeta($c_data);
+
+            if ($query>0)
+            {                
+                $msg = (['proceso' => 'Correcto', 'mensaje' => 'El registro fue guardado correctamente ']);
+            } 
+            else
+            {
+                $msg = (['proceso' => 'Error', 'mensaje' => 'ha ocurrido un error inesperado.']);
+            
+            }
+            $this->load->view('front/json/json_view', ['datos' => $msg]);
+        } 
+        else 
+        {
             show_404();
         }
     }

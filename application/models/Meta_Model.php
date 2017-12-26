@@ -21,19 +21,11 @@ class Meta_Model extends CI_Model
         }
     }
     //Add meta presupuestal
-    public function AddMeta($flat, $id_meta_pres, $txt_anio_meta, $txt_correlativo_meta, $txt_nombre_meta)
+    public function AddMeta($data)
     {
-        $this->db->query("execute sp_Gestionar_Meta_Presupuestal'" . $flat . "','"
-            . $id_meta_pres . "','"
-            . $txt_anio_meta . "','"
-            . $txt_correlativo_meta . "','"
-            . $txt_nombre_meta . "'");
+        $this->db->insert('META_PRESUPUESTAL',$data);
+        return $this->db->affected_rows();
 
-        if ($this->db->affected_rows() > 0) {
-            return true;
-        } else {
-            return false;
-        }
     }
     //listar formulacion y evaluacion del primer modulo PMI
     public function listar_meta($flat)

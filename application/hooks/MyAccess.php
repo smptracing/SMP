@@ -620,7 +620,9 @@ function autorizar($url)
       'FEestado/EliminarFEestado',
       'MetaPip/meta_pip',
       'ET_Tarea/insertarBloque',
-      'FEentregableEstudio/ver_FEentregable'
+      'FEentregableEstudio/ver_FEentregable',
+      'Unidad_Medida/editar',
+      'Unidad_Medida/insertar'
     );
     foreach( $lista_API as $value ) {
       array_push($arrayPermitido, $value);
