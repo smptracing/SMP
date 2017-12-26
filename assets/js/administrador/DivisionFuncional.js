@@ -141,10 +141,12 @@ $(document).on("ready" ,function()
             { "data" : "nombre_funcion" },
             { "data" : "codigo_div_funcional" },
             { "data" : "nombre_div_funcional" },
-            { "defaultContent" : "<button type='button'  class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaUpdateDivisionF'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>" }]
+            { "defaultContent" : "<button type='button'  class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaUpdateDivisionF'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>" }],
+      "language":idioma_espanol
         });
 
         DivisionFuncionData("#table-DivisionF", table);  //obtener data de la division funcional para agregar  AGREGAR                 
+        EliminarDivFuncional("#table-DivisionF", table);
     }
 
     var  DivisionFuncionData=function(tbody, table)
@@ -333,3 +335,61 @@ $(document).on("ready" ,function()
             }
         });
     }
+                var EliminarDivFuncional=function(tbody,table){
+                  $(tbody).on("click","button.eliminar",function(){
+                        var data=table.row( $(this).parents("tr")).data();
+                        var id_div_funcional=data.id_div_funcional;
+                         swal({
+                                title: "Desea eliminar el Registro ?",
+                                text: "",
+                                type: "warning",
+                                showCancelButton: true,
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "Yes,Eliminar",
+                                closeOnConfirm: false
+                              },
+                              function(){
+                                    $.ajax({
+                                          url:base_url+"index.php/DivisionFuncional/EliminarDivisionFunc",
+                                          type:"POST",
+                                          data:{id_div_funcional:id_div_funcional},
+                                          success:function(respuesta){
+                                           var registros=jQuery.parseJSON(respuesta);
+                                           if(registros.flag==0){
+                                            swal("Elimando.",registros.msg, "success");
+                                            $('#table-DivisionF').dataTable()._fnAjaxUpdate();
+                                           }
+                                           else{
+                                            swal("Error.",registros.msg, "error");
+                                            $('#table-DivisionF').dataTable()._fnAjaxUpdate();
+                                           }
+                                           }
+                                        });
+                              });
+                    });
+                }
+            var idioma_espanol=
+                {
+                    "sProcessing":     "Procesando...",
+                    "sLengthMenu":     "Mostrar _MENU_ registros",
+                    "sZeroRecords":    "No se encontraron resultados",
+                    "sEmptyTable":     "Ningún dato disponible en esta tabla",
+                    "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+                    "sInfoPostFix":    "",
+                    "sSearch":         "Buscar:",
+                    "sUrl":            "",
+                    "sInfoThousands":  ",",
+                    "sLoadingRecords": "Cargando...",
+                    "oPaginate": {
+                        "sFirst":    "Primero",
+                        "sLast":     "Último",
+                        "sNext":     "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "oAria": {
+                        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                    }
+                }

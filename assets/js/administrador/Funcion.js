@@ -75,7 +75,7 @@
                                 "language":idioma_espanol
                     });
                     FuncionData("#table-Funcion",table);  //obtener data de funcion para agregar  AGREGAR                 
-                        			   	
+                    EliminarFuncion("#table-Funcion",table);    			   	
                 }
 
                 var FuncionData=function(tbody,table){
@@ -89,7 +89,39 @@
                     });
                 }
 
-
+                var EliminarFuncion=function(tbody,table){
+                  $(tbody).on("click","button.eliminar",function(){
+                        var data=table.row( $(this).parents("tr")).data();
+                        var id_funcion=data.id_funcion;
+                         swal({
+                                title: "Desea eliminar el Registro ?",
+                                text: "",
+                                type: "warning",
+                                showCancelButton: true,
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "Yes,Eliminar",
+                                closeOnConfirm: false
+                              },
+                              function(){
+                                    $.ajax({
+                                          url:base_url+"index.php/Funcion/EliminarFuncion",
+                                          type:"POST",
+                                          data:{id_funcion:id_funcion},
+                                          success:function(respuesta){
+                                           var registros=jQuery.parseJSON(respuesta);
+                                           if(registros.flag==0){
+                                            swal("Elimando.",registros.msg, "success");
+                                            $('#table-Funcion').dataTable()._fnAjaxUpdate();
+                                           }
+                                           else{
+                                            swal("Error.",registros.msg, "error");
+                                            $('#table-Funcion').dataTable()._fnAjaxUpdate();
+                                           }
+                                           }
+                                        });
+                              });
+                    });
+                }
                 /*fin listar funcion*/
 
               

@@ -85,7 +85,28 @@ class GrupoFuncional extends CI_Controller {/* Mantenimiento de division funcion
                   show_404();
               }
     }
-    /*Fin Servicios publico asociado*/
+  function EliminarGFuncional(){
+            if ($this->input->is_ajax_request()) {
+            $flag=0;
+            $msg="";
+            $id_grup_funcional = $this->input->post("id_grup_funcional");
+
+        if($this->Model_GrupoFuncional->EliminarGFuncional($id_grup_funcional)==true){
+                $flag=0;
+                $msg="registro Eliminado Satisfactoriamente";
+            }
+            else{
+                $flag=1;
+                $msg="No se pudo eliminar";
+            }
+                    $datos['flag']=$flag;
+                    $datos['msg']=$msg;
+                    echo json_encode($datos);
+        }  else {
+            show_404();
+        }
+
+  }
 	function _load_layout($template)
     {
       $this->load->view('layout/ADMINISTRACION/header');

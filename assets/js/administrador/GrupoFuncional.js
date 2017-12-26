@@ -178,6 +178,7 @@
 		});
 
 		GrupoFuncionalData("#table-listarGrupoFuncional", table);  //obtener data de la division funcional para agregar  AGREGAR                 
+		EliminarGruFuncional("#table-listarGrupoFuncional", table);
 	}
 
 var GrupoFuncionalData=function(tbody,table)
@@ -197,6 +198,39 @@ var GrupoFuncionalData=function(tbody,table)
 		$('select[name=SelecSectorF]').change();
 	});
 }
+                var EliminarGruFuncional=function(tbody,table){
+                  $(tbody).on("click","button.eliminar",function(){
+                        var data=table.row( $(this).parents("tr")).data();
+                        var id_grup_funcional=data.id_grup_funcional;
+                         swal({
+                                title: "Desea eliminar el Registro ?",
+                                text: "",
+                                type: "warning",
+                                showCancelButton: true,
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "Yes,Eliminar",
+                                closeOnConfirm: false
+                              },
+                              function(){
+                                    $.ajax({
+                                          url:base_url+"index.php/GrupoFuncional/EliminarGFuncional",
+                                          type:"POST",
+                                          data:{id_grup_funcional:id_grup_funcional},
+                                          success:function(respuesta){
+                                           var registros=jQuery.parseJSON(respuesta);
+                                           if(registros.flag==0){
+                                            swal("Elimando.",registros.msg, "success");
+                                            $('#table-listarGrupoFuncional').dataTable()._fnAjaxUpdate();
+                                           }
+                                           else{
+                                            swal("Error.",registros.msg, "error");
+                                            $('#table-listarGrupoFuncional').dataTable()._fnAjaxUpdate();
+                                           }
+                                           }
+                                        });
+                              });
+                    });
+                }
               
         /*Idioma de datatablet table-sector */
             var idioma_espanol=

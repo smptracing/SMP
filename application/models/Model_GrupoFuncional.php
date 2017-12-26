@@ -66,5 +66,16 @@ class Model_GrupoFuncional extends CI_Model
 
         return $data->result()[0];
       }
+      function EliminarGFuncional($id_grup_funcional){
+          $this->db->where('id_grup_funcional',$id_grup_funcional);
+          $this->db->delete('GRUPO_FUNCIONAL');
+          if($this->db->affected_rows()>0){
+            return true;
+          }
+          else {
+            return false;
+          }
+
+      }
        
 }

@@ -182,6 +182,28 @@ class Funcion extends CI_Controller {/* Mantenimiento de sector entidad Y servic
 
     }
 
+    function EliminarFuncion(){
+        if ($this->input->is_ajax_request()) {
+            $flag=0;
+            $msg="";
+            $id_funcion = $this->input->post("id_funcion");
+
+        if($this->Model_Funcion->EliminarFuncion($id_funcion)==true){
+                $flag=0;
+                $msg="registro Eliminado Satisfactoriamente";
+            }
+            else{
+                $flag=1;
+                $msg="No se pudo eliminar";
+            }
+                    $datos['flag']=$flag;
+                    $datos['msg']=$msg;
+                    echo json_encode($datos);
+        }  else {
+            show_404();
+        }
+
+    }
     function _load_layout($template)
     {
         $this->load->view('layout/ADMINISTRACION/header');

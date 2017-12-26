@@ -87,6 +87,28 @@ class DivisionFuncional extends CI_Controller {/* Mantenimiento de division func
               }
 
     }
+    function EliminarDivisionFunc(){
+        if ($this->input->is_ajax_request()) {
+            $flag=0;
+            $msg="";
+            $id_div_funcional = $this->input->post("id_div_funcional");
+
+        if($this->Model_DivisionFuncional->EliminarDivFuncional($id_div_funcional)==true){
+                $flag=0;
+                $msg="registro Eliminado Satisfactoriamente";
+            }
+            else{
+                $flag=1;
+                $msg="No se pudo eliminar";
+            }
+                    $datos['flag']=$flag;
+                    $datos['msg']=$msg;
+                    echo json_encode($datos);
+        }  else {
+            show_404();
+        }
+
+    }
    
 	function _load_layout($template)
     {
