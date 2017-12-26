@@ -803,8 +803,9 @@ var generarActividadesVertical=function(id_en)
                                          return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Completado</small></td>" ;
                                     }},
 
-                                    {"defaultContent":"<div class='dropdown'>  <a class='btn btn-link dropdown-toggle' type='button' data-toggle='dropdown'> <span class='glyphicon glyphicon-option-vertical' aria-hidden='true'></span></a> <ul class='dropdown-menu pull-right' style=''> <button type='button' class='actividad btn btn-link btn-xs' title='Agregar actividad al entregable' data-toggle='modal' data-target='#VentanaActividades'>Agregar Actividad</button><br/><button type='button' class='EditarEntregable btn btn-link btn-xs' title='Modificar Entregable' data-toggle='modal' data-target='#ModificarVentanaEntregable'>Modificar Entregable</button></ul> </div>"}
+                                   // {"defaultContent":"<div class='dropdown'>  <a class='btn btn-link dropdown-toggle' type='button' data-toggle='dropdown'> <span class='glyphicon glyphicon-option-vertical' aria-hidden='true'></span></a> <ul class='dropdown-menu pull-right' style=''> <button type='button' class='actividad btn btn-link btn-xs' title='Agregar actividad al entregable' data-toggle='modal' data-target='#VentanaActividades'>Agregar Actividad</button><br/><button type='button' class='EditarEntregable btn btn-link btn-xs' title='Modificar Entregable' data-toggle='modal' data-target='#ModificarVentanaEntregable'>Modificar Entregable</button></ul> </div>"}
 
+                                   {"defaultContent":"<div class='btn-group'><button data-toggle='dropdown' class='btn btn-default dropdown-toggle btn-xs' type='button'> Opciones <span class='caret'></span> </button><ul class='dropdown-menu'><li><a data-toggle='modal' data-target='#VentanaActividades'>Agregar Actividad</a></li><li><a data-toggle='modal' class='EditarEntregable' data-target='#ModificarVentanaEntregable'>Editar Entregable</a></li></ul></div>"} 
                                 ],
 
                                 "language":idioma_espanol,
@@ -819,7 +820,7 @@ var generarActividadesVertical=function(id_en)
               }
               	  var  ModificarEntregable=function(tbody,table)
               	  {
-              	  	$(tbody).on("click","button.EditarEntregable",function(){
+              	  	$(tbody).on("click","a.EditarEntregable",function(){
                               var data=table.row( $(this).parents("tr")).data();
                               		  $('#EdiEntregable').val(data.id_entregable);
                               		  $('#Editxt_nombre_entre').val(data.nombre_entregable);
