@@ -40,23 +40,23 @@ if (!function_exists('autentificar'))
         }
         else
         {
-            if($CI->session->userdata('idPersona'))
-            {
-                echo $CI->output->get_output();
-                if(autorizar($url))
-                {
-                    echo $CI->output->get_output();
-                }
-                else
-                {
-                    echo $CI->output->get_output();
-                    redirect('Usuario/accesodenegado');
-                }
-            }
-            else
-            {
-            	redirect('Login/muestralog');
-            }
+            // if($CI->session->userdata('idPersona'))
+            // {
+            //     echo $CI->output->get_output();
+            //     if(autorizar($url))
+            //     {
+            //         echo $CI->output->get_output();
+            //     }
+            //     else
+            //     {
+            //         echo $CI->output->get_output();
+            //         redirect('Usuario/accesodenegado');
+            //     }
+            // }
+            // else
+            // {
+            // 	redirect('Login/muestralog');
+            // }
         }
 
     }
@@ -619,7 +619,8 @@ function autorizar($url)
       'PuntajeCriterioPi/insertar',
       'FEestado/EliminarFEestado',
       'MetaPip/meta_pip',
-      'ET_Tarea/insertarBloque'
+      'ET_Tarea/insertarBloque',
+      'FEentregableEstudio/ver_FEentregable'
     );
     foreach( $lista_API as $value ) {
       array_push($arrayPermitido, $value);

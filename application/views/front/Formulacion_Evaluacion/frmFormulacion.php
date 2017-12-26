@@ -41,7 +41,7 @@
                                                            <div class="pull-right tableTools-container-evaluacion">
                                                            </div>
                                                         </div>
-                                                      <!--fin  de icono de reporte -->                            
+                                                      <!--fin  de icono de reporte -->
                 <div class="x_content">
                     <div class="table-responsive">
                         <table id="tabla-formulacion" class="table table-striped jambo_table bulk_action  table-hover"  width="100%" cellspacing="0" >
@@ -51,8 +51,7 @@
                                     <th>Id PIP</th>
                                     <th>Codigo Unico</th>
                                     <th>Nombre Pip</th>
-                                    <th>Provincia</th>
-                                    <th>Distrito</th>
+                                    <th>Provincia, Dist</th>
                                     <th>Nivel Estudio</th>
                                     <th>Responsable de Etapa</th>
                                     <th>Costo Inversion</th>
@@ -73,7 +72,7 @@
     <div class="clearfix"></div>
 </div>
 
-                                                        
+
 <div class="modal fade" id="VerDetalleFormulacion"  role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">

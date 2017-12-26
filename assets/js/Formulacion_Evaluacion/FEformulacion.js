@@ -30,7 +30,7 @@ $("#form-AddSituacion").submit(function(event)
         {
             resp = JSON.parse(resp);
             swal(resp.proceso,resp.mensaje,(resp.proceso=='Correcto') ? 'success':'error');
-            $('#VentanaSituacionActual').modal('hide'); 
+            $('#VentanaSituacionActual').modal('hide');
             $('#tabla-formulacion').dataTable()._fnAjaxUpdate();
         }
     });
@@ -48,7 +48,7 @@ $("#form-AddAsiganarPersona").submit(function(event)
         {
             resp = JSON.parse(resp);
             swal(resp.proceso,resp.mensaje,(resp.proceso=='Correcto') ? 'success':'error');
-            $('#VentanaAsignarPersona').modal('hide');            
+            $('#VentanaAsignarPersona').modal('hide');
             $('#tabla-formulacion').dataTable()._fnAjaxUpdate();
         }
     });
@@ -84,32 +84,32 @@ $("#form-AddAsiganarPersona").submit(function(event)
                                     {"data":"id_est_inv","visible": false},
                                         {"data": function (data, type, dataToSet) {
 
-                                      if (data.denom_etapas_fe =='Formulación') 
+                                      if (data.denom_etapas_fe =='Formulación')
                                       {
                                        return '<i class="fa fa-spinner red fa-pulse fa-2x fa-fw"></i><span class="sr-only">Loading...</span>'
                                        // return '<i class="fa fa-circle red fa-2x"></i>';
                                       }
-                                        if (data.denom_etapas_fe =='Evaluación') 
+                                        if (data.denom_etapas_fe =='Evaluación')
                                       {
                                        return '<i class="fa fa-spinner orange fa-pulse fa-2x fa-fw"></i><span class="sr-only">Loading...</span>'
                                       //return '<i class="fa fa-circle purple fa-2x"></i>';
                                      }
-                                        if (data.denom_etapas_fe =='Viabilizado') 
+                                        if (data.denom_etapas_fe =='Viabilizado')
                                       {
                                       return '<i class="fa fa-spinner green fa-pulse fa-2x fa-fw"></i><span class="sr-only">Loading...</span>'
                                      // return '<i class="fa fa-circle light green fa-2x"></i>';
                                       }
-                                      if (data.denom_etapas_fe ==null) 
+                                      if (data.denom_etapas_fe ==null)
                                       {
                                       return '<button type="button" class=" btn-round btn-warning btn-xs" data-toggle="modal" data-target="#"><i class="fa fa-flag" aria-hidden="true"></i> Asignar</button"';
-                                     
+
                                       }
                                    }},
                                     {"data":"denom_etapas_fe"},
                                     {"data":"recomendaciones"},
                                     {"data":"fecha_inicio"},
                                     {"data":"fecha_final"}
-                                 
+
                                     //{"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaupdateEstadoFE'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
                                 ],
                                "language":idioma_espanol
@@ -137,7 +137,7 @@ $("#form-AddAsiganarPersona").submit(function(event)
                                 ],
                                "language":idioma_espanol
                     });
-                    EliminarEstadoFE("#table-EstadoEtapa",table);  
+                    EliminarEstadoFE("#table-EstadoEtapa",table);
                 }
 var ListarFormulacion=function()
 {
@@ -156,18 +156,21 @@ var ListarFormulacion=function()
                 {"data":"codigo_unico_est_inv",
                     "mRender": function ( data, type, full )
                     {
-                        return '<a style="font-weight:normal;font-size:8" type="button" class="VerDetalleFormulacion btn btn-link" data-toggle="modal" data-target="#VerDetalleFormulacion" href="/codigo_unico_est_inv/' + data + '">' + data+ '</a>';
+                        return '<button style="font-weight:normal;font-size:8" type="button" class="VerDetalleFormulacion btn btn-primary btn-xs" data-toggle="modal" data-target="#VerDetalleFormulacion" href="/codigo_unico_est_inv/' + data + '"><i class="fa fa-edit" aria-hidden="true"></i></button>';
                     }
                 },
                 {"data":"nombre_est_inv"},
-                {"data":"provincia"},
-                {"data":"distrito"},
+                {"data": null,
+                "render" : function ( data, type, full ) {
+                    return full['provincia']+', '+full['distrito'];
+                  }
+                },
                 {"data":"denom_nivel_estudio"},
                 {"data":"coordinador"},
                 {"data":"costo_estudio"},
                 {"data":"denom_situacion_fe"},
                 {"data":"avance_fisico",
-                    "mRender":function (data,type, full) 
+                    "mRender":function (data,type, full)
                     {
                         return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Completado</small></td>";
                     }
@@ -175,17 +178,17 @@ var ListarFormulacion=function()
                 {"data":"id_etapa_estudio",
                     "mRender": function ( data, type, full )
                     {
-                        return '<a href="../../FEentregableEstudio/ver_FEentregable/'+data+'"><button type="button" title="Entregables" class="btn btn btn-primary btn-xs"><i class="fa fa-tasks"></i> </button></a><button type="button" title="Ver Gantt" class="gant btn btn-info btn-xs" data-toggle="modal" data-target="#ventanagant"><i class="glyphicon glyphicon-fullscreen" aria-hidden="true"></i></button>';
+                        return '<a href="../../FEentregableEstudio/ver_FEentregable?id_etapa_estudio='+data+'"><button type="button" title="Entregables" class="btn btn btn-primary btn-xs"><i class="fa fa-tasks"></i> </button></a><button type="button" title="Ver Gantt" class="gant btn btn-info btn-xs" data-toggle="modal" data-target="#ventanagant"><i class="glyphicon glyphicon-fullscreen" aria-hidden="true"></i></button>';
                     }
                 },
 //{"defaultContent":'<div class="dropdown"><a class="btn btn-link dropdown-toggle" type="button" data-toggle="dropdown"> <span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span></a> <ul class="dropdown-menu pull-right"> <li><button type="button" title="Asignar Estado" class="EstadoFE btn btn-link btn-xs" data-toggle="modal" data-target="#VentanaEstadoFE"> Asignar Estado</button></li><li><button type="button" title="Asignar Situacion" class="Situacion btn btn-link btn-xs" data-toggle="modal" data-target="#VentanaSituacionActual">Asignar Situacion</button></li><li><button type="button" title="Asignar Responsable" class="AsignarPersona btn btn-link btn-xs" data-toggle="modal" data-target="#VentanaAsignarPersona"> Asignar Responsable </button></li><li><button type="button" title="Ver Etapas Estudio" class="ver_etapas_estudio btn btn-link btn-xs" data-toggle="modal" data-target="#ventana_ver_etapas_estudio"> Ver Etapas Estudio </button></li><li><button type="button" title="Presupuesto de Inversión" class="presupuestoProyectoInv btn btn-link btn-xs">Presupuesto de Inversión</button></li></ul> </div>'}
 {"defaultContent":"<div class='btn-group'><button data-toggle='dropdown' class='btn btn-default dropdown-toggle' type='button' aria-expanded='false'>Opciones <span class='caret'></span></button><ul class='dropdown-menu'> <li><button type='button' title='Asignar Estado' class='EstadoFE btn btn-info btn-xs' data-toggle='modal' data-target='#VentanaEstadoFE'><i class='fa fa-flag' aria-hidden='true'></i> Asignar Estado</button></li><li><button type='button' title='Asignar Situacion' class='Situacion btn btn-warning btn-xs' data-toggle='modal' data-target='#VentanaSituacionActual'><i class='fa fa-spinner' aria-hidden='true'></i>Asignar Situacion</button></li><li><button type='button' title='Asignar Responsable' class='AsignarPersona btn btn-success btn-xs' data-toggle='modal' data-target='#VentanaAsignarPersona'><i class='fa fa-map-marker' aria-hidden='true'></i> Asignar Responsable </button></li><li><button type='button' title='Ver Etapas Estudio' class='ver_etapas_estudio btn btn-info btn-xs' data-toggle='modal' data-target='#ventana_ver_etapas_estudio'><i class='fa fa-paw' aria-hidden='true'></i> Ver Etapas Estudio </button></li><li><button type='button' title='Presupuesto de Inversión' class='presupuestoProyectoInv btn btn-warning btn-xs'><i class='fa fa-flag' aria-hidden='true'></i>Presupuesto de Inversión</button></li></ul> </div>"}
           ],
         "language":idioma_espanol
-    });    
-                      SituacionActual("#tabla-formulacion",table);  
-                     RegistarEstadoFE("#tabla-formulacion",table); 
-                     RegistarPersona("#tabla-formulacion",table); 
+    });
+                      SituacionActual("#tabla-formulacion",table);
+                     RegistarEstadoFE("#tabla-formulacion",table);
+                     RegistarPersona("#tabla-formulacion",table);
 }
 //LISTAR DENOMINACION DE FORMULACION Y EVALUACION EN TABLA
 var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
@@ -210,7 +213,7 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
 
                       }
                     });
-    }                
+    }
     var  ListaFormulacion=function(tbody,table){
                                $(tbody).on("click","a.VerDetalleFormulacion",function(){
                               var data=table.row( $(this).parents("tr")).data();
@@ -414,4 +417,3 @@ var listarPersonaFE=function(valor){
                         "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                     }
                 }
-

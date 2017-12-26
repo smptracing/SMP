@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
-  $( function() 
+  $( function()
   {
     var dateFormat = "mm/dd/yy",
       from = $( "#fechaInicio" )
@@ -33,7 +33,7 @@
       .on( "change", function() {
         from.datepicker( "option", "maxDate", getDate( this ) );
       });
- 
+
     function getDate( element ) {
       var date;
       try {
@@ -41,7 +41,7 @@
       } catch( error ) {
         date = null;
       }
- 
+
       return date;
     }
   } );
@@ -61,7 +61,7 @@
                     <div class="x_content">
 
                                 <input type="hidden" id="txt_id_etapa_estudio" name="txt_id_etapa_estudio" value="<?php echo $this->session->userdata('Etapa_Estudio'); ?>">
-                               
+
                                     <div class="row">
                                         <div class="col-md-12 col-xs-12">
                                                 <ul class="bs-glyphicons-list">
@@ -75,13 +75,13 @@
                                                     </li>
                                                 </ul>
                                                 <div class="x_content">
-                                                    
+
                                                     <div class="table-responsive"  id="TemEntregable">
                                                     </div>
                                                 </div>
                                         </div>
                                     </div>
-                         
+
                                           <!-- / fin panel grupo  funcional desde el row -->
                                         <div role="tabpanel" class="tab-pane fade" id="tab_Entregable" aria-labelledby="profile-tab">
                                              <!-- /tabla de grupo funcional desde el row -->
@@ -119,8 +119,8 @@
                                             </div>
                                          <!-- / fin tabla grupo funcional asociados el row -->
                                         </div>
-                         
-         
+
+
 
 
 
@@ -1027,7 +1027,7 @@
 
 </script>
 <script>
-    $(function() 
+    $(function()
     {
         $('input[name="daterange34"]').daterangepicker();
     });

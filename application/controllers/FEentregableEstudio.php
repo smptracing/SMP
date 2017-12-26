@@ -13,9 +13,9 @@ class FEentregableEstudio extends CI_Controller
         $this->load->helper('string');
 
     }
-    public function ver_FEentregable($id_etapa_estudio)
+    public function ver_FEentregable()
     {
-
+        $id_etapa_estudio = isset($_GET['id_etapa_estudio']) ? $_GET['id_etapa_estudio'] : '';
         $data = array('Etapa_Estudio' => $id_etapa_estudio);
         $this->session->set_userdata($data);
         if ($this->input->is_ajax_request())
@@ -23,7 +23,7 @@ class FEentregableEstudio extends CI_Controller
             $datos = $this->Gant_Model->GetEntregable($id_etapa_estudio);
             $links = $this->Gant_Model->GetLink($id_etapa_estudio);
             echo json_encode(array('data' => $datos, 'links' => $links));
-        } 
+        }
         else
         {
             $data = array('Etapa_Estudio' => $id_etapa_estudio);
@@ -60,7 +60,7 @@ show_404();
     //FIN OPERACIONES CON LOS AVANCES
     public function get_Entregables()
     {
-        if ($this->input->is_ajax_request()) 
+        if ($this->input->is_ajax_request())
         {
             $id_etapaestudio = $this->session->userdata('Etapa_Estudio');
             $this->session->unset_tempdata('Codigo_único');
@@ -77,8 +77,8 @@ show_404();
             $datos= $this->Model_FEentregableEstudio->get_Entregables($txt_id_etapa_estudio);
 
             echo json_encode($datos);
-        } 
-        else 
+        }
+        else
         {
             show_404();
         }

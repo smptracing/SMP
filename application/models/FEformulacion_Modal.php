@@ -39,7 +39,7 @@ class FEformulacion_Modal extends CI_Model
 
         if ($ViabFE->num_rows() >= 0) {
             return $ViabFE->result();
-        } 
+        }
         else {
             return false;
         }
