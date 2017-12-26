@@ -259,6 +259,108 @@ var GrupoFuncionalData=function(tbody,table)
                     }
                 }
 
+ $(function() {
+     $("tbody").on("click", "#send", function(e) {
+         $('#form-AddGrupoFuncional').data('formValidation').validate();
+         if ($('#form-AddGrupoFuncional').data('formValidation').isValid() == true) {
+             $('#form-AddGrupoFuncional').submit();
+             $('#form-AddGrupoFuncional').each(function() {
+                 this.reset();
+             });
+             $('#form-AddGrupoFuncional').data('formValidation').resetForm();
+         }
+     });
+          $("tbody").on("click", "#sendM", function(e) {
+         $('#form-UpadataGrupoFuncional').data('formValidation').validate();
+         if ($('#form-UpadataGrupoFuncional').data('formValidation').isValid() == true) {
+             $('#form-UpadataGrupoFuncional').submit();
+             $('#form-UpadataGrupoFuncional').each(function() {
+                 this.reset();
+             });
+             $('#form-UpadataGrupoFuncional').data('formValidation').resetForm();
+         }
+     });
+     $('#form-AddGrupoFuncional').formValidation({
+         framework: 'bootstrap',
+         excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+         live: 'enabled',
+         message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+         trigger: null,
+         fields: {
+             txt_codigoGfuncion: {
+                 validators: {
+                     notEmpty: {
+                         message: '<b style="color: red;">El campo "Código" es requerido.</b>'
+                     },
+                     stringLength: {
+                         max: 4,
+                         message: '<b style="color: red;">El campo "Código" debe tener como máximo 04 caracteres.</b>'
+                     },
+                     regexp: {
+                          regexp: /^[0-9]+$/,
+                         message: '<b style="color: red;">El campo "Código" debe contener solamente números.</b>'
+                     }
+                 }
+             },
+        txt_nombreGfuncion: {
+                 validators: {
+                     notEmpty: {
+                         message: '<b style="color: red;">El campo "Nombre" es requerido.</b>'
+                     },
+                     stringLength: {
+                         max: 199,
+                         message: '<b style="color: red;">El campo "Nombre" debe tener como máximo 199 caracteres.</b>'
+                     },
+                     regexp: {
+                         regexp: /^[a-z\s]+$/i,
+                         message: '<b style="color: red;">El campo "Nombre" debe contener solamante caracteres alfabéticos y espacios.</b>'
+                     }
+                 }
+             }
+         }
+     });
+     $('#form-UpadataGrupoFuncional').formValidation({
+         framework: 'bootstrap',
+         excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+         live: 'enabled',
+         message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+         trigger: null,
+         fields: {
+             txt_codigoGfuncionF: {
+                 validators: {
+                     notEmpty: {
+                         message: '<b style="color: red;">El campo "Código" es requerido.</b>'
+                     },
+                     stringLength: {
+                         max: 4,
+                         message: '<b style="color: red;">El campo "Código" debe tener como máximo 04 caracteres.</b>'
+                     },
+                     regexp: {
+                          regexp: /^[0-9]+$/,
+                         message: '<b style="color: red;">El campo "Código" debe contener solamente números.</b>'
+                     }
+                 }
+             },
+        txt_nombreGfuncionF: {
+                 validators: {
+                     notEmpty: {
+                         message: '<b style="color: red;">El campo "Nombre" es requerido.</b>'
+                     },
+                     stringLength: {
+                         max: 199,
+                         message: '<b style="color: red;">El campo "Nombre" debe tener como máximo 199 caracteres.</b>'
+                     },
+                     regexp: {
+                         regexp: /^[a-z\s]+$/i,
+                         message: '<b style="color: red;">El campo "Nombre" debe contener solamante caracteres alfabéticos y espacios.</b>'
+                     }
+                 }
+             }
+         }
+     });
+ });
+
+
         function lista()
 					{
 						event.preventDefault();

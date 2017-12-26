@@ -151,7 +151,106 @@
                         "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                     }
                 }
-
+ $(function() {
+     $("tbody").on("click", "#send", function(e) {
+         $('#form-addFuncion').data('formValidation').validate();
+         if ($('#form-addFuncion').data('formValidation').isValid() == true) {
+             $('#form-addFuncion').submit();
+             $('#form-addFuncion').each(function() {
+                 this.reset();
+             });
+             $('#form-addFuncion').data('formValidation').resetForm();
+         }
+     });
+          $("tbody").on("click", "#sendM", function(e) {
+         $('#form-ModificarFuncion').data('formValidation').validate();
+         if ($('#form-ModificarFuncion').data('formValidation').isValid() == true) {
+             $('#form-ModificarFuncion').submit();
+             $('#form-ModificarFuncion').each(function() {
+                 this.reset();
+             });
+             $('#form-ModificarFuncion').data('formValidation').resetForm();
+         }
+     });
+     $('#form-addFuncion').formValidation({
+         framework: 'bootstrap',
+         excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+         live: 'enabled',
+         message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+         trigger: null,
+         fields: {
+             txt_codigofuncion: {
+                 validators: {
+                     notEmpty: {
+                         message: '<b style="color: red;">El campo "Código" es requerido.</b>'
+                     },
+                     stringLength: {
+                         max: 2,
+                         message: '<b style="color: red;">El campo "Código" debe tener como máximo 02 caracteres.</b>'
+                     },
+                     regexp: {
+                          regexp: /^[0-9]+$/,
+                         message: '<b style="color: red;">El campo "Código" debe contener solamente números.</b>'
+                     }
+                 }
+             },
+        txt_nombrefuncion: {
+                 validators: {
+                     notEmpty: {
+                         message: '<b style="color: red;">El campo "Nombre" es requerido.</b>'
+                     },
+                     stringLength: {
+                         max: 199,
+                         message: '<b style="color: red;">El campo "Nombre" debe tener como máximo 199 caracteres.</b>'
+                     },
+                     regexp: {
+                         regexp: /^[a-z\s]+$/i,
+                         message: '<b style="color: red;">El campo "Nombre" debe contener solamante caracteres alfabéticos y espacios.</b>'
+                     }
+                 }
+             }
+         }
+     });
+     $('#form-ModificarFuncion').formValidation({
+         framework: 'bootstrap',
+         excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+         live: 'enabled',
+         message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+         trigger: null,
+         fields: {
+          txt_codigofuncionM: {
+                 validators: {
+                     notEmpty: {
+                         message: '<b style="color: red;">El campo "Código" es requerido.</b>'
+                     },
+                     stringLength: {
+                         max: 2,
+                         message: '<b style="color: red;">El campo "Código" debe tener como máximo 02 caracteres.</b>'
+                     },
+                     regexp: {
+                          regexp: /^[0-9]+$/,
+                         message: '<b style="color: red;">El campo "Código" debe contener solamente números.</b>'
+                     }
+                 }
+             },
+        txt_nombrefuncionM: {
+                 validators: {
+                     notEmpty: {
+                         message: '<b style="color: red;">El campo "Nombre" es requerido.</b>'
+                     },
+                     stringLength: {
+                         max: 199,
+                         message: '<b style="color: red;">El campo "Nombre" debe tener como máximo 199 caracteres.</b>'
+                     },
+                     regexp: {
+                         regexp: /^[a-z\s]+$/i,
+                         message: '<b style="color: red;">El campo "Nombre" debe contener solamante caracteres alfabéticos y espacios.</b>'
+                     }
+                 }
+             }
+         }
+     });
+ });
         /* function lista()
 					{
 						event.preventDefault();
