@@ -11,8 +11,9 @@ class FE_Presupuesto_Inv extends CI_Controller
 		$this->load->model('Model_FE_Detalle_Gasto');
 	}
 
-	public function index($idEstInv)
+	public function index()
     {
+			$idEstInv = isset($_GET['id_est_inv']) ? $_GET['id_est_inv'] : '';
     	$nombreProyecto=$this->Model_FE_Presupuesto_Inv->nombreProyectoInvPorId($idEstInv);
     	$ListarPresupuesto=$this->Model_FE_Presupuesto_Inv->ListarPresupuesto($idEstInv);
 
@@ -24,7 +25,7 @@ class FE_Presupuesto_Inv extends CI_Controller
 	public function insertar()
 	{
 		if($_POST)
-		{			
+		{
 			$idEstudioInversion=$this->input->post('idEstudioInversion');
 			$idSector=$this->input->post('cbx_Sector');
 			$txtPliego=$this->input->post('txtPliego');
@@ -37,7 +38,7 @@ class FE_Presupuesto_Inv extends CI_Controller
 			$idFuenteFinan=$this->input->post('hdIdFuente');
 			$hdCorrelativoMeta=$this->input->post('hdCorrelativoMeta');
 			$hdAnio=$this->input->post('hdAnio');
-	    	
+
 	    	for($i=0; $i<count($hdAnio); $i++)
 	    	{
 	    		$this->Model_FE_Presupuesto_Inv->insertarPresupuestoFuente($idPresupuestoFE, $idFuenteFinan[$i], $hdCorrelativoMeta[$i], $hdAnio[$i]);
@@ -52,13 +53,13 @@ class FE_Presupuesto_Inv extends CI_Controller
 
 		$listarSector=$this->Model_FE_Presupuesto_Inv->listarSector();
 		$listarFuenteFinanciamiento=$this->Model_FE_Presupuesto_Inv->listarFuenteFinanciamiento();
-		
+
 	    $this->load->view('Front/PresupuestoEstudioInversion/FEPresupuesto/insertar', ['listarSector' => $listarSector,'listarFuenteFinanciamiento' => $listarFuenteFinanciamiento,'nombreProyectoInver' => $nombreProyectoInver]);
 	}
 
 	public function verDetalle()
 	{
-	
+
 		$id_est_inv=$this->input->get('id_est_inv');
 		$nombreProyectoInver=$this->Model_FE_Presupuesto_Inv->nombreProyectoInvPorId($id_est_inv);
 
@@ -66,7 +67,7 @@ class FE_Presupuesto_Inv extends CI_Controller
 
 	    $id_detalle_presupuesto=$this->input->get('id');
 	    $listaFEDetallePresupuestoT=$this->Model_FE_Presupuesto_Inv->TipoGastoDetallePresupuesto($id_detalle_presupuesto);
-	    
+
 	    foreach($listaFEDetallePresupuestoT as $key => $value)
 	    {
 	    	$value->childFEDetalleGasto=$this->Model_FE_Detalle_Gasto->ListarPorIdDetallePresupuesto($value->id_detalle_presupuesto);
@@ -98,7 +99,7 @@ class FE_Presupuesto_Inv extends CI_Controller
 			$hdIdFuente=$this->input->post('hdIdFuente');
 			$hdCorrelativoMeta=$this->input->post('hdCorrelativoMeta');
 			$hdAnio=$this->input->post('hdAnio');
-	    	
+
 	    	for($i=0; $i<count($hdIdFuente); $i++)
 	    	{
 	    		$this->Model_FE_Presupuesto_Inv->insertarPresupuestoFuente($idPresupuestoFE, $hdIdFuente[$i], $hdCorrelativoMeta[$i], $hdAnio[$i]);
@@ -112,7 +113,7 @@ class FE_Presupuesto_Inv extends CI_Controller
 		$listarSector=$this->Model_FE_Presupuesto_Inv->listarSector();
 		$listarFuenteFinanciamiento=$this->Model_FE_Presupuesto_Inv->listarFuenteFinanciamiento();
 		$listaFEPresupuestoFuente=$this->Model_FE_Presupuesto_Inv->listarFEPresupuestoFuente($this->input->post('idPresupuestoFE'));
-		
+
 	    $this->load->view('Front/PresupuestoEstudioInversion/FEPresupuesto/editar', ['fePresupuestoInv' => $fePresupuestoInv, 'listarSector' => $listarSector, 'listarFuenteFinanciamiento' => $listarFuenteFinanciamiento, 'listaFEPresupuestoFuente' => $listaFEPresupuestoFuente]);
 	}
 
@@ -124,38 +125,38 @@ class FE_Presupuesto_Inv extends CI_Controller
         $pdf->SetTitle('DETALLE PRESUPUESTO');
         $pdf->SetSubject('');
         $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
-    	
+
 
         $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
         $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
-    
+
 
         $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
- 
+
 
         $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
         $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
         $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
- 
+
 
         $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
- 
+
 
         $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
         $pdf->setFontSubsetting(true);
 
-       
-      
-		$pdf->SetFont('times', '', 10); 
-		
- 
+
+
+		$pdf->SetFont('times', '', 10);
+
+
 
         $pdf->AddPage();
 
         $pdf->setTextShadow(array('enabled' => true, 'depth_w' => 0.2, 'depth_h' => 0.2, 'color' => array(196, 196, 196), 'opacity' => 1, 'blend_mode' => 'Normal'));
-        
-        
+
+
         $FE_Presupuesto_Inv=$this->Model_FE_Presupuesto_Inv->listarPresupuestoInverAfe($id_presupuesto_fe);
         foreach ($FE_Presupuesto_Inv as $Item)
         {
@@ -241,26 +242,26 @@ EOD;
 	$pdf->Ln(1);
 	$i=1;
 
-			$pdf->SetFont('times','B', 11);        
+			$pdf->SetFont('times','B', 11);
 			$pdf->Cell(72, 5,'DESCRIPCIÓN', 1, 'l', 1,0);
 			$pdf->Cell(30, 5,'UNIDAD', 1, 'C', 1, 0);
 			$pdf->Cell(30, 5,'CANTIDAD.', 1, 'C', 1, 0);
 			$pdf->Cell(30, 5,'COSTO U', 1, 'C', 1, 0);
 			$pdf->Cell(30, 5,'COSTO TOTAL', 1, 'C', 1, 0);$pdf->Ln();
-	foreach($FE_DetalleGastoPadres as $key => $valor) 
+	foreach($FE_DetalleGastoPadres as $key => $valor)
 		{
-	   
-			$pdf->SetFont('times','B', 11); 
+
+			$pdf->SetFont('times','B', 11);
 			$pdf->Cell(162, 5,$FE_DetalleGastoPadres[$key]['desc_tipo_gasto'], 1, 'l', 1,(int)$i);
 			$pdf->Cell(30, 5,$FE_DetalleGastoPadres[$key]['total_detalle'], 1, 'C', 1,(int)$i);
 			$pdf->Ln();
 			$i=((int)$i)+1;
 			$subInten=$FE_DetalleGastoPadres[$key]['id_detalle_presupuesto'];
 			$FE_DetalleGastoHijo=$this->Model_FE_Presupuesto_Inv->listarDetalleGasto($id_presupuesto_fe,$subInten);
-			
+
 			foreach ($FE_DetalleGastoHijo as $key => $valor)
-			{	
-				$pdf->SetFont('times','', 11);  
+			{
+				$pdf->SetFont('times','', 11);
 				$pdf->Cell(72, 5,$FE_DetalleGastoHijo[$key]['desc_detalle_gasto'], 1, 'l', 1,(int)$i);
 				$pdf->Cell(30, 5,$FE_DetalleGastoHijo[$key]['unidad'], 1, 'C', 1, (int)$i);
 				$pdf->Cell(30, 5,$FE_DetalleGastoHijo[$key]['cantidad_detalle_gasto'], 1, 'C', 1, (int)$i);
@@ -268,9 +269,9 @@ EOD;
 				$pdf->Cell(30, 5,$FE_DetalleGastoHijo[$key]['sub_total_detalle_gasto'], 1, 'C', 1, (int)$i);
 				$pdf->Ln();
 				$i=((int)$i) +1;
-			}  
+			}
 		}
-			$pdf->SetFont('times','B', 11); 
+			$pdf->SetFont('times','B', 11);
 			$pdf->Cell(72, 5,'SUB TOTAL'.$contenido, 1, 'l', 1,(int)$i+1);
 			$pdf->Cell(30, 5,$contenido, 1, 'C', 1, (int)$i+1);
 			$pdf->Cell(30, 5,$contenido, 1, 'C', 1, (int)$i+1);
@@ -291,7 +292,7 @@ EOD;
 
 		    $nombre_archivo = utf8_decode("Presupuesto de ".$prov.".pdf");
 		    $pdf->Output($nombre_archivo, 'I');
-		
+
 	}
 
 }

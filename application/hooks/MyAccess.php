@@ -622,7 +622,8 @@ function autorizar($url)
       'ET_Tarea/insertarBloque',
       'FEentregableEstudio/ver_FEentregable',
       'Unidad_Medida/editar',
-      'Unidad_Medida/insertar'
+      'Unidad_Medida/insertar',
+      'FE_Presupuesto_Inv/index'
     );
     foreach( $lista_API as $value ) {
       array_push($arrayPermitido, $value);
