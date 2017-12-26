@@ -393,3 +393,104 @@ $(document).on("ready" ,function()
                         "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                     }
                 }
+
+ $(function() {
+     $("tbody").on("click", "#send", function(e) {
+         $('#form-AddDivisionFuncion').data('formValidation').validate();
+         if ($('#form-AddDivisionFuncion').data('formValidation').isValid() == true) {
+             $('#form-AddDivisionFuncion').submit();
+             $('#form-AddDivisionFuncion').each(function() {
+                 this.reset();
+             });
+             $('#form-AddDivisionFuncion').data('formValidation').resetForm();
+         }
+     });
+          $("tbody").on("click", "#sendM", function(e) {
+         $('#form-UpdateDivisionFuncion').data('formValidation').validate();
+         if ($('#form-UpdateDivisionFuncion').data('formValidation').isValid() == true) {
+             $('#form-UpdateDivisionFuncion').submit();
+             $('#form-UpdateDivisionFuncion').each(function() {
+                 this.reset();
+             });
+             $('#form-UpdateDivisionFuncion').data('formValidation').resetForm();
+         }
+     });
+     $('#form-AddDivisionFuncion').formValidation({
+         framework: 'bootstrap',
+         excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+         live: 'enabled',
+         message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+         trigger: null,
+         fields: {
+             txt_CodigoDfuncional: {
+                 validators: {
+                     notEmpty: {
+                         message: '<b style="color: red;">El campo "Código" es requerido.</b>'
+                     },
+                     stringLength: {
+                         max: 3,
+                         message: '<b style="color: red;">El campo "Código" debe tener como máximo 03 caracteres.</b>'
+                     },
+                     regexp: {
+                          regexp: /^[0-9]+$/,
+                         message: '<b style="color: red;">El campo "Código" debe contener solamente números.</b>'
+                     }
+                 }
+             },
+        txt_Nombre_DFuncional: {
+                 validators: {
+                     notEmpty: {
+                         message: '<b style="color: red;">El campo "Nombre" es requerido.</b>'
+                     },
+                     stringLength: {
+                         max: 199,
+                         message: '<b style="color: red;">El campo "Nombre" debe tener como máximo 199 caracteres.</b>'
+                     },
+                     regexp: {
+                         regexp: /^[a-z\s]+$/i,
+                         message: '<b style="color: red;">El campo "Nombre" debe contener solamante caracteres alfabéticos y espacios.</b>'
+                     }
+                 }
+             }
+         }
+     });
+     $('#form-UpdateDivisionFuncion').formValidation({
+         framework: 'bootstrap',
+         excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+         live: 'enabled',
+         message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+         trigger: null,
+         fields: {
+             txt_CodigoDfuncionalM: {
+                 validators: {
+                     notEmpty: {
+                         message: '<b style="color: red;">El campo "Código" es requerido.</b>'
+                     },
+                     stringLength: {
+                         max: 3,
+                         message: '<b style="color: red;">El campo "Código" debe tener como máximo 03 caracteres.</b>'
+                     },
+                     regexp: {
+                          regexp: /^[0-9]+$/,
+                         message: '<b style="color: red;">El campo "Código" debe contener solamente números.</b>'
+                     }
+                 }
+             },
+        txt_Nombre_DFuncionalM: {
+                 validators: {
+                     notEmpty: {
+                         message: '<b style="color: red;">El campo "Nombre" es requerido.</b>'
+                     },
+                     stringLength: {
+                         max: 199,
+                         message: '<b style="color: red;">El campo "Nombre" debe tener como máximo 199 caracteres.</b>'
+                     },
+                     regexp: {
+                         regexp: /^[a-z\s]+$/i,
+                         message: '<b style="color: red;">El campo "Nombre" debe contener solamante caracteres alfabéticos y espacios.</b>'
+                     }
+                 }
+             }
+         }
+     });
+ });
