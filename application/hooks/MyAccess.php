@@ -40,23 +40,23 @@ if (!function_exists('autentificar'))
         }
         else
         {
-            // if($CI->session->userdata('idPersona'))
-            // {
-            //     echo $CI->output->get_output();
-            //     if(autorizar($url))
-            //     {
-            //         echo $CI->output->get_output();
-            //     }
-            //     else
-            //     {
-            //         echo $CI->output->get_output();
-            //         redirect('Usuario/accesodenegado');
-            //     }
-            // }
-            // else
-            // {
-            // 	redirect('Login/muestralog');
-            // }
+            if($CI->session->userdata('idPersona'))
+            {
+                echo $CI->output->get_output();
+                if(autorizar($url))
+                {
+                    echo $CI->output->get_output();
+                }
+                else
+                {
+                    echo $CI->output->get_output();
+                    redirect('Usuario/accesodenegado');
+                }
+            }
+            else
+            {
+            	redirect('Login/muestralog');
+            }
         }
 
     }
