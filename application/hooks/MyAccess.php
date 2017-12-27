@@ -94,7 +94,9 @@ function autorizar($url)
       'criterio/addValorizacion',
       'Expediente_Tecnico/AsignarValorizacion',
       'Expediente_Tecnico/eliminarValorizacionPartida',
-
+      'DivisionFuncional/EliminarDivisionFunc',
+      'GrupoFuncional/EliminarGFuncional',
+      'Funcion/EliminarFuncion',
 
 
       'ET_Componente/cargarNivel',
