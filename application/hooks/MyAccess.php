@@ -721,7 +721,8 @@ function autorizar($url)
       'ET_Componente/eliminar',
       'ET_Meta/editarDescMeta',
       'ET_Meta/eliminar',
-      'ET_Partida/insertar'
+      'ET_Partida/insertar',
+      'Usuario/addUsuario'
 );
     foreach( $lista_API as $value ) {
       array_push($arrayPermitido, $value);
