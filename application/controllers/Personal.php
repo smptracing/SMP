@@ -106,7 +106,7 @@ class Personal extends CI_Controller
             $c_data['telefonos'] = $this->input->post("txt_telefono");
             $c_data['correo']= $this->input->post("txt_correo");
             $c_data['grado_academico'] = $this->input->post("txt_gradoacademico");
-            $c_data['especialidad'] = $this->input->post("txt_especialidad");
+            $c_data['especialidad'] = '';
             $c_data['fecha_nac']= $this->input->post("date_fechanac");
             $c_data['id_esp'] = $this->input->post("Cbx_especialidad");
             $msg = array();

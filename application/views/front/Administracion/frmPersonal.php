@@ -171,7 +171,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre  <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_nombrepersonal" name="txt_nombrepersonal" class="form-control col-md-7 col-xs-12"  placeholder="Nombre Personal" type="text">
+                          <input id="txt_nombrepersonal" name="txt_nombrepersonal" class="form-control col-md-7 col-xs-12"  placeholder="Nombre Personal" type="text" maxlength="75">
                         </div>
                       </div>
 
@@ -179,7 +179,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Apellido Paterno<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_apellidopaterno" name="txt_apellidopaterno" class="form-control col-md-7 col-xs-12"  placeholder="Apellido Paterno" type="text">
+                          <input id="txt_apellidopaterno" name="txt_apellidopaterno" class="form-control col-md-7 col-xs-12"  placeholder="Apellido Paterno" type="text" maxlength="70">
                         </div>
                       </div>
 
@@ -187,7 +187,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Apellido Materno<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_apellidomaterno" name="txt_apellidomaterno" class="form-control col-md-7 col-xs-12"  placeholder="Apellido Materno" type="text">
+                          <input id="txt_apellidomaterno" name="txt_apellidomaterno" class="form-control col-md-7 col-xs-12"  placeholder="Apellido Materno" type="text" maxlength="70">
                         </div>
                       </div>
 
@@ -203,15 +203,15 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Dirección<span class="required"></span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_direccion" name="txt_direccion" class="form-control col-md-7 col-xs-12" placeholder="Dirección" type="text">
+                          <input id="txt_direccion" name="txt_direccion" class="form-control col-md-7 col-xs-12" placeholder="Dirección" type="text" maxlength="100">
                         </div>
                       </div>
 
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Telefono<span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Celular<span class="required">*</span>
                         </label>
                         <div class="col-md-2 col-sm-2 col-xs-12">
-                          <input id="txt_telefono" name="txt_telefono" class="form-control col-md-7 col-xs-12"  placeholder="Telefono" type="text">
+                          <input id="txt_telefono" name="txt_telefono" class="form-control col-md-7 col-xs-12"  placeholder="Telefono" type="text" maxlength="9">
                         </div>
                       </div>
 
@@ -219,28 +219,26 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Correo<span class="required"></span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_correo" name="txt_correo" class="form-control col-md-7 col-xs-12" placeholder="Correo" type="email">
+                          <input id="txt_correo" name="txt_correo" class="form-control col-md-7 col-xs-12" placeholder="Correo" type="email" maxlength="100">
                         </div>
                       </div>
 
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Grado Académico<span class="required"></span>
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_gradoacademico" name="txt_gradoacademico" class="form-control col-md-7 col-xs-12"  placeholder="Grado Académico" type="text">
+                        <div class="col-md-6 col-sm-9 col-xs-6">
+                            <select   id="txt_gradoacademico" name="txt_gradoacademico" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true">
+                                <option value="">Seleccionar Grado Acádemico</option>
+                                <option value="Bachiller">Bachiller</option>
+                                <option value="Titulado">Titulado</option>
+                                <option value="Magister">Magister</option>
+                                <option value="Doctorado">Doctorado</option>
+                                <option value="Tecnico">Tecnico</option>
+                            </select>
                         </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Especialidad<span class="required"></span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_especialidad" name="txt_especialidad" class="form-control col-md-7 col-xs-12"  placeholder="Especialidad" type="text">
-                        </div>
-                      </div>
-
-                      
+                      </div>                      
                     <div class="form-group">
-                           <label class="control-label col-md-3 col-sm-3 col-xs-6">Cargo:</label>
+                           <label class="control-label col-md-3 col-sm-3 col-xs-6">Especialidad:</label>
                             <div class="col-md-6 col-sm-9 col-xs-6">
                                      <select   id="Cbx_especialidad" name="Cbx_especialidad" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true">
                                       </select>
@@ -251,7 +249,7 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Fecha Nacimiento<span class="required">*</span>
                             </label>
                                <div class="col-md-3 col-sm-3 col-xs-12">
-                                 <input type="date" id="date_fechanac" name="date_fechanac" class="form-control col-md-7 col-xs-5" type="text">
+                                 <input type="date" id="date_fechanac" name="date_fechanac" class="form-control col-md-7 col-xs-5" type="text" max="<?=date('Y-m-d')?>">
                                </div>
                       </div>
                       </div>
@@ -552,8 +550,13 @@ $(function()
                     },
                     regexp:
                     {
-                        regexp: /[A-Za-z\sáéíóú]/,
+                        regexp: /^[a-zA-Z\s]+$/,
                         message: '<b style="color: red;">El campo "Nombre" es solo texto.</b>'
+                    },
+                    stringLength:
+                    {
+                        max: 75,
+                        message: '<b style="color: red;">El campo "Nombre" no puede exceder los 75 cáracteres.</b>'
                     }
                 }
             },
@@ -567,8 +570,13 @@ $(function()
                     },
                     regexp:
                     {
-                        regexp: /[A-Za-z\sáéíóú]/,
+                        regexp: /^[a-zA-Z\s]+$/,
                         message: '<b style="color: red;">El campo "Apellido Paterno" es solo texto.</b>'
+                    },
+                    stringLength:
+                    {
+                        max: 75,
+                        message: '<b style="color: red;">El campo "Apellido Paterno" no puede exceder los 70 cáracteres.</b>'
                     }
                 }
             },
@@ -582,8 +590,13 @@ $(function()
                     },
                     regexp:
                     {
-                        regexp: /[A-Za-z\sáéíóú]/,
+                        regexp: /^[a-zA-Z\s]+$/,
                         message: '<b style="color: red;">El campo "Apellido Materno" es solo texto.</b>'
+                    },
+                    stringLength:
+                    {
+                        max: 75,
+                        message: '<b style="color: red;">El campo "Apellido Materno" no puede exceder los 70 cáracteres.</b>'
                     }
                 }
             },
@@ -609,7 +622,12 @@ $(function()
                     regexp:
                     {
                         regexp: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                        message: '<b style="color: red;">El campo "Dni" es un numero de 8 dígitos.</b>'
+                        message: '<b style="color: red;">El campo "Correo electronico" no es un correo electronico.</b>'
+                    },
+                    stringLength:
+                    {
+                        max: 75,
+                        message: '<b style="color: red;">El campo "Correo electronico" no puede exceder los 100 cáracteres.</b>'
                     }
                 }
 
@@ -620,8 +638,8 @@ $(function()
                 {
                     regexp:
                     {
-                        regexp: /^[0-9]+$/,
-                        message: '<b style="color: red;">El campo "Precio unitario" debe ser un valor en soles.</b>'
+                        regexp: /^[0-9]{9}$/,
+                        message: '<b style="color: red;">El campo "Telefono" requiere 9 dígitos.</b>'
                     }
                 }
             },
