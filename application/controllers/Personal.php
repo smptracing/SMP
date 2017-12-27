@@ -95,28 +95,29 @@ class Personal extends CI_Controller
 
     public function AddPersonal()
     {
-        if ($this->input->is_ajax_request()) {
-            $flat            = "C";
-            $id_oficina      = $Cbx_Oficina      = $this->input->post("Cbx_Oficina");
-            $nombres         = $txt_nombrepersonal         = $this->input->post("txt_nombrepersonal");
-            $apellido_p      = $txt_apellidopaterno      = $this->input->post("txt_apellidopaterno");
-            $apellido_m      = $txt_apellidomaterno      = $this->input->post("txt_apellidomaterno");
-            $dni             = $txt_dni             = $this->input->post("txt_dni");
-            $direccion       = $txt_direccion       = $this->input->post("txt_direccion");
-            $telefonos       = $txt_telefono       = $this->input->post("txt_telefono");
-            $correo          = $txt_correo          = $this->input->post("txt_correo");
-            $grado_academico = $txt_gradoacademico = $this->input->post("txt_gradoacademico");
-            $especialidad    = $txt_especialidad    = $this->input->post("txt_especialidad");
-            $Cbx_especialidad= $Cbx_especialidad    = $this->input->post("Cbx_especialidad");
-            $fecha_nac       = $date_fechanac       = $this->input->post("date_fechanac");
+        if ($this->input->is_ajax_request()) 
+        {
+            $c_data['id_oficina'] = $this->input->post("Cbx_Oficina");
+            $c_data['nombres']= $this->input->post("txt_nombrepersonal");
+            $c_data['apellido_p'] = $this->input->post("txt_apellidopaterno");
+            $c_data['apellido_m'] =  $this->input->post("txt_apellidomaterno");
+            $c_data['dni']= $this->input->post("txt_dni");
+            $c_data['direccion'] = $this->input->post("txt_direccion");
+            $c_data['telefonos'] = $this->input->post("txt_telefono");
+            $c_data['correo']= $this->input->post("txt_correo");
+            $c_data['grado_academico'] = $this->input->post("txt_gradoacademico");
+            $c_data['especialidad'] = $this->input->post("txt_especialidad");
+            $c_data['fecha_nac']= $this->input->post("date_fechanac");
+            $c_data['id_esp'] = $this->input->post("Cbx_especialidad");
+            $msg = array();
 
-            if ($this->Model_Personal->AddPersonal($flat, $id_oficina, $nombres, $apellido_p, $apellido_m, $dni, $direccion, $telefonos, $correo, $grado_academico, $especialidad,$Cbx_especialidad, $fecha_nac) == false) {
-                echo "Se añadio un  Personal";
-            } else {
-                echo "NO Se añadio  un Personal";
-            }
+            $q1 = $this->Model_Personal->addPersona($c_data);
 
-        } else {
+            $msg = ($q1>0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
+            $this->load->view('front/json/json_view', ['datos' => $msg]);
+        } 
+        else
+        {
             show_404();
         }
 

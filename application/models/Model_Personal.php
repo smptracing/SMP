@@ -23,7 +23,14 @@ class Model_Personal extends CI_Model
         return $personal->result();
     }
 
-    public function AddPersonal($flat, $id_oficina, $nombres, $apellido_p, $apellido_m, $dni, $direccion, $telefonos, $correo, $grado_academico, $especialidad,$Cbx_especialidad, $fecha_nac)
+    public function addPersona($data)
+    {
+        $this->db->insert('PERSONA',$data);
+        return $this->db->affected_rows();
+    }
+
+
+   /* public function AddPersonal($flat, $id_oficina, $nombres, $apellido_p, $apellido_m, $dni, $direccion, $telefonos, $correo, $grado_academico, $especialidad,$Cbx_especialidad, $fecha_nac)
     {
         $personal = $this->db->query("execute sp_GestionarPersona '" . $flat . "','" . $id_oficina . "','" . $nombres . "','" . $apellido_p . "','" . $apellido_m . "','" . $dni . "','" . $direccion . "','" . $telefonos . "','" . $correo . "','" . $grado_academico . "','" . $especialidad . "','" . $fecha_nac . "','". $Cbx_especialidad. "' "); //listar de division funcional
         if ($personal->num_rows() > 0) {
@@ -32,7 +39,7 @@ class Model_Personal extends CI_Model
             return null;
         }
 
-    }
+    }*/
 
     public function UpdatePersonal($flat, $id_oficina, $nombres, $apellido_p, $apellido_m, $dni, $direccion, $telefonos, $correo, $grado_academico, $especialidad, $fecha_nac)
     {

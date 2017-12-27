@@ -11,6 +11,12 @@ $(document).on("ready" ,function()
 	$("#form-addPersonal").submit(function(event)//para añadir nuevo division Personal
 	{
 		event.preventDefault();
+		$('#validarPersonal').data('formValidation').validate();
+        if(!($('#validarPersonal').data('formValidation').isValid()))
+        {
+            return;
+        }
+
 
 		$.ajax(
 		{
@@ -19,7 +25,11 @@ $(document).on("ready" ,function()
 			data : $(this).serialize(),
 			success : function(resp)
 			{
-				swal("", resp, "success");
+				//swal("", resp, "success");
+
+				resp = JSON.parse(resp);
+                ((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje,"success") : swal(resp.proceso,resp.mensaje,"error"));
+                
 				
 				$('#table-Personal').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   Persona   
 				

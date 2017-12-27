@@ -157,11 +157,12 @@
             <div class="col-xs-12">
                   <!-- FORULARIO PARA REGISTRAR NUEVO PERSONAL  -->
                 <form class="form-horizontal " id="form-addPersonal" action="<?php echo base_url(); ?>Personal/GetPersonal" method="POST">
+                    <div id="validarPersonal">
 
                     <div class="form-group">
                            <label class="control-label col-md-3 col-sm-3 col-xs-6">Oficina</label>
                             <div class="col-md-6 col-sm-9 col-xs-6">
-                                     <select   id="Cbx_Oficina" name="Cbx_Oficina" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Estado FE...">
+                                <select   id="Cbx_Oficina" name="Cbx_Oficina" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true">
                                       </select>
                             </div>
                     </div>
@@ -169,7 +170,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre  <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_nombrepersonal" name="txt_nombrepersonal" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Nombre Personal" required="required" type="text">
+                          <input id="txt_nombrepersonal" name="txt_nombrepersonal" class="form-control col-md-7 col-xs-12"  placeholder="Nombre Personal" type="text">
                         </div>
                       </div>
 
@@ -177,7 +178,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Apellido Paterno<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_apellidopaterno" name="txt_apellidopaterno" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Apellido Paterno" required="required" type="text">
+                          <input id="txt_apellidopaterno" name="txt_apellidopaterno" class="form-control col-md-7 col-xs-12"  placeholder="Apellido Paterno" type="text">
                         </div>
                       </div>
 
@@ -185,7 +186,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Apellido Materno<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_apellidomaterno" name="txt_apellidomaterno" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Apellido Materno" required="required" type="text">
+                          <input id="txt_apellidomaterno" name="txt_apellidomaterno" class="form-control col-md-7 col-xs-12"  placeholder="Apellido Materno" type="text">
                         </div>
                       </div>
 
@@ -193,7 +194,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">DNI<span class="required">*</span>
                         </label>
                         <div class="col-md-2 col-sm-2 col-xs-12">
-                          <input id="txt_dni" name="txt_dni" class="form-control col-md-7 col-xs-12" data-inputmask="'mask':'99999999'" data-validate-length-range="8" data-validate-words="8"  placeholder="DNI" required="required" type="text">
+                          <input id="txt_dni" name="txt_dni" class="form-control col-md-7 col-xs-12" placeholder="DNI" maxlength="8" type="text">
                         </div>
                       </div>
 
@@ -201,7 +202,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Dirección<span class="required"></span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_direccion" name="txt_direccion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Dirección" type="text">
+                          <input id="txt_direccion" name="txt_direccion" class="form-control col-md-7 col-xs-12" placeholder="Dirección" type="text">
                         </div>
                       </div>
 
@@ -209,7 +210,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Telefono<span class="required">*</span>
                         </label>
                         <div class="col-md-2 col-sm-2 col-xs-12">
-                          <input id="txt_telefono" name="txt_telefono" class="form-control col-md-7 col-xs-12" data-inputmask="'mask':'999999999'" data-validate-length-range="8" data-validate-words="8"  placeholder="Telefono" required="required" type="text">
+                          <input id="txt_telefono" name="txt_telefono" class="form-control col-md-7 col-xs-12"  placeholder="Telefono" type="text">
                         </div>
                       </div>
 
@@ -217,7 +218,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Correo<span class="required"></span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_correo" name="txt_correo" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Correo" type="text">
+                          <input id="txt_correo" name="txt_correo" class="form-control col-md-7 col-xs-12" placeholder="Correo" type="email">
                         </div>
                       </div>
 
@@ -225,15 +226,14 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Grado Académico<span class="required"></span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_gradoacademico" name="txt_gradoacademico" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Grado Académico" type="text">
+                          <input id="txt_gradoacademico" name="txt_gradoacademico" class="form-control col-md-7 col-xs-12"  placeholder="Grado Académico" type="text">
                         </div>
                       </div>
-
-                     <div class="item form-group">
+                      <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Especialidad<span class="required"></span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_especialidad" name="txt_especialidad" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Especialidad" type="text">
+                          <input id="txt_especialidad" name="txt_especialidad" class="form-control col-md-7 col-xs-12"  placeholder="Especialidad" type="text">
                         </div>
                       </div>
 
@@ -241,7 +241,7 @@
                     <div class="form-group">
                            <label class="control-label col-md-3 col-sm-3 col-xs-6">Especialidad</label>
                             <div class="col-md-6 col-sm-9 col-xs-6">
-                                     <select   id="Cbx_especialidad" name="Cbx_especialidad" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Especialidad...">
+                                     <select   id="Cbx_especialidad" name="Cbx_especialidad" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true">
                                       </select>
                             </div>
                     </div>
@@ -250,8 +250,9 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Fecha Nacimiento<span class="required">*</span>
                             </label>
                                <div class="col-md-3 col-sm-3 col-xs-12">
-                                 <input type="date" id="date_fechanac" name="date_fechanac" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text">
+                                 <input type="date" id="date_fechanac" name="date_fechanac" class="form-control col-md-7 col-xs-5" type="text">
                                </div>
+                      </div>
                       </div>
 
                       <div class="ln_solid"></div>
@@ -263,7 +264,7 @@
                           </button>
                            <button  class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-remove"></span>
-                            Cancelar
+                            Cerrar
                           </button>
                         </div>
                       </div>
@@ -329,7 +330,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Apellido Paterno<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_apellidopaternom" name="txt_apellidopaternom" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Apellido Paterno" required="required" type="text">
+                          <input id="txt_apellidopaternom" name="txt_apellidopaternom" class="form-control col-md-7 col-xs-12"   placeholder="Apellido Paterno"  type="text">
                         </div>
                       </div>
 
@@ -518,5 +519,126 @@
     $(this).find('form')[0].reset(); //para borrar todos los datos que tenga los input, textareas, select.
     $("label.error").remove();  //lo utilice para borrar la etiqueta de error del jquery validate
   });
+
+$(function()
+{
+    $('#validarPersonal').formValidation(
+    {
+        framework: 'bootstrap',
+        excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+        live: 'enabled',
+        message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+        trigger: null,
+        fields:
+        {
+            Cbx_Oficina:
+            {
+                validators:
+                {               
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Oficina" es requerido.</b>'
+                    }
+                }
+            },
+            txt_nombrepersonal:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Nombre" es requerido.</b>'
+                    },
+                    regexp:
+                    {
+                        regexp: /[A-Za-z\sáéíóú]/,
+                        message: '<b style="color: red;">El campo "Nombre" es solo texto.</b>'
+                    }
+                }
+            },
+            txt_apellidopaterno:
+            {
+                validators:
+                {               
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Apellido Paterno" es requerido.</b>'
+                    },
+                    regexp:
+                    {
+                        regexp: /[A-Za-z\sáéíóú]/,
+                        message: '<b style="color: red;">El campo "Apellido Paterno" es solo texto.</b>'
+                    }
+                }
+            },
+            txt_apellidomaterno:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Apellido Materno" es requerido.</b>'
+                    },
+                    regexp:
+                    {
+                        regexp: /[A-Za-z\sáéíóú]/,
+                        message: '<b style="color: red;">El campo "Apellido Materno" es solo texto.</b>'
+                    }
+                }
+            },
+            txt_dni:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "DNI" es requerido.</b>'
+                    },
+                    regexp:
+                    {
+                        regexp: /^([0-9]){8}$/,
+                        message: '<b style="color: red;">El campo "Dni" es un numero de 8 dígitos.</b>'
+                    }
+                }
+            },
+            txt_correo:
+            {
+                validators:
+                {
+                    regexp:
+                    {
+                        regexp: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                        message: '<b style="color: red;">El campo "Dni" es un numero de 8 dígitos.</b>'
+                    }
+                }
+
+            },
+            txt_telefono:
+            {
+                validators:
+                {
+                    regexp:
+                    {
+                        regexp: /^[0-9]+$/,
+                        message: '<b style="color: red;">El campo "Precio unitario" debe ser un valor en soles.</b>'
+                    }
+                }
+            },
+            date_fechanac:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Fecha de Nacimiento" es requerido.</b>'
+                    }
+                }
+            }
+        }
+    });
+});
+
+
 </script>
+
 

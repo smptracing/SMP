@@ -124,12 +124,19 @@
     {
       display: block;
     }
+    .btnDesplegable {
+      padding: 3px 4px;
+    }
     @media (max-width: 770px) {
       .tituloHeader{
         display: none;
       }
     }
   </style>
+  <script src="<?php echo base_url(); ?>assets/js/Helper/jsHelper.js"></script>
+  <script>
+    var base_url = '<?php echo base_url(); ?>';
+  </script>
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -194,8 +201,11 @@
                   </p>
                 </li>
                 <li class="user-footer">
+                  <div class="pull-left">
+                    <a href="#" onclick="paginaAjaxDialogo(null, 'Cambiar Contraseña',null, base_url+'index.php/usuario/cambiarContrasenia', 'GET', null, null, false, true);return false;" class="btn btn-default btn-flat btnDesplegable">Cambiar Contraseña</a>
+                  </div>
                   <div class="pull-right">
-                    <a href="<?php echo base_url("index.php/Login/logout");?>" class="btn btn-default btn-flat">Cerrar Sesion</a>
+                    <a href="<?php echo base_url("index.php/Login/logout");?>" class="btn btn-default btn-flat btnDesplegable">Cerrar Sesion</a>
                   </div>
                 </li>
               </ul>

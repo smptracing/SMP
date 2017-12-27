@@ -146,9 +146,6 @@ class Usuario extends CI_Controller {
 			$usuario=$this->Model_Usuario->getUsuario($this->input->get('id_persona'))[0];
 
 			$usuario_proyecto = $this->UsuarioProyecto_model->get_usuario_proyecto($this->input->get('id_persona'));
-			/*echo "<pre>";
-			var_dump($usuario_proyecto);
-			echo "</pre>";*/
 			$this->load->view('Front/Usuario/asignar_proyecto',['lista'=>$data,'usuario'=>$usuario,'usuario_proyecto'=>$usuario_proyecto]);
 		}
 		else
@@ -173,11 +170,16 @@ class Usuario extends CI_Controller {
 		{
 			$value->childModulo = $this->Model_Usuario->listaSubModulo($value->id_menu);
 		}
-		/*echo '<pre>';
-		var_dump($data);
-		echo '</pre>';
-		exit;*/
 		echo json_encode($data);
+	}
+
+	function cambiarContrasenia()
+	{
+		if($_POST)
+		{
+
+		}
+		$this->load->view('Front/Usuario/cambiarcontrasenia');
 	}
 
 }
