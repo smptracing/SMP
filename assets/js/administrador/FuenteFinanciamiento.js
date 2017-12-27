@@ -12,7 +12,44 @@ $(document).on("ready" ,function(){
 		document.getElementById("form-AddFuenteFinanciamiento").reset();
 		document.getElementById("form-EditFuenteFinanciamiento").reset();
 	}*/
+  $("#form-AddFuenteFinanciamiento").submit(function(event)
+  {
+    event.preventDefault();
 
+     /*  $('#validar').data('formValidation').validate();*/
+      /*  if(!($('#validar').data('formValidation').isValid()))
+        {
+          return;
+        }*/
+
+    var formData=new FormData($("#form-AddFuenteFinanciamiento")[0]);
+    $.ajax(
+    {
+      type:"POST",
+      enctype:'multipart/form-data',
+      url: base_url+"index.php/FuenteFinanciamiento/AddFuenteFinanciamiento",
+      data:formData,
+      cache:false,
+      contentType:false,
+      processData:false,
+      success : function(resp)
+      {
+     var registros=jQuery.parseJSON(resp);
+          if(registros.flag==0)
+          {
+            swal("",registros.msg, "success");
+            $('#form-AddFuenteFinanciamiento')[0].reset();
+            $("#VentanaRegFuenteFinanciamiento").modal("hide");
+          }
+          else
+          {
+            swal("",registros.msg,"error");
+          }
+
+        $('#dynamic-table-FuenteFinanciamiento').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
+      }
+    });
+  });
 	//formulario para ediotar
 	$("#form-EditFuenteFinanciamiento").submit(function(event)
 	{
@@ -194,7 +231,7 @@ $(function(){
              $('#form-EditFuenteFinanciamiento').data('formValidation').resetForm();
          }
      });
-     $('#validar').formValidation({
+     $('#form-AddFuenteFinanciamiento').formValidation({
         framework: 'bootstrap',
         excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
         live: 'enabled',
@@ -264,42 +301,5 @@ $(function(){
              }
          }
      });
-  $("#form-AddFuenteFinanciamiento").submit(function(event)
-  {
-    event.preventDefault();
 
-     /*  $('#validar').data('formValidation').validate();*/
-      /*  if(!($('#validar').data('formValidation').isValid()))
-        {
-          return;
-        }*/
-
-    var formData=new FormData($("#form-AddFuenteFinanciamiento")[0]);
-    $.ajax(
-    {
-      type:"POST",
-      enctype:'multipart/form-data',
-      url: base_url+"index.php/FuenteFinanciamiento/AddFuenteFinanciamiento",
-      data:formData,
-      cache:false,
-      contentType:false,
-      processData:false,
-      success : function(resp)
-      {
-     var registros=jQuery.parseJSON(resp);
-          if(registros.flag==0)
-          {
-            swal("",registros.msg, "success");
-            $('#form-AddFuenteFinanciamiento')[0].reset();
-            $("#VentanaRegFuenteFinanciamiento").modal("hide");
-          }
-          else
-          {
-            swal("",registros.msg,"error");
-          }
-
-        $('#dynamic-table-FuenteFinanciamiento').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
-      }
-    });
-  });
  });
