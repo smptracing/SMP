@@ -47,7 +47,7 @@ class bancoproyectos extends CI_Controller
             $c_data['estado_pi'] = 1;
 
             //estado_ciclo_pi
-            $d_data['id_estado_ciclo'] = $this->input->post("cbxEstCicInv_");
+           
 
             //rubro_pi
             $e_data['id_rubro'] = $this->input->post("cbxRubro");
@@ -66,7 +66,8 @@ class bancoproyectos extends CI_Controller
 
                 //INSERT estado_ciclo_pi
                 $d_data['id_pi'] = $q1;
-                $d_data['fecha_estado_ciclo_pi'] = fecha_mssql();
+                 $d_data['id_estado_ciclo'] = $this->input->post("cbxEstCicInv_");
+                $d_data['fecha_estado_ciclo_pi'] = date('Y-m-d h:i:s');
                 if($this->ESTADO_CICLO_PI_MODEL->Insertar_ciclo($d_data) == FALSE){
                     $flag = 1;
                     $msg[] = 'Error: x001ci';
@@ -74,7 +75,7 @@ class bancoproyectos extends CI_Controller
 
                 //INSERT rubro_pi
                 $e_data['id_pi'] = $q1;
-                $e_data['fecha_rubro_pi'] = fecha_mssql();
+                $e_data['fecha_rubro_pi'] = date('Y-m-d h:i:s');
                 if($this->Model_RubroE->Insertar_rubro($e_data) == 0){
                     $flag = 1;
                     $msg[] = 'Error: x001r';
@@ -82,7 +83,7 @@ class bancoproyectos extends CI_Controller
 
                 //INSERT modalidad_ejecucion_pi
                 $f_data['id_pi'] = $q1;
-                $f_data['fecha_modalidad_ejec_pi'] = fecha_mssql();
+                $f_data['fecha_modalidad_ejec_pi'] = date('Y-m-d h:i:s');
                 if($this->Model_ModalidadE->Insertar_modalidade($f_data) == FALSE){
                     $flag = 1;
                     $msg[] = 'Error: x001m';
