@@ -710,7 +710,7 @@ class Expediente_Tecnico extends CI_Controller
 					}
            		}
            		if($this->Model_ET_Expediente_Tecnico->eliminar($flat,$id_et)==true)
-	            {	            	
+	            {
 	            	echo json_encode(['proceso' => 'correcto', 'mensaje' => 'El registro fue eliminado correctamente.']);exit;
 	            }
            	}
@@ -937,7 +937,7 @@ class Expediente_Tecnico extends CI_Controller
 			{
 				echo json_encode(['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']);exit;
 			}
-			
+
 		}
 		else
 		{
@@ -1101,8 +1101,9 @@ class Expediente_Tecnico extends CI_Controller
 			echo "0";
 		}
 	}
-	public function ValorizacionFisicaMetrado($idExpedienteTecnico)
+	public function ValorizacionFisicaMetrado()
 	{
+		$idExpedienteTecnico = isset($_GET['id_et']) ? $_GET['id_et'] : '';
 		$expedienteTecnico=$this->Model_ET_Expediente_Tecnico->ExpedienteTecnico($idExpedienteTecnico);
 		if($expedienteTecnico->id_etapa_et == 1)
 		{

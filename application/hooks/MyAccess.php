@@ -94,9 +94,9 @@ function autorizar($url)
       'criterio/addValorizacion',
       'Expediente_Tecnico/AsignarValorizacion',
       'Expediente_Tecnico/eliminarValorizacionPartida',
-      
-      
-      
+
+
+
       'ET_Componente/cargarNivel',
       'ET_Observacion_Tarea/insertar',
       'ET_Levantamiento_Obs/insertar',
@@ -495,6 +495,7 @@ function autorizar($url)
       'programar_pip/GetAnioCartera',
       'MantenimientoBrecha/GetBrecha',
       'Meta/listar_correlativo',
+
       'Meta/listar_meta_presupuestal',
       'EstadoCicloInversion/get_EstadoCicloInversion',
       'TipologiaInversion/get_TipologiaInversion',
@@ -655,8 +656,8 @@ function autorizar($url)
       'ET_Tipo_Responsable/index',
 
 
-      
-      
+
+
 
 
 
@@ -706,11 +707,22 @@ function autorizar($url)
       'Unidad_Medida/editar',
       'Unidad_Medida/insertar',
       'FE_Presupuesto_Inv/index',
+
       'FE_Presupuesto_Inv/insertar',
       'FE_Presupuesto_Inv/verDetalle',
       'FE_Presupuesto_Inv/editar',
       'FE_Detalle_Presupuesto/insertar'
-    );
+
+      'ET_Per_Req/asignarPersonal',
+      'ET_Per_Req/eliminar',
+      'ET_Per_Req/insertar',
+      'ET_Componente/editarDescComponente',
+      'ET_Meta/insertar',
+      'ET_Componente/eliminar',
+      'ET_Meta/editarDescMeta',
+      'ET_Meta/eliminar',
+      'ET_Partida/insertar'
+);
     foreach( $lista_API as $value ) {
       array_push($arrayPermitido, $value);
     }

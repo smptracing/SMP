@@ -166,7 +166,7 @@
 			                        	</a>
 			                        </li>
 			                        <li role="presentation">
-		                        		<a role="menuitem" tabindex="-1" href="<?= site_url('Expediente_Tecnico/ValorizacionFisicaMetrado/'.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target='_blank'); return false;"><i class="fa fa-th-list"></i> Valorizacion Mensual
+		                        		<a role="menuitem" tabindex="-1" href="<?= site_url('Expediente_Tecnico/ValorizacionFisicaMetrado?id_et='.$ExpedienteTecnicoElaboracion[0]->id_et);?>" target='_blank'); return false;"><i class="fa fa-th-list"></i> Valorizacion Mensual
 			                        	</a>
 			                        </li>
 		                        <?php } ?>
