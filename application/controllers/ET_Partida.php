@@ -28,9 +28,6 @@ class ET_Partida extends CI_Controller
 		$rendimientoPartida=$this->input->post('rendimientoPartida');
 		$cantidadPartida=$this->input->post('cantidadPartida');
 		$precioUnitarioPartida=$this->input->post('precioUnitarioPartida');
-		//$ListaPartida=$this->input->post('idListaPartida');
-
-		//$idListaPartida=(($ListaPartida=='' || $ListaPartida==null) ? 'NULL' : $ListaPartida);
 		$idListaPartida=6;
 
 

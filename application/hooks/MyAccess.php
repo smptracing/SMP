@@ -94,11 +94,9 @@ function autorizar($url)
       'criterio/addValorizacion',
       'Expediente_Tecnico/AsignarValorizacion',
       'Expediente_Tecnico/eliminarValorizacionPartida',
-      'ET_Analisis_Unitario/insertarDetalleAnalisisUnitario',
-      'ET_Analisis_Unitario/cargarNivel',
-      'ET_Analisis_Unitario/insertarinsumo',
-      'ET_Clasificador/eliminar',
-      'ET_Comentario/insertar',
+      
+      
+      
       'ET_Componente/cargarNivel',
       'ET_Observacion_Tarea/insertar',
       'ET_Levantamiento_Obs/insertar',
@@ -586,6 +584,90 @@ function autorizar($url)
       'Expediente_Tecnico/index',
       'Expediente_Tecnico/ControlMetrado',
       'Expediente_Tecnico/ValorizacionFisicaMetrado',
+
+      'ET_Partida/insertar',
+      'ET_Partida/eliminar',
+      'ET_Partida/editarCambiosPartida',
+      'ET_Meta/insertar',
+      'ET_Meta/editarDescMeta',
+      'ET_Meta/eliminar',
+      'ET_Componente/editarDescComponente',
+      'ET_Componente/eliminar',
+      'ET_Analisis_Unitario/insertar',
+      'ET_Analisis_Unitario/insertarinsumo',
+      'ET_Analisis_Unitario/eliminar',
+      'ET_Analisis_Unitario/actualizarAnalitico',
+      'ET_Analisis_Unitario/cargarNivel',
+      'ET_Clasificador/index',
+      'ET_Clasificador/BuscarDetalleClasificador',
+      'ET_Clasificador/insertar',
+      'ET_Clasificador/editar',
+      'ET_Clasificador/eliminar',
+      'ET_Comentario/insertar',
+      'ET_Comentario/eliminar',
+      'ET_Detalle_Analisis_Unitario/insertar',
+      'ET_Detalle_Analisis_Unitario/eliminar',
+      'ET_Detalle_Partida/insertar',
+      'ET_Documento_Ejecucion/insertar',
+      'ET_Documento_Ejecucion/eliminar',
+      'ET_Documento_Ejecucion/descargar',
+      'ET_Especialista_Tarea/insertar',
+      'ET_Especialista_Tarea/eliminar',
+      'ET_Especialista_Tarea/asignarPersonal',
+      'ET_Etapa_Ejecucion/insertar',
+      'ET_Etapa_Ejecucion/index',
+      'ET_Etapa_Ejecucion/editar',
+      'ET_Img/eliminar',
+      'ET_Insumo/verPorDescripcion',
+      'ET_Levantamiento_Obs/editar',
+      'ET_Levantamiento_Obs/insertar',
+      'ET_Lista_Partida/verPorDescripcion',
+      'ET_Mes_Valorizacion/insertar',
+      'ET_Observacion_Tarea/eliminar',
+      'ET_Observacion_Tarea/insertar',
+      'ET_Per_Req/insertar',
+      'ET_Per_Req/eliminar',
+      'ET_Per_Req/asignarPersonal',
+      'ET_Per_Req/asignarQuitarCraet',
+      'ET_Presupuesto_Analitico/insertar',
+      'ET_Presupuesto_Analitico/eliminar',
+      'ET_Presupuesto_Ejecucion/index',
+      'ET_Presupuesto_Ejecucion/eliminar',
+      'ET_Presupuesto_Ejecucion/insertar',
+      'ET_Presupuesto_Ejecucion/editar',
+      'ET_Recurso/index',
+      'ET_Recurso/eliminar',
+      'ET_Recurso/insertar',
+      'ET_Recurso/editar',
+      'ET_Responsable_Tarea/asignar',
+      'ET_Tarea/index',
+      'ET_Tarea/insertarBloque',
+      'ET_Tarea/administrarDetalleETTarea',
+      'ET_Tarea_Observacion/insertar',
+      'ET_Tarea_Observacion/eliminar',
+      'ET_Tarea_Observacion/levantarObservacion',
+      'ET_Tarea_Observacion/eliminarLevantamientoObservacion',
+      'ET_Tipo_Gasto/insertar',
+      'ET_Tipo_Gasto/editar',
+      'ET_Tipo_Gasto/index',
+      'ET_Tipo_Responsable/insertar',
+      'ET_Tipo_Responsable/editar',
+      'ET_Tipo_Responsable/index',
+
+
+      
+      
+
+
+
+
+
+
+
+
+
+
+
       'PrincipalReportes/DetalleAnalitico',
       'PrincipalReportes/DetalleClasificador',
       'PrincipalReportes/DetalleMensualizado',
