@@ -239,7 +239,7 @@
 
                       
                     <div class="form-group">
-                           <label class="control-label col-md-3 col-sm-3 col-xs-6">Especialidad</label>
+                           <label class="control-label col-md-3 col-sm-3 col-xs-6">Cargo:</label>
                             <div class="col-md-6 col-sm-9 col-xs-6">
                                      <select   id="Cbx_especialidad" name="Cbx_especialidad" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true">
                                       </select>
