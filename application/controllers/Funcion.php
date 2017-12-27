@@ -185,7 +185,7 @@ class Funcion extends CI_Controller {/* Mantenimiento de sector entidad Y servic
     function EliminarFuncion(){
         if ($this->input->is_ajax_request()) {
             $flag=0;
-            $msg="";
+            $msg="x";
             $id_funcion = $this->input->post("id_funcion");
 
         if($this->Model_Funcion->EliminarFuncion($id_funcion)==true){
