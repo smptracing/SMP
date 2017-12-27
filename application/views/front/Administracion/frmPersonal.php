@@ -295,24 +295,24 @@
         <div class="modal-body">
          <div class="row">
             <div class="col-xs-12">
-                    <!-- FORULARIO PARA REGISTRAR NUEVO PERSONAL  -->
                 <form class="form-horizontal " id="form-UpdatePersonal" action="<?php echo base_url(); ?>Personal/UpdatePersonal" method="POST">
                       <div class="item form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12">
                         <input id="txt_idpersonam" name="txt_idpersonam" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
                         </div>
                       </div>
+                    <div id="validarEdicionPersonal">
                     <div class="form-group">
                            <label class="control-label col-md-3 col-sm-3 col-xs-6">Oficina</label>
                             <div class="col-md-6 col-sm-9 col-xs-6">
-                                     <select   id="Cbx_OficinaModificar" name="Cbx_OficinaModificar"  data-live-search="true"  title="">
+                                     <select   id="Cbx_OficinaModificar" name="Cbx_OficinaModificar"  data-live-search="true" >
                                       </select>
                             </div>
                     </div>
                     <div class="form-group">
                            <label class="control-label col-md-3 col-sm-3 col-xs-6">Personal</label>
                             <div class="col-md-6 col-sm-9 col-xs-6">
-                                 <select   id="Cbx_Oficinas" name="Cbx_Oficinas" class="selectpicker form-control col-md-12 col-xs-12"  title="Buscar Estado FE...">
+                                 <select   id="Cbx_Oficinas" name="Cbx_Oficinas" class="selectpicker form-control col-md-12 col-xs-12" >
                                                 </select>
                             </div>
                     </div>
@@ -321,7 +321,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre  <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_nombrepersonalm" name="txt_nombrepersonalm" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Nombre Personal" required="required" type="text">
+                          <input id="txt_nombrepersonalm" name="txt_nombrepersonalm" class="form-control col-md-7 col-xs-12"   placeholder="Nombre Personal" type="text">
                         </div>
                       </div>
 
@@ -337,7 +337,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Apellido Materno<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_apellidomaternom" name="txt_apellidomaternom" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Apellido Materno" required="required" type="text">
+                          <input id="txt_apellidomaternom" name="txt_apellidomaternom" class="form-control col-md-7 col-xs-12"   placeholder="Apellido Materno" type="text">
                         </div>
                       </div>
 
@@ -345,7 +345,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">DNI<span class="required">*</span>
                         </label>
                         <div class="col-md-2 col-sm-2 col-xs-12">
-                          <input id="txt_dnim" name="txt_dnim" class="form-control col-md-7 col-xs-12" data-inputmask="'mask':'99999999'" data-validate-length-range="8" data-validate-words="8"  placeholder="DNI" required="required" type="text">
+                          <input id="txt_dnim" name="txt_dnim" class="form-control col-md-7 col-xs-12" placeholder="DNI" type="text">
                         </div>
                       </div>
 
@@ -353,7 +353,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Dirección<span class="required"></span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_direccionm" name="txt_direccionm" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Dirección" type="text">
+                          <input id="txt_direccionm" name="txt_direccionm" class="form-control col-md-7 col-xs-12" placeholder="Dirección" type="text">
                         </div>
                       </div>
 
@@ -396,6 +396,7 @@
                                  <input type="date" id="date_fechanacm" name="date_fechanacm" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text">
                                </div>
                       </div>
+                    </div>
 
                       <div class="ln_solid"></div>
                       <div class="form-group">

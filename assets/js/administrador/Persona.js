@@ -8,7 +8,7 @@ $(document).on("ready" ,function()
 
 	});
 
-	$("#form-addPersonal").submit(function(event)//para añadir nuevo division Personal
+	$("#form-addPersonal").submit(function(event)
 	{
 		event.preventDefault();
 		$('#validarPersonal').data('formValidation').validate();
@@ -16,8 +16,6 @@ $(document).on("ready" ,function()
         {
             return;
         }
-
-
 		$.ajax(
 		{
 			url : base_url+"index.php/Personal/AddPersonal",
@@ -25,16 +23,10 @@ $(document).on("ready" ,function()
 			data : $(this).serialize(),
 			success : function(resp)
 			{
-				//swal("", resp, "success");
-
 				resp = JSON.parse(resp);
-                ((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje,"success") : swal(resp.proceso,resp.mensaje,"error"));
-                
-				
-				$('#table-Personal').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   Persona   
-				
+                ((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje,"success") : swal(resp.proceso,resp.mensaje,"error"));                		
+				$('#table-Personal').dataTable()._fnAjaxUpdate(); 
 				formReset();
-
 				$('#VentanaRegistraPersonal').modal('hide');
 			}
 		});
@@ -50,7 +42,11 @@ $(document).on("ready" ,function()
 	$("#form-UpdatePersonal").submit(function(event)//para modificar la  division Personal
 	{
 		event.preventDefault();
-
+		$('#validarEdicionPersonal').data('formValidation').validate();
+        if(!($('#validarEdicionPersonal').data('formValidation').isValid()))
+        {
+            return;
+        }
 		$.ajax(
 		{
 			url : base_url+"index.php/Personal/UpdatePersonal",

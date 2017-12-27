@@ -38,7 +38,7 @@ $(document).on("ready" ,function()
               ((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje,"success") : swal(resp.proceso,resp.mensaje,"error"));
               $('#Table_RubroPI').dataTable()._fnAjaxUpdate();
               formReset();
-              $('#venta_registar_rubro').modal('hide');
+              //$('#venta_registar_rubro').modal('hide');
             }
         });
     });
