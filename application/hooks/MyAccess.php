@@ -711,7 +711,7 @@ function autorizar($url)
       'FE_Presupuesto_Inv/insertar',
       'FE_Presupuesto_Inv/verDetalle',
       'FE_Presupuesto_Inv/editar',
-      'FE_Detalle_Presupuesto/insertar'
+      'FE_Detalle_Presupuesto/insertar',
 
       'ET_Per_Req/asignarPersonal',
       'ET_Per_Req/eliminar',
