@@ -94,7 +94,7 @@ class Model_Funcion extends CI_Model
     function EliminarFuncion($id_funcion){
         $this->db->where('id_funcion',$id_funcion);
         $this->db->delete('FUNCION');
-        if($this->db->affected_rows()>0){
+        if($this->db->affected_rows() > 0){
             return true;
         }
         else{

@@ -1,39 +1,10 @@
 $(document).on("ready" ,function(){
+
 	listaFuenteFinanciamiento();/*llamar a mi datatablet listar funcion*/
 	//abrir el modal para registrar
 
 	//REGISTARAR NUEVA fuente financiamiento
-	$("#form-AddFuenteFinanciamiento").submit(function(event)
-	{
-		event.preventDefault();
-    var formData=new FormData($("#form-AddFuenteFinanciamiento")[0]);
-		$.ajax(
-		{
-      type:"POST",
-      enctype:'multipart/form-data',
-      url: base_url+"index.php/FuenteFinanciamiento/AddFuenteFinanciamiento",
-      data:formData,
-      cache:false,
-      contentType:false,
-      processData:false,
-			success : function(resp)
-			{
-     var registros=jQuery.parseJSON(resp);
-          if(registros.flag==0)
-          {
-            swal("",registros.msg, "success");
-            $('#form-AddFuenteFinanciamiento')[0].reset();
-            $("#VentanaRegFuenteFinanciamiento").modal("hide");
-          }
-          else
-          {
-            swal("",registros.msg,"error");
-          }
-
-				$('#dynamic-table-FuenteFinanciamiento').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
-			}
-		});
-	});
+	
 
 	//limpiar campos
 	/*function formReset()
@@ -201,4 +172,134 @@ $(document).on("ready" ,function(){
                     }
                 }
 
+$(function(){
+     $("tbody").on("click", "#send", function(e) {
+         $('#form-AddFuenteFinanciamiento').data('formValidation').validate();
+         if ($('#form-AddFuenteFinanciamiento').data('formValidation').isValid() == true) {
+             $('#form-AddFuenteFinanciamiento').submit();
+             $('#form-AddFuenteFinanciamiento').each(function(){
+                 this.reset();
+             });
+             $('#form-AddFuenteFinanciamiento').data('formValidation').resetForm();
+         }
 
+     });
+          $("tbody").on("click", "#sendM", function(e) {
+         $('#form-EditFuenteFinanciamiento').data('formValidation').validate();
+         if ($('#form-EditFuenteFinanciamiento').data('formValidation').isValid() == true) {
+             $('#form-EditFuenteFinanciamiento').submit();
+             $('#form-EditFuenteFinanciamiento').each(function() {
+                 this.reset();
+             });
+             $('#form-EditFuenteFinanciamiento').data('formValidation').resetForm();
+         }
+     });
+     $('#validar').formValidation({
+        framework: 'bootstrap',
+        excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+        live: 'enabled',
+        message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+        trigger: null,
+         fields: {
+             txt_ffto: {
+                 validators: {
+                     notEmpty: {
+                         message: '<b style="color: red;">El campo "Nombre" es requerido.</b>'
+                     },
+                     stringLength: {
+                         max: 99,
+                         message: '<b style="color: red;">El campo "Nombre" debe tener como máximo 99 caracteres.</b>'
+                     },
+                     regexp: {
+                          regexp: /^[a-z\s]+$/i,
+                         message: '<b style="color: red;">El campo "Nombre" debe contener solamante caracteres alfabéticos y espacios.</b>'
+                     }
+                 }
+             },
+        txt_AcronimoFuenteFinanciamiento: {
+                 validators: {
+                     notEmpty: {
+                         message: '<b style="color: red;">El campo "Acrónimo" es requerido.</b>'
+                     },
+                     stringLength: {
+                         max: 9,
+                         message: '<b style="color: red;">El campo "Acrónimo" debe tener como máximo 09 caracteres.</b>'
+                     }
+                 }
+             }
+         }
+     });
+     $('#form-EditFuenteFinanciamiento').formValidation({
+         framework: 'bootstrap',
+         excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+         live: 'enabled',
+         message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+         trigger: null,
+         fields:{
+             txt_NombreFuenteFinanciamientoM: {
+                 validators: {
+                     notEmpty: {
+                         message: '<b style="color: red;">El campo "Nombre" es requerido.</b>'
+                     },
+                     stringLength: {
+                         max: 99,
+                         message: '<b style="color: red;">El campo "Nombre" debe tener como máximo 99 caracteres.</b>'
+                     },
+                     regexp: {
+                          regexp: /^[a-z\s]+$/i,
+                         message: '<b style="color: red;">El campo "Nombre" debe contener solamante caracteres alfabéticos y espacios.</b>'
+                     }
+                 }
+             },
+        txt_AcronimoFuenteFinanciamientoM: {
+                 validators: {
+                     notEmpty: {
+                         message: '<b style="color: red;">El campo "Acrónimo" es requerido.</b>'
+                     },
+                     stringLength: {
+                         max: 9,
+                         message: '<b style="color: red;">El campo "Acrónimo" debe tener como máximo 09 caracteres.</b>'
+                     }
+                 }
+             }
+         }
+     });
+  $("#form-AddFuenteFinanciamiento").submit(function(event)
+  {
+    event.preventDefault();
+
+     /*  $('#validar').data('formValidation').validate();*/
+      /*  if(!($('#validar').data('formValidation').isValid()))
+        {
+          return;
+        }*/
+
+    var formData=new FormData($("#form-AddFuenteFinanciamiento")[0]);
+    $.ajax(
+    {
+      type:"POST",
+      enctype:'multipart/form-data',
+      url: base_url+"index.php/FuenteFinanciamiento/AddFuenteFinanciamiento",
+      data:formData,
+      cache:false,
+      contentType:false,
+      processData:false,
+      success : function(resp)
+      {
+     var registros=jQuery.parseJSON(resp);
+          if(registros.flag==0)
+          {
+            swal("",registros.msg, "success");
+            $('#form-AddFuenteFinanciamiento')[0].reset();
+            $("#VentanaRegFuenteFinanciamiento").modal("hide");
+          }
+          else
+          {
+            swal("",registros.msg,"error");
+          }
+
+        $('#dynamic-table-FuenteFinanciamiento').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
+      }
+    });
+  });
+ });

@@ -95,8 +95,11 @@ function autorizar($url)
       'Expediente_Tecnico/AsignarValorizacion',
       'Expediente_Tecnico/eliminarValorizacionPartida',
       
-      
-      
+      'Funcion/EliminarFuncion',
+      'DivisionFuncional/EliminarDivisionFunc',
+      'GrupoFuncional/EliminarGFuncional',
+
+
       'ET_Componente/cargarNivel',
       'ET_Observacion_Tarea/insertar',
       'ET_Levantamiento_Obs/insertar',
