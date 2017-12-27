@@ -623,7 +623,11 @@ function autorizar($url)
       'FEentregableEstudio/ver_FEentregable',
       'Unidad_Medida/editar',
       'Unidad_Medida/insertar',
-      'FE_Presupuesto_Inv/index'
+      'FE_Presupuesto_Inv/index',
+      'FE_Presupuesto_Inv/insertar',
+      'FE_Presupuesto_Inv/verDetalle',
+      'FE_Presupuesto_Inv/editar',
+      'FE_Detalle_Presupuesto/insertar'
     );
     foreach( $lista_API as $value ) {
       array_push($arrayPermitido, $value);
