@@ -115,6 +115,7 @@ $(document).on("ready" ,function()
 				"dataSrc" : "data"
 			},
 			"columns" : [
+				{"data" : "id_persona" ,"visible": false},
 				{ "data" : "dni" },
 				{ "data" : "apellido_p" },
 				{ "data" : "apellido_m" },
@@ -136,6 +137,7 @@ $(document).on("ready" ,function()
 		});
 
 		personalData("#table-Personal", table);  //obtener data de la division Personal para agregar  AGREGAR                 
+		EliminarPersonal("#table-Personal", table);
 	}
 
 	var  personalData=function(tbody,table)
@@ -185,8 +187,6 @@ $(document).on("ready" ,function()
 				$("#Cbx_OficinaModificar").html(html);
 				$('#Cbx_OficinaModificar option[value='+id_oficina+']').prop('selected', true);
 				$('#Cbx_OficinaModificar').selectpicker('refresh');
-
-
 			}
 		});
 	}
@@ -216,8 +216,6 @@ $(document).on("ready" ,function()
 				$('select[name=Cbx_Oficinas]').val(id_oficina);//PARA AGREGAR UN COMBO PSELECIONADO
 				$('select[name=Cbx_Oficinas]').change();
 				$('.selectpicker').selectpicker('refresh'); 
-
-
 			}
 		});
 	}
@@ -252,8 +250,39 @@ $(document).on("ready" ,function()
 		});
 	}
 
-
-
+                var EliminarPersonal=function(tbody,table){
+                  $(tbody).on("click","button.eliminar",function(){
+                        var data=table.row( $(this).parents("tr")).data();
+                        var id_persona=data.id_persona;
+                         swal({
+                                title: "Desea eliminar el Registro ?",
+                                text: "",
+                                type: "warning",
+                                showCancelButton: true,
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "Yes,Eliminar",
+                                closeOnConfirm: false
+                              },
+                              function(){
+                                    $.ajax({
+                                          url:base_url+"index.php/Personal/EliminarPersonal",
+                                          type:"POST",
+                                          data:{id_persona:id_persona},
+                                          success:function(respuesta){
+                                           var registros=jQuery.parseJSON(respuesta);
+                                           if(registros.flag==0){
+                                            swal("Elimando.",registros.msg, "success");
+                                            $('#table-Personal').dataTable()._fnAjaxUpdate();
+                                           }
+                                           else{
+                                            swal("Error.",registros.msg, "error");
+                                            $('#table-Personal').dataTable()._fnAjaxUpdate();
+                                           }
+                                           }
+                                        });
+                              });
+                    });
+                }
 
 
                 /*fin crea tabla division Personal*/ 

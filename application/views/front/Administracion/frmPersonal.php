@@ -45,6 +45,7 @@
                                                             <table id="table-Personal" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
                               																<thead>
                               																	<tr>
+                                                                  <th>ID</th>
                               																		<th>DNI</th>
                               																		<th>A. Paterno</th>
                               																		<th>A. Materno</th>

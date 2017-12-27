@@ -149,6 +149,30 @@ class Personal extends CI_Controller
         }
 
     }
+    public function EliminarPersonal()
+    {
+        if ($this->input->is_ajax_request()) {
+            $flag=0;
+            $msg="";
+            $id_persona = $this->input->post("id_persona");
+
+        if($this->Model_Personal->EliminarPersonal($id_persona)==true){
+                $flag=0;
+                $msg="registro Eliminado Satisfactoriamente";
+            }
+            else{
+                $flag=1;
+                $msg="No se pudo eliminar";
+            }
+                    $datos['flag']=$flag;
+                    $datos['msg']=$msg;
+                    echo json_encode($datos);
+        }  else {
+            show_404();
+        }
+
+    }
+
     /*fin Personal*/
     public function BuscarPersonaCargo()
     {

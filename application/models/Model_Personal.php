@@ -28,7 +28,18 @@ class Model_Personal extends CI_Model
         $this->db->insert('PERSONA',$data);
         return $this->db->affected_rows();
     }
+    public function EliminarPersonal($id_persona)
+    {
+      $this->db->where('id_persona',$id_persona);
+      $this->db->delete('PERSONA');
+      if($this->db->affected_rows()>0){
+      return true;
+      } 
+      else{
+        return false;
+      } 
 
+    }
 
    /* public function AddPersonal($flat, $id_oficina, $nombres, $apellido_p, $apellido_m, $dni, $direccion, $telefonos, $correo, $grado_academico, $especialidad,$Cbx_especialidad, $fecha_nac)
     {

@@ -118,6 +118,7 @@ function autorizar($url)
       'mensaje/eliminarMensaje',
       'Usuario/getUsuario',
       'mensaje/enviar',
+      'Personal/EliminarPersonal',
 
       'Mo_MonitoreodeProyectos/index',
       'Mo_MonitoreodeProyectos/BuscarProyecto',
