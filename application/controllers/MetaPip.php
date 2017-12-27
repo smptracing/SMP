@@ -36,7 +36,7 @@ class MetaPip extends CI_Controller
     {
       //$codigo_unico_pi = $this->input->get('codigo_unico_pi');
       $codigo_unico_pi = $this->input->get('codigo_unico_pi');
-      if($codigo_unico_pi!='') {
+      //if($codigo_unico_pi!='') {
         $year = date('Y');
         $data['listar_montos'] = $this->MetaPip_Model->getDataSiaf($year,$codigo_unico_pi);
 
@@ -44,12 +44,12 @@ class MetaPip extends CI_Controller
            $this->load->view('Front/Pmi/frmMetaPip', $data);
            $this->load->view('layout/PMI/footer');
            $this->load->view('Front/Pmi/js/jsMetaPip');
-      } else {
+      /*} else {
         $this->load->view('layout/PMI/header');
         $this->load->view('Front/Pmi/frmMetaPip');
         $this->load->view('layout/PMI/footer');
         $this->load->view('Front/Pmi/js/jsMetaPip');
-      }
+      }*/
     }
 
     // public function meta_pip_modal()

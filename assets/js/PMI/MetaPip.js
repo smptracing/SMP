@@ -148,7 +148,7 @@ $(document).on("ready" ,function()
                                    }},*/
                                     {"data": function (data, type, dataToSet) {
                                       //return "<button onclick=\"paginaAjaxDialogo(null,'Formulacion y Evaluacion',{codigo_unico_pi:"+data.codigo_unico_pi+"},base_url+'index.php/MetaPip/meta_pip_modal','GET',null,null,false,true)\"; class=\"meta_pip btn btn-primary btn-xs\"><span class=\"fa fa-edit\"></span>  Editar</button>"
-                                      return "<a href='#Ventana_Meta_Presupuestal_PI' onclick='meta_pi_cup("+data.codigo_unico_pi+")'  class='meta_pip btn btn-success btn-xs' data-toggle='modal' data-id='"+data.codigo_unico_pi+"'>REPLY</a>"
+                                      return "<a href='#Ventana_Meta_Presupuestal_PI' onclick='meta_pi_cup("+data.codigo_unico_pi+")'  class='meta_pip btn btn-success btn-xs' data-toggle='modal' data-id='"+data.codigo_unico_pi+"'><i class='fa fa-usd' aria-hidden='true'></i></a>"
                                       }
                                     }
                                 ],
