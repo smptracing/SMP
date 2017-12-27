@@ -538,7 +538,7 @@ class bancoproyectos extends CI_Controller
         {
             $c_data['id_modalidad_ejec'] = $this->input->post("Cbx_ModalidadEjec");
             $c_data['id_pi']= $this->input->post("txt_id_pip_ModalidadEjec");
-            $c_data['fecha_modalidad_ejec_pi'] = date("d-m-Y H:i:s");
+            $c_data['fecha_modalidad_ejec_pi'] = date("Y-m-d H:i:s");
             $msg = array();
 
             $q1 = $this->bancoproyectos_modal->AgregarModalidadEjecucionPip($c_data);

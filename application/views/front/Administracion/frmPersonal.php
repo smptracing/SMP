@@ -296,121 +296,97 @@
          <div class="row">
             <div class="col-xs-12">
                 <form class="form-horizontal " id="form-UpdatePersonal" action="<?php echo base_url(); ?>Personal/UpdatePersonal" method="POST">
-                      <div class="item form-group">
+                    <div class="item form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12">
                         <input id="txt_idpersonam" name="txt_idpersonam" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
                         </div>
-                      </div>
+                    </div>
                     <div id="validarEdicionPersonal">
                     <div class="form-group">
-                           <label class="control-label col-md-3 col-sm-3 col-xs-6">Oficina</label>
-                            <div class="col-md-6 col-sm-9 col-xs-6">
-                                     <select   id="Cbx_OficinaModificar" name="Cbx_OficinaModificar"  data-live-search="true" >
-                                      </select>
-                            </div>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-6">Oficina</label>
+                        <div class="col-md-6 col-sm-9 col-xs-6">
+                            <select id="Cbx_OficinaModificar" name="Cbx_OficinaModificar"  data-live-search="true" >
+                            </select>
+                        </div>
                     </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre*</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="txt_nombrepersonalm" name="txt_nombrepersonalm" class="form-control col-md-7 col-xs-12"   placeholder="Nombre Personal" type="text">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Apellido Paterno*</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="txt_apellidopaternom" name="txt_apellidopaternom" class="form-control" placeholder="Apellido Paterno"  type="text">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Apellido Materno*</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="txt_apellidomaternom" name="txt_apellidomaternom" class="form-control col-md-7 col-xs-12"   placeholder="Apellido Materno" type="text">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">DNI*</label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                            <input id="txt_dnim" name="txt_dnim" class="form-control col-md-7 col-xs-12" placeholder="DNI" type="text" maxlength="8">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Dirección</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="txt_direccionm" name="txt_direccionm" class="form-control col-md-7 col-xs-12" placeholder="Dirección" type="text">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Telefono</label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                            <input id="txt_telefonom" name="txt_telefonom" class="form-control col-md-7 col-xs-12" placeholder="Telefono" type="text">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Correo</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="txt_correom" name="txt_correom" class="form-control col-md-7 col-xs-12" placeholder="Correo" type="text">
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Grado Académico</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <select   id="txt_gradoacademico" name="txt_gradoacademico" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true">
+                                <option value="">Seleccionar Grado Acádemico</option>
+                                <option value="Bachiller">Bachiller</option>
+                                <option value="Titulado">Titulado</option>
+                                <option value="Magister">Magister</option>
+                                <option value="Doctorado">Doctorado</option>
+                                <option value="Tecnico">Tecnico</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Especialidad</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="txt_especialidadm" name="txt_especialidadm" class="form-control col-md-7 col-xs-12" placeholder="Especialidad" type="text">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Fecha Nacimiento*</label>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <input type="date" id="date_fechanacm" name="date_fechanacm" class="form-control">
+                        </div>
+                    </div>
+                    </div>
+                    <div class="ln_solid"></div>
                     <div class="form-group">
-                           <label class="control-label col-md-3 col-sm-3 col-xs-6">Personal</label>
-                            <div class="col-md-6 col-sm-9 col-xs-6">
-                                 <select   id="Cbx_Oficinas" name="Cbx_Oficinas" class="selectpicker form-control col-md-12 col-xs-12" >
-                                                </select>
-                            </div>
-                    </div>
-
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre  <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_nombrepersonalm" name="txt_nombrepersonalm" class="form-control col-md-7 col-xs-12"   placeholder="Nombre Personal" type="text">
-                        </div>
-                      </div>
-
-                        <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Apellido Paterno<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_apellidopaternom" name="txt_apellidopaternom" class="form-control col-md-7 col-xs-12"   placeholder="Apellido Paterno"  type="text">
-                        </div>
-                      </div>
-
-                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Apellido Materno<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_apellidomaternom" name="txt_apellidomaternom" class="form-control col-md-7 col-xs-12"   placeholder="Apellido Materno" type="text">
-                        </div>
-                      </div>
-
-                     <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">DNI<span class="required">*</span>
-                        </label>
-                        <div class="col-md-2 col-sm-2 col-xs-12">
-                          <input id="txt_dnim" name="txt_dnim" class="form-control col-md-7 col-xs-12" placeholder="DNI" type="text">
-                        </div>
-                      </div>
-
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Dirección<span class="required"></span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_direccionm" name="txt_direccionm" class="form-control col-md-7 col-xs-12" placeholder="Dirección" type="text">
-                        </div>
-                      </div>
-
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Telefono<span class="required">*</span>
-                        </label>
-                        <div class="col-md-2 col-sm-2 col-xs-12">
-                          <input id="txt_telefonom" name="txt_telefonom" class="form-control col-md-7 col-xs-12" data-inputmask="'mask':'999999999'" data-validate-length-range="8" data-validate-words="8"  placeholder="Telefono" required="required" type="text">
-                        </div>
-                      </div>
-
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Correo<span class="required"></span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_correom" name="txt_correom" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Correo" type="text">
-                        </div>
-                      </div>
-
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Grado Académico<span class="required"></span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_gradoacademicom" name="txt_gradoacademicom" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Grado Académico" type="text">
-                        </div>
-                      </div>
-
-                         <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Especialidad<span class="required"></span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_especialidadm" name="txt_especialidadm" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Especialidad" type="text">
-                        </div>
-                      </div>
-
-                        <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Fecha Nacimiento<span class="required">*</span>
-                            </label>
-                               <div class="col-md-3 col-sm-3 col-xs-12">
-                                 <input type="date" id="date_fechanacm" name="date_fechanacm" class="form-control col-md-7 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text">
-                               </div>
-                      </div>
-                    </div>
-
-                      <div class="ln_solid"></div>
-                      <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button id="send" type="submit" class="btn btn-success">
-                            <span class="glyphicon glyphicon-floppy-disk"></span>
-                            Guardar
-                          </button>
-                           <button  class="btn btn-danger" data-dismiss="modal">
-                             <span class="glyphicon glyphicon-remove"></span>
+                            <button id="send" type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
+                            <button class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>
                             Cancelar
-                          </button>
+                            </button>
                         </div>
-                      </div>
+                    </div>
                 </form> <!-- FORULARIO para modificar personal -->
             </div><!-- /.span -->
                  </div><!-- /.row -->
@@ -645,6 +621,141 @@ $(function()
                 }
             },
             date_fechanac:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Fecha de Nacimiento" es requerido.</b>'
+                    }
+                }
+            }
+        }
+    });
+
+    $('#validarEdicionPersonal').formValidation(
+    {
+        framework: 'bootstrap',
+        excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+        live: 'enabled',
+        message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+        trigger: null,
+        fields:
+        {
+            Cbx_OficinaModificar:
+            {
+                validators:
+                {               
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Oficina" es requerido.</b>'
+                    }
+                }
+            },
+            txt_nombrepersonalm:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Nombre" es requerido.</b>'
+                    },
+                    regexp:
+                    {
+                        regexp: /^[a-zA-Z\s]+$/,
+                        message: '<b style="color: red;">El campo "Nombre" es solo texto.</b>'
+                    },
+                    stringLength:
+                    {
+                        max: 75,
+                        message: '<b style="color: red;">El campo "Nombre" no puede exceder los 75 cáracteres.</b>'
+                    }
+                }
+            },
+            txt_apellidopaternom:
+            {
+                validators:
+                {               
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Apellido Paterno" es requerido.</b>'
+                    },
+                    regexp:
+                    {
+                        regexp: /^[a-zA-Z\s]+$/,
+                        message: '<b style="color: red;">El campo "Apellido Paterno" es solo texto.</b>'
+                    },
+                    stringLength:
+                    {
+                        max: 75,
+                        message: '<b style="color: red;">El campo "Apellido Paterno" no puede exceder los 70 cáracteres.</b>'
+                    }
+                }
+            },
+            txt_apellidomaternom:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Apellido Materno" es requerido.</b>'
+                    },
+                    regexp:
+                    {
+                        regexp: /^[a-zA-Z\s]+$/,
+                        message: '<b style="color: red;">El campo "Apellido Materno" es solo texto.</b>'
+                    },
+                    stringLength:
+                    {
+                        max: 75,
+                        message: '<b style="color: red;">El campo "Apellido Materno" no puede exceder los 70 cáracteres.</b>'
+                    }
+                }
+            },
+            txt_dnim:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "DNI" es requerido.</b>'
+                    },
+                    regexp:
+                    {
+                        regexp: /^([0-9]){8}$/,
+                        message: '<b style="color: red;">El campo "Dni" es un numero de 8 dígitos.</b>'
+                    }
+                }
+            },
+            txt_correom:
+            {
+                validators:
+                {
+                    regexp:
+                    {
+                        regexp: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                        message: '<b style="color: red;">El campo "Correo electronico" no es un correo electronico.</b>'
+                    },
+                    stringLength:
+                    {
+                        max: 75,
+                        message: '<b style="color: red;">El campo "Correo electronico" no puede exceder los 100 cáracteres.</b>'
+                    }
+                }
+
+            },
+            txt_telefonom:
+            {
+                validators:
+                {
+                    regexp:
+                    {
+                        regexp: /^[0-9]{9}$/,
+                        message: '<b style="color: red;">El campo "Telefono" requiere 9 dígitos.</b>'
+                    }
+                }
+            },
+            date_fechanacm:
             {
                 validators:
                 {
