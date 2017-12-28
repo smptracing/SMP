@@ -125,5 +125,17 @@ class Model_Usuario extends CI_Model
         $data = $this->db->query("select * from MENU where id_padre_home = $idModulo and url is not null");
         return $data->result();
     }
+    function cambiarContrasenia($idPersona,$contraseniaNueva)
+    {
+        $this->db->set('contrasenia',$contraseniaNueva);
+        $this->db->where('id_persona',$idPersona);
+        $this->db->update('usuario');
+        return $this->db->affected_rows();
+
+       /* $this->db->set($actividad);
+        $this->db->where('id_actividad', $idActividad);
+        $this->db->update('MO_ACTIVIDAD');
+        return $this->db->affected_rows();*/
+    }
 
 }
