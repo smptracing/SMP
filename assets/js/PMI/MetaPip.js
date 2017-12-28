@@ -375,7 +375,7 @@ var EliminarMetaPresupuestalPi=function(tbody,table){
                   $(tbody).on("click","button.eliminar",function(){
                       var data=table.row( $(this).parents("tr")).data();
                         var id_meta_pi=data.id_meta_pi;
-                        console.log(data);
+                        //console.log(data);
                          swal({
                                 title: "Desea eliminar ?",
                                 text: "",
