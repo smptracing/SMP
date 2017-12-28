@@ -316,6 +316,7 @@ $("#Cbx_AnioCartera").change(function() {
         AddMeta_Pi("#table_ejecucion",table);
 }
 //fin de proyectos de inversion en Ejecucion
+
 //listar proyectos de inversion en Funcionamiento
  var lista_funcionamiento=function() //operacion y mantenimiento
 {
