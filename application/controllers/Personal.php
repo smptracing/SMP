@@ -144,24 +144,6 @@ class Personal extends CI_Controller
 
             $msg = ($q1>0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
             $this->load->view('front/json/json_view', ['datos' => $msg]);
-            /*$flat            = "U";
-            $id_oficina      = $cbxlistaoficinam      = $this->input->post("Cbx_OficinaModificar");
-            $nombres         = $txt_nombrepersonalm         = $this->input->post("txt_nombrepersonalm");
-            $apellido_p      = $txt_apellidopaternom      = $this->input->post("txt_apellidopaternom");
-            $apellido_m      = $txt_apellidomaternom      = $this->input->post("txt_apellidomaternom");
-            $dni             = $txt_dnim             = $this->input->post("txt_dnim");
-            $direccion       = $txt_direccionm       = $this->input->post("txt_direccionm");
-            $telefonos       = $txt_telefonom       = $this->input->post("txt_telefonom");
-            $correo          = $txt_correom          = $this->input->post("txt_correom");
-            $grado_academico = $txt_gradoacademicom = $this->input->post("txt_gradoacademicom");
-            $especialidad    = $txt_especialidadm    = $this->input->post("txt_especialidadm");
-            $fecha_nac       = $date_fechanacm       = $this->input->post("date_fechanacm");
-
-            if ($this->Model_Personal->UpdatePersonal($flat, $id_oficina, $nombres, $apellido_p, $apellido_m, $dni, $direccion, $telefonos, $correo, $grado_academico, $especialidad, $fecha_nac) == false) {
-                echo "Se actualizo correctamente el Personal";
-            } else {
-                echo "NO Se actualizo correctamente el Personal";
-            }*/
 
         } 
         else 

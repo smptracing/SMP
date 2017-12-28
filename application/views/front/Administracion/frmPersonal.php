@@ -1,3 +1,9 @@
+<style>
+    .mayuscula
+    {
+        text-transform: uppercase;
+    }
+</style>
 <div class="right_col" role="main">
           <div class="">
 
@@ -161,54 +167,54 @@
                     <div id="validarPersonal">
 
                     <div class="form-group">
-                           <label class="control-label col-md-3 col-sm-3 col-xs-6">Oficina</label>
+                           <label class="mayuscula control-label col-md-3 col-sm-3 col-xs-6">Oficina</label>
                             <div class="col-md-6 col-sm-9 col-xs-6">
                                 <select   id="Cbx_Oficina" name="Cbx_Oficina" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true">
                                       </select>
                             </div>
                     </div>
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre  <span class="required">*</span>
+                        <label class="mayuscula control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre  <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_nombrepersonal" name="txt_nombrepersonal" class="form-control col-md-7 col-xs-12"  placeholder="Nombre Personal" type="text" maxlength="75">
+                          <input id="txt_nombrepersonal" name="txt_nombrepersonal" class="mayuscula form-control col-md-7 col-xs-12"  placeholder="Nombre Personal" type="text" maxlength="75">
                         </div>
                       </div>
 
                         <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Apellido Paterno<span class="required">*</span>
+                        <label class=" mayuscula control-label col-md-3 col-sm-3 col-xs-12" for="name">Apellido Paterno<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_apellidopaterno" name="txt_apellidopaterno" class="form-control col-md-7 col-xs-12"  placeholder="Apellido Paterno" type="text" maxlength="70">
+                          <input id="txt_apellidopaterno" name="txt_apellidopaterno" class="mayuscula form-control col-md-7 col-xs-12"  placeholder="Apellido Paterno" type="text" maxlength="70">
                         </div>
                       </div>
 
                        <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Apellido Materno<span class="required">*</span>
+                        <label class="mayuscula control-label col-md-3 col-sm-3 col-xs-12" for="name">Apellido Materno<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_apellidomaterno" name="txt_apellidomaterno" class="form-control col-md-7 col-xs-12"  placeholder="Apellido Materno" type="text" maxlength="70">
+                          <input id="txt_apellidomaterno" name="txt_apellidomaterno" class="mayuscula form-control col-md-7 col-xs-12"  placeholder="Apellido Materno" type="text" maxlength="70">
                         </div>
                       </div>
 
                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">DNI<span class="required">*</span>
+                        <label class="mayuscula control-label col-md-3 col-sm-3 col-xs-12" for="name">DNI<span class="required">*</span>
                         </label>
                         <div class="col-md-2 col-sm-2 col-xs-12">
-                          <input id="txt_dni" name="txt_dni" class="form-control col-md-7 col-xs-12" placeholder="DNI" maxlength="8" type="text">
+                          <input id="txt_dni" name="txt_dni" class="mayuscula form-control col-md-7 col-xs-12" placeholder="DNI" maxlength="8" type="text">
                         </div>
                       </div>
 
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Dirección<span class="required"></span>
+                        <label class="mayuscula control-label col-md-3 col-sm-3 col-xs-12" for="name">Dirección<span class="required"></span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_direccion" name="txt_direccion" class="form-control col-md-7 col-xs-12" placeholder="Dirección" type="text" maxlength="100">
+                          <input id="txt_direccion" name="txt_direccion" class="mayuscula form-control col-md-7 col-xs-12" placeholder="Dirección" type="text" maxlength="100">
                         </div>
                       </div>
 
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Celular<span class="required">*</span>
+                        <label class="mayuscula control-label col-md-3 col-sm-3 col-xs-12" for="name">Celular<span class="required">*</span>
                         </label>
                         <div class="col-md-2 col-sm-2 col-xs-12">
                           <input id="txt_telefono" name="txt_telefono" class="form-control col-md-7 col-xs-12"  placeholder="Telefono" type="text" maxlength="9">
@@ -216,7 +222,7 @@
                       </div>
 
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Correo<span class="required"></span>
+                        <label class="mayuscula control-label col-md-3 col-sm-3 col-xs-12" for="name">Correo<span class="required"></span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input id="txt_correo" name="txt_correo" class="form-control col-md-7 col-xs-12" placeholder="Correo" type="email" maxlength="100">
@@ -224,7 +230,7 @@
                       </div>
 
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Grado Académico<span class="required"></span>
+                        <label class="mayuscula control-label col-md-3 col-sm-3 col-xs-12" for="name">Grado Académico<span class="required"></span>
                         </label>
                         <div class="col-md-6 col-sm-9 col-xs-6">
                             <select   id="txt_gradoacademico" name="txt_gradoacademico" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true">
@@ -238,7 +244,7 @@
                         </div>
                       </div>                      
                     <div class="form-group">
-                           <label class="control-label col-md-3 col-sm-3 col-xs-6">Especialidad:</label>
+                           <label class="mayuscula control-label col-md-3 col-sm-3 col-xs-6">Especialidad:</label>
                             <div class="col-md-6 col-sm-9 col-xs-6">
                                      <select   id="Cbx_especialidad" name="Cbx_especialidad" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true">
                                       </select>
@@ -246,7 +252,7 @@
                     </div>
 
                         <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Fecha Nacimiento<span class="required">*</span>
+                            <label class="mayuscula control-label col-md-3 col-sm-3 col-xs-12" for="name">Fecha Nacimiento<span class="required">*</span>
                             </label>
                                <div class="col-md-3 col-sm-3 col-xs-12">
                                  <input type="date" id="date_fechanac" name="date_fechanac" class="form-control col-md-7 col-xs-5" type="text" max="<?=date('Y-m-d')?>">
@@ -296,7 +302,7 @@
         <div class="modal-body">
          <div class="row">
             <div class="col-xs-12">
-                <form class="form-horizontal " id="form-UpdatePersonal" action="<?php echo base_url(); ?>Personal/UpdatePersonal" method="POST">
+                <form class="mayuscula form-horizontal " id="form-UpdatePersonal" action="<?php echo base_url(); ?>Personal/UpdatePersonal" method="POST">
                     <div class="item form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12">
                         <input id="txt_idpersonam" name="txt_idpersonam" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
@@ -305,56 +311,56 @@
                     <div id="validarEdicionPersonal">
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-6">Oficina</label>
-                        <div class="col-md-6 col-sm-9 col-xs-6">
+                        <div class="mayuscula col-md-6 col-sm-9 col-xs-6">
                             <select id="Cbx_OficinaModificar" name="Cbx_OficinaModificar"  data-live-search="true" >
                             </select>
                         </div>
                     </div>
                     <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre*</label>
+                        <label class="mayuscula control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre*</label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input id="txt_nombrepersonalm" name="txt_nombrepersonalm" class="form-control col-md-7 col-xs-12"   placeholder="Nombre Personal" type="text">
+                            <input id="txt_nombrepersonalm" name="txt_nombrepersonalm" class="mayuscula form-control col-md-7 col-xs-12"   placeholder="Nombre Personal" type="text">
                         </div>
                     </div>
                     <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Apellido Paterno*</label>
+                        <label class="mayuscula control-label col-md-3 col-sm-3 col-xs-12" for="name">Apellido Paterno*</label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input id="txt_apellidopaternom" name="txt_apellidopaternom" class="form-control" placeholder="Apellido Paterno"  type="text">
+                            <input id="txt_apellidopaternom" name="txt_apellidopaternom" class="mayuscula form-control" placeholder="Apellido Paterno"  type="text">
                         </div>
                     </div>
                     <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Apellido Materno*</label>
+                        <label class="mayuscula control-label col-md-3 col-sm-3 col-xs-12" for="name">Apellido Materno*</label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input id="txt_apellidomaternom" name="txt_apellidomaternom" class="form-control col-md-7 col-xs-12"   placeholder="Apellido Materno" type="text">
+                            <input id="txt_apellidomaternom" name="txt_apellidomaternom" class="mayuscula form-control col-md-7 col-xs-12"   placeholder="Apellido Materno" type="text">
                         </div>
                     </div>
                     <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">DNI*</label>
+                        <label class="mayuscula control-label col-md-3 col-sm-3 col-xs-12" for="name">DNI*</label>
                         <div class="col-md-2 col-sm-2 col-xs-12">
                             <input id="txt_dnim" name="txt_dnim" class="form-control col-md-7 col-xs-12" placeholder="DNI" type="text" maxlength="8">
                         </div>
                     </div>
                     <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Dirección</label>
+                        <label class="mayuscula control-label col-md-3 col-sm-3 col-xs-12" for="name">Dirección</label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input id="txt_direccionm" name="txt_direccionm" class="form-control col-md-7 col-xs-12" placeholder="Dirección" type="text">
+                            <input id="txt_direccionm" name="txt_direccionm" class="mayuscula form-control col-md-7 col-xs-12" placeholder="Dirección" type="text">
                         </div>
                     </div>
                     <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Telefono</label>
+                        <label class="mayuscula control-label col-md-3 col-sm-3 col-xs-12" for="name">Telefono</label>
                         <div class="col-md-2 col-sm-2 col-xs-12">
                             <input id="txt_telefonom" name="txt_telefonom" class="form-control col-md-7 col-xs-12" placeholder="Telefono" type="text" maxlength="9">
                         </div>
                     </div>
                     <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Correo</label>
+                        <label class="mayuscula control-label col-md-3 col-sm-3 col-xs-12" for="name">Correo</label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <input id="txt_correom" name="txt_correom" class="form-control col-md-7 col-xs-12" placeholder="Correo" type="text">
                         </div>
                     </div>
 
                     <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Grado Académico</label>
+                        <label class="mayuscula control-label col-md-3 col-sm-3 col-xs-12" for="name">Grado Académico</label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <select   id="txt_gradoacademicom" name="txt_gradoacademicom" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true">
                                 <option value="">Seleccionar Grado Acádemico</option>
@@ -367,14 +373,14 @@
                         </div>
                     </div>
                     <div class="form-group">
-                           <label class="control-label col-md-3 col-sm-3 col-xs-6">Especialidad:</label>
+                           <label class="mayuscula control-label col-md-3 col-sm-3 col-xs-6">Especialidad:</label>
                             <div class="col-md-6 col-sm-9 col-xs-6">
                                      <select   id="txtEspecialidadm" name="txtEspecialidadm" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true">
                                       </select>
                             </div>
                     </div>
                     <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Fecha Nacimiento*</label>
+                        <label class="mayuscula control-label col-md-3 col-sm-3 col-xs-12" for="name">Fecha Nacimiento*</label>
                         <div class="col-md-3 col-sm-3 col-xs-12">
                             <input type="date" id="date_fechanacm" name="date_fechanacm" class="form-control" max="<?=date('Y-m-d')?>">
                         </div>
