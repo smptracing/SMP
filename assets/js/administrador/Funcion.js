@@ -1,15 +1,16 @@
  $(document).on("ready" ,function(){
-                //alert("sdas");
-               //lista();
-            //division funcional
 
-                listaFuncion();/*llamar a mi datatablet listar funcion*/
+listaFuncion();/*llamar a mi datatablet listar funcion*/
 
 	$("#form-addFuncion").submit(function(event)//para añadir nueva funcion
 	{
 		event.preventDefault();
-
-		$.ajax(
+        $('#validarFuncion').data('formValidation').validate();
+        if(!($('#validarFuncion').data('formValidation').isValid()))
+        {
+            return;
+        }		
+        $.ajax(
 		{
 			url : base_url+"index.php/Funcion/AddFucion",
 			type : $(this).attr('method'),
@@ -21,17 +22,26 @@
 				$('#table-Funcion').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
 
 				listaFuncionCombo();
-
+        formReset();
 				$('#VentanaRegistraFuncion').modal('hide');
 			}
 
 		});
 	});
 
+function formReset(){
+  document.getElementById("form-addFuncion").reset();
+  document.getElementById("form-ModificarFuncion").reset();
+}
+
 	$("#form-ModificarFuncion").submit(function(event)//Actualizar funcion
 	{
-		event.preventDefault();
-
+    event.preventDefault();
+        $('#validarFuncionM').data('formValidation').validate();
+        if(!($('#validarFuncionM').data('formValidation').isValid()))
+        {
+            return;
+        } 
 		$.ajax(
 		{
 			url : base_url+"index.php/Funcion/UpdateFuncion",

@@ -157,18 +157,19 @@
             <div class="col-xs-12">
                   <!-- FORULARIO PARA REGISTRAR NUEVO FUNCION  -->
                 <form class="form-horizontal " id="form-addFuncion" action="<?php echo base_url(); ?>Funcion/GetFuncion" method="POST">
+                   <div id="validarFuncion">
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Código Función <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_codigofuncion" name="txt_codigofuncion" class="form-control col-md-7 col-xs-12" data-inputmask="'mask':'99'" data-validate-length-range="2" data-validate-words="2"  placeholder="Código Función" required="required" type="text">
+                          <input id="txt_codigofuncion" name="txt_codigofuncion" class="form-control col-md-7 col-xs-12" placeholder="Código Función" type="text" maxlength="2">
                         </div>
                       </div>
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre Función <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_nombrefuncion" name="txt_nombrefuncion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Nombre Función" required="required" type="text">
+                          <input id="txt_nombrefuncion" name="txt_nombrefuncion" class="form-control col-md-7 col-xs-12" placeholder="Nombre Función" type="text">
                         </div>
                       </div>
                       <div class="ln_solid"></div>
@@ -183,6 +184,7 @@
                             Cancelar
                           </button>
                         </div>
+                      </div>
                       </div>
                 </form> <!-- FORULARIO PARA REGISTRAR NUEVO FUNCION  -->
             </div><!-- /.span -->
@@ -521,4 +523,89 @@
     $(this).find('form')[0].reset(); //para borrar todos los datos que tenga los input, textareas, select.
     $("label.error").remove();  //lo utilice para borrar la etiqueta de error del jquery validate
   });
+
+$(function()
+{
+   $('#validarFuncion').formValidation(
+    {
+         framework: 'bootstrap',
+         excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+         live: 'enabled',
+         message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+         trigger: null,
+         fields: {
+             txt_codigofuncion: {
+                 validators: {
+                     notEmpty: {
+                         message: '<b style="color: red;">El campo "Código" es requerido.</b>'
+                     },
+                     stringLength: {
+                         max: 2,
+                         message: '<b style="color: red;">El campo "Código" debe tener como máximo 02 caracteres.</b>'
+                     },
+                     regexp: {
+                          regexp: /^[0-9]+$/,
+                         message: '<b style="color: red;">El campo "Código" debe contener solamente números.</b>'
+                     }
+                 }
+             },
+        txt_nombrefuncion: {
+                 validators: {
+                     notEmpty: {
+                         message: '<b style="color: red;">El campo "Nombre" es requerido.</b>'
+                     },
+                     stringLength: {
+                         max: 199,
+                         message: '<b style="color: red;">El campo "Nombre" debe tener como máximo 199 caracteres.</b>'
+                     },
+                     regexp: {
+                         regexp: /^[a-z\s]+$/i,
+                         message: '<b style="color: red;">El campo "Nombre" debe contener solamante caracteres alfabéticos y espacios.</b>'
+                     }
+                 }
+             }
+         }
+     });
+
+     $('#validarFuncionM').formValidation({
+         framework: 'bootstrap',
+         excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+         live: 'enabled',
+         message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+         trigger: null,
+         fields: {
+             txt_codigofuncionM: {
+                 validators: {
+                     notEmpty: {
+                         message: '<b style="color: red;">El campo "Código" es requerido.</b>'
+                     },
+                     stringLength: {
+                         max: 2,
+                         message: '<b style="color: red;">El campo "Código" debe tener como máximo 02 caracteres.</b>'
+                     },
+                     regexp: {
+                          regexp: /^[0-9]+$/,
+                         message: '<b style="color: red;">El campo "Código" debe contener solamente números.</b>'
+                     }
+                 }
+             },
+        txt_nombrefuncionM: {
+                 validators: {
+                     notEmpty: {
+                         message: '<b style="color: red;">El campo "Nombre" es requerido.</b>'
+                     },
+                     stringLength: {
+                         max: 199,
+                         message: '<b style="color: red;">El campo "Nombre" debe tener como máximo 199 caracteres.</b>'
+                     },
+                     regexp: {
+                         regexp: /^[a-z\s]+$/i,
+                         message: '<b style="color: red;">El campo "Nombre" debe contener solamante caracteres alfabéticos y espacios.</b>'
+                     }
+                 }
+             }
+         }
+     });
+ });
+
 </script>

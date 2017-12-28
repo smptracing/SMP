@@ -267,6 +267,7 @@
                           </button>
                         </div>
                       </div>
+                  
                 </form> <!-- FORULARIO PARA REGISTRAR NUEVO Personal  -->
             </div><!-- /.span -->
           </div><!-- /.row -->
@@ -616,7 +617,13 @@ $(function()
                     regexp:
                     {
                         regexp: /^[0-9]{9}$/,
-                        message: '<b style="color: red;">El campo "Telefono" requiere 9 dígitos.</b>'
+                        message: '<b style="color: red;">El campo "Telefono" requiere carácteres numéricos.</b>'
+                    },
+                   stringLength:
+                    {
+                        min: 5,
+                        max: 9,
+                        message: '<b style="color: red;">El campo "Teléfono" debe contener entre 5 y 9 carácteres numéricos.</b>'
                     }
                 }
             },
