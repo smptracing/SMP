@@ -148,6 +148,7 @@ function autorizar($url)
       'Mo_Compromiso/asignarresponsable',
 
 //12345
+      'bancoproyectos/eliminarEstadoCiclo',
       'bancoproyectos/Get_ubigeo_pip',
       'bancoproyectos/eliminarModalidadPi',
       'bancoproyectos/editarUbicacionGeografica',

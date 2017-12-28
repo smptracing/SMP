@@ -20,7 +20,7 @@ $(document).on("ready" ,function()
                 ((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje,"success") : swal(resp.proceso,resp.mensaje,"error"));
                 $('#Table_ModalidadPI').dataTable()._fnAjaxUpdate();
                 formReset();
-                $('#ventanaModalidadEjecucion').modal('hide');
+               /* $('#ventanaModalidadEjecucion').modal('hide');*/
             }
         });
     });
@@ -60,8 +60,9 @@ $(document).on("ready" ,function()
                     swal("NO SE REGISTRÓ","NO se regristró ", "error");
                 }
                 $('#Table_Estado_Ciclo').dataTable()._fnAjaxUpdate();
-                $('#table_proyectos_inversion').dataTable()._fnAjaxUpdate();
-                $('#ventana_ver_estado_ciclo').modal('hide');
+               /* $('#table_proyectos_inversion').dataTable()._fnAjaxUpdate();
+                $('#ventana_ver_estado_ciclo').modal('hide');*/
+                formReset();
             }
         });
     });
@@ -94,6 +95,7 @@ $(document).on("ready" ,function()
                     swal(resp.proceso,resp.mensaje,"error");
                 }
                 $('#TableUbigeoProyecto_x').dataTable()._fnAjaxUpdate();
+                formReset();
             }
         });
     });
