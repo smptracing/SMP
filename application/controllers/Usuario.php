@@ -8,6 +8,7 @@ class Usuario extends CI_Controller {
 			parent::__construct();
 		$this->load->model('Model_Usuario');
 		$this->load->model('Model_Personal');
+		$this->load->model("Login_model");
 		$this->load->model('bancoproyectos_modal');
 		$this->load->model('UsuarioProyecto_model');
 	}
@@ -177,6 +178,33 @@ class Usuario extends CI_Controller {
 	{
 		if($_POST)
 		{
+			$msg = array();
+			$contraseniaActual=sha1($this->input->post('txtContraseniaActual'));
+			$contraseniaNueva=$this->input->post('txtContraseniaNueva');
+			$repiteContrasenia=$this->input->post('txtContraseniaRepite');
+			if($contraseniaNueva!=$repiteContrasenia)
+			{
+				echo json_encode(['proceso' => 'Error', 'mensaje' => 'La contraseña nueva y la contraseña que se repite no son las mismas']);exit;
+			}
+			$query = $this->Login_model->login( $this->session->userdata('nombreUsuario'), $contraseniaActual);
+			if($query->num_rows()>0)
+			{
+				$q1 = $this->Model_Usuario->cambiarContrasenia($this->session->userdata('idPersona'),sha1($contraseniaNueva));
+				if($q1>0)
+				{
+					echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'La contraseña ha sido actualizada correctamente']);exit;
+				}
+				else
+				{
+					echo json_encode(['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado']);exit;
+
+				}				
+			}
+			else
+			{
+				echo json_encode(['proceso' => 'Error', 'mensaje' => 'La contraseña es Incorrecta']);exit;
+				
+			}
 
 		}
 		$this->load->view('Front/Usuario/cambiarcontrasenia');
