@@ -250,9 +250,9 @@ $(document).on("ready" ,function()
 				}
 
 				$("#Cbx_especialidad").html(html);
-				$("#Cbx_especialidad").html(html);
-				$('select[name=Cbx_especialidad]').val(id_oficina);//PARA AGREGAR UN COMBO PSELECIONADO
-				$('select[name=Cbx_especialidad]').change();
+				//$("#Cbx_especialidad").html(html);
+				//$('select[name=Cbx_especialidad]').val(id_oficina);//PARA AGREGAR UN COMBO PSELECIONADO
+				//$('select[name=Cbx_especialidad]').change();
 				$('.selectpicker').selectpicker('refresh'); 
 			}
 		});
@@ -280,9 +280,8 @@ $(document).on("ready" ,function()
 				}
 
 				$("#txtEspecialidadm").html(html);
-				$("#txtEspecialidadm").html(html);
-				$('select[name=txtEspecialidadm]').val(id_oficina);//PARA AGREGAR UN COMBO PSELECIONADO
-				$('select[name=txtEspecialidadm]').change();
+				//$('select[name=txtEspecialidadm]').val(id_oficina);//PARA AGREGAR UN COMBO PSELECIONADO
+				//$('select[name=txtEspecialidadm]').change();
 				$('.selectpicker').selectpicker('refresh'); 
 			}
 		});

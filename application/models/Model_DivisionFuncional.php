@@ -65,16 +65,19 @@ class Model_DivisionFuncional extends CI_Model
 
           return $data->result()[0];
         }
-        function EliminarDivFuncional($id_div_funcional){
+        function EliminarDivFuncional($id_div_funcional)
+        {
           $this->db->where('id_div_funcional',$id_div_funcional);
           $this->db->delete('DIVISION_FUNCIONAL');
-          if($this->db->affected_rows()>0){
-            return true;
-          }
-          else {
-            return false;
-          }
+          return $this->db->affected_rows();
         }
+    function verificarDivisionFuncional($id_div_funcional)
+    {
+        $this->db->select('grupo_funcional.*');
+        $this->db->from('grupo_funcional');
+        $this->db->where('grupo_funcional.id_div_funcional',$id_div_funcional);
+        return $this->db->get()->result();
+    }
         
           
 }

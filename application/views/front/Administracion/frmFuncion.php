@@ -184,7 +184,7 @@
                           </button>
                            <button  class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-remove"></span>
-                            Cancelar
+                            Cerrar
                           </button>
                         </div>
                       </div>
@@ -250,7 +250,7 @@
                           </button>
                           <button  class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-remove"></span>
-                            Cancelar
+                            Cerrar
                           </button>
                         </div>
                       </div>
@@ -319,7 +319,7 @@
                           </button>
                           <button  data-dismiss="modal" class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-remove"></span>
-                            Cancelar
+                            Cerrar
                           </button>
 
                         </div>
@@ -389,7 +389,7 @@
                           </button>
                           <button type="button" class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-remove"></span>
-                            Cancelar
+                            Cerrar
                           </button>
                         </div>
                       </div>
@@ -446,7 +446,7 @@
                           </button>
                           <button type="button" class="btn btn-danger" data-dismiss="modal">
                             <span class="glyphicon glyphicon-remove"></span>
-                            Cancelar
+                            Cerrar
                           </button>
                         </div>
                       </div>
@@ -507,7 +507,7 @@
                               </button>
                               <button data-dismiss="modal" class="btn btn-danger">
                                <span class="glyphicon glyphicon-remove"></span>
-                              Cancelar
+                              Cerrar
                             </button>
                         </div>
                       </div>

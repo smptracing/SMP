@@ -354,16 +354,11 @@ $(document).on("ready" ,function()
                                           url:base_url+"index.php/DivisionFuncional/EliminarDivisionFunc",
                                           type:"POST",
                                           data:{id_div_funcional:id_div_funcional},
-                                          success:function(respuesta){
-                                           var registros=jQuery.parseJSON(respuesta);
-                                           if(registros.flag==0){
-                                            swal("Elimando.",registros.msg, "success");
-                                            $('#table-DivisionF').dataTable()._fnAjaxUpdate();
-                                           }
-                                           else{
-                                            swal("Error.",registros.msg, "error");
-                                            $('#table-DivisionF').dataTable()._fnAjaxUpdate();
-                                           }
+                                          success:function(resp)
+                                          {
+                                                resp = JSON.parse(resp);
+                                                swal(resp.proceso,resp.mensaje,(resp.proceso=='Correcto'?'success':'error'));   
+                                                $('#table-DivisionF').dataTable()._fnAjaxUpdate();
                                            }
                                         });
                               });

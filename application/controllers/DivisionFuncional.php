@@ -88,23 +88,22 @@ class DivisionFuncional extends CI_Controller {/* Mantenimiento de division func
 
     }
     function EliminarDivisionFunc(){
-        if ($this->input->is_ajax_request()) {
-            $flag=0;
-            $msg="";
-            $id_div_funcional = $this->input->post("id_div_funcional");
-
-        if($this->Model_DivisionFuncional->EliminarDivFuncional($id_div_funcional)==true){
-                $flag=0;
-                $msg="registro Eliminado Satisfactoriamente";
-            }
-            else{
-                $flag=1;
-                $msg="No se pudo eliminar";
-            }
-                    $datos['flag']=$flag;
-                    $datos['msg']=$msg;
-                    echo json_encode($datos);
-        }  else {
+        if ($this->input->is_ajax_request())
+        {
+            $msg=array();
+            $c=count($this->Model_DivisionFuncional->verificarDivisionFuncional($this->input->post("id_div_funcional")));
+            if($c>0)
+            {
+                $msg=(['proceso' => 'Error', 'mensaje' => 'Esta division funcional esta relacionada a un grupo funcional, no puede ser eliminada']);
+                $this->load->view('front/json/json_view', ['datos' => $msg]);
+                return;
+            }             
+            $q1 = $this->Model_DivisionFuncional->EliminarDivFuncional($this->input->post("id_div_funcional"));
+            $msg=($q1>0 ? (['proceso' => 'Correcto', 'mensaje' => 'Registro eliminado correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado']));
+            $this->load->view('front/json/json_view', ['datos' => $msg]);
+        }  
+        else
+        {
             show_404();
         }
 
