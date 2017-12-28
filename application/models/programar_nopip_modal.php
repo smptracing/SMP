@@ -99,6 +99,25 @@ class programar_nopip_modal extends CI_Model
             return false;
         }
     }
+    // inicio lectura de procedimiento sp_ListarMontosProyectoAnio
+    public function listar_montos($flat, $codigounico,$aniometa)
+    {
+        $listar_montos=$this->db->query("sp_ListarMontosProyectoAnio 
+                                        @flat='".$flat."',
+                                        @codigounico='".$codigounico."',
+                                        @aniometa='".$aniometa."'
+                                        ")
+                    if ($listar_montos->num_rows() > 0) {
+                        return $listar_montos->result();
+                    } else {
+                        return false;
+                    }
+
+
+    }
+
+    //fin de lectura 
+
     public function EliminarMetaPI($flat, $id_meta_pi)
     {
         $this->db->query("execute sp_Gestionar_Meta_Presupuestal_Pi

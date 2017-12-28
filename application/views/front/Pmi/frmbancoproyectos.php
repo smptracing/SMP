@@ -196,33 +196,33 @@
                         </div>
                         <div class="col-md-4">
 
-                        <div class="col-md-6 col-sm-6 col-xs-12  form-group">
+                        <!-- <div class="col-md-6 col-sm-6 col-xs-12  form-group">
                         <label  for="name">Fuente Finan.<span class="required">*</span>
                         </label>
                         <select id="cbxFuenteFinanc" name="cbxFuenteFinanc" class="selectpicker" title="Elija fuente de financiamiento">
                         </select>
-                        </div>
+                        </div> -->
                         </div>
                         </div>
 
                         <div class="row">
                         <div class="col-md-4">
 
-                        <div class="col-md-6 col-sm-6 col-xs-12  form-group">
+                        <!-- <div class="col-md-6 col-sm-6 col-xs-12  form-group">
                         <label for="textbox"><span class="required">Rubro Ejecucion</span>
                         </label>
                         <select id="cbxRubro" name="cbxRubro" class="selectpicker"  title="Elija Rubro">
                         </select>
-                        </div>
+                        </div> -->
                         </div>
                         <div class="col-md-4">
 
-                        <div class="col-md-6 col-sm-6 col-xs-12  form-group">
+                        <!-- <div class="col-md-6 col-sm-6 col-xs-12  form-group">
                         <label  for="textbox"><span class="required">Modalidad</span>
                         </label>
                          <select id="cbxModalidadEjec" name="cbxModalidadEjec" class="selectpicker"   title="Elija Modalidad de Ejecucion">
                         </select>
-                        </div>
+                        </div> -->
                         </div>
                         <div class="col-md-4">
                         <div class="col-md-6 col-sm-6 col-xs-12  form-group">
@@ -847,27 +847,27 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <label  for="name">Fuente Finan.<span class="required">*</span></label>
+                                        <!-- <label  for="name">Fuente Finan.<span class="required">*</span></label>
                                             <select id="cbxFuenteFinanciamiento_m" name="cbxFuenteFinanciamiento_m" class="selectpicker" >
                                             </select>
-                                         </div>
+                                         </div> -->
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <!-- <div class="col-md-6 col-sm-6 col-xs-12">
                                         <label for="textbox"><span class="required">Rubro Ejecucion</span></label>
                                         <select id="cbxRubroEjecucion_m" name="cbxRubroEjecucion_m" class="selectpicker" >
                                         </select>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <!-- <div class="col-md-6 col-sm-6 col-xs-12">
                                         <label  for="textbox"><span class="required">Modalidad</span>
                                         </label>
                                         <select id="cbxModalidadEjecucion_m" name="cbxModalidadEjecucion_m" class="selectpicker"  >
                                         </select>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="col-md-4">
                                     <div class="col-md-6 col-sm-6 col-xs-12">
