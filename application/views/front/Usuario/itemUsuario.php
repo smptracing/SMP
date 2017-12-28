@@ -150,7 +150,7 @@ $(function()
                 submodulo.push(
                 {
                     id:objectJSON[i].childModulo[j].id_menu,
-                    text:objectJSON[i].childModulo[j].nombre,
+                    text:objectJSON[i].childModulo[j].url.split("/",1))+" - "+objectJSON[i].childModulo[j].nombre,
                     spriteCssClass:"html",
                     checked:compara(objectJSON[i].childModulo[j].id_menu)
                 });
