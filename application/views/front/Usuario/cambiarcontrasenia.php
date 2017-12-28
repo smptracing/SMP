@@ -5,84 +5,49 @@
 	}
 </style>
 
-<form class="form-horizontal" id="frmAgregarPeriodo" action="<?php echo base_url();?>index.php/Expediente_Tecnico/editar" method="POST">
+<form class="form-horizontal" id="frmCambioContrasenia" action="<?php echo base_url();?>index.php/Expediente_Tecnico/editar" method="POST">
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_content">
-					<div class="row">
-						<input type="hidden" class="form-control" name="hdIdEt" id="hdIdEt" value="<?=$ExpedienteTecnico->id_et?>">	
-						<div class="col-md-3 col-sm-3 col-xs-12">
-							<label class="control-label">Fecha de Inicio:</label>
+					<div class="row" id="validarCambioContrasenia">
+						<div class="col-md-4 col-sm-3 col-xs-12">
+							<label class="control-label">Contraseña Actual:</label>
 							<div>
-								<input type="date" class="form-control" name="txtFechaInicio" id="txtFechaInicio" value="<?=(new DateTime($ExpedienteTecnico->fecha_inicio_et))->format('Y-m-d')?>">	
+								<input type="password" class="form-control" name="txtContraseniaActual" id="txtContraseniaActual" value="">	
 							</div>	
 						</div>
-						<div class="col-md-3 col-sm-3 col-xs-12">
-							<label class="control-label">Fecha Fin:</label>
+						<div class="col-md-4 col-sm-3 col-xs-12">
+							<label class="control-label">Nueva Contraseña:</label>
 							<div>
-								<input type="date" name="txtFechaFin" class="form-control" id="txtFechaFin" value="<?=(new DateTime($ExpedienteTecnico->fecha_fin_et))->format('Y-m-d')?>" >
-							</div>	
-							<p style="color: red; display: none;" id="Advertencia">La Fecha de Inicio no puede ser mayor a la Fecha de Fin</p>
-						</div>
-						<div class="col-md-3 col-sm-3 col-xs-12">
-							<label class="control-label">Numero de Meses:</label>
-							<div>
-								<input type="text" readonly="readonly" name="txtTotalMeses" id= "txtTotalMeses" class="form-control" value="<?=$ExpedienteTecnico->num_meses?> meses"  >
+								<input type="password" class="form-control" name="txtContraseniaNueva" id="txtContraseniaNueva" value="">	
 							</div>	
 						</div>
+						<div class="col-md-4 col-sm-3 col-xs-12">
+							<label class="control-label">Repita Contraseña:</label>
+							<div>
+								<input type="password" class="form-control" name="txtContraseniaRepite" id="txtContraseniaRepite" value="">	
+							</div>	
+						</div>						
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>	
-	<div class="row" style="text-align: right;">
+	<br>
+	<div class="row" style="float:  right;">
+		<div class="col-md-12 col-sm-12 col-xs-12">
 		<button type="submit" id="btnEnviarFormulario" class="btn btn-success">Guardar</button>
 		<button  class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+			
+		</div>
+		
 	</div>
 </form>
 <script>
-	$(document).ready(function()
-	{
-	    $('input[type="date"]').change(function()
-	    {
-	    	var fecha1 = $('#txtFechaInicio').val();
-	    	var fecha2 = $('#txtFechaFin').val();
-	    	if((Date.parse(fecha1)) > (Date.parse(fecha2)))
-	    	{
-	    		$('#Advertencia').css('display','block');
-	    		$('#txtTotalMeses').val("");
-	    	}	
-	    	else
-	    	{
-	    		$('#Advertencia').css('display','none');
-	    		$.ajax(
-				{
-					url: base_url+"index.php/Expediente_Tecnico/CalcularNumeroMeses",
-					type: 'POST',
-					data:
-					{
-						txtFecha1: fecha1,
-						txtFecha2: fecha2
-					},
-					cache: false,
-					async: true
-				}).done(function(objectJSON) 
-				{
-					objectJSON = JSON.parse(objectJSON);
-					$('#txtTotalMeses').val(objectJSON.numerodemeses+" Meses");
-
-				}).fail(function()
-				{
-					swal('Error', 'Error no controlado.', 'error');
-				});
-	    	}	    	  	
-	    });
-	});
-
 	$(function()
 	{
-		$('#frmAgregarPeriodo').formValidation(
+		$('#validarCambioContrasenia').formValidation(
 		{
 			framework: 'bootstrap',
 			excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
@@ -91,23 +56,33 @@
 			trigger: null,
 			fields:
 			{
-				txtFechaInicio:
+				txtContraseniaActual:
 				{
 					validators:
 					{					
 						notEmpty:
 						{
-							message: '<b style="color: red;">El campo "Fecha de Inicio" es requerido.</b>'
+							message: '<b style="color: red;">El campo "Contarseña Actual" es requerido.</b>'
 						}
 					}
 				},
-				txtFechaFin:
+				txtContraseniaNueva:
 				{
 					validators:
 					{
 						notEmpty:
 						{
-							message: '<b style="color: red;">El campo "Fecha de Finalizacion" es requerido.</b>'
+							message: '<b style="color: red;">El campo "Contraseña Nueva" es requerido.</b>'
+						}
+					}
+				},
+				txtContraseniaRepite:
+				{
+					validators:
+					{
+						notEmpty:
+						{
+							message: '<b style="color: red;">El campo "Repita Contraseña" es requerido.</b>'
 						}
 					}
 				}
@@ -117,18 +92,16 @@
     $('#btnEnviarFormulario').on('click', function(event)
    	{
             event.preventDefault();
-            $('#frmAgregarPeriodo').data('formValidation').resetField($('#txtFechaInicio'));
-            $('#frmAgregarPeriodo').data('formValidation').resetField($('#txtFechaFin'));
-            $('#frmAgregarPeriodo').data('formValidation').validate();
-			if(!($('#frmAgregarPeriodo').data('formValidation').isValid()))
+            $('#validarCambioContrasenia').data('formValidation').validate();
+			if(!($('#validarCambioContrasenia').data('formValidation').isValid()))
 			{
 				return;
 			}
-            var formData=new FormData($("#frmAgregarPeriodo")[0]);
-            var dataString = $('#frmAgregarPeriodo').serialize();
+            var formData=new FormData($("#frmCambioContrasenia")[0]);
+            var dataString = $('#frmCambioContrasenia').serialize();
             $.ajax({
                 type:"POST",
-                url:base_url+"index.php/Expediente_Tecnico/PeriodoEjecucion",
+                url:base_url+"index.php/Usuario/cambiarContrasenia",
                 data: formData,
                 cache: false,
                 contentType:false,
@@ -141,13 +114,15 @@
                 {
                 	resp=JSON.parse(resp);
                 	swal(resp.proceso,resp.mensaje,(resp.proceso=='Correcto') ? 'success':'error');
-                    window.location.href=base_url+"index.php/Expediente_Tecnico/verdetalle?id_et="+<?= $ExpedienteTecnico->id_et?>;
+                    $('#modalCambio').modal('hide');
+                    window.location.href=base_url+"index.php/Inicio";
                 }
             });
-          $('#frmAsignarOrden')[0].reset();
+          	$('#frmCambioContrasenia')[0].reset();
     });
 	
 </script>
+
 
 
 

@@ -14,6 +14,9 @@
   <link href="<?php echo base_url(); ?>assets/adminlte/ionicons.min.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/adminlte/AdminLTE.min.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/adminlte/_all-skins.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/formValidation.min.css">
+  <link href="<?php echo base_url(); ?>assets/css/jquery.growl.css" rel="stylesheet">    
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/js/sweetalert.css">
   <style>
     /*.skin-blue .main-header li.user-header {
       background-color: #2a3f54;
@@ -133,6 +136,7 @@
       }
     }
   </style>
+  <script src="<?php echo base_url(); ?>assets/Template/vendors/jquery/dist/jquery.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/Helper/jsHelper.js"></script>
   <script>
     var base_url = '<?php echo base_url(); ?>';
@@ -202,7 +206,7 @@
                 </li>
                 <li class="user-footer">
                   <div class="pull-left">
-                    <a href="#" onclick="paginaAjaxDialogo(null, 'Cambiar Contraseña',null, base_url+'index.php/usuario/cambiarContrasenia', 'GET', null, null, false, true);return false;" class="btn btn-default btn-flat btnDesplegable">Cambiar Contraseña</a>
+                    <a href="#" onclick="paginaAjaxDialogo('modalCambio', 'Cambiar Contraseña',null, base_url+'index.php/usuario/cambiarContrasenia', 'GET', null, null, false, true);return false;" class="btn btn-default btn-flat btnDesplegable">Cambiar Contraseña</a>
                   </div>
                   <div class="pull-right">
                     <a href="<?php echo base_url("index.php/Login/logout");?>" class="btn btn-default btn-flat btnDesplegable">Cerrar Sesion</a>
@@ -285,11 +289,14 @@
     </div>
   </footer>
 </div>
-<script src="<?php echo base_url(); ?>assets/adminlte/jquery-2.2.3.min.js"> </script>
+
 <script src="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/formValidation.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/bootstrap.validation.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/adminlte/jquery.slimscroll.min.js"> </script>
 <script src="<?php echo base_url(); ?>assets/adminlte/fastclick.min.js"> </script>
 <script src="<?php echo base_url(); ?>assets/adminlte/app.min.js"> </script>
 <script src="<?php echo base_url(); ?>assets/adminlte/demo.js"> </script>
+<script src="<?php echo base_url(); ?>assets/dist/js/sweetalert-dev.js"></script>
 </body>
 </html>
