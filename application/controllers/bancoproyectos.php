@@ -409,7 +409,7 @@ class bancoproyectos extends CI_Controller
                 {
                     $q1 = $this->bancoproyectos_modal->InsertarUbigeo_Pi($c_data);
 
-                    $config['upload_path'] = './uploads/cartera/';
+                    $config['upload_path'] = './uploads/ImgUbicacionProyecto/';
                     $config['allowed_types'] = '*';
                     $config['max_size'] = '20048';
 
