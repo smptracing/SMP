@@ -418,7 +418,7 @@ class bancoproyectos extends CI_Controller
                     if (!$this->upload->do_upload('ImgUbicacion'))
                     {
                         $msg=(['proceso' => 'Error', 'mensaje' => $this->upload->display_errors('', '')]);
-                        $this->load->view('front/json/json_view',['datos' => $error]);
+                        $this->load->view('front/json/json_view',['datos' => $msg]);
                     }
                     else
                     {
