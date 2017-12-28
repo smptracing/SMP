@@ -124,8 +124,27 @@ class Personal extends CI_Controller
     }
     public function UpdatePersonal()
     {
-        if ($this->input->is_ajax_request()) {
-            $flat            = "U";
+        if ($this->input->is_ajax_request())
+        {
+            $c_data['id_oficina'] = $this->input->post("Cbx_OficinaModificar");
+            $c_data['nombres']= $this->input->post("txt_nombrepersonalm");
+            $c_data['apellido_p'] = $this->input->post("txt_apellidopaternom");
+            $c_data['apellido_m'] =  $this->input->post("txt_apellidomaternom");
+            $c_data['dni']= $this->input->post("txt_dnim");
+            $c_data['direccion'] = $this->input->post("txt_direccionm");
+            $c_data['telefonos'] = $this->input->post("txt_telefonom");
+            $c_data['correo']= $this->input->post("txt_correom");
+            $c_data['grado_academico'] = $this->input->post("txt_gradoacademicom");
+            $c_data['especialidad'] = '';
+            $c_data['fecha_nac']= $this->input->post("date_fechanacm");
+            $c_data['id_esp'] = $this->input->post("txtEspecialidadm");
+            $msg = array();
+
+            $q1 = $this->Model_Personal->UpdatePersonal($c_data,$this->input->post("txt_idpersonam"));
+
+            $msg = ($q1>0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
+            $this->load->view('front/json/json_view', ['datos' => $msg]);
+            /*$flat            = "U";
             $id_oficina      = $cbxlistaoficinam      = $this->input->post("Cbx_OficinaModificar");
             $nombres         = $txt_nombrepersonalm         = $this->input->post("txt_nombrepersonalm");
             $apellido_p      = $txt_apellidopaternom      = $this->input->post("txt_apellidopaternom");
@@ -142,9 +161,11 @@ class Personal extends CI_Controller
                 echo "Se actualizo correctamente el Personal";
             } else {
                 echo "NO Se actualizo correctamente el Personal";
-            }
+            }*/
 
-        } else {
+        } 
+        else 
+        {
             show_404();
         }
 

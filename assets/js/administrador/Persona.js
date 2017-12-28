@@ -2,6 +2,7 @@ $(document).on("ready" ,function()
 {
 	listarpersona();//para mostrar lista de las personas
 	listarEspecialidad();
+	listarEspecialidadm();
 	$("#btn_nuevoPersonal").click(function()//para que cargue el como una vez echo click sino repetira datos
 	{
 		listarOficina();
@@ -54,13 +55,18 @@ $(document).on("ready" ,function()
 			data : $(this).serialize(),
 			success : function(resp)
 			{
-				swal("", resp, "success");
+				resp = JSON.parse(resp);
+                ((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje,"success") : swal(resp.proceso,resp.mensaje,"error"));                		
+				$('#table-Personal').dataTable()._fnAjaxUpdate(); 
+				formReset();
+				$('#VentanaModificarPersonal').modal('hide');
+				/*swal("", resp, "success");
 				
 				$('#table-Personal').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   Persona   
 				
 				formReset();
 
-				$('#VentanaModificarPersonal').modal('hide');
+				$('#VentanaModificarPersonal').modal('hide');*/
 			}
 		});
 	});
@@ -150,9 +156,15 @@ $(document).on("ready" ,function()
 			var txt_direccionm=$('#txt_direccionm').val(data.direccion);
 			var txt_telefonom=$('#txt_telefonom').val(data.telefonos);
 			var txt_correom=$('#txt_correom').val(data.correo);
-			var txt_gradoacademicom=$('#txt_gradoacademicom').val(data.grado_academico);
-			var txt_especialidadm=$('#txt_especialidadm').val(data.especialidad);
+			//var txt_gradoacademicom=$('#txt_gradoacademicom').val(data.grado_academico);
+			//var txt_especialidadm=$('#txt_especialidadm').val(data.especialidad);
 			var date_fechanacm=$('#date_fechanacm').val(data.fecha_nac);
+
+			$('#txt_gradoacademicom option[value='+data.grado_academico+']').prop('selected', true);
+			$('#txt_gradoacademicom').selectpicker('refresh');
+
+			$('#txtEspecialidadm option[value='+data.id_esp+']').prop('selected', true);
+			$('#txtEspecialidadm').selectpicker('refresh');
 
 			listarOficina(id_oficina);
 			listarOficinaModificar(id_oficina);
@@ -241,6 +253,36 @@ $(document).on("ready" ,function()
 				$("#Cbx_especialidad").html(html);
 				$('select[name=Cbx_especialidad]').val(id_oficina);//PARA AGREGAR UN COMBO PSELECIONADO
 				$('select[name=Cbx_especialidad]').change();
+				$('.selectpicker').selectpicker('refresh'); 
+			}
+		});
+	}
+
+	var listarEspecialidadm=function()
+	{
+		event.preventDefault(); 
+
+		var html="";
+
+		$("#txtEspecialidadm").html(html); 
+
+		$.ajax(
+		{
+			"url" : base_url+"index.php/Personal/GetEspecilidad",
+			"type" : "POST",
+			success : function(respuesta3)
+			{
+				var registros = eval(respuesta3);
+
+				for(var i=0; i<registros.length; i++)
+				{
+					html +="<option  value="+registros[i]["id_esp"]+"> "+registros[i]["nombre_esp"]+" </option>";   
+				}
+
+				$("#txtEspecialidadm").html(html);
+				$("#txtEspecialidadm").html(html);
+				$('select[name=txtEspecialidadm]').val(id_oficina);//PARA AGREGAR UN COMBO PSELECIONADO
+				$('select[name=txtEspecialidadm]').change();
 				$('.selectpicker').selectpicker('refresh'); 
 			}
 		});

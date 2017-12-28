@@ -343,7 +343,7 @@
                     <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Telefono</label>
                         <div class="col-md-2 col-sm-2 col-xs-12">
-                            <input id="txt_telefonom" name="txt_telefonom" class="form-control col-md-7 col-xs-12" placeholder="Telefono" type="text">
+                            <input id="txt_telefonom" name="txt_telefonom" class="form-control col-md-7 col-xs-12" placeholder="Telefono" type="text" maxlength="9">
                         </div>
                     </div>
                     <div class="item form-group">
@@ -356,7 +356,7 @@
                     <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Grado Académico</label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <select   id="txt_gradoacademico" name="txt_gradoacademico" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true">
+                            <select   id="txt_gradoacademicom" name="txt_gradoacademicom" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true">
                                 <option value="">Seleccionar Grado Acádemico</option>
                                 <option value="Bachiller">Bachiller</option>
                                 <option value="Titulado">Titulado</option>
@@ -366,16 +366,17 @@
                             </select>
                         </div>
                     </div>
-                    <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Especialidad</label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input id="txt_especialidadm" name="txt_especialidadm" class="form-control col-md-7 col-xs-12" placeholder="Especialidad" type="text">
-                        </div>
+                    <div class="form-group">
+                           <label class="control-label col-md-3 col-sm-3 col-xs-6">Especialidad:</label>
+                            <div class="col-md-6 col-sm-9 col-xs-6">
+                                     <select   id="txtEspecialidadm" name="txtEspecialidadm" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true">
+                                      </select>
+                            </div>
                     </div>
                     <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Fecha Nacimiento*</label>
                         <div class="col-md-3 col-sm-3 col-xs-12">
-                            <input type="date" id="date_fechanacm" name="date_fechanacm" class="form-control">
+                            <input type="date" id="date_fechanacm" name="date_fechanacm" class="form-control" max="<?=date('Y-m-d')?>">
                         </div>
                     </div>
                     </div>
@@ -384,7 +385,7 @@
                         <div class="col-md-6 col-md-offset-3">
                             <button id="send" type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
                             <button class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>
-                            Cancelar
+                            Cerrar
                             </button>
                         </div>
                     </div>
@@ -429,7 +430,7 @@
                               </button>
                               <button data-dismiss="modal" class="btn btn-danger">
                                <span class="glyphicon glyphicon-remove"></span>
-                              Cancelar
+                              Cerrar
                             </button>
                         </div>
                       </div>
@@ -477,7 +478,7 @@
                               </button>
                               <button data-dismiss="modal" class="btn btn-danger">
                                <span class="glyphicon glyphicon-remove"></span>
-                              Cancelar
+                              Cerrar
                             </button>
                         </div>
                       </div>

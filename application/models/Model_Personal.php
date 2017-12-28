@@ -28,16 +28,23 @@ class Model_Personal extends CI_Model
         $this->db->insert('PERSONA',$data);
         return $this->db->affected_rows();
     }
+    public function UpdatePersonal($data,$id_persona)
+    {
+        $this->db->set($data);
+        $this->db->where('id_persona', $id_persona);
+        $this->db->update('PERSONA');
+        return $this->db->affected_rows();
+    }
     public function EliminarPersonal($id_persona)
     {
-      $this->db->where('id_persona',$id_persona);
-      $this->db->delete('PERSONA');
-      if($this->db->affected_rows()>0){
-      return true;
-      } 
-      else{
-        return false;
-      } 
+          $this->db->where('id_persona',$id_persona);
+          $this->db->delete('PERSONA');
+          if($this->db->affected_rows()>0){
+          return true;
+          } 
+          else{
+            return false;
+          } 
 
     }
 
@@ -52,7 +59,7 @@ class Model_Personal extends CI_Model
 
     }*/
 
-    public function UpdatePersonal($flat, $id_oficina, $nombres, $apellido_p, $apellido_m, $dni, $direccion, $telefonos, $correo, $grado_academico, $especialidad, $fecha_nac)
+    /*public function UpdatePersonal($flat, $id_oficina, $nombres, $apellido_p, $apellido_m, $dni, $direccion, $telefonos, $correo, $grado_academico, $especialidad, $fecha_nac)
     {
         $this->db->query("execute sp_GestionarPersona '" . $flat . "','" . $id_oficina . "','" . $nombres . "','" . $apellido_p . "','" . $apellido_m . "','" . $dni . "','" . $direccion . "','" . $telefonos . "','" . $correo . "','" . $grado_academico . "','" . $especialidad . "','" . $fecha_nac . "'");
         if ($this->db->affected_rows() > 0) {
@@ -60,7 +67,7 @@ class Model_Personal extends CI_Model
         } else {
             return false;
         }
-    }
+    }*/
 
 
     public function BuscarPersonaCargo($text_buscarPersona, $skip, $numberRow, $valueSearch)
