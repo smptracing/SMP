@@ -306,20 +306,20 @@
                             <textarea class="form-control" rows="2" readonly="readonly" id="nombreProyecto" name="nombreProyecto"></textarea>
                             <br>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <select class="selectpicker form-control" disabled="disabled">
                                         <option value="Apurímac">Apurímac</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <select  id="cbx_provincia" name="cbx_provincia" class="selectpicker form-control" title="Elija provincia(s)">
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <select name="cbx_distrito" id="cbx_distrito" data-live-search="true"  class="selectpicker form-control" title="Elija distrito"></select>
                                     </div>
@@ -327,14 +327,17 @@
                             </div>
                             <br>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-2">
                                     <input id="txt_latitud" name="txt_latitud"  class="form-control" placeholder="Latitud" required="required" type="text">
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-2">
                                     <input id="txt_longitud" name="txt_longitud"  class="form-control" placeholder="Longitud" required="required" type="text">
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-5">
                                     <input type="file" class="form-control" name="ImgUbicacion">
+                                </div>
+                                <div class="col-md-3">
+                                    <p style="color: red; display: block;" id="Advertencia">Solo se aceptan archivos en formato JPG y PNG</p>
                                 </div>
                             </div>
                             <br>

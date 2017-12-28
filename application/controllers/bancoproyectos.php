@@ -408,7 +408,7 @@ class bancoproyectos extends CI_Controller
             {
                 $flag = 0;
                 $config['upload_path']   = './uploads/ImgUbicacionProyecto/';
-                $config['allowed_types'] = 'gif|jpg|png';
+                $config['allowed_types'] = 'jpg|png';
                 $config['max_size']      = '2000';
                 $config['max_width']     ='2024';
                 $config['max_height']    = '2008';

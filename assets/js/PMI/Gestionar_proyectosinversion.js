@@ -95,7 +95,6 @@ $(document).on("ready" ,function()
                     swal(resp.proceso,resp.mensaje,"error");
                 }
                 $('#TableUbigeoProyecto_x').dataTable()._fnAjaxUpdate();
-                formReset();
             }
         });
     });
