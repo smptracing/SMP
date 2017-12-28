@@ -23,7 +23,8 @@
 			</div>
 			<div class="col-md-2 col-sm-6 col-xs-12">
 				<label>Peso</label>
-				<input type="text" class="form-control" id="txtPesoCriterioG" name="txtPesoCriterioG" placeholder="Peso" autocomplete="off">
+				<!-- <input type="text" class="form-control" id="txtPesoCriterioG" name="txtPesoCriterioG" placeholder="Peso" autocomplete="off"> -->
+				<input class="form-control" id="txtPesoCriterioG" name="txtPesoCriterioG" placeholder="Peso" autocomplete="off" type='number' max='100'>
 			</div>
 			<div class="col-md-3 col-sm-3 col-xs-12">
 				<label></label>
@@ -120,10 +121,10 @@ $(function()
 									message: '<b style="color: red;text-align: center;">El campo "Criterio General" es requerido.</b>'
 								},
 								regexp:
-					            {
-					                regexp: /^\d*$/,
-					                message: '<b style="color: red;">El campo "Peso Criterio General" debe ser un número entero.</b>'
-					            }
+								   {
+								       regexp: /^[1-9][0-9]?$|^100$/,
+								       message: '<b style="color: red;">El campo "Peso Criterio General" 0 - 100.</b>'
+								   }
 							}
 						}
 
@@ -251,7 +252,7 @@ function EliminarCriterioGeneral(idCriterioGeneral,id_funcion,anio_criterio_gen)
 
 		}, false, true);
 
-	});	
+	});
 
 }
 </script>
