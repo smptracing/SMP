@@ -202,10 +202,11 @@ var EliminarIndicador=function(tbody,table)
                 title: "Esta seguro que desea eliminar el indicador?",
                 text: "",
                 type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "SI,Eliminar",
-                closeOnConfirm: false
+                                showCancelButton: true,
+                                cancelButtonText:"Cerrar" ,
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "SI,Eliminar",
+                                closeOnConfirm: false
             },
         function(){
             $.ajax({

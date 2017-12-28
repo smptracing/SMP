@@ -239,8 +239,9 @@ var listaBrecha=function()
                                 text: "",
                                 type: "warning",
                                 showCancelButton: true,
+                                cancelButtonText:"Cerrar" ,
                                 confirmButtonColor: "#DD6B55",
-                                confirmButtonText: "SI,ELIMINAR",
+                                confirmButtonText: "SI,Eliminar",
                                 closeOnConfirm: false
                               },
                               function(){

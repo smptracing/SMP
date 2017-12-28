@@ -98,10 +98,11 @@ var Eliminar_meta_prepuestalData=function(tbody,table)
                 title: "Desea eliminar la Entidad?",
                 text: "",
                 type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Yes,Eliminar",
-                closeOnConfirm: false
+                                showCancelButton: true,
+                                cancelButtonText:"Cerrar" ,
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "SI,Eliminar",
+                                closeOnConfirm: false
               },
               function(){
                     $.ajax({

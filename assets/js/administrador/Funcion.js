@@ -108,8 +108,9 @@ function formReset(){
                                 text: "",
                                 type: "warning",
                                 showCancelButton: true,
+                                cancelButtonText:"Cerrar" ,
                                 confirmButtonColor: "#DD6B55",
-                                confirmButtonText: "Yes,Eliminar",
+                                confirmButtonText: "SI,Eliminar",
                                 closeOnConfirm: false
                               },
                               function(){

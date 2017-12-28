@@ -219,8 +219,9 @@ var EliminarProgramacion=function(tbody,table){
                                 text: "",
                                 type: "warning",
                                 showCancelButton: true,
+                                cancelButtonText:"Cerrar" ,
                                 confirmButtonColor: "#DD6B55",
-                                confirmButtonText: "Yes,Eliminar",
+                                confirmButtonText: "SI,Eliminar",
                                 closeOnConfirm: false
                               },
                               function(){
@@ -280,8 +281,9 @@ var EliminarMetaPresupuestal=function(tbody,table){
                                 text: "",
                                 type: "warning",
                                 showCancelButton: true,
+                                cancelButtonText:"Cerrar" ,
                                 confirmButtonColor: "#DD6B55",
-                                confirmButtonText: "Yes,Eliminar",
+                                confirmButtonText: "SI,Eliminar",
                                 closeOnConfirm: false
                               },
                               function(){

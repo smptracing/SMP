@@ -107,12 +107,13 @@ var EliminarTipologiaData=function(tbody,myTable){
                         var id_tipologia_inv=data.id_tipologia_inv;
                         console.log(data);
                          swal({
-                                title: "Desea eliminar ?",
+                                  title: "Desea eliminar ?",
                                 text: "",
                                 type: "warning",
                                 showCancelButton: true,
+                                cancelButtonText:"Cerrar" ,
                                 confirmButtonColor: "#DD6B55",
-                                confirmButtonText: "Yes,Eliminar",
+                                confirmButtonText: "SI,Eliminar",
                                 closeOnConfirm: false
                               },
                               function(){
