@@ -393,56 +393,55 @@ class bancoproyectos extends CI_Controller
     {
         if ($this->input->is_ajax_request())
         {
-            $flag = 1;
+            $msg = array();
+            $nombreArchivo = $_FILES['ImgUbicacion']['name'];
 
             $c_data['id_ubigeo'] = $this->input->post("cbx_distrito");
             $c_data['id_pi']= $this->input->post("txt_id_pip");
-            $c_data['direccion_ubigeo_pi'] = "NULL";
+            $c_data['direccion_ubigeo_pi'] = NULL;
             $c_data['latitud'] = $this->input->post("txt_latitud");
             $c_data['longitud'] = $this->input->post("txt_longitud");
 
-            $q1 = $this->bancoproyectos_modal->InsertarUbigeo_Pi($c_data);
-            $datos = array();
-            $msg = array();
-            if($q1['filasAfectadas']>0)
+            if($nombreArchivo != '' || $nombreArchivo != null)
             {
-                $flag = 0;
-                $config['upload_path']   = './uploads/ImgUbicacionProyecto/';
-                $config['allowed_types'] = 'jpg|png';
-                $config['max_size']      = '2000';
-                $config['max_width']     ='2024';
-                $config['max_height']    = '2008';
-                $this->load->library('upload', $config);
-                $this->upload->initialize($config);
-
-                $datos['q2'] = 1;
-                if($this->upload->do_upload('ImgUbicacion'))
+                $extension = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
+                if($extension=='png' || $extension=='jpg')
                 {
-                    $file_info = $this->upload->data();
-                    $imagen = $file_info['file_name'];
-                    $d_data['id_ubigeo_pi'] = $q1['ultimoId'];
-                    $d_data['url_img']= $imagen;
-                    $q2 = $this->Model_PMI_ubicacion->insertarUbigeoPiImg($d_data);
-                    if($q2>0)
+                    $q1 = $this->bancoproyectos_modal->InsertarUbigeo_Pi($c_data);
+
+                    $config['upload_path'] = './uploads/cartera/';
+                    $config['allowed_types'] = '*';
+                    $config['max_size'] = '20048';
+
+                    $this->load->library('upload', $config);
+
+                    if (!$this->upload->do_upload('ImgUbicacion'))
                     {
-                        $datos['q2'] = 0;
+                        $msg=(['proceso' => 'Error', 'mensaje' => $this->upload->display_errors('', '')]);
+                        $this->load->view('front/json/json_view',['datos' => $error]);
+                    }
+                    else
+                    {
+                        $d_data['id_ubigeo_pi'] = $q1['ultimoId'];
+                        $d_data['url_img']= $this->upload->data('file_name');
+                        $q2 = $this->Model_PMI_ubicacion->insertarUbigeoPiImg($d_data);
+
+                        $msg=($q2>0 ? (['proceso' => 'Correcto', 'mensaje' => 'Ubigeo guardado correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado']));
+                        $this->load->view('front/json/json_view', ['datos' => $msg]);
                     }
                 }
+                else
+                {
+                    $msg = (['proceso' => 'Error', 'mensaje' => 'El tipo de archivo que intentas subir no está permitido.']);
+                    $this->load->view('front/json/json_view', ['datos' => $msg]);
+                }
             }
-
-            if($flag == 1)
+            else
             {
-                $msg = (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']);
+                $q1 = $this->bancoproyectos_modal->InsertarUbigeo_Pi($c_data);
+                $msg=($q1>0 ? (['proceso' => 'Correcto', 'mensaje' => 'Registro guardado']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado']));
+                $this->load->view('front/json/json_view', ['datos' => $msg]);
             }
-            if($flag==0 && $datos['q2'] == 0)
-            {
-                $msg = (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']);
-            }
-            if($flag==0 && $datos['q2'] == 1)
-            {
-               $msg = (['proceso' => 'Advertencia', 'mensaje' => 'ha ocurrido un error al subir la imagen ']);
-            }
-            $this->load->view('front/json/json_view', ['datos' => $msg]);
         }
         else
         {

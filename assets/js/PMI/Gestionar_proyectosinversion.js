@@ -82,18 +82,7 @@ $(document).on("ready" ,function()
             success:function(resp)
             {
                 resp = JSON.parse(resp);
-                if(resp.proceso == 'Correcto')
-                {
-                    swal(resp.proceso,resp.mensaje,"success");
-                }
-                if(resp.proceso == 'Advertencia')
-                {
-                    swal(resp.proceso,resp.mensaje,"info");
-                }
-                if(resp.proceso=='Error')
-                {
-                    swal(resp.proceso,resp.mensaje,"error");
-                }
+                ((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje,"success") : swal(resp.proceso,resp.mensaje,"error"));
                 $('#TableUbigeoProyecto_x').dataTable()._fnAjaxUpdate();
             }
         });

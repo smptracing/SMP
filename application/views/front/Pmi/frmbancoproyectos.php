@@ -334,7 +334,7 @@
                                     <input id="txt_longitud" name="txt_longitud"  class="form-control" placeholder="Longitud" required="required" type="text">
                                 </div>
                                 <div class="col-md-5">
-                                    <input type="file" class="form-control" name="ImgUbicacion">
+                                    <input type="file" class="form-control" name="ImgUbicacion" id="ImgUbicacion">
                                 </div>
                                 <div class="col-md-3">
                                     <p style="color: red; display: block;" id="Advertencia">Solo se aceptan archivos en formato JPG y PNG</p>
