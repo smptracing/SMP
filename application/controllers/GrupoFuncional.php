@@ -85,28 +85,27 @@ class GrupoFuncional extends CI_Controller {/* Mantenimiento de division funcion
                   show_404();
               }
     }
-  function EliminarGFuncional(){
-            if ($this->input->is_ajax_request()) {
-            $flag=0;
-            $msg="";
-            $id_grup_funcional = $this->input->post("id_grup_funcional");
-
-        if($this->Model_GrupoFuncional->EliminarGFuncional($id_grup_funcional)==true){
-                $flag=0;
-                $msg="registro Eliminado Satisfactoriamente";
-            }
-            else{
-                $flag=1;
-                $msg="No se pudo eliminar";
-            }
-                    $datos['flag']=$flag;
-                    $datos['msg']=$msg;
-                    echo json_encode($datos);
-        }  else {
+    function EliminarGFuncional()
+    {
+        if ($this->input->is_ajax_request()) 
+        {
+            $msg=array();
+            $c=count($this->Model_GrupoFuncional->verificarGrupoFuncional($this->input->post("id_grup_funcional")));
+            if($c>0)
+            {
+                $msg=(['proceso' => 'Error', 'mensaje' => 'Este grupo funcional esta relacionada a un proyecto, no puede ser eliminado']);
+                $this->load->view('front/json/json_view', ['datos' => $msg]);
+                return;
+            }             
+            $q1 = $this->Model_GrupoFuncional->EliminarGFuncional($this->input->post("id_grup_funcional"));
+            $msg=($q1>0 ? (['proceso' => 'Correcto', 'mensaje' => 'Registro eliminado correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado']));
+            $this->load->view('front/json/json_view', ['datos' => $msg]);
+        }  
+        else 
+        {
             show_404();
         }
-
-  }
+    }
 	function _load_layout($template)
     {
       $this->load->view('layout/ADMINISTRACION/header');

@@ -217,17 +217,13 @@ var GrupoFuncionalData=function(tbody,table)
                                           url:base_url+"index.php/GrupoFuncional/EliminarGFuncional",
                                           type:"POST",
                                           data:{id_grup_funcional:id_grup_funcional},
-                                          success:function(respuesta){
-                                           var registros=jQuery.parseJSON(respuesta);
-                                           if(registros.flag==0){
-                                            swal("Elimando.",registros.msg, "success");
-                                            $('#table-listarGrupoFuncional').dataTable()._fnAjaxUpdate();
-                                           }
-                                           else{
-                                            swal("Error.",registros.msg, "error");
-                                            $('#table-listarGrupoFuncional').dataTable()._fnAjaxUpdate();
-                                           }
-                                           }
+                                          success:function(resp)
+                                            {
+                                                resp = JSON.parse(resp);
+                                                swal(resp.proceso,resp.mensaje,(resp.proceso=='Correcto'?'success':'error'));                
+                                                 $('#table-listarGrupoFuncional').dataTable()._fnAjaxUpdate();
+                                            }
+                                           
                                         });
                               });
                     });
