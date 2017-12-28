@@ -86,7 +86,7 @@
                                                                   <th>ID_SECTOR</th>
                                                                   <th>NOMBRE SECTOR</th>
                                                                   <th>NOMBRE ENTIDAD</th>
-                                                                  <th>DENOMINACION  ENTIDAD</th>
+                                                                  <th>SIGLAS ENTIDAD</th>
                                                                   <th class="col-sm-1">ACCIONES</th>
                                                                 </tr>
                                                               </thead>
@@ -179,19 +179,19 @@
                 <div class="col-xs-12">
                  <!-- FORMULARIO PARA REGISTRA NUEVA ENTIDAD -->
                 <form class="form-horizontal form-label-left" id="form-addEntidad" action="<?php echo  base_url();?>MSectorEntidadSpu/AddEntidad" method="POST" >
-
+                <div id="validarEntidad">
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre Entidad <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_NombreEntidad" name="txt_NombreEntidad" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Nombre de la entidad" required="required" type="text">
+                          <input id="txt_NombreEntidad" name="txt_NombreEntidad" class="form-control col-md-7 col-xs-12" placeholder="Nombre de la entidad" type="text">
                         </div>
                       </div>
                        <div class="item form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Denominación Entidad <span class="required">*</span>
+                          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Siglas Entidad </span>
                           </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_DenominacionEntidad" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="txt_DenominacionEntidad" placeholder="Denominacion entidad" required="required" type="text">
+                          <input id="txt_DenominacionEntidad" class="form-control col-md-7 col-xs-12"  name="txt_DenominacionEntidad" placeholder="Denominacion entidad"  type="text">
                         </div>
                       </div>
                       <div class="form-group">
@@ -203,7 +203,7 @@
                             </div>
                     </div> 
                     
-       
+                        </div> 
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
@@ -300,6 +300,8 @@
                 <div class="col-xs-12">
                  <!-- FORMULARIO PARA MODIFICAR LA ENTIDAD-->
                 <form class="form-horizontal " id="form-ActulizarEntidad" action="<?php echo  base_url();?>MSectorEntidadSpu/UpdateEntidad" method="POST" >
+              <div id="validarEntidadM">
+    
                       <div class="form-group">
                              
                              <label class="control-label col-md-3 col-sm-3 col-xs-6">Seleccionar nuevo sector</label>  
@@ -317,17 +319,17 @@
                                       <input id="txt_IdModificarEntidar"  name="txt_IdModificarEntidar" type="hidden">
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                               <input id="txt_NombreEntidadM" name="txt_NombreEntidadM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="text">
+                               <input id="txt_NombreEntidadM" name="txt_NombreEntidadM" class="form-control col-md-7 col-xs-12"  type="text">
                             </div>
                       </div>
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Denominación entidad<span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Siglas entidad<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_DenominacionEntidadM" name="txt_DenominacionEntidadM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"   required="required" type="text">
+                          <input id="txt_DenominacionEntidadM" name="txt_DenominacionEntidadM" class="form-control col-md-7 col-xs-12"  type="text">
                         </div>
                       </div>
-
+                      </div>
 
                       <div class="ln_solid"></div>
                       <div class="form-group">
@@ -358,6 +360,116 @@
     $(this).find('form')[0].reset(); //para borrar todos los datos que tenga los input, textareas, select.
     $("label.error").remove();  //lo utilice para borrar la etiqueta de error del jquery validate
   });
+
+$(function()
+{
+    $('#validarEntidad').formValidation(
+    {
+        framework: 'bootstrap',
+        excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+        live: 'enabled',
+        message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+        trigger: null,
+        fields:
+        {
+            txt_NombreEntidad:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Nombre" es requerido.</b>'
+                    },
+                    regexp:
+                    {
+                        regexp: /^[a-zA-Z\s]+$/,
+                        message: '<b style="color: red;">El campo "Nombre" es solo texto.</b>'
+                    },
+                    stringLength:
+                    {
+                        max: 99,
+                        message: '<b style="color: red;">El campo "Nombre" no puede exceder los 99 cáracteres.</b>'
+                    }
+                }
+            },
+            txt_DenominacionEntidad:
+            {
+                validators:
+                {               
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Siglas" es requerido.</b>'
+                    },
+                    regexp:
+                    {
+                        regexp: /^[a-zA-Z\s]+$/,
+                        message: '<b style="color: red;">El campo "Siglas" es solo texto.</b>'
+                    },
+                    stringLength:
+                    {
+                        max: 20,
+                        message: '<b style="color: red;">El campo "Siglas" no puede exceder los 20 cáracteres.</b>'
+                    }
+                }
+            }
+        }
+    });
+
+    $('#validarEntidadM').formValidation(
+    {
+        framework: 'bootstrap',
+        excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+        live: 'enabled',
+        message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+        trigger: null,
+        fields:
+           {
+            txt_NombreEntidadM:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Nombre" es requerido.</b>'
+                    },
+                    regexp:
+                    {
+                        regexp: /^[a-zA-Z\s]+$/,
+                        message: '<b style="color: red;">El campo "Nombre" es solo texto.</b>'
+                    },
+                    stringLength:
+                    {
+                        max: 99,
+                        message: '<b style="color: red;">El campo "Nombre" no puede exceder los 99 cáracteres.</b>'
+                    }
+                }
+            },
+            txt_DenominacionEntidadM:
+            {
+                validators:
+                {               
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Siglas" es requerido.</b>'
+                    },
+                    regexp:
+                    {
+                        regexp: /^[a-zA-Z\s]+$/,
+                        message: '<b style="color: red;">El campo "Siglas" es solo texto.</b>'
+                    },
+                    stringLength:
+                    {
+                        max: 20,
+                        message: '<b style="color: red;">El campo "Siglas" no puede exceder los 20 cáracteres.</b>'
+                    }
+                }
+            }
+        }
+    });
+});
+
+
+
 </script>
 
 

@@ -5,7 +5,11 @@
 	$("#form-addEntidad").submit(function(event)//para añadir una nueva entidad
 	{
 		event.preventDefault();
-
+    $('#validarEntidad').data('formValidation').validate();
+        if(!($('#validarEntidad').data('formValidation').isValid()))
+        {
+            return;
+        }
 		$.ajax(
 		{
 			url : base_url+"index.php/Entidad/AddEntidad",
@@ -39,7 +43,11 @@
 	$("#form-ActulizarEntidad").submit(function(event)//Actualizar la entidad
 	{
 		event.preventDefault();
-
+    $('#validarEntidadM').data('formValidation').validate();
+        if(!($('#validarEntidadM').data('formValidation').isValid()))
+        {
+            return;
+        }
 		$.ajax(
 		{
 			url : base_url+"index.php/Entidad/UpdateEntidad",
