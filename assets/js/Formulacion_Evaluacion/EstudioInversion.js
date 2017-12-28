@@ -391,9 +391,9 @@ var eliminarEtapaEstado=function(idEtapaestudio,element)
         text: "",
         type: "warning",
         showCancelButton: true,
-        cancelButtonText:"CANCELAR" ,
+        cancelButtonText:"Cerrar" ,
         confirmButtonColor: "#DD6B55",
-        confirmButtonText: "SI,ELIMINAR",
+        confirmButtonText: "SI,Eliminar",
         closeOnConfirm: false
     },
     function()

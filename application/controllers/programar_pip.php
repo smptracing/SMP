@@ -301,7 +301,7 @@ class programar_pip extends CI_Controller
             if ($this->programar_pip_modal->Eliminar_meta_prepuestal($flat, $id_meta_pi) == true) {
                 echo "Se Eliminó  ";
             } else {
-                echo "No se Eliminó ";
+                //echo "No se Eliminó ";
             }
         } else {
             show_404();

@@ -286,10 +286,11 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
                 title: "Esta seguro que desea eliminar el registro?",
                 text: "",
                 type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "SI,ELIMINAR",
-                closeOnConfirm: false
+                                showCancelButton: true,
+                                cancelButtonText:"Cerrar" ,
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "SI,Eliminar",
+                                closeOnConfirm: false
             },
         function()
         {

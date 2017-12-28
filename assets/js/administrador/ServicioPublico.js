@@ -155,10 +155,11 @@ var EliminarServicioLista=function(tbody,table)
                 title: "Esta seguro que desea eliminar el servicio?",
                 text: "",
                 type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "SI,ELIMINAR",
-                closeOnConfirm: false
+                                showCancelButton: true,
+                                cancelButtonText:"Cerrar" ,
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "SI,Eliminar",
+                                closeOnConfirm: false
             },
         function()
         {

@@ -20,7 +20,7 @@ $(document).on("ready" ,function()
                 ((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje,"success") : swal(resp.proceso,resp.mensaje,"error"));
                 $('#Table_ModalidadPI').dataTable()._fnAjaxUpdate();
                 formReset();
-                $('#ventanaModalidadEjecucion').modal('hide');
+               /* $('#ventanaModalidadEjecucion').modal('hide');*/
             }
         });
     });
@@ -60,8 +60,9 @@ $(document).on("ready" ,function()
                     swal("NO SE REGISTRÓ","NO se regristró ", "error");
                 }
                 $('#Table_Estado_Ciclo').dataTable()._fnAjaxUpdate();
-                $('#table_proyectos_inversion').dataTable()._fnAjaxUpdate();
-                $('#ventana_ver_estado_ciclo').modal('hide');
+               /* $('#table_proyectos_inversion').dataTable()._fnAjaxUpdate();
+                $('#ventana_ver_estado_ciclo').modal('hide');*/
+                formReset();
             }
         });
     });
@@ -94,6 +95,7 @@ $(document).on("ready" ,function()
                     swal(resp.proceso,resp.mensaje,"error");
                 }
                 $('#TableUbigeoProyecto_x').dataTable()._fnAjaxUpdate();
+                formReset();
             }
         });
     });
@@ -198,9 +200,9 @@ var eliminarOperacionMantenimiento=function(id_operacion_mantenimiento_pi,elemen
         text: "",
         type: "warning",
         showCancelButton: true,
-        cancelButtonText:"CANCELAR" ,
+        cancelButtonText:"Cerrar" ,
         confirmButtonColor: "#DD6B55",
-        confirmButtonText: "SI,ELIMINAR",
+        confirmButtonText: "SI,Eliminar",
         closeOnConfirm: false
     },
     function()
@@ -261,10 +263,17 @@ var listar_ubigeo_pi=function(id_pi)
 
 var eliminarUbigeo=function(id_ubigeo_pi,element)
 {
-    if(!confirm('Se esta seguro de eliminar. ¿Realmente desea proseguir con la operación?'))
-    {
-      return;
-    }
+swal({
+        title: "Se eliminará el Ubigeo. ¿Realmente desea proseguir con la operación?",
+        text: "",
+        type: "warning",
+        showCancelButton: true,
+        cancelButtonText:"Cerrar" ,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "SI,Eliminar",
+        closeOnConfirm: false
+    },
+   function(){ 
     paginaAjaxJSON({ "id_ubigeo_pi" : id_ubigeo_pi }, base_url+'index.php/bancoproyectos/eliminarUbigeo', 'POST', null, function(objectJSON)
     {
         objectJSON=JSON.parse(objectJSON);
@@ -278,6 +287,7 @@ var eliminarUbigeo=function(id_ubigeo_pi,element)
         $(element).parent().parent().remove();
 
     }, false, true);
+    });
 }
 
 var ModificarUbigeoPi=function(id_ubigeo_pi)
@@ -315,9 +325,9 @@ var eliminarEstadoCiclo=function(codigo,element)
         text: "",
         type: "warning",
         showCancelButton: true,
-        cancelButtonText:"CANCELAR" ,
+        cancelButtonText:"Cerrar" ,
         confirmButtonColor: "#DD6B55",
-        confirmButtonText: "SI,ELIMINAR",
+        confirmButtonText: "SI,Eliminar",
         closeOnConfirm: false
     },
     function(){
@@ -369,9 +379,9 @@ var eliminarrubroPI=function(id_rubro_pi,element)
         text: "",
         type: "warning",
         showCancelButton: true,
-        cancelButtonText:"CANCELAR" ,
+        cancelButtonText:"Cerrar" ,
         confirmButtonColor: "#DD6B55",
-        confirmButtonText: "SI,ELIMINAR",
+        confirmButtonText: "SI,Eliminar",
         closeOnConfirm: false
     },
     function(){
@@ -424,9 +434,9 @@ var eliminarModalidadPI=function(codigo,element)
         text: "",
         type: "warning",
         showCancelButton: true,
-        cancelButtonText:"CANCELAR" ,
+        cancelButtonText:"Cerrar" ,
         confirmButtonColor: "#DD6B55",
-        confirmButtonText: "SI,ELIMINAR",
+        confirmButtonText: "SI,Eliminar",
         closeOnConfirm: false
     },
     function(){

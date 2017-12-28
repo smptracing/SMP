@@ -196,8 +196,9 @@ var EliminarProgramacion=function(tbody,table){
                                 text: "",
                                 type: "warning",
                                 showCancelButton: true,
+                                cancelButtonText:"Cerrar" ,
                                 confirmButtonColor: "#DD6B55",
-                                confirmButtonText: "Yes,Eliminar",
+                                confirmButtonText: "SI,Eliminar",
                                 closeOnConfirm: false
                               },
                               function(){
@@ -293,23 +294,15 @@ $("#Cbx_AnioCartera").change(function() {
                                     {"data":"id_pi" ,"visible": false},
                                     {"data":"codigo_unico_pi"},
                                     {"data":"nombre_pi"},
-                                    {"data":"costo_pi"},
+                                    {"data":"costo_pi"  , render: function (data, type, row) {
+                                        return "<div style='float:right;'>S/. "+data+"</div>";
+                                      }},
                                     {"data":"nombre_estado_ciclo"},
-                                  /*  {"data": function (data, type, dataToSet) {
-
-                                      if (data.estado_programado !='0') //estap programado
-                                      {
-                                       // return '<a  href="#"><button type="button" class="btn btn btn-success btn-xs">Programado</button></a>';
-                                       return '<h5><span class="label label-success"> Programado</span></h5>';
+                                    {"data": function (data, type, dataToSet) {
+                                      //return "<button onclick=\"paginaAjaxDialogo(null,'Formulacion y Evaluacion',{codigo_unico_pi:"+data.codigo_unico_pi+"},base_url+'index.php/MetaPip/meta_pip_modal','GET',null,null,false,true)\"; class=\"meta_pip btn btn-primary btn-xs\"><span class=\"fa fa-edit\"></span>  Editar</button>"
+                                      return "<a href='#Ventana_Meta_Presupuestal_PI' onclick='meta_pi_cup("+data.codigo_unico_pi+")'  class='meta_pip btn btn-success btn-xs' data-toggle='modal' data-id='"+data.codigo_unico_pi+"'><i class='fa fa-usd' aria-hidden='true'></i></a>"
                                       }
-                                      if (data.estado_programado =='0') //no esta progrmado
-                                      {
-                                        //return '<a  href="#"><button type="button" class="btn btn btn-danger btn-xs">No Programado</button></a>';
-                                        return '<h5><span class="label label-danger">No Programado</span></h5>';
-                                      }
-                                   }},*/
-                                    {"defaultContent":"<center><button type='button' title='Programar' class='meta_pip btn btn-success btn-xs' data-toggle='modal' data-target='#Ventana_Meta_Presupuestal_PI'><i class='fa fa-usd' aria-hidden='true'></i></button></center>"}
-                                ],
+                                    } ],
                                "language":idioma_espanol
                     });
         AddProgramacion("#table_ejecucion",table);
@@ -317,7 +310,7 @@ $("#Cbx_AnioCartera").change(function() {
 }
 //fin de proyectos de inversion en Ejecucion
 
-//listar proyectos de inversion en Funcionamiento
+//listar proyectos en operacion y matenimiento
  var lista_funcionamiento=function() //operacion y mantenimiento
 {
        var table=$("#Table_funcionamiento").DataTable({
@@ -334,28 +327,22 @@ $("#Cbx_AnioCartera").change(function() {
                                     {"data":"id_pi" ,"visible": false},
                                     {"data":"codigo_unico_pi"},
                                     {"data":"nombre_pi"},
-                                    {"data":"costo_pi"},
+                                    {"data":"costo_pi"  , render: function (data, type, row) {
+                                        return "<div style='float:right;'>S/. "+data+"</div>";
+                                      }},
                                     {"data":"nombre_estado_ciclo"},
-                                 /*   {"data": function (data, type, dataToSet) {
-
-                                      if (data.estado_programado !='0') //estap programado
-                                      {
-                                       // return '<a  href="#"><button type="button" class="btn btn btn-success btn-xs">Programado</button></a>';
-                                       return '<h5><span class="label label-success"> Programado</span></h5>';
+                                    {"data": function (data, type, dataToSet) {
+                                      //return "<button onclick=\"paginaAjaxDialogo(null,'Formulacion y Evaluacion',{codigo_unico_pi:"+data.codigo_unico_pi+"},base_url+'index.php/MetaPip/meta_pip_modal','GET',null,null,false,true)\"; class=\"meta_pip btn btn-primary btn-xs\"><span class=\"fa fa-edit\"></span>  Editar</button>"
+                                      return "<a href='#Ventana_Meta_Presupuestal_PI' onclick='meta_pi_cup("+data.codigo_unico_pi+")'  class='meta_pip btn btn-success btn-xs' data-toggle='modal' data-id='"+data.codigo_unico_pi+"'><i class='fa fa-usd' aria-hidden='true'></i></a>"
                                       }
-                                      if (data.estado_programado =='0') //no esta progrmado
-                                      {
-                                        //return '<a  href="#"><button type="button" class="btn btn btn-danger btn-xs">No Programado</button></a>';
-                                        return '<h5><span class="label label-danger">No Programado</span></h5>';
-                                      }
-                                   }},*/
-                                       {"defaultContent":"<center><button type='button' title='Programar' class='meta_pip btn btn-success btn-xs' data-toggle='modal' data-target='#Ventana_Meta_Presupuestal_PI'><i class='fa fa-usd' aria-hidden='true'></i></button></center>"}
-                                ],
+                                    } ],
                                "language":idioma_espanol
                     });
      AddProgramacion_oper_man("#Table_funcionamiento",table);
      AddMeta_Pi("#Table_funcionamiento",table);
 }
+
+
 //fin de proyectos de inversion en Funcionamiento
 //listar meta proyecto
  var listar_meta_pi=function(id_pi)
@@ -394,9 +381,11 @@ var EliminarMetaPresupuestalPi=function(tbody,table){
                                 text: "",
                                 type: "warning",
                                 showCancelButton: true,
+                                cancelButtonText:"Cerrar" ,
                                 confirmButtonColor: "#DD6B55",
-                                confirmButtonText: "Yes,Eliminar",
+                                confirmButtonText: "SI,Eliminar",
                                 closeOnConfirm: false
+                                
                               },
                               function(){
                                     $.ajax({
@@ -411,7 +400,7 @@ var EliminarMetaPresupuestalPi=function(tbody,table){
                                             $('#table_ejecucion').dataTable()._fnAjaxUpdate();
                                             $('#Table_funcionamiento').dataTable()._fnAjaxUpdate();
                                           //location.reload();
-                                          setTimeout("location.reload()", 5000);
+                                          setTimeout("location.reload()", 3000);
                                           }
                                         });
                               });

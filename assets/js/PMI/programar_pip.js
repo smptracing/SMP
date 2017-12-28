@@ -484,8 +484,13 @@ var EliminarProgramacion=function(tbody,table){
                                 text: "",
                                 type: "warning",
                                 showCancelButton: true,
+                                cancelButtonText:"Cerrar" ,
                                 confirmButtonColor: "#DD6B55",
+<<<<<<< HEAD
                                 confirmButtonText: "Si...,Eliminar",
+=======
+                                confirmButtonText: "SI,Eliminar",
+>>>>>>> 8eed2cc3bfba0e69a4575e7cc4330710972aa2b4
                                 closeOnConfirm: false
                               },
                               function(){
@@ -709,8 +714,13 @@ var EliminarMetaPresupuestalPi=function(tbody,table){
                                 text: "",
                                 type: "warning",
                                 showCancelButton: true,
+                                cancelButtonText:"Cerrar" ,
                                 confirmButtonColor: "#DD6B55",
+<<<<<<< HEAD
                                 confirmButtonText: "Si...,Eliminar",
+=======
+                                confirmButtonText: "SI,Eliminar",
+>>>>>>> 8eed2cc3bfba0e69a4575e7cc4330710972aa2b4
                                 closeOnConfirm: false
                               },
                               function(){
