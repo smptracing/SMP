@@ -200,9 +200,9 @@ var eliminarOperacionMantenimiento=function(id_operacion_mantenimiento_pi,elemen
         text: "",
         type: "warning",
         showCancelButton: true,
-        cancelButtonText:"CANCELAR" ,
+        cancelButtonText:"Cerrar" ,
         confirmButtonColor: "#DD6B55",
-        confirmButtonText: "SI,ELIMINAR",
+        confirmButtonText: "SI,Eliminar",
         closeOnConfirm: false
     },
     function()
@@ -268,9 +268,9 @@ swal({
         text: "",
         type: "warning",
         showCancelButton: true,
-        cancelButtonText:"CANCELAR" ,
+        cancelButtonText:"Cerrar" ,
         confirmButtonColor: "#DD6B55",
-        confirmButtonText: "SI,ELIMINAR",
+        confirmButtonText: "SI,Eliminar",
         closeOnConfirm: false
     },
    function(){ 
@@ -325,9 +325,9 @@ var eliminarEstadoCiclo=function(codigo,element)
         text: "",
         type: "warning",
         showCancelButton: true,
-        cancelButtonText:"CANCELAR" ,
+        cancelButtonText:"Cerrar" ,
         confirmButtonColor: "#DD6B55",
-        confirmButtonText: "SI,ELIMINAR",
+        confirmButtonText: "SI,Eliminar",
         closeOnConfirm: false
     },
     function(){
@@ -379,9 +379,9 @@ var eliminarrubroPI=function(id_rubro_pi,element)
         text: "",
         type: "warning",
         showCancelButton: true,
-        cancelButtonText:"CANCELAR" ,
+        cancelButtonText:"Cerrar" ,
         confirmButtonColor: "#DD6B55",
-        confirmButtonText: "SI,ELIMINAR",
+        confirmButtonText: "SI,Eliminar",
         closeOnConfirm: false
     },
     function(){
@@ -434,9 +434,9 @@ var eliminarModalidadPI=function(codigo,element)
         text: "",
         type: "warning",
         showCancelButton: true,
-        cancelButtonText:"CANCELAR" ,
+        cancelButtonText:"Cerrar" ,
         confirmButtonColor: "#DD6B55",
-        confirmButtonText: "SI,ELIMINAR",
+        confirmButtonText: "SI,Eliminar",
         closeOnConfirm: false
     },
     function(){

@@ -204,7 +204,7 @@ var EliminarIndicador=function(tbody,table)
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
-                confirmButtonText: "SI,ELIMINAR",
+                confirmButtonText: "SI,Eliminar",
                 closeOnConfirm: false
             },
         function(){
