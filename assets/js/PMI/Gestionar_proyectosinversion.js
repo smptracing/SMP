@@ -261,10 +261,17 @@ var listar_ubigeo_pi=function(id_pi)
 
 var eliminarUbigeo=function(id_ubigeo_pi,element)
 {
-    if(!confirm('Se esta seguro de eliminar. ¿Realmente desea proseguir con la operación?'))
-    {
-      return;
-    }
+swal({
+        title: "Se eliminará el Ubigeo. ¿Realmente desea proseguir con la operación?",
+        text: "",
+        type: "warning",
+        showCancelButton: true,
+        cancelButtonText:"CANCELAR" ,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "SI,ELIMINAR",
+        closeOnConfirm: false
+    },
+   function(){ 
     paginaAjaxJSON({ "id_ubigeo_pi" : id_ubigeo_pi }, base_url+'index.php/bancoproyectos/eliminarUbigeo', 'POST', null, function(objectJSON)
     {
         objectJSON=JSON.parse(objectJSON);
@@ -278,6 +285,7 @@ var eliminarUbigeo=function(id_ubigeo_pi,element)
         $(element).parent().parent().remove();
 
     }, false, true);
+    });
 }
 
 var ModificarUbigeoPi=function(id_ubigeo_pi)

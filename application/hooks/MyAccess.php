@@ -154,7 +154,7 @@ function autorizar($url)
       'bancoproyectos/eliminarUbigeo',
       'bancoproyectos/listar_modalidad_ejec',
       'bancoproyectos/Get_OperacionMantenimiento',
-
+      'bancoproyectos/eliminarrubroPI',
       'CarteraInversion/EditCartera',
       'CarteraInversion/AddCartera',
       'PmiCriterioG/ReporteCriteriosG',
