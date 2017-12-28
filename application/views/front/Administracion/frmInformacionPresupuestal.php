@@ -187,14 +187,14 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-                Fuente Financiamiento</h4>
+                Registrar Fuente Financiamiento</h4>
             </div>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
                         <form class="form-horizontal " id="form-AddFuenteFinanciamiento"   action="<?php echo base_url(); ?>FuenteFinanciamiento/AddFuenteFinanciamiento" method="POST" >
-
+                          <div id="validarAddFuenteFinanciamiento">
 
                             <div class="item form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre
@@ -212,6 +212,7 @@
                                 </div>
                             </div>
 
+</div>
 <!-- <div class="item form-group">
 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textbox">Rubro<span class="required">*</span>
 </label>
@@ -232,6 +233,7 @@
 
     </div>
 </div>
+
 </form>
 </div><!-- /.span -->
 </div><!-- /.row -->
@@ -258,6 +260,8 @@
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
                         <form class="form-horizontal " id="form-EditFuenteFinanciamiento"   action="<?php echo base_url(); ?>FuenteFinanciamiento/UpdateFuenteFinanciamiento" enctype="multipart/form-data" method="POST" >
+                               <div id="validarEditFuenteFinanciamiento">
+
                             <div class="item form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input id="txt_IdFuenteFinanciamientoM" name="txt_IdFuenteFinanciamientoM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
@@ -276,6 +280,7 @@
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input id="txt_AcronimoFuenteFinanciamientoM" name="txt_AcronimoFuenteFinanciamientoM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="Acronimo" required="required" type="text">
                                 </div>
+                            </div>
                             </div>
 <!--
 <div class="item form-group">
@@ -537,4 +542,85 @@
 $(this).find('form')[0].reset(); //para borrar todos los datos que tenga los input, textareas, select.
 $("label.error").remove();  //lo utilice para borrar la etiqueta de error del jquery validate
 });
+
+//VALIDAR FUENTE FINANCIAMIENTO
+
+$(function(){
+
+     $('#validarAddFuenteFinanciamiento').formValidation(
+     {
+        framework: 'bootstrap',
+        excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+        live: 'enabled',
+        message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+        trigger: null,
+         fields: {
+             txt_ffto: {
+                 validators: {
+                     notEmpty: {
+                         message: '<b style="color: red;">El campo "Nombre" es requerido.</b>'
+                     },
+                     stringLength: {
+                         max: 99,
+                         message: '<b style="color: red;">El campo "Nombre" debe tener como máximo 99 caracteres.</b>'
+                     },
+                     regexp: {
+                          regexp: /^[a-zA-Z\s]+$/,
+                         message: '<b style="color: red;">El campo "Nombre" debe contener solamante caracteres alfabéticos y espacios.</b>'
+                     }
+                 }
+             },
+        txt_AcronimoFuenteFinanciamiento: {
+                 validators: {
+                     notEmpty: {
+                         message: '<b style="color: red;">El campo "Acrónimo" es requerido.</b>'
+                     },
+                     stringLength: {
+                         max: 9,
+                         message: '<b style="color: red;">El campo "Acrónimo" debe tener como máximo 09 caracteres.</b>'
+                     }
+                 }
+             }
+         }
+     });
+     $('#validarEditFuenteFinanciamiento').formValidation({
+         framework: 'bootstrap',
+         excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+         live: 'enabled',
+         message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+         trigger: null,
+         fields:{
+             txt_NombreFuenteFinanciamientoM: {
+                 validators: {
+                     notEmpty: {
+                         message: '<b style="color: red;">El campo "Nombre" es requerido.</b>'
+                     },
+                     stringLength: {
+                         max: 99,
+                         message: '<b style="color: red;">El campo "Nombre" debe tener como máximo 99 caracteres.</b>'
+                     },
+                     regexp: {
+                          regexp: /^[a-zA-Z\s]+$/,
+                         message: '<b style="color: red;">El campo "Nombre" debe contener solamante caracteres alfabéticos y espacios.</b>'
+                     }
+                 }
+             },
+        txt_AcronimoFuenteFinanciamientoM: {
+                 validators: {
+                     notEmpty: {
+                         message: '<b style="color: red;">El campo "Acrónimo" es requerido.</b>'
+                     },
+                     stringLength: {
+                         max: 9,
+                         message: '<b style="color: red;">El campo "Acrónimo" debe tener como máximo 09 caracteres.</b>'
+                     }
+                 }
+             }
+         }
+     });
+
+ });
+//FIN VALIDAR
+
+
 </script>

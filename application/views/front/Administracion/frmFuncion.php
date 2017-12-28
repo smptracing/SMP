@@ -165,6 +165,7 @@
                           <input id="txt_codigofuncion" name="txt_codigofuncion" class="form-control col-md-7 col-xs-12" placeholder="Código Función" type="text" maxlength="2">
                         </div>
                       </div>
+
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre Función <span class="required">*</span>
                         </label>
@@ -172,7 +173,9 @@
                           <input id="txt_nombrefuncion" name="txt_nombrefuncion" class="form-control col-md-7 col-xs-12" placeholder="Nombre Función" type="text">
                         </div>
                       </div>
+               </div>
                       <div class="ln_solid"></div>
+
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
                           <button id="send" type="submit" class="btn btn-success">
@@ -185,7 +188,7 @@
                           </button>
                         </div>
                       </div>
-                      </div>
+                      
                 </form> <!-- FORULARIO PARA REGISTRAR NUEVO FUNCION  -->
             </div><!-- /.span -->
           </div><!-- /.row -->
@@ -413,7 +416,7 @@
             <div class="col-xs-12">
                   <!-- FORULARIO PARA REGISTRAR NUEVO FUNCION  -->
                 <form class="form-horizontal " id="form-ModificarFuncion" action="<?php echo base_url(); ?>Funcion/GetFuncion" method="POST">
-
+                <div id="validarFuncionM">
                       <div class="item form-group">
 
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Código Función <span class="required">*</span>
@@ -431,6 +434,7 @@
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input id="txt_nombrefuncionM" name="txt_nombrefuncionM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="text">
                         </div>
+                      </div>
                       </div>
                       <div class="ln_solid"></div>
                       <div class="form-group">
@@ -559,7 +563,7 @@ $(function()
                          message: '<b style="color: red;">El campo "Nombre" debe tener como máximo 199 caracteres.</b>'
                      },
                      regexp: {
-                         regexp: /^[a-z\s]+$/i,
+                         regexp: /^[a-zA-Z\s]+$/,
                          message: '<b style="color: red;">El campo "Nombre" debe contener solamante caracteres alfabéticos y espacios.</b>'
                      }
                  }
@@ -599,7 +603,7 @@ $(function()
                          message: '<b style="color: red;">El campo "Nombre" debe tener como máximo 199 caracteres.</b>'
                      },
                      regexp: {
-                         regexp: /^[a-z\s]+$/i,
+                         regexp: /^[a-zA-Z\s]+$/,
                          message: '<b style="color: red;">El campo "Nombre" debe contener solamante caracteres alfabéticos y espacios.</b>'
                      }
                  }
