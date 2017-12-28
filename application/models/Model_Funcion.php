@@ -91,14 +91,19 @@ class Model_Funcion extends CI_Model
     return $data->result()[0];
     }
 
-    function EliminarFuncion($id_funcion){
+    function EliminarFuncion($id_funcion)
+    {
         $this->db->where('id_funcion',$id_funcion);
         $this->db->delete('FUNCION');
-        if($this->db->affected_rows() > 0){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return $this->db->affected_rows();
     }
+
+    function verificarFuncion($funcion)
+    {
+        $this->db->select('division_funcional.*');
+        $this->db->from('division_funcional');
+        $this->db->where('division_funcional.id_funcion',$funcion);
+        return $this->db->get()->result();
+    }
+
 }

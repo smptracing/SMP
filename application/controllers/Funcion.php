@@ -183,23 +183,30 @@ class Funcion extends CI_Controller {/* Mantenimiento de sector entidad Y servic
     }
 
     function EliminarFuncion(){
-        if ($this->input->is_ajax_request()) {
-            $flag=0;
-            $msg="x";
-            $id_funcion = $this->input->post("id_funcion");
-
-        if($this->Model_Funcion->EliminarFuncion($id_funcion)==true){
-                $flag=0;
-                $msg="registro Eliminado Satisfactoriamente";
+        if ($this->input->is_ajax_request()) 
+        {
+            $msg=array();
+            try
+            {
+                $dependencia =count($this->Model_Funcion->verificarFuncion($this->input->post("id_funcion")));
+                if($dependencia>0)
+                {
+                    $msg=(['proceso' => 'Error', 'mensaje' => 'Esta función esta relacionada a una division funcional, no puede ser eliminada']);
+                    $this->load->view('front/json/json_view', ['datos' => $msg]);
+                    return;
+                }             
+                $q1 = $this->Model_Funcion->EliminarFuncion($this->input->post("id_funcion"));
+                $msg=($q1>0 ? (['proceso' => 'Correcto', 'mensaje' => 'Registro eliminado correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado']));
+                $this->load->view('front/json/json_view', ['datos' => $msg]);
             }
-            else{
-                $flag=1;
-                $msg="No se pudo eliminar";
-            }
-                    $datos['flag']=$flag;
-                    $datos['msg']=$msg;
-                    echo json_encode($datos);
-        }  else {
+            catch (Exception $e)
+            {
+                $msg = (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado']);
+                $this->load->view('front/json/json_view', ['datos' => $msg]);
+            }              
+        }
+        else
+        {
             show_404();
         }
 

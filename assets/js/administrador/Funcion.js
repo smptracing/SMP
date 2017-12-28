@@ -99,7 +99,8 @@ function formReset(){
                     });
                 }
 
-                var EliminarFuncion=function(tbody,table){
+                var EliminarFuncion=function(tbody,table)
+                {
                   $(tbody).on("click","button.eliminar",function(){
                         var data=table.row( $(this).parents("tr")).data();
                         var id_funcion=data.id_funcion;
@@ -114,23 +115,18 @@ function formReset(){
                                 closeOnConfirm: false
                               },
                               function(){
-                                    $.ajax({
-                                          url:base_url+"index.php/Funcion/EliminarFuncion",
-                                          type:"POST",
-                                          data:{id_funcion:id_funcion},
-                                          success:function(respuesta){
-                                           var registros=jQuery.parseJSON(respuesta);
-                                           if(registros.flag==0){
-                                            swal("Elimando.",registros.msg, "success");
-                                            $('#table-Funcion').dataTable()._fnAjaxUpdate();
-                                           }
-                                           else{
-                                            swal("Error.",registros.msg, "error");
-                                            $('#table-Funcion').dataTable()._fnAjaxUpdate();
-                                           }
-                                           }
-                                        });
-                              });
+                                $.ajax({
+                                    url:base_url+"index.php/Funcion/EliminarFuncion",
+                                    type:"POST",
+                                    data:{id_funcion:id_funcion},
+                                    success:function(resp)
+                                    {
+                                        resp = JSON.parse(resp);
+                                        swal(resp.proceso,resp.mensaje,(resp.proceso=='Correcto'?'success':'error'));                
+                                        $('#table-Funcion').dataTable()._fnAjaxUpdate();
+                                    }
+                                });
+                            });
                     });
                 }
                 /*fin listar funcion*/
