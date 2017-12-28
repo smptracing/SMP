@@ -124,6 +124,7 @@
                       </a>
                     </li>
                     <li><a href="javascript:;">Ayuda</a></li>
+                    <li><a href="#" onclick="paginaAjaxDialogo('modalCambio', 'Cambiar Contraseña',null, base_url+'index.php/usuario/cambiarContrasenia', 'GET', null, null, false, true);return false;"><i class="fa fa-lock pull-right"></i> Cambiar Contraseña</a></li>
                     <li><a href="javascript:void(0)" id="Cerrar"><i class="fa fa-sign-out pull-right"></i> Cerrar sesión</a></li>
                   </ul>
                 </li>

@@ -199,6 +199,7 @@
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
                     <li><a href="javascript:;">Usuario: <?= $this->session->userdata('nombreUsuario')?> <br/>Tipo Usuario <?= $this->session->userdata('desc_usuario_tipo');?> <br/>id:Usuario<?= $this->session->userdata('idPersona');?></a></li>
+                    <li><a href="#" onclick="paginaAjaxDialogo('modalCambio', 'Cambiar Contraseña',null, base_url+'index.php/usuario/cambiarContrasenia', 'GET', null, null, false, true);return false;"><i class="fa fa-lock pull-right"></i> Cambiar Contraseña</a></li>
                     <li>
                       <a href="javascript:;">
                         <span class="badge bg-red pull-right">50%</span>
