@@ -15,7 +15,6 @@ $(document).on("ready" ,function()
             success:function(resp)
             {
                 resp=JSON.parse(resp);
-                console.log(resp);
                 var txt_id_entregable=parseInt($("#txt_id_entregable").val());
                 swal(resp.proceso,resp.mensaje,(resp.proceso=='Correcto') ? 'success':'error');
                 $('#form-AddActividades_Entregable')[0].reset();

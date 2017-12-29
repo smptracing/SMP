@@ -13,6 +13,17 @@
 
     position: inherit;
 }
+.dropdown-menu>li>a {
+    color: white;
+    font-weight: bold;
+}
+.oscurecer:hover{
+  background-color: #56adc7;
+}
+.oscurecer2:hover{
+  background-color: #e4a852;
+}
+
 
 </style>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -51,6 +62,14 @@
     }
   } );
   </script>
+  <style>
+    .oscurecer:hover{
+  background-color: #56adc7 !importart;
+}
+.oscurecer2:hover{
+  background-color: #e4a852 !importart;
+}
+  </style>
 <div class="right_col" role="main">
     <div class="">
         <div class="page-title">

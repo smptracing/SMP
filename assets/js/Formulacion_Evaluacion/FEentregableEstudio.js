@@ -275,7 +275,6 @@
 		data:{},
 			success: function(data)
 			{
-        console.log(data);
         var registros = eval(data);
 				var sumaTotalValoriEntregable=0;
 				for (var i = 0; i <registros.length;i++)
@@ -656,7 +655,6 @@ var generarActividadesVertical=function(id_en)
                         var data=table.row( $(this).parents("tr")).data();
                         var id_actividad=$('#tx_IdActividad').val(data.id_actividad);
                         var id_entregable=$('#txt_idEntregable').val(data.txt_idEntregable);
-        console.log(id_actividad);
                     });
                 }
           // FIN DE CAMPOS QUE SE ACTUALIZARAN DE LA MODALIDAD EJECUCION
@@ -803,9 +801,7 @@ var generarActividadesVertical=function(id_en)
                                          return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Completado</small></td>" ;
                                     }},
 
-                                   // {"defaultContent":"<div class='dropdown'>  <a class='btn btn-link dropdown-toggle' type='button' data-toggle='dropdown'> <span class='glyphicon glyphicon-option-vertical' aria-hidden='true'></span></a> <ul class='dropdown-menu pull-right' style=''> <button type='button' class='actividad btn btn-link btn-xs' title='Agregar actividad al entregable' data-toggle='modal' data-target='#VentanaActividades'>Agregar Actividad</button><br/><button type='button' class='EditarEntregable btn btn-link btn-xs' title='Modificar Entregable' data-toggle='modal' data-target='#ModificarVentanaEntregable'>Modificar Entregable</button></ul> </div>"}
-
-                                   {"defaultContent":"<div class='btn-group'><button data-toggle='dropdown' class='btn btn-default dropdown-toggle btn-xs' type='button'> Opciones <span class='caret'></span> </button><ul class='dropdown-menu'><li><a data-toggle='modal' data-target='#VentanaActividades'>Agregar Actividad</a></li><li><a data-toggle='modal' class='EditarEntregable' data-target='#ModificarVentanaEntregable'>Editar Entregable</a></li></ul></div>"} 
+                                   {"defaultContent":"<div class='btn-group'><button data-toggle='dropdown' class='btn btn-default dropdown-toggle btn-xs' type='button'> Opciones <span class='caret'></span> </button><ul class='dropdown-menu'><li><a data-toggle='modal' role='button' class='btn-info oscurecer' data-target='#VentanaActividades'> Agregar Actividad</a></li><li><a data-toggle='modal' class='EditarEntregable oscurecer2  btn-warning'  role='button' data-target='#ModificarVentanaEntregable'>Editar Entregable</a></li></ul></div>"} 
                                 ],
 
                                 "language":idioma_espanol,
@@ -834,7 +830,6 @@ var generarActividadesVertical=function(id_en)
                               $('#txt_identregable').val(data.id_entregable);
                                var id_entregable=data.id_entregable;
                                $("#calendarActividadesFE" ).remove();
-                               console.log(data.id_entregable);
                                 generarCalendario(data.id_entregable);//Generar calendario
                              });
                   }
