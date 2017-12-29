@@ -56,18 +56,9 @@ $(document).on("ready" ,function()
             data:$(this).serialize(),
             success:function(resp)
             {
-                if (resp=='1')
-                {
-                    swal("REGISTRADO","Se regristró correctamente", "success");
-                }
-                if (resp=='2')
-                {
-                    swal("NO SE REGISTRÓ","NO se regristró ", "error");
-                }
+                resp = JSON.parse(resp);
+                ((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje,"success") : swal(resp.proceso,resp.mensaje,"error"));
                 $('#Table_Estado_Ciclo').dataTable()._fnAjaxUpdate();
-               /* $('#table_proyectos_inversion').dataTable()._fnAjaxUpdate();
-                $('#ventana_ver_estado_ciclo').modal('hide');*/
-                formReset();
             }
         });
     });

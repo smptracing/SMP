@@ -495,19 +495,32 @@ class bancoproyectos extends CI_Controller
     //Agregar estado ciclo
     public function AddEstadoCicloPI()
     {
-        if ($this->input->is_ajax_request()) {
-            $flat               = "C";
-            $id_estado_ciclo_pi = "0";
-            $txt_id_pip_Ciclopi = $this->input->post("txt_id_pip_Ciclopi");
-            $Cbx_EstadoCiclo    = $this->input->post("Cbx_EstadoCiclo");
-            $dateFechaIniC      = $this->input->post("dateFechaIniC"); //esta campo se esta registrando en la base de datos
-            if ($this->bancoproyectos_modal->AddEstadoCicloPI($flat, $id_estado_ciclo_pi, $txt_id_pip_Ciclopi, $Cbx_EstadoCiclo, $dateFechaIniC) == false) {
-                echo "1";
-            } else {
-                echo "2";
-            }
+        if ($this->input->is_ajax_request())
+        {
+            $estadoActual = $this->bancoproyectos_modal->verificarCicloPi($this->input->post("txt_id_pip_Ciclopi"));
+            $cantidad = count($estadoActual);
+            if($cantidad>0)
+            {
+                if($estadoActual[0]->id_estado_ciclo>$this->input->post("Cbx_EstadoCiclo"))
+                {
+                    $msg = (['proceso' => 'Error', 'mensaje' => 'No puede regresar a un Estado Anterior']);
+                    $this->load->view('front/json/json_view', ['datos' => $msg]);
+                    return;
+                }
+            }            
 
-        } else {
+            $c_data['id_pi']= $this->input->post("txt_id_pip_Ciclopi");
+            $c_data['id_estado_ciclo'] = $this->input->post("Cbx_EstadoCiclo");
+            $c_data['fecha_estado_ciclo_pi'] = $this->input->post("dateFechaIniC");
+            $msg = array();
+            $q1 = $this->bancoproyectos_modal->AgregarEstadoCicloPI($c_data);
+
+            $msg = ($q1>0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
+            $this->load->view('front/json/json_view', ['datos' => $msg]);
+
+        } 
+        else 
+        {
             show_404();
         }
     }

@@ -179,7 +179,7 @@ $(function()
     {
         checkboxes:
         {
-            checkChildren: false
+            checkChildren: true
         },
         check: onCheck,
         dataSource: modulo
