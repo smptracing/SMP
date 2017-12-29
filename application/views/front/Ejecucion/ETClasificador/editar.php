@@ -3,19 +3,19 @@
 		<label class="control-label col-md-3 col-sm-3 col-xs-12" >Número<span class="required">*</span></label>
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<input id="hdIdClasificadro" name="hdIdClasificadro" type="hidden" class="form-control col-md-7 col-xs-12" value="<?= $ETClasificador->id_clasificador?>" placeholder="Ingrese Número" notValidate>
-			<input id="txtNumeroClasi" name="txtNumeroClasi" value="<?= $ETClasificador->num_clasificador?>" class="form-control col-md-7 col-xs-12"  placeholder="Ingrese Número"  autocomplete="off" >
+			<input id="txtNumeroClasi" name="txtNumeroClasi" value="<?= $ETClasificador->num_clasificador?>" class="form-control col-md-7 col-xs-12"  placeholder="Ingrese Número"  autocomplete="off" maxlength="15" >
 		</div>
 	</div><br>
 	<div class="row">
 		<label class="control-label col-md-3 col-sm-3 col-xs-12" >Descripción<span class="required">*</span></label>
 		<div class="col-md-6 col-sm-6 col-xs-12">
-			<input id="txtDescripcionClasi" name="txtDescripcionClasi"  value="<?= $ETClasificador->desc_clasificador?>" class="form-control col-md-7 col-xs-12"  placeholder="Ingrese Descripción"  autocomplete="off" >
+			<input id="txtDescripcionClasi" name="txtDescripcionClasi"  value="<?= $ETClasificador->desc_clasificador?>" class="form-control col-md-7 col-xs-12"  placeholder="Ingrese Descripción"  autocomplete="off" maxlength="300">
 		</div>
 	</div><br>
 	<div class="row">
 		<label class="control-label col-md-3 col-sm-3 col-xs-12" >Detalle<span class="required">*</span></label>
 		<div class="col-md-6 col-sm-6 col-xs-12">
-			<input id="txtDetalleClasi" name="txtDetalleClasi" value="<?= $ETClasificador->detalle_clasificador?>"  class="form-control col-md-7 col-xs-12"  placeholder="Ingrese Detalle" autocomplete="off" >
+			<textarea id="txtDetalleClasi" name="txtDetalleClasi" class="form-control col-md-7 col-xs-12"  placeholder="Ingrese Detalle" required="required" autocomplete="off" rows="5" maxlength="1000"><?= $ETClasificador->detalle_clasificador?></textarea>
 		</div>
 	</div><br>
 	<div class="ln_solid"></div>
@@ -45,7 +45,12 @@
 						notEmpty:
 						{
 							message: '<b style="color: red;">El campo "Numero" es requerido.</b>'
-						}
+						},
+						stringLength:
+	                    {
+	                        max: 15,
+	                        message: '<b style="color: red;">El campo "Numero" no puede exceder los 15 cáracteres.</b>'
+	                    }
 					}
 				},
 				txtDescripcionClasi:
@@ -55,7 +60,12 @@
 						notEmpty:
 						{
 							message: '<b style="color: red;">El campo "Descripción" es requerido.</b>'
-						}
+						},
+						stringLength:
+	                    {
+	                        max: 300,
+	                        message: '<b style="color: red;">El campo "Descripción" no puede exceder los 300 cáracteres.</b>'
+	                    }
 					}
 				},
 				txtDetalleClasi:
@@ -65,7 +75,12 @@
 						notEmpty:
 						{
 							message: '<b style="color: red;">El campo "Detalle" es requerido.</b>'
-						}
+						},
+						stringLength:
+	                    {
+	                        max: 1000,
+	                        message: '<b style="color: red;">El campo "Detalle" no puede exceder los 1000 cáracteres.</b>'
+	                    }
 					}
 				}
 			}
