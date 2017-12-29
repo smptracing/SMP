@@ -4,20 +4,25 @@
 <div class="modal-body">
    <div class="row">
         <div class="col-xs-12">
-            <form class="form-horizontal" id='formUsuario' name="formUsuario"  method="post" onSubmit="return false;"  >
+            <form class="form-horizontal" id='formUsuario' name="formUsuario"  method="post" onsubmit="return checkall();"  >
                   <div class="form-group">
                           <label class="col-sm-3 control-label no-padding-right"  for="form-field-1-1">Buscar Persona</label>
                           <div class="col-sm-6">
-                               <select
-                      class="form-control input-sm"
-                                id="comboPersona" name="comboPersona"  title="Buscar persona" >
-                               </select>
+                            <?php if(isset($arrayUsuario->id_persona)) : ?>
+                               <input type="text" class="form-control" name="comboPersona" disabled value="<?= $arrayUsuario->nombres." ".$arrayUsuario->apellido_p." ".$arrayUsuario->apellido_m ?>">
+                            <?php else: ?>
+                              <select
+                              class="form-control input-sm"
+                               id="comboPersona" name="comboPersona"  title="Buscar persona" >
+                              </select>
+                            <?php endif; ?>
                           </div>
                   </div>
                   <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right"  for="form-field-1-1">Usuario </label>
                       <div class="col-sm-6">
-                        <input type="text" id="txt_usuario" name="txt_usuario" placeholder="Nombre Usuario" class="form-control" autocomplete="off" value='<?php if(isset($arrayUsuario->usuario)) echo $arrayUsuario->usuario; ?>' />
+                        <input onkeyup="checkname();" type="text" id="txt_usuario" name="txt_usuario" placeholder="Nombre Usuario" class="form-control" autocomplete="off" value='<?php if(isset($arrayUsuario->usuario)) echo $arrayUsuario->usuario; ?>' />
+                        <span id="name_status"></span>
                         <input type="hidden" id="idPersona" name="idPersona" value='<?php if(isset($arrayUsuario->id_persona)) echo $arrayUsuario->id_persona; ?>' />
                       </div>
                   </div>
@@ -308,4 +313,52 @@ $(document).ready(function()
 listaPersonaCombo("<?php if(isset($arrayUsuario->id_persona)) echo $arrayUsuario->id_persona; ?>");
 listatipoUsuario("<?php if(isset($arrayUsuario->id_usuario_tipo)) echo $arrayUsuario->id_usuario_tipo; ?>");
 });
+
+
+function checkname()
+{
+ var name=document.getElementById( "txt_usuario" ).value;
+
+ if(name)
+ {
+  $.ajax({
+  type: 'post',
+  url: base_url +"index.php/Usuario/validateUsername",
+  data: {
+   username:name,
+  },
+  success: function (response) {
+   $( '#name_status' ).html(response);
+   if(response=="OK")
+   {
+    return true;
+   }
+   else
+   {
+    return false;
+   }
+  }
+  });
+ }
+ else
+ {
+  $( '#name_status' ).html("");
+  return false;
+ }
+}
+
+function checkall()
+{
+ var namehtml=document.getElementById("name_status").innerHTML;
+
+ if((namehtml)=="OK")
+ {
+  return true;
+ }
+ else
+ {
+  return false;
+ }
+}
+
 </script>

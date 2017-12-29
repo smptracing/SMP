@@ -18,7 +18,7 @@ class Personal extends CI_Controller
         $this->_load_layout('Front/Administracion/frmPersonal');
     }
 
-   
+
     public function GetPersonal()
     {
         if($this->input->is_ajax_request())
@@ -26,7 +26,7 @@ class Personal extends CI_Controller
             $skip=$this->input->post('start');
             $numberRow=$this->input->post('length');
             $valueSearch=$this->input->post('search[value]');
-            
+
             $datos=$this->Model_Personal->GetPersonal('R', $skip, $numberRow, $valueSearch);
             $cantidadDatos=$this->Model_Personal->CountPersonalParaPaginacion('X', $valueSearch);
 
@@ -41,9 +41,12 @@ class Personal extends CI_Controller
     {
         if($this->input->is_ajax_request())
         {
-            
+
             $Datos=$this->Model_Personal->ListarPersonalUsuario();
-            echo json_encode($Datos);    
+            // echo "<pre>";
+            // // var_dump($Datos);
+            // echo "</pre>";
+            echo json_encode($Datos);
         }
         else
         {
@@ -95,7 +98,7 @@ class Personal extends CI_Controller
 
     public function AddPersonal()
     {
-        if ($this->input->is_ajax_request()) 
+        if ($this->input->is_ajax_request())
         {
             $c_data['id_oficina'] = $this->input->post("Cbx_Oficina");
             $c_data['nombres']= $this->input->post("txt_nombrepersonal");
@@ -115,7 +118,7 @@ class Personal extends CI_Controller
 
             $msg = ($q1>0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
             $this->load->view('front/json/json_view', ['datos' => $msg]);
-        } 
+        }
         else
         {
             show_404();
@@ -145,8 +148,8 @@ class Personal extends CI_Controller
             $msg = ($q1>0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
             $this->load->view('front/json/json_view', ['datos' => $msg]);
 
-        } 
-        else 
+        }
+        else
         {
             show_404();
         }
@@ -202,7 +205,7 @@ class Personal extends CI_Controller
             $valueSearch =$this->input->post('search[value]');
             $datos        = $this->Model_Personal->BuscarPersonaActividad($skip, $numberRow, $valueSearch);
             $CantidadData = $this->Model_Personal->CountPaginacionPersonaActividad($skip, $numberRow, $valueSearch);
-            echo '{ "recordsTotal" : '.$CantidadData[0]->cantidad.', "recordsFiltered" : '.$CantidadData[0]->cantidad.', "data" : '.json_encode($datos).' }'; 
+            echo '{ "recordsTotal" : '.$CantidadData[0]->cantidad.', "recordsFiltered" : '.$CantidadData[0]->cantidad.', "data" : '.json_encode($datos).' }';
 
         } else {
             show_404();
@@ -217,7 +220,7 @@ class Personal extends CI_Controller
             echo json_encode($datos);
         } else {
             show_404();
-        } 
+        }
     }
 /* fin Personal actividad*/
 
