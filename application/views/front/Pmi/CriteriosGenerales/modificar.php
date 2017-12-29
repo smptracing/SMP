@@ -85,6 +85,16 @@
 						{
 							message: '<b style="color: red;text-align: center;">El campo "Criterio General" es requerido.</b>'
 						}
+					regexp:
+                    {
+                        regexp: /^[a-zA-Z\s]+$/,
+                        message: '<b style="color: red;">El campo "Criterio General" es solo texto.</b>'
+                    },
+					stringLength:
+                    {
+                        max: 150,
+                        message: '<b style="color: red;">El campo "Criterio General" no puede exceder los 150 carácteres.</b>'
+                    }
 					}
 				},
 				txtAnioCriterioG:
@@ -99,22 +109,29 @@
 			            {
 			                regexp: /^\d{4}$/,
 			                message: '<b style="color: red;">El campo "Anio Criterio" debe ser un número entero de 4 dígitos.</b>'
-			            }
+			            },
+			          stringLength:
+                    {
+                        min: 4,
+                        max: 4,
+                        message: '<b style="color: red;">Ingrese un valor válido.</b>'
+                    } 
+
 					}
 				},
 				txtPesoCriterioG:
 				{
 					validators:
 					{
-						notEmpty:
-						{
-							message: '<b style="color: red;text-align: center;">El campo "Criterio General" es requerido.</b>'
-						},
-						regexp:
-			            {
-			                regexp: /^\d*$/,
-			                message: '<b style="color: red;">El campo "Peso Criterio General" debe ser un número entero.</b>'
-			            }
+								notEmpty:
+								{
+									message: '<b style="color: red;text-align: center;">El campo "Criterio General" es requerido.</b>'
+								},
+								regexp:
+								   {
+								       regexp: /^[1-9][0-9]?$|^100$/,
+								       message: '<b style="color: red;">El campo "Peso Criterio General" 0 - 100.</b>'
+								   }
 					}
 				}
 

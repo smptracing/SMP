@@ -3,7 +3,7 @@
 			<div class="col-md-4 col-sm-4 col-xs-12">
 				<label>Función</label><br/>
 				<input type="hidden" class="form-control" id="txtIdFuncion" name="txtIdFuncion" value="<?= $id_funcion;?>" placeholder="" autocomplete="off" >
-				<select id="cbx_funcion" name="cbx_funcion" class="selectpicker" data-live-search="true" readonly>
+				<select id="cbx_funcion" name="cbx_funcion" class="selectpicker" data-live-search="true" disabled>
 						<?php foreach ($function as $Itemp) {?>
 								 <option value="<?=$Itemp->id_funcion?>" <?=($Itemp->id_funcion==$id_funcion ? 'selected' : '')?> ><?=$Itemp->nombre_funcion?></option>
 						<?php  } ?>
@@ -94,7 +94,17 @@ $(function()
 								notEmpty:
 								{
 									message: '<b style="color: red;text-align: center;">El campo "Criterio General" es requerido.</b>'
-								}
+								},
+					regexp:
+                    {
+                        regexp: /^[a-zA-Z\s]+$/,
+                        message: '<b style="color: red;">El campo "Criterio General" es solo texto.</b>'
+                    },
+					stringLength:
+                    {
+                        max: 150,
+                        message: '<b style="color: red;">El campo "Criterio General" no puede exceder los 150 carácteres.</b>'
+                    }
 							}
 						},
 						txtAnioCriterioG:
@@ -105,11 +115,17 @@ $(function()
 								{
 									message: '<b style="color: red;text-align: center;">El campo "Anio Criterio" debe ser un número entero.</b>'
 								},
-								regexp:
-					            {
-					                regexp: /^\d*$/,
-					                message: '<b style="color: red;">El campo "Anio Criterio" debe ser un número entero.</b>'
-					            }
+						regexp:
+			            {
+			                regexp: /^\d{4}$/,
+			                message: '<b style="color: red;">El campo "Anio Criterio" debe ser un número entero de 4 dígitos.</b>'
+			            },
+			          stringLength:
+                    {
+                        min: 4,
+                        max: 4,
+                        message: '<b style="color: red;">Ingrese un valor válido.</b>'
+                    } 
 							}
 						},
 						txtPesoCriterioG:
@@ -206,9 +222,9 @@ function EliminarCriterioGeneral(idCriterioGeneral,id_funcion,anio_criterio_gen)
 	    text: "",
 	    type: "warning",
 	    showCancelButton: true,
-	    cancelButtonText:"CANCELAR" ,
+	    cancelButtonText:"Cerrar" ,
 	    confirmButtonColor: "#DD6B55",
-	    confirmButtonText: "SI,ELIMINAR",
+	    confirmButtonText: "SI,Eliminar",
 	    closeOnConfirm: false
 	},
 	function()
