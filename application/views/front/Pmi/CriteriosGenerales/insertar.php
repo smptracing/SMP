@@ -11,7 +11,7 @@
 			</div>
 			<div class="col-md-8 col-sm-8 col-xs-12">
 				<label>Nombre</label>
-				<input type="text" class="form-control" id="txtNombreCriterio" name="txtNombreCriterio" placeholder="Nombre Criterio" autocomplete="off">
+				<input type="text" class="form-control" id="txtNombreCriterio" name="txtNombreCriterio" placeholder="Nombre Criterio" autocomplete="off" maxlength="200">
 			</div>
 		</div>
 		<h4 style="margin-bottom: 0px;">Detalle</h4>
@@ -19,7 +19,7 @@
 		<div class="row" id="divCriterioGeneral">
 			<div class="col-md-2 col-sm-6 col-xs-12">
 				<label>Año</label>
-				<input type="text" class="form-control" id="txtAnioCriterioG" name="txtAnioCriterioG" value="<?= $anio;?>" placeholder="Año" autocomplete="off">
+				<input type="text" class="form-control" id="txtAnioCriterioG" name="txtAnioCriterioG" value="<?= $anio;?>" placeholder="Año" autocomplete="off" maxlength="10">
 			</div>
 			<div class="col-md-2 col-sm-6 col-xs-12">
 				<label>Peso</label>
@@ -125,7 +125,7 @@ $(function()
                         min: 4,
                         max: 4,
                         message: '<b style="color: red;">Ingrese un valor válido.</b>'
-                    } 
+                    }
 							}
 						},
 						txtPesoCriterioG:
