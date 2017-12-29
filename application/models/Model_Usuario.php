@@ -35,7 +35,7 @@ class Model_Usuario extends CI_Model
             }
         }
         else{
-            $Usuario=$this->db->query("select * from USUARIO where id_persona=".$idPersona.";");
+            $Usuario=$this->db->query("select u.*,p.* from USUARIO as u inner join PERSONA as p on u.id_persona=p.id_persona where p.id_persona=".$idPersona.";");
             if($Usuario->num_rows()>0){
                 return $Usuario->result();
             }

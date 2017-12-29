@@ -198,16 +198,37 @@ class Usuario extends CI_Controller {
 				{
 					echo json_encode(['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado']);exit;
 
-				}				
+				}
 			}
 			else
 			{
 				echo json_encode(['proceso' => 'Error', 'mensaje' => 'La contraseña es Incorrecta']);exit;
-				
+
 			}
 
 		}
 		$this->load->view('Front/Usuario/cambiarcontrasenia');
+	}
+
+	function validateUsername() {
+		if(isset($_POST['username']))
+		{
+		 $name=$_POST['username'];
+
+		 $checkdata=" SELECT usuario FROM USUARIO WHERE usuario='$name' ";
+
+		 $query=mysql_query($checkdata);
+
+		 if(mysql_num_rows($query)>0)
+		 {
+		  echo "User Name Already Exist";
+		 }
+		 else
+		 {
+		  echo "OK";
+		 }
+		 exit();
+		}
 	}
 
 }
