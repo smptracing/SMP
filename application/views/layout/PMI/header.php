@@ -52,9 +52,7 @@
         {
             font-size: 11px;
         }
-        .dropdown-menu {
-            position: inherit;
-        }
+          #table_proyectos_inversion>tbody>tr:last-child .dropdown-menu { margin: -140px 0 0; }
     </style>
     <script>
         var base_url = '<?php echo base_url(); ?>';

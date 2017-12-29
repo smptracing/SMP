@@ -15,25 +15,26 @@
   {
     text-align: right;
   }
-  .btn-group .btn, .btn-group-vertical .btn {
-    margin-bottom: 0;
-    margin-right: 0;
-    width: 160px !important;
-  }
-  .btn {
-    border-radius: 0px !important;
-  }
-  .btn-group
-  {
+    .btn-group .btn, .btn-group-vertical .btn {
+      margin-bottom: 0;
+      margin-right: 0;
+      width: 160px !important;
+    }
+    .btn {
+      border-radius: 0px !important;
+    }
+    .btn-group
+    {
 
+    }
+    .dropdown-menu {
+      z-index: 90000;
+      /* margin: -120px 0 0; */
   }
-  .dropdown-menu {
-    z-index: 90000;
-}
-.table-responsive
-{
-    z-index: 80000;
-}
+  .table-responsive
+  {
+      z-index: 80000;
+  }
 </style>
 <div class="right_col" role="main">
           <div class="">
@@ -434,7 +435,7 @@
                                              <span class="glyphicon glyphicon-floppy-saved"></span>Agregar
                                              </button>
                                           </div>
-                      
+
 
                      <div class="ln_solid"></div>
                      <div class="x_panel" style="background-color: #EEEEEE;">
@@ -1031,7 +1032,7 @@ $(function()
                  }
              }
 }
-  });  
+  });
  });
 
 </script>
