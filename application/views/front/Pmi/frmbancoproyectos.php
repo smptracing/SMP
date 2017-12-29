@@ -102,6 +102,7 @@
                                 <div class="col-md-9 col-sm-6 col-xs-12 form-group" id="divCodigoIdea">
                                     <label for="name">Codigo Único (Codigo SIAF)<span class="required">*</span></label>
                                     <input id="txtCodigoUnico" name="txtCodigoUnico"  class="form-control col-md-7 col-xs-5" placeholder="Codigo Unico" type="text" maxlength="10">
+                                    <label id="mensajeError" style="display: none;">  </label>
                                 </div>
                             </div>
                         </div>
@@ -196,6 +197,11 @@
                         </div>
                         </div>
                         <div class="col-md-4">
+                        <div class="col-md-12 col-sm-6 col-xs-12  form-group">
+                        <label  for="textbox"><span class="required">Tipologia de Inversion</span></label>
+                        <select id="cbxTipologiaInv" name="cbxTipologiaInv" class="selectpicker" title="Elija Tipología de Inversión"></select>
+                        </div>
+                        </div>
 
                         <!-- <div class="col-md-6 col-sm-6 col-xs-12  form-group">
                         <label  for="name">Fuente Finan.<span class="required">*</span>
@@ -203,7 +209,6 @@
                         <select id="cbxFuenteFinanc" name="cbxFuenteFinanc" class="selectpicker" title="Elija fuente de financiamiento">
                         </select>
                         </div> -->
-                        </div>
                         </div>
 
                         <div class="row">
@@ -225,12 +230,7 @@
                         </select>
                         </div> -->
                         </div>
-                        <div class="col-md-4">
-                        <div class="col-md-6 col-sm-6 col-xs-12  form-group">
-                        <label  for="textbox"><span class="required">Tipologia de Inversion</span></label>
-                        <select id="cbxTipologiaInv" name="cbxTipologiaInv" class="selectpicker" title="Elija Tipología de Inversión"></select>
-                        </div>
-                        </div>
+                        
                         </div>
                         <div class="row">
                         <div class="col-md-4">

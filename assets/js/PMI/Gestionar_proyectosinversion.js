@@ -96,43 +96,75 @@ $(document).on("ready" ,function()
    $("#form-AddProyectosInversion").submit(function(event)
     {
         event.preventDefault();
-        $.ajax({
-            url:base_url+"index.php/bancoproyectos/AddProyectos",
-            type:$(this).attr('method'),
-            data:$(this).serialize(),
-            success:function(resp)
-            {
-                resp = JSON.parse(resp);
-                var mensajeError = 'Ha ocurrido un error inesperado.';
-                for (var i = 0 ; i < resp.msg.length; i--)
+        if($('#mensajeError').text()=='Disponible')
+        {
+            $.ajax({
+                url:base_url+"index.php/bancoproyectos/AddProyectos",
+                type:$(this).attr('method'),
+                data:$(this).serialize(),
+                success:function(resp)
                 {
-                    mensajeError += resp.msg[i];
+                    resp = JSON.parse(resp);
+                    var mensajeError = 'Ha ocurrido un error inesperado.';
+                    for (var i = 0 ; i < resp.msg.length; i--)
+                    {
+                        mensajeError += resp.msg[i];
+                    }
+                    ((resp.flag==0) ? swal("Correcto","Los datos fueron registrados correctamente","success") : swal("Error",mensajeError,"error"));
+                    formReset();
+                    $('#VentanaRegistraPIP').modal('hide');
+                    $('#table_proyectos_inversion').dataTable()._fnAjaxUpdate();
                 }
-                ((resp.flag==0) ? swal("Correcto","Los datos fueron registrados correctamente","success") : swal("Error",mensajeError,"error"));
-                formReset();
-                $('#VentanaRegistraPIP').modal('hide');
-                $('#table_proyectos_inversion').dataTable()._fnAjaxUpdate();
-            }
-        });
+            });
+        }        
     });
 
     $('#txtCodigoUnico').keyup(function ()
-    {
-        codigo2='2187136';
+    {   
         var codigo=$("#txtCodigoUnico").val();
-        $.getJSON({
-            url: base_url+'index.php/bancoproyectos/BuscarProyectoSiaf',
-            type:'POST',
-            data:{codigo:codigo},
-            success:function(resp)
-            {
-                $.each(resp, function(index, val)
+        if(codigo.length>=6)
+        {
+            $.getJSON({
+                url: base_url+'index.php/bancoproyectos/BuscarProyectoSiaf',
+                type:'POST',
+                data:{codigo:codigo},
+                success:function(resp)
                 {
-                    $("#txtNombrePip").val(val.nombre_pi);
-                    $("#txtCostoPip").val(val.costo_actual);
-                });
-            }
-        });
+                    $.each(resp, function(index, val)
+                    {
+                        $("#txtNombrePip").val(val.nombre_pi);
+                        $("#txtCostoPip").val(val.costo_actual);
+                    });
+                }
+            });
+        }
+    });
+
+    $('#txtCodigoUnico').blur(function ()
+    {   
+        var codigo=$("#txtCodigoUnico").val();
+        if(codigo.length>=6)
+        {
+            $.getJSON({
+                url: base_url+'index.php/bancoproyectos/BuscarProyectoCodigoUnico',
+                type:'POST',
+                data:{codigo:codigo},
+                success:function(resp)
+                {
+                    if(resp.datos.length>=1)
+                    {
+                        $('#mensajeError').css('display','block');
+                        $('#mensajeError').css('color','red');
+                        $('#mensajeError').text('Este proyecto ya esta registrado en el sistema');
+                    }
+                    else
+                    {
+                        $('#mensajeError').css('display','none');
+                        $('#mensajeError').text('Disponible');
+                    }
+                }
+            });
+        }
     });
 
     function formReset()

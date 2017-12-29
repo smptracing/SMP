@@ -729,10 +729,13 @@ class bancoproyectos extends CI_Controller
 
     public function BuscarProyectoSiaf()
     {
-
         $data  = $this->bancoproyectos_modal->BuscarProyectoSiaf($this->input->post('codigo'));
         echo json_encode($data);exit;
-
+    }
+    public function BuscarProyectoCodigoUnico()
+    {
+        $data  = $this->bancoproyectos_modal->verificarProyecto($this->input->post('codigo'));
+        echo json_encode(['datos'=>$data]);exit;
     }
 
     public function NoPip()

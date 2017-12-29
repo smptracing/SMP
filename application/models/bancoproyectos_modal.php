@@ -13,7 +13,7 @@ class bancoproyectos_modal extends CI_Model
     public function BuscarProyectoSiaf($CodigoSiaf)
     {
         $Opcion='listar_datos_proyecto_importacion';
-        $data=$this->db->query("execute sp_Gestionar_SIAF   @codigo_snip ='".$CodigoSiaf."',  @Opcion='" .$Opcion. "'");
+        $data=$this->db->query("execute sp_Gestionar_SIAF   @codigo_snip ='".$CodigoSiaf."',  @Opcion='listar_datos_proyecto_importacion'");
         return $data->result();
     }
 
@@ -462,5 +462,12 @@ class bancoproyectos_modal extends CI_Model
 
     public function getBancoProyecto() {
         return $this->db->get('PROYECTO_INVERSION')->result();
+    }
+    public function verificarProyecto($txtCodigoUnico)
+    {
+        $this->db->select('proyecto_inversion.*');
+        $this->db->from('proyecto_inversion');
+        $this->db->where('proyecto_inversion.codigo_unico_pi',$txtCodigoUnico);
+        return $this->db->get()->result();
     }
 }

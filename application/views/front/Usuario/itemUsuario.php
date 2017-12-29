@@ -250,7 +250,6 @@ $(function()
 
     $("body").on("click","#sendUsuario",function(e)
     {
-        alert($('#mensajeError').text());
         $('#formUsuario').data('formValidation').validate();
         if($('#formUsuario').data('formValidation').isValid()==true && ($('#mensajeError').text()=='Disponible'))
         {
