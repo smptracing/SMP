@@ -24,7 +24,9 @@
                         <input onkeyup="checkname();" type="text" id="txt_usuario" name="txt_usuario" placeholder="Nombre Usuario" class="form-control" autocomplete="off" value='<?php if(isset($arrayUsuario->usuario)) echo $arrayUsuario->usuario; ?>' />
                         <span id="name_status"></span>
                         <input type="hidden" id="idPersona" name="idPersona" value='<?php if(isset($arrayUsuario->id_persona)) echo $arrayUsuario->id_persona; ?>' />
+                        <label id="mensajeError" style="display: none;">  </label>
                       </div>
+
                   </div>
                   <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">Tipo de Usuario </label>
@@ -145,7 +147,6 @@ $(function()
     }).done(function(objectJSON)
     {
         objectJSON = JSON.parse(objectJSON);
-        console.log(objectJSON);
 
         for (var i = 0; i < objectJSON.length; i++)
         {
@@ -249,8 +250,9 @@ $(function()
 
     $("body").on("click","#sendUsuario",function(e)
     {
+        alert($('#mensajeError').text());
         $('#formUsuario').data('formValidation').validate();
-        if($('#formUsuario').data('formValidation').isValid()==true)
+        if($('#formUsuario').data('formValidation').isValid()==true && ($('#mensajeError').text()=='Disponible'))
         {
             $('#formUsuario').submit();
             $('#formUsuario').each(function()
@@ -266,6 +268,37 @@ $(function()
         }
     });
 });
+
+$('#txt_usuario').blur(function()
+{
+    var username = $(this).val();        
+    $.ajax(
+    {
+        url: base_url+'index.php/Usuario/VerificarNombreUsuario',
+        type: 'POST',
+        cache: false,
+        data:{username:username},
+        async: false
+    }).done(function(objectJSON)
+    {
+        objectJSON = JSON.parse(objectJSON);
+        if(objectJSON.cantidad>0)
+        {
+            $('#mensajeError').css('display','block');
+            $('#mensajeError').css('color','red');
+            $('#mensajeError').text('Este nombre de usuario ya esta registrado en el sistema, pruebe con otro');
+        }
+        else
+        {
+            $('#mensajeError').css('display','block');
+            $('#mensajeError').css('color','green');
+            $('#mensajeError').text('Disponible');
+        }
+    }).fail(function()
+    {
+        swal('Error', 'Error no controlado.', 'error');
+    });
+}); 
 
 $(document).ready(function()
 {

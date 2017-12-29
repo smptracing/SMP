@@ -209,6 +209,12 @@ class Usuario extends CI_Controller {
 		}
 		$this->load->view('Front/Usuario/cambiarcontrasenia');
 	}
+	function VerificarNombreUsuario()
+	{
+		$usuario = $this->input->post('username');
+		$data = count($this->Model_Usuario->verificarUsername($usuario));
+		echo json_encode(['cantidad'=>$data]);exit;
+	}
 
 	function validateUsername() {
 		if(isset($_POST['username']))

@@ -131,11 +131,12 @@ class Model_Usuario extends CI_Model
         $this->db->where('id_persona',$idPersona);
         $this->db->update('usuario');
         return $this->db->affected_rows();
-
-       /* $this->db->set($actividad);
-        $this->db->where('id_actividad', $idActividad);
-        $this->db->update('MO_ACTIVIDAD');
-        return $this->db->affected_rows();*/
     }
-
+    function verificarUsername($username)
+    {
+        $this->db->select('usuario.*');
+        $this->db->from('usuario');
+        $this->db->where('usuario.usuario',$username);
+        return $this->db->get()->result();
+    }
 }

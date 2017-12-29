@@ -13,17 +13,12 @@
 
     position: inherit;
 }
-.dropdown-menu>li>a {
-    color: white;
-    font-weight: bold;
+.btn-group .btn, .btn-group-vertical .btn {
+    /* margin-bottom: 0; */
+    /* margin-right: 0; */
+    width: 160px !important;
+    border-radius: 0px !important;
 }
-.oscurecer:hover{
-  background-color: #56adc7;
-}
-.oscurecer2:hover{
-  background-color: #e4a852;
-}
-
 
 </style>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">

@@ -510,7 +510,7 @@ var generarActividadesVertical=function(id_en)
                                         '<th>Avance</th>'+
                                         '<th>Estado</th>'+
                                         '<th>Id Observacion</th>'+
-                                        '<th></th>'+
+                                        '<th>Opciones</th>'+
                                      '</tr>'+
                                   '</thead>'+
                                  '</thead>'+
@@ -582,8 +582,8 @@ var generarActividadesVertical=function(id_en)
                                     },
                                     {"data":"id_act_observacion","visible":false},
 
-
-                                    {"defaultContent":"<div class='dropdown'>  <a class='btn btn-link dropdown-toggle' type='button' data-toggle='dropdown'> <span class='glyphicon glyphicon-option-vertical' aria-hidden='true'></span></a> <ul class='dropdown-menu pull-right' style=''> <li><button type='button' class='edit btn btn-primary btn-xs' data-toggle='modal' data-target='#modalModificarActividades'>Editar Actividad</button><button type='button' class='actividadObservaciones btn btn-primary btn-xs' data-toggle='modal' data-target='#modalObservacionesActividades'> Observaciones </button> <button type='button' class='LevantarActividadObservaciones btn btn-primary btn-xs' data-toggle='modal' data-target='#LevatarmodalObservacionesLevantar'> Levantar Observación </button></ul>  </div>"}
+//{"defaultContent":" <div class='btn-group'> <button data-toggle='dropdown' class='btn btn-default dropdown-toggle' type='button' aria-expanded='false'>Opciones <span class='caret'></span> </button> <ul class='dropdown-menu'> <li><button type='button' title='Editar Actividad' class='edit btn btn-info btn-xs' data-toggle='modal' data-target='#modalModificarActividades'><i class='fa fa-edit' aria-hidden='true'></i> Editar Actividad</button> </li>  <li> <button type='button' title='Agregar Observación' class='actividadObservaciones btn btn-warning btn-xs' data-toggle='modal' data-target='#modalObservacionesActividades'><i class='fa fa-plus' aria-hidden='true'></i> Observaciones</button></li><li><button type='button' title='Levantar Observaciones' class='LevantarActividadObservaciones btn btn-info btn-xs' data-toggle='modal' data-target='#LevatarmodalObservacionesLevantar'><i class='fa fa-paw' aria-hidden='true'></i> Levantar Observación</button></li></ul> </div>"}  
+{"defaultContent":"<div class='dropdown'>  <a class='btn btn-link dropdown-toggle' type='button' data-toggle='dropdown'> <span class='glyphicon glyphicon-option-vertical' aria-hidden='true'></span></a> <ul class='dropdown-menu pull-right' style=''> <li><button type='button' class='edit btn btn-primary btn-xs' data-toggle='modal' data-target='#modalModificarActividades'>Editar Actividad</button><button type='button' class='actividadObservaciones btn btn-primary btn-xs' data-toggle='modal' data-target='#modalObservacionesActividades'> Observaciones </button> <button type='button' class='LevantarActividadObservaciones btn btn-primary btn-xs' data-toggle='modal' data-target='#LevatarmodalObservacionesLevantar'> Levantar Observación </button></ul>  </div>"}
                                 ],
 
                                 "language":idioma_espanol
@@ -800,8 +800,7 @@ var generarActividadesVertical=function(id_en)
                                       "mRender":function (data,type, full) {
                                          return "<td class='project_progress'><div class='progress progress_sm'><div class='progress-bar bg-green' role='progressbar' data-transitiongoal='57' style='width: "+data+"%;'></div></div><small>"+data+" % Completado</small></td>" ;
                                     }},
-
-                                   {"defaultContent":"<div class='btn-group'><button data-toggle='dropdown' class='btn btn-default dropdown-toggle btn-xs' type='button'> Opciones <span class='caret'></span> </button><ul class='dropdown-menu'><li><a data-toggle='modal' role='button' class='btn-info oscurecer' data-target='#VentanaActividades'> Agregar Actividad</a></li><li><a data-toggle='modal' class='EditarEntregable oscurecer2  btn-warning'  role='button' data-target='#ModificarVentanaEntregable'>Editar Entregable</a></li></ul></div>"} 
+{"defaultContent":" <div class='btn-group'> <button data-toggle='dropdown' class='btn btn-default dropdown-toggle' type='button' aria-expanded='false'>Opciones <span class='caret'></span> </button> <ul class='dropdown-menu'> <li><button type='button' title='Agregar Actividad' class='actividad btn btn-info btn-xs' data-toggle='modal' data-target='#VentanaActividades'><i class='fa fa-tasks' aria-hidden='true'></i> Agregar Actividad</button> </li>  <li> <button type='button' title='Editar Entregable' class='EditarEntregable btn btn-warning btn-xs' data-toggle='modal' data-target='#ModificarVentanaEntregable'><i class='fa fa-edit' aria-hidden='true'></i> Editar Entregable</button></li></ul> </div>"}                               
                                 ],
 
                                 "language":idioma_espanol,
@@ -816,7 +815,7 @@ var generarActividadesVertical=function(id_en)
               }
               	  var  ModificarEntregable=function(tbody,table)
               	  {
-              	  	$(tbody).on("click","a.EditarEntregable",function(){
+              	  	$(tbody).on("click","button.EditarEntregable",function(){
                               var data=table.row( $(this).parents("tr")).data();
                               		  $('#EdiEntregable').val(data.id_entregable);
                               		  $('#Editxt_nombre_entre').val(data.nombre_entregable);
