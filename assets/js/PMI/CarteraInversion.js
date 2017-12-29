@@ -1,5 +1,5 @@
  $(document).on("ready" ,function(){
-              
+
               listaCarteraInversion(); //LLAMAR AL METODO LISTAR MODALIDAD DE EJECUCION
              //creacion de cartera //
  /*
@@ -33,7 +33,7 @@
 
 /*LISTAR CARTERA ACTUAL*/
          // TRAER DATOS DE LA CARTERA ACTUAL PARA SU PROGRAMACION
-                /* listar y lista en tabla entidadr*/ 
+                /* listar y lista en tabla entidadr*/
 var listaCarteraInversion=function()
 {
 	var table=$("#table-CarteraInv").DataTable(
@@ -65,7 +65,7 @@ var listaCarteraInversion=function()
 		},
 		{ "data" : "numero_resolucion_cartera" },
 		//{ "data" : "url_resolucion_cartera" },
-		{"data":'url_resolucion_cartera',render: function ( data, type, row ) 
+		{"data":'url_resolucion_cartera',render: function ( data, type, row )
 			{
 				if(row.url_resolucion_cartera=='' || row.url_resolucion_cartera==null)
 				{
@@ -74,7 +74,7 @@ var listaCarteraInversion=function()
 				else
 					url= base_url+"uploads/cartera/"+row.url_resolucion_cartera;
 					return "<a href='"+url+"' target='_blank'><i class='fa fa-file fa-2x'></i></a>";
-					
+
 			}
 		},
 		{"data":'anios',render: function ( data, type, row ) {
@@ -84,7 +84,7 @@ var listaCarteraInversion=function()
 		}
 
 		],
-	}); 
+	});
 
 	$('#table-CarteraInv tbody').on('click', 'tr', function()
 	{
@@ -93,9 +93,9 @@ var listaCarteraInversion=function()
 		var txt_IdfuncionM=data.id_cartera;
 	});
 
-	CambioCartera("#table-CarteraInv",table);  //obtener data de funcion para agregar  AGREGAR 
+	CambioCartera("#table-CarteraInv",table);  //obtener data de funcion para agregar  AGREGAR
 }
-          //FIN TRAER DATOS DE LA CARTERA ACTUAL PARA SU PROGRAMACION 
+          //FIN TRAER DATOS DE LA CARTERA ACTUAL PARA SU PROGRAMACION
 /*FIN DE LISTAR MODALIDAD EJECUCION EN UN DATATABLE*/
 
 //-------------- FIN MANTENIMIENTO MODALIDAD DE EJECUCION----------------------
@@ -128,12 +128,12 @@ function listarCarteraAnios()
 
 			for(var i=0; i<registros.length;i++)
 			{
-				htmlTemp +="<option "+(anioActualTemp==registros[i]["anios"] ? "selected" : "")+" value="+registros[i]["anios"]+"> "+ registros[i]["anios"]+" </option>";   
+				htmlTemp +="<option "+(anioActualTemp==registros[i]["anios"] ? "selected" : "")+" value="+registros[i]["anios"]+"> "+ registros[i]["anios"]+" </option>";
 			}
 
 			$("#cbCartera").html(htmlTemp);
 
-			$('.selectpicker').selectpicker('refresh'); 
+			$('.selectpicker').selectpicker('refresh');
 		}
 	});
 }

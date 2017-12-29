@@ -22,10 +22,10 @@ function AddCartera()
 
     $config['upload_path']   = './uploads/cartera/';
     $config['allowed_types'] = 'jpg|png|pdf|jpeg';
-    $config['max_width']     = 1024;
-    $config['max_height']    = 768;
-    $config['file_name'] = 'DOC_';
-    $config['max_size'] = '20048';
+    // $config['max_width']     = 1024;
+    // $config['max_height']    = 768;
+    // $config['file_name'] = 'DOC_';
+    $config['max_size']    = '1024*6';
 
     $this->load->library('upload', $config);
 
@@ -57,12 +57,12 @@ function AddCartera()
  	 function editCartera(){
       $idCartera = isset($_GET['id_cartera']) ? $_GET['id_cartera'] : null;
 	    if ($this->input->is_ajax_request()) {
-	    	$config['upload_path']          = './uploads/cartera/';
-		    $config['allowed_types']        = 'jpg|png|pdf';
-		    $config['max_width']            = 1024;
-		    $config['max_height']           = 768;
-		    $config['max_size']      = 15000;
-	      $config['encrypt_name']  = false;
+        $config['upload_path']   = './uploads/cartera/';
+        $config['allowed_types'] = 'jpg|png|pdf|jpeg';
+        // $config['max_width']     = 1024;
+        // $config['max_height']    = 768;
+        // $config['file_name'] = 'DOC_';
+        $config['max_size']    = '1024*6';
 	      $this->load->library('upload',$config);
 		    $this->upload->do_upload('Cartera_Resoluacion');
 
