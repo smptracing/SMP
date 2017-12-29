@@ -21,14 +21,14 @@ class Model_Funcion extends CI_Model
 
     function GetDivisionFuncional($codigoFuncion)
     {
-        $data=$this->db->query("select df.id_div_funcional, df.codigo_div_funcional, df.nombre_div_funcional from funcion f inner join DIVISION_FUNCIONAL df on df.id_funcion=f.id_funcion where df.id_funcion = $codigoFuncion order by df.codigo_div_funcional");
+        $data=$this->db->query("select df.id_div_funcional, df.codigo_div_funcional, df.nombre_div_funcional from funcion f inner join DIVISION_FUNCIONAL df on df.id_funcion=f.id_funcion where df.id_funcion = '$codigoFuncion' order by df.codigo_div_funcional");
         return $data->result();
     }
 
     function GetGrupoFuncional($idGrupoFuncional)
     {
         $data=$this->db->query("select gf.id_grup_funcional, gf.codigo_grup_funcional, gf.nombre_grup_funcional 
-            from DIVISION_FUNCIONAL df inner join GRUPO_FUNCIONAL gf on df.id_div_funcional = gf.id_div_funcional where gf.id_div_funcional = $idGrupoFuncional order by gf.codigo_grup_funcional");
+            from DIVISION_FUNCIONAL df inner join GRUPO_FUNCIONAL gf on df.id_div_funcional = gf.id_div_funcional where gf.id_div_funcional = '$idGrupoFuncional' order by gf.codigo_grup_funcional");
         return $data->result();
     }
 
