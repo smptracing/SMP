@@ -486,7 +486,7 @@ var EliminarProgramacion=function(tbody,table){
                                 showCancelButton: true,
                                 cancelButtonText:"Cerrar" ,
                                 confirmButtonColor: "#DD6B55",
-                                confirmButtonText: "Si...,Eliminar",
+                                confirmButtonText: "Si,Eliminar",
                                 closeOnConfirm: false
                               },
                               function(){
@@ -712,7 +712,7 @@ var EliminarMetaPresupuestalPi=function(tbody,table){
                                 showCancelButton: true,
                                 cancelButtonText:"Cerrar" ,
                                 confirmButtonColor: "#DD6B55",
-                                confirmButtonText: "Si...,Eliminar",
+                                confirmButtonText: "Si,Eliminar",
                                 confirmButtonText: "SI,Eliminar",
                                 closeOnConfirm: false
                               },
