@@ -400,6 +400,7 @@
                     <div class="col-xs-12">
                                         <!-- PAGE CONTENT BEGINS -->
               <form class="form-horizontal " id="form_AddEstadoCiclo"   action="<?php echo base_url(); ?>bancoproyectos/listar_estados" method="POST" >
+                 <div id="validarCicloPI">
                         <input id="txt_id_pip_Ciclopi" name="txt_id_pip_Ciclopi" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
 
                                <div class="item form-group">
@@ -424,14 +425,16 @@
                                             </label>
                                                   <input type="date" id="dateFechaIniC" name="dateFechaIniC" class="form-control col-md-6 col-xs-5" data-validate-length-range="6" data-validate-words="2" required="required" type="text" value="<?php echo date("Y-m-d"); ?>">
                                           </div>
+                                          </div>
+                                          </div>
                                           <div class="col-md-4">
                                              <label for="name">. <span class="required"></span>
                                              </label><BR>
-                                             <button id="send" type="submit" class="btn btn-success">
+                                             <button id="AgregarCPI" type="submit" class="btn btn-success">
                                              <span class="glyphicon glyphicon-floppy-saved"></span>Agregar
                                              </button>
                                           </div>
-                      </div>
+                      
 
                      <div class="ln_solid"></div>
                      <div class="x_panel" style="background-color: #EEEEEE;">
@@ -1010,12 +1013,25 @@ $('.modal').on('hidden.bs.modal', function(){
     $(this).find('form')[0].reset();
 });
 
-/*$('.table-responsive').on('show.bs.dropdown', function () {
-     $('.table-responsive').css( "overflow", "inherit" );
-});
-
-$('.table-responsive').on('hide.bs.dropdown', function () {
-     $('.table-responsive').css( "overflow", "auto" );
-})*/
+$(function()
+{
+   $('#validarCicloPI').formValidation(
+    {
+         framework: 'bootstrap',
+         excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+         live: 'enabled',
+         message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+         trigger: null,
+         fields: {
+             Cbx_EstadoCiclo: {
+                 validators: {
+                     notEmpty: {
+                         message: '<b style="color: red;">Selecciones una Opción.</b>'
+                     }
+                 }
+             }
+}
+  });  
+ });
 
 </script>

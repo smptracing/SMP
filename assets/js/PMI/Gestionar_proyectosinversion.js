@@ -45,6 +45,11 @@ $(document).on("ready" ,function()
     $("#form_AddEstadoCiclo").submit(function(event)
     {
         event.preventDefault();
+        $('#validarCicloPI').data('formValidation').validate();
+        if(!($('#validarCicloPI').data('formValidation').isValid()))
+        {
+            return;
+        }   
         $.ajax({
             url:base_url+"index.php/bancoproyectos/AddEstadoCicloPI",
             type:$(this).attr('method'),
@@ -297,7 +302,7 @@ var listar_estado_ciclo=function(id_pi)
         "columns":[
             {"data":"nombre_estado_ciclo"},
             {"data":"fecha_estado_ciclo_pi"},
-              {"data":"id_estado_ciclo_pi",render:function(data,type,row)
+            {"data":'id_estado_ciclo_pi',render:function(data,type,row)
                 {
                     return "<button type='button'  data-toggle='tooltip'  class='editar btn btn-danger btn-xs' data-toggle='modal' onclick=eliminarEstadoCiclo("+data+",this)><i class='ace-icon fa fa-trash-o bigger-120'></i></button>";
                 }
@@ -306,6 +311,8 @@ var listar_estado_ciclo=function(id_pi)
         "language":idioma_espanol
     });
 }
+
+
 var eliminarEstadoCiclo=function(codigo,element)
 {
     swal({
