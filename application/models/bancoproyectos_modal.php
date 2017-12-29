@@ -40,6 +40,22 @@ class bancoproyectos_modal extends CI_Model
             return false;
         }
     }
+    public function AgregarEstadoCicloPI($estado)
+    {
+        $this->db->insert('estado_ciclo_pi',$estado);
+        return $this->db->affected_rows();
+    }
+
+    public function verificarCicloPi($id_pi)
+    {
+        $this->db->select('estado_ciclo_pi.*');
+        $this->db->from('estado_ciclo_pi');
+        $this->db->where('estado_ciclo_pi.id_pi',$id_pi);
+        $this->db->order_by("fecha_estado_ciclo_pi", "desc");
+        $query=$this->db->get();
+        return $query->result();
+    }
+
  	//Add Rubro PI
     public function AgregarRubro($rubroPi)
     {

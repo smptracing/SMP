@@ -128,9 +128,10 @@ class MFuncion extends CI_Controller {/* Mantenimiento de division funcional y g
     }
     function GetGrupoFuncional()
     {
+        $valor='';
         if ($this->input->is_ajax_request()) 
         {
-        $datos=$this->Model_Funcion->GetGrupoFuncional();
+        $datos=$this->Model_Funcion->GetGrupoFuncional($valor);
         echo json_encode($datos);
         }
         else

@@ -365,8 +365,8 @@ var GrupoFuncionalData=function(tbody,table)
               "url": base_url+"index.php/MFuncion/GetGrupoFuncional",
 							type:"POST",
 							success:function(respuesta){
-								alert(respuesta);
-							
+								/*alert(respuesta);
+							*/
 
 							}
 						});

@@ -41,20 +41,15 @@ $(document).on("ready", function() {
             return;
         }
         $.ajax({
-            url: base_url + "index.php/bancoproyectos/AddEstadoCicloPI",
-            type: $(this).attr('method'),
-            data: $(this).serialize(),
-            success: function(resp) {
-                if (resp == '1') {
-                    swal("REGISTRADO", "Se regristró correctamente", "success");
-                }
-                if (resp == '2') {
-                    swal("NO SE REGISTRÓ", "NO se regristró ", "error");
-                }
+
+            url:base_url+"index.php/bancoproyectos/AddEstadoCicloPI",
+            type:$(this).attr('method'),
+            data:$(this).serialize(),
+            success:function(resp)
+            {
+                resp = JSON.parse(resp);
+                ((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje,"success") : swal(resp.proceso,resp.mensaje,"error"));
                 $('#Table_Estado_Ciclo').dataTable()._fnAjaxUpdate();
-                /* $('#table_proyectos_inversion').dataTable()._fnAjaxUpdate();
-                 $('#ventana_ver_estado_ciclo').modal('hide');*/
-                formReset();
             }
         });
     });
@@ -592,17 +587,41 @@ var listarFuncion = function(valor) {
         }
     });
 }
-$("#cbxFuncion_m").change(function() {
-    var id_funcion = $("#cbxFuncion_m").val();
-    listarDivisionFuncional(id_funcion, '');
-    $('#cbxDivFunc_inicio').removeAttr('disabled');
-    $('#cbxGrupoFunc_m').attr('disabled', 'disabled');
-    $('#cbxDivFunc_inicio').html('');
-    $('#cbxGrupoFunc_m').html('');
-    $('.selectpicker').selectpicker('refresh');
+
+
+$("#cbxFuncion_m").change(function()
+{
+    var id_funcion=$("#cbxFuncion_m").val();
+    listarDivisionFuncional2(id_funcion,'');
+    $("#cbxGrupoFunc_m").html('');
+    $("#cbxGrupoFunc_m").selectpicker('refresh');
 });
-var listarDivisionFuncional = function(id_funcion, valor) {
-    var html = "";
+
+var listarDivisionFuncional2=function(id_funcion,valor)
+{
+    var html='<option value = "">Seleccionar División Funcional</option>';
+    $("#cbxDivFunc_inicio").html(html);
+    event.preventDefault();
+    $.ajax({
+        "url":base_url +"index.php/DivisionFuncional/GetDivisioFuncuonaId",
+        type:"POST",
+        data:{id_funcion:id_funcion},
+        success : function(respuesta)
+        {
+            var registros = eval(respuesta);
+            for (var i = 0; i <registros.length;i++)
+            {
+                html +="<option value="+registros[i]["id_div_funcional"]+"> "+ registros[i]["nombre_div_funcional"]+" </option>";
+            }
+            $("#cbxDivFunc_inicio").html(html);            
+            $('.selectpicker').selectpicker('refresh');
+        }
+    });
+}
+
+var listarDivisionFuncional=function(id_funcion,valor)
+{
+    var html="";
     $("#cbxDivFunc_inicio").html(html);
     event.preventDefault();
     $.ajax({
@@ -623,17 +642,39 @@ var listarDivisionFuncional = function(id_funcion, valor) {
         }
     });
 }
-$("#cbxDivFunc_inicio").change(function() {
-    $('#cbxGrupoFunc_m').html('');
-    var id_div_funcional = $("#cbxDivFunc_inicio").val();
-    listarGrupoFuncional(id_div_funcional);
-    //agregarrr
-    $('#cbxGrupoFunc_m').removeAttr('disabled');
-    $('.selectpicker').selectpicker('refresh');
+
+$("#cbxDivFunc_inicio").change(function()
+{
+    var id_div_funcional=$("#cbxDivFunc_inicio").val();
+    listarGrupoFuncional2(id_div_funcional);
 });
-var listarGrupoFuncional = function(id_div_funcional) {
-    //alert("Listar Grupo Funcional");
-    var html = "";
+
+var listarGrupoFuncional2=function(valor)
+{
+    html='<option value = "">Seleccionar Grupo Funcional</option>';
+    $("#cbxGrupoFunc_m").html(html);
+    event.preventDefault();
+    $.ajax({
+        "url":base_url +"index.php/GrupoFuncional/GetGrupoFuncionalId",
+        type:"POST",
+        data:{id_div_funcional:valor},
+        success : function(respuesta)
+        {
+            var registros = eval(respuesta);
+            for (var i = 0; i <registros.length;i++)
+            {
+                html +="<option value="+registros[i]["id_grup_funcional"]+"> "+ registros[i]["nombre_grup_funcional"]+" </option>";
+            }
+            $("#cbxGrupoFunc_m").html(html);
+            $('.selectpicker').selectpicker('refresh');
+        }
+    });
+}
+
+
+var listarGrupoFuncional=function(valor)
+{
+    html="";
     $("#cbxGrupoFunc").html(html);
     event.preventDefault();
     $.ajax({

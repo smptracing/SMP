@@ -835,7 +835,6 @@
                                 </div>
                                 </div>
                             </div>
-                            <hr>
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="col-md-11 col-sm-6 col-xs-12">
@@ -851,36 +850,12 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <!-- <label  for="name">Fuente Finan.<span class="required">*</span></label>
-                                            <select id="cbxFuenteFinanciamiento_m" name="cbxFuenteFinanciamiento_m" class="selectpicker" >
-                                            </select>
-                                         </div> -->
-                                </div>
-                            </div>
-                        </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <!-- <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <label for="textbox"><span class="required">Rubro Ejecucion</span></label>
-                                        <select id="cbxRubroEjecucion_m" name="cbxRubroEjecucion_m" class="selectpicker" >
-                                        </select>
-                                    </div> -->
-                                </div>
-                                <div class="col-md-4">
-                                    <!-- <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <label  for="textbox"><span class="required">Modalidad</span>
-                                        </label>
-                                        <select id="cbxModalidadEjecucion_m" name="cbxModalidadEjecucion_m" class="selectpicker"  >
-                                        </select>
-                                    </div> -->
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
                                         <label  for="textbox"><span class="required">Tipologia de Inversion</span></label>
                                         <select id="cbxTipologiaInversion_m" name="cbxTipologiaInversion_m" class="selectpicker"></select>
                                     </div>
                                 </div>
                             </div>
+                        </div>
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="col-md-6 col-sm-6 col-xs-12">
@@ -906,9 +881,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                    <div class="ln_solid"></div>
+                            <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
                         <center>
@@ -923,6 +896,9 @@
                           </center>
                         </div>
                       </div>
+                        </div>
+
+                    
                     </form>
                         </div><!-- /.span -->
                  </div><!-- /.row -->

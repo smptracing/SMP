@@ -177,6 +177,11 @@ $(function()
                     notEmpty:
                     {
                         message: '<b style="color: red;">El campo "Inversión" es requerido.</b>'
+                    },
+                    stringLength:
+                    {
+                         max: 500,
+                        message: '<b style="color: red;">El campo "Nombre de Proyecto" debe tener como máximo 500 caracteres.</b>'
                     }
                 }
             },
@@ -389,6 +394,11 @@ $(function()
                     notEmpty:
                     {
                         message: '<b style="color: red;">El campo "Nombre de inversión" es requerido.</b>'
+                    },
+                    stringLength:
+                    {
+                         max: 500,
+                        message: '<b style="color: red;">El campo "Nombre de Proyecto" debe tener como máximo 500 caracteres.</b>'
                     }
                 }
             },
