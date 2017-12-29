@@ -765,13 +765,13 @@
                                         </select>
                                 </div>
                             </div>
-                                <div class="col-md-4">
+                            <!--    <div class="col-md-4">
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <label  for="textbox"><span class="required">Ciclo Inversión</span></label>
                                         <select id="cbxEstCicInv_m" name="cbxEstCicInv_m" class="selectpicker"  >
                                         </select>
                                     </div>
-                                </div>
+                                </div>-->
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
