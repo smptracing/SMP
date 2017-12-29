@@ -18,10 +18,10 @@ class programar_pip extends CI_Controller
             $flat  = "listarpip_formulacion_evaluacion";
             $datos = $this->programar_pip_modal->GetProyectosFormulacionEvaluacion($flat);
             $saldo = 0;
-            if(!$datos)
+            /*if(!$datos)
             {
                 echo json_encode($datos);exit;
-            }
+            }*/
             foreach ($datos as $key => $value) 
             {
                 if($value->ultimo_pim_meta_pres==0.00 || $value->ultimo_pim_meta_pres==null )
@@ -53,10 +53,6 @@ class programar_pip extends CI_Controller
             $flat  = "listarpip_viable_ejecucion";
             $datos = $this->programar_pip_modal->GetProyectosEjecucion($flat);
             $saldo = 0;
-            if(!$datos)
-            {
-                echo json_encode($datos);exit;
-            }
             foreach ($datos as $key => $value) 
             {
                 if($value->ultimo_pim_meta_pres==0.00 || $value->ultimo_pim_meta_pres==null )
@@ -238,18 +234,11 @@ class programar_pip extends CI_Controller
             $flat  = "listar_programado_pip";
             $id_pi = $this->input->post("id_pi");
             $data  = $this->programar_pip_modal->listar_programacion($flat, $id_pi);
-            if($data == false)
+            foreach ($data as $key => $value) 
             {
-                echo json_encode(array('data' => $data));
+                $value->monto_prog = a_number_format($value->monto_prog , 2, '.',",",3);                
             }
-            else
-            {
-                foreach ($data as $key => $value) 
-                {
-                    $value->monto_prog = a_number_format($value->monto_prog , 2, '.',",",3);                
-                }
-                echo json_encode(array('data' => $data));
-            }            
+            echo json_encode(array('data' => $data));          
         } 
         else 
         {
@@ -262,18 +251,11 @@ class programar_pip extends CI_Controller
             $flat  = "listar_programacion_operacion"; //para listar en el modal
             $id_pi = $this->input->post("id_pi");
             $data  = $this->programar_pip_modal->listar_programacion_operacion_mantenimiento($flat, $id_pi);
-            if($data == false)
+            foreach ($data as $key => $value) 
             {
-                echo json_encode(array('data' => $data));
+                $value->monto_opera_mant_prog = a_number_format($value->monto_opera_mant_prog, 2, '.',",",3);
             }
-            else
-            {
-                foreach ($data as $key => $value) 
-                {
-                    $value->monto_opera_mant_prog = a_number_format($value->monto_opera_mant_prog, 2, '.',",",3);                
-                }
-                echo json_encode(array('data' => $data));
-            }   
+            echo json_encode(array('data' => $data)); 
         } 
         else 
         {

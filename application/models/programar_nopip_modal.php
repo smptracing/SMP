@@ -106,7 +106,7 @@ class programar_nopip_modal extends CI_Model
                                         @flat='".$flat."',
                                         @codigounico='".$codigounico."',
                                         @aniometa='".$aniometa."'
-                                        ")
+                                        ");
                     if ($listar_montos->num_rows() > 0) {
                         return $listar_montos->result();
                     } else {

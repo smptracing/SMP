@@ -230,23 +230,20 @@ $(document).on("ready" ,function(){
             url:base_url+"index.php/programar_pip/AddProgramacion_operacion_mantenimiento",
             type:$(this).attr('method'),
             data:$(this).serialize(),
-            success:function(resp){
-             //alert(resp);
-             if (resp=='1') {
-               swal("REGISTRADO","Se regristró correctamente", "success");
-              // formReset();
-             }
-              if (resp=='2') {
-               swal("NO SE REGISTRÓ","NO se regristró ", "error");
-             }
-             $('#Table_funcionamiento').dataTable()._fnAjaxUpdate();
+            success:function(resp)
+            {
+                if (resp=='1') 
+                {
+                    swal("REGISTRADO","Se regristró correctamente", "success");
+                }
+                if (resp=='2') 
+                {
+                    swal("NO SE REGISTRÓ","NO se regristró ", "error");
+                }
 
-            $('#Table_Programar').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
-            $('#table_formulacion_evaluacion').dataTable()._fnAjaxUpdate();
-            $('#table_ejecucion').dataTable()._fnAjaxUpdate();
-            //$('#Table_funcionamiento').dataTable()._fnAjaxUpdate();
-             //  formReset();
-           }
+                $('#Table_funcionamiento').dataTable()._fnAjaxUpdate();
+                $('#Table_Programar_operacion_mantenimiento').dataTable()._fnAjaxUpdate();
+            }
         });
     });
     $('#form_AddProgramacion').formValidation({
@@ -395,120 +392,106 @@ $(document).on("ready" ,function(){
 
 });
 //listar proyectos de inversion en formulacion y evaluacion
- var lista_formulacion_evaluacion=function()
+var lista_formulacion_evaluacion=function()
 {
-       var table=$("#table_formulacion_evaluacion").DataTable({
-                     "processing": true,
-                      "serverSide":false,
-                     destroy:true,
-                         "ajax":{
-                                    "url":base_url+"index.php/programar_pip/GetProyectosFormulacionEvaluacion",
-                                    "method":"POST",
-                                    "dataSrc":""
-                                  },
-                                "columns":[
-                                    {"defaultContent":"<td>#</td>"},
-                                    {"data":"codigo_unico_pi"},
-                                    {"data":"nombre_pi"},
-                                    {"data":"nombre_funcion"},
-                                    {"data":"costo_pi"},
-                                    {"data":"nombre_estado_ciclo"},
-                                    {"data": function (data, type, dataToSet) {
-
-                                      if (data.estado_programado !='0') //estap programado
-                                      {
-                                       // return '<a  href="#"><button type="button" class="btn btn btn-success btn-xs">Programado</button></a>';
-                                       /*var cadena=data.anioProgramacion.split(' ');
-                                       var string='';
-                                       for(var i=0;i<cadena.length;i++){
-                                        var item=cadena[i].split(':');
-                                        string+='<a class="linkItem" title="S/. '+item[1]+'">'+item[0]+'<a> ';
-                                       }*/
-                                       //cadena=data.anioProgramacion;
-                                       return '<h5><span class="label label-success"> Programado</span></h5><div>'+data.anioProgramacion+'</div>';
-                                      }
-                                      if (data.estado_programado =='0') //no esta progrmado
-                                      {
-                                        //return '<a  href="#"><button type="button" class="btn btn btn-danger btn-xs">No Programado</button></a>';
-                                        return '<h5><span class="label label-danger">No Programado</span></h5>';
-                                      }
-                                   }},
-                                  {"data":'nombre_pi',render:function(data,type,row){
-                                           // return "<center> <button title='ESTABLECER PRIORIDAD' type='button'  data-toggle='tooltip'  class='editar btn btn-success btn-xs' data-toggle='modal' onclick=paginaAjaxDialogo('null','Prioridad',{id_proyecto:"+row.id_pi+",id_funcion:"+row.id_funcion+"},'"+base_url+"index.php/criterio/itemPrioridad','GET',null,null,false,true); ><i class='ace-icon fa fa-list-ol bigger-120'></i></button> <button type='button' title='Programar' onclick=mostrarPrioridad('"+row.id_pi+"'); class='programar_pip btn btn-warning btn-xs' id='bt_"+row.id_pi+"' data-toggle='modal' data-target='#Ventana_Programar'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button></center>";//
-                                            return "<center>  <button type='button' title='Programar' onclick=mostrarPrioridad('"+row.id_pi+"'); class='programar_pip btn btn-warning btn-xs' id='bt_"+row.id_pi+"' data-toggle='modal' data-target='#Ventana_Programar'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button></center>";//
-                                    }
-                                  },
-
-                                ],
-                               "language":idioma_espanol
-                    });
-        AddProgramacion("#table_formulacion_evaluacion",table);
-        AddMeta_Pi("#table_formulacion_evaluacion",table);
-}
-//fin de proyectos de inversion en formulacion y evaluacion
-//listar programación por cada proyecto
- var listar_programacion=function(id_pi)
+    var table=$("#table_formulacion_evaluacion").DataTable({
+        "processing": true,
+        "serverSide":false,
+        destroy:true,
+        "ajax":{
+            "url":base_url+"index.php/programar_pip/GetProyectosFormulacionEvaluacion",
+            "method":"POST",
+            "dataSrc":""
+        },
+        "columns":[
+            {"defaultContent":"<td>#</td>"},
+            {"data":"codigo_unico_pi"},
+            {"data":"nombre_pi"},
+            {"data":"nombre_funcion"},
+            {"data":"costo_pi"},
+            {"data":"nombre_estado_ciclo"},
+            {"data": function (data, type, dataToSet) 
                 {
-                    var table=$("#Table_Programar").DataTable({
-                      "processing": true,
-                      "serverSide":false,
-                       destroy:true,
-                         "ajax":{
-                                     url:base_url+"index.php/programar_pip/listar_programacion",
-                                     type:"POST",
-                                     data :{id_pi:id_pi}
-                                    },
-                                "columns":[
-                                    {"data":"id_pi","visible": false},
-                                    {"data":"cartera"},
-                                    {"data":"nombre_brecha"},
-                                    {"data":"año_prog"},
-                                    {"data":"monto_prog"},
-                                    {"data":"prioridad_prog"},
-                                    {"defaultContent":"<button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
-                                ],
-                               "language":idioma_espanol
-                    });
-                    EliminarProgramacion("#Table_Programar",table);
+                    if (data.estado_programado !='0')
+                    {
+                        return '<h5><span class="label label-success"> Programado</span></h5><div>'+data.anioProgramacion+'</div>';
+                    }
+                    if (data.estado_programado =='0')
+                    {
+                        return '<h5><span class="label label-danger">No Programado</span></h5>';
+                    }
                 }
-//fin listar programación por cada proyecto
-//Eliminar programacion
-var EliminarProgramacion=function(tbody,table){
-                  $(tbody).on("click","button.eliminar",function(){
-                        var data=table.row( $(this).parents("tr")).data();
-                        var id_pi=data.id_pi;
-                        var id_cartera=data.id_cartera;
-                      //  console.log(data);
-                         swal({
-                                title: "Desea eliminar ?",
-                                text: "",
-                                type: "warning",
-                                showCancelButton: true,
-                                cancelButtonText:"Cerrar" ,
-                                confirmButtonColor: "#DD6B55",
-                                confirmButtonText: "Si,Eliminar",
-                                closeOnConfirm: false
-                              },
-                              function(){
-                                    $.ajax({
-                                          url:base_url+"index.php/programar_nopip/EliminarProgramacion",
-                                          type:"POST",
-                                          data:
-                                          {id_cartera:id_cartera,id_pi:id_pi},
-                                          success:function(respuesta){
-                                            //alert(respuesta);
-                                            swal("Se eliminó corectamente", ".", "success");
-                                            $('#Table_Programar').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
-                                            $('#table_formulacion_evaluacion').dataTable()._fnAjaxUpdate();
-                                            $('#table_ejecucion').dataTable()._fnAjaxUpdate();
-                                            $('#Table_Programar_operacion_mantenimiento').dataTable()._fnAjaxUpdate();
-                                            $('#Table_funcionamiento').dataTable()._fnAjaxUpdate();
+            },
+            {"data":'nombre_pi',render:function(data,type,row)
+                {
+                    return "<center>  <button type='button' title='Programar' onclick=mostrarPrioridad('"+row.id_pi+"'); class='programar_pip btn btn-warning btn-xs' id='bt_"+row.id_pi+"' data-toggle='modal' data-target='#Ventana_Programar'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button></center>";//
+                }
+            }
+        ],
+        "language":idioma_espanol
+    });
+    AddProgramacion("#table_formulacion_evaluacion",table);
+    AddMeta_Pi("#table_formulacion_evaluacion",table);
+}
 
-                                          }
-                                        });
-                              });
-                    });
+var listar_programacion=function(id_pi)
+{
+    var table=$("#Table_Programar").DataTable({
+        "processing": true,
+        "serverSide":false,
+        destroy:true,
+        "ajax":{
+            url:base_url+"index.php/programar_pip/listar_programacion",
+            type:"POST",
+            data :{id_pi:id_pi}
+        },
+        "columns":[
+            {"data":"id_pi","visible": false},
+            {"data":"cartera"},
+            {"data":"nombre_brecha"},
+            {"data":"año_prog"},
+            {"data":"monto_prog"},
+            {"data":"prioridad_prog"},
+            {"defaultContent":"<button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
+        ],
+        "language":idioma_espanol
+    });
+    EliminarProgramacion("#Table_Programar",table);
+}
+
+var EliminarProgramacion=function(tbody,table)
+{
+    $(tbody).on("click","button.eliminar",function(){
+        var data=table.row( $(this).parents("tr")).data();
+        var id_pi=data.id_pi;
+        var id_cartera=data.id_cartera;
+        swal({
+            title: "Desea eliminar ?",
+            text: "",
+            type: "warning",
+            showCancelButton: true,
+            cancelButtonText:"Cerrar" ,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Si,Eliminar",
+            closeOnConfirm: false
+        },
+        function(){
+            $.ajax({
+                url:base_url+"index.php/programar_nopip/EliminarProgramacion",
+                type:"POST",
+                data:{ id_cartera:id_cartera,id_pi:id_pi },
+                success:function(respuesta)
+                {
+                    swal("Se eliminó corectamente", ".", "success");
+                    $(tbody).dataTable()._fnAjaxUpdate();
+                    $('#Table_funcionamiento').dataTable()._fnAjaxUpdate();
+                    $('#table_ejecucion').dataTable()._fnAjaxUpdate();
+                    $('#table_formulacion_evaluacion').dataTable()._fnAjaxUpdate();
                 }
+            });
+        });
+    });
+}
 //listar prioridad con su cartera
  var lista_prioridad=function(anio)
                 {
@@ -539,84 +522,72 @@ $("#Cbx_AnioCartera").change(function() {
                            //listar carteran de proyectos
                         });
 
-//listar programación para operacion y manteniemitno
- var listar_programacion_operacion_mantenimiento=function(id_pi)
-                {
-                    var table=$("#Table_Programar_operacion_mantenimiento").DataTable({
-                      "processing": true,
-                      "serverSide":false,
-                       destroy:true,
-                         "ajax":{
-                                     url:base_url+"index.php/programar_pip/listar_programacion_operacion_mantenimiento",
-                                     type:"POST",
-                                     data :{id_pi:id_pi}
-                                    },
-                                  "columns":[
-                                    {"data":"id_pi","visible": false},
-                                    {"data":"cartera"},
-                                    {"data":"nombre_brecha"},
-                                    {"data":"año_prog"},
-                                    {"data":"monto_opera_mant_prog"},
-                                    {"data":"prioridad_prog"},
-                                    {"defaultContent":"<button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
-                                ],
-                               "language":idioma_espanol
-                    });
-                    EliminarProgramacion("#Table_Programar_operacion_mantenimiento",table);
-                }
-//fin listar programación  para operacion y manteniemitno
-//listar proyectos de inversion en Ejecucion
- var lista_ejecucion=function()
+var listar_programacion_operacion_mantenimiento=function(id_pi)
 {
-       var table=$("#table_ejecucion").DataTable({
-                     "processing": true,
-                      "serverSide":false,
-                     destroy:true,
-                         "ajax":{
-                                    "url":base_url+"index.php/programar_pip/GetProyectosEjecucion",
-                                    "method":"POST",
-                                    "dataSrc":""
-                                  },
-                                "columns":[
-                                    {"defaultContent":"<td>#</td>"},
-                                    {"data":"id_pi" ,"visible": false},
-                                    {"data":"codigo_unico_pi"},
-                                    {"data":"nombre_pi"},
-                                      {"data":"nombre_funcion"},
-                                    {"data":"costo_pi"},
-                                    {"data":"nombre_estado_ciclo"},
-                                    {"data": function (data, type, dataToSet) {
+    var table=$("#Table_Programar_operacion_mantenimiento").DataTable({
+        "processing": true,
+        "serverSide":false,
+        destroy:true,
+        "ajax":{
+            url:base_url+"index.php/programar_pip/listar_programacion_operacion_mantenimiento",
+            type:"POST",
+            data :{id_pi:id_pi}
+        },
+        "columns":[
+            {"data":"id_pi","visible": false},
+            {"data":"cartera"},
+            {"data":"nombre_brecha"},
+            {"data":"año_prog"},
+            {"data":"monto_opera_mant_prog"},
+            {"data":"prioridad_prog"},
+            {"defaultContent":"<button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
+        ],
+        "language":idioma_espanol
+    });
+    EliminarProgramacion("#Table_Programar_operacion_mantenimiento",table);
+}
 
-                                      if (data.estado_programado !='0') //estap programado
-                                      {
-                                       // return '<a  href="#"><button type="button" class="btn btn btn-success btn-xs">Programado</button></a>';
-                                       /*var cadena=data.anioProgramacion.split(' ');
-                                       var string='';
-                                       for(var i=0;i<cadena.length;i++){
-                                        var item=cadena[i].split(':');
-                                        string+='<a class="linkItem" title="S/. '+item[1]+'">'+item[0]+'<a> ';
-                                       }*/
-                                       //cadena=data.anioProgramacion;
-                                       return '<h5><span class="label label-success"> Programado</span></h5><div>'+data.anioProgramacion+'</div>';
-                                       //return '<h5><span class="label label-success"> Programado</span></h5>';
-                                      }
-                                      if (data.estado_programado =='0') //no esta progrmado
-                                      {
-                                        //return '<a  href="#"><button type="button" class="btn btn btn-danger btn-xs">No Programado</button></a>';
-                                        return '<h5><span class="label label-danger">No Programado</span></h5>';
-                                      }
-                                   }},
-                                    {"data":'nombre_pi',render:function(data,type,row){
-                                      return "<center> <button type='button' title='Programar' onclick=mostrarPrioridad('"+row.id_pi+"'); id='bt_"+row.id_pi+"'  class='programar_pip btn btn-warning btn-xs' data-toggle='modal' data-target='#Ventana_Programar'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button></center>";
-
-                                      }
-                                    },
-                                    /*{"defaultContent":"<center><button type='button' title='Programar' class='programar_pip btn btn-warning btn-xs' data-toggle='modal' data-target='#Ventana_Programar'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button></center>"}*/
-                                ],
-                               "language":idioma_espanol
-                    });
-        AddProgramacion("#table_ejecucion",table);
-        AddMeta_Pi("#table_ejecucion",table);
+var lista_ejecucion=function()
+{
+    var table=$("#table_ejecucion").DataTable({
+        "processing": true,
+        "serverSide":false,
+        destroy:true,
+        "ajax":{
+            "url":base_url+"index.php/programar_pip/GetProyectosEjecucion",
+            "method":"POST",
+            "dataSrc":""
+        },
+        "columns":[
+            {"defaultContent":"<td>#</td>"},
+            {"data":"id_pi" ,"visible": false},
+            {"data":"codigo_unico_pi"},
+            {"data":"nombre_pi"},
+            {"data":"nombre_funcion"},
+            {"data":"costo_pi"},
+            {"data":"nombre_estado_ciclo"},
+            {"data": function (data, type, dataToSet) 
+                {
+                    if (data.estado_programado !='0')
+                    {
+                        return '<h5><span class="label label-success"> Programado</span></h5><div>'+data.anioProgramacion+'</div>';
+                    }
+                    if (data.estado_programado =='0')
+                    {
+                        return '<h5><span class="label label-danger">No Programado</span></h5>';
+                    }
+                }
+            },
+            {"data":'nombre_pi',render:function(data,type,row)
+                {
+                    return "<center> <button type='button' title='Programar' onclick=mostrarPrioridad('"+row.id_pi+"'); id='bt_"+row.id_pi+"'  class='programar_pip btn btn-warning btn-xs' data-toggle='modal' data-target='#Ventana_Programar'><i class='fa fa-file-powerpoint-o ' aria-hidden='true'></i></button></center>";
+                }
+            }
+        ],
+        "language":idioma_espanol
+    });
+    AddProgramacion("#table_ejecucion",table);
+    AddMeta_Pi("#table_ejecucion",table);
 }
 //fin de proyectos de inversion en Ejecucion
 //listar proyectos de inversion en Funcionamiento
@@ -767,7 +738,7 @@ var  AddMeta_Pi=function(tbody,table){
                 }
 
 //add programar para formulacion y evaluacion
-   var  AddProgramacion=function(tbody,table){
+var  AddProgramacion=function(tbody,table){
                     $(tbody).on("click","button.programar_pip",function(){
                       var data=table.row( $(this).parents("tr")).data();
                        var  id_pi=data.id_pi;
@@ -800,33 +771,35 @@ var  AddMeta_Pi=function(tbody,table){
                     });
                 }
                 //add programar para operacion y manteniemito
-   var  AddProgramacion_oper_man=function(tbody,table){
-                    $(tbody).on("click","button.programar_pip_operacion_mantenimiento",function(){
-                      var data=table.row( $(this).parents("tr")).data();
-                       var  id_pi=data.id_pi;
-                       $("#txt_codigo_unico_pi_").val(data.codigo_unico_pi);
-                      $("#txt_id_pip_programacion_").val(data.id_pi);
-                      $("#txt_costo_proyecto_").val(data.costo_pi);
-                      $("#txt_nombre_proyecto_").val(data.nombre_pi);
-                      if(data.ultimo_pia_meta_pres!='' && data.ultimo_pia_meta_pres!=null)
-                        $("#txt_pia_oper").val(data.ultimo_pia_meta_pres);
-                      if(data.devengado_acumulado_total!='' && data.devengado_acumulado_total!=null)
-                        $("#txt_devengado_oper").val(data.devengado_acumulado_total);
-                      if(data.ultimo_pim_meta_pres!='' && data.ultimo_pim_meta_pres!=null)
-                        $("#txt_pim_oper").val(data.ultimo_pim_meta_pres);
-
-                      if(data.nombre_estado_ciclo=='IDEA' || data.nombre_estado_ciclo=='FORMULACION Y EVALUACION'){
-                        $("#ct_anio").css("display","none");
-                      }
-                      else{
-                         $("#ct_anio").css("display","");
-                      }
-                      $("#txt_saldoprogramar_oper").val(data.saldo);
-
-                        listar_aniocartera_();
-                        listar_programacion_operacion_mantenimiento(id_pi);
-                  });
-                }
+var AddProgramacion_oper_man=function(tbody,table)
+{
+    $(tbody).on("click","button.programar_pip_operacion_mantenimiento",function()
+    {
+        var data=table.row( $(this).parents("tr")).data();
+        var  id_pi=data.id_pi;
+        $("#txt_codigo_unico_pi_").val(data.codigo_unico_pi);
+        $("#txt_id_pip_programacion_").val(data.id_pi);
+        $("#txt_costo_proyecto_").val(data.costo_pi);
+        $("#txt_nombre_proyecto_").val(data.nombre_pi);
+        if(data.ultimo_pia_meta_pres!='' && data.ultimo_pia_meta_pres!=null)
+            $("#txt_pia_oper").val(data.ultimo_pia_meta_pres);
+        if(data.devengado_acumulado_total!='' && data.devengado_acumulado_total!=null)
+            $("#txt_devengado_oper").val(data.devengado_acumulado_total);
+        if(data.ultimo_pim_meta_pres!='' && data.ultimo_pim_meta_pres!=null)
+            $("#txt_pim_oper").val(data.ultimo_pim_meta_pres);
+        if(data.nombre_estado_ciclo=='IDEA' || data.nombre_estado_ciclo=='FORMULACION Y EVALUACION')
+        {
+            $("#ct_anio").css("display","none");
+        }
+        else
+        {
+            $("#ct_anio").css("display","");
+        }
+        $("#txt_saldoprogramar_oper").val(data.saldo);
+        listar_aniocartera_();
+        listar_programacion_operacion_mantenimiento(id_pi);
+    });
+}
                 var listar_aniocartera_=function(valor){ //listar ani cartera operacion y mantenimiento
                      html="";
                     $("#Cbx_AnioCartera_").html(html);

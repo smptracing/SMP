@@ -51,7 +51,8 @@ class Criterio extends CI_Controller {/* Mantenimiento de sector entidad Y servi
       $this->load->view($template);
       $this->load->view('layout/PMI/footer');
     }
-    function getFactor(){
+    function getFactor()
+    {
 		if ($this->input->is_ajax_request()) {
 			$datos=$this->Model_Criterio->getFactor();
 			echo json_encode($datos);
@@ -60,14 +61,10 @@ class Criterio extends CI_Controller {/* Mantenimiento de sector entidad Y servi
 			show_404();
 		}
 	}
-	function getPrioridad($proyecto){
-		//if ($this->input->is_ajax_request()) {
-			$datos=$this->Model_Criterio->getPrioridad($proyecto);
-			echo json_encode($datos);
-		/*}
-		else{
-			show_404();
-		}*/
+	function getPrioridad($proyecto)
+	{
+		$datos=$this->Model_Criterio->getPrioridad($proyecto);
+		echo json_encode($datos);
 	}
 	function addFactor(){
 	    if ($this->input->is_ajax_request()){
