@@ -124,7 +124,7 @@
 	<hr>
 	<div class="row" style="text-align: right;">
 		<button type="submit" id="btnEnviarFormulario" class="btn btn-success">Guardar detalle del presupuesto</button>
-		<button  class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+		<button  class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 	</div>
 </form>
 <script>

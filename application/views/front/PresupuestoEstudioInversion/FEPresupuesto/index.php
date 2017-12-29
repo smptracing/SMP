@@ -5,43 +5,32 @@
 			<div class="col-md-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title" style="color: black; ">
-						&nbsp;&nbsp;<h5><i class="fa fa-bars"></i><u>Presupuesto del  Proyecto Inversión:" <?=strtoupper($nombreProyectoInv->nombre_est_inv)?>"</u></h5>
+						&nbsp;&nbsp;<h5><u>Presupuesto del  Proyecto Inversión:" <?=strtoupper($nombreProyectoInv->nombre_est_inv)?>"</u></h5>
 						<ul class="nav navbar-right panel_toolbox">
 						</ul>
 						<div class="clearfix"></div>
 					</div>
 					<div class="x_content">
 						<div class="" role="tabpanel" data-example-id="togglable-tabs">
-							<ul id="myTab" class="nav nav-tabs" role="tablist">
+							<!--<ul id="myTab" class="nav nav-tabs" role="tablist">
 								<li role="presentation" class="active"><a href="#tab_etapasFE" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"> <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>Presupuesto</a>
 								</li>
 							</ul>
 							<div id="myTabContent" class="tab-content">
-								<div role="tabpanel" class="tab-pane fade active in" id="#tab_etapasFE" aria-labelledby="home-tab">
+								<div role="tabpanel" class="tab-pane fade active in" id="#tab_etapasFE" aria-labelledby="home-tab">-->
 									<div class="row">
 										<div class="col-md-12 col-xs-12">
-											<div class="x_panel">
+											<!--<div class="x_panel">-->
 												<button type="button" class="btn btn-primary " onclick="paginaAjaxDialogo(null, 'Registro de presupuesto para formulación y evaluación', { idEstInv: '<?=$nombreProyectoInv->id_est_inv?>' }, base_url+'index.php/FE_Presupuesto_Inv/insertar', 'GET', null, null, false, true);"  >
 													<span class="fa fa-plus-circle"></span>
 													Nuevo
 												</button>
 											</button>
 											<div class="x_title">
-												<ul class="nav navbar-right panel_toolbox">
-													<li>
-														<a class="collapse-link">
-															<i class="fa fa-chevron-up"></i>
-														</a>
-													</li>
-													<li>
-														<a class="close-link">
-															<i class="fa fa-close"></i>
-														</a>
-													</li>
-												</ul>
 												<div class="clearfix"></div>
 											</div>
 											<div class="x_content">
+												<div class="table-responsive">
 												<table id="table-Presupuesto" class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 													<thead>
 														<tr>
@@ -75,11 +64,12 @@
 													</tbody>
 													
 												</table>
-											</div>
+												</div>
+											<!--</div>-->
 										</div>
 									</div>
-								</div>
-							</div>
+								<!--</div>
+							</div>-->
 						</div>
 					</div>
 				</div>

@@ -18,7 +18,7 @@
 			</div>
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<label>Pliego</label>
-				<input type="text" class="form-control" id="txtPliego" name="txtPliego" placeholder="Pliego" autocomplete="off">
+				<input type="text" class="form-control" id="txtPliego" name="txtPliego" placeholder="Pliego" autocomplete="off" maxlength="200">
 			</div>
 		</div>
 		<h4 style="margin-bottom: 0px;">Fuente de financiamiento</h4>
@@ -34,11 +34,11 @@
 			</div>
 			<div class="col-md-3 col-sm-6 col-xs-12">
 				<label>Correlativo Meta</label>
-				<input type="text" class="form-control" id="txtCorelativoMeta" name="txtCorelativoMeta" autocomplete="off">
+				<input type="text" class="form-control" id="txtCorelativoMeta" name="txtCorelativoMeta" autocomplete="off" maxlength="100">
 			</div>
 			<div class="col-md-3 col-sm-6 col-xs-12">
 				<label>Año</label>
-				<input type="text" class="form-control" id="txtAnio" name="txtAnio" autocomplete="off">
+				<input type="text" class="form-control" id="txtAnio" name="txtAnio" autocomplete="off" maxlength="4">
 			</div>
 			<div class="col-md-3 col-sm-6 col-xs-12">
 				<label>.</label>
@@ -60,7 +60,7 @@
 		</div>
 		<div class="row" style="text-align: right;">
 			<button type="submit" id="btnEnviarFormulario" class="btn btn-success">Registrar fuente de finan.</button>
-			<button class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+			<button class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 		</div>
 </form>
 <script>
@@ -120,7 +120,12 @@
 						notEmpty:
 						{
 							message: '<b style="color: red;">El campo "Pliego" es requerido.</b>'
-						}
+						},
+	                    stringLength:
+	                    {
+	                        max: 200,
+	                        message: '<b style="color: red;">El campo "Pliego" no puede exceder los 200 cáracteres.</b>'
+	                    }
 					}
 				}
 			}
@@ -152,7 +157,12 @@
 						notEmpty:
 						{
 							message: '<b style="color: red;">El campo "Correlativo Meta" es requerido.</b>'
-						}
+						},
+	                    stringLength:
+	                    {
+	                        max: 100,
+	                        message: '<b style="color: red;">El campo "Correlativo Meta" no puede exceder los 100 cáracteres.</b>'
+	                    }
 					}
 				},
 				txtAnio:
@@ -167,6 +177,11 @@
 	                    {
 	                        regexp: "^([0-9]){4}$",
 	                        message: '<b style="color: red;">El campo "Año" debe ser un número de 4 díjitos.</b>'
+	                    },
+	                    stringLength:
+	                    {
+	                        max: 4,
+	                        message: '<b style="color: red;">El campo "Año" no puede exceder los 4 cáracteres.</b>'
 	                    }
 					}
 				}

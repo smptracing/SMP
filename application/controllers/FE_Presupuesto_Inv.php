@@ -13,7 +13,7 @@ class FE_Presupuesto_Inv extends CI_Controller
 
 	public function index()
     {
-			$idEstInv = isset($_GET['id_est_inv']) ? $_GET['id_est_inv'] : '';
+		$idEstInv = isset($_GET['id_est_inv']) ? $_GET['id_est_inv'] : '';
     	$nombreProyecto=$this->Model_FE_Presupuesto_Inv->nombreProyectoInvPorId($idEstInv);
     	$ListarPresupuesto=$this->Model_FE_Presupuesto_Inv->ListarPresupuesto($idEstInv);
 
