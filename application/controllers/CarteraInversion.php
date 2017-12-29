@@ -14,46 +14,65 @@ public function index()
 	$this->_load_layout('Front/Pmi/frmCarteraInversion');
 }
 
-function AddCartera()
-{
-	if ($this->input->is_ajax_request())
+	function AddCartera()
 	{
-    $msg=array();
+	 	if ($this->input->is_ajax_request())
+        {
+            $msg = array();
+            $nombreArchivo = $_FILES['cartera_resolucion']['name'];
 
-    $config['upload_path']   = './uploads/cartera/';
-    $config['allowed_types'] = 'jpg|png|pdf|jpeg';
-    // $config['max_width']     = 1024;
-    // $config['max_height']    = 768;
-    // $config['file_name'] = 'DOC_';
-    $config['max_size']    = '1024*6';
+            $c_data['año_apertura_cartera']=$this->input->post("dateAñoAperturaCart")."-01-01";
+			$c_data['fecha_inicio_cartera']=$this->input->post("dateFechaIniCart");
+			$c_data['fecha_cierre_cartera']=$this->input->post("dateFechaFinCart");
+			$c_data['estado_cartera'] = $this->input->post("estadoCartera");
+			$c_data['numero_resolucion_cartera']=$this->input->post("txt_NumResolucionCart");
+			$query = $this->Model_CarteraInversion->getSameYearCartera($c_data);
+			if ($query>0)
+			{
+				$msg = (['proceso' => 'Error', 'mensaje' => 'El año de apertura ya existe']);
+				$this->load->view('front/json/json_view',['datos' => $msg]);
+				return;
+			} 
 
-    $this->load->library('upload', $config);
+            if($nombreArchivo != '' || $nombreArchivo != null)
+            {
+                $extension = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
+                if($extension=='png' || $extension=='jpg'|| $extension=='pdf')
+                {
+                    $config['upload_path'] = './uploads/cartera/';
+                    $config['allowed_types'] = '*';
+                    $config['max_width']     = 1024;
+				    $config['max_height']    = 768;
+				    $config['file_name'] = 'DOC_';
+				    $config['max_size'] = '20048';
+                    $this->load->library('upload', $config);
 
-    if (!$this->upload->do_upload('cartera_resolucion'))
-    {
-        $error = array('error' => $this->upload->display_errors('', ''));
-    }
-      $c_data['año_apertura_cartera']=$this->input->post("dateAñoAperturaCart")."-01-01";
-  	  $c_data['fecha_inicio_cartera']=$this->input->post("dateFechaIniCart");
-      $c_data['fecha_cierre_cartera']=$this->input->post("dateFechaFinCart");
-      $c_data['estado_cartera'] = $this->input->post("estadoCartera");
-      $c_data['numero_resolucion_cartera']=$this->input->post("txt_NumResolucionCart");
-      $c_data['file'] = $this->upload->file_name;
-
-      $query = $this->Model_CarteraInversion->getSameYearCartera($c_data);
-
-      if ($query>0) {
-        $msg = (['proceso' => 'Error', 'mensaje' => 'El año de apertura ya existe']);
-      } else {
-        $this->Model_CarteraInversion->AddCartera($c_data);
-        $msg = (['proceso' => 'Correcto', 'mensaje' => 'La cartera fue registrada correctamente: ']);
-      }
-      $this->load->view('front/json/json_view', ['datos' => $msg]);
-  }
-  else {
-    show_404();
-  }
-}
+                    if (!$this->upload->do_upload('cartera_resolucion'))
+                    {
+                        $msg=(['proceso' => 'Error', 'mensaje' => $this->upload->display_errors('', '')]);
+                        $this->load->view('front/json/json_view',['datos' => $msg]);
+                        return;
+                    }
+                    $c_data['url_resolucion_cartera']= $this->upload->data('file_name');
+                    $q2 = $this->Model_CarteraInversion->AddCartera($c_data);
+                    $msg=($q2>0 ? (['proceso' => 'Correcto', 'mensaje' => 'Ubigeo guardado correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado']));
+                    $this->load->view('front/json/json_view', ['datos' => $msg]);                    
+                }
+                else
+                {
+                    $msg = (['proceso' => 'Error', 'mensaje' => 'El tipo de archivo que intentas subir no está permitido.']);
+                    $this->load->view('front/json/json_view', ['datos' => $msg]);
+                }
+            }
+            else
+            {
+            	$c_data['url_resolucion_cartera']= NULL;
+                $q1 = $this->Model_CarteraInversion->AddCartera($c_data);
+                $msg=($q1>0 ? (['proceso' => 'Correcto', 'mensaje' => 'Registro guardado']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado']));
+                $this->load->view('front/json/json_view', ['datos' => $msg]);
+            }
+        }
+	}
  	 function editCartera(){
       $idCartera = isset($_GET['id_cartera']) ? $_GET['id_cartera'] : null;
 	    if ($this->input->is_ajax_request()) {

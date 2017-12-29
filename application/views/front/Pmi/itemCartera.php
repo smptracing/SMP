@@ -115,14 +115,7 @@ $(function(){
         success:function(resp)
         {
             resp = JSON.parse(resp);
-            if (typeof resp.error !== "undefined")
-            {
-                swal("Error",resp.error, "error");
-            }
-            else
-            {
-                ((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje, "success") : swal(resp.proceso,resp.mensaje, "error"));
-            }
+            ((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje, "success") : swal(resp.proceso,resp.mensaje, "error"));            
             $('#table-CarteraInv').dataTable()._fnAjaxUpdate();
         }
     });

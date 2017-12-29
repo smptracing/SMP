@@ -26,15 +26,9 @@ class Model_CarteraInversion extends CI_Model
 
     function AddCartera($c_data)
     {
-      $data = array(
-        'año_apertura_cartera' => $c_data['año_apertura_cartera'],
-        'fecha_inicio_cartera' => $c_data['fecha_inicio_cartera'],
-        'fecha_cierre_cartera' => $c_data['fecha_cierre_cartera'],
-        'estado_cartera' => $c_data['estado_cartera'],
-        'numero_resolucion_cartera' => $c_data['numero_resolucion_cartera'],
-        'url_resolucion_cartera' => $c_data['file']
-      );
-      $this->db->insert('CARTERA_INVERSION',$data);
+
+      $this->db->insert('CARTERA_INVERSION',$c_data);
+      return $this->db->affected_rows();
     }
 
         function editCartera($id_cartera,$dateAñoAperturaCart,$dateFechaIniCart,$dateFechaFinCart,$estado,$txt_NumResolucionCart,$txt_UrlResolucionCart){
