@@ -216,25 +216,4 @@ class Usuario extends CI_Controller {
 		echo json_encode(['cantidad'=>$data]);exit;
 	}
 
-	function validateUsername() {
-		if(isset($_POST['username']))
-		{
-		 $name=$_POST['username'];
-
-		 $checkdata=" SELECT usuario FROM USUARIO WHERE usuario='$name' ";
-
-		 $query=mysql_query($checkdata);
-
-		 if(mysql_num_rows($query)>0)
-		 {
-		  echo "User Name Already Exist";
-		 }
-		 else
-		 {
-		  echo "OK";
-		 }
-		 exit();
-		}
-	}
-
 }
