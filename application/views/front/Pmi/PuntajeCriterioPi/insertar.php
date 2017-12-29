@@ -90,7 +90,7 @@
 						<?php } ?>
 					<tr>
 						<td></td>
-						<td><button type="button" class="btn btn-success">Puntaje Total <span class="badge"><?= number_format($puntaje, 2, '.', ' '); ?></span></button> </td>
+						<td><button type="button" class="btn btn-success">Puntaje Total <span class="badge"><?= (!isset($puntaje) ? '' : number_format($puntaje, 2, '.', ' ')); ?></span></button> </td>
 						<td></td>
 					</tr>
 
@@ -222,7 +222,8 @@ $("#combocriteriogeneral" ).change(function() {
         });
 	});
 
-$("#ComboListadoCriterios").change(function() {
+$("#ComboListadoCriterios").change(function()
+{
 		var anio=$("#ComboListadoCriterios").val();
 		var txtIdPi=$("#txtIdPi").val();
 		var id_funcion=$("#id_funcion").val();
