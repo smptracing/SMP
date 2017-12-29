@@ -112,6 +112,8 @@
                         var data=table.row( $(this).parents("tr")).data();
                         var id_sector=$('#txt_IdModificar').val(data.id_sector);
                         var nombre_sector=$('#txt_NombreSectorM').val(data.nombre_sector);
+                        var url= base_url+"uploads/IconosSector/"+data.icono_sector;
+                        $('#imagenSector').attr('src',url);
 
                     });
                 }

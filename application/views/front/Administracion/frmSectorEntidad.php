@@ -148,7 +148,7 @@
 
                           <button type="button" class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-remove"></span>
-                            Cancelar
+                            Cerrar
                           </button>
 
                         </div>
@@ -213,7 +213,7 @@
                           </button>
                           <button type="button" class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-remove"></span>
-                            Cancelar
+                            Cerrar
                           </button>
 
                         </div>
@@ -249,17 +249,27 @@
                 <form class="form-horizontal " id="form-ActulizarSector" action="<?php echo  base_url();?>Sector/UpdateSector" enctype="multipart/form-data" method="POST" >
 
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Modificar El sector<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_IdModificar" type="hidden" name="txt_IdModificar" type="text">
+                        
+                        <input id="txt_IdModificar" type="hidden" name="txt_IdModificar" type="text">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Modificar El sector<span class="required">*</span></label>
+                        <div class="col-md-9 col-sm-6 col-xs-12" id="validarSectorM">                        
+                          <input id="txt_NombreSectorM" name="txt_NombreSectorM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name"  required="required" type="text" maxlength="100">
                         </div>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="txt_NombreSectorM" name="txt_NombreSectorM" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name"  required="required" type="text">
+                        <br>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Imagen Actual:</label>
+                        <div class="col-md-9 col-sm-6 col-xs-12" style="padding-top: 5px; padding-bottom: 5px;">                        
+                          <img id="imagenSector" height="50" width="50" >
+
                         </div>
-                         <div class="col-md-6 col-sm-6 col-xs-12" style="margin-left: 220px;"></br>
-                              Adjuntar Imagen: <input type="file" name="faviconSectorActualizar">
-                        </div>    
+                        <br>
+
+                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Cambiar Imagen:</label>
+                        <div class="col-md-9 col-sm-6 col-xs-12">                        
+                          <input type="file" name="faviconSectorActualizar" class="form-control">
+                        </div>
+                        
+
+                        
                       </div>
                       <div class="ln_solid"></div>
                       <div class="form-group">
@@ -270,7 +280,7 @@
                           </button>
                           <button type="button" class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-remove"></span>
-                            Cancelar
+                            Cerrar
                           </button>
                         </div>
                       </div>
@@ -341,7 +351,7 @@
                           </button>
                           <button type="submit" class="btn btn-danger" data-dismiss="modal">
                              <span class="glyphicon glyphicon-remove"></span>
-                            Cancelar
+                            Cerrar
                           </button>
 
                         </div>
@@ -461,6 +471,37 @@ $(function()
                     {
                         max: 20,
                         message: '<b style="color: red;">El campo "Siglas" no puede exceder los 20 cáracteres.</b>'
+                    }
+                }
+            }
+        }
+    });
+    $('#validarSectorM').formValidation(
+    {
+        framework: 'bootstrap',
+        excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+        live: 'enabled',
+        message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+        trigger: null,
+        fields:
+           {
+            txt_NombreSectorM:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Nombre" es requerido.</b>'
+                    },
+                    regexp:
+                    {
+                        regexp: /^[a-zA-Z\s]+$/,
+                        message: '<b style="color: red;">El campo "Nombre" es solo texto.</b>'
+                    },
+                    stringLength:
+                    {
+                        max: 100,
+                        message: '<b style="color: red;">El campo "Nombre" no puede exceder los 99 cáracteres.</b>'
                     }
                 }
             }
