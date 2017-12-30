@@ -74,8 +74,13 @@ $(document).ready(function(){
                 resp = JSON.parse(resp);
                 ((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje,"success") : swal(resp.proceso,resp.mensaje,"error"));
                 $('#Table_OperacionMantenimiento').dataTable()._fnAjaxUpdate();
-                $('#form_AddOperacionMantenimiento')[0].reset();
-                $('#ventana_ver_operacion_mantenimeinto').modal('hide');
+                $('#txt_monto_operacion').val("");
+                $('#txt_responsable_operacion').val("");
+                $('#txt_monto_mantenimiento').val("");
+                $('#txt_responsable_mantenimiento').val("");
+                $('#fileActaCompromiso').val("");
+                //$('#form_AddOperacionMantenimiento')[0].reset();
+                //$('#ventana_ver_operacion_mantenimeinto').modal('hide');
             }
         });
     });
