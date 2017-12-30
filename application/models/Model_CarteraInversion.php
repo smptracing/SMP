@@ -26,27 +26,18 @@ class Model_CarteraInversion extends CI_Model
 
     function AddCartera($c_data)
     {
-
-      $this->db->insert('CARTERA_INVERSION',$c_data);
-      return $this->db->affected_rows();
+        $this->db->insert('CARTERA_INVERSION',$c_data);
+        return $this->db->affected_rows();
     }
 
-        function editCartera($id_cartera,$dateAñoAperturaCart,$dateFechaIniCart,$dateFechaFinCart,$estado,$txt_NumResolucionCart,$txt_UrlResolucionCart){
-             $query=$this->db->query("execute sp_CarteraInversion_u ".$id_cartera.",'".$dateAñoAperturaCart."','".$dateFechaIniCart."','".$dateFechaFinCart."','".$estado."','".$txt_NumResolucionCart."','".$txt_UrlResolucionCart."'");
+    function editarCartera($idCartera,$data)
+    {
+        $this->db->set($data);
+        $this->db->where('id_cartera', $idCartera);
+        $this->db->update('CARTERA_INVERSION');
+        return $this->db->affected_rows();
+    }
 
-            if ($query)
-              {
-                $result=$query->result_array();
-                if($result[0]['n']=='1')
-                   return "Se registró la cartera de Inversiones.";
-                else
-                  return "El Año de Apertura ya Existe.";
-              }
-              else
-              {
-                return "Error... no se grabaron los datos.";
-              }
-        }
     //LISTAR CARTERA FECHA ACTUAL
       function GetCarteraInvFechAct()
         {

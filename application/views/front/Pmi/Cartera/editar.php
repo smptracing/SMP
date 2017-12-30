@@ -7,6 +7,8 @@
 
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Año Apertura Cartera<span class="required">*</span>
                             </label>
+                            <input type="hidden" value="<?php if(isset($arrayCartera->url_resolucion_cartera)) echo $arrayCartera->url_resolucion_cartera;?>" id="documento" name="documento">
+
                             <div class="col-md-6 col-sm-6 col-xs-12">
                               <input id="dateAñoAperturaCart" name="dateAñoAperturaCart" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Numero Resolucion Cartera"  type="text" value="<?php if(isset($arrayCartera->anio)) echo $arrayCartera->anio;?>" readonly>
                             </div>
@@ -46,8 +48,11 @@
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Adjuntar resolución
                         </label>
+
                           <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div> <input type="file" name="Cartera_Resoluacion" ></div>
+                                <div> <input type="file" name="cartera_resolucion" id="cartera_resolucion" class="form-control">
+                                <p style="color: red; display: block;" id="Advertencia">Solo se aceptan archivos en formato PDF, JPG y PNG<br>Si ya se subio una resolucion este se reemplazara</p>
+                                </div>
                                 <?php
                                 if(isset($arrayCartera->url_resolucion_cartera) and $arrayCartera->url_resolucion_cartera!='' ){
                                 ?>
@@ -81,26 +86,25 @@
         </div><!-- /.row -->
 </div>
 <script>
-  $(function(){
-      $("#form-RegistraCarteraInv").submit(function(event){
+$(function()
+{
+    $("#form-RegistraCarteraInv").submit(function(event)
+    {
         event.preventDefault();
         $.ajax({
             url:$("#form-RegistraCarteraInv").attr("action"),
             type:$(this).attr('method'),
-            //data:$(this).serialize(),
-            //enctype: 'multipart/form-data',
-            // dataType: "JSON",
             data: new FormData(this),
             processData: false,
             contentType: false,
-            success:function(resp){
-
-              swal("",resp, "success");
-              $('#table-CarteraInv').dataTable()._fnAjaxUpdate();
-
-           }
+            success:function(resp)
+            {
+                resp = JSON.parse(resp);
+                ((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje, "success") : swal(resp.proceso,resp.mensaje, "error"));  
+                $('#table-CarteraInv').dataTable()._fnAjaxUpdate();
+            }
         });
-      });
+    });
       $("body").on("click","#sendCartera",function(e){
           $('#form-RegistraCarteraInv').data('formValidation').validate();
           if($('#form-RegistraCarteraInv').data('formValidation').isValid()==true){

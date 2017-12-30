@@ -55,7 +55,7 @@ public function index()
                     }
                     $c_data['url_resolucion_cartera']= $this->upload->data('file_name');
                     $q2 = $this->Model_CarteraInversion->AddCartera($c_data);
-                    $msg=($q2>0 ? (['proceso' => 'Correcto', 'mensaje' => 'Ubigeo guardado correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado']));
+                    $msg=($q2>0 ? (['proceso' => 'Correcto', 'mensaje' => 'Cartera guardado correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado']));
                     $this->load->view('front/json/json_view', ['datos' => $msg]);                    
                 }
                 else
@@ -73,31 +73,63 @@ public function index()
             }
         }
 	}
- 	 function editCartera(){
-      $idCartera = isset($_GET['id_cartera']) ? $_GET['id_cartera'] : null;
-	    if ($this->input->is_ajax_request()) {
-        $config['upload_path']   = './uploads/cartera/';
-        $config['allowed_types'] = 'jpg|png|pdf|jpeg';
-        // $config['max_width']     = 1024;
-        // $config['max_height']    = 768;
-        // $config['file_name'] = 'DOC_';
-        $config['max_size']    = '1024*6';
-	      $this->load->library('upload',$config);
-		    $this->upload->do_upload('Cartera_Resoluacion');
 
+ 	function editCartera()
+ 	{
+      	$idCartera = isset($_GET['id_cartera']) ? $_GET['id_cartera'] : null;
+	    if ($this->input->is_ajax_request())
+	    {
+	    	$msg = array();
+            $nombreArchivo = $_FILES['cartera_resolucion']['name'];
 
-	    $dateAñoAperturaCart=$this->input->post("dateAñoAperturaCart")."-01-01";
-			$dateFechaIniCart =$this->input->post("dateFechaIniCart");
-			$dateFechaFinCart =$this->input->post("dateFechaFinCart");
-			$estado=$this->input->post("estadoCartera");
-			$txt_NumResolucionCart =$this->input->post("txt_NumResolucionCart");
-			$Cartera_Resoluacion=$this->upload->file_name;
-			echo $this->Model_CarteraInversion->editCartera($idCartera,$dateAñoAperturaCart,$dateFechaIniCart,$dateFechaFinCart,$estado,$txt_NumResolucionCart,$Cartera_Resoluacion);
+			$c_data['fecha_inicio_cartera']=$this->input->post("dateFechaIniCart");
+			$c_data['fecha_cierre_cartera']=$this->input->post("dateFechaFinCart");
+			$c_data['estado_cartera'] = $this->input->post("estadoCartera");
+			$c_data['numero_resolucion_cartera']=$this->input->post("txt_NumResolucionCart");
+
+            if($nombreArchivo != '' || $nombreArchivo != null)
+            {
+                $extension = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
+                if($extension=='png' || $extension=='jpg'|| $extension=='pdf')
+                {
+                    $config['upload_path'] = './uploads/cartera/';
+                    $config['allowed_types'] = '*';
+                    $config['max_width']     = 1024;
+				    $config['max_height']    = 768;
+				    $config['file_name'] = 'DOC_';
+				    $config['max_size'] = '20048';
+                    $this->load->library('upload', $config);
+                    if (!$this->upload->do_upload('cartera_resolucion'))
+                    {
+                        $msg=(['proceso' => 'Error', 'mensaje' => $this->upload->display_errors('', '')]);
+                        $this->load->view('front/json/json_view',['datos' => $msg]);
+                        return;
+                    }
+                    $c_data['url_resolucion_cartera']= $this->upload->data('file_name');
+                    $q2 = $this->Model_CarteraInversion->editarCartera($idCartera,$c_data);
+                    $msg=($q2>0 ? (['proceso' => 'Correcto', 'mensaje' => 'Registro editado correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado']));
+
+                    if (file_exists("uploads/cartera/".$this->input->post("documento")))
+           			{
+					   	unlink("uploads/cartera/".$this->input->post("documento"));
+					}
+                    $this->load->view('front/json/json_view', ['datos' => $msg]);  
+
+                }
+                else
+                {
+                    $msg = (['proceso' => 'Error', 'mensaje' => 'El tipo de archivo que intentas subir no está permitido.']);
+                    $this->load->view('front/json/json_view', ['datos' => $msg]);
+                }
+            }
+            else
+            {
+            	$c_data['url_resolucion_cartera']= NULL;
+                $q1 = $this->Model_CarteraInversion->editarCartera($idCartera,$c_data);
+                $msg=($q1>0 ? (['proceso' => 'Correcto', 'mensaje' => 'Registro guardado']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado']));
+                $this->load->view('front/json/json_view', ['datos' => $msg]);
+            }
 		}
-	     else
-	     {
-	      show_404();
-	     }
  	}
 
  	 function editarCartera()
