@@ -12,13 +12,7 @@ class Model_FEActividadEntregable extends CI_Model
        function get_Actividades($id_entregable)
         {
             $Actividades=$this->db->query("execute sp_Actividad_r'".$id_entregable."' ");
-            if($Actividades->num_rows()>=0)
-             {
-              return $Actividades->result();
-             }else
-             {
-              return false;
-             }
+            return $Actividades->result();
    
         }
         function Add_Actividades($data)

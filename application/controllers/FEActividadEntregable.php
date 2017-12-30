@@ -14,11 +14,19 @@ class FEActividadEntregable extends CI_Controller
 
     public function get_Actividades()
     {
-        if ($this->input->is_ajax_request()) {
+        if ($this->input->is_ajax_request())
+        {
             $id_en = $this->input->post('id_en');
             $datos = $this->Model_FEActividadEntregable->get_Actividades($id_en);
+            foreach ($datos as $key => $value)
+            {
+                $value->startEdit=date('m/d/Y',strtotime($value->start));
+                $value->endEdit=date('m/d/Y',strtotime($value->end));
+            }
             echo json_encode($datos);
-        } else {
+        } 
+        else 
+        {
             show_404();
         }
     }
@@ -70,17 +78,16 @@ class FEActividadEntregable extends CI_Controller
             $tx_IdActividad          = $this->input->post("tx_IdActividad");
             $txt_idEntregable        = $this->input->post("txt_idEntregable");
             $txt_NombreActividadAc   = $this->input->post("txt_NombreActividadAc");
-            $txt_fechaActividadIAc   = $this->input->post("txt_fechaActividadIAc");
-            $txt_fechaActividadfAc   = $this->input->post("txt_fechaActividadfAc");
+            $txtFechaInicio   = $this->input->post("fechaInicioEdit");
+            $txtFechaFin   = $this->input->post("fechaFinEdit");
             $txt_valorizacionEAct    = $this->input->post("txt_valorizacionEAct");
             $txt_avanceEAct          = $this->input->post("txt_avanceEAct");
             $txt_observacio_EntreAct = $this->input->post("txt_observacio_EntreAct");
             $txt_ActividadColorAc    = $this->input->post("txt_ActividadColorAc");
 
             $FechaActividadCalendar    = $this->input->post("FechaActividadCalendar");
-            $FechasCalendar=explode('-',$FechaActividadCalendar);
             
-            if ($this->Model_FEActividadEntregable->Update_Actividades($opcion,$tx_IdActividad,$txt_idEntregable,$txt_NombreActividadAc,$FechasCalendar[0],$FechasCalendar[1],$txt_valorizacionEAct,$txt_avanceEAct,$txt_observacio_EntreAct,$txt_ActividadColorAc) == false) {
+            if ($this->Model_FEActividadEntregable->Update_Actividades($opcion,$tx_IdActividad,$txt_idEntregable,$txt_NombreActividadAc,$txtFechaInicio,$txtFechaFin,$txt_valorizacionEAct,$txt_avanceEAct,$txt_observacio_EntreAct,$txt_ActividadColorAc) == false) {
                 echo "Se actualizo una Actividad ";
             } else {
                 echo " Se actualizo una Actividad ";
