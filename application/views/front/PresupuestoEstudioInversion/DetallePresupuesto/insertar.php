@@ -151,7 +151,7 @@
 			},
 			function()
 			{
-				
+
 			});
 
 			return false;
@@ -246,7 +246,7 @@
 			trigger : null,
 			fields :
 			{
-				
+
 			}
 		});
 
@@ -308,7 +308,7 @@
 				},
 				function()
 				{
-					
+
 				});
 
 				continuar=false;
@@ -334,7 +334,7 @@
 			'<td><input type="hidden" name="subTotalDetalleGasto'+idTab+'[]" value="'+$('#txtSubTotalDetalleGasto'+idTab).val()+'">'+$('#txtSubTotalDetalleGasto'+idTab).val()+'</td>'+
 			'<td><a href="#" onclick="$(this).parent().parent().remove();" style="color: red;font-weight: bold;text-decoration: underline;">Eliminar</a></td>'+
 		'</tr>';
-		
+
 		$('#tableDetalleGasto'+idTab+' > tbody').append(htmlTempDetalle);
 
 		limpiarText('tabPaneDetalleGasto'+idTab, []);
@@ -342,7 +342,7 @@
 
 	var txtDescripcionDetalleGastoValidators=
 	{
-		validators : 
+		validators :
 		{
 			notEmpty:
 			{
@@ -350,10 +350,10 @@
 			}
 		}
 	};
-	
+
 	var selectIdUnidadValidators=
 	{
-		validators: 
+		validators:
 		{
 			notEmpty:
 			{
@@ -361,7 +361,7 @@
 			}
 		}
 	};
-	
+
 	var txtCantidadDetalleGastoValidators=
 	{
 		validators:
@@ -377,7 +377,7 @@
 			}
 		}
 	};
-	
+
 	var txtCostoUnitarioDetalleGastoValidators=
 	{
 		validators:
@@ -465,7 +465,7 @@
 				trigger : null,
 				fields :
 				{
-					
+
 				}
 			});
 
@@ -502,7 +502,7 @@
 			},
 			function()
 			{
-				window.location.href='<?=base_url();?>index.php/FE_Presupuesto_Inv/index/'+objectJSON.idEstudioInversion;
+				window.location.href='<?=base_url();?>index.php/FE_Presupuesto_Inv/index?id_est_inv='+objectJSON.idEstudioInversion;
 
 				renderLoading();
 			});
