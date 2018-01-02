@@ -21,6 +21,29 @@ class FEsituacion extends CI_Controller
             show_404();
         }
     }
+
+    public function EliminarSituacion() {
+			if ($this->input->is_ajax_request()) {
+				$flag=0;
+				$msg="";
+				$id_situacion_fe = $this->input->post("id_situacion_fe");
+
+			if($this->Model_FEsituacion->EliminarSituacion($id_situacion_fe)==true){
+							$flag=0;
+							$msg="registro Eliminado Satisfactoriamente";
+					}
+					else{
+							$flag=1;
+							$msg="No se pudo eliminar";
+					}
+									$datos['flag']=$flag;
+									$datos['msg']=$msg;
+									echo json_encode($datos);
+			}  else {
+					show_404();
+			}
+		}
+
     public function add_FEsituacion()
     {
         if ($this->input->is_ajax_request()) {
@@ -53,7 +76,7 @@ class FEsituacion extends CI_Controller
     }
     public function AddSituacion()
     {
-        if ($this->input->is_ajax_request()) 
+        if ($this->input->is_ajax_request())
         {
             $msg=array();
 
@@ -66,8 +89,8 @@ class FEsituacion extends CI_Controller
 
             $msg = ($q1>0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
             $this->load->view('front/json/json_view', ['datos' => $msg]);
-        } 
-        else 
+        }
+        else
         {
             show_404();
         }

@@ -45,4 +45,15 @@ class Model_FEsituacion extends CI_Model
         $this->db->insert('SITUACION_ACTUAL',$data);
         return $this->db->affected_rows();
     }
+
+    function EliminarSituacion($id_situacion_fe){
+      $this->db->where('id_situacion_fe',$id_situacion_fe);
+      $this->db->delete('SITUACION_FE');
+      if($this->db->affected_rows()>0){
+        return true;
+      }
+      else{
+        return false;
+      }
+    }
 }

@@ -728,7 +728,8 @@ function autorizar($url)
       'Usuario/addUsuario',
       'Usuario/validateUsername',
       'FEestado/EliminarEstado',
-      'FEnivelEstudio/EliminarNivelEstudios'
+      'FEnivelEstudio/EliminarNivelEstudios',
+      'FEsituacion/EliminarSituacion'
 );
     foreach( $lista_API as $value ) {
       array_push($arrayPermitido, $value);
