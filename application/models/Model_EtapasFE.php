@@ -45,5 +45,16 @@ class Model_EtapasFE extends CI_Model
                   return false;
                 }
         }
+
+        function EliminarEtapa($id_etapa_fe) {
+          $this->db->where('id_etapa_fe',$id_etapa_fe);
+          $this->db->delete('ETAPAS_FE');
+          if($this->db->affected_rows()>0){
+            return true;
+          }
+          else{
+            return false;
+          }
+        }
         //AGREGAR UNA ETAPA EN FORMULACION Y EVALUACION
 }

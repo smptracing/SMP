@@ -164,7 +164,7 @@
   </div>
 
 <script>
-  $('.modal').on('hidden.bs.modal', function(){ 
+  $('.modal').on('hidden.bs.modal', function(){
     $(this).find('form')[0].reset(); //para borrar todos los datos que tenga los input, textareas, select.
     $("label.error").remove();  //lo utilice para borrar la etiqueta de error del jquery validate
   });

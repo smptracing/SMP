@@ -20,7 +20,28 @@ class EtapasFE extends CI_Controller {
           show_404();
         }
     }
-     //FIN CONTROLADOR DE LISTAR ETAPAS DE FORMULACION Y EVALUACION EN UNA TABLA
+
+		public function EliminarEtapa() {
+			if ($this->input->is_ajax_request()) {
+				$flag=0;
+				$msg="";
+				$id_etapa_fe = $this->input->post("id_etapa_fe");
+
+			if($this->Model_EtapasFE->EliminarEtapa($id_etapa_fe)==true){
+							$flag=0;
+							$msg="registro Eliminado Satisfactoriamente";
+					}
+					else{
+							$flag=1;
+							$msg="No se pudo eliminar";
+					}
+									$datos['flag']=$flag;
+									$datos['msg']=$msg;
+									echo json_encode($datos);
+			}  else {
+					show_404();
+			}
+		}
        //CONTROLADOR PARA AGREGAR ETAPAS DE FORMULACION Y EVALUACION EN UNA TABLA
     public function  AddEtapasFE()
     {
