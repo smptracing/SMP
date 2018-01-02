@@ -9,8 +9,8 @@
                           data:$(this).serialize(),
                           success:function(resp){
                            swal("",resp, "success");
-                          $('#table-FEestado').dataTable()._fnAjaxUpdate();   
-      
+                          $('#table-FEestado').dataTable()._fnAjaxUpdate();
+
                          }
                       });
                   });
@@ -48,8 +48,8 @@
 
                                 "language":idioma_espanol
                     });
-                    FEestado("#table-FEestado",table);                
-                        			   	
+                    FEestado("#table-FEestado",table);
+                    EliminarEstado("#table-FEestado",table);
                 }
 
                 var FEestado=function(tbody,table){
@@ -63,7 +63,41 @@
 
                 /*fin listar funcion*/
 
-              
+                var EliminarEstado=function(tbody,table){
+                  $(tbody).on("click","button.eliminar",function(){
+                        var data=table.row( $(this).parents("tr")).data();
+                        var id_estado=data.id_estado;
+                         swal({
+                                title: "Desea eliminar el Registro ?",
+                                text: "",
+                                type: "warning",
+                                showCancelButton: true,
+                                cancelButtonText:"Cerrar" ,
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "SI,Eliminar",
+                                closeOnConfirm: false
+                              },
+                              function(){
+                                    $.ajax({
+                                          url:base_url+"index.php/FEestado/EliminarEstado",
+                                          type:"POST",
+                                          data:{id_estado:id_estado},
+                                          success:function(respuesta){
+                                           var registros=jQuery.parseJSON(respuesta);
+                                           if(registros.flag==0){
+                                            swal("Elimando.",registros.msg, "success");
+                                            $('#table-FEestado').dataTable()._fnAjaxUpdate();
+                                           }
+                                           else{
+                                            swal("Error.",registros.msg, "error");
+                                            $('#table-FEestado').dataTable()._fnAjaxUpdate();
+                                           }
+                                           }
+                                        });
+                              });
+                    });
+                }
+
         /*Idioma de datatablet table-sector */
             var idioma_espanol=
                 {
@@ -90,5 +124,3 @@
                         "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                     }
                 }
-
-  
