@@ -173,7 +173,7 @@ class Estudio_Inversion extends CI_Controller
     //REGISTRAR NUEVA
     public function AddEtapaEstudio()
     {
-        if ($this->input->is_ajax_request()) 
+        if ($this->input->is_ajax_request())
         {
             $msg=array();
 
@@ -182,23 +182,23 @@ class Estudio_Inversion extends CI_Controller
             $c_data['fecha_inicio']=$this->input->post("dateFechaIniC");
             $c_data['fecha_final']=$this->input->post("dateFechaIniF");
             $c_data['avance_fisico']=0;
-            $c_data['fecha_estado']=date('d-m-Y H:i:s');      
+            $c_data['fecha_estado']=date('d-m-Y H:i:s');
             $c_data['recomendaciones']=$this->input->post("txadescripcion");
             $c_data['en_seguimiento']=1;
 
             if ($this->input->post("dateFechaIniC")>$this->input->post("dateFechaIniF"))
             {
                 $msg = (['proceso' => 'Error', 'mensaje' => 'la fecha de Inicio no puede ser superior a la fecha de finalizacion']);
-                $this->load->view('front/json/json_view', ['datos' => $msg]); 
-                return;              
+                $this->load->view('front/json/json_view', ['datos' => $msg]);
+                return;
             }
 
             $q1=$this->Estudio_Inversion_Model->AddEtapaEstudio($c_data);
 
             $msg = ($q1>0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
             $this->load->view('front/json/json_view', ['datos' => $msg]);
-        } 
-        else 
+        }
+        else
         {
             show_404();
         }
@@ -288,7 +288,7 @@ class Estudio_Inversion extends CI_Controller
 
             $msg = ($q1>0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
             $this->load->view('front/json/json_view', ['datos' => $msg]);
-        } 
+        }
         else
         {
             show_404();
@@ -307,7 +307,7 @@ class Estudio_Inversion extends CI_Controller
             $config['max_width']     = 1024;
             $config['max_height']    = 768;
             $config['file_name'] = 'DOC_';
-            $config['max_size'] = '20048';
+            $config['max_size'] = '1024*6';
 
             $this->load->library('upload', $config);
 
@@ -339,13 +339,13 @@ class Estudio_Inversion extends CI_Controller
     public function get_etapas_estudio() //mostra ESTADO INVERSION
 
     {
-        if ($this->input->is_ajax_request()) 
+        if ($this->input->is_ajax_request())
         {
             $id_est_inv = $this->input->post("id_est_inv");
             $data       = $this->Estudio_Inversion_Model->get_etapas_estudio($id_est_inv);
             echo json_encode(array('data' => $data));
-        } 
-        else 
+        }
+        else
         {
             show_404();
         }
