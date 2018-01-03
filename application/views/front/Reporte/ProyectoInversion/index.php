@@ -838,8 +838,8 @@ $("#CodigoUnico").on( "click", function()
 
     function siafActualizador() {
     	var codigounico=$("#BuscarPip").val();
-		var start = +new Date();			
-		var ups_url = '<?php $ups_url = $this->config->item('ups_url'); echo $ups_url; ?>'
+		var start = +new Date();
+		var ups_url = '<?php $ups_url = $this->config->item('ups_url');echo $ups_url;?>';
 
     	$.ajax({
 				url: ups_url + "/Importacion/codigo/" + codigounico,
@@ -858,7 +858,7 @@ $("#CodigoUnico").on( "click", function()
 
 					if(datos.actualizo)
 					{
-						
+
 						//var rttSeg = rtt / 1000;
 						swal(
 						  'Operacion Completada',
@@ -873,7 +873,7 @@ $("#CodigoUnico").on( "click", function()
 						  datos.mensaje + ' Tiempo: ' + (rtt/1000) +'s',
 						  'error'
 						);
-					}					
+					}
 				},
 				error: function (xhr, textStatus, errorMessage) {
 			        $('#divModalCargaAjax').hide();
@@ -881,10 +881,10 @@ $("#CodigoUnico").on( "click", function()
 						  'ERROR!',
 						  'No se pudo conectar con el servidor de Importacion, error 0x5642418',
 						  'error'
-						);			        
-			    } 
+						);
+			    }
 			});
-    }
+    } 
 
 	function detalladoMensualizadoConceptoClasificador(anio,meta)
 	{

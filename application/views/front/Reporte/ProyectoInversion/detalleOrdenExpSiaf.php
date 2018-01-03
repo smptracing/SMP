@@ -37,7 +37,7 @@
 									<div class="row">
 						                <div class="col-md-12 col-sm-12 col-xs-12">
 										
-					                        <div>
+					                        <div>					                        	
 					                        	<table id="table-DatoGen"  class="table-hover" cellspacing="0" width="100%">
 												<body>
 										
@@ -91,6 +91,7 @@
 
 									<div class="row">  
 										<div class="col-md-12 col-sm-12 col-xs-12">
+											<button id="btnActualizarExpediente" class="btn btn-success btn-xs" onclick="siafExpediente('<?php  echo $anio ?>', '<?php  echo $expediente ?>', '000747')">Actualizar estados de expediente</button>
 											<table id="table-DetalleOrdenExpSiaf"  class="table table-striped jambo_table bulk_action  table-hover" cellspacing="0" width="100%">
 												<thead>
 													<tr>
@@ -154,3 +155,55 @@
 		<div class="clearfix"></div>
 	</div>
 </div>
+<script>
+	function siafExpediente(anio_expediente, expediente, unidad_ejecutora) {
+    	// var anio_expediente=$("#txtAnioExpediente").val();
+    	// var expediente=$("#txtExpediente").val();
+    	// var unidad_ejecutora=$("#txtUnidadEjecutora").val();
+
+		var start = +new Date();
+		var ups_url = '<?php $ups_url = $this->config->item('ups_url');echo $ups_url;?>';
+		//alert(ups_url + "/Expediente/estado_expediente/" + anio_expediente + "/" + expediente +"/" +unidad_ejecutora);
+    	$.ajax({
+				url: ups_url + "/Expediente/estado_expediente/" + anio_expediente + "/" + expediente +"/" +unidad_ejecutora,
+				type: "POST",
+				cache: false,
+		        contentType:false,
+		        processData:false,
+				beforeSend: function(request) {
+					//request.setRequestHeader("Authorization", "Negotiate");
+				    renderLoading();
+				},
+				success:function(data){
+					$('#divModalCargaAjax').hide();
+					datos=JSON.parse(data);
+					var rtt = +new Date() - start;
+
+					if(datos.actualizo)
+					{
+						swal(
+						  'Operacion Completada',
+						  datos.mensaje + ' Tiempo: ' + (rtt/1000) +'s',
+						  'success'
+						);
+					}
+					else
+					{
+						swal(
+						  'No se pudo completar la Operacion',
+						  datos.mensaje + ' Tiempo: ' + (rtt/1000) +'s',
+						  'error'
+						);
+					}
+				},
+				error: function (xhr, textStatus, errorMessage) {
+			        $('#divModalCargaAjax').hide();
+			        swal(
+						  'ERROR!',
+						  'No se pudo conectar con el servidor de Importacion, error 0x5642418',
+						  'error'
+						);
+			    }
+			});
+    }
+</script>
