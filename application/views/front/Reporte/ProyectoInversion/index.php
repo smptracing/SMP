@@ -34,7 +34,7 @@
 						<div class="row">
 							<div class="row" style="margin-left: 10px; margin:10px; ">
 								<div class="panel panel-default">
-									<div class="panel-heading">DATOS DEL PIP</div>
+									<div class="panel-heading">DATOS DEL PROYECTO DE INVERSIÓN</div>
 									<br>
 								    <div id="EjecucionAnual">
 										<table class="table" STYLE="table-layout:fixed">
@@ -57,7 +57,7 @@
 												<td> S/. <label id="txtPIA" name="txtPIA"></label> </td>
 											</tr>
 											<tr>
-												<td class="blue" ><b>MONTO EJECUCIÓN</b></td>
+												<td class="blue" ><b>MONTO DE EJECUCIÓN</b></td>
 												<td> S/. <label id="txtPIN" name="txtPIN"></label> </td>
 											</tr>
 										</table>
@@ -93,7 +93,7 @@
 
 							<div class="row" style="margin-left: 10px; margin:10px; ">
 				                <div class="panel panel-default">
-								 <div class="panel-heading">GRÁFICO ESTADÍSTICO DE INFORMACIÓN FINANCIERA</div>
+								 <div class="panel-heading">GRÁFICO: ESTADÍSTICO DE INFORMACIÓN FINANCIERA POR AÑO</div>
 
 										<div id="GrafmetaAcumulada" class="table-responsive">
 											<br>
@@ -108,7 +108,7 @@
 
 					        <div class="row" style="margin-left: 10px; margin:10px; ">
 				                <div class="panel panel-default">
-								 <div class="panel-heading">GRÁFICO DE AVANCE DE INFORMACIÓN FINANCIERA</div>
+								 <div class="panel-heading">GRÁFICO: AVANCE DE INFORMACIÓN FINANCIERA POR FASE</div>
 
 										<div id="Grafinformacionfinanciera" class="table-responsive">
 											<br>
