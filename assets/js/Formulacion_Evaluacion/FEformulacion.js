@@ -220,7 +220,6 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
     var  ListaFormulacion=function(tbody,table){
                                $(tbody).on("click","button.VerDetalleFormulacion",function()
                                {
-                                alert("hola");
                               var data=table.row( $(this).parents("tr")).data();
                                var codigo_unico_est_inv=data.codigo_unico_est_inv;
                                DetalleSitActPipEvaluacion(codigo_unico_est_inv);
