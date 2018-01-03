@@ -726,7 +726,11 @@ function autorizar($url)
       'ET_Meta/eliminar',
       'ET_Partida/insertar',
       'Usuario/addUsuario',
-      'Usuario/validateUsername'
+      'Usuario/validateUsername',
+      'FEestado/EliminarEstado',
+      'FEnivelEstudio/EliminarNivelEstudios',
+      'FEsituacion/EliminarSituacion',
+      'EtapasFE/EliminarEtapa'
 );
     foreach( $lista_API as $value ) {
       array_push($arrayPermitido, $value);

@@ -55,7 +55,7 @@
                                 "language":idioma_espanol
                     });
                     EtapaDenominacion("#table-EtapasFE",table);
-
+                    EliminarEtapa("#table-EtapasFE",table);
                 }
 //LISTAR DENOMINACION DE FORMULACION Y EVALUACION EN TABLA
             var  EtapaDenominacion=function(tbody,table){
@@ -66,6 +66,40 @@
                 });
             }
 
+            var EliminarEtapa=function(tbody,table){
+              $(tbody).on("click","button.eliminar",function(){
+                    var data=table.row( $(this).parents("tr")).data();
+                    var id_etapa_fe=data.id_etapa_fe;
+                     swal({
+                            title: "Desea eliminar el Registro ?",
+                            text: "",
+                            type: "warning",
+                            showCancelButton: true,
+                            cancelButtonText:"Cerrar" ,
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "SI,Eliminar",
+                            closeOnConfirm: false
+                          },
+                          function(){
+                                $.ajax({
+                                      url:base_url+"index.php/EtapasFE/EliminarEtapa",
+                                      type:"POST",
+                                      data:{id_etapa_fe:id_etapa_fe},
+                                      success:function(respuesta){
+                                       var registros=jQuery.parseJSON(respuesta);
+                                       if(registros.flag==0){
+                                        swal("Elimando.",registros.msg, "success");
+                                        $('#table-EtapasFE').dataTable()._fnAjaxUpdate();
+                                       }
+                                       else{
+                                        swal("Error.",registros.msg, "error");
+                                        $('#table-EtapasFE').dataTable()._fnAjaxUpdate();
+                                       }
+                                       }
+                                    });
+                          });
+                });
+            }
 
             var idioma_espanol=
                 {

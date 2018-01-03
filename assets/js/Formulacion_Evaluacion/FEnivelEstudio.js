@@ -49,19 +49,51 @@
                                 "language":idioma_espanol
                     });
                     FENivelEstudios("#table-NivelEstudio",table);
-
+                    EliminarNivelEstudios("#table-NivelEstudio",table);
                 }
                 var FENivelEstudios=function(tbody,table){
                        $(tbody).on("click","button.editar",function(){
                         var data=table.row( $(this).parents("tr")).data();
                         var id_estado=$('#Id_denom_nivel_estudioA').val(data.id_nivel_estudio);
                         var denom_nivel_estudio=$('#txt_denom_nivel_estudioA').val(data.denom_nivel_estudio);
-                        
+
                     });
                 }
 
-
-           
+                var EliminarNivelEstudios=function(tbody,table){
+                  $(tbody).on("click","button.eliminar",function(){
+                        var data=table.row( $(this).parents("tr")).data();
+                        var id_nivel_estudio=data.id_nivel_estudio;
+                         swal({
+                                title: "Desea eliminar el Registro ?",
+                                text: "",
+                                type: "warning",
+                                showCancelButton: true,
+                                cancelButtonText:"Cerrar" ,
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "SI,Eliminar",
+                                closeOnConfirm: false
+                              },
+                              function(){
+                                    $.ajax({
+                                          url:base_url+"index.php/FEnivelEstudio/EliminarNivelEstudios",
+                                          type:"POST",
+                                          data:{id_nivel_estudio:id_nivel_estudio},
+                                          success:function(respuesta){
+                                           var registros=jQuery.parseJSON(respuesta);
+                                           if(registros.flag==0){
+                                            swal("Elimando.",registros.msg, "success");
+                                            $('#table-NivelEstudio').dataTable()._fnAjaxUpdate();
+                                           }
+                                           else{
+                                            swal("Error.",registros.msg, "error");
+                                            $('#table-NivelEstudio').dataTable()._fnAjaxUpdate();
+                                           }
+                                           }
+                                        });
+                              });
+                    });
+                }
 
         /*Idioma de datatablet table-sector */
             var idioma_espanol=

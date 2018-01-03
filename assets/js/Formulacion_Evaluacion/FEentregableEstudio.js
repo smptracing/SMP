@@ -583,7 +583,10 @@ var generarActividadesVertical=function(id_en)
                                     {"data":"id_act_observacion","visible":false},
 
 //{"defaultContent":" <div class='btn-group'> <button data-toggle='dropdown' class='btn btn-default dropdown-toggle' type='button' aria-expanded='false'>Opciones <span class='caret'></span> </button> <ul class='dropdown-menu'> <li><button type='button' title='Editar Actividad' class='edit btn btn-info btn-xs' data-toggle='modal' data-target='#modalModificarActividades'><i class='fa fa-edit' aria-hidden='true'></i> Editar Actividad</button> </li>  <li> <button type='button' title='Agregar Observación' class='actividadObservaciones btn btn-warning btn-xs' data-toggle='modal' data-target='#modalObservacionesActividades'><i class='fa fa-plus' aria-hidden='true'></i> Observaciones</button></li><li><button type='button' title='Levantar Observaciones' class='LevantarActividadObservaciones btn btn-info btn-xs' data-toggle='modal' data-target='#LevatarmodalObservacionesLevantar'><i class='fa fa-paw' aria-hidden='true'></i> Levantar Observación</button></li></ul> </div>"}  
-{"defaultContent":"<div class='dropdown'>  <a class='btn btn-link dropdown-toggle' type='button' data-toggle='dropdown'> <span class='glyphicon glyphicon-option-vertical' aria-hidden='true'></span></a> <ul class='dropdown-menu pull-right' style=''> <li><button type='button' class='edit btn btn-primary btn-xs' data-toggle='modal' data-target='#modalModificarActividades'>Editar Actividad</button><button type='button' class='actividadObservaciones btn btn-primary btn-xs' data-toggle='modal' data-target='#modalObservacionesActividades'> Observaciones </button> <button type='button' class='LevantarActividadObservaciones btn btn-primary btn-xs' data-toggle='modal' data-target='#LevatarmodalObservacionesLevantar'> Levantar Observación </button></ul>  </div>"}
+//{"defaultContent":"<div class='dropdown'>  <a class='btn btn-link dropdown-toggle' type='button' data-toggle='dropdown'> <span class='glyphicon glyphicon-option-vertical' aria-hidden='true'></span></a> <ul class='dropdown-menu pull-right' style=''> <li><button type='button' class='edit btn btn-primary btn-xs' data-toggle='modal' data-target='#modalModificarActividades'>Editar Actividad</button><button type='button' class='actividadObservaciones btn btn-primary btn-xs' data-toggle='modal' data-target='#modalObservacionesActividades'> Observaciones </button> <button type='button' class='LevantarActividadObservaciones btn btn-primary btn-xs' data-toggle='modal' data-target='#LevatarmodalObservacionesLevantar'> Levantar Observación </button></ul>  </div>"}
+  
+
+{"defaultContent":"<div class='dropdown'>  <a class='btn btn-link dropdown-toggle' type='button' data-toggle='dropdown'> <span class='glyphicon glyphicon-option-vertical' aria-hidden='true'></span></a> <ul class='dropdown-menu pull-right' style=''> <li><button type='button' class='actividadObservaciones btn btn-primary btn-xs' data-toggle='modal' data-target='#modalObservacionesActividades'> Observaciones </button> <button type='button' class='LevantarActividadObservaciones btn btn-primary btn-xs' data-toggle='modal' data-target='#LevatarmodalObservacionesLevantar'> Levantar Observación </button></ul>  </div>"}
                                 ],
 
                                 "language":idioma_espanol
@@ -962,72 +965,8 @@ var generarActividadesVertical=function(id_en)
                         $('#txt_avanceEAct').val(event.avance);
                         $('#txt_valorizacionEAct').val(event.valoracion);
                         $('#txt_observacio_EntreAct').val(event.Observacion);
-
-
-                        //fecha inicial
-                        var fechaIniciar=event.start;
-                        var fechaI= (new Date(fechaIniciar)).toISOString().slice(0, 10);
-                        $('#txt_fechaActividadIAc').val(fechaI);
-
-                        var fechaConveInicio=$("#txt_fechaActividadIAc").val();
-                        var fechaInicioTemp = fechaConveInicio.split("-")  //esta linea esta bien y te genera el arreglo
-                        var anoI = parseInt(fechaInicioTemp[0]); // porque repites el nombre dos veces con una basta
-                        var mesI = parseInt(fechaInicioTemp[1]);
-                        var diaI  = parseInt(fechaInicioTemp[2]);
-                        var fechaInicioTemp= anoI+'/'+mesI+'/'+diaI;
-
-                        var fechaFinal=event.end;
-                        var fechaFinalN= (new Date(fechaFinal)).toISOString().slice(0, 10);
-                        $('#txt_fechaActividadfAc').val(fechaFinalN);
-                          var fechaConveFin=$("#txt_fechaActividadfAc").val();
-                          var fechaFinalTemp = fechaConveFin.split("-")  //esta linea esta bien y te genera el arreglo
-                          var ano = parseInt(fechaFinalTemp[0]); // porque repites el nombre dos veces con una basta
-                          var mes = parseInt(fechaFinalTemp[1]);
-                          var dia  = parseInt(fechaFinalTemp[2]);
-                          fechaFinalTempNuevo= ano+'/'+mes+'/'+dia;
-
-                        $('#FechaActividadCalendar').daterangepicker({
-                        "locale": {
-                            "format": "YYYY/MM/DD",
-                            "separator": " - ",
-                            "applyLabel": "Guardar",
-                            "cancelLabel": "Cerrar",
-                            "fromLabel": "Desde",
-                            "toLabel": "Hasta",
-                            "customRangeLabel": "Personalizar",
-                            "daysOfWeek": [
-                                "Do",
-                                "Lu",
-                                "Ma",
-                                "Mi",
-                                "Ju",
-                                "Vi",
-                                "Sa"
-                            ],
-                            "monthNames": [
-                                "Enero",
-                                "Febrero",
-                                "Marzo",
-                                "Abril",
-                                "Mayo",
-                                "Junio",
-                                "Julio",
-                                "Agosto",
-                                "Setiembre",
-                                "Octubre",
-                                "Noviembre",
-                                "Diciembre"
-                            ],
-                            "firstDay": 1
-                        },
-                        "startDate":fechaInicioTemp,
-                        "endDate": fechaFinalTempNuevo,
-                        "opens": "center"
-                    });
-
-                        //fecha final
-                        //$( "#datepicker" ).datepicker("option", "defaultDate", new Date(date));
-                        //$("#FechaActividadCalendar").val(fechaInicioTemp+'-'+);
+                        $('#fechaInicioEdit').val(event.startEdit);
+                        $('#fechaFinEdit').val(event.endEdit);
 
                         $('#modalEventoActividades').modal();
                         if (event.url) {

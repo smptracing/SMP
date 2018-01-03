@@ -56,6 +56,39 @@
       return date;
     }
   } );
+
+   $( function()
+  {
+    var dateFormat = "mm/dd/yy",
+      from = $( "#fechaInicioEdit" )
+        .datepicker({
+          defaultDate: "+1w",
+          changeMonth: true,
+          numberOfMonths: 3
+        })
+        .on( "change", function() {
+          to.datepicker( "option", "minDate", getDate( this ) );
+        }),
+      to = $( "#fechaFinEdit" ).datepicker({
+        defaultDate: "+1w",
+        changeMonth: true,
+        numberOfMonths: 3
+      })
+      .on( "change", function() {
+        from.datepicker( "option", "maxDate", getDate( this ) );
+      });
+
+    function getDate( element ) {
+      var date;
+      try {
+        date = $.datepicker.parseDate( dateFormat, element.value );
+      } catch( error ) {
+        date = null;
+      }
+
+      return date;
+    }
+  } );
   </script>
   <style>
     .oscurecer:hover{
@@ -372,84 +405,76 @@
 
 <!---Modificar eventos del calendar-->
 
-  <div class="modal fade" id="modalEventoActividades" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="modalEventoActividades" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h5 class="modal-title">Modificar Actividad</h5>
-        </div>
-
-         <div class="modal-body">
-         <div class="row">
-                <div class="col-xs-12">
-                <form class="form-horizontal " id="form-UpdateActividades_Entregable"  method="POST" >
-                  <div class="row">
-                     <div class="col-md-12 col-sm-12 col-xs-12 ">
-                        <span class="input-group-addon">Actividad</span>
-                        <input id="tx_IdActividad"  name="tx_IdActividad" type="hidden" class="form-control"  placeholder="" >
-                        <input id="txt_idEntregable" name="txt_idEntregable" type="hidden" class="form-control"  placeholder="">
-                        <input id="txt_NombreActividadAc" name="txt_NombreActividadAc" type="text" class="form-control"  placeholder="">
-                      </div>
-                      <div class="col-md-12 col-sm-12 col-xs-12">
-                          <label class=" col-md-6 col-sm-6 col-xs-12">Inicio y Final de la Actividad </label>
-                          <input type="hidden" id="txt_fechaActividadIAc" name="txt_fechaActividadIAc"  type="date" class="form-control calendario">
-                      </div>
-                      <div class="col-md-6 col-sm-6 col-xs-12 ">
-                          <label class=" col-md-6 col-sm-6 col-xs-12"></label>
-                          <input type="hidden" id="txt_fechaActividadfAc"  name="txt_fechaActividadfAc" type="date" class="form-control calendario">
-                      </div>
-                      <div class="input-prepend input-group col-md-10 col-sm-10 col-xs-10" style="margin-left: 8px;">
-                                            <span class="add-on input-group-addon">Fecha de actividad <i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
-                                            <input type="text"  name="FechaActividadCalendar" id="FechaActividadCalendar" class="form-control" value=""/>
-                      </div>
-                      <div class="col-md-3 col-sm-3 col-xs-12">
-                        <label class="col-md-3 col-sm-3 col-xs-12" >Avance</label>
-                        <input type="hidden" class="form-control" id="txt_valorizacionEAct" name="txt_valorizacionEAct">
-                        <input type="text" class="form-control" id="txt_avanceEAct" name="txt_avanceEAct" class="form-control col-md-1 col-xs-1" data-validate-length-range="6" data-validate-words="2"  required="required" type="number" step='0.01'  placeholder="%">
-
-                      </div>
-                    </div><br/>
-
-                     <div class="col-md-12 col-sm-12 col-xs-12 input-group">
-                        <span class="input-group-addon">Observación</span>
-                        <input id="txt_observacio_EntreAct" name="txt_observacio_EntreAct" type="text" class="form-control">
-                      </div>
-
-                      <div class="input-group demo2 colorpicker-element">
-                             <input type="text" class="form-control" id="txt_ActividadColorAc" name="txt_ActividadColorAc">
-                            <span class="input-group-addon"><i style="background-color: rgb(224, 26, 181);"></i></span>
-                      </div>
-                      <div class="ln_solid"></div>
-                      <div class="form-group">
-                        <div class="col-md-6 col-md-offset-3">
-
-                          <button  type="submit" class="btn btn-success">
-                            <span class="glyphicon glyphicon-floppy-disk"></span>
-                            Guardar
-                          </button>
-                          <button type="submit" class="btn btn-danger" data-dismiss="modal">
-                             <span class="glyphicon glyphicon-remove"></span>
-                              Cerrar
-                          </button>
-
-                        </div>
-                      </div>
-
-
-
-
-                </form>
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h5 class="modal-title">Editar Actividad</h5>
             </div>
-         </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                    <form class="form-horizontal " id="form-UpdateActividades_Entregable"  method="POST" >
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12 ">
+                                <span class="input-group-addon">Actividad</span>
+                                <input id="tx_IdActividad"  name="tx_IdActividad" type="hidden" class="form-control"  placeholder="" >
+                                <input id="txt_idEntregable" name="txt_idEntregable" type="hidden" class="form-control"  placeholder="">
+                                <input id="txt_NombreActividadAc" name="txt_NombreActividadAc" type="text" class="form-control"  placeholder="">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="from">Fecha de Inicio:*</label>
+                                <input class="form-control" type="text" id="fechaInicioEdit" name="fechaInicioEdit">
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12 ">
+                                <label for="to">Fecha de Fin:*</label>
+                                <input class="form-control" type="text" id="fechaFinEdit" name="fechaFinEdit">
+                            </div>
+                        </div>
+                        <div class ="row">
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                <label class="col-md-3 col-sm-3 col-xs-12" >Avance:</label>
+                                <input type="hidden" class="form-control" id="txt_valorizacionEAct" name="txt_valorizacionEAct">
+                                <input type="text" class="form-control" id="txt_avanceEAct" name="txt_avanceEAct" required="required" type="number" step='0.01'  placeholder="%">
+                            </div>
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <label for="to">Color:*</label>
+                                <input type="color" class="form-control" id="txt_ActividadColorAc" name="txt_ActividadColorAc" value="#e01ab5" class="form-control notValidate">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <label for="to">Observación:</label>
+                                <input id="txt_observacio_EntreAct" name="txt_observacio_EntreAct" type="text" class="form-control">
+                            </div>                            
+                        </div>
+                        
+                        
+                        <div class="ln_solid"></div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-3">
+                                <button  type="submit" class="btn btn-success">
+                                <span class="glyphicon glyphicon-floppy-disk"></span>
+                                Guardar
+                                </button>
+                                <button type="submit" class="btn btn-danger" data-dismiss="modal">
+                                <span class="glyphicon glyphicon-remove"></span>
+                                Cerrar
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+            </div>
         </div>
-
-        <div class="modal-footer">
-
-        </div>
-      </div>
     </div>
-  </div>
+</div>
 
 <!-- -->
 

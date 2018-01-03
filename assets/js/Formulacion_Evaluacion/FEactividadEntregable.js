@@ -74,26 +74,26 @@ $(document).on("ready" ,function()
                 }
 
 
-                //Sive para calcular el avance del entregable  asocido a una actividad cuando este actualizando en el calendario
-                 $("#form-UpdateActividades_Entregable").submit(function(event)
-                  {
-                    refrescarGantt();
-                      event.preventDefault();
-                      $.ajax({
-                          url:base_url+"index.php/FEActividadEntregable/Update_Actividades",
-                          type:$(this).attr('method'),
-                          data:$(this).serialize(),
-                          success:function(resp){ 
-                           $("#modalEventoActividades").modal("hide");
-                           $('#table_entregable').dataTable()._fnAjaxUpdate();  
-                          var tx_IdActividad=$("#tx_IdActividad").val();//catura el id de la actividadd
-                          var txt_idEntregable=$("#txt_idEntregable").val();//catura eñ id del entregable
-                           $("#calendarActividadesFE" ).remove();
-                          CalcularAvanceAc(tx_IdActividad,txt_idEntregable);//calcular elavance de los entregables
+            $("#form-UpdateActividades_Entregable").submit(function(event)
+            {
+                refrescarGantt();
+                event.preventDefault();
+                $.ajax({
+                    url:base_url+"index.php/FEActividadEntregable/Update_Actividades",
+                    type:$(this).attr('method'),
+                    data:$(this).serialize(),
+                    success:function(resp)
+                    { 
+                        $("#modalEventoActividades").modal("hide");
+                        $('#table_entregable').dataTable()._fnAjaxUpdate();  
+                        var tx_IdActividad=$("#tx_IdActividad").val();//catura el id de la actividadd
+                        var txt_idEntregable=$("#txt_idEntregable").val();//catura eñ id del entregable
+                        $("#calendarActividadesFE" ).remove();
+                        CalcularAvanceAc(tx_IdActividad,txt_idEntregable);//calcular elavance de los entregables
                          
-                         }
-                      });
-                  });
+                    }
+                });
+            });
                  //fin Sive para calcular el avance del entregable  asocido a una actividad
                   $("#form-AsignacionPersonalActividad").submit(function(event)
                   {

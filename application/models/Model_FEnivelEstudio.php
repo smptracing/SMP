@@ -19,13 +19,13 @@ class Model_FEnivelEstudio extends CI_Model
              {
               return false;
              }
-   
+
         }
         function add_NivelEstudio($denom_nivel_estudio)
         {
 
             $this->db->query("insert into NIVEL_ESTUDIO(denom_nivel_estudio) values ('$denom_nivel_estudio')");
-            if ($this->db->affected_rows()> 0) 
+            if ($this->db->affected_rows()> 0)
               {
                 return true;
               }
@@ -38,7 +38,7 @@ class Model_FEnivelEstudio extends CI_Model
         function updateNivelEstudio($Id_denom_nivel_estudioA,$txt_denom_nivel_estudioA)
         {
            $this->db->query("update NIVEL_ESTUDIO  set denom_nivel_estudio='$txt_denom_nivel_estudioA' where id_nivel_estudio='$Id_denom_nivel_estudioA' ");
-            if ($this->db->affected_rows() > 0) 
+            if ($this->db->affected_rows() > 0)
               {
                 return true;
               }
@@ -49,8 +49,18 @@ class Model_FEnivelEstudio extends CI_Model
 
         }
         //fin funcion
-       
+
+       function EliminarNivelEstudios($id_nivel_estudio){
+         $this->db->where('id_nivel_estudio',$id_nivel_estudio);
+         $this->db->delete('NIVEL_ESTUDIO');
+         if($this->db->affected_rows()>0){
+           return true;
+         }
+         else{
+           return false;
+         }
+       }
         //fin division funciona
         //grupo funcional*/
-  
+
 }

@@ -10,8 +10,8 @@
                           data:$(this).serialize(),
                           success:function(resp){
                            swal("",resp, "success");
-                          $('#table-SituacioFE').dataTable()._fnAjaxUpdate();   
-      
+                          $('#table-SituacioFE').dataTable()._fnAjaxUpdate();
+
                          }
                       });
                   });
@@ -27,7 +27,7 @@
                            $('#table-SituacioFE').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet
                          }
                       });
-                  });  
+                  });
 			});
                 var listaFEsituacion=function()
                 {
@@ -49,8 +49,8 @@
 
                                 "language":idioma_espanol
                     });
-                    SituacioFE("#table-SituacioFE",table);                
-                        			   	
+                    SituacioFE("#table-SituacioFE",table);
+                  	EliminarSituacion("#table-SituacioFE",table);
                 }
 
                 var SituacioFE=function(tbody,table){
@@ -64,7 +64,41 @@
 
                 /*fin listar funcion*/
 
-              
+                var EliminarSituacion=function(tbody,table){
+                  $(tbody).on("click","button.eliminar",function(){
+                        var data=table.row( $(this).parents("tr")).data();
+                        var id_situacion_fe=data.id_situacion_fe;
+                         swal({
+                                title: "Desea eliminar el Registro ?",
+                                text: "",
+                                type: "warning",
+                                showCancelButton: true,
+                                cancelButtonText:"Cerrar" ,
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "SI,Eliminar",
+                                closeOnConfirm: false
+                              },
+                              function(){
+                                    $.ajax({
+                                          url:base_url+"index.php/FEsituacion/EliminarSituacion",
+                                          type:"POST",
+                                          data:{id_situacion_fe:id_situacion_fe},
+                                          success:function(respuesta){
+                                           var registros=jQuery.parseJSON(respuesta);
+                                           if(registros.flag==0){
+                                            swal("Elimando.",registros.msg, "success");
+                                            $('#table-SituacioFE').dataTable()._fnAjaxUpdate();
+                                           }
+                                           else{
+                                            swal("Error.",registros.msg, "error");
+                                            $('#table-SituacioFE').dataTable()._fnAjaxUpdate();
+                                           }
+                                           }
+                                        });
+                              });
+                    });
+                }
+
         /*Idioma de datatablet table-sector */
             var idioma_espanol=
                 {
@@ -91,5 +125,3 @@
                         "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                     }
                 }
-
-  
