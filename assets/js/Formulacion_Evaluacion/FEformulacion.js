@@ -153,10 +153,11 @@ var ListarFormulacion=function()
             "columns":[
                 {"data":"id_est_inv","visible": false},
                 {"data":"id_pi","visible": false},
+                //{"data":"codigo_unico_est_inv"},
                 {"data":"codigo_unico_est_inv",
                     "mRender": function ( data, type, full )
                     {
-                        return '<button style="font-weight:normal;font-size:8" type="button" class="VerDetalleFormulacion btn btn-primary btn-xs" data-toggle="modal" data-target="#VerDetalleFormulacion" href="/codigo_unico_est_inv/' + data + '"><i class="fa fa-edit" aria-hidden="true"></i></button>';
+                        return '<button style="font-weight:normal;font-size:8" type="button" class="VerDetalleFormulacion btn btn-primary btn-xs" data-toggle="modal" data-target="#VerDetalleFormulacion"><i data-toggle="tooltip" title="Ver Detalle" class="fa fa-eye" aria-hidden="true"></i></button>';
                     }
                 },
                 {"data":"nombre_est_inv"},
@@ -189,7 +190,8 @@ var ListarFormulacion=function()
                       SituacionActual("#tabla-formulacion",table);
                      RegistarEstadoFE("#tabla-formulacion",table);
                      RegistarPersona("#tabla-formulacion",table);
-                     presupuestoProInv("#tabla-formulacion",table);
+                     presupuestoProInv("#tabla-formulacion",table);                     
+                     ListaFormulacion("#tabla-formulacion",table);
 }
 //LISTAR DENOMINACION DE FORMULACION Y EVALUACION EN TABLA
 var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
@@ -216,7 +218,9 @@ var DetalleSitActPipEvaluacion=function(codigo_unico_est_inv)
                     });
     }
     var  ListaFormulacion=function(tbody,table){
-                               $(tbody).on("click","a.VerDetalleFormulacion",function(){
+                               $(tbody).on("click","button.VerDetalleFormulacion",function()
+                               {
+                                alert("hola");
                               var data=table.row( $(this).parents("tr")).data();
                                var codigo_unico_est_inv=data.codigo_unico_est_inv;
                                DetalleSitActPipEvaluacion(codigo_unico_est_inv);
