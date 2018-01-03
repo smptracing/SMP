@@ -1,5 +1,26 @@
 <script src="<?php echo base_url(); ?>assets/vendors/echarts/dist/echarts-all-3.js"></script>
 
+
+<script type="text/javascript">
+	function solonumeros(e){
+		key=e.keyCode || e.which;
+		teclado=String.fromCharCode(key);
+		numeros="0123456789";
+		especiales="8-37-38-46";
+		teclado_especial=false; 
+		for(var i in especiales){
+			if(key==especiales[i]){
+				teclado_especial=true;
+			}
+
+		}
+		if(numeros.indexOf(teclado)==-1 && !teclado_especial){
+		return false;
+		}
+	}
+	
+</script>
+
 <div class="right_col" role="main">
 	<div class="">
 		<div class="clearfix"></div>
@@ -17,7 +38,7 @@
 						  <div class="col-lg-6">
 
 						    <div class="input-group">
-						      <input type="text" id="BuscarPip"  class="form-control" placeholder="Ingrese código Unico:" value="<?=$codigo?>">
+						      <input type="text" id="BuscarPip" onkeypress="return solonumeros(event)" class="form-control" placeholder="Ingrese código Unico:" value="<?=$codigo?>">
 						      <span class="input-group-btn">
 						        <button id="CodigoUnico" class="btn btn-default" type="button" ><span class="glyphicon glyphicon-search"> Aceptar</span></button>
 						      </span>
