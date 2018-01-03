@@ -11,16 +11,18 @@
 						<div class="clearfix"></div>
 					</div>
 					<div class="x_content">
-						BÚSQUEDA POR CÓDIGO
+						BÚSQUEDA POR CÓDIGO (Ingrese un código válido)
 						<div class="row">
 
 						  <div class="col-lg-6">
+
 						    <div class="input-group">
-						      <input type="text" id="BuscarPip"  class="form-control" placeholder="Ingrese código Unico" value="<?=$codigo?>">
+						      <input type="text" id="BuscarPip"  class="form-control" placeholder="Ingrese código Unico:" value="<?=$codigo?>">
 						      <span class="input-group-btn">
 						        <button id="CodigoUnico" class="btn btn-default" type="button" ><span class="glyphicon glyphicon-search"> Aceptar</span></button>
 						      </span>
 						    </div>
+
 						  </div>
 						   <div class="col-lg-6">
 						    <div class="input-group">
