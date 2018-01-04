@@ -1,6 +1,6 @@
 <html>
   <head>
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/dompdf.css">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/dompdf.css">
       <style type="text/css">
       	tr
       	{
@@ -12,29 +12,20 @@
 <body>
 
   <header>
-
-  	<table style="margin-top: 17px;width: 100%; padding-right: 12px; padding-left: 12px;">
-					<tr>
-						<td style="width: 65px;">
-							<img style="width: 65px;" src="./assets/images/peru.jpg">
-						</td>
-						<td id="header_texto">
-							<div style="text-align: center;"><b>GOBIERNO REGIONAL DE APURÍMAC</b></div>
-							<div style="text-align: center; font-size: 12px;">GERENCIA REGIONAL DE PLANEAMIENTO, PRESUPUESTO Y ACONDICIONAMIENTO TERRITORIAL.</div>
-							<div style="text-align: center; font-size: 12px;">Sub Gerencia Regional de Desarrollo Institucional Estadística e Informática</div>
-							<div style="text-align: center; font-size: 12px;">"Ficha Tecnica"</div>
-							<div style="text-align: center; font-size: 16px;">-</div>
-							<div style="text-align: center; font-size: 16px;">FORMATO FF01</div>
-						</td>
-
-						
-
-						<td style="width: 85px;">
-							<img style="width: 80px;" src="./assets/images/logo.jpg">
-						</td>
-					</tr>
-				</table>
-      
+      <table >
+          <tr>
+              <td id="header_texto" >
+              <!-- <?php echo base_url(); ?>assets/css/dompdf.css" -->
+                  <div>FORMATO FF-01  	&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;		GOBIERNO REGIONAL DE APURIMAC</div>
+              </td>
+			  <tr>
+					<td id="header_texto" >
+						<img style="width: 80px;height: 70px; margin-left:-150px;position: absolute; " src="./assets/images/peru.jpg" > &nbsp; &nbsp;
+						<img style="width: 80px;height: 70px; margin-left:420px;position: absolute; " src="./assets/images/logo.jpg" > &nbsp; &nbsp;
+					</td>
+			   </tr>
+          </tr>
+      </table>
   </header>
   <!-- <footer>
   	<br>

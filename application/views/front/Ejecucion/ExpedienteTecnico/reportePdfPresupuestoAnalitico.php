@@ -1,6 +1,6 @@
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/dompdf.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/dompdf.css">
 </head>
 
 <body>
