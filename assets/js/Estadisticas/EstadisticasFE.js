@@ -1,7 +1,7 @@
 $(document).on("ready" ,function(){
 
 $.ajax({
-		url:base_url+"/index.php/PrincipalFyE/GetAprobadosEstudio",
+		url:base_url+"index.php/PrincipalFyE/GetAprobadosEstudio",
 		dataType:"json",
 		type:"POST",
 		cache:false,
@@ -66,7 +66,7 @@ $.ajax({
 
 
 $.ajax({
-	url:base_url+"/index.php/PrincipalFyE/EstudioInvPorTipoEstudio",
+	url:base_url+"index.php/PrincipalFyE/EstudioInvPorTipoEstudio",
 	dataType:"json",
 	type:"POST",
 	cache:false,
@@ -127,7 +127,7 @@ $.ajax({
 
 
 $.ajax({
-	url:base_url+"/index.php/PrincipalFyE/TipoGastoMontos",
+	url:base_url+"index.php/PrincipalFyE/TipoGastoMontos",
 	dataType:"json",
 	type:"POST",
 	cache:false,
@@ -253,7 +253,7 @@ $.ajax({
 
 
 $.ajax({
-	url:base_url+"/index.php/PrincipalFyE/EstudioInvPorProvincia",
+	url:base_url+"index.php/PrincipalFyE/EstudioInvPorProvincia",
 	dataType:"json",
 	type:"POST",
 	cache:false,
@@ -319,7 +319,7 @@ $.ajax({
 
 
 $.ajax({
-	url:base_url+"/index.php/PrincipalFyE/AvanceCostoInv",
+	url:base_url+"index.php/PrincipalFyE/AvanceCostoInv",
 	type:"POST",
 	cache:false,
 	success:function(respuesta)
@@ -453,13 +453,5 @@ $.ajax({
 		}
 	}
 });
-
-
-
-
-
-
-
-
 });
 

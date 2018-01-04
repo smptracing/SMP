@@ -9,7 +9,6 @@ function MontoProgramadoPip(anio)
      var tipo=new Array();
      var num=new Array();
      var total_monto=new Array();
-
     event.preventDefault();
 
    $.ajax(
@@ -166,6 +165,8 @@ var EstadistMontosPipProv=function()
         "url": base_url+"index.php/PrincipalPmi/EstadisticaMontoPipProvincias",
         success: function(respuesta)
         {
+         
+            
             var registros=eval(respuesta);
 
             var suma=0;
@@ -348,6 +349,7 @@ $(document).on('ready', function()
         cache:false,
         success:function(respuesta)
         {
+            console.log(respuesta);
             var arrayNaturalezaInv=new Array();
             $.each(respuesta,function(index,element)
             {
