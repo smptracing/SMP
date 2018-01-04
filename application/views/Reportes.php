@@ -128,7 +128,7 @@
     $(document).on("ready" ,function(){
 
 $.ajax({
-        url:base_url+"/PrincipalReportes/GetAprobadosEstudio",
+        url:base_url+"/index.php/PrincipalReportes/GetAprobadosEstudio",
         dataType:"json",
         type:"POST",
         cache:false,
@@ -190,7 +190,7 @@ $.ajax({
 });
 
 $.ajax({
-        url:base_url+"/PrincipalReportes/NaturalezaInversionMontos",
+        url:base_url+"/index.php/PrincipalReportes/NaturalezaInversionMontos",
         dataType:"json",
         type:"POST",
         cache:false,
@@ -252,7 +252,7 @@ $.ajax({
 });
 
 $.ajax({
-    url:base_url+"/PrincipalReportes/CantidadPipFuenteFinancimiento",
+    url:base_url+"/index.php/PrincipalReportes/CantidadPipFuenteFinancimiento",
     dataType:"json",
     type:"POST",
     cache:false,
@@ -378,7 +378,7 @@ $.ajax({
 
 
 $.ajax({
-        url:base_url+"/PrincipalReportes/CantidadPipModalidad",
+        url:base_url+"/index.php/PrincipalReportes/CantidadPipModalidad",
         dataType:"json",
         type:"POST",
         cache:false,
@@ -440,7 +440,7 @@ $.ajax({
 
 
 $.ajax({
-    url:base_url+"/PrincipalReportes/MontoPipModalidad",
+    url:base_url+"/index.php/PrincipalReportes/MontoPipModalidad",
     dataType:"json",
     type:"POST",
     cache:false,
@@ -502,7 +502,7 @@ $.ajax({
 });
 
 $.ajax({
-        url:base_url+"/PrincipalReportes/CantidadPipRubro",
+        url:base_url+"/index.php/PrincipalReportes/CantidadPipRubro",
         dataType:"json",
         type:"POST",
         cache:false,
@@ -567,7 +567,7 @@ $.ajax({
 });
 
     $.ajax({
-        url:base_url+"/PrincipalReportes/CantidadPipProvincia",
+        url:base_url+"/index.php/PrincipalReportes/CantidadPipProvincia",
         type:"POST",
         cache:false,
         success:function(respuesta)
