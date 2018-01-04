@@ -97,9 +97,9 @@
                                 <select   id="cbxEstCicInv_" name="cbxEstCicInv_" class="form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Estado..." >
                                 </select>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-8 form-group">
                                 <label id="textcodigoIdMensaje" style="color: #0431B4; margin-top: 15px;">El Sistema Generara su Código<span class="required"></span></label>
-                                <div class="col-md-9 col-sm-6 col-xs-12 form-group" id="divCodigoIdea">
+                                <div id="divCodigoIdea">
                                     <label for="name">Codigo Único (Codigo SIAF)<span class="required">*</span></label>
                                     <input id="txtCodigoUnico" name="txtCodigoUnico"  class="form-control col-md-7 col-xs-5" placeholder="Codigo Unico" type="text" maxlength="10">
                                     <label id="mensajeError" style="display: none;">  </label>
