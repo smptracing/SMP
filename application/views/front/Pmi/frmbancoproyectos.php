@@ -92,14 +92,16 @@
                 <div class="col-xs-12">
                     <form class="form-horizontal " id="form-AddProyectosInversion"   action="<?php echo base_url(); ?>bancoproyectos/AddProyectos" method="POST" onSubmit="return false;" >
                         <div class="row">
-                            <div class="col-md-4 form-group" >
-                                <label for="name">Estado.<span class="required"></span></label>
-                                <select   id="cbxEstCicInv_" name="cbxEstCicInv_" class="form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Estado..." >
-                                </select>
+                            <div class="col-md-4" >
+                                <div class="col-md-12 col-sm-6 col-xs-12  form-group">
+                                  <label for="name">Estado.<span class="required"></span></label>
+                                  <select   id="cbxEstCicInv_" name="cbxEstCicInv_" class="form-control col-md-12 col-xs-12" data-live-search="true"  title="Buscar Estado..." >
+                                  </select>
+                                </div>
                             </div>
-                            <div class="col-md-8 form-group">
+                            <div class="col-md-8">
                                 <label id="textcodigoIdMensaje" style="color: #0431B4; margin-top: 15px;">El Sistema Generara su Código<span class="required"></span></label>
-                                <div id="divCodigoIdea">
+                                <div class="col-md-12 col-sm-6 col-xs-12  form-group" id="divCodigoIdea">
                                     <label for="name">Codigo Único (Codigo SIAF)<span class="required">*</span></label>
                                     <input id="txtCodigoUnico" name="txtCodigoUnico"  class="form-control col-md-7 col-xs-5" placeholder="Codigo Unico" type="text" maxlength="10">
                                     <label id="mensajeError" style="display: none;">  </label>
