@@ -47,7 +47,7 @@
       <div id="footer_texto">DIRECTIVA PARA FORMUMACIÓN, EJECUCIÓN Y SUPERVISIÓN DE PROYECTOS EL LA FASE DE INVERSION POR <br/>ADMINISTRACIÓN DIRECTA O ENCARGO </div>
   </footer> -->
 	<br><br>
-  <div>FORMATO FF-01</div><br/>
+  
   	<table id="contenido_border" width="550" border=1 cellspacing=0 cellpadding=2 bordercolor="666633" style="text-align: left;" >
   		<thead>
 	  		<tr>
