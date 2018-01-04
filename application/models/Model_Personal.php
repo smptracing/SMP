@@ -45,9 +45,7 @@ class Model_Personal extends CI_Model
           else{
             return false;
           }
-
     }
-
     public function BuscarPersonaCargo($text_buscarPersona, $skip, $numberRow, $valueSearch)
     {
        $personalFormulador = $this->db->query("execute sp_PesonaCargo_r '".$text_buscarPersona."', ".$skip.", ".$numberRow.", '".$valueSearch."'"); //listar de division funcional

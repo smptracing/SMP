@@ -730,7 +730,8 @@ function autorizar($url)
       'FEestado/EliminarEstado',
       'FEnivelEstudio/EliminarNivelEstudios',
       'FEsituacion/EliminarSituacion',
-      'EtapasFE/EliminarEtapa'
+      'EtapasFE/EliminarEtapa',
+      'Personal/EliminarCargo'
 );
     foreach( $lista_API as $value ) {
       array_push($arrayPermitido, $value);

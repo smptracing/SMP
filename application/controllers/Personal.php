@@ -63,6 +63,30 @@ class Personal extends CI_Controller
             show_404();
         }
     }
+
+    public function EliminarCargo()
+    {
+        if ($this->input->is_ajax_request()) {
+            $flag=0;
+            $msg="";
+            $id_cargo = $this->input->post("id_cargo");
+
+        if($this->Cargo_Modal->EliminarCargo($id_cargo)==true){
+                $flag=0;
+                $msg="registro Eliminado Satisfactoriamente";
+            }
+            else{
+                $flag=1;
+                $msg="No se pudo eliminar";
+            }
+                    $datos['flag']=$flag;
+                    $datos['msg']=$msg;
+                    echo json_encode($datos);
+        }  else {
+            show_404();
+        }
+
+    }
     //REGISTRAR NUEVA
     public function addcargo()
     {

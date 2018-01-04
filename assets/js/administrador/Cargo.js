@@ -21,7 +21,7 @@ $(document).on("ready" ,function()
 				if(resp=='1')
 				{
 					swal("REGISTRADO","Se regristró correctamente", "success");
-					
+
 					formReset();
 
 					$('#VentanaRegistracargo').modal('hide');
@@ -32,8 +32,8 @@ $(document).on("ready" ,function()
 					swal("NO SE REGISTRÓ","NO se regristró ", "error");
 				}
 
-				$('#table-cargo').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
-				
+				$('#table-cargo').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
+
 				formReset();
 			}
 		});
@@ -60,26 +60,26 @@ $(document).on("ready" ,function()
 				if(resp=='1')
 				{
 					swal("MODIFICADO","Se Modificó correctamente", "success");
-				
+
 					formReset();
 
 					$('#Ventanaupdatecargo').modal('hide');
 				}
-				
+
 				if(resp=='2')
 				{
 					swal("NO SE MODIFICÓ","NO se Modificó ", "error");
 				}
 
-				$('#table-cargo').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
-				
+				$('#table-cargo').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
+
 				formReset();
 			}
 		});
 	});
 });
 
-                  /* listar y lista en tabla entidad*/ 
+                  /* listar y lista en tabla entidad*/
                 var listarcargo=function()
                 {
                     var table=$("#table-cargo").DataTable({
@@ -101,8 +101,9 @@ $(document).on("ready" ,function()
 
                                 "language":idioma_espanol
                     });
-                    cargoData("#table-cargo",table);  //obtener data de la division cargo para agregar  AGREGAR                 
-                }
+                    cargoData("#table-cargo",table);  //obtener data de la division cargo para agregar  AGREGAR
+										EliminarCargo("#table-cargo",table);
+								}
 
                   var  cargoData=function(tbody,table){
                     $(tbody).on("click","button.editar",function(){
@@ -113,10 +114,44 @@ $(document).on("ready" ,function()
 
                 }
 
-                /*fin crea tabla division cargo*/ 
+                /*fin crea tabla division cargo*/
                 /*crear tabla dinamica servicio publico asociado */
 
-              
+								var EliminarCargo=function(tbody,table){
+									$(tbody).on("click","button.eliminar",function(){
+												var data=table.row( $(this).parents("tr")).data();
+												var id_cargo=data.id_cargo;
+												 swal({
+																title: "Desea eliminar el Registro ?",
+																text: "",
+																type: "warning",
+																showCancelButton: true,
+																cancelButtonText:"Cerrar" ,
+																confirmButtonColor: "#DD6B55",
+																confirmButtonText: "SI,Eliminar",
+																closeOnConfirm: false
+															},
+															function(){
+																		$.ajax({
+																					url:base_url+"index.php/Personal/EliminarCargo",
+																					type:"POST",
+																					data:{id_cargo:id_cargo},
+																					success:function(respuesta){
+																					 var registros=jQuery.parseJSON(respuesta);
+																					 if(registros.flag==0){
+																						swal("Elimando.",registros.msg, "success");
+																						$('#table-cargo').dataTable()._fnAjaxUpdate();
+																					 }
+																					 else{
+																						swal("Error.",registros.msg, "error");
+																						$('#table-cargo').dataTable()._fnAjaxUpdate();
+																					 }
+																					 }
+																				});
+															});
+										});
+								}
+
         /*Idioma de datatablet table-sector */
             var idioma_espanol=
                 {
@@ -152,7 +187,7 @@ $(document).on("ready" ,function()
               type:"POST",
               success:function(respuesta){
                 alert(respuesta);
-              
+
 
               }
             });

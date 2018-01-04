@@ -17,7 +17,18 @@ class Cargo_Modal extends CI_Model
             return false;
         }
     }
+    public function EliminarCargo($id_cargo)
+    {
+          $this->db->where('id_cargo',$id_cargo);
+          $this->db->delete('CARGO');
+          if($this->db->affected_rows()>0){
+          return true;
+          }
+          else{
+            return false;
+          }
 
+    }
     public function addcargo($flat, $idcargo, $txt_nombrecargo)
     {
         $Cargo = $this->db->query("execute sp_Gestionar_Cargo'"
