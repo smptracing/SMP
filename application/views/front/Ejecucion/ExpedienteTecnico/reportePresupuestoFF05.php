@@ -50,14 +50,31 @@ function mostrarMetaAnidada($meta)
 <body>
 
 	<header>
-		<table >
-			<tr>
-				<td id="header_texto">
-					<img style="width: 80px;height: 70px; margin-left:-100px;position: absolute; " src="./assets/images/peru.jpg" > &nbsp; &nbsp;
-					<img style="width: 80px;height: 70px; margin-left:600px;position: absolute; " src="./assets/images/logo.jpg" > &nbsp; &nbsp;
-				</td>
-			</tr>
-		</table>
+
+<table style="margin-top: 17px;width: 100%; padding-right: 12px; padding-left: 12px;">
+					<tr>
+						<td style="width: 65px;">
+							<img style="width: 65px;" src="./assets/images/peru.jpg">
+						</td>
+						<td id="header_texto">
+							<div style="text-align: center;"><b>GOBIERNO REGIONAL DE APURÍMAC</b></div>
+							<div style="text-align: center; font-size: 12px;">GERENCIA REGIONAL DE PLANEAMIENTO, PRESUPUESTO Y ACONDICIONAMIENTO TERRITORIAL.</div>
+							<div style="text-align: center; font-size: 12px;">Sub Gerencia Regional de Desarrollo Institucional Estadística e Informática</div>
+							<div style="text-align: center; font-size: 12px;">"Año de la promoción de la industria responsable y de compromiso climático"</div>
+							<div style="text-align: center; font-size: 16px;">-</div>
+							<div style="text-align: center; font-size: 16px;">FORMATO FF05</div>
+						</td>
+
+						
+
+						<td style="width: 85px;">
+							<img style="width: 80px;" src="./assets/images/logo.jpg">
+						</td>
+					</tr>
+				</table>
+
+
+		
 	</header>
 	<div style="margin-top: 30px;position: absolute;font-size: 10px;margin-left: 50px;">
 		PROYECTO: &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; " <?=$MostraExpedienteNombre->nombre_pi;?>"
@@ -106,7 +123,7 @@ function mostrarMetaAnidada($meta)
 		<div id="footer_texto"> </div>
 	</footer>
 	<div>
-		<div style="text-align: center;margin-top: -50px;">FORMATO FF-05 <br/>PRESUPUESTO RESUMEN</div><br/>
+		<div style="text-align: center;margin-top: -50px;"><br/>PRESUPUESTO RESUMEN</div><br/>
 	</div>
 	<ul class="romanos_upper" style="margin-top: 140px;font-size:10px;position: absolute;margin-left: 80px;">
 		

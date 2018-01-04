@@ -5,23 +5,39 @@
 
 <body>
 	<header>
-		<table >
-			<tr>
-				<td id="header_texto" >
-					<img style="width: 80px;height: 70px; margin-left:-100px;position: absolute; " src="./assets/images/peru.jpg" > &nbsp; &nbsp;
-					<img style="width: 80px;height: 70px; margin-left:600px;position: absolute; " src="./assets/images/logo.jpg" > &nbsp; &nbsp;
-				</td>
 
-			</tr>
-		</table>
+			<table style="margin-top: 17px;width: 100%; padding-right: 12px; padding-left: 12px;">
+					<tr>
+						<td style="width: 85px;">
+							<img style="width: 80px;" src="./assets/images/peru.jpg">
+						</td>
+						<td id="header_texto">
+							<div style="text-align: center;"><b>GOBIERNO REGIONAL DE APURÍMAC</b></div>
+							<div style="text-align: center; font-size: 12px;">GERENCIA REGIONAL DE PLANEAMIENTO, PRESUPUESTO Y ACONDICIONAMIENTO TERRITORIAL.</div>
+							<div style="text-align: center; font-size: 12px;">Sub Gerencia Regional de Desarrollo Institucional Estadística e Informática</div>
+							<div style="text-align: center; font-size: 12px;">"CUADRO DE PRESUPUESTO ANALÍTICO GENERAL"</div>
+							<div style="text-align: center; font-size: 16px;">-</div>
+							<div style="text-align: center; font-size: 16px;">RFORMATO FF06</div>
+						</td>
+
+						
+
+						<td style="width: 85px;">
+							<img style="width: 80px;" src="./assets/images/logo.jpg">
+						</td>
+					</tr>
+				</table>
+
+
+
+		
 	</header>
 	<footer>
 		<div id="footer_texto"> </div>
 	</footer>
 
 	<div>
-		<div style="text-align: center;margin-top: -50px;">FORMATO FF-06<br/><br/>
-			CUADRO DE PRESUPUESTO ANALÍTICO GENERAL</div><br/>
+		
 			<br><br/>
 			<div class="row" style="text-align:center;border:2px solid black;padding: 10px;margin-top: -40px;">
 				PROYECTO : &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; " <?=$MostraExpedienteNombre->nombre_pi;?>"

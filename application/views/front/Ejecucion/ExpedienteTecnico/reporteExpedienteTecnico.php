@@ -12,15 +12,29 @@
 <body>
 
   <header>
-      <table style="width:100%;">
-	<tr>
-		<td><img style="width: 60px;height: 60px;" src="./assets/images/peru.jpg" ></td>
-		<td style="text-align: center;">GOBIERNO REGIONAL DE APURIMAC <br> FICHA TECNICA DEL PROYECTO</td>	
-		<td style="text-align: right;"><img style="width: 80px;height: 70px;" src="./assets/images/logo.jpg" ></td>
-	</tr>
-    
-         
-      </table>
+
+  	<table style="margin-top: 17px;width: 100%; padding-right: 12px; padding-left: 12px;">
+					<tr>
+						<td style="width: 65px;">
+							<img style="width: 65px;" src="./assets/images/peru.jpg">
+						</td>
+						<td id="header_texto">
+							<div style="text-align: center;"><b>GOBIERNO REGIONAL DE APURÍMAC</b></div>
+							<div style="text-align: center; font-size: 12px;">GERENCIA REGIONAL DE PLANEAMIENTO, PRESUPUESTO Y ACONDICIONAMIENTO TERRITORIAL.</div>
+							<div style="text-align: center; font-size: 12px;">Sub Gerencia Regional de Desarrollo Institucional Estadística e Informática</div>
+							<div style="text-align: center; font-size: 12px;">"Ficha Tecnica"</div>
+							<div style="text-align: center; font-size: 16px;">-</div>
+							<div style="text-align: center; font-size: 16px;">FORMATO FF01</div>
+						</td>
+
+						
+
+						<td style="width: 85px;">
+							<img style="width: 80px;" src="./assets/images/logo.jpg">
+						</td>
+					</tr>
+				</table>
+      
   </header>
   <!-- <footer>
   	<br>
