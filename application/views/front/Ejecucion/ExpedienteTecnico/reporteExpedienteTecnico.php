@@ -12,156 +12,151 @@
 <body>
 
   <header>
-      <table >
-          <tr>
-              <td id="header_texto" >
-                  <div>FORMATO FF-01  	&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;		GOBIERNO REGIONAL DE APURIMAC</div>
-              </td>
-			  <tr>
-					<td id="header_texto" >
-						<img style="width: 80px;height: 70px; margin-left:-150px;position: absolute; " src="./assets/images/peru.jpg" > &nbsp; &nbsp;
-						<img style="width: 80px;height: 70px; margin-left:420px;position: absolute; " src="./assets/images/logo.jpg" > &nbsp; &nbsp;
-					</td>
-			   </tr>
-          </tr>
+      <table style="width:100%;">
+	<tr>
+		<td><img style="width: 60px;height: 60px;" src="./assets/images/peru.jpg" ></td>
+		<td style="text-align: center;">GOBIERNO REGIONAL DE APURIMAC <br> FICHA TECNICA DEL PROYECTO</td>	
+		<td style="text-align: right;"><img style="width: 80px;height: 70px;" src="./assets/images/logo.jpg" ></td>
+	</tr>
+    
+         
       </table>
   </header>
-  <footer>
+  <!-- <footer>
+  	<br>
       <div id="footer_texto">DIRECTIVA PARA FORMUMACIÓN, EJECUCIÓN Y SUPERVISIÓN DE PROYECTOS EL LA FASE DE INVERSION POR <br/>ADMINISTRACIÓN DIRECTA O ENCARGO </div>
-  </footer>
-
-  <div>
-  	<div style="text-align: center;margin-top: -40px;">FORMATO FF-01<br/>
-  	FICHA TECNICA DEL PROYECTO</div><br/>
-  	<table id="contenido_border" width="550" border=1 cellspacing=0 cellpadding=2 bordercolor="666633" >
+  </footer> -->
+	<br><br>
+  <div>FORMATO FF-01</div><br/>
+  	<table id="contenido_border" width="550" border=1 cellspacing=0 cellpadding=2 bordercolor="666633" style="text-align: left;" >
   		<thead>
 	  		<tr>
 	              <th id="header_texto">
-	                1 &nbsp; &nbsp;Nombre de la Unidad Ejecución
+	                1.Nombre de la Unidad Ejecución
 	              </th>
 	              <th id="header_texto">
-	               &nbsp; Gobierno Regional Apurímac
-	              </th>
-	        </tr>
-	        <tr>
-	              <th id="header_texto">
-	               &nbsp; &nbsp;  &nbsp; &nbsp; 1.1 &nbsp; &nbsp; Dirección 
-	              </th>
-	              <th id="header_texto">
-	               &nbsp; <?=$listarExpedienteFicha001->direccion_ue;?>
+	               Gobierno Regional Apurímac
 	              </th>
 	        </tr>
 	        <tr>
 	              <th id="header_texto">
-	                &nbsp; &nbsp; &nbsp; &nbsp; 1.2 &nbsp; &nbsp; Distrito/Provincia/Departamento 
+	                1.1. Dirección 
 	              </th>
 	              <th id="header_texto">
-	               &nbsp;  <?= $listarExpedienteFicha001->distrito_provincia_departamento_ue ?>
-	              </th>
-	        </tr>
-	        <tr>
-	              <th id="header_texto">
-	                &nbsp; &nbsp; &nbsp; &nbsp; 1.3 &nbsp; &nbsp; Teléfono 
-	              </th>
-	              <th id="header_texto">
-	               &nbsp; <?= $listarExpedienteFicha001->telefono_ue ?>
+	               <?=$listarExpedienteFicha001->direccion_ue;?>
 	              </th>
 	        </tr>
 	        <tr>
 	              <th id="header_texto">
-	                &nbsp; &nbsp; &nbsp; &nbsp; 1.4 &nbsp; &nbsp; RUC 
+	                1.2. Distrito/Provincia/Departamento 
 	              </th>
 	              <th id="header_texto">
-	               &nbsp; <?= $listarExpedienteFicha001->ruc_ue ?>
+	               <?= $listarExpedienteFicha001->distrito_provincia_departamento_ue ?>
+	              </th>
+	        </tr>
+	        <tr>
+	              <th id="header_texto">
+	                 1.3. Teléfono 
+	              </th>
+	              <th id="header_texto">
+	               <?= $listarExpedienteFicha001->telefono_ue ?>
+	              </th>
+	        </tr>
+	        <tr>
+	              <th id="header_texto">
+	                1.4. RUC 
+	              </th>
+	              <th id="header_texto">
+	                <?= $listarExpedienteFicha001->ruc_ue ?>
 	              </th>
 	        </tr>
 			
 			<tr>
 	              <th id="header_texto">
-	                2 &nbsp; &nbsp;Nombre del Proyecto
+	                2. Nombre del Proyecto
 	              </th>
 	              <th id="header_texto" style=" text-align: center;">
-	               &nbsp; <?= $listarExpedienteFicha001->nombre_pi ?>
+	               <?= $listarExpedienteFicha001->nombre_pi ?>
 	              </th>
 	        </tr>
 	        <tr>
 	              <th id="header_texto">
-	                &nbsp; &nbsp; &nbsp; &nbsp; 2.1 &nbsp; &nbsp; Ubicación distrital donde se plantea su ejecución 
+	                2.1. Ubicación distrital donde se plantea su ejecución 
 	              </th>
 	              <th id="header_texto">
-	               &nbsp; <?= $listarExpedienteFicha001->provincia ?> 
-	              </th>
-	        </tr>
-	        <tr>
-	              <th id="header_texto">
-	                &nbsp; &nbsp; &nbsp; &nbsp; 2.2 &nbsp; &nbsp; Codigo único 
-	              </th>
-	              <th id="header_texto">
-	               &nbsp; <?= $listarExpedienteFicha001->codigo_unico_pi ?> 
-	              </th>
-	        </tr>
-
-	        <tr>
-	              <th id="header_texto">
-	                3 &nbsp; &nbsp;Costo Total Proyecto(Pre Invesión)
-	              </th>
-	              <th id="header_texto">
-	               &nbsp;S/. <?= $listarExpedienteFicha001->costo_total_preinv_et ?> 
+	               <?= $listarExpedienteFicha001->provincia ?> 
 	              </th>
 	        </tr>
 	        <tr>
 	              <th id="header_texto">
-	                &nbsp; &nbsp; &nbsp; &nbsp; 3.1 &nbsp; &nbsp; Costo Directo 
+	               2.2. Codigo único 
 	              </th>
 	              <th id="header_texto">
-	               &nbsp;S/. <?= $listarExpedienteFicha001->costo_directo_preinv_et ?> 
-	              </th>
-	        </tr>
-	        <tr>
-	              <th id="header_texto">
-	                &nbsp; &nbsp; &nbsp; &nbsp; 3.2 &nbsp; &nbsp; Costo Indirecto 
-	              </th>
-	              <th id="header_texto">
-	               &nbsp;S/. <?= $listarExpedienteFicha001->costo_indirecto_preinv_et ?>  
+	              <?= $listarExpedienteFicha001->codigo_unico_pi ?> 
 	              </th>
 	        </tr>
 
 	        <tr>
 	              <th id="header_texto">
-	                4 &nbsp; &nbsp;Costo Total Proyecto(Invesión)
+	                3. Costo Total Proyecto(Pre Invesión)
 	              </th>
 	              <th id="header_texto">
-	               &nbsp;S/. <?= $listarExpedienteFicha001->costo_total_inv_et ?> 
-	              </th>
-	        </tr>
-	        <tr>
-	              <th id="header_texto">
-	                &nbsp; &nbsp; &nbsp; &nbsp; 4.1 &nbsp; &nbsp; Costo Directo
-	              </th>
-	              <th id="header_texto">
-	               &nbsp;falta
+	               S/. <?= $listarExpedienteFicha001->costo_total_preinv_et ?> 
 	              </th>
 	        </tr>
 	        <tr>
 	              <th id="header_texto">
-	                &nbsp; &nbsp; &nbsp; &nbsp; 4.2 &nbsp; &nbsp; Costo General
+	                 3.1. Costo Directo 
 	              </th>
 	              <th id="header_texto">
-	               &nbsp;S/. <?= $listarExpedienteFicha001->gastos_generales_et ?> 
+	               S/. <?= $listarExpedienteFicha001->costo_directo_preinv_et ?> 
 	              </th>
 	        </tr>
 	        <tr>
 	              <th id="header_texto">
-	                &nbsp; &nbsp; &nbsp; &nbsp; 4.3 &nbsp; &nbsp; Gasto de Supervisión 
+	               3.2. Costo Indirecto 
 	              </th>
 	              <th id="header_texto">
-	               &nbsp;S/. <?= $listarExpedienteFicha001->gastos_supervision_et ?> 
+	               S/. <?= $listarExpedienteFicha001->costo_indirecto_preinv_et ?>  
 	              </th>
 	        </tr>
 
 	        <tr>
 	              <th id="header_texto">
-	                5 &nbsp; &nbsp; Función Programática 
+	                4. Costo Total Proyecto(Invesión)
+	              </th>
+	              <th id="header_texto">
+	               S/. <?= $listarExpedienteFicha001->costo_total_inv_et ?> 
+	              </th>
+	        </tr>
+	        <tr>
+	              <th id="header_texto">
+	                4.1. Costo Directo
+	              </th>
+	              <th id="header_texto">
+	              falta
+	              </th>
+	        </tr>
+	        <tr>
+	              <th id="header_texto">
+	                4.2. Costo General
+	              </th>
+	              <th id="header_texto">
+	               S/. <?= $listarExpedienteFicha001->gastos_generales_et ?> 
+	              </th>
+	        </tr>
+	        <tr>
+	              <th id="header_texto">
+	                4.3. Gasto de Supervisión 
+	              </th>
+	              <th id="header_texto">
+	               S/. <?= $listarExpedienteFicha001->gastos_supervision_et ?> 
+	              </th>
+	        </tr>
+
+	        <tr>
+	              <th id="header_texto">
+	                5. Función Programática 
 	              </th>
 	              <th id="header_texto">
 	               &nbsp; 
@@ -169,175 +164,175 @@
 	        </tr>
 	        <tr>
 	              <th id="header_texto">
-	                &nbsp; &nbsp; &nbsp; &nbsp; 5.1 &nbsp; &nbsp; FUNCIÓN
+	                5.1. FUNCIÓN
 	              </th>
 	              <th id="header_texto">
-	               &nbsp;<?= $listarExpedienteFicha001->funcion_et ?> 
-	              </th>
-	        </tr>
-	        <tr>
-	              <th id="header_texto">
-	                &nbsp; &nbsp; &nbsp; &nbsp; 5.2 &nbsp; &nbsp; PROGRAMA
-	              </th>
-	              <th id="header_texto">
-	               &nbsp;<?= $listarExpedienteFicha001->programa_et ?> 
+	               <?= $listarExpedienteFicha001->funcion_et ?> 
 	              </th>
 	        </tr>
 	        <tr>
 	              <th id="header_texto">
-	                &nbsp; &nbsp; &nbsp; &nbsp; 5.3 &nbsp; &nbsp; SUB PROGRAMA
+	                5.2. PROGRAMA
 	              </th>
 	              <th id="header_texto">
-	               &nbsp;<?= $listarExpedienteFicha001->sub_programa_et ?>  
+	               <?= $listarExpedienteFicha001->programa_et ?> 
 	              </th>
 	        </tr>
 	        <tr>
 	              <th id="header_texto">
-	                &nbsp; &nbsp; &nbsp; &nbsp; 5.4 &nbsp; &nbsp; PROYECTO
+	                5.3. SUB PROGRAMA
+	              </th>
+	              <th id="header_texto">
+	               <?= $listarExpedienteFicha001->sub_programa_et ?>  
+	              </th>
+	        </tr>
+	        <tr>
+	              <th id="header_texto">
+	               5.4. PROYECTO
 	              </th>
 	              <th id="header_texto" style=" text-align: center;">
-	               &nbsp;<?= $listarExpedienteFicha001->proyecto_et ?>  
+	              <?= $listarExpedienteFicha001->proyecto_et ?>  
 	              </th>
 	        </tr>
 	        <tr>
 	              <th id="header_texto">
-	                &nbsp; &nbsp; &nbsp; &nbsp; 5.5 &nbsp; &nbsp; COMPONENTE 
+	                5.5. COMPONENTE 
 	              </th>
 	              <th id="header_texto">
-	               &nbsp;<?= $listarExpedienteFicha001->componente_et ?>   
-	              </th>
-	        </tr>
-	        <tr>
-	              <th id="header_texto">
-	                &nbsp; &nbsp; &nbsp; &nbsp; 5.6 &nbsp; &nbsp; META 
-	              </th>
-	              <th id="header_texto">
-	               &nbsp;<?= $listarExpedienteFicha001->meta_et ?>  
+	               <?= $listarExpedienteFicha001->componente_et ?>   
 	              </th>
 	        </tr>
 	        <tr>
 	              <th id="header_texto">
-	                &nbsp; &nbsp; &nbsp; &nbsp; 5.7 &nbsp; &nbsp; FUENTE DE FINANCIAMIENTO
+	               5.6. META 
 	              </th>
 	              <th id="header_texto">
-	               &nbsp;<?= $listarExpedienteFicha001->fuente_financiamiento_et ?>   
+	               <?= $listarExpedienteFicha001->meta_et ?>  
 	              </th>
 	        </tr>
 	        <tr>
 	              <th id="header_texto">
-	                &nbsp; &nbsp; &nbsp; &nbsp; 5.8 &nbsp; &nbsp; MODALIDAD DE EJECUCIÓN 
+	                5.7. FUENTE DE FINANCIAMIENTO
 	              </th>
 	              <th id="header_texto">
-	               &nbsp;<?= $listarExpedienteFicha001->modalidad_ejecucion_et ?> 
+	               <?= $listarExpedienteFicha001->fuente_financiamiento_et ?>   
+	              </th>
+	        </tr>
+	        <tr>
+	              <th id="header_texto">
+	               5.8. MODALIDAD DE EJECUCIÓN 
+	              </th>
+	              <th id="header_texto">
+	               <?= $listarExpedienteFicha001->modalidad_ejecucion_et ?> 
 	              </th>
 	        </tr>
 			
 			<tr>
 	              <th id="header_texto">
-	                6 &nbsp; &nbsp; Tiempo de Ejecución del Proyecto 
+	                6. Tiempo de Ejecución del Proyecto 
 	              </th>
 	              <th id="header_texto">
-	               &nbsp;<?= $listarExpedienteFicha001->tiempo_ejecucion_pi_et ?> 
+	               <?= $listarExpedienteFicha001->tiempo_ejecucion_pi_et ?> 
 	              </th>
 	        </tr>
 
 	        <tr>
 	              <th id="header_texto">
-	                7 &nbsp; &nbsp; Número de Beneficiario Indirecto del Proyecto 
+	                7. Número de Beneficiario Indirecto del Proyecto 
 	              </th>
 	              <th id="header_texto">
-	               &nbsp;<?= $listarExpedienteFicha001->num_beneficiarios_indirectos ?>  
+	               <?= $listarExpedienteFicha001->num_beneficiarios_indirectos ?>  
 	              </th>
 	        </tr>
 
 	        
 	        <tr>
 	              <th id="header_texto">
-	                &nbsp; &nbsp; &nbsp; &nbsp; 8.2 &nbsp; &nbsp; DNI
+	               8.2. DNI
 	              </th>
 	              <th id="header_texto">
-	               &nbsp;<?= $responsableElaboracion->dni?>
-	              </th>
-	        </tr>
-	        <tr>
-	              <th id="header_texto">
-	                &nbsp; &nbsp; &nbsp; &nbsp; 8.3 &nbsp; &nbsp; Registro Profesíon N°
-	              </th>
-	              <th id="header_texto">
-	               &nbsp;<?= $responsableElaboracion->num_registro_prof?>
+	               <?= $responsableElaboracion->dni?>
 	              </th>
 	        </tr>
 	        <tr>
 	              <th id="header_texto">
-	                &nbsp; &nbsp; &nbsp; &nbsp; 8.4 &nbsp; &nbsp; Dirección
+	                8.3. Registro Profesíon N°
 	              </th>
 	              <th id="header_texto">
-	               &nbsp;<?= $responsableElaboracion->direccion?>
+	              <?= $responsableElaboracion->num_registro_prof?>
 	              </th>
 	        </tr>
 	        <tr>
 	              <th id="header_texto">
-	                &nbsp; &nbsp; &nbsp; &nbsp; 8.5 &nbsp; &nbsp; Teléfono 
+	               8.4. Dirección
 	              </th>
 	              <th id="header_texto">
-	               &nbsp; <?= $responsableElaboracion->telefonos?>
+	               <?= $responsableElaboracion->direccion?>
+	              </th>
+	        </tr>
+	        <tr>
+	              <th id="header_texto">
+	                8.5. Teléfono 
+	              </th>
+	              <th id="header_texto">
+	              <?= $responsableElaboracion->telefonos?>
 	              </th>
 	        </tr>
 
 	        <tr>
 	              <th id="header_texto">
-	                9 &nbsp; &nbsp; Nombre del Responsable de la Ejecución del proyecto' 
+	                9. Nombre del Responsable de la Ejecución del proyecto' 
 	              </th>
 	              <th id="header_texto">
-	               &nbsp; <?= $responsableEjecucion->nombres?> <?= $responsableEjecucion->apellido_p?>  <?= $responsableEjecucion->apellido_m?>  
-	              </th>
-	        </tr>
-	        <tr>
-	              <th id="header_texto">
-	                &nbsp; &nbsp; &nbsp; &nbsp; 9.1 &nbsp; &nbsp; Profesíon
-	              </th>
-	              <th id="header_texto">
-	               &nbsp;<?= $responsableEjecucion->num_registro_prof?>
+	               <?= $responsableEjecucion->nombres?> <?= $responsableEjecucion->apellido_p?>  <?= $responsableEjecucion->apellido_m?>  
 	              </th>
 	        </tr>
 	        <tr>
 	              <th id="header_texto">
-	                &nbsp; &nbsp; &nbsp; &nbsp; 9.2 &nbsp; &nbsp; DNI
+	               9.1. Profesíon
 	              </th>
 	              <th id="header_texto">
-	               &nbsp;<?= $responsableEjecucion->dni?>
-	              </th>
-	        </tr>
-	        <tr>
-	              <th id="header_texto">
-	                &nbsp; &nbsp; &nbsp; &nbsp; 9.3 &nbsp; &nbsp; Registro Profesíon N°
-	              </th>
-	              <th id="header_texto">
-	               &nbsp;<?= $responsableEjecucion->num_registro_prof?>
+	               <?= $responsableEjecucion->num_registro_prof?>
 	              </th>
 	        </tr>
 	        <tr>
 	              <th id="header_texto">
-	                &nbsp; &nbsp; &nbsp; &nbsp; 9.4 &nbsp; &nbsp; Dirección 
+	               9.2. DNI
 	              </th>
 	              <th id="header_texto">
-	               &nbsp; <?= $responsableEjecucion->direccion?>
+	               <?= $responsableEjecucion->dni?>
 	              </th>
 	        </tr>
 	        <tr>
 	              <th id="header_texto">
-	                &nbsp; &nbsp; &nbsp; &nbsp; 9.5 &nbsp; &nbsp; Teléfono 
+	               9.3. Registro Profesíon N°
 	              </th>
 	              <th id="header_texto">
-	               &nbsp;<?= $responsableEjecucion->telefonos?>
+	               <?= $responsableEjecucion->num_registro_prof?>
+	              </th>
+	        </tr>
+	        <tr>
+	              <th id="header_texto">
+	                9.4. Dirección 
+	              </th>
+	              <th id="header_texto">
+	               <?= $responsableEjecucion->direccion?>
+	              </th>
+	        </tr>
+	        <tr>
+	              <th id="header_texto">
+	               9.5. Teléfono 
+	              </th>
+	              <th id="header_texto">
+	             <?= $responsableEjecucion->telefonos?>
 	              </th>
 	        </tr>
 
 
 	        <tr>
 	              <th colspan="2" id="header_texto">
-	                10 &nbsp; &nbsp; Sustento para la presentación del proyecto<br/>
-	                	<div style="text-align:left; position: relative;" > &nbsp; &nbsp; &nbsp; &nbsp; 10.1 &nbsp; &nbsp; Decripción de la Presentación del proyecto<br>
+	                10. Sustento para la presentación del proyecto<br/>
+	                	<div style="text-align:left; position: relative;" >10.1. Decripción de la Presentación del proyecto<br>
 							<?= $listarExpedienteFicha001->desc_situacion_actual_et ?>   
 	                	</div>
 	              </th>
@@ -352,7 +347,7 @@
   		<thead>
 	  		<tr>
 	              <th id="header_texto">
-	                11 &nbsp; &nbsp;Revelación económica 
+	                11. Revelación económica 
 	                <br>
 					<?= $listarExpedienteFicha001->relevancia_economica_et ?>  
 	              </th>
@@ -364,7 +359,7 @@
   		<thead>
 	  		<tr colspan="4">
 	              <th  id="header_texto">
-	                12 &nbsp; &nbsp;Resumen del proyecto(descripción general)
+	                12. Resumen del proyecto(descripción general)
 	                <br>
 						<?= $listarExpedienteFicha001->resumen_pi_et ?> 	 
 	              </th>
@@ -391,11 +386,11 @@
 	<table id="contenido_border" style="margin-top: -2px; " width="565"  border=1 cellspacing=0 cellpadding=2 bordercolor="666633" >
 	        <tr colspan="4">
 	              <th  id="header_texto">
-	                14 &nbsp; &nbsp;Fotografias(04 minimo)
+	                14. Fotografias(04 minimo)
 	                <br>
 	               <center> 
 					<?php foreach($ImagenesExpediente as $item){ ?>
-		                <img style="width: 230px;height: 130px; position: relative; " src="./uploads/ImageExpediente/<?= $item->desc_img?>" > &nbsp; &nbsp;
+		                <img style="width: 230px;height: 130px; position: relative; " src="./uploads/ImageExpediente/<?= $item->desc_img?>" > 
 					<?php } ?>
 	                </center>
 	              </th>
