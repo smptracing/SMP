@@ -41,8 +41,8 @@ public function index()
                 {
                     $config['upload_path'] = './uploads/cartera/';
                     $config['allowed_types'] = '*';
-                    $config['max_width']     = 1024;
-				    $config['max_height']    = 768;
+                    //$config['max_width']     = 1024;
+				    //$config['max_height']    = 768;
 				    $config['file_name'] = 'DOC_';
 				    $config['max_size'] = '20048';
                     $this->load->library('upload', $config);
@@ -94,8 +94,8 @@ public function index()
                 {
                     $config['upload_path'] = './uploads/cartera/';
                     $config['allowed_types'] = '*';
-                    $config['max_width']     = 1024;
-				    $config['max_height']    = 768;
+                    //$config['max_width']     = 1024;
+				    //$config['max_height']    = 768;
 				    $config['file_name'] = 'DOC_';
 				    $config['max_size'] = '20048';
                     $this->load->library('upload', $config);
