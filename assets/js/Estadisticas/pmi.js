@@ -407,7 +407,7 @@ $(document).on('ready', function()
 });
 
 $.ajax({
-        url:base_url+"/index.php/PrincipalPmi/EstadisticaMontoPipProvincias",
+        url:base_url+"index.php/PrincipalPmi/EstadisticaMontoPipProvincias",
         type:"POST",
         cache:false,
         success:function(respuesta)
@@ -529,7 +529,7 @@ $.ajax({
 });
 
 $.ajax({
-        url:base_url+"/index.php/PrincipalPmi/EstadisticaMontoPipCicloInversion",
+        url:base_url+"index.php/PrincipalPmi/EstadisticaMontoPipCicloInversion",
         type:"POST",
         cache:false,
         success:function(respuesta)
