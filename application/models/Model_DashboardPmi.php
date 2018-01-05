@@ -13,11 +13,7 @@ class Model_DashboardPmi extends CI_Model
         $get_cantidad_costo_tipo_pi = $this->db->query("execute sp_DashboardPMI
             @Opcion='" . $Opcion . "',
             @anio_cartera='" . $anio . "'");
-        if ($get_cantidad_costo_tipo_pi->num_rows() > 0) {
-            return $get_cantidad_costo_tipo_pi->result();
-        } else {
-            return false;
-        }
+        return $get_cantidad_costo_tipo_pi->result();
     }
     public function MontoProgramado()
     {
