@@ -345,6 +345,16 @@ $(function()
                         message: '<b style="color: red;">El campo "Unidad Formuladora" es requerido.</b>'
                     }
                 }
+            },
+            cbxProgramaPres:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Programa Presupuestal" es requerido.</b>'
+                    }
+                }
             }
         }
     });

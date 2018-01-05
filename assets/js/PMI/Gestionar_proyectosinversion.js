@@ -87,6 +87,9 @@ $(document).on("ready", function() {
                 formReset();
                 $('#VentanaRegistraPIP').modal('hide');
                 $('#table_proyectos_inversion').dataTable()._fnAjaxUpdate();
+            },
+            error: function (request, status, error) {
+                alert("some error"+request.responseText);
             }
         });
     });

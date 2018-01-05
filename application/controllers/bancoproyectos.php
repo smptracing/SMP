@@ -74,6 +74,7 @@ class bancoproyectos extends CI_Controller
                 }
 
                 //INSERT rubro_pi
+                $e_data['id_rubro'] = 1;
                 $e_data['id_pi'] = $q1;
                 $e_data['fecha_rubro_pi'] = date('Y-m-d h:i:s');
                 if($this->Model_RubroE->Insertar_rubro($e_data) == 0){

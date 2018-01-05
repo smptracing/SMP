@@ -81,7 +81,7 @@ $(document).on("ready" ,function()
     }
     var listarProgramaPresupuestal=function()
     {
-        html="";
+        var html="";
         $("#cbxProgramaPres").html(html); //nombre del selectpicker UNIDAD EJECUTORA
         event.preventDefault();
         $.ajax({
@@ -109,7 +109,7 @@ $(document).on("ready" ,function()
         $.ajax(
         {
             url:base_url +"index.php/NivelGobierno/get_NivelGobierno",
-            type:"POST",
+            type:'POST',
             success : function(respuesta)
             {
                 var registros = eval(respuesta);
