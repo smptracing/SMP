@@ -675,7 +675,7 @@ var listarGrupoFuncional2=function(valor)
 }
 
 
-var listarGrupoFuncional=function(valor)
+var listarGrupoFuncional=function(id_div_funcional)
 {
     html="";
     $("#cbxGrupoFunc").html(html);
@@ -691,7 +691,7 @@ var listarGrupoFuncional=function(valor)
             for (var i = 0; i < registros.length; i++) {
                 html += "<option value=" + registros[i]["id_grup_funcional"] + "> " + registros[i]["nombre_grup_funcional"] + " </option>";
             }
-            alert("Listar Grupo Funcional, div funcional="+id_div_funcional);
+            //alert("Listar Grupo Funcional, div funcional="+id_div_funcional);
             $("#cbxGrupoFunc_m").html(html);
 
             $('.selectpicker').selectpicker('refresh');
@@ -744,17 +744,17 @@ var listarRubroEjecucion = function(valor) {
 }
 var listarTipologiaInversion = function(valor) {
     var html = "";
-    $("#cbxTipologiaInversion").html(html);
+    $("#cbxTipologiaInv").html(html);
     event.preventDefault();
     $.ajax({
-        "url": base_url + "index.php/TipologiaInversion/get_TipologiaInversion",
+        url: base_url + "index.php/TipologiaInversion/get_TipologiaInversion",
         type: "POST",
         success: function(respuesta3) {
             var registros = eval(respuesta3);
             for (var i = 0; i < registros.length; i++) {
                 html += "<option  value=" + registros[i]["id_tipologia_inv"] + "> " + registros[i]["nombre_tipologia_inv"] + " </option>";
             };
-            $("#cbxTipologiaInversion").html(html);
+            $("#cbxTipologiaInv").html(html);
             $("#cbxTipologiaInversion_m").html(html);
             $('select[name=cbxTipologiaInversion_m]').val(valor);
             $('select[name=cbxTipologiaInversion_m]').change();

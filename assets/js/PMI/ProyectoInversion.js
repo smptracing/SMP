@@ -26,7 +26,7 @@ $(document).on("ready" ,function()
         });
     }
 
-    var listarTipologiaInversion=function()
+    var listarTipologiaInversion2=function()
     {
         event.preventDefault();
 
@@ -221,7 +221,7 @@ $(document).on("ready" ,function()
                 }*/
     listaProyectoInversion();
     listarCicloInversion();
-    listarTipologiaInversion();
+    listarTipologiaInversion2();
     listarNaturalezaInversion();
     listarNivelGobierno();
     listarProgramaPresupuestal();
