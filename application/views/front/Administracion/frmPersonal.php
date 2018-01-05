@@ -252,7 +252,7 @@
                     </div>
 
                         <div class="item form-group">
-                            <label class="mayuscula control-label col-md-3 col-sm-3 col-xs-12" for="name">Fecha Nacimiento<span class="required">*</span>
+                            <label class="mayuscula control-label col-md-3 col-sm-3 col-xs-12" for="name">Fecha de registro:<span class="required">*</span>
                             </label>
                                <div class="col-md-3 col-sm-3 col-xs-12">
                                  <input type="date" id="date_fechanac" name="date_fechanac" class="form-control col-md-7 col-xs-5" type="text" max="<?=date('Y-m-d')?>">
