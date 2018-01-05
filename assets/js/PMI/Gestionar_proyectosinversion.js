@@ -443,8 +443,10 @@ var listar_proyectos_inversion = function() {
     AddMantOperacion("#table_proyectos_inversion", table);
     EditPip("#table_proyectos_inversion", table);
 }
-var EditPip = function(tbody, table) {
-    $(tbody).on("click", "button.Editar_proyecto", function() {
+var EditPip = function(tbody, table) 
+{
+    $(tbody).on("click", "button.Editar_proyecto", function()
+    {
         var data = table.row($(this).parents("tr")).data();
         var codigo_unico_pi = data.codigo_unico_pi;
         var id_estado_ciclo = data.id_estado_ciclo;
@@ -472,8 +474,9 @@ var EditPip = function(tbody, table) {
         listarNivelGobierno(id_nivel_gob);
         listarUnidadEjecutora(id_ue);
         listarFuncion(id_funcion);
-        listarDivisionFuncional(id_funcion, id_div_funcional);
-        listarGrupoFuncional(id_grupo_funcional);
+        listarDivisionFuncional(id_funcion,id_div_funcional);
+        listarGrupoFuncionalporDivision(id_div_funcional,id_grupo_funcional);
+        //listarGrupoFuncional(id_grupo_funcional);
         $("#txtCostoPip_m").val(data.costo_pi);
         $("#txt_beneficiarios_m").val(data.num_beneficiarios);
         listarFuenteFinanciamiento(id_fuente_finan);
@@ -568,14 +571,16 @@ var listarUnidadEjecutora = function(valor) {
         }
     });
 }
-var listarFuncion = function(valor) {
+var listarFuncion = function(valor) 
+{
     var html = "";
     $("#cbxFuncion_inicio").html(html);
     event.preventDefault();
     $.ajax({
         "url": base_url + "index.php/MFuncion/GetFuncion",
         type: "POST",
-        success: function(respuesta3) {
+        success: function(respuesta3) 
+        {
             var registros = eval(respuesta3);
             for (var i = 0; i < registros.length; i++) {
                 html += "<option  value=" + registros[i]["id_funcion"] + "> " + registros[i]["nombre_funcion"] + " </option>";
@@ -587,18 +592,19 @@ var listarFuncion = function(valor) {
             $('.selectpicker').selectpicker('refresh')
             var id_funcion = $("#cbxFuncion_m").val();
             listarDivisionFuncional(id_funcion, '');
+            //listarDivisionFuncional2(id_funcion,'');
         }
     });
 }
 
 
-$("#cbxFuncion_m").change(function()
+/*$("#cbxFuncion_m").change(function()
 {
     var id_funcion=$("#cbxFuncion_m").val();
     listarDivisionFuncional2(id_funcion,'');
     $("#cbxGrupoFunc_m").html('');
     $("#cbxGrupoFunc_m").selectpicker('refresh');
-});
+});*/
 
 var listarDivisionFuncional2=function(id_funcion,valor)
 {
@@ -635,12 +641,12 @@ var listarDivisionFuncional=function(id_funcion,valor)
         },
         success: function(respuesta) {
             var registros = eval(respuesta);
-            for (var i = 0; i < registros.length; i++) {
+            for (var i = 0; i < registros.length; i++)
+            {
                 html += "<option value=" + registros[i]["id_div_funcional"] + "> " + registros[i]["nombre_div_funcional"] + " </option>";
             }
             $("#cbxDivFunc_inicio").html(html);
-            //probando ando
-            //$('select[name=cbxDivFunc_inicio]').val(valor);
+            $('select[name=cbxDivFunc_inicio]').val(valor);
             $('.selectpicker').selectpicker('refresh');
         }
     });
@@ -674,7 +680,6 @@ var listarGrupoFuncional2=function(valor)
     });
 }
 
-
 var listarGrupoFuncional=function(id_div_funcional)
 {
     html="";
@@ -692,12 +697,51 @@ var listarGrupoFuncional=function(id_div_funcional)
                 html += "<option value=" + registros[i]["id_grup_funcional"] + "> " + registros[i]["nombre_grup_funcional"] + " </option>";
             }
             //alert("Listar Grupo Funcional, div funcional="+id_div_funcional);
-            $("#cbxGrupoFunc_m").html(html);
+            /*$("#cbxGrupoFunc_m").html(html);
 
             $('.selectpicker').selectpicker('refresh');
 
             $('select[name=cbxGrupoFunc_m]').val(id_div_funcional);
+            $('select[name=cbxGrupoFunc_m]').change();*/
+
+            $("#cbxGrupoFunc_m").html(html);
+            $('select[name=cbxGrupoFunc_m]').val(valor);
             $('select[name=cbxGrupoFunc_m]').change();
+            $('.selectpicker').selectpicker('refresh');
+
+        }
+    });
+}
+
+var listarGrupoFuncionalporDivision=function(id_div_funcional,id_grupo_funcional)
+{
+    html="";
+    $("#cbxGrupoFunc").html(html);
+    event.preventDefault();
+    $.ajax({
+        "url": base_url + "index.php/GrupoFuncional/GetGrupoFuncionalId",
+        type: "POST",
+        data: {
+            id_div_funcional: id_div_funcional
+        },
+        success: function(respuesta) 
+        {
+            var registros = eval(respuesta);
+            for (var i = 0; i < registros.length; i++) {
+                html += "<option value=" + registros[i]["id_grup_funcional"] + "> " + registros[i]["nombre_grup_funcional"] + " </option>";
+            }
+            //alert("Listar Grupo Funcional, div funcional="+id_div_funcional);
+            /*$("#cbxGrupoFunc_m").html(html);
+
+            $('.selectpicker').selectpicker('refresh');
+
+            $('select[name=cbxGrupoFunc_m]').val(id_div_funcional);
+            $('select[name=cbxGrupoFunc_m]').change();*/
+
+            $("#cbxGrupoFunc_m").html(html);
+            $('select[name=cbxGrupoFunc_m]').val(id_grupo_funcional);
+            $('select[name=cbxGrupoFunc_m]').change();
+            $('.selectpicker').selectpicker('refresh');
 
         }
     });
