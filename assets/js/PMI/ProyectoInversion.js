@@ -62,7 +62,7 @@ $(document).on("ready" ,function()
 
         $.ajax(
         {
-            "url":base_url +"index.php/TipologiaInversion/get_NaturalezaInversion",
+            url:base_url+"index.php/TipologiaInversion/get_NaturalezaInversion",
             type:"POST",
             success : function(respuesta)
             {
@@ -85,7 +85,7 @@ $(document).on("ready" ,function()
         $("#cbxProgramaPres").html(html); //nombre del selectpicker UNIDAD EJECUTORA
         event.preventDefault();
         $.ajax({
-            "url":base_url +"index.php/ProgramaPresupuestal/GetProgramaP",
+            url:base_url+"index.php/ProgramaPresupuestal/GetProgramaP",
             type:"POST",
             success : function(respuesta){
                // alert(respuesta);
@@ -108,7 +108,7 @@ $(document).on("ready" ,function()
 
         $.ajax(
         {
-            "url":base_url +"index.php/NivelGobierno/get_NivelGobierno",
+            url:base_url +"index.php/NivelGobierno/get_NivelGobierno",
             type:"POST",
             success : function(respuesta)
             {
@@ -135,7 +135,7 @@ $(document).on("ready" ,function()
 
         $.ajax(
         {
-            "url":base_url +"index.php/UnidadE/GetUnidadE",
+            url:base_url +"index.php/UnidadE/GetUnidadE",
             type:"POST",
             success : function(respuesta)
             {

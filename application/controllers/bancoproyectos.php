@@ -27,7 +27,7 @@ class bancoproyectos extends CI_Controller
     }
     public function AddProyectos()
     {
-        if ($this->input->is_ajax_request()) 
+        if ($this->input->is_ajax_request())
         {
             //proyecto_inversion
             $c_data['id_ue'] = $this->input->post("cbxUnidadEjecutora");
@@ -47,7 +47,7 @@ class bancoproyectos extends CI_Controller
             $c_data['estado_pi'] = 1;
 
             //estado_ciclo_pi
-           
+
 
             //rubro_pi
             $e_data['id_rubro'] = $this->input->post("cbxRubro");
@@ -102,8 +102,8 @@ class bancoproyectos extends CI_Controller
             $data['datos'] = $datos;
             $this->load->view('front/json/json_view', $data);
 
-        } 
-        else 
+        }
+        else
         {
             show_404();
         }
@@ -220,7 +220,7 @@ class bancoproyectos extends CI_Controller
             {
                 $value->fecha_viabilidad_pi=date('d/m/Y', strtotime($value->fecha_viabilidad_pi));
                 $value->fecha_viable=$value->fecha_registro_pi;
-                $value->costo_pi = a_number_format($value->costo_pi , 2, '.',",",3);                
+                $value->costo_pi = a_number_format($value->costo_pi , 2, '.',",",3);
             }
             echo json_encode($datos);
         }
@@ -510,7 +510,7 @@ class bancoproyectos extends CI_Controller
                     $this->load->view('front/json/json_view', ['datos' => $msg]);
                     return;
                 }
-            }            
+            }
 
             $c_data['id_pi']= $this->input->post("txt_id_pip_Ciclopi");
             $c_data['id_estado_ciclo'] = $this->input->post("Cbx_EstadoCiclo");
@@ -521,8 +521,8 @@ class bancoproyectos extends CI_Controller
             $msg = ($q1>0 ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
             $this->load->view('front/json/json_view', ['datos' => $msg]);
 
-        } 
-        else 
+        }
+        else
         {
             show_404();
         }

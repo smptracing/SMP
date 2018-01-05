@@ -613,7 +613,7 @@ var listarDivisionFuncional2=function(id_funcion,valor)
             {
                 html +="<option value="+registros[i]["id_div_funcional"]+"> "+ registros[i]["nombre_div_funcional"]+" </option>";
             }
-            $("#cbxDivFunc_inicio").html(html);            
+            $("#cbxDivFunc_inicio").html(html);
             $('.selectpicker').selectpicker('refresh');
         }
     });
@@ -690,12 +690,12 @@ var listarGrupoFuncional=function(valor)
             }
             alert("Listar Grupo Funcional, div funcional="+id_div_funcional);
             $("#cbxGrupoFunc_m").html(html);
-            
+
             $('.selectpicker').selectpicker('refresh');
 
             $('select[name=cbxGrupoFunc_m]').val(id_div_funcional);
             $('select[name=cbxGrupoFunc_m]').change();
-            
+
         }
     });
 }
