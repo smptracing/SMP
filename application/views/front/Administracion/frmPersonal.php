@@ -373,14 +373,14 @@
                         </div>
                     </div>
                     <div class="form-group">
-                           <label class="mayuscula control-label col-md-3 col-sm-3 col-xs-6">Especialidad:</label>
+                           <label class="mayuscula control-label col-md-3 col-sm-3 col-xs-6">Profesión:</label>
                             <div class="col-md-6 col-sm-9 col-xs-6">
                                      <select   id="txtEspecialidadm" name="txtEspecialidadm" class="selectpicker form-control col-md-12 col-xs-12" data-live-search="true">
                                       </select>
                             </div>
                     </div>
                     <div class="item form-group">
-                        <label class="mayuscula control-label col-md-3 col-sm-3 col-xs-12" for="name">Fecha Nacimiento*</label>
+                        <label class="mayuscula control-label col-md-3 col-sm-3 col-xs-12" for="name">Fecha de Registro:*</label>
                         <div class="col-md-3 col-sm-3 col-xs-12">
                             <input type="date" id="date_fechanacm" name="date_fechanacm" class="form-control" max="<?=date('Y-m-d')?>">
                         </div>
