@@ -2,11 +2,11 @@ $(document).on("ready" ,function()
 {
     var listarCicloInversion=function()
     {
-        event.preventDefault(); 
+        event.preventDefault();
 
         var htmlTemp="";
         $("#cbxEstadoCicloInv").html(htmlTemp); //nombre del selectpicker UNIDAD EJECUTORA
-        
+
         $.ajax(
         {
             "url":base_url +"index.php/EstadoCicloInversion/get_EstadoCicloInversion",
@@ -17,11 +17,11 @@ $(document).on("ready" ,function()
 
                 for(var i=0; i<registros.length;i++)
                 {
-                    htmlTemp+="<option value="+registros[i]["id_estado_ciclo"]+"> "+ registros[i]["nombre_estado_ciclo"]+" </option>";   
+                    htmlTemp+="<option value="+registros[i]["id_estado_ciclo"]+"> "+ registros[i]["nombre_estado_ciclo"]+" </option>";
                 }
                 $("#cbxEstadoCicloInv").html(htmlTemp);
 
-                $('.selectpicker').selectpicker('refresh'); 
+                $('.selectpicker').selectpicker('refresh');
             }
         });
     }
@@ -43,12 +43,12 @@ $(document).on("ready" ,function()
 
                 for (var i=0;i<registros.length;i++)
                 {
-                    htmlTemp+="<option value="+registros[i]["id_tipologia_inv"]+"> "+ registros[i]["nombre_tipologia_inv"]+" </option>";   
+                    htmlTemp+="<option value="+registros[i]["id_tipologia_inv"]+"> "+ registros[i]["nombre_tipologia_inv"]+" </option>";
                 }
 
                 $("#cbxTipologiaInv").html(htmlTemp);
-                
-                $('.selectpicker').selectpicker('refresh'); 
+
+                $('.selectpicker').selectpicker('refresh');
             }
         });
     }
@@ -70,12 +70,31 @@ $(document).on("ready" ,function()
 
                 for (var i=0; i<registros.length;i++)
                 {
-                    htmlTemp+="<option value="+registros[i]["id_naturaleza_inv"]+"> "+ registros[i]["nombre_naturaleza_inv"]+" </option>";   
+                    htmlTemp+="<option value="+registros[i]["id_naturaleza_inv"]+"> "+ registros[i]["nombre_naturaleza_inv"]+" </option>";
                 }
 
                 $("#cbxNatI").html(htmlTemp);
 
-                $('.selectpicker').selectpicker('refresh'); 
+                $('.selectpicker').selectpicker('refresh');
+            }
+        });
+    }
+    var listarProgramaPresupuestal=function()
+    {
+        html="";
+        $("#cbxProgramaPres").html(html); //nombre del selectpicker UNIDAD EJECUTORA
+        event.preventDefault();
+        $.ajax({
+            "url":base_url +"index.php/ProgramaPresupuestal/GetProgramaP",
+            type:"POST",
+            success : function(respuesta){
+               // alert(respuesta);
+             var registros = eval(respuesta);
+                for (var i = 0; i <registros.length;i++) {
+                  html +="<option value="+registros[i]["id_programa_pres"]+"> "+ registros[i]["nombre_programa_pres"]+" </option>";
+                }
+                $("#cbxProgramaPres").html(html);//
+                $('.selectpicker').selectpicker('refresh');
             }
         });
     }
@@ -97,12 +116,12 @@ $(document).on("ready" ,function()
 
                 for (var i=0; i<registros.length;i++)
                 {
-                    htmlTemp+="<option value="+registros[i]["id_nivel_gob"]+"> "+ registros[i]["nombre_nivel_gob"]+" </option>";   
+                    htmlTemp+="<option value="+registros[i]["id_nivel_gob"]+"> "+ registros[i]["nombre_nivel_gob"]+" </option>";
                 }
 
                 $("#cbxNivelGob").html(htmlTemp);
 
-                $('.selectpicker').selectpicker('refresh'); 
+                $('.selectpicker').selectpicker('refresh');
             }
         });
     }
@@ -121,15 +140,15 @@ $(document).on("ready" ,function()
             success : function(respuesta)
             {
                 var registros = eval(respuesta);
-                
+
                 for (var i=0; i<registros.length;i++)
                 {
-                    htmlTemp+="<option value="+registros[i]["id_ue"]+"> "+ registros[i]["nombre_ue"]+" </option>";   
+                    htmlTemp+="<option value="+registros[i]["id_ue"]+"> "+ registros[i]["nombre_ue"]+" </option>";
                 }
 
                 $("#cbxUnidadEjecutora").html(htmlTemp);
 
-                $('.selectpicker').selectpicker('refresh'); 
+                $('.selectpicker').selectpicker('refresh');
             }
         });
     }
@@ -151,12 +170,12 @@ $(document).on("ready" ,function()
 
                 for (var i=0; i<registros.length;i++)
                 {
-                    htmlTemp+="<option value="+registros[i]["id_funcion"]+"> "+ registros[i]["nombre_funcion"]+" </option>";   
+                    htmlTemp+="<option value="+registros[i]["id_funcion"]+"> "+ registros[i]["nombre_funcion"]+" </option>";
                 }
 
                 $("#cbxFuncion").html(htmlTemp);
 
-                $('.selectpicker').selectpicker('refresh'); 
+                $('.selectpicker').selectpicker('refresh');
             }
         });
     }
@@ -165,7 +184,7 @@ $(document).on("ready" ,function()
                 {
                     var htmlFuentFin="";
                     $("#cbxFuenteFinanc").html(htmlFuentFin); //nombre del selectpicker UNIDAD EJECUTORA
-                    event.preventDefault(); 
+                    event.preventDefault();
                     $.ajax({
                         "url":base_url +"index.php/FuenteFinanciamiento/get_FuenteFinanciamiento",
                         type:"POST",
@@ -173,10 +192,10 @@ $(document).on("ready" ,function()
                            //alert(respuesta);
                          var registros = eval(respuesta);
                             for (var i = 0; i <registros.length;i++) {
-                              htmlFuentFin +="<option value="+registros[i]["id_fuente_finan"]+"> "+ registros[i]["nombre_fuente_finan"]+" </option>";   
+                              htmlFuentFin +="<option value="+registros[i]["id_fuente_finan"]+"> "+ registros[i]["nombre_fuente_finan"]+" </option>";
                             }
                             $("#cbxFuenteFinanc").html(htmlFuentFin);//
-                            $('.selectpicker').selectpicker('refresh'); 
+                            $('.selectpicker').selectpicker('refresh');
                         }
                     });
                 }
@@ -185,7 +204,7 @@ $(document).on("ready" ,function()
                 {
                     htmlMeta="";
                     $("#cbxMetaPresupuestal").html(htmlMeta); //nombre del selectpicker UNIDAD EJECUTORA
-                    event.preventDefault(); 
+                    event.preventDefault();
                     $.ajax({
                         "url":base_url +"index.php/MetaPresupuestal/GetMetaP",
                         type:"POST",
@@ -193,10 +212,10 @@ $(document).on("ready" ,function()
                            // alert(respuesta);
                          var registros = eval(respuesta);
                             for (var i = 0; i <registros.length;i++) {
-                              htmlMeta +="<option value="+registros[i]["id_meta_pres"]+"> "+ registros[i]["numero_meta_pres"]+" </option>";   
+                              htmlMeta +="<option value="+registros[i]["id_meta_pres"]+"> "+ registros[i]["numero_meta_pres"]+" </option>";
                             }
                             $("#cbxMetaPresupuestal").html(htmlMeta);//
-                            $('.selectpicker').selectpicker('refresh'); 
+                            $('.selectpicker').selectpicker('refresh');
                         }
                     });
                 }*/
@@ -205,6 +224,7 @@ $(document).on("ready" ,function()
     listarTipologiaInversion();
     listarNaturalezaInversion();
     listarNivelGobierno();
+    listarProgramaPresupuestal();
     listaUnidadEjecutora();
     listarFuncion();
     listarFuenteFinan();
@@ -233,7 +253,7 @@ $(document).on("ready" ,function()
     $("#cbxDivFunc").change(function()
     {
         $('#cbxGrupoFunc').html('');
-        
+
         var id_div_funcional=$("#cbxDivFunc").val();
 
         listarGrupoFuncional(id_div_funcional);
@@ -256,28 +276,28 @@ $(document).on("ready" ,function()
               //TRAER EN COMBOBOX DIVISION FUNCIONAL
                //OBTENER DATOS RUBRO DE EJECUCION
               $("#cbxFuenteFinanc").change(function(){//para cargar en agregar division funcionañ
-                  
+
                       var id_fuente_finan=$("#cbxFuenteFinanc").val();
                         listarRubro(id_fuente_finan);
-             }); 
+             });
               //FIN OBTENER DATOS RUBRO DE EJECUCION
               //OBTENER DATOS MODALIDAD DE EJECUCION
               $("#cbxRubro").change(function(){//para cargar en agregar division funcionañ
                     listarModalidadEjec();
-             }); 
+             });
               //FIN OBTENER DATOS MODALIDAD DE EJCUCION
             //OBTENER PROGRAMA PRESUPUESTAL
               $("#cbxModalidadEjec").change(function(){//para cargar en agregar division funcionañ
                   listarProgramaPresupuestal();
-             }); 
+             });
               //FIN OBTENER PROGRAMA PRESUPUESTAL
-          
+
             //TRAER DATOS EN UN COMBO DE TIPO DE INVERSION
            var listarTipoInversion=function()
                 {
                     html="";
                     $("#cbxTipoInv").html(html); //nombre del selectpicker Tipologia de inversion
-                    event.preventDefault(); 
+                    event.preventDefault();
                     $.ajax({
                         "url":base_url +"index.php/TipologiaInversion/get_TipoInversion",
                         type:"POST",
@@ -285,10 +305,10 @@ $(document).on("ready" ,function()
                            // alert(respuesta);
                          var registros = eval(respuesta);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option value="+registros[i]["id_tipo_inversion"]+"> "+ registros[i]["nombre_tipo_inversion"]+" </option>";   
+                              html +="<option value="+registros[i]["id_tipo_inversion"]+"> "+ registros[i]["nombre_tipo_inversion"]+" </option>";
                             }
                             $("#cbxTipoInv").html(html);//
-                            $('.selectpicker').selectpicker('refresh'); 
+                            $('.selectpicker').selectpicker('refresh');
                         }
                     });
                 }
@@ -298,7 +318,7 @@ $(document).on("ready" ,function()
                 {
                     html="";
                     $("#cbxGrupoFunc").html(html); //nombre del selectpicker UNIDAD EJECUTORA
-                    event.preventDefault(); 
+                    event.preventDefault();
                     $.ajax({
                         "url":base_url +"index.php/GrupoFuncional/GetGrupoFuncionalId",
                         type:"POST",
@@ -307,47 +327,25 @@ $(document).on("ready" ,function()
                         {
                          var registros = eval(respuesta);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option value="+registros[i]["id_grup_funcional"]+"> "+ registros[i]["nombre_grup_funcional"]+" </option>";   
+                              html +="<option value="+registros[i]["id_grup_funcional"]+"> "+ registros[i]["nombre_grup_funcional"]+" </option>";
                             }
                             $("#cbxGrupoFunc").html(html);//
-                            $('.selectpicker').selectpicker('refresh'); 
+                            $('.selectpicker').selectpicker('refresh');
                         }
                     });
                 }
-          //FIN TRAER DATOS EN GRUPO FUNCIONAL 
+          //FIN TRAER DATOS EN GRUPO FUNCIONAL
              //TRAER DATOS DE META PRESUPUESTAL
-               
-          //FIN TRAER DATOS DE META PRESUPUESTAL
-             //TRAER DATOS DE PROGRAMA PRESUPUESTAL
-                var listarProgramaPresupuestal=function()
-                {
-                    html="";
-                    $("#cbxProgramaPres").html(html); //nombre del selectpicker UNIDAD EJECUTORA
-                    event.preventDefault(); 
-                    $.ajax({
-                        "url":base_url +"index.php/ProgramaPresupuestal/GetProgramaP",
-                        type:"POST",
-                        success : function(respuesta){
-                           // alert(respuesta);
-                         var registros = eval(respuesta);
-                            for (var i = 0; i <registros.length;i++) {
-                              html +="<option value="+registros[i]["id_programa_pres"]+"> "+ registros[i]["nombre_programa_pres"]+" </option>";   
-                            }
-                            $("#cbxProgramaPres").html(html);//
-                            $('.selectpicker').selectpicker('refresh'); 
-                        }
-                    });
-                }
-          //FIN TRAER DATOS DE PROGRAMA PRESUPUESTAL
-          
 
-          
+          //FIN TRAER DATOS DE META PRESUPUESTAL
+
+
             //TRAER DATOS EN UN COMBO DE MODALIDAD DE EJECUCION
                 var listarModalidadEjec=function()
                 {
                     html="";
                     $("#cbxModalidadEjec").html(html); //nombre del selectpicker UNIDAD EJECUTORA
-                    event.preventDefault(); 
+                    event.preventDefault();
                     $.ajax({
                         "url":base_url +"index.php/ModalidadEjecucion/GetModalidadE",
                         type:"POST",
@@ -355,21 +353,21 @@ $(document).on("ready" ,function()
                            // alert(respuesta);
                          var registros = eval(respuesta);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option value="+registros[i]["id_modalidad_ejec"]+"> "+ registros[i]["nombre_modalidad_ejec"]+" </option>";   
+                              html +="<option value="+registros[i]["id_modalidad_ejec"]+"> "+ registros[i]["nombre_modalidad_ejec"]+" </option>";
                             }
                             $("#cbxModalidadEjec").html(html);//
-                            $('.selectpicker').selectpicker('refresh'); 
+                            $('.selectpicker').selectpicker('refresh');
                         }
                     });
                 }
-          //FIN TRAER DATOS EN UN COMBO DE MODALIDAD DE EJECUCION  
-             
+          //FIN TRAER DATOS EN UN COMBO DE MODALIDAD DE EJECUCION
+
           //TRAER DATOS EN UN COMBO DE DIVISION FUNCIONAL
                 var listarDivisionFuncional=function(id_funcion)
                 {
                     html="";
                     $("#cbxDivFunc").html(html); //nombre del selectpicker UNIDAD EJECUTORA
-                    event.preventDefault(); 
+                    event.preventDefault();
                     $.ajax({
                         "url":base_url +"index.php/DivisionFuncional/GetDivisioFuncuonaId",
                         type:"POST",
@@ -378,10 +376,10 @@ $(document).on("ready" ,function()
                            //alert(respuesta);
                          var registros = eval(respuesta);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option value="+registros[i]["id_div_funcional"]+"> "+ registros[i]["nombre_div_funcional"]+" </option>";   
+                              html +="<option value="+registros[i]["id_div_funcional"]+"> "+ registros[i]["nombre_div_funcional"]+" </option>";
                             }
                             $("#cbxDivFunc").html(html);//
-                            $('.selectpicker').selectpicker('refresh'); 
+                            $('.selectpicker').selectpicker('refresh');
                         }
                     });
                 }
@@ -392,7 +390,7 @@ $(document).on("ready" ,function()
                 {
                     html="";
                     $("#cbxRubro").html(html); //nombre del selectpicker UNIDAD EJECUTORA
-                    event.preventDefault(); 
+                    event.preventDefault();
                     $.ajax({
                         "url":base_url +"index.php/MRubroEjecucion/GetRubroId",
                         type:"POST",
@@ -401,10 +399,10 @@ $(document).on("ready" ,function()
                            //alert(respuesta);
                          var registros = eval(respuesta);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option value="+registros[i]["id_rubro"]+"> "+ registros[i]["nombre_rubro"]+" </option>";   
+                              html +="<option value="+registros[i]["id_rubro"]+"> "+ registros[i]["nombre_rubro"]+" </option>";
                             }
                             $("#cbxRubro").html(html);//
-                            $('.selectpicker').selectpicker('refresh'); 
+                            $('.selectpicker').selectpicker('refresh');
                         }
                     });
                 }
@@ -421,11 +419,11 @@ $(document).on("ready" ,function()
                         success : function(resp){
                           alert(resp);
                          //swal("REGISTRADO!", resp, "success");
-                         //$('#table-ProyectoInversion').dataTable()._fnAjaxUpdate();    //SIRVE PARA REFRESCAR LA TABLA 
+                         //$('#table-ProyectoInversion').dataTable()._fnAjaxUpdate();    //SIRVE PARA REFRESCAR LA TABLA
                         }
                     });
-                });  */   
-                //FIN DE AGREGAR PIP           
+                });  */
+                //FIN DE AGREGAR PIP
 			});
 			   //listaR proyeto de inversion*/
                 var listaProyectoInversion=function()
@@ -451,8 +449,8 @@ $(document).on("ready" ,function()
                                 ],
 
                                 "language":idioma_espanol
-                    });              
-                 ListaProyectoInversionData("#table-ProyectoInversion",table);  //obtener data de funcion para agregar  AGREGAR                             
+                    });
+                 ListaProyectoInversionData("#table-ProyectoInversion",table);  //obtener data de funcion para agregar  AGREGAR
                 }
 
                 /*fin listar proyecto de inversion*/
@@ -467,7 +465,7 @@ $(document).on("ready" ,function()
                     });
                 }
                 var MostrarDetalleProyecto=function(Id_ProyectoInver){
-                    event.preventDefault(); 
+                    event.preventDefault();
                     html="";
                     $("table-detalleProyectoInversion").html(html);
                     $.ajax({
@@ -478,16 +476,16 @@ $(document).on("ready" ,function()
                          var registros = eval(respuesta);
                             html+="<thead> <tr> <th class='active'>DATOS DEL PROYECTOS DE INVERSIÓN</th>  <th class='active' colspan='5'>DETALLE </th> </tr></thead>"
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<tbody> <tr><th class='success'>CÓDIGO ÚNICOa</th><th  colspan='5'>"+registros[i]["codigo_unico_pi"]+"</th></tr> <tr><th class='success'>PROYECTO DE INVERSIÓN</th><th  colspan='5'>"+registros[i]["nombre_pi"]+"</th></tr>";    
+                              html +="<tbody> <tr><th class='success'>CÓDIGO ÚNICOa</th><th  colspan='5'>"+registros[i]["codigo_unico_pi"]+"</th></tr> <tr><th class='success'>PROYECTO DE INVERSIÓN</th><th  colspan='5'>"+registros[i]["nombre_pi"]+"</th></tr>";
                               html +="<tr><th class='success'>COSTO</th><th  colspan='5'>"+registros[i]["costo_pi"]+"</th></tr> <tr><th class='success'>DEVENGADO</th><th  colspan='5'>"+registros[i]["devengado_ac_pi"]+"</th></tr>";
-                              html +="<tr><th class='success'>FECHA  DE REGISTRO</th><th  colspan='5'>"+registros[i]["fecha_registro_pi"]+"</th></tr> <tr><th class='success'>FECHA DE VIABILIDAD</th><th  colspan='5'>"+registros[i]["fecha_viabilidad_pi"]+"</th></tr>";  
+                              html +="<tr><th class='success'>FECHA  DE REGISTRO</th><th  colspan='5'>"+registros[i]["fecha_registro_pi"]+"</th></tr> <tr><th class='success'>FECHA DE VIABILIDAD</th><th  colspan='5'>"+registros[i]["fecha_viabilidad_pi"]+"</th></tr>";
                               html+="<thead> <tr> <th class='active'>UNIDAD EJECUTORA</th>  <th class='active' colspan='5'>DETALLE </th> </tr></thead>";
-                              html +="<tr><th class='success'>NOMBRE UNIDAD EJECUTORA</th><th  colspan='5'>"+registros[i]["nombre_ue"]+"</th></tr> <tr><th class='success'>NOMBRE</th><th  colspan='5'>"+registros[i]["nombre_ue"]+"</th></tr>";  
+                              html +="<tr><th class='success'>NOMBRE UNIDAD EJECUTORA</th><th  colspan='5'>"+registros[i]["nombre_ue"]+"</th></tr> <tr><th class='success'>NOMBRE</th><th  colspan='5'>"+registros[i]["nombre_ue"]+"</th></tr>";
                               html+="<thead> <tr> <th class='active'>NATURALEZA DE INVERSIÓN</th>  <th class='active' colspan='5'>DETALLE </th> </tr></thead>";
-                              html +="<tr><th class='success'>NATURALEZA DE INVERSIÓN</th><th  colspan='5'>"+registros[i]["nombre_naturaleza_inv"]+"</th></tr> <tr><th class='success'>NOMBRE</th><th  colspan='5'>"+registros[i]["nombre_naturaleza_inv"]+"</th></tr>";  
+                              html +="<tr><th class='success'>NATURALEZA DE INVERSIÓN</th><th  colspan='5'>"+registros[i]["nombre_naturaleza_inv"]+"</th></tr> <tr><th class='success'>NOMBRE</th><th  colspan='5'>"+registros[i]["nombre_naturaleza_inv"]+"</th></tr>";
 
                               html +="</tbody>";
-                            }    
+                            }
                             $("#table-detalleProyectoInversion").html(html);
                         }
                     });
