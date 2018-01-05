@@ -349,7 +349,7 @@ $(document).on('ready', function()
         cache:false,
         success:function(respuesta)
         {
-            console.log(respuesta);
+            //console.log(respuesta);
             var arrayNaturalezaInv=new Array();
             $.each(respuesta,function(index,element)
             {
@@ -415,7 +415,7 @@ $.ajax({
         success:function(respuesta)
         {
             var cantidadpipprovincias=JSON.parse(respuesta);
-            console.log(cantidadpipprovincias);
+            //console.log(cantidadpipprovincias);
             var dom = document.getElementById("MontoPipProvincia");
             var myChart = echarts.init(dom);
             var app = {};
@@ -537,7 +537,7 @@ $.ajax({
         success:function(respuesta)
         {
             var cantidadpipprovincias=JSON.parse(respuesta);
-            console.log(cantidadpipprovincias);
+            //console.log(cantidadpipprovincias);
             var dom = document.getElementById("MontoPipCicloInversion");
             var myChart = echarts.init(dom);
             var app = {};
