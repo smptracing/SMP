@@ -22,7 +22,6 @@ $(document).on("ready", function()
                 swal("", resp, "success");
                 
                 $('#table-SubGerencia').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
-                
                 $('#VentanaRegistraSubGerencia').modal('hide');
             }
         });
@@ -73,7 +72,7 @@ var lista_subgerencias = function () {
         "language": idioma_espanol
     });
     SubGerenciaData("#table-SubGerencia", table);  //obtener data de gerencia para agregar  AGREGAR
-
+    EliminarSubGerencia("#table-SubGerencia", table);
 };
 
 var listaGerenciaCombo = function (valor)//COMO CON LAS FUNCIONES PARA AGREGAR DIVIVISION FUNCIONAL
@@ -111,6 +110,42 @@ var SubGerenciaData = function (tbody, table) {
         listaGerenciaCombo(txt_id_gerencia_m);
     });
 };
+
+    var EliminarSubGerencia=function(tbody,table){
+      $(tbody).on("click","button.eliminar",function(){
+        var data=table.row($(this).parents("tr")).data();
+        var id_subgerencia=data.id_subgerencia;
+        swal({
+                     title: "Desea eliminar el Registro?",
+                     text: "",
+                     type: "warning",
+                                showCancelButton: true,
+                                cancelButtonText:"Cerrar" ,
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "SI,Eliminar",
+                                closeOnConfirm: false          
+          },
+          function(){
+            $.ajax({
+              url:base_url+"index.php/SubGerencia/EliminarSubGerencia",
+              type:"POST",
+              data:{id_subgerencia:id_subgerencia},
+              success:function(resp){
+                var registros=jQuery.parseJSON(resp);
+                if(registros.flag==0)
+                {
+                  swal("",registros.msg,"success");
+                  $('#table-SubGerencia').dataTable()._fnAjaxUpdate();
+                }
+                else{
+                  swal("",registros.msg,"error");
+                  $('#table-SubGerencia').dataTable()._fnAjaxUpdate();
+                }
+              }
+            });
+        });
+      });
+    }
 
 /* Idioma DT*/
 var idioma_espanol =

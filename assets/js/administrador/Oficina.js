@@ -74,7 +74,7 @@ var lista_oficinas = function () {
         "language": idioma_espanol
     });
     OficinasData("#table-Oficina", table);  //obtener data de gerencia para agregar  AGREGAR
-
+    EliminarOficina("#table-Oficina", table);
 };
 
 var listaSubGerenciaCombo = function (valor)//COMO CON LAS FUNCIONES PARA AGREGAR DIVIVISION FUNCIONAL
@@ -112,6 +112,42 @@ var OficinasData = function (tbody, table) {
         listaSubGerenciaCombo(txt_id_subgerencia_m);
     });
 };
+  
+var EliminarOficina=function(tbody,table){
+      $(tbody).on("click","button.eliminar",function(){
+        var data=table.row($(this).parents("tr")).data();
+        var id_oficina=data.id_oficina;
+        swal({
+                     title: "Desea eliminar el Registro?",
+                     text: "",
+                     type: "warning",
+                                showCancelButton: true,
+                                cancelButtonText:"Cerrar" ,
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "SI,Eliminar",
+                                closeOnConfirm: false          
+          },
+          function(){
+            $.ajax({
+              url:base_url+"index.php/Oficina/EliminarOficina",
+              type:"POST",
+              data:{id_oficina:id_oficina},
+              success:function(resp){
+                var registros=jQuery.parseJSON(resp);
+                if(registros.flag==0)
+                {
+                  swal("",registros.msg,"success");
+                  $('#table-Oficina').dataTable()._fnAjaxUpdate();
+                }
+                else{
+                  swal("",registros.msg,"error");
+                  $('#table-Oficina').dataTable()._fnAjaxUpdate();
+                }
+              }
+            });
+        });
+      });
+    }
 
 /* Idioma DT*/
 var idioma_espanol =

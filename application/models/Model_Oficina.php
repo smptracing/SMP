@@ -47,4 +47,14 @@ class Model_Oficina extends CI_Model
             return false;
         }
     }
+    function EliminarOficina($id_oficina){
+        $this->db->where('id_oficina',$id_oficina);
+        $this->db->delete('OFICINA');
+        if($this->db->affected_rows()>0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }
