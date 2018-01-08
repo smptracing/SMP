@@ -44,6 +44,17 @@ class Model_Gerencia extends CI_Model
         }
 
     }
+
+    function EliminarGerencia($id_gerencia){
+        $this->db->where('id_gerencia',$id_gerencia);
+        $this->db->delete('GERENCIA');
+        if($this->db->affected_rows()>0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
     //fin funcion
 
     //fin division funciona

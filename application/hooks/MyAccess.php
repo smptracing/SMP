@@ -731,8 +731,11 @@ function autorizar($url)
       'FEnivelEstudio/EliminarNivelEstudios',
       'FEsituacion/EliminarSituacion',
       'EtapasFE/EliminarEtapa',
-      'Personal/EliminarCargo'
-);
+      'Personal/EliminarCargo',
+      'Gerencia/EliminarGerencia',
+      'SubGerencia/EliminarSubGerencia',
+      'Oficina/EliminarOficina'
+  );  
     foreach( $lista_API as $value ) {
       array_push($arrayPermitido, $value);
     }

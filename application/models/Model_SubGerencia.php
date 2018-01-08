@@ -45,4 +45,14 @@ class Model_SubGerencia extends CI_Model
             return false;
         }
     }
+    function EliminarSubGerencia($id_subgerencia){
+        $this->db->where('id_subgerencia',$id_subgerencia);
+        $this->db->delete('SUB_GERENCIA');
+        if($this->db->affected_rows()>0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }

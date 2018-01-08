@@ -55,7 +55,28 @@ class Oficina extends CI_Controller
             show_404();
         }
     }
+    function EliminarOficina(){
+        if ($this->input->is_ajax_request()) {
+            $flag=0;
+            $msg="";
+            $id_oficina = $this->input->post("id_oficina");
 
+        if($this->Model_Oficina->EliminarOficina($id_oficina)==true){
+                $flag=0;
+                $msg="registro Eliminado Satisfactoriamente";
+            }
+            else{
+                $flag=1;
+                $msg="No se pudo eliminar";
+            }
+                    $datos['flag']=$flag;
+                    $datos['msg']=$msg;
+                    echo json_encode($datos);
+        }  else {
+            show_404();
+        }
+
+    }
     function _load_layout($template)
     {
         $this->load->view('layout/ADMINISTRACION/header');

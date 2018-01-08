@@ -56,7 +56,28 @@ class SubGerencia extends CI_Controller
         }
 
     }
+    function EliminarSubGerencia(){
+        if ($this->input->is_ajax_request()) {
+            $flag=0;
+            $msg="";
+            $id_subgerencia = $this->input->post("id_subgerencia");
 
+        if($this->Model_SubGerencia->EliminarSubGerencia($id_subgerencia)==true){
+                $flag=0;
+                $msg="registro Eliminado Satisfactoriamente";
+            }
+            else{
+                $flag=1;
+                $msg="No se pudo eliminar";
+            }
+                    $datos['flag']=$flag;
+                    $datos['msg']=$msg;
+                    echo json_encode($datos);
+        }  else {
+            show_404();
+        }
+
+    }
     function _load_layout($template)
     {
         $this->load->view('layout/ADMINISTRACION/header');
