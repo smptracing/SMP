@@ -32,7 +32,7 @@ public function index()
 				$msg = (['proceso' => 'Error', 'mensaje' => 'El año de apertura ya existe']);
 				$this->load->view('front/json/json_view',['datos' => $msg]);
 				return;
-			} 
+			}
 
             if($nombreArchivo != '' || $nombreArchivo != null)
             {
@@ -56,7 +56,7 @@ public function index()
                     $c_data['url_resolucion_cartera']= $this->upload->data('file_name');
                     $q2 = $this->Model_CarteraInversion->AddCartera($c_data);
                     $msg=($q2>0 ? (['proceso' => 'Correcto', 'mensaje' => 'Cartera guardado correctamente']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado']));
-                    $this->load->view('front/json/json_view', ['datos' => $msg]);                    
+                    $this->load->view('front/json/json_view', ['datos' => $msg]);
                 }
                 else
                 {
@@ -113,7 +113,7 @@ public function index()
            			{
 					   	unlink("uploads/cartera/".$this->input->post("documento"));
 					}
-                    $this->load->view('front/json/json_view', ['datos' => $msg]);  
+                    $this->load->view('front/json/json_view', ['datos' => $msg]);
 
                 }
                 else
@@ -142,9 +142,6 @@ public function index()
     		$this->load->view('front/Pmi/Cartera/editar');
 			//$this->load->view('Front/Pmi/itemCartera');
     	}
-
-
-
     }
 	//FIN INSERTAR UNA CARTERA DE INVERSION
   function itemCartera(){
@@ -219,6 +216,27 @@ public function index()
 			show_404();
 		}
 	}
+  public function EliminarCartera() {
+    if ($this->input->is_ajax_request()) {
+      $flag=0;
+      $msg="";
+      $id_cartera = $this->input->post("id_cartera");
+
+    if($this->Model_CarteraInversion->EliminarCartera($id_cartera)==true){
+            $flag=0;
+            $msg="registro Eliminado Satisfactoriamente";
+        }
+        else{
+            $flag=1;
+            $msg="No se pudo eliminar";
+        }
+                $datos['flag']=$flag;
+                $datos['msg']=$msg;
+                echo json_encode($datos);
+    }  else {
+        show_404();
+    }
+  }
  	function _load_layout($template)
     {
       $this->load->view('layout/Pmi/header');

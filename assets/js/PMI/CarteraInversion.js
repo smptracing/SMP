@@ -49,6 +49,7 @@ var listaCarteraInversion=function()
 			"dataSrc" : ""
 		},
 		"columns" : [
+    { "data" : "id_cartera" },
 		{
 			"data" : "anios", "mRender" : function(data, type, full)
 			{
@@ -79,7 +80,7 @@ var listaCarteraInversion=function()
 		},
 		{"data":'anios',render: function ( data, type, row ) {
 			   /* return "<button type='button'  data-toggle='tooltip'  class='editar btn btn-primary btn-xs' data-toggle='modal' onclick=paginaAjaxDialogo('null','Modificar',{id_cartera:"+row.id_cartera+"},'"+base_url+"index.php/CarteraInversion/itemCartera','GET',null,null,false,true);><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button'  data-toggle='tooltip'  class='editar btn btn-success btn-xs' data-toggle='modal' onclick=paginaAjaxDialogo('null','Modificar',{id_cartera:"+row.id_cartera+"},'"+base_url+"index.php/CarteraInversion/editarCartera','GET',null,null,false,true);><i class='ace-icon fa fa-pencil bigger-120'></i></button>";*/
-				return "<button type='button'  data-toggle='tooltip'  class='editar btn btn-success btn-xs' data-toggle='modal' onclick=paginaAjaxDialogo('null','Modificar',{id_cartera:"+row.id_cartera+"},'"+base_url+"index.php/CarteraInversion/editarCartera','GET',null,null,false,true);><i class='ace-icon fa fa-pencil bigger-120'></i></button>";
+				return "<button type='button'  data-toggle='tooltip'  class='editar btn btn-success btn-xs' data-toggle='modal' onclick=paginaAjaxDialogo('null','Modificar',{id_cartera:"+row.id_cartera+"},'"+base_url+"index.php/CarteraInversion/editarCartera','GET',null,null,false,true);><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>";
 			}
 		}
 
@@ -94,10 +95,44 @@ var listaCarteraInversion=function()
 	});
 
 	CambioCartera("#table-CarteraInv",table);  //obtener data de funcion para agregar  AGREGAR
+  EliminarCartera("#table-CarteraInv",table);
 }
           //FIN TRAER DATOS DE LA CARTERA ACTUAL PARA SU PROGRAMACION
 /*FIN DE LISTAR MODALIDAD EJECUCION EN UN DATATABLE*/
-
+var EliminarCartera=function(tbody,table){
+  $(tbody).on("click","button.eliminar",function(){
+        var data=table.row( $(this).parents("tr")).data();
+        var id_cartera=data.id_cartera;
+         swal({
+                title: "Desea eliminar el Registro ?",
+                text: "",
+                type: "warning",
+                showCancelButton: true,
+                cancelButtonText:"Cerrar" ,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "SI,Eliminar",
+                closeOnConfirm: false
+              },
+              function(){
+                    $.ajax({
+                          url:base_url+"index.php/CarteraInversion/EliminarCartera",
+                          type:"POST",
+                          data:{id_cartera:id_cartera},
+                          success:function(respuesta){
+                           var registros=jQuery.parseJSON(respuesta);
+                           if(registros.flag==0){
+                            swal("Elimando.",registros.msg, "success");
+                            $('#table-CarteraInv').dataTable()._fnAjaxUpdate();
+                           }
+                           else{
+                            swal("Error.",registros.msg, "error");
+                            $('#table-CarteraInv').dataTable()._fnAjaxUpdate();
+                           }
+                           }
+                        });
+              });
+    });
+}
 //-------------- FIN MANTENIMIENTO MODALIDAD DE EJECUCION----------------------
 var CambioCartera=function(tbody,table){
                       $(tbody).on("click","a.CambioCartera",function(){
@@ -108,6 +143,8 @@ var CambioCartera=function(tbody,table){
 
                       });
 }
+
+
 
 function listarCarteraAnios()
 {

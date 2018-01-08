@@ -30,13 +30,14 @@
                         <table id="table-CarteraInv" class="table table-condensed table-striped table-bordered table-hover table table-striped table-bordered nowrap" width="100%">
                             <thead>
                                 <tr>
+                                    <th>id cartera</th>
                                     <th>AÑO DE APERTURA</th>
                                     <th>FECHA INICIO CARTERA</th>
                                     <th>FECHA FIN CARTERA</th>
                                     <th>ESTADO CICLO</th>
                                     <th>NRO RESOLUCION</th>
-                                    <th></th>
-                                    <th class="col-sm-1"></th>
+                                    <th>DOCUMENTOS</th>
+                                    <th class="col-sm-1">OPCIONES</th>
                                 </tr>
                             </thead>
                             <tbody>

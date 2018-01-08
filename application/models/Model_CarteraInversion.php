@@ -72,4 +72,14 @@ class Model_CarteraInversion extends CI_Model
              }
 
      }
+     function EliminarCartera($id_cartera) {
+       $this->db->where('id_cartera',$id_cartera);
+       $this->db->delete('CARTERA_INVERSION');
+       if($this->db->affected_rows()>0){
+         return true;
+       }
+       else{
+         return false;
+       }
+     }
 }
