@@ -8,7 +8,7 @@
                         <select class="form-control" id="dateAñoAperturaCart" name="dateAñoAperturaCart">
                           <?php
                           if(isset($arrayCartera)){
-                            for($i=2017;$i<2099;$i++){
+                            for($i=date('Y');$i<=date('Y')+1;$i++){
                               if($i==$arrayCartera->anio)
                                 echo '<option selected value="'.$i.'">'.$i.'</option>';
                               else
@@ -16,7 +16,7 @@
                             }
                           }
                           else{
-                            for($i=2017;$i<2099;$i++){
+                            for($i=date('Y');$i<=date('Y')+1;$i++){
                                 echo '<option value="'.$i.'">'.$i.'</option>';
                             }
                           }
@@ -115,7 +115,7 @@ $(function(){
         success:function(resp)
         {
             resp = JSON.parse(resp);
-            ((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje, "success") : swal(resp.proceso,resp.mensaje, "error"));            
+            ((resp.proceso=='Correcto') ? swal(resp.proceso,resp.mensaje, "success") : swal(resp.proceso,resp.mensaje, "error"));
             $('#table-CarteraInv').dataTable()._fnAjaxUpdate();
         }
     });
