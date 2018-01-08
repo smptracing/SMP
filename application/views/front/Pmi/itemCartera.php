@@ -23,6 +23,7 @@
                           ?>
                           </select>
                     </div>
+                    <span><b>Las cartera debe ser registrados con el año actual, y las fechas<br>de inicio y fin con relacion a la resolucion de aprobacion de la cartera.</b></span>
                 </div>
                 <div class="item form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Fecha Inicio Cartera <span class="required">*</span></label>
