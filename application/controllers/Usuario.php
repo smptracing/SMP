@@ -67,7 +67,7 @@ class Usuario extends CI_Controller {
 	    if ($this->input->is_ajax_request())
 	    {
 	      $id_persona=$this->input->post("comboPersona");
-	      $txt_usuario =$this->input->post("txt_usuario");
+	      $txt_usuario =$this->input->post("txt_usuario_e");
 	      if($this->input->post("txt_contrasenia")!='')
 	      	$txt_contrasenia =sha1($this->input->post("txt_contrasenia"));
 	      else

@@ -10,6 +10,7 @@
                           <div class="col-sm-6">
                             <?php if(isset($arrayUsuario->id_persona)) : ?>
                                <input type="text" class="form-control" name="comboPersona" disabled value="<?= $arrayUsuario->nombres." ".$arrayUsuario->apellido_p." ".$arrayUsuario->apellido_m ?>">
+                               <input type="hidden" id="comboPersona" name="comboPersona" value="<?= $arrayUsuario->id_persona ?>">
                             <?php else: ?>
                               <select
                               class="form-control input-sm"
@@ -21,10 +22,16 @@
                   <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right"  for="form-field-1-1">Usuario </label>
                       <div class="col-sm-6">
-                        <input type="text" id="txt_usuario" name="txt_usuario" placeholder="Nombre Usuario" class="form-control" autocomplete="off" value='<?php if(isset($arrayUsuario->usuario)) echo $arrayUsuario->usuario; ?>' />
+                        <?php if(isset($arrayUsuario->id_persona)) : ?>
+                          <input disabled type="text" placeholder="Nombre Usuario" class="form-control" autocomplete="off" value='<?php if(isset($arrayUsuario->usuario)) echo $arrayUsuario->usuario; ?>' />
+                          <input type="hidden" id="txt_usuario_e" name="txt_usuario_e"  value='<?php echo $arrayUsuario->usuario; ?>' />
+                          <label id="mensajeError" style="display: none;">Disponible</label>
+                        <?php else: ?>
+                          <input type="text" id="txt_usuario" name="txt_usuario" placeholder="Nombre Usuario" class="form-control" autocomplete="off" value='<?php if(isset($arrayUsuario->usuario)) echo $arrayUsuario->usuario; ?>' />
+                          <label id="mensajeError" style="display: none;">  </label>
+                        <?php endif; ?>
                         <span id="name_status"></span>
                         <input type="hidden" id="idPersona" name="idPersona" value='<?php if(isset($arrayUsuario->id_persona)) echo $arrayUsuario->id_persona; ?>' />
-                        <label id="mensajeError" style="display: none;">  </label>
                       </div>
 
                   </div>
@@ -40,8 +47,8 @@
                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">Estado </label>
                         <div class="col-sm-6">
                                <select  id="cbb_estado" name="cbb_estado" class="form-control input-sm">
-                               <option value='1'> Activo </option>
-                               <option value='0'> Inactivo </option>
+                               <option <?php if(isset($arrayUsuario->activo)) echo ($arrayUsuario->activo)==1 ? 'selected' : '' ?> value='1'> Activo </option>
+                               <option <?php if(isset($arrayUsuario->activo)) echo ($arrayUsuario->activo)==0 ? 'selected' : '' ?> value='0'> Inactivo</option>
                                </select>
                         </div>
                   </div>
@@ -60,7 +67,7 @@
                           </div>
                           <div style="padding-top: 2em; display: none;">
                               <h4>Status</h4>
-                              <p id="result">No nodes checked.</p>
+                              <p id="result"></p>
                           </div>
                       </div>
                     </div>

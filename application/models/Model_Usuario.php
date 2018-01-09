@@ -68,9 +68,9 @@ class Model_Usuario extends CI_Model
         else
             $query=$this->db->query("update USUARIO set id_persona='".$id_persona."',contrasenia='".$txt_contrasenia."',usuario='".$txt_usuario."',id_usuario_tipo='".$cbb_TipoUsuario."',activo=".$cbb_estado." WHERE id_persona='".$id_persona."'");
         if($query){
-            $this->db->close();
-            $this->db->query("delete from ACCESS_MENU where id_persona=".$id_persona.";");
             if($cbb_listaMenuDestino!=''){
+								$this->db->close();
+								$this->db->query("delete from ACCESS_MENU where id_persona=".$id_persona.";");
                 $arrayMenuUsuario=explode("-",$cbb_listaMenuDestino);
                 for($i=0;$i<count($arrayMenuUsuario);$i++){
                     $this->db->close();
