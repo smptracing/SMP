@@ -39,7 +39,11 @@
 						notEmpty:
 						{
 							message: '<b style="color: red;">El campo "Descripción" es requerido.</b>'
-						}
+						},
+						stringLength: {
+                         max: 99,
+                         message: '<b style="color: red;">El campo "Descripción" debe tener como máximo 99 caracteres.</b>'
+                     }
 					}
 				}
 			}
