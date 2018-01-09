@@ -106,8 +106,9 @@ class ProyectoInversion extends CI_Controller {/* Mantenimiento de sector entida
 	    $this->load->view('layout/Reportes/footer');
     }
 
-    public function ReporteBuscadorPorAnio($anio=2017)
+    public function ReporteBuscadorPorAnio()
     {
+			$anio=date('Y');
       $data=$this->Model_Dashboard_Reporte->ReporteConsolidadoAvanceFisicoFinan($anio);
       //var_dump($data);exit;
       $this->load->view('layout/Reportes/header');
