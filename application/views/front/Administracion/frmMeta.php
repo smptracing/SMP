@@ -87,13 +87,15 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Registrar Meta Presupuestal</h4>
+          <h4 class="modal-title">Editar Meta Presupuestal</h4>
         </div>
         <div class="modal-body">
          <div class="row">
                 <div class="col-xs-12">
                 <form class="form-horizontal form-label-left"  id="form_EditMetaPresupuestal" action="<?php echo base_url(); ?>Meta/EditarMetaPresupuestal" method="POST" >
-                <input id="txt_id_meta" name="txt_id_meta" class="form-control col-md-7 col-xs-12"  type="text"  >
+
+                   <div id="validarMetaM">
+                <input id="txt_id_meta" name="txt_id_meta" class="form-control col-md-7 col-xs-12"  type="text" style="visibility:hidden">
 
 
                       <div class="item form-group">
@@ -103,6 +105,7 @@
                           <textarea id="txt_nombre_meta_m" name="txt_nombre_meta_m" placeholder="Nombre de la meta" class="form-control col-md-7 col-xs-12"></textarea>
                         </div>
 
+                      </div>
                       </div>
                       <div class="ln_solid"></div>
                       <div class="form-group">
@@ -128,3 +131,78 @@
     </div>
   </div>
 
+<script>
+  $('.modal').on('hidden.bs.modal', function(){ 
+    $(this).find('form')[0].reset(); //para borrar todos los datos que tenga los input, textareas, select.
+    $("label.error").remove();  //lo utilice para borrar la etiqueta de error del jquery validate
+  });
+
+$(function()
+{
+    $('#validarMeta').formValidation(
+    {
+        framework: 'bootstrap',
+        excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+        live: 'enabled',
+        message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+        trigger: null,
+        fields:
+        {
+           txt_nombre_meta:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Nombre" es requerido.</b>'
+                    },
+                    regexp:
+                    {
+                        regexp: /^[a-zA-Z\s]+$/,
+                        message: '<b style="color: red;">El campo "Nombre" es solo texto.</b>'
+                    },
+                    stringLength:
+                    {
+                        max: 99,
+                        message: '<b style="color: red;">El campo "Nombre" no puede exceder los 99 cáracteres.</b>'
+                    }
+                }
+            }
+        }
+    });
+
+    $('#validarMetaM').formValidation(
+    {
+        framework: 'bootstrap',
+        excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+        live: 'enabled',
+        message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+        trigger: null,
+        fields:
+        {
+           txt_nombre_meta_m:
+            {
+                validators:
+                {
+                    notEmpty:
+                    {
+                        message: '<b style="color: red;">El campo "Nombre" es requerido.</b>'
+                    },
+                    regexp:
+                    {
+                        regexp: /^[a-zA-Z\s]+$/,
+                        message: '<b style="color: red;">El campo "Nombre" es solo texto.</b>'
+                    },
+                    stringLength:
+                    {
+                        max: 99,
+                        message: '<b style="color: red;">El campo "Nombre" no puede exceder los 99 cáracteres.</b>'
+                    }
+                }
+            }
+        }
+    });
+});
+
+
+</script>

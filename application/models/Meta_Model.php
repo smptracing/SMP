@@ -19,7 +19,7 @@ class Meta_Model extends CI_Model
     }
 
     //editar meta presupuestal
-    public function EditarMetaPresupuestal($flat, $txt_id_meta, $txt_anio_meta_m, $txt_correlativo_meta_m, $txt_nombre_meta_m)
+   /* public function EditarMetaPresupuestal($flat, $txt_id_meta, $txt_anio_meta_m, $txt_correlativo_meta_m, $txt_nombre_meta_m)
     {
         $this->db->query("execute sp_Gestionar_Meta_Presupuestal'" . $flat . "','"
             . $txt_id_meta . "','"
@@ -31,6 +31,18 @@ class Meta_Model extends CI_Model
         } else {
             return false;
         }
+    }*/
+    public function editarMeta($id_meta_pres,$m_data)
+    {
+      $this->db->where('id_meta_pres',$id_meta_pres);
+      $this->db->update('META_PRESUPUESTAL',$m_data);
+      if($this->db->affected_rows()>0){
+        return true;
+      }
+      else{
+        return false;
+      }     
+
     }
     //Add meta presupuestal
     public function AddMeta($data)

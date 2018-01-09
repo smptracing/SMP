@@ -10,7 +10,7 @@ class Meta extends CI_Controller
         $this->load->helper('FormatNumber_helper');
     }
     //editar Meta Presupuestal
-    public function EditarMetaPresupuestal()
+   /* public function EditarMetaPresupuestal()
     {
         if ($this->input->is_ajax_request()) {
             $flat                   = "U";
@@ -28,7 +28,39 @@ class Meta extends CI_Controller
         } else {
             show_404();
         }
+    }*/
+
+
+    public function editarMeta()
+    {
+        if ($this->input->is_ajax_request()) {
+            $flag = 0;
+            $msg = '';
+            $id_meta_pres=$this->input->post("txt_id_meta");
+            $txt_nombre_meta_m=$this->input->post("txt_nombre_meta_m");
+            $m_data['nombre_meta_pres']=$txt_nombre_meta_m;
+            $m_data=$this->security->xss_clean($m_data);
+            if($this->Meta_Model->editarMeta($id_meta_pres,$m_data)==true){
+                        $flag=0;
+                        $msg='Registro Actualizado';             
+
+                }
+                else{
+                        $flag=1;
+                        $msg='Error dbx0003';
+
+                }
+
+            
+            $datos['flag']=$flag;
+            $datos['msg']=$msg;
+            echo json_encode($datos);
+        } else {
+            show_404();
+        }
+
     }
+
     //Agregar Meta Presupuestal
     public function AddMeta()
     {

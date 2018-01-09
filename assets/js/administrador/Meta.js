@@ -4,20 +4,33 @@ $(document).on("ready" ,function()
     $("#form_EditMetaPresupuestal").submit(function(event)
     {
         event.preventDefault();
+       $('#validarMetaM').data('formValidation').validate();
+        if(!($('#validarMetaM').data('formValidation').isValid()))
+        {
+          return;
+        }
+    var formData=new FormData($("#form_EditMetaPresupuestal")[0]);
         $.ajax({
-            url:base_url+"index.php/Meta/EditarMetaPresupuestal",
-            type:$(this).attr('method'),
-            data:$(this).serialize(),
-            success:function(resp){
-              if (resp=='1') {
-                 swal("ACTUALIZADO","Se actualizó correctamente", "success");
-                 formReset();
-               }
-                if (resp=='2') {
-                 swal("NO SE ACTUALIZÓ","No se actualizó ", "error");
-               }
-              $('#table_metas_presupuestales').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion
-                 formReset();
+      type:"POST",
+      enctype:'multipart/form-data',
+            /*url:base_url+"index.php/Meta/EditarMetaPresupuestal",*/
+      url:base_url+"index.php/Meta/editarMeta",
+      data: formData,
+      cache: false,
+      contentType:false,
+      processData:false,
+      success:function(resp){
+        var registros=jQuery.parseJSON(resp);
+        if(registros.flag==0){
+          swal("",registros.msg,"success");
+          $('#form_EditMetaPresupuestal')[0].reset();
+          $('#ventana_editar_meta_presupuestal').modal('hide');     
+        }
+        else{
+          swal("",registros.msg,"error");
+        }
+        $('#table_metas_presupuestales').dataTable()._fnAjaxUpdate();//para actualizar mi datatablet datatablet   funcion   
+          formReset();
              }
         });
     });
@@ -95,7 +108,7 @@ var Eliminar_meta_prepuestalData=function(tbody,table)
         var data=table.row( $(this).parents("tr")).data();
         var id_meta_pres=data.id_meta_pres;
          swal({
-                title: "Desea eliminar la Entidad?",
+                title: "Desea eliminar EL Registro?",
                 text: "",
                 type: "warning",
                                 showCancelButton: true,
@@ -120,51 +133,7 @@ var Eliminar_meta_prepuestalData=function(tbody,table)
     });
 }
 
-$(function()
-{
-    $('#validarMeta').formValidation({
-        framework: 'bootstrap',
-        excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
-        live: 'enabled',
-        message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
-        trigger: null,
-        fields:
-        {
-            txt_anio_meta:
-            {
-                validators:
-                {
-                    notEmpty:
-                    {
-                        message: '<b style="color: red;">El campo "Año" es requerido.</b>'
-                    }
-                }
-            },
-            txt_correlativo_meta:
-            {
-                validators:
-                {
-                    notEmpty:
-                    {
-                        message: '<b style="color: red;">El campo "Correlativo Meta" es requerido.</b>'
-                    }
-                }
-            },
-            txt_nombre_meta:
-            {
-                validators:
-                {
-                    notEmpty:
-                    {
-                        message: '<b style="color: red;">El campo "Nombre" es requerido.</b>'
-                    }
-                }
-            }            
-        }
-    });
 
-
-});
 
 
 var idioma_espanol=

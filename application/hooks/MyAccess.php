@@ -734,7 +734,8 @@ function autorizar($url)
       'Personal/EliminarCargo',
       'Gerencia/EliminarGerencia',
       'SubGerencia/EliminarSubGerencia',
-      'Oficina/EliminarOficina'
+      'Oficina/EliminarOficina',
+      'Meta/EditarMeta'
   );  
     foreach( $lista_API as $value ) {
       array_push($arrayPermitido, $value);
