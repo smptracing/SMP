@@ -6,6 +6,18 @@ class Meta_Model extends CI_Model
     {
         parent::__construct();
     }
+
+    public function cargarMetaPi($anio,$codigoUnico)
+    {
+        $data=$this->db->query("execute sp_ListarMontosProyectoAnio @anio_meta ='$anio', @codigo_unico='$codigoUnico'");
+        return $data->result();
+    }
+    public function correlativoMeta($correlativo)
+    {
+        $data=$this->db->query("select * from correlativo_meta where cod_correlativo='".$correlativo."'");
+        return $data->result()[0];
+    }
+
     //editar meta presupuestal
     public function EditarMetaPresupuestal($flat, $txt_id_meta, $txt_anio_meta_m, $txt_correlativo_meta_m, $txt_nombre_meta_m)
     {

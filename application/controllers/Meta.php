@@ -7,6 +7,7 @@ class Meta extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Meta_Model');
+        $this->load->helper('FormatNumber_helper');
     }
     //editar Meta Presupuestal
     public function EditarMetaPresupuestal()
@@ -114,6 +115,26 @@ class Meta extends CI_Controller
         $this->load->view($template);
         $this->load->view('layout/PMI/footer');
         $this->load->view('Front/Pmi/js/jsMeta.php');
+    }
+
+    function metaPresupuestalPi()
+    {
+        $anio=$this->input->post('anio');
+        $codigoUnico=$this->input->post('codigoUnico');
+        $datos = $this->Meta_Model->cargarMetaPi($anio,$codigoUnico);
+        if(count($datos)>0)
+        {
+            foreach ($datos as $key => $data) 
+            {
+                $data->presupuesto=a_number_format($data->presupuesto , 2, '.',",",3);
+                $data->modificacion=a_number_format($data->modificacion , 2, '.',",",3);
+                $data->compromiso=a_number_format($data->compromiso , 2, '.',",",3);
+                $data->devengado=a_number_format($data->devengado , 2, '.',",",3);
+                $data->girado=a_number_format($data->girado , 2, '.',",",3);
+                $data->certificado=a_number_format($data->certificado , 2, '.',",",3);
+            }
+            echo json_encode($datos[0]);
+        }        
     }
 
 }

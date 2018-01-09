@@ -230,97 +230,113 @@
           Meta Presupuestal PI</h4>
         </div>
         <div class="modal-body">
-         <div class="row">
-                    <div class="col-xs-12">
-              <form class="form-horizontal " id="form_AddMeta_Pi"   action="" method="POST" >
-
-                        <input id="txt_id_pip_programacion_mp" name="txt_id_pip_programacion_mp" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  placeholder="ID" required="required" type="hidden">
-                        <div id="validarAddMetaPip">
-                              <div class="item form-group">
-                                <div class="col-md-2 col-sm-6 col-xs-12">
-                                      <label>Año</label>
-                                      <input id="txt_anio_meta" name="txt_anio_meta" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name"  placeholder="Año" required="required" type="number"  value="2017">
-                                  </div>
-                              </div>
-                               <div class="item form-group">
-                               <div class="col-md-3 col-sm-6 col-xs-12">
-                                      <label>Código Único</label>
-                                      <input  class="form-control" id="txt_codigo_unico_pi_mp" name="txt_codigo_unico_pi_mp" type="text" disabled="disabled">
-                                    </div>
-                                  <div class="col-md-9 col-sm-6 col-xs-12">
-                                      <label>Nombre del Proyecto</label>
-                                      <input  class="form-control" id="txt_nombre_proyecto_mp" name="txt_nombre_proyecto_mp" type="text" disabled="disabled">
-                                    </div>
-                                   <div class="col-md-3 col-sm-8 col-xs-12">
-                                      <label>Costo del Proyecto</label>
-                                      <input  class="form-control" id="txt_costo_proyecto_mp" name="txt_costo_proyecto_mp" type="text" disabled="disabled">
-                                    </div>
-
-                                    <div class="col-md-4 col-sm-8 col-xs-12">
-                                      <label>Meta Presupuestal</label>
-                                      <select id="cbx_meta_presupuestal" name="cbx_meta_presupuestal" class="selectpicker" data-live-search="true" title="Elija Meta">
-                                      </select>
-                                    </div>
-                                    <div class="col-md-4 col-sm-8 col-xs-12">
-                                      <label>Correlativo Meta </label>
-                                      <select id="cbx_Meta" name="cbx_Meta" class="selectpicker" data-live-search="true" title="Elija Meta">
-                                      </select>
-                                    </div>
-                                  </div>
-                                  <div id="respuesta" class="item form-group">
-                                    <?php foreach ($listar_montos as $listar_monto): ?>
-                                    <div class="row">
-                                      <div class="col-md-3 col-sm-6 col-xs-12">
-                                        <label>PIA</label>
-                                        <input class="form-control" id="txt_pia" name="txt_pia" type="text" value="<?= $listar_monto->presupuesto ?>" autocomplete="off" >
-                                      </div>
-                                      <div class="col-md-3 col-sm-6 col-xs-12">
-                                        <label>PIM</label>
-                                        <input  class="form-control" id="txt_pim" name="txt_pim" type="text" value="<?= $listar_monto->modificacion ?>" autocomplete="off" >
-                                      </div>
-                                      <div class="col-md-3 col-sm-6 col-xs-12">
-                                        <label>Certificado</label>
-                                        <input  class="form-control" id="txt_certificado" name="txt_certificado" type="text" value="<?= $listar_monto->certificado ?>" autocomplete="off">
-                                      </div>
-                                      <div class="col-md-3 col-sm-6 col-xs-12">
-                                        <label>compromiso</label>
-                                        <input  class="form-control" id="txt_compromiso" name="txt_compromiso" type="text" value="<?= $listar_monto->compromiso ?>" autocomplete="off" >
-                                      </div>
-                                    </div>
-                                    <div class="row">
-                                      <div class="col-md-3 col-sm-6 col-xs-12">
-                                        <label>Devengado</label>
-                                        <input  class="form-control" id="txt_devengado" name="txt_devengado" type="text" value="<?= $listar_monto->devengado ?>" autocomplete="off">
-                                      </div>
-                                      <div class="col-md-3 col-sm-6 col-xs-12">
-                                        <label>Girado</label>
-                                        <input  class="form-control" id="txt_girado" name="txt_girado" type="text" value="<?= $listar_monto->girado ?>" autocomplete="off">
-                                      </div>
-                                    </div>
-
-                                     <div class="item form-group">
-                                    
-                                    </div>
-                                    
-                                    <?php endforeach; ?>
-                                  </div>                                 
-                                       <button  onclick="leer()"">Cargar Montos</button>
+            <div class="row">
+                <div class="col-xs-12">
+                    <form class="form-horizontal" id="form_AddMeta_Pi" method="POST">
+                    <div class="row">
+                        <input id="txt_id_pip_programacion_mp" name="txt_id_pip_programacion_mp" required="required" type="hidden">
+                        <div class="col-md-12 col-sm-12col-xs-12">
+                            <label class="control-label">Proyecto:</label>
+                            <div>
+                                <input type="text" class="form-control" name="txt_nombre_proyecto_mp" id="txt_nombre_proyecto_mp" disabled="disabled" >    
+                            </div>  
                         </div>
+                        <div class="col-md-2 col-sm-6 col-xs-12">
+                            <label>Codigo Unico</label>
+                            <div>
+                                <input readonly="readonly" id="txt_codigo_unico_pi_mp" name="txt_codigo_unico_pi_mp" class="form-control" name="name" placeholder="Año" required="required" type="text">
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <label>Costo del Proyecto</label>
+                            <div>
+                                <input id="txt_costo_proyecto_mp" readonly="readonly" name="txt_costo_proyecto_mp" class="form-control" name="name" placeholder="Año" required="required" type="text">
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-6 col-xs-12">
+                            <label>Año</label>
+                            <div>
+                                <input id="txt_anio_meta" name="txt_anio_meta" class="form-control" name="name" placeholder="Año" required="required" type="number" value='<?=date("Y")?>'>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <label>.</label>
+                            <div>
+                                <input type="button" class="btn btn-info" name="" value="Cargar Campos" onclick="cargarCampos();">
+                            </div>                              
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-9 col-sm-9 col-xs-12">                       
+                            <label>Meta Presupuestal</label>
+                            <div>                                
+                                <select id="cbx_meta_presupuestal" name="cbx_meta_presupuestal" class="selectpicker form-control" data-live-search="true">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <label class="control-label">Correlativo Meta:</label>
+                            <div>
+                                <input readonly="readonly" type="text" name="cbx_Meta" class="form-control" id="cbx_Meta" >
+                            </div>
+                        </div>
+                    </div>  
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <label class="control-label">PIA:</label>
+                            <div>
+                                <input readonly="readonly" type="text" readonly="readonly" name="txt_pia" id= "txt_pia" class="form-control" >
+                            </div>  
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <label class="control-label">PIM:</label>
+                            <div>
+                                <input readonly="readonly" type="text" name="txt_pim" class="form-control" id="txt_pim" >
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <label class="control-label">Certificado:</label>
+                            <div>
+                                <input type="text" readonly="readonly" name="txt_certificado" id= "txt_certificado" class="form-control" >
+                            </div>  
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <label class="control-label">Compromiso:</label>
+                            <div>
+                                <input readonly="readonly" type="text" name="txt_compromiso" class="form-control" id="txt_compromiso" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">                        
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <label class="control-label">Devengado:</label>
+                            <div>
+                                <input type="text" readonly="readonly" name="txt_devengado" id= "txt_devengado" class="form-control" >
+                            </div>  
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <label class="control-label">Girado:</label>
+                            <div>
+                                <input readonly="readonly" type="text" name="txt_girado" class="form-control" id="txt_girado" >
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <label>.</label>
+                            <div>
+                                <button  id="send" type="submit" class="btn btn-success">
+                                    <span class="glyphicon glyphicon-floppy-saved"></span> Guardar
+                                </button>
+                            </div>  
+                           <!--<button  id="send" type="submit" class="btn btn-success">
+                                 <span class="glyphicon glyphicon-floppy-saved"></span> Guardar
+                            </button>-->
+                        </div>
+                    </div>
+                    
 
+                    <div class="ln_solid"></div>
 
-
-                                 </div>
-                                 <div class="item form-group">
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
-                                       <button  id="send" type="submit" class="btn btn-success">
-                                             <span class="glyphicon glyphicon-floppy-saved"></span> Guardar
-                                        </button>
-                                    </div>
-                                 </div>
-
-
-                     <div class="ln_solid"></div>
-                     <div class="x_panel" style="background-color: #EEEEEE;">
+                    <div class="x_panel" style="background-color: #EEEEEE;">
                     <center>
                     <table  id="Table_meta_pi" class="table   table-hover" >
                     <thead >
@@ -361,9 +377,38 @@
       </div>
     </div>
 </div>
-<!-- /.Fin Ventana meta presupuestal-->
+
+<script>
+function cargarCampos()
+{
+    anio=$('#txt_anio_meta').val();
+    codigoUnico=$('#txt_codigo_unico_pi_mp').val();
+    $.ajax(
+    {
+        url: base_url+'index.php/Meta/metaPresupuestalPi',
+        type: 'POST',
+        data:
+        {
+           anio : anio,
+           codigoUnico : codigoUnico
+        },
+        cache: false,
+        async: true
+    }).done(function(objectJSON)
+    {
+        obj = JSON.parse(objectJSON);
+        $('#cbx_Meta').val(obj.meta);
+        $('#txt_pia').val(obj.presupuesto);
+        $('#txt_pim').val(obj.modificacion);
+        $('#txt_certificado').val(obj.certificado);
+        $('#txt_compromiso').val(obj.compromiso);
+        $('#txt_devengado').val(obj.devengado);
+        $('#txt_girado').val(obj.girado);
+    }).fail(function()
+    {
+        swal('Error', 'Error no controlado.', 'error');
+    });
 
 
-
-
-<!-- /.Fin Ventana programar-->
+}
+</script>

@@ -77,11 +77,11 @@ $(document).on("ready" ,function()
     $("#form_AddMeta_Pi").submit(function(event)
     {
         event.preventDefault();
-        $('#validarAddMetaPip').data('formValidation').validate();
+        /*$('#validarAddMetaPip').data('formValidation').validate();
         if(!($('#validarAddMetaPip').data('formValidation').isValid()))
         {
           return;
-        }
+        }*/
         $.ajax({
             url:base_url+"index.php/programar_pip/AddMeta_PI",
             type:$(this).attr('method'),
@@ -90,17 +90,17 @@ $(document).on("ready" ,function()
             {
                 if (resp=='1')
                 {
-                    swal("REGISTRADO","Se regristró correctamente", "success");
-                    setTimeout("location.reload()", 5000);
+                    swal("Correcto","Se regristró correctamente", "success");
+                    //setTimeout("location.reload()", 5000);
                 }
                 if (resp=='2')
                 {
-                    swal("NO SE REGISTRÓ","NO se regristró ", "error");
+                    //swal("NO SE REGISTRÓ","NO se regristró ", "error");
 
                 }
                 $('#Table_meta_pi').dataTable()._fnAjaxUpdate();
-                $('form_AddMeta_Pi')[0].reset();
-                setTimeout("location.reload()", 5000);
+                //$('form_AddMeta_Pi')[0].reset();
+                //setTimeout("location.reload()", 5000);
             }
         });
     });
@@ -400,7 +400,7 @@ var EliminarMetaPresupuestalPi=function(tbody,table){
                                             $('#table_ejecucion').dataTable()._fnAjaxUpdate();
                                             $('#Table_funcionamiento').dataTable()._fnAjaxUpdate();
                                           //location.reload();
-                                          setTimeout("location.reload()", 3000);
+                                          //setTimeout("location.reload()", 3000);
                                           }
                                         });
                               });
@@ -434,7 +434,7 @@ var  AddMeta_Pi=function(tbody,table)
         $("#txt_costo_proyecto_mp").val("S/. "+data.costo_pi);
         $("#txt_nombre_proyecto_mp").val(data.nombre_pi);
         //meta_pi_cup(data.codigo_unico_pi);
-        listar_Meta();
+        //listar_Meta();
         listar_meta_presupuestal();
         listar_meta_pi(id_pi);
     });

@@ -268,8 +268,8 @@ class PrincipalReportes extends CI_Controller
 
         $anio=$this->input->GET('anio');
         $codigounico=$this->input->GET('codigounico');
+
         $listaDetalleClasificador=$this->Model_Dashboard_Reporte->ReporteDetalleClasificador($anio,$codigounico);
-        
 
         $temp=[];
 
@@ -366,10 +366,6 @@ class PrincipalReportes extends CI_Controller
                             $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child=[];
 
                             $sextoCodigoTemp=null;
-
-                            
-                            //$sumatoriaAnualporClasificador = 0;
-
                             
 
                             foreach($listaDetalleClasificador as $key5 => $value5)
@@ -432,10 +428,6 @@ class PrincipalReportes extends CI_Controller
                                     $sumatoriaAcumuladaAnual[$key]+=($value+($key>0 ?  $sumatoriaAcumuladaAnual[$key-1]  : 0));
                                 }
 
-
-                                /*$sumatoriaAnualporClasificador = $value5->ene + $value5->feb + $value5->mar + $value5->abr + $value5->may + $value5->jun + $value5->jul + $value5->ago + $value5->sep + $value5->oct + $value5->nov + $value5->dic; 
-
-                                $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]->sumatoriaAnualporClasificador=$sumatoriaAnualporClasificador;*/
                                 $temp[$key0]->child[$key1]->child[$key2]->child[$key3]->child[$key4]->child[$key5]->sumatoriaAcumuladaAnual=$sumatoriaAcumuladaAnual;
 
 
@@ -445,11 +437,6 @@ class PrincipalReportes extends CI_Controller
                 }
             }
         }
-        //exit;
-        //echo "<pre>";
-        //var_dump($temp);exit;
-        //echo "</pre>";
-
 
         $this->load->view('front/Reporte/ProyectoInversion/detalleClasificador',['listaDetalleClasificador'=>$listaDetalleClasificador,'temp'=>$temp]);
     }
@@ -586,7 +573,6 @@ class PrincipalReportes extends CI_Controller
         $tipoppto=$this->input->GET('tipoppto');
         $listaDetallePorCadaOrden=$this->Model_Dashboard_Reporte->DetallePorCadaNumOrden($anio,$tipobien,$numorden,$tipoppto);
         
-       // var_dump($listaDetallePorCadaOrden);exit;
         $this->load->view('front/Reporte/ProyectoInversion/detallePorCadaOrden.php',['listaDetallePorCadaOrden'=>$listaDetallePorCadaOrden]);
     }
     public function _load_layout($template)
