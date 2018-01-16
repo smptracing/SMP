@@ -182,7 +182,7 @@ class Estudio_Inversion extends CI_Controller
             $c_data['fecha_inicio']=$this->input->post("dateFechaIniC");
             $c_data['fecha_final']=$this->input->post("dateFechaIniF");
             $c_data['avance_fisico']=0;
-            $c_data['fecha_estado']=date('d-m-Y H:i:s');
+            $c_data['fecha_estado']=date('Y-m-d H:i:s');
             $c_data['recomendaciones']=$this->input->post("txadescripcion");
             $c_data['en_seguimiento']=1;
 

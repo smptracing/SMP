@@ -145,7 +145,6 @@ class Estudio_Inversion_Model extends CI_Model
         $this->db->set('en_seguimiento',0);
         $this->db->where('id_est_inv',$data['id_est_inv']);
         $this->db->update('ETAPA_ESTUDIO');
-
         $this->db->insert('ETAPA_ESTUDIO',$data);
         return $this->db->affected_rows();
     }
