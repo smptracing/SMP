@@ -377,14 +377,15 @@ var listarEtapaEstudio=function(id_est_inv)
         {"data":"fecha_final"},
         {"data":"id_etapa_estudio",render:function(data,type,row)
             {
-                return "<button type='button' data-toggle='tooltip' class='btn btn-danger btn-xs' data-toggle='modal' onclick=eliminarEtapaEstado("+data+",this)><i class='ace-icon fa fa-trash-o'></i></button>";
+                return "<button type='button' data-toggle='tooltip' class='btn btn-danger btn-xs' data-toggle='modal' onclick=eliminarEtapaEstado("+data+","+row.id_est_inv+",this)><i class='ace-icon fa fa-trash-o'></i></button>";
             }
         }
     ],
     "language":idioma_espanol
     });
 }
-var eliminarEtapaEstado=function(idEtapaestudio,element)
+
+var eliminarEtapaEstado=function(idEtapaestudio,idEstudioInversion,element)
 {
     swal({
         title: "¿Realmente desea eliminar este registro?",
@@ -393,12 +394,19 @@ var eliminarEtapaEstado=function(idEtapaestudio,element)
         showCancelButton: true,
         cancelButtonText:"Cerrar" ,
         confirmButtonColor: "#DD6B55",
-        confirmButtonText: "SI,Eliminar",
+        confirmButtonText: "Si,Eliminar",
         closeOnConfirm: false
     },
     function()
     {
-        paginaAjaxJSON({"idEtapaEstudio":idEtapaestudio}, base_url+'index.php/Estudio_Inversion/eliminarEtapaEstado', 'POST', null, function(objectJSON)
+        $.ajax(
+        {
+            url : base_url+'index.php/Estudio_Inversion/eliminarEtapaEstado',
+            type : 'POST',
+            data : {"idEtapaEstudio":idEtapaestudio,"idEstudioInversion":idEstudioInversion},
+            cache : false,
+            async : true
+        }).done(function(objectJSON)
         {
             objectJSON=JSON.parse(objectJSON);
             swal(
@@ -409,7 +417,12 @@ var eliminarEtapaEstado=function(idEtapaestudio,element)
             },
             function(){});
             $(element).parent().parent().remove();
-        }, false, true);
+            $('#dynamic-table-EstudioInversion').dataTable()._fnAjaxUpdate();
+        }).fail(function()
+        {
+            swal("","No se puede eliminar este registro","error");
+
+        });
     });
 }
 

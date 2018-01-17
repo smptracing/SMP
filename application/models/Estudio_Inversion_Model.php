@@ -260,10 +260,19 @@ class Estudio_Inversion_Model extends CI_Model
         return $veretapasestudio->result();
     }
 
-    public function eliminarEtapaEstado($idEtapaEstado)
+    public function eliminarEtapaEstado($idEtapaEstado,$idEstudioInversion)
     {
+        
         $this->db->where('id_etapa_estudio',$idEtapaEstado);
         $this->db->delete('ETAPA_ESTUDIO');
+
+        $this->db->select_max('id_etapa_estudio');
+        $this->db->where('id_est_inv',$idEstudioInversion);
+        $query = $this->db->get('ETAPA_ESTUDIO')->result();
+
+        $this->db->set('en_seguimiento',1);
+        $this->db->where('id_etapa_estudio', $query[0]->id_etapa_estudio);
+        $this->db->update('ETAPA_ESTUDIO');
         return $this->db->affected_rows();
     }
 

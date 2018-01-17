@@ -206,7 +206,7 @@ class Estudio_Inversion extends CI_Controller
     public function eliminarEtapaEstado()
     {
         $msg = array();
-        $q1=$this->Estudio_Inversion_Model->eliminarEtapaEstado($this->input->post('idEtapaEstudio'));
+        $q1=$this->Estudio_Inversion_Model->eliminarEtapaEstado($this->input->post('idEtapaEstudio'),$this->input->post('idEstudioInversion'));
         $msg=($q1>0 ? (['proceso' => 'Correcto', 'mensaje' => 'Se elimino Correctamente el registro']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado']));
         $this->load->view('front/json/json_view', ['datos' => $msg]);
     }
