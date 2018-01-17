@@ -120,7 +120,7 @@
                                                                   <th style="width: 4%"><span class="lb_anio1"></span></th>
                                                                   <th style="width: 4%"><span class="lb_anio2"></span></th>
                                                                   <th style="width: 4%"><span class="lb_anio3"></span></th>
-                                                                </tr>
+                                                        </tr>
                                                       </thead>
 
 

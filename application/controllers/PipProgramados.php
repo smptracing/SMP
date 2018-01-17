@@ -15,6 +15,7 @@ class PipProgramados extends CI_Controller
     {
         if ($this->input->is_ajax_request()) {
             $flat = "listarpip_formulacion_evaluacion_programado";
+           // para realizar una prueba con  $anio="2018";
             $anio = $this->input->post("anio");
             $data = $this->PipProgramados_Model->GetPipProgramadosFormulacionEvaluacion($flat, $anio);
             foreach ($data as $key => $value) 
