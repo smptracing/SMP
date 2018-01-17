@@ -10,6 +10,7 @@ class Mo_MonitoreodeProyectos extends CI_Controller
         $this->load->model('Model_Mo_Actividad');
         $this->load->model('Model_Mo_Ejecucion_Actividad');
         $this->load->helper('FormatNumber_helper');
+        $this->load->library('mydompdf');
     }
 
     function index()
@@ -106,5 +107,16 @@ class Mo_MonitoreodeProyectos extends CI_Controller
         $data = $this->Model_Mo_Producto->eliminarProducto($this->input->post('idProducto'));
         $msg = ($data > 0 ? (['proceso' => 'Correcto', 'mensaje' => 'el monitoreo del proyecto fue eliminado']) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
         echo json_encode($msg);exit;
+    }
+
+    function FichadeMonitoreo()
+    {
+       //$this->load->view('front/Monitoreo/FichaMonitoreo');
+       
+        $html = $this->load->view('front/Monitoreo/FichaMonitoreo',['hola'=> 1], true);
+        $this->mydompdf->load_html($html);
+        $this->mydompdf->set_paper("A4", "landscape");
+        $this->mydompdf->render();
+        $this->mydompdf->stream("FichaMonitoreo.pdf", array("Attachment" => false)); 
     }
 }
