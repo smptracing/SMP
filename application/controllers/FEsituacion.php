@@ -83,7 +83,7 @@ class FEsituacion extends CI_Controller
             $c_data['id_situacion_fe']=$this->input->post("Cbx_Situacion");
             $c_data['id_etapa_estudio']=$this->input->post("txt_IdEtapa_Estudio");
             $c_data['observacion']=$this->input->post("txadescripcion");
-            $c_data['fecha']=date('d-m-Y H:i:s');
+            $c_data['fecha']=date('Y-m-d H:i:s');
 
             $q1=$this->Model_FEsituacion->AddSituacion($c_data);
 
