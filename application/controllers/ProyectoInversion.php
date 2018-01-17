@@ -106,10 +106,15 @@ class ProyectoInversion extends CI_Controller {/* Mantenimiento de sector entida
 	    $this->load->view('layout/Reportes/footer');
     }
 
-    public function ReporteBuscadorPorAnio($anio)
+    public function ReporteBuscadorPorAnio($anio = NULL, $sec_ejec = NULL)
     {
-			//$anio='2018';
-      $data=$this->Model_Dashboard_Reporte->ReporteConsolidadoAvanceFisicoFinan($anio);
+      //$anio = $_GET['anio'];
+      if(is_null($anio))
+        $anio = date("Y");
+      if(is_null($sec_ejec ))
+        $sec_ejec = '000747';
+
+      $data=$this->Model_Dashboard_Reporte->ReporteConsolidadoAvanceFisicoFinan($anio, $sec_ejec);
       //var_dump($data);exit;
       $this->load->view('layout/Reportes/header');
       $this->load->view('front/Reporte/ProyectoInversion/seguimientoCertificado',['Consolidado' => $data,'anio' =>$anio]);

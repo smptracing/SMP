@@ -191,10 +191,10 @@ class Model_Dashboard_Reporte extends CI_Model
         }
     }
 
-    function ReporteConsolidadoAvanceFisicoFinan($anio)
-    {
+    function ReporteConsolidadoAvanceFisicoFinan($anio, $sec_ejec)
+    {        
         $opcion="calificacion_seguimiento_certificado_a_devengado";
-        $data = $this->db->query("execute sp_Gestionar_SIAF @opcion='".$opcion."', @anio_meta ='".$anio."'");
+        $data = $this->db->query("execute sp_Gestionar_SIAF @opcion='".$opcion."', @anio_meta ='".$anio."', @sec_ejec='".$sec_ejec."'");
             
             return $data->result();  
     }
