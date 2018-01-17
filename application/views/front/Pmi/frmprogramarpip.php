@@ -179,7 +179,7 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
-          Programar PIP </h4>
+          Programar PIP</h4>
         </div>
         <div class="modal-body" style="height:500px;overflow:auto;">
          <div class="row">
@@ -259,11 +259,10 @@
                                       <CENTER><label id="lb_anio3">Año 3</label></CENTER>
                                       <input  class="form-control" id="txt_anio3" name="txt_anio3" type="text" />
                                     </div>
-
-
                                 </div>
+
                                 <div class="row item " id='ct_anio'>
-                                   <h6><i class="fa fa-list"></i><b> Monnnto Operación y Mantenimiento</b></h6>
+                                   <h6><i class="fa fa-list"></i><b> Monto Operación y Mantenimiento</b></h6>
                                    <div class="col-md-3 col-sm-6 col-xs-12 form-group">
                                       <CENTER><label id="lb_anio4">Año 4</label></CENTER>
                                       <input  class="form-control" id="txt_anio4" name="txt_anio4" type="text" />
@@ -276,14 +275,10 @@
                                       <CENTER><label id="lb_anio6">Año 6</label></CENTER>
                                       <input  class="form-control" id="txt_anio6" name="txt_anio6" type="text" />
                                     </div>
-
-
                                 </div>
 
-                                 <div class="row item "
                                <div class="item form-group">
-
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
                                         <button  id="send_addProgramacion"  type='button' class="btn btn-success">
                                              <span class="glyphicon glyphicon-floppy-saved"></span> Guardar
                                         </button>
@@ -584,13 +579,13 @@
                     <table  id="Table_Programar_operacion_mantenimiento" class="table   table-hover" >
                     <thead >
                        <tr>
-                         <th  ><i></i> #</th>
-                         <th  ><i></i> Cartera</th>
-                         <th  ><i></i> Brecha</th>
-                         <th  ><i></i> Año Programado</th>
-                         <th  ><i></i> Monto Programado</th>
-                         <th  ><i></i> Prioridad</th>
-                         <th  ><i></i> Opción</th>
+                         <th><i></i> #</th>
+                         <th><i></i> Cartera</th>
+                         <th><i></i> Brecha</th>
+                         <th><i></i> Año Programado</th>
+                         <th><i></i> Monto Programado</th>
+                         <th><i></i> Prioridad</th>
+                         <th><i></i> Opción</th>
                       </tr>
                     </thead>
                     </table>

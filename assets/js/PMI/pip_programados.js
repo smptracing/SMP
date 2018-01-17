@@ -17,6 +17,41 @@ $("body").on("change","#Cbx_AnioCartera_operacion_mant",function(e){
 $(document).on("ready" ,function(){
      listar_aniocartera_();
 });
+//listar las carteras de inversion que han sido programadas
+var listar_aniocartera_=function(valor){ //listar ani cartera operacion y mantenimiento
+                     html="";
+                    $("#Cbx_AnioCartera_").html(html);
+                    event.preventDefault();
+                    $.ajax({
+                        "url":base_url +"index.php/programar_pip/GetAnioCarteraProgramado",
+                        type:"POST",
+                        success:function(respuesta3){
+                         //  alert(respuesta);
+                         var registros = eval(respuesta3);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option  value="+registros[i]["anio"]+"> "+registros[i]["anio"]+" </option>";
+                            };
+                            $("#Cbx_AnioCartera_").html(html);
+                            $('select[name=Cbx_AnioCartera_]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
+                            $('select[name=Cbx_AnioCartera_]').change();
+                            $('.selectpicker').selectpicker('refresh');
+                            var anio=$("#Cbx_AnioCartera_").val();
+                            lista_programados_formulacion_evaluacion(anio);
+                            listar_aniocartera_Ejecucion();
+                            $("#Cbx_AnioCartera_").trigger("change");
+                        }
+                    });
+                }
+                //cargar al combobox los años de las carteras que han sido programadas
+
+                      $("#Cbx_AnioCartera_").change(function() {
+                          var anio=$("#Cbx_AnioCartera_").val();
+                            lista_programados_formulacion_evaluacion(anio);
+                            //lista_ejecucion(anio);
+                           //listar carteran de proyectos
+                           $("#Aniocartera").val(anio);
+                        }); 
+
 //listar proyectos de inversion en formulacion y evaluacion
  var lista_programados_formulacion_evaluacion=function(anio)
 {
@@ -58,11 +93,9 @@ $(document).on("ready" ,function(){
   var anio_1= parseInt(anio) +1; 
   var anio_2= parseInt(anio) +2; 
   var anio_3= parseInt(anio) +3; 
-
   var anioR1 = str1.concat(anio_1);
   var anioR2 = str1.concat(anio_2);
   var anioR3 = str1.concat(anio_3);
-
   var anioOyM1 = str2.concat(anio_1);
   var anioOyM2 = str2.concat(anio_2);
   var anioOyM3 = str2.concat(anio_3);
@@ -74,8 +107,7 @@ $(document).on("ready" ,function(){
                          "ajax":{
                                     url:base_url+"index.php/PipProgramados/GetPipProgramadosEjecucion",
                                      type:"POST",
-                                     data :{anio:anio}  
-                                                                   
+                                     data :{anio:anio}                              
                                   },
                                 "columns":[ 
                                 { "data" : "id_pi", "visible" : false },
@@ -129,37 +161,7 @@ $(document).on("ready" ,function(){
 }
 //fin de proyectos de operacion y mantenimiento
 
-var listar_aniocartera_=function(valor){ //listar ani cartera operacion y mantenimiento
-                     html="";
-                    $("#Cbx_AnioCartera_").html(html);
-                    event.preventDefault();
-                    $.ajax({
-                        "url":base_url +"index.php/programar_pip/GetAnioCarteraProgramado",
-                        type:"POST",
-                        success:function(respuesta3){
-                         //  alert(respuesta);
-                         var registros = eval(respuesta3);
-                            for (var i = 0; i <registros.length;i++) {
-                              html +="<option  value="+registros[i]["anio"]+"> "+registros[i]["anio"]+" </option>";
-                            };
-                            $("#Cbx_AnioCartera_").html(html);
-                            $('select[name=Cbx_AnioCartera_]').val(valor);//PARA AGREGAR UN COMBO PSELECIONADO
-                            $('select[name=Cbx_AnioCartera_]').change();
-                            $('.selectpicker').selectpicker('refresh');
-                            var anio=$("#Cbx_AnioCartera_").val();
-                            lista_programados_formulacion_evaluacion(anio);
-                            listar_aniocartera_Ejecucion();
-                            $("#Cbx_AnioCartera_").trigger("change");
-                        }
-                    });
-                }
-                      $("#Cbx_AnioCartera_").change(function() {
-                          var anio=$("#Cbx_AnioCartera_").val();
-                            lista_programados_formulacion_evaluacion(anio);
-                            //lista_ejecucion(anio);
-                           //listar carteran de proyectos
-                           $("#Aniocartera").val(anio);
-                        });         
+        
 var listar_aniocartera_Ejecucion=function(valor){ //listar ani cartera operacion y mantenimiento
                      html="";
                     $("#Cbx_AnioCartera_Ejecucion").html(html);
