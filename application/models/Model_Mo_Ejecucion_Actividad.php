@@ -66,4 +66,10 @@ class Model_Mo_Ejecucion_Actividad extends CI_Model
 		return $this->db->get()->result();
 	}
 
+	function sumatoriaEjecucion($idActividad)
+	{
+		$query = $this->db->query("select sum(ejec_fisic_prog) as AcumFisProg, sum(ejec_fisic_real) as AcumFisReal, sum(ejec_finan_prog) as AcumFinProg, sum(ejec_finan_real) as AcumFinReal from mo_ejecucion_actividad ea where id_actividad = $idActividad");
+		return  $query->result();
+	}
+
 }

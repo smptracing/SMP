@@ -111,9 +111,14 @@ class Mo_MonitoreodeProyectos extends CI_Controller
 
     function FichadeMonitoreo()
     {
-       //$this->load->view('front/Monitoreo/FichaMonitoreo');
+
+        $producto=$this->Model_Mo_Actividad->listaActividadProducto(4);
+        foreach ($producto as $key => $value)
+        {
+            $value->ResumenAvance = $this->Model_Mo_Ejecucion_Actividad->sumatoriaEjecucion($value->id_actividad);
+        }
        
-        $html = $this->load->view('front/Monitoreo/FichaMonitoreo',['hola'=> 1], true);
+        $html = $this->load->view('front/Monitoreo/FichaMonitoreo',['listaProducto'=> $producto], true);
         $this->mydompdf->load_html($html);
         $this->mydompdf->set_paper("A4", "landscape");
         $this->mydompdf->render();

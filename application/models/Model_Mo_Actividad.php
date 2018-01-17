@@ -63,4 +63,11 @@ class Model_Mo_Actividad extends CI_Model
 		$this->db->where('MO_ACTIVIDAD.id_actividad !=',$idActividad);
 		return $this->db->get()->result();
 	}
+
+
+	function listaActividadProducto($idPi)
+	{
+		$query = $this->db->query("select p.desc_producto,a.id_actividad, a.desc_actividad, a.uni_medida, a.meta from mo_producto p inner join mo_actividad a on p.id_producto= a.id_producto where p.id_pi=$idPi");
+		return  $query->result();
+	}
 }
