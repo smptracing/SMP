@@ -13,17 +13,15 @@
   .btn {
     border-radius: 0px !important;
   }
-  .btn-group
-  {
 
-  }
   .dropdown-menu {
-    z-index: 90000;
+
+    position: inherit;
 }
-.table-responsive
-{
-    z-index: 80000;
-}
+
+
+
+
 </style>
 <div class="right_col" role="main">
 <div class="">

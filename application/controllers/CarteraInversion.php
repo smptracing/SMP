@@ -172,6 +172,20 @@ public function index()
 		$this->load->view('layout/Pmi/header');
 		$this->load->view('Front/Pmi/frmMProyectoInversion', ['anio' => $anio]);
 		$this->load->view('layout/Pmi/footer');
+        /*if ($this->input->is_ajax_request())
+        {
+            $datos=$this->Model_CarteraInversion->GetCarteraInversion();
+            foreach ($datos as $key => $value)
+            {
+                $value->fecha_inicio_cartera = date('d/m/Y',strtotime($value->fecha_inicio_cartera));
+                $value->fecha_cierre_cartera = date('d/m/Y',strtotime($value->fecha_cierre_cartera));
+            }
+            echo json_encode($datos);
+        }
+        else
+        {
+            show_404();
+        }*/
 	}
 
     function GetCarteraInvFechAct()

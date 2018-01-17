@@ -29,77 +29,56 @@
   }
 </style>
 <div class="right_col" role="main">
-          <div class="">
-            <div class="page-title">
+    <div class="">
+        <div class="page-title"></div>
+        <div class="clearfix"></div>
+        <div class="">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2> PROYECTO DE INVERSIÓN</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div id="myTabContent" class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade active in" id="tab_brecha" aria-labelledby="home-tab">
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div class="x_panel">
+                                            <div class="row" class="container-fluid">
+                                                <div class="col-md-3">
+                                                    <div class="col-md-4">
+                                                        <a href="<?php echo site_url('CarteraInversion/'); ?>">Cartera</a>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <select  id="cbCartera" class="form-control" name="cbCartera"></select>
+                                                        <input type="text" id="Aniocartera" value="<?=(isset($anio) ? $anio : date('Y'))?>">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <form action="<?php echo base_url('index.php/ReporteProgramacion/action'); ?>" method="POST" >
 
-            </div>
-            <div class="clearfix"></div>
-            <div class="">
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                                <div class="x_panel">
-                                  <div class="x_title">
-                                    <h2> PROYECTO DE INVERSIÓN</h2>
-                                    <ul class="nav navbar-right panel_toolbox">
-                                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                      </li>
-                                      <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                      </li>
-                                    </ul>
-                                    <div class="clearfix"></div>
-                                  </div>
-                                  <div class="x_content">
-                                      <div id="myTabContent" class="tab-content">
-                                           <!-- /panel de brechas desde el row -->
-                                        <div role="tabpanel" class="tab-pane fade active in" id="tab_brecha" aria-labelledby="home-tab">
-                                             <!-- /tabla de brechas desde el row -->
-                                            <div class="row">
-                                              <div class="col-md-12 col-sm-12 col-xs-12">
-                                                        <div class="x_panel">
-                                                          <div class="row" class="container-fluid">
-
-                                                                <!-- <div class="col-md-1">
-                                                                    <button id="btn-NuevoProyectoI" type="button" class="btn btn-primary " data-toggle="modal" data-target="#VentanaRegistraPIP">  <span class="fa fa-plus-circle"></span> Nuevo--- </button>
-                                                                </div> -->
-                                                                <div class="col-md-4">
-                                                               </div>
-                                                              <div class="col-md-3">
-                                                                     <div class="col-md-4">
-                                                                        <a href="<?php echo site_url('CarteraInversion/'); ?>"><i class="fa fa-suitcase"></i>Cartera</a>
-                                                                     </div>
-                                                                     <div class="col-md-8">
-                                                                          <select  id="cbCartera" class="form-control" name="cbCartera"></select>
-                                                                          <input type="hidden" id="Aniocartera" value="<?=(isset($anio) ? $anio : date('Y'))?>">
-                                                                    </div>
-                                                              </div>
-
-                                                                <div class="col-md-2">
-                                                                    <form action="<?php echo base_url('index.php/ReporteProgramacion/action'); ?>" method="POST" >
-
-                                                                      <input type="hidden" id="hdAnioCartera" name="hdAnioCartera" value="<?=(isset($anio) ? $anio : date('Y'))?>">
-                                                                      <button  type="submit" class="btn btn-primary">  <span class="fa fa-file-text"></span> Exportar excel</button>
-
-                                                                    </form>
+                                                        <input type="hidden" id="hdAnioCartera" name="hdAnioCartera" value="<?=(isset($anio) ? $anio : date('Y'))?>">
+                                                        <button  type="submit" class="btn btn-primary">  <span class="fa fa-file-text"></span> Exportar excel</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="x_content">
+                                                <table id="table-ProyectoInversionProgramado" class="table table-striped table-bordered table-hover table-responsive display  compact " ellspacing="0" width="100%">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="col-sm-1">Id</th>
+                                                            <th class="col-sm-1"><center>Código Único</center></th>
+                                                            <th class="col-sm-1"><center>Ciclo de Inversión</center></th>
+                                                            <th class="col-sm-1"><center>Inversión</center></th>
+                                                            <th class="col-sm-1"><center>Prioridad</center></th>
+                                                            <th class="col-sm-1"><center>Brecha</center></th>
+                                                            <th class="col-sm-1"><center>
+                                                                <div class="programacion1">
+                                                                    <?php if (isset($anio) && $anio == "") {?>
+                                                                        <h6><label id="AnioProgramadoActual"></label></h6>
+                                                                </center>
                                                                 </div>
-                                                              <!-- <div class="col-md-2">
-                                                                    <button id="btn-Importar" type="button" class="btn btn-primary" data-toggle="modal" data-target="#VentanaImportar">  <span class="fa fa-plus-circle"></span> Importar Excel </button>
-                                                               </div>-->
-                                                          </div>
-                                                      <div class="x_content">
-                                                        <table id="table-ProyectoInversionProgramado" class="table table-striped table-bordered table-hover table-responsive display  compact " ellspacing="0" width="100%">
-                                                              <thead>
-                                                                <tr>
-                                                                  <th class="col-sm-1">Id</th>
-                                                                  <th class="col-sm-1"><center>Código Único</center></th>
-                                                                  <th class="col-sm-1"><center>Ciclo de Inversión</center></th>
-                                                                  <th class="col-sm-1"><center>Inversión</center></th>
-                                                                  <th class="col-sm-1"><center>Prioridad</center></th>
-                                                                  <th class="col-sm-1"><center>Brecha</center></th>
-                                                                  <th class="col-sm-1"><center>
-                                                                      <div class="programacion1">
-                                                                            <?php if (isset($anio) && $anio == "") {?>
-                                                                            <h6><label id="AnioProgramadoActual"></label></h6>
-                                                                            </center>
-                                                                      </div>
                                                                   </th>
                                                                   <?php } else {?>
                                                                   <?php echo (isset($anio) ? $anio + 1 : date('Y') + 1); ?></center></div></th>
