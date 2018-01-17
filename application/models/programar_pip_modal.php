@@ -46,14 +46,16 @@ class programar_pip_modal extends CI_Model
     //listar anio cartera  programado
     public function GetAnioCarteraProgramado()
     {
-        $GetAnioCartera = $this->db->query("SELECT cari.id_cartera,\n"
+        //listado de todas las carteras
+        $GetAnioCartera = $this->db->query("select  id_cartera,YEAR(año_apertura_cartera) AS anio from CARTERA_INVERSION ORDER BY anio");
+       /* $GetAnioCartera = $this->db->query("SELECT cari.id_cartera,\n"
             . "      YEAR(año_apertura_cartera) AS anio\n"
             . "FROM   CARTERA_INVERSION cari\n"
             . "      INNER JOIN PROGRAMACION prog ON prog.id_cartera = cari.id_cartera\n"
             . "WHERE  estado_cartera = '1'\n"
             . "GROUP BY cari.id_cartera,\n"
             . "        YEAR(año_apertura_cartera)\n"
-            . "ORDER BY anio");
+            . "ORDER BY anio"); */
         if ($GetAnioCartera->num_rows() > 0) {
             return $GetAnioCartera->result();
         } else {

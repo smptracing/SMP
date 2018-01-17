@@ -13,7 +13,6 @@ $("body").on("change","#Cbx_AnioCartera_operacion_mant",function(e){
   $(".lb_anio2").html(parseInt($("#Cbx_AnioCartera_operacion_mant").val())+2);
   $(".lb_anio3").html(parseInt($("#Cbx_AnioCartera_operacion_mant").val())+3);
 });
-
 $(document).on("ready" ,function(){
      listar_aniocartera_();
 });
@@ -79,7 +78,7 @@ var listar_aniocartera_=function(valor){ //listar ani cartera operacion y manten
                                   },
                                 "columns":[ 
                                 {"defaultContent":"<td>#</td>", "visible" : false },
-                                { "data" : "codigo_unico_pi" }
+                                { "data" : "codigo_unico_pi" },
                                 { "data" : "nombre_estado_ciclo" },
                                 { "data" : "nombre_pi" },
                                 { "data" : "prioridad_prog" },
