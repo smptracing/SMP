@@ -1,7 +1,7 @@
 <style>
 	#tableSub1 td, #tableSub1 th
 	{
-		border: 1px solid #999999;
+		border: 1px solid black;
 		font-size: 10px;
 		padding: 2px;
 		text-align: left;
@@ -9,7 +9,7 @@
 	}
 	#tableSub2 td, #tableSub2 th
 	{
-		border: 1px solid #999999;
+		border: 1px solid black;
 		font-size: 10px;
 		padding: 2px;
 		text-align: left;
@@ -17,7 +17,7 @@
 	}
 	#tableSub3 td, #tableSub3 th
 	{
-		border: 1px solid #999999;
+		border: 1px solid black;
 		font-size: 10px;
 		padding: 4px;
 		text-align: left;
@@ -166,26 +166,31 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>1</td>
-								<td>2</td>
-								<td>3</td>
-								<td>1</td>
-								<td>2</td>
-								<td>3</td>
-								<td>1</td>
-								<td>2</td>
-								<td>3</td>
-								<td>1</td>
-								<td>2</td>
-								<td>3</td>
-								<td>1</td>
-								<td>2</td>
-								<td>3</td>
-								<td>1</td>
-								<td>2</td>
-								<td>3</td>
-							</tr>
+							<?php foreach ($listaProducto as $key => $value) {?>
+								<tr>
+									<td><?=$value->desc_producto?></td>
+									<td><?=$value->desc_actividad?></td>
+									<td><?=$value->uni_medida?></td>
+									<td><?=$value->meta?></td>
+									<td></td>
+									<?php foreach ($value->ResumenAvance as $key => $item) { ?>
+										<td><?=$item->AcumFisProg?></td>
+										<td></td>
+										<td><?=$item->AcumFisReal?></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td><?=$item->AcumFinProg?></td>
+										<td></td>
+										<td><?=$item->AcumFinReal?></td>
+
+									<?php } ?>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>								
+								</tr>
+							<?php } ?>
 							
 						</tbody>						
 					</table>

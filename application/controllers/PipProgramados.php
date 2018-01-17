@@ -17,13 +17,19 @@ class PipProgramados extends CI_Controller
             $flat = "listarpip_formulacion_evaluacion_programado";
            // para realizar una prueba con  $anio="2018";
             $anio = $this->input->post("anio");
-            $data = $this->PipProgramados_Model->GetPipProgramadosFormulacionEvaluacion($flat, $anio);
-            foreach ($data as $key => $value) 
+          /*  if ($anio=="") {
+                $anio=
+              $data = $this->PipProgramados_Model->GetPipProgramadosFormulacionEvaluacion($flat, $anio);
+            }*/
+              $data = $this->PipProgramados_Model->GetPipProgramadosFormulacionEvaluacion($flat, $anio);  
+            
+         /*   foreach ($data as $key => $value) 
             {
-                $value->Inv_2018 = a_number_format($value->Inv_2018 , 2, '.',",",3);
                 $value->Inv_2019 = a_number_format($value->Inv_2019 , 2, '.',",",3);
                 $value->Inv_2020 = a_number_format($value->Inv_2020 , 2, '.',",",3);
+                $value->Inv_2021 = a_number_format($value->Inv_2021 , 2, '.',",",3);
             }
+            */
             echo json_encode(array('data' => $data));
         } else {
             show_404();
@@ -37,7 +43,7 @@ class PipProgramados extends CI_Controller
             $flat = "listarpip_ejecucion_programado";
             $anio = $this->input->post("anio");
             $data = $this->PipProgramados_Model->GetPipProgramadosEjecucion($flat, $anio);
-            foreach ($data as $key => $value) 
+          /*  foreach ($data as $key => $value) 
             {
                 $value->Inv_2018 = a_number_format($value->Inv_2018 , 2, '.',",",3);
                 $value->Inv_2019 = a_number_format($value->Inv_2019 , 2, '.',",",3);
@@ -45,7 +51,7 @@ class PipProgramados extends CI_Controller
                 $value->OyM_2018 = a_number_format($value->OyM_2018 , 2, '.',",",3);
                 $value->OyM_2019 = a_number_format($value->OyM_2019 , 2, '.',",",3);
                 $value->OyM_2020 = a_number_format($value->OyM_2020 , 2, '.',",",3);
-            }
+            }*/
             echo json_encode(array('data' => $data));
         } 
         else 
@@ -62,12 +68,12 @@ class PipProgramados extends CI_Controller
             $flat = "listarpip_operacionmantenimiento_programado";
             $anio = $this->input->post("anio");
             $data = $this->PipProgramados_Model->GetPipOperacionMantenimiento($flat, $anio);
-            foreach ($data as $key => $value) 
+           /* foreach ($data as $key => $value) 
             {
                 $value->OpeMa_2018 = a_number_format($value->OpeMa_2018 , 2, '.',",",3);
                 $value->OpeMa_2019 = a_number_format($value->OpeMa_2019 , 2, '.',",",3);
                 $value->OpeMa_2020 = a_number_format($value->OpeMa_2020 , 2, '.',",",3);
-            }
+            }*/
             echo json_encode(array('data' => $data));
         } 
         else 
