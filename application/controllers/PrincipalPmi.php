@@ -14,7 +14,7 @@ class PrincipalPmi extends CI_Controller
     {
         $this->_load_layout('pmi');
     }
-    //Listar prioridad
+
     public function get_cantidad_costo_tipo_pi()
     {
         if ($this->input->is_ajax_request())
