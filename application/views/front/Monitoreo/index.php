@@ -80,6 +80,8 @@
 
 											<a onclick="eliminarMonitoreo('<?=$value->id_pi?>', this);" role="button" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Eliminar" ><span class="fa fa-trash-o"></span></a>
 
+											<a href="<?= site_url('Mo_MonitoreodeProyectos/FichadeMonitoreo?id_pi='.$value->id_pi);?>" target='_blank' role="button" class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top" title="Formato 02" ><span class="fa fa-file-pdf-o"></span></a>
+
 										</td>
 									</tr>
 								<?php } ?>

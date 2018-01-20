@@ -72,4 +72,10 @@ class Model_Mo_Ejecucion_Actividad extends CI_Model
 		return  $query->result();
 	}
 
+	function actividadMensual($idActividad,$mes)
+	{
+		$query = $this->db->query("select ejec_fisic_prog, ejec_finan_prog, ejec_fisic_real, ejec_finan_real from mo_ejecucion_actividad where id_actividad = $idActividad and mes_ejec = '$mes'");
+		return  $query->result();
+	}
+
 }

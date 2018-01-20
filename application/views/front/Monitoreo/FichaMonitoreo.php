@@ -19,7 +19,7 @@
 	{
 		border: 1px solid black;
 		font-size: 10px;
-		padding: 4px;
+		padding: 2px;
 		text-align: left;
 		vertical-align: middle;
 	}
@@ -144,7 +144,7 @@
 								<th rowspan="3">Compromiso</th>
 							</tr>
 							<tr>
-								<th rowspan="2">Unidad Medida</th>
+								<th rowspan="2">Unidad Med.</th>
 								<th rowspan="2">Meta</th>
 								<th colspan="2">Meta Programada</th>
 								<th colspan="2">Meta Ejecutada</th>
@@ -172,20 +172,19 @@
 									<td><?=$value->desc_actividad?></td>
 									<td><?=$value->uni_medida?></td>
 									<td><?=$value->meta?></td>
-									<td></td>
+									<td>del mes</td>
 									<?php foreach ($value->ResumenAvance as $key => $item) { ?>
 										<td><?=$item->AcumFisProg?></td>
-										<td></td>
+										<td>del mes</td>
 										<td><?=$item->AcumFisReal?></td>
+										<td><?=($item->AcumFisProg==0) ? '' : a_number_format($item->AcumFisReal*100/$item->AcumFisProg , 2, '.',",",0). ' %'?></td>
 										<td></td>
-										<td></td>
-										<td></td>
-										<td><?=$item->AcumFinProg?></td>
-										<td></td>
-										<td><?=$item->AcumFinReal?></td>
-
+										<td>del mes</td>
+										<td><?=a_number_format($item->AcumFinProg,2,'.',",",3)?></td>
+										<td>del mes</td>
+										<td><?=a_number_format($item->AcumFinReal,2,'.',",",3)?></td>
 									<?php } ?>
-									<td></td>
+									<td><?=($item->AcumFinProg==0) ? '' : a_number_format($item->AcumFinReal*100/$item->AcumFinProg , 2, '.',",",0).' %'?></td>
 									<td></td>
 									<td></td>
 									<td></td>								

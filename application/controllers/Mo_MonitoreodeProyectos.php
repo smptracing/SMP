@@ -111,10 +111,17 @@ class Mo_MonitoreodeProyectos extends CI_Controller
 
     function FichadeMonitoreo()
     {
+        $id_pi = isset($_GET['id_pi']) ? $_GET['id_pi'] : null;
 
-        $producto=$this->Model_Mo_Actividad->listaActividadProducto(4);
+        $producto=$this->Model_Mo_Actividad->listaActividadProducto($id_pi);
+
         foreach ($producto as $key => $value)
         {
+            $actividadMensual = $this->Model_Mo_Ejecucion_Actividad->actividadMensual($value->id_actividad,$mes);
+            $value->ejecFisProg = $actividadMensual[0]->ejec_fisic_prog;
+            $value->ejecFisReal = $actividadMensual[0]->ejec_fisic_real;
+            $value->ejecFinProg = $actividadMensual[0]->ejec_finan_prog;
+            $value->ejecFinReal = $actividadMensual[0]->ejec_finan_prog;
             $value->ResumenAvance = $this->Model_Mo_Ejecucion_Actividad->sumatoriaEjecucion($value->id_actividad);
         }
        
