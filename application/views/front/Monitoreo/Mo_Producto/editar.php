@@ -33,8 +33,11 @@
                             </div>
                             <br>
                             <div id="divAgregarProducto" class="row" style="margin-top: 3px;">
-                                <div class="col-md-9 col-sm-6 col-xs-12">
+                                <div class="col-md-7 col-sm-6 col-xs-12">
                                     <input type="text" class="form-control" id="txtDescripcionProducto" name="txtDescripcionProducto" placeholder="Descripción del producto" style="width: 100%">
+                                </div>
+                                <div class="col-md-2 col-sm-6 col-xs-12">
+                                    <input type="text" class="form-control" id="txtValoracion" name="txtValoracion" maxlength="5"  placeholder="Valoracion %">
                                 </div>
                                 <div class="col-md-3 col-sm-4 col-xs-12">
                                     <input type="button" class="btn btn-info" value="Agregar producto" onclick="agregarProducto();" style="width: 100%;">
@@ -326,6 +329,26 @@
                         notEmpty:
                         {
                             message: '<b style="color: red;">El campo "Descripción del producto" es requerido.</b>'
+                        }
+                    }
+                },
+                txtValoracion:
+                {
+                    validators: 
+                    {
+                        notEmpty:
+                        {
+                            message: '<b style="color: red;">El campo "Valoración del producto" es requerido.</b>'
+                        },
+                        regexp:
+                        {
+                            regexp: /^(\d+([\.]{1}(\d{1,2})?)?)*$/,
+                            message: '<b style="color: red;">El campo "Valoración" debe ser un valor en decimales.</b>'
+                        },
+                        between: {
+                            min: 0.1,
+                            max: 100,
+                            message: '<b style="color: red;">El campo "Valoración" debe estar entre 1 y 100.</b>'
                         }
                     }
                 }

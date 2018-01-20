@@ -9,8 +9,11 @@
 	</div>
 	<br>
 	<div id="divAgregarProducto" class="row" style="margin-top: 3px;">
-		<div class="col-md-10 col-sm-6 col-xs-12">
+		<div class="col-md-8 col-sm-6 col-xs-12">
 			<input type="text" class="form-control" id="txtDescripcionProducto" name="txtDescripcionProducto" placeholder="Descripción del producto">
+		</div>
+		<div class="col-md-2 col-sm-6 col-xs-12">
+			<input type="text" class="form-control" id="txtDescripcionProducto" name="txtDescripcionProducto" placeholder="Valoracion">
 		</div>
 		<div class="col-md-2 col-sm-4 col-xs-12">
 			<input type="button" class="btn btn-info" value="Agregar producto" onclick="agregarProducto();" style="width: 100%;">

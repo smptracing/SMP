@@ -175,7 +175,7 @@
 									<td>del mes</td>
 									<?php foreach ($value->ResumenAvance as $key => $item) { ?>
 										<td><?=$item->AcumFisProg?></td>
-										<td>del mes</td>
+										<td><?=$item->AcumFisProg?></td>
 										<td><?=$item->AcumFisReal?></td>
 										<td><?=($item->AcumFisProg==0) ? '' : a_number_format($item->AcumFisReal*100/$item->AcumFisProg , 2, '.',",",0). ' %'?></td>
 										<td></td>
