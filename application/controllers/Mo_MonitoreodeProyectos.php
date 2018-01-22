@@ -60,6 +60,7 @@ class Mo_MonitoreodeProyectos extends CI_Controller
 
             $c_data['desc_producto'] = $this->input->post('descripcionProducto');
             $c_data['id_pi'] =  $this->input->post('idPi');
+            $c_data['valoracion_proudcto'] =  $this->input->post('valoracionProducto');
             $data = $this->Model_Mo_Producto->insertar($c_data);
 
             $msg = ($data != '' || $data != null ? (['proceso' => 'Correcto', 'mensaje' => 'los datos fueron registrados correctamente', 'idProducto' => $data ]) : (['proceso' => 'Error', 'mensaje' => 'Ha ocurrido un error inesperado.']));
